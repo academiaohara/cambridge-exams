@@ -1,96 +1,169 @@
 {
+    "id":  10,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a teenager who started a cooking blog",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a teenager who started a cooking blog. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a woman called Samira Khan, who designs clothes from recycled materials.",
+    "voices":  {
+                   "interviewer":  "en-GB-RyanNeural",
+                   "guest":  "en-GB-LibbyNeural"
+               },
+    "audio_script":  "Interviewer: Samira Khan designs clothes from recycled materials. Samira, were you interested in fashion when you were young? || Guest: I liked clothes, but I didn't dream of becoming a designer. My mother repaired everything instead of throwing things away, and I used to think that was embarrassing. Later, at college, [20]I made a jacket from an old tent for a project, and everyone wanted to know where I had bought it[/20]. That changed my attitude. || Interviewer: What was hard when you started your business? || Guest: Finding materials wasn't hard because people had plenty to give me. Selling online was simple too. [21]The difficult part was making each item strong enough to wear often, not just interesting to look at[/21]. I had to test everything. || Interviewer: How do customers react to your clothes? || Guest: Some are already interested in the environment, but others just like the designs. [22]I feel happiest when someone chooses a coat because it looks good and only later discovers it is recycled[/22]. Then the idea seems normal. || Interviewer: Do you follow fashion trends? || Guest: I look at them, but I don't copy them closely. Trends change quickly, and that creates waste. [23]I prefer making simple shapes that people can keep wearing for several years[/23]. That's better for the planet. || Interviewer: You also run workshops. What happens there? || Guest: People bring old clothes and we change them. At first they worry about making mistakes. [24]By the end, they're usually proud because they've created something useful with their own hands[/24]. That's lovely to see. || Interviewer: What are your plans for the future? || Guest: Shops have asked to sell my clothes, which is exciting, but I want to grow carefully. [25]My next goal is to make video lessons so people in other places can learn the same skills[/25]. || Interviewer: Before we finish, Samira, do you think people are becoming more careful about what they buy? || Guest: Slowly, yes. Many people now ask where materials come from, which almost nobody did when I started. But price is still important, and I understand that. Recycled clothing should not feel like a luxury that only a few people can afford. That is why I try to keep my designs simple and use processes that don't waste time or material. || Interviewer: What do you do with pieces that don't work? || Guest: I keep them. A failed sleeve might become a pocket, or a small piece of cloth might become part of a bag. Having boxes of odd pieces can look messy, but they are useful. It also reminds me that mistakes don't always have to be thrown away. Sometimes they just need another purpose. || Interviewer: Has your family changed the way they shop because of your work? || Guest: Definitely. My brother used to buy new clothes constantly, and now he asks me whether something can be repaired. He still likes fashion, but he thinks more carefully. I see that as a small victory. || Interviewer: Finally, what do you do when you need new ideas? || Guest: I try to step away from the main work for a short time. Going for a walk, visiting another place or talking to someone outside the job usually helps. If I sit at a desk worrying, nothing improves. I also keep a small notebook, because useful ideas often arrive at inconvenient moments, like on a bus or while making dinner.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Samira Khan designs clothes from recycled materials. Samira, were you interested in fashion when you were young?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I liked clothes, but I didn't dream of becoming a designer. My mother repaired everything instead of throwing things away, and I used to think that was embarrassing. Later, at college, I made a jacket from an old tent for a project, and everyone wanted to know where I had bought it. That changed my attitude."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was hard when you started your business?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Finding materials wasn't hard because people had plenty to give me. Selling online was simple too. The difficult part was making each item strong enough to wear often, not just interesting to look at. I had to test everything."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "How do customers react to your clothes?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Some are already interested in the environment, but others just like the designs. I feel happiest when someone chooses a coat because it looks good and only later discovers it is recycled. Then the idea seems normal."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you follow fashion trends?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I look at them, but I don't copy them closely. Trends change quickly, and that creates waste. I prefer making simple shapes that people can keep wearing for several years. That's better for the planet."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "You also run workshops. What happens there?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "People bring old clothes and we change them. At first they worry about making mistakes. By the end, they're usually proud because they've created something useful with their own hands. That's lovely to see."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What are your plans for the future?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Shops have asked to sell my clothes, which is exciting, but I want to grow carefully. My next goal is to make video lessons so people in other places can learn the same skills."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Before we finish, Samira, do you think people are becoming more careful about what they buy?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Slowly, yes. Many people now ask where materials come from, which almost nobody did when I started. But price is still important, and I understand that. Recycled clothing should not feel like a luxury that only a few people can afford. That is why I try to keep my designs simple and use processes that don't waste time or material."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you do with pieces that don't work?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I keep them. A failed sleeve might become a pocket, or a small piece of cloth might become part of a bag. Having boxes of odd pieces can look messy, but they are useful. It also reminds me that mistakes don't always have to be thrown away. Sometimes they just need another purpose."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Has your family changed the way they shop because of your work?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Definitely. My brother used to buy new clothes constantly, and now he asks me whether something can be repaired. He still likes fashion, but he thinks more carefully. I see that as a small victory."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Finally, what do you do when you need new ideas?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I try to step away from the main work for a short time. Going for a walk, visiting another place or talking to someone outside the job usually helps. If I sit at a desk worrying, nothing improves. I also keep a small notebook, because useful ideas often arrive at inconvenient moments, like on a bus or while making dinner."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "What changed Samira's attitude to recycled fashion?",
+                          "options":  {
+                                          "A":  "making a successful college project",
+                                          "B":  "learning repair skills from her mother",
+                                          "C":  "buying a jacket made from old material"
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Samira says people admired a jacket she made from an old tent for a college project."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What did Samira find difficult at the start of her business?",
+                          "options":  {
+                                          "A":  "collecting enough materials",
+                                          "B":  "making clothes that lasted",
+                                          "C":  "selling her designs online"
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "B",
+                          "explanation":  "She says the difficult part was making items strong enough to wear often."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "When does Samira feel happiest about a customer?",
+                          "options":  {
+                                          "A":  "when they already care about the environment",
+                                          "B":  "when they ask how something was made",
+                                          "C":  "when they like the design before knowing it is recycled"
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Samira says she is happiest when someone chooses a coat because it looks good and later discovers it is recycled."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "Why does Samira avoid following trends closely?",
+                          "options":  {
+                                          "A":  "They cause people to waste clothes.",
+                                          "B":  "They are difficult to copy well.",
+                                          "C":  "They do not suit her customers."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "She says trends change quickly and create waste, so she prefers simple shapes that last."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "How do people usually feel at the end of Samira's workshops?",
+                          "options":  {
+                                          "A":  "surprised by how easy sewing is",
+                                          "B":  "pleased with what they have made",
+                                          "C":  "worried about making mistakes"
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "B",
+                          "explanation":  "Samira says people are usually proud because they have created something useful themselves."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What does Samira want to do next?",
+                          "options":  {
+                                          "A":  "teach people online",
+                                          "B":  "open shops in other places",
+                                          "C":  "employ more designers"
+                                      },
+                          "answer":  "A",
+                          "explanation":  "She says her next goal is to make video lessons so people elsewhere can learn the same skills."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2010.mp3",
+    "word_count":  541
 }

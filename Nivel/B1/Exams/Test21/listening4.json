@@ -1,96 +1,144 @@
 {
+    "test_id":  21,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a teenager volunteering at an animal shelter",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a teenager volunteering at an animal shelter. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a woman called Amelia Hart, who runs a cookery school.",
+    "voices":  {
+                   "interviewer":  "en-GB-RyanNeural",
+                   "guest":  "en-GB-SoniaNeural"
+               },
+    "audio_script":  "Interviewer: Today we're speaking to Amelia Hart, who runs a small cookery school in Bath. Amelia, did you always want to teach cooking? || Guest: Not really. My mum was a chef, and people imagine I copied her, but I was too shy to work in a restaurant. I studied business first. [20]I only started teaching after a friend asked me to show some students how to make simple meals, and I enjoyed explaining each step[/20]. It felt more natural than cooking for customers. || Interviewer: What do beginners usually find hardest? || Guest: They often worry about knives or timing, but those things improve quickly. [21]The real problem is that many people try to follow a recipe without reading it through first[/21]. Then they suddenly discover something has to rest for an hour, or the oven should already be hot. I tell them to sit down with a cup of tea and read before touching any food. || Interviewer: What kind of class is your favourite to teach? || Guest: I like the family classes, though they can be noisy. [22]What I enjoy most is teaching adults who think they are hopeless, because they are so pleased when something turns out well[/22]. They usually arrive saying they can only boil pasta, and by the end they have made soup, bread and a pudding. Their confidence changes during the day. || Interviewer: Has anything about your work surprised you? || Guest: Yes, the amount of planning. People see the fun part, but [23]I spend far more time checking ingredients, testing recipes and preparing equipment than I expected[/23]. If one small thing is missing, the whole class can go badly. I used to leave too much until the morning, but now I prepare everything the day before. || Interviewer: You also make short cooking videos. How do you feel about them? || Guest: At first I hated being filmed. I still don't like watching myself, but [24]the videos have been useful because people practise at home before coming to a class[/24]. It means they are less nervous and ask better questions. I don't want to become famous online; I just want the videos to help learners. || Interviewer: What advice would you give someone who wants to cook better? || Guest: Don't buy lots of expensive equipment. [25]Choose three or four meals you really like and practise them several times[/25]. When you can make those without panic, add something new. People often jump from one recipe to another, but repeating the same dish teaches you more than trying something difficult once. || Interviewer: Do students usually continue cooking after the course? || Guest: Many do, especially if they have come with a friend or family member. I send everyone home with a short list of ingredients and a plan for the next week. I don't expect them to make perfect meals immediately. What matters is that they cook again while the lesson is still fresh in their minds. Some people send me photos later, which is always lovely. A few have even returned with their teenagers, because they want cooking to become a normal activity at home rather than something stressful. I also remind students that mistakes are useful, because burned onions or flat bread tell you something. A relaxed kitchen is a better place to learn than a perfect one.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today we're speaking to Amelia Hart, who runs a small cookery school in Bath. Amelia, did you always want to teach cooking?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Not really. My mum was a chef, and people imagine I copied her, but I was too shy to work in a restaurant. I studied business first. I only started teaching after a friend asked me to show some students how to make simple meals, and I enjoyed explaining each step. It felt more natural than cooking for customers."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do beginners usually find hardest?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "They often worry about knives or timing, but those things improve quickly. The real problem is that many people try to follow a recipe without reading it through first. Then they suddenly discover something has to rest for an hour, or the oven should already be hot. I tell them to sit down with a cup of tea and read before touching any food."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What kind of class is your favourite to teach?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I like the family classes, though they can be noisy. What I enjoy most is teaching adults who think they are hopeless, because they are so pleased when something turns out well. They usually arrive saying they can only boil pasta, and by the end they have made soup, bread and a pudding. Their confidence changes during the day."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Has anything about your work surprised you?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, the amount of planning. People see the fun part, but I spend far more time checking ingredients, testing recipes and preparing equipment than I expected. If one small thing is missing, the whole class can go badly. I used to leave too much until the morning, but now I prepare everything the day before."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "You also make short cooking videos. How do you feel about them?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "At first I hated being filmed. I still don't like watching myself, but the videos have been useful because people practise at home before coming to a class. It means they are less nervous and ask better questions. I don't want to become famous online; I just want the videos to help learners."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What advice would you give someone who wants to cook better?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Don't buy lots of expensive equipment. Choose three or four meals you really like and practise them several times. When you can make those without panic, add something new. People often jump from one recipe to another, but repeating the same dish teaches you more than trying something difficult once."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do students usually continue cooking after the course?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Many do, especially if they have come with a friend or family member. I send everyone home with a short list of ingredients and a plan for the next week. I don't expect them to make perfect meals immediately. What matters is that they cook again while the lesson is still fresh in their minds. Some people send me photos later, which is always lovely. A few have even returned with their teenagers, because they want cooking to become a normal activity at home rather than something stressful. I also remind students that mistakes are useful, because burned onions or flat bread tell you something. A relaxed kitchen is a better place to learn than a perfect one."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Amelia first start teaching cooking?",
+                          "options":  {
+                                          "A":  "A friend asked her to help some learners.",
+                                          "B":  "She wanted to work like her mother.",
+                                          "C":  "She needed to earn money while studying."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Amelia says she started teaching after a friend asked her to show students how to make simple meals."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What does Amelia say beginners often do wrong?",
+                          "options":  {
+                                          "A":  "They use knives carelessly.",
+                                          "B":  "They do not read the recipe carefully first.",
+                                          "C":  "They cook everything for too long."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "B",
+                          "explanation":  "She says the real problem is that people follow a recipe without reading it through first."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What type of learners does Amelia most enjoy teaching?",
+                          "options":  {
+                                          "A":  "families who enjoy cooking together",
+                                          "B":  "children who are confident in the kitchen",
+                                          "C":  "adults who believe they cannot cook well"
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "She enjoys teaching adults who think they are hopeless because they are pleased when they succeed."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "What surprised Amelia about running classes?",
+                          "options":  {
+                                          "A":  "how much preparation is needed",
+                                          "B":  "how nervous the students are",
+                                          "C":  "how expensive ingredients have become"
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "She says she spends far more time preparing ingredients and equipment than she expected."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "How have Amelia's videos helped her students?",
+                          "options":  {
+                                          "A":  "They have made the school better known.",
+                                          "B":  "They allow students to practise before class.",
+                                          "C":  "They show students difficult restaurant dishes."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "B",
+                          "explanation":  "She says the videos help people practise at home before coming to class."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What does Amelia advise people to do?",
+                          "options":  {
+                                          "A":  "buy a few useful kitchen tools",
+                                          "B":  "try new recipes as often as possible",
+                                          "C":  "repeat a small number of favourite meals"
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Amelia advises choosing three or four meals and practising them several times."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2021.mp3"
 }

@@ -1,96 +1,144 @@
 {
+    "test_id":  25,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a teenager volunteering at an animal shelter",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a teenager volunteering at an animal shelter. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a woman called Grace Owen, who writes adventure stories for children.",
+    "voices":  {
+                   "interviewer":  "en-GB-OliverNeural",
+                   "guest":  "en-GB-OliviaNeural"
+               },
+    "audio_script":  "Interviewer: Today we're joined by Grace Owen, who writes adventure stories for children. Grace, were you a big reader when you were young? || Guest: Yes, but I didn't plan to be a writer. I wanted to be a vet for years. [20]I began writing because my younger brother kept asking me to invent bedtime stories with animals in them[/20]. I wrote one down, then another, and eventually I had enough ideas for a whole book. My brother still claims he invented my career. || Interviewer: What do you find difficult about writing for children? || Guest: People think the language is easy because the books are shorter. Actually, [21]the difficult part is explaining exciting events clearly without making the sentences too long[/21]. Children notice immediately if a chapter becomes slow. You need to keep the adventure moving, but you cannot leave them confused about what is happening. || Interviewer: Where do your ideas usually come from? || Guest: I keep a notebook, but the best ideas don't arrive at my desk. [22]Most of them come when I'm travelling by bus or train and I start wondering about the people around me[/22]. A strange suitcase or a whispered conversation can become the beginning of a mystery. I just have to remember to write it down. || Interviewer: How do you feel when children send you letters? || Guest: It's wonderful, even when they point out mistakes. [23]I especially like letters that include drawings of my characters, because they show how children imagined the story[/23]. Sometimes their pictures are completely different from what I had in mind, but that is part of the fun. It means the book belongs to them too. || Interviewer: You visit schools quite often. Do you enjoy that? || Guest: I do now. At first I was nervous because I thought children might ask personal questions or get bored. [24]School visits have become useful because pupils' questions often give me ideas for future stories[/24]. They ask things adults would never ask, such as what a dragon eats for breakfast. || Interviewer: What would you say to a child who wants to write stories? || Guest: Don't wait until you have a perfect idea. [25]Start with a character who wants something, then decide what problem gets in the way[/25]. It could be a missing dog, a secret door or a lost phone. Once there is a problem, the story begins to move. || Interviewer: Are you working on another book at the moment? || Guest: I am, although I don't like talking about a story too early because it can change a lot. At the moment it begins in an old railway station, but last month it began in a zoo, so anything could happen. I write a little every morning before answering emails. That routine helps because a book feels less frightening when you only have to solve one small scene at a time. Children sometimes imagine writers wait for inspiration, but mostly we sit down and work. I also read a lot of children's books by other writers. That is not copying; it helps me understand what young readers enjoy now and reminds me to keep my own stories lively.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today we're joined by Grace Owen, who writes adventure stories for children. Grace, were you a big reader when you were young?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, but I didn't plan to be a writer. I wanted to be a vet for years. I began writing because my younger brother kept asking me to invent bedtime stories with animals in them. I wrote one down, then another, and eventually I had enough ideas for a whole book. My brother still claims he invented my career."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you find difficult about writing for children?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "People think the language is easy because the books are shorter. Actually, the difficult part is explaining exciting events clearly without making the sentences too long. Children notice immediately if a chapter becomes slow. You need to keep the adventure moving, but you cannot leave them confused about what is happening."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Where do your ideas usually come from?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I keep a notebook, but the best ideas don't arrive at my desk. Most of them come when I'm travelling by bus or train and I start wondering about the people around me. A strange suitcase or a whispered conversation can become the beginning of a mystery. I just have to remember to write it down."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "How do you feel when children send you letters?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "It's wonderful, even when they point out mistakes. I especially like letters that include drawings of my characters, because they show how children imagined the story. Sometimes their pictures are completely different from what I had in mind, but that is part of the fun. It means the book belongs to them too."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "You visit schools quite often. Do you enjoy that?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I do now. At first I was nervous because I thought children might ask personal questions or get bored. School visits have become useful because pupils' questions often give me ideas for future stories. They ask things adults would never ask, such as what a dragon eats for breakfast."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What would you say to a child who wants to write stories?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Don't wait until you have a perfect idea. Start with a character who wants something, then decide what problem gets in the way. It could be a missing dog, a secret door or a lost phone. Once there is a problem, the story begins to move."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Are you working on another book at the moment?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I am, although I don't like talking about a story too early because it can change a lot. At the moment it begins in an old railway station, but last month it began in a zoo, so anything could happen. I write a little every morning before answering emails. That routine helps because a book feels less frightening when you only have to solve one small scene at a time. Children sometimes imagine writers wait for inspiration, but mostly we sit down and work. I also read a lot of children's books by other writers. That is not copying; it helps me understand what young readers enjoy now and reminds me to keep my own stories lively."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Grace first start writing stories?",
+                          "options":  {
+                                          "A":  "She wanted to write about her pets.",
+                                          "B":  "Her brother asked her to make up stories.",
+                                          "C":  "Her teacher encouraged her to enter a competition."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Grace says she began writing because her younger brother asked for bedtime stories."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What does Grace find difficult about writing for children?",
+                          "options":  {
+                                          "A":  "using clear language while keeping the story exciting",
+                                          "B":  "choosing topics children will understand",
+                                          "C":  "making each book long enough"
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "A",
+                          "explanation":  "She says it is difficult to explain exciting events clearly without making sentences too long."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "Where does Grace get many of her story ideas?",
+                          "options":  {
+                                          "A":  "from children's letters",
+                                          "B":  "from books she reads on journeys",
+                                          "C":  "from people she sees while travelling"
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Grace says many ideas come when she is on buses or trains looking at people around her."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "What does Grace enjoy about children's letters?",
+                          "options":  {
+                                          "A":  "They often suggest new endings.",
+                                          "B":  "They sometimes include drawings.",
+                                          "C":  "They correct mistakes in her books."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "She especially likes letters with drawings of her characters."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "Why are school visits useful for Grace?",
+                          "options":  {
+                                          "A":  "Children's questions give her ideas.",
+                                          "B":  "They help her sell more books.",
+                                          "C":  "They make her less nervous about speaking."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "A",
+                          "explanation":  "Grace says pupils' questions often give her ideas for future stories."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What advice does Grace give young writers?",
+                          "options":  {
+                                          "A":  "plan the ending before starting",
+                                          "B":  "write about something from real life",
+                                          "C":  "begin with a character and a problem"
+                                      },
+                          "answer":  "C",
+                          "explanation":  "She advises starting with a character who wants something and then adding a problem."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2025.mp3"
 }

@@ -1,96 +1,169 @@
 {
+    "id":  3,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a teenager who started a cooking blog",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a teenager who started a cooking blog. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a woman called Leah Grant, who runs a food truck.",
+    "voices":  {
+                   "interviewer":  "en-GB-ThomasNeural",
+                   "guest":  "en-GB-MaisieNeural"
+               },
+    "audio_script":  "Interviewer: Leah Grant is with us today. She runs a food truck that has become very popular in her city. Leah, did you always want to cook for a living? || Guest: I loved cooking, but I planned to work in hotel management. After college I helped in my aunt's café for a few months. She was ill, so I cooked lunches as well as serving customers. [20]When people started coming back especially for my soup, I realised cooking could be my future[/20]. || Interviewer: Why did you choose a food truck rather than a restaurant? || Guest: Money was part of it, of course. Renting a restaurant was too expensive. But that wasn't the main attraction. [21]I liked the idea of moving to different places and meeting different customers every day[/21]. It keeps things interesting. || Interviewer: What was the first year like? || Guest: Very busy. I expected early mornings because food has to be prepared, but I didn't realise how much paperwork there would be. [22]Getting permission to park in the right streets was much harder than learning new recipes[/22]. || Interviewer: Your menu changes every week. How do you decide what to cook? || Guest: I listen to customers, but I don't follow every suggestion. Some people always ask for burgers, which is fine, but lots of places sell those. [23]I usually choose dishes using vegetables that are fresh at the market that morning[/23]. || Interviewer: What do you enjoy most about your work? || Guest: I enjoy the cooking, obviously, and I like chatting to customers. But [24]the best moment is when someone tastes something unfamiliar and then smiles because they love it[/24]. That's wonderful. || Interviewer: Do you have plans to expand the business? || Guest: People ask if I'll open several trucks, but I don't want to manage staff all day. [25]I'd prefer to write a small cookbook with the simple lunches people can make at home[/25]. I'm already testing recipes for it. || Interviewer: Before we finish, Leah, food trucks are often busy at festivals. Do you enjoy those events? || Guest: I do, but they're exhausting. At a normal lunch stop I can chat to people and explain the food, while at a festival the queue never seems to end. The atmosphere is brilliant, though, especially when music is playing and everyone is relaxed. I take a smaller menu to festivals because people don't want to wait while I prepare something complicated. They want good food quickly, and they want to carry it easily. || Interviewer: Have you made any mistakes that taught you something useful? || Guest: Plenty. Once I cooked far too much of a spicy bean dish because my friends loved it during testing. Customers liked the taste, but it was a hot day and most wanted something lighter. I learned not to plan a menu only around what I enjoy. Weather, location and the time of day all matter. || Interviewer: Do you still cook at home? || Guest: Yes, but very simply. After a day cooking for customers, I don't want to make anything fancy. My favourite meal at home is toast with eggs and tomatoes. People are disappointed when I say that, but it's true. || Interviewer: Finally, what do you do when you need new ideas? || Guest: I try to step away from the main work for a short time. Going for a walk, visiting another place or talking to someone outside the job usually helps. If I sit at a desk worrying, nothing improves. I also keep a small notebook, because useful ideas often arrive at inconvenient moments, like on a bus or while making dinner.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Leah Grant is with us today. She runs a food truck that has become very popular in her city. Leah, did you always want to cook for a living?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I loved cooking, but I planned to work in hotel management. After college I helped in my aunt's café for a few months. She was ill, so I cooked lunches as well as serving customers. When people started coming back especially for my soup, I realised cooking could be my future."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Why did you choose a food truck rather than a restaurant?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Money was part of it, of course. Renting a restaurant was too expensive. But that wasn't the main attraction. I liked the idea of moving to different places and meeting different customers every day. It keeps things interesting."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was the first year like?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Very busy. I expected early mornings because food has to be prepared, but I didn't realise how much paperwork there would be. Getting permission to park in the right streets was much harder than learning new recipes."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Your menu changes every week. How do you decide what to cook?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I listen to customers, but I don't follow every suggestion. Some people always ask for burgers, which is fine, but lots of places sell those. I usually choose dishes using vegetables that are fresh at the market that morning."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you enjoy most about your work?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I enjoy the cooking, obviously, and I like chatting to customers. But the best moment is when someone tastes something unfamiliar and then smiles because they love it. That's wonderful."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you have plans to expand the business?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "People ask if I'll open several trucks, but I don't want to manage staff all day. I'd prefer to write a small cookbook with the simple lunches people can make at home. I'm already testing recipes for it."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Before we finish, Leah, food trucks are often busy at festivals. Do you enjoy those events?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I do, but they're exhausting. At a normal lunch stop I can chat to people and explain the food, while at a festival the queue never seems to end. The atmosphere is brilliant, though, especially when music is playing and everyone is relaxed. I take a smaller menu to festivals because people don't want to wait while I prepare something complicated. They want good food quickly, and they want to carry it easily."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Have you made any mistakes that taught you something useful?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Plenty. Once I cooked far too much of a spicy bean dish because my friends loved it during testing. Customers liked the taste, but it was a hot day and most wanted something lighter. I learned not to plan a menu only around what I enjoy. Weather, location and the time of day all matter."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you still cook at home?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, but very simply. After a day cooking for customers, I don't want to make anything fancy. My favourite meal at home is toast with eggs and tomatoes. People are disappointed when I say that, but it's true."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Finally, what do you do when you need new ideas?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I try to step away from the main work for a short time. Going for a walk, visiting another place or talking to someone outside the job usually helps. If I sit at a desk worrying, nothing improves. I also keep a small notebook, because useful ideas often arrive at inconvenient moments, like on a bus or while making dinner."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "What made Leah think about cooking as a career?",
+                          "options":  {
+                                          "A":  "studying hotel management",
+                                          "B":  "working with her aunt in a café",
+                                          "C":  "customers returning for her food"
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Leah says people came back especially for her soup, which made her realise cooking could be her future."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "Why did Leah choose to run a food truck?",
+                          "options":  {
+                                          "A":  "She liked moving around the city.",
+                                          "B":  "She could not find a suitable restaurant.",
+                                          "C":  "She wanted to save money on staff."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "A",
+                          "explanation":  "She says she liked the idea of moving to different places and meeting different customers."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What did Leah find especially difficult in the first year?",
+                          "options":  {
+                                          "A":  "starting work early",
+                                          "B":  "creating enough recipes",
+                                          "C":  "getting parking permission"
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Leah says getting permission to park in the right streets was harder than learning recipes."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "How does Leah usually choose dishes for her menu?",
+                          "options":  {
+                                          "A":  "She uses fresh market vegetables.",
+                                          "B":  "She follows customer suggestions.",
+                                          "C":  "She offers popular fast food."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "She says she usually chooses dishes using vegetables that are fresh at the market that morning."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What does Leah enjoy most about her work?",
+                          "options":  {
+                                          "A":  "talking to regular customers",
+                                          "B":  "seeing people enjoy new food",
+                                          "C":  "preparing food each morning"
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "B",
+                          "explanation":  "Leah says the best moment is when someone tastes something unfamiliar and smiles because they love it."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What does Leah hope to do in the future?",
+                          "options":  {
+                                          "A":  "open more food trucks",
+                                          "B":  "employ more cooks",
+                                          "C":  "publish a recipe book"
+                                      },
+                          "answer":  "C",
+                          "explanation":  "She says she would prefer to write a small cookbook with simple lunches."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%203.mp3",
+    "word_count":  575
 }

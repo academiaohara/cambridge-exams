@@ -1,96 +1,168 @@
 {
+    "id":  11,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a student travelling abroad",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a student travelling abroad. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a woman called Hannah Price, who runs a travelling food truck.",
+    "voices":  {
+                   "interviewer":  "en-GB-RyanNeural",
+                   "guest":  "en-GB-SoniaNeural"
+               },
+    "audio_script":  "Interviewer: Today I'm joined by Hannah Price, who runs a travelling food truck at markets and festivals. Hannah, you trained as a chef in a hotel, so why did you decide to work from a truck instead? || Guest: I loved cooking in a hotel kitchen, but I hardly met the people eating my food. With the truck, [20]I can hand a meal to a customer and hear immediately what they think of it[/20]. That contact was the main reason. || Interviewer: Was it easy to choose the kind of food you wanted to sell? || Guest: Not at all. I first thought about cakes, because I enjoy baking, and my brother suggested burgers. In the end, [21]I chose soups and hot sandwiches because they are simple to prepare in a small space[/21], and they suit cold outdoor markets. || Interviewer: What was the biggest problem when you started? || Guest: I worried about finding good places to park, but that was solved quite quickly. The surprise was the weather. [22]Rain can mean very few customers come, even if I've already bought all the ingredients[/22]. That's still hard to plan for. || Interviewer: Do you change your menu often? || Guest: Yes, but not every week. People like seeing something familiar. [23]I keep the most popular sandwich all year, then add one or two seasonal soups when vegetables are cheaper[/23]. It keeps things interesting without confusing regular customers. || Interviewer: What do you enjoy about festivals? || Guest: Festivals are tiring because the days are long, but they are fun. [24]I especially like the music and the friendly atmosphere while I'm working[/24]. It makes washing pans at midnight feel less boring. || Interviewer: What advice would you give someone who wants to start a food truck? || Guest: Don't spend all your money on a beautiful vehicle before testing your idea. [25]Try selling at a few small local events first, so you learn what people actually buy[/25]. You can improve the truck later. || Interviewviewer: Is there anything people misunderstand about your work? || Guest: They think I just cook for a few hours, but there is a lot before and after. I order food, drive to the site, clean everything, check gas bottles and answer emails from organisers. I also have to be cheerful even when I'm cold or tired. Still, I like being my own boss. || Interviewer: And where would you like the business to go next? || Guest: I don't want a restaurant, because that would mean staying in one place. I'd rather buy a second truck one day and train someone to run it. Then I could visit more events and maybe take proper holidays sometimes. || Interviewer: Do you ever change where you work because of customer habits? || Guest: Yes, definitely. Some markets look busy but people only buy coffee, while smaller school events can be better because families want proper food. I keep notes after every event, including the weather and what sold well. It sounds boring, but those notes help me decide where to return. || Interviewer: Has the job changed the way you cook at home? || Guest: It has made me simpler. At work I need food that is quick, warm and reliable, so at home I enjoy making slow meals that do not have to be served to a queue of hungry people.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today I'm joined by Hannah Price, who runs a travelling food truck at markets and festivals. Hannah, you trained as a chef in a hotel, so why did you decide to work from a truck instead?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I loved cooking in a hotel kitchen, but I hardly met the people eating my food. With the truck, I can hand a meal to a customer and hear immediately what they think of it. That contact was the main reason."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Was it easy to choose the kind of food you wanted to sell?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Not at all. I first thought about cakes, because I enjoy baking, and my brother suggested burgers. In the end, I chose soups and hot sandwiches because they are simple to prepare in a small space, and they suit cold outdoor markets."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was the biggest problem when you started?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I worried about finding good places to park, but that was solved quite quickly. The surprise was the weather. Rain can mean very few customers come, even if I've already bought all the ingredients. That's still hard to plan for."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you change your menu often?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, but not every week. People like seeing something familiar. I keep the most popular sandwich all year, then add one or two seasonal soups when vegetables are cheaper. It keeps things interesting without confusing regular customers."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you enjoy about festivals?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Festivals are tiring because the days are long, but they are fun. I especially like the music and the friendly atmosphere while I'm working. It makes washing pans at midnight feel less boring."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What advice would you give someone who wants to start a food truck?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Don't spend all your money on a beautiful vehicle before testing your idea. Try selling at a few small local events first, so you learn what people actually buy. You can improve the truck later."
+                     },
+                     {
+                         "speaker":  "interviewviewer",
+                         "text":  "Is there anything people misunderstand about your work?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "They think I just cook for a few hours, but there is a lot before and after. I order food, drive to the site, clean everything, check gas bottles and answer emails from organisers. I also have to be cheerful even when I'm cold or tired. Still, I like being my own boss."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "And where would you like the business to go next?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I don't want a restaurant, because that would mean staying in one place. I'd rather buy a second truck one day and train someone to run it. Then I could visit more events and maybe take proper holidays sometimes."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you ever change where you work because of customer habits?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, definitely. Some markets look busy but people only buy coffee, while smaller school events can be better because families want proper food. I keep notes after every event, including the weather and what sold well. It sounds boring, but those notes help me decide where to return."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Has the job changed the way you cook at home?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "It has made me simpler. At work I need food that is quick, warm and reliable, so at home I enjoy making slow meals that do not have to be served to a queue of hungry people."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Hannah decide to work from a food truck?",
+                          "options":  {
+                                          "A":  "She wanted more contact with customers.",
+                                          "B":  "She could not find work in a hotel.",
+                                          "C":  "She wanted to travel abroad."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Hannah says she wanted to hand food to customers and hear what they thought immediately."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "Why did Hannah choose soups and hot sandwiches?",
+                          "options":  {
+                                          "A":  "They were suggested by her brother.",
+                                          "B":  "They were practical to make in the truck.",
+                                          "C":  "They were popular in the hotel where she trained."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "B",
+                          "explanation":  "She says she chose them because they are simple to prepare in a small space."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What problem did Hannah not expect when she started?",
+                          "options":  {
+                                          "A":  "She could not find good places to park.",
+                                          "B":  "Some ingredients were too expensive.",
+                                          "C":  "Bad weather reduced the number of customers."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Hannah says rain can mean very few customers come, even after she has bought ingredients."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "How does Hannah organise her menu?",
+                          "options":  {
+                                          "A":  "She keeps some dishes the same and changes others.",
+                                          "B":  "She offers a completely new menu each week.",
+                                          "C":  "She asks customers to choose the menu online."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "She says she keeps the most popular sandwich all year and adds seasonal soups."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What does Hannah like about working at festivals?",
+                          "options":  {
+                                          "A":  "The chance to finish work early.",
+                                          "B":  "The music and atmosphere around her.",
+                                          "C":  "The variety of food she can eat there."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "B",
+                          "explanation":  "She says she especially likes the music and friendly atmosphere while she is working."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What advice does Hannah give to people starting a food truck?",
+                          "options":  {
+                                          "A":  "Buy the best vehicle they can afford.",
+                                          "B":  "Choose a menu before visiting events.",
+                                          "C":  "Test their idea at small events first."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "She advises people to sell at a few small local events first to learn what people buy."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2011.mp3"
 }

@@ -1,96 +1,149 @@
 {
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a teenager who started a cooking blog",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a teenager who started a cooking blog. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "id":  34,
+    "context":  "You will hear an interview with a woman called Nina Shaw, who works as a guide at a science museum.",
+    "voices":  {
+                   "interviewer":  "en-GB-OliverNeural",
+                   "guest":  "en-GB-AbbiNeural"
+               },
+    "audio_script":  "Interviewer: Today we're talking to Nina Shaw, who works as a guide at a science museum. Nina, you guide visitors around a science museum. Did you study science at university? || Guest: No, I studied history, so my route into the job was not direct. I began as a weekend assistant, helping visitors find the café and the toilets. Then one day a guide was ill and the manager asked me to introduce a small exhibition about old radios. [20]I enjoyed turning difficult information into simple stories for visitors[/20], and that made me apply for guide training. || Interviewer: What was difficult when you were starting out? || Guest: The most difficult part was not remembering facts. We have notes, and you learn them with practice. [21]The real challenge was answering questions from children, because they ask things you never expect[/21]. A child may ask why a rocket is white or whether a robot gets bored. Those questions are wonderful, but they force you to think quickly and explain clearly. || Interviewer: What do you enjoy most about it now? || Guest: My favourite area changes, but I often choose the room about space travel. It has large objects, and people stop talking when they walk in. [22]I especially like the old astronaut suit because visitors can imagine a real person inside it[/22]. It is easier to understand history when you see something that was actually worn, not just a picture on a screen. || Interviewer: Have you changed the way you work since then? || Guest: I have become much better at noticing visitors' faces. In my first months, I talked for too long because I was afraid of missing information. [23]Now I stop when people look tired and let them explore for a few minutes[/23]. After that, they usually ask better questions. A good guide is not just someone who speaks; it is someone who watches and listens. || Interviewer: Is there anything that people misunderstand about this kind of work? || Guest: People sometimes think museum work is quiet, but it can be very busy. On school days, five groups may arrive at once. [24]The busiest time is usually just before lunch, when classes are trying to finish their tours[/24]. Everyone wants to see the popular rooms, and teachers are checking the time. We plan routes carefully so groups do not all meet in the same doorway. || Interviewer: And what are your plans for the future? || Guest: We are preparing a new exhibition about weather, and I am very excited about it. [25]I will help design activities where visitors can make clouds and test wind speed[/25]. I am not building the machines, but I am helping choose instructions that families can follow. If the activities are clear, children will learn without feeling they are in a lesson. || Interviewer: Finally, what advice would you give to someone who wants to try something similar? || Guest: I would say, start with a small step and do not wait until everything is perfect. When people begin something like science museum guiding, they often worry too much about equipment, confidence or making mistakes. It is better to ask questions, watch people who already know the work, and practise a little at a time. You learn more from real situations than from planning for months. Also, be patient with yourself, because the first few attempts are usually slow, and that is completely normal. || Interviewer: Thank you, that was really interesting.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today we're talking to Nina Shaw, who works as a guide at a science museum. Nina, you guide visitors around a science museum. Did you study science at university?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "No, I studied history, so my route into the job was not direct. I began as a weekend assistant, helping visitors find the café and the toilets. Then one day a guide was ill and the manager asked me to introduce a small exhibition about old radios. I enjoyed turning difficult information into simple stories for visitors, and that made me apply for guide training."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was difficult when you were starting out?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "The most difficult part was not remembering facts. We have notes, and you learn them with practice. The real challenge was answering questions from children, because they ask things you never expect. A child may ask why a rocket is white or whether a robot gets bored. Those questions are wonderful, but they force you to think quickly and explain clearly."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you enjoy most about it now?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "My favourite area changes, but I often choose the room about space travel. It has large objects, and people stop talking when they walk in. I especially like the old astronaut suit because visitors can imagine a real person inside it. It is easier to understand history when you see something that was actually worn, not just a picture on a screen."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Have you changed the way you work since then?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I have become much better at noticing visitors' faces. In my first months, I talked for too long because I was afraid of missing information. Now I stop when people look tired and let them explore for a few minutes. After that, they usually ask better questions. A good guide is not just someone who speaks; it is someone who watches and listens."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Is there anything that people misunderstand about this kind of work?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "People sometimes think museum work is quiet, but it can be very busy. On school days, five groups may arrive at once. The busiest time is usually just before lunch, when classes are trying to finish their tours. Everyone wants to see the popular rooms, and teachers are checking the time. We plan routes carefully so groups do not all meet in the same doorway."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "And what are your plans for the future?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "We are preparing a new exhibition about weather, and I am very excited about it. I will help design activities where visitors can make clouds and test wind speed. I am not building the machines, but I am helping choose instructions that families can follow. If the activities are clear, children will learn without feeling they are in a lesson."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Finally, what advice would you give to someone who wants to try something similar?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I would say, start with a small step and do not wait until everything is perfect. When people begin something like science museum guiding, they often worry too much about equipment, confidence or making mistakes. It is better to ask questions, watch people who already know the work, and practise a little at a time. You learn more from real situations than from planning for months. Also, be patient with yourself, because the first few attempts are usually slow, and that is completely normal."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Thank you, that was really interesting."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Nina decide to train as a museum guide?",
+                          "options":  {
+                                          "A":  "She liked explaining information in an interesting way.",
+                                          "B":  "She wanted to use her science degree.",
+                                          "C":  "She needed a full-time job at weekends."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Nina says she enjoyed turning difficult information into simple stories for visitors."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What did Nina find challenging at first?",
+                          "options":  {
+                                          "A":  "remembering the facts for each room",
+                                          "B":  "replying to children's unexpected questions",
+                                          "C":  "speaking loudly enough for large groups"
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "B",
+                          "explanation":  "Nina says the real challenge was answering questions from children because they ask unexpected things."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What does Nina like about the astronaut suit?",
+                          "options":  {
+                                          "A":  "It is shown on a large screen.",
+                                          "B":  "It is the newest object in the museum.",
+                                          "C":  "It helps visitors imagine the person who wore it."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Nina says visitors can imagine a real person inside the astronaut suit."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "How has Nina changed as a guide?",
+                          "options":  {
+                                          "A":  "She gives visitors short breaks to explore.",
+                                          "B":  "She includes more dates in her talks.",
+                                          "C":  "She asks teachers to help explain objects."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Nina now stops when people look tired and lets them explore for a few minutes."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "When is the museum usually busiest?",
+                          "options":  {
+                                          "A":  "early in the morning",
+                                          "B":  "just before lunch",
+                                          "C":  "near closing time"
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "B",
+                          "explanation":  "Nina says the busiest time is usually just before lunch."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What will Nina do for the new weather exhibition?",
+                          "options":  {
+                                          "A":  "write a book about weather",
+                                          "B":  "repair some old machines",
+                                          "C":  "help create practical visitor activities"
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Nina will help design activities where visitors can make clouds and test wind speed."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2034.mp3",
+    "word_count":  553
 }

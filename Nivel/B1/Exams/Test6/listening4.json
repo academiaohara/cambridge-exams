@@ -1,96 +1,169 @@
 {
+    "id":  6,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a young athlete preparing for competitions",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a young athlete preparing for competitions. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a man called Owen Lee, who is a landscape photographer.",
+    "voices":  {
+                   "interviewer":  "en-GB-ThomasNeural",
+                   "guest":  "en-GB-LibbyNeural"
+               },
+    "audio_script":  "Interviewer: Owen Lee is a landscape photographer whose pictures have appeared in several magazines. Owen, were you always interested in photography? || Guest: I liked taking holiday photos, but nothing serious. I studied geography, and during a field trip our teacher asked us to record changes in the coast. [20]I found that taking pictures helped me notice the shape of the land more carefully[/20], and that was the beginning. || Interviewer: What was your first professional job like? || Guest: It was for a walking magazine. I had to photograph a mountain path in spring. I was nervous about the camera, but that was fine. [21]The hardest thing was waiting for the right light while feeling cold and hungry[/21]. Good pictures take patience. || Interviewer: Do you prefer working alone? || Guest: Sometimes. Being alone helps me concentrate. But I also run workshops now. [22]I enjoy showing beginners that they can take better photos just by moving a few steps or waiting a minute[/22]. They don't always need expensive cameras. || Interviewer: Has technology changed your work? || Guest: Definitely. Drones can produce amazing views, and phones are much better now. Still, [23]I spend less time worrying about equipment than about choosing the best place to stand[/23]. That's what makes a picture strong. || Interviewer: What do you dislike about the job? || Guest: People think bad weather is the problem, but it can make dramatic pictures. [24]What I dislike is when visitors damage places by climbing fences or walking on protected plants to copy a photo[/24]. That really annoys me. || Interviewer: What's your next project? || Guest: I've photographed mountains for years, so now I want a change. [25]I'm planning a book about ordinary green spaces in towns, like small parks and river paths[/25]. They can be beautiful too. || Interviewer: Before we finish, Owen, many people take photos on their phones now. Does that make your work harder? || Guest: I don't think so. It means more people are interested in images, and that is positive. A phone can take a very good picture if the person using it looks carefully. Professional work is different because clients need a particular result in all kinds of conditions, but the basic skill is the same: noticing what is in front of you. || Interviewer: What do you do when the weather is terrible for several days? || Guest: I change my plan. If the sky is flat and grey, I look for details such as walls, leaves, water or shapes in paths. Some of my favourite pictures were taken when I had stopped waiting for a perfect sunset. Bad weather can force you to be more creative. || Interviewer: Do you print your photographs? || Guest: Yes, and I think everyone should print a few. Pictures on a screen disappear too quickly. When I print a photo, I see mistakes I missed before, but I also enjoy it more. Holding the final image makes the work feel real, not just like another file on a computer. || Interviewer: Finally, what do you do when you need new ideas? || Guest: I try to step away from the main work for a short time. Going for a walk, visiting another place or talking to someone outside the job usually helps. If I sit at a desk worrying, nothing improves. I also keep a small notebook, because useful ideas often arrive at inconvenient moments, like on a bus or while making dinner.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Owen Lee is a landscape photographer whose pictures have appeared in several magazines. Owen, were you always interested in photography?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I liked taking holiday photos, but nothing serious. I studied geography, and during a field trip our teacher asked us to record changes in the coast. I found that taking pictures helped me notice the shape of the land more carefully, and that was the beginning."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was your first professional job like?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "It was for a walking magazine. I had to photograph a mountain path in spring. I was nervous about the camera, but that was fine. The hardest thing was waiting for the right light while feeling cold and hungry. Good pictures take patience."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you prefer working alone?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Sometimes. Being alone helps me concentrate. But I also run workshops now. I enjoy showing beginners that they can take better photos just by moving a few steps or waiting a minute. They don't always need expensive cameras."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Has technology changed your work?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Definitely. Drones can produce amazing views, and phones are much better now. Still, I spend less time worrying about equipment than about choosing the best place to stand. That's what makes a picture strong."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you dislike about the job?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "People think bad weather is the problem, but it can make dramatic pictures. What I dislike is when visitors damage places by climbing fences or walking on protected plants to copy a photo. That really annoys me."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What's your next project?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I've photographed mountains for years, so now I want a change. I'm planning a book about ordinary green spaces in towns, like small parks and river paths. They can be beautiful too."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Before we finish, Owen, many people take photos on their phones now. Does that make your work harder?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I don't think so. It means more people are interested in images, and that is positive. A phone can take a very good picture if the person using it looks carefully. Professional work is different because clients need a particular result in all kinds of conditions, but the basic skill is the same: noticing what is in front of you."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you do when the weather is terrible for several days?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I change my plan. If the sky is flat and grey, I look for details such as walls, leaves, water or shapes in paths. Some of my favourite pictures were taken when I had stopped waiting for a perfect sunset. Bad weather can force you to be more creative."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you print your photographs?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, and I think everyone should print a few. Pictures on a screen disappear too quickly. When I print a photo, I see mistakes I missed before, but I also enjoy it more. Holding the final image makes the work feel real, not just like another file on a computer."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Finally, what do you do when you need new ideas?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I try to step away from the main work for a short time. Going for a walk, visiting another place or talking to someone outside the job usually helps. If I sit at a desk worrying, nothing improves. I also keep a small notebook, because useful ideas often arrive at inconvenient moments, like on a bus or while making dinner."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "How did Owen first become seriously interested in photography?",
+                          "options":  {
+                                          "A":  "by taking pictures on holiday",
+                                          "B":  "through work for a magazine",
+                                          "C":  "during a geography trip"
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Owen says a geography field trip made him notice land through taking photographs."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What was difficult about Owen's first professional job?",
+                          "options":  {
+                                          "A":  "waiting in uncomfortable conditions",
+                                          "B":  "using a professional camera",
+                                          "C":  "finding the correct mountain path"
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "A",
+                          "explanation":  "He says the hardest thing was waiting for the right light while cold and hungry."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What does Owen enjoy about teaching beginners?",
+                          "options":  {
+                                          "A":  "helping them choose expensive cameras",
+                                          "B":  "showing them simple ways to improve",
+                                          "C":  "encouraging them to work alone"
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Owen says he enjoys showing beginners that small changes can improve their photos."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "Owen thinks the most important thing in photography is",
+                          "options":  {
+                                          "A":  "using modern equipment.",
+                                          "B":  "finding the best position.",
+                                          "C":  "taking pictures from the air."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "He says he worries more about choosing the best place to stand than about equipment."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What annoys Owen when he is working?",
+                          "options":  {
+                                          "A":  "people harming natural places",
+                                          "B":  "rain making his job harder",
+                                          "C":  "visitors asking to copy his photos"
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "A",
+                          "explanation":  "Owen dislikes visitors damaging places by climbing fences or walking on protected plants."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What is Owen planning to photograph next?",
+                          "options":  {
+                                          "A":  "famous mountain views",
+                                          "B":  "coastal paths in spring",
+                                          "C":  "green places in towns"
+                                      },
+                          "answer":  "C",
+                          "explanation":  "He says he is planning a book about ordinary green spaces in towns."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%206.mp3",
+    "word_count":  542
 }

@@ -1,96 +1,164 @@
 {
+    "id":  47,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a young musician performing locally",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a young musician performing locally. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a woman called Grace Miller, who teaches paddleboarding.",
+    "voices":  {
+                   "interviewer":  "en-GB-NoahNeural",
+                   "guest":  "en-GB-LibbyNeural"
+               },
+    "audio_script":  "Interviewer: Today I'm talking to Grace Miller, who teaches paddleboarding on a lake. Grace, how did you first try the sport? || Guest: I was on holiday with friends. They wanted to try it, and I planned to sit on the beach with a book. [20]In the end I joined them because the instructor said the lake was calm and beginners usually managed well[/20]. I fell in twice, but I laughed so much that I wanted to do it again the next day. || Interviewer: What do people often misunderstand about paddleboarding? || Guest: They think it is all about strong arms, but it isn't. Your legs and balance are more important. [21]I tell beginners to look at the horizon, not down at their feet[/21], because looking down makes the board feel less steady. Once they understand that, they improve quickly. || Interviewer: Who comes to your lessons? || Guest: Families, tourists and local people who want exercise. I also teach some older adults. [22]They are often surprised that they can enjoy the sport without going fast or far[/22]. A quiet trip around the lake can be enough, and it is wonderful for confidence. || Interviewer: Do you prefer teaching or going out alone? || Guest: Both are good, but teaching gives me energy. When someone stands up for the first time, their face changes completely. [23]My favourite moment is when nervous beginners stop worrying and start looking at the scenery[/23]. Then I know they are really enjoying themselves. || Interviewer: What safety advice do you always give? || Guest: Wear the right jacket and check the weather before you go. The lake can look peaceful, but wind changes everything. [24]If the wind is blowing away from the shore, I tell people not to go out[/24], because getting back can be much harder than expected. || Interviewer: What are you planning for this summer? || Guest: We are adding some early morning sessions for experienced paddlers. But the main new idea is for beginners. [25]We're starting short evening lessons for people who are nervous about trying the sport in front of a big group[/25]. Smaller classes should help them feel comfortable. || Interviewer: Is paddleboarding expensive to start? || Guest: It can be if you buy everything immediately, but I always suggest taking lessons first and renting equipment. That way people can discover whether they really like it. They also learn what kind of board suits them before spending money. || Interviewer: What do you enjoy about being on the lake early in the morning? || Guest: It is quiet, and the water often looks like glass. You can hear birds and small sounds from the shore. Even when I am working, those mornings feel peaceful. I think that is why many people keep coming back. It is exercise, but it is also a chance to slow down. || Interviewer: What should people bring to a first lesson? || Guest: Clothes that can get wet, a towel and a positive attitude. They should not worry about looking silly, because everyone is learning. I remind beginners that falling in is not a failure. It is just part of understanding the board and the water. || Interviewer: That sounds like a helpful way to start.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today I'm talking to Grace Miller, who teaches paddleboarding on a lake. Grace, how did you first try the sport?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I was on holiday with friends. They wanted to try it, and I planned to sit on the beach with a book. In the end I joined them because the instructor said the lake was calm and beginners usually managed well. I fell in twice, but I laughed so much that I wanted to do it again the next day."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do people often misunderstand about paddleboarding?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "They think it is all about strong arms, but it isn't. Your legs and balance are more important. I tell beginners to look at the horizon, not down at their feet, because looking down makes the board feel less steady. Once they understand that, they improve quickly."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Who comes to your lessons?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Families, tourists and local people who want exercise. I also teach some older adults. They are often surprised that they can enjoy the sport without going fast or far. A quiet trip around the lake can be enough, and it is wonderful for confidence."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you prefer teaching or going out alone?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Both are good, but teaching gives me energy. When someone stands up for the first time, their face changes completely. My favourite moment is when nervous beginners stop worrying and start looking at the scenery. Then I know they are really enjoying themselves."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What safety advice do you always give?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Wear the right jacket and check the weather before you go. The lake can look peaceful, but wind changes everything. If the wind is blowing away from the shore, I tell people not to go out, because getting back can be much harder than expected."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What are you planning for this summer?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "We are adding some early morning sessions for experienced paddlers. But the main new idea is for beginners. We're starting short evening lessons for people who are nervous about trying the sport in front of a big group. Smaller classes should help them feel comfortable."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Is paddleboarding expensive to start?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "It can be if you buy everything immediately, but I always suggest taking lessons first and renting equipment. That way people can discover whether they really like it. They also learn what kind of board suits them before spending money."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you enjoy about being on the lake early in the morning?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "It is quiet, and the water often looks like glass. You can hear birds and small sounds from the shore. Even when I am working, those mornings feel peaceful. I think that is why many people keep coming back. It is exercise, but it is also a chance to slow down."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What should people bring to a first lesson?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Clothes that can get wet, a towel and a positive attitude. They should not worry about looking silly, because everyone is learning. I remind beginners that falling in is not a failure. It is just part of understanding the board and the water."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "That sounds like a helpful way to start."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Grace first try paddleboarding?",
+                          "options":  {
+                                          "A":  "Her friends forced her to take part.",
+                                          "B":  "The instructor made it sound suitable for beginners.",
+                                          "C":  "She wanted to become fitter during her holiday."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Grace says she joined because the instructor said the lake was calm and beginners usually managed well."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What advice does Grace give beginners?",
+                          "options":  {
+                                          "A":  "Look straight ahead rather than down.",
+                                          "B":  "Use their arms as much as possible.",
+                                          "C":  "Stand with their feet close together."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "A",
+                          "explanation":  "Grace tells beginners to look at the horizon, not down at their feet."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What surprises some older adults?",
+                          "options":  {
+                                          "A":  "The lake is colder than they expect.",
+                                          "B":  "They can enjoy the sport slowly.",
+                                          "C":  "The lessons are physically difficult."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Grace says older adults are surprised they can enjoy the sport without going fast or far."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "What does Grace enjoy most when teaching?",
+                          "options":  {
+                                          "A":  "Seeing beginners begin to relax and enjoy the view.",
+                                          "B":  "Helping students travel across the whole lake.",
+                                          "C":  "Teaching people who already have good balance."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Grace says her favourite moment is when nervous beginners stop worrying and start looking at the scenery."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "When does Grace advise people not to paddleboard?",
+                          "options":  {
+                                          "A":  "When the lake is too crowded.",
+                                          "B":  "When the water looks completely still.",
+                                          "C":  "When the wind is blowing away from land."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "C",
+                          "explanation":  "Grace says people should not go out if the wind is blowing away from the shore."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What new lessons will Grace offer this summer?",
+                          "options":  {
+                                          "A":  "Small evening classes for nervous beginners.",
+                                          "B":  "Long trips for experienced paddlers.",
+                                          "C":  "Family classes at weekends."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Grace says they are starting short evening lessons for nervous beginners in smaller groups."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2047.mp3"
 }

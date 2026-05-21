@@ -1,96 +1,149 @@
 {
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a young athlete preparing for competitions",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a young athlete preparing for competitions. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "id":  35,
+    "context":  "You will hear an interview with a man called Oliver Green, who drives a mobile library van.",
+    "voices":  {
+                   "interviewer":  "en-GB-ElliotNeural",
+                   "guest":  "en-GB-HollieNeural"
+               },
+    "audio_script":  "Interviewer: Today we're talking to Oliver Green, who drives a mobile library van. Oliver, you drive a library van to villages. What attracted you to this job? || Guest: I worked in a town library for several years, and I liked helping readers. But I wanted to meet people who found it hard to travel into town. [20]The idea of taking books to people instead of waiting for them to come to us really appealed to me[/20]. Some villages have no buses after lunch, so the van can make a big difference, especially for older readers and families with small children. || Interviewer: What was difficult when you were starting out? || Guest: Driving the van is enjoyable, but it is not the same as driving a car. It is wide, and some village roads are narrow. At first, [21]I was most nervous about parking the van safely in small spaces[/21]. People were kind and often came out to guide me. After a few weeks, I knew the difficult corners, and now I plan each stop carefully before I set off. || Interviewer: What do you enjoy most about it now? || Guest: Many people ask for crime stories, but the most popular books change with the season. In winter, people want long novels. In summer, families borrow travel guides and books for children. [22]I have to choose a mixture, because the van has much less shelf space than a normal library[/22]. If I take too many of one type, someone will be disappointed, so I check borrowing records every month. || Interviewer: Have you changed the way you work since then? || Guest: The best part is the conversations. A book is often just the start. [23]One regular visitor comes mainly because she enjoys talking about what she has read[/23]. She lives alone and tells me which characters annoyed her or made her laugh. Those chats remind me that libraries are not only about books; they are also about keeping people connected. || Interviewer: Is there anything that people misunderstand about this kind of work? || Guest: Technology has changed the job a little. We now use a small tablet to record loans, which is quicker than paper. However, [24]I still bring printed lists for people who do not like using screens[/24]. Some readers enjoy choosing online, but others prefer to hold a list and mark titles with a pencil. I try to offer both, so nobody feels left behind. || Interviewer: And what are your plans for the future? || Guest: Next year the library service wants to add evening stops in two larger villages. [25]I hope this will help teenagers who are at school when the van usually arrives[/25]. They often ask for revision books or graphic novels, but our afternoon times do not suit them. If the evening visits work well, we may add more stops later. || Interviewer: Finally, what advice would you give to someone who wants to try something similar? || Guest: I would say, start with a small step and do not wait until everything is perfect. When people begin something like mobile library van, they often worry too much about equipment, confidence or making mistakes. It is better to ask questions, watch people who already know the work, and practise a little at a time. You learn more from real situations than from planning for months. Also, be patient with yourself, because the first few attempts are usually slow, and that is completely normal. || Interviewer: Thank you, that was really interesting.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today we're talking to Oliver Green, who drives a mobile library van. Oliver, you drive a library van to villages. What attracted you to this job?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I worked in a town library for several years, and I liked helping readers. But I wanted to meet people who found it hard to travel into town. The idea of taking books to people instead of waiting for them to come to us really appealed to me. Some villages have no buses after lunch, so the van can make a big difference, especially for older readers and families with small children."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was difficult when you were starting out?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Driving the van is enjoyable, but it is not the same as driving a car. It is wide, and some village roads are narrow. At first, I was most nervous about parking the van safely in small spaces. People were kind and often came out to guide me. After a few weeks, I knew the difficult corners, and now I plan each stop carefully before I set off."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you enjoy most about it now?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Many people ask for crime stories, but the most popular books change with the season. In winter, people want long novels. In summer, families borrow travel guides and books for children. I have to choose a mixture, because the van has much less shelf space than a normal library. If I take too many of one type, someone will be disappointed, so I check borrowing records every month."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Have you changed the way you work since then?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "The best part is the conversations. A book is often just the start. One regular visitor comes mainly because she enjoys talking about what she has read. She lives alone and tells me which characters annoyed her or made her laugh. Those chats remind me that libraries are not only about books; they are also about keeping people connected."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Is there anything that people misunderstand about this kind of work?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Technology has changed the job a little. We now use a small tablet to record loans, which is quicker than paper. However, I still bring printed lists for people who do not like using screens. Some readers enjoy choosing online, but others prefer to hold a list and mark titles with a pencil. I try to offer both, so nobody feels left behind."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "And what are your plans for the future?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Next year the library service wants to add evening stops in two larger villages. I hope this will help teenagers who are at school when the van usually arrives. They often ask for revision books or graphic novels, but our afternoon times do not suit them. If the evening visits work well, we may add more stops later."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Finally, what advice would you give to someone who wants to try something similar?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I would say, start with a small step and do not wait until everything is perfect. When people begin something like mobile library van, they often worry too much about equipment, confidence or making mistakes. It is better to ask questions, watch people who already know the work, and practise a little at a time. You learn more from real situations than from planning for months. Also, be patient with yourself, because the first few attempts are usually slow, and that is completely normal."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Thank you, that was really interesting."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Oliver want to drive the library van?",
+                          "options":  {
+                                          "A":  "He disliked working inside the town library.",
+                                          "B":  "He liked bringing books directly to readers.",
+                                          "C":  "He wanted to travel to different cities."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Oliver says he liked the idea of taking books to people instead of waiting for them to come to the library."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What worried Oliver at first?",
+                          "options":  {
+                                          "A":  "finding the correct village roads",
+                                          "B":  "choosing books for families",
+                                          "C":  "parking the van in small places"
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "C",
+                          "explanation":  "Oliver says he was most nervous about parking the van safely in small spaces."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "Why does Oliver choose books carefully?",
+                          "options":  {
+                                          "A":  "The van has limited space.",
+                                          "B":  "Most readers only want crime stories.",
+                                          "C":  "The books change every week."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Oliver explains that the van has much less shelf space than a normal library."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "What does Oliver say about one regular visitor?",
+                          "options":  {
+                                          "A":  "She borrows more books than anyone else.",
+                                          "B":  "She mainly likes discussing books with him.",
+                                          "C":  "She helps him choose books for the van."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Oliver says one regular visitor comes mainly because she enjoys talking about what she has read."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "Why does Oliver still use printed lists?",
+                          "options":  {
+                                          "A":  "The tablet often stops working.",
+                                          "B":  "They are cheaper than online records.",
+                                          "C":  "Some readers prefer not to use screens."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "C",
+                          "explanation":  "Oliver brings printed lists for people who do not like using screens."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "Who does Oliver think evening stops will help?",
+                          "options":  {
+                                          "A":  "teenagers who are busy during the day",
+                                          "B":  "parents with very young babies",
+                                          "C":  "older people who cannot drive"
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Oliver hopes evening stops will help teenagers who are at school when the van usually arrives."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2035.mp3",
+    "word_count":  562
 }

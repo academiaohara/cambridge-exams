@@ -1,96 +1,176 @@
 {
+    "id":  15,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a young football coach",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a young football coach. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a girl called Megan Holt, who takes part in sailing races.",
+    "voices":  {
+                   "interviewer":  "en-GB-NoahNeural",
+                   "guest":  "en-GB-SoniaNeural"
+               },
+    "audio_script":  "Interviewer: Today I'm talking to Megan Holt, who takes part in sailing races around the coast. Megan, did you grow up in a sailing family? || Guest: Not really. My parents enjoy walking by the sea, but they don't sail. I joined a summer club because my best friend went. [20]At first I only wanted to be with her, but after a week I loved controlling the boat myself[/20]. || Interviewer: What was difficult when you started racing? || Guest: I could learn the rules quite quickly, and the equipment didn't worry me. [21]The hardest thing was making quick decisions when the wind changed, because you can't stop and think for long[/21]. || Interviewer: How do you feel before a race now? || Guest: I still get nervous, but that's useful. [22]I feel most confident when I have checked the weather carefully and planned what I might do on the water[/22]. Then I can enjoy it. || Interviewer: What happened in your first big race? || Guest: I didn't win, but I was pleased. [23]My start was terrible, yet I managed to pass several boats later because I stayed calm[/23]. That taught me not to give up too early. || Interviewer: What do you like about sailing with a team? || Guest: Some races are done alone, and I enjoy those too. But [24]in a team boat I like the way everyone has a clear job and we have to trust each other[/24]. It feels exciting when it works. || Interviewer: What are your plans for the future? || Guest: I want to keep racing, but school is important too. [25]This year I'm going to help teach younger children at the sailing club, which should improve my own skills[/25]. Explaining things makes you understand them better. || Interviewer: Do your school friends understand why you spend so much time sailing? || Guest: Some do, but others think it is just sitting in a boat. They don't realise how physical it can be. After a windy race, my arms ache and I feel as tired as after running. You also have to concentrate every second. || Interviewer: Is there anything you dislike? || Guest: Cleaning the boat afterwards isn't much fun, especially when it's cold. And early mornings are difficult in winter. But being on the water when the sun is rising is special, so I usually forget the complaints once we're away from the harbour. || Interviewer: How do you keep safe during training? || Guest: We check the boats carefully and never go out without knowing the forecast. The coaches are strict about that, which I used to find annoying. Now I understand why. Small problems can become serious quickly on the water. || Interviewer: What do you do if you make a mistake in a race? || Guest: I try to forget it until the race is over. If you keep thinking about one bad turn, you miss the next decision. Afterwards I talk it through with my coach and write down what I should try next time. || Interviewer: What do you take with you for a day of sailing? || Guest: More than people expect. I need spare clothes, water, snacks and sun cream, even on cloudy days. I also take a notebook because I like writing down what I learnt while the details are still fresh.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today I'm talking to Megan Holt, who takes part in sailing races around the coast. Megan, did you grow up in a sailing family?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Not really. My parents enjoy walking by the sea, but they don't sail. I joined a summer club because my best friend went. At first I only wanted to be with her, but after a week I loved controlling the boat myself."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was difficult when you started racing?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I could learn the rules quite quickly, and the equipment didn't worry me. The hardest thing was making quick decisions when the wind changed, because you can't stop and think for long."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "How do you feel before a race now?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I still get nervous, but that's useful. I feel most confident when I have checked the weather carefully and planned what I might do on the water. Then I can enjoy it."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What happened in your first big race?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I didn't win, but I was pleased. My start was terrible, yet I managed to pass several boats later because I stayed calm. That taught me not to give up too early."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you like about sailing with a team?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Some races are done alone, and I enjoy those too. But in a team boat I like the way everyone has a clear job and we have to trust each other. It feels exciting when it works."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What are your plans for the future?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I want to keep racing, but school is important too. This year I'm going to help teach younger children at the sailing club, which should improve my own skills. Explaining things makes you understand them better."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do your school friends understand why you spend so much time sailing?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Some do, but others think it is just sitting in a boat. They don't realise how physical it can be. After a windy race, my arms ache and I feel as tired as after running. You also have to concentrate every second."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Is there anything you dislike?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Cleaning the boat afterwards isn't much fun, especially when it's cold. And early mornings are difficult in winter. But being on the water when the sun is rising is special, so I usually forget the complaints once we're away from the harbour."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "How do you keep safe during training?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "We check the boats carefully and never go out without knowing the forecast. The coaches are strict about that, which I used to find annoying. Now I understand why. Small problems can become serious quickly on the water."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you do if you make a mistake in a race?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I try to forget it until the race is over. If you keep thinking about one bad turn, you miss the next decision. Afterwards I talk it through with my coach and write down what I should try next time."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you take with you for a day of sailing?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "More than people expect. I need spare clothes, water, snacks and sun cream, even on cloudy days. I also take a notebook because I like writing down what I learnt while the details are still fresh."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Megan first join the sailing club?",
+                          "options":  {
+                                          "A":  "Her parents wanted her to learn sailing.",
+                                          "B":  "She wanted to spend time with a friend.",
+                                          "C":  "She hoped to enter races straight away."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Megan says she joined because her best friend went, and at first she only wanted to be with her."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What did Megan find hardest when she began racing?",
+                          "options":  {
+                                          "A":  "Remembering the rules of sailing.",
+                                          "B":  "Using the equipment correctly.",
+                                          "C":  "Reacting quickly to changes in the wind."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "C",
+                          "explanation":  "She says the hardest thing was making quick decisions when the wind changed."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What makes Megan feel confident before a race?",
+                          "options":  {
+                                          "A":  "Checking conditions and making a plan.",
+                                          "B":  "Talking to other sailors on the beach.",
+                                          "C":  "Practising starts again and again."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "She feels most confident after checking the weather and planning what she might do."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "What did Megan learn in her first big race?",
+                          "options":  {
+                                          "A":  "Starting well is the most important thing.",
+                                          "B":  "Staying calm can help after a bad start.",
+                                          "C":  "Winning matters less than helping others."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "She says she had a terrible start but passed boats later because she stayed calm."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What does Megan like about team sailing?",
+                          "options":  {
+                                          "A":  "There is less pressure than sailing alone.",
+                                          "B":  "She can choose the easiest job.",
+                                          "C":  "Everyone depends on each other."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "C",
+                          "explanation":  "She likes that everyone has a clear job and they have to trust each other."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What is Megan going to do this year?",
+                          "options":  {
+                                          "A":  "Help teach younger sailors.",
+                                          "B":  "Stop racing to focus on school.",
+                                          "C":  "Train with a professional team."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "She says she is going to help teach younger children at the sailing club."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2015.mp3"
 }

@@ -1,96 +1,160 @@
 {
+    "id":  46,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a teenager who started a cooking blog",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a teenager who started a cooking blog. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a young actor called Jake Turner.",
+    "voices":  {
+                   "interviewer":  "en-GB-RyanNeural",
+                   "guest":  "en-GB-SoniaNeural"
+               },
+    "audio_script":  "Interviewer: My guest today is Jake Turner, a young actor who has just finished his first television series. Jake, how did you get the part? || Guest: I went to an open audition with about two hundred people. I nearly didn't go because I had a cold and felt awful. [20]My drama teacher persuaded me to try because she said I had nothing to lose[/20]. I read two short scenes, then they asked me back the next week. || Interviewer: What was different about acting for television? || Guest: In theatre, you perform the whole story in order and you can feel the audience. Television is much slower. [21]The strangest thing was filming scenes from the end of the story before scenes from the beginning[/21]. You have to remember exactly what your character knows at each moment. || Interviewer: Did you enjoy working with experienced actors? || Guest: Yes, although I was nervous at first. I expected them to be serious all the time, but they were friendly. [22]One actor showed me how to relax before a difficult scene by breathing slowly and standing still[/22]. I still use that trick now. || Interviewer: What was the hardest day of filming? || Guest: There was a scene outside in heavy rain. People think actors just say lines, but there is a lot of waiting. [23]We had to repeat the same short conversation many times while our clothes were getting wetter and colder[/23]. By the end I could hardly feel my hands. || Interviewer: Has being on television changed your daily life? || Guest: A little, but not too much. A few people recognise me in cafés, which is nice but also surprising. [24]The biggest change is that I have to organise schoolwork around interviews and travel[/24]. My friends still treat me exactly the same, which I like. || Interviewer: What do you want to do next? || Guest: I'd love to do another series, but I don't want to rush. For now, [25]I'm going back to a local theatre group because performing live will help me improve[/25]. Television is exciting, but theatre teaches you to listen and react quickly. || Interviewer: How did your family react when they watched the series? || Guest: They were excited, but also a bit funny about it. My little sister kept pausing the programme and laughing whenever I looked too serious. My parents were proud, though they reminded me that school still comes first. That helped me stay normal. || Interviewer: What did you learn about yourself during filming? || Guest: I learnt that I can work even when I am tired or nervous. Some days started very early, and there were many adults telling me where to stand, when to move and how to repeat a scene exactly. At first that felt confusing, but gradually I became more patient. I think that will help me in any job, not just acting. || Interviewer: Do you watch your own scenes? || Guest: I do, but it feels strange. I notice tiny things, like my hands moving too much or my voice sounding different. I try not to be too critical, because watching carefully is useful. It shows me what worked and what I need to practise before the next role.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "My guest today is Jake Turner, a young actor who has just finished his first television series. Jake, how did you get the part?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I went to an open audition with about two hundred people. I nearly didn't go because I had a cold and felt awful. My drama teacher persuaded me to try because she said I had nothing to lose. I read two short scenes, then they asked me back the next week."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was different about acting for television?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "In theatre, you perform the whole story in order and you can feel the audience. Television is much slower. The strangest thing was filming scenes from the end of the story before scenes from the beginning. You have to remember exactly what your character knows at each moment."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Did you enjoy working with experienced actors?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, although I was nervous at first. I expected them to be serious all the time, but they were friendly. One actor showed me how to relax before a difficult scene by breathing slowly and standing still. I still use that trick now."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was the hardest day of filming?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "There was a scene outside in heavy rain. People think actors just say lines, but there is a lot of waiting. We had to repeat the same short conversation many times while our clothes were getting wetter and colder. By the end I could hardly feel my hands."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Has being on television changed your daily life?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "A little, but not too much. A few people recognise me in cafés, which is nice but also surprising. The biggest change is that I have to organise schoolwork around interviews and travel. My friends still treat me exactly the same, which I like."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you want to do next?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I'd love to do another series, but I don't want to rush. For now, I'm going back to a local theatre group because performing live will help me improve. Television is exciting, but theatre teaches you to listen and react quickly."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "How did your family react when they watched the series?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "They were excited, but also a bit funny about it. My little sister kept pausing the programme and laughing whenever I looked too serious. My parents were proud, though they reminded me that school still comes first. That helped me stay normal."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What did you learn about yourself during filming?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I learnt that I can work even when I am tired or nervous. Some days started very early, and there were many adults telling me where to stand, when to move and how to repeat a scene exactly. At first that felt confusing, but gradually I became more patient. I think that will help me in any job, not just acting."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you watch your own scenes?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I do, but it feels strange. I notice tiny things, like my hands moving too much or my voice sounding different. I try not to be too critical, because watching carefully is useful. It shows me what worked and what I need to practise before the next role."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Jake go to the audition?",
+                          "options":  {
+                                          "A":  "His teacher encouraged him to try.",
+                                          "B":  "He had already met the director.",
+                                          "C":  "He wanted to miss a school lesson."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Jake says his drama teacher persuaded him to try because he had nothing to lose."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What did Jake find strange about television work?",
+                          "options":  {
+                                          "A":  "There was no audience watching.",
+                                          "B":  "Scenes were filmed in a different order.",
+                                          "C":  "The story changed during filming."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "B",
+                          "explanation":  "Jake says the strangest thing was filming scenes from the end before scenes from the beginning."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What did an experienced actor teach Jake?",
+                          "options":  {
+                                          "A":  "A way to remember lines quickly.",
+                                          "B":  "A method for staying calm.",
+                                          "C":  "A better way to move on camera."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Jake says an actor showed him how to relax by breathing slowly and standing still."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "Why was the rainy scene difficult?",
+                          "options":  {
+                                          "A":  "Jake forgot part of the conversation.",
+                                          "B":  "The camera equipment stopped working.",
+                                          "C":  "They had to repeat it while getting cold and wet."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Jake says they repeated the scene many times while their clothes got wetter and colder."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What has changed most in Jake's daily life?",
+                          "options":  {
+                                          "A":  "He has to plan schoolwork around acting duties.",
+                                          "B":  "Strangers often stop him in the street.",
+                                          "C":  "His friends behave differently towards him."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "A",
+                          "explanation":  "Jake says the biggest change is organising schoolwork around interviews and travel."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What is Jake going to do next?",
+                          "options":  {
+                                          "A":  "Join a local theatre group again.",
+                                          "B":  "Start work on a second television series.",
+                                          "C":  "Take a break from acting completely."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Jake says he is going back to a local theatre group."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2046.mp3"
 }

@@ -1,96 +1,160 @@
 {
+    "id":  41,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a young athlete preparing for competitions",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a young athlete preparing for competitions. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a woman called Mia Grant, who makes short cooking videos.",
+    "voices":  {
+                   "interviewer":  "en-GB-NoahNeural",
+                   "guest":  "en-GB-LibbyNeural"
+               },
+    "audio_script":  "Interviewer: Today I'm talking to Mia Grant, who makes short videos about cooking healthy food. Mia, did you always want to work with food? || Guest: Not really. At school I enjoyed art more than cooking, and I thought I might become a designer. My parents owned a small café, so I helped there at weekends, but it felt normal, not special. [20]I only became interested when I moved away to college and had to cook cheap meals for myself[/20]. I started taking photos of them for friends, and that slowly became videos. || Interviewer: What was the first video that many people watched? || Guest: It was a simple pasta dish. I nearly deleted it because the lighting was terrible, and I had forgotten to film the first step. But [21]people liked it because I showed how to make dinner with just five things from a small shop[/21]. Lots of students wrote to say they could actually try it. || Interviewer: Some people think online work is easy. Is that true? || Guest: No, not at all. The cooking part is enjoyable, and editing can be creative. [22]The difficult thing is planning enough ideas for every week[/22], especially when I want them to be useful and not just pretty. I keep a notebook by my bed because ideas often come late at night. || Interviewer: Do you ever get negative comments? || Guest: Yes, everyone online does. At first I read every comment and felt upset if someone didn't like a recipe. Now I'm better at ignoring rude messages. [23]What still worries me is when people change a recipe and then blame me because it doesn't work[/23]. If you use a different pan or leave something out, the result will change. || Interviewer: Have your videos changed the way you eat at home? || Guest: Yes, but not in the way people expect. I don't cook exciting meals every night. After filming all day, I usually want something very simple. [24]The biggest change is that I waste less food now[/24], because I plan carefully and use leftovers in new recipes. That has saved money too. || Interviewer: What would you like to do next? || Guest: I'd love to write a book one day, but not yet. At the moment, [25]I'm preparing a set of videos for families who want quick meals after work[/25]. I want them to be realistic, with ingredients from ordinary supermarkets and steps that children can help with. || Interviewer: How do you decide whether a recipe is good enough to share? || Guest: I test it at least twice, and I ask someone else to try it too. If they can follow the steps without asking me many questions, I know the recipe is clear. I also think about washing up, because busy people do not want to use every pan in the kitchen. Sometimes a recipe tastes good but takes too long, so I save it for a weekend idea instead. || Interviewer: Do you still enjoy cooking when it has become your job? || Guest: Yes, although I take more breaks now. I used to film late into the evening, which made me tired and less creative. Now I keep normal working hours when I can, and that helps me enjoy food again. || Interviewer: What advice would you give someone who wants to start sharing food online? || Guest: Begin with food you already cook well. Do not worry about having a perfect kitchen or expensive camera. Clear instructions and honest mistakes are more useful than a perfect picture. Also, make recipes for real people, not just for likes.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today I'm talking to Mia Grant, who makes short videos about cooking healthy food. Mia, did you always want to work with food?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Not really. At school I enjoyed art more than cooking, and I thought I might become a designer. My parents owned a small café, so I helped there at weekends, but it felt normal, not special. I only became interested when I moved away to college and had to cook cheap meals for myself. I started taking photos of them for friends, and that slowly became videos."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was the first video that many people watched?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "It was a simple pasta dish. I nearly deleted it because the lighting was terrible, and I had forgotten to film the first step. But people liked it because I showed how to make dinner with just five things from a small shop. Lots of students wrote to say they could actually try it."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Some people think online work is easy. Is that true?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "No, not at all. The cooking part is enjoyable, and editing can be creative. The difficult thing is planning enough ideas for every week, especially when I want them to be useful and not just pretty. I keep a notebook by my bed because ideas often come late at night."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you ever get negative comments?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, everyone online does. At first I read every comment and felt upset if someone didn't like a recipe. Now I'm better at ignoring rude messages. What still worries me is when people change a recipe and then blame me because it doesn't work. If you use a different pan or leave something out, the result will change."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Have your videos changed the way you eat at home?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, but not in the way people expect. I don't cook exciting meals every night. After filming all day, I usually want something very simple. The biggest change is that I waste less food now, because I plan carefully and use leftovers in new recipes. That has saved money too."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What would you like to do next?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I'd love to write a book one day, but not yet. At the moment, I'm preparing a set of videos for families who want quick meals after work. I want them to be realistic, with ingredients from ordinary supermarkets and steps that children can help with."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "How do you decide whether a recipe is good enough to share?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I test it at least twice, and I ask someone else to try it too. If they can follow the steps without asking me many questions, I know the recipe is clear. I also think about washing up, because busy people do not want to use every pan in the kitchen. Sometimes a recipe tastes good but takes too long, so I save it for a weekend idea instead."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you still enjoy cooking when it has become your job?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, although I take more breaks now. I used to film late into the evening, which made me tired and less creative. Now I keep normal working hours when I can, and that helps me enjoy food again."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What advice would you give someone who wants to start sharing food online?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Begin with food you already cook well. Do not worry about having a perfect kitchen or expensive camera. Clear instructions and honest mistakes are more useful than a perfect picture. Also, make recipes for real people, not just for likes."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Mia first become interested in cooking?",
+                          "options":  {
+                                          "A":  "She wanted to become a food designer.",
+                                          "B":  "Her parents asked her to help in their café.",
+                                          "C":  "She needed to prepare meals while she was a student."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Mia says she became interested when she moved away to college and had to cook cheap meals for herself."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "Why was Mia's first popular video successful?",
+                          "options":  {
+                                          "A":  "The lighting made the food look attractive.",
+                                          "B":  "It was useful for people with limited ingredients.",
+                                          "C":  "It explained every step in great detail."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "B",
+                          "explanation":  "Mia says people liked the video because it showed how to make dinner with just five things from a small shop."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What does Mia find hardest about her work?",
+                          "options":  {
+                                          "A":  "Cooking the food for the videos.",
+                                          "B":  "Editing the videos in an interesting way.",
+                                          "C":  "Thinking of enough useful ideas."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Mia says the difficult thing is planning enough ideas for every week."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "What worries Mia about online comments?",
+                          "options":  {
+                                          "A":  "People ask too many questions about equipment.",
+                                          "B":  "People are rude about the way she looks.",
+                                          "C":  "People blame her after changing the recipe."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Mia says it still worries her when people change a recipe and then blame her because it does not work."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "How has making videos changed Mia's life at home?",
+                          "options":  {
+                                          "A":  "She buys more expensive food.",
+                                          "B":  "She throws away less food.",
+                                          "C":  "She cooks special meals every evening."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "B",
+                          "explanation":  "Mia says the biggest change is that she wastes less food."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What is Mia working on now?",
+                          "options":  {
+                                          "A":  "A recipe book for students.",
+                                          "B":  "A course about shopping cheaply.",
+                                          "C":  "Videos about quick family meals."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Mia says she is preparing videos for families who want quick meals after work."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2041.mp3"
 }

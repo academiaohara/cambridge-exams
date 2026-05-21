@@ -1,96 +1,149 @@
 {
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a young athlete preparing for competitions",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a young athlete preparing for competitions. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "id":  33,
+    "context":  "You will hear an interview with a man called Karim Lane, who keeps bees on the roof of a city building.",
+    "voices":  {
+                   "interviewer":  "en-GB-ThomasNeural",
+                   "guest":  "en-GB-MaisieNeural"
+               },
+    "audio_script":  "Interviewer: Today we're talking to Karim Lane, who keeps bees on the roof of a city building. Karim, keeping bees in the city sounds unusual. Why did you start? || Guest: It began through my job at an office, not through farming. Our building had a flat roof that nobody used, and we wanted a green project for staff. I read about city bees and visited a local beekeeper. [20]I started because the empty roof seemed like a good place to help nature[/20]. I did not expect to love it so much, but watching the first bees arrive was wonderful. || Interviewer: What was difficult when you were starting out? || Guest: My family thought the bees would be dangerous, and I also worried about that at first. But bees usually stay calm if you move slowly. [21]The thing that surprised me most was how quiet the roof felt, even with thousands of bees[/21]. You can hear traffic below, but near the hives there is just a gentle sound. It is strangely peaceful in the middle of the city. || Interviewer: What do you enjoy most about it now? || Guest: We do get honey, but that is not the main point. The best result is what happens to people in the office. [22]Staff who never spoke to each other now meet on the roof to check the hives[/22]. Someone from accounts may stand next to someone from reception, and they both ask questions. The bees have made the workplace friendlier, which was a lovely surprise. || Interviewer: Have you changed the way you work since then? || Guest: The weather is the main difficulty. People imagine city bees have problems finding flowers, but parks and gardens are close to us. However, [23]strong wind on the roof can make it unsafe to open the hives[/23]. I have to check the forecast carefully and sometimes cancel a visit. The bees are fine, but we must not risk dropping equipment from the roof. || Interviewer: Is there anything that people misunderstand about this kind of work? || Guest: I have learnt to explain the project better. At first, I used too many technical words, and some visitors looked confused. [24]Now I show people the equipment first, before I talk about how bees live[/24]. Holding a frame or seeing the protective suit makes the ideas easier. Then they can understand why bees need space, food and careful handling. || Interviewer: And what are your plans for the future? || Guest: This year we are adding more plants around the building entrance. Next, [25]I want to invite local school groups to see the hives from a safe viewing area[/25]. They would not touch the bees, but they could watch me work and learn why insects are important. I think children remember nature better when they can see it close to home. || Interviewer: Finally, what advice would you give to someone who wants to try something similar? || Guest: I would say, start with a small step and do not wait until everything is perfect. When people begin something like city beekeeping, they often worry too much about equipment, confidence or making mistakes. It is better to ask questions, watch people who already know the work, and practise a little at a time. You learn more from real situations than from planning for months. Also, be patient with yourself, because the first few attempts are usually slow, and that is completely normal. || Interviewer: Thank you, that was really interesting.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today we're talking to Karim Lane, who keeps bees on the roof of a city building. Karim, keeping bees in the city sounds unusual. Why did you start?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "It began through my job at an office, not through farming. Our building had a flat roof that nobody used, and we wanted a green project for staff. I read about city bees and visited a local beekeeper. I started because the empty roof seemed like a good place to help nature. I did not expect to love it so much, but watching the first bees arrive was wonderful."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was difficult when you were starting out?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "My family thought the bees would be dangerous, and I also worried about that at first. But bees usually stay calm if you move slowly. The thing that surprised me most was how quiet the roof felt, even with thousands of bees. You can hear traffic below, but near the hives there is just a gentle sound. It is strangely peaceful in the middle of the city."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you enjoy most about it now?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "We do get honey, but that is not the main point. The best result is what happens to people in the office. Staff who never spoke to each other now meet on the roof to check the hives. Someone from accounts may stand next to someone from reception, and they both ask questions. The bees have made the workplace friendlier, which was a lovely surprise."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Have you changed the way you work since then?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "The weather is the main difficulty. People imagine city bees have problems finding flowers, but parks and gardens are close to us. However, strong wind on the roof can make it unsafe to open the hives. I have to check the forecast carefully and sometimes cancel a visit. The bees are fine, but we must not risk dropping equipment from the roof."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Is there anything that people misunderstand about this kind of work?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I have learnt to explain the project better. At first, I used too many technical words, and some visitors looked confused. Now I show people the equipment first, before I talk about how bees live. Holding a frame or seeing the protective suit makes the ideas easier. Then they can understand why bees need space, food and careful handling."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "And what are your plans for the future?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "This year we are adding more plants around the building entrance. Next, I want to invite local school groups to see the hives from a safe viewing area. They would not touch the bees, but they could watch me work and learn why insects are important. I think children remember nature better when they can see it close to home."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Finally, what advice would you give to someone who wants to try something similar?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I would say, start with a small step and do not wait until everything is perfect. When people begin something like city beekeeping, they often worry too much about equipment, confidence or making mistakes. It is better to ask questions, watch people who already know the work, and practise a little at a time. You learn more from real situations than from planning for months. Also, be patient with yourself, because the first few attempts are usually slow, and that is completely normal."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Thank you, that was really interesting."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Karim first put bees on the roof?",
+                          "options":  {
+                                          "A":  "He wanted to produce honey for his office.",
+                                          "B":  "He had worked on farms when he was young.",
+                                          "C":  "He wanted to use an empty space to help nature."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Karim says he started because the empty roof seemed like a good place to help nature."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What surprised Karim about the roof?",
+                          "options":  {
+                                          "A":  "It was very peaceful there.",
+                                          "B":  "It was too hot for the bees.",
+                                          "C":  "It attracted many visitors."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "A",
+                          "explanation":  "Karim says he was surprised by how quiet and peaceful the roof felt."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What does Karim say the bees have done for the office?",
+                          "options":  {
+                                          "A":  "They have produced a lot of honey.",
+                                          "B":  "They have helped staff get to know each other.",
+                                          "C":  "They have made the building famous locally."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Karim says staff who never spoke now meet on the roof to check the hives."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "What problem does Karim mention?",
+                          "options":  {
+                                          "A":  "There are not enough flowers nearby.",
+                                          "B":  "The bees dislike city traffic.",
+                                          "C":  "Wind can make roof visits unsafe."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Karim says strong wind on the roof can make it unsafe to open the hives."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "How has Karim changed his talks to visitors?",
+                          "options":  {
+                                          "A":  "He shows the equipment before explaining ideas.",
+                                          "B":  "He makes the talks much shorter.",
+                                          "C":  "He gives visitors written information first."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "A",
+                          "explanation":  "Karim now shows people the equipment first, before talking about how bees live."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What would Karim like to do next?",
+                          "options":  {
+                                          "A":  "sell plants at the building entrance",
+                                          "B":  "let school groups watch the bees safely",
+                                          "C":  "move some hives to a local school"
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Karim wants to invite school groups to see the hives from a safe viewing area."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2033.mp3",
+    "word_count":  557
 }

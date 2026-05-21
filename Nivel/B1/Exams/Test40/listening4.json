@@ -1,96 +1,149 @@
 {
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a student working part-time",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a student working part-time. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "id":  40,
+    "context":  "You will hear an interview with a man called Sam Foster, who presents a community radio programme.",
+    "voices":  {
+                   "interviewer":  "en-GB-ElliotNeural",
+                   "guest":  "en-GB-HollieNeural"
+               },
+    "audio_script":  "Interviewer: Today we're talking to Sam Foster, who presents a community radio programme. Sam, you present a programme on community radio. How did you first get involved? || Guest: I used to listen to the station while cooking, but I never imagined speaking on it. One day they asked for volunteers to help at a local music day. [20]I started by carrying equipment at an outdoor event, and the presenters noticed I was good at talking to visitors[/20]. A few weeks later they invited me to read short announcements, and slowly I became more confident behind the microphone. || Interviewer: What was difficult when you were starting out? || Guest: The hardest thing at first was sounding natural. I prepared too much and read every sentence from paper, so I sounded rather stiff. [21]A trainer told me to write only key words and speak as if I was talking to one friend[/21]. That advice helped immediately. Radio can feel strange because you cannot see listeners, but imagining one person makes your voice warmer. || Interviewer: What do you enjoy most about it now? || Guest: My programme includes local music, interviews and information about events. The part I like most is interviewing ordinary people with interesting stories. [22]I enjoy guests who are nervous at first but relax when they realise the interview is just a conversation[/22]. Often they leave saying it was easier than they expected. That makes me feel I have done my job well. || Interviewer: Have you changed the way you work since then? || Guest: Live radio has surprises. Once, the computer stopped playing music in the middle of the show. I could not fix it quickly, so [23]I talked about local events until a colleague solved the technical problem[/23]. It felt like a very long three minutes. Listeners probably thought it was planned, but my hands were shaking under the desk. || Interviewer: Is there anything that people misunderstand about this kind of work? || Guest: Community radio is different from national radio because people know you. [24]Listeners often send messages about tiny local details, like a closed road or a lost dog[/24]. Those messages may seem small, but they are useful. We can share them quickly, and someone nearby may hear and help. That is why the station matters to the town. || Interviewer: And what are your plans for the future? || Guest: In the future, I want more young people to join us. [25]We are setting up a weekend club where teenagers can learn to record short reports[/25]. They might interview sports teams, review films or talk about school projects. I hope some will later make their own programmes. Their voices would bring fresh energy to the station. || Interviewer: Finally, what advice would you give to someone who wants to try something similar? || Guest: I would say, start with a small step and do not wait until everything is perfect. When people begin something like community radio programme, they often worry too much about equipment, confidence or making mistakes. It is better to ask questions, watch people who already know the work, and practise a little at a time. You learn more from real situations than from planning for months. Also, be patient with yourself, because the first few attempts are usually slow, and that is completely normal. || Interviewer: Thank you, that was really interesting.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today we're talking to Sam Foster, who presents a community radio programme. Sam, you present a programme on community radio. How did you first get involved?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I used to listen to the station while cooking, but I never imagined speaking on it. One day they asked for volunteers to help at a local music day. I started by carrying equipment at an outdoor event, and the presenters noticed I was good at talking to visitors. A few weeks later they invited me to read short announcements, and slowly I became more confident behind the microphone."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was difficult when you were starting out?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "The hardest thing at first was sounding natural. I prepared too much and read every sentence from paper, so I sounded rather stiff. A trainer told me to write only key words and speak as if I was talking to one friend. That advice helped immediately. Radio can feel strange because you cannot see listeners, but imagining one person makes your voice warmer."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you enjoy most about it now?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "My programme includes local music, interviews and information about events. The part I like most is interviewing ordinary people with interesting stories. I enjoy guests who are nervous at first but relax when they realise the interview is just a conversation. Often they leave saying it was easier than they expected. That makes me feel I have done my job well."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Have you changed the way you work since then?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Live radio has surprises. Once, the computer stopped playing music in the middle of the show. I could not fix it quickly, so I talked about local events until a colleague solved the technical problem. It felt like a very long three minutes. Listeners probably thought it was planned, but my hands were shaking under the desk."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Is there anything that people misunderstand about this kind of work?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Community radio is different from national radio because people know you. Listeners often send messages about tiny local details, like a closed road or a lost dog. Those messages may seem small, but they are useful. We can share them quickly, and someone nearby may hear and help. That is why the station matters to the town."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "And what are your plans for the future?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "In the future, I want more young people to join us. We are setting up a weekend club where teenagers can learn to record short reports. They might interview sports teams, review films or talk about school projects. I hope some will later make their own programmes. Their voices would bring fresh energy to the station."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Finally, what advice would you give to someone who wants to try something similar?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I would say, start with a small step and do not wait until everything is perfect. When people begin something like community radio programme, they often worry too much about equipment, confidence or making mistakes. It is better to ask questions, watch people who already know the work, and practise a little at a time. You learn more from real situations than from planning for months. Also, be patient with yourself, because the first few attempts are usually slow, and that is completely normal."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Thank you, that was really interesting."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "How did Sam first help the radio station?",
+                          "options":  {
+                                          "A":  "He carried equipment at an event.",
+                                          "B":  "He cooked food for presenters.",
+                                          "C":  "He played music on a programme."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Sam says he started by carrying equipment at an outdoor event."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What advice helped Sam sound more natural?",
+                          "options":  {
+                                          "A":  "to read every sentence carefully",
+                                          "B":  "to use key words and imagine one listener",
+                                          "C":  "to speak faster during announcements"
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "B",
+                          "explanation":  "A trainer told Sam to write only key words and speak as if he was talking to one friend."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What does Sam enjoy about interviewing guests?",
+                          "options":  {
+                                          "A":  "They usually bring music with them.",
+                                          "B":  "They ask him difficult questions.",
+                                          "C":  "They become more relaxed during the conversation."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Sam enjoys guests who are nervous at first but relax during the interview."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "What did Sam do when the computer stopped working?",
+                          "options":  {
+                                          "A":  "He filled the time by talking about events.",
+                                          "B":  "He ended the programme early.",
+                                          "C":  "He asked listeners to phone the station."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Sam talked about local events until a colleague solved the technical problem."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What kind of messages do listeners send?",
+                          "options":  {
+                                          "A":  "reviews of national programmes",
+                                          "B":  "small pieces of local information",
+                                          "C":  "requests for famous musicians"
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "B",
+                          "explanation":  "Sam says listeners send messages about tiny local details, like a closed road or a lost dog."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What does Sam want teenagers to do?",
+                          "options":  {
+                                          "A":  "organise a music festival",
+                                          "B":  "repair old radio equipment",
+                                          "C":  "learn to make short reports"
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Sam says they are setting up a weekend club where teenagers can learn to record short reports."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2040.mp3",
+    "word_count":  537
 }

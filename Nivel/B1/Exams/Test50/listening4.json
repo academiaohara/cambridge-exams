@@ -1,96 +1,160 @@
 {
+    "id":  50,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a student working part-time",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a student working part-time. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a man called Sam Patel, who trains assistance dogs.",
+    "voices":  {
+                   "interviewer":  "en-GB-NoahNeural",
+                   "guest":  "en-GB-SoniaNeural"
+               },
+    "audio_script":  "Interviewer: My guest today is Sam Patel, who trains dogs for people with disabilities. Sam, how did you start working with dogs? || Guest: My family always had dogs, but I didn't know training could be a job. After school I volunteered at an animal centre. [20]I became interested when I saw how a well-trained dog helped a man open doors and pick up dropped keys[/20]. It was practical help, but it also gave him more independence. || Interviewer: What is the first thing a dog must learn? || Guest: People expect clever tasks immediately, but the basics come first. [21]The dog must learn to stay calm in busy places like shops, buses and cafés[/21]. If a dog is frightened or excited all the time, it cannot concentrate on helping its owner. || Interviewer: How do you choose suitable dogs? || Guest: Breed matters less than personality. We need dogs that enjoy people and recover quickly after surprises. [22]A dog that is friendly but not too easily distracted is usually a good starting point[/22]. Some very intelligent dogs are actually harder to train because they want to make their own decisions. || Interviewer: What is the most rewarding part of the work? || Guest: The day a dog meets its future owner is wonderful, but it is also emotional. [23]For me, the best moment comes a few months later when the owner tells us they have started doing something alone again[/23], like going to the shops or visiting friends. Then we know the partnership is working. || Interviewer: Is the work ever difficult? || Guest: Yes. Sometimes a dog has done well in training but does not match a particular person. It is nobody's fault. [24]The hardest decisions are when we have to move a dog to a different owner because the first match is not right[/24]. We have to think about both the person and the animal. || Interviewer: What would you like people to understand about assistance dogs? || Guest: They are working animals, not pets that are out for a walk. People often mean well, but touching them can be a problem. [25]The most helpful thing the public can do is ignore the dog unless the owner invites them to say hello[/25]. That helps the dog stay focused and keeps everyone safe. || Interviewer: How long does training usually take? || Guest: It depends on the dog and the tasks it needs to learn, but it is never quick. There are months of basic training before a dog even meets a possible owner. Then we spend time helping them work together in real situations. || Interviewer: Do you ever see dogs after they leave the training centre? || Guest: Yes, and those visits are very important. We check that the dog is healthy, happy and still confident in its work. Owners can ask for advice if their situation changes, for example if they move house or start a new job. The support does not end on the day the dog goes home. || Interviewer: What kind of people become good trainers? || Guest: People who are calm, observant and willing to repeat things many times. Dogs learn at different speeds, so trainers must not get frustrated. You also need to enjoy working with people, because the final goal is not just a trained dog, but a successful team.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "My guest today is Sam Patel, who trains dogs for people with disabilities. Sam, how did you start working with dogs?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "My family always had dogs, but I didn't know training could be a job. After school I volunteered at an animal centre. I became interested when I saw how a well-trained dog helped a man open doors and pick up dropped keys. It was practical help, but it also gave him more independence."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What is the first thing a dog must learn?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "People expect clever tasks immediately, but the basics come first. The dog must learn to stay calm in busy places like shops, buses and cafés. If a dog is frightened or excited all the time, it cannot concentrate on helping its owner."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "How do you choose suitable dogs?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Breed matters less than personality. We need dogs that enjoy people and recover quickly after surprises. A dog that is friendly but not too easily distracted is usually a good starting point. Some very intelligent dogs are actually harder to train because they want to make their own decisions."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What is the most rewarding part of the work?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "The day a dog meets its future owner is wonderful, but it is also emotional. For me, the best moment comes a few months later when the owner tells us they have started doing something alone again, like going to the shops or visiting friends. Then we know the partnership is working."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Is the work ever difficult?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes. Sometimes a dog has done well in training but does not match a particular person. It is nobody's fault. The hardest decisions are when we have to move a dog to a different owner because the first match is not right. We have to think about both the person and the animal."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What would you like people to understand about assistance dogs?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "They are working animals, not pets that are out for a walk. People often mean well, but touching them can be a problem. The most helpful thing the public can do is ignore the dog unless the owner invites them to say hello. That helps the dog stay focused and keeps everyone safe."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "How long does training usually take?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "It depends on the dog and the tasks it needs to learn, but it is never quick. There are months of basic training before a dog even meets a possible owner. Then we spend time helping them work together in real situations."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you ever see dogs after they leave the training centre?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, and those visits are very important. We check that the dog is healthy, happy and still confident in its work. Owners can ask for advice if their situation changes, for example if they move house or start a new job. The support does not end on the day the dog goes home."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What kind of people become good trainers?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "People who are calm, observant and willing to repeat things many times. Dogs learn at different speeds, so trainers must not get frustrated. You also need to enjoy working with people, because the final goal is not just a trained dog, but a successful team."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Sam become interested in training assistance dogs?",
+                          "options":  {
+                                          "A":  "He wanted to work at an animal centre permanently.",
+                                          "B":  "He saw how a trained dog helped someone be independent.",
+                                          "C":  "His family had always trained dogs at home."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Sam says he became interested after seeing how a trained dog helped a man and gave him more independence."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What must assistance dogs learn first?",
+                          "options":  {
+                                          "A":  "To behave calmly in public places.",
+                                          "B":  "To open doors for their owners.",
+                                          "C":  "To travel long distances by bus."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "A",
+                          "explanation":  "Sam says the dog must first learn to stay calm in busy places."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What kind of dog is usually suitable?",
+                          "options":  {
+                                          "A":  "One that is very independent.",
+                                          "B":  "One that is large and strong.",
+                                          "C":  "One that is friendly but can stay focused."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Sam says a friendly dog that is not too easily distracted is a good starting point."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "What does Sam find most rewarding?",
+                          "options":  {
+                                          "A":  "Seeing owners become more independent again.",
+                                          "B":  "Introducing a dog to its new owner for the first time.",
+                                          "C":  "Teaching a dog a difficult new skill."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Sam says the best moment is when owners say they have started doing something alone again."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What is the hardest part of Sam's job?",
+                          "options":  {
+                                          "A":  "Training dogs that are very intelligent.",
+                                          "B":  "Changing a dog's owner when the match is wrong.",
+                                          "C":  "Explaining problems to animal centres."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "B",
+                          "explanation":  "Sam says the hardest decisions are moving a dog to a different owner because the first match is not right."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What should the public do around assistance dogs?",
+                          "options":  {
+                                          "A":  "Ask the owner many questions about the dog.",
+                                          "B":  "Touch the dog gently if it looks friendly.",
+                                          "C":  "Leave the dog alone unless invited."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Sam says the public should ignore the dog unless the owner invites them to say hello."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2050.mp3"
 }

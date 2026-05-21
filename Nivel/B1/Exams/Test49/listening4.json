@@ -1,96 +1,160 @@
 {
+    "id":  49,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a student working part-time",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a student working part-time. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a woman called Lily Carter, who runs street art walking tours.",
+    "voices":  {
+                   "interviewer":  "en-GB-RyanNeural",
+                   "guest":  "en-GB-LibbyNeural"
+               },
+    "audio_script":  "Interviewer: Today I'm talking to Lily Carter, who runs walking tours about street art. Lily, how did you become interested in street art? || Guest: I studied photography, and I used to take pictures of old buildings. One day I photographed a wall painting before it was painted over the next week. [20]That made me realise street art could disappear quickly, so I wanted to record and understand it[/20]. Soon I was reading about the artists and following changes in different streets. || Interviewer: What makes a good walking tour? || Guest: People need information, but they also need time to look. I don't want to talk all the time. [21]A good tour includes short stories, quiet moments and a route that doesn't make people feel rushed[/21]. Comfortable shoes help too, but the pace matters most. || Interviewer: Do visitors usually know a lot about street art? || Guest: Some do, but many join because they are curious. [22]I enjoy tours most when people arrive saying they don't understand street art and leave with favourite pieces[/22]. You don't need expert knowledge to have an opinion. You just need to look carefully. || Interviewer: Do local people like the tours? || Guest: Most are positive, especially shop owners who enjoy the extra visitors. But I always remind groups to be respectful. [23]The biggest complaint from residents is not the art itself, but tourists blocking pavements while taking photos[/23]. So I keep the group small and move them aside when we stop. || Interviewer: Has the street art in your city changed? || Guest: Yes. Years ago, much of it was unofficial and appeared overnight. Now some walls are planned with permission. [24]I think the best change is that more local artists are being invited to create public work[/24], rather than only famous visitors from other cities. || Interviewer: What are you developing next? || Guest: I am working on an online map, but it is taking longer than expected because the art changes so fast. [25]Before that, I'm launching a shorter tour for families with children, with more time for drawing activities[/25]. I hope it helps young people notice the streets around them. || Interviewer: Do you think street art should always be protected? || Guest: Not always. Part of its character is that it changes. A wall may have one picture this month and something completely different next month. That can be sad, but it also keeps the streets alive. I think the most important works should be recorded properly, even if they cannot stay forever. || Interviewer: How do you choose the route for a tour? || Guest: I walk it myself at different times of day. I check traffic, pavements and places where the group can stop safely. I also make sure there is a café or public toilet nearby, because practical details can make the difference between a pleasant tour and a tiring one. || Interviewer: What do you hope visitors remember after a tour? || Guest: I hope they look up more often. Many of us walk through streets without noticing walls, windows or small details. If visitors leave the tour and begin noticing their own neighbourhood differently, then the tour has done something useful.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today I'm talking to Lily Carter, who runs walking tours about street art. Lily, how did you become interested in street art?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I studied photography, and I used to take pictures of old buildings. One day I photographed a wall painting before it was painted over the next week. That made me realise street art could disappear quickly, so I wanted to record and understand it. Soon I was reading about the artists and following changes in different streets."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What makes a good walking tour?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "People need information, but they also need time to look. I don't want to talk all the time. A good tour includes short stories, quiet moments and a route that doesn't make people feel rushed. Comfortable shoes help too, but the pace matters most."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do visitors usually know a lot about street art?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Some do, but many join because they are curious. I enjoy tours most when people arrive saying they don't understand street art and leave with favourite pieces. You don't need expert knowledge to have an opinion. You just need to look carefully."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do local people like the tours?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Most are positive, especially shop owners who enjoy the extra visitors. But I always remind groups to be respectful. The biggest complaint from residents is not the art itself, but tourists blocking pavements while taking photos. So I keep the group small and move them aside when we stop."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Has the street art in your city changed?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes. Years ago, much of it was unofficial and appeared overnight. Now some walls are planned with permission. I think the best change is that more local artists are being invited to create public work, rather than only famous visitors from other cities."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What are you developing next?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I am working on an online map, but it is taking longer than expected because the art changes so fast. Before that, I'm launching a shorter tour for families with children, with more time for drawing activities. I hope it helps young people notice the streets around them."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you think street art should always be protected?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Not always. Part of its character is that it changes. A wall may have one picture this month and something completely different next month. That can be sad, but it also keeps the streets alive. I think the most important works should be recorded properly, even if they cannot stay forever."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "How do you choose the route for a tour?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I walk it myself at different times of day. I check traffic, pavements and places where the group can stop safely. I also make sure there is a café or public toilet nearby, because practical details can make the difference between a pleasant tour and a tiring one."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you hope visitors remember after a tour?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I hope they look up more often. Many of us walk through streets without noticing walls, windows or small details. If visitors leave the tour and begin noticing their own neighbourhood differently, then the tour has done something useful."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Lily first become interested in street art?",
+                          "options":  {
+                                          "A":  "She saw that it could disappear very quickly.",
+                                          "B":  "She wanted to become a street artist herself.",
+                                          "C":  "She studied it as part of a photography course."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Lily says seeing a wall painting disappear made her realise street art could disappear quickly."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What does Lily say makes a good walking tour?",
+                          "options":  {
+                                          "A":  "A fast route through many streets.",
+                                          "B":  "A balance of stories and time to look.",
+                                          "C":  "A guide who talks almost all the time."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "B",
+                          "explanation":  "Lily says a good tour has short stories, quiet moments and a route that does not feel rushed."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What does Lily enjoy most about guiding tours?",
+                          "options":  {
+                                          "A":  "Meeting people who already know the artists.",
+                                          "B":  "Helping people discover works they like.",
+                                          "C":  "Teaching visitors technical art words."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Lily says she enjoys when people arrive not understanding street art and leave with favourite pieces."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "What problem do some residents mention?",
+                          "options":  {
+                                          "A":  "Visitors standing in the way to take photos.",
+                                          "B":  "Artists painting walls without permission.",
+                                          "C":  "Tour groups making noise late at night."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Lily says residents complain about tourists blocking pavements while taking photos."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What change in street art does Lily like best?",
+                          "options":  {
+                                          "A":  "More walls are cleaned regularly.",
+                                          "B":  "More famous artists visit the city.",
+                                          "C":  "More local artists are asked to make public art."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "C",
+                          "explanation":  "Lily says the best change is that more local artists are being invited to create public work."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What will Lily offer soon?",
+                          "options":  {
+                                          "A":  "A family tour with drawing activities.",
+                                          "B":  "An online map of every painting.",
+                                          "C":  "A photography course for adults."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Lily says she is launching a shorter tour for families with children, with drawing activities."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2049.mp3"
 }

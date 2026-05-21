@@ -1,96 +1,149 @@
 {
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a teenager volunteering at an animal shelter",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a teenager volunteering at an animal shelter. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "id":  38,
+    "context":  "You will hear an interview with a man called Ben Turner, who works as a kayak instructor.",
+    "voices":  {
+                   "interviewer":  "en-GB-ThomasNeural",
+                   "guest":  "en-GB-MaisieNeural"
+               },
+    "audio_script":  "Interviewer: Today we're talking to Ben Turner, who works as a kayak instructor. Ben, you teach kayaking on rivers and lakes. How did you start doing this? || Guest: My parents took me kayaking when I was young, but I did not imagine it could become my job. I trained as a sports teacher first. During a summer holiday, [20]I helped at a youth camp and discovered that I liked teaching beginners on the water[/20]. They were nervous at first, but after a few minutes they were smiling. That gave me the idea of taking instructor exams. || Interviewer: What was difficult when you were starting out? || Guest: Beginners often worry about falling in, and of course that can happen. But the first thing I teach is not speed or turning. [21]I teach people how to get out of the kayak safely if it turns over[/21]. Once they know that, they relax and listen better. Safety gives them confidence, and then the real learning can begin. || Interviewer: What do you enjoy most about it now? || Guest: My favourite place to teach is not the fastest river. Fast water is exciting, but beginners cannot learn much if they are frightened. [22]I prefer a quiet lake near the hills because students can practise without rushing[/22]. The view is beautiful, and there is space to repeat the same movement many times. By the end, people feel they have really improved. || Interviewer: Have you changed the way you work since then? || Guest: One thing I have changed is how I give instructions. I used to explain everything from the bank, and students forgot half of it before they were in the kayak. [23]Now I show one skill at a time while I am sitting in my own boat[/23]. They can copy me immediately. It is slower at the start, but the results are much better. || Interviewer: Is there anything that people misunderstand about this kind of work? || Guest: People ask about bad weather, but rain is not always a problem because everyone gets wet anyway. [24]Strong wind is the weather that usually makes me cancel a lesson[/24]. It pushes beginners across the water and makes them tired quickly. I would rather disappoint people for one day than put them in a situation they cannot control. || Interviewer: And what are your plans for the future? || Guest: This season I am organising some trips for families who have already done a beginner lesson. [25]The new trips will include a picnic stop on a small island[/25]. It gives children something fun to aim for, and parents like having a break. We will still keep the distance short, so people finish feeling proud, not exhausted. || Interviewer: Finally, what advice would you give to someone who wants to try something similar? || Guest: I would say, start with a small step and do not wait until everything is perfect. When people begin something like kayak instruction, they often worry too much about equipment, confidence or making mistakes. It is better to ask questions, watch people who already know the work, and practise a little at a time. You learn more from real situations than from planning for months. Also, be patient with yourself, because the first few attempts are usually slow, and that is completely normal. || Interviewer: Thank you, that was really interesting.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today we're talking to Ben Turner, who works as a kayak instructor. Ben, you teach kayaking on rivers and lakes. How did you start doing this?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "My parents took me kayaking when I was young, but I did not imagine it could become my job. I trained as a sports teacher first. During a summer holiday, I helped at a youth camp and discovered that I liked teaching beginners on the water. They were nervous at first, but after a few minutes they were smiling. That gave me the idea of taking instructor exams."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was difficult when you were starting out?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Beginners often worry about falling in, and of course that can happen. But the first thing I teach is not speed or turning. I teach people how to get out of the kayak safely if it turns over. Once they know that, they relax and listen better. Safety gives them confidence, and then the real learning can begin."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you enjoy most about it now?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "My favourite place to teach is not the fastest river. Fast water is exciting, but beginners cannot learn much if they are frightened. I prefer a quiet lake near the hills because students can practise without rushing. The view is beautiful, and there is space to repeat the same movement many times. By the end, people feel they have really improved."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Have you changed the way you work since then?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "One thing I have changed is how I give instructions. I used to explain everything from the bank, and students forgot half of it before they were in the kayak. Now I show one skill at a time while I am sitting in my own boat. They can copy me immediately. It is slower at the start, but the results are much better."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Is there anything that people misunderstand about this kind of work?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "People ask about bad weather, but rain is not always a problem because everyone gets wet anyway. Strong wind is the weather that usually makes me cancel a lesson. It pushes beginners across the water and makes them tired quickly. I would rather disappoint people for one day than put them in a situation they cannot control."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "And what are your plans for the future?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "This season I am organising some trips for families who have already done a beginner lesson. The new trips will include a picnic stop on a small island. It gives children something fun to aim for, and parents like having a break. We will still keep the distance short, so people finish feeling proud, not exhausted."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Finally, what advice would you give to someone who wants to try something similar?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I would say, start with a small step and do not wait until everything is perfect. When people begin something like kayak instruction, they often worry too much about equipment, confidence or making mistakes. It is better to ask questions, watch people who already know the work, and practise a little at a time. You learn more from real situations than from planning for months. Also, be patient with yourself, because the first few attempts are usually slow, and that is completely normal."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Thank you, that was really interesting."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "What made Ben decide to become an instructor?",
+                          "options":  {
+                                          "A":  "His parents owned a kayak centre.",
+                                          "B":  "He enjoyed teaching beginners at a camp.",
+                                          "C":  "He wanted to be a sports teacher."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Ben says he helped at a youth camp and discovered he liked teaching beginners on the water."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What does Ben teach beginners first?",
+                          "options":  {
+                                          "A":  "how to move faster",
+                                          "B":  "how to turn the kayak",
+                                          "C":  "how to leave the kayak safely"
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "C",
+                          "explanation":  "Ben first teaches people how to get out of the kayak safely if it turns over."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "Why does Ben like teaching on a quiet lake?",
+                          "options":  {
+                                          "A":  "There is more time to practise calmly.",
+                                          "B":  "The water is always warm there.",
+                                          "C":  "It is closer to his home."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Ben prefers the quiet lake because students can practise without rushing."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "How has Ben changed his teaching?",
+                          "options":  {
+                                          "A":  "He gives longer talks before lessons.",
+                                          "B":  "He demonstrates skills from his own kayak.",
+                                          "C":  "He asks advanced students to help."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Ben now shows one skill at a time while sitting in his own boat."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What weather is most likely to stop a lesson?",
+                          "options":  {
+                                          "A":  "heavy rain",
+                                          "B":  "cold temperatures",
+                                          "C":  "strong wind"
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "C",
+                          "explanation":  "Ben says strong wind is the weather that usually makes him cancel a lesson."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What will be special about Ben's new family trips?",
+                          "options":  {
+                                          "A":  "They will happen in the evening.",
+                                          "B":  "They will include a picnic on an island.",
+                                          "C":  "They will be for very experienced kayakers."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Ben says the new trips will include a picnic stop on a small island."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2038.mp3",
+    "word_count":  536
 }

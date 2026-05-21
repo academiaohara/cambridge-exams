@@ -1,96 +1,144 @@
 {
+    "test_id":  28,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a teenager learning photography",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a teenager learning photography. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a man called Dylan Brooks, who studies sea life.",
+    "voices":  {
+                   "interviewer":  "en-GB-NoahNeural",
+                   "guest":  "en-GB-SoniaNeural"
+               },
+    "audio_script":  "Interviewer: My guest today is Dylan Brooks, who studies sea life around the British coast. Dylan, did you always want to be a marine biologist? || Guest: I loved the sea, but I wanted to be a journalist at first. Then I joined a school trip where we counted crabs and small fish in rock pools. [20]I was amazed that there was so much life in places I had walked past without noticing[/20]. After that I started reading about the coast and changed my plans. || Interviewer: What does your work involve on a normal day? || Guest: It depends on the weather. If the sea is calm, we go out by boat and take samples. But [21]on many days I spend hours entering information into a computer so we can compare results over time[/21]. People imagine exciting underwater work, and there is some of that, but careful records are just as important. || Interviewer: What do you enjoy most? || Guest: I enjoy diving, of course, but [22]the best part is finding small improvements in areas where people have worked hard to protect the sea[/22]. For example, if we see more young fish in a protected area, it suggests the rules are helping. Those moments make the slow work feel worthwhile. || Interviewer: What worries you about the coast? || Guest: Plastic rubbish is a big problem, but people know about it now. [23]I'm also worried by how much noise from boats can disturb animals that use sound to find food[/23]. You can't see noise floating on the water, so it is harder to explain, but it can affect sea life seriously. || Interviewer: You give talks in schools. What message do you want students to remember? || Guest: I tell them they don't need to live beside the sea to help it. [24]Simple choices, like using less plastic and not wasting water, can still make a difference[/24]. I also want them to be curious. If they visit a beach, they should look closely and ask what lives there. || Interviewer: What's next for your research? || Guest: This summer we're working with local fishermen. [25]We want to test new nets that allow very young fish to escape while keeping the adult fish[/25]. If it works, it could protect future fish numbers without stopping people earning a living from the sea. || Interviewer: Do you think the public is becoming more interested in the sea? || Guest: Definitely. Programmes on television have helped, but local projects are important too. When people join a beach survey or a clean-up, they begin to feel responsible for the place. I try not to make people feel guilty, because that often makes them switch off. Instead, I show them something surprising, like a tiny animal living under seaweed. Once they care about what is there, they are much more willing to protect it and to change small habits. I also work with volunteers who send photographs from beaches after storms. Their records help us notice changes quickly, and they prove that ordinary people can contribute to real scientific work.  It also helps scientists cover more coastline than we could manage alone.  That keeps the work connected to real places.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "My guest today is Dylan Brooks, who studies sea life around the British coast. Dylan, did you always want to be a marine biologist?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I loved the sea, but I wanted to be a journalist at first. Then I joined a school trip where we counted crabs and small fish in rock pools. I was amazed that there was so much life in places I had walked past without noticing. After that I started reading about the coast and changed my plans."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What does your work involve on a normal day?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "It depends on the weather. If the sea is calm, we go out by boat and take samples. But on many days I spend hours entering information into a computer so we can compare results over time. People imagine exciting underwater work, and there is some of that, but careful records are just as important."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you enjoy most?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I enjoy diving, of course, but the best part is finding small improvements in areas where people have worked hard to protect the sea. For example, if we see more young fish in a protected area, it suggests the rules are helping. Those moments make the slow work feel worthwhile."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What worries you about the coast?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Plastic rubbish is a big problem, but people know about it now. I'm also worried by how much noise from boats can disturb animals that use sound to find food. You can't see noise floating on the water, so it is harder to explain, but it can affect sea life seriously."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "You give talks in schools. What message do you want students to remember?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I tell them they don't need to live beside the sea to help it. Simple choices, like using less plastic and not wasting water, can still make a difference. I also want them to be curious. If they visit a beach, they should look closely and ask what lives there."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What's next for your research?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "This summer we're working with local fishermen. We want to test new nets that allow very young fish to escape while keeping the adult fish. If it works, it could protect future fish numbers without stopping people earning a living from the sea."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you think the public is becoming more interested in the sea?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Definitely. Programmes on television have helped, but local projects are important too. When people join a beach survey or a clean-up, they begin to feel responsible for the place. I try not to make people feel guilty, because that often makes them switch off. Instead, I show them something surprising, like a tiny animal living under seaweed. Once they care about what is there, they are much more willing to protect it and to change small habits. I also work with volunteers who send photographs from beaches after storms. Their records help us notice changes quickly, and they prove that ordinary people can contribute to real scientific work.  It also helps scientists cover more coastline than we could manage alone.  That keeps the work connected to real places."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Dylan become interested in marine biology?",
+                          "options":  {
+                                          "A":  "He discovered unexpected sea life on a school trip.",
+                                          "B":  "He read a book by a famous scientist.",
+                                          "C":  "He wanted to write about environmental problems."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Dylan says he was amazed by the life he saw in rock pools on a school trip."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What does Dylan say about his normal work?",
+                          "options":  {
+                                          "A":  "It usually involves diving underwater.",
+                                          "B":  "It includes a lot of computer work.",
+                                          "C":  "It is impossible in bad weather."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "B",
+                          "explanation":  "He says he often spends hours entering information into a computer."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What gives Dylan most satisfaction?",
+                          "options":  {
+                                          "A":  "teaching people to dive safely",
+                                          "B":  "discovering new types of fish",
+                                          "C":  "seeing signs that protection is working"
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Dylan says the best part is finding improvements in protected areas."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "What environmental problem does Dylan mention?",
+                          "options":  {
+                                          "A":  "noise made by boats",
+                                          "B":  "plastic bottles on beaches",
+                                          "C":  "people taking too many shellfish"
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "He says he is worried by noise from boats disturbing animals."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What does Dylan tell students?",
+                          "options":  {
+                                          "A":  "They should study science at school.",
+                                          "B":  "They can help the sea through everyday choices.",
+                                          "C":  "They need to visit the coast more often."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "B",
+                          "explanation":  "He says simple choices such as using less plastic can make a difference."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What will Dylan test this summer?",
+                          "options":  {
+                                          "A":  "new ways to clean beaches",
+                                          "B":  "a method for counting young fish",
+                                          "C":  "nets that let young fish escape"
+                                      },
+                          "answer":  "C",
+                          "explanation":  "He says they want to test nets that allow very young fish to escape."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2028.mp3"
 }

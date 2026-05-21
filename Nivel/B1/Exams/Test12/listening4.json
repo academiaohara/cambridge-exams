@@ -1,96 +1,168 @@
 {
+    "id":  12,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a student working part-time",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a student working part-time. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a boy called Ethan Marsh, who plays chess in national competitions.",
+    "voices":  {
+                   "interviewer":  "en-GB-NoahNeural",
+                   "guest":  "en-GB-LibbyNeural"
+               },
+    "audio_script":  "Interviewer: Today we're speaking to Ethan Marsh, a young chess player who has already won several national competitions. Ethan, how did you first get interested in chess? || Guest: My grandfather had a chessboard in his living room, but I only watched him play at first. Then one rainy holiday, he showed me the moves. [20]I liked that every game felt like a puzzle I could solve in a different way[/20], so I kept asking to play. || Interviewer: Did you start entering competitions straight away? || Guest: No, I was nervous at first. My first club competition was in a school hall, and I lost the first two games. [21]What bothered me most was sitting silently for so long while everyone else looked completely calm[/21]. I wasn't used to that. || Interviewer: How do you prepare before an important match? || Guest: Some players memorise long lists of openings. I do a little of that, but [22]I spend more time looking back at my old games to see the mistakes I keep making[/22]. It helps me avoid repeating them. || Interviewer: What happened when you won your first national title? || Guest: I was pleased, of course, but it felt strange. [23]I expected to feel confident afterwards, but actually I worried people would expect me to win every match[/23]. That pressure took time to handle. || Interviewer: Do your friends understand your interest in chess? || Guest: Some do. Others think it's just a quiet board game. [24]They don't realise how tiring it is to concentrate hard for several hours[/24]. After a tournament I feel as tired as I do after sport. || Interviewer: What would you like to do next? || Guest: I'm working with a coach online, which is useful. But [25]I'd really like to play in a tournament abroad, because meeting players from other countries would teach me a lot[/25]. It would also be exciting to travel because of chess. || Interviewer: Do you think chess helps you at school? || Guest: Yes, but not in a simple way. It doesn't make homework easy, but it helps me stay patient. If a maths problem looks difficult, I don't panic as quickly. I try one method, then another, like in a game. Teachers say I think more carefully now. || Interviewer: Do you ever get bored with it? || Guest: Sometimes, especially when I study alone for too long. Then I take a break and play football or go cycling. Chess is important to me, but I don't want it to become the only thing I do. Having other interests makes me play better, I think. || Interviewer: How do you deal with losing an important game? || Guest: I used to feel awful for days, but my coach helped me see a lost game as information. After a match we look at one or two key moves, not every mistake. That makes it less painful and much more useful. || Interviewer: Do you prefer playing online or face to face? || Guest: Online chess is convenient, especially on school nights, but face-to-face games feel more serious. You notice the other player thinking, and you have to control your own expression. That is part of the challenge, and I think it makes me stronger.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today we're speaking to Ethan Marsh, a young chess player who has already won several national competitions. Ethan, how did you first get interested in chess?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "My grandfather had a chessboard in his living room, but I only watched him play at first. Then one rainy holiday, he showed me the moves. I liked that every game felt like a puzzle I could solve in a different way, so I kept asking to play."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Did you start entering competitions straight away?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "No, I was nervous at first. My first club competition was in a school hall, and I lost the first two games. What bothered me most was sitting silently for so long while everyone else looked completely calm. I wasn't used to that."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "How do you prepare before an important match?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Some players memorise long lists of openings. I do a little of that, but I spend more time looking back at my old games to see the mistakes I keep making. It helps me avoid repeating them."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What happened when you won your first national title?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I was pleased, of course, but it felt strange. I expected to feel confident afterwards, but actually I worried people would expect me to win every match. That pressure took time to handle."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do your friends understand your interest in chess?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Some do. Others think it's just a quiet board game. They don't realise how tiring it is to concentrate hard for several hours. After a tournament I feel as tired as I do after sport."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What would you like to do next?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I'm working with a coach online, which is useful. But I'd really like to play in a tournament abroad, because meeting players from other countries would teach me a lot. It would also be exciting to travel because of chess."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you think chess helps you at school?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, but not in a simple way. It doesn't make homework easy, but it helps me stay patient. If a maths problem looks difficult, I don't panic as quickly. I try one method, then another, like in a game. Teachers say I think more carefully now."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you ever get bored with it?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Sometimes, especially when I study alone for too long. Then I take a break and play football or go cycling. Chess is important to me, but I don't want it to become the only thing I do. Having other interests makes me play better, I think."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "How do you deal with losing an important game?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I used to feel awful for days, but my coach helped me see a lost game as information. After a match we look at one or two key moves, not every mistake. That makes it less painful and much more useful."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you prefer playing online or face to face?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Online chess is convenient, especially on school nights, but face-to-face games feel more serious. You notice the other player thinking, and you have to control your own expression. That is part of the challenge, and I think it makes me stronger."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Ethan first enjoy chess?",
+                          "options":  {
+                                          "A":  "He wanted to copy his grandfather.",
+                                          "B":  "He enjoyed solving problems in different ways.",
+                                          "C":  "He liked collecting different chessboards."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Ethan says every game felt like a puzzle he could solve in a different way."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What did Ethan find difficult at his first competition?",
+                          "options":  {
+                                          "A":  "Losing to much older players.",
+                                          "B":  "Playing in a school hall.",
+                                          "C":  "Keeping quiet and still for a long time."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "C",
+                          "explanation":  "He says sitting silently for so long bothered him most."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "How does Ethan usually prepare for matches?",
+                          "options":  {
+                                          "A":  "He studies his own previous games.",
+                                          "B":  "He memorises as many openings as possible.",
+                                          "C":  "He practises with friends from school."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "He says he spends more time looking back at his old games to see his mistakes."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "How did Ethan feel after winning his first national title?",
+                          "options":  {
+                                          "A":  "More relaxed about future games.",
+                                          "B":  "Worried about other people’s expectations.",
+                                          "C":  "Disappointed by the public reaction."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "He says he worried people would expect him to win every match."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What do some of Ethan’s friends not understand about chess?",
+                          "options":  {
+                                          "A":  "How expensive competitions can be.",
+                                          "B":  "How many rules players must learn.",
+                                          "C":  "How tiring it is to concentrate for hours."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "C",
+                          "explanation":  "He says they do not realise how tiring it is to concentrate hard for several hours."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What would Ethan like to do next?",
+                          "options":  {
+                                          "A":  "Compete in another country.",
+                                          "B":  "Start teaching younger players.",
+                                          "C":  "Join a different chess club."
+                                      },
+                          "answer":  "A",
+                          "explanation":  "He says he would like to play in a tournament abroad."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2012.mp3"
 }

@@ -1,96 +1,161 @@
 {
+    "id":  1,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a teenager who started a cooking blog",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a teenager who started a cooking blog. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a man called Daniel Reed, who works as a park ranger.",
+    "voices":  {
+                   "interviewer":  "en-GB-RyanNeural",
+                   "guest":  "en-GB-SoniaNeural"
+               },
+    "audio_script":  "Interviewer: Today I'm talking to Daniel Reed, who works as a park ranger in a large country park. Daniel, did you always want to work outdoors? || Guest: Not really. At school I was more interested in computers than animals, and I spent a year working in an office. Then a neighbour asked me to help with a weekend project clearing paths in the park. [20]I loved being outside with a team of volunteers, and that weekend made me look for ranger training[/20]. || Interviewer: What was hard when you started the job? || Guest: I expected the long walks to be tiring, and they were at first. But the real problem was talking to visitors who were angry about rules. [21]Explaining calmly why dogs must stay on leads took much more confidence than I had imagined[/21]. || Interviewer: What do you enjoy most now? || Guest: People often think I spend all day alone watching birds. I do enjoy wildlife surveys, but [22]my favourite part is taking school groups round and seeing children notice tiny things, like insects under leaves[/22]. They ask great questions. || Interviewer: Has anything changed in the park recently? || Guest: Yes, we've opened a new wetland area. Some visitors complained because an old car park was closed, but the new area is worth it. [23]We've already seen more frogs and water birds there than anyone expected[/23]. || Interviewer: Do you ever feel worried at work? || Guest: Only when the weather changes quickly. I check forecasts, of course, but in winter storms can arrive suddenly. [24]If strong winds start, my main worry is getting visitors away from trees safely[/24]. Most people listen, but a few want to finish their walk. || Interviewer: What advice would you give someone who wants this job? || Guest: Don't think it's only about loving nature. That's important, but [25]you need to be patient with people, because helping visitors is a huge part of the work[/25]. If you enjoy explaining things clearly, it's a wonderful job. || Interviewer: Before we finish, Daniel, many people visit parks only at weekends. What do you think they often miss? || Guest: They miss the small seasonal changes. In spring everyone notices the flowers, but later there are seeds, fungi and animal tracks, which are just as interesting. I often tell visitors to slow down and stop treating a walk like a race. If you stand quietly for two minutes, you usually hear or see something you would have missed. || Interviewer: Do you have a favourite time of day in the park? || Guest: Early morning, definitely. The park belongs to the wildlife then, before the car park fills and before children arrive for school visits. I can check the paths, open gates and listen to birds at the same time. It also gives me a calm start before dealing with emails, repairs and lost property. People imagine rangers avoid paperwork, but there is still plenty of it. || Interviewer: Has the job changed how you spend your own free time? || Guest: Yes, strangely, I now visit towns more often on days off. I still love the countryside, but after five days outdoors I sometimes want a museum or a café. That said, I always notice trees and public gardens wherever I go. You never really stop being a ranger.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today I'm talking to Daniel Reed, who works as a park ranger in a large country park. Daniel, did you always want to work outdoors?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Not really. At school I was more interested in computers than animals, and I spent a year working in an office. Then a neighbour asked me to help with a weekend project clearing paths in the park. I loved being outside with a team of volunteers, and that weekend made me look for ranger training."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was hard when you started the job?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I expected the long walks to be tiring, and they were at first. But the real problem was talking to visitors who were angry about rules. Explaining calmly why dogs must stay on leads took much more confidence than I had imagined."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you enjoy most now?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "People often think I spend all day alone watching birds. I do enjoy wildlife surveys, but my favourite part is taking school groups round and seeing children notice tiny things, like insects under leaves. They ask great questions."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Has anything changed in the park recently?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, we've opened a new wetland area. Some visitors complained because an old car park was closed, but the new area is worth it. We've already seen more frogs and water birds there than anyone expected."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you ever feel worried at work?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Only when the weather changes quickly. I check forecasts, of course, but in winter storms can arrive suddenly. If strong winds start, my main worry is getting visitors away from trees safely. Most people listen, but a few want to finish their walk."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What advice would you give someone who wants this job?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Don't think it's only about loving nature. That's important, but you need to be patient with people, because helping visitors is a huge part of the work. If you enjoy explaining things clearly, it's a wonderful job."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Before we finish, Daniel, many people visit parks only at weekends. What do you think they often miss?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "They miss the small seasonal changes. In spring everyone notices the flowers, but later there are seeds, fungi and animal tracks, which are just as interesting. I often tell visitors to slow down and stop treating a walk like a race. If you stand quietly for two minutes, you usually hear or see something you would have missed."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you have a favourite time of day in the park?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Early morning, definitely. The park belongs to the wildlife then, before the car park fills and before children arrive for school visits. I can check the paths, open gates and listen to birds at the same time. It also gives me a calm start before dealing with emails, repairs and lost property. People imagine rangers avoid paperwork, but there is still plenty of it."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Has the job changed how you spend your own free time?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, strangely, I now visit towns more often on days off. I still love the countryside, but after five days outdoors I sometimes want a museum or a café. That said, I always notice trees and public gardens wherever I go. You never really stop being a ranger."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Daniel decide to train as a park ranger?",
+                          "options":  {
+                                          "A":  "He wanted to stop working with computers.",
+                                          "B":  "He enjoyed helping on an outdoor project.",
+                                          "C":  "He was asked to join by a neighbour."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Daniel says that helping with a weekend project in the park made him look for ranger training."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What did Daniel find difficult when he first started?",
+                          "options":  {
+                                          "A":  "walking long distances every day",
+                                          "B":  "remembering all the park rules",
+                                          "C":  "dealing with unhappy visitors"
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "C",
+                          "explanation":  "He says explaining rules calmly to angry visitors needed more confidence than he expected."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What does Daniel like most about his job now?",
+                          "options":  {
+                                          "A":  "studying birds on his own",
+                                          "B":  "answering questions from adults",
+                                          "C":  "showing children things in nature"
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Daniel says his favourite part is taking school groups round and seeing children notice small things."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "What does Daniel say about the new wetland area?",
+                          "options":  {
+                                          "A":  "Some visitors use it as a car park.",
+                                          "B":  "It has attracted a lot of wildlife.",
+                                          "C":  "It took longer to build than expected."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "He says they have already seen more frogs and water birds there than expected."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What worries Daniel most during bad weather?",
+                          "options":  {
+                                          "A":  "visitors standing near trees",
+                                          "B":  "not knowing the forecast",
+                                          "C":  "paths becoming too wet"
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "A",
+                          "explanation":  "Daniel says his main worry is getting visitors away from trees safely when strong winds start."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "Daniel says people who want to be park rangers should",
+                          "options":  {
+                                          "A":  "learn a lot about rare animals.",
+                                          "B":  "be good at working with visitors.",
+                                          "C":  "enjoy spending time alone."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "He says people need to be patient with visitors because helping them is a huge part of the job."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%201.mp3",
+    "word_count":  524
 }

@@ -1,96 +1,144 @@
 {
+    "test_id":  29,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a young musician performing locally",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a young musician performing locally. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a woman called Maya Reed, who makes clothes from old materials.",
+    "voices":  {
+                   "interviewer":  "en-GB-ThomasNeural",
+                   "guest":  "en-GB-AbbiNeural"
+               },
+    "audio_script":  "Interviewer: Today we're speaking to Maya Reed, who makes new clothes from old materials. Maya, how did this begin? || Guest: I liked fashion, but I didn't have much money as a student. My grandmother gave me a box of old curtains and coats. [20]I started changing them into jackets for myself, and people at college kept asking where I had bought them[/20]. That made me realise old fabric could become something modern and personal. || Interviewer: What do you look for when choosing materials? || Guest: Colour matters, but it isn't the first thing. [21]I mainly check whether the material is strong enough to be worn often[/21]. Some beautiful fabrics tear easily or cannot be washed. I want clothes to last, otherwise there is no point saying they are better for the environment. Practical details matter as much as style. || Interviewer: What is the most creative part of the job? || Guest: I enjoy designing, but [22]the most creative part is solving problems when the fabric is an unusual size or shape[/22]. New fabric comes in neat pieces, but old curtains may have marks or strange edges. You have to decide how to hide a stain or turn a damaged part into a pocket. || Interviewer: Do customers ever find the idea strange? || Guest: Some do at first. They worry that clothes made from old materials will look second-hand. [23]Once customers try the clothes on, they are usually surprised by how smart and original they look[/23]. I never hide where the fabric came from, but I want the final piece to feel fresh, not like a costume. || Interviewer: What has been difficult as your business has grown? || Guest: Finding enough good material is difficult, but [24]the bigger problem is explaining why handmade clothes cost more than cheap fashion in shops[/24]. People compare prices without thinking about time, skill or waste. I spend a lot of energy showing customers what goes into each jacket or dress. || Interviewer: What would you like to do next? || Guest: I'd like to teach teenagers some basic sewing. [25]Even if they never make all their own clothes, they could repair a button or change something they already own[/25]. That would help them see clothes differently. Fashion should not just be about buying more and throwing things away. || Interviewer: Has making clothes this way changed how you shop? || Guest: Completely. I buy far fewer new things now, and when I do, I check the seams and fabric more carefully. I also ask myself whether I will still want the item in five years. That question stops many unnecessary purchases. I don't tell people never to enjoy fashion; I enjoy it myself. I just want people to slow down and notice quality. If something is well made and loved for a long time, it is already more sustainable than a cupboard full of bargains. I also run repair evenings where people bring old clothes they nearly threw away. The atmosphere is friendly, and people leave feeling proud because they have saved something with their own hands.  Those evenings also help neighbours meet and share skills in a relaxed way.  It proves repair can be social too.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today we're speaking to Maya Reed, who makes new clothes from old materials. Maya, how did this begin?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I liked fashion, but I didn't have much money as a student. My grandmother gave me a box of old curtains and coats. I started changing them into jackets for myself, and people at college kept asking where I had bought them. That made me realise old fabric could become something modern and personal."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you look for when choosing materials?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Colour matters, but it isn't the first thing. I mainly check whether the material is strong enough to be worn often. Some beautiful fabrics tear easily or cannot be washed. I want clothes to last, otherwise there is no point saying they are better for the environment. Practical details matter as much as style."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What is the most creative part of the job?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I enjoy designing, but the most creative part is solving problems when the fabric is an unusual size or shape. New fabric comes in neat pieces, but old curtains may have marks or strange edges. You have to decide how to hide a stain or turn a damaged part into a pocket."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do customers ever find the idea strange?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Some do at first. They worry that clothes made from old materials will look second-hand. Once customers try the clothes on, they are usually surprised by how smart and original they look. I never hide where the fabric came from, but I want the final piece to feel fresh, not like a costume."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What has been difficult as your business has grown?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Finding enough good material is difficult, but the bigger problem is explaining why handmade clothes cost more than cheap fashion in shops. People compare prices without thinking about time, skill or waste. I spend a lot of energy showing customers what goes into each jacket or dress."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What would you like to do next?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I'd like to teach teenagers some basic sewing. Even if they never make all their own clothes, they could repair a button or change something they already own. That would help them see clothes differently. Fashion should not just be about buying more and throwing things away."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Has making clothes this way changed how you shop?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Completely. I buy far fewer new things now, and when I do, I check the seams and fabric more carefully. I also ask myself whether I will still want the item in five years. That question stops many unnecessary purchases. I don't tell people never to enjoy fashion; I enjoy it myself. I just want people to slow down and notice quality. If something is well made and loved for a long time, it is already more sustainable than a cupboard full of bargains. I also run repair evenings where people bring old clothes they nearly threw away. The atmosphere is friendly, and people leave feeling proud because they have saved something with their own hands.  Those evenings also help neighbours meet and share skills in a relaxed way.  It proves repair can be social too."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "How did Maya first start making clothes from old materials?",
+                          "options":  {
+                                          "A":  "She wanted to sell jackets online.",
+                                          "B":  "She used fabric her grandmother gave her.",
+                                          "C":  "She learnt the idea on a fashion course."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Maya says her grandmother gave her old curtains and coats, which she changed into jackets."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What is most important to Maya when choosing material?",
+                          "options":  {
+                                          "A":  "how strong it is",
+                                          "B":  "how colourful it is",
+                                          "C":  "how unusual it looks"
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "A",
+                          "explanation":  "Maya says she mainly checks whether the material is strong enough to be worn often."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What does Maya find most creative?",
+                          "options":  {
+                                          "A":  "drawing new jacket designs",
+                                          "B":  "choosing colours for each customer",
+                                          "C":  "dealing with difficult pieces of fabric"
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "She says solving problems with unusual fabric sizes and shapes is the most creative part."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "How do customers often react after trying on Maya's clothes?",
+                          "options":  {
+                                          "A":  "They ask about the history of the fabric.",
+                                          "B":  "They are surprised that the clothes look good.",
+                                          "C":  "They worry about washing the clothes."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Maya says customers are usually surprised by how smart and original the clothes look."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What business problem does Maya mention?",
+                          "options":  {
+                                          "A":  "finding people with sewing skills",
+                                          "B":  "competing with online shops",
+                                          "C":  "helping customers understand the prices"
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "C",
+                          "explanation":  "She says the bigger problem is explaining why handmade clothes cost more than cheap fashion."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "Why does Maya want to teach teenagers sewing?",
+                          "options":  {
+                                          "A":  "so they can repair or change clothes",
+                                          "B":  "so they can start their own businesses",
+                                          "C":  "so they can design fashion collections"
+                                      },
+                          "answer":  "A",
+                          "explanation":  "Maya wants teenagers to repair a button or change something they already own."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2029.mp3"
 }

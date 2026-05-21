@@ -1,96 +1,184 @@
 {
+    "id":  20,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a student travelling abroad",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a student travelling abroad. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a man called Marcus Lee, who works as a sports journalist.",
+    "voices":  {
+                   "interviewer":  "en-GB-NoahNeural",
+                   "guest":  "en-GB-SoniaNeural"
+               },
+    "audio_script":  "Interviewer: Today we're speaking to Marcus Lee, who works as a sports journalist. Marcus, did you become a journalist because you were good at sport? || Guest: I played football at school, but I wasn't special. [20]What I really enjoyed was writing match reports for the school website and trying to describe the excitement clearly[/20]. That led me towards journalism. || Interviewer: What was your first paid job like? || Guest: I wrote short reports about local matches. It wasn't glamorous, but it taught me a lot. [21]I had to be accurate with names, scores and times, even when the game was wet and cold[/21]. Those details matter. || Interviewer: What is difficult about interviewing players? || Guest: People imagine famous players are the hardest, but they are used to interviews. [22]The difficult part is asking useful questions when someone has just lost and feels disappointed[/22]. You need respect. || Interviewer: Has online journalism changed your work? || Guest: Completely. Articles have to appear quickly now. [23]After a match, I often write the first version on my phone before I even leave the stadium[/23]. Later I can add more detail. || Interviewer: What do you enjoy most about the job? || Guest: Big finals are exciting, of course, but [24]I prefer covering young local athletes and seeing them improve over several seasons[/24]. You feel part of their story. || Interviewer: What advice would you give someone who wants to be a sports journalist? || Guest: Watch lots of sport, but don't only watch your favourite team. [25]Learn to explain sports you know less about, because editors need people who can cover different events[/25]. That makes you useful. || Interviewer: Do you ever get tired of sport? || Guest: Not tired of sport itself, but sometimes of the travel. A match may finish late, and then I still have to send a report before getting a train home. People see the seat in the stadium, not the hours afterwards. Still, I know I'm lucky. || Interviewer: Has the job changed how you watch games for fun? || Guest: Yes. I notice tactics and possible headlines instead of just cheering. If I'm at a game with friends, they sometimes tell me to stop analysing it. But when a match is really exciting, I forget work for a while and become a fan again. || Interviewer: What makes a good match report? || Guest: It needs the important facts, but it also needs a sense of what the game felt like. A reader who was not there should understand whether the crowd was nervous, excited or bored. That takes careful observation. || Interviewer: Do you prefer writing or interviewing? || Guest: I enjoy both. Writing lets me shape the story quietly, while interviews can surprise me. A player may say something simple that explains the whole match. When that happens, the article almost writes itself, which is a great feeling. || Interviewer: What do you read to improve your own writing? || Guest: I read sports reports, but also travel writing and interviews from other subjects. Good writing is good writing, whatever the topic. Seeing how other writers create a clear picture helps me make my own reports more lively. || Interviewer: What is hardest when writing live updates? || Guest: You have to be fast but fair. It is easy to send a quick opinion that later looks wrong, so I try to describe what has happened before making strong judgements.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Today we're speaking to Marcus Lee, who works as a sports journalist. Marcus, did you become a journalist because you were good at sport?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I played football at school, but I wasn't special. What I really enjoyed was writing match reports for the school website and trying to describe the excitement clearly. That led me towards journalism."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What was your first paid job like?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I wrote short reports about local matches. It wasn't glamorous, but it taught me a lot. I had to be accurate with names, scores and times, even when the game was wet and cold. Those details matter."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What is difficult about interviewing players?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "People imagine famous players are the hardest, but they are used to interviews. The difficult part is asking useful questions when someone has just lost and feels disappointed. You need respect."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Has online journalism changed your work?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Completely. Articles have to appear quickly now. After a match, I often write the first version on my phone before I even leave the stadium. Later I can add more detail."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you enjoy most about the job?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Big finals are exciting, of course, but I prefer covering young local athletes and seeing them improve over several seasons. You feel part of their story."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What advice would you give someone who wants to be a sports journalist?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Watch lots of sport, but don't only watch your favourite team. Learn to explain sports you know less about, because editors need people who can cover different events. That makes you useful."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you ever get tired of sport?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Not tired of sport itself, but sometimes of the travel. A match may finish late, and then I still have to send a report before getting a train home. People see the seat in the stadium, not the hours afterwards. Still, I know I'm lucky."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Has the job changed how you watch games for fun?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes. I notice tactics and possible headlines instead of just cheering. If I'm at a game with friends, they sometimes tell me to stop analysing it. But when a match is really exciting, I forget work for a while and become a fan again."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What makes a good match report?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "It needs the important facts, but it also needs a sense of what the game felt like. A reader who was not there should understand whether the crowd was nervous, excited or bored. That takes careful observation."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you prefer writing or interviewing?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I enjoy both. Writing lets me shape the story quietly, while interviews can surprise me. A player may say something simple that explains the whole match. When that happens, the article almost writes itself, which is a great feeling."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do you read to improve your own writing?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I read sports reports, but also travel writing and interviews from other subjects. Good writing is good writing, whatever the topic. Seeing how other writers create a clear picture helps me make my own reports more lively."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What is hardest when writing live updates?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "You have to be fast but fair. It is easy to send a quick opinion that later looks wrong, so I try to describe what has happened before making strong judgements."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Marcus become interested in sports journalism?",
+                          "options":  {
+                                          "A":  "He enjoyed writing reports about school matches.",
+                                          "B":  "He wanted to become a professional footballer.",
+                                          "C":  "He was asked to coach a school team."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Marcus says he enjoyed writing match reports for the school website."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What did Marcus learn in his first paid job?",
+                          "options":  {
+                                          "A":  "Local matches are more exciting than big games.",
+                                          "B":  "Small factual details must be correct.",
+                                          "C":  "Reports are easier to write in bad weather."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "B",
+                          "explanation":  "He says he had to be accurate with names, scores and times."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What does Marcus find difficult about interviews?",
+                          "options":  {
+                                          "A":  "Speaking to famous players.",
+                                          "B":  "Finding enough time after matches.",
+                                          "C":  "Questioning players who are upset after losing."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "He says the difficult part is asking useful questions when someone has just lost."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "How has online journalism changed Marcus’s work?",
+                          "options":  {
+                                          "A":  "He has to write reports very quickly.",
+                                          "B":  "He travels to fewer matches.",
+                                          "C":  "He writes longer articles than before."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "He says he often writes the first version on his phone before leaving the stadium."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What does Marcus like best about his job?",
+                          "options":  {
+                                          "A":  "Reporting on major finals.",
+                                          "B":  "Following local athletes as they develop.",
+                                          "C":  "Meeting famous international players."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "B",
+                          "explanation":  "He says he prefers covering young local athletes and seeing them improve."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What advice does Marcus give future sports journalists?",
+                          "options":  {
+                                          "A":  "Focus mainly on one favourite sport.",
+                                          "B":  "Try to work for a local newspaper first.",
+                                          "C":  "Be able to write about different sports."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "He says they should learn to explain sports they know less about."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2020.mp3"
 }

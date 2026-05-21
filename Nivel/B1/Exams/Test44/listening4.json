@@ -1,96 +1,160 @@
 {
+    "id":  44,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a teenager who started a cooking blog",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a teenager who started a cooking blog. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a man called Ben Morris, who makes bags from recycled materials.",
+    "voices":  {
+                   "interviewer":  "en-GB-RyanNeural",
+                   "guest":  "en-GB-LibbyNeural"
+               },
+    "audio_script":  "Interviewer: My guest today is Ben Morris, who started a small company making bags from recycled materials. Ben, where did the idea come from? || Guest: I was travelling by train and noticed how many advertising banners were being taken down after a sports event. They were huge and colourful, but they were going to be thrown away. [20]I wondered if the strong material could be cut and sewn into bags instead[/20]. I made one for myself first, and people kept asking where I had bought it. || Interviewer: Was it easy to start selling them? || Guest: No. I knew the bags were interesting, but I didn't know much about business. A friend helped me build a website, and my sister took good photos. [21]The real problem was finding people who could sew the thick material neatly[/21]. Ordinary machines broke, so we had to use a small workshop that usually repaired boat covers. || Interviewer: What do customers like about the bags? || Guest: They like the environmental idea, of course, but they also enjoy the fact that every bag looks different. [22]Some customers say they like having a bag with part of a picture or colour that no one else has[/22]. We can't make two exactly the same, even if we try. || Interviewer: Do you ever run out of materials? || Guest: Sometimes. We collect banners from festivals, shops and exhibitions, but they arrive at different times of year. [23]Winter is the most difficult season because there are fewer outdoor events[/23]. In summer, we usually have too much material and not enough space to store it. || Interviewer: Has running the company changed the way you shop? || Guest: Definitely. I used to buy things quickly if they were cheap. Now I ask where something comes from and how long it will last. [24]I don't buy less because I feel guilty; I buy less because I prefer things that I can use for years[/24]. That feels more positive. || Interviewer: What would you like the company to do next? || Guest: We are testing some laptop cases, but the design is not quite right yet. [25]Our next product will probably be a simple school bag because parents keep asking for one[/25]. It must be strong, light and easy to clean, so it will take time to get right. || Interviewer: Do people understand why the bags cost more than some ordinary bags? || Guest: Usually, once we explain the process. We have to collect the material, wash it, cut around damaged parts and sew every bag by hand. It takes longer than using new fabric from a roll. I try to be honest about that, because customers appreciate knowing where their money goes. || Interviewer: What have you learnt from running a small company? || Guest: I have learnt to ask for help earlier. At first I tried to do everything myself, from emails to packing orders. That made me tired and mistakes happened. Now I work with a small team, and the business feels healthier. || Interviewer: Do you have a favourite bag from the ones you've made? || Guest: I kept the first one, although it is not as neat as the bags we sell now. It reminds me that an idea does not have to be perfect at the beginning. You can improve it slowly by listening to people and solving one problem at a time.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "My guest today is Ben Morris, who started a small company making bags from recycled materials. Ben, where did the idea come from?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I was travelling by train and noticed how many advertising banners were being taken down after a sports event. They were huge and colourful, but they were going to be thrown away. I wondered if the strong material could be cut and sewn into bags instead. I made one for myself first, and people kept asking where I had bought it."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Was it easy to start selling them?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "No. I knew the bags were interesting, but I didn't know much about business. A friend helped me build a website, and my sister took good photos. The real problem was finding people who could sew the thick material neatly. Ordinary machines broke, so we had to use a small workshop that usually repaired boat covers."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What do customers like about the bags?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "They like the environmental idea, of course, but they also enjoy the fact that every bag looks different. Some customers say they like having a bag with part of a picture or colour that no one else has. We can't make two exactly the same, even if we try."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you ever run out of materials?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Sometimes. We collect banners from festivals, shops and exhibitions, but they arrive at different times of year. Winter is the most difficult season because there are fewer outdoor events. In summer, we usually have too much material and not enough space to store it."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Has running the company changed the way you shop?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Definitely. I used to buy things quickly if they were cheap. Now I ask where something comes from and how long it will last. I don't buy less because I feel guilty; I buy less because I prefer things that I can use for years. That feels more positive."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What would you like the company to do next?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "We are testing some laptop cases, but the design is not quite right yet. Our next product will probably be a simple school bag because parents keep asking for one. It must be strong, light and easy to clean, so it will take time to get right."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do people understand why the bags cost more than some ordinary bags?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Usually, once we explain the process. We have to collect the material, wash it, cut around damaged parts and sew every bag by hand. It takes longer than using new fabric from a roll. I try to be honest about that, because customers appreciate knowing where their money goes."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What have you learnt from running a small company?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I have learnt to ask for help earlier. At first I tried to do everything myself, from emails to packing orders. That made me tired and mistakes happened. Now I work with a small team, and the business feels healthier."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you have a favourite bag from the ones you've made?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I kept the first one, although it is not as neat as the bags we sell now. It reminds me that an idea does not have to be perfect at the beginning. You can improve it slowly by listening to people and solving one problem at a time."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "What gave Ben the idea for his bags?",
+                          "options":  {
+                                          "A":  "Seeing useful material that was going to be wasted.",
+                                          "B":  "Buying a colourful bag while he was travelling.",
+                                          "C":  "Watching people make bags at a sports event."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Ben says he saw advertising banners being thrown away and wondered if the material could become bags."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What was the main difficulty when Ben started?",
+                          "options":  {
+                                          "A":  "Making a website for the business.",
+                                          "B":  "Taking attractive photographs of the products.",
+                                          "C":  "Finding a workshop that could sew the material."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "C",
+                          "explanation":  "Ben says the real problem was finding people who could sew the thick material neatly."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "What do some customers especially like?",
+                          "options":  {
+                                          "A":  "Each bag is unique.",
+                                          "B":  "The bags are very cheap.",
+                                          "C":  "The bags are easy to repair."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Ben says customers like having a bag with a picture or colour that no one else has."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "Why is winter difficult for Ben's company?",
+                          "options":  {
+                                          "A":  "Customers buy fewer bags then.",
+                                          "B":  "There are fewer events providing material.",
+                                          "C":  "The workshop has less storage space."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Ben says winter is difficult because there are fewer outdoor events."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "How has Ben's shopping changed?",
+                          "options":  {
+                                          "A":  "He only buys recycled products now.",
+                                          "B":  "He buys cheap things less often.",
+                                          "C":  "He chooses things that will last a long time."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "C",
+                          "explanation":  "Ben says he buys less because he prefers things he can use for years."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What product is Ben likely to make next?",
+                          "options":  {
+                                          "A":  "A laptop case.",
+                                          "B":  "A school bag.",
+                                          "C":  "A travel suitcase."
+                                      },
+                          "answer":  "B",
+                          "explanation":  "Ben says the next product will probably be a simple school bag."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2044.mp3"
 }

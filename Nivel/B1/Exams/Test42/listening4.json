@@ -1,96 +1,160 @@
 {
+    "id":  42,
+    "exam_part":  4,
     "title":  "Listening - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "long-interview-multiple-choice",
-    "time":  8,
+    "type":  "multiple-choice-text",
+    "time":  12,
     "totalQuestions":  6,
-    "instructions":  "For each question, choose the correct answer (A, B or C).",
-    "content":  {
-                    "topic":  "a teenager who started a cooking blog",
-                    "audio_script":  "Interviewer: Today we’re talking to someone involved in a teenager who started a cooking blog. Thanks for joining us. \nCan you tell us how everything started?\n\nGuest: Of course. At first, I wasn’t planning to become seriously involved. \nA friend suggested trying it, and I realised I enjoyed it much more than I expected.\n\nInterviewer: Was it difficult in the beginning?\n\nGuest: Yes, definitely. The biggest problem was finding enough free time. \nI had schoolwork, family activities and other responsibilities, so balancing everything wasn’t easy.\n\nInterviewer: What surprised you most?\n\nGuest: Honestly, I was surprised by how friendly and supportive people were. \nEveryone was willing to answer questions and help beginners improve.\n\nInterviewer: What advice would you give to other teenagers?\n\nGuest: I’d say it’s important to practise regularly and stay patient. \nProgress can feel slow at first, but things improve over time if you continue working.\n\nInterviewer: Have you learned anything important from the experience?\n\nGuest: Definitely. I’ve become much more organised and confident. \nI also learned how important teamwork and communication can be.\n\nInterviewer: Finally, what are your plans for the future?\n\nGuest: I’d like to continue improving my skills and maybe work on bigger projects later on.\n\nInterviewer: Thanks for speaking with us today.\n\nGuest: Thank you. I really enjoyed it.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "interviewer",
-                                         "text":  "Can you tell us how everything started?"
-                                     },
-                                     {
-                                         "speaker":  "guest",
-                                         "text":  "A friend suggested trying it, and I enjoyed it more than expected."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "interviewer":  "en-GB-RyanNeural",
-                                   "guest":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "Why did the guest first become interested in the activity?",
-                                          "options":  {
-                                                          "A":  "A teacher suggested it.",
-                                                          "B":  "A friend encouraged them.",
-                                                          "C":  "Their family worked in the area."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+    "description":  "For each question, choose the correct answer.",
+    "instructions":  "You will hear an interview. For questions 20–25, choose the answer (A, B or C) which fits best according to what you hear.",
+    "duration_minutes":  10,
+    "context":  "You will hear an interview with a man called Tom Bailey, who repairs bicycles.",
+    "voices":  {
+                   "interviewer":  "en-GB-RyanNeural",
+                   "guest":  "en-GB-SoniaNeural"
+               },
+    "audio_script":  "Interviewer: My guest today is Tom Bailey, who repairs old bicycles and teaches people how to look after them. Tom, when did you first start repairing bikes? || Guest: I learnt because I had to. When I was thirteen, my bike broke just before a race at school. My dad was away, and the local shop was closed. [20]I found a video online, fixed the chain myself, and felt much prouder than I expected[/20]. After that, I wanted to understand every part of the bike. || Interviewer: Did you train as a mechanic? || Guest: I did a short course after college, but most of my learning came from practice. I used to buy broken bikes cheaply and repair them in our garage. [21]The course was useful because it taught me how to work safely and check my repairs properly[/21]. Before that, I sometimes rushed and missed small problems. || Interviewer: You also run workshops. Who usually comes to them? || Guest: A real mix. Some people are serious cyclists, but many just ride to work or to the shops. [22]I'm always pleased when beginners come because they often think bike repair is too difficult for them[/22]. After one morning, they can usually fix a puncture and adjust their brakes. That gives them confidence. || Interviewer: What mistake do bike owners often make? || Guest: They wait until something stops working. A bicycle doesn't need much, but it needs regular care. [23]The most common problem is that people forget to clean and oil the chain[/23]. Then the bike feels slow, and other parts wear out more quickly. Five minutes every week can make a big difference. || Interviewer: Has the number of people cycling changed in your town? || Guest: Yes, definitely. More people started during the pandemic, and many have continued. The new cycle paths help, but they aren't perfect. [24]What has made the biggest difference is that several offices now provide safe places to leave bikes[/24]. People don't want to lock an expensive bike in the street all day. || Interviewer: What are your plans for the business? || Guest: I could open a bigger workshop, but I'm not sure I want that. I like knowing my customers. Next spring, [25]I'm going to start evening classes for teenagers who want to learn practical repair skills[/25]. Some may become mechanics, but the main aim is to make them more independent. || Interviewer: Are modern bikes more difficult to repair than older ones? || Guest: Some are, especially bikes with electric parts, but the basic ideas are the same. I tell people not to be frightened by new technology. They should learn simple jobs first, like checking tyre pressure and making sure the brakes feel right. Those small checks prevent many problems. || Interviewer: Do you think cycling will keep growing in your town? || Guest: I hope so, but it depends on safety. People need routes where they do not feel they are fighting with cars all the time. Families also need clear information about where beginners can ride. If the town continues improving those things, more people will choose a bike for short journeys instead of taking the car. || Interviewer: What should someone carry on a normal bike ride? || Guest: A spare inner tube, a small pump and lights if they may come home late. They do not need a huge bag of tools for every short journey. The main thing is knowing how to use the few things they bring, because tools are only helpful if you have practised.",
+    "dialogue":  [
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "My guest today is Tom Bailey, who repairs old bicycles and teaches people how to look after them. Tom, when did you first start repairing bikes?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I learnt because I had to. When I was thirteen, my bike broke just before a race at school. My dad was away, and the local shop was closed. I found a video online, fixed the chain myself, and felt much prouder than I expected. After that, I wanted to understand every part of the bike."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Did you train as a mechanic?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I did a short course after college, but most of my learning came from practice. I used to buy broken bikes cheaply and repair them in our garage. The course was useful because it taught me how to work safely and check my repairs properly. Before that, I sometimes rushed and missed small problems."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "You also run workshops. Who usually comes to them?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "A real mix. Some people are serious cyclists, but many just ride to work or to the shops. I'm always pleased when beginners come because they often think bike repair is too difficult for them. After one morning, they can usually fix a puncture and adjust their brakes. That gives them confidence."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What mistake do bike owners often make?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "They wait until something stops working. A bicycle doesn't need much, but it needs regular care. The most common problem is that people forget to clean and oil the chain. Then the bike feels slow, and other parts wear out more quickly. Five minutes every week can make a big difference."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Has the number of people cycling changed in your town?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Yes, definitely. More people started during the pandemic, and many have continued. The new cycle paths help, but they aren't perfect. What has made the biggest difference is that several offices now provide safe places to leave bikes. People don't want to lock an expensive bike in the street all day."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What are your plans for the business?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I could open a bigger workshop, but I'm not sure I want that. I like knowing my customers. Next spring, I'm going to start evening classes for teenagers who want to learn practical repair skills. Some may become mechanics, but the main aim is to make them more independent."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Are modern bikes more difficult to repair than older ones?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "Some are, especially bikes with electric parts, but the basic ideas are the same. I tell people not to be frightened by new technology. They should learn simple jobs first, like checking tyre pressure and making sure the brakes feel right. Those small checks prevent many problems."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "Do you think cycling will keep growing in your town?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "I hope so, but it depends on safety. People need routes where they do not feel they are fighting with cars all the time. Families also need clear information about where beginners can ride. If the town continues improving those things, more people will choose a bike for short journeys instead of taking the car."
+                     },
+                     {
+                         "speaker":  "interviewer",
+                         "text":  "What should someone carry on a normal bike ride?"
+                     },
+                     {
+                         "speaker":  "guest",
+                         "text":  "A spare inner tube, a small pump and lights if they may come home late. They do not need a huge bag of tools for every short journey. The main thing is knowing how to use the few things they bring, because tools are only helpful if you have practised."
+                     }
+                 ],
+    "questions":  [
+                      {
+                          "number":  20,
+                          "question":  "Why did Tom first repair a bicycle himself?",
+                          "options":  {
+                                          "A":  "He wanted to win a school prize.",
+                                          "B":  "He had no one else available to help him.",
+                                          "C":  "He was copying something his father did."
                                       },
-                                      {
-                                          "number":  2,
-                                          "question":  "What difficulty did the guest mention?",
-                                          "options":  {
-                                                          "A":  "Finding enough free time.",
-                                                          "B":  "Learning new technology.",
-                                                          "C":  "Travelling long distances."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "B",
+                          "explanation":  "Tom says his dad was away, the shop was closed, and he had to fix the chain himself."
+                      },
+                      {
+                          "number":  21,
+                          "question":  "What did Tom mainly learn from the course?",
+                          "options":  {
+                                          "A":  "How to make his repairs safe.",
+                                          "B":  "How to buy bikes cheaply.",
+                                          "C":  "How to work more quickly."
                                       },
-                                      {
-                                          "number":  3,
-                                          "question":  "What surprised the guest most?",
-                                          "options":  {
-                                                          "A":  "How expensive everything was.",
-                                                          "B":  "How friendly people were.",
-                                                          "C":  "How quickly the project ended."
-                                                      },
-                                          "answer":  "B",
-                                          "explanation":  "The interview clearly supports option B."
+                          "answer":  "A",
+                          "explanation":  "Tom says the course taught him to work safely and check repairs properly."
+                      },
+                      {
+                          "number":  22,
+                          "question":  "Who does Tom especially like teaching?",
+                          "options":  {
+                                          "A":  "People who cycle every day.",
+                                          "B":  "People who want to race.",
+                                          "C":  "People with very little experience."
                                       },
-                                      {
-                                          "number":  4,
-                                          "question":  "What advice does the guest give?",
-                                          "options":  {
-                                                          "A":  "Practise regularly and stay patient.",
-                                                          "B":  "Spend more money on equipment.",
-                                                          "C":  "Avoid working with large groups."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "C",
+                          "explanation":  "Tom says he is always pleased when beginners come to his workshops."
+                      },
+                      {
+                          "number":  23,
+                          "question":  "What does Tom say many bike owners forget to do?",
+                          "options":  {
+                                          "A":  "Look after the chain.",
+                                          "B":  "Check the lights.",
+                                          "C":  "Change the tyres."
                                       },
-                                      {
-                                          "number":  5,
-                                          "question":  "What has the guest learned from the experience?",
-                                          "options":  {
-                                                          "A":  "How to become more organised.",
-                                                          "B":  "How to avoid responsibility.",
-                                                          "C":  "How to work completely alone."
-                                                      },
-                                          "answer":  "A",
-                                          "explanation":  "The interview clearly supports option A."
+                          "answer":  "A",
+                          "explanation":  "Tom says the most common problem is forgetting to clean and oil the chain."
+                      },
+                      {
+                          "number":  24,
+                          "question":  "What has encouraged more people to cycle to work?",
+                          "options":  {
+                                          "A":  "Better cycle paths near their homes.",
+                                          "B":  "Secure bicycle parking at offices.",
+                                          "C":  "Lower prices in bicycle shops."
                                       },
-                                      {
-                                          "number":  6,
-                                          "question":  "What does the guest hope to do in the future?",
-                                          "options":  {
-                                                          "A":  "Travel to more countries.",
-                                                          "B":  "Study something different.",
-                                                          "C":  "Continue improving their skills."
-                                                      },
-                                          "answer":  "C",
-                                          "explanation":  "The interview clearly supports option C."
-                                      }
-                                  ]
-                }
+                          "answer":  "B",
+                          "explanation":  "Tom says the biggest difference is that offices now provide safe places to leave bikes."
+                      },
+                      {
+                          "number":  25,
+                          "question":  "What does Tom plan to do next spring?",
+                          "options":  {
+                                          "A":  "Move to a larger workshop.",
+                                          "B":  "Employ some young mechanics.",
+                                          "C":  "Offer repair classes to teenagers."
+                                      },
+                          "answer":  "C",
+                          "explanation":  "Tom says he is going to start evening classes for teenagers who want repair skills."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening4_Test%2042.mp3"
 }
