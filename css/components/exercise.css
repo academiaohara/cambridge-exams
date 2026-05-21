@@ -639,8 +639,9 @@
   text-underline-offset: 2px;
 }
 
-/* Active question only: inner .evidence-core carries the orange highlight; avoid stacking
-   .evidence-explanation-mode underline/background with .evidence-marker.evidence-active border. */
+/* Active question only: inner .evidence-core carries the orange highlight and a darker
+   double underline; avoid stacking .evidence-explanation-mode underline/background with
+   .evidence-marker.evidence-active border. */
 .explanation-mode-text .evidence-wrap.evidence-active-q > .evidence-explanation-mode.evidence-marker.evidence-active {
   color: inherit;
   background: transparent;
@@ -667,7 +668,10 @@
   border-radius: 3px;
   padding: 0 3px;
   font-weight: 600;
-  text-decoration: none;
+  text-decoration: underline double;
+  text-decoration-color: #c2410c;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 /* B1 Reading Part 2 explanation strip: correct letter callout */
