@@ -1,56 +1,113 @@
 {
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a summer photography course",
-                    "speaker":  "Emma",
-                    "audio_script":  "Hello everyone. My name’s Emma, and today I’m going to tell you about a summer photography course.\n\nThe project first started at the [1]city college[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Friday evenings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]digital cameras[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]park café[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]online gallery[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]working outdoors[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "emma",
-                                         "text":  "Hello everyone. My name’s Emma, and today I’m going to tell you about a summer photography course.\n\nThe project first started at the city college, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Friday evenings, because that’s when most people are free. \nEveryone is encouraged to bring digital cameras or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby park café together to relax and chat. \nAt the end of the course, all participants can share their work in an online gallery, which friends and family can visit.\n\nPersonally, I think the best part of the experience is working outdoors, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "emma":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "city college"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Friday evenings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "digital cameras"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "park café"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "online gallery"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "working outdoors"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "id":  14,
+    "context":  "You will hear a teacher giving information about a school trip to a science museum.",
+    "form_title":  "School trip to science museum",
+    "voice":  "en-GB-MaisieNeural",
+    "audio_script":  "Woman: Listen carefully, everyone, because I’m going to tell you about our trip to the science museum on Thursday. We’re going by coach, and we’ll leave from outside the school [14]library[/14], not from the main gate as we usually do. Please be there by eight twenty, because the coach must leave at half past eight. You should bring a packed lunch, but don’t bring glass bottles. The museum has asked us to use plastic bottles only. When we arrive, our first activity will be a workshop about [15]space[/15]. You’ll learn how astronauts prepare for journeys, and you’ll try a simple experiment in groups. After that, we’ll have time to look around the museum. The newest display is about [16]robots[/16], and I know many of you will enjoy that. Please remember that you must stay with your group leader at all times. Lunch will be in the museum [17]garden[/17] if the weather is good. If it rains, we’ll use the education room instead. In the afternoon, there’s a film in the museum cinema. It lasts forty minutes and begins at [18]2:15[/18]. We expect to get back to school by four thirty, but traffic can be busy, so tell your parents not to worry if we’re a little late. The cost of the trip is ten pounds, but students who have a museum card only need to pay [19]four[/19] pounds for the coach. Please bring your money and permission letter tomorrow morning. Teachers will carry emergency phone numbers, but you should still keep your own group card in your pocket during the visit.",
+    "note_sheet":  [
+                       {
+                           "section":  "Science museum trip",
+                           "items":  [
+                                         {
+                                             "text_before":  "Coach leaves from outside the school",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "First workshop about",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Newest display about",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Lunch in the museum",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Film begins at",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Museum card students pay £",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Coach leaves from outside the school",
+                          "answer":  "library",
+                          "accepted_answers":  [
+                                                   "library"
+                                               ],
+                          "explanation":  "The coach will leave from outside the school library."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "First workshop about",
+                          "answer":  "space",
+                          "accepted_answers":  [
+                                                   "space"
+                                               ],
+                          "explanation":  "The first workshop will be about space."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Newest display about",
+                          "answer":  "robots",
+                          "accepted_answers":  [
+                                                   "robots"
+                                               ],
+                          "explanation":  "The newest display is about robots."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Lunch in the museum",
+                          "answer":  "garden",
+                          "accepted_answers":  [
+                                                   "garden"
+                                               ],
+                          "explanation":  "Lunch will be in the museum garden if the weather is good."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Film begins at",
+                          "answer":  "2:15",
+                          "accepted_answers":  [
+                                                   "2:15",
+                                                   "2.15",
+                                                   "two fifteen",
+                                                   "quarter past two"
+                                               ],
+                          "explanation":  "The film begins at 2:15."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Museum card students pay £",
+                          "answer":  "four",
+                          "accepted_answers":  [
+                                                   "four",
+                                                   "4"
+                                               ],
+                          "explanation":  "Students with a museum card pay four pounds for the coach."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2014.mp3"
 }

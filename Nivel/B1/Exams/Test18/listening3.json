@@ -1,56 +1,114 @@
 {
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a local sports programme",
-                    "speaker":  "Liam",
-                    "audio_script":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the [1]sports centre[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Saturday mornings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]blue T-shirts[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]healthy snacks[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]team leaders[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]new friends[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "liam",
-                                         "text":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the sports centre, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Saturday mornings, because that’s when most people are free. \nEveryone is encouraged to bring blue T-shirts or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby healthy snacks together to relax and chat. \nAt the end of the course, all participants can share their work in an team leaders, which friends and family can visit.\n\nPersonally, I think the best part of the experience is new friends, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "liam":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "sports centre"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Saturday mornings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "blue T-shirts"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "healthy snacks"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "team leaders"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "new friends"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "id":  18,
+    "context":  "You will hear a guide giving information about a new city bus tour.",
+    "form_title":  "New city bus tour",
+    "voice":  "en-GB-LibbyNeural",
+    "audio_script":  "Woman: Welcome to the information desk for the new city bus tour. This tour has been designed for visitors who want to see the city in a short time, but local people are welcome too. The tour begins outside the [14]theatre[/14], where there is plenty of space for people to wait safely. Please don’t wait by the station, because the bus only stops there on its way back. The full tour takes ninety minutes. The first important building you’ll pass is the old [15]bank[/15], which is now used as an art centre. Your guide will explain why it has such unusual windows. After that, the bus will go through the market area. You cannot get off there, but you’ll have time to take photos from the top deck. The only stop where passengers can leave the bus is at the [16]castle[/16]. You’ll have twenty minutes there before the bus continues. Tickets are cheaper if you buy them online, but you can also buy them from the driver. A child ticket costs [17]five[/17] pounds. Adults pay eight pounds. The bus has recorded information in three languages, but live information will be given in [18]English[/18] only. If it rains, the top of the bus can be covered, so the tour will still run. The last tour of the day leaves at [19]4:40[/19]. After that, the bus is used for school transport. We hope you enjoy discovering the city from a different view. Please arrive ten minutes before the tour, especially if you need help getting upstairs or want to sit near the front.",
+    "note_sheet":  [
+                       {
+                           "section":  "City bus tour",
+                           "items":  [
+                                         {
+                                             "text_before":  "Tour begins outside the",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Old building now used as art centre",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Only stop: the",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Child ticket costs £",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Live information in",
+                                             "number":  18,
+                                             "text_after":  "only"
+                                         },
+                                         {
+                                             "text_before":  "Last tour leaves at",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Tour begins outside the",
+                          "answer":  "theatre",
+                          "accepted_answers":  [
+                                                   "theatre",
+                                                   "theater"
+                                               ],
+                          "explanation":  "The tour begins outside the theatre."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Old building now used as art centre",
+                          "answer":  "bank",
+                          "accepted_answers":  [
+                                                   "bank"
+                                               ],
+                          "explanation":  "The old bank is now used as an art centre."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Only stop: the",
+                          "answer":  "castle",
+                          "accepted_answers":  [
+                                                   "castle"
+                                               ],
+                          "explanation":  "The only stop where passengers can leave the bus is at the castle."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Child ticket costs £",
+                          "answer":  "five",
+                          "accepted_answers":  [
+                                                   "five",
+                                                   "5"
+                                               ],
+                          "explanation":  "A child ticket costs five pounds."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Live information in",
+                          "answer":  "English",
+                          "accepted_answers":  [
+                                                   "English"
+                                               ],
+                          "explanation":  "Live information will be given in English only."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Last tour leaves at",
+                          "answer":  "4:40",
+                          "accepted_answers":  [
+                                                   "4:40",
+                                                   "4.40",
+                                                   "four forty",
+                                                   "twenty to five"
+                                               ],
+                          "explanation":  "The last tour leaves at 4:40."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2018.mp3"
 }

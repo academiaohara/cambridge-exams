@@ -1,56 +1,125 @@
 {
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a summer photography course",
-                    "speaker":  "Emma",
-                    "audio_script":  "Hello everyone. My name’s Emma, and today I’m going to tell you about a summer photography course.\n\nThe project first started at the [1]city college[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Friday evenings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]digital cameras[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]park café[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]online gallery[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]working outdoors[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "emma",
-                                         "text":  "Hello everyone. My name’s Emma, and today I’m going to tell you about a summer photography course.\n\nThe project first started at the city college, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Friday evenings, because that’s when most people are free. \nEveryone is encouraged to bring digital cameras or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby park café together to relax and chat. \nAt the end of the course, all participants can share their work in an online gallery, which friends and family can visit.\n\nPersonally, I think the best part of the experience is working outdoors, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "emma":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "city college"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Friday evenings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "digital cameras"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "park café"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "online gallery"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "working outdoors"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "test_id":  29,
+    "context":  "You will hear a woman giving information to visitors at a college open day.",
+    "form_title":  "College open day",
+    "voice":  "en-GB-SoniaNeural",
+    "audio_script":  "Woman: Hello, and welcome to our college open day. I'm going to give you a quick guide to the morning, then you can visit the departments that interest you. First, everyone should collect a map from the table near the [14]stairs[/14]. The college has three buildings, and visitors sometimes get lost. The first talk is about choosing the right course. It begins at [15]ten thirty[/15] in the main hall. After the talk, teachers will be available in their classrooms. If you are interested in science, please go to Room [16]twelve[/16], where students are showing some of their recent projects. The sports department is not in the main building. You need to cross the car park and go through the blue [17]gate[/17]. There will be signs to help you. Free drinks are available in the café, but lunch is not free. A sandwich and fruit will cost [18]three[/18] pounds today. If you apply for a course before you leave, staff at the admissions desk can check your form. You will find the admissions desk beside the [19]bookshop[/19]. Please ask any student in a red T-shirt if you need help. Parents and friends are welcome to come with you today, but the talks are mainly for students. Please take any leaflets that interest you and write down questions as you go round. Staff will be happy to speak to you after each short presentation. Please check the notice board before you leave, because small changes to rooms or times may be written there. If you are not sure about anything, ask a member of staff.",
+    "note_sheet":  [
+                       {
+                           "section":  "Arrival",
+                           "items":  [
+                                         {
+                                             "text_before":  "Collect a map near the",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "First talk begins at",
+                                             "number":  15,
+                                             "text_after":  "a.m."
+                                         }
+                                     ]
+                       },
+                       {
+                           "section":  "Departments",
+                           "items":  [
+                                         {
+                                             "text_before":  "Science projects: Room",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Sports department: through the blue",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       },
+                       {
+                           "section":  "Food and applications",
+                           "items":  [
+                                         {
+                                             "text_before":  "Sandwich and fruit costs £",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Admissions desk is beside the",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Collect a map near the",
+                          "answer":  "stairs",
+                          "accepted_answers":  [
+                                                   "stairs"
+                                               ],
+                          "explanation":  "The speaker says visitors should collect a map near the stairs."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "First talk begins at",
+                          "answer":  "ten thirty",
+                          "accepted_answers":  [
+                                                   "ten thirty",
+                                                   "10.30",
+                                                   "10:30"
+                                               ],
+                          "explanation":  "The speaker says the first talk begins at ten thirty."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Science projects: Room",
+                          "answer":  "twelve",
+                          "accepted_answers":  [
+                                                   "twelve",
+                                                   "12"
+                                               ],
+                          "explanation":  "The speaker says science projects are in Room twelve."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Sports department: through the blue",
+                          "answer":  "gate",
+                          "accepted_answers":  [
+                                                   "gate"
+                                               ],
+                          "explanation":  "The speaker says people should go through the blue gate."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Sandwich and fruit costs £",
+                          "answer":  "three",
+                          "accepted_answers":  [
+                                                   "three",
+                                                   "3"
+                                               ],
+                          "explanation":  "The speaker says a sandwich and fruit will cost three pounds."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Admissions desk is beside the",
+                          "answer":  "bookshop",
+                          "accepted_answers":  [
+                                                   "bookshop",
+                                                   "book shop"
+                                               ],
+                          "explanation":  "The speaker says the admissions desk is beside the bookshop."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2029.mp3",
+    "word_count":  264
 }

@@ -1,56 +1,113 @@
 {
+    "id":  9,
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a music workshop",
-                    "speaker":  "Chloe",
-                    "audio_script":  "Hello everyone. My name’s Chloe, and today I’m going to tell you about a music workshop.\n\nThe project first started at the [1]music teacher[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]small theatre[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]guitar lessons[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]lunchtime break[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]school website[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]performing live[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "chloe",
-                                         "text":  "Hello everyone. My name’s Chloe, and today I’m going to tell you about a music workshop.\n\nThe project first started at the music teacher, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on small theatre, because that’s when most people are free. \nEveryone is encouraged to bring guitar lessons or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby lunchtime break together to relax and chat. \nAt the end of the course, all participants can share their work in an school website, which friends and family can visit.\n\nPersonally, I think the best part of the experience is performing live, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "chloe":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "music teacher"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "small theatre"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "guitar lessons"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "lunchtime break"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "school website"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "performing live"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "context":  "You will hear a woman giving information about a workshop at a garden centre.",
+    "form_title":  "Garden centre workshop",
+    "voice":  "en-GB-LibbyNeural",
+    "audio_script":  "Woman: Hello, everyone, and welcome to the garden centre. Today’s workshop is for people who want to make a small garden at home. We’ll look at several kinds of plants, but the main focus will be [14]roses[/14], because they grow well in this area and are easy to look after. We’ll start in the large [15]greenhouse[/15], where the plants are warmer and we can work even if it rains. Please take a [16]notebook[/16] with you, as I’ll give you the names of useful tools and websites. There will be a short break at [17]eleven fifteen[/17]. Tea and coffee are free, but if you want cake you’ll need to pay for it. Lunch today is a simple [18]salad[/18] made with vegetables from our own garden. If you prefer something hot, the café next door is open until two. For visitors who drove here, the [19]car park[/19] is behind the shop, not beside the main road. You can leave your car there all day without paying. After lunch, you’ll each plant something to take home. The workshop is suitable for complete beginners, so please ask questions if something is not clear. You will not need to buy anything today, although there will be a discount in the shop after the session. Children over twelve can join if an adult stays with them. At the end, we will give each person a small plant to take home, plus instructions for looking after it during the first month.  Please do not bring large bags into the greenhouse, as the paths between the tables are quite narrow.",
+    "note_sheet":  [
+                       {
+                           "section":  "Garden centre workshop",
+                           "items":  [
+                                         {
+                                             "text_before":  "Main plant focus:",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Workshop starts in the large",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Bring a",
+                                             "number":  16,
+                                             "text_after":  "for notes"
+                                         },
+                                         {
+                                             "text_before":  "Break at",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Lunch:",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Free parking in the",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Main plant focus",
+                          "answer":  "roses",
+                          "accepted_answers":  [
+                                                   "roses",
+                                                   "rose"
+                                               ],
+                          "explanation":  "The speaker says the main focus will be roses."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Workshop starts in the large",
+                          "answer":  "greenhouse",
+                          "accepted_answers":  [
+                                                   "greenhouse"
+                                               ],
+                          "explanation":  "The speaker says they will start in the large greenhouse."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Bring a",
+                          "answer":  "notebook",
+                          "accepted_answers":  [
+                                                   "notebook"
+                                               ],
+                          "explanation":  "The speaker asks people to take a notebook with them."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Break at",
+                          "answer":  "eleven fifteen",
+                          "accepted_answers":  [
+                                                   "eleven fifteen",
+                                                   "11.15",
+                                                   "11:15"
+                                               ],
+                          "explanation":  "The speaker says there will be a short break at eleven fifteen."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Lunch",
+                          "answer":  "salad",
+                          "accepted_answers":  [
+                                                   "salad"
+                                               ],
+                          "explanation":  "The speaker says lunch is a simple salad."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Free parking in the",
+                          "answer":  "car park",
+                          "accepted_answers":  [
+                                                   "car park",
+                                                   "carpark"
+                                               ],
+                          "explanation":  "The speaker says the car park is behind the shop and is free."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%209.mp3"
 }

@@ -1,56 +1,116 @@
 {
+    "test_number":  31,
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a local sports programme",
-                    "speaker":  "Liam",
-                    "audio_script":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the [1]sports centre[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Saturday mornings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]blue T-shirts[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]healthy snacks[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]team leaders[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]new friends[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "liam",
-                                         "text":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the sports centre, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Saturday mornings, because that’s when most people are free. \nEveryone is encouraged to bring blue T-shirts or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby healthy snacks together to relax and chat. \nAt the end of the course, all participants can share their work in an team leaders, which friends and family can visit.\n\nPersonally, I think the best part of the experience is new friends, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "liam":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "sports centre"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Saturday mornings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "blue T-shirts"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "healthy snacks"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "team leaders"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "new friends"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "context":  "You will hear a theatre organiser giving information about a community theatre workshop.",
+    "form_title":  "Community theatre workshop",
+    "voice":  "en-GB-RyanNeural",
+    "audio_script":  "Speaker: Good morning, everyone. I'm pleased so many of you have come to the information meeting for our community theatre workshop. The workshop is for people who enjoy acting but have not had much experience, so please don't worry if you have never been on a stage before. We meet every Wednesday evening at the arts centre, but not in the main hall. Please go through the side door and meet us in the [14]small studio[/14] at the back of the building. The first session is mainly about moving and using your voice, so you don't need a costume or any special clothes. However, please bring [15]comfortable shoes[/15], because we will be standing and moving around quite a lot. There is also an extra class on Saturday morning for anyone who wants more practice. That class begins at [16]ten fifteen[/16] and finishes before lunch. This year we are going to prepare a short play called [17]The Garden[/17]. It's funny, easy to understand, and has parts for everyone. You will get a printed copy at the second meeting. At the end of the course, family and friends can come to watch a short performance. The date for that is [18]28 July[/18], so write it in your diary now. The normal price is twenty pounds, but if you are a student, you only pay [19]twelve[/19]. During the first few weeks, you will practise short scenes in pairs, so it is a good chance to meet other people. There will be a break in the middle of each session, and water is available near the door. You can pay online or at reception before the first class starts.",
+    "note_sheet":  [
+                       {
+                           "section":  "Community theatre workshop",
+                           "items":  [
+                                         {
+                                             "text_before":  "Meeting place:",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Bring:",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Saturday class begins at",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Name of play:",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Performance date:",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Student price: £",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Meeting place:",
+                          "answer":  "small studio",
+                          "accepted_answers":  [
+                                                   "small studio"
+                                               ],
+                          "explanation":  "The speaker says participants should meet in the small studio at the back of the building."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Bring:",
+                          "answer":  "comfortable shoes",
+                          "accepted_answers":  [
+                                                   "comfortable shoes"
+                                               ],
+                          "explanation":  "The speaker says people should bring comfortable shoes because they will be moving around."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Saturday class begins at",
+                          "answer":  "ten fifteen",
+                          "accepted_answers":  [
+                                                   "ten fifteen",
+                                                   "10.15",
+                                                   "10:15"
+                                               ],
+                          "explanation":  "The speaker says the Saturday class begins at ten fifteen."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Name of play:",
+                          "answer":  "The Garden",
+                          "accepted_answers":  [
+                                                   "The Garden",
+                                                   "Garden"
+                                               ],
+                          "explanation":  "The speaker says the group will prepare a short play called The Garden."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Performance date:",
+                          "answer":  "28 July",
+                          "accepted_answers":  [
+                                                   "28 July",
+                                                   "July 28",
+                                                   "28th July",
+                                                   "July 28th"
+                                               ],
+                          "explanation":  "The speaker gives 28 July as the date of the short performance."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Student price: £",
+                          "answer":  "twelve",
+                          "accepted_answers":  [
+                                                   "twelve",
+                                                   "12"
+                                               ],
+                          "explanation":  "The speaker says students only pay twelve pounds."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2031.mp3"
 }

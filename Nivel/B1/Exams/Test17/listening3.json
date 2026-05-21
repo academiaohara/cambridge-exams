@@ -1,56 +1,111 @@
 {
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a summer photography course",
-                    "speaker":  "Emma",
-                    "audio_script":  "Hello everyone. My name’s Emma, and today I’m going to tell you about a summer photography course.\n\nThe project first started at the [1]city college[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Friday evenings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]digital cameras[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]park café[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]online gallery[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]working outdoors[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "emma",
-                                         "text":  "Hello everyone. My name’s Emma, and today I’m going to tell you about a summer photography course.\n\nThe project first started at the city college, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Friday evenings, because that’s when most people are free. \nEveryone is encouraged to bring digital cameras or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby park café together to relax and chat. \nAt the end of the course, all participants can share their work in an online gallery, which friends and family can visit.\n\nPersonally, I think the best part of the experience is working outdoors, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "emma":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "city college"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Friday evenings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "digital cameras"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "park café"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "online gallery"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "working outdoors"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "id":  17,
+    "context":  "You will hear a man giving information about a theatre club information evening.",
+    "form_title":  "Theatre club information evening",
+    "voice":  "en-GB-ThomasNeural",
+    "audio_script":  "Man: Hello, and thank you for your interest in Riverside Theatre Club. I’m going to tell you about our information evening next week. The evening is for anyone who might like to join the club, either on stage or behind the scenes. It will be held in the [14]music room[/14] at the community school. We usually meet in the main hall, but it is being used for exams this month. The evening starts at seven, and the first person you’ll meet is our director, Paula [15]Bennett[/15]. She’ll talk about the play we’re preparing for autumn and explain how new members can take part. You do not need any acting experience. In fact, we need people to help with lights, costumes and [16]sound[/16] just as much as we need actors. If you want to act, you’ll be asked to read a short scene, but you don’t need to learn anything before you come. Please bring a [17]photo[/17] of yourself, because we keep simple records of members. It doesn’t have to be a professional picture. During the break, tea and biscuits will be served in the corridor. We ask visitors to pay [18]two[/18] pounds for refreshments, but joining the club itself is free for the first month. At the end of the evening, there will be a tour of the theatre store, where we keep old costumes. The most unusual costume there is a [19]dragon[/19], made for a children’s play ten years ago. We hope to see many of you next Wednesday. We will send a message the next day to everyone who comes, so you can decide whether to continue with the club.",
+    "note_sheet":  [
+                       {
+                           "section":  "Theatre club information evening",
+                           "items":  [
+                                         {
+                                             "text_before":  "Evening held in the",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Director: Paula",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Help needed with costumes, lights and",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Visitors should bring a",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Refreshments cost £",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Old costume: a",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Evening held in the",
+                          "answer":  "music room",
+                          "accepted_answers":  [
+                                                   "music room"
+                                               ],
+                          "explanation":  "The evening will be held in the music room."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Director: Paula",
+                          "answer":  "Bennett",
+                          "accepted_answers":  [
+                                                   "Bennett"
+                                               ],
+                          "explanation":  "The director is Paula Bennett."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Help needed with costumes, lights and",
+                          "answer":  "sound",
+                          "accepted_answers":  [
+                                                   "sound"
+                                               ],
+                          "explanation":  "They need people to help with sound."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Visitors should bring a",
+                          "answer":  "photo",
+                          "accepted_answers":  [
+                                                   "photo",
+                                                   "photograph"
+                                               ],
+                          "explanation":  "Visitors should bring a photo of themselves."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Refreshments cost £",
+                          "answer":  "two",
+                          "accepted_answers":  [
+                                                   "two",
+                                                   "2"
+                                               ],
+                          "explanation":  "Visitors pay two pounds for refreshments."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Old costume: a",
+                          "answer":  "dragon",
+                          "accepted_answers":  [
+                                                   "dragon"
+                                               ],
+                          "explanation":  "The most unusual costume is a dragon."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2017.mp3"
 }

@@ -1,56 +1,112 @@
 {
+    "test_number":  36,
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a music workshop",
-                    "speaker":  "Chloe",
-                    "audio_script":  "Hello everyone. My name’s Chloe, and today I’m going to tell you about a music workshop.\n\nThe project first started at the [1]music teacher[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]small theatre[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]guitar lessons[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]lunchtime break[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]school website[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]performing live[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "chloe",
-                                         "text":  "Hello everyone. My name’s Chloe, and today I’m going to tell you about a music workshop.\n\nThe project first started at the music teacher, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on small theatre, because that’s when most people are free. \nEveryone is encouraged to bring guitar lessons or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby lunchtime break together to relax and chat. \nAt the end of the course, all participants can share their work in an school website, which friends and family can visit.\n\nPersonally, I think the best part of the experience is performing live, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "chloe":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "music teacher"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "small theatre"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "guitar lessons"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "lunchtime break"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "school website"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "performing live"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "context":  "You will hear an organiser talking at a language exchange club.",
+    "form_title":  "Language exchange club",
+    "voice":  "en-GB-MaisieNeural",
+    "audio_script":  "Speaker: Thank you for coming to the first meeting of the language exchange club. The club is for people who want to practise speaking another language in a friendly place. You don't need to be perfect, and nobody will laugh if you make mistakes. From next week, our meetings will be in the [14]college café[/14], because it is bigger than this room and open in the evening. We meet every Thursday from seven until nine. The first half hour is for introductions, and after that we sit in small groups. This month, the most popular language is [15]Spanish[/15], but we also have groups for French, German and Italian. If you want to practise a different language, please write it on the list by the door. New members often feel nervous at first, but after a few minutes most people relax and start talking. We change groups during the evening, so you will not spend the whole meeting with the same people. Each week, one member will give a short talk. The first talk is about [16]music festivals[/16], and it should be easy to understand. Please bring a pen, as we often play word games and write down useful phrases. You may also bring a [17]dictionary[/17], but using your phone all the time is not a good idea.  Please speak clearly and slowly, because the aim is practice, not speed. Drinks are not free, but tea costs only [18]one pound[/18]. Finally, if you want club news, join our online group. The password for this week is [19]orange[/19]. I'll put it on the noticeboard before you leave.",
+    "note_sheet":  [
+                       {
+                           "section":  "Language exchange club",
+                           "items":  [
+                                         {
+                                             "text_before":  "Meetings will be in the:",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Most popular language this month:",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "First short talk is about:",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Members may bring a:",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Tea costs:",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Online group password:",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Meetings will be in the:",
+                          "answer":  "college café",
+                          "accepted_answers":  [
+                                                   "college café",
+                                                   "college cafe"
+                                               ],
+                          "explanation":  "The speaker says meetings will be in the college café from next week."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Most popular language this month:",
+                          "answer":  "Spanish",
+                          "accepted_answers":  [
+                                                   "Spanish"
+                                               ],
+                          "explanation":  "The speaker says the most popular language this month is Spanish."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "First short talk is about:",
+                          "answer":  "music festivals",
+                          "accepted_answers":  [
+                                                   "music festivals"
+                                               ],
+                          "explanation":  "The first short talk is about music festivals."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Members may bring a:",
+                          "answer":  "dictionary",
+                          "accepted_answers":  [
+                                                   "dictionary"
+                                               ],
+                          "explanation":  "The speaker says members may bring a dictionary."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Tea costs:",
+                          "answer":  "one pound",
+                          "accepted_answers":  [
+                                                   "one pound",
+                                                   "£1",
+                                                   "1 pound"
+                                               ],
+                          "explanation":  "Tea costs only one pound."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Online group password:",
+                          "answer":  "orange",
+                          "accepted_answers":  [
+                                                   "orange"
+                                               ],
+                          "explanation":  "The speaker gives orange as the online group password."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2036.mp3"
 }

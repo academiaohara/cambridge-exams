@@ -1,56 +1,112 @@
 {
+    "test_number":  43,
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a school travel project",
-                    "speaker":  "Daniel",
-                    "audio_script":  "Hello everyone. My name’s Daniel, and today I’m going to tell you about a school travel project.\n\nThe project first started at the [1]train station[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]travel journal[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]group activities[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]mountain hotel[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]Sunday afternoon[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]different cultures[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "daniel",
-                                         "text":  "Hello everyone. My name’s Daniel, and today I’m going to tell you about a school travel project.\n\nThe project first started at the train station, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on travel journal, because that’s when most people are free. \nEveryone is encouraged to bring group activities or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby mountain hotel together to relax and chat. \nAt the end of the course, all participants can share their work in an Sunday afternoon, which friends and family can visit.\n\nPersonally, I think the best part of the experience is different cultures, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "daniel":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "train station"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "travel journal"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "group activities"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "mountain hotel"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "Sunday afternoon"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "different cultures"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "context":  "You will hear a man giving information about a sports centre.",
+    "form_title":  "Northgate Sports Centre",
+    "voice":  "en-GB-NoahNeural",
+    "audio_script":  "Speaker: Welcome to Northgate Sports Centre. I am going to tell you about the new activities starting here next month. The centre is open to everyone, and you do not need to be a member to try the first lesson. Our new fitness coach is called Anita [14]Lewis[/14]. She has taught young people and adults, and her classes are friendly rather than difficult. The first beginner fitness class will be on Monday at [15]seven thirty[/15] in the evening, which should be useful for people who work during the day. Please bring a bottle of [16]water[/16], because the room can get warm even in winter. You can wear ordinary sports clothes, and you do not need expensive trainers for the first few weeks. On Wednesdays, we are starting a new team sport session. It will be [17]basketball[/17], as many local teenagers asked for it on our website. You can come alone, and we will put you into a group. If you arrive by car, please use the car park behind the [18]library[/18], not the small one at the front, which is for staff only. Buses also stop close to the centre every twenty minutes. A single session usually costs six pounds, but during the first month the price is only [19]four[/19] pounds. You can book at reception today, or later on our website. Places are limited, so please book early if you want a regular evening class. We will also offer a short tour of the changing rooms for anyone who has not visited before. Lockers are available, but you need to bring a small coin to use them. Please arrive a little early for your first session so Anita can check your name on the list.",
+    "note_sheet":  [
+                       {
+                           "section":  "Northgate Sports Centre",
+                           "items":  [
+                                         {
+                                             "text_before":  "New fitness coach: Anita",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Beginner fitness class starts at",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "People should bring a bottle of",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "New Wednesday team sport:",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Car park is behind the",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "First month session price: £",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "New fitness coach: Anita",
+                          "answer":  "Lewis",
+                          "accepted_answers":  [
+                                                   "Lewis"
+                                               ],
+                          "explanation":  "The speaker says the new fitness coach is called Anita Lewis."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Beginner fitness class starts at",
+                          "answer":  "seven thirty",
+                          "accepted_answers":  [
+                                                   "seven thirty",
+                                                   "7.30",
+                                                   "7:30"
+                                               ],
+                          "explanation":  "The speaker says the class starts at seven thirty in the evening."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "People should bring a bottle of",
+                          "answer":  "water",
+                          "accepted_answers":  [
+                                                   "water"
+                                               ],
+                          "explanation":  "The speaker asks people to bring a bottle of water."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "New Wednesday team sport:",
+                          "answer":  "basketball",
+                          "accepted_answers":  [
+                                                   "basketball"
+                                               ],
+                          "explanation":  "The speaker says the Wednesday team sport session will be basketball."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Car park is behind the",
+                          "answer":  "library",
+                          "accepted_answers":  [
+                                                   "library"
+                                               ],
+                          "explanation":  "The speaker says drivers should use the car park behind the library."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "First month session price: £",
+                          "answer":  "four",
+                          "accepted_answers":  [
+                                                   "four",
+                                                   "4"
+                                               ],
+                          "explanation":  "The speaker says sessions cost four pounds during the first month."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2043.mp3"
 }

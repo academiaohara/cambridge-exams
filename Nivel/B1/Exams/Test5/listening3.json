@@ -1,56 +1,111 @@
 {
+    "id":  5,
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a local sports programme",
-                    "speaker":  "Liam",
-                    "audio_script":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the [1]sports centre[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Saturday mornings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]blue T-shirts[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]healthy snacks[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]team leaders[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]new friends[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "liam",
-                                         "text":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the sports centre, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Saturday mornings, because that’s when most people are free. \nEveryone is encouraged to bring blue T-shirts or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby healthy snacks together to relax and chat. \nAt the end of the course, all participants can share their work in an team leaders, which friends and family can visit.\n\nPersonally, I think the best part of the experience is new friends, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "liam":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "sports centre"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Saturday mornings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "blue T-shirts"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "healthy snacks"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "team leaders"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "new friends"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "context":  "You will hear a woman giving information to students at a language school.",
+    "form_title":  "First week at language school",
+    "voice":  "en-GB-MaisieNeural",
+    "audio_script":  "Woman: Good afternoon, everyone. I’m going to tell you about your first week at Lakeside Language School. Most of you are here to improve your English, but on Wednesday afternoon you can try another language. This week the extra class is [14]French[/14]. It’s only for beginners, so don’t worry if you know nothing about it. Your morning lessons will be in Room 6, but the afternoon activities usually start in the [15]library[/15], where there is more space. Please bring a [16]pencil[/16] to every lesson. Pens are fine for most work, but pencils are better when teachers ask you to change your answers. In the evenings, some students will stay with local [17]families[/17], while others will sleep in the school building. If you have any problems with your room, speak to me before dinner. The school trip this week is on [18]Friday[/18]. We’re going to a small theatre, and the show is easy to understand. Finally, the school café closes at [19]three[/19] o’clock, so buy snacks before then if you want something later. I hope you enjoy your week and make lots of new friends. On Monday morning, everyone will do a short speaking activity, but it is not a test. It only helps teachers put you in the best class. There is free Wi-Fi in most of the building, although it sometimes works badly in the bedrooms. During breaks, please use English as much as possible, even when you are talking to students from your own country. That is the quickest way to improve.  Teachers will be available in the reception area every afternoon if you need advice about homework or places to visit.",
+    "note_sheet":  [
+                       {
+                           "section":  "First week at language school",
+                           "items":  [
+                                         {
+                                             "text_before":  "Extra language class:",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Afternoon activities start in the",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Students should bring a",
+                                             "number":  16,
+                                             "text_after":  "to lessons"
+                                         },
+                                         {
+                                             "text_before":  "Some students stay with local",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "School trip day:",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Café closes at",
+                                             "number":  19,
+                                             "text_after":  "o’clock"
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Extra language class",
+                          "answer":  "French",
+                          "accepted_answers":  [
+                                                   "French"
+                                               ],
+                          "explanation":  "The speaker says the extra class this week is French."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Afternoon activities start in the",
+                          "answer":  "library",
+                          "accepted_answers":  [
+                                                   "library"
+                                               ],
+                          "explanation":  "The speaker says afternoon activities usually start in the library."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Students should bring a",
+                          "answer":  "pencil",
+                          "accepted_answers":  [
+                                                   "pencil"
+                                               ],
+                          "explanation":  "The speaker says students should bring a pencil to every lesson."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Some students stay with local",
+                          "answer":  "families",
+                          "accepted_answers":  [
+                                                   "families",
+                                                   "family"
+                                               ],
+                          "explanation":  "The speaker says some students will stay with local families."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "School trip day",
+                          "answer":  "Friday",
+                          "accepted_answers":  [
+                                                   "Friday"
+                                               ],
+                          "explanation":  "The speaker says the school trip is on Friday."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Café closes at",
+                          "answer":  "three",
+                          "accepted_answers":  [
+                                                   "three",
+                                                   "3"
+                                               ],
+                          "explanation":  "The speaker says the school café closes at three o'clock."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%205.mp3"
 }

@@ -1,56 +1,113 @@
 {
+    "test_number":  38,
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a summer photography course",
-                    "speaker":  "Emma",
-                    "audio_script":  "Hello everyone. My name’s Emma, and today I’m going to tell you about a summer photography course.\n\nThe project first started at the [1]city college[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Friday evenings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]digital cameras[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]park café[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]online gallery[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]working outdoors[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "emma",
-                                         "text":  "Hello everyone. My name’s Emma, and today I’m going to tell you about a summer photography course.\n\nThe project first started at the city college, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Friday evenings, because that’s when most people are free. \nEveryone is encouraged to bring digital cameras or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby park café together to relax and chat. \nAt the end of the course, all participants can share their work in an online gallery, which friends and family can visit.\n\nPersonally, I think the best part of the experience is working outdoors, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "emma":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "city college"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Friday evenings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "digital cameras"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "park café"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "online gallery"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "working outdoors"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "context":  "You will hear an organiser talking to volunteers at a music festival.",
+    "form_title":  "Weekend music festival volunteers",
+    "voice":  "en-GB-AbbiNeural",
+    "audio_script":  "Speaker: Hello, everyone, and thank you for offering to help at the weekend music festival. We need volunteers to make sure visitors can find the stages, buy tickets and enjoy the day safely. When you arrive on Saturday, please go first to the volunteer tent. It is next to the [14]ticket office[/14], near the main entrance. You will collect your badge there. The first band starts at eleven, but volunteers should arrive at [15]eight forty-five[/15] so we have time to explain the jobs. Most of you will help visitors, but some people will work in the children's area. If you are there, your job is to help with [16]face painting[/16] and simple games. You do not need experience, because a team leader will show you what to do. If a visitor asks you a question and you do not know the answer, take them to the information desk. Please be friendly, but do not leave your area unless your team leader says it is all right. Lunch is provided. You can collect a sandwich and a drink from the [17]blue van[/17] behind the main stage. Please take your break before two o'clock, as the afternoon will be very busy. The festival finishes at seven, but we need help putting chairs away afterwards. That should take about [18]thirty[/18] minutes.  At the end of the day, please return your radio to the volunteer tent. If it rains, we will still continue, so bring a coat. The emergency phone number is printed on the back of your [19]badge[/19]. Please keep it with you all day.",
+    "note_sheet":  [
+                       {
+                           "section":  "Weekend music festival volunteers",
+                           "items":  [
+                                         {
+                                             "text_before":  "Volunteer tent is next to the:",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Volunteers arrive at:",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Children's area activity:",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Lunch is from the:",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Putting chairs away takes about",
+                                             "number":  18,
+                                             "text_after":  "minutes"
+                                         },
+                                         {
+                                             "text_before":  "Emergency number is on the:",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Volunteer tent is next to the:",
+                          "answer":  "ticket office",
+                          "accepted_answers":  [
+                                                   "ticket office"
+                                               ],
+                          "explanation":  "The volunteer tent is next to the ticket office."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Volunteers arrive at:",
+                          "answer":  "eight forty-five",
+                          "accepted_answers":  [
+                                                   "eight forty-five",
+                                                   "eight forty five",
+                                                   "8.45",
+                                                   "8:45"
+                                               ],
+                          "explanation":  "Volunteers should arrive at eight forty-five."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Children's area activity:",
+                          "answer":  "face painting",
+                          "accepted_answers":  [
+                                                   "face painting"
+                                               ],
+                          "explanation":  "Volunteers in the children's area help with face painting and games."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Lunch is from the:",
+                          "answer":  "blue van",
+                          "accepted_answers":  [
+                                                   "blue van"
+                                               ],
+                          "explanation":  "Lunch can be collected from the blue van."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Putting chairs away takes about",
+                          "answer":  "thirty",
+                          "accepted_answers":  [
+                                                   "thirty",
+                                                   "30"
+                                               ],
+                          "explanation":  "Putting chairs away should take about thirty minutes."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Emergency number is on the:",
+                          "answer":  "badge",
+                          "accepted_answers":  [
+                                                   "badge"
+                                               ],
+                          "explanation":  "The emergency number is printed on the back of the badge."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2038.mp3"
 }

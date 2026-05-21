@@ -1,56 +1,113 @@
 {
+    "id":  6,
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a summer photography course",
-                    "speaker":  "Emma",
-                    "audio_script":  "Hello everyone. My name’s Emma, and today I’m going to tell you about a summer photography course.\n\nThe project first started at the [1]city college[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Friday evenings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]digital cameras[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]park café[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]online gallery[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]working outdoors[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "emma",
-                                         "text":  "Hello everyone. My name’s Emma, and today I’m going to tell you about a summer photography course.\n\nThe project first started at the city college, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Friday evenings, because that’s when most people are free. \nEveryone is encouraged to bring digital cameras or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby park café together to relax and chat. \nAt the end of the course, all participants can share their work in an online gallery, which friends and family can visit.\n\nPersonally, I think the best part of the experience is working outdoors, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "emma":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "city college"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Friday evenings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "digital cameras"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "park café"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "online gallery"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "working outdoors"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "context":  "You will hear a man giving information about a sports club open day.",
+    "form_title":  "Greenhill Sports Club open day",
+    "voice":  "en-GB-NoahNeural",
+    "audio_script":  "Man: Welcome to Greenhill Sports Club. I’m going to explain what will happen at our open day next week. The club is open every day, but the open day itself is on [14]Saturday[/14], because that’s when most of our coaches are free. You can try lots of activities, including basketball and swimming, but the most popular session is usually [15]tennis[/15]. Please book that one early if you want a place. For the climbing wall, you don’t need special shoes, but you must wear [16]gloves[/16]. We’ll lend you some if you don’t have your own. Lunch will be available in the [17]café[/17], which has just opened after repairs. There will be sandwiches, soup and fruit, but no hot meals this time. If you want to join the club after the open day, don’t complete the paper form. It’s quicker to use your [18]phone[/18] and join online while you’re here. New members pay only [19]six[/19] pounds for their first month, which is much cheaper than usual. Staff will be near the entrance all afternoon if you need help or directions. Families are welcome at the open day, and there will be simple games for younger children in the small sports hall. You do not need to be very fit to join; many of our members come only once a week. Lockers are available near the changing rooms, but bring a coin to use one. At three o’clock, one of our coaches will give a short talk about safe exercise for beginners.  If you decide to join, you can use the swimming pool on the same day without paying anything extra.",
+    "note_sheet":  [
+                       {
+                           "section":  "Greenhill Sports Club open day",
+                           "items":  [
+                                         {
+                                             "text_before":  "Open day:",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Most popular session:",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "For climbing, wear",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Lunch available in the",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Join the club using a",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "First month costs £",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Open day",
+                          "answer":  "Saturday",
+                          "accepted_answers":  [
+                                                   "Saturday"
+                                               ],
+                          "explanation":  "The speaker says the open day is on Saturday."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Most popular session",
+                          "answer":  "tennis",
+                          "accepted_answers":  [
+                                                   "tennis"
+                                               ],
+                          "explanation":  "The speaker says the most popular session is usually tennis."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "For climbing, wear",
+                          "answer":  "gloves",
+                          "accepted_answers":  [
+                                                   "gloves",
+                                                   "glove"
+                                               ],
+                          "explanation":  "The speaker says people must wear gloves for the climbing wall."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Lunch available in the",
+                          "answer":  "café",
+                          "accepted_answers":  [
+                                                   "café",
+                                                   "cafe"
+                                               ],
+                          "explanation":  "The speaker says lunch will be available in the café."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Join the club using a",
+                          "answer":  "phone",
+                          "accepted_answers":  [
+                                                   "phone",
+                                                   "mobile"
+                                               ],
+                          "explanation":  "The speaker says it is quicker to use your phone and join online."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "First month costs £",
+                          "answer":  "six",
+                          "accepted_answers":  [
+                                                   "six",
+                                                   "6"
+                                               ],
+                          "explanation":  "The speaker says new members pay six pounds for their first month."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%206.mp3"
 }

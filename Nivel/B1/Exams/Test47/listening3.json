@@ -1,56 +1,112 @@
 {
+    "test_number":  47,
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a music workshop",
-                    "speaker":  "Chloe",
-                    "audio_script":  "Hello everyone. My name’s Chloe, and today I’m going to tell you about a music workshop.\n\nThe project first started at the [1]music teacher[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]small theatre[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]guitar lessons[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]lunchtime break[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]school website[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]performing live[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "chloe",
-                                         "text":  "Hello everyone. My name’s Chloe, and today I’m going to tell you about a music workshop.\n\nThe project first started at the music teacher, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on small theatre, because that’s when most people are free. \nEveryone is encouraged to bring guitar lessons or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby lunchtime break together to relax and chat. \nAt the end of the course, all participants can share their work in an school website, which friends and family can visit.\n\nPersonally, I think the best part of the experience is performing live, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "chloe":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "music teacher"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "small theatre"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "guitar lessons"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "lunchtime break"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "school website"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "performing live"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "context":  "You will hear a teacher talking about a summer music club.",
+    "form_title":  "Summer music club",
+    "voice":  "en-GB-ThomasNeural",
+    "audio_script":  "Speaker: Welcome to our summer music club meeting. The club is open to anyone aged between eleven and sixteen, and you do not have to read music to join. This year, the club leader will be Emma [14]Reed[/14]. Emma plays guitar in a local band, and she is very patient with students who are new to performing. The club meets every Thursday, and the first session starts at [15]four fifteen[/15] in the afternoon. Please come straight after school, as the doors will open at four. If you have your own instrument, bring it, but the club can lend you a [16]keyboard[/16] if you need one. We also have a few guitars, but they must stay in school. In the first week, everyone will learn a simple [17]summer song[/17], and later you can choose music in small groups. Parents will be invited to a short concert in August. Practice sessions take place in the [18]dance studio[/18], because it is larger than the music room and has better speakers. Please do not bring food into the studio, but you can eat before the session in the playground. The club costs [19]six[/19] pounds for the whole summer, mainly to pay for photocopying and equipment. Please return your form to the school office by Friday if you want a place. If you feel nervous about singing or playing alone, do not worry. Most of the work will be done in groups, and nobody has to perform by themselves unless they want to. At the end of July, Emma will help you decide which pieces to play in the concert.",
+    "note_sheet":  [
+                       {
+                           "section":  "Summer music club",
+                           "items":  [
+                                         {
+                                             "text_before":  "Club leader: Emma",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "First session starts at",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Club can lend a",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "First week song:",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Practice takes place in the",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Club cost: £",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Club leader: Emma",
+                          "answer":  "Reed",
+                          "accepted_answers":  [
+                                                   "Reed"
+                                               ],
+                          "explanation":  "The speaker says the club leader will be Emma Reed."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "First session starts at",
+                          "answer":  "four fifteen",
+                          "accepted_answers":  [
+                                                   "four fifteen",
+                                                   "4.15",
+                                                   "4:15"
+                                               ],
+                          "explanation":  "The speaker says the first session starts at four fifteen."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Club can lend a",
+                          "answer":  "keyboard",
+                          "accepted_answers":  [
+                                                   "keyboard"
+                                               ],
+                          "explanation":  "The speaker says the club can lend students a keyboard."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "First week song:",
+                          "answer":  "summer song",
+                          "accepted_answers":  [
+                                                   "summer song"
+                                               ],
+                          "explanation":  "The speaker says everyone will learn a simple summer song."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Practice takes place in the",
+                          "answer":  "dance studio",
+                          "accepted_answers":  [
+                                                   "dance studio"
+                                               ],
+                          "explanation":  "The speaker says practice sessions take place in the dance studio."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Club cost: £",
+                          "answer":  "six",
+                          "accepted_answers":  [
+                                                   "six",
+                                                   "6"
+                                               ],
+                          "explanation":  "The speaker says the club costs six pounds for the whole summer."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2047.mp3"
 }

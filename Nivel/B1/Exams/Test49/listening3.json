@@ -1,56 +1,114 @@
 {
+    "test_number":  49,
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a school travel project",
-                    "speaker":  "Daniel",
-                    "audio_script":  "Hello everyone. My name’s Daniel, and today I’m going to tell you about a school travel project.\n\nThe project first started at the [1]train station[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]travel journal[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]group activities[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]mountain hotel[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]Sunday afternoon[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]different cultures[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "daniel",
-                                         "text":  "Hello everyone. My name’s Daniel, and today I’m going to tell you about a school travel project.\n\nThe project first started at the train station, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on travel journal, because that’s when most people are free. \nEveryone is encouraged to bring group activities or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby mountain hotel together to relax and chat. \nAt the end of the course, all participants can share their work in an Sunday afternoon, which friends and family can visit.\n\nPersonally, I think the best part of the experience is different cultures, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "daniel":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "train station"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "travel journal"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "group activities"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "mountain hotel"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "Sunday afternoon"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "different cultures"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "context":  "You will hear information about an online language course.",
+    "form_title":  "Evening language course",
+    "voice":  "en-GB-HollieNeural",
+    "audio_script":  "Speaker: Thank you for joining this online meeting about our new evening language course. The course is for people who studied Spanish at school but have not used it for some time. Your teacher will be Laura [14]White[/14]. Laura lived in Madrid for five years and enjoys helping adults speak with more confidence. The course starts next Monday, and each online lesson begins at [15]eight o'clock[/15]. Please log in five minutes early, so we can solve any sound problems before the class starts. You will need a computer or tablet, and also a small [16]notebook[/16] for new words. We will send worksheets by email, so you do not have to buy a book. In the first lesson, the topic will be [17]ordering food[/17], because this is useful when travelling. Later lessons will include shopping, directions and hotel questions. The lessons are relaxed, and mistakes are a normal part of learning. If you miss a class, a recording will be available in the [18]student area[/18] of our website. The full course lasts six weeks and costs [19]forty[/19] pounds. Please pay online by Friday to keep your place, as the group is limited to twelve students. After payment, you will receive the meeting link by email. During each lesson, students will work in pairs for short speaking activities. You can keep your camera off if you prefer, but your microphone must work well. Before the course begins, we will send you a simple activity so Laura can understand your level.  A short practice email will also be sent after every lesson. Weekly.",
+    "note_sheet":  [
+                       {
+                           "section":  "Evening language course",
+                           "items":  [
+                                         {
+                                             "text_before":  "Teacher: Laura",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Lessons begin at",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Students need a small",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "First lesson topic:",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Recordings are in the",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Course price: £",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Teacher: Laura",
+                          "answer":  "White",
+                          "accepted_answers":  [
+                                                   "White"
+                                               ],
+                          "explanation":  "The speaker says the teacher will be Laura White."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Lessons begin at",
+                          "answer":  "eight o'clock",
+                          "accepted_answers":  [
+                                                   "eight o'clock",
+                                                   "eight oclock",
+                                                   "8 o'clock",
+                                                   "8:00",
+                                                   "8.00"
+                                               ],
+                          "explanation":  "The speaker says each online lesson begins at eight o'clock."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Students need a small",
+                          "answer":  "notebook",
+                          "accepted_answers":  [
+                                                   "notebook"
+                                               ],
+                          "explanation":  "The speaker says students need a small notebook."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "First lesson topic:",
+                          "answer":  "ordering food",
+                          "accepted_answers":  [
+                                                   "ordering food"
+                                               ],
+                          "explanation":  "The speaker says the first lesson topic will be ordering food."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Recordings are in the",
+                          "answer":  "student area",
+                          "accepted_answers":  [
+                                                   "student area"
+                                               ],
+                          "explanation":  "The speaker says recordings will be available in the student area."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Course price: £",
+                          "answer":  "forty",
+                          "accepted_answers":  [
+                                                   "forty",
+                                                   "40"
+                                               ],
+                          "explanation":  "The speaker says the course costs forty pounds."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2049.mp3"
 }

@@ -1,56 +1,112 @@
 {
+    "test_number":  46,
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a school travel project",
-                    "speaker":  "Daniel",
-                    "audio_script":  "Hello everyone. My name’s Daniel, and today I’m going to tell you about a school travel project.\n\nThe project first started at the [1]train station[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]travel journal[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]group activities[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]mountain hotel[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]Sunday afternoon[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]different cultures[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "daniel",
-                                         "text":  "Hello everyone. My name’s Daniel, and today I’m going to tell you about a school travel project.\n\nThe project first started at the train station, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on travel journal, because that’s when most people are free. \nEveryone is encouraged to bring group activities or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby mountain hotel together to relax and chat. \nAt the end of the course, all participants can share their work in an Sunday afternoon, which friends and family can visit.\n\nPersonally, I think the best part of the experience is different cultures, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "daniel":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "train station"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "travel journal"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "group activities"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "mountain hotel"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "Sunday afternoon"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "different cultures"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "context":  "You will hear information for visitors at a museum.",
+    "form_title":  "Town history museum tour",
+    "voice":  "en-GB-RyanNeural",
+    "audio_script":  "Speaker: Good afternoon, and welcome to the town history museum. Before you begin your visit, I will give you some information about today's special family tour. The tour guide is Mr [14]Parker[/14], who wrote a book about this town last year. He will meet you in the entrance hall in a few minutes. The tour begins at [15]two forty[/15], so please stay near the desk until he arrives. The first room you will visit contains old photographs, but please do not use a camera with [16]flash[/16], because bright light can damage the pictures. You may take photos in other parts of the museum, but ask a member of staff first. The most popular object on the tour is a wooden [17]toy boat[/17], made by a child over a hundred years ago. Many visitors are surprised that it is still in such good condition. Mr Parker will also show you an old school desk and some clothes worn by factory workers. After the tour, children can try drawing historical clothes in the [18]activity room[/18]. Parents are welcome to stay and help, or they can visit the museum shop. A family ticket for the museum usually costs eighteen pounds, but today it costs only [19]ten[/19] pounds because it is a local history weekend. The museum closes at five, so you will have plenty of time to see everything. There are toilets near the entrance, and you may leave coats in the free cloakroom. If younger children get tired, they can sit in the reading corner while the rest of the group finishes the tour. Please keep your ticket, as it also gives you a discount in the shop.",
+    "note_sheet":  [
+                       {
+                           "section":  "Town history museum tour",
+                           "items":  [
+                                         {
+                                             "text_before":  "Tour guide: Mr",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Tour begins at",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Do not use camera",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Popular object: toy",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Children draw in the",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Family ticket today: £",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Tour guide: Mr",
+                          "answer":  "Parker",
+                          "accepted_answers":  [
+                                                   "Parker"
+                                               ],
+                          "explanation":  "The speaker says the tour guide is Mr Parker."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Tour begins at",
+                          "answer":  "two forty",
+                          "accepted_answers":  [
+                                                   "two forty",
+                                                   "2.40",
+                                                   "2:40"
+                                               ],
+                          "explanation":  "The speaker says the tour begins at two forty."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Do not use camera",
+                          "answer":  "flash",
+                          "accepted_answers":  [
+                                                   "flash"
+                                               ],
+                          "explanation":  "The speaker says visitors should not use a camera with flash."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Popular object: toy",
+                          "answer":  "boat",
+                          "accepted_answers":  [
+                                                   "boat"
+                                               ],
+                          "explanation":  "The speaker says the popular object is a wooden toy boat."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Children draw in the",
+                          "answer":  "activity room",
+                          "accepted_answers":  [
+                                                   "activity room"
+                                               ],
+                          "explanation":  "The speaker says children can draw in the activity room."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Family ticket today: £",
+                          "answer":  "ten",
+                          "accepted_answers":  [
+                                                   "ten",
+                                                   "10"
+                                               ],
+                          "explanation":  "The speaker says the family ticket costs ten pounds today."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2046.mp3"
 }

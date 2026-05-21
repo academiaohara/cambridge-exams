@@ -1,56 +1,113 @@
 {
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a school travel project",
-                    "speaker":  "Daniel",
-                    "audio_script":  "Hello everyone. My name’s Daniel, and today I’m going to tell you about a school travel project.\n\nThe project first started at the [1]train station[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]travel journal[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]group activities[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]mountain hotel[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]Sunday afternoon[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]different cultures[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "daniel",
-                                         "text":  "Hello everyone. My name’s Daniel, and today I’m going to tell you about a school travel project.\n\nThe project first started at the train station, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on travel journal, because that’s when most people are free. \nEveryone is encouraged to bring group activities or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby mountain hotel together to relax and chat. \nAt the end of the course, all participants can share their work in an Sunday afternoon, which friends and family can visit.\n\nPersonally, I think the best part of the experience is different cultures, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "daniel":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "train station"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "travel journal"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "group activities"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "mountain hotel"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "Sunday afternoon"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "different cultures"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "id":  19,
+    "context":  "You will hear a man giving information about a cooking competition.",
+    "form_title":  "Cooking competition",
+    "voice":  "en-GB-NoahNeural",
+    "audio_script":  "Man: Hello, cooks, and welcome to this short recording about the town cooking competition. The competition is open to anyone over sixteen, and it will be held next month at North Hall. This year, the main dish must include [14]rice[/14]. You can cook it in any style you like, but it has to be part of the dish, not just something on the side. Competitors should arrive at the hall by ten o’clock. Cooking begins at ten thirty, and you will have [15]90[/15] minutes to finish your dish. Please bring your own knives and pans, but we will provide ovens, tables and washing-up areas. You do not need to bring plates, because each person will receive a white [16]bowl[/16] for presenting the food. The judges are looking for good taste, of course, but they will also give marks for colour and careful preparation. The head judge this year is Maria [17]Stone[/17], who owns the restaurant by the river. She will speak to competitors after the prizes are given. Friends and family can watch from the seats at the back of the hall, but they must not help during the competition. The first prize is a cooking lesson for two people. The second prize is a set of [18]spoons[/18], made by a local company. Everyone who enters will also get a certificate. To take part, you need to complete the form on our website before [19]June 12th[/19]. Late forms cannot be accepted because we need to plan the tables. Competitors should also bring a clean apron, and long hair must be tied back while food is being prepared.",
+    "note_sheet":  [
+                       {
+                           "section":  "Cooking competition",
+                           "items":  [
+                                         {
+                                             "text_before":  "Main dish must include",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Time allowed",
+                                             "number":  15,
+                                             "text_after":  "minutes"
+                                         },
+                                         {
+                                             "text_before":  "Food presented in a white",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Head judge: Maria",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Second prize: set of",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Entry form deadline",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Main dish must include",
+                          "answer":  "rice",
+                          "accepted_answers":  [
+                                                   "rice"
+                                               ],
+                          "explanation":  "The main dish must include rice."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Time allowed",
+                          "answer":  "90",
+                          "accepted_answers":  [
+                                                   "90",
+                                                   "ninety"
+                                               ],
+                          "explanation":  "Competitors will have ninety minutes to finish."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Food presented in a white",
+                          "answer":  "bowl",
+                          "accepted_answers":  [
+                                                   "bowl"
+                                               ],
+                          "explanation":  "Each competitor will receive a white bowl for presenting the food."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Head judge: Maria",
+                          "answer":  "Stone",
+                          "accepted_answers":  [
+                                                   "Stone"
+                                               ],
+                          "explanation":  "The head judge is Maria Stone."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Second prize: set of",
+                          "answer":  "spoons",
+                          "accepted_answers":  [
+                                                   "spoons"
+                                               ],
+                          "explanation":  "The second prize is a set of spoons."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Entry form deadline",
+                          "answer":  "June 12th",
+                          "accepted_answers":  [
+                                                   "June 12th",
+                                                   "12 June",
+                                                   "June 12",
+                                                   "12th June"
+                                               ],
+                          "explanation":  "The form must be completed before June 12th."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2019.mp3"
 }

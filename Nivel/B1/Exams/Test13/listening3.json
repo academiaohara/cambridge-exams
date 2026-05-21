@@ -1,56 +1,113 @@
 {
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a local sports programme",
-                    "speaker":  "Liam",
-                    "audio_script":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the [1]sports centre[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Saturday mornings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]blue T-shirts[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]healthy snacks[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]team leaders[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]new friends[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "liam",
-                                         "text":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the sports centre, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Saturday mornings, because that’s when most people are free. \nEveryone is encouraged to bring blue T-shirts or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby healthy snacks together to relax and chat. \nAt the end of the course, all participants can share their work in an team leaders, which friends and family can visit.\n\nPersonally, I think the best part of the experience is new friends, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "liam":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "sports centre"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Saturday mornings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "blue T-shirts"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "healthy snacks"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "team leaders"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "new friends"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "id":  13,
+    "context":  "You will hear a woman giving information to volunteers at a river festival.",
+    "form_title":  "River festival volunteers",
+    "voice":  "en-GB-LibbyNeural",
+    "audio_script":  "Woman: Hello, volunteers, and thanks for giving your time to help at this year’s river festival. It’s our biggest event of the summer, and we couldn’t run it without you. The festival opens to visitors at eleven, but volunteers should meet at [14]8:45[/14] so we can give everyone a badge and explain their jobs. Please come to the white tent near the bridge first, not to the stage area. Most volunteers will help with stalls, but we also need four people to work at the [15]information desk[/15], where visitors will ask about times, toilets and lost property. If you’re doing that job, please stay calm and write down any difficult questions for the organisers. The children’s activities will be in the park, and this year the most popular one will probably be [16]painting[/16], so we have ordered extra paper and brushes. At lunchtime, volunteers can collect food from the [17]green van[/17] behind the stage. You’ll get a sandwich, fruit and a drink. Please don’t take food from the café stalls because those are for paying visitors. In the afternoon, there will be a boat race. We need people to stand by the river and keep children behind the [18]rope[/18]. It’s not dangerous, but the path gets crowded. At the end of the day, please return your badge before you leave. Everyone who helps for the full day will receive [19]two[/19] free tickets for next year’s festival. If you have any questions now, please come and speak to me after this meeting. Remember to bring a warm jacket as well, because the river area can feel cold later in the afternoon, even in summer.",
+    "note_sheet":  [
+                       {
+                           "section":  "River festival volunteers",
+                           "items":  [
+                                         {
+                                             "text_before":  "Volunteers meet at",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Some volunteers work at the",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Popular children’s activity",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Lunch from the",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Children must stay behind the",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Free tickets for next year",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Volunteers meet at",
+                          "answer":  "8:45",
+                          "accepted_answers":  [
+                                                   "8:45",
+                                                   "8.45",
+                                                   "eight forty-five",
+                                                   "quarter to nine"
+                                               ],
+                          "explanation":  "Volunteers should meet at 8:45."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Some volunteers work at the",
+                          "answer":  "information desk",
+                          "accepted_answers":  [
+                                                   "information desk"
+                                               ],
+                          "explanation":  "Some volunteers will work at the information desk."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Popular children’s activity",
+                          "answer":  "painting",
+                          "accepted_answers":  [
+                                                   "painting"
+                                               ],
+                          "explanation":  "The speaker says painting will probably be the most popular children's activity."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Lunch from the",
+                          "answer":  "green van",
+                          "accepted_answers":  [
+                                                   "green van"
+                                               ],
+                          "explanation":  "Volunteers can collect food from the green van."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Children must stay behind the",
+                          "answer":  "rope",
+                          "accepted_answers":  [
+                                                   "rope"
+                                               ],
+                          "explanation":  "People must keep children behind the rope."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Free tickets for next year",
+                          "answer":  "two",
+                          "accepted_answers":  [
+                                                   "two",
+                                                   "2"
+                                               ],
+                          "explanation":  "Volunteers who help all day will receive two free tickets."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2013.mp3"
 }

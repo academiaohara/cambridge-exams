@@ -1,56 +1,110 @@
 {
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a local sports programme",
-                    "speaker":  "Liam",
-                    "audio_script":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the [1]sports centre[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Saturday mornings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]blue T-shirts[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]healthy snacks[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]team leaders[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]new friends[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "liam",
-                                         "text":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the sports centre, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Saturday mornings, because that’s when most people are free. \nEveryone is encouraged to bring blue T-shirts or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby healthy snacks together to relax and chat. \nAt the end of the course, all participants can share their work in an team leaders, which friends and family can visit.\n\nPersonally, I think the best part of the experience is new friends, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "liam":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "sports centre"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Saturday mornings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "blue T-shirts"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "healthy snacks"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "team leaders"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "new friends"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "id":  11,
+    "context":  "You will hear a man giving information about an open day at a sports centre.",
+    "form_title":  "Sports centre open day",
+    "voice":  "en-GB-RyanNeural",
+    "audio_script":  "Man: Hello, everyone. Thank you for coming to this short meeting about the sports centre open day next month. We hope it will bring more people from the town into the centre, especially families. The open day will be on [14]Saturday[/14], not Sunday as we first planned, because there is a football match in the stadium on Sunday afternoon. Activities will begin at ten, but the building will open earlier for staff. The first class visitors can try is [15]yoga[/15]. It is popular with older members, but the teacher will make it simple enough for beginners. After that, there will be basketball and table tennis in the main hall. Parents with younger children should go to the [16]small gym[/16], where we are putting soft equipment and games. Please tell visitors that they do not have to book in advance, except for swimming, as space in the pool is limited. The swimming session starts at two fifteen, and tickets can be collected from the [17]desk[/17] beside the entrance. We also need volunteers to help people find the different rooms. If you can help, please wear a [18]green[/18] shirt so visitors know who to ask. Finally, drinks will be available all day, but lunch will only be served in the café from twelve until one thirty. A family lunch ticket will cost [19]six[/19] pounds. Posters are going up in schools tomorrow, and information will also appear on the centre website. Please check your email tonight, because I’ll send the final timetable before nine o’clock. If you have not worked at an open day before, don’t worry. Each volunteer will be paired with someone experienced during the busiest parts of the day.",
+    "note_sheet":  [
+                       {
+                           "section":  "Sports centre open day",
+                           "items":  [
+                                         {
+                                             "text_before":  "Open day will be on",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "First class to try",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Young children should go to the",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Swimming tickets from the",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Volunteers should wear a",
+                                             "number":  18,
+                                             "text_after":  "shirt"
+                                         },
+                                         {
+                                             "text_before":  "Family lunch ticket costs £",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Open day will be on",
+                          "answer":  "Saturday",
+                          "accepted_answers":  [
+                                                   "Saturday"
+                                               ],
+                          "explanation":  "The speaker says the open day will be on Saturday, not Sunday."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "First class to try",
+                          "answer":  "yoga",
+                          "accepted_answers":  [
+                                                   "yoga"
+                                               ],
+                          "explanation":  "The first class visitors can try is yoga."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Young children should go to the",
+                          "answer":  "small gym",
+                          "accepted_answers":  [
+                                                   "small gym"
+                                               ],
+                          "explanation":  "Parents with younger children should go to the small gym."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Swimming tickets from the",
+                          "answer":  "desk",
+                          "accepted_answers":  [
+                                                   "desk"
+                                               ],
+                          "explanation":  "Swimming tickets can be collected from the desk beside the entrance."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Volunteers should wear a",
+                          "answer":  "green",
+                          "accepted_answers":  [
+                                                   "green"
+                                               ],
+                          "explanation":  "Volunteers should wear a green shirt."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Family lunch ticket costs £",
+                          "answer":  "six",
+                          "accepted_answers":  [
+                                                   "six",
+                                                   "6"
+                                               ],
+                          "explanation":  "A family lunch ticket will cost six pounds."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2011.mp3"
 }

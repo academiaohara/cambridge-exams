@@ -1,56 +1,111 @@
 {
+    "test_number":  35,
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a school travel project",
-                    "speaker":  "Daniel",
-                    "audio_script":  "Hello everyone. My name’s Daniel, and today I’m going to tell you about a school travel project.\n\nThe project first started at the [1]train station[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]travel journal[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]group activities[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]mountain hotel[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]Sunday afternoon[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]different cultures[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "daniel",
-                                         "text":  "Hello everyone. My name’s Daniel, and today I’m going to tell you about a school travel project.\n\nThe project first started at the train station, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on travel journal, because that’s when most people are free. \nEveryone is encouraged to bring group activities or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby mountain hotel together to relax and chat. \nAt the end of the course, all participants can share their work in an Sunday afternoon, which friends and family can visit.\n\nPersonally, I think the best part of the experience is different cultures, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "daniel":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "train station"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "travel journal"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "group activities"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "mountain hotel"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "Sunday afternoon"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "different cultures"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "context":  "You will hear a member of staff giving information at a sports centre open day.",
+    "form_title":  "Hill Road Sports Centre open day",
+    "voice":  "en-GB-ThomasNeural",
+    "audio_script":  "Speaker: Hello, and welcome to Hill Road Sports Centre. Today is our open day, so you can try several activities for free and meet the instructors. If you have just arrived, please collect a visitor card from reception before you join any class. The first activity this morning is badminton, which takes place in the [14]main hall[/14]. You can borrow rackets there, but please return them at the end. At twelve o'clock, there will be a swimming lesson for adults who are not confident in deep water. That lesson is taught by [15]Emma Blake[/15], our new swimming coach. She is very patient, so beginners usually enjoy her classes. In the afternoon, we are offering a short introduction to climbing. For this activity, you must wear [16]trainers[/16], not sandals or boots. We have all the other safety equipment here. There will be staff in green shirts around the building, so ask them if you are not sure where to go. Lockers are free today, but you need to leave a coin, which you get back later. If you prefer something quieter, there is yoga in studio two at two thirty. Please bring your own [17]towel[/17] if you want to join that class, because we only have a few spare mats.  Showers are available after activities, and reception can lend you a small towel for a deposit if you forget yours. The café has a special lunch today. Soup and a sandwich cost [18]six[/18] pounds, and fruit is free for children. Before you leave, remember to complete the short form at reception. Everyone who fills it in will receive a free [19]water bottle[/19] next week.",
+    "note_sheet":  [
+                       {
+                           "section":  "Hill Road Sports Centre open day",
+                           "items":  [
+                                         {
+                                             "text_before":  "Badminton is in the:",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Swimming coach:",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "For climbing, wear:",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Bring your own:",
+                                             "number":  17,
+                                             "text_after":  "for yoga"
+                                         },
+                                         {
+                                             "text_before":  "Special lunch costs £",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Free gift next week:",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Badminton is in the:",
+                          "answer":  "main hall",
+                          "accepted_answers":  [
+                                                   "main hall"
+                                               ],
+                          "explanation":  "The speaker says badminton takes place in the main hall."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Swimming coach:",
+                          "answer":  "Emma Blake",
+                          "accepted_answers":  [
+                                                   "Emma Blake",
+                                                   "Blake"
+                                               ],
+                          "explanation":  "The swimming lesson is taught by Emma Blake."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "For climbing, wear:",
+                          "answer":  "trainers",
+                          "accepted_answers":  [
+                                                   "trainers"
+                                               ],
+                          "explanation":  "The speaker says people must wear trainers for climbing."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Bring your own:",
+                          "answer":  "towel",
+                          "accepted_answers":  [
+                                                   "towel"
+                                               ],
+                          "explanation":  "People joining yoga should bring their own towel."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Special lunch costs £",
+                          "answer":  "six",
+                          "accepted_answers":  [
+                                                   "six",
+                                                   "6"
+                                               ],
+                          "explanation":  "Soup and a sandwich cost six pounds."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Free gift next week:",
+                          "answer":  "water bottle",
+                          "accepted_answers":  [
+                                                   "water bottle"
+                                               ],
+                          "explanation":  "Visitors who complete the form will receive a free water bottle."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2035.mp3"
 }

@@ -1,56 +1,118 @@
 {
+    "test_number":  40,
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a summer photography course",
-                    "speaker":  "Emma",
-                    "audio_script":  "Hello everyone. My name’s Emma, and today I’m going to tell you about a summer photography course.\n\nThe project first started at the [1]city college[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Friday evenings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]digital cameras[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]park café[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]online gallery[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]working outdoors[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "emma",
-                                         "text":  "Hello everyone. My name’s Emma, and today I’m going to tell you about a summer photography course.\n\nThe project first started at the city college, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Friday evenings, because that’s when most people are free. \nEveryone is encouraged to bring digital cameras or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby park café together to relax and chat. \nAt the end of the course, all participants can share their work in an online gallery, which friends and family can visit.\n\nPersonally, I think the best part of the experience is working outdoors, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "emma":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "city college"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Friday evenings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "digital cameras"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "park café"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "online gallery"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "working outdoors"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "context":  "You will hear a librarian giving information about new library activities.",
+    "form_title":  "Westfield Library activities",
+    "voice":  "en-GB-HollieNeural",
+    "audio_script":  "Speaker: Good evening, and welcome to Westfield Library. I'm going to tell you about some new activities starting this spring. The library is still a quiet place to read and study, but we also want it to be a place where people meet and learn together. Our new reading group starts next week. It will meet in the [14]study room[/14] because the children's room is too small for adults. The first book is a mystery story by Helen Cross. You don't need to buy it, because copies are available at the desk. On Friday afternoons, we are starting a computer help session for older people. The teacher is [15]Mark Evans[/15], who many of you know from the college. He will explain email, online forms and how to stay safe on the internet. If you come to this session, please bring your [16]library card[/16], as you need it to use our computers. All activities are free, but some of them need a place booked in advance. You can book at the main desk or by phone. Please tell us if you book a place and then cannot come. For children, there will be a story hour every Saturday at [17]ten thirty[/17]. Parents can stay, but they do not have to. We are also looking for volunteers to help keep the garden tidy. The first gardening morning is on [18]5 May[/18]. Tools are provided, but please wear old clothes.  The noticeboard near the entrance will show any changes to times or rooms. Finally, the library café will now close at [19]six[/19] instead of five, so visitors can have a drink after work.",
+    "note_sheet":  [
+                       {
+                           "section":  "Westfield Library activities",
+                           "items":  [
+                                         {
+                                             "text_before":  "Reading group meets in the:",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Computer teacher:",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Bring your:",
+                                             "number":  16,
+                                             "text_after":  "to use computers"
+                                         },
+                                         {
+                                             "text_before":  "Children's story hour:",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "First gardening morning:",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Café now closes at:",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Reading group meets in the:",
+                          "answer":  "study room",
+                          "accepted_answers":  [
+                                                   "study room"
+                                               ],
+                          "explanation":  "The reading group will meet in the study room."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Computer teacher:",
+                          "answer":  "Mark Evans",
+                          "accepted_answers":  [
+                                                   "Mark Evans",
+                                                   "Evans"
+                                               ],
+                          "explanation":  "The computer help session is taught by Mark Evans."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Bring your:",
+                          "answer":  "library card",
+                          "accepted_answers":  [
+                                                   "library card"
+                                               ],
+                          "explanation":  "Visitors need to bring their library card to use the computers."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Children's story hour:",
+                          "answer":  "ten thirty",
+                          "accepted_answers":  [
+                                                   "ten thirty",
+                                                   "10.30",
+                                                   "10:30"
+                                               ],
+                          "explanation":  "Story hour for children is every Saturday at ten thirty."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "First gardening morning:",
+                          "answer":  "5 May",
+                          "accepted_answers":  [
+                                                   "5 May",
+                                                   "May 5",
+                                                   "5th May",
+                                                   "May 5th"
+                                               ],
+                          "explanation":  "The first gardening morning is on 5 May."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Café now closes at:",
+                          "answer":  "six",
+                          "accepted_answers":  [
+                                                   "six",
+                                                   "6",
+                                                   "6.00",
+                                                   "6:00"
+                                               ],
+                          "explanation":  "The library café will now close at six instead of five."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2040.mp3"
 }

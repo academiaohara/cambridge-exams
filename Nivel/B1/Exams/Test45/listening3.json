@@ -1,56 +1,115 @@
 {
+    "test_number":  45,
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a music workshop",
-                    "speaker":  "Chloe",
-                    "audio_script":  "Hello everyone. My name’s Chloe, and today I’m going to tell you about a music workshop.\n\nThe project first started at the [1]music teacher[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]small theatre[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]guitar lessons[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]lunchtime break[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]school website[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]performing live[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "chloe",
-                                         "text":  "Hello everyone. My name’s Chloe, and today I’m going to tell you about a music workshop.\n\nThe project first started at the music teacher, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on small theatre, because that’s when most people are free. \nEveryone is encouraged to bring guitar lessons or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby lunchtime break together to relax and chat. \nAt the end of the course, all participants can share their work in an school website, which friends and family can visit.\n\nPersonally, I think the best part of the experience is performing live, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "chloe":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "music teacher"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "small theatre"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "guitar lessons"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "lunchtime break"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "school website"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "performing live"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "context":  "You will hear a woman giving information about a cycling holiday.",
+    "form_title":  "Family cycling holiday",
+    "voice":  "en-GB-LibbyNeural",
+    "audio_script":  "Speaker: Thank you for booking our family cycling holiday. I will explain what will happen on the first day, so that everyone feels ready. The holiday is planned for people who cycle sometimes but do not want a difficult route. Your guide for the week is Tom [14]Mason[/14]. Tom knows this area very well and has planned a route that avoids the busiest roads. On Monday morning, please meet him at [15]nine o'clock[/15] outside the hotel reception. Do not go to the bike shop first, because we will collect the bicycles together. You do not need to bring a helmet, as we provide one, but you should bring a light [16]jacket[/16] in case the weather changes. The first place we visit will be the old [17]windmill[/17] on the hill above the village. The road up is not very steep, and there will be time to take photos. Lunch is included and will be served at the [18]river cafe[/18], where there are sandwiches, soup and fruit. In the afternoon, we cycle back along a quiet path through the woods. If anyone feels tired, there will be a short rest halfway back. The hire price for each bicycle is [19]eight[/19] pounds a day. Please check that your brakes work before leaving the hotel, and tell Tom immediately if you have any difficulty with your bike. The holiday is not a race, and the guide will stop whenever the group needs a break. Families with younger children can choose a shorter ride on the second day. Maps will be given out at breakfast, so you can see the route before you start cycling.",
+    "note_sheet":  [
+                       {
+                           "section":  "Family cycling holiday",
+                           "items":  [
+                                         {
+                                             "text_before":  "Guide's name: Tom",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Monday meeting time:",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "People should bring a light",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "First visit: old",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Lunch is at the",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Bicycle hire per day: £",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Guide's name: Tom",
+                          "answer":  "Mason",
+                          "accepted_answers":  [
+                                                   "Mason"
+                                               ],
+                          "explanation":  "The speaker says the guide for the week is Tom Mason."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Monday meeting time:",
+                          "answer":  "nine o'clock",
+                          "accepted_answers":  [
+                                                   "nine o'clock",
+                                                   "nine oclock",
+                                                   "9 o'clock",
+                                                   "9:00",
+                                                   "9.00"
+                                               ],
+                          "explanation":  "The speaker says to meet at nine o'clock on Monday morning."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "People should bring a light",
+                          "answer":  "jacket",
+                          "accepted_answers":  [
+                                                   "jacket"
+                                               ],
+                          "explanation":  "The speaker says people should bring a light jacket."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "First visit: old",
+                          "answer":  "windmill",
+                          "accepted_answers":  [
+                                                   "windmill"
+                                               ],
+                          "explanation":  "The speaker says the first place they visit will be the old windmill."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Lunch is at the",
+                          "answer":  "river cafe",
+                          "accepted_answers":  [
+                                                   "river cafe",
+                                                   "river café"
+                                               ],
+                          "explanation":  "The speaker says lunch will be served at the river cafe."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Bicycle hire per day: £",
+                          "answer":  "eight",
+                          "accepted_answers":  [
+                                                   "eight",
+                                                   "8"
+                                               ],
+                          "explanation":  "The speaker says bicycle hire costs eight pounds a day."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2045.mp3"
 }

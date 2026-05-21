@@ -1,56 +1,126 @@
 {
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a local sports programme",
-                    "speaker":  "Liam",
-                    "audio_script":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the [1]sports centre[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Saturday mornings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]blue T-shirts[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]healthy snacks[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]team leaders[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]new friends[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "liam",
-                                         "text":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the sports centre, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Saturday mornings, because that’s when most people are free. \nEveryone is encouraged to bring blue T-shirts or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby healthy snacks together to relax and chat. \nAt the end of the course, all participants can share their work in an team leaders, which friends and family can visit.\n\nPersonally, I think the best part of the experience is new friends, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "liam":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "sports centre"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Saturday mornings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "blue T-shirts"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "healthy snacks"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "team leaders"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "new friends"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "test_id":  30,
+    "context":  "You will hear a man giving information to guests at a hotel.",
+    "form_title":  "Riverside Hotel information",
+    "voice":  "en-GB-LibbyNeural",
+    "audio_script":  "Man: Good evening, everyone, and welcome to the Riverside Hotel. I hope you had a pleasant journey. I would like to give you a few details about the hotel before you go to your rooms. Breakfast is served in the restaurant on the [14]first[/14] floor. It starts at seven, but at weekends it begins half an hour later. If you need an early breakfast, please tell reception tonight. The swimming pool is open every day until [15]nine[/15] o'clock in the evening. Children under twelve must be with an adult. Towels for the pool are not in your bedrooms; you can collect them from the [16]gym[/16]. This evening, dinner will be available from six thirty. The special dish is fresh [17]salmon[/17], but there are also pasta and salad choices. If you want to visit the town centre, the bus stop is opposite the hotel. A ticket costs [18]two fifty[/18], and buses leave every twenty minutes. Finally, please remember that room keys must be left at reception when you go out. If you have any questions, ask our night manager, Mr [19]Clark[/19], who will be at the desk after ten. If anything in your room is not working, please tell reception as soon as possible, rather than waiting until the morning. We can usually solve small problems quickly. The hotel has free Wi-Fi in all public areas, and the password is printed on your key card. Please check the notice board before you leave, because small changes to rooms or times may be written there. If you are not sure about anything, ask a member of staff.",
+    "note_sheet":  [
+                       {
+                           "section":  "Hotel facilities",
+                           "items":  [
+                                         {
+                                             "text_before":  "Breakfast restaurant: on the",
+                                             "number":  14,
+                                             "text_after":  "floor"
+                                         },
+                                         {
+                                             "text_before":  "Swimming pool open until",
+                                             "number":  15,
+                                             "text_after":  "p.m."
+                                         },
+                                         {
+                                             "text_before":  "Pool towels from the",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       },
+                       {
+                           "section":  "Food and travel",
+                           "items":  [
+                                         {
+                                             "text_before":  "Dinner special:",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Bus ticket costs £",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       },
+                       {
+                           "section":  "Help",
+                           "items":  [
+                                         {
+                                             "text_before":  "Night manager: Mr",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Breakfast restaurant: on the ... floor",
+                          "answer":  "first",
+                          "accepted_answers":  [
+                                                   "first",
+                                                   "1st"
+                                               ],
+                          "explanation":  "The speaker says breakfast is served in the restaurant on the first floor."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Swimming pool open until",
+                          "answer":  "nine",
+                          "accepted_answers":  [
+                                                   "nine",
+                                                   "9",
+                                                   "9.00",
+                                                   "9:00"
+                                               ],
+                          "explanation":  "The speaker says the swimming pool is open until nine o'clock."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Pool towels from the",
+                          "answer":  "gym",
+                          "accepted_answers":  [
+                                                   "gym"
+                                               ],
+                          "explanation":  "The speaker says towels can be collected from the gym."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Dinner special",
+                          "answer":  "salmon",
+                          "accepted_answers":  [
+                                                   "salmon"
+                                               ],
+                          "explanation":  "The speaker says the special dish is fresh salmon."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Bus ticket costs £",
+                          "answer":  "two fifty",
+                          "accepted_answers":  [
+                                                   "two fifty",
+                                                   "2.50",
+                                                   "£2.50"
+                                               ],
+                          "explanation":  "The speaker says a bus ticket costs two fifty."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Night manager: Mr",
+                          "answer":  "Clark",
+                          "accepted_answers":  [
+                                                   "Clark"
+                                               ],
+                          "explanation":  "The speaker says the night manager is Mr Clark."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2030.mp3",
+    "word_count":  266
 }

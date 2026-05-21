@@ -1,56 +1,126 @@
 {
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a local sports programme",
-                    "speaker":  "Liam",
-                    "audio_script":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the [1]sports centre[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Saturday mornings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]blue T-shirts[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]healthy snacks[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]team leaders[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]new friends[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "liam",
-                                         "text":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the sports centre, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Saturday mornings, because that’s when most people are free. \nEveryone is encouraged to bring blue T-shirts or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby healthy snacks together to relax and chat. \nAt the end of the course, all participants can share their work in an team leaders, which friends and family can visit.\n\nPersonally, I think the best part of the experience is new friends, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "liam":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "sports centre"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Saturday mornings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "blue T-shirts"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "healthy snacks"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "team leaders"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "new friends"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "test_id":  24,
+    "context":  "You will hear a man giving information to young people at a summer sports camp.",
+    "form_title":  "Summer sports camp",
+    "voice":  "en-GB-NoahNeural",
+    "audio_script":  "Man: Welcome to the first day of the summer sports camp. My name is Ben, and I'll be helping you during the week. Before we go outside, I want to explain the programme. Today we will start with tennis, but tomorrow's main sport is [14]basketball[/14]. That will be in the sports hall, so it will happen even if the weather is bad. Each morning begins at [15]nine[/15] o'clock, but the gates open at eight thirty if your parents need to drop you off early. You should all have trainers and a water bottle. Please write your name on your bottle because many of them look the same. On Wednesday we are going swimming, so you must bring a [16]towel[/16]. You do not need to bring money for lunch. Everyone will eat in the [17]canteen[/17], and there will be sandwiches, pasta, and fruit. In the afternoon, you can choose one activity. This week the new choice is [18]climbing[/18], which is on the small wall behind the gym. Helmets will be provided. Finally, parents should collect you from the green gate, not the car park. If there is a problem, please phone the camp office before [19]five[/19] o'clock. There will be short breaks between activities, and you can refill your water bottles at the taps near the changing rooms. If you feel tired or unwell at any point, tell one of the coaches immediately. We want you to enjoy the camp, but safety comes first. Please check the notice board before you leave, because small changes to rooms or times may be written there. If you are not sure about anything, ask a member of staff.",
+    "note_sheet":  [
+                       {
+                           "section":  "Programme",
+                           "items":  [
+                                         {
+                                             "text_before":  "Tomorrow's main sport:",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Each morning begins at",
+                                             "number":  15,
+                                             "text_after":  "a.m."
+                                         }
+                                     ]
+                       },
+                       {
+                           "section":  "Things to bring",
+                           "items":  [
+                                         {
+                                             "text_before":  "For swimming, bring a",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       },
+                       {
+                           "section":  "Other information",
+                           "items":  [
+                                         {
+                                             "text_before":  "Lunch is in the",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "New afternoon activity:",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Phone the office before",
+                                             "number":  19,
+                                             "text_after":  "p.m."
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Tomorrow's main sport",
+                          "answer":  "basketball",
+                          "accepted_answers":  [
+                                                   "basketball"
+                                               ],
+                          "explanation":  "The speaker says tomorrow's main sport is basketball."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Each morning begins at",
+                          "answer":  "nine",
+                          "accepted_answers":  [
+                                                   "nine",
+                                                   "9",
+                                                   "9.00",
+                                                   "9:00"
+                                               ],
+                          "explanation":  "The speaker says each morning begins at nine o'clock."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "For swimming, bring a",
+                          "answer":  "towel",
+                          "accepted_answers":  [
+                                                   "towel"
+                                               ],
+                          "explanation":  "The speaker says students must bring a towel for swimming."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Lunch is in the",
+                          "answer":  "canteen",
+                          "accepted_answers":  [
+                                                   "canteen"
+                                               ],
+                          "explanation":  "The speaker says everyone will eat in the canteen."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "New afternoon activity",
+                          "answer":  "climbing",
+                          "accepted_answers":  [
+                                                   "climbing"
+                                               ],
+                          "explanation":  "The speaker says the new choice is climbing."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Phone the office before",
+                          "answer":  "five",
+                          "accepted_answers":  [
+                                                   "five",
+                                                   "5",
+                                                   "5.00",
+                                                   "5:00"
+                                               ],
+                          "explanation":  "The speaker says parents should phone before five o'clock."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2024.mp3",
+    "word_count":  274
 }

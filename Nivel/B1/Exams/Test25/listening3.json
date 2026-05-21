@@ -1,56 +1,123 @@
 {
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a school travel project",
-                    "speaker":  "Daniel",
-                    "audio_script":  "Hello everyone. My name’s Daniel, and today I’m going to tell you about a school travel project.\n\nThe project first started at the [1]train station[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]travel journal[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]group activities[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]mountain hotel[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]Sunday afternoon[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]different cultures[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "daniel",
-                                         "text":  "Hello everyone. My name’s Daniel, and today I’m going to tell you about a school travel project.\n\nThe project first started at the train station, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on travel journal, because that’s when most people are free. \nEveryone is encouraged to bring group activities or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby mountain hotel together to relax and chat. \nAt the end of the course, all participants can share their work in an Sunday afternoon, which friends and family can visit.\n\nPersonally, I think the best part of the experience is different cultures, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "daniel":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "train station"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "travel journal"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "group activities"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "mountain hotel"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "Sunday afternoon"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "different cultures"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "test_id":  25,
+    "context":  "You will hear a woman giving information about a family day at a museum.",
+    "form_title":  "Museum family day",
+    "voice":  "en-GB-MaisieNeural",
+    "audio_script":  "Woman: Hello everyone, and thank you for coming to our museum family day. I'm going to explain what is happening so that you can plan your visit. The first event is a talk about old toys. It will be given by Dr Helen [14]Moore[/14], who has written several books about children's games in the past. The talk begins at half past ten in Room Two. After that, children can make paper animals in the education room. This activity is suitable for children aged [15]seven[/15] and above, because younger children may find the cutting difficult. At twelve o'clock, there will be music in the entrance hall. The performers are from a local [16]school[/16], and they have been practising for several weeks. If you want lunch, the museum café is open, but today it is serving only soup and sandwiches. Families may also eat their own food in the [17]courtyard[/17]. Please do not eat in the exhibition rooms. In the afternoon, there is a treasure hunt around the building. You can collect the question sheet from the [18]shop[/18]. Everyone who finishes it will get a small prize. Finally, the museum closes at [19]four thirty[/19] today because staff need to prepare for an evening event. There are volunteers around the museum wearing blue badges, and they can show you where to go. Some rooms may become crowded, so please be patient if you have to wait. We have tried to plan the day so families can move around easily without rushing. Please check the notice board before you leave, because small changes to rooms or times may be written there. If you are not sure about anything, ask a member of staff.",
+    "note_sheet":  [
+                       {
+                           "section":  "Morning events",
+                           "items":  [
+                                         {
+                                             "text_before":  "Talk by Dr Helen",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Paper animals activity: age",
+                                             "number":  15,
+                                             "text_after":  "and above"
+                                         }
+                                     ]
+                       },
+                       {
+                           "section":  "Lunch and music",
+                           "items":  [
+                                         {
+                                             "text_before":  "Music by children from a local",
+                                             "number":  16,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Families can eat in the",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       },
+                       {
+                           "section":  "Afternoon",
+                           "items":  [
+                                         {
+                                             "text_before":  "Treasure hunt sheet from the",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Museum closes at",
+                                             "number":  19,
+                                             "text_after":  "p.m."
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "Talk by Dr Helen",
+                          "answer":  "Moore",
+                          "accepted_answers":  [
+                                                   "Moore"
+                                               ],
+                          "explanation":  "The speaker says the talk will be given by Dr Helen Moore."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "Paper animals activity: age ... and above",
+                          "answer":  "seven",
+                          "accepted_answers":  [
+                                                   "seven",
+                                                   "7"
+                                               ],
+                          "explanation":  "The speaker says the activity is suitable for children aged seven and above."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Music by children from a local",
+                          "answer":  "school",
+                          "accepted_answers":  [
+                                                   "school"
+                                               ],
+                          "explanation":  "The speaker says the performers are from a local school."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Families can eat in the",
+                          "answer":  "courtyard",
+                          "accepted_answers":  [
+                                                   "courtyard"
+                                               ],
+                          "explanation":  "The speaker says families may eat their own food in the courtyard."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Treasure hunt sheet from the",
+                          "answer":  "shop",
+                          "accepted_answers":  [
+                                                   "shop"
+                                               ],
+                          "explanation":  "The speaker says people can collect the question sheet from the shop."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Museum closes at",
+                          "answer":  "four thirty",
+                          "accepted_answers":  [
+                                                   "four thirty",
+                                                   "4.30",
+                                                   "4:30"
+                                               ],
+                          "explanation":  "The speaker says the museum closes at four thirty."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2025.mp3",
+    "word_count":  279
 }

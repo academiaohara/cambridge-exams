@@ -1,56 +1,116 @@
 {
+    "exam_part":  3,
     "title":  "Listening - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "note-completion",
-    "time":  6,
+    "type":  "gap-fill",
+    "time":  10,
     "totalQuestions":  6,
-    "instructions":  "Complete the notes with a word or short phrase.",
-    "content":  {
-                    "topic":  "a local sports programme",
-                    "speaker":  "Liam",
-                    "audio_script":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the [1]sports centre[/1], where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on [2]Saturday mornings[/2], because that’s when most people are free. \nEveryone is encouraged to bring [3]blue T-shirts[/3] or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby [4]healthy snacks[/4] together to relax and chat. \nAt the end of the course, all participants can share their work in an [5]team leaders[/5], which friends and family can visit.\n\nPersonally, I think the best part of the experience is [6]new friends[/6], because it helps students become more confident and creative.\n\nThanks for listening.",
-                    "dialogue":  [
-                                     {
-                                         "speaker":  "liam",
-                                         "text":  "Hello everyone. My name’s Liam, and today I’m going to tell you about a local sports programme.\n\nThe project first started at the sports centre, where a group of students wanted to learn something new after school. \nAt first, only a few people joined, but more students became interested very quickly.\n\nWe usually meet on Saturday mornings, because that’s when most people are free. \nEveryone is encouraged to bring blue T-shirts or any equipment they already have at home.\n\nDuring breaks, students often visit the nearby healthy snacks together to relax and chat. \nAt the end of the course, all participants can share their work in an team leaders, which friends and family can visit.\n\nPersonally, I think the best part of the experience is new friends, because it helps students become more confident and creative.\n\nThanks for listening."
-                                     }
-                                 ],
-                    "voices":  {
-                                   "liam":  "en-GB-SoniaNeural"
-                               },
-                    "questions":  [
-                                      {
-                                          "number":  1,
-                                          "question":  "The project first started at the _____ .",
-                                          "answer":  "sports centre"
-                                      },
-                                      {
-                                          "number":  2,
-                                          "question":  "Students usually meet on _____ .",
-                                          "answer":  "Saturday mornings"
-                                      },
-                                      {
-                                          "number":  3,
-                                          "question":  "Participants should bring _____ .",
-                                          "answer":  "blue T-shirts"
-                                      },
-                                      {
-                                          "number":  4,
-                                          "question":  "Students often visit the nearby _____ .",
-                                          "answer":  "healthy snacks"
-                                      },
-                                      {
-                                          "number":  5,
-                                          "question":  "At the end, students can share work in an _____ .",
-                                          "answer":  "team leaders"
-                                      },
-                                      {
-                                          "number":  6,
-                                          "question":  "The speaker says the best part is _____ .",
-                                          "answer":  "new friends"
-                                      }
-                                  ]
-                }
+    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+    "duration_minutes":  7,
+    "id":  15,
+    "context":  "You will hear a librarian giving information about a summer reading club.",
+    "form_title":  "Summer reading club",
+    "voice":  "en-GB-NoahNeural",
+    "audio_script":  "Man: Good morning. This is a message from Westfield Library about our summer reading club for children aged eight to thirteen. The club starts on the first Monday of the school holiday, and this year the theme is [14]adventure[/14]. Children can read stories about journeys, mysteries, mountains or even trips into space. To join, children need to fill in a form at the library desk. Please don’t use last year’s form, because we have changed the details we ask for. The first meeting will be in the [15]blue room[/15], which is upstairs near the computers. Parents can wait downstairs or come back later. Each child should try to read at least four books during the holiday. After each book, they’ll talk to a librarian for a few minutes and collect a [16]stamp[/16] for their card. When the card is full, they can choose a small prize. This year, the main prize for children who finish six books is a free ticket to the [17]cinema[/17]. We’re also running special activities on Wednesday afternoons. The first one is a drawing workshop with local artist Emma Ford, and it begins at [18]3:00[/18]. Places are limited, so please book early. At the end of the summer, there will be a party for everyone who joined the club. Please bring your reading card with you to the party, because it will be used for a competition. The party date is [19]August 28th[/19]. More information is available on the library noticeboard. Younger brothers and sisters may come to the party, but they must stay with an adult while the certificates are being given out.",
+    "note_sheet":  [
+                       {
+                           "section":  "Summer reading club",
+                           "items":  [
+                                         {
+                                             "text_before":  "This year’s theme",
+                                             "number":  14,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "First meeting in the",
+                                             "number":  15,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Children collect a",
+                                             "number":  16,
+                                             "text_after":  "after each book"
+                                         },
+                                         {
+                                             "text_before":  "Main prize: free ticket to the",
+                                             "number":  17,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Drawing workshop begins at",
+                                             "number":  18,
+                                             "text_after":  ""
+                                         },
+                                         {
+                                             "text_before":  "Party date",
+                                             "number":  19,
+                                             "text_after":  ""
+                                         }
+                                     ]
+                       }
+                   ],
+    "questions":  [
+                      {
+                          "number":  14,
+                          "prompt":  "This year’s theme",
+                          "answer":  "adventure",
+                          "accepted_answers":  [
+                                                   "adventure"
+                                               ],
+                          "explanation":  "The theme of the club is adventure."
+                      },
+                      {
+                          "number":  15,
+                          "prompt":  "First meeting in the",
+                          "answer":  "blue room",
+                          "accepted_answers":  [
+                                                   "blue room"
+                                               ],
+                          "explanation":  "The first meeting will be in the blue room."
+                      },
+                      {
+                          "number":  16,
+                          "prompt":  "Children collect a",
+                          "answer":  "stamp",
+                          "accepted_answers":  [
+                                                   "stamp"
+                                               ],
+                          "explanation":  "After each book, children collect a stamp for their card."
+                      },
+                      {
+                          "number":  17,
+                          "prompt":  "Main prize: free ticket to the",
+                          "answer":  "cinema",
+                          "accepted_answers":  [
+                                                   "cinema"
+                                               ],
+                          "explanation":  "The main prize is a free ticket to the cinema."
+                      },
+                      {
+                          "number":  18,
+                          "prompt":  "Drawing workshop begins at",
+                          "answer":  "3:00",
+                          "accepted_answers":  [
+                                                   "3:00",
+                                                   "3.00",
+                                                   "three",
+                                                   "three o'clock",
+                                                   "3 o'clock"
+                                               ],
+                          "explanation":  "The drawing workshop begins at 3:00."
+                      },
+                      {
+                          "number":  19,
+                          "prompt":  "Party date",
+                          "answer":  "August 28th",
+                          "accepted_answers":  [
+                                                   "August 28th",
+                                                   "28 August",
+                                                   "August 28",
+                                                   "28th August"
+                                               ],
+                          "explanation":  "The party date is August 28th."
+                      }
+                  ],
+    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2015.mp3"
 }
