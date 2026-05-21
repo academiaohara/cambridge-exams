@@ -507,9 +507,55 @@
 
   function listeningFlat(ex) {
     var raw = ex.questions || ex.items || [];
+    var qs = normalizeQuestionsArray(raw);
+    qs.forEach(function(q) {
+      if (q && q.audio_script && q.extractId == null && q.number != null) {
+        q.extractId = q.number;
+      }
+    });
     ex.content = {
-      questions: normalizeQuestionsArray(raw)
+      questions: qs
     };
+    mergeDescription(ex);
+  }
+
+  /**
+   * B1 Listening Part 2 (PET): JSON has root-level `extracts[]` with nested `questions`.
+   * `listeningFlat()` runs before exercise.js can merge extracts and would create
+   * `content` with an empty `questions` array, which blocks the transcript / explanation bar.
+   */
+  function listeningFromRootExtracts(ex) {
+    var extracts = ex.extracts;
+    if (!Array.isArray(extracts) || !extracts.length) return;
+    extracts.forEach(function(extract) {
+      if (!extract || typeof extract !== 'object') return;
+      extract.questions = normalizeQuestionsArray(extract.questions || []);
+      var ctx = sanitizeHtmlTypos((extract.context || '').toString());
+      extract.questions.forEach(function(q) {
+        if (!q) return;
+        if (q.context == null || String(q.context).trim() === '') {
+          q.context = ctx;
+        }
+        q.extractId = extract.id;
+      });
+    });
+    var flat = [];
+    extracts.forEach(function(extract) {
+      if (!extract) return;
+      (extract.questions || []).forEach(function(q) {
+        flat.push(q);
+      });
+    });
+    ex.content = {
+      questions: flat,
+      extracts: extracts
+    };
+    if (ex.audio_script != null && ex.audio_script !== '' && !ex.content.audio_script) {
+      ex.content.audio_script = ex.audio_script;
+    }
+    if (ex.audio_source != null && ex.audio_source !== '' && ex.content.audio_source == null) {
+      ex.content.audio_source = ex.audio_source;
+    }
     mergeDescription(ex);
   }
 
@@ -710,6 +756,12 @@
     var p = parseInt(part, 10);
     if (!isNaN(p) && p === 3 && isB1ListeningPart3GapFill(ex)) {
       listeningPart3GapFill(ex);
+      return;
+    }
+    var rootExtracts = Array.isArray(ex.extracts) && ex.extracts.length > 0;
+    var contentExtracts = !!(ex.content && Array.isArray(ex.content.extracts) && ex.content.extracts.length > 0);
+    if (rootExtracts && !contentExtracts) {
+      listeningFromRootExtracts(ex);
       return;
     }
     if (ex.content && ex.content.questions && Array.isArray(ex.content.questions)) {

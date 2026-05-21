@@ -836,9 +836,11 @@
 
     _hasTranscriptContent: function(exercise) {
       if (exercise.content.extracts && exercise.content.extracts.length > 0) {
-        return exercise.content.extracts.some(function(e) { return !!e.audio_script; });
+        if (exercise.content.extracts.some(function(e) { return !!e.audio_script; })) return true;
       }
-      return !!exercise.content.audio_script;
+      if (exercise.content.audio_script) return true;
+      var qs = exercise.content.questions || [];
+      return qs.some(function(q) { return q && q.audio_script; });
     },
 
     renderListeningTranscript: function(exercise) {
@@ -875,6 +877,21 @@
           if (part.trim() === '') return;
           html += '<div class="transcript-extract" data-speaker-index="' + (idx + 1) + '">';
           html += '<div class="transcript-text">' + processScript(part) + '</div>';
+          html += '</div>';
+        });
+      } else {
+        var qsScript = (exercise.content.questions || []).filter(function(q) {
+          return q && q.audio_script;
+        });
+        qsScript.forEach(function(q) {
+          var qid = q.extractId != null ? q.extractId : q.number;
+          html += '<div class="transcript-extract" data-extract-id="' + escapeHtml(String(qid)) + '">';
+          if (q.context) {
+            html += '<div class="transcript-extract-header">';
+            html += '<span>' + escapeHtml(String(q.context)) + '</span>';
+            html += '</div>';
+          }
+          html += '<div class="transcript-text">' + processScript(q.audio_script) + '</div>';
           html += '</div>';
         });
       }
