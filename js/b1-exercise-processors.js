@@ -14,7 +14,12 @@
   function optionsObjectToArray(obj) {
     if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return null;
     return sortOptionKeys(Object.keys(obj)).map(function(k) {
-      return String(k).trim().charAt(0) + ') ' + String(obj[k]).trim();
+      var letter = String(k).trim().charAt(0);
+      var v = obj[k];
+      if (v != null && typeof v === 'object' && !Array.isArray(v) && v.image) {
+        return letter + ') ' + String(v.image).trim();
+      }
+      return letter + ') ' + String(v == null ? '' : v).trim();
     });
   }
 
@@ -501,8 +506,9 @@
   }
 
   function listeningFlat(ex) {
+    var raw = ex.questions || ex.items || [];
     ex.content = {
-      questions: normalizeQuestionsArray(ex.questions || [])
+      questions: normalizeQuestionsArray(raw)
     };
     mergeDescription(ex);
   }

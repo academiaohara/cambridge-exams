@@ -2,6 +2,27 @@
 // Multiple choice - Listening Part 1
 
 (function() {
+  function escapeAttr(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function optionLabelHtml(text) {
+    return '<span>' + escapeAttr(text) + '</span>';
+  }
+
+  function optionImageHtml(url) {
+    return (
+      '<span class="listening-type1-option-image-wrap">' +
+      '<img class="listening-type1-option-image" src="' + escapeAttr(url) + '" alt="" loading="lazy">' +
+      '</span>'
+    );
+  }
+
   window.ListeningType1 = {
     audioElements: {},
     currentPlaying: null,
@@ -9,7 +30,21 @@
     _demoDuration: 30,
     extractTimers: {},
     extractSeconds: {},
-    
+
+    /** Row class: 3-column grid when choices are http(s) image URLs (e.g. B1 Listening Part 1). */
+    optionsRowClass: function(question) {
+      var opts = question.options || [];
+      for (var i = 0; i < opts.length; i++) {
+        var o = opts[i];
+        if (typeof o !== 'string') continue;
+        var t = o.substring(2).trim();
+        if (/^https?:\/\//i.test(t)) {
+          return 'listening-type1-options listening-type1-options-images';
+        }
+      }
+      return 'listening-type1-options';
+    },
+
     renderQuestion: function(question, qNum, isChecked, userAnswer) {
       return `
         <div class="listening-type1-extract">
@@ -23,18 +58,21 @@
             <span class="listening-type1-time" id="time-${qNum}">00:00</span>
           </div>
           
-          <div class="listening-type1-options">
+          <div class="${this.optionsRowClass(question)}">
             ${this.renderOptions(question, qNum, isChecked, userAnswer)}
           </div>
         </div>
       `;
     },
-    
+
     renderOptions: function(question, qNum, isChecked, userAnswer) {
       let html = '';
-      question.options.forEach(opt => {
+      const opts = question.options || [];
+      opts.forEach(function(opt) {
+        if (typeof opt !== 'string') return;
         const letter = opt.charAt(0);
         const text = opt.substring(2).trim();
+        const body = /^https?:\/\//i.test(text) ? optionImageHtml(text) : optionLabelHtml(text);
         const selected = userAnswer === letter ? 'selected' : '';
         let stateClass = '';
         if (isChecked) {
@@ -50,35 +88,34 @@
           <div class="listening-type1-option ${selected} ${stateClass} ${isChecked ? 'disabled' : ''}" 
                onclick="${!isChecked ? 'ListeningType1.selectAnswer(' + qNum + ', \'' + letter + '\')' : ''}">
             <span class="listening-type1-option-letter">${letter}</span>
-            <span>${text}</span>
+            ${body}
           </div>
         `;
       });
       return html;
     },
-    
+
     selectAnswer: function(qNum, letter) {
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       AppState.currentExercise.answers[qNum] = letter;
-      
-      // Actualizar UI
+
       document.querySelectorAll(`[onclick*="ListeningType1.selectAnswer(${qNum}"]`).forEach(opt => {
         opt.classList.remove('selected');
       });
-      
+
       const selectedOpt = Array.from(document.querySelectorAll(`[onclick*="ListeningType1.selectAnswer(${qNum}"]`))
         .find(opt => opt.getAttribute('onclick').includes(`'${letter}'`));
-      
+
       if (selectedOpt) selectedOpt.classList.add('selected');
-      
+
       Timer.updateScoreDisplay();
     },
-    
+
     playExtract: function(extractId, btn) {
       if (this.currentPlaying && this.currentPlaying !== extractId) {
         this.stopExtract(this.currentPlaying);
       }
-      
+
       const icon = btn.querySelector('i');
       if (icon.classList.contains('fa-play')) {
         icon.classList.remove('fa-play');
@@ -94,7 +131,7 @@
         this.stopExtract(extractId);
       }
     },
-    
+
     stopExtract: function(extractId) {
       if (this.extractTimers[extractId]) {
         clearInterval(this.extractTimers[extractId]);
@@ -108,7 +145,6 @@
       this.currentPlaying = null;
     },
 
-    /** Seek demo timeline (pointer / touch). */
     seekTimeline: function(ev, timelineEl) {
       if (ev.pointerType === 'mouse' && ev.button != null && ev.button !== 0) return;
       ev.preventDefault();
@@ -137,7 +173,7 @@
         this.simulateProgress(extractId);
       }
     },
-    
+
     simulateProgress: function(extractId) {
       var progressBar = document.getElementById('progress-' + extractId);
       var timeDisplay = document.getElementById('time-' + extractId);
@@ -169,17 +205,16 @@
         }
       }, 1000);
     },
-    
+
     checkAnswers: function() {
       const questions = AppState.currentExercise.content.questions;
       let correct = 0;
-      
+
       questions.forEach(q => {
         const userAnswer = AppState.currentExercise.answers?.[q.number];
         const isCorrect = userAnswer === q.correct;
         if (isCorrect) correct++;
-        
-        // Visual feedback on DOM options
+
         const optionEls = document.querySelectorAll('[onclick*="ListeningType1.selectAnswer(' + q.number + ',"]');
         optionEls.forEach(function(opt) {
           var letter = opt.querySelector('.listening-type1-option-letter');
@@ -195,18 +230,18 @@
           }
         });
       });
-      
+
       return correct;
     },
-    
+
     initListeners: function() {
       const exercise = AppState.currentExercise;
       if (!exercise) return;
-      
+
       if (!exercise.content.text && exercise.content.questions) {
         const container = document.getElementById('toggle-questions-section') || document.getElementById('selectable-text');
         if (!container) return;
-        
+
         const isChecked = AppState.answersChecked;
         const extracts = exercise.content.extracts || [];
         var audioSource = exercise.audio_source || exercise.audioUrl || '';
@@ -216,9 +251,11 @@
             var url = new URL(audioSource);
             hasAudioSource = url.protocol === 'https:' || url.protocol === 'http:';
           }
-        } catch(e) { hasAudioSource = false; }
+        } catch (e) {
+          hasAudioSource = false;
+        }
         let html = '';
-        
+
         if (hasAudioSource) {
           var safeUrl = audioSource.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
           html += '<div class="listening-type1-audio-section">';
@@ -228,9 +265,8 @@
           html += '</audio>';
           html += '</div>';
         }
-        
+
         if (extracts.length > 0) {
-          // Render grouped by extracts
           extracts.forEach(function(extract) {
             html += '<div class="listening-type1-extract">';
             html += '<div class="listening-type1-extract-header">';
@@ -248,19 +284,18 @@
               html += '<span class="listening-type1-time" id="time-' + extract.id + '">00:00</span>';
               html += '</div>';
             }
-            
+
             extract.questions.forEach(function(q) {
               var userAnswer = exercise.answers?.[q.number] || '';
               html += '<p class="listening-type1-question-text"><strong>' + q.number + '.</strong> ' + q.question + '</p>';
-              html += '<div class="listening-type1-options">';
+              html += '<div class="' + ListeningType1.optionsRowClass(q) + '">';
               html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
               html += '</div>';
             });
-            
+
             html += '</div>';
           });
         } else {
-          // Fallback: render flat question list
           html += '<div class="listening-type1-extract listening-type1-compact">';
           exercise.content.questions.forEach(function(q, idx) {
             var userAnswer = exercise.answers?.[q.number] || '';
@@ -276,7 +311,7 @@
               html += '</div>';
             }
             html += '<p class="listening-type1-question-text"><strong>' + q.number + '.</strong> ' + (q.question || '') + '</p>';
-            html += '<div class="listening-type1-options">';
+            html += '<div class="' + ListeningType1.optionsRowClass(q) + '">';
             html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
             html += '</div>';
             if (idx < exercise.content.questions.length - 1) {
@@ -285,7 +320,7 @@
           });
           html += '</div>';
         }
-        
+
         const noteCreator = container.querySelector('#note-creator');
         const wrapper = document.createElement('div');
         wrapper.className = 'listening-type1-questions-wrapper';
