@@ -211,6 +211,9 @@
     _activeSpeaker: null,
     /** Shown in the subtitle strip when the examiner or partner speaks (videocall / images / options). */
     _subtitleDisplay: { role: null, text: null },
+    /** Timers for progressive subtitles when speech boundary events are unavailable. */
+    _subtitleRevealFallbackTimer: null,
+    _subtitleRevealInterval: null,
     _synthesis: window.speechSynthesis || null,
     _pendingTranscript: '',
     _finalTranscript: '',
@@ -258,6 +261,7 @@
       this._conversationEnded = false;
       this._activeSpeaker = null;
       this._subtitleDisplay = { role: null, text: null };
+      this._clearSubtitleRevealAnimation();
       this._isRecording = false;
       this._viewMode = 'videocall';
       this._pendingTranscript = '';
@@ -1190,21 +1194,112 @@
       this._processCurrentTurn();
     },
 
-    _speakText: function(text, role, cb) {
-      if ((role === 'examiner' || role === 'partner') && text) {
-        this._subtitleDisplay = { role: role, text: text };
+    _clearSubtitleRevealAnimation: function() {
+      if (this._subtitleRevealFallbackTimer) {
+        clearTimeout(this._subtitleRevealFallbackTimer);
+        this._subtitleRevealFallbackTimer = null;
       }
-      if (!this._synthesis) { if (cb) cb(); return; }
-      // Cancel any ongoing speech
+      if (this._subtitleRevealInterval) {
+        clearInterval(this._subtitleRevealInterval);
+        this._subtitleRevealInterval = null;
+      }
+    },
+
+    /** Updates only the subtitle strip (lighter than a full _refreshView on each word). */
+    _patchSubtitleTextOnly: function() {
+      var subWrap = document.getElementById('speaking-subtitle-wrap');
+      var roleEl = document.getElementById('speaking-subtitle-role');
+      var textEl = document.getElementById('speaking-subtitle-text');
+      var sd = this._subtitleDisplay;
+      if (!subWrap || !sd || !sd.role || sd.text == null) return;
+      if (sd.role !== 'examiner' && sd.role !== 'partner') return;
+      if (this._conversationEnded) return;
+      subWrap.hidden = false;
+      subWrap.classList.add('speaking-subtitle-wrap--visible');
+      if (roleEl) roleEl.textContent = roleName(sd.role) + ':';
+      if (textEl) textEl.textContent = sd.text ? (' ' + sd.text) : '';
+    },
+
+    _speakText: function(text, role, cb) {
+      var self = this;
+      if ((role === 'examiner' || role === 'partner') && text) {
+        this._subtitleDisplay = { role: role, text: '' };
+      }
+      if (!this._synthesis) {
+        if ((role === 'examiner' || role === 'partner') && text) {
+          this._subtitleDisplay = { role: role, text: text };
+          this._refreshView();
+        }
+        if (cb) cb();
+        return;
+      }
+      this._clearSubtitleRevealAnimation();
       this._synthesis.cancel();
       var utter = new SpeechSynthesisUtterance(text);
       utter.lang = 'en-GB';
       utter.rate = 0.95;
-      // Select voice matching the avatar's gender
       var voice = _getVoiceForRole(role);
       if (voice) utter.voice = voice;
-      utter.onend = function() { if (cb) cb(); };
-      utter.onerror = function() { if (cb) cb(); };
+
+      var boundarySeen = false;
+      function markBoundary() {
+        boundarySeen = true;
+        self._clearSubtitleRevealAnimation();
+      }
+
+      utter.onboundary = function(ev) {
+        if (!text || (role !== 'examiner' && role !== 'partner')) return;
+        if (!self._subtitleDisplay || self._subtitleDisplay.role !== role) return;
+        markBoundary();
+        var endPos = typeof ev.charIndex === 'number' ? ev.charIndex : 0;
+        if (ev.charLength > 0) endPos += ev.charLength;
+        endPos = Math.min(text.length, Math.max(0, endPos));
+        self._subtitleDisplay.text = text.slice(0, endPos);
+        self._patchSubtitleTextOnly();
+      };
+
+      utter.onstart = function() {
+        self._subtitleRevealFallbackTimer = setTimeout(function() {
+          if (boundarySeen || self._conversationEnded) return;
+          if (!self._subtitleDisplay || self._subtitleDisplay.role !== role) return;
+          var duration = Math.max(1800, text.length * 48);
+          var startT = Date.now();
+          self._subtitleRevealInterval = setInterval(function() {
+            if (boundarySeen || self._conversationEnded) {
+              if (self._subtitleRevealInterval) {
+                clearInterval(self._subtitleRevealInterval);
+                self._subtitleRevealInterval = null;
+              }
+              return;
+            }
+            var t = (Date.now() - startT) / duration;
+            if (t >= 1) {
+              if (self._subtitleRevealInterval) {
+                clearInterval(self._subtitleRevealInterval);
+                self._subtitleRevealInterval = null;
+              }
+              self._subtitleDisplay.text = text;
+              self._patchSubtitleTextOnly();
+              return;
+            }
+            var n = Math.max(0, Math.ceil(text.length * t));
+            self._subtitleDisplay.text = text.slice(0, n);
+            self._patchSubtitleTextOnly();
+          }, 45);
+        }, 380);
+      };
+
+      function finishUtterance() {
+        markBoundary();
+        if ((role === 'examiner' || role === 'partner') && text) {
+          self._subtitleDisplay = { role: role, text: text };
+          self._patchSubtitleTextOnly();
+        }
+        if (cb) cb();
+      }
+
+      utter.onend = finishUtterance;
+      utter.onerror = finishUtterance;
       this._synthesis.speak(utter);
     },
 
@@ -1334,6 +1429,7 @@
       if (this._conversationEnded) return;
       this._conversationEnded = true;
       this._activeSpeaker = null;
+      this._clearSubtitleRevealAnimation();
       this._subtitleDisplay = { role: null, text: null };
       // Stop the speaking countdown timer
       this._stopSpeakingTimer();
@@ -1718,7 +1814,7 @@
         var roleEl = document.getElementById('speaking-subtitle-role');
         var textEl = document.getElementById('speaking-subtitle-text');
         var sd = this._subtitleDisplay;
-        if (!this._conversationEnded && sd && sd.role && sd.text &&
+        if (!this._conversationEnded && sd && sd.role && sd.text != null &&
             (sd.role === 'examiner' || sd.role === 'partner')) {
           subWrap.hidden = false;
           subWrap.classList.add('speaking-subtitle-wrap--visible');
@@ -1754,6 +1850,7 @@
 
     cleanup: function() {
       this._stopSpeakingTimer();
+      this._clearSubtitleRevealAnimation();
       this._isTyping = false;
       if (this._isRecording) {
         this._isRecording = false;
