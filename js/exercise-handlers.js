@@ -163,7 +163,10 @@
           (AppState.currentPart === 5 || AppState.currentPart === 6);
         return in14 || b1r5or6;
       }
-      return AppState.currentSection === 'listening' && AppState.currentPart === 2;
+      if (AppState.currentSection !== 'listening') return false;
+      if (AppState.currentPart === 2) return true;
+      // B1 Preliminary Listening Part 3: sentence-completion gaps (same toggle + alt-badge as Part 2)
+      return AppState.currentLevel === 'B1' && AppState.currentPart === 3;
     },
 
     syncAnswerToggleButton: function() {
@@ -177,9 +180,13 @@
       const isB1Reading5Or6Toggle =
         AppState.currentLevel === 'B1' && AppState.currentSection === 'reading' &&
         (AppState.currentPart === 5 || AppState.currentPart === 6);
+      const isB1Listening3Toggle =
+        AppState.currentLevel === 'B1' && AppState.currentSection === 'listening' &&
+        AppState.currentPart === 3;
+      const usePluralCorrectLabel = isB1Reading5Or6Toggle || isB1Listening3Toggle;
       const label = AppState.answerViewMode === 'correct'
         ? 'Show your answer'
-        : (isB1Reading5Or6Toggle ? 'Show correct answers' : 'Show correct answer');
+        : (usePluralCorrectLabel ? 'Show correct answers' : 'Show correct answer');
       const iconName = AppState.answerViewMode === 'correct' ? 'visibility_off' : 'visibility';
       const labelSpan = btn.querySelector('.btn-toggle-answer-label');
       const iconSpan = btn.querySelector('.btn-toggle-answer-icon');
