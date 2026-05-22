@@ -30,7 +30,7 @@
                                      "man":  "en-GB-NoahNeural",
                                      "woman":  "en-GB-LibbyNeural"
                                  },
-                      "audio_script":  "Man: Have you packed for the cookery class tomorrow yet? I put a recipe book in my bag because I thought that was what we needed. || Woman: That was mentioned earlier, but the teacher provides recipes and equipment, but we must protect our clothes. [1]You need to bring an apron instead[/1].. || Man: I am glad I checked. I nearly left my bag by the door. Do I need a saucepan as well? || Woman: No, that is not necessary. Put the new item in tonight and check the message once more before you leave in the morning.",
+                      "audio_script":  "Man: Have you packed for the cookery class tomorrow yet? I put a recipe book in my bag because I thought that was what we needed. || Woman: That was mentioned earlier, but the teacher provides recipes and equipment, but we must protect our clothes. [2]You need to bring an apron instead[/2].. || Man: I am glad I checked. I nearly left my bag by the door. Do I need a saucepan as well? || Woman: No, that is not necessary. Put the new item in tonight and check the message once more before you leave in the morning.",
                       "question":  "What should the student take?",
                       "options":  {
                                       "A":  "A recipe book",
@@ -47,7 +47,7 @@
                                      "girl":  "en-GB-AbbiNeural",
                                      "boy":  "en-GB-AlfieNeural"
                                  },
-                      "audio_script":  "Girl: Are we still going to go to the cinema this weekend? I told my family I would be out this afternoon. || Boy: That was our first plan, but the film is sold out and the tennis courts are wet. We also thought about whether to play tennis. || Girl: So what have we decided? I need to tell my brother soon. || Boy: [1]We are going to visit the wildlife park instead[/1].. I will check the times online tonight and send you a message before we meet. || Girl: Great. That sounds easier than the other ideas.",
+                      "audio_script":  "Girl: Are we still going to go to the cinema this weekend? I told my family I would be out this afternoon. || Boy: That was our first plan, but the film is sold out and the tennis courts are wet. We also thought about whether to play tennis. || Girl: So what have we decided? I need to tell my brother soon. || Boy: [3]We are going to visit the wildlife park instead[/3].. I will check the times online tonight and send you a message before we meet. || Girl: Great. That sounds easier than the other ideas.",
                       "question":  "What are they going to do?",
                       "options":  {
                                       "A":  "Visit a wildlife park",
@@ -64,7 +64,7 @@
                                      "boy":  "en-GB-ElliotNeural",
                                      "girl":  "en-GB-BellaNeural"
                                  },
-                      "audio_script":  "Boy: I need to check the time for the dentist appointment. I wrote down eleven o'clock, but I am not sure it is correct. || Girl: It changed this morning because the dentist is running later than expected this morning. [1]The appointment is at half past eleven now[/1]., and we should arrive ten minutes earlier. || Boy: I am glad I asked. I would have arrived at the wrong time and waited there. || Girl: I will send you a reminder later. Bring everything you need, because there may not be time to go home first.",
+                      "audio_script":  "Boy: I need to check the time for the dentist appointment. I wrote down eleven o'clock, but I am not sure it is correct. || Girl: It changed this morning because the dentist is running later than expected this morning. [4]The appointment is at half past eleven now[/4]., and we should arrive ten minutes earlier. || Boy: I am glad I asked. I would have arrived at the wrong time and waited there. || Girl: I will send you a reminder later. Bring everything you need, because there may not be time to go home first.",
                       "question":  "What time is the appointment?",
                       "options":  {
                                       "A":  "Eleven o'clock",
@@ -81,7 +81,7 @@
                                      "woman":  "en-GB-SoniaNeural",
                                      "man":  "en-GB-RyanNeural"
                                  },
-                      "audio_script":  "Woman: How are you getting on with your headphones? I heard there was a problem with it yesterday. || Man: I first thought the cable had broken, and my brother wondered whether the volume was too low. But someone checked it carefully this morning. [1]They will not connect to my phone at all[/1].. || Woman: Can it be repaired soon? You said you needed it for the language lesson tomorrow. || Man: Yes, probably. Now we know what is wrong, it should be ready tomorrow. That is a relief, because I cannot manage without it.",
+                      "audio_script":  "Woman: How are you getting on with your headphones? I heard there was a problem with it yesterday. || Man: I first thought the cable had broken, and my brother wondered whether the volume was too low. But someone checked it carefully this morning. [5]They will not connect to my phone at all[/5].. || Woman: Can it be repaired soon? You said you needed it for the language lesson tomorrow. || Man: Yes, probably. Now we know what is wrong, it should be ready tomorrow. That is a relief, because I cannot manage without it.",
                       "question":  "What is wrong with the headphones?",
                       "options":  {
                                       "A":  "The cable is broken",
@@ -98,7 +98,7 @@
                                      "man":  "en-GB-NoahNeural",
                                      "woman":  "en-GB-LibbyNeural"
                                  },
-                      "audio_script":  "Man: How are you getting to the football stadium? I thought you were planning to travel by train. || Woman: I was, but the train is cancelled and parking at the stadium is impossible. I also considered going by car. [1]I am going by bus instead[/1].. || Man: That sounds sensible. What time do you expect to arrive there? || Woman: Just before eleven, if everything is on time. I checked the journey online, so I will message you when I leave home. || Man: Good. I will wait near the entrance so you can find me easily.",
+                      "audio_script":  "Man: How are you getting to the football stadium? I thought you were planning to travel by train. || Woman: I was, but the train is cancelled and parking at the stadium is impossible. I also considered going by car. [6]I am going by bus instead[/6].. || Man: That sounds sensible. What time do you expect to arrive there? || Woman: Just before eleven, if everything is on time. I checked the journey online, so I will message you when I leave home. || Man: Good. I will wait near the entrance so you can find me easily.",
                       "question":  "How will the speaker get to the match?",
                       "options":  {
                                       "A":  "By bus",
@@ -115,7 +115,7 @@
                                      "girl":  "en-GB-AbbiNeural",
                                      "boy":  "en-GB-AlfieNeural"
                                  },
-                      "audio_script":  "Girl: Have you chosen what to order? The queue is moving quickly, and we need to leave soon. || Boy: I nearly chose a tuna sandwich, and I also looked at tomato soup, but the sandwich has mayonnaise and I had soup yesterday. || Girl: So what are you going to have? I need to choose mine before we reach the counter. || Boy: [1]I am ordering the vegetable pasta[/1].. It should be enough for me, and then we can find somewhere quiet to sit before we go.",
+                      "audio_script":  "Girl: Have you chosen what to order? The queue is moving quickly, and we need to leave soon. || Boy: I nearly chose a tuna sandwich, and I also looked at tomato soup, but the sandwich has mayonnaise and I had soup yesterday. || Girl: So what are you going to have? I need to choose mine before we reach the counter. || Boy: [7]I am ordering the vegetable pasta[/7].. It should be enough for me, and then we can find somewhere quiet to sit before we go.",
                       "question":  "What will the speaker order?",
                       "options":  {
                                       "A":  "A tuna sandwich",

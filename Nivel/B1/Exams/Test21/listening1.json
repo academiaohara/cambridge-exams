@@ -30,7 +30,7 @@
                                      "boy":  "en-GB-ElliotNeural",
                                      "girl":  "en-GB-BellaNeural"
                                  },
-                      "audio_script":  "Boy: Have you packed for the walk in the hills tomorrow yet? I put my sunglasses in my bag because I thought that was what we needed. || Girl: That was mentioned earlier, but the latest forecast says it will rain during lunch. [1]Everyone needs to bring a light jacket with a hood now[/1].. || Boy: I am glad I checked. I nearly left my bag by the door. Do I need a warm hat as well? || Girl: No, that is not necessary. Put the new item in tonight and check the message once more before you leave in the morning.",
+                      "audio_script":  "Boy: Have you packed for the walk in the hills tomorrow yet? I put my sunglasses in my bag because I thought that was what we needed. || Girl: That was mentioned earlier, but the latest forecast says it will rain during lunch. [2]Everyone needs to bring a light jacket with a hood now[/2].. || Boy: I am glad I checked. I nearly left my bag by the door. Do I need a warm hat as well? || Girl: No, that is not necessary. Put the new item in tonight and check the message once more before you leave in the morning.",
                       "question":  "What should the student take?",
                       "options":  {
                                       "A":  "A light jacket with a hood",
@@ -47,7 +47,7 @@
                                      "woman":  "en-GB-SoniaNeural",
                                      "man":  "en-GB-RyanNeural"
                                  },
-                      "audio_script":  "Woman: Are we still meeting in the computer room for the after-school club? I wrote it down yesterday, but I have not checked today's message. || Man: That was the original plan, but the computers are being repaired this week. [1]We need to meet in the art room instead[/1].. || Woman: Good thing I asked. I nearly went to the old place and waited there. What about the library? || Man: No, nobody will be waiting there. I will arrive a few minutes early and message you if anything changes again before we start.",
+                      "audio_script":  "Woman: Are we still meeting in the computer room for the after-school club? I wrote it down yesterday, but I have not checked today's message. || Man: That was the original plan, but the computers are being repaired this week. [3]We need to meet in the art room instead[/3].. || Woman: Good thing I asked. I nearly went to the old place and waited there. What about the library? || Man: No, nobody will be waiting there. I will arrive a few minutes early and message you if anything changes again before we start.",
                       "question":  "Where will the after-school club be?",
                       "options":  {
                                       "A":  "In the computer room",
@@ -64,7 +64,7 @@
                                      "man":  "en-GB-NoahNeural",
                                      "woman":  "en-GB-LibbyNeural"
                                  },
-                      "audio_script":  "Man: Are we still meeting on platform two for the train to Bristol? I wrote it down yesterday, but I have not checked today's message. || Woman: That was the original plan, but staff are directing passengers away from the usual platform. [1]We need to go to the footbridge now[/1].. || Man: Good thing I asked. I nearly went to the old place and waited there. What about the ticket office? || Woman: No, nobody will be waiting there. I will arrive a few minutes early and message you if anything changes again before we start.",
+                      "audio_script":  "Man: Are we still meeting on platform two for the train to Bristol? I wrote it down yesterday, but I have not checked today's message. || Woman: That was the original plan, but staff are directing passengers away from the usual platform. [4]We need to go to the footbridge now[/4].. || Man: Good thing I asked. I nearly went to the old place and waited there. What about the ticket office? || Woman: No, nobody will be waiting there. I will arrive a few minutes early and message you if anything changes again before we start.",
                       "question":  "Where should the passengers go now?",
                       "options":  {
                                       "A":  "On platform two",
@@ -81,7 +81,7 @@
                                      "girl":  "en-GB-AbbiNeural",
                                      "boy":  "en-GB-AlfieNeural"
                                  },
-                      "audio_script":  "Girl: How are you getting on with your laptop? I heard there was a problem with it yesterday. || Boy: I first thought the screen was damaged, and my brother wondered whether the keyboard had stopped working. But someone checked it carefully this morning. [1]It started properly as soon as the engineer changed the charger cable[/1].. || Girl: Can it be repaired soon? You said you needed it for my homework tonight. || Boy: Yes, probably. Now we know what is wrong, it should be ready tomorrow. That is a relief, because I cannot manage without it.",
+                      "audio_script":  "Girl: How are you getting on with your laptop? I heard there was a problem with it yesterday. || Boy: I first thought the screen was damaged, and my brother wondered whether the keyboard had stopped working. But someone checked it carefully this morning. [5]It started properly as soon as the engineer changed the charger cable[/5].. || Girl: Can it be repaired soon? You said you needed it for my homework tonight. || Boy: Yes, probably. Now we know what is wrong, it should be ready tomorrow. That is a relief, because I cannot manage without it.",
                       "question":  "What was the problem with the computer?",
                       "options":  {
                                       "A":  "The charger cable",
@@ -98,7 +98,7 @@
                                      "boy":  "en-GB-ElliotNeural",
                                      "girl":  "en-GB-BellaNeural"
                                  },
-                      "audio_script":  "Boy: Have you chosen what to order? The queue is moving quickly, and we need to leave soon. || Girl: I nearly chose the soup, and I also looked at a cheese sandwich, but the sandwiches all contain cheese and I had soup yesterday. || Boy: So what are you going to have? I need to choose mine before we reach the counter. || Girl: [1]I am going to have the baked potato instead[/1].. It should be enough for me, and then we can find somewhere quiet to sit before we go.",
+                      "audio_script":  "Boy: Have you chosen what to order? The queue is moving quickly, and we need to leave soon. || Girl: I nearly chose the soup, and I also looked at a cheese sandwich, but the sandwiches all contain cheese and I had soup yesterday. || Boy: So what are you going to have? I need to choose mine before we reach the counter. || Girl: [6]I am going to have the baked potato instead[/6].. It should be enough for me, and then we can find somewhere quiet to sit before we go.",
                       "question":  "What will the speaker eat?",
                       "options":  {
                                       "A":  "The soup",
@@ -115,7 +115,7 @@
                                      "woman":  "en-GB-SoniaNeural",
                                      "man":  "en-GB-RyanNeural"
                                  },
-                      "audio_script":  "Woman: Are we still going to go swimming this weekend? I told my family I would be out this afternoon. || Man: That was our first plan, but the pool closes early and it looks like rain. We also thought about whether to walk in the park. || Woman: So what have we decided? I need to tell my brother soon. || Man: [1]We are going to the bowling centre instead[/1].. I will check the times online tonight and send you a message before we meet. || Woman: Great. That sounds easier than the other ideas.",
+                      "audio_script":  "Woman: Are we still going to go swimming this weekend? I told my family I would be out this afternoon. || Man: That was our first plan, but the pool closes early and it looks like rain. We also thought about whether to walk in the park. || Woman: So what have we decided? I need to tell my brother soon. || Man: [7]We are going to the bowling centre instead[/7].. I will check the times online tonight and send you a message before we meet. || Woman: Great. That sounds easier than the other ideas.",
                       "question":  "What are they going to do?",
                       "options":  {
                                       "A":  "Go swimming",
