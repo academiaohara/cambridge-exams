@@ -1,45 +1,34 @@
 {
-    "title":  "Speaking - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "type":  "interview",
-    "time":  2,
-    "instructions":  "Answer the examiner's questions.",
-    "content":  {
-                    "topics":  [
-                                   {
-                                       "topic":  "films",
-                                       "questions":  [
-                                                         "What kinds of films do you enjoy watching?",
-                                                         "Do you prefer watching films at home or at the cinema?",
-                                                         "Tell us about a film you liked recently."
-                                                     ]
-                                   },
-                                   {
-                                       "topic":  "reading",
-                                       "questions":  [
-                                                         "Do you enjoy reading books?",
-                                                         "What kinds of stories interest you most?",
-                                                         "Do you prefer paper books or e-books?"
-                                                     ]
-                                   },
-                                   {
-                                       "topic":  "future plans",
-                                       "questions":  [
-                                                         "What would you like to do in the future?",
-                                                         "Would you like to study or work abroad?",
-                                                         "What job do you think would suit you?"
-                                                     ]
-                                   },
-                                   {
-                                       "topic":  "pets",
-                                       "questions":  [
-                                                         "Have you ever had a pet?",
-                                                         "Why do people enjoy having pets?",
-                                                         "What animal would you like to have?"
-                                                     ]
-                                   }
-                               ]
-                }
+  "title": "Speaking Interview",
+  "time": 3,
+  "totalQuestions": 6,
+  "description": "The examiner asks you simple questions about yourself, your daily life and your preferences. Answer naturally and try to give complete answers.",
+  "content": {
+    "phases": [
+      {
+        "id": 1,
+        "name": "Personal Information",
+        "questions": [
+          "What's your name?",
+          "Where do you live or come from?",
+          "Do you work or are you a student?",
+          "What do you do or study?"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Daily Life and Preferences",
+        "questions": [
+          "Which day of the week do you like the most? Why?",
+          "What did you do yesterday evening or last weekend?",
+          "Do you think that English will be useful for you in the future? Why or why not?",
+          "Tell us about the people you live with.",
+          "What kind of websites do you like? Why?",
+          "Which do you prefer, the morning or the afternoon? Why?",
+          "What kind of films do you like?",
+          "What's your favourite type of music? Why?"
+        ]
+      }
+    ]
+  }
 }

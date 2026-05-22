@@ -1,45 +1,34 @@
 {
-    "title":  "Speaking - Part 1",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  1,
-    "type":  "interview",
-    "time":  2,
-    "instructions":  "Answer the examiner's questions.",
-    "content":  {
-                    "topics":  [
-                                   {
-                                       "topic":  "friends",
-                                       "questions":  [
-                                                         "How often do you spend time with friends?",
-                                                         "What activities do you enjoy doing together?",
-                                                         "What qualities are important in a good friend?"
-                                                     ]
-                                   },
-                                   {
-                                       "topic":  "technology",
-                                       "questions":  [
-                                                         "What technology do you use most every day?",
-                                                         "Do you think phones are useful for students?",
-                                                         "Could you live without social media?"
-                                                     ]
-                                   },
-                                   {
-                                       "topic":  "travel",
-                                       "questions":  [
-                                                         "Which countries would you like to visit?",
-                                                         "Do you enjoy long journeys?",
-                                                         "What is the best way to travel?"
-                                                     ]
-                                   },
-                                   {
-                                       "topic":  "studying English",
-                                       "questions":  [
-                                                         "Why are you learning English?",
-                                                         "What is the most difficult part of learning English?",
-                                                         "How do you practise English outside class?"
-                                                     ]
-                                   }
-                               ]
-                }
+  "title": "Speaking Interview",
+  "time": 3,
+  "totalQuestions": 6,
+  "description": "The examiner asks you simple questions about yourself, your daily life and your preferences. Answer naturally and try to give complete answers.",
+  "content": {
+    "phases": [
+      {
+        "id": 1,
+        "name": "Personal Information",
+        "questions": [
+          "What's your name?",
+          "Where do you live or come from?",
+          "Do you work or are you a student?",
+          "What do you do or study?"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Daily Life and Preferences",
+        "questions": [
+          "Which day of the week do you like the most? Why?",
+          "What did you do yesterday evening or last weekend?",
+          "Do you think that English will be useful for you in the future? Why or why not?",
+          "Tell us about the people you live with.",
+          "What kind of websites do you like? Why?",
+          "Which do you prefer, the morning or the afternoon? Why?",
+          "What kind of films do you like?",
+          "What's your favourite type of music? Why?"
+        ]
+      }
+    ]
+  }
 }
