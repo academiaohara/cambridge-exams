@@ -299,6 +299,46 @@
 }
 .speaking-vc-status--yours { color: #cbd5e1; font-weight: 600; }
 
+/* Subtitle strip (examiner / partner speech text) */
+.speaking-subtitle-wrap {
+  padding: 0.5rem 1rem 0.55rem;
+  background: rgba(12, 14, 28, 0.88);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: #f1f5f9;
+}
+.speaking-subtitle-wrap[hidden] {
+  display: none !important;
+}
+.speaking-subtitle-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.5rem;
+  line-height: 1.45;
+  max-height: 5.5rem;
+  overflow-y: auto;
+}
+.speaking-subtitle-role {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #a5b4fc;
+}
+.speaking-subtitle-text {
+  flex: 1 1 10rem;
+  min-width: 0;
+  font-size: 0.88rem;
+  color: #f8fafc;
+}
+
+.speaking-images-view .speaking-subtitle-wrap,
+.speaking-options-view .speaking-subtitle-wrap {
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
 /* Stage countdown timer */
 .speaking-stage-timer {
   position: absolute;

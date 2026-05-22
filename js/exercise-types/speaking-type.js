@@ -209,6 +209,8 @@
     _conversationStarted: false,
     _conversationEnded: false,
     _activeSpeaker: null,
+    /** Shown in the subtitle strip when the examiner or partner speaks (videocall / images / options). */
+    _subtitleDisplay: { role: null, text: null },
     _synthesis: window.speechSynthesis || null,
     _pendingTranscript: '',
     _finalTranscript: '',
@@ -255,6 +257,7 @@
       this._conversationStarted = false;
       this._conversationEnded = false;
       this._activeSpeaker = null;
+      this._subtitleDisplay = { role: null, text: null };
       this._isRecording = false;
       this._viewMode = 'videocall';
       this._pendingTranscript = '';
@@ -357,6 +360,15 @@
     },
 
     // ── Mode toggle ──
+
+    _buildSubtitleStrip: function() {
+      return '<div class="speaking-subtitle-wrap" id="speaking-subtitle-wrap" hidden aria-live="polite" aria-atomic="true">' +
+        '<div class="speaking-subtitle-inner">' +
+          '<span class="speaking-subtitle-role" id="speaking-subtitle-role"></span>' +
+          '<span class="speaking-subtitle-text" id="speaking-subtitle-text"></span>' +
+        '</div>' +
+      '</div>';
+    },
 
     _buildModeToggle: function() {
       var base =
@@ -464,6 +476,7 @@
             thumbnailCards +
           '</div>' +
         '</div>' +
+        this._buildSubtitleStrip() +
         '<div class="speaking-vc-status" id="speaking-vc-status"></div>' +
         this._buildControls() +
       '</div>';
@@ -561,6 +574,7 @@
         taskSelectorHTML +
         instructionsHTML +
         '<div class="' + gridClass + '">' + imagesHTML + '</div>' +
+        this._buildSubtitleStrip() +
         this._buildControls() +
       '</div>';
     },
@@ -610,6 +624,7 @@
             '<div class="speaking-spider-suggestions">' + suggestionsHTML + '</div>' +
           '</div>' +
           (decisionHTML ? '<div class="speaking-spider-decision-wrap">' + decisionHTML + '</div>' : '') +
+          this._buildSubtitleStrip() +
           this._buildControls() +
         '</div>';
       }
@@ -630,6 +645,7 @@
         timerHTML +
         (taskHTML ? '<div class="speaking-options-header">' + taskHTML + '</div>' : '') +
         '<div class="speaking-options-grid">' + optionsHTML + '</div>' +
+        this._buildSubtitleStrip() +
         this._buildControls() +
       '</div>';
     },
@@ -855,6 +871,7 @@
 
       if (turn.role === 'candidate') {
         this._activeSpeaker = 'candidate';
+        this._subtitleDisplay = { role: null, text: null };
         if (this._longTurnMode && turn.showImagesOnStart && !turn.isFollowUp) {
           this._longTurnMainTurnMicSeconds = 0;
           this._longTurnBackupsPlayed = 0;
@@ -871,6 +888,7 @@
       // Long-turn partner (AI) turn: generate response via API
       if (this._longTurnMode && turn.role === 'partner' && !turn.text) {
         this._activeSpeaker = 'partner';
+        this._subtitleDisplay = { role: null, text: null };
         // Auto-switch to images mode if this is a main photo description turn
         if (turn.showImagesOnStart) {
           this._switchMode('images');
@@ -884,6 +902,7 @@
       // Collaborative/discussion partner (AI) turn: generate response via API
       if (this._hasAIPartner && turn.role === 'partner' && !turn.text) {
         this._activeSpeaker = 'partner';
+        this._subtitleDisplay = { role: null, text: null };
         this._refreshView();
         this._generateAndPlayCollaborativeTurn(turn);
         return;
@@ -909,6 +928,9 @@
       if (this._synthesis && text) {
         this._speakText(text, turn.role, afterSpeech);
       } else {
+        if (text && (turn.role === 'examiner' || turn.role === 'partner')) {
+          this._subtitleDisplay = { role: turn.role, text: text };
+        }
         // Fallback: wait proportional to text length
         var delay = Math.max(1500, text.length * 40);
         setTimeout(afterSpeech, delay);
@@ -1018,13 +1040,16 @@
         var responseText = data.response || '...';
         turn.text = responseText;
         self._messages.push({ role: 'partner', text: responseText });
-        self._refreshView();
         if (self._synthesis && responseText) {
           self._speakText(responseText, 'partner', function() {
             self._scriptIndex++;
             self._processCurrentTurn();
           });
-        } else {
+        } else if (responseText) {
+          self._subtitleDisplay = { role: 'partner', text: responseText };
+        }
+        self._refreshView();
+        if (!self._synthesis || !responseText) {
           var delay = Math.max(1500, responseText.length * 40);
           setTimeout(function() {
             self._scriptIndex++;
@@ -1070,13 +1095,16 @@
         var responseText = data.response || '...';
         turn.text = responseText;
         self._messages.push({ role: 'partner', text: responseText });
-        self._refreshView();
         if (self._synthesis && responseText) {
           self._speakText(responseText, 'partner', function() {
             self._scriptIndex++;
             self._processCurrentTurn();
           });
-        } else {
+        } else if (responseText) {
+          self._subtitleDisplay = { role: 'partner', text: responseText };
+        }
+        self._refreshView();
+        if (!self._synthesis || !responseText) {
           var delay = Math.max(1500, responseText.length * 40);
           setTimeout(function() {
             self._scriptIndex++;
@@ -1163,6 +1191,9 @@
     },
 
     _speakText: function(text, role, cb) {
+      if ((role === 'examiner' || role === 'partner') && text) {
+        this._subtitleDisplay = { role: role, text: text };
+      }
       if (!this._synthesis) { if (cb) cb(); return; }
       // Cancel any ongoing speech
       this._synthesis.cancel();
@@ -1303,6 +1334,7 @@
       if (this._conversationEnded) return;
       this._conversationEnded = true;
       this._activeSpeaker = null;
+      this._subtitleDisplay = { role: null, text: null };
       // Stop the speaking countdown timer
       this._stopSpeakingTimer();
       if (this._isRecording) {
@@ -1680,6 +1712,26 @@
         }
       }
 
+      // Subtitle line (examiner / partner) for videocall, images, and options modes
+      var subWrap = document.getElementById('speaking-subtitle-wrap');
+      if (subWrap) {
+        var roleEl = document.getElementById('speaking-subtitle-role');
+        var textEl = document.getElementById('speaking-subtitle-text');
+        var sd = this._subtitleDisplay;
+        if (!this._conversationEnded && sd && sd.role && sd.text &&
+            (sd.role === 'examiner' || sd.role === 'partner')) {
+          subWrap.hidden = false;
+          subWrap.classList.add('speaking-subtitle-wrap--visible');
+          if (roleEl) roleEl.textContent = roleName(sd.role) + ':';
+          if (textEl) textEl.textContent = ' ' + sd.text;
+        } else {
+          subWrap.hidden = true;
+          subWrap.classList.remove('speaking-subtitle-wrap--visible');
+          if (roleEl) roleEl.textContent = '';
+          if (textEl) textEl.textContent = '';
+        }
+      }
+
       // Scroll chat to bottom
       var history = document.getElementById('speaking-chat-history');
       if (history) {
@@ -1714,6 +1766,7 @@
       }
       this._conversationEnded = true;
       this._activeSpeaker = null;
+      this._subtitleDisplay = { role: null, text: null };
     }
   };
 })();
