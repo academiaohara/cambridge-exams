@@ -48,6 +48,12 @@
     'John.png': 'm', 'Michael.png': 'm', 'Sarah.png': 'f'
   };
 
+  /**
+   * Extra delay (ms) after SpeechSynthesis `boundary` / `elapsedTime` so highlights
+   * lag slightly behind the engine — word events typically fire before audible output.
+   */
+  var SUBTITLE_AUDIO_OUTPUT_LAG_MS = 165;
+
   // Cached voices for TTS — multiple voices per gender to avoid repetition between roles
   var _cachedVoices = { male: [], female: [], loaded: false };
 
@@ -220,6 +226,10 @@
     _subtitleActiveWordIdx: -1,
     /** True once a `boundary` event with `name === 'word'` fires for this utterance. */
     _subtitleWordBoundarySeen: false,
+    _subtitleUtteranceT0: null,
+    _subtitleUtteranceGen: 0,
+    _subtitleKaraokeTimers: [],
+    _subtitleKaraokeNoClockSeq: 0,
     _synthesis: window.speechSynthesis || null,
     _pendingTranscript: '',
     _finalTranscript: '',
@@ -1207,11 +1217,46 @@
 
     // ── Native TTS subtitles (SpeechSynthesis `boundary` + 2-line teleprompter) ──
 
+    _clearSubtitleKaraokeTimers: function() {
+      if (!this._subtitleKaraokeTimers || !this._subtitleKaraokeTimers.length) return;
+      for (var i = 0; i < this._subtitleKaraokeTimers.length; i++) {
+        clearTimeout(this._subtitleKaraokeTimers[i]);
+      }
+      this._subtitleKaraokeTimers = [];
+    },
+
     /** Clears karaoke flags used while an utterance is playing. */
     _resetSubtitleKaraokeState: function() {
+      this._clearSubtitleKaraokeTimers();
       this._subtitleTTSActive = false;
       this._subtitleActiveWordIdx = -1;
       this._subtitleWordBoundarySeen = false;
+      this._subtitleUtteranceT0 = null;
+      this._subtitleKaraokeNoClockSeq = 0;
+    },
+
+    /**
+     * Maps SpeechSynthesis `charIndex` (same string as the utterance) to a 0-based
+     * word index matching `_subtitlePopulateTrackFromText` tokenisation.
+     */
+    _subtitleCharIndexToWordIndex: function(text, charIndex) {
+      if (text == null || charIndex == null || charIndex < 0) return -1;
+      var parts = String(text).split(/(\s+)/);
+      var pos = 0;
+      var wordIdx = -1;
+      for (var i = 0; i < parts.length; i++) {
+        var part = parts[i];
+        if (part === '') continue;
+        if (/^\s+$/.test(part)) {
+          pos += part.length;
+          continue;
+        }
+        wordIdx++;
+        var end = pos + part.length;
+        if (charIndex >= pos && charIndex < end) return wordIdx;
+        pos = end;
+      }
+      return wordIdx >= 0 ? wordIdx : -1;
     },
 
     _subtitleCollectWordNodes: function(track) {
@@ -1354,13 +1399,17 @@
       }
 
       this._clearSubtitleRevealAnimation();
+      this._clearSubtitleKaraokeTimers();
       this._synthesis.cancel();
+      this._subtitleUtteranceGen = (this._subtitleUtteranceGen || 0) + 1;
+      var utterGen = this._subtitleUtteranceGen;
 
       if ((role === 'examiner' || role === 'partner') && text) {
         this._subtitleDisplay = { role: role, text: text };
         this._subtitleTTSActive = true;
         this._subtitleActiveWordIdx = -1;
         this._subtitleWordBoundarySeen = false;
+        this._subtitleKaraokeNoClockSeq = 0;
       }
 
       var utter = new SpeechSynthesisUtterance(text);
@@ -1385,13 +1434,46 @@
         var nodes = self._subtitleCollectWordNodes(track);
         if (!nodes.length) return;
 
-        if (self._subtitleActiveWordIdx < nodes.length - 1) {
-          self._subtitleActiveWordIdx++;
+        var wordIdx;
+        if (typeof ev.charIndex === 'number' && ev.charIndex >= 0) {
+          wordIdx = self._subtitleCharIndexToWordIndex(text, ev.charIndex);
         }
-        self._patchSubtitleTextOnly();
+        if (wordIdx == null || wordIdx < 0) {
+          wordIdx = self._subtitleActiveWordIdx + 1;
+        }
+        wordIdx = Math.max(0, Math.min(wordIdx, nodes.length - 1));
+
+        var now = performance.now();
+        var anchor = self._subtitleUtteranceT0 != null ? self._subtitleUtteranceT0 : now;
+        var delay;
+        if (typeof ev.elapsedTime === 'number' && !isNaN(ev.elapsedTime) && ev.elapsedTime >= 0) {
+          var targetMs = anchor + ev.elapsedTime * 1000 + SUBTITLE_AUDIO_OUTPUT_LAG_MS;
+          delay = Math.max(0, targetMs - now);
+        } else {
+          self._subtitleKaraokeNoClockSeq = (self._subtitleKaraokeNoClockSeq || 0) + 1;
+          var seq = self._subtitleKaraokeNoClockSeq;
+          delay = SUBTITLE_AUDIO_OUTPUT_LAG_MS + (seq - 1) * 55;
+        }
+
+        if (!self._subtitleKaraokeTimers) self._subtitleKaraokeTimers = [];
+        var tid = setTimeout(function() {
+          var ix = self._subtitleKaraokeTimers.indexOf(tid);
+          if (ix >= 0) self._subtitleKaraokeTimers.splice(ix, 1);
+          if (utterGen !== self._subtitleUtteranceGen || self._conversationEnded) return;
+          if (!self._subtitleDisplay || self._subtitleDisplay.role !== role) return;
+          var tr = document.getElementById('speaking-subtitle-track');
+          var n = self._subtitleCollectWordNodes(tr);
+          if (!n.length) return;
+          var wi = Math.max(0, Math.min(wordIdx, n.length - 1));
+          self._subtitleActiveWordIdx = Math.max(self._subtitleActiveWordIdx, wi);
+          self._patchSubtitleTextOnly();
+        }, delay);
+        self._subtitleKaraokeTimers.push(tid);
       };
 
       utter.onstart = function() {
+        self._subtitleUtteranceT0 = performance.now();
+        self._subtitleKaraokeNoClockSeq = 0;
         self._subtitleRevealFallbackTimer = setTimeout(function() {
           if (self._subtitleWordBoundarySeen || self._conversationEnded) return;
           if (!self._subtitleDisplay || self._subtitleDisplay.role !== role) return;
@@ -1418,6 +1500,7 @@
       };
 
       function finishUtterance() {
+        self._clearSubtitleKaraokeTimers();
         stopFallback();
         if ((role === 'examiner' || role === 'partner') && text) {
           self._subtitleDisplay = { role: role, text: text };
