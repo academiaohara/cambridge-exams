@@ -48,12 +48,6 @@
     'John.png': 'm', 'Michael.png': 'm', 'Sarah.png': 'f'
   };
 
-  /**
-   * Extra delay (ms) after SpeechSynthesis `boundary` / `elapsedTime` so highlights
-   * lag slightly behind the engine — word events typically fire before audible output.
-   */
-  var SUBTITLE_AUDIO_OUTPUT_LAG_MS = 165;
-
   // Cached voices for TTS — multiple voices per gender to avoid repetition between roles
   var _cachedVoices = { male: [], female: [], loaded: false };
 
@@ -215,21 +209,6 @@
     _conversationStarted: false,
     _conversationEnded: false,
     _activeSpeaker: null,
-    /** Shown in the subtitle strip when the examiner or partner speaks (videocall / images / options). */
-    _subtitleDisplay: { role: null, text: null },
-    /** Timers for progressive subtitles when speech boundary events are unavailable. */
-    _subtitleRevealFallbackTimer: null,
-    _subtitleRevealInterval: null,
-    /** Karaoke subtitles during native TTS (examiner / partner). */
-    _subtitleTTSActive: false,
-    /** Index in `.speaking-subtitle-word` nodes; -1 = before first word. */
-    _subtitleActiveWordIdx: -1,
-    /** True once a `boundary` event with `name === 'word'` fires for this utterance. */
-    _subtitleWordBoundarySeen: false,
-    _subtitleUtteranceT0: null,
-    _subtitleUtteranceGen: 0,
-    _subtitleKaraokeTimers: [],
-    _subtitleKaraokeNoClockSeq: 0,
     _synthesis: window.speechSynthesis || null,
     _pendingTranscript: '',
     _finalTranscript: '',
@@ -276,9 +255,6 @@
       this._conversationStarted = false;
       this._conversationEnded = false;
       this._activeSpeaker = null;
-      this._subtitleDisplay = { role: null, text: null };
-      this._resetSubtitleKaraokeState();
-      this._clearSubtitleRevealAnimation();
       this._isRecording = false;
       this._viewMode = 'videocall';
       this._pendingTranscript = '';
@@ -381,19 +357,6 @@
     },
 
     // ── Mode toggle ──
-
-    _buildSubtitleStrip: function() {
-      return '<div class="speaking-subtitle-wrap" id="speaking-subtitle-wrap" hidden aria-live="polite" aria-atomic="true">' +
-        '<div class="speaking-subtitle-inner">' +
-          '<span class="speaking-subtitle-role" id="speaking-subtitle-role"></span>' +
-          '<div class="speaking-subtitle-tele-shell">' +
-            '<div class="speaking-subtitle-viewport" id="speaking-subtitle-viewport">' +
-              '<div class="speaking-subtitle-track" id="speaking-subtitle-track"></div>' +
-            '</div>' +
-          '</div>' +
-        '</div>' +
-      '</div>';
-    },
 
     _buildModeToggle: function() {
       var base =
@@ -501,7 +464,6 @@
             thumbnailCards +
           '</div>' +
         '</div>' +
-        this._buildSubtitleStrip() +
         '<div class="speaking-vc-status" id="speaking-vc-status"></div>' +
         this._buildControls() +
       '</div>';
@@ -599,7 +561,6 @@
         taskSelectorHTML +
         instructionsHTML +
         '<div class="' + gridClass + '">' + imagesHTML + '</div>' +
-        this._buildSubtitleStrip() +
         this._buildControls() +
       '</div>';
     },
@@ -649,7 +610,6 @@
             '<div class="speaking-spider-suggestions">' + suggestionsHTML + '</div>' +
           '</div>' +
           (decisionHTML ? '<div class="speaking-spider-decision-wrap">' + decisionHTML + '</div>' : '') +
-          this._buildSubtitleStrip() +
           this._buildControls() +
         '</div>';
       }
@@ -670,7 +630,6 @@
         timerHTML +
         (taskHTML ? '<div class="speaking-options-header">' + taskHTML + '</div>' : '') +
         '<div class="speaking-options-grid">' + optionsHTML + '</div>' +
-        this._buildSubtitleStrip() +
         this._buildControls() +
       '</div>';
     },
@@ -896,7 +855,6 @@
 
       if (turn.role === 'candidate') {
         this._activeSpeaker = 'candidate';
-        this._subtitleDisplay = { role: null, text: null };
         if (this._longTurnMode && turn.showImagesOnStart && !turn.isFollowUp) {
           this._longTurnMainTurnMicSeconds = 0;
           this._longTurnBackupsPlayed = 0;
@@ -913,7 +871,6 @@
       // Long-turn partner (AI) turn: generate response via API
       if (this._longTurnMode && turn.role === 'partner' && !turn.text) {
         this._activeSpeaker = 'partner';
-        this._subtitleDisplay = { role: null, text: null };
         // Auto-switch to images mode if this is a main photo description turn
         if (turn.showImagesOnStart) {
           this._switchMode('images');
@@ -927,7 +884,6 @@
       // Collaborative/discussion partner (AI) turn: generate response via API
       if (this._hasAIPartner && turn.role === 'partner' && !turn.text) {
         this._activeSpeaker = 'partner';
-        this._subtitleDisplay = { role: null, text: null };
         this._refreshView();
         this._generateAndPlayCollaborativeTurn(turn);
         return;
@@ -953,10 +909,6 @@
       if (this._synthesis && text) {
         this._speakText(text, turn.role, afterSpeech);
       } else {
-        if (text && (turn.role === 'examiner' || turn.role === 'partner')) {
-          this._subtitleDisplay = { role: turn.role, text: text };
-        }
-        // Fallback: wait proportional to text length
         var delay = Math.max(1500, text.length * 40);
         setTimeout(afterSpeech, delay);
       }
@@ -1070,8 +1022,6 @@
             self._scriptIndex++;
             self._processCurrentTurn();
           });
-        } else if (responseText) {
-          self._subtitleDisplay = { role: 'partner', text: responseText };
         }
         self._refreshView();
         if (!self._synthesis || !responseText) {
@@ -1125,8 +1075,6 @@
             self._scriptIndex++;
             self._processCurrentTurn();
           });
-        } else if (responseText) {
-          self._subtitleDisplay = { role: 'partner', text: responseText };
         }
         self._refreshView();
         if (!self._synthesis || !responseText) {
@@ -1215,202 +1163,13 @@
       this._processCurrentTurn();
     },
 
-    // ── Native TTS subtitles (SpeechSynthesis `boundary` + 2-line teleprompter) ──
-
-    _clearSubtitleKaraokeTimers: function() {
-      if (!this._subtitleKaraokeTimers || !this._subtitleKaraokeTimers.length) return;
-      for (var i = 0; i < this._subtitleKaraokeTimers.length; i++) {
-        clearTimeout(this._subtitleKaraokeTimers[i]);
-      }
-      this._subtitleKaraokeTimers = [];
-    },
-
-    /** Clears karaoke flags used while an utterance is playing. */
-    _resetSubtitleKaraokeState: function() {
-      this._clearSubtitleKaraokeTimers();
-      this._subtitleTTSActive = false;
-      this._subtitleActiveWordIdx = -1;
-      this._subtitleWordBoundarySeen = false;
-      this._subtitleUtteranceT0 = null;
-      this._subtitleKaraokeNoClockSeq = 0;
-    },
-
-    /**
-     * Maps SpeechSynthesis `charIndex` (same string as the utterance) to a 0-based
-     * word index matching `_subtitlePopulateTrackFromText` tokenisation.
-     */
-    _subtitleCharIndexToWordIndex: function(text, charIndex) {
-      if (text == null || charIndex == null || charIndex < 0) return -1;
-      var parts = String(text).split(/(\s+)/);
-      var pos = 0;
-      var wordIdx = -1;
-      for (var i = 0; i < parts.length; i++) {
-        var part = parts[i];
-        if (part === '') continue;
-        if (/^\s+$/.test(part)) {
-          pos += part.length;
-          continue;
-        }
-        wordIdx++;
-        var end = pos + part.length;
-        if (charIndex >= pos && charIndex < end) return wordIdx;
-        pos = end;
-      }
-      return wordIdx >= 0 ? wordIdx : -1;
-    },
-
-    _subtitleCollectWordNodes: function(track) {
-      if (!track) return [];
-      var nodes = track.querySelectorAll('.speaking-subtitle-word');
-      var out = [];
-      for (var i = 0; i < nodes.length; i++) out.push(nodes[i]);
-      return out;
-    },
-
-    /**
-     * Splits visible text with /(\s+)/ so whitespace tokens stay as separate spans.
-     * Returns the number of word (non-whitespace) spans inserted.
-     */
-    _subtitlePopulateTrackFromText: function(track, text) {
-      while (track.firstChild) track.removeChild(track.firstChild);
-      track.removeAttribute('data-sub-text');
-      if (text == null || text === '') return 0;
-      var parts = String(text).split(/(\s+)/);
-      var wordCount = 0;
-      for (var i = 0; i < parts.length; i++) {
-        var part = parts[i];
-        if (part === '') continue;
-        var span = document.createElement('span');
-        if (/^\s+$/.test(part)) {
-          span.className = 'speaking-subtitle-ws';
-          span.appendChild(document.createTextNode(part));
-        } else {
-          span.className = 'speaking-subtitle-word';
-          span.appendChild(document.createTextNode(part));
-          wordCount++;
-        }
-        track.appendChild(span);
-      }
-      track.setAttribute('data-sub-text', String(text));
-      return wordCount;
-    },
-
-    /** 0-based visual line index for the word at wordIdx (wrap-aware, uses offsetTop). */
-    _subtitleComputeLineIndexForWord: function(wordNodes, wordIdx) {
-      if (!wordNodes.length || wordIdx < 0) return 0;
-      if (wordIdx >= wordNodes.length) wordIdx = wordNodes.length - 1;
-      var line = 0;
-      for (var i = 1; i <= wordIdx; i++) {
-        if (wordNodes[i].offsetTop > wordNodes[i - 1].offsetTop + 3) line++;
-      }
-      return line;
-    },
-
-    /** Vertical scroll (px) so the viewport keeps two lines centred on the active word. */
-    _subtitleTeleprompterOffsetPx: function(viewport, wordNodes, activeWordIdx) {
-      if (!viewport || !wordNodes.length || activeWordIdx < 0) return 0;
-      var lineIdx = this._subtitleComputeLineIndexForWord(wordNodes, activeWordIdx);
-      var lh = parseFloat(window.getComputedStyle(viewport).lineHeight);
-      if (!lh || isNaN(lh)) lh = viewport.clientHeight / 2;
-      return Math.max(0, lineIdx - 1) * lh;
-    },
-
-    /**
-     * Renders the subtitle strip from `_subtitleDisplay`.
-     * @param {boolean} highlightOnly If true, reuse existing word spans and only update classes / scroll.
-     */
-    _syncSubtitleStrip: function(highlightOnly) {
-      var subWrap = document.getElementById('speaking-subtitle-wrap');
-      var roleEl = document.getElementById('speaking-subtitle-role');
-      var viewport = document.getElementById('speaking-subtitle-viewport');
-      var track = document.getElementById('speaking-subtitle-track');
-      var sd = this._subtitleDisplay;
-      if (!subWrap || !viewport || !track) return;
-
-      if (this._conversationEnded || !sd || sd.role == null || sd.text == null || sd.text === '' ||
-          (sd.role !== 'examiner' && sd.role !== 'partner')) {
-        subWrap.hidden = true;
-        subWrap.classList.remove('speaking-subtitle-wrap--visible');
-        if (roleEl) roleEl.textContent = '';
-        track.textContent = '';
-        track.style.transform = '';
-        this._resetSubtitleKaraokeState();
-        return;
-      }
-
-      subWrap.hidden = false;
-      subWrap.classList.add('speaking-subtitle-wrap--visible');
-      if (roleEl) roleEl.textContent = roleName(sd.role) + ':';
-
-      var wordNodes = this._subtitleCollectWordNodes(track);
-      var needsRebuild = !highlightOnly || wordNodes.length === 0 ||
-        track.getAttribute('data-sub-text') !== String(sd.text);
-      if (needsRebuild) {
-        this._subtitlePopulateTrackFromText(track, sd.text);
-        wordNodes = this._subtitleCollectWordNodes(track);
-      }
-
-      var w;
-      for (w = 0; w < wordNodes.length; w++) {
-        wordNodes[w].classList.remove('speaking-subtitle-word--read', 'speaking-subtitle-word--current');
-      }
-
-      if (!this._subtitleTTSActive) {
-        track.style.transform = '';
-        return;
-      }
-
-      var idx = this._subtitleActiveWordIdx;
-      for (w = 0; w < wordNodes.length; w++) {
-        if (w < idx) wordNodes[w].classList.add('speaking-subtitle-word--read');
-        else if (w === idx) wordNodes[w].classList.add('speaking-subtitle-word--current');
-      }
-
-      var offsetPx = this._subtitleTeleprompterOffsetPx(viewport, wordNodes, idx);
-      track.style.transform = offsetPx > 0 ? ('translateY(-' + offsetPx + 'px)') : '';
-    },
-
-    _clearSubtitleRevealAnimation: function() {
-      if (this._subtitleRevealFallbackTimer) {
-        clearTimeout(this._subtitleRevealFallbackTimer);
-        this._subtitleRevealFallbackTimer = null;
-      }
-      if (this._subtitleRevealInterval) {
-        clearInterval(this._subtitleRevealInterval);
-        this._subtitleRevealInterval = null;
-      }
-    },
-
-    /** Fast path while TTS is running (no full DOM rebuild unless the strip was recreated). */
-    _patchSubtitleTextOnly: function() {
-      this._syncSubtitleStrip(true);
-    },
-
     _speakText: function(text, role, cb) {
-      var self = this;
       if (!this._synthesis) {
-        if ((role === 'examiner' || role === 'partner') && text) {
-          this._subtitleDisplay = { role: role, text: text };
-          this._resetSubtitleKaraokeState();
-          this._refreshView();
-        }
         if (cb) cb();
         return;
       }
 
-      this._clearSubtitleRevealAnimation();
-      this._clearSubtitleKaraokeTimers();
       this._synthesis.cancel();
-      this._subtitleUtteranceGen = (this._subtitleUtteranceGen || 0) + 1;
-      var utterGen = this._subtitleUtteranceGen;
-
-      if ((role === 'examiner' || role === 'partner') && text) {
-        this._subtitleDisplay = { role: role, text: text };
-        this._subtitleTTSActive = true;
-        this._subtitleActiveWordIdx = -1;
-        this._subtitleWordBoundarySeen = false;
-        this._subtitleKaraokeNoClockSeq = 0;
-      }
 
       var utter = new SpeechSynthesisUtterance(text);
       utter.lang = 'en-GB';
@@ -1418,96 +1177,7 @@
       var voice = _getVoiceForRole(role);
       if (voice) utter.voice = voice;
 
-      function stopFallback() {
-        self._clearSubtitleRevealAnimation();
-      }
-
-      utter.onboundary = function(ev) {
-        if (!text || (role !== 'examiner' && role !== 'partner')) return;
-        if (!self._subtitleDisplay || self._subtitleDisplay.role !== role) return;
-        if (ev.name !== 'word') return;
-
-        self._subtitleWordBoundarySeen = true;
-        stopFallback();
-
-        var track = document.getElementById('speaking-subtitle-track');
-        var nodes = self._subtitleCollectWordNodes(track);
-        if (!nodes.length) return;
-
-        var wordIdx;
-        if (typeof ev.charIndex === 'number' && ev.charIndex >= 0) {
-          wordIdx = self._subtitleCharIndexToWordIndex(text, ev.charIndex);
-        }
-        if (wordIdx == null || wordIdx < 0) {
-          wordIdx = self._subtitleActiveWordIdx + 1;
-        }
-        wordIdx = Math.max(0, Math.min(wordIdx, nodes.length - 1));
-
-        var now = performance.now();
-        var anchor = self._subtitleUtteranceT0 != null ? self._subtitleUtteranceT0 : now;
-        var delay;
-        if (typeof ev.elapsedTime === 'number' && !isNaN(ev.elapsedTime) && ev.elapsedTime >= 0) {
-          var targetMs = anchor + ev.elapsedTime * 1000 + SUBTITLE_AUDIO_OUTPUT_LAG_MS;
-          delay = Math.max(0, targetMs - now);
-        } else {
-          self._subtitleKaraokeNoClockSeq = (self._subtitleKaraokeNoClockSeq || 0) + 1;
-          var seq = self._subtitleKaraokeNoClockSeq;
-          delay = SUBTITLE_AUDIO_OUTPUT_LAG_MS + (seq - 1) * 55;
-        }
-
-        if (!self._subtitleKaraokeTimers) self._subtitleKaraokeTimers = [];
-        var tid = setTimeout(function() {
-          var ix = self._subtitleKaraokeTimers.indexOf(tid);
-          if (ix >= 0) self._subtitleKaraokeTimers.splice(ix, 1);
-          if (utterGen !== self._subtitleUtteranceGen || self._conversationEnded) return;
-          if (!self._subtitleDisplay || self._subtitleDisplay.role !== role) return;
-          var tr = document.getElementById('speaking-subtitle-track');
-          var n = self._subtitleCollectWordNodes(tr);
-          if (!n.length) return;
-          var wi = Math.max(0, Math.min(wordIdx, n.length - 1));
-          self._subtitleActiveWordIdx = Math.max(self._subtitleActiveWordIdx, wi);
-          self._patchSubtitleTextOnly();
-        }, delay);
-        self._subtitleKaraokeTimers.push(tid);
-      };
-
-      utter.onstart = function() {
-        self._subtitleUtteranceT0 = performance.now();
-        self._subtitleKaraokeNoClockSeq = 0;
-        self._subtitleRevealFallbackTimer = setTimeout(function() {
-          if (self._subtitleWordBoundarySeen || self._conversationEnded) return;
-          if (!self._subtitleDisplay || self._subtitleDisplay.role !== role) return;
-          var track = document.getElementById('speaking-subtitle-track');
-          var nWords = self._subtitleCollectWordNodes(track).length;
-          if (nWords <= 0) return;
-
-          var duration = Math.max(1800, text.length * 48);
-          var stepMs = Math.max(50, Math.floor(duration / nWords));
-
-          self._subtitleRevealInterval = setInterval(function() {
-            if (self._subtitleWordBoundarySeen || self._conversationEnded) {
-              stopFallback();
-              return;
-            }
-            if (self._subtitleActiveWordIdx >= nWords - 1) {
-              stopFallback();
-              return;
-            }
-            self._subtitleActiveWordIdx++;
-            self._patchSubtitleTextOnly();
-          }, stepMs);
-        }, 380);
-      };
-
       function finishUtterance() {
-        self._clearSubtitleKaraokeTimers();
-        stopFallback();
-        if ((role === 'examiner' || role === 'partner') && text) {
-          self._subtitleDisplay = { role: role, text: text };
-          self._subtitleTTSActive = false;
-          self._subtitleActiveWordIdx = -1;
-          self._syncSubtitleStrip(false);
-        }
         if (cb) cb();
       }
 
@@ -1642,9 +1312,6 @@
       if (this._conversationEnded) return;
       this._conversationEnded = true;
       this._activeSpeaker = null;
-      this._clearSubtitleRevealAnimation();
-      this._resetSubtitleKaraokeState();
-      this._subtitleDisplay = { role: null, text: null };
       // Stop the speaking countdown timer
       this._stopSpeakingTimer();
       if (this._isRecording) {
@@ -2022,12 +1689,6 @@
         }
       }
 
-      // Subtitle line (examiner / partner) for videocall, images, and options modes
-      var subWrap = document.getElementById('speaking-subtitle-wrap');
-      if (subWrap) {
-        this._syncSubtitleStrip(false);
-      }
-
       // Scroll chat to bottom
       var history = document.getElementById('speaking-chat-history');
       if (history) {
@@ -2050,8 +1711,6 @@
 
     cleanup: function() {
       this._stopSpeakingTimer();
-      this._clearSubtitleRevealAnimation();
-      this._resetSubtitleKaraokeState();
       this._isTyping = false;
       if (this._isRecording) {
         this._isRecording = false;
@@ -2064,7 +1723,6 @@
       }
       this._conversationEnded = true;
       this._activeSpeaker = null;
-      this._subtitleDisplay = { role: null, text: null };
     }
   };
 })();
