@@ -306,7 +306,7 @@
             html += '<div class="listening-type1-extract">';
             html += '<div class="listening-type1-extract-header">';
             html += '<span class="listening-type1-extract-number">' + extract.id + '</span>';
-            html += '<span class="listening-type1-context">' + extract.context + '</span>';
+            html += '<span class="listening-type1-context">' + nlToBrEscaped(String(extract.context || '')) + '</span>';
             html += '</div>';
             if (!hasAudioSource) {
               html += '<div class="listening-type1-audio-bar" data-extract="' + extract.id + '">';
@@ -322,9 +322,11 @@
 
             extract.questions.forEach(function(q) {
               var userAnswer = exercise.answers?.[q.number] || '';
+              html += '<div class="listening-type1-item" data-listening-q="' + String(q.number) + '">';
               html += '<p class="listening-type1-question-text">' + q.question + '</p>';
               html += '<div class="' + ListeningType1.optionsRowClass(q) + '">';
               html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
+              html += '</div>';
               html += '</div>';
             });
 
@@ -334,6 +336,7 @@
           html += '<div class="listening-type1-extract listening-type1-compact">';
           exercise.content.questions.forEach(function(q, idx) {
             var userAnswer = exercise.answers?.[q.number] || '';
+            html += '<div class="listening-type1-item" data-listening-q="' + String(q.number) + '">';
             if (!hasAudioSource) {
               html += '<div class="listening-type1-audio-bar" data-extract="' + q.number + '">';
               html += '<button class="listening-type1-play-btn" onclick="ListeningType1.playExtract(' + q.number + ', this)">';
@@ -345,9 +348,15 @@
               html += '<span class="listening-type1-time" id="time-' + q.number + '">00:00</span>';
               html += '</div>';
             }
+            var itemCtx = q.context != null ? String(q.context).trim() : '';
+            if (itemCtx) {
+              html +=
+                '<p class="listening-type1-item-context" lang="en">' + nlToBrEscaped(itemCtx) + '</p>';
+            }
             html += '<p class="listening-type1-question-text">' + (q.question || '') + '</p>';
             html += '<div class="' + ListeningType1.optionsRowClass(q) + '">';
             html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
+            html += '</div>';
             html += '</div>';
             if (idx < exercise.content.questions.length - 1) {
               html += '<hr class="listening-type1-separator">';

@@ -396,6 +396,22 @@
   margin: 12px 0;
 }
 
+/* PET-style scene line (e.g. B1 Listening Part 1: "You hear two people…") */
+.listening-type1-compact .listening-type1-item-context {
+  margin: 0 0 12px 0;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-left: 3px solid #0ea5e9;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: #334155;
+}
+
+.listening-type1-compact .listening-type1-item .listening-type1-audio-bar + .listening-type1-item-context {
+  margin-top: 4px;
+}
+
 /* B1 Listening Part 1: three illustrated options (URLs in JSON) */
 .listening-type1-options-images {
   grid-template-columns: repeat(3, minmax(0, 1fr));
