@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "10A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "studying",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test10_2a.jpg",
-                                                         "description":  "A student studying alone at a desk with books and a laptop.",
-                                                         "imagePrompt":  "A student studying alone at a desk with books and a laptop. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy studying like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "10B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "doing sport",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test10_2b.jpg",
-                                                         "description":  "A teenager playing basketball in an outdoor court after school.",
-                                                         "imagePrompt":  "A teenager playing basketball in an outdoor court after school. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think doing sport is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "10A",
+        "candidate": "Candidate A",
+        "topic": "Choosing clothes",
+        "instructions": "Here is your photograph. It shows people choosing clothes. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch1_test10_10a.jpg",
+            "description": "Two girls are choosing clothes in a shop. One girl is holding up a jacket and showing it to her friend. There are clothes on racks, a mirror and shopping bags nearby."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "10B",
+        "candidate": "Candidate B",
+        "topic": "Taking photographs",
+        "instructions": "Here is your photograph. It shows someone taking photographs. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch1_test10_10b.jpg",
+            "description": "A young man is taking photographs in a city park. He is holding a camera and looking at some flowers beside a path. There are trees, benches and people walking in the background."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the person. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

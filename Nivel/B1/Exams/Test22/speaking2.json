@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "22A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "holidays",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test22_2a.jpg",
-                                                         "description":  "Friends taking photos on a beach during summer.",
-                                                         "imagePrompt":  "Friends taking photos on a beach during summer. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy holidays like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "22B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "doing sport",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test22_2b.jpg",
-                                                         "description":  "A teenager playing basketball in an outdoor court after school.",
-                                                         "imagePrompt":  "A teenager playing basketball in an outdoor court after school. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think doing sport is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "22A",
+        "candidate": "Candidate A",
+        "topic": "Sending a parcel",
+        "instructions": "Here is your photograph. It shows people sending a parcel. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch3_test22_22a.jpg",
+            "description": "A woman and her son are at a post office counter. The boy is holding a small parcel while the woman is speaking to a member of staff. There are envelopes, boxes and a notice board behind the counter."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "22B",
+        "candidate": "Candidate B",
+        "topic": "Feeding ducks",
+        "instructions": "Here is your photograph. It shows people feeding ducks. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch3_test22_22b.jpg",
+            "description": "A grandfather and a little girl are feeding ducks beside a pond in a park. The girl is throwing small pieces of food into the water. There are ducks, trees, a bench and grass around them."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

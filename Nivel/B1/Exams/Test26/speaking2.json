@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "26A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "shopping",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test26_2a.jpg",
-                                                         "description":  "Two friends carrying shopping bags in a busy shopping street.",
-                                                         "imagePrompt":  "Two friends carrying shopping bags in a busy shopping street. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy shopping like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "26B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "pets",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test26_2b.jpg",
-                                                         "description":  "A boy walking his dog in the countryside.",
-                                                         "imagePrompt":  "A boy walking his dog in the countryside. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think pets is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "26A",
+        "candidate": "Candidate A",
+        "topic": "Visiting a castle",
+        "instructions": "Here is your photograph. It shows people visiting a castle. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch3_test26_26a.jpg",
+            "description": "A family is visiting an old castle on a sunny day. The children are looking up at a tall stone tower while their parents are reading a visitor guide. There is a grassy courtyard and an old wall around them."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "26B",
+        "candidate": "Candidate B",
+        "topic": "Cleaning a bedroom",
+        "instructions": "Here is your photograph. It shows someone cleaning a bedroom. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch3_test26_26b.jpg",
+            "description": "A teenage boy is cleaning his bedroom. He is putting clothes into a basket beside his bed. There are books on a desk, a football on the floor and an open window in the room."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the person. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

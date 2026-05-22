@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "35A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "reading",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test35_2a.jpg",
-                                                         "description":  "A girl reading a book in a quiet park.",
-                                                         "imagePrompt":  "A girl reading a book in a quiet park. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy reading like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "35B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "holidays",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test35_2b.jpg",
-                                                         "description":  "Friends taking photos on a beach during summer.",
-                                                         "imagePrompt":  "Friends taking photos on a beach during summer. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think holidays is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "35A",
+        "candidate": "Candidate A",
+        "topic": "Buying flowers",
+        "instructions": "Here is your photograph. It shows people buying flowers. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch4_test35_35a.jpg",
+            "description": "A woman is buying flowers at an outdoor flower stall. She is choosing a bunch of yellow flowers while the seller is holding another bouquet. There are many colourful flowers and plants on display."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "35B",
+        "candidate": "Candidate B",
+        "topic": "Watching a street performer",
+        "instructions": "Here is your photograph. It shows people watching a street performer. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch4_test35_35b.jpg",
+            "description": "Several people are watching a musician in a town square. The musician is playing a guitar while two children are standing near the front. There are shops, a guitar case and benches nearby."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

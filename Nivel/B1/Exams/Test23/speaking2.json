@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "23A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "technology",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test23_2a.jpg",
-                                                         "description":  "A student using a tablet in a classroom.",
-                                                         "imagePrompt":  "A student using a tablet in a classroom. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy technology like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "23B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "travelling",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test23_2b.jpg",
-                                                         "description":  "A family waiting with suitcases at a train station.",
-                                                         "imagePrompt":  "A family waiting with suitcases at a train station. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think travelling is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "23A",
+        "candidate": "Candidate A",
+        "topic": "Having a barbecue",
+        "instructions": "Here is your photograph. It shows people having a barbecue. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch3_test23_23a.jpg",
+            "description": "A family is having a barbecue in their garden. A man is cooking food on a barbecue while two children are sitting at an outdoor table. There are plates, salad, drinks and garden chairs nearby."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "23B",
+        "candidate": "Candidate B",
+        "topic": "Using a map",
+        "instructions": "Here is your photograph. It shows people using a map. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch3_test23_23b.jpg",
+            "description": "Two tourists are looking at a map in the centre of a town. One person is pointing at the map while the other is carrying a backpack. There are old buildings, bicycles and a café behind them."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

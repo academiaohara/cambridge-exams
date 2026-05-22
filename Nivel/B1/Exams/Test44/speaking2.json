@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "44A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "doing sport",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test44_2a.jpg",
-                                                         "description":  "A teenager playing basketball in an outdoor court after school.",
-                                                         "imagePrompt":  "A teenager playing basketball in an outdoor court after school. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy doing sport like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "44B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "music",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test44_2b.jpg",
-                                                         "description":  "A young person playing guitar in a small music room.",
-                                                         "imagePrompt":  "A young person playing guitar in a small music room. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think music is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "44A",
+        "candidate": "Candidate A",
+        "topic": "Visiting a science museum",
+        "instructions": "Here is your photograph. It shows people visiting a science museum. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch5_test44_44a.jpg",
+            "description": "Three students are visiting a science museum. They are standing beside a large model of the solar system and one student is pointing at a planet. There are information displays and lights in the exhibition hall."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "44B",
+        "candidate": "Candidate B",
+        "topic": "Watering plants",
+        "instructions": "Here is your photograph. It shows someone watering plants. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch5_test44_44b.jpg",
+            "description": "A young woman is watering plants on a small balcony. She is holding a green watering can and looking at the flowers. There are pots, a chair and apartment buildings in the background."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the person. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

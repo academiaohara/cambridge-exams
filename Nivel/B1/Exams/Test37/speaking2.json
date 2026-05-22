@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "37A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "technology",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test37_2a.jpg",
-                                                         "description":  "A student using a tablet in a classroom.",
-                                                         "imagePrompt":  "A student using a tablet in a classroom. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy technology like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "37B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "reading",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test37_2b.jpg",
-                                                         "description":  "A girl reading a book in a quiet park.",
-                                                         "imagePrompt":  "A girl reading a book in a quiet park. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think reading is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "37A",
+        "candidate": "Candidate A",
+        "topic": "Helping at an animal centre",
+        "instructions": "Here is your photograph. It shows people helping at an animal centre. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch4_test37_37a.jpg",
+            "description": "A young woman and a boy are helping at an animal centre. The boy is filling a dog's water bowl while the woman is holding the dog's lead. There are cages, blankets and pet food in the room."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "37B",
+        "candidate": "Candidate B",
+        "topic": "Taking an exercise class",
+        "instructions": "Here is your photograph. It shows people taking an exercise class. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch4_test37_37b.jpg",
+            "description": "A group of adults are taking an exercise class in a sports hall. They are standing on mats and following an instructor at the front. There are water bottles, gym balls and large windows in the room."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

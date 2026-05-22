@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "15A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "music",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test15_2a.jpg",
-                                                         "description":  "A young person playing guitar in a small music room.",
-                                                         "imagePrompt":  "A young person playing guitar in a small music room. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy music like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "15B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "holidays",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test15_2b.jpg",
-                                                         "description":  "Friends taking photos on a beach during summer.",
-                                                         "imagePrompt":  "Friends taking photos on a beach during summer. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think holidays is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "15A",
+        "candidate": "Candidate A",
+        "topic": "Having breakfast at home",
+        "instructions": "Here is your photograph. It shows people having breakfast at home. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch2_test15_15a.jpg",
+            "description": "A mother and two children are having breakfast in a kitchen. One child is eating cereal and the other is drinking orange juice. There is bread, fruit and milk on the table."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "15B",
+        "candidate": "Candidate B",
+        "topic": "Visiting a zoo",
+        "instructions": "Here is your photograph. It shows people visiting a zoo. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch2_test15_15b.jpg",
+            "description": "A father and his daughter are looking at giraffes at a zoo. The girl is pointing at one of the animals while the father is smiling. There is a fence, trees and an information board near them."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

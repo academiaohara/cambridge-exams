@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "32A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "holidays",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test32_2a.jpg",
-                                                         "description":  "Friends taking photos on a beach during summer.",
-                                                         "imagePrompt":  "Friends taking photos on a beach during summer. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy holidays like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "32B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "reading",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test32_2b.jpg",
-                                                         "description":  "A girl reading a book in a quiet park.",
-                                                         "imagePrompt":  "A girl reading a book in a quiet park. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think reading is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "32A",
+        "candidate": "Candidate A",
+        "topic": "Riding scooters",
+        "instructions": "Here is your photograph. It shows children riding scooters. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch4_test32_32a.jpg",
+            "description": "Two children are riding scooters on a path in a park. They are wearing helmets and travelling side by side. There are trees, grass, a bench and a woman walking in the background."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "32B",
+        "candidate": "Candidate B",
+        "topic": "Buying bread",
+        "instructions": "Here is your photograph. It shows people buying bread. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch4_test32_32b.jpg",
+            "description": "A man and his young son are buying bread in a bakery. The boy is pointing at some cakes while the assistant is putting bread into a bag. There are shelves with bread and pastries behind the counter."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

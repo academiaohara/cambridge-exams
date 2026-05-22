@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "4A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "cooking",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test4_2a.jpg",
-                                                         "description":  "A teenager preparing food in a modern kitchen.",
-                                                         "imagePrompt":  "A teenager preparing food in a modern kitchen. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy cooking like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "4B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "technology",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test4_2b.jpg",
-                                                         "description":  "A student using a tablet in a classroom.",
-                                                         "imagePrompt":  "A student using a tablet in a classroom. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think technology is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "4A",
+        "candidate": "Candidate A",
+        "topic": "At a birthday party",
+        "instructions": "Here is your photograph. It shows people at a birthday party. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch1_test04_4a.jpg",
+            "description": "A group of children are celebrating a birthday in a living room. One child is blowing out candles on a cake while the others are smiling. There are balloons, party hats and presents on the table."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "4B",
+        "candidate": "Candidate B",
+        "topic": "Gardening",
+        "instructions": "Here is your photograph. It shows people gardening. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch1_test04_4b.jpg",
+            "description": "A man and a girl are working in a garden together. The man is digging in the soil and the girl is watering flowers. There are plants, gardening tools and a small house in the background."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

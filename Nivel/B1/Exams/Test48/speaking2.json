@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "48A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "reading",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test48_2a.jpg",
-                                                         "description":  "A girl reading a book in a quiet park.",
-                                                         "imagePrompt":  "A girl reading a book in a quiet park. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy reading like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "48B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "music",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test48_2b.jpg",
-                                                         "description":  "A young person playing guitar in a small music room.",
-                                                         "imagePrompt":  "A young person playing guitar in a small music room. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think music is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "48A",
+        "candidate": "Candidate A",
+        "topic": "Picking apples",
+        "instructions": "Here is your photograph. It shows people picking apples. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch5_test48_48a.jpg",
+            "description": "A woman and two children are picking apples in an orchard. One child is reaching for an apple on a low branch while the woman is holding a basket. There are apple trees, grass and fruit in the basket."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "48B",
+        "candidate": "Candidate B",
+        "topic": "Singing in a school show",
+        "instructions": "Here is your photograph. It shows students singing in a school show. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch5_test48_48b.jpg",
+            "description": "A group of students are singing on a small school stage. They are standing in a row and holding microphones while a teacher plays the piano nearby. There are curtains and lights behind them."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

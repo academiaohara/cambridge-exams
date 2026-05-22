@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "19A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "doing sport",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test19_2a.jpg",
-                                                         "description":  "A teenager playing basketball in an outdoor court after school.",
-                                                         "imagePrompt":  "A teenager playing basketball in an outdoor court after school. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy doing sport like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "19B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "studying",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test19_2b.jpg",
-                                                         "description":  "A student studying alone at a desk with books and a laptop.",
-                                                         "imagePrompt":  "A student studying alone at a desk with books and a laptop. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think studying is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "19A",
+        "candidate": "Candidate A",
+        "topic": "Playing board games",
+        "instructions": "Here is your photograph. It shows people playing board games. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch2_test19_19a.jpg",
+            "description": "A family is playing a board game in their living room. Two children are sitting on the floor while their parents are sitting on a sofa. There are game pieces, cards and drinks on a low table."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "19B",
+        "candidate": "Candidate B",
+        "topic": "Riding a horse",
+        "instructions": "Here is your photograph. It shows someone riding a horse. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch2_test19_19b.jpg",
+            "description": "A teenage girl is riding a horse in the countryside. She is wearing a riding helmet and sitting carefully on the horse. There is a field, a wooden fence and trees behind her."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the person. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

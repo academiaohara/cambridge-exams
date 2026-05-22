@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "31A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "reading",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test31_2a.jpg",
-                                                         "description":  "A girl reading a book in a quiet park.",
-                                                         "imagePrompt":  "A girl reading a book in a quiet park. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy reading like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "31B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "doing sport",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test31_2b.jpg",
-                                                         "description":  "A teenager playing basketball in an outdoor court after school.",
-                                                         "imagePrompt":  "A teenager playing basketball in an outdoor court after school. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think doing sport is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "31A",
+        "candidate": "Candidate A",
+        "topic": "Making pancakes",
+        "instructions": "Here is your photograph. It shows people making pancakes. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch4_test31_31a.jpg",
+            "description": "A father and his daughter are making pancakes in a kitchen. The girl is pouring mixture into a bowl while her father is cooking a pancake in a frying pan. There is fruit, milk and plates on the worktop."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "31B",
+        "candidate": "Candidate B",
+        "topic": "Visiting an aquarium",
+        "instructions": "Here is your photograph. It shows people visiting an aquarium. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch4_test31_31b.jpg",
+            "description": "Two children are visiting an aquarium with their mother. They are standing in front of a large glass tank and looking at colourful fish. There are rocks, plants and blue water inside the tank."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

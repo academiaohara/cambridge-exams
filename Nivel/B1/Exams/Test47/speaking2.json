@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "47A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "holidays",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test47_2a.jpg",
-                                                         "description":  "Friends taking photos on a beach during summer.",
-                                                         "imagePrompt":  "Friends taking photos on a beach during summer. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy holidays like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "47B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "travelling",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test47_2b.jpg",
-                                                         "description":  "A family waiting with suitcases at a train station.",
-                                                         "imagePrompt":  "A family waiting with suitcases at a train station. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think travelling is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "47A",
+        "candidate": "Candidate A",
+        "topic": "Going bowling",
+        "instructions": "Here is your photograph. It shows people going bowling. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch5_test47_47a.jpg",
+            "description": "Three friends are at a bowling alley. One girl is holding a bowling ball and getting ready to play while the others are sitting and watching. There are bowling lanes, shoes and a screen in the background."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "47B",
+        "candidate": "Candidate B",
+        "topic": "Having an eye test",
+        "instructions": "Here is your photograph. It shows someone having an eye test. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch5_test47_47b.jpg",
+            "description": "A young boy is having an eye test at an optician's. He is sitting in a chair and looking at a letter chart while the optician stands beside him. There are glasses and equipment in the room."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "24A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "music",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test24_2a.jpg",
-                                                         "description":  "A young person playing guitar in a small music room.",
-                                                         "imagePrompt":  "A young person playing guitar in a small music room. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy music like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "24B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "studying",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test24_2b.jpg",
-                                                         "description":  "A student studying alone at a desk with books and a laptop.",
-                                                         "imagePrompt":  "A student studying alone at a desk with books and a laptop. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think studying is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "24A",
+        "candidate": "Candidate A",
+        "topic": "Playing volleyball",
+        "instructions": "Here is your photograph. It shows people playing volleyball. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch3_test24_24a.jpg",
+            "description": "Four young people are playing volleyball on a sandy beach. One girl is jumping to hit the ball over the net. There is sand, the sea and some beach umbrellas in the background."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "24B",
+        "candidate": "Candidate B",
+        "topic": "At the hairdresser's",
+        "instructions": "Here is your photograph. It shows people at a hairdresser's. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch3_test24_24b.jpg",
+            "description": "A boy is having his hair cut in a hairdresser's shop. He is sitting in a chair while a hairdresser is standing behind him with a comb. There is a large mirror and bottles on a shelf nearby."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

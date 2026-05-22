@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "38A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "studying",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test38_2a.jpg",
-                                                         "description":  "A student studying alone at a desk with books and a laptop.",
-                                                         "imagePrompt":  "A student studying alone at a desk with books and a laptop. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy studying like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "38B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "pets",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test38_2b.jpg",
-                                                         "description":  "A boy walking his dog in the countryside.",
-                                                         "imagePrompt":  "A boy walking his dog in the countryside. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think pets is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "38A",
+        "candidate": "Candidate A",
+        "topic": "Cleaning a beach",
+        "instructions": "Here is your photograph. It shows people cleaning a beach. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch4_test38_38a.jpg",
+            "description": "Three young people are cleaning a beach together. They are wearing gloves and putting rubbish into large bags. There is sand, the sea and some pieces of plastic on the ground."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "38B",
+        "candidate": "Candidate B",
+        "topic": "Playing badminton",
+        "instructions": "Here is your photograph. It shows people playing badminton. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch4_test38_38b.jpg",
+            "description": "Two girls are playing badminton in a garden. One girl is reaching up to hit the shuttlecock and the other is standing on the opposite side of a small net. There are trees and garden chairs behind them."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "39A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "pets",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test39_2a.jpg",
-                                                         "description":  "A boy walking his dog in the countryside.",
-                                                         "imagePrompt":  "A boy walking his dog in the countryside. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy pets like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "39B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "technology",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test39_2b.jpg",
-                                                         "description":  "A student using a tablet in a classroom.",
-                                                         "imagePrompt":  "A student using a tablet in a classroom. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think technology is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "39A",
+        "candidate": "Candidate A",
+        "topic": "Learning to ski",
+        "instructions": "Here is your photograph. It shows people learning to ski. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch4_test39_39a.jpg",
+            "description": "A child is learning to ski on a snowy slope. An instructor is standing beside the child and showing him what to do. They are wearing ski jackets, helmets and goggles, and there are mountains behind them."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "39B",
+        "candidate": "Candidate B",
+        "topic": "Choosing a book",
+        "instructions": "Here is your photograph. It shows people choosing a book. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch4_test39_39b.jpg",
+            "description": "A young woman and her brother are choosing a book in a bookshop. The boy is looking at a book while the woman is reaching for another book on a shelf. There are many books and a small table around them."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }

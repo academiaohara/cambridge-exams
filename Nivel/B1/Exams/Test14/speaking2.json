@@ -1,50 +1,44 @@
 {
-    "title":  "Speaking - Part 2",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  2,
-    "type":  "photo-description",
-    "time":  1,
-    "totalQuestions":  2,
-    "description":  "Look at the photographs and answer the examiner's questions.",
-    "content":  {
-                    "tasks":  [
-                                  {
-                                      "id":  "14A",
-                                      "candidate":  "Candidate A",
-                                      "topic":  "pets",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "A",
-                                                         "url":  "https://b1-exams.b-cdn.net/test14_2a.jpg",
-                                                         "description":  "A boy walking his dog in the countryside.",
-                                                         "imagePrompt":  "A boy walking his dog in the countryside. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate B",
-                                                       "question":  "Would you enjoy pets like this? Why or why not?"
-                                                   }
-                                  },
-                                  {
-                                      "id":  "14B",
-                                      "candidate":  "Candidate B",
-                                      "topic":  "cooking",
-                                      "instructions":  "Look at the photograph and describe what you can see.",
-                                      "images":  [
-                                                     {
-                                                         "label":  "B",
-                                                         "url":  "https://b1-exams.b-cdn.net/test14_2b.jpg",
-                                                         "description":  "A teenager preparing food in a modern kitchen.",
-                                                         "imagePrompt":  "A teenager preparing food in a modern kitchen. Natural realistic exam-style photography, educational speaking exam image, clear details, realistic lighting, medium shot."
-                                                     }
-                                                 ],
-                                      "followUp":  {
-                                                       "recipient":  "Candidate A",
-                                                       "question":  "Do you think cooking is popular with young people? Why?"
-                                                   }
-                                  }
-                              ]
-                }
+  "title": "Speaking - Part 2",
+  "time": 1,
+  "totalQuestions": 2,
+  "description": "Look at the photograph and say what you can see.",
+  "content": {
+    "tasks": [
+      {
+        "id": "14A",
+        "candidate": "Candidate A",
+        "topic": "Having a music lesson",
+        "instructions": "Here is your photograph. It shows someone having a music lesson. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "A",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch2_test14_14a.jpg",
+            "description": "A girl is having a piano lesson in a music room. She is sitting at the piano while her teacher is standing beside her and looking at the music. There are books and a guitar in the room."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate A",
+          "question": "Talk about the people. Talk about the place. Talk about other things in the photograph."
+        }
+      },
+      {
+        "id": "14B",
+        "candidate": "Candidate B",
+        "topic": "Repairing a bicycle",
+        "instructions": "Here is your photograph. It shows someone repairing a bicycle. Please tell us what you can see in the photograph.",
+        "images": [
+          {
+            "label": "B",
+            "url": "https://listeninggenerator.b-cdn.net/a2_speaking2_batch2_test14_14b.jpg",
+            "description": "A young man is repairing his bicycle outside a house. He is kneeling on the ground and looking at the front wheel. There are tools, a helmet and a garage door behind him."
+          }
+        ],
+        "followUp": {
+          "recipient": "Candidate B",
+          "question": "Talk about the person. Talk about the place. Talk about other things in the photograph."
+        }
+      }
+    ]
+  }
 }
