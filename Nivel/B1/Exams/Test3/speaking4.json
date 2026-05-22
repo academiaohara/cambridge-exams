@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "technology",
+                    "task":  "The examiner will ask questions related to places in town, shops, cinemas and buildings.",
                     "questions":  [
-                                      "How does technology help students?",
-                                      "What are the disadvantages of smartphones?",
-                                      "Should schools use more technology in lessons?",
-                                      "How might technology change in the future?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Where do you like going in your town? Why?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "Do you enjoy shopping in big department stores? Why or why not?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "When was the last time you went to the cinema?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Do you prefer modern buildings or old buildings? Why?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Is it important to look after old buildings? Why or why not?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to buildings and places in a town."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Where do you like going in your town? Why?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you enjoy shopping in big department stores? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "When was the last time you went to the cinema?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you prefer modern buildings or old buildings? Why?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it important to look after old buildings? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

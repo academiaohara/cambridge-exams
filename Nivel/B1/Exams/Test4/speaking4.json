@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "school life",
+                    "task":  "The examiner will ask questions related to protecting the environment, cycling, recycling and environmental responsibility.",
                     "questions":  [
-                                      "What makes a good teacher?",
-                                      "Which school subjects are most useful?",
-                                      "Should students do homework every day?",
-                                      "How could schools become more enjoyable?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Did you learn about protecting the environment at school? Why or why not?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "Do you ever ride a bicycle? Why or why not?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Do you like being in places with lots of trees? Why or why not?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Would you like to recycle more things? Why or why not?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Do you think people do enough to protect the environment? Why or why not?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to the environment."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Did you learn about protecting the environment at school? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you ever ride a bicycle? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you like being in places with lots of trees? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Would you like to recycle more things? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you think people do enough to protect the environment? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

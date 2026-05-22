@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "school life",
+                    "task":  "The examiner will ask questions related to places for studying, homework and using technology to learn.",
                     "questions":  [
-                                      "What makes a good teacher?",
-                                      "Which school subjects are most useful?",
-                                      "Should students do homework every day?",
-                                      "How could schools become more enjoyable?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Where do you usually study or do homework?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "Is it easy to study at home? Why or why not?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "What makes a good place for studying?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Do you use a computer when you study? Why or why not?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Should students do homework every day? Why or why not?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to studying at home."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Where do you usually study or do homework?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it easy to study at home? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What makes a good place for studying?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you use a computer when you study? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Should students do homework every day? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "school life",
+                    "task":  "The examiner will ask questions related to lunch breaks, school food and time at school.",
                     "questions":  [
-                                      "What makes a good teacher?",
-                                      "Which school subjects are most useful?",
-                                      "Should students do homework every day?",
-                                      "How could schools become more enjoyable?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "What do you usually do during a lunch break?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "Should schools offer healthy meals? Why or why not?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Is it important for students to have breaks during the school day? Why?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Do you prefer bringing food from home or buying food at school? Why?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "What would you change about a school dining area?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to school lunches and breaks."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What do you usually do during a lunch break?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Should schools offer healthy meals? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it important for students to have breaks during the school day? Why?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you prefer bringing food from home or buying food at school? Why?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What would you change about a school dining area?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

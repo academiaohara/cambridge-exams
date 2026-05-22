@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "school life",
+                    "task":  "The examiner will ask questions related to school trips, museums and learning in different places.",
                     "questions":  [
-                                      "What makes a good teacher?",
-                                      "Which school subjects are most useful?",
-                                      "Should students do homework every day?",
-                                      "How could schools become more enjoyable?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Did you enjoy going on school trips when you were younger? Why or why not?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "What is an interesting place to visit in your area? Why?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Do students learn more on trips or in the classroom? Why?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Would you like to visit a museum with your friends? Why or why not?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Should schools organise more activities outside the classroom? Why or why not?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to school trips and learning outside the classroom."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Did you enjoy going on school trips when you were younger? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What is an interesting place to visit in your area? Why?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do students learn more on trips or in the classroom? Why?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Would you like to visit a museum with your friends? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Should schools organise more activities outside the classroom? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

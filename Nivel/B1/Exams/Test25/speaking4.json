@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "travelling",
+                    "task":  "The examiner will ask questions related to relaxing, schoolwork and managing free time.",
                     "questions":  [
-                                      "Why do people enjoy travelling?",
-                                      "What is the best way to travel with friends?",
-                                      "Do you prefer visiting cities or the countryside?",
-                                      "What can people learn from travelling?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "What do you do when you want to relax? Why?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "Do students have enough free time? Why or why not?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Is listening to music a good way to relax? Why or why not?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Do you prefer relaxing alone or with friends? Why?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "What can schools do to help students feel less stressed?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to relaxation and school life."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What do you do when you want to relax? Why?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do students have enough free time? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is listening to music a good way to relax? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you prefer relaxing alone or with friends? Why?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What can schools do to help students feel less stressed?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

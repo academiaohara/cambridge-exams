@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "travelling",
+                    "task":  "The examiner will ask questions related to festivals, local events and entertainment.",
                     "questions":  [
-                                      "Why do people enjoy travelling?",
-                                      "What is the best way to travel with friends?",
-                                      "Do you prefer visiting cities or the countryside?",
-                                      "What can people learn from travelling?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Are there any festivals or public events in your area?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "Do you enjoy going to crowded events? Why or why not?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "What makes a festival enjoyable for young people?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Should towns organise events for visitors? Why or why not?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Do you prefer music events or food events? Why?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to festivals and public events."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Are there any festivals or public events in your area?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you enjoy going to crowded events? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What makes a festival enjoyable for young people?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Should towns organise events for visitors? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you prefer music events or food events? Why?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

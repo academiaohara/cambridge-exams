@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "technology",
+                    "task":  "The examiner will ask questions related to friendships, surprises and keeping in touch.",
                     "questions":  [
-                                      "How does technology help students?",
-                                      "What are the disadvantages of smartphones?",
-                                      "Should schools use more technology in lessons?",
-                                      "How might technology change in the future?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Do you like surprises? Why or why not?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "How do you keep in touch with friends who live far away?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Is it easy to make close friends? Why or why not?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Do you prefer meeting friends at home or going out together? Why?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Can people be good friends if they do not see each other often? Why or why not?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to friendships and surprises."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you like surprises? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "How do you keep in touch with friends who live far away?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it easy to make close friends? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you prefer meeting friends at home or going out together? Why?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Can people be good friends if they do not see each other often? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

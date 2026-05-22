@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "healthy lifestyles",
+                    "task":  "The examiner will ask questions related to learning new skills, classes and practical abilities.",
                     "questions":  [
-                                      "Why is exercise important for young people?",
-                                      "Do students have enough time to stay healthy?",
-                                      "What healthy habits are difficult to follow?",
-                                      "How can schools encourage healthier lifestyles?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Would you like to learn a new skill? Why or why not?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "What useful skills do young people learn at school?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Do you prefer learning from a teacher or learning by yourself? Why?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Is it important for everyone to know how to cook? Why or why not?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Do people continue learning new things when they are older? Why or why not?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to learning new skills."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Would you like to learn a new skill? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What useful skills do young people learn at school?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you prefer learning from a teacher or learning by yourself? Why?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it important for everyone to know how to cook? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do people continue learning new things when they are older? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

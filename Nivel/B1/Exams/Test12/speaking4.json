@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "travelling",
+                    "task":  "The examiner will ask questions related to starting a new school, friends and helping other people.",
                     "questions":  [
-                                      "Why do people enjoy travelling?",
-                                      "What is the best way to travel with friends?",
-                                      "Do you prefer visiting cities or the countryside?",
-                                      "What can people learn from travelling?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Have you ever been new at a school or a club? What was it like?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "Is it easy for young people to make new friends? Why or why not?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "What makes someone a good friend?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Do you enjoy helping other students? Why or why not?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Is school a good place to meet people with similar interests? Why?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to school life and making friends."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Have you ever been new at a school or a club? What was it like?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it easy for young people to make new friends? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What makes someone a good friend?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you enjoy helping other students? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is school a good place to meet people with similar interests? Why?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

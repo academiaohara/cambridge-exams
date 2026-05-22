@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "school life",
+                    "task":  "The examiner will ask questions related to using the internet, social media and free-time habits.",
                     "questions":  [
-                                      "What makes a good teacher?",
-                                      "Which school subjects are most useful?",
-                                      "Should students do homework every day?",
-                                      "How could schools become more enjoyable?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "How much time do young people spend online in your opinion?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "What are the best things about using the internet?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Do people use their phones too much? Why or why not?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Is it easy to enjoy free time without technology? Why or why not?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Will people spend more time online in the future? Why or why not?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to technology and free time."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "How much time do young people spend online in your opinion?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What are the best things about using the internet?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do people use their phones too much? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it easy to enjoy free time without technology? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Will people spend more time online in the future? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

@@ -1,61 +1,75 @@
 {
     "title":  "Speaking - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "collaborative-task",
-    "time":  2,
-    "instructions":  "Talk together about the different ideas. Then decide which one is best.",
+    "type":  "multiple-choice-text",
+    "time":  1.5,
+    "totalQuestions":  6,
+    "description":  "Discuss the options shown with your partner for about two minutes, then decide together which one would be best.",
     "content":  {
-                    "topic":  "planning a holiday",
-                    "taskPrompt":  "Here are some ideas about planning a holiday. Talk together about how useful or enjoyable each idea would be.",
-                    "finalQuestion":  "Which idea do you think is the best?",
+                    "task":  "Talk together about the different activities the students could organise and say which would raise the most money.",
                     "options":  [
-                                    {
-                                        "label":  "A",
-                                        "title":  "travelling by train",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test16_3a.jpg",
-                                                      "description":  "Teenagers travelling by train together.",
-                                                      "imagePrompt":  "Teenagers travelling by train together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "B",
-                                        "title":  "staying in a hotel",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test16_3b.jpg",
-                                                      "description":  "Teenagers staying in a hotel together.",
-                                                      "imagePrompt":  "Teenagers staying in a hotel together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "C",
-                                        "title":  "visiting famous places",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test16_3c.jpg",
-                                                      "description":  "Teenagers visiting famous places together.",
-                                                      "imagePrompt":  "Teenagers visiting famous places together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "D",
-                                        "title":  "trying local food",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test16_3d.jpg",
-                                                      "description":  "Teenagers trying local food together.",
-                                                      "imagePrompt":  "Teenagers trying local food together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "E",
-                                        "title":  "taking photographs",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test16_3e.jpg",
-                                                      "description":  "Teenagers taking photographs together.",
-                                                      "imagePrompt":  "Teenagers taking photographs together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    }
-                                ]
+                                    "A cake sale",
+                                    "A sponsored walk",
+                                    "A music concert",
+                                    "A football match",
+                                    "A book sale",
+                                    "A school quiz"
+                                ],
+                    "followUp":  "Now decide which activity would raise the most money for charity.",
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now, I'd like you to talk about something together for about two minutes. Some students want to organise an activity at school to raise money for charity. Here are some activities they could organise.",
+                                       "showOptions":  true
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Talk together about the different activities the students could organise and say which would raise the most money. You have two minutes."
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now decide which activity would raise the most money for charity."
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you."
+                                   }
+                               ]
                 }
 }

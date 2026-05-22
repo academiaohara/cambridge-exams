@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "healthy lifestyles",
+                    "task":  "The examiner will ask questions related to family activities, holidays and places to visit.",
                     "questions":  [
-                                      "Why is exercise important for young people?",
-                                      "Do students have enough time to stay healthy?",
-                                      "What healthy habits are difficult to follow?",
-                                      "How can schools encourage healthier lifestyles?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "What do you enjoy doing with your family? Why?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "Did your family take you on day trips when you were younger?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "What is a good place for families to visit in your country?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Do children prefer outdoor activities or indoor activities? Why?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Is it important for families to spend free time together? Why or why not?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to families and days out."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What do you enjoy doing with your family? Why?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Did your family take you on day trips when you were younger?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What is a good place for families to visit in your country?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do children prefer outdoor activities or indoor activities? Why?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it important for families to spend free time together? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "healthy lifestyles",
+                    "task":  "The examiner will ask questions related to part-time jobs, work experience and future careers.",
                     "questions":  [
-                                      "Why is exercise important for young people?",
-                                      "Do students have enough time to stay healthy?",
-                                      "What healthy habits are difficult to follow?",
-                                      "How can schools encourage healthier lifestyles?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Would you like to have a summer job? Why or why not?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "What jobs are popular with young people in your country?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Is it better to work indoors or outdoors? Why?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "What can young people learn from having a job?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Is it important to choose a job that you enjoy? Why or why not?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to jobs and work experience."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Would you like to have a summer job? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What jobs are popular with young people in your country?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it better to work indoors or outdoors? Why?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What can young people learn from having a job?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it important to choose a job that you enjoy? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

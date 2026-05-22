@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "technology",
+                    "task":  "The examiner will ask questions related to exercise, healthy eating and staying well.",
                     "questions":  [
-                                      "How does technology help students?",
-                                      "What are the disadvantages of smartphones?",
-                                      "Should schools use more technology in lessons?",
-                                      "How might technology change in the future?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Do you enjoy doing exercise? Why or why not?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "What kinds of food do you think are healthy?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Is it easy for young people to have a healthy lifestyle? Why or why not?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Do you prefer individual sports or team sports? Why?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "What can schools do to help students stay healthy?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to health and exercise."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you enjoy doing exercise? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What kinds of food do you think are healthy?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it easy for young people to have a healthy lifestyle? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you prefer individual sports or team sports? Why?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What can schools do to help students stay healthy?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

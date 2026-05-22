@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "healthy lifestyles",
+                    "task":  "The examiner will ask questions related to pets, animals and looking after them.",
                     "questions":  [
-                                      "Why is exercise important for young people?",
-                                      "Do students have enough time to stay healthy?",
-                                      "What healthy habits are difficult to follow?",
-                                      "How can schools encourage healthier lifestyles?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Do you like animals? Why or why not?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "Have you ever had a pet? What was it like?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Is it good for children to grow up with pets? Why or why not?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Do you enjoy visiting zoos or animal parks? Why or why not?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "What should people think about before getting a pet?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to pets and animals."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you like animals? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Have you ever had a pet? What was it like?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it good for children to grow up with pets? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you enjoy visiting zoos or animal parks? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What should people think about before getting a pet?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

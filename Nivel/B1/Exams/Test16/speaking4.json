@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "healthy lifestyles",
+                    "task":  "The examiner will ask questions related to charity events, volunteering and helping people.",
                     "questions":  [
-                                      "Why is exercise important for young people?",
-                                      "Do students have enough time to stay healthy?",
-                                      "What healthy habits are difficult to follow?",
-                                      "How can schools encourage healthier lifestyles?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Have you ever taken part in a charity event? Why or why not?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "What can schools do to help people in need?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Is it better to give money or give your time to help others? Why?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Do you think young people are interested in volunteering? Why or why not?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Should famous people help charities? Why or why not?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to charity and helping others."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Have you ever taken part in a charity event? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What can schools do to help people in need?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it better to give money or give your time to help others? Why?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you think young people are interested in volunteering? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Should famous people help charities? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

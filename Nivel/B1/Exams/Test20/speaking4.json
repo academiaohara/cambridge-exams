@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "technology",
+                    "task":  "The examiner will ask questions related to studying, exams and learning effectively.",
                     "questions":  [
-                                      "How does technology help students?",
-                                      "What are the disadvantages of smartphones?",
-                                      "Should schools use more technology in lessons?",
-                                      "How might technology change in the future?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "How do you usually prepare for an exam?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "Do you prefer studying alone or with other people? Why?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Are exams a good way to test students? Why or why not?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "What can students do when they feel worried about exams?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Do you think people will study differently in the future? Why or why not?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to exams and studying."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "How do you usually prepare for an exam?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you prefer studying alone or with other people? Why?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Are exams a good way to test students? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What can students do when they feel worried about exams?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you think people will study differently in the future? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

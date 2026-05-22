@@ -1,61 +1,75 @@
 {
     "title":  "Speaking - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "collaborative-task",
-    "time":  2,
-    "instructions":  "Talk together about the different ideas. Then decide which one is best.",
+    "type":  "multiple-choice-text",
+    "time":  1.5,
+    "totalQuestions":  6,
+    "description":  "Discuss the options shown with your partner for about two minutes, then decide together which one would be best.",
     "content":  {
-                    "topic":  "choosing a weekend activity",
-                    "taskPrompt":  "Here are some ideas about choosing a weekend activity. Talk together about how useful or enjoyable each idea would be.",
-                    "finalQuestion":  "Which idea do you think is the best?",
+                    "task":  "Talk together about the different changes the town could make and say which would help people most.",
                     "options":  [
-                                    {
-                                        "label":  "A",
-                                        "title":  "going to the cinema",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test39_3a.jpg",
-                                                      "description":  "Teenagers going to the cinema together.",
-                                                      "imagePrompt":  "Teenagers going to the cinema together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "B",
-                                        "title":  "visiting a museum",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test39_3b.jpg",
-                                                      "description":  "Teenagers visiting a museum together.",
-                                                      "imagePrompt":  "Teenagers visiting a museum together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "C",
-                                        "title":  "playing sports",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test39_3c.jpg",
-                                                      "description":  "Teenagers playing sports together.",
-                                                      "imagePrompt":  "Teenagers playing sports together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "D",
-                                        "title":  "shopping in town",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test39_3d.jpg",
-                                                      "description":  "Teenagers shopping in town together.",
-                                                      "imagePrompt":  "Teenagers shopping in town together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "E",
-                                        "title":  "having a picnic",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test39_3e.jpg",
-                                                      "description":  "Teenagers having a picnic together.",
-                                                      "imagePrompt":  "Teenagers having a picnic together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    }
-                                ]
+                                    "Adding brighter street lights",
+                                    "Making safer crossings",
+                                    "Building more cycle lanes",
+                                    "Reducing the speed of cars",
+                                    "Providing a playground",
+                                    "Adding security cameras"
+                                ],
+                    "followUp":  "Now decide which change would help people in the neighbourhood most.",
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now, I'd like you to talk about something together for about two minutes. People in a neighbourhood want their area to be safer for families and young people. Here are some changes the town could make.",
+                                       "showOptions":  true
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Talk together about the different changes the town could make and say which would help people most. You have two minutes."
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now decide which change would help people in the neighbourhood most."
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you."
+                                   }
+                               ]
                 }
 }

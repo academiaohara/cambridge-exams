@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "travelling",
+                    "task":  "The examiner will ask questions related to books, libraries and encouraging children to read.",
                     "questions":  [
-                                      "Why do people enjoy travelling?",
-                                      "What is the best way to travel with friends?",
-                                      "Do you prefer visiting cities or the countryside?",
-                                      "What can people learn from travelling?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Did you enjoy reading when you were a child? Why or why not?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "What kinds of books are popular with children?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Do children spend too much time looking at screens? Why or why not?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Are libraries still important today? Why or why not?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "What can parents do to encourage children to read?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to children and reading."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Did you enjoy reading when you were a child? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What kinds of books are popular with children?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do children spend too much time looking at screens? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Are libraries still important today? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What can parents do to encourage children to read?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

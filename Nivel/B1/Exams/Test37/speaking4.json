@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "technology",
+                    "task":  "The examiner will ask questions related to competitions, prizes and doing well at school.",
                     "questions":  [
-                                      "How does technology help students?",
-                                      "What are the disadvantages of smartphones?",
-                                      "Should schools use more technology in lessons?",
-                                      "How might technology change in the future?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Do you like taking part in competitions? Why or why not?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "What kinds of competitions are popular with young people?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Is winning the most important part of a competition? Why or why not?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Should schools give prizes to students? Why or why not?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "What achievement are you proud of?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to competitions and achievements."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you like taking part in competitions? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What kinds of competitions are popular with young people?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is winning the most important part of a competition? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Should schools give prizes to students? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What achievement are you proud of?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

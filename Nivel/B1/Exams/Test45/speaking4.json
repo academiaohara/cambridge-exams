@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "travelling",
+                    "task":  "The examiner will ask questions related to teachers, school memories and saying thank you.",
                     "questions":  [
-                                      "Why do people enjoy travelling?",
-                                      "What is the best way to travel with friends?",
-                                      "Do you prefer visiting cities or the countryside?",
-                                      "What can people learn from travelling?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Have you ever had a favourite teacher? Why did you like them?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "What makes someone a good teacher?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Should students give presents to teachers? Why or why not?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "What will you remember most about your school days?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Is it important to say thank you when someone helps you? Why or why not?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to teachers and school memories."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Have you ever had a favourite teacher? Why did you like them?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What makes someone a good teacher?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Should students give presents to teachers? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What will you remember most about your school days?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it important to say thank you when someone helps you? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }

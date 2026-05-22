@@ -1,61 +1,75 @@
 {
     "title":  "Speaking - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "collaborative-task",
-    "time":  2,
-    "instructions":  "Talk together about the different ideas. Then decide which one is best.",
+    "type":  "multiple-choice-text",
+    "time":  1.5,
+    "totalQuestions":  6,
+    "description":  "Discuss the options shown with your partner for about two minutes, then decide together which one would be best.",
     "content":  {
-                    "topic":  "planning a class celebration",
-                    "taskPrompt":  "Here are some ideas about planning a class celebration. Talk together about how useful or enjoyable each idea would be.",
-                    "finalQuestion":  "Which idea do you think is the best?",
+                    "task":  "Talk together about the different things the family could do to improve the house and say which would be most useful.",
                     "options":  [
-                                    {
-                                        "label":  "A",
-                                        "title":  "having music",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test7_3a.jpg",
-                                                      "description":  "Teenagers having music together.",
-                                                      "imagePrompt":  "Teenagers having music together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "B",
-                                        "title":  "bringing food",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test7_3b.jpg",
-                                                      "description":  "Teenagers bringing food together.",
-                                                      "imagePrompt":  "Teenagers bringing food together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "C",
-                                        "title":  "decorating the classroom",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test7_3c.jpg",
-                                                      "description":  "Teenagers decorating the classroom together.",
-                                                      "imagePrompt":  "Teenagers decorating the classroom together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "D",
-                                        "title":  "playing games",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test7_3d.jpg",
-                                                      "description":  "Teenagers playing games together.",
-                                                      "imagePrompt":  "Teenagers playing games together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "E",
-                                        "title":  "making invitations",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test7_3e.jpg",
-                                                      "description":  "Teenagers making invitations together.",
-                                                      "imagePrompt":  "Teenagers making invitations together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    }
-                                ]
+                                    "Painting the living room",
+                                    "Buying a new sofa",
+                                    "Tidying the garden",
+                                    "Improving the kitchen",
+                                    "Preparing a guest bedroom",
+                                    "Decorating the dining room"
+                                ],
+                    "followUp":  "Now decide which improvement would be the most useful for the family.",
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now, I'd like you to talk about something together for about two minutes. A family has relatives coming to stay for two weeks. They would like to improve their house before the visit. Here are some things they could do.",
+                                       "showOptions":  true
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Talk together about the different things the family could do to improve the house and say which would be most useful. You have two minutes."
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now decide which improvement would be the most useful for the family."
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you."
+                                   }
+                               ]
                 }
 }

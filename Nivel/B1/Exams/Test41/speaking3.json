@@ -1,61 +1,75 @@
 {
     "title":  "Speaking - Part 3",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  3,
-    "type":  "collaborative-task",
-    "time":  2,
-    "instructions":  "Talk together about the different ideas. Then decide which one is best.",
+    "type":  "multiple-choice-text",
+    "time":  1.5,
+    "totalQuestions":  6,
+    "description":  "Discuss the options shown with your partner for about two minutes, then decide together which one would be best.",
     "content":  {
-                    "topic":  "deciding how to spend free time",
-                    "taskPrompt":  "Here are some ideas about deciding how to spend free time. Talk together about how useful or enjoyable each idea would be.",
-                    "finalQuestion":  "Which idea do you think is the best?",
+                    "task":  "Talk together about the different activities the school could include and say which would be the most enjoyable.",
                     "options":  [
-                                    {
-                                        "label":  "A",
-                                        "title":  "watching films",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test41_3a.jpg",
-                                                      "description":  "Teenagers watching films together.",
-                                                      "imagePrompt":  "Teenagers watching films together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "B",
-                                        "title":  "reading books",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test41_3b.jpg",
-                                                      "description":  "Teenagers reading books together.",
-                                                      "imagePrompt":  "Teenagers reading books together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "C",
-                                        "title":  "meeting friends",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test41_3c.jpg",
-                                                      "description":  "Teenagers meeting friends together.",
-                                                      "imagePrompt":  "Teenagers meeting friends together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "D",
-                                        "title":  "doing exercise",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test41_3d.jpg",
-                                                      "description":  "Teenagers doing exercise together.",
-                                                      "imagePrompt":  "Teenagers doing exercise together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    },
-                                    {
-                                        "label":  "E",
-                                        "title":  "using social media",
-                                        "image":  {
-                                                      "url":  "https://b1-exams.b-cdn.net/test41_3e.jpg",
-                                                      "description":  "Teenagers using social media together.",
-                                                      "imagePrompt":  "Teenagers using social media together, natural realistic educational exam photograph, clean composition, realistic lighting, medium shot."
-                                                  }
-                                    }
-                                ]
+                                    "A football tournament",
+                                    "A running race",
+                                    "A swimming competition",
+                                    "A cycling event",
+                                    "A dance class",
+                                    "An obstacle course"
+                                ],
+                    "followUp":  "Now decide which activity would be the most enjoyable for the sports day.",
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now, I'd like you to talk about something together for about two minutes. A school is planning a sports day for its students. Here are some activities the school could include.",
+                                       "showOptions":  true
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Talk together about the different activities the school could include and say which would be the most enjoyable. You have two minutes."
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now decide which activity would be the most enjoyable for the sports day."
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you."
+                                   }
+                               ]
                 }
 }

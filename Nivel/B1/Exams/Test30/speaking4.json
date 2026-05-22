@@ -1,18 +1,107 @@
 {
     "title":  "Speaking - Part 4",
-    "level":  "B1",
-    "exam":  "Preliminary",
-    "part":  4,
-    "type":  "discussion",
-    "time":  3,
-    "instructions":  "Discuss the questions with your partner and the examiner.",
+    "type":  "multiple-choice-text",
+    "time":  2.5,
+    "totalQuestions":  6,
+    "description":  "The examiner will ask you questions related to the theme from Part 3. Express and develop your opinions with your partner.",
     "content":  {
-                    "topic":  "free time activities",
+                    "task":  "The examiner will ask questions related to neighbours, older people and helping in the community.",
                     "questions":  [
-                                      "Why is it important for teenagers to have free time?",
-                                      "What activities are popular with young people in your country?",
-                                      "Do you think people spend too much time online?",
-                                      "What activities would you recommend to someone who feels bored?"
-                                  ]
+                                      {
+                                          "number":  1,
+                                          "question":  "Do you know your neighbours well? Why or why not?"
+                                      },
+                                      {
+                                          "number":  2,
+                                          "question":  "What are some ways young people can help older people?"
+                                      },
+                                      {
+                                          "number":  3,
+                                          "question":  "Is it important to help people in your local area? Why or why not?"
+                                      },
+                                      {
+                                          "number":  4,
+                                          "question":  "Do people spend enough time talking to each other today? Why or why not?"
+                                      },
+                                      {
+                                          "number":  5,
+                                          "question":  "Would you like to do voluntary work in your community? Why or why not?"
+                                      }
+                                  ],
+                    "participants":  [
+                                         "examiner",
+                                         "candidate",
+                                         "partner"
+                                     ],
+                    "script":  [
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Now I'd like to ask you some questions related to neighbours and helping people."
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do you know your neighbours well? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "What are some ways young people can help older people?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Is it important to help people in your local area? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Do people spend enough time talking to each other today? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Would you like to do voluntary work in your community? Why or why not?"
+                                   },
+                                   {
+                                       "role":  "candidate",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "partner",
+                                       "text":  ""
+                                   },
+                                   {
+                                       "role":  "examiner",
+                                       "text":  "Thank you. That's the end of the speaking test."
+                                   }
+                               ]
                 }
 }
