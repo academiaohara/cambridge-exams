@@ -1,365 +1,311 @@
 {
     "test_id":  41,
-    "title":  "B1 Listening Part 1 - Test 41",
     "exam_part":  1,
-    "type":  "multiple-choice-image",
+    "title":  "B1 Listening Part 1 - Test 41",
+    "type":  "multiple-choice-text",
     "totalQuestions":  7,
-    "instructions":  "For each question, listen to the short recording and choose the correct picture: A, B or C.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "context":  "You hear two people talking about a lost water bottle.",
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "man":  "en-GB-RyanNeural"
-                                     },
-                          "audio_script":  "Woman: Did you find your water bottle? You sounded worried this morning. || Man: Yes, but not where I expected. I went back to the sports field, because I remembered drinking from it during practice. || Woman: And did you check the school bus? You were there later. || Man: I did, but it was not there. Then my coach called and said [1]my water bottle was on the reception desk[/1]. I must have left it there without thinking. || Woman: Good. You would need it today. || Man: Exactly, so I will collect it soon.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "Did you find your water bottle? You sounded worried this morning."
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Yes, but not where I expected. I went back to the sports field, because I remembered drinking from it during practice."
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "And did you check the school bus? You were there later."
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "I did, but it was not there. Then my coach called and said my water bottle was on the reception desk. I must have left it there without thinking."
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "Good. You would need it today."
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Exactly, so I will collect it soon."
-                                           }
-                                       ],
-                          "question":  "Where is the water bottle?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_1a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, water bottle on a reception desk, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_1b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, water bottle on a sports field bench, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_1c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, water bottle on a bus seat, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The speaker says my water bottle was on the reception desk."
-                      },
-                      {
-                          "number":  2,
-                          "context":  "You hear two friends making plans for the afternoon.",
-                          "voices":  {
-                                         "man":  "en-GB-NoahNeural",
-                                         "woman":  "en-GB-LibbyNeural"
-                                     },
-                          "audio_script":  "Man: Are we still going to go to the outdoor concert this afternoon? I was looking forward to it. || Woman: I don't think so. The band has cancelled, so that plan will not work. || Man: We could watch a film instead. || Woman: I checked, but there are no seats left. My cousin suggested another idea, and [1]we are visiting a pottery workshop after school[/1]. || Man: That sounds fine. What time shall we meet? || Woman: Let's meet at four outside the station, and we can go together.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Are we still going to go to the outdoor concert this afternoon? I was looking forward to it."
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "I don't think so. The band has cancelled, so that plan will not work."
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "We could watch a film instead."
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "I checked, but there are no seats left. My cousin suggested another idea, and we are visiting a pottery workshop after school."
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "That sounds fine. What time shall we meet?"
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "Let's meet at four outside the station, and we can go together."
-                                           }
-                                       ],
-                          "question":  "What are the friends going to do?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_2a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, people at an outdoor concert, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_2b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, people making pots at a workshop, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_2c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, people watching a film in a cinema, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "B",
-                          "explanation":  "The speaker says they are visiting a pottery workshop after school."
-                      },
-                      {
-                          "number":  3,
-                          "context":  "You hear two students talking about the school camping night.",
-                          "voices":  {
-                                         "girl":  "en-GB-AbbiNeural",
-                                         "boy":  "en-GB-AlfieNeural"
-                                     },
-                          "audio_script":  "Girl: What do we need to take for the school camping night tomorrow? I don't want to carry too much. || Boy: The teacher said we do not need to bring a towel, because they have enough for everybody. || Girl: What about a notebook? || Boy: No, not this time. The important thing is this: [1]bring a torch because the path to the tents gets dark early[/1]. || Girl: Thanks. I will put it in my bag tonight. || Boy: Good idea. We have to leave early, so do not forget it.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "What do we need to take for the school camping night tomorrow? I don't want to carry too much."
-                                           },
-                                           {
-                                               "speaker":  "boy",
-                                               "text":  "The teacher said we do not need to bring a towel, because they have enough for everybody."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "What about a notebook?"
-                                           },
-                                           {
-                                               "speaker":  "boy",
-                                               "text":  "No, not this time. The important thing is this: bring a torch because the path to the tents gets dark early."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "Thanks. I will put it in my bag tonight."
-                                           },
-                                           {
-                                               "speaker":  "boy",
-                                               "text":  "Good idea. We have to leave early, so do not forget it."
-                                           }
-                                       ],
-                          "question":  "What should the student take?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_3a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, towel folded beside a backpack, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_3b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, notebook beside a pencil, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_3c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, torch beside a small backpack, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "C",
-                          "explanation":  "The student is told to bring a torch because the path to the tents gets dark early."
-                      },
-                      {
-                          "number":  4,
-                          "context":  "You hear two people choosing food in a café.",
-                          "voices":  {
-                                         "boy":  "en-GB-ElliotNeural",
-                                         "girl":  "en-GB-BellaNeural"
-                                     },
-                          "audio_script":  "Boy: Have you decided what to get for lunch? The queue is moving quickly. || Girl: I first thought about chicken soup, but I had that yesterday. || Boy: The cheese sandwich looks good too. || Girl: Maybe, but it looks too small. I think [1]I will have the baked potato because it comes with salad[/1]. || Boy: Good choice. I will order after you. || Girl: Great, then we can find a table near the window before it gets busy. || Girl: That should make the rest of the day much easier.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "boy",
-                                               "text":  "Have you decided what to get for lunch? The queue is moving quickly."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "I first thought about chicken soup, but I had that yesterday."
-                                           },
-                                           {
-                                               "speaker":  "boy",
-                                               "text":  "The cheese sandwich looks good too."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "Maybe, but it looks too small. I think I will have the baked potato because it comes with salad."
-                                           },
-                                           {
-                                               "speaker":  "boy",
-                                               "text":  "Good choice. I will order after you."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "Great, then we can find a table near the window before it gets busy."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "That should make the rest of the day much easier."
-                                           }
-                                       ],
-                          "question":  "What food does the speaker choose?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_4a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, baked potato with salad, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_4b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, bowl of chicken soup, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_4c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, cheese sandwich on a plate, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The speaker says they will have the baked potato because it comes with salad."
-                      },
-                      {
-                          "number":  5,
-                          "context":  "You hear a school announcement about the photography club.",
-                          "voices":  {
-                                         "speaker":  "en-GB-SoniaNeural"
-                                     },
-                          "audio_script":  "Speaker: This is a message for students joining the photography club today. Please do not go to the art room, because students are taking an exam there. Some students may wait by the library, but it closes early today. The teacher has changed the room for today only. [1]Everyone should go straight to the science lab after lunch[/1]. Please arrive on time, because the activity will begin as soon as the register is checked. You do not need to bring any extra equipment.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "speaker",
-                                               "text":  "This is a message for students joining the photography club today. Please do not go to the art room, because students are taking an exam there. Some students may wait by the library, but it closes early today. The teacher has changed the room for today only. Everyone should go straight to the science lab after lunch. Please arrive on time, because the activity will begin as soon as the register is checked. You do not need to bring any extra equipment."
-                                           }
-                                       ],
-                          "question":  "Where should students go for the photography club?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_5a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, students with cameras in an art room, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_5b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, students with cameras in a science lab, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_5c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, students with cameras in a library, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "B",
-                          "explanation":  "The announcement says everyone should go straight to the science lab after lunch."
-                      },
-                      {
-                          "number":  6,
-                          "context":  "You hear two people talking about travelling to the gallery.",
-                          "voices":  {
-                                         "woman":  "en-GB-MaisieNeural",
-                                         "girl":  "en-GB-AbbiNeural"
-                                     },
-                          "audio_script":  "Woman: How are you getting to the gallery tomorrow? I thought you were going to walk. || Girl: I was, but it is farther than I thought. || Woman: Could you use the bus instead? || Girl: I checked, but the next one is too late. [1]I am going to take the train because it stops close to the entrance[/1]. || Woman: That sounds sensible. I will meet you near the entrance when you arrive. || Girl: Great. I will send a message if I am late. || Girl: That should make the rest of the day much easier.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "How are you getting to the gallery tomorrow? I thought you were going to walk."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "I was, but it is farther than I thought."
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "Could you use the bus instead?"
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "I checked, but the next one is too late. I am going to take the train because it stops close to the entrance."
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "That sounds sensible. I will meet you near the entrance when you arrive."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "Great. I will send a message if I am late."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "That should make the rest of the day much easier."
-                                           }
-                                       ],
-                          "question":  "How will the speaker get to the gallery?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_6a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, person walking along a street, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_6b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, person waiting at a bus stop, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_6c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, person travelling by train, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "C",
-                          "explanation":  "The speaker says they are going to take the train because it stops close to the entrance."
-                      },
-                      {
-                          "number":  7,
-                          "context":  "You hear two people talking about work in a bookshop.",
-                          "voices":  {
-                                         "man":  "en-GB-ThomasNeural",
-                                         "boy":  "en-GB-AlfieNeural"
-                                     },
-                          "audio_script":  "Man: What are you doing at the bookshop this afternoon? I thought the manager asked you to clean the windows. || Boy: Not now, because Sam did that before lunch. || Man: So will you carry boxes upstairs? || Boy: No, the lift is not working. The manager said [1]my job today is to put new books on the shelves[/1]. || Man: That sounds clear enough. || Boy: Yes, and it should not take too long if the shop stays quiet. I can help you afterwards. || Boy: That should make the rest of the day much easier.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "What are you doing at the bookshop this afternoon? I thought the manager asked you to clean the windows."
-                                           },
-                                           {
-                                               "speaker":  "boy",
-                                               "text":  "Not now, because Sam did that before lunch."
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "So will you carry boxes upstairs?"
-                                           },
-                                           {
-                                               "speaker":  "boy",
-                                               "text":  "No, the lift is not working. The manager said my job today is to put new books on the shelves."
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "That sounds clear enough."
-                                           },
-                                           {
-                                               "speaker":  "boy",
-                                               "text":  "Yes, and it should not take too long if the shop stays quiet. I can help you afterwards."
-                                           },
-                                           {
-                                               "speaker":  "boy",
-                                               "text":  "That should make the rest of the day much easier."
-                                           }
-                                       ],
-                          "question":  "What job will the speaker do?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_7a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, worker putting books on shelves, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_7b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, worker cleaning shop windows, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test41_7c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, worker carrying boxes upstairs, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The speaker says their job today is to put new books on the shelves."
-                      }
-                  ]
+    "instructions":  "For each question, listen to the recording and choose the correct answer: A, B or C.",
+    "items":  [
+                  {
+                      "number":  1,
+                      "context":  "You hear two people talking about a lost water bottle.",
+                      "voices":  {
+                                     "girl":  "en-GB-AbbiNeural",
+                                     "boy":  "en-GB-AlfieNeural"
+                                 },
+                      "audio_script":  "Girl: Did you finally find your water bottle? You looked everywhere before class this morning. || Boy: Yes, but not where I expected. I checked the sports field, because I remembered using it there yesterday. || Girl: And did you try the school bus? You said you went there afterwards. || Boy: I did, but nobody had seen it. Then my coach sent me a message and said [1]I had left my water bottle on the reception desk[/1]. I must have put it there without noticing. || Girl: What a relief. You will need it later. || Boy: Exactly. I'll pick it up before lunch.",
+                      "dialogue":  [
+                                       {
+                                           "speaker":  "girl",
+                                           "text":  "Did you finally find your water bottle? You looked everywhere before class this morning."
+                                       },
+                                       {
+                                           "speaker":  "boy",
+                                           "text":  "Yes, but not where I expected. I checked the sports field, because I remembered using it there yesterday."
+                                       },
+                                       {
+                                           "speaker":  "girl",
+                                           "text":  "And did you try the school bus? You said you went there afterwards."
+                                       },
+                                       {
+                                           "speaker":  "boy",
+                                           "text":  "I did, but nobody had seen it. Then my coach sent me a message and said I had left my water bottle on the reception desk. I must have put it there without noticing."
+                                       },
+                                       {
+                                           "speaker":  "girl",
+                                           "text":  "What a relief. You will need it later."
+                                       },
+                                       {
+                                           "speaker":  "boy",
+                                           "text":  "Exactly. I'll pick it up before lunch."
+                                       }
+                                   ],
+                      "question":  "Where is the water bottle?",
+                      "options":  {
+                                      "A":  "On the reception desk",
+                                      "B":  "On a sports field bench",
+                                      "C":  "On a bus seat"
+                                  },
+                      "answer":  "A",
+                      "explanation":  "The speaker says they had left the water bottle on the reception desk."
+                  },
+                  {
+                      "number":  2,
+                      "context":  "You hear two friends making plans for the afternoon.",
+                      "voices":  {
+                                     "woman":  "en-GB-LibbyNeural",
+                                     "man":  "en-GB-NoahNeural"
+                                 },
+                      "audio_script":  "Woman: Are we still going to the outdoor concert after school? I was looking forward to it. || Man: I don't think so. The band has cancelled, so that plan will not work today. || Woman: We could watch a film instead. That might be fun. || Man: I checked, but there are no seats left. My cousin had a different idea: [1]we are going to visit a pottery workshop this afternoon[/1]. || Woman: That sounds good. Shall we meet near the station? || Man: Yes, at four o'clock. Then we can go together before dinner.",
+                      "dialogue":  [
+                                       {
+                                           "speaker":  "woman",
+                                           "text":  "Are we still going to the outdoor concert after school? I was looking forward to it."
+                                       },
+                                       {
+                                           "speaker":  "man",
+                                           "text":  "I don't think so. The band has cancelled, so that plan will not work today."
+                                       },
+                                       {
+                                           "speaker":  "woman",
+                                           "text":  "We could watch a film instead. That might be fun."
+                                       },
+                                       {
+                                           "speaker":  "man",
+                                           "text":  "I checked, but there are no seats left. My cousin had a different idea: we are going to visit a pottery workshop this afternoon."
+                                       },
+                                       {
+                                           "speaker":  "woman",
+                                           "text":  "That sounds good. Shall we meet near the station?"
+                                       },
+                                       {
+                                           "speaker":  "man",
+                                           "text":  "Yes, at four o'clock. Then we can go together before dinner."
+                                       }
+                                   ],
+                      "question":  "What are the friends going to do?",
+                      "options":  {
+                                      "A":  "Go to an outdoor concert",
+                                      "B":  "Visit a pottery workshop",
+                                      "C":  "Watch a film"
+                                  },
+                      "answer":  "B",
+                      "explanation":  "The speaker says they are going to visit a pottery workshop this afternoon."
+                  },
+                  {
+                      "number":  3,
+                      "context":  "You hear two students talking about the school camping night.",
+                      "voices":  {
+                                     "boy":  "en-GB-ElliotNeural",
+                                     "girl":  "en-GB-BellaNeural"
+                                 },
+                      "audio_script":  "Boy: Have you packed for the school camping night tomorrow? I'm trying not to take things I will not use. || Girl: Almost. I was going to bring a towel, but the teacher said we will not need that there. || Boy: What about a notebook? Do we need that? || Girl: Not this time. The message says [1]everyone needs to bring a torch because the path to the tents gets dark early[/1]. || Boy: Thanks for telling me. I will put it in my bag now. || Girl: Good idea. We leave early, and there will not be time to go back home.",
+                      "dialogue":  [
+                                       {
+                                           "speaker":  "boy",
+                                           "text":  "Have you packed for the school camping night tomorrow? I'm trying not to take things I will not use."
+                                       },
+                                       {
+                                           "speaker":  "girl",
+                                           "text":  "Almost. I was going to bring a towel, but the teacher said we will not need that there."
+                                       },
+                                       {
+                                           "speaker":  "boy",
+                                           "text":  "What about a notebook? Do we need that?"
+                                       },
+                                       {
+                                           "speaker":  "girl",
+                                           "text":  "Not this time. The message says everyone needs to bring a torch because the path to the tents gets dark early."
+                                       },
+                                       {
+                                           "speaker":  "boy",
+                                           "text":  "Thanks for telling me. I will put it in my bag now."
+                                       },
+                                       {
+                                           "speaker":  "girl",
+                                           "text":  "Good idea. We leave early, and there will not be time to go back home."
+                                       }
+                                   ],
+                      "question":  "What should the student take?",
+                      "options":  {
+                                      "A":  "A Towel",
+                                      "B":  "A Notebook",
+                                      "C":  "A Torch"
+                                  },
+                      "answer":  "C",
+                      "explanation":  "The speaker says everyone needs to bring a torch because the path to the tents gets dark early."
+                  },
+                  {
+                      "number":  4,
+                      "context":  "You hear two people choosing food in a cafe.",
+                      "voices":  {
+                                     "woman":  "en-GB-SoniaNeural",
+                                     "man":  "en-GB-RyanNeural"
+                                 },
+                      "audio_script":  "Woman: Have you chosen what to order for lunch? The queue is getting longer behind us. || Man: Not yet. I considered chicken soup, but I had that yesterday. || Woman: What about the cheese sandwich? It looks good today. || Man: I thought about that too, but it looks too small. I think [1]I'll have the baked potato because it comes with salad[/1]. || Woman: Good choice. I'll decide while you pay. || Man: Fine. Let's find seats by the window before all the tables are taken. We still have time before class begins.",
+                      "dialogue":  [
+                                       {
+                                           "speaker":  "woman",
+                                           "text":  "Have you chosen what to order for lunch? The queue is getting longer behind us."
+                                       },
+                                       {
+                                           "speaker":  "man",
+                                           "text":  "Not yet. I considered chicken soup, but I had that yesterday."
+                                       },
+                                       {
+                                           "speaker":  "woman",
+                                           "text":  "What about the cheese sandwich? It looks good today."
+                                       },
+                                       {
+                                           "speaker":  "man",
+                                           "text":  "I thought about that too, but it looks too small. I think I'll have the baked potato because it comes with salad."
+                                       },
+                                       {
+                                           "speaker":  "woman",
+                                           "text":  "Good choice. I'll decide while you pay."
+                                       },
+                                       {
+                                           "speaker":  "man",
+                                           "text":  "Fine. Let's find seats by the window before all the tables are taken. We still have time before class begins."
+                                       }
+                                   ],
+                      "question":  "What food does the speaker choose?",
+                      "options":  {
+                                      "A":  "A baked potato",
+                                      "B":  "Chicken soup",
+                                      "C":  "A cheese sandwich"
+                                  },
+                      "answer":  "A",
+                      "explanation":  "The speaker chooses the baked potato because it comes with salad."
+                  },
+                  {
+                      "number":  5,
+                      "context":  "You hear two students talking about the photography club.",
+                      "voices":  {
+                                     "woman":  "en-GB-MaisieNeural",
+                                     "girl":  "en-GB-AbbiNeural"
+                                 },
+                      "audio_script":  "Woman: Did you see the message about the photography club this afternoon? I was going straight to the art room. || Girl: Do not go there, because students are taking an exam there. The teacher cannot use that room today. || Woman: Oh. I heard some people were waiting by the library. || Girl: That is wrong too, because it closes early today. The latest message says [1]we must meet in the science lab after lunch[/1]. || Woman: Thanks. I would have gone to the wrong place. || Girl: I will tell the others before registration, so nobody misses the start.",
+                      "dialogue":  [
+                                       {
+                                           "speaker":  "woman",
+                                           "text":  "Did you see the message about the photography club this afternoon? I was going straight to the art room."
+                                       },
+                                       {
+                                           "speaker":  "girl",
+                                           "text":  "Do not go there, because students are taking an exam there. The teacher cannot use that room today."
+                                       },
+                                       {
+                                           "speaker":  "woman",
+                                           "text":  "Oh. I heard some people were waiting by the library."
+                                       },
+                                       {
+                                           "speaker":  "girl",
+                                           "text":  "That is wrong too, because it closes early today. The latest message says we must meet in the science lab after lunch."
+                                       },
+                                       {
+                                           "speaker":  "woman",
+                                           "text":  "Thanks. I would have gone to the wrong place."
+                                       },
+                                       {
+                                           "speaker":  "girl",
+                                           "text":  "I will tell the others before registration, so nobody misses the start."
+                                       }
+                                   ],
+                      "question":  "Where should students go for the photography club?",
+                      "options":  {
+                                      "A":  "The Art Room",
+                                      "B":  "The Science Lab",
+                                      "C":  "The Library"
+                                  },
+                      "answer":  "B",
+                      "explanation":  "The latest message says they must meet in the science lab after lunch."
+                  },
+                  {
+                      "number":  6,
+                      "context":  "You hear two people talking about travelling to the gallery.",
+                      "voices":  {
+                                     "man":  "en-GB-ThomasNeural",
+                                     "boy":  "en-GB-AlfieNeural"
+                                 },
+                      "audio_script":  "Man: How are you getting to the gallery tomorrow? I thought you were going to walk. || Boy: I was, but it is farther than I thought, so it is not a good idea now. || Man: Could you take the bus instead? It might be quicker. || Boy: I checked, but the next one is too late. [1]I'm taking the train because it stops close to the entrance[/1]. || Man: That makes sense. When will you arrive? || Boy: Just before ten. I will send you a message when I get there, and we can meet near the entrance.",
+                      "dialogue":  [
+                                       {
+                                           "speaker":  "man",
+                                           "text":  "How are you getting to the gallery tomorrow? I thought you were going to walk."
+                                       },
+                                       {
+                                           "speaker":  "boy",
+                                           "text":  "I was, but it is farther than I thought, so it is not a good idea now."
+                                       },
+                                       {
+                                           "speaker":  "man",
+                                           "text":  "Could you take the bus instead? It might be quicker."
+                                       },
+                                       {
+                                           "speaker":  "boy",
+                                           "text":  "I checked, but the next one is too late. I'm taking the train because it stops close to the entrance."
+                                       },
+                                       {
+                                           "speaker":  "man",
+                                           "text":  "That makes sense. When will you arrive?"
+                                       },
+                                       {
+                                           "speaker":  "boy",
+                                           "text":  "Just before ten. I will send you a message when I get there, and we can meet near the entrance."
+                                       }
+                                   ],
+                      "question":  "How will the speaker get to the gallery?",
+                      "options":  {
+                                      "A":  "On Foot",
+                                      "B":  "By Bus",
+                                      "C":  "By Train"
+                                  },
+                      "answer":  "C",
+                      "explanation":  "The speaker chooses this way of travelling because it stops close to the entrance."
+                  },
+                  {
+                      "number":  7,
+                      "context":  "You hear two people talking about work at the bookshop.",
+                      "voices":  {
+                                     "woman":  "en-GB-OliviaNeural",
+                                     "man":  "en-GB-OliverNeural"
+                                 },
+                      "audio_script":  "Woman: What are you doing at the bookshop this afternoon? I thought you had to clean the windows. || Man: That was yesterday. Someone else has already done it this morning. || Woman: So are you going to carry boxes upstairs instead? || Man: No, because the lift is not working. The manager said [1]my job today is to put new books on the shelves[/1]. || Woman: That sounds manageable. Will you finish by five? || Man: I hope so. If it stays quiet, I should finish early and have time to meet my friends afterwards.",
+                      "dialogue":  [
+                                       {
+                                           "speaker":  "woman",
+                                           "text":  "What are you doing at the bookshop this afternoon? I thought you had to clean the windows."
+                                       },
+                                       {
+                                           "speaker":  "man",
+                                           "text":  "That was yesterday. Someone else has already done it this morning."
+                                       },
+                                       {
+                                           "speaker":  "woman",
+                                           "text":  "So are you going to carry boxes upstairs instead?"
+                                       },
+                                       {
+                                           "speaker":  "man",
+                                           "text":  "No, because the lift is not working. The manager said my job today is to put new books on the shelves."
+                                       },
+                                       {
+                                           "speaker":  "woman",
+                                           "text":  "That sounds manageable. Will you finish by five?"
+                                       },
+                                       {
+                                           "speaker":  "man",
+                                           "text":  "I hope so. If it stays quiet, I should finish early and have time to meet my friends afterwards."
+                                       }
+                                   ],
+                      "question":  "What job will the speaker do?",
+                      "options":  {
+                                      "A":  "Put books on shelves",
+                                      "B":  "Clean windows",
+                                      "C":  "Carry boxes upstairs"
+                                  },
+                      "answer":  "A",
+                      "explanation":  "The speaker says their job today is to put new books on the shelves."
+                  }
+              ]
 }

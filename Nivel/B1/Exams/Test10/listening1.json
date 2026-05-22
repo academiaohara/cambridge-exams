@@ -2,318 +2,128 @@
     "test_id":  10,
     "exam_part":  1,
     "title":  "B1 Listening - Part 1 - Test 10",
-    "type":  "multiple-choice-image",
+    "type":  "multiple-choice-text",
     "totalQuestions":  7,
-    "instructions":  "For each question, choose the correct picture. You will hear each audio twice.",
-    "duration_minutes":  10,
+    "instructions":  "For each question, listen to the recording and choose the correct answer: A, B or C.",
     "items":  [
                   {
                       "number":  1,
-                      "context":  "You hear customer and assistant talking about the class photo.",
+                      "context":  "You hear two students talking before an examination.",
                       "voices":  {
-                                     "man":  "en-GB-OliverNeural",
-                                     "woman":  "en-GB-OliviaNeural"
+                                     "girl":  "en-GB-AbbiNeural",
+                                     "boy":  "en-GB-AlfieNeural"
                                  },
-                      "audio_script":  "Customer: Hi, Mia. I’m checking the plan for the class photo. I thought we were going to stand by the playground, but I may have mixed it up after yesterday's message. || Assistant: It changed this morning. Our teacher sent a new note to everyone before registration. [1]We’re taking it in the garden behind the school[/1]. || Customer: Good thing I asked. I nearly gone to the playground gate. I haven’t looked at my phone since breakfast. || Assistant: Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "customer",
-                                           "text":  "Hi, Mia. I’m checking the plan for the class photo. I thought we were going to stand by the playground, but I may have mixed it up after yesterday's message."
-                                       },
-                                       {
-                                           "speaker":  "assistant",
-                                           "text":  "It changed this morning. Our teacher sent a new note to everyone before registration. We’re taking it in the garden behind the school."
-                                       },
-                                       {
-                                           "speaker":  "customer",
-                                           "text":  "Good thing I asked. I nearly gone to the playground gate. I haven’t looked at my phone since breakfast."
-                                       },
-                                       {
-                                           "speaker":  "assistant",
-                                           "text":  "Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together."
-                                       }
-                                   ],
-                      "question":  "Where will the photo be taken?",
+                      "audio_script":  "Girl: Are we still meeting in room fourteen for the English examination? I thought I remembered correctly, but I have not checked my messages today. || Boy: That was the original plan, but there are more students taking it than the school expected. [1]We need to meet in the main hall instead[/1]. || Girl: That was lucky; I almost went there. I would have gone to the wrong place and wondered where everyone was. || Boy: Do not worry. I will arrive ten minutes early, so look for me near the entrance. Keep your phone on in case anything changes again.",
+                      "question":  "Where will the examination take place?",
                       "options":  {
-                                      "A":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_1a.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, school playground, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "B":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_1b.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, school garden with trees, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "C":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_1c.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, classroom wall, no text, flat educational drawing, minimal details, clean white background."
-                                            }
+                                      "A":  "In room fourteen",
+                                      "B":  "In the main hall",
+                                      "C":  "In the library"
                                   },
                       "answer":  "B",
-                      "explanation":  "The speaker says: “We’re taking it in the garden behind the school.” This matches option B."
+                      "explanation":  "The examination will take place in the main hall."
                   },
                   {
                       "number":  2,
-                      "context":  "You hear mum and dad talking about the bike ride.",
+                      "context":  "You hear two friends preparing for a weekend camp.",
                       "voices":  {
-                                     "man":  "en-GB-EthanNeural",
-                                     "woman":  "en-GB-MaisieNeural"
+                                     "boy":  "en-GB-ElliotNeural",
+                                     "girl":  "en-GB-BellaNeural"
                                  },
-                      "audio_script":  "Mum: Hi, Ben. I’m checking the plan for the bike ride. I thought we were going to take gloves, but I may have mixed it up after yesterday's message. || Dad: It changed this morning. Our teacher sent a new note to everyone before registration. [1]Bring your helmet, even for the short route[/1]. || Mum: Good thing I asked. I nearly nearly left without it. I haven’t looked at my phone since breakfast. || Dad: Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "mum",
-                                           "text":  "Hi, Ben. I’m checking the plan for the bike ride. I thought we were going to take gloves, but I may have mixed it up after yesterday's message."
-                                       },
-                                       {
-                                           "speaker":  "dad",
-                                           "text":  "It changed this morning. Our teacher sent a new note to everyone before registration. Bring your helmet, even for the short route."
-                                       },
-                                       {
-                                           "speaker":  "mum",
-                                           "text":  "Good thing I asked. I nearly nearly left without it. I haven’t looked at my phone since breakfast."
-                                       },
-                                       {
-                                           "speaker":  "dad",
-                                           "text":  "Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together."
-                                       }
-                                   ],
-                      "question":  "What must the boy take?",
+                      "audio_script":  "Boy: Have you packed for the weekend camp yet? I put a football in my bag because I thought that was what we needed. || Girl: That was on the first list, but the path to the tents is dark after sunset. [1]Everyone needs to bring a torch now[/1]. || Boy: I am glad I checked. I was about to leave my bag by the door and forget about it. || Girl: There is still time. Put it in now, and check the final message once more before we leave tomorrow morning.",
+                      "question":  "What should the student bring?",
                       "options":  {
-                                      "A":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_2a.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, cycling gloves, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "B":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_2b.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, bike helmet, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "C":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_2c.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, rain jacket, no text, flat educational drawing, minimal details, clean white background."
-                                            }
+                                      "A":  "A torch",
+                                      "B":  "A football",
+                                      "C":  "A towel"
                                   },
-                      "answer":  "B",
-                      "explanation":  "The speaker says: “Bring your helmet, even for the short route.” This matches option B."
+                      "answer":  "A",
+                      "explanation":  "The student should bring a torch."
                   },
                   {
                       "number":  3,
-                      "context":  "You hear student and teacher talking about the library visit.",
+                      "context":  "You hear two friends deciding what to do tonight.",
                       "voices":  {
-                                     "man":  "en-GB-ThomasNeural",
-                                     "woman":  "en-GB-HollieNeural"
+                                     "woman":  "en-GB-SoniaNeural",
+                                     "man":  "en-GB-RyanNeural"
                                  },
-                      "audio_script":  "Student: Hi, Lucy. I’m checking the plan for the library visit. I thought we were going to borrow books, but I may have mixed it up after yesterday's message. || Teacher: It changed this morning. Our teacher sent a new note to everyone before registration. [1]We’re listening to a talk by a local writer[/1]. || Student: Good thing I asked. I nearly brought my library card. I haven’t looked at my phone since breakfast. || Teacher: Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "student",
-                                           "text":  "Hi, Lucy. I’m checking the plan for the library visit. I thought we were going to borrow books, but I may have mixed it up after yesterday's message."
-                                       },
-                                       {
-                                           "speaker":  "teacher",
-                                           "text":  "It changed this morning. Our teacher sent a new note to everyone before registration. We’re listening to a talk by a local writer."
-                                       },
-                                       {
-                                           "speaker":  "student",
-                                           "text":  "Good thing I asked. I nearly brought my library card. I haven’t looked at my phone since breakfast."
-                                       },
-                                       {
-                                           "speaker":  "teacher",
-                                           "text":  "Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together."
-                                       }
-                                   ],
-                      "question":  "What will the students do at the library?",
+                      "audio_script":  "Woman: Are we still playing video games at my house this evening? I told my sister I would be home later, so I need to know. || Man: That was the idea, but my uncle has given me two tickets that expire tonight. [1]We are going to see a comedy show instead[/1]. || Woman: That is fine with me. I nearly paid for the other activity online this morning. || Man: It is lucky that you checked first. I will book our places this evening and send you the time. We can meet at the bus stop after lunch.",
+                      "question":  "What will they do this evening?",
                       "options":  {
-                                      "A":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_3a.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, borrowing books, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "B":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_3b.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, listening to writer talk, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "C":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_3c.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, using computers, no text, flat educational drawing, minimal details, clean white background."
-                                            }
+                                      "A":  "Play video games",
+                                      "B":  "Go for a meal",
+                                      "C":  "See a comedy show"
                                   },
-                      "answer":  "B",
-                      "explanation":  "The speaker says: “We’re listening to a talk by a local writer.” This matches option B."
+                      "answer":  "C",
+                      "explanation":  "They will see a comedy show."
                   },
                   {
                       "number":  4,
-                      "context":  "You hear woman and man talking about the film.",
-                      "voices":  {
-                                     "man":  "en-GB-RyanNeural",
-                                     "woman":  "en-GB-SoniaNeural"
-                                 },
-                      "audio_script":  "Woman: Hi, Jack. I’m checking the plan for the film. I thought we were going to arrive at six thirty, but I may have mixed it up after yesterday's message. || Man: It changed this morning. Our teacher sent a new note to everyone before registration. [1]The film starts at quarter to seven, so let’s meet at half past six[/1]. || Woman: Good thing I asked. I nearly missed the trailers. I haven’t looked at my phone since breakfast. || Man: Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "Hi, Jack. I’m checking the plan for the film. I thought we were going to arrive at six thirty, but I may have mixed it up after yesterday's message."
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "It changed this morning. Our teacher sent a new note to everyone before registration. The film starts at quarter to seven, so let’s meet at half past six."
-                                       },
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "Good thing I asked. I nearly missed the trailers. I haven’t looked at my phone since breakfast."
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together."
-                                       }
-                                   ],
-                      "question":  "What time does the film start?",
-                      "options":  {
-                                      "A":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_4a.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, clock showing half past six with hands only, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "B":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_4b.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, clock showing quarter to seven with hands only, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "C":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_4c.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, clock showing seven fifteen with hands only, no text, flat educational drawing, minimal details, clean white background."
-                                            }
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The speaker says: “The film starts at quarter to seven, so let’s meet at half past six.” This matches option B."
-                  },
-                  {
-                      "number":  5,
-                      "context":  "You hear man and woman talking about the printer.",
+                      "context":  "You hear two students talking about an English class.",
                       "voices":  {
                                      "man":  "en-GB-NoahNeural",
                                      "woman":  "en-GB-LibbyNeural"
                                  },
-                      "audio_script":  "Man: Hi, Emma. I’m checking the plan for the printer. I thought we were going to it is too slow, but I may have mixed it up after yesterday's message. || Woman: It changed this morning. Our teacher sent a new note to everyone before registration. [1]It has no paper left, so the homework won’t print[/1]. || Man: Good thing I asked. I nearly waited for ages. I haven’t looked at my phone since breakfast. || Woman: Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "Hi, Emma. I’m checking the plan for the printer. I thought we were going to it is too slow, but I may have mixed it up after yesterday's message."
-                                       },
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "It changed this morning. Our teacher sent a new note to everyone before registration. It has no paper left, so the homework won’t print."
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "Good thing I asked. I nearly waited for ages. I haven’t looked at my phone since breakfast."
-                                       },
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together."
-                                       }
-                                   ],
-                      "question":  "What is the problem with the printer?",
+                      "audio_script":  "Man: I need to write down the time for the English class tomorrow. Is it still at quarter past nine, like you said yesterday? || Woman: No, the teacher needs to finish earlier for a meeting. [1]It starts at nine o'clock now[/1], although we should arrive ten minutes earlier. || Man: Thanks; I nearly wrote down the wrong time. I would have been waiting there at the wrong time. || Woman: I will send you a reminder later. Bring everything you need, because there will not be time to go home again before it begins.",
+                      "question":  "What time does the English class start?",
                       "options":  {
-                                      "A":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_5a.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, slow printer, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "B":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_5b.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, printer tray with no paper, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "C":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_5c.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, printer making marks on page, no text, flat educational drawing, minimal details, clean white background."
-                                            }
+                                      "A":  "Quarter past nine",
+                                      "B":  "Nine o'clock",
+                                      "C":  "Half past nine"
                                   },
                       "answer":  "B",
-                      "explanation":  "The speaker says: “It has no paper left, so the homework won’t print.” This matches option B."
+                      "explanation":  "The class starts at nine o'clock."
+                  },
+                  {
+                      "number":  5,
+                      "context":  "You hear two people discussing a jacket.",
+                      "voices":  {
+                                     "girl":  "en-GB-AbbiNeural",
+                                     "boy":  "en-GB-AlfieNeural"
+                                 },
+                      "audio_script":  "Girl: How are you getting on with your new jacket? I heard it was not working properly. || Boy: I first thought the sleeves were too short, and my brother wondered if the zip was broken. But he checked it carefully last night. [1]It is not waterproof at all[/1]. || Girl: Can it be fixed before the walking holiday next month? || Boy: I think so. We know what is wrong now, and the repair shop said it should be ready tomorrow afternoon. That is a relief because I need it this weekend.",
+                      "question":  "What is wrong with the jacket?",
+                      "options":  {
+                                      "A":  "It is not waterproof",
+                                      "B":  "The sleeves are too short",
+                                      "C":  "The zip is broken"
+                                  },
+                      "answer":  "A",
+                      "explanation":  "The jacket is not waterproof."
                   },
                   {
                       "number":  6,
-                      "context":  "You hear girl and boy talking about going to the island.",
+                      "context":  "You hear two friends travelling to the theatre.",
                       "voices":  {
-                                     "man":  "en-GB-AlfieNeural",
-                                     "woman":  "en-GB-AbbiNeural"
+                                     "woman":  "en-GB-SoniaNeural",
+                                     "man":  "en-GB-RyanNeural"
                                  },
-                      "audio_script":  "Girl: Hi, Sam. I’m checking the plan for going to the island. I thought we were going to fly, but I may have mixed it up after yesterday's message. || Boy: It changed this morning. Our teacher sent a new note to everyone before registration. [1]We’re taking the boat because the airport is closed[/1]. || Girl: Good thing I asked. I nearly packed for the plane. I haven’t looked at my phone since breakfast. || Boy: Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "girl",
-                                           "text":  "Hi, Sam. I’m checking the plan for going to the island. I thought we were going to fly, but I may have mixed it up after yesterday's message."
-                                       },
-                                       {
-                                           "speaker":  "boy",
-                                           "text":  "It changed this morning. Our teacher sent a new note to everyone before registration. We’re taking the boat because the airport is closed."
-                                       },
-                                       {
-                                           "speaker":  "girl",
-                                           "text":  "Good thing I asked. I nearly packed for the plane. I haven’t looked at my phone since breakfast."
-                                       },
-                                       {
-                                           "speaker":  "boy",
-                                           "text":  "Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together."
-                                       }
-                                   ],
-                      "question":  "How will they get to the island?",
+                      "audio_script":  "Woman: Are you still travelling to the theatre by taxi? I could meet you when you arrive. || Man: I planned to, but it will cost too much in the evening. I considered going by bus, but it takes too long through the traffic. [1]I am going by train instead[/1]. || Woman: That sounds like the best plan. What time will you get there? || Man: Just before eleven, if everything is on time. I have already checked the timetable online, so it should be easy. I will message you when I leave, so you do not have to wait outside.",
+                      "question":  "How will the speaker travel to the theatre?",
                       "options":  {
-                                      "A":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_6a.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, small airplane, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "B":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_6b.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, passenger boat, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "C":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_6c.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, train bridge, no text, flat educational drawing, minimal details, clean white background."
-                                            }
+                                      "A":  "By taxi",
+                                      "B":  "By bus",
+                                      "C":  "By train"
                                   },
-                      "answer":  "B",
-                      "explanation":  "The speaker says: “We’re taking the boat because the airport is closed.” This matches option B."
+                      "answer":  "C",
+                      "explanation":  "The speaker decides to go by train."
                   },
                   {
                       "number":  7,
-                      "context":  "You hear boy and girl talking about the trip.",
+                      "context":  "You hear two friends choosing a present for a teacher.",
                       "voices":  {
-                                     "man":  "en-GB-ElliotNeural",
-                                     "woman":  "en-GB-BellaNeural"
+                                     "man":  "en-GB-NoahNeural",
+                                     "woman":  "en-GB-LibbyNeural"
                                  },
-                      "audio_script":  "Boy: Hi, Anna. I’m checking the plan for the trip. I thought we were going to buy a map, but I may have mixed it up after yesterday's message. || Girl: It changed this morning. Our teacher sent a new note to everyone before registration. [1]I bought a guidebook with pictures of the old town[/1]. || Boy: Good thing I asked. I nearly asked about maps. I haven’t looked at my phone since breakfast. || Girl: Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "boy",
-                                           "text":  "Hi, Anna. I’m checking the plan for the trip. I thought we were going to buy a map, but I may have mixed it up after yesterday's message."
-                                       },
-                                       {
-                                           "speaker":  "girl",
-                                           "text":  "It changed this morning. Our teacher sent a new note to everyone before registration. I bought a guidebook with pictures of the old town."
-                                       },
-                                       {
-                                           "speaker":  "boy",
-                                           "text":  "Good thing I asked. I nearly asked about maps. I haven’t looked at my phone since breakfast."
-                                       },
-                                       {
-                                           "speaker":  "girl",
-                                           "text":  "Don’t worry, there’s still enough time. I’ll wait for you by the entrance, so we can go together."
-                                       }
-                                   ],
-                      "question":  "What did the tourist buy?",
+                      "audio_script":  "Man: Did you buy a box of chocolates for Mrs Green's leaving present? I saw one in the shop window yesterday and thought it looked nice. || Woman: No. I looked at a box of chocolates, and I nearly chose some flowers, but she cannot eat chocolate and flowers will not last very long. [1]I bought a photo frame in the end[/1]. || Man: I think that was the right choice. It sounds more useful, and I think it will be appreciated. || Woman: I hope so. I kept the receipt, just in case it needs changing after we give it.",
+                      "question":  "What present did the speaker buy?",
                       "options":  {
-                                      "A":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_7a.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, folded map, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "B":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_7b.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, city guidebook, no text, flat educational drawing, minimal details, clean white background."
-                                            },
-                                      "C":  {
-                                                "image":  "https://b1-exams.b-cdn.net/test10_7c.jpg",
-                                                "imagePrompt":  "Simple Cambridge exam illustration style, train ticket, no text, flat educational drawing, minimal details, clean white background."
-                                            }
+                                      "A":  "A box of chocolates",
+                                      "B":  "A photo frame",
+                                      "C":  "Some flowers"
                                   },
                       "answer":  "B",
-                      "explanation":  "The speaker says: “I bought a guidebook with pictures of the old town.” This matches option B."
+                      "explanation":  "The speaker bought a photo frame."
                   }
               ]
 }

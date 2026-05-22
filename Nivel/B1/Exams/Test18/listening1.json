@@ -1,438 +1,129 @@
 {
     "test_id":  18,
-    "title":  "B1 Listening Part 1 - Test 18",
     "exam_part":  1,
-    "type":  "multiple-choice-image",
+    "title":  "B1 Listening - Part 1 - Test 18",
+    "type":  "multiple-choice-text",
     "totalQuestions":  7,
-    "instructions":  "For each question, listen to the short recording and choose the correct picture: A, B or C.",
-    "questions":  [
-                      {
-                          "number":  1,
-                          "context":  "You hear a parent asking for help at home.",
-                          "voices":  {
-                                         "dad":  "en-GB-RyanNeural",
-                                         "boy":  "en-GB-ThomasNeural"
-                                     },
-                          "audio_script":  "Dad: Could you help me before dinner? The house is a mess because your cousins are coming. || Boy: Sure. Do you want me to clean the windows? || Dad: I already did that this morning. || Boy: Then I can make the beds. || Dad: Your dad is doing that outside. [1]Can you put the shopping away in the cupboards[/1], please. || Boy: OK. I'll start now, but I need five minutes to finish this message first. || Dad: That's fine. Just do it before they arrive. || Dad: That should make things easier. || Dad: I did not want to decide at the last minute.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "dad",
-                                               "text":  "Could you help me before dinner? The house is a mess because your cousins are coming."
-                                           },
-                                           {
-                                               "speaker":  "boy",
-                                               "text":  "Sure. Do you want me to clean the windows?"
-                                           },
-                                           {
-                                               "speaker":  "dad",
-                                               "text":  "I already did that this morning."
-                                           },
-                                           {
-                                               "speaker":  "boy",
-                                               "text":  "Then I can make the beds."
-                                           },
-                                           {
-                                               "speaker":  "dad",
-                                               "text":  "Your dad is doing that outside. Can you put the shopping away in the cupboards, please."
-                                           },
-                                           {
-                                               "speaker":  "boy",
-                                               "text":  "OK. I'll start now, but I need five minutes to finish this message first."
-                                           },
-                                           {
-                                               "speaker":  "dad",
-                                               "text":  "That's fine. Just do it before they arrive."
-                                           },
-                                           {
-                                               "speaker":  "dad",
-                                               "text":  "That should make things easier."
-                                           },
-                                           {
-                                               "speaker":  "dad",
-                                               "text":  "I did not want to decide at the last minute."
-                                           }
-                                       ],
-                          "question":  "What should the boy do?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_1a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, person putting shopping into kitchen cupboards, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_1b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, person cleaning a window, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_1c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, person making a bed, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The father asks him to put the shopping away in the cupboards."
-                      },
-                      {
-                          "number":  2,
-                          "context":  "You hear a teacher talking to a student.",
-                          "voices":  {
-                                         "teacher":  "en-GB-RyanNeural",
-                                         "student":  "en-GB-LibbyNeural"
-                                     },
-                          "audio_script":  "Teacher: How is your English project going? || Student: Quite well. I found the information online and wrote the introduction last night. || Teacher: Have you added pictures of the author? || Student: Not yet, but Sam is doing that part. I thought I had to make a poster too. || Teacher: No, not for this project. [1]Please record yourself reading the poem aloud[/1]. || Student: Great. I can do that after school. || Teacher: Remember to check the spelling before you send it to me tomorrow morning. || Teacher: That should make things easier. || Teacher: I did not want to decide at the last minute.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "teacher",
-                                               "text":  "How is your English project going?"
-                                           },
-                                           {
-                                               "speaker":  "student",
-                                               "text":  "Quite well. I found the information online and wrote the introduction last night."
-                                           },
-                                           {
-                                               "speaker":  "teacher",
-                                               "text":  "Have you added pictures of the author?"
-                                           },
-                                           {
-                                               "speaker":  "student",
-                                               "text":  "Not yet, but Sam is doing that part. I thought I had to make a poster too."
-                                           },
-                                           {
-                                               "speaker":  "teacher",
-                                               "text":  "No, not for this project. Please record yourself reading the poem aloud."
-                                           },
-                                           {
-                                               "speaker":  "student",
-                                               "text":  "Great. I can do that after school."
-                                           },
-                                           {
-                                               "speaker":  "teacher",
-                                               "text":  "Remember to check the spelling before you send it to me tomorrow morning."
-                                           },
-                                           {
-                                               "speaker":  "teacher",
-                                               "text":  "That should make things easier."
-                                           },
-                                           {
-                                               "speaker":  "teacher",
-                                               "text":  "I did not want to decide at the last minute."
-                                           }
-                                       ],
-                          "question":  "What does the student still need to do?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_2a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, student drawing a poster, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_2b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, student adding author pictures, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_2c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, student recording a poem with a microphone, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "C",
-                          "explanation":  "The teacher asks the student to record themselves reading the poem aloud."
-                      },
-                      {
-                          "number":  3,
-                          "context":  "You hear two people talking about a birthday present.",
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "girl":  "en-GB-MaisieNeural"
-                                     },
-                          "audio_script":  "Woman: Have you bought Sam's birthday present yet? || Girl: Not yet. I was going to get a video game, but it is too expensive this month. || Woman: What about a model car? Sam likes those. || Girl: True, but I bought something similar last year. I saw a nice sketchbook in town, and [1]I'll choose the sketchbook with thick pages[/1]. || Woman: That sounds perfect. Do you want me to come with you? || Girl: Yes, please. I always choose better presents with help. || Girl: That should make things easier. || Girl: I did not want to decide at the last minute.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "Have you bought Sam's birthday present yet?"
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "Not yet. I was going to get a video game, but it is too expensive this month."
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "What about a model car? Sam likes those."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "True, but I bought something similar last year. I saw a nice sketchbook in town, and I'll choose the sketchbook with thick pages."
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "That sounds perfect. Do you want me to come with you?"
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "Yes, please. I always choose better presents with help."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "That should make things easier."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "I did not want to decide at the last minute."
-                                           }
-                                       ],
-                          "question":  "What present will the girl buy?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_3a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, sketchbook with thick pages, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_3b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, video game case, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_3c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, model car, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The girl says she will choose the sketchbook with thick pages."
-                      },
-                      {
-                          "number":  4,
-                          "context":  "You hear a visitor asking for directions inside a building.",
-                          "voices":  {
-                                         "receptionist":  "en-GB-LibbyNeural",
-                                         "visitor":  "en-GB-LibbyNeural"
-                                     },
-                          "audio_script":  "Receptionist: Are you here for the language exam? || Visitor: Yes, but I don't know where to go. The email said it was in the main hall. || Receptionist: It was, but we had to move it because the projector stopped working. || Visitor: Is it in the science lab now? || Receptionist: No, that room is being cleaned. [1]The language exam is in the art room at the end[/1]. || Visitor: Thanks. Do I need to sign in first? || Receptionist: Yes, just write your name here, then follow the corridor to the end.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "receptionist",
-                                               "text":  "Are you here for the language exam?"
-                                           },
-                                           {
-                                               "speaker":  "visitor",
-                                               "text":  "Yes, but I don't know where to go. The email said it was in the main hall."
-                                           },
-                                           {
-                                               "speaker":  "receptionist",
-                                               "text":  "It was, but we had to move it because the projector stopped working."
-                                           },
-                                           {
-                                               "speaker":  "visitor",
-                                               "text":  "Is it in the science lab now?"
-                                           },
-                                           {
-                                               "speaker":  "receptionist",
-                                               "text":  "No, that room is being cleaned. The language exam is in the art room at the end."
-                                           },
-                                           {
-                                               "speaker":  "visitor",
-                                               "text":  "Thanks. Do I need to sign in first?"
-                                           },
-                                           {
-                                               "speaker":  "receptionist",
-                                               "text":  "Yes, just write your name here, then follow the corridor to the end."
-                                           }
-                                       ],
-                          "question":  "Where is the language exam taking place?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_4a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, science lab with benches, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_4b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, main hall with rows of chairs, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_4c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, art room with easels, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "C",
-                          "explanation":  "The receptionist says the language exam is in the art room."
-                      },
-                      {
-                          "number":  5,
-                          "context":  "You hear two people preparing for an event.",
-                          "voices":  {
-                                         "woman":  "en-GB-SoniaNeural",
-                                         "girl":  "en-GB-MaisieNeural"
-                                     },
-                          "audio_script":  "Woman: Are you ready for the concert on Sunday? || Girl: Nearly. I was going to bring programmes, but they will be given out at the door. || Woman: We might need flowers too. || Girl: Emma is bringing that, so don't worry. The organiser asked me this morning, and [1]I need to bring the spare microphone stand[/1]. || Woman: Good. Is there space in your bag? || Girl: Yes, if I take out my big coat. The forecast says it will be warm. || Girl: That should make things easier. || Girl: I did not want to decide at the last minute.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "Are you ready for the concert on Sunday?"
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "Nearly. I was going to bring programmes, but they will be given out at the door."
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "We might need flowers too."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "Emma is bringing that, so don't worry. The organiser asked me this morning, and I need to bring the spare microphone stand."
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "Good. Is there space in your bag?"
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "Yes, if I take out my big coat. The forecast says it will be warm."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "That should make things easier."
-                                           },
-                                           {
-                                               "speaker":  "girl",
-                                               "text":  "I did not want to decide at the last minute."
-                                           }
-                                       ],
-                          "question":  "What will the girl bring to the concert?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_5a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, spare microphone stand, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_5b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, concert programmes, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_5c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, bunch of flowers, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "A",
-                          "explanation":  "The girl says she needs to bring the spare microphone stand."
-                      },
-                      {
-                          "number":  6,
-                          "context":  "You hear a coach talking to a player.",
-                          "voices":  {
-                                         "coach":  "en-GB-NoahNeural",
-                                         "player":  "en-GB-LibbyNeural"
-                                     },
-                          "audio_script":  "Coach: Are you joining the practice this evening? || Player: Yes, but I'm not sure what to bring. Last week we used hockey sticks. || Coach: That was only because the hall was busy. Today we are outside again. || Player: Should I bring water bottles then? || Coach: No, the club has enough of those. [1]You should bring your cycle helmet[/1]. || Player: OK. I'll pack them with my water bottle. || Coach: Good. And arrive ten minutes early so we can start on time. || Coach: That should make things easier. || Coach: I did not want to decide at the last minute.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "coach",
-                                               "text":  "Are you joining the practice this evening?"
-                                           },
-                                           {
-                                               "speaker":  "player",
-                                               "text":  "Yes, but I'm not sure what to bring. Last week we used hockey sticks."
-                                           },
-                                           {
-                                               "speaker":  "coach",
-                                               "text":  "That was only because the hall was busy. Today we are outside again."
-                                           },
-                                           {
-                                               "speaker":  "player",
-                                               "text":  "Should I bring water bottles then?"
-                                           },
-                                           {
-                                               "speaker":  "coach",
-                                               "text":  "No, the club has enough of those. You should bring your cycle helmet."
-                                           },
-                                           {
-                                               "speaker":  "player",
-                                               "text":  "OK. I'll pack them with my water bottle."
-                                           },
-                                           {
-                                               "speaker":  "coach",
-                                               "text":  "Good. And arrive ten minutes early so we can start on time."
-                                           },
-                                           {
-                                               "speaker":  "coach",
-                                               "text":  "That should make things easier."
-                                           },
-                                           {
-                                               "speaker":  "coach",
-                                               "text":  "I did not want to decide at the last minute."
-                                           }
-                                       ],
-                          "question":  "What should the player bring?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_6a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, hockey sticks, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_6b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, cycle helmet, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_6c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, water bottles, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "B",
-                          "explanation":  "The coach says the player should bring a cycle helmet."
-                      },
-                      {
-                          "number":  7,
-                          "context":  "You hear two colleagues talking at work.",
-                          "voices":  {
-                                         "man":  "en-GB-RyanNeural",
-                                         "woman":  "en-GB-SoniaNeural"
-                                     },
-                          "audio_script":  "Man: Why did the meeting start late this morning? || Woman: I thought it was because there were not enough chairs, but that wasn't the main problem. || Man: Was the office door broken again? || Woman: No, it was working after someone restarted it. The real reason was that [1]the report copies were sent to the wrong building[/1]. || Man: That explains it. Did anyone miss the first part? || Woman: A few people did, so the manager is sending notes to everyone this afternoon. || Woman: That should make things easier. || Woman: I did not want to decide at the last minute.",
-                          "dialogue":  [
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Why did the meeting start late this morning?"
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "I thought it was because there were not enough chairs, but that wasn't the main problem."
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "Was the office door broken again?"
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "No, it was working after someone restarted it. The real reason was that the report copies were sent to the wrong building."
-                                           },
-                                           {
-                                               "speaker":  "man",
-                                               "text":  "That explains it. Did anyone miss the first part?"
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "A few people did, so the manager is sending notes to everyone this afternoon."
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "That should make things easier."
-                                           },
-                                           {
-                                               "speaker":  "woman",
-                                               "text":  "I did not want to decide at the last minute."
-                                           }
-                                       ],
-                          "question":  "Why did the meeting start late?",
-                          "options":  {
-                                          "A":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_7a.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, meeting room with too few chairs, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "B":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_7b.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, closed office door, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                },
-                                          "C":  {
-                                                    "image":  "https://b1-exams.b-cdn.net/test18_7c.jpg",
-                                                    "imagePrompt":  "Simple Cambridge exam illustration style, report copies in the wrong building, no text or labels, flat educational drawing, black and white line art, minimal details, clean white background."
-                                                }
-                                      },
-                          "answer":  "C",
-                          "explanation":  "The woman says the report copies were sent to the wrong building."
-                      }
-                  ]
+    "instructions":  "For each question, listen to the recording and choose the correct answer: A, B or C.",
+    "items":  [
+                  {
+                      "number":  1,
+                      "context":  "You hear two office workers talking about a meeting.",
+                      "voices":  {
+                                     "man":  "en-GB-RyanNeural",
+                                     "woman":  "en-GB-SoniaNeural"
+                                 },
+                      "audio_script":  "Man: Why did the meeting start late this morning? I thought there were not enough chairs in the room. || Woman: There were plenty of chairs, and the door was opened before everyone arrived. The problem happened earlier. [1]The report copies were sent to the wrong building[/1]. || Man: That explains why nobody had the papers at the start. || Woman: Yes. Someone collected them eventually, and the manager will email the notes this afternoon so the people who left early can read everything. || Man: I am glad they found the reports before the next meeting.",
+                      "question":  "Why did the meeting start late?",
+                      "options":  {
+                                      "A":  "There were not enough chairs",
+                                      "B":  "The reports went to the wrong building",
+                                      "C":  "The door was locked"
+                                  },
+                      "answer":  "B",
+                      "explanation":  "The reports were sent to the wrong building."
+                  },
+                  {
+                      "number":  2,
+                      "context":  "You hear two students preparing for a photography trip.",
+                      "voices":  {
+                                     "woman":  "en-GB-SoniaNeural",
+                                     "man":  "en-GB-RyanNeural"
+                                 },
+                      "audio_script":  "Woman: Have you packed for the photography trip? I was going to take a camera case. Is that still right? || Man: It was on the first list, but the school has cases and tripods, but there will be nowhere to charge cameras outdoors. [1]You need to bring a spare battery instead[/1]. || Woman: Good thing I asked. I nearly closed my bag without it. || Man: Put it in now and check again before you leave. The organiser said we must be ready on time tomorrow, because the group cannot wait for anyone who forgets something important.",
+                      "question":  "What should the student bring?",
+                      "options":  {
+                                      "A":  "A camera case",
+                                      "B":  "A tripod",
+                                      "C":  "A spare battery"
+                                  },
+                      "answer":  "C",
+                      "explanation":  "The student needs to bring a spare battery."
+                  },
+                  {
+                      "number":  3,
+                      "context":  "You hear two friends planning Saturday.",
+                      "voices":  {
+                                     "man":  "en-GB-NoahNeural",
+                                     "woman":  "en-GB-LibbyNeural"
+                                 },
+                      "audio_script":  "Man: Are we still going to go to the beach on Saturday? I told my family I would be home later. || Woman: That was our first idea, but the weather will be too cold beside the sea. We could go to see a film, though the cinema is showing the same film as last week. [1]We are going to visit the market instead[/1]. || Man: That sounds good. Shall we meet near the station? || Woman: Yes, at four. I will book our places now, so there should not be a problem when we arrive.",
+                      "question":  "What are they going to do?",
+                      "options":  {
+                                      "A":  "Visit a market",
+                                      "B":  "Go to the beach",
+                                      "C":  "See a film"
+                                  },
+                      "answer":  "A",
+                      "explanation":  "They decide to visit a market."
+                  },
+                  {
+                      "number":  4,
+                      "context":  "You hear two people discussing a film.",
+                      "voices":  {
+                                     "girl":  "en-GB-AbbiNeural",
+                                     "boy":  "en-GB-AlfieNeural"
+                                 },
+                      "audio_script":  "Girl: I need to check the time for the film tomorrow evening. I wrote down seven o'clock, but I am not sure it is correct. || Boy: It changed this morning because the cinema has added an earlier children's programme. [1]It starts at half past seven now[/1], and we should arrive ten minutes earlier. || Girl: I am glad I asked. I would have arrived at the wrong time. || Boy: I will send you a reminder later. Bring everything you need, because there will not be time to go back home first.",
+                      "question":  "What time does the film start?",
+                      "options":  {
+                                      "A":  "Seven o'clock",
+                                      "B":  "Half past seven",
+                                      "C":  "Eight o'clock"
+                                  },
+                      "answer":  "B",
+                      "explanation":  "The film now starts at half past seven."
+                  },
+                  {
+                      "number":  5,
+                      "context":  "You hear two people talking about a tablet.",
+                      "voices":  {
+                                     "boy":  "en-GB-ElliotNeural",
+                                     "girl":  "en-GB-BellaNeural"
+                                 },
+                      "audio_script":  "Boy: How are you getting on with your tablet? I heard there was a problem with it. || Girl: I first thought the screen was too dark, and my brother wondered whether the buttons did not work. But the shop checked it carefully this morning. [1]The charging socket is damaged[/1]. || Boy: Can they fix that before your holiday journey? || Girl: They think so. Now they know what is wrong, it should be ready tomorrow afternoon. That is a relief, because I need to use it this weekend.",
+                      "question":  "What is wrong with the tablet?",
+                      "options":  {
+                                      "A":  "The screen is dark",
+                                      "B":  "The buttons do not work",
+                                      "C":  "The charging socket is damaged"
+                                  },
+                      "answer":  "C",
+                      "explanation":  "The tablet's charging socket is damaged."
+                  },
+                  {
+                      "number":  6,
+                      "context":  "You hear two friends planning a camping weekend.",
+                      "voices":  {
+                                     "woman":  "en-GB-SoniaNeural",
+                                     "man":  "en-GB-RyanNeural"
+                                 },
+                      "audio_script":  "Woman: How are you travelling to the campsite on Saturday? I thought you were going by car. || Man: I planned to, but my dad needs the car for work. I considered going by train, but the station is a long walk from the campsite. [1]I am going by coach instead[/1]. || Woman: That sounds sensible. What time will you arrive? || Man: Just before eleven, if everything is on time. I checked the timetable online, so we have plenty of time, and I will message you when I leave home.",
+                      "question":  "How will they get to the campsite?",
+                      "options":  {
+                                      "A":  "By coach",
+                                      "B":  "By car",
+                                      "C":  "By train"
+                                  },
+                      "answer":  "A",
+                      "explanation":  "They will travel by coach."
+                  },
+                  {
+                      "number":  7,
+                      "context":  "You hear two students shopping for school.",
+                      "voices":  {
+                                     "man":  "en-GB-NoahNeural",
+                                     "woman":  "en-GB-LibbyNeural"
+                                 },
+                      "audio_script":  "Man: Did you buy a pencil case for the new school term? I saw one yesterday and thought it would be suitable. || Woman: No. I looked at a pencil case, and I nearly chose a calculator, but my old pencil case is fine and the school lends calculators. [1]I bought a notebook in the end[/1]. || Man: That sounds like the right choice. It is more useful than the other things. || Woman: I hope so. I kept the receipt in case I need to change it later.",
+                      "question":  "What did the speaker buy?",
+                      "options":  {
+                                      "A":  "A pencil case",
+                                      "B":  "A notebook",
+                                      "C":  "A calculator"
+                                  },
+                      "answer":  "B",
+                      "explanation":  "The speaker bought a notebook."
+                  }
+              ]
 }
