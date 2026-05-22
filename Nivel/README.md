@@ -44,7 +44,7 @@ TestN/
 ├── writing1.json       # Parte 1: Essay (obligatoria)
 ├── writing2.json       # Parte 2: Elección (carta, reseña, informe, artículo)
 ├── speaking1.json      # Parte 1: Interview
-├── speaking2.json      # Parte 2: Long turn (comparación de fotos)
+├── speaking2.json      # Parte 2: Long turn (fotografías: p. ej. B1 una por candidato, B2 comparación de dos)
 ├── speaking3.json      # Parte 3: Collaborative task
 └── speaking4.json      # Parte 4: Discussion
 ```

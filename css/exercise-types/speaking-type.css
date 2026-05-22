@@ -402,6 +402,14 @@
   padding: 1rem;
 }
 
+/* B1 PET Part 2: one photograph per candidate */
+.speaking-images-grid--one {
+  grid-template-columns: 1fr;
+  max-width: min(100%, 560px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .speaking-images-grid--two {
   grid-template-columns: repeat(2, 1fr);
 }
@@ -438,7 +446,9 @@
 }
 
 @media (max-width: 600px) {
-  .speaking-images-grid { grid-template-columns: 1fr 1fr; }
+  .speaking-images-grid:not(.speaking-images-grid--one) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* Candidate A/B task selector tabs in images view */
