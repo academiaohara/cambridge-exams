@@ -30,6 +30,55 @@
       .replace(/<\/strong</gi, '</strong>');
   }
 
+  /**
+   * Index after the last complete [n]...[/n] marker in `str` strictly before `pos`
+   * (used so evidence spans do not swallow earlier gap markup).
+   */
+  function endOfLastCompleteEvidenceMarkerBefore(str, pos) {
+    var r = /\[(\d+)\][\s\S]*?\[\/\1\]/g;
+    var end = 0;
+    var x;
+    while ((x = r.exec(str)) !== null) {
+      var e = x.index + x[0].length;
+      if (e < pos) end = e;
+      else break;
+    }
+    return end;
+  }
+
+  /**
+   * B1 Listening Part 3 (PET): widen transcript / explanation highlights from a single
+   * gap word to the clause after the previous sentence boundary (. ? !) since the
+   * last gap, so students see fuller context (e.g. "However, … Anna Mason" not only "Mason").
+   * Idempotent if applied repeatedly.
+   */
+  function expandB1ListeningPart3EvidenceSpans(script) {
+    if (script == null || typeof script !== 'string' || script.indexOf('[') === -1) return script;
+    var re = /\[(\d+)\]([\s\S]*?)\[\/\1\]/g;
+    var out = '';
+    var last = 0;
+    var m;
+    while ((m = re.exec(script)) !== null) {
+      out += script.slice(last, m.index);
+      var n = m[1];
+      var inner = m[2];
+      var openBracket = m.index;
+      var minStart = endOfLastCompleteEvidenceMarkerBefore(script, openBracket);
+      var beforeSeg = script.slice(minStart, openBracket);
+      var relLast = Math.max(
+        beforeSeg.lastIndexOf('. '),
+        beforeSeg.lastIndexOf('? '),
+        beforeSeg.lastIndexOf('! ')
+      );
+      var absStart = relLast === -1 ? minStart : (minStart + relLast + 2);
+      var prefix = script.slice(absStart, openBracket).replace(/^\s+/, '');
+      out += '[' + n + ']' + prefix + inner + '[/' + n + ']';
+      last = m.index + m[0].length;
+    }
+    out += script.slice(last);
+    return out;
+  }
+
   function escapeHtml(str) {
     return String(str == null ? '' : str)
       .replace(/&/g, '&amp;')
@@ -615,8 +664,11 @@
     });
     var base = (ex.content && typeof ex.content === 'object') ? Object.assign({}, ex.content) : {};
     base.questions = qs;
-    if (ex.audio_script != null && ex.audio_script !== '' && base.audio_script == null) {
-      base.audio_script = ex.audio_script;
+    var rootScript = (ex.audio_script != null && String(ex.audio_script).trim() !== '') ? String(ex.audio_script) : '';
+    var contentScript = (base.audio_script != null && String(base.audio_script).trim() !== '') ? String(base.audio_script) : '';
+    var scriptSrc = rootScript || contentScript;
+    if (scriptSrc) {
+      base.audio_script = expandB1ListeningPart3EvidenceSpans(sanitizeHtmlTypos(scriptSrc));
     }
     if (ex.audio_source != null && ex.audio_source !== '' && base.audio_source == null) {
       base.audio_source = ex.audio_source;
