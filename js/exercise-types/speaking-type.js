@@ -171,8 +171,16 @@
     return CARD_PERSON_ICON;
   }
 
+  // B1 Speaking Part 2: examiner backup prompts if the candidate needs more ideas (main photo turn only)
+  var B1_LONG_TURN_BACKUP_PROMPTS = [
+    'Could you tell us a bit more about the people in the photograph?',
+    'What about the place and the setting?',
+    'Is there anything else you can describe in the photograph?'
+  ];
+
   var ROLE_COLORS = { examiner: '#6366f1', candidate: '#22c55e', partner: '#f59e0b' };
-function roleName(role) {
+
+  function roleName(role) {
     if (role === 'examiner') return 'Examiner';
     if (role === 'candidate') {
       if (window.SpeakingType && window.SpeakingType._longTurnMode && window.SpeakingType._userCandidateLabel) {
@@ -208,6 +216,8 @@ function roleName(role) {
     _evaluated: false,
     _speakingTimerInterval: null,
     _speakingElapsed: 0,
+    _longTurnMainTurnMicSeconds: 0,
+    _longTurnBackupsPlayed: 0,
     _interviewMode: false,    // true when using phase-based interview
     _interviewPhases: null,   // phases array from content
     _interviewPhaseIndex: 0,  // current phase index (0-based)
@@ -253,6 +263,8 @@ function roleName(role) {
       this._evaluated = false;
       this._stopSpeakingTimer();
       this._speakingElapsed = 0;
+      this._longTurnMainTurnMicSeconds = 0;
+      this._longTurnBackupsPlayed = 0;
       this._isTyping = false;
 
       // Detect phase-based interview mode
@@ -434,7 +446,7 @@ function roleName(role) {
       // Build speaking timer (countdown shown in stage)
       var timerHTML = '';
       if (this._conversationStarted && !this._conversationEnded) {
-        var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
+        var totalSeconds = this._getSpeakingTotalSeconds();
         var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
         var mins = Math.floor(remaining / 60);
         var secs = remaining % 60;
@@ -468,7 +480,7 @@ function roleName(role) {
       // Build timer for chat mode
       var timerHTML = '';
       if (this._conversationStarted && !this._conversationEnded) {
-        var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
+        var totalSeconds = this._getSpeakingTotalSeconds();
         var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
         var mins = Math.floor(remaining / 60);
         var secs = remaining % 60;
@@ -531,7 +543,7 @@ function roleName(role) {
       // Build timer
       var timerHTML = '';
       if (this._conversationStarted && !this._conversationEnded) {
-        var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
+        var totalSeconds = this._getSpeakingTotalSeconds();
         var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
         var mins = Math.floor(remaining / 60);
         var secs = remaining % 60;
@@ -571,7 +583,7 @@ function roleName(role) {
       // Build timer
       var timerHTML = '';
       if (this._conversationStarted && !this._conversationEnded) {
-        var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
+        var totalSeconds = this._getSpeakingTotalSeconds();
         var remaining = Math.max(0, totalSeconds - this._speakingElapsed);
         var mins = Math.floor(remaining / 60);
         var secs = remaining % 60;
@@ -741,6 +753,14 @@ function roleName(role) {
 
     // ── Conversation flow ──
 
+    _getSpeakingTotalSeconds: function() {
+      if (this._longTurnMode && typeof AppState !== 'undefined' && AppState.currentLevel === 'B1') {
+        return 60;
+      }
+      var ex = typeof AppState !== 'undefined' ? AppState.currentExercise : null;
+      return (ex && ex.time ? ex.time : 10) * 60;
+    },
+
     _startConversation: function() {
       this._conversationStarted = true;
       this._scriptIndex = 0;
@@ -755,10 +775,31 @@ function roleName(role) {
       var self = this;
       if (this._speakingTimerInterval) clearInterval(this._speakingTimerInterval);
       this._speakingElapsed = 0;
-      var totalSeconds = (AppState.currentExercise && AppState.currentExercise.time ? AppState.currentExercise.time : 10) * 60;
       this._speakingTimerInterval = setInterval(function() {
-        // Count when recording via mic OR when the user is typing a text response
-        if (self._isRecording || self._isTyping) self._speakingElapsed++;
+        var totalSeconds = self._getSpeakingTotalSeconds();
+        var b1LongTurn = self._longTurnMode && typeof AppState !== 'undefined' && AppState.currentLevel === 'B1';
+        var countTick = b1LongTurn
+          ? self._isRecording
+          : (self._isRecording || self._isTyping);
+        if (countTick) {
+          self._speakingElapsed++;
+        }
+        if (b1LongTurn && self._isRecording) {
+          var cur = self._script[self._scriptIndex];
+          if (cur && cur.role === 'candidate' && cur.showImagesOnStart && !cur.isFollowUp) {
+            self._longTurnMainTurnMicSeconds = (self._longTurnMainTurnMicSeconds || 0) + 1;
+            var thresholds = [20, 40, 52];
+            var played = self._longTurnBackupsPlayed || 0;
+            var rem = totalSeconds - self._speakingElapsed;
+            if (played < 3 && rem > 5 && self._longTurnMainTurnMicSeconds >= thresholds[played]) {
+              self._longTurnBackupsPlayed = played + 1;
+              var prompt = B1_LONG_TURN_BACKUP_PROMPTS[played];
+              self._messages.push({ role: 'examiner', text: prompt });
+              self._speakText(prompt, 'examiner', function() {});
+              self._refreshView();
+            }
+          }
+        }
         var display = document.getElementById('speaking-timer-display');
         if (display) {
           var remaining = Math.max(0, totalSeconds - self._speakingElapsed);
@@ -814,6 +855,10 @@ function roleName(role) {
 
       if (turn.role === 'candidate') {
         this._activeSpeaker = 'candidate';
+        if (this._longTurnMode && turn.showImagesOnStart && !turn.isFollowUp) {
+          this._longTurnMainTurnMicSeconds = 0;
+          this._longTurnBackupsPlayed = 0;
+        }
         // Auto-switch to images mode for the photo-description main turn
         if (this._longTurnMode && turn.showImagesOnStart) {
           this._switchMode('images');
@@ -877,22 +922,33 @@ function roleName(role) {
     _buildLongTurnScript: function(tasks, aiLabel) {
       var script = [];
       var userLabel = aiLabel === 'A' ? 'B' : 'A';
+      var level = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1';
 
-      // Opening by examiner
-      script.push({
-        role: 'examiner',
-        text: "In this part of the test, I'm going to give each of you three photographs. I'd like you to talk about your photographs on your own for about a minute, and also to answer a brief question about your partner's photographs."
-      });
+      if (level === 'B1') {
+        script.push({
+          role: 'examiner',
+          text: "In this part of the test, I'm going to give each of you a photograph to talk about. I'd like you to talk about your photograph on your own for about a minute, and also to answer a brief question about your partner's photograph."
+        });
+      } else {
+        script.push({
+          role: 'examiner',
+          text: "In this part of the test, I'm going to give each of you three photographs. I'd like you to talk about your photographs on your own for about a minute, and also to answer a brief question about your partner's photographs."
+        });
+      }
 
       tasks.forEach(function(task, taskIdx) {
         // Determine candidate label from task data (e.g. "Candidate A")
         var candLabel = (task.candidate || '').includes('A') ? 'A' : 'B';
         var candRole = candLabel === userLabel ? 'candidate' : 'partner';
+        var onePhoto = !!(task.images && task.images.length === 1);
+        var sceneIntro = onePhoto
+          ? ('here is your photograph. It shows ' + (task.topic || 'a scene') + '. ')
+          : ('here are your photographs. They show ' + (task.topic || 'the following scenes') + '. ');
 
         // Examiner introduces the task
         script.push({
           role: 'examiner',
-          text: 'Now, Candidate ' + candLabel + ', here are your photographs. They show ' + (task.topic || 'the following scenes') + '. ' + task.instructions,
+          text: 'Now, Candidate ' + candLabel + ', ' + sceneIntro + task.instructions,
           taskIndex: taskIdx
         });
 
