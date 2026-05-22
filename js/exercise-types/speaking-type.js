@@ -895,6 +895,27 @@
 
       // Use text-to-speech if available
       var text = turn.text || '';
+      if (turn.b1DynamicFollowUp && typeof AppState !== 'undefined' && AppState.currentLevel === 'B1') {
+        var taskForFollow = this._longTurnTasks[turn.taskIndex];
+        var fq = (taskForFollow && taskForFollow.followUp && taskForFollow.followUp.question)
+          ? taskForFollow.followUp.question
+          : '';
+        var lastDesc = '';
+        for (var mi = this._messages.length - 1; mi >= 0; mi--) {
+          var m = this._messages[mi];
+          if (m.role === 'candidate' || m.role === 'partner') {
+            lastDesc = m.text || '';
+            break;
+          }
+        }
+        var pickedQ = this._pickB1PhotoFollowUpQuestion(fq, lastDesc, turn.taskIndex);
+        if (taskForFollow && taskForFollow.followUp) {
+          taskForFollow.followUp._runtimeQuestion = pickedQ;
+        }
+        text = 'Thank you. Candidate ' + turn.b1DynamicFollowUp.recipient + ', ' + pickedQ;
+        turn.text = text;
+      }
+
       this._messages.push({ role: turn.role, text: text });
 
       var afterSpeech = function() {
@@ -916,6 +937,65 @@
       this._refreshView();
     },
 
+    // B1 Speaking Part 2: pick one follow-up focus (people / place / other things) from the
+    // standard triple prompt, using a light keyword scan of the candidate's description, with a
+    // stable fallback when the transcript is missing or too short.
+    _pickB1PhotoFollowUpQuestion: function(fullQuestion, transcript, taskIndex) {
+      var TRIPLE_PEOPLE = 'Talk about the people. Talk about the place. Talk about other things in the photograph.';
+      var TRIPLE_PERSON = 'Talk about the person. Talk about the place. Talk about other things in the photograph.';
+      if (fullQuestion !== TRIPLE_PEOPLE && fullQuestion !== TRIPLE_PERSON) {
+        return fullQuestion;
+      }
+      var usePerson = fullQuestion === TRIPLE_PERSON;
+      var peopleIntro = usePerson
+        ? 'Talk about the person in the photograph.'
+        : 'Talk about the people in the photograph.';
+      var placeQ = 'Talk about the place in the photograph.';
+      var thingsQ = 'Talk about other things in the photograph.';
+      var options = [
+        {
+          id: 'people',
+          text: peopleIntro,
+          words: ['he', 'she', 'they', 'them', 'their', 'his', 'her', 'man', 'woman', 'boy', 'girl', 'lady', 'gentleman', 'child', 'children', 'kid', 'kids', 'people', 'person', 'students', 'student', 'teacher', 'friend', 'friends', 'mother', 'father', 'parent', 'parents', 'wearing', 'sitting', 'standing', 'smiling', 'talking', 'laughing', 'looking', 'walking', 'holding', 'hair', 'face', 'hands', 'arm', 'arms', 'group']
+        },
+        {
+          id: 'place',
+          text: placeQ,
+          words: ['room', 'kitchen', 'bedroom', 'bathroom', 'living', 'park', 'garden', 'yard', 'street', 'road', 'city', 'town', 'village', 'shop', 'shops', 'store', 'library', 'pool', 'station', 'stop', 'building', 'house', 'home', 'office', 'restaurant', 'stairs', 'floor', 'wall', 'walls', 'window', 'windows', 'door', 'table', 'desk', 'chair', 'bench', 'outside', 'inside', 'field', 'beach', 'river', 'bridge', 'sky', 'grass', 'background']
+        },
+        {
+          id: 'things',
+          text: thingsQ,
+          words: ['dog', 'cat', 'pet', 'car', 'bus', 'train', 'bike', 'bicycle', 'phone', 'computer', 'laptop', 'book', 'books', 'bag', 'backpack', 'cup', 'mug', 'bottle', 'plate', 'food', 'cake', 'fruit', 'bread', 'tree', 'trees', 'flowers', 'clock', 'umbrella', 'camera', 'ticket', 'machine', 'machines', 'equipment', 'ball', 'toys', 'bowl', 'eggs', 'flour', 'box', 'boxes', 'poster', 'sign', 'screen', 'paper', 'pen', 'pencil', 'board', 'coat', 'jacket', 'hat', 'dress', 'shirt', 'uniform']
+        }
+      ];
+      function countHits(text, words) {
+        var n = 0;
+        var t = ' ' + text.replace(/\s+/g, ' ').toLowerCase() + ' ';
+        for (var i = 0; i < words.length; i++) {
+          var w = words[i];
+          if (t.indexOf(' ' + w + ' ') !== -1 || t.indexOf(' ' + w + ',') !== -1 || t.indexOf(' ' + w + '.') !== -1 || t.indexOf(' ' + w + "'") !== -1) {
+            n++;
+          }
+        }
+        return n;
+      }
+      var t = (transcript || '').trim();
+      if (!t || t === '...' || t.length < 12) {
+        var rot = [peopleIntro, placeQ, thingsQ];
+        return rot[(taskIndex || 0) % 3];
+      }
+      var scored = options.map(function(o) {
+        return { id: o.id, text: o.text, score: countHits(t, o.words) };
+      });
+      scored.sort(function(a, b) {
+        if (a.score !== b.score) return a.score - b.score;
+        var order = { people: 0, place: 1, things: 2 };
+        return (order[a.id] || 0) - (order[b.id] || 0);
+      });
+      return scored[0].text;
+    },
+
     // ── Long-turn script builder ──
 
     _buildLongTurnScript: function(tasks, aiLabel) {
@@ -926,7 +1006,7 @@
       if (level === 'B1') {
         script.push({
           role: 'examiner',
-          text: "In this part of the test, I'm going to give each of you a photograph to talk about. I'd like you to talk about your photograph on your own for about a minute, and also to answer a brief question about your partner's photograph."
+          text: "In this part of the test, I'm going to give each of you a photograph to talk about. I'd like you to talk about your photograph on your own for about a minute, and then I'll ask you one more question about your photograph."
         });
       } else {
         script.push({
@@ -940,14 +1020,21 @@
         var candLabel = (task.candidate || '').includes('A') ? 'A' : 'B';
         var candRole = candLabel === userLabel ? 'candidate' : 'partner';
         var onePhoto = !!(task.images && task.images.length === 1);
+        var instr = (task.instructions || '').trim();
+        var instrLower = instr.toLowerCase();
         var sceneIntro = onePhoto
           ? ('here is your photograph. It shows ' + (task.topic || 'a scene') + '. ')
           : ('here are your photographs. They show ' + (task.topic || 'the following scenes') + '. ');
+        // B1 tasks already spell out "Here is your photograph..." in `instructions`; repeating
+        // `topic` in sceneIntro duplicates the scene (e.g. "Making a cake" then "a girl making a cake").
+        var skipSceneIntro = instrLower.indexOf('here is your photograph') === 0
+          || instrLower.indexOf('here are your photographs') === 0;
+        var examinerPhotoIntro = skipSceneIntro ? instr : (sceneIntro + task.instructions);
 
         // Examiner introduces the task
         script.push({
           role: 'examiner',
-          text: 'Now, Candidate ' + candLabel + ', ' + sceneIntro + task.instructions,
+          text: 'Now, Candidate ' + candLabel + ', ' + examinerPhotoIntro,
           taskIndex: taskIdx
         });
 
@@ -959,15 +1046,19 @@
           showImagesOnStart: true   // signal to auto-switch to images mode
         });
 
-        // Examiner asks the follow-up of the other candidate
+        // Examiner asks the follow-up (B1: same candidate as the photo; C1: often the partner)
         if (task.followUp) {
           var followUpLabel = (task.followUp.recipient || '').includes('A') ? 'A' : 'B';
           var followUpRole = followUpLabel === userLabel ? 'candidate' : 'partner';
-          script.push({
+          var examinerFollowTurn = {
             role: 'examiner',
             text: 'Thank you. Candidate ' + followUpLabel + ', ' + task.followUp.question,
             taskIndex: taskIdx
-          });
+          };
+          if (level === 'B1') {
+            examinerFollowTurn.b1DynamicFollowUp = { recipient: followUpLabel };
+          }
+          script.push(examinerFollowTurn);
           script.push({
             role: followUpRole,
             text: '',   // empty = needs input (user) or AI gen
@@ -996,7 +1087,9 @@
         return img.label + ': ' + img.description;
       }).join('\n') : '';
 
-      var followUpQuestion = (turn.isFollowUp && task && task.followUp) ? task.followUp.question : '';
+      var followUpQuestion = (turn.isFollowUp && task && task.followUp)
+        ? (task.followUp._runtimeQuestion || task.followUp.question)
+        : '';
 
       fetch('/api/speaking-partner', {
         method: 'POST',
