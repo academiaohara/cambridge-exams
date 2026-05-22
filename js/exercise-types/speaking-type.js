@@ -214,6 +214,12 @@
     /** Timers for progressive subtitles when speech boundary events are unavailable. */
     _subtitleRevealFallbackTimer: null,
     _subtitleRevealInterval: null,
+    /** Karaoke subtitles during native TTS (examiner / partner). */
+    _subtitleTTSActive: false,
+    /** Index in `.speaking-subtitle-word` nodes; -1 = before first word. */
+    _subtitleActiveWordIdx: -1,
+    /** True once a `boundary` event with `name === 'word'` fires for this utterance. */
+    _subtitleWordBoundarySeen: false,
     _synthesis: window.speechSynthesis || null,
     _pendingTranscript: '',
     _finalTranscript: '',
@@ -261,6 +267,7 @@
       this._conversationEnded = false;
       this._activeSpeaker = null;
       this._subtitleDisplay = { role: null, text: null };
+      this._resetSubtitleKaraokeState();
       this._clearSubtitleRevealAnimation();
       this._isRecording = false;
       this._viewMode = 'videocall';
@@ -369,7 +376,11 @@
       return '<div class="speaking-subtitle-wrap" id="speaking-subtitle-wrap" hidden aria-live="polite" aria-atomic="true">' +
         '<div class="speaking-subtitle-inner">' +
           '<span class="speaking-subtitle-role" id="speaking-subtitle-role"></span>' +
-          '<span class="speaking-subtitle-text" id="speaking-subtitle-text"></span>' +
+          '<div class="speaking-subtitle-tele-shell">' +
+            '<div class="speaking-subtitle-viewport" id="speaking-subtitle-viewport">' +
+              '<div class="speaking-subtitle-track" id="speaking-subtitle-track"></div>' +
+            '</div>' +
+          '</div>' +
         '</div>' +
       '</div>';
     },
@@ -1194,6 +1205,126 @@
       this._processCurrentTurn();
     },
 
+    // ── Native TTS subtitles (SpeechSynthesis `boundary` + 2-line teleprompter) ──
+
+    /** Clears karaoke flags used while an utterance is playing. */
+    _resetSubtitleKaraokeState: function() {
+      this._subtitleTTSActive = false;
+      this._subtitleActiveWordIdx = -1;
+      this._subtitleWordBoundarySeen = false;
+    },
+
+    _subtitleCollectWordNodes: function(track) {
+      if (!track) return [];
+      var nodes = track.querySelectorAll('.speaking-subtitle-word');
+      var out = [];
+      for (var i = 0; i < nodes.length; i++) out.push(nodes[i]);
+      return out;
+    },
+
+    /**
+     * Splits visible text with /(\s+)/ so whitespace tokens stay as separate spans.
+     * Returns the number of word (non-whitespace) spans inserted.
+     */
+    _subtitlePopulateTrackFromText: function(track, text) {
+      while (track.firstChild) track.removeChild(track.firstChild);
+      track.removeAttribute('data-sub-text');
+      if (text == null || text === '') return 0;
+      var parts = String(text).split(/(\s+)/);
+      var wordCount = 0;
+      for (var i = 0; i < parts.length; i++) {
+        var part = parts[i];
+        if (part === '') continue;
+        var span = document.createElement('span');
+        if (/^\s+$/.test(part)) {
+          span.className = 'speaking-subtitle-ws';
+          span.appendChild(document.createTextNode(part));
+        } else {
+          span.className = 'speaking-subtitle-word';
+          span.appendChild(document.createTextNode(part));
+          wordCount++;
+        }
+        track.appendChild(span);
+      }
+      track.setAttribute('data-sub-text', String(text));
+      return wordCount;
+    },
+
+    /** 0-based visual line index for the word at wordIdx (wrap-aware, uses offsetTop). */
+    _subtitleComputeLineIndexForWord: function(wordNodes, wordIdx) {
+      if (!wordNodes.length || wordIdx < 0) return 0;
+      if (wordIdx >= wordNodes.length) wordIdx = wordNodes.length - 1;
+      var line = 0;
+      for (var i = 1; i <= wordIdx; i++) {
+        if (wordNodes[i].offsetTop > wordNodes[i - 1].offsetTop + 3) line++;
+      }
+      return line;
+    },
+
+    /** Vertical scroll (px) so the viewport keeps two lines centred on the active word. */
+    _subtitleTeleprompterOffsetPx: function(viewport, wordNodes, activeWordIdx) {
+      if (!viewport || !wordNodes.length || activeWordIdx < 0) return 0;
+      var lineIdx = this._subtitleComputeLineIndexForWord(wordNodes, activeWordIdx);
+      var lh = parseFloat(window.getComputedStyle(viewport).lineHeight);
+      if (!lh || isNaN(lh)) lh = viewport.clientHeight / 2;
+      return Math.max(0, lineIdx - 1) * lh;
+    },
+
+    /**
+     * Renders the subtitle strip from `_subtitleDisplay`.
+     * @param {boolean} highlightOnly If true, reuse existing word spans and only update classes / scroll.
+     */
+    _syncSubtitleStrip: function(highlightOnly) {
+      var subWrap = document.getElementById('speaking-subtitle-wrap');
+      var roleEl = document.getElementById('speaking-subtitle-role');
+      var viewport = document.getElementById('speaking-subtitle-viewport');
+      var track = document.getElementById('speaking-subtitle-track');
+      var sd = this._subtitleDisplay;
+      if (!subWrap || !viewport || !track) return;
+
+      if (this._conversationEnded || !sd || sd.role == null || sd.text == null || sd.text === '' ||
+          (sd.role !== 'examiner' && sd.role !== 'partner')) {
+        subWrap.hidden = true;
+        subWrap.classList.remove('speaking-subtitle-wrap--visible');
+        if (roleEl) roleEl.textContent = '';
+        track.textContent = '';
+        track.style.transform = '';
+        this._resetSubtitleKaraokeState();
+        return;
+      }
+
+      subWrap.hidden = false;
+      subWrap.classList.add('speaking-subtitle-wrap--visible');
+      if (roleEl) roleEl.textContent = roleName(sd.role) + ':';
+
+      var wordNodes = this._subtitleCollectWordNodes(track);
+      var needsRebuild = !highlightOnly || wordNodes.length === 0 ||
+        track.getAttribute('data-sub-text') !== String(sd.text);
+      if (needsRebuild) {
+        this._subtitlePopulateTrackFromText(track, sd.text);
+        wordNodes = this._subtitleCollectWordNodes(track);
+      }
+
+      var w;
+      for (w = 0; w < wordNodes.length; w++) {
+        wordNodes[w].classList.remove('speaking-subtitle-word--read', 'speaking-subtitle-word--current');
+      }
+
+      if (!this._subtitleTTSActive) {
+        track.style.transform = '';
+        return;
+      }
+
+      var idx = this._subtitleActiveWordIdx;
+      for (w = 0; w < wordNodes.length; w++) {
+        if (w < idx) wordNodes[w].classList.add('speaking-subtitle-word--read');
+        else if (w === idx) wordNodes[w].classList.add('speaking-subtitle-word--current');
+      }
+
+      var offsetPx = this._subtitleTeleprompterOffsetPx(viewport, wordNodes, idx);
+      track.style.transform = offsetPx > 0 ? ('translateY(-' + offsetPx + 'px)') : '';
+    },
+
     _clearSubtitleRevealAnimation: function() {
       if (this._subtitleRevealFallbackTimer) {
         clearTimeout(this._subtitleRevealFallbackTimer);
@@ -1205,95 +1336,94 @@
       }
     },
 
-    /** Updates only the subtitle strip (lighter than a full _refreshView on each word). */
+    /** Fast path while TTS is running (no full DOM rebuild unless the strip was recreated). */
     _patchSubtitleTextOnly: function() {
-      var subWrap = document.getElementById('speaking-subtitle-wrap');
-      var roleEl = document.getElementById('speaking-subtitle-role');
-      var textEl = document.getElementById('speaking-subtitle-text');
-      var sd = this._subtitleDisplay;
-      if (!subWrap || !sd || !sd.role || sd.text == null) return;
-      if (sd.role !== 'examiner' && sd.role !== 'partner') return;
-      if (this._conversationEnded) return;
-      subWrap.hidden = false;
-      subWrap.classList.add('speaking-subtitle-wrap--visible');
-      if (roleEl) roleEl.textContent = roleName(sd.role) + ':';
-      if (textEl) textEl.textContent = sd.text ? (' ' + sd.text) : '';
+      this._syncSubtitleStrip(true);
     },
 
     _speakText: function(text, role, cb) {
       var self = this;
-      if ((role === 'examiner' || role === 'partner') && text) {
-        this._subtitleDisplay = { role: role, text: '' };
-      }
       if (!this._synthesis) {
         if ((role === 'examiner' || role === 'partner') && text) {
           this._subtitleDisplay = { role: role, text: text };
+          this._resetSubtitleKaraokeState();
           this._refreshView();
         }
         if (cb) cb();
         return;
       }
+
       this._clearSubtitleRevealAnimation();
       this._synthesis.cancel();
+
+      if ((role === 'examiner' || role === 'partner') && text) {
+        this._subtitleDisplay = { role: role, text: text };
+        this._subtitleTTSActive = true;
+        this._subtitleActiveWordIdx = -1;
+        this._subtitleWordBoundarySeen = false;
+      }
+
       var utter = new SpeechSynthesisUtterance(text);
       utter.lang = 'en-GB';
       utter.rate = 0.95;
       var voice = _getVoiceForRole(role);
       if (voice) utter.voice = voice;
 
-      var boundarySeen = false;
-      function markBoundary() {
-        boundarySeen = true;
+      function stopFallback() {
         self._clearSubtitleRevealAnimation();
       }
 
       utter.onboundary = function(ev) {
         if (!text || (role !== 'examiner' && role !== 'partner')) return;
         if (!self._subtitleDisplay || self._subtitleDisplay.role !== role) return;
-        markBoundary();
-        var endPos = typeof ev.charIndex === 'number' ? ev.charIndex : 0;
-        if (ev.charLength > 0) endPos += ev.charLength;
-        endPos = Math.min(text.length, Math.max(0, endPos));
-        self._subtitleDisplay.text = text.slice(0, endPos);
+        if (ev.name !== 'word') return;
+
+        self._subtitleWordBoundarySeen = true;
+        stopFallback();
+
+        var track = document.getElementById('speaking-subtitle-track');
+        var nodes = self._subtitleCollectWordNodes(track);
+        if (!nodes.length) return;
+
+        if (self._subtitleActiveWordIdx < nodes.length - 1) {
+          self._subtitleActiveWordIdx++;
+        }
         self._patchSubtitleTextOnly();
       };
 
       utter.onstart = function() {
         self._subtitleRevealFallbackTimer = setTimeout(function() {
-          if (boundarySeen || self._conversationEnded) return;
+          if (self._subtitleWordBoundarySeen || self._conversationEnded) return;
           if (!self._subtitleDisplay || self._subtitleDisplay.role !== role) return;
+          var track = document.getElementById('speaking-subtitle-track');
+          var nWords = self._subtitleCollectWordNodes(track).length;
+          if (nWords <= 0) return;
+
           var duration = Math.max(1800, text.length * 48);
-          var startT = Date.now();
+          var stepMs = Math.max(50, Math.floor(duration / nWords));
+
           self._subtitleRevealInterval = setInterval(function() {
-            if (boundarySeen || self._conversationEnded) {
-              if (self._subtitleRevealInterval) {
-                clearInterval(self._subtitleRevealInterval);
-                self._subtitleRevealInterval = null;
-              }
+            if (self._subtitleWordBoundarySeen || self._conversationEnded) {
+              stopFallback();
               return;
             }
-            var t = (Date.now() - startT) / duration;
-            if (t >= 1) {
-              if (self._subtitleRevealInterval) {
-                clearInterval(self._subtitleRevealInterval);
-                self._subtitleRevealInterval = null;
-              }
-              self._subtitleDisplay.text = text;
-              self._patchSubtitleTextOnly();
+            if (self._subtitleActiveWordIdx >= nWords - 1) {
+              stopFallback();
               return;
             }
-            var n = Math.max(0, Math.ceil(text.length * t));
-            self._subtitleDisplay.text = text.slice(0, n);
+            self._subtitleActiveWordIdx++;
             self._patchSubtitleTextOnly();
-          }, 45);
+          }, stepMs);
         }, 380);
       };
 
       function finishUtterance() {
-        markBoundary();
+        stopFallback();
         if ((role === 'examiner' || role === 'partner') && text) {
           self._subtitleDisplay = { role: role, text: text };
-          self._patchSubtitleTextOnly();
+          self._subtitleTTSActive = false;
+          self._subtitleActiveWordIdx = -1;
+          self._syncSubtitleStrip(false);
         }
         if (cb) cb();
       }
@@ -1430,6 +1560,7 @@
       this._conversationEnded = true;
       this._activeSpeaker = null;
       this._clearSubtitleRevealAnimation();
+      this._resetSubtitleKaraokeState();
       this._subtitleDisplay = { role: null, text: null };
       // Stop the speaking countdown timer
       this._stopSpeakingTimer();
@@ -1811,21 +1942,7 @@
       // Subtitle line (examiner / partner) for videocall, images, and options modes
       var subWrap = document.getElementById('speaking-subtitle-wrap');
       if (subWrap) {
-        var roleEl = document.getElementById('speaking-subtitle-role');
-        var textEl = document.getElementById('speaking-subtitle-text');
-        var sd = this._subtitleDisplay;
-        if (!this._conversationEnded && sd && sd.role && sd.text != null &&
-            (sd.role === 'examiner' || sd.role === 'partner')) {
-          subWrap.hidden = false;
-          subWrap.classList.add('speaking-subtitle-wrap--visible');
-          if (roleEl) roleEl.textContent = roleName(sd.role) + ':';
-          if (textEl) textEl.textContent = ' ' + sd.text;
-        } else {
-          subWrap.hidden = true;
-          subWrap.classList.remove('speaking-subtitle-wrap--visible');
-          if (roleEl) roleEl.textContent = '';
-          if (textEl) textEl.textContent = '';
-        }
+        this._syncSubtitleStrip(false);
       }
 
       // Scroll chat to bottom
@@ -1851,6 +1968,7 @@
     cleanup: function() {
       this._stopSpeakingTimer();
       this._clearSubtitleRevealAnimation();
+      this._resetSubtitleKaraokeState();
       this._isTyping = false;
       if (this._isRecording) {
         this._isRecording = false;
