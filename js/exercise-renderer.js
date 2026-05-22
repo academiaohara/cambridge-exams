@@ -1368,11 +1368,13 @@
         AppState.currentLevel === 'B1' && isReading && actualPart === 6;
       var isB1Listening3AnswerToggle =
         AppState.currentLevel === 'B1' && isListening && actualPart === 3;
+      var isListening2AnswerToggle =
+        isListening && actualPart === 2 && AppState.currentLevel !== 'B1';
       var supportsAnswerToggle =
         ((isReading && actualPart >= 1 && actualPart <= 4) ||
           isB1Reading5AnswerToggle ||
           isB1Reading6AnswerToggle ||
-          (isListening && actualPart === 2) ||
+          isListening2AnswerToggle ||
           isB1Listening3AnswerToggle) &&
         !(AppState.currentExercise && AppState.currentExercise._b1PetHideAnswerToggle);
       var answerToggleLabel = AppState.answerViewMode === 'correct'

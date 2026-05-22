@@ -164,8 +164,10 @@
         return in14 || b1r5or6;
       }
       if (AppState.currentSection !== 'listening') return false;
+      // B1 Preliminary Listening Part 2: multiple-choice text — no footer "show correct answers" toggle.
+      if (AppState.currentLevel === 'B1' && AppState.currentPart === 2) return false;
       if (AppState.currentPart === 2) return true;
-      // B1 Preliminary Listening Part 3: sentence-completion gaps (same toggle + alt-badge as Part 2)
+      // B1 Preliminary Listening Part 3: sentence-completion gaps (same toggle + alt-badge as C1 L2)
       return AppState.currentLevel === 'B1' && AppState.currentPart === 3;
     },
 
