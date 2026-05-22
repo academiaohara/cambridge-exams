@@ -94,7 +94,6 @@
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  margin-right: 12px;
   flex-shrink: 0;
   box-sizing: border-box;
   line-height: 1;
@@ -215,7 +214,7 @@
 
 .listening-type1-extract-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   margin-bottom: 16px;
 }

@@ -322,7 +322,7 @@
 
             extract.questions.forEach(function(q) {
               var userAnswer = exercise.answers?.[q.number] || '';
-              html += '<p class="listening-type1-question-text"><strong>' + q.number + '.</strong> ' + q.question + '</p>';
+              html += '<p class="listening-type1-question-text">' + q.question + '</p>';
               html += '<div class="' + ListeningType1.optionsRowClass(q) + '">';
               html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
               html += '</div>';
@@ -345,7 +345,7 @@
               html += '<span class="listening-type1-time" id="time-' + q.number + '">00:00</span>';
               html += '</div>';
             }
-            html += '<p class="listening-type1-question-text"><strong>' + q.number + '.</strong> ' + (q.question || '') + '</p>';
+            html += '<p class="listening-type1-question-text">' + (q.question || '') + '</p>';
             html += '<div class="' + ListeningType1.optionsRowClass(q) + '">';
             html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
             html += '</div>';
