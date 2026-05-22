@@ -30,7 +30,7 @@
                                      "girl":  "en-GB-BellaNeural",
                                      "boy":  "en-GB-ElliotNeural"
                                  },
-                      "audio_script":  "Girl: Did you buy a birthday present for my aunt? You said you were going into town after school. || Boy: Yes, but choosing took a while. I first considered some flowers, because that seemed a safe choice. || Girl: What about a scarf? That might have been useful. || Boy: I looked at that, but it did not seem right. In the end, [1]I bought a cookery book because she enjoys trying new recipes[/1]. || Girl: That sounds thoughtful. I am sure it will be appreciated. || Boy: I hope so. I will wrap it this evening before tomorrow's party.",
+                      "audio_script":  "Girl: Did you buy a birthday present for my aunt? You said you were going into town after school. || Boy: Yes, but choosing took a while. I first considered some flowers, because that seemed a safe choice. || Girl: What about a scarf? That might have been useful. || Boy: I looked at that, but it did not seem right. In the end, [2]I bought a cookery book because she enjoys trying new recipes[/2]. || Girl: That sounds thoughtful. I am sure it will be appreciated. || Boy: I hope so. I will wrap it this evening before tomorrow's party.",
                       "question":  "What did the speaker buy?",
                       "options":  {
                                       "A":  "Some flowers",
@@ -47,7 +47,7 @@
                                      "woman":  "en-GB-LibbyNeural",
                                      "man":  "en-GB-NoahNeural"
                                  },
-                      "audio_script":  "Woman: What job are you doing at the garden centre this afternoon? I thought you were going to water the plants. || Man: That was yesterday's plan, but somebody finished it before lunch. || Woman: So will you move the large pots instead? || Man: No, the manager says that is not needed today. [1]I have to label the seed packets because customers need to find them easily[/1]. || Woman: That sounds manageable, although you may be busy. || Man: Yes, I want to finish before five because I promised to meet my friends afterwards nearby.",
+                      "audio_script":  "Woman: What job are you doing at the garden centre this afternoon? I thought you were going to water the plants. || Man: That was yesterday's plan, but somebody finished it before lunch. || Woman: So will you move the large pots instead? || Man: No, the manager says that is not needed today. [3]I have to label the seed packets because customers need to find them easily[/3]. || Woman: That sounds manageable, although you may be busy. || Man: Yes, I want to finish before five because I promised to meet my friends afterwards nearby.",
                       "question":  "What job will the speaker do?",
                       "options":  {
                                       "A":  "Label the seed packets",
@@ -64,7 +64,7 @@
                                      "girl":  "en-GB-AbbiNeural",
                                      "boy":  "en-GB-RyanNeural"
                                  },
-                      "audio_script":  "Girl: Are you ready for the school sports day tomorrow? I was checking what we have to bring, because I do not want to forget anything. || Boy: I was going to pack a scarf. Do we need that? || Girl: No, it is not on the list. || Boy: Perhaps I should take running shoes instead. || Girl: You can, but [1]everyone must bring a water bottle because there is nowhere to buy drinks near the field[/1]. || Boy: Thanks for reminding me. I will put it in my bag tonight, so I am ready when we leave.",
+                      "audio_script":  "Girl: Are you ready for the school sports day tomorrow? I was checking what we have to bring, because I do not want to forget anything. || Boy: I was going to pack a scarf. Do we need that? || Girl: No, it is not on the list. || Boy: Perhaps I should take running shoes instead. || Girl: You can, but [4]everyone must bring a water bottle because there is nowhere to buy drinks near the field[/4]. || Boy: Thanks for reminding me. I will put it in my bag tonight, so I am ready when we leave.",
                       "question":  "What must the student take?",
                       "options":  {
                                       "A":  "A scarf",
@@ -81,7 +81,7 @@
                                      "girl":  "en-GB-AbbiNeural",
                                      "boy":  "en-GB-AlfieNeural"
                                  },
-                      "audio_script":  "Girl: Are we still planning to have a picnic this afternoon? I had already arranged everything for it. || Boy: I am afraid not. It may rain and the new exhibition is not open, so that plan will not work now. || Girl: We could visit the museum instead. Would that be easier? || Boy: I thought about that, but I have a better idea. [1]Let us go bowling this afternoon instead[/1]. || Girl: Fine with me. Where shall we meet? || Boy: Meet me by the bus stop at four, and bring your student card in case they ask for it.",
+                      "audio_script":  "Girl: Are we still planning to have a picnic this afternoon? I had already arranged everything for it. || Boy: I am afraid not. It may rain and the new exhibition is not open, so that plan will not work now. || Girl: We could visit the museum instead. Would that be easier? || Boy: I thought about that, but I have a better idea. [5]Let us go bowling this afternoon instead[/5]. || Girl: Fine with me. Where shall we meet? || Boy: Meet me by the bus stop at four, and bring your student card in case they ask for it.",
                       "question":  "What will they do?",
                       "options":  {
                                       "A":  "Have a picnic",
@@ -98,7 +98,7 @@
                                      "woman":  "en-GB-HollieNeural",
                                      "man":  "en-GB-EthanNeural"
                                  },
-                      "audio_script":  "Woman: Do you know where homework group is being held today? I was going to the library, where we usually meet. || Man: Do not go there. Tables are being moved and another class booked the computers, so the organiser changed the room. || Woman: I wondered whether it might be in the computer room. || Man: No, that is not right either. [1]We need to meet in room eleven this afternoon[/1]. || Woman: Thanks for telling me. I would have waited in the wrong place. || Man: I will message the others too, so nobody misses the beginning.",
+                      "audio_script":  "Woman: Do you know where homework group is being held today? I was going to the library, where we usually meet. || Man: Do not go there. Tables are being moved and another class booked the computers, so the organiser changed the room. || Woman: I wondered whether it might be in the computer room. || Man: No, that is not right either. [6]We need to meet in room eleven this afternoon[/6]. || Woman: Thanks for telling me. I would have waited in the wrong place. || Man: I will message the others too, so nobody misses the beginning.",
                       "question":  "Where will homework group be held?",
                       "options":  {
                                       "A":  "Room eleven",
@@ -115,7 +115,7 @@
                                      "girl":  "en-GB-BellaNeural",
                                      "boy":  "en-GB-ElliotNeural"
                                  },
-                      "audio_script":  "Girl: Have you decided what to eat? The queue is getting longer, so we should choose soon. || Boy: I was thinking about the pizza, or perhaps the fish pie, because both sounded nice. || Girl: Which one are you going to order then? || Boy: Neither, actually. We had pizza yesterday and the fish pie has sold out. [1]I am going to have vegetable pasta instead[/1]. || Girl: Good choice. I might order the same, because I am quite hungry too. || Boy: Great. Find us a table while I pay, and we can eat before the bus comes.",
+                      "audio_script":  "Girl: Have you decided what to eat? The queue is getting longer, so we should choose soon. || Boy: I was thinking about the pizza, or perhaps the fish pie, because both sounded nice. || Girl: Which one are you going to order then? || Boy: Neither, actually. We had pizza yesterday and the fish pie has sold out. [7]I am going to have vegetable pasta instead[/7]. || Girl: Good choice. I might order the same, because I am quite hungry too. || Boy: Great. Find us a table while I pay, and we can eat before the bus comes.",
                       "question":  "What will the speaker eat?",
                       "options":  {
                                       "A":  "The pizza",
