@@ -13,8 +13,14 @@
         return;
       }
 
-      // For listening, nav cells are for display only (no modal)
-      if (AppState.currentSection === 'listening') return;
+      // Listening: no modal; scroll to the rendered question block if present
+      if (AppState.currentSection === 'listening') {
+        var anchor = document.querySelector('[data-listening-q="' + String(qNum) + '"]');
+        if (anchor && typeof anchor.scrollIntoView === 'function') {
+          anchor.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        return;
+      }
 
       if (!AppState.currentExercise) return;
       this.currentQNum = qNum;
