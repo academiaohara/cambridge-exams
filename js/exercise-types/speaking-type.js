@@ -554,7 +554,12 @@
       }
 
       var imageCount = task && task.images ? task.images.length : 0;
-      var gridClass = 'speaking-images-grid' + (imageCount === 2 ? ' speaking-images-grid--two' : '');
+      var gridClass = 'speaking-images-grid';
+      if (imageCount === 1) {
+        gridClass += ' speaking-images-grid--one';
+      } else if (imageCount === 2) {
+        gridClass += ' speaking-images-grid--two';
+      }
 
       return '<div class="speaking-images-view">' +
         timerHTML +
