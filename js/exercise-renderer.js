@@ -1366,15 +1366,20 @@
         AppState.currentLevel === 'B1' && isReading && actualPart === 5;
       var isB1Reading6AnswerToggle =
         AppState.currentLevel === 'B1' && isReading && actualPart === 6;
+      var isB1Listening3AnswerToggle =
+        AppState.currentLevel === 'B1' && isListening && actualPart === 3;
       var supportsAnswerToggle =
         ((isReading && actualPart >= 1 && actualPart <= 4) ||
           isB1Reading5AnswerToggle ||
           isB1Reading6AnswerToggle ||
-          (isListening && actualPart === 2)) &&
+          (isListening && actualPart === 2) ||
+          isB1Listening3AnswerToggle) &&
         !(AppState.currentExercise && AppState.currentExercise._b1PetHideAnswerToggle);
       var answerToggleLabel = AppState.answerViewMode === 'correct'
         ? 'Show your answer'
-        : (isB1Reading5AnswerToggle || isB1Reading6AnswerToggle ? 'Show correct answers' : 'Show correct answer');
+        : (isB1Reading5AnswerToggle || isB1Reading6AnswerToggle || isB1Listening3AnswerToggle
+          ? 'Show correct answers'
+          : 'Show correct answer');
       var answerToggleIcon = AppState.answerViewMode === 'correct' ? 'visibility_off' : 'visibility';
       let footer = '';
 
