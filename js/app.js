@@ -247,7 +247,7 @@
         var readingTotal = CONFIG.getReadingPartCount(level);
         var readingLabel = 'Reading 1-' + readingTotal;
         return {
-          reading: { name: 'READING & UOE', icon: 'book-open', total: readingTotal, completed: [], inProgress: [] },
+          reading: { name: level === 'B1' ? 'Reading' : 'READING & UOE', icon: 'book-open', total: readingTotal, completed: [], inProgress: [] },
           listening: { name: 'LISTENING', icon: 'headphones', total: 4, completed: [], inProgress: [] },
           writing: { name: 'WRITING', icon: 'pen', total: 2, completed: [], inProgress: [] },
           speaking: { name: 'SPEAKING', icon: 'microphone', total: 4, completed: [], inProgress: [] },

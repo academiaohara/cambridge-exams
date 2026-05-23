@@ -372,6 +372,8 @@ Secciones disponibles: `reading`, `listening`, `writing`, `speaking`, `use-of-en
 }
 ```
 
+En nivel **B1**, la sección `reading` usa el nombre mostrado **Reading** (no "READING & UOE").
+
 `status` puede ser `"available"` o `"coming_soon"`. Los tests `coming_soon` se muestran pero no son clickables.
 
 ### 6.5 Esquema de `Nivel/{level}/Exams/index.json`

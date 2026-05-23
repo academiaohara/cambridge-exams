@@ -19,7 +19,8 @@
   window.Dashboard = {
     /** Display title for "By Exercise Type" section drill-down (mobile Mileast header). */
     _sectionExDisplayTitle: function(sectionKey) {
-      if (sectionKey === 'reading') return 'READING & UOE';
+      var isB1 = typeof AppState !== 'undefined' && AppState.currentLevel === 'B1';
+      if (sectionKey === 'reading') return isB1 ? 'Reading' : 'READING & UOE';
       if (!sectionKey) return '';
       return sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
     },
@@ -286,8 +287,10 @@
     // ── By-Section tiles ────────────────────────────────────────────────
     _renderBySectionTiles: function() {
       var mode = AppState.currentMode || 'practice';
+      var isB1 = typeof AppState !== 'undefined' && AppState.currentLevel === 'B1';
+      var readingTileLabel = isB1 ? 'Reading' : 'READING & UOE';
       var sections = [
-        { key: 'reading',   icon: 'menu_book',        label: 'READING & UOE' },
+        { key: 'reading',   icon: 'menu_book',        label: readingTileLabel },
         { key: 'listening', icon: 'headphones',        label: 'Listening' },
         { key: 'writing',   icon: 'edit_note',         label: 'Writing' },
         { key: 'speaking',  icon: 'record_voice_over', label: 'Speaking' }
@@ -628,11 +631,12 @@
           lockedBadge = '<span class="guest-locked-badge"><i class="fas fa-gift"></i> 1 free try</span>';
         }
       }
+      var readingSectionHeading = (typeof AppState !== 'undefined' && AppState.currentLevel === 'B1') ? 'Reading' : 'READING & UOE';
       let html = `
         <div class="exam-section${isLocked ? ' guest-locked' : ''}"${isLocked ? ' onclick="' + lockClick + '"' : ''}>
           <div class="section-header">
             <span class="material-symbols-outlined section-icon ${sectionKey}">${Utils.getMaterialIcon(sectionKey)}</span>
-            <h4>${sectionKey === 'reading' ? 'READING & UOE' : section.name}${lockedBadge}</h4>
+            <h4>${sectionKey === 'reading' ? readingSectionHeading : section.name}${lockedBadge}</h4>
             <button class="section-play" onclick="event.stopPropagation(); ${isLocked ? lockClick : "Exercise.startFullSection('" + exam.id + "', '" + sectionKey + "')"}">
               <i class="fas fa-play"></i>
             </button>
