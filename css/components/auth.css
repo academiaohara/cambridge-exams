@@ -499,69 +499,34 @@
   padding: 8px 16px 28px;
 }
 
-/* Apple-style full profile (Settings-like): calm gray canvas, grouped cards */
+/* Apple-style full profile: glassmorphism, soft gradients, SF-like typography */
 .profile-section--apple {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, sans-serif;
-  letter-spacing: -0.01em;
+  min-height: 100vh;
+  padding: 24px;
   max-width: 680px;
-  padding: 12px 16px 36px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at top left, rgba(0, 122, 255, 0.14), transparent 32%),
+    linear-gradient(180deg, #f7f8fb 0%, #eef1f6 100%);
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+  letter-spacing: -0.01em;
 }
-.profile-section--apple .profile-section-card {
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: 14px;
-  border: 1px solid rgba(60, 60, 67, 0.12);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  padding: 20px 20px 22px;
-  margin-bottom: 12px;
+
+.profile-section-header--apple {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
 }
-.profile-section--apple .profile-section-card h3 {
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--text-medium);
-  margin-bottom: 14px;
-  gap: 8px;
-}
-.profile-section--apple .profile-section-card h3 .material-symbols-outlined {
-  font-size: 1.15rem;
-  width: 1.2rem;
-  height: 1.2rem;
-  opacity: 0.85;
-}
-.profile-section--apple .profile-name {
-  font-size: 1.28rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-.profile-section--apple .profile-email {
-  font-size: 0.9rem;
-}
-.profile-section--apple .profile-section-sub-badge {
-  border-radius: 8px;
-  font-weight: 500;
-}
-.profile-section--apple .pref-row {
-  padding: 12px 0;
-  border-top: 1px solid rgba(60, 60, 67, 0.08);
-  margin: 0 -4px;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-.profile-section--apple .profile-section-card .pref-row:first-of-type {
-  border-top: none;
-  padding-top: 0;
-}
-.profile-section--apple .pref-row select {
-  border-radius: 10px;
-  border: 1px solid rgba(60, 60, 67, 0.18);
-  padding: 10px 12px;
-  font-size: 1rem;
-  background: rgba(255, 255, 255, 0.9);
-}
-.profile-section--apple .profile-signout-btn {
-  border-radius: 12px;
-  font-weight: 500;
+
+.profile-section-header--apple h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #1d1d1f;
 }
 
 .profile-section-header {
@@ -570,20 +535,29 @@
   gap: 12px;
   margin-bottom: 24px;
 }
-.profile-section-header--apple h2 {
-  font-size: 1.75rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  margin: 0;
-  color: var(--text-dark);
-}
+
 .profile-section-header .btn-back {
+  border: none;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  color: #1d1d1f;
+  border-radius: 999px;
+  padding: 10px 14px;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, background 0.2s ease;
   line-height: 1;
 }
+
+.profile-section-header .btn-back:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.92);
+}
+
 .profile-section-header .btn-back i {
   font-size: 0.95rem;
   line-height: 1;
@@ -591,42 +565,52 @@
   align-items: center;
   justify-content: center;
 }
-.profile-section-card {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 2px 16px rgba(45,46,95,0.07);
-  border: 1px solid rgba(45, 46, 95, 0.06);
-  padding: 28px;
-  margin-bottom: 20px;
+
+.profile-section--apple .profile-section-card {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 28px;
+  padding: 22px;
+  margin-bottom: 18px;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
-.profile-section-card h3 {
+
+.profile-section--apple .profile-section-card h3 {
+  margin: 0 0 16px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 8px;
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--text-dark);
-  margin: 0 0 16px;
-  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: #1d1d1f;
+  text-transform: none;
 }
-.profile-section-card h3 .material-symbols-outlined {
-  font-size: 1.35rem;
-  line-height: 1;
-  width: 1.4rem;
-  height: 1.4rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+
+.profile-section--apple .profile-section-card h3 .material-symbols-outlined {
+  font-size: 1.2rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  opacity: 0.9;
 }
+
 .profile-section-avatar-row {
   display: flex;
   align-items: center;
   gap: 18px;
   margin-bottom: 20px;
 }
+
+.profile-section--apple .profile-section-avatar-row {
+  margin-bottom: 0;
+}
+
 .profile-section-avatar {
+  position: relative;
   width: 72px;
   height: 72px;
   border-radius: 50%;
@@ -637,48 +621,202 @@
   justify-content: center;
   flex-shrink: 0;
 }
+
+.profile-section--apple .profile-section-avatar {
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+
 .profile-section-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+.profile-section--apple .profile-section-avatar img {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
 .profile-section-avatar .profile-initials-large {
   font-size: 1.4rem;
 }
-.profile-section-info .profile-name {
-  font-size: 1.1rem;
+
+.profile-section--apple .profile-section-avatar .profile-initials-large {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: #fff;
+  background: linear-gradient(135deg, #007aff, #5856d6);
+  border: 4px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
 }
-.profile-section-info .profile-email {
-  font-size: 0.85rem;
-  color: var(--text-medium);
+
+.profile-section-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-section--apple .profile-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1d1d1f;
+}
+
+.profile-section--apple .profile-email {
+  margin-top: 3px;
+  font-size: 0.92rem;
+  color: #6e6e73;
   opacity: 1;
 }
+
 .profile-section-sub-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 12px;
-  border-radius: 50px;
+  border-radius: 999px;
+  padding: 7px 11px;
   font-size: 0.78rem;
   font-weight: 600;
-  margin-top: 6px;
+  margin-top: 10px;
   line-height: 1.2;
 }
+
+.profile-pack-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 7px 11px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-top: 0;
+  line-height: 1.2;
+}
+
 .profile-section-sub-badge i {
   display: inline-flex;
   align-items: center;
   line-height: 1;
   font-size: 0.85rem;
 }
+
 .profile-section-sub-badge.free {
-  background: #e2e8f0;
-  color: var(--text-medium);
+  background: #e8eaed;
+  color: #6e6e73;
 }
+
 .profile-section-sub-badge.premium {
-  background: linear-gradient(135deg, #fef3c7, #fde68a);
-  color: #b45309;
+  color: #7a4b00;
+  background: linear-gradient(135deg, #fff4c2, #ffd36a);
+}
+
+.profile-section--apple .pref-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  border-top: none;
+}
+
+.profile-section--apple .pref-row label {
+  font-size: 0.95rem;
+  color: #6e6e73;
+  font-weight: 500;
+}
+
+.profile-section--apple .pref-row select {
+  flex: 0 1 auto;
+  appearance: none;
+  border: none;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  border-radius: 14px;
+  padding: 11px 36px 11px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236e6e73' d='M1 1.5L6 6.5 11 1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+
+.profile-section--apple .pref-row select:focus {
+  outline: 3px solid rgba(0, 122, 255, 0.25);
+  outline-offset: 0;
+}
+
+.profile-section--apple .profile-signout-btn {
+  border: none;
+  background: #fff;
+  color: #ff3b30;
+  border-radius: 18px;
+  padding: 13px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, background 0.2s ease;
+  margin: 0;
+}
+
+.profile-section--apple .profile-signout-btn:hover {
+  transform: translateY(-1px);
+  background: #fff5f5;
+}
+
+@media (max-width: 560px) {
+  .profile-section--apple {
+    padding: 18px;
+  }
+
+  .profile-section--apple .profile-section-avatar-row {
+    align-items: flex-start;
+  }
+
+  .profile-section--apple .profile-section-avatar img,
+  .profile-section--apple .profile-section-avatar .profile-initials-large {
+    width: 72px;
+    height: 72px;
+  }
+
+  .profile-section--apple .profile-section-avatar .profile-initials-large {
+    font-size: 1.2rem;
+  }
+
+  .profile-section--apple .profile-section-card {
+    border-radius: 24px;
+    padding: 18px;
+  }
+
+  .profile-section--apple .profile-name {
+    font-size: 1.18rem;
+  }
+
+  .profile-section-header .btn-back .icon-btn-label {
+    display: none;
+  }
 }
 
 /* ── Animal avatar grid ─────────────────────────────────────────────── */
@@ -720,9 +858,6 @@
 }
 
 /* Edit hint overlay on profile avatar */
-.profile-section-avatar {
-  position: relative;
-}
 .profile-avatar-edit-hint {
   position: absolute;
   top: 0;
@@ -926,7 +1061,8 @@
   transition: all 0.2s;
 }
 
-.premium-plan-btn.current-plan {
+/* “Current plan” on pack cards (premium page) — keep distinct owned state */
+.premium-pack-card .premium-plan-btn.current-plan {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -940,8 +1076,8 @@
   cursor: default;
 }
 
-.premium-plan-btn.current-plan .material-symbols-outlined,
-.premium-plan-btn.current-plan i {
+.premium-pack-card .premium-plan-btn.current-plan .material-symbols-outlined,
+.premium-pack-card .premium-plan-btn.current-plan i {
   flex-shrink: 0;
   line-height: 1;
   display: inline-flex;
@@ -949,17 +1085,43 @@
   justify-content: center;
 }
 
-.profile-section .premium-plan-btn {
+.profile-section--apple .premium-plan-btn {
+  width: 100%;
+  border: none;
+  border-radius: 18px;
+  padding: 14px 16px;
   display: inline-flex;
-  align-items: center;
   justify-content: center;
-  gap: 10px;
-  width: auto;
-  min-height: 44px;
-  padding: 12px 22px;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  min-height: 48px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
-.profile-section .premium-plan-btn .material-symbols-outlined,
-.profile-section .premium-plan-btn i {
+
+.profile-section--apple .premium-plan-btn.current-plan {
+  background: linear-gradient(135deg, #007aff, #5856d6);
+  color: #fff;
+  box-shadow: 0 14px 28px rgba(0, 122, 255, 0.28);
+  cursor: default;
+}
+
+.profile-section--apple .premium-plan-btn.primary {
+  background: linear-gradient(135deg, #007aff, #5856d6);
+  color: #fff;
+  box-shadow: 0 14px 28px rgba(0, 122, 255, 0.22);
+}
+
+.profile-section--apple .premium-plan-btn.primary:hover {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+.profile-section--apple .premium-plan-btn .material-symbols-outlined,
+.profile-section--apple .premium-plan-btn i {
   flex-shrink: 0;
   font-size: 1rem;
   line-height: 1;
@@ -982,9 +1144,9 @@
 
 .profile-pack-badges {
   display: flex;
-  gap: 6px;
-  margin-top: 8px;
   flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
 }
 .profile-pack-badge {
   display: inline-flex;
@@ -995,10 +1157,22 @@
   border-radius: 999px;
   padding: 4px 9px;
 }
-.profile-pack-badge.admin { background: #111827; color: #fff; }
-.profile-pack-badge.theory { background: rgba(59,130,246,0.12); color: #1d4ed8; }
-.profile-pack-badge.exams { background: rgba(16,185,129,0.12); color: #047857; }
-.profile-pack-badge.free { background: rgba(100,116,139,0.12); color: #475569; }
+.profile-pack-badge.admin {
+  background: #e9f2ff;
+  color: #0066cc;
+}
+.profile-pack-badge.theory {
+  background: #eef8ef;
+  color: #248a3d;
+}
+.profile-pack-badge.exams {
+  background: #fff0f3;
+  color: #d70015;
+}
+.profile-pack-badge.free {
+  background: rgba(100, 116, 139, 0.12);
+  color: #475569;
+}
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .profile-section {
@@ -1015,10 +1189,12 @@
   }
 
   .profile-section-header .btn-back {
-    width: 42px;
-    height: 42px;
-    padding: 0;
-    border-radius: 14px;
+    flex-shrink: 0;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    justify-content: center;
   }
 
   .profile-section-header .btn-back .icon-btn-label {
@@ -1036,9 +1212,12 @@
   }
 
   .profile-section--apple .profile-section-card {
-    border-radius: 16px;
-    padding: 16px 18px;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
+    padding: 18px;
+    border-radius: 24px;
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
   }
 
   .profile-section-header--apple h2 {
@@ -1063,13 +1242,6 @@
     line-height: 1.3;
   }
 
-  .profile-section-card {
-    margin-bottom: 14px;
-    padding: 18px;
-    border-radius: 24px;
-    box-shadow: 0 8px 24px rgba(45,46,95,0.08);
-  }
-
   .profile-section-avatar-row {
     align-items: center;
     gap: 14px;
@@ -1079,33 +1251,34 @@
     min-width: 0;
   }
 
-  .profile-section-info .profile-name,
-  .profile-section-info .profile-email {
+  .profile-section--apple .profile-name,
+  .profile-section--apple .profile-email {
     white-space: normal;
     overflow-wrap: anywhere;
   }
 
   .profile-pack-badges {
-    gap: 6px;
+    gap: 8px;
   }
 
-  .pref-row {
+  .profile-section--apple .pref-row {
     align-items: stretch;
     flex-direction: column;
     gap: 6px;
   }
 
-  .pref-row label {
+  .profile-section--apple .pref-row label {
     min-width: 0;
   }
 
-  .pref-row select {
+  .profile-section--apple .pref-row select {
     width: 100%;
   }
 
-  .profile-signout-btn {
+  .profile-section--apple .profile-signout-btn {
     width: 100%;
-    margin: 8px 0 0;
+    justify-content: center;
+    margin: 0;
   }
 }
 
