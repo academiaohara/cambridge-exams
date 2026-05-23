@@ -831,6 +831,17 @@
     getGradeInfo: function(overall, examType) {
       if (!conversionData[examType]) return { result: 'Below Level', cefr: '–' };
       return getGradeInfo(overall, examType);
+    },
+
+    /** Skills shown in dashboards / grade charts (B1 & A2 have no separate Use of English paper). */
+    getSkillsForExamLevel: function(level) {
+      var key = level || 'C1';
+      var data = conversionData[key];
+      if (!data || !data.skills) {
+        var fb = conversionData['C1'];
+        return (fb && fb.skills) ? fb.skills.slice() : ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];
+      }
+      return data.skills.slice();
     }
   };
 })();

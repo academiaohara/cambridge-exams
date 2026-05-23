@@ -137,7 +137,9 @@
       var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
 
-      var allSkills = ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];
+      var allSkills = (typeof ScoreCalculator !== 'undefined' && typeof ScoreCalculator.getSkillsForExamLevel === 'function')
+        ? ScoreCalculator.getSkillsForExamLevel(level)
+        : ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];
       var skillColors = {
         'Reading': '#3b82f6',
         'Use of English': '#8b5cf6',

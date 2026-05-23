@@ -360,7 +360,9 @@
       var scaleMin = bounds[0];
       var scaleMax = bounds[1];
 
-      var allSkills = ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];
+      var allSkills = (typeof ScoreCalculator !== 'undefined' && typeof ScoreCalculator.getSkillsForExamLevel === 'function')
+        ? ScoreCalculator.getSkillsForExamLevel(levelData)
+        : ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];
       var skillColors = {
         'Reading': '#3b82f6',
         'Use of English': '#8b5cf6',
@@ -1308,7 +1310,9 @@
         });
       }
 
-      var allSkills = ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];
+      var allSkills = (typeof ScoreCalculator !== 'undefined' && typeof ScoreCalculator.getSkillsForExamLevel === 'function')
+        ? ScoreCalculator.getSkillsForExamLevel(level)
+        : ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];
       var slides = [];
 
       allSkills.forEach(function(skill) {
