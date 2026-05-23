@@ -44,6 +44,17 @@
   --accent-teal: #1E9D8E;
   --accent-amber: #FFD28E;
   --accent-cream: #FFE59E;
+  /* Editorial / plans — pastel tokens (aligned with bento palette; reusable for Profile) */
+  --editorial-cream: #fcf4e6;
+  --editorial-terracotta: #eca375;
+  --editorial-yellow: #f3d649;
+  --editorial-lavender: #b7b8e5;
+  --editorial-blue-mist: #d0e8fc;
+  --editorial-green: #c9e8c9;
+  --editorial-ink: var(--text-dark);
+  --editorial-muted: var(--text-light);
+  --editorial-radius: 20px;
+  --editorial-card-shadow: var(--shadow-md);
 }
 
 * {
