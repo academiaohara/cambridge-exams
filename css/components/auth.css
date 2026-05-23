@@ -1012,6 +1012,13 @@
 }
 
 /* Title row: back + “Choose your Pack” */
+.premium-plans-section .profile-section-header.premium-plans-page-header {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+}
+
 .premium-plans-page-header {
   align-items: flex-start;
   gap: 14px;
