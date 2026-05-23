@@ -1606,11 +1606,17 @@
 .premium-pack-price-big {
   font-size: 1.65rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #007aff, #5856d6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  color: #007aff;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .premium-pack-price-big {
+    background: linear-gradient(135deg, #007aff, #5856d6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 .premium-pack-price-period {
