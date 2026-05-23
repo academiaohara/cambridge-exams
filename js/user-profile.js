@@ -449,15 +449,69 @@
       alert('Payment integration coming soon. Contact us at academiaohara@gmail.com');
     },
 
+    /**
+     * CTA for each pack from AppState (hasTheoryPack / hasExamsPack only — no SKU for “Complete bundle” vs two packs).
+     * Premium (both): Complete → current plan; Theory & Exams → included in that access tier.
+     * Single pack: that pack → current plan; Complete → upgrade path.
+     */
+    _resolvePremiumPackCta: function (packKey) {
+      var hasTheory = !!AppState.hasTheoryPack;
+      var hasExams = !!AppState.hasExamsPack;
+      var isPremium = hasTheory && hasExams;
+      var buyAttrs = 'type="button" onclick="UserProfile._showPaymentComingSoon()"';
+      if (packKey === 'theory') {
+        if (!hasTheory) {
+          return { btnClass: 'premium-plan-btn primary', btnAttrs: buyAttrs, labelHtml: 'Get Pack' };
+        }
+        if (isPremium) {
+          return { btnClass: 'premium-plan-btn plan-included', btnAttrs: 'type="button" disabled', labelHtml: 'Included' };
+        }
+        return {
+          btnClass: 'premium-plan-btn current-plan',
+          btnAttrs: 'type="button" disabled',
+          labelHtml: '<span class="material-symbols-outlined" aria-hidden="true">check_circle</span> Current Plan'
+        };
+      }
+      if (packKey === 'exams') {
+        if (!hasExams) {
+          return { btnClass: 'premium-plan-btn primary', btnAttrs: buyAttrs, labelHtml: 'Get Pack' };
+        }
+        if (isPremium) {
+          return { btnClass: 'premium-plan-btn plan-included', btnAttrs: 'type="button" disabled', labelHtml: 'Included' };
+        }
+        return {
+          btnClass: 'premium-plan-btn current-plan',
+          btnAttrs: 'type="button" disabled',
+          labelHtml: '<span class="material-symbols-outlined" aria-hidden="true">check_circle</span> Current Plan'
+        };
+      }
+      if (packKey === 'complete') {
+        if (isPremium) {
+          return {
+            btnClass: 'premium-plan-btn current-plan',
+            btnAttrs: 'type="button" disabled',
+            labelHtml: '<span class="material-symbols-outlined" aria-hidden="true">check_circle</span> Current Plan'
+          };
+        }
+        if (!hasTheory && !hasExams) {
+          return { btnClass: 'premium-plan-btn primary', btnAttrs: buyAttrs, labelHtml: 'Get Pack' };
+        }
+        return { btnClass: 'premium-plan-btn primary', btnAttrs: buyAttrs, labelHtml: 'Upgrade' };
+      }
+      return { btnClass: 'premium-plan-btn primary', btnAttrs: buyAttrs, labelHtml: 'Get Pack' };
+    },
+
     _renderPremiumPackCards: function (durationKey) {
+      var hasTheory = !!AppState.hasTheoryPack;
+      var hasExams = !!AppState.hasExamsPack;
+      var isPremium = hasTheory && hasExams;
       var plans = {
         theory: {
-          icon: '📘',
           name: 'Pack Theory',
           tagline: 'Unlock all Grammar & Vocabulary theory blocks',
           className: '',
           features: ['All theory blocks', 'Course navigation unlocked', 'All units and reviews'],
-          owned: !!AppState.hasTheoryPack,
+          owned: hasTheory,
           prices: {
             m1: { total: 4, monthly: '€4', totalLabel: '€4 total' },
             m3: { total: 10, monthly: '€3,33', totalLabel: '€10 total • Save 17%' },
@@ -466,12 +520,11 @@
           }
         },
         exams: {
-          icon: '📝',
           name: 'Pack Exams',
           tagline: 'Unlock all exams, Random Test, Writing and Speaking',
           className: '',
           features: ['All exams unlocked', 'Random Test unlocked', 'Unlimited Writing/Speaking'],
-          owned: !!AppState.hasExamsPack,
+          owned: hasExams,
           prices: {
             m1: { total: 6, monthly: '€6', totalLabel: '€6 total' },
             m3: { total: 15, monthly: '€5', totalLabel: '€15 total • Save 17%' },
@@ -480,12 +533,11 @@
           }
         },
         complete: {
-          icon: '👑',
           name: 'Pack Complete',
           tagline: 'Everything included',
           className: 'pack-recommended',
           features: ['All theory blocks', 'All exams + Random Test', 'Unlimited Writing/Speaking'],
-          owned: !!(AppState.hasTheoryPack && AppState.hasExamsPack),
+          owned: isPremium,
           prices: {
             m1: { total: 10, monthly: '€10', totalLabel: '€10 total' },
             m3: { total: 25, monthly: '€8,33', totalLabel: '€25 total • Save 17%' },
@@ -499,21 +551,22 @@
       order.forEach(function (key) {
         var plan = plans[key];
         var pricing = plan.prices[durationKey] || plan.prices.m1;
+        var cta = UserProfile._resolvePremiumPackCta(key);
         var cardClass = 'premium-pack-card ' + plan.className + (plan.owned ? ' pack-owned' : '');
         html += '<div class="' + cardClass.trim() + '">' +
-          (plan.className ? '<div class="premium-pack-badge">Recommended</div>' : '') +
-          '<div class="premium-pack-icon">' + plan.icon + '</div>' +
+          (plan.className ? '<div class="premium-pack-badge" role="presentation">Recommended</div>' : '') +
+          '<div class="premium-pack-card-inner">' +
+          '<div class="premium-pack-icon" aria-hidden="true"></div>' +
           '<div class="premium-pack-name">' + plan.name + '</div>' +
           '<div class="premium-pack-tagline">' + plan.tagline + '</div>' +
           '<div class="premium-pack-price-big">' + pricing.monthly + '</div>' +
           '<div class="premium-pack-price-period">/ month</div>' +
           '<div class="premium-pack-price-total">' + pricing.totalLabel + '</div>' +
           '<ul class="premium-pack-features">' +
-            plan.features.map(function (f) { return '<li><i class="fas fa-check"></i> ' + f + '</li>'; }).join('') +
+            plan.features.map(function (f) { return '<li><i class="fas fa-check" aria-hidden="true"></i> ' + f + '</li>'; }).join('') +
           '</ul>' +
-          '<button class="premium-plan-btn ' + (plan.owned ? 'current-plan' : 'primary') + '" ' + (plan.owned ? 'disabled' : 'onclick="UserProfile._showPaymentComingSoon()"') + '>' +
-            (plan.owned ? '<span class="material-symbols-outlined">check_circle</span> Current Plan' : 'Get Pack') +
-          '</button>' +
+          '</div>' +
+          '<button class="' + cta.btnClass + '" ' + cta.btnAttrs + '>' + cta.labelHtml + '</button>' +
         '</div>';
       });
       return html;
@@ -536,7 +589,7 @@
         '<div class="profile-section-header premium-plans-page-header">' +
           '<button class="btn-back" onclick="loadDashboard()" aria-label="Back"><i class="fas fa-arrow-left" aria-hidden="true"></i><span class="icon-btn-label">Back</span></button>' +
           '<div class="premium-plans-header-titles">' +
-            '<h2><span class="premium-plans-header-icon" aria-hidden="true">👑</span> Choose your Pack</h2>' +
+            '<h2><span class="material-symbols-outlined premium-plans-header-icon" aria-hidden="true">workspace_premium</span> Choose your Pack</h2>' +
             '<p class="premium-plans-header-desc">Select duration and unlock exactly what you need</p>' +
           '</div>' +
         '</div>' +
