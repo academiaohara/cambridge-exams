@@ -1,6 +1,6 @@
 /**
- * Non-invasive Apple-style UI polish for My Profile and Choose your Pack.
- * Only classes, attributes, animations, and observers — no changes to Auth, UserProfile, or purchase flows.
+ * Light motion polish for My Profile and Choose your Pack (entrance only).
+ * Observes #main-content; does not alter Auth, purchase handlers, or pricing logic.
  */
 (function () {
   'use strict';
