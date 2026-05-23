@@ -269,6 +269,11 @@
           AppState.currentLevel === 'B1' &&
           AppState.currentSection === 'listening' &&
           AppState.currentPart === 4;
+        var isC1Listening3 =
+          typeof AppState !== 'undefined' &&
+          AppState.currentLevel === 'C1' &&
+          AppState.currentSection === 'listening' &&
+          AppState.currentPart === 3;
         var ctxBlock = '';
         if (exercise.content && exercise.content.context) {
           var ctxTrim = String(exercise.content.context).trim();
@@ -304,10 +309,17 @@
         if (extracts.length > 0) {
           extracts.forEach(function(extract) {
             html += '<div class="listening-type1-extract">';
-            html += '<div class="listening-type1-extract-header">';
-            html += '<span class="listening-type1-extract-number">' + extract.id + '</span>';
-            html += '<span class="listening-type1-context">' + nlToBrEscaped(String(extract.context || '')) + '</span>';
-            html += '</div>';
+            var extractCtx = String(extract.context || '').trim();
+            if (!isC1Listening3) {
+              html += '<div class="listening-type1-extract-header">';
+              html += '<span class="listening-type1-extract-number">' + extract.id + '</span>';
+              html += '<span class="listening-type1-context">' + nlToBrEscaped(String(extract.context || '')) + '</span>';
+              html += '</div>';
+            } else if (extractCtx) {
+              html += '<div class="listening-type1-extract-header listening-type1-extract-header--context-only">';
+              html += '<span class="listening-type1-context">' + nlToBrEscaped(extractCtx) + '</span>';
+              html += '</div>';
+            }
             if (!hasAudioSource) {
               html += '<div class="listening-type1-audio-bar" data-extract="' + extract.id + '">';
               html += '<button class="listening-type1-play-btn" onclick="ListeningType1.playExtract(' + extract.id + ', this)">';
@@ -323,7 +335,14 @@
             extract.questions.forEach(function(q) {
               var userAnswer = exercise.answers?.[q.number] || '';
               html += '<div class="listening-type1-item" data-listening-q="' + String(q.number) + '">';
-              html += '<p class="listening-type1-question-text">' + q.question + '</p>';
+              if (isC1Listening3) {
+                html += '<div class="listening-type1-question-heading">';
+                html += '<span class="listening-type1-question-number">' + String(q.number) + '</span>';
+                html += '<p class="listening-type1-question-text">' + q.question + '</p>';
+                html += '</div>';
+              } else {
+                html += '<p class="listening-type1-question-text">' + q.question + '</p>';
+              }
               html += '<div class="' + ListeningType1.optionsRowClass(q) + '">';
               html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
               html += '</div>';
@@ -353,7 +372,14 @@
               html +=
                 '<p class="listening-type1-item-context" lang="en">' + nlToBrEscaped(itemCtx) + '</p>';
             }
-            html += '<p class="listening-type1-question-text">' + (q.question || '') + '</p>';
+            if (isC1Listening3) {
+              html += '<div class="listening-type1-question-heading">';
+              html += '<span class="listening-type1-question-number">' + String(q.number) + '</span>';
+              html += '<p class="listening-type1-question-text">' + (q.question || '') + '</p>';
+              html += '</div>';
+            } else {
+              html += '<p class="listening-type1-question-text">' + (q.question || '') + '</p>';
+            }
             html += '<div class="' + ListeningType1.optionsRowClass(q) + '">';
             html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
             html += '</div>';
