@@ -215,7 +215,8 @@
 /* C1 Listening Part 3: question badge + stem on one row */
 .listening-type1-question-heading {
   display: flex;
-  align-items: flex-start;
+  flex-direction: row;
+  align-items: center;
   gap: 12px;
   margin-bottom: 12px;
 }
@@ -223,7 +224,7 @@
 .listening-type1-question-heading .listening-type1-question-text {
   flex: 1;
   min-width: 0;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .listening-type1-question-number {
