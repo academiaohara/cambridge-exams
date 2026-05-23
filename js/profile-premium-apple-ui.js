@@ -1,5 +1,5 @@
 /**
- * Light motion polish for My Profile and Choose your Pack (entrance only).
+ * Light motion polish for My Account profile and Choose your Pack (entrance only).
  * Observes #main-content; does not alter Auth, purchase handlers, or pricing logic.
  */
 (function () {
@@ -14,16 +14,16 @@
 
   function enhanceAppleProfileUI(root) {
     if (!root || !root.querySelector) return;
-    var el = root.querySelector('.profile-section--apple');
-    if (!el || el.getAttribute('data-apple-profile-ui') === '1') return;
-    el.setAttribute('data-apple-profile-ui', '1');
+    var el = root.querySelector('.account-page');
+    if (!el || el.getAttribute('data-account-profile-ui') === '1') return;
+    el.setAttribute('data-account-profile-ui', '1');
 
     if (prefersReducedMotion()) {
       el.classList.add('apple-ui-reduced-motion');
       return;
     }
 
-    var cards = el.querySelectorAll('.profile-section-card');
+    var cards = el.querySelectorAll('.account-identity-card, .account-module');
     for (var i = 0; i < cards.length; i++) {
       cards[i].style.setProperty('--apple-stagger', String(i * 52) + 'ms');
       cards[i].classList.add('apple-ui-profile-card-enter');

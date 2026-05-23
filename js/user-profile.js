@@ -358,29 +358,55 @@
       var isPremium = AppState.isPremium;
       var hasTheoryPack = AppState.hasTheoryPack;
       var hasExamsPack = AppState.hasExamsPack;
-      var subBadge = isPremium
-        ? '<div class="profile-section-sub-badge premium"><i class="fas fa-crown"></i> Premium</div>'
-        : '<div class="profile-section-sub-badge free"><i class="fas fa-user"></i> ' + 'Free Plan' + '</div>';
-      var packBadges = '';
+
+      var identityStatusTag = isPremium
+        ? '<span class="account-editorial-tag account-editorial-tag--premium">Premium</span>'
+        : '<span class="account-editorial-tag account-editorial-tag--free">Free plan</span>';
+
+      var adminMeta = (!isGuest && AppState.isAdmin)
+        ? '<p class="account-identity-meta">Administrator</p>'
+        : '';
+
+      var membershipKicker = isPremium ? 'Premium membership' : 'Free plan';
+      var membershipSummary = '';
       if (!isGuest) {
-        if (AppState.isAdmin) {
-          packBadges += '<span class="profile-pack-badge admin"><i class="fas fa-shield-alt"></i> Admin</span>';
+        if (isPremium) {
+          membershipSummary = 'Theory and Exams included';
+        } else if (hasTheoryPack) {
+          membershipSummary = 'Theory included';
+        } else if (hasExamsPack) {
+          membershipSummary = 'Exams included';
+        } else {
+          membershipSummary = 'Upgrade to unlock theory blocks and exams.';
         }
-        if (hasTheoryPack) {
-          packBadges += '<span class="profile-pack-badge theory"><i class="fas fa-book-open"></i> Pack Theory</span>';
-        }
-        if (hasExamsPack) {
-          packBadges += '<span class="profile-pack-badge exams"><i class="fas fa-file-alt"></i> Pack Exams</span>';
-        }
-        if (!packBadges) {
-          packBadges = '<span class="profile-pack-badge free"><i class="fas fa-leaf"></i> Free</span>';
-        }
+      } else {
+        membershipSummary = 'Sign in to sync your profile and manage access.';
       }
+
+      var accessListHtml = '';
+      if (!isGuest) {
+        accessListHtml =
+          '<ul class="account-access-list" role="list">' +
+            '<li class="account-access-line' + (hasTheoryPack ? ' account-access-line--on' : ' account-access-line--off') + '" role="listitem">' +
+              (hasTheoryPack ? '<i class="fas fa-check account-access-icon" aria-hidden="true"></i>' : '<span class="account-access-marker" aria-hidden="true"></span>') +
+              '<span>Theory access</span>' +
+            '</li>' +
+            '<li class="account-access-line' + (hasExamsPack ? ' account-access-line--on' : ' account-access-line--off') + '" role="listitem">' +
+              (hasExamsPack ? '<i class="fas fa-check account-access-icon" aria-hidden="true"></i>' : '<span class="account-access-marker" aria-hidden="true"></span>') +
+              '<span>Exams access</span>' +
+            '</li>' +
+          '</ul>';
+      }
+
+      var viewPlansControl =
+        '<div class="account-module-footer">' +
+          '<button type="button" class="account-text-link" onclick="UserProfile.renderPremiumSection()">View plans</button>' +
+        '</div>';
 
       // Always use Google profile photo for user display
       var avatarHtml = avatarUrl
-        ? '<img src="' + avatarUrl + '" alt="' + name + '">'
-        : '<span class="profile-initials-large">' + initials + '</span>';
+        ? '<img class="account-identity-photo" src="' + avatarUrl + '" alt="' + name + '">'
+        : '<span class="account-initials" aria-hidden="true">' + initials + '</span>';
 
       var levels = ['B1', 'B2', 'C1'];
 
@@ -390,55 +416,76 @@
         }).join('');
       }
 
-      var html = '<div class="profile-section profile-section--apple">' +
-        '<div class="profile-section-header profile-section-header--apple">' +
-          '<button class="btn-back" onclick="loadDashboard()" aria-label="Back"><i class="fas fa-arrow-left" aria-hidden="true"></i><span class="icon-btn-label">Back</span></button>' +
-          '<h2>' + 'My Profile' + '</h2>' +
-        '</div>' +
+      var identityFooterActions = '';
+      if (isGuest) {
+        identityFooterActions =
+          '<div class="account-identity-actions">' +
+            '<button type="button" class="account-btn-secondary" onclick="Auth._showAuthModal()">' +
+              '<i class="fas fa-sign-in-alt" aria-hidden="true"></i> Sign in' +
+            '</button>' +
+          '</div>';
+      } else {
+        identityFooterActions =
+          '<div class="account-identity-actions">' +
+            '<button type="button" class="account-signout-btn" onclick="Auth.signOut()">' +
+              '<i class="fas fa-sign-out-alt" aria-hidden="true"></i> Sign out' +
+            '</button>' +
+          '</div>';
+      }
 
-        '<div class="profile-section-card">' +
-          '<div class="profile-section-avatar-row">' +
-            '<div class="profile-section-avatar">' + avatarHtml +
+      var prefsBlock =
+        '<section class="account-module account-module--prefs" aria-labelledby="account-prefs-title">' +
+          '<h3 id="account-prefs-title" class="account-module-title">Learning preferences</h3>' +
+          '<div class="account-module-body">' +
+            '<div class="account-pref-row">' +
+              '<label class="account-pref-label" for="pref-level">Level</label>' +
+              '<select id="pref-level" class="account-level-select" onchange="UserProfile._onPrefChange()">' +
+                levelOptions(profile.preferred_level || AppState.currentLevel) +
+              '</select>' +
             '</div>' +
-            '<div class="profile-section-info">' +
-              '<div class="profile-name">' + name + '</div>' +
-              '<div class="profile-email">' + email + '</div>' +
-              subBadge +
-              (packBadges ? '<div class="profile-pack-badges">' + packBadges + '</div>' : '') +
+            (!isGuest ? '<div class="profile-sync-status" id="profile-sync-status"></div>' : '') +
+          '</div>' +
+        '</section>';
+
+      var membershipBlock =
+        '<section class="account-module account-module--membership" aria-labelledby="account-access-title">' +
+          '<h3 id="account-access-title" class="account-module-title">Access &amp; membership</h3>' +
+          '<div class="account-module-body">' +
+            '<p class="account-membership-kicker">' + membershipKicker + '</p>' +
+            '<p class="account-membership-summary">' + membershipSummary + '</p>' +
+            accessListHtml +
+            viewPlansControl +
+          '</div>' +
+        '</section>';
+
+      var html =
+        '<div class="account-page">' +
+          '<header class="account-page-header">' +
+            '<button type="button" class="btn-back" onclick="loadDashboard()" aria-label="Back">' +
+              '<i class="fas fa-arrow-left" aria-hidden="true"></i><span class="icon-btn-label">Back</span>' +
+            '</button>' +
+            '<div class="account-page-header-titles">' +
+              '<h2 class="account-page-title">My account</h2>' +
+              '<p class="account-page-subtitle">Manage your learning profile and access</p>' +
+            '</div>' +
+          '</header>' +
+          '<div class="account-grid">' +
+            '<section class="account-identity-card" aria-label="Account identity">' +
+              '<div class="account-identity-avatar-wrap">' + avatarHtml + '</div>' +
+              '<div class="account-identity-text">' +
+                '<p class="account-identity-name">' + name + '</p>' +
+                (email ? '<p class="account-identity-email">' + email + '</p>' : '') +
+                '<div class="account-identity-tags">' + identityStatusTag + '</div>' +
+                adminMeta +
+              '</div>' +
+              identityFooterActions +
+            '</section>' +
+            '<div class="account-modules">' +
+              prefsBlock +
+              membershipBlock +
             '</div>' +
           '</div>' +
-          (isGuest
-            ? '<button class="premium-plan-btn primary" style="max-width:220px" onclick="Auth._showAuthModal()"><i class="fas fa-sign-in-alt"></i> ' + 'Sign in' + '</button>'
-            : '') +
-        '</div>' +
-
-        '<div class="profile-section-card">' +
-          '<h3><span class="material-symbols-outlined">settings</span> ' + 'Preferences' + '</h3>' +
-          '<div class="profile-prefs">' +
-            '<div class="pref-row"><label>' + 'Level' + '</label>' +
-              '<select id="pref-level" onchange="UserProfile._onPrefChange()">' + levelOptions(profile.preferred_level || AppState.currentLevel) + '</select></div>' +
-          '</div>' +
-        '</div>' +
-
-        '<div class="profile-section-card">' +
-          '<h3><span class="material-symbols-outlined">workspace_premium</span> ' + 'Subscription' + '</h3>' +
-          '<p style="color:var(--text-medium);font-size:0.88rem;margin:0 0 14px">' +
-            (isPremium
-              ? 'You have active Theory + Exams access.'
-              : 'You are on the free plan. Upgrade to unlock all exams and theory blocks.') +
-          '</p>' +
-          '<button class="premium-plan-btn ' + (isPremium ? 'current-plan' : 'primary') + '" onclick="' + (isPremium ? '' : 'UserProfile.renderPremiumSection()') + '">' +
-            (isPremium ? '<span class="material-symbols-outlined">check_circle</span> ' + 'Current Plan' + ': Premium' : '<i class="fas fa-crown"></i> ' + 'View Plans') +
-          '</button>' +
-        '</div>' +
-
-        (!isGuest
-          ? '<div class="profile-section-card" style="text-align:center;">' +
-              '<button class="profile-signout-btn" onclick="Auth.signOut()"><i class="fas fa-sign-out-alt"></i> ' + 'Sign out' + '</button>' +
-            '</div>'
-          : '') +
-
-      '</div>';
+        '</div>';
 
       content.innerHTML = html;
       var profState = { view: 'profile' };
