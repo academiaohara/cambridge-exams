@@ -274,6 +274,11 @@
           AppState.currentLevel === 'C1' &&
           AppState.currentSection === 'listening' &&
           AppState.currentPart === 3;
+        var showC1ListeningQuestionNumber =
+          typeof AppState !== 'undefined' &&
+          AppState.currentLevel === 'C1' &&
+          AppState.currentSection === 'listening' &&
+          (AppState.currentPart === 1 || AppState.currentPart === 3);
         var ctxBlock = '';
         if (exercise.content && exercise.content.context) {
           var ctxTrim = String(exercise.content.context).trim();
@@ -335,7 +340,7 @@
             extract.questions.forEach(function(q) {
               var userAnswer = exercise.answers?.[q.number] || '';
               html += '<div class="listening-type1-item" data-listening-q="' + String(q.number) + '">';
-              if (isC1Listening3) {
+              if (showC1ListeningQuestionNumber) {
                 html += '<div class="listening-type1-question-heading">';
                 html += '<span class="listening-type1-question-number">' + String(q.number) + '</span>';
                 html += '<p class="listening-type1-question-text">' + q.question + '</p>';
@@ -372,7 +377,7 @@
               html +=
                 '<p class="listening-type1-item-context" lang="en">' + nlToBrEscaped(itemCtx) + '</p>';
             }
-            if (isC1Listening3) {
+            if (showC1ListeningQuestionNumber) {
               html += '<div class="listening-type1-question-heading">';
               html += '<span class="listening-type1-question-number">' + String(q.number) + '</span>';
               html += '<p class="listening-type1-question-text">' + (q.question || '') + '</p>';
