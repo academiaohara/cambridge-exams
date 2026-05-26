@@ -117,7 +117,11 @@
       // B2 Part 6 is Gapped Text (fill gaps with phrases), not Cross-text Matching
       6: { type: 'gapped-text', inputMode: 'select', total: 6, maxMarks: 12 },
       // B2 Part 7 is Multiple Matching (like C1 Part 8), not Gapped Text
-      7: { type: 'multiple-matching', inputMode: 'modal', total: 10 }
+      7: { type: 'multiple-matching', inputMode: 'modal', total: 10 },
+      /** B2 First (FCE): listening parts differ from C1 (monologue gap-fill, 5-speaker matching, interview MC). */
+      listening2: { type: 'sentence-completion', inputMode: 'text', total: 10, maxMarks: 10 },
+      listening3: { type: 'multiple-matching', inputMode: 'modal', total: 5, maxMarks: 5 },
+      listening4: { type: 'multiple-choice-text', inputMode: 'radio', total: 7, maxMarks: 7 }
     },
     /** B1 Preliminary (PET): reading parts 1–6 and listening totals differ from C1/B2. */
     B1: {

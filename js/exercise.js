@@ -1,5 +1,62 @@
 // js/exercise.js
 (function() {
+  /**
+   * B2 First listening JSON uses variants the C1 pipeline does not expect:
+   * - Part 3: options live on the extract; questions only have speaker + correct (needs content.texts + question stems).
+   * - Part 4: questions live under content.task with options as an object (needs flat content.questions + string options).
+   */
+  function normalizeB2ListeningExercise(exercise, part) {
+    if (!exercise || !exercise.content) return;
+    var c = exercise.content;
+    var p = parseInt(part, 10) || 0;
+
+    if (p === 4 && c.task && Array.isArray(c.task.questions)) {
+      var hasFlat = Array.isArray(c.questions) && c.questions.length > 0;
+      if (!hasFlat) {
+        c.questions = c.task.questions.map(function(q) {
+          var nq = {};
+          Object.keys(q).forEach(function(k) {
+            nq[k] = q[k];
+          });
+          if (nq.options && typeof nq.options === 'object' && !Array.isArray(nq.options)) {
+            nq.options = Object.keys(nq.options).map(function(key) {
+              return key + ') ' + nq.options[key];
+            });
+          }
+          if (!nq.correct && nq.answer) nq.correct = nq.answer;
+          return nq;
+        });
+      }
+      delete c.task;
+    }
+
+    if (p === 3 && c.extracts && c.extracts.length && Array.isArray(c.questions) && c.questions.length) {
+      var hasTexts = c.texts && typeof c.texts === 'object' && Object.keys(c.texts).length > 0;
+      if (hasTexts) return;
+      var first = c.extracts[0];
+      if (!first || !first.options) return;
+      var texts = {};
+      if (Array.isArray(first.options)) {
+        first.options.forEach(function(opt) {
+          if (opt && opt.letter) {
+            var L = String(opt.letter).trim().charAt(0).toUpperCase();
+            texts[L] = opt.text != null ? String(opt.text) : '';
+          }
+        });
+      } else if (typeof first.options === 'object') {
+        Object.keys(first.options).forEach(function(k) {
+          texts[k] = String(first.options[k] != null ? first.options[k] : '');
+        });
+      }
+      if (Object.keys(texts).length) c.texts = texts;
+      c.questions.forEach(function(q) {
+        if (!q.question && q.speaker) {
+          q.question = 'For ' + q.speaker + ', choose the reason (A–H) they give.';
+        }
+      });
+    }
+  }
+
   window.Exercise = {
     _exerciseDefaults: null,
     _exerciseDefaultsLevel: null,
@@ -390,6 +447,10 @@
             });
           });
         }
+
+        if (AppState.currentLevel === 'B2' && section === 'listening') {
+          normalizeB2ListeningExercise(exercise, part);
+        }
         
         // Normalize reading6/reading8: questions nested inside content.texts → content.questions
         if (exercise.content && exercise.content.texts && !exercise.content.questions &&
@@ -715,6 +776,10 @@
               exercise.content.questions.push(q);
             });
           });
+        }
+
+        if (AppState.currentLevel === 'B2' && section === 'listening') {
+          normalizeB2ListeningExercise(exercise, part);
         }
         
         var questions = (exercise.content && exercise.content.questions) || [];
