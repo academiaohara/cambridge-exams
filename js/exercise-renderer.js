@@ -1155,6 +1155,26 @@
             if (typeof ReadingType8 !== 'undefined' && ReadingType8.initB1Reading2StripIfNeeded) {
               ReadingType8.initB1Reading2StripIfNeeded();
             }
+            // B2 Listening Part 3: transcript toggle leaves questions panel empty unless we inject type8 UI here.
+            if (typeof AppState !== 'undefined' && AppState.currentSection === 'listening') {
+              var lContainer = document.getElementById('toggle-questions-section');
+              var ex = AppState.currentExercise;
+              if (lContainer && ex && typeof CONFIG !== 'undefined' && typeof ExerciseRenderer !== 'undefined') {
+                var lPc = CONFIG.getPartConfig('listening', AppState.currentPart);
+                if (lPc && lPc.type === 'multiple-matching' &&
+                    !lContainer.querySelector('.listening-multiple-matching-wrapper')) {
+                  var noteCreator = lContainer.querySelector('#note-creator');
+                  var wrap = document.createElement('div');
+                  wrap.className = 'listening-multiple-matching-wrapper';
+                  wrap.innerHTML = ExerciseRenderer.renderToggleQuestions(ex, lPc);
+                  if (noteCreator) {
+                    lContainer.insertBefore(wrap, noteCreator);
+                  } else {
+                    lContainer.appendChild(wrap);
+                  }
+                }
+              }
+            }
           }, 0);
           break;
       }
