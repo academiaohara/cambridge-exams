@@ -6,6 +6,7 @@
   --writing-line-color: rgba(45, 46, 95, 0.11);
   --writing-margin-color: rgba(239, 68, 68, 0.32);
   --writing-paper: #fffef9;
+  --writing-padding-top: 18px;
   /* Align rule grid with text baselines (line-height minus font-size) */
   --writing-bg-offset-y: calc(var(--writing-font-size) - var(--writing-line-height));
 
@@ -29,12 +30,12 @@
       var(--writing-margin-color) calc(2.75rem + 2px),
       transparent calc(2.75rem + 2px)
     );
-  background-position: 0 var(--writing-bg-offset-y);
+  background-position: 0 calc(var(--writing-bg-offset-y) + var(--writing-padding-top));
   background-size: 100% var(--writing-line-height), 100% 100%;
   background-repeat: repeat, no-repeat;
   background-attachment: local;
   /* Top padding must align to the line grid so text and placeholder sit on the rules */
-  padding: 0 1.25rem 1rem 3.35rem;
+  padding: var(--writing-padding-top) 1.25rem 1rem 3.35rem;
   line-height: var(--writing-line-height);
   border: 1px solid #e0dcd0;
   border-radius: 6px 6px 14px 14px;
@@ -71,6 +72,7 @@
   --writing-line-color: rgba(45, 46, 95, 0.11);
   --writing-margin-color: rgba(239, 68, 68, 0.32);
   --writing-paper: #fffef9;
+  --writing-padding-top: 18px;
   --writing-bg-offset-y: calc(var(--writing-font-size) - var(--writing-line-height));
 
   font-size: var(--writing-font-size);
@@ -92,11 +94,11 @@
       var(--writing-margin-color) calc(2.75rem + 2px),
       transparent calc(2.75rem + 2px)
     );
-  background-position: 0 var(--writing-bg-offset-y);
+  background-position: 0 calc(var(--writing-bg-offset-y) + var(--writing-padding-top));
   background-size: 100% var(--writing-line-height), 100% 100%;
   background-repeat: repeat, no-repeat;
   background-attachment: local;
-  padding: 0 1.25rem 1rem 3.35rem;
+  padding: var(--writing-padding-top) 1.25rem 1rem 3.35rem;
   line-height: var(--writing-line-height);
   border: 1px solid #e0dcd0;
   border-radius: 6px 6px 14px 14px;
