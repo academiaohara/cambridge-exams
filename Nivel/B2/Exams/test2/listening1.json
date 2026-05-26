@@ -1,0 +1,288 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two people talking at a party.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I don’t think we’ve met before. Are you one of Mark’s neighbours? ||Man: I used to be. I lived in Manchester when we first met at college, then moved to London for work. ||Woman: So you’re visiting for the party? ||Man: Not exactly. [1]I moved to Birmingham last month, and Mark works just round the corner from my new flat[/1]. He invited me tonight.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I don’t think we’ve met before. Are you one of Mark’s neighbours?"
+        },
+        {
+          "speaker": "man",
+          "text": "I used to be. I lived in Manchester when we first met at college, then moved to London for work."
+        },
+        {
+          "speaker": "woman",
+          "text": "So you’re visiting for the party?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not exactly. I moved to Birmingham last month, and Mark works just round the corner from my new flat. He invited me tonight."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "Where does the man live now?",
+          "options": {
+            "A": "Manchester",
+            "B": "London",
+            "C": "Birmingham"
+          },
+          "answer": "C",
+          "explanation": "He states that he moved to Birmingham last month (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear an interview on the radio with a cyclist.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: You’ve cycled through several European countries this summer, Nina. Where have you most recently been? ||Woman: I began in Belgium and crossed into France, which was harder because of the hills. After that I spent a week visiting friends in Spain. [2]I’ve only just returned from Portugal, where the coastal roads were fantastic[/2]. Switzerland is my next plan, perhaps next year.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "You’ve cycled through several European countries this summer, Nina. Where have you most recently been?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I began in Belgium and crossed into France, which was harder because of the hills. After that I spent a week visiting friends in Spain. I’ve only just returned from Portugal, where the coastal roads were fantastic. Switzerland is my next plan, perhaps next year."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "Which country has the cyclist most recently cycled through?",
+          "options": {
+            "A": "Spain",
+            "B": "Portugal",
+            "C": "Switzerland"
+          },
+          "answer": "B",
+          "explanation": "She says she has only just returned from Portugal, distinguishing it from earlier and future trips (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear a guide talking to visitors in an art gallery.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: I’m afraid the main picture gallery on the first floor is not open today. We had planned to move some of the paintings this week, but that work has been postponed. ||Guide: [3]During last night’s storm, water came through a window and damaged part of the wooden floor, so repairs are needed before visitors can enter[/3]. The sculpture gallery remains open as normal.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "I’m afraid the main picture gallery on the first floor is not open today. We had planned to move some of the paintings this week, but that work has been postponed."
+        },
+        {
+          "speaker": "guide",
+          "text": "During last night’s storm, water came through a window and damaged part of the wooden floor, so repairs are needed before visitors can enter. The sculpture gallery remains open as normal."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "Why is the main picture gallery closed?",
+          "options": {
+            "A": "Some paintings are being moved.",
+            "B": "The room needs to be redecorated.",
+            "C": "Part of the floor has been damaged."
+          },
+          "answer": "C",
+          "explanation": "The guide says water from a storm damaged part of the wooden floor and repairs are required (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a man talking to a police officer.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "officer": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: Excuse me, officer. I’ve got a problem with my car. It’s the green one beside the bank. ||Officer: Has it broken down? ||Man: No, it’s running perfectly. I parked for five minutes to use the cash machine, and [4]when I shut the door I realised my keys were still inside, on the driver’s seat[/4]. My phone’s in there too, so I can’t call anyone.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Excuse me, officer. I’ve got a problem with my car. It’s the green one beside the bank."
+        },
+        {
+          "speaker": "officer",
+          "text": "Has it broken down?"
+        },
+        {
+          "speaker": "man",
+          "text": "No, it’s running perfectly. I parked for five minutes to use the cash machine, and when I shut the door I realised my keys were still inside, on the driver’s seat. My phone’s in there too, so I can’t call anyone."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What is the man’s problem?",
+          "options": {
+            "A": "He has locked himself out of his car.",
+            "B": "He cannot find where he parked his car.",
+            "C": "His car will not start."
+          },
+          "answer": "A",
+          "explanation": "He says his keys are inside the car after he shut the door, meaning he is locked out (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to a waiter in a café.",
+      "voices": {
+        "waiter": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Waiter: Would you like to order now? The soup of the day is tomato, and the sandwiches are listed over here. ||Woman: I had a large breakfast, so I don’t want anything heavy. I thought about a sandwich, but I’ll leave that. ||Waiter: We also have apple cake and a strawberry cream cake. ||Woman: [5]The strawberry one sounds lovely. I’ll just have a slice of that with coffee[/5].",
+      "dialogue": [
+        {
+          "speaker": "waiter",
+          "text": "Would you like to order now? The soup of the day is tomato, and the sandwiches are listed over here."
+        },
+        {
+          "speaker": "woman",
+          "text": "I had a large breakfast, so I don’t want anything heavy. I thought about a sandwich, but I’ll leave that."
+        },
+        {
+          "speaker": "waiter",
+          "text": "We also have apple cake and a strawberry cream cake."
+        },
+        {
+          "speaker": "woman",
+          "text": "The strawberry one sounds lovely. I’ll just have a slice of that with coffee."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the woman order?",
+          "options": {
+            "A": "a bowl of soup",
+            "B": "a sandwich",
+            "C": "a cream cake"
+          },
+          "answer": "C",
+          "explanation": "She chooses a slice of the strawberry cream cake with coffee (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student leaving a message on an answering machine.",
+      "voices": {
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Boy: Hi, Mum, it’s Liam. My first exam is over now. I was worried because it started at eight thirty, which is earlier than I’m used to, but I got there in plenty of time. ||Boy: [6]I knew the topics really well, and I managed to answer every question, so I’m feeling much better about the rest of the week[/6]. I’ll be home after lunch.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Hi, Mum, it’s Liam. My first exam is over now. I was worried because it started at eight thirty, which is earlier than I’m used to, but I got there in plenty of time."
+        },
+        {
+          "speaker": "boy",
+          "text": "I knew the topics really well, and I managed to answer every question, so I’m feeling much better about the rest of the week. I’ll be home after lunch."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "How does Liam feel about his exams?",
+          "options": {
+            "A": "He is confident after his first exam.",
+            "B": "He is annoyed about an early start.",
+            "C": "He is unsure what subjects to prepare."
+          },
+          "answer": "A",
+          "explanation": "He says he knew the topics, answered every question and now feels better about the week (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear a woman called Judy talking on the phone to her friend Martin.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi, Martin. It’s Judy. Are you still going to Anna’s party on Saturday? My sister was going to drive me there, but she has to work that evening. I know you said you were planning to get a taxi. ||Woman: [7]Would it be all right if I came in it with you? We could split the cost[/7]. I can walk to your house first if that’s easier. Call me back.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi, Martin. It’s Judy. Are you still going to Anna’s party on Saturday? My sister was going to drive me there, but she has to work that evening. I know you said you were planning to get a taxi."
+        },
+        {
+          "speaker": "woman",
+          "text": "Would it be all right if I came in it with you? We could split the cost. I can walk to your house first if that’s easier. Call me back."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What does Judy want Martin to do?",
+          "options": {
+            "A": "give her a lift to a party",
+            "B": "share a taxi with her",
+            "C": "invite her to his house"
+          },
+          "answer": "B",
+          "explanation": "Judy asks to travel in Martin’s taxi and share the cost (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a footballer talking about his career.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Presenter: You’ve had a long career, Dan. Is there one moment you’re proudest of? Winning the cup, perhaps? ||Man: Winning trophies is exciting, of course, and I once held the club record for appearances. But records get broken. [8]What means most to me is that, in nearly twenty years of matches, I was never sent off for bad behaviour[/8]. Young players should remember that respect matters.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "You’ve had a long career, Dan. Is there one moment you’re proudest of? Winning the cup, perhaps?"
+        },
+        {
+          "speaker": "man",
+          "text": "Winning trophies is exciting, of course, and I once held the club record for appearances. But records get broken. What means most to me is that, in nearly twenty years of matches, I was never sent off for bad behaviour. Young players should remember that respect matters."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is the footballer most proud of?",
+          "options": {
+            "A": "winning an important competition",
+            "B": "playing more games than anyone else",
+            "C": "always behaving well on the pitch"
+          },
+          "answer": "C",
+          "explanation": "He says what means most is never having been sent off for bad behaviour (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test2_part1.mp3"
+}

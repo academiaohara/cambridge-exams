@@ -1,0 +1,308 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a woman talking to a friend about a new flat.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: So, how’s the new flat? Is it closer to your office? ||Woman: A little, and the kitchen is much bigger than my old one. The street can be noisy at night, though. ||Man: Do you regret moving? ||Woman: Not at all. [1]The best thing is having a small balcony where I can sit outside and grow a few plants[/1]. I never had any outdoor space before.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, how’s the new flat? Is it closer to your office?"
+        },
+        {
+          "speaker": "woman",
+          "text": "A little, and the kitchen is much bigger than my old one. The street can be noisy at night, though."
+        },
+        {
+          "speaker": "man",
+          "text": "Do you regret moving?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Not at all. The best thing is having a small balcony where I can sit outside and grow a few plants. I never had any outdoor space before."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does the woman like most about her new flat?",
+          "options": {
+            "A": "It has a larger kitchen.",
+            "B": "It is near her workplace.",
+            "C": "It includes an outdoor area."
+          },
+          "answer": "C",
+          "explanation": "She says the best thing is the balcony where she can sit and grow plants (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear a radio interview with a young photographer.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Presenter: You’ve won a prize for your wildlife photographs, Sam. Did you always plan to photograph animals? ||Man: Actually, I began taking pictures of city buildings. Then a friend lent me a longer lens for a weekend in the countryside. [2]I photographed a fox by chance, and when I saw the picture later, I realised wildlife was what I wanted to concentrate on[/2]. ||Presenter: And that led to this award.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "You’ve won a prize for your wildlife photographs, Sam. Did you always plan to photograph animals?"
+        },
+        {
+          "speaker": "man",
+          "text": "Actually, I began taking pictures of city buildings. Then a friend lent me a longer lens for a weekend in the countryside. I photographed a fox by chance, and when I saw the picture later, I realised wildlife was what I wanted to concentrate on."
+        },
+        {
+          "speaker": "presenter",
+          "text": "And that led to this award."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "Why did Sam begin photographing wildlife?",
+          "options": {
+            "A": "He was encouraged by a competition.",
+            "B": "He took a successful photograph unexpectedly.",
+            "C": "He bought some special equipment."
+          },
+          "answer": "B",
+          "explanation": "Sam says a chance photograph of a fox made him realise he wanted to focus on wildlife (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a sports centre.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Could everyone attending the indoor tennis class listen, please? The class was due to begin at five in Court 3. Unfortunately, a light above that court has broken. ||Announcer: [3]The instructor will meet you at the same time in Court 1, which is beside the changing rooms[/3]. The beginners’ badminton lesson will take place as usual. Thank you.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Could everyone attending the indoor tennis class listen, please? The class was due to begin at five in Court 3. Unfortunately, a light above that court has broken."
+        },
+        {
+          "speaker": "announcer",
+          "text": "The instructor will meet you at the same time in Court 1, which is beside the changing rooms. The beginners’ badminton lesson will take place as usual. Thank you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What should people attending the tennis class do?",
+          "options": {
+            "A": "attend the class in a different court",
+            "B": "wait for the class to begin later",
+            "C": "join a badminton lesson instead"
+          },
+          "answer": "A",
+          "explanation": "The announcement moves the tennis class from Court 3 to Court 1 without changing its time (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear two friends talking about a concert.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: I heard you went to the orchestra concert last night. Was it very formal? ||Boy: I expected it to be, but it wasn’t. The conductor explained each piece before it was played, which helped. ||Girl: Did you recognise the music? ||Boy: Only the last piece. [4]What I really liked was being able to understand why the other pieces were important before I listened to them[/4].",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "I heard you went to the orchestra concert last night. Was it very formal?"
+        },
+        {
+          "speaker": "boy",
+          "text": "I expected it to be, but it wasn’t. The conductor explained each piece before it was played, which helped."
+        },
+        {
+          "speaker": "girl",
+          "text": "Did you recognise the music?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Only the last piece. What I really liked was being able to understand why the other pieces were important before I listened to them."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What did the boy enjoy about the concert?",
+          "options": {
+            "A": "hearing music he already knew well",
+            "B": "learning about the music during the event",
+            "C": "wearing informal clothes to the event"
+          },
+          "answer": "B",
+          "explanation": "He liked that the conductor explained the pieces and helped him understand them (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a man leaving a message for a hotel.",
+      "voices": {
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: Hello, I’m calling about my reservation for Friday night. My name is James Carter. I booked a double room because my wife was coming with me, but she now has to work that weekend. ||Man: [5]I’d still like to stay, but could you change my booking to a single room, please?[/5] I won’t need breakfast, as I have an early train. Please confirm by email.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Hello, I’m calling about my reservation for Friday night. My name is James Carter. I booked a double room because my wife was coming with me, but she now has to work that weekend."
+        },
+        {
+          "speaker": "man",
+          "text": "I’d still like to stay, but could you change my booking to a single room, please? I won’t need breakfast, as I have an early train. Please confirm by email."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the man want the hotel to do?",
+          "options": {
+            "A": "cancel his booking completely",
+            "B": "change the type of room booked",
+            "C": "provide him with an early breakfast"
+          },
+          "answer": "B",
+          "explanation": "He asks the hotel to replace his double-room booking with a single room (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to her tutor.",
+      "voices": {
+        "tutor": "en-GB-SoniaNeural",
+        "student": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Tutor: Have you decided what to do for your science project, Rosa? ||Student: I wanted to study local river water, but another student has already chosen that. Then I considered recycling at school. ||Tutor: That could work. ||Student: Perhaps, but [6]I’ve found a simple way of measuring air pollution near busy roads, and I’d really like to investigate that instead[/6]. ||Tutor: Good. Write up your plan this week.",
+      "dialogue": [
+        {
+          "speaker": "tutor",
+          "text": "Have you decided what to do for your science project, Rosa?"
+        },
+        {
+          "speaker": "student",
+          "text": "I wanted to study local river water, but another student has already chosen that. Then I considered recycling at school."
+        },
+        {
+          "speaker": "tutor",
+          "text": "That could work."
+        },
+        {
+          "speaker": "student",
+          "text": "Perhaps, but I’ve found a simple way of measuring air pollution near busy roads, and I’d really like to investigate that instead."
+        },
+        {
+          "speaker": "tutor",
+          "text": "Good. Write up your plan this week."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What has Rosa decided to study?",
+          "options": {
+            "A": "pollution caused by traffic",
+            "B": "recycling in her school",
+            "C": "the quality of river water"
+          },
+          "answer": "A",
+          "explanation": "Rosa says she wants to investigate air pollution near busy roads (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear a woman talking about a cooking course.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Did you enjoy the cooking course, Leila? ||Woman: Very much. I was afraid everyone else would already be experienced, but we were all beginners. The teacher gave clear instructions, and we cooked some lovely meals. ||Presenter: Will you go again? ||Woman: Probably, though [7]I wish each lesson had been longer, because we always had to hurry when preparing the final dish[/7].",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Did you enjoy the cooking course, Leila?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Very much. I was afraid everyone else would already be experienced, but we were all beginners. The teacher gave clear instructions, and we cooked some lovely meals."
+        },
+        {
+          "speaker": "presenter",
+          "text": "Will you go again?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Probably, though I wish each lesson had been longer, because we always had to hurry when preparing the final dish."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What criticism does Leila make about the course?",
+          "options": {
+            "A": "The lessons were too short.",
+            "B": "The recipes were too difficult.",
+            "C": "The other students had more experience."
+          },
+          "answer": "A",
+          "explanation": "She says she wished lessons were longer because they had to hurry with the final dish (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a man talking on local radio about a library.",
+      "voices": {
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: Our town library has just reopened after three months of building work. The children’s section is now twice its previous size, and there are new computers beside the information desk. It is also open on Sunday afternoons for the first time. ||Man: [8]To celebrate the reopening, all adults who join this week will receive a voucher for a free coffee in the library café[/8].",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Our town library has just reopened after three months of building work. The children’s section is now twice its previous size, and there are new computers beside the information desk. It is also open on Sunday afternoons for the first time."
+        },
+        {
+          "speaker": "man",
+          "text": "To celebrate the reopening, all adults who join this week will receive a voucher for a free coffee in the library café."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is available at the library this week?",
+          "options": {
+            "A": "free use of new computers",
+            "B": "a longer opening day on Sunday",
+            "C": "a free drink for new adult members"
+          },
+          "answer": "C",
+          "explanation": "He says adults joining this week receive a voucher for a free coffee (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test5_part1.mp3"
+}

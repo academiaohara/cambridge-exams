@@ -1,0 +1,296 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message on an answering machine.",
+      "voices": {
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: Hi, Emma. It’s Jack from the drama club. Rehearsal is still at seven tonight, and we’re still using the theatre. The main doors are being painted, though, so they’ll be locked. ||Man: [1]When you arrive, go round the back and use the small entrance beside the café[/1]. I’ll leave your script with Ben if you get there before me. See you later.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Hi, Emma. It’s Jack from the drama club. Rehearsal is still at seven tonight, and we’re still using the theatre. The main doors are being painted, though, so they’ll be locked."
+        },
+        {
+          "speaker": "man",
+          "text": "When you arrive, go round the back and use the small entrance beside the café. I’ll leave your script with Ben if you get there before me. See you later."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does Jack ask Emma to do?",
+          "options": {
+            "A": "bring her copy of the script",
+            "B": "enter the building by a different door",
+            "C": "meet him in the café"
+          },
+          "answer": "B",
+          "explanation": "Jack tells Emma to use the small entrance beside the café because the main doors are locked (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear a conversation between a father and his daughter.",
+      "voices": {
+        "daughter": "en-GB-LibbyNeural",
+        "father": "en-GB-RyanNeural"
+      },
+      "audio_script": "Daughter: Dad, can you help me with my history project tonight? I’ve found the pictures online, but the printer isn’t working. ||Father: I could look at it after dinner. Do you need the pictures tomorrow? ||Daughter: Yes. [2]The project itself is finished, but I need you to print these pages at your office before my first lesson[/2]. ||Father: Fine. Email them to me now.",
+      "dialogue": [
+        {
+          "speaker": "daughter",
+          "text": "Dad, can you help me with my history project tonight? I’ve found the pictures online, but the printer isn’t working."
+        },
+        {
+          "speaker": "father",
+          "text": "I could look at it after dinner. Do you need the pictures tomorrow?"
+        },
+        {
+          "speaker": "daughter",
+          "text": "Yes. The project itself is finished, but I need you to print these pages at your office before my first lesson."
+        },
+        {
+          "speaker": "father",
+          "text": "Fine. Email them to me now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What does the daughter want her father to do?",
+          "options": {
+            "A": "finish writing her project",
+            "B": "take some information to school",
+            "C": "produce copies of some pages"
+          },
+          "answer": "C",
+          "explanation": "She says the project is finished but asks her father to print pages at his office (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement to students at a college.",
+      "voices": {
+        "lecturer": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Lecturer: Could I remind everyone about tomorrow’s English exam? Your start time has not changed; you must be seated by nine fifteen. However, there’s a problem with the heating in the sports hall. ||Lecturer: [3]Instead of going there, all candidates should report to Room 24 in the new building[/3]. Notices showing the route have been put up near reception.",
+      "dialogue": [
+        {
+          "speaker": "lecturer",
+          "text": "Could I remind everyone about tomorrow’s English exam? Your start time has not changed; you must be seated by nine fifteen. However, there’s a problem with the heating in the sports hall."
+        },
+        {
+          "speaker": "lecturer",
+          "text": "Instead of going there, all candidates should report to Room 24 in the new building. Notices showing the route have been put up near reception."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What information does the lecturer give the students?",
+          "options": {
+            "A": "Their exam will take place in another room.",
+            "B": "Their exam will begin later than planned.",
+            "C": "They should collect a notice from reception."
+          },
+          "answer": "A",
+          "explanation": "The lecturer says candidates must report to Room 24 instead of the sports hall (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a woman talking about swimming.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Helen, you’ve just completed your first long-distance swimming event. Were you pleased with your time? ||Woman: It was slower than I’d hoped, and the water was freezing at first. But that didn’t matter in the end. [4]I was delighted when I heard our team had raised enough money to buy new equipment for the local rescue service[/4]. That made all the training worthwhile.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Helen, you’ve just completed your first long-distance swimming event. Were you pleased with your time?"
+        },
+        {
+          "speaker": "woman",
+          "text": "It was slower than I’d hoped, and the water was freezing at first. But that didn’t matter in the end. I was delighted when I heard our team had raised enough money to buy new equipment for the local rescue service. That made all the training worthwhile."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What is Helen happiest about?",
+          "options": {
+            "A": "getting used to cold water",
+            "B": "collecting money for a local organisation",
+            "C": "finishing the event faster than expected"
+          },
+          "answer": "B",
+          "explanation": "Helen says she was delighted that the team raised money for new rescue-service equipment (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a guide talking about an exhibition at a museum.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: This room contains paintings of the coast by several local artists. Some have been lent by families in the town, while others belong to the museum. The building itself was once a fishing warehouse. ||Guide: [5]The unusual thing about this exhibition is that none of these paintings has ever been shown to the public before[/5]. Please take your time before continuing upstairs.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "This room contains paintings of the coast by several local artists. Some have been lent by families in the town, while others belong to the museum. The building itself was once a fishing warehouse."
+        },
+        {
+          "speaker": "guide",
+          "text": "The unusual thing about this exhibition is that none of these paintings has ever been shown to the public before. Please take your time before continuing upstairs."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the guide say is special about the exhibition?",
+          "options": {
+            "A": "It contains pictures by famous foreign artists.",
+            "B": "It is being held in a recently opened building.",
+            "C": "The paintings have not been displayed before."
+          },
+          "answer": "C",
+          "explanation": "The guide explains that none of the paintings has ever been shown to the public before (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear two people talking about a restaurant.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Did you try that new Italian restaurant near the station? ||Man: Yes, on Friday. The waiter was friendly, though we waited ages for our drinks. ||Woman: Was the food any good? ||Man: The pasta was fine, but not especially unusual. [6]What surprised me was the size of the meal; I couldn’t finish it, and the price was quite reasonable[/6]. ||Woman: Sounds worth trying, then.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you try that new Italian restaurant near the station?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, on Friday. The waiter was friendly, though we waited ages for our drinks."
+        },
+        {
+          "speaker": "woman",
+          "text": "Was the food any good?"
+        },
+        {
+          "speaker": "man",
+          "text": "The pasta was fine, but not especially unusual. What surprised me was the size of the meal; I couldn’t finish it, and the price was quite reasonable."
+        },
+        {
+          "speaker": "woman",
+          "text": "Sounds worth trying, then."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What did the man like about the restaurant?",
+          "options": {
+            "A": "The staff served him very quickly.",
+            "B": "The meal was good value for money.",
+            "C": "The cooking was highly original."
+          },
+          "answer": "B",
+          "explanation": "He says the meal was very large and the price was reasonable, meaning it offered good value (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear an interview with an author about her latest book.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "author": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Presenter: Your new novel is about sailors working on ships a hundred years ago. Was the research difficult? ||Author: Finding records took time, and I had to learn a lot of technical words. But [7]the best part was interviewing retired sailors, who told me stories I could never have found in a library[/7]. I enjoyed that so much that I’m already planning another sea story.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Your new novel is about sailors working on ships a hundred years ago. Was the research difficult?"
+        },
+        {
+          "speaker": "author",
+          "text": "Finding records took time, and I had to learn a lot of technical words. But the best part was interviewing retired sailors, who told me stories I could never have found in a library. I enjoyed that so much that I’m already planning another sea story."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What did the author enjoy most about her research?",
+          "options": {
+            "A": "learning specialist language",
+            "B": "looking for old written records",
+            "C": "talking to people with relevant experience"
+          },
+          "answer": "C",
+          "explanation": "The author says the best part was interviewing retired sailors and hearing their stories (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear two students discussing a presentation.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: How did your geography presentation go this morning? You looked nervous beforehand. ||Boy: I was. I nearly asked the teacher to let me do it next week instead. Once I started, though, it was fine. ||Girl: Did the class ask anything difficult? ||Boy: Not really. [8]In fact, answering their questions was the part I enjoyed most, because it felt like a real discussion[/8].",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "How did your geography presentation go this morning? You looked nervous beforehand."
+        },
+        {
+          "speaker": "boy",
+          "text": "I was. I nearly asked the teacher to let me do it next week instead. Once I started, though, it was fine."
+        },
+        {
+          "speaker": "girl",
+          "text": "Did the class ask anything difficult?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Not really. In fact, answering their questions was the part I enjoyed most, because it felt like a real discussion."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What does the boy say about giving his presentation?",
+          "options": {
+            "A": "He particularly liked the discussion afterwards.",
+            "B": "He wishes he had given it at a later date.",
+            "C": "He found the audience’s questions too difficult."
+          },
+          "answer": "A",
+          "explanation": "He says answering the questions was the part he enjoyed most because it felt like a discussion (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test1_part1.mp3"
+}

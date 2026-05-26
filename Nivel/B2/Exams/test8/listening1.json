@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message on an answering machine from a sports coach.",
+      "voices": {
+        "coach": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Coach: Hi, Leo, it’s Sarah from the basketball team. I know you can’t play in Saturday’s match because of your ankle. Don’t worry—we’ve found another player. ||Coach: [1]Would you still be able to come and keep a record of the score for us? Our usual scorer is away[/1]. The match starts at two, and I can give you a lift home afterwards. Let me know.",
+      "dialogue": [
+        {
+          "speaker": "coach",
+          "text": "Hi, Leo, it’s Sarah from the basketball team. I know you can’t play in Saturday’s match because of your ankle. Don’t worry—we’ve found another player."
+        },
+        {
+          "speaker": "coach",
+          "text": "Would you still be able to come and keep a record of the score for us? Our usual scorer is away. The match starts at two, and I can give you a lift home afterwards. Let me know."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does the coach ask Leo to do?",
+          "options": {
+            "A": "replace an injured player",
+            "B": "write down the score during a match",
+            "C": "arrange transport for the team"
+          },
+          "answer": "B",
+          "explanation": "Sarah says the team has a player but needs Leo to keep a record of the score (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two people talking about an outdoor market.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Did you find anything at the craft market? I know you wanted a birthday present for your sister. ||Man: I bought her a handmade bag. There were lovely bowls too, but they were too expensive. ||Woman: Was the market easy to find? ||Man: Yes, and [2]I liked being able to talk to the people who had actually made the things they were selling[/2]. It made shopping more interesting.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you find anything at the craft market? I know you wanted a birthday present for your sister."
+        },
+        {
+          "speaker": "man",
+          "text": "I bought her a handmade bag. There were lovely bowls too, but they were too expensive."
+        },
+        {
+          "speaker": "woman",
+          "text": "Was the market easy to find?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, and I liked being able to talk to the people who had actually made the things they were selling. It made shopping more interesting."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the man enjoy about the market?",
+          "options": {
+            "A": "meeting the makers of the products",
+            "B": "finding very cheap goods",
+            "C": "discovering it by chance"
+          },
+          "answer": "A",
+          "explanation": "He says talking to the people who had made the products made the shopping experience more interesting (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear a woman talking to a receptionist at a language school.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "receptionist": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: I’d like to join an evening Spanish class. I studied a little at school, but that was years ago. ||Receptionist: Beginners meet on Tuesdays, and the next level meets on Thursdays. You can take a short test to decide which is suitable. ||Woman: [3]I’d prefer to start at the beginning rather than find the lessons too difficult, so I’ll choose Tuesday[/3]. ||Receptionist: Fine. The first class is next week.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’d like to join an evening Spanish class. I studied a little at school, but that was years ago."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "Beginners meet on Tuesdays, and the next level meets on Thursdays. You can take a short test to decide which is suitable."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’d prefer to start at the beginning rather than find the lessons too difficult, so I’ll choose Tuesday."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "Fine. The first class is next week."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "Why does the woman choose the Tuesday class?",
+          "options": {
+            "A": "It is cheaper than the other class.",
+            "B": "It begins sooner than the other class.",
+            "C": "She wants to study at beginner level."
+          },
+          "answer": "C",
+          "explanation": "She says she would rather start at the beginning than find lessons too difficult (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a man on the radio talking about his first job.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Presenter: What was your first job, Omar? ||Man: I worked in a small supermarket during my summer holiday. Stacking shelves was tiring, and I hated getting up early on Saturdays. But the customers were usually friendly. [4]What I learned there was how important it is to arrive on time, because other people can’t start their jobs properly if you’re late[/4]. That lesson has stayed with me.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "What was your first job, Omar?"
+        },
+        {
+          "speaker": "man",
+          "text": "I worked in a small supermarket during my summer holiday. Stacking shelves was tiring, and I hated getting up early on Saturdays. But the customers were usually friendly. What I learned there was how important it is to arrive on time, because other people can’t start their jobs properly if you’re late. That lesson has stayed with me."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What did Omar learn from his first job?",
+          "options": {
+            "A": "how to deal with unfriendly customers",
+            "B": "why being punctual matters",
+            "C": "how to work without taking breaks"
+          },
+          "answer": "B",
+          "explanation": "Omar says the job taught him the importance of arriving on time for other workers (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a guide talking to visitors at a historic house.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: Welcome to Rosewood House. The rooms downstairs show how the family lived in the eighteenth century, and the kitchen contains original cooking equipment. Please remember that photography is not allowed indoors. ||Guide: [5]This afternoon, for the first time, visitors can explore the small writing room in the tower, which was recently made safe after restoration work[/5]. The stairs are quite narrow.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Welcome to Rosewood House. The rooms downstairs show how the family lived in the eighteenth century, and the kitchen contains original cooking equipment. Please remember that photography is not allowed indoors."
+        },
+        {
+          "speaker": "guide",
+          "text": "This afternoon, for the first time, visitors can explore the small writing room in the tower, which was recently made safe after restoration work. The stairs are quite narrow."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What is new for visitors today?",
+          "options": {
+            "A": "They may take photographs in the house.",
+            "B": "They may visit a previously unavailable room.",
+            "C": "They can see newly discovered kitchen equipment."
+          },
+          "answer": "B",
+          "explanation": "The guide says visitors can explore the tower writing room for the first time after restoration (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student speaking to a college administrator.",
+      "voices": {
+        "student": "en-GB-LibbyNeural",
+        "administrator": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Student: I’ve received my timetable, but I think there’s been a mistake. I’m listed for computer design on Wednesday mornings. ||Administrator: Didn’t you choose that course? ||Student: I considered it, but [6]I put my name down for photography because it fits better with the media course I’m already doing[/6]. ||Administrator: I see. There’s still space in photography, so I’ll change it for you.",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "I’ve received my timetable, but I think there’s been a mistake. I’m listed for computer design on Wednesday mornings."
+        },
+        {
+          "speaker": "administrator",
+          "text": "Didn’t you choose that course?"
+        },
+        {
+          "speaker": "student",
+          "text": "I considered it, but I put my name down for photography because it fits better with the media course I’m already doing."
+        },
+        {
+          "speaker": "administrator",
+          "text": "I see. There’s still space in photography, so I’ll change it for you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What is the student’s problem?",
+          "options": {
+            "A": "He has been given the wrong course.",
+            "B": "Two of his classes are at the same time.",
+            "C": "He has not received a timetable."
+          },
+          "answer": "A",
+          "explanation": "He says he registered for photography but has been listed for computer design (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear a woman telling a friend about a train journey.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: How was your journey home yesterday? I heard the trains were delayed. ||Woman: Mine left only ten minutes late, so that wasn’t too bad. There was no café service on board, but I’d brought food. ||Man: So no problems? ||Woman: Well, [7]I’d booked a quiet carriage so I could work, but a large group talked loudly beside me for the whole journey[/7]. I got nothing done.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How was your journey home yesterday? I heard the trains were delayed."
+        },
+        {
+          "speaker": "woman",
+          "text": "Mine left only ten minutes late, so that wasn’t too bad. There was no café service on board, but I’d brought food."
+        },
+        {
+          "speaker": "man",
+          "text": "So no problems?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, I’d booked a quiet carriage so I could work, but a large group talked loudly beside me for the whole journey. I got nothing done."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What annoyed the woman on her train journey?",
+          "options": {
+            "A": "There were no refreshments available.",
+            "B": "Other passengers made too much noise.",
+            "C": "The train arrived very late."
+          },
+          "answer": "B",
+          "explanation": "She complains that loud passengers in the quiet carriage prevented her from working (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a photography competition.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Local residents are invited to enter the Riverdale Photography Competition. This year’s theme is ‘Weather in Our Town’, and entries must be uploaded by 15 October. Normally, entrants may submit two photographs. ||Presenter: [8]Students at schools in Riverdale may enter three pictures this year, and their entries will be displayed at the town hall in November[/8]. Entry remains free for everyone.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Local residents are invited to enter the Riverdale Photography Competition. This year’s theme is ‘Weather in Our Town’, and entries must be uploaded by 15 October. Normally, entrants may submit two photographs."
+        },
+        {
+          "speaker": "presenter",
+          "text": "Students at schools in Riverdale may enter three pictures this year, and their entries will be displayed at the town hall in November. Entry remains free for everyone."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What special opportunity is offered to local school students?",
+          "options": {
+            "A": "They may submit an extra photograph.",
+            "B": "They will be given photography lessons.",
+            "C": "They can enter after the normal closing date."
+          },
+          "answer": "A",
+          "explanation": "The presenter says local school students may enter three photos instead of the usual two (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test8_part1.mp3"
+}

@@ -1,0 +1,308 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a man talking to a receptionist at a dentist’s surgery.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "receptionist": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Good morning. I’m booked to see the dentist at eleven, but my train has been delayed and I won’t reach town until nearly twelve. ||Receptionist: We could give you an appointment at three this afternoon, or tomorrow morning at nine. ||Man: [1]I’ve got meetings all afternoon, so tomorrow at nine would be much easier for me[/1]. ||Receptionist: That’s fine. I’ll change it now.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Good morning. I’m booked to see the dentist at eleven, but my train has been delayed and I won’t reach town until nearly twelve."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "We could give you an appointment at three this afternoon, or tomorrow morning at nine."
+        },
+        {
+          "speaker": "man",
+          "text": "I’ve got meetings all afternoon, so tomorrow at nine would be much easier for me."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "That’s fine. I’ll change it now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does the man decide to do?",
+          "options": {
+            "A": "see the dentist the next morning",
+            "B": "arrive late for his original appointment",
+            "C": "return to the surgery that afternoon"
+          },
+          "answer": "A",
+          "explanation": "He accepts the appointment for tomorrow at nine because he is busy during the afternoon (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two people talking about a new sports shop.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Have you been into that new sports shop in the shopping centre? ||Man: Yes, I needed running shoes. It looks attractive and there’s a huge range of clothes. ||Woman: Did you buy anything? ||Man: No. [2]There were plenty of assistants, but they were all talking to each other, and after waiting ten minutes for help I gave up[/2]. I’ll order online instead.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you been into that new sports shop in the shopping centre?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, I needed running shoes. It looks attractive and there’s a huge range of clothes."
+        },
+        {
+          "speaker": "woman",
+          "text": "Did you buy anything?"
+        },
+        {
+          "speaker": "man",
+          "text": "No. There were plenty of assistants, but they were all talking to each other, and after waiting ten minutes for help I gave up. I’ll order online instead."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "Why did the man leave the shop without buying anything?",
+          "options": {
+            "A": "He could not find the product he wanted.",
+            "B": "He thought the prices were too high.",
+            "C": "Nobody offered him the help he needed."
+          },
+          "answer": "C",
+          "explanation": "He says staff did not help him even though he waited for ten minutes (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear a radio presenter giving travel information.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: If you’re planning to visit the summer food market in Green Park today, remember there is no parking inside the park. The number 18 bus stops outside the main entrance as usual. ||Presenter: [3]Because of road repairs, anyone travelling by car should use the car park at the football stadium and take the free shuttle bus from there[/3]. The market closes at six o’clock.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "If you’re planning to visit the summer food market in Green Park today, remember there is no parking inside the park. The number 18 bus stops outside the main entrance as usual."
+        },
+        {
+          "speaker": "presenter",
+          "text": "Because of road repairs, anyone travelling by car should use the car park at the football stadium and take the free shuttle bus from there. The market closes at six o’clock."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What advice does the presenter give people travelling by car?",
+          "options": {
+            "A": "park at another location and continue by bus",
+            "B": "avoid visiting until the road repairs end",
+            "C": "use a different entrance to the park"
+          },
+          "answer": "A",
+          "explanation": "Drivers are asked to park at the football stadium and use the free shuttle bus (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a teacher talking to a group of students.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Teacher: Before Friday’s visit to the science centre, please check the information sheet I’ve emailed you. You need to bring a packed lunch, as the café is closed for repairs. We’ll meet outside school at eight thirty. ||Teacher: [4]Several of you still haven’t returned the permission form; without that signed form, you won’t be allowed onto the coach[/4]. Bring it tomorrow at the latest.",
+      "dialogue": [
+        {
+          "speaker": "teacher",
+          "text": "Before Friday’s visit to the science centre, please check the information sheet I’ve emailed you. You need to bring a packed lunch, as the café is closed for repairs. We’ll meet outside school at eight thirty."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Several of you still haven’t returned the permission form; without that signed form, you won’t be allowed onto the coach. Bring it tomorrow at the latest."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What must some students do before the trip?",
+          "options": {
+            "A": "send the teacher their lunch choices",
+            "B": "return a signed document",
+            "C": "meet the coach at a new time"
+          },
+          "answer": "B",
+          "explanation": "The teacher says students without a returned signed permission form cannot get on the coach (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer speaking to a travel agent.",
+      "voices": {
+        "agent": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Agent: Have you chosen a holiday yet? The apartment in Greece has a swimming pool, and the hotel in Malta is closer to the beach. ||Woman: Both look nice, but I don’t want to hire a car. ||Agent: In that case, Malta may suit you. ||Woman: Yes. [5]Being able to walk to the sea matters more to me than having a pool, so I’ll book the hotel[/5].",
+      "dialogue": [
+        {
+          "speaker": "agent",
+          "text": "Have you chosen a holiday yet? The apartment in Greece has a swimming pool, and the hotel in Malta is closer to the beach."
+        },
+        {
+          "speaker": "woman",
+          "text": "Both look nice, but I don’t want to hire a car."
+        },
+        {
+          "speaker": "agent",
+          "text": "In that case, Malta may suit you."
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes. Being able to walk to the sea matters more to me than having a pool, so I’ll book the hotel."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the woman choose the hotel in Malta?",
+          "options": {
+            "A": "It is within walking distance of the beach.",
+            "B": "It offers a car hire service.",
+            "C": "It has better swimming facilities."
+          },
+          "answer": "A",
+          "explanation": "She says walking to the sea is more important to her and therefore chooses the hotel (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a man being interviewed about learning to play the guitar.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Presenter: You started guitar lessons only six months ago. What have you found hardest? ||Man: Remembering the notes wasn’t as bad as I expected, and my teacher says my sense of rhythm is good. At first my fingers hurt, but that stopped quite quickly. [6]The real difficulty is playing in front of other people; even my family makes me nervous[/6]. ||Presenter: That should improve with practice.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "You started guitar lessons only six months ago. What have you found hardest?"
+        },
+        {
+          "speaker": "man",
+          "text": "Remembering the notes wasn’t as bad as I expected, and my teacher says my sense of rhythm is good. At first my fingers hurt, but that stopped quite quickly. The real difficulty is playing in front of other people; even my family makes me nervous."
+        },
+        {
+          "speaker": "presenter",
+          "text": "That should improve with practice."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the man find most difficult?",
+          "options": {
+            "A": "performing for an audience",
+            "B": "following the rhythm of a song",
+            "C": "learning where notes are played"
+          },
+          "answer": "A",
+          "explanation": "He says the real difficulty is playing in front of other people because it makes him nervous (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two colleagues talking about an office event.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Are you coming to the office picnic on Sunday? I heard it might be cancelled if it rains. ||Man: The manager emailed this morning. It’s going ahead, but not in Riverside Park. ||Woman: Oh, where is it now? ||Man: [7]They’ve booked the community hall so that the weather won’t matter, and we’re still meeting at midday[/7]. ||Woman: Good. I’ll bring the salad I promised.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you coming to the office picnic on Sunday? I heard it might be cancelled if it rains."
+        },
+        {
+          "speaker": "man",
+          "text": "The manager emailed this morning. It’s going ahead, but not in Riverside Park."
+        },
+        {
+          "speaker": "woman",
+          "text": "Oh, where is it now?"
+        },
+        {
+          "speaker": "man",
+          "text": "They’ve booked the community hall so that the weather won’t matter, and we’re still meeting at midday."
+        },
+        {
+          "speaker": "woman",
+          "text": "Good. I’ll bring the salad I promised."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What has changed about the office picnic?",
+          "options": {
+            "A": "It will be held indoors.",
+            "B": "It will start later.",
+            "C": "It will take place on another day."
+          },
+          "answer": "A",
+          "explanation": "The man says the picnic will be in the community hall instead of the park (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a presenter talking about a local running event.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Entries are now open for the Harbour Run, which takes place on 10 September. There are five-kilometre and ten-kilometre races, and anyone aged over fourteen may enter. All runners get a T-shirt after finishing. ||Presenter: [8]People who register before Friday will pay fifteen pounds instead of the usual twenty-pound entry fee[/8]. The route map is available online.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Entries are now open for the Harbour Run, which takes place on 10 September. There are five-kilometre and ten-kilometre races, and anyone aged over fourteen may enter. All runners get a T-shirt after finishing."
+        },
+        {
+          "speaker": "presenter",
+          "text": "People who register before Friday will pay fifteen pounds instead of the usual twenty-pound entry fee. The route map is available online."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is available to runners until Friday?",
+          "options": {
+            "A": "a reduced entry price",
+            "B": "a free route map by post",
+            "C": "the choice of a shorter race"
+          },
+          "answer": "A",
+          "explanation": "The presenter says runners who register before Friday pay less than the usual entry fee (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test6_part1.mp3"
+}

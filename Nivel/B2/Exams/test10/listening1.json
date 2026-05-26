@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message on an answering machine from a library.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello, this is the Central Library calling for Daniel West. The history book you requested has arrived, and we’ll hold it for you until Saturday afternoon. You can collect it from the information desk during normal opening hours. ||Woman: [1]Please remember to bring your library card, as we cannot lend reserved books without it[/1]. The library closes at five on Saturday. Goodbye.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello, this is the Central Library calling for Daniel West. The history book you requested has arrived, and we’ll hold it for you until Saturday afternoon. You can collect it from the information desk during normal opening hours."
+        },
+        {
+          "speaker": "woman",
+          "text": "Please remember to bring your library card, as we cannot lend reserved books without it. The library closes at five on Saturday. Goodbye."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does the caller remind Daniel to do?",
+          "options": {
+            "A": "collect his book before Friday",
+            "B": "bring his library card",
+            "C": "return an overdue book"
+          },
+          "answer": "B",
+          "explanation": "The caller states that Daniel must bring his library card to borrow the reserved book (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a day at the beach.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: You went to the beach yesterday, didn’t you? Was the water warm enough to swim? ||Boy: Just about, and the beach itself was cleaner than last year. I thought the wind might be a problem, but it calmed down after lunch. ||Girl: So you had a good day? ||Boy: Mostly. [2]We’d taken everything for a picnic, but a café has opened there and the food looked so good that we wished we hadn’t brought our own[/2].",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "You went to the beach yesterday, didn’t you? Was the water warm enough to swim?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Just about, and the beach itself was cleaner than last year. I thought the wind might be a problem, but it calmed down after lunch."
+        },
+        {
+          "speaker": "girl",
+          "text": "So you had a good day?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Mostly. We’d taken everything for a picnic, but a café has opened there and the food looked so good that we wished we hadn’t brought our own."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What does the boy regret about the beach trip?",
+          "options": {
+            "A": "going swimming in cold water",
+            "B": "visiting on a windy day",
+            "C": "taking food with him"
+          },
+          "answer": "C",
+          "explanation": "He says the café food looked good and they wished they had not brought their own picnic (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a theatre.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Ladies and gentlemen, tonight’s performance of The Mountain Road will begin in approximately ten minutes. Please take your seats now. Photography is not permitted during the play. ||Announcer: [3]We should also inform you that the actor playing the hotel owner is ill, and his role will be performed by Michael Reed this evening[/3]. Programmes are still available in the entrance hall.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Ladies and gentlemen, tonight’s performance of The Mountain Road will begin in approximately ten minutes. Please take your seats now. Photography is not permitted during the play."
+        },
+        {
+          "speaker": "announcer",
+          "text": "We should also inform you that the actor playing the hotel owner is ill, and his role will be performed by Michael Reed this evening. Programmes are still available in the entrance hall."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What change is announced to the audience?",
+          "options": {
+            "A": "The play will start later than expected.",
+            "B": "A different actor will perform one role.",
+            "C": "Photography will be allowed after the play."
+          },
+          "answer": "B",
+          "explanation": "The announcement says Michael Reed will take over the role of the ill actor (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a young man who works in a zoo.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Presenter: You work at the city zoo, Ryan. Is it the job you imagined? ||Man: I always wanted to care for animals, but I didn’t realise how much cleaning would be involved! I don’t mind that, though. Visitors sometimes ask difficult questions, which can be worrying. [4]I particularly enjoy preparing food for the animals because it has taught me what each species needs to stay healthy[/4].",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "You work at the city zoo, Ryan. Is it the job you imagined?"
+        },
+        {
+          "speaker": "man",
+          "text": "I always wanted to care for animals, but I didn’t realise how much cleaning would be involved! I don’t mind that, though. Visitors sometimes ask difficult questions, which can be worrying. I particularly enjoy preparing food for the animals because it has taught me what each species needs to stay healthy."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What does Ryan like best about his zoo work?",
+          "options": {
+            "A": "answering visitors’ questions",
+            "B": "learning through preparing animal food",
+            "C": "keeping animal areas clean"
+          },
+          "answer": "B",
+          "explanation": "Ryan says he particularly enjoys preparing food because it teaches him about the animals’ needs (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a woman speaking to a bicycle shop assistant.",
+      "voices": {
+        "assistant": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Assistant: Have you decided which bike helmet you’d like? The red one is our lightest model, and the black one is currently reduced in price. ||Woman: I like the red one, but it doesn’t feel quite right when I put it on. ||Assistant: This blue model adjusts at the back and comes in three sizes. ||Woman: [5]That fits much more comfortably, which matters most to me, so I’ll take it even though it isn’t in the sale[/5].",
+      "dialogue": [
+        {
+          "speaker": "assistant",
+          "text": "Have you decided which bike helmet you’d like? The red one is our lightest model, and the black one is currently reduced in price."
+        },
+        {
+          "speaker": "woman",
+          "text": "I like the red one, but it doesn’t feel quite right when I put it on."
+        },
+        {
+          "speaker": "assistant",
+          "text": "This blue model adjusts at the back and comes in three sizes."
+        },
+        {
+          "speaker": "woman",
+          "text": "That fits much more comfortably, which matters most to me, so I’ll take it even though it isn’t in the sale."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the woman choose the blue helmet?",
+          "options": {
+            "A": "It costs less than the others.",
+            "B": "It is lighter than the others.",
+            "C": "It fits her better than the others."
+          },
+          "answer": "C",
+          "explanation": "She says comfort matters most and chooses the blue helmet because it fits better (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to his teacher about a course.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural",
+        "student": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Teacher: Have you enjoyed the computer course, Daniel? ||Student: Yes, especially making a simple website. I thought the programming part might be impossible, but the exercises explained it well. ||Teacher: Are you going to take the next course? ||Student: [6]I’d like to, but it runs on Wednesday evenings, and that’s when I train with the school basketball team[/6]. I don’t want to miss that.",
+      "dialogue": [
+        {
+          "speaker": "teacher",
+          "text": "Have you enjoyed the computer course, Daniel?"
+        },
+        {
+          "speaker": "student",
+          "text": "Yes, especially making a simple website. I thought the programming part might be impossible, but the exercises explained it well."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Are you going to take the next course?"
+        },
+        {
+          "speaker": "student",
+          "text": "I’d like to, but it runs on Wednesday evenings, and that’s when I train with the school basketball team. I don’t want to miss that."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why will Daniel probably not take the next course?",
+          "options": {
+            "A": "He found the programming too difficult.",
+            "B": "It clashes with a regular activity.",
+            "C": "He is no longer interested in websites."
+          },
+          "answer": "B",
+          "explanation": "Daniel says the next course takes place when he normally attends basketball training (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear a woman talking to a friend about running a race.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: I saw your photo from the ten-kilometre race. Did it go well? ||Woman: Better than expected. I was worried I’d be too slow, as I hadn’t trained enough, but I completed it comfortably. ||Man: Did you win anything? ||Woman: No, and that wasn’t my aim. [7]My younger sister ran it too, and crossing the finishing line together was what made it such a memorable day[/7].",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I saw your photo from the ten-kilometre race. Did it go well?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Better than expected. I was worried I’d be too slow, as I hadn’t trained enough, but I completed it comfortably."
+        },
+        {
+          "speaker": "man",
+          "text": "Did you win anything?"
+        },
+        {
+          "speaker": "woman",
+          "text": "No, and that wasn’t my aim. My younger sister ran it too, and crossing the finishing line together was what made it such a memorable day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What made the race special for the woman?",
+          "options": {
+            "A": "She finished it faster than expected.",
+            "B": "She received a prize at the end.",
+            "C": "She shared the experience with her sister."
+          },
+          "answer": "C",
+          "explanation": "She says crossing the finishing line together with her sister made the day memorable (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a town museum.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The Maritime Museum will open a new exhibition about local fishing boats on Saturday. It includes films, photographs and a children’s model-building area. Normal museum admission applies throughout the month. ||Presenter: [8]On the opening day only, visitors who arrive before midday can join a guided tour of the exhibition without booking in advance[/8]. The museum café will also serve seafood dishes all weekend.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The Maritime Museum will open a new exhibition about local fishing boats on Saturday. It includes films, photographs and a children’s model-building area. Normal museum admission applies throughout the month."
+        },
+        {
+          "speaker": "presenter",
+          "text": "On the opening day only, visitors who arrive before midday can join a guided tour of the exhibition without booking in advance. The museum café will also serve seafood dishes all weekend."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is available to visitors on Saturday morning?",
+          "options": {
+            "A": "free admission to the museum",
+            "B": "a guided tour without advance booking",
+            "C": "free food in the museum café"
+          },
+          "answer": "B",
+          "explanation": "The presenter says visitors before midday on opening day may join a guided tour without booking (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test10_part1.mp3"
+}

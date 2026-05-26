@@ -1,0 +1,297 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear two people talking about a film they have just seen.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: I thought that comedy was quite funny, especially the part in the restaurant. ||Woman: Yes, the actors were good, and I didn’t mind that it lasted over two hours. ||Man: Something bothered you, though. ||Woman: [1]It was the couple behind us. They kept discussing what was happening, so I sometimes couldn’t hear the actors[/1]. I wish people would wait until afterwards to talk.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I thought that comedy was quite funny, especially the part in the restaurant."
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, the actors were good, and I didn’t mind that it lasted over two hours."
+        },
+        {
+          "speaker": "man",
+          "text": "Something bothered you, though."
+        },
+        {
+          "speaker": "woman",
+          "text": "It was the couple behind us. They kept discussing what was happening, so I sometimes couldn’t hear the actors. I wish people would wait until afterwards to talk."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "Why did the woman not fully enjoy the film?",
+          "options": {
+            "A": "The film was too long.",
+            "B": "Other people in the cinema were noisy.",
+            "C": "She found the actors difficult to understand."
+          },
+          "answer": "B",
+          "explanation": "She complains that the couple behind them kept talking and made it hard to hear the film (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear a woman talking on the radio about a business she runs.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Mia, you started your company selling handmade soap just eighteen months ago. What’s next? ||Woman: I’ve already introduced new scents, so I’m not planning more products yet. And although online sales are increasing, I can manage them myself. [2]What I really need now is another person to help prepare and pack the orders, so I’m advertising for someone next month[/2].",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Mia, you started your company selling handmade soap just eighteen months ago. What’s next?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve already introduced new scents, so I’m not planning more products yet. And although online sales are increasing, I can manage them myself. What I really need now is another person to help prepare and pack the orders, so I’m advertising for someone next month."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What is the woman planning to do?",
+          "options": {
+            "A": "employ an additional worker",
+            "B": "open a shop in another town",
+            "C": "produce a new range of goods"
+          },
+          "answer": "A",
+          "explanation": "She says she needs another person to help with orders and will advertise for someone (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear a message on an answering machine.",
+      "voices": {
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: Hi, Louise. It’s Peter about Thursday’s staff meeting. I said it would start at four, but the manager has to leave early for the airport. ||Man: [3]She’s asked us all to be in the conference room by half past two instead[/3]. It should finish before four. Please tell Rob, as I haven’t got his mobile number. Thanks.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Hi, Louise. It’s Peter about Thursday’s staff meeting. I said it would start at four, but the manager has to leave early for the airport."
+        },
+        {
+          "speaker": "man",
+          "text": "She’s asked us all to be in the conference room by half past two instead. It should finish before four. Please tell Rob, as I haven’t got his mobile number. Thanks."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "When does the meeting start?",
+          "options": {
+            "A": "2.30",
+            "B": "4.00",
+            "C": "4.30"
+          },
+          "answer": "A",
+          "explanation": "Peter says everyone should be in the conference room by half past two instead of four (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a man and a woman talking about the man’s motorbike.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I haven’t seen your motorbike outside recently. Have you sold it? ||Man: No, I’m keeping it. It needed some repairs after winter, and those were finished last week. The trouble is, [4]I forgot the insurance finished at the end of April, and I can’t ride it until I’ve arranged a new policy[/4]. ||Woman: That’s annoying, especially in this weather.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I haven’t seen your motorbike outside recently. Have you sold it?"
+        },
+        {
+          "speaker": "man",
+          "text": "No, I’m keeping it. It needed some repairs after winter, and those were finished last week. The trouble is, I forgot the insurance finished at the end of April, and I can’t ride it until I’ve arranged a new policy."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s annoying, especially in this weather."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why can’t the man use his motorbike at the moment?",
+          "options": {
+            "A": "It still needs repairs.",
+            "B": "He does not have insurance for it.",
+            "C": "He has decided to sell it."
+          },
+          "answer": "B",
+          "explanation": "He explains that his insurance has ended and he cannot ride until he arranges new cover (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a message from a school secretary on an answering machine.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello. This is a message for parents of children joining tomorrow’s nature walk. The weather forecast is warm, so children should bring plenty of water. Hats will be available from the school office if required. ||Woman: [5]We are sending home a form today, and every child must bring it back with a parent’s signature before they can join the walk[/5]. Thank you.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello. This is a message for parents of children joining tomorrow’s nature walk. The weather forecast is warm, so children should bring plenty of water. Hats will be available from the school office if required."
+        },
+        {
+          "speaker": "woman",
+          "text": "We are sending home a form today, and every child must bring it back with a parent’s signature before they can join the walk. Thank you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the school want parents to do?",
+          "options": {
+            "A": "provide their child with a hat",
+            "B": "sign a form for their child",
+            "C": "come on the walk with their child"
+          },
+          "answer": "B",
+          "explanation": "The secretary says every child must return a form with a parent’s signature (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a customer talking to a shop assistant.",
+      "voices": {
+        "assistant": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Assistant: How are the trousers, sir? ||Man: The jacket fits perfectly, but these are too long. Have you got a shorter pair? ||Assistant: Not in this colour, I’m afraid. We could shorten them here, and they’d be ready by Tuesday. ||Man: The wedding isn’t until Saturday, so [6]I’ll take the suit if you can make that alteration[/6]. ||Assistant: Certainly. I’ll measure them now.",
+      "dialogue": [
+        {
+          "speaker": "assistant",
+          "text": "How are the trousers, sir?"
+        },
+        {
+          "speaker": "man",
+          "text": "The jacket fits perfectly, but these are too long. Have you got a shorter pair?"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Not in this colour, I’m afraid. We could shorten them here, and they’d be ready by Tuesday."
+        },
+        {
+          "speaker": "man",
+          "text": "The wedding isn’t until Saturday, so I’ll take the suit if you can make that alteration."
+        },
+        {
+          "speaker": "assistant",
+          "text": "Certainly. I’ll measure them now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the customer decide to do?",
+          "options": {
+            "A": "return to the shop on another occasion",
+            "B": "buy a different coloured suit",
+            "C": "have part of the suit altered"
+          },
+          "answer": "C",
+          "explanation": "He chooses to take the suit if the trousers can be shortened (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear a shopkeeper being interviewed on the radio.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "shopkeeper": "en-GB-RyanNeural"
+      },
+      "audio_script": "Presenter: Is it difficult running a shop in the village now? ||Shopkeeper: It is. A big supermarket opened outside town, and people can park there easily. Our bus service isn’t perfect either, but that’s not the main issue. [7]Drivers often want to stop here for a quick purchase, yet there’s nowhere near the shops to leave their cars[/7]. So they go elsewhere.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Is it difficult running a shop in the village now?"
+        },
+        {
+          "speaker": "shopkeeper",
+          "text": "It is. A big supermarket opened outside town, and people can park there easily. Our bus service isn’t perfect either, but that’s not the main issue. Drivers often want to stop here for a quick purchase, yet there’s nowhere near the shops to leave their cars. So they go elsewhere."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "Why is the shopkeeper unhappy?",
+          "options": {
+            "A": "Parking near the shops is insufficient.",
+            "B": "The village bus service has stopped.",
+            "C": "Other local shopkeepers are unhelpful."
+          },
+          "answer": "A",
+          "explanation": "The shopkeeper says drivers cannot find anywhere close to the shops to leave their cars (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear an employee talking to her boss.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "boss": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Woman: Could I speak to you about my work computer? It’s become so slow that opening customer files takes several minutes. I’ve tried using the help pages on the company website, but nothing has changed. ||Boss: Shall I ask the technical team to look at it? ||Woman: They already have. [8]They say it’s too old to repair properly and that I should be given a new one[/8].",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Could I speak to you about my work computer? It’s become so slow that opening customer files takes several minutes. I’ve tried using the help pages on the company website, but nothing has changed."
+        },
+        {
+          "speaker": "boss",
+          "text": "Shall I ask the technical team to look at it?"
+        },
+        {
+          "speaker": "woman",
+          "text": "They already have. They say it’s too old to repair properly and that I should be given a new one."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What does the employee want?",
+          "options": {
+            "A": "permission to access the company website",
+            "B": "a replacement computer",
+            "C": "a move to another job"
+          },
+          "answer": "B",
+          "explanation": "She reports that the technical team says her computer is too old and she should receive a new one (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test3_part1.mp3"
+}

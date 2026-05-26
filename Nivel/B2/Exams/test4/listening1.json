@@ -1,0 +1,305 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a news report on the radio.",
+      "voices": {
+        "reporter": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Reporter: Traffic is moving slowly on routes into Eastford this morning. Heavy rain overnight has caused flooding beneath the railway bridge on Market Road. No trains have been affected, but buses using that road have been diverted. ||Reporter: [1]Drivers heading for the town centre should avoid Market Road and use the ring road until the water has been cleared[/1]. Police expect the work to take most of the morning.",
+      "dialogue": [
+        {
+          "speaker": "reporter",
+          "text": "Traffic is moving slowly on routes into Eastford this morning. Heavy rain overnight has caused flooding beneath the railway bridge on Market Road. No trains have been affected, but buses using that road have been diverted."
+        },
+        {
+          "speaker": "reporter",
+          "text": "Drivers heading for the town centre should avoid Market Road and use the ring road until the water has been cleared. Police expect the work to take most of the morning."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What has happened?",
+          "options": {
+            "A": "A road into town cannot be used normally.",
+            "B": "Train services to the town have been cancelled.",
+            "C": "A bus has been involved in an accident."
+          },
+          "answer": "A",
+          "explanation": "The report says flooding means drivers should avoid Market Road and use another route (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear a man talking to the receptionist in a leisure centre.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "receptionist": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: I joined the gym last month, but I haven’t received my membership card yet. I paid online, and the welcome email said the card would come through the post. ||Receptionist: Let me check. Yes, your card is here at reception because [2]we still need a photograph of you before we can activate it; I can take one now[/2]. ||Man: Great. I didn’t realise that was necessary.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I joined the gym last month, but I haven’t received my membership card yet. I paid online, and the welcome email said the card would come through the post."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "Let me check. Yes, your card is here at reception because we still need a photograph of you before we can activate it; I can take one now."
+        },
+        {
+          "speaker": "man",
+          "text": "Great. I didn’t realise that was necessary."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What does the man have to do?",
+          "options": {
+            "A": "pay his membership fee again",
+            "B": "have his photograph taken",
+            "C": "ask for his card to be posted"
+          },
+          "answer": "B",
+          "explanation": "The receptionist says a photograph is required before the membership card can be activated (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear a man and a woman talking about a friend.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Have you heard from Alex since he fell off his bike? ||Woman: I saw him yesterday. He’s bored because he can’t play football, but he’s trying to stay cheerful. ||Man: Is his arm still painful? ||Woman: His arm is fine. [3]It’s his ankle that’s in plaster, and the doctor says he won’t be able to run on it for at least six weeks[/3].",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you heard from Alex since he fell off his bike?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I saw him yesterday. He’s bored because he can’t play football, but he’s trying to stay cheerful."
+        },
+        {
+          "speaker": "man",
+          "text": "Is his arm still painful?"
+        },
+        {
+          "speaker": "woman",
+          "text": "His arm is fine. It’s his ankle that’s in plaster, and the doctor says he won’t be able to run on it for at least six weeks."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What has happened to their friend?",
+          "options": {
+            "A": "He has injured his leg.",
+            "B": "He has stopped enjoying football.",
+            "C": "He has hurt his arm badly."
+          },
+          "answer": "A",
+          "explanation": "The woman says Alex’s ankle is in plaster and he cannot run for six weeks (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a conversation in a lift.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I’m not looking forward to the meeting this afternoon. My boss asked me to redo the whole report yesterday. ||Man: That sounds unfair. Doesn’t he like the work? ||Woman: He said the figures were fine, but wanted a different layout. [4]The trouble is that he gives everyone work at the last minute and expects it finished immediately[/4]. ||Man: That must be stressful.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’m not looking forward to the meeting this afternoon. My boss asked me to redo the whole report yesterday."
+        },
+        {
+          "speaker": "man",
+          "text": "That sounds unfair. Doesn’t he like the work?"
+        },
+        {
+          "speaker": "woman",
+          "text": "He said the figures were fine, but wanted a different layout. The trouble is that he gives everyone work at the last minute and expects it finished immediately."
+        },
+        {
+          "speaker": "man",
+          "text": "That must be stressful."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What does the woman say about her boss?",
+          "options": {
+            "A": "He is too demanding about deadlines.",
+            "B": "He rarely checks her work carefully.",
+            "C": "He is polite and helpful to everyone."
+          },
+          "answer": "A",
+          "explanation": "She complains that he sets tasks at the last minute and expects them completed immediately (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a teacher talking to a student.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural",
+        "student": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Teacher: Emily, I’ve read the first draft of your essay. Your argument is clear, and you’ve used the library book well. ||Student: Do I need to add more information? ||Teacher: No, the content is fine. But [5]before you hand it in, you need to type it up; I can’t accept the handwritten version[/5]. Make sure you include your name at the top. ||Student: I’ll do it tonight.",
+      "dialogue": [
+        {
+          "speaker": "teacher",
+          "text": "Emily, I’ve read the first draft of your essay. Your argument is clear, and you’ve used the library book well."
+        },
+        {
+          "speaker": "student",
+          "text": "Do I need to add more information?"
+        },
+        {
+          "speaker": "teacher",
+          "text": "No, the content is fine. But before you hand it in, you need to type it up; I can’t accept the handwritten version. Make sure you include your name at the top."
+        },
+        {
+          "speaker": "student",
+          "text": "I’ll do it tonight."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What must the student do before handing in her essay?",
+          "options": {
+            "A": "finish researching her essay",
+            "B": "borrow another library book",
+            "C": "prepare a printed version of her essay"
+          },
+          "answer": "C",
+          "explanation": "The teacher says the content is fine but the handwritten draft must be typed before submission (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear an author talking on the radio about a book she has written.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "author": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Presenter: Your biography of the explorer Isabel Brown describes journeys through South America. Did you have to do a lot of research? ||Author: I did. I thought reading her letters would be the hardest part because her handwriting was terrible. But I managed that fairly quickly. [6]What took much longer than expected was checking the historical details in three different archives[/6]. Fortunately, the staff were very helpful.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Your biography of the explorer Isabel Brown describes journeys through South America. Did you have to do a lot of research?"
+        },
+        {
+          "speaker": "author",
+          "text": "I did. I thought reading her letters would be the hardest part because her handwriting was terrible. But I managed that fairly quickly. What took much longer than expected was checking the historical details in three different archives. Fortunately, the staff were very helpful."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the author say about her research?",
+          "options": {
+            "A": "One part required more time than she expected.",
+            "B": "She completed most of it while travelling.",
+            "C": "She interviewed a member of the explorer’s family."
+          },
+          "answer": "A",
+          "explanation": "She says checking historical details in several archives took much longer than expected (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear a couple talking about their garden.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Shall we start on the garden after breakfast? The grass is getting long again. ||Man: I can cut it tomorrow. Today I’d rather sort out that old table and the broken flowerpots behind the shed. ||Woman: The hedge is growing over the path too. ||Man: I know, but [7]my parents are coming for lunch, and we must get that pile of rubbish out of sight before they arrive[/7].",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Shall we start on the garden after breakfast? The grass is getting long again."
+        },
+        {
+          "speaker": "man",
+          "text": "I can cut it tomorrow. Today I’d rather sort out that old table and the broken flowerpots behind the shed."
+        },
+        {
+          "speaker": "woman",
+          "text": "The hedge is growing over the path too."
+        },
+        {
+          "speaker": "man",
+          "text": "I know, but my parents are coming for lunch, and we must get that pile of rubbish out of sight before they arrive."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What does the man say they should do first?",
+          "options": {
+            "A": "trim the hedge",
+            "B": "cut the grass",
+            "C": "remove some unwanted items"
+          },
+          "answer": "C",
+          "explanation": "He says the rubbish behind the shed must be taken away before his parents arrive (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a new business.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: There’s good news for people wanting to improve their career prospects. A new employment centre has opened beside the library, offering advice on applications and interviews. Local companies can advertise vacancies there for the usual fee. ||Presenter: [8]Until the end of June, anyone registering on the centre’s online jobs list can do so without paying the normal charge[/8]. Visit their website for details.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "There’s good news for people wanting to improve their career prospects. A new employment centre has opened beside the library, offering advice on applications and interviews. Local companies can advertise vacancies there for the usual fee."
+        },
+        {
+          "speaker": "presenter",
+          "text": "Until the end of June, anyone registering on the centre’s online jobs list can do so without paying the normal charge. Visit their website for details."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is on offer until the end of June?",
+          "options": {
+            "A": "free online registration for jobseekers",
+            "B": "free advertising for local businesses",
+            "C": "help preparing a CV at home"
+          },
+          "answer": "A",
+          "explanation": "The presenter says registration on the online jobs list is available without the normal charge (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test4_part1.mp3"
+}

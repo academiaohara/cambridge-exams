@@ -1,0 +1,304 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a woman leaving a phone message for her neighbour.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello, Mr Patel, it’s Anna from number 16. I’m away for the weekend and my sister was going to water my plants, but she’s caught a bad cold. I’ve already arranged for someone to feed the cat. ||Woman: [1]Could you possibly water the plants on my balcony on Saturday morning?[/1] There’s a key with Mrs Green downstairs. I’ll bring you something from my trip. Thanks.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello, Mr Patel, it’s Anna from number 16. I’m away for the weekend and my sister was going to water my plants, but she’s caught a bad cold. I’ve already arranged for someone to feed the cat."
+        },
+        {
+          "speaker": "woman",
+          "text": "Could you possibly water the plants on my balcony on Saturday morning? There’s a key with Mrs Green downstairs. I’ll bring you something from my trip. Thanks."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does Anna ask her neighbour to do?",
+          "options": {
+            "A": "look after her cat",
+            "B": "water some plants",
+            "C": "give a key to her sister"
+          },
+          "answer": "B",
+          "explanation": "Anna specifically asks him to water the plants on her balcony on Saturday (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a visit to a castle.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: How was the castle you visited yesterday? ||Woman: Interesting. I expected the gardens to be the best part, but heavy rain meant we couldn’t walk around them. The café was busy and rather expensive. ||Man: So was the trip disappointing? ||Woman: Not really. [2]The guide told such entertaining stories about the families who had lived there that the tour went incredibly quickly[/2]. I’d go again just for that.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How was the castle you visited yesterday?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Interesting. I expected the gardens to be the best part, but heavy rain meant we couldn’t walk around them. The café was busy and rather expensive."
+        },
+        {
+          "speaker": "man",
+          "text": "So was the trip disappointing?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Not really. The guide told such entertaining stories about the families who had lived there that the tour went incredibly quickly. I’d go again just for that."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the woman particularly enjoy at the castle?",
+          "options": {
+            "A": "the tour guide’s stories",
+            "B": "walking in the gardens",
+            "C": "the food in the café"
+          },
+          "answer": "A",
+          "explanation": "She says the guide’s entertaining stories made the tour enjoyable and made her want to return (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement in a department store.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Attention please. A blue child’s jacket has been found in the shoe department on the second floor. It is now at the customer-service desk near the front entrance. ||Announcer: [3]The store will close fifteen minutes earlier than usual this evening because of staff training, so please complete your shopping by five forty-five[/3]. We apologise for any inconvenience.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Attention please. A blue child’s jacket has been found in the shoe department on the second floor. It is now at the customer-service desk near the front entrance."
+        },
+        {
+          "speaker": "announcer",
+          "text": "The store will close fifteen minutes earlier than usual this evening because of staff training, so please complete your shopping by five forty-five. We apologise for any inconvenience."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What is the announcer asking shoppers to remember?",
+          "options": {
+            "A": "to collect lost property from the second floor",
+            "B": "to finish shopping earlier than normal",
+            "C": "to attend a staff training session"
+          },
+          "answer": "B",
+          "explanation": "The store will close earlier than usual, so customers need to complete their shopping by 5.45 (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a woman who makes furniture.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Lisa, when did you decide you wanted to make furniture? ||Woman: My grandfather made chairs, and I loved watching him, but for years I trained as a graphic designer. Then I made a small table for my own flat. [4]Friends kept asking where I’d bought it, and two of them paid me to make tables for them, which made me realise this could be a business[/4].",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Lisa, when did you decide you wanted to make furniture?"
+        },
+        {
+          "speaker": "woman",
+          "text": "My grandfather made chairs, and I loved watching him, but for years I trained as a graphic designer. Then I made a small table for my own flat. Friends kept asking where I’d bought it, and two of them paid me to make tables for them, which made me realise this could be a business."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why did Lisa decide to make furniture professionally?",
+          "options": {
+            "A": "She inherited her grandfather’s workshop.",
+            "B": "She was unhappy as a graphic designer.",
+            "C": "Other people were interested in buying her work."
+          },
+          "answer": "C",
+          "explanation": "Lisa says friends wanted to buy tables like hers, showing her that furniture-making could be a business (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to an assistant in an electronics shop.",
+      "voices": {
+        "assistant": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Assistant: Were you looking for anything in particular today? ||Man: I need headphones for travelling. These small ones are cheap, but I’m worried I’ll lose them. ||Assistant: This larger pair reduces outside noise and comes with a protective case. ||Man: It’s more than I planned to spend, but [5]I travel by train every day, so being able to listen without hearing other passengers is worth paying extra for[/5]. I’ll take them.",
+      "dialogue": [
+        {
+          "speaker": "assistant",
+          "text": "Were you looking for anything in particular today?"
+        },
+        {
+          "speaker": "man",
+          "text": "I need headphones for travelling. These small ones are cheap, but I’m worried I’ll lose them."
+        },
+        {
+          "speaker": "assistant",
+          "text": "This larger pair reduces outside noise and comes with a protective case."
+        },
+        {
+          "speaker": "man",
+          "text": "It’s more than I planned to spend, but I travel by train every day, so being able to listen without hearing other passengers is worth paying extra for. I’ll take them."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the customer choose the larger headphones?",
+          "options": {
+            "A": "They are less likely to get lost.",
+            "B": "They reduce the noise around him.",
+            "C": "They are cheaper than he expected."
+          },
+          "answer": "B",
+          "explanation": "He chooses the larger headphones because their noise-reducing feature is valuable on his daily train journeys (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a teenage girl talking to a friend about a school club.",
+      "voices": {
+        "boy": "en-GB-ThomasNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: Are you going to join the school newspaper again this year? ||Girl: I enjoyed interviewing teachers last term, but meetings were on the same evening as basketball practice, so I kept missing them. ||Boy: They’ve moved meetings to Wednesday lunchtimes now. ||Girl: Really? [6]In that case, I’ll definitely join again, because I can keep playing basketball as well[/6]. I’ve got ideas for articles already.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Are you going to join the school newspaper again this year?"
+        },
+        {
+          "speaker": "girl",
+          "text": "I enjoyed interviewing teachers last term, but meetings were on the same evening as basketball practice, so I kept missing them."
+        },
+        {
+          "speaker": "boy",
+          "text": "They’ve moved meetings to Wednesday lunchtimes now."
+        },
+        {
+          "speaker": "girl",
+          "text": "Really? In that case, I’ll definitely join again, because I can keep playing basketball as well. I’ve got ideas for articles already."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why does the girl decide to join the newspaper again?",
+          "options": {
+            "A": "She will have time to attend its meetings.",
+            "B": "She wants to give up playing basketball.",
+            "C": "She has been asked to interview teachers."
+          },
+          "answer": "A",
+          "explanation": "She decides to rejoin because the new meeting time no longer clashes with basketball (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear a couple talking about buying a table.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: This round table would look nice in our kitchen. ||Man: It would, but it only seats four people, and your family often comes for dinner. ||Woman: The larger wooden one is attractive, although it costs more. ||Man: [7]We should buy that one; being able to fit six people round it is more important than saving a little money[/7]. ||Woman: Agreed. Let’s ask whether they can deliver it.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "This round table would look nice in our kitchen."
+        },
+        {
+          "speaker": "man",
+          "text": "It would, but it only seats four people, and your family often comes for dinner."
+        },
+        {
+          "speaker": "woman",
+          "text": "The larger wooden one is attractive, although it costs more."
+        },
+        {
+          "speaker": "man",
+          "text": "We should buy that one; being able to fit six people round it is more important than saving a little money."
+        },
+        {
+          "speaker": "woman",
+          "text": "Agreed. Let’s ask whether they can deliver it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "Why do they decide to buy the larger table?",
+          "options": {
+            "A": "It matches their kitchen better.",
+            "B": "It can be delivered quickly.",
+            "C": "It has room for more guests."
+          },
+          "answer": "C",
+          "explanation": "The man says fitting six people around the table is more important than its higher cost (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a film club.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The North Street Film Club shows classic films every Tuesday evening at the arts centre. Membership normally costs twelve pounds per year, and tickets are then cheaper. This month’s films include two comedies and an award-winning adventure film. ||Presenter: [8]Anyone under eighteen who joins during August will not have to pay the membership fee[/8]. Details and film times are on the arts-centre website.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The North Street Film Club shows classic films every Tuesday evening at the arts centre. Membership normally costs twelve pounds per year, and tickets are then cheaper. This month’s films include two comedies and an award-winning adventure film."
+        },
+        {
+          "speaker": "presenter",
+          "text": "Anyone under eighteen who joins during August will not have to pay the membership fee. Details and film times are on the arts-centre website."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is the film club offering during August?",
+          "options": {
+            "A": "free tickets for comedy films",
+            "B": "free membership for young people",
+            "C": "discounts on the arts-centre website"
+          },
+          "answer": "B",
+          "explanation": "Under-eighteens joining in August do not have to pay the annual membership fee (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test7_part1.mp3"
+}

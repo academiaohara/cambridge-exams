@@ -1,0 +1,296 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a man leaving a message for a friend.",
+      "voices": {
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: Hi, Priya, it’s Nathan. I’ve booked seats for the comedy show tomorrow. It starts at eight, and the theatre asks us to be there twenty minutes before it begins. I was going to meet you outside the cinema first, but the café there has closed. ||Man: [1]Let’s meet by the ticket desk inside the theatre at half past seven instead[/1]. Text me if that’s a problem.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Hi, Priya, it’s Nathan. I’ve booked seats for the comedy show tomorrow. It starts at eight, and the theatre asks us to be there twenty minutes before it begins. I was going to meet you outside the cinema first, but the café there has closed."
+        },
+        {
+          "speaker": "man",
+          "text": "Let’s meet by the ticket desk inside the theatre at half past seven instead. Text me if that’s a problem."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "Where does Nathan want to meet Priya?",
+          "options": {
+            "A": "outside the cinema",
+            "B": "inside the theatre",
+            "C": "in a nearby café"
+          },
+          "answer": "B",
+          "explanation": "He changes the plan and asks Priya to meet by the theatre ticket desk (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two students talking about an online course.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: Did you finish that online drawing course? ||Boy: Yes. I liked the video lessons and it was useful being able to pause them. The weekly tasks were quite difficult, but that made me practise. ||Girl: Would you recommend it? ||Boy: Probably. [2]I just found it disappointing that nobody commented on my drawings, because I’d hoped for advice on how to improve[/2].",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Did you finish that online drawing course?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes. I liked the video lessons and it was useful being able to pause them. The weekly tasks were quite difficult, but that made me practise."
+        },
+        {
+          "speaker": "girl",
+          "text": "Would you recommend it?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Probably. I just found it disappointing that nobody commented on my drawings, because I’d hoped for advice on how to improve."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What disappointed the boy about the course?",
+          "options": {
+            "A": "The exercises required too much practice.",
+            "B": "The videos were difficult to follow.",
+            "C": "He did not receive feedback on his work."
+          },
+          "answer": "C",
+          "explanation": "He says nobody commented on his drawings, although he had wanted advice (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at an airport.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: This is an announcement for passengers travelling on flight JR482 to Dublin. Boarding was expected to begin at Gate 16 in ten minutes. Due to a change of aircraft, the flight will now depart from another part of the terminal. ||Announcer: [3]Please make your way immediately to Gate 28, where boarding will begin shortly[/3]. Passengers needing assistance should speak to a member of staff.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "This is an announcement for passengers travelling on flight JR482 to Dublin. Boarding was expected to begin at Gate 16 in ten minutes. Due to a change of aircraft, the flight will now depart from another part of the terminal."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Please make your way immediately to Gate 28, where boarding will begin shortly. Passengers needing assistance should speak to a member of staff."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What are passengers travelling to Dublin asked to do?",
+          "options": {
+            "A": "board their flight at a different gate",
+            "B": "wait for a later flight",
+            "C": "return to the check-in desk"
+          },
+          "answer": "A",
+          "explanation": "Passengers are told to go to Gate 28 instead of the original Gate 16 (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a woman who volunteers at an animal centre.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Why did you start volunteering at the animal centre, Kim? ||Woman: I love animals, but I live in a flat where pets aren’t allowed. At first, I imagined I’d spend all my time feeding dogs and cats. In fact, I clean cages and answer phones as well. [4]The most satisfying moment is when an animal leaves with a new owner and you know it will be cared for[/4].",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Why did you start volunteering at the animal centre, Kim?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I love animals, but I live in a flat where pets aren’t allowed. At first, I imagined I’d spend all my time feeding dogs and cats. In fact, I clean cages and answer phones as well. The most satisfying moment is when an animal leaves with a new owner and you know it will be cared for."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What does Kim find most rewarding about her volunteer work?",
+          "options": {
+            "A": "learning how to care for different pets",
+            "B": "helping animals find new homes",
+            "C": "talking to people on the phone"
+          },
+          "answer": "B",
+          "explanation": "Kim says the most satisfying moment is when an animal goes home with a new owner (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to a hairdresser.",
+      "voices": {
+        "hairdresser": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Hairdresser: How would you like your hair cut today? The same length as last time? ||Woman: I’m going on holiday somewhere hot, so I was thinking of having it much shorter. But I’m not sure that would suit me. ||Hairdresser: We could take a little off today and see how you feel. ||Woman: [5]Yes, let’s do that. I’d rather not make a big change just before I go away[/5].",
+      "dialogue": [
+        {
+          "speaker": "hairdresser",
+          "text": "How would you like your hair cut today? The same length as last time?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I’m going on holiday somewhere hot, so I was thinking of having it much shorter. But I’m not sure that would suit me."
+        },
+        {
+          "speaker": "hairdresser",
+          "text": "We could take a little off today and see how you feel."
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, let’s do that. I’d rather not make a big change just before I go away."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the customer decide to do?",
+          "options": {
+            "A": "have her hair shortened slightly",
+            "B": "choose a completely new hairstyle",
+            "C": "wait until after her holiday for a haircut"
+          },
+          "answer": "A",
+          "explanation": "She agrees to have only a little cut off rather than make a big change before her holiday (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking about a school play.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Presenter: Did you enjoy being in the school play, Henry? ||Boy: Yes. I only had a small part, so learning my words wasn’t difficult. I thought I might forget them when the audience arrived, but that wasn’t a problem. [6]I hadn’t realised how much time we’d spend waiting during rehearsals while the lighting and scenery were prepared[/6]. That was the hard part.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Did you enjoy being in the school play, Henry?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes. I only had a small part, so learning my words wasn’t difficult. I thought I might forget them when the audience arrived, but that wasn’t a problem. I hadn’t realised how much time we’d spend waiting during rehearsals while the lighting and scenery were prepared. That was the hard part."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What did Henry find difficult about taking part in the play?",
+          "options": {
+            "A": "remembering what to say",
+            "B": "performing in front of an audience",
+            "C": "having to wait during rehearsals"
+          },
+          "answer": "C",
+          "explanation": "Henry says the hard part was waiting while lighting and scenery were organised (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two colleagues discussing a training day.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Have you signed up for the training day about giving presentations? ||Man: I wanted to, but it’s on Friday, when I usually meet clients. ||Woman: The client meetings have been moved to Thursday this week. ||Man: Really? [7]Then I’ll register for the training; I need to become more confident when I speak at meetings[/7]. Is there still time? ||Woman: Yes, you can sign up today.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you signed up for the training day about giving presentations?"
+        },
+        {
+          "speaker": "man",
+          "text": "I wanted to, but it’s on Friday, when I usually meet clients."
+        },
+        {
+          "speaker": "woman",
+          "text": "The client meetings have been moved to Thursday this week."
+        },
+        {
+          "speaker": "man",
+          "text": "Really? Then I’ll register for the training; I need to become more confident when I speak at meetings. Is there still time?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, you can sign up today."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "Why does the man decide to attend the training day?",
+          "options": {
+            "A": "He no longer has another commitment that day.",
+            "B": "His manager has told him he must attend.",
+            "C": "He wants to meet new clients there."
+          },
+          "answer": "A",
+          "explanation": "He decides to register after learning his client meetings will no longer clash with the training (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a presenter talking about a new café.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The Corner Café has reopened after being expanded, with additional tables upstairs and an area for young children. From next month it will also open on Sunday mornings. ||Presenter: [8]During this first week, anyone ordering a hot drink after two o’clock will receive a piece of homemade cake without paying extra[/8]. The café is opposite the post office and is open until six.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The Corner Café has reopened after being expanded, with additional tables upstairs and an area for young children. From next month it will also open on Sunday mornings."
+        },
+        {
+          "speaker": "presenter",
+          "text": "During this first week, anyone ordering a hot drink after two o’clock will receive a piece of homemade cake without paying extra. The café is opposite the post office and is open until six."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is the café offering during its first week?",
+          "options": {
+            "A": "free cake with certain drink orders",
+            "B": "free drinks for families with children",
+            "C": "Sunday opening at no extra cost"
+          },
+          "answer": "A",
+          "explanation": "The presenter says afternoon customers ordering a hot drink will get cake at no additional charge (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test9_part1.mp3"
+}
