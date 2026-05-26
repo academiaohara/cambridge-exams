@@ -1,0 +1,312 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a woman leaving a message for her cousin.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Alex, it’s Megan. I’ve found the recipe book you lent me, and I’ll bring it when I come to your barbecue tomorrow. I was planning to make a salad, but my kitchen tap has started leaking and I’m waiting for a plumber. ||Woman: [1]I’ll pick up some fruit from the market instead, so you can use it for dessert[/1]. I hope that’s all right. See you tomorrow.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Alex, it’s Megan. I’ve found the recipe book you lent me, and I’ll bring it when I come to your barbecue tomorrow. I was planning to make a salad, but my kitchen tap has started leaking and I’m waiting for a plumber."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ll pick up some fruit from the market instead, so you can use it for dessert. I hope that’s all right. See you tomorrow."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What will Megan take to the barbecue?",
+          "options": {
+            "A": "A prepared salad.",
+            "B": "Some fruit.",
+            "C": "A recipe book only."
+          },
+          "answer": "B",
+          "explanation": "Megan says she will pick up fruit for dessert instead of making a salad (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two people discussing a cinema membership card.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: I’m thinking of getting a membership card for the City Cinema. You pay once and then tickets are cheaper all year. ||Woman: I bought one last year. It saved me money because I go often, and members get early information about new films. ||Man: Sounds good. ||Woman: [2]Just remember the discount doesn’t apply on Friday evenings, which is when I usually wanted to go[/2]. That was disappointing.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’m thinking of getting a membership card for the City Cinema. You pay once and then tickets are cheaper all year."
+        },
+        {
+          "speaker": "woman",
+          "text": "I bought one last year. It saved me money because I go often, and members get early information about new films."
+        },
+        {
+          "speaker": "man",
+          "text": "Sounds good."
+        },
+        {
+          "speaker": "woman",
+          "text": "Just remember the discount doesn’t apply on Friday evenings, which is when I usually wanted to go. That was disappointing."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What disadvantage does the woman mention?",
+          "options": {
+            "A": "The card cannot be used at a popular time.",
+            "B": "Members receive information too late.",
+            "C": "The annual charge has increased."
+          },
+          "answer": "A",
+          "explanation": "She says discounted tickets are unavailable on Friday evenings, her preferred time (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a railway station.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: May I have your attention, please? The thirteen forty train to Weston is running twenty minutes late because of a signal problem. Passengers for Weston may wait in the café area. ||Announcer: [3]Passengers travelling to Brookside should use the train now standing at platform four, as it will reach Brookside before the delayed service[/3]. Please do not board unless Brookside is your destination.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "May I have your attention, please? The thirteen forty train to Weston is running twenty minutes late because of a signal problem. Passengers for Weston may wait in the café area."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Passengers travelling to Brookside should use the train now standing at platform four, as it will reach Brookside before the delayed service. Please do not board unless Brookside is your destination."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What should passengers for Brookside do?",
+          "options": {
+            "A": "Wait in the café for a later train.",
+            "B": "Board a train at platform four.",
+            "C": "Travel to Weston first."
+          },
+          "answer": "B",
+          "explanation": "They are advised to take the train standing at platform four, which will get to Brookside earlier (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a man who organised a school reunion.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Interviewer: Oliver, you organised a reunion for people who left your school ten years ago. Was arranging it difficult? ||Man: Finding a hall was easy, and social media helped me contact everyone. I expected choosing food to be complicated, but that was fine too. ||Man: [4]The hardest part was finding a date when enough people were free, because many now live in different places and have families[/4]. ||Interviewer: But it finally worked.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Oliver, you organised a reunion for people who left your school ten years ago. Was arranging it difficult?"
+        },
+        {
+          "speaker": "man",
+          "text": "Finding a hall was easy, and social media helped me contact everyone. I expected choosing food to be complicated, but that was fine too."
+        },
+        {
+          "speaker": "man",
+          "text": "The hardest part was finding a date when enough people were free, because many now live in different places and have families."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "But it finally worked."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What was the main difficulty in organising the reunion?",
+          "options": {
+            "A": "Finding a suitable time.",
+            "B": "Contacting former students.",
+            "C": "Choosing refreshments."
+          },
+          "answer": "A",
+          "explanation": "Oliver says the hardest task was finding a date when enough former students were available (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a woman speaking to an assistant in a stationery shop.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I need a folder for these art-course drawings. I bought this one here yesterday, but the pages are too small. ||Assistant: We have a larger folder in the same design, although it costs three pounds more. ||Woman: That’s fine. [5]The drawings are for an assessment next week, so I need a folder where they can stay flat and tidy[/5]. ||Assistant: I’ll exchange it and you can pay the difference.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I need a folder for these art-course drawings. I bought this one here yesterday, but the pages are too small."
+        },
+        {
+          "speaker": "assistant",
+          "text": "We have a larger folder in the same design, although it costs three pounds more."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s fine. The drawings are for an assessment next week, so I need a folder where they can stay flat and tidy."
+        },
+        {
+          "speaker": "assistant",
+          "text": "I’ll exchange it and you can pay the difference."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the woman need a different folder?",
+          "options": {
+            "A": "She wants a cheaper design.",
+            "B": "She needs to organise larger work.",
+            "C": "She prefers a different colour."
+          },
+          "answer": "B",
+          "explanation": "Her drawings need a larger folder so they stay flat for assessment (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a college student talking to a friend about a concert.",
+      "voices": {
+        "student": "en-GB-RyanNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Student: Are you coming to the college concert on Thursday? I’m playing guitar in the second half. ||Girl: I’d love to, but I promised to help at my younger sister’s school event that evening. ||Student: That’s a pity. There’s a recording being made, though. ||Girl: [6]In that case, send me the link afterwards. I’d really like to hear you play even though I can’t be there[/6]. ||Student: I will.",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "Are you coming to the college concert on Thursday? I’m playing guitar in the second half."
+        },
+        {
+          "speaker": "girl",
+          "text": "I’d love to, but I promised to help at my younger sister’s school event that evening."
+        },
+        {
+          "speaker": "student",
+          "text": "That’s a pity. There’s a recording being made, though."
+        },
+        {
+          "speaker": "girl",
+          "text": "In that case, send me the link afterwards. I’d really like to hear you play even though I can’t be there."
+        },
+        {
+          "speaker": "student",
+          "text": "I will."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the girl want to do?",
+          "options": {
+            "A": "Perform at another event.",
+            "B": "Listen to the concert later.",
+            "C": "Attend part of the concert before leaving."
+          },
+          "answer": "B",
+          "explanation": "She asks for the recording link so she can hear him play afterwards (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear a couple discussing a new puppy.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: The puppy seems happier now, but he still gets bored when we’re both at work. Perhaps we should buy him more toys. ||Man: Maybe, though he already has several. My neighbour said she’d be happy to take him for a walk at lunchtime. ||Woman: [7]That sounds much better, because he needs exercise and company rather than another toy to leave on the floor[/7]. ||Man: I’ll ask her tomorrow.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "The puppy seems happier now, but he still gets bored when we’re both at work. Perhaps we should buy him more toys."
+        },
+        {
+          "speaker": "man",
+          "text": "Maybe, though he already has several. My neighbour said she’d be happy to take him for a walk at lunchtime."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds much better, because he needs exercise and company rather than another toy to leave on the floor."
+        },
+        {
+          "speaker": "man",
+          "text": "I’ll ask her tomorrow."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What do the speakers decide their puppy needs?",
+          "options": {
+            "A": "A midday walk with someone.",
+            "B": "A larger place to sleep.",
+            "C": "More toys to play with."
+          },
+          "answer": "A",
+          "explanation": "They decide the neighbour's offer of a walk and company would be better than another toy (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a local radio presenter talking about a market.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The indoor market in Central Square reopens tomorrow after improvements to the roof and lighting. All the regular food and clothing stalls will be back, and several new craft stalls have joined them. ||Presenter: [8]To mark the opening, the first hundred visitors on Saturday will be given a reusable shopping bag made from recycled material[/8]. The market opens at nine and entry is free.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The indoor market in Central Square reopens tomorrow after improvements to the roof and lighting. All the regular food and clothing stalls will be back, and several new craft stalls have joined them."
+        },
+        {
+          "speaker": "presenter",
+          "text": "To mark the opening, the first hundred visitors on Saturday will be given a reusable shopping bag made from recycled material. The market opens at nine and entry is free."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What will some visitors receive on Saturday?",
+          "options": {
+            "A": "A free useful item.",
+            "B": "Money off craft products.",
+            "C": "A ticket to a future event."
+          },
+          "answer": "A",
+          "explanation": "The first hundred visitors will receive a reusable shopping bag free of charge (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test20_part1.mp3"
+}

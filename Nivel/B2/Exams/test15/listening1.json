@@ -1,0 +1,312 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message on an answering machine about a volunteering event.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello, Josh, this is Maria from the river clean-up project. Thanks for agreeing to help on Saturday morning. We’re meeting beside the bridge at nine, as planned. ||Woman: The organisers are providing gloves and rubbish bags, so there’s no need to buy those. [1]It may be wet near the river, though, so please wear boots rather than trainers if you have them[/1]. See you there.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello, Josh, this is Maria from the river clean-up project. Thanks for agreeing to help on Saturday morning. We’re meeting beside the bridge at nine, as planned."
+        },
+        {
+          "speaker": "woman",
+          "text": "The organisers are providing gloves and rubbish bags, so there’s no need to buy those. It may be wet near the river, though, so please wear boots rather than trainers if you have them. See you there."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What advice does Maria give Josh?",
+          "options": {
+            "A": "Bring his own gloves.",
+            "B": "Wear suitable footwear.",
+            "C": "Meet the group at a new location."
+          },
+          "answer": "B",
+          "explanation": "Maria advises Josh to wear boots because it may be wet near the river (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends discussing a photography course.",
+      "voices": {
+        "boy": "en-GB-RyanNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: How was the photography course you went on last Saturday? I know you were worried it might be too technical. ||Girl: The teacher explained everything clearly, and we went outside to practise. I enjoyed that. ||Boy: So would you recommend it? ||Girl: Mostly. [2]I just expected the group to be smaller, because with twenty people it was difficult to get individual advice[/2]. ||Boy: That’s a shame.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "How was the photography course you went on last Saturday? I know you were worried it might be too technical."
+        },
+        {
+          "speaker": "girl",
+          "text": "The teacher explained everything clearly, and we went outside to practise. I enjoyed that."
+        },
+        {
+          "speaker": "boy",
+          "text": "So would you recommend it?"
+        },
+        {
+          "speaker": "girl",
+          "text": "Mostly. I just expected the group to be smaller, because with twenty people it was difficult to get individual advice."
+        },
+        {
+          "speaker": "boy",
+          "text": "That’s a shame."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What disappointed the girl about the course?",
+          "options": {
+            "A": "There were too many students.",
+            "B": "The teacher used difficult language.",
+            "C": "There was not enough practical work."
+          },
+          "answer": "A",
+          "explanation": "She says the group was too large for her to get individual advice easily (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement in a public library.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: The library will be closing at six o’clock this evening instead of the usual eight because essential work is being carried out on the heating system. ||Announcer: The computer area and study rooms will therefore close early too. [3]Books due to be returned today may be placed in the box outside the main entrance after closing time[/3], and no late fee will be charged if you do so.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "The library will be closing at six o’clock this evening instead of the usual eight because essential work is being carried out on the heating system."
+        },
+        {
+          "speaker": "announcer",
+          "text": "The computer area and study rooms will therefore close early too. Books due to be returned today may be placed in the box outside the main entrance after closing time, and no late fee will be charged if you do so."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What can library users do after six o'clock today?",
+          "options": {
+            "A": "Use the study rooms for free.",
+            "B": "Leave borrowed books in an outside box.",
+            "C": "Collect reserved books at another entrance."
+          },
+          "answer": "B",
+          "explanation": "Users can return books in the box outside after the library closes (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interviewer talking to a man who grows vegetables.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Interviewer: Daniel, you’ve started growing vegetables on the roof of your apartment building. Is the main aim to save money? ||Man: That helps a little, although equipment and soil cost more than I expected. I like eating fresh food, too. ||Man: But [4]the best thing is that neighbours who hardly spoke before now come up to help and chat while we work[/4]. It’s made the building friendlier.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Daniel, you’ve started growing vegetables on the roof of your apartment building. Is the main aim to save money?"
+        },
+        {
+          "speaker": "man",
+          "text": "That helps a little, although equipment and soil cost more than I expected. I like eating fresh food, too."
+        },
+        {
+          "speaker": "man",
+          "text": "But the best thing is that neighbours who hardly spoke before now come up to help and chat while we work. It’s made the building friendlier."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What does Daniel value most about the roof garden?",
+          "options": {
+            "A": "It has brought local people together.",
+            "B": "It provides cheaper food.",
+            "C": "It makes use of unwanted equipment."
+          },
+          "answer": "A",
+          "explanation": "Daniel says neighbours now help and talk together, making the building friendlier (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a woman speaking to a repair-shop assistant.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Hello, I left my laptop here on Monday because it kept turning itself off. Have you found out what’s wrong? ||Assistant: Yes. It needs a new battery. We can fit one by Friday, but it costs fifty pounds. ||Woman: That’s less than I feared. [5]Please go ahead, as I need the laptop for my online course next week[/5]. ||Assistant: Fine. We’ll text you when it’s ready.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello, I left my laptop here on Monday because it kept turning itself off. Have you found out what’s wrong?"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Yes. It needs a new battery. We can fit one by Friday, but it costs fifty pounds."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s less than I feared. Please go ahead, as I need the laptop for my online course next week."
+        },
+        {
+          "speaker": "assistant",
+          "text": "Fine. We’ll text you when it’s ready."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the woman ask the assistant to do?",
+          "options": {
+            "A": "Return the laptop without repairing it.",
+            "B": "Repair the laptop before she needs it.",
+            "C": "Find her a cheaper replacement computer."
+          },
+          "answer": "B",
+          "explanation": "She agrees to have a new battery fitted because she needs the laptop next week (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a college student speaking to her friend.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-RyanNeural"
+      },
+      "audio_script": "Girl: I had my interview for the summer job at the museum today. I expected them to ask about local history, so I spent ages reading about it. ||Boy: Did they ask much about that? ||Girl: Almost nothing! [6]Most of the interview was about how I would speak to visitors and deal with their questions[/6]. Fortunately, I’ve worked in a café, so I had examples to give. ||Boy: That sounds promising.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "I had my interview for the summer job at the museum today. I expected them to ask about local history, so I spent ages reading about it."
+        },
+        {
+          "speaker": "boy",
+          "text": "Did they ask much about that?"
+        },
+        {
+          "speaker": "girl",
+          "text": "Almost nothing! Most of the interview was about how I would speak to visitors and deal with their questions. Fortunately, I’ve worked in a café, so I had examples to give."
+        },
+        {
+          "speaker": "boy",
+          "text": "That sounds promising."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What was the interview mainly about?",
+          "options": {
+            "A": "The girl's knowledge of history.",
+            "B": "Her ability to work with the public.",
+            "C": "Her experience of preparing food."
+          },
+          "answer": "B",
+          "explanation": "She says most questions concerned speaking to visitors and dealing with their enquiries (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two people discussing a friend’s birthday present.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: We need to decide what to get Sofia for her birthday. I thought of tickets for that rock concert, but they’re very expensive. ||Woman: And she’s already going to lots of concerts this summer. She mentioned wanting to learn to bake bread. ||Man: There’s a weekend workshop at the college. ||Woman: [7]That would be perfect, because it’s something she’s interested in but probably wouldn’t arrange for herself[/7]. ||Man: Let’s book her a place.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "We need to decide what to get Sofia for her birthday. I thought of tickets for that rock concert, but they’re very expensive."
+        },
+        {
+          "speaker": "woman",
+          "text": "And she’s already going to lots of concerts this summer. She mentioned wanting to learn to bake bread."
+        },
+        {
+          "speaker": "man",
+          "text": "There’s a weekend workshop at the college."
+        },
+        {
+          "speaker": "woman",
+          "text": "That would be perfect, because it’s something she’s interested in but probably wouldn’t arrange for herself."
+        },
+        {
+          "speaker": "man",
+          "text": "Let’s book her a place."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What present do they decide to buy?",
+          "options": {
+            "A": "A place on a course.",
+            "B": "Tickets for a music event.",
+            "C": "Equipment for cooking at home."
+          },
+          "answer": "A",
+          "explanation": "They decide to book Sofia a place on a bread-making workshop (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a presenter talking on local radio about a park.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The town’s Hillview Park has reopened after improvements to its paths and children’s playground. The café remains closed until next month, but visitors can still buy drinks from a mobile van. ||Presenter: [8]On Saturday morning, gardeners will be giving away packets of wildflower seeds to visitors who would like to attract more butterflies to their own gardens[/8]. There is no charge for the seeds.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The town’s Hillview Park has reopened after improvements to its paths and children’s playground. The café remains closed until next month, but visitors can still buy drinks from a mobile van."
+        },
+        {
+          "speaker": "presenter",
+          "text": "On Saturday morning, gardeners will be giving away packets of wildflower seeds to visitors who would like to attract more butterflies to their own gardens. There is no charge for the seeds."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is happening at the park on Saturday?",
+          "options": {
+            "A": "A new café is opening.",
+            "B": "People can receive free seeds.",
+            "C": "Children can join a gardening class."
+          },
+          "answer": "B",
+          "explanation": "Visitors will be given packets of wildflower seeds free of charge (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test15_part1.mp3"
+}

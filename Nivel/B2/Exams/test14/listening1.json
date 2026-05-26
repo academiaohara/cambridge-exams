@@ -1,0 +1,316 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a man leaving a message for his sister.",
+      "voices": {
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: Hi Anna, it’s Chris. I know we planned to meet outside the cinema at seven, but I’ve just checked the tickets and the film doesn’t begin until eight. ||Man: I’ve got to collect a parcel from the post office before it shuts. [1]Could we meet in the café next to the cinema at half past seven instead?[/1] I’ll buy the drinks. Let me know if that’s a problem.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Hi Anna, it’s Chris. I know we planned to meet outside the cinema at seven, but I’ve just checked the tickets and the film doesn’t begin until eight."
+        },
+        {
+          "speaker": "man",
+          "text": "I’ve got to collect a parcel from the post office before it shuts. Could we meet in the café next to the cinema at half past seven instead? I’ll buy the drinks. Let me know if that’s a problem."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What change does Chris suggest?",
+          "options": {
+            "A": "Seeing a different film.",
+            "B": "Meeting at a later time and place.",
+            "C": "Collecting a parcel together."
+          },
+          "answer": "B",
+          "explanation": "Chris asks to meet in the café at half past seven rather than outside the cinema at seven (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a new computer game.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-RyanNeural"
+      },
+      "audio_script": "Girl: Did you manage to finish that new adventure game yet? ||Boy: Not quite. The graphics are amazing, and I like the story because you never know what will happen next. ||Girl: Is it difficult? ||Boy: Some parts are, but that’s fine. [2]The problem is that you can’t save the game very often, so I keep having to repeat sections I’ve already completed[/2]. ||Girl: That would annoy me too.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Did you manage to finish that new adventure game yet?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Not quite. The graphics are amazing, and I like the story because you never know what will happen next."
+        },
+        {
+          "speaker": "girl",
+          "text": "Is it difficult?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Some parts are, but that’s fine. The problem is that you can’t save the game very often, so I keep having to repeat sections I’ve already completed."
+        },
+        {
+          "speaker": "girl",
+          "text": "That would annoy me too."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What does the boy criticise about the game?",
+          "options": {
+            "A": "Parts of it have to be played again.",
+            "B": "Its storyline is difficult to follow.",
+            "C": "The images on screen are disappointing."
+          },
+          "answer": "A",
+          "explanation": "He dislikes having to repeat completed sections because the game cannot be saved frequently (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a school.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Teacher: Could all students taking part in tomorrow’s sports day listen carefully, please? The weather forecast is now for heavy rain during the afternoon. ||Teacher: The running races will still go ahead in the morning on the school field. [3]All afternoon events will now take place in the sports hall, so please remember to bring indoor shoes as well as your usual kit[/3]. ||Teacher: Lunch arrangements are unchanged.",
+      "dialogue": [
+        {
+          "speaker": "teacher",
+          "text": "Could all students taking part in tomorrow’s sports day listen carefully, please? The weather forecast is now for heavy rain during the afternoon."
+        },
+        {
+          "speaker": "teacher",
+          "text": "The running races will still go ahead in the morning on the school field. All afternoon events will now take place in the sports hall, so please remember to bring indoor shoes as well as your usual kit."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Lunch arrangements are unchanged."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What should students bring for sports day?",
+          "options": {
+            "A": "An extra item of sports clothing.",
+            "B": "Food to eat indoors.",
+            "C": "Equipment for the morning races."
+          },
+          "answer": "A",
+          "explanation": "Students are told to bring indoor shoes because the afternoon events will be in the sports hall (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a woman being interviewed about an online business.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Interviewer: Nina, you sell handmade cards through your website. What made you begin doing that? ||Woman: I started making cards when I was recovering from a broken leg, simply because I was bored. Friends began asking to buy them. ||Woman: I never intended to run a business, but [4]the money I earned meant I could afford better materials and try more ambitious designs[/4]. That’s why I continued.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Nina, you sell handmade cards through your website. What made you begin doing that?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I started making cards when I was recovering from a broken leg, simply because I was bored. Friends began asking to buy them."
+        },
+        {
+          "speaker": "woman",
+          "text": "I never intended to run a business, but the money I earned meant I could afford better materials and try more ambitious designs. That’s why I continued."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why did Nina continue selling her cards?",
+          "options": {
+            "A": "She wanted to give up her other job.",
+            "B": "She could develop her card-making skills.",
+            "C": "She enjoyed communicating with customers online."
+          },
+          "answer": "B",
+          "explanation": "She says the money allowed her to buy better materials and make more ambitious designs (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a passenger speaking to an employee at a bus station.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Excuse me, is this the queue for the coach to Manchester? ||Assistant: It is, but I should warn you that the road is very busy today, so the journey may take longer than usual. ||Woman: That’s all right. I’m not meeting anyone when I arrive. [5]I just need to make sure the coach stops near the university because that’s where my accommodation is[/5]. ||Assistant: Yes, it stops outside the main entrance.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Excuse me, is this the queue for the coach to Manchester?"
+        },
+        {
+          "speaker": "assistant",
+          "text": "It is, but I should warn you that the road is very busy today, so the journey may take longer than usual."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s all right. I’m not meeting anyone when I arrive. I just need to make sure the coach stops near the university because that’s where my accommodation is."
+        },
+        {
+          "speaker": "assistant",
+          "text": "Yes, it stops outside the main entrance."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What information does the woman want?",
+          "options": {
+            "A": "Whether there will be a delay.",
+            "B": "Whether she can change her ticket.",
+            "C": "Whether the coach stops in the right place."
+          },
+          "answer": "C",
+          "explanation": "She needs confirmation that the coach stops near the university where she is staying (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to a teacher about a musical performance.",
+      "voices": {
+        "student": "en-GB-RyanNeural",
+        "teacher": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Student: Mr Lane, I’m worried about playing the piano at the school concert on Friday. I’ve practised the piece every evening, but I still make mistakes in the fast section. ||Teacher: You don’t have to play that exact arrangement. ||Student: Could I use the simpler version we did last term? [6]I know I can perform that one confidently, even in front of a large audience[/6]. ||Teacher: That sounds sensible.",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "Mr Lane, I’m worried about playing the piano at the school concert on Friday. I’ve practised the piece every evening, but I still make mistakes in the fast section."
+        },
+        {
+          "speaker": "teacher",
+          "text": "You don’t have to play that exact arrangement."
+        },
+        {
+          "speaker": "student",
+          "text": "Could I use the simpler version we did last term? I know I can perform that one confidently, even in front of a large audience."
+        },
+        {
+          "speaker": "teacher",
+          "text": "That sounds sensible."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the student want to do?",
+          "options": {
+            "A": "Perform an easier piece of music.",
+            "B": "Practise the difficult music with the teacher.",
+            "C": "Withdraw from the concert."
+          },
+          "answer": "A",
+          "explanation": "The student asks to play the simpler version because she can perform it confidently (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear a couple discussing plans for a weekend away.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I’ve found a hotel in the countryside for our weekend away. It has a swimming pool and excellent reviews. ||Man: It looks nice, but it’s quite far from the railway station. We’d have to take a taxi both ways. ||Woman: There’s another hotel in the town centre, although it hasn’t got a pool. ||Man: [7]I’d choose the central one, since we’ll spend the day exploring and getting there will be much easier[/7]. ||Woman: Good point.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’ve found a hotel in the countryside for our weekend away. It has a swimming pool and excellent reviews."
+        },
+        {
+          "speaker": "man",
+          "text": "It looks nice, but it’s quite far from the railway station. We’d have to take a taxi both ways."
+        },
+        {
+          "speaker": "woman",
+          "text": "There’s another hotel in the town centre, although it hasn’t got a pool."
+        },
+        {
+          "speaker": "man",
+          "text": "I’d choose the central one, since we’ll spend the day exploring and getting there will be much easier."
+        },
+        {
+          "speaker": "woman",
+          "text": "Good point."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "Why does the man prefer the town-centre hotel?",
+          "options": {
+            "A": "It offers better leisure facilities.",
+            "B": "It is more convenient to reach.",
+            "C": "It receives more positive reviews."
+          },
+          "answer": "B",
+          "explanation": "He prefers it because travelling there will be easier (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about an outdoor theatre performance.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: This Friday, the Green Park Theatre Company is performing a comedy in the open-air theatre. The performance begins at seven thirty, and audiences are advised to bring warm clothing. ||Presenter: [8]Anyone under sixteen can attend for half the usual price, provided an adult buys a ticket at the same time[/8]. Tickets are available online or from the park café during the day.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "This Friday, the Green Park Theatre Company is performing a comedy in the open-air theatre. The performance begins at seven thirty, and audiences are advised to bring warm clothing."
+        },
+        {
+          "speaker": "presenter",
+          "text": "Anyone under sixteen can attend for half the usual price, provided an adult buys a ticket at the same time. Tickets are available online or from the park café during the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "Who can get reduced-price tickets?",
+          "options": {
+            "A": "People buying their tickets at the café.",
+            "B": "Adults who arrive before the show starts.",
+            "C": "Young people attending with a paying adult."
+          },
+          "answer": "C",
+          "explanation": "Under-sixteens pay half price when an adult buys a ticket at the same time (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test14_part1.mp3"
+}

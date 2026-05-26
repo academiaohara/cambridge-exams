@@ -1,0 +1,304 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a dentist's surgery.",
+      "voices": {
+        "receptionist": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Receptionist: Hello, this is Oak Street Dental Practice calling for Mr Harris. You have an appointment with Dr Shah at eleven tomorrow morning. ||Receptionist: She will be unavailable then because she has to attend an urgent meeting, but another dentist could see you at the same time. [1]If you would prefer to keep your appointment with Dr Shah, please phone us to arrange another date[/1]. Thank you.",
+      "dialogue": [
+        {
+          "speaker": "receptionist",
+          "text": "Hello, this is Oak Street Dental Practice calling for Mr Harris. You have an appointment with Dr Shah at eleven tomorrow morning."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "She will be unavailable then because she has to attend an urgent meeting, but another dentist could see you at the same time. If you would prefer to keep your appointment with Dr Shah, please phone us to arrange another date. Thank you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What should Mr Harris do if he wants to see Dr Shah?",
+          "options": {
+            "A": "Arrive earlier tomorrow.",
+            "B": "Call to make a new appointment.",
+            "C": "Ask to see her after the other dentist."
+          },
+          "answer": "B",
+          "explanation": "He is asked to phone the practice to arrange another date if he wants Dr Shah (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends discussing a visit to an adventure park.",
+      "voices": {
+        "boy": "en-GB-RyanNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: I thought the climbing centre at the adventure park was excellent. The staff showed us exactly what to do before we started. ||Girl: Yes, I felt safe all the time. It was a shame the café was closed, though. I hadn’t brought anything to eat. ||Boy: True, but [2]what bothered me most was spending so long waiting for our turn on each activity[/2]. There were simply too many groups.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "I thought the climbing centre at the adventure park was excellent. The staff showed us exactly what to do before we started."
+        },
+        {
+          "speaker": "girl",
+          "text": "Yes, I felt safe all the time. It was a shame the café was closed, though. I hadn’t brought anything to eat."
+        },
+        {
+          "speaker": "boy",
+          "text": "True, but what bothered me most was spending so long waiting for our turn on each activity. There were simply too many groups."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the boy dislike about the adventure park?",
+          "options": {
+            "A": "The lack of clear instructions.",
+            "B": "The long queues for activities.",
+            "C": "The limited food available."
+          },
+          "answer": "B",
+          "explanation": "He says the worst thing was waiting a long time for each activity (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement on a train.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Ladies and gentlemen, we will shortly be arriving at Redhill. Passengers travelling on to Greenford should note that the usual connecting service has been cancelled due to engineering work. ||Announcer: [3]A replacement bus will be waiting directly outside Redhill station and will leave ten minutes after this train arrives[/3]. Please keep your tickets with you, as they will be checked on the bus.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Ladies and gentlemen, we will shortly be arriving at Redhill. Passengers travelling on to Greenford should note that the usual connecting service has been cancelled due to engineering work."
+        },
+        {
+          "speaker": "announcer",
+          "text": "A replacement bus will be waiting directly outside Redhill station and will leave ten minutes after this train arrives. Please keep your tickets with you, as they will be checked on the bus."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "How will passengers continue to Greenford?",
+          "options": {
+            "A": "By taking another train.",
+            "B": "By travelling by bus.",
+            "C": "By using a taxi service."
+          },
+          "answer": "B",
+          "explanation": "The announcement says a replacement bus will be waiting outside Redhill station (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a teenager who plays chess.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Interviewer: Lily, you recently won a regional chess competition. How did you first become interested in the game? ||Girl: My grandfather taught me when I was six, but I only played occasionally then. At secondary school, a teacher persuaded me to join the chess club. ||Girl: [4]Practising regularly with people my own age was what made me take the game seriously[/4]. Competitions came much later.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Lily, you recently won a regional chess competition. How did you first become interested in the game?"
+        },
+        {
+          "speaker": "girl",
+          "text": "My grandfather taught me when I was six, but I only played occasionally then. At secondary school, a teacher persuaded me to join the chess club."
+        },
+        {
+          "speaker": "girl",
+          "text": "Practising regularly with people my own age was what made me take the game seriously. Competitions came much later."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What made Lily become serious about chess?",
+          "options": {
+            "A": "Winning her first competition.",
+            "B": "Playing regularly at school.",
+            "C": "Learning the game from her grandfather."
+          },
+          "answer": "B",
+          "explanation": "Lily says regular practice with other young players at the school club made her serious about chess (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a man talking to a librarian.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Hello. I borrowed this travel guide last month, and I’ve realised it was due back yesterday. I’m sorry. ||Woman: That’s all right. There’s a small late charge, unless you’d like to renew it for another week. ||Man: I was hoping to keep it, actually. [5]I’m going away next weekend and still need it to plan what I’m going to visit[/5]. ||Woman: Then I’ll renew it for you.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Hello. I borrowed this travel guide last month, and I’ve realised it was due back yesterday. I’m sorry."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s all right. There’s a small late charge, unless you’d like to renew it for another week."
+        },
+        {
+          "speaker": "man",
+          "text": "I was hoping to keep it, actually. I’m going away next weekend and still need it to plan what I’m going to visit."
+        },
+        {
+          "speaker": "woman",
+          "text": "Then I’ll renew it for you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the man want to keep the book?",
+          "options": {
+            "A": "He wants to use it on an upcoming trip.",
+            "B": "He has not finished a college assignment.",
+            "C": "He plans to buy his own copy."
+          },
+          "answer": "A",
+          "explanation": "He is going away next weekend and still needs the guide to make plans (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to a classmate about an English course.",
+      "voices": {
+        "student": "en-GB-RyanNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Student: Have you decided whether to sign up for the conversation course during the holidays? ||Girl: I wanted to, but the morning group is full and I work three afternoons a week. ||Student: There’s an evening group on Tuesdays and Thursdays. ||Girl: Really? [6]That means I could do the course after all, without having to change my work hours[/6]. I’ll register tonight before that group fills up too.",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "Have you decided whether to sign up for the conversation course during the holidays?"
+        },
+        {
+          "speaker": "girl",
+          "text": "I wanted to, but the morning group is full and I work three afternoons a week."
+        },
+        {
+          "speaker": "student",
+          "text": "There’s an evening group on Tuesdays and Thursdays."
+        },
+        {
+          "speaker": "girl",
+          "text": "Really? That means I could do the course after all, without having to change my work hours. I’ll register tonight before that group fills up too."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why is the girl now interested in joining the course?",
+          "options": {
+            "A": "She can attend at a suitable time.",
+            "B": "The cost of the course has been reduced.",
+            "C": "Her employer has offered to pay for it."
+          },
+          "answer": "A",
+          "explanation": "The evening group allows her to attend without changing her work hours (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two neighbours talking outside their homes.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Have you noticed the rubbish bins weren’t emptied this morning? I put mine out last night, as usual. ||Man: Mine’s still full too. I checked the council website and collection day has moved because of the public holiday. ||Woman: I wish they’d told us earlier. ||Man: [7]They’re coming tomorrow morning instead, so leave your bin where it is overnight[/7]. ||Woman: Thanks. I’ll do that.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you noticed the rubbish bins weren’t emptied this morning? I put mine out last night, as usual."
+        },
+        {
+          "speaker": "man",
+          "text": "Mine’s still full too. I checked the council website and collection day has moved because of the public holiday."
+        },
+        {
+          "speaker": "woman",
+          "text": "I wish they’d told us earlier."
+        },
+        {
+          "speaker": "man",
+          "text": "They’re coming tomorrow morning instead, so leave your bin where it is overnight."
+        },
+        {
+          "speaker": "woman",
+          "text": "Thanks. I’ll do that."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What does the man advise the woman to do?",
+          "options": {
+            "A": "Contact the council immediately.",
+            "B": "Put additional rubbish in his bin.",
+            "C": "Keep her bin outside until tomorrow."
+          },
+          "answer": "C",
+          "explanation": "He tells her to leave the bin where it is because collection will take place tomorrow (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a book fair.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: This Saturday the central library is holding its spring book fair, with hundreds of second-hand books available at low prices. Local authors will also talk about their work during the afternoon. ||Presenter: [8]People who have books at home they no longer want are invited to bring them along, as the library will exchange each one for a voucher to spend at the fair[/8]. The event begins at ten.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "This Saturday the central library is holding its spring book fair, with hundreds of second-hand books available at low prices. Local authors will also talk about their work during the afternoon."
+        },
+        {
+          "speaker": "presenter",
+          "text": "People who have books at home they no longer want are invited to bring them along, as the library will exchange each one for a voucher to spend at the fair. The event begins at ten."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What can visitors do at the book fair?",
+          "options": {
+            "A": "Have a book signed by a famous author.",
+            "B": "Swap unwanted books for spending vouchers.",
+            "C": "Donate money to buy library furniture."
+          },
+          "answer": "B",
+          "explanation": "Visitors may bring unwanted books and receive vouchers to spend at the fair (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test13_part1.mp3"
+}

@@ -1,0 +1,316 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a language school.",
+      "voices": {
+        "receptionist": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Receptionist: Hello, Sara, this is the Bright English School. I’m calling about the weekend speaking course you booked for next month. We have received your payment, so your place is confirmed. ||Receptionist: The course begins at nine thirty on Saturday. [1]Before the first session, please complete the short online questionnaire we sent by email, so your teacher knows what you want to practise[/1]. Contact us if you cannot find it.",
+      "dialogue": [
+        {
+          "speaker": "receptionist",
+          "text": "Hello, Sara, this is the Bright English School. I’m calling about the weekend speaking course you booked for next month. We have received your payment, so your place is confirmed."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "The course begins at nine thirty on Saturday. Before the first session, please complete the short online questionnaire we sent by email, so your teacher knows what you want to practise. Contact us if you cannot find it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is Sara asked to do before the course?",
+          "options": {
+            "A": "Pay the remaining cost.",
+            "B": "Give information online.",
+            "C": "Speak to her teacher by phone."
+          },
+          "answer": "B",
+          "explanation": "She must complete the online questionnaire before the first lesson (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a new shopping website.",
+      "voices": {
+        "boy": "en-GB-RyanNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: Have you ordered anything from that website that sells recycled clothes? I like the idea of buying things people no longer need. ||Girl: I bought a coat there. It was in excellent condition, and the pictures showed it accurately. ||Boy: Was delivery quick? ||Girl: It arrived on time. [2]What I hadn’t noticed was that returning something costs nearly as much as the coat itself, which might stop me ordering again[/2].",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Have you ordered anything from that website that sells recycled clothes? I like the idea of buying things people no longer need."
+        },
+        {
+          "speaker": "girl",
+          "text": "I bought a coat there. It was in excellent condition, and the pictures showed it accurately."
+        },
+        {
+          "speaker": "boy",
+          "text": "Was delivery quick?"
+        },
+        {
+          "speaker": "girl",
+          "text": "It arrived on time. What I hadn’t noticed was that returning something costs nearly as much as the coat itself, which might stop me ordering again."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What does the girl criticise about the website?",
+          "options": {
+            "A": "The cost of sending items back.",
+            "B": "The quality of the photographs.",
+            "C": "The condition of the clothes."
+          },
+          "answer": "A",
+          "explanation": "She complains that returning an item is very expensive (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement in a college café.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Could students listen for a moment, please? From next Monday, the college café will serve breakfast from eight o’clock rather than eight thirty, following several requests from early-arriving students. ||Announcer: [3]At lunchtime, however, customers will no longer be able to pay with cash; payments must be made by bank card or student card[/3]. The menu will stay the same for the remainder of term.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Could students listen for a moment, please? From next Monday, the college café will serve breakfast from eight o’clock rather than eight thirty, following several requests from early-arriving students."
+        },
+        {
+          "speaker": "announcer",
+          "text": "At lunchtime, however, customers will no longer be able to pay with cash; payments must be made by bank card or student card. The menu will stay the same for the remainder of term."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What change affects customers at lunchtime?",
+          "options": {
+            "A": "They must use a non-cash payment method.",
+            "B": "They can choose from a smaller menu.",
+            "C": "They will be served half an hour earlier."
+          },
+          "answer": "A",
+          "explanation": "The announcement says cash payments will no longer be accepted at lunchtime (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interviewer talking to a man who makes furniture.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Interviewer: Ben, you recently started making tables and shelves from old pieces of wood. Is it hard finding suitable material? ||Man: Sometimes, but people often contact me when they are replacing old doors or floors. I enjoy designing new items. ||Man: [4]What really motivates me is knowing that wood which might have been thrown away is being useful in someone's home again[/4]. ||Interviewer: An excellent reason to continue.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Ben, you recently started making tables and shelves from old pieces of wood. Is it hard finding suitable material?"
+        },
+        {
+          "speaker": "man",
+          "text": "Sometimes, but people often contact me when they are replacing old doors or floors. I enjoy designing new items."
+        },
+        {
+          "speaker": "man",
+          "text": "What really motivates me is knowing that wood which might have been thrown away is being useful in someone's home again."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "An excellent reason to continue."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why does Ben particularly enjoy making furniture?",
+          "options": {
+            "A": "He can sell it for high prices.",
+            "B": "He gives unwanted material a new purpose.",
+            "C": "He receives free wood from customers."
+          },
+          "answer": "B",
+          "explanation": "Ben is motivated by making useful furniture from wood that might otherwise be thrown away (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer speaking to a member of staff at a sports centre.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Hello. I joined the gym last week and was told I could book an introduction to the equipment. ||Assistant: Of course. There’s a session tonight at six, or one tomorrow morning at ten. ||Woman: I can come tonight, but I’ll only just finish work at six. [5]I’d prefer tomorrow morning, when I’ll have time to ask questions without rushing[/5]. ||Assistant: I’ll book you in for ten o’clock.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello. I joined the gym last week and was told I could book an introduction to the equipment."
+        },
+        {
+          "speaker": "assistant",
+          "text": "Of course. There’s a session tonight at six, or one tomorrow morning at ten."
+        },
+        {
+          "speaker": "woman",
+          "text": "I can come tonight, but I’ll only just finish work at six. I’d prefer tomorrow morning, when I’ll have time to ask questions without rushing."
+        },
+        {
+          "speaker": "assistant",
+          "text": "I’ll book you in for ten o’clock."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the woman choose tomorrow's session?",
+          "options": {
+            "A": "It has a more experienced trainer.",
+            "B": "She wants to attend without being hurried.",
+            "C": "She cannot leave work until tomorrow."
+          },
+          "answer": "B",
+          "explanation": "She says tomorrow will allow her time to ask questions without rushing (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a teenager talking to a friend about a school magazine.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-RyanNeural"
+      },
+      "audio_script": "Girl: The teacher wants someone to write a report about the school basketball final for the magazine. You were at the match, weren’t you? ||Boy: Yes, and I took photographs, but I don’t know much about writing sports reports. ||Girl: You could just describe what happened and include your pictures. ||Boy: [6]Actually, that would be a good way to use the photos, so I’ll ask the teacher whether I can do it[/6]. ||Girl: Great.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "The teacher wants someone to write a report about the school basketball final for the magazine. You were at the match, weren’t you?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes, and I took photographs, but I don’t know much about writing sports reports."
+        },
+        {
+          "speaker": "girl",
+          "text": "You could just describe what happened and include your pictures."
+        },
+        {
+          "speaker": "boy",
+          "text": "Actually, that would be a good way to use the photos, so I’ll ask the teacher whether I can do it."
+        },
+        {
+          "speaker": "girl",
+          "text": "Great."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the boy decide to do?",
+          "options": {
+            "A": "Offer to produce an article.",
+            "B": "Join the basketball team.",
+            "C": "Teach the girl how to take photos."
+          },
+          "answer": "A",
+          "explanation": "He decides to ask whether he can write the report using his photographs (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two people discussing their flat.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: The living room feels dark, even during the day. We could buy a brighter lamp for the corner. ||Woman: That might help in the evening, but I think the heavy curtains are blocking too much sunlight. ||Man: They do look rather old. ||Woman: [7]Why don't we replace them with lighter ones first and see whether that makes the room feel brighter?[/7] ||Man: Good idea. That may be all we need.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "The living room feels dark, even during the day. We could buy a brighter lamp for the corner."
+        },
+        {
+          "speaker": "woman",
+          "text": "That might help in the evening, but I think the heavy curtains are blocking too much sunlight."
+        },
+        {
+          "speaker": "man",
+          "text": "They do look rather old."
+        },
+        {
+          "speaker": "woman",
+          "text": "Why don't we replace them with lighter ones first and see whether that makes the room feel brighter?"
+        },
+        {
+          "speaker": "man",
+          "text": "Good idea. That may be all we need."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What do the speakers decide to change?",
+          "options": {
+            "A": "The curtains.",
+            "B": "The light fitting.",
+            "C": "The colour of the walls."
+          },
+          "answer": "A",
+          "explanation": "They agree to replace the heavy curtains with lighter ones (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a community centre.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The Westfield Community Centre is celebrating its tenth anniversary next Saturday. It will hold exercise sessions, art displays and short music performances throughout the day, all free to attend. ||Presenter: Visitors can also see plans for the new garden behind the building. [8]Anyone bringing a homemade cake for the afternoon café will receive a free ticket for next month's dance evening[/8].",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The Westfield Community Centre is celebrating its tenth anniversary next Saturday. It will hold exercise sessions, art displays and short music performances throughout the day, all free to attend."
+        },
+        {
+          "speaker": "presenter",
+          "text": "Visitors can also see plans for the new garden behind the building. Anyone bringing a homemade cake for the afternoon café will receive a free ticket for next month's dance evening."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What can visitors receive if they bring a cake?",
+          "options": {
+            "A": "Entry to a future event.",
+            "B": "A gardening lesson.",
+            "C": "A place in a music performance."
+          },
+          "answer": "A",
+          "explanation": "People bringing homemade cakes get a free ticket for next month's dance evening (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test19_part1.mp3"
+}

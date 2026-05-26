@@ -1,0 +1,312 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a man leaving a message about a tennis match.",
+      "voices": {
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: Hi Rachel, it’s Owen. I’m still happy to play tennis tomorrow, and I’ve booked a court at the leisure centre for eleven. ||Man: I’ve just remembered my racket is at my cousin’s house and I won’t have time to collect it. [1]Could you bring the spare racket you said you never use?[/1] The centre charges quite a lot to hire one. I’ll bring the tennis balls.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Hi Rachel, it’s Owen. I’m still happy to play tennis tomorrow, and I’ve booked a court at the leisure centre for eleven."
+        },
+        {
+          "speaker": "man",
+          "text": "I’ve just remembered my racket is at my cousin’s house and I won’t have time to collect it. Could you bring the spare racket you said you never use? The centre charges quite a lot to hire one. I’ll bring the tennis balls."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does Owen ask Rachel to bring?",
+          "options": {
+            "A": "Something he can play with.",
+            "B": "Money to pay for the court.",
+            "C": "The booking details."
+          },
+          "answer": "A",
+          "explanation": "Owen asks Rachel to bring her spare racket because he does not have his own (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a café they have visited.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I finally tried that new café near the station. The cakes looked fantastic, and the staff were friendly. ||Man: I went last week. I thought it was rather expensive. ||Woman: The prices didn’t bother me too much. [2]I chose a table by the window, but with buses stopping outside every few minutes, I could hardly hear what my friend was saying[/2]. ||Man: Perhaps the tables at the back are quieter.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I finally tried that new café near the station. The cakes looked fantastic, and the staff were friendly."
+        },
+        {
+          "speaker": "man",
+          "text": "I went last week. I thought it was rather expensive."
+        },
+        {
+          "speaker": "woman",
+          "text": "The prices didn’t bother me too much. I chose a table by the window, but with buses stopping outside every few minutes, I could hardly hear what my friend was saying."
+        },
+        {
+          "speaker": "man",
+          "text": "Perhaps the tables at the back are quieter."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the woman dislike about the café?",
+          "options": {
+            "A": "The level of noise.",
+            "B": "The price of the food.",
+            "C": "The behaviour of the staff."
+          },
+          "answer": "A",
+          "explanation": "She says the buses outside made it hard to hear her friend (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at an ice rink.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Good evening. Before tonight’s public skating session begins, we would like to remind customers that the rink closes at nine thirty. ||Announcer: A pair of black gloves has been handed in, and anyone missing them should ask at the ticket desk. [3]Skaters wishing to use the lockers must now pay by card, as the coin machine is currently out of order[/3]. We apologise for any inconvenience.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Good evening. Before tonight’s public skating session begins, we would like to remind customers that the rink closes at nine thirty."
+        },
+        {
+          "speaker": "announcer",
+          "text": "A pair of black gloves has been handed in, and anyone missing them should ask at the ticket desk. Skaters wishing to use the lockers must now pay by card, as the coin machine is currently out of order. We apologise for any inconvenience."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What has changed at the ice rink?",
+          "options": {
+            "A": "The closing time is earlier.",
+            "B": "The method of paying for lockers.",
+            "C": "The place where lost property is kept."
+          },
+          "answer": "B",
+          "explanation": "Skaters must pay by card for lockers because the coin machine is not working (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear an interview with a woman who works as a tour guide.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Interviewer: Paula, you show visitors around your city every day. What do you find hardest about the job? ||Woman: In summer, walking all day in the heat can be tiring, and sometimes visitors arrive late. ||Woman: But [4]the real challenge is keeping the tour interesting when people already know a lot about the city's history and ask detailed questions[/4]. It makes me prepare carefully. ||Interviewer: I imagine it does.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Paula, you show visitors around your city every day. What do you find hardest about the job?"
+        },
+        {
+          "speaker": "woman",
+          "text": "In summer, walking all day in the heat can be tiring, and sometimes visitors arrive late."
+        },
+        {
+          "speaker": "woman",
+          "text": "But the real challenge is keeping the tour interesting when people already know a lot about the city's history and ask detailed questions. It makes me prepare carefully."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "I imagine it does."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What does Paula find most challenging?",
+          "options": {
+            "A": "Answering well-informed visitors.",
+            "B": "Walking in hot weather.",
+            "C": "Dealing with late arrivals."
+          },
+          "answer": "A",
+          "explanation": "She says the real challenge is engaging visitors who know a lot and ask detailed questions (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a boy speaking to an assistant in a sports shop.",
+      "voices": {
+        "boy": "en-GB-RyanNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Boy: Hi. I bought these running shoes here last month. They’re my size, but after about twenty minutes they start rubbing my heels. ||Assistant: We can’t exchange worn shoes unless there’s a fault. We do sell special socks that often solve that problem. ||Boy: I’ve got a race on Sunday. [5]I suppose trying those is my best option, so I’ll take a pair[/5]. ||Assistant: They’re over here.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Hi. I bought these running shoes here last month. They’re my size, but after about twenty minutes they start rubbing my heels."
+        },
+        {
+          "speaker": "assistant",
+          "text": "We can’t exchange worn shoes unless there’s a fault. We do sell special socks that often solve that problem."
+        },
+        {
+          "speaker": "boy",
+          "text": "I’ve got a race on Sunday. I suppose trying those is my best option, so I’ll take a pair."
+        },
+        {
+          "speaker": "assistant",
+          "text": "They’re over here."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the boy decide to buy?",
+          "options": {
+            "A": "A new pair of running shoes.",
+            "B": "Something to make his shoes more comfortable.",
+            "C": "Equipment for a race."
+          },
+          "answer": "B",
+          "explanation": "He agrees to buy special socks that may stop his current shoes rubbing (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to a classmate about a history assignment.",
+      "voices": {
+        "student": "en-GB-RyanNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Student: Have you started the assignment about life in our town fifty years ago? I’ve got facts from the internet, but my teacher says we need another source. ||Girl: I found some old newspapers in the library. ||Student: That sounds useful, but [6]I’m going to record my grandfather talking about the shops and streets he remembers, because he grew up here[/6]. ||Girl: That will make your assignment really personal.",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "Have you started the assignment about life in our town fifty years ago? I’ve got facts from the internet, but my teacher says we need another source."
+        },
+        {
+          "speaker": "girl",
+          "text": "I found some old newspapers in the library."
+        },
+        {
+          "speaker": "student",
+          "text": "That sounds useful, but I’m going to record my grandfather talking about the shops and streets he remembers, because he grew up here."
+        },
+        {
+          "speaker": "girl",
+          "text": "That will make your assignment really personal."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What will the student use in his assignment?",
+          "options": {
+            "A": "An interview with a relative.",
+            "B": "Articles written by a teacher.",
+            "C": "Photographs found online."
+          },
+          "answer": "A",
+          "explanation": "He plans to record his grandfather talking about the town in the past (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two people discussing a bicycle journey.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Shall we cycle to the lake on Sunday? The weather should be good, and the route beside the river is beautiful. ||Man: I’d like to, but the bridge on that route is being repaired. We’d have to use the main road, which is busy. ||Woman: There’s a quieter route through the villages. It’s a little longer. ||Man: [7]I don’t mind cycling further if we can avoid heavy traffic, so let's take that way[/7]. ||Woman: Agreed.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Shall we cycle to the lake on Sunday? The weather should be good, and the route beside the river is beautiful."
+        },
+        {
+          "speaker": "man",
+          "text": "I’d like to, but the bridge on that route is being repaired. We’d have to use the main road, which is busy."
+        },
+        {
+          "speaker": "woman",
+          "text": "There’s a quieter route through the villages. It’s a little longer."
+        },
+        {
+          "speaker": "man",
+          "text": "I don’t mind cycling further if we can avoid heavy traffic, so let's take that way."
+        },
+        {
+          "speaker": "woman",
+          "text": "Agreed."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "Which route do the speakers decide to take?",
+          "options": {
+            "A": "The quickest route beside the river.",
+            "B": "The main road to the lake.",
+            "C": "A longer route away from traffic."
+          },
+          "answer": "C",
+          "explanation": "They choose the longer village route because it avoids heavy traffic (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a music centre.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The newly renovated Northside Music Centre opens on Monday. Visitors can explore its recording studio and concert hall throughout the opening week. ||Presenter: There will be free evening performances from local bands, although places must be reserved. [8]Anyone who already plays an instrument can also take it along on Wednesday and receive advice from professional musicians[/8]. Full details are on the centre website.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The newly renovated Northside Music Centre opens on Monday. Visitors can explore its recording studio and concert hall throughout the opening week."
+        },
+        {
+          "speaker": "presenter",
+          "text": "There will be free evening performances from local bands, although places must be reserved. Anyone who already plays an instrument can also take it along on Wednesday and receive advice from professional musicians. Full details are on the centre website."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What can visitors do at the music centre on Wednesday?",
+          "options": {
+            "A": "Perform in front of an audience.",
+            "B": "Get expert help with playing an instrument.",
+            "C": "Attend a concert without booking."
+          },
+          "answer": "B",
+          "explanation": "Instrument players can take their instruments and receive advice from professionals on Wednesday (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test16_part1.mp3"
+}

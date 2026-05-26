@@ -1,0 +1,316 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a woman leaving a message for a neighbour.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Tom, it’s Priya from number sixteen. Thanks for offering to feed my cat while I’m away this weekend. I’ll leave the key with Mrs Green downstairs, as she’ll be at home on Friday. ||Woman: [1]Could you also open the kitchen window for an hour each morning? The room gets very warm when the sun comes in[/1]. There’s no need to water the plants. Thanks again.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Tom, it’s Priya from number sixteen. Thanks for offering to feed my cat while I’m away this weekend. I’ll leave the key with Mrs Green downstairs, as she’ll be at home on Friday."
+        },
+        {
+          "speaker": "woman",
+          "text": "Could you also open the kitchen window for an hour each morning? The room gets very warm when the sun comes in. There’s no need to water the plants. Thanks again."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does Priya ask Tom to do?",
+          "options": {
+            "A": "Collect her key on Saturday.",
+            "B": "Let fresh air into a room.",
+            "C": "Look after her plants."
+          },
+          "answer": "B",
+          "explanation": "Priya asks Tom to open the kitchen window each morning because the room gets hot (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a new science museum.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-RyanNeural"
+      },
+      "audio_script": "Girl: Did you enjoy the new science museum? I heard there are lots of experiments you can try. ||Boy: Yes, the activities are excellent, particularly the machine that lets you design a bridge. I also liked the café. ||Girl: Was it busy? ||Boy: Very. [2]I’d booked tickets for an afternoon workshop, but it started before we managed to get through the long queue at the entrance[/2]. That was frustrating.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Did you enjoy the new science museum? I heard there are lots of experiments you can try."
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes, the activities are excellent, particularly the machine that lets you design a bridge. I also liked the café."
+        },
+        {
+          "speaker": "girl",
+          "text": "Was it busy?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Very. I’d booked tickets for an afternoon workshop, but it started before we managed to get through the long queue at the entrance. That was frustrating."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What annoyed the boy about his visit?",
+          "options": {
+            "A": "He missed an activity he had planned to do.",
+            "B": "He could not use his favourite exhibit.",
+            "C": "He had to wait for food in the café."
+          },
+          "answer": "A",
+          "explanation": "He missed the start of a booked workshop because of the queue at the entrance (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a concert hall.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Good evening. The jazz concert will begin at eight as advertised, and the main doors will open in ten minutes. Customers should keep their tickets ready for inspection. ||Announcer: [3]Anyone who has ordered tickets online but has not yet printed them can show the booking reference on a mobile phone at the desk to enter[/3]. Coats may be left in the cloakroom free of charge tonight.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Good evening. The jazz concert will begin at eight as advertised, and the main doors will open in ten minutes. Customers should keep their tickets ready for inspection."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Anyone who has ordered tickets online but has not yet printed them can show the booking reference on a mobile phone at the desk to enter. Coats may be left in the cloakroom free of charge tonight."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What can people without printed tickets do?",
+          "options": {
+            "A": "Buy new tickets at a reduced price.",
+            "B": "Use information displayed on their phone.",
+            "C": "Enter through a separate door."
+          },
+          "answer": "B",
+          "explanation": "People can show their online booking reference on a mobile phone to enter (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interviewer talking to a woman who repairs bicycles.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Interviewer: Aisha, you left an office job to repair bicycles. What do you enjoy about your work now? ||Woman: I like being active instead of sitting all day, and I’ve learnt a lot about different bikes. ||Woman: But [4]the most satisfying moment is when someone arrives worried about a problem and rides away pleased that their bike works properly again[/4]. ||Interviewer: So helping customers matters most? ||Woman: Definitely.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Aisha, you left an office job to repair bicycles. What do you enjoy about your work now?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I like being active instead of sitting all day, and I’ve learnt a lot about different bikes."
+        },
+        {
+          "speaker": "woman",
+          "text": "But the most satisfying moment is when someone arrives worried about a problem and rides away pleased that their bike works properly again."
+        },
+        {
+          "speaker": "interviewer",
+          "text": "So helping customers matters most?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Definitely."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What gives Aisha the most satisfaction?",
+          "options": {
+            "A": "Solving customers' cycling problems.",
+            "B": "Learning about different types of bicycle.",
+            "C": "Avoiding work at a desk."
+          },
+          "answer": "A",
+          "explanation": "Aisha says the best moment is when a worried customer leaves with a working bicycle (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a man talking to an assistant at a cinema.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: I booked two seats for the six-fifteen showing online, but I’ve realised I selected tomorrow instead of today. ||Assistant: There are still seats available tonight, but not in the centre row you chose. I can change your booking for a small charge. ||Man: [5]That’s fine. We’re already in town, and I’d rather sit nearer the front tonight than return tomorrow[/5]. ||Assistant: I’ll make the change.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I booked two seats for the six-fifteen showing online, but I’ve realised I selected tomorrow instead of today."
+        },
+        {
+          "speaker": "assistant",
+          "text": "There are still seats available tonight, but not in the centre row you chose. I can change your booking for a small charge."
+        },
+        {
+          "speaker": "man",
+          "text": "That’s fine. We’re already in town, and I’d rather sit nearer the front tonight than return tomorrow."
+        },
+        {
+          "speaker": "assistant",
+          "text": "I’ll make the change."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the man decide to do?",
+          "options": {
+            "A": "Watch the film tonight from different seats.",
+            "B": "Return tomorrow for his original seats.",
+            "C": "Pay for a different film this evening."
+          },
+          "answer": "A",
+          "explanation": "He accepts different seats so that he and his companion can see the film tonight (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to his tutor about a work placement.",
+      "voices": {
+        "student": "en-GB-RyanNeural",
+        "tutor": "en-GB-RyanNeural"
+      },
+      "audio_script": "Student: I’m not sure which work placement to choose. There’s one in a hotel reception and another in a sports centre. ||Tutor: Which one relates more closely to your plans? ||Student: I used to think about working in tourism, but now I’m considering sports management. [6]A placement at the sports centre would let me see whether that kind of work really suits me[/6]. ||Tutor: Then that seems the right choice.",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "I’m not sure which work placement to choose. There’s one in a hotel reception and another in a sports centre."
+        },
+        {
+          "speaker": "tutor",
+          "text": "Which one relates more closely to your plans?"
+        },
+        {
+          "speaker": "student",
+          "text": "I used to think about working in tourism, but now I’m considering sports management. A placement at the sports centre would let me see whether that kind of work really suits me."
+        },
+        {
+          "speaker": "tutor",
+          "text": "Then that seems the right choice."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why does the student prefer the sports centre placement?",
+          "options": {
+            "A": "It offers better payment.",
+            "B": "It could help him make a career decision.",
+            "C": "It is close to where he lives."
+          },
+          "answer": "B",
+          "explanation": "He wants to find out whether work in sports management is suitable for him (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two friends talking about a trip to the theatre.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I’d like to see that new comedy next week. There are tickets on Wednesday and Saturday. ||Man: Saturday would normally suit me better, but the seats left are right at the back and cost almost twice as much. ||Woman: Wednesday finishes early enough for us to get the last bus home. ||Man: [7]In that case, let’s choose Wednesday. A better view for less money sounds sensible[/7]. ||Woman: I’ll book it now.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’d like to see that new comedy next week. There are tickets on Wednesday and Saturday."
+        },
+        {
+          "speaker": "man",
+          "text": "Saturday would normally suit me better, but the seats left are right at the back and cost almost twice as much."
+        },
+        {
+          "speaker": "woman",
+          "text": "Wednesday finishes early enough for us to get the last bus home."
+        },
+        {
+          "speaker": "man",
+          "text": "In that case, let’s choose Wednesday. A better view for less money sounds sensible."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ll book it now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "Why do the speakers choose Wednesday?",
+          "options": {
+            "A": "The performance starts earlier than usual.",
+            "B": "The journey home is shorter.",
+            "C": "The tickets offer better value."
+          },
+          "answer": "C",
+          "explanation": "They choose Wednesday because they can get better seats for less money (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a local radio presenter talking about a town walk.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: This Sunday, residents are invited to join a guided walk around buildings that were once used as factories. The tour begins outside the town hall at ten thirty. ||Presenter: A printed guide to the route will be included in the ticket price. [8]At the end of the walk, participants will be able to enter the old clock factory, which is usually closed to the public[/8]. Bookings close on Friday.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "This Sunday, residents are invited to join a guided walk around buildings that were once used as factories. The tour begins outside the town hall at ten thirty."
+        },
+        {
+          "speaker": "presenter",
+          "text": "A printed guide to the route will be included in the ticket price. At the end of the walk, participants will be able to enter the old clock factory, which is usually closed to the public. Bookings close on Friday."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What special opportunity does the walk provide?",
+          "options": {
+            "A": "Meeting people who worked in factories.",
+            "B": "Receiving a free history book.",
+            "C": "Going inside a building not normally open."
+          },
+          "answer": "C",
+          "explanation": "The walk allows participants to enter the old clock factory, normally closed to visitors (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test18_part1.mp3"
+}

@@ -1,0 +1,296 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a woman leaving a phone message for a friend.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Mia, it’s Beth. Thanks for inviting me to the outdoor cinema this evening. I’ve checked the forecast and it looks dry, so that’s good news. ||Woman: I’ve already got blankets we can sit on, and I’ll bring some snacks. [1]Could you buy our tickets online before you leave home? I’m worried they may sell out at the gate[/1]. I’ll meet you by the entrance.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Mia, it’s Beth. Thanks for inviting me to the outdoor cinema this evening. I’ve checked the forecast and it looks dry, so that’s good news."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ve already got blankets we can sit on, and I’ll bring some snacks. Could you buy our tickets online before you leave home? I’m worried they may sell out at the gate. I’ll meet you by the entrance."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does Beth ask Mia to do?",
+          "options": {
+            "A": "Purchase tickets in advance.",
+            "B": "Bring something to sit on.",
+            "C": "Check whether the event is cancelled."
+          },
+          "answer": "A",
+          "explanation": "Beth asks Mia to buy the tickets online before coming because they may sell out (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two people talking about a television programme.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Did you watch that programme about families living without electricity for a week? I expected it to be quite funny. ||Woman: So did I. The children complaining at the beginning was amusing, but then it became much more interesting. [2]I hadn’t realised how difficult storing food would be without modern equipment[/2]. ||Man: Yes, it made everyday life look very different.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you watch that programme about families living without electricity for a week? I expected it to be quite funny."
+        },
+        {
+          "speaker": "woman",
+          "text": "So did I. The children complaining at the beginning was amusing, but then it became much more interesting. I hadn’t realised how difficult storing food would be without modern equipment."
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, it made everyday life look very different."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the woman learn from the programme?",
+          "options": {
+            "A": "How children entertain themselves outdoors.",
+            "B": "How to reduce the cost of electricity.",
+            "C": "How important electrical appliances can be."
+          },
+          "answer": "C",
+          "explanation": "She says she had not realised how difficult it would be to store food without modern equipment (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a swimming pool.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Good afternoon, everyone. The large pool will be closed from four o’clock today because the diving club has a competition. The small teaching pool remains open for young children. ||Announcer: [3]Anyone who bought a ticket for general swimming this afternoon may use it again on another day this week without paying extra[/3]. Please ask at reception before leaving if you require further information.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Good afternoon, everyone. The large pool will be closed from four o’clock today because the diving club has a competition. The small teaching pool remains open for young children."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Anyone who bought a ticket for general swimming this afternoon may use it again on another day this week without paying extra. Please ask at reception before leaving if you require further information."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What are general swimmers told they can do?",
+          "options": {
+            "A": "Watch the diving competition for free.",
+            "B": "Use their ticket on a different day.",
+            "C": "Swim in the teaching pool instead."
+          },
+          "answer": "B",
+          "explanation": "General swimmers can use today's ticket again on another day without paying extra (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interviewer talking to a young chef.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Interviewer: Ethan, you’ve just started work in a busy restaurant. Did you always want to be a chef? ||Man: I enjoyed cooking at home, but I wasn’t certain about doing it as a job. The working hours are long, and the kitchen gets hot. ||Man: Still, [4]seeing customers enjoy something I’ve prepared gives me a real sense of achievement[/4]. That’s what keeps me interested.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Ethan, you’ve just started work in a busy restaurant. Did you always want to be a chef?"
+        },
+        {
+          "speaker": "man",
+          "text": "I enjoyed cooking at home, but I wasn’t certain about doing it as a job. The working hours are long, and the kitchen gets hot."
+        },
+        {
+          "speaker": "man",
+          "text": "Still, seeing customers enjoy something I’ve prepared gives me a real sense of achievement. That’s what keeps me interested."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why does Ethan enjoy his job?",
+          "options": {
+            "A": "He receives praise from other chefs.",
+            "B": "He likes creating meals for satisfied customers.",
+            "C": "He can choose his own working hours."
+          },
+          "answer": "B",
+          "explanation": "Ethan says seeing customers enjoy the food he has made gives him a sense of achievement (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a woman speaking to a hotel receptionist.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "receptionist": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello. I booked a double room for Friday night under the name Foster. I’m calling because my sister can’t travel until Saturday morning now. ||Receptionist: We can move the booking to Saturday night if you prefer. There’s no charge for changing it. ||Woman: That would be ideal. [5]We still want the room, just a day later than we originally arranged[/5]. ||Receptionist: I’ll update your booking now.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello. I booked a double room for Friday night under the name Foster. I’m calling because my sister can’t travel until Saturday morning now."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "We can move the booking to Saturday night if you prefer. There’s no charge for changing it."
+        },
+        {
+          "speaker": "woman",
+          "text": "That would be ideal. We still want the room, just a day later than we originally arranged."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "I’ll update your booking now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why is the woman phoning the hotel?",
+          "options": {
+            "A": "To change the date of her stay.",
+            "B": "To ask for a larger room.",
+            "C": "To cancel a booking completely."
+          },
+          "answer": "A",
+          "explanation": "She wants the same room but a day later than originally booked (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a teacher talking to a student about a science project.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural",
+        "student": "en-GB-RyanNeural"
+      },
+      "audio_script": "Teacher: Have you decided how to present your project on recycling, Adam? A poster would be straightforward, and you’ve got some good photographs. ||Student: I considered that, but quite a few people are making posters. [6]I’d rather record a short video showing what happens to the bottles after people put them in a recycling bin[/6]. ||Teacher: That could work well if you keep it clear and brief.",
+      "dialogue": [
+        {
+          "speaker": "teacher",
+          "text": "Have you decided how to present your project on recycling, Adam? A poster would be straightforward, and you’ve got some good photographs."
+        },
+        {
+          "speaker": "student",
+          "text": "I considered that, but quite a few people are making posters. I’d rather record a short video showing what happens to the bottles after people put them in a recycling bin."
+        },
+        {
+          "speaker": "teacher",
+          "text": "That could work well if you keep it clear and brief."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "How does Adam plan to present his project?",
+          "options": {
+            "A": "By producing a film.",
+            "B": "By designing a poster.",
+            "C": "By giving a live demonstration."
+          },
+          "answer": "A",
+          "explanation": "Adam says he would rather record a short video about the recycling process (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two people talking about going to an exhibition.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: The photography exhibition opens on Saturday. Shall we go in the morning before it gets busy? ||Man: I’d love to, but I’m helping my brother move house then. I’m free after three, though. ||Woman: The gallery closes at five, so that still gives us enough time. [7]Let’s meet outside at half past three, and we can have coffee afterwards[/7]. ||Man: Perfect. I’ll see you there.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "The photography exhibition opens on Saturday. Shall we go in the morning before it gets busy?"
+        },
+        {
+          "speaker": "man",
+          "text": "I’d love to, but I’m helping my brother move house then. I’m free after three, though."
+        },
+        {
+          "speaker": "woman",
+          "text": "The gallery closes at five, so that still gives us enough time. Let’s meet outside at half past three, and we can have coffee afterwards."
+        },
+        {
+          "speaker": "man",
+          "text": "Perfect. I’ll see you there."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "When will the two speakers visit the exhibition?",
+          "options": {
+            "A": "On Saturday afternoon.",
+            "B": "On Saturday morning.",
+            "C": "On Sunday afternoon."
+          },
+          "answer": "A",
+          "explanation": "They agree to meet outside the gallery at half past three on Saturday (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a writing competition.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Are you aged between thirteen and eighteen and interested in writing stories? The local newspaper is inviting entries for its annual short-story competition. ||Presenter: Stories can be about any subject and must be submitted by 30 June. [8]The winner will have their story printed in the newspaper and will spend a day with one of our reporters[/8]. Entry forms can be downloaded from our website.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Are you aged between thirteen and eighteen and interested in writing stories? The local newspaper is inviting entries for its annual short-story competition."
+        },
+        {
+          "speaker": "presenter",
+          "text": "Stories can be about any subject and must be submitted by 30 June. The winner will have their story printed in the newspaper and will spend a day with one of our reporters. Entry forms can be downloaded from our website."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What will the competition winner receive?",
+          "options": {
+            "A": "The opportunity to work with a journalist for a day.",
+            "B": "A place on a creative-writing course.",
+            "C": "A collection of stories published as a book."
+          },
+          "answer": "A",
+          "explanation": "The winner will spend a day with one of the newspaper's reporters (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test12_part1.mp3"
+}

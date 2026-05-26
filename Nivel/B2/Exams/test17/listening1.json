@@ -1,0 +1,308 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message on an answering machine from a theatre group.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello, Ruby, this is Alex from the youth theatre. Thanks for signing up to help with costumes for our next show. We’re meeting in the theatre workshop at five on Thursday. ||Woman: You don’t need to sew anything at the first session. [1]Please bring photographs or drawings of clothes you think would suit the characters, as we’ll be choosing ideas together[/1]. See you then.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello, Ruby, this is Alex from the youth theatre. Thanks for signing up to help with costumes for our next show. We’re meeting in the theatre workshop at five on Thursday."
+        },
+        {
+          "speaker": "woman",
+          "text": "You don’t need to sew anything at the first session. Please bring photographs or drawings of clothes you think would suit the characters, as we’ll be choosing ideas together. See you then."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is Ruby asked to take to the meeting?",
+          "options": {
+            "A": "Examples of costume ideas.",
+            "B": "Materials for making clothes.",
+            "C": "A list of characters in the show."
+          },
+          "answer": "A",
+          "explanation": "Ruby is asked to bring photographs or drawings of suitable clothes (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a campsite.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: How was the campsite you stayed at last weekend? It looked lovely on the website. ||Woman: The views were beautiful, and the shower block was much cleaner than I expected. The little shop sold basic food too. ||Man: So you’d go again? ||Woman: Possibly, but [2]cars were allowed to drive right up to the tents, and the noise early in the morning woke us up[/2]. I’d prefer somewhere without vehicles nearby.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How was the campsite you stayed at last weekend? It looked lovely on the website."
+        },
+        {
+          "speaker": "woman",
+          "text": "The views were beautiful, and the shower block was much cleaner than I expected. The little shop sold basic food too."
+        },
+        {
+          "speaker": "man",
+          "text": "So you’d go again?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Possibly, but cars were allowed to drive right up to the tents, and the noise early in the morning woke us up. I’d prefer somewhere without vehicles nearby."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What problem did the woman have at the campsite?",
+          "options": {
+            "A": "It had inadequate facilities.",
+            "B": "It was affected by vehicle noise.",
+            "C": "It did not have a food shop."
+          },
+          "answer": "B",
+          "explanation": "She says noise from cars near the tents woke them early in the morning (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at an airport.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Passengers travelling on flight SA418 to Madrid should be aware that boarding will begin shortly at Gate 22, not Gate 18 as shown on some screens. ||Announcer: The flight is leaving at the scheduled time. [3]As the departure gate is a fifteen-minute walk from the shopping area, passengers are requested to go there immediately[/3]. Please have passports and boarding cards ready.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Passengers travelling on flight SA418 to Madrid should be aware that boarding will begin shortly at Gate 22, not Gate 18 as shown on some screens."
+        },
+        {
+          "speaker": "announcer",
+          "text": "The flight is leaving at the scheduled time. As the departure gate is a fifteen-minute walk from the shopping area, passengers are requested to go there immediately. Please have passports and boarding cards ready."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What are passengers on the Madrid flight advised to do?",
+          "options": {
+            "A": "Go to the departure gate now.",
+            "B": "Ask staff to correct their boarding cards.",
+            "C": "Prepare for a delayed departure."
+          },
+          "answer": "A",
+          "explanation": "They are asked to go immediately because the new gate is a long walk away (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a teenager who started a podcast.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Interviewer: Imogen, your weekly podcast about school life has become quite popular. Did you create it because you hoped to work in radio? ||Girl: No, although I’ve enjoyed learning how to edit recordings. It began because new students often felt nervous. ||Girl: [4]I wanted them to hear honest advice from pupils their own age about classes, clubs and making friends[/4]. That was the idea from the start.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Imogen, your weekly podcast about school life has become quite popular. Did you create it because you hoped to work in radio?"
+        },
+        {
+          "speaker": "girl",
+          "text": "No, although I’ve enjoyed learning how to edit recordings. It began because new students often felt nervous."
+        },
+        {
+          "speaker": "girl",
+          "text": "I wanted them to hear honest advice from pupils their own age about classes, clubs and making friends. That was the idea from the start."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why did Imogen start her podcast?",
+          "options": {
+            "A": "To develop skills for a future job.",
+            "B": "To help pupils arriving at her school.",
+            "C": "To advertise school clubs to parents."
+          },
+          "answer": "B",
+          "explanation": "She wanted new students to hear useful advice from other pupils (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer speaking to an assistant at a garden centre.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I’d like a plant for my office. It doesn’t get much sunlight, and I sometimes forget to water things. ||Assistant: This green plant is a good choice. It grows well indoors and only needs water once a week. ||Woman: It’s a bit larger than I planned, but [5]as it sounds easy to look after, I’ll take it and put it on the floor beside my desk[/5]. ||Assistant: Excellent. I’ll wrap it for you.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’d like a plant for my office. It doesn’t get much sunlight, and I sometimes forget to water things."
+        },
+        {
+          "speaker": "assistant",
+          "text": "This green plant is a good choice. It grows well indoors and only needs water once a week."
+        },
+        {
+          "speaker": "woman",
+          "text": "It’s a bit larger than I planned, but as it sounds easy to look after, I’ll take it and put it on the floor beside my desk."
+        },
+        {
+          "speaker": "assistant",
+          "text": "Excellent. I’ll wrap it for you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the woman choose the plant?",
+          "options": {
+            "A": "It requires little care.",
+            "B": "It is small enough for her desk.",
+            "C": "It produces colourful flowers."
+          },
+          "answer": "A",
+          "explanation": "She buys it because the assistant says it is easy to look after (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a teacher talking to a student about a debate competition.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural",
+        "student": "en-GB-RyanNeural"
+      },
+      "audio_script": "Teacher: James, your arguments for the debate competition are strong, but you’re trying to fit too many points into your speech. ||Student: I was worried I wouldn’t have enough to say. ||Teacher: You certainly do. [6]Choose your three best ideas and explain them properly rather than speaking quickly through a longer list[/6]. ||Student: Right. I’ll cut it down this evening.",
+      "dialogue": [
+        {
+          "speaker": "teacher",
+          "text": "James, your arguments for the debate competition are strong, but you’re trying to fit too many points into your speech."
+        },
+        {
+          "speaker": "student",
+          "text": "I was worried I wouldn’t have enough to say."
+        },
+        {
+          "speaker": "teacher",
+          "text": "You certainly do. Choose your three best ideas and explain them properly rather than speaking quickly through a longer list."
+        },
+        {
+          "speaker": "student",
+          "text": "Right. I’ll cut it down this evening."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the teacher advise James to do?",
+          "options": {
+            "A": "Speak more loudly during the competition.",
+            "B": "Concentrate on fewer arguments.",
+            "C": "Research a different subject."
+          },
+          "answer": "B",
+          "explanation": "The teacher tells James to choose his three best ideas and explain them fully (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two friends talking about plans for a picnic.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-RyanNeural"
+      },
+      "audio_script": "Girl: I’ve bought bread and fruit for tomorrow’s picnic in the park. Shall I bring a football too? ||Boy: Maybe, but the weather report says it might rain in the afternoon. ||Girl: We could still meet for lunch and then go somewhere indoors. ||Boy: [7]There’s a board-game café opposite the park. If it starts raining, we could spend the rest of the afternoon there[/7]. ||Girl: Great idea.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "I’ve bought bread and fruit for tomorrow’s picnic in the park. Shall I bring a football too?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Maybe, but the weather report says it might rain in the afternoon."
+        },
+        {
+          "speaker": "girl",
+          "text": "We could still meet for lunch and then go somewhere indoors."
+        },
+        {
+          "speaker": "boy",
+          "text": "There’s a board-game café opposite the park. If it starts raining, we could spend the rest of the afternoon there."
+        },
+        {
+          "speaker": "girl",
+          "text": "Great idea."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What will the friends probably do if it rains?",
+          "options": {
+            "A": "Continue their picnic under shelter.",
+            "B": "Go to an indoor café.",
+            "C": "Return home immediately."
+          },
+          "answer": "B",
+          "explanation": "The boy suggests the board-game café opposite the park if the rain begins (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a presenter talking about a wildlife photography event.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Next weekend, Lakeview Nature Reserve is holding a photography morning for visitors hoping to take pictures of birds and insects. A local photographer will begin with a short talk on using natural light. ||Presenter: [8]People do not need an expensive camera to join in, as the organiser will also show how to achieve good results using a mobile phone[/8]. Places cost five pounds and must be booked by Friday.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Next weekend, Lakeview Nature Reserve is holding a photography morning for visitors hoping to take pictures of birds and insects. A local photographer will begin with a short talk on using natural light."
+        },
+        {
+          "speaker": "presenter",
+          "text": "People do not need an expensive camera to join in, as the organiser will also show how to achieve good results using a mobile phone. Places cost five pounds and must be booked by Friday."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What does the presenter say about the event?",
+          "options": {
+            "A": "Equipment can be borrowed at no charge.",
+            "B": "Beginners will be given free cameras.",
+            "C": "People can take part using a phone."
+          },
+          "answer": "C",
+          "explanation": "The organiser will demonstrate how to take good photographs with a mobile phone (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test17_part1.mp3"
+}
