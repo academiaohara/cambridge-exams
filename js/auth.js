@@ -103,20 +103,32 @@
         AppState.hasExamsPack = false;
         AppState.isPremium = false;
         AppState.currentUser = null;
-        this._removeUserWidget();
-        this._showAuthModal();
-        if (typeof Dashboard !== 'undefined') { Dashboard.render(); }
+        this._finishSignOutUI();
         return;
       }
-      if (!this._client) { return; }
-      const { error } = await this._client.auth.signOut();
-      if (error) { console.error('[Auth] signOut error:', error.message); }
-      // Always perform local sign-out even if the server call failed or
-      // onAuthStateChange doesn't fire (e.g. expired session).
+      if (!this._client) {
+        this._session = null;
+        this._clearToken();
+        this._finishSignOutUI();
+        return;
+      }
+
       this._session = null;
       this._clearToken();
-      this._onSignOut();
-      this._showAuthModal();
+
+      try {
+        const { error } = await this._client.auth.signOut({ scope: 'local' });
+        if (error) { console.error('[Auth] signOut (local) error:', error.message); }
+      } catch (e) {
+        console.error('[Auth] signOut (local) error:', e);
+      }
+
+      this._finishSignOutUI();
+
+      // Revoke refresh token on the server when possible (non-blocking for UI).
+      this._client.auth.signOut().catch(function (err) {
+        console.error('[Auth] signOut (global) error:', err && err.message ? err.message : err);
+      });
     },
 
     /** Return the current session, or null. */
@@ -191,15 +203,31 @@
     _onSignOut: function () {
       AppState.currentUser = null;
       AppState.isAuthenticated = false;
+      AppState.isGuest = false;
       AppState.isAdmin = false;
       AppState.hasTheoryPack = false;
       AppState.hasExamsPack = false;
       AppState.isPremium = false;
 
       if (typeof SyncManager !== 'undefined') { SyncManager.stop(); }
-      if (typeof UserProfile !== 'undefined') { UserProfile.closePanel(); }
+      if (typeof UserProfile !== 'undefined') {
+        UserProfile._profile = null;
+        UserProfile.closePanel();
+      }
 
       this._removeUserWidget();
+    },
+
+    /** Shared post-sign-out UI: modal, header, and leave account/profile views. */
+    _finishSignOutUI: function () {
+      this._onSignOut();
+      this._showAuthModal();
+      this.renderSignInButton();
+      if (typeof loadDashboard === 'function') {
+        loadDashboard();
+      } else if (typeof Dashboard !== 'undefined') {
+        Dashboard.render();
+      }
     },
 
     // ── auth modal ───────────────────────────────────────────────────
