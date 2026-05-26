@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Cambridge exam practice platform with AI-powered writing evaluation",
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "dotenv": "^17.3.1",
     "node-fetch": "^3.3.2",
     "openai": "^6.25.0"
