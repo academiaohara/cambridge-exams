@@ -1,0 +1,304 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 10",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a cycling club leader.",
+      "voices": {
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: Hello Holly, it’s Dan from the cycling club about Sunday morning’s ride. We’re still setting off at nine, and the distance is the same as advertised, so it should take about two hours. ||Man: Roadworks have closed the usual meeting point outside the café, so [1]meet us by the north entrance to the park instead[/1]. Remember to bring your helmet and a bottle of water.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Hello Holly, it’s Dan from the cycling club about Sunday morning’s ride. We’re still setting off at nine, and the distance is the same as advertised, so it should take about two hours."
+        },
+        {
+          "speaker": "man",
+          "text": "Roadworks have closed the usual meeting point outside the café, so meet us by the north entrance to the park instead. Remember to bring your helmet and a bottle of water."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What change does Dan tell Holly about?",
+          "options": {
+            "A": "the starting point for the ride",
+            "B": "the length of the ride",
+            "C": "the equipment she should bring"
+          },
+          "answer": "A",
+          "explanation": "Dan says the group will meet at the north entrance to the park instead of outside the café (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking after a restaurant meal.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: I liked the restaurant’s colourful decoration, and the staff made us feel welcome. ||Boy: The fish dish tasted great too. I’d certainly order it again. ||Girl: But you said you weren’t completely satisfied. ||Boy: Well, [2]the amount of food on my plate was tiny, and I was still hungry when we left[/2]. For that price, I expected a larger meal.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "I liked the restaurant’s colourful decoration, and the staff made us feel welcome."
+        },
+        {
+          "speaker": "boy",
+          "text": "The fish dish tasted great too. I’d certainly order it again."
+        },
+        {
+          "speaker": "girl",
+          "text": "But you said you weren’t completely satisfied."
+        },
+        {
+          "speaker": "boy",
+          "text": "Well, the amount of food on my plate was tiny, and I was still hungry when we left. For that price, I expected a larger meal."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What was the boy disappointed with?",
+          "options": {
+            "A": "the quality of his dish",
+            "B": "the size of his meal",
+            "C": "the restaurant’s atmosphere"
+          },
+          "answer": "B",
+          "explanation": "The boy complains that his portion was so small that he was still hungry afterwards (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement before an outdoor concert.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Ladies and gentlemen, the open-air concert in Market Square will still take place this evening. The rain is expected to stop shortly, and covered seating is available near the stage. ||Announcer: Because the musicians need extra time to protect their equipment, [3]the performance will begin at eight o’clock instead of the advertised time of seven thirty[/3]. Doors remain open from seven. Thank you for your patience.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Ladies and gentlemen, the open-air concert in Market Square will still take place this evening. The rain is expected to stop shortly, and covered seating is available near the stage."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Because the musicians need extra time to protect their equipment, the performance will begin at eight o’clock instead of the advertised time of seven thirty. Doors remain open from seven. Thank you for your patience."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What change is announced for the concert?",
+          "options": {
+            "A": "It will be moved indoors.",
+            "B": "It will start later.",
+            "C": "It will have fewer seats available."
+          },
+          "answer": "B",
+          "explanation": "The announcer says the performance will start at eight rather than seven thirty (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a teenager who designed an app.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Presenter: Theo, your homework-planning app has already been downloaded by hundreds of teenagers. What makes you happiest about that? ||Boy: I enjoyed learning how to build it, and winning the school technology prize was exciting. But [4]the best thing is hearing from students who say the app helps them organise their work and feel less stressed[/4]. That’s why I made it in the first place.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Theo, your homework-planning app has already been downloaded by hundreds of teenagers. What makes you happiest about that?"
+        },
+        {
+          "speaker": "boy",
+          "text": "I enjoyed learning how to build it, and winning the school technology prize was exciting. But the best thing is hearing from students who say the app helps them organise their work and feel less stressed. That’s why I made it in the first place."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What is Theo most pleased about?",
+          "options": {
+            "A": "receiving a school prize",
+            "B": "improving his computer skills",
+            "C": "helping other students"
+          },
+          "answer": "C",
+          "explanation": "Theo says the best outcome is hearing that his app helps students manage their work and stress (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to an assistant at a railway ticket office.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I bought a ticket for the six o’clock train to Leeds tomorrow, but I need to change it. ||Assistant: Would you like to travel on another day? ||Woman: No, tomorrow is still fine. [5]My meeting has been brought forward, so I need a train that arrives before midday[/5]. ||Assistant: There’s one leaving at nine fifteen. I can transfer your ticket to that service.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I bought a ticket for the six o’clock train to Leeds tomorrow, but I need to change it."
+        },
+        {
+          "speaker": "assistant",
+          "text": "Would you like to travel on another day?"
+        },
+        {
+          "speaker": "woman",
+          "text": "No, tomorrow is still fine. My meeting has been brought forward, so I need a train that arrives before midday."
+        },
+        {
+          "speaker": "assistant",
+          "text": "There’s one leaving at nine fifteen. I can transfer your ticket to that service."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the woman need a different train?",
+          "options": {
+            "A": "She wants to arrive earlier.",
+            "B": "She is travelling on another day.",
+            "C": "She has found a cheaper ticket."
+          },
+          "answer": "A",
+          "explanation": "Her meeting is now earlier, so she needs a train arriving before midday (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear two colleagues talking about an online shop.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Several customers have emailed to ask where their orders are. The delivery page still says parcels will arrive tomorrow. ||Man: I know, but our supplier has just told me the boxes won’t be sent until Friday. ||Woman: We should tell customers straight away. ||Man: Agreed. [6]I’ll update the website this afternoon with the new delivery date and an apology[/6]. Then I’ll reply to the emails.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Several customers have emailed to ask where their orders are. The delivery page still says parcels will arrive tomorrow."
+        },
+        {
+          "speaker": "man",
+          "text": "I know, but our supplier has just told me the boxes won’t be sent until Friday."
+        },
+        {
+          "speaker": "woman",
+          "text": "We should tell customers straight away."
+        },
+        {
+          "speaker": "man",
+          "text": "Agreed. I’ll update the website this afternoon with the new delivery date and an apology. Then I’ll reply to the emails."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What will the man do first?",
+          "options": {
+            "A": "contact the supplier again",
+            "B": "change information on the website",
+            "C": "send replacement products to customers"
+          },
+          "answer": "B",
+          "explanation": "The man agrees to update the website with the new delivery date and an apology before replying to emails (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two friends making weekend plans.",
+      "voices": {
+        "boy": "en-GB-ThomasNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: I thought we could take our bikes to the coast on Sunday. There’s a nice path beside the sea. ||Girl: I’d love to, but the forecast says strong winds all day, and cycling there wouldn’t be pleasant. ||Boy: True. What shall we do instead? ||Girl: [7]Let’s book the indoor climbing session at the leisure centre; I’ve wanted to try it for ages[/7]. ||Boy: Fine. I’ll book it now.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "I thought we could take our bikes to the coast on Sunday. There’s a nice path beside the sea."
+        },
+        {
+          "speaker": "girl",
+          "text": "I’d love to, but the forecast says strong winds all day, and cycling there wouldn’t be pleasant."
+        },
+        {
+          "speaker": "boy",
+          "text": "True. What shall we do instead?"
+        },
+        {
+          "speaker": "girl",
+          "text": "Let’s book the indoor climbing session at the leisure centre; I’ve wanted to try it for ages."
+        },
+        {
+          "speaker": "boy",
+          "text": "Fine. I’ll book it now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What do the speakers decide to do on Sunday?",
+          "options": {
+            "A": "go cycling at the coast",
+            "B": "try an indoor activity",
+            "C": "visit a bicycle shop"
+          },
+          "answer": "B",
+          "explanation": "Because of the strong wind forecast, they agree to book an indoor climbing session (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a presenter talking about a new sports facility.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Lakeside Community Centre has opened two new badminton courts this week. Courts can be reserved by phone or online, and beginners’ coaching begins next month. ||Presenter: During the centre’s opening week, [8]anyone who books a badminton court can borrow rackets and shuttlecocks free of charge[/8]. After that, equipment will still be available, but a small hire fee will apply.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Lakeside Community Centre has opened two new badminton courts this week. Courts can be reserved by phone or online, and beginners’ coaching begins next month."
+        },
+        {
+          "speaker": "presenter",
+          "text": "During the centre’s opening week, anyone who books a badminton court can borrow rackets and shuttlecocks free of charge. After that, equipment will still be available, but a small hire fee will apply."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What offer is available during the centre’s opening week?",
+          "options": {
+            "A": "free coaching sessions for beginners",
+            "B": "free use of badminton equipment with a court booking",
+            "C": "cheaper court reservations made by phone"
+          },
+          "answer": "B",
+          "explanation": "Court users may borrow rackets and shuttlecocks without paying during the opening week (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test40_part1.mp3"
+}

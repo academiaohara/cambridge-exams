@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 5",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from the organiser of a charity run.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Ethan, this is Jo from the Spring Fun Run. Thanks for registering for Sunday’s event. The run still starts in Central Park at eleven, and changing rooms will be available there. ||Woman: Because the park office is being repaired, [1]you need to collect your race number from the town hall before going to the start area[/1]. It opens from nine thirty. Good luck!",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Ethan, this is Jo from the Spring Fun Run. Thanks for registering for Sunday’s event. The run still starts in Central Park at eleven, and changing rooms will be available there."
+        },
+        {
+          "speaker": "woman",
+          "text": "Because the park office is being repaired, you need to collect your race number from the town hall before going to the start area. It opens from nine thirty. Good luck!"
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "Where should Ethan collect his race number?",
+          "options": {
+            "A": "at the park entrance",
+            "B": "in a changing room",
+            "C": "at the town hall"
+          },
+          "answer": "C",
+          "explanation": "Jo tells Ethan to collect his race number from the town hall before going to the park (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two colleagues discussing a training day.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Did you find yesterday’s computer training useful? ||Man: Yes, especially the session where we practised using the new booking system ourselves. I’ll remember far more that way than from reading instructions. ||Woman: Was there anything you’d change? ||Man: [2]The trainer finished exactly on time, but there wasn’t enough opportunity to ask about problems we’d had[/2]. I still have several questions.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you find yesterday’s computer training useful?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, especially the session where we practised using the new booking system ourselves. I’ll remember far more that way than from reading instructions."
+        },
+        {
+          "speaker": "woman",
+          "text": "Was there anything you’d change?"
+        },
+        {
+          "speaker": "man",
+          "text": "The trainer finished exactly on time, but there wasn’t enough opportunity to ask about problems we’d had. I still have several questions."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What criticism does the man make of the training day?",
+          "options": {
+            "A": "The practical task was too difficult.",
+            "B": "There was insufficient time for questions.",
+            "C": "The written instructions were unclear."
+          },
+          "answer": "B",
+          "explanation": "The man says there was not enough opportunity to ask about the problems he had experienced (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement in a museum.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: Welcome to the Maritime Museum. Our newest exhibition, about sailors’ clothing, is upstairs, and the film presentation starts every hour in Room Six. Visitors may take photographs throughout the building. ||Guide: However, [3]flash photography is not allowed near the old maps, because the bright light can damage them[/3]. Please also avoid touching items unless a sign says you may do so.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Welcome to the Maritime Museum. Our newest exhibition, about sailors’ clothing, is upstairs, and the film presentation starts every hour in Room Six. Visitors may take photographs throughout the building."
+        },
+        {
+          "speaker": "guide",
+          "text": "However, flash photography is not allowed near the old maps, because the bright light can damage them. Please also avoid touching items unless a sign says you may do so."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What restriction does the guide mention?",
+          "options": {
+            "A": "Visitors cannot use flash near certain exhibits.",
+            "B": "Visitors are not allowed to watch the film.",
+            "C": "Visitors must not photograph clothing."
+          },
+          "answer": "A",
+          "explanation": "The guide explains that flash must not be used near the old maps because it can damage them (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a woman who has opened a bakery.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Jenny, you used to work in an office. What encouraged you to open your bakery? ||Woman: I always baked at weekends, but I regarded it as a hobby. Then I started taking cakes to work for birthdays. [4]My colleagues kept asking if they could pay me to make cakes for their families, and that gave me confidence to turn it into a business[/4]. I still enjoy every order.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Jenny, you used to work in an office. What encouraged you to open your bakery?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I always baked at weekends, but I regarded it as a hobby. Then I started taking cakes to work for birthdays. My colleagues kept asking if they could pay me to make cakes for their families, and that gave me confidence to turn it into a business. I still enjoy every order."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What made Jenny decide to open a bakery?",
+          "options": {
+            "A": "She lost her office job.",
+            "B": "Her family lent her money.",
+            "C": "People at work wanted to buy her cakes."
+          },
+          "answer": "C",
+          "explanation": "Jenny explains that colleagues offered to pay for cakes, which gave her confidence to start her business (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to a travel agent.",
+      "voices": {
+        "customer": "en-GB-RyanNeural",
+        "agent": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Customer: I need a coach ticket to Birmingham on Friday. The morning service looks convenient, but it’s quite expensive. ||Agent: There’s a cheaper coach leaving at two, although it doesn’t arrive until five thirty. ||Customer: My meeting isn’t until seven, so that’s no problem. [5]I’ll take the afternoon coach, as I’d prefer to save the money[/5]. ||Agent: Fine. Would you like a window seat?",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "I need a coach ticket to Birmingham on Friday. The morning service looks convenient, but it’s quite expensive."
+        },
+        {
+          "speaker": "agent",
+          "text": "There’s a cheaper coach leaving at two, although it doesn’t arrive until five thirty."
+        },
+        {
+          "speaker": "customer",
+          "text": "My meeting isn’t until seven, so that’s no problem. I’ll take the afternoon coach, as I’d prefer to save the money."
+        },
+        {
+          "speaker": "agent",
+          "text": "Fine. Would you like a window seat?"
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the customer choose the afternoon coach?",
+          "options": {
+            "A": "It has more comfortable seats.",
+            "B": "It costs less.",
+            "C": "It arrives earlier."
+          },
+          "answer": "B",
+          "explanation": "The customer chooses the afternoon service because it is cheaper and still arrives before the meeting (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking about an exam.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: You weren’t in the classroom when the English exam started this morning. What happened? ||Boy: I got on the number twelve bus as usual, but it was diverted because of roadworks and went right round the town centre. ||Girl: Were you allowed to take the exam? ||Boy: Yes. [6]I was really relieved when the teacher let me begin fifteen minutes late rather than making me take it another day[/6].",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "You weren’t in the classroom when the English exam started this morning. What happened?"
+        },
+        {
+          "speaker": "boy",
+          "text": "I got on the number twelve bus as usual, but it was diverted because of roadworks and went right round the town centre."
+        },
+        {
+          "speaker": "girl",
+          "text": "Were you allowed to take the exam?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes. I was really relieved when the teacher let me begin fifteen minutes late rather than making me take it another day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "How did the boy feel when the teacher spoke to him?",
+          "options": {
+            "A": "grateful that he could still take the exam",
+            "B": "annoyed about having to return later",
+            "C": "confused about why the bus was late"
+          },
+          "answer": "A",
+          "explanation": "The boy says he was relieved that he could start the exam late instead of returning another day (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two neighbours talking after a storm.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: That wind was strong last night. I found two plant pots on their sides this morning. ||Man: I’ve got leaves all over my garden, but I can sweep them up later. ||Woman: Look at your wooden fence by the path. It’s almost falling over. ||Man: You’re right. [7]I’ll fasten that loose panel first, before it falls onto someone walking past[/7]. Then I’ll tidy the garden.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "That wind was strong last night. I found two plant pots on their sides this morning."
+        },
+        {
+          "speaker": "man",
+          "text": "I’ve got leaves all over my garden, but I can sweep them up later."
+        },
+        {
+          "speaker": "woman",
+          "text": "Look at your wooden fence by the path. It’s almost falling over."
+        },
+        {
+          "speaker": "man",
+          "text": "You’re right. I’ll fasten that loose panel first, before it falls onto someone walking past. Then I’ll tidy the garden."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What will the man do first?",
+          "options": {
+            "A": "pick up the plant pots",
+            "B": "repair part of the fence",
+            "C": "sweep up the leaves"
+          },
+          "answer": "B",
+          "explanation": "He decides to fasten the loose fence panel first because it might fall on someone (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a swimming pool.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Northgate Pool is reopening on Saturday after improvements to its changing rooms. Regular lane swimming begins at seven each morning, and children’s sessions continue on weekday afternoons. ||Presenter: If you are an adult who has never learned to swim, [8]you can try a beginners’ lesson without paying this Sunday, provided you book a place on the pool website[/8]. Places are limited.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Northgate Pool is reopening on Saturday after improvements to its changing rooms. Regular lane swimming begins at seven each morning, and children’s sessions continue on weekday afternoons."
+        },
+        {
+          "speaker": "presenter",
+          "text": "If you are an adult who has never learned to swim, you can try a beginners’ lesson without paying this Sunday, provided you book a place on the pool website. Places are limited."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is the swimming pool offering on Sunday?",
+          "options": {
+            "A": "free swimming lessons for adult beginners",
+            "B": "discounted children’s sessions",
+            "C": "free access to improved changing rooms"
+          },
+          "answer": "A",
+          "explanation": "Adult beginners can attend a swimming lesson free of charge on Sunday if they book online (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test35_part1.mp3"
+}

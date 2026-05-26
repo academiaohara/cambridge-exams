@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 6",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a photography workshop organiser.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello Josh, it’s Melissa from the photography workshop. I’m just confirming that Saturday’s session will begin at ten, as advertised, and cameras can be borrowed if you don’t have one. ||Woman: Before you arrive, [1]please email me one photograph you’ve taken recently, because we’ll begin the workshop by discussing everyone’s pictures[/1]. It doesn’t have to be perfect. See you on Saturday.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello Josh, it’s Melissa from the photography workshop. I’m just confirming that Saturday’s session will begin at ten, as advertised, and cameras can be borrowed if you don’t have one."
+        },
+        {
+          "speaker": "woman",
+          "text": "Before you arrive, please email me one photograph you’ve taken recently, because we’ll begin the workshop by discussing everyone’s pictures. It doesn’t have to be perfect. See you on Saturday."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does Melissa ask Josh to do before the workshop?",
+          "options": {
+            "A": "borrow a camera",
+            "B": "take part in an online lesson",
+            "C": "send her a photograph"
+          },
+          "answer": "C",
+          "explanation": "Melissa asks Josh to email one recent photograph in advance for discussion at the workshop (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two people discussing a restaurant.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: What did you think of that new restaurant on King Street? ||Woman: The food was delicious. I’d definitely order the vegetable curry again, and the prices weren’t bad either. ||Man: It was busy, though. ||Woman: Yes. [2]We waited nearly an hour for our meals after ordering, which was far too long[/2]. I’d only go back when it’s less crowded.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "What did you think of that new restaurant on King Street?"
+        },
+        {
+          "speaker": "woman",
+          "text": "The food was delicious. I’d definitely order the vegetable curry again, and the prices weren’t bad either."
+        },
+        {
+          "speaker": "man",
+          "text": "It was busy, though."
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes. We waited nearly an hour for our meals after ordering, which was far too long. I’d only go back when it’s less crowded."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the woman dislike about the restaurant?",
+          "options": {
+            "A": "The food was too expensive.",
+            "B": "The menu offered too few choices.",
+            "C": "The service was very slow."
+          },
+          "answer": "C",
+          "explanation": "The woman complains that they waited nearly an hour for their meals after ordering (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a summer festival.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: We hope you’re enjoying this afternoon’s summer festival. The craft stalls and food market will remain open until six. Unfortunately, the grass on the outdoor stage area is too wet for tonight’s music show. ||Announcer: [3]The concert will now take place inside the sports hall, and all tickets remain valid[/3]. Please follow the blue signs from the main entrance.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "We hope you’re enjoying this afternoon’s summer festival. The craft stalls and food market will remain open until six. Unfortunately, the grass on the outdoor stage area is too wet for tonight’s music show."
+        },
+        {
+          "speaker": "announcer",
+          "text": "The concert will now take place inside the sports hall, and all tickets remain valid. Please follow the blue signs from the main entrance."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What is the announcer telling festival visitors?",
+          "options": {
+            "A": "The concert has a new location.",
+            "B": "The food market will close early.",
+            "C": "They need to exchange their tickets."
+          },
+          "answer": "A",
+          "explanation": "The concert has been moved indoors to the sports hall, while existing tickets remain valid (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a teenager who is learning Spanish.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Presenter: Amelia, you’ve been studying Spanish for two years. When did you realise you were improving? ||Girl: My test marks had gradually got better, but that didn’t make me feel fluent. Then, during the holidays, a visitor asked me for directions. [4]I explained the route in Spanish, and she understood me immediately[/4]. After that, I felt much more confident about speaking.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Amelia, you’ve been studying Spanish for two years. When did you realise you were improving?"
+        },
+        {
+          "speaker": "girl",
+          "text": "My test marks had gradually got better, but that didn’t make me feel fluent. Then, during the holidays, a visitor asked me for directions. I explained the route in Spanish, and she understood me immediately. After that, I felt much more confident about speaking."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What increased Amelia’s confidence in Spanish?",
+          "options": {
+            "A": "getting higher marks in school tests",
+            "B": "successfully helping a visitor",
+            "C": "travelling abroad on holiday"
+          },
+          "answer": "B",
+          "explanation": "Amelia gained confidence after successfully giving directions to a visitor in Spanish (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to an assistant in a bicycle shop.",
+      "voices": {
+        "customer": "en-GB-RyanNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Customer: I brought my bike in for a repair this morning. Do you know when it will be ready? ||Assistant: We need to order a new brake part, so it may take until Thursday. ||Customer: I cycle to work every day. [5]Could I hire one of your bikes until mine is repaired[/5]? ||Assistant: Certainly. You can have this one at half the usual daily price.",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "I brought my bike in for a repair this morning. Do you know when it will be ready?"
+        },
+        {
+          "speaker": "assistant",
+          "text": "We need to order a new brake part, so it may take until Thursday."
+        },
+        {
+          "speaker": "customer",
+          "text": "I cycle to work every day. Could I hire one of your bikes until mine is repaired?"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Certainly. You can have this one at half the usual daily price."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the customer want to do?",
+          "options": {
+            "A": "buy a new brake part",
+            "B": "collect his bike immediately",
+            "C": "use another bike temporarily"
+          },
+          "answer": "C",
+          "explanation": "The customer asks to hire a bicycle until his own one has been repaired (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear two students discussing their weekend jobs.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: Are you working at the supermarket on Saturday afternoon? I thought you usually did that shift. ||Boy: They asked me to, but I said I couldn’t this week. ||Girl: Are you going away somewhere? ||Boy: No. [6]There’s an extra revision class for the physics exam on Saturday, and I really need to attend it[/6]. I offered to work on Sunday instead, and the manager agreed.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Are you working at the supermarket on Saturday afternoon? I thought you usually did that shift."
+        },
+        {
+          "speaker": "boy",
+          "text": "They asked me to, but I said I couldn’t this week."
+        },
+        {
+          "speaker": "girl",
+          "text": "Are you going away somewhere?"
+        },
+        {
+          "speaker": "boy",
+          "text": "No. There’s an extra revision class for the physics exam on Saturday, and I really need to attend it. I offered to work on Sunday instead, and the manager agreed."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why is the boy not working on Saturday afternoon?",
+          "options": {
+            "A": "He has a class to attend.",
+            "B": "He is visiting another town.",
+            "C": "The supermarket is closed."
+          },
+          "answer": "A",
+          "explanation": "He cannot work because he needs to attend an additional revision class for his physics exam (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two flatmates getting ready for visitors.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: My parents will be here in an hour, and the sitting room still looks dark. I thought you changed the light bulb. ||Man: I tried, but the new one didn’t work either. I think the lamp itself is broken. ||Woman: Never mind. [7]Could you move the standing lamp in from your bedroom before they arrive[/7]? ||Man: Of course. That will make the room much brighter.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "My parents will be here in an hour, and the sitting room still looks dark. I thought you changed the light bulb."
+        },
+        {
+          "speaker": "man",
+          "text": "I tried, but the new one didn’t work either. I think the lamp itself is broken."
+        },
+        {
+          "speaker": "woman",
+          "text": "Never mind. Could you move the standing lamp in from your bedroom before they arrive?"
+        },
+        {
+          "speaker": "man",
+          "text": "Of course. That will make the room much brighter."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What will the man do?",
+          "options": {
+            "A": "repair the broken lamp",
+            "B": "bring in a different lamp",
+            "C": "buy another light bulb"
+          },
+          "answer": "B",
+          "explanation": "The woman asks him to bring the standing lamp from his bedroom, and he agrees (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a presenter talking about a science centre.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The Discovery Science Centre opens its new weather exhibition next week. Visitors can create a miniature storm and watch films about extreme climates. The centre is open until eight every Thursday. ||Presenter: During the opening month, [8]families who enter after three o’clock on a weekday will pay only half the normal ticket price[/8]. Tickets can be bought on arrival or booked online.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The Discovery Science Centre opens its new weather exhibition next week. Visitors can create a miniature storm and watch films about extreme climates. The centre is open until eight every Thursday."
+        },
+        {
+          "speaker": "presenter",
+          "text": "During the opening month, families who enter after three o’clock on a weekday will pay only half the normal ticket price. Tickets can be bought on arrival or booked online."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What offer is available at the science centre?",
+          "options": {
+            "A": "free online tickets for children",
+            "B": "cheaper weekday afternoon entry for families",
+            "C": "longer opening hours every evening"
+          },
+          "answer": "B",
+          "explanation": "Families entering after three on a weekday will pay half the usual ticket price during the opening month (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test36_part1.mp3"
+}

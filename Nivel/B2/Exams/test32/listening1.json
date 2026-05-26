@@ -1,0 +1,291 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 2",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a guitar teacher.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Oliver, this is Anna about your guitar lesson tomorrow afternoon. It will still begin at four and I’ve got the new music book for you. The rehearsal room is needed for an orchestra practice, though. ||Woman: [1]Come to the music library on the first floor instead; I’ll have a room booked there[/1]. Bring your guitar as usual, but don’t worry about bringing a stand.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Oliver, this is Anna about your guitar lesson tomorrow afternoon. It will still begin at four and I’ve got the new music book for you. The rehearsal room is needed for an orchestra practice, though."
+        },
+        {
+          "speaker": "woman",
+          "text": "Come to the music library on the first floor instead; I’ll have a room booked there. Bring your guitar as usual, but don’t worry about bringing a stand."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What change does Anna tell Oliver about?",
+          "options": {
+            "A": "He should use a different room.",
+            "B": "He needs to buy a music book.",
+            "C": "His lesson has been moved to the morning."
+          },
+          "answer": "A",
+          "explanation": "Anna says the lesson will be in the music library rather than the usual rehearsal room (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking after a theatre performance.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: That comedy was funnier than I expected. The main actor was excellent. ||Boy: Yes, and I loved the costumes. I’d seen photos online, but they looked much better on stage. ||Girl: So you enjoyed everything? ||Boy: Almost. [2]Our seats were so far back that I sometimes couldn’t see the actors’ expressions[/2]. Next time, I’d pay more to sit nearer the front.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "That comedy was funnier than I expected. The main actor was excellent."
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes, and I loved the costumes. I’d seen photos online, but they looked much better on stage."
+        },
+        {
+          "speaker": "girl",
+          "text": "So you enjoyed everything?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Almost. Our seats were so far back that I sometimes couldn’t see the actors’ expressions. Next time, I’d pay more to sit nearer the front."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What was the boy’s problem at the theatre?",
+          "options": {
+            "A": "He could not hear all the dialogue.",
+            "B": "He did not have a good enough view.",
+            "C": "He thought the tickets were too expensive."
+          },
+          "answer": "B",
+          "explanation": "The boy says he was too far back to see the actors’ expressions properly (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement on a train.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Welcome aboard the 10.15 service to Exeter. We’ll be leaving in a few minutes. Due to a fault with the café equipment, only cold drinks will be served during today’s journey. ||Announcer: Passengers travelling to Newton should note that [3]only the rear four coaches will stop at that station, so please move there before we arrive[/3]. Thank you for your cooperation.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Welcome aboard the 10.15 service to Exeter. We’ll be leaving in a few minutes. Due to a fault with the café equipment, only cold drinks will be served during today’s journey."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Passengers travelling to Newton should note that only the rear four coaches will stop at that station, so please move there before we arrive. Thank you for your cooperation."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What should passengers for Newton do?",
+          "options": {
+            "A": "leave the train before it departs",
+            "B": "buy drinks before reaching the station",
+            "C": "sit in a particular part of the train"
+          },
+          "answer": "C",
+          "explanation": "Newton passengers must move to the rear four coaches because only those coaches will stop there (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a woman who grows vegetables.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Rita, you’ve turned your small garden into an impressive vegetable plot. Did you start because food in shops had become expensive? ||Woman: That encouraged me a little, but the real reason was different. [4]I had a very stressful job, and spending an hour outside after work helped me relax[/4]. Saving money is useful, of course, but it wasn’t what made me begin.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Rita, you’ve turned your small garden into an impressive vegetable plot. Did you start because food in shops had become expensive?"
+        },
+        {
+          "speaker": "woman",
+          "text": "That encouraged me a little, but the real reason was different. I had a very stressful job, and spending an hour outside after work helped me relax. Saving money is useful, of course, but it wasn’t what made me begin."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why did Rita first start growing vegetables?",
+          "options": {
+            "A": "She wanted to spend less on food.",
+            "B": "She needed a relaxing activity.",
+            "C": "She hoped to change her job."
+          },
+          "answer": "B",
+          "explanation": "Rita says she began because gardening helped her relax after a stressful working day (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a guest talking to a hotel receptionist.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "receptionist": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: I booked a single room for tonight, but I’m wondering whether it’s possible to change it. I’m not asking for a larger one. ||Receptionist: What would you prefer? ||Man: I’m a very light sleeper, and [5]the room on my booking is next to the lift, so I’d be grateful for somewhere quieter[/5]. ||Receptionist: No problem. I can give you one at the end of the corridor.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I booked a single room for tonight, but I’m wondering whether it’s possible to change it. I’m not asking for a larger one."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "What would you prefer?"
+        },
+        {
+          "speaker": "man",
+          "text": "I’m a very light sleeper, and the room on my booking is next to the lift, so I’d be grateful for somewhere quieter."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "No problem. I can give you one at the end of the corridor."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the guest want?",
+          "options": {
+            "A": "a quieter bedroom",
+            "B": "a bigger bedroom",
+            "C": "a room on a different floor"
+          },
+          "answer": "A",
+          "explanation": "The man asks for somewhere quieter because the booked room is close to the lift (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student leaving a phone message for a friend.",
+      "voices": {
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Boy: Hi Chloe, it’s Ben. I won’t be at orchestra practice this afternoon after all. I packed my violin and music this morning, and I was actually looking forward to rehearsing the new piece. ||Boy: But [6]one of my violin strings broke while I was practising at lunchtime, and the music shop can’t replace it until tomorrow[/6]. Tell Mr Hall I’ll be back next week.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Hi Chloe, it’s Ben. I won’t be at orchestra practice this afternoon after all. I packed my violin and music this morning, and I was actually looking forward to rehearsing the new piece."
+        },
+        {
+          "speaker": "boy",
+          "text": "But one of my violin strings broke while I was practising at lunchtime, and the music shop can’t replace it until tomorrow. Tell Mr Hall I’ll be back next week."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why cannot Ben go to orchestra practice?",
+          "options": {
+            "A": "He has forgotten his music.",
+            "B": "His instrument needs repairing.",
+            "C": "He no longer wants to perform."
+          },
+          "answer": "B",
+          "explanation": "A string on Ben’s violin has broken and cannot be replaced until tomorrow (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two flatmates talking in their kitchen.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: There’s water on the floor again, just under the kitchen sink. I put a towel there yesterday, but it’s soaked already. ||Man: I can try tightening the pipe after work. ||Woman: I don’t think we should risk making it worse. [7]Could you call the landlord this morning and ask him to arrange a plumber[/7]? ||Man: Sure. I’ll do it before my first lecture.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "There’s water on the floor again, just under the kitchen sink. I put a towel there yesterday, but it’s soaked already."
+        },
+        {
+          "speaker": "man",
+          "text": "I can try tightening the pipe after work."
+        },
+        {
+          "speaker": "woman",
+          "text": "I don’t think we should risk making it worse. Could you call the landlord this morning and ask him to arrange a plumber?"
+        },
+        {
+          "speaker": "man",
+          "text": "Sure. I’ll do it before my first lecture."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What will the man do first about the problem?",
+          "options": {
+            "A": "try to repair the pipe himself",
+            "B": "dry the kitchen floor",
+            "C": "contact the landlord"
+          },
+          "answer": "C",
+          "explanation": "The woman asks him to call the landlord to arrange a plumber, and he agrees (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a weekend market.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The Riverside Market returns this Saturday with more than forty stalls selling local food and handmade gifts. The bus company has added extra services from the town centre, and dogs are welcome if kept on a lead. ||Presenter: [8]Visitors arriving by bicycle can leave their bikes in the new supervised parking area completely free of charge[/8]. It will be open from nine until four.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The Riverside Market returns this Saturday with more than forty stalls selling local food and handmade gifts. The bus company has added extra services from the town centre, and dogs are welcome if kept on a lead."
+        },
+        {
+          "speaker": "presenter",
+          "text": "Visitors arriving by bicycle can leave their bikes in the new supervised parking area completely free of charge. It will be open from nine until four."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What new service is the market providing?",
+          "options": {
+            "A": "free secure parking for cyclists",
+            "B": "cheaper tickets on local buses",
+            "C": "an area where dogs may run freely"
+          },
+          "answer": "A",
+          "explanation": "The market is providing a supervised bicycle parking area which visitors can use free of charge (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test32_part1.mp3"
+}

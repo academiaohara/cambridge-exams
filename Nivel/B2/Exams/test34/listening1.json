@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 4",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a tennis coach.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Ruby, this is Clare from the tennis club. Your beginners’ lesson is still at ten tomorrow morning, and you don’t need to bring any tennis balls. The outdoor courts will be too wet after tonight’s rain. ||Woman: We’re using the sports hall instead, so [1]please bring clean indoor trainers, as outdoor shoes aren’t allowed on its floor[/1]. I’ll see you at reception.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Ruby, this is Clare from the tennis club. Your beginners’ lesson is still at ten tomorrow morning, and you don’t need to bring any tennis balls. The outdoor courts will be too wet after tonight’s rain."
+        },
+        {
+          "speaker": "woman",
+          "text": "We’re using the sports hall instead, so please bring clean indoor trainers, as outdoor shoes aren’t allowed on its floor. I’ll see you at reception."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What should Ruby bring to her tennis lesson?",
+          "options": {
+            "A": "some tennis balls",
+            "B": "suitable shoes for indoors",
+            "C": "clothes for wet weather"
+          },
+          "answer": "B",
+          "explanation": "Since the lesson is moving indoors, Clare asks Ruby to bring clean indoor trainers (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a camping trip.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: So, was the campsite as good as it looked in the photos? ||Woman: The showers were clean, and there was a little shop selling everything we needed. The owners were very helpful too. ||Man: It sounds excellent. ||Woman: Mostly, yes. But [2]our tent was close to a busy road, and the noise kept waking me up during the night[/2]. I’d choose a different pitch next time.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "So, was the campsite as good as it looked in the photos?"
+        },
+        {
+          "speaker": "woman",
+          "text": "The showers were clean, and there was a little shop selling everything we needed. The owners were very helpful too."
+        },
+        {
+          "speaker": "man",
+          "text": "It sounds excellent."
+        },
+        {
+          "speaker": "woman",
+          "text": "Mostly, yes. But our tent was close to a busy road, and the noise kept waking me up during the night. I’d choose a different pitch next time."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the woman dislike about the campsite?",
+          "options": {
+            "A": "It was not quiet enough.",
+            "B": "The facilities were dirty.",
+            "C": "The shop had limited supplies."
+          },
+          "answer": "A",
+          "explanation": "The woman says traffic noise from the nearby road disturbed her sleep (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a school.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Students interested in this year’s drama production should remember that auditions are being held after school today. The hall is available again now that the sports event has finished, and the auditions will start there at four. ||Announcer: [3]Before going to the hall, please write your name on the list outside the school office, so we know who is taking part[/3]. Good luck to everyone.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Students interested in this year’s drama production should remember that auditions are being held after school today. The hall is available again now that the sports event has finished, and the auditions will start there at four."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Before going to the hall, please write your name on the list outside the school office, so we know who is taking part. Good luck to everyone."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What must students do before their drama audition?",
+          "options": {
+            "A": "collect a script from the hall",
+            "B": "take part in a sports event",
+            "C": "add their name to a list"
+          },
+          "answer": "C",
+          "explanation": "Students are asked to write their names on the list outside the office before the audition (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a beekeeper.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Presenter: Adam, when you started keeping bees, did you expect it to be difficult? ||Man: I knew I’d have to learn how to handle them safely, and I took a course first. The real difficulty was something I couldn’t control. [4]Last summer’s cold, wet weather meant there were fewer flowers, so the bees produced very little honey[/4]. I’m hoping this year will be better.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Adam, when you started keeping bees, did you expect it to be difficult?"
+        },
+        {
+          "speaker": "man",
+          "text": "I knew I’d have to learn how to handle them safely, and I took a course first. The real difficulty was something I couldn’t control. Last summer’s cold, wet weather meant there were fewer flowers, so the bees produced very little honey. I’m hoping this year will be better."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What difficulty did Adam experience as a beekeeper?",
+          "options": {
+            "A": "He was frightened of handling bees.",
+            "B": "Bad weather affected honey production.",
+            "C": "He could not find a suitable training course."
+          },
+          "answer": "B",
+          "explanation": "Adam says poor weather led to fewer flowers and therefore very little honey (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to an assistant in a clothes shop.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I bought this jacket yesterday, and I love the colour, but it feels much too large when I wear it over a T-shirt. ||Assistant: We can refund it, or I can check whether we have a smaller size. ||Woman: [5]I’d rather keep the same style, so could I try it in a size ten instead[/5]? ||Assistant: Certainly. I think there’s one in the changing room area.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I bought this jacket yesterday, and I love the colour, but it feels much too large when I wear it over a T-shirt."
+        },
+        {
+          "speaker": "assistant",
+          "text": "We can refund it, or I can check whether we have a smaller size."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’d rather keep the same style, so could I try it in a size ten instead?"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Certainly. I think there’s one in the changing room area."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the woman want to do?",
+          "options": {
+            "A": "exchange the jacket for a smaller one",
+            "B": "receive her money back",
+            "C": "choose a jacket of another colour"
+          },
+          "answer": "A",
+          "explanation": "She wants the same jacket style but in a smaller size (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to a teacher about an essay.",
+      "voices": {
+        "student": "en-GB-ThomasNeural",
+        "teacher": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Student: I’m sorry, Mr Reed, but could I send my history essay tomorrow morning instead of this evening? I’d written most of it already. ||Teacher: What happened? ||Student: [6]My laptop stopped working before I copied across the list of sources I used, and I need to add those references properly[/6]. The computer shop says it should be fixed tonight. ||Teacher: Send it by ten tomorrow, then.",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "I’m sorry, Mr Reed, but could I send my history essay tomorrow morning instead of this evening? I’d written most of it already."
+        },
+        {
+          "speaker": "teacher",
+          "text": "What happened?"
+        },
+        {
+          "speaker": "student",
+          "text": "My laptop stopped working before I copied across the list of sources I used, and I need to add those references properly. The computer shop says it should be fixed tonight."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Send it by ten tomorrow, then."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why does the student need extra time for the essay?",
+          "options": {
+            "A": "He must check some missing references.",
+            "B": "He has not begun writing it.",
+            "C": "He misunderstood the essay topic."
+          },
+          "answer": "A",
+          "explanation": "His laptop stopped working before he could access and include the required list of sources (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two friends talking about preparations for a birthday party.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: I’ve collected the birthday cake and put it in the fridge. You’re still coming early to help decorate, aren’t you? ||Boy: Yes. I’ve bought the balloons as well. Is there anything else we need? ||Girl: I just realised I forgot candles. [7]Could you pick some up on your way here? The supermarket stays open until eight[/7]. ||Boy: Of course. I’ll get a packet before I arrive.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "I’ve collected the birthday cake and put it in the fridge. You’re still coming early to help decorate, aren’t you?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes. I’ve bought the balloons as well. Is there anything else we need?"
+        },
+        {
+          "speaker": "girl",
+          "text": "I just realised I forgot candles. Could you pick some up on your way here? The supermarket stays open until eight."
+        },
+        {
+          "speaker": "boy",
+          "text": "Of course. I’ll get a packet before I arrive."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What does the girl ask the boy to buy?",
+          "options": {
+            "A": "a cake",
+            "B": "candles",
+            "C": "balloons"
+          },
+          "answer": "B",
+          "explanation": "The girl has forgotten candles and asks the boy to buy them on his way (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a presenter talking about activities in a country park.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Oakview Country Park is running nature activities throughout the school holidays. Families can borrow maps from the visitor centre, and the café now serves packed lunches for walkers. ||Presenter: This Sunday, [8]two guided walks led by local wildlife experts are completely free, although visitors must reserve places online before arriving[/8]. One walk begins at ten and the second at two.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Oakview Country Park is running nature activities throughout the school holidays. Families can borrow maps from the visitor centre, and the café now serves packed lunches for walkers."
+        },
+        {
+          "speaker": "presenter",
+          "text": "This Sunday, two guided walks led by local wildlife experts are completely free, although visitors must reserve places online before arriving. One walk begins at ten and the second at two."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is available at the country park this Sunday?",
+          "options": {
+            "A": "free walks which must be booked first",
+            "B": "free lunches for families",
+            "C": "maps delivered to visitors online"
+          },
+          "answer": "A",
+          "explanation": "Two guided walks are free on Sunday, but visitors have to reserve places online (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test34_part1.mp3"
+}

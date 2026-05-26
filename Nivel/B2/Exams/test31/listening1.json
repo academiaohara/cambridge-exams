@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a pottery class organiser.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Noah, it’s Helen from the pottery centre about your class tomorrow. It still begins at half past five, and you won’t need to bring an apron because we provide them. ||Woman: There’s a street market outside the front of the building, so [1]please enter through the small door in Green Lane, where I’ll meet the new students[/1]. It’s clearly marked. See you tomorrow.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Noah, it’s Helen from the pottery centre about your class tomorrow. It still begins at half past five, and you won’t need to bring an apron because we provide them."
+        },
+        {
+          "speaker": "woman",
+          "text": "There’s a street market outside the front of the building, so please enter through the small door in Green Lane, where I’ll meet the new students. It’s clearly marked. See you tomorrow."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What should Noah do when he arrives for the pottery class?",
+          "options": {
+            "A": "bring some special clothing",
+            "B": "meet the group at another entrance",
+            "C": "come at a later time"
+          },
+          "answer": "B",
+          "explanation": "Helen tells Noah to use the door in Green Lane because the front of the building is affected by the market (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about an art exhibition.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: Did you enjoy the photography exhibition yesterday? ||Boy: The pictures were impressive, especially the ones taken in winter. I’d happily see those again. ||Girl: So why did you leave so quickly? ||Boy: Well, [2]there was almost no information beside each photograph, and I wanted to know where and how they had been taken[/2]. The café was nice, though, and the staff were friendly.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Did you enjoy the photography exhibition yesterday?"
+        },
+        {
+          "speaker": "boy",
+          "text": "The pictures were impressive, especially the ones taken in winter. I’d happily see those again."
+        },
+        {
+          "speaker": "girl",
+          "text": "So why did you leave so quickly?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Well, there was almost no information beside each photograph, and I wanted to know where and how they had been taken. The café was nice, though, and the staff were friendly."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the boy dislike about the exhibition?",
+          "options": {
+            "A": "There were too few details about the pictures.",
+            "B": "The exhibition closed earlier than expected.",
+            "C": "The photographs were not varied enough."
+          },
+          "answer": "A",
+          "explanation": "The boy wanted more information about the photographs and says almost none was provided (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a sports centre.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: May I have your attention, please? The main gym is closed this afternoon while new lighting is installed. The exercise classes due to take place there have been moved to the dance studio. ||Announcer: [3]Swimming lessons are continuing as usual in the indoor pool, so pupils should meet their instructors there at the normal time[/3]. We apologise for any inconvenience caused by today’s work.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "May I have your attention, please? The main gym is closed this afternoon while new lighting is installed. The exercise classes due to take place there have been moved to the dance studio."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Swimming lessons are continuing as usual in the indoor pool, so pupils should meet their instructors there at the normal time. We apologise for any inconvenience caused by today’s work."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What is the announcer telling people about swimming lessons?",
+          "options": {
+            "A": "They will begin later today.",
+            "B": "They will be held outside.",
+            "C": "They are unaffected by the changes."
+          },
+          "answer": "C",
+          "explanation": "The announcer says swimming lessons are continuing as usual at the normal time (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a man who organised a beach clean-up.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Presenter: Liam, more than fifty people helped at your beach clean-up on Sunday. Were you surprised? ||Man: Very much. I hoped people would collect rubbish for a couple of hours, and they did. But [4]what really pleased me was that several local cafés have now promised to put recycling bins near the beach[/4]. That means the event may produce a lasting change.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Liam, more than fifty people helped at your beach clean-up on Sunday. Were you surprised?"
+        },
+        {
+          "speaker": "man",
+          "text": "Very much. I hoped people would collect rubbish for a couple of hours, and they did. But what really pleased me was that several local cafés have now promised to put recycling bins near the beach. That means the event may produce a lasting change."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What is Liam especially pleased about?",
+          "options": {
+            "A": "the number of volunteers who attended",
+            "B": "local businesses taking further action",
+            "C": "the speed at which the beach was cleaned"
+          },
+          "answer": "B",
+          "explanation": "Liam says his main pleasure is that local cafés have promised to provide recycling bins (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to an assistant in an optician’s.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I sat on my glasses yesterday, and one side has come loose. I’ve got an important meeting tomorrow morning, so I was afraid I’d need a completely new pair. ||Assistant: Let me have a look. The frame is fine; it only needs a small repair. ||Woman: That’s a relief. [5]Could I leave them here now and pick them up before the shop closes today[/5]? ||Assistant: Certainly. They’ll be ready after four.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I sat on my glasses yesterday, and one side has come loose. I’ve got an important meeting tomorrow morning, so I was afraid I’d need a completely new pair."
+        },
+        {
+          "speaker": "assistant",
+          "text": "Let me have a look. The frame is fine; it only needs a small repair."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s a relief. Could I leave them here now and pick them up before the shop closes today?"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Certainly. They’ll be ready after four."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the woman decide to do?",
+          "options": {
+            "A": "order a new pair of glasses",
+            "B": "return to collect her repaired glasses later",
+            "C": "wear a different pair to her meeting"
+          },
+          "answer": "B",
+          "explanation": "The woman asks to leave the glasses for repair and collect them later the same day (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to a teacher about a presentation.",
+      "voices": {
+        "student": "en-GB-ThomasNeural",
+        "teacher": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Student: Mrs Wood, could our science presentation be on Monday instead of Friday? We’ve finished the introduction, but the graphs are on Jamie’s laptop. ||Teacher: Can’t he send them to you this evening? ||Student: [6]He’s ill in hospital for a few days and his parents can’t access his files[/6]. I can do the work, but I need the data first. ||Teacher: All right, Monday is fine.",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "Mrs Wood, could our science presentation be on Monday instead of Friday? We’ve finished the introduction, but the graphs are on Jamie’s laptop."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Can’t he send them to you this evening?"
+        },
+        {
+          "speaker": "student",
+          "text": "He’s ill in hospital for a few days and his parents can’t access his files. I can do the work, but I need the data first."
+        },
+        {
+          "speaker": "teacher",
+          "text": "All right, Monday is fine."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why does the student ask to give the presentation later?",
+          "options": {
+            "A": "A group member has the information they need.",
+            "B": "The teacher has changed the subject.",
+            "C": "The graphs are too difficult to explain."
+          },
+          "answer": "A",
+          "explanation": "The graphs needed for the presentation are on Jamie’s laptop, and he is unavailable in hospital (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two people planning an afternoon out.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: The forecast says heavy rain tomorrow. It won’t be much fun having our picnic in the park. ||Man: True, although I’ve already made the sandwiches. Shall we postpone it until next weekend? ||Woman: I’m busy then. [7]Why don’t we take the food to the conservatory café? They let you eat your own lunch there if you buy drinks[/7]. ||Man: Great idea. I’ll meet you there at one.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "The forecast says heavy rain tomorrow. It won’t be much fun having our picnic in the park."
+        },
+        {
+          "speaker": "man",
+          "text": "True, although I’ve already made the sandwiches. Shall we postpone it until next weekend?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I’m busy then. Why don’t we take the food to the conservatory café? They let you eat your own lunch there if you buy drinks."
+        },
+        {
+          "speaker": "man",
+          "text": "Great idea. I’ll meet you there at one."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What do the speakers decide to do tomorrow?",
+          "options": {
+            "A": "have their picnic indoors",
+            "B": "meet for lunch next weekend",
+            "C": "buy a meal in the park café"
+          },
+          "answer": "A",
+          "explanation": "The woman suggests eating their picnic food in the conservatory café, and the man agrees (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a local library.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: And finally, Westfield Library has been asking residents to return books they borrowed months ago. The library is extending its opening hours on Thursday evening, and staff will help anyone who has lost their library card. ||Presenter: More importantly, [8]any books brought back before Saturday afternoon can be returned without the usual late-payment charge[/8]. So check your shelves before the weekend.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "And finally, Westfield Library has been asking residents to return books they borrowed months ago. The library is extending its opening hours on Thursday evening, and staff will help anyone who has lost their library card."
+        },
+        {
+          "speaker": "presenter",
+          "text": "More importantly, any books brought back before Saturday afternoon can be returned without the usual late-payment charge. So check your shelves before the weekend."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is the library offering until Saturday afternoon?",
+          "options": {
+            "A": "replacement library cards at no cost",
+            "B": "a chance to borrow extra books",
+            "C": "the return of late books without a fine"
+          },
+          "answer": "C",
+          "explanation": "The presenter says overdue books can be returned before Saturday afternoon without the usual charge (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test31_part1.mp3"
+}

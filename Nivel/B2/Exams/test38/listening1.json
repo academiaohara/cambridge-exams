@@ -1,0 +1,308 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 8",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message about an English language examination.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Yasmin, it’s Mrs Patel from the language centre. Your speaking exam is still on Friday at nine thirty, and you should arrive fifteen minutes early with your identification. ||Woman: The examiners are using another part of the building this week, so [1]go straight to Room 24 on the second floor instead of reporting to reception[/1]. There will be signs by the stairs.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Yasmin, it’s Mrs Patel from the language centre. Your speaking exam is still on Friday at nine thirty, and you should arrive fifteen minutes early with your identification."
+        },
+        {
+          "speaker": "woman",
+          "text": "The examiners are using another part of the building this week, so go straight to Room 24 on the second floor instead of reporting to reception. There will be signs by the stairs."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "Where should Yasmin go for her speaking exam?",
+          "options": {
+            "A": "directly to a room upstairs",
+            "B": "to reception as usual",
+            "C": "to another language centre"
+          },
+          "answer": "A",
+          "explanation": "Mrs Patel instructs Yasmin to go directly to Room 24 on the second floor (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a mountain walk.",
+      "voices": {
+        "boy": "en-GB-ThomasNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: You looked worried before yesterday’s mountain walk. Was the route difficult? ||Girl: It wasn’t too hard, actually, and the views were wonderful when the clouds cleared. ||Boy: So why were you nervous at first? ||Girl: [2]The weather report had warned of heavy rain, and I was afraid we might be caught in a storm[/2]. Fortunately, our guide checked conditions carefully before we set off.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "You looked worried before yesterday’s mountain walk. Was the route difficult?"
+        },
+        {
+          "speaker": "girl",
+          "text": "It wasn’t too hard, actually, and the views were wonderful when the clouds cleared."
+        },
+        {
+          "speaker": "boy",
+          "text": "So why were you nervous at first?"
+        },
+        {
+          "speaker": "girl",
+          "text": "The weather report had warned of heavy rain, and I was afraid we might be caught in a storm. Fortunately, our guide checked conditions carefully before we set off."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "Why was the girl worried before the walk?",
+          "options": {
+            "A": "She was unsure about the weather.",
+            "B": "She did not trust the guide.",
+            "C": "She expected the route to be too long."
+          },
+          "answer": "A",
+          "explanation": "The girl was concerned because the forecast had warned of heavy rain and a possible storm (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement in a shopping centre.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Shoppers leaving by car this afternoon should note that repairs are taking place near the usual western exit. Parking levels one and two are open as normal, and there is no charge for the first hour. ||Announcer: Until six o’clock, [3]all vehicles must leave through the eastern exit beside the supermarket, where staff will direct traffic[/3]. We apologise for any delay.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Shoppers leaving by car this afternoon should note that repairs are taking place near the usual western exit. Parking levels one and two are open as normal, and there is no charge for the first hour."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Until six o’clock, all vehicles must leave through the eastern exit beside the supermarket, where staff will direct traffic. We apologise for any delay."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What must drivers do this afternoon?",
+          "options": {
+            "A": "pay for parking before they leave",
+            "B": "use a different exit from the car park",
+            "C": "move their cars to another level"
+          },
+          "answer": "B",
+          "explanation": "Drivers are instructed to leave through the eastern exit because repairs affect the usual one (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a teenage swimmer.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Presenter: You competed in your first early-morning swimming event last weekend, Alex. Was the race itself difficult? ||Boy: It was tiring, but I’d trained for the distance and knew I could finish. [4]The hardest thing was getting up at half past four and eating breakfast when I still felt asleep[/4]. Once I reached the pool, I was fine and really enjoyed the competition.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "You competed in your first early-morning swimming event last weekend, Alex. Was the race itself difficult?"
+        },
+        {
+          "speaker": "boy",
+          "text": "It was tiring, but I’d trained for the distance and knew I could finish. The hardest thing was getting up at half past four and eating breakfast when I still felt asleep. Once I reached the pool, I was fine and really enjoyed the competition."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What did Alex find most difficult?",
+          "options": {
+            "A": "swimming the required distance",
+            "B": "competing against other swimmers",
+            "C": "preparing for such an early start"
+          },
+          "answer": "C",
+          "explanation": "Alex says the hardest part was waking and eating breakfast very early in the morning (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to an assistant in a luggage shop.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I like this large suitcase, but I’m travelling with an airline that has strict size limits for cabin bags. ||Assistant: In that case, this smaller case is safer. It meets their current requirements and still has plenty of space inside. ||Woman: [5]I don’t want to pay an extra charge at the airport, so I’ll take the smaller one[/5]. ||Assistant: Fine. It also has a five-year guarantee.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I like this large suitcase, but I’m travelling with an airline that has strict size limits for cabin bags."
+        },
+        {
+          "speaker": "assistant",
+          "text": "In that case, this smaller case is safer. It meets their current requirements and still has plenty of space inside."
+        },
+        {
+          "speaker": "woman",
+          "text": "I don’t want to pay an extra charge at the airport, so I’ll take the smaller one."
+        },
+        {
+          "speaker": "assistant",
+          "text": "Fine. It also has a five-year guarantee."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the woman buy the smaller suitcase?",
+          "options": {
+            "A": "It has a longer guarantee.",
+            "B": "It is available in a better colour.",
+            "C": "It should avoid an airline charge."
+          },
+          "answer": "C",
+          "explanation": "She chooses the smaller case so that she will not have to pay an extra airline fee (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear two colleagues talking before a meeting.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Have you printed copies of the agenda for this afternoon’s meeting? The manager asked us to bring twelve. ||Man: I was going to, but the printer has stopped working and the technician won’t arrive until tomorrow. ||Woman: That’s a problem. ||Man: [6]I’ll email the agenda to everyone now, so they can read it on their laptops during the meeting[/6]. ||Woman: Good solution.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you printed copies of the agenda for this afternoon’s meeting? The manager asked us to bring twelve."
+        },
+        {
+          "speaker": "man",
+          "text": "I was going to, but the printer has stopped working and the technician won’t arrive until tomorrow."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s a problem."
+        },
+        {
+          "speaker": "man",
+          "text": "I’ll email the agenda to everyone now, so they can read it on their laptops during the meeting."
+        },
+        {
+          "speaker": "woman",
+          "text": "Good solution."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What will the man do about the agenda?",
+          "options": {
+            "A": "ask the manager to cancel the meeting",
+            "B": "send it electronically to colleagues",
+            "C": "print it in another office tomorrow"
+          },
+          "answer": "B",
+          "explanation": "Since the printer is broken, the man decides to email the agenda to everyone (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two housemates making plans for Saturday.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: Shall we go to the beach on Saturday? I haven’t been there all summer. ||Boy: I’d love to, but the forecast says it’s going to be cold and windy. ||Girl: Then perhaps we need an indoor plan. ||Boy: [7]There’s a new climbing centre near the station; we could book a beginners’ session there instead[/7]. ||Girl: Great. I’ll check the times online tonight.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Shall we go to the beach on Saturday? I haven’t been there all summer."
+        },
+        {
+          "speaker": "boy",
+          "text": "I’d love to, but the forecast says it’s going to be cold and windy."
+        },
+        {
+          "speaker": "girl",
+          "text": "Then perhaps we need an indoor plan."
+        },
+        {
+          "speaker": "boy",
+          "text": "There’s a new climbing centre near the station; we could book a beginners’ session there instead."
+        },
+        {
+          "speaker": "girl",
+          "text": "Great. I’ll check the times online tonight."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What do the speakers plan to do on Saturday?",
+          "options": {
+            "A": "have a climbing lesson",
+            "B": "spend the day at the beach",
+            "C": "travel to another station"
+          },
+          "answer": "A",
+          "explanation": "They decide to book a beginners’ session at an indoor climbing centre instead of going to the beach (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a presenter talking about a local arts centre.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Brook Arts Centre is offering new weekend courses in painting, dance and digital photography from next month. Anyone can visit the free exhibition in the entrance hall, and the café is now open on Sundays too. ||Presenter: For the next two weeks, [8]students under eighteen who book a course online will receive a twenty-percent reduction in the course fee[/8]. Full details are available on the centre’s website.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Brook Arts Centre is offering new weekend courses in painting, dance and digital photography from next month. Anyone can visit the free exhibition in the entrance hall, and the café is now open on Sundays too."
+        },
+        {
+          "speaker": "presenter",
+          "text": "For the next two weeks, students under eighteen who book a course online will receive a twenty-percent reduction in the course fee. Full details are available on the centre’s website."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What does the arts centre offer young students?",
+          "options": {
+            "A": "free entry to all weekend courses",
+            "B": "cheaper online course bookings for a limited period",
+            "C": "a paid job in its Sunday café"
+          },
+          "answer": "B",
+          "explanation": "Students under eighteen receive a twenty-percent discount if they book a course online during the stated period (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test38_part1.mp3"
+}

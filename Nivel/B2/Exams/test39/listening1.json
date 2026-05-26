@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 9",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from the organiser of a dance show.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Mia, it’s Rachel about Saturday’s dance show. Rehearsal still starts at two in the theatre, and your group is performing in the second half, as planned. ||Woman: Because the theatre office will be closed on Friday, [1]please collect your costume from the school reception desk tomorrow before four o’clock[/1]. It will be in a labelled bag. Call me if that is difficult.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Mia, it’s Rachel about Saturday’s dance show. Rehearsal still starts at two in the theatre, and your group is performing in the second half, as planned."
+        },
+        {
+          "speaker": "woman",
+          "text": "Because the theatre office will be closed on Friday, please collect your costume from the school reception desk tomorrow before four o’clock. It will be in a labelled bag. Call me if that is difficult."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does Rachel ask Mia to do?",
+          "options": {
+            "A": "practise at the school instead of the theatre",
+            "B": "pick up her costume from school",
+            "C": "perform in a different part of the show"
+          },
+          "answer": "B",
+          "explanation": "Rachel asks Mia to collect her costume from the school reception desk before Friday afternoon (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a new sports club.",
+      "voices": {
+        "boy": "en-GB-ThomasNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: How was the new sports club you tried on Monday? ||Girl: The building is excellent, and the tennis equipment is almost new. The staff were welcoming, too. ||Boy: So will you join? ||Girl: I’m not sure. [2]The only tennis sessions available are for experienced players, and I really need a class for beginners[/2]. I may look at another club first.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "How was the new sports club you tried on Monday?"
+        },
+        {
+          "speaker": "girl",
+          "text": "The building is excellent, and the tennis equipment is almost new. The staff were welcoming, too."
+        },
+        {
+          "speaker": "boy",
+          "text": "So will you join?"
+        },
+        {
+          "speaker": "girl",
+          "text": "I’m not sure. The only tennis sessions available are for experienced players, and I really need a class for beginners. I may look at another club first."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "Why might the girl not join the sports club?",
+          "options": {
+            "A": "It is too far from her home.",
+            "B": "Its equipment is in poor condition.",
+            "C": "It has no suitable lesson for her level."
+          },
+          "answer": "C",
+          "explanation": "The girl needs a beginners’ tennis class, but only experienced-player sessions are available (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at an airport.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: We apologise to passengers waiting for Flight 617 to Madrid. Due to a technical check, departure is now expected at four fifteen, approximately two hours later than scheduled. ||Announcer: [3]Passengers on this flight may collect a voucher for a hot meal from the information desk beside Gate Eight[/3]. Please keep checking the screens for further updates about boarding.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "We apologise to passengers waiting for Flight 617 to Madrid. Due to a technical check, departure is now expected at four fifteen, approximately two hours later than scheduled."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Passengers on this flight may collect a voucher for a hot meal from the information desk beside Gate Eight. Please keep checking the screens for further updates about boarding."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What are passengers on the delayed flight offered?",
+          "options": {
+            "A": "a meal voucher",
+            "B": "a replacement flight",
+            "C": "free transport home"
+          },
+          "answer": "A",
+          "explanation": "Passengers may collect a voucher for a hot meal from the information desk (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a podcast interview with a student who volunteers at an animal shelter.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Presenter: Evie, has volunteering at the animal shelter helped you in any unexpected way? ||Girl: I joined because I love animals and wanted to help. At first, I was nervous about large dogs. But [4]the staff showed me how to handle them safely, and now I feel much more confident around all kinds of animals[/4]. I’m even thinking about studying animal care.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Evie, has volunteering at the animal shelter helped you in any unexpected way?"
+        },
+        {
+          "speaker": "girl",
+          "text": "I joined because I love animals and wanted to help. At first, I was nervous about large dogs. But the staff showed me how to handle them safely, and now I feel much more confident around all kinds of animals. I’m even thinking about studying animal care."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What has Evie gained from volunteering?",
+          "options": {
+            "A": "more confidence with animals",
+            "B": "a paid job at the shelter",
+            "C": "a pet dog of her own"
+          },
+          "answer": "A",
+          "explanation": "Evie explains that the staff taught her safe handling and she now feels more confident around animals (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to an assistant in an electronics shop.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: I bought this phone charger here yesterday, but when I got home I realised it doesn’t fit my phone. I haven’t opened the packaging. ||Assistant: That’s fine. Would you like a refund? ||Man: [5]I still need a charger, so I’d prefer to change it for the correct model, if you have one[/5]. ||Assistant: We do. I’ll get it from the shelf for you now.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I bought this phone charger here yesterday, but when I got home I realised it doesn’t fit my phone. I haven’t opened the packaging."
+        },
+        {
+          "speaker": "assistant",
+          "text": "That’s fine. Would you like a refund?"
+        },
+        {
+          "speaker": "man",
+          "text": "I still need a charger, so I’d prefer to change it for the correct model, if you have one."
+        },
+        {
+          "speaker": "assistant",
+          "text": "We do. I’ll get it from the shelf for you now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the customer want to do?",
+          "options": {
+            "A": "exchange the charger",
+            "B": "repair his phone",
+            "C": "get his money back"
+          },
+          "answer": "A",
+          "explanation": "The customer says he would rather exchange the incorrect charger for the right model (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a university student talking to a classmate.",
+      "voices": {
+        "boy": "en-GB-ThomasNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: Could I borrow your notes from this morning’s laboratory class? I wasn’t there, and the teacher said the results will be important for next week’s report. ||Girl: Were you ill? ||Boy: No. [6]My alarm clock didn’t ring, and by the time I woke up the class had already finished[/6]. I feel terrible about missing it. ||Girl: I’ll email my notes tonight.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Could I borrow your notes from this morning’s laboratory class? I wasn’t there, and the teacher said the results will be important for next week’s report."
+        },
+        {
+          "speaker": "girl",
+          "text": "Were you ill?"
+        },
+        {
+          "speaker": "boy",
+          "text": "No. My alarm clock didn’t ring, and by the time I woke up the class had already finished. I feel terrible about missing it."
+        },
+        {
+          "speaker": "girl",
+          "text": "I’ll email my notes tonight."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why did the boy miss the laboratory class?",
+          "options": {
+            "A": "He felt too unwell to attend.",
+            "B": "He overslept.",
+            "C": "He forgot where it was taking place."
+          },
+          "answer": "B",
+          "explanation": "The boy explains that his alarm did not ring and he woke after the class had finished (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two family members preparing to go away.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I think everything is packed for our holiday. The neighbour has agreed to feed the cat, and I’ve turned off the heating. ||Man: Great. Shall we leave for the station now? ||Woman: Just one thing. [7]Could you water the plants before we go? They’ll be dry by the time we return next week[/7]. ||Man: Of course. It will only take a minute.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I think everything is packed for our holiday. The neighbour has agreed to feed the cat, and I’ve turned off the heating."
+        },
+        {
+          "speaker": "man",
+          "text": "Great. Shall we leave for the station now?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Just one thing. Could you water the plants before we go? They’ll be dry by the time we return next week."
+        },
+        {
+          "speaker": "man",
+          "text": "Of course. It will only take a minute."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What does the woman ask the man to do before leaving?",
+          "options": {
+            "A": "feed the cat",
+            "B": "turn off the heating",
+            "C": "water the plants"
+          },
+          "answer": "C",
+          "explanation": "The woman asks him to water the plants before they leave for their holiday (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about an event in a bookshop.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Popular travel writer Anna Lewis will be visiting Bell Street Books next Tuesday evening to speak about her latest journey through Asia. The talk begins at seven, and copies of her new book will be available to buy afterwards. ||Presenter: [8]Entrance is free, but customers must reserve a ticket on the bookshop website in advance, as space is limited[/8]. The event is expected to fill quickly.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Popular travel writer Anna Lewis will be visiting Bell Street Books next Tuesday evening to speak about her latest journey through Asia. The talk begins at seven, and copies of her new book will be available to buy afterwards."
+        },
+        {
+          "speaker": "presenter",
+          "text": "Entrance is free, but customers must reserve a ticket on the bookshop website in advance, as space is limited. The event is expected to fill quickly."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What must people do to attend the author event?",
+          "options": {
+            "A": "buy the author’s latest book",
+            "B": "reserve a free place online",
+            "C": "arrive before the bookshop opens"
+          },
+          "answer": "B",
+          "explanation": "People can attend free of charge, but must reserve a ticket online beforehand (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test39_part1.mp3"
+}

@@ -1,0 +1,304 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 3",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from the organiser of a book club.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello Sam, it’s Nina from the Thursday book group. Just a quick message about this week’s meeting. We’re still discussing the same novel, and the start time remains seven o’clock. ||Woman: However, the café we usually use is being decorated, so [1]we’ll meet in the upstairs reading room at the library instead[/1]. Please bring your membership card to get in after hours.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello Sam, it’s Nina from the Thursday book group. Just a quick message about this week’s meeting. We’re still discussing the same novel, and the start time remains seven o’clock."
+        },
+        {
+          "speaker": "woman",
+          "text": "However, the café we usually use is being decorated, so we’ll meet in the upstairs reading room at the library instead. Please bring your membership card to get in after hours."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What change has been made to the book club meeting?",
+          "options": {
+            "A": "It will discuss another book.",
+            "B": "It will happen in a new place.",
+            "C": "It will start later than usual."
+          },
+          "answer": "B",
+          "explanation": "Nina explains that the book group will meet at the library rather than in its usual café (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a language-learning app.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: Have you tried that new app for practising French? I like the short listening activities. ||Boy: They’re useful, and the pronunciation examples are clear. I’ve learned quite a few words this week. ||Girl: Then why did you delete it? ||Boy: [2]Every few minutes an advert interrupted the activity I was doing, and I found that really annoying[/2]. I’d use it again if there was a free version without that problem.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Have you tried that new app for practising French? I like the short listening activities."
+        },
+        {
+          "speaker": "boy",
+          "text": "They’re useful, and the pronunciation examples are clear. I’ve learned quite a few words this week."
+        },
+        {
+          "speaker": "girl",
+          "text": "Then why did you delete it?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Every few minutes an advert interrupted the activity I was doing, and I found that really annoying. I’d use it again if there was a free version without that problem."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "Why did the boy stop using the app?",
+          "options": {
+            "A": "It contained too little vocabulary.",
+            "B": "He could not understand the recordings.",
+            "C": "He disliked frequent interruptions."
+          },
+          "answer": "C",
+          "explanation": "The boy says advertisements repeatedly interrupted his activities and this annoyed him (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at an airport.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Would passengers on Flight 284 to Dublin please listen carefully? Boarding will begin at twelve fifteen as planned, and your hand luggage limits remain unchanged. ||Announcer: Due to maintenance work near the original departure area, [3]your flight will now board at Gate 22, which is about a ten-minute walk from here[/3]. Please make your way there as soon as possible.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Would passengers on Flight 284 to Dublin please listen carefully? Boarding will begin at twelve fifteen as planned, and your hand luggage limits remain unchanged."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Due to maintenance work near the original departure area, your flight will now board at Gate 22, which is about a ten-minute walk from here. Please make your way there as soon as possible."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What are passengers to Dublin told to do?",
+          "options": {
+            "A": "go to another boarding gate",
+            "B": "reduce the amount of luggage they carry",
+            "C": "wait until a later boarding time"
+          },
+          "answer": "A",
+          "explanation": "Passengers are told that their flight will board at Gate 22 instead of the original gate (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a woman after her first long-distance run.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Sophie, you completed your first half-marathon on Sunday. What surprised you most about it? ||Woman: I knew the last few kilometres would hurt, and they certainly did. I’d also trained enough to manage the distance. But [4]I hadn’t expected strangers along the route to call my name and encourage me so enthusiastically[/4]. It helped me keep going when I got tired.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Sophie, you completed your first half-marathon on Sunday. What surprised you most about it?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I knew the last few kilometres would hurt, and they certainly did. I’d also trained enough to manage the distance. But I hadn’t expected strangers along the route to call my name and encourage me so enthusiastically. It helped me keep going when I got tired."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What surprised Sophie during the race?",
+          "options": {
+            "A": "the level of support she received",
+            "B": "the distance she managed to run",
+            "C": "how painful the race became"
+          },
+          "answer": "A",
+          "explanation": "Sophie was surprised that strangers on the route encouraged her enthusiastically (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer speaking to a waiter in a restaurant.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "waiter": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I was thinking of ordering the mushroom pasta, but could you tell me whether the sauce contains nuts? ||Waiter: It does, I’m afraid. We can prepare it without cheese, but the sauce is already made. ||Woman: In that case, [5]I’ll choose the grilled vegetable salad instead, as I’m allergic to nuts[/5]. Could I have bread with that? ||Waiter: Of course. I’ll bring some now.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I was thinking of ordering the mushroom pasta, but could you tell me whether the sauce contains nuts?"
+        },
+        {
+          "speaker": "waiter",
+          "text": "It does, I’m afraid. We can prepare it without cheese, but the sauce is already made."
+        },
+        {
+          "speaker": "woman",
+          "text": "In that case, I’ll choose the grilled vegetable salad instead, as I’m allergic to nuts. Could I have bread with that?"
+        },
+        {
+          "speaker": "waiter",
+          "text": "Of course. I’ll bring some now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the woman decide to order?",
+          "options": {
+            "A": "pasta without cheese",
+            "B": "a vegetable salad",
+            "C": "bread only"
+          },
+          "answer": "B",
+          "explanation": "Because the pasta sauce contains nuts, the woman chooses the grilled vegetable salad (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear two colleagues discussing a meeting.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Are you going to the project meeting in the office tomorrow? I thought you were presenting the new plans. ||Man: I am, but I’ll have to join online. ||Woman: Is everything all right? ||Man: Yes, but [6]a plumber is coming to repair a leak in my flat, and I have to be there to let him in[/6]. I’ve already sent my slides to the manager.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you going to the project meeting in the office tomorrow? I thought you were presenting the new plans."
+        },
+        {
+          "speaker": "man",
+          "text": "I am, but I’ll have to join online."
+        },
+        {
+          "speaker": "woman",
+          "text": "Is everything all right?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, but a plumber is coming to repair a leak in my flat, and I have to be there to let him in. I’ve already sent my slides to the manager."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why will the man join the meeting online?",
+          "options": {
+            "A": "He has not completed his presentation.",
+            "B": "He has to wait for a repair worker.",
+            "C": "His office computer is not working."
+          },
+          "answer": "B",
+          "explanation": "The man must stay at home to let in a plumber who is repairing a leak (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two friends planning a day out.",
+      "voices": {
+        "boy": "en-GB-ThomasNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: I checked the zoo website this morning, and unfortunately the animal houses are closed for repairs. Do you still want to go? ||Girl: Not if we can’t see half the animals. What about the science museum? ||Boy: I thought it might be too expensive. ||Girl: [7]It’s free on Wednesdays, and there’s a new space exhibition I’d really like to see[/7]. ||Boy: Perfect. Let’s go there instead.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "I checked the zoo website this morning, and unfortunately the animal houses are closed for repairs. Do you still want to go?"
+        },
+        {
+          "speaker": "girl",
+          "text": "Not if we can’t see half the animals. What about the science museum?"
+        },
+        {
+          "speaker": "boy",
+          "text": "I thought it might be too expensive."
+        },
+        {
+          "speaker": "girl",
+          "text": "It’s free on Wednesdays, and there’s a new space exhibition I’d really like to see."
+        },
+        {
+          "speaker": "boy",
+          "text": "Perfect. Let’s go there instead."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "Where do the speakers decide to go?",
+          "options": {
+            "A": "to the zoo",
+            "B": "to an animal centre",
+            "C": "to a museum"
+          },
+          "answer": "C",
+          "explanation": "The girl suggests the free science museum and the boy agrees that they should go there instead (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a cinema offer.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The Palace Cinema is showing several classic adventure films this week, as well as the latest family comedy. Tickets are available from the box office or on the cinema’s website, and all afternoon screenings finish before six. ||Presenter: [8]Anyone who books a ticket online before Friday evening will receive a voucher for a free soft drink on arrival[/8]. The offer applies to every film.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The Palace Cinema is showing several classic adventure films this week, as well as the latest family comedy. Tickets are available from the box office or on the cinema’s website, and all afternoon screenings finish before six."
+        },
+        {
+          "speaker": "presenter",
+          "text": "Anyone who books a ticket online before Friday evening will receive a voucher for a free soft drink on arrival. The offer applies to every film."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What can customers get by booking online before Friday evening?",
+          "options": {
+            "A": "a free drink",
+            "B": "a cheaper evening ticket",
+            "C": "entry to an extra film"
+          },
+          "answer": "A",
+          "explanation": "Online customers booking before Friday evening will receive a voucher for a free soft drink (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test33_part1.mp3"
+}

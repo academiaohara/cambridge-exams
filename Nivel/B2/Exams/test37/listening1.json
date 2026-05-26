@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 7",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a choir leader.",
+      "voices": {
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: Hi Olivia, it’s Mr James from the school choir. Just a reminder that rehearsal is at four tomorrow in the music hall. We’ll practise the same songs for next month’s concert, so bring your folder as usual. ||Man: The school photographer is coming at the start, and [1]everyone must wear a plain black top for the group photo[/1]. It will only take a few minutes.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Hi Olivia, it’s Mr James from the school choir. Just a reminder that rehearsal is at four tomorrow in the music hall. We’ll practise the same songs for next month’s concert, so bring your folder as usual."
+        },
+        {
+          "speaker": "man",
+          "text": "The school photographer is coming at the start, and everyone must wear a plain black top for the group photo. It will only take a few minutes."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does Mr James remind Olivia to do?",
+          "options": {
+            "A": "bring different music",
+            "B": "arrive at a new time",
+            "C": "wear particular clothing"
+          },
+          "answer": "C",
+          "explanation": "The choir leader says everyone must wear a plain black top for the group photograph (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a cooking class.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: How was the cooking class you started last night? Were the recipes complicated? ||Boy: Not at all. The instructor explained everything clearly, and my vegetable soup was better than I expected. ||Girl: Are you going again next week? ||Boy: Yes, though [2]most of the course seems to be about making cakes, and I’d rather learn more everyday meals[/2]. I’ll suggest it to the teacher.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "How was the cooking class you started last night? Were the recipes complicated?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Not at all. The instructor explained everything clearly, and my vegetable soup was better than I expected."
+        },
+        {
+          "speaker": "girl",
+          "text": "Are you going again next week?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes, though most of the course seems to be about making cakes, and I’d rather learn more everyday meals. I’ll suggest it to the teacher."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What would the boy prefer the course to include?",
+          "options": {
+            "A": "more practical main dishes",
+            "B": "simpler cooking instructions",
+            "C": "fewer lessons each week"
+          },
+          "answer": "A",
+          "explanation": "The boy would prefer to learn more everyday meals rather than mainly making cakes (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a railway station.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Passengers waiting for the 13.05 service to London should be aware that the train will arrive at Platform Four in approximately ten minutes. The café carriage will be open as normal. ||Announcer: However, because of a problem with the air conditioning, [3]the quiet coach is closed today, and anyone holding a reserved seat there may sit in any unreserved place[/3]. We apologise for this inconvenience.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Passengers waiting for the 13.05 service to London should be aware that the train will arrive at Platform Four in approximately ten minutes. The café carriage will be open as normal."
+        },
+        {
+          "speaker": "announcer",
+          "text": "However, because of a problem with the air conditioning, the quiet coach is closed today, and anyone holding a reserved seat there may sit in any unreserved place. We apologise for this inconvenience."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What are passengers told about the quiet coach?",
+          "options": {
+            "A": "It is unavailable on today’s train.",
+            "B": "It has moved to the front of the train.",
+            "C": "It can only be used by people with reservations."
+          },
+          "answer": "A",
+          "explanation": "The announcement says the quiet coach is closed because of an air-conditioning problem (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a wedding photographer.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Is travelling to beautiful places the best part of being a wedding photographer, Laura? ||Woman: It can be enjoyable, although carrying equipment on trains isn’t always fun. I also like choosing the best pictures afterwards. But [4]what I enjoy most is meeting couples and families and making them comfortable in front of the camera[/4]. That’s the part requiring real skill.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Is travelling to beautiful places the best part of being a wedding photographer, Laura?"
+        },
+        {
+          "speaker": "woman",
+          "text": "It can be enjoyable, although carrying equipment on trains isn’t always fun. I also like choosing the best pictures afterwards. But what I enjoy most is meeting couples and families and making them comfortable in front of the camera. That’s the part requiring real skill."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What does Laura most enjoy about her work?",
+          "options": {
+            "A": "visiting attractive locations",
+            "B": "selecting photographs afterwards",
+            "C": "working successfully with people"
+          },
+          "answer": "C",
+          "explanation": "Laura says her favourite part is meeting people and helping them feel comfortable in front of the camera (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer ordering food in a café.",
+      "voices": {
+        "waiter": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Waiter: Would you like anything else after your sandwich? We have chocolate cake and fresh fruit salad today. ||Woman: I was going to have the chocolate cake, but I’ve just seen a sign saying it’s sold out. ||Waiter: I’m sorry. We do have apple pie. ||Woman: I don’t really want pastry. [5]I’ll have the fruit salad instead, please[/5], and a cup of tea.",
+      "dialogue": [
+        {
+          "speaker": "waiter",
+          "text": "Would you like anything else after your sandwich? We have chocolate cake and fresh fruit salad today."
+        },
+        {
+          "speaker": "woman",
+          "text": "I was going to have the chocolate cake, but I’ve just seen a sign saying it’s sold out."
+        },
+        {
+          "speaker": "waiter",
+          "text": "I’m sorry. We do have apple pie."
+        },
+        {
+          "speaker": "woman",
+          "text": "I don’t really want pastry. I’ll have the fruit salad instead, please, and a cup of tea."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What dessert does the woman order?",
+          "options": {
+            "A": "apple pie",
+            "B": "fruit salad",
+            "C": "chocolate cake"
+          },
+          "answer": "B",
+          "explanation": "Since the chocolate cake is unavailable and she does not want pastry, the woman chooses fruit salad (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a teacher talking to a pupil about a school trip.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Teacher: Daniel, I haven’t received your permission form for Saturday’s trip to the castle. We needed all the forms yesterday. ||Boy: I left it in my bag. Can I bring it tomorrow? ||Teacher: I’m afraid [6]all the coach seats have now been given to pupils who returned their forms on time[/6]. I can put your name on the waiting list in case someone cancels. ||Boy: Oh, I see.",
+      "dialogue": [
+        {
+          "speaker": "teacher",
+          "text": "Daniel, I haven’t received your permission form for Saturday’s trip to the castle. We needed all the forms yesterday."
+        },
+        {
+          "speaker": "boy",
+          "text": "I left it in my bag. Can I bring it tomorrow?"
+        },
+        {
+          "speaker": "teacher",
+          "text": "I’m afraid all the coach seats have now been given to pupils who returned their forms on time. I can put your name on the waiting list in case someone cancels."
+        },
+        {
+          "speaker": "boy",
+          "text": "Oh, I see."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why might Daniel be unable to go on the school trip?",
+          "options": {
+            "A": "He cannot find the permission form.",
+            "B": "There may no longer be space on the coach.",
+            "C": "The trip has been moved to another day."
+          },
+          "answer": "B",
+          "explanation": "The teacher says all coach seats have already been allocated to pupils who returned forms on time (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two friends talking about a furniture delivery.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: The new sofa is being delivered tomorrow morning. I’m glad we found one in the sale. ||Man: Yes, but it looked quite wide in the shop. ||Woman: That’s what worries me. [7]Could you measure the front doorway tonight, before the delivery van arrives[/7]? If it’s too narrow, I’ll phone the shop and ask about another way in. ||Man: Good idea. I’ll find the tape measure.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "The new sofa is being delivered tomorrow morning. I’m glad we found one in the sale."
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, but it looked quite wide in the shop."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s what worries me. Could you measure the front doorway tonight, before the delivery van arrives? If it’s too narrow, I’ll phone the shop and ask about another way in."
+        },
+        {
+          "speaker": "man",
+          "text": "Good idea. I’ll find the tape measure."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What does the woman ask the man to do?",
+          "options": {
+            "A": "phone the furniture shop",
+            "B": "move the old sofa outdoors",
+            "C": "check the width of the entrance"
+          },
+          "answer": "C",
+          "explanation": "The woman asks him to measure the doorway before the sofa is delivered (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a community garden.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The Green Corner community garden will be open to visitors this Saturday from ten until four. Volunteers will show beginners how to grow herbs, and tea and homemade biscuits will be sold to raise funds for new tools. ||Presenter: [8]The garden also has extra tomato and strawberry plants, which visitors may take home without paying while supplies last[/8]. Bring a bag if you would like one.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The Green Corner community garden will be open to visitors this Saturday from ten until four. Volunteers will show beginners how to grow herbs, and tea and homemade biscuits will be sold to raise funds for new tools."
+        },
+        {
+          "speaker": "presenter",
+          "text": "The garden also has extra tomato and strawberry plants, which visitors may take home without paying while supplies last. Bring a bag if you would like one."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What can visitors receive free at the community garden?",
+          "options": {
+            "A": "gardening tools",
+            "B": "drinks and biscuits",
+            "C": "young plants"
+          },
+          "answer": "C",
+          "explanation": "Visitors may take home extra tomato and strawberry plants at no charge while supplies last (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test37_part1.mp3"
+}
