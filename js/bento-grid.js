@@ -67,7 +67,8 @@
           '<button onclick="BentoGrid.selectMode(\'exam\')">' + _mi('timer') + '<span>Simulation</span></button>' +
           '<button onclick="BentoGrid.openLessons()">' + _mi('auto_stories') + '<span>Course</span></button>' +
           '<button onclick="BentoGrid.openCrosswordList()">' + _mi('grid_on') + '<span>Crosswords</span></button>' +
-          '<button onclick="UserProfile.renderPremiumSection()">' + _mi('workspace_premium') + '<span>Plans</span></button>' +
+          (typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI() ? '' :
+          '<button onclick="UserProfile.renderPremiumSection()">' + _mi('workspace_premium') + '<span>Plans</span></button>') +
           '<button onclick="UserProfile.renderProfileSection()">' + _mi('settings') + '<span>Profile</span></button>' +
         '</div>' +
       '</section>';

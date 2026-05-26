@@ -1,7 +1,13 @@
 import { evaluateSpeaking } from "../js/services/ai/speakingProvider.js";
+import { enforceAiRateLimit, setRateLimitHeaders } from "./_lib/promotion.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+
+  const gate = await enforceAiRateLimit(req, "speaking");
+  if (!gate.ok) {
+    return res.status(gate.status).json(gate.body);
+  }
 
   const { transcripts, allMessages, partType, examLevel } = req.body;
   if (!transcripts || !Array.isArray(transcripts) || !transcripts.length) {
@@ -15,6 +21,7 @@ export default async function handler(req, res) {
 
   try {
     const evaluation = await evaluateSpeaking(transcripts, allMessages, partType, examLevel);
+    setRateLimitHeaders(res, gate);
     res.status(200).json({ evaluation });
   } catch (err) {
     console.error(err);

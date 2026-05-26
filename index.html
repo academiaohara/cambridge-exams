@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="css/components/mobile-ios.css">
     <link rel="stylesheet" href="css/components/score-calculator.css">
     <link rel="stylesheet" href="css/components/auth.css">
+    <link rel="stylesheet" href="css/components/funding-survey.css">
     <!-- Phase 2 & 3: Bento Grid, Streak, Micro-Learning, Writing Validator -->
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/components/bento-grid.css">
@@ -519,6 +520,57 @@
           </div>
         </div>
 
+        <!-- Funding preference survey (shown once after sign-in / guest continue) -->
+        <div id="funding-survey-overlay" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="funding-survey-title">
+          <div class="funding-survey-card">
+            <p class="funding-survey-kicker">Your opinion matters</p>
+            <h2 id="funding-survey-title">How should we fund EngagEd?</h2>
+            <p class="funding-survey-intro">
+              We are deciding how to fund the website, and we would love to hear your opinion.
+              Which model would you prefer?
+            </p>
+            <form id="funding-survey-form" onsubmit="event.preventDefault(); FundingSurvey.submit();">
+              <div class="funding-survey-options" role="radiogroup" aria-labelledby="funding-survey-title">
+                <label class="funding-survey-option">
+                  <input type="radio" name="funding_model" value="ads_optional_sub">
+                  <div class="funding-survey-option-title">
+                    <span class="emoji" aria-hidden="true">1️⃣</span>
+                    <span>Free access to all content with ads</span>
+                  </div>
+                  <div class="funding-survey-option-desc">
+                    Optional subscription to remove ads
+                  </div>
+                </label>
+                <label class="funding-survey-option">
+                  <input type="radio" name="funding_model" value="subscription_only">
+                  <div class="funding-survey-option-title">
+                    <span class="emoji" aria-hidden="true">2️⃣</span>
+                    <span>Monthly subscription</span>
+                  </div>
+                  <div class="funding-survey-option-desc">
+                    Full content available only to subscribers
+                  </div>
+                </label>
+              </div>
+              <label class="funding-survey-comment-label" for="funding-survey-comment">
+                Feel free to explain your choice (optional)
+              </label>
+              <textarea
+                id="funding-survey-comment"
+                class="funding-survey-comment"
+                name="comment"
+                maxlength="2000"
+                placeholder="Share any thoughts…"
+              ></textarea>
+              <div id="funding-survey-error" class="funding-survey-error" role="alert"></div>
+              <div class="funding-survey-actions">
+                <button type="submit" id="funding-survey-submit" class="funding-survey-submit">Submit</button>
+                <button type="button" class="funding-survey-defer" onclick="FundingSurvey.defer()">Ask me later</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
         <!-- Contenido principal -->
         <main class="app-container">
             <div id="main-content">
@@ -659,6 +711,8 @@
     <script src="js/config.js"></script>
     <script src="js/config-supabase.js"></script>
     <script src="js/state.js"></script>
+    <script src="js/access-control.js"></script>
+    <script src="js/funding-survey.js"></script>
     <script src="js/router.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/dashboard.js"></script>

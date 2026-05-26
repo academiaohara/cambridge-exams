@@ -297,7 +297,7 @@
 
     _selectCourseBlock: function(blockKey) {
       var blockIndex = (BentoGrid._courseBlockOrder || []).indexOf(blockKey);
-      if (!AppState.hasTheoryPack && blockIndex > 0) {
+      if (!(typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack) && blockIndex > 0) {
         if (typeof Dashboard !== 'undefined' && Dashboard.showTheoryUpgradeGate) Dashboard.showTheoryUpgradeGate();
         return;
       }
@@ -582,7 +582,7 @@
     },
 
     openCourseUnit: async function(unitId, filePath, startSection) {
-      if (BentoGrid._courseIndexData && !AppState.hasTheoryPack) {
+      if (BentoGrid._courseIndexData && !(typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack)) {
         var foundItem = (BentoGrid._courseIndexData.items || []).find(function(i) { return i.id === unitId; });
         if (foundItem) {
           var blockKey = foundItem.block != null ? String(foundItem.block) : 'misc';
@@ -5413,7 +5413,7 @@
 
       blockOrder.forEach(function(bk) {
         var blockIndex = blockOrder.indexOf(bk);
-        var isBlockLocked = !AppState.hasTheoryPack && blockIndex > 0;
+        var isBlockLocked = !(typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack) && blockIndex > 0;
         var items = blocks[bk] || [];
         var hasAvailable = items.some(function(i) { return i.status === 'available'; });
         var availableItems = items.filter(function(i) { return i.status === 'available'; });
@@ -5687,7 +5687,7 @@
 
       blockOrder.forEach(function(bk) {
         var blockIndex = blockOrder.indexOf(bk);
-        var isPremiumLocked = !AppState.hasTheoryPack && blockIndex > 0;
+        var isPremiumLocked = !(typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack) && blockIndex > 0;
         var items = blocks[bk] || [];
         var hasAvailable = items.some(function(i) { return i.status === 'available'; });
         var hasActive = items.some(function(i) { return i.id === activeItemId; });

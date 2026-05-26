@@ -1,7 +1,13 @@
 import { correctWriting } from "../js/services/ai/writingProvider.js";
+import { enforceAiRateLimit, setRateLimitHeaders } from "./_lib/promotion.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+
+  const gate = await enforceAiRateLimit(req, "writing");
+  if (!gate.ok) {
+    return res.status(gate.status).json(gate.body);
+  }
 
   const { text, taskType, taskPrompt, examLevel } = req.body;
   if (!text || !text.trim()) return res.status(400).json({ error: "No text provided" });
@@ -16,6 +22,7 @@ export default async function handler(req, res) {
 
   try {
     const corrected = await correctWriting(text, taskType, taskPrompt, examLevel);
+    setRateLimitHeaders(res, gate);
     res.status(200).json({ corrected });
   } catch (err) {
     console.error(err);

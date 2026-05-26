@@ -67,6 +67,28 @@ Genera preguntas o respuestas para la simulación de la entrevista de Speaking (
 | `OPENAI_API_KEY` | API key de OpenAI para los endpoints de IA |
 | `OPENAI_MODEL` | Modelo de OpenAI a usar (por defecto `gpt-4o-mini`) |
 
+### Modo promoción (growth)
+
+Para activar acceso completo tras login con límites diarios en Writing/Speaking:
+
+| Variable | Descripción |
+|---|---|
+| `PROMOTION_MODE` | `true` en Vercel (debe coincidir con `CONFIG.PROMOTION_MODE` en `js/config.js`) |
+| `PROMOTION_WRITING_LIMIT` | Evaluaciones Writing por usuario y día (default `5`) |
+| `PROMOTION_SPEAKING_LIMIT` | Llamadas Speaking (eval + partner) por usuario y día (default `5`) |
+| `SUPABASE_URL` | URL del proyecto Supabase |
+| `SUPABASE_ANON_KEY` | Anon key (para verificar JWT y RPC de cuotas) |
+
+Ejecuta `sql/promotion-ai-usage.sql` en el SQL Editor de Supabase antes de activar en producción.
+
+Para volver al modo planes/packs: `PROMOTION_MODE=false` en Vercel y `CONFIG.PROMOTION_MODE: false` en `js/config.js`.
+
+### Encuesta de financiación
+
+Al entrar (tras login o invitado), opcional con `CONFIG.FUNDING_SURVEY_ENABLED`. Respuestas en `POST /api/funding-survey`.
+
+Ejecuta `sql/funding-survey.sql` en Supabase. Desactivar: `FUNDING_SURVEY_ENABLED: false` en `js/config.js`.
+
 ## Desarrollo local
 
 ```bash

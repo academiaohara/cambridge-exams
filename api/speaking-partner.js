@@ -1,7 +1,13 @@
 import fetch from "node-fetch";
+import { enforceAiRateLimit, setRateLimitHeaders } from "./_lib/promotion.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+
+  const gate = await enforceAiRateLimit(req, "speaking");
+  if (!gate.ok) {
+    return res.status(gate.status).json(gate.body);
+  }
 
   const { messages, taskInstructions, imageDescriptions, isMainTurn, followUpQuestion, examLevel, mode, task, options } = req.body;
   const level = examLevel || "C1";
@@ -87,6 +93,7 @@ Output only the spoken text.`;
     const content = data.choices?.[0]?.message?.content?.trim();
     if (!content) throw new Error("Empty response from OpenAI");
 
+    setRateLimitHeaders(res, gate);
     return res.status(200).json({ response: content });
   } catch (err) {
     console.error("Speaking partner error:", err);

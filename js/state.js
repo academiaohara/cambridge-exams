@@ -59,6 +59,8 @@
     writingValidationEnabled: true,
     // Mixed-test plan (null when not active)
     mixedTestPlan: null,
-    mixedTestCurrentIndex: 0
+    mixedTestCurrentIndex: 0,
+    // Promotion mode AI quotas (writing / speaking per day)
+    promoQuota: null
   };
 })();

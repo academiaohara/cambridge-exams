@@ -1096,9 +1096,12 @@
         ? (task.followUp._runtimeQuestion || task.followUp.question)
         : '';
 
+      var partnerHeaders = typeof AccessControl !== 'undefined'
+        ? AccessControl.getAiAuthHeaders()
+        : { 'Content-Type': 'application/json' };
       fetch('/api/speaking-partner', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: partnerHeaders,
         body: JSON.stringify({
           messages: this._messages,
           taskInstructions: task ? task.instructions : '',
@@ -1108,8 +1111,20 @@
           examLevel: AppState.currentLevel || 'C1'
         })
       })
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
+      .then(function(res) {
+        return res.json().then(function(data) {
+          return { res: res, data: data };
+        });
+      })
+      .then(function(payload) {
+        var res = payload.res;
+        var data = payload.data;
+        if (typeof AccessControl !== 'undefined' && AccessControl.handleAiApiError(data, res)) {
+          self._isAIGenerating = false;
+          self._showAIThinking(false);
+          return;
+        }
+        if (typeof AccessControl !== 'undefined') AccessControl.applyQuotaFromResponse(res.headers);
         self._isAIGenerating = false;
         self._showAIThinking(false);
         var responseText = data.response || '...';
@@ -1150,9 +1165,12 @@
 
       var mode = this._collaborativeMode ? 'collaborative' : 'discussion';
 
+      var collabHeaders = typeof AccessControl !== 'undefined'
+        ? AccessControl.getAiAuthHeaders()
+        : { 'Content-Type': 'application/json' };
       fetch('/api/speaking-partner', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: collabHeaders,
         body: JSON.stringify({
           messages: this._messages,
           mode: mode,
@@ -1161,8 +1179,20 @@
           examLevel: AppState.currentLevel || 'C1'
         })
       })
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
+      .then(function(res) {
+        return res.json().then(function(data) {
+          return { res: res, data: data };
+        });
+      })
+      .then(function(payload) {
+        var res = payload.res;
+        var data = payload.data;
+        if (typeof AccessControl !== 'undefined' && AccessControl.handleAiApiError(data, res)) {
+          self._isAIGenerating = false;
+          self._showAIThinking(false);
+          return;
+        }
+        if (typeof AccessControl !== 'undefined') AccessControl.applyQuotaFromResponse(res.headers);
         self._isAIGenerating = false;
         self._showAIThinking(false);
         var responseText = data.response || '...';
@@ -1465,9 +1495,12 @@
       this._showEvaluationLoading();
 
       try {
+        var evalHeaders = typeof AccessControl !== 'undefined'
+          ? AccessControl.getAiAuthHeaders()
+          : { 'Content-Type': 'application/json' };
         var res = await fetch('/api/speaking', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: evalHeaders,
           body: JSON.stringify({
             transcripts: transcripts,
             allMessages: this._messages,
@@ -1476,6 +1509,13 @@
           })
         });
         var data = await res.json();
+        if (typeof AccessControl !== 'undefined') {
+          if (AccessControl.handleAiApiError(data, res)) {
+            this._evaluating = false;
+            return;
+          }
+          AccessControl.applyQuotaFromResponse(res.headers);
+        }
         if (!data.error && data.evaluation) {
           var score = this._parseScore(data.evaluation);
           AppState.currentPartScore = score;

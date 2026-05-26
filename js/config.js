@@ -5,6 +5,18 @@
     REPO_NAME: 'cambridge-exams',
     BRANCH: 'main',
     APP_VERSION: '3.2.0',
+
+    /**
+     * Promotion / growth mode — set false to restore plans UI and pack gating.
+     * Server: set PROMOTION_MODE=true in Vercel env + run sql/promotion-ai-usage.sql
+     */
+    PROMOTION_MODE: true,
+    PROMOTION_WRITING_LIMIT: 5,
+    PROMOTION_SPEAKING_LIMIT: 5,
+
+    /** Funding survey on entry (defaults on when PROMOTION_MODE is true) */
+    FUNDING_SURVEY_ENABLED: true,
+    FUNDING_SURVEY_DEFER_DAYS: 3,
     WARNING_TIME: 300,
     DANGER_TIME: 600,
     
