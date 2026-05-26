@@ -35,6 +35,45 @@
   animation: authCardIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
+.funding-survey-lang-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.funding-survey-lang-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.funding-survey-lang-select {
+  font-family: inherit;
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+.funding-survey-lang-select:focus {
+  outline: none;
+  border-color: var(--secondary);
+}
+
+.funding-survey-card[dir="rtl"] .funding-survey-lang-bar {
+  flex-direction: row-reverse;
+}
+
+.funding-survey-card[dir="rtl"] .funding-survey-option-desc {
+  padding-left: 0;
+  padding-right: 28px;
+}
+
 .funding-survey-kicker {
   font-size: 0.8rem;
   font-weight: 700;

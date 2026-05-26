@@ -522,7 +522,11 @@
 
         <!-- Funding preference survey (shown once after sign-in / guest continue) -->
         <div id="funding-survey-overlay" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="funding-survey-title">
-          <div class="funding-survey-card">
+          <div class="funding-survey-card" lang="en">
+            <div class="funding-survey-lang-bar">
+              <label id="funding-survey-lang-label" class="funding-survey-lang-label" for="funding-survey-lang">Language</label>
+              <select id="funding-survey-lang" class="funding-survey-lang-select" aria-label="Survey language"></select>
+            </div>
             <p class="funding-survey-kicker">Your opinion matters</p>
             <h2 id="funding-survey-title">How should we fund EngagEd?</h2>
             <p class="funding-survey-intro">
@@ -535,9 +539,9 @@
                   <input type="radio" name="funding_model" value="ads_optional_sub">
                   <div class="funding-survey-option-title">
                     <span class="emoji" aria-hidden="true">1️⃣</span>
-                    <span>Free access to all content with ads</span>
+                    <span id="funding-survey-opt1-title">Free access to all content with ads</span>
                   </div>
-                  <div class="funding-survey-option-desc">
+                  <div class="funding-survey-option-desc" id="funding-survey-opt1-desc">
                     Optional subscription to remove ads
                   </div>
                 </label>
@@ -545,14 +549,14 @@
                   <input type="radio" name="funding_model" value="subscription_only">
                   <div class="funding-survey-option-title">
                     <span class="emoji" aria-hidden="true">2️⃣</span>
-                    <span>Monthly subscription</span>
+                    <span id="funding-survey-opt2-title">Monthly subscription</span>
                   </div>
-                  <div class="funding-survey-option-desc">
+                  <div class="funding-survey-option-desc" id="funding-survey-opt2-desc">
                     Full content available only to subscribers
                   </div>
                 </label>
               </div>
-              <label class="funding-survey-comment-label" for="funding-survey-comment">
+              <label id="funding-survey-comment-label" class="funding-survey-comment-label" for="funding-survey-comment">
                 Feel free to explain your choice (optional)
               </label>
               <textarea
