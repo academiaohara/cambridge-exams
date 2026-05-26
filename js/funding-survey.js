@@ -4,7 +4,18 @@
 
   var STORAGE_KEY = 'engaged_funding_survey_v1';
   var DEFER_KEY = 'engaged_funding_survey_deferred_until';
-  var _pendingTimer = null;
+  var _retryTimer = null;
+
+  function isAuthModalOpen() {
+    var auth = document.getElementById('auth-modal-overlay');
+    if (!auth) return false;
+    if (auth.classList.contains('visible')) return true;
+    try {
+      return window.getComputedStyle(auth).display !== 'none';
+    } catch (e) {
+      return auth.style.display !== 'none';
+    }
+  }
 
   window.FundingSurvey = {
     isEnabled: function () {
@@ -32,22 +43,48 @@
       }
     },
 
-    /** Call after auth modal is closed or on returning session. */
+    /** Wait until auth modal is closed, then show (retries automatically). */
     maybeShow: function () {
       if (!this.isEnabled() || this.hasCompleted() || this.isDeferred()) return;
-      if (document.getElementById('auth-modal-overlay')) {
-        var auth = document.getElementById('auth-modal-overlay');
-        if (auth.style.display !== 'none' && auth.classList.contains('visible')) return;
+      if (_retryTimer) {
+        clearTimeout(_retryTimer);
+        _retryTimer = null;
       }
-      if (document.getElementById('funding-survey-overlay')) return;
 
-      if (_pendingTimer) return;
       var self = this;
-      _pendingTimer = setTimeout(function () {
-        _pendingTimer = null;
+      var attempts = 0;
+      var maxAttempts = 60;
+
+      function attempt() {
+        attempts += 1;
         if (!self.isEnabled() || self.hasCompleted() || self.isDeferred()) return;
-        self._show();
-      }, 600);
+
+        if (isAuthModalOpen()) {
+          if (attempts < maxAttempts) {
+            _retryTimer = setTimeout(attempt, 500);
+          }
+          return;
+        }
+
+        _retryTimer = null;
+        var overlay = document.getElementById('funding-survey-overlay');
+        if (!overlay) {
+          console.warn('[FundingSurvey] Overlay #funding-survey-overlay not found — deploy includes index.html update?');
+          return;
+        }
+        if (overlay.classList.contains('visible')) return;
+
+        setTimeout(function () {
+          if (!self.isEnabled() || self.hasCompleted() || self.isDeferred()) return;
+          if (isAuthModalOpen()) {
+            self.maybeShow();
+            return;
+          }
+          self._show();
+        }, 350);
+      }
+
+      attempt();
     },
 
     _show: function () {

@@ -138,8 +138,9 @@
         history.replaceState({ view: 'dashboard' }, '', '/');
       }
 
+      // Survey after dashboard is ready (retries until auth modal is closed)
       if (typeof FundingSurvey !== 'undefined') {
-        FundingSurvey.maybeShow();
+        setTimeout(function () { FundingSurvey.maybeShow(); }, 800);
       }
       
       // Update header mode buttons

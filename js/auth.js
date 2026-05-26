@@ -31,6 +31,7 @@
       if (!this._client) {
         // Supabase not available — show auth modal so user can continue as guest
         this._showAuthModal();
+        if (typeof FundingSurvey !== 'undefined') { FundingSurvey.maybeShow(); }
         return;
       }
 
