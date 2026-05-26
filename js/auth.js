@@ -44,6 +44,10 @@
         this._showAuthModal();
       }
 
+      if (typeof FundingSurvey !== 'undefined') {
+        FundingSurvey.maybeShow();
+      }
+
       // Listen for auth state changes (sign-in / sign-out / token refresh)
       this._client.auth.onAuthStateChange(async (event, session) => {
         if (event === 'SIGNED_IN' && session) {
@@ -91,6 +95,7 @@
       this._hideAuthModal();
       this.renderSignInButton();
       if (typeof Dashboard !== 'undefined') { Dashboard.render(); }
+      if (typeof FundingSurvey !== 'undefined') { FundingSurvey.maybeShow(); }
     },
 
     /** Sign out the current user (or exit guest mode). */
@@ -196,6 +201,10 @@
       // Render user widget in header
       this._renderUserWidget(user);
 
+      if (typeof AccessControl !== 'undefined') {
+        AccessControl.refreshPromoQuotas();
+      }
+
       // Re-render dashboard to remove any guest restrictions
       if (typeof Dashboard !== 'undefined') { Dashboard.render(); }
     },
@@ -247,6 +256,7 @@
         setTimeout(function () {
           overlay.style.display = 'none';
           overlay.classList.remove('hiding');
+          if (typeof FundingSurvey !== 'undefined') { FundingSurvey.maybeShow(); }
         }, 300);
       }
     },

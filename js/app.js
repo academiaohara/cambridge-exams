@@ -73,7 +73,13 @@
       } else if (initialState.view === 'premium') {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
-        if (typeof UserProfile !== 'undefined') UserProfile.renderPremiumSection();
+        if (typeof UserProfile !== 'undefined') {
+          if (typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI()) {
+            UserProfile.renderProfileSection();
+          } else {
+            UserProfile.renderPremiumSection();
+          }
+        }
       } else if (initialState.view === 'gradeEvolution') {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
@@ -131,6 +137,10 @@
         Dashboard.render();
         history.replaceState({ view: 'dashboard' }, '', '/');
       }
+
+      if (typeof FundingSurvey !== 'undefined') {
+        FundingSurvey.maybeShow();
+      }
       
       // Update header mode buttons
       this.updateHeaderModeButtons();
@@ -156,7 +166,13 @@
         } else if (state.view === 'profile') {
           if (typeof UserProfile !== 'undefined') UserProfile.renderProfileSection();
         } else if (state.view === 'premium') {
-          if (typeof UserProfile !== 'undefined') UserProfile.renderPremiumSection();
+          if (typeof UserProfile !== 'undefined') {
+            if (typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI()) {
+              UserProfile.renderProfileSection();
+            } else {
+              UserProfile.renderPremiumSection();
+            }
+          }
         } else if (state.view === 'gradeEvolution') {
           if (typeof BentoGrid !== 'undefined') BentoGrid.openGradeEvolution();
         } else if (state.view === 'quicksteps') {

@@ -294,13 +294,20 @@
     },
 
     sendWriting: async function(text, taskType, taskPrompt) {
+      const headers = typeof AccessControl !== 'undefined'
+        ? AccessControl.getAiAuthHeaders()
+        : { "Content-Type": "application/json" };
       const res = await fetch("/api/writing", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: headers,
         body: JSON.stringify({ text, taskType, taskPrompt, examLevel: AppState.currentLevel || 'C1' })
       });
 
       const data = await res.json();
+      if (typeof AccessControl !== 'undefined' && AccessControl.handleAiApiError(data, res)) {
+        throw new Error(data.message || data.error || 'Request blocked');
+      }
+      if (typeof AccessControl !== 'undefined') AccessControl.applyQuotaFromResponse(res.headers);
       if (data.error) throw new Error(data.error);
       return data.corrected;
     },

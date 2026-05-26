@@ -186,9 +186,10 @@
         '<button class="premium-plan-btn primary" style="margin:8px 20px;width:calc(100% - 40px)" onclick="UserProfile.closePanel(); UserProfile.renderProfileSection()">' +
           '<i class="fas fa-user-circle"></i> View Full Profile' +
         '</button>' +
+        (typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI() ? '' :
         '<button class="premium-plan-btn outline" style="margin:4px 20px;width:calc(100% - 40px)" onclick="UserProfile.closePanel(); UserProfile.renderPremiumSection()">' +
           '<i class="fas fa-crown"></i> View Plans' +
-        '</button>' +
+        '</button>') +
         '<button class="profile-signout-btn" onclick="Auth.signOut()">' +
           '<i class="fas fa-sign-out-alt"></i> Sign out' +
         '</button>';
@@ -355,22 +356,31 @@
       var avatarUrl = profile.avatar_url || (user && user.user_metadata && user.user_metadata.avatar_url) || '';
       var initials = name.split(' ').filter(function (w) { return w; }).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
 
+      var hidePlans = typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI();
       var isPremium = AppState.isPremium;
-      var hasTheoryPack = AppState.hasTheoryPack;
-      var hasExamsPack = AppState.hasExamsPack;
+      var hasTheoryPack = typeof AccessControl !== 'undefined'
+        ? AccessControl.effectiveHasTheoryPack()
+        : AppState.hasTheoryPack;
+      var hasExamsPack = typeof AccessControl !== 'undefined'
+        ? AccessControl.effectiveHasExamsPack()
+        : AppState.hasExamsPack;
 
-      var identityStatusTag = isPremium
-        ? '<span class="account-editorial-tag account-editorial-tag--premium">Premium</span>'
-        : '<span class="account-editorial-tag account-editorial-tag--free">Free plan</span>';
+      var identityStatusTag = hidePlans
+        ? ''
+        : (isPremium
+          ? '<span class="account-editorial-tag account-editorial-tag--premium">Premium</span>'
+          : '<span class="account-editorial-tag account-editorial-tag--free">Free plan</span>');
 
       var adminMeta = (!isGuest && AppState.isAdmin)
         ? '<p class="account-identity-meta">Administrator</p>'
         : '';
 
-      var membershipKicker = isPremium ? 'Premium membership' : 'Free plan';
+      var membershipKicker = hidePlans ? 'EngagEd member' : (isPremium ? 'Premium membership' : 'Free plan');
       var membershipSummary = '';
       if (!isGuest) {
-        if (isPremium) {
+        if (hidePlans) {
+          membershipSummary = 'Full access while you are signed in. Writing and Speaking AI feedback have a daily limit.';
+        } else if (isPremium) {
           membershipSummary = 'Theory and Exams included';
         } else if (hasTheoryPack) {
           membershipSummary = 'Theory included';
@@ -398,7 +408,7 @@
           '</ul>';
       }
 
-      var viewPlansControl =
+      var viewPlansControl = hidePlans ? '' :
         '<div class="account-module-footer">' +
           '<button type="button" class="account-text-link" onclick="UserProfile.renderPremiumSection()">View plans</button>' +
         '</div>';
@@ -621,6 +631,11 @@
 
     // ── Premium Plans Section (rendered inside main-content) ───────────
     renderPremiumSection: function () {
+      if (typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI()) {
+        this.renderProfileSection();
+        return;
+      }
+
       var content = document.getElementById('main-content');
       if (!content) return;
 

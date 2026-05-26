@@ -234,29 +234,47 @@
     },
     
     startFullSection: async function(examId, section) {
-      // Guest gate: block writing and speaking for guest users
-      if (!AppState.isAuthenticated && (section === 'writing' || section === 'speaking')) {
-        if (typeof Auth !== 'undefined' && Auth._showAuthModal) Auth._showAuthModal();
-        return;
-      }
-
-      // Registered users without exams pack: writing/speaking only once
-      if (AppState.isAuthenticated && !AppState.hasExamsPack) {
-        if (section === 'writing') {
-          if (localStorage.getItem('cambridge_free_writing_used') && AppState._freeWritingAccessExam !== examId) {
-            if (typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) Dashboard.showExamsUpgradeGate();
+      if (section === 'writing' || section === 'speaking') {
+        if (typeof AccessControl !== 'undefined') {
+          var access = AccessControl.canAccessWritingSpeaking();
+          if (!access.allowed) {
+            if (typeof Auth !== 'undefined' && Auth._showAuthModal) Auth._showAuthModal();
             return;
           }
-          AppState._freeWritingAccessExam = examId;
-          try { localStorage.setItem('cambridge_free_writing_used', '1'); } catch(e) {}
-        }
-        if (section === 'speaking') {
-          if (localStorage.getItem('cambridge_free_speaking_used') && AppState._freeSpeakingAccessExam !== examId) {
-            if (typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) Dashboard.showExamsUpgradeGate();
+          var gate = AccessControl.shouldBlockWritingSpeakingTrial(section, examId);
+          if (gate.block) {
+            if (gate.reason === 'upgrade' && typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) {
+              Dashboard.showExamsUpgradeGate();
+            } else if (gate.reason === 'auth' && typeof Auth !== 'undefined' && Auth._showAuthModal) {
+              Auth._showAuthModal();
+            }
             return;
           }
-          AppState._freeSpeakingAccessExam = examId;
-          try { localStorage.setItem('cambridge_free_speaking_used', '1'); } catch(e) {}
+          if (AccessControl.isWritingSpeakingSectionLocked(section)) {
+            AccessControl.showRateLimitModal({ feature: section });
+            return;
+          }
+          AccessControl.markWritingSpeakingTrialUsed(section, examId, gate);
+        } else if (!AppState.isAuthenticated) {
+          if (typeof Auth !== 'undefined' && Auth._showAuthModal) Auth._showAuthModal();
+          return;
+        } else if (AppState.isAuthenticated && !AppState.hasExamsPack) {
+          if (section === 'writing') {
+            if (localStorage.getItem('cambridge_free_writing_used') && AppState._freeWritingAccessExam !== examId) {
+              if (typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) Dashboard.showExamsUpgradeGate();
+              return;
+            }
+            AppState._freeWritingAccessExam = examId;
+            try { localStorage.setItem('cambridge_free_writing_used', '1'); } catch(e) {}
+          }
+          if (section === 'speaking') {
+            if (localStorage.getItem('cambridge_free_speaking_used') && AppState._freeSpeakingAccessExam !== examId) {
+              if (typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) Dashboard.showExamsUpgradeGate();
+              return;
+            }
+            AppState._freeSpeakingAccessExam = examId;
+            try { localStorage.setItem('cambridge_free_speaking_used', '1'); } catch(e) {}
+          }
         }
       }
 
@@ -311,29 +329,47 @@
         SpeakingType.cleanup();
       }
 
-      // Guest gate: block writing and speaking for guest users
-      if (!AppState.isAuthenticated && (section === 'writing' || section === 'speaking')) {
-        if (typeof Auth !== 'undefined' && Auth._showAuthModal) Auth._showAuthModal();
-        return;
-      }
-
-      // Registered users without exams pack: writing/speaking only once
-      if (AppState.isAuthenticated && !AppState.hasExamsPack) {
-        if (section === 'writing') {
-          if (localStorage.getItem('cambridge_free_writing_used') && AppState._freeWritingAccessExam !== examId) {
-            if (typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) Dashboard.showExamsUpgradeGate();
+      if (section === 'writing' || section === 'speaking') {
+        if (typeof AccessControl !== 'undefined') {
+          var access = AccessControl.canAccessWritingSpeaking();
+          if (!access.allowed) {
+            if (typeof Auth !== 'undefined' && Auth._showAuthModal) Auth._showAuthModal();
             return;
           }
-          AppState._freeWritingAccessExam = examId;
-          try { localStorage.setItem('cambridge_free_writing_used', '1'); } catch(e) {}
-        }
-        if (section === 'speaking') {
-          if (localStorage.getItem('cambridge_free_speaking_used') && AppState._freeSpeakingAccessExam !== examId) {
-            if (typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) Dashboard.showExamsUpgradeGate();
+          var gate = AccessControl.shouldBlockWritingSpeakingTrial(section, examId);
+          if (gate.block) {
+            if (gate.reason === 'upgrade' && typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) {
+              Dashboard.showExamsUpgradeGate();
+            } else if (gate.reason === 'auth' && typeof Auth !== 'undefined' && Auth._showAuthModal) {
+              Auth._showAuthModal();
+            }
             return;
           }
-          AppState._freeSpeakingAccessExam = examId;
-          try { localStorage.setItem('cambridge_free_speaking_used', '1'); } catch(e) {}
+          if (AccessControl.isWritingSpeakingSectionLocked(section)) {
+            AccessControl.showRateLimitModal({ feature: section });
+            return;
+          }
+          AccessControl.markWritingSpeakingTrialUsed(section, examId, gate);
+        } else if (!AppState.isAuthenticated) {
+          if (typeof Auth !== 'undefined' && Auth._showAuthModal) Auth._showAuthModal();
+          return;
+        } else if (AppState.isAuthenticated && !AppState.hasExamsPack) {
+          if (section === 'writing') {
+            if (localStorage.getItem('cambridge_free_writing_used') && AppState._freeWritingAccessExam !== examId) {
+              if (typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) Dashboard.showExamsUpgradeGate();
+              return;
+            }
+            AppState._freeWritingAccessExam = examId;
+            try { localStorage.setItem('cambridge_free_writing_used', '1'); } catch(e) {}
+          }
+          if (section === 'speaking') {
+            if (localStorage.getItem('cambridge_free_speaking_used') && AppState._freeSpeakingAccessExam !== examId) {
+              if (typeof Dashboard !== 'undefined' && Dashboard.showExamsUpgradeGate) Dashboard.showExamsUpgradeGate();
+              return;
+            }
+            AppState._freeSpeakingAccessExam = examId;
+            try { localStorage.setItem('cambridge_free_speaking_used', '1'); } catch(e) {}
+          }
         }
       }
 
@@ -817,6 +853,9 @@
     },
     
     _evaluateWritingPart: async function(examId, section, part, savedState) {
+      var wHeaders = typeof AccessControl !== 'undefined'
+        ? AccessControl.getAiAuthHeaders()
+        : { 'Content-Type': 'application/json' };
       try {
         var fileName = 'writing' + part + '.json';
         var baseUrl = CONFIG.EXERCISES_URL.replace('Nivel/C1/Exams/', 'Nivel/' + AppState.currentLevel + '/Exams/');
@@ -842,10 +881,14 @@
             try {
               var res = await fetch('/api/writing', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: wHeaders,
                 body: JSON.stringify({ text: essay, taskType: taskType, taskPrompt: question, examLevel: AppState.currentLevel || 'C1' })
               });
               var data = await res.json();
+              if (typeof AccessControl !== 'undefined') {
+                if (AccessControl.handleAiApiError(data, res)) return;
+                AccessControl.applyQuotaFromResponse(res.headers);
+              }
               if (!data.error && data.corrected) {
                 var m = data.corrected.match(/Total:\s*(\d+)\s*\/\s*20/i);
                 score = m ? parseInt(m[1], 10) : 0;
@@ -865,10 +908,14 @@
               try {
                 var res2 = await fetch('/api/writing', {
                   method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
+                  headers: wHeaders,
                   body: JSON.stringify({ text: taskEssay, taskType: taskType, taskPrompt: taskPrompt, examLevel: AppState.currentLevel || 'C1' })
                 });
                 var data2 = await res2.json();
+                if (typeof AccessControl !== 'undefined') {
+                  if (AccessControl.handleAiApiError(data2, res2)) return;
+                  AccessControl.applyQuotaFromResponse(res2.headers);
+                }
                 if (!data2.error && data2.corrected) {
                   var m2 = data2.corrected.match(/Total:\s*(\d+)\s*\/\s*20/i);
                   score = m2 ? parseInt(m2[1], 10) : 0;
@@ -904,9 +951,12 @@
         } else if (transcripts.length && transcripts.join(' ').trim().length >= 5) {
           // Call AI evaluation
           try {
+            var sHeaders = typeof AccessControl !== 'undefined'
+              ? AccessControl.getAiAuthHeaders()
+              : { 'Content-Type': 'application/json' };
             var res = await fetch('/api/speaking', {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
+              headers: sHeaders,
               body: JSON.stringify({
                 transcripts: transcripts,
                 allMessages: allMessages,
@@ -915,6 +965,10 @@
               })
             });
             var data = await res.json();
+            if (typeof AccessControl !== 'undefined') {
+              if (AccessControl.handleAiApiError(data, res)) return;
+              AccessControl.applyQuotaFromResponse(res.headers);
+            }
             if (!data.error && data.evaluation) {
               // Parse score from evaluation
               var m = data.evaluation.match(/Total[:\s]*(\d+(?:\.\d+)?)\s*\/\s*75/i);

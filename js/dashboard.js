@@ -143,11 +143,13 @@
       '</div>';
 
       var isGuest = AppState.isGuest;
-      var hasExamsPack = !!AppState.hasExamsPack;
+      var hasExamsPack = typeof AccessControl !== 'undefined'
+        ? AccessControl.effectiveHasExamsPack()
+        : !!AppState.hasExamsPack;
 
-      // Premium upgrade banner for guest users
+      // Premium upgrade banner (hidden in promotion mode)
       var premiumBannerHtml = '';
-      if (!hasExamsPack) {
+      if (!hasExamsPack && !(typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI())) {
         premiumBannerHtml = this._renderPremiumBanner();
       }
 
@@ -311,7 +313,9 @@
     // ── Section exercise list (paginated by section type) ──────────
     _renderSectionExerciseList: function(exams, sectionKey, isGuest) {
       var mode = AppState.currentMode || 'practice';
-      var hasExamsPack = !!AppState.hasExamsPack;
+      var hasExamsPack = typeof AccessControl !== 'undefined'
+        ? AccessControl.effectiveHasExamsPack()
+        : !!AppState.hasExamsPack;
 
       // Pagination
       var totalPages = Math.ceil(exams.length / SECTION_ITEMS_PER_PAGE);
@@ -407,7 +411,39 @@
           '</div>' +
         '</div>';
       }
-      if (isWritingSpeaking && AppState.isAuthenticated && !AppState.hasExamsPack) {
+      if (isWritingSpeaking && typeof AccessControl !== 'undefined') {
+        if (!AccessControl.canAccessWritingSpeaking().allowed) {
+          return '<div class="exam-item guest-exam-locked" onclick="Auth._showAuthModal()">' +
+            '<div class="exam-header">' +
+              '<div class="exam-header-left">' +
+                '<span class="exam-number">' + exam.number + '</span>' +
+                '<div>' +
+                  '<div class="exam-title">Test ' + exam.number + '</div>' +
+                  '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>Sign in required</div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="exam-progress-badge"><i class="fas fa-lock"></i></div>' +
+            '</div>' +
+          '</div>';
+        }
+        if (AccessControl.isWritingSpeakingSectionLocked(sectionKey)) {
+          var lockAction = AccessControl.isPromotionMode()
+            ? 'AccessControl.showRateLimitModal({ feature: \'' + sectionKey + '\' })'
+            : 'Dashboard.showExamsUpgradeGate()';
+          return '<div class="exam-item guest-exam-locked" onclick="' + lockAction + '">' +
+            '<div class="exam-header">' +
+              '<div class="exam-header-left">' +
+                '<span class="exam-number">' + exam.number + '</span>' +
+                '<div>' +
+                  '<div class="exam-title">Test ' + exam.number + '</div>' +
+                  '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>Daily limit reached</div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="exam-progress-badge"><i class="fas fa-lock"></i></div>' +
+            '</div>' +
+          '</div>';
+        }
+      } else if (isWritingSpeaking && AppState.isAuthenticated && !AppState.hasExamsPack) {
         var trialKey = sectionKey === 'writing' ? 'cambridge_free_writing_used' : 'cambridge_free_speaking_used';
         var trialUsed = !!localStorage.getItem(trialKey);
         if (trialUsed) {
@@ -456,7 +492,10 @@
     
     // ── Random Test card (always shown at top of test list) ──────────────
     _renderRandomTestCard: function(mode) {
-      if (!AppState.hasExamsPack) {
+      var hasExams = typeof AccessControl !== 'undefined'
+        ? AccessControl.effectiveHasExamsPack()
+        : !!AppState.hasExamsPack;
+      if (!hasExams) {
         return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showExamsUpgradeGate()">' +
           '<div class="exam-header">' +
             '<div class="exam-header-left">' +
@@ -617,18 +656,31 @@
       var isLocked = false;
       var lockClick = '';
       var lockedBadge = '';
-      if ((sectionKey === 'writing' || sectionKey === 'speaking') && !AppState.isAuthenticated) {
-        isLocked = true;
-        lockClick = 'Auth._showAuthModal()';
-        lockedBadge = '<span class="guest-locked-badge"><i class="fas fa-lock"></i> Sign in required</span>';
-      } else if ((sectionKey === 'writing' || sectionKey === 'speaking') && AppState.isAuthenticated && !AppState.hasExamsPack) {
-        var trialKey = sectionKey === 'writing' ? 'cambridge_free_writing_used' : 'cambridge_free_speaking_used';
-        if (localStorage.getItem(trialKey)) {
+      if (sectionKey === 'writing' || sectionKey === 'speaking') {
+        if (typeof AccessControl !== 'undefined') {
+          if (!AccessControl.canAccessWritingSpeaking().allowed) {
+            isLocked = true;
+            lockClick = 'Auth._showAuthModal()';
+          } else if (AccessControl.isWritingSpeakingSectionLocked(sectionKey)) {
+            isLocked = true;
+            lockClick = AccessControl.isPromotionMode()
+              ? 'AccessControl.showRateLimitModal({ feature: \'' + sectionKey + '\' })'
+              : 'Dashboard.showExamsUpgradeGate()';
+          }
+          lockedBadge = AccessControl.getWritingSpeakingBadge(sectionKey);
+        } else if (!AppState.isAuthenticated) {
           isLocked = true;
-          lockClick = 'Dashboard.showExamsUpgradeGate()';
-          lockedBadge = '<span class="guest-locked-badge"><i class="fas fa-lock"></i> Pack Exams required</span>';
-        } else {
-          lockedBadge = '<span class="guest-locked-badge"><i class="fas fa-gift"></i> 1 free try</span>';
+          lockClick = 'Auth._showAuthModal()';
+          lockedBadge = '<span class="guest-locked-badge"><i class="fas fa-lock"></i> Sign in required</span>';
+        } else if (!AppState.hasExamsPack) {
+          var trialKey = sectionKey === 'writing' ? 'cambridge_free_writing_used' : 'cambridge_free_speaking_used';
+          if (localStorage.getItem(trialKey)) {
+            isLocked = true;
+            lockClick = 'Dashboard.showExamsUpgradeGate()';
+            lockedBadge = '<span class="guest-locked-badge"><i class="fas fa-lock"></i> Pack Exams required</span>';
+          } else {
+            lockedBadge = '<span class="guest-locked-badge"><i class="fas fa-gift"></i> 1 free try</span>';
+          }
         }
       }
       var readingSectionHeading = (typeof AppState !== 'undefined' && AppState.currentLevel === 'B1') ? 'Reading' : 'READING & UOE';
@@ -826,6 +878,12 @@
     },
 
     showExamsUpgradeGate: function() {
+      if (typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI()) {
+        if (!AppState.isAuthenticated) {
+          this.showGuestGate();
+        }
+        return;
+      }
       if (document.getElementById('upgrade-gate-overlay')) return;
       var overlay = document.createElement('div');
       overlay.id = 'upgrade-gate-overlay';

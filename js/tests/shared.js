@@ -67,7 +67,9 @@
 
     _renderMixedRow: function(exams) {
       var availableCount = (exams || []).filter(function(e) { return e.status === 'available'; }).length;
-      var lockedByPack = !AppState.hasExamsPack;
+      var lockedByPack = !(typeof AccessControl !== 'undefined'
+        ? AccessControl.effectiveHasExamsPack()
+        : AppState.hasExamsPack);
       var disabled = availableCount === 0 || lockedByPack;
       var clickAttr = disabled
         ? (lockedByPack ? ' onclick="Dashboard.showExamsUpgradeGate()"' : '')
