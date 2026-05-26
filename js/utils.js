@@ -39,15 +39,32 @@
         return Promise.resolve();
       }
       
-      return new Promise(function(resolve) {
-        const link = document.createElement('link');
-        link.id = cssId;
-        link.rel = 'stylesheet';
-        link.href = `${window.CONFIG.CSS_BASE_URL}exercise-types/${fileInfo.css}`;
-        link.onload = function() { console.log(`🎨 CSS cargado: ${fileInfo.css}`); resolve(); };
-        link.onerror = function() { console.error(`❌ Error cargando CSS: ${fileInfo.css}`); resolve(); };
-        document.head.appendChild(link);
-      });
+      const loadStylesheet = function(id, href, label) {
+        return new Promise(function(resolve) {
+          if (document.getElementById(id)) {
+            resolve();
+            return;
+          }
+          const link = document.createElement('link');
+          link.id = id;
+          link.rel = 'stylesheet';
+          link.href = href;
+          link.onload = function() { console.log(`🎨 CSS cargado: ${label}`); resolve(); };
+          link.onerror = function() { console.error(`❌ Error cargando CSS: ${label}`); resolve(); };
+          document.head.appendChild(link);
+        });
+      };
+
+      const baseUrl = `${window.CONFIG.CSS_BASE_URL}exercise-types/`;
+      const typePromise = loadStylesheet(cssId, `${baseUrl}${fileInfo.css}`, fileInfo.css);
+      const isWritingType = fileInfo.css.indexOf('writing-type') === 0;
+      const sharedPromise = isWritingType
+        ? typePromise.then(function() {
+            return loadStylesheet('css-writing-shared', `${baseUrl}writing-shared.css`, 'writing-shared.css');
+          })
+        : typePromise;
+
+      return sharedPromise;
     },
     
     // Cargar JS específico del tipo de ejercicio
