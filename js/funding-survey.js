@@ -35,11 +35,11 @@
     /** Call after auth modal is closed or on returning session. */
     maybeShow: function () {
       if (!this.isEnabled() || this.hasCompleted() || this.isDeferred()) return;
-      if (document.getElementById('auth-modal-overlay')) {
-        var auth = document.getElementById('auth-modal-overlay');
-        if (auth.style.display !== 'none' && auth.classList.contains('visible')) return;
-      }
-      if (document.getElementById('funding-survey-overlay')) return;
+      var auth = document.getElementById('auth-modal-overlay');
+      if (auth && auth.style.display !== 'none' && auth.classList.contains('visible')) return;
+
+      var surveyOverlay = document.getElementById('funding-survey-overlay');
+      if (surveyOverlay && surveyOverlay.classList.contains('visible')) return;
 
       if (_pendingTimer) return;
       var self = this;
