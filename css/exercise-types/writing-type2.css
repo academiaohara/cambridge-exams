@@ -103,25 +103,11 @@
 .writing-type2-textarea {
   width: 100%;
   min-height: 400px;
-  padding: 1rem;
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
   font-size: 1rem;
-  line-height: 1.6;
   color: var(--text-dark);
   resize: vertical;
   box-sizing: border-box;
-  transition: border-color 0.2s;
-}
-
-.writing-type2-textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-}
-
-.writing-type2-textarea:disabled {
-  background: #f9fafb;
-  color: var(--text-medium);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .writing-type2-toolbar {
@@ -217,13 +203,8 @@
 .writing-corrected-text {
   width: 100%;
   min-height: 200px;
-  padding: 1rem;
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
   font-size: 1rem;
-  line-height: 1.8;
   color: var(--text-dark);
-  background: #fafbfc;
   box-sizing: border-box;
 }
 
@@ -435,7 +416,14 @@
     display: none;
   }
 
-  .btn-copy-clipboard,
+  .writing-type2-toolbar .btn-copy-clipboard {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 50%;
+  }
+
   .btn-evaluate-ai {
     width: 44px;
     height: 44px;
@@ -448,9 +436,12 @@
     font-size: 0;
   }
 
-  .btn-copy-clipboard i,
   .btn-evaluate-ai i {
     font-size: 1rem;
     margin: 0;
+  }
+
+  .writing-type2-toolbar .btn-copy-clipboard i {
+    font-size: 1rem;
   }
 }

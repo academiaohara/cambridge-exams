@@ -141,8 +141,8 @@
               <div class="writing-type2-word-count">
                 <span id="writing-type2-count">0</span> words written
               </div>
-              <button class="btn-copy-clipboard" onclick="WritingType2.copyToClipboard()" title="Copy to clipboard">
-                <i class="fas fa-copy"></i><span class="writing-btn-label"> Copy to clipboard</span>
+              <button class="btn-copy-clipboard" onclick="WritingType2.copyToClipboard()" title="Copy to clipboard" aria-label="Copy to clipboard">
+                <i class="fas fa-copy" aria-hidden="true"></i>
               </button>
               ${AppState.currentMode !== 'exam' ? `<button class="btn-evaluate-ai" id="writing-type2-evaluate-btn" onclick="WritingType2.evaluateWithAI()" title="Evaluate with AI">
                 <i class="fas fa-robot"></i><span class="writing-btn-label"> Evaluate with AI</span>
