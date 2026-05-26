@@ -7,6 +7,8 @@
   --writing-margin-color: rgba(239, 68, 68, 0.32);
   --writing-paper: #fffef9;
   --writing-padding-top: 18px;
+  --writing-padding-left: 3.35rem;
+  --writing-margin-line: 2.75rem;
   /* Align rule grid with text baselines (line-height minus font-size) */
   --writing-bg-offset-y: calc(var(--writing-font-size) - var(--writing-line-height));
 
@@ -25,17 +27,17 @@
     ),
     linear-gradient(
       to right,
-      transparent 2.75rem,
-      var(--writing-margin-color) 2.75rem,
-      var(--writing-margin-color) calc(2.75rem + 2px),
-      transparent calc(2.75rem + 2px)
+      transparent var(--writing-margin-line),
+      var(--writing-margin-color) var(--writing-margin-line),
+      var(--writing-margin-color) calc(var(--writing-margin-line) + 2px),
+      transparent calc(var(--writing-margin-line) + 2px)
     );
   background-position: 0 calc(var(--writing-bg-offset-y) + var(--writing-padding-top));
   background-size: 100% var(--writing-line-height), 100% 100%;
   background-repeat: repeat, no-repeat;
   background-attachment: local;
   /* Top padding must align to the line grid so text and placeholder sit on the rules */
-  padding: var(--writing-padding-top) 1.25rem 1rem 3.35rem;
+  padding: var(--writing-padding-top) 1.25rem 1rem var(--writing-padding-left);
   line-height: var(--writing-line-height);
   border: 1px solid #e0dcd0;
   border-radius: 6px 6px 14px 14px;
@@ -73,6 +75,8 @@
   --writing-margin-color: rgba(239, 68, 68, 0.32);
   --writing-paper: #fffef9;
   --writing-padding-top: 18px;
+  --writing-padding-left: 3.35rem;
+  --writing-margin-line: 2.75rem;
   --writing-bg-offset-y: calc(var(--writing-font-size) - var(--writing-line-height));
 
   font-size: var(--writing-font-size);
@@ -89,22 +93,31 @@
     ),
     linear-gradient(
       to right,
-      transparent 2.75rem,
-      var(--writing-margin-color) 2.75rem,
-      var(--writing-margin-color) calc(2.75rem + 2px),
-      transparent calc(2.75rem + 2px)
+      transparent var(--writing-margin-line),
+      var(--writing-margin-color) var(--writing-margin-line),
+      var(--writing-margin-color) calc(var(--writing-margin-line) + 2px),
+      transparent calc(var(--writing-margin-line) + 2px)
     );
   background-position: 0 calc(var(--writing-bg-offset-y) + var(--writing-padding-top));
   background-size: 100% var(--writing-line-height), 100% 100%;
   background-repeat: repeat, no-repeat;
   background-attachment: local;
-  padding: var(--writing-padding-top) 1.25rem 1rem 3.35rem;
+  padding: var(--writing-padding-top) 1.25rem 1rem var(--writing-padding-left);
   line-height: var(--writing-line-height);
   border: 1px solid #e0dcd0;
   border-radius: 6px 6px 14px 14px;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.92) inset,
     0 2px 10px rgba(45, 46, 95, 0.05);
+}
+
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  .writing-textarea,
+  .writing-corrected-text {
+    --writing-padding-top: 18px;
+    --writing-padding-left: 2rem;
+    --writing-margin-line: 1.65rem;
+  }
 }
 
 /* Copy button — icon only */
