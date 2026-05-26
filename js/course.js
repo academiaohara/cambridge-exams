@@ -1439,6 +1439,8 @@
             html += self._renderCuBoldCorrectExercise(section, grIdBase, secId);
           } else if (section.subtype === 'drag-category') {
             html += self._renderCuDragCategoryExercise(section, grIdBase, secId);
+          } else if (section.subtype === 'passage-input') {
+            html += self._renderCuPassageInputExercise(section, grIdBase, secId);
           } else if (section.passage && items.length) {
             html += self._renderCuMcPassageExercise(section, grIdBase, secId);
           } else {
@@ -3522,7 +3524,9 @@
 
     _renderCourseExItem: function(item, idx, idBase, trackCallback, hideNumBadge, useTextarea, showOkBtn, showCopyBtn) {
       var self = this;
-      var answer = item.answer || '';
+      var answer = item.answer != null
+        ? item.answer
+        : (Array.isArray(item.answers) ? item.answers.join(', ') : '');
       var inputId = 'cuex-' + idBase;
       var numBadgeHtml = hideNumBadge ? '' : '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>';
 
@@ -4153,15 +4157,11 @@
         } else if (p.type === 'hint-gap' || p.type === 'gap-hint') {
           var gId = inputIdBase + '_g' + (gapCount++);
           var hintSlash = p.hint && String(p.hint).indexOf('/') !== -1;
-          // Plain word hints: hint line (width to content) + gap field below — not one pill shell
+          // Plain word hints: keep the field and hint together so mobile wraps naturally.
           if (p.hint && !hintSlash) {
             var hintShownStack = p.hintBrackets ? ('[' + p.hint + ']') : p.hint;
-            return '<span class="cu-hint-gap-stack">' +
-              '<span class="cu-hint-gap-hintline">' +
+            return '<span class="cu-hint-pill">' +
               (p.num ? '<span class="cu-hint-pill-num">' + self._escapeHTML(p.num) + '</span>' : '') +
-              '<span class="cu-hint-word">' + self._escapeHTML(hintShownStack) + '</span>' +
-              '</span>' +
-              '<span class="cu-hint-gap-fieldline">' +
               self._renderCuMobileInlineGap({
                 id: gId,
                 placeholder: gapPh,
@@ -4170,7 +4170,8 @@
                 ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty',
                 textareaOnInput: 'BentoGrid._resizeCuInput(this)'
               }) +
-              '</span></span>';
+              '<span class="cu-hint-word">' + self._escapeHTML(hintShownStack) + '</span>' +
+              '</span>';
           }
           var pillHtml = '<span class="' + (hintSlash ? 'cu-hint-slash-field' : 'cu-hint-pill') + '">';
           if (p.num) {
@@ -4179,7 +4180,7 @@
           pillHtml += self._renderCuMobileInlineGap({
             id: gId,
             placeholder: gapPh,
-            block: hintSlash,
+            block: false,
             textareaClassName: 'cu-gap-input cu-hint-pill-input',
             ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input',
             textareaOnInput: 'BentoGrid._resizeCuInput(this)'

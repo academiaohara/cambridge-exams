@@ -3578,16 +3578,20 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 
 /* ── MC gap pill (shows selected option text) ───────────────────────── */
 .cu-mc-gap-pill {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 60px;
-  padding: 1px 10px;
+  min-height: 1.55em;
+  padding: 0 10px;
   border-radius: 10px;
   background: #f1f5f9;
   border: 1.5px dashed #94a3b8;
   font-weight: 500;
   font-size: 0.9rem;
+  line-height: 1.25;
   color: #64748b;
-  vertical-align: middle;
+  vertical-align: baseline;
   margin: 0 2px;
   text-align: center;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
@@ -5019,6 +5023,18 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     border-radius: 50% !important;
   }
 
+  .cu-ex-pdot.cu-ex-pdot-label {
+    aspect-ratio: auto;
+    width: auto !important;
+    height: auto !important;
+    min-width: 64px !important;
+    min-height: 32px !important;
+    padding: 5px 14px !important;
+    border-radius: 999px !important;
+    font-size: 0.78rem !important;
+    line-height: 1.15;
+  }
+
   .cu-section-nav {
     grid-template-columns: auto 1fr auto;
     gap: 8px;
@@ -5338,23 +5354,37 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     line-height: 1.35;
   }
 
-  /* Slash-separated hints: full-width input row; hint badge sits on the line above (outside the pill). */
+  /* Slash-separated hints: keep hint and field inline until the row genuinely runs out of room. */
   .cu-hint-pill-slash-wrap {
-    display: flex !important;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
+    display: inline-flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    width: auto;
     max-width: 100%;
     box-sizing: border-box;
-    gap: 4px 8px;
+    gap: 2px 6px;
+    vertical-align: baseline;
+  }
+
+  .cu-hint-slash-hint-line {
+    display: inline-flex !important;
+    width: auto !important;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .cu-hint-pill-slash-wrap > .cu-hint-slash-field {
+    align-self: auto !important;
+    width: auto !important;
   }
 
   .cu-hint-slash-field {
-    display: flex !important;
+    display: inline-flex !important;
     flex-wrap: wrap;
-    align-items: flex-end;
-    align-content: flex-start;
-    width: 100%;
+    align-items: baseline;
+    align-content: center;
+    width: auto;
     max-width: 100%;
     box-sizing: border-box;
   }
@@ -5367,11 +5397,11 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 
   .cu-hint-slash-field textarea.cu-hint-pill-input,
   .cu-hint-slash-field input.cu-hint-pill-input {
-    order: 2 !important;
-    flex: 1 1 100%;
-    width: 100% !important;
+    order: 0 !important;
+    flex: 0 1 auto;
+    width: auto !important;
     max-width: 100% !important;
-    min-width: 0 !important;
+    min-width: 5ch !important;
   }
 
   .cu-hint-pill-mid {
@@ -5382,11 +5412,11 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 
   /* Slash hints: contenteditable block field below hint row (same as textarea ordering) */
   .cu-hint-slash-field span.cu-inline-gap-wrap.cu-gap-inline-editable.cu-inline-gap-wrap--block {
-    order: 2 !important;
-    flex: 1 1 100% !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
+    order: 0 !important;
+    flex: 0 1 auto !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 5ch !important;
   }
 
   /* Non-slash hint pills: no flex row — field + hint flow like normal inline text (ex. B, passage-input F) */
