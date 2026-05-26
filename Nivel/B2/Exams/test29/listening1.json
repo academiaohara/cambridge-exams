@@ -1,0 +1,308 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a florist.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello Mr Jackson, this is Sunflower Florists about the bouquet you ordered for your sister’s graduation tomorrow. I’m sorry, but our delivery of red roses has been delayed. ||Woman: [1]We can make a bouquet of yellow sunflowers and white lilies for the same price, but we need your agreement before preparing it[/1]. Please call before five so we can deliver it in the morning.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello Mr Jackson, this is Sunflower Florists about the bouquet you ordered for your sister’s graduation tomorrow. I’m sorry, but our delivery of red roses has been delayed."
+        },
+        {
+          "speaker": "woman",
+          "text": "We can make a bouquet of yellow sunflowers and white lilies for the same price, but we need your agreement before preparing it. Please call before five so we can deliver it in the morning."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "Why does the florist want Mr Jackson to call?",
+          "options": {
+            "A": "to choose a replacement bouquet",
+            "B": "to give a different delivery address",
+            "C": "to pay extra for roses"
+          },
+          "answer": "A",
+          "explanation": "The florist needs agreement to use sunflowers and lilies instead of delayed roses (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about an exercise class.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: What was the new exercise class at the leisure centre like? I was thinking of trying it. ||Man: The instructor was encouraging, and the music made it fun. I’d expected the exercises to be much harder. ||Woman: Sounds good. ||Man: It was, except [2]so many people had joined that there wasn’t enough room to move properly when we had to stretch our arms out[/2]. They need a larger studio.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "What was the new exercise class at the leisure centre like? I was thinking of trying it."
+        },
+        {
+          "speaker": "man",
+          "text": "The instructor was encouraging, and the music made it fun. I’d expected the exercises to be much harder."
+        },
+        {
+          "speaker": "woman",
+          "text": "Sounds good."
+        },
+        {
+          "speaker": "man",
+          "text": "It was, except so many people had joined that there wasn’t enough room to move properly when we had to stretch our arms out. They need a larger studio."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What problem did the man have with the class?",
+          "options": {
+            "A": "The music was too loud.",
+            "B": "The exercises were too demanding.",
+            "C": "There were too many participants."
+          },
+          "answer": "C",
+          "explanation": "He says the class was crowded and there was not enough space to move properly (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a railway station.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: Attention please. The lost property office, where passengers normally collect items left on trains, is being repainted this week. Its usual door beside platform one is locked. ||Guide: [3]Until Friday, anyone enquiring about lost property should go to the customer service desk in the main ticket hall instead[/3]. The desk is open from seven in the morning until eight in the evening.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Attention please. The lost property office, where passengers normally collect items left on trains, is being repainted this week. Its usual door beside platform one is locked."
+        },
+        {
+          "speaker": "guide",
+          "text": "Until Friday, anyone enquiring about lost property should go to the customer service desk in the main ticket hall instead. The desk is open from seven in the morning until eight in the evening."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "Where should passengers enquire about lost items this week?",
+          "options": {
+            "A": "beside platform one",
+            "B": "at the customer service desk",
+            "C": "on the train they travelled on"
+          },
+          "answer": "B",
+          "explanation": "Lost property enquiries have temporarily moved to the customer service desk (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a student who studied abroad.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Presenter: Matt, you recently spent a term studying in Spain. Did you go because you wanted warmer weather? ||Man: That was pleasant, and the university had a good reputation. But I’d learnt Spanish for years without using it in everyday life. [4]I chose the course mainly because I wanted the challenge of speaking the language outside lessons all the time[/4]. ||Presenter: And did that happen? ||Man: Absolutely.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Matt, you recently spent a term studying in Spain. Did you go because you wanted warmer weather?"
+        },
+        {
+          "speaker": "man",
+          "text": "That was pleasant, and the university had a good reputation. But I’d learnt Spanish for years without using it in everyday life. I chose the course mainly because I wanted the challenge of speaking the language outside lessons all the time."
+        },
+        {
+          "speaker": "presenter",
+          "text": "And did that happen?"
+        },
+        {
+          "speaker": "man",
+          "text": "Absolutely."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why did Matt choose to study in Spain?",
+          "options": {
+            "A": "to experience a warmer climate",
+            "B": "to attend a famous university",
+            "C": "to improve his language through daily use"
+          },
+          "answer": "C",
+          "explanation": "Matt mainly wanted to use Spanish in everyday situations outside class (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer speaking to a waiter in a restaurant.",
+      "voices": {
+        "customer": "en-GB-LibbyNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Customer: Could we move to another table, please? The food is lovely, but it’s difficult to talk here with the music so loud. ||Assistant: I’m sorry. There’s a free table in the back room, where it’s quieter, though it doesn’t have a view of the garden. ||Customer: [5]That’s fine. We came to catch up, so being able to hear each other matters more than the view[/5]. ||Assistant: I’ll move your drinks.",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "Could we move to another table, please? The food is lovely, but it’s difficult to talk here with the music so loud."
+        },
+        {
+          "speaker": "assistant",
+          "text": "I’m sorry. There’s a free table in the back room, where it’s quieter, though it doesn’t have a view of the garden."
+        },
+        {
+          "speaker": "customer",
+          "text": "That’s fine. We came to catch up, so being able to hear each other matters more than the view."
+        },
+        {
+          "speaker": "assistant",
+          "text": "I’ll move your drinks."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the customer want another table?",
+          "options": {
+            "A": "to sit nearer the garden",
+            "B": "to have a quieter conversation",
+            "C": "to receive quicker service"
+          },
+          "answer": "B",
+          "explanation": "The customer values being able to talk and hear clearly more than the garden view (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear two colleagues talking about a training course.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: How was yesterday’s computer training? I heard it covered spreadsheets. ||Woman: Yes. I was afraid it would be all theory, because I’ve been on courses like that before. ||Man: Was it useful, then? ||Woman: Very. [6]The trainer showed us simple shortcuts and then gave us time to practise them with files similar to the ones we use at work[/6]. I’ve already saved time this morning.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How was yesterday’s computer training? I heard it covered spreadsheets."
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes. I was afraid it would be all theory, because I’ve been on courses like that before."
+        },
+        {
+          "speaker": "man",
+          "text": "Was it useful, then?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Very. The trainer showed us simple shortcuts and then gave us time to practise them with files similar to the ones we use at work. I’ve already saved time this morning."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What did the woman appreciate about the training?",
+          "options": {
+            "A": "It related directly to her everyday work.",
+            "B": "It explained the history of spreadsheets.",
+            "C": "It allowed her to teach other employees."
+          },
+          "answer": "A",
+          "explanation": "She valued practising useful shortcuts with files similar to her work files (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two friends planning a camping weekend.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I’ve found a campsite near the forest. There are walking routes, and you can hire bicycles there too. ||Man: I was planning to walk all weekend, but the route to the waterfall is twelve kilometres each way. ||Woman: That’s quite far. ||Man: [7]Let’s rent bikes for that trip on Saturday and do the shorter paths on foot on Sunday[/7]. We’ll see more without getting exhausted.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’ve found a campsite near the forest. There are walking routes, and you can hire bicycles there too."
+        },
+        {
+          "speaker": "man",
+          "text": "I was planning to walk all weekend, but the route to the waterfall is twelve kilometres each way."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s quite far."
+        },
+        {
+          "speaker": "man",
+          "text": "Let’s rent bikes for that trip on Saturday and do the shorter paths on foot on Sunday. We’ll see more without getting exhausted."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What do the friends decide to do on Saturday?",
+          "options": {
+            "A": "cycle to a place they want to visit",
+            "B": "take a short forest walk",
+            "C": "travel to a different campsite"
+          },
+          "answer": "A",
+          "explanation": "They decide to hire bicycles for the longer route to the waterfall (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about an art competition.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: The Town Gallery is inviting young artists to enter its annual picture competition. There are categories for ages eight to twelve and thirteen to eighteen, and all types of painting and drawing are accepted. ||Woman: [8]This year, entries must be photographed and sent through the gallery’s website by 30 June; original pictures should not be taken to the gallery[/8]. Winners will be announced in July.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "The Town Gallery is inviting young artists to enter its annual picture competition. There are categories for ages eight to twelve and thirteen to eighteen, and all types of painting and drawing are accepted."
+        },
+        {
+          "speaker": "woman",
+          "text": "This year, entries must be photographed and sent through the gallery’s website by 30 June; original pictures should not be taken to the gallery. Winners will be announced in July."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "How must young artists enter the competition?",
+          "options": {
+            "A": "by sending a photograph online",
+            "B": "by visiting the gallery in June",
+            "C": "by entering only a painting"
+          },
+          "answer": "A",
+          "explanation": "Entrants must photograph their artwork and submit it through the website (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test29_part1.mp3"
+}

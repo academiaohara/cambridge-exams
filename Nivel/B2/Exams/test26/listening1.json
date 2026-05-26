@@ -1,0 +1,308 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a library assistant.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello Tom, this is the Central Library. The travel guide you reserved has arrived, and it is waiting for you at the front desk. We normally keep reserved books for seven days. ||Woman: [1]However, another reader has requested this title too, so please collect it by Saturday afternoon or it will be offered to them instead[/1]. Remember to bring your library card. Thank you.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello Tom, this is the Central Library. The travel guide you reserved has arrived, and it is waiting for you at the front desk. We normally keep reserved books for seven days."
+        },
+        {
+          "speaker": "woman",
+          "text": "However, another reader has requested this title too, so please collect it by Saturday afternoon or it will be offered to them instead. Remember to bring your library card. Thank you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does the library assistant tell Tom?",
+          "options": {
+            "A": "He must return a book by Saturday.",
+            "B": "He should collect a book before the weekend ends.",
+            "C": "He needs to reserve a different guidebook."
+          },
+          "answer": "B",
+          "explanation": "Tom is asked to collect the reserved travel guide by Saturday afternoon (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about an art course.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Did you enjoy the evening drawing course? I’ve been thinking of joining next term. ||Man: Yes, though I expected it to be more advanced. We spent the first lesson drawing simple objects. ||Woman: Was that disappointing? ||Man: Not really. [2]There were only six students, so the teacher had enough time to give each of us useful individual advice[/2]. That mattered more than the level.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you enjoy the evening drawing course? I’ve been thinking of joining next term."
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, though I expected it to be more advanced. We spent the first lesson drawing simple objects."
+        },
+        {
+          "speaker": "woman",
+          "text": "Was that disappointing?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not really. There were only six students, so the teacher had enough time to give each of us useful individual advice. That mattered more than the level."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the man value about the course?",
+          "options": {
+            "A": "the small number of students",
+            "B": "the difficult first task",
+            "C": "the variety of materials provided"
+          },
+          "answer": "A",
+          "explanation": "He appreciated that a small class meant the teacher could give individual advice (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a sports centre.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: Could swimmers please note a timetable change for this afternoon. The children's lesson will take place as usual in the teaching pool at four o’clock. ||Guide: [3]The main pool will be closed between three and five for a school competition, so adults wanting to swim lengths should come after five o’clock today[/3]. The gym and café are unaffected.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Could swimmers please note a timetable change for this afternoon. The children's lesson will take place as usual in the teaching pool at four o’clock."
+        },
+        {
+          "speaker": "guide",
+          "text": "The main pool will be closed between three and five for a school competition, so adults wanting to swim lengths should come after five o’clock today. The gym and café are unaffected."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What should adults who want to swim do?",
+          "options": {
+            "A": "use the teaching pool",
+            "B": "visit the pool later today",
+            "C": "join the school competition"
+          },
+          "answer": "B",
+          "explanation": "The main pool is closed until five, so adult swimmers are advised to come later (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a dog walker.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Presenter: Helen, you left an office job to become a professional dog walker. Was that because you wanted more exercise? ||Woman: That was a benefit, and I’ve always loved dogs. But [4]the main reason was that I needed work I could organise around collecting my own children from school each afternoon[/4]. It’s busy, but I can choose my hours much more easily now.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Helen, you left an office job to become a professional dog walker. Was that because you wanted more exercise?"
+        },
+        {
+          "speaker": "woman",
+          "text": "That was a benefit, and I’ve always loved dogs. But the main reason was that I needed work I could organise around collecting my own children from school each afternoon. It’s busy, but I can choose my hours much more easily now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why did Helen become a dog walker?",
+          "options": {
+            "A": "to choose working times that suited her family",
+            "B": "to spend more time exercising outdoors",
+            "C": "to train for a job caring for animals"
+          },
+          "answer": "A",
+          "explanation": "Helen says she needed work she could organise around collecting her children (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer at a concert ticket office.",
+      "voices": {
+        "customer": "en-GB-LibbyNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Customer: Are there any tickets left for Saturday’s jazz concert? ||Assistant: Only expensive seats for the evening show, I’m afraid. There are cheaper seats for the afternoon performance, but it starts at two. ||Customer: That’s fine. [5]I’d rather go in the afternoon and pay less, as I’m mainly interested in hearing the music, not having the best view[/5]. ||Assistant: I’ll book one for you.",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "Are there any tickets left for Saturday’s jazz concert?"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Only expensive seats for the evening show, I’m afraid. There are cheaper seats for the afternoon performance, but it starts at two."
+        },
+        {
+          "speaker": "customer",
+          "text": "That’s fine. I’d rather go in the afternoon and pay less, as I’m mainly interested in hearing the music, not having the best view."
+        },
+        {
+          "speaker": "assistant",
+          "text": "I’ll book one for you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Which ticket does the customer choose?",
+          "options": {
+            "A": "an inexpensive afternoon ticket",
+            "B": "an expensive evening ticket",
+            "C": "a ticket with the best possible view"
+          },
+          "answer": "A",
+          "explanation": "The customer chooses the cheaper afternoon performance rather than paying more (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student discussing a work placement with a friend.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Have you accepted that work placement at the newspaper office? It sounds perfect for your journalism course. ||Woman: I wanted to, but it’s across town and I couldn’t afford the train every day for six weeks. ||Man: That’s a shame. ||Woman: Actually, [6]the organiser emailed this morning to say they’ll pay my travel costs, so I’ve just written back to accept the place[/6]. ||Man: Brilliant!",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you accepted that work placement at the newspaper office? It sounds perfect for your journalism course."
+        },
+        {
+          "speaker": "woman",
+          "text": "I wanted to, but it’s across town and I couldn’t afford the train every day for six weeks."
+        },
+        {
+          "speaker": "man",
+          "text": "That’s a shame."
+        },
+        {
+          "speaker": "woman",
+          "text": "Actually, the organiser emailed this morning to say they’ll pay my travel costs, so I’ve just written back to accept the place."
+        },
+        {
+          "speaker": "man",
+          "text": "Brilliant!"
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why has the woman decided to accept the placement?",
+          "options": {
+            "A": "It will provide free transport.",
+            "B": "It has been shortened to a few days.",
+            "C": "It is closer to her home than expected."
+          },
+          "answer": "A",
+          "explanation": "She has accepted because the organiser will cover the cost of her travel (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two friends talking about a tent.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Can I borrow your tent for the music festival next weekend? The weather should be dry, and I’ve already bought a sleeping bag. ||Man: You can, but I noticed the zip on the entrance doesn’t close properly when I used it last month. ||Woman: Oh. ||Man: [7]I’ll take it to the outdoor shop tomorrow and have the zip repaired before I lend it to you[/7]. ||Woman: That would be great.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Can I borrow your tent for the music festival next weekend? The weather should be dry, and I’ve already bought a sleeping bag."
+        },
+        {
+          "speaker": "man",
+          "text": "You can, but I noticed the zip on the entrance doesn’t close properly when I used it last month."
+        },
+        {
+          "speaker": "woman",
+          "text": "Oh."
+        },
+        {
+          "speaker": "man",
+          "text": "I’ll take it to the outdoor shop tomorrow and have the zip repaired before I lend it to you."
+        },
+        {
+          "speaker": "woman",
+          "text": "That would be great."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What will the man do before lending the tent?",
+          "options": {
+            "A": "clean it after a previous trip",
+            "B": "get a part of it fixed",
+            "C": "buy a sleeping bag for the woman"
+          },
+          "answer": "B",
+          "explanation": "He says he will have the tent's zip repaired before lending it (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a farm shop.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Green Hill Farm Shop sells vegetables, fruit and bread produced in the local area. It is open every day except Monday, and home deliveries can be arranged through its website. ||Woman: [8]During June, shoppers who bring their own bag will receive ten per cent off fresh fruit and vegetables, as the farm is trying to reduce plastic packaging[/8]. Ask staff for details at the till.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Green Hill Farm Shop sells vegetables, fruit and bread produced in the local area. It is open every day except Monday, and home deliveries can be arranged through its website."
+        },
+        {
+          "speaker": "woman",
+          "text": "During June, shoppers who bring their own bag will receive ten per cent off fresh fruit and vegetables, as the farm is trying to reduce plastic packaging. Ask staff for details at the till."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What special offer does the farm shop have in June?",
+          "options": {
+            "A": "free home delivery for online customers",
+            "B": "lower prices for customers using their own bags",
+            "C": "extra bread with every fruit purchase"
+          },
+          "answer": "B",
+          "explanation": "Customers bringing their own bag receive a discount on fruit and vegetables in June (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test26_part1.mp3"
+}

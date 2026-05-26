@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a delivery company.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello, this is Rapid Parcel with a message for Ms Ward. We tried to deliver your package at ten this morning, but there was no reply. It is too large to put through the letterbox. ||Woman: [1]Rather than returning it to our depot, we have left it safely with Mr Evans at number thirty-four, and he has signed for it[/1]. Please bring identification when collecting it from him.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello, this is Rapid Parcel with a message for Ms Ward. We tried to deliver your package at ten this morning, but there was no reply. It is too large to put through the letterbox."
+        },
+        {
+          "speaker": "woman",
+          "text": "Rather than returning it to our depot, we have left it safely with Mr Evans at number thirty-four, and he has signed for it. Please bring identification when collecting it from him."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "Where can Ms Ward get her package?",
+          "options": {
+            "A": "from a neighbour",
+            "B": "from the delivery depot",
+            "C": "from her own letterbox"
+          },
+          "answer": "A",
+          "explanation": "The parcel has been left with Mr Evans at number thirty-four (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends discussing a football match.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Your team lost yesterday, didn’t they? Was the referee as bad as everyone says? ||Woman: He made one odd decision, but that wasn’t why we lost. The other team played well after half-time. ||Man: So what went wrong? ||Woman: [2]We were still half asleep at the beginning and allowed two goals in the first ten minutes. It’s hard to recover from that[/2].",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Your team lost yesterday, didn’t they? Was the referee as bad as everyone says?"
+        },
+        {
+          "speaker": "woman",
+          "text": "He made one odd decision, but that wasn’t why we lost. The other team played well after half-time."
+        },
+        {
+          "speaker": "man",
+          "text": "So what went wrong?"
+        },
+        {
+          "speaker": "woman",
+          "text": "We were still half asleep at the beginning and allowed two goals in the first ten minutes. It’s hard to recover from that."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "Why does the woman think her team lost?",
+          "options": {
+            "A": "They made a poor start.",
+            "B": "The referee treated them unfairly.",
+            "C": "Their opponents were fitter."
+          },
+          "answer": "A",
+          "explanation": "She says her team allowed two goals in the first ten minutes because they started badly (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a college open day.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: Welcome to Westford College. The talk about science courses begins at eleven in the main hall, while staff in the sports department will be available in the gym all morning. ||Guide: [3]Anyone booked for the media workshop should go to computer room four, not room fourteen as shown in your programme, because more students have signed up than expected[/3]. Signs will guide you there.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Welcome to Westford College. The talk about science courses begins at eleven in the main hall, while staff in the sports department will be available in the gym all morning."
+        },
+        {
+          "speaker": "guide",
+          "text": "Anyone booked for the media workshop should go to computer room four, not room fourteen as shown in your programme, because more students have signed up than expected. Signs will guide you there."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What has changed for students attending the media workshop?",
+          "options": {
+            "A": "the starting time",
+            "B": "the room where it is held",
+            "C": "the number of available places"
+          },
+          "answer": "B",
+          "explanation": "The media workshop has been moved from room fourteen to computer room four (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with an artist.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Presenter: Ravi, your paintings of city streets have become very popular. What do you enjoy most about producing them? ||Man: Finding interesting colours in ordinary buildings is enjoyable, and I’m delighted when someone buys a picture. But [4]I get most of my ideas from stopping to chat with the people who work in the streets I paint[/4]. Their stories make each picture meaningful to me.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Ravi, your paintings of city streets have become very popular. What do you enjoy most about producing them?"
+        },
+        {
+          "speaker": "man",
+          "text": "Finding interesting colours in ordinary buildings is enjoyable, and I’m delighted when someone buys a picture. But I get most of my ideas from stopping to chat with the people who work in the streets I paint. Their stories make each picture meaningful to me."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What particularly inspires Ravi’s paintings?",
+          "options": {
+            "A": "conversations with local people",
+            "B": "the chance to sell his work",
+            "C": "unusual modern buildings"
+          },
+          "answer": "A",
+          "explanation": "Ravi says chatting with people in the streets gives him most of his ideas (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a woman speaking to a hairdresser.",
+      "voices": {
+        "customer": "en-GB-LibbyNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Customer: I have an appointment for a haircut at half past two tomorrow, but I’ve just been invited to a job interview at the same time. ||Assistant: We could see you at nine in the morning, or on Thursday afternoon. ||Customer: [5]The interview’s important, and I’d like to look tidy for it, so I’ll come at nine tomorrow if that’s available[/5]. ||Assistant: That’s booked for you.",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "I have an appointment for a haircut at half past two tomorrow, but I’ve just been invited to a job interview at the same time."
+        },
+        {
+          "speaker": "assistant",
+          "text": "We could see you at nine in the morning, or on Thursday afternoon."
+        },
+        {
+          "speaker": "customer",
+          "text": "The interview’s important, and I’d like to look tidy for it, so I’ll come at nine tomorrow if that’s available."
+        },
+        {
+          "speaker": "assistant",
+          "text": "That’s booked for you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "When will the woman now have her haircut?",
+          "options": {
+            "A": "tomorrow morning",
+            "B": "tomorrow afternoon",
+            "C": "Thursday afternoon"
+          },
+          "answer": "A",
+          "explanation": "She chooses the nine o'clock appointment before her job interview (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to her tutor about a recorded assignment.",
+      "voices": {
+        "student": "en-GB-LibbyNeural",
+        "teacher": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Student: I’ve recorded my podcast assignment, but I’m worried it isn’t long enough. I could record the whole thing again tonight. ||Teacher: Your introduction and interview are both strong. What’s missing is a clear ending. ||Student: So I don’t need to start again? ||Teacher: No. [6]Simply add a final minute explaining what you learned from the interview, and the recording will be complete[/6].",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "I’ve recorded my podcast assignment, but I’m worried it isn’t long enough. I could record the whole thing again tonight."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Your introduction and interview are both strong. What’s missing is a clear ending."
+        },
+        {
+          "speaker": "student",
+          "text": "So I don’t need to start again?"
+        },
+        {
+          "speaker": "teacher",
+          "text": "No. Simply add a final minute explaining what you learned from the interview, and the recording will be complete."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the teacher advise the student to do?",
+          "options": {
+            "A": "record another interview",
+            "B": "add a concluding section",
+            "C": "make the introduction shorter"
+          },
+          "answer": "B",
+          "explanation": "The teacher asks her to add a final minute about what she learned (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two neighbours talking outside their homes.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Did you hear the wind last night? My recycling boxes ended up halfway down the street. ||Man: Mine too. I’ve brought my paper back, but I can’t find the lid from my green box anywhere. ||Woman: [7]There’s a lid beside my front gate that doesn’t belong to me. I’ll bring it over and you can see whether it fits yours[/7]. ||Man: Thanks, that probably solves it.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you hear the wind last night? My recycling boxes ended up halfway down the street."
+        },
+        {
+          "speaker": "man",
+          "text": "Mine too. I’ve brought my paper back, but I can’t find the lid from my green box anywhere."
+        },
+        {
+          "speaker": "woman",
+          "text": "There’s a lid beside my front gate that doesn’t belong to me. I’ll bring it over and you can see whether it fits yours."
+        },
+        {
+          "speaker": "man",
+          "text": "Thanks, that probably solves it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What does the woman offer to do?",
+          "options": {
+            "A": "lend the man a recycling box",
+            "B": "help the man look down the street",
+            "C": "bring the man an item she has found"
+          },
+          "answer": "C",
+          "explanation": "She offers to bring over a recycling-box lid that may belong to him (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a bookshop.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: The Corner Bookshop will stay open until nine this Friday to celebrate its tenth birthday. Customers can enjoy music and refreshments while browsing. Children’s stories will be read at six, but places for that session are full. ||Woman: [8]At seven thirty, travel writer Nina Kerr will talk about her new book and sign copies, and there is no charge to attend[/8]. Seats are available on arrival.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "The Corner Bookshop will stay open until nine this Friday to celebrate its tenth birthday. Customers can enjoy music and refreshments while browsing. Children’s stories will be read at six, but places for that session are full."
+        },
+        {
+          "speaker": "woman",
+          "text": "At seven thirty, travel writer Nina Kerr will talk about her new book and sign copies, and there is no charge to attend. Seats are available on arrival."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What can people do for free at the bookshop on Friday?",
+          "options": {
+            "A": "take children to a story session",
+            "B": "meet an author at an evening event",
+            "C": "receive a free copy of a travel book"
+          },
+          "answer": "B",
+          "explanation": "The presenter says Nina Kerr's talk and book signing are free to attend (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test24_part1.mp3"
+}

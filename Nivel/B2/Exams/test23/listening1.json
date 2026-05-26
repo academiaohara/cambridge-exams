@@ -1,0 +1,308 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a woman leaving a message for a neighbour.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Aaron, it’s Beth. Thanks again for agreeing to feed my cat while I’m away this weekend. Her food is in the cupboard beside the fridge, and she has plenty of water. ||Woman: [1]She usually comes in from the garden at about six, so could you please make sure the back door is open for her around then[/1]? I’ll be home late on Sunday.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Aaron, it’s Beth. Thanks again for agreeing to feed my cat while I’m away this weekend. Her food is in the cupboard beside the fridge, and she has plenty of water."
+        },
+        {
+          "speaker": "woman",
+          "text": "She usually comes in from the garden at about six, so could you please make sure the back door is open for her around then? I’ll be home late on Sunday."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does Beth ask Aaron to do?",
+          "options": {
+            "A": "buy more food for the cat",
+            "B": "let the cat into the house in the evening",
+            "C": "visit the cat on Sunday morning"
+          },
+          "answer": "B",
+          "explanation": "Beth asks Aaron to make sure the cat can come in from the garden at about six (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a cookery class.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: How was your first cookery lesson? Were you worried about making mistakes? ||Man: A bit, because I’d never cooked anything more difficult than pasta before. I thought the teacher might rush us. ||Woman: And did she? ||Man: Not at all. [2]She let us work slowly and even laughed when my bread came out in a strange shape, so the whole evening felt very relaxed[/2].",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How was your first cookery lesson? Were you worried about making mistakes?"
+        },
+        {
+          "speaker": "man",
+          "text": "A bit, because I’d never cooked anything more difficult than pasta before. I thought the teacher might rush us."
+        },
+        {
+          "speaker": "woman",
+          "text": "And did she?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not at all. She let us work slowly and even laughed when my bread came out in a strange shape, so the whole evening felt very relaxed."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What surprised the man about the cookery lesson?",
+          "options": {
+            "A": "how difficult the recipe was",
+            "B": "how informal the atmosphere was",
+            "C": "how quickly the class finished"
+          },
+          "answer": "B",
+          "explanation": "He was surprised that the teacher created a relaxed, friendly atmosphere (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a language centre.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: Students, a reminder that the language centre library will close at five today while new shelves are installed. Any books due today can be returned tomorrow without a fine. ||Guide: [3]If you need a quiet place to study this evening, classroom twelve will remain open until nine o’clock and has computers available[/3]. Please keep drinks outside the room.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Students, a reminder that the language centre library will close at five today while new shelves are installed. Any books due today can be returned tomorrow without a fine."
+        },
+        {
+          "speaker": "guide",
+          "text": "If you need a quiet place to study this evening, classroom twelve will remain open until nine o’clock and has computers available. Please keep drinks outside the room."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What is offered to students this evening?",
+          "options": {
+            "A": "extra time to return library books",
+            "B": "a place where they can work",
+            "C": "free drinks while studying"
+          },
+          "answer": "B",
+          "explanation": "Students needing somewhere to study can use classroom twelve until nine (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a young app designer.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Presenter: Adam, you designed an app that reminds people where they left things. Where did the idea come from? ||Man: My school encouraged coding, but I hadn’t thought of making an app myself. Then [4]my brother was always losing his football kit before matches, so I created a simple reminder system for him[/4]. Friends asked for it too, and the app grew from there.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Adam, you designed an app that reminds people where they left things. Where did the idea come from?"
+        },
+        {
+          "speaker": "man",
+          "text": "My school encouraged coding, but I hadn’t thought of making an app myself. Then my brother was always losing his football kit before matches, so I created a simple reminder system for him. Friends asked for it too, and the app grew from there."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What first gave Adam the idea for his app?",
+          "options": {
+            "A": "a problem experienced by his brother",
+            "B": "a project he had to complete at school",
+            "C": "a suggestion made by his friends"
+          },
+          "answer": "A",
+          "explanation": "Adam began the app to help his brother remember his football kit (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer returning headphones to a shop.",
+      "voices": {
+        "assistant": "en-GB-SoniaNeural",
+        "customer": "en-GB-RyanNeural"
+      },
+      "audio_script": "Assistant: Hello. Is there a problem with those headphones? ||Customer: Yes. They’re comfortable, and the sound is good when they work, but they keep disconnecting from my phone every few minutes. ||Assistant: Would you like a refund? ||Customer: [5]I’d prefer a different pair, perhaps another brand, because I still need headphones for travelling to work[/5]. ||Assistant: Certainly. Let me show you some alternatives.",
+      "dialogue": [
+        {
+          "speaker": "assistant",
+          "text": "Hello. Is there a problem with those headphones?"
+        },
+        {
+          "speaker": "customer",
+          "text": "Yes. They’re comfortable, and the sound is good when they work, but they keep disconnecting from my phone every few minutes."
+        },
+        {
+          "speaker": "assistant",
+          "text": "Would you like a refund?"
+        },
+        {
+          "speaker": "customer",
+          "text": "I’d prefer a different pair, perhaps another brand, because I still need headphones for travelling to work."
+        },
+        {
+          "speaker": "assistant",
+          "text": "Certainly. Let me show you some alternatives."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the customer want to do?",
+          "options": {
+            "A": "have the headphones repaired",
+            "B": "exchange them for different headphones",
+            "C": "get the money back immediately"
+          },
+          "answer": "B",
+          "explanation": "The customer would like a different pair rather than a refund (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a teacher speaking to a student about a school play.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural",
+        "student": "en-GB-RyanNeural"
+      },
+      "audio_script": "Student: I’m worried about the school play tomorrow. I know my lines, but I still feel uncomfortable on stage. ||Teacher: You were much more confident in yesterday’s rehearsal. ||Student: Only because nobody was watching. ||Teacher: [6]Try wearing your costume for the final rehearsal this afternoon; once you feel like the character, performing in front of people may seem easier[/6]. ||Student: I’ll try that.",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "I’m worried about the school play tomorrow. I know my lines, but I still feel uncomfortable on stage."
+        },
+        {
+          "speaker": "teacher",
+          "text": "You were much more confident in yesterday’s rehearsal."
+        },
+        {
+          "speaker": "student",
+          "text": "Only because nobody was watching."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Try wearing your costume for the final rehearsal this afternoon; once you feel like the character, performing in front of people may seem easier."
+        },
+        {
+          "speaker": "student",
+          "text": "I’ll try that."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the teacher suggest the student should do?",
+          "options": {
+            "A": "practise in front of an audience",
+            "B": "learn the lines again",
+            "C": "rehearse in the clothes for the play"
+          },
+          "answer": "C",
+          "explanation": "The teacher recommends wearing the costume during rehearsal to build confidence (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two friends planning a day out.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: The weather forecast’s changed again. It says heavy rain for Saturday, so our picnic by the lake may not be much fun. ||Woman: True. We could still take the train to Greenfield. There’s that new museum beside the station. ||Man: Good idea. [7]Let’s go there instead, and save the lake walk for a weekend when we won’t be carrying umbrellas all day[/7]. ||Woman: Agreed.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "The weather forecast’s changed again. It says heavy rain for Saturday, so our picnic by the lake may not be much fun."
+        },
+        {
+          "speaker": "woman",
+          "text": "True. We could still take the train to Greenfield. There’s that new museum beside the station."
+        },
+        {
+          "speaker": "man",
+          "text": "Good idea. Let’s go there instead, and save the lake walk for a weekend when we won’t be carrying umbrellas all day."
+        },
+        {
+          "speaker": "woman",
+          "text": "Agreed."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What do the friends decide to do on Saturday?",
+          "options": {
+            "A": "visit an indoor attraction",
+            "B": "go for a wet-weather walk",
+            "C": "stay at home until the weather improves"
+          },
+          "answer": "A",
+          "explanation": "Because of the rain, they decide to visit the museum instead of going to the lake (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a charity run.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: This year’s Riverside Charity Run takes place next Sunday at ten o’clock, with distances for adults and children. All money raised will support the local hospital. You may collect your number on the morning of the run. ||Woman: [8]However, everyone who wants to take part must complete the online registration form by Friday evening, as entries cannot be accepted on the day[/8].",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "This year’s Riverside Charity Run takes place next Sunday at ten o’clock, with distances for adults and children. All money raised will support the local hospital. You may collect your number on the morning of the run."
+        },
+        {
+          "speaker": "woman",
+          "text": "However, everyone who wants to take part must complete the online registration form by Friday evening, as entries cannot be accepted on the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What must runners do before the event?",
+          "options": {
+            "A": "collect their number this Friday",
+            "B": "sign up on the internet in advance",
+            "C": "raise money before registering"
+          },
+          "answer": "B",
+          "explanation": "People must register online by Friday evening because day-of-event entries are not accepted (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test23_part1.mp3"
+}

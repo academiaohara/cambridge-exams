@@ -1,0 +1,304 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a hairdresser.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello Rosa, it’s Clare from Style Hair Salon. I’m afraid Nina, who was going to cut your hair tomorrow at three, is ill. Another stylist could see you tomorrow evening, but I know you requested Nina. ||Woman: [1]If you would still prefer her, she has a free appointment next Tuesday morning, and I can move your booking to that time[/1]. Please call to tell us which option suits you.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello Rosa, it’s Clare from Style Hair Salon. I’m afraid Nina, who was going to cut your hair tomorrow at three, is ill. Another stylist could see you tomorrow evening, but I know you requested Nina."
+        },
+        {
+          "speaker": "woman",
+          "text": "If you would still prefer her, she has a free appointment next Tuesday morning, and I can move your booking to that time. Please call to tell us which option suits you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does Clare offer Rosa?",
+          "options": {
+            "A": "an appointment with her chosen stylist on another day",
+            "B": "a cheaper haircut with a trainee",
+            "C": "a home visit tomorrow afternoon"
+          },
+          "answer": "A",
+          "explanation": "Clare offers a booking with Nina next Tuesday because Nina is ill tomorrow (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a podcast.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Have you listened to that new podcast about travel? The guests tell some great stories. ||Man: Yes, the interview with the mountain guide was fascinating, and the presenter asks good questions. ||Woman: You don’t sound completely convinced. ||Man: [2]Every few minutes the conversation stops for another advertisement, and I lose interest before the story begins again[/2]. I wish they had fewer of those interruptions.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you listened to that new podcast about travel? The guests tell some great stories."
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, the interview with the mountain guide was fascinating, and the presenter asks good questions."
+        },
+        {
+          "speaker": "woman",
+          "text": "You don’t sound completely convinced."
+        },
+        {
+          "speaker": "man",
+          "text": "Every few minutes the conversation stops for another advertisement, and I lose interest before the story begins again. I wish they had fewer of those interruptions."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What does the man dislike about the podcast?",
+          "options": {
+            "A": "the presenter's interviewing style",
+            "B": "the frequent breaks for advertising",
+            "C": "the choice of people invited to speak"
+          },
+          "answer": "B",
+          "explanation": "He complains that advertisements interrupt the conversation too frequently (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement about a school bus.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: Students using the number four school bus should listen carefully. Because of roadworks outside Green Lane, the bus cannot use its normal stop there this week. It will still leave the school at the usual time. ||Guide: [3]Students who normally get off at Green Lane should stay on the bus until Park Road, which is about five minutes’ walk further on[/3]. Please tell your parents about this change.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Students using the number four school bus should listen carefully. Because of roadworks outside Green Lane, the bus cannot use its normal stop there this week. It will still leave the school at the usual time."
+        },
+        {
+          "speaker": "guide",
+          "text": "Students who normally get off at Green Lane should stay on the bus until Park Road, which is about five minutes’ walk further on. Please tell your parents about this change."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What should some students do this week?",
+          "options": {
+            "A": "catch a bus earlier than usual",
+            "B": "use a different bus number",
+            "C": "leave the bus at a different stop"
+          },
+          "answer": "C",
+          "explanation": "Students who use the Green Lane stop must get off at Park Road instead (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a beekeeper.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Presenter: Sarah, you began keeping bees two years ago. Have you enjoyed learning how to care for them? ||Woman: Very much. I’d expected the protective clothing to feel uncomfortable, but it’s fine, and collecting honey is exciting. [4]What surprised me most is that you can’t hurry bees; watching and waiting quietly has taught me to be far more patient[/4]. ||Presenter: That sounds useful.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Sarah, you began keeping bees two years ago. Have you enjoyed learning how to care for them?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Very much. I’d expected the protective clothing to feel uncomfortable, but it’s fine, and collecting honey is exciting. What surprised me most is that you can’t hurry bees; watching and waiting quietly has taught me to be far more patient."
+        },
+        {
+          "speaker": "presenter",
+          "text": "That sounds useful."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What has Sarah learned through keeping bees?",
+          "options": {
+            "A": "to remain calm and wait",
+            "B": "to make protective clothes",
+            "C": "to collect honey more quickly"
+          },
+          "answer": "A",
+          "explanation": "Sarah says caring for bees has taught her to be much more patient (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer speaking to a travel agent.",
+      "voices": {
+        "assistant": "en-GB-SoniaNeural",
+        "customer": "en-GB-RyanNeural"
+      },
+      "audio_script": "Assistant: How would you like to travel to Glasgow on Friday? The coach is twenty pounds cheaper than the train, but it gets in at seven thirty. ||Customer: My conference meal begins at seven, so that’s too late. ||Assistant: The train arrives at half past five. ||Customer: [5]I’ll take the train, then. It costs more, but I need enough time to leave my bag at the hotel before dinner[/5].",
+      "dialogue": [
+        {
+          "speaker": "assistant",
+          "text": "How would you like to travel to Glasgow on Friday? The coach is twenty pounds cheaper than the train, but it gets in at seven thirty."
+        },
+        {
+          "speaker": "customer",
+          "text": "My conference meal begins at seven, so that’s too late."
+        },
+        {
+          "speaker": "assistant",
+          "text": "The train arrives at half past five."
+        },
+        {
+          "speaker": "customer",
+          "text": "I’ll take the train, then. It costs more, but I need enough time to leave my bag at the hotel before dinner."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the customer choose the train?",
+          "options": {
+            "A": "It offers more comfortable seats.",
+            "B": "It arrives at a suitable time.",
+            "C": "It stops outside the hotel."
+          },
+          "answer": "B",
+          "explanation": "The customer needs to arrive before the conference meal and therefore chooses the earlier train (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a teacher talking to a student about a maths club.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural",
+        "student": "en-GB-RyanNeural"
+      },
+      "audio_script": "Teacher: Sam, are you still thinking about joining the maths club? ||Student: I enjoy maths, but I heard club members enter competitions. I don’t think I’m good enough for that. ||Teacher: Competitions are optional. [6]Next month, members will show younger students some puzzles, and explaining solutions clearly is exactly the skill you need to practise[/6]. ||Student: That sounds less frightening. I’ll come along.",
+      "dialogue": [
+        {
+          "speaker": "teacher",
+          "text": "Sam, are you still thinking about joining the maths club?"
+        },
+        {
+          "speaker": "student",
+          "text": "I enjoy maths, but I heard club members enter competitions. I don’t think I’m good enough for that."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Competitions are optional. Next month, members will show younger students some puzzles, and explaining solutions clearly is exactly the skill you need to practise."
+        },
+        {
+          "speaker": "student",
+          "text": "That sounds less frightening. I’ll come along."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why does the teacher think the club would help Sam?",
+          "options": {
+            "A": "It would let him practise explaining ideas.",
+            "B": "It would prepare him for an important competition.",
+            "C": "It would teach him more difficult calculations."
+          },
+          "answer": "A",
+          "explanation": "The teacher says Sam needs practice explaining solutions to younger students (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear a couple discussing painting their flat.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: I’ve bought three sample pots for the living-room walls: grey, pale green and blue. I still think the blue will look best. ||Woman: It might, but colours look different once they’re on a large wall and the daylight changes. ||Man: So which one shall we buy? ||Woman: [7]Let’s paint a small area with each colour first and decide tomorrow, after we’ve seen them in daylight and at night[/7].",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I’ve bought three sample pots for the living-room walls: grey, pale green and blue. I still think the blue will look best."
+        },
+        {
+          "speaker": "woman",
+          "text": "It might, but colours look different once they’re on a large wall and the daylight changes."
+        },
+        {
+          "speaker": "man",
+          "text": "So which one shall we buy?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Let’s paint a small area with each colour first and decide tomorrow, after we’ve seen them in daylight and at night."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What does the woman suggest doing?",
+          "options": {
+            "A": "asking a decorator for advice",
+            "B": "trying the colours before choosing one",
+            "C": "painting the living room blue immediately"
+          },
+          "answer": "B",
+          "explanation": "She wants to test all three colours on the wall before making a decision (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about outdoor exercise sessions.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: From next week, Lakeside Park will host outdoor exercise sessions on Wednesday evenings. A qualified instructor will lead activities suitable for different fitness levels, and participants should bring water and a small towel. ||Woman: [8]There is no fee for the sessions, but numbers are limited, so anyone wishing to attend must reserve a place through the council website[/8]. The sessions continue until August.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "From next week, Lakeside Park will host outdoor exercise sessions on Wednesday evenings. A qualified instructor will lead activities suitable for different fitness levels, and participants should bring water and a small towel."
+        },
+        {
+          "speaker": "woman",
+          "text": "There is no fee for the sessions, but numbers are limited, so anyone wishing to attend must reserve a place through the council website. The sessions continue until August."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What must people do to attend the park exercise sessions?",
+          "options": {
+            "A": "pay the instructor in advance",
+            "B": "bring their own equipment",
+            "C": "book a place online"
+          },
+          "answer": "C",
+          "explanation": "Although sessions are free, people must reserve a place on the council website (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test27_part1.mp3"
+}

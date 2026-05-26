@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a guitar teacher.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Alex, it’s Maria, your guitar teacher. I’m looking forward to your first lesson on Wednesday. I’ve got music books you can borrow, so don’t buy anything before we meet. ||Woman: [1]One small change: the student before you has cancelled, so could you come at five rather than six? That would let us spend longer choosing the right pieces for you[/1]. Please text me back.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Alex, it’s Maria, your guitar teacher. I’m looking forward to your first lesson on Wednesday. I’ve got music books you can borrow, so don’t buy anything before we meet."
+        },
+        {
+          "speaker": "woman",
+          "text": "One small change: the student before you has cancelled, so could you come at five rather than six? That would let us spend longer choosing the right pieces for you. Please text me back."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does Maria ask Alex to do?",
+          "options": {
+            "A": "purchase a music book",
+            "B": "come to his lesson earlier",
+            "C": "bring a different instrument"
+          },
+          "answer": "B",
+          "explanation": "Maria asks whether Alex can attend at five rather than six (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a new restaurant.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: What was that new Italian restaurant like? I might take my parents there. ||Man: The waiters were friendly, and the meal arrived quickly. My pasta tasted great too. ||Woman: So you’d recommend it? ||Man: Maybe for lunch. [2]In the evening every table was full and they were placed so close together that we could hear everyone else’s conversation[/2]. It wasn’t very relaxing.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "What was that new Italian restaurant like? I might take my parents there."
+        },
+        {
+          "speaker": "man",
+          "text": "The waiters were friendly, and the meal arrived quickly. My pasta tasted great too."
+        },
+        {
+          "speaker": "woman",
+          "text": "So you’d recommend it?"
+        },
+        {
+          "speaker": "man",
+          "text": "Maybe for lunch. In the evening every table was full and they were placed so close together that we could hear everyone else’s conversation. It wasn’t very relaxing."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the man dislike about the restaurant?",
+          "options": {
+            "A": "the service was slow",
+            "B": "the food was disappointing",
+            "C": "the dining area felt crowded"
+          },
+          "answer": "C",
+          "explanation": "He says the tables were very close together and the restaurant was not relaxing (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at an airport.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: Passengers travelling on flight ZB402 to Dublin should now proceed to gate eighteen. Boarding will begin shortly, and your flight is expected to leave on time. ||Guide: [3]Passengers who have already purchased drinks after security are reminded that these may be taken onto the aircraft, so there is no need to throw them away before boarding[/3]. Please have boarding cards ready.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Passengers travelling on flight ZB402 to Dublin should now proceed to gate eighteen. Boarding will begin shortly, and your flight is expected to leave on time."
+        },
+        {
+          "speaker": "guide",
+          "text": "Passengers who have already purchased drinks after security are reminded that these may be taken onto the aircraft, so there is no need to throw them away before boarding. Please have boarding cards ready."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What are passengers told about their drinks?",
+          "options": {
+            "A": "They may carry them onto the plane.",
+            "B": "They must purchase them at gate eighteen.",
+            "C": "They should leave them before boarding."
+          },
+          "answer": "A",
+          "explanation": "The announcement confirms passengers can take drinks bought after security onto the aircraft (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a young man who went surfing.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Presenter: Josh, you’ve just returned from a surfing holiday in Wales. Were the waves challenging? ||Man: Some were, especially on the final day, but my instructor showed me what to do. I was prepared for falling off the board many times. [4]What I hadn’t expected was how cold I’d feel after being in the water for an hour, even in a wetsuit[/4].",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Josh, you’ve just returned from a surfing holiday in Wales. Were the waves challenging?"
+        },
+        {
+          "speaker": "man",
+          "text": "Some were, especially on the final day, but my instructor showed me what to do. I was prepared for falling off the board many times. What I hadn’t expected was how cold I’d feel after being in the water for an hour, even in a wetsuit."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What difficulty did Josh not expect?",
+          "options": {
+            "A": "following the instructor’s advice",
+            "B": "staying warm in the sea",
+            "C": "dealing with large waves"
+          },
+          "answer": "B",
+          "explanation": "Josh says he did not expect to feel so cold despite wearing a wetsuit (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to an assistant in a camera shop.",
+      "voices": {
+        "assistant": "en-GB-SoniaNeural",
+        "customer": "en-GB-RyanNeural"
+      },
+      "audio_script": "Assistant: Can I help you with anything? ||Customer: I need another battery for this camera before my holiday. I’m going camping, so I won’t always be able to charge it. ||Assistant: We don’t have that battery today, but it can be here tomorrow morning. ||Customer: [5]Great. Please order one and I’ll pick it up on my way to the airport tomorrow afternoon[/5]. ||Assistant: No problem.",
+      "dialogue": [
+        {
+          "speaker": "assistant",
+          "text": "Can I help you with anything?"
+        },
+        {
+          "speaker": "customer",
+          "text": "I need another battery for this camera before my holiday. I’m going camping, so I won’t always be able to charge it."
+        },
+        {
+          "speaker": "assistant",
+          "text": "We don’t have that battery today, but it can be here tomorrow morning."
+        },
+        {
+          "speaker": "customer",
+          "text": "Great. Please order one and I’ll pick it up on my way to the airport tomorrow afternoon."
+        },
+        {
+          "speaker": "assistant",
+          "text": "No problem."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the customer decide to do?",
+          "options": {
+            "A": "buy a new camera",
+            "B": "collect a battery the following day",
+            "C": "borrow charging equipment for a holiday"
+          },
+          "answer": "B",
+          "explanation": "The customer asks the shop to order a battery and will collect it tomorrow (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear two students talking about a class project.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Have you finished the presentation slides for our history project? My laptop stopped working last night, and I’m worried we’ll have nothing to show tomorrow. ||Woman: I saved the photographs, but I couldn’t finish the slides alone. ||Man: What can we do? ||Woman: [6]Let’s make a large poster using the photographs and our notes. The teacher said the format doesn’t matter as long as we explain our research[/6].",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you finished the presentation slides for our history project? My laptop stopped working last night, and I’m worried we’ll have nothing to show tomorrow."
+        },
+        {
+          "speaker": "woman",
+          "text": "I saved the photographs, but I couldn’t finish the slides alone."
+        },
+        {
+          "speaker": "man",
+          "text": "What can we do?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Let’s make a large poster using the photographs and our notes. The teacher said the format doesn’t matter as long as we explain our research."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "How will the students present their project?",
+          "options": {
+            "A": "using a poster",
+            "B": "using the man's laptop",
+            "C": "without any photographs"
+          },
+          "answer": "A",
+          "explanation": "They decide to prepare a poster because the presentation slides cannot be completed (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear a couple planning a short holiday.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I’ve found two places for our weekend away. The hotel has breakfast included and is right in the centre. The small apartment is outside town, though it has lovely views. ||Man: I don’t mind travelling into town. [7]Since we’ll be staying for three nights, I’d rather have somewhere we can prepare our own meals instead of eating out every evening[/7]. ||Woman: Apartment it is, then.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’ve found two places for our weekend away. The hotel has breakfast included and is right in the centre. The small apartment is outside town, though it has lovely views."
+        },
+        {
+          "speaker": "man",
+          "text": "I don’t mind travelling into town. Since we’ll be staying for three nights, I’d rather have somewhere we can prepare our own meals instead of eating out every evening."
+        },
+        {
+          "speaker": "woman",
+          "text": "Apartment it is, then."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "Why does the man prefer the apartment?",
+          "options": {
+            "A": "It is closer to the town centre.",
+            "B": "It includes breakfast in the price.",
+            "C": "It has facilities for cooking."
+          },
+          "answer": "C",
+          "explanation": "He prefers accommodation where they can prepare their own meals (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a photography walk.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: If you enjoy photography, join Saturday’s guided walk through Oldtown Park. The walk starts outside the café at ten and lasts two hours. Bring any camera, including a phone, and wear comfortable shoes. ||Woman: [8]The fifteen-pound fee includes advice from professional photographer Gail Morris and a printed booklet of the best viewpoints in the park[/8]. Bookings close on Thursday.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "If you enjoy photography, join Saturday’s guided walk through Oldtown Park. The walk starts outside the café at ten and lasts two hours. Bring any camera, including a phone, and wear comfortable shoes."
+        },
+        {
+          "speaker": "woman",
+          "text": "The fifteen-pound fee includes advice from professional photographer Gail Morris and a printed booklet of the best viewpoints in the park. Bookings close on Thursday."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is included in the price of the photography walk?",
+          "options": {
+            "A": "the use of a professional camera",
+            "B": "guidance from an expert",
+            "C": "refreshments in the park café"
+          },
+          "answer": "B",
+          "explanation": "The fee includes advice from a professional photographer (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test25_part1.mp3"
+}

@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a yoga instructor.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello Mia, it’s Karen from the yoga centre about your first class tomorrow. We’re still starting at seven, and you don’t need to bring a mat because we have plenty here. ||Woman: The main studio floor is being repaired, though, so [1]please wait by the garden entrance, where I’ll meet everyone and take you to the smaller room[/1]. Wear something comfortable. Bye!",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello Mia, it’s Karen from the yoga centre about your first class tomorrow. We’re still starting at seven, and you don’t need to bring a mat because we have plenty here."
+        },
+        {
+          "speaker": "woman",
+          "text": "The main studio floor is being repaired, though, so please wait by the garden entrance, where I’ll meet everyone and take you to the smaller room. Wear something comfortable. Bye!"
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What should Mia do tomorrow?",
+          "options": {
+            "A": "bring her own exercise mat",
+            "B": "meet the class in a different place",
+            "C": "arrive before the usual time"
+          },
+          "answer": "B",
+          "explanation": "Karen asks Mia to wait by the garden entrance because the class has moved to another room (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a theatre show.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Did you enjoy the play last night? I’d heard the lead actor was excellent. ||Man: He was, and the story was much funnier than I expected. I didn’t even mind that it started late. ||Woman: So it was a good evening? ||Man: Mostly. [2]Our seats were behind a tall column, so every time the actors moved to the left of the stage, we lost sight of them[/2].",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you enjoy the play last night? I’d heard the lead actor was excellent."
+        },
+        {
+          "speaker": "man",
+          "text": "He was, and the story was much funnier than I expected. I didn’t even mind that it started late."
+        },
+        {
+          "speaker": "woman",
+          "text": "So it was a good evening?"
+        },
+        {
+          "speaker": "man",
+          "text": "Mostly. Our seats were behind a tall column, so every time the actors moved to the left of the stage, we lost sight of them."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What disappointed the man about the play?",
+          "options": {
+            "A": "It began later than advertised.",
+            "B": "He could not see all of the action.",
+            "C": "The story was not entertaining."
+          },
+          "answer": "B",
+          "explanation": "He explains that a column blocked part of his view of the stage (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at an indoor climbing centre.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: Welcome to Peak Climbing Centre. Beginners should meet their instructors beside wall three in ten minutes. Helmets and climbing shoes will be provided, so please don’t queue at the equipment desk yet. ||Guide: [3]Before your session, all bags and coats must be put into the lockers near reception, as nothing can be left beside the climbing walls[/3]. Locker keys require a one-pound coin.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Welcome to Peak Climbing Centre. Beginners should meet their instructors beside wall three in ten minutes. Helmets and climbing shoes will be provided, so please don’t queue at the equipment desk yet."
+        },
+        {
+          "speaker": "guide",
+          "text": "Before your session, all bags and coats must be put into the lockers near reception, as nothing can be left beside the climbing walls. Locker keys require a one-pound coin."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What must visitors do before climbing?",
+          "options": {
+            "A": "leave their belongings in a safe place",
+            "B": "collect special shoes from the desk",
+            "C": "meet their instructor at reception"
+          },
+          "answer": "A",
+          "explanation": "Visitors are instructed to put bags and coats into lockers before the session (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a teenager who makes short films.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Presenter: Lily, you’ve won a prize for a short film you made on your phone. Did you always want to be a filmmaker? ||Girl: Not really. I began filming because my little brother hated being photographed, but he loved acting out silly stories. [4]Seeing him laugh when we watched the clips back made me want to create more of them[/4]. Winning a prize was a lovely surprise.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Lily, you’ve won a prize for a short film you made on your phone. Did you always want to be a filmmaker?"
+        },
+        {
+          "speaker": "girl",
+          "text": "Not really. I began filming because my little brother hated being photographed, but he loved acting out silly stories. Seeing him laugh when we watched the clips back made me want to create more of them. Winning a prize was a lovely surprise."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why did Lily first start making films?",
+          "options": {
+            "A": "She wanted to enter a competition.",
+            "B": "She was encouraged by a teacher.",
+            "C": "She enjoyed entertaining a family member."
+          },
+          "answer": "C",
+          "explanation": "Lily says watching her brother laugh at their films encouraged her to make more (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer speaking to someone in a bakery.",
+      "voices": {
+        "customer": "en-GB-LibbyNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Customer: I’d like to order a birthday cake for Saturday. The chocolate one in the window looks perfect. ||Assistant: We can make one like that, but it serves about twenty people. We also have a smaller lemon cake for eight. ||Customer: There’ll be twelve of us, so I’ll take the chocolate one. [5]Could you write ‘Happy Birthday Mum’ on it, and I’ll collect it after work on Friday[/5]? ||Assistant: Of course.",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "I’d like to order a birthday cake for Saturday. The chocolate one in the window looks perfect."
+        },
+        {
+          "speaker": "assistant",
+          "text": "We can make one like that, but it serves about twenty people. We also have a smaller lemon cake for eight."
+        },
+        {
+          "speaker": "customer",
+          "text": "There’ll be twelve of us, so I’ll take the chocolate one. Could you write ‘Happy Birthday Mum’ on it, and I’ll collect it after work on Friday?"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Of course."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the customer ask the bakery to do?",
+          "options": {
+            "A": "decorate a cake with a message",
+            "B": "deliver a cake on Saturday",
+            "C": "make a smaller cake than usual"
+          },
+          "answer": "A",
+          "explanation": "The customer asks for the words 'Happy Birthday Mum' to be written on the cake (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to her teacher about a geography project.",
+      "voices": {
+        "student": "en-GB-LibbyNeural",
+        "teacher": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Student: I’ve chosen my topic for the geography project, but I’m not sure my survey questions are right. ||Teacher: Let me see. Your topic about local traffic is fine, and the questions are clear. But interviewing people outside the station may take too long. ||Student: What should I do instead? ||Teacher: [6]Use the traffic-count information on the council website first; it’ll give you reliable figures without spending hours outside[/6].",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "I’ve chosen my topic for the geography project, but I’m not sure my survey questions are right."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Let me see. Your topic about local traffic is fine, and the questions are clear. But interviewing people outside the station may take too long."
+        },
+        {
+          "speaker": "student",
+          "text": "What should I do instead?"
+        },
+        {
+          "speaker": "teacher",
+          "text": "Use the traffic-count information on the council website first; it’ll give you reliable figures without spending hours outside."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the teacher advise the student to do?",
+          "options": {
+            "A": "choose a different subject",
+            "B": "use existing information online",
+            "C": "ask more people her questions"
+          },
+          "answer": "B",
+          "explanation": "The teacher suggests using traffic-count data on the council website (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear a couple discussing their living room.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: The new sofa arrives tomorrow morning. Shall I move the bookcase tonight so there’s room for it? ||Woman: We can do that later. The delivery people will need to come through the hall first, and there are shoes and boxes everywhere. ||Man: True. ||Woman: [7]Let’s clear the hallway this evening, so they can carry the sofa in easily when they arrive[/7]. Then we’ll decide where the bookcase goes.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "The new sofa arrives tomorrow morning. Shall I move the bookcase tonight so there’s room for it?"
+        },
+        {
+          "speaker": "woman",
+          "text": "We can do that later. The delivery people will need to come through the hall first, and there are shoes and boxes everywhere."
+        },
+        {
+          "speaker": "man",
+          "text": "True."
+        },
+        {
+          "speaker": "woman",
+          "text": "Let’s clear the hallway this evening, so they can carry the sofa in easily when they arrive. Then we’ll decide where the bookcase goes."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What will the couple do first?",
+          "options": {
+            "A": "make space in the entrance area",
+            "B": "move a piece of furniture",
+            "C": "contact the delivery company"
+          },
+          "answer": "A",
+          "explanation": "They decide to clear the hallway before moving the bookcase (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a local museum.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: The Harbour Museum has reopened after repairs, with a new exhibition about fishing families. Normal admission is five pounds, and the café has also reopened. ||Woman: [8]On Saturday mornings this month, visitors who reserve on the museum website can join a tour of the old boats without paying anything extra[/8]. Spaces are limited, so do book before travelling.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "The Harbour Museum has reopened after repairs, with a new exhibition about fishing families. Normal admission is five pounds, and the café has also reopened."
+        },
+        {
+          "speaker": "woman",
+          "text": "On Saturday mornings this month, visitors who reserve on the museum website can join a tour of the old boats without paying anything extra. Spaces are limited, so do book before travelling."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is available at the museum this month?",
+          "options": {
+            "A": "free entry to the whole museum",
+            "B": "a free tour for advance bookers",
+            "C": "discounted food in the café"
+          },
+          "answer": "B",
+          "explanation": "Visitors who book online can take the boat tour without an extra charge (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test21_part1.mp3"
+}

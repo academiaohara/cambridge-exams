@@ -1,0 +1,304 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from an optician’s receptionist.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hello Mr Patel, this is Bright View Opticians. You have an eye test booked for Friday afternoon. The optician you usually see is away, but another member of staff can see you. ||Woman: [1]There has been a cancellation at eleven thirty that morning, and we wondered whether you could come then instead of at four[/1]. Please call us today to confirm. Thank you.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hello Mr Patel, this is Bright View Opticians. You have an eye test booked for Friday afternoon. The optician you usually see is away, but another member of staff can see you."
+        },
+        {
+          "speaker": "woman",
+          "text": "There has been a cancellation at eleven thirty that morning, and we wondered whether you could come then instead of at four. Please call us today to confirm. Thank you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "Why is the receptionist contacting Mr Patel?",
+          "options": {
+            "A": "to offer him an earlier appointment",
+            "B": "to cancel his eye test completely",
+            "C": "to ask him to see his usual optician"
+          },
+          "answer": "A",
+          "explanation": "She offers a cancelled appointment at eleven thirty instead of his afternoon booking (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a weekend market.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Did you buy anything at the craft market? I know you wanted some local cheese. ||Man: I tried plenty, but I didn’t take any home. There were loads of stalls selling food, though. ||Woman: So what’s in the bag? ||Man: [2]A necklace made from coloured glass. My sister’s birthday is next week, and it looked much more original than anything in the shops[/2].",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you buy anything at the craft market? I know you wanted some local cheese."
+        },
+        {
+          "speaker": "man",
+          "text": "I tried plenty, but I didn’t take any home. There were loads of stalls selling food, though."
+        },
+        {
+          "speaker": "woman",
+          "text": "So what’s in the bag?"
+        },
+        {
+          "speaker": "man",
+          "text": "A necklace made from coloured glass. My sister’s birthday is next week, and it looked much more original than anything in the shops."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the man buy at the market?",
+          "options": {
+            "A": "a food item for himself",
+            "B": "a present for someone",
+            "C": "something for his home"
+          },
+          "answer": "B",
+          "explanation": "He bought a glass necklace as a birthday present for his sister (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a railway station.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: Passengers for the 14.05 train to York, please note that the train is delayed by approximately ten minutes because of signalling problems. It will still leave from platform seven. ||Guide: [3]Passengers travelling beyond York to Malton should speak to staff at the information desk, as their connecting train will leave before this service arrives[/3]. We apologise for the inconvenience.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Passengers for the 14.05 train to York, please note that the train is delayed by approximately ten minutes because of signalling problems. It will still leave from platform seven."
+        },
+        {
+          "speaker": "guide",
+          "text": "Passengers travelling beyond York to Malton should speak to staff at the information desk, as their connecting train will leave before this service arrives. We apologise for the inconvenience."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "Which passengers should speak to station staff?",
+          "options": {
+            "A": "those travelling to York",
+            "B": "those needing a later connection",
+            "C": "those waiting on the wrong platform"
+          },
+          "answer": "B",
+          "explanation": "Passengers going beyond York may miss their connection and are told to contact staff (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a young gardener.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Presenter: Daniel, you work as a gardener in a large hotel. What’s the best part of your job? ||Man: I’m outdoors most of the day, which is nice, and I’ve learnt a lot about plants. But [4]what I really love is returning to an area after I’ve worked on it and immediately seeing how much better it looks[/4]. Guests sometimes say nice things, too, but that’s a bonus.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Daniel, you work as a gardener in a large hotel. What’s the best part of your job?"
+        },
+        {
+          "speaker": "man",
+          "text": "I’m outdoors most of the day, which is nice, and I’ve learnt a lot about plants. But what I really love is returning to an area after I’ve worked on it and immediately seeing how much better it looks. Guests sometimes say nice things, too, but that’s a bonus."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What does Daniel like most about his work?",
+          "options": {
+            "A": "receiving praise from visitors",
+            "B": "learning the names of plants",
+            "C": "seeing the results of his efforts"
+          },
+          "answer": "C",
+          "explanation": "He most enjoys seeing the improvement after he has worked on an area (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer hiring a bicycle.",
+      "voices": {
+        "assistant": "en-GB-SoniaNeural",
+        "customer": "en-GB-RyanNeural"
+      },
+      "audio_script": "Assistant: Would you like the city bike or the mountain bike for your afternoon ride? ||Customer: The city bike will be fine. I’m only following the riverside path, so I won’t need anything special. ||Assistant: A helmet is included, and locks are two pounds extra. ||Customer: [5]I’ll take a lock, please. I’m planning to stop for lunch, and I don’t want to keep the bike beside my table[/5].",
+      "dialogue": [
+        {
+          "speaker": "assistant",
+          "text": "Would you like the city bike or the mountain bike for your afternoon ride?"
+        },
+        {
+          "speaker": "customer",
+          "text": "The city bike will be fine. I’m only following the riverside path, so I won’t need anything special."
+        },
+        {
+          "speaker": "assistant",
+          "text": "A helmet is included, and locks are two pounds extra."
+        },
+        {
+          "speaker": "customer",
+          "text": "I’ll take a lock, please. I’m planning to stop for lunch, and I don’t want to keep the bike beside my table."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What extra item does the customer decide to hire?",
+          "options": {
+            "A": "a bicycle lock",
+            "B": "a safety helmet",
+            "C": "a mountain bike"
+          },
+          "answer": "A",
+          "explanation": "The customer asks for a lock because he plans to leave the bicycle while having lunch (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear two students discussing a revision group.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Are you joining the science revision group after class today? I’m not sure it’s worth it if everyone just reads their notes quietly. ||Woman: That’s not what happened last week. We worked in pairs and asked each other questions. ||Man: Did that help? ||Woman: Yes. [6]Explaining an answer to somebody else showed me exactly which parts I hadn’t understood properly myself[/6]. You should come this time.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Are you joining the science revision group after class today? I’m not sure it’s worth it if everyone just reads their notes quietly."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s not what happened last week. We worked in pairs and asked each other questions."
+        },
+        {
+          "speaker": "man",
+          "text": "Did that help?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes. Explaining an answer to somebody else showed me exactly which parts I hadn’t understood properly myself. You should come this time."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why does the woman recommend the revision group?",
+          "options": {
+            "A": "It helps her identify gaps in her knowledge.",
+            "B": "It provides new study materials.",
+            "C": "It gives students a quiet place to work."
+          },
+          "answer": "A",
+          "explanation": "She says explaining answers helped her recognise what she did not fully understand (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two colleagues talking about a meeting.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Have you booked the large meeting room for the client visit tomorrow? ||Woman: I tried, but another team has it all morning. The smaller room isn’t big enough for everyone. ||Man: Could we move the meeting to Thursday? ||Woman: The client’s only in town tomorrow. [7]I’ve arranged for our colleagues in Manchester to join online instead, so the smaller room will be fine[/7]. ||Man: Good solution.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you booked the large meeting room for the client visit tomorrow?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I tried, but another team has it all morning. The smaller room isn’t big enough for everyone."
+        },
+        {
+          "speaker": "man",
+          "text": "Could we move the meeting to Thursday?"
+        },
+        {
+          "speaker": "woman",
+          "text": "The client’s only in town tomorrow. I’ve arranged for our colleagues in Manchester to join online instead, so the smaller room will be fine."
+        },
+        {
+          "speaker": "man",
+          "text": "Good solution."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "How has the woman solved the problem?",
+          "options": {
+            "A": "She has changed the day of the meeting.",
+            "B": "She has reduced the number attending in person.",
+            "C": "She has found a larger meeting room."
+          },
+          "answer": "B",
+          "explanation": "Colleagues from Manchester will join online, reducing the number in the small room (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a community cinema.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: The Park Community Cinema shows classic films every Thursday evening and is looking for people to help welcome visitors and sell programmes. Volunteers will work from six until nine, with training given before their first evening. ||Woman: [8]In return for helping at two screenings each month, volunteers can choose one film ticket free of charge[/8]. Application forms are available at the cinema entrance.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "The Park Community Cinema shows classic films every Thursday evening and is looking for people to help welcome visitors and sell programmes. Volunteers will work from six until nine, with training given before their first evening."
+        },
+        {
+          "speaker": "woman",
+          "text": "In return for helping at two screenings each month, volunteers can choose one film ticket free of charge. Application forms are available at the cinema entrance."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What benefit is offered to cinema volunteers?",
+          "options": {
+            "A": "payment for each evening worked",
+            "B": "free training in film production",
+            "C": "a free ticket after regular help"
+          },
+          "answer": "C",
+          "explanation": "Volunteers who help at two screenings a month can receive a free film ticket (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test22_part1.mp3"
+}

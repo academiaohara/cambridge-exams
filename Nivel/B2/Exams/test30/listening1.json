@@ -1,0 +1,295 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a driving instructor.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Leo, it’s Anna, your driving instructor. The weather report says there will be heavy snow tomorrow morning, so it won’t be safe for your lesson. I’m sorry about the late notice. ||Woman: [1]I can offer you the same time next Tuesday, or an evening lesson on Thursday if you would rather not wait so long[/1]. Please text me with the option you prefer.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Leo, it’s Anna, your driving instructor. The weather report says there will be heavy snow tomorrow morning, so it won’t be safe for your lesson. I’m sorry about the late notice."
+        },
+        {
+          "speaker": "woman",
+          "text": "I can offer you the same time next Tuesday, or an evening lesson on Thursday if you would rather not wait so long. Please text me with the option you prefer."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "Why is Anna calling Leo?",
+          "options": {
+            "A": "to ask him to practise in snow",
+            "B": "to arrange a replacement lesson",
+            "C": "to remind him about a lesson this evening"
+          },
+          "answer": "B",
+          "explanation": "Because tomorrow's lesson is unsafe, Anna offers alternative times for a replacement (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a holiday.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Did you enjoy your trip to the coast? Your hotel looked impressive online. ||Man: It was comfortable, and the staff were friendly, but our room faced the car park rather than the sea. ||Woman: That’s disappointing. What was the best part? ||Man: [2]The guided boat trip around the caves was wonderful; the guide knew where seals usually appeared, and we saw several[/2]. I’d do that again tomorrow.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you enjoy your trip to the coast? Your hotel looked impressive online."
+        },
+        {
+          "speaker": "man",
+          "text": "It was comfortable, and the staff were friendly, but our room faced the car park rather than the sea."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s disappointing. What was the best part?"
+        },
+        {
+          "speaker": "man",
+          "text": "The guided boat trip around the caves was wonderful; the guide knew where seals usually appeared, and we saw several. I’d do that again tomorrow."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the man particularly enjoy on holiday?",
+          "options": {
+            "A": "the view from his room",
+            "B": "the service at his hotel",
+            "C": "an organised trip on the water"
+          },
+          "answer": "C",
+          "explanation": "He especially enjoyed the guided boat trip and seeing seals (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a theatre.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: Ladies and gentlemen, tonight’s performance will begin fifteen minutes later than planned because one of the actors has been delayed on a train. We apologise for this inconvenience. ||Guide: [3]The theatre doors are now open, so please take your seats as usual; the café will remain open during the delay for anyone wishing to buy a drink[/3]. Programmes are available inside the auditorium.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Ladies and gentlemen, tonight’s performance will begin fifteen minutes later than planned because one of the actors has been delayed on a train. We apologise for this inconvenience."
+        },
+        {
+          "speaker": "guide",
+          "text": "The theatre doors are now open, so please take your seats as usual; the café will remain open during the delay for anyone wishing to buy a drink. Programmes are available inside the auditorium."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What are theatre customers told to do now?",
+          "options": {
+            "A": "return for a different performance",
+            "B": "go inside despite the delay",
+            "C": "wait outside until the actor arrives"
+          },
+          "answer": "B",
+          "explanation": "Although the performance is delayed, customers are told the doors are open and they should take their seats (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a woman who makes cakes.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Presenter: Priya, when did you realise you could sell the cakes you made at home? ||Woman: I started by making birthday cakes for relatives, simply because I enjoyed decorating them. Then I posted a photograph of one online. [4]A woman I didn’t know contacted me asking whether I could make something similar for her wedding, and that was when I realised there might be a business[/4]. ||Presenter: What an exciting start.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Priya, when did you realise you could sell the cakes you made at home?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I started by making birthday cakes for relatives, simply because I enjoyed decorating them. Then I posted a photograph of one online. A woman I didn’t know contacted me asking whether I could make something similar for her wedding, and that was when I realised there might be a business."
+        },
+        {
+          "speaker": "presenter",
+          "text": "What an exciting start."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What encouraged Priya to start her business?",
+          "options": {
+            "A": "a request from someone online",
+            "B": "an invitation from a family member",
+            "C": "advice from another cake maker"
+          },
+          "answer": "A",
+          "explanation": "A stranger who saw Priya's photo online asked her to make a wedding cake (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer speaking to an assistant in a computer shop.",
+      "voices": {
+        "assistant": "en-GB-SoniaNeural",
+        "customer": "en-GB-RyanNeural"
+      },
+      "audio_script": "Assistant: Are you looking for a keyboard for gaming or general office work? ||Customer: Office work. This one feels comfortable, but the keys make quite a loud sound when I type. ||Assistant: This other model is designed to be much quieter, although it costs ten pounds more. ||Customer: [5]I share an office with three people, so the quieter one is worth paying extra for[/5]. I’ll take it.",
+      "dialogue": [
+        {
+          "speaker": "assistant",
+          "text": "Are you looking for a keyboard for gaming or general office work?"
+        },
+        {
+          "speaker": "customer",
+          "text": "Office work. This one feels comfortable, but the keys make quite a loud sound when I type."
+        },
+        {
+          "speaker": "assistant",
+          "text": "This other model is designed to be much quieter, although it costs ten pounds more."
+        },
+        {
+          "speaker": "customer",
+          "text": "I share an office with three people, so the quieter one is worth paying extra for. I’ll take it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Why does the customer choose the more expensive keyboard?",
+          "options": {
+            "A": "It is easier to carry.",
+            "B": "It makes less noise.",
+            "C": "It has extra gaming features."
+          },
+          "answer": "B",
+          "explanation": "The customer works with other people and selects the quieter keyboard (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a teacher talking to students before a biology field trip.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: Before tomorrow’s biology trip to the river, please remember to wear old shoes because the ground may be muddy. Lunch will be provided at the outdoor centre, so you do not need to bring food. ||Guide: [6]You should bring a notebook in a waterproof cover, as you’ll be recording information beside the water even if there is light rain[/6]. Coaches leave at eight fifteen.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Before tomorrow’s biology trip to the river, please remember to wear old shoes because the ground may be muddy. Lunch will be provided at the outdoor centre, so you do not need to bring food."
+        },
+        {
+          "speaker": "guide",
+          "text": "You should bring a notebook in a waterproof cover, as you’ll be recording information beside the water even if there is light rain. Coaches leave at eight fifteen."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What must students bring for the field trip?",
+          "options": {
+            "A": "food for lunch",
+            "B": "shoes suitable for indoor work",
+            "C": "something to write in that will stay dry"
+          },
+          "answer": "C",
+          "explanation": "Students are told to bring a notebook protected from rain and water (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two people planning a surprise party.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I’ve booked the restaurant for Mum’s surprise party on Saturday, but we need to get her out of the house while everyone arrives. ||Man: I could tell her I need help choosing a birthday present in town. ||Woman: She might become suspicious. [7]She’s been asking to visit that new garden centre, so invite her there for coffee and keep her busy until I send you a message[/7]. ||Man: Perfect.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’ve booked the restaurant for Mum’s surprise party on Saturday, but we need to get her out of the house while everyone arrives."
+        },
+        {
+          "speaker": "man",
+          "text": "I could tell her I need help choosing a birthday present in town."
+        },
+        {
+          "speaker": "woman",
+          "text": "She might become suspicious. She’s been asking to visit that new garden centre, so invite her there for coffee and keep her busy until I send you a message."
+        },
+        {
+          "speaker": "man",
+          "text": "Perfect."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What does the woman want the man to do?",
+          "options": {
+            "A": "buy their mother a birthday present",
+            "B": "keep their mother away from home for a while",
+            "C": "send invitations for the party"
+          },
+          "answer": "B",
+          "explanation": "He should take their mother to the garden centre so preparations can take place secretly (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a town market.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Oakfield Market is holding its summer food weekend on Saturday and Sunday, with local farmers selling cheese, bread and fruit. There will also be cooking demonstrations in the central square. ||Woman: [8]Visitors who buy a five-pound tasting ticket at the entrance can sample six different local products at stalls marked with a yellow flag[/8]. Children under five enter the market free as usual.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Oakfield Market is holding its summer food weekend on Saturday and Sunday, with local farmers selling cheese, bread and fruit. There will also be cooking demonstrations in the central square."
+        },
+        {
+          "speaker": "woman",
+          "text": "Visitors who buy a five-pound tasting ticket at the entrance can sample six different local products at stalls marked with a yellow flag. Children under five enter the market free as usual."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What does a tasting ticket allow visitors to do?",
+          "options": {
+            "A": "watch cooking demonstrations from reserved seats",
+            "B": "take six products home without further payment",
+            "C": "try food at a number of market stalls"
+          },
+          "answer": "C",
+          "explanation": "A tasting ticket permits visitors to sample six local products from selected stalls (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test30_part1.mp3"
+}

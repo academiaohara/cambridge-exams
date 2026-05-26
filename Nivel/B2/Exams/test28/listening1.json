@@ -1,0 +1,308 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the best answer (A, B or C).",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a delivery driver leaving a message.",
+      "voices": {
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: Hello, this is City Courier calling about the bicycle helmet you ordered. It’s too large for your building’s letterbox, and no one was at home when I called this morning. ||Man: [1]I’ve taken it to the collection point beside the supermarket, where it will be held for three days. Please show the code in the text message we have sent you[/1]. Thank you.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Hello, this is City Courier calling about the bicycle helmet you ordered. It’s too large for your building’s letterbox, and no one was at home when I called this morning."
+        },
+        {
+          "speaker": "man",
+          "text": "I’ve taken it to the collection point beside the supermarket, where it will be held for three days. Please show the code in the text message we have sent you. Thank you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What must the customer do to receive the parcel?",
+          "options": {
+            "A": "arrange another home delivery",
+            "B": "collect it from a nearby location",
+            "C": "ask a neighbour for a code"
+          },
+          "answer": "B",
+          "explanation": "The parcel is waiting at a collection point beside the supermarket (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about an escape room game.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: How did your team get on in that escape room yesterday? Were the puzzles really hard? ||Man: Some were clever, but once we understood them, they were enjoyable. ||Woman: So why didn’t you finish in time? ||Man: [2]At the beginning, the explanation of the rules was so unclear that we wasted ages trying things we weren’t actually allowed to do[/2]. After that, we were always behind.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How did your team get on in that escape room yesterday? Were the puzzles really hard?"
+        },
+        {
+          "speaker": "man",
+          "text": "Some were clever, but once we understood them, they were enjoyable."
+        },
+        {
+          "speaker": "woman",
+          "text": "So why didn’t you finish in time?"
+        },
+        {
+          "speaker": "man",
+          "text": "At the beginning, the explanation of the rules was so unclear that we wasted ages trying things we weren’t actually allowed to do. After that, we were always behind."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "Why did the man's team fail to finish the game?",
+          "options": {
+            "A": "They did not understand the instructions at first.",
+            "B": "They found every puzzle too difficult.",
+            "C": "They arrived late for their session."
+          },
+          "answer": "A",
+          "explanation": "He says unclear rules caused them to waste time at the start (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at an aquarium.",
+      "voices": {
+        "guide": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guide: Visitors are reminded that the penguin feeding session starts at two in the outdoor pool, and tickets for the talk about sharks are available from the information desk. ||Guide: [3]Unfortunately, our main café is closed today because of a water problem, but sandwiches and drinks can be bought from the small kiosk beside the entrance[/3]. We apologise for any inconvenience.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Visitors are reminded that the penguin feeding session starts at two in the outdoor pool, and tickets for the talk about sharks are available from the information desk."
+        },
+        {
+          "speaker": "guide",
+          "text": "Unfortunately, our main café is closed today because of a water problem, but sandwiches and drinks can be bought from the small kiosk beside the entrance. We apologise for any inconvenience."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What are visitors told about food and drink today?",
+          "options": {
+            "A": "They should bring their own lunch.",
+            "B": "They can buy refreshments somewhere else in the building.",
+            "C": "They may eat inside the shark exhibition."
+          },
+          "answer": "B",
+          "explanation": "Although the main café is closed, a kiosk by the entrance is selling refreshments (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a teenager who volunteers at an animal shelter.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Presenter: Chloe, you help at an animal shelter every Saturday. What have you gained from the experience? ||Girl: I enjoy meeting the dogs, obviously, and I’ve made friends with other volunteers. But [4]being responsible for feeding animals at exactly the right time has made me much better at planning my day and remembering important tasks[/4]. My parents have noticed the difference too.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Chloe, you help at an animal shelter every Saturday. What have you gained from the experience?"
+        },
+        {
+          "speaker": "girl",
+          "text": "I enjoy meeting the dogs, obviously, and I’ve made friends with other volunteers. But being responsible for feeding animals at exactly the right time has made me much better at planning my day and remembering important tasks. My parents have noticed the difference too."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What has Chloe learned from volunteering?",
+          "options": {
+            "A": "how to make new friends quickly",
+            "B": "how to train difficult dogs",
+            "C": "how to organise herself better"
+          },
+          "answer": "C",
+          "explanation": "Caring for animals on time has improved Chloe's planning and responsibility (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer speaking to an assistant in a shoe shop.",
+      "voices": {
+        "customer": "en-GB-LibbyNeural",
+        "assistant": "en-GB-RyanNeural"
+      },
+      "audio_script": "Customer: I bought these walking boots yesterday, but after trying them on again at home, I realised they’re too tight around the toes. I like the style, though. ||Assistant: We have the next size up in the same colour. Would you like to try those, or receive a refund? ||Customer: [5]I’ll try the larger pair first, because they’d be perfect for my trip if they fit comfortably[/5]. ||Assistant: Certainly.",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "I bought these walking boots yesterday, but after trying them on again at home, I realised they’re too tight around the toes. I like the style, though."
+        },
+        {
+          "speaker": "assistant",
+          "text": "We have the next size up in the same colour. Would you like to try those, or receive a refund?"
+        },
+        {
+          "speaker": "customer",
+          "text": "I’ll try the larger pair first, because they’d be perfect for my trip if they fit comfortably."
+        },
+        {
+          "speaker": "assistant",
+          "text": "Certainly."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the customer decide to do first?",
+          "options": {
+            "A": "try the boots in a different size",
+            "B": "ask for her money back",
+            "C": "choose boots in another style"
+          },
+          "answer": "A",
+          "explanation": "The customer wants to try the larger version of the same boots before requesting a refund (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student speaking to a teacher about homework.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural",
+        "student": "en-GB-RyanNeural"
+      },
+      "audio_script": "Student: Ms Price, I’m afraid I can’t hand in my essay today. My laptop stopped working last night and the final version is on it. I have the notes, but rewriting it will take time. ||Teacher: Can the computer shop recover the file? ||Student: They’ll know tomorrow. ||Teacher: [6]All right. Bring me your notes now, and you may submit the finished essay on Friday instead[/6]. ||Student: Thank you.",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "Ms Price, I’m afraid I can’t hand in my essay today. My laptop stopped working last night and the final version is on it. I have the notes, but rewriting it will take time."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Can the computer shop recover the file?"
+        },
+        {
+          "speaker": "student",
+          "text": "They’ll know tomorrow."
+        },
+        {
+          "speaker": "teacher",
+          "text": "All right. Bring me your notes now, and you may submit the finished essay on Friday instead."
+        },
+        {
+          "speaker": "student",
+          "text": "Thank you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the teacher allow the student to do?",
+          "options": {
+            "A": "write a different essay",
+            "B": "hand in the work later",
+            "C": "send the laptop to the school office"
+          },
+          "answer": "B",
+          "explanation": "The teacher permits the finished essay to be submitted on Friday (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two friends talking about concert tickets.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Have you managed to book tickets for the jazz concert? ||Woman: There are still seats in the balcony or standing places near the stage. The standing tickets are slightly cheaper. ||Man: I don’t mind standing if we’re close to the musicians. ||Woman: [7]I’d prefer the balcony. It’s a long concert, and I’d enjoy it more if we had seats, even if they’re further away[/7]. ||Man: Fine by me.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you managed to book tickets for the jazz concert?"
+        },
+        {
+          "speaker": "woman",
+          "text": "There are still seats in the balcony or standing places near the stage. The standing tickets are slightly cheaper."
+        },
+        {
+          "speaker": "man",
+          "text": "I don’t mind standing if we’re close to the musicians."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’d prefer the balcony. It’s a long concert, and I’d enjoy it more if we had seats, even if they’re further away."
+        },
+        {
+          "speaker": "man",
+          "text": "Fine by me."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "Which tickets does the woman prefer?",
+          "options": {
+            "A": "standing tickets close to the stage",
+            "B": "seats further from the stage",
+            "C": "the cheapest tickets available"
+          },
+          "answer": "B",
+          "explanation": "She chooses balcony seats because she wants to sit during the long concert (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a repair café.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: The Riverside Repair Café meets this Saturday in the community hall. Volunteers can help mend lamps, toasters, small radios and other household items. Please do not bring very large equipment. Tea and coffee will be sold during the morning. ||Woman: [8]There is no need to make an appointment: just arrive with your broken item between ten and one, and the volunteers will examine it[/8].",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "The Riverside Repair Café meets this Saturday in the community hall. Volunteers can help mend lamps, toasters, small radios and other household items. Please do not bring very large equipment. Tea and coffee will be sold during the morning."
+        },
+        {
+          "speaker": "woman",
+          "text": "There is no need to make an appointment: just arrive with your broken item between ten and one, and the volunteers will examine it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What should people do to use the repair café?",
+          "options": {
+            "A": "book an appointment online",
+            "B": "bring an item during opening hours",
+            "C": "pay before a volunteer checks the item"
+          },
+          "answer": "B",
+          "explanation": "People can simply arrive with a broken item between ten and one without booking (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test28_part1.mp3"
+}
