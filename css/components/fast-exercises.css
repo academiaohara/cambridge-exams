@@ -1354,23 +1354,26 @@
   .fe-map-container .fe-map-lesson .fe-map-points-row,
   .cu-unit-section .fe-map-lesson .fe-map-points-row {
     display: flex !important;
-    flex-wrap: nowrap !important;
+    flex-wrap: wrap !important;
     align-items: center;
-    justify-content: flex-start;
+    align-content: flex-start;
+    justify-content: flex-start !important;
     gap: 4px;
+    row-gap: 6px;
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-    scrollbar-width: thin;
+    overflow-x: visible;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: auto;
+    overscroll-behavior-x: auto;
+    scrollbar-width: auto;
     padding: 2px 0 6px;
   }
   .fe-map-outer.fe-map-single-page .fe-map-container .fe-map-lesson .fe-map-points-row {
-    justify-content: center;
-    gap: 12px;
+    justify-content: flex-start !important;
+    gap: 4px;
+    row-gap: 6px;
   }
   .fe-map-container .fe-map-lesson .fe-map-points-row .fe-map-line,
   .cu-unit-section .fe-map-lesson .fe-map-points-row .fe-map-line {
