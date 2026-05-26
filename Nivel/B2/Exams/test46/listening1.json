@@ -1,0 +1,296 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 6",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from the organiser of a running club.",
+      "voices": {
+        "coach": "en-GB-RyanNeural"
+      },
+      "audio_script": "Coach: Hi Grace, this is Dan from the Wednesday running club. The park paths are flooded after yesterday’s rain, so we can’t use our normal route this evening. ||Coach: [1]We’ll meet outside the sports centre at six and do a shorter run along the quiet streets behind it[/1]. Please wear something bright, as it may be dark before we finish.",
+      "dialogue": [
+        {
+          "speaker": "coach",
+          "text": "Hi Grace, this is Dan from the Wednesday running club. The park paths are flooded after yesterday’s rain, so we can’t use our normal route this evening."
+        },
+        {
+          "speaker": "coach",
+          "text": "We’ll meet outside the sports centre at six and do a shorter run along the quiet streets behind it. Please wear something bright, as it may be dark before we finish."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "How has this evening’s running session changed?",
+          "options": {
+            "A": "It will start later.",
+            "B": "It will take place on a different route.",
+            "C": "It will be held completely indoors."
+          },
+          "answer": "B",
+          "explanation": "The group will run on streets near the sports centre instead of in the park (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about an online photography class.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: How’s that online photography class going? I wondered whether it would be difficult to learn without a teacher in the room. ||Boy: The videos are easy to follow, and you can send questions. I’ve learned a lot. [2]What I miss is seeing other students’ pictures and talking about which ideas work best[/2]. There’s an online gallery, but it isn’t the same. ||Girl: I understand that.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "How’s that online photography class going? I wondered whether it would be difficult to learn without a teacher in the room."
+        },
+        {
+          "speaker": "boy",
+          "text": "The videos are easy to follow, and you can send questions. I’ve learned a lot. What I miss is seeing other students’ pictures and talking about which ideas work best. There’s an online gallery, but it isn’t the same."
+        },
+        {
+          "speaker": "girl",
+          "text": "I understand that."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What does the boy miss about attending a class in person?",
+          "options": {
+            "A": "receiving explanations from a teacher",
+            "B": "discussing work with classmates",
+            "C": "having access to a camera"
+          },
+          "answer": "B",
+          "explanation": "He misses looking at and discussing other students’ photographs (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement on a ferry.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Ladies and gentlemen, we will arrive at Harbour Island in approximately twenty minutes. The café is now closed, so please return all cups and trays to the shelves nearby. ||Announcer: [3]Passengers with bicycles should go down to the vehicle deck now so that they are ready to leave first when the doors open[/3]. Other passengers are asked to remain seated until we arrive.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Ladies and gentlemen, we will arrive at Harbour Island in approximately twenty minutes. The café is now closed, so please return all cups and trays to the shelves nearby."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Passengers with bicycles should go down to the vehicle deck now so that they are ready to leave first when the doors open. Other passengers are asked to remain seated until we arrive."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "Who should prepare to leave the ferry first?",
+          "options": {
+            "A": "passengers who bought food",
+            "B": "passengers travelling with bicycles",
+            "C": "passengers sitting near the doors"
+          },
+          "answer": "B",
+          "explanation": "Cyclists are asked to go to the vehicle deck ready to leave first (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a teenager who works at a bookshop.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Interviewer: Ben, what do you enjoy about your Saturday job in the bookshop? Do you like earning your own money? ||Boy: That helps, of course, and the other staff are friendly. But [4]the best part is when a customer tells me what they enjoy reading and I manage to suggest a book they really like[/4]. It makes the job feel worthwhile.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Ben, what do you enjoy about your Saturday job in the bookshop? Do you like earning your own money?"
+        },
+        {
+          "speaker": "boy",
+          "text": "That helps, of course, and the other staff are friendly. But the best part is when a customer tells me what they enjoy reading and I manage to suggest a book they really like. It makes the job feel worthwhile."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What does Ben enjoy most about his job?",
+          "options": {
+            "A": "helping customers choose books",
+            "B": "working with friendly colleagues",
+            "C": "having money to spend"
+          },
+          "answer": "A",
+          "explanation": "He particularly enjoys recommending books successfully (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a woman talking to an assistant in a furniture shop.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "assistant": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: I like this dining table, but I’m not sure it will fit in our kitchen. I measured the wall, but I forgot to check the space needed for chairs. ||Assistant: We can deliver next week, or you can take the measurements home and decide later. ||Woman: [5]I don’t want to make an expensive mistake, so I’ll measure properly tonight and come back tomorrow[/5]. ||Assistant: That’s sensible.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I like this dining table, but I’m not sure it will fit in our kitchen. I measured the wall, but I forgot to check the space needed for chairs."
+        },
+        {
+          "speaker": "assistant",
+          "text": "We can deliver next week, or you can take the measurements home and decide later."
+        },
+        {
+          "speaker": "woman",
+          "text": "I don’t want to make an expensive mistake, so I’ll measure properly tonight and come back tomorrow."
+        },
+        {
+          "speaker": "assistant",
+          "text": "That’s sensible."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the woman decide to do?",
+          "options": {
+            "A": "order the table for delivery",
+            "B": "check the available space again",
+            "C": "choose a smaller table today"
+          },
+          "answer": "B",
+          "explanation": "She plans to measure the room carefully before buying (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to a teacher about a music performance.",
+      "voices": {
+        "student": "en-GB-ThomasNeural",
+        "teacher": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Student: I’m sorry I missed the final rehearsal yesterday. I know the concert is only two days away. ||Teacher: Were you ill? ||Student: No. [6]My violin string broke just before I left home, and by the time the music shop fitted a new one, the rehearsal had finished[/6]. ||Teacher: All right. Join the shorter rehearsal with the orchestra tomorrow lunchtime, then.",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "I’m sorry I missed the final rehearsal yesterday. I know the concert is only two days away."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Were you ill?"
+        },
+        {
+          "speaker": "student",
+          "text": "No. My violin string broke just before I left home, and by the time the music shop fitted a new one, the rehearsal had finished."
+        },
+        {
+          "speaker": "teacher",
+          "text": "All right. Join the shorter rehearsal with the orchestra tomorrow lunchtime, then."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why did the student miss the rehearsal?",
+          "options": {
+            "A": "He had a problem with his instrument.",
+            "B": "He forgot the rehearsal time.",
+            "C": "He was unable to get to school."
+          },
+          "answer": "A",
+          "explanation": "A broken violin string prevented him reaching rehearsal in time (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two flatmates discussing their kitchen.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: We really need to sort out the kitchen cupboards. We’ve got packets of food that nobody ever uses. ||Man: I can check the dates on everything tonight. Some unopened food could go to the food bank rather than being thrown away. ||Woman: [7]Good idea. I’ll clear a shelf so we can put everything we’re donating in one place[/7]. ||Man: Then I can take it there on Friday.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "We really need to sort out the kitchen cupboards. We’ve got packets of food that nobody ever uses."
+        },
+        {
+          "speaker": "man",
+          "text": "I can check the dates on everything tonight. Some unopened food could go to the food bank rather than being thrown away."
+        },
+        {
+          "speaker": "woman",
+          "text": "Good idea. I’ll clear a shelf so we can put everything we’re donating in one place."
+        },
+        {
+          "speaker": "man",
+          "text": "Then I can take it there on Friday."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What will the woman do?",
+          "options": {
+            "A": "take food to the food bank",
+            "B": "make space for donated items",
+            "C": "buy replacement food"
+          },
+          "answer": "B",
+          "explanation": "She volunteers to clear a shelf for the food they will donate (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a presenter talking about a science centre.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The Discovery Science Centre is launching a new exhibition about space travel this weekend. Visitors can explore a model spacecraft and watch short films about astronauts. ||Presenter: [8]Anyone booking a family ticket online before Saturday will receive free places on the rocket-building workshop, which normally costs extra[/8]. The workshop is suitable for children aged eight and above, with an adult.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The Discovery Science Centre is launching a new exhibition about space travel this weekend. Visitors can explore a model spacecraft and watch short films about astronauts."
+        },
+        {
+          "speaker": "presenter",
+          "text": "Anyone booking a family ticket online before Saturday will receive free places on the rocket-building workshop, which normally costs extra. The workshop is suitable for children aged eight and above, with an adult."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What advantage is offered with advance family bookings?",
+          "options": {
+            "A": "Free participation in a workshop.",
+            "B": "Early entrance to the exhibition.",
+            "C": "Free food in the centre café."
+          },
+          "answer": "A",
+          "explanation": "Advance online family ticket buyers receive free workshop places (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test46_part1.mp3"
+}

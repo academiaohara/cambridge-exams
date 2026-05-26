@@ -1,0 +1,292 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 5",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a language school receptionist.",
+      "voices": {
+        "receptionist": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Receptionist: Hello Mia, this is the Central Language School. You enrolled for the conversation class starting tomorrow at seven. The teacher has emailed some reading material, but don’t worry if you haven’t seen it. ||Receptionist: [1]For the first class, all you need to bring is a photograph of a place you have visited and would like to discuss[/1]. Dictionaries and notebooks will be provided.",
+      "dialogue": [
+        {
+          "speaker": "receptionist",
+          "text": "Hello Mia, this is the Central Language School. You enrolled for the conversation class starting tomorrow at seven. The teacher has emailed some reading material, but don’t worry if you haven’t seen it."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "For the first class, all you need to bring is a photograph of a place you have visited and would like to discuss. Dictionaries and notebooks will be provided."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What should Mia bring to her first class?",
+          "options": {
+            "A": "a dictionary",
+            "B": "a picture to talk about",
+            "C": "a completed reading task"
+          },
+          "answer": "B",
+          "explanation": "She is asked to bring a photograph of a place she has visited (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a boat trip.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: How was your boat trip around the island? The photos online made it look beautiful. ||Man: It was. The guide told us lots about the birds, and the boat wasn’t crowded. [2]Unfortunately, the sea became rough on the way back, and I felt ill for most of the final hour[/2]. ||Woman: Oh dear. At least you enjoyed the beginning.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How was your boat trip around the island? The photos online made it look beautiful."
+        },
+        {
+          "speaker": "man",
+          "text": "It was. The guide told us lots about the birds, and the boat wasn’t crowded. Unfortunately, the sea became rough on the way back, and I felt ill for most of the final hour."
+        },
+        {
+          "speaker": "woman",
+          "text": "Oh dear. At least you enjoyed the beginning."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What problem did the man have on the boat trip?",
+          "options": {
+            "A": "He could not hear the guide.",
+            "B": "He felt unwell.",
+            "C": "There were too many passengers."
+          },
+          "answer": "B",
+          "explanation": "He says the rough sea made him feel ill (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a railway station.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: This is an announcement for passengers waiting for the 12.05 service to York. Because of a problem with the train doors, this service has been cancelled. ||Announcer: [3]Tickets for York will be accepted on the 12.35 train from platform six, which is expected to have enough seats for all passengers[/3]. Anyone needing assistance should speak to station staff near the information board.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "This is an announcement for passengers waiting for the 12.05 service to York. Because of a problem with the train doors, this service has been cancelled."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Tickets for York will be accepted on the 12.35 train from platform six, which is expected to have enough seats for all passengers. Anyone needing assistance should speak to station staff near the information board."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What should passengers travelling to York do?",
+          "options": {
+            "A": "travel on a later train",
+            "B": "ask for a full refund",
+            "C": "wait for the train on the same platform"
+          },
+          "answer": "A",
+          "explanation": "Their tickets are valid for the later train at 12.35 (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a woman who has started a podcast.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Interviewer: Jess, your podcast about local history is becoming popular. Why did you begin recording it? ||Woman: I used to give talks, but only a few people could come in person. [4]I wanted the stories I had researched to reach people who lived further away or were too busy to attend talks[/4]. I didn’t imagine listeners would send so many new stories in return.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Jess, your podcast about local history is becoming popular. Why did you begin recording it?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I used to give talks, but only a few people could come in person. I wanted the stories I had researched to reach people who lived further away or were too busy to attend talks. I didn’t imagine listeners would send so many new stories in return."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why did Jess begin her podcast?",
+          "options": {
+            "A": "to share her research with more people",
+            "B": "to earn money from local businesses",
+            "C": "to find work as a radio presenter"
+          },
+          "answer": "A",
+          "explanation": "She wanted people unable to attend talks to hear her stories (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer speaking to an assistant in a camera shop.",
+      "voices": {
+        "customer": "en-GB-RyanNeural",
+        "assistant": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Customer: I’m buying a camera for my son. He wants to photograph wildlife, but he’s only just starting, so I don’t want anything too complicated. ||Assistant: This basic model is easy to use, and this one has a more powerful zoom but requires practice. ||Customer: [5]He’ll enjoy learning, and the zoom will be useful for birds, so I’ll choose the second one[/5].",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "I’m buying a camera for my son. He wants to photograph wildlife, but he’s only just starting, so I don’t want anything too complicated."
+        },
+        {
+          "speaker": "assistant",
+          "text": "This basic model is easy to use, and this one has a more powerful zoom but requires practice."
+        },
+        {
+          "speaker": "customer",
+          "text": "He’ll enjoy learning, and the zoom will be useful for birds, so I’ll choose the second one."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Which camera does the customer choose?",
+          "options": {
+            "A": "the model with a stronger zoom",
+            "B": "the easiest model to use",
+            "C": "the least expensive model"
+          },
+          "answer": "A",
+          "explanation": "The customer selects the model with the more powerful zoom (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear two students talking about a group presentation.",
+      "voices": {
+        "boy": "en-GB-ThomasNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: Are you ready for our presentation tomorrow? I’ve written my section, but I’m worried it’s too long. ||Girl: We timed the whole presentation yesterday and it was fine. We just need to make the slides easier to read. ||Boy: [6]You’re right; there’s far too much writing on mine, so I’ll replace some of it with pictures tonight[/6]. ||Girl: That’ll be much clearer.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Are you ready for our presentation tomorrow? I’ve written my section, but I’m worried it’s too long."
+        },
+        {
+          "speaker": "girl",
+          "text": "We timed the whole presentation yesterday and it was fine. We just need to make the slides easier to read."
+        },
+        {
+          "speaker": "boy",
+          "text": "You’re right; there’s far too much writing on mine, so I’ll replace some of it with pictures tonight."
+        },
+        {
+          "speaker": "girl",
+          "text": "That’ll be much clearer."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What will the boy change before the presentation?",
+          "options": {
+            "A": "the length of his spoken section",
+            "B": "the design of his slides",
+            "C": "the subject he is presenting"
+          },
+          "answer": "B",
+          "explanation": "He decides to replace some slide text with pictures (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two family members talking about a spare room.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Now that your brother has moved out, shall we turn his room into a study? We could put the desk beside the window. ||Woman: Eventually, yes. But your parents are staying next weekend, so they’ll need somewhere comfortable to sleep. ||Man: Good point. [7]Let’s leave the bed there for now and make it into a study after their visit[/7]. ||Woman: Agreed.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Now that your brother has moved out, shall we turn his room into a study? We could put the desk beside the window."
+        },
+        {
+          "speaker": "woman",
+          "text": "Eventually, yes. But your parents are staying next weekend, so they’ll need somewhere comfortable to sleep."
+        },
+        {
+          "speaker": "man",
+          "text": "Good point. Let’s leave the bed there for now and make it into a study after their visit."
+        },
+        {
+          "speaker": "woman",
+          "text": "Agreed."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What do they decide to do with the room?",
+          "options": {
+            "A": "decorate it before visitors arrive",
+            "B": "use it as a guest room for the moment",
+            "C": "move the desk into it immediately"
+          },
+          "answer": "B",
+          "explanation": "They agree to keep the bed there until after the visit (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a farmers’ market.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The monthly farmers’ market returns to Market Square this Saturday with fruit, bread, cheese and local honey for sale. Parking is available behind the town hall until four o’clock. ||Presenter: [8]At eleven, a local chef will show visitors how to prepare a quick lunch using ingredients sold by the market stalls, and watching the demonstration costs nothing[/8]. Recipes will be available afterwards.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The monthly farmers’ market returns to Market Square this Saturday with fruit, bread, cheese and local honey for sale. Parking is available behind the town hall until four o’clock."
+        },
+        {
+          "speaker": "presenter",
+          "text": "At eleven, a local chef will show visitors how to prepare a quick lunch using ingredients sold by the market stalls, and watching the demonstration costs nothing. Recipes will be available afterwards."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is being offered free at the farmers’ market?",
+          "options": {
+            "A": "a cookery demonstration",
+            "B": "parking throughout the day",
+            "C": "samples from every stall"
+          },
+          "answer": "A",
+          "explanation": "Visitors can watch the chef’s demonstration free of charge (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test45_part1.mp3"
+}

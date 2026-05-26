@@ -1,0 +1,292 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 2",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a dentist’s receptionist.",
+      "voices": {
+        "receptionist": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Receptionist: Hello Sophie, this is Hill Road Dental Practice. You’re booked to see Dr Khan at half past two on Tuesday. Unfortunately, she has to attend a training session that afternoon. ||Receptionist: [1]We can offer you the same time on Wednesday, so please call us if that suits you[/1]. There’s no need to complete another form because we already have your details.",
+      "dialogue": [
+        {
+          "speaker": "receptionist",
+          "text": "Hello Sophie, this is Hill Road Dental Practice. You’re booked to see Dr Khan at half past two on Tuesday. Unfortunately, she has to attend a training session that afternoon."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "We can offer you the same time on Wednesday, so please call us if that suits you. There’s no need to complete another form because we already have your details."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "Why is the receptionist calling Sophie?",
+          "options": {
+            "A": "to ask her to arrive early",
+            "B": "to suggest a new appointment day",
+            "C": "to request some personal details"
+          },
+          "answer": "B",
+          "explanation": "She offers Sophie the same appointment time on Wednesday (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a concert.",
+      "voices": {
+        "boy": "en-GB-ThomasNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: That concert was great, wasn’t it? The singer sounded even better live than on her recordings. ||Girl: She was excellent, and I liked the new songs. [2]I just wish we hadn’t been right beside the speakers because my ears were ringing afterwards[/2]. ||Boy: Next time we should book seats rather than standing at the front, near the centre.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "That concert was great, wasn’t it? The singer sounded even better live than on her recordings."
+        },
+        {
+          "speaker": "girl",
+          "text": "She was excellent, and I liked the new songs. I just wish we hadn’t been right beside the speakers because my ears were ringing afterwards."
+        },
+        {
+          "speaker": "boy",
+          "text": "Next time we should book seats rather than standing at the front, near the centre."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What was the girl disappointed with?",
+          "options": {
+            "A": "the unfamiliar songs",
+            "B": "the position where they watched from",
+            "C": "the singer’s performance"
+          },
+          "answer": "B",
+          "explanation": "She regrets being beside the loud speakers (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement in a public library.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Good afternoon. The children’s reading session will begin at three o’clock in the usual upstairs room. However, the lift is currently being repaired and may not be working until tomorrow. ||Announcer: [3]Parents with pushchairs should ask at the main desk, and a member of staff will take them to the room by another entrance[/3]. We apologise for any inconvenience.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Good afternoon. The children’s reading session will begin at three o’clock in the usual upstairs room. However, the lift is currently being repaired and may not be working until tomorrow."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Parents with pushchairs should ask at the main desk, and a member of staff will take them to the room by another entrance. We apologise for any inconvenience."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What are parents with pushchairs asked to do?",
+          "options": {
+            "A": "use the stairs to reach the room",
+            "B": "return for the session tomorrow",
+            "C": "speak to staff for assistance"
+          },
+          "answer": "C",
+          "explanation": "They are told to ask at the main desk for help (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a woman who runs an online clothes shop.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Interviewer: Nina, what made you start selling clothes online? Was it difficult finding fashionable clothes locally? ||Woman: Actually, the shops here are good. I started by selling clothes I no longer wore, simply to make extra space at home. Then customers began asking for more. [4]It was their messages requesting particular styles that made me realise there was a business opportunity[/4].",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Nina, what made you start selling clothes online? Was it difficult finding fashionable clothes locally?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Actually, the shops here are good. I started by selling clothes I no longer wore, simply to make extra space at home. Then customers began asking for more. It was their messages requesting particular styles that made me realise there was a business opportunity."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why did Nina develop her online shop?",
+          "options": {
+            "A": "She could not buy suitable clothes locally.",
+            "B": "Customers encouraged her to offer more products.",
+            "C": "She needed to clear space in her home."
+          },
+          "answer": "B",
+          "explanation": "Requests from customers showed her that a business could work (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a guest speaking to a hotel receptionist.",
+      "voices": {
+        "guest": "en-GB-RyanNeural",
+        "receptionist": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Guest: Excuse me, I’m staying in Room 205. I wanted to use the hotel gym this evening, but the door was locked. ||Receptionist: I’m sorry. The gym closes early on Sundays, but it opens at six tomorrow morning. The pool is open now, if you’d prefer. ||Guest: No, thanks. [5]I’ll set my alarm and use the gym before breakfast tomorrow[/5].",
+      "dialogue": [
+        {
+          "speaker": "guest",
+          "text": "Excuse me, I’m staying in Room 205. I wanted to use the hotel gym this evening, but the door was locked."
+        },
+        {
+          "speaker": "receptionist",
+          "text": "I’m sorry. The gym closes early on Sundays, but it opens at six tomorrow morning. The pool is open now, if you’d prefer."
+        },
+        {
+          "speaker": "guest",
+          "text": "No, thanks. I’ll set my alarm and use the gym before breakfast tomorrow."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the guest decide to do?",
+          "options": {
+            "A": "go swimming this evening",
+            "B": "exercise early the next day",
+            "C": "ask for a different room"
+          },
+          "answer": "B",
+          "explanation": "The guest says he will use the gym before breakfast tomorrow (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student speaking to her friend about a school science competition.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: Have you finished your science competition project yet? Mine’s due next Monday and I’m still changing things. ||Boy: I’ve done the experiment, but I’m worried about explaining it to the judges. I usually get nervous speaking in front of people. ||Girl: You could practise with us at lunchtime. ||Boy: [6]That would help much more than changing my display board again[/6]. Thanks.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Have you finished your science competition project yet? Mine’s due next Monday and I’m still changing things."
+        },
+        {
+          "speaker": "boy",
+          "text": "I’ve done the experiment, but I’m worried about explaining it to the judges. I usually get nervous speaking in front of people."
+        },
+        {
+          "speaker": "girl",
+          "text": "You could practise with us at lunchtime."
+        },
+        {
+          "speaker": "boy",
+          "text": "That would help much more than changing my display board again. Thanks."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What is the boy concerned about?",
+          "options": {
+            "A": "presenting his work",
+            "B": "finishing his experiment",
+            "C": "designing his display board"
+          },
+          "answer": "A",
+          "explanation": "He says he is nervous about explaining the experiment to judges (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two neighbours talking outside their houses.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I’m sorry about all the noise yesterday. We were putting new shelves up in the bedroom. ||Man: I didn’t hear much. Actually, I wanted to ask about your ladder. I need to clear some leaves from the gutter before it rains again. ||Woman: Of course. [7]I’ll bring the ladder round this evening when I get home from work[/7]. ||Man: That’s kind of you.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I’m sorry about all the noise yesterday. We were putting new shelves up in the bedroom."
+        },
+        {
+          "speaker": "man",
+          "text": "I didn’t hear much. Actually, I wanted to ask about your ladder. I need to clear some leaves from the gutter before it rains again."
+        },
+        {
+          "speaker": "woman",
+          "text": "Of course. I’ll bring the ladder round this evening when I get home from work."
+        },
+        {
+          "speaker": "man",
+          "text": "That’s kind of you."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What will the woman do for her neighbour?",
+          "options": {
+            "A": "help him clean the gutter",
+            "B": "lend him some equipment",
+            "C": "repair a shelf for him"
+          },
+          "answer": "B",
+          "explanation": "She agrees to bring him her ladder (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a presenter talking on local radio about a sports hall.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The newly renovated Eastfield Sports Hall reopens on Saturday, with basketball courts, dance studios and a small café. Membership forms are available on its website from today. ||Presenter: [8]During the opening weekend, local residents can attend any fitness class free of charge, although places must be reserved online[/8]. Equipment for the classes will be supplied by the centre staff.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The newly renovated Eastfield Sports Hall reopens on Saturday, with basketball courts, dance studios and a small café. Membership forms are available on its website from today."
+        },
+        {
+          "speaker": "presenter",
+          "text": "During the opening weekend, local residents can attend any fitness class free of charge, although places must be reserved online. Equipment for the classes will be supplied by the centre staff."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What can local residents do this weekend?",
+          "options": {
+            "A": "use the café without paying",
+            "B": "join free fitness classes",
+            "C": "buy cheaper sports equipment"
+          },
+          "answer": "B",
+          "explanation": "Local residents are offered free entry to fitness classes at the reopening (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test42_part1.mp3"
+}

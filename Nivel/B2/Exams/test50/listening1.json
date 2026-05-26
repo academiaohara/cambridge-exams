@@ -1,0 +1,296 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 10",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from the organiser of a school trip.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Teacher: Hi Chloe, it’s Mr Bell about tomorrow’s visit to the wildlife centre. We’re still leaving school at eight thirty, and lunch will be provided there. ||Teacher: The forecast now says there may be heavy rain in the afternoon, so [1]please bring a waterproof jacket rather than just an umbrella, as we’ll be outdoors for much of the visit[/1]. You can wear trainers as planned.",
+      "dialogue": [
+        {
+          "speaker": "teacher",
+          "text": "Hi Chloe, it’s Mr Bell about tomorrow’s visit to the wildlife centre. We’re still leaving school at eight thirty, and lunch will be provided there."
+        },
+        {
+          "speaker": "teacher",
+          "text": "The forecast now says there may be heavy rain in the afternoon, so please bring a waterproof jacket rather than just an umbrella, as we’ll be outdoors for much of the visit. You can wear trainers as planned."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does Mr Bell tell Chloe to bring?",
+          "options": {
+            "A": "suitable clothing for wet weather",
+            "B": "food for the whole day",
+            "C": "different footwear for walking"
+          },
+          "answer": "A",
+          "explanation": "He specifically asks her to bring a waterproof jacket (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a cookery workshop.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Did you enjoy the cookery workshop? You said you’d never made bread before. ||Man: I thought I’d find it difficult, but the teacher demonstrated everything slowly, and my bread came out well. [2]I was surprised that we spent so much time washing up afterwards; I expected the staff to do that[/2]. ||Woman: At least you know the full reality of cooking now.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you enjoy the cookery workshop? You said you’d never made bread before."
+        },
+        {
+          "speaker": "man",
+          "text": "I thought I’d find it difficult, but the teacher demonstrated everything slowly, and my bread came out well. I was surprised that we spent so much time washing up afterwards; I expected the staff to do that."
+        },
+        {
+          "speaker": "woman",
+          "text": "At least you know the full reality of cooking now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What surprised the man about the workshop?",
+          "options": {
+            "A": "The recipe was easy to follow.",
+            "B": "Participants had to clean up.",
+            "C": "The teacher gave too little help."
+          },
+          "answer": "B",
+          "explanation": "He did not expect to spend so long washing up (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a music festival.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Welcome to the Summer Sound Festival. The first concert begins on the main stage at one o’clock. Food stalls and water points are open across the site. ||Announcer: [3]Due to strong winds, the afternoon acoustic performances will take place in the large tent beside the entrance rather than on the garden stage[/3]. Your tickets remain valid, and signs will direct you there.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Welcome to the Summer Sound Festival. The first concert begins on the main stage at one o’clock. Food stalls and water points are open across the site."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Due to strong winds, the afternoon acoustic performances will take place in the large tent beside the entrance rather than on the garden stage. Your tickets remain valid, and signs will direct you there."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What has changed at the festival?",
+          "options": {
+            "A": "Some performances will be held somewhere else.",
+            "B": "The first concert will start later.",
+            "C": "Visitors must exchange their tickets."
+          },
+          "answer": "A",
+          "explanation": "Wind has caused the acoustic performances to be moved to a tent (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a teenager who started a community newspaper.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Interviewer: Lily, you started a newspaper for young people in your area. Did you want to become a journalist? ||Girl: Maybe one day, but that wasn’t my reason. There are lots of youth clubs and events here, yet people at school rarely heard about them. [4]I wanted one place where teenagers could find out what was happening and get involved[/4]. Now students also write reviews for it.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Lily, you started a newspaper for young people in your area. Did you want to become a journalist?"
+        },
+        {
+          "speaker": "girl",
+          "text": "Maybe one day, but that wasn’t my reason. There are lots of youth clubs and events here, yet people at school rarely heard about them. I wanted one place where teenagers could find out what was happening and get involved. Now students also write reviews for it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why did Lily start the newspaper?",
+          "options": {
+            "A": "to publicise local activities for teenagers",
+            "B": "to improve her own writing marks",
+            "C": "to earn money from advertising"
+          },
+          "answer": "A",
+          "explanation": "She wanted teenagers to learn about local clubs and events (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer speaking to an assistant at a bicycle hire centre.",
+      "voices": {
+        "customer": "en-GB-RyanNeural",
+        "assistant": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Customer: I’d like to hire a bike for this afternoon. I was thinking of cycling along the forest route, but I haven’t cycled for a while. ||Assistant: That route includes some steep hills. The riverside path is flatter and the views are excellent. ||Customer: [5]In that case, I’ll take the easier route today and try the forest ride another time[/5]. Can I have a helmet too? ||Assistant: Of course.",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "I’d like to hire a bike for this afternoon. I was thinking of cycling along the forest route, but I haven’t cycled for a while."
+        },
+        {
+          "speaker": "assistant",
+          "text": "That route includes some steep hills. The riverside path is flatter and the views are excellent."
+        },
+        {
+          "speaker": "customer",
+          "text": "In that case, I’ll take the easier route today and try the forest ride another time. Can I have a helmet too?"
+        },
+        {
+          "speaker": "assistant",
+          "text": "Of course."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Which route does the customer choose?",
+          "options": {
+            "A": "the hillier forest route",
+            "B": "the flatter riverside path",
+            "C": "a short route through town"
+          },
+          "answer": "B",
+          "explanation": "The customer chooses the easier riverside option (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to a classmate about starting university.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: How are you feeling about moving into university accommodation next month? ||Boy: I was worried because I don’t know anyone in the city, and I imagined sharing a kitchen would be difficult. But my new flatmates have already created an online group chat. [6]They’ve been friendly and organised a meal for our first evening, so I’m much more relaxed now[/6]. ||Girl: That’s a good start.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "How are you feeling about moving into university accommodation next month?"
+        },
+        {
+          "speaker": "boy",
+          "text": "I was worried because I don’t know anyone in the city, and I imagined sharing a kitchen would be difficult. But my new flatmates have already created an online group chat. They’ve been friendly and organised a meal for our first evening, so I’m much more relaxed now."
+        },
+        {
+          "speaker": "girl",
+          "text": "That’s a good start."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why is the boy feeling better about university?",
+          "options": {
+            "A": "His accommodation is cheaper than expected.",
+            "B": "He has received a friendly welcome.",
+            "C": "He will be living with an old friend."
+          },
+          "answer": "B",
+          "explanation": "His flatmates have been welcoming and planned a first-night meal (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two people planning a family celebration.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Have you booked the restaurant for Grandma’s birthday yet? There will be twelve of us altogether. ||Woman: I called the Italian place, but their largest table only seats eight. The hotel restaurant can fit us in, although it costs a little more. ||Man: It’s a special occasion. ||Woman: [7]Exactly. I’ll confirm the hotel reservation this afternoon so everyone can sit together[/7]. ||Man: Excellent.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you booked the restaurant for Grandma’s birthday yet? There will be twelve of us altogether."
+        },
+        {
+          "speaker": "woman",
+          "text": "I called the Italian place, but their largest table only seats eight. The hotel restaurant can fit us in, although it costs a little more."
+        },
+        {
+          "speaker": "man",
+          "text": "It’s a special occasion."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. I’ll confirm the hotel reservation this afternoon so everyone can sit together."
+        },
+        {
+          "speaker": "man",
+          "text": "Excellent."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What does the woman decide to do?",
+          "options": {
+            "A": "reduce the number of guests",
+            "B": "book the more expensive restaurant",
+            "C": "ask the Italian restaurant for two tables"
+          },
+          "answer": "B",
+          "explanation": "She chooses the hotel restaurant because it can seat the whole family together (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a coastal visitor centre.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The new Coastline Visitor Centre opens next Saturday, with displays about sea birds and the history of local fishing. There is a café overlooking the beach and a shop selling work by local artists. ||Presenter: [8]During the opening week, anyone who purchases an entrance ticket can borrow binoculars free of charge for use on the nearby birdwatching path[/8]. They must be returned before the centre closes.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The new Coastline Visitor Centre opens next Saturday, with displays about sea birds and the history of local fishing. There is a café overlooking the beach and a shop selling work by local artists."
+        },
+        {
+          "speaker": "presenter",
+          "text": "During the opening week, anyone who purchases an entrance ticket can borrow binoculars free of charge for use on the nearby birdwatching path. They must be returned before the centre closes."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is offered to ticket holders during the opening week?",
+          "options": {
+            "A": "free equipment to use outside",
+            "B": "a free meal in the café",
+            "C": "discounted artwork in the shop"
+          },
+          "answer": "A",
+          "explanation": "Visitors with tickets may borrow binoculars without charge (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test50_part1.mp3"
+}

@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 7",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a theatre course organiser.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Ethan, it’s Polly from the youth theatre course. Saturday’s session begins at ten, as usual, but this week we’re practising a scene that involves movement outside. ||Woman: [1]Please wear trainers rather than your smart school shoes, because we’ll be working in the courtyard if the weather stays dry[/1]. We’ll return indoors for the acting exercises after lunch.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Ethan, it’s Polly from the youth theatre course. Saturday’s session begins at ten, as usual, but this week we’re practising a scene that involves movement outside."
+        },
+        {
+          "speaker": "woman",
+          "text": "Please wear trainers rather than your smart school shoes, because we’ll be working in the courtyard if the weather stays dry. We’ll return indoors for the acting exercises after lunch."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does Polly ask Ethan to do?",
+          "options": {
+            "A": "bring suitable footwear",
+            "B": "arrive before ten o’clock",
+            "C": "learn a scene before the session"
+          },
+          "answer": "A",
+          "explanation": "She tells him to wear trainers for outdoor movement work (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about an adventure park.",
+      "voices": {
+        "boy": "en-GB-ThomasNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: Was the adventure park worth visiting? I heard the climbing area is huge. ||Girl: It is, and the staff explained all the safety equipment clearly. I thought the high ropes course would be frightening, but it was exciting. [2]The disappointing thing was that the canoeing lake was closed because of the wind[/2]. ||Boy: That’s a shame. You wanted to try that most.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Was the adventure park worth visiting? I heard the climbing area is huge."
+        },
+        {
+          "speaker": "girl",
+          "text": "It is, and the staff explained all the safety equipment clearly. I thought the high ropes course would be frightening, but it was exciting. The disappointing thing was that the canoeing lake was closed because of the wind."
+        },
+        {
+          "speaker": "boy",
+          "text": "That’s a shame. You wanted to try that most."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "Why was the girl disappointed?",
+          "options": {
+            "A": "An activity was unavailable.",
+            "B": "The equipment seemed unsafe.",
+            "C": "The climbing course was too frightening."
+          },
+          "answer": "A",
+          "explanation": "She could not go canoeing because the lake was closed (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement in a shopping centre.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Good afternoon, shoppers. A silver mobile phone has been found near the entrance to the underground car park. It is now being kept securely at the customer service desk on the ground floor. ||Announcer: [3]The owner will be asked to describe the phone case and show identification before it can be returned[/3]. The centre closes today at eight o’clock.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Good afternoon, shoppers. A silver mobile phone has been found near the entrance to the underground car park. It is now being kept securely at the customer service desk on the ground floor."
+        },
+        {
+          "speaker": "announcer",
+          "text": "The owner will be asked to describe the phone case and show identification before it can be returned. The centre closes today at eight o’clock."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What must the owner of the phone do?",
+          "options": {
+            "A": "collect it from the car park",
+            "B": "prove that the phone belongs to them",
+            "C": "return before the centre closes at six"
+          },
+          "answer": "B",
+          "explanation": "The owner must describe the case and show identification (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a woman who designs gardens.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Interviewer: Helen, you design gardens for city homes. Did you always want to work outdoors? ||Woman: I studied art first and expected to become an illustrator. Then I helped an elderly neighbour create a small garden on her balcony. [4]I realised I could use colour and shape in a way that also improved how people felt about their homes[/4]. That changed my plans completely.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Helen, you design gardens for city homes. Did you always want to work outdoors?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I studied art first and expected to become an illustrator. Then I helped an elderly neighbour create a small garden on her balcony. I realised I could use colour and shape in a way that also improved how people felt about their homes. That changed my plans completely."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why did Helen become a garden designer?",
+          "options": {
+            "A": "She wanted to avoid working indoors.",
+            "B": "She found a practical use for her artistic skills.",
+            "C": "She had difficulty finding work as an illustrator."
+          },
+          "answer": "B",
+          "explanation": "She discovered that her artistic ideas could improve people’s living spaces (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to an assistant in a sports shop.",
+      "voices": {
+        "customer": "en-GB-RyanNeural",
+        "assistant": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Customer: I need a jacket for cycling to work. This bright yellow one is visible, but it feels a bit heavy. ||Assistant: The lighter blue jacket is waterproof too, and you can wear a reflective band with it. ||Customer: [5]I’m cycling in rain more often than in the dark, so comfort matters most; I’ll take the lighter one and add the band[/5]. ||Assistant: Excellent choice.",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "I need a jacket for cycling to work. This bright yellow one is visible, but it feels a bit heavy."
+        },
+        {
+          "speaker": "assistant",
+          "text": "The lighter blue jacket is waterproof too, and you can wear a reflective band with it."
+        },
+        {
+          "speaker": "customer",
+          "text": "I’m cycling in rain more often than in the dark, so comfort matters most; I’ll take the lighter one and add the band."
+        },
+        {
+          "speaker": "assistant",
+          "text": "Excellent choice."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Which jacket does the customer buy?",
+          "options": {
+            "A": "a lighter jacket",
+            "B": "a heavier yellow jacket",
+            "C": "a non-waterproof jacket"
+          },
+          "answer": "A",
+          "explanation": "The customer decides on the lighter jacket plus a reflective band (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a teacher talking to a pupil about a school magazine article.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Teacher: Your article about school lunches is lively and interesting, Anna, but you say students want more vegetarian choices without proving it. ||Girl: I asked a few of my friends, but I didn’t write their opinions down. ||Teacher: [6]Why not prepare a short questionnaire and include the results in the article before we publish it?[/6] ||Girl: That makes sense. I can do it tomorrow.",
+      "dialogue": [
+        {
+          "speaker": "teacher",
+          "text": "Your article about school lunches is lively and interesting, Anna, but you say students want more vegetarian choices without proving it."
+        },
+        {
+          "speaker": "girl",
+          "text": "I asked a few of my friends, but I didn’t write their opinions down."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Why not prepare a short questionnaire and include the results in the article before we publish it?"
+        },
+        {
+          "speaker": "girl",
+          "text": "That makes sense. I can do it tomorrow."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the teacher suggest Anna should do?",
+          "options": {
+            "A": "change the topic of her article",
+            "B": "collect more reliable information",
+            "C": "write the article in a shorter style"
+          },
+          "answer": "B",
+          "explanation": "The teacher recommends a questionnaire to support her claim (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two friends discussing their weekend plans.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Shall we take the train to the seaside on Sunday? There’s a photography exhibition I’d like to see. ||Woman: That sounds good, but the railway website says there are engineering works, so the journey takes twice as long. ||Man: Perhaps we should go another time. ||Woman: [7]Let’s visit the new gallery in town instead; we can walk there and still have lunch afterwards[/7]. ||Man: Fine by me.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Shall we take the train to the seaside on Sunday? There’s a photography exhibition I’d like to see."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds good, but the railway website says there are engineering works, so the journey takes twice as long."
+        },
+        {
+          "speaker": "man",
+          "text": "Perhaps we should go another time."
+        },
+        {
+          "speaker": "woman",
+          "text": "Let’s visit the new gallery in town instead; we can walk there and still have lunch afterwards."
+        },
+        {
+          "speaker": "man",
+          "text": "Fine by me."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What do they decide to do on Sunday?",
+          "options": {
+            "A": "travel to the seaside by train",
+            "B": "visit somewhere nearer home",
+            "C": "stay at home for lunch"
+          },
+          "answer": "B",
+          "explanation": "They replace the seaside trip with a local gallery visit (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a recycling project.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Residents in Greenford can now take small electrical items such as kettles, lamps and hairdryers to the community centre on Wednesday afternoons. Items that work will be given to local families. ||Presenter: [8]For the first month, volunteers will also be available to repair simple faults while owners wait, at no charge[/8]. Batteries should still be recycled separately at supermarkets.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Residents in Greenford can now take small electrical items such as kettles, lamps and hairdryers to the community centre on Wednesday afternoons. Items that work will be given to local families."
+        },
+        {
+          "speaker": "presenter",
+          "text": "For the first month, volunteers will also be available to repair simple faults while owners wait, at no charge. Batteries should still be recycled separately at supermarkets."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What extra service is available during the first month?",
+          "options": {
+            "A": "Free repairs for some items.",
+            "B": "Collection of items from homes.",
+            "C": "Payment for unwanted equipment."
+          },
+          "answer": "A",
+          "explanation": "Volunteers will attempt simple repairs without charging (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test47_part1.mp3"
+}

@@ -1,0 +1,288 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 1",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a computer course organiser.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Oliver, it’s Maria from the computer course about tomorrow’s first session. The building opens at six, as planned, and the lesson begins at quarter past six. ||Woman: The main computer room is being repainted, so [1]go straight to Room 14 on the second floor instead[/1]. I’ll leave signs near reception, and you won’t need to bring your own laptop.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Oliver, it’s Maria from the computer course about tomorrow’s first session. The building opens at six, as planned, and the lesson begins at quarter past six."
+        },
+        {
+          "speaker": "woman",
+          "text": "The main computer room is being repainted, so go straight to Room 14 on the second floor instead. I’ll leave signs near reception, and you won’t need to bring your own laptop."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What should Oliver do when he arrives?",
+          "options": {
+            "A": "bring a laptop with him",
+            "B": "wait in reception for the teacher",
+            "C": "go to a different classroom"
+          },
+          "answer": "C",
+          "explanation": "He is told to go to Room 14 rather than the usual computer room (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a street food festival.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: Did you enjoy the street food festival? I thought the dishes from Japan were amazing, though I didn’t try the really spicy ones. ||Boy: I liked the food too, and the music was fun. But [2]the queues were so long that we spent most of the afternoon waiting to be served[/2]. Next year they need more food stalls. ||Girl: Yes, we hardly had time to look around the craft market.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Did you enjoy the street food festival? I thought the dishes from Japan were amazing, though I didn’t try the really spicy ones."
+        },
+        {
+          "speaker": "boy",
+          "text": "I liked the food too, and the music was fun. But the queues were so long that we spent most of the afternoon waiting to be served. Next year they need more food stalls."
+        },
+        {
+          "speaker": "girl",
+          "text": "Yes, we hardly had time to look around the craft market."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the boy dislike about the festival?",
+          "options": {
+            "A": "having to wait for food",
+            "B": "the type of music played",
+            "C": "the lack of choice of food"
+          },
+          "answer": "A",
+          "explanation": "He complains that the queues made them spend most of the afternoon waiting (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a coach station.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Attention, passengers for the 10.45 coach to Oxford. Your coach is running on time, but the ticket machine beside Bay Four is out of order. ||Announcer: If you have not already bought your ticket, [3]please use the ticket office next to the café before joining the queue[/3]. The driver cannot accept cash on board today. Thank you for your cooperation.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Attention, passengers for the 10.45 coach to Oxford. Your coach is running on time, but the ticket machine beside Bay Four is out of order."
+        },
+        {
+          "speaker": "announcer",
+          "text": "If you have not already bought your ticket, please use the ticket office next to the café before joining the queue. The driver cannot accept cash on board today. Thank you for your cooperation."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What should passengers without tickets do?",
+          "options": {
+            "A": "pay the driver when they board",
+            "B": "buy tickets from the office",
+            "C": "wait beside Bay Four"
+          },
+          "answer": "B",
+          "explanation": "The announcement directs passengers without tickets to the ticket office (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a young man who restores old bicycles.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Interviewer: Theo, you repair old bicycles in your spare time. Did you begin because new bikes were too expensive? ||Man: Not really. My grandfather had an old bike in his shed, and he showed me how to make it work again. [4]I enjoyed solving each little problem so much that I started repairing bikes for friends too[/4]. Selling one later was just a bonus.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Theo, you repair old bicycles in your spare time. Did you begin because new bikes were too expensive?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not really. My grandfather had an old bike in his shed, and he showed me how to make it work again. I enjoyed solving each little problem so much that I started repairing bikes for friends too. Selling one later was just a bonus."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "Why did Theo continue repairing bicycles?",
+          "options": {
+            "A": "He enjoyed the practical challenge.",
+            "B": "He needed money for a new bicycle.",
+            "C": "He wanted to help his grandfather."
+          },
+          "answer": "A",
+          "explanation": "Theo says he enjoyed solving the problems involved (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to an assistant in a shoe shop.",
+      "voices": {
+        "customer": "en-GB-RyanNeural",
+        "assistant": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Customer: Hello. I bought these walking shoes here on Monday, but they’re uncomfortable when I wear them outside. I’ve still got the receipt. ||Assistant: We can exchange them, although that design is no longer available in your size. These are similar, but a bit more expensive. ||Customer: That’s fine. [5]I need comfortable shoes for my holiday, so I’ll pay the extra and take those[/5].",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "Hello. I bought these walking shoes here on Monday, but they’re uncomfortable when I wear them outside. I’ve still got the receipt."
+        },
+        {
+          "speaker": "assistant",
+          "text": "We can exchange them, although that design is no longer available in your size. These are similar, but a bit more expensive."
+        },
+        {
+          "speaker": "customer",
+          "text": "That’s fine. I need comfortable shoes for my holiday, so I’ll pay the extra and take those."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the customer decide to do?",
+          "options": {
+            "A": "accept a more expensive pair",
+            "B": "ask for her money back",
+            "C": "keep the shoes she already bought"
+          },
+          "answer": "A",
+          "explanation": "She agrees to pay extra for the similar shoes (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to a teacher about an art assignment.",
+      "voices": {
+        "student": "en-GB-ThomasNeural",
+        "teacher": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Student: Ms Green, I’m worried about the art assignment. I’ve finished my drawings, and I know how to write about them, but my photographs don’t look very clear. ||Teacher: The school cameras are available after lunch if you need them. ||Student: Great. [6]I used my phone before, but the colours in the pictures looked completely different from my drawings[/6]. I’ll take them again today.",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "Ms Green, I’m worried about the art assignment. I’ve finished my drawings, and I know how to write about them, but my photographs don’t look very clear."
+        },
+        {
+          "speaker": "teacher",
+          "text": "The school cameras are available after lunch if you need them."
+        },
+        {
+          "speaker": "student",
+          "text": "Great. I used my phone before, but the colours in the pictures looked completely different from my drawings. I’ll take them again today."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why does the student want to take more photographs?",
+          "options": {
+            "A": "The first ones do not show the work accurately.",
+            "B": "She has changed the subject of her drawings.",
+            "C": "She has lost the photographs she took."
+          },
+          "answer": "A",
+          "explanation": "She says the colours in her photographs looked wrong (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two people planning a trip to the countryside.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: The weather forecast for Saturday is good, so shall we cycle to the lake? It’s a lovely route. ||Man: I’d like to go, but my bike’s still being repaired. We could walk from the station instead. ||Woman: That would take ages with our picnic things. [7]Let’s catch the bus from the station; it stops beside the lake[/7]. ||Man: Good idea. I’ll check the timetable tonight.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "The weather forecast for Saturday is good, so shall we cycle to the lake? It’s a lovely route."
+        },
+        {
+          "speaker": "man",
+          "text": "I’d like to go, but my bike’s still being repaired. We could walk from the station instead."
+        },
+        {
+          "speaker": "woman",
+          "text": "That would take ages with our picnic things. Let’s catch the bus from the station; it stops beside the lake."
+        },
+        {
+          "speaker": "man",
+          "text": "Good idea. I’ll check the timetable tonight."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "How will they get from the station to the lake?",
+          "options": {
+            "A": "by bicycle",
+            "B": "by bus",
+            "C": "on foot"
+          },
+          "answer": "B",
+          "explanation": "The woman suggests using the bus and the man agrees (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a local cinema.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The Palace Cinema is showing classic adventure films every Thursday this month. Tickets can be bought online or at the box office, which now opens at midday. ||Presenter: And here’s some good news for families: [8]children under twelve can see this Thursday’s afternoon film without paying when accompanied by an adult[/8]. Seats should still be booked in advance because the cinema is small.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The Palace Cinema is showing classic adventure films every Thursday this month. Tickets can be bought online or at the box office, which now opens at midday."
+        },
+        {
+          "speaker": "presenter",
+          "text": "And here’s some good news for families: children under twelve can see this Thursday’s afternoon film without paying when accompanied by an adult. Seats should still be booked in advance because the cinema is small."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What special offer is available this Thursday?",
+          "options": {
+            "A": "Free tickets for some children.",
+            "B": "A discount on online bookings.",
+            "C": "Films shown in a larger cinema."
+          },
+          "answer": "A",
+          "explanation": "The presenter says children under twelve can attend free with an adult (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test41_part1.mp3"
+}

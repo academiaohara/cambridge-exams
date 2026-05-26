@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 9",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from an organiser of a photography walk.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Louis, it’s Erin about Sunday’s photography walk through the old town. The weather should be fine, and we’ll still meet at ten outside the museum. ||Woman: We planned to finish in the castle garden, but it is closed for a wedding. [1]Instead, the group will end at the riverside café, where we can look at each other’s photos over coffee[/1]. Wear comfortable shoes.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Louis, it’s Erin about Sunday’s photography walk through the old town. The weather should be fine, and we’ll still meet at ten outside the museum."
+        },
+        {
+          "speaker": "woman",
+          "text": "We planned to finish in the castle garden, but it is closed for a wedding. Instead, the group will end at the riverside café, where we can look at each other’s photos over coffee. Wear comfortable shoes."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "How has the photography walk changed?",
+          "options": {
+            "A": "It will begin at a later time.",
+            "B": "It will finish in a different place.",
+            "C": "It has been cancelled because of a wedding."
+          },
+          "answer": "B",
+          "explanation": "The group will end at the riverside café instead of the castle garden (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends discussing a holiday apartment.",
+      "voices": {
+        "boy": "en-GB-ThomasNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: What was your holiday apartment like? The online photographs looked lovely. ||Girl: It was bright and had a fantastic view of the sea. The kitchen had everything we needed too. [2]But the road outside was busy all night, so I hardly slept during the first few days[/2]. ||Boy: That’s difficult when you’re meant to be relaxing on holiday.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "What was your holiday apartment like? The online photographs looked lovely."
+        },
+        {
+          "speaker": "girl",
+          "text": "It was bright and had a fantastic view of the sea. The kitchen had everything we needed too. But the road outside was busy all night, so I hardly slept during the first few days."
+        },
+        {
+          "speaker": "boy",
+          "text": "That’s difficult when you’re meant to be relaxing on holiday."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the girl dislike about her apartment?",
+          "options": {
+            "A": "the view",
+            "B": "the kitchen equipment",
+            "C": "the noise outside"
+          },
+          "answer": "C",
+          "explanation": "She says traffic on the road kept her awake (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a leisure centre.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: The sports centre café will close at four today instead of its usual time because new furniture is being delivered. All sports classes will continue as normal. ||Announcer: [3]Anyone attending the evening badminton session should bring their own drinks, as the water machine beside the courts is also being replaced[/3]. Cold drinks can be bought before four from the café.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "The sports centre café will close at four today instead of its usual time because new furniture is being delivered. All sports classes will continue as normal."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Anyone attending the evening badminton session should bring their own drinks, as the water machine beside the courts is also being replaced. Cold drinks can be bought before four from the café."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What are evening badminton players advised to do?",
+          "options": {
+            "A": "come to the centre earlier",
+            "B": "bring something to drink",
+            "C": "use a different sports court"
+          },
+          "answer": "B",
+          "explanation": "They are told to bring drinks because the water machine is unavailable (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a man who writes travel articles.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Interviewer: Alex, you’ve written articles about destinations all over Europe. What first attracted you to travel writing? ||Man: At university I enjoyed travelling, but I didn’t imagine it as a career. Then I sent a description of a cycling trip to the college magazine. [4]Readers wrote to say it had helped them plan their own trips, and I discovered I loved giving that kind of useful information[/4].",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Alex, you’ve written articles about destinations all over Europe. What first attracted you to travel writing?"
+        },
+        {
+          "speaker": "man",
+          "text": "At university I enjoyed travelling, but I didn’t imagine it as a career. Then I sent a description of a cycling trip to the college magazine. Readers wrote to say it had helped them plan their own trips, and I discovered I loved giving that kind of useful information."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What made Alex interested in travel writing?",
+          "options": {
+            "A": "Receiving a positive response from readers.",
+            "B": "Wanting to travel while at university.",
+            "C": "Winning a competition in a magazine."
+          },
+          "answer": "A",
+          "explanation": "Reader feedback showed him he liked providing useful travel information (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to a waiter in a restaurant.",
+      "voices": {
+        "customer": "en-GB-RyanNeural",
+        "waiter": "en-GB-RyanNeural"
+      },
+      "audio_script": "Customer: I ordered the vegetable pasta, but I think this is the seafood dish from the table next to me. ||Waiter: I’m terribly sorry. I’ll bring your pasta as quickly as possible. Would you like some bread while you wait? ||Customer: [5]Yes, please. I’m in no hurry, and mistakes happen, so I’ll wait for the meal I ordered[/5]. ||Waiter: Thank you for understanding.",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "I ordered the vegetable pasta, but I think this is the seafood dish from the table next to me."
+        },
+        {
+          "speaker": "waiter",
+          "text": "I’m terribly sorry. I’ll bring your pasta as quickly as possible. Would you like some bread while you wait?"
+        },
+        {
+          "speaker": "customer",
+          "text": "Yes, please. I’m in no hurry, and mistakes happen, so I’ll wait for the meal I ordered."
+        },
+        {
+          "speaker": "waiter",
+          "text": "Thank you for understanding."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "How does the customer respond to the mistake?",
+          "options": {
+            "A": "She decides to leave the restaurant.",
+            "B": "She accepts the wrong meal.",
+            "C": "She agrees to wait for the correct dish."
+          },
+          "answer": "C",
+          "explanation": "She calmly agrees to wait for her vegetable pasta (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a teacher talking to a student about an English exam.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural",
+        "student": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Teacher: You did well in the speaking practice, Leo, especially when describing the photographs. How did you find the discussion task? ||Student: I understood the topic, but I kept answering too quickly and didn’t give my partner time to speak. ||Teacher: [6]In the real exam, remember to ask your partner what they think and respond to their ideas[/6]. ||Student: I’ll practise doing that.",
+      "dialogue": [
+        {
+          "speaker": "teacher",
+          "text": "You did well in the speaking practice, Leo, especially when describing the photographs. How did you find the discussion task?"
+        },
+        {
+          "speaker": "student",
+          "text": "I understood the topic, but I kept answering too quickly and didn’t give my partner time to speak."
+        },
+        {
+          "speaker": "teacher",
+          "text": "In the real exam, remember to ask your partner what they think and respond to their ideas."
+        },
+        {
+          "speaker": "student",
+          "text": "I’ll practise doing that."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the teacher advise Leo to improve?",
+          "options": {
+            "A": "his interaction with his partner",
+            "B": "his ability to describe pictures",
+            "C": "his understanding of the task topic"
+          },
+          "answer": "A",
+          "explanation": "She tells him to involve and respond to his partner (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two colleagues discussing an office charity event.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Have you decided what to bring for the charity sale? I’m making cakes tonight. ||Man: I thought about books, but most of mine are old textbooks. I’ve got several board games at home that are almost new. ||Woman: They’d sell well to families. ||Man: [7]Then I’ll bring the games in tomorrow and put price labels on them during lunch[/7]. ||Woman: Great.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you decided what to bring for the charity sale? I’m making cakes tonight."
+        },
+        {
+          "speaker": "man",
+          "text": "I thought about books, but most of mine are old textbooks. I’ve got several board games at home that are almost new."
+        },
+        {
+          "speaker": "woman",
+          "text": "They’d sell well to families."
+        },
+        {
+          "speaker": "man",
+          "text": "Then I’ll bring the games in tomorrow and put price labels on them during lunch."
+        },
+        {
+          "speaker": "woman",
+          "text": "Great."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What will the man take to the charity sale?",
+          "options": {
+            "A": "cakes",
+            "B": "games",
+            "C": "textbooks"
+          },
+          "answer": "B",
+          "explanation": "He decides to bring board games for sale (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a mobile library service.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The mobile library van will begin visiting three additional villages from next week, carrying fiction, children’s books and audiobooks. Residents can borrow items by showing any proof of address. ||Presenter: [8]For people unable to reach the van, library staff will now deliver reserved books to their homes once a month, provided requests are made by phone[/8]. Details of routes are available online.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The mobile library van will begin visiting three additional villages from next week, carrying fiction, children’s books and audiobooks. Residents can borrow items by showing any proof of address."
+        },
+        {
+          "speaker": "presenter",
+          "text": "For people unable to reach the van, library staff will now deliver reserved books to their homes once a month, provided requests are made by phone. Details of routes are available online."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What new service is being introduced?",
+          "options": {
+            "A": "Home delivery of requested books.",
+            "B": "Free internet access on the van.",
+            "C": "Weekly visits to every village."
+          },
+          "answer": "A",
+          "explanation": "Staff will deliver reserved books for people unable to visit the van (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test49_part1.mp3"
+}

@@ -1,0 +1,300 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 3",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a driving instructor.",
+      "voices": {
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Man: Hi Zara, it’s Pete, your driving instructor. The road near your house will be closed tomorrow because of building work, so I won’t be able to pick you up outside as usual. ||Man: [1]Could you meet me beside the supermarket car park at ten instead?[/1] It’s only a five-minute walk from your street. Your lesson will still last an hour.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Hi Zara, it’s Pete, your driving instructor. The road near your house will be closed tomorrow because of building work, so I won’t be able to pick you up outside as usual."
+        },
+        {
+          "speaker": "man",
+          "text": "Could you meet me beside the supermarket car park at ten instead? It’s only a five-minute walk from your street. Your lesson will still last an hour."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does the instructor ask Zara to do?",
+          "options": {
+            "A": "have a shorter driving lesson",
+            "B": "meet him at another place",
+            "C": "change the day of her lesson"
+          },
+          "answer": "B",
+          "explanation": "He asks her to meet him by the supermarket car park (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a new café.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: Have you tried that café near the park yet? I went there yesterday with Lucy. ||Boy: Is it as good as people say? ||Girl: The cakes were delicious and it wasn’t expensive. But [2]we had to wait outside for a table because there was hardly any seating inside[/2]. It’ll be better in summer when you can sit in the garden. ||Boy: Maybe I’ll wait until then.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Have you tried that café near the park yet? I went there yesterday with Lucy."
+        },
+        {
+          "speaker": "boy",
+          "text": "Is it as good as people say?"
+        },
+        {
+          "speaker": "girl",
+          "text": "The cakes were delicious and it wasn’t expensive. But we had to wait outside for a table because there was hardly any seating inside. It’ll be better in summer when you can sit in the garden."
+        },
+        {
+          "speaker": "boy",
+          "text": "Maybe I’ll wait until then."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What problem did the girl have at the café?",
+          "options": {
+            "A": "There was nowhere to sit immediately.",
+            "B": "The food cost more than expected.",
+            "C": "There were no cakes available."
+          },
+          "answer": "A",
+          "explanation": "She says there was very limited seating and they waited outside (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a museum.",
+      "voices": {
+        "guide": "en-GB-RyanNeural"
+      },
+      "audio_script": "Guide: Welcome to the Maritime Museum. The model ship gallery is on the first floor, and the café is open until five. Please remember not to touch objects in the glass cases. ||Guide: [3]At two o’clock, visitors can meet a boat builder in Workshop Three and watch him making a traditional wooden boat[/3]. There is no extra charge, but the workshop only holds thirty people.",
+      "dialogue": [
+        {
+          "speaker": "guide",
+          "text": "Welcome to the Maritime Museum. The model ship gallery is on the first floor, and the café is open until five. Please remember not to touch objects in the glass cases."
+        },
+        {
+          "speaker": "guide",
+          "text": "At two o’clock, visitors can meet a boat builder in Workshop Three and watch him making a traditional wooden boat. There is no extra charge, but the workshop only holds thirty people."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What opportunity is available to visitors at two o’clock?",
+          "options": {
+            "A": "to make their own model ship",
+            "B": "to see someone doing skilled work",
+            "C": "to enter the museum for less money"
+          },
+          "answer": "B",
+          "explanation": "Visitors can watch a boat builder making a traditional boat (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a teenage chess player.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Interviewer: Ella, you’ve recently won a regional chess competition. Was winning always your aim when you started? ||Girl: No. My older brother taught me because I was bored during a rainy holiday. Later I joined a club. [4]What kept me going was meeting players who saw the game in completely different ways from me[/4]. Winning is exciting, but learning new ideas is better.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Ella, you’ve recently won a regional chess competition. Was winning always your aim when you started?"
+        },
+        {
+          "speaker": "girl",
+          "text": "No. My older brother taught me because I was bored during a rainy holiday. Later I joined a club. What kept me going was meeting players who saw the game in completely different ways from me. Winning is exciting, but learning new ideas is better."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What does Ella enjoy most about playing chess?",
+          "options": {
+            "A": "being more successful than her brother",
+            "B": "learning from other players",
+            "C": "travelling to competitions"
+          },
+          "answer": "B",
+          "explanation": "She values meeting players with different ideas (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to a member of staff in a travel shop.",
+      "voices": {
+        "customer": "en-GB-RyanNeural",
+        "assistant": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Customer: I’m going camping next month, and I need a sleeping bag. This lightweight one looks good, but is it warm enough for mountain nights? ||Assistant: It’s fine in summer. This thicker one costs more, but it’s better for cold weather. ||Customer: [5]I’d rather spend a bit extra than be freezing at night, so I’ll take the thicker one[/5].",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "I’m going camping next month, and I need a sleeping bag. This lightweight one looks good, but is it warm enough for mountain nights?"
+        },
+        {
+          "speaker": "assistant",
+          "text": "It’s fine in summer. This thicker one costs more, but it’s better for cold weather."
+        },
+        {
+          "speaker": "customer",
+          "text": "I’d rather spend a bit extra than be freezing at night, so I’ll take the thicker one."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Which sleeping bag does the customer choose?",
+          "options": {
+            "A": "the warmer one",
+            "B": "the cheapest one",
+            "C": "the lightest one"
+          },
+          "answer": "A",
+          "explanation": "The customer chooses the more expensive, warmer sleeping bag (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a teacher talking to a student about a history essay.",
+      "voices": {
+        "teacher": "en-GB-SoniaNeural",
+        "student": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Teacher: James, your essay has some interesting ideas, but there aren’t any dates or quotations to support them. ||Student: I read the chapter you recommended, but I wasn’t sure which parts I could use. ||Teacher: [6]Find two examples from the chapter and include them in your final version; you don’t need to rewrite everything[/6]. ||Student: All right, I can do that tonight.",
+      "dialogue": [
+        {
+          "speaker": "teacher",
+          "text": "James, your essay has some interesting ideas, but there aren’t any dates or quotations to support them."
+        },
+        {
+          "speaker": "student",
+          "text": "I read the chapter you recommended, but I wasn’t sure which parts I could use."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Find two examples from the chapter and include them in your final version; you don’t need to rewrite everything."
+        },
+        {
+          "speaker": "student",
+          "text": "All right, I can do that tonight."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What does the teacher advise James to do?",
+          "options": {
+            "A": "choose a new essay subject",
+            "B": "add evidence to his writing",
+            "C": "make his essay much shorter"
+          },
+          "answer": "B",
+          "explanation": "She tells him to add examples from the chapter (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two friends discussing a birthday present.",
+      "voices": {
+        "boy": "en-GB-ThomasNeural",
+        "girl": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Boy: We still need something for Daniel’s birthday. How about those headphones he mentioned? ||Girl: His sister has already bought them. He’s started cooking recently, so perhaps we could get him a recipe book. ||Boy: He downloads recipes online, though. ||Girl: True. [7]Let’s get him a voucher for the new cookery class; he can choose which session to attend[/7]. ||Boy: Perfect.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "We still need something for Daniel’s birthday. How about those headphones he mentioned?"
+        },
+        {
+          "speaker": "girl",
+          "text": "His sister has already bought them. He’s started cooking recently, so perhaps we could get him a recipe book."
+        },
+        {
+          "speaker": "boy",
+          "text": "He downloads recipes online, though."
+        },
+        {
+          "speaker": "girl",
+          "text": "True. Let’s get him a voucher for the new cookery class; he can choose which session to attend."
+        },
+        {
+          "speaker": "boy",
+          "text": "Perfect."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What will the friends give Daniel?",
+          "options": {
+            "A": "headphones",
+            "B": "a course voucher",
+            "C": "a cookery book"
+          },
+          "answer": "B",
+          "explanation": "They agree on a voucher for a cookery class (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about a park.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Oakwood Park has completed work on its new lakeside path, making it easier for wheelchairs and pushchairs to reach the picnic area. The playground will be closed for repairs until next Monday. ||Presenter: [8]On Sunday morning, park staff are leading a free guided walk to help visitors identify local birds[/8]. Meet beside the main gates at nine thirty, and bring binoculars if you have them.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Oakwood Park has completed work on its new lakeside path, making it easier for wheelchairs and pushchairs to reach the picnic area. The playground will be closed for repairs until next Monday."
+        },
+        {
+          "speaker": "presenter",
+          "text": "On Sunday morning, park staff are leading a free guided walk to help visitors identify local birds. Meet beside the main gates at nine thirty, and bring binoculars if you have them."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What activity is taking place in the park on Sunday?",
+          "options": {
+            "A": "a guided nature walk",
+            "B": "repairs to a playground",
+            "C": "a family picnic competition"
+          },
+          "answer": "A",
+          "explanation": "There will be a free walk focused on recognising birds (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test43_part1.mp3"
+}

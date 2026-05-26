@@ -1,0 +1,296 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 4",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a swimming teacher.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Hi Amir, it’s Louise from your swimming course. Tomorrow’s lesson is still at eight in the morning. The changing rooms by the large pool are closed while the showers are repaired. ||Woman: [1]Please use the smaller changing room next to reception and leave your bag in one of the lockers there[/1]. Towels can be hired at the desk if you forget yours.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Hi Amir, it’s Louise from your swimming course. Tomorrow’s lesson is still at eight in the morning. The changing rooms by the large pool are closed while the showers are repaired."
+        },
+        {
+          "speaker": "woman",
+          "text": "Please use the smaller changing room next to reception and leave your bag in one of the lockers there. Towels can be hired at the desk if you forget yours."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What information does Louise give Amir?",
+          "options": {
+            "A": "where he should change",
+            "B": "what time the lesson starts now",
+            "C": "how he can cancel his lesson"
+          },
+          "answer": "A",
+          "explanation": "She directs him to use the smaller changing room (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a television series.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Did you watch the final episode of that detective series? I thought the acting was excellent. ||Woman: Yes, particularly the detective herself. The locations looked great too. But [2]the solution was explained so quickly at the end that I wasn’t sure how the detective had discovered the truth[/2]. ||Man: I agree. They needed another ten minutes to make it clear.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you watch the final episode of that detective series? I thought the acting was excellent."
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, particularly the detective herself. The locations looked great too. But the solution was explained so quickly at the end that I wasn’t sure how the detective had discovered the truth."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. They needed another ten minutes to make it clear."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What did the woman dislike about the final episode?",
+          "options": {
+            "A": "The acting was not believable.",
+            "B": "The story ended too suddenly.",
+            "C": "The filming locations were dull."
+          },
+          "answer": "B",
+          "explanation": "She found the final explanation too quick to follow (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at a college.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: Students taking part in tomorrow’s careers fair should arrive at the sports hall by nine o’clock. The event will begin at half past nine, not at ten as shown on some posters. ||Announcer: [3]Anyone who volunteered to welcome visitors should collect a name badge from the student office this afternoon[/3]. You will not be allowed to represent the college without one.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "Students taking part in tomorrow’s careers fair should arrive at the sports hall by nine o’clock. The event will begin at half past nine, not at ten as shown on some posters."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Anyone who volunteered to welcome visitors should collect a name badge from the student office this afternoon. You will not be allowed to represent the college without one."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What should student volunteers do this afternoon?",
+          "options": {
+            "A": "change information on posters",
+            "B": "visit the sports hall",
+            "C": "pick up something they need"
+          },
+          "answer": "C",
+          "explanation": "Volunteers are instructed to collect their name badges (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a man who makes furniture.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Interviewer: Rob, when did you first decide to make furniture professionally? ||Man: I always enjoyed making small objects at school, but I planned to study engineering. Then I helped a neighbour repair a damaged dining table. [4]Seeing how pleased she was when it looked beautiful again made me think this could be a satisfying career[/4]. I applied for a training course soon afterwards.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Rob, when did you first decide to make furniture professionally?"
+        },
+        {
+          "speaker": "man",
+          "text": "I always enjoyed making small objects at school, but I planned to study engineering. Then I helped a neighbour repair a damaged dining table. Seeing how pleased she was when it looked beautiful again made me think this could be a satisfying career. I applied for a training course soon afterwards."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What encouraged Rob to become a furniture maker?",
+          "options": {
+            "A": "getting praise at school",
+            "B": "making a customer happy",
+            "C": "wanting to study engineering"
+          },
+          "answer": "B",
+          "explanation": "He was encouraged by his neighbour’s reaction to the repaired table (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer talking to an assistant in an electronics shop.",
+      "voices": {
+        "customer": "en-GB-RyanNeural",
+        "assistant": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Customer: I bought this portable speaker for a picnic, but it only works when it’s plugged in. The battery doesn’t charge at all. ||Assistant: I’m sorry about that. We can replace it today, or arrange a refund if you prefer. ||Customer: [5]The sound quality was actually excellent, so I’d like another one of the same kind, please[/5]. ||Assistant: Certainly. I’ll get one from the storeroom.",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "I bought this portable speaker for a picnic, but it only works when it’s plugged in. The battery doesn’t charge at all."
+        },
+        {
+          "speaker": "assistant",
+          "text": "I’m sorry about that. We can replace it today, or arrange a refund if you prefer."
+        },
+        {
+          "speaker": "customer",
+          "text": "The sound quality was actually excellent, so I’d like another one of the same kind, please."
+        },
+        {
+          "speaker": "assistant",
+          "text": "Certainly. I’ll get one from the storeroom."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "What does the customer want?",
+          "options": {
+            "A": "a replacement speaker",
+            "B": "a cheaper type of speaker",
+            "C": "a complete refund"
+          },
+          "answer": "A",
+          "explanation": "The customer liked the model and requests another one (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear a student talking to his tutor about a work experience placement.",
+      "voices": {
+        "student": "en-GB-ThomasNeural",
+        "tutor": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Student: The office placement starts on Monday, and I’m a little nervous. I’ve used computers in school, but I’ve never answered calls from customers. ||Tutor: They know you’re new, and you’ll watch an experienced employee first. ||Student: [6]That’s a relief; I was worried I’d be expected to speak to customers on my own straight away[/6]. ||Tutor: No, you’ll have plenty of support.",
+      "dialogue": [
+        {
+          "speaker": "student",
+          "text": "The office placement starts on Monday, and I’m a little nervous. I’ve used computers in school, but I’ve never answered calls from customers."
+        },
+        {
+          "speaker": "tutor",
+          "text": "They know you’re new, and you’ll watch an experienced employee first."
+        },
+        {
+          "speaker": "student",
+          "text": "That’s a relief; I was worried I’d be expected to speak to customers on my own straight away."
+        },
+        {
+          "speaker": "tutor",
+          "text": "No, you’ll have plenty of support."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "What was the student worried about?",
+          "options": {
+            "A": "travelling to the office",
+            "B": "using unfamiliar computer programs",
+            "C": "dealing with customers without help"
+          },
+          "answer": "C",
+          "explanation": "He feared having to speak to customers alone immediately (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two friends planning to attend a football match.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: Have you printed our tickets for Saturday’s match? My printer’s stopped working. ||Boy: No need. The club says we can show them on our phones at the gate. I’ve downloaded mine already. ||Girl: Great. I’ll do that tonight. [7]Could you find out which bus gets us there before the match begins? I don’t know that part of town[/7]. ||Boy: Sure, I’ll check.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Have you printed our tickets for Saturday’s match? My printer’s stopped working."
+        },
+        {
+          "speaker": "boy",
+          "text": "No need. The club says we can show them on our phones at the gate. I’ve downloaded mine already."
+        },
+        {
+          "speaker": "girl",
+          "text": "Great. I’ll do that tonight. Could you find out which bus gets us there before the match begins? I don’t know that part of town."
+        },
+        {
+          "speaker": "boy",
+          "text": "Sure, I’ll check."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What does the girl ask the boy to do?",
+          "options": {
+            "A": "print her match ticket",
+            "B": "check their transport",
+            "C": "download her ticket"
+          },
+          "answer": "B",
+          "explanation": "She asks him to find the correct bus to the stadium (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a radio presenter talking about an arts centre.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: Riverside Arts Centre is beginning its autumn programme next week, including painting classes, jazz concerts and a photography exhibition. Tickets for all events are now available from reception and online. ||Presenter: [8]People who join the centre’s mailing list before Friday will receive a code giving them twenty percent off one event ticket[/8]. Registration is free and takes only a minute.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "Riverside Arts Centre is beginning its autumn programme next week, including painting classes, jazz concerts and a photography exhibition. Tickets for all events are now available from reception and online."
+        },
+        {
+          "speaker": "presenter",
+          "text": "People who join the centre’s mailing list before Friday will receive a code giving them twenty percent off one event ticket. Registration is free and takes only a minute."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "How can people receive a cheaper ticket?",
+          "options": {
+            "A": "by registering for emails",
+            "B": "by buying tickets at reception",
+            "C": "by joining a painting class"
+          },
+          "answer": "A",
+          "explanation": "The discount code is given to new mailing-list members (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test44_part1.mp3"
+}

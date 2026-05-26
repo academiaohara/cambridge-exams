@@ -1,0 +1,296 @@
+{
+  "exercise_id": 1,
+  "paper": 3,
+  "exam_part": 1,
+  "title": "Listening - Part 1 - Exercise 8",
+  "type": "multiple-choice-audio",
+  "time": 8,
+  "totalQuestions": 8,
+  "description": "You are going to hear people talking in eight situations. For questions 1–8, choose the correct answer (A, B or C). Mark your answers on the separate answer sheet.",
+  "instructions": "You will hear each piece twice. For questions 1–8, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 1,
+      "context": "You hear a message from a hotel manager.",
+      "voices": {
+        "manager": "en-GB-RyanNeural"
+      },
+      "audio_script": "Manager: Hello Mr Clarke, I’m calling from the Seaview Hotel about your booking for Friday night. Your room is reserved and your request for a sea view has been noted. ||Manager: Our restaurant is closed for a private event that evening, so [1]we can reserve a table for you at the Harbour Café next door if you would like dinner nearby[/1]. Breakfast at the hotel is unaffected.",
+      "dialogue": [
+        {
+          "speaker": "manager",
+          "text": "Hello Mr Clarke, I’m calling from the Seaview Hotel about your booking for Friday night. Your room is reserved and your request for a sea view has been noted."
+        },
+        {
+          "speaker": "manager",
+          "text": "Our restaurant is closed for a private event that evening, so we can reserve a table for you at the Harbour Café next door if you would like dinner nearby. Breakfast at the hotel is unaffected."
+        }
+      ],
+      "questions": [
+        {
+          "number": 1,
+          "question": "What does the manager offer Mr Clarke?",
+          "options": {
+            "A": "a different hotel room",
+            "B": "a meal reservation elsewhere",
+            "C": "free breakfast at the hotel"
+          },
+          "answer": "B",
+          "explanation": "The manager offers to arrange dinner at a neighbouring café (evidence [1])."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "context": "You hear two friends talking about a sports match.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: How was the basketball match? Your team won, didn’t they? ||Boy: Yes, by two points. The final minutes were really exciting, and our seats were close to the court. [2]I just couldn’t hear the announcements properly because the crowd kept shouting over them[/2]. ||Girl: At least that means everyone was enjoying themselves and strongly supporting the local players.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "How was the basketball match? Your team won, didn’t they?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes, by two points. The final minutes were really exciting, and our seats were close to the court. I just couldn’t hear the announcements properly because the crowd kept shouting over them."
+        },
+        {
+          "speaker": "girl",
+          "text": "At least that means everyone was enjoying themselves and strongly supporting the local players."
+        }
+      ],
+      "questions": [
+        {
+          "number": 2,
+          "question": "What was the boy unhappy about?",
+          "options": {
+            "A": "the location of his seat",
+            "B": "the result of the match",
+            "C": "not hearing some information"
+          },
+          "answer": "C",
+          "explanation": "The noise prevented him hearing the announcements (evidence [2])."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "context": "You hear an announcement at an airport.",
+      "voices": {
+        "announcer": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Announcer: This is an announcement for passengers on flight QF218 to Dublin. Boarding will begin at Gate 32 in approximately fifteen minutes. Please have passports and boarding cards ready. ||Announcer: [3]Because the overhead storage on this flight is limited, passengers with large cabin bags are invited to check them in free of charge at the desk beside the gate[/3]. Smaller bags may be taken on board as normal.",
+      "dialogue": [
+        {
+          "speaker": "announcer",
+          "text": "This is an announcement for passengers on flight QF218 to Dublin. Boarding will begin at Gate 32 in approximately fifteen minutes. Please have passports and boarding cards ready."
+        },
+        {
+          "speaker": "announcer",
+          "text": "Because the overhead storage on this flight is limited, passengers with large cabin bags are invited to check them in free of charge at the desk beside the gate. Smaller bags may be taken on board as normal."
+        }
+      ],
+      "questions": [
+        {
+          "number": 3,
+          "question": "What are passengers with large cabin bags offered?",
+          "options": {
+            "A": "a free way to put them in the hold",
+            "B": "permission to board before others",
+            "C": "new boarding cards at the gate"
+          },
+          "answer": "A",
+          "explanation": "They may check in large cabin bags without paying (evidence [3])."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "context": "You hear a radio interview with a young woman who teaches dance.",
+      "voices": {
+        "interviewer": "en-GB-SoniaNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Interviewer: Sophie, you studied dance professionally, but you now teach beginners. Do you miss performing on stage? ||Woman: Sometimes, but I still perform occasionally. [4]What I love about teaching is watching somebody who was too shy to join in gradually gain confidence and enjoy moving to music[/4]. That feeling often lasts much longer than applause after a successful show.",
+      "dialogue": [
+        {
+          "speaker": "interviewer",
+          "text": "Sophie, you studied dance professionally, but you now teach beginners. Do you miss performing on stage?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Sometimes, but I still perform occasionally. What I love about teaching is watching somebody who was too shy to join in gradually gain confidence and enjoy moving to music. That feeling often lasts much longer than applause after a successful show."
+        }
+      ],
+      "questions": [
+        {
+          "number": 4,
+          "question": "What does Sophie enjoy about teaching dance?",
+          "options": {
+            "A": "Preparing students for professional careers.",
+            "B": "Helping nervous learners become confident.",
+            "C": "Continuing to perform in public shows."
+          },
+          "answer": "B",
+          "explanation": "She values seeing shy beginners gain confidence (evidence [4])."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "context": "You hear a customer speaking to an assistant in a bookshop.",
+      "voices": {
+        "customer": "en-GB-RyanNeural",
+        "assistant": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Customer: I’m looking for a travel guide to Scotland for my aunt. She’s going by train and enjoys visiting gardens. ||Assistant: This general guide covers train routes, while this smaller one focuses on gardens and historic houses but has less travel information. ||Customer: [5]She can look up trains online, and gardens are her main interest, so I’ll take the smaller guide[/5]. ||Assistant: I’m sure she’ll enjoy it.",
+      "dialogue": [
+        {
+          "speaker": "customer",
+          "text": "I’m looking for a travel guide to Scotland for my aunt. She’s going by train and enjoys visiting gardens."
+        },
+        {
+          "speaker": "assistant",
+          "text": "This general guide covers train routes, while this smaller one focuses on gardens and historic houses but has less travel information."
+        },
+        {
+          "speaker": "customer",
+          "text": "She can look up trains online, and gardens are her main interest, so I’ll take the smaller guide."
+        },
+        {
+          "speaker": "assistant",
+          "text": "I’m sure she’ll enjoy it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 5,
+          "question": "Which book does the customer choose?",
+          "options": {
+            "A": "a book about train travel",
+            "B": "a general guide to Scotland",
+            "C": "a guide focused on gardens"
+          },
+          "answer": "C",
+          "explanation": "The customer chooses the guide matching her aunt’s interest in gardens (evidence [5])."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "context": "You hear two students discussing a college trip.",
+      "voices": {
+        "girl": "en-GB-LibbyNeural",
+        "boy": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Girl: Are you going on the geography trip to the coast next week? I thought it sounded useful. ||Boy: I wanted to, but I work on Wednesdays and couldn’t change my hours. I was worried I’d miss important material. ||Girl: Mr Jones said he’d upload the fieldwork video afterwards. ||Boy: [6]That’s good; I can watch it at home and still use the information in my report[/6].",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Are you going on the geography trip to the coast next week? I thought it sounded useful."
+        },
+        {
+          "speaker": "boy",
+          "text": "I wanted to, but I work on Wednesdays and couldn’t change my hours. I was worried I’d miss important material."
+        },
+        {
+          "speaker": "girl",
+          "text": "Mr Jones said he’d upload the fieldwork video afterwards."
+        },
+        {
+          "speaker": "boy",
+          "text": "That’s good; I can watch it at home and still use the information in my report."
+        }
+      ],
+      "questions": [
+        {
+          "number": 6,
+          "question": "Why is the boy now less worried?",
+          "options": {
+            "A": "He can attend the trip on another day.",
+            "B": "He can access the trip material later.",
+            "C": "He no longer needs to write a report."
+          },
+          "answer": "B",
+          "explanation": "He will be able to watch the fieldwork video later (evidence [6])."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "context": "You hear two people talking about moving house.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: There are still lots of boxes to pack before Saturday. I’ve done the kitchen things, but not the books. ||Man: I can pack those tonight. Do we need to book another van? ||Woman: The one we have is big enough. [7]Please label the boxes clearly, though, so we know which room each one goes into at the new house[/7]. ||Man: I will.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "There are still lots of boxes to pack before Saturday. I’ve done the kitchen things, but not the books."
+        },
+        {
+          "speaker": "man",
+          "text": "I can pack those tonight. Do we need to book another van?"
+        },
+        {
+          "speaker": "woman",
+          "text": "The one we have is big enough. Please label the boxes clearly, though, so we know which room each one goes into at the new house."
+        },
+        {
+          "speaker": "man",
+          "text": "I will."
+        }
+      ],
+      "questions": [
+        {
+          "number": 7,
+          "question": "What does the woman ask the man to do?",
+          "options": {
+            "A": "arrange a larger van",
+            "B": "pack kitchen items",
+            "C": "write information on boxes"
+          },
+          "answer": "C",
+          "explanation": "She asks him to label boxes with their destination rooms (evidence [7])."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "context": "You hear a presenter talking about a local history museum.",
+      "voices": {
+        "presenter": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Presenter: The Mill House Museum will remain open until nine p.m. this Friday as part of the town’s history evening. Its exhibition on Victorian homes includes rooms arranged exactly as they were over a hundred years ago. ||Presenter: [8]Visitors arriving after six can join a guided tour by candlelight, which is included in the normal entrance price[/8]. Advance booking is strongly recommended because groups are limited in size.",
+      "dialogue": [
+        {
+          "speaker": "presenter",
+          "text": "The Mill House Museum will remain open until nine p.m. this Friday as part of the town’s history evening. Its exhibition on Victorian homes includes rooms arranged exactly as they were over a hundred years ago."
+        },
+        {
+          "speaker": "presenter",
+          "text": "Visitors arriving after six can join a guided tour by candlelight, which is included in the normal entrance price. Advance booking is strongly recommended because groups are limited in size."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is included in the usual museum ticket on Friday evening?",
+          "options": {
+            "A": "A special guided tour.",
+            "B": "A meal in a Victorian room.",
+            "C": "A reduced-price return visit."
+          },
+          "answer": "A",
+          "explanation": "The candlelight guided tour is included in normal admission (evidence [8])."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B2_Listening_part1/test48_part1.mp3"
+}
