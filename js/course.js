@@ -3787,6 +3787,22 @@
       BentoGrid._saveCuExSectionState(btn.closest('.cu-section'));
     },
 
+    /** Hint text with "/" segments (e.g. "not / watch") for inline pills after a gap. */
+    _renderCuSlashHintMarkup: function(hint, hintBrackets) {
+      var self = this;
+      if (hint == null || hint === '') return '';
+      var raw = String(hint).trim();
+      var parts = raw.split(/\s*\/\s*/).map(function(s) { return s.trim(); }).filter(Boolean);
+      if (parts.length <= 1) {
+        var shown = hintBrackets ? ('[' + raw + ']') : raw;
+        return '<span class="cu-hint-word">' + self._escapeHTML(shown) + '</span>';
+      }
+      return parts.map(function(part, i) {
+        var bit = '<span class="cu-hint-word">' + self._escapeHTML(part) + '</span>';
+        return i === 0 ? bit : '<span class="cu-hint-slash-sep">/</span>' + bit;
+      }).join('');
+    },
+
     _formatTextWithHints: function(text) {
       var self = this;
       function _withLineBreaks(str) {
@@ -4157,27 +4173,7 @@
         } else if (p.type === 'hint-gap' || p.type === 'gap-hint') {
           var gId = inputIdBase + '_g' + (gapCount++);
           var hintSlash = p.hint && String(p.hint).indexOf('/') !== -1;
-          // Plain word hints: keep the field and hint together so mobile wraps naturally.
-          if (p.hint && !hintSlash) {
-            var hintShownStack = p.hintBrackets ? ('[' + p.hint + ']') : p.hint;
-            return '<span class="cu-hint-pill">' +
-              (p.num ? '<span class="cu-hint-pill-num">' + self._escapeHTML(p.num) + '</span>' : '') +
-              self._renderCuMobileInlineGap({
-                id: gId,
-                placeholder: gapPh,
-                block: false,
-                textareaClassName: 'cu-gap-input cu-gap-inline-textarea',
-                ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty',
-                textareaOnInput: 'BentoGrid._resizeCuInput(this)'
-              }) +
-              '<span class="cu-hint-word">' + self._escapeHTML(hintShownStack) + '</span>' +
-              '</span>';
-          }
-          var pillHtml = '<span class="' + (hintSlash ? 'cu-hint-slash-field' : 'cu-hint-pill') + '">';
-          if (p.num) {
-            pillHtml += '<span class="cu-hint-pill-num">' + self._escapeHTML(p.num) + '</span>';
-          }
-          pillHtml += self._renderCuMobileInlineGap({
+          var gapFieldHtml = self._renderCuMobileInlineGap({
             id: gId,
             placeholder: gapPh,
             block: false,
@@ -4185,18 +4181,36 @@
             ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input',
             textareaOnInput: 'BentoGrid._resizeCuInput(this)'
           });
-          if (p.hint && !hintSlash) {
-            var hintShownInline = p.hintBrackets ? ('[' + p.hint + ']') : p.hint;
-            pillHtml += '<span class="cu-hint-word">' + self._escapeHTML(hintShownInline) + '</span>';
+          // gap-hint: "...... (hint)" — gap before hint in the sentence → [input][hint] inline pill
+          // (including slash hints like B1 exercise B "(not / watch)").
+          if (p.type === 'gap-hint') {
+            return '<span class="cu-hint-pill">' +
+              (p.num ? '<span class="cu-hint-pill-num">' + self._escapeHTML(p.num) + '</span>' : '') +
+              gapFieldHtml +
+              (p.hint ? self._renderCuSlashHintMarkup(p.hint, p.hintBrackets) : '') +
+              '</span>';
           }
+          // hint-gap: "(hint) ......" — hint before gap; plain hints stay inline, slash hints stack above.
+          if (p.hint && !hintSlash) {
+            var hintShownStack = p.hintBrackets ? ('[' + p.hint + ']') : p.hint;
+            return '<span class="cu-hint-pill">' +
+              (p.num ? '<span class="cu-hint-pill-num">' + self._escapeHTML(p.num) + '</span>' : '') +
+              gapFieldHtml +
+              '<span class="cu-hint-word">' + self._escapeHTML(hintShownStack) + '</span>' +
+              '</span>';
+          }
+          var pillHtml = '<span class="' + (hintSlash ? 'cu-hint-slash-field' : 'cu-hint-pill') + '">';
+          if (p.num) {
+            pillHtml += '<span class="cu-hint-pill-num">' + self._escapeHTML(p.num) + '</span>';
+          }
+          pillHtml += gapFieldHtml;
           pillHtml += '</span>';
           if (p.hint && hintSlash) {
-            var hintShownSlash = p.hintBrackets ? ('[' + p.hint + ']') : p.hint;
             return (
               '<span class="cu-hint-pill-slash-wrap">' +
-              '<span class="cu-hint-slash-hint-line"><span class="cu-hint-word">' +
-              self._escapeHTML(hintShownSlash) +
-              '</span></span>' +
+              '<span class="cu-hint-slash-hint-line">' +
+              self._renderCuSlashHintMarkup(p.hint, p.hintBrackets) +
+              '</span>' +
               pillHtml +
               '</span>'
             );

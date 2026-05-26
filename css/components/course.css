@@ -1469,6 +1469,14 @@ textarea.cu-hint-pill-input {
   box-sizing: border-box;
 }
 
+.cu-hint-pill .cu-hint-slash-sep,
+.cu-hint-slash-hint-line .cu-hint-slash-sep {
+  color: #64748b;
+  font-weight: 600;
+  user-select: none;
+  padding: 0 2px;
+}
+
 /* Slash-separated hints: answer row without pill chrome (hint badge stays above in .cu-hint-slash-hint-line). */
 .cu-hint-slash-field {
   display: inline-flex;
