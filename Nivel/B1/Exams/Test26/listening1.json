@@ -1,129 +1,130 @@
 {
-    "test_id":  26,
-    "exam_part":  1,
-    "title":  "B1 Listening - Part 1 - Test 26",
-    "type":  "multiple-choice-text",
-    "totalQuestions":  7,
-    "instructions":  "For each question, listen to the recording and choose the correct answer: A, B or C.",
-    "items":  [
-                  {
-                      "number":  1,
-                      "context":  "You hear two friends arranging a school meeting.",
-                      "voices":  {
-                                     "man":  "en-GB-NoahNeural",
-                                     "woman":  "en-GB-LibbyNeural"
-                                 },
-                      "audio_script":  "Man: Are we still meeting in classroom eight for the student council meeting? I wrote it down yesterday, but I have not checked today's message. || Woman: That was the original plan, but classroom eight is being painted today. [1]We need to meet in the library meeting room instead[/1].. || Man: Good thing I asked. I nearly went to the old place and waited there. What about the computer room? || Woman: No, nobody will be waiting there. I will arrive a few minutes early and message you if anything changes again before we start.",
-                      "question":  "Where will the meeting take place?",
-                      "options":  {
-                                      "A":  "In classroom eight",
-                                      "B":  "The library meeting room",
-                                      "C":  "The computer room"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The meeting will take place in the library meeting room."
-                  },
-                  {
-                      "number":  2,
-                      "context":  "You hear two students preparing for a music performance.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-AlfieNeural"
-                                 },
-                      "audio_script":  "Girl: Have you packed for the music performance tonight yet? I put my guitar stand in my bag because I thought that was what we needed. || Boy: That was mentioned earlier, but the school already provides music stands for us. [2]Everyone needs to wear a black shirt tonight[/2].. || Girl: I am glad I checked. I nearly left my bag by the door. Do I need a music stand as well? || Boy: No, that is not necessary. Put the new item in tonight and check the message once more before you leave in the morning.",
-                      "question":  "What should the student bring?",
-                      "options":  {
-                                      "A":  "My guitar stand",
-                                      "B":  "A music stand",
-                                      "C":  "A black shirt"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "The student should bring a black shirt."
-                  },
-                  {
-                      "number":  3,
-                      "context":  "You hear two friends planning a birthday celebration.",
-                      "voices":  {
-                                     "boy":  "en-GB-ElliotNeural",
-                                     "girl":  "en-GB-BellaNeural"
-                                 },
-                      "audio_script":  "Boy: Are we still going to have a barbecue this weekend? I told my family I would be out this afternoon. || Girl: That was our first plan, but the weather forecast says there will be strong winds. We also thought about whether to go to a restaurant. || Boy: So what have we decided? I need to tell my brother soon. || Girl: [3]We are having an indoor picnic instead[/3].. I will check the times online tonight and send you a message before we meet. || Boy: Great. That sounds easier than the other ideas.",
-                      "question":  "What are they going to do?",
-                      "options":  {
-                                      "A":  "Have a picnic indoors",
-                                      "B":  "Have a barbecue",
-                                      "C":  "Go to a restaurant"
-                                  },
-                      "answer":  "A",
-                      "explanation":  "They decide to have an indoor picnic."
-                  },
-                  {
-                      "number":  4,
-                      "context":  "You hear two people talking about a coach trip.",
-                      "voices":  {
-                                     "woman":  "en-GB-SoniaNeural",
-                                     "man":  "en-GB-RyanNeural"
-                                 },
-                      "audio_script":  "Woman: I need to check the time for the coach to the castle. I wrote down eight fifteen, but I am not sure it is correct. || Man: It changed this morning because the driver has to collect another group first. [4]The coach leaves at eight forty-five now[/4]., and we should arrive ten minutes earlier. || Woman: I am glad I asked. I would have arrived at the wrong time and waited there. || Man: I will send you a reminder later. Bring everything you need, because there may not be time to go home first.",
-                      "question":  "What time does the coach leave?",
-                      "options":  {
-                                      "A":  "Eight fifteen",
-                                      "B":  "Eight forty-five",
-                                      "C":  "Nine fifteen"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The coach leaves at eight forty-five."
-                  },
-                  {
-                      "number":  5,
-                      "context":  "You hear two friends talking about a tablet.",
-                      "voices":  {
-                                     "man":  "en-GB-NoahNeural",
-                                     "woman":  "en-GB-LibbyNeural"
-                                 },
-                      "audio_script":  "Man: How are you getting on with your tablet? I heard there was a problem with it yesterday. || Woman: I first thought the charging cable was broken, and my brother wondered whether the screen was damaged. But someone checked it carefully this morning. [5]It keeps turning itself off after a few minutes[/5].. || Man: Can it be repaired soon? You said you needed it for the online course tomorrow. || Woman: Yes, probably. Now we know what is wrong, it should be ready tomorrow. That is a relief, because I cannot manage without it.",
-                      "question":  "What is wrong with the tablet?",
-                      "options":  {
-                                      "A":  "The charging cable is broken",
-                                      "B":  "The screen is damaged",
-                                      "C":  "It keeps turning itself off"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "The tablet keeps turning itself off."
-                  },
-                  {
-                      "number":  6,
-                      "context":  "You hear two friends travelling to a sports centre.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-AlfieNeural"
-                                 },
-                      "audio_script":  "Girl: How are you getting to the sports centre? I thought you were planning to travel by bus. || Boy: I was, but the bus is delayed and the centre is only ten minutes away. I also considered going by taxi. [6]I am going to walk instead[/6].. || Girl: That sounds sensible. What time do you expect to arrive there? || Boy: Just before eleven, if everything is on time. I checked the journey online, so I will message you when I leave home. || Girl: Good. I will wait near the entrance so you can find me easily.",
-                      "question":  "How will the speaker get to the sports centre?",
-                      "options":  {
-                                      "A":  "On foot",
-                                      "B":  "By bus",
-                                      "C":  "By taxi"
-                                  },
-                      "answer":  "A",
-                      "explanation":  "The speaker will walk to the sports centre."
-                  },
-                  {
-                      "number":  7,
-                      "context":  "You hear two friends choosing breakfast in a café.",
-                      "voices":  {
-                                     "boy":  "en-GB-ElliotNeural",
-                                     "girl":  "en-GB-BellaNeural"
-                                 },
-                      "audio_script":  "Boy: Have you chosen what to order? The queue is moving quickly, and we need to leave soon. || Girl: I nearly chose toast, and I also looked at a bowl of cereal, but there is no bread left and I had cereal at home yesterday. || Boy: So what are you going to have? I need to choose mine before we reach the counter. || Girl: [7]I will have the yoghurt with fruit[/7].. It should be enough for me, and then we can find somewhere quiet to sit before we go.",
-                      "question":  "What will the speaker have?",
-                      "options":  {
-                                      "A":  "Toast",
-                                      "B":  "A yoghurt with fruit",
-                                      "C":  "A bowl of cereal"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The speaker chooses a yoghurt with fruit."
-                  }
-              ]
+  "test_id": 26,
+  "exam_part": 1,
+  "title": "B1 Listening - Part 1 - Test 26",
+  "type": "multiple-choice-text",
+  "totalQuestions": 7,
+  "instructions": "For each question, listen to the recording and choose the correct answer: A, B or C.",
+  "items": [
+    {
+      "number": 1,
+      "context": "You hear two friends arranging a school meeting.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Are we still meeting in classroom eight for the student council meeting? I wrote it down yesterday, but I have not checked today's message. || Woman: That was the original plan, but classroom eight is being painted today. [1]We need to meet in the library meeting room instead[/1].. || Man: Good thing I asked. I nearly went to the old place and waited there. What about the computer room? || Woman: No, nobody will be waiting there. I will arrive a few minutes early and message you if anything changes again before we start.",
+      "question": "Where will the meeting take place?",
+      "options": {
+        "A": "In classroom eight",
+        "B": "The library meeting room",
+        "C": "The computer room"
+      },
+      "answer": "B",
+      "explanation": "The meeting will take place in the library meeting room."
+    },
+    {
+      "number": 2,
+      "context": "You hear two students preparing for a music performance.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Girl: Have you packed for the music performance tonight yet? I put my guitar stand in my bag because I thought that was what we needed. || Boy: That was mentioned earlier, but the school already provides music stands for us. [2]Everyone needs to wear a black shirt tonight[/2].. || Girl: I am glad I checked. I nearly left my bag by the door. Do I need a music stand as well? || Boy: No, that is not necessary. Put the new item in tonight and check the message once more before you leave in the morning.",
+      "question": "What should the student bring?",
+      "options": {
+        "A": "My guitar stand",
+        "B": "A music stand",
+        "C": "A black shirt"
+      },
+      "answer": "C",
+      "explanation": "The student should bring a black shirt."
+    },
+    {
+      "number": 3,
+      "context": "You hear two friends planning a birthday celebration.",
+      "voices": {
+        "boy": "en-GB-ElliotNeural",
+        "girl": "en-GB-BellaNeural"
+      },
+      "audio_script": "Boy: Are we still going to have a barbecue this weekend? I told my family I would be out this afternoon. || Girl: That was our first plan, but the weather forecast says there will be strong winds. We also thought about whether to go to a restaurant. || Boy: So what have we decided? I need to tell my brother soon. || Girl: [3]We are having an indoor picnic instead[/3].. I will check the times online tonight and send you a message before we meet. || Boy: Great. That sounds easier than the other ideas.",
+      "question": "What are they going to do?",
+      "options": {
+        "A": "Have a picnic indoors",
+        "B": "Have a barbecue",
+        "C": "Go to a restaurant"
+      },
+      "answer": "A",
+      "explanation": "They decide to have an indoor picnic."
+    },
+    {
+      "number": 4,
+      "context": "You hear two people talking about a coach trip.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I need to check the time for the coach to the castle. I wrote down eight fifteen, but I am not sure it is correct. || Man: It changed this morning because the driver has to collect another group first. [4]The coach leaves at eight forty-five now[/4]., and we should arrive ten minutes earlier. || Woman: I am glad I asked. I would have arrived at the wrong time and waited there. || Man: I will send you a reminder later. Bring everything you need, because there may not be time to go home first.",
+      "question": "What time does the coach leave?",
+      "options": {
+        "A": "Eight fifteen",
+        "B": "Eight forty-five",
+        "C": "Nine fifteen"
+      },
+      "answer": "B",
+      "explanation": "The coach leaves at eight forty-five."
+    },
+    {
+      "number": 5,
+      "context": "You hear two friends talking about a tablet.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: How are you getting on with your tablet? I heard there was a problem with it yesterday. || Woman: I first thought the charging cable was broken, and my brother wondered whether the screen was damaged. But someone checked it carefully this morning. [5]It keeps turning itself off after a few minutes[/5].. || Man: Can it be repaired soon? You said you needed it for the online course tomorrow. || Woman: Yes, probably. Now we know what is wrong, it should be ready tomorrow. That is a relief, because I cannot manage without it.",
+      "question": "What is wrong with the tablet?",
+      "options": {
+        "A": "The charging cable is broken",
+        "B": "The screen is damaged",
+        "C": "It keeps turning itself off"
+      },
+      "answer": "C",
+      "explanation": "The tablet keeps turning itself off."
+    },
+    {
+      "number": 6,
+      "context": "You hear two friends travelling to a sports centre.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Girl: How are you getting to the sports centre? I thought you were planning to travel by bus. || Boy: I was, but the bus is delayed and the centre is only ten minutes away. I also considered going by taxi. [6]I am going to walk instead[/6].. || Girl: That sounds sensible. What time do you expect to arrive there? || Boy: Just before eleven, if everything is on time. I checked the journey online, so I will message you when I leave home. || Girl: Good. I will wait near the entrance so you can find me easily.",
+      "question": "How will the speaker get to the sports centre?",
+      "options": {
+        "A": "On foot",
+        "B": "By bus",
+        "C": "By taxi"
+      },
+      "answer": "A",
+      "explanation": "The speaker will walk to the sports centre."
+    },
+    {
+      "number": 7,
+      "context": "You hear two friends choosing breakfast in a café.",
+      "voices": {
+        "boy": "en-GB-ElliotNeural",
+        "girl": "en-GB-BellaNeural"
+      },
+      "audio_script": "Boy: Have you chosen what to order? The queue is moving quickly, and we need to leave soon. || Girl: I nearly chose toast, and I also looked at a bowl of cereal, but there is no bread left and I had cereal at home yesterday. || Boy: So what are you going to have? I need to choose mine before we reach the counter. || Girl: [7]I will have the yoghurt with fruit[/7].. It should be enough for me, and then we can find somewhere quiet to sit before we go.",
+      "question": "What will the speaker have?",
+      "options": {
+        "A": "Toast",
+        "B": "A yoghurt with fruit",
+        "C": "A bowl of cereal"
+      },
+      "answer": "B",
+      "explanation": "The speaker chooses a yoghurt with fruit."
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part1/test26_part1.mp3"
 }

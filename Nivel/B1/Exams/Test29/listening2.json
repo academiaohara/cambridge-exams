@@ -1,277 +1,277 @@
 {
-    "test_number":  29,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two friends talking about a part-time job.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Man: Did you apply for the weekend job at the sports centre? || Woman: Yes, and I got an interview. The pay isn't amazing, but the hours are fine. || Man: Will it help with your course? || Woman: [8]That's why I applied, really. I want to work with children later, and this job includes helping with kids' swimming classes[/8]. It should give me useful experience. || Woman: That sounds sensible. It's always easier when you know what to expect before you make a final decision.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you apply for the weekend job at the sports centre?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, and I got an interview. The pay isn't amazing, but the hours are fine."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Will it help with your course?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That's why I applied, really. I want to work with children later, and this job includes helping with kids' swimming classes. It should give me useful experience."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds sensible. It's always easier when you know what to expect before you make a final decision."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "Why did the woman apply for the job?",
-                                               "options":  {
-                                                               "A":  "It could help with her future career.",
-                                                               "B":  "It has very high pay.",
-                                                               "C":  "It only involves weekend work."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says the job includes helping with children's swimming classes, which will give useful experience."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a man telling a friend about a family party.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: How was your grandmother's birthday party? || Man: Lovely. We had it in my uncle's garden because the weather stayed dry. || Woman: Did many people come? || Man: Yes, but [9]the best moment was when my grandmother saw the photo album we'd made for her[/9]. She was so surprised she couldn't speak for a moment. || Man: I see what you mean. Sometimes those small details matter more than people expect at first. || Woman: Well, I hope it works out, because it sounds as if you've thought about it carefully.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "How was your grandmother's birthday party?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Lovely. We had it in my uncle's garden because the weather stayed dry."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did many people come?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, but the best moment was when my grandmother saw the photo album we'd made for her. She was so surprised she couldn't speak for a moment."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I see what you mean. Sometimes those small details matter more than people expect at first."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Well, I hope it works out, because it sounds as if you've thought about it carefully."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What did the man enjoy most about the party?",
-                                               "options":  {
-                                                               "A":  "eating outside in good weather",
-                                                               "B":  "seeing his grandmother's reaction to a present",
-                                                               "C":  "meeting relatives he had not seen for years"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He says the best moment was when his grandmother saw the photo album."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear two students talking about a new teacher.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: What do you think of our new maths teacher? || Man: He's friendly, and he explains things slowly, which helps. || Woman: So you're happy? || Man: Mostly, but [10]he gives us homework at the end of the lesson, then the bell rings before we can ask questions about it[/10]. I sometimes start it without knowing exactly what to do. || Woman: Well, I hope it works out, because it sounds as if you've thought about it carefully.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "What do you think of our new maths teacher?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "He's friendly, and he explains things slowly, which helps."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "So you're happy?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Mostly, but he gives us homework at the end of the lesson, then the bell rings before we can ask questions about it. I sometimes start it without knowing exactly what to do."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Well, I hope it works out, because it sounds as if you've thought about it carefully."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What problem does the man mention?",
-                                               "options":  {
-                                                               "A":  "The teacher speaks too quickly.",
-                                                               "B":  "The homework is always too easy.",
-                                                               "C":  "There is no time to ask about homework."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "He says the bell rings before they can ask questions about the homework."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear a woman talking about a beach clean-up.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: How did the beach clean-up go? || Woman: Really well. I expected only a few people, but lots of families came. || Man: Did you collect much rubbish? || Woman: Yes, but [11]what made me happiest was seeing young children asking why people leave plastic on the beach[/11]. It felt like they were learning something important. || Man: Anyway, let me know what happens, because I'm interested to hear how it goes next time. || Woman: Yes, and at least you can plan better now, which should make things less stressful.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "How did the beach clean-up go?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Really well. I expected only a few people, but lots of families came."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you collect much rubbish?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, but what made me happiest was seeing young children asking why people leave plastic on the beach. It felt like they were learning something important."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Anyway, let me know what happens, because I'm interested to hear how it goes next time."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, and at least you can plan better now, which should make things less stressful."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What pleased the woman most about the clean-up?",
-                                               "options":  {
-                                                               "A":  "Children became interested in protecting the beach.",
-                                                               "B":  "Very little rubbish was found there.",
-                                                               "C":  "Only a small group of people came."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says she was happiest when children asked about plastic on the beach."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear two friends talking about a television drama.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: Did you watch the last episode of that drama? || Woman: Yes. The acting was good, and the ending was clever, but I felt a little lost. || Man: Why? || Woman: [12]There were too many characters with similar names, so I kept forgetting who was connected to whom[/12]. Maybe I should watch the series again. || Woman: Yes, and at least you can plan better now, which should make things less stressful. || Man: That's true. It's much better to notice the problem early than be surprised later.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you watch the last episode of that drama?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes. The acting was good, and the ending was clever, but I felt a little lost."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Why?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "There were too many characters with similar names, so I kept forgetting who was connected to whom. Maybe I should watch the series again."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, and at least you can plan better now, which should make things less stressful."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's true. It's much better to notice the problem early than be surprised later."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What problem did the woman have with the drama?",
-                                               "options":  {
-                                                               "A":  "The ending was too simple.",
-                                                               "B":  "It was hard to follow the characters.",
-                                                               "C":  "The acting was not believable."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says there were too many characters with similar names and she forgot their connections."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear a man talking about a new gym.",
-                         "voices":  {
-                                        "speaker":  "en-GB-RyanNeural"
-                                    },
-                         "audio_script":  "Speaker: I joined the new gym because it has a pool and modern equipment. The staff are friendly, and the changing rooms are clean. I don't mind that it's a little more expensive than my old gym. [13]The real problem is parking; in the evening I often drive round for ten minutes before finding a space[/13]. I may start going in the mornings instead. || Speaker: I told a friend about it later, and she said she had experienced something very similar.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "I joined the new gym because it has a pool and modern equipment. The staff are friendly, and the changing rooms are clean. I don't mind that it's a little more expensive than my old gym. The real problem is parking; in the evening I often drive round for ten minutes before finding a space. I may start going in the mornings instead."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "I told a friend about it later, and she said she had experienced something very similar."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What problem does the man have with the gym?",
-                                               "options":  {
-                                                               "A":  "The staff are not friendly.",
-                                                               "B":  "The changing rooms are not clean.",
-                                                               "C":  "It is difficult to park there."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "He says he often drives round for ten minutes before finding a parking space."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2029.mp3"
+  "test_number": 29,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two friends talking about a part-time job.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Man: Did you apply for the weekend job at the sports centre? || Woman: Yes, and I got an interview. The pay isn't amazing, but the hours are fine. || Man: Will it help with your course? || Woman: [8]That's why I applied, really. I want to work with children later, and this job includes helping with kids' swimming classes[/8]. It should give me useful experience. || Woman: That sounds sensible. It's always easier when you know what to expect before you make a final decision.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you apply for the weekend job at the sports centre?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, and I got an interview. The pay isn't amazing, but the hours are fine."
+        },
+        {
+          "speaker": "man",
+          "text": "Will it help with your course?"
+        },
+        {
+          "speaker": "woman",
+          "text": "That's why I applied, really. I want to work with children later, and this job includes helping with kids' swimming classes. It should give me useful experience."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds sensible. It's always easier when you know what to expect before you make a final decision."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "Why did the woman apply for the job?",
+          "options": {
+            "A": "It could help with her future career.",
+            "B": "It has very high pay.",
+            "C": "It only involves weekend work."
+          },
+          "answer": "A",
+          "explanation": "She says the job includes helping with children's swimming classes, which will give useful experience."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a man telling a friend about a family party.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: How was your grandmother's birthday party? || Man: Lovely. We had it in my uncle's garden because the weather stayed dry. || Woman: Did many people come? || Man: Yes, but [9]the best moment was when my grandmother saw the photo album we'd made for her[/9]. She was so surprised she couldn't speak for a moment. || Man: I see what you mean. Sometimes those small details matter more than people expect at first. || Woman: Well, I hope it works out, because it sounds as if you've thought about it carefully.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How was your grandmother's birthday party?"
+        },
+        {
+          "speaker": "man",
+          "text": "Lovely. We had it in my uncle's garden because the weather stayed dry."
+        },
+        {
+          "speaker": "woman",
+          "text": "Did many people come?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, but the best moment was when my grandmother saw the photo album we'd made for her. She was so surprised she couldn't speak for a moment."
+        },
+        {
+          "speaker": "man",
+          "text": "I see what you mean. Sometimes those small details matter more than people expect at first."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, I hope it works out, because it sounds as if you've thought about it carefully."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What did the man enjoy most about the party?",
+          "options": {
+            "A": "eating outside in good weather",
+            "B": "seeing his grandmother's reaction to a present",
+            "C": "meeting relatives he had not seen for years"
+          },
+          "answer": "B",
+          "explanation": "He says the best moment was when his grandmother saw the photo album."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear two students talking about a new teacher.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: What do you think of our new maths teacher? || Man: He's friendly, and he explains things slowly, which helps. || Woman: So you're happy? || Man: Mostly, but [10]he gives us homework at the end of the lesson, then the bell rings before we can ask questions about it[/10]. I sometimes start it without knowing exactly what to do. || Woman: Well, I hope it works out, because it sounds as if you've thought about it carefully.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "What do you think of our new maths teacher?"
+        },
+        {
+          "speaker": "man",
+          "text": "He's friendly, and he explains things slowly, which helps."
+        },
+        {
+          "speaker": "woman",
+          "text": "So you're happy?"
+        },
+        {
+          "speaker": "man",
+          "text": "Mostly, but he gives us homework at the end of the lesson, then the bell rings before we can ask questions about it. I sometimes start it without knowing exactly what to do."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, I hope it works out, because it sounds as if you've thought about it carefully."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What problem does the man mention?",
+          "options": {
+            "A": "The teacher speaks too quickly.",
+            "B": "The homework is always too easy.",
+            "C": "There is no time to ask about homework."
+          },
+          "answer": "C",
+          "explanation": "He says the bell rings before they can ask questions about the homework."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear a woman talking about a beach clean-up.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: How did the beach clean-up go? || Woman: Really well. I expected only a few people, but lots of families came. || Man: Did you collect much rubbish? || Woman: Yes, but [11]what made me happiest was seeing young children asking why people leave plastic on the beach[/11]. It felt like they were learning something important. || Man: Anyway, let me know what happens, because I'm interested to hear how it goes next time. || Woman: Yes, and at least you can plan better now, which should make things less stressful.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How did the beach clean-up go?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Really well. I expected only a few people, but lots of families came."
+        },
+        {
+          "speaker": "man",
+          "text": "Did you collect much rubbish?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, but what made me happiest was seeing young children asking why people leave plastic on the beach. It felt like they were learning something important."
+        },
+        {
+          "speaker": "man",
+          "text": "Anyway, let me know what happens, because I'm interested to hear how it goes next time."
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, and at least you can plan better now, which should make things less stressful."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What pleased the woman most about the clean-up?",
+          "options": {
+            "A": "Children became interested in protecting the beach.",
+            "B": "Very little rubbish was found there.",
+            "C": "Only a small group of people came."
+          },
+          "answer": "A",
+          "explanation": "She says she was happiest when children asked about plastic on the beach."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear two friends talking about a television drama.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Did you watch the last episode of that drama? || Woman: Yes. The acting was good, and the ending was clever, but I felt a little lost. || Man: Why? || Woman: [12]There were too many characters with similar names, so I kept forgetting who was connected to whom[/12]. Maybe I should watch the series again. || Woman: Yes, and at least you can plan better now, which should make things less stressful. || Man: That's true. It's much better to notice the problem early than be surprised later.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you watch the last episode of that drama?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes. The acting was good, and the ending was clever, but I felt a little lost."
+        },
+        {
+          "speaker": "man",
+          "text": "Why?"
+        },
+        {
+          "speaker": "woman",
+          "text": "There were too many characters with similar names, so I kept forgetting who was connected to whom. Maybe I should watch the series again."
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, and at least you can plan better now, which should make things less stressful."
+        },
+        {
+          "speaker": "man",
+          "text": "That's true. It's much better to notice the problem early than be surprised later."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What problem did the woman have with the drama?",
+          "options": {
+            "A": "The ending was too simple.",
+            "B": "It was hard to follow the characters.",
+            "C": "The acting was not believable."
+          },
+          "answer": "B",
+          "explanation": "She says there were too many characters with similar names and she forgot their connections."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear a man talking about a new gym.",
+      "voices": {
+        "speaker": "en-GB-RyanNeural"
+      },
+      "audio_script": "Speaker: I joined the new gym because it has a pool and modern equipment. The staff are friendly, and the changing rooms are clean. I don't mind that it's a little more expensive than my old gym. [13]The real problem is parking; in the evening I often drive round for ten minutes before finding a space[/13]. I may start going in the mornings instead. || Speaker: I told a friend about it later, and she said she had experienced something very similar.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "I joined the new gym because it has a pool and modern equipment. The staff are friendly, and the changing rooms are clean. I don't mind that it's a little more expensive than my old gym. The real problem is parking; in the evening I often drive round for ten minutes before finding a space. I may start going in the mornings instead."
+        },
+        {
+          "speaker": "speaker",
+          "text": "I told a friend about it later, and she said she had experienced something very similar."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What problem does the man have with the gym?",
+          "options": {
+            "A": "The staff are not friendly.",
+            "B": "The changing rooms are not clean.",
+            "C": "It is difficult to park there."
+          },
+          "answer": "C",
+          "explanation": "He says he often drives round for ten minutes before finding a parking space."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/Test29_part2.mp3"
 }

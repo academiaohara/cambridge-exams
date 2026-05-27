@@ -1,265 +1,265 @@
 {
-    "test_number":  23,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two friends talking about a school trip.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Man: Are you going on the history trip next month? || Woman: I wasn't sure at first. The museum is interesting, but I've been there twice already. || Man: So why are you going? || Woman: [8]Our teacher says we'll meet a guide who can take us into rooms that are usually closed to visitors[/8]. That sounds different, so I signed up. || Woman: Yes, and at least you can plan better now, which should make things less stressful.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Are you going on the history trip next month?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I wasn't sure at first. The museum is interesting, but I've been there twice already."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "So why are you going?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Our teacher says we'll meet a guide who can take us into rooms that are usually closed to visitors. That sounds different, so I signed up."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, and at least you can plan better now, which should make things less stressful."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "Why has the woman decided to go on the trip?",
-                                               "options":  {
-                                                               "A":  "She will see parts of the museum not usually open.",
-                                                               "B":  "She has never visited the museum before.",
-                                                               "C":  "She wants to spend time with her classmates."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says the guide can take them into rooms usually closed to visitors."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a man talking to a friend about his new phone.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: How's your new phone? Was it worth the money? || Man: It's good, but I nearly chose a cheaper one. The camera is excellent, and the screen is bright, which helps outside. || Woman: Any problems? || Man: Just one. [9]The battery runs down much faster than my old phone, especially when I use maps[/9]. I have to charge it before I leave work. || Man: That's true. It's much better to notice the problem early than be surprised later.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "How's your new phone? Was it worth the money?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "It's good, but I nearly chose a cheaper one. The camera is excellent, and the screen is bright, which helps outside."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Any problems?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Just one. The battery runs down much faster than my old phone, especially when I use maps. I have to charge it before I leave work."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's true. It's much better to notice the problem early than be surprised later."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What does the man dislike about his new phone?",
-                                               "options":  {
-                                                               "A":  "The screen is hard to see outside.",
-                                                               "B":  "The battery does not last long.",
-                                                               "C":  "The camera takes poor pictures."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He says the battery runs down much faster than his old phone."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear two people talking about a neighbour's dog.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: Is that your neighbour's dog barking again? || Woman: Yes, but it's not all day like before. They take it for long walks now. || Man: That's better then. || Woman: A bit. [10]The problem is that it wakes me very early, just before six, when they let it into the garden[/10]. Once I'm awake, I can't get back to sleep. || Woman: Maybe you can tell me more about it tomorrow, when you've had time to think.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Is that your neighbour's dog barking again?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, but it's not all day like before. They take it for long walks now."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's better then."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "A bit. The problem is that it wakes me very early, just before six, when they let it into the garden. Once I'm awake, I can't get back to sleep."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Maybe you can tell me more about it tomorrow, when you've had time to think."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What bothers the woman about the dog?",
-                                               "options":  {
-                                                               "A":  "It barks all day.",
-                                                               "B":  "It is never taken for walks.",
-                                                               "C":  "It wakes her up early."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says the dog wakes her very early when it is let into the garden."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear a woman talking about a theatre workshop.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Did you enjoy the acting workshop? || Woman: More than I expected. I thought we'd spend the morning listening to someone talk about theatre. || Man: But you didn't? || Woman: No, [11]we started acting in pairs almost immediately, which was embarrassing at first but really useful[/11]. The room was cold, and lunch was late, but the activities were excellent. || Man: Good point. I suppose it's one of those things you only understand after trying it yourself.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you enjoy the acting workshop?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "More than I expected. I thought we'd spend the morning listening to someone talk about theatre."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "But you didn't?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "No, we started acting in pairs almost immediately, which was embarrassing at first but really useful. The room was cold, and lunch was late, but the activities were excellent."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Good point. I suppose it's one of those things you only understand after trying it yourself."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What did the woman like about the workshop?",
-                                               "options":  {
-                                                               "A":  "It was practical from the beginning.",
-                                                               "B":  "The room was comfortable.",
-                                                               "C":  "The speaker gave useful talks."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says they started acting in pairs almost immediately, so the workshop was practical."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear two friends talking about a park.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Have they finished improving the park near your house? || Man: Nearly. The new playground is popular, and the paths are better for bikes. || Woman: That's good. || Man: Yes, but [12]I miss the quiet garden area they removed to make space for the café[/12]. Families like the café, but I preferred having somewhere peaceful to sit. || Woman: That sounds sensible. It's always easier when you know what to expect before you make a final decision.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have they finished improving the park near your house?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Nearly. The new playground is popular, and the paths are better for bikes."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That's good."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, but I miss the quiet garden area they removed to make space for the café. Families like the café, but I preferred having somewhere peaceful to sit."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds sensible. It's always easier when you know what to expect before you make a final decision."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What does the man say about the park?",
-                                               "options":  {
-                                                               "A":  "The new paths are difficult for cyclists.",
-                                                               "B":  "He preferred part of it before the changes.",
-                                                               "C":  "The café is not popular with families."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He says he misses the quiet garden area that was removed."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear a woman telling a colleague about a training day.",
-                         "voices":  {
-                                        "speaker":  "en-GB-RyanNeural"
-                                    },
-                         "audio_script":  "Speaker: The training day was useful overall. I learned a few shortcuts for the computer system, and the trainer answered questions clearly. The only difficulty was the timetable. [13]We spent too long on things most of us already knew, so there was almost no time for the new software at the end[/13]. That was the part I really needed. || Speaker: I told a friend about it later, and she said she had experienced something very similar.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "The training day was useful overall. I learned a few shortcuts for the computer system, and the trainer answered questions clearly. The only difficulty was the timetable. We spent too long on things most of us already knew, so there was almost no time for the new software at the end. That was the part I really needed."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "I told a friend about it later, and she said she had experienced something very similar."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What does the woman say about the training day?",
-                                               "options":  {
-                                                               "A":  "The trainer did not answer questions.",
-                                                               "B":  "The computer system was too difficult.",
-                                                               "C":  "The time was not used well."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says they spent too long on familiar things and had little time for the new software."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2023.mp3"
+  "test_number": 23,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two friends talking about a school trip.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Man: Are you going on the history trip next month? || Woman: I wasn't sure at first. The museum is interesting, but I've been there twice already. || Man: So why are you going? || Woman: [8]Our teacher says we'll meet a guide who can take us into rooms that are usually closed to visitors[/8]. That sounds different, so I signed up. || Woman: Yes, and at least you can plan better now, which should make things less stressful.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Are you going on the history trip next month?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I wasn't sure at first. The museum is interesting, but I've been there twice already."
+        },
+        {
+          "speaker": "man",
+          "text": "So why are you going?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Our teacher says we'll meet a guide who can take us into rooms that are usually closed to visitors. That sounds different, so I signed up."
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, and at least you can plan better now, which should make things less stressful."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "Why has the woman decided to go on the trip?",
+          "options": {
+            "A": "She will see parts of the museum not usually open.",
+            "B": "She has never visited the museum before.",
+            "C": "She wants to spend time with her classmates."
+          },
+          "answer": "A",
+          "explanation": "She says the guide can take them into rooms usually closed to visitors."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a man talking to a friend about his new phone.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: How's your new phone? Was it worth the money? || Man: It's good, but I nearly chose a cheaper one. The camera is excellent, and the screen is bright, which helps outside. || Woman: Any problems? || Man: Just one. [9]The battery runs down much faster than my old phone, especially when I use maps[/9]. I have to charge it before I leave work. || Man: That's true. It's much better to notice the problem early than be surprised later.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How's your new phone? Was it worth the money?"
+        },
+        {
+          "speaker": "man",
+          "text": "It's good, but I nearly chose a cheaper one. The camera is excellent, and the screen is bright, which helps outside."
+        },
+        {
+          "speaker": "woman",
+          "text": "Any problems?"
+        },
+        {
+          "speaker": "man",
+          "text": "Just one. The battery runs down much faster than my old phone, especially when I use maps. I have to charge it before I leave work."
+        },
+        {
+          "speaker": "man",
+          "text": "That's true. It's much better to notice the problem early than be surprised later."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What does the man dislike about his new phone?",
+          "options": {
+            "A": "The screen is hard to see outside.",
+            "B": "The battery does not last long.",
+            "C": "The camera takes poor pictures."
+          },
+          "answer": "B",
+          "explanation": "He says the battery runs down much faster than his old phone."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear two people talking about a neighbour's dog.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Is that your neighbour's dog barking again? || Woman: Yes, but it's not all day like before. They take it for long walks now. || Man: That's better then. || Woman: A bit. [10]The problem is that it wakes me very early, just before six, when they let it into the garden[/10]. Once I'm awake, I can't get back to sleep. || Woman: Maybe you can tell me more about it tomorrow, when you've had time to think.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Is that your neighbour's dog barking again?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, but it's not all day like before. They take it for long walks now."
+        },
+        {
+          "speaker": "man",
+          "text": "That's better then."
+        },
+        {
+          "speaker": "woman",
+          "text": "A bit. The problem is that it wakes me very early, just before six, when they let it into the garden. Once I'm awake, I can't get back to sleep."
+        },
+        {
+          "speaker": "woman",
+          "text": "Maybe you can tell me more about it tomorrow, when you've had time to think."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What bothers the woman about the dog?",
+          "options": {
+            "A": "It barks all day.",
+            "B": "It is never taken for walks.",
+            "C": "It wakes her up early."
+          },
+          "answer": "C",
+          "explanation": "She says the dog wakes her very early when it is let into the garden."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear a woman talking about a theatre workshop.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Did you enjoy the acting workshop? || Woman: More than I expected. I thought we'd spend the morning listening to someone talk about theatre. || Man: But you didn't? || Woman: No, [11]we started acting in pairs almost immediately, which was embarrassing at first but really useful[/11]. The room was cold, and lunch was late, but the activities were excellent. || Man: Good point. I suppose it's one of those things you only understand after trying it yourself.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you enjoy the acting workshop?"
+        },
+        {
+          "speaker": "woman",
+          "text": "More than I expected. I thought we'd spend the morning listening to someone talk about theatre."
+        },
+        {
+          "speaker": "man",
+          "text": "But you didn't?"
+        },
+        {
+          "speaker": "woman",
+          "text": "No, we started acting in pairs almost immediately, which was embarrassing at first but really useful. The room was cold, and lunch was late, but the activities were excellent."
+        },
+        {
+          "speaker": "man",
+          "text": "Good point. I suppose it's one of those things you only understand after trying it yourself."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What did the woman like about the workshop?",
+          "options": {
+            "A": "It was practical from the beginning.",
+            "B": "The room was comfortable.",
+            "C": "The speaker gave useful talks."
+          },
+          "answer": "A",
+          "explanation": "She says they started acting in pairs almost immediately, so the workshop was practical."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear two friends talking about a park.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Have they finished improving the park near your house? || Man: Nearly. The new playground is popular, and the paths are better for bikes. || Woman: That's good. || Man: Yes, but [12]I miss the quiet garden area they removed to make space for the café[/12]. Families like the café, but I preferred having somewhere peaceful to sit. || Woman: That sounds sensible. It's always easier when you know what to expect before you make a final decision.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have they finished improving the park near your house?"
+        },
+        {
+          "speaker": "man",
+          "text": "Nearly. The new playground is popular, and the paths are better for bikes."
+        },
+        {
+          "speaker": "woman",
+          "text": "That's good."
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, but I miss the quiet garden area they removed to make space for the café. Families like the café, but I preferred having somewhere peaceful to sit."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds sensible. It's always easier when you know what to expect before you make a final decision."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What does the man say about the park?",
+          "options": {
+            "A": "The new paths are difficult for cyclists.",
+            "B": "He preferred part of it before the changes.",
+            "C": "The café is not popular with families."
+          },
+          "answer": "B",
+          "explanation": "He says he misses the quiet garden area that was removed."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear a woman telling a colleague about a training day.",
+      "voices": {
+        "speaker": "en-GB-RyanNeural"
+      },
+      "audio_script": "Speaker: The training day was useful overall. I learned a few shortcuts for the computer system, and the trainer answered questions clearly. The only difficulty was the timetable. [13]We spent too long on things most of us already knew, so there was almost no time for the new software at the end[/13]. That was the part I really needed. || Speaker: I told a friend about it later, and she said she had experienced something very similar.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "The training day was useful overall. I learned a few shortcuts for the computer system, and the trainer answered questions clearly. The only difficulty was the timetable. We spent too long on things most of us already knew, so there was almost no time for the new software at the end. That was the part I really needed."
+        },
+        {
+          "speaker": "speaker",
+          "text": "I told a friend about it later, and she said she had experienced something very similar."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What does the woman say about the training day?",
+          "options": {
+            "A": "The trainer did not answer questions.",
+            "B": "The computer system was too difficult.",
+            "C": "The time was not used well."
+          },
+          "answer": "C",
+          "explanation": "She says they spent too long on familiar things and had little time for the new software."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/Test23_part2.mp3"
 }

@@ -1,253 +1,253 @@
 {
-    "test_number":  21,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two friends talking about joining a gardening club.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Woman: Are you still thinking of joining that gardening club near the park? || Man: Yes, but I wasn't sure. I looked at the website and the photos were nice, though the membership fee seemed a bit high. || Woman: My aunt goes there. She says the people are friendly and beginners get lots of help. || Man: That's good. [8]I mainly want someone to show me what to plant each month, so the advice is exactly what I need[/8]. I'll join this week.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you still thinking of joining that gardening club near the park?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, but I wasn't sure. I looked at the website and the photos were nice, though the membership fee seemed a bit high."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "My aunt goes there. She says the people are friendly and beginners get lots of help."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's good. I mainly want someone to show me what to plant each month, so the advice is exactly what I need. I'll join this week."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "The man wants to join the club because he",
-                                               "options":  {
-                                                               "A":  "needs help from experienced gardeners.",
-                                                               "B":  "likes the pictures on the website.",
-                                                               "C":  "thinks the membership is cheap."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The man says he wants someone to show him what to plant each month, so he needs help from experienced gardeners."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a woman telling a friend about a cooking course.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: How was your first cooking class? Was the teacher friendly? || Woman: Very, and the recipes weren't difficult. We made soup and bread, which was fun. The only problem was the kitchen. || Man: Was it badly equipped? || Woman: No, everything was there, but [9]there were sixteen of us around one table, so I could hardly see what the teacher was doing[/9]. I learned less than I hoped. || Man: I see what you mean. Sometimes those small details matter more than people expect at first.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "How was your first cooking class? Was the teacher friendly?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Very, and the recipes weren't difficult. We made soup and bread, which was fun. The only problem was the kitchen."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Was it badly equipped?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "No, everything was there, but there were sixteen of us around one table, so I could hardly see what the teacher was doing. I learned less than I hoped."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I see what you mean. Sometimes those small details matter more than people expect at first."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What did the woman dislike about the course?",
-                                               "options":  {
-                                                               "A":  "The recipes were too difficult.",
-                                                               "B":  "The class was too crowded.",
-                                                               "C":  "The teacher was not helpful."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says there were sixteen people around one table, so she could hardly see the teacher."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear two colleagues talking about a new office printer.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Have you tried the new printer yet? It's supposed to be faster. || Man: I used it this morning. The pages came out quickly, and the print quality was fine. I thought it would be difficult to connect my computer, but that was easy. || Woman: So you're happy with it? || Man: Not completely. [10]It makes a loud noise every time it starts, and people near my desk keep looking round[/10]. I hope they move it somewhere else.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have you tried the new printer yet? It's supposed to be faster."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I used it this morning. The pages came out quickly, and the print quality was fine. I thought it would be difficult to connect my computer, but that was easy."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "So you're happy with it?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Not completely. It makes a loud noise every time it starts, and people near my desk keep looking round. I hope they move it somewhere else."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What problem does the man have with the printer?",
-                                               "options":  {
-                                                               "A":  "It is slow to print documents.",
-                                                               "B":  "It is hard to connect to computers.",
-                                                               "C":  "It is too noisy for the office."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The man says the printer makes a loud noise every time it starts."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear a woman talking to a friend about a book she has read.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Did you finish that travel book I lent you? || Woman: Yes. I expected it to be full of exciting adventures, but it was quieter than that. || Man: Oh, so you didn't enjoy it? || Woman: I did, actually. [11]The writer describes ordinary places so clearly that I felt I was walking beside her[/11]. The photos weren't very special, but the writing was lovely. || Man: Anyway, let me know what happens, because I'm interested to hear how it goes next time.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you finish that travel book I lent you?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes. I expected it to be full of exciting adventures, but it was quieter than that."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Oh, so you didn't enjoy it?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I did, actually. The writer describes ordinary places so clearly that I felt I was walking beside her. The photos weren't very special, but the writing was lovely."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Anyway, let me know what happens, because I'm interested to hear how it goes next time."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What did the woman like about the book?",
-                                               "options":  {
-                                                               "A":  "the way the places were described",
-                                                               "B":  "the exciting adventures in it",
-                                                               "C":  "the photographs it included"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says the writer describes ordinary places so clearly that she felt she was there."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear two friends talking about a swimming pool.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Have you been to the new swimming pool yet? || Man: Yes, I went yesterday. The changing rooms are clean, and the café looked nice, although I didn't try it. || Woman: Is the pool good for serious swimming? || Man: It is, but [12]you need to book early because the evening sessions are full almost every day[/12]. I wanted seven o'clock but had to take nine. || Woman: Yes, and at least you can plan better now, which should make things less stressful.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have you been to the new swimming pool yet?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, I went yesterday. The changing rooms are clean, and the café looked nice, although I didn't try it."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Is the pool good for serious swimming?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "It is, but you need to book early because the evening sessions are full almost every day. I wanted seven o'clock but had to take nine."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, and at least you can plan better now, which should make things less stressful."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What does the man say about the swimming pool?",
-                                               "options":  {
-                                                               "A":  "The changing rooms are not clean enough.",
-                                                               "B":  "It is difficult to get a place in the evening.",
-                                                               "C":  "The café is better than he expected."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He says the evening sessions are full almost every day, so booking a place then is difficult."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear a woman leaving a voicemail about a lost bag.",
-                         "voices":  {
-                                        "speaker":  "en-GB-RyanNeural"
-                                    },
-                         "audio_script":  "Speaker: Hi, it's Maria. I'm calling about the bag I left at your house yesterday. I thought it might be in the kitchen because we had coffee there, but I've checked my photos and I can see it beside the sofa. [13]Could you look in the living room, near the small table, and let me know if it's still there[/13]? I don't need it today, but there are some keys inside.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "Hi, it's Maria. I'm calling about the bag I left at your house yesterday. I thought it might be in the kitchen because we had coffee there, but I've checked my photos and I can see it beside the sofa. Could you look in the living room, near the small table, and let me know if it's still there? I don't need it today, but there are some keys inside."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "Where does Maria think her bag is?",
-                                               "options":  {
-                                                               "A":  "in the kitchen",
-                                                               "B":  "beside the front door",
-                                                               "C":  "in the living room"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "Maria asks her friend to look in the living room near the small table."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2021.mp3"
+  "test_number": 21,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two friends talking about joining a gardening club.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Woman: Are you still thinking of joining that gardening club near the park? || Man: Yes, but I wasn't sure. I looked at the website and the photos were nice, though the membership fee seemed a bit high. || Woman: My aunt goes there. She says the people are friendly and beginners get lots of help. || Man: That's good. [8]I mainly want someone to show me what to plant each month, so the advice is exactly what I need[/8]. I'll join this week.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you still thinking of joining that gardening club near the park?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, but I wasn't sure. I looked at the website and the photos were nice, though the membership fee seemed a bit high."
+        },
+        {
+          "speaker": "woman",
+          "text": "My aunt goes there. She says the people are friendly and beginners get lots of help."
+        },
+        {
+          "speaker": "man",
+          "text": "That's good. I mainly want someone to show me what to plant each month, so the advice is exactly what I need. I'll join this week."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "The man wants to join the club because he",
+          "options": {
+            "A": "needs help from experienced gardeners.",
+            "B": "likes the pictures on the website.",
+            "C": "thinks the membership is cheap."
+          },
+          "answer": "A",
+          "explanation": "The man says he wants someone to show him what to plant each month, so he needs help from experienced gardeners."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a woman telling a friend about a cooking course.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: How was your first cooking class? Was the teacher friendly? || Woman: Very, and the recipes weren't difficult. We made soup and bread, which was fun. The only problem was the kitchen. || Man: Was it badly equipped? || Woman: No, everything was there, but [9]there were sixteen of us around one table, so I could hardly see what the teacher was doing[/9]. I learned less than I hoped. || Man: I see what you mean. Sometimes those small details matter more than people expect at first.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How was your first cooking class? Was the teacher friendly?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Very, and the recipes weren't difficult. We made soup and bread, which was fun. The only problem was the kitchen."
+        },
+        {
+          "speaker": "man",
+          "text": "Was it badly equipped?"
+        },
+        {
+          "speaker": "woman",
+          "text": "No, everything was there, but there were sixteen of us around one table, so I could hardly see what the teacher was doing. I learned less than I hoped."
+        },
+        {
+          "speaker": "man",
+          "text": "I see what you mean. Sometimes those small details matter more than people expect at first."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What did the woman dislike about the course?",
+          "options": {
+            "A": "The recipes were too difficult.",
+            "B": "The class was too crowded.",
+            "C": "The teacher was not helpful."
+          },
+          "answer": "B",
+          "explanation": "She says there were sixteen people around one table, so she could hardly see the teacher."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear two colleagues talking about a new office printer.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Have you tried the new printer yet? It's supposed to be faster. || Man: I used it this morning. The pages came out quickly, and the print quality was fine. I thought it would be difficult to connect my computer, but that was easy. || Woman: So you're happy with it? || Man: Not completely. [10]It makes a loud noise every time it starts, and people near my desk keep looking round[/10]. I hope they move it somewhere else.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you tried the new printer yet? It's supposed to be faster."
+        },
+        {
+          "speaker": "man",
+          "text": "I used it this morning. The pages came out quickly, and the print quality was fine. I thought it would be difficult to connect my computer, but that was easy."
+        },
+        {
+          "speaker": "woman",
+          "text": "So you're happy with it?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not completely. It makes a loud noise every time it starts, and people near my desk keep looking round. I hope they move it somewhere else."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What problem does the man have with the printer?",
+          "options": {
+            "A": "It is slow to print documents.",
+            "B": "It is hard to connect to computers.",
+            "C": "It is too noisy for the office."
+          },
+          "answer": "C",
+          "explanation": "The man says the printer makes a loud noise every time it starts."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear a woman talking to a friend about a book she has read.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Did you finish that travel book I lent you? || Woman: Yes. I expected it to be full of exciting adventures, but it was quieter than that. || Man: Oh, so you didn't enjoy it? || Woman: I did, actually. [11]The writer describes ordinary places so clearly that I felt I was walking beside her[/11]. The photos weren't very special, but the writing was lovely. || Man: Anyway, let me know what happens, because I'm interested to hear how it goes next time.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you finish that travel book I lent you?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes. I expected it to be full of exciting adventures, but it was quieter than that."
+        },
+        {
+          "speaker": "man",
+          "text": "Oh, so you didn't enjoy it?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I did, actually. The writer describes ordinary places so clearly that I felt I was walking beside her. The photos weren't very special, but the writing was lovely."
+        },
+        {
+          "speaker": "man",
+          "text": "Anyway, let me know what happens, because I'm interested to hear how it goes next time."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What did the woman like about the book?",
+          "options": {
+            "A": "the way the places were described",
+            "B": "the exciting adventures in it",
+            "C": "the photographs it included"
+          },
+          "answer": "A",
+          "explanation": "She says the writer describes ordinary places so clearly that she felt she was there."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear two friends talking about a swimming pool.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Have you been to the new swimming pool yet? || Man: Yes, I went yesterday. The changing rooms are clean, and the café looked nice, although I didn't try it. || Woman: Is the pool good for serious swimming? || Man: It is, but [12]you need to book early because the evening sessions are full almost every day[/12]. I wanted seven o'clock but had to take nine. || Woman: Yes, and at least you can plan better now, which should make things less stressful.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you been to the new swimming pool yet?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, I went yesterday. The changing rooms are clean, and the café looked nice, although I didn't try it."
+        },
+        {
+          "speaker": "woman",
+          "text": "Is the pool good for serious swimming?"
+        },
+        {
+          "speaker": "man",
+          "text": "It is, but you need to book early because the evening sessions are full almost every day. I wanted seven o'clock but had to take nine."
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, and at least you can plan better now, which should make things less stressful."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What does the man say about the swimming pool?",
+          "options": {
+            "A": "The changing rooms are not clean enough.",
+            "B": "It is difficult to get a place in the evening.",
+            "C": "The café is better than he expected."
+          },
+          "answer": "B",
+          "explanation": "He says the evening sessions are full almost every day, so booking a place then is difficult."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear a woman leaving a voicemail about a lost bag.",
+      "voices": {
+        "speaker": "en-GB-RyanNeural"
+      },
+      "audio_script": "Speaker: Hi, it's Maria. I'm calling about the bag I left at your house yesterday. I thought it might be in the kitchen because we had coffee there, but I've checked my photos and I can see it beside the sofa. [13]Could you look in the living room, near the small table, and let me know if it's still there[/13]? I don't need it today, but there are some keys inside.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "Hi, it's Maria. I'm calling about the bag I left at your house yesterday. I thought it might be in the kitchen because we had coffee there, but I've checked my photos and I can see it beside the sofa. Could you look in the living room, near the small table, and let me know if it's still there? I don't need it today, but there are some keys inside."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "Where does Maria think her bag is?",
+          "options": {
+            "A": "in the kitchen",
+            "B": "beside the front door",
+            "C": "in the living room"
+          },
+          "answer": "C",
+          "explanation": "Maria asks her friend to look in the living room near the small table."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/Test21_part2.mp3"
 }

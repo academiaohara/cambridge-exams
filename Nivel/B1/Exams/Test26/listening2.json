@@ -1,277 +1,277 @@
 {
-    "test_number":  26,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two friends talking about a new supermarket.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Woman: Have you tried the supermarket that opened near the cinema? || Man: Yes. It's smaller than I expected, and the car park was almost full. || Woman: Will you go again? || Man: Probably. [8]The best thing is that it stays open until ten, so I can shop after football practice[/8]. The prices are normal, but the late opening is useful. || Woman: Maybe you can tell me more about it tomorrow, when you've had time to think.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have you tried the supermarket that opened near the cinema?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes. It's smaller than I expected, and the car park was almost full."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Will you go again?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Probably. The best thing is that it stays open until ten, so I can shop after football practice. The prices are normal, but the late opening is useful."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Maybe you can tell me more about it tomorrow, when you've had time to think."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "What does the man like about the supermarket?",
-                                               "options":  {
-                                                               "A":  "It is open late.",
-                                                               "B":  "It has low prices.",
-                                                               "C":  "It has a large car park."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "He says the best thing is that it stays open until ten."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a woman talking about a visit to the dentist.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: How was your dentist appointment? || Woman: Fine. I was worried because I hadn't been for two years, but there was no serious problem. || Man: That's good. || Woman: Yes, although [9]I had to wait nearly half an hour after my appointment time, and I was late getting back to work[/9]. The dentist himself was very kind. || Man: Good point. I suppose it's one of those things you only understand after trying it yourself. || Woman: That sounds sensible. It's always easier when you know what to expect before you make a final decision.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "How was your dentist appointment?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Fine. I was worried because I hadn't been for two years, but there was no serious problem."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's good."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, although I had to wait nearly half an hour after my appointment time, and I was late getting back to work. The dentist himself was very kind."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Good point. I suppose it's one of those things you only understand after trying it yourself."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds sensible. It's always easier when you know what to expect before you make a final decision."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What was the woman unhappy about?",
-                                               "options":  {
-                                                               "A":  "The dentist was unfriendly.",
-                                                               "B":  "She had to wait too long.",
-                                                               "C":  "She needed expensive treatment."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says she had to wait nearly half an hour after her appointment time."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear two people talking about a painting class.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: Did you enjoy the painting class? || Woman: Yes, but it was harder than I expected. We had to paint a landscape, and I usually draw people. || Man: Was the teacher helpful? || Woman: Very. [10]The difficulty was that we had to finish the picture in one lesson, so I rushed the last part[/10]. I'd prefer two shorter sessions. || Woman: That sounds sensible. It's always easier when you know what to expect before you make a final decision.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you enjoy the painting class?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, but it was harder than I expected. We had to paint a landscape, and I usually draw people."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Was the teacher helpful?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Very. The difficulty was that we had to finish the picture in one lesson, so I rushed the last part. I'd prefer two shorter sessions."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds sensible. It's always easier when you know what to expect before you make a final decision."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What did the woman find difficult?",
-                                               "options":  {
-                                                               "A":  "understanding the teacher's instructions",
-                                                               "B":  "painting landscapes instead of people",
-                                                               "C":  "finishing the work in the time allowed"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says she had to finish the picture in one lesson and rushed the last part."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear a man telling a friend about a camping weekend.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: Did the camping weekend go well? || Man: Mostly. The campsite was clean, and the lake was great for swimming. || Woman: Was it cold at night? || Man: Not really. [11]The only bad thing was the ground; it was so hard that I couldn't sleep comfortably[/11]. Next time I'll take a better mat. || Man: I see what you mean. Sometimes those small details matter more than people expect at first. || Woman: Well, I hope it works out, because it sounds as if you've thought about it carefully.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did the camping weekend go well?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Mostly. The campsite was clean, and the lake was great for swimming."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Was it cold at night?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Not really. The only bad thing was the ground; it was so hard that I couldn't sleep comfortably. Next time I'll take a better mat."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I see what you mean. Sometimes those small details matter more than people expect at first."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Well, I hope it works out, because it sounds as if you've thought about it carefully."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What did the man dislike about the camping weekend?",
-                                               "options":  {
-                                                               "A":  "sleeping on uncomfortable ground",
-                                                               "B":  "swimming in a cold lake",
-                                                               "C":  "using dirty campsite facilities"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "He says the ground was so hard that he couldn't sleep comfortably."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear two friends talking about a new art teacher.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: What's your new art teacher like? || Woman: Very different from our last one. She doesn't talk for long at the front of the room. || Man: Is that good? || Woman: Yes. [12]She walks around while we work and gives each person advice about their own picture[/12]. It feels more useful than a general explanation. || Woman: Well, I hope it works out, because it sounds as if you've thought about it carefully. || Man: Anyway, let me know what happens, because I'm interested to hear how it goes next time.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "What's your new art teacher like?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Very different from our last one. She doesn't talk for long at the front of the room."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Is that good?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes. She walks around while we work and gives each person advice about their own picture. It feels more useful than a general explanation."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Well, I hope it works out, because it sounds as if you've thought about it carefully."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Anyway, let me know what happens, because I'm interested to hear how it goes next time."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What does the woman like about the teacher?",
-                                               "options":  {
-                                                               "A":  "She gives short homework tasks.",
-                                                               "B":  "She gives individual advice.",
-                                                               "C":  "She explains art history clearly."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The woman says the teacher gives each person advice about their own picture."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear a man talking about volunteering at a festival.",
-                         "voices":  {
-                                        "speaker":  "en-GB-RyanNeural"
-                                    },
-                         "audio_script":  "Speaker: I volunteered at the music festival last weekend. I expected to help at the entrance, checking tickets, but they asked me to work behind one of the food stalls instead. [13]It was much busier than I expected, and by lunchtime I was too tired to watch the bands I had wanted to see[/13]. Still, the other volunteers were great fun. || Speaker: I told a friend about it later, and she said she had experienced something very similar.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "I volunteered at the music festival last weekend. I expected to help at the entrance, checking tickets, but they asked me to work behind one of the food stalls instead. It was much busier than I expected, and by lunchtime I was too tired to watch the bands I had wanted to see. Still, the other volunteers were great fun."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "I told a friend about it later, and she said she had experienced something very similar."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "How did the man feel by lunchtime?",
-                                               "options":  {
-                                                               "A":  "disappointed with the other volunteers",
-                                                               "B":  "annoyed about checking tickets",
-                                                               "C":  "too tired to enjoy the music"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "He says he was too tired to watch the bands he wanted to see."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2026.mp3"
+  "test_number": 26,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two friends talking about a new supermarket.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Woman: Have you tried the supermarket that opened near the cinema? || Man: Yes. It's smaller than I expected, and the car park was almost full. || Woman: Will you go again? || Man: Probably. [8]The best thing is that it stays open until ten, so I can shop after football practice[/8]. The prices are normal, but the late opening is useful. || Woman: Maybe you can tell me more about it tomorrow, when you've had time to think.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you tried the supermarket that opened near the cinema?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes. It's smaller than I expected, and the car park was almost full."
+        },
+        {
+          "speaker": "woman",
+          "text": "Will you go again?"
+        },
+        {
+          "speaker": "man",
+          "text": "Probably. The best thing is that it stays open until ten, so I can shop after football practice. The prices are normal, but the late opening is useful."
+        },
+        {
+          "speaker": "woman",
+          "text": "Maybe you can tell me more about it tomorrow, when you've had time to think."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What does the man like about the supermarket?",
+          "options": {
+            "A": "It is open late.",
+            "B": "It has low prices.",
+            "C": "It has a large car park."
+          },
+          "answer": "A",
+          "explanation": "He says the best thing is that it stays open until ten."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a woman talking about a visit to the dentist.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: How was your dentist appointment? || Woman: Fine. I was worried because I hadn't been for two years, but there was no serious problem. || Man: That's good. || Woman: Yes, although [9]I had to wait nearly half an hour after my appointment time, and I was late getting back to work[/9]. The dentist himself was very kind. || Man: Good point. I suppose it's one of those things you only understand after trying it yourself. || Woman: That sounds sensible. It's always easier when you know what to expect before you make a final decision.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How was your dentist appointment?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Fine. I was worried because I hadn't been for two years, but there was no serious problem."
+        },
+        {
+          "speaker": "man",
+          "text": "That's good."
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, although I had to wait nearly half an hour after my appointment time, and I was late getting back to work. The dentist himself was very kind."
+        },
+        {
+          "speaker": "man",
+          "text": "Good point. I suppose it's one of those things you only understand after trying it yourself."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds sensible. It's always easier when you know what to expect before you make a final decision."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What was the woman unhappy about?",
+          "options": {
+            "A": "The dentist was unfriendly.",
+            "B": "She had to wait too long.",
+            "C": "She needed expensive treatment."
+          },
+          "answer": "B",
+          "explanation": "She says she had to wait nearly half an hour after her appointment time."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear two people talking about a painting class.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Did you enjoy the painting class? || Woman: Yes, but it was harder than I expected. We had to paint a landscape, and I usually draw people. || Man: Was the teacher helpful? || Woman: Very. [10]The difficulty was that we had to finish the picture in one lesson, so I rushed the last part[/10]. I'd prefer two shorter sessions. || Woman: That sounds sensible. It's always easier when you know what to expect before you make a final decision.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you enjoy the painting class?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, but it was harder than I expected. We had to paint a landscape, and I usually draw people."
+        },
+        {
+          "speaker": "man",
+          "text": "Was the teacher helpful?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Very. The difficulty was that we had to finish the picture in one lesson, so I rushed the last part. I'd prefer two shorter sessions."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds sensible. It's always easier when you know what to expect before you make a final decision."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What did the woman find difficult?",
+          "options": {
+            "A": "understanding the teacher's instructions",
+            "B": "painting landscapes instead of people",
+            "C": "finishing the work in the time allowed"
+          },
+          "answer": "C",
+          "explanation": "She says she had to finish the picture in one lesson and rushed the last part."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear a man telling a friend about a camping weekend.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: Did the camping weekend go well? || Man: Mostly. The campsite was clean, and the lake was great for swimming. || Woman: Was it cold at night? || Man: Not really. [11]The only bad thing was the ground; it was so hard that I couldn't sleep comfortably[/11]. Next time I'll take a better mat. || Man: I see what you mean. Sometimes those small details matter more than people expect at first. || Woman: Well, I hope it works out, because it sounds as if you've thought about it carefully.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did the camping weekend go well?"
+        },
+        {
+          "speaker": "man",
+          "text": "Mostly. The campsite was clean, and the lake was great for swimming."
+        },
+        {
+          "speaker": "woman",
+          "text": "Was it cold at night?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not really. The only bad thing was the ground; it was so hard that I couldn't sleep comfortably. Next time I'll take a better mat."
+        },
+        {
+          "speaker": "man",
+          "text": "I see what you mean. Sometimes those small details matter more than people expect at first."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, I hope it works out, because it sounds as if you've thought about it carefully."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What did the man dislike about the camping weekend?",
+          "options": {
+            "A": "sleeping on uncomfortable ground",
+            "B": "swimming in a cold lake",
+            "C": "using dirty campsite facilities"
+          },
+          "answer": "A",
+          "explanation": "He says the ground was so hard that he couldn't sleep comfortably."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear two friends talking about a new art teacher.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: What's your new art teacher like? || Woman: Very different from our last one. She doesn't talk for long at the front of the room. || Man: Is that good? || Woman: Yes. [12]She walks around while we work and gives each person advice about their own picture[/12]. It feels more useful than a general explanation. || Woman: Well, I hope it works out, because it sounds as if you've thought about it carefully. || Man: Anyway, let me know what happens, because I'm interested to hear how it goes next time.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "What's your new art teacher like?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Very different from our last one. She doesn't talk for long at the front of the room."
+        },
+        {
+          "speaker": "man",
+          "text": "Is that good?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes. She walks around while we work and gives each person advice about their own picture. It feels more useful than a general explanation."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, I hope it works out, because it sounds as if you've thought about it carefully."
+        },
+        {
+          "speaker": "man",
+          "text": "Anyway, let me know what happens, because I'm interested to hear how it goes next time."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What does the woman like about the teacher?",
+          "options": {
+            "A": "She gives short homework tasks.",
+            "B": "She gives individual advice.",
+            "C": "She explains art history clearly."
+          },
+          "answer": "B",
+          "explanation": "The woman says the teacher gives each person advice about their own picture."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear a man talking about volunteering at a festival.",
+      "voices": {
+        "speaker": "en-GB-RyanNeural"
+      },
+      "audio_script": "Speaker: I volunteered at the music festival last weekend. I expected to help at the entrance, checking tickets, but they asked me to work behind one of the food stalls instead. [13]It was much busier than I expected, and by lunchtime I was too tired to watch the bands I had wanted to see[/13]. Still, the other volunteers were great fun. || Speaker: I told a friend about it later, and she said she had experienced something very similar.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "I volunteered at the music festival last weekend. I expected to help at the entrance, checking tickets, but they asked me to work behind one of the food stalls instead. It was much busier than I expected, and by lunchtime I was too tired to watch the bands I had wanted to see. Still, the other volunteers were great fun."
+        },
+        {
+          "speaker": "speaker",
+          "text": "I told a friend about it later, and she said she had experienced something very similar."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "How did the man feel by lunchtime?",
+          "options": {
+            "A": "disappointed with the other volunteers",
+            "B": "annoyed about checking tickets",
+            "C": "too tired to enjoy the music"
+          },
+          "answer": "C",
+          "explanation": "He says he was too tired to watch the bands he wanted to see."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/Test26_part2.mp3"
 }

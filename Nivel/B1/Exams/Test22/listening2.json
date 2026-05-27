@@ -1,265 +1,265 @@
 {
-    "test_number":  22,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two people talking about a local bus service.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Woman: Did you hear the council might change the number 6 bus route? || Man: Yes, and I hope they do. It goes past my flat, but it's often late, especially after work. || Woman: Would the new route be quicker? || Man: Maybe, but that's not the main thing. [8]If it stopped outside the hospital, my dad could use it for his appointments without changing buses[/8]. That would really help him. || Woman: Maybe you can tell me more about it tomorrow, when you've had time to think.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did you hear the council might change the number 6 bus route?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, and I hope they do. It goes past my flat, but it's often late, especially after work."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Would the new route be quicker?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Maybe, but that's not the main thing. If it stopped outside the hospital, my dad could use it for his appointments without changing buses. That would really help him."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Maybe you can tell me more about it tomorrow, when you've had time to think."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "Why does the man support the change?",
-                                               "options":  {
-                                                               "A":  "It would be useful for a family member.",
-                                                               "B":  "It would make his journey to work faster.",
-                                                               "C":  "It would stop closer to his flat."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The man says the new stop would help his dad get to hospital appointments."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a man telling a friend about a photography exhibition.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: Did you go to the photography exhibition on Saturday? || Man: Yes. I nearly didn't because the tickets were expensive, but I'm glad I went. || Woman: Were the pictures good? || Man: Some were amazing. The landscapes were beautiful, but [9]what really impressed me was the way the photographer showed ordinary people at work[/9]. Those pictures felt honest and full of life. || Man: Good point. I suppose it's one of those things you only understand after trying it yourself.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did you go to the photography exhibition on Saturday?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes. I nearly didn't because the tickets were expensive, but I'm glad I went."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Were the pictures good?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Some were amazing. The landscapes were beautiful, but what really impressed me was the way the photographer showed ordinary people at work. Those pictures felt honest and full of life."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Good point. I suppose it's one of those things you only understand after trying it yourself."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What impressed the man most about the exhibition?",
-                                               "options":  {
-                                                               "A":  "the size of the landscapes",
-                                                               "B":  "the photographs of people",
-                                                               "C":  "the low price of the tickets"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He says the photographs showing ordinary people at work really impressed him."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear two friends talking about a music lesson.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: How's your guitar lesson going? Can you play a song yet? || Woman: A simple one, yes. The teacher is patient, and I practise most evenings. || Man: That sounds good. || Woman: It is, but [10]I wish the lesson was earlier because after college I'm so tired that I don't take everything in[/10]. I don't want to change teachers, though. || Woman: That sounds sensible. It's always easier when you know what to expect before you make a final decision.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "How's your guitar lesson going? Can you play a song yet?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "A simple one, yes. The teacher is patient, and I practise most evenings."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That sounds good."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "It is, but I wish the lesson was earlier because after college I'm so tired that I don't take everything in. I don't want to change teachers, though."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds sensible. It's always easier when you know what to expect before you make a final decision."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What problem does the woman have with the lesson?",
-                                               "options":  {
-                                                               "A":  "The teacher is impatient.",
-                                                               "B":  "She has too little time to practise.",
-                                                               "C":  "It is at an inconvenient time."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says she wishes the lesson was earlier because she is tired after college."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear two friends talking about cycling to work.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: You're still cycling to work every day, aren't you? || Man: Most days. I thought the traffic would make it frightening, but the cycle path is separate from the road. || Woman: So you recommend it? || Man: Yes. [11]The best thing is arriving feeling awake instead of half asleep after the bus journey[/11]. It doesn't save much money because repairs are expensive, but I feel better. || Man: I see what you mean. Sometimes those small details matter more than people expect at first.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "You're still cycling to work every day, aren't you?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Most days. I thought the traffic would make it frightening, but the cycle path is separate from the road."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "So you recommend it?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes. The best thing is arriving feeling awake instead of half asleep after the bus journey. It doesn't save much money because repairs are expensive, but I feel better."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I see what you mean. Sometimes those small details matter more than people expect at first."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What does the man like most about cycling to work?",
-                                               "options":  {
-                                                               "A":  "It makes him feel more energetic.",
-                                                               "B":  "It saves him a lot of money.",
-                                                               "C":  "It keeps him away from traffic."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "He says the best thing is arriving feeling awake."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear two friends talking about a new café.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: Have you tried the café in the library? || Woman: Yes, yesterday. The coffee was fine, and the cakes looked lovely, but it isn't really a place to chat. || Man: Why not? Is the music loud? || Woman: No, [12]there are only three small tables, so people are standing close to you waiting for a seat[/12]. I felt I had to leave quickly. || Woman: Well, I hope it works out, because it sounds as if you've thought about it carefully.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Have you tried the café in the library?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, yesterday. The coffee was fine, and the cakes looked lovely, but it isn't really a place to chat."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Why not? Is the music loud?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "No, there are only three small tables, so people are standing close to you waiting for a seat. I felt I had to leave quickly."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Well, I hope it works out, because it sounds as if you've thought about it carefully."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What does the woman say about the café?",
-                                               "options":  {
-                                                               "A":  "The music is too loud.",
-                                                               "B":  "There is not enough space to sit.",
-                                                               "C":  "The cakes are disappointing."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says there are only three small tables and people are waiting for a seat."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear a woman talking about a jacket she bought online.",
-                         "voices":  {
-                                        "speaker":  "en-GB-RyanNeural"
-                                    },
-                         "audio_script":  "Speaker: I ordered a jacket online because the colour looked perfect in the picture. It arrived quickly, and it fits quite well. I don't mind that it's a little thinner than I expected, because it's for spring. However, [13]the colour is much darker than it appeared on the website, so it doesn't match the dress I wanted to wear it with[/13]. I'll probably send it back. || Speaker: I told a friend about it later, and she said she had experienced something very similar.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "I ordered a jacket online because the colour looked perfect in the picture. It arrived quickly, and it fits quite well. I don't mind that it's a little thinner than I expected, because it's for spring. However, the colour is much darker than it appeared on the website, so it doesn't match the dress I wanted to wear it with. I'll probably send it back."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "I told a friend about it later, and she said she had experienced something very similar."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "Why is the woman unhappy with the jacket?",
-                                               "options":  {
-                                                               "A":  "It arrived later than expected.",
-                                                               "B":  "It is too thin for the weather.",
-                                                               "C":  "It is not the colour she wanted."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says the colour is much darker than it appeared online."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2022.mp3"
+  "test_number": 22,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two people talking about a local bus service.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Woman: Did you hear the council might change the number 6 bus route? || Man: Yes, and I hope they do. It goes past my flat, but it's often late, especially after work. || Woman: Would the new route be quicker? || Man: Maybe, but that's not the main thing. [8]If it stopped outside the hospital, my dad could use it for his appointments without changing buses[/8]. That would really help him. || Woman: Maybe you can tell me more about it tomorrow, when you've had time to think.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you hear the council might change the number 6 bus route?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, and I hope they do. It goes past my flat, but it's often late, especially after work."
+        },
+        {
+          "speaker": "woman",
+          "text": "Would the new route be quicker?"
+        },
+        {
+          "speaker": "man",
+          "text": "Maybe, but that's not the main thing. If it stopped outside the hospital, my dad could use it for his appointments without changing buses. That would really help him."
+        },
+        {
+          "speaker": "woman",
+          "text": "Maybe you can tell me more about it tomorrow, when you've had time to think."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "Why does the man support the change?",
+          "options": {
+            "A": "It would be useful for a family member.",
+            "B": "It would make his journey to work faster.",
+            "C": "It would stop closer to his flat."
+          },
+          "answer": "A",
+          "explanation": "The man says the new stop would help his dad get to hospital appointments."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a man telling a friend about a photography exhibition.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: Did you go to the photography exhibition on Saturday? || Man: Yes. I nearly didn't because the tickets were expensive, but I'm glad I went. || Woman: Were the pictures good? || Man: Some were amazing. The landscapes were beautiful, but [9]what really impressed me was the way the photographer showed ordinary people at work[/9]. Those pictures felt honest and full of life. || Man: Good point. I suppose it's one of those things you only understand after trying it yourself.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you go to the photography exhibition on Saturday?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes. I nearly didn't because the tickets were expensive, but I'm glad I went."
+        },
+        {
+          "speaker": "woman",
+          "text": "Were the pictures good?"
+        },
+        {
+          "speaker": "man",
+          "text": "Some were amazing. The landscapes were beautiful, but what really impressed me was the way the photographer showed ordinary people at work. Those pictures felt honest and full of life."
+        },
+        {
+          "speaker": "man",
+          "text": "Good point. I suppose it's one of those things you only understand after trying it yourself."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What impressed the man most about the exhibition?",
+          "options": {
+            "A": "the size of the landscapes",
+            "B": "the photographs of people",
+            "C": "the low price of the tickets"
+          },
+          "answer": "B",
+          "explanation": "He says the photographs showing ordinary people at work really impressed him."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear two friends talking about a music lesson.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: How's your guitar lesson going? Can you play a song yet? || Woman: A simple one, yes. The teacher is patient, and I practise most evenings. || Man: That sounds good. || Woman: It is, but [10]I wish the lesson was earlier because after college I'm so tired that I don't take everything in[/10]. I don't want to change teachers, though. || Woman: That sounds sensible. It's always easier when you know what to expect before you make a final decision.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How's your guitar lesson going? Can you play a song yet?"
+        },
+        {
+          "speaker": "woman",
+          "text": "A simple one, yes. The teacher is patient, and I practise most evenings."
+        },
+        {
+          "speaker": "man",
+          "text": "That sounds good."
+        },
+        {
+          "speaker": "woman",
+          "text": "It is, but I wish the lesson was earlier because after college I'm so tired that I don't take everything in. I don't want to change teachers, though."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds sensible. It's always easier when you know what to expect before you make a final decision."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What problem does the woman have with the lesson?",
+          "options": {
+            "A": "The teacher is impatient.",
+            "B": "She has too little time to practise.",
+            "C": "It is at an inconvenient time."
+          },
+          "answer": "C",
+          "explanation": "She says she wishes the lesson was earlier because she is tired after college."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear two friends talking about cycling to work.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: You're still cycling to work every day, aren't you? || Man: Most days. I thought the traffic would make it frightening, but the cycle path is separate from the road. || Woman: So you recommend it? || Man: Yes. [11]The best thing is arriving feeling awake instead of half asleep after the bus journey[/11]. It doesn't save much money because repairs are expensive, but I feel better. || Man: I see what you mean. Sometimes those small details matter more than people expect at first.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "You're still cycling to work every day, aren't you?"
+        },
+        {
+          "speaker": "man",
+          "text": "Most days. I thought the traffic would make it frightening, but the cycle path is separate from the road."
+        },
+        {
+          "speaker": "woman",
+          "text": "So you recommend it?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes. The best thing is arriving feeling awake instead of half asleep after the bus journey. It doesn't save much money because repairs are expensive, but I feel better."
+        },
+        {
+          "speaker": "man",
+          "text": "I see what you mean. Sometimes those small details matter more than people expect at first."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What does the man like most about cycling to work?",
+          "options": {
+            "A": "It makes him feel more energetic.",
+            "B": "It saves him a lot of money.",
+            "C": "It keeps him away from traffic."
+          },
+          "answer": "A",
+          "explanation": "He says the best thing is arriving feeling awake."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear two friends talking about a new café.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Have you tried the café in the library? || Woman: Yes, yesterday. The coffee was fine, and the cakes looked lovely, but it isn't really a place to chat. || Man: Why not? Is the music loud? || Woman: No, [12]there are only three small tables, so people are standing close to you waiting for a seat[/12]. I felt I had to leave quickly. || Woman: Well, I hope it works out, because it sounds as if you've thought about it carefully.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you tried the café in the library?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, yesterday. The coffee was fine, and the cakes looked lovely, but it isn't really a place to chat."
+        },
+        {
+          "speaker": "man",
+          "text": "Why not? Is the music loud?"
+        },
+        {
+          "speaker": "woman",
+          "text": "No, there are only three small tables, so people are standing close to you waiting for a seat. I felt I had to leave quickly."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, I hope it works out, because it sounds as if you've thought about it carefully."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What does the woman say about the café?",
+          "options": {
+            "A": "The music is too loud.",
+            "B": "There is not enough space to sit.",
+            "C": "The cakes are disappointing."
+          },
+          "answer": "B",
+          "explanation": "She says there are only three small tables and people are waiting for a seat."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear a woman talking about a jacket she bought online.",
+      "voices": {
+        "speaker": "en-GB-RyanNeural"
+      },
+      "audio_script": "Speaker: I ordered a jacket online because the colour looked perfect in the picture. It arrived quickly, and it fits quite well. I don't mind that it's a little thinner than I expected, because it's for spring. However, [13]the colour is much darker than it appeared on the website, so it doesn't match the dress I wanted to wear it with[/13]. I'll probably send it back. || Speaker: I told a friend about it later, and she said she had experienced something very similar.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "I ordered a jacket online because the colour looked perfect in the picture. It arrived quickly, and it fits quite well. I don't mind that it's a little thinner than I expected, because it's for spring. However, the colour is much darker than it appeared on the website, so it doesn't match the dress I wanted to wear it with. I'll probably send it back."
+        },
+        {
+          "speaker": "speaker",
+          "text": "I told a friend about it later, and she said she had experienced something very similar."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "Why is the woman unhappy with the jacket?",
+          "options": {
+            "A": "It arrived later than expected.",
+            "B": "It is too thin for the weather.",
+            "C": "It is not the colour she wanted."
+          },
+          "answer": "C",
+          "explanation": "She says the colour is much darker than it appeared online."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/Test22_part2.mp3"
 }
