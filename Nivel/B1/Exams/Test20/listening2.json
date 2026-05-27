@@ -1,266 +1,266 @@
 {
-    "test_number":  20,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two friends talking about a cooking class.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: How was your first cooking class? || Man: Good fun. I thought we'd make something complicated, but the teacher chose simple dishes. [8]I liked that we worked in pairs, because I could ask another student for help when I wasn't sure what to do[/8]. || Woman: That sounds less stressful than cooking alone in front of everyone. || Woman: I might ask someone else as well, just to be sure, but at least I have a much better idea now.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "How was your first cooking class?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Good fun. I thought we'd make something complicated, but the teacher chose simple dishes. I liked that we worked in pairs, because I could ask another student for help when I wasn't sure what to do."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds less stressful than cooking alone in front of everyone."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I might ask someone else as well, just to be sure, but at least I have a much better idea now."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "What did the man like about the cooking class?",
-                                               "options":  {
-                                                               "A":  "working with another student.",
-                                                               "B":  "making complicated dishes.",
-                                                               "C":  "cooking without any help."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "He says he liked working in pairs because he could ask another student for help."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a woman talking about a bus tour.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Did you enjoy the city bus tour? || Woman: It was okay. The guide was funny, and I learned a few facts. [9]But the bus windows were dirty, so it was hard to take good photos from upstairs[/9]. || Man: That's annoying when the whole point is seeing the city. || Woman: Well, I hope it works out. It sounds as if you have thought about it carefully, which is always a sensible start. || Woman: That should make the choice easier now.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you enjoy the city bus tour?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "It was okay. The guide was funny, and I learned a few facts. But the bus windows were dirty, so it was hard to take good photos from upstairs."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's annoying when the whole point is seeing the city."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Well, I hope it works out. It sounds as if you have thought about it carefully, which is always a sensible start."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That should make the choice easier now."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What was the problem with the bus tour?",
-                                               "options":  {
-                                                               "A":  "The guide was boring.",
-                                                               "B":  "The windows were not clean.",
-                                                               "C":  "The tour was too short."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says the bus windows were dirty, making it difficult to take photos."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear two people talking about a football club.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Woman: Are you still volunteering at the junior football club? || Man: Yes. The children are great, although they have so much energy. [10]We need more adults to help on match days, especially when two teams play at the same time[/10]. || Woman: I could ask my brother. He used to coach a school team. || Woman: Maybe next time it will be simpler. Things like this often seem more difficult before you know the full story.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you still volunteering at the junior football club?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes. The children are great, although they have so much energy. We need more adults to help on match days, especially when two teams play at the same time."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I could ask my brother. He used to coach a school team."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Maybe next time it will be simpler. Things like this often seem more difficult before you know the full story."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What does the club need?",
-                                               "options":  {
-                                                               "A":  "more children to join.",
-                                                               "B":  "better places to play matches.",
-                                                               "C":  "more adult helpers."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The man says they need more adults to help on match days."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear a girl talking about a school project.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "girl":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Man: Have you finished your history project? || Girl: Almost. I found lots of information online and wrote most of it last night. [11]Today I only need to choose the pictures and put them in the right places[/11]. || Man: That shouldn't take too long. Remember to check the spelling before you print it. || Man: I agree. It is worth taking a little time over it, instead of rushing and regretting the choice later. || Man: At least the main point is clear.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Have you finished your history project?"
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Almost. I found lots of information online and wrote most of it last night. Today I only need to choose the pictures and put them in the right places."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That shouldn't take too long. Remember to check the spelling before you print it."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I agree. It is worth taking a little time over it, instead of rushing and regretting the choice later."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "At least the main point is clear."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What does the girl still need to do?",
-                                               "options":  {
-                                                               "A":  "add the pictures.",
-                                                               "B":  "find information online.",
-                                                               "C":  "write most of the project."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says she only needs to choose the pictures and put them in the right places."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear two friends talking about a new cinema.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Have you been to the new cinema yet? || Man: Yes. The seats are comfortable, and the sound is excellent. Tickets are a bit expensive, though. [12]What bothered me was the lack of staff at the entrance; everyone had to wait to show their tickets[/12]. || Woman: They should sort that out before it gets busy. || Woman: That makes sense. Sometimes the practical details are more important than they seem at the beginning. || Woman: That is worth remembering next time too.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have you been to the new cinema yet?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes. The seats are comfortable, and the sound is excellent. Tickets are a bit expensive, though. What bothered me was the lack of staff at the entrance; everyone had to wait to show their tickets."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "They should sort that out before it gets busy."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That makes sense. Sometimes the practical details are more important than they seem at the beginning."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That is worth remembering next time too."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What did the man dislike about the cinema?",
-                                               "options":  {
-                                                               "A":  "The seats were uncomfortable.",
-                                                               "B":  "There were not enough staff.",
-                                                               "C":  "The sound quality was poor."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He says there were not enough staff at the entrance, causing people to wait."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear a woman talking about a family picnic.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Did the family picnic go well? || Woman: Yes, though we nearly cancelled because of the forecast. It stayed dry, and the children loved playing by the lake. [13]The only mistake was choosing a place too far from the car park, because we had to carry everything a long way[/13]. || Man: You'll know for next time. || Woman: I can understand that. It is always useful when someone explains the situation clearly before you decide what to do.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did the family picnic go well?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, though we nearly cancelled because of the forecast. It stayed dry, and the children loved playing by the lake. The only mistake was choosing a place too far from the car park, because we had to carry everything a long way."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "You'll know for next time."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I can understand that. It is always useful when someone explains the situation clearly before you decide what to do."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What problem did the woman have at the picnic?",
-                                               "options":  {
-                                                               "A":  "The weather was too wet.",
-                                                               "B":  "The children were bored.",
-                                                               "C":  "The picnic place was too far away."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says they chose a place too far from the car park and had to carry everything a long way."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2020.mp3"
+  "test_number": 20,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two friends talking about a cooking class.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: How was your first cooking class? || Man: Good fun. I thought we'd make something complicated, but the teacher chose simple dishes. [8]I liked that we worked in pairs, because I could ask another student for help when I wasn't sure what to do[/8]. || Woman: That sounds less stressful than cooking alone in front of everyone. || Woman: I might ask someone else as well, just to be sure, but at least I have a much better idea now.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How was your first cooking class?"
+        },
+        {
+          "speaker": "man",
+          "text": "Good fun. I thought we'd make something complicated, but the teacher chose simple dishes. I liked that we worked in pairs, because I could ask another student for help when I wasn't sure what to do."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds less stressful than cooking alone in front of everyone."
+        },
+        {
+          "speaker": "woman",
+          "text": "I might ask someone else as well, just to be sure, but at least I have a much better idea now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What did the man like about the cooking class?",
+          "options": {
+            "A": "working with another student.",
+            "B": "making complicated dishes.",
+            "C": "cooking without any help."
+          },
+          "answer": "A",
+          "explanation": "He says he liked working in pairs because he could ask another student for help."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a woman talking about a bus tour.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Did you enjoy the city bus tour? || Woman: It was okay. The guide was funny, and I learned a few facts. [9]But the bus windows were dirty, so it was hard to take good photos from upstairs[/9]. || Man: That's annoying when the whole point is seeing the city. || Woman: Well, I hope it works out. It sounds as if you have thought about it carefully, which is always a sensible start. || Woman: That should make the choice easier now.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you enjoy the city bus tour?"
+        },
+        {
+          "speaker": "woman",
+          "text": "It was okay. The guide was funny, and I learned a few facts. But the bus windows were dirty, so it was hard to take good photos from upstairs."
+        },
+        {
+          "speaker": "man",
+          "text": "That's annoying when the whole point is seeing the city."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, I hope it works out. It sounds as if you have thought about it carefully, which is always a sensible start."
+        },
+        {
+          "speaker": "woman",
+          "text": "That should make the choice easier now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What was the problem with the bus tour?",
+          "options": {
+            "A": "The guide was boring.",
+            "B": "The windows were not clean.",
+            "C": "The tour was too short."
+          },
+          "answer": "B",
+          "explanation": "She says the bus windows were dirty, making it difficult to take photos."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear two people talking about a football club.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Woman: Are you still volunteering at the junior football club? || Man: Yes. The children are great, although they have so much energy. [10]We need more adults to help on match days, especially when two teams play at the same time[/10]. || Woman: I could ask my brother. He used to coach a school team. || Woman: Maybe next time it will be simpler. Things like this often seem more difficult before you know the full story.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you still volunteering at the junior football club?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes. The children are great, although they have so much energy. We need more adults to help on match days, especially when two teams play at the same time."
+        },
+        {
+          "speaker": "woman",
+          "text": "I could ask my brother. He used to coach a school team."
+        },
+        {
+          "speaker": "woman",
+          "text": "Maybe next time it will be simpler. Things like this often seem more difficult before you know the full story."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What does the club need?",
+          "options": {
+            "A": "more children to join.",
+            "B": "better places to play matches.",
+            "C": "more adult helpers."
+          },
+          "answer": "C",
+          "explanation": "The man says they need more adults to help on match days."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear a girl talking about a school project.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "girl": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Man: Have you finished your history project? || Girl: Almost. I found lots of information online and wrote most of it last night. [11]Today I only need to choose the pictures and put them in the right places[/11]. || Man: That shouldn't take too long. Remember to check the spelling before you print it. || Man: I agree. It is worth taking a little time over it, instead of rushing and regretting the choice later. || Man: At least the main point is clear.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you finished your history project?"
+        },
+        {
+          "speaker": "girl",
+          "text": "Almost. I found lots of information online and wrote most of it last night. Today I only need to choose the pictures and put them in the right places."
+        },
+        {
+          "speaker": "man",
+          "text": "That shouldn't take too long. Remember to check the spelling before you print it."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. It is worth taking a little time over it, instead of rushing and regretting the choice later."
+        },
+        {
+          "speaker": "man",
+          "text": "At least the main point is clear."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What does the girl still need to do?",
+          "options": {
+            "A": "add the pictures.",
+            "B": "find information online.",
+            "C": "write most of the project."
+          },
+          "answer": "A",
+          "explanation": "She says she only needs to choose the pictures and put them in the right places."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear two friends talking about a new cinema.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Have you been to the new cinema yet? || Man: Yes. The seats are comfortable, and the sound is excellent. Tickets are a bit expensive, though. [12]What bothered me was the lack of staff at the entrance; everyone had to wait to show their tickets[/12]. || Woman: They should sort that out before it gets busy. || Woman: That makes sense. Sometimes the practical details are more important than they seem at the beginning. || Woman: That is worth remembering next time too.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you been to the new cinema yet?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes. The seats are comfortable, and the sound is excellent. Tickets are a bit expensive, though. What bothered me was the lack of staff at the entrance; everyone had to wait to show their tickets."
+        },
+        {
+          "speaker": "woman",
+          "text": "They should sort that out before it gets busy."
+        },
+        {
+          "speaker": "woman",
+          "text": "That makes sense. Sometimes the practical details are more important than they seem at the beginning."
+        },
+        {
+          "speaker": "woman",
+          "text": "That is worth remembering next time too."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What did the man dislike about the cinema?",
+          "options": {
+            "A": "The seats were uncomfortable.",
+            "B": "There were not enough staff.",
+            "C": "The sound quality was poor."
+          },
+          "answer": "B",
+          "explanation": "He says there were not enough staff at the entrance, causing people to wait."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear a woman talking about a family picnic.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Did the family picnic go well? || Woman: Yes, though we nearly cancelled because of the forecast. It stayed dry, and the children loved playing by the lake. [13]The only mistake was choosing a place too far from the car park, because we had to carry everything a long way[/13]. || Man: You'll know for next time. || Woman: I can understand that. It is always useful when someone explains the situation clearly before you decide what to do.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did the family picnic go well?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, though we nearly cancelled because of the forecast. It stayed dry, and the children loved playing by the lake. The only mistake was choosing a place too far from the car park, because we had to carry everything a long way."
+        },
+        {
+          "speaker": "man",
+          "text": "You'll know for next time."
+        },
+        {
+          "speaker": "woman",
+          "text": "I can understand that. It is always useful when someone explains the situation clearly before you decide what to do."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What problem did the woman have at the picnic?",
+          "options": {
+            "A": "The weather was too wet.",
+            "B": "The children were bored.",
+            "C": "The picnic place was too far away."
+          },
+          "answer": "C",
+          "explanation": "She says they chose a place too far from the car park and had to carry everything a long way."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/Test20_part2.mp3"
 }

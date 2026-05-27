@@ -1,258 +1,258 @@
 {
-    "test_number":  17,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two colleagues talking about working from home.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Man: Are you working from home tomorrow? || Woman: Yes, but only in the morning. I can answer emails easily from home, and it's quieter there. [8]I need to come into the office after lunch because the printer at home is broken and I have to prepare documents for a meeting[/8]. || Man: I can help you print them when you arrive. || Woman: Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Are you working from home tomorrow?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, but only in the morning. I can answer emails easily from home, and it's quieter there. I need to come into the office after lunch because the printer at home is broken and I have to prepare documents for a meeting."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I can help you print them when you arrive."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "Why will the woman go to the office tomorrow?",
-                                               "options":  {
-                                                               "A":  "She needs to print some documents.",
-                                                               "B":  "Her home is too noisy for work.",
-                                                               "C":  "She has to answer important emails."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says she must go to the office because her home printer is broken and she needs to prepare documents."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a man talking about a hotel breakfast.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Was the hotel breakfast good? || Man: Mostly. There was plenty of fruit, and the coffee was excellent. I didn't try the cooked breakfast because the queue was long. [9]The only thing missing was fresh bread; they just had dry toast in packets[/9]. || Woman: That's disappointing. Good bread makes breakfast much better. || Woman: Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Was the hotel breakfast good?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Mostly. There was plenty of fruit, and the coffee was excellent. I didn't try the cooked breakfast because the queue was long. The only thing missing was fresh bread; they just had dry toast in packets."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That's disappointing. Good bread makes breakfast much better."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What did the man dislike about the breakfast?",
-                                               "options":  {
-                                                               "A":  "There was not enough fruit.",
-                                                               "B":  "There was no fresh bread.",
-                                                               "C":  "The coffee was poor."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He says fresh bread was missing and there was only dry toast in packets."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear two friends talking about a theatre workshop.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: Are you going to the theatre workshop next month? || Man: I wanted to, but it's full now. My sister went last year and loved it. [10]She said the best part was meeting the actors after the performance and asking them questions[/10]. || Woman: That sounds brilliant. Maybe they'll run another workshop later in the year. || Woman: I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you going to the theatre workshop next month?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I wanted to, but it's full now. My sister went last year and loved it. She said the best part was meeting the actors after the performance and asking them questions."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds brilliant. Maybe they'll run another workshop later in the year."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What did the man's sister enjoy most about the workshop?",
-                                               "options":  {
-                                                               "A":  "acting in a short performance.",
-                                                               "B":  "watching several different plays.",
-                                                               "C":  "talking to the actors afterwards."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "He says his sister enjoyed meeting the actors after the performance and asking questions."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear a woman talking about a recipe.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Man: Did that new recipe work well? || Woman: Yes, in the end. It looked complicated, but most steps were easy. I nearly forgot to add the lemon, though. [11]What really improved the dish was cooking the vegetables slowly instead of rushing them[/11]. || Man: I'll remember that when I try it. || Woman: Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before. || Woman: That should make the choice easier now.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did that new recipe work well?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, in the end. It looked complicated, but most steps were easy. I nearly forgot to add the lemon, though. What really improved the dish was cooking the vegetables slowly instead of rushing them."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I'll remember that when I try it."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That should make the choice easier now."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What made the recipe successful?",
-                                               "options":  {
-                                                               "A":  "cooking the vegetables slowly.",
-                                                               "B":  "using extra lemon.",
-                                                               "C":  "leaving out some difficult steps."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says cooking the vegetables slowly was what really improved the dish."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear two people talking about a college open day.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Did the open day help you choose a college? || Man: It did. The building wasn't as modern as the other one I visited, but the students were friendly. [12]The art teacher showed me the studios and explained exactly what we'd do in the first year[/12]. || Woman: That sounds useful. You needed clear information about the course. || Woman: I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did the open day help you choose a college?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "It did. The building wasn't as modern as the other one I visited, but the students were friendly. The art teacher showed me the studios and explained exactly what we'd do in the first year."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds useful. You needed clear information about the course."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "Why was the open day useful for the man?",
-                                               "options":  {
-                                                               "A":  "The building was very modern.",
-                                                               "B":  "He learnt detailed information about the course.",
-                                                               "C":  "He met a lot of new students."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He says the teacher explained what students do in the first year, giving clear course information."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear a woman talking about a shopping centre.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: What do you think of the new shopping centre? || Woman: It's convenient because the parking is free, and there are lots of shops. [13]But I don't like the way it's designed. I keep going the wrong way because all the entrances look the same[/13]. || Man: I got lost there too. They need better signs. || Woman: That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "What do you think of the new shopping centre?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "It's convenient because the parking is free, and there are lots of shops. But I don't like the way it's designed. I keep going the wrong way because all the entrances look the same."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I got lost there too. They need better signs."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What does the woman dislike about the shopping centre?",
-                                               "options":  {
-                                                               "A":  "There are not enough shops.",
-                                                               "B":  "The parking is expensive.",
-                                                               "C":  "The layout is confusing."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says she keeps going the wrong way because the entrances look the same."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2017.mp3"
+  "test_number": 17,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two colleagues talking about working from home.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Man: Are you working from home tomorrow? || Woman: Yes, but only in the morning. I can answer emails easily from home, and it's quieter there. [8]I need to come into the office after lunch because the printer at home is broken and I have to prepare documents for a meeting[/8]. || Man: I can help you print them when you arrive. || Woman: Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Are you working from home tomorrow?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, but only in the morning. I can answer emails easily from home, and it's quieter there. I need to come into the office after lunch because the printer at home is broken and I have to prepare documents for a meeting."
+        },
+        {
+          "speaker": "man",
+          "text": "I can help you print them when you arrive."
+        },
+        {
+          "speaker": "woman",
+          "text": "Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "Why will the woman go to the office tomorrow?",
+          "options": {
+            "A": "She needs to print some documents.",
+            "B": "Her home is too noisy for work.",
+            "C": "She has to answer important emails."
+          },
+          "answer": "A",
+          "explanation": "She says she must go to the office because her home printer is broken and she needs to prepare documents."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a man talking about a hotel breakfast.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Was the hotel breakfast good? || Man: Mostly. There was plenty of fruit, and the coffee was excellent. I didn't try the cooked breakfast because the queue was long. [9]The only thing missing was fresh bread; they just had dry toast in packets[/9]. || Woman: That's disappointing. Good bread makes breakfast much better. || Woman: Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Was the hotel breakfast good?"
+        },
+        {
+          "speaker": "man",
+          "text": "Mostly. There was plenty of fruit, and the coffee was excellent. I didn't try the cooked breakfast because the queue was long. The only thing missing was fresh bread; they just had dry toast in packets."
+        },
+        {
+          "speaker": "woman",
+          "text": "That's disappointing. Good bread makes breakfast much better."
+        },
+        {
+          "speaker": "woman",
+          "text": "Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What did the man dislike about the breakfast?",
+          "options": {
+            "A": "There was not enough fruit.",
+            "B": "There was no fresh bread.",
+            "C": "The coffee was poor."
+          },
+          "answer": "B",
+          "explanation": "He says fresh bread was missing and there was only dry toast in packets."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear two friends talking about a theatre workshop.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: Are you going to the theatre workshop next month? || Man: I wanted to, but it's full now. My sister went last year and loved it. [10]She said the best part was meeting the actors after the performance and asking them questions[/10]. || Woman: That sounds brilliant. Maybe they'll run another workshop later in the year. || Woman: I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you going to the theatre workshop next month?"
+        },
+        {
+          "speaker": "man",
+          "text": "I wanted to, but it's full now. My sister went last year and loved it. She said the best part was meeting the actors after the performance and asking them questions."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds brilliant. Maybe they'll run another workshop later in the year."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What did the man's sister enjoy most about the workshop?",
+          "options": {
+            "A": "acting in a short performance.",
+            "B": "watching several different plays.",
+            "C": "talking to the actors afterwards."
+          },
+          "answer": "C",
+          "explanation": "He says his sister enjoyed meeting the actors after the performance and asking questions."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear a woman talking about a recipe.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Man: Did that new recipe work well? || Woman: Yes, in the end. It looked complicated, but most steps were easy. I nearly forgot to add the lemon, though. [11]What really improved the dish was cooking the vegetables slowly instead of rushing them[/11]. || Man: I'll remember that when I try it. || Woman: Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before. || Woman: That should make the choice easier now.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did that new recipe work well?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, in the end. It looked complicated, but most steps were easy. I nearly forgot to add the lemon, though. What really improved the dish was cooking the vegetables slowly instead of rushing them."
+        },
+        {
+          "speaker": "man",
+          "text": "I'll remember that when I try it."
+        },
+        {
+          "speaker": "woman",
+          "text": "Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before."
+        },
+        {
+          "speaker": "woman",
+          "text": "That should make the choice easier now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What made the recipe successful?",
+          "options": {
+            "A": "cooking the vegetables slowly.",
+            "B": "using extra lemon.",
+            "C": "leaving out some difficult steps."
+          },
+          "answer": "A",
+          "explanation": "She says cooking the vegetables slowly was what really improved the dish."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear two people talking about a college open day.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Did the open day help you choose a college? || Man: It did. The building wasn't as modern as the other one I visited, but the students were friendly. [12]The art teacher showed me the studios and explained exactly what we'd do in the first year[/12]. || Woman: That sounds useful. You needed clear information about the course. || Woman: I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did the open day help you choose a college?"
+        },
+        {
+          "speaker": "man",
+          "text": "It did. The building wasn't as modern as the other one I visited, but the students were friendly. The art teacher showed me the studios and explained exactly what we'd do in the first year."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds useful. You needed clear information about the course."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "Why was the open day useful for the man?",
+          "options": {
+            "A": "The building was very modern.",
+            "B": "He learnt detailed information about the course.",
+            "C": "He met a lot of new students."
+          },
+          "answer": "B",
+          "explanation": "He says the teacher explained what students do in the first year, giving clear course information."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear a woman talking about a shopping centre.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: What do you think of the new shopping centre? || Woman: It's convenient because the parking is free, and there are lots of shops. [13]But I don't like the way it's designed. I keep going the wrong way because all the entrances look the same[/13]. || Man: I got lost there too. They need better signs. || Woman: That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "What do you think of the new shopping centre?"
+        },
+        {
+          "speaker": "woman",
+          "text": "It's convenient because the parking is free, and there are lots of shops. But I don't like the way it's designed. I keep going the wrong way because all the entrances look the same."
+        },
+        {
+          "speaker": "man",
+          "text": "I got lost there too. They need better signs."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What does the woman dislike about the shopping centre?",
+          "options": {
+            "A": "There are not enough shops.",
+            "B": "The parking is expensive.",
+            "C": "The layout is confusing."
+          },
+          "answer": "C",
+          "explanation": "She says she keeps going the wrong way because the entrances look the same."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/Test17_part2.mp3"
 }

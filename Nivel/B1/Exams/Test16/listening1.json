@@ -1,129 +1,130 @@
 {
-    "test_id":  16,
-    "exam_part":  1,
-    "title":  "B1 Listening - Part 1 - Test 16",
-    "type":  "multiple-choice-text",
-    "totalQuestions":  7,
-    "instructions":  "For each question, listen to the recording and choose the correct answer: A, B or C.",
-    "items":  [
-                  {
-                      "number":  1,
-                      "context":  "You hear two people arranging volunteer work.",
-                      "voices":  {
-                                     "man":  "en-GB-NoahNeural",
-                                     "woman":  "en-GB-LibbyNeural"
-                                 },
-                      "audio_script":  "Man: Have you seen the message about the volunteer morning? I wrote down at the supermarket entrance, but I cannot find the message now. || Woman: That was the original plan, but all the equipment is being stored there this week. [1]We need to meet at the community centre instead[/1]. || Man: Thanks for telling me. I would have waited at the supermarket entrance and missed everyone. || Woman: No problem. I will get there a few minutes early, and I will text you if the organiser changes anything again before we leave.",
-                      "question":  "Where will they meet?",
-                      "options":  {
-                                      "A":  "At the supermarket entrance",
-                                      "B":  "At the bus stop",
-                                      "C":  "At the community centre"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "They will meet at the community centre."
-                  },
-                  {
-                      "number":  2,
-                      "context":  "You hear two students preparing for a cookery class.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-AlfieNeural"
-                                 },
-                      "audio_script":  "Girl: Have you packed for the cookery class? I was going to take a recipe book. Is that still right? || Boy: It was on the first list, but the teacher will provide recipes and cooking tools, but clothes need protecting. [2]You need to bring an apron instead[/2]. || Girl: Good thing I asked. I nearly closed my bag without it. || Boy: Put it in now and check again before you leave. The organiser said we must be ready on time tomorrow, because the group cannot wait for anyone who forgets something important.",
-                      "question":  "What should the student take?",
-                      "options":  {
-                                      "A":  "An apron",
-                                      "B":  "A wooden spoon",
-                                      "C":  "A recipe book"
-                                  },
-                      "answer":  "A",
-                      "explanation":  "The student needs to take an apron."
-                  },
-                  {
-                      "number":  3,
-                      "context":  "You hear two friends making evening plans.",
-                      "voices":  {
-                                     "boy":  "en-GB-ElliotNeural",
-                                     "girl":  "en-GB-BellaNeural"
-                                 },
-                      "audio_script":  "Boy: Are we still going to go to a restaurant this evening? I told my family I would be home later. || Girl: That was our first idea, but the restaurant has no tables left. We could go to stay home and watch television, though there is nothing interesting on tonight. [3]We are going to see a concert instead[/3]. || Boy: That sounds good. Shall we meet near the station? || Girl: Yes, at four. I will book our places now, so there should not be a problem when we arrive.",
-                      "question":  "What are they going to do?",
-                      "options":  {
-                                      "A":  "Go to a restaurant",
-                                      "B":  "See a concert",
-                                      "C":  "Watch television"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "They decide to see a concert."
-                  },
-                  {
-                      "number":  4,
-                      "context":  "You hear two friends talking about an early bus.",
-                      "voices":  {
-                                     "woman":  "en-GB-SoniaNeural",
-                                     "man":  "en-GB-RyanNeural"
-                                 },
-                      "audio_script":  "Woman: I need to check the time for the bus to college. I wrote down eight o'clock, but I am not sure it is correct. || Man: It changed this morning because the driver has to stop at another village first. [4]It starts at ten past eight now[/4], and we should arrive ten minutes earlier. || Woman: I am glad I asked. I would have arrived at the wrong time. || Man: I will send you a reminder later. Bring everything you need, because there will not be time to go back home first.",
-                      "question":  "What time does the bus leave?",
-                      "options":  {
-                                      "A":  "Eight o'clock",
-                                      "B":  "Half past eight",
-                                      "C":  "Ten past eight"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "The bus now leaves at ten past eight."
-                  },
-                  {
-                      "number":  5,
-                      "context":  "You hear two people discussing a bicycle.",
-                      "voices":  {
-                                     "man":  "en-GB-NoahNeural",
-                                     "woman":  "en-GB-LibbyNeural"
-                                 },
-                      "audio_script":  "Man: How are you getting on with your bicycle? I heard there was a problem with it. || Woman: I first thought the tyre was flat, and my brother wondered whether the seat was loose. But the shop checked it carefully this morning. [5]The chain has broken[/5]. || Man: Can they fix that before the charity ride next weekend? || Woman: They think so. Now they know what is wrong, it should be ready tomorrow afternoon. That is a relief, because I need to use it this weekend.",
-                      "question":  "What is wrong with the bicycle?",
-                      "options":  {
-                                      "A":  "The chain is broken",
-                                      "B":  "The tyre is flat",
-                                      "C":  "The seat is loose"
-                                  },
-                      "answer":  "A",
-                      "explanation":  "The bicycle chain is broken."
-                  },
-                  {
-                      "number":  6,
-                      "context":  "You hear two people planning a journey to the airport.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-AlfieNeural"
-                                 },
-                      "audio_script":  "Girl: How are you travelling to the airport on Saturday? I thought you were going by coach. || Boy: I planned to, but the coach leaves too early in the morning. I considered going by car, but my parents need the car that day. [6]I am going by train instead[/6]. || Girl: That sounds sensible. What time will you arrive? || Boy: Just before eleven, if everything is on time. I checked the timetable online, so we have plenty of time, and I will message you when I leave home.",
-                      "question":  "How will the speaker get to the airport?",
-                      "options":  {
-                                      "A":  "By coach",
-                                      "B":  "By train",
-                                      "C":  "By car"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The speaker will take the train."
-                  },
-                  {
-                      "number":  7,
-                      "context":  "You hear two people choosing a café lunch.",
-                      "voices":  {
-                                     "boy":  "en-GB-ElliotNeural",
-                                     "girl":  "en-GB-BellaNeural"
-                                 },
-                      "audio_script":  "Boy: Did you buy a burger for lunch today? I saw one yesterday and thought it would be suitable. || Girl: No. I looked at a burger, and I nearly chose a salad, but the burger looks too large and the salad will not be filling enough. [7]I bought a baked potato in the end[/7]. || Boy: That sounds like the right choice. It is more useful than the other things. || Girl: I hope so. I kept the receipt in case I need to change it later.",
-                      "question":  "What will the speaker have?",
-                      "options":  {
-                                      "A":  "A burger",
-                                      "B":  "A salad",
-                                      "C":  "A baked potato"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "The speaker chooses a baked potato."
-                  }
-              ]
+  "test_id": 16,
+  "exam_part": 1,
+  "title": "B1 Listening - Part 1 - Test 16",
+  "type": "multiple-choice-text",
+  "totalQuestions": 7,
+  "instructions": "For each question, listen to the recording and choose the correct answer: A, B or C.",
+  "items": [
+    {
+      "number": 1,
+      "context": "You hear two people arranging volunteer work.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Have you seen the message about the volunteer morning? I wrote down at the supermarket entrance, but I cannot find the message now. || Woman: That was the original plan, but all the equipment is being stored there this week. [1]We need to meet at the community centre instead[/1]. || Man: Thanks for telling me. I would have waited at the supermarket entrance and missed everyone. || Woman: No problem. I will get there a few minutes early, and I will text you if the organiser changes anything again before we leave.",
+      "question": "Where will they meet?",
+      "options": {
+        "A": "At the supermarket entrance",
+        "B": "At the bus stop",
+        "C": "At the community centre"
+      },
+      "answer": "C",
+      "explanation": "They will meet at the community centre."
+    },
+    {
+      "number": 2,
+      "context": "You hear two students preparing for a cookery class.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Girl: Have you packed for the cookery class? I was going to take a recipe book. Is that still right? || Boy: It was on the first list, but the teacher will provide recipes and cooking tools, but clothes need protecting. [2]You need to bring an apron instead[/2]. || Girl: Good thing I asked. I nearly closed my bag without it. || Boy: Put it in now and check again before you leave. The organiser said we must be ready on time tomorrow, because the group cannot wait for anyone who forgets something important.",
+      "question": "What should the student take?",
+      "options": {
+        "A": "An apron",
+        "B": "A wooden spoon",
+        "C": "A recipe book"
+      },
+      "answer": "A",
+      "explanation": "The student needs to take an apron."
+    },
+    {
+      "number": 3,
+      "context": "You hear two friends making evening plans.",
+      "voices": {
+        "boy": "en-GB-ElliotNeural",
+        "girl": "en-GB-BellaNeural"
+      },
+      "audio_script": "Boy: Are we still going to go to a restaurant this evening? I told my family I would be home later. || Girl: That was our first idea, but the restaurant has no tables left. We could go to stay home and watch television, though there is nothing interesting on tonight. [3]We are going to see a concert instead[/3]. || Boy: That sounds good. Shall we meet near the station? || Girl: Yes, at four. I will book our places now, so there should not be a problem when we arrive.",
+      "question": "What are they going to do?",
+      "options": {
+        "A": "Go to a restaurant",
+        "B": "See a concert",
+        "C": "Watch television"
+      },
+      "answer": "B",
+      "explanation": "They decide to see a concert."
+    },
+    {
+      "number": 4,
+      "context": "You hear two friends talking about an early bus.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I need to check the time for the bus to college. I wrote down eight o'clock, but I am not sure it is correct. || Man: It changed this morning because the driver has to stop at another village first. [4]It starts at ten past eight now[/4], and we should arrive ten minutes earlier. || Woman: I am glad I asked. I would have arrived at the wrong time. || Man: I will send you a reminder later. Bring everything you need, because there will not be time to go back home first.",
+      "question": "What time does the bus leave?",
+      "options": {
+        "A": "Eight o'clock",
+        "B": "Half past eight",
+        "C": "Ten past eight"
+      },
+      "answer": "C",
+      "explanation": "The bus now leaves at ten past eight."
+    },
+    {
+      "number": 5,
+      "context": "You hear two people discussing a bicycle.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: How are you getting on with your bicycle? I heard there was a problem with it. || Woman: I first thought the tyre was flat, and my brother wondered whether the seat was loose. But the shop checked it carefully this morning. [5]The chain has broken[/5]. || Man: Can they fix that before the charity ride next weekend? || Woman: They think so. Now they know what is wrong, it should be ready tomorrow afternoon. That is a relief, because I need to use it this weekend.",
+      "question": "What is wrong with the bicycle?",
+      "options": {
+        "A": "The chain is broken",
+        "B": "The tyre is flat",
+        "C": "The seat is loose"
+      },
+      "answer": "A",
+      "explanation": "The bicycle chain is broken."
+    },
+    {
+      "number": 6,
+      "context": "You hear two people planning a journey to the airport.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Girl: How are you travelling to the airport on Saturday? I thought you were going by coach. || Boy: I planned to, but the coach leaves too early in the morning. I considered going by car, but my parents need the car that day. [6]I am going by train instead[/6]. || Girl: That sounds sensible. What time will you arrive? || Boy: Just before eleven, if everything is on time. I checked the timetable online, so we have plenty of time, and I will message you when I leave home.",
+      "question": "How will the speaker get to the airport?",
+      "options": {
+        "A": "By coach",
+        "B": "By train",
+        "C": "By car"
+      },
+      "answer": "B",
+      "explanation": "The speaker will take the train."
+    },
+    {
+      "number": 7,
+      "context": "You hear two people choosing a café lunch.",
+      "voices": {
+        "boy": "en-GB-ElliotNeural",
+        "girl": "en-GB-BellaNeural"
+      },
+      "audio_script": "Boy: Did you buy a burger for lunch today? I saw one yesterday and thought it would be suitable. || Girl: No. I looked at a burger, and I nearly chose a salad, but the burger looks too large and the salad will not be filling enough. [7]I bought a baked potato in the end[/7]. || Boy: That sounds like the right choice. It is more useful than the other things. || Girl: I hope so. I kept the receipt in case I need to change it later.",
+      "question": "What will the speaker have?",
+      "options": {
+        "A": "A burger",
+        "B": "A salad",
+        "C": "A baked potato"
+      },
+      "answer": "C",
+      "explanation": "The speaker chooses a baked potato."
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part1/test16_part1.mp3"
 }

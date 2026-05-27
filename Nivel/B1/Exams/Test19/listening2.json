@@ -1,254 +1,254 @@
 {
-    "test_number":  19,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two people talking about a flat.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: Did you see the flat near the park? || Man: Yes. The rooms were bright, and the rent was lower than I expected. It was close to the bus stop too. [8]But the kitchen was so small that there was hardly space to prepare a meal[/8]. || Woman: That would be difficult if you enjoy cooking. || Woman: Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did you see the flat near the park?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes. The rooms were bright, and the rent was lower than I expected. It was close to the bus stop too. But the kitchen was so small that there was hardly space to prepare a meal."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That would be difficult if you enjoy cooking."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "Why has the man decided against the flat?",
-                                               "options":  {
-                                                               "A":  "The rent is too high.",
-                                                               "B":  "It is far from public transport.",
-                                                               "C":  "The kitchen is too small."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "He says the kitchen was so small that there was hardly space to prepare a meal."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a woman talking about a fitness watch.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: Do you like your new fitness watch? || Woman: Yes. It counts steps and shows messages from my phone. I thought the screen might be hard to read, but it's clear. [9]What helps most is that it reminds me to stand up when I've been sitting too long[/9]. || Man: I need one of those for work. || Woman: Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Do you like your new fitness watch?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes. It counts steps and shows messages from my phone. I thought the screen might be hard to read, but it's clear. What helps most is that it reminds me to stand up when I've been sitting too long."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I need one of those for work."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What does the woman find most useful about the watch?",
-                                               "options":  {
-                                                               "A":  "It reminds her to move.",
-                                                               "B":  "It displays phone messages.",
-                                                               "C":  "The screen is easy to read."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says the most helpful thing is that it reminds her to stand up after sitting too long."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear two friends talking about a school concert.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "girl":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Girl: Did your brother enjoy performing in the school concert? || Man: Yes, though he was nervous before going on stage. The hall was full, which surprised him. [10]He was disappointed only because the video camera stopped working, so we didn't record his song[/10]. || Girl: That's a pity. At least you saw it live. || Man: I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Did your brother enjoy performing in the school concert?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, though he was nervous before going on stage. The hall was full, which surprised him. He was disappointed only because the video camera stopped working, so we didn't record his song."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "That's a pity. At least you saw it live."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "Why was the boy's brother disappointed?",
-                                               "options":  {
-                                                               "A":  "The hall was not full.",
-                                                               "B":  "His song was not recorded.",
-                                                               "C":  "He was too nervous to perform."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The man says the camera stopped working, so they did not record the song."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear a man talking about a guided walk.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Woman: How was the guided walk in the old town? || Man: Interesting, but tiring. The guide told some great stories, and we saw streets I'd never noticed before. [11]The only problem was that she walked too fast, so older people at the back missed some explanations[/11]. || Woman: Guides should check everyone can keep up. || Woman: Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "How was the guided walk in the old town?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Interesting, but tiring. The guide told some great stories, and we saw streets I'd never noticed before. The only problem was that she walked too fast, so older people at the back missed some explanations."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Guides should check everyone can keep up."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What was the problem with the guided walk?",
-                                               "options":  {
-                                                               "A":  "The stories were not interesting.",
-                                                               "B":  "The route was too familiar.",
-                                                               "C":  "The guide moved too quickly."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "He says the guide walked too fast, so some people missed explanations."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear two colleagues talking about a charity event.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: Did the charity event go well? || Woman: Very well. We didn't sell many cakes, but the quiz was popular. [12]The best news is that a local company has promised to give the same amount of money we raised[/12]. || Man: That's excellent. It means your total will be twice as high. || Woman: I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did the charity event go well?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Very well. We didn't sell many cakes, but the quiz was popular. The best news is that a local company has promised to give the same amount of money we raised."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's excellent. It means your total will be twice as high."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "Why is the woman pleased about the charity event?",
-                                               "options":  {
-                                                               "A":  "A company will add extra money.",
-                                                               "B":  "The cake sale made a lot of money.",
-                                                               "C":  "More people entered the quiz than expected."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says a local company will give the same amount of money as they raised."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear a woman talking about a friend's visit.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Is your friend still coming this weekend? || Woman: Yes, but we changed the plan. I wanted to take her to the castle, but she's already been there. [13]She asked if we could go to the coast instead, because she misses the sea[/13]. || Man: Good idea. The weather should be nice on Saturday. || Woman: That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Is your friend still coming this weekend?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, but we changed the plan. I wanted to take her to the castle, but she's already been there. She asked if we could go to the coast instead, because she misses the sea."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Good idea. The weather should be nice on Saturday."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "Where will the woman take her friend?",
-                                               "options":  {
-                                                               "A":  "to a castle.",
-                                                               "B":  "to the coast.",
-                                                               "C":  "to a city museum."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "Her friend asked to go to the coast because she misses the sea."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2019.mp3"
+  "test_number": 19,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two people talking about a flat.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: Did you see the flat near the park? || Man: Yes. The rooms were bright, and the rent was lower than I expected. It was close to the bus stop too. [8]But the kitchen was so small that there was hardly space to prepare a meal[/8]. || Woman: That would be difficult if you enjoy cooking. || Woman: Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you see the flat near the park?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes. The rooms were bright, and the rent was lower than I expected. It was close to the bus stop too. But the kitchen was so small that there was hardly space to prepare a meal."
+        },
+        {
+          "speaker": "woman",
+          "text": "That would be difficult if you enjoy cooking."
+        },
+        {
+          "speaker": "woman",
+          "text": "Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "Why has the man decided against the flat?",
+          "options": {
+            "A": "The rent is too high.",
+            "B": "It is far from public transport.",
+            "C": "The kitchen is too small."
+          },
+          "answer": "C",
+          "explanation": "He says the kitchen was so small that there was hardly space to prepare a meal."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a woman talking about a fitness watch.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Do you like your new fitness watch? || Woman: Yes. It counts steps and shows messages from my phone. I thought the screen might be hard to read, but it's clear. [9]What helps most is that it reminds me to stand up when I've been sitting too long[/9]. || Man: I need one of those for work. || Woman: Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Do you like your new fitness watch?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes. It counts steps and shows messages from my phone. I thought the screen might be hard to read, but it's clear. What helps most is that it reminds me to stand up when I've been sitting too long."
+        },
+        {
+          "speaker": "man",
+          "text": "I need one of those for work."
+        },
+        {
+          "speaker": "woman",
+          "text": "Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What does the woman find most useful about the watch?",
+          "options": {
+            "A": "It reminds her to move.",
+            "B": "It displays phone messages.",
+            "C": "The screen is easy to read."
+          },
+          "answer": "A",
+          "explanation": "She says the most helpful thing is that it reminds her to stand up after sitting too long."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear two friends talking about a school concert.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "girl": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Girl: Did your brother enjoy performing in the school concert? || Man: Yes, though he was nervous before going on stage. The hall was full, which surprised him. [10]He was disappointed only because the video camera stopped working, so we didn't record his song[/10]. || Girl: That's a pity. At least you saw it live. || Man: I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Did your brother enjoy performing in the school concert?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, though he was nervous before going on stage. The hall was full, which surprised him. He was disappointed only because the video camera stopped working, so we didn't record his song."
+        },
+        {
+          "speaker": "girl",
+          "text": "That's a pity. At least you saw it live."
+        },
+        {
+          "speaker": "man",
+          "text": "I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "Why was the boy's brother disappointed?",
+          "options": {
+            "A": "The hall was not full.",
+            "B": "His song was not recorded.",
+            "C": "He was too nervous to perform."
+          },
+          "answer": "B",
+          "explanation": "The man says the camera stopped working, so they did not record the song."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear a man talking about a guided walk.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Woman: How was the guided walk in the old town? || Man: Interesting, but tiring. The guide told some great stories, and we saw streets I'd never noticed before. [11]The only problem was that she walked too fast, so older people at the back missed some explanations[/11]. || Woman: Guides should check everyone can keep up. || Woman: Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How was the guided walk in the old town?"
+        },
+        {
+          "speaker": "man",
+          "text": "Interesting, but tiring. The guide told some great stories, and we saw streets I'd never noticed before. The only problem was that she walked too fast, so older people at the back missed some explanations."
+        },
+        {
+          "speaker": "woman",
+          "text": "Guides should check everyone can keep up."
+        },
+        {
+          "speaker": "woman",
+          "text": "Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What was the problem with the guided walk?",
+          "options": {
+            "A": "The stories were not interesting.",
+            "B": "The route was too familiar.",
+            "C": "The guide moved too quickly."
+          },
+          "answer": "C",
+          "explanation": "He says the guide walked too fast, so some people missed explanations."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear two colleagues talking about a charity event.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Did the charity event go well? || Woman: Very well. We didn't sell many cakes, but the quiz was popular. [12]The best news is that a local company has promised to give the same amount of money we raised[/12]. || Man: That's excellent. It means your total will be twice as high. || Woman: I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did the charity event go well?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Very well. We didn't sell many cakes, but the quiz was popular. The best news is that a local company has promised to give the same amount of money we raised."
+        },
+        {
+          "speaker": "man",
+          "text": "That's excellent. It means your total will be twice as high."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "Why is the woman pleased about the charity event?",
+          "options": {
+            "A": "A company will add extra money.",
+            "B": "The cake sale made a lot of money.",
+            "C": "More people entered the quiz than expected."
+          },
+          "answer": "A",
+          "explanation": "She says a local company will give the same amount of money as they raised."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear a woman talking about a friend's visit.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Is your friend still coming this weekend? || Woman: Yes, but we changed the plan. I wanted to take her to the castle, but she's already been there. [13]She asked if we could go to the coast instead, because she misses the sea[/13]. || Man: Good idea. The weather should be nice on Saturday. || Woman: That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Is your friend still coming this weekend?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, but we changed the plan. I wanted to take her to the castle, but she's already been there. She asked if we could go to the coast instead, because she misses the sea."
+        },
+        {
+          "speaker": "man",
+          "text": "Good idea. The weather should be nice on Saturday."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "Where will the woman take her friend?",
+          "options": {
+            "A": "to a castle.",
+            "B": "to the coast.",
+            "C": "to a city museum."
+          },
+          "answer": "B",
+          "explanation": "Her friend asked to go to the coast because she misses the sea."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/Test19_part2.mp3"
 }

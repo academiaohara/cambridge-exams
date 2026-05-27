@@ -1,262 +1,262 @@
 {
-    "test_number":  12,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two friends talking about a school trip.",
-                         "voices":  {
-                                        "boy":  "en-GB-OliverNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Boy: Are you going on the geography trip next month? || Woman: I hope so. The teacher said there are only a few places left. || Boy: I wanted to go, but my parents thought it was too expensive. Then the school changed the plan. [8]We're travelling by coach instead of train now, so the price is much lower[/8]. || Woman: That's good news. You should ask them again tonight. || Woman: I might ask someone else as well, just to be sure, but at least I have a much better idea now.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Are you going on the geography trip next month?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I hope so. The teacher said there are only a few places left."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "I wanted to go, but my parents thought it was too expensive. Then the school changed the plan. We're travelling by coach instead of train now, so the price is much lower."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That's good news. You should ask them again tonight."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I might ask someone else as well, just to be sure, but at least I have a much better idea now."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "Why might the boy be able to go on the trip?",
-                                               "options":  {
-                                                               "A":  "There are more places available.",
-                                                               "B":  "It now costs less money.",
-                                                               "C":  "His teacher changed the date."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The boy says the trip is cheaper now because they are travelling by coach instead of train."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a woman talking to a friend about a new job.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: How's your new job at the sports centre? || Woman: Busy, but good. I thought I'd spend all day answering phones, but I actually meet lots of customers. The manager is friendly, and the hours are okay. [9]The only thing I'm still learning is how to use the booking system on the computer[/9]. || Man: You'll get used to that soon. || Woman: Well, I hope it works out. It sounds as if you have thought about it carefully, which is always a sensible start.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "How's your new job at the sports centre?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Busy, but good. I thought I'd spend all day answering phones, but I actually meet lots of customers. The manager is friendly, and the hours are okay. The only thing I'm still learning is how to use the booking system on the computer."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "You'll get used to that soon."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Well, I hope it works out. It sounds as if you have thought about it carefully, which is always a sensible start."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What does the woman say about her new job?",
-                                               "options":  {
-                                                               "A":  "The working hours are difficult.",
-                                                               "B":  "The manager is unfriendly.",
-                                                               "C":  "The computer system is challenging."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says she is still learning how to use the booking system on the computer."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear two people talking about a birthday present.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: Have you bought Dan's birthday present yet? || Man: Not yet. I nearly got him a football shirt, but I wasn't sure which team he supports now. || Woman: He keeps talking about cooking at the moment. [10]Why don't we get him that new recipe book he looked at last week?[/10] || Man: Great idea. It's easier than choosing clothes, and he'll actually use it. || Woman: Maybe next time it will be simpler. Things like this often seem more difficult before you know the full story.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have you bought Dan's birthday present yet?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Not yet. I nearly got him a football shirt, but I wasn't sure which team he supports now."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "He keeps talking about cooking at the moment. Why don't we get him that new recipe book he looked at last week?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Great idea. It's easier than choosing clothes, and he'll actually use it."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Maybe next time it will be simpler. Things like this often seem more difficult before you know the full story."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What present do they decide to buy?",
-                                               "options":  {
-                                                               "A":  "a cookery book.",
-                                                               "B":  "a football shirt.",
-                                                               "C":  "some new clothes."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The woman suggests buying the recipe book Dan looked at, and the man agrees."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear a man telling a friend about his weekend.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Did you enjoy your weekend in York? || Man: Yes, though it rained most of Saturday. We couldn't walk along the river as planned, so we went to the old museum instead. [11]I didn't expect much, but the exhibition about trains was actually the highlight of the trip[/11]. || Woman: Sometimes the best things are the ones you don't plan. || Woman: I agree. It is worth taking a little time over it, instead of rushing and regretting the choice later.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did you enjoy your weekend in York?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, though it rained most of Saturday. We couldn't walk along the river as planned, so we went to the old museum instead. I didn't expect much, but the exhibition about trains was actually the highlight of the trip."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Sometimes the best things are the ones you don't plan."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I agree. It is worth taking a little time over it, instead of rushing and regretting the choice later."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What did the man enjoy most?",
-                                               "options":  {
-                                                               "A":  "walking by the river.",
-                                                               "B":  "visiting a museum exhibition.",
-                                                               "C":  "spending time outdoors."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He says the train exhibition at the museum was the highlight of the trip."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear two colleagues talking about a training day.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Man: Are you going to the training day next Friday? || Woman: Yes, although I wasn't very interested at first. The morning talk sounds useful, but the afternoon workshop worries me a bit. [12]We have to practise speaking in front of the whole group, and I always get nervous doing that[/12]. || Man: I know what you mean, but it'll be good practice. || Woman: That makes sense. Sometimes the practical details are more important than they seem at the beginning.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Are you going to the training day next Friday?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, although I wasn't very interested at first. The morning talk sounds useful, but the afternoon workshop worries me a bit. We have to practise speaking in front of the whole group, and I always get nervous doing that."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I know what you mean, but it'll be good practice."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That makes sense. Sometimes the practical details are more important than they seem at the beginning."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "How does the woman feel about the afternoon workshop?",
-                                               "options":  {
-                                                               "A":  "excited about meeting new people.",
-                                                               "B":  "annoyed that it is compulsory.",
-                                                               "C":  "nervous about speaking publicly."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says she gets nervous speaking in front of a whole group."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear a woman talking about a local park.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Have you seen the changes at the park? || Woman: Yes, and they're great. The new café is nice, although it gets crowded. The children's playground is bigger too. [13]What I really like is the new path around the lake, because I can now walk there even after heavy rain[/13]. || Man: That will be useful in winter. || Woman: I can understand that. It is always useful when someone explains the situation clearly before you decide what to do.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Have you seen the changes at the park?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, and they're great. The new café is nice, although it gets crowded. The children's playground is bigger too. What I really like is the new path around the lake, because I can now walk there even after heavy rain."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That will be useful in winter."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I can understand that. It is always useful when someone explains the situation clearly before you decide what to do."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What does the woman like most about the park?",
-                                               "options":  {
-                                                               "A":  "the new path around the lake.",
-                                                               "B":  "the bigger children's playground.",
-                                                               "C":  "the café near the entrance."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says what she really likes is the new path around the lake."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2012.mp3"
+  "test_number": 12,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two friends talking about a school trip.",
+      "voices": {
+        "boy": "en-GB-OliverNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Boy: Are you going on the geography trip next month? || Woman: I hope so. The teacher said there are only a few places left. || Boy: I wanted to go, but my parents thought it was too expensive. Then the school changed the plan. [8]We're travelling by coach instead of train now, so the price is much lower[/8]. || Woman: That's good news. You should ask them again tonight. || Woman: I might ask someone else as well, just to be sure, but at least I have a much better idea now.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Are you going on the geography trip next month?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I hope so. The teacher said there are only a few places left."
+        },
+        {
+          "speaker": "boy",
+          "text": "I wanted to go, but my parents thought it was too expensive. Then the school changed the plan. We're travelling by coach instead of train now, so the price is much lower."
+        },
+        {
+          "speaker": "woman",
+          "text": "That's good news. You should ask them again tonight."
+        },
+        {
+          "speaker": "woman",
+          "text": "I might ask someone else as well, just to be sure, but at least I have a much better idea now."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "Why might the boy be able to go on the trip?",
+          "options": {
+            "A": "There are more places available.",
+            "B": "It now costs less money.",
+            "C": "His teacher changed the date."
+          },
+          "answer": "B",
+          "explanation": "The boy says the trip is cheaper now because they are travelling by coach instead of train."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a woman talking to a friend about a new job.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: How's your new job at the sports centre? || Woman: Busy, but good. I thought I'd spend all day answering phones, but I actually meet lots of customers. The manager is friendly, and the hours are okay. [9]The only thing I'm still learning is how to use the booking system on the computer[/9]. || Man: You'll get used to that soon. || Woman: Well, I hope it works out. It sounds as if you have thought about it carefully, which is always a sensible start.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How's your new job at the sports centre?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Busy, but good. I thought I'd spend all day answering phones, but I actually meet lots of customers. The manager is friendly, and the hours are okay. The only thing I'm still learning is how to use the booking system on the computer."
+        },
+        {
+          "speaker": "man",
+          "text": "You'll get used to that soon."
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, I hope it works out. It sounds as if you have thought about it carefully, which is always a sensible start."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What does the woman say about her new job?",
+          "options": {
+            "A": "The working hours are difficult.",
+            "B": "The manager is unfriendly.",
+            "C": "The computer system is challenging."
+          },
+          "answer": "C",
+          "explanation": "She says she is still learning how to use the booking system on the computer."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear two people talking about a birthday present.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: Have you bought Dan's birthday present yet? || Man: Not yet. I nearly got him a football shirt, but I wasn't sure which team he supports now. || Woman: He keeps talking about cooking at the moment. [10]Why don't we get him that new recipe book he looked at last week?[/10] || Man: Great idea. It's easier than choosing clothes, and he'll actually use it. || Woman: Maybe next time it will be simpler. Things like this often seem more difficult before you know the full story.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you bought Dan's birthday present yet?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not yet. I nearly got him a football shirt, but I wasn't sure which team he supports now."
+        },
+        {
+          "speaker": "woman",
+          "text": "He keeps talking about cooking at the moment. Why don't we get him that new recipe book he looked at last week?"
+        },
+        {
+          "speaker": "man",
+          "text": "Great idea. It's easier than choosing clothes, and he'll actually use it."
+        },
+        {
+          "speaker": "woman",
+          "text": "Maybe next time it will be simpler. Things like this often seem more difficult before you know the full story."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What present do they decide to buy?",
+          "options": {
+            "A": "a cookery book.",
+            "B": "a football shirt.",
+            "C": "some new clothes."
+          },
+          "answer": "A",
+          "explanation": "The woman suggests buying the recipe book Dan looked at, and the man agrees."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear a man telling a friend about his weekend.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Did you enjoy your weekend in York? || Man: Yes, though it rained most of Saturday. We couldn't walk along the river as planned, so we went to the old museum instead. [11]I didn't expect much, but the exhibition about trains was actually the highlight of the trip[/11]. || Woman: Sometimes the best things are the ones you don't plan. || Woman: I agree. It is worth taking a little time over it, instead of rushing and regretting the choice later.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you enjoy your weekend in York?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, though it rained most of Saturday. We couldn't walk along the river as planned, so we went to the old museum instead. I didn't expect much, but the exhibition about trains was actually the highlight of the trip."
+        },
+        {
+          "speaker": "woman",
+          "text": "Sometimes the best things are the ones you don't plan."
+        },
+        {
+          "speaker": "woman",
+          "text": "I agree. It is worth taking a little time over it, instead of rushing and regretting the choice later."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What did the man enjoy most?",
+          "options": {
+            "A": "walking by the river.",
+            "B": "visiting a museum exhibition.",
+            "C": "spending time outdoors."
+          },
+          "answer": "B",
+          "explanation": "He says the train exhibition at the museum was the highlight of the trip."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear two colleagues talking about a training day.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Man: Are you going to the training day next Friday? || Woman: Yes, although I wasn't very interested at first. The morning talk sounds useful, but the afternoon workshop worries me a bit. [12]We have to practise speaking in front of the whole group, and I always get nervous doing that[/12]. || Man: I know what you mean, but it'll be good practice. || Woman: That makes sense. Sometimes the practical details are more important than they seem at the beginning.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Are you going to the training day next Friday?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, although I wasn't very interested at first. The morning talk sounds useful, but the afternoon workshop worries me a bit. We have to practise speaking in front of the whole group, and I always get nervous doing that."
+        },
+        {
+          "speaker": "man",
+          "text": "I know what you mean, but it'll be good practice."
+        },
+        {
+          "speaker": "woman",
+          "text": "That makes sense. Sometimes the practical details are more important than they seem at the beginning."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "How does the woman feel about the afternoon workshop?",
+          "options": {
+            "A": "excited about meeting new people.",
+            "B": "annoyed that it is compulsory.",
+            "C": "nervous about speaking publicly."
+          },
+          "answer": "C",
+          "explanation": "She says she gets nervous speaking in front of a whole group."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear a woman talking about a local park.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Have you seen the changes at the park? || Woman: Yes, and they're great. The new café is nice, although it gets crowded. The children's playground is bigger too. [13]What I really like is the new path around the lake, because I can now walk there even after heavy rain[/13]. || Man: That will be useful in winter. || Woman: I can understand that. It is always useful when someone explains the situation clearly before you decide what to do.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you seen the changes at the park?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, and they're great. The new café is nice, although it gets crowded. The children's playground is bigger too. What I really like is the new path around the lake, because I can now walk there even after heavy rain."
+        },
+        {
+          "speaker": "man",
+          "text": "That will be useful in winter."
+        },
+        {
+          "speaker": "woman",
+          "text": "I can understand that. It is always useful when someone explains the situation clearly before you decide what to do."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What does the woman like most about the park?",
+          "options": {
+            "A": "the new path around the lake.",
+            "B": "the bigger children's playground.",
+            "C": "the café near the entrance."
+          },
+          "answer": "A",
+          "explanation": "She says what she really likes is the new path around the lake."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/Test12_part2.mp3"
 }

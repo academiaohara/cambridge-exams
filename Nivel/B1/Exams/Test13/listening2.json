@@ -1,255 +1,255 @@
 {
-    "test_number":  13,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two friends talking about a holiday apartment.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: How was the apartment by the sea? || Man: Lovely inside. It had a big kitchen and the beds were comfortable. The beach was close, too. [8]The problem was the noise from the restaurant below us. People were leaving very late every night[/8]. || Woman: That's a shame. I know you wanted somewhere peaceful. || Woman: Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "How was the apartment by the sea?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Lovely inside. It had a big kitchen and the beds were comfortable. The beach was close, too. The problem was the noise from the restaurant below us. People were leaving very late every night."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That's a shame. I know you wanted somewhere peaceful."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "What problem did the man have with the apartment?",
-                                               "options":  {
-                                                               "A":  "It was far from the beach.",
-                                                               "B":  "The beds were uncomfortable.",
-                                                               "C":  "It was noisy at night."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "He says there was noise from the restaurant below, with people leaving late every night."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a girl talking to a teacher about a drama club.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "girl":  "en-GB-MaisieNeural",
-                                        "teacher":  "en-GB-RyanNeural"
-                                    },
-                         "audio_script":  "Teacher: Are you joining the drama club again this term? || Girl: I'd like to, but I'm not sure. I enjoyed acting in the play, and the other students were friendly. [9]The trouble is that rehearsals are on Thursdays now, and that's when I have my swimming lesson[/9]. || Teacher: Perhaps you could come to the first meeting and then decide. || Man: Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "teacher",
-                                              "text":  "Are you joining the drama club again this term?"
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "I'd like to, but I'm not sure. I enjoyed acting in the play, and the other students were friendly. The trouble is that rehearsals are on Thursdays now, and that's when I have my swimming lesson."
-                                          },
-                                          {
-                                              "speaker":  "teacher",
-                                              "text":  "Perhaps you could come to the first meeting and then decide."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "Why is the girl unsure about joining the drama club?",
-                                               "options":  {
-                                                               "A":  "It is at the same time as another activity.",
-                                                               "B":  "She did not enjoy the last play.",
-                                                               "C":  "She does not know the other students."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The girl says rehearsals are on Thursdays, when she has her swimming lesson."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear two people talking about a new supermarket.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Have you tried the new supermarket near the station? || Woman: Yes. It's smaller than I expected, but it has most things. The vegetables looked fresh, and the staff were polite. [10]I just wish the signs above the aisles were clearer, because I spent ages looking for ordinary things[/10]. || Man: I had the same problem finding bread. || Woman: I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Have you tried the new supermarket near the station?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes. It's smaller than I expected, but it has most things. The vegetables looked fresh, and the staff were polite. I just wish the signs above the aisles were clearer, because I spent ages looking for ordinary things."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I had the same problem finding bread."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What does the woman dislike about the supermarket?",
-                                               "options":  {
-                                                               "A":  "The vegetables are not fresh.",
-                                                               "B":  "It is hard to find products.",
-                                                               "C":  "The staff are not helpful."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says the aisle signs are not clear and she spent a long time looking for things."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear a man talking about learning to drive.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Woman: How are your driving lessons going? || Man: Better now. At first I was afraid of busy roads, but my instructor is very patient. I can park quite well, too. [11]The thing I still find difficult is remembering to check the mirrors often enough[/11]. || Woman: Everyone says that takes time, so don't worry. || Woman: Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "How are your driving lessons going?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Better now. At first I was afraid of busy roads, but my instructor is very patient. I can park quite well, too. The thing I still find difficult is remembering to check the mirrors often enough."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Everyone says that takes time, so don't worry."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What does the man find difficult about driving?",
-                                               "options":  {
-                                                               "A":  "parking the car.",
-                                                               "B":  "driving on busy roads.",
-                                                               "C":  "checking the mirrors regularly."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "He says he still finds it difficult to remember to check the mirrors often enough."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear two friends talking about a clothes shop.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: Did you find anything in that new clothes shop? || Woman: Yes, a jacket for work. I thought the prices would be high, but they weren't. The changing rooms were tiny though. [12]What impressed me most was the assistant. She understood exactly what style I needed[/12]. || Man: That's unusual. In some shops they hardly listen. || Woman: I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you find anything in that new clothes shop?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, a jacket for work. I thought the prices would be high, but they weren't. The changing rooms were tiny though. What impressed me most was the assistant. She understood exactly what style I needed."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's unusual. In some shops they hardly listen."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What did the woman like most about the shop?",
-                                               "options":  {
-                                                               "A":  "the helpful assistant.",
-                                                               "B":  "the low prices.",
-                                                               "C":  "the large changing rooms."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says the assistant impressed her most because she understood what style was needed."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear a woman talking to a friend about a course.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Have you started your evening course yet? || Woman: Yes, Spanish for beginners. The teacher is great, and the book is easy to follow. [13]I just didn't realise how much speaking we'd have to do in pairs. That's good practice, but I feel shy with people I don't know[/13]. || Man: You'll probably feel more confident soon. || Woman: That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Have you started your evening course yet?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, Spanish for beginners. The teacher is great, and the book is easy to follow. I just didn't realise how much speaking we'd have to do in pairs. That's good practice, but I feel shy with people I don't know."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "You'll probably feel more confident soon."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What does the woman say about the course?",
-                                               "options":  {
-                                                               "A":  "The course book is too difficult.",
-                                                               "B":  "She feels uncomfortable speaking in pairs.",
-                                                               "C":  "The teacher moves too quickly."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says she feels shy speaking in pairs with people she does not know."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2013.mp3"
+  "test_number": 13,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two friends talking about a holiday apartment.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: How was the apartment by the sea? || Man: Lovely inside. It had a big kitchen and the beds were comfortable. The beach was close, too. [8]The problem was the noise from the restaurant below us. People were leaving very late every night[/8]. || Woman: That's a shame. I know you wanted somewhere peaceful. || Woman: Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How was the apartment by the sea?"
+        },
+        {
+          "speaker": "man",
+          "text": "Lovely inside. It had a big kitchen and the beds were comfortable. The beach was close, too. The problem was the noise from the restaurant below us. People were leaving very late every night."
+        },
+        {
+          "speaker": "woman",
+          "text": "That's a shame. I know you wanted somewhere peaceful."
+        },
+        {
+          "speaker": "woman",
+          "text": "Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What problem did the man have with the apartment?",
+          "options": {
+            "A": "It was far from the beach.",
+            "B": "The beds were uncomfortable.",
+            "C": "It was noisy at night."
+          },
+          "answer": "C",
+          "explanation": "He says there was noise from the restaurant below, with people leaving late every night."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a girl talking to a teacher about a drama club.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "girl": "en-GB-MaisieNeural",
+        "teacher": "en-GB-RyanNeural"
+      },
+      "audio_script": "Teacher: Are you joining the drama club again this term? || Girl: I'd like to, but I'm not sure. I enjoyed acting in the play, and the other students were friendly. [9]The trouble is that rehearsals are on Thursdays now, and that's when I have my swimming lesson[/9]. || Teacher: Perhaps you could come to the first meeting and then decide. || Man: Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this.",
+      "dialogue": [
+        {
+          "speaker": "teacher",
+          "text": "Are you joining the drama club again this term?"
+        },
+        {
+          "speaker": "girl",
+          "text": "I'd like to, but I'm not sure. I enjoyed acting in the play, and the other students were friendly. The trouble is that rehearsals are on Thursdays now, and that's when I have my swimming lesson."
+        },
+        {
+          "speaker": "teacher",
+          "text": "Perhaps you could come to the first meeting and then decide."
+        },
+        {
+          "speaker": "man",
+          "text": "Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "Why is the girl unsure about joining the drama club?",
+          "options": {
+            "A": "It is at the same time as another activity.",
+            "B": "She did not enjoy the last play.",
+            "C": "She does not know the other students."
+          },
+          "answer": "A",
+          "explanation": "The girl says rehearsals are on Thursdays, when she has her swimming lesson."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear two people talking about a new supermarket.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Have you tried the new supermarket near the station? || Woman: Yes. It's smaller than I expected, but it has most things. The vegetables looked fresh, and the staff were polite. [10]I just wish the signs above the aisles were clearer, because I spent ages looking for ordinary things[/10]. || Man: I had the same problem finding bread. || Woman: I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you tried the new supermarket near the station?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes. It's smaller than I expected, but it has most things. The vegetables looked fresh, and the staff were polite. I just wish the signs above the aisles were clearer, because I spent ages looking for ordinary things."
+        },
+        {
+          "speaker": "man",
+          "text": "I had the same problem finding bread."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What does the woman dislike about the supermarket?",
+          "options": {
+            "A": "The vegetables are not fresh.",
+            "B": "It is hard to find products.",
+            "C": "The staff are not helpful."
+          },
+          "answer": "B",
+          "explanation": "She says the aisle signs are not clear and she spent a long time looking for things."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear a man talking about learning to drive.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Woman: How are your driving lessons going? || Man: Better now. At first I was afraid of busy roads, but my instructor is very patient. I can park quite well, too. [11]The thing I still find difficult is remembering to check the mirrors often enough[/11]. || Woman: Everyone says that takes time, so don't worry. || Woman: Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How are your driving lessons going?"
+        },
+        {
+          "speaker": "man",
+          "text": "Better now. At first I was afraid of busy roads, but my instructor is very patient. I can park quite well, too. The thing I still find difficult is remembering to check the mirrors often enough."
+        },
+        {
+          "speaker": "woman",
+          "text": "Everyone says that takes time, so don't worry."
+        },
+        {
+          "speaker": "woman",
+          "text": "Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What does the man find difficult about driving?",
+          "options": {
+            "A": "parking the car.",
+            "B": "driving on busy roads.",
+            "C": "checking the mirrors regularly."
+          },
+          "answer": "C",
+          "explanation": "He says he still finds it difficult to remember to check the mirrors often enough."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear two friends talking about a clothes shop.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Did you find anything in that new clothes shop? || Woman: Yes, a jacket for work. I thought the prices would be high, but they weren't. The changing rooms were tiny though. [12]What impressed me most was the assistant. She understood exactly what style I needed[/12]. || Man: That's unusual. In some shops they hardly listen. || Woman: I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you find anything in that new clothes shop?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, a jacket for work. I thought the prices would be high, but they weren't. The changing rooms were tiny though. What impressed me most was the assistant. She understood exactly what style I needed."
+        },
+        {
+          "speaker": "man",
+          "text": "That's unusual. In some shops they hardly listen."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What did the woman like most about the shop?",
+          "options": {
+            "A": "the helpful assistant.",
+            "B": "the low prices.",
+            "C": "the large changing rooms."
+          },
+          "answer": "A",
+          "explanation": "She says the assistant impressed her most because she understood what style was needed."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear a woman talking to a friend about a course.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Have you started your evening course yet? || Woman: Yes, Spanish for beginners. The teacher is great, and the book is easy to follow. [13]I just didn't realise how much speaking we'd have to do in pairs. That's good practice, but I feel shy with people I don't know[/13]. || Man: You'll probably feel more confident soon. || Woman: That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you started your evening course yet?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, Spanish for beginners. The teacher is great, and the book is easy to follow. I just didn't realise how much speaking we'd have to do in pairs. That's good practice, but I feel shy with people I don't know."
+        },
+        {
+          "speaker": "man",
+          "text": "You'll probably feel more confident soon."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What does the woman say about the course?",
+          "options": {
+            "A": "The course book is too difficult.",
+            "B": "She feels uncomfortable speaking in pairs.",
+            "C": "The teacher moves too quickly."
+          },
+          "answer": "B",
+          "explanation": "She says she feels shy speaking in pairs with people she does not know."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/Test13_part2.mp3"
 }

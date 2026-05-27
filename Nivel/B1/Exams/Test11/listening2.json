@@ -1,258 +1,258 @@
 {
-    "test_number":  11,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two students talking about a lost library book.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Woman: Have you found that library book yet? || Man: Not yet. I checked my bag and the classroom where we had maths, but it wasn't there. I was going to buy another copy, but the librarian said they sometimes keep books that students leave behind. [8]So I'm going to ask at the library desk before I do anything else[/8]. || Woman: Good idea. Maybe someone handed it in yesterday. || Woman: Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have you found that library book yet?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Not yet. I checked my bag and the classroom where we had maths, but it wasn't there. I was going to buy another copy, but the librarian said they sometimes keep books that students leave behind. So I'm going to ask at the library desk before I do anything else."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Good idea. Maybe someone handed it in yesterday."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "What will the man do next?",
-                                               "options":  {
-                                                               "A":  "ask at the library desk.",
-                                                               "B":  "look in his classroom again.",
-                                                               "C":  "buy a new copy of the book."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The man says he is going to ask at the library desk before doing anything else."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a man talking about a photography course.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: Are you enjoying your photography course? || Man: Mostly, yes. I thought I'd need a much better camera, but the teacher says mine is fine for now. The homework isn't too bad either; we just take a few pictures each week. [9]The only thing I find hard is getting there for eight o'clock on Saturday mornings[/9]. || Woman: That does sound early for the weekend. || Woman: Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you enjoying your photography course?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Mostly, yes. I thought I'd need a much better camera, but the teacher says mine is fine for now. The homework isn't too bad either; we just take a few pictures each week. The only thing I find hard is getting there for eight o'clock on Saturday mornings."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That does sound early for the weekend."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What problem does the man have with the course?",
-                                               "options":  {
-                                                               "A":  "His camera is not good enough.",
-                                                               "B":  "The class starts too early.",
-                                                               "C":  "There is too much homework."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He says the hard part is getting there for eight o'clock on Saturday mornings."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear a woman telling a friend about a concert.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: How was the concert last night? || Woman: Better than I expected. Our seats were near the side, so I thought we might not see much, but the view was fine. The sound was a bit loud at first, though it improved later. [10]And the best surprise was the price. We paid half what I thought tickets would cost[/10]. || Man: That's lucky. Concerts are usually expensive these days. || Woman: I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "How was the concert last night?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Better than I expected. Our seats were near the side, so I thought we might not see much, but the view was fine. The sound was a bit loud at first, though it improved later. And the best surprise was the price. We paid half what I thought tickets would cost."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's lucky. Concerts are usually expensive these days."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "How did the woman feel about the concert tickets?",
-                                               "options":  {
-                                                               "A":  "She thought they were too expensive.",
-                                                               "B":  "She was disappointed with the seats.",
-                                                               "C":  "She was pleased with the price."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says the best surprise was the price and that the tickets cost half what she expected."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear two friends talking about a restaurant.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Did you like the new restaurant? || Man: Yes. The soup wasn't as hot as I wanted, but the waiter changed it quickly. || Woman: I thought the main courses were fine, though nothing special. [11]For me, the best part was the chocolate cake at the end[/11]. || Man: I agree. I don't usually order dessert, but that was excellent. We should go back just for that. || Woman: Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did you like the new restaurant?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes. The soup wasn't as hot as I wanted, but the waiter changed it quickly."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I thought the main courses were fine, though nothing special. For me, the best part was the chocolate cake at the end."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I agree. I don't usually order dessert, but that was excellent. We should go back just for that."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "They both think that",
-                                               "options":  {
-                                                               "A":  "the dessert was the best part.",
-                                                               "B":  "the soup was too cold to eat.",
-                                                               "C":  "the service was too slow."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The woman says the chocolate cake was the best part, and the man agrees it was excellent."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear a woman talking to a colleague about moving house.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Did your move go smoothly at the weekend? || Woman: Not really. We collected the keys on time, and the traffic wasn't bad, which was a relief. [12]But the van we hired broke down before it even reached our old flat[/12]. We had to wait two hours for another one. || Man: Oh no. That must have made the day very long. || Woman: I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did your move go smoothly at the weekend?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Not really. We collected the keys on time, and the traffic wasn't bad, which was a relief. But the van we hired broke down before it even reached our old flat. We had to wait two hours for another one."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Oh no. That must have made the day very long."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "Why was the woman's move delayed?",
-                                               "options":  {
-                                                               "A":  "She lost the house keys.",
-                                                               "B":  "The van had a problem.",
-                                                               "C":  "The traffic was very bad."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says the van they hired broke down before it reached their old flat."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear two friends talking about buying a phone.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Woman: Are you still thinking of repairing your old phone? || Man: I was, but the shop said it would cost almost as much as replacing it. I looked at the newest model, but I don't need such a big screen or camera. [13]In the end, I've chosen last year's model because it has everything I use and it's much cheaper[/13]. || Woman: That sounds sensible. || Woman: That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you still thinking of repairing your old phone?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I was, but the shop said it would cost almost as much as replacing it. I looked at the newest model, but I don't need such a big screen or camera. In the end, I've chosen last year's model because it has everything I use and it's much cheaper."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds sensible."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What has the man decided to buy?",
-                                               "options":  {
-                                                               "A":  "the newest phone model.",
-                                                               "B":  "parts to repair his old phone.",
-                                                               "C":  "an older phone model."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The man says he has chosen last year's model because it is cheaper and has what he needs."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2011.mp3"
+  "test_number": 11,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two students talking about a lost library book.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Woman: Have you found that library book yet? || Man: Not yet. I checked my bag and the classroom where we had maths, but it wasn't there. I was going to buy another copy, but the librarian said they sometimes keep books that students leave behind. [8]So I'm going to ask at the library desk before I do anything else[/8]. || Woman: Good idea. Maybe someone handed it in yesterday. || Woman: Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you found that library book yet?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not yet. I checked my bag and the classroom where we had maths, but it wasn't there. I was going to buy another copy, but the librarian said they sometimes keep books that students leave behind. So I'm going to ask at the library desk before I do anything else."
+        },
+        {
+          "speaker": "woman",
+          "text": "Good idea. Maybe someone handed it in yesterday."
+        },
+        {
+          "speaker": "woman",
+          "text": "Anyway, I’ll let you know what happens, because it is one of those small things that seems easy until you have to deal with it yourself."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What will the man do next?",
+          "options": {
+            "A": "ask at the library desk.",
+            "B": "look in his classroom again.",
+            "C": "buy a new copy of the book."
+          },
+          "answer": "A",
+          "explanation": "The man says he is going to ask at the library desk before doing anything else."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a man talking about a photography course.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: Are you enjoying your photography course? || Man: Mostly, yes. I thought I'd need a much better camera, but the teacher says mine is fine for now. The homework isn't too bad either; we just take a few pictures each week. [9]The only thing I find hard is getting there for eight o'clock on Saturday mornings[/9]. || Woman: That does sound early for the weekend. || Woman: Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you enjoying your photography course?"
+        },
+        {
+          "speaker": "man",
+          "text": "Mostly, yes. I thought I'd need a much better camera, but the teacher says mine is fine for now. The homework isn't too bad either; we just take a few pictures each week. The only thing I find hard is getting there for eight o'clock on Saturday mornings."
+        },
+        {
+          "speaker": "woman",
+          "text": "That does sound early for the weekend."
+        },
+        {
+          "speaker": "woman",
+          "text": "Still, I’m glad we talked about it, because it helps to hear another opinion before making a final decision about something like this."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What problem does the man have with the course?",
+          "options": {
+            "A": "His camera is not good enough.",
+            "B": "The class starts too early.",
+            "C": "There is too much homework."
+          },
+          "answer": "B",
+          "explanation": "He says the hard part is getting there for eight o'clock on Saturday mornings."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear a woman telling a friend about a concert.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: How was the concert last night? || Woman: Better than I expected. Our seats were near the side, so I thought we might not see much, but the view was fine. The sound was a bit loud at first, though it improved later. [10]And the best surprise was the price. We paid half what I thought tickets would cost[/10]. || Man: That's lucky. Concerts are usually expensive these days. || Woman: I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How was the concert last night?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Better than I expected. Our seats were near the side, so I thought we might not see much, but the view was fine. The sound was a bit loud at first, though it improved later. And the best surprise was the price. We paid half what I thought tickets would cost."
+        },
+        {
+          "speaker": "man",
+          "text": "That's lucky. Concerts are usually expensive these days."
+        },
+        {
+          "speaker": "woman",
+          "text": "I suppose it is a good lesson for next time, and at least I know what to check before I make any plans again."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "How did the woman feel about the concert tickets?",
+          "options": {
+            "A": "She thought they were too expensive.",
+            "B": "She was disappointed with the seats.",
+            "C": "She was pleased with the price."
+          },
+          "answer": "C",
+          "explanation": "She says the best surprise was the price and that the tickets cost half what she expected."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear two friends talking about a restaurant.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Did you like the new restaurant? || Man: Yes. The soup wasn't as hot as I wanted, but the waiter changed it quickly. || Woman: I thought the main courses were fine, though nothing special. [11]For me, the best part was the chocolate cake at the end[/11]. || Man: I agree. I don't usually order dessert, but that was excellent. We should go back just for that. || Woman: Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you like the new restaurant?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes. The soup wasn't as hot as I wanted, but the waiter changed it quickly."
+        },
+        {
+          "speaker": "woman",
+          "text": "I thought the main courses were fine, though nothing special. For me, the best part was the chocolate cake at the end."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. I don't usually order dessert, but that was excellent. We should go back just for that."
+        },
+        {
+          "speaker": "woman",
+          "text": "Anyway, it was useful to talk it through, because now the whole situation feels a bit clearer than it did before."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "They both think that",
+          "options": {
+            "A": "the dessert was the best part.",
+            "B": "the soup was too cold to eat.",
+            "C": "the service was too slow."
+          },
+          "answer": "A",
+          "explanation": "The woman says the chocolate cake was the best part, and the man agrees it was excellent."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear a woman talking to a colleague about moving house.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Did your move go smoothly at the weekend? || Woman: Not really. We collected the keys on time, and the traffic wasn't bad, which was a relief. [12]But the van we hired broke down before it even reached our old flat[/12]. We had to wait two hours for another one. || Man: Oh no. That must have made the day very long. || Woman: I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did your move go smoothly at the weekend?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Not really. We collected the keys on time, and the traffic wasn't bad, which was a relief. But the van we hired broke down before it even reached our old flat. We had to wait two hours for another one."
+        },
+        {
+          "speaker": "man",
+          "text": "Oh no. That must have made the day very long."
+        },
+        {
+          "speaker": "woman",
+          "text": "I’ll remember that for the future, because small details like that can make a normal day much easier or much more difficult."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "Why was the woman's move delayed?",
+          "options": {
+            "A": "She lost the house keys.",
+            "B": "The van had a problem.",
+            "C": "The traffic was very bad."
+          },
+          "answer": "B",
+          "explanation": "She says the van they hired broke down before it reached their old flat."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear two friends talking about buying a phone.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Woman: Are you still thinking of repairing your old phone? || Man: I was, but the shop said it would cost almost as much as replacing it. I looked at the newest model, but I don't need such a big screen or camera. [13]In the end, I've chosen last year's model because it has everything I use and it's much cheaper[/13]. || Woman: That sounds sensible. || Woman: That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you still thinking of repairing your old phone?"
+        },
+        {
+          "speaker": "man",
+          "text": "I was, but the shop said it would cost almost as much as replacing it. I looked at the newest model, but I don't need such a big screen or camera. In the end, I've chosen last year's model because it has everything I use and it's much cheaper."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds sensible."
+        },
+        {
+          "speaker": "woman",
+          "text": "That’s true. I think I know what to do now, and I’m glad I didn’t make the decision too quickly."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What has the man decided to buy?",
+          "options": {
+            "A": "the newest phone model.",
+            "B": "parts to repair his old phone.",
+            "C": "an older phone model."
+          },
+          "answer": "C",
+          "explanation": "The man says he has chosen last year's model because it is cheaper and has what he needs."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/Test11_part2.mp3"
 }
