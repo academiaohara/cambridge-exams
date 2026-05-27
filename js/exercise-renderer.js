@@ -869,12 +869,17 @@
         if (speakerMatch) return 'Speaker ' + speakerMatch[1];
         return label.replace(/_/g, ' ');
       };
-      var renderDialogueTurn = function(turn, idx, dataAttr) {
+      var renderDialogueTurn = function(turn, idx, opts) {
         if (!turn || typeof turn !== 'object') return '';
+        opts = opts || {};
         var label = formatSpeakerLabel(turn.speaker, idx);
         var bodyRaw = String(turn.text == null ? '' : turn.text);
         var body = self.processEvidenceMarkers(escapeHtml(bodyRaw)).replace(/\n/g, '<br>');
-        return '<div class="transcript-extract transcript-extract-interview transcript-turn-other transcript-speaker-card" ' + dataAttr + '="' + (idx + 1) + '">' +
+        var attrs = ' data-speaker-index="' + (opts.speakerIndex != null ? opts.speakerIndex : idx + 1) + '"';
+        if (opts.extractId != null) {
+          attrs += ' data-extract-id="' + escapeHtml(String(opts.extractId)) + '"';
+        }
+        return '<div class="transcript-extract transcript-extract-interview transcript-turn-other transcript-speaker-card"' + attrs + '>' +
           '<div class="transcript-speaker-label">' + escapeHtml(label) + '</div>' +
           '<div class="transcript-text">' + body + '</div>' +
           '</div>';
@@ -888,12 +893,18 @@
         html += '</div>';
       }
 
+      var multiExtractListening =
+        exercise.content.extracts && exercise.content.extracts.length > 1;
+
       if (exercise.content.extracts && exercise.content.extracts.length > 0) {
         exercise.content.extracts.forEach(function(extract) {
+          var extractIdAttr = multiExtractListening && extract.id != null
+            ? ' data-extract-id="' + escapeHtml(String(extract.id)) + '"'
+            : '';
           // Prefer audio_script for transcript display: it carries [n]…[/n] evidence markers used in explanation mode.
           if (extract.audio_script && String(extract.audio_script).trim() !== '') {
             if (extract.context) {
-              html += '<div class="transcript-extract" data-extract-id="' + escapeHtml(String(extract.id)) + '">';
+              html += '<div class="transcript-extract transcript-extract-header-only"' + extractIdAttr + '>';
               html += '<div class="transcript-extract-header">';
               if (extract.id != null) {
                 html += '<span class="transcript-extract-number">' + escapeHtml(String(extract.id)) + '</span>';
@@ -902,17 +913,26 @@
               html += '</div>';
               html += '</div>';
             }
-            extract.audio_script.split('||').forEach(function(part, idx) {
-              if (String(part).trim() === '') return;
-              html += '<div class="transcript-extract transcript-extract-interview transcript-turn-other" data-speaker-index="' + (idx + 1) + '">';
-              html += '<div class="transcript-text">' + processScript(part.trim()) + '</div>';
+            var scriptParts = extract.audio_script.split('||');
+            if (scriptParts.length === 1 && String(scriptParts[0]).trim() !== '') {
+              html += '<div class="transcript-extract transcript-extract-interview transcript-turn-other"' +
+                extractIdAttr + '>';
+              html += '<div class="transcript-text">' + processScript(scriptParts[0].trim()) + '</div>';
               html += '</div>';
-            });
+            } else {
+              scriptParts.forEach(function(part, idx) {
+                if (String(part).trim() === '') return;
+                html += '<div class="transcript-extract transcript-extract-interview transcript-turn-other"' +
+                  extractIdAttr + ' data-speaker-index="' + (idx + 1) + '">';
+                html += '<div class="transcript-text">' + processScript(part.trim()) + '</div>';
+                html += '</div>';
+              });
+            }
             return;
           }
           if (Array.isArray(extract.dialogue) && extract.dialogue.length > 0) {
             if (extract.context) {
-              html += '<div class="transcript-extract" data-extract-id="' + escapeHtml(String(extract.id)) + '">';
+              html += '<div class="transcript-extract transcript-extract-header-only"' + extractIdAttr + '>';
               html += '<div class="transcript-extract-header">';
               if (extract.id != null) {
                 html += '<span class="transcript-extract-number">' + escapeHtml(String(extract.id)) + '</span>';
@@ -922,7 +942,10 @@
               html += '</div>';
             }
             extract.dialogue.forEach(function(turn, idx) {
-              html += renderDialogueTurn(turn, idx, 'data-speaker-index');
+              html += renderDialogueTurn(turn, idx, {
+                extractId: multiExtractListening ? extract.id : null,
+                speakerIndex: idx + 1
+              });
             });
             return;
           }
