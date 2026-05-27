@@ -1,311 +1,312 @@
 {
-    "test_id":  42,
-    "exam_part":  1,
-    "title":  "B1 Listening Part 1 - Test 42",
-    "type":  "multiple-choice-text",
-    "totalQuestions":  7,
-    "instructions":  "For each question, listen to the recording and choose the correct answer: A, B or C.",
-    "items":  [
-                  {
-                      "number":  1,
-                      "context":  "You hear two people talking about a lost scarf.",
-                      "voices":  {
-                                     "woman":  "en-GB-LibbyNeural",
-                                     "man":  "en-GB-NoahNeural"
-                                 },
-                      "audio_script":  "Woman: Did you finally find your scarf? You looked everywhere before class this morning. || Man: Yes, but not where I expected. I checked the library, because I remembered using it there yesterday. || Woman: And did you try the cafe? You said you went there afterwards. || Man: I did, but nobody had seen it. Then my sister sent me a message and said [1]I had left my scarf on the back seat of Dad's car[/1]. I must have put it there without noticing. || Woman: What a relief. You will need it later. || Man: Exactly. I'll pick it up before lunch.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "Did you finally find your scarf? You looked everywhere before class this morning."
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "Yes, but not where I expected. I checked the library, because I remembered using it there yesterday."
-                                       },
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "And did you try the cafe? You said you went there afterwards."
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "I did, but nobody had seen it. Then my sister sent me a message and said I had left my scarf on the back seat of Dad's car. I must have put it there without noticing."
-                                       },
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "What a relief. You will need it later."
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "Exactly. I'll pick it up before lunch."
-                                       }
-                                   ],
-                      "question":  "Where is the scarf?",
-                      "options":  {
-                                      "A":  "On a library chair",
-                                      "B":  "On the back seat of a car",
-                                      "C":  "Beside a cafe cup"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The speaker says they had left the scarf on the back seat of Dad's car."
-                  },
-                  {
-                      "number":  2,
-                      "context":  "You hear two friends making plans for the afternoon.",
-                      "voices":  {
-                                     "boy":  "en-GB-ElliotNeural",
-                                     "girl":  "en-GB-BellaNeural"
-                                 },
-                      "audio_script":  "Boy: Are we still going to play tennis after school? I was looking forward to it. || Girl: I don't think so. The courts are still wet, so that plan will not work today. || Boy: We could go swimming instead. That might be fun. || Girl: I checked, but the pool closes early. My cousin had a different idea: [2]we are going to go to a board game cafe this afternoon[/2]. || Boy: That sounds good. Shall we meet near the station? || Girl: Yes, at four o'clock. Then we can go together before dinner.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "boy",
-                                           "text":  "Are we still going to play tennis after school? I was looking forward to it."
-                                       },
-                                       {
-                                           "speaker":  "girl",
-                                           "text":  "I don't think so. The courts are still wet, so that plan will not work today."
-                                       },
-                                       {
-                                           "speaker":  "boy",
-                                           "text":  "We could go swimming instead. That might be fun."
-                                       },
-                                       {
-                                           "speaker":  "girl",
-                                           "text":  "I checked, but the pool closes early. My cousin had a different idea: we are going to go to a board game cafe this afternoon."
-                                       },
-                                       {
-                                           "speaker":  "boy",
-                                           "text":  "That sounds good. Shall we meet near the station?"
-                                       },
-                                       {
-                                           "speaker":  "girl",
-                                           "text":  "Yes, at four o'clock. Then we can go together before dinner."
-                                       }
-                                   ],
-                      "question":  "What are the friends going to do?",
-                      "options":  {
-                                      "A":  "Play tennis",
-                                      "B":  "Go swimming",
-                                      "C":  "Go to a board game cafe"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "The speaker says they are going to go to a board game cafe this afternoon."
-                  },
-                  {
-                      "number":  3,
-                      "context":  "You hear two students talking about the farm visit.",
-                      "voices":  {
-                                     "woman":  "en-GB-SoniaNeural",
-                                     "man":  "en-GB-RyanNeural"
-                                 },
-                      "audio_script":  "Woman: Have you packed for the farm visit tomorrow? I'm trying not to take things I will not use. || Man: Almost. I was going to bring trainers, but the teacher said we will not need that there. || Woman: What about a camera? Do we need that? || Man: Not this time. The message says [3]everyone needs to bring gloves because we will help move small boxes outside[/3]. || Woman: Thanks for telling me. I will put it in my bag now. || Man: Good idea. We leave early, and there will not be time to go back home.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "Have you packed for the farm visit tomorrow? I'm trying not to take things I will not use."
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "Almost. I was going to bring trainers, but the teacher said we will not need that there."
-                                       },
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "What about a camera? Do we need that?"
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "Not this time. The message says everyone needs to bring gloves because we will help move small boxes outside."
-                                       },
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "Thanks for telling me. I will put it in my bag now."
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "Good idea. We leave early, and there will not be time to go back home."
-                                       }
-                                   ],
-                      "question":  "What should the student take?",
-                      "options":  {
-                                      "A":  "Gloves",
-                                      "B":  "Trainers",
-                                      "C":  "A Camera"
-                                  },
-                      "answer":  "A",
-                      "explanation":  "The speaker says everyone needs to bring gloves because we will help move small boxes outside."
-                  },
-                  {
-                      "number":  4,
-                      "context":  "You hear two people choosing food in a cafe.",
-                      "voices":  {
-                                     "woman":  "en-GB-MaisieNeural",
-                                     "girl":  "en-GB-AbbiNeural"
-                                 },
-                      "audio_script":  "Woman: Have you chosen what to order for lunch? The queue is getting longer behind us. || Girl: Not yet. I considered pasta, but the sauce is too spicy. || Woman: What about fish and chips? It looks good today. || Girl: I thought about that too, but it takes twenty minutes. I think [4]I'll have the vegetable curry because it is ready now[/4]. || Woman: Good choice. I'll decide while you pay. || Girl: Fine. Let's find seats by the window before all the tables are taken. We still have time before class begins.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "Have you chosen what to order for lunch? The queue is getting longer behind us."
-                                       },
-                                       {
-                                           "speaker":  "girl",
-                                           "text":  "Not yet. I considered pasta, but the sauce is too spicy."
-                                       },
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "What about fish and chips? It looks good today."
-                                       },
-                                       {
-                                           "speaker":  "girl",
-                                           "text":  "I thought about that too, but it takes twenty minutes. I think I'll have the vegetable curry because it is ready now."
-                                       },
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "Good choice. I'll decide while you pay."
-                                       },
-                                       {
-                                           "speaker":  "girl",
-                                           "text":  "Fine. Let's find seats by the window before all the tables are taken. We still have time before class begins."
-                                       }
-                                   ],
-                      "question":  "What food does the speaker choose?",
-                      "options":  {
-                                      "A":  "Pasta",
-                                      "B":  "Vegetable curry",
-                                      "C":  "Fish and chips"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The speaker chooses the vegetable curry because it is ready now."
-                  },
-                  {
-                      "number":  5,
-                      "context":  "You hear two students talking about the homework help group.",
-                      "voices":  {
-                                     "man":  "en-GB-ThomasNeural",
-                                     "boy":  "en-GB-AlfieNeural"
-                                 },
-                      "audio_script":  "Man: Did you see the message about the homework help group this afternoon? I was going straight to the library. || Boy: Do not go there, because all the tables have been booked. The teacher cannot use that room today. || Man: Oh. I heard some people were waiting by the computer room. || Boy: That is wrong too, because the computers are being repaired. The latest message says [5]we must meet in room twelve after lunch[/5]. || Man: Thanks. I would have gone to the wrong place. || Boy: I will tell the others before registration, so nobody misses the start.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "Did you see the message about the homework help group this afternoon? I was going straight to the library."
-                                       },
-                                       {
-                                           "speaker":  "boy",
-                                           "text":  "Do not go there, because all the tables have been booked. The teacher cannot use that room today."
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "Oh. I heard some people were waiting by the computer room."
-                                       },
-                                       {
-                                           "speaker":  "boy",
-                                           "text":  "That is wrong too, because the computers are being repaired. The latest message says we must meet in room twelve after lunch."
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "Thanks. I would have gone to the wrong place."
-                                       },
-                                       {
-                                           "speaker":  "boy",
-                                           "text":  "I will tell the others before registration, so nobody misses the start."
-                                       }
-                                   ],
-                      "question":  "Where should students go for the homework help group?",
-                      "options":  {
-                                      "A":  "The Library",
-                                      "B":  "The Computer Room",
-                                      "C":  "Room Twelve"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "The latest message says they must meet in room twelve after lunch."
-                  },
-                  {
-                      "number":  6,
-                      "context":  "You hear two people talking about travelling to the sports centre.",
-                      "voices":  {
-                                     "woman":  "en-GB-OliviaNeural",
-                                     "man":  "en-GB-OliverNeural"
-                                 },
-                      "audio_script":  "Woman: How are you getting to the sports centre tomorrow? I thought you were going to cycle. || Man: I was, but my bike light is broken, so it is not a good idea now. || Woman: Could you take a taxi instead? It might be quicker. || Man: I checked, but it costs too much. [6]I'm taking the bus because it stops outside the main door[/6]. || Woman: That makes sense. When will you arrive? || Man: Just before ten. I will send you a message when I get there, and we can meet near the entrance.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "How are you getting to the sports centre tomorrow? I thought you were going to cycle."
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "I was, but my bike light is broken, so it is not a good idea now."
-                                       },
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "Could you take a taxi instead? It might be quicker."
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "I checked, but it costs too much. I'm taking the bus because it stops outside the main door."
-                                       },
-                                       {
-                                           "speaker":  "woman",
-                                           "text":  "That makes sense. When will you arrive?"
-                                       },
-                                       {
-                                           "speaker":  "man",
-                                           "text":  "Just before ten. I will send you a message when I get there, and we can meet near the entrance."
-                                       }
-                                   ],
-                      "question":  "How will the speaker get to the sports centre?",
-                      "options":  {
-                                      "A":  "By Bus",
-                                      "B":  "By Bicycle",
-                                      "C":  "By Taxi"
-                                  },
-                      "answer":  "A",
-                      "explanation":  "The speaker chooses this way of travelling because it stops outside the main door."
-                  },
-                  {
-                      "number":  7,
-                      "context":  "You hear two people talking about work at the sports centre.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-AlfieNeural"
-                                 },
-                      "audio_script":  "Girl: What are you doing at the sports centre this afternoon? I thought you had to serve drinks. || Boy: That was yesterday. Someone else has already done it this morning. || Girl: So are you going to sell tickets instead? || Boy: No, because the tickets were sold online. The manager said [7]my job today is to check the changing rooms[/7]. || Girl: That sounds manageable. Will you finish by five? || Boy: I hope so. If it stays quiet, I should finish early and have time to meet my friends afterwards.",
-                      "dialogue":  [
-                                       {
-                                           "speaker":  "girl",
-                                           "text":  "What are you doing at the sports centre this afternoon? I thought you had to serve drinks."
-                                       },
-                                       {
-                                           "speaker":  "boy",
-                                           "text":  "That was yesterday. Someone else has already done it this morning."
-                                       },
-                                       {
-                                           "speaker":  "girl",
-                                           "text":  "So are you going to sell tickets instead?"
-                                       },
-                                       {
-                                           "speaker":  "boy",
-                                           "text":  "No, because the tickets were sold online. The manager said my job today is to check the changing rooms."
-                                       },
-                                       {
-                                           "speaker":  "girl",
-                                           "text":  "That sounds manageable. Will you finish by five?"
-                                       },
-                                       {
-                                           "speaker":  "boy",
-                                           "text":  "I hope so. If it stays quiet, I should finish early and have time to meet my friends afterwards."
-                                       }
-                                   ],
-                      "question":  "What job will the speaker do?",
-                      "options":  {
-                                      "A":  "Serve Drinks",
-                                      "B":  "Check Changing Rooms",
-                                      "C":  "Sell Tickets"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The speaker says their job today is to check the changing rooms."
-                  }
-              ]
+  "test_id": 42,
+  "exam_part": 1,
+  "title": "B1 Listening Part 1 - Test 42",
+  "type": "multiple-choice-text",
+  "totalQuestions": 7,
+  "instructions": "For each question, listen to the recording and choose the correct answer: A, B or C.",
+  "items": [
+    {
+      "number": 1,
+      "context": "You hear two people talking about a lost scarf.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-NoahNeural"
+      },
+      "audio_script": "Woman: Did you finally find your scarf? You looked everywhere before class this morning. || Man: Yes, but not where I expected. I checked the library, because I remembered using it there yesterday. || Woman: And did you try the cafe? You said you went there afterwards. || Man: I did, but nobody had seen it. Then my sister sent me a message and said [1]I had left my scarf on the back seat of Dad's car[/1]. I must have put it there without noticing. || Woman: What a relief. You will need it later. || Man: Exactly. I'll pick it up before lunch.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you finally find your scarf? You looked everywhere before class this morning."
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, but not where I expected. I checked the library, because I remembered using it there yesterday."
+        },
+        {
+          "speaker": "woman",
+          "text": "And did you try the cafe? You said you went there afterwards."
+        },
+        {
+          "speaker": "man",
+          "text": "I did, but nobody had seen it. Then my sister sent me a message and said I had left my scarf on the back seat of Dad's car. I must have put it there without noticing."
+        },
+        {
+          "speaker": "woman",
+          "text": "What a relief. You will need it later."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly. I'll pick it up before lunch."
+        }
+      ],
+      "question": "Where is the scarf?",
+      "options": {
+        "A": "On a library chair",
+        "B": "On the back seat of a car",
+        "C": "Beside a cafe cup"
+      },
+      "answer": "B",
+      "explanation": "The speaker says they had left the scarf on the back seat of Dad's car."
+    },
+    {
+      "number": 2,
+      "context": "You hear two friends making plans for the afternoon.",
+      "voices": {
+        "boy": "en-GB-ElliotNeural",
+        "girl": "en-GB-BellaNeural"
+      },
+      "audio_script": "Boy: Are we still going to play tennis after school? I was looking forward to it. || Girl: I don't think so. The courts are still wet, so that plan will not work today. || Boy: We could go swimming instead. That might be fun. || Girl: I checked, but the pool closes early. My cousin had a different idea: [2]we are going to go to a board game cafe this afternoon[/2]. || Boy: That sounds good. Shall we meet near the station? || Girl: Yes, at four o'clock. Then we can go together before dinner.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Are we still going to play tennis after school? I was looking forward to it."
+        },
+        {
+          "speaker": "girl",
+          "text": "I don't think so. The courts are still wet, so that plan will not work today."
+        },
+        {
+          "speaker": "boy",
+          "text": "We could go swimming instead. That might be fun."
+        },
+        {
+          "speaker": "girl",
+          "text": "I checked, but the pool closes early. My cousin had a different idea: we are going to go to a board game cafe this afternoon."
+        },
+        {
+          "speaker": "boy",
+          "text": "That sounds good. Shall we meet near the station?"
+        },
+        {
+          "speaker": "girl",
+          "text": "Yes, at four o'clock. Then we can go together before dinner."
+        }
+      ],
+      "question": "What are the friends going to do?",
+      "options": {
+        "A": "Play tennis",
+        "B": "Go swimming",
+        "C": "Go to a board game cafe"
+      },
+      "answer": "C",
+      "explanation": "The speaker says they are going to go to a board game cafe this afternoon."
+    },
+    {
+      "number": 3,
+      "context": "You hear two students talking about the farm visit.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: Have you packed for the farm visit tomorrow? I'm trying not to take things I will not use. || Man: Almost. I was going to bring trainers, but the teacher said we will not need that there. || Woman: What about a camera? Do we need that? || Man: Not this time. The message says [3]everyone needs to bring gloves because we will help move small boxes outside[/3]. || Woman: Thanks for telling me. I will put it in my bag now. || Man: Good idea. We leave early, and there will not be time to go back home.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you packed for the farm visit tomorrow? I'm trying not to take things I will not use."
+        },
+        {
+          "speaker": "man",
+          "text": "Almost. I was going to bring trainers, but the teacher said we will not need that there."
+        },
+        {
+          "speaker": "woman",
+          "text": "What about a camera? Do we need that?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not this time. The message says everyone needs to bring gloves because we will help move small boxes outside."
+        },
+        {
+          "speaker": "woman",
+          "text": "Thanks for telling me. I will put it in my bag now."
+        },
+        {
+          "speaker": "man",
+          "text": "Good idea. We leave early, and there will not be time to go back home."
+        }
+      ],
+      "question": "What should the student take?",
+      "options": {
+        "A": "Gloves",
+        "B": "Trainers",
+        "C": "A Camera"
+      },
+      "answer": "A",
+      "explanation": "The speaker says everyone needs to bring gloves because we will help move small boxes outside."
+    },
+    {
+      "number": 4,
+      "context": "You hear two people choosing food in a cafe.",
+      "voices": {
+        "woman": "en-GB-MaisieNeural",
+        "girl": "en-GB-AbbiNeural"
+      },
+      "audio_script": "Woman: Have you chosen what to order for lunch? The queue is getting longer behind us. || Girl: Not yet. I considered pasta, but the sauce is too spicy. || Woman: What about fish and chips? It looks good today. || Girl: I thought about that too, but it takes twenty minutes. I think [4]I'll have the vegetable curry because it is ready now[/4]. || Woman: Good choice. I'll decide while you pay. || Girl: Fine. Let's find seats by the window before all the tables are taken. We still have time before class begins.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you chosen what to order for lunch? The queue is getting longer behind us."
+        },
+        {
+          "speaker": "girl",
+          "text": "Not yet. I considered pasta, but the sauce is too spicy."
+        },
+        {
+          "speaker": "woman",
+          "text": "What about fish and chips? It looks good today."
+        },
+        {
+          "speaker": "girl",
+          "text": "I thought about that too, but it takes twenty minutes. I think I'll have the vegetable curry because it is ready now."
+        },
+        {
+          "speaker": "woman",
+          "text": "Good choice. I'll decide while you pay."
+        },
+        {
+          "speaker": "girl",
+          "text": "Fine. Let's find seats by the window before all the tables are taken. We still have time before class begins."
+        }
+      ],
+      "question": "What food does the speaker choose?",
+      "options": {
+        "A": "Pasta",
+        "B": "Vegetable curry",
+        "C": "Fish and chips"
+      },
+      "answer": "B",
+      "explanation": "The speaker chooses the vegetable curry because it is ready now."
+    },
+    {
+      "number": 5,
+      "context": "You hear two students talking about the homework help group.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "boy": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Man: Did you see the message about the homework help group this afternoon? I was going straight to the library. || Boy: Do not go there, because all the tables have been booked. The teacher cannot use that room today. || Man: Oh. I heard some people were waiting by the computer room. || Boy: That is wrong too, because the computers are being repaired. The latest message says [5]we must meet in room twelve after lunch[/5]. || Man: Thanks. I would have gone to the wrong place. || Boy: I will tell the others before registration, so nobody misses the start.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you see the message about the homework help group this afternoon? I was going straight to the library."
+        },
+        {
+          "speaker": "boy",
+          "text": "Do not go there, because all the tables have been booked. The teacher cannot use that room today."
+        },
+        {
+          "speaker": "man",
+          "text": "Oh. I heard some people were waiting by the computer room."
+        },
+        {
+          "speaker": "boy",
+          "text": "That is wrong too, because the computers are being repaired. The latest message says we must meet in room twelve after lunch."
+        },
+        {
+          "speaker": "man",
+          "text": "Thanks. I would have gone to the wrong place."
+        },
+        {
+          "speaker": "boy",
+          "text": "I will tell the others before registration, so nobody misses the start."
+        }
+      ],
+      "question": "Where should students go for the homework help group?",
+      "options": {
+        "A": "The Library",
+        "B": "The Computer Room",
+        "C": "Room Twelve"
+      },
+      "answer": "C",
+      "explanation": "The latest message says they must meet in room twelve after lunch."
+    },
+    {
+      "number": 6,
+      "context": "You hear two people talking about travelling to the sports centre.",
+      "voices": {
+        "woman": "en-GB-OliviaNeural",
+        "man": "en-GB-OliverNeural"
+      },
+      "audio_script": "Woman: How are you getting to the sports centre tomorrow? I thought you were going to cycle. || Man: I was, but my bike light is broken, so it is not a good idea now. || Woman: Could you take a taxi instead? It might be quicker. || Man: I checked, but it costs too much. [6]I'm taking the bus because it stops outside the main door[/6]. || Woman: That makes sense. When will you arrive? || Man: Just before ten. I will send you a message when I get there, and we can meet near the entrance.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How are you getting to the sports centre tomorrow? I thought you were going to cycle."
+        },
+        {
+          "speaker": "man",
+          "text": "I was, but my bike light is broken, so it is not a good idea now."
+        },
+        {
+          "speaker": "woman",
+          "text": "Could you take a taxi instead? It might be quicker."
+        },
+        {
+          "speaker": "man",
+          "text": "I checked, but it costs too much. I'm taking the bus because it stops outside the main door."
+        },
+        {
+          "speaker": "woman",
+          "text": "That makes sense. When will you arrive?"
+        },
+        {
+          "speaker": "man",
+          "text": "Just before ten. I will send you a message when I get there, and we can meet near the entrance."
+        }
+      ],
+      "question": "How will the speaker get to the sports centre?",
+      "options": {
+        "A": "By Bus",
+        "B": "By Bicycle",
+        "C": "By Taxi"
+      },
+      "answer": "A",
+      "explanation": "The speaker chooses this way of travelling because it stops outside the main door."
+    },
+    {
+      "number": 7,
+      "context": "You hear two people talking about work at the sports centre.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Girl: What are you doing at the sports centre this afternoon? I thought you had to serve drinks. || Boy: That was yesterday. Someone else has already done it this morning. || Girl: So are you going to sell tickets instead? || Boy: No, because the tickets were sold online. The manager said [7]my job today is to check the changing rooms[/7]. || Girl: That sounds manageable. Will you finish by five? || Boy: I hope so. If it stays quiet, I should finish early and have time to meet my friends afterwards.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "What are you doing at the sports centre this afternoon? I thought you had to serve drinks."
+        },
+        {
+          "speaker": "boy",
+          "text": "That was yesterday. Someone else has already done it this morning."
+        },
+        {
+          "speaker": "girl",
+          "text": "So are you going to sell tickets instead?"
+        },
+        {
+          "speaker": "boy",
+          "text": "No, because the tickets were sold online. The manager said my job today is to check the changing rooms."
+        },
+        {
+          "speaker": "girl",
+          "text": "That sounds manageable. Will you finish by five?"
+        },
+        {
+          "speaker": "boy",
+          "text": "I hope so. If it stays quiet, I should finish early and have time to meet my friends afterwards."
+        }
+      ],
+      "question": "What job will the speaker do?",
+      "options": {
+        "A": "Serve Drinks",
+        "B": "Check Changing Rooms",
+        "C": "Sell Tickets"
+      },
+      "answer": "B",
+      "explanation": "The speaker says their job today is to check the changing rooms."
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part1/test42_part1.mp3"
 }

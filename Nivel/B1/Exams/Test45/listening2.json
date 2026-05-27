@@ -1,236 +1,236 @@
 {
-    "test_number":  45,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You hear two friends talking about a computer problem.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: My laptop is so slow today. I thought it was the internet, but my phone works fine. || Woman: Maybe you have too many programs open. || Man: I closed them. It still freezes whenever I try to send the document. || Woman: [8]Check how much space is left on it; mine was slow last month because the memory was almost full[/8]. Delete some old videos if you need to. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "My laptop is so slow today. I thought it was the internet, but my phone works fine."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Maybe you have too many programs open."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I closed them. It still freezes whenever I try to send the document."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Check how much space is left on it; mine was slow last month because the memory was almost full. Delete some old videos if you need to. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "What does the woman suggest?",
-                                               "options":  {
-                                                               "A":  "checking the laptop storage",
-                                                               "B":  "using a different internet connection",
-                                                               "C":  "opening fewer programs"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The woman suggests checking how much space is left because her computer was slow when the memory was almost full."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You hear an announcement at a train station.",
-                         "voices":  {
-                                        "speaker":  "en-GB-ThomasNeural"
-                                    },
-                         "audio_script":  "Speaker: This is an announcement for passengers waiting for the 14:20 service to Brighton. The train is not cancelled, but it is running about fifteen minutes late because of a signal problem near Eastfield. || Speaker: [9]Please stay on platform three, where the train will arrive as usual[/9]. Passengers needing the airport should take the next train from platform one, which leaves in five minutes. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "This is an announcement for passengers waiting for the 14:20 service to Brighton. The train is not cancelled, but it is running about fifteen minutes late because of a signal problem near Eastfield."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "Please stay on platform three, where the train will arrive as usual. Passengers needing the airport should take the next train from platform one, which leaves in five minutes. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What should passengers for Brighton do?",
-                                               "options":  {
-                                                               "A":  "go to platform one",
-                                                               "B":  "remain on platform three",
-                                                               "C":  "leave the station"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The announcement says passengers for Brighton should stay on platform three."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You hear two friends talking about a part-time job.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Are you still working at the garden centre on Saturdays? || Man: Yes, but I might change. The people are friendly, and I like being outside, but the bus there takes nearly an hour. || Woman: Have you found another job? || Man: Maybe. [10]The supermarket near my house needs someone in the stockroom, which sounds less interesting but would save a lot of travel time[/10]. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you still working at the garden centre on Saturdays?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, but I might change. The people are friendly, and I like being outside, but the bus there takes nearly an hour."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have you found another job?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Maybe. The supermarket near my house needs someone in the stockroom, which sounds less interesting but would save a lot of travel time. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "Why is the man interested in the supermarket job?",
-                                               "options":  {
-                                                               "A":  "the work sounds more enjoyable",
-                                                               "B":  "the pay is much better",
-                                                               "C":  "it is closer to home"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The supermarket is near his house and would save travel time, so he is interested because it is closer to home."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You hear a woman talking to a friend about a concert ticket.",
-                         "voices":  {
-                                        "woman":  "en-GB-HollieNeural",
-                                        "man":  "en-GB-AlfieNeural"
-                                    },
-                         "audio_script":  "Man: Did you manage to buy a ticket for the concert? || Woman: Yes, but only just. The website kept stopping, and I nearly gave up. || Man: Were the cheap seats gone? || Woman: They were, but that wasn't the biggest issue. [11]I bought one ticket by mistake instead of two, so now I have to see if my sister can sit somewhere else[/11]. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you manage to buy a ticket for the concert?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, but only just. The website kept stopping, and I nearly gave up."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Were the cheap seats gone?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "They were, but that wasn't the biggest issue. I bought one ticket by mistake instead of two, so now I have to see if my sister can sit somewhere else. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What problem did the woman have?",
-                                               "options":  {
-                                                               "A":  "she bought the wrong number of tickets",
-                                                               "B":  "the concert was sold out",
-                                                               "C":  "she chose expensive seats"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The woman says she bought one ticket by mistake instead of two."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You hear a boy talking about his new bedroom.",
-                         "voices":  {
-                                        "boy":  "en-GB-OliverNeural",
-                                        "girl":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Girl: Do you like your new room after the move? || Boy: Mostly. It's smaller than my old one, but the window is bigger and I can see the garden. || Girl: Have you put your desk in yet? || Boy: Yes, although [12]I had to move the bed to the other wall so there was enough space for it[/12]. I still need shelves for my books. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Do you like your new room after the move?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Mostly. It's smaller than my old one, but the window is bigger and I can see the garden."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Have you put your desk in yet?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Yes, although I had to move the bed to the other wall so there was enough space for it. I still need shelves for my books. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What did the boy change in his room?",
-                                               "options":  {
-                                                               "A":  "he added shelves",
-                                                               "B":  "he moved the bed",
-                                                               "C":  "he changed the window"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The boy says he had to move the bed to the other wall to make space for the desk."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You hear a woman talking about a local market.",
-                         "voices":  {
-                                        "speaker":  "en-GB-OliviaNeural"
-                                    },
-                         "audio_script":  "Speaker: The market in the town square has changed recently. It used to sell mostly fruit and vegetables, but now there are stalls with clothes, books and handmade gifts too. || Speaker: [13]I still go mainly for the fresh bread, which is made at a bakery only two streets away[/13]. The flowers look pretty, but they are quite expensive this year. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "The market in the town square has changed recently. It used to sell mostly fruit and vegetables, but now there are stalls with clothes, books and handmade gifts too."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "I still go mainly for the fresh bread, which is made at a bakery only two streets away. The flowers look pretty, but they are quite expensive this year. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What does the woman usually buy at the market?",
-                                               "options":  {
-                                                               "A":  "flowers",
-                                                               "B":  "books",
-                                                               "C":  "bread"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says she still goes mainly for the fresh bread made at a nearby bakery."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2045.mp3"
+  "test_number": 45,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You hear two friends talking about a computer problem.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: My laptop is so slow today. I thought it was the internet, but my phone works fine. || Woman: Maybe you have too many programs open. || Man: I closed them. It still freezes whenever I try to send the document. || Woman: [8]Check how much space is left on it; mine was slow last month because the memory was almost full[/8]. Delete some old videos if you need to. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "My laptop is so slow today. I thought it was the internet, but my phone works fine."
+        },
+        {
+          "speaker": "woman",
+          "text": "Maybe you have too many programs open."
+        },
+        {
+          "speaker": "man",
+          "text": "I closed them. It still freezes whenever I try to send the document."
+        },
+        {
+          "speaker": "woman",
+          "text": "Check how much space is left on it; mine was slow last month because the memory was almost full. Delete some old videos if you need to. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What does the woman suggest?",
+          "options": {
+            "A": "checking the laptop storage",
+            "B": "using a different internet connection",
+            "C": "opening fewer programs"
+          },
+          "answer": "A",
+          "explanation": "The woman suggests checking how much space is left because her computer was slow when the memory was almost full."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You hear an announcement at a train station.",
+      "voices": {
+        "speaker": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Speaker: This is an announcement for passengers waiting for the 14:20 service to Brighton. The train is not cancelled, but it is running about fifteen minutes late because of a signal problem near Eastfield. || Speaker: [9]Please stay on platform three, where the train will arrive as usual[/9]. Passengers needing the airport should take the next train from platform one, which leaves in five minutes. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "This is an announcement for passengers waiting for the 14:20 service to Brighton. The train is not cancelled, but it is running about fifteen minutes late because of a signal problem near Eastfield."
+        },
+        {
+          "speaker": "speaker",
+          "text": "Please stay on platform three, where the train will arrive as usual. Passengers needing the airport should take the next train from platform one, which leaves in five minutes. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What should passengers for Brighton do?",
+          "options": {
+            "A": "go to platform one",
+            "B": "remain on platform three",
+            "C": "leave the station"
+          },
+          "answer": "B",
+          "explanation": "The announcement says passengers for Brighton should stay on platform three."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You hear two friends talking about a part-time job.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Are you still working at the garden centre on Saturdays? || Man: Yes, but I might change. The people are friendly, and I like being outside, but the bus there takes nearly an hour. || Woman: Have you found another job? || Man: Maybe. [10]The supermarket near my house needs someone in the stockroom, which sounds less interesting but would save a lot of travel time[/10]. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you still working at the garden centre on Saturdays?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, but I might change. The people are friendly, and I like being outside, but the bus there takes nearly an hour."
+        },
+        {
+          "speaker": "woman",
+          "text": "Have you found another job?"
+        },
+        {
+          "speaker": "man",
+          "text": "Maybe. The supermarket near my house needs someone in the stockroom, which sounds less interesting but would save a lot of travel time. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "Why is the man interested in the supermarket job?",
+          "options": {
+            "A": "the work sounds more enjoyable",
+            "B": "the pay is much better",
+            "C": "it is closer to home"
+          },
+          "answer": "C",
+          "explanation": "The supermarket is near his house and would save travel time, so he is interested because it is closer to home."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You hear a woman talking to a friend about a concert ticket.",
+      "voices": {
+        "woman": "en-GB-HollieNeural",
+        "man": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Man: Did you manage to buy a ticket for the concert? || Woman: Yes, but only just. The website kept stopping, and I nearly gave up. || Man: Were the cheap seats gone? || Woman: They were, but that wasn't the biggest issue. [11]I bought one ticket by mistake instead of two, so now I have to see if my sister can sit somewhere else[/11]. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you manage to buy a ticket for the concert?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, but only just. The website kept stopping, and I nearly gave up."
+        },
+        {
+          "speaker": "man",
+          "text": "Were the cheap seats gone?"
+        },
+        {
+          "speaker": "woman",
+          "text": "They were, but that wasn't the biggest issue. I bought one ticket by mistake instead of two, so now I have to see if my sister can sit somewhere else. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What problem did the woman have?",
+          "options": {
+            "A": "she bought the wrong number of tickets",
+            "B": "the concert was sold out",
+            "C": "she chose expensive seats"
+          },
+          "answer": "A",
+          "explanation": "The woman says she bought one ticket by mistake instead of two."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You hear a boy talking about his new bedroom.",
+      "voices": {
+        "boy": "en-GB-OliverNeural",
+        "girl": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Girl: Do you like your new room after the move? || Boy: Mostly. It's smaller than my old one, but the window is bigger and I can see the garden. || Girl: Have you put your desk in yet? || Boy: Yes, although [12]I had to move the bed to the other wall so there was enough space for it[/12]. I still need shelves for my books. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Do you like your new room after the move?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Mostly. It's smaller than my old one, but the window is bigger and I can see the garden."
+        },
+        {
+          "speaker": "girl",
+          "text": "Have you put your desk in yet?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes, although I had to move the bed to the other wall so there was enough space for it. I still need shelves for my books. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What did the boy change in his room?",
+          "options": {
+            "A": "he added shelves",
+            "B": "he moved the bed",
+            "C": "he changed the window"
+          },
+          "answer": "B",
+          "explanation": "The boy says he had to move the bed to the other wall to make space for the desk."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You hear a woman talking about a local market.",
+      "voices": {
+        "speaker": "en-GB-OliviaNeural"
+      },
+      "audio_script": "Speaker: The market in the town square has changed recently. It used to sell mostly fruit and vegetables, but now there are stalls with clothes, books and handmade gifts too. || Speaker: [13]I still go mainly for the fresh bread, which is made at a bakery only two streets away[/13]. The flowers look pretty, but they are quite expensive this year. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "The market in the town square has changed recently. It used to sell mostly fruit and vegetables, but now there are stalls with clothes, books and handmade gifts too."
+        },
+        {
+          "speaker": "speaker",
+          "text": "I still go mainly for the fresh bread, which is made at a bakery only two streets away. The flowers look pretty, but they are quite expensive this year. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What does the woman usually buy at the market?",
+          "options": {
+            "A": "flowers",
+            "B": "books",
+            "C": "bread"
+          },
+          "answer": "C",
+          "explanation": "She says she still goes mainly for the fresh bread made at a nearby bakery."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/test45_part2.mp3"
 }

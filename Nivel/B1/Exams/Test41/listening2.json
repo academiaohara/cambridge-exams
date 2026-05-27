@@ -1,236 +1,236 @@
 {
-    "test_number":  41,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You hear two friends talking about a new sports centre.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Have you been to the new sports centre yet? My sister says the swimming pool is huge. || Man: I went yesterday, but not to swim. The pool was closed for a school lesson, and the gym was full. || Woman: Oh no. Was it a wasted trip then? || Man: Not really. [8]I tried the climbing wall, which I hadn't expected to enjoy, and now I want to go back next week[/8]. The instructor was really patient too.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have you been to the new sports centre yet? My sister says the swimming pool is huge."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I went yesterday, but not to swim. The pool was closed for a school lesson, and the gym was full."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Oh no. Was it a wasted trip then?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Not really. I tried the climbing wall, which I hadn't expected to enjoy, and now I want to go back next week. The instructor was really patient too."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "What did the man enjoy most at the sports centre?",
-                                               "options":  {
-                                                               "A":  "using the climbing wall",
-                                                               "B":  "swimming in the pool",
-                                                               "C":  "working out in the gym"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The man says he tried the climbing wall, did not expect to enjoy it, and wants to go back, so that was what he enjoyed most."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You hear a woman leaving a phone message about a birthday meal.",
-                         "voices":  {
-                                        "speaker":  "en-GB-OliviaNeural"
-                                    },
-                         "audio_script":  "Speaker: Hi, Tom. It's Anna. About Saturday, I booked the restaurant for seven because they were full later. Mum asked about the Italian place, but it closes early this weekend. || Speaker: The new café near the park looked nice, although it only does snacks in the evening. [9]So I've chosen the small Thai restaurant opposite the cinema, as it has space for all eight of us[/9]. Call me if that's a problem.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "Hi, Tom. It's Anna. About Saturday, I booked the restaurant for seven because they were full later. Mum asked about the Italian place, but it closes early this weekend."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "The new café near the park looked nice, although it only does snacks in the evening. So I've chosen the small Thai restaurant opposite the cinema, as it has space for all eight of us. Call me if that's a problem."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "Where will the birthday meal be?",
-                                               "options":  {
-                                                               "A":  "at a Thai restaurant",
-                                                               "B":  "at an Italian restaurant",
-                                                               "C":  "at a café near the park"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "Anna says she has chosen the small Thai restaurant opposite the cinema because it has space for everyone."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You hear two classmates talking about a history lesson.",
-                         "voices":  {
-                                        "boy":  "en-GB-OliverNeural",
-                                        "girl":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Boy: Did you understand what we have to prepare for history? I wrote down the page numbers, but not the actual task. || Girl: We don't have to write a full essay yet. Miss Patel said that comes next month. || Boy: So is it just reading? || Girl: Reading is part of it, but [10]we must bring three questions about the chapter, because she wants us to discuss them in groups[/10]. She said pictures were optional.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Did you understand what we have to prepare for history? I wrote down the page numbers, but not the actual task."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "We don't have to write a full essay yet. Miss Patel said that comes next month."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "So is it just reading?"
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Reading is part of it, but we must bring three questions about the chapter, because she wants us to discuss them in groups. She said pictures were optional."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What must the students do for the next history lesson?",
-                                               "options":  {
-                                                               "A":  "prepare some questions",
-                                                               "B":  "find pictures for a presentation",
-                                                               "C":  "write a full essay"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The girl says they must bring three questions about the chapter for group discussion."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You hear two people talking about a neighbour's party.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Did the music from next door keep you awake last night? I nearly went round to complain. || Woman: I heard it, but it stopped before midnight. The cars outside were more annoying because one blocked our gate. || Man: I saw that. Were the guests rude? || Woman: No, actually. [11]What surprised me was that Mrs Green came this morning to say sorry and brought us some cake[/11]. I thought that was kind. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did the music from next door keep you awake last night? I nearly went round to complain."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I heard it, but it stopped before midnight. The cars outside were more annoying because one blocked our gate."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I saw that. Were the guests rude?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "No, actually. What surprised me was that Mrs Green came this morning to say sorry and brought us some cake. I thought that was kind. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What surprised the woman?",
-                                               "options":  {
-                                                               "A":  "the neighbour apologised",
-                                                               "B":  "the music stopped early",
-                                                               "C":  "the guests were polite"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The woman says Mrs Green came to apologise and brought cake, and that surprised her."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You hear a man talking to a colleague about getting to work.",
-                         "voices":  {
-                                        "woman":  "en-GB-HollieNeural",
-                                        "man":  "en-GB-AlfieNeural"
-                                    },
-                         "audio_script":  "Woman: You were late again. Was there another problem with the train? || Man: The train was on time, but the bus from the station didn't come. I walked, and it took ages. || Woman: Could you cycle instead? || Man: I might. [12]The main problem is that I can't leave my bike safely outside the office, so I'll ask if there's somewhere inside[/12]. Driving would cost too much. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "You were late again. Was there another problem with the train?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "The train was on time, but the bus from the station didn't come. I walked, and it took ages."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Could you cycle instead?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I might. The main problem is that I can't leave my bike safely outside the office, so I'll ask if there's somewhere inside. Driving would cost too much. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "Why is the man unsure about cycling to work?",
-                                               "options":  {
-                                                               "A":  "there may be nowhere safe for his bike",
-                                                               "B":  "the journey is too long",
-                                                               "C":  "parking his car is expensive"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The man says he cannot leave his bike safely outside the office and wants to ask about a place inside."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You hear a woman talking about a music festival.",
-                         "voices":  {
-                                        "speaker":  "en-GB-OliviaNeural"
-                                    },
-                         "audio_script":  "Speaker: I went to the summer music festival on Sunday. The main band was good, although they started twenty minutes late. I didn't mind the rain because most people had coats. || Speaker: [13]What I really liked was the small stage near the food stalls, where local singers performed all afternoon[/13]. The tickets were not cheap, but I felt I discovered music I wouldn't usually hear. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "I went to the summer music festival on Sunday. The main band was good, although they started twenty minutes late. I didn't mind the rain because most people had coats."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "What I really liked was the small stage near the food stalls, where local singers performed all afternoon. The tickets were not cheap, but I felt I discovered music I wouldn't usually hear. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What did the woman like best about the festival?",
-                                               "options":  {
-                                                               "A":  "the main band",
-                                                               "B":  "the ticket price",
-                                                               "C":  "the local singers"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says what she really liked was the small stage where local singers performed all afternoon."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2041.mp3"
+  "test_number": 41,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You hear two friends talking about a new sports centre.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Have you been to the new sports centre yet? My sister says the swimming pool is huge. || Man: I went yesterday, but not to swim. The pool was closed for a school lesson, and the gym was full. || Woman: Oh no. Was it a wasted trip then? || Man: Not really. [8]I tried the climbing wall, which I hadn't expected to enjoy, and now I want to go back next week[/8]. The instructor was really patient too.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you been to the new sports centre yet? My sister says the swimming pool is huge."
+        },
+        {
+          "speaker": "man",
+          "text": "I went yesterday, but not to swim. The pool was closed for a school lesson, and the gym was full."
+        },
+        {
+          "speaker": "woman",
+          "text": "Oh no. Was it a wasted trip then?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not really. I tried the climbing wall, which I hadn't expected to enjoy, and now I want to go back next week. The instructor was really patient too."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What did the man enjoy most at the sports centre?",
+          "options": {
+            "A": "using the climbing wall",
+            "B": "swimming in the pool",
+            "C": "working out in the gym"
+          },
+          "answer": "A",
+          "explanation": "The man says he tried the climbing wall, did not expect to enjoy it, and wants to go back, so that was what he enjoyed most."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You hear a woman leaving a phone message about a birthday meal.",
+      "voices": {
+        "speaker": "en-GB-OliviaNeural"
+      },
+      "audio_script": "Speaker: Hi, Tom. It's Anna. About Saturday, I booked the restaurant for seven because they were full later. Mum asked about the Italian place, but it closes early this weekend. || Speaker: The new café near the park looked nice, although it only does snacks in the evening. [9]So I've chosen the small Thai restaurant opposite the cinema, as it has space for all eight of us[/9]. Call me if that's a problem.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "Hi, Tom. It's Anna. About Saturday, I booked the restaurant for seven because they were full later. Mum asked about the Italian place, but it closes early this weekend."
+        },
+        {
+          "speaker": "speaker",
+          "text": "The new café near the park looked nice, although it only does snacks in the evening. So I've chosen the small Thai restaurant opposite the cinema, as it has space for all eight of us. Call me if that's a problem."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "Where will the birthday meal be?",
+          "options": {
+            "A": "at a Thai restaurant",
+            "B": "at an Italian restaurant",
+            "C": "at a café near the park"
+          },
+          "answer": "A",
+          "explanation": "Anna says she has chosen the small Thai restaurant opposite the cinema because it has space for everyone."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You hear two classmates talking about a history lesson.",
+      "voices": {
+        "boy": "en-GB-OliverNeural",
+        "girl": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Boy: Did you understand what we have to prepare for history? I wrote down the page numbers, but not the actual task. || Girl: We don't have to write a full essay yet. Miss Patel said that comes next month. || Boy: So is it just reading? || Girl: Reading is part of it, but [10]we must bring three questions about the chapter, because she wants us to discuss them in groups[/10]. She said pictures were optional.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Did you understand what we have to prepare for history? I wrote down the page numbers, but not the actual task."
+        },
+        {
+          "speaker": "girl",
+          "text": "We don't have to write a full essay yet. Miss Patel said that comes next month."
+        },
+        {
+          "speaker": "boy",
+          "text": "So is it just reading?"
+        },
+        {
+          "speaker": "girl",
+          "text": "Reading is part of it, but we must bring three questions about the chapter, because she wants us to discuss them in groups. She said pictures were optional."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What must the students do for the next history lesson?",
+          "options": {
+            "A": "prepare some questions",
+            "B": "find pictures for a presentation",
+            "C": "write a full essay"
+          },
+          "answer": "A",
+          "explanation": "The girl says they must bring three questions about the chapter for group discussion."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You hear two people talking about a neighbour's party.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Did the music from next door keep you awake last night? I nearly went round to complain. || Woman: I heard it, but it stopped before midnight. The cars outside were more annoying because one blocked our gate. || Man: I saw that. Were the guests rude? || Woman: No, actually. [11]What surprised me was that Mrs Green came this morning to say sorry and brought us some cake[/11]. I thought that was kind. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did the music from next door keep you awake last night? I nearly went round to complain."
+        },
+        {
+          "speaker": "woman",
+          "text": "I heard it, but it stopped before midnight. The cars outside were more annoying because one blocked our gate."
+        },
+        {
+          "speaker": "man",
+          "text": "I saw that. Were the guests rude?"
+        },
+        {
+          "speaker": "woman",
+          "text": "No, actually. What surprised me was that Mrs Green came this morning to say sorry and brought us some cake. I thought that was kind. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What surprised the woman?",
+          "options": {
+            "A": "the neighbour apologised",
+            "B": "the music stopped early",
+            "C": "the guests were polite"
+          },
+          "answer": "A",
+          "explanation": "The woman says Mrs Green came to apologise and brought cake, and that surprised her."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You hear a man talking to a colleague about getting to work.",
+      "voices": {
+        "woman": "en-GB-HollieNeural",
+        "man": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Woman: You were late again. Was there another problem with the train? || Man: The train was on time, but the bus from the station didn't come. I walked, and it took ages. || Woman: Could you cycle instead? || Man: I might. [12]The main problem is that I can't leave my bike safely outside the office, so I'll ask if there's somewhere inside[/12]. Driving would cost too much. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "You were late again. Was there another problem with the train?"
+        },
+        {
+          "speaker": "man",
+          "text": "The train was on time, but the bus from the station didn't come. I walked, and it took ages."
+        },
+        {
+          "speaker": "woman",
+          "text": "Could you cycle instead?"
+        },
+        {
+          "speaker": "man",
+          "text": "I might. The main problem is that I can't leave my bike safely outside the office, so I'll ask if there's somewhere inside. Driving would cost too much. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "Why is the man unsure about cycling to work?",
+          "options": {
+            "A": "there may be nowhere safe for his bike",
+            "B": "the journey is too long",
+            "C": "parking his car is expensive"
+          },
+          "answer": "A",
+          "explanation": "The man says he cannot leave his bike safely outside the office and wants to ask about a place inside."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You hear a woman talking about a music festival.",
+      "voices": {
+        "speaker": "en-GB-OliviaNeural"
+      },
+      "audio_script": "Speaker: I went to the summer music festival on Sunday. The main band was good, although they started twenty minutes late. I didn't mind the rain because most people had coats. || Speaker: [13]What I really liked was the small stage near the food stalls, where local singers performed all afternoon[/13]. The tickets were not cheap, but I felt I discovered music I wouldn't usually hear. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "I went to the summer music festival on Sunday. The main band was good, although they started twenty minutes late. I didn't mind the rain because most people had coats."
+        },
+        {
+          "speaker": "speaker",
+          "text": "What I really liked was the small stage near the food stalls, where local singers performed all afternoon. The tickets were not cheap, but I felt I discovered music I wouldn't usually hear. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What did the woman like best about the festival?",
+          "options": {
+            "A": "the main band",
+            "B": "the ticket price",
+            "C": "the local singers"
+          },
+          "answer": "C",
+          "explanation": "She says what she really liked was the small stage where local singers performed all afternoon."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/test41_part2.mp3"
 }

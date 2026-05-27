@@ -1,236 +1,236 @@
 {
-    "test_number":  49,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You hear two friends talking about a school lunch menu.",
-                         "voices":  {
-                                        "boy":  "en-GB-OliverNeural",
-                                        "girl":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Boy: Have you seen the new lunch menu? There are more vegetarian meals now. || Girl: Yes, and the pasta yesterday was good. I didn't like the soup, though. || Boy: Do you think it is better than before? || Girl: [8]The food is better, but the queue moves more slowly because everyone has to choose from more dishes[/8]. I nearly missed the start of class. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Have you seen the new lunch menu? There are more vegetarian meals now."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Yes, and the pasta yesterday was good. I didn't like the soup, though."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Do you think it is better than before?"
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "The food is better, but the queue moves more slowly because everyone has to choose from more dishes. I nearly missed the start of class. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "What does the girl say about the new lunch menu?",
-                                               "options":  {
-                                                               "A":  "there is a longer wait",
-                                                               "B":  "there are fewer choices",
-                                                               "C":  "the food is worse"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says the food is better, but the queue moves more slowly because there are more choices."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You hear a man giving advice about visiting a castle.",
-                         "voices":  {
-                                        "speaker":  "en-GB-ThomasNeural"
-                                    },
-                         "audio_script":  "Speaker: If you are visiting Northbridge Castle, arrive early in the day. The car park is small and fills quickly, especially in summer. Tickets can be bought at the gate, but online tickets are a little cheaper. || Speaker: [9]Wear comfortable shoes, because the path up to the tower is steep and has uneven stones[/9]. The view from the top is worth the walk. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "If you are visiting Northbridge Castle, arrive early in the day. The car park is small and fills quickly, especially in summer. Tickets can be bought at the gate, but online tickets are a little cheaper."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "Wear comfortable shoes, because the path up to the tower is steep and has uneven stones. The view from the top is worth the walk. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What advice does the man give visitors?",
-                                               "options":  {
-                                                               "A":  "buy tickets at the gate",
-                                                               "B":  "wear suitable shoes",
-                                                               "C":  "visit late in the day"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He advises visitors to wear comfortable shoes because the path to the tower is steep and uneven."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You hear two people talking about a birthday cake.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: I need to order Dad's birthday cake today. He loves chocolate, but Aunt Sue can't eat it. || Man: What about lemon? || Woman: He says lemon cakes are too sweet. [10]I'll order carrot cake because he likes it, and it works for everyone coming to the party[/10]. The bakery can decorate it with fruit. || Man: Good choice. I'll collect it. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I need to order Dad's birthday cake today. He loves chocolate, but Aunt Sue can't eat it."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "What about lemon?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "He says lemon cakes are too sweet. I'll order carrot cake because he likes it, and it works for everyone coming to the party. The bakery can decorate it with fruit."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Good choice. I'll collect it. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What cake will the woman order?",
-                                               "options":  {
-                                                               "A":  "chocolate cake",
-                                                               "B":  "lemon cake",
-                                                               "C":  "carrot cake"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says she will order carrot cake because her father likes it and everyone can eat it."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You hear a woman talking about a bus journey.",
-                         "voices":  {
-                                        "speaker":  "en-GB-OliviaNeural"
-                                    },
-                         "audio_script":  "Speaker: My bus journey home yesterday was unusual. It left the station on time, and there were plenty of seats, so I thought it would be easy. || Speaker: [11]Then the driver had to take a different road because of repairs, and nobody knew where we would stop[/11]. It added twenty minutes, but at least the driver explained everything clearly. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "My bus journey home yesterday was unusual. It left the station on time, and there were plenty of seats, so I thought it would be easy."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "Then the driver had to take a different road because of repairs, and nobody knew where we would stop. It added twenty minutes, but at least the driver explained everything clearly. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What was unusual about the bus journey?",
-                                               "options":  {
-                                                               "A":  "the bus was very crowded",
-                                                               "B":  "the driver used a different route",
-                                                               "C":  "the bus left late"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The driver had to take a different road because of repairs, which made the journey unusual."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You hear two friends discussing an online course.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Have you finished the photography course online? || Woman: Almost. The videos are short, which is good, but some exercises take longer than they say. || Man: Would you recommend it? || Woman: Yes, especially for beginners. [12]The best thing is that the teacher gives comments on every photo you send in[/12]. That helped me improve more than the videos. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Have you finished the photography course online?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Almost. The videos are short, which is good, but some exercises take longer than they say."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Would you recommend it?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, especially for beginners. The best thing is that the teacher gives comments on every photo you send in. That helped me improve more than the videos. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What does the woman like best about the course?",
-                                               "options":  {
-                                                               "A":  "the short videos",
-                                                               "B":  "the easy exercises",
-                                                               "C":  "the teacher's feedback"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says the best thing is that the teacher gives comments on every photo students send in."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You hear two colleagues talking about moving desks.",
-                         "voices":  {
-                                        "woman":  "en-GB-HollieNeural",
-                                        "man":  "en-GB-AlfieNeural"
-                                    },
-                         "audio_script":  "Woman: Are you happy with your new desk by the window? || Man: The light is nice, but people walk past all the time on their way to the kitchen. || Woman: Would you rather move back? || Man: Maybe not. [13]If I can put a small shelf beside the desk, I'll have enough space for my files, and then it should be fine[/13]. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you happy with your new desk by the window?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "The light is nice, but people walk past all the time on their way to the kitchen."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Would you rather move back?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Maybe not. If I can put a small shelf beside the desk, I'll have enough space for my files, and then it should be fine. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What does the man need at his new desk?",
-                                               "options":  {
-                                                               "A":  "more natural light",
-                                                               "B":  "a quieter position",
-                                                               "C":  "extra storage space"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The man says he needs a small shelf so he has enough space for his files."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2049.mp3"
+  "test_number": 49,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You hear two friends talking about a school lunch menu.",
+      "voices": {
+        "boy": "en-GB-OliverNeural",
+        "girl": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Boy: Have you seen the new lunch menu? There are more vegetarian meals now. || Girl: Yes, and the pasta yesterday was good. I didn't like the soup, though. || Boy: Do you think it is better than before? || Girl: [8]The food is better, but the queue moves more slowly because everyone has to choose from more dishes[/8]. I nearly missed the start of class. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Have you seen the new lunch menu? There are more vegetarian meals now."
+        },
+        {
+          "speaker": "girl",
+          "text": "Yes, and the pasta yesterday was good. I didn't like the soup, though."
+        },
+        {
+          "speaker": "boy",
+          "text": "Do you think it is better than before?"
+        },
+        {
+          "speaker": "girl",
+          "text": "The food is better, but the queue moves more slowly because everyone has to choose from more dishes. I nearly missed the start of class. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What does the girl say about the new lunch menu?",
+          "options": {
+            "A": "there is a longer wait",
+            "B": "there are fewer choices",
+            "C": "the food is worse"
+          },
+          "answer": "A",
+          "explanation": "She says the food is better, but the queue moves more slowly because there are more choices."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You hear a man giving advice about visiting a castle.",
+      "voices": {
+        "speaker": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Speaker: If you are visiting Northbridge Castle, arrive early in the day. The car park is small and fills quickly, especially in summer. Tickets can be bought at the gate, but online tickets are a little cheaper. || Speaker: [9]Wear comfortable shoes, because the path up to the tower is steep and has uneven stones[/9]. The view from the top is worth the walk. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "If you are visiting Northbridge Castle, arrive early in the day. The car park is small and fills quickly, especially in summer. Tickets can be bought at the gate, but online tickets are a little cheaper."
+        },
+        {
+          "speaker": "speaker",
+          "text": "Wear comfortable shoes, because the path up to the tower is steep and has uneven stones. The view from the top is worth the walk. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What advice does the man give visitors?",
+          "options": {
+            "A": "buy tickets at the gate",
+            "B": "wear suitable shoes",
+            "C": "visit late in the day"
+          },
+          "answer": "B",
+          "explanation": "He advises visitors to wear comfortable shoes because the path to the tower is steep and uneven."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You hear two people talking about a birthday cake.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: I need to order Dad's birthday cake today. He loves chocolate, but Aunt Sue can't eat it. || Man: What about lemon? || Woman: He says lemon cakes are too sweet. [10]I'll order carrot cake because he likes it, and it works for everyone coming to the party[/10]. The bakery can decorate it with fruit. || Man: Good choice. I'll collect it. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I need to order Dad's birthday cake today. He loves chocolate, but Aunt Sue can't eat it."
+        },
+        {
+          "speaker": "man",
+          "text": "What about lemon?"
+        },
+        {
+          "speaker": "woman",
+          "text": "He says lemon cakes are too sweet. I'll order carrot cake because he likes it, and it works for everyone coming to the party. The bakery can decorate it with fruit."
+        },
+        {
+          "speaker": "man",
+          "text": "Good choice. I'll collect it. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What cake will the woman order?",
+          "options": {
+            "A": "chocolate cake",
+            "B": "lemon cake",
+            "C": "carrot cake"
+          },
+          "answer": "C",
+          "explanation": "She says she will order carrot cake because her father likes it and everyone can eat it."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You hear a woman talking about a bus journey.",
+      "voices": {
+        "speaker": "en-GB-OliviaNeural"
+      },
+      "audio_script": "Speaker: My bus journey home yesterday was unusual. It left the station on time, and there were plenty of seats, so I thought it would be easy. || Speaker: [11]Then the driver had to take a different road because of repairs, and nobody knew where we would stop[/11]. It added twenty minutes, but at least the driver explained everything clearly. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "My bus journey home yesterday was unusual. It left the station on time, and there were plenty of seats, so I thought it would be easy."
+        },
+        {
+          "speaker": "speaker",
+          "text": "Then the driver had to take a different road because of repairs, and nobody knew where we would stop. It added twenty minutes, but at least the driver explained everything clearly. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What was unusual about the bus journey?",
+          "options": {
+            "A": "the bus was very crowded",
+            "B": "the driver used a different route",
+            "C": "the bus left late"
+          },
+          "answer": "B",
+          "explanation": "The driver had to take a different road because of repairs, which made the journey unusual."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You hear two friends discussing an online course.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Have you finished the photography course online? || Woman: Almost. The videos are short, which is good, but some exercises take longer than they say. || Man: Would you recommend it? || Woman: Yes, especially for beginners. [12]The best thing is that the teacher gives comments on every photo you send in[/12]. That helped me improve more than the videos. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you finished the photography course online?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Almost. The videos are short, which is good, but some exercises take longer than they say."
+        },
+        {
+          "speaker": "man",
+          "text": "Would you recommend it?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, especially for beginners. The best thing is that the teacher gives comments on every photo you send in. That helped me improve more than the videos. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What does the woman like best about the course?",
+          "options": {
+            "A": "the short videos",
+            "B": "the easy exercises",
+            "C": "the teacher's feedback"
+          },
+          "answer": "C",
+          "explanation": "She says the best thing is that the teacher gives comments on every photo students send in."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You hear two colleagues talking about moving desks.",
+      "voices": {
+        "woman": "en-GB-HollieNeural",
+        "man": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Woman: Are you happy with your new desk by the window? || Man: The light is nice, but people walk past all the time on their way to the kitchen. || Woman: Would you rather move back? || Man: Maybe not. [13]If I can put a small shelf beside the desk, I'll have enough space for my files, and then it should be fine[/13]. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you happy with your new desk by the window?"
+        },
+        {
+          "speaker": "man",
+          "text": "The light is nice, but people walk past all the time on their way to the kitchen."
+        },
+        {
+          "speaker": "woman",
+          "text": "Would you rather move back?"
+        },
+        {
+          "speaker": "man",
+          "text": "Maybe not. If I can put a small shelf beside the desk, I'll have enough space for my files, and then it should be fine. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What does the man need at his new desk?",
+          "options": {
+            "A": "more natural light",
+            "B": "a quieter position",
+            "C": "extra storage space"
+          },
+          "answer": "C",
+          "explanation": "The man says he needs a small shelf so he has enough space for his files."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/test49_part2.mp3"
 }

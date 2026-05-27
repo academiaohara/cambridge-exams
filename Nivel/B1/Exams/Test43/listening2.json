@@ -1,236 +1,237 @@
 {
-    "test_number":  43,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You hear two people talking about a lost bag.",
-                         "voices":  {
-                                        "woman":  "en-GB-HollieNeural",
-                                        "man":  "en-GB-AlfieNeural"
-                                    },
-                         "audio_script":  "Woman: Did anyone hand in your sports bag? || Man: Not yet. I thought I left it in the changing room, but it wasn't there when I went back. || Woman: Could it be on the bus? || Man: I phoned the bus company. Nothing. [8]Then I remembered putting it under the table in the café while I waited for you[/8]. I'll go there now and ask. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did anyone hand in your sports bag?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Not yet. I thought I left it in the changing room, but it wasn't there when I went back."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Could it be on the bus?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I phoned the bus company. Nothing. Then I remembered putting it under the table in the café while I waited for you. I'll go there now and ask. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "Where does the man think his bag is?",
-                                               "options":  {
-                                                               "A":  "in the café",
-                                                               "B":  "on the bus",
-                                                               "C":  "in the changing room"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The man remembers putting the bag under the table in the café and plans to ask there."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You hear a woman talking about joining a gym.",
-                         "voices":  {
-                                        "speaker":  "en-GB-OliviaNeural"
-                                    },
-                         "audio_script":  "Speaker: I wanted to join a gym this month. The one near my house is modern, but it closes early on Fridays. Another gym has a pool, but it's across town and the buses are slow. || Speaker: [9]In the end I joined the small gym beside my office, because I can go straight after work before I get tired[/9]. It isn't the cheapest, but I think I'll use it more. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "I wanted to join a gym this month. The one near my house is modern, but it closes early on Fridays. Another gym has a pool, but it's across town and the buses are slow."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "In the end I joined the small gym beside my office, because I can go straight after work before I get tired. It isn't the cheapest, but I think I'll use it more. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "Why did the woman choose the gym beside her office?",
-                                               "options":  {
-                                                               "A":  "it has a swimming pool",
-                                                               "B":  "it is convenient after work",
-                                                               "C":  "it is the cheapest option"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says she joined the gym beside her office because she can go straight after work."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You hear two friends talking about a holiday photo.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: That's a nice photo. Is it from your trip to Scotland? || Woman: Yes, from the last day. We wanted a picture by the lake, but it was too windy. || Man: So where was this taken? || Woman: [10]At the little harbour near our hotel, just before we got the boat to the island[/10]. The mountains in the background make it look more dramatic than it really was. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's a nice photo. Is it from your trip to Scotland?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, from the last day. We wanted a picture by the lake, but it was too windy."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "So where was this taken?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "At the little harbour near our hotel, just before we got the boat to the island. The mountains in the background make it look more dramatic than it really was. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "Where was the photo taken?",
-                                               "options":  {
-                                                               "A":  "beside a lake",
-                                                               "B":  "on an island",
-                                                               "C":  "at a harbour"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The woman says the photo was taken at the little harbour near their hotel."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You hear a boy talking to his mother about a school club.",
-                         "voices":  {
-                                        "boy":  "en-GB-OliverNeural",
-                                        "girl":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Woman: Are you going to join the drama club again this term? || Boy: I liked it, but rehearsals are on Wednesdays now, and that's when I have football practice. || Woman: What about art club? You enjoy drawing. || Boy: I do, but [11]I'm going to try the chess club because it meets at lunchtime, so it won't affect my evenings[/11]. Tom is joining too. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you going to join the drama club again this term?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "I liked it, but rehearsals are on Wednesdays now, and that's when I have football practice."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "What about art club? You enjoy drawing."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "I do, but I'm going to try the chess club because it meets at lunchtime, so it won't affect my evenings. Tom is joining too. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "Which club will the boy join?",
-                                               "options":  {
-                                                               "A":  "the drama club",
-                                                               "B":  "the art club",
-                                                               "C":  "the chess club"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The boy says he is going to try the chess club because it meets at lunchtime."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You hear two friends talking about a restaurant.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Did you like the new restaurant in Market Street? || Man: The food was tasty, especially the pasta. The waiters were friendly too, though we had to wait a while. || Woman: Would you go back? || Man: Probably not soon. [12]The problem was the room itself; it was so noisy that we had to shout across the table[/12]. I prefer somewhere quieter for dinner. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did you like the new restaurant in Market Street?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "The food was tasty, especially the pasta. The waiters were friendly too, though we had to wait a while."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Would you go back?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Probably not soon. The problem was the room itself; it was so noisy that we had to shout across the table. I prefer somewhere quieter for dinner. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What did the man dislike about the restaurant?",
-                                               "options":  {
-                                                               "A":  "the slow service",
-                                                               "B":  "the noisy room",
-                                                               "C":  "the quality of the food"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The man says the room was so noisy that they had to shout across the table."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You hear an announcement at a swimming pool.",
-                         "voices":  {
-                                        "speaker":  "en-GB-ThomasNeural"
-                                    },
-                         "audio_script":  "Speaker: Attention please. The children's swimming lesson at four o'clock will start ten minutes late because the instructor is arriving from another pool. The main pool remains open for public swimming. || Speaker: [13]Anyone waiting for the beginners' lesson should stay in the seating area until a member of staff calls your group[/13]. Please do not stand beside the pool edge while other swimmers are using it. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "Attention please. The children's swimming lesson at four o'clock will start ten minutes late because the instructor is arriving from another pool. The main pool remains open for public swimming."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "Anyone waiting for the beginners' lesson should stay in the seating area until a member of staff calls your group. Please do not stand beside the pool edge while other swimmers are using it. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What should beginners do now?",
-                                               "options":  {
-                                                               "A":  "start swimming in the main pool",
-                                                               "B":  "wait beside the pool edge",
-                                                               "C":  "sit until they are called"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The announcement tells beginners to stay in the seating area until staff call their group."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2043.mp3"
+  "test_number": 43,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You hear two people talking about a lost bag.",
+      "voices": {
+        "woman": "en-GB-HollieNeural",
+        "man": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Woman: Did anyone hand in your sports bag? || Man: Not yet. I thought I left it in the changing room, but it wasn't there when I went back. || Woman: Could it be on the bus? || Man: I phoned the bus company. Nothing. [8]Then I remembered putting it under the table in the café while I waited for you[/8]. I'll go there now and ask. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did anyone hand in your sports bag?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not yet. I thought I left it in the changing room, but it wasn't there when I went back."
+        },
+        {
+          "speaker": "woman",
+          "text": "Could it be on the bus?"
+        },
+        {
+          "speaker": "man",
+          "text": "I phoned the bus company. Nothing. Then I remembered putting it under the table in the café while I waited for you. I'll go there now and ask. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "Where does the man think his bag is?",
+          "options": {
+            "A": "in the café",
+            "B": "on the bus",
+            "C": "in the changing room"
+          },
+          "answer": "A",
+          "explanation": "The man remembers putting the bag under the table in the café and plans to ask there."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You hear a woman talking about joining a gym.",
+      "voices": {
+        "speaker": "en-GB-OliviaNeural"
+      },
+      "audio_script": "Speaker: I wanted to join a gym this month. The one near my house is modern, but it closes early on Fridays. Another gym has a pool, but it's across town and the buses are slow. || Speaker: [9]In the end I joined the small gym beside my office, because I can go straight after work before I get tired[/9]. It isn't the cheapest, but I think I'll use it more. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "I wanted to join a gym this month. The one near my house is modern, but it closes early on Fridays. Another gym has a pool, but it's across town and the buses are slow."
+        },
+        {
+          "speaker": "speaker",
+          "text": "In the end I joined the small gym beside my office, because I can go straight after work before I get tired. It isn't the cheapest, but I think I'll use it more. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "Why did the woman choose the gym beside her office?",
+          "options": {
+            "A": "it has a swimming pool",
+            "B": "it is convenient after work",
+            "C": "it is the cheapest option"
+          },
+          "answer": "B",
+          "explanation": "She says she joined the gym beside her office because she can go straight after work."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You hear two friends talking about a holiday photo.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: That's a nice photo. Is it from your trip to Scotland? || Woman: Yes, from the last day. We wanted a picture by the lake, but it was too windy. || Man: So where was this taken? || Woman: [10]At the little harbour near our hotel, just before we got the boat to the island[/10]. The mountains in the background make it look more dramatic than it really was. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "That's a nice photo. Is it from your trip to Scotland?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, from the last day. We wanted a picture by the lake, but it was too windy."
+        },
+        {
+          "speaker": "man",
+          "text": "So where was this taken?"
+        },
+        {
+          "speaker": "woman",
+          "text": "At the little harbour near our hotel, just before we got the boat to the island. The mountains in the background make it look more dramatic than it really was. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "Where was the photo taken?",
+          "options": {
+            "A": "beside a lake",
+            "B": "on an island",
+            "C": "at a harbour"
+          },
+          "answer": "C",
+          "explanation": "The woman says the photo was taken at the little harbour near their hotel."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You hear a boy talking to his mother about a school club.",
+      "voices": {
+        "man": "en-GB-OliverNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Woman: Are you going to join the drama club again this term? || Boy: I liked it, but rehearsals are on Wednesdays now, and that's when I have football practice. || Woman: What about art club? You enjoy drawing. || Boy: I do, but [11]I'm going to try the chess club because it meets at lunchtime, so it won't affect my evenings[/11]. Tom is joining too. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you going to join the drama club again this term?"
+        },
+        {
+          "speaker": "boy",
+          "text": "I liked it, but rehearsals are on Wednesdays now, and that's when I have football practice."
+        },
+        {
+          "speaker": "woman",
+          "text": "What about art club? You enjoy drawing."
+        },
+        {
+          "speaker": "boy",
+          "text": "I do, but I'm going to try the chess club because it meets at lunchtime, so it won't affect my evenings. Tom is joining too. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "Which club will the boy join?",
+          "options": {
+            "A": "the drama club",
+            "B": "the art club",
+            "C": "the chess club"
+          },
+          "answer": "C",
+          "explanation": "The boy says he is going to try the chess club because it meets at lunchtime."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You hear two friends talking about a restaurant.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Did you like the new restaurant in Market Street? || Man: The food was tasty, especially the pasta. The waiters were friendly too, though we had to wait a while. || Woman: Would you go back? || Man: Probably not soon. [12]The problem was the room itself; it was so noisy that we had to shout across the table[/12]. I prefer somewhere quieter for dinner. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you like the new restaurant in Market Street?"
+        },
+        {
+          "speaker": "man",
+          "text": "The food was tasty, especially the pasta. The waiters were friendly too, though we had to wait a while."
+        },
+        {
+          "speaker": "woman",
+          "text": "Would you go back?"
+        },
+        {
+          "speaker": "man",
+          "text": "Probably not soon. The problem was the room itself; it was so noisy that we had to shout across the table. I prefer somewhere quieter for dinner. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What did the man dislike about the restaurant?",
+          "options": {
+            "A": "the slow service",
+            "B": "the noisy room",
+            "C": "the quality of the food"
+          },
+          "answer": "B",
+          "explanation": "The man says the room was so noisy that they had to shout across the table."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You hear an announcement at a swimming pool.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "woman: Attention please. The children's swimming lesson at four o'clock will start ten minutes late because the instructor is arriving from another pool. The main pool remains open for public swimming. || Speaker: [13]Anyone waiting for the beginners' lesson should stay in the seating area until a member of staff calls your group[/13]. Please do not stand beside the pool edge while other swimmers are using it. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Attention please. The children's swimming lesson at four o'clock will start ten minutes late because the instructor is arriving from another pool. The main pool remains open for public swimming."
+        },
+        {
+          "speaker": "woman",
+          "text": "Anyone waiting for the beginners' lesson should stay in the seating area until a member of staff calls your group. Please do not stand beside the pool edge while other swimmers are using it. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What should beginners do now?",
+          "options": {
+            "A": "start swimming in the main pool",
+            "B": "wait beside the pool edge",
+            "C": "sit until they are called"
+          },
+          "answer": "C",
+          "explanation": "The announcement tells beginners to stay in the seating area until staff call their group."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/test43_part2.mp3"
 }

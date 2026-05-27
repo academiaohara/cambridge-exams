@@ -1,240 +1,240 @@
 {
-    "test_number":  50,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You hear two friends talking about a charity event.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Are you helping at the charity event on Saturday? || Man: Yes. I thought I was selling tickets, but they already have enough people for that. || Woman: So what are you doing? || Man: [8]I'll help serve tea and cakes in the afternoon, because the organisers expect lots of older visitors then[/8]. I might also carry tables before it starts. || Woman: That sounds useful. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you helping at the charity event on Saturday?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes. I thought I was selling tickets, but they already have enough people for that."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "So what are you doing?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I'll help serve tea and cakes in the afternoon, because the organisers expect lots of older visitors then. I might also carry tables before it starts."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds useful. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "What will the man mainly do at the event?",
-                                               "options":  {
-                                                               "A":  "serve refreshments",
-                                                               "B":  "sell tickets",
-                                                               "C":  "carry tables"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The man says he will help serve tea and cakes in the afternoon."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You hear a woman talking about a new app.",
-                         "voices":  {
-                                        "speaker":  "en-GB-OliviaNeural"
-                                    },
-                         "audio_script":  "Speaker: I've started using a new app to plan my study time. It can send reminders, but I turned those off because I already have too many alerts on my phone. || Speaker: [9]What I find useful is the weekly chart, which shows exactly how many hours I spend on each subject[/9]. It helped me see that I wasn't doing enough science. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "I've started using a new app to plan my study time. It can send reminders, but I turned those off because I already have too many alerts on my phone."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "What I find useful is the weekly chart, which shows exactly how many hours I spend on each subject. It helped me see that I wasn't doing enough science. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What does the woman find useful about the app?",
-                                               "options":  {
-                                                               "A":  "the phone reminders",
-                                                               "B":  "the weekly study chart",
-                                                               "C":  "the science lessons"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says the weekly chart showing study hours for each subject is useful."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You hear two people discussing a holiday apartment.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Did you book the apartment by the sea? || Woman: Not yet. The one with the balcony was lovely, but it only had one bedroom. The cheaper one was far from the beach. || Man: What about the apartment near the old town? || Woman: [10]That's the best option, because it has two bedrooms and we can walk to restaurants in the evening[/10]. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you book the apartment by the sea?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Not yet. The one with the balcony was lovely, but it only had one bedroom. The cheaper one was far from the beach."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "What about the apartment near the old town?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That's the best option, because it has two bedrooms and we can walk to restaurants in the evening. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "Why does the woman prefer the apartment near the old town?",
-                                               "options":  {
-                                                               "A":  "it has a balcony",
-                                                               "B":  "it is the cheapest",
-                                                               "C":  "it has enough bedrooms"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says the apartment near the old town has two bedrooms, so it has enough space."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You hear a boy talking about a science competition.",
-                         "voices":  {
-                                        "boy":  "en-GB-OliverNeural",
-                                        "girl":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Girl: How did the science competition go? Did your team win? || Boy: No, we came second. The winning project was really clever, so I didn't mind. || Girl: Were you disappointed? || Boy: Not really. [11]I was pleased because our experiment worked in front of the judges, which hadn't happened when we practised at school[/11]. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "How did the science competition go? Did your team win?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "No, we came second. The winning project was really clever, so I didn't mind."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Were you disappointed?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Not really. I was pleased because our experiment worked in front of the judges, which hadn't happened when we practised at school. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "Why was the boy pleased?",
-                                               "options":  {
-                                                               "A":  "his experiment worked well",
-                                                               "B":  "his team won first prize",
-                                                               "C":  "the judges praised his speaking"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The boy was pleased because their experiment worked in front of the judges."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You hear an announcement in a shopping centre.",
-                         "voices":  {
-                                        "speaker":  "en-GB-ThomasNeural"
-                                    },
-                         "audio_script":  "Speaker: Could customers please note that the lift beside the toy shop is not working this afternoon. Engineers have been called and we expect it to reopen tomorrow morning. || Speaker: [12]Customers with pushchairs should use the lift next to the car park entrance, which gives access to all floors[/12]. The stairs near the food court are still open. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "Could customers please note that the lift beside the toy shop is not working this afternoon. Engineers have been called and we expect it to reopen tomorrow morning."
-                                          },
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "Customers with pushchairs should use the lift next to the car park entrance, which gives access to all floors. The stairs near the food court are still open. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What should customers with pushchairs do?",
-                                               "options":  {
-                                                               "A":  "use the stairs near the food court",
-                                                               "B":  "use the lift by the car park entrance",
-                                                               "C":  "wait until tomorrow morning"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The announcement tells customers with pushchairs to use the lift next to the car park entrance."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You hear two friends talking about a pet cat.",
-                         "voices":  {
-                                        "woman":  "en-GB-HollieNeural",
-                                        "man":  "en-GB-AlfieNeural"
-                                    },
-                         "audio_script":  "Woman: How is your new cat getting on? || Man: She's settling in slowly. She hid under the sofa for two days, but now she walks around the flat. || Woman: Is she eating properly? || Man: Yes, but [13]she still gets frightened by the washing machine, so I close the kitchen door when it's on[/13]. Apart from that, she's fine. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "How is your new cat getting on?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "She's settling in slowly. She hid under the sofa for two days, but now she walks around the flat."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Is she eating properly?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, but she still gets frightened by the washing machine, so I close the kitchen door when it's on. Apart from that, she's fine. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What problem does the cat still have?",
-                                               "options":  {
-                                                               "A":  "she will not eat",
-                                                               "B":  "she hides all day",
-                                                               "C":  "she is scared of a machine"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The man says the cat still gets frightened by the washing machine."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2050.mp3"
+  "test_number": 50,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You hear two friends talking about a charity event.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Are you helping at the charity event on Saturday? || Man: Yes. I thought I was selling tickets, but they already have enough people for that. || Woman: So what are you doing? || Man: [8]I'll help serve tea and cakes in the afternoon, because the organisers expect lots of older visitors then[/8]. I might also carry tables before it starts. || Woman: That sounds useful. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you helping at the charity event on Saturday?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes. I thought I was selling tickets, but they already have enough people for that."
+        },
+        {
+          "speaker": "woman",
+          "text": "So what are you doing?"
+        },
+        {
+          "speaker": "man",
+          "text": "I'll help serve tea and cakes in the afternoon, because the organisers expect lots of older visitors then. I might also carry tables before it starts."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds useful. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What will the man mainly do at the event?",
+          "options": {
+            "A": "serve refreshments",
+            "B": "sell tickets",
+            "C": "carry tables"
+          },
+          "answer": "A",
+          "explanation": "The man says he will help serve tea and cakes in the afternoon."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You hear a woman talking about a new app.",
+      "voices": {
+        "speaker": "en-GB-OliviaNeural"
+      },
+      "audio_script": "Speaker: I've started using a new app to plan my study time. It can send reminders, but I turned those off because I already have too many alerts on my phone. || Speaker: [9]What I find useful is the weekly chart, which shows exactly how many hours I spend on each subject[/9]. It helped me see that I wasn't doing enough science. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "I've started using a new app to plan my study time. It can send reminders, but I turned those off because I already have too many alerts on my phone."
+        },
+        {
+          "speaker": "speaker",
+          "text": "What I find useful is the weekly chart, which shows exactly how many hours I spend on each subject. It helped me see that I wasn't doing enough science. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What does the woman find useful about the app?",
+          "options": {
+            "A": "the phone reminders",
+            "B": "the weekly study chart",
+            "C": "the science lessons"
+          },
+          "answer": "B",
+          "explanation": "She says the weekly chart showing study hours for each subject is useful."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You hear two people discussing a holiday apartment.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Did you book the apartment by the sea? || Woman: Not yet. The one with the balcony was lovely, but it only had one bedroom. The cheaper one was far from the beach. || Man: What about the apartment near the old town? || Woman: [10]That's the best option, because it has two bedrooms and we can walk to restaurants in the evening[/10]. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you book the apartment by the sea?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Not yet. The one with the balcony was lovely, but it only had one bedroom. The cheaper one was far from the beach."
+        },
+        {
+          "speaker": "man",
+          "text": "What about the apartment near the old town?"
+        },
+        {
+          "speaker": "woman",
+          "text": "That's the best option, because it has two bedrooms and we can walk to restaurants in the evening. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "Why does the woman prefer the apartment near the old town?",
+          "options": {
+            "A": "it has a balcony",
+            "B": "it is the cheapest",
+            "C": "it has enough bedrooms"
+          },
+          "answer": "C",
+          "explanation": "She says the apartment near the old town has two bedrooms, so it has enough space."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You hear a boy talking about a science competition.",
+      "voices": {
+        "boy": "en-GB-OliverNeural",
+        "girl": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Girl: How did the science competition go? Did your team win? || Boy: No, we came second. The winning project was really clever, so I didn't mind. || Girl: Were you disappointed? || Boy: Not really. [11]I was pleased because our experiment worked in front of the judges, which hadn't happened when we practised at school[/11]. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "How did the science competition go? Did your team win?"
+        },
+        {
+          "speaker": "boy",
+          "text": "No, we came second. The winning project was really clever, so I didn't mind."
+        },
+        {
+          "speaker": "girl",
+          "text": "Were you disappointed?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Not really. I was pleased because our experiment worked in front of the judges, which hadn't happened when we practised at school. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "Why was the boy pleased?",
+          "options": {
+            "A": "his experiment worked well",
+            "B": "his team won first prize",
+            "C": "the judges praised his speaking"
+          },
+          "answer": "A",
+          "explanation": "The boy was pleased because their experiment worked in front of the judges."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You hear an announcement in a shopping centre.",
+      "voices": {
+        "speaker": "en-GB-ThomasNeural"
+      },
+      "audio_script": "Speaker: Could customers please note that the lift beside the toy shop is not working this afternoon. Engineers have been called and we expect it to reopen tomorrow morning. || Speaker: [12]Customers with pushchairs should use the lift next to the car park entrance, which gives access to all floors[/12]. The stairs near the food court are still open. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today.",
+      "dialogue": [
+        {
+          "speaker": "speaker",
+          "text": "Could customers please note that the lift beside the toy shop is not working this afternoon. Engineers have been called and we expect it to reopen tomorrow morning."
+        },
+        {
+          "speaker": "speaker",
+          "text": "Customers with pushchairs should use the lift next to the car park entrance, which gives access to all floors. The stairs near the food court are still open. Please check the information carefully and speak to a member of staff if anything is still unclear, especially if your plans have changed today."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What should customers with pushchairs do?",
+          "options": {
+            "A": "use the stairs near the food court",
+            "B": "use the lift by the car park entrance",
+            "C": "wait until tomorrow morning"
+          },
+          "answer": "B",
+          "explanation": "The announcement tells customers with pushchairs to use the lift next to the car park entrance."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You hear two friends talking about a pet cat.",
+      "voices": {
+        "woman": "en-GB-HollieNeural",
+        "man": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Woman: How is your new cat getting on? || Man: She's settling in slowly. She hid under the sofa for two days, but now she walks around the flat. || Woman: Is she eating properly? || Man: Yes, but [13]she still gets frightened by the washing machine, so I close the kitchen door when it's on[/13]. Apart from that, she's fine. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How is your new cat getting on?"
+        },
+        {
+          "speaker": "man",
+          "text": "She's settling in slowly. She hid under the sofa for two days, but now she walks around the flat."
+        },
+        {
+          "speaker": "woman",
+          "text": "Is she eating properly?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, but she still gets frightened by the washing machine, so I close the kitchen door when it's on. Apart from that, she's fine. Let's check the details again later and tell the others as well, because it will be easier if everyone knows the plan before the day."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What problem does the cat still have?",
+          "options": {
+            "A": "she will not eat",
+            "B": "she hides all day",
+            "C": "she is scared of a machine"
+          },
+          "answer": "C",
+          "explanation": "The man says the cat still gets frightened by the washing machine."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/test50_part2.mp3"
 }
