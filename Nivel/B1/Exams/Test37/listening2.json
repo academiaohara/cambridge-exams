@@ -1,254 +1,254 @@
 {
-    "test":  37,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You hear two people talking about a train journey.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Woman: Was your train journey home okay yesterday? || Man: Not really. The train left on time, but then it stopped outside the city. || Woman: Was there a problem with the engine? || Man: No, [8]we had to wait because another train was using our platform[/8]. It was only fifteen minutes, but I nearly missed my bus. I am glad we checked the details before making the final decision. That gives us enough time to prepare without changing everything else.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Was your train journey home okay yesterday?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Not really. The train left on time, but then it stopped outside the city."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Was there a problem with the engine?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "No, we had to wait because another train was using our platform. It was only fifteen minutes, but I nearly missed my bus. I am glad we checked the details before making the final decision. That gives us enough time to prepare without changing everything else."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "Why was the man's train delayed?",
-                                               "options":  {
-                                                               "A":  "The platform was not free.",
-                                                               "B":  "The engine had a problem.",
-                                                               "C":  "The train left late."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The man says they had to wait because another train was using their platform."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You hear two friends discussing a shopping centre.",
-                         "voices":  {
-                                        "man":  "en-GB-OliverNeural",
-                                        "woman":  "en-GB-AbbiNeural"
-                                    },
-                         "audio_script":  "Girl: Did you go to the new shopping centre on Saturday? || Boy: Yes, but I won't go again at the weekend. It was packed. || Girl: Were the shops good? || Boy: Some were. [9]I liked the food area best because there were dishes from lots of countries[/9]. The clothes shops were similar to the ones in town. It also means we will not have to spend extra money unnecessarily. I suppose it is a small change, but it makes the situation much easier.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Did you go to the new shopping centre on Saturday?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Yes, but I won't go again at the weekend. It was packed."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Were the shops good?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Some were. I liked the food area best because there were dishes from lots of countries. The clothes shops were similar to the ones in town. It also means we will not have to spend extra money unnecessarily. I suppose it is a small change, but it makes the situation much easier."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What did the boy like best at the shopping centre?",
-                                               "options":  {
-                                                               "A":  "the clothes shops",
-                                                               "B":  "the food area",
-                                                               "C":  "the cinema"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The boy says he liked the food area best."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You hear a woman talking about a computer problem.",
-                         "voices":  {
-                                        "man":  "en-GB-ElliotNeural",
-                                        "woman":  "en-GB-HollieNeural"
-                                    },
-                         "audio_script":  "Man: Did you manage to fix your laptop? || Woman: Yes, finally. I thought the battery was broken because it kept switching off. || Man: Was it expensive to repair? || Woman: No. [10]The problem was the charger cable, not the laptop itself[/10]. I bought a new cable this morning, and now it works perfectly. That should make the plan easier and help everyone know what to expect. I think that is the most sensible choice after looking at the other possibilities.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you manage to fix your laptop?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, finally. I thought the battery was broken because it kept switching off."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Was it expensive to repair?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "No. The problem was the charger cable, not the laptop itself. I bought a new cable this morning, and now it works perfectly. That should make the plan easier and help everyone know what to expect. I think that is the most sensible choice after looking at the other possibilities."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What was wrong?",
-                                               "options":  {
-                                                               "A":  "The battery was old.",
-                                                               "B":  "The screen was damaged.",
-                                                               "C":  "The charger cable was faulty."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The woman says the problem was the charger cable, not the laptop itself."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You hear two friends planning to study.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Boy: Shall we study for the history test at my house tonight? || Girl: I can't. My cousins are visiting, and the house will be too noisy. || Boy: What about the library? || Girl: [11]Let's meet in the café near school because it has a quiet room at the back[/11]. We can order drinks and use the big table there. It means there should be fewer problems when the time comes to do it.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Shall we study for the history test at my house tonight?"
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "I can't. My cousins are visiting, and the house will be too noisy."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "What about the library?"
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Let's meet in the café near school because it has a quiet room at the back. We can order drinks and use the big table there. It means there should be fewer problems when the time comes to do it."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "Where does the girl suggest studying?",
-                                               "options":  {
-                                                               "A":  "in a café",
-                                                               "B":  "at the boy's house",
-                                                               "C":  "in the library"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The girl suggests meeting in the café near school because it has a quiet room."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You hear a man talking about a local park.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: Have they finished changing the park near your flat? || Man: Almost. The new play area is open, and the paths are wider now. || Woman: That sounds good. || Man: Yes, but [12]I'm disappointed that they removed several old trees[/12]. They say they'll plant new ones, but it won't look the same for years. I would rather decide now than leave everything until the last minute. That way, we can enjoy it more and avoid rushing around later.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have they finished changing the park near your flat?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Almost. The new play area is open, and the paths are wider now."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds good."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, but I'm disappointed that they removed several old trees. They say they'll plant new ones, but it won't look the same for years. I would rather decide now than leave everything until the last minute. That way, we can enjoy it more and avoid rushing around later."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "How does the man feel about the park changes?",
-                                               "options":  {
-                                                               "A":  "pleased with every part of them",
-                                                               "B":  "sad about the loss of trees",
-                                                               "C":  "angry that the paths are wider"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The man says he is disappointed that several old trees were removed."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You hear two people talking about a jacket.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Woman: That's a nice jacket. Is it new? || Man: Sort of. I bought it second-hand online. || Woman: Was it the right size? || Man: Yes, and [13]it was in much better condition than I expected[/13]. The colour is a little darker than in the photo, but I actually prefer it. It is not perfect, but it seems better than the other choices we had. The important thing is to keep it simple and not make extra work.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That's a nice jacket. Is it new?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Sort of. I bought it second-hand online."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Was it the right size?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, and it was in much better condition than I expected. The colour is a little darker than in the photo, but I actually prefer it. It is not perfect, but it seems better than the other choices we had. The important thing is to keep it simple and not make extra work."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What surprised the man about the jacket?",
-                                               "options":  {
-                                                               "A":  "It was the wrong colour.",
-                                                               "B":  "It was too small.",
-                                                               "C":  "It was in very good condition."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The man says the jacket was in much better condition than he expected."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2037.mp3"
+  "test": 37,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You hear two people talking about a train journey.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Woman: Was your train journey home okay yesterday? || Man: Not really. The train left on time, but then it stopped outside the city. || Woman: Was there a problem with the engine? || Man: No, [8]we had to wait because another train was using our platform[/8]. It was only fifteen minutes, but I nearly missed my bus. I am glad we checked the details before making the final decision. That gives us enough time to prepare without changing everything else.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Was your train journey home okay yesterday?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not really. The train left on time, but then it stopped outside the city."
+        },
+        {
+          "speaker": "woman",
+          "text": "Was there a problem with the engine?"
+        },
+        {
+          "speaker": "man",
+          "text": "No, we had to wait because another train was using our platform. It was only fifteen minutes, but I nearly missed my bus. I am glad we checked the details before making the final decision. That gives us enough time to prepare without changing everything else."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "Why was the man's train delayed?",
+          "options": {
+            "A": "The platform was not free.",
+            "B": "The engine had a problem.",
+            "C": "The train left late."
+          },
+          "answer": "A",
+          "explanation": "The man says they had to wait because another train was using their platform."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You hear two friends discussing a shopping centre.",
+      "voices": {
+        "man": "en-GB-OliverNeural",
+        "woman": "en-GB-AbbiNeural"
+      },
+      "audio_script": "Girl: Did you go to the new shopping centre on Saturday? || Boy: Yes, but I won't go again at the weekend. It was packed. || Girl: Were the shops good? || Boy: Some were. [9]I liked the food area best because there were dishes from lots of countries[/9]. The clothes shops were similar to the ones in town. It also means we will not have to spend extra money unnecessarily. I suppose it is a small change, but it makes the situation much easier.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Did you go to the new shopping centre on Saturday?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes, but I won't go again at the weekend. It was packed."
+        },
+        {
+          "speaker": "girl",
+          "text": "Were the shops good?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Some were. I liked the food area best because there were dishes from lots of countries. The clothes shops were similar to the ones in town. It also means we will not have to spend extra money unnecessarily. I suppose it is a small change, but it makes the situation much easier."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What did the boy like best at the shopping centre?",
+          "options": {
+            "A": "the clothes shops",
+            "B": "the food area",
+            "C": "the cinema"
+          },
+          "answer": "B",
+          "explanation": "The boy says he liked the food area best."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You hear a woman talking about a computer problem.",
+      "voices": {
+        "man": "en-GB-ElliotNeural",
+        "woman": "en-GB-HollieNeural"
+      },
+      "audio_script": "Man: Did you manage to fix your laptop? || Woman: Yes, finally. I thought the battery was broken because it kept switching off. || Man: Was it expensive to repair? || Woman: No. [10]The problem was the charger cable, not the laptop itself[/10]. I bought a new cable this morning, and now it works perfectly. That should make the plan easier and help everyone know what to expect. I think that is the most sensible choice after looking at the other possibilities.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you manage to fix your laptop?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, finally. I thought the battery was broken because it kept switching off."
+        },
+        {
+          "speaker": "man",
+          "text": "Was it expensive to repair?"
+        },
+        {
+          "speaker": "woman",
+          "text": "No. The problem was the charger cable, not the laptop itself. I bought a new cable this morning, and now it works perfectly. That should make the plan easier and help everyone know what to expect. I think that is the most sensible choice after looking at the other possibilities."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What was wrong?",
+          "options": {
+            "A": "The battery was old.",
+            "B": "The screen was damaged.",
+            "C": "The charger cable was faulty."
+          },
+          "answer": "C",
+          "explanation": "The woman says the problem was the charger cable, not the laptop itself."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You hear two friends planning to study.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Boy: Shall we study for the history test at my house tonight? || Girl: I can't. My cousins are visiting, and the house will be too noisy. || Boy: What about the library? || Girl: [11]Let's meet in the café near school because it has a quiet room at the back[/11]. We can order drinks and use the big table there. It means there should be fewer problems when the time comes to do it.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Shall we study for the history test at my house tonight?"
+        },
+        {
+          "speaker": "girl",
+          "text": "I can't. My cousins are visiting, and the house will be too noisy."
+        },
+        {
+          "speaker": "boy",
+          "text": "What about the library?"
+        },
+        {
+          "speaker": "girl",
+          "text": "Let's meet in the café near school because it has a quiet room at the back. We can order drinks and use the big table there. It means there should be fewer problems when the time comes to do it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "Where does the girl suggest studying?",
+          "options": {
+            "A": "in a café",
+            "B": "at the boy's house",
+            "C": "in the library"
+          },
+          "answer": "A",
+          "explanation": "The girl suggests meeting in the café near school because it has a quiet room."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You hear a man talking about a local park.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: Have they finished changing the park near your flat? || Man: Almost. The new play area is open, and the paths are wider now. || Woman: That sounds good. || Man: Yes, but [12]I'm disappointed that they removed several old trees[/12]. They say they'll plant new ones, but it won't look the same for years. I would rather decide now than leave everything until the last minute. That way, we can enjoy it more and avoid rushing around later.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have they finished changing the park near your flat?"
+        },
+        {
+          "speaker": "man",
+          "text": "Almost. The new play area is open, and the paths are wider now."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds good."
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, but I'm disappointed that they removed several old trees. They say they'll plant new ones, but it won't look the same for years. I would rather decide now than leave everything until the last minute. That way, we can enjoy it more and avoid rushing around later."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "How does the man feel about the park changes?",
+          "options": {
+            "A": "pleased with every part of them",
+            "B": "sad about the loss of trees",
+            "C": "angry that the paths are wider"
+          },
+          "answer": "B",
+          "explanation": "The man says he is disappointed that several old trees were removed."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You hear two people talking about a jacket.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Woman: That's a nice jacket. Is it new? || Man: Sort of. I bought it second-hand online. || Woman: Was it the right size? || Man: Yes, and [13]it was in much better condition than I expected[/13]. The colour is a little darker than in the photo, but I actually prefer it. It is not perfect, but it seems better than the other choices we had. The important thing is to keep it simple and not make extra work.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "That's a nice jacket. Is it new?"
+        },
+        {
+          "speaker": "man",
+          "text": "Sort of. I bought it second-hand online."
+        },
+        {
+          "speaker": "woman",
+          "text": "Was it the right size?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, and it was in much better condition than I expected. The colour is a little darker than in the photo, but I actually prefer it. It is not perfect, but it seems better than the other choices we had. The important thing is to keep it simple and not make extra work."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What surprised the man about the jacket?",
+          "options": {
+            "A": "It was the wrong colour.",
+            "B": "It was too small.",
+            "C": "It was in very good condition."
+          },
+          "answer": "C",
+          "explanation": "The man says the jacket was in much better condition than he expected."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/test37_part2.mp3"
 }

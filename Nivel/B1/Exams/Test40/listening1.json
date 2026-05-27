@@ -1,129 +1,130 @@
 {
-    "test_id":  40,
-    "exam_part":  1,
-    "title":  "B1 Listening Part 1 - Test 40",
-    "type":  "multiple-choice-text",
-    "totalQuestions":  7,
-    "instructions":  "For each question, listen to the recording and choose the correct answer: A, B or C.",
-    "items":  [
-                  {
-                      "number":  1,
-                      "context":  "You hear two friends talking about lost library card.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-RyanNeural"
-                                 },
-                      "audio_script":  "Girl: Have you found your library card? You looked worried earlier. || Boy: Not at first. I searched my coat pocket because I remembered using it there, then checked my pencil case, but nobody had seen it. || Girl: So where did it turn up? || Boy: My receptionist has just messaged me. [1]It is on the school reception desk[/1]. I must have left it there. I will collect it at lunch because I need it for borrowing a book today. || Girl: Great. You can stop searching now and concentrate on the day.",
-                      "question":  "Where is the library card?",
-                      "options":  {
-                                      "A":  "On the school reception desk",
-                                      "B":  "My coat pocket",
-                                      "C":  "My pencil case"
-                                  },
-                      "answer":  "A",
-                      "explanation":  "The speaker says the library card is on the school reception desk."
-                  },
-                  {
-                      "number":  2,
-                      "context":  "You hear two friends talking about buying a birthday present.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-AlfieNeural"
-                                 },
-                      "audio_script":  "Girl: Did you buy a birthday present for my parents? You said you were going into town after school. || Boy: Yes, but choosing took a while. I first considered a framed photograph, because that seemed a safe choice. || Girl: What about a restaurant voucher? That might have been useful. || Boy: I looked at that, but it did not seem right. In the end, [2]I bought a travel guide because they are planning a holiday soon[/2]. || Girl: That sounds thoughtful. I am sure it will be appreciated. || Boy: I hope so. I will wrap it this evening before tomorrow's party.",
-                      "question":  "What did the speaker buy?",
-                      "options":  {
-                                      "A":  "A framed photograph",
-                                      "B":  "A travel guide",
-                                      "C":  "A restaurant voucher"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The speaker says they bought a travel guide because they are planning a holiday soon."
-                  },
-                  {
-                      "number":  3,
-                      "context":  "You hear two people talking about helping at the community centre.",
-                      "voices":  {
-                                     "woman":  "en-GB-HollieNeural",
-                                     "man":  "en-GB-EthanNeural"
-                                 },
-                      "audio_script":  "Woman: What job are you doing at the community centre this afternoon? I thought you were going to paint a sign. || Man: That was yesterday's plan, but somebody finished it before lunch. || Woman: So will you sell cakes instead? || Man: No, the manager says that is not needed today. [3]I have to arrange the prizes on a table because the games begin after lunch[/3]. || Woman: That sounds manageable, although you may be busy. || Man: Yes, I want to finish before five because I promised to meet my friends afterwards nearby.",
-                      "question":  "What job will the speaker do?",
-                      "options":  {
-                                      "A":  "Paint a sign",
-                                      "B":  "Sell cakes",
-                                      "C":  "Arrange the prizes on a table"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "The speaker says they have to arrange the prizes on a table because the games begin after lunch."
-                  },
-                  {
-                      "number":  4,
-                      "context":  "You hear two students talking about what to take on the swimming lesson.",
-                      "voices":  {
-                                     "girl":  "en-GB-BellaNeural",
-                                     "boy":  "en-GB-ElliotNeural"
-                                 },
-                      "audio_script":  "Girl: Are you ready for the swimming lesson tomorrow? I was checking what we have to bring, because I do not want to forget anything. || Boy: I was going to pack a cap. Do we need that? || Girl: No, it is not on the list. || Boy: Perhaps I should take trainers instead. || Girl: You can, but [4]everyone must bring a towel because the pool does not provide them anymore[/4]. || Boy: Thanks for reminding me. I will put it in my bag tonight, so I am ready when we leave.",
-                      "question":  "What must the student take?",
-                      "options":  {
-                                      "A":  "A towel",
-                                      "B":  "A cap",
-                                      "C":  "Trainers"
-                                  },
-                      "answer":  "A",
-                      "explanation":  "The speaker says everyone must bring a towel because the pool does not provide them anymore."
-                  },
-                  {
-                      "number":  5,
-                      "context":  "You hear two friends making plans.",
-                      "voices":  {
-                                     "woman":  "en-GB-LibbyNeural",
-                                     "man":  "en-GB-NoahNeural"
-                                 },
-                      "audio_script":  "Woman: Are we still planning to play football on Friday afternoon? I had already arranged everything for it. || Man: I am afraid not. The pitch is muddy and the pool closes early, so that plan will not work now. || Woman: We could go swimming instead. Would that be easier? || Man: I thought about that, but I have a better idea. [5]Let us play tennis on Friday afternoon instead[/5]. || Woman: Fine with me. Where shall we meet? || Man: Meet me by the bus stop at four, and bring your student card in case they ask for it.",
-                      "question":  "What will they do?",
-                      "options":  {
-                                      "A":  "Play football",
-                                      "B":  "Play tennis",
-                                      "C":  "Go swimming"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The speaker suggests that they play tennis on Friday afternoon instead."
-                  },
-                  {
-                      "number":  6,
-                      "context":  "You hear two students talking about parents' meeting.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-RyanNeural"
-                                 },
-                      "audio_script":  "Girl: Do you know where parents' meeting is being held today? I was going to the school hall, where we usually meet. || Boy: Do not go there. The projector failed in the hall and the dining room is being cleaned, so the organiser changed the room. || Girl: I wondered whether it might be in the dining room. || Boy: No, that is not right either. [6]We need to meet in the music room this afternoon[/6]. || Girl: Thanks for telling me. I would have waited in the wrong place. || Boy: I will message the others too, so nobody misses the beginning.",
-                      "question":  "Where will parents' meeting be held?",
-                      "options":  {
-                                      "A":  "The school hall",
-                                      "B":  "The dining room",
-                                      "C":  "The music room"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "The speaker says they need to meet in the music room."
-                  },
-                  {
-                      "number":  7,
-                      "context":  "You hear two people talking about something that is broken.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-AlfieNeural"
-                                 },
-                      "audio_script":  "Girl: I heard something is wrong, but I am not sure what it is. Is it the chain? || Boy: No, I checked that earlier and it is working normally. || Girl: Then perhaps it is the light. || Boy: I thought so too, but that is fine. [7]The problem is the front tyre because it is completely flat[/7]. || Girl: We should tell someone before it gets worse or causes trouble. || Boy: I agree. I will explain what happened when Dad gets home this evening and ask if it can be repaired soon.",
-                      "question":  "What is wrong with the bicycle?",
-                      "options":  {
-                                      "A":  "The front tyre",
-                                      "B":  "The chain",
-                                      "C":  "The light"
-                                  },
-                      "answer":  "A",
-                      "explanation":  "The speaker says the problem is the front tyre because it is completely flat."
-                  }
-              ]
+  "test_id": 40,
+  "exam_part": 1,
+  "title": "B1 Listening Part 1 - Test 40",
+  "type": "multiple-choice-text",
+  "totalQuestions": 7,
+  "instructions": "For each question, listen to the recording and choose the correct answer: A, B or C.",
+  "items": [
+    {
+      "number": 1,
+      "context": "You hear two friends talking about lost library card.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-RyanNeural"
+      },
+      "audio_script": "Girl: Have you found your library card? You looked worried earlier. || Boy: Not at first. I searched my coat pocket because I remembered using it there, then checked my pencil case, but nobody had seen it. || Girl: So where did it turn up? || Boy: My receptionist has just messaged me. [1]It is on the school reception desk[/1]. I must have left it there. I will collect it at lunch because I need it for borrowing a book today. || Girl: Great. You can stop searching now and concentrate on the day.",
+      "question": "Where is the library card?",
+      "options": {
+        "A": "On the school reception desk",
+        "B": "My coat pocket",
+        "C": "My pencil case"
+      },
+      "answer": "A",
+      "explanation": "The speaker says the library card is on the school reception desk."
+    },
+    {
+      "number": 2,
+      "context": "You hear two friends talking about buying a birthday present.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Girl: Did you buy a birthday present for my parents? You said you were going into town after school. || Boy: Yes, but choosing took a while. I first considered a framed photograph, because that seemed a safe choice. || Girl: What about a restaurant voucher? That might have been useful. || Boy: I looked at that, but it did not seem right. In the end, [2]I bought a travel guide because they are planning a holiday soon[/2]. || Girl: That sounds thoughtful. I am sure it will be appreciated. || Boy: I hope so. I will wrap it this evening before tomorrow's party.",
+      "question": "What did the speaker buy?",
+      "options": {
+        "A": "A framed photograph",
+        "B": "A travel guide",
+        "C": "A restaurant voucher"
+      },
+      "answer": "B",
+      "explanation": "The speaker says they bought a travel guide because they are planning a holiday soon."
+    },
+    {
+      "number": 3,
+      "context": "You hear two people talking about helping at the community centre.",
+      "voices": {
+        "woman": "en-GB-HollieNeural",
+        "man": "en-GB-EthanNeural"
+      },
+      "audio_script": "Woman: What job are you doing at the community centre this afternoon? I thought you were going to paint a sign. || Man: That was yesterday's plan, but somebody finished it before lunch. || Woman: So will you sell cakes instead? || Man: No, the manager says that is not needed today. [3]I have to arrange the prizes on a table because the games begin after lunch[/3]. || Woman: That sounds manageable, although you may be busy. || Man: Yes, I want to finish before five because I promised to meet my friends afterwards nearby.",
+      "question": "What job will the speaker do?",
+      "options": {
+        "A": "Paint a sign",
+        "B": "Sell cakes",
+        "C": "Arrange the prizes on a table"
+      },
+      "answer": "C",
+      "explanation": "The speaker says they have to arrange the prizes on a table because the games begin after lunch."
+    },
+    {
+      "number": 4,
+      "context": "You hear two students talking about what to take on the swimming lesson.",
+      "voices": {
+        "girl": "en-GB-BellaNeural",
+        "boy": "en-GB-ElliotNeural"
+      },
+      "audio_script": "Girl: Are you ready for the swimming lesson tomorrow? I was checking what we have to bring, because I do not want to forget anything. || Boy: I was going to pack a cap. Do we need that? || Girl: No, it is not on the list. || Boy: Perhaps I should take trainers instead. || Girl: You can, but [4]everyone must bring a towel because the pool does not provide them anymore[/4]. || Boy: Thanks for reminding me. I will put it in my bag tonight, so I am ready when we leave.",
+      "question": "What must the student take?",
+      "options": {
+        "A": "A towel",
+        "B": "A cap",
+        "C": "Trainers"
+      },
+      "answer": "A",
+      "explanation": "The speaker says everyone must bring a towel because the pool does not provide them anymore."
+    },
+    {
+      "number": 5,
+      "context": "You hear two friends making plans.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural",
+        "man": "en-GB-NoahNeural"
+      },
+      "audio_script": "Woman: Are we still planning to play football on Friday afternoon? I had already arranged everything for it. || Man: I am afraid not. The pitch is muddy and the pool closes early, so that plan will not work now. || Woman: We could go swimming instead. Would that be easier? || Man: I thought about that, but I have a better idea. [5]Let us play tennis on Friday afternoon instead[/5]. || Woman: Fine with me. Where shall we meet? || Man: Meet me by the bus stop at four, and bring your student card in case they ask for it.",
+      "question": "What will they do?",
+      "options": {
+        "A": "Play football",
+        "B": "Play tennis",
+        "C": "Go swimming"
+      },
+      "answer": "B",
+      "explanation": "The speaker suggests that they play tennis on Friday afternoon instead."
+    },
+    {
+      "number": 6,
+      "context": "You hear two students talking about parents' meeting.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-RyanNeural"
+      },
+      "audio_script": "Girl: Do you know where parents' meeting is being held today? I was going to the school hall, where we usually meet. || Boy: Do not go there. The projector failed in the hall and the dining room is being cleaned, so the organiser changed the room. || Girl: I wondered whether it might be in the dining room. || Boy: No, that is not right either. [6]We need to meet in the music room this afternoon[/6]. || Girl: Thanks for telling me. I would have waited in the wrong place. || Boy: I will message the others too, so nobody misses the beginning.",
+      "question": "Where will parents' meeting be held?",
+      "options": {
+        "A": "The school hall",
+        "B": "The dining room",
+        "C": "The music room"
+      },
+      "answer": "C",
+      "explanation": "The speaker says they need to meet in the music room."
+    },
+    {
+      "number": 7,
+      "context": "You hear two people talking about something that is broken.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Girl: I heard something is wrong, but I am not sure what it is. Is it the chain? || Boy: No, I checked that earlier and it is working normally. || Girl: Then perhaps it is the light. || Boy: I thought so too, but that is fine. [7]The problem is the front tyre because it is completely flat[/7]. || Girl: We should tell someone before it gets worse or causes trouble. || Boy: I agree. I will explain what happened when Dad gets home this evening and ask if it can be repaired soon.",
+      "question": "What is wrong with the bicycle?",
+      "options": {
+        "A": "The front tyre",
+        "B": "The chain",
+        "C": "The light"
+      },
+      "answer": "A",
+      "explanation": "The speaker says the problem is the front tyre because it is completely flat."
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part1/test40_part1.mp3"
 }

@@ -1,254 +1,254 @@
 {
-    "test":  36,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You hear two friends discussing a new library.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: Have you been to the new library yet? || Man: Yes, yesterday. It's brighter than the old one, but it was difficult to find the entrance. || Woman: Is the children's area good? || Man: Very good. [8]I was most impressed by the quiet study rooms upstairs[/8]. You can book one for free, which is useful when the main area is busy. It also means we will not have to spend extra money unnecessarily.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have you been to the new library yet?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, yesterday. It's brighter than the old one, but it was difficult to find the entrance."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Is the children's area good?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Very good. I was most impressed by the quiet study rooms upstairs. You can book one for free, which is useful when the main area is busy. It also means we will not have to spend extra money unnecessarily."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "What did the man like most about the new library?",
-                                               "options":  {
-                                                               "A":  "the study rooms",
-                                                               "B":  "the children's area",
-                                                               "C":  "the main entrance"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The man says he was most impressed by the quiet study rooms upstairs."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You hear a woman talking about her weekend job.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Man: How's your weekend job at the garden centre? || Woman: Better now. At first I had to carry heavy bags of soil, which I hated. || Man: What do you do now? || Woman: [9]I'm usually at the information desk, helping customers choose plants[/9]. I enjoy talking to people, and I'm learning the names of different flowers. I suppose it is a small change, but it makes the situation much easier. That should make the plan easier and help everyone know what to expect.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "How's your weekend job at the garden centre?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Better now. At first I had to carry heavy bags of soil, which I hated."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "What do you do now?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I'm usually at the information desk, helping customers choose plants. I enjoy talking to people, and I'm learning the names of different flowers. I suppose it is a small change, but it makes the situation much easier. That should make the plan easier and help everyone know what to expect."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What does the woman usually do now?",
-                                               "options":  {
-                                                               "A":  "carry bags of soil",
-                                                               "B":  "help customers choose plants",
-                                                               "C":  "water flowers outside"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The woman says she usually works at the information desk, helping customers choose plants."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You hear two students talking about a maths lesson.",
-                         "voices":  {
-                                        "man":  "en-GB-OliverNeural",
-                                        "woman":  "en-GB-AbbiNeural"
-                                    },
-                         "audio_script":  "Boy: Did you understand today's maths lesson? || Girl: Most of it. The teacher explained the new method clearly. || Boy: I got lost near the end. || Girl: [10]The homework looks easier than the examples we did in class[/10], so maybe try that first. If it still seems hard, ask Mr Patel tomorrow. I think that is the most sensible choice after looking at the other possibilities. It means there should be fewer problems when the time comes to do it.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Did you understand today's maths lesson?"
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Most of it. The teacher explained the new method clearly."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "I got lost near the end."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "The homework looks easier than the examples we did in class, so maybe try that first. If it still seems hard, ask Mr Patel tomorrow. I think that is the most sensible choice after looking at the other possibilities. It means there should be fewer problems when the time comes to do it."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What does the girl say about the homework?",
-                                               "options":  {
-                                                               "A":  "It should be handed in tomorrow.",
-                                                               "B":  "It is harder than the classwork.",
-                                                               "C":  "It may be easier than the lesson examples."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The girl says the homework looks easier than the examples they did in class."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You hear two friends talking about a barbecue.",
-                         "voices":  {
-                                        "man":  "en-GB-ElliotNeural",
-                                        "woman":  "en-GB-HollieNeural"
-                                    },
-                         "audio_script":  "Man: Are we still having the barbecue in your garden on Sunday? || Woman: Yes, but I need to borrow some chairs. We only have four. || Man: I can bring two from my house. || Woman: Great. [11]My aunt is bringing the food, so I don't need help with that[/11]. If you bring the chairs, we'll have enough for everyone. I would rather decide now than leave everything until the last minute. That way, we can enjoy it more and avoid rushing around later.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Are we still having the barbecue in your garden on Sunday?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, but I need to borrow some chairs. We only have four."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I can bring two from my house."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Great. My aunt is bringing the food, so I don't need help with that. If you bring the chairs, we'll have enough for everyone. I would rather decide now than leave everything until the last minute. That way, we can enjoy it more and avoid rushing around later."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What does the woman want the man to bring?",
-                                               "options":  {
-                                                               "A":  "some chairs",
-                                                               "B":  "some food",
-                                                               "C":  "a barbecue"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The woman says she needs to borrow chairs and tells the man to bring them."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You hear a man talking to a receptionist at a sports centre.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: I'd like to book a badminton court for Thursday evening. || Woman: We have one at six or one at eight thirty. || Man: Eight thirty is too late because my daughter has school the next day. || Woman: Then [12]I can give you the six o'clock court for forty-five minutes[/12]. It is shorter than usual, but it is the only early time left. It is not perfect, but it seems better than the other choices we had.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I'd like to book a badminton court for Thursday evening."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "We have one at six or one at eight thirty."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Eight thirty is too late because my daughter has school the next day."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Then I can give you the six o'clock court for forty-five minutes. It is shorter than usual, but it is the only early time left. It is not perfect, but it seems better than the other choices we had."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What booking does the receptionist offer?",
-                                               "options":  {
-                                                               "A":  "an eight thirty court",
-                                                               "B":  "a short court booking at six",
-                                                               "C":  "a full hour on Friday"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The receptionist offers the six o'clock court for forty-five minutes."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You hear a girl talking about a music lesson.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: How did your first guitar lesson go? || Girl: I enjoyed it, although my fingers hurt afterwards. || Woman: Did you learn a song? || Girl: Not yet. [13]The teacher spent most of the time showing me how to hold the guitar properly[/13]. It felt strange at first, but I can see why it matters. The important thing is to keep it simple and not make extra work. It should be fine as long as everybody remembers the new arrangement.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "How did your first guitar lesson go?"
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "I enjoyed it, although my fingers hurt afterwards."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did you learn a song?"
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Not yet. The teacher spent most of the time showing me how to hold the guitar properly. It felt strange at first, but I can see why it matters. The important thing is to keep it simple and not make extra work. It should be fine as long as everybody remembers the new arrangement."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What did the girl learn in her first lesson?",
-                                               "options":  {
-                                                               "A":  "how to play a complete song",
-                                                               "B":  "how to read music",
-                                                               "C":  "how to hold the guitar"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The girl says the teacher showed her how to hold the guitar properly."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2036.mp3"
+  "test": 36,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You hear two friends discussing a new library.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: Have you been to the new library yet? || Man: Yes, yesterday. It's brighter than the old one, but it was difficult to find the entrance. || Woman: Is the children's area good? || Man: Very good. [8]I was most impressed by the quiet study rooms upstairs[/8]. You can book one for free, which is useful when the main area is busy. It also means we will not have to spend extra money unnecessarily.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you been to the new library yet?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, yesterday. It's brighter than the old one, but it was difficult to find the entrance."
+        },
+        {
+          "speaker": "woman",
+          "text": "Is the children's area good?"
+        },
+        {
+          "speaker": "man",
+          "text": "Very good. I was most impressed by the quiet study rooms upstairs. You can book one for free, which is useful when the main area is busy. It also means we will not have to spend extra money unnecessarily."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What did the man like most about the new library?",
+          "options": {
+            "A": "the study rooms",
+            "B": "the children's area",
+            "C": "the main entrance"
+          },
+          "answer": "A",
+          "explanation": "The man says he was most impressed by the quiet study rooms upstairs."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You hear a woman talking about her weekend job.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Man: How's your weekend job at the garden centre? || Woman: Better now. At first I had to carry heavy bags of soil, which I hated. || Man: What do you do now? || Woman: [9]I'm usually at the information desk, helping customers choose plants[/9]. I enjoy talking to people, and I'm learning the names of different flowers. I suppose it is a small change, but it makes the situation much easier. That should make the plan easier and help everyone know what to expect.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How's your weekend job at the garden centre?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Better now. At first I had to carry heavy bags of soil, which I hated."
+        },
+        {
+          "speaker": "man",
+          "text": "What do you do now?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I'm usually at the information desk, helping customers choose plants. I enjoy talking to people, and I'm learning the names of different flowers. I suppose it is a small change, but it makes the situation much easier. That should make the plan easier and help everyone know what to expect."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What does the woman usually do now?",
+          "options": {
+            "A": "carry bags of soil",
+            "B": "help customers choose plants",
+            "C": "water flowers outside"
+          },
+          "answer": "B",
+          "explanation": "The woman says she usually works at the information desk, helping customers choose plants."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You hear two students talking about a maths lesson.",
+      "voices": {
+        "man": "en-GB-OliverNeural",
+        "woman": "en-GB-AbbiNeural"
+      },
+      "audio_script": "Boy: Did you understand today's maths lesson? || Girl: Most of it. The teacher explained the new method clearly. || Boy: I got lost near the end. || Girl: [10]The homework looks easier than the examples we did in class[/10], so maybe try that first. If it still seems hard, ask Mr Patel tomorrow. I think that is the most sensible choice after looking at the other possibilities. It means there should be fewer problems when the time comes to do it.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Did you understand today's maths lesson?"
+        },
+        {
+          "speaker": "girl",
+          "text": "Most of it. The teacher explained the new method clearly."
+        },
+        {
+          "speaker": "boy",
+          "text": "I got lost near the end."
+        },
+        {
+          "speaker": "girl",
+          "text": "The homework looks easier than the examples we did in class, so maybe try that first. If it still seems hard, ask Mr Patel tomorrow. I think that is the most sensible choice after looking at the other possibilities. It means there should be fewer problems when the time comes to do it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What does the girl say about the homework?",
+          "options": {
+            "A": "It should be handed in tomorrow.",
+            "B": "It is harder than the classwork.",
+            "C": "It may be easier than the lesson examples."
+          },
+          "answer": "C",
+          "explanation": "The girl says the homework looks easier than the examples they did in class."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You hear two friends talking about a barbecue.",
+      "voices": {
+        "man": "en-GB-ElliotNeural",
+        "woman": "en-GB-HollieNeural"
+      },
+      "audio_script": "Man: Are we still having the barbecue in your garden on Sunday? || Woman: Yes, but I need to borrow some chairs. We only have four. || Man: I can bring two from my house. || Woman: Great. [11]My aunt is bringing the food, so I don't need help with that[/11]. If you bring the chairs, we'll have enough for everyone. I would rather decide now than leave everything until the last minute. That way, we can enjoy it more and avoid rushing around later.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Are we still having the barbecue in your garden on Sunday?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, but I need to borrow some chairs. We only have four."
+        },
+        {
+          "speaker": "man",
+          "text": "I can bring two from my house."
+        },
+        {
+          "speaker": "woman",
+          "text": "Great. My aunt is bringing the food, so I don't need help with that. If you bring the chairs, we'll have enough for everyone. I would rather decide now than leave everything until the last minute. That way, we can enjoy it more and avoid rushing around later."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What does the woman want the man to bring?",
+          "options": {
+            "A": "some chairs",
+            "B": "some food",
+            "C": "a barbecue"
+          },
+          "answer": "A",
+          "explanation": "The woman says she needs to borrow chairs and tells the man to bring them."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You hear a man talking to a receptionist at a sports centre.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: I'd like to book a badminton court for Thursday evening. || Woman: We have one at six or one at eight thirty. || Man: Eight thirty is too late because my daughter has school the next day. || Woman: Then [12]I can give you the six o'clock court for forty-five minutes[/12]. It is shorter than usual, but it is the only early time left. It is not perfect, but it seems better than the other choices we had.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I'd like to book a badminton court for Thursday evening."
+        },
+        {
+          "speaker": "woman",
+          "text": "We have one at six or one at eight thirty."
+        },
+        {
+          "speaker": "man",
+          "text": "Eight thirty is too late because my daughter has school the next day."
+        },
+        {
+          "speaker": "woman",
+          "text": "Then I can give you the six o'clock court for forty-five minutes. It is shorter than usual, but it is the only early time left. It is not perfect, but it seems better than the other choices we had."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What booking does the receptionist offer?",
+          "options": {
+            "A": "an eight thirty court",
+            "B": "a short court booking at six",
+            "C": "a full hour on Friday"
+          },
+          "answer": "B",
+          "explanation": "The receptionist offers the six o'clock court for forty-five minutes."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You hear a girl talking about a music lesson.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: How did your first guitar lesson go? || Girl: I enjoyed it, although my fingers hurt afterwards. || Woman: Did you learn a song? || Girl: Not yet. [13]The teacher spent most of the time showing me how to hold the guitar properly[/13]. It felt strange at first, but I can see why it matters. The important thing is to keep it simple and not make extra work. It should be fine as long as everybody remembers the new arrangement.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How did your first guitar lesson go?"
+        },
+        {
+          "speaker": "girl",
+          "text": "I enjoyed it, although my fingers hurt afterwards."
+        },
+        {
+          "speaker": "woman",
+          "text": "Did you learn a song?"
+        },
+        {
+          "speaker": "girl",
+          "text": "Not yet. The teacher spent most of the time showing me how to hold the guitar properly. It felt strange at first, but I can see why it matters. The important thing is to keep it simple and not make extra work. It should be fine as long as everybody remembers the new arrangement."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What did the girl learn in her first lesson?",
+          "options": {
+            "A": "how to play a complete song",
+            "B": "how to read music",
+            "C": "how to hold the guitar"
+          },
+          "answer": "C",
+          "explanation": "The girl says the teacher showed her how to hold the guitar properly."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/test36_part2.mp3"
 }

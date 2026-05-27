@@ -1,250 +1,250 @@
 {
-    "test":  31,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You hear two friends talking about a weekend walk.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: Are you still coming on the walk on Saturday? The weather may be wet in the morning. || Man: I checked again. It should be dry after lunch, but the forest path will be muddy. || Woman: So should we change the plan and walk along the river instead? || Man: Yes. [8]The river path is flatter and it has cafés nearby, so it will be better if the ground is wet[/8]. We can still meet at the station at one.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you still coming on the walk on Saturday? The weather may be wet in the morning."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I checked again. It should be dry after lunch, but the forest path will be muddy."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "So should we change the plan and walk along the river instead?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes. The river path is flatter and it has cafés nearby, so it will be better if the ground is wet. We can still meet at the station at one."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "What do they decide to do?",
-                                               "options":  {
-                                                               "A":  "go through the forest",
-                                                               "B":  "meet in the morning",
-                                                               "C":  "walk by the river"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The man says the river path is flatter and better if the ground is wet, so they decide to walk by the river."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You hear a boy talking to his sister about a birthday present.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Boy: Mum's birthday is next week, and I still haven't bought anything. || Girl: What about flowers? She always likes them, but Dad may buy those already. || Boy: I thought about a book, but she has several she hasn't read yet. || Girl: [9]Let's get her a cooking lesson because she keeps saying she wants to learn new dishes[/9]. I can book it online tonight, and you can make the card. That should make the plan easier and help everyone know what to expect.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Mum's birthday is next week, and I still haven't bought anything."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "What about flowers? She always likes them, but Dad may buy those already."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "I thought about a book, but she has several she hasn't read yet."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Let's get her a cooking lesson because she keeps saying she wants to learn new dishes. I can book it online tonight, and you can make the card. That should make the plan easier and help everyone know what to expect."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What present does the girl suggest?",
-                                               "options":  {
-                                                               "A":  "some flowers",
-                                                               "B":  "a new book",
-                                                               "C":  "a cooking lesson"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The girl says they should get their mother a cooking lesson because she wants to learn new dishes."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You hear two colleagues talking about lunch at work.",
-                         "voices":  {
-                                        "man":  "en-GB-OliverNeural",
-                                        "woman":  "en-GB-AbbiNeural"
-                                    },
-                         "audio_script":  "Man: I'm going out for lunch. Do you want anything from the sandwich shop? || Woman: Maybe, but the queue there is always terrible on Fridays. || Man: The café across the road is quicker, though it costs a bit more. || Woman: [10]I'd rather bring something from the supermarket and eat in the office garden[/10]. It's sunny, and I don't want to spend my whole break waiting. I think that is the most sensible choice after looking at the other possibilities.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I'm going out for lunch. Do you want anything from the sandwich shop?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Maybe, but the queue there is always terrible on Fridays."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "The café across the road is quicker, though it costs a bit more."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I'd rather bring something from the supermarket and eat in the office garden. It's sunny, and I don't want to spend my whole break waiting. I think that is the most sensible choice after looking at the other possibilities."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What does the woman prefer to do?",
-                                               "options":  {
-                                                               "A":  "go to the sandwich shop",
-                                                               "B":  "eat in the café",
-                                                               "C":  "buy food and eat outside"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The woman says she would rather buy something from the supermarket and eat in the office garden."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You hear a message about a swimming class.",
-                         "voices":  {
-                                        "man":  "en-GB-ElliotNeural",
-                                        "woman":  "en-GB-HollieNeural"
-                                    },
-                         "audio_script":  "Woman: This is a message for everyone in Tuesday's swimming class. The main pool is closed for repairs this week. || Woman: Some people asked if the class would move to Friday, but that is not possible. || Woman: [11]Instead, the lesson will be in the small pool at the usual time of six thirty[/11]. Please arrive ten minutes early because there is a different entrance. It means there should be fewer problems when the time comes to do it.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "This is a message for everyone in Tuesday's swimming class. The main pool is closed for repairs this week."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Some people asked if the class would move to Friday, but that is not possible."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Instead, the lesson will be in the small pool at the usual time of six thirty. Please arrive ten minutes early because there is a different entrance. It means there should be fewer problems when the time comes to do it."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What has changed about the swimming class?",
-                                               "options":  {
-                                                               "A":  "where it will take place",
-                                                               "B":  "what day it will be on",
-                                                               "C":  "what time it will start"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The speaker says the lesson will be in the small pool, so the place has changed, not the day or time."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You hear two friends talking about a new phone.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Is that your new phone? It looks the same as your old one. || Man: It does, but the camera is much better. I nearly bought the cheaper model. || Woman: Was the battery different? || Man: Not really. [12]I chose this one because the screen is easier to read outdoors[/12]. I use maps a lot when I'm cycling, so that matters more than the camera. I would rather decide now than leave everything until the last minute.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Is that your new phone? It looks the same as your old one."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "It does, but the camera is much better. I nearly bought the cheaper model."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Was the battery different?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Not really. I chose this one because the screen is easier to read outdoors. I use maps a lot when I'm cycling, so that matters more than the camera. I would rather decide now than leave everything until the last minute."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "Why did the man choose this phone?",
-                                               "options":  {
-                                                               "A":  "It has a better battery.",
-                                                               "B":  "The screen works well outside.",
-                                                               "C":  "The camera was cheaper."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The man says he chose the phone because the screen is easier to read outdoors."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You hear a woman telling a friend about a hotel.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: How was your hotel by the beach? The photos looked amazing. || Woman: The room was clean, and breakfast was good, but we had one problem. || Man: Was it too far from the sea? || Woman: No, that part was fine. [13]At night the music from the restaurant downstairs was really loud[/13], and we couldn't sleep until after midnight. That way, we can enjoy it more and avoid rushing around later. It is not perfect, but it seems better than the other choices we had.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "How was your hotel by the beach? The photos looked amazing."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "The room was clean, and breakfast was good, but we had one problem."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Was it too far from the sea?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "No, that part was fine. At night the music from the restaurant downstairs was really loud, and we couldn't sleep until after midnight. That way, we can enjoy it more and avoid rushing around later. It is not perfect, but it seems better than the other choices we had."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What did the woman dislike about the hotel?",
-                                               "options":  {
-                                                               "A":  "the noise at night",
-                                                               "B":  "the breakfast",
-                                                               "C":  "the distance from the beach"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The woman says the music from the restaurant downstairs was really loud at night."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2031.mp3"
+  "test": 31,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You hear two friends talking about a weekend walk.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: Are you still coming on the walk on Saturday? The weather may be wet in the morning. || Man: I checked again. It should be dry after lunch, but the forest path will be muddy. || Woman: So should we change the plan and walk along the river instead? || Man: Yes. [8]The river path is flatter and it has cafés nearby, so it will be better if the ground is wet[/8]. We can still meet at the station at one.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you still coming on the walk on Saturday? The weather may be wet in the morning."
+        },
+        {
+          "speaker": "man",
+          "text": "I checked again. It should be dry after lunch, but the forest path will be muddy."
+        },
+        {
+          "speaker": "woman",
+          "text": "So should we change the plan and walk along the river instead?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes. The river path is flatter and it has cafés nearby, so it will be better if the ground is wet. We can still meet at the station at one."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What do they decide to do?",
+          "options": {
+            "A": "go through the forest",
+            "B": "meet in the morning",
+            "C": "walk by the river"
+          },
+          "answer": "C",
+          "explanation": "The man says the river path is flatter and better if the ground is wet, so they decide to walk by the river."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You hear a boy talking to his sister about a birthday present.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Boy: Mum's birthday is next week, and I still haven't bought anything. || Girl: What about flowers? She always likes them, but Dad may buy those already. || Boy: I thought about a book, but she has several she hasn't read yet. || Girl: [9]Let's get her a cooking lesson because she keeps saying she wants to learn new dishes[/9]. I can book it online tonight, and you can make the card. That should make the plan easier and help everyone know what to expect.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Mum's birthday is next week, and I still haven't bought anything."
+        },
+        {
+          "speaker": "girl",
+          "text": "What about flowers? She always likes them, but Dad may buy those already."
+        },
+        {
+          "speaker": "boy",
+          "text": "I thought about a book, but she has several she hasn't read yet."
+        },
+        {
+          "speaker": "girl",
+          "text": "Let's get her a cooking lesson because she keeps saying she wants to learn new dishes. I can book it online tonight, and you can make the card. That should make the plan easier and help everyone know what to expect."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What present does the girl suggest?",
+          "options": {
+            "A": "some flowers",
+            "B": "a new book",
+            "C": "a cooking lesson"
+          },
+          "answer": "C",
+          "explanation": "The girl says they should get their mother a cooking lesson because she wants to learn new dishes."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You hear two colleagues talking about lunch at work.",
+      "voices": {
+        "man": "en-GB-OliverNeural",
+        "woman": "en-GB-AbbiNeural"
+      },
+      "audio_script": "Man: I'm going out for lunch. Do you want anything from the sandwich shop? || Woman: Maybe, but the queue there is always terrible on Fridays. || Man: The café across the road is quicker, though it costs a bit more. || Woman: [10]I'd rather bring something from the supermarket and eat in the office garden[/10]. It's sunny, and I don't want to spend my whole break waiting. I think that is the most sensible choice after looking at the other possibilities.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I'm going out for lunch. Do you want anything from the sandwich shop?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Maybe, but the queue there is always terrible on Fridays."
+        },
+        {
+          "speaker": "man",
+          "text": "The café across the road is quicker, though it costs a bit more."
+        },
+        {
+          "speaker": "woman",
+          "text": "I'd rather bring something from the supermarket and eat in the office garden. It's sunny, and I don't want to spend my whole break waiting. I think that is the most sensible choice after looking at the other possibilities."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What does the woman prefer to do?",
+          "options": {
+            "A": "go to the sandwich shop",
+            "B": "eat in the café",
+            "C": "buy food and eat outside"
+          },
+          "answer": "C",
+          "explanation": "The woman says she would rather buy something from the supermarket and eat in the office garden."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You hear a message about a swimming class.",
+      "voices": {
+        "man": "en-GB-ElliotNeural",
+        "woman": "en-GB-HollieNeural"
+      },
+      "audio_script": "Woman: This is a message for everyone in Tuesday's swimming class. The main pool is closed for repairs this week. || Woman: Some people asked if the class would move to Friday, but that is not possible. || Woman: [11]Instead, the lesson will be in the small pool at the usual time of six thirty[/11]. Please arrive ten minutes early because there is a different entrance. It means there should be fewer problems when the time comes to do it.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "This is a message for everyone in Tuesday's swimming class. The main pool is closed for repairs this week."
+        },
+        {
+          "speaker": "woman",
+          "text": "Some people asked if the class would move to Friday, but that is not possible."
+        },
+        {
+          "speaker": "woman",
+          "text": "Instead, the lesson will be in the small pool at the usual time of six thirty. Please arrive ten minutes early because there is a different entrance. It means there should be fewer problems when the time comes to do it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What has changed about the swimming class?",
+          "options": {
+            "A": "where it will take place",
+            "B": "what day it will be on",
+            "C": "what time it will start"
+          },
+          "answer": "A",
+          "explanation": "The speaker says the lesson will be in the small pool, so the place has changed, not the day or time."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You hear two friends talking about a new phone.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Is that your new phone? It looks the same as your old one. || Man: It does, but the camera is much better. I nearly bought the cheaper model. || Woman: Was the battery different? || Man: Not really. [12]I chose this one because the screen is easier to read outdoors[/12]. I use maps a lot when I'm cycling, so that matters more than the camera. I would rather decide now than leave everything until the last minute.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Is that your new phone? It looks the same as your old one."
+        },
+        {
+          "speaker": "man",
+          "text": "It does, but the camera is much better. I nearly bought the cheaper model."
+        },
+        {
+          "speaker": "woman",
+          "text": "Was the battery different?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not really. I chose this one because the screen is easier to read outdoors. I use maps a lot when I'm cycling, so that matters more than the camera. I would rather decide now than leave everything until the last minute."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "Why did the man choose this phone?",
+          "options": {
+            "A": "It has a better battery.",
+            "B": "The screen works well outside.",
+            "C": "The camera was cheaper."
+          },
+          "answer": "B",
+          "explanation": "The man says he chose the phone because the screen is easier to read outdoors."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You hear a woman telling a friend about a hotel.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: How was your hotel by the beach? The photos looked amazing. || Woman: The room was clean, and breakfast was good, but we had one problem. || Man: Was it too far from the sea? || Woman: No, that part was fine. [13]At night the music from the restaurant downstairs was really loud[/13], and we couldn't sleep until after midnight. That way, we can enjoy it more and avoid rushing around later. It is not perfect, but it seems better than the other choices we had.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How was your hotel by the beach? The photos looked amazing."
+        },
+        {
+          "speaker": "woman",
+          "text": "The room was clean, and breakfast was good, but we had one problem."
+        },
+        {
+          "speaker": "man",
+          "text": "Was it too far from the sea?"
+        },
+        {
+          "speaker": "woman",
+          "text": "No, that part was fine. At night the music from the restaurant downstairs was really loud, and we couldn't sleep until after midnight. That way, we can enjoy it more and avoid rushing around later. It is not perfect, but it seems better than the other choices we had."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What did the woman dislike about the hotel?",
+          "options": {
+            "A": "the noise at night",
+            "B": "the breakfast",
+            "C": "the distance from the beach"
+          },
+          "answer": "A",
+          "explanation": "The woman says the music from the restaurant downstairs was really loud at night."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/test31_part2.mp3"
 }

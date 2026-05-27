@@ -1,250 +1,250 @@
 {
-    "test":  32,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You hear two people talking about joining a gym.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Man: I'm thinking of joining the new gym near the bus station. Have you been there? || Woman: Yes, I had a look yesterday. The machines are modern, but it was busy after work. || Man: I mainly want somewhere to exercise before college. || Woman: Then it could suit you. [8]It opens at six in the morning, which is earlier than the sports centre[/8]. The monthly price is similar, but take your own towel.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I'm thinking of joining the new gym near the bus station. Have you been there?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, I had a look yesterday. The machines are modern, but it was busy after work."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I mainly want somewhere to exercise before college."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Then it could suit you. It opens at six in the morning, which is earlier than the sports centre. The monthly price is similar, but take your own towel."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "Why does the woman think the gym may suit the man?",
-                                               "options":  {
-                                                               "A":  "It opens very early.",
-                                                               "B":  "It is cheaper than other gyms.",
-                                                               "C":  "It provides free towels."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The woman says the gym opens at six in the morning, which suits him because he wants to exercise before college."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You hear two friends talking about a party.",
-                         "voices":  {
-                                        "man":  "en-GB-OliverNeural",
-                                        "woman":  "en-GB-AbbiNeural"
-                                    },
-                         "audio_script":  "Girl: Are you ready for Emma's party tonight? || Boy: Almost. I was going to wear my black jacket, but I can't find it anywhere. || Girl: You could wear your blue shirt. It looks smart. || Boy: [9]I'll wear the grey jumper because it's comfortable and not too formal[/9]. Emma said the party is just in her garden, so I don't need anything special. The important thing is to keep it simple and not make extra work.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Are you ready for Emma's party tonight?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Almost. I was going to wear my black jacket, but I can't find it anywhere."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "You could wear your blue shirt. It looks smart."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "I'll wear the grey jumper because it's comfortable and not too formal. Emma said the party is just in her garden, so I don't need anything special. The important thing is to keep it simple and not make extra work."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What will the boy wear to the party?",
-                                               "options":  {
-                                                               "A":  "a black jacket",
-                                                               "B":  "a grey jumper",
-                                                               "C":  "a blue shirt"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The boy says he will wear the grey jumper because it is comfortable and not too formal."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You hear a woman talking to a neighbour about a cat.",
-                         "voices":  {
-                                        "man":  "en-GB-ElliotNeural",
-                                        "woman":  "en-GB-HollieNeural"
-                                    },
-                         "audio_script":  "Woman: Have you seen my cat today? He didn't come in for breakfast. || Man: I saw a black cat near the park, but yours has white feet, doesn't he? || Woman: Yes, that's him. || Man: [10]I noticed him sitting on the wall behind the bakery this morning[/10]. He looked perfectly happy, so maybe he was just enjoying the sun. It should be fine as long as everybody remembers the new arrangement. I am glad we checked the details before making the final decision.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have you seen my cat today? He didn't come in for breakfast."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I saw a black cat near the park, but yours has white feet, doesn't he?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, that's him."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I noticed him sitting on the wall behind the bakery this morning. He looked perfectly happy, so maybe he was just enjoying the sun. It should be fine as long as everybody remembers the new arrangement. I am glad we checked the details before making the final decision."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "Where did the man see the cat?",
-                                               "options":  {
-                                                               "A":  "near the park",
-                                                               "B":  "inside the bakery",
-                                                               "C":  "on a wall"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The man says he saw the cat sitting on the wall behind the bakery."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You hear two students discussing a school trip.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Boy: Do we need to bring lunch for the museum trip tomorrow? || Girl: The teacher said there is a café, but it might be expensive. || Boy: I was planning to buy something there. || Girl: [11]I'm taking sandwiches because we only have forty minutes for lunch[/11]. If the café is crowded, you might not have time to eat before the next activity starts. That gives us enough time to prepare without changing everything else.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Do we need to bring lunch for the museum trip tomorrow?"
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "The teacher said there is a café, but it might be expensive."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "I was planning to buy something there."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "I'm taking sandwiches because we only have forty minutes for lunch. If the café is crowded, you might not have time to eat before the next activity starts. That gives us enough time to prepare without changing everything else."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What is the girl worried about?",
-                                               "options":  {
-                                                               "A":  "There may not be enough time to buy lunch.",
-                                                               "B":  "The museum may close early.",
-                                                               "C":  "The food may be too cold."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The girl says they only have forty minutes for lunch and the café may be crowded."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You hear a man talking about a book club.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: Did you enjoy your first book club meeting? || Man: Yes, although I was nervous because I hadn't finished the book. || Woman: Did anyone mind? || Man: No. [12]What I liked most was hearing different opinions about the characters[/12]. I didn't agree with everyone, but the discussion made the story more interesting. It also means we will not have to spend extra money unnecessarily. I suppose it is a small change, but it makes the situation much easier.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did you enjoy your first book club meeting?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, although I was nervous because I hadn't finished the book."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did anyone mind?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "No. What I liked most was hearing different opinions about the characters. I didn't agree with everyone, but the discussion made the story more interesting. It also means we will not have to spend extra money unnecessarily. I suppose it is a small change, but it makes the situation much easier."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What did the man enjoy most about the book club?",
-                                               "options":  {
-                                                               "A":  "finishing the book quickly",
-                                                               "B":  "hearing other people's views",
-                                                               "C":  "meeting the author"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The man says he liked hearing different opinions about the characters."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You hear a girl leaving a phone message for her father.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Girl: Hi Dad, it's me. The tennis lesson finished early because the coach had another match to go to. || Girl: I waited by the courts for a while, but it started raining. || Girl: [13]I've gone into the sports centre café, so please pick me up from the main entrance there[/13]. Don't drive to the tennis courts because I won't be waiting outside. That should make the plan easier and help everyone know what to expect.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Hi Dad, it's me. The tennis lesson finished early because the coach had another match to go to."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "I waited by the courts for a while, but it started raining."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "I've gone into the sports centre café, so please pick me up from the main entrance there. Don't drive to the tennis courts because I won't be waiting outside. That should make the plan easier and help everyone know what to expect."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "Where should her father pick her up?",
-                                               "options":  {
-                                                               "A":  "at the tennis courts",
-                                                               "B":  "outside the sports centre café",
-                                                               "C":  "at the coach's house"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The girl says she has gone into the sports centre café and asks her father to pick her up from the main entrance there."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2032.mp3"
+  "test": 32,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You hear two people talking about joining a gym.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Man: I'm thinking of joining the new gym near the bus station. Have you been there? || Woman: Yes, I had a look yesterday. The machines are modern, but it was busy after work. || Man: I mainly want somewhere to exercise before college. || Woman: Then it could suit you. [8]It opens at six in the morning, which is earlier than the sports centre[/8]. The monthly price is similar, but take your own towel.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I'm thinking of joining the new gym near the bus station. Have you been there?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, I had a look yesterday. The machines are modern, but it was busy after work."
+        },
+        {
+          "speaker": "man",
+          "text": "I mainly want somewhere to exercise before college."
+        },
+        {
+          "speaker": "woman",
+          "text": "Then it could suit you. It opens at six in the morning, which is earlier than the sports centre. The monthly price is similar, but take your own towel."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "Why does the woman think the gym may suit the man?",
+          "options": {
+            "A": "It opens very early.",
+            "B": "It is cheaper than other gyms.",
+            "C": "It provides free towels."
+          },
+          "answer": "A",
+          "explanation": "The woman says the gym opens at six in the morning, which suits him because he wants to exercise before college."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You hear two friends talking about a party.",
+      "voices": {
+        "man": "en-GB-OliverNeural",
+        "woman": "en-GB-AbbiNeural"
+      },
+      "audio_script": "Girl: Are you ready for Emma's party tonight? || Boy: Almost. I was going to wear my black jacket, but I can't find it anywhere. || Girl: You could wear your blue shirt. It looks smart. || Boy: [9]I'll wear the grey jumper because it's comfortable and not too formal[/9]. Emma said the party is just in her garden, so I don't need anything special. The important thing is to keep it simple and not make extra work.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Are you ready for Emma's party tonight?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Almost. I was going to wear my black jacket, but I can't find it anywhere."
+        },
+        {
+          "speaker": "girl",
+          "text": "You could wear your blue shirt. It looks smart."
+        },
+        {
+          "speaker": "boy",
+          "text": "I'll wear the grey jumper because it's comfortable and not too formal. Emma said the party is just in her garden, so I don't need anything special. The important thing is to keep it simple and not make extra work."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What will the boy wear to the party?",
+          "options": {
+            "A": "a black jacket",
+            "B": "a grey jumper",
+            "C": "a blue shirt"
+          },
+          "answer": "B",
+          "explanation": "The boy says he will wear the grey jumper because it is comfortable and not too formal."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You hear a woman talking to a neighbour about a cat.",
+      "voices": {
+        "man": "en-GB-ElliotNeural",
+        "woman": "en-GB-HollieNeural"
+      },
+      "audio_script": "Woman: Have you seen my cat today? He didn't come in for breakfast. || Man: I saw a black cat near the park, but yours has white feet, doesn't he? || Woman: Yes, that's him. || Man: [10]I noticed him sitting on the wall behind the bakery this morning[/10]. He looked perfectly happy, so maybe he was just enjoying the sun. It should be fine as long as everybody remembers the new arrangement. I am glad we checked the details before making the final decision.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you seen my cat today? He didn't come in for breakfast."
+        },
+        {
+          "speaker": "man",
+          "text": "I saw a black cat near the park, but yours has white feet, doesn't he?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, that's him."
+        },
+        {
+          "speaker": "man",
+          "text": "I noticed him sitting on the wall behind the bakery this morning. He looked perfectly happy, so maybe he was just enjoying the sun. It should be fine as long as everybody remembers the new arrangement. I am glad we checked the details before making the final decision."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "Where did the man see the cat?",
+          "options": {
+            "A": "near the park",
+            "B": "inside the bakery",
+            "C": "on a wall"
+          },
+          "answer": "C",
+          "explanation": "The man says he saw the cat sitting on the wall behind the bakery."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You hear two students discussing a school trip.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Boy: Do we need to bring lunch for the museum trip tomorrow? || Girl: The teacher said there is a café, but it might be expensive. || Boy: I was planning to buy something there. || Girl: [11]I'm taking sandwiches because we only have forty minutes for lunch[/11]. If the café is crowded, you might not have time to eat before the next activity starts. That gives us enough time to prepare without changing everything else.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Do we need to bring lunch for the museum trip tomorrow?"
+        },
+        {
+          "speaker": "girl",
+          "text": "The teacher said there is a café, but it might be expensive."
+        },
+        {
+          "speaker": "boy",
+          "text": "I was planning to buy something there."
+        },
+        {
+          "speaker": "girl",
+          "text": "I'm taking sandwiches because we only have forty minutes for lunch. If the café is crowded, you might not have time to eat before the next activity starts. That gives us enough time to prepare without changing everything else."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What is the girl worried about?",
+          "options": {
+            "A": "There may not be enough time to buy lunch.",
+            "B": "The museum may close early.",
+            "C": "The food may be too cold."
+          },
+          "answer": "A",
+          "explanation": "The girl says they only have forty minutes for lunch and the café may be crowded."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You hear a man talking about a book club.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: Did you enjoy your first book club meeting? || Man: Yes, although I was nervous because I hadn't finished the book. || Woman: Did anyone mind? || Man: No. [12]What I liked most was hearing different opinions about the characters[/12]. I didn't agree with everyone, but the discussion made the story more interesting. It also means we will not have to spend extra money unnecessarily. I suppose it is a small change, but it makes the situation much easier.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you enjoy your first book club meeting?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, although I was nervous because I hadn't finished the book."
+        },
+        {
+          "speaker": "woman",
+          "text": "Did anyone mind?"
+        },
+        {
+          "speaker": "man",
+          "text": "No. What I liked most was hearing different opinions about the characters. I didn't agree with everyone, but the discussion made the story more interesting. It also means we will not have to spend extra money unnecessarily. I suppose it is a small change, but it makes the situation much easier."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What did the man enjoy most about the book club?",
+          "options": {
+            "A": "finishing the book quickly",
+            "B": "hearing other people's views",
+            "C": "meeting the author"
+          },
+          "answer": "B",
+          "explanation": "The man says he liked hearing different opinions about the characters."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You hear a girl leaving a phone message for her father.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Girl: Hi Dad, it's me. The tennis lesson finished early because the coach had another match to go to. || Girl: I waited by the courts for a while, but it started raining. || Girl: [13]I've gone into the sports centre café, so please pick me up from the main entrance there[/13]. Don't drive to the tennis courts because I won't be waiting outside. That should make the plan easier and help everyone know what to expect.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Hi Dad, it's me. The tennis lesson finished early because the coach had another match to go to."
+        },
+        {
+          "speaker": "girl",
+          "text": "I waited by the courts for a while, but it started raining."
+        },
+        {
+          "speaker": "girl",
+          "text": "I've gone into the sports centre café, so please pick me up from the main entrance there. Don't drive to the tennis courts because I won't be waiting outside. That should make the plan easier and help everyone know what to expect."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "Where should her father pick her up?",
+          "options": {
+            "A": "at the tennis courts",
+            "B": "outside the sports centre café",
+            "C": "at the coach's house"
+          },
+          "answer": "B",
+          "explanation": "The girl says she has gone into the sports centre café and asks her father to pick her up from the main entrance there."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/test32_part2.mp3"
 }

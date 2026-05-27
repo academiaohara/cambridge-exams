@@ -1,254 +1,254 @@
 {
-    "test":  39,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You hear a man talking about his morning.",
-                         "voices":  {
-                                        "man":  "en-GB-ElliotNeural",
-                                        "woman":  "en-GB-HollieNeural"
-                                    },
-                         "audio_script":  "Woman: You look tired. Did you get up early? || Man: I did, but that wasn't the problem. || Woman: Was the bus late again? || Man: No, [8]I forgot my keys and had to walk back home after reaching the bus stop[/8]. By then, I was late for my first meeting. It should be fine as long as everybody remembers the new arrangement. I am glad we checked the details before making the final decision.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "You look tired. Did you get up early?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I did, but that wasn't the problem."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Was the bus late again?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "No, I forgot my keys and had to walk back home after reaching the bus stop. By then, I was late for my first meeting. It should be fine as long as everybody remembers the new arrangement. I am glad we checked the details before making the final decision."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "Why was the man late?",
-                                               "options":  {
-                                                               "A":  "He had to return home for his keys.",
-                                                               "B":  "The bus was late.",
-                                                               "C":  "He got up too late."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The man says he forgot his keys and had to walk back home."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You hear two friends talking about a TV programme.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Girl: Did you watch the programme about families living on a farm? || Boy: Yes. I thought it would be boring, but it wasn't. || Girl: What did you like? || Boy: [9]The children had to do real farm jobs, which made it funny and interesting[/9]. They weren't very good at first, but they improved quickly. That gives us enough time to prepare without changing everything else. It also means we will not have to spend extra money unnecessarily.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Did you watch the programme about families living on a farm?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Yes. I thought it would be boring, but it wasn't."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "What did you like?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "The children had to do real farm jobs, which made it funny and interesting. They weren't very good at first, but they improved quickly. That gives us enough time to prepare without changing everything else. It also means we will not have to spend extra money unnecessarily."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What did the boy like about the programme?",
-                                               "options":  {
-                                                               "A":  "The farm looked beautiful.",
-                                                               "B":  "The children did real jobs.",
-                                                               "C":  "The presenter was famous."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The boy says he liked that the children had to do real farm jobs."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You hear two people talking in a museum.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Excuse me, is the photography exhibition upstairs? || Woman: It was last month. Now the upstairs rooms are closed for painting. || Man: Oh, I came especially to see it. || Woman: I'm sorry. [10]The photography exhibition has moved to the small gallery near the café[/10]. It's easy to find if you follow the signs. I suppose it is a small change, but it makes the situation much easier. That should make the plan easier and help everyone know what to expect.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Excuse me, is the photography exhibition upstairs?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "It was last month. Now the upstairs rooms are closed for painting."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Oh, I came especially to see it."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I'm sorry. The photography exhibition has moved to the small gallery near the café. It's easy to find if you follow the signs. I suppose it is a small change, but it makes the situation much easier. That should make the plan easier and help everyone know what to expect."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "Where is the photography exhibition now?",
-                                               "options":  {
-                                                               "A":  "upstairs",
-                                                               "B":  "in a closed room",
-                                                               "C":  "near the café"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The woman says the exhibition has moved to the small gallery near the café."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You hear two classmates talking about a new teacher.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Boy: What do you think of our new music teacher? || Girl: She's friendly, but her lessons are very fast. || Boy: I like that we play instruments more often now. || Girl: Yes, but [11]I wish she wrote the homework clearly on the board[/11]. Last week half the class copied it down wrong. I think that is the most sensible choice after looking at the other possibilities. It means there should be fewer problems when the time comes to do it.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "What do you think of our new music teacher?"
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "She's friendly, but her lessons are very fast."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "I like that we play instruments more often now."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Yes, but I wish she wrote the homework clearly on the board. Last week half the class copied it down wrong. I think that is the most sensible choice after looking at the other possibilities. It means there should be fewer problems when the time comes to do it."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What does the girl want the teacher to do?",
-                                               "options":  {
-                                                               "A":  "write homework instructions clearly",
-                                                               "B":  "make lessons faster",
-                                                               "C":  "let students play fewer instruments"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The girl says she wishes the teacher wrote the homework clearly on the board."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You hear a woman talking about buying shoes.",
-                         "voices":  {
-                                        "man":  "en-GB-OliverNeural",
-                                        "woman":  "en-GB-AbbiNeural"
-                                    },
-                         "audio_script":  "Man: Did you find shoes for the wedding? || Woman: Yes, finally. I tried some beautiful silver ones, but they were painful. || Man: So what did you buy? || Woman: [12]I chose a simple black pair because I can wear them again for work[/12]. They were less exciting, but much more useful. I would rather decide now than leave everything until the last minute. That way, we can enjoy it more and avoid rushing around later.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you find shoes for the wedding?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, finally. I tried some beautiful silver ones, but they were painful."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "So what did you buy?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I chose a simple black pair because I can wear them again for work. They were less exciting, but much more useful. I would rather decide now than leave everything until the last minute. That way, we can enjoy it more and avoid rushing around later."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "Why did the woman choose the black shoes?",
-                                               "options":  {
-                                                               "A":  "They looked more expensive.",
-                                                               "B":  "She can use them again.",
-                                                               "C":  "They matched a silver dress."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The woman says she chose the black shoes because she can wear them again for work."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You hear a boy talking about a school club.",
-                         "voices":  {
-                                        "man":  "en-GB-ElliotNeural",
-                                        "woman":  "en-GB-HollieNeural"
-                                    },
-                         "audio_script":  "Woman: Are you still going to drama club after school? || Boy: No, I changed clubs this term. || Woman: Are you doing football again? || Boy: No. [13]I've joined the school radio club because I want to learn how to interview people[/13]. We record a short programme every Friday. It is not perfect, but it seems better than the other choices we had. The important thing is to keep it simple and not make extra work.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you still going to drama club after school?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "No, I changed clubs this term."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you doing football again?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "No. I've joined the school radio club because I want to learn how to interview people. We record a short programme every Friday. It is not perfect, but it seems better than the other choices we had. The important thing is to keep it simple and not make extra work."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "Which club has the boy joined?",
-                                               "options":  {
-                                                               "A":  "drama club",
-                                                               "B":  "football club",
-                                                               "C":  "radio club"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The boy says he has joined the school radio club."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2039.mp3"
+  "test": 39,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You hear a man talking about his morning.",
+      "voices": {
+        "man": "en-GB-ElliotNeural",
+        "woman": "en-GB-HollieNeural"
+      },
+      "audio_script": "Woman: You look tired. Did you get up early? || Man: I did, but that wasn't the problem. || Woman: Was the bus late again? || Man: No, [8]I forgot my keys and had to walk back home after reaching the bus stop[/8]. By then, I was late for my first meeting. It should be fine as long as everybody remembers the new arrangement. I am glad we checked the details before making the final decision.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "You look tired. Did you get up early?"
+        },
+        {
+          "speaker": "man",
+          "text": "I did, but that wasn't the problem."
+        },
+        {
+          "speaker": "woman",
+          "text": "Was the bus late again?"
+        },
+        {
+          "speaker": "man",
+          "text": "No, I forgot my keys and had to walk back home after reaching the bus stop. By then, I was late for my first meeting. It should be fine as long as everybody remembers the new arrangement. I am glad we checked the details before making the final decision."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "Why was the man late?",
+          "options": {
+            "A": "He had to return home for his keys.",
+            "B": "The bus was late.",
+            "C": "He got up too late."
+          },
+          "answer": "A",
+          "explanation": "The man says he forgot his keys and had to walk back home."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You hear two friends talking about a TV programme.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Girl: Did you watch the programme about families living on a farm? || Boy: Yes. I thought it would be boring, but it wasn't. || Girl: What did you like? || Boy: [9]The children had to do real farm jobs, which made it funny and interesting[/9]. They weren't very good at first, but they improved quickly. That gives us enough time to prepare without changing everything else. It also means we will not have to spend extra money unnecessarily.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Did you watch the programme about families living on a farm?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes. I thought it would be boring, but it wasn't."
+        },
+        {
+          "speaker": "girl",
+          "text": "What did you like?"
+        },
+        {
+          "speaker": "boy",
+          "text": "The children had to do real farm jobs, which made it funny and interesting. They weren't very good at first, but they improved quickly. That gives us enough time to prepare without changing everything else. It also means we will not have to spend extra money unnecessarily."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What did the boy like about the programme?",
+          "options": {
+            "A": "The farm looked beautiful.",
+            "B": "The children did real jobs.",
+            "C": "The presenter was famous."
+          },
+          "answer": "B",
+          "explanation": "The boy says he liked that the children had to do real farm jobs."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You hear two people talking in a museum.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Excuse me, is the photography exhibition upstairs? || Woman: It was last month. Now the upstairs rooms are closed for painting. || Man: Oh, I came especially to see it. || Woman: I'm sorry. [10]The photography exhibition has moved to the small gallery near the café[/10]. It's easy to find if you follow the signs. I suppose it is a small change, but it makes the situation much easier. That should make the plan easier and help everyone know what to expect.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Excuse me, is the photography exhibition upstairs?"
+        },
+        {
+          "speaker": "woman",
+          "text": "It was last month. Now the upstairs rooms are closed for painting."
+        },
+        {
+          "speaker": "man",
+          "text": "Oh, I came especially to see it."
+        },
+        {
+          "speaker": "woman",
+          "text": "I'm sorry. The photography exhibition has moved to the small gallery near the café. It's easy to find if you follow the signs. I suppose it is a small change, but it makes the situation much easier. That should make the plan easier and help everyone know what to expect."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "Where is the photography exhibition now?",
+          "options": {
+            "A": "upstairs",
+            "B": "in a closed room",
+            "C": "near the café"
+          },
+          "answer": "C",
+          "explanation": "The woman says the exhibition has moved to the small gallery near the café."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You hear two classmates talking about a new teacher.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Boy: What do you think of our new music teacher? || Girl: She's friendly, but her lessons are very fast. || Boy: I like that we play instruments more often now. || Girl: Yes, but [11]I wish she wrote the homework clearly on the board[/11]. Last week half the class copied it down wrong. I think that is the most sensible choice after looking at the other possibilities. It means there should be fewer problems when the time comes to do it.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "What do you think of our new music teacher?"
+        },
+        {
+          "speaker": "girl",
+          "text": "She's friendly, but her lessons are very fast."
+        },
+        {
+          "speaker": "boy",
+          "text": "I like that we play instruments more often now."
+        },
+        {
+          "speaker": "girl",
+          "text": "Yes, but I wish she wrote the homework clearly on the board. Last week half the class copied it down wrong. I think that is the most sensible choice after looking at the other possibilities. It means there should be fewer problems when the time comes to do it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What does the girl want the teacher to do?",
+          "options": {
+            "A": "write homework instructions clearly",
+            "B": "make lessons faster",
+            "C": "let students play fewer instruments"
+          },
+          "answer": "A",
+          "explanation": "The girl says she wishes the teacher wrote the homework clearly on the board."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You hear a woman talking about buying shoes.",
+      "voices": {
+        "man": "en-GB-OliverNeural",
+        "woman": "en-GB-AbbiNeural"
+      },
+      "audio_script": "Man: Did you find shoes for the wedding? || Woman: Yes, finally. I tried some beautiful silver ones, but they were painful. || Man: So what did you buy? || Woman: [12]I chose a simple black pair because I can wear them again for work[/12]. They were less exciting, but much more useful. I would rather decide now than leave everything until the last minute. That way, we can enjoy it more and avoid rushing around later.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you find shoes for the wedding?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, finally. I tried some beautiful silver ones, but they were painful."
+        },
+        {
+          "speaker": "man",
+          "text": "So what did you buy?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I chose a simple black pair because I can wear them again for work. They were less exciting, but much more useful. I would rather decide now than leave everything until the last minute. That way, we can enjoy it more and avoid rushing around later."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "Why did the woman choose the black shoes?",
+          "options": {
+            "A": "They looked more expensive.",
+            "B": "She can use them again.",
+            "C": "They matched a silver dress."
+          },
+          "answer": "B",
+          "explanation": "The woman says she chose the black shoes because she can wear them again for work."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You hear a boy talking about a school club.",
+      "voices": {
+        "man": "en-GB-ElliotNeural",
+        "woman": "en-GB-HollieNeural"
+      },
+      "audio_script": "Woman: Are you still going to drama club after school? || Boy: No, I changed clubs this term. || Woman: Are you doing football again? || Boy: No. [13]I've joined the school radio club because I want to learn how to interview people[/13]. We record a short programme every Friday. It is not perfect, but it seems better than the other choices we had. The important thing is to keep it simple and not make extra work.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you still going to drama club after school?"
+        },
+        {
+          "speaker": "boy",
+          "text": "No, I changed clubs this term."
+        },
+        {
+          "speaker": "woman",
+          "text": "Are you doing football again?"
+        },
+        {
+          "speaker": "boy",
+          "text": "No. I've joined the school radio club because I want to learn how to interview people. We record a short programme every Friday. It is not perfect, but it seems better than the other choices we had. The important thing is to keep it simple and not make extra work."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "Which club has the boy joined?",
+          "options": {
+            "A": "drama club",
+            "B": "football club",
+            "C": "radio club"
+          },
+          "answer": "C",
+          "explanation": "The boy says he has joined the school radio club."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/test39_part2.mp3"
 }

@@ -1,113 +1,113 @@
 {
-    "test_number":  32,
-    "exam_part":  3,
-    "title":  "Listening - Part 3",
-    "type":  "gap-fill",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
-    "instructions":  "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
-    "duration_minutes":  7,
-    "context":  "You will hear a boat trip organiser giving information before a river trip.",
-    "form_title":  "Green River boat trip",
-    "voice":  "en-GB-SoniaNeural",
-    "audio_script":  "Speaker: Hello everyone, and welcome to Green River Boats. Before we leave, I need to give you a few details about today's trip. The journey usually takes two hours, but because the river is busy this morning, we will be on the boat for about [14]three[/14] hours. We will travel slowly past the old houses, the city gardens and the wooden bridge. Your guide today is a local history teacher called [15]Mr Harris[/15]. He will point out the most interesting places, and you can ask him questions when we stop. Please stay seated while the boat is moving. If you want to take photos, the best place is the [16]upper deck[/16], but hold your camera carefully because it can be windy there. Drinks are available from the small café near the front of the boat. Today we have tea, coffee and cold juice, but I'm afraid there is no hot food. If you brought your own lunch, you may eat it after we pass [17]King's Bridge[/17]. That will be in about forty minutes. There are blankets on some seats if you feel cold, and the windows can be closed if the wind becomes too strong. Children should sit with an adult during the whole journey, especially when we pass under bridges. There are toilets downstairs, next to the café. At the end of the trip, please do not leave anything on your seat. Last week someone forgot a bag, and it took two days to return it. We will finish at [18]North Quay[/18], not here at Central Pier. From there, bus number [19]seventeen[/19] goes back to the station every ten minutes.",
-    "note_sheet":  [
-                       {
-                           "section":  "Green River boat trip",
-                           "items":  [
-                                         {
-                                             "text_before":  "Length of trip: about",
-                                             "number":  14,
-                                             "text_after":  "hours"
-                                         },
-                                         {
-                                             "text_before":  "Guide's name:",
-                                             "number":  15,
-                                             "text_after":  ""
-                                         },
-                                         {
-                                             "text_before":  "Best place for photos:",
-                                             "number":  16,
-                                             "text_after":  ""
-                                         },
-                                         {
-                                             "text_before":  "Passengers can eat lunch after:",
-                                             "number":  17,
-                                             "text_after":  ""
-                                         },
-                                         {
-                                             "text_before":  "Trip finishes at:",
-                                             "number":  18,
-                                             "text_after":  ""
-                                         },
-                                         {
-                                             "text_before":  "Bus back to station: number",
-                                             "number":  19,
-                                             "text_after":  ""
-                                         }
-                                     ]
-                       }
-                   ],
-    "questions":  [
-                      {
-                          "number":  14,
-                          "prompt":  "Length of trip: about",
-                          "answer":  "three",
-                          "accepted_answers":  [
-                                                   "three",
-                                                   "3"
-                                               ],
-                          "explanation":  "The speaker says the trip will last about three hours."
-                      },
-                      {
-                          "number":  15,
-                          "prompt":  "Guide's name:",
-                          "answer":  "Mr Harris",
-                          "accepted_answers":  [
-                                                   "Mr Harris",
-                                                   "Harris"
-                                               ],
-                          "explanation":  "The guide is introduced as a local history teacher called Mr Harris."
-                      },
-                      {
-                          "number":  16,
-                          "prompt":  "Best place for photos:",
-                          "answer":  "upper deck",
-                          "accepted_answers":  [
-                                                   "upper deck"
-                                               ],
-                          "explanation":  "The speaker says the best place to take photos is the upper deck."
-                      },
-                      {
-                          "number":  17,
-                          "prompt":  "Passengers can eat lunch after:",
-                          "answer":  "King's Bridge",
-                          "accepted_answers":  [
-                                                   "King's Bridge",
-                                                   "Kings Bridge"
-                                               ],
-                          "explanation":  "The speaker says passengers may eat lunch after passing King's Bridge."
-                      },
-                      {
-                          "number":  18,
-                          "prompt":  "Trip finishes at:",
-                          "answer":  "North Quay",
-                          "accepted_answers":  [
-                                                   "North Quay"
-                                               ],
-                          "explanation":  "The speaker says the trip will finish at North Quay."
-                      },
-                      {
-                          "number":  19,
-                          "prompt":  "Bus back to station: number",
-                          "answer":  "seventeen",
-                          "accepted_answers":  [
-                                                   "seventeen",
-                                                   "17"
-                                               ],
-                          "explanation":  "The speaker says bus number seventeen goes back to the station."
-                      }
-                  ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening3_Test%2032.mp3"
+  "test_number": 32,
+  "exam_part": 3,
+  "title": "Listening - Part 3",
+  "type": "gap-fill",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, write the correct answer in the gap. Write one or two words or a number or a date or a time.",
+  "instructions": "You will hear one person giving information. For questions 14–19, write the correct answer in the gap.",
+  "duration_minutes": 7,
+  "context": "You will hear a boat trip organiser giving information before a river trip.",
+  "form_title": "Green River boat trip",
+  "voice": "en-GB-SoniaNeural",
+  "audio_script": "Speaker: Hello everyone, and welcome to Green River Boats. Before we leave, I need to give you a few details about today's trip. The journey usually takes two hours, but because the river is busy this morning, we will be on the boat for about [14]three[/14] hours. We will travel slowly past the old houses, the city gardens and the wooden bridge. Your guide today is a local history teacher called [15]Mr Harris[/15]. He will point out the most interesting places, and you can ask him questions when we stop. Please stay seated while the boat is moving. If you want to take photos, the best place is the [16]upper deck[/16], but hold your camera carefully because it can be windy there. Drinks are available from the small café near the front of the boat. Today we have tea, coffee and cold juice, but I'm afraid there is no hot food. If you brought your own lunch, you may eat it after we pass [17]King's Bridge[/17]. That will be in about forty minutes. There are blankets on some seats if you feel cold, and the windows can be closed if the wind becomes too strong. Children should sit with an adult during the whole journey, especially when we pass under bridges. There are toilets downstairs, next to the café. At the end of the trip, please do not leave anything on your seat. Last week someone forgot a bag, and it took two days to return it. We will finish at [18]North Quay[/18], not here at Central Pier. From there, bus number [19]seventeen[/19] goes back to the station every ten minutes.",
+  "note_sheet": [
+    {
+      "section": "Green River boat trip",
+      "items": [
+        {
+          "text_before": "Length of trip: about",
+          "number": 14,
+          "text_after": "hours"
+        },
+        {
+          "text_before": "Guide's name:",
+          "number": 15,
+          "text_after": ""
+        },
+        {
+          "text_before": "Best place for photos:",
+          "number": 16,
+          "text_after": ""
+        },
+        {
+          "text_before": "Passengers can eat lunch after:",
+          "number": 17,
+          "text_after": ""
+        },
+        {
+          "text_before": "Trip finishes at:",
+          "number": 18,
+          "text_after": ""
+        },
+        {
+          "text_before": "Bus back to station: number",
+          "number": 19,
+          "text_after": ""
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "number": 14,
+      "prompt": "Length of trip: about",
+      "answer": "three",
+      "accepted_answers": [
+        "three",
+        "3"
+      ],
+      "explanation": "The speaker says the trip will last about three hours."
+    },
+    {
+      "number": 15,
+      "prompt": "Guide's name:",
+      "answer": "Mr Harris",
+      "accepted_answers": [
+        "Mr Harris",
+        "Harris"
+      ],
+      "explanation": "The guide is introduced as a local history teacher called Mr Harris."
+    },
+    {
+      "number": 16,
+      "prompt": "Best place for photos:",
+      "answer": "upper deck",
+      "accepted_answers": [
+        "upper deck"
+      ],
+      "explanation": "The speaker says the best place to take photos is the upper deck."
+    },
+    {
+      "number": 17,
+      "prompt": "Passengers can eat lunch after:",
+      "answer": "King's Bridge",
+      "accepted_answers": [
+        "King's Bridge",
+        "Kings Bridge"
+      ],
+      "explanation": "The speaker says passengers may eat lunch after passing King's Bridge."
+    },
+    {
+      "number": 18,
+      "prompt": "Trip finishes at:",
+      "answer": "North Quay",
+      "accepted_answers": [
+        "North Quay"
+      ],
+      "explanation": "The speaker says the trip will finish at North Quay."
+    },
+    {
+      "number": 19,
+      "prompt": "Bus back to station: number",
+      "answer": "seventeen",
+      "accepted_answers": [
+        "seventeen",
+        "17"
+      ],
+      "explanation": "The speaker says bus number seventeen goes back to the station."
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part3/Test32_part3.mp3"
 }

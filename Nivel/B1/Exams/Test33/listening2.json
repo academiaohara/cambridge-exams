@@ -1,254 +1,254 @@
 {
-    "test":  33,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You hear two people talking about a local market.",
-                         "voices":  {
-                                        "man":  "en-GB-OliverNeural",
-                                        "woman":  "en-GB-AbbiNeural"
-                                    },
-                         "audio_script":  "Woman: Are you going to the market this weekend? I heard they have music as well as food stalls. || Man: I went last month. The cakes were good, but the vegetables sold out early. || Woman: I mainly want fresh fruit. || Man: [8]Then get there before ten because the best fruit is gone by lunchtime[/8]. The music doesn't start until two, but the shopping is better in the morning. I think that is the most sensible choice after looking at the other possibilities.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you going to the market this weekend? I heard they have music as well as food stalls."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I went last month. The cakes were good, but the vegetables sold out early."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I mainly want fresh fruit."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Then get there before ten because the best fruit is gone by lunchtime. The music doesn't start until two, but the shopping is better in the morning. I think that is the most sensible choice after looking at the other possibilities."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "What advice does the man give the woman?",
-                                               "options":  {
-                                                               "A":  "Go early to buy fruit.",
-                                                               "B":  "Wait until the music starts.",
-                                                               "C":  "Buy cakes instead of fruit."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The man advises her to get there before ten because the best fruit is gone by lunchtime."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You hear two friends discussing a film.",
-                         "voices":  {
-                                        "man":  "en-GB-ElliotNeural",
-                                        "woman":  "en-GB-HollieNeural"
-                                    },
-                         "audio_script":  "Boy: Did you see that adventure film everyone is talking about? || Girl: Yes. The story was exciting, but it was much longer than I expected. || Boy: Were the actors good? || Girl: They were fine, but [9]the ending was too easy to guess[/9]. I knew what would happen after the first half hour, which was disappointing. It means there should be fewer problems when the time comes to do it. I would rather decide now than leave everything until the last minute.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Did you see that adventure film everyone is talking about?"
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Yes. The story was exciting, but it was much longer than I expected."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Were the actors good?"
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "They were fine, but the ending was too easy to guess. I knew what would happen after the first half hour, which was disappointing. It means there should be fewer problems when the time comes to do it. I would rather decide now than leave everything until the last minute."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What disappointed the girl about the film?",
-                                               "options":  {
-                                                               "A":  "It was too short.",
-                                                               "B":  "The ending was predictable.",
-                                                               "C":  "The actors were poor."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The girl says the ending was too easy to guess."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You hear a man talking to a shop assistant.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: I bought these headphones here last week, and one side has stopped working. || Woman: I can give you a new pair if you have the receipt. || Man: I have it on my phone. || Woman: That's fine. [10]We can replace them today, but we can't give money back after the box has been opened[/10]. Would you like the same colour? That way, we can enjoy it more and avoid rushing around later.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I bought these headphones here last week, and one side has stopped working."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I can give you a new pair if you have the receipt."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I have it on my phone."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That's fine. We can replace them today, but we can't give money back after the box has been opened. Would you like the same colour? That way, we can enjoy it more and avoid rushing around later."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What can the shop assistant do?",
-                                               "options":  {
-                                                               "A":  "repair the headphones immediately",
-                                                               "B":  "refund the man's money",
-                                                               "C":  "give the man another pair"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The shop assistant says they can replace the headphones today."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You hear two classmates talking about a presentation.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Girl: Are you worried about speaking in front of the class tomorrow? || Boy: A bit. I know the subject, but my slides still look messy. || Girl: Mine are simple, maybe too simple. || Boy: [11]I'm going to practise the beginning tonight because that's when I usually forget my words[/11]. Once I start well, I feel more confident. It is not perfect, but it seems better than the other choices we had. The important thing is to keep it simple and not make extra work.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Are you worried about speaking in front of the class tomorrow?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "A bit. I know the subject, but my slides still look messy."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Mine are simple, maybe too simple."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "I'm going to practise the beginning tonight because that's when I usually forget my words. Once I start well, I feel more confident. It is not perfect, but it seems better than the other choices we had. The important thing is to keep it simple and not make extra work."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What is the boy going to practise?",
-                                               "options":  {
-                                                               "A":  "the first part of his talk",
-                                                               "B":  "the design of his slides",
-                                                               "C":  "answering questions"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The boy says he is going to practise the beginning because that is when he usually forgets his words."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You hear two friends talking about a restaurant.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Man: How was the new Italian restaurant? || Woman: The pasta was excellent, and the staff were friendly. || Man: So would you go again? || Woman: Probably, but [12]we waited almost forty minutes before anyone took our order[/12]. The place wasn't even full, so I think they need more staff at the start of the evening. It should be fine as long as everybody remembers the new arrangement. I am glad we checked the details before making the final decision.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "How was the new Italian restaurant?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "The pasta was excellent, and the staff were friendly."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "So would you go again?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Probably, but we waited almost forty minutes before anyone took our order. The place wasn't even full, so I think they need more staff at the start of the evening. It should be fine as long as everybody remembers the new arrangement. I am glad we checked the details before making the final decision."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What problem did the woman have at the restaurant?",
-                                               "options":  {
-                                                               "A":  "The food was cold.",
-                                                               "B":  "The service was slow.",
-                                                               "C":  "The restaurant was too crowded."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "The woman says they waited almost forty minutes before anyone took their order."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You hear a boy talking about his new bedroom.",
-                         "voices":  {
-                                        "man":  "en-GB-OliverNeural",
-                                        "woman":  "en-GB-AbbiNeural"
-                                    },
-                         "audio_script":  "Woman: Do you like your new bedroom now you've moved house? || Boy: Yes, it's smaller than my old one, but it's quieter. || Woman: Do you miss having a desk by the window? || Boy: A little, but [13]I like that the shelves are already built into the wall[/13]. I can keep my books tidy without buying extra furniture. That gives us enough time to prepare without changing everything else. It also means we will not have to spend extra money unnecessarily.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Do you like your new bedroom now you've moved house?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Yes, it's smaller than my old one, but it's quieter."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Do you miss having a desk by the window?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "A little, but I like that the shelves are already built into the wall. I can keep my books tidy without buying extra furniture. That gives us enough time to prepare without changing everything else. It also means we will not have to spend extra money unnecessarily."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What does the boy like about his new bedroom?",
-                                               "options":  {
-                                                               "A":  "It is larger than before.",
-                                                               "B":  "It has a desk by the window.",
-                                                               "C":  "It has useful shelves."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The boy says he likes the shelves that are already built into the wall."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%2033.mp3"
+  "test": 33,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You hear two people talking about a local market.",
+      "voices": {
+        "man": "en-GB-OliverNeural",
+        "woman": "en-GB-AbbiNeural"
+      },
+      "audio_script": "Woman: Are you going to the market this weekend? I heard they have music as well as food stalls. || Man: I went last month. The cakes were good, but the vegetables sold out early. || Woman: I mainly want fresh fruit. || Man: [8]Then get there before ten because the best fruit is gone by lunchtime[/8]. The music doesn't start until two, but the shopping is better in the morning. I think that is the most sensible choice after looking at the other possibilities.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you going to the market this weekend? I heard they have music as well as food stalls."
+        },
+        {
+          "speaker": "man",
+          "text": "I went last month. The cakes were good, but the vegetables sold out early."
+        },
+        {
+          "speaker": "woman",
+          "text": "I mainly want fresh fruit."
+        },
+        {
+          "speaker": "man",
+          "text": "Then get there before ten because the best fruit is gone by lunchtime. The music doesn't start until two, but the shopping is better in the morning. I think that is the most sensible choice after looking at the other possibilities."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What advice does the man give the woman?",
+          "options": {
+            "A": "Go early to buy fruit.",
+            "B": "Wait until the music starts.",
+            "C": "Buy cakes instead of fruit."
+          },
+          "answer": "A",
+          "explanation": "The man advises her to get there before ten because the best fruit is gone by lunchtime."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You hear two friends discussing a film.",
+      "voices": {
+        "man": "en-GB-ElliotNeural",
+        "woman": "en-GB-HollieNeural"
+      },
+      "audio_script": "Boy: Did you see that adventure film everyone is talking about? || Girl: Yes. The story was exciting, but it was much longer than I expected. || Boy: Were the actors good? || Girl: They were fine, but [9]the ending was too easy to guess[/9]. I knew what would happen after the first half hour, which was disappointing. It means there should be fewer problems when the time comes to do it. I would rather decide now than leave everything until the last minute.",
+      "dialogue": [
+        {
+          "speaker": "boy",
+          "text": "Did you see that adventure film everyone is talking about?"
+        },
+        {
+          "speaker": "girl",
+          "text": "Yes. The story was exciting, but it was much longer than I expected."
+        },
+        {
+          "speaker": "boy",
+          "text": "Were the actors good?"
+        },
+        {
+          "speaker": "girl",
+          "text": "They were fine, but the ending was too easy to guess. I knew what would happen after the first half hour, which was disappointing. It means there should be fewer problems when the time comes to do it. I would rather decide now than leave everything until the last minute."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What disappointed the girl about the film?",
+          "options": {
+            "A": "It was too short.",
+            "B": "The ending was predictable.",
+            "C": "The actors were poor."
+          },
+          "answer": "B",
+          "explanation": "The girl says the ending was too easy to guess."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You hear a man talking to a shop assistant.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: I bought these headphones here last week, and one side has stopped working. || Woman: I can give you a new pair if you have the receipt. || Man: I have it on my phone. || Woman: That's fine. [10]We can replace them today, but we can't give money back after the box has been opened[/10]. Would you like the same colour? That way, we can enjoy it more and avoid rushing around later.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I bought these headphones here last week, and one side has stopped working."
+        },
+        {
+          "speaker": "woman",
+          "text": "I can give you a new pair if you have the receipt."
+        },
+        {
+          "speaker": "man",
+          "text": "I have it on my phone."
+        },
+        {
+          "speaker": "woman",
+          "text": "That's fine. We can replace them today, but we can't give money back after the box has been opened. Would you like the same colour? That way, we can enjoy it more and avoid rushing around later."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What can the shop assistant do?",
+          "options": {
+            "A": "repair the headphones immediately",
+            "B": "refund the man's money",
+            "C": "give the man another pair"
+          },
+          "answer": "C",
+          "explanation": "The shop assistant says they can replace the headphones today."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You hear two classmates talking about a presentation.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Girl: Are you worried about speaking in front of the class tomorrow? || Boy: A bit. I know the subject, but my slides still look messy. || Girl: Mine are simple, maybe too simple. || Boy: [11]I'm going to practise the beginning tonight because that's when I usually forget my words[/11]. Once I start well, I feel more confident. It is not perfect, but it seems better than the other choices we had. The important thing is to keep it simple and not make extra work.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Are you worried about speaking in front of the class tomorrow?"
+        },
+        {
+          "speaker": "boy",
+          "text": "A bit. I know the subject, but my slides still look messy."
+        },
+        {
+          "speaker": "girl",
+          "text": "Mine are simple, maybe too simple."
+        },
+        {
+          "speaker": "boy",
+          "text": "I'm going to practise the beginning tonight because that's when I usually forget my words. Once I start well, I feel more confident. It is not perfect, but it seems better than the other choices we had. The important thing is to keep it simple and not make extra work."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What is the boy going to practise?",
+          "options": {
+            "A": "the first part of his talk",
+            "B": "the design of his slides",
+            "C": "answering questions"
+          },
+          "answer": "A",
+          "explanation": "The boy says he is going to practise the beginning because that is when he usually forgets his words."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You hear two friends talking about a restaurant.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Man: How was the new Italian restaurant? || Woman: The pasta was excellent, and the staff were friendly. || Man: So would you go again? || Woman: Probably, but [12]we waited almost forty minutes before anyone took our order[/12]. The place wasn't even full, so I think they need more staff at the start of the evening. It should be fine as long as everybody remembers the new arrangement. I am glad we checked the details before making the final decision.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "How was the new Italian restaurant?"
+        },
+        {
+          "speaker": "woman",
+          "text": "The pasta was excellent, and the staff were friendly."
+        },
+        {
+          "speaker": "man",
+          "text": "So would you go again?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Probably, but we waited almost forty minutes before anyone took our order. The place wasn't even full, so I think they need more staff at the start of the evening. It should be fine as long as everybody remembers the new arrangement. I am glad we checked the details before making the final decision."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What problem did the woman have at the restaurant?",
+          "options": {
+            "A": "The food was cold.",
+            "B": "The service was slow.",
+            "C": "The restaurant was too crowded."
+          },
+          "answer": "B",
+          "explanation": "The woman says they waited almost forty minutes before anyone took their order."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You hear a boy talking about his new bedroom.",
+      "voices": {
+        "man": "en-GB-OliverNeural",
+        "woman": "en-GB-AbbiNeural"
+      },
+      "audio_script": "Woman: Do you like your new bedroom now you've moved house? || Boy: Yes, it's smaller than my old one, but it's quieter. || Woman: Do you miss having a desk by the window? || Boy: A little, but [13]I like that the shelves are already built into the wall[/13]. I can keep my books tidy without buying extra furniture. That gives us enough time to prepare without changing everything else. It also means we will not have to spend extra money unnecessarily.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Do you like your new bedroom now you've moved house?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes, it's smaller than my old one, but it's quieter."
+        },
+        {
+          "speaker": "woman",
+          "text": "Do you miss having a desk by the window?"
+        },
+        {
+          "speaker": "boy",
+          "text": "A little, but I like that the shelves are already built into the wall. I can keep my books tidy without buying extra furniture. That gives us enough time to prepare without changing everything else. It also means we will not have to spend extra money unnecessarily."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What does the boy like about his new bedroom?",
+          "options": {
+            "A": "It is larger than before.",
+            "B": "It has a desk by the window.",
+            "C": "It has useful shelves."
+          },
+          "answer": "C",
+          "explanation": "The boy says he likes the shelves that are already built into the wall."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/test33_part2.mp3"
 }
