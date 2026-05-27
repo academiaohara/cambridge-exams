@@ -689,25 +689,57 @@
     renderTranscript: function() {
       var container = document.getElementById('active-tool-content');
       var exercise = AppState.currentExercise;
-      var extracts = exercise && exercise.content ? exercise.content.extracts || [] : [];
-      
-      if (extracts.length === 0) {
+      if (!exercise || !exercise.content) {
         container.innerHTML = '<p class="placeholder-text">' + 'Activate a tool to see details here.' + '</p>';
         return;
       }
-      
+
+      var processScript = function(script) {
+        var escaped = _escapeHtml(script);
+        if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.processEvidenceMarkers) {
+          escaped = ExerciseRenderer.processEvidenceMarkers(escaped);
+        }
+        return escaped.replace(/(\|\||\n)/g, '<br>');
+      };
+
       var html = '<div class="transcript-content">';
-      
-      extracts.forEach(function(extract) {
-        html += '<div class="transcript-extract">';
-        html += '<div class="transcript-extract-header">';
-        html += '<span class="transcript-extract-number">' + _escapeHtml(extract.id) + '</span>';
-        html += '<span>' + _escapeHtml(extract.context) + '</span>';
-        html += '</div>';
-        html += '<div class="transcript-text">' + _escapeHtml(extract.audio_script).replace(/(\|\||\n)/g, '<br>') + '</div>';
-        html += '</div>';
+      var extracts = exercise.content.extracts || [];
+      var rootScript = exercise.content.audio_script;
+      var perQuestion = (exercise.content.questions || []).filter(function(q) {
+        return q && q.audio_script;
       });
-      
+
+      if (extracts.length > 0) {
+        extracts.forEach(function(extract) {
+          var script = extract.audio_script;
+          if (!script || String(script).trim() === '') return;
+          html += '<div class="transcript-extract">';
+          html += '<div class="transcript-extract-header">';
+          html += '<span class="transcript-extract-number">' + _escapeHtml(extract.id) + '</span>';
+          html += '<span>' + _escapeHtml(extract.context) + '</span>';
+          html += '</div>';
+          html += '<div class="transcript-text">' + processScript(script) + '</div>';
+          html += '</div>';
+        });
+      } else if (rootScript && String(rootScript).trim() !== '') {
+        rootScript.split('||').forEach(function(part) {
+          if (String(part).trim() === '') return;
+          html += '<div class="transcript-text">' + processScript(part.trim()) + '</div>';
+        });
+      } else if (perQuestion.length > 0) {
+        perQuestion.forEach(function(q) {
+          html += '<div class="transcript-extract">';
+          if (q.context) {
+            html += '<div class="transcript-extract-header"><span>' + _escapeHtml(q.context) + '</span></div>';
+          }
+          html += '<div class="transcript-text">' + processScript(q.audio_script) + '</div>';
+          html += '</div>';
+        });
+      } else {
+        container.innerHTML = '<p class="placeholder-text">' + 'Activate a tool to see details here.' + '</p>';
+        return;
+      }
+
       html += '</div>';
       container.innerHTML = html;
     },
