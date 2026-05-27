@@ -771,11 +771,9 @@
 
 .account-module-title {
   margin: 0 0 14px;
-  font-family: 'Mileast', 'Georgia', serif;
+  font-family: 'Nunito', sans-serif;
   font-size: clamp(0.95rem, 1.6vw, 1.05rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
+  font-weight: 800;
   color: var(--text-dark);
   line-height: 1.15;
 }
@@ -840,11 +838,9 @@
 
 .account-membership-kicker {
   margin: 0;
-  font-family: 'Mileast', 'Georgia', serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.02rem;
-  font-weight: 900;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-weight: 800;
   color: var(--text-dark);
 }
 
@@ -2127,11 +2123,11 @@
   display: inline-block;
   background: rgba(255, 255, 255, 0.72);
   color: var(--text-dark);
-  font-family: 'Mileast', 'Georgia', serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 0.54rem;
-  font-weight: 900;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   padding: 4px 9px;
   border-radius: 6px;
   white-space: nowrap;
@@ -2172,11 +2168,9 @@
 }
 
 .premium-pack-name {
-  font-family: 'Mileast', 'Georgia', serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.02rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-weight: 800;
   color: var(--text-dark);
   margin-bottom: 3px;
   line-height: 1.15;
@@ -2194,11 +2188,10 @@
 }
 
 .premium-pack-price-big {
-  font-family: 'Mileast', Georgia, serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.5rem;
-  font-weight: 900;
+  font-weight: 800;
   color: var(--text-dark);
-  letter-spacing: 0.02em;
 }
 
 .premium-pack-price-period {
