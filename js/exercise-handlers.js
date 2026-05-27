@@ -146,6 +146,7 @@
         'gapped-text': window.ReadingType7,
         'multiple-matching': window.ReadingType8,
         'dual-matching': window.ListeningType4,
+        'speaker-matching': window.ListeningType3,
         'interview': window.SpeakingType,
         'long-turn': window.SpeakingType,
         'collaborative': window.SpeakingType,
@@ -322,6 +323,10 @@
 
         case 'dual-matching':
           document.querySelectorAll('.listening-type4-select').forEach(s => s.disabled = true);
+          break;
+
+        case 'speaker-matching':
+          document.querySelectorAll('.listening-type3-select').forEach(s => s.disabled = true);
           break;
       }
     },
@@ -628,6 +633,9 @@
       } else if (partType === 'multiple-matching') {
         var texts = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.texts || {};
         options = Object.keys(texts);
+      } else if (partType === 'speaker-matching') {
+        var spTexts = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.texts || {};
+        options = Object.entries(spTexts).map(function(entry) { return entry[0] + ') ' + entry[1]; });
       } else if (partType === 'dual-matching') {
         // For dual-matching, find which task this question belongs to
         var exercise = AppState.currentExercise;
@@ -648,7 +656,8 @@
         options.forEach(function(opt, optIdx) {
           var optText = opt;
           var optLetter = '';
-          if (partType === 'multiple-choice-text' || partType === 'multiple-choice' || partType === 'dual-matching') {
+          if (partType === 'multiple-choice-text' || partType === 'multiple-choice' ||
+              partType === 'dual-matching' || partType === 'speaker-matching') {
             optLetter = opt.charAt(0);
           } else {
             optLetter = opt;
@@ -1001,6 +1010,14 @@
 
         case 'dual-matching':
           document.querySelectorAll('.listening-type4-select').forEach(s => {
+            s.value = '';
+            s.disabled = false;
+            s.classList.remove('correct', 'incorrect');
+          });
+          break;
+
+        case 'speaker-matching':
+          document.querySelectorAll('.listening-type3-select').forEach(s => {
             s.value = '';
             s.disabled = false;
             s.classList.remove('correct', 'incorrect');

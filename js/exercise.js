@@ -30,7 +30,16 @@
       delete c.task;
     }
 
-    if (p === 3 && c.extracts && c.extracts.length && Array.isArray(c.questions) && c.questions.length) {
+    if (p === 3 && c.extracts && c.extracts.length) {
+      if ((!c.questions || !c.questions.length) && c.extracts[0] && Array.isArray(c.extracts[0].questions)) {
+        c.questions = c.extracts[0].questions.map(function(q) {
+          var nq = {};
+          Object.keys(q).forEach(function(k) { nq[k] = q[k]; });
+          if (!nq.correct && nq.answer) nq.correct = nq.answer;
+          return nq;
+        });
+      }
+      if (!Array.isArray(c.questions) || !c.questions.length) return;
       var hasTexts = c.texts && typeof c.texts === 'object' && Object.keys(c.texts).length > 0;
       if (hasTexts) return;
       var first = c.extracts[0];
@@ -647,6 +656,16 @@
           case 'gapped-text':
             const select = document.querySelector(`select[data-question="${qNum}"]`);
             if (select) select.value = answer;
+            break;
+
+          case 'speaker-matching':
+          case 'dual-matching':
+            var letterSelect = document.querySelector(
+              partConfig.type === 'speaker-matching'
+                ? '.listening-type3-select[data-qnum="' + qNum + '"]'
+                : '.listening-type4-select[data-key$="_' + qNum + '"]'
+            );
+            if (letterSelect) letterSelect.value = answer;
             break;
         }
       });
