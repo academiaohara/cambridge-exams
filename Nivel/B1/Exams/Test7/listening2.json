@@ -1,358 +1,358 @@
 {
-    "test_number":  7,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two people talking about a town festival.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Are you going to the town festival on Saturday? || Man: Maybe. I went last year, but it was hard to find out what was happening. || Woman: They've made a better website this time. || Man: Good. I don't mind crowds, and the music was great. [8]The problem was that events changed places, and there weren't enough signs to guide people[/8]. || Woman: I heard they are putting up maps this year. || Man: Then I'll probably go. || Woman: I hadn't thought of that. || Man: Neither had I at first, but now it seems obvious.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you going to the town festival on Saturday?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Maybe. I went last year, but it was hard to find out what was happening."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "They've made a better website this time."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Good. I don't mind crowds, and the music was great. The problem was that events changed places, and there weren't enough signs to guide people."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I heard they are putting up maps this year."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Then I'll probably go."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I hadn't thought of that."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Neither had I at first, but now it seems obvious."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "What problem did the man have at last year's festival?",
-                                               "options":  {
-                                                               "A":  "The music was disappointing.",
-                                                               "B":  "The festival was too crowded.",
-                                                               "C":  "It was difficult to find events."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "He says events changed places and there were not enough signs."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a woman telling a friend about a new hobby.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: I hear you've started painting. Are you enjoying it? || Woman: Very much. I thought I'd be embarrassed because I'm not very good, but the class is friendly. || Man: Do you paint landscapes? || Woman: Sometimes, but [9]I really like painting small objects from my kitchen, like cups or fruit. They're simple, and I can practise light and colour[/9]. || Man: That sounds relaxing. || Woman: It is, especially after work. || Man: That must be useful. || Woman: It is, especially when there are several things to think about.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I hear you've started painting. Are you enjoying it?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Very much. I thought I'd be embarrassed because I'm not very good, but the class is friendly."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Do you paint landscapes?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Sometimes, but I really like painting small objects from my kitchen, like cups or fruit. They're simple, and I can practise light and colour."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That sounds relaxing."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "It is, especially after work."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That must be useful."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "It is, especially when there are several things to think about."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What does the woman enjoy painting most?",
-                                               "options":  {
-                                                               "A":  "ordinary objects at home",
-                                                               "B":  "views of the countryside",
-                                                               "C":  "people in her class"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says she really likes painting small objects from her kitchen."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear two friends talking about a charity run.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Woman: Are you doing the charity run next month? || Man: Yes, though I haven't trained enough. || Woman: Is it a long race? || Man: Only five kilometres, so I should finish. [10]I'm more worried about asking people for money. I don't like feeling as if I'm pushing friends to donate[/10]. || Woman: You could share the link once and leave it there. || Man: That's a good idea. || Woman: That sounds sensible. || Man: Yes, I think it will make things much easier next time.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you doing the charity run next month?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, though I haven't trained enough."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Is it a long race?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Only five kilometres, so I should finish. I'm more worried about asking people for money. I don't like feeling as if I'm pushing friends to donate."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "You could share the link once and leave it there."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's a good idea."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds sensible."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, I think it will make things much easier next time."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What is the man worried about?",
-                                               "options":  {
-                                                               "A":  "finishing the distance",
-                                                               "B":  "asking people for donations",
-                                                               "C":  "finding time to train"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He says he is worried about asking people for money."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear a woman talking to a colleague about a training video.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: Did you watch the new safety training video? || Woman: Yes. I expected it to be boring, but it was quite clear. || Man: Was it too long? || Woman: Not really. [11]What helped was the use of real examples from our building, because I could imagine exactly what to do in an emergency[/11]. || Man: I agree. Videos with actors usually feel less useful. || Woman: This one felt practical. || Man: I can see why. || Woman: Yes, it wasn't what I expected, but I learnt something useful.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you watch the new safety training video?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes. I expected it to be boring, but it was quite clear."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Was it too long?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Not really. What helped was the use of real examples from our building, because I could imagine exactly what to do in an emergency."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I agree. Videos with actors usually feel less useful."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "This one felt practical."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I can see why."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, it wasn't what I expected, but I learnt something useful."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "What did the woman like about the training video?",
-                                               "options":  {
-                                                               "A":  "It showed familiar situations.",
-                                                               "B":  "It was shorter than expected.",
-                                                               "C":  "It had professional actors."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says real examples from their building helped her understand what to do."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear two friends talking about a garden.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Your garden looks different. Did you plant those flowers yourself? || Woman: Yes, but they need more care than I expected. || Man: They look beautiful. || Woman: Thanks. [12]I chose them because bees and butterflies like them, not just because of the colours[/12]. || Man: That's a nice idea. || Woman: I want the garden to be useful for wildlife, even though it means doing a bit more work. || Man: Good idea. || Woman: I'll do that, and then I won't have to worry about it again.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Your garden looks different. Did you plant those flowers yourself?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, but they need more care than I expected."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "They look beautiful."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Thanks. I chose them because bees and butterflies like them, not just because of the colours."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's a nice idea."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I want the garden to be useful for wildlife, even though it means doing a bit more work."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Good idea."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I'll do that, and then I won't have to worry about it again."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "Why did the woman choose the flowers?",
-                                               "options":  {
-                                                               "A":  "They are easy to look after.",
-                                                               "B":  "They match the garden colours.",
-                                                               "C":  "They attract insects."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says bees and butterflies like the flowers."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear a man telling a friend about a computer problem.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Woman: Did you finish your report? || Man: Eventually. My computer kept freezing last night. || Woman: Did you lose anything? || Man: Luckily no. I save my work often. [13]The annoying thing was waiting for it to restart again and again. It took twice as long to finish[/13]. || Woman: You should get it checked. || Man: I will. I can't work like that every evening. || Woman: That makes sense. || Man: Exactly, and I feel much happier about it now. || Woman: I understand. || Man: Thanks.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did you finish your report?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Eventually. My computer kept freezing last night."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Did you lose anything?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Luckily no. I save my work often. The annoying thing was waiting for it to restart again and again. It took twice as long to finish."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "You should get it checked."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I will. I can't work like that every evening."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That makes sense."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Exactly, and I feel much happier about it now."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I understand."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Thanks."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What annoyed the man about the computer problem?",
-                                               "options":  {
-                                                               "A":  "He lost part of his report.",
-                                                               "B":  "It wasted a lot of his time.",
-                                                               "C":  "He could not save his work."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He says waiting for restarts made the report take twice as long."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%207.mp3"
+  "test_number": 7,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two people talking about a town festival.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Are you going to the town festival on Saturday? || Man: Maybe. I went last year, but it was hard to find out what was happening. || Woman: They've made a better website this time. || Man: Good. I don't mind crowds, and the music was great. [8]The problem was that events changed places, and there weren't enough signs to guide people[/8]. || Woman: I heard they are putting up maps this year. || Man: Then I'll probably go. || Woman: I hadn't thought of that. || Man: Neither had I at first, but now it seems obvious.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you going to the town festival on Saturday?"
+        },
+        {
+          "speaker": "man",
+          "text": "Maybe. I went last year, but it was hard to find out what was happening."
+        },
+        {
+          "speaker": "woman",
+          "text": "They've made a better website this time."
+        },
+        {
+          "speaker": "man",
+          "text": "Good. I don't mind crowds, and the music was great. The problem was that events changed places, and there weren't enough signs to guide people."
+        },
+        {
+          "speaker": "woman",
+          "text": "I heard they are putting up maps this year."
+        },
+        {
+          "speaker": "man",
+          "text": "Then I'll probably go."
+        },
+        {
+          "speaker": "woman",
+          "text": "I hadn't thought of that."
+        },
+        {
+          "speaker": "man",
+          "text": "Neither had I at first, but now it seems obvious."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What problem did the man have at last year's festival?",
+          "options": {
+            "A": "The music was disappointing.",
+            "B": "The festival was too crowded.",
+            "C": "It was difficult to find events."
+          },
+          "answer": "C",
+          "explanation": "He says events changed places and there were not enough signs."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a woman telling a friend about a new hobby.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: I hear you've started painting. Are you enjoying it? || Woman: Very much. I thought I'd be embarrassed because I'm not very good, but the class is friendly. || Man: Do you paint landscapes? || Woman: Sometimes, but [9]I really like painting small objects from my kitchen, like cups or fruit. They're simple, and I can practise light and colour[/9]. || Man: That sounds relaxing. || Woman: It is, especially after work. || Man: That must be useful. || Woman: It is, especially when there are several things to think about.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "I hear you've started painting. Are you enjoying it?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Very much. I thought I'd be embarrassed because I'm not very good, but the class is friendly."
+        },
+        {
+          "speaker": "man",
+          "text": "Do you paint landscapes?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Sometimes, but I really like painting small objects from my kitchen, like cups or fruit. They're simple, and I can practise light and colour."
+        },
+        {
+          "speaker": "man",
+          "text": "That sounds relaxing."
+        },
+        {
+          "speaker": "woman",
+          "text": "It is, especially after work."
+        },
+        {
+          "speaker": "man",
+          "text": "That must be useful."
+        },
+        {
+          "speaker": "woman",
+          "text": "It is, especially when there are several things to think about."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What does the woman enjoy painting most?",
+          "options": {
+            "A": "ordinary objects at home",
+            "B": "views of the countryside",
+            "C": "people in her class"
+          },
+          "answer": "A",
+          "explanation": "She says she really likes painting small objects from her kitchen."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear two friends talking about a charity run.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Woman: Are you doing the charity run next month? || Man: Yes, though I haven't trained enough. || Woman: Is it a long race? || Man: Only five kilometres, so I should finish. [10]I'm more worried about asking people for money. I don't like feeling as if I'm pushing friends to donate[/10]. || Woman: You could share the link once and leave it there. || Man: That's a good idea. || Woman: That sounds sensible. || Man: Yes, I think it will make things much easier next time.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Are you doing the charity run next month?"
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, though I haven't trained enough."
+        },
+        {
+          "speaker": "woman",
+          "text": "Is it a long race?"
+        },
+        {
+          "speaker": "man",
+          "text": "Only five kilometres, so I should finish. I'm more worried about asking people for money. I don't like feeling as if I'm pushing friends to donate."
+        },
+        {
+          "speaker": "woman",
+          "text": "You could share the link once and leave it there."
+        },
+        {
+          "speaker": "man",
+          "text": "That's a good idea."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds sensible."
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, I think it will make things much easier next time."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What is the man worried about?",
+          "options": {
+            "A": "finishing the distance",
+            "B": "asking people for donations",
+            "C": "finding time to train"
+          },
+          "answer": "B",
+          "explanation": "He says he is worried about asking people for money."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear a woman talking to a colleague about a training video.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Did you watch the new safety training video? || Woman: Yes. I expected it to be boring, but it was quite clear. || Man: Was it too long? || Woman: Not really. [11]What helped was the use of real examples from our building, because I could imagine exactly what to do in an emergency[/11]. || Man: I agree. Videos with actors usually feel less useful. || Woman: This one felt practical. || Man: I can see why. || Woman: Yes, it wasn't what I expected, but I learnt something useful.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you watch the new safety training video?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes. I expected it to be boring, but it was quite clear."
+        },
+        {
+          "speaker": "man",
+          "text": "Was it too long?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Not really. What helped was the use of real examples from our building, because I could imagine exactly what to do in an emergency."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. Videos with actors usually feel less useful."
+        },
+        {
+          "speaker": "woman",
+          "text": "This one felt practical."
+        },
+        {
+          "speaker": "man",
+          "text": "I can see why."
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, it wasn't what I expected, but I learnt something useful."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "What did the woman like about the training video?",
+          "options": {
+            "A": "It showed familiar situations.",
+            "B": "It was shorter than expected.",
+            "C": "It had professional actors."
+          },
+          "answer": "A",
+          "explanation": "She says real examples from their building helped her understand what to do."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear two friends talking about a garden.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Your garden looks different. Did you plant those flowers yourself? || Woman: Yes, but they need more care than I expected. || Man: They look beautiful. || Woman: Thanks. [12]I chose them because bees and butterflies like them, not just because of the colours[/12]. || Man: That's a nice idea. || Woman: I want the garden to be useful for wildlife, even though it means doing a bit more work. || Man: Good idea. || Woman: I'll do that, and then I won't have to worry about it again.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Your garden looks different. Did you plant those flowers yourself?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, but they need more care than I expected."
+        },
+        {
+          "speaker": "man",
+          "text": "They look beautiful."
+        },
+        {
+          "speaker": "woman",
+          "text": "Thanks. I chose them because bees and butterflies like them, not just because of the colours."
+        },
+        {
+          "speaker": "man",
+          "text": "That's a nice idea."
+        },
+        {
+          "speaker": "woman",
+          "text": "I want the garden to be useful for wildlife, even though it means doing a bit more work."
+        },
+        {
+          "speaker": "man",
+          "text": "Good idea."
+        },
+        {
+          "speaker": "woman",
+          "text": "I'll do that, and then I won't have to worry about it again."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "Why did the woman choose the flowers?",
+          "options": {
+            "A": "They are easy to look after.",
+            "B": "They match the garden colours.",
+            "C": "They attract insects."
+          },
+          "answer": "C",
+          "explanation": "She says bees and butterflies like the flowers."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear a man telling a friend about a computer problem.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Woman: Did you finish your report? || Man: Eventually. My computer kept freezing last night. || Woman: Did you lose anything? || Man: Luckily no. I save my work often. [13]The annoying thing was waiting for it to restart again and again. It took twice as long to finish[/13]. || Woman: You should get it checked. || Man: I will. I can't work like that every evening. || Woman: That makes sense. || Man: Exactly, and I feel much happier about it now. || Woman: I understand. || Man: Thanks.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Did you finish your report?"
+        },
+        {
+          "speaker": "man",
+          "text": "Eventually. My computer kept freezing last night."
+        },
+        {
+          "speaker": "woman",
+          "text": "Did you lose anything?"
+        },
+        {
+          "speaker": "man",
+          "text": "Luckily no. I save my work often. The annoying thing was waiting for it to restart again and again. It took twice as long to finish."
+        },
+        {
+          "speaker": "woman",
+          "text": "You should get it checked."
+        },
+        {
+          "speaker": "man",
+          "text": "I will. I can't work like that every evening."
+        },
+        {
+          "speaker": "woman",
+          "text": "That makes sense."
+        },
+        {
+          "speaker": "man",
+          "text": "Exactly, and I feel much happier about it now."
+        },
+        {
+          "speaker": "woman",
+          "text": "I understand."
+        },
+        {
+          "speaker": "man",
+          "text": "Thanks."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What annoyed the man about the computer problem?",
+          "options": {
+            "A": "He lost part of his report.",
+            "B": "It wasted a lot of his time.",
+            "C": "He could not save his work."
+          },
+          "answer": "B",
+          "explanation": "He says waiting for restarts made the report take twice as long."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/test7_part2.mp3"
 }

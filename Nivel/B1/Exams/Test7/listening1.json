@@ -1,129 +1,130 @@
 {
-    "test_id":  7,
-    "exam_part":  1,
-    "title":  "B1 Listening - Part 1 - Test 7",
-    "type":  "multiple-choice-text",
-    "totalQuestions":  7,
-    "instructions":  "For each question, listen to the recording and choose the correct answer: A, B or C.",
-    "items":  [
-                  {
-                      "number":  1,
-                      "context":  "You hear two people arranging a family picnic.",
-                      "voices":  {
-                                     "man":  "en-GB-NoahNeural",
-                                     "woman":  "en-GB-LibbyNeural"
-                                 },
-                      "audio_script":  "Man: Are we still meeting on the beach for the family picnic? I thought I remembered correctly, but I have not checked my messages today. || Woman: That was the original plan, but it will be too windy beside the sea tomorrow. [1]We need to meet in the forest clearing instead[/1]. || Man: That was lucky; I almost went there. I would have gone to the wrong place and wondered where everyone was. || Woman: Do not worry. I will arrive ten minutes early, so look for me near the entrance. Keep your phone on in case anything changes again.",
-                      "question":  "Where will the picnic be?",
-                      "options":  {
-                                      "A":  "On the beach",
-                                      "B":  "In the forest",
-                                      "C":  "By a lake"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The picnic will be in the forest."
-                  },
-                  {
-                      "number":  2,
-                      "context":  "You hear two students preparing for a school play.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-AlfieNeural"
-                                 },
-                      "audio_script":  "Girl: Have you packed for the school play rehearsal yet? I put your script in my bag because I thought that was what we needed. || Boy: That was on the first list, but the teacher has printed spare scripts but wants everyone in costume. [2]Everyone needs to bring a black T-shirt now[/2]. || Girl: I am glad I checked. I was about to leave my bag by the door and forget about it. || Boy: There is still time. Put it in now, and check the final message once more before we leave tomorrow morning.",
-                      "question":  "What should the student bring?",
-                      "options":  {
-                                      "A":  "A script",
-                                      "B":  "A hat",
-                                      "C":  "A black T-shirt"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "The student needs to bring a black T-shirt."
-                  },
-                  {
-                      "number":  3,
-                      "context":  "You hear two friends making birthday plans.",
-                      "voices":  {
-                                     "boy":  "en-GB-ElliotNeural",
-                                     "girl":  "en-GB-BellaNeural"
-                                 },
-                      "audio_script":  "Boy: Are we still having dinner at home for your birthday on Friday? I told my sister I would be home later, so I need to know. || Girl: That was the idea, but your parents have arranged a surprise meal for Saturday instead. [3]We are going to go ice skating instead[/3]. || Boy: That is fine with me. I nearly paid for the other activity online this morning. || Girl: It is lucky that you checked first. I will book our places this evening and send you the time. We can meet at the bus stop after lunch.",
-                      "question":  "What will they do on Friday?",
-                      "options":  {
-                                      "A":  "Go ice skating",
-                                      "B":  "Have dinner at home",
-                                      "C":  "Go bowling"
-                                  },
-                      "answer":  "A",
-                      "explanation":  "They will go ice skating."
-                  },
-                  {
-                      "number":  4,
-                      "context":  "You hear two people talking about a swimming lesson.",
-                      "voices":  {
-                                     "woman":  "en-GB-SoniaNeural",
-                                     "man":  "en-GB-RyanNeural"
-                                 },
-                      "audio_script":  "Woman: I need to write down the time for the swimming lesson. Is it still at quarter past four, like you said yesterday? || Man: No, the children's class is using the pool for longer today. [4]It starts at five o'clock now[/4], although we should arrive ten minutes earlier. || Woman: Thanks; I nearly wrote down the wrong time. I would have been waiting there at the wrong time. || Man: I will send you a reminder later. Bring everything you need, because there will not be time to go home again before it begins.",
-                      "question":  "What time is the swimming lesson?",
-                      "options":  {
-                                      "A":  "Quarter past four",
-                                      "B":  "Five o'clock",
-                                      "C":  "Half past five"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The lesson starts at five o'clock."
-                  },
-                  {
-                      "number":  5,
-                      "context":  "You hear two people talking about a printer.",
-                      "voices":  {
-                                     "man":  "en-GB-NoahNeural",
-                                     "woman":  "en-GB-LibbyNeural"
-                                 },
-                      "audio_script":  "Man: How are you getting on with the printer at home? I heard it was not working properly. || Woman: I first thought it had run out of paper, and my brother wondered if the ink was empty. But he checked it carefully last night. [5]It cannot connect to the computer[/5]. || Man: Can it be fixed before your homework deadline tonight? || Woman: I think so. We know what is wrong now, and the repair shop said it should be ready tomorrow afternoon. That is a relief because I need it this weekend.",
-                      "question":  "What is wrong with the printer?",
-                      "options":  {
-                                      "A":  "It has no paper",
-                                      "B":  "It has no ink",
-                                      "C":  "It cannot connect to the computer"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "The printer cannot connect to the computer."
-                  },
-                  {
-                      "number":  6,
-                      "context":  "You hear two people planning a trip to the airport.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-AlfieNeural"
-                                 },
-                      "audio_script":  "Girl: Are you still travelling to the airport by train? I could meet you when you arrive. || Boy: I planned to, but there will be a rail strike tomorrow morning. I considered going by car, but nobody can drive us that early. [6]I am going by taxi instead[/6]. || Girl: That sounds like the best plan. What time will you get there? || Boy: Just before eleven, if everything is on time. I have already checked the timetable online, so it should be easy. I will message you when I leave, so you do not have to wait outside.",
-                      "question":  "How will they get to the airport?",
-                      "options":  {
-                                      "A":  "By taxi",
-                                      "B":  "By train",
-                                      "C":  "By car"
-                                  },
-                      "answer":  "A",
-                      "explanation":  "They decide to take a taxi."
-                  },
-                  {
-                      "number":  7,
-                      "context":  "You hear two people talking about a new dog.",
-                      "voices":  {
-                                     "boy":  "en-GB-ElliotNeural",
-                                     "girl":  "en-GB-BellaNeural"
-                                 },
-                      "audio_script":  "Boy: Did you buy a toy ball for the new dog? I saw one in the shop window yesterday and thought it looked nice. || Girl: No. I looked at a toy ball, and I nearly chose a food bowl, but it already has toys and bowls, but nowhere comfortable to sleep. [7]I bought a small bed in the end[/7]. || Boy: I think that was the right choice. It sounds more useful, and I think it will be appreciated. || Girl: I hope so. I kept the receipt, just in case it needs changing after we give it.",
-                      "question":  "What did the speaker buy for the dog?",
-                      "options":  {
-                                      "A":  "A toy ball",
-                                      "B":  "A small bed",
-                                      "C":  "A food bowl"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The speaker bought a small bed."
-                  }
-              ]
+  "test_id": 7,
+  "exam_part": 1,
+  "title": "B1 Listening - Part 1 - Test 7",
+  "type": "multiple-choice-text",
+  "totalQuestions": 7,
+  "instructions": "For each question, listen to the recording and choose the correct answer: A, B or C.",
+  "items": [
+    {
+      "number": 1,
+      "context": "You hear two people arranging a family picnic.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Are we still meeting on the beach for the family picnic? I thought I remembered correctly, but I have not checked my messages today. || Woman: That was the original plan, but it will be too windy beside the sea tomorrow. [1]We need to meet in the forest clearing instead[/1]. || Man: That was lucky; I almost went there. I would have gone to the wrong place and wondered where everyone was. || Woman: Do not worry. I will arrive ten minutes early, so look for me near the entrance. Keep your phone on in case anything changes again.",
+      "question": "Where will the picnic be?",
+      "options": {
+        "A": "On the beach",
+        "B": "In the forest",
+        "C": "By a lake"
+      },
+      "answer": "B",
+      "explanation": "The picnic will be in the forest."
+    },
+    {
+      "number": 2,
+      "context": "You hear two students preparing for a school play.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Girl: Have you packed for the school play rehearsal yet? I put your script in my bag because I thought that was what we needed. || Boy: That was on the first list, but the teacher has printed spare scripts but wants everyone in costume. [2]Everyone needs to bring a black T-shirt now[/2]. || Girl: I am glad I checked. I was about to leave my bag by the door and forget about it. || Boy: There is still time. Put it in now, and check the final message once more before we leave tomorrow morning.",
+      "question": "What should the student bring?",
+      "options": {
+        "A": "A script",
+        "B": "A hat",
+        "C": "A black T-shirt"
+      },
+      "answer": "C",
+      "explanation": "The student needs to bring a black T-shirt."
+    },
+    {
+      "number": 3,
+      "context": "You hear two friends making birthday plans.",
+      "voices": {
+        "boy": "en-GB-ElliotNeural",
+        "girl": "en-GB-BellaNeural"
+      },
+      "audio_script": "Boy: Are we still having dinner at home for your birthday on Friday? I told my sister I would be home later, so I need to know. || Girl: That was the idea, but your parents have arranged a surprise meal for Saturday instead. [3]We are going to go ice skating instead[/3]. || Boy: That is fine with me. I nearly paid for the other activity online this morning. || Girl: It is lucky that you checked first. I will book our places this evening and send you the time. We can meet at the bus stop after lunch.",
+      "question": "What will they do on Friday?",
+      "options": {
+        "A": "Go ice skating",
+        "B": "Have dinner at home",
+        "C": "Go bowling"
+      },
+      "answer": "A",
+      "explanation": "They will go ice skating."
+    },
+    {
+      "number": 4,
+      "context": "You hear two people talking about a swimming lesson.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I need to write down the time for the swimming lesson. Is it still at quarter past four, like you said yesterday? || Man: No, the children's class is using the pool for longer today. [4]It starts at five o'clock now[/4], although we should arrive ten minutes earlier. || Woman: Thanks; I nearly wrote down the wrong time. I would have been waiting there at the wrong time. || Man: I will send you a reminder later. Bring everything you need, because there will not be time to go home again before it begins.",
+      "question": "What time is the swimming lesson?",
+      "options": {
+        "A": "Quarter past four",
+        "B": "Five o'clock",
+        "C": "Half past five"
+      },
+      "answer": "B",
+      "explanation": "The lesson starts at five o'clock."
+    },
+    {
+      "number": 5,
+      "context": "You hear two people talking about a printer.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: How are you getting on with the printer at home? I heard it was not working properly. || Woman: I first thought it had run out of paper, and my brother wondered if the ink was empty. But he checked it carefully last night. [5]It cannot connect to the computer[/5]. || Man: Can it be fixed before your homework deadline tonight? || Woman: I think so. We know what is wrong now, and the repair shop said it should be ready tomorrow afternoon. That is a relief because I need it this weekend.",
+      "question": "What is wrong with the printer?",
+      "options": {
+        "A": "It has no paper",
+        "B": "It has no ink",
+        "C": "It cannot connect to the computer"
+      },
+      "answer": "C",
+      "explanation": "The printer cannot connect to the computer."
+    },
+    {
+      "number": 6,
+      "context": "You hear two people planning a trip to the airport.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Girl: Are you still travelling to the airport by train? I could meet you when you arrive. || Boy: I planned to, but there will be a rail strike tomorrow morning. I considered going by car, but nobody can drive us that early. [6]I am going by taxi instead[/6]. || Girl: That sounds like the best plan. What time will you get there? || Boy: Just before eleven, if everything is on time. I have already checked the timetable online, so it should be easy. I will message you when I leave, so you do not have to wait outside.",
+      "question": "How will they get to the airport?",
+      "options": {
+        "A": "By taxi",
+        "B": "By train",
+        "C": "By car"
+      },
+      "answer": "A",
+      "explanation": "They decide to take a taxi."
+    },
+    {
+      "number": 7,
+      "context": "You hear two people talking about a new dog.",
+      "voices": {
+        "boy": "en-GB-ElliotNeural",
+        "girl": "en-GB-BellaNeural"
+      },
+      "audio_script": "Boy: Did you buy a toy ball for the new dog? I saw one in the shop window yesterday and thought it looked nice. || Girl: No. I looked at a toy ball, and I nearly chose a food bowl, but it already has toys and bowls, but nowhere comfortable to sleep. [7]I bought a small bed in the end[/7]. || Boy: I think that was the right choice. It sounds more useful, and I think it will be appreciated. || Girl: I hope so. I kept the receipt, just in case it needs changing after we give it.",
+      "question": "What did the speaker buy for the dog?",
+      "options": {
+        "A": "A toy ball",
+        "B": "A small bed",
+        "C": "A food bowl"
+      },
+      "answer": "B",
+      "explanation": "The speaker bought a small bed."
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part1/test7_part1.mp3"
 }

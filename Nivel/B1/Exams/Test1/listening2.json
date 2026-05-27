@@ -1,278 +1,278 @@
 {
-    "test_number":  1,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two people talking about buying a bicycle.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Have you found a bicycle yet? || Man: Not really. I went to that shop near the station, but the assistant only showed me the most expensive models. I thought about looking online, but there are hundreds of choices. || Woman: Online reviews can be useful, but they may not answer your questions. [8]Why don't you speak to my uncle? He repairs bikes for a living and knows exactly what beginners need[/8]. || Man: That's a good idea. I'll ask him before I buy anything.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have you found a bicycle yet?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Not really. I went to that shop near the station, but the assistant only showed me the most expensive models. I thought about looking online, but there are hundreds of choices."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Online reviews can be useful, but they may not answer your questions. Why don't you speak to my uncle? He repairs bikes for a living and knows exactly what beginners need."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's a good idea. I'll ask him before I buy anything."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "The woman suggests that the man should",
-                                               "options":  {
-                                                               "A":  "try looking online.",
-                                                               "B":  "go to a different shop.",
-                                                               "C":  "get advice from an expert."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The woman suggests speaking to her uncle, who repairs bikes, so she thinks the man should get expert advice."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a man telling his friend about his language course.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: How's your evening Spanish course going? || Man: Better than I expected, actually. I was worried the grammar would be impossible, but we're doing it slowly. The lessons are only an hour, which suits me after work. [9]The only problem is the teacher's speed. When she explains something new, she talks so quickly that I sometimes miss the important parts[/9]. || Woman: Could you ask her to slow down? || Man: I will. Everyone else seems to feel the same.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "How's your evening Spanish course going?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Better than I expected, actually. I was worried the grammar would be impossible, but we're doing it slowly. The lessons are only an hour, which suits me after work. The only problem is the teacher's speed. When she explains something new, she talks so quickly that I sometimes miss the important parts."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Could you ask her to slow down?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I will. Everyone else seems to feel the same."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What problem does the man mention?",
-                                               "options":  {
-                                                               "A":  "The teacher speaks too fast.",
-                                                               "B":  "The lessons are too long.",
-                                                               "C":  "The grammar is too difficult."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The man says the teacher talks so quickly that he misses important parts."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear a woman telling a colleague about her weekend.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Man: Did you do anything exciting at the weekend? || Woman: We planned to visit a big exhibition in town, but my daughter wasn't feeling well, so we stayed at home. At first I was disappointed because I wanted to go somewhere new. In the end, though, [10]it was lovely just to sit in the garden with a book while the children played quietly nearby[/10]. || Man: That sounds peaceful. || Woman: It was. I don't get many weekends like that.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you do anything exciting at the weekend?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "We planned to visit a big exhibition in town, but my daughter wasn't feeling well, so we stayed at home. At first I was disappointed because I wanted to go somewhere new. In the end, though, it was lovely just to sit in the garden with a book while the children played quietly nearby."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That sounds peaceful."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "It was. I don't get many weekends like that."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What did the woman like about her weekend?",
-                                               "options":  {
-                                                               "A":  "visiting a new place in the city",
-                                                               "B":  "having a chance to relax",
-                                                               "C":  "seeing her children perform"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says it was lovely to sit in the garden with a book, which shows she liked relaxing."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear two friends talking about a new restaurant.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Have you tried the new Italian restaurant yet? || Woman: Yes, last Friday. The pasta tasted fresh, and I thought the prices were fair. || Man: I went on Saturday. My pizza was great, but we waited almost forty minutes before anyone took our order. || Woman: Exactly. [11]The food is good enough, but they really need to bring meals to the tables more quickly[/11]. || Man: I agree. I don't mind paying if I don't have to spend the whole evening waiting.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Have you tried the new Italian restaurant yet?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, last Friday. The pasta tasted fresh, and I thought the prices were fair."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I went on Saturday. My pizza was great, but we waited almost forty minutes before anyone took our order."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Exactly. The food is good enough, but they really need to bring meals to the tables more quickly."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I agree. I don't mind paying if I don't have to spend the whole evening waiting."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "They both think the restaurant would be better if",
-                                               "options":  {
-                                                               "A":  "the food was fresher.",
-                                                               "B":  "the service was faster.",
-                                                               "C":  "the prices were cheaper."
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "Both speakers say the food and prices are fine, but the service needs to be quicker."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear two old friends talking at a party.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: Mark? I nearly didn't recognise you! || Man: Really? I haven't changed that much, have I? || Woman: Well, you still have the same smile. I thought you'd grown a beard from one of your holiday photos, but it's gone now. || Man: Yes, I shaved it last month. || Woman: [12]It's the jacket and smart shoes that surprised me. You always used to wear old jeans and trainers[/12]. || Man: I have to look serious for work these days.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Mark? I nearly didn't recognise you!"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Really? I haven't changed that much, have I?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Well, you still have the same smile. I thought you'd grown a beard from one of your holiday photos, but it's gone now."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, I shaved it last month."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "It's the jacket and smart shoes that surprised me. You always used to wear old jeans and trainers."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I have to look serious for work these days."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "How is the man's appearance different from before?",
-                                               "options":  {
-                                                               "A":  "He has grown a beard.",
-                                                               "B":  "He has started wearing glasses.",
-                                                               "C":  "He has changed his style of clothes."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "The woman says his jacket and smart shoes are different from the old jeans and trainers he used to wear."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear two colleagues talking about a meeting.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Man: Are you ready for the planning meeting this afternoon? || Woman: I thought it had been cancelled. Isn't the manager away today? || Man: She is, but she's joining us online. || Woman: Oh, really? [13]I'm surprised we're still having it without her in the office[/13]. I don't mind attending, and my notes are ready, but I expected it to move to next week. || Man: No, she wants the decision made today. || Woman: That sounds sensible. || Man: Yes, I think it will make things much easier next time.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Are you ready for the planning meeting this afternoon?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I thought it had been cancelled. Isn't the manager away today?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "She is, but she's joining us online."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Oh, really? I'm surprised we're still having it without her in the office. I don't mind attending, and my notes are ready, but I expected it to move to next week."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "No, she wants the decision made today."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds sensible."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, I think it will make things much easier next time."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "How does the woman feel about the meeting?",
-                                               "options":  {
-                                                               "A":  "surprised that it is still going to take place",
-                                                               "B":  "annoyed that she will have to attend it",
-                                                               "C":  "worried that her notes are not ready"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "The woman says she is surprised the meeting is still happening while the manager is away."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%201.mp3"
+  "test_number": 1,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two people talking about buying a bicycle.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Have you found a bicycle yet? || Man: Not really. I went to that shop near the station, but the assistant only showed me the most expensive models. I thought about looking online, but there are hundreds of choices. || Woman: Online reviews can be useful, but they may not answer your questions. [8]Why don't you speak to my uncle? He repairs bikes for a living and knows exactly what beginners need[/8]. || Man: That's a good idea. I'll ask him before I buy anything.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you found a bicycle yet?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not really. I went to that shop near the station, but the assistant only showed me the most expensive models. I thought about looking online, but there are hundreds of choices."
+        },
+        {
+          "speaker": "woman",
+          "text": "Online reviews can be useful, but they may not answer your questions. Why don't you speak to my uncle? He repairs bikes for a living and knows exactly what beginners need."
+        },
+        {
+          "speaker": "man",
+          "text": "That's a good idea. I'll ask him before I buy anything."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "The woman suggests that the man should",
+          "options": {
+            "A": "try looking online.",
+            "B": "go to a different shop.",
+            "C": "get advice from an expert."
+          },
+          "answer": "C",
+          "explanation": "The woman suggests speaking to her uncle, who repairs bikes, so she thinks the man should get expert advice."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a man telling his friend about his language course.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: How's your evening Spanish course going? || Man: Better than I expected, actually. I was worried the grammar would be impossible, but we're doing it slowly. The lessons are only an hour, which suits me after work. [9]The only problem is the teacher's speed. When she explains something new, she talks so quickly that I sometimes miss the important parts[/9]. || Woman: Could you ask her to slow down? || Man: I will. Everyone else seems to feel the same.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How's your evening Spanish course going?"
+        },
+        {
+          "speaker": "man",
+          "text": "Better than I expected, actually. I was worried the grammar would be impossible, but we're doing it slowly. The lessons are only an hour, which suits me after work. The only problem is the teacher's speed. When she explains something new, she talks so quickly that I sometimes miss the important parts."
+        },
+        {
+          "speaker": "woman",
+          "text": "Could you ask her to slow down?"
+        },
+        {
+          "speaker": "man",
+          "text": "I will. Everyone else seems to feel the same."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What problem does the man mention?",
+          "options": {
+            "A": "The teacher speaks too fast.",
+            "B": "The lessons are too long.",
+            "C": "The grammar is too difficult."
+          },
+          "answer": "A",
+          "explanation": "The man says the teacher talks so quickly that he misses important parts."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear a woman telling a colleague about her weekend.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Man: Did you do anything exciting at the weekend? || Woman: We planned to visit a big exhibition in town, but my daughter wasn't feeling well, so we stayed at home. At first I was disappointed because I wanted to go somewhere new. In the end, though, [10]it was lovely just to sit in the garden with a book while the children played quietly nearby[/10]. || Man: That sounds peaceful. || Woman: It was. I don't get many weekends like that.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you do anything exciting at the weekend?"
+        },
+        {
+          "speaker": "woman",
+          "text": "We planned to visit a big exhibition in town, but my daughter wasn't feeling well, so we stayed at home. At first I was disappointed because I wanted to go somewhere new. In the end, though, it was lovely just to sit in the garden with a book while the children played quietly nearby."
+        },
+        {
+          "speaker": "man",
+          "text": "That sounds peaceful."
+        },
+        {
+          "speaker": "woman",
+          "text": "It was. I don't get many weekends like that."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What did the woman like about her weekend?",
+          "options": {
+            "A": "visiting a new place in the city",
+            "B": "having a chance to relax",
+            "C": "seeing her children perform"
+          },
+          "answer": "B",
+          "explanation": "She says it was lovely to sit in the garden with a book, which shows she liked relaxing."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear two friends talking about a new restaurant.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Have you tried the new Italian restaurant yet? || Woman: Yes, last Friday. The pasta tasted fresh, and I thought the prices were fair. || Man: I went on Saturday. My pizza was great, but we waited almost forty minutes before anyone took our order. || Woman: Exactly. [11]The food is good enough, but they really need to bring meals to the tables more quickly[/11]. || Man: I agree. I don't mind paying if I don't have to spend the whole evening waiting.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you tried the new Italian restaurant yet?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, last Friday. The pasta tasted fresh, and I thought the prices were fair."
+        },
+        {
+          "speaker": "man",
+          "text": "I went on Saturday. My pizza was great, but we waited almost forty minutes before anyone took our order."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. The food is good enough, but they really need to bring meals to the tables more quickly."
+        },
+        {
+          "speaker": "man",
+          "text": "I agree. I don't mind paying if I don't have to spend the whole evening waiting."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "They both think the restaurant would be better if",
+          "options": {
+            "A": "the food was fresher.",
+            "B": "the service was faster.",
+            "C": "the prices were cheaper."
+          },
+          "answer": "B",
+          "explanation": "Both speakers say the food and prices are fine, but the service needs to be quicker."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear two old friends talking at a party.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: Mark? I nearly didn't recognise you! || Man: Really? I haven't changed that much, have I? || Woman: Well, you still have the same smile. I thought you'd grown a beard from one of your holiday photos, but it's gone now. || Man: Yes, I shaved it last month. || Woman: [12]It's the jacket and smart shoes that surprised me. You always used to wear old jeans and trainers[/12]. || Man: I have to look serious for work these days.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Mark? I nearly didn't recognise you!"
+        },
+        {
+          "speaker": "man",
+          "text": "Really? I haven't changed that much, have I?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Well, you still have the same smile. I thought you'd grown a beard from one of your holiday photos, but it's gone now."
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, I shaved it last month."
+        },
+        {
+          "speaker": "woman",
+          "text": "It's the jacket and smart shoes that surprised me. You always used to wear old jeans and trainers."
+        },
+        {
+          "speaker": "man",
+          "text": "I have to look serious for work these days."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "How is the man's appearance different from before?",
+          "options": {
+            "A": "He has grown a beard.",
+            "B": "He has started wearing glasses.",
+            "C": "He has changed his style of clothes."
+          },
+          "answer": "C",
+          "explanation": "The woman says his jacket and smart shoes are different from the old jeans and trainers he used to wear."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear two colleagues talking about a meeting.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Man: Are you ready for the planning meeting this afternoon? || Woman: I thought it had been cancelled. Isn't the manager away today? || Man: She is, but she's joining us online. || Woman: Oh, really? [13]I'm surprised we're still having it without her in the office[/13]. I don't mind attending, and my notes are ready, but I expected it to move to next week. || Man: No, she wants the decision made today. || Woman: That sounds sensible. || Man: Yes, I think it will make things much easier next time.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Are you ready for the planning meeting this afternoon?"
+        },
+        {
+          "speaker": "woman",
+          "text": "I thought it had been cancelled. Isn't the manager away today?"
+        },
+        {
+          "speaker": "man",
+          "text": "She is, but she's joining us online."
+        },
+        {
+          "speaker": "woman",
+          "text": "Oh, really? I'm surprised we're still having it without her in the office. I don't mind attending, and my notes are ready, but I expected it to move to next week."
+        },
+        {
+          "speaker": "man",
+          "text": "No, she wants the decision made today."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds sensible."
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, I think it will make things much easier next time."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "How does the woman feel about the meeting?",
+          "options": {
+            "A": "surprised that it is still going to take place",
+            "B": "annoyed that she will have to attend it",
+            "C": "worried that her notes are not ready"
+          },
+          "answer": "A",
+          "explanation": "The woman says she is surprised the meeting is still happening while the manager is away."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/Test1_part2.mp3"
 }

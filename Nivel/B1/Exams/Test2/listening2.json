@@ -1,298 +1,298 @@
 {
-    "test_number":  2,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear a boy telling a friend about plans for his birthday.",
-                         "voices":  {
-                                        "boy":  "en-GB-OliverNeural",
-                                        "girl":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Girl: Are you having a big party for your birthday? || Boy: Not really. I wanted to invite everyone from football and my cousins too, but the climbing centre only allows ten children in one group. || Girl: That's a shame. Are some people refusing to come? || Boy: No, everyone seems keen. [8]I'm just disappointed because I have to choose, and I'd like more friends to be there[/8]. It won't be boring, though. The place looks brilliant.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Are you having a big party for your birthday?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Not really. I wanted to invite everyone from football and my cousins too, but the climbing centre only allows ten children in one group."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "That's a shame. Are some people refusing to come?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "No, everyone seems keen. I'm just disappointed because I have to choose, and I'd like more friends to be there. It won't be boring, though. The place looks brilliant."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "How does he feel about the plans he's made?",
-                                               "options":  {
-                                                               "A":  "annoyed that some friends don't want to come",
-                                                               "B":  "disappointed that he can't invite more friends",
-                                                               "C":  "worried that it might be boring for his friends"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "He says he is disappointed because he has to choose and wants more friends to attend."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear two friends talking about a football match they went to.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: Did you enjoy the match yesterday? || Woman: It was exciting, especially near the end. I thought the stadium looked half empty, though. || Man: Yes, there weren't as many people as usual, probably because of the rain. || Woman: The players did well in those conditions. || Man: True, but [9]some of the referee's decisions were really poor. Even our coach looked furious[/9]. || Woman: I noticed that too. At least our team still won. || Man: I can see why. || Woman: Yes, it wasn't what I expected, but I learnt something useful.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Did you enjoy the match yesterday?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "It was exciting, especially near the end. I thought the stadium looked half empty, though."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, there weren't as many people as usual, probably because of the rain."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "The players did well in those conditions."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "True, but some of the referee's decisions were really poor. Even our coach looked furious."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I noticed that too. At least our team still won."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I can see why."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, it wasn't what I expected, but I learnt something useful."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "They both think that",
-                                               "options":  {
-                                                               "A":  "the match was quite boring.",
-                                                               "B":  "the crowd was larger than usual.",
-                                                               "C":  "the referee made some bad decisions."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "Both speakers notice that the referee made poor decisions."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear a man telling his friend about a skiing holiday.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: Your skiing photos looked fun. Did you enjoy the holiday? || Man: Parts of it, yes. I didn't get injured, luckily, although I nearly fell into a tree once. || Woman: You looked confident in the pictures. || Man: That's because my friends only posted the good ones. [10]Most of the time I was the slowest person in the group, and I felt really silly when everyone had to wait for me[/10]. || Woman: I'm sure they didn't mind.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Your skiing photos looked fun. Did you enjoy the holiday?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Parts of it, yes. I didn't get injured, luckily, although I nearly fell into a tree once."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "You looked confident in the pictures."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That's because my friends only posted the good ones. Most of the time I was the slowest person in the group, and I felt really silly when everyone had to wait for me."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I'm sure they didn't mind."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "How did he feel during the holiday?",
-                                               "options":  {
-                                                               "A":  "embarrassed by his skiing ability",
-                                                               "B":  "upset that he was injured",
-                                                               "C":  "angry that his friends put photos online"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "He says he was the slowest and felt really silly, so he was embarrassed about his ability."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear two friends talking about cars.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Man: You're still looking for a new car, aren't you? || Woman: Yes. I watched a programme last night, but it was mostly about racing cars, not ordinary ones. || Man: What about the adverts in magazines? || Woman: They're useful for prices, but they only say good things. [11]I prefer reading comments from drivers online because they explain what the cars are like after a few months[/11]. || Man: That sounds more honest. || Woman: Exactly. I'll use those before I decide.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "You're still looking for a new car, aren't you?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes. I watched a programme last night, but it was mostly about racing cars, not ordinary ones."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "What about the adverts in magazines?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "They're useful for prices, but they only say good things. I prefer reading comments from drivers online because they explain what the cars are like after a few months."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That sounds more honest."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Exactly. I'll use those before I decide."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "The woman thinks the best way to get information about new cars is from",
-                                               "options":  {
-                                                               "A":  "TV programmes.",
-                                                               "B":  "advertisements.",
-                                                               "C":  "internet reviews."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says she prefers reading comments from drivers online."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear a woman telling a friend about a singing competition.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: Are you still helping with that singing competition? || Woman: Yes, and it's busier than I expected. I'm not choosing the winner, thankfully; that would be too difficult. || Man: Would you like to sing in it yourself? || Woman: Not at all. I enjoy being behind the scenes. [12]There are forms to check, singers to contact and rooms to book, so I'm spending nearly every evening organising it[/12]. || Man: You must be tired. || Woman: I am, but it'll be worth it.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Are you still helping with that singing competition?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes, and it's busier than I expected. I'm not choosing the winner, thankfully; that would be too difficult."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Would you like to sing in it yourself?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Not at all. I enjoy being behind the scenes. There are forms to check, singers to contact and rooms to book, so I'm spending nearly every evening organising it."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "You must be tired."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I am, but it'll be worth it."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What does the woman say about the competition?",
-                                               "options":  {
-                                                               "A":  "It is taking a long time to organise.",
-                                                               "B":  "Judging it is the easiest part.",
-                                                               "C":  "She would love to perform in it."
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says she is spending nearly every evening organising the competition."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear a woman talking to a friend about her recent move to a city.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Man: Are you getting used to city life yet? || Woman: Mostly. The street noise still wakes me sometimes, and I don't know many people in the building. || Man: Do you miss the countryside? || Woman: A little, but there are good things too. [13]I can walk to the shops, the library and the park in a few minutes, so this neighbourhood really works well for me[/13]. || Man: That sounds convenient. || Woman: It is. I'm glad I chose this area.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Are you getting used to city life yet?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Mostly. The street noise still wakes me sometimes, and I don't know many people in the building."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Do you miss the countryside?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "A little, but there are good things too. I can walk to the shops, the library and the park in a few minutes, so this neighbourhood really works well for me."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That sounds convenient."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "It is. I'm glad I chose this area."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "How does the woman feel about her move?",
-                                               "options":  {
-                                                               "A":  "pleased about a surprising health benefit",
-                                                               "B":  "satisfied with her local area",
-                                                               "C":  "glad that she has met friendly people"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says the neighbourhood works well for her and she is glad she chose the area."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%202.mp3"
+  "test_number": 2,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear a boy telling a friend about plans for his birthday.",
+      "voices": {
+        "boy": "en-GB-OliverNeural",
+        "girl": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Girl: Are you having a big party for your birthday? || Boy: Not really. I wanted to invite everyone from football and my cousins too, but the climbing centre only allows ten children in one group. || Girl: That's a shame. Are some people refusing to come? || Boy: No, everyone seems keen. [8]I'm just disappointed because I have to choose, and I'd like more friends to be there[/8]. It won't be boring, though. The place looks brilliant.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Are you having a big party for your birthday?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Not really. I wanted to invite everyone from football and my cousins too, but the climbing centre only allows ten children in one group."
+        },
+        {
+          "speaker": "girl",
+          "text": "That's a shame. Are some people refusing to come?"
+        },
+        {
+          "speaker": "boy",
+          "text": "No, everyone seems keen. I'm just disappointed because I have to choose, and I'd like more friends to be there. It won't be boring, though. The place looks brilliant."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "How does he feel about the plans he's made?",
+          "options": {
+            "A": "annoyed that some friends don't want to come",
+            "B": "disappointed that he can't invite more friends",
+            "C": "worried that it might be boring for his friends"
+          },
+          "answer": "B",
+          "explanation": "He says he is disappointed because he has to choose and wants more friends to attend."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear two friends talking about a football match they went to.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Did you enjoy the match yesterday? || Woman: It was exciting, especially near the end. I thought the stadium looked half empty, though. || Man: Yes, there weren't as many people as usual, probably because of the rain. || Woman: The players did well in those conditions. || Man: True, but [9]some of the referee's decisions were really poor. Even our coach looked furious[/9]. || Woman: I noticed that too. At least our team still won. || Man: I can see why. || Woman: Yes, it wasn't what I expected, but I learnt something useful.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Did you enjoy the match yesterday?"
+        },
+        {
+          "speaker": "woman",
+          "text": "It was exciting, especially near the end. I thought the stadium looked half empty, though."
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, there weren't as many people as usual, probably because of the rain."
+        },
+        {
+          "speaker": "woman",
+          "text": "The players did well in those conditions."
+        },
+        {
+          "speaker": "man",
+          "text": "True, but some of the referee's decisions were really poor. Even our coach looked furious."
+        },
+        {
+          "speaker": "woman",
+          "text": "I noticed that too. At least our team still won."
+        },
+        {
+          "speaker": "man",
+          "text": "I can see why."
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, it wasn't what I expected, but I learnt something useful."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "They both think that",
+          "options": {
+            "A": "the match was quite boring.",
+            "B": "the crowd was larger than usual.",
+            "C": "the referee made some bad decisions."
+          },
+          "answer": "C",
+          "explanation": "Both speakers notice that the referee made poor decisions."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear a man telling his friend about a skiing holiday.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: Your skiing photos looked fun. Did you enjoy the holiday? || Man: Parts of it, yes. I didn't get injured, luckily, although I nearly fell into a tree once. || Woman: You looked confident in the pictures. || Man: That's because my friends only posted the good ones. [10]Most of the time I was the slowest person in the group, and I felt really silly when everyone had to wait for me[/10]. || Woman: I'm sure they didn't mind.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Your skiing photos looked fun. Did you enjoy the holiday?"
+        },
+        {
+          "speaker": "man",
+          "text": "Parts of it, yes. I didn't get injured, luckily, although I nearly fell into a tree once."
+        },
+        {
+          "speaker": "woman",
+          "text": "You looked confident in the pictures."
+        },
+        {
+          "speaker": "man",
+          "text": "That's because my friends only posted the good ones. Most of the time I was the slowest person in the group, and I felt really silly when everyone had to wait for me."
+        },
+        {
+          "speaker": "woman",
+          "text": "I'm sure they didn't mind."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "How did he feel during the holiday?",
+          "options": {
+            "A": "embarrassed by his skiing ability",
+            "B": "upset that he was injured",
+            "C": "angry that his friends put photos online"
+          },
+          "answer": "A",
+          "explanation": "He says he was the slowest and felt really silly, so he was embarrassed about his ability."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear two friends talking about cars.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Man: You're still looking for a new car, aren't you? || Woman: Yes. I watched a programme last night, but it was mostly about racing cars, not ordinary ones. || Man: What about the adverts in magazines? || Woman: They're useful for prices, but they only say good things. [11]I prefer reading comments from drivers online because they explain what the cars are like after a few months[/11]. || Man: That sounds more honest. || Woman: Exactly. I'll use those before I decide.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "You're still looking for a new car, aren't you?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes. I watched a programme last night, but it was mostly about racing cars, not ordinary ones."
+        },
+        {
+          "speaker": "man",
+          "text": "What about the adverts in magazines?"
+        },
+        {
+          "speaker": "woman",
+          "text": "They're useful for prices, but they only say good things. I prefer reading comments from drivers online because they explain what the cars are like after a few months."
+        },
+        {
+          "speaker": "man",
+          "text": "That sounds more honest."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. I'll use those before I decide."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "The woman thinks the best way to get information about new cars is from",
+          "options": {
+            "A": "TV programmes.",
+            "B": "advertisements.",
+            "C": "internet reviews."
+          },
+          "answer": "C",
+          "explanation": "She says she prefers reading comments from drivers online."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear a woman telling a friend about a singing competition.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Are you still helping with that singing competition? || Woman: Yes, and it's busier than I expected. I'm not choosing the winner, thankfully; that would be too difficult. || Man: Would you like to sing in it yourself? || Woman: Not at all. I enjoy being behind the scenes. [12]There are forms to check, singers to contact and rooms to book, so I'm spending nearly every evening organising it[/12]. || Man: You must be tired. || Woman: I am, but it'll be worth it.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Are you still helping with that singing competition?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes, and it's busier than I expected. I'm not choosing the winner, thankfully; that would be too difficult."
+        },
+        {
+          "speaker": "man",
+          "text": "Would you like to sing in it yourself?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Not at all. I enjoy being behind the scenes. There are forms to check, singers to contact and rooms to book, so I'm spending nearly every evening organising it."
+        },
+        {
+          "speaker": "man",
+          "text": "You must be tired."
+        },
+        {
+          "speaker": "woman",
+          "text": "I am, but it'll be worth it."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What does the woman say about the competition?",
+          "options": {
+            "A": "It is taking a long time to organise.",
+            "B": "Judging it is the easiest part.",
+            "C": "She would love to perform in it."
+          },
+          "answer": "A",
+          "explanation": "She says she is spending nearly every evening organising the competition."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear a woman talking to a friend about her recent move to a city.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Are you getting used to city life yet? || Woman: Mostly. The street noise still wakes me sometimes, and I don't know many people in the building. || Man: Do you miss the countryside? || Woman: A little, but there are good things too. [13]I can walk to the shops, the library and the park in a few minutes, so this neighbourhood really works well for me[/13]. || Man: That sounds convenient. || Woman: It is. I'm glad I chose this area.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Are you getting used to city life yet?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Mostly. The street noise still wakes me sometimes, and I don't know many people in the building."
+        },
+        {
+          "speaker": "man",
+          "text": "Do you miss the countryside?"
+        },
+        {
+          "speaker": "woman",
+          "text": "A little, but there are good things too. I can walk to the shops, the library and the park in a few minutes, so this neighbourhood really works well for me."
+        },
+        {
+          "speaker": "man",
+          "text": "That sounds convenient."
+        },
+        {
+          "speaker": "woman",
+          "text": "It is. I'm glad I chose this area."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "How does the woman feel about her move?",
+          "options": {
+            "A": "pleased about a surprising health benefit",
+            "B": "satisfied with her local area",
+            "C": "glad that she has met friendly people"
+          },
+          "answer": "B",
+          "explanation": "She says the neighbourhood works well for her and she is glad she chose the area."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/Test2_part2.mp3"
 }

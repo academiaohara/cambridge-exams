@@ -1,321 +1,321 @@
 {
-    "test_number":  8,
-    "exam_part":  2,
-    "title":  "Listening - Part 2",
-    "type":  "multiple-choice-text",
-    "time":  10,
-    "totalQuestions":  6,
-    "description":  "For each question, choose the correct answer.",
-    "instructions":  "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
-    "duration_minutes":  8,
-    "extracts":  [
-                     {
-                         "id":  8,
-                         "context":  "You will hear two friends talking about a weekend trip.",
-                         "voices":  {
-                                        "man":  "en-GB-NoahNeural",
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Woman: Have you booked anywhere for our weekend away? || Man: I found a guest house near the beach, but it only has one room left. || Woman: Is it expensive? || Man: Not too bad. The problem is breakfast isn't included. || Woman: That's fine. [8]I'd rather stay close to the sea than save a few pounds and have a long walk every morning[/8]. || Man: Good point. I'll book it now before someone else does. || Woman: I'm sure that will help. || Man: I hope so. It's better to sort it out early.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Have you booked anywhere for our weekend away?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I found a guest house near the beach, but it only has one room left."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Is it expensive?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Not too bad. The problem is breakfast isn't included."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That's fine. I'd rather stay close to the sea than save a few pounds and have a long walk every morning."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Good point. I'll book it now before someone else does."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I'm sure that will help."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I hope so. It's better to sort it out early."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  8,
-                                               "question":  "What is most important to the woman?",
-                                               "options":  {
-                                                               "A":  "paying a low price",
-                                                               "B":  "staying near the beach",
-                                                               "C":  "having breakfast included"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says she would rather stay close to the sea than save money."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  9,
-                         "context":  "You will hear a man telling a friend about a college course.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Woman: How's your computer course? || Man: Useful, but different from what I expected. I thought we'd learn how to design websites, but it's mostly about spreadsheets. || Woman: Are you disappointed? || Man: A little, though the teacher is excellent. [9]I just wish the course description had been clearer before I paid for it[/9]. || Woman: Could you change to another class? || Man: Maybe next term. For now, I'll continue. || Woman: That sounds fair. || Man: Yes, and I think everyone will understand the situation.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "How's your computer course?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Useful, but different from what I expected. I thought we'd learn how to design websites, but it's mostly about spreadsheets."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Are you disappointed?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "A little, though the teacher is excellent. I just wish the course description had been clearer before I paid for it."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Could you change to another class?"
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Maybe next term. For now, I'll continue."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "That sounds fair."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Yes, and I think everyone will understand the situation."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  9,
-                                               "question":  "What does the man say about the course?",
-                                               "options":  {
-                                                               "A":  "The teacher is not helpful.",
-                                                               "B":  "The work is too difficult.",
-                                                               "C":  "The information about it was misleading."
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "He says the course description should have been clearer before he paid."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  10,
-                         "context":  "You will hear two friends talking about a new café.",
-                         "voices":  {
-                                        "man":  "en-GB-ThomasNeural",
-                                        "woman":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Man: Have you been to the café by the library? || Woman: Yes. The cakes looked amazing, but I only had coffee. || Man: Was it good? || Woman: [10]Very good, and the staff were really friendly, which made me want to go back[/10]. || Man: I thought the chairs were uncomfortable. || Woman: I noticed that, but I didn't stay long. For a quick drink, it's a nice place. || Man: I hadn't thought of that. || Woman: Neither had I at first, but now it seems obvious.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Have you been to the café by the library?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes. The cakes looked amazing, but I only had coffee."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Was it good?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Very good, and the staff were really friendly, which made me want to go back."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I thought the chairs were uncomfortable."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I noticed that, but I didn't stay long. For a quick drink, it's a nice place."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "I hadn't thought of that."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Neither had I at first, but now it seems obvious."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  10,
-                                               "question":  "What did the woman like about the café?",
-                                               "options":  {
-                                                               "A":  "the way she was treated",
-                                                               "B":  "the comfortable furniture",
-                                                               "C":  "the choice of cakes"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "She says the staff were really friendly, which made her want to return."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  11,
-                         "context":  "You will hear a woman talking about a lost bag.",
-                         "voices":  {
-                                        "woman":  "en-GB-LibbyNeural"
-                                    },
-                         "audio_script":  "Speaker: I realised my bag was missing when I got home from town. At first I thought I had left it in the bookshop, because I had put it down there while paying. Then I remembered carrying it onto the bus. [11]The driver later found it under a seat and handed it in at the bus station[/11]. Nothing was missing, which was a huge relief because my keys and student card were inside.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "speaker",
-                                              "text":  "I realised my bag was missing when I got home from town. At first I thought I had left it in the bookshop, because I had put it down there while paying. Then I remembered carrying it onto the bus. The driver later found it under a seat and handed it in at the bus station. Nothing was missing, which was a huge relief because my keys and student card were inside."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  11,
-                                               "question":  "Where was the woman's bag found?",
-                                               "options":  {
-                                                               "A":  "in a bookshop",
-                                                               "B":  "on a bus",
-                                                               "C":  "at her home"
-                                                           },
-                                               "answer":  "B",
-                                               "explanation":  "She says the driver found the bag under a seat on the bus."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  12,
-                         "context":  "You will hear two people talking about a local park.",
-                         "voices":  {
-                                        "man":  "en-GB-RyanNeural",
-                                        "woman":  "en-GB-SoniaNeural"
-                                    },
-                         "audio_script":  "Man: Have you seen the plans for the park? || Woman: Yes. A new play area and better paths sound good. || Man: Some people don't want the old trees removed. || Woman: I understand that. [12]What worries me is the café building. If it's too big, the park may feel less peaceful[/12]. || Man: True. The quiet is why many people go there. || Woman: Exactly. Improvements are fine, but not if they change the place completely. || Man: That must be useful. || Woman: It is, especially when there are several things to think about.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Have you seen the plans for the park?"
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Yes. A new play area and better paths sound good."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "Some people don't want the old trees removed."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "I understand that. What worries me is the café building. If it's too big, the park may feel less peaceful."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "True. The quiet is why many people go there."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "Exactly. Improvements are fine, but not if they change the place completely."
-                                          },
-                                          {
-                                              "speaker":  "man",
-                                              "text":  "That must be useful."
-                                          },
-                                          {
-                                              "speaker":  "woman",
-                                              "text":  "It is, especially when there are several things to think about."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  12,
-                                               "question":  "What is the woman concerned about?",
-                                               "options":  {
-                                                               "A":  "the safety of the play area",
-                                                               "B":  "the condition of the paths",
-                                                               "C":  "the size of a new building"
-                                                           },
-                                               "answer":  "C",
-                                               "explanation":  "She says she is worried that the café building may be too big."
-                                           }
-                                       ]
-                     },
-                     {
-                         "id":  13,
-                         "context":  "You will hear a boy telling a friend about a school project.",
-                         "voices":  {
-                                        "boy":  "en-GB-OliverNeural",
-                                        "girl":  "en-GB-MaisieNeural"
-                                    },
-                         "audio_script":  "Girl: Have you finished your history project? || Boy: Almost. I worked with Sam, and we shared the research fairly. || Girl: Are you presenting it tomorrow? || Boy: Yes. [13]I'm happy with the information, but I wish we'd practised speaking together because our timing may be a bit messy[/13]. || Girl: You still have tonight. || Boy: I know. I'll call him after dinner and practise once more. || Girl: That sounds sensible. || Boy: Yes, I think it will make things much easier next time.",
-                         "dialogue":  [
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Have you finished your history project?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Almost. I worked with Sam, and we shared the research fairly."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "Are you presenting it tomorrow?"
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Yes. I'm happy with the information, but I wish we'd practised speaking together because our timing may be a bit messy."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "You still have tonight."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "I know. I'll call him after dinner and practise once more."
-                                          },
-                                          {
-                                              "speaker":  "girl",
-                                              "text":  "That sounds sensible."
-                                          },
-                                          {
-                                              "speaker":  "boy",
-                                              "text":  "Yes, I think it will make things much easier next time."
-                                          }
-                                      ],
-                         "questions":  [
-                                           {
-                                               "number":  13,
-                                               "question":  "What is the boy worried about?",
-                                               "options":  {
-                                                               "A":  "how the presentation will sound",
-                                                               "B":  "whether the research is accurate",
-                                                               "C":  "working with his partner"
-                                                           },
-                                               "answer":  "A",
-                                               "explanation":  "He says their timing may be messy because they have not practised speaking together."
-                                           }
-                                       ]
-                     }
-                 ],
-    "audio_source":  "https://listeninggenerator.b-cdn.net/listening2_Test%208.mp3"
+  "test_number": 8,
+  "exam_part": 2,
+  "title": "Listening - Part 2",
+  "type": "multiple-choice-text",
+  "time": 10,
+  "totalQuestions": 6,
+  "description": "For each question, choose the correct answer.",
+  "instructions": "You will hear six short extracts. For questions 8–13, choose the answer (A, B or C) which fits best according to what you hear.",
+  "duration_minutes": 8,
+  "extracts": [
+    {
+      "id": 8,
+      "context": "You will hear two friends talking about a weekend trip.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Woman: Have you booked anywhere for our weekend away? || Man: I found a guest house near the beach, but it only has one room left. || Woman: Is it expensive? || Man: Not too bad. The problem is breakfast isn't included. || Woman: That's fine. [8]I'd rather stay close to the sea than save a few pounds and have a long walk every morning[/8]. || Man: Good point. I'll book it now before someone else does. || Woman: I'm sure that will help. || Man: I hope so. It's better to sort it out early.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "Have you booked anywhere for our weekend away?"
+        },
+        {
+          "speaker": "man",
+          "text": "I found a guest house near the beach, but it only has one room left."
+        },
+        {
+          "speaker": "woman",
+          "text": "Is it expensive?"
+        },
+        {
+          "speaker": "man",
+          "text": "Not too bad. The problem is breakfast isn't included."
+        },
+        {
+          "speaker": "woman",
+          "text": "That's fine. I'd rather stay close to the sea than save a few pounds and have a long walk every morning."
+        },
+        {
+          "speaker": "man",
+          "text": "Good point. I'll book it now before someone else does."
+        },
+        {
+          "speaker": "woman",
+          "text": "I'm sure that will help."
+        },
+        {
+          "speaker": "man",
+          "text": "I hope so. It's better to sort it out early."
+        }
+      ],
+      "questions": [
+        {
+          "number": 8,
+          "question": "What is most important to the woman?",
+          "options": {
+            "A": "paying a low price",
+            "B": "staying near the beach",
+            "C": "having breakfast included"
+          },
+          "answer": "B",
+          "explanation": "She says she would rather stay close to the sea than save money."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "context": "You will hear a man telling a friend about a college course.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Woman: How's your computer course? || Man: Useful, but different from what I expected. I thought we'd learn how to design websites, but it's mostly about spreadsheets. || Woman: Are you disappointed? || Man: A little, though the teacher is excellent. [9]I just wish the course description had been clearer before I paid for it[/9]. || Woman: Could you change to another class? || Man: Maybe next term. For now, I'll continue. || Woman: That sounds fair. || Man: Yes, and I think everyone will understand the situation.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "How's your computer course?"
+        },
+        {
+          "speaker": "man",
+          "text": "Useful, but different from what I expected. I thought we'd learn how to design websites, but it's mostly about spreadsheets."
+        },
+        {
+          "speaker": "woman",
+          "text": "Are you disappointed?"
+        },
+        {
+          "speaker": "man",
+          "text": "A little, though the teacher is excellent. I just wish the course description had been clearer before I paid for it."
+        },
+        {
+          "speaker": "woman",
+          "text": "Could you change to another class?"
+        },
+        {
+          "speaker": "man",
+          "text": "Maybe next term. For now, I'll continue."
+        },
+        {
+          "speaker": "woman",
+          "text": "That sounds fair."
+        },
+        {
+          "speaker": "man",
+          "text": "Yes, and I think everyone will understand the situation."
+        }
+      ],
+      "questions": [
+        {
+          "number": 9,
+          "question": "What does the man say about the course?",
+          "options": {
+            "A": "The teacher is not helpful.",
+            "B": "The work is too difficult.",
+            "C": "The information about it was misleading."
+          },
+          "answer": "C",
+          "explanation": "He says the course description should have been clearer before he paid."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "context": "You will hear two friends talking about a new café.",
+      "voices": {
+        "man": "en-GB-ThomasNeural",
+        "woman": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Man: Have you been to the café by the library? || Woman: Yes. The cakes looked amazing, but I only had coffee. || Man: Was it good? || Woman: [10]Very good, and the staff were really friendly, which made me want to go back[/10]. || Man: I thought the chairs were uncomfortable. || Woman: I noticed that, but I didn't stay long. For a quick drink, it's a nice place. || Man: I hadn't thought of that. || Woman: Neither had I at first, but now it seems obvious.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you been to the café by the library?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes. The cakes looked amazing, but I only had coffee."
+        },
+        {
+          "speaker": "man",
+          "text": "Was it good?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Very good, and the staff were really friendly, which made me want to go back."
+        },
+        {
+          "speaker": "man",
+          "text": "I thought the chairs were uncomfortable."
+        },
+        {
+          "speaker": "woman",
+          "text": "I noticed that, but I didn't stay long. For a quick drink, it's a nice place."
+        },
+        {
+          "speaker": "man",
+          "text": "I hadn't thought of that."
+        },
+        {
+          "speaker": "woman",
+          "text": "Neither had I at first, but now it seems obvious."
+        }
+      ],
+      "questions": [
+        {
+          "number": 10,
+          "question": "What did the woman like about the café?",
+          "options": {
+            "A": "the way she was treated",
+            "B": "the comfortable furniture",
+            "C": "the choice of cakes"
+          },
+          "answer": "A",
+          "explanation": "She says the staff were really friendly, which made her want to return."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "context": "You will hear a woman talking about a lost bag.",
+      "voices": {
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Speaker: I realised my bag was missing when I got home from town. At first I thought I had left it in the bookshop, because I had put it down there while paying. Then I remembered carrying it onto the bus. [11]The driver later found it under a seat and handed it in at the bus station[/11]. Nothing was missing, which was a huge relief because my keys and student card were inside.",
+      "dialogue": [
+        {
+          "speaker": "woman",
+          "text": "I realised my bag was missing when I got home from town. At first I thought I had left it in the bookshop, because I had put it down there while paying. Then I remembered carrying it onto the bus. The driver later found it under a seat and handed it in at the bus station. Nothing was missing, which was a huge relief because my keys and student card were inside."
+        }
+      ],
+      "questions": [
+        {
+          "number": 11,
+          "question": "Where was the woman's bag found?",
+          "options": {
+            "A": "in a bookshop",
+            "B": "on a bus",
+            "C": "at her home"
+          },
+          "answer": "B",
+          "explanation": "She says the driver found the bag under a seat on the bus."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "context": "You will hear two people talking about a local park.",
+      "voices": {
+        "man": "en-GB-RyanNeural",
+        "woman": "en-GB-SoniaNeural"
+      },
+      "audio_script": "Man: Have you seen the plans for the park? || Woman: Yes. A new play area and better paths sound good. || Man: Some people don't want the old trees removed. || Woman: I understand that. [12]What worries me is the café building. If it's too big, the park may feel less peaceful[/12]. || Man: True. The quiet is why many people go there. || Woman: Exactly. Improvements are fine, but not if they change the place completely. || Man: That must be useful. || Woman: It is, especially when there are several things to think about.",
+      "dialogue": [
+        {
+          "speaker": "man",
+          "text": "Have you seen the plans for the park?"
+        },
+        {
+          "speaker": "woman",
+          "text": "Yes. A new play area and better paths sound good."
+        },
+        {
+          "speaker": "man",
+          "text": "Some people don't want the old trees removed."
+        },
+        {
+          "speaker": "woman",
+          "text": "I understand that. What worries me is the café building. If it's too big, the park may feel less peaceful."
+        },
+        {
+          "speaker": "man",
+          "text": "True. The quiet is why many people go there."
+        },
+        {
+          "speaker": "woman",
+          "text": "Exactly. Improvements are fine, but not if they change the place completely."
+        },
+        {
+          "speaker": "man",
+          "text": "That must be useful."
+        },
+        {
+          "speaker": "woman",
+          "text": "It is, especially when there are several things to think about."
+        }
+      ],
+      "questions": [
+        {
+          "number": 12,
+          "question": "What is the woman concerned about?",
+          "options": {
+            "A": "the safety of the play area",
+            "B": "the condition of the paths",
+            "C": "the size of a new building"
+          },
+          "answer": "C",
+          "explanation": "She says she is worried that the café building may be too big."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "context": "You will hear a boy telling a friend about a school project.",
+      "voices": {
+        "boy": "en-GB-OliverNeural",
+        "girl": "en-GB-MaisieNeural"
+      },
+      "audio_script": "Girl: Have you finished your history project? || Boy: Almost. I worked with Sam, and we shared the research fairly. || Girl: Are you presenting it tomorrow? || Boy: Yes. [13]I'm happy with the information, but I wish we'd practised speaking together because our timing may be a bit messy[/13]. || Girl: You still have tonight. || Boy: I know. I'll call him after dinner and practise once more. || Girl: That sounds sensible. || Boy: Yes, I think it will make things much easier next time.",
+      "dialogue": [
+        {
+          "speaker": "girl",
+          "text": "Have you finished your history project?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Almost. I worked with Sam, and we shared the research fairly."
+        },
+        {
+          "speaker": "girl",
+          "text": "Are you presenting it tomorrow?"
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes. I'm happy with the information, but I wish we'd practised speaking together because our timing may be a bit messy."
+        },
+        {
+          "speaker": "girl",
+          "text": "You still have tonight."
+        },
+        {
+          "speaker": "boy",
+          "text": "I know. I'll call him after dinner and practise once more."
+        },
+        {
+          "speaker": "girl",
+          "text": "That sounds sensible."
+        },
+        {
+          "speaker": "boy",
+          "text": "Yes, I think it will make things much easier next time."
+        }
+      ],
+      "questions": [
+        {
+          "number": 13,
+          "question": "What is the boy worried about?",
+          "options": {
+            "A": "how the presentation will sound",
+            "B": "whether the research is accurate",
+            "C": "working with his partner"
+          },
+          "answer": "A",
+          "explanation": "He says their timing may be messy because they have not practised speaking together."
+        }
+      ]
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part2/test8_part2.mp3"
 }

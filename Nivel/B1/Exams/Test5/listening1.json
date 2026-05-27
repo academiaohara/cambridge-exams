@@ -1,129 +1,130 @@
 {
-    "test_id":  5,
-    "exam_part":  1,
-    "title":  "B1 Listening - Part 1 - Test 5",
-    "type":  "multiple-choice-text",
-    "totalQuestions":  7,
-    "instructions":  "For each question, listen to the recording and choose the correct answer: A, B or C.",
-    "items":  [
-                  {
-                      "number":  1,
-                      "context":  "You hear two students arranging to meet at school.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-AlfieNeural"
-                                 },
-                      "audio_script":  "Girl: Are we still meeting by the library entrance for the study session? I wrote it down yesterday, but I cannot find the message now. || Boy: That was the original plan, but the library is being used for an examination. [1]We need to meet outside the science room instead[/1]. || Girl: Thanks for telling me. I would have gone to the wrong place and wondered where everyone was. || Boy: No problem. I will arrive ten minutes early, so look for me near the entrance. Keep your phone on in case anything changes again.",
-                      "question":  "Where should they meet?",
-                      "options":  {
-                                      "A":  "By the library entrance",
-                                      "B":  "At the sports hall",
-                                      "C":  "Outside the science room"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "They should meet outside the science room."
-                  },
-                  {
-                      "number":  2,
-                      "context":  "You hear two students discussing an art project.",
-                      "voices":  {
-                                     "boy":  "en-GB-ElliotNeural",
-                                     "girl":  "en-GB-BellaNeural"
-                                 },
-                      "audio_script":  "Boy: Are you ready for the art project yet? I put paint brushes in my bag because I thought that was what we needed. || Girl: That was on the first list, but the teacher is providing paints and brushes for everyone. [2]Everyone needs to bring a bottle of glue now[/2]. || Boy: Good thing I asked. I was about to leave my bag by the door and forget about it. || Girl: You still have time. Put it in now, and check the final message once more before we leave tomorrow morning.",
-                      "question":  "What should the student bring?",
-                      "options":  {
-                                      "A":  "Paint brushes",
-                                      "B":  "A bottle of glue",
-                                      "C":  "Coloured paper"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The student needs to bring glue."
-                  },
-                  {
-                      "number":  3,
-                      "context":  "You hear two friends talking about the weekend.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-AlfieNeural"
-                                 },
-                      "audio_script":  "Girl: Are we still playing tennis on Sunday afternoon? I told my sister I would be home later, so I need to know. || Boy: That was the idea, but the courts are closed while they repair the surface. [3]We are going to visit the new exhibition instead[/3]. || Girl: That actually sounds better. I nearly paid for the other activity online this morning. || Boy: It is a good thing you had not booked anything yet. I will book our places this evening and send you the time. We can meet at the bus stop after lunch.",
-                      "question":  "What will they do on Sunday?",
-                      "options":  {
-                                      "A":  "Visit an exhibition",
-                                      "B":  "Play tennis",
-                                      "C":  "Ride bicycles"
-                                  },
-                      "answer":  "A",
-                      "explanation":  "They will visit the exhibition."
-                  },
-                  {
-                      "number":  4,
-                      "context":  "You hear two people planning to see a film.",
-                      "voices":  {
-                                     "woman":  "en-GB-SoniaNeural",
-                                     "man":  "en-GB-RyanNeural"
-                                 },
-                      "audio_script":  "Woman: I need to write down the time for the film. Is it still at half past six, like you said yesterday? || Man: No, the earlier performance has completely sold out. [4]It starts at quarter to seven now[/4], although we should arrive ten minutes earlier. || Woman: That is useful to know. I would have been waiting there at the wrong time. || Man: I will send you a reminder later. Bring everything you need, because there will not be time to go home again before it begins.",
-                      "question":  "What time does the film start?",
-                      "options":  {
-                                      "A":  "Half past six",
-                                      "B":  "Seven o'clock",
-                                      "C":  "Quarter to seven"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "The film starts at quarter to seven."
-                  },
-                  {
-                      "number":  5,
-                      "context":  "You hear two friends talking about headphones.",
-                      "voices":  {
-                                     "boy":  "en-GB-ElliotNeural",
-                                     "girl":  "en-GB-BellaNeural"
-                                 },
-                      "audio_script":  "Boy: How are you getting on with your headphones? I heard it was not working properly. || Girl: I first thought the cable was damaged, and my brother wondered if one side was too quiet. But he checked it carefully last night. [5]They will not connect to my phone any more[/5]. || Boy: Can it be fixed before the journey tomorrow? || Girl: Yes, probably. We know what is wrong now, and the repair shop said it should be ready tomorrow afternoon. That is a relief because I need it this weekend.",
-                      "question":  "What is wrong with the headphones?",
-                      "options":  {
-                                      "A":  "The cable is damaged",
-                                      "B":  "They will not connect to the phone",
-                                      "C":  "One side is too quiet"
-                                  },
-                      "answer":  "B",
-                      "explanation":  "The headphones will not connect to the phone."
-                  },
-                  {
-                      "number":  6,
-                      "context":  "You hear two friends arranging a journey to college.",
-                      "voices":  {
-                                     "man":  "en-GB-NoahNeural",
-                                     "woman":  "en-GB-LibbyNeural"
-                                 },
-                      "audio_script":  "Man: Are you still travelling to college by train? I could meet you when you arrive. || Woman: I planned to, but the morning train has been cancelled. I considered going by taxi, but it would be far too expensive every day. [6]I am going by bus instead[/6]. || Man: Good idea. What time will you get there? || Woman: Just before eleven, if everything is on time. I have already checked the timetable online, so it should be easy. I will message you when I leave, so you do not have to wait outside.",
-                      "question":  "How will the speaker get to college?",
-                      "options":  {
-                                      "A":  "By bus",
-                                      "B":  "By train",
-                                      "C":  "By taxi"
-                                  },
-                      "answer":  "A",
-                      "explanation":  "The speaker decides to take the bus."
-                  },
-                  {
-                      "number":  7,
-                      "context":  "You hear two family members choosing something for a bedroom.",
-                      "voices":  {
-                                     "girl":  "en-GB-AbbiNeural",
-                                     "boy":  "en-GB-AlfieNeural"
-                                 },
-                      "audio_script":  "Girl: Did you buy a desk lamp for your bedroom? I saw one in the shop window yesterday and thought it looked nice. || Boy: No. I looked at a desk lamp, and I nearly chose a bedside table, but the room is too bright in the early morning. [7]I bought some curtains in the end[/7]. || Girl: Good choice. It sounds more useful, and I think it will be appreciated. || Boy: I hope so. I kept the receipt, just in case it needs changing after we give it.",
-                      "question":  "What did the speaker buy?",
-                      "options":  {
-                                      "A":  "A desk lamp",
-                                      "B":  "A bedside table",
-                                      "C":  "Curtains"
-                                  },
-                      "answer":  "C",
-                      "explanation":  "The speaker bought curtains."
-                  }
-              ]
+  "test_id": 5,
+  "exam_part": 1,
+  "title": "B1 Listening - Part 1 - Test 5",
+  "type": "multiple-choice-text",
+  "totalQuestions": 7,
+  "instructions": "For each question, listen to the recording and choose the correct answer: A, B or C.",
+  "items": [
+    {
+      "number": 1,
+      "context": "You hear two students arranging to meet at school.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Girl: Are we still meeting by the library entrance for the study session? I wrote it down yesterday, but I cannot find the message now. || Boy: That was the original plan, but the library is being used for an examination. [1]We need to meet outside the science room instead[/1]. || Girl: Thanks for telling me. I would have gone to the wrong place and wondered where everyone was. || Boy: No problem. I will arrive ten minutes early, so look for me near the entrance. Keep your phone on in case anything changes again.",
+      "question": "Where should they meet?",
+      "options": {
+        "A": "By the library entrance",
+        "B": "At the sports hall",
+        "C": "Outside the science room"
+      },
+      "answer": "C",
+      "explanation": "They should meet outside the science room."
+    },
+    {
+      "number": 2,
+      "context": "You hear two students discussing an art project.",
+      "voices": {
+        "boy": "en-GB-ElliotNeural",
+        "girl": "en-GB-BellaNeural"
+      },
+      "audio_script": "Boy: Are you ready for the art project yet? I put paint brushes in my bag because I thought that was what we needed. || Girl: That was on the first list, but the teacher is providing paints and brushes for everyone. [2]Everyone needs to bring a bottle of glue now[/2]. || Boy: Good thing I asked. I was about to leave my bag by the door and forget about it. || Girl: You still have time. Put it in now, and check the final message once more before we leave tomorrow morning.",
+      "question": "What should the student bring?",
+      "options": {
+        "A": "Paint brushes",
+        "B": "A bottle of glue",
+        "C": "Coloured paper"
+      },
+      "answer": "B",
+      "explanation": "The student needs to bring glue."
+    },
+    {
+      "number": 3,
+      "context": "You hear two friends talking about the weekend.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Girl: Are we still playing tennis on Sunday afternoon? I told my sister I would be home later, so I need to know. || Boy: That was the idea, but the courts are closed while they repair the surface. [3]We are going to visit the new exhibition instead[/3]. || Girl: That actually sounds better. I nearly paid for the other activity online this morning. || Boy: It is a good thing you had not booked anything yet. I will book our places this evening and send you the time. We can meet at the bus stop after lunch.",
+      "question": "What will they do on Sunday?",
+      "options": {
+        "A": "Visit an exhibition",
+        "B": "Play tennis",
+        "C": "Ride bicycles"
+      },
+      "answer": "A",
+      "explanation": "They will visit the exhibition."
+    },
+    {
+      "number": 4,
+      "context": "You hear two people planning to see a film.",
+      "voices": {
+        "woman": "en-GB-SoniaNeural",
+        "man": "en-GB-RyanNeural"
+      },
+      "audio_script": "Woman: I need to write down the time for the film. Is it still at half past six, like you said yesterday? || Man: No, the earlier performance has completely sold out. [4]It starts at quarter to seven now[/4], although we should arrive ten minutes earlier. || Woman: That is useful to know. I would have been waiting there at the wrong time. || Man: I will send you a reminder later. Bring everything you need, because there will not be time to go home again before it begins.",
+      "question": "What time does the film start?",
+      "options": {
+        "A": "Half past six",
+        "B": "Seven o'clock",
+        "C": "Quarter to seven"
+      },
+      "answer": "C",
+      "explanation": "The film starts at quarter to seven."
+    },
+    {
+      "number": 5,
+      "context": "You hear two friends talking about headphones.",
+      "voices": {
+        "boy": "en-GB-ElliotNeural",
+        "girl": "en-GB-BellaNeural"
+      },
+      "audio_script": "Boy: How are you getting on with your headphones? I heard it was not working properly. || Girl: I first thought the cable was damaged, and my brother wondered if one side was too quiet. But he checked it carefully last night. [5]They will not connect to my phone any more[/5]. || Boy: Can it be fixed before the journey tomorrow? || Girl: Yes, probably. We know what is wrong now, and the repair shop said it should be ready tomorrow afternoon. That is a relief because I need it this weekend.",
+      "question": "What is wrong with the headphones?",
+      "options": {
+        "A": "The cable is damaged",
+        "B": "They will not connect to the phone",
+        "C": "One side is too quiet"
+      },
+      "answer": "B",
+      "explanation": "The headphones will not connect to the phone."
+    },
+    {
+      "number": 6,
+      "context": "You hear two friends arranging a journey to college.",
+      "voices": {
+        "man": "en-GB-NoahNeural",
+        "woman": "en-GB-LibbyNeural"
+      },
+      "audio_script": "Man: Are you still travelling to college by train? I could meet you when you arrive. || Woman: I planned to, but the morning train has been cancelled. I considered going by taxi, but it would be far too expensive every day. [6]I am going by bus instead[/6]. || Man: Good idea. What time will you get there? || Woman: Just before eleven, if everything is on time. I have already checked the timetable online, so it should be easy. I will message you when I leave, so you do not have to wait outside.",
+      "question": "How will the speaker get to college?",
+      "options": {
+        "A": "By bus",
+        "B": "By train",
+        "C": "By taxi"
+      },
+      "answer": "A",
+      "explanation": "The speaker decides to take the bus."
+    },
+    {
+      "number": 7,
+      "context": "You hear two family members choosing something for a bedroom.",
+      "voices": {
+        "girl": "en-GB-AbbiNeural",
+        "boy": "en-GB-AlfieNeural"
+      },
+      "audio_script": "Girl: Did you buy a desk lamp for your bedroom? I saw one in the shop window yesterday and thought it looked nice. || Boy: No. I looked at a desk lamp, and I nearly chose a bedside table, but the room is too bright in the early morning. [7]I bought some curtains in the end[/7]. || Girl: Good choice. It sounds more useful, and I think it will be appreciated. || Boy: I hope so. I kept the receipt, just in case it needs changing after we give it.",
+      "question": "What did the speaker buy?",
+      "options": {
+        "A": "A desk lamp",
+        "B": "A bedside table",
+        "C": "Curtains"
+      },
+      "answer": "C",
+      "explanation": "The speaker bought curtains."
+    }
+  ],
+  "audio_source": "https://B1-exams.b-cdn.net/B1_Listening_part1/test5_part1.mp3"
 }
