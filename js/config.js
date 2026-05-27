@@ -75,8 +75,8 @@
         js: 'listening-type2.js'
       },
       'listening-3': {
-        css: 'listening-type1.css',
-        js: 'listening-type1.js'
+        css: 'listening-type3.css',
+        js: 'listening-type3.js'
       },
       'listening-4': {
         css: 'listening-type4.css',
@@ -113,6 +113,10 @@
       'dual-matching': {
         css: 'listening-type4.css',
         js: 'listening-type4.js'
+      },
+      'speaker-matching': {
+        css: 'listening-type3.css',
+        js: 'listening-type3.js'
       }
     }
   };
@@ -132,7 +136,7 @@
       7: { type: 'multiple-matching', inputMode: 'modal', total: 10 },
       /** B2 First (FCE): listening parts differ from C1 (monologue gap-fill, 5-speaker matching, interview MC). */
       listening2: { type: 'sentence-completion', inputMode: 'text', total: 10, maxMarks: 10 },
-      listening3: { type: 'multiple-matching', inputMode: 'modal', total: 5, maxMarks: 5 },
+      listening3: { type: 'speaker-matching', inputMode: 'select', total: 5, maxMarks: 5 },
       listening4: { type: 'multiple-choice-text', inputMode: 'radio', total: 7, maxMarks: 7 }
     },
     /** B1 Preliminary (PET): reading parts 1–6 and listening totals differ from C1/B2. */
