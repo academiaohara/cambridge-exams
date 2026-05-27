@@ -890,6 +890,26 @@
 
       if (exercise.content.extracts && exercise.content.extracts.length > 0) {
         exercise.content.extracts.forEach(function(extract) {
+          // Prefer audio_script for transcript display: it carries [n]…[/n] evidence markers used in explanation mode.
+          if (extract.audio_script && String(extract.audio_script).trim() !== '') {
+            if (extract.context) {
+              html += '<div class="transcript-extract" data-extract-id="' + escapeHtml(String(extract.id)) + '">';
+              html += '<div class="transcript-extract-header">';
+              if (extract.id != null) {
+                html += '<span class="transcript-extract-number">' + escapeHtml(String(extract.id)) + '</span>';
+              }
+              html += '<span>' + escapeHtml(extract.context) + '</span>';
+              html += '</div>';
+              html += '</div>';
+            }
+            extract.audio_script.split('||').forEach(function(part, idx) {
+              if (String(part).trim() === '') return;
+              html += '<div class="transcript-extract transcript-extract-interview transcript-turn-other" data-speaker-index="' + (idx + 1) + '">';
+              html += '<div class="transcript-text">' + processScript(part.trim()) + '</div>';
+              html += '</div>';
+            });
+            return;
+          }
           if (Array.isArray(extract.dialogue) && extract.dialogue.length > 0) {
             if (extract.context) {
               html += '<div class="transcript-extract" data-extract-id="' + escapeHtml(String(extract.id)) + '">';
