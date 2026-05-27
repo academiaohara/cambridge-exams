@@ -551,7 +551,17 @@
         if (exercise && exercise.content) {
           if (exercise.content.extracts && exercise.content.extracts.length > 0) {
             var extractId = question.extractId;
-            if (extractId != null) {
+            var partCfg = typeof CONFIG !== 'undefined' && CONFIG.getPartConfig
+              ? CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart)
+              : null;
+            if (partCfg && partCfg.type === 'speaker-matching') {
+              var spQuestions = exercise.content.questions || [];
+              var speakerIdx = spQuestions.findIndex(function(q) { return q.number === qNum; });
+              document.querySelectorAll('.transcript-extract[data-speaker-index]').forEach(function(div) {
+                div.style.display = (speakerIdx >= 0 &&
+                  parseInt(div.getAttribute('data-speaker-index'), 10) === speakerIdx + 1) ? '' : 'none';
+              });
+            } else if (extractId != null) {
               document.querySelectorAll('.transcript-extract[data-extract-id]').forEach(function(div) {
                 div.style.display = (String(div.getAttribute('data-extract-id')) === String(extractId)) ? '' : 'none';
               });
