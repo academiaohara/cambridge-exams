@@ -49,9 +49,9 @@
 }
 
 .listening-type3-option {
-  font-size: 1.05rem;
+  font-size: 1.18rem;
   color: var(--text-dark);
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .listening-type3-option strong {
@@ -100,10 +100,11 @@
 
 .listening-type3-select {
   flex: 1;
-  padding: 0.35rem 0.5rem;
+  padding: 0.45rem 0.6rem;
   border: 1px solid var(--border-light);
   border-radius: 6px;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--text-dark);
   background: var(--white);
   cursor: pointer;
@@ -127,77 +128,6 @@
   border-color: var(--incorrect);
   background: #fff5f5;
   color: var(--incorrect);
-}
-
-.listening-type3-answer-wrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  flex: 1;
-  min-width: 0;
-  justify-content: flex-end;
-}
-
-.listening-type3-answer-wrapper .listening-type3-select {
-  flex: 0 1 auto;
-}
-
-.listening-type3-correct-tooltip {
-  display: none;
-  position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--correct);
-  color: #fff;
-  font-size: 0.9rem;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 6px;
-  white-space: nowrap;
-  z-index: 10;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  pointer-events: none;
-}
-
-.listening-type3-correct-tooltip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: var(--correct);
-}
-
-.listening-type3-answer-wrapper:hover .listening-type3-correct-tooltip {
-  display: none;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .listening-type3-answer-wrapper:hover .listening-type3-correct-tooltip {
-    display: block;
-  }
-}
-
-@media (hover: none), (pointer: coarse) {
-  .listening-type3-correct-tooltip {
-    display: block;
-    position: static;
-    transform: none;
-    margin-top: 6px;
-    white-space: normal;
-    max-width: 100%;
-  }
-
-  .listening-type3-correct-tooltip::after {
-    display: none;
-  }
-
-  .listening-type3-answer-wrapper {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
 }
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
