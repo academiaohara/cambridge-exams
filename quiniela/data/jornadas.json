@@ -1,0 +1,119 @@
+{
+  "currentJornada": 12,
+  "participants": [
+    { "id": "p1", "name": "María G.", "submittedAt": "2026-05-20T09:12:00Z" },
+    { "id": "p2", "name": "Carlos R.", "submittedAt": "2026-05-20T10:45:00Z" },
+    { "id": "p3", "name": "Laura M.", "submittedAt": "2026-05-20T11:30:00Z" },
+    { "id": "p4", "name": "Pablo S.", "submittedAt": "2026-05-20T14:02:00Z" },
+    { "id": "p5", "name": "Ana V.", "submittedAt": "2026-05-20T16:18:00Z" },
+    { "id": "p6", "name": "Diego F.", "submittedAt": "2026-05-20T18:55:00Z" },
+    { "id": "p7", "name": "Tú", "submittedAt": "2026-05-20T19:40:00Z", "isYou": true }
+  ],
+  "jornadas": [
+    {
+      "id": 10,
+      "label": "Jornada 10",
+      "status": "finished",
+      "matches": [
+        {
+          "id": "j10-m1",
+          "home": "Sporting B",
+          "away": "Lealtad",
+          "kickoff": "2026-05-10T17:00:00Z",
+          "isAviles": false,
+          "result": "1",
+          "votes": { "1": 42, "X": 18, "2": 25 }
+        },
+        {
+          "id": "j10-m2",
+          "home": "Real Avilés",
+          "away": "Llanera",
+          "kickoff": "2026-05-10T19:00:00Z",
+          "isAviles": true,
+          "result": "1",
+          "votes": { "1": 55, "X": 12, "2": 18 },
+          "porraResult": { "home": 2, "away": 1 },
+          "goleadorResult": "Martínez"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "label": "Jornada 11",
+      "status": "finished",
+      "matches": [
+        {
+          "id": "j11-m1",
+          "home": "Caudal",
+          "away": "Praviano",
+          "kickoff": "2026-05-17T17:00:00Z",
+          "isAviles": false,
+          "result": "X",
+          "votes": { "1": 30, "X": 35, "2": 20 }
+        },
+        {
+          "id": "j11-m2",
+          "home": "Lenense",
+          "away": "Real Avilés",
+          "kickoff": "2026-05-17T19:00:00Z",
+          "isAviles": true,
+          "result": "2",
+          "votes": { "1": 22, "X": 28, "2": 35 },
+          "porraResult": { "home": 1, "away": 2 },
+          "goleadorResult": "Nadie"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "label": "Jornada 12",
+      "status": "active",
+      "matches": [
+        {
+          "id": "j12-m1",
+          "home": "Navarro",
+          "away": "L'Entregu",
+          "kickoff": "2026-05-27T16:00:00Z",
+          "isAviles": false,
+          "votes": { "1": 28, "X": 31, "2": 16 },
+          "preview": {
+            "homeStats": { "pos": 8, "pts": 38, "gf": 34, "gc": 32, "homeForm": "WDLDW", "streak": "2V" },
+            "awayStats": { "pos": 11, "pts": 32, "gf": 29, "gc": 35, "awayForm": "LDWDL", "streak": "1D" },
+            "sanctioned": { "home": ["Gómez"], "away": [] },
+            "injured": { "home": ["Pérez"], "away": ["Ruiz", "Soto"] }
+          }
+        },
+        {
+          "id": "j12-m2",
+          "home": "Real Avilés",
+          "away": "Colunga",
+          "kickoff": "2026-05-27T18:30:00Z",
+          "isAviles": true,
+          "votes": { "1": 48, "X": 22, "2": 5 },
+          "previewPath": "previa-aviles.html",
+          "preview": {
+            "homeStats": { "pos": 3, "pts": 52, "gf": 41, "gc": 24, "homeForm": "WWWDW", "streak": "3V" },
+            "awayStats": { "pos": 14, "pts": 28, "gf": 25, "gc": 40, "awayForm": "LLDLD", "streak": "2D" },
+            "sanctioned": { "home": [], "away": ["Iglesias"] },
+            "injured": { "home": ["López"], "away": [] }
+          }
+        },
+        {
+          "id": "j12-m3",
+          "home": "Llanes",
+          "away": "Tuilla",
+          "kickoff": "2026-05-27T20:00:00Z",
+          "isAviles": false,
+          "votes": { "1": 19, "X": 40, "2": 16 },
+          "preview": {
+            "homeStats": { "pos": 6, "pts": 41, "gf": 36, "gc": 30, "homeForm": "WDLWW", "streak": "1V" },
+            "awayStats": { "pos": 9, "pts": 35, "gf": 31, "gc": 33, "awayForm": "DWLDL", "streak": "1D" },
+            "sanctioned": { "home": [], "away": [] },
+            "injured": { "home": ["Núñez"], "away": ["Blanco"] }
+          }
+        }
+      ],
+      "avilesPlayers": ["Martínez", "García", "Hernández", "Rodríguez", "Fernández", "Sánchez", "Torres", "Jiménez"]
+    }
+  ]
+}
