@@ -47,6 +47,8 @@
       // Check if listening toggle is needed (transcript + questions toggle)
       const isListeningToggle = section === 'listening';
       const hasTranscript = isListeningToggle && this._hasTranscriptContent(exercise);
+      const suppressListeningExplanations =
+        AppState.currentLevel === 'B2' && section === 'listening' && parseInt(part, 10) === 3;
       
       let toggleHTML = '';
       let questionNavRowHTML = '';
@@ -165,7 +167,7 @@
             <button class="toggle-view-btn" id="toggle-text-btn" onclick="ExerciseRenderer.toggleView('text')">
               <i class="fas fa-file-audio"></i> <span data-i18n="transcript">TRANSCRIPT</span>
             </button>
-            ${!isExamMode ? `
+            ${!isExamMode && !suppressListeningExplanations ? `
             <button class="toggle-view-btn btn-explanation-mode" id="toggle-explanation-btn"
                     style="${AppState.answersChecked ? '' : 'display:none'}"
                     onclick="ExerciseHandlers.toggleExplanationMode()">
@@ -342,8 +344,8 @@
               </div>
             </div>
 
-            ${this.renderExplanationsSection(exercise)}
-            ${(needsToggle || hasTranscript) && !(AppState.currentLevel === 'B1' && section === 'reading' && part === 5)
+            ${suppressListeningExplanations ? '' : this.renderExplanationsSection(exercise)}
+            ${(needsToggle || hasTranscript) && !suppressListeningExplanations && !(AppState.currentLevel === 'B1' && section === 'reading' && part === 5)
               ? this.renderExplanationsPanel(exercise, partConfig)
               : ''}
             
@@ -837,6 +839,7 @@
     _hasTranscriptContent: function(exercise) {
       if (exercise.content.extracts && exercise.content.extracts.length > 0) {
         if (exercise.content.extracts.some(function(e) { return !!e.audio_script; })) return true;
+        if (exercise.content.extracts.some(function(e) { return Array.isArray(e.dialogue) && e.dialogue.length > 0; })) return true;
       }
       if (exercise.content.audio_script) return true;
       if (Array.isArray(exercise.content.dialogue) && exercise.content.dialogue.length > 0) {
@@ -862,6 +865,23 @@
         var withMarkers = self.processEvidenceMarkers(escaped);
         return withMarkers.replace(/(\|\||\n)/g, '<br>');
       };
+      var formatSpeakerLabel = function(raw, idx) {
+        var label = String(raw || '').trim();
+        if (!label) return 'Speaker ' + (idx + 1);
+        var speakerMatch = label.match(/^speaker[_\s-]*(\d+)$/i);
+        if (speakerMatch) return 'Speaker ' + speakerMatch[1];
+        return label.replace(/_/g, ' ');
+      };
+      var renderDialogueTurn = function(turn, idx, dataAttr) {
+        if (!turn || typeof turn !== 'object') return '';
+        var label = formatSpeakerLabel(turn.speaker, idx);
+        var bodyRaw = String(turn.text == null ? '' : turn.text);
+        var body = self.processEvidenceMarkers(escapeHtml(bodyRaw)).replace(/\n/g, '<br>');
+        return '<div class="transcript-extract transcript-extract-interview transcript-turn-other transcript-speaker-card" ' + dataAttr + '="' + (idx + 1) + '">' +
+          '<div class="transcript-speaker-label">' + escapeHtml(label) + '</div>' +
+          '<div class="transcript-text">' + body + '</div>' +
+          '</div>';
+      };
 
       if (exercise.content.context && String(exercise.content.context).trim() !== '') {
         html += '<div class="listening-transcript-context" role="note">';
@@ -873,6 +893,22 @@
 
       if (exercise.content.extracts && exercise.content.extracts.length > 0) {
         exercise.content.extracts.forEach(function(extract) {
+          if (Array.isArray(extract.dialogue) && extract.dialogue.length > 0) {
+            if (extract.context) {
+              html += '<div class="transcript-extract" data-extract-id="' + escapeHtml(String(extract.id)) + '">';
+              html += '<div class="transcript-extract-header">';
+              if (extract.id != null) {
+                html += '<span class="transcript-extract-number">' + escapeHtml(String(extract.id)) + '</span>';
+              }
+              html += '<span>' + escapeHtml(extract.context) + '</span>';
+              html += '</div>';
+              html += '</div>';
+            }
+            extract.dialogue.forEach(function(turn, idx) {
+              html += renderDialogueTurn(turn, idx, 'data-speaker-index');
+            });
+            return;
+          }
           if (!extract.audio_script) return;
           html += '<div class="transcript-extract" data-extract-id="' + extract.id + '">';
           html += '<div class="transcript-extract-header">';

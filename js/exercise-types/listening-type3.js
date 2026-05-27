@@ -87,13 +87,11 @@
         var qNum = q.number;
         var savedAnswer = (AppState.currentExercise.answers && AppState.currentExercise.answers[qNum]) || '';
         var selectClass = 'listening-type3-select';
-        var isIncorrect = false;
         if (isChecked) {
           if (savedAnswer === q.correct) {
             selectClass += ' correct';
           } else {
             selectClass += ' incorrect';
-            isIncorrect = true;
           }
         }
 
@@ -107,13 +105,6 @@
           '<option value="">Choose option</option>' +
           optSelectHTML +
           '</select>';
-
-        if (isIncorrect) {
-          selectHTML = '<span class="listening-type3-answer-wrapper">' +
-            selectHTML +
-            '<span class="listening-type3-correct-tooltip">Correct answer: ' + q.correct + '</span>' +
-            '</span>';
-        }
 
         var speakerLabel = q.speaker || ('Speaker ' + qNum);
         var speakerNum = String(speakerLabel).replace(/^Speaker\s*/i, '').trim();

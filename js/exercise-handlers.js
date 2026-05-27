@@ -97,7 +97,8 @@
             AppState.currentLevel === 'B1' &&
             (AppState.currentPart === 3 || AppState.currentPart === 4)) ||
           (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) ||
-          AppState.currentSection === 'listening') {
+          (AppState.currentSection === 'listening' &&
+            !(AppState.currentLevel === 'B2' && parseInt(AppState.currentPart, 10) === 3))) {
         const explBtn = document.getElementById('toggle-explanation-btn');
         if (explBtn) explBtn.style.display = '';
       }
@@ -781,7 +782,7 @@
       this.clearAllCorrections();
       
       // Re-render exercise for types that use new gap design
-      const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations', 'multiple-choice-text', 'cross-text-matching', 'gapped-text', 'multiple-matching'];
+      const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations', 'multiple-choice-text', 'cross-text-matching', 'gapped-text', 'multiple-matching', 'speaker-matching'];
       if (reRenderTypes.includes(partConfig.type)) {
         await ExerciseRenderer.render(
           AppState.currentExercise,
