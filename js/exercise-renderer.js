@@ -47,9 +47,6 @@
       // Check if listening toggle is needed (transcript + questions toggle)
       const isListeningToggle = section === 'listening';
       const hasTranscript = isListeningToggle && this._hasTranscriptContent(exercise);
-      const suppressListeningExplanations =
-        AppState.currentLevel === 'B2' && section === 'listening' && parseInt(part, 10) === 3;
-      
       let toggleHTML = '';
       let questionNavRowHTML = '';
       let contentTitleBlockHTML = '';
@@ -167,7 +164,7 @@
             <button class="toggle-view-btn" id="toggle-text-btn" onclick="ExerciseRenderer.toggleView('text')">
               <i class="fas fa-file-audio"></i> <span data-i18n="transcript">TRANSCRIPT</span>
             </button>
-            ${!isExamMode && !suppressListeningExplanations ? `
+            ${!isExamMode ? `
             <button class="toggle-view-btn btn-explanation-mode" id="toggle-explanation-btn"
                     style="${AppState.answersChecked ? '' : 'display:none'}"
                     onclick="ExerciseHandlers.toggleExplanationMode()">
@@ -344,8 +341,8 @@
               </div>
             </div>
 
-            ${suppressListeningExplanations ? '' : this.renderExplanationsSection(exercise)}
-            ${(needsToggle || hasTranscript) && !suppressListeningExplanations && !(AppState.currentLevel === 'B1' && section === 'reading' && part === 5)
+            ${this.renderExplanationsSection(exercise)}
+            ${(needsToggle || hasTranscript) && !(AppState.currentLevel === 'B1' && section === 'reading' && part === 5)
               ? this.renderExplanationsPanel(exercise, partConfig)
               : ''}
             
