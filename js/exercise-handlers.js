@@ -97,8 +97,7 @@
             AppState.currentLevel === 'B1' &&
             (AppState.currentPart === 3 || AppState.currentPart === 4)) ||
           (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) ||
-          (AppState.currentSection === 'listening' &&
-            !(AppState.currentLevel === 'B2' && parseInt(AppState.currentPart, 10) === 3))) {
+          AppState.currentSection === 'listening') {
         const explBtn = document.getElementById('toggle-explanation-btn');
         if (explBtn) explBtn.style.display = '';
       }
@@ -739,6 +738,52 @@
         span.removeAttribute('data-explanation');
       });
     },
+
+    _clearExplanationModeUI: function() {
+      const btn = document.getElementById('toggle-explanation-btn');
+      if (btn) btn.classList.remove('explanation-active');
+
+      const navRow = document.getElementById('question-nav-row');
+      if (navRow) navRow.classList.remove('explanation-mode');
+
+      const textContainer = document.getElementById('selectable-text');
+      if (textContainer) textContainer.classList.remove('explanation-mode-text');
+
+      document.querySelectorAll('.evidence-wrap.evidence-active-q').forEach(function(wrap) {
+        wrap.classList.remove('evidence-active-q');
+      });
+      document.querySelectorAll('.question-nav-cell.explanation-active').forEach(function(cell) {
+        cell.classList.remove('explanation-active');
+      });
+
+      var panel = document.getElementById('explanations-panel');
+      if (panel) panel.style.display = 'none';
+      document.querySelectorAll('.explanation-card.explanation-active').forEach(function(card) {
+        card.classList.remove('explanation-active');
+      });
+
+      this._clearEvidenceHighlights();
+      this._removeEvidenceTooltips();
+
+      document.querySelectorAll('.transcript-extract').forEach(function(div) {
+        div.style.display = '';
+      });
+
+      const partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
+      if (partConfig && partConfig.type === 'gapped-text' && typeof ReadingType7 !== 'undefined') {
+        ReadingType7.removeExplanationMode();
+      }
+
+      if (AppState.currentSection === 'listening') {
+        ExerciseRenderer.toggleView('questions');
+      }
+
+      const qDisplay = document.getElementById('explanation-question-display');
+      if (qDisplay) qDisplay.style.display = 'none';
+
+      const explBtn = document.getElementById('toggle-explanation-btn');
+      if (explBtn) explBtn.style.display = 'none';
+    },
     
     
     resetExercise: async function() {
@@ -771,9 +816,14 @@
       AppState.elapsedSeconds = 0;
       AppState.answersChecked = false;
       if (document.body) document.body.classList.remove('answers-checked-app');
+      const wasExplanationMode = AppState.explanationMode;
       AppState.explanationMode = false;
       AppState.explanationActiveQuestion = null;
       AppState.answerViewMode = 'student';
+
+      if (wasExplanationMode) {
+        this._clearExplanationModeUI();
+      }
       
       // Clear saved state from localStorage
       Exercise.clearPartState(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
