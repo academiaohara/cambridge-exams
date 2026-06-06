@@ -128,15 +128,15 @@
         "title": "Circle the correct word",
         "instructions": "Circle the correct word.",
         "questions": [
-          { "sentence": "I **search / wonder** if we'll get our marks today.", "answer": "wonder" },
-          { "sentence": "The new school **mark / term** starts in September.", "answer": "term" },
+          { "sentence": "I **wonder / search** if we'll get our marks today.", "answer": "wonder" },
+          { "sentence": "The new school **term / mark** starts in September.", "answer": "term" },
           { "sentence": "Can you **remind / revise** me to bring my dictionary tomorrow?", "answer": "remind" },
           { "sentence": "Ask Eva for help. She's a science **expert / brain**.", "answer": "expert" },
-          { "sentence": "Daniel is a **smart / talented** artist and his drawings are amazing.", "answer": "talented" },
+          { "sentence": "Daniel is a **talented / smart** artist and his drawings are amazing.", "answer": "talented" },
           { "sentence": "Amy is very **clever / mental** and learns things quickly.", "answer": "clever" },
-          { "sentence": "I didn't know the answer, so I **hesitated / guessed**.", "answer": "guessed" },
+          { "sentence": "I didn't know the answer, so I **guessed / hesitated**.", "answer": "guessed" },
           { "sentence": "Have you ever **considered / concentrated** studying abroad?", "answer": "considered" },
-          { "sentence": "We wrote a **subject / report** about our history project.", "answer": "report" }
+          { "sentence": "We wrote a **report / subject** about our history project.", "answer": "report" }
         ]
       },
       "C": {
@@ -176,21 +176,13 @@
       "E": {
         "title": "Prepositional phrases",
         "instructions": "Each of the words in bold is in the wrong sentence. Write the correct word.",
-        "words": [
-          "conclusion",
-          "fact",
-          "favour",
-          "general",
-          "heart",
-          "instance"
-        ],
         "questions": [
-          { "sentence": "I learnt all the irregular verbs by **fact**.", "answer": "heart" },
-          { "sentence": "Are you in **instance** of more homework at weekends?", "answer": "favour" },
-          { "sentence": "The lesson looked difficult, but in **heart** it was quite simple.", "answer": "fact" },
-          { "sentence": "Some subjects, for **conclusion** history, require a lot of reading.", "answer": "instance" },
-          { "sentence": "In **favour**, students at this school work very hard.", "answer": "general" },
-          { "sentence": "You can finish your essay with the phrase 'In **general**'.", "answer": "conclusion" }
+          { "sentence": "I learnt all the irregular verbs by **fact**. ......", "answer": "heart" },
+          { "sentence": "Are you in **instance** of more homework at weekends? ......", "answer": "favour" },
+          { "sentence": "The lesson looked difficult, but in **heart** it was quite simple. ......", "answer": "fact" },
+          { "sentence": "Some subjects, for **conclusion** history, require a lot of reading. ......", "answer": "instance" },
+          { "sentence": "In **favour**, students at this school work very hard. ......", "answer": "general" },
+          { "sentence": "You can finish your essay with the phrase 'In **general**'. ......", "answer": "conclusion" }
         ]
       },
       "F": {
