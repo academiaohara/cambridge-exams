@@ -8,70 +8,72 @@
     "questions": [
       {
         "number": 25,
-        "firstSentence": "I'm sure it was a surprise to you when you won the lottery.",
-        "keyWord": "BEEN",
-        "beforeGap": "You",
-        "afterGap": "surprised when you won the lottery.",
+        "firstSentence": "A local builder is going to repair our roof next week.",
+        "keyWord": "HAVE",
+        "beforeGap": "We are going",
+        "afterGap": "by a local builder next week.",
         "routes": [
-          { "p1": "must", "p2": "have been (very/highly)" },
-          { "p1": "must", "p2": "have been quite" }
-        ]
+          { "p1": "to", "p2": "have our roof repaired" }
+        ],
+        "explanation": "Tests causative 'have something done'."
       },
       {
         "number": 26,
-        "firstSentence": "The company is said to be on the verge of bankruptcy.",
-        "keyWord": "RUMOUR",
-        "beforeGap": "There",
-        "afterGap": "the company is about to go bankrupt.",
+        "firstSentence": "‘You should avoid eating too much junk food,’ said the doctor.",
+        "keyWord": "ADVISED",
+        "beforeGap": "The doctor",
+        "afterGap": "eating too much junk food.",
         "routes": [
-          { "p1": "is a", "p2": "rumour (that)" },
-          { "p1": "is a", "p2": "widespread rumour (that)" }
-        ]
+          { "p1": "advised", "p2": "me to avoid" },
+          { "p1": "advised", "p2": "against" }
+        ],
+        "explanation": "Tests reporting verbs with infinitive or prepositional gerund structures."
       },
       {
         "number": 27,
-        "firstSentence": "It was only because of his help that I passed the exam.",
-        "keyWord": "BUT",
-        "beforeGap": "I would not have passed the exam",
-        "afterGap": "help.",
+        "firstSentence": "I'm sorry I didn't see you at the party.",
+        "keyWord": "WISH",
+        "beforeGap": "I",
+        "afterGap": "you at the party.",
         "routes": [
-          { "p1": "but", "p2": "for his" },
-          { "p1": "but", "p2": "for the help he gave" }
-        ]
+          { "p1": "wish", "p2": "I had seen" },
+          { "p1": "wish", "p2": "I'd seen" }
+        ],
+        "explanation": "Tests 'wish' + past perfect for past regrets."
       },
       {
         "number": 28,
-        "firstSentence": "They will likely cancel the outdoor concert if it keeps raining.",
-        "keyWord": "PROBABILITY",
-        "beforeGap": "There is",
-        "afterGap": "the outdoor concert will be cancelled.",
+        "firstSentence": "It is possible that the cat was trapped in the garage.",
+        "keyWord": "MIGHT",
+        "beforeGap": "The cat",
+        "afterGap": "in the garage.",
         "routes": [
-          { "p1": "every", "p2": "probability (that)" },
-          { "p1": "a high", "p2": "probability (that)" },
-          { "p1": "a strong", "p2": "probability (that)" }
-        ]
+          { "p1": "might", "p2": "have been trapped" }
+        ],
+        "explanation": "Tests modal perfect passive for past possibility."
       },
       {
         "number": 29,
-        "firstSentence": "I regret not studying harder for the final test.",
-        "keyWord": "WISH",
-        "beforeGap": "I",
-        "afterGap": "harder for the final test.",
+        "firstSentence": "I didn't realize my phone was missing until I got home.",
+        "keyWord": "DID",
+        "beforeGap": "Only after getting home",
+        "afterGap": "my phone was missing.",
         "routes": [
-          { "p1": "wish (that)", "p2": "I had studied" },
-          { "p1": "wish", "p2": "I'd studied" }
-        ]
+          { "p1": "did", "p2": "I realize" },
+          { "p1": "did", "p2": "I realise" }
+        ],
+        "explanation": "Tests inversion with 'Only after'."
       },
       {
         "number": 30,
-        "firstSentence": "They are going to demolish the old factory next month.",
-        "keyWord": "PULLED",
-        "beforeGap": "The old factory is",
-        "afterGap": "next month.",
+        "firstSentence": "The match was so exciting that I didn't want it to end.",
+        "keyWord": "SUCH",
+        "beforeGap": "It was",
+        "afterGap": "that I didn't want it to end.",
         "routes": [
-          { "p1": "going to", "p2": "be pulled down" },
-          { "p1": "due to", "p2": "be pulled down" }
-        ]
+          { "p1": "such", "p2": "an exciting match" }
+        ],
+        "explanation": "Tests 'such + (a/an) + adjective + noun' for emphasis."
       }
     ]
   }
