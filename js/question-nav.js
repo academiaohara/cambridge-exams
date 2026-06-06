@@ -255,7 +255,7 @@
 
     _buildPart7: function(question, qNum, isChecked, userAnswer) {
       var paragraphs = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.paragraphs) || {};
-      var keys = Object.keys(paragraphs);
+      var keys = Object.keys(paragraphs).sort(function(a, b) { return a.localeCompare(b); });
       // Collect letters already used by other questions
       var usedLetters = new Set();
       var answers = (AppState.currentExercise && AppState.currentExercise.answers) || {};

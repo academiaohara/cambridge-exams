@@ -91,7 +91,7 @@
       let html = '<div class="reading-gap-modal">';
       html += '<div class="modal-header"><div class="modal-header-row"><span class="modal-q-circle">' + parseInt(qNum, 10) + '</span></div></div>';
       html += '<div class="options-grid-type7">';
-      Object.keys(paragraphs).forEach(key => {
+      Object.keys(paragraphs).sort(function(a, b) { return a.localeCompare(b); }).forEach(key => {
         const usedClass = usedLetters.has(key) ? ' opt-btn-used' : '';
         html += `<button class="opt-btn opt-btn-letter${usedClass}" onclick="ReadingType7.selectFromModal(${qNum}, '${key}')">${this._escapeHtml(key)}</button>`;
       });
