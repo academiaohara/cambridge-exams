@@ -2462,6 +2462,13 @@
           okBtn.classList.remove('cu-few-ok-selected', 'cu-few-ok-correct', 'cu-few-ok-incorrect', 'cu-few-ok-reveal');
         }
       });
+      // Reset A/B meaning-choice buttons
+      sec.querySelectorAll('.cu-ab-btn').forEach(function(btn) {
+        btn.disabled = false;
+        btn.classList.remove('cu-ab-selected', 'cu-ab-correct', 'cu-ab-incorrect', 'cu-ab-correct-reveal');
+        btn.setAttribute('aria-pressed', 'false');
+        btn.removeAttribute('data-saved-ab-classes');
+      });
       // Reset bold-correct items
       sec.querySelectorAll('.cu-bc-item').forEach(function(item) {
         item.classList.remove('cu-bc-item-correct', 'cu-bc-item-incorrect');
@@ -2884,41 +2891,25 @@
       var passageHtml = self._escapeHTML(passage)
         .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
         .replace(
-        /(?:<strong>[^<]*<\/strong>\s*)?\((\d+)\)\s*(?:\.{6,}|…{2,})/g,
-        function(_, num) {
+        /(?:<strong>[^<]*<\/strong>\s*)?\((\d+)\)\s*(?:\.{6,}|…{2,})(?:\s*\(([^)]+)\))?/g,
+        function(_, num, inlineHint) {
           var gapNum = parseInt(num);
           var gId = idBase + '-pi' + gapNum;
           var ans = self._escapeHTML(answerMap[gapNum] || '');
-          var hintWord = hintMap[gapNum] || null;
-          var hintSlashPi = hintWord && String(hintWord).indexOf('/') !== -1;
+          var hintWord = inlineHint ? String(inlineHint).trim() : (hintMap[gapNum] || null);
           var piPillInner =
             '<span class="cu-hint-pill-num">' + num + '</span>' +
             self._renderCuMobileInlineGap({
               id: gId,
               placeholder: '...',
-              block: hintSlashPi,
+              block: false,
               textareaClassName: 'cu-gap-input cu-hint-pill-input cu-pi-input',
               ceClassName: 'cu-gap-input cu-gap-inline-editable cu-gap-editable-empty cu-hint-pill-input cu-pi-input',
               extraAttrs: ' data-passage-num="' + num + '" data-answer="' + ans + '"',
               textareaOnInput: 'BentoGrid._resizeCuInput(this)'
             }) +
-            (!hintSlashPi && hintWord
-              ? '<span class="cu-hint-pill-word cu-wf-pill-word">' + self._escapeHTML(hintWord) + '</span>'
-              : '');
-          var piPill = hintSlashPi
-            ? '<span class="cu-hint-slash-field cu-pi-pill">' + piPillInner + '</span>'
-            : '<span class="cu-hint-pill cu-pi-pill">' + piPillInner + '</span>';
-          if (hintSlashPi && hintWord) {
-            return (
-              '<span class="cu-pi-gap-wrap cu-hint-pill-slash-wrap">' +
-              '<span class="cu-hint-slash-hint-line"><span class="cu-hint-pill-word cu-wf-pill-word">' +
-              self._escapeHTML(hintWord) +
-              '</span></span>' +
-              piPill +
-              '</span>'
-            );
-          }
-          return '<span class="cu-pi-gap-wrap">' + piPill + '</span>';
+            (hintWord ? self._renderCuSlashHintMarkup(hintWord) : '');
+          return '<span class="cu-pi-gap-wrap"><span class="cu-hint-pill cu-pi-pill">' + piPillInner + '</span></span>';
         }
       ).replace(/\n/g, '<br>');
       var piTitleHtml = ex.passageTitle
@@ -3530,24 +3521,50 @@
       var inputId = 'cuex-' + idBase;
       var numBadgeHtml = hideNumBadge ? '' : '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>';
 
-      // Handle paired-sentence format (sentenceA / sentenceB) – e.g. Stative vs Active
+      // Handle paired-sentence format (sentenceA / sentenceB).
+      // A/B meaning-choice (answer "A" or "B", no gaps): clickable label buttons + plain text.
+      // Gap-fill pairs (e.g. stative vs active): static A/B labels + inputs in each sentence.
       if (item.sentenceA !== undefined || item.sentenceB !== undefined) {
         var rawA = (item.sentenceA || '').replace(/^A[.):\s]\s*/, '');
         var rawB = (item.sentenceB || '').replace(/^B[.):\s]\s*/, '');
         var contextHtmlAB = item.context ? '<div class="cu-ex-context">' + self._escapeHTML(item.context) + '</div>' : '';
+        var pairGapPattern = /(?:[.\u2026]{5,}|\u2026{2,}|_{4,})/;
+        var isAbChoice = /^[AB]$/i.test(String(answer).trim()) &&
+          !pairGapPattern.test(rawA) && !pairGapPattern.test(rawB);
+        if (isAbChoice) {
+          return '<div class="cu-ex-item cu-ab-choice-item" data-answer="' + self._escapeHTML(answer) + '">' +
+            numBadgeHtml +
+            contextHtmlAB +
+            '<div class="cu-ex-sentence">' +
+              '<div class="cu-ex-kwtrans">' +
+                '<div class="cu-ex-kwtrans-row cu-ab-choice-row">' +
+                  '<button class="cu-ex-kwtrans-label cu-ab-btn" data-choice="A" type="button" ' +
+                  'onclick="BentoGrid._toggleCuAbSelect(this)" aria-pressed="false">A</button>' +
+                  '<div class="cu-ex-kwtrans-text">' + self._escapeHTML(rawA) + '</div>' +
+                '</div>' +
+                '<div class="cu-ex-kwtrans-row cu-ab-choice-row">' +
+                  '<button class="cu-ex-kwtrans-label cu-ab-btn" data-choice="B" type="button" ' +
+                  'onclick="BentoGrid._toggleCuAbSelect(this)" aria-pressed="false">B</button>' +
+                  '<div class="cu-ex-kwtrans-text">' + self._escapeHTML(rawB) + '</div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="cu-ex-foot">' +
+              '<div class="cu-answer" style="display:none">' + self._escapeHTML(answer) + '</div>' +
+            '</div>' +
+          '</div>';
+        }
         return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '">' +
           numBadgeHtml +
           contextHtmlAB +
           '<div class="cu-ex-sentence">' +
             '<div class="cu-ex-kwtrans">' +
               '<div class="cu-ex-kwtrans-row">' +
-                '<button class="cu-ex-kwtrans-label cu-ab-btn" data-choice="A" type="button" ' +
-                'onclick="BentoGrid._toggleCuAbSelect(this)" aria-pressed="false">A</button>' +
+                '<span class="cu-ex-kwtrans-label">A</span>' +
                 '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(rawA, inputId + '_a') + '</div>' +
               '</div>' +
               '<div class="cu-ex-kwtrans-row">' +
-                '<button class="cu-ex-kwtrans-label cu-ab-btn" data-choice="B" type="button" ' +
-                'onclick="BentoGrid._toggleCuAbSelect(this)" aria-pressed="false">B</button>' +
+                '<span class="cu-ex-kwtrans-label">B</span>' +
                 '<div class="cu-ex-kwtrans-text">' + self._renderCourseExSentenceParts(rawB, inputId + '_b') + '</div>' +
               '</div>' +
             '</div>' +
@@ -4346,6 +4363,10 @@
     // slash-hint inline gaps use the full .cu-ex-item column (not the narrow .cu-hint-slash-field row).
     _cuGapResizeMaxWidthPx: function(input, minFloor) {
       var floor = minFloor > 0 ? minFloor : 120;
+      if (input.classList.contains('cu-hint-pill-input') || input.classList.contains('cu-pi-input')) {
+        var pillMax = BentoGrid._cuHintPillInputMaxWidthPx(input, floor);
+        if (pillMax > 0) return pillMax;
+      }
       var el = input.closest('.cu-ex-item') ||
         input.closest('.cu-sync-item') ||
         input.closest('.cu-passage-text') ||
@@ -4363,6 +4384,33 @@
         var pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
         var w = Math.floor(rect.width - pad - 20);
         return Math.max(floor, w);
+      } catch (e) {
+        return 0;
+      }
+    },
+
+    /** Max width for a gap field inside a hint pill, accounting for hint badges beside it. */
+    _cuHintPillInputMaxWidthPx: function(input, minFloor) {
+      var floor = minFloor > 0 ? minFloor : 80;
+      var pill = input.closest('.cu-hint-pill, .cu-hint-slash-field');
+      if (!pill || !pill.getBoundingClientRect) return 0;
+      var host = pill.closest('.cu-ex-sentence, .cu-passage-text, .cu-ex-kwtrans-text, .cu-sync-sentence, .cu-ex-item, .reading-text-enhanced');
+      if (!host || !host.getBoundingClientRect) return 0;
+      try {
+        var hostRect = host.getBoundingClientRect();
+        var hostCs = window.getComputedStyle(host);
+        var hostPad = (parseFloat(hostCs.paddingLeft) || 0) + (parseFloat(hostCs.paddingRight) || 0);
+        var gapWrap = input.closest('.cu-inline-gap-wrap');
+        var reserved = 0;
+        Array.prototype.forEach.call(pill.children, function(child) {
+          if (gapWrap && (child === gapWrap || child.contains(gapWrap))) return;
+          if (child.getBoundingClientRect) reserved += child.getBoundingClientRect().width;
+        });
+        var pillCs = window.getComputedStyle(pill);
+        var pillPad = (parseFloat(pillCs.paddingLeft) || 0) + (parseFloat(pillCs.paddingRight) || 0);
+        var pillGap = parseFloat(pillCs.gap) || 0;
+        reserved += pillPad + pillGap * Math.max(0, pill.children.length - 1);
+        return Math.max(floor, Math.floor(hostRect.width - hostPad - reserved - 16));
       } catch (e) {
         return 0;
       }
@@ -7068,6 +7116,18 @@
         // Remove check-time inline correct chips before filling model answers (passage cloze, etc.)
         sec.querySelectorAll('.cu-correct-inline').forEach(function(el) { el.remove(); });
 
+        // A/B meaning-choice items: highlight the correct label button
+        sec.querySelectorAll('.cu-ab-choice-item').forEach(function(item) {
+          var answer = (item.getAttribute('data-answer') || '').trim().toUpperCase();
+          item.querySelectorAll('.cu-ab-btn').forEach(function(b) {
+            b.setAttribute('data-saved-ab-classes', b.className);
+            b.disabled = true;
+            if ((b.getAttribute('data-choice') || '').toUpperCase() === answer) {
+              b.classList.add('cu-ab-correct-reveal');
+            }
+          });
+        });
+
         // Text inputs from cu-ex-items
         sec.querySelectorAll('.cu-ex-item, .cu-sync-item').forEach(function(item) {
           var answer = (item.getAttribute('data-answer') || '').trim();
@@ -7390,6 +7450,18 @@
         });
         sec.querySelectorAll('.cu-yn-btn').forEach(function(b) {
           b.classList.remove('cu-yn-correct-reveal');
+        });
+
+        sec.querySelectorAll('.cu-ab-choice-item .cu-ab-btn').forEach(function(b) {
+          var savedClasses = b.getAttribute('data-saved-ab-classes');
+          if (savedClasses !== null) {
+            b.className = savedClasses;
+            b.removeAttribute('data-saved-ab-classes');
+          } else {
+            b.classList.remove('cu-ab-correct-reveal');
+          }
+          var wasChecked = sec.getAttribute('data-checked') === 'true';
+          if (!wasChecked) b.disabled = false;
         });
 
         // Restore MC gap pills to their saved state

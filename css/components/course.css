@@ -1382,6 +1382,20 @@
   white-space: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
+  box-sizing: border-box;
+  flex: 1 1 auto;
+}
+.cu-hint-pill:has(.cu-hint-word) input.cu-hint-pill-input,
+.cu-hint-pill:has(.cu-hint-word) textarea.cu-hint-pill-input {
+  min-width: 3.25ch;
+  flex: 1 1 10ch;
+}
+.cu-hint-pill input.cu-hint-pill-input.cu-input-show-correct,
+.cu-hint-pill input.cu-gap-input.cu-hint-pill-input.cu-input-show-correct,
+.cu-hint-pill input.cu-hint-pill-input.cu-input-correct,
+.cu-hint-pill input.cu-hint-pill-input.cu-input-incorrect {
+  overflow-x: visible;
+  text-overflow: clip;
 }
 textarea.cu-hint-pill-input {
   overflow-wrap: normal;
@@ -1607,6 +1621,45 @@ textarea.cu-hint-pill-input {
 .cu-ex-kwtrans-text {
   flex: 1;
   min-width: 0;
+}
+
+/* A/B meaning-choice: clickable label buttons */
+button.cu-ex-kwtrans-label.cu-ab-btn {
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, color 0.15s;
+}
+button.cu-ex-kwtrans-label.cu-ab-btn:hover:not(:disabled) {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+button.cu-ex-kwtrans-label.cu-ab-btn.cu-ab-selected {
+  background: #3b82f6;
+  border-color: #2563eb;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.22);
+}
+button.cu-ex-kwtrans-label.cu-ab-btn.cu-ab-correct {
+  background: rgba(5, 150, 105, 0.14);
+  border-color: #059669;
+  color: #047857;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.16);
+}
+button.cu-ex-kwtrans-label.cu-ab-btn.cu-ab-incorrect {
+  background: rgba(217, 119, 6, 0.12);
+  border-color: #d97706;
+  color: #b45309;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.14);
+}
+button.cu-ex-kwtrans-label.cu-ab-btn.cu-ab-correct-reveal {
+  background: rgba(124, 58, 237, 0.12);
+  border-color: #7c3aed;
+  color: #6d28d9;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.16);
+}
+button.cu-ex-kwtrans-label.cu-ab-btn:disabled {
+  cursor: default;
 }
 
 .cu-kwt-copy-btn {
@@ -1837,6 +1890,8 @@ textarea.cu-hint-pill-input {
   color: #5b21b6 !important;
   animation: feBounceIn 0.3s ease;
   max-width: none;
+  overflow-x: visible;
+  text-overflow: clip;
 }
 /* Multi-line gap textareas must stay inside the exercise card (single-line inputs may grow with JS). */
 textarea.cu-gap-input.cu-input-show-correct,
