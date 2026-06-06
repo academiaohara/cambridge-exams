@@ -574,7 +574,10 @@
               <div id="funding-survey-error" class="funding-survey-error" role="alert"></div>
               <div class="funding-survey-actions">
                 <button type="submit" id="funding-survey-submit" class="funding-survey-submit">Submit</button>
-                <button type="button" class="funding-survey-defer" onclick="FundingSurvey.defer()">Ask me later</button>
+                <div class="funding-survey-secondary-actions">
+                  <button type="button" class="funding-survey-defer" onclick="FundingSurvey.defer()">Ask me later</button>
+                  <button type="button" class="funding-survey-dismiss" onclick="FundingSurvey.dismiss()">Don't ask again</button>
+                </div>
               </div>
             </form>
           </div>

@@ -214,7 +214,15 @@
   cursor: wait;
 }
 
-.funding-survey-defer {
+.funding-survey-secondary-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.funding-survey-defer,
+.funding-survey-dismiss {
   background: none;
   border: none;
   color: var(--text-light);
@@ -226,7 +234,8 @@
   text-underline-offset: 3px;
 }
 
-.funding-survey-defer:hover {
+.funding-survey-defer:hover,
+.funding-survey-dismiss:hover {
   color: var(--text-medium);
 }
 
