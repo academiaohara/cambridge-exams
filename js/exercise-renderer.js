@@ -867,7 +867,31 @@
         if (!label) return 'Speaker ' + (idx + 1);
         var speakerMatch = label.match(/^speaker[_\s-]*(\d+)$/i);
         if (speakerMatch) return 'Speaker ' + speakerMatch[1];
-        return label.replace(/_/g, ' ');
+        if (/^interviewer$/i.test(label)) return 'Interviewer';
+        if (/^guest$/i.test(label)) return 'Guest';
+        return label.charAt(0).toUpperCase() + label.slice(1).replace(/_/g, ' ');
+      };
+      var parseInterviewScriptTurns = function(script) {
+        var raw = String(script || '').trim();
+        if (!raw) return [];
+        var blocks = raw.indexOf('||') >= 0 ? raw.split('||') : raw.split(/\n\n+/);
+        var turns = [];
+        blocks.forEach(function(block) {
+          block = String(block || '').trim();
+          if (!block) return;
+          var match = block.match(/^([^:\n]{1,40}):\s*([\s\S]*)$/);
+          if (match) {
+            turns.push({ speaker: match[1].trim(), text: match[2].trim() });
+          } else if (turns.length > 0) {
+            turns[turns.length - 1].text += '\n\n' + block;
+          } else {
+            turns.push({ speaker: '', text: block });
+          }
+        });
+        return turns;
+      };
+      var hasInterviewTurns = function(turns) {
+        return turns.length > 1 || (turns.length === 1 && !!turns[0].speaker);
       };
       var renderDialogueTurn = function(turn, idx, opts) {
         if (!turn || typeof turn !== 'object') return '';
@@ -875,11 +899,20 @@
         var label = formatSpeakerLabel(turn.speaker, idx);
         var bodyRaw = String(turn.text == null ? '' : turn.text);
         var body = self.processEvidenceMarkers(escapeHtml(bodyRaw)).replace(/\n/g, '<br>');
+        var speakerKey = String(turn.speaker || label || '').toLowerCase().trim();
+        var turnClass = 'transcript-extract transcript-extract-interview transcript-speaker-card';
+        if (/^interviewer$/.test(speakerKey)) {
+          turnClass += ' transcript-turn-interviewer';
+        } else if (/^guest$/.test(speakerKey)) {
+          turnClass += ' transcript-turn-guest';
+        } else {
+          turnClass += ' transcript-turn-other';
+        }
         var attrs = ' data-speaker-index="' + (opts.speakerIndex != null ? opts.speakerIndex : idx + 1) + '"';
         if (opts.extractId != null) {
           attrs += ' data-extract-id="' + escapeHtml(String(opts.extractId)) + '"';
         }
-        return '<div class="transcript-extract transcript-extract-interview transcript-turn-other transcript-speaker-card"' + attrs + '>' +
+        return '<div class="' + turnClass + '"' + attrs + '>' +
           '<div class="transcript-speaker-label">' + escapeHtml(label) + '</div>' +
           '<div class="transcript-text">' + body + '</div>' +
           '</div>';
@@ -906,27 +939,34 @@
             if (extract.context) {
               html += '<div class="transcript-extract transcript-extract-header-only"' + extractIdAttr + '>';
               html += '<div class="transcript-extract-header">';
-              if (extract.id != null) {
-                html += '<span class="transcript-extract-number">' + escapeHtml(String(extract.id)) + '</span>';
-              }
               html += '<span>' + escapeHtml(extract.context) + '</span>';
               html += '</div>';
               html += '</div>';
             }
-            var scriptParts = extract.audio_script.split('||');
-            if (scriptParts.length === 1 && String(scriptParts[0]).trim() !== '') {
-              html += '<div class="transcript-extract transcript-extract-interview transcript-turn-other"' +
-                extractIdAttr + '>';
-              html += '<div class="transcript-text">' + processScript(scriptParts[0].trim()) + '</div>';
-              html += '</div>';
-            } else {
-              scriptParts.forEach(function(part, idx) {
-                if (String(part).trim() === '') return;
-                html += '<div class="transcript-extract transcript-extract-interview transcript-turn-other"' +
-                  extractIdAttr + ' data-speaker-index="' + (idx + 1) + '">';
-                html += '<div class="transcript-text">' + processScript(part.trim()) + '</div>';
-                html += '</div>';
+            var interviewTurns = parseInterviewScriptTurns(extract.audio_script);
+            if (hasInterviewTurns(interviewTurns)) {
+              interviewTurns.forEach(function(turn, idx) {
+                html += renderDialogueTurn(turn, idx, {
+                  extractId: multiExtractListening ? extract.id : null,
+                  speakerIndex: idx + 1
+                });
               });
+            } else {
+              var scriptParts = extract.audio_script.split('||');
+              if (scriptParts.length === 1 && String(scriptParts[0]).trim() !== '') {
+                html += '<div class="transcript-extract transcript-extract-interview transcript-turn-other"' +
+                  extractIdAttr + '>';
+                html += '<div class="transcript-text">' + processScript(scriptParts[0].trim()) + '</div>';
+                html += '</div>';
+              } else {
+                scriptParts.forEach(function(part, idx) {
+                  if (String(part).trim() === '') return;
+                  html += '<div class="transcript-extract transcript-extract-interview transcript-turn-other"' +
+                    extractIdAttr + ' data-speaker-index="' + (idx + 1) + '">';
+                  html += '<div class="transcript-text">' + processScript(part.trim()) + '</div>';
+                  html += '</div>';
+                });
+              }
             }
             return;
           }
@@ -934,9 +974,6 @@
             if (extract.context) {
               html += '<div class="transcript-extract transcript-extract-header-only"' + extractIdAttr + '>';
               html += '<div class="transcript-extract-header">';
-              if (extract.id != null) {
-                html += '<span class="transcript-extract-number">' + escapeHtml(String(extract.id)) + '</span>';
-              }
               html += '<span>' + escapeHtml(extract.context) + '</span>';
               html += '</div>';
               html += '</div>';
@@ -952,51 +989,38 @@
           if (!extract.audio_script) return;
           html += '<div class="transcript-extract" data-extract-id="' + extract.id + '">';
           html += '<div class="transcript-extract-header">';
-          html += '<span class="transcript-extract-number">' + escapeHtml(String(extract.id)) + '</span>';
           html += '<span>' + escapeHtml(extract.context) + '</span>';
           html += '</div>';
           html += '<div class="transcript-text">' + processScript(extract.audio_script) + '</div>';
           html += '</div>';
         });
       } else if (exercise.content.audio_script) {
-        var parts = exercise.content.audio_script.split('||');
-        parts.forEach(function(part, idx) {
-          if (part.trim() === '') return;
-          var trimmed = part.trim();
-          var turnExtra = ' transcript-extract-interview';
-          if (/^Interviewer\s*:/i.test(trimmed)) {
-            turnExtra += ' transcript-turn-interviewer';
-          } else if (/^Guest\s*:/i.test(trimmed)) {
-            turnExtra += ' transcript-turn-guest';
-          }
-          html += '<div class="transcript-extract' + turnExtra + '" data-speaker-index="' + (idx + 1) + '">';
-          html += '<div class="transcript-text">' + processScript(part) + '</div>';
-          html += '</div>';
-        });
+        var rootTurns = parseInterviewScriptTurns(exercise.content.audio_script);
+        if (hasInterviewTurns(rootTurns)) {
+          rootTurns.forEach(function(turn, idx) {
+            html += renderDialogueTurn(turn, idx, { speakerIndex: idx + 1 });
+          });
+        } else {
+          var parts = exercise.content.audio_script.split('||');
+          parts.forEach(function(part, idx) {
+            if (part.trim() === '') return;
+            var trimmed = part.trim();
+            var turnExtra = ' transcript-extract-interview';
+            if (/^Interviewer\s*:/i.test(trimmed)) {
+              turnExtra += ' transcript-turn-interviewer';
+            } else if (/^Guest\s*:/i.test(trimmed)) {
+              turnExtra += ' transcript-turn-guest';
+            }
+            html += '<div class="transcript-extract' + turnExtra + '" data-speaker-index="' + (idx + 1) + '">';
+            html += '<div class="transcript-text">' + processScript(part) + '</div>';
+            html += '</div>';
+          });
+        }
       } else if (Array.isArray(exercise.content.dialogue) && exercise.content.dialogue.length > 0) {
         exercise.content.dialogue.forEach(function(turn, idx) {
           if (!turn || typeof turn !== 'object') return;
           var sp = String(turn.speaker || '').toLowerCase().trim();
-          var turnClass = 'transcript-extract transcript-extract-interview';
-          var label = 'Speaker';
-          if (sp === 'interviewer') {
-            turnClass += ' transcript-turn-interviewer';
-            label = 'Interviewer';
-          } else if (sp === 'guest') {
-            turnClass += ' transcript-turn-guest';
-            label = 'Guest';
-          } else if (turn.speaker) {
-            label = String(turn.speaker).trim();
-            turnClass += ' transcript-turn-other';
-          } else {
-            turnClass += ' transcript-turn-other';
-          }
-          var bodyRaw = String(turn.text == null ? '' : turn.text);
-          var body = self.processEvidenceMarkers(escapeHtml(bodyRaw)).replace(/\n/g, '<br>');
-          html += '<div class="' + turnClass + '" data-dialogue-index="' + (idx + 1) + '">';
-          html += '<div class="transcript-speaker-label">' + escapeHtml(label) + '</div>';
-          html += '<div class="transcript-text">' + body + '</div>';
-          html += '</div>';
+          html += renderDialogueTurn(turn, idx, { speakerIndex: idx + 1 });
         });
       } else {
         var qsScript = (exercise.content.questions || []).filter(function(q) {

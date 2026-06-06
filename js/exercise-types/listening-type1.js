@@ -341,10 +341,10 @@
               var userAnswer = exercise.answers?.[q.number] || '';
               html += '<div class="listening-type1-item" data-listening-q="' + String(q.number) + '">';
               if (showC1ListeningQuestionNumber) {
-                html += '<div class="listening-type1-question-heading">';
-                html += '<span class="listening-type1-question-number">' + String(q.number) + '</span>';
-                html += '<p class="listening-type1-question-text">' + q.question + '</p>';
-                html += '</div>';
+                html += '<p class="listening-type1-question-text">';
+                html += '<span class="listening-type1-question-number">' + String(q.number) + '.</span> ';
+                html += q.question;
+                html += '</p>';
               } else {
                 html += '<p class="listening-type1-question-text">' + q.question + '</p>';
               }
@@ -378,10 +378,10 @@
                 '<p class="listening-type1-item-context" lang="en">' + nlToBrEscaped(itemCtx) + '</p>';
             }
             if (showC1ListeningQuestionNumber) {
-              html += '<div class="listening-type1-question-heading">';
-              html += '<span class="listening-type1-question-number">' + String(q.number) + '</span>';
-              html += '<p class="listening-type1-question-text">' + (q.question || '') + '</p>';
-              html += '</div>';
+              html += '<p class="listening-type1-question-text">';
+              html += '<span class="listening-type1-question-number">' + String(q.number) + '.</span> ';
+              html += (q.question || '');
+              html += '</p>';
             } else {
               html += '<p class="listening-type1-question-text">' + (q.question || '') + '</p>';
             }

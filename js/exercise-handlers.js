@@ -834,6 +834,14 @@
       if (wasExplanationMode) {
         this._clearExplanationModeUI();
       }
+
+      const explBtn = document.getElementById('toggle-explanation-btn');
+      if (explBtn) {
+        explBtn.style.display = 'none';
+        explBtn.classList.remove('explanation-active');
+      }
+      const footerExplBtn = document.querySelector('.btn-explanations');
+      if (footerExplBtn) footerExplBtn.style.display = 'none';
       
       // Clear saved state from localStorage
       Exercise.clearPartState(AppState.currentExamId, AppState.currentSection, AppState.currentPart);
@@ -842,7 +850,7 @@
       this.clearAllCorrections();
       
       // Re-render exercise for types that use new gap design
-      const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations', 'multiple-choice-text', 'cross-text-matching', 'gapped-text', 'multiple-matching', 'speaker-matching'];
+      const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations', 'multiple-choice-text', 'cross-text-matching', 'gapped-text', 'multiple-matching', 'speaker-matching', 'dual-matching'];
       if (reRenderTypes.includes(partConfig.type)) {
         await ExerciseRenderer.render(
           AppState.currentExercise,
@@ -911,6 +919,13 @@
       // Remove title tooltips that show correct answers
       document.querySelectorAll('[title^="✓"]').forEach(function(el) {
         el.removeAttribute('title');
+      });
+
+      document.querySelectorAll('.listening-type4-answer-wrapper').forEach(function(wrapper) {
+        var select = wrapper.querySelector('.listening-type4-select');
+        if (select && wrapper.parentNode) {
+          wrapper.parentNode.replaceChild(select, wrapper);
+        }
       });
     },
     
