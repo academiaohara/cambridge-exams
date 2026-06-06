@@ -7,8 +7,9 @@
   --writing-margin-color: rgba(239, 68, 68, 0.32);
   --writing-paper: #fffef9;
   --writing-padding-top: 18px;
-  /* Keep rules at the bottom of each line box so text sits between lines */
-  --writing-bg-offset-y: 0;
+  /* 0 = top of row gap, 1 = on the rule; ~0.55 lowers text without sitting on the line */
+  --writing-rule-align: 0.55;
+  --writing-bg-offset-y: calc((var(--writing-font-size) - var(--writing-line-height)) * var(--writing-rule-align));
 
   font-size: var(--writing-font-size);
 
@@ -73,8 +74,8 @@
   --writing-margin-color: rgba(239, 68, 68, 0.32);
   --writing-paper: #fffef9;
   --writing-padding-top: 18px;
-  /* Keep rules at the bottom of each line box so text sits between lines */
-  --writing-bg-offset-y: 0;
+  --writing-rule-align: 0.55;
+  --writing-bg-offset-y: calc((var(--writing-font-size) - var(--writing-line-height)) * var(--writing-rule-align));
 
   font-size: var(--writing-font-size);
   box-sizing: border-box;
