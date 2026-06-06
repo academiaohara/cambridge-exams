@@ -715,7 +715,6 @@
           if (!script || String(script).trim() === '') return;
           html += '<div class="transcript-extract">';
           html += '<div class="transcript-extract-header">';
-          html += '<span class="transcript-extract-number">' + _escapeHtml(extract.id) + '</span>';
           html += '<span>' + _escapeHtml(extract.context) + '</span>';
           html += '</div>';
           html += '<div class="transcript-text">' + processScript(script) + '</div>';

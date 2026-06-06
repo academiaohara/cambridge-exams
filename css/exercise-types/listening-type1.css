@@ -212,39 +212,11 @@
   line-height: 1.6;
 }
 
-/* C1 Listening Parts 1 & 3: question badge + stem on one row */
-.listening-type1-question-heading {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.listening-type1-question-heading .listening-type1-question-text {
-  flex: 1;
-  min-width: 0;
-  margin: 0;
-}
-
+/* C1 Listening Parts 1 & 3: inline question number (e.g. "1. question text") */
 .listening-type1-question-number {
-  background: #0ea5e9;
-  color: white;
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  min-height: 36px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   font-weight: 800;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  line-height: 1;
-  padding: 0;
-  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-right: 0;
 }
 
 .listening-type1-extract-header {
@@ -395,11 +367,7 @@
   }
 
   .listening-type1-question-number {
-    width: 34px;
-    height: 34px;
-    min-width: 34px;
-    min-height: 34px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .listening-type1-context {
@@ -416,15 +384,6 @@
 
 .listening-type1-compact .listening-type1-question-text {
   margin-bottom: 8px;
-  font-size: 1.05rem;
-  line-height: 1.5;
-}
-
-.listening-type1-compact .listening-type1-question-heading {
-  margin-bottom: 8px;
-}
-
-.listening-type1-compact .listening-type1-question-heading .listening-type1-question-text {
   font-size: 1.05rem;
   line-height: 1.5;
 }

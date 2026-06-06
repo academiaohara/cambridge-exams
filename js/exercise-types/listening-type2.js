@@ -189,9 +189,14 @@
         span.style.cssText = 'visibility:hidden;position:absolute;white-space:pre;pointer-events:none;';
         document.body.appendChild(span);
       }
-      span.style.font = window.getComputedStyle(input).font;
+      var computed = window.getComputedStyle(input);
+      var isShowCorrect = input.classList.contains('cu-input-show-correct');
+      span.style.font = computed.font;
+      span.style.fontWeight = isShowCorrect ? '700' : computed.fontWeight;
+      span.style.letterSpacing = computed.letterSpacing;
       span.textContent = input.value || input.placeholder || '';
-      var newWidth = Math.max(minWidth, span.getBoundingClientRect().width + 28);
+      var padding = isShowCorrect ? 40 : 28;
+      var newWidth = Math.max(minWidth, Math.ceil(span.getBoundingClientRect().width) + padding);
       input.style.width = newWidth + 'px';
     },
     
