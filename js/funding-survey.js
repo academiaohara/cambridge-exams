@@ -37,6 +37,7 @@
       commentPlaceholder: 'Share any thoughts…',
       submit: 'Submit',
       defer: 'Ask me later',
+      dismiss: "Don't ask again",
       sending: 'Sending…',
       errorNoChoice: 'Please choose one option.',
       langLabel: 'Language'
@@ -53,6 +54,7 @@
       commentPlaceholder: 'Comparte lo que quieras…',
       submit: 'Enviar',
       defer: 'Pregúntame más tarde',
+      dismiss: 'No volver a preguntar',
       sending: 'Enviando…',
       errorNoChoice: 'Elige una opción.',
       langLabel: 'Idioma'
@@ -69,6 +71,7 @@
       commentPlaceholder: 'Partagez vos réflexions…',
       submit: 'Envoyer',
       defer: 'Me le demander plus tard',
+      dismiss: 'Ne plus demander',
       sending: 'Envoi…',
       errorNoChoice: 'Veuillez choisir une option.',
       langLabel: 'Langue'
@@ -85,6 +88,7 @@
       commentPlaceholder: 'Partilhe as suas ideias…',
       submit: 'Enviar',
       defer: 'Perguntar mais tarde',
+      dismiss: 'Não perguntar novamente',
       sending: 'A enviar…',
       errorNoChoice: 'Escolha uma opção.',
       langLabel: 'Idioma'
@@ -101,6 +105,7 @@
       commentPlaceholder: 'Teilen Sie Ihre Gedanken…',
       submit: 'Absenden',
       defer: 'Später fragen',
+      dismiss: 'Nicht mehr fragen',
       sending: 'Wird gesendet…',
       errorNoChoice: 'Bitte wählen Sie eine Option.',
       langLabel: 'Sprache'
@@ -117,6 +122,7 @@
       commentPlaceholder: 'Condividi i tuoi pensieri…',
       submit: 'Invia',
       defer: 'Chiedimelo più tardi',
+      dismiss: 'Non chiedere più',
       sending: 'Invio…',
       errorNoChoice: 'Scegli un’opzione.',
       langLabel: 'Lingua'
@@ -133,6 +139,7 @@
       commentPlaceholder: 'Comparteix el que vulguis…',
       submit: 'Enviar',
       defer: 'Pregunta-m’ho més tard',
+      dismiss: 'No tornar a preguntar',
       sending: 'S’està enviant…',
       errorNoChoice: 'Tria una opció.',
       langLabel: 'Idioma'
@@ -149,6 +156,7 @@
       commentPlaceholder: 'Podziel się swoimi przemyśleniami…',
       submit: 'Wyślij',
       defer: 'Zapytaj mnie później',
+      dismiss: 'Nie pytaj więcej',
       sending: 'Wysyłanie…',
       errorNoChoice: 'Wybierz jedną opcję.',
       langLabel: 'Język'
@@ -165,6 +173,7 @@
       commentPlaceholder: 'Поделитесь мыслями…',
       submit: 'Отправить',
       defer: 'Спросить позже',
+      dismiss: 'Больше не спрашивать',
       sending: 'Отправка…',
       errorNoChoice: 'Выберите один вариант.',
       langLabel: 'Язык'
@@ -181,6 +190,7 @@
       commentPlaceholder: '分享您的想法…',
       submit: '提交',
       defer: '稍后再问我',
+      dismiss: '不再询问',
       sending: '发送中…',
       errorNoChoice: '请选择一个选项。',
       langLabel: '语言'
@@ -197,6 +207,7 @@
       commentPlaceholder: 'شاركنا أفكارك…',
       submit: 'إرسال',
       defer: 'اسألني لاحقًا',
+      dismiss: 'عدم السؤال مرة أخرى',
       sending: 'جارٍ الإرسال…',
       errorNoChoice: 'يرجى اختيار خيار واحد.',
       langLabel: 'اللغة'
@@ -213,6 +224,7 @@
       commentPlaceholder: 'ご意見をお聞かせください…',
       submit: '送信',
       defer: '後で聞く',
+      dismiss: '今後は表示しない',
       sending: '送信中…',
       errorNoChoice: 'いずれかを選んでください。',
       langLabel: '言語'
@@ -229,6 +241,7 @@
       commentPlaceholder: '의견을 공유해 주세요…',
       submit: '제출',
       defer: '나중에 물어보기',
+      dismiss: '다시 묻지 않기',
       sending: '전송 중…',
       errorNoChoice: '옵션을 하나 선택해 주세요.',
       langLabel: '언어'
@@ -256,20 +269,20 @@
       if (translate) candidates.push(translate);
     } catch (e2) { /* ignore */ }
 
-    if (typeof navigator !== 'undefined' && navigator.language) {
-      candidates.push(navigator.language);
-    }
-
-    for (var i = 0; i < candidates.length; i++) {
-      var lang = normalizeLang(candidates[i]);
-      if (lang !== 'en' || candidates[i].toLowerCase().indexOf('en') === 0) {
-        return lang;
+    if (typeof navigator !== 'undefined') {
+      if (navigator.language) candidates.push(navigator.language);
+      if (navigator.languages && navigator.languages.length) {
+        for (var k = 0; k < navigator.languages.length; k++) {
+          candidates.push(navigator.languages[k]);
+        }
       }
     }
 
-    for (var j = 0; j < candidates.length; j++) {
-      var lang2 = normalizeLang(candidates[j]);
-      if (lang2 !== 'en') return lang2;
+    for (var i = 0; i < candidates.length; i++) {
+      var raw = candidates[i];
+      if (!raw || typeof raw !== 'string') continue;
+      var base = raw.toLowerCase().split('-')[0];
+      if (STRINGS[base]) return base;
     }
 
     return 'en';
@@ -332,6 +345,7 @@
       var comment = document.getElementById('funding-survey-comment');
       var submitBtn = document.getElementById('funding-survey-submit');
       var deferBtn = overlay.querySelector('.funding-survey-defer');
+      var dismissBtn = overlay.querySelector('.funding-survey-dismiss');
       var langLabel = document.getElementById('funding-survey-lang-label');
       var langSelect = document.getElementById('funding-survey-lang');
 
@@ -346,6 +360,7 @@
       if (comment) comment.placeholder = t('commentPlaceholder');
       if (submitBtn && !submitBtn.disabled) submitBtn.textContent = t('submit');
       if (deferBtn) deferBtn.textContent = t('defer');
+      if (dismissBtn) dismissBtn.textContent = t('dismiss');
       if (langLabel) langLabel.textContent = t('langLabel');
       if (langSelect) langSelect.value = _currentLang;
 
@@ -421,6 +436,17 @@
       var days = (CONFIG && CONFIG.FUNDING_SURVEY_DEFER_DAYS) || 3;
       try {
         localStorage.setItem(DEFER_KEY, String(Date.now() + days * 24 * 60 * 60 * 1000));
+      } catch (e) { /* ignore */ }
+      this._hide();
+    },
+
+    dismiss: function () {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          dismissed: true,
+          at: new Date().toISOString()
+        }));
+        localStorage.removeItem(DEFER_KEY);
       } catch (e) { /* ignore */ }
       this._hide();
     },
