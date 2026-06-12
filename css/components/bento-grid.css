@@ -1130,12 +1130,6 @@ content: '';
   box-shadow: 0 6px 20px rgba(45, 46, 95, 0.12);
 }
 
-/* "Continue Basecamp" — tono azul-claro como la paleta del proyecto */
-.sw-continue-basecamp {
-  background: linear-gradient(135deg, #ddeeff 0%, #c8e0f8 100%);
-  color: #1a4a7a;
-}
-
 /* "Next Exam" — tono coral/amber para diferenciarlo */
 .sw-next-exam {
   background: linear-gradient(135deg, #fde8d8 0%, #f8d4b8 100%);
@@ -1197,10 +1191,6 @@ content: '';
   background: rgba(0, 0, 0, 0.25);
   border-radius: 99px;
   transition: width 0.6s ease;
-}
-
-.sw-continue-basecamp .sw-left-progress-fill {
-  background: #1a7abf;
 }
 
 .sw-next-exam .sw-left-progress-fill {

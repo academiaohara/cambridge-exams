@@ -1074,7 +1074,7 @@
       // Build sidebars like main dashboard
       var sidebars = { left: '', right: '' };
       if (typeof BentoGrid !== 'undefined') {
-        sidebars = BentoGrid._buildDashboardSidebars(exams, { includeBasecamp: true });
+        sidebars = BentoGrid._buildDashboardSidebars(exams);
       }
       var leftSidebarContent = sidebars.left;
       var rightSidebarContent = sidebars.right;
@@ -1224,9 +1224,6 @@
       if (options.includeNextLesson) {
         var nextLesson = this._findNextLesson(exams);
         if (nextLesson) right += this._buildNextLessonLeftHtml(nextLesson);
-      }
-      if (options.includeBasecamp) {
-        right += this._buildContinueBasecampHtml(exams);
       }
       right += this._buildStreakSidebarHtml();
       right += this._buildCalendarSidebarHtml();

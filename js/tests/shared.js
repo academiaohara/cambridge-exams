@@ -178,7 +178,7 @@
       // Build sidebars like main dashboard
       var sidebars = { left: '', right: '' };
       if (typeof BentoGrid !== 'undefined') {
-        sidebars = BentoGrid._buildDashboardSidebars(exams, { includeBasecamp: true });
+        sidebars = BentoGrid._buildDashboardSidebars(exams);
       }
       var leftSidebarContent = sidebars.left;
       var rightSidebarContent = sidebars.right;

@@ -7897,21 +7897,6 @@
         var items = widget.querySelectorAll('.course-roadmap-item');
         if (items[idx]) items[idx].classList.add('crm-active');
       }
-    },
-
-    _buildContinueBasecampHtml: function(exams) {
-
-      // Always point to the Course page (coming soon)
-      return '<div class="sw-left-widget sw-continue-basecamp" onclick="BentoGrid.openLessons()" style="cursor:pointer">' +
-        '<div class="sw-left-widget-label">' + 'Course' + '</div>' +
-        '<div class="sw-left-widget-row">' +
-          '<span class="sw-left-widget-icon"><span class="material-symbols-outlined">auto_stories</span></span>' +
-          '<div class="sw-left-widget-info">' +
-            '<div class="sw-left-widget-title">' + 'Coming Soon' + '</div>' +
-            '<div class="sw-left-widget-sub">' + 'Structured lessons' + '</div>' +
-          '</div>' +
-        '</div>' +
-      '</div>';
     }
   });
 
