@@ -43,7 +43,6 @@
       var html = '<nav class="main-nav-sidebar" aria-label="Main navigation">' +
         '<a class="main-nav-brand" href="/" onclick="event.preventDefault(); loadDashboard()">' +
           '<img src="Assets/images/sunelogoreduced.svg" class="main-nav-logo" alt="Sune English">' +
-          '<span class="main-nav-brand-text">Sune English</span>' +
         '</a>' +
         '<ul class="main-nav-list">';
 

@@ -87,7 +87,7 @@
       // Build sidebar content
       var sidebars = { left: '', right: '' };
       if (typeof BentoGrid !== 'undefined') {
-        sidebars = BentoGrid._buildDashboardSidebars(exams, { includeNextLesson: true, includeBasecamp: true });
+        sidebars = BentoGrid._buildDashboardSidebars(exams, { includeNextLesson: true });
       }
       var leftSidebarContent = sidebars.left;
       var rightSidebarContent = sidebars.right;
@@ -219,7 +219,7 @@
 
       var sidebars = { left: '', right: '' };
       if (typeof BentoGrid !== 'undefined') {
-        sidebars = BentoGrid._buildDashboardSidebars(exams, { includeBasecamp: true });
+        sidebars = BentoGrid._buildDashboardSidebars(exams);
       }
       var leftSidebarContent = sidebars.left;
       var rightSidebarContent = sidebars.right;
