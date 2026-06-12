@@ -147,11 +147,233 @@ button.stats-bar-item.is-active {
 
 .stats-bar-xp .material-symbols-outlined,
 .stats-bar-xp strong {
-  color: #1cb0f6;
+  color: #ff9600;
 }
 
 .stats-bar-level {
   font-weight: 900;
+}
+
+/* ── Level popover (Duolingo-style, anchored to level button) ── */
+.stats-bar-level-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.level-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 300px;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.level-popover.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.level-popover::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 28px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-left: 2px solid #e5e5e5;
+  border-top: 2px solid #e5e5e5;
+  transform: rotate(45deg);
+  border-radius: 2px 0 0 0;
+}
+
+.level-popover-inner {
+  background: #fff;
+  border: 2px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 18px 16px 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.level-popover-kicker {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #ff9600;
+  margin-bottom: 4px;
+}
+
+.level-popover-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #3c3c3c;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.level-popover-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.level-popover-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e5e5e5;
+  border-bottom-width: 4px;
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  text-align: left;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.level-popover-option:hover {
+  background: #fff8e6;
+  border-color: #f0d090;
+}
+
+.level-popover-option.active {
+  background: #fff8e6;
+  border-color: #ff9600;
+}
+
+.level-popover-option .material-symbols-outlined {
+  font-size: 1.3rem;
+  color: #ff9600;
+}
+
+.level-popover-option strong {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #3c3c3c;
+  display: block;
+  line-height: 1.1;
+}
+
+.level-popover-option small {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #777;
+}
+
+/* ── Dictionary popover (Duolingo-style) ── */
+.stats-bar-dict-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.dict-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 320px;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.dict-popover.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.dict-popover::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  background: #fff8e6;
+  border-left: 2px solid #f0e0b8;
+  border-top: 2px solid #f0e0b8;
+  transform: rotate(45deg);
+  border-radius: 2px 0 0 0;
+}
+
+.dict-popover-inner {
+  background: #fff8e6;
+  border: 2px solid #f0e0b8;
+  border-radius: 16px;
+  padding: 16px 14px 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.dict-popover-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ce7c3a;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dict-popover-title .material-symbols-outlined {
+  font-size: 1.3rem;
+  color: #ff9600;
+}
+
+.dict-popover-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.dict-popover-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border: 2px solid #ebebeb;
+  border-bottom-width: 4px;
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.dict-popover-card:hover {
+  background: #fff;
+  transform: translateY(-1px);
+  border-color: #f0d090;
+}
+
+.dict-popover-card .material-symbols-outlined {
+  font-size: 1.3rem;
+  color: #ff9600;
+}
+
+.dict-popover-card span:last-child {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #3c3c3c;
+  text-align: center;
+  line-height: 1.2;
 }
 
 /* ── Streak popover (Duolingo-style) ── */
@@ -378,7 +600,7 @@ button.stats-bar-item.is-active {
 }
 
 .mode-card-status-done {
-  color: #58cc02;
+  color: #ff9600;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -396,10 +618,10 @@ button.stats-bar-item.is-active {
   align-self: center;
   flex-shrink: 0;
   padding: 11px 18px;
-  border: 2px solid #e5e5e5;
+  border: 2px solid #e68600;
   border-bottom-width: 4px;
   border-radius: 14px;
-  background: #58cc02;
+  background: #ff9600;
   color: #fff;
   font-family: 'Nunito', sans-serif;
   font-size: 0.78rem;
@@ -418,7 +640,7 @@ button.stats-bar-item.is-active {
 
 .mode-card-action-outline {
   background: #fff;
-  color: #1cb0f6;
+  color: #ff9600;
   border-color: #e5e5e5;
   border-bottom-color: #d0d0d0;
 }
@@ -459,9 +681,10 @@ button.stats-bar-item.is-active {
   .dashboard-layout {
     max-width: none;
     grid-template-columns: minmax(0, 1fr) var(--dashboard-right-sidebar-width);
-    gap: 32px;
-    padding: 24px 32px 0 24px;
+    gap: 24px;
+    padding: var(--dashboard-top-spacing, 28px) 0 0 24px;
     margin: 0;
+    width: 100%;
   }
 
   .dashboard-layout > .dashboard-left-sidebar.dashboard-sidebar-shell {
@@ -493,7 +716,7 @@ button.stats-bar-item.is-active {
 
   .dashboard-center {
     min-width: 0;
-    padding-top: 8px;
+    padding-top: 4px;
   }
 
   .dashboard-center .bento-center-wrapper {
@@ -509,7 +732,8 @@ button.stats-bar-item.is-active {
     align-self: start;
     max-height: 100vh;
     overflow-y: auto;
-    padding-top: 8px;
+    padding-top: 4px;
+    padding-right: 16px;
   }
 }
 
@@ -528,13 +752,13 @@ button.stats-bar-item.is-active {
 
 @media (min-width: 769px) and (max-width: 1024px) {
   :root {
-    --dashboard-right-sidebar-width: 300px;
+    --dashboard-right-sidebar-width: 220px;
   }
 
   .dashboard-layout {
     grid-template-columns: minmax(0, 1fr) var(--dashboard-right-sidebar-width);
-    gap: 20px;
-    padding: 20px 20px 0 16px;
+    gap: 16px;
+    padding: 24px 0 0 16px;
   }
 
   .dashboard-layout > .dashboard-left-sidebar.dashboard-sidebar-shell {

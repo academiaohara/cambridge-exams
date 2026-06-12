@@ -5998,6 +5998,70 @@
   color: #1e293b;
 }
 
+/* Duolingo-style dictionary modal (mobile) */
+.dict-home-box--duo {
+  background: #fff8e6;
+  border: 2px solid #f0e0b8;
+  border-radius: 20px;
+  max-width: 400px;
+}
+
+.dict-home-header--duo {
+  border-bottom: 2px solid #f0e0b8;
+  background: transparent;
+}
+
+.dict-home-header--duo .dict-home-icon .material-symbols-outlined {
+  color: #ff9600;
+}
+
+.dict-home-header--duo .dict-home-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  color: #ce7c3a;
+}
+
+.dict-home-grid--duo {
+  padding: 14px;
+  gap: 10px;
+}
+
+.dict-home-card--duo {
+  background: #fff;
+  border: 2px solid #ebebeb;
+  border-bottom-width: 4px;
+  border-radius: 14px;
+  padding: 14px 10px;
+}
+
+.dict-home-card--duo:hover {
+  border-color: #f0d090;
+  transform: translateY(-1px);
+  box-shadow: none;
+}
+
+.dict-home-card-icon--duo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #fff8e6 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dict-home-card-icon--duo .material-symbols-outlined {
+  color: #ff9600;
+  font-size: 1.2rem;
+}
+
+.dict-home-card--duo .dict-home-card-name {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #3c3c3c;
+}
+
 @media (max-width: 480px) {
   .dict-home-grid {
     grid-template-columns: repeat(2, 1fr);

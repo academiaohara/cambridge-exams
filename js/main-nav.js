@@ -3,12 +3,12 @@
 (function() {
   var NAV_ITEMS = [
     { id: 'home', label: 'Home', icon: 'home', color: '#1cb0f6', onclick: 'loadDashboard()' },
-    { id: 'course', label: 'Course', icon: 'auto_stories', color: '#58cc02', onclick: 'BentoGrid.openLessons()' },
+    { id: 'course', label: 'Course', icon: 'auto_stories', color: '#ff9600', onclick: 'BentoGrid.openLessons()' },
     { id: 'practice', label: 'Practice', icon: 'edit_note', color: '#ff9600', onclick: 'BentoGrid.selectMode(\'practice\')' },
     { id: 'simulation', label: 'Simulation', icon: 'assignment', color: '#ce82ff', onclick: 'BentoGrid.selectMode(\'exam\')' },
     { id: 'crosswords', label: 'Crosswords', icon: 'grid_on', color: '#ff4b4b', onclick: 'BentoGrid.openCrosswordList()' },
     { id: 'dictionaries', label: 'Dictionaries', icon: 'menu_book', color: '#6366f1', onclick: 'FastExercises._showDictionariesHome()' },
-    { id: 'calculator', label: 'Calculator', icon: 'calculate', color: '#1E9D8E', onclick: 'openScoreCalculator()' },
+    { id: 'calculator', label: 'Calculator', icon: 'calculate', color: '#ff9600', onclick: 'openScoreCalculator()' },
     { id: 'profile', label: 'Profile', icon: 'person', color: '#777777', onclick: 'BentoGrid.openMobileProfile()' }
   ];
 
@@ -90,20 +90,25 @@
       }
 
       var levelColors = {
-        'C1': { bg: '#e3f2fd', color: '#1565c0' },
-        'B1': { bg: '#fff3e0', color: '#e65100' },
-        'B2': { bg: '#e8f5e9', color: '#2e7d32' }
+        'C1': { bg: '#fff3e0', color: '#e65100' },
+        'B1': { bg: '#fff8e6', color: '#ce7c3a' },
+        'B2': { bg: '#fff3e0', color: '#e65100' }
       };
       var lc = levelColors[level] || levelColors['C1'];
 
       var streakInactive = streakCount === 0;
       var popoverHtml = this.buildStreakPopoverHtml(streak);
+      var levelPopoverHtml = this.buildLevelPopoverHtml(level);
+      var dictPopoverHtml = this.buildDictPopoverHtml();
 
       return '<div class="main-nav-stats-bar" aria-label="Your stats">' +
-        '<button type="button" class="stats-bar-item stats-bar-level" onclick="BentoGrid.openMobileLevelModal()" aria-label="Change level" style="background:' + lc.bg + ';color:' + lc.color + '">' +
-          '<span class="material-symbols-outlined">school</span>' +
-          '<strong>' + escapeHTML(level) + '</strong>' +
-        '</button>' +
+        '<div class="stats-bar-level-wrap" id="statsBarLevelWrap">' +
+          '<button type="button" class="stats-bar-item stats-bar-level" id="statsBarLevelBtn" aria-label="Change level" aria-expanded="false" aria-haspopup="true" style="background:' + lc.bg + ';color:' + lc.color + '">' +
+            '<span class="material-symbols-outlined">school</span>' +
+            '<strong>' + escapeHTML(level) + '</strong>' +
+          '</button>' +
+          '<div class="level-popover" id="levelPopover" role="dialog" aria-hidden="true">' + levelPopoverHtml + '</div>' +
+        '</div>' +
         '<div class="stats-bar-streak-wrap" id="statsBarStreakWrap">' +
           '<button type="button" class="stats-bar-item stats-bar-streak' + (streakInactive ? ' stats-bar-streak-inactive' : '') + '" id="statsBarStreakBtn" aria-label="View streak" aria-expanded="false" aria-haspopup="true">' +
             '<span class="material-symbols-outlined">local_fire_department</span>' +
@@ -111,11 +116,163 @@
           '</button>' +
           '<div class="streak-popover" id="streakPopover" role="dialog" aria-hidden="true">' + popoverHtml + '</div>' +
         '</div>' +
-        '<button type="button" class="stats-bar-item stats-bar-xp" onclick="FastExercises._showDictionariesHome()" aria-label="Open dictionaries">' +
-          '<span class="material-symbols-outlined">diamond</span>' +
-          '<strong>' + xp + '</strong>' +
-        '</button>' +
+        '<div class="stats-bar-dict-wrap" id="statsBarDictWrap">' +
+          '<button type="button" class="stats-bar-item stats-bar-xp" id="statsBarDictBtn" aria-label="Open dictionaries" aria-expanded="false" aria-haspopup="true">' +
+            '<span class="material-symbols-outlined">menu_book</span>' +
+            '<strong>' + xp + '</strong>' +
+          '</button>' +
+          '<div class="dict-popover" id="dictPopover" role="dialog" aria-hidden="true">' + dictPopoverHtml + '</div>' +
+        '</div>' +
       '</div>';
+    },
+
+    buildLevelPopoverHtml: function(currentLevel) {
+      currentLevel = (currentLevel || (typeof AppState !== 'undefined' && AppState.currentLevel) || 'C1').toUpperCase();
+      var levels = [
+        { code: 'B1', name: 'Preliminary', icon: 'school' },
+        { code: 'B2', name: 'First', icon: 'workspace_premium' },
+        { code: 'C1', name: 'Advanced', icon: 'auto_stories' }
+      ];
+      var html = '<div class="level-popover-inner">' +
+        '<div class="level-popover-kicker">Choose level</div>' +
+        '<div class="level-popover-title">What are you studying?</div>' +
+        '<div class="level-popover-options">';
+      levels.forEach(function(level) {
+        var isActive = level.code === currentLevel;
+        html += '<button type="button" class="level-popover-option' + (isActive ? ' active' : '') + '" onclick="MainNav.selectLevel(\'' + level.code + '\')">' +
+          '<span class="material-symbols-outlined">' + level.icon + '</span>' +
+          '<div><strong>' + level.code + '</strong><small>' + level.name + '</small></div>' +
+        '</button>';
+      });
+      html += '</div></div>';
+      return html;
+    },
+
+    buildDictPopoverHtml: function() {
+      var cards = [
+        { label: 'General', icon: 'search', ns: 'FastExercises', method: '_showGeneralDictionary' },
+        { label: 'Vocabulary', icon: 'library_books', ns: 'FastExercises', method: '_showVocabDictionary' },
+        { label: 'Word Formation', icon: 'text_fields', ns: 'FastExercises', method: '_showWfDictionary' },
+        { label: 'Phrasal Verbs', icon: 'auto_stories', ns: 'FastExercises', method: '_showPvDictionary' },
+        { label: 'Idioms', icon: 'record_voice_over', ns: 'FastExercises', method: '_showIdDictionary' },
+        { label: 'Collocations', icon: 'format_quote', ns: 'FastExercises', method: '_showCollocDictionary' },
+        { label: 'Irregular Verbs', icon: 'table_view', ns: 'FastExercises', method: '_showIrregularVerbsDictionary' }
+      ];
+      var html = '<div class="dict-popover-inner">' +
+        '<div class="dict-popover-title"><span class="material-symbols-outlined">menu_book</span> Dictionaries</div>' +
+        '<div class="dict-popover-grid">';
+      cards.forEach(function(card) {
+        html += '<button type="button" class="dict-popover-card" onclick="MainNav.openDictionary(\'' + card.ns + '\', \'' + card.method + '\')">' +
+          '<span class="material-symbols-outlined">' + card.icon + '</span>' +
+          '<span>' + escapeHTML(card.label) + '</span>' +
+        '</button>';
+      });
+      html += '</div></div>';
+      return html;
+    },
+
+    openDictionary: function(ns, method) {
+      this.closeDictPopover();
+      var obj = window[ns];
+      if (obj && typeof obj[method] === 'function') obj[method]();
+    },
+
+    selectLevel: function(level) {
+      this.closeLevelPopover();
+      if (typeof BentoGrid !== 'undefined' && BentoGrid.changeLevel) {
+        BentoGrid.changeLevel(level);
+      }
+    },
+
+    _initAnchoredPopover: function(opts) {
+      var wrap = document.getElementById(opts.wrapId);
+      var btn = document.getElementById(opts.btnId);
+      var popover = document.getElementById(opts.popoverId);
+      if (!wrap || !btn || !popover) return;
+
+      if (wrap[opts.initFlag]) return;
+      wrap[opts.initFlag] = true;
+
+      var isOpen = false;
+      var dismissedByClick = false;
+
+      function setOpen(open) {
+        isOpen = open;
+        popover.classList.toggle('is-open', open);
+        btn.classList.toggle('is-active', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        popover.setAttribute('aria-hidden', open ? 'false' : 'true');
+        if (open && opts.onOpen) opts.onOpen();
+        if (!open && opts.onClose) opts.onClose();
+      }
+
+      wrap.addEventListener('mouseenter', function() {
+        if (!dismissedByClick) setOpen(true);
+      });
+
+      wrap.addEventListener('mouseleave', function() {
+        setOpen(false);
+        dismissedByClick = false;
+      });
+
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (isOpen) {
+          setOpen(false);
+          dismissedByClick = true;
+        } else {
+          dismissedByClick = false;
+          setOpen(true);
+        }
+      });
+
+      wrap._setPopoverOpen = setOpen;
+    },
+
+    initLevelPopover: function() {
+      this._initAnchoredPopover({
+        wrapId: 'statsBarLevelWrap',
+        btnId: 'statsBarLevelBtn',
+        popoverId: 'levelPopover',
+        initFlag: '_levelPopoverInit'
+      });
+    },
+
+    closeLevelPopover: function() {
+      var wrap = document.getElementById('statsBarLevelWrap');
+      if (wrap && wrap._setPopoverOpen) wrap._setPopoverOpen(false);
+    },
+
+    initDictPopover: function() {
+      this._initAnchoredPopover({
+        wrapId: 'statsBarDictWrap',
+        btnId: 'statsBarDictBtn',
+        popoverId: 'dictPopover',
+        initFlag: '_dictPopoverInit'
+      });
+    },
+
+    closeDictPopover: function() {
+      var wrap = document.getElementById('statsBarDictWrap');
+      if (wrap && wrap._setPopoverOpen) wrap._setPopoverOpen(false);
+    },
+
+    refreshLevelPopover: function() {
+      var popover = document.getElementById('levelPopover');
+      var btn = document.getElementById('statsBarLevelBtn');
+      if (!popover || !btn) return;
+      var level = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1';
+      popover.innerHTML = this.buildLevelPopoverHtml(level);
+      btn.querySelector('strong').textContent = level;
+      var levelColors = {
+        'C1': { bg: '#fff3e0', color: '#e65100' },
+        'B1': { bg: '#fff8e6', color: '#ce7c3a' },
+        'B2': { bg: '#fff3e0', color: '#e65100' }
+      };
+      var lc = levelColors[level] || levelColors['C1'];
+      btn.style.background = lc.bg;
+      btn.style.color = lc.color;
     },
 
     buildStreakPopoverHtml: function(streak) {
@@ -176,52 +333,11 @@
     },
 
     initStreakPopover: function() {
-      var wrap = document.getElementById('statsBarStreakWrap');
-      var btn = document.getElementById('statsBarStreakBtn');
-      var popover = document.getElementById('streakPopover');
-      if (!wrap || !btn || !popover) return;
-
-      if (wrap._streakPopoverInit) return;
-      wrap._streakPopoverInit = true;
-
-      var isOpen = false;
-      var dismissedByClick = false;
-
-      function setOpen(open) {
-        isOpen = open;
-        popover.classList.toggle('is-open', open);
-        btn.classList.toggle('is-active', open);
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        popover.setAttribute('aria-hidden', open ? 'false' : 'true');
-      }
-
-      function showPopover() {
-        if (!isOpen) setOpen(true);
-      }
-
-      function hidePopover() {
-        if (isOpen) setOpen(false);
-      }
-
-      wrap.addEventListener('mouseenter', function() {
-        if (!dismissedByClick) showPopover();
-      });
-
-      wrap.addEventListener('mouseleave', function() {
-        hidePopover();
-        dismissedByClick = false;
-      });
-
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        if (isOpen) {
-          hidePopover();
-          dismissedByClick = true;
-        } else {
-          dismissedByClick = false;
-          showPopover();
-        }
+      this._initAnchoredPopover({
+        wrapId: 'statsBarStreakWrap',
+        btnId: 'statsBarStreakBtn',
+        popoverId: 'streakPopover',
+        initFlag: '_streakPopoverInit'
       });
     },
 
@@ -274,7 +390,7 @@
           action: 'OPEN',
           onclick: 'BentoGrid.openLessons()',
           icon: 'auto_stories',
-          iconColor: '#58cc02'
+          iconColor: '#ff9600'
         },
         {
           kicker: level + ' · PRACTICE',
@@ -316,7 +432,7 @@
           action: 'BROWSE',
           onclick: 'FastExercises._showDictionariesHome()',
           icon: 'menu_book',
-          iconColor: '#6366f1'
+          iconColor: '#ff9600'
         },
         {
           kicker: level + ' · TOOLS',
@@ -326,7 +442,7 @@
           action: 'CALCULATE',
           onclick: 'openScoreCalculator()',
           icon: 'calculate',
-          iconColor: '#1E9D8E'
+          iconColor: '#ff9600'
         }
       ];
 

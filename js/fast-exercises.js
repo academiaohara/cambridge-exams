@@ -328,6 +328,7 @@
         '</div>';
 
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+      if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       if (typeof BentoGrid !== 'undefined') {
         BentoGrid._startGradeCarousel();
       }
@@ -447,6 +448,7 @@
         '</div>';
 
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+      if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       var catState = { view: 'fastExerciseCategory', categoryId: categoryId };
       history.pushState(catState, '', Router.stateToPath(catState));
       var self = this;
@@ -7183,6 +7185,13 @@
     },
 
     _showDictionariesHome: function() {
+      var isDesktop = window.matchMedia && window.matchMedia('(min-width: 769px)').matches;
+      var dictBtn = document.getElementById('statsBarDictBtn');
+      if (isDesktop && dictBtn && typeof MainNav !== 'undefined') {
+        dictBtn.click();
+        return;
+      }
+
       var existing = document.getElementById('dict-home-modal');
       if (existing) existing.remove();
 
@@ -7190,41 +7199,41 @@
       modal.id = 'dict-home-modal';
       modal.className = 'dict-home-overlay';
       modal.innerHTML =
-        '<div class="dict-home-box">' +
-          '<div class="dict-home-header">' +
+        '<div class="dict-home-box dict-home-box--duo">' +
+          '<div class="dict-home-header dict-home-header--duo">' +
             '<span class="dict-home-icon"><span class="material-symbols-outlined">menu_book</span></span>' +
             '<h2 class="dict-home-title">Dictionaries</h2>' +
             '<button class="dict-home-close" onclick="document.getElementById(\'dict-home-modal\').remove()">' +
               '<span class="material-symbols-outlined">close</span>' +
             '</button>' +
           '</div>' +
-          '<div class="dict-home-grid">' +
-            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showGeneralDictionary();">' +
-              '<span class="dict-home-card-icon" style="background:#6d28d9"><span class="material-symbols-outlined">search</span></span>' +
+          '<div class="dict-home-grid dict-home-grid--duo">' +
+            '<button class="dict-home-card dict-home-card--duo" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showGeneralDictionary();">' +
+              '<span class="dict-home-card-icon dict-home-card-icon--duo"><span class="material-symbols-outlined">search</span></span>' +
               '<span class="dict-home-card-name">General Dictionary</span>' +
             '</button>' +
-            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showVocabDictionary();">' +
-              '<span class="dict-home-card-icon" style="background:#0ea5e9"><span class="material-symbols-outlined">library_books</span></span>' +
+            '<button class="dict-home-card dict-home-card--duo" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showVocabDictionary();">' +
+              '<span class="dict-home-card-icon dict-home-card-icon--duo"><span class="material-symbols-outlined">library_books</span></span>' +
               '<span class="dict-home-card-name">Vocabulary</span>' +
             '</button>' +
-            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showWfDictionary();">' +
-              '<span class="dict-home-card-icon" style="background:#e11d48"><span class="material-symbols-outlined">text_fields</span></span>' +
+            '<button class="dict-home-card dict-home-card--duo" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showWfDictionary();">' +
+              '<span class="dict-home-card-icon dict-home-card-icon--duo"><span class="material-symbols-outlined">text_fields</span></span>' +
               '<span class="dict-home-card-name">Word Formation</span>' +
             '</button>' +
-            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showPvDictionary();">' +
-              '<span class="dict-home-card-icon" style="background:#3b82f6"><span class="material-symbols-outlined">auto_stories</span></span>' +
+            '<button class="dict-home-card dict-home-card--duo" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showPvDictionary();">' +
+              '<span class="dict-home-card-icon dict-home-card-icon--duo"><span class="material-symbols-outlined">auto_stories</span></span>' +
               '<span class="dict-home-card-name">Phrasal Verbs</span>' +
             '</button>' +
-            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showIdDictionary();">' +
-              '<span class="dict-home-card-icon" style="background:#f59e0b"><span class="material-symbols-outlined">record_voice_over</span></span>' +
+            '<button class="dict-home-card dict-home-card--duo" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showIdDictionary();">' +
+              '<span class="dict-home-card-icon dict-home-card-icon--duo"><span class="material-symbols-outlined">record_voice_over</span></span>' +
               '<span class="dict-home-card-name">Idioms</span>' +
             '</button>' +
-            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showCollocDictionary();">' +
-              '<span class="dict-home-card-icon" style="background:#10b981"><span class="material-symbols-outlined">format_quote</span></span>' +
+            '<button class="dict-home-card dict-home-card--duo" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showCollocDictionary();">' +
+              '<span class="dict-home-card-icon dict-home-card-icon--duo"><span class="material-symbols-outlined">format_quote</span></span>' +
               '<span class="dict-home-card-name">Collocations</span>' +
             '</button>' +
-            '<button class="dict-home-card" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showIrregularVerbsDictionary();">' +
-              '<span class="dict-home-card-icon" style="background:#2563eb"><span class="material-symbols-outlined">table_view</span></span>' +
+            '<button class="dict-home-card dict-home-card--duo" onclick="document.getElementById(\'dict-home-modal\').remove(); FastExercises._showIrregularVerbsDictionary();">' +
+              '<span class="dict-home-card-icon dict-home-card-icon--duo"><span class="material-symbols-outlined">table_view</span></span>' +
               '<span class="dict-home-card-name">Irregular Verbs</span>' +
             '</button>' +
           '</div>' +
