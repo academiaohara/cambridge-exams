@@ -223,6 +223,9 @@
       widgets.forEach(function(w) {
         w.innerHTML = self._widgetHTML();
       });
+      if (typeof MainNav !== 'undefined' && MainNav.refreshStreakPopover) {
+        MainNav.refreshStreakPopover();
+      }
     },
 
     getStreak: function() {
