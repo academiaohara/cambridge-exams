@@ -11,15 +11,15 @@
 .main-nav-brand {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
-  padding: 12px 12px 20px;
+  padding: 8px 8px 20px;
   text-decoration: none;
   cursor: pointer;
 }
 
 .main-nav-logo {
-  height: 76px;
+  height: 56px;
   width: auto;
   display: block;
   flex-shrink: 0;
@@ -37,18 +37,18 @@
 .main-nav-item {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   width: 100%;
-  padding: 13px 16px;
+  padding: 11px 12px;
   border: 2px solid transparent;
-  border-radius: 14px;
+  border-radius: 12px;
   background: transparent;
   color: #4b4b4b;
   font-family: 'Nunito', sans-serif;
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
   text-align: left;
@@ -68,15 +68,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   background: color-mix(in srgb, var(--nav-color, #1cb0f6) 18%, white);
   flex-shrink: 0;
 }
 
 .main-nav-icon .material-symbols-outlined {
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   color: var(--nav-color, #1cb0f6);
 }
 
@@ -93,14 +93,14 @@
   min-width: 0;
 }
 
-/* ── Right sidebar stats bar (no language flag) ── */
+/* ── Right sidebar stats bar (Duolingo-style top row) ── */
 .main-nav-stats-bar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: flex-start;
+  gap: 8px;
   width: 100%;
-  padding: 8px 0 16px;
+  padding: 0 0 12px;
   flex-wrap: wrap;
   box-sizing: border-box;
 }
@@ -108,16 +108,18 @@
 .stats-bar-item {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 6px 12px;
-  border-radius: 999px;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 12px;
   border: 2px solid #e5e5e5;
   background: #fff;
   font-family: 'Nunito', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 800;
   color: #4b4b4b;
   cursor: default;
+  min-height: 44px;
+  box-sizing: border-box;
 }
 
 button.stats-bar-item {
@@ -151,26 +153,20 @@ button.stats-bar-item:hover {
 .desktop-mode-cards {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .mode-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  gap: 4px 16px;
+  padding: 24px 28px;
   background: #fff;
   border: 2px solid #e5e5e5;
   border-radius: 16px;
   cursor: pointer;
   transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 8px,
-    rgba(0, 0, 0, 0.015) 8px,
-    rgba(0, 0, 0, 0.015) 9px
-  );
 }
 
 .mode-card:hover {
@@ -180,21 +176,12 @@ button.stats-bar-item:hover {
 }
 
 .mode-card-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  flex-shrink: 0;
-}
-
-.mode-card-icon .material-symbols-outlined {
-  font-size: 1.6rem;
+  display: none;
 }
 
 .mode-card-body {
-  flex: 1;
+  grid-column: 1;
+  grid-row: 1 / span 2;
   min-width: 0;
 }
 
@@ -203,51 +190,60 @@ button.stats-bar-item:hover {
   font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #1cb0f6;
-  margin-bottom: 4px;
+  letter-spacing: 0.06em;
+  color: #afafaf;
+  margin-bottom: 6px;
 }
 
 .mode-card-title {
   font-family: 'Nunito', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   font-weight: 800;
   color: #3c3c3c;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  line-height: 1.15;
 }
 
 .mode-card-status {
   font-family: 'Nunito', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   color: #777;
+}
+
+.mode-card-status-done {
+  color: #58cc02;
 }
 
 .mode-card-status-done::before {
   content: '✓ ';
-  color: #58cc02;
   font-weight: 800;
 }
 
 .mode-card-action {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
   flex-shrink: 0;
-  padding: 10px 18px;
-  border: 2px solid #84d8ff;
-  border-radius: 12px;
-  background: #fff;
-  color: #1899d6;
+  padding: 12px 20px;
+  border: 2px solid #58cc02;
+  border-bottom-width: 4px;
+  border-radius: 14px;
+  background: #58cc02;
+  color: #fff;
   font-family: 'Nunito', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition: filter 0.15s, transform 0.15s;
   white-space: nowrap;
 }
 
 .mode-card-action:hover {
-  background: #ddf4ff;
+  filter: brightness(1.05);
+  transform: translateY(-1px);
 }
 
 /* ── Desktop layout: hide old bento cards, show mode cards ── */
@@ -272,14 +268,17 @@ button.stats-bar-item:hover {
   body:has(.dashboard-layout) .app-container {
     max-width: none;
     margin: 0;
-    padding: 16px 24px 0;
+    padding: 0 0 0 var(--dashboard-left-sidebar-width);
+    background: #fff;
+    min-height: 100vh;
+    box-sizing: border-box;
   }
 
   .dashboard-layout {
     max-width: none;
-    grid-template-columns: minmax(0, 1fr) 280px;
+    grid-template-columns: minmax(0, 1fr) var(--dashboard-right-sidebar-width);
     gap: 32px;
-    padding: 0 24px 0 0;
+    padding: 24px 32px 0 24px;
     margin: 0;
   }
 
@@ -289,10 +288,10 @@ button.stats-bar-item:hover {
     top: 0;
     bottom: 0;
     height: 100vh;
-    width: var(--dashboard-left-sidebar-width, 300px);
+    width: var(--dashboard-left-sidebar-width);
     z-index: 50;
-    padding: 20px 18px;
-    background: #F4F7FF;
+    padding: 16px 12px;
+    background: #fff;
     border-right: 2px solid #e5e5e5;
     box-sizing: border-box;
     overflow-y: auto;
@@ -310,16 +309,34 @@ button.stats-bar-item:hover {
     overflow-y: visible;
   }
 
+  .dashboard-center {
+    min-width: 0;
+    padding-top: 8px;
+  }
+
+  .dashboard-center .bento-center-wrapper {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
   .dashboard-right-sidebar {
     position: sticky;
-    top: 16px;
+    top: 0;
     align-self: start;
-    max-height: calc(100vh - 32px);
+    max-height: 100vh;
     overflow-y: auto;
+    padding-top: 8px;
   }
 }
 
 @media (max-width: 768px) {
+  body:has(.dashboard-layout) .app-container {
+    padding-left: 0;
+    background: var(--bg-light, #F4F7FF);
+  }
+
   .main-nav-sidebar,
   .main-nav-stats-bar,
   .desktop-mode-cards {
@@ -328,22 +345,31 @@ button.stats-bar-item:hover {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --dashboard-right-sidebar-width: 300px;
+  }
+
   .dashboard-layout {
-    grid-template-columns: minmax(0, 1fr) 240px;
+    grid-template-columns: minmax(0, 1fr) var(--dashboard-right-sidebar-width);
     gap: 20px;
+    padding: 20px 20px 0 16px;
   }
 
   .dashboard-layout > .dashboard-left-sidebar.dashboard-sidebar-shell {
-    padding: 16px 14px;
+    padding: 12px 10px;
   }
 
   .mode-card {
-    padding: 16px 18px;
-    gap: 12px;
+    padding: 18px 20px;
+    gap: 4px 12px;
+  }
+
+  .mode-card-title {
+    font-size: 1.4rem;
   }
 
   .mode-card-action {
-    padding: 8px 12px;
+    padding: 10px 14px;
     font-size: 0.72rem;
   }
 }

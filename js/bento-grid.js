@@ -1225,6 +1225,8 @@
         var nextLesson = this._findNextLesson(exams);
         if (nextLesson) right += this._buildNextLessonLeftHtml(nextLesson);
       }
+      right += this._buildStreakSidebarHtml();
+      right += this._buildCalendarSidebarHtml();
       return { left: left, right: right };
     },
 
