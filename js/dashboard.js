@@ -85,15 +85,12 @@
       const exams = window.EXAMS_DATA[level] || [];
       
       // Build sidebar content
-      var leftSidebarContent = '';
-      var rightSidebarContent = '';
+      var sidebars = { left: '', right: '' };
       if (typeof BentoGrid !== 'undefined') {
-        leftSidebarContent = BentoGrid._buildLevelSelectorSidebarHtml();
-        leftSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
-        rightSidebarContent = BentoGrid._buildContinueBasecampHtml(exams);
-        rightSidebarContent += BentoGrid._buildStreakSidebarHtml();
-        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
+        sidebars = BentoGrid._buildDashboardSidebars(exams, { includeNextLesson: true, includeBasecamp: true });
       }
+      var leftSidebarContent = sidebars.left;
+      var rightSidebarContent = sidebars.right;
 
       var html = '<div class="dashboard-layout">' +
         this._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent) +
@@ -220,16 +217,12 @@
         }
       }
 
-      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
+      var sidebars = { left: '', right: '' };
       if (typeof BentoGrid !== 'undefined') {
-        leftSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
+        sidebars = BentoGrid._buildDashboardSidebars(exams, { includeBasecamp: true });
       }
-      var rightSidebarContent = '';
-      if (typeof BentoGrid !== 'undefined') {
-        rightSidebarContent = BentoGrid._buildContinueBasecampHtml(exams);
-        rightSidebarContent += BentoGrid._buildStreakSidebarHtml();
-        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
-      }
+      var leftSidebarContent = sidebars.left;
+      var rightSidebarContent = sidebars.right;
 
       var mobileNavHtml =
         typeof BentoGrid !== 'undefined'

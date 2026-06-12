@@ -176,16 +176,12 @@
       var bodyHtml = BentoGrid._buildGradeEvoChart(examScores, allSkills, skillColors, gradeBands, scaleMin, scaleMax);
 
       // Build sidebars like main dashboard
-      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
+      var sidebars = { left: '', right: '' };
       if (typeof BentoGrid !== 'undefined') {
-        leftSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
+        sidebars = BentoGrid._buildDashboardSidebars(exams, { includeBasecamp: true });
       }
-      var rightSidebarContent = '';
-      if (typeof BentoGrid !== 'undefined') {
-        rightSidebarContent = BentoGrid._buildContinueBasecampHtml(exams);
-        rightSidebarContent += BentoGrid._buildStreakSidebarHtml();
-        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
-      }
+      var leftSidebarContent = sidebars.left;
+      var rightSidebarContent = sidebars.right;
 
       content.innerHTML =
         '<div class="dashboard-layout">' +

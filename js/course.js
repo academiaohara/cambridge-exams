@@ -66,15 +66,12 @@
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
       // Build home-page style sidebars
-      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
+      var sidebars = { left: '', right: '' };
       if (typeof BentoGrid !== 'undefined') {
-        leftSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(window.EXAMS_DATA[level] || []);
+        sidebars = BentoGrid._buildDashboardSidebars(window.EXAMS_DATA[level] || []);
       }
-      var rightSidebarContent = '';
-      if (typeof BentoGrid !== 'undefined') {
-        rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
-        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
-      }
+      var leftSidebarContent = sidebars.left;
+      var rightSidebarContent = sidebars.right;
 
       // Render initial layout with loading spinner in center
       content.innerHTML =
