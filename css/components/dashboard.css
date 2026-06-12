@@ -920,14 +920,18 @@
 
 
 /* ── Dashboard 3-column layout (Duolingo-style) ── */
+:root {
+  --dashboard-left-sidebar-width: 300px;
+}
+
 .dashboard-layout {
   display: grid;
-  grid-template-columns: 260px 1fr 260px;
+  grid-template-columns: minmax(0, 1fr) 280px;
   gap: 24px;
   align-items: start;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 16px;
+  max-width: none;
+  margin: 0;
+  padding: 0 16px 0 0;
 }
 
 .dashboard-left-sidebar,
@@ -942,8 +946,10 @@
   min-width: 0;
 }
 
-.dashboard-right-sidebar {
-  top: 0px;
+.dashboard-right-sidebar .main-nav-stats-bar {
+  width: 100%;
+  justify-content: center;
+  align-self: stretch;
 }
 
 .dashboard-sidebar-shell {

@@ -105,10 +105,10 @@
           '<span class="material-symbols-outlined">local_fire_department</span>' +
           '<strong>' + streakCount + '</strong>' +
         '</button>' +
-        '<div class="stats-bar-item stats-bar-xp" aria-label="XP">' +
+        '<button type="button" class="stats-bar-item stats-bar-xp" onclick="FastExercises._showDictionariesHome()" aria-label="Open dictionaries">' +
           '<span class="material-symbols-outlined">diamond</span>' +
           '<strong>' + xp + '</strong>' +
-        '</div>' +
+        '</button>' +
       '</div>';
     },
 
