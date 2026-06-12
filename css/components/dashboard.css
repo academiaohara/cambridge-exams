@@ -921,17 +921,20 @@
 
 /* ── Dashboard 3-column layout (Duolingo-style) ── */
 :root {
-  --dashboard-left-sidebar-width: 300px;
+  --dashboard-left-sidebar-width: 256px;
+  --dashboard-right-sidebar-width: 368px;
 }
 
 .dashboard-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 280px;
-  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) var(--dashboard-right-sidebar-width);
+  gap: 32px;
   align-items: start;
-  max-width: none;
-  margin: 0;
-  padding: 0 16px 0 0;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px 0 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .dashboard-left-sidebar,
@@ -948,8 +951,10 @@
 
 .dashboard-right-sidebar .main-nav-stats-bar {
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   align-self: stretch;
+  padding-top: 0;
+  margin-bottom: 4px;
 }
 
 .dashboard-sidebar-shell {
@@ -1023,6 +1028,10 @@
 }
 
 @media (max-width: 900px) {
+  body:has(.dashboard-layout) .app-container {
+    padding-left: 0;
+  }
+
   .dashboard-layout,
   .dashboard-layout.dashboard-layout-right-closed {
     grid-template-columns: minmax(0, 1fr) !important;
