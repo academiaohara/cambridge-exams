@@ -97,10 +97,10 @@
 .main-nav-stats-bar {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
+  justify-content: flex-end;
+  gap: 4px;
   width: 100%;
-  padding: 0 0 12px;
+  padding: 0 0 16px;
   flex-wrap: wrap;
   box-sizing: border-box;
 }
@@ -109,51 +109,204 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 12px;
+  padding: 8px 10px;
   border-radius: 12px;
-  border: 2px solid #e5e5e5;
-  background: #fff;
+  border: none;
+  background: transparent;
   font-family: 'Nunito', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 800;
   color: #4b4b4b;
   cursor: default;
-  min-height: 44px;
+  min-height: 40px;
   box-sizing: border-box;
 }
 
 button.stats-bar-item {
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
+  transition: background 0.15s;
 }
 
-button.stats-bar-item:hover {
-  background: #f7f7f7;
-  border-color: #d0d0d0;
+button.stats-bar-item:hover,
+button.stats-bar-item.is-active {
+  background: #f0f0f0;
 }
 
 .stats-bar-item .material-symbols-outlined {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
 }
 
 .stats-bar-streak .material-symbols-outlined {
   color: #ff9600;
 }
 
-.stats-bar-xp .material-symbols-outlined {
+.stats-bar-streak-inactive .material-symbols-outlined,
+.stats-bar-streak-inactive strong {
+  color: #afafaf;
+}
+
+.stats-bar-xp .material-symbols-outlined,
+.stats-bar-xp strong {
   color: #1cb0f6;
 }
 
 .stats-bar-level {
-  border-color: transparent;
   font-weight: 900;
+}
+
+/* ── Streak popover (Duolingo-style) ── */
+.stats-bar-streak-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.streak-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 320px;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.streak-popover.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.streak-popover::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 28px;
+  width: 16px;
+  height: 16px;
+  background: #fff8e6;
+  border-left: 2px solid #f0e0b8;
+  border-top: 2px solid #f0e0b8;
+  transform: rotate(45deg);
+  border-radius: 2px 0 0 0;
+}
+
+.streak-popover-inner {
+  background: #fff8e6;
+  border: 2px solid #f0e0b8;
+  border-radius: 16px;
+  padding: 20px 18px 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.streak-popover-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.streak-popover-count {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ce7c3a;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.streak-popover-desc {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #5c5c5c;
+  line-height: 1.35;
+  max-width: 200px;
+}
+
+.streak-popover-flame-bg {
+  font-size: 4.5rem !important;
+  color: rgba(206, 124, 58, 0.18);
+  flex-shrink: 0;
+  line-height: 1;
+  user-select: none;
+}
+
+.streak-popover-week {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 12px 12px;
+  border: 2px solid #ebebeb;
+}
+
+.streak-week-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.streak-week-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #afafaf;
+  text-transform: uppercase;
+}
+
+.streak-week-today .streak-week-label {
+  color: #ff9600;
+}
+
+.streak-week-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  display: block;
+}
+
+.streak-week-done .streak-week-circle {
+  background: #1cb0f6;
+  position: relative;
+}
+
+.streak-week-done .streak-week-circle::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.streak-week-today.streak-week-done .streak-week-circle {
+  background: #ff9600;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+}
+
+.streak-week-today.streak-week-done .streak-week-circle::after {
+  transform: rotate(45deg);
 }
 
 /* ── Desktop mode cards (Duolingo-style center content) ── */
 .desktop-mode-cards {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .mode-card {
@@ -161,18 +314,24 @@ button.stats-bar-item:hover {
   grid-template-columns: minmax(0, 1fr) auto;
   grid-template-rows: auto auto;
   gap: 4px 16px;
-  padding: 24px 28px;
-  background: #fff;
+  padding: 22px 24px;
+  background-color: #fff;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #fff,
+    #fff 12px,
+    #f5f5f5 12px,
+    #f5f5f5 24px
+  );
   border: 2px solid #e5e5e5;
   border-radius: 16px;
   cursor: pointer;
-  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .mode-card:hover {
   border-color: #d0d0d0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .mode-card-icon {
@@ -190,29 +349,40 @@ button.stats-bar-item:hover {
   font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.mode-card-kicker-text {
   color: #afafaf;
-  margin-bottom: 6px;
+}
+
+.mode-card-kicker-link {
+  color: #1cb0f6;
 }
 
 .mode-card-title {
   font-family: 'Nunito', sans-serif;
-  font-size: 1.75rem;
+  font-size: 1.65rem;
   font-weight: 800;
   color: #3c3c3c;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   line-height: 1.15;
 }
 
 .mode-card-status {
   font-family: 'Nunito', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: #777;
 }
 
 .mode-card-status-done {
   color: #58cc02;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.82rem;
 }
 
 .mode-card-status-done::before {
@@ -225,25 +395,37 @@ button.stats-bar-item:hover {
   grid-row: 1 / span 2;
   align-self: center;
   flex-shrink: 0;
-  padding: 12px 20px;
-  border: 2px solid #58cc02;
+  padding: 11px 18px;
+  border: 2px solid #e5e5e5;
   border-bottom-width: 4px;
   border-radius: 14px;
   background: #58cc02;
   color: #fff;
   font-family: 'Nunito', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   cursor: pointer;
-  transition: filter 0.15s, transform 0.15s;
+  transition: filter 0.15s, transform 0.15s, background 0.15s;
   white-space: nowrap;
 }
 
 .mode-card-action:hover {
   filter: brightness(1.05);
   transform: translateY(-1px);
+}
+
+.mode-card-action-outline {
+  background: #fff;
+  color: #1cb0f6;
+  border-color: #e5e5e5;
+  border-bottom-color: #d0d0d0;
+}
+
+.mode-card-action-outline:hover {
+  background: #f7f7f7;
+  filter: none;
 }
 
 /* ── Desktop layout: hide old bento cards, show mode cards ── */
@@ -269,7 +451,7 @@ button.stats-bar-item:hover {
     max-width: none;
     margin: 0;
     padding: 0 0 0 var(--dashboard-left-sidebar-width);
-    background: #fff;
+    background: #f7f7f7;
     min-height: 100vh;
     box-sizing: border-box;
   }

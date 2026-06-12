@@ -1130,10 +1130,27 @@ content: '';
   box-shadow: 0 6px 20px rgba(45, 46, 95, 0.12);
 }
 
-/* "Next Exam" — tono coral/amber para diferenciarlo */
+/* "Next Exam" widget */
 .sw-next-exam {
-  background: linear-gradient(135deg, #fde8d8 0%, #f8d4b8 100%);
-  color: #7a3a10;
+  background: #fff;
+  color: #3c3c3c;
+}
+
+.sw-next-exam .sw-left-widget-row {
+  margin-bottom: 10px;
+}
+
+.sw-next-exam .sw-left-widget-title {
+  color: #3c3c3c;
+}
+
+.sw-next-exam .sw-left-widget-sub {
+  color: #777;
+  opacity: 1;
+}
+
+.sw-next-exam .sw-left-progress-fill {
+  background: #1cb0f6;
 }
 
 .sw-left-widget-label {
@@ -1204,7 +1221,49 @@ content: '';
   text-align: right;
 }
 
-/* ── Right Sidebar: Pastel widget cards ── */
+/* ── Right Sidebar: Duolingo-style white widgets ── */
+.sidebar-widget-duo {
+  background: #fff;
+  border: 2px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 16px 18px;
+  margin-bottom: 0;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.sidebar-widget-duo:hover {
+  border-color: #d0d0d0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.sw-duo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.sw-duo-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #3c3c3c;
+}
+
+.sw-duo-link {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #1cb0f6;
+  flex-shrink: 0;
+}
+
+/* ── Right Sidebar: Pastel widget cards (legacy) ── */
 .sidebar-widget-pastel {
   border-radius: 20px;
   padding: 20px;
@@ -1348,25 +1407,22 @@ margin-top: -2px;
 
 /* Grade Tracker widget */
 .sw-grade {
-  background: var(--card-grade-bg);
-  color: #632e13;
-  border-radius: 40px;
+  background: #fff;
+  color: #3c3c3c;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 0 0 0;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 16px 18px;
   overflow: hidden;
-  font-family: 'Mileast', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
-.sw-grade .sidebar-widget-pastel-title {
-  color: #632e13;
-  font-weight: bold;
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-  text-align: center;
-  width: 100%;
+.sw-grade .sw-duo-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #3c3c3c;
 }
 
 .sw-grade .grade-carousel-viewport {
@@ -1383,24 +1439,24 @@ margin-top: -2px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 50px;
-  padding-top: 0px;
+  padding: 8px 0 12px;
   position: relative;
 }
 
 .sw-grade .grade-carousel-raw {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #fbe0d1;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #afafaf;
+  margin-bottom: 2px;
 }
 
 .sw-grade .grade-carousel-cefr {
-  font-size: 5.5rem;
+  font-size: 2.2rem;
   font-weight: 900;
-  color: #632e13;
-  font-family: 'Mileast', sans-serif;
+  color: #3c3c3c;
+  font-family: 'Nunito', sans-serif;
   line-height: 1;
-  margin: 0px 10px 0 0;
+  margin: 0;
 }
 
 .sw-grade .grade-carousel-cefr.grade-carousel-cefr-dash {
@@ -1409,33 +1465,22 @@ margin-top: -2px;
 
 .sw-grade .grade-carousel-skill-label {
   width: 100%;
-  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fbe0d1;
-  letter-spacing: 2px;
+  position: static;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #777;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   border-radius: 0;
-  margin: 0;
-  padding-top: 20px;
+  margin: 8px 0 0;
+  padding: 0;
 }
 
-/* Arc effect on the footer */
 .sw-grade .grade-carousel-skill-label::before {
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: -50%;
-  width: 200%;
-  height: 200px;
-  background-color: #e87633;
-  border-radius: 50%;
+  display: none;
 }
 
 .sw-grade .grade-carousel-skill-label span {
@@ -1444,11 +1489,11 @@ margin-top: -2px;
 }
 
 .sw-grade .grade-carousel-dot {
-  background: rgba(99, 46, 19, 0.25);
+  background: rgba(0, 0, 0, 0.15);
 }
 
 .sw-grade .grade-carousel-dot.active {
-  background: #632e13;
+  background: #1cb0f6;
 }
 
 .sw-grade .grade-carousel-dots {

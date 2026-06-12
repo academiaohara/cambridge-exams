@@ -123,6 +123,9 @@
         if (bentoContainer) BentoGrid.render(bentoContainer);
         BentoGrid._startGradeCarousel();
       }
+      if (typeof MainNav !== 'undefined' && MainNav.initStreakPopover) {
+        MainNav.initStreakPopover();
+      }
     },
 
     // keepPage: if true, do not reset pagination to page 1

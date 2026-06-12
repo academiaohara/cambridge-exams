@@ -96,20 +96,145 @@
       };
       var lc = levelColors[level] || levelColors['C1'];
 
+      var streakInactive = streakCount === 0;
+      var popoverHtml = this.buildStreakPopoverHtml(streak);
+
       return '<div class="main-nav-stats-bar" aria-label="Your stats">' +
         '<button type="button" class="stats-bar-item stats-bar-level" onclick="BentoGrid.openMobileLevelModal()" aria-label="Change level" style="background:' + lc.bg + ';color:' + lc.color + '">' +
           '<span class="material-symbols-outlined">school</span>' +
           '<strong>' + escapeHTML(level) + '</strong>' +
         '</button>' +
-        '<button type="button" class="stats-bar-item stats-bar-streak" onclick="BentoGrid.openStreakSection()" aria-label="View streak">' +
-          '<span class="material-symbols-outlined">local_fire_department</span>' +
-          '<strong>' + streakCount + '</strong>' +
-        '</button>' +
+        '<div class="stats-bar-streak-wrap" id="statsBarStreakWrap">' +
+          '<button type="button" class="stats-bar-item stats-bar-streak' + (streakInactive ? ' stats-bar-streak-inactive' : '') + '" id="statsBarStreakBtn" aria-label="View streak" aria-expanded="false" aria-haspopup="true">' +
+            '<span class="material-symbols-outlined">local_fire_department</span>' +
+            '<strong>' + streakCount + '</strong>' +
+          '</button>' +
+          '<div class="streak-popover" id="streakPopover" role="dialog" aria-hidden="true">' + popoverHtml + '</div>' +
+        '</div>' +
         '<button type="button" class="stats-bar-item stats-bar-xp" onclick="FastExercises._showDictionariesHome()" aria-label="Open dictionaries">' +
           '<span class="material-symbols-outlined">diamond</span>' +
           '<strong>' + xp + '</strong>' +
         '</button>' +
       '</div>';
+    },
+
+    buildStreakPopoverHtml: function(streak) {
+      streak = streak || ((typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null);
+      var streakCount = streak ? (streak.currentStreak || 0) : 0;
+      var practicedToday = streak ? streak.practicedToday : false;
+      var activeDates = {};
+      if (streak && Array.isArray(streak.activeDates)) {
+        streak.activeDates.forEach(function(d) { activeDates[d] = true; });
+      }
+
+      var formatLocalDate = (typeof StreakManager !== 'undefined' && StreakManager._formatLocalDate)
+        ? function(d) { return StreakManager._formatLocalDate(d); }
+        : function(d) {
+          var month = String(d.getMonth() + 1).padStart(2, '0');
+          var day = String(d.getDate()).padStart(2, '0');
+          return d.getFullYear() + '-' + month + '-' + day;
+        };
+
+      var desc = practicedToday
+        ? 'Streak safe today! Keep it going.'
+        : ((typeof StreakManager !== 'undefined' && StreakManager.isAtRisk && StreakManager.isAtRisk())
+          ? 'Practice now to keep your streak!'
+          : 'Do a lesson now and start your new streak!');
+
+      var today = new Date();
+      var dayOfWeek = today.getDay();
+      var mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+      var dayLabels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+      var todayStr = formatLocalDate(today);
+      var weekHtml = '';
+
+      for (var i = 0; i < 7; i++) {
+        var d = new Date(today);
+        d.setDate(today.getDate() + mondayOffset + i);
+        var dateStr = formatLocalDate(d);
+        var isActive = !!activeDates[dateStr];
+        var isToday = dateStr === todayStr;
+        var cls = 'streak-week-day';
+        if (isActive) cls += ' streak-week-done';
+        if (isToday) cls += ' streak-week-today';
+        weekHtml += '<div class="' + cls + '">' +
+          '<span class="streak-week-label">' + dayLabels[i] + '</span>' +
+          '<span class="streak-week-circle" aria-hidden="true"></span>' +
+        '</div>';
+      }
+
+      return '<div class="streak-popover-inner">' +
+        '<div class="streak-popover-top">' +
+          '<div class="streak-popover-text">' +
+            '<div class="streak-popover-count">' + streakCount + ' day streak</div>' +
+            '<div class="streak-popover-desc">' + escapeHTML(desc) + '</div>' +
+          '</div>' +
+          '<span class="streak-popover-flame-bg material-symbols-outlined" aria-hidden="true">local_fire_department</span>' +
+        '</div>' +
+        '<div class="streak-popover-week">' + weekHtml + '</div>' +
+      '</div>';
+    },
+
+    initStreakPopover: function() {
+      var wrap = document.getElementById('statsBarStreakWrap');
+      var btn = document.getElementById('statsBarStreakBtn');
+      var popover = document.getElementById('streakPopover');
+      if (!wrap || !btn || !popover) return;
+
+      if (wrap._streakPopoverInit) return;
+      wrap._streakPopoverInit = true;
+
+      var isOpen = false;
+      var dismissedByClick = false;
+
+      function setOpen(open) {
+        isOpen = open;
+        popover.classList.toggle('is-open', open);
+        btn.classList.toggle('is-active', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        popover.setAttribute('aria-hidden', open ? 'false' : 'true');
+      }
+
+      function showPopover() {
+        if (!isOpen) setOpen(true);
+      }
+
+      function hidePopover() {
+        if (isOpen) setOpen(false);
+      }
+
+      wrap.addEventListener('mouseenter', function() {
+        if (!dismissedByClick) showPopover();
+      });
+
+      wrap.addEventListener('mouseleave', function() {
+        hidePopover();
+        dismissedByClick = false;
+      });
+
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (isOpen) {
+          hidePopover();
+          dismissedByClick = true;
+        } else {
+          dismissedByClick = false;
+          showPopover();
+        }
+      });
+    },
+
+    refreshStreakPopover: function() {
+      var popover = document.getElementById('streakPopover');
+      var btn = document.getElementById('statsBarStreakBtn');
+      if (!popover || !btn) return;
+
+      var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
+      var streakCount = streak ? (streak.currentStreak || 0) : 0;
+      popover.innerHTML = this.buildStreakPopoverHtml(streak);
+      btn.querySelector('strong').textContent = streakCount;
+      btn.classList.toggle('stats-bar-streak-inactive', streakCount === 0);
     },
 
     buildDesktopModeCardsHtml: function(exams) {
@@ -207,17 +332,20 @@
 
       var html = '<div class="desktop-mode-cards">';
       cards.forEach(function(card) {
+        var isDone = card.statusClass.indexOf('mode-card-status-done') !== -1;
+        var actionLabel = isDone ? 'REVIEW' : card.action;
+        var actionClass = isDone ? 'mode-card-action mode-card-action-outline' : 'mode-card-action';
         html += '<div class="mode-card" onclick="' + card.onclick + '">' +
           '<div class="mode-card-icon" style="background:' + card.iconColor + '20;color:' + card.iconColor + '">' +
             '<span class="material-symbols-outlined">' + card.icon + '</span>' +
           '</div>' +
           '<div class="mode-card-body">' +
-            '<div class="mode-card-kicker">' + escapeHTML(card.kicker) + '</div>' +
+            '<div class="mode-card-kicker"><span class="mode-card-kicker-text">' + escapeHTML(card.kicker.split(' · ')[0] || card.kicker) + '</span><span class="mode-card-kicker-link"> · SEE DETAILS</span></div>' +
             '<div class="mode-card-title">' + escapeHTML(card.title) + '</div>' +
-            '<div class="mode-card-status ' + card.statusClass + '">' + escapeHTML(card.status) + '</div>' +
+            '<div class="mode-card-status ' + card.statusClass + '">' + (isDone ? 'COMPLETED!' : escapeHTML(card.status)) + '</div>' +
           '</div>' +
-          '<button type="button" class="mode-card-action" onclick="event.stopPropagation();' + card.onclick + '">' +
-            escapeHTML(card.action) +
+          '<button type="button" class="' + actionClass + '" onclick="event.stopPropagation();' + card.onclick + '">' +
+            escapeHTML(actionLabel) +
           '</button>' +
         '</div>';
       });

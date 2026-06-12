@@ -1225,8 +1225,6 @@
         var nextLesson = this._findNextLesson(exams);
         if (nextLesson) right += this._buildNextLessonLeftHtml(nextLesson);
       }
-      right += this._buildStreakSidebarHtml();
-      right += this._buildCalendarSidebarHtml();
       return { left: left, right: right };
     },
 
@@ -1273,8 +1271,11 @@
       var totalParts = lesson.totalParts || 1;
       var pct = Math.round((completedParts / totalParts) * 100);
       var self = this;
-      return '<div class="sw-left-widget sw-next-exam" onclick="Exercise.openPart(\'' + self._escapeHTML(lesson.examId) + '\', \'' + self._escapeHTML(lesson.section) + '\', ' + parseInt(lesson.part, 10) + ')" style="cursor:pointer">' +
-        '<div class="sw-left-widget-label">' + 'Next Exam' + '</div>' +
+      return '<div class="sidebar-widget-duo sw-next-exam" onclick="Exercise.openPart(\'' + self._escapeHTML(lesson.examId) + '\', \'' + self._escapeHTML(lesson.section) + '\', ' + parseInt(lesson.part, 10) + ')" style="cursor:pointer">' +
+        '<div class="sw-duo-header">' +
+          '<span class="sw-duo-title">' + 'Next Exam' + '</span>' +
+          '<span class="sw-duo-link">CONTINUE</span>' +
+        '</div>' +
         '<div class="sw-left-widget-row">' +
           '<span class="sw-left-widget-icon"><span class="material-symbols-outlined">' + icon + '</span></span>' +
           '<div class="sw-left-widget-info">' +
@@ -1355,14 +1356,20 @@
 
       var totalSlides = slides.length || 1;
 
-      return '<div class="sidebar-widget-pastel sw-grade grade-tracker-carousel-widget" data-total-slides="' + totalSlides + '" onclick="BentoGrid.openGradeEvolution()" style="cursor:pointer">' +
-        '<div class="sidebar-widget-pastel-title">' + 'Grade Tracker' + '</div>' +
+      return '<div class="sidebar-widget-duo sw-grade grade-tracker-carousel-widget" data-total-slides="' + totalSlides + '" onclick="BentoGrid.openGradeEvolution()" style="cursor:pointer">' +
+        '<div class="sw-duo-header">' +
+          '<span class="sw-duo-title">' + 'Grade Tracker' + '</span>' +
+          '<span class="sw-duo-link">SEE ALL</span>' +
+        '</div>' +
         '<div class="grade-carousel-viewport">' + slidesHtml + '</div>' +
         '<div class="grade-carousel-dots"></div>' +
       '</div>';
     },
 
     _startGradeCarousel: function() {
+      if (typeof MainNav !== 'undefined' && MainNav.initStreakPopover) {
+        MainNav.initStreakPopover();
+      }
       var widget = document.querySelector('.grade-tracker-carousel-widget');
       if (!widget) return;
       var total = parseInt(widget.getAttribute('data-total-slides'), 10);
