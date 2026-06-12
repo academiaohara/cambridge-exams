@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#F4F7FF">
     <link rel="icon" href="/favicon.png" type="image/png" sizes="any">
     <link rel="apple-touch-icon" href="/favicon.png">
-    <title>EngagEd</title>
+    <title>Sune English</title>
     
     <!-- Vercel Web Analytics -->
     <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
@@ -26,6 +26,7 @@
     
     <!-- CSS BASE - COMPONENTES PRINCIPALES -->
     <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/main-nav.css">
     <link rel="stylesheet" href="css/components/footer.css">
     <link rel="stylesheet" href="css/components/dashboard.css">
     <link rel="stylesheet" href="css/components/modal.css">
@@ -409,7 +410,8 @@
         <header class="main-header">
             <div class="header-container">
                 <a class="logo" href="/" onclick="event.preventDefault(); loadDashboard()">
-                    <img src="Assets/images/logo.svg" class="logo-icon" alt="EngagEd logo">
+                    <img src="Assets/images/sunelogoreduced.svg" class="logo-icon" alt="Sune English">
+                    <span class="logo-text">Sune English</span>
                 </a>
                 
                 <nav class="header-quick-nav" id="headerQuickNav">
@@ -489,10 +491,10 @@
         <div id="auth-modal-overlay" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="auth-title">
           <div class="auth-modal-card">
             <div class="auth-brand-icon">
-              <img src="Assets/images/logo.svg" alt="EngagEd logo">
+              <img src="Assets/images/sunelogoreduced.svg" alt="Sune English">
             </div>
             <h2 id="auth-title">Sign in to continue</h2>
-            <p>Access your EngagEd practice dashboard</p>
+            <p>Access your Sune English practice dashboard</p>
             <button id="auth-google-btn" class="auth-google-btn" onclick="Auth.signInWithGoogle()" type="button">
               <svg class="auth-google-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
                 <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
@@ -748,6 +750,7 @@
     <script src="js/writing-validator.js"></script>
     <script src="js/micro-learning.js"></script>
     <script src="js/fast-exercises.js"></script>
+    <script src="js/main-nav.js"></script>
     <script src="js/bento-grid.js"></script>
     <script src="js/tests/b1/config.js"></script>
     <script src="js/tests/b2/config.js"></script>

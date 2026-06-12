@@ -1,0 +1,336 @@
+/* css/components/main-nav.css — Duolingo-style main navigation */
+
+/* ── Left sidebar navigation ── */
+.main-nav-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.main-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.main-nav-logo {
+  height: 36px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.main-nav-brand-text {
+  font-family: 'Mileast', 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #f47417;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+
+.main-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.main-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 14px;
+  border: 2px solid transparent;
+  border-radius: 14px;
+  background: transparent;
+  color: #4b4b4b;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  text-align: left;
+}
+
+.main-nav-item:hover {
+  background: #f7f7f7;
+}
+
+.main-nav-item.active {
+  background: #ddf4ff;
+  border-color: #84d8ff;
+  color: #1899d6;
+}
+
+.main-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--nav-color, #1cb0f6) 18%, white);
+  flex-shrink: 0;
+}
+
+.main-nav-icon .material-symbols-outlined {
+  font-size: 1.2rem;
+  color: var(--nav-color, #1cb0f6);
+}
+
+.main-nav-item.active .main-nav-icon {
+  background: color-mix(in srgb, #1899d6 18%, white);
+}
+
+.main-nav-item.active .main-nav-icon .material-symbols-outlined {
+  color: #1899d6;
+}
+
+.main-nav-label {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Right sidebar stats bar (no language flag) ── */
+.main-nav-stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 8px 0 16px;
+  flex-wrap: wrap;
+}
+
+.stats-bar-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 2px solid #e5e5e5;
+  background: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #4b4b4b;
+  cursor: default;
+}
+
+button.stats-bar-item {
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+button.stats-bar-item:hover {
+  background: #f7f7f7;
+  border-color: #d0d0d0;
+}
+
+.stats-bar-item .material-symbols-outlined {
+  font-size: 1.2rem;
+}
+
+.stats-bar-streak .material-symbols-outlined {
+  color: #ff9600;
+}
+
+.stats-bar-xp .material-symbols-outlined {
+  color: #1cb0f6;
+}
+
+.stats-bar-level {
+  border-color: transparent;
+  font-weight: 900;
+}
+
+/* ── Desktop mode cards (Duolingo-style center content) ── */
+.desktop-mode-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mode-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #fff;
+  border: 2px solid #e5e5e5;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    rgba(0, 0, 0, 0.015) 8px,
+    rgba(0, 0, 0, 0.015) 9px
+  );
+}
+
+.mode-card:hover {
+  border-color: #d0d0d0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.mode-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+.mode-card-icon .material-symbols-outlined {
+  font-size: 1.6rem;
+}
+
+.mode-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.mode-card-kicker {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #1cb0f6;
+  margin-bottom: 4px;
+}
+
+.mode-card-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #3c3c3c;
+  margin-bottom: 4px;
+}
+
+.mode-card-status {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #777;
+}
+
+.mode-card-status-done::before {
+  content: '✓ ';
+  color: #58cc02;
+  font-weight: 800;
+}
+
+.mode-card-action {
+  flex-shrink: 0;
+  padding: 10px 18px;
+  border: 2px solid #84d8ff;
+  border-radius: 12px;
+  background: #fff;
+  color: #1899d6;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.mode-card-action:hover {
+  background: #ddf4ff;
+}
+
+/* ── Desktop layout: hide old bento cards, show mode cards ── */
+@media (min-width: 769px) {
+  .desktop-mode-cards {
+    display: flex;
+  }
+
+  .bento-top-row,
+  .bento-learning-row,
+  .bento-progress-row,
+  .bento-mixed-row,
+  .bento-grade-row {
+    display: none !important;
+  }
+
+  body:has(.dashboard-layout) .main-header,
+  body:has(.dashboard-layout) .main-footer {
+    display: none;
+  }
+
+  body:has(.dashboard-layout) .app-container {
+    max-width: none;
+    padding: 16px 24px 0;
+  }
+
+  .dashboard-layout {
+    max-width: 1200px;
+    grid-template-columns: 220px minmax(0, 1fr) 260px;
+    gap: 32px;
+    padding: 0;
+  }
+
+  .dashboard-left-sidebar {
+    border-right: 2px solid #e5e5e5;
+    padding-right: 16px;
+    position: sticky;
+    top: 16px;
+    align-self: start;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+  }
+
+  .dashboard-right-sidebar {
+    position: sticky;
+    top: 16px;
+    align-self: start;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav-sidebar,
+  .main-nav-stats-bar,
+  .desktop-mode-cards {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .dashboard-layout {
+    grid-template-columns: 200px minmax(0, 1fr) 220px;
+    gap: 20px;
+  }
+
+  .main-nav-brand-text {
+    display: none;
+  }
+
+  .mode-card {
+    padding: 16px 18px;
+    gap: 12px;
+  }
+
+  .mode-card-action {
+    padding: 8px 12px;
+    font-size: 0.72rem;
+  }
+}

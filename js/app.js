@@ -247,6 +247,9 @@
           btn.classList.remove('active');
         }
       });
+      if (typeof MainNav !== 'undefined' && MainNav.setActive) {
+        MainNav.setActive();
+      }
     },
     
     filterByLevel: function(level) {

@@ -298,15 +298,12 @@
       }
 
       // Build sidebars
-      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
+      var sidebars = { left: '', right: '' };
       if (typeof BentoGrid !== 'undefined') {
-        leftSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(window.EXAMS_DATA[AppState.currentLevel || 'C1'] || []);
+        sidebars = BentoGrid._buildDashboardSidebars(window.EXAMS_DATA[AppState.currentLevel || 'C1'] || [], { includeGradeTracker: true });
       }
-      var rightSidebarContent = '';
-      if (typeof BentoGrid !== 'undefined') {
-        rightSidebarContent = BentoGrid._buildStreakSidebarHtml();
-        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
-      }
+      var leftSidebarContent = sidebars.left;
+      var rightSidebarContent = sidebars.right;
 
       content.innerHTML =
         '<div class="dashboard-layout">' +

@@ -18,6 +18,10 @@
 
       var html = '<div class="bento-grid">';
 
+      if (typeof MainNav !== 'undefined') {
+        html += MainNav.buildDesktopModeCardsHtml(exams);
+      }
+
       html += this._renderMobileAppHero(level, exams);
 
       html += '<section class="mobile-learn-pane" id="mobileLearnPane">';
@@ -55,7 +59,7 @@
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
 
       return '<section class="mobile-app-hero">' +
-        '<div class="mobile-app-kicker">EngagEd</div>' +
+        '<div class="mobile-app-kicker">Sune English</div>' +
         '<h1>Hi, ' + this._escapeHTML(name.split(' ')[0]) + '</h1>' +
         '<p>Choose your next move for ' + this._escapeHTML(level) + '.</p>' +
         '<div class="mobile-app-pill-row">' +
@@ -1068,16 +1072,12 @@
       });
 
       // Build sidebars like main dashboard
-      var leftSidebarContent = typeof BentoGrid !== 'undefined' ? BentoGrid._buildLevelSelectorSidebarHtml() : '';
+      var sidebars = { left: '', right: '' };
       if (typeof BentoGrid !== 'undefined') {
-        leftSidebarContent += BentoGrid._buildGradeTrackerSidebarHtml(exams);
+        sidebars = BentoGrid._buildDashboardSidebars(exams, { includeBasecamp: true });
       }
-      var rightSidebarContent = '';
-      if (typeof BentoGrid !== 'undefined') {
-        rightSidebarContent = BentoGrid._buildContinueBasecampHtml(exams);
-        rightSidebarContent += BentoGrid._buildStreakSidebarHtml();
-        rightSidebarContent += BentoGrid._buildCalendarSidebarHtml();
-      }
+      var leftSidebarContent = sidebars.left;
+      var rightSidebarContent = sidebars.right;
 
       content.innerHTML =
         '<div class="dashboard-layout">' +
@@ -1195,29 +1195,42 @@
     },
 
     _buildLevelSelectorSidebarHtml: function() {
-      var currentLevel = AppState.currentLevel || 'C1';
-
-      // Level-specific badge colors
-      var lc = _levelColors[currentLevel] || _levelColors['C1'];
-
-      var exams = window.EXAMS_DATA[currentLevel] || [];
-
-      // "YOU ARE STUDYING" header + level badge
-      var html = '<div class="sidebar-widget" style="background:transparent;box-shadow:none;border:none;padding:0;">' +
-        '<div style="font-size:0.78rem;font-weight:700;color:#5a7a9a;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;text-align:center;">' + 'You are studying' + '</div>' +
-        '<div class="sidebar-level-badge" data-level="' + currentLevel + '" onclick="BentoGrid.openMobileLevelModal()" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();BentoGrid.openMobileLevelModal()}" role="button" tabindex="0" aria-haspopup="dialog" style="cursor:pointer;background:' + lc.bg + '">' +
-          '<div class="sidebar-level-badge-label" style="color:' + lc.label + '">' + 'Level' + '</div>' +
-          '<div class="sidebar-level-badge-code" style="color:' + lc.code + '">' + currentLevel + '</div>' +
-        '</div>';
-
-      // Widget: Next Exam in progress (moved from right sidebar)
-      var nextLesson = BentoGrid._findNextLesson(exams);
-      if (nextLesson) {
-        html += BentoGrid._buildNextLessonLeftHtml(nextLesson);
+      if (typeof MainNav !== 'undefined') {
+        return MainNav.buildSidebarHtml();
       }
+      var currentLevel = AppState.currentLevel || 'C1';
+      var lc = _levelColors[currentLevel] || _levelColors['C1'];
+      return '<div class="sidebar-widget" style="background:transparent;box-shadow:none;border:none;padding:0;">' +
+        '<div class="sidebar-level-badge" data-level="' + currentLevel + '" onclick="BentoGrid.openMobileLevelModal()" style="cursor:pointer;background:' + lc.bg + '">' +
+          '<div class="sidebar-level-badge-code" style="color:' + lc.code + '">' + currentLevel + '</div>' +
+        '</div></div>';
+    },
 
-      html += '</div>';
-      return html;
+    _buildRightSidebarHeaderHtml: function() {
+      if (typeof MainNav !== 'undefined') {
+        return MainNav.buildStatsBarHtml();
+      }
+      return '';
+    },
+
+    _buildDashboardSidebars: function(exams, options) {
+      options = options || {};
+      exams = exams || [];
+      var left = this._buildLevelSelectorSidebarHtml();
+      var right = this._buildRightSidebarHeaderHtml();
+      if (options.includeGradeTracker !== false) {
+        right += this._buildGradeTrackerSidebarHtml(exams);
+      }
+      if (options.includeNextLesson) {
+        var nextLesson = this._findNextLesson(exams);
+        if (nextLesson) right += this._buildNextLessonLeftHtml(nextLesson);
+      }
+      if (options.includeBasecamp) {
+        right += this._buildContinueBasecampHtml(exams);
+      }
+      right += this._buildStreakSidebarHtml();
+      right += this._buildCalendarSidebarHtml();
+      return { left: left, right: right };
     },
 
     _toggleUnit: function(el) {
