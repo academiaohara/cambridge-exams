@@ -80,6 +80,17 @@
       _pendingNewUser = false;
       this.hide();
 
+      if (!AppState.isAuthenticated && !AppState.isGuest) {
+        AppState.isGuest = true;
+        if (typeof Auth !== 'undefined') Auth.renderSignInButton();
+      }
+
+      var app = document.getElementById('app');
+      if (app) app.style.display = '';
+      if (typeof Landing !== 'undefined') Landing.hide();
+
+      history.replaceState({ view: 'dashboard' }, '', '/');
+
       if (typeof AppLoadingScreen !== 'undefined') {
         AppLoadingScreen.show({
           minMs: 2500,
@@ -95,9 +106,15 @@
     maybeShowAfterAuth: function () {
       if (!this.needsShow()) {
         if (typeof Dashboard !== 'undefined') Dashboard.render();
+        history.replaceState({ view: 'dashboard' }, '', '/');
         return;
       }
-      this.show();
+      history.replaceState({ view: 'welcome' }, '', '/welcome');
+      if (typeof App !== 'undefined' && App.showWelcome) {
+        App.showWelcome();
+      } else {
+        this.show();
+      }
     }
   };
 })();

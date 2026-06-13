@@ -103,6 +103,9 @@
     render: function(expandExamId) {
       const content = document.getElementById('main-content');
       if (!content) return;
+      if (typeof Landing !== 'undefined') Landing.hide();
+      var app = document.getElementById('app');
+      if (app) app.style.display = '';
       if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();
       AppState.currentView = 'dashboard';
       if (typeof App !== 'undefined' && App.updateHeaderModeButtons) App.updateHeaderModeButtons();

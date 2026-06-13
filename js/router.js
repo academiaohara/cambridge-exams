@@ -24,6 +24,18 @@
       if (!state || !state.view) return '/';
 
       switch (state.view) {
+        case 'landing':
+          return '/';
+
+        case 'welcome':
+          return '/welcome';
+
+        case 'login':
+          return '/login';
+
+        case 'register':
+          return '/register';
+
         case 'dashboard':
           return '/';
 
@@ -127,10 +139,15 @@
       var segments = path.split('/').filter(Boolean);
 
       if (segments.length === 0) {
-        return { view: 'dashboard' };
+        return { view: 'landing' };
       }
 
       var first = segments[0].toLowerCase();
+
+      // ── Auth & onboarding pages ───────────────────
+      if (first === 'welcome')  return { view: 'welcome' };
+      if (first === 'login')    return { view: 'login' };
+      if (first === 'register') return { view: 'register' };
 
       // ── Static pages ──────────────────────────────
       if (first === 'profile')                            return { view: 'profile' };

@@ -3,6 +3,178 @@
   var STATIC_PAGE_VIEWS = ['terms', 'about', 'contact', 'privacy', 'faq'];
 
   window.App = {
+    hasAppAccess: function () {
+      if (AppState.isAuthenticated) return true;
+      if (AppState.isGuest) {
+        try {
+          return localStorage.getItem('engaged_onboarding_done_v1') === '1';
+        } catch (e) {
+          return false;
+        }
+      }
+      return false;
+    },
+
+    handleRoute: function (state) {
+      state = state || { view: 'landing' };
+
+      if (state.view !== 'login' && state.view !== 'register') {
+        if (typeof Auth !== 'undefined') Auth._hideAuthScreen();
+      }
+      if (state.view !== 'landing') {
+        if (typeof Landing !== 'undefined') Landing.hide();
+      }
+      if (state.view !== 'welcome') {
+        if (typeof Onboarding !== 'undefined') Onboarding.hide();
+      }
+
+      if (state.view === 'login') {
+        if (this.hasAppAccess()) {
+          Dashboard.render();
+          history.replaceState({ view: 'dashboard' }, '', '/');
+          return;
+        }
+        if (typeof Auth !== 'undefined') Auth.showLoginPage();
+        return;
+      }
+      if (state.view === 'register') {
+        if (this.hasAppAccess()) {
+          Dashboard.render();
+          history.replaceState({ view: 'dashboard' }, '', '/');
+          return;
+        }
+        if (typeof Auth !== 'undefined') Auth.showRegisterPage();
+        return;
+      }
+      if (state.view === 'welcome') {
+        this.showWelcome();
+        return;
+      }
+      if (state.view === 'landing') {
+        if (this.hasAppAccess()) {
+          Dashboard.render();
+          history.replaceState({ view: 'dashboard' }, '', '/');
+        } else if (typeof Landing !== 'undefined') {
+          Landing.render();
+        }
+        return;
+      }
+
+      if (!this.hasAppAccess() && state.view !== 'exercise') {
+        if (typeof Landing !== 'undefined') Landing.render();
+        history.replaceState({ view: 'landing' }, '', '/');
+        return;
+      }
+
+      this._renderAppView(state);
+    },
+
+    showWelcome: function () {
+      if (typeof Landing !== 'undefined') Landing.hide();
+      if (typeof Auth !== 'undefined') Auth._hideAuthScreen();
+
+      if (this.hasAppAccess() && typeof Onboarding !== 'undefined' && !Onboarding.needsShow()) {
+        Dashboard.render();
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        return;
+      }
+
+      AppState.currentView = 'welcome';
+      var app = document.getElementById('app');
+      if (app) app.style.display = 'none';
+
+      if (typeof Onboarding !== 'undefined') {
+        Onboarding.show();
+      }
+    },
+
+    afterSuccessfulAuth: function () {
+      if (typeof Onboarding !== 'undefined' && Onboarding.needsShow()) {
+        history.replaceState({ view: 'welcome' }, '', '/welcome');
+        this.showWelcome();
+      } else {
+        Dashboard.render();
+        history.replaceState({ view: 'dashboard' }, '', '/');
+      }
+    },
+
+    _renderAppView: function (state) {
+      if (typeof Landing !== 'undefined') Landing.hide();
+      var app = document.getElementById('app');
+      if (app) app.style.display = '';
+
+      if (!state || state.view === 'dashboard') {
+        if (AppState.currentExercise) {
+          Exercise.closeExercise({ skipHistory: true });
+        } else {
+          Dashboard.render();
+        }
+      } else if (state.view === 'subpage' && state.mode) {
+        Dashboard.renderSubpage(state.mode, state.expandExamId || null);
+      } else if (state.view === 'exercise' && state.examId && state.section && state.part) {
+        if (state.level) AppState.currentLevel = state.level;
+        if (state.mode) {
+          AppState.currentMode = state.mode;
+          localStorage.setItem('preferred_mode', state.mode);
+        }
+        Exercise.openPart(state.examId, state.section, state.part);
+      } else if (state.view === 'profile') {
+        Dashboard.render();
+        if (typeof UserProfile !== 'undefined') UserProfile.renderProfileSection();
+      } else if (state.view === 'premium') {
+        Dashboard.render();
+        if (typeof UserProfile !== 'undefined') {
+          if (typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI()) {
+            UserProfile.renderProfileSection();
+          } else {
+            UserProfile.renderPremiumSection();
+          }
+        }
+      } else if (state.view === 'gradeEvolution') {
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openGradeEvolution();
+      } else if (state.view === 'quicksteps') {
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openQuickstepsChooser();
+      } else if (state.view === 'crosswordList') {
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openCrosswordList();
+      } else if (state.view === 'fastExercises') {
+        Dashboard.render();
+        if (typeof FastExercises !== 'undefined') FastExercises.openCategories();
+      } else if (state.view === 'fastExerciseCategory' && state.categoryId) {
+        Dashboard.render();
+        if (typeof FastExercises !== 'undefined') FastExercises.openCategory(state.categoryId);
+      } else if (state.view === 'fastExercisePoint' && state.categoryId && state.levelId && state.lessonId && typeof state.pointIndex !== 'undefined') {
+        Dashboard.render();
+        if (typeof FastExercises !== 'undefined') FastExercises.openPoint(state.categoryId, state.levelId, state.lessonId, state.pointIndex);
+      } else if (state.view === 'course') {
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons();
+      } else if (state.view === 'courseTheory') {
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseTheory(state.level);
+      } else if (state.view === 'courseBlock' && state.blockKey) {
+        Dashboard.render();
+        if (state.level) AppState.currentLevel = state.level;
+        if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseBlock(state.blockKey);
+      } else if (state.view === 'courseUnit' && state.unitId) {
+        Dashboard.render();
+        if (state.level) AppState.currentLevel = state.level;
+        if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseUnit(state);
+      } else if (state.view === 'tips') {
+        Dashboard.render();
+        if (typeof TipsPage !== 'undefined') TipsPage._renderHome();
+      } else if (state.view === 'tipsSkill' && state.level && state.skill) {
+        Dashboard.render();
+        if (typeof TipsPage !== 'undefined') TipsPage._renderSkill(state.level, state.skill);
+      } else if (STATIC_PAGE_VIEWS.indexOf(state.view) !== -1) {
+        if (typeof StaticPages !== 'undefined') StaticPages.render(state.view, false);
+      } else {
+        Dashboard.render();
+      }
+    },
+
     init: async function() {
       try {
       console.log('🚀 Iniciando aplicación v' + CONFIG.APP_VERSION);
@@ -133,11 +305,21 @@
         if (typeof TipsPage !== 'undefined') TipsPage.openTipsSkill(initialState.level, initialState.skill);
       } else if (STATIC_PAGE_VIEWS.indexOf(initialState.view) !== -1) {
         if (typeof StaticPages !== 'undefined') StaticPages.render(initialState.view, false);
+      } else if (initialState.view === 'landing' || initialState.view === 'welcome' ||
+                 initialState.view === 'login' || initialState.view === 'register') {
+        this.handleRoute(initialState);
+        history.replaceState(initialState, '', Router.stateToPath(initialState));
+      } else if (this.hasAppAccess()) {
+        this._renderAppView(initialState);
+        if (initialState.view === 'dashboard' || initialState.view === 'subpage') {
+          history.replaceState(initialState, '', Router.stateToPath(initialState));
+        }
       } else {
-        // Default: dashboard
-        Dashboard.render();
-        history.replaceState({ view: 'dashboard' }, '', '/');
+        this.handleRoute({ view: 'landing' });
+        history.replaceState({ view: 'landing' }, '', '/');
       }
+
+      if (typeof Auth !== 'undefined') Auth.renderSignInButton();
 
       // Update header mode buttons
       this.updateHeaderModeButtons();
@@ -145,62 +327,20 @@
       // Handle browser back/forward buttons
       window.addEventListener('popstate', function(e) {
         var state = e.state;
-        if (!state || state.view === 'dashboard') {
-          if (AppState.currentExercise) {
-            Exercise.closeExercise({ skipHistory: true });
-          } else {
-            Dashboard.render();
-          }
-        } else if (state.view === 'subpage' && state.mode) {
-          Dashboard.renderSubpage(state.mode, state.expandExamId || null);
-        } else if (state.view === 'exercise' && state.examId && state.section && state.part) {
-          if (state.level) AppState.currentLevel = state.level;
-          if (state.mode) {
-            AppState.currentMode = state.mode;
-            localStorage.setItem('preferred_mode', state.mode);
-          }
-          Exercise.openPart(state.examId, state.section, state.part);
-        } else if (state.view === 'profile') {
-          if (typeof UserProfile !== 'undefined') UserProfile.renderProfileSection();
-        } else if (state.view === 'premium') {
-          if (typeof UserProfile !== 'undefined') {
-            if (typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI()) {
-              UserProfile.renderProfileSection();
-            } else {
-              UserProfile.renderPremiumSection();
-            }
-          }
-        } else if (state.view === 'gradeEvolution') {
-          if (typeof BentoGrid !== 'undefined') BentoGrid.openGradeEvolution();
-        } else if (state.view === 'quicksteps') {
-          if (typeof BentoGrid !== 'undefined') BentoGrid.openQuickstepsChooser();
-        } else if (state.view === 'crosswordList') {
-          if (typeof BentoGrid !== 'undefined') BentoGrid.openCrosswordList();
-        } else if (state.view === 'fastExercises') {
-          if (typeof FastExercises !== 'undefined') FastExercises.openCategories();
-        } else if (state.view === 'fastExerciseCategory' && state.categoryId) {
-          if (typeof FastExercises !== 'undefined') FastExercises.openCategory(state.categoryId);
-        } else if (state.view === 'fastExercisePoint' && state.categoryId && state.levelId && state.lessonId && typeof state.pointIndex !== 'undefined') {
-          if (typeof FastExercises !== 'undefined') FastExercises.openPoint(state.categoryId, state.levelId, state.lessonId, state.pointIndex);
-        } else if (state.view === 'course') {
-          if (state.level) AppState.currentLevel = state.level;
-          if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons();
-        } else if (state.view === 'courseTheory') {
-          if (state.level) AppState.currentLevel = state.level;
-          if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseTheory(state.level);
-        } else if (state.view === 'courseBlock' && state.blockKey) {
-          if (state.level) AppState.currentLevel = state.level;
-          if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseBlock(state.blockKey);
-        } else if (state.view === 'courseUnit' && state.unitId) {
-          if (state.level) AppState.currentLevel = state.level;
-          if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseUnit(state);
-        } else if (state.view === 'tips') {
-          if (typeof TipsPage !== 'undefined') TipsPage._renderHome();
-        } else if (state.view === 'tipsSkill' && state.level && state.skill) {
-          if (typeof TipsPage !== 'undefined') TipsPage._renderSkill(state.level, state.skill);
-        } else if (STATIC_PAGE_VIEWS.indexOf(state.view) !== -1) {
-          if (typeof StaticPages !== 'undefined') StaticPages.render(state.view, false);
+        if (!state) {
+          App.handleRoute({ view: 'landing' });
+          return;
         }
+        if (state.view === 'landing' || state.view === 'welcome' ||
+            state.view === 'login' || state.view === 'register') {
+          App.handleRoute(state);
+          return;
+        }
+        if (state.view === 'dashboard') {
+          App._renderAppView(state);
+          return;
+        }
+        App._renderAppView(state);
       });
       
       console.log('✅ App lista');
