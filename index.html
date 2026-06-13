@@ -399,11 +399,6 @@
 
     <!-- Onboarding: level selection (shown once for new users / guests) -->
     <div id="onboarding-screen" class="onboarding-screen" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="onboarding-title">
-      <div class="onboarding-top">
-        <div class="onboarding-progress" aria-hidden="true">
-          <div class="onboarding-progress-fill"></div>
-        </div>
-      </div>
       <div class="onboarding-body">
         <div class="onboarding-prompt">
           <img src="Assets/images/sunelogoreduced.svg" alt="" class="onboarding-mascot" aria-hidden="true">
@@ -411,7 +406,7 @@
             <p>Which exam level are you preparing for?</p>
           </div>
         </div>
-        <h2 id="onboarding-title" class="sr-only">Choose your exam level</h2>
+        <h2 id="onboarding-title" class="sr-only">Elige tu nivel de examen</h2>
         <div class="onboarding-options" role="radiogroup" aria-labelledby="onboarding-title">
           <button type="button" class="onboarding-option" data-level="B1" onclick="Onboarding.selectLevel('B1')">
             <span class="onboarding-option-icon" aria-hidden="true">
@@ -420,8 +415,8 @@
               <span class="onboarding-bar"></span>
             </span>
             <span class="onboarding-option-text">
-              <strong>B1 Preliminary</strong>
-              <span>I'm starting with intermediate English</span>
+              <strong class="onboarding-level-name">Principiante</strong>
+              <span class="onboarding-level-equiv">B1 Preliminary</span>
             </span>
           </button>
           <button type="button" class="onboarding-option" data-level="B2" onclick="Onboarding.selectLevel('B2')">
@@ -431,8 +426,8 @@
               <span class="onboarding-bar"></span>
             </span>
             <span class="onboarding-option-text">
-              <strong>B2 First</strong>
-              <span>I have solid upper-intermediate English</span>
+              <strong class="onboarding-level-name">Intermedio</strong>
+              <span class="onboarding-level-equiv">B2 First</span>
             </span>
           </button>
           <button type="button" class="onboarding-option" data-level="C1" onclick="Onboarding.selectLevel('C1')">
@@ -442,8 +437,8 @@
               <span class="onboarding-bar onboarding-bar--filled"></span>
             </span>
             <span class="onboarding-option-text">
-              <strong>C1 Advanced</strong>
-              <span>I'm aiming for advanced proficiency</span>
+              <strong class="onboarding-level-name">Avanzado</strong>
+              <span class="onboarding-level-equiv">C1 Advanced</span>
             </span>
           </button>
         </div>

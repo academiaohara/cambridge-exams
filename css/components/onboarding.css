@@ -34,33 +34,13 @@ body.onboarding-open #app {
   visibility: hidden;
 }
 
-.onboarding-top {
-  padding: 16px 20px 0;
-  flex-shrink: 0;
-}
-
-.onboarding-progress {
-  height: 14px;
-  border-radius: 999px;
-  background: #e5e5e5;
-  overflow: hidden;
-}
-
-.onboarding-progress-fill {
-  height: 100%;
-  width: 100%;
-  border-radius: inherit;
-  background: #58cc02;
-  transform-origin: left center;
-}
-
 .onboarding-body {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px 20px 100px;
+  padding: 32px 20px 100px;
   max-width: 560px;
   width: 100%;
   margin: 0 auto;
@@ -150,9 +130,9 @@ body.onboarding-open #app {
 }
 
 .onboarding-option.selected {
-  border-color: #1cb0f6;
-  background: #ddf4ff;
-  box-shadow: 0 0 0 1px #1cb0f6;
+  border-color: #f47417;
+  background: #fff8f3;
+  box-shadow: 0 0 0 1px #f47417;
 }
 
 .onboarding-option-icon {
@@ -165,50 +145,48 @@ body.onboarding-open #app {
 
 .onboarding-bar {
   width: 6px;
-  height: 12px;
   border-radius: 3px;
   background: #e5e5e5;
 }
 
-.onboarding-bar--filled {
-  background: #1cb0f6;
+.onboarding-bar:nth-child(1) {
+  height: 12px;
+}
+
+.onboarding-bar:nth-child(2) {
   height: 20px;
 }
 
-.onboarding-option:nth-child(2) .onboarding-bar--filled:nth-child(2) {
-  height: 24px;
-}
-
-.onboarding-option:nth-child(3) .onboarding-bar--filled {
-  height: 16px;
-}
-
-.onboarding-option:nth-child(3) .onboarding-bar--filled:nth-child(2) {
-  height: 22px;
-}
-
-.onboarding-option:nth-child(3) .onboarding-bar--filled:nth-child(3) {
+.onboarding-bar:nth-child(3) {
   height: 28px;
+}
+
+.onboarding-bar--filled {
+  background: #f47417;
 }
 
 .onboarding-option-text {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: 1;
   min-width: 0;
 }
 
-.onboarding-option-text strong {
+.onboarding-level-name {
   font-size: 1rem;
   font-weight: 700;
   color: #3c3c3c;
 }
 
-.onboarding-option-text span {
+.onboarding-level-equiv {
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   color: #777;
-  line-height: 1.35;
+  text-align: right;
+  flex-shrink: 0;
 }
 
 .onboarding-footer {
@@ -228,7 +206,7 @@ body.onboarding-open #app {
   padding: 14px 28px;
   border: none;
   border-radius: 16px;
-  background: #58cc02;
+  background: #f47417;
   color: #fff;
   font-family: inherit;
   font-size: 0.95rem;
@@ -236,7 +214,7 @@ body.onboarding-open #app {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 4px 0 #46a302;
+  box-shadow: 0 4px 0 #d45f0a;
   transition: filter 0.15s, transform 0.1s;
 }
 
@@ -246,7 +224,7 @@ body.onboarding-open #app {
 
 .onboarding-continue-btn:active:not(:disabled) {
   transform: translateY(2px);
-  box-shadow: 0 2px 0 #46a302;
+  box-shadow: 0 2px 0 #d45f0a;
 }
 
 .onboarding-continue-btn:disabled {
