@@ -34,6 +34,14 @@ body.onboarding-open #app {
   visibility: hidden;
 }
 
+.onboarding-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 16px 20px;
+  flex-shrink: 0;
+}
+
 .onboarding-body {
   flex: 1;
   display: flex;
@@ -59,7 +67,6 @@ body.onboarding-open #app {
   width: 96px;
   height: auto;
   flex-shrink: 0;
-  transform: scaleX(-1);
 }
 
 .onboarding-speech-bubble {

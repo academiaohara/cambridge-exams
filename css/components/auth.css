@@ -37,8 +37,16 @@ body.auth-screen-open #app {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   padding: 16px 20px;
   flex-shrink: 0;
+}
+
+.auth-screen-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
 }
 
 .auth-screen-close {
