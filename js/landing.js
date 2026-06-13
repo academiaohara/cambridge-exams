@@ -27,7 +27,7 @@
           '</div>' +
           '<div class="landing-content-col">' +
             '<h1 class="landing-title">' +
-              'Learn English <span class="landing-title-accent">with confidence</span>' +
+              'Learn English<br>with <span class="landing-title-accent">confidence</span>' +
             '</h1>' +
             '<p class="landing-subtitle">Fun, simple lessons with your smart fox guide.</p>' +
             '<div class="landing-actions">' +
