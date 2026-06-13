@@ -1,5 +1,5 @@
 // js/auth.js
-// Authentication module — Google OAuth via Supabase
+// Authentication module — Google OAuth + email/password via Supabase
 (function () {
   'use strict';
 
@@ -7,6 +7,8 @@
     _client: null,
     _session: null,
     _authDismissible: false,
+    _currentMode: 'login',
+    _hideTimeout: null,
 
     initClient: function () {
       if (!window.supabase) {
@@ -25,8 +27,8 @@
 
     init: async function () {
       if (!this._client) { this.initClient(); }
+
       if (!this._client) {
-        this._showAuthScreen({ dismissible: false });
         return;
       }
 
@@ -35,8 +37,6 @@
         this._session = data.session;
         this._persistToken(data.session.access_token);
         await this._onSignIn(data.session.user);
-      } else {
-        this._showAuthScreen({ dismissible: false });
       }
 
       this._client.auth.onAuthStateChange(async (event, session) => {
@@ -49,7 +49,6 @@
           this._session = null;
           this._clearToken();
           this._onSignOut();
-          this._showAuthScreen({ dismissible: false });
         } else if (event === 'TOKEN_REFRESHED' && session) {
           this._session = session;
           this._persistToken(session.access_token);
@@ -57,9 +56,55 @@
       });
     },
 
+    navigateTo: function (path) {
+      var state = Router.pathToState(path);
+      history.pushState(state, '', Router.stateToPath(state));
+      if (typeof App !== 'undefined' && App.handleRoute) {
+        App.handleRoute(state);
+      }
+    },
+
+    showLoginPage: function () {
+      this._currentMode = 'login';
+      this._configureAuthUI('login');
+      this._showAuthScreen({ dismissible: false });
+    },
+
+    showRegisterPage: function () {
+      this._currentMode = 'register';
+      this._configureAuthUI('register');
+      this._showAuthScreen({ dismissible: false });
+    },
+
+    _configureAuthUI: function (mode) {
+      var isLogin = mode === 'login';
+      var title = document.getElementById('auth-title');
+      var loginFields = document.getElementById('auth-login-fields');
+      var registerFields = document.getElementById('auth-register-fields');
+      var googleLabel = document.getElementById('auth-google-label');
+      var headerLoginLink = document.getElementById('auth-header-login-link');
+      var switchText = document.getElementById('auth-switch-text');
+
+      if (title) title.textContent = isLogin ? 'Log in' : 'Create your account';
+      if (loginFields) loginFields.style.display = isLogin ? '' : 'none';
+      if (registerFields) registerFields.style.display = isLogin ? 'none' : '';
+      if (googleLabel) googleLabel.textContent = isLogin ? 'Log in with Google' : 'Sign up with Google';
+      if (headerLoginLink) headerLoginLink.style.display = isLogin ? 'none' : '';
+      if (switchText) {
+        switchText.style.display = isLogin ? '' : 'none';
+        switchText.innerHTML = isLogin
+          ? 'Don\'t have an account? <a href="/register" onclick="event.preventDefault(); Auth.navigateTo(\'/register\')">Sign up</a>'
+          : '';
+      }
+      this._clearAuthError();
+    },
+
     signInWithGoogle: async function () {
-      if (!this._client) { return; }
-      this._setAuthLoading(true);
+      if (!this._client) {
+        this._showAuthError('Authentication is not configured.');
+        return;
+      }
+      this._setAuthLoading(true, 'Redirecting to Google…');
       const { error } = await this._client.auth.signInWithOAuth({
         provider: 'google',
         options: { redirectTo: window.location.origin }
@@ -68,6 +113,98 @@
         console.error('[Auth] signInWithGoogle error:', error.message);
         this._setAuthLoading(false);
         this._showAuthError(error.message);
+      }
+    },
+
+    signInWithEmail: async function () {
+      if (!this._client) {
+        this._showAuthError('Authentication is not configured.');
+        return;
+      }
+
+      var emailEl = document.getElementById('auth-email');
+      var passwordEl = document.getElementById('auth-password');
+      var email = emailEl ? emailEl.value.trim() : '';
+      var password = passwordEl ? passwordEl.value : '';
+
+      if (!email || !password) {
+        this._showAuthError('Please enter your email and password.');
+        return;
+      }
+
+      this._setAuthLoading(true, 'Logging in…');
+      this._clearAuthError();
+
+      var result = await this._client.auth.signInWithPassword({ email: email, password: password });
+      this._setAuthLoading(false);
+
+      if (result.error) {
+        console.error('[Auth] signInWithEmail error:', result.error.message);
+        this._showAuthError(result.error.message);
+        return;
+      }
+
+      this._hideAuthScreen();
+      if (typeof App !== 'undefined' && App.afterSuccessfulAuth) {
+        App.afterSuccessfulAuth();
+      }
+    },
+
+    signUpWithEmail: async function () {
+      if (!this._client) {
+        this._showAuthError('Authentication is not configured.');
+        return;
+      }
+
+      var nameEl = document.getElementById('auth-name');
+      var emailEl = document.getElementById('auth-register-email');
+      var passwordEl = document.getElementById('auth-register-password');
+      var confirmEl = document.getElementById('auth-register-password-confirm');
+
+      var name = nameEl ? nameEl.value.trim() : '';
+      var email = emailEl ? emailEl.value.trim() : '';
+      var password = passwordEl ? passwordEl.value : '';
+      var confirm = confirmEl ? confirmEl.value : '';
+
+      if (!name || !email || !password) {
+        this._showAuthError('Please fill in all fields.');
+        return;
+      }
+      if (password !== confirm) {
+        this._showAuthError('Passwords do not match.');
+        return;
+      }
+      if (password.length < 6) {
+        this._showAuthError('Password must be at least 6 characters.');
+        return;
+      }
+
+      this._setAuthLoading(true, 'Creating account…');
+      this._clearAuthError();
+
+      var result = await this._client.auth.signUp({
+        email: email,
+        password: password,
+        options: {
+          data: { full_name: name, name: name }
+        }
+      });
+      this._setAuthLoading(false);
+
+      if (result.error) {
+        console.error('[Auth] signUpWithEmail error:', result.error.message);
+        this._showAuthError(result.error.message);
+        return;
+      }
+
+      if (result.data && result.data.user && !result.data.session) {
+        this._showAuthError('Check your email to confirm your account, then log in.');
+        return;
+      }
+
+      this._hideAuthScreen();
+      if (typeof App !== 'undefined' && App.afterSuccessfulAuth) {
+        App.afterSuccessfulAuth();
       }
     },
 
@@ -135,6 +272,7 @@
     closeAuthScreen: function () {
       if (!this._authDismissible) return;
       this._hideAuthScreen();
+      this.navigateTo('/');
     },
 
     _persistToken: function (token) {
@@ -183,8 +321,6 @@
       if (typeof AccessControl !== 'undefined') {
         AccessControl.refreshPromoQuotas();
       }
-
-      this._afterAuthEntry();
     },
 
     _afterAuthEntry: function () {
@@ -215,22 +351,30 @@
 
     _finishSignOutUI: function () {
       this._onSignOut();
-      this._showAuthScreen({ dismissible: false });
+      this._hideAuthScreen();
       this.renderSignInButton();
-      if (typeof loadDashboard === 'function') {
-        loadDashboard();
-      } else if (typeof Dashboard !== 'undefined') {
-        Dashboard.render();
+      if (typeof Landing !== 'undefined') {
+        Landing.render();
       }
+      history.replaceState({ view: 'landing' }, '', '/');
     },
 
     _showAuthScreen: function (options) {
       options = options || {};
       this._authDismissible = !!options.dismissible;
 
+      if (this._hideTimeout) {
+        clearTimeout(this._hideTimeout);
+        this._hideTimeout = null;
+      }
+
+      if (typeof Landing !== 'undefined') Landing.hide();
+
       const screen = document.getElementById('auth-screen');
       const closeBtn = document.getElementById('auth-close-btn');
       if (!screen) return;
+
+      screen.classList.remove('hiding');
 
       if (closeBtn) {
         closeBtn.style.visibility = this._authDismissible ? 'visible' : 'hidden';
@@ -245,34 +389,51 @@
       const screen = document.getElementById('auth-screen');
       if (!screen) return;
 
+      if (this._hideTimeout) {
+        clearTimeout(this._hideTimeout);
+        this._hideTimeout = null;
+      }
+
       screen.classList.remove('visible');
       screen.classList.add('hiding');
-      setTimeout(function () {
+      var self = this;
+      this._hideTimeout = setTimeout(function () {
         screen.style.display = 'none';
         screen.classList.remove('hiding');
         document.body.classList.remove('auth-screen-open');
+        self._hideTimeout = null;
       }, 250);
     },
 
-    // Backward-compatible alias used across the codebase
     _showAuthModal: function () {
-      this._showAuthScreen({ dismissible: true });
+      this.navigateTo('/login');
     },
 
     _hideAuthModal: function () {
       this._hideAuthScreen();
     },
 
-    _setAuthLoading: function (loading) {
+    _setAuthLoading: function (loading, text) {
       const btn = document.getElementById('auth-google-btn');
+      const submitBtn = document.getElementById('auth-submit-btn');
+      const registerBtn = document.getElementById('auth-register-btn');
       const loader = document.getElementById('auth-loader');
+      const loaderText = document.getElementById('auth-loader-text');
       if (btn) { btn.disabled = loading; btn.style.opacity = loading ? '0.6' : '1'; }
-      if (loader) { loader.style.display = loading ? 'flex' : 'none'; }
+      if (submitBtn) submitBtn.disabled = loading;
+      if (registerBtn) registerBtn.disabled = loading;
+      if (loader) loader.style.display = loading ? 'flex' : 'none';
+      if (loaderText && text) loaderText.textContent = text;
     },
 
     _showAuthError: function (message) {
       const el = document.getElementById('auth-error-msg');
       if (el) { el.textContent = message; el.style.display = 'block'; }
+    },
+
+    _clearAuthError: function () {
+      const el = document.getElementById('auth-error-msg');
+      if (el) { el.textContent = ''; el.style.display = 'none'; }
     },
 
     _renderUserWidget: function (user) {
@@ -320,8 +481,8 @@
       var btn = document.createElement('button');
       btn.id = 'header-signin-btn';
       btn.className = 'header-signin-btn';
-      btn.onclick = function () { Auth._showAuthScreen({ dismissible: true }); };
-      btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> <span>' + 'Sign in' + '</span>';
+      btn.onclick = function () { Auth.navigateTo('/login'); };
+      btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> <span>Sign in</span>';
       navGroup.appendChild(btn);
     },
 
