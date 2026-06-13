@@ -327,11 +327,16 @@
     <!-- Full-screen auth — login & register pages -->
     <div id="auth-screen" class="auth-screen" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="auth-title">
       <header class="auth-screen-header">
-        <button type="button" id="auth-close-btn" class="auth-screen-close" onclick="Auth.closeAuthScreen()" aria-label="Close" style="visibility:hidden;">
-          <span class="material-symbols-outlined" aria-hidden="true">close</span>
-        </button>
-        <a href="/login" id="auth-header-login-link" class="auth-screen-header-link" onclick="event.preventDefault(); Auth.navigateTo('/login')" style="display:none;">LOG IN</a>
-        <a href="/register" id="auth-header-signup-link" class="auth-screen-header-link" onclick="event.preventDefault(); Auth.navigateTo('/register')" style="display:none;">SIGN UP</a>
+        <a href="/" class="preauth-brand-link" onclick="event.preventDefault(); Auth.navigateTo('/')">
+          <img src="Assets/images/sunelogoreduced.svg" class="preauth-brand-logo" alt="Sune English">
+        </a>
+        <div class="auth-screen-header-actions">
+          <button type="button" id="auth-close-btn" class="auth-screen-close" onclick="Auth.closeAuthScreen()" aria-label="Close" style="visibility:hidden;">
+            <span class="material-symbols-outlined" aria-hidden="true">close</span>
+          </button>
+          <a href="/login" id="auth-header-login-link" class="auth-screen-header-link" onclick="event.preventDefault(); Auth.navigateTo('/login')" style="display:none;">LOG IN</a>
+          <a href="/register" id="auth-header-signup-link" class="auth-screen-header-link" onclick="event.preventDefault(); Auth.navigateTo('/register')" style="display:none;">SIGN UP</a>
+        </div>
       </header>
       <main class="auth-screen-main">
         <h1 id="auth-title" class="auth-screen-title">Log in</h1>
@@ -394,6 +399,11 @@
 
     <!-- Onboarding: level selection (shown once for new users / guests) -->
     <div id="onboarding-screen" class="onboarding-screen" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="onboarding-title">
+      <header class="onboarding-header">
+        <a href="/" class="preauth-brand-link" onclick="event.preventDefault(); Auth.navigateTo('/')">
+          <img src="Assets/images/sunelogoreduced.svg" class="preauth-brand-logo" alt="Sune English">
+        </a>
+      </header>
       <div class="onboarding-body">
         <div class="onboarding-prompt">
           <img src="Assets/images/Cabezasune.svg" alt="" class="onboarding-mascot" aria-hidden="true">

@@ -17,8 +17,8 @@
       screen.className = 'landing-screen';
       screen.innerHTML =
         '<header class="landing-header">' +
-          '<a href="/" class="landing-logo" onclick="event.preventDefault(); Landing.render()">' +
-            '<span class="landing-logo-text">SUNE</span>' +
+          '<a href="/" class="preauth-brand-link" onclick="event.preventDefault(); Landing.render()">' +
+            '<img src="Assets/images/sunelogoreduced.svg" class="preauth-brand-logo" alt="Sune English">' +
           '</a>' +
         '</header>' +
         '<main class="landing-main">' +

@@ -1,5 +1,19 @@
 /* css/components/landing.css — Marketing landing page */
 
+/* Shared brand mark on pre-auth screens (landing, login, sign up, welcome) */
+.preauth-brand-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.preauth-brand-logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
 .landing-screen {
   position: fixed;
   inset: 0;
@@ -21,21 +35,9 @@ body.landing-open #app {
 
 .landing-header {
   display: flex;
-  justify-content: flex-end;
-  padding: 24px 32px;
+  justify-content: flex-start;
+  padding: 16px 20px;
   flex-shrink: 0;
-}
-
-.landing-logo {
-  text-decoration: none;
-}
-
-.landing-logo-text {
-  font-family: 'Mileast', 'Georgia', serif;
-  font-size: 2.35rem;
-  font-weight: 900;
-  color: #f47417;
-  letter-spacing: 0.06em;
 }
 
 .landing-main {
