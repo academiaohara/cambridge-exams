@@ -243,15 +243,33 @@ body.onboarding-open #app {
 }
 
 @media (max-width: 480px) {
-  .onboarding-prompt {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .onboarding-body {
+    padding: 24px 16px 100px;
   }
 
-  .onboarding-speech-bubble::before,
+  .onboarding-prompt {
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .onboarding-mascot {
+    width: 72px;
+  }
+
+  .onboarding-speech-bubble {
+    padding: 12px 14px;
+  }
+
+  .onboarding-speech-bubble::before {
+    top: 22px;
+  }
+
   .onboarding-speech-bubble::after {
-    display: none;
+    top: 23px;
+  }
+
+  .onboarding-speech-bubble p {
+    font-size: 0.92rem;
   }
 
   .onboarding-footer {
