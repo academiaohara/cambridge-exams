@@ -241,7 +241,6 @@
 
     // ── auth modal ───────────────────────────────────────────────────
     _showAuthModal: function () {
-      if (typeof AppLoadingScreen !== 'undefined') AppLoadingScreen.hide();
       const overlay = document.getElementById('auth-modal-overlay');
       if (overlay) {
         overlay.classList.add('visible');

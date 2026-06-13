@@ -3,6 +3,7 @@
   'use strict';
 
   var DEFAULT_MIN_MS = 5000;
+  var _pageStart = Date.now();
 
   var TIPS = [
     'Read the questions before you listen.',
@@ -50,7 +51,7 @@
     _shownAt: null,
 
     init: function () {
-      this._shownAt = Date.now();
+      this._shownAt = _pageStart;
       var tipEl = document.getElementById('app-loading-tip-text');
       if (tipEl && TIPS.length) {
         tipEl.textContent = TIPS[Math.floor(Math.random() * TIPS.length)];
