@@ -29,10 +29,12 @@
             '<h1 class="landing-title">' +
               'Learn English<br>with <span class="landing-title-accent">confidence</span>' +
             '</h1>' +
-            '<p class="landing-subtitle">Fun, simple lessons with your smart fox guide.</p>' +
-            '<div class="landing-actions">' +
-              '<a href="/welcome" class="landing-btn landing-btn--primary" onclick="event.preventDefault(); Auth.navigateTo(\'/welcome\')">Get started</a>' +
-              '<a href="/login" class="landing-btn landing-btn--secondary" onclick="event.preventDefault(); Auth.navigateTo(\'/login\')">I already have an account</a>' +
+            '<div class="landing-cta-block">' +
+              '<p class="landing-subtitle">Fun, simple lessons with your smart fox guide.</p>' +
+              '<div class="landing-actions">' +
+                '<a href="/welcome" class="landing-btn landing-btn--primary" onclick="event.preventDefault(); Auth.navigateTo(\'/welcome\')">Get started</a>' +
+                '<a href="/login" class="landing-btn landing-btn--secondary" onclick="event.preventDefault(); Auth.navigateTo(\'/login\')">I already have an account</a>' +
+              '</div>' +
             '</div>' +
           '</div>' +
         '</main>';
