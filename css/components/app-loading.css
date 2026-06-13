@@ -29,6 +29,13 @@ body.app-is-loading {
   width: min(420px, 100%);
 }
 
+.app-loading-logo {
+  width: min(300px, 78vw);
+  height: auto;
+  margin: 0 0 24px;
+  display: block;
+}
+
 .app-loading-title {
   margin: 0 0 28px;
   font-family: 'Nunito', sans-serif;
@@ -40,26 +47,26 @@ body.app-is-loading {
 }
 
 .app-loading-paws {
-  width: min(300px, 78vw);
+  width: min(320px, 84vw);
   margin-bottom: 36px;
 }
 
 .app-loading-paws-row {
   display: flex;
   justify-content: center;
-  gap: 18px;
+  gap: 22px;
 }
 
 .app-loading-paws-row--bottom {
-  margin-top: -6px;
-  padding-left: 42px;
+  margin-top: 4px;
+  padding-left: 48px;
 }
 
 .app-loading-paw {
-  width: 52px;
+  width: 56px;
   height: auto;
   opacity: 0;
-  transform: rotate(38deg);
+  transform: rotate(0deg);
   animation: appLoadingPaw 4s ease-in-out infinite;
 }
 
@@ -73,23 +80,23 @@ body.app-is-loading {
 @keyframes appLoadingPaw {
   0% {
     opacity: 0;
-    transform: rotate(38deg) scale(0.5);
+    transform: rotate(0deg) scale(0.5);
   }
   5% {
     opacity: 1;
-    transform: rotate(38deg) scale(1);
+    transform: rotate(0deg) scale(1);
   }
   70% {
     opacity: 1;
-    transform: rotate(38deg) scale(1);
+    transform: rotate(0deg) scale(1);
   }
   85% {
     opacity: 0;
-    transform: rotate(38deg) scale(0.6);
+    transform: rotate(0deg) scale(0.6);
   }
   100% {
     opacity: 0;
-    transform: rotate(38deg) scale(0.5);
+    transform: rotate(0deg) scale(0.5);
   }
 }
 
@@ -129,16 +136,21 @@ body.app-is-loading {
 }
 
 @media (max-width: 480px) {
+  .app-loading-logo {
+    width: min(240px, 82vw);
+    margin-bottom: 20px;
+  }
+
   .app-loading-paw {
-    width: 42px;
+    width: 44px;
   }
 
   .app-loading-paws-row {
-    gap: 12px;
+    gap: 14px;
   }
 
   .app-loading-paws-row--bottom {
-    padding-left: 30px;
+    padding-left: 36px;
   }
 
   .app-loading-tip {
