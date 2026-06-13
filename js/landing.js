@@ -18,7 +18,7 @@
       screen.innerHTML =
         '<header class="landing-header">' +
           '<a href="/" class="landing-logo" onclick="event.preventDefault(); Landing.render()">' +
-            '<span class="landing-logo-text">SUNE</span>' +
+            '<img src="Assets/images/sunelogoreduced.svg" class="landing-logo-img" alt="Sune English">' +
           '</a>' +
         '</header>' +
         '<main class="landing-main">' +
