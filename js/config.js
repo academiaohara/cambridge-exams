@@ -15,9 +15,6 @@
     PROMOTION_WRITING_LIMIT: 5,
     PROMOTION_SPEAKING_LIMIT: 5,
 
-    /** Funding survey on entry (defaults on when PROMOTION_MODE is true) */
-    FUNDING_SURVEY_ENABLED: true,
-    FUNDING_SURVEY_DEFER_DAYS: 3,
     WARNING_TIME: 300,
     DANGER_TIME: 600,
     
