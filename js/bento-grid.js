@@ -22,9 +22,7 @@
         html += MainNav.buildDesktopModeCardsHtml(exams);
       }
 
-      html += this._renderMobileAppHero(level, exams);
-
-      html += '<section class="mobile-learn-pane" id="mobileLearnPane">';
+      html += '<section class="mobile-learn-pane mobile-learn-pane--legacy" id="mobileLearnPane" hidden>';
 
       // Row 1: Arena · Practice
       html += this._renderTopRow(exams);
@@ -50,7 +48,12 @@
       html += '</div>';
       container.innerHTML = html;
       this._updateCourseProgressDesc(level);
-      this.setMobileDashboardTab(this._mobileDashboardTab || 'home');
+      if (typeof MainNav !== 'undefined') {
+        MainNav.ensureMobileMenuSheet();
+        MainNav.setMobileActive('home');
+        var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+        if (isMobile && MainNav.initMobileStatsPopovers) MainNav.initMobileStatsPopovers();
+      }
     },
 
     _renderMobileAppHero: function(level, exams) {
@@ -132,13 +135,16 @@
     },
 
     _renderMobileBottomNav: function(level) {
+      if (typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml) {
+        return MainNav.buildMobileBottomNavHtml();
+      }
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var profileMarkup = this._buildMobileBottomNavProfileMarkup(_mi);
       return '<nav class="mobile-bottom-nav" aria-label="Mobile dashboard">' +
-        '<button type="button" class="mobile-bottom-nav-btn" data-mobile-tab="home" onclick="BentoGrid.goMobileHome()">' + _mi('home') + '<span>Inicio</span></button>' +
-        '<button type="button" class="mobile-bottom-nav-btn" data-mobile-tab="learn" onclick="BentoGrid.setMobileDashboardTab(\'learn\')">' + _mi('school') + '<span>Learn</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn" data-mobile-tab="home" onclick="BentoGrid.goMobileHome()">' + _mi('home') + '<span>Home</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.openLessons()">' + _mi('auto_stories') + '<span>Course</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.selectMode(\'practice\')">' + _mi('edit_note') + '<span>Practice</span></button>' +
         '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.openMobileDictionaries()">' + _mi('menu_book') + '<span>Dict</span></button>' +
-        '<button type="button" class="mobile-bottom-nav-btn mobile-bottom-level" onclick="BentoGrid.openMobileLevelModal()" aria-label="Change level"><strong>' + this._escapeHTML(level || 'C1') + '</strong><span>Level</span></button>' +
         '<button type="button" class="mobile-bottom-nav-btn mobile-bottom-nav-profile" onclick="BentoGrid.openMobileProfile()" aria-label="Account">' + profileMarkup + '</button>' +
       '</nav>';
     },
@@ -183,13 +189,20 @@
       if (grid) {
         grid.setAttribute('data-mobile-tab', tab);
       }
-      document.querySelectorAll('.mobile-bottom-nav-btn[data-mobile-tab]').forEach(function(btn) {
-        btn.classList.toggle('active', btn.getAttribute('data-mobile-tab') === tab);
-      });
+      if (typeof MainNav !== 'undefined' && MainNav.setMobileActive) {
+        MainNav.setMobileActive(tab === 'home' ? 'home' : tab);
+      }
     },
 
     /** Leave any screen (profile, course, exercises, subpages) and open the main dashboard home. */
     goMobileHome: function() {
+      if (typeof MainNav !== 'undefined' && MainNav.closeMobileMenu) MainNav.closeMobileMenu();
+      if (typeof AppState !== 'undefined' && AppState.currentView === 'dashboard') {
+        this.setMobileDashboardTab('home');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (typeof MainNav !== 'undefined' && MainNav.setMobileActive) MainNav.setMobileActive('home');
+        return;
+      }
       this._mobileDashboardTab = 'home';
       if (typeof loadDashboard === 'function') {
         loadDashboard();
