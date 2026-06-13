@@ -330,7 +330,8 @@
         <button type="button" id="auth-close-btn" class="auth-screen-close" onclick="Auth.closeAuthScreen()" aria-label="Close" style="visibility:hidden;">
           <span class="material-symbols-outlined" aria-hidden="true">close</span>
         </button>
-        <a href="/login" id="auth-header-login-link" class="auth-screen-header-link" onclick="event.preventDefault(); Auth.navigateTo('/login')" style="display:none;">Log in</a>
+        <a href="/login" id="auth-header-login-link" class="auth-screen-header-link" onclick="event.preventDefault(); Auth.navigateTo('/login')" style="display:none;">LOG IN</a>
+        <a href="/register" id="auth-header-signup-link" class="auth-screen-header-link" onclick="event.preventDefault(); Auth.navigateTo('/register')" style="display:none;">SIGN UP</a>
       </header>
       <main class="auth-screen-main">
         <h1 id="auth-title" class="auth-screen-title">Log in</h1>
@@ -338,14 +339,12 @@
           <!-- Login fields -->
           <div id="auth-login-fields">
             <label class="auth-field">
-              <span class="auth-field-label">Username or email</span>
-              <input type="text" id="auth-email" class="auth-field-input" autocomplete="username" placeholder="you@example.com">
+              <input type="text" id="auth-email" class="auth-field-input" autocomplete="username" placeholder="Username or email">
             </label>
             <label class="auth-field">
-              <span class="auth-field-label">Password</span>
-              <input type="password" id="auth-password" class="auth-field-input" autocomplete="current-password" placeholder="Your password">
+              <input type="password" id="auth-password" class="auth-field-input" autocomplete="current-password" placeholder="Password">
             </label>
-            <button id="auth-submit-btn" class="auth-screen-primary-btn" onclick="Auth.signInWithEmail()" type="button">Log in</button>
+            <button id="auth-submit-btn" class="auth-screen-primary-btn" onclick="Auth.signInWithEmail()" type="button">LOG IN</button>
           </div>
           <!-- Register fields -->
           <div id="auth-register-fields" style="display:none;">
@@ -381,12 +380,8 @@
               <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
               <path fill="none" d="M0 0h48v48H0z"/>
             </svg>
-            <span id="auth-google-label">Log in with Google</span>
+            <span id="auth-google-label">GOOGLE</span>
           </button>
-          <p id="auth-switch-text" class="auth-switch-text">
-            Don't have an account?
-            <a href="/register" onclick="event.preventDefault(); Auth.navigateTo('/register')">Sign up</a>
-          </p>
         </div>
       </main>
       <footer class="auth-screen-footer">

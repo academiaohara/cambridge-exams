@@ -83,19 +83,14 @@
       var registerFields = document.getElementById('auth-register-fields');
       var googleLabel = document.getElementById('auth-google-label');
       var headerLoginLink = document.getElementById('auth-header-login-link');
-      var switchText = document.getElementById('auth-switch-text');
+      var headerSignupLink = document.getElementById('auth-header-signup-link');
 
       if (title) title.textContent = isLogin ? 'Log in' : 'Create your account';
       if (loginFields) loginFields.style.display = isLogin ? '' : 'none';
       if (registerFields) registerFields.style.display = isLogin ? 'none' : '';
-      if (googleLabel) googleLabel.textContent = isLogin ? 'Log in with Google' : 'Sign up with Google';
+      if (googleLabel) googleLabel.textContent = 'GOOGLE';
       if (headerLoginLink) headerLoginLink.style.display = isLogin ? 'none' : '';
-      if (switchText) {
-        switchText.style.display = isLogin ? '' : 'none';
-        switchText.innerHTML = isLogin
-          ? 'Don\'t have an account? <a href="/register" onclick="event.preventDefault(); Auth.navigateTo(\'/register\')">Sign up</a>'
-          : '';
-      }
+      if (headerSignupLink) headerSignupLink.style.display = isLogin ? '' : 'none';
       this._clearAuthError();
     },
 
