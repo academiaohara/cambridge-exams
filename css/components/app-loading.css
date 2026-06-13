@@ -1,0 +1,160 @@
+#app-loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #F4F7FF;
+  padding: 24px;
+  box-sizing: border-box;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+#app-loading-screen.app-loading-screen--hiding {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+body.app-is-loading {
+  overflow: hidden;
+}
+
+.app-loading-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(420px, 100%);
+}
+
+.app-loading-title {
+  margin: 0 0 28px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #2D2E5F;
+}
+
+.app-loading-paws {
+  width: min(300px, 78vw);
+  margin-bottom: 36px;
+}
+
+.app-loading-paws-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.app-loading-paws-row--bottom {
+  margin-top: -6px;
+  padding-left: 42px;
+}
+
+.app-loading-paw {
+  width: 52px;
+  height: auto;
+  opacity: 0;
+  transform: rotate(38deg);
+  animation: appLoadingPaw 4s ease-in-out infinite;
+}
+
+.app-loading-paw--1 { animation-delay: 0s; }
+.app-loading-paw--2 { animation-delay: 0.2s; }
+.app-loading-paw--3 { animation-delay: 0.4s; }
+.app-loading-paw--4 { animation-delay: 0.6s; }
+.app-loading-paw--5 { animation-delay: 0.8s; }
+.app-loading-paw--6 { animation-delay: 1s; }
+
+@keyframes appLoadingPaw {
+  0% {
+    opacity: 0;
+    transform: rotate(38deg) scale(0.5);
+  }
+  5% {
+    opacity: 1;
+    transform: rotate(38deg) scale(1);
+  }
+  70% {
+    opacity: 1;
+    transform: rotate(38deg) scale(1);
+  }
+  85% {
+    opacity: 0;
+    transform: rotate(38deg) scale(0.6);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(38deg) scale(0.5);
+  }
+}
+
+.app-loading-tip {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(45, 46, 95, 0.1);
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(45, 46, 95, 0.08);
+  box-sizing: border-box;
+}
+
+.app-loading-tip-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1E9D8E;
+}
+
+.app-loading-tip-label .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.app-loading-tip-text {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #4a4b7c;
+}
+
+@media (max-width: 480px) {
+  .app-loading-paw {
+    width: 42px;
+  }
+
+  .app-loading-paws-row {
+    gap: 12px;
+  }
+
+  .app-loading-paws-row--bottom {
+    padding-left: 30px;
+  }
+
+  .app-loading-tip {
+    padding: 14px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-loading-paw {
+    animation: none;
+    opacity: 1;
+  }
+
+  .app-loading-paw--2,
+  .app-loading-paw--4,
+  .app-loading-paw--6 {
+    opacity: 0.85;
+  }
+}
