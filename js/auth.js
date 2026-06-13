@@ -4,12 +4,10 @@
   'use strict';
 
   window.Auth = {
-    // ── internal state ──────────────────────────────────────────────
-    _client: null,   // supabase JS client (set by Auth.initClient)
-    _session: null,  // active supabase session
+    _client: null,
+    _session: null,
+    _authDismissible: false,
 
-    // ── initialisation ───────────────────────────────────────────────
-    /** Call once after the Supabase CDN script has loaded. */
     initClient: function () {
       if (!window.supabase) {
         console.warn('[Auth] Supabase JS library not loaded');
@@ -25,41 +23,33 @@
       );
     },
 
-    /** Verify existing session on page load and wire up real-time listener. */
     init: async function () {
       if (!this._client) { this.initClient(); }
       if (!this._client) {
-        // Supabase not available — show auth modal so user can continue as guest
-        this._showAuthModal();
+        this._showAuthScreen({ dismissible: false });
         return;
       }
 
-      // Restore session from localStorage (Supabase does this automatically)
       const { data } = await this._client.auth.getSession();
       if (data && data.session) {
         this._session = data.session;
         this._persistToken(data.session.access_token);
         await this._onSignIn(data.session.user);
       } else {
-        this._showAuthModal();
+        this._showAuthScreen({ dismissible: false });
       }
 
-      if (typeof FundingSurvey !== 'undefined') {
-        FundingSurvey.maybeShow();
-      }
-
-      // Listen for auth state changes (sign-in / sign-out / token refresh)
       this._client.auth.onAuthStateChange(async (event, session) => {
         if (event === 'SIGNED_IN' && session) {
           this._session = session;
           this._persistToken(session.access_token);
           await this._onSignIn(session.user);
-          this._hideAuthModal();
+          this._hideAuthScreen();
         } else if (event === 'SIGNED_OUT') {
           this._session = null;
           this._clearToken();
           this._onSignOut();
-          this._showAuthModal();
+          this._showAuthScreen({ dismissible: false });
         } else if (event === 'TOKEN_REFRESHED' && session) {
           this._session = session;
           this._persistToken(session.access_token);
@@ -67,8 +57,6 @@
       });
     },
 
-    // ── public API ───────────────────────────────────────────────────
-    /** Open Google OAuth popup. */
     signInWithGoogle: async function () {
       if (!this._client) { return; }
       this._setAuthLoading(true);
@@ -83,7 +71,6 @@
       }
     },
 
-    /** Continue as guest without signing in. */
     continueAsGuest: function () {
       AppState.isGuest = true;
       AppState.isAuthenticated = false;
@@ -92,13 +79,11 @@
       AppState.hasExamsPack = false;
       AppState.isPremium = false;
       AppState.currentUser = null;
-      this._hideAuthModal();
+      this._hideAuthScreen();
       this.renderSignInButton();
-      if (typeof Dashboard !== 'undefined') { Dashboard.render(); }
-      if (typeof FundingSurvey !== 'undefined') { FundingSurvey.maybeShow(); }
+      this._afterAuthEntry();
     },
 
-    /** Sign out the current user (or exit guest mode). */
     signOut: async function () {
       if (AppState.isGuest) {
         AppState.isGuest = false;
@@ -130,28 +115,28 @@
 
       this._finishSignOutUI();
 
-      // Revoke refresh token on the server when possible (non-blocking for UI).
       this._client.auth.signOut().catch(function (err) {
         console.error('[Auth] signOut (global) error:', err && err.message ? err.message : err);
       });
     },
 
-    /** Return the current session, or null. */
     getSession: function () {
       return this._session;
     },
 
-    /** Return the current user object, or null. */
     getUser: function () {
       return this._session ? this._session.user : null;
     },
 
-    /** Return the stored JWT token from localStorage, or null. */
     getToken: function () {
       return localStorage.getItem('sb_access_token');
     },
 
-    // ── private helpers ──────────────────────────────────────────────
+    closeAuthScreen: function () {
+      if (!this._authDismissible) return;
+      this._hideAuthScreen();
+    },
+
     _persistToken: function (token) {
       try { localStorage.setItem('sb_access_token', token); } catch (e) { /* quota */ }
     },
@@ -161,52 +146,53 @@
     },
 
     _onSignIn: async function (user) {
-      // Update global auth state
       AppState.currentUser = user;
       AppState.isAuthenticated = true;
       AppState.isGuest = false;
 
-      // Remove guest sign-in button
       this._removeSignInButton();
 
-      // Load/create profile in Supabase then render header widget
+      var isNewUser = false;
       if (typeof UserProfile !== 'undefined') {
-        await UserProfile.loadOrCreate(user);
+        isNewUser = await UserProfile.loadOrCreate(user);
       }
 
-      // Restore cloud data to localStorage before starting the sync interval
+      if (isNewUser && typeof Onboarding !== 'undefined') {
+        Onboarding.markPendingForNewUser();
+      }
+
       if (typeof SyncManager !== 'undefined') {
         await SyncManager.restoreFromCloud();
       }
       if (typeof StreakManager !== 'undefined') {
         await StreakManager.restoreFromCloud();
       }
-
-      // Crossword sync: migrate legacy data once, then restore cloud state
       if (typeof CrosswordSync !== 'undefined') {
         CrosswordSync.migrateFromLegacy();
         await CrosswordSync.restoreFromCloud();
       }
-
-      // Refresh exam statuses from the (now-updated) localStorage
       if (typeof App !== 'undefined' && App.restoreExamStatuses) {
         App.restoreExamStatuses();
       }
-
-      // Kick off sync manager
       if (typeof SyncManager !== 'undefined') {
         SyncManager.start();
       }
 
-      // Render user widget in header
       this._renderUserWidget(user);
 
       if (typeof AccessControl !== 'undefined') {
         AccessControl.refreshPromoQuotas();
       }
 
-      // Re-render dashboard to remove any guest restrictions
-      if (typeof Dashboard !== 'undefined') { Dashboard.render(); }
+      this._afterAuthEntry();
+    },
+
+    _afterAuthEntry: function () {
+      if (typeof Onboarding !== 'undefined') {
+        Onboarding.maybeShowAfterAuth();
+      } else if (typeof Dashboard !== 'undefined') {
+        Dashboard.render();
+      }
     },
 
     _onSignOut: function () {
@@ -227,10 +213,9 @@
       this._removeUserWidget();
     },
 
-    /** Shared post-sign-out UI: modal, header, and leave account/profile views. */
     _finishSignOutUI: function () {
       this._onSignOut();
-      this._showAuthModal();
+      this._showAuthScreen({ dismissible: false });
       this.renderSignInButton();
       if (typeof loadDashboard === 'function') {
         loadDashboard();
@@ -239,26 +224,43 @@
       }
     },
 
-    // ── auth modal ───────────────────────────────────────────────────
-    _showAuthModal: function () {
-      const overlay = document.getElementById('auth-modal-overlay');
-      if (overlay) {
-        overlay.classList.add('visible');
-        overlay.style.display = 'flex';
+    _showAuthScreen: function (options) {
+      options = options || {};
+      this._authDismissible = !!options.dismissible;
+
+      const screen = document.getElementById('auth-screen');
+      const closeBtn = document.getElementById('auth-close-btn');
+      if (!screen) return;
+
+      if (closeBtn) {
+        closeBtn.style.visibility = this._authDismissible ? 'visible' : 'hidden';
       }
+
+      screen.style.display = 'flex';
+      screen.classList.add('visible');
+      document.body.classList.add('auth-screen-open');
+    },
+
+    _hideAuthScreen: function () {
+      const screen = document.getElementById('auth-screen');
+      if (!screen) return;
+
+      screen.classList.remove('visible');
+      screen.classList.add('hiding');
+      setTimeout(function () {
+        screen.style.display = 'none';
+        screen.classList.remove('hiding');
+        document.body.classList.remove('auth-screen-open');
+      }, 250);
+    },
+
+    // Backward-compatible alias used across the codebase
+    _showAuthModal: function () {
+      this._showAuthScreen({ dismissible: true });
     },
 
     _hideAuthModal: function () {
-      const overlay = document.getElementById('auth-modal-overlay');
-      if (overlay) {
-        overlay.classList.remove('visible');
-        overlay.classList.add('hiding');
-        setTimeout(function () {
-          overlay.style.display = 'none';
-          overlay.classList.remove('hiding');
-          if (typeof FundingSurvey !== 'undefined') { FundingSurvey.maybeShow(); }
-        }, 300);
-      }
+      this._hideAuthScreen();
     },
 
     _setAuthLoading: function (loading) {
@@ -273,7 +275,6 @@
       if (el) { el.textContent = message; el.style.display = 'block'; }
     },
 
-    // ── header user widget ───────────────────────────────────────────
     _renderUserWidget: function (user) {
       this._removeUserWidget();
       this._removeSignInButton();
@@ -292,7 +293,6 @@
         if (typeof UserProfile !== 'undefined') { UserProfile.renderProfileSection(); }
       };
 
-      // Always use Google profile photo
       var widgetAvatarHtml = avatarUrl
         ? '<img src="' + avatarUrl + '" alt="' + name + '">'
         : '<span class="user-avatar-initials">' + initials + '</span>';
@@ -311,7 +311,6 @@
       if (existing) { existing.remove(); }
     },
 
-    // ── header sign-in button for guests ─────────────────────────────
     renderSignInButton: function () {
       this._removeSignInButton();
       if (AppState.isAuthenticated) { return; }
@@ -321,7 +320,7 @@
       var btn = document.createElement('button');
       btn.id = 'header-signin-btn';
       btn.className = 'header-signin-btn';
-      btn.onclick = function () { Auth._showAuthModal(); };
+      btn.onclick = function () { Auth._showAuthScreen({ dismissible: true }); };
       btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> <span>' + 'Sign in' + '</span>';
       navGroup.appendChild(btn);
     },

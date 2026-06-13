@@ -21,9 +21,10 @@
     },
 
     // ── load or create profile ────────────────────────────────────────
+      // Returns true when a new profile row was created (first sign-in).
     loadOrCreate: async function (user) {
       const client = Auth._client;
-      if (!client || !user) { return; }
+      if (!client || !user) { return false; }
 
       const { data, error } = await client
         .from('profiles')
@@ -32,7 +33,6 @@
         .single();
 
       if (error && error.code === 'PGRST116') {
-        // Row not found — create profile
         const animalAvatar = this.getRandomAnimalAvatar();
         const newProfile = {
           id: user.id,
@@ -54,20 +54,19 @@
           .single();
         this._profile = created || newProfile;
         this._syncAccessFromProfile(this._profile);
-        // Cache animal avatar in localStorage
         if (this._profile && this._profile.animal_avatar) {
           try { localStorage.setItem('cambridge_animal_avatar', this._profile.animal_avatar); } catch (e) { /* ignore */ }
         }
+        return true;
       } else if (!error && data) {
         this._profile = data;
         this._syncAccessFromProfile(data);
-        // Cache animal avatar in localStorage
         if (data.animal_avatar) {
           try { localStorage.setItem('cambridge_animal_avatar', data.animal_avatar); } catch (e) { /* ignore */ }
         }
-        // Sync preferences to local state
         this._applyPreferences(data);
       }
+      return false;
     },
 
     _applyPreferences: function (profile) {

@@ -139,10 +139,6 @@
         history.replaceState({ view: 'dashboard' }, '', '/');
       }
 
-      if (typeof FundingSurvey !== 'undefined') {
-        FundingSurvey.maybeShow();
-      }
-      
       // Update header mode buttons
       this.updateHeaderModeButtons();
       

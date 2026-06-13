@@ -1,0 +1,278 @@
+/* css/components/onboarding.css — Level selection onboarding (Duolingo-style) */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.onboarding-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  font-family: 'Nunito', sans-serif;
+}
+
+.onboarding-screen.visible {
+  display: flex;
+}
+
+body.onboarding-open {
+  overflow: hidden;
+}
+
+body.onboarding-open #app {
+  visibility: hidden;
+}
+
+.onboarding-top {
+  padding: 16px 20px 0;
+  flex-shrink: 0;
+}
+
+.onboarding-progress {
+  height: 14px;
+  border-radius: 999px;
+  background: #e5e5e5;
+  overflow: hidden;
+}
+
+.onboarding-progress-fill {
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  background: #58cc02;
+  transform-origin: left center;
+}
+
+.onboarding-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px 100px;
+  max-width: 560px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.onboarding-prompt {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.onboarding-mascot {
+  width: 72px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.onboarding-speech-bubble {
+  position: relative;
+  background: #fff;
+  border: 2px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 14px 18px;
+  flex: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.onboarding-speech-bubble::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 22px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 10px solid #e5e5e5;
+}
+
+.onboarding-speech-bubble::after {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 23px;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 9px solid #fff;
+}
+
+.onboarding-speech-bubble p {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #3c3c3c;
+  line-height: 1.4;
+}
+
+.onboarding-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.onboarding-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 18px;
+  background: #fff;
+  border: 2px solid #e5e5e5;
+  border-radius: 16px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.onboarding-option:hover {
+  border-color: #afafaf;
+}
+
+.onboarding-option.selected {
+  border-color: #1cb0f6;
+  background: #ddf4ff;
+  box-shadow: 0 0 0 1px #1cb0f6;
+}
+
+.onboarding-option-icon {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.onboarding-bar {
+  width: 6px;
+  height: 12px;
+  border-radius: 3px;
+  background: #e5e5e5;
+}
+
+.onboarding-bar--filled {
+  background: #1cb0f6;
+  height: 20px;
+}
+
+.onboarding-option:nth-child(2) .onboarding-bar--filled:nth-child(2) {
+  height: 24px;
+}
+
+.onboarding-option:nth-child(3) .onboarding-bar--filled {
+  height: 16px;
+}
+
+.onboarding-option:nth-child(3) .onboarding-bar--filled:nth-child(2) {
+  height: 22px;
+}
+
+.onboarding-option:nth-child(3) .onboarding-bar--filled:nth-child(3) {
+  height: 28px;
+}
+
+.onboarding-option-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.onboarding-option-text strong {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #3c3c3c;
+}
+
+.onboarding-option-text span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #777;
+  line-height: 1.35;
+}
+
+.onboarding-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 24px 24px;
+  background: linear-gradient(to top, #fff 70%, rgba(255, 255, 255, 0));
+  border-top: 1px solid #f0f0f0;
+}
+
+.onboarding-continue-btn {
+  min-width: 160px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 16px;
+  background: #58cc02;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #46a302;
+  transition: filter 0.15s, transform 0.1s;
+}
+
+.onboarding-continue-btn:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.onboarding-continue-btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #46a302;
+}
+
+.onboarding-continue-btn:disabled {
+  background: #e5e5e5;
+  color: #afafaf;
+  box-shadow: 0 4px 0 #d4d4d4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .onboarding-prompt {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .onboarding-speech-bubble::before,
+  .onboarding-speech-bubble::after {
+    display: none;
+  }
+
+  .onboarding-footer {
+    justify-content: stretch;
+  }
+
+  .onboarding-continue-btn {
+    width: 100%;
+  }
+}

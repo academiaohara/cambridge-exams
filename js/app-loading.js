@@ -45,25 +45,89 @@
     return DEFAULT_MIN_MS;
   }
 
+  function pickRandomTip() {
+    if (!TIPS.length) return '';
+    return TIPS[Math.floor(Math.random() * TIPS.length)];
+  }
+
+  function buildLoadingMarkup() {
+    return (
+      '<div class="app-loading-inner">' +
+        '<img src="Assets/images/sunelogoreduced.svg" alt="Sune English" class="app-loading-logo">' +
+        '<p class="app-loading-title">Loading</p>' +
+        '<div class="app-loading-paws" aria-hidden="true">' +
+          '<div class="app-loading-paws-row app-loading-paws-row--top">' +
+            '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--1" width="52" height="65">' +
+            '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--3" width="52" height="65">' +
+            '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--5" width="52" height="65">' +
+          '</div>' +
+          '<div class="app-loading-paws-row app-loading-paws-row--bottom">' +
+            '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--2" width="52" height="65">' +
+            '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--4" width="52" height="65">' +
+            '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--6" width="52" height="65">' +
+          '</div>' +
+        '</div>' +
+        '<div class="app-loading-tip">' +
+          '<div class="app-loading-tip-label">' +
+            '<span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>' +
+            '<span>English tip</span>' +
+          '</div>' +
+          '<p id="app-loading-tip-text" class="app-loading-tip-text">' + pickRandomTip() + '</p>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
   window.AppLoadingScreen = {
     _hidden: false,
     _hideRequested: false,
     _shownAt: null,
+    _onHiddenCallback: null,
+    _customMinMs: null,
 
     init: function () {
       this._shownAt = _pageStart;
       var tipEl = document.getElementById('app-loading-tip-text');
       if (tipEl && TIPS.length) {
-        tipEl.textContent = TIPS[Math.floor(Math.random() * TIPS.length)];
+        tipEl.textContent = pickRandomTip();
       }
       document.body.classList.add('app-is-loading');
+    },
+
+    show: function (options) {
+      options = options || {};
+      this._hidden = false;
+      this._hideRequested = false;
+      this._shownAt = Date.now();
+      this._onHiddenCallback = typeof options.onHidden === 'function' ? options.onHidden : null;
+      this._customMinMs = typeof options.minMs === 'number' ? options.minMs : null;
+
+      var el = document.getElementById('app-loading-screen');
+      if (!el) {
+        el = document.createElement('div');
+        el.id = 'app-loading-screen';
+        el.setAttribute('role', 'status');
+        el.setAttribute('aria-live', 'polite');
+        el.setAttribute('aria-label', 'Loading');
+        document.body.appendChild(el);
+      }
+
+      el.classList.remove('app-loading-screen--hiding');
+      el.innerHTML = buildLoadingMarkup();
+      el.style.display = 'flex';
+      document.body.classList.add('app-is-loading');
+
+      var self = this;
+      setTimeout(function () {
+        self.hide();
+      }, this._customMinMs || getMinLoadingMs());
     },
 
     hide: function () {
       if (this._hidden || this._hideRequested) return;
       this._hideRequested = true;
 
-      var minMs = getMinLoadingMs();
+      var minMs = this._customMinMs != null ? this._customMinMs : getMinLoadingMs();
       var elapsed = Date.now() - (this._shownAt || Date.now());
       var remaining = Math.max(0, minMs - elapsed);
       var self = this;
@@ -79,11 +143,16 @@
       if (!el) return;
 
       this._hidden = true;
+      this._customMinMs = null;
       el.classList.add('app-loading-screen--hiding');
 
+      var callback = this._onHiddenCallback;
+      this._onHiddenCallback = null;
+
       var cleanup = function () {
-        if (el.parentNode) el.parentNode.removeChild(el);
+        el.style.display = 'none';
         document.body.classList.remove('app-is-loading');
+        if (typeof callback === 'function') callback();
       };
 
       el.addEventListener('transitionend', cleanup, { once: true });
