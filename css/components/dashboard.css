@@ -922,17 +922,20 @@
 /* ── Dashboard 3-column layout (Duolingo-style) ── */
 :root {
   --dashboard-left-sidebar-width: 256px;
-  --dashboard-right-sidebar-width: 368px;
+  --dashboard-right-sidebar-width: 240px;
+  --dashboard-top-spacing: 28px;
+  --brand-orange: #ff9600;
+  --brand-orange-dark: #e68600;
 }
 
 .dashboard-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--dashboard-right-sidebar-width);
-  gap: 32px;
+  gap: 24px;
   align-items: start;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 24px 0 0;
+  max-width: none;
+  margin: 0;
+  padding: var(--dashboard-top-spacing) 0 0 24px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -947,6 +950,11 @@
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
   min-width: 0;
+}
+
+.dashboard-right-sidebar {
+  padding-right: 16px;
+  padding-top: 4px;
 }
 
 .dashboard-right-sidebar .main-nav-stats-bar {
@@ -1025,6 +1033,30 @@
 
 .dashboard-center {
   min-width: 0;
+  padding-top: 4px;
+}
+
+.dashboard-center-header {
+  margin-bottom: 20px;
+  padding: 0 4px;
+}
+
+.dashboard-center-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #3c3c3c;
+  margin: 0 0 4px;
+  line-height: 1.2;
+}
+
+.dashboard-center-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #777;
+  margin: 0;
+  line-height: 1.35;
 }
 
 @media (max-width: 900px) {
@@ -1278,10 +1310,26 @@
   align-items: center;
   gap: 14px;
   margin-bottom: 20px;
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: 20px;
-  box-shadow: var(--shadow-sm);
+  padding: 0 4px;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.subpage-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #3c3c3c;
+}
+
+.subpage-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #777;
 }
 
 .subpage-back-btn {
@@ -1330,20 +1378,6 @@
   .subpage-back-btn .material-symbols-outlined {
     font-size: 1.25rem;
   }
-}
-
-.subpage-title {
-  font-family: 'Mileast', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-dark);
-}
-
-.subpage-subtitle {
-  font-size: 0.85rem;
-  color: var(--text-medium);
 }
 
 .subpage-pagination {

@@ -89,6 +89,7 @@
             : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>') +
         '</div>';
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+      if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       if (typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
 
       var centerSection = document.getElementById('courseCenterSection');
@@ -134,6 +135,7 @@
           '</div>' +
         '</div>';
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+      if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
 
       // Try to fetch index.json for this level
       var indexData = null;
@@ -610,6 +612,7 @@
             '</div>' +
           '</div>';
         if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+        if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
         centerSection = document.getElementById('courseCenterSection');
         // Load index.json to build navigation sidebar
         var leftSidebar = document.getElementById('courseLeftSidebar');

@@ -9,7 +9,7 @@
   var leftSidebarCollapsed = false;
   var rightSidebarCollapsed = false;
   var LEFT_SIDEBAR_WIDTH = '256px';
-  var RIGHT_SIDEBAR_WIDTH = '368px';
+  var RIGHT_SIDEBAR_WIDTH = '240px';
   var SIDEBAR_COLLAPSED_WIDTH = '52px';
 
   try {
@@ -24,6 +24,20 @@
       if (sectionKey === 'reading') return isB1 ? 'Reading' : 'READING & UOE';
       if (!sectionKey) return '';
       return sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
+    },
+
+    _renderCenterHeader: function(title, subtitle) {
+      return '<div class="dashboard-center-header">' +
+        '<h1 class="dashboard-center-title">' + title + '</h1>' +
+        (subtitle ? '<p class="dashboard-center-subtitle">' + subtitle + '</p>' : '') +
+      '</div>';
+    },
+
+    _initStatsPopovers: function() {
+      if (typeof MainNav === 'undefined') return;
+      if (MainNav.initStreakPopover) MainNav.initStreakPopover();
+      if (MainNav.initLevelPopover) MainNav.initLevelPopover();
+      if (MainNav.initDictPopover) MainNav.initDictPopover();
     },
 
     _renderSidebarShell: function(side, shellId, contentId, contentHtml) {
@@ -107,6 +121,7 @@
       var html = '<div class="dashboard-layout">' +
         this._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent) +
         '<div class="dashboard-center">' +
+          this._renderCenterHeader('Home', 'Your learning dashboard for ' + level) +
           '<div class="bento-center-wrapper">' +
             '<div id="bento-grid-container"></div>' +
           '</div>' +
@@ -123,8 +138,8 @@
         if (bentoContainer) BentoGrid.render(bentoContainer);
         BentoGrid._startGradeCarousel();
       }
-      if (typeof MainNav !== 'undefined' && MainNav.initStreakPopover) {
-        MainNav.initStreakPopover();
+      if (typeof MainNav !== 'undefined') {
+        this._initStatsPopovers();
       }
     },
 
@@ -262,6 +277,7 @@
         BentoGrid._startGradeCarousel();
         BentoGrid.setMobileDashboardTab(BentoGrid._mobileDashboardTab || 'learn');
       }
+      this._initStatsPopovers();
       if (typeof App !== 'undefined' && App.updateHeaderModeButtons) App.updateHeaderModeButtons();
     },
 

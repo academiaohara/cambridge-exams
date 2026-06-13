@@ -204,6 +204,13 @@
     },
 
     openMobileLevelModal: function() {
+      var isDesktop = window.matchMedia && window.matchMedia('(min-width: 769px)').matches;
+      var levelBtn = document.getElementById('statsBarLevelBtn');
+      if (isDesktop && levelBtn && typeof MainNav !== 'undefined') {
+        levelBtn.click();
+        return;
+      }
+
       var existing = document.getElementById('mobile-level-modal');
       if (existing) existing.remove();
 
@@ -1102,6 +1109,7 @@
         '</div>';
 
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+      if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       if (typeof BentoGrid !== 'undefined') {
         BentoGrid._startGradeCarousel();
       }
@@ -1258,6 +1266,9 @@
       } else if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
         Dashboard.filterByLevel(level);
       }
+      if (typeof MainNav !== 'undefined' && MainNav.refreshLevelPopover) {
+        MainNav.refreshLevelPopover();
+      }
       // Sync level with user profile
       if (typeof UserProfile !== 'undefined' && UserProfile.updateProfile) {
         UserProfile.updateProfile({ preferred_level: level });
@@ -1367,7 +1378,9 @@
     },
 
     _startGradeCarousel: function() {
-      if (typeof MainNav !== 'undefined' && MainNav.initStreakPopover) {
+      if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) {
+        Dashboard._initStatsPopovers();
+      } else if (typeof MainNav !== 'undefined' && MainNav.initStreakPopover) {
         MainNav.initStreakPopover();
       }
       var widget = document.querySelector('.grade-tracker-carousel-widget');
