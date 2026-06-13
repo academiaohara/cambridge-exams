@@ -61,14 +61,23 @@
 
       el.addEventListener('transitionend', cleanup, { once: true });
       setTimeout(cleanup, 500);
+    },
+
+    /** Safety net if init hangs on network/auth calls. */
+    _startSafetyTimeout: function () {
+      setTimeout(function () {
+        AppLoadingScreen.hide();
+      }, 12000);
     }
   };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       AppLoadingScreen.init();
+      AppLoadingScreen._startSafetyTimeout();
     });
   } else {
     AppLoadingScreen.init();
+    AppLoadingScreen._startSafetyTimeout();
   }
 })();

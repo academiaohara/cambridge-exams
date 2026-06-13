@@ -4,6 +4,7 @@
 
   window.App = {
     init: async function() {
+      try {
       console.log('🚀 Iniciando aplicación v' + CONFIG.APP_VERSION);
       
       // Inicializar autenticación Supabase
@@ -207,6 +208,11 @@
       });
       
       console.log('✅ App lista');
+      } catch (err) {
+        console.error('[App] init failed:', err);
+      } finally {
+        if (typeof AppLoadingScreen !== 'undefined') AppLoadingScreen.hide();
+      }
     },
     
     restoreExamStatuses: function() {

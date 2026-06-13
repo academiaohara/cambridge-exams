@@ -59,7 +59,7 @@ body.app-is-loading {
   width: 52px;
   height: auto;
   opacity: 0;
-  transform: rotate(38deg);
+  transform: rotate(0deg);
   animation: appLoadingPaw 4s ease-in-out infinite;
 }
 
@@ -73,23 +73,23 @@ body.app-is-loading {
 @keyframes appLoadingPaw {
   0% {
     opacity: 0;
-    transform: rotate(38deg) scale(0.5);
+    transform: rotate(0deg) scale(0.5);
   }
   5% {
     opacity: 1;
-    transform: rotate(38deg) scale(1);
+    transform: rotate(0deg) scale(1);
   }
   70% {
     opacity: 1;
-    transform: rotate(38deg) scale(1);
+    transform: rotate(0deg) scale(1);
   }
   85% {
     opacity: 0;
-    transform: rotate(38deg) scale(0.6);
+    transform: rotate(0deg) scale(0.6);
   }
   100% {
     opacity: 0;
-    transform: rotate(38deg) scale(0.5);
+    transform: rotate(0deg) scale(0.5);
   }
 }
 
