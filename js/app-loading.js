@@ -2,6 +2,9 @@
 (function () {
   'use strict';
 
+  var DEFAULT_MIN_MS = 5000;
+  var _pageStart = Date.now();
+
   var TIPS = [
     'Read the questions before you listen.',
     'Eliminate wrong options first in multiple choice.',
@@ -35,10 +38,20 @@
     'Save a few minutes at the end to review your answers.'
   ];
 
+  function getMinLoadingMs() {
+    if (window.CONFIG && typeof CONFIG.MIN_LOADING_MS === 'number') {
+      return CONFIG.MIN_LOADING_MS;
+    }
+    return DEFAULT_MIN_MS;
+  }
+
   window.AppLoadingScreen = {
     _hidden: false,
+    _hideRequested: false,
+    _shownAt: null,
 
     init: function () {
+      this._shownAt = _pageStart;
       var tipEl = document.getElementById('app-loading-tip-text');
       if (tipEl && TIPS.length) {
         tipEl.textContent = TIPS[Math.floor(Math.random() * TIPS.length)];
@@ -47,6 +60,20 @@
     },
 
     hide: function () {
+      if (this._hidden || this._hideRequested) return;
+      this._hideRequested = true;
+
+      var minMs = getMinLoadingMs();
+      var elapsed = Date.now() - (this._shownAt || Date.now());
+      var remaining = Math.max(0, minMs - elapsed);
+      var self = this;
+
+      setTimeout(function () {
+        self._doHide();
+      }, remaining);
+    },
+
+    _doHide: function () {
       if (this._hidden) return;
       var el = document.getElementById('app-loading-screen');
       if (!el) return;

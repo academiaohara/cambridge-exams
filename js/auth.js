@@ -161,7 +161,6 @@
     },
 
     _onSignIn: async function (user) {
-      if (typeof AppLoadingScreen !== 'undefined') AppLoadingScreen.hide();
       // Update global auth state
       AppState.currentUser = user;
       AppState.isAuthenticated = true;
@@ -242,7 +241,6 @@
 
     // ── auth modal ───────────────────────────────────────────────────
     _showAuthModal: function () {
-      if (typeof AppLoadingScreen !== 'undefined') AppLoadingScreen.hide();
       const overlay = document.getElementById('auth-modal-overlay');
       if (overlay) {
         overlay.classList.add('visible');

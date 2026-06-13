@@ -98,7 +98,6 @@
     render: function(pageKey, pushHistory) {
       var page = PAGES[pageKey];
       if (!page) return;
-      if (typeof AppLoadingScreen !== 'undefined') AppLoadingScreen.hide();
       var content = document.getElementById('main-content');
       if (!content) return;
 
@@ -134,6 +133,7 @@
       if (pushHistory !== false) {
         history.pushState({ view: pageKey }, '', Router.stateToPath({ view: pageKey }));
       }
+      if (typeof AppLoadingScreen !== 'undefined') AppLoadingScreen.hide();
     },
 
     _escapeHtml: function(value) {

@@ -5,6 +5,7 @@
     REPO_NAME: 'cambridge-exams',
     BRANCH: 'main',
     APP_VERSION: '3.2.0',
+    MIN_LOADING_MS: 5000,
 
     /**
      * Promotion / growth mode — set false to restore plans UI and pack gating.
