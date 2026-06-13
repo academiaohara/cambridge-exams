@@ -161,7 +161,6 @@
     },
 
     _onSignIn: async function (user) {
-      if (typeof AppLoadingScreen !== 'undefined') AppLoadingScreen.hide();
       // Update global auth state
       AppState.currentUser = user;
       AppState.isAuthenticated = true;

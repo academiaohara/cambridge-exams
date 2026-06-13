@@ -22,6 +22,10 @@ body.app-is-loading {
   overflow: hidden;
 }
 
+body.app-is-loading #app {
+  visibility: hidden;
+}
+
 .app-loading-inner {
   display: flex;
   flex-direction: column;
