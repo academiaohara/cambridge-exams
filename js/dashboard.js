@@ -101,6 +101,7 @@
     },
 
     render: function(expandExamId) {
+      if (typeof AppLoadingScreen !== 'undefined') AppLoadingScreen.hide();
       const content = document.getElementById('main-content');
       if (!content) return;
       if (window.QuestionNav && typeof QuestionNav.close === 'function') QuestionNav.close();

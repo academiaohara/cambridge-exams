@@ -98,6 +98,7 @@
     render: function(pageKey, pushHistory) {
       var page = PAGES[pageKey];
       if (!page) return;
+      if (typeof AppLoadingScreen !== 'undefined') AppLoadingScreen.hide();
       var content = document.getElementById('main-content');
       if (!content) return;
 
