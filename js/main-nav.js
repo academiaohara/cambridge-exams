@@ -12,6 +12,18 @@
     { id: 'profile', label: 'Profile', icon: 'person', color: '#777777', onclick: 'BentoGrid.openMobileProfile()' }
   ];
 
+  var MOBILE_BOTTOM_ITEMS = [
+    { id: 'home', label: 'Home', icon: 'home', color: '#1cb0f6', onclick: 'BentoGrid.goMobileHome()' },
+    { id: 'course', label: 'Course', icon: 'auto_stories', color: '#ff9600', onclick: 'BentoGrid.openLessons()' },
+    { id: 'practice', label: 'Practice', icon: 'edit_note', color: '#ff9600', onclick: 'BentoGrid.selectMode(\'practice\')' },
+    { id: 'dictionaries', label: 'Dict', icon: 'menu_book', color: '#6366f1', onclick: 'BentoGrid.openMobileDictionaries()' },
+    { id: 'more', label: 'More', icon: 'menu', color: '#777777', onclick: 'MainNav.toggleMobileMenu()' }
+  ];
+
+  var MOBILE_MENU_ITEMS = [
+    'simulation', 'crosswords', 'calculator', 'profile'
+  ];
+
   function escapeHTML(str) {
     return String(str)
       .replace(/&/g, '&amp;')
@@ -473,6 +485,189 @@
       document.querySelectorAll('.main-nav-item').forEach(function(btn) {
         btn.classList.toggle('active', btn.getAttribute('data-nav-id') === activeId);
       });
+      this.setMobileActive(activeId);
+    },
+
+    buildMobileTopBarHtml: function() {
+      return '<header class="mobile-nav-top-bar" aria-label="Mobile stats">' +
+        '<a class="mobile-nav-top-brand" href="/" onclick="event.preventDefault(); loadDashboard()">' +
+          '<img src="Assets/images/sunelogoreduced.svg" class="mobile-nav-top-logo" alt="Sune English">' +
+        '</a>' +
+        '<div class="mobile-nav-top-stats">' + this.buildStatsBarHtml() + '</div>' +
+      '</header>';
+    },
+
+    buildMobileBottomNavHtml: function(activeId) {
+      activeId = activeId || getActiveId() || 'home';
+      var html = '<nav class="mobile-bottom-nav mobile-bottom-nav--duo" aria-label="Mobile navigation">';
+      MOBILE_BOTTOM_ITEMS.forEach(function(item) {
+        var isActive = item.id === activeId || (item.id === 'more' && MOBILE_MENU_ITEMS.indexOf(activeId) !== -1);
+        html += '<button type="button" class="mobile-bottom-nav-btn' + (isActive ? ' active' : '') + '"' +
+          ' data-nav-id="' + item.id + '"' +
+          ' onclick="' + item.onclick + '"' +
+          ' style="--nav-color:' + item.color + '">' +
+          '<span class="mobile-bottom-nav-icon"><span class="material-symbols-outlined">' + item.icon + '</span></span>' +
+          '<span>' + escapeHTML(item.label) + '</span>' +
+        '</button>';
+      });
+      html += '</nav>';
+      return html;
+    },
+
+    buildMobileMenuSheetHtml: function(activeId) {
+      activeId = activeId || getActiveId() || 'home';
+      var hidePlans = typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI();
+      var html = '<div class="mobile-menu-sheet" id="mobileMenuSheet" aria-hidden="true">' +
+        '<div class="mobile-menu-sheet-backdrop" onclick="MainNav.closeMobileMenu()"></div>' +
+        '<div class="mobile-menu-sheet-panel" role="dialog" aria-modal="true" aria-label="Navigation menu">' +
+          '<div class="mobile-menu-sheet-handle" aria-hidden="true"></div>' +
+          '<div class="mobile-menu-sheet-header">' +
+            '<span class="mobile-menu-sheet-title">Menu</span>' +
+            '<button type="button" class="mobile-menu-sheet-close" onclick="MainNav.closeMobileMenu()" aria-label="Close menu">' +
+              '<span class="material-symbols-outlined">close</span>' +
+            '</button>' +
+          '</div>' +
+          '<ul class="mobile-menu-sheet-list">';
+
+      NAV_ITEMS.forEach(function(item) {
+        if (MOBILE_BOTTOM_ITEMS.some(function(b) { return b.id === item.id; })) return;
+        var isActive = item.id === activeId;
+        html += '<li>' +
+          '<button type="button" class="main-nav-item mobile-menu-sheet-item' + (isActive ? ' active' : '') + '"' +
+            ' data-nav-id="' + item.id + '"' +
+            ' onclick="MainNav._mobileMenuNavigate(\'' + item.id + '\', \'' + item.onclick.replace(/'/g, "\\'") + '\')"' +
+            ' style="--nav-color:' + item.color + '">' +
+            '<span class="main-nav-icon"><span class="material-symbols-outlined">' + item.icon + '</span></span>' +
+            '<span class="main-nav-label">' + escapeHTML(item.label) + '</span>' +
+          '</button>' +
+        '</li>';
+      });
+
+      if (!hidePlans) {
+        var plansActive = (typeof AppState !== 'undefined' && AppState.currentView === 'premium');
+        html += '<li>' +
+          '<button type="button" class="main-nav-item mobile-menu-sheet-item' + (plansActive ? ' active' : '') + '"' +
+            ' data-nav-id="plans"' +
+            ' onclick="MainNav._mobileMenuNavigate(\'plans\', \'UserProfile.renderPremiumSection()\')"' +
+            ' style="--nav-color:#ffc800">' +
+            '<span class="main-nav-icon"><span class="material-symbols-outlined">workspace_premium</span></span>' +
+            '<span class="main-nav-label">Plans</span>' +
+          '</button>' +
+        '</li>';
+      }
+
+      html += '</ul></div></div>';
+      return html;
+    },
+
+    _mobileMenuNavigate: function(navId, onclickStr) {
+      this.closeMobileMenu();
+      if (onclickStr) {
+        try { (new Function(onclickStr))(); } catch (e) {}
+      }
+      this.setMobileActive(navId);
+    },
+
+    ensureMobileMenuSheet: function() {
+      if (document.getElementById('mobileMenuSheet')) return;
+      var wrapper = document.createElement('div');
+      wrapper.innerHTML = this.buildMobileMenuSheetHtml();
+      var sheet = wrapper.firstElementChild;
+      if (sheet) document.body.appendChild(sheet);
+    },
+
+    openMobileMenu: function() {
+      this.ensureMobileMenuSheet();
+      var sheet = document.getElementById('mobileMenuSheet');
+      if (!sheet) return;
+      sheet.classList.add('is-open');
+      sheet.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('mobile-menu-open');
+      document.querySelectorAll('.mobile-bottom-nav-btn[data-nav-id="more"]').forEach(function(btn) {
+        btn.classList.add('active');
+      });
+    },
+
+    closeMobileMenu: function() {
+      var sheet = document.getElementById('mobileMenuSheet');
+      if (!sheet) return;
+      sheet.classList.remove('is-open');
+      sheet.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('mobile-menu-open');
+      this.setMobileActive(getActiveId());
+    },
+
+    toggleMobileMenu: function() {
+      var sheet = document.getElementById('mobileMenuSheet');
+      if (sheet && sheet.classList.contains('is-open')) this.closeMobileMenu();
+      else this.openMobileMenu();
+    },
+
+    setMobileActive: function(activeId) {
+      activeId = activeId || getActiveId();
+      document.querySelectorAll('.mobile-bottom-nav-btn[data-nav-id]').forEach(function(btn) {
+        var id = btn.getAttribute('data-nav-id');
+        var isMoreGroup = id === 'more' && activeId && MOBILE_MENU_ITEMS.indexOf(activeId) !== -1;
+        btn.classList.toggle('active', id === activeId || isMoreGroup);
+      });
+      document.querySelectorAll('.mobile-menu-sheet-item').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-nav-id') === activeId);
+      });
+    },
+
+    initMobileStatsPopovers: function() {
+      var self = this;
+      var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+      if (!isMobile) return;
+
+      var popoverConfigs = [
+        { wrapId: 'statsBarLevelWrap', btnId: 'statsBarLevelBtn', popoverId: 'levelPopover', closeFn: 'closeLevelPopover' },
+        { wrapId: 'statsBarStreakWrap', btnId: 'statsBarStreakBtn', popoverId: 'streakPopover' },
+        { wrapId: 'statsBarDictWrap', btnId: 'statsBarDictBtn', popoverId: 'dictPopover', closeFn: 'closeDictPopover' }
+      ];
+
+      popoverConfigs.forEach(function(cfg) {
+        var wrap = document.getElementById(cfg.wrapId);
+        var btn = document.getElementById(cfg.btnId);
+        var popover = document.getElementById(cfg.popoverId);
+        if (!wrap || !btn || !popover || wrap._mobilePopoverInit) return;
+        wrap._mobilePopoverInit = true;
+
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var isOpen = popover.classList.contains('is-open');
+          self._closeAllMobilePopovers();
+          if (!isOpen) {
+            popover.classList.add('is-open');
+            btn.classList.add('is-active');
+            btn.setAttribute('aria-expanded', 'true');
+            popover.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('mobile-popover-open');
+          }
+        });
+      });
+
+      if (!document._mobilePopoverBackdropInit) {
+        document._mobilePopoverBackdropInit = true;
+        document.addEventListener('click', function(e) {
+          if (!document.body.classList.contains('mobile-popover-open')) return;
+          if (e.target.closest('.stats-bar-level-wrap, .stats-bar-streak-wrap, .stats-bar-dict-wrap')) return;
+          self._closeAllMobilePopovers();
+        });
+      }
+    },
+
+    _closeAllMobilePopovers: function() {
+      document.querySelectorAll('.level-popover, .streak-popover, .dict-popover').forEach(function(p) {
+        p.classList.remove('is-open');
+        p.setAttribute('aria-hidden', 'true');
+      });
+      document.querySelectorAll('button.stats-bar-item').forEach(function(btn) {
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+      document.body.classList.remove('mobile-popover-open');
     }
   };
 })();

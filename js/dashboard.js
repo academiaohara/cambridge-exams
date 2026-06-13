@@ -35,9 +35,15 @@
 
     _initStatsPopovers: function() {
       if (typeof MainNav === 'undefined') return;
-      if (MainNav.initStreakPopover) MainNav.initStreakPopover();
-      if (MainNav.initLevelPopover) MainNav.initLevelPopover();
-      if (MainNav.initDictPopover) MainNav.initDictPopover();
+      var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+      if (isMobile) {
+        if (MainNav.initMobileStatsPopovers) MainNav.initMobileStatsPopovers();
+      } else {
+        if (MainNav.initStreakPopover) MainNav.initStreakPopover();
+        if (MainNav.initLevelPopover) MainNav.initLevelPopover();
+        if (MainNav.initDictPopover) MainNav.initDictPopover();
+      }
+      if (MainNav.ensureMobileMenuSheet) MainNav.ensureMobileMenuSheet();
     },
 
     _renderSidebarShell: function(side, shellId, contentId, contentHtml) {
@@ -124,6 +130,7 @@
       var html = '<div class="dashboard-layout">' +
         this._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent) +
         '<div class="dashboard-center">' +
+          (typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml ? MainNav.buildMobileTopBarHtml() : '') +
           this._renderCenterHeader('Home', 'Your learning dashboard for ' + level) +
           '<div class="bento-center-wrapper">' +
             '<div id="bento-grid-container"></div>' +
@@ -143,6 +150,7 @@
       }
       if (typeof MainNav !== 'undefined') {
         this._initStatsPopovers();
+        MainNav.setMobileActive('home');
       }
       if (typeof AppLoadingScreen !== 'undefined') AppLoadingScreen.hide();
     },
@@ -259,13 +267,21 @@
       var rightSidebarContent = sidebars.right;
 
       var mobileNavHtml =
-        typeof BentoGrid !== 'undefined'
-          ? BentoGrid._renderMobileBottomNav(AppState.currentLevel || 'C1')
+        typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
+          ? MainNav.buildMobileBottomNavHtml()
+          : (typeof BentoGrid !== 'undefined'
+            ? BentoGrid._renderMobileBottomNav(AppState.currentLevel || 'C1')
+            : '');
+
+      var mobileTopBarHtml =
+        typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
+          ? MainNav.buildMobileTopBarHtml()
           : '';
 
       var html = '<div class="dashboard-layout">' +
         this._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent) +
         '<div class="dashboard-center dashboard-center--subpage">' +
+          mobileTopBarHtml +
           subpageHeader +
           premiumBannerHtml +
           viewToggleHtml +
@@ -279,7 +295,9 @@
       this._applySidebarState();
       if (typeof BentoGrid !== 'undefined') {
         BentoGrid._startGradeCarousel();
-        BentoGrid.setMobileDashboardTab(BentoGrid._mobileDashboardTab || 'learn');
+        if (typeof MainNav !== 'undefined' && MainNav.setMobileActive) {
+          MainNav.setMobileActive(AppState.currentMode === 'exam' ? 'simulation' : 'practice');
+        }
       }
       this._initStatsPopovers();
       if (typeof App !== 'undefined' && App.updateHeaderModeButtons) App.updateHeaderModeButtons();
