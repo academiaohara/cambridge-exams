@@ -23,7 +23,7 @@
         '</header>' +
         '<main class="landing-main">' +
           '<div class="landing-mascot-col">' +
-            '<img src="Assets/images/sunelogoreduced.svg" alt="" class="landing-mascot" aria-hidden="true">' +
+            '<img src="Assets/images/SunePanther.png" alt="" class="landing-mascot" aria-hidden="true">' +
           '</div>' +
           '<div class="landing-content-col">' +
             '<h1 class="landing-title">' +
