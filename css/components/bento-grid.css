@@ -1263,6 +1263,69 @@ content: '';
   flex-shrink: 0;
 }
 
+/* ── Right Sidebar: Profile CTA (Duolingo-style) ── */
+.sw-profile-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  padding: 18px 16px;
+}
+
+.sw-profile-cta-text {
+  margin: 0 0 4px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #3c3c3c;
+  text-align: center;
+}
+
+.sw-profile-cta-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.1s;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.sw-profile-cta-btn:hover {
+  filter: brightness(1.05);
+}
+
+.sw-profile-cta-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.sw-profile-cta-btn--create {
+  background: #58cc02;
+  box-shadow: 0 4px 0 #58a700;
+}
+
+.sw-profile-cta-btn--create:active {
+  box-shadow: 0 2px 0 #58a700;
+}
+
+.sw-profile-cta-btn--login {
+  background: #1cb0f6;
+  box-shadow: 0 4px 0 #1899d6;
+}
+
+.sw-profile-cta-btn--login:active {
+  box-shadow: 0 2px 0 #1899d6;
+}
+
 /* ── Right Sidebar: Pastel widget cards (legacy) ── */
 .sidebar-widget-pastel {
   border-radius: 20px;

@@ -1236,11 +1236,22 @@
       return '';
     },
 
+    _buildProfileCtaSidebarHtml: function() {
+      if (typeof AppState !== 'undefined' && AppState.isAuthenticated) return '';
+
+      return '<div class="sidebar-widget-duo sw-profile-cta">' +
+        '<p class="sw-profile-cta-text">Create a profile to save your progress!</p>' +
+        '<button type="button" class="sw-profile-cta-btn sw-profile-cta-btn--create" onclick="Auth.showRegisterPage()">CREATE PROFILE</button>' +
+        '<button type="button" class="sw-profile-cta-btn sw-profile-cta-btn--login" onclick="Auth.showLoginPage()">LOG IN</button>' +
+      '</div>';
+    },
+
     _buildDashboardSidebars: function(exams, options) {
       options = options || {};
       exams = exams || [];
       var left = this._buildLevelSelectorSidebarHtml();
       var right = this._buildRightSidebarHeaderHtml();
+      right += this._buildProfileCtaSidebarHtml();
       if (options.includeGradeTracker !== false) {
         right += this._buildGradeTrackerSidebarHtml(exams);
       }
