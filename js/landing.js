@@ -97,7 +97,7 @@
             '<img src="Assets/images/SunePanther.svg" alt="" class="landing-mascot" aria-hidden="true">' +
             '<div class="landing-mascot-shadow" aria-hidden="true"></div>' +
           '</div>' +
-          '<h1 class="landing-title" id="landing-brand">sune english</h1>' +
+          '<img src="Assets/images/sunelogoreduced.svg" class="landing-brand-logo" id="landing-brand" alt="Sune English">' +
           '<p class="landing-subtitle">Learn and have fun. Free forever.</p>' +
         '</div>' +
         '<div class="landing-actions">' +
