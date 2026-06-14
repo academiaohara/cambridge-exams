@@ -946,13 +946,17 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  overflow-y: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
   min-width: 0;
 }
 
+.dashboard-left-sidebar {
+  overflow-y: auto;
+}
+
 .dashboard-right-sidebar {
+  overflow: visible;
   padding-right: 16px;
   padding-top: 4px;
 }
@@ -963,6 +967,8 @@
   align-self: stretch;
   padding-top: 0;
   margin-bottom: 4px;
+  position: relative;
+  z-index: 1500;
 }
 
 .dashboard-sidebar-shell {
@@ -1034,6 +1040,8 @@
 .dashboard-center {
   min-width: 0;
   padding-top: 4px;
+  position: relative;
+  z-index: 1;
 }
 
 .dashboard-center-header {

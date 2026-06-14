@@ -165,7 +165,7 @@ button.stats-bar-item.is-active {
   top: calc(100% + 10px);
   right: 0;
   width: 300px;
-  z-index: 200;
+  z-index: 1500;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -283,7 +283,7 @@ button.stats-bar-item.is-active {
   top: calc(100% + 10px);
   right: 0;
   width: 320px;
-  z-index: 200;
+  z-index: 1500;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -387,7 +387,7 @@ button.stats-bar-item.is-active {
   top: calc(100% + 10px);
   right: 0;
   width: 320px;
-  z-index: 200;
+  z-index: 1500;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -731,9 +731,20 @@ button.stats-bar-item.is-active {
     top: 0;
     align-self: start;
     max-height: 100vh;
-    overflow-y: auto;
+    overflow: visible;
     padding-top: 4px;
     padding-right: 16px;
+    z-index: 5;
+  }
+
+  .dashboard-right-sidebar .main-nav-stats-bar {
+    position: relative;
+    z-index: 1500;
+  }
+
+  .dashboard-center {
+    position: relative;
+    z-index: 1;
   }
 }
 

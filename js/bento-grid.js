@@ -218,7 +218,9 @@
 
     openMobileLevelModal: function() {
       var isDesktop = window.matchMedia && window.matchMedia('(min-width: 769px)').matches;
-      var levelBtn = document.getElementById('statsBarLevelBtn');
+      var levelBtn = typeof MainNav !== 'undefined' && MainNav._getStatsBarButton
+        ? MainNav._getStatsBarButton('level')
+        : document.querySelector('.dashboard-right-sidebar .stats-bar-level, .mobile-nav-top-stats .stats-bar-level');
       if (isDesktop && levelBtn && typeof MainNav !== 'undefined') {
         levelBtn.click();
         return;
