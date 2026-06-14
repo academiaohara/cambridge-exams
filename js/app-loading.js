@@ -53,7 +53,7 @@
   function buildLoadingMarkup() {
     return (
       '<div class="app-loading-inner">' +
-        '<img src="Assets/images/sunelogoreduced.svg" alt="Sune English" class="app-loading-logo">' +
+        '<img src="Assets/images/sunelogoreduced2.svg" alt="Sune English" class="app-loading-logo">' +
         '<p class="app-loading-title">Loading</p>' +
         '<div class="app-loading-paws" aria-hidden="true">' +
           '<div class="app-loading-paws-row app-loading-paws-row--top">' +

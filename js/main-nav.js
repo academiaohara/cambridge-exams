@@ -54,7 +54,7 @@
 
       var html = '<nav class="main-nav-sidebar" aria-label="Main navigation">' +
         '<a class="main-nav-brand" href="/" onclick="event.preventDefault(); loadDashboard()">' +
-          '<img src="Assets/images/sunelogoreduced.svg" class="main-nav-logo" alt="Sune English">' +
+          '<img src="Assets/images/sunelogoreduced2.svg" class="main-nav-logo" alt="Sune English">' +
         '</a>' +
         '<ul class="main-nav-list">';
 
@@ -491,7 +491,7 @@
     buildMobileTopBarHtml: function() {
       return '<header class="mobile-nav-top-bar" aria-label="Mobile stats">' +
         '<a class="mobile-nav-top-brand" href="/" onclick="event.preventDefault(); loadDashboard()">' +
-          '<img src="Assets/images/sunelogoreduced.svg" class="mobile-nav-top-logo" alt="Sune English">' +
+          '<img src="Assets/images/sunelogoreduced2.svg" class="mobile-nav-top-logo" alt="Sune English">' +
         '</a>' +
         '<div class="mobile-nav-top-stats">' + this.buildStatsBarHtml() + '</div>' +
       '</header>';

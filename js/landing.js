@@ -66,7 +66,7 @@
     return (
       '<header class="landing-header">' +
         '<a href="/" class="preauth-brand-link" onclick="event.preventDefault(); Landing.render()">' +
-          '<img src="Assets/images/sunelogoreduced.svg" class="preauth-brand-logo" alt="Sune English">' +
+          '<img src="Assets/images/sunelogoreduced2.svg" class="preauth-brand-logo" alt="Sune English">' +
         '</a>' +
       '</header>' +
       '<main class="landing-main">' +
@@ -97,7 +97,7 @@
             '<img src="Assets/images/SunePanther.svg" alt="" class="landing-mascot" aria-hidden="true">' +
             '<div class="landing-mascot-shadow" aria-hidden="true"></div>' +
           '</div>' +
-          '<img src="Assets/images/sunelogoreduced.svg" class="landing-brand-logo" id="landing-brand" alt="Sune English">' +
+          '<img src="Assets/images/sunelogoreduced2.svg" class="landing-brand-logo" id="landing-brand" alt="Sune English">' +
           '<p class="landing-subtitle">Learn and have fun. Free forever.</p>' +
         '</div>' +
         '<div class="landing-actions">' +
