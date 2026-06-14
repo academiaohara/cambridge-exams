@@ -62,7 +62,7 @@
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
 
       return '<section class="mobile-app-hero">' +
-        '<div class="mobile-app-kicker">Sune English</div>' +
+        '<img src="Assets/images/sunelogoreduced2.svg" class="mobile-app-kicker" alt="Sune English">' +
         '<h1>Hi, ' + this._escapeHTML(name.split(' ')[0]) + '</h1>' +
         '<p>Choose your next move for ' + this._escapeHTML(level) + '.</p>' +
         '<div class="mobile-app-pill-row">' +

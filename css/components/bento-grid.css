@@ -2332,12 +2332,10 @@ margin-top: -2px;
   }
 
   .mobile-app-kicker {
-    margin-bottom: 6px;
-    font-size: 0.72rem;
-    font-weight: 900;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #1E9D8E;
+    display: block;
+    height: clamp(28px, 8vw, 36px);
+    width: auto;
+    margin: 0 auto 6px;
   }
 
   .mobile-app-hero h1 {

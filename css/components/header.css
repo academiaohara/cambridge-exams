@@ -43,23 +43,9 @@
 }
 
 .logo .logo-icon {
-  height: 34px;
+  height: 40px;
   width: auto;
   display: block;
-}
-
-.logo-text {
-  font-family: 'Mileast', 'Nunito', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: #f47417;
-}
-
-.logo-text span {
-  font-size: 0.7rem;
-  font-weight: 400;
-  opacity: 0.7;
-  color: var(--text-medium);
 }
 
 .level-nav {
@@ -357,7 +343,7 @@
   }
 
   .logo .logo-icon {
-    height: 30px;
+    height: 34px;
   }
 
   .header-quick-nav {
