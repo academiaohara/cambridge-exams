@@ -1265,29 +1265,49 @@ content: '';
 
 /* ── Right Sidebar: Profile CTA (Duolingo-style) ── */
 .sw-profile-cta {
+  overflow: visible;
+  padding: 20px 18px 18px 52px;
+}
+
+.sw-profile-cta:hover {
+  border-color: #e5e5e5;
+  box-shadow: none;
+}
+
+.sw-profile-cta-fox {
+  position: absolute;
+  left: -34px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 78px;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.sw-profile-cta-body {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 10px;
-  padding: 18px 16px;
+  gap: 8px;
 }
 
 .sw-profile-cta-text {
-  margin: 0 0 4px;
+  margin: 0 0 6px;
   font-family: 'Nunito', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 800;
   line-height: 1.35;
-  color: #3c3c3c;
+  color: #4b4b4b;
   text-align: center;
 }
 
 .sw-profile-cta-btn {
   display: block;
   width: 100%;
-  padding: 12px 14px;
+  padding: 13px 14px;
   border: none;
-  border-radius: 12px;
+  border-radius: 15px;
   font-family: 'Nunito', sans-serif;
   font-size: 0.82rem;
   font-weight: 800;
@@ -1295,8 +1315,7 @@ content: '';
   text-transform: uppercase;
   color: #fff;
   cursor: pointer;
-  transition: filter 0.15s, transform 0.1s;
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
+  transition: filter 0.15s, transform 0.1s, box-shadow 0.1s;
 }
 
 .sw-profile-cta-btn:hover {
@@ -1305,21 +1324,20 @@ content: '';
 
 .sw-profile-cta-btn:active {
   transform: translateY(2px);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
 }
 
 .sw-profile-cta-btn--create {
-  background: #58cc02;
-  box-shadow: 0 4px 0 #58a700;
+  background: var(--brand-orange, #ff9600);
+  box-shadow: 0 5px 0 var(--brand-orange-dark, #e68600);
 }
 
 .sw-profile-cta-btn--create:active {
-  box-shadow: 0 2px 0 #58a700;
+  box-shadow: 0 2px 0 var(--brand-orange-dark, #e68600);
 }
 
 .sw-profile-cta-btn--login {
   background: #1cb0f6;
-  box-shadow: 0 4px 0 #1899d6;
+  box-shadow: 0 5px 0 #1899d6;
 }
 
 .sw-profile-cta-btn--login:active {

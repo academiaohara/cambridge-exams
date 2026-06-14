@@ -1240,9 +1240,12 @@
       if (typeof AppState !== 'undefined' && AppState.isAuthenticated) return '';
 
       return '<div class="sidebar-widget-duo sw-profile-cta">' +
-        '<p class="sw-profile-cta-text">Create a profile to save your progress!</p>' +
-        '<button type="button" class="sw-profile-cta-btn sw-profile-cta-btn--create" onclick="Auth.showRegisterPage()">CREATE PROFILE</button>' +
-        '<button type="button" class="sw-profile-cta-btn sw-profile-cta-btn--login" onclick="Auth.showLoginPage()">LOG IN</button>' +
+        '<img src="Assets/images/asomado.svg" alt="" class="sw-profile-cta-fox" aria-hidden="true">' +
+        '<div class="sw-profile-cta-body">' +
+          '<p class="sw-profile-cta-text">Create a profile to save your progress!</p>' +
+          '<button type="button" class="sw-profile-cta-btn sw-profile-cta-btn--create" onclick="Auth.showRegisterPage()">CREATE PROFILE</button>' +
+          '<button type="button" class="sw-profile-cta-btn sw-profile-cta-btn--login" onclick="Auth.showLoginPage()">LOG IN</button>' +
+        '</div>' +
       '</div>';
     },
 
