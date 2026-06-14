@@ -98,11 +98,11 @@
             '<div class="landing-mascot-shadow" aria-hidden="true"></div>' +
           '</div>' +
           '<h1 class="landing-title" id="landing-brand">sune english</h1>' +
-          '<p class="landing-subtitle">Aprende y diviértete. Gratis de por vida.</p>' +
+          '<p class="landing-subtitle">Learn and have fun. Free forever.</p>' +
         '</div>' +
         '<div class="landing-actions">' +
-          '<a href="/welcome" class="landing-btn landing-btn--primary" onclick="event.preventDefault(); Auth.navigateTo(\'/welcome\')">Empieza ahora</a>' +
-          '<a href="/login" class="landing-btn landing-btn--secondary" onclick="event.preventDefault(); Auth.navigateTo(\'/login\')">Ya tengo una cuenta</a>' +
+          '<a href="/welcome" class="landing-btn landing-btn--primary" onclick="event.preventDefault(); Auth.navigateTo(\'/welcome\')">Get started</a>' +
+          '<a href="/login" class="landing-btn landing-btn--secondary" onclick="event.preventDefault(); Auth.navigateTo(\'/login\')">I already have an account</a>' +
         '</div>' +
       '</main>'
     );
