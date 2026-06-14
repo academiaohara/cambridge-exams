@@ -7186,7 +7186,9 @@
 
     _showDictionariesHome: function() {
       var isDesktop = window.matchMedia && window.matchMedia('(min-width: 769px)').matches;
-      var dictBtn = document.getElementById('statsBarDictBtn');
+      var dictBtn = typeof MainNav !== 'undefined' && MainNav._getStatsBarButton
+        ? MainNav._getStatsBarButton('dict')
+        : document.querySelector('.dashboard-right-sidebar .stats-bar-xp, .mobile-nav-top-stats .stats-bar-xp');
       if (isDesktop && dictBtn && typeof MainNav !== 'undefined') {
         dictBtn.click();
         return;

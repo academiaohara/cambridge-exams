@@ -48,6 +48,28 @@
   window.MainNav = {
     NAV_ITEMS: NAV_ITEMS,
 
+    _isMobileStatsLayout: function() {
+      return !!(window.matchMedia && window.matchMedia('(max-width: 768px)').matches);
+    },
+
+    _getActiveStatsBarScope: function() {
+      if (this._isMobileStatsLayout()) {
+        return document.querySelector('.mobile-nav-top-stats');
+      }
+      return document.querySelector('.dashboard-right-sidebar');
+    },
+
+    _getStatsBarButton: function(kind) {
+      var scope = this._getActiveStatsBarScope();
+      if (!scope) return null;
+      var selectors = {
+        level: '.stats-bar-level',
+        streak: '.stats-bar-streak',
+        dict: '.stats-bar-xp'
+      };
+      return scope.querySelector(selectors[kind] || kind);
+    },
+
     buildSidebarHtml: function(activeId) {
       activeId = activeId || getActiveId() || 'home';
       var hidePlans = typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI();
@@ -114,26 +136,26 @@
       var dictPopoverHtml = this.buildDictPopoverHtml();
 
       return '<div class="main-nav-stats-bar" aria-label="Your stats">' +
-        '<div class="stats-bar-level-wrap" id="statsBarLevelWrap">' +
-          '<button type="button" class="stats-bar-item stats-bar-level" id="statsBarLevelBtn" aria-label="Change level" aria-expanded="false" aria-haspopup="true" style="background:' + lc.bg + ';color:' + lc.color + '">' +
+        '<div class="stats-bar-level-wrap">' +
+          '<button type="button" class="stats-bar-item stats-bar-level" aria-label="Change level" aria-expanded="false" aria-haspopup="true" style="background:' + lc.bg + ';color:' + lc.color + '">' +
             '<span class="material-symbols-outlined">school</span>' +
             '<strong>' + escapeHTML(level) + '</strong>' +
           '</button>' +
-          '<div class="level-popover" id="levelPopover" role="dialog" aria-hidden="true">' + levelPopoverHtml + '</div>' +
+          '<div class="level-popover" role="dialog" aria-hidden="true">' + levelPopoverHtml + '</div>' +
         '</div>' +
-        '<div class="stats-bar-streak-wrap" id="statsBarStreakWrap">' +
-          '<button type="button" class="stats-bar-item stats-bar-streak' + (streakInactive ? ' stats-bar-streak-inactive' : '') + '" id="statsBarStreakBtn" aria-label="View streak" aria-expanded="false" aria-haspopup="true">' +
+        '<div class="stats-bar-streak-wrap">' +
+          '<button type="button" class="stats-bar-item stats-bar-streak' + (streakInactive ? ' stats-bar-streak-inactive' : '') + '" aria-label="View streak" aria-expanded="false" aria-haspopup="true">' +
             '<span class="material-symbols-outlined">local_fire_department</span>' +
             '<strong>' + streakCount + '</strong>' +
           '</button>' +
-          '<div class="streak-popover" id="streakPopover" role="dialog" aria-hidden="true">' + popoverHtml + '</div>' +
+          '<div class="streak-popover" role="dialog" aria-hidden="true">' + popoverHtml + '</div>' +
         '</div>' +
-        '<div class="stats-bar-dict-wrap" id="statsBarDictWrap">' +
-          '<button type="button" class="stats-bar-item stats-bar-xp" id="statsBarDictBtn" aria-label="Open dictionaries" aria-expanded="false" aria-haspopup="true">' +
+        '<div class="stats-bar-dict-wrap">' +
+          '<button type="button" class="stats-bar-item stats-bar-xp" aria-label="Open dictionaries" aria-expanded="false" aria-haspopup="true">' +
             '<span class="material-symbols-outlined">menu_book</span>' +
             '<strong>' + xp + '</strong>' +
           '</button>' +
-          '<div class="dict-popover" id="dictPopover" role="dialog" aria-hidden="true">' + dictPopoverHtml + '</div>' +
+          '<div class="dict-popover" role="dialog" aria-hidden="true">' + dictPopoverHtml + '</div>' +
         '</div>' +
       '</div>';
     },
@@ -197,9 +219,12 @@
     },
 
     _initAnchoredPopover: function(opts) {
-      var wrap = document.getElementById(opts.wrapId);
-      var btn = document.getElementById(opts.btnId);
-      var popover = document.getElementById(opts.popoverId);
+      var scope = opts.scope || this._getActiveStatsBarScope();
+      if (!scope) return;
+
+      var wrap = scope.querySelector(opts.wrapSelector);
+      var btn = wrap && wrap.querySelector(opts.btnSelector);
+      var popover = wrap && wrap.querySelector(opts.popoverSelector);
       if (!wrap || !btn || !popover) return;
 
       if (wrap[opts.initFlag]) return;
@@ -244,47 +269,52 @@
 
     initLevelPopover: function() {
       this._initAnchoredPopover({
-        wrapId: 'statsBarLevelWrap',
-        btnId: 'statsBarLevelBtn',
-        popoverId: 'levelPopover',
+        wrapSelector: '.stats-bar-level-wrap',
+        btnSelector: '.stats-bar-level',
+        popoverSelector: '.level-popover',
         initFlag: '_levelPopoverInit'
       });
     },
 
     closeLevelPopover: function() {
-      var wrap = document.getElementById('statsBarLevelWrap');
-      if (wrap && wrap._setPopoverOpen) wrap._setPopoverOpen(false);
+      document.querySelectorAll('.stats-bar-level-wrap').forEach(function(wrap) {
+        if (wrap._setPopoverOpen) wrap._setPopoverOpen(false);
+      });
     },
 
     initDictPopover: function() {
       this._initAnchoredPopover({
-        wrapId: 'statsBarDictWrap',
-        btnId: 'statsBarDictBtn',
-        popoverId: 'dictPopover',
+        wrapSelector: '.stats-bar-dict-wrap',
+        btnSelector: '.stats-bar-xp',
+        popoverSelector: '.dict-popover',
         initFlag: '_dictPopoverInit'
       });
     },
 
     closeDictPopover: function() {
-      var wrap = document.getElementById('statsBarDictWrap');
-      if (wrap && wrap._setPopoverOpen) wrap._setPopoverOpen(false);
+      document.querySelectorAll('.stats-bar-dict-wrap').forEach(function(wrap) {
+        if (wrap._setPopoverOpen) wrap._setPopoverOpen(false);
+      });
     },
 
     refreshLevelPopover: function() {
-      var popover = document.getElementById('levelPopover');
-      var btn = document.getElementById('statsBarLevelBtn');
-      if (!popover || !btn) return;
+      var self = this;
       var level = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1';
-      popover.innerHTML = this.buildLevelPopoverHtml(level);
-      btn.querySelector('strong').textContent = level;
       var levelColors = {
         'C1': { bg: '#fff3e0', color: '#e65100' },
         'B1': { bg: '#fff8e6', color: '#ce7c3a' },
         'B2': { bg: '#fff3e0', color: '#e65100' }
       };
       var lc = levelColors[level] || levelColors['C1'];
-      btn.style.background = lc.bg;
-      btn.style.color = lc.color;
+      document.querySelectorAll('.stats-bar-level-wrap').forEach(function(wrap) {
+        var popover = wrap.querySelector('.level-popover');
+        var btn = wrap.querySelector('.stats-bar-level');
+        if (!popover || !btn) return;
+        popover.innerHTML = self.buildLevelPopoverHtml(level);
+        btn.querySelector('strong').textContent = level;
+        btn.style.background = lc.bg;
+        btn.style.color = lc.color;
+      });
     },
 
     buildStreakPopoverHtml: function(streak) {
@@ -346,23 +376,25 @@
 
     initStreakPopover: function() {
       this._initAnchoredPopover({
-        wrapId: 'statsBarStreakWrap',
-        btnId: 'statsBarStreakBtn',
-        popoverId: 'streakPopover',
+        wrapSelector: '.stats-bar-streak-wrap',
+        btnSelector: '.stats-bar-streak',
+        popoverSelector: '.streak-popover',
         initFlag: '_streakPopoverInit'
       });
     },
 
     refreshStreakPopover: function() {
-      var popover = document.getElementById('streakPopover');
-      var btn = document.getElementById('statsBarStreakBtn');
-      if (!popover || !btn) return;
-
+      var self = this;
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
-      popover.innerHTML = this.buildStreakPopoverHtml(streak);
-      btn.querySelector('strong').textContent = streakCount;
-      btn.classList.toggle('stats-bar-streak-inactive', streakCount === 0);
+      document.querySelectorAll('.stats-bar-streak-wrap').forEach(function(wrap) {
+        var popover = wrap.querySelector('.streak-popover');
+        var btn = wrap.querySelector('.stats-bar-streak');
+        if (!popover || !btn) return;
+        popover.innerHTML = self.buildStreakPopoverHtml(streak);
+        btn.querySelector('strong').textContent = streakCount;
+        btn.classList.toggle('stats-bar-streak-inactive', streakCount === 0);
+      });
     },
 
     buildDesktopModeCardsHtml: function(exams) {
@@ -617,19 +649,21 @@
 
     initMobileStatsPopovers: function() {
       var self = this;
-      var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
-      if (!isMobile) return;
+      if (!this._isMobileStatsLayout()) return;
+
+      var scope = document.querySelector('.mobile-nav-top-stats');
+      if (!scope) return;
 
       var popoverConfigs = [
-        { wrapId: 'statsBarLevelWrap', btnId: 'statsBarLevelBtn', popoverId: 'levelPopover', closeFn: 'closeLevelPopover' },
-        { wrapId: 'statsBarStreakWrap', btnId: 'statsBarStreakBtn', popoverId: 'streakPopover' },
-        { wrapId: 'statsBarDictWrap', btnId: 'statsBarDictBtn', popoverId: 'dictPopover', closeFn: 'closeDictPopover' }
+        { wrapSelector: '.stats-bar-level-wrap', btnSelector: '.stats-bar-level', popoverSelector: '.level-popover' },
+        { wrapSelector: '.stats-bar-streak-wrap', btnSelector: '.stats-bar-streak', popoverSelector: '.streak-popover' },
+        { wrapSelector: '.stats-bar-dict-wrap', btnSelector: '.stats-bar-xp', popoverSelector: '.dict-popover' }
       ];
 
       popoverConfigs.forEach(function(cfg) {
-        var wrap = document.getElementById(cfg.wrapId);
-        var btn = document.getElementById(cfg.btnId);
-        var popover = document.getElementById(cfg.popoverId);
+        var wrap = scope.querySelector(cfg.wrapSelector);
+        var btn = wrap && wrap.querySelector(cfg.btnSelector);
+        var popover = wrap && wrap.querySelector(cfg.popoverSelector);
         if (!wrap || !btn || !popover || wrap._mobilePopoverInit) return;
         wrap._mobilePopoverInit = true;
 
