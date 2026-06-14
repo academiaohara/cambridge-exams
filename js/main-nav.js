@@ -8,7 +8,6 @@
     { id: 'simulation', label: 'Simulation', icon: 'assignment', color: '#ce82ff', onclick: 'BentoGrid.selectMode(\'exam\')' },
     { id: 'crosswords', label: 'Crosswords', icon: 'grid_on', color: '#ff4b4b', onclick: 'BentoGrid.openCrosswordList()' },
     { id: 'dictionaries', label: 'Dictionaries', icon: 'menu_book', color: '#6366f1', onclick: 'FastExercises._showDictionariesHome()' },
-    { id: 'calculator', label: 'Calculator', icon: 'calculate', color: '#ff9600', onclick: 'openScoreCalculator()' },
     { id: 'profile', label: 'Profile', icon: 'person', color: '#777777', onclick: 'BentoGrid.openMobileProfile()' }
   ];
 
@@ -21,7 +20,7 @@
   ];
 
   var MOBILE_MENU_ITEMS = [
-    'simulation', 'crosswords', 'calculator', 'profile'
+    'simulation', 'crosswords', 'profile'
   ];
 
   function escapeHTML(str) {
@@ -115,14 +114,6 @@
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
 
-      var xp = 0;
-      if (typeof BentoGrid !== 'undefined' && BentoGrid._calcCwXP) {
-        try {
-          var cwProg = BentoGrid._getCwProgress ? BentoGrid._getCwProgress() : {};
-          xp = BentoGrid._calcCwXP(cwProg);
-        } catch (e) {}
-      }
-
       var levelColors = {
         'C1': { bg: '#fff3e0', color: '#e65100' },
         'B1': { bg: '#fff8e6', color: '#ce7c3a' },
@@ -153,10 +144,12 @@
         '<div class="stats-bar-dict-wrap">' +
           '<button type="button" class="stats-bar-item stats-bar-xp" aria-label="Open dictionaries" aria-expanded="false" aria-haspopup="true">' +
             '<span class="material-symbols-outlined">menu_book</span>' +
-            '<strong>' + xp + '</strong>' +
           '</button>' +
           '<div class="dict-popover" role="dialog" aria-hidden="true">' + dictPopoverHtml + '</div>' +
         '</div>' +
+        '<button type="button" class="stats-bar-item stats-bar-calc" aria-label="Open score calculator" onclick="openScoreCalculator()">' +
+          '<span class="material-symbols-outlined">calculate</span>' +
+        '</button>' +
       '</div>';
     },
 
@@ -232,6 +225,8 @@
 
       var isOpen = false;
       var dismissedByClick = false;
+      var closeTimer = null;
+      var HOVER_CLOSE_DELAY = 280;
 
       function setOpen(open) {
         isOpen = open;
@@ -243,14 +238,30 @@
         if (!open && opts.onClose) opts.onClose();
       }
 
-      wrap.addEventListener('mouseenter', function() {
-        if (!dismissedByClick) setOpen(true);
-      });
+      function cancelClose() {
+        if (closeTimer) {
+          clearTimeout(closeTimer);
+          closeTimer = null;
+        }
+      }
 
-      wrap.addEventListener('mouseleave', function() {
-        setOpen(false);
-        dismissedByClick = false;
-      });
+      function scheduleClose() {
+        cancelClose();
+        closeTimer = setTimeout(function() {
+          setOpen(false);
+          dismissedByClick = false;
+        }, HOVER_CLOSE_DELAY);
+      }
+
+      function handleEnter() {
+        cancelClose();
+        if (!dismissedByClick) setOpen(true);
+      }
+
+      wrap.addEventListener('mouseenter', handleEnter);
+      wrap.addEventListener('mouseleave', scheduleClose);
+      popover.addEventListener('mouseenter', handleEnter);
+      popover.addEventListener('mouseleave', scheduleClose);
 
       btn.addEventListener('click', function(e) {
         e.preventDefault();

@@ -145,8 +145,11 @@ button.stats-bar-item.is-active {
   color: #afafaf;
 }
 
-.stats-bar-xp .material-symbols-outlined,
-.stats-bar-xp strong {
+.stats-bar-xp .material-symbols-outlined {
+  color: #ff9600;
+}
+
+.stats-bar-calc .material-symbols-outlined {
   color: #ff9600;
 }
 
@@ -160,9 +163,29 @@ button.stats-bar-item.is-active {
   display: inline-flex;
 }
 
+/* Invisible hover bridge between stats bar buttons and their popovers */
+.stats-bar-level-wrap::after,
+.stats-bar-streak-wrap::after,
+.stats-bar-dict-wrap::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -32px;
+  right: -32px;
+  height: 0;
+  pointer-events: none;
+}
+
+.stats-bar-level-wrap:has(.level-popover.is-open)::after,
+.stats-bar-streak-wrap:has(.streak-popover.is-open)::after,
+.stats-bar-dict-wrap:has(.dict-popover.is-open)::after {
+  height: 32px;
+  pointer-events: auto;
+}
+
 .level-popover {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 8px);
   right: 0;
   width: 300px;
   z-index: 1500;
@@ -178,6 +201,16 @@ button.stats-bar-item.is-active {
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.level-popover.is-open::after {
+  content: '';
+  position: absolute;
+  top: -28px;
+  left: -40px;
+  right: -40px;
+  height: 28px;
+  pointer-events: auto;
 }
 
 .level-popover::before {
@@ -280,7 +313,7 @@ button.stats-bar-item.is-active {
 
 .dict-popover {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 8px);
   right: 0;
   width: 320px;
   z-index: 1500;
@@ -296,6 +329,16 @@ button.stats-bar-item.is-active {
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.dict-popover.is-open::after {
+  content: '';
+  position: absolute;
+  top: -28px;
+  left: -40px;
+  right: -40px;
+  height: 28px;
+  pointer-events: auto;
 }
 
 .dict-popover::before {
@@ -384,7 +427,7 @@ button.stats-bar-item.is-active {
 
 .streak-popover {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 8px);
   right: 0;
   width: 320px;
   z-index: 1500;
@@ -400,6 +443,16 @@ button.stats-bar-item.is-active {
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.streak-popover.is-open::after {
+  content: '';
+  position: absolute;
+  top: -28px;
+  left: -40px;
+  right: -40px;
+  height: 28px;
+  pointer-events: auto;
 }
 
 .streak-popover::before {
