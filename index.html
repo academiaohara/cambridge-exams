@@ -400,9 +400,10 @@
     <!-- Onboarding: level selection (shown once for new users / guests) -->
     <div id="onboarding-screen" class="onboarding-screen" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="onboarding-title">
       <header class="onboarding-header">
-        <a href="/" class="preauth-brand-link" onclick="event.preventDefault(); Auth.navigateTo('/')">
-          <img src="Assets/images/sunelogoreduced.svg" class="preauth-brand-logo" alt="Sune English">
-        </a>
+        <button type="button" class="preauth-back-btn" onclick="Auth.navigateTo('/')" aria-label="Volver">
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+        </button>
+        <img src="Assets/images/sunelogoreduced.svg" class="preauth-brand-logo" alt="Sune English">
       </header>
       <div class="onboarding-body">
         <div class="onboarding-prompt">
