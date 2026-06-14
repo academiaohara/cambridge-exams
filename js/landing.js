@@ -1,10 +1,15 @@
-// js/landing.js — App-style marketing landing at /
+// js/landing.js — Marketing landing page at /
 (function () {
   'use strict';
 
+  var MOBILE_QUERY = '(max-width: 768px)';
   var _touchBlocker = null;
   var _viewportMeta = null;
   var _originalViewport = '';
+
+  function isMobileLanding() {
+    return window.matchMedia && window.matchMedia(MOBILE_QUERY).matches;
+  }
 
   function lockViewport() {
     _viewportMeta = document.querySelector('meta[name="viewport"]');
@@ -29,6 +34,11 @@
   }
 
   function lockScroll() {
+    if (!isMobileLanding()) {
+      document.body.classList.add('landing-open');
+      return;
+    }
+
     document.documentElement.classList.add('landing-open');
     document.body.classList.add('landing-open');
     lockViewport();
@@ -52,6 +62,52 @@
     }
   }
 
+  function renderDesktopLanding() {
+    return (
+      '<header class="landing-header">' +
+        '<a href="/" class="preauth-brand-link" onclick="event.preventDefault(); Landing.render()">' +
+          '<img src="Assets/images/sunelogoreduced.svg" class="preauth-brand-logo" alt="Sune English">' +
+        '</a>' +
+      '</header>' +
+      '<main class="landing-main">' +
+        '<div class="landing-mascot-col">' +
+          '<img src="Assets/images/SunePanther.svg" alt="" class="landing-mascot" aria-hidden="true">' +
+        '</div>' +
+        '<div class="landing-content-col">' +
+          '<h1 class="landing-title">' +
+            'Learn English<br>with <span class="landing-title-accent">confidence</span>' +
+          '</h1>' +
+          '<div class="landing-cta-block">' +
+            '<p class="landing-subtitle">Fun, simple lessons with your smart fox guide.</p>' +
+            '<div class="landing-actions">' +
+              '<a href="/welcome" class="landing-btn landing-btn--primary" onclick="event.preventDefault(); Auth.navigateTo(\'/welcome\')">Get started</a>' +
+              '<a href="/login" class="landing-btn landing-btn--secondary" onclick="event.preventDefault(); Auth.navigateTo(\'/login\')">I already have an account</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</main>'
+    );
+  }
+
+  function renderMobileLanding() {
+    return (
+      '<main class="landing-main">' +
+        '<div class="landing-mascot-col">' +
+          '<div class="landing-mascot-wrap">' +
+            '<img src="Assets/images/SunePanther.svg" alt="" class="landing-mascot" aria-hidden="true">' +
+            '<div class="landing-mascot-shadow" aria-hidden="true"></div>' +
+          '</div>' +
+          '<h1 class="landing-title" id="landing-brand">sune english</h1>' +
+          '<p class="landing-subtitle">Aprende y diviértete. Gratis de por vida.</p>' +
+        '</div>' +
+        '<div class="landing-actions">' +
+          '<a href="/welcome" class="landing-btn landing-btn--primary" onclick="event.preventDefault(); Auth.navigateTo(\'/welcome\')">Empieza ahora</a>' +
+          '<a href="/login" class="landing-btn landing-btn--secondary" onclick="event.preventDefault(); Auth.navigateTo(\'/login\')">Ya tengo una cuenta</a>' +
+        '</div>' +
+      '</main>'
+    );
+  }
+
   window.Landing = {
     render: function () {
       AppState.currentView = 'landing';
@@ -62,24 +118,11 @@
       var existing = document.getElementById('landing-screen');
       if (existing) existing.remove();
 
+      var mobile = isMobileLanding();
       var screen = document.createElement('div');
       screen.id = 'landing-screen';
-      screen.className = 'landing-screen';
-      screen.innerHTML =
-        '<main class="landing-main">' +
-          '<section class="landing-hero" aria-labelledby="landing-brand">' +
-            '<div class="landing-mascot-wrap">' +
-              '<img src="Assets/images/SunePanther.svg" alt="" class="landing-mascot" aria-hidden="true">' +
-              '<div class="landing-mascot-shadow" aria-hidden="true"></div>' +
-            '</div>' +
-            '<h1 id="landing-brand" class="landing-brand">sune english</h1>' +
-            '<p class="landing-tagline">Aprende y diviértete. Gratis de por vida.</p>' +
-          '</section>' +
-          '<div class="landing-actions">' +
-            '<a href="/welcome" class="landing-btn landing-btn--primary" onclick="event.preventDefault(); Auth.navigateTo(\'/welcome\')">Empieza ahora</a>' +
-            '<a href="/login" class="landing-btn landing-btn--secondary" onclick="event.preventDefault(); Auth.navigateTo(\'/login\')">Ya tengo una cuenta</a>' +
-          '</div>' +
-        '</main>';
+      screen.className = 'landing-screen' + (mobile ? ' landing-screen--mobile-app' : '');
+      screen.innerHTML = mobile ? renderMobileLanding() : renderDesktopLanding();
 
       document.body.appendChild(screen);
       lockScroll();
