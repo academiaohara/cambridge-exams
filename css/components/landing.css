@@ -158,7 +158,7 @@ body.landing-open #app {
   background: #fff8f3;
 }
 
-/* ── Mobile app-style landing (Duolingo-inspired, orange brand) ───────── */
+/* ── Mobile app-style landing (light theme, orange brand) ─────────────── */
 @media (max-width: 768px) {
   html.landing-open,
   body.landing-open {
@@ -171,7 +171,7 @@ body.landing-open #app {
   }
 
   .landing-screen--mobile-app {
-    background: #131f24;
+    background: #fff;
     overflow: hidden;
     overscroll-behavior: none;
     touch-action: manipulation;
@@ -214,7 +214,7 @@ body.landing-open #app {
     transform: translateX(-50%);
     width: 72%;
     height: 18px;
-    background: rgba(0, 0, 0, 0.28);
+    background: rgba(0, 0, 0, 0.12);
     border-radius: 50%;
     filter: blur(2px);
   }
@@ -226,14 +226,11 @@ body.landing-open #app {
     max-height: min(42vh, 320px);
   }
 
-  .landing-screen--mobile-app .landing-title {
-    font-size: clamp(2.25rem, 9vw, 3rem);
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: #f47417;
-    margin-bottom: 12px;
-    text-transform: lowercase;
-    text-align: center;
+  .landing-screen--mobile-app .landing-brand-logo {
+    display: block;
+    height: clamp(40px, 12vw, 52px);
+    width: auto;
+    margin: 0 auto 12px;
   }
 
   .landing-screen--mobile-app .landing-subtitle {
@@ -242,7 +239,7 @@ body.landing-open #app {
     font-size: clamp(1rem, 3.8vw, 1.125rem);
     font-weight: 500;
     line-height: 1.45;
-    color: #8b9da6;
+    color: #777;
     text-transform: none;
     letter-spacing: normal;
     text-align: center;
@@ -265,7 +262,7 @@ body.landing-open #app {
   }
 
   .landing-screen--mobile-app .landing-btn--primary {
-    color: #131f24;
+    color: #fff;
     box-shadow: 0 4px 0 #d45f0a;
   }
 
@@ -274,13 +271,13 @@ body.landing-open #app {
   }
 
   .landing-screen--mobile-app .landing-btn--secondary {
-    background: transparent;
+    background: #fff;
     color: #f47417;
-    border: 2px solid #3c4d56;
+    border: 2px solid #f47417;
   }
 
   .landing-screen--mobile-app .landing-btn--secondary:hover {
-    background: rgba(244, 116, 23, 0.06);
+    background: #fff8f3;
   }
 
   .landing-screen--mobile-app .landing-btn--secondary:active {
