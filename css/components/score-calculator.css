@@ -741,6 +741,14 @@
 .cb-column-grades { width: 80px; flex-shrink: 0; }
 .cb-column-skill { width: 140px; flex-shrink: 1; min-width: 50px; }
 
+.cb-column-scale .cb-hdr,
+.cb-column-grades .cb-hdr {
+  font-size: 0.52rem;
+  letter-spacing: 0.02em;
+  padding: 4px 3px;
+  line-height: 1.1;
+}
+
 .cb-col-body {
   height: 40vh;
   min-height: 200px;
@@ -873,22 +881,29 @@
   line-height: 1.2;
 }
 
-.cb-grade-band.cb-grade-top {
-  background: var(--cb-accent-mid);
+/* Match skill-column band tones (Grade A → C, then lower levels) */
+.cb-column-grades .cb-grade-band:nth-child(1) {
+  background: rgba(28, 176, 246, 0.14);
 }
-.cb-grade-band.cb-grade-top .cb-grade-band-text {
+.cb-column-grades .cb-grade-band:nth-child(2) {
+  background: rgba(28, 176, 246, 0.08);
+}
+.cb-column-grades .cb-grade-band:nth-child(3) {
+  background: rgba(28, 176, 246, 0.05);
+}
+.cb-column-grades .cb-grade-band:nth-child(4) {
+  background: rgba(45, 46, 95, 0.03);
+}
+.cb-column-grades .cb-grade-band:nth-child(5) {
+  background: rgba(45, 46, 95, 0.02);
+}
+.cb-column-grades .cb-grade-band:nth-child(1) .cb-grade-band-text,
+.cb-column-grades .cb-grade-band:nth-child(2) .cb-grade-band-text,
+.cb-column-grades .cb-grade-band:nth-child(3) .cb-grade-band-text {
   color: #1a8fc7;
 }
-.cb-grade-band.cb-grade-below {
-  background: rgba(28, 176, 246, 0.1);
-}
-.cb-grade-band.cb-grade-below .cb-grade-band-text {
-  color: #1a8fc7;
-}
-.cb-grade-band.cb-grade-bottom {
-  background: rgba(45, 46, 95, 0.04);
-}
-.cb-grade-band.cb-grade-bottom .cb-grade-band-text {
+.cb-column-grades .cb-grade-band:nth-child(4) .cb-grade-band-text,
+.cb-column-grades .cb-grade-band:nth-child(5) .cb-grade-band-text {
   color: var(--cb-text-muted);
 }
 
