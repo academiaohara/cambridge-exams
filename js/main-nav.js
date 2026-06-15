@@ -231,6 +231,7 @@
       var HOVER_CLOSE_DELAY = 280;
 
       function setOpen(open) {
+        if (open) MainNav._closeAllStatsBarPopovers();
         isOpen = open;
         popover.classList.toggle('is-open', open);
         btn.classList.toggle('is-active', open);
@@ -308,6 +309,22 @@
       document.querySelectorAll('.stats-bar-dict-wrap').forEach(function(wrap) {
         if (wrap._setPopoverOpen) wrap._setPopoverOpen(false);
       });
+    },
+
+    closeStreakPopover: function() {
+      document.querySelectorAll('.stats-bar-streak-wrap').forEach(function(wrap) {
+        if (wrap._setPopoverOpen) wrap._setPopoverOpen(false);
+      });
+    },
+
+    _closeAllStatsBarPopovers: function() {
+      this.closeLevelPopover();
+      this.closeStreakPopover();
+      this.closeDictPopover();
+      this._closeAllMobilePopovers();
+      if (typeof ScoreCalculator !== 'undefined' && ScoreCalculator.closeInputPopover) {
+        ScoreCalculator.closeInputPopover();
+      }
     },
 
     refreshLevelPopover: function() {
@@ -684,7 +701,7 @@
           e.preventDefault();
           e.stopPropagation();
           var isOpen = popover.classList.contains('is-open');
-          self._closeAllMobilePopovers();
+          self._closeAllStatsBarPopovers();
           if (!isOpen) {
             popover.classList.add('is-open');
             btn.classList.add('is-active');
