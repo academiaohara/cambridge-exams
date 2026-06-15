@@ -429,7 +429,6 @@
 
     buildDesktopModeCardsHtml: function(exams) {
       exams = exams || [];
-      var level = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1';
       var available = exams.filter(function(e) { return e.status === 'available'; });
       var availableCount = available.length;
 
@@ -455,89 +454,102 @@
       var cwCompleted = Object.values(cwProgress).filter(function(p) { return p && p.completed; }).length;
       var cwStreak = (typeof BentoGrid !== 'undefined' && BentoGrid._calcCwStreak) ? BentoGrid._calcCwStreak(cwProgress) : 0;
 
-      var cards = [
+      var sections = [
         {
-          kicker: level + ' · COURSE',
-          title: 'Course',
-          status: 'Structured lessons & theory',
-          statusClass: '',
-          action: 'OPEN',
-          onclick: 'BentoGrid.openLessons()',
-          icon: 'auto_stories',
-          iconColor: '#ff9600'
+          title: 'Learn',
+          cards: [
+            {
+              title: 'Course',
+              status: 'Structured lessons & theory',
+              statusClass: '',
+              onclick: 'BentoGrid.openLessons()',
+              icon: 'auto_stories',
+              iconColor: '#ff9600',
+              super: true
+            }
+          ]
         },
         {
-          kicker: level + ' · PRACTICE',
-          title: 'Test Practice',
-          status: testStatus,
-          statusClass: completedExams > 0 ? 'mode-card-status-done' : '',
-          action: 'PRACTICE',
-          onclick: 'BentoGrid.selectMode(\'practice\')',
-          icon: 'edit_note',
-          iconColor: '#ff9600'
+          title: 'Practice',
+          cards: [
+            {
+              title: 'Test Practice',
+              status: testStatus,
+              statusClass: completedExams > 0 ? 'mode-card-status-done' : '',
+              onclick: 'BentoGrid.selectMode(\'practice\')',
+              icon: 'edit_note',
+              iconColor: '#58cc02',
+              super: true,
+              badge: availableCount > 0 ? availableCount + '+' : ''
+            },
+            {
+              title: 'Test Simulation',
+              status: testStatus,
+              statusClass: completedExams > 0 ? 'mode-card-status-done' : '',
+              onclick: 'BentoGrid.selectMode(\'exam\')',
+              icon: 'assignment',
+              iconColor: '#ce82ff',
+              super: true
+            }
+          ]
         },
         {
-          kicker: level + ' · SIMULATION',
-          title: 'Test Simulation',
-          status: testStatus,
-          statusClass: completedExams > 0 ? 'mode-card-status-done' : '',
-          action: 'START',
-          onclick: 'BentoGrid.selectMode(\'exam\')',
-          icon: 'assignment',
-          iconColor: '#ce82ff'
-        },
-        {
-          kicker: 'DAILY · CROSSWORDS',
-          title: 'Crosswords',
-          status: cwCompleted > 0
-            ? cwCompleted + ' completed' + (cwStreak > 0 ? ' · ' + cwStreak + ' day streak' : '')
-            : 'Solve today\'s puzzle',
-          statusClass: cwCompleted > 0 ? 'mode-card-status-done' : '',
-          action: 'PLAY',
-          onclick: 'BentoGrid.openCrosswordList()',
-          icon: 'grid_on',
-          iconColor: '#ff4b4b'
-        },
-        {
-          kicker: 'REFERENCE',
-          title: 'Dictionaries',
-          status: 'General, vocab, phrasal verbs & more',
-          statusClass: '',
-          action: 'BROWSE',
-          onclick: 'FastExercises._showDictionariesHome()',
-          icon: 'menu_book',
-          iconColor: '#ff9600'
-        },
-        {
-          kicker: level + ' · TOOLS',
-          title: 'Score Calculator',
-          status: 'Estimate your Cambridge exam score',
-          statusClass: '',
-          action: 'CALCULATE',
-          onclick: 'openScoreCalculator(event)',
-          icon: 'calculate',
-          iconColor: '#ff9600'
+          title: 'More',
+          cards: [
+            {
+              title: 'Crosswords',
+              status: cwCompleted > 0
+                ? cwCompleted + ' completed' + (cwStreak > 0 ? ' · ' + cwStreak + ' day streak' : '')
+                : 'Solve today\'s puzzle',
+              statusClass: cwCompleted > 0 ? 'mode-card-status-done' : '',
+              onclick: 'BentoGrid.openCrosswordList()',
+              icon: 'grid_on',
+              iconColor: '#ff4b4b',
+              badge: cwStreak > 0 ? cwStreak + '' : ''
+            },
+            {
+              title: 'Dictionaries',
+              status: 'General, vocab, phrasal verbs & more',
+              statusClass: '',
+              onclick: 'FastExercises._showDictionariesHome()',
+              icon: 'menu_book',
+              iconColor: '#1cb0f6'
+            },
+            {
+              title: 'Score Calculator',
+              status: 'Estimate your Cambridge exam score',
+              statusClass: '',
+              onclick: 'openScoreCalculator(event)',
+              icon: 'calculate',
+              iconColor: '#ff9600'
+            }
+          ]
         }
       ];
 
       var html = '<div class="desktop-mode-cards">';
-      cards.forEach(function(card) {
-        var isDone = card.statusClass.indexOf('mode-card-status-done') !== -1;
-        var actionLabel = isDone ? 'REVIEW' : card.action;
-        var actionClass = isDone ? 'mode-card-action mode-card-action-outline' : 'mode-card-action';
-        html += '<div class="mode-card" onclick="' + card.onclick + '">' +
-          '<div class="mode-card-icon" style="background:' + card.iconColor + '20;color:' + card.iconColor + '">' +
-            '<span class="material-symbols-outlined">' + card.icon + '</span>' +
-          '</div>' +
-          '<div class="mode-card-body">' +
-            '<div class="mode-card-kicker"><span class="mode-card-kicker-text">' + escapeHTML(card.kicker.split(' · ')[0] || card.kicker) + '</span><span class="mode-card-kicker-link"> · SEE DETAILS</span></div>' +
-            '<div class="mode-card-title">' + escapeHTML(card.title) + '</div>' +
-            '<div class="mode-card-status ' + card.statusClass + '">' + (isDone ? 'COMPLETED!' : escapeHTML(card.status)) + '</div>' +
-          '</div>' +
-          '<button type="button" class="' + actionClass + '" onclick="event.stopPropagation();' + card.onclick + '">' +
-            escapeHTML(actionLabel) +
-          '</button>' +
-        '</div>';
+      sections.forEach(function(section) {
+        html += '<section class="mode-cards-section">';
+        html += '<h2 class="mode-cards-section-title">' + escapeHTML(section.title) + '</h2>';
+        html += '<div class="mode-cards-section-list">';
+        section.cards.forEach(function(card) {
+          html += '<div class="mode-card" onclick="' + card.onclick + '" role="button" tabindex="0">' +
+            '<div class="mode-card-body">' +
+              '<div class="mode-card-title-row">' +
+                '<span class="mode-card-title">' + escapeHTML(card.title) + '</span>' +
+                (card.super ? '<span class="mode-card-super">SUPER</span>' : '') +
+              '</div>' +
+              '<div class="mode-card-status ' + (card.statusClass || '') + '">' + escapeHTML(card.status) + '</div>' +
+            '</div>' +
+            '<div class="mode-card-icon-wrap">' +
+              '<div class="mode-card-icon" style="color:' + card.iconColor + '">' +
+                '<span class="material-symbols-outlined">' + card.icon + '</span>' +
+              '</div>' +
+              (card.badge ? '<span class="mode-card-icon-badge">' + escapeHTML(card.badge) + '</span>' : '') +
+            '</div>' +
+          '</div>';
+        });
+        html += '</div></section>';
       });
       html += '</div>';
       return html;
