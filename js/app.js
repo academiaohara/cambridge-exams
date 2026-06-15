@@ -5,14 +5,21 @@
   window.App = {
     hasAppAccess: function () {
       if (AppState.isAuthenticated) return true;
-      if (AppState.isGuest) {
-        try {
-          return localStorage.getItem('engaged_onboarding_done_v1') === '1';
-        } catch (e) {
-          return false;
+      try {
+        if (localStorage.getItem('engaged_onboarding_done_v1') === '1') {
+          if (!AppState.isAuthenticated) AppState.isGuest = true;
+          return true;
         }
-      }
+      } catch (e) { /* ignore */ }
       return false;
+    },
+
+    restoreAccessState: function () {
+      try {
+        if (!AppState.isAuthenticated && localStorage.getItem('engaged_onboarding_done_v1') === '1') {
+          AppState.isGuest = true;
+        }
+      } catch (e) { /* ignore */ }
     },
 
     handleRoute: function (state) {
@@ -184,6 +191,12 @@
         await Auth.init();
       }
 
+      this.restoreAccessState();
+
+      if (this.hasAppAccess() && typeof AppLoadingScreen !== 'undefined') {
+        AppLoadingScreen.skipDelay();
+      }
+
       // Inicializar streak y sesión de examen
       if (typeof StreakManager !== 'undefined') {
         StreakManager.init();
@@ -307,8 +320,13 @@
         if (typeof StaticPages !== 'undefined') StaticPages.render(initialState.view, false);
       } else if (initialState.view === 'landing' || initialState.view === 'welcome' ||
                  initialState.view === 'login' || initialState.view === 'register') {
-        this.handleRoute(initialState);
-        history.replaceState(initialState, '', Router.stateToPath(initialState));
+        if (AppState.isAuthenticated && (initialState.view === 'landing' || initialState.view === 'welcome')) {
+          Dashboard.render();
+          history.replaceState({ view: 'dashboard' }, '', '/');
+        } else {
+          this.handleRoute(initialState);
+          history.replaceState(initialState, '', Router.stateToPath(initialState));
+        }
       } else if (this.hasAppAccess()) {
         this._renderAppView(initialState);
         if (initialState.view === 'dashboard' || initialState.view === 'subpage') {

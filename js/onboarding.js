@@ -17,6 +17,7 @@
   function markDone() {
     try {
       localStorage.setItem(STORAGE_KEY, '1');
+      localStorage.setItem('engaged_welcome_seen_v1', '1');
     } catch (e) { /* ignore */ }
   }
 
