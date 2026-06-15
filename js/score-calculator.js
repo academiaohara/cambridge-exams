@@ -791,19 +791,19 @@
 
       var grades = conversionData[examType].grades;
 
-      var html = '<div class="results-modal-header"><h3>' + title + '</h3><span class="results-exam-level">' + examType + '</span></div>';
+      var html = '<div class="results-hero">';
+      html += '<span class="results-exam-level">' + examType + '</span>';
+      html += '<h3 class="results-hero-title">' + title + '</h3>';
+      html += '<div class="results-hero-grade">' + gradeInfo.result + '</div>';
+      html += '<div class="results-hero-meta">';
+      html += '<span class="results-hero-pill"><span class="results-hero-pill-label">Score</span><strong>' + overall + '</strong></span>';
+      html += '<span class="results-hero-pill"><span class="results-hero-pill-label">CEFR</span><strong>' + gradeInfo.cefr + '</strong></span>';
+      html += '</div></div>';
 
-      // Top result boxes — Cambridge style
-      html += '<div class="cb-result-boxes">';
-      html += '<div class="cb-result-box cb-result-green"><div class="cb-result-label">Result</div><div class="cb-result-value">' + gradeInfo.result + '</div></div>';
-      html += '<div class="cb-result-box"><div class="cb-result-label">Overall Score</div><div class="cb-result-value cb-result-score">' + overall + '</div></div>';
-      html += '<div class="cb-result-box"><div class="cb-result-label">CEFR Level</div><div class="cb-result-value cb-result-cefr">' + gradeInfo.cefr + '</div></div>';
-      html += '</div>';
-
-      // Chart mode toggle
+      html += '<div class="results-chart-section">';
       html += '<div class="cb-chart-toggle">';
-      html += '<button class="cb-toggle-btn' + (chartMode === 'cambridge' ? ' cb-toggle-active' : '') + '" onclick="ScoreCalculator.switchChartMode(\'cambridge\')">Cambridge</button>';
-      html += '<button class="cb-toggle-btn' + (chartMode === 'raw' ? ' cb-toggle-active' : '') + '" onclick="ScoreCalculator.switchChartMode(\'raw\')">Raw</button>';
+      html += '<button type="button" class="cb-toggle-btn' + (chartMode === 'cambridge' ? ' cb-toggle-active' : '') + '" onclick="ScoreCalculator.switchChartMode(\'cambridge\')">Cambridge</button>';
+      html += '<button type="button" class="cb-toggle-btn' + (chartMode === 'raw' ? ' cb-toggle-active' : '') + '" onclick="ScoreCalculator.switchChartMode(\'raw\')">Raw</button>';
       html += '</div>';
 
       if (chartMode === 'cambridge') {
@@ -811,6 +811,7 @@
       } else {
         html += this._buildRawChart(skillScores);
       }
+      html += '</div>';
 
       body.innerHTML = html;
     },
