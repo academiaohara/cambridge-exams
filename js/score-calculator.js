@@ -827,17 +827,16 @@
       overall = overall || 0;
       gradeInfo = gradeInfo || { result: '', cefr: '' };
 
-      // Determine scale range from grades
       var lowestGrade = grades[grades.length - 1].min;
       var highestGrade = grades[0].min;
       var scaleBottom = Math.floor((lowestGrade - 10) / 10) * 10;
       var scaleTop = Math.ceil((highestGrade + 10) / 10) * 10;
+      var skillCount = skillScores.length;
 
-      function scoreToPercent(score) {
-        return Math.max(0, Math.min(100, (score - scaleBottom) / (scaleTop - scaleBottom) * 100));
+      function getScorePosition(score) {
+        return Math.max(0, Math.min(100, ((scaleTop - score) / (scaleTop - scaleBottom)) * 100));
       }
 
-      // Derive CEFR boundaries from grades
       var cefrMap = {};
       grades.forEach(function(g) {
         if (!cefrMap[g.cefr] || g.min < cefrMap[g.cefr]) {
@@ -848,115 +847,115 @@
         return { cefr: cefr, min: cefrMap[cefr] };
       }).sort(function(a, b) { return a.min - b.min; });
 
-      // Helper to generate dashed lines at grade boundaries (reused across columns)
       function buildDashedLines() {
         var lines = '';
         grades.forEach(function(g) {
-          var linePct = scoreToPercent(g.min);
-          lines += '<div class="cb-dotted-line" style="bottom:' + linePct + '%"></div>';
+          lines += '<div class="cb-dotted-line" style="top:' + getScorePosition(g.min) + '%"></div>';
         });
-        lines += '<div class="cb-dotted-line" style="bottom:100%"></div>';
+        lines += '<div class="cb-dotted-line" style="top:100%"></div>';
         return lines;
       }
 
-      // Dashed lines only at CEFR boundaries (where the CEFR level changes)
       function buildCefrDashedLines() {
         var lines = '';
         grades.forEach(function(g, idx) {
           var nextGrade = grades[idx + 1];
           if (!nextGrade || g.cefr !== nextGrade.cefr) {
-            var linePct = scoreToPercent(g.min);
-            lines += '<div class="cb-dotted-line" style="bottom:' + linePct + '%"></div>';
+            lines += '<div class="cb-dotted-line" style="top:' + getScorePosition(g.min) + '%"></div>';
           }
         });
-        lines += '<div class="cb-dotted-line" style="bottom:100%"></div>';
+        lines += '<div class="cb-dotted-line" style="top:100%"></div>';
         return lines;
       }
 
-      // Cambridge-style chart – unified column layout (header + body per column)
+      var gridStyle = '--cb-skill-cols:' + skillCount;
       var html = '<div class="cb-chart">';
-      html += '<div class="cb-chart-columns">';
+      html += '<div class="cb-chart-grid" style="' + gridStyle + '">';
 
-      var overallPct = overall ? scoreToPercent(overall) : null;
+      // Header row
+      html += '<div class="cb-chart-headers">';
+      html += '<div class="cb-hdr cb-hdr-cefr">CEFR<br>Level</div>';
+      html += '<div class="cb-hdr cb-hdr-scale">Cambridge English<br>Scale</div>';
+      html += '<div class="cb-hdr cb-hdr-grades">Certificated<br>Results</div>';
+      skillScores.forEach(function(item) {
+        var displayName = item.skill === 'Use of English' ? 'UOE' : item.skill;
+        html += '<div class="cb-hdr cb-hdr-skill">' + displayName + '</div>';
+      });
+      html += '</div>';
+
+      // Body row
+      html += '<div class="cb-chart-bodies">';
+      html += '<div class="cb-chart-bodies-grid">';
 
       // CEFR column
-      html += '<div class="cb-column cb-column-cefr">';
-      html += '<div class="cb-hdr">CEFR<br>Level</div>';
-      html += '<div class="cb-col-body"><div class="cb-col-inner">';
+      html += '<div class="cb-col-body cb-body-cefr"><div class="cb-col-inner">';
       cefrLevels.forEach(function(lvl, idx) {
-        var bandBottom = scoreToPercent(lvl.min);
-        var bandTop = idx < cefrLevels.length - 1 ? scoreToPercent(cefrLevels[idx + 1].min) : 100;
-        var heightPct = bandTop - bandBottom;
+        var topPct = idx < cefrLevels.length - 1 ? getScorePosition(cefrLevels[idx + 1].min) : 0;
+        var bottomPct = getScorePosition(lvl.min);
+        var heightPct = bottomPct - topPct;
         var isActive = gradeInfo.cefr === lvl.cefr;
-        html += '<div class="cb-cefr-band' + (isActive ? ' cb-cefr-active' : '') + '" style="bottom:' + bandBottom + '%;height:' + heightPct + '%"><strong>' + lvl.cefr + '</strong></div>';
+        html += '<div class="cb-cefr-band' + (isActive ? ' cb-cefr-active' : '') + '" style="top:' + topPct + '%;height:' + heightPct + '%"><strong>' + lvl.cefr + '</strong></div>';
       });
       html += buildCefrDashedLines();
-      html += '</div></div></div>';
+      html += '</div></div>';
 
-      // Scale column (ruler)
-      html += '<div class="cb-column cb-column-scale">';
-      html += '<div class="cb-hdr">Cambridge<br>English<br>Scale</div>';
-      html += '<div class="cb-col-body"><div class="cb-col-inner">';
+      // Scale column
+      html += '<div class="cb-col-body cb-body-scale"><div class="cb-col-inner">';
       for (var tick = scaleTop; tick >= scaleBottom; tick -= 10) {
-        var tickPct = scoreToPercent(tick);
-        html += '<div class="cb-scale-tick" style="bottom:' + tickPct + '%">';
+        html += '<div class="cb-scale-tick" style="top:' + getScorePosition(tick) + '%">';
         html += '<span class="cb-scale-num">' + tick + '</span>';
         html += '<span class="cb-scale-line"></span>';
         html += '</div>';
       }
-      if (overallPct !== null) {
-        html += '<div class="cb-scale-overall-wrap" style="bottom:' + overallPct + '%">';
-        html += '<div class="cb-scale-overall-tag"><span>' + overall + '</span></div>';
-        html += '<div class="cb-overall-dash"></div>';
-        html += '</div>';
-      }
       html += buildDashedLines();
-      html += '</div></div></div>';
+      html += '</div></div>';
 
       // Certificated Results column
-      html += '<div class="cb-column cb-column-grades">';
-      html += '<div class="cb-hdr">Certificated<br>Results</div>';
-      html += '<div class="cb-col-body"><div class="cb-col-inner">';
+      html += '<div class="cb-col-body cb-body-grades"><div class="cb-col-inner">';
       grades.forEach(function(g, idx) {
-        var bandTop = idx === 0 ? scaleTop : grades[idx - 1].min;
-        var bandBottom = g.min;
-        var topPct = scoreToPercent(bandTop);
-        var bottomPct = scoreToPercent(bandBottom);
-        var heightPct = topPct - bottomPct;
+        var bandTopScore = idx === 0 ? scaleTop : grades[idx - 1].min;
+        var bandBottomScore = g.min;
+        var topPct = getScorePosition(bandTopScore);
+        var bottomPct = getScorePosition(bandBottomScore);
+        var heightPct = bottomPct - topPct;
         var bandClass = idx <= 2 ? 'cb-grade-top' : (idx === 3 ? 'cb-grade-below' : 'cb-grade-bottom');
         var isActive = gradeInfo.result === g.label;
-        html += '<div class="cb-grade-band ' + bandClass + (isActive ? ' cb-grade-active' : '') + '" style="bottom:' + bottomPct + '%;height:' + heightPct + '%">';
+        html += '<div class="cb-grade-band ' + bandClass + (isActive ? ' cb-grade-active' : '') + '" style="top:' + topPct + '%;height:' + heightPct + '%">';
         html += '<span class="cb-grade-band-text">' + g.label + '</span>';
         html += '</div>';
       });
       html += buildDashedLines();
-      html += '</div></div></div>';
+      html += '</div></div>';
 
       // Skill columns
       skillScores.forEach(function(item) {
-        var pct = scoreToPercent(item.scale);
-        var displayName = item.skill === 'Use of English' ? 'UOE' : item.skill;
-        html += '<div class="cb-column cb-column-skill">';
-        html += '<div class="cb-hdr">' + displayName + '</div>';
-        html += '<div class="cb-col-body"><div class="cb-col-inner">';
-
-        // Grade band backgrounds
+        var topPct = getScorePosition(item.scale);
+        html += '<div class="cb-col-body cb-body-skill"><div class="cb-col-inner">';
         grades.forEach(function(g, idx) {
-          var bandTop = idx === 0 ? scaleTop : grades[idx - 1].min;
-          var bandBottom = g.min;
-          var topPct = scoreToPercent(bandTop);
-          var bottomPct = scoreToPercent(bandBottom);
-          var heightPct = topPct - bottomPct;
-          html += '<div class="cb-band" style="bottom:' + bottomPct + '%;height:' + heightPct + '%;"></div>';
+          var bandTopScore = idx === 0 ? scaleTop : grades[idx - 1].min;
+          var bandBottomScore = g.min;
+          var bandTop = getScorePosition(bandTopScore);
+          var bandBottom = getScorePosition(bandBottomScore);
+          var heightPct = bandBottom - bandTop;
+          html += '<div class="cb-band" style="top:' + bandTop + '%;height:' + heightPct + '%;"></div>';
         });
-
         html += buildDashedLines();
-        html += '<div class="cb-score-badge" style="bottom:' + pct + '%"><span>' + item.scale + '</span></div>';
-
-        html += '</div></div></div>';
+        html += '<div class="cb-score-badge" style="top:' + topPct + '%"><span>' + item.scale + '</span></div>';
+        html += '</div></div>';
       });
 
-      html += '</div></div>';
+      html += '</div>'; // close cb-chart-bodies-grid
+
+      // Global overall score marker + dashed line across skills
+      if (overall) {
+        var overallTop = getScorePosition(overall);
+        html += '<div class="cb-global-line" style="top:' + overallTop + '%"></div>';
+        html += '<div class="cb-global-pill-wrap" style="top:' + overallTop + '%">';
+        html += '<div class="cb-global-pill"><span>' + overall + '</span></div>';
+        html += '</div>';
+      }
+
+      html += '</div></div></div>';
 
       return html;
     },
