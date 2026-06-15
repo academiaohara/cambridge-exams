@@ -586,21 +586,6 @@ button.stats-bar-item.is-active {
 .desktop-mode-cards {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-}
-
-.mode-cards-section-title {
-  font-family: 'Nunito', sans-serif;
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #3c3c3c;
-  margin: 0 0 12px;
-  line-height: 1.2;
-}
-
-.mode-cards-section-list {
-  display: flex;
-  flex-direction: column;
   gap: 12px;
 }
 
@@ -1117,17 +1102,8 @@ body.mobile-popover-open {
 /* ── Mobile mode cards ── */
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .desktop-mode-cards {
-    gap: 22px;
-    padding-bottom: 4px;
-  }
-
-  .mode-cards-section-title {
-    font-size: 1.05rem;
-    margin-bottom: 10px;
-  }
-
-  .mode-cards-section-list {
     gap: 10px;
+    padding-bottom: 4px;
   }
 
   .mode-card {
