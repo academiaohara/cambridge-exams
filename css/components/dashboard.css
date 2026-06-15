@@ -909,19 +909,26 @@
   padding: 8px 16px;
   font-size: 0.85rem;
   color: #777;
+  line-height: 1;
 }
 
 .results-modal-content .results-hero-pill strong {
+  display: inline-flex;
+  align-items: center;
   font-weight: 900;
   color: #3c3c3c;
   font-size: 1rem;
+  line-height: 1;
 }
 
 .results-modal-content .results-hero-pill-label {
+  display: inline-flex;
+  align-items: center;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 0.68rem;
   letter-spacing: 0.04em;
+  line-height: 1;
 }
 
 /* ── Chart section ── */
@@ -966,7 +973,7 @@
 /* ── Cambridge chart (modal) ── */
 .results-modal-content .cb-chart {
   margin-bottom: 0;
-  padding: 12px;
+  padding: 12px 12px 16px;
   background: var(--white, #fff);
   border: 1px solid var(--border-light, #e8ecf4);
   border-radius: 16px;
@@ -979,18 +986,38 @@
 }
 
 .results-modal-content .cb-column {
-  border: 1px solid var(--border-light, #e8ecf4);
-  border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(45, 46, 95, 0.04);
+  gap: 8px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
 }
 
 .results-modal-content .cb-hdr {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 0.62rem;
   font-weight: 800;
   color: var(--text-light, #7b7ca0);
   padding: 8px 6px;
-  border-bottom: 1px solid var(--border-light, #e8ecf4);
+  border: 1px solid var(--border-light, #e8ecf4);
+  border-radius: 10px;
   background: #eef1f8;
+}
+
+.results-modal-content .cb-col-body {
+  border: 1px solid var(--border-light, #e8ecf4);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(45, 46, 95, 0.04);
+  overflow: visible;
+  padding-bottom: 12px;
+}
+
+.results-modal-content .cb-col-inner {
+  top: 4px;
+  bottom: 0;
 }
 
 .results-modal-content .cb-column-scale .cb-col-inner {
