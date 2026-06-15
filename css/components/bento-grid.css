@@ -1264,25 +1264,32 @@ content: '';
 }
 
 /* ── Right Sidebar: Profile CTA (Duolingo-style) ── */
-.sw-profile-cta {
+.sw-profile-cta-wrap {
+  position: relative;
   overflow: visible;
-  padding: 20px 18px 18px 52px;
-}
-
-.sw-profile-cta:hover {
-  border-color: #e5e5e5;
-  box-shadow: none;
 }
 
 .sw-profile-cta-fox {
   position: absolute;
-  left: -34px;
+  left: -6px;
   top: 50%;
   transform: translateY(-50%);
-  width: 78px;
+  width: 86px;
   height: auto;
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
+}
+
+.sw-profile-cta-card {
+  position: relative;
+  margin-left: 42px;
+  overflow: visible;
+  padding: 20px 18px 18px;
+}
+
+.sw-profile-cta-card:hover {
+  border-color: #e5e5e5;
+  box-shadow: none;
 }
 
 .sw-profile-cta-body {

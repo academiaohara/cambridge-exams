@@ -123,6 +123,10 @@
       }, this._customMinMs || getMinLoadingMs());
     },
 
+    skipDelay: function () {
+      this._customMinMs = 0;
+    },
+
     hide: function () {
       if (this._hidden || this._hideRequested) return;
       this._hideRequested = true;
