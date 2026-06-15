@@ -907,10 +907,12 @@
       if (overallPct !== null) {
         html += '<div class="cb-scale-overall-wrap" style="bottom:' + overallPct + '%">';
         html += '<div class="cb-scale-overall-tag"><span>' + overall + '</span></div>';
-        html += '<div class="cb-overall-dash"></div>';
         html += '</div>';
       }
       html += buildDashedLines();
+      if (overallPct !== null) {
+        html += '<div class="cb-overall-line-seg cb-overall-line-scale" style="bottom:' + overallPct + '%"></div>';
+      }
       html += '</div></div></div>';
 
       // Certificated Results column
@@ -930,6 +932,9 @@
         html += '</div>';
       });
       html += buildDashedLines();
+      if (overallPct !== null) {
+        html += '<div class="cb-overall-line-seg" style="bottom:' + overallPct + '%"></div>';
+      }
       html += '</div></div></div>';
 
       // Skill columns
@@ -951,6 +956,9 @@
         });
 
         html += buildDashedLines();
+        if (overallPct !== null) {
+          html += '<div class="cb-overall-line-seg" style="bottom:' + overallPct + '%"></div>';
+        }
         html += '<div class="cb-score-badge" style="bottom:' + pct + '%"><span>' + item.scale + '</span></div>';
 
         html += '</div></div></div>';

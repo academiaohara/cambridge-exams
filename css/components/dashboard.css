@@ -959,84 +959,85 @@
 
 .results-modal-content .cb-toggle-btn.cb-toggle-active {
   background: #fff;
-  color: #1cb0f6;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  color: var(--secondary, #1E9D8E);
+  box-shadow: 0 2px 6px rgba(45, 46, 95, 0.08);
 }
 
-/* ── Cambridge chart (lightened for modal) ── */
+/* ── Cambridge chart (modal inherits site palette) ── */
 .results-modal-content .cb-chart {
   margin-bottom: 0;
   padding: 12px;
-  background: #fafafa;
-  border: 2px solid #e5e5e5;
-  border-radius: 18px;
+  background: var(--white, #fff);
+  border: 1px solid var(--border-light, #e8ecf4);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md, 0 2px 8px rgba(45, 46, 95, 0.06));
   font-family: 'Nunito', sans-serif;
 }
 
 .results-modal-content .cb-chart-columns {
-  border-left: 2px solid #d4d4d4;
+  border-left: 1px solid #d4d8e4;
 }
 
 .results-modal-content .cb-column {
-  border-right: 1px solid #ebebeb;
+  border-right: 1px solid var(--border-light, #e8ecf4);
 }
 
 .results-modal-content .cb-hdr {
   font-size: 0.62rem;
   font-weight: 800;
-  color: #777;
+  color: var(--text-light, #7b7ca0);
   padding: 8px 4px;
-  border-bottom: 2px solid #d4d4d4;
-  background: #f0f0f0;
+  border-bottom: 1px solid #d4d8e4;
+  background: #eef1f8;
 }
 
 .results-modal-content .cb-column-scale .cb-col-inner {
-  background: linear-gradient(to right, #f0f0f0, #fff);
-  border-left: 2px solid #d4d4d4;
-  border-right: 2px solid #d4d4d4;
+  background: linear-gradient(to right, #eef1f8, #fff);
+  border-left: 1px solid #d4d8e4;
+  border-right: 1px solid #d4d8e4;
 }
 
 .results-modal-content .cb-column-skill .cb-col-body {
-  background-color: #f7f7f7;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-color: var(--bg-light, #F4F7FF);
+  background-image: linear-gradient(rgba(45, 46, 95, 0.07) 1px, transparent 1px);
 }
 
 .results-modal-content .cb-scale-num {
   font-size: 0.58rem;
-  color: #777;
+  color: var(--text-light, #7b7ca0);
   font-weight: 800;
   background: transparent;
 }
 
 .results-modal-content .cb-dotted-line {
-  border-top: 1.5px dashed rgba(0, 0, 0, 0.1);
+  border-top: 1.5px dashed rgba(45, 46, 95, 0.14);
 }
 
 .results-modal-content .cb-grade-band.cb-grade-top {
-  background: rgba(28, 176, 246, 0.18);
+  background: rgba(45, 46, 95, 0.14);
 }
 .results-modal-content .cb-grade-band.cb-grade-top .cb-grade-band-text {
-  color: #1a8fc7;
+  color: var(--primary, #2D2E5F);
 }
 
 .results-modal-content .cb-grade-band.cb-grade-below {
-  background: rgba(28, 176, 246, 0.1);
+  background: rgba(45, 46, 95, 0.08);
 }
 .results-modal-content .cb-grade-band.cb-grade-below .cb-grade-band-text {
-  color: #1a8fc7;
+  color: var(--primary, #2D2E5F);
 }
 
 .results-modal-content .cb-grade-band.cb-grade-bottom {
-  background: rgba(0, 0, 0, 0.03);
+  background: rgba(45, 46, 95, 0.04);
 }
 .results-modal-content .cb-grade-band.cb-grade-bottom .cb-grade-band-text {
-  color: #afafaf;
+  color: var(--text-light, #7b7ca0);
 }
 
 .results-modal-content .cb-grade-band.cb-grade-active {
-  background: #1cb0f6 !important;
-  border: 2px solid #1899d6;
-  box-shadow: 0 3px 0 #1899d6;
+  background: var(--secondary, #1E9D8E) !important;
+  border: 2px solid var(--secondary, #1E9D8E);
+  box-shadow: 0 2px 8px rgba(30, 157, 142, 0.25);
 }
 .results-modal-content .cb-grade-band.cb-grade-active .cb-grade-band-text {
   color: #fff !important;
@@ -1045,43 +1046,50 @@
 .results-modal-content .cb-cefr-band strong {
   font-size: 0.9rem;
   font-weight: 900;
-  color: #afafaf;
+  color: var(--text-light, #7b7ca0);
 }
 
 .results-modal-content .cb-cefr-band.cb-cefr-active {
-  background: #e5f7ff;
-  border: 2px solid #1cb0f6;
+  background: rgba(30, 157, 142, 0.12);
+  border: 2px solid var(--secondary, #1E9D8E);
   border-radius: 8px;
 }
 .results-modal-content .cb-cefr-band.cb-cefr-active strong {
-  color: #1cb0f6;
+  color: var(--secondary, #1E9D8E);
 }
 
 .results-modal-content .cb-scale-overall-tag span {
-  background: #58cc02;
-  border-radius: 8px 0 0 8px;
-  box-shadow: 0 3px 0 #46a302;
+  background: var(--secondary, #1E9D8E);
+  border-radius: 6px 0 0 6px;
+  box-shadow: 0 2px 6px rgba(30, 157, 142, 0.28);
   font-weight: 900;
 }
 .results-modal-content .cb-scale-overall-tag span::after {
-  border-left-color: #58cc02;
+  border-left-color: var(--secondary, #1E9D8E);
 }
 
-.results-modal-content .cb-overall-dash {
-  border-top-color: #58cc02;
+.results-modal-content .cb-overall-line-seg {
+  background: repeating-linear-gradient(
+    to right,
+    var(--secondary, #1E9D8E) 0,
+    var(--secondary, #1E9D8E) 7px,
+    transparent 7px,
+    transparent 12px
+  );
 }
 
 .results-modal-content .cb-score-badge span {
-  background: #1cb0f6;
+  background: var(--secondary, #1E9D8E);
   border-radius: 999px;
-  box-shadow: 0 3px 0 #1899d6;
+  box-shadow: 0 2px 6px rgba(30, 157, 142, 0.25);
   font-weight: 800;
 }
 
-.results-modal-content .cb-band:nth-child(1) { background: rgba(28, 176, 246, 0.06); }
-.results-modal-content .cb-band:nth-child(2) { background: rgba(28, 176, 246, 0.04); }
-.results-modal-content .cb-band:nth-child(3) { background: rgba(28, 176, 246, 0.02); }
-.results-modal-content .cb-band:nth-child(4) { background: rgba(0, 0, 0, 0.02); }
+.results-modal-content .cb-band:nth-child(1) { background: rgba(45, 46, 95, 0.14); }
+.results-modal-content .cb-band:nth-child(2) { background: rgba(45, 46, 95, 0.08); }
+.results-modal-content .cb-band:nth-child(3) { background: rgba(45, 46, 95, 0.05); }
+.results-modal-content .cb-band:nth-child(4) { background: rgba(45, 46, 95, 0.03); }
+.results-modal-content .cb-band:nth-child(5) { background: rgba(45, 46, 95, 0.02); }
 
 /* ── Raw chart (modal) ── */
 .results-modal-content .cb-raw-chart {
@@ -1104,7 +1112,7 @@
 }
 
 .results-modal-content .cb-raw-label i {
-  color: #1cb0f6;
+  color: var(--secondary, #1E9D8E);
 }
 
 .results-modal-content .cb-raw-bar-wrap {
@@ -1116,7 +1124,7 @@
 }
 
 .results-modal-content .cb-raw-bar {
-  background: #1cb0f6;
+  background: var(--secondary, #1E9D8E);
   border-radius: 999px;
   min-height: 12px;
   box-shadow: none;
