@@ -7,7 +7,6 @@
     { id: 'practice', label: 'Practice', icon: 'edit_note', color: '#ff9600', onclick: 'BentoGrid.selectMode(\'practice\')' },
     { id: 'simulation', label: 'Simulation', icon: 'assignment', color: '#ce82ff', onclick: 'BentoGrid.selectMode(\'exam\')' },
     { id: 'crosswords', label: 'Crosswords', icon: 'grid_on', color: '#ff4b4b', onclick: 'BentoGrid.openCrosswordList()' },
-    { id: 'dictionaries', label: 'Dictionaries', icon: 'menu_book', color: '#6366f1', onclick: 'FastExercises._showDictionariesHome()' },
     { id: 'profile', label: 'Profile', icon: 'person', color: '#777777', onclick: 'BentoGrid.openMobileProfile()' }
   ];
 
@@ -506,22 +505,6 @@
               icon: 'grid_on',
               iconColor: '#ff4b4b',
               badge: cwStreak > 0 ? cwStreak + '' : ''
-            },
-            {
-              title: 'Dictionaries',
-              status: 'General, vocab, phrasal verbs & more',
-              statusClass: '',
-              onclick: 'FastExercises._showDictionariesHome()',
-              icon: 'menu_book',
-              iconColor: '#1cb0f6'
-            },
-            {
-              title: 'Score Calculator',
-              status: 'Estimate your Cambridge exam score',
-              statusClass: '',
-              onclick: 'openScoreCalculator(event)',
-              icon: 'calculate',
-              iconColor: '#ff9600'
             }
           ]
         }
@@ -530,7 +513,6 @@
       var html = '<div class="desktop-mode-cards">';
       sections.forEach(function(section) {
         html += '<section class="mode-cards-section">';
-        html += '<h2 class="mode-cards-section-title">' + escapeHTML(section.title) + '</h2>';
         html += '<div class="mode-cards-section-list">';
         section.cards.forEach(function(card) {
           html += '<div class="mode-card" onclick="' + card.onclick + '" role="button" tabindex="0">' +
