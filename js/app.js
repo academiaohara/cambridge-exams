@@ -513,9 +513,10 @@
   // Exponer funciones globales necesarias
   window.filterByLevel = App.filterByLevel;
   window.loadDashboard = App.loadDashboard;
-  window.openScoreCalculator = function() {
+  window.openScoreCalculator = function(evt) {
     if (AppState.currentExercise) Exercise.closeExercise();
-    ScoreCalculator.render();
+    var trigger = (evt && evt.currentTarget) ? evt.currentTarget : null;
+    ScoreCalculator.openInputPopover(trigger);
   };
   
   // Deshabilitar el corrector ortográfico del navegador en todos los inputs y textareas

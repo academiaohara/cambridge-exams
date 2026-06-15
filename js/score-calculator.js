@@ -122,6 +122,150 @@
   }
 
   window.ScoreCalculator = {
+    _popoverTrigger: null,
+
+    openInputPopover: function(triggerEl) {
+      var popover = document.getElementById('sc-input-popover');
+      var backdrop = document.getElementById('sc-input-popover-backdrop');
+      if (!popover) return;
+
+      this._popoverTrigger = triggerEl || null;
+      var examType = AppState.currentLevel || 'C1';
+      if (['B1', 'B2', 'C1'].indexOf(examType) === -1) examType = 'C1';
+
+      var selector = document.getElementById('scPopoverExamSelector');
+      if (selector) selector.value = examType;
+
+      this.renderPopoverInputs(examType);
+      popover.style.display = 'block';
+      if (backdrop) backdrop.style.display = 'block';
+      this._positionInputPopover();
+
+      var self = this;
+      if (!this._popoverResizeHandler) {
+        this._popoverResizeHandler = function() { self._positionInputPopover(); };
+        window.addEventListener('resize', this._popoverResizeHandler);
+        window.addEventListener('scroll', this._popoverResizeHandler, true);
+      }
+    },
+
+    closeInputPopover: function() {
+      var popover = document.getElementById('sc-input-popover');
+      var backdrop = document.getElementById('sc-input-popover-backdrop');
+      if (popover) popover.style.display = 'none';
+      if (backdrop) backdrop.style.display = 'none';
+      this._popoverTrigger = null;
+    },
+
+    _positionInputPopover: function() {
+      var popover = document.getElementById('sc-input-popover');
+      if (!popover || popover.style.display === 'none') return;
+
+      var margin = 12;
+      var vw = window.innerWidth;
+      var vh = window.innerHeight;
+      var isMobile = vw <= 640;
+
+      popover.style.position = 'fixed';
+      popover.style.transform = 'none';
+
+      if (isMobile) {
+        popover.style.top = 'auto';
+        popover.style.bottom = '0';
+        popover.style.left = '0';
+        popover.style.right = '0';
+        popover.style.width = '100%';
+        popover.style.maxWidth = 'none';
+        popover.style.borderRadius = '20px 20px 0 0';
+        return;
+      }
+
+      var trigger = this._popoverTrigger;
+      var rect = trigger ? trigger.getBoundingClientRect() : { top: 80, left: vw / 2, bottom: 80, right: vw / 2, width: 0, height: 0 };
+      var popW = Math.min(380, vw - margin * 2);
+      var popH = popover.offsetHeight || 420;
+
+      var top = rect.bottom + margin;
+      var left = rect.left + rect.width / 2 - popW / 2;
+
+      if (left + popW > vw - margin) left = vw - popW - margin;
+      if (left < margin) left = margin;
+
+      if (top + popH > vh - margin) {
+        top = rect.top - popH - margin;
+      }
+      if (top < margin) top = margin;
+
+      popover.style.top = top + 'px';
+      popover.style.left = left + 'px';
+      popover.style.right = 'auto';
+      popover.style.bottom = 'auto';
+      popover.style.width = popW + 'px';
+      popover.style.maxWidth = popW + 'px';
+      popover.style.borderRadius = '18px';
+    },
+
+    onPopoverExamChange: function() {
+      var selector = document.getElementById('scPopoverExamSelector');
+      if (!selector) return;
+      this.renderPopoverInputs(selector.value);
+    },
+
+    renderPopoverInputs: function(examType) {
+      var container = document.getElementById('scPopoverInputs');
+      if (!container) return;
+
+      var skills = conversionData[examType].skills;
+      var tables = conversionData[examType].tables;
+      var html = '';
+
+      skills.forEach(function(skill) {
+        var table = tables[skill];
+        var maxRaw = table[table.length - 1][0];
+        var icon = skillIcons[skill] || 'fa-school';
+        var displayName = skill === 'Use of English' ? 'UOE' : skill;
+        html += '<div class="sc-popover-input-group">';
+        html += '<label for="sc-pop-input-' + skill + '">';
+        html += '<i class="fas ' + icon + '"></i> ' + displayName;
+        html += '<small>max ' + maxRaw + '</small>';
+        html += '</label>';
+        html += '<input type="number" id="sc-pop-input-' + skill + '" min="0" max="' + maxRaw + '" value="0" placeholder="0 – ' + maxRaw + '">';
+        html += '</div>';
+      });
+
+      container.innerHTML = html;
+      this._positionInputPopover();
+    },
+
+    calculateFromPopover: function() {
+      var selector = document.getElementById('scPopoverExamSelector');
+      if (!selector) return;
+
+      var examType = selector.value;
+      var data = conversionData[examType];
+      var skills = data.skills;
+      var totalScale = 0;
+      var skillScores = [];
+
+      skills.forEach(function(skill) {
+        var el = document.getElementById('sc-pop-input-' + skill);
+        var raw = parseInt(el ? el.value : '0', 10) || 0;
+        var table = data.tables[skill];
+        var maxRaw = table[table.length - 1][0];
+        if (raw > maxRaw) raw = maxRaw;
+        if (raw < 0) raw = 0;
+        var scale = getScaleScore(raw, table);
+        totalScale += scale;
+        skillScores.push({ skill: skill, raw: raw, maxRaw: maxRaw, scale: scale });
+      });
+
+      var overall = Math.round(totalScale / skills.length);
+      var gradeInfo = getGradeInfo(overall, examType);
+
+      this.closeInputPopover();
+      this.openResultsModal(skillScores, overall, gradeInfo, examType, null);
+    },
+
     render: function() {
       const content = document.getElementById('main-content');
       if (!content) return;
@@ -266,7 +410,7 @@
       html += '</div>';
 
       if (d.chartMode === 'cambridge') {
-        html += this._buildCambridgeChart(d.skillScores, grades);
+        html += this._buildCambridgeChart(d.skillScores, grades, d.overall, d.gradeInfo);
       } else {
         html += this._buildRawChart(d.skillScores);
       }
@@ -663,7 +807,7 @@
       html += '</div>';
 
       if (chartMode === 'cambridge') {
-        html += this._buildCambridgeChart(skillScores, grades);
+        html += this._buildCambridgeChart(skillScores, grades, overall, gradeInfo);
       } else {
         html += this._buildRawChart(skillScores);
       }
@@ -678,7 +822,10 @@
       if (body) this._renderResultsContent(body);
     },
 
-    _buildCambridgeChart: function(skillScores, grades) {
+    _buildCambridgeChart: function(skillScores, grades, overall, gradeInfo) {
+      overall = overall || 0;
+      gradeInfo = gradeInfo || { result: '', cefr: '' };
+
       // Determine scale range from grades
       var lowestGrade = grades[grades.length - 1].min;
       var highestGrade = grades[0].min;
@@ -729,6 +876,8 @@
       var html = '<div class="cb-chart">';
       html += '<div class="cb-chart-columns">';
 
+      var overallPct = overall ? scoreToPercent(overall) : null;
+
       // CEFR column
       html += '<div class="cb-column cb-column-cefr">';
       html += '<div class="cb-hdr">CEFR<br>Level</div>';
@@ -737,7 +886,8 @@
         var bandBottom = scoreToPercent(lvl.min);
         var bandTop = idx < cefrLevels.length - 1 ? scoreToPercent(cefrLevels[idx + 1].min) : 100;
         var heightPct = bandTop - bandBottom;
-        html += '<div class="cb-cefr-band" style="bottom:' + bandBottom + '%;height:' + heightPct + '%"><strong>' + lvl.cefr + '</strong></div>';
+        var isActive = gradeInfo.cefr === lvl.cefr;
+        html += '<div class="cb-cefr-band' + (isActive ? ' cb-cefr-active' : '') + '" style="bottom:' + bandBottom + '%;height:' + heightPct + '%"><strong>' + lvl.cefr + '</strong></div>';
       });
       html += buildCefrDashedLines();
       html += '</div></div></div>';
@@ -751,6 +901,12 @@
         html += '<div class="cb-scale-tick" style="bottom:' + tickPct + '%">';
         html += '<span class="cb-scale-num">' + tick + '</span>';
         html += '<span class="cb-scale-line"></span>';
+        html += '</div>';
+      }
+      if (overallPct !== null) {
+        html += '<div class="cb-scale-overall-wrap" style="bottom:' + overallPct + '%">';
+        html += '<div class="cb-scale-overall-tag"><span>' + overall + '</span></div>';
+        html += '<div class="cb-overall-dash"></div>';
         html += '</div>';
       }
       html += buildDashedLines();
@@ -767,7 +923,8 @@
         var bottomPct = scoreToPercent(bandBottom);
         var heightPct = topPct - bottomPct;
         var bandClass = idx <= 2 ? 'cb-grade-top' : (idx === 3 ? 'cb-grade-below' : 'cb-grade-bottom');
-        html += '<div class="cb-grade-band ' + bandClass + '" style="bottom:' + bottomPct + '%;height:' + heightPct + '%">';
+        var isActive = gradeInfo.result === g.label;
+        html += '<div class="cb-grade-band ' + bandClass + (isActive ? ' cb-grade-active' : '') + '" style="bottom:' + bottomPct + '%;height:' + heightPct + '%">';
         html += '<span class="cb-grade-band-text">' + g.label + '</span>';
         html += '</div>';
       });

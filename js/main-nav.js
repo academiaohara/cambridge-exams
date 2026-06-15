@@ -147,7 +147,7 @@
           '</button>' +
           '<div class="dict-popover" role="dialog" aria-hidden="true">' + dictPopoverHtml + '</div>' +
         '</div>' +
-        '<button type="button" class="stats-bar-item stats-bar-calc" aria-label="Open score calculator" onclick="openScoreCalculator()">' +
+        '<button type="button" class="stats-bar-item stats-bar-calc" aria-label="Open score calculator" onclick="openScoreCalculator(event)">' +
           '<span class="material-symbols-outlined">calculate</span>' +
         '</button>' +
       '</div>';
@@ -495,7 +495,7 @@
           status: 'Estimate your Cambridge exam score',
           statusClass: '',
           action: 'CALCULATE',
-          onclick: 'openScoreCalculator()',
+          onclick: 'openScoreCalculator(event)',
           icon: 'calculate',
           iconColor: '#ff9600'
         }
