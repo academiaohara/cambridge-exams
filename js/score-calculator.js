@@ -129,6 +129,10 @@
       var backdrop = document.getElementById('sc-input-popover-backdrop');
       if (!popover) return;
 
+      if (typeof MainNav !== 'undefined' && MainNav._closeAllStatsBarPopovers) {
+        MainNav._closeAllStatsBarPopovers();
+      }
+
       this._popoverTrigger = triggerEl || null;
       var examType = AppState.currentLevel || 'C1';
       if (['B1', 'B2', 'C1'].indexOf(examType) === -1) examType = 'C1';
