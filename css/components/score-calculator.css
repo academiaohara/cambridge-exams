@@ -1,10 +1,13 @@
 /* css/components/score-calculator.css */
 
-/* ── Chart palette (aligned with site design tokens) ── */
+/* ── Chart palette ── */
 :root {
-  --cb-accent: var(--secondary, #1E9D8E);
-  --cb-accent-light: rgba(30, 157, 142, 0.12);
-  --cb-accent-mid: rgba(30, 157, 142, 0.22);
+  --cb-accent: #1cb0f6;
+  --cb-accent-light: #e5f7ff;
+  --cb-accent-mid: rgba(28, 176, 246, 0.18);
+  --cb-accent-dark: #1899d6;
+  --cb-scale-orange: #f97316;
+  --cb-scale-orange-dark: #ea580c;
   --cb-primary: var(--primary, #2D2E5F);
   --cb-primary-light: rgba(45, 46, 95, 0.08);
   --cb-primary-mid: rgba(45, 46, 95, 0.14);
@@ -16,8 +19,9 @@
   --cb-border-strong: #d4d8e4;
   --cb-text: var(--text-dark, #2D2E5F);
   --cb-text-muted: var(--text-light, #7b7ca0);
+  --cb-chart-gap: 10px;
   /* Legacy aliases kept for popover / result boxes */
-  --cb-orange: var(--cb-accent);
+  --cb-orange: var(--cb-scale-orange);
   --cb-cream: var(--cb-surface-alt);
   --cb-brown-mid: var(--cb-primary);
   --cb-brown-dark: var(--cb-text);
@@ -556,7 +560,7 @@
   display: flex;
   gap: 0;
   margin-bottom: 12px;
-  border: 1.5px solid rgba(104, 48, 32, 0.2);
+  border: 1.5px solid var(--cb-border);
   border-radius: 10px;
   overflow: hidden;
   width: fit-content;
@@ -565,8 +569,8 @@
 .cb-toggle-btn {
   padding: 6px 18px;
   border: none;
-  background: var(--cb-cream-soft, #FDF6EA);
-  color: var(--cb-brown-mid, #683020);
+  background: var(--cb-surface-muted);
+  color: var(--cb-text-muted);
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
@@ -574,11 +578,11 @@
 }
 
 .cb-toggle-btn:hover {
-  background: var(--cb-cream, #F8E8C8);
+  background: var(--cb-surface-alt);
 }
 
 .cb-toggle-btn.cb-toggle-active {
-  background: var(--cb-orange, #E86810);
+  background: var(--cb-accent);
   color: #fff;
 }
 
@@ -692,8 +696,7 @@
 
 .cb-chart-columns {
   display: flex;
-  gap: 0;
-  border-left: 1px solid var(--cb-border-strong);
+  gap: var(--cb-chart-gap);
   width: fit-content;
   max-width: 100%;
   margin: 0 auto;
@@ -704,7 +707,11 @@
 .cb-column {
   display: flex;
   flex-direction: column;
-  border-right: 1px solid var(--cb-border);
+  background: var(--cb-surface);
+  border: 1px solid var(--cb-border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(45, 46, 95, 0.04);
 }
 
 .cb-hdr {
@@ -716,9 +723,9 @@
   font-size: 0.62rem;
   font-weight: 800;
   color: var(--cb-text-muted);
-  padding: 8px 4px;
+  padding: 8px 6px;
   line-height: 1.2;
-  border-bottom: 1px solid var(--cb-border-strong);
+  border-bottom: 1px solid var(--cb-border);
   background: var(--cb-surface-muted);
 }
 
@@ -746,16 +753,12 @@
 /* Graduated ruler background for scale column */
 .cb-column-scale .cb-col-inner {
   background: linear-gradient(to right, var(--cb-surface-muted), var(--cb-surface));
-  border-left: 1px solid var(--cb-border-strong);
-  border-right: 1px solid var(--cb-border-strong);
   z-index: 2;
   overflow: visible;
 }
 
 .cb-column-skill .cb-col-body {
   background-color: var(--cb-surface-alt);
-  background-image: linear-gradient(rgba(45, 46, 95, 0.07) 1px, transparent 1px);
-  background-size: 100% 25px;
 }
 
 /* CEFR labels */
@@ -819,30 +822,19 @@
 }
 
 .cb-band:nth-child(1) {
-  background: var(--cb-primary-mid);
+  background: rgba(28, 176, 246, 0.14);
 }
 .cb-band:nth-child(2) {
-  background: var(--cb-primary-light);
+  background: rgba(28, 176, 246, 0.08);
 }
 .cb-band:nth-child(3) {
-  background: rgba(45, 46, 95, 0.05);
+  background: rgba(28, 176, 246, 0.05);
 }
 .cb-band:nth-child(4) {
   background: rgba(45, 46, 95, 0.03);
 }
 .cb-band:nth-child(5) {
   background: rgba(45, 46, 95, 0.02);
-}
-
-/* Dotted lines at grade boundaries */
-.cb-dotted-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 0;
-  border-top: 1.5px dashed rgba(45, 46, 95, 0.14);
-  z-index: 1;
-  transform: translateY(0);
 }
 
 /* Grade band blocks in the grades column */
@@ -864,16 +856,16 @@
 }
 
 .cb-grade-band.cb-grade-top {
-  background: var(--cb-primary-mid);
+  background: var(--cb-accent-mid);
 }
 .cb-grade-band.cb-grade-top .cb-grade-band-text {
-  color: var(--cb-primary);
+  color: #1a8fc7;
 }
 .cb-grade-band.cb-grade-below {
-  background: var(--cb-primary-light);
+  background: rgba(28, 176, 246, 0.1);
 }
 .cb-grade-band.cb-grade-below .cb-grade-band-text {
-  color: var(--cb-primary);
+  color: #1a8fc7;
 }
 .cb-grade-band.cb-grade-bottom {
   background: rgba(45, 46, 95, 0.04);
@@ -884,10 +876,12 @@
 
 .cb-grade-band.cb-grade-active {
   background: var(--cb-accent) !important;
-  border: 2px solid var(--cb-accent);
+  border: 2px solid var(--cb-accent-dark);
   box-sizing: border-box;
   z-index: 2;
-  border-radius: 6px;
+}
+.cb-grade-band.cb-grade-below.cb-grade-active {
+  border-radius: 0;
 }
 .cb-grade-band.cb-grade-active .cb-grade-band-text {
   color: #fff !important;
@@ -915,7 +909,7 @@
   border: 2px solid var(--cb-accent);
   box-sizing: border-box;
   z-index: 2;
-  border-radius: 8px;
+  border-radius: 0;
 }
 .cb-cefr-band.cb-cefr-active strong {
   color: var(--cb-accent);
@@ -946,7 +940,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--cb-accent);
+  background: var(--cb-scale-orange);
   color: #fff;
   padding: 2px 8px;
   min-width: 34px;
@@ -955,7 +949,7 @@
   font-weight: 900;
   border-radius: 6px 0 0 6px;
   position: relative;
-  box-shadow: 0 2px 6px rgba(30, 157, 142, 0.28);
+  box-shadow: 0 2px 6px rgba(249, 115, 22, 0.28);
 }
 
 .cb-scale-overall-tag span::after {
@@ -965,30 +959,7 @@
   top: 0;
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
-  border-left: 7px solid var(--cb-accent);
-}
-
-/* Continuous dashed line across grades + skill columns */
-.cb-overall-line-seg {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: repeating-linear-gradient(
-    to right,
-    var(--cb-accent) 0,
-    var(--cb-accent) 7px,
-    transparent 7px,
-    transparent 12px
-  );
-  z-index: 8;
-  transform: translateY(50%);
-  pointer-events: none;
-}
-
-.cb-overall-line-scale {
-  left: 42%;
-  z-index: 9;
+  border-left: 7px solid var(--cb-scale-orange);
 }
 
 /* Score badges in skill columns */
@@ -1012,7 +983,7 @@
   font-weight: 800;
   white-space: nowrap;
   position: relative;
-  box-shadow: 0 2px 6px rgba(30, 157, 142, 0.25);
+  box-shadow: 0 2px 6px rgba(28, 176, 246, 0.25);
   width: 100%;
   box-sizing: border-box;
   border-radius: 999px;
@@ -1352,7 +1323,8 @@
   }
 
   .cb-chart-columns {
-    min-width: 520px;
+    min-width: 560px;
+    gap: 8px;
   }
 
   .cb-raw-row {
