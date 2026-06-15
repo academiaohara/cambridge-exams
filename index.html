@@ -551,13 +551,10 @@
         </div>
 
         <!-- Popover calculadora de notas (junto al botón) -->
-        <div id="sc-input-popover" class="sc-input-popover" style="display: none;" role="dialog" aria-label="Score Calculator">
-            <div class="sc-popover-header">
-                <span class="sc-popover-kicker">Cambridge</span>
-                <h3>Score Calculator</h3>
-                <button type="button" class="sc-popover-close" onclick="ScoreCalculator.closeInputPopover()" aria-label="Close">&times;</button>
-            </div>
-            <div class="sc-popover-body">
+        <div id="sc-input-popover" class="sc-input-popover" role="dialog" aria-label="Score Calculator" aria-hidden="true">
+            <div class="sc-input-popover-inner">
+                <div class="sc-popover-kicker">Cambridge</div>
+                <h3 class="sc-popover-title">Score Calculator</h3>
                 <div class="sc-popover-selector">
                     <label for="scPopoverExamSelector">Exam level</label>
                     <select id="scPopoverExamSelector" onchange="ScoreCalculator.onPopoverExamChange()">
@@ -568,11 +565,11 @@
                 </div>
                 <div id="scPopoverInputs" class="sc-popover-inputs"></div>
                 <button type="button" class="sc-popover-results-btn" onclick="ScoreCalculator.calculateFromPopover()">
-                    <i class="fas fa-chart-bar"></i> See Results
+                    <span class="material-symbols-outlined">bar_chart</span> See Results
                 </button>
             </div>
         </div>
-        <div id="sc-input-popover-backdrop" class="sc-input-popover-backdrop" style="display: none;" onclick="ScoreCalculator.closeInputPopover()"></div>
+        <div id="sc-input-popover-backdrop" class="sc-input-popover-backdrop" onclick="ScoreCalculator.closeInputPopover()"></div>
 
         <!-- Modal para resultados Cambridge -->
         <div id="results-modal-overlay" class="results-modal-overlay" style="display: none;">

@@ -136,9 +136,21 @@
       var selector = document.getElementById('scPopoverExamSelector');
       if (selector) selector.value = examType;
 
+      document.querySelectorAll('.stats-bar-calc.is-active').forEach(function(btn) {
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+      if (triggerEl && triggerEl.classList.contains('stats-bar-calc')) {
+        triggerEl.classList.add('is-active');
+        triggerEl.setAttribute('aria-expanded', 'true');
+      }
+
+      popover.classList.add('is-open');
+      popover.setAttribute('aria-hidden', 'false');
+      if (backdrop) backdrop.classList.add('is-open');
+      document.body.classList.add('mobile-popover-open');
+
       this.renderPopoverInputs(examType);
-      popover.style.display = 'block';
-      if (backdrop) backdrop.style.display = 'block';
       this._positionInputPopover();
 
       var self = this;
@@ -152,49 +164,60 @@
     closeInputPopover: function() {
       var popover = document.getElementById('sc-input-popover');
       var backdrop = document.getElementById('sc-input-popover-backdrop');
-      if (popover) popover.style.display = 'none';
-      if (backdrop) backdrop.style.display = 'none';
+      if (popover) {
+        popover.classList.remove('is-open');
+        popover.setAttribute('aria-hidden', 'true');
+      }
+      if (backdrop) backdrop.classList.remove('is-open');
+      document.body.classList.remove('mobile-popover-open');
+      document.querySelectorAll('.stats-bar-calc.is-active').forEach(function(btn) {
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-expanded', 'false');
+      });
       this._popoverTrigger = null;
+    },
+
+    _isMobilePopoverLayout: function() {
+      return window.matchMedia && window.matchMedia('(max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px)').matches;
     },
 
     _positionInputPopover: function() {
       var popover = document.getElementById('sc-input-popover');
-      if (!popover || popover.style.display === 'none') return;
+      if (!popover || !popover.classList.contains('is-open')) return;
 
+      var gap = 8;
       var margin = 12;
       var vw = window.innerWidth;
       var vh = window.innerHeight;
-      var isMobile = vw <= 640;
 
-      popover.style.position = 'fixed';
-      popover.style.transform = 'none';
-
-      if (isMobile) {
-        popover.style.top = 'auto';
-        popover.style.bottom = '0';
-        popover.style.left = '0';
-        popover.style.right = '0';
-        popover.style.width = '100%';
-        popover.style.maxWidth = 'none';
-        popover.style.borderRadius = '20px 20px 0 0';
+      if (this._isMobilePopoverLayout()) {
+        popover.style.removeProperty('--sc-arrow-right');
         return;
       }
 
       var trigger = this._popoverTrigger;
-      var rect = trigger ? trigger.getBoundingClientRect() : { top: 80, left: vw / 2, bottom: 80, right: vw / 2, width: 0, height: 0 };
-      var popW = Math.min(380, vw - margin * 2);
+      var rect = trigger ? trigger.getBoundingClientRect() : { top: 80, left: vw / 2, bottom: 88, right: vw / 2, width: 0, height: 0 };
+      var popW = Math.min(320, vw - margin * 2);
       var popH = popover.offsetHeight || 420;
 
-      var top = rect.bottom + margin;
-      var left = rect.left + rect.width / 2 - popW / 2;
-
-      if (left + popW > vw - margin) left = vw - popW - margin;
-      if (left < margin) left = margin;
+      var top = rect.bottom + gap;
+      var right = Math.max(margin, vw - rect.right);
+      var opensAbove = false;
 
       if (top + popH > vh - margin) {
-        top = rect.top - popH - margin;
+        top = rect.top - popH - gap;
+        opensAbove = true;
       }
       if (top < margin) top = margin;
+
+      var left = vw - right - popW;
+      if (left < margin) {
+        left = margin;
+        right = vw - left - popW;
+      }
+
+      var triggerCenter = rect.left + rect.width / 2;
+      var arrowRight = Math.max(16, Math.min(popW - 16, vw - right - triggerCenter - 8));
 
       popover.style.top = top + 'px';
       popover.style.left = left + 'px';
@@ -202,7 +225,8 @@
       popover.style.bottom = 'auto';
       popover.style.width = popW + 'px';
       popover.style.maxWidth = popW + 'px';
-      popover.style.borderRadius = '18px';
+      popover.style.setProperty('--sc-arrow-right', arrowRight + 'px');
+      popover.classList.toggle('is-above', opensAbove);
     },
 
     onPopoverExamChange: function() {
