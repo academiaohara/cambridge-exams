@@ -1265,23 +1265,26 @@ content: '';
 
 /* ── Right Sidebar: Profile CTA (Duolingo-style) ── */
 .sw-profile-cta-wrap {
+  display: grid;
   position: relative;
   overflow: visible;
 }
 
 .sw-profile-cta-card {
+  grid-area: 1 / 1;
   position: relative;
   overflow: visible;
   padding: 20px 18px 18px;
+  z-index: 1;
 }
 
 .sw-profile-cta-fox {
-  position: absolute;
-  right: calc(100% - 14px);
-  top: 50%;
-  transform: translateY(-50%);
+  grid-area: 1 / 1;
+  align-self: center;
+  justify-self: start;
   width: 86px;
   height: auto;
+  margin-left: -74px;
   z-index: 3;
   pointer-events: none;
 }
