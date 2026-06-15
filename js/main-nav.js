@@ -453,85 +453,65 @@
       var cwCompleted = Object.values(cwProgress).filter(function(p) { return p && p.completed; }).length;
       var cwStreak = (typeof BentoGrid !== 'undefined' && BentoGrid._calcCwStreak) ? BentoGrid._calcCwStreak(cwProgress) : 0;
 
-      var sections = [
+      var cards = [
         {
-          title: 'Learn',
-          cards: [
-            {
-              title: 'Course',
-              status: 'Structured lessons & theory',
-              statusClass: '',
-              onclick: 'BentoGrid.openLessons()',
-              icon: 'auto_stories',
-              iconColor: '#ff9600',
-              super: true
-            }
-          ]
+          title: 'Course',
+          status: 'Structured lessons & theory',
+          statusClass: '',
+          onclick: 'BentoGrid.openLessons()',
+          icon: 'auto_stories',
+          iconColor: '#ff9600',
+          super: true
         },
         {
-          title: 'Practice',
-          cards: [
-            {
-              title: 'Test Practice',
-              status: testStatus,
-              statusClass: completedExams > 0 ? 'mode-card-status-done' : '',
-              onclick: 'BentoGrid.selectMode(\'practice\')',
-              icon: 'edit_note',
-              iconColor: '#58cc02',
-              super: true,
-              badge: availableCount > 0 ? availableCount + '+' : ''
-            },
-            {
-              title: 'Test Simulation',
-              status: testStatus,
-              statusClass: completedExams > 0 ? 'mode-card-status-done' : '',
-              onclick: 'BentoGrid.selectMode(\'exam\')',
-              icon: 'assignment',
-              iconColor: '#ce82ff',
-              super: true
-            }
-          ]
+          title: 'Test Practice',
+          status: testStatus,
+          statusClass: completedExams > 0 ? 'mode-card-status-done' : '',
+          onclick: 'BentoGrid.selectMode(\'practice\')',
+          icon: 'edit_note',
+          iconColor: '#58cc02',
+          super: true,
+          badge: availableCount > 0 ? availableCount + '+' : ''
         },
         {
-          title: 'More',
-          cards: [
-            {
-              title: 'Crosswords',
-              status: cwCompleted > 0
-                ? cwCompleted + ' completed' + (cwStreak > 0 ? ' · ' + cwStreak + ' day streak' : '')
-                : 'Solve today\'s puzzle',
-              statusClass: cwCompleted > 0 ? 'mode-card-status-done' : '',
-              onclick: 'BentoGrid.openCrosswordList()',
-              icon: 'grid_on',
-              iconColor: '#ff4b4b',
-              badge: cwStreak > 0 ? cwStreak + '' : ''
-            }
-          ]
+          title: 'Test Simulation',
+          status: testStatus,
+          statusClass: completedExams > 0 ? 'mode-card-status-done' : '',
+          onclick: 'BentoGrid.selectMode(\'exam\')',
+          icon: 'assignment',
+          iconColor: '#ce82ff',
+          super: true
+        },
+        {
+          title: 'Crosswords',
+          status: cwCompleted > 0
+            ? cwCompleted + ' completed' + (cwStreak > 0 ? ' · ' + cwStreak + ' day streak' : '')
+            : 'Solve today\'s puzzle',
+          statusClass: cwCompleted > 0 ? 'mode-card-status-done' : '',
+          onclick: 'BentoGrid.openCrosswordList()',
+          icon: 'grid_on',
+          iconColor: '#ff4b4b',
+          badge: cwStreak > 0 ? cwStreak + '' : ''
         }
       ];
 
       var html = '<div class="desktop-mode-cards">';
-      sections.forEach(function(section) {
-        html += '<section class="mode-cards-section">';
-        html += '<div class="mode-cards-section-list">';
-        section.cards.forEach(function(card) {
-          html += '<div class="mode-card" onclick="' + card.onclick + '" role="button" tabindex="0">' +
-            '<div class="mode-card-body">' +
-              '<div class="mode-card-title-row">' +
-                '<span class="mode-card-title">' + escapeHTML(card.title) + '</span>' +
-                (card.super ? '<span class="mode-card-super">SUPER</span>' : '') +
-              '</div>' +
-              '<div class="mode-card-status ' + (card.statusClass || '') + '">' + escapeHTML(card.status) + '</div>' +
+      cards.forEach(function(card) {
+        html += '<div class="mode-card" onclick="' + card.onclick + '" role="button" tabindex="0">' +
+          '<div class="mode-card-body">' +
+            '<div class="mode-card-title-row">' +
+              '<span class="mode-card-title">' + escapeHTML(card.title) + '</span>' +
+              (card.super ? '<span class="mode-card-super">SUPER</span>' : '') +
             '</div>' +
-            '<div class="mode-card-icon-wrap">' +
-              '<div class="mode-card-icon" style="color:' + card.iconColor + '">' +
-                '<span class="material-symbols-outlined">' + card.icon + '</span>' +
-              '</div>' +
-              (card.badge ? '<span class="mode-card-icon-badge">' + escapeHTML(card.badge) + '</span>' : '') +
+            '<div class="mode-card-status ' + (card.statusClass || '') + '">' + escapeHTML(card.status) + '</div>' +
+          '</div>' +
+          '<div class="mode-card-icon-wrap">' +
+            '<div class="mode-card-icon" style="color:' + card.iconColor + '">' +
+              '<span class="material-symbols-outlined">' + card.icon + '</span>' +
             '</div>' +
-          '</div>';
-        });
-        html += '</div></section>';
+            (card.badge ? '<span class="mode-card-icon-badge">' + escapeHTML(card.badge) + '</span>' : '') +
+          '</div>' +
+        '</div>';
       });
       html += '</div>';
       return html;
