@@ -128,7 +128,7 @@
           '<div class="mobile-stat-card"><span>Score</span><strong>' + avgScale + '</strong><small>avg scale</small></div>' +
         '</div>' +
         '<div class="mobile-stats-actions">' +
-          '<button onclick="openScoreCalculator()">' + _mi('calculate') + '<span>Score calculator</span></button>' +
+          '<button onclick="openScoreCalculator(event)">' + _mi('calculate') + '<span>Score calculator</span></button>' +
           '<button onclick="BentoGrid.openStreakSection()">' + _mi('local_fire_department') + '<span>Streak calendar</span></button>' +
         '</div>' +
       '</section>';
@@ -1339,7 +1339,7 @@
 
     _buildCalculatorSidebarHtml: function() {
       if (typeof ScoreCalculator === 'undefined') return '';
-      return '<div class="sidebar-widget-pastel sw-calculator" onclick="openScoreCalculator()" aria-label="Open Score Calculator">' +
+      return '<div class="sidebar-widget-pastel sw-calculator" onclick="openScoreCalculator(event)" aria-label="Open Score Calculator">' +
         '<span class="material-symbols-outlined sw-calculator-icon">calculate</span>' +
       '</div>';
     },

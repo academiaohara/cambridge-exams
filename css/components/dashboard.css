@@ -854,18 +854,18 @@
   margin-bottom: 12px;
   padding-bottom: 10px;
   border-bottom: 2px solid transparent;
-  border-image: linear-gradient(90deg, #2D2E5F, #1E9D8E) 1;
+  border-image: linear-gradient(90deg, #683020, #E86810) 1;
 }
 
 .results-modal-header h3 {
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--text-dark, #333);
+  color: #602008;
   margin: 0;
 }
 
 .results-exam-level {
-  background: linear-gradient(135deg, #2D2E5F, #1E9D8E);
+  background: linear-gradient(135deg, #E86810, #683020);
   color: white;
   padding: 4px 12px;
   border-radius: 20px;
