@@ -1648,6 +1648,231 @@ margin-top: -2px;
   padding-bottom: 32px;
 }
 
+/* ── Crossword in dashboard center ── */
+.dashboard-center--crossword {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 769px) {
+  .dashboard-center--crossword {
+    max-height: calc(100vh - var(--dashboard-top-spacing, 28px));
+  }
+}
+
+.cw-center-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding-right: 4px;
+}
+
+.cw-section-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px 20px;
+  margin: 0 0 16px;
+  border-radius: 0 0 18px 18px;
+  background: #ff4b4b;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  position: relative;
+  z-index: 5;
+}
+
+.cw-section-header--level {
+  background: var(--cw-header-color, #1cb0f6);
+}
+
+.cw-section-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.cw-section-back:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+.cw-section-back .material-symbols-outlined {
+  font-size: 1.3rem;
+}
+
+.cw-section-header-text {
+  min-width: 0;
+}
+
+.cw-section-kicker {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-bottom: 2px;
+}
+
+.cw-section-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.cw-level-cards {
+  padding: 4px 0 8px;
+}
+
+/* ── Duolingo-style path map ── */
+.cw-path-map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 8px 0 48px;
+  min-height: 100%;
+}
+
+.cw-path-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  position: relative;
+  width: 88px;
+  transition: transform 0.2s ease;
+}
+
+.cw-path-node:hover {
+  transform: scale(1.06);
+}
+
+.cw-path-node--pos-0 { align-self: flex-start; margin-left: 18%; }
+.cw-path-node--pos-1 { align-self: center; }
+.cw-path-node--pos-2 { align-self: flex-end; margin-right: 18%; }
+.cw-path-node--pos-3 { align-self: center; }
+
+.cw-path-connector {
+  width: 4px;
+  height: 28px;
+  background: rgba(45, 46, 95, 0.14);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.cw-path-connector.cw-path-node--pos-0 { align-self: flex-start; margin-left: calc(18% + 42px); }
+.cw-path-connector.cw-path-node--pos-1 { align-self: center; }
+.cw-path-connector.cw-path-node--pos-2 { align-self: flex-end; margin-right: calc(18% + 42px); }
+.cw-path-connector.cw-path-node--pos-3 { align-self: center; }
+
+.cw-path-node-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #e5e5e5;
+  background: #e5e5e5;
+  color: #afafaf;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+.cw-path-node-circle .material-symbols-outlined {
+  font-size: 1.6rem;
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+}
+
+.cw-path-node--current .cw-path-node-circle {
+  background: var(--cw-header-color, #1cb0f6);
+  border-color: #fff;
+  color: #fff;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15), 0 0 0 4px rgba(28, 176, 246, 0.25);
+}
+
+.cw-path-node--done .cw-path-node-circle {
+  background: #ffc800;
+  border-color: #e6b400;
+  color: #fff;
+  box-shadow: 0 4px 0 #cc9f00;
+}
+
+.cw-path-node--progress .cw-path-node-circle {
+  background: #1cb0f6;
+  border-color: #1899d6;
+  color: #fff;
+  box-shadow: 0 4px 0 #1899d6;
+}
+
+.cw-path-node--pending .cw-path-node-circle {
+  background: #e5e5e5;
+  border-color: #d0d0d0;
+  color: #afafaf;
+}
+
+.cw-path-start-label {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: var(--cw-header-color, #1cb0f6);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  padding: 5px 12px;
+  border-radius: 10px;
+  border: 2px solid #e5e5e5;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.cw-path-start-label::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #e5e5e5;
+}
+
+.cw-path-node-num {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #afafaf;
+  letter-spacing: 0.04em;
+}
+
+.cw-path-node--current .cw-path-node-num,
+.cw-path-node--done .cw-path-node-num,
+.cw-path-node--progress .cw-path-node-num {
+  color: #777;
+}
+
 .cw-list-header {
   display: flex;
   align-items: center;
@@ -1909,16 +2134,7 @@ margin-top: -2px;
   box-shadow: 0 2px 10px rgba(5,150,105,0.12);
 }
 
-/* ── Crossword page layout (single sidebar on left) ── */
-.cw-list-layout {
-  grid-template-columns: 240px 1fr !important;
-}
-
-.cw-list-layout .dashboard-left-sidebar {
-  display: block !important;
-}
-
-/* ── Crossword sidebar stats widget ── */
+/* ── Crossword sidebar stats widget (right sidebar) ── */
 .cw-sidebar-stats {
   background: linear-gradient(145deg, #c8b8f0 0%, #b5a0e8 100%);
   border-radius: 16px;
@@ -1928,19 +2144,7 @@ margin-top: -2px;
 }
 
 .cw-sidebar-stats-title {
-  font-weight: 800;
-  font-size: 0.9rem;
-  color: #2d1a5a;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 12px;
-}
-
-.cw-sidebar-stats-title .material-symbols-outlined {
-  font-size: 1.1rem;
+  display: none;
 }
 
 .cw-sidebar-stats-row {
@@ -2040,15 +2244,13 @@ margin-top: -2px;
 }
 
 @media (max-width: 900px) {
-  .cw-list-layout {
-    grid-template-columns: 1fr !important;
+  .cw-level-cards {
+    gap: 10px;
   }
-  .cw-list-layout .dashboard-left-sidebar {
-    display: none !important;
-  }
-  .cw-list-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .cw-path-node--pos-0 { margin-left: 8%; }
+  .cw-path-node--pos-2 { margin-right: 8%; }
+  .cw-path-connector.cw-path-node--pos-0 { margin-left: calc(8% + 42px); }
+  .cw-path-connector.cw-path-node--pos-2 { margin-right: calc(8% + 42px); }
 }
 
 @media (max-width: 600px) {
