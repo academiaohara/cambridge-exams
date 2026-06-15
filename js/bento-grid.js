@@ -1256,7 +1256,6 @@
       exams = exams || [];
       var left = this._buildLevelSelectorSidebarHtml();
       var right = this._buildRightSidebarHeaderHtml();
-      right += this._buildProfileCtaSidebarHtml();
       if (options.includeGradeTracker !== false) {
         right += this._buildGradeTrackerSidebarHtml(exams);
       }
@@ -1264,6 +1263,7 @@
         var nextLesson = this._findNextLesson(exams);
         if (nextLesson) right += this._buildNextLessonLeftHtml(nextLesson);
       }
+      right += this._buildProfileCtaSidebarHtml();
       return { left: left, right: right };
     },
 

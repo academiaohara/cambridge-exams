@@ -1342,6 +1342,12 @@
   min-width: 0;
 }
 
+@media (min-width: 901px) {
+  .dashboard-right-sidebar .dashboard-sidebar-content {
+    min-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 4px);
+  }
+}
+
 .dashboard-sidebar-shell.is-collapsed {
   overflow: visible;
   gap: 0;
