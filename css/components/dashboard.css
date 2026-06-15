@@ -726,6 +726,12 @@
   font-weight: 500;
 }
 
+.section-progress--scale {
+  color: #2D2E5F;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
 /* ── Results buttons ── */
 .exam-play-btn {
   background: rgba(45, 46, 95, 0.08);

@@ -617,6 +617,18 @@
       return ordered;
     },
 
+    getSectionScaleDisplay: function(examId, sectionKey, section) {
+      var scores = this.getSkillScoresForSection(examId, sectionKey);
+      var withData = scores.filter(function(s) { return s.raw > 0; });
+      if (withData.length > 0) {
+        var avg = Math.round(withData.reduce(function(sum, s) { return sum + s.scale; }, 0) / withData.length);
+        return { type: 'scale', value: avg };
+      }
+      var completed = (section && section.completed) ? section.completed.length : 0;
+      var total = (section && section.total) ? section.total : 0;
+      return { type: 'progress', value: completed + '/' + total };
+    },
+
     showSectionResults: function(examId, sectionKey) {
       var skillScores = this.getSkillScoresForSection(examId, sectionKey);
       if (!skillScores.length) return;

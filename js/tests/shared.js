@@ -101,7 +101,8 @@
     },
 
     _toggleGradeEvolutionExpand: function() {
-      var sec = document.querySelector('.grade-evolution-section');
+      var sec = document.querySelector('.grade-evolution-modal-overlay .grade-evolution-section') ||
+        document.querySelector('.grade-evolution-section');
       if (!sec) return;
       sec.classList.toggle('grade-evolution-expanded');
       var btn = sec.querySelector('.grade-evolution-expand-btn');
@@ -118,6 +119,24 @@
       } catch (e) { /* ignore */ }
     },
 
+    closeGradeEvolution: function(opts) {
+      opts = opts || {};
+      document.querySelectorAll('.grade-evolution-modal-overlay').forEach(function(el) {
+        el.remove();
+      });
+      if (opts.skipHistory) return;
+      var path = window.location.pathname || '/';
+      if (path === '/stats' || path.slice(-6) === '/stats') {
+        if (BentoGrid._gradeEvolutionPushedHistory) {
+          BentoGrid._gradeEvolutionPushedHistory = false;
+          history.back();
+        } else if (typeof Router !== 'undefined') {
+          var dashState = { view: 'dashboard' };
+          history.replaceState(dashState, '', Router.stateToPath(dashState));
+        }
+      }
+    },
+
     selectMode: function(mode) {
       if (typeof Dashboard !== 'undefined' && Dashboard.renderSubpage) {
         var modeState = { view: 'subpage', mode: mode };
@@ -131,10 +150,10 @@
       }
     },
 
-    // ── Grade Evolution Section ──────────────────────────────────────────
-    openGradeEvolution: function() {
-      var content = document.getElementById('main-content');
-      if (!content) return;
+    // ── Grade Evolution (modal) ──────────────────────────────────────────
+    openGradeEvolution: function(opts) {
+      opts = opts || {};
+      if (document.querySelector('.grade-evolution-modal-overlay')) return;
 
       var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
@@ -157,8 +176,7 @@
       var scaleMax = bounds[1];
       var gradeBands = evo.gradeBands || [];
 
-      // Gather per-exam skill scores
-      var examScores = []; // [{ examId, skills: { skill: scaleScore } }]
+      var examScores = [];
       exams.forEach(function(exam) {
         if (exam.status !== 'available' || typeof ScoreCalculator === 'undefined') return;
         try {
@@ -175,48 +193,51 @@
 
       var bodyHtml = BentoGrid._buildGradeEvoChart(examScores, allSkills, skillColors, gradeBands, scaleMin, scaleMax);
 
-      // Build sidebars like main dashboard
-      var sidebars = { left: '', right: '' };
-      if (typeof BentoGrid !== 'undefined') {
-        sidebars = BentoGrid._buildDashboardSidebars(exams);
-      }
-      var leftSidebarContent = sidebars.left;
-      var rightSidebarContent = sidebars.right;
-
-      content.innerHTML =
-        '<div class="dashboard-layout">' +
-          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
-            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
-            : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
-          '<div class="dashboard-center">' +
-            '<div class="grade-evolution-section">' +
-              '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="loadDashboard()" aria-label="Back"><span class="material-symbols-outlined" aria-hidden="true">arrow_back</span><span class="icon-btn-label">Back</span></button>' +
-                '<div>' +
-                  '<div class="subpage-title">' + 'Grade Evolution' + '</div>' +
-                  '<div class="subpage-subtitle">' + level + ' · ' + 'Track your progress across exams' + '</div>' +
-                '</div>' +
-              '</div>' +
-              '<div class="grade-evolution-body">' +
-                '<button type="button" class="grade-evolution-expand-btn" onclick="BentoGrid._toggleGradeEvolutionExpand()" title="Larger chart" aria-label="Larger chart">' +
-                  '<span class="material-symbols-outlined" aria-hidden="true">open_in_full</span>' +
-                  '<span class="grade-evolution-expand-label">Larger</span>' +
-                '</button>' +
-                '<div class="grade-evolution-body-inner">' + bodyHtml + '</div>' +
-              '</div>' +
+      var el = document.createElement('div');
+      el.className = 'grade-evolution-modal-overlay';
+      el.innerHTML =
+        '<div class="grade-evolution-modal" role="dialog" aria-modal="true" aria-labelledby="grade-evolution-title">' +
+          '<button class="grade-evolution-modal-close" type="button" aria-label="Close">' +
+            '<span class="material-symbols-outlined">close</span>' +
+          '</button>' +
+          '<div class="grade-evolution-section">' +
+            '<div class="grade-evolution-modal-header">' +
+              '<div class="subpage-title" id="grade-evolution-title">' + 'Grade Evolution' + '</div>' +
+              '<div class="subpage-subtitle">' + level + ' · ' + 'Track your progress across exams' + '</div>' +
+            '</div>' +
+            '<div class="grade-evolution-body">' +
+              '<button type="button" class="grade-evolution-expand-btn" onclick="BentoGrid._toggleGradeEvolutionExpand()" title="Larger chart" aria-label="Larger chart">' +
+                '<span class="material-symbols-outlined" aria-hidden="true">open_in_full</span>' +
+                '<span class="grade-evolution-expand-label">Larger</span>' +
+              '</button>' +
+              '<div class="grade-evolution-body-inner">' + bodyHtml + '</div>' +
             '</div>' +
           '</div>' +
-          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
-            ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent)
-            : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>') +
         '</div>';
 
-      if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
-      if (typeof BentoGrid !== 'undefined') {
-        BentoGrid._startGradeCarousel();
+      document.body.appendChild(el);
+
+      el.addEventListener('click', function(e) {
+        if (e.target === el) BentoGrid.closeGradeEvolution();
+      });
+      var closeBtn = el.querySelector('.grade-evolution-modal-close');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          BentoGrid.closeGradeEvolution();
+        });
       }
-      var geState = { view: 'gradeEvolution' };
-      history.pushState(geState, '', Router.stateToPath(geState));
+
+      var currentPath = window.location.pathname || '/';
+      var onStatsRoute = currentPath === '/stats' || currentPath.slice(-6) === '/stats';
+      if (!opts.fromRoute && !onStatsRoute && typeof Router !== 'undefined') {
+        var geState = { view: 'gradeEvolution' };
+        history.pushState(geState, '', Router.stateToPath(geState));
+        BentoGrid._gradeEvolutionPushedHistory = true;
+      } else {
+        BentoGrid._gradeEvolutionPushedHistory = false;
+      }
     },
 
     _buildGradeEvoChart: function(examScores, allSkills, skillColors, gradeBands, scaleMin, scaleMax) {
