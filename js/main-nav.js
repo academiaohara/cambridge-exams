@@ -147,9 +147,11 @@
           '</button>' +
           '<div class="dict-popover" role="dialog" aria-hidden="true">' + dictPopoverHtml + '</div>' +
         '</div>' +
-        '<button type="button" class="stats-bar-item stats-bar-calc" aria-label="Open score calculator" onclick="openScoreCalculator(event)">' +
+        '<div class="stats-bar-calc-wrap">' +
+        '<button type="button" class="stats-bar-item stats-bar-calc" aria-label="Open score calculator" aria-expanded="false" aria-haspopup="true" onclick="openScoreCalculator(event)">' +
           '<span class="material-symbols-outlined">calculate</span>' +
         '</button>' +
+        '</div>' +
       '</div>';
     },
 

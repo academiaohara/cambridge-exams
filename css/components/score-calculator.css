@@ -9,78 +9,93 @@
   --cb-cream-soft: #FDF6EA;
 }
 
-/* ── Input popover (anchored to trigger button) ── */
+/* ── Input popover (Duolingo-style, like stats-bar popovers) ── */
 .sc-input-popover-backdrop {
   position: fixed;
   inset: 0;
   z-index: 19990;
   background: transparent;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease, visibility 0.18s;
+}
+
+.sc-input-popover-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .sc-input-popover {
   position: fixed;
   z-index: 19995;
-  width: 380px;
+  width: 320px;
   max-width: calc(100vw - 24px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.sc-input-popover.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.sc-input-popover::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: var(--sc-arrow-right, 28px);
+  width: 16px;
+  height: 16px;
   background: #fff;
-  border: 2px solid var(--cb-brown-mid);
-  border-radius: 18px;
-  box-shadow: 0 16px 48px rgba(96, 32, 8, 0.22);
-  animation: scPopoverIn 0.22s ease;
-  overflow: hidden;
+  border-left: 2px solid #e5e5e5;
+  border-top: 2px solid #e5e5e5;
+  transform: rotate(45deg);
+  border-radius: 2px 0 0 0;
+  z-index: 1;
 }
 
-@keyframes scPopoverIn {
-  from { opacity: 0; transform: translateY(-8px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+.sc-input-popover.is-above::before {
+  top: auto;
+  bottom: -8px;
+  border-left: none;
+  border-top: none;
+  border-right: 2px solid #e5e5e5;
+  border-bottom: 2px solid #e5e5e5;
+  border-radius: 0 0 2px 0;
 }
 
-.sc-popover-header {
-  position: relative;
-  padding: 16px 44px 12px 18px;
-  background: var(--cb-cream);
-  border-bottom: 1px solid rgba(104, 48, 32, 0.15);
+.sc-input-popover-inner {
+  background: #fff;
+  border: 2px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 18px 16px 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .sc-popover-kicker {
-  display: block;
-  font-size: 0.68rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--cb-orange);
+  letter-spacing: 0.06em;
+  color: #ff9600;
+  margin-bottom: 4px;
 }
 
-.sc-popover-header h3 {
-  margin: 2px 0 0;
-  font-size: 1.15rem;
+.sc-popover-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
   font-weight: 800;
-  color: var(--cb-brown-dark);
-}
-
-.sc-popover-close {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  width: 32px;
-  height: 32px;
-  border: none;
-  background: transparent;
-  color: var(--cb-brown-mid);
-  font-size: 1.5rem;
-  line-height: 1;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: background 0.15s;
-}
-
-.sc-popover-close:hover {
-  background: rgba(104, 48, 32, 0.1);
-  color: var(--cb-brown-dark);
-}
-
-.sc-popover-body {
-  padding: 14px 18px 18px;
+  color: #3c3c3c;
+  margin: 0 0 14px;
+  line-height: 1.2;
 }
 
 .sc-popover-selector {
@@ -88,82 +103,88 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   padding: 10px 12px;
-  border-radius: 12px;
-  background: var(--cb-cream-soft);
-  border: 1px solid rgba(104, 48, 32, 0.12);
+  border-radius: 14px;
+  background: #fff8e6;
+  border: 2px solid #f0e0b8;
 }
 
 .sc-popover-selector label {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--cb-brown-dark);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #3c3c3c;
 }
 
 .sc-popover-selector select {
   flex: 1;
-  max-width: 200px;
-  padding: 8px 12px;
-  border: 1.5px solid var(--cb-brown-mid);
-  border-radius: 10px;
-  font-family: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--cb-brown-dark);
+  max-width: 180px;
+  padding: 8px 10px;
+  border: 2px solid #e5e5e5;
+  border-bottom-width: 3px;
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #3c3c3c;
   background: #fff;
   cursor: pointer;
 }
 
 .sc-popover-selector select:focus {
   outline: none;
-  border-color: var(--cb-orange);
+  border-color: #ff9600;
 }
 
 .sc-popover-inputs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 .sc-popover-input-group label {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--cb-brown-dark);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #3c3c3c;
   margin-bottom: 6px;
 }
 
 .sc-popover-input-group label i {
-  color: var(--cb-orange);
-  font-size: 0.85rem;
+  color: #ff9600;
+  font-size: 0.82rem;
 }
 
 .sc-popover-input-group label small {
   margin-left: auto;
-  font-weight: 500;
-  color: var(--cb-brown-mid);
+  font-weight: 600;
+  color: #777;
 }
 
 .sc-popover-input-group input {
   width: 100%;
-  padding: 8px 10px;
-  border: 1.5px solid rgba(104, 48, 32, 0.25);
-  border-radius: 10px;
-  font-size: 1rem;
-  font-family: inherit;
-  color: var(--cb-brown-dark);
+  padding: 10px 12px;
+  border: 2px solid #e5e5e5;
+  border-bottom-width: 3px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  color: #3c3c3c;
   background: #fff;
   box-sizing: border-box;
+  transition: border-color 0.15s, background 0.15s;
 }
 
 .sc-popover-input-group input:focus {
   outline: none;
-  border-color: var(--cb-orange);
-  background: var(--cb-cream-soft);
+  border-color: #ff9600;
+  background: #fff8e6;
 }
 
 .sc-popover-results-btn {
@@ -173,31 +194,45 @@
   gap: 8px;
   width: 100%;
   padding: 12px 16px;
-  border: none;
-  border-radius: 12px;
-  background: var(--cb-orange);
+  border: 2px solid #e5e5e5;
+  border-bottom-width: 4px;
+  border-radius: 14px;
+  background: #ff9600;
   color: #fff;
-  font-family: inherit;
+  font-family: 'Nunito', sans-serif;
   font-size: 0.95rem;
   font-weight: 800;
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 4px 14px rgba(232, 104, 16, 0.35);
+  transition: transform 0.15s, filter 0.15s;
+}
+
+.sc-popover-results-btn .material-symbols-outlined {
+  font-size: 1.2rem;
 }
 
 .sc-popover-results-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(232, 104, 16, 0.45);
+  filter: brightness(1.05);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .sc-input-popover {
-    animation: scPopoverSlideUp 0.28s ease;
+    left: 12px !important;
+    right: 12px !important;
+    bottom: calc(72px + env(safe-area-inset-bottom)) !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    transform: translateY(12px);
+    z-index: 2300;
   }
 
-  @keyframes scPopoverSlideUp {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
+  .sc-input-popover.is-open {
+    transform: translateY(0);
+  }
+
+  .sc-input-popover::before {
+    display: none;
   }
 
   .sc-popover-inputs {

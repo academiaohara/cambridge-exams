@@ -153,6 +153,11 @@ button.stats-bar-item.is-active {
   color: #ff9600;
 }
 
+.stats-bar-calc-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
 .stats-bar-level {
   font-weight: 900;
 }
