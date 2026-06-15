@@ -110,6 +110,10 @@
       var app = document.getElementById('app');
       if (app) app.style.display = '';
 
+      if (typeof BentoGrid !== 'undefined' && BentoGrid.closeGradeEvolution && (!state || state.view !== 'gradeEvolution')) {
+        BentoGrid.closeGradeEvolution({ skipHistory: true });
+      }
+
       if (!state || state.view === 'dashboard') {
         if (AppState.currentExercise) {
           Exercise.closeExercise({ skipHistory: true });
@@ -139,7 +143,7 @@
         }
       } else if (state.view === 'gradeEvolution') {
         Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openGradeEvolution();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openGradeEvolution({ fromRoute: true });
       } else if (state.view === 'quicksteps') {
         Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openQuickstepsChooser();
@@ -269,7 +273,7 @@
       } else if (initialState.view === 'gradeEvolution') {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openGradeEvolution();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openGradeEvolution({ fromRoute: true });
       } else if (initialState.view === 'quicksteps') {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();

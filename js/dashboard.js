@@ -26,6 +26,16 @@
       return sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
     },
 
+    _formatSectionProgress: function(examId, sectionKey, section) {
+      var display = (typeof ScoreCalculator !== 'undefined' && ScoreCalculator.getSectionScaleDisplay)
+        ? ScoreCalculator.getSectionScaleDisplay(examId, sectionKey, section)
+        : { type: 'progress', value: ((section.completed || []).length) + '/' + (section.total || 0) };
+      if (display.type === 'scale') {
+        return '<span class="section-progress section-progress--scale" title="Cambridge scale">' + display.value + '</span>';
+      }
+      return '<span class="section-progress">' + display.value + '</span>';
+    },
+
     _renderCenterHeader: function(title, subtitle) {
       return '<div class="dashboard-center-header">' +
         '<h1 class="dashboard-center-title">' + title + '</h1>' +
@@ -514,7 +524,7 @@
             '<span class="exam-number">' + exam.number + '</span>' +
             '<div class="section-ex-item-info">' +
               '<div class="exam-title">Test ' + exam.number + '</div>' +
-              '<span class="section-progress">' + section.completed.length + '/' + section.total + '</span>' +
+              this._formatSectionProgress(exam.id, sectionKey, section) +
             '</div>' +
             '<button class="section-play" onclick="event.stopPropagation(); Exercise.startFullSection(\'' + exam.id + '\', \'' + sectionKey + '\')" title="' + ('Start' || 'Start') + '">' +
               '<i class="fas fa-play"></i>' +
@@ -741,7 +751,7 @@
             <button class="section-results-btn" onclick="event.stopPropagation(); ScoreCalculator.showSectionResults('${exam.id}', '${sectionKey}')" title="Section Results">
               <i class="fas fa-chart-bar"></i>
             </button>
-            <span class="section-progress">${section.completed.length}/${section.total}</span>
+            ${this._formatSectionProgress(exam.id, sectionKey, section)}
           </div>
           <div class="section-parts">
       `;

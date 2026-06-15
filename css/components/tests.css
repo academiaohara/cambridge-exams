@@ -147,6 +147,54 @@ content: '';
 }
 
 /* ── Grade Evolution Section (rendered in main-content) ──────────────── */
+.grade-evolution-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+  animation: slideDown 0.25s ease-out;
+}
+.grade-evolution-modal {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px 22px 20px;
+  max-width: 760px;
+  width: min(96vw, 760px);
+  max-height: min(90vh, 720px);
+  overflow: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.28);
+  -webkit-overflow-scrolling: touch;
+}
+.grade-evolution-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(45, 46, 95, 0.08);
+  border: none;
+  color: #2D2E5F;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.grade-evolution-modal-close .material-symbols-outlined {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+.grade-evolution-modal-header {
+  margin-bottom: 12px;
+  padding-right: 44px;
+}
 .grade-evolution-section {
   width: 100%;
 }
