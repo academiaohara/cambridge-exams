@@ -872,31 +872,6 @@
         return { cefr: cefr, min: cefrMap[cefr] };
       }).sort(function(a, b) { return a.min - b.min; });
 
-      // Helper to generate dashed lines at grade boundaries (reused across columns)
-      function buildDashedLines() {
-        var lines = '';
-        grades.forEach(function(g) {
-          var linePct = scoreToPercent(g.min);
-          lines += '<div class="cb-dotted-line" style="bottom:' + linePct + '%"></div>';
-        });
-        lines += '<div class="cb-dotted-line" style="bottom:100%"></div>';
-        return lines;
-      }
-
-      // Dashed lines only at CEFR boundaries (where the CEFR level changes)
-      function buildCefrDashedLines() {
-        var lines = '';
-        grades.forEach(function(g, idx) {
-          var nextGrade = grades[idx + 1];
-          if (!nextGrade || g.cefr !== nextGrade.cefr) {
-            var linePct = scoreToPercent(g.min);
-            lines += '<div class="cb-dotted-line" style="bottom:' + linePct + '%"></div>';
-          }
-        });
-        lines += '<div class="cb-dotted-line" style="bottom:100%"></div>';
-        return lines;
-      }
-
       // Cambridge-style chart – unified column layout (header + body per column)
       var html = '<div class="cb-chart">';
       html += '<div class="cb-chart-columns">';
@@ -914,7 +889,6 @@
         var isActive = gradeInfo.cefr === lvl.cefr;
         html += '<div class="cb-cefr-band' + (isActive ? ' cb-cefr-active' : '') + '" style="bottom:' + bandBottom + '%;height:' + heightPct + '%"><strong>' + lvl.cefr + '</strong></div>';
       });
-      html += buildCefrDashedLines();
       html += '</div></div></div>';
 
       // Scale column (ruler)
@@ -932,10 +906,6 @@
         html += '<div class="cb-scale-overall-wrap" style="bottom:' + overallPct + '%">';
         html += '<div class="cb-scale-overall-tag"><span>' + overall + '</span></div>';
         html += '</div>';
-      }
-      html += buildDashedLines();
-      if (overallPct !== null) {
-        html += '<div class="cb-overall-line-seg cb-overall-line-scale" style="bottom:' + overallPct + '%"></div>';
       }
       html += '</div></div></div>';
 
@@ -955,10 +925,6 @@
         html += '<span class="cb-grade-band-text">' + g.label + '</span>';
         html += '</div>';
       });
-      html += buildDashedLines();
-      if (overallPct !== null) {
-        html += '<div class="cb-overall-line-seg" style="bottom:' + overallPct + '%"></div>';
-      }
       html += '</div></div></div>';
 
       // Skill columns
@@ -979,10 +945,6 @@
           html += '<div class="cb-band" style="bottom:' + bottomPct + '%;height:' + heightPct + '%;"></div>';
         });
 
-        html += buildDashedLines();
-        if (overallPct !== null) {
-          html += '<div class="cb-overall-line-seg" style="bottom:' + overallPct + '%"></div>';
-        }
         html += '<div class="cb-score-badge" style="bottom:' + pct + '%"><span>' + item.scale + '</span></div>';
 
         html += '</div></div></div>';
