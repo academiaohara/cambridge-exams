@@ -893,7 +893,7 @@
 
       // Scale column (ruler)
       html += '<div class="cb-column cb-column-scale">';
-      html += '<div class="cb-hdr">Cambridge<br>English<br>Scale</div>';
+      html += '<div class="cb-hdr">Cambridge<br>Scale</div>';
       html += '<div class="cb-col-body"><div class="cb-col-inner">';
       for (var tick = scaleTop; tick >= scaleBottom; tick -= 10) {
         var tickPct = scoreToPercent(tick);

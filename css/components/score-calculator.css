@@ -707,17 +707,18 @@
 .cb-column {
   display: flex;
   flex-direction: column;
-  background: var(--cb-surface);
-  border: 1px solid var(--cb-border);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(45, 46, 95, 0.04);
+  gap: 8px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
 }
 
 .cb-hdr {
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   text-align: center;
   font-size: 0.62rem;
@@ -725,7 +726,8 @@
   color: var(--cb-text-muted);
   padding: 8px 6px;
   line-height: 1.2;
-  border-bottom: 1px solid var(--cb-border);
+  border: 1px solid var(--cb-border);
+  border-radius: 10px;
   background: var(--cb-surface-muted);
 }
 
@@ -739,11 +741,16 @@
   min-height: 200px;
   position: relative;
   overflow: visible;
+  padding-bottom: 12px;
+  border: 1px solid var(--cb-border);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(45, 46, 95, 0.04);
+  background: var(--cb-surface);
 }
 
 .cb-col-inner {
   position: absolute;
-  top: 0;
+  top: 4px;
   left: 0;
   right: 0;
   bottom: 0;
