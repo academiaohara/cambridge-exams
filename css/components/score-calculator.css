@@ -20,6 +20,7 @@
   --cb-text: var(--text-dark, #2D2E5F);
   --cb-text-muted: var(--text-light, #7b7ca0);
   --cb-chart-gap: 10px;
+  --cb-hdr-height: 48px;
   /* Legacy aliases kept for popover / result boxes */
   --cb-orange: var(--cb-scale-orange);
   --cb-cream: var(--cb-surface-alt);
@@ -716,7 +717,8 @@
 }
 
 .cb-hdr {
-  flex: 0 0 auto;
+  flex: 0 0 var(--cb-hdr-height);
+  height: var(--cb-hdr-height);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -724,11 +726,14 @@
   font-size: 0.62rem;
   font-weight: 800;
   color: var(--cb-text-muted);
-  padding: 8px 6px;
-  line-height: 1.2;
+  padding: 4px 6px;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   border: 1px solid var(--cb-border);
   border-radius: 10px;
   background: var(--cb-surface-muted);
+  box-sizing: border-box;
 }
 
 .cb-column-cefr { width: 60px; flex-shrink: 0; }
@@ -745,12 +750,12 @@
   border: 1px solid var(--cb-border);
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(45, 46, 95, 0.04);
-  background: var(--cb-surface);
+  background: transparent;
 }
 
 .cb-col-inner {
   position: absolute;
-  top: 4px;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -758,14 +763,20 @@
 }
 
 /* Graduated ruler background for scale column */
-.cb-column-scale .cb-col-inner {
+.cb-column-scale .cb-col-body {
   background: linear-gradient(to right, var(--cb-surface-muted), var(--cb-surface));
+}
+
+.cb-column-scale .cb-col-inner {
+  background: transparent;
   z-index: 2;
   overflow: visible;
 }
 
+.cb-column-cefr .cb-col-body,
+.cb-column-grades .cb-col-body,
 .cb-column-skill .cb-col-body {
-  background-color: var(--cb-surface-alt);
+  background: rgba(28, 176, 246, 0.14);
 }
 
 /* CEFR labels */
