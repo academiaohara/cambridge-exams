@@ -5749,13 +5749,13 @@
 .vocab-cw-active-def-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap: 8px;
+  margin-bottom: 6px;
 }
 
 .vocab-cw-active-def-number {
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
@@ -5763,17 +5763,17 @@
   background: #1cb0f6;
   color: white;
   font-weight: 900;
-  font-size: 17px;
+  font-size: 14px;
   line-height: 1;
-  box-shadow: 0 4px 0 #1689c7;
+  box-shadow: 0 3px 0 #1689c7;
   flex: 0 0 auto;
 }
 
 .vocab-cw-active-def-meta {
   display: flex;
   align-items: center;
-  gap: 8px;
-  min-height: 34px;
+  gap: 6px;
+  min-height: 28px;
   flex: 1;
   min-width: 0;
 }
@@ -5782,9 +5782,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
   background: #e8f7fe;
   color: #1cb0f6;
   flex-shrink: 0;
@@ -5792,16 +5792,34 @@
 }
 
 .vocab-cw-active-def-dir-icon .material-symbols-outlined {
-  font-size: 18px;
+  font-size: 16px;
   font-variation-settings: 'FILL' 1;
 }
 
 .vocab-cw-active-def .vocab-cw-type-badge {
-  font-size: 0.7rem;
-  padding: 5px 12px;
+  font-size: 0.62rem;
+  padding: 4px 10px;
   border-radius: 999px;
   opacity: 1;
   flex-shrink: 0;
+}
+
+.vocab-cw-active-def .vocab-cw-type-badge.vocab-cw-type-collocation {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  padding: 0;
+  border-radius: 999px;
+  background: #1cb0f6;
+  color: #fff;
+  border: none;
+  box-shadow: 0 3px 0 #1689c7;
+  font-size: 0.5rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  line-height: 1;
+  justify-content: center;
 }
 
 .vocab-cw-active-def-body {
@@ -6418,16 +6436,20 @@
   }
   .vocab-cw-main,
   .vocab-cw-main--mobile-play {
-    padding: 10px 12px;
+    padding: 4px 10px 4px 0;
     padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 220px);
     box-sizing: border-box;
-    gap: 12px;
+    gap: 8px;
+  }
+  .vocab-cw-play-sticky-top {
+    gap: 0;
+    padding-bottom: 0;
   }
   .vocab-cw-body {
     flex-direction: column;
     gap: 14px;
-    margin-top: 12px;
-    align-items: center;
+    margin-top: 10px;
+    align-items: stretch;
   }
   .vocab-cw-grid-body {
     flex: 1 1 auto;
@@ -6436,7 +6458,7 @@
   .vocab-cw-play-area {
     flex: 1 1 auto;
     width: 100%;
-    align-items: center;
+    align-items: stretch;
   }
   .vocab-cw-word-list {
     width: 100%;
@@ -6445,8 +6467,12 @@
   }
   .vocab-cw-section {
     width: 100%;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
+  }
+  .vocab-cw-main--mobile-play .vocab-cw-word-row.active .vocab-cw-word-number,
+  .vocab-cw-main--mobile-play .vocab-cw-word-row.active .vocab-cw-word-clear-btn {
+    display: none !important;
   }
   .vocab-cw-main--mobile-play .vocab-cw-word-row:not(.active) {
     display: none !important;
@@ -6509,21 +6535,18 @@
     -webkit-backdrop-filter: blur(12px);
     box-sizing: border-box;
   }
-  .vocab-cw-mobile-dock .vocab-cw-dir-toggle {
-    width: 100%;
-    max-width: 220px;
-    margin: 0 auto;
-    flex-shrink: 0;
-  }
-  .vocab-cw-header-btns .vocab-cw-dir-toggle {
-    display: none !important;
-  }
   .vocab-cw-word-row {
     width: 100%;
     max-width: 100%;
-    padding: 10px 4px;
-    gap: 8px;
+    padding: 10px 0;
+    gap: 0;
     box-sizing: border-box;
+    --cw-cell-gap: 3px;
+    --cw-cell-max: 44px;
+    --cw-cell-size: min(
+      var(--cw-cell-max),
+      calc((100% - (var(--cw-cells, 8) - 1) * var(--cw-cell-gap)) / var(--cw-cells, 8))
+    );
   }
   .vocab-cw-word-number {
     width: 28px;
@@ -6562,10 +6585,34 @@
   .vocab-cw-active-def--inline {
     width: 100%;
     box-sizing: border-box;
-    margin: 0 0 8px;
-    padding: 10px 12px;
+    margin: 12px 0 8px;
+    padding: 8px 10px;
     border-radius: 12px;
     text-align: left;
+  }
+  .vocab-cw-active-def--inline .vocab-cw-active-def-header {
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .vocab-cw-active-def--inline .vocab-cw-active-def-number {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    box-shadow: 0 2px 0 #1689c7;
+  }
+  .vocab-cw-active-def--inline .vocab-cw-active-def-dir-icon {
+    width: 22px;
+    height: 22px;
+  }
+  .vocab-cw-active-def--inline .vocab-cw-active-def-dir-icon .material-symbols-outlined {
+    font-size: 14px;
+  }
+  .vocab-cw-active-def--inline .vocab-cw-type-badge.vocab-cw-type-collocation {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    font-size: 0.42rem;
+    box-shadow: 0 2px 0 #1689c7;
   }
   .vocab-cw-active-def--inline .vocab-cw-active-def-line {
     font-size: 14px;
@@ -6576,20 +6623,20 @@
   .vocab-cw-cells {
     flex: 1 1 auto;
     min-width: 0;
-    display: grid;
-    grid-template-columns: repeat(var(--cw-cells, 12), minmax(0, 1fr));
-    gap: 3px;
+    width: 100%;
+    display: flex;
     flex-wrap: nowrap;
-    justify-content: start;
-    align-items: stretch;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--cw-cell-gap, 3px);
   }
   .vocab-cw-cell {
-    flex: none;
-    width: 100%;
+    flex: 0 0 var(--cw-cell-size, 44px);
+    width: var(--cw-cell-size, 44px);
+    height: var(--cw-cell-size, 44px);
     min-width: 0;
     aspect-ratio: 1;
-    height: auto;
-    font-size: clamp(9px, 2.35vw, 13px);
+    font-size: clamp(9px, calc(var(--cw-cell-size, 44px) * 0.42), 15px);
     border-radius: 6px;
     box-shadow: 0 2px 0 #c6def8;
   }
@@ -6638,6 +6685,13 @@
     max-width: 52px;
     color: #64748b;
   }
+  .vocab-cw-mobile-key--clear {
+    color: #1cb0f6;
+    order: -1;
+  }
+  .vocab-cw-mobile-key--clear .material-symbols-outlined {
+    font-size: 20px;
+  }
   .vocab-cw-mobile-key--wide .material-symbols-outlined {
     font-size: 20px;
   }
@@ -6649,16 +6703,16 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
-    gap: 10px;
+    gap: 8px;
     position: relative;
     align-items: center;
-    padding: 12px 14px 14px;
+    padding: 10px 12px 12px;
     text-align: center;
   }
   .vocab-cw-back-btn--duo {
     position: absolute;
-    left: 14px;
-    top: 14px;
+    left: 10px;
+    top: 10px;
     z-index: 1;
   }
   .vocab-cw-header-title {
@@ -6745,13 +6799,13 @@
   }
   .vocab-cw-active-def--inline {
     padding: 8px 10px;
-    margin-bottom: 4px;
+    margin: 10px 0 4px;
   }
   .vocab-cw-active-def--inline .vocab-cw-active-def-line {
     font-size: 13px;
   }
   .vocab-cw-word-row {
-    padding: 6px 2px;
+    padding: 6px 0;
   }
   .vocab-cw-mobile-key {
     height: 30px;
