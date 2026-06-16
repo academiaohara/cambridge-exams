@@ -2164,6 +2164,14 @@ margin-top: -2px;
   box-shadow: 0 4px 0 #58a700;
 }
 
+.wdl-duo-btn--check:disabled {
+  background: #b8e986;
+  color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 0 #9ccc65;
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
 .wdl-duo-btn--retry {
   background: #fff;
   color: #4b5563;
@@ -2262,6 +2270,14 @@ margin-top: -2px;
 
   .wdl-mobile-key--enter:active {
     box-shadow: 0 1px 0 #58a700;
+  }
+
+  .wdl-mobile-key--enter:disabled {
+    background: #b8e986;
+    color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 3px 0 #9ccc65;
+    opacity: 0.55;
+    cursor: not-allowed;
   }
 
   .wdl-duo-actions {
