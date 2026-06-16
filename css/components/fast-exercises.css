@@ -6504,19 +6504,18 @@
     flex: 1 1 auto;
     min-width: 0;
     display: grid;
-    grid-template-columns: repeat(14, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--cw-cells, 12), minmax(0, 1fr));
     gap: 3px;
     flex-wrap: nowrap;
     justify-content: start;
-    align-items: center;
+    align-items: stretch;
   }
   .vocab-cw-cell {
     flex: none;
     width: 100%;
     min-width: 0;
-    height: auto;
     aspect-ratio: 1;
-    max-height: 26px;
+    height: auto;
     font-size: clamp(9px, 2.35vw, 13px);
     border-radius: 6px;
     box-shadow: 0 2px 0 #c6def8;
@@ -6646,7 +6645,6 @@
     padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 88px);
   }
   .vocab-cw-cell {
-    max-height: 22px;
     font-size: clamp(8px, 2.1vw, 11px);
   }
   .vocab-cw-mobile-key {

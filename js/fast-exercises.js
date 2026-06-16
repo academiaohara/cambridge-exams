@@ -6551,7 +6551,7 @@
           cellsHtml += '<button type="button" class="vocab-cw-cell" data-r="' + cell.row + '" data-c="' + cell.col + '" data-cell-key="' + cell.cellKey + '" data-word-id="' + wordId + '" data-index="' + cell.index + '" id="cw-cell-' + cell.row + '-' + cell.col + '-' + wordId + '" aria-label="Letter ' + (cell.index + 1) + ' of word ' + word.number + '"></button>';
         }
         var cellSlots = cells.length;
-        if (window.matchMedia && window.matchMedia('(max-width: 700px)').matches) cellSlots = 14;
+        if (window.matchMedia && window.matchMedia('(max-width: 700px)').matches) cellSlots = 12;
         return '<div class="vocab-cw-word-row" data-word-id="' + wordId + '" data-dir="' + word.dir + '" data-r="' + word.row + '" data-c="' + word.col + '" style="--cw-cells:' + cellSlots + '">' +
           '<button type="button" class="vocab-cw-word-number" data-word-id="' + wordId + '" aria-label="Select word ' + word.number + '">' + word.number + '</button>' +
           '<div class="vocab-cw-cells">' + cellsHtml + '</div>' +
