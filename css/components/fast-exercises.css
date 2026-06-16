@@ -5776,32 +5776,66 @@
   min-width: 0;
 }
 
-.vocab-cw-active-def-direction {
-  display: flex;
+.vocab-cw-active-def-dir-icon {
+  display: inline-flex;
   align-items: center;
-  height: 34px;
-  font-size: 18px;
-  font-weight: 900;
-  text-transform: uppercase;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: #e8f7fe;
   color: #1cb0f6;
-  letter-spacing: 0.04em;
-  line-height: 1;
+  flex-shrink: 0;
+  box-shadow: 0 2px 0 #bce0f5;
+}
+
+.vocab-cw-active-def-dir-icon .material-symbols-outlined {
+  font-size: 18px;
+  font-variation-settings: 'FILL' 1;
 }
 
 .vocab-cw-active-def .vocab-cw-type-badge {
-  font-size: 0.72rem;
-  padding: 3px 8px;
-  border-radius: 6px;
+  font-size: 0.7rem;
+  padding: 5px 12px;
+  border-radius: 999px;
   opacity: 1;
   flex-shrink: 0;
 }
 
-.vocab-cw-active-def-text {
+.vocab-cw-active-def-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vocab-cw-active-def-line {
   margin: 0;
   font-size: 17px;
   line-height: 1.45;
   font-weight: 650;
   color: #1f2937;
+}
+
+.vocab-cw-active-def-line--phrase {
+  color: #4b5563;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.vocab-cw-solved-blank {
+  color: #58cc02;
+  font-weight: 800;
+}
+
+.vocab-cw-solved-chip {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #d7ffb8;
+  color: #58a700;
+  font-weight: 800;
+  font-size: 0.92em;
+  vertical-align: baseline;
 }
 
 .vocab-cw-active-num {
@@ -6070,21 +6104,25 @@
 
 /* Type badges for clue type (vocabulary / phrasal / collocation / idiom) */
 .vocab-cw-type-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
   font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  font-weight: 800;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 1px 5px;
-  border-radius: 3px;
+  padding: 3px 9px;
+  border-radius: 999px;
   margin-left: 5px;
   vertical-align: middle;
-  opacity: 0.85;
+  opacity: 1;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
 }
-.vocab-cw-type-vocabulary  { background: #dbeafe; color: #1e40af; }
-.vocab-cw-type-collocation { background: #dcfce7; color: #166534; }
-.vocab-cw-type-phrasal-verb { background: #fce7f3; color: #9d174d; }
-.vocab-cw-type-idiom        { background: #fef3c7; color: #92400e; }
+.vocab-cw-type-vocabulary  { background: #ddf4ff; color: #1899d6; border-color: #bce0f5; }
+.vocab-cw-type-collocation { background: #d7ffb8; color: #58a700; border-color: #a8e86a; }
+.vocab-cw-type-phrasal-verb { background: #ffd6f0; color: #ce4395; border-color: #f5b8de; }
+.vocab-cw-type-idiom        { background: #fff0b3; color: #cd7900; border-color: #ffe08a; }
 
 /* Word input strip — fixed at bottom like a modal bar */
 .vocab-cw-word-strip {
@@ -6431,10 +6469,17 @@
     padding: 12px 14px;
     border-radius: 14px;
   }
-  .vocab-cw-active-def-text {
+  .vocab-cw-active-def-line {
     font-size: 15px;
   }
-  .vocab-cw-active-def-direction {
+  .vocab-cw-active-def-line--phrase {
+    font-size: 14px;
+  }
+  .vocab-cw-active-def-dir-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .vocab-cw-active-def-dir-icon .material-symbols-outlined {
     font-size: 16px;
   }
   .vocab-cw-header--duo {
