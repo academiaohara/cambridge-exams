@@ -2090,6 +2090,10 @@ margin-top: -2px;
   justify-content: center;
 }
 
+.cw-wordle-play-card--duo .vocab-cw-wordle-grid {
+  margin-bottom: 8px;
+}
+
 .cw-wordle-play-card--duo .vocab-cw-wordle-box {
   border-width: 2px;
   border-bottom-width: 4px;
@@ -2128,7 +2132,7 @@ margin-top: -2px;
 }
 
 .wdl-duo-actions {
-  margin-top: 16px;
+  margin-top: 28px;
   gap: 12px;
 }
 
@@ -2261,13 +2265,17 @@ margin-top: -2px;
   }
 
   .wdl-duo-actions {
-    flex-direction: column;
+    flex-direction: row;
     align-items: stretch;
+    margin-top: 24px;
+    gap: 10px;
   }
 
   .wdl-duo-btn {
-    width: 100%;
+    flex: 1 1 0;
     min-width: 0;
+    padding: 12px 10px;
+    font-size: 0.82rem;
   }
 }
 
