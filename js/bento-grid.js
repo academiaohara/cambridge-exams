@@ -944,10 +944,8 @@
           ? completed + ' / ' + total + ' completed' + (inProgress > 0 ? ' · ' + inProgress + ' in progress' : '')
           : total + ' puzzles · ' + meta.difficulty;
         var statusClass = completed > 0 ? 'mode-card-status-done' : '';
-        var badge = completed > 0 ? completed + '' : '';
 
         html += '<div class="mode-card mode-card--cw-level" data-cw-level="' + lvl.toLowerCase() + '"' +
-          ' style="--cw-card-bg:' + meta.cardBg + ';--cw-card-border:' + meta.cardBorder + ';--cw-card-text:' + meta.cardText + ';--cw-icon-color:' + meta.iconColor + '"' +
           ' onclick="BentoGrid.openCrosswordList(null, \'' + lvl + '\')" role="button" tabindex="0">' +
           '<div class="mode-card-body">' +
             '<div class="mode-card-title-row">' +
@@ -956,8 +954,7 @@
             '<div class="mode-card-status ' + statusClass + '">' + self._escapeHTML(statusText) + '</div>' +
           '</div>' +
           '<div class="mode-card-icon-wrap">' +
-            '<div class="mode-card-icon" style="color:' + meta.iconColor + '">' + _mi(meta.icon) + '</div>' +
-            (badge ? '<span class="mode-card-icon-badge">' + badge + '</span>' : '') +
+            '<div class="mode-card-icon">' + _mi(meta.icon) + '</div>' +
           '</div>' +
         '</div>';
       });
