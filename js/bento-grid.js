@@ -586,24 +586,6 @@
       return xp;
     },
 
-    // Returns array of earned badge objects { icon, label, earned }.
-    _getCwBadges: function(progressObj, completedCount, total) {
-      var badges = [];
-      var perfectCount = 0;
-      Object.values(progressObj).forEach(function(p) {
-        if (p && p.completed && (p.hintsUsed || 0) === 0) perfectCount++;
-      });
-      var defs = [
-        { icon: '⭐', label: 'First Crossword', earned: completedCount >= 1 },
-        { icon: '🔥', label: '5 Completed',     earned: completedCount >= 5 },
-        { icon: '🏆', label: '10 Completed',    earned: completedCount >= 10 },
-        { icon: '💎', label: 'All Done',         earned: total > 0 && completedCount >= total },
-        { icon: '🧠', label: 'Perfect Solver',   earned: perfectCount >= 1 }
-      ];
-      defs.forEach(function(b) { badges.push(b); });
-      return badges;
-    },
-
     // Async: loads category data and updates the Course bento card progress rows.
     _updateCourseProgressDesc: async function(level) {
       var el = document.getElementById('bento-course-prog-desc');
@@ -723,7 +705,6 @@
       var pct = total > 0 ? Math.round((completedCount / total) * 100) : 0;
       var streak = this._calcCwStreak(progress);
       var xp = this._calcCwXP(progress);
-      var badges = this._getCwBadges(progress, completedCount, total);
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
 
       // ── Stats block ──
@@ -769,16 +750,6 @@
         '</div>' +
         '<div class="cw-sidebar-xp-track"><div class="cw-sidebar-xp-fill" style="width:' + xpPct + '%"></div></div>' +
       '</div>';
-
-      // ── Badges ──
-      var earnedBadges = badges.filter(function(b) { return b.earned; });
-      if (earnedBadges.length > 0) {
-        html += '<div class="cw-sidebar-badges">';
-        earnedBadges.forEach(function(b) {
-          html += '<span class="cw-badge cw-badge-earned" title="' + b.label + '">' + b.icon + ' ' + b.label + '</span>';
-        });
-        html += '</div>';
-      }
 
       // ── Continue last unfinished ──
       if (lastUnfinished) {
@@ -905,6 +876,155 @@
       return ORDER[idx + 1];
     },
 
+    _wlProgressKey: 'cambridge_wordle_progress',
+
+    _getWlProgress: function() {
+      try {
+        return JSON.parse(localStorage.getItem(this._wlProgressKey) || '{}');
+      } catch (e) {
+        return {};
+      }
+    },
+
+    _getWordleEntries: function() {
+      var CEFR_ORDER = ['A2', 'B1', 'B2', 'C1', 'mix'];
+      var LEVEL_CONFIG = (typeof FastExercises !== 'undefined' && FastExercises._wlLevelConfig)
+        ? FastExercises._wlLevelConfig()
+        : [];
+      var allEntries = [];
+      CEFR_ORDER.forEach(function(cefrId) {
+        var cfg = null;
+        for (var i = 0; i < LEVEL_CONFIG.length; i++) {
+          if (LEVEL_CONFIG[i].id === cefrId) { cfg = LEVEL_CONFIG[i]; break; }
+        }
+        if (!cfg || cfg.count <= 0) return;
+        for (var idx = 0; idx < cfg.count; idx++) {
+          allEntries.push({ levelId: cefrId, wlIndex: idx, title: cefrId + ' #' + (idx + 1) });
+        }
+      });
+      return allEntries;
+    },
+
+    _wlLevelMeta: function() {
+      return this._cwLevelMeta();
+    },
+
+    _getNextWlLevel: function(levelId) {
+      return this._getNextCwLevel(levelId);
+    },
+
+    _buildWordleLevelCardsHtml: function(allEntries, progress) {
+      var self = this;
+      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
+      var LEVEL_META = this._wlLevelMeta();
+      var availableLevels = ['A2', 'B1', 'B2', 'C1', 'mix'];
+
+      var html = '<div class="cw-level-cards desktop-mode-cards">';
+      availableLevels.forEach(function(lvl) {
+        var meta = LEVEL_META[lvl] || LEVEL_META['B2'];
+        var levelEntries = allEntries.filter(function(e) { return e.levelId === lvl; });
+        var completed = 0;
+        var inProgress = 0;
+        levelEntries.forEach(function(e) {
+          var p = progress[e.levelId + '_wl' + e.wlIndex];
+          if (!p) return;
+          if (p.completed) completed++;
+          else if ((p.guesses || 0) > 0) inProgress++;
+        });
+        var total = levelEntries.length;
+        var statusText = completed > 0
+          ? completed + ' / ' + total + ' completed' + (inProgress > 0 ? ' · ' + inProgress + ' in progress' : '')
+          : total + ' levels · ' + meta.difficulty;
+        var statusClass = completed > 0 ? 'mode-card-status-done' : '';
+
+        html += '<div class="mode-card mode-card--cw-level mode-card--wordle-level" data-wl-level="' + lvl.toLowerCase() + '"' +
+          ' onclick="BentoGrid.openWordleSection(null, \'' + lvl + '\')" role="button" tabindex="0">' +
+          '<div class="mode-card-body">' +
+            '<div class="mode-card-title-row">' +
+              '<span class="mode-card-title">' + self._escapeHTML(meta.label) + '</span>' +
+            '</div>' +
+            '<div class="mode-card-status ' + statusClass + '">' + self._escapeHTML(statusText) + '</div>' +
+          '</div>' +
+          '<div class="mode-card-icon-wrap">' +
+            '<div class="mode-card-icon" style="color:#a855f7">' + _mi(meta.icon) + '</div>' +
+          '</div>' +
+        '</div>';
+      });
+      html += '</div>';
+      return html;
+    },
+
+    _buildWordlePathMapHtml: function(entries, progress, levelId) {
+      var self = this;
+      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
+      var LEVEL_META = this._wlLevelMeta();
+      var meta = LEVEL_META[levelId] || LEVEL_META['B2'];
+
+      var firstIncompleteIdx = -1;
+      entries.forEach(function(entry, idx) {
+        if (firstIncompleteIdx !== -1) return;
+        var p = progress[entry.levelId + '_wl' + entry.wlIndex];
+        if (!p || !p.completed) firstIncompleteIdx = idx;
+      });
+      if (firstIncompleteIdx === -1) firstIncompleteIdx = entries.length - 1;
+
+      var nextLevel = self._getNextWlLevel(levelId);
+
+      var html = '<div class="cw-path-map cw-path-map--wordle" data-level="' + levelId + '" style="' +
+        '--cw-header-color:' + meta.headerColor + ';' +
+        '--cw-icon-color:' + meta.iconColor + ';' +
+        '--cw-card-bg:' + meta.cardBg + ';' +
+        '--cw-card-border:' + meta.cardBorder + ';' +
+        '--cw-card-text:' + meta.cardText +
+        '">';
+      html += '<div class="cw-path-grid" role="list" aria-label="' + self._escapeHTML(levelId) + ' wordle levels">';
+
+      entries.forEach(function(entry, idx) {
+        var pKey = entry.levelId + '_wl' + entry.wlIndex;
+        var prog = progress[pKey];
+        var isCompleted = !!(prog && prog.completed);
+        var isInProgress = !!(prog && !isCompleted && (prog.guesses || 0) > 0);
+        var isCurrent = idx === firstIncompleteIdx;
+        var levelNum = String(idx + 1).padStart(3, '0');
+
+        var cellClass = 'cw-path-cell';
+        if (isCompleted) cellClass += ' cw-path-cell--done';
+        else if (isInProgress) cellClass += ' cw-path-cell--progress';
+        else cellClass += ' cw-path-cell--pending';
+        if (isCurrent && !isCompleted) cellClass += ' cw-path-cell--current';
+
+        html += '<button type="button" class="' + cellClass + '" onclick="FastExercises._openWordleLevel(\'' + entry.levelId + '\',' + entry.wlIndex + ')" title="' + self._escapeHTML(entry.title) + '" aria-label="Wordle ' + levelNum + '">';
+        html += '<span class="cw-path-cell-num">' + levelNum + '</span>';
+        html += '</button>';
+      });
+
+      html += '</div>';
+
+      if (nextLevel) {
+        var nextMeta = LEVEL_META[nextLevel] || LEVEL_META['B2'];
+        html += '<div class="cw-path-next-level">' +
+          '<button type="button" class="cw-path-next-level-card" onclick="BentoGrid.openWordleSection(null, \'' + nextLevel + '\')">' +
+            '<span class="cw-path-next-level-kicker">Next Level</span>' +
+            '<span class="cw-path-next-level-title">' + self._escapeHTML(nextMeta.label) + ' Wordle</span>' +
+            '<span class="cw-path-next-level-arrow">' + _mi('arrow_forward') + '</span>' +
+          '</button>' +
+        '</div>';
+      }
+
+      html += '</div>';
+      return html;
+    },
+
+    _scrollWordlePathToCurrent: function() {
+      requestAnimationFrame(function() {
+        var current = document.querySelector('.cw-path-map--wordle .cw-path-cell--current');
+        if (!current) return;
+        var rect = current.getBoundingClientRect();
+        var targetY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
+        window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+      });
+    },
+
     _cwPlayBack: function() {
       var state = window._cwState;
       if (state && state.cwIndex !== undefined && state.levelId) {
@@ -958,17 +1078,6 @@
           '</div>' +
         '</div>';
       });
-      html += '<div class="mode-card mode-card-wordle" onclick="BentoGrid.openWordleSection()" role="button" tabindex="0">' +
-          '<div class="mode-card-body">' +
-            '<div class="mode-card-title-row">' +
-              '<span class="mode-card-title">Wordle</span>' +
-            '</div>' +
-            '<div class="mode-card-status">Guess the word from its definition</div>' +
-          '</div>' +
-          '<div class="mode-card-icon-wrap">' +
-            '<div class="mode-card-icon" style="color:#a855f7">' + _mi('casino') + '</div>' +
-          '</div>' +
-        '</div>';
       html += '</div>';
       return html;
     },
@@ -1134,50 +1243,58 @@
       }
     },
 
-    openWordleSection: async function(options) {
+    openWordleSection: async function(page, levelFilter, options) {
       options = options || {};
       var content = document.getElementById('main-content');
       if (!content) return;
 
-      AppState.currentView = 'crosswordWordle';
+      AppState.currentView = 'wordleList';
       if (typeof App !== 'undefined' && App.updateHeaderModeButtons) App.updateHeaderModeButtons();
-
-      if (!options.fromRoute) {
-        history.pushState({ view: 'crosswordWordle' }, '', Router.stateToPath({ view: 'crosswordWordle' }));
-      }
 
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
-      var allEntries = this._getCrosswordEntries();
-      var leftSidebarContent = '';
-      if (typeof BentoGrid !== 'undefined') {
-        leftSidebarContent = BentoGrid._buildDashboardSidebars(exams).left;
+      var allEntries = this._getWordleEntries();
+      var progress = this._getWlProgress();
+      var activeLevel = levelFilter || null;
+      var LEVEL_META = this._wlLevelMeta();
+
+      var wlState = { view: 'wordleList' };
+      if (activeLevel) wlState.level = activeLevel;
+      if (!options.fromRoute) {
+        history.pushState(wlState, '', Router.stateToPath(wlState));
       }
-      var rightSidebarContent = this._buildCrosswordStatsSidebarHtml(allEntries);
+
+      var sidebars = this._buildDashboardSidebars(exams);
+      var leftSidebarContent = sidebars.left;
+      var rightSidebarContent = sidebars.right;
 
       var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
         ? MainNav.buildMobileTopBarHtml() : '';
       var mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
-        ? MainNav.buildMobileBottomNavHtml('crosswords')
+        ? MainNav.buildMobileBottomNavHtml('wordle')
         : '';
 
       content.innerHTML =
-        '<div class="dashboard-layout dashboard-layout--crossword-scroll">' +
+        '<div class="dashboard-layout dashboard-layout--crossword-scroll dashboard-layout--wordle-scroll">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
-          '<div class="dashboard-center dashboard-center--crossword" id="cwWordleCenter">' +
+          '<div class="dashboard-center dashboard-center--crossword" id="wlDashboardCenter">' +
             mobileTopBarHtml +
-            '<div class="cw-section-header cw-section-header--wordle">' +
-              '<button class="cw-section-back" onclick="history.back()" aria-label="Back">' + _mi('arrow_back') + '</button>' +
+            '<div class="cw-section-header cw-section-header--wordle' + (activeLevel ? ' cw-section-header--level' : ' cw-section-header--picker') + '"' +
+              (activeLevel ? ' style="--cw-header-color:' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).headerColor + '"' : '') + '>' +
+              '<button class="cw-section-back" onclick="' + (activeLevel ? 'history.back()' : 'loadDashboard()') + '" aria-label="Back">' + _mi('arrow_back') + '</button>' +
               '<div class="cw-section-header-text">' +
-                '<div class="cw-section-kicker">WORDLE</div>' +
-                '<div class="cw-section-title">Guess the Word</div>' +
+                (activeLevel
+                  ? '<div class="cw-section-kicker">' + activeLevel.toUpperCase() + ' · ' + allEntries.filter(function(e) { return e.levelId === activeLevel; }).length + ' LEVELS</div>' +
+                    '<div class="cw-section-title">' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).difficulty + ' Wordle</div>'
+                  : '<div class="cw-section-kicker">WORDLE</div>' +
+                    '<div class="cw-section-title">Choose a Level</div>') +
               '</div>' +
             '</div>' +
-            '<div class="cw-page-content" id="cwWordlePage">' +
-              this._buildInlinePawLoadingHtml() +
+            '<div class="cw-page-content" id="wlCenterScroll">' +
+              '<div class="cw-list-page" id="wlListPage">' + this._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
             mobileNavHtml +
           '</div>' +
@@ -1188,13 +1305,30 @@
 
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
-      if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('crosswords');
+      if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('wordle');
 
-      var wordlePage = document.getElementById('cwWordlePage');
-      if (!wordlePage || typeof FastExercises === 'undefined') return;
+      var wlListPage = document.getElementById('wlListPage');
+      if (!wlListPage) return;
 
       await new Promise(function(resolve) { requestAnimationFrame(function() { requestAnimationFrame(resolve); }); });
-      await FastExercises._openWordlePage(wordlePage);
+
+      var bodyHtml = '';
+      if (activeLevel) {
+        var entries = allEntries.filter(function(e) { return e.levelId === activeLevel; });
+        if (entries.length === 0) {
+          bodyHtml = '<div class="fe-map-empty">No Wordle levels found for this level.</div>';
+        } else {
+          bodyHtml = this._buildWordlePathMapHtml(entries, progress, activeLevel);
+        }
+      } else {
+        bodyHtml = this._buildWordleLevelCardsHtml(allEntries, progress);
+      }
+
+      wlListPage.innerHTML = bodyHtml;
+
+      if (activeLevel) {
+        this._scrollWordlePathToCurrent();
+      }
     },
 
     openQuickstepsChooser: function() {

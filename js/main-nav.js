@@ -7,6 +7,7 @@
     { id: 'practice', label: 'Practice', icon: 'edit_note', color: '#ff9600', onclick: 'BentoGrid.selectMode(\'practice\')' },
     { id: 'simulation', label: 'Simulation', icon: 'assignment', color: '#ce82ff', onclick: 'BentoGrid.selectMode(\'exam\')' },
     { id: 'crosswords', label: 'Crosswords', icon: 'grid_on', color: '#ff4b4b', onclick: 'BentoGrid.openCrosswordList()' },
+    { id: 'wordle', label: 'Wordle', icon: 'casino', color: '#a855f7', onclick: 'BentoGrid.openWordleSection()' },
     { id: 'profile', label: 'Profile', icon: 'person', color: '#777777', onclick: 'BentoGrid.openMobileProfile()' }
   ];
 
@@ -19,7 +20,7 @@
   ];
 
   var MOBILE_MENU_ITEMS = [
-    'simulation', 'crosswords', 'profile'
+    'simulation', 'crosswords', 'wordle', 'profile'
   ];
 
   function escapeHTML(str) {
@@ -37,7 +38,8 @@
       return AppState.currentMode === 'exam' ? 'simulation' : 'practice';
     }
     if (view === 'course' || view === 'courseBlock' || view === 'courseUnit' || view === 'courseTheory') return 'course';
-    if (view === 'crosswordList' || view === 'crosswordPlay' || view === 'crosswordWordle') return 'crosswords';
+    if (view === 'crosswordList' || view === 'crosswordPlay') return 'crosswords';
+    if (view === 'wordleList' || view === 'wordlePlay') return 'wordle';
     if (view === 'fastExercises' || view === 'fastExerciseCategory' || view === 'fastExercisePoint') return 'dictionaries';
     if (view === 'profile') return 'profile';
     return null;

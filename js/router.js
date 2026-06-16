@@ -72,8 +72,15 @@
           }
           return '/crosswords';
 
-        case 'crosswordWordle':
-          return '/crosswords/wordle';
+        case 'wordleList':
+          if (state.level) return '/wordle/' + String(state.level).toLowerCase();
+          return '/wordle';
+
+        case 'wordlePlay':
+          if (state.level && typeof state.wlIndex !== 'undefined') {
+            return '/wordle/' + String(state.level).toLowerCase() + '/wl' + (state.wlIndex + 1);
+          }
+          return '/wordle';
 
         case 'terms':
           return '/terms';
@@ -164,9 +171,19 @@
       if (first === 'premium')                            return { view: 'premium' };
       if (first === 'stats')                              return { view: 'gradeEvolution' };
       if (first === 'quicksteps')                         return { view: 'quicksteps' };
+      if (first === 'wordle') {
+        if (segments.length >= 3 && /^wl\d+$/i.test(segments[2])) {
+          var wlNum = parseInt(segments[2].replace(/^wl/i, ''), 10);
+          if (!isNaN(wlNum) && wlNum >= 1) {
+            return { view: 'wordlePlay', level: segments[1].toUpperCase(), wlIndex: wlNum - 1 };
+          }
+        }
+        if (segments.length >= 2) return { view: 'wordleList', level: segments[1].toUpperCase() };
+        return { view: 'wordleList' };
+      }
       if (first === 'crosswords') {
         if (segments.length >= 2 && segments[1].toLowerCase() === 'wordle') {
-          return { view: 'crosswordWordle' };
+          return { view: 'wordleList' };
         }
         if (segments.length >= 3 && /^cw\d+$/i.test(segments[2])) {
           var cwNum = parseInt(segments[2].replace(/^cw/i, ''), 10);
