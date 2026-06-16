@@ -1452,8 +1452,7 @@
     padding-bottom: 48px;
   }
 
-  .dashboard-layout--crossword-play,
-  .dashboard-layout--wordle-play {
+  .dashboard-layout--crossword-play {
     grid-template-columns: minmax(0, 1fr);
     padding-right: 24px;
   }

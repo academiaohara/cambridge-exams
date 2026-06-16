@@ -1254,6 +1254,9 @@
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
+      if (typeof FastExercises !== 'undefined' && FastExercises._ensureWlManifest) {
+        await FastExercises._ensureWlManifest();
+      }
       var allEntries = this._getWordleEntries();
       var progress = this._getWlProgress();
       var activeLevel = levelFilter || null;

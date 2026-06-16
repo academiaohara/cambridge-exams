@@ -5,13 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const WL_LEVEL_CONFIG = [
-  { id: 'A2',  count: 100 },
-  { id: 'B1',  count: 100 },
-  { id: 'B2',  count: 100 },
-  { id: 'C1',  count: 100 },
-  { id: 'mix', count: 100 }
-];
+const WL_LEVEL_IDS = ['A2', 'B1', 'B2', 'C1', 'mix'];
 const WL_MIX_LEVELS = ['A2', 'B1', 'B2', 'C1'];
 const WORD_RE = /^[a-zA-Z]{3,12}$/;
 
@@ -81,16 +75,15 @@ function levelSeed(levelId) {
   return Math.abs(seed) + 9001;
 }
 
-function generateLevelEntries(levelId, count) {
+function generateLevelEntries(levelId) {
   const pool = buildVocabPool(levelId);
   if (!pool.length) return [];
 
   const shuffled = seededShuffle(pool, levelSeed(levelId));
-  const actualCount = Math.min(count, shuffled.length);
   const entries = [];
 
-  for (let i = 0; i < actualCount; i++) {
-    const entry = shuffled[i % shuffled.length];
+  for (let i = 0; i < shuffled.length; i++) {
+    const entry = shuffled[i];
     entries.push({
       levelId,
       wlIndex: i,
@@ -109,12 +102,12 @@ function main() {
 
   const manifest = { levels: [], generatedAt: new Date().toISOString() };
 
-  for (const cfg of WL_LEVEL_CONFIG) {
-    const entries = generateLevelEntries(cfg.id, cfg.count);
-    const levelDir = path.join(root, cfg.id);
+  for (const levelId of WL_LEVEL_IDS) {
+    const entries = generateLevelEntries(levelId);
+    const levelDir = path.join(root, levelId);
     if (!fs.existsSync(levelDir)) fs.mkdirSync(levelDir, { recursive: true });
 
-    manifest.levels.push({ id: cfg.id, count: entries.length });
+    manifest.levels.push({ id: levelId, count: entries.length });
 
     entries.forEach(entry => {
       const filePath = path.join(levelDir, 'wl' + entry.wlIndex + '.json');
@@ -127,7 +120,14 @@ function main() {
       }, null, 2));
     });
 
-    console.log('Generated', entries.length, 'Wordle levels for', cfg.id);
+    const validNames = new Set(entries.map(entry => 'wl' + entry.wlIndex + '.json'));
+    fs.readdirSync(levelDir).forEach(fileName => {
+      if (/^wl\d+\.json$/.test(fileName) && !validNames.has(fileName)) {
+        fs.unlinkSync(path.join(levelDir, fileName));
+      }
+    });
+
+    console.log('Generated', entries.length, 'Wordle levels for', levelId);
   }
 
   fs.writeFileSync(path.join(root, 'manifest.json'), JSON.stringify(manifest, null, 2));
