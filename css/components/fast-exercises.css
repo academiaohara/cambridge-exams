@@ -6543,7 +6543,10 @@
     text-align: center;
     padding: 0 48px;
     box-sizing: border-box;
+    gap: 2px;
   }
+  .vocab-cw-header-text { font-size: 1.1rem; }
+  .vocab-cw-header-lesson { font-size: 0.8rem; }
   .vocab-cw-header-btns {
     grid-row: 2;
     grid-column: 1;
