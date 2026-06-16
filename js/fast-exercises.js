@@ -6224,6 +6224,54 @@
       return definition + ' — ' + blankPart;
     },
 
+    // Replace ___ blanks with the solved answer in green; chip fallback when no blanks.
+    _cwInjectSolvedBlanks: function(text, word) {
+      if (!text) return '';
+      if (!word) return FastExercises._escapeHTML(text);
+      var answer = word.toLowerCase();
+      if (/___+/.test(text)) {
+        var parts = text.split(/___+/);
+        var html = '';
+        for (var i = 0; i < parts.length; i++) {
+          html += FastExercises._escapeHTML(parts[i]);
+          if (i < parts.length - 1) {
+            html += '<strong class="vocab-cw-solved-blank">' + FastExercises._escapeHTML(answer) + '</strong>';
+          }
+        }
+        return html;
+      }
+      return FastExercises._escapeHTML(text) +
+        ' <span class="vocab-cw-solved-chip">' + FastExercises._escapeHTML(answer) + '</span>';
+    },
+
+    // Active definition card: two-line layout and inline solved answers.
+    _cwFormatActiveDefClueHtml: function(clue, word, solved) {
+      if (!clue) return '';
+      var sep = clue.indexOf(CW_CLUE_SEP);
+      if (sep === -1) {
+        var singleLine = solved
+          ? FastExercises._cwInjectSolvedBlanks(clue, word)
+          : FastExercises._escapeHTML(clue);
+        return '<p class="vocab-cw-active-def-line">' + singleLine + '</p>';
+      }
+      var definition = clue.slice(0, sep).trim();
+      var blankPart = clue.slice(sep + CW_CLUE_SEP.length).trim();
+      var html = '';
+      if (definition) {
+        var defLine = solved
+          ? FastExercises._cwInjectSolvedBlanks(definition, word)
+          : FastExercises._escapeHTML(definition);
+        html += '<p class="vocab-cw-active-def-line vocab-cw-active-def-line--definition">' + defLine + '</p>';
+      }
+      if (blankPart) {
+        var phraseLine = solved
+          ? FastExercises._cwInjectSolvedBlanks(blankPart, word)
+          : FastExercises._escapeHTML(blankPart);
+        html += '<p class="vocab-cw-active-def-line vocab-cw-active-def-line--phrase">' + phraseLine + '</p>';
+      }
+      return html;
+    },
+
     _cwSanitizeClue: function(word, clue) {
       if (!clue || !word) return clue || '';
       var escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -7076,28 +7124,32 @@
         return;
       }
       var wordSolved = FastExercises._cwIsWordComplete(activeWord, state);
-      var displayClue = FastExercises._cwFormatClueDisplay(activeWord.clue || activeWord.definition || '');
-      var solvedHtml = '';
-      if (wordSolved) {
-        solvedHtml = ' <strong class="vocab-cw-active-word">→ ' + FastExercises._escapeHTML(activeWord.word.toLowerCase()) + '</strong>';
-        if (activeWord.example) {
-          solvedHtml += '<em class="vocab-cw-active-example">&ldquo;' + FastExercises._escapeHTML(activeWord.example) + '&rdquo;</em>';
-        }
+      var clueHtml = FastExercises._cwFormatActiveDefClueHtml(
+        activeWord.clue || activeWord.definition || '',
+        activeWord.word,
+        wordSolved
+      );
+      var exampleHtml = '';
+      if (wordSolved && activeWord.example) {
+        exampleHtml = '<em class="vocab-cw-active-example">&ldquo;' + FastExercises._escapeHTML(activeWord.example) + '&rdquo;</em>';
       }
       var typeBadgeHtml = '';
       if (activeWord.type) {
         var typeLabel = CW_TYPE_LABELS[activeWord.type] || activeWord.type;
         typeBadgeHtml = '<span class="vocab-cw-type-badge vocab-cw-type-' + FastExercises._escapeHTML(activeWord.type) + '">' + typeLabel + '</span>';
       }
+      var dirIcon = activeWord.dir === 'across'
+        ? '<span class="vocab-cw-active-def-dir-icon" title="Across" aria-label="Across">' + _mi('trending_flat') + '</span>'
+        : '<span class="vocab-cw-active-def-dir-icon" title="Down" aria-label="Down">' + _mi('south') + '</span>';
       defEl.innerHTML =
         '<div class="vocab-cw-active-def-header">' +
           '<span class="vocab-cw-active-def-number">' + activeWord.number + '</span>' +
+          dirIcon +
           '<div class="vocab-cw-active-def-meta">' +
-            '<span class="vocab-cw-active-def-direction">' + (activeWord.dir === 'across' ? 'Across' : 'Down') + '</span>' +
             typeBadgeHtml +
           '</div>' +
         '</div>' +
-        '<p class="vocab-cw-active-def-text">' + FastExercises._escapeHTML(displayClue) + solvedHtml + '</p>';
+        '<div class="vocab-cw-active-def-body">' + clueHtml + exampleHtml + '</div>';
     },
 
     _cwSelectStripPos: function(pos) {
