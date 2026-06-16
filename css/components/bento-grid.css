@@ -1710,6 +1710,14 @@ margin-top: -2px;
   height: auto;
 }
 
+.dashboard-layout--crossword-play {
+  padding-top: 8px;
+}
+
+.dashboard-layout--crossword-play .vocab-cw-play-section .vocab-cw-main {
+  padding-top: 8px;
+}
+
 .cw-page-content,
 .cw-center-scroll {
   flex: none;
