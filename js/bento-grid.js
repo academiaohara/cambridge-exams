@@ -576,13 +576,12 @@
       return streak;
     },
 
-    // Returns XP earned: 50 per completed crossword + 10 per in-progress crossword.
+    // Returns XP earned: 2 per correctly guessed letter (hints/solve excluded).
     _calcCwXP: function(progressObj) {
       var xp = 0;
       Object.values(progressObj).forEach(function(p) {
         if (!p) return;
-        if (p.completed) { xp += 50; }
-        else if ((p.wordsCorrect || p.wordsComplete || 0) > 0) { xp += 10; }
+        xp += (p.lettersXp || 0);
       });
       return xp;
     },
@@ -899,6 +898,26 @@
       '</div>';
     },
 
+    _getNextCwLevel: function(levelId) {
+      var ORDER = ['A2', 'B1', 'B2', 'C1', 'mix'];
+      var idx = ORDER.indexOf(levelId);
+      if (idx === -1 || idx >= ORDER.length - 1) return null;
+      return ORDER[idx + 1];
+    },
+
+    _cwPlayBack: function() {
+      var state = window._cwState;
+      if (state && state.cwIndex !== undefined && state.levelId) {
+        history.back();
+        return;
+      }
+      if (state && state.levelId) {
+        BentoGrid.openCrosswordList(null, state.levelId === 'mix' ? null : state.levelId);
+        return;
+      }
+      BentoGrid.openCrosswordList();
+    },
+
     _buildCrosswordLevelCardsHtml: function(allEntries, progress) {
       var self = this;
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
@@ -940,6 +959,17 @@
           '</div>' +
         '</div>';
       });
+      html += '<div class="mode-card mode-card-wordle" onclick="BentoGrid.openWordleSection()" role="button" tabindex="0">' +
+          '<div class="mode-card-body">' +
+            '<div class="mode-card-title-row">' +
+              '<span class="mode-card-title">Wordle</span>' +
+            '</div>' +
+            '<div class="mode-card-status">Guess the word from its definition</div>' +
+          '</div>' +
+          '<div class="mode-card-icon-wrap">' +
+            '<div class="mode-card-icon" style="color:#a855f7">' + _mi('casino') + '</div>' +
+          '</div>' +
+        '</div>';
       html += '</div>';
       return html;
     },
@@ -949,15 +979,15 @@
         trackWidth: 400,
         nodeSize: 72,
         rowGap: 84,
-        topPad: 36,
-        bottomPad: 48,
-        xRatios: [0.5, 0.78, 0.22, 0.5]
+        topPad: 88,
+        bottomPad: 64,
+        xRatios: [0.5, 0.84, 0.68, 0.24, 0.42, 0.78, 0.56, 0.18]
       };
     },
 
     _cwPathNodePosition: function(idx) {
       var layout = this._cwPathLayout();
-      var posIdx = idx % 4;
+      var posIdx = idx % layout.xRatios.length;
       var xRatio = layout.xRatios[posIdx];
       return {
         x: Math.round(layout.trackWidth * xRatio),
@@ -967,21 +997,18 @@
       };
     },
 
-    _cwPathSpecialNodeType: function(idx) {
-      var n = idx + 1;
-      if (n % 10 === 0) return 'chest';
-      if (n % 5 === 0) return 'challenge';
-      return null;
-    },
-
     _buildCwPathSvgD: function(points) {
       if (points.length < 2) return '';
       var d = 'M ' + points[0].x + ' ' + points[0].y;
       for (var i = 0; i < points.length - 1; i++) {
         var p0 = points[i];
         var p1 = points[i + 1];
-        var midY = (p0.y + p1.y) / 2;
-        d += ' C ' + p0.x + ' ' + midY + ', ' + p1.x + ' ' + midY + ', ' + p1.x + ' ' + p1.y;
+        var dy = p1.y - p0.y;
+        var ctrl1x = p0.x;
+        var ctrl1y = p0.y + dy * 0.35;
+        var ctrl2x = p1.x;
+        var ctrl2y = p0.y + dy * 0.65;
+        d += ' C ' + ctrl1x + ' ' + ctrl1y + ', ' + ctrl2x + ' ' + ctrl2y + ', ' + p1.x + ' ' + p1.y;
       }
       return d;
     },
@@ -1007,6 +1034,8 @@
       });
 
       var trackHeight = layout.topPad + Math.max(0, entries.length - 1) * layout.rowGap + layout.bottomPad;
+      var nextLevel = self._getNextCwLevel(levelId);
+      if (nextLevel) trackHeight += 120;
       var svgPath = this._buildCwPathSvgD(points);
 
       var html = '<div class="cw-path-map" data-level="' + levelId + '" style="--cw-header-color:' + meta.headerColor + '">';
@@ -1025,7 +1054,6 @@
         var isInProgress = !!(prog && !isCompleted && (prog.wordsCorrect || prog.wordsComplete || 0) > 0);
         var isCurrent = idx === firstIncompleteIdx;
         var pos = self._cwPathNodePosition(idx);
-        var specialType = self._cwPathSpecialNodeType(idx);
         var levelNum = idx + 1;
 
         var nodeClass = 'cw-path-node ' + pos.posClass;
@@ -1033,28 +1061,31 @@
         else if (isCurrent) nodeClass += ' cw-path-node--current';
         else if (isInProgress) nodeClass += ' cw-path-node--progress';
         else nodeClass += ' cw-path-node--pending';
-        if (specialType) nodeClass += ' cw-path-node--special cw-path-node--' + specialType;
 
         html += '<div class="' + nodeClass + '" style="left:' + pos.xPercent + ';top:' + pos.y + 'px" onclick="FastExercises._openMixedCrossword(\'' + entry.levelId + '\',' + entry.cwIndex + ')" role="button" tabindex="0" title="' + self._escapeHTML(entry.title) + '">';
         if (isCurrent) {
           html += '<div class="cw-path-start-label">START</div>';
         }
         html += '<div class="cw-path-node-circle">';
-        if (specialType === 'chest') {
-          html += _mi('redeem');
-        } else if (specialType === 'challenge') {
-          html += _mi('fitness_center');
-        } else {
-          html += '<span class="cw-path-node-label">' + levelNum + '</span>';
-        }
-        if (isCompleted && !specialType) {
+        html += '<span class="cw-path-node-label">' + levelNum + '</span>';
+        if (isCompleted) {
           html += '<span class="cw-path-node-check" aria-hidden="true">' + _mi('check') + '</span>';
-        } else if (isCompleted && specialType) {
-          html += '<span class="cw-path-node-check cw-path-node-check--special" aria-hidden="true">' + _mi('check') + '</span>';
         }
         html += '</div>';
         html += '</div>';
       });
+
+      if (nextLevel) {
+        var nextMeta = LEVEL_META[nextLevel] || LEVEL_META['B2'];
+        var nextY = layout.topPad + entries.length * layout.rowGap + 24;
+        html += '<div class="cw-path-next-level" style="top:' + nextY + 'px">' +
+          '<button type="button" class="cw-path-next-level-card" onclick="BentoGrid.openCrosswordList(null, \'' + nextLevel + '\')">' +
+            '<span class="cw-path-next-level-kicker">Next Level</span>' +
+            '<span class="cw-path-next-level-title">' + self._escapeHTML(nextMeta.label) + ' Crosswords</span>' +
+            '<span class="cw-path-next-level-arrow">' + _mi('arrow_forward') + '</span>' +
+          '</button>' +
+        '</div>';
+      }
 
       html += '</div></div></div>';
       return html;
@@ -1062,17 +1093,16 @@
 
     _scrollCrosswordPathToCurrent: function() {
       requestAnimationFrame(function() {
-        var scrollEl = document.querySelector('.cw-center-scroll');
         var current = document.querySelector('.cw-path-node--current');
-        if (!scrollEl || !current) return;
-        var scrollRect = scrollEl.getBoundingClientRect();
-        var nodeRect = current.getBoundingClientRect();
-        var offset = nodeRect.top - scrollRect.top - (scrollRect.height / 2) + (nodeRect.height / 2);
-        scrollEl.scrollTop += offset;
+        if (!current) return;
+        var rect = current.getBoundingClientRect();
+        var targetY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
+        window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
       });
     },
 
-    openCrosswordList: async function(page, levelFilter) {
+    openCrosswordList: async function(page, levelFilter, options) {
+      options = options || {};
       var content = document.getElementById('main-content');
       if (!content) return;
 
@@ -1089,7 +1119,9 @@
 
       var cwState = { view: 'crosswordList' };
       if (activeLevel) cwState.level = activeLevel;
-      history.pushState(cwState, '', Router.stateToPath(cwState));
+      if (!options.fromRoute) {
+        history.pushState(cwState, '', Router.stateToPath(cwState));
+      }
 
       var leftSidebarContent = '';
       if (typeof BentoGrid !== 'undefined') {
@@ -1104,7 +1136,7 @@
         : '';
 
       content.innerHTML =
-        '<div class="dashboard-layout">' +
+        '<div class="dashboard-layout dashboard-layout--crossword-scroll">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
@@ -1112,7 +1144,7 @@
             mobileTopBarHtml +
             '<div class="cw-section-header' + (activeLevel ? ' cw-section-header--level' : ' cw-section-header--picker') + '"' +
               (activeLevel ? ' style="--cw-header-color:' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).headerColor + '"' : '') + '>' +
-              '<button class="cw-section-back" onclick="' + (activeLevel ? 'BentoGrid.openCrosswordList()' : 'loadDashboard()') + '" aria-label="Back">' + _mi('arrow_back') + '</button>' +
+              '<button class="cw-section-back" onclick="' + (activeLevel ? 'history.back()' : 'loadDashboard()') + '" aria-label="Back">' + _mi('arrow_back') + '</button>' +
               '<div class="cw-section-header-text">' +
                 (activeLevel
                   ? '<div class="cw-section-kicker">' + activeLevel.toUpperCase() + ' · ' + allEntries.filter(function(e) { return e.levelId === activeLevel; }).length + ' PUZZLES</div>' +
@@ -1121,7 +1153,7 @@
                     '<div class="cw-section-title">Choose a Level</div>') +
               '</div>' +
             '</div>' +
-            '<div class="cw-center-scroll" id="cwCenterScroll">' +
+            '<div class="cw-page-content" id="cwCenterScroll">' +
               '<div class="cw-list-page" id="cwListPage">' + this._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
             mobileNavHtml +
@@ -1157,6 +1189,69 @@
       if (activeLevel) {
         this._scrollCrosswordPathToCurrent();
       }
+    },
+
+    openWordleSection: async function(options) {
+      options = options || {};
+      var content = document.getElementById('main-content');
+      if (!content) return;
+
+      AppState.currentView = 'crosswordWordle';
+      if (typeof App !== 'undefined' && App.updateHeaderModeButtons) App.updateHeaderModeButtons();
+
+      if (!options.fromRoute) {
+        history.pushState({ view: 'crosswordWordle' }, '', Router.stateToPath({ view: 'crosswordWordle' }));
+      }
+
+      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
+      var level = AppState.currentLevel || 'C1';
+      var exams = window.EXAMS_DATA[level] || [];
+      var allEntries = this._getCrosswordEntries();
+      var leftSidebarContent = '';
+      if (typeof BentoGrid !== 'undefined') {
+        leftSidebarContent = BentoGrid._buildDashboardSidebars(exams).left;
+      }
+      var rightSidebarContent = this._buildCrosswordStatsSidebarHtml(allEntries);
+
+      var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
+        ? MainNav.buildMobileTopBarHtml() : '';
+      var mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
+        ? MainNav.buildMobileBottomNavHtml('crosswords')
+        : '';
+
+      content.innerHTML =
+        '<div class="dashboard-layout dashboard-layout--crossword-scroll">' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
+            : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
+          '<div class="dashboard-center dashboard-center--crossword" id="cwWordleCenter">' +
+            mobileTopBarHtml +
+            '<div class="cw-section-header cw-section-header--wordle">' +
+              '<button class="cw-section-back" onclick="history.back()" aria-label="Back">' + _mi('arrow_back') + '</button>' +
+              '<div class="cw-section-header-text">' +
+                '<div class="cw-section-kicker">WORDLE</div>' +
+                '<div class="cw-section-title">Guess the Word</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="cw-page-content" id="cwWordlePage">' +
+              this._buildInlinePawLoadingHtml() +
+            '</div>' +
+            mobileNavHtml +
+          '</div>' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent)
+            : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>') +
+        '</div>';
+
+      if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+      if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
+      if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('crosswords');
+
+      var wordlePage = document.getElementById('cwWordlePage');
+      if (!wordlePage || typeof FastExercises === 'undefined') return;
+
+      await new Promise(function(resolve) { requestAnimationFrame(function() { requestAnimationFrame(resolve); }); });
+      await FastExercises._openWordlePage(wordlePage);
     },
 
     openQuickstepsChooser: function() {

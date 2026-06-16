@@ -37,7 +37,7 @@
       return AppState.currentMode === 'exam' ? 'simulation' : 'practice';
     }
     if (view === 'course' || view === 'courseBlock' || view === 'courseUnit' || view === 'courseTheory') return 'course';
-    if (view === 'crosswordList') return 'crosswords';
+    if (view === 'crosswordList' || view === 'crosswordPlay' || view === 'crosswordWordle') return 'crosswords';
     if (view === 'fastExercises' || view === 'fastExerciseCategory' || view === 'fastExercisePoint') return 'dictionaries';
     if (view === 'profile') return 'profile';
     return null;
