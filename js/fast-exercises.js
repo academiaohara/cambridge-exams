@@ -5704,91 +5704,188 @@
       if (tabD) tabD.classList.toggle('vocab-cw-strip-dir-btn-active', dir === 'down');
     },
 
-    // Open a mixed (non-topic-grouped) crossword by level and slot index.
-    _openMixedCrossword: async function(levelId, cwIndex) {
-      var self = this;
+    _showCrosswordLoading: function() {
+      if (typeof AppLoadingScreen !== 'undefined') {
+        AppLoadingScreen.show({ manual: true, minMs: 0 });
+      }
+    },
+
+    _hideCrosswordLoading: function() {
+      if (typeof AppLoadingScreen !== 'undefined') {
+        AppLoadingScreen.skipDelay();
+        AppLoadingScreen.hide();
+      }
+    },
+
+    _mountCrosswordPlayDashboard: function() {
       var content = document.getElementById('main-content');
-      if (!content) return;
+      if (!content) return null;
 
-      content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+      if (typeof App !== 'undefined' && App.updateHeaderModeButtons) App.updateHeaderModeButtons();
 
-      // Load pre-generated static JSON instead of generating at runtime
-      var cwData = null;
-      try {
-        var cwRes = await fetch('/crosswords/' + levelId + '/cw' + cwIndex + '.json');
-        if (!cwRes.ok) throw new Error('HTTP ' + cwRes.status);
-        var staticCw = await cwRes.json();
-
-        // Normalize static JSON format to runtime format expected by _renderVocabCrossword
-        // Static format: binary grid (1/0) + across/down arrays
-        // Runtime format: letter grid (letter/null) + placed array with dir field
-        var normPlaced = [];
-        (staticCw.across || []).forEach(function(e) {
-          normPlaced.push({ word: e.word, clue: e.clue, definition: e.clue, type: e.type, row: e.row, col: e.col, dir: 'across', number: e.number, length: e.length });
-        });
-        (staticCw.down || []).forEach(function(e) {
-          normPlaced.push({ word: e.word, clue: e.clue, definition: e.clue, type: e.type, row: e.row, col: e.col, dir: 'down', number: e.number, length: e.length });
-        });
-
-        // Reconstruct letter grid from placed entries
-        var normGrid = [];
-        for (var r = 0; r < staticCw.rows; r++) {
-          normGrid[r] = [];
-          for (var c = 0; c < staticCw.cols; c++) normGrid[r][c] = null;
-        }
-        normPlaced.forEach(function(p) {
-          for (var i = 0; i < p.word.length; i++) {
-            var gr = p.dir === 'across' ? p.row : p.row + i;
-            var gc = p.dir === 'across' ? p.col + i : p.col;
-            normGrid[gr][gc] = p.word[i];
-          }
-        });
-
-        cwData = { grid: normGrid, placed: normPlaced, rows: staticCw.rows, cols: staticCw.cols };
-      } catch(e) {
-        // Fallback: generate at runtime if static file not found
-        var pool = await this._buildMixedWordPool(levelId);
-        if (!pool.length) {
-          content.innerHTML = '<div class="fe-error">No words available for this level.</div>';
-          return;
-        }
-        var shuffled = this._cwSeededShuffle(pool, cwIndex);
-        var batch = shuffled.slice(0, CW_BATCH_SIZE);
-        cwData = this._generateCrossword(batch);
+      var level = AppState.currentLevel || 'C1';
+      var exams = window.EXAMS_DATA[level] || [];
+      var leftSidebarContent = '';
+      if (typeof BentoGrid !== 'undefined') {
+        leftSidebarContent = BentoGrid._buildDashboardSidebars(exams).left;
       }
 
-      if (!cwData || !cwData.placed || cwData.placed.length < CW_MIN_PLACED) {
-        content.innerHTML = '<div class="fe-error">Not enough words could be placed. Please try another crossword.</div>';
-        return;
-      }
+      var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
+        ? MainNav.buildMobileTopBarHtml() : '';
+      var mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
+        ? MainNav.buildMobileBottomNavHtml('crosswords')
+        : '';
 
-      // Load saved cell state for progress restoration
-      var pKey = levelId + '_cw' + cwIndex;
-      var savedState = null;
-      try {
-        savedState = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.get(pKey) : null;
-        if (!savedState) {
-          var rawProg = localStorage.getItem('cambridge_crossword_progress');
-          if (rawProg) savedState = (JSON.parse(rawProg) || {})[pKey] || null;
-        }
-      } catch(e) { savedState = null; }
+      content.innerHTML =
+        '<div class="dashboard-layout dashboard-layout--crossword-play">' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
+            : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
+          '<div class="dashboard-center dashboard-center--crossword" id="cwPlayCenter">' +
+            mobileTopBarHtml +
+            '<div class="cw-center-scroll" id="cwPlayScroll">' +
+              '<div class="fe-section vocab-cw-play-section" id="cwPlaySection"></div>' +
+            '</div>' +
+            mobileNavHtml +
+          '</div>' +
+          '<div class="dashboard-right-sidebar dashboard-right-sidebar--crossword" id="cwPlayRight">' +
+            '<div class="vocab-cw-clues-host" id="cw-clues-host"></div>' +
+          '</div>' +
+        '</div>';
 
-      var catMeta = { id: 'crossword', icon: 'grid_on', name: 'Crossword', color: '#10b981' };
-      var color = catMeta.color;
-      var title = levelId + ' Crossword #' + (cwIndex + 1);
+      if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+      if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
+      if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('crosswords');
 
-      var wrapper = document.createElement('div');
-      wrapper.className = 'fe-section';
-      content.innerHTML = '';
-      content.appendChild(wrapper);
+      return document.getElementById('cwPlaySection');
+    },
 
+    _attachCrosswordCluesToSidebar: function() {
+      if (window.innerWidth <= 768) return;
+      var clues = document.getElementById('cw-clues');
+      var host = document.getElementById('cw-clues-host');
+      if (!clues || !host) return;
+      host.appendChild(clues);
+      clues.classList.add('vocab-cw-clues--in-sidebar');
+    },
+
+    _renderCrosswordIntoDashboard: function(playSection, cwData, options) {
+      if (!playSection) return;
+
+      var catMeta = options.catMeta;
+      var color = options.color;
+      var levelId = options.levelId;
+      var lessonId = options.lessonId;
+      var cwIndex = options.cwIndex;
+      var savedState = options.savedState;
+      var lessonData = options.lessonData;
+
+      playSection.innerHTML = '';
       var mainDiv = document.createElement('div');
       mainDiv.className = 'vocab-cw-layout';
       mainDiv.innerHTML = '<div class="vocab-cw-main" id="vocab-cw-main"></div>';
-      wrapper.appendChild(mainDiv);
+      playSection.appendChild(mainDiv);
 
       var mainEl = document.getElementById('vocab-cw-main');
-      this._renderVocabCrossword(mainEl, cwData, { title: title }, catMeta, color, levelId, null, cwIndex, savedState);
+      if (!mainEl) return;
+
+      this._renderVocabCrossword(mainEl, cwData, lessonData, catMeta, color, levelId, lessonId, cwIndex, savedState);
+      this._attachCrosswordCluesToSidebar();
+    },
+
+    // Open a mixed (non-topic-grouped) crossword by level and slot index.
+    _openMixedCrossword: async function(levelId, cwIndex) {
+      var self = this;
+      this._showCrosswordLoading();
+
+      try {
+        // Load pre-generated static JSON instead of generating at runtime
+        var cwData = null;
+        try {
+          var cwRes = await fetch('/crosswords/' + levelId + '/cw' + cwIndex + '.json');
+          if (!cwRes.ok) throw new Error('HTTP ' + cwRes.status);
+          var staticCw = await cwRes.json();
+
+          // Normalize static JSON format to runtime format expected by _renderVocabCrossword
+          // Static format: binary grid (1/0) + across/down arrays
+          // Runtime format: letter grid (letter/null) + placed array with dir field
+          var normPlaced = [];
+          (staticCw.across || []).forEach(function(e) {
+            normPlaced.push({ word: e.word, clue: e.clue, definition: e.clue, type: e.type, row: e.row, col: e.col, dir: 'across', number: e.number, length: e.length });
+          });
+          (staticCw.down || []).forEach(function(e) {
+            normPlaced.push({ word: e.word, clue: e.clue, definition: e.clue, type: e.type, row: e.row, col: e.col, dir: 'down', number: e.number, length: e.length });
+          });
+
+          // Reconstruct letter grid from placed entries
+          var normGrid = [];
+          for (var r = 0; r < staticCw.rows; r++) {
+            normGrid[r] = [];
+            for (var c = 0; c < staticCw.cols; c++) normGrid[r][c] = null;
+          }
+          normPlaced.forEach(function(p) {
+            for (var i = 0; i < p.word.length; i++) {
+              var gr = p.dir === 'across' ? p.row : p.row + i;
+              var gc = p.dir === 'across' ? p.col + i : p.col;
+              normGrid[gr][gc] = p.word[i];
+            }
+          });
+
+          cwData = { grid: normGrid, placed: normPlaced, rows: staticCw.rows, cols: staticCw.cols };
+        } catch(e) {
+          // Fallback: generate at runtime if static file not found
+          var pool = await this._buildMixedWordPool(levelId);
+          if (!pool.length) {
+            this._hideCrosswordLoading();
+            var errContent = document.getElementById('main-content');
+            if (errContent) errContent.innerHTML = '<div class="fe-error">No words available for this level.</div>';
+            return;
+          }
+          var shuffled = this._cwSeededShuffle(pool, cwIndex);
+          var batch = shuffled.slice(0, CW_BATCH_SIZE);
+          cwData = this._generateCrossword(batch);
+        }
+
+        if (!cwData || !cwData.placed || cwData.placed.length < CW_MIN_PLACED) {
+          this._hideCrosswordLoading();
+          var errContent2 = document.getElementById('main-content');
+          if (errContent2) errContent2.innerHTML = '<div class="fe-error">Not enough words could be placed. Please try another crossword.</div>';
+          return;
+        }
+
+        // Load saved cell state for progress restoration
+        var pKey = levelId + '_cw' + cwIndex;
+        var savedState = null;
+        try {
+          savedState = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.get(pKey) : null;
+          if (!savedState) {
+            var rawProg = localStorage.getItem('cambridge_crossword_progress');
+            if (rawProg) savedState = (JSON.parse(rawProg) || {})[pKey] || null;
+          }
+        } catch(e) { savedState = null; }
+
+        var catMeta = { id: 'crossword', icon: 'grid_on', name: 'Crossword', color: '#10b981' };
+        var color = catMeta.color;
+        var title = levelId + ' Crossword #' + (cwIndex + 1);
+
+        this._hideCrosswordLoading();
+        var playSection = this._mountCrosswordPlayDashboard();
+        if (!playSection) return;
+
+        this._renderCrosswordIntoDashboard(playSection, cwData, {
+          catMeta: catMeta,
+          color: color,
+          levelId: levelId,
+          lessonId: null,
+          cwIndex: cwIndex,
+          savedState: savedState,
+          lessonData: { title: title }
+        });
+      } catch (loadError) {
+        this._hideCrosswordLoading();
+        var errContent3 = document.getElementById('main-content');
+        if (errContent3) errContent3.innerHTML = '<div class="fe-error">Could not load this crossword. Please try again.</div>';
+      }
     },
 
     // ─── Daily generated crossword ────────────────────────────────────────────
@@ -5797,83 +5894,88 @@
 
     _openDailyGeneratedCrossword: async function(levelId, date) {
       var self = this;
-      var content = document.getElementById('main-content');
-      if (!content) return;
+      this._showCrosswordLoading();
 
-      content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
-
-      // Return the cached crossword for today, or generate (and store) a new one.
-      var storageKey = 'cambridge_daily_crossword_' + levelId;
-      var cwData = null;
       try {
-        var stored = JSON.parse(localStorage.getItem(storageKey) || 'null');
-        if (stored && stored.date === date && stored.cwData) {
-          cwData = stored.cwData;
-        }
-      } catch(e) { cwData = null; }
-
-      if (!cwData) {
-        var pool = await this._buildMixedWordPool(levelId);
-        if (!pool.length) {
-          content.innerHTML = '<div class="fe-error">No words available for this level.</div>';
-          return;
-        }
-        // Derive a reproducible seed from the date string using a simple hash
-        // (same approach as the rest of the codebase for seeded shuffles)
-        var dateSeed = 0;
-        for (var i = 0; i < date.length; i++) {
-          dateSeed = ((dateSeed << 5) - dateSeed) + date.charCodeAt(i);
-          dateSeed = dateSeed & dateSeed;
-        }
-        dateSeed = Math.abs(dateSeed);
-        var shuffled = this._cwSeededShuffle(pool, dateSeed);
-        var batch = shuffled.slice(0, CW_BATCH_SIZE);
-        cwData = this._generateCrossword(batch);
-        if (!cwData || !cwData.placed || cwData.placed.length < CW_MIN_PLACED) {
-          content.innerHTML = '<div class="fe-error">Not enough words could be placed. Please try again later.</div>';
-          return;
-        }
+        // Return the cached crossword for today, or generate (and store) a new one.
+        var storageKey = 'cambridge_daily_crossword_' + levelId;
+        var cwData = null;
         try {
-          localStorage.setItem(storageKey, JSON.stringify({ date: date, cwData: cwData }));
-        } catch(e) {}
-      }
+          var stored = JSON.parse(localStorage.getItem(storageKey) || 'null');
+          if (stored && stored.date === date && stored.cwData) {
+            cwData = stored.cwData;
+          }
+        } catch(e) { cwData = null; }
 
-      if (!cwData || !cwData.placed || cwData.placed.length < CW_MIN_PLACED) {
-        content.innerHTML = '<div class="fe-error">Not enough words could be placed. Please try again later.</div>';
-        return;
-      }
-
-      // Progress key is date-based so each day's puzzle has independent tracking.
-      // We reuse the lessonId slot (cwIndex = undefined) so the save path becomes
-      // levelId + '_' + dailyProgressId  →  e.g. 'B1_daily_2026-04-05'
-      var dailyProgressId = 'daily_' + date;
-      var pKey = levelId + '_' + dailyProgressId;
-      var savedState = null;
-      try {
-        savedState = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.get(pKey) : null;
-        if (!savedState) {
-          var rawProg = localStorage.getItem('cambridge_crossword_progress');
-          if (rawProg) savedState = (JSON.parse(rawProg) || {})[pKey] || null;
+        if (!cwData) {
+          var pool = await this._buildMixedWordPool(levelId);
+          if (!pool.length) {
+            this._hideCrosswordLoading();
+            var errContent = document.getElementById('main-content');
+            if (errContent) errContent.innerHTML = '<div class="fe-error">No words available for this level.</div>';
+            return;
+          }
+          // Derive a reproducible seed from the date string using a simple hash
+          var dateSeed = 0;
+          for (var i = 0; i < date.length; i++) {
+            dateSeed = ((dateSeed << 5) - dateSeed) + date.charCodeAt(i);
+            dateSeed = dateSeed & dateSeed;
+          }
+          dateSeed = Math.abs(dateSeed);
+          var shuffled = this._cwSeededShuffle(pool, dateSeed);
+          var batch = shuffled.slice(0, CW_BATCH_SIZE);
+          cwData = this._generateCrossword(batch);
+          if (!cwData || !cwData.placed || cwData.placed.length < CW_MIN_PLACED) {
+            this._hideCrosswordLoading();
+            var errContent2 = document.getElementById('main-content');
+            if (errContent2) errContent2.innerHTML = '<div class="fe-error">Not enough words could be placed. Please try again later.</div>';
+            return;
+          }
+          try {
+            localStorage.setItem(storageKey, JSON.stringify({ date: date, cwData: cwData }));
+          } catch(e) {}
         }
-      } catch(e) { savedState = null; }
 
-      var catMeta = { id: 'crossword', icon: 'grid_on', name: 'Crossword', color: '#10b981' };
-      var color = catMeta.color;
-      var title = '📅 Daily · ' + date;
+        if (!cwData || !cwData.placed || cwData.placed.length < CW_MIN_PLACED) {
+          this._hideCrosswordLoading();
+          var errContent3 = document.getElementById('main-content');
+          if (errContent3) errContent3.innerHTML = '<div class="fe-error">Not enough words could be placed. Please try again later.</div>';
+          return;
+        }
 
-      var wrapper = document.createElement('div');
-      wrapper.className = 'fe-section';
-      content.innerHTML = '';
-      content.appendChild(wrapper);
+        var dailyProgressId = 'daily_' + date;
+        var pKey = levelId + '_' + dailyProgressId;
+        var savedState = null;
+        try {
+          savedState = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.get(pKey) : null;
+          if (!savedState) {
+            var rawProg = localStorage.getItem('cambridge_crossword_progress');
+            if (rawProg) savedState = (JSON.parse(rawProg) || {})[pKey] || null;
+          }
+        } catch(e) { savedState = null; }
 
-      var mainDiv = document.createElement('div');
-      mainDiv.className = 'vocab-cw-layout';
-      mainDiv.innerHTML = '<div class="vocab-cw-main" id="vocab-cw-main"></div>';
-      wrapper.appendChild(mainDiv);
+        var catMeta = { id: 'crossword', icon: 'grid_on', name: 'Crossword', color: '#10b981' };
+        var color = catMeta.color;
+        var title = '📅 Daily · ' + date;
 
-      var mainEl = document.getElementById('vocab-cw-main');
-      // cwIndex = undefined → progress key uses lessonId path (levelId_dailyProgressId)
-      this._renderVocabCrossword(mainEl, cwData, { title: title }, catMeta, color, levelId, dailyProgressId, undefined, savedState);
+        this._hideCrosswordLoading();
+        var playSection = this._mountCrosswordPlayDashboard();
+        if (!playSection) return;
+
+        this._renderCrosswordIntoDashboard(playSection, cwData, {
+          catMeta: catMeta,
+          color: color,
+          levelId: levelId,
+          lessonId: dailyProgressId,
+          cwIndex: undefined,
+          savedState: savedState,
+          lessonData: { title: title }
+        });
+      } catch (loadError) {
+        this._hideCrosswordLoading();
+        var errContent4 = document.getElementById('main-content');
+        if (errContent4) errContent4.innerHTML = '<div class="fe-error">Could not load today\'s crossword. Please try again.</div>';
+      }
     },
 
     // ─── Vocabulary-lesson crossword (kept for the vocabulary learning section) ──

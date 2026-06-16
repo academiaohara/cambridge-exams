@@ -813,6 +813,15 @@
       };
     },
 
+    _buildInlinePawLoadingHtml: function() {
+      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.getMarkup) {
+        return '<div class="cw-inline-loading" role="status" aria-live="polite" aria-label="Loading">' +
+          AppLoadingScreen.getMarkup() +
+        '</div>';
+      }
+      return '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+    },
+
     // Returns today's daily crossword descriptor { levelId, date } for the given level.
     // A new puzzle is generated automatically when the calendar day changes.
     _getDailyCrossword: function(level) {
@@ -1053,7 +1062,7 @@
               '</div>' +
             '</div>' +
             '<div class="cw-center-scroll" id="cwCenterScroll">' +
-              '<div class="cw-list-page" id="cwListPage"><div class="fe-loading"><div class="fe-spinner"></div></div></div>' +
+              '<div class="cw-list-page" id="cwListPage">' + this._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
             mobileNavHtml +
           '</div>' +
@@ -1068,6 +1077,8 @@
 
       var cwListPage = document.getElementById('cwListPage');
       if (!cwListPage) return;
+
+      await new Promise(function(resolve) { requestAnimationFrame(function() { requestAnimationFrame(resolve); }); });
 
       var bodyHtml = '';
       if (activeLevel) {

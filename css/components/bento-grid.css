@@ -1662,6 +1662,65 @@ margin-top: -2px;
   }
 }
 
+.cw-inline-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 280px;
+  padding: 32px 20px 48px;
+}
+
+.cw-inline-loading .app-loading-inner {
+  width: min(360px, 100%);
+}
+
+.cw-inline-loading .app-loading-logo {
+  width: min(220px, 70vw);
+  margin-bottom: 20px;
+}
+
+.cw-inline-loading .app-loading-paws {
+  margin-bottom: 28px;
+}
+
+.dashboard-layout--crossword-play .dashboard-right-sidebar--crossword {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+
+.dashboard-layout--crossword-play .vocab-cw-clues-host {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-layout--crossword-play .vocab-cw-clues--in-sidebar {
+  flex: 1;
+  min-height: 0;
+  max-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 16px);
+  overflow-y: auto;
+}
+
+.dashboard-layout--crossword-play .vocab-cw-play-section {
+  min-height: 0;
+  height: 100%;
+}
+
+.dashboard-layout--crossword-play .vocab-cw-play-section .vocab-cw-layout,
+.dashboard-layout--crossword-play .vocab-cw-play-section .vocab-cw-main {
+  min-height: 0;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout--crossword-play .dashboard-right-sidebar--crossword {
+    display: none !important;
+  }
+}
+
 .cw-center-scroll {
   flex: 1;
   min-height: 0;
@@ -1678,7 +1737,7 @@ margin-top: -2px;
   gap: 14px;
   padding: 18px 20px 20px;
   margin: 0 0 16px;
-  border-radius: 0 0 18px 18px;
+  border-radius: 18px;
   background: #ff4b4b;
   color: #fff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
