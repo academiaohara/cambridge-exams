@@ -5696,6 +5696,8 @@
     },
 
     _cwShowClueTab: function(dir) {
+      var wordList = document.getElementById('cw-word-list');
+      if (wordList) wordList.setAttribute('data-cw-words-dir', dir === 'down' ? 'down' : 'across');
       var tabA = document.getElementById('cw-strip-tab-across');
       var tabD = document.getElementById('cw-strip-tab-down');
       if (tabA) tabA.classList.toggle('vocab-cw-strip-dir-btn-active', dir === 'across');
@@ -5778,15 +5780,12 @@
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
-          '<div class="dashboard-center dashboard-center--crossword" id="cwPlayCenter">' +
+          '<div class="dashboard-center dashboard-center--crossword dashboard-center--crossword-play" id="cwPlayCenter">' +
             mobileTopBarHtml +
             '<div class="cw-page-content" id="cwPlayScroll">' +
               '<div class="fe-section vocab-cw-play-section" id="cwPlaySection"></div>' +
             '</div>' +
             mobileNavHtml +
-          '</div>' +
-          '<div class="dashboard-right-sidebar dashboard-right-sidebar--crossword" id="cwPlayRight">' +
-            '<div class="vocab-cw-clues-host" id="cw-clues-host"></div>' +
           '</div>' +
         '</div>';
 
@@ -5798,7 +5797,7 @@
     },
 
     _attachCrosswordCluesToSidebar: function() {
-      // Word-list crossword UI no longer uses a separate clues sidebar panel.
+      // Clues panel is rendered inline beside the word list in _renderVocabCrossword.
     },
 
     _renderCrosswordIntoDashboard: function(playSection, cwData, options) {
@@ -5904,7 +5903,7 @@
 
         var catMeta = { id: 'crossword', icon: 'grid_on', name: 'Crossword', color: '#10b981' };
         var color = catMeta.color;
-        var title = levelId + ' Crossword #' + (cwIndex + 1);
+        var title = 'Crossword #' + (cwIndex + 1);
 
         this._hideCrosswordLoading();
         var playSection = this._mountCrosswordPlayDashboard();
@@ -6260,6 +6259,27 @@
       var acrossWords = placed.filter(function(p) { return p.dir === 'across' && p.number; }).sort(function(a, b) { return a.number - b.number; });
       var downWords   = placed.filter(function(p) { return p.dir === 'down'   && p.number; }).sort(function(a, b) { return a.number - b.number; });
 
+      var cwTypeBadge = function(type) {
+        if (!type) return '';
+        var label = CW_TYPE_LABELS[type] || type;
+        return '<span class="vocab-cw-type-badge vocab-cw-type-' + self._escapeHTML(type) + '">' + label + '</span>';
+      };
+
+      var cwClueText = function(clue, solved) {
+        if (!clue) return '';
+        var sep = clue.indexOf(CW_CLUE_SEP);
+        if (sep !== -1) return solved ? clue : clue.slice(sep + CW_CLUE_SEP.length);
+        return clue;
+      };
+
+      var buildClue = function(p) {
+        return '<button type="button" class="vocab-cw-clue" data-dir="' + p.dir + '" data-num="' + p.number + '" data-r="' + p.row + '" data-c="' + p.col + '">' +
+          '<span class="vocab-cw-clue-num">' + p.number + (p.dir === 'across' ? 'A' : 'D') + '</span> ' +
+          '<span class="vocab-cw-clue-text">' + self._escapeHTML(cwClueText(p.clue || p.definition || '', false)) + '</span>' +
+          cwTypeBadge(p.type) +
+        '</button>';
+      };
+
       var buildWordRow = function(word) {
         var wordId = self._cwWordId(word);
         var cellsHtml = '';
@@ -6276,11 +6296,11 @@
 
       var lessonTitle = lessonData.title || lessonId || '';
       var isStandaloneCrossword = (typeof cwIndex !== 'undefined') || (lessonId && lessonId.indexOf('daily_') === 0);
-      var headerTitle = (isStandaloneCrossword && lessonTitle) ? lessonTitle : (levelId + ' Crossword');
+      var headerTitle = (isStandaloneCrossword && lessonTitle) ? lessonTitle : 'Crossword';
       var headerDetail = (!isStandaloneCrossword && lessonTitle) ? lessonTitle : '';
 
       mainEl.innerHTML =
-        '<div class="vocab-cw-header">' +
+        '<div class="vocab-cw-header vocab-cw-header--full">' +
           '<button class="vocab-cw-btn vocab-cw-back-btn" title="Back" aria-label="Back" onclick="BentoGrid._cwPlayBack()">' + _symbolButtonContent('arrow_back', 'Back') + '</button>' +
           '<div class="vocab-cw-header-title">' +
             '<span class="material-symbols-outlined vocab-cw-header-icon">grid_on</span>' +
@@ -6294,19 +6314,46 @@
             '<button class="vocab-cw-btn vocab-cw-reset-btn" id="cw-reset-btn" title="Reset" aria-label="Reset">' + _mi('refresh') + '<span>Reset</span></button>' +
           '</div>' +
         '</div>' +
-        '<div class="vocab-cw-play-area">' +
-          '<div class="vocab-cw-word-list" id="cw-word-list">' +
-            '<section class="vocab-cw-section">' +
-              '<h3 class="vocab-cw-section-title">Across</h3>' +
-              acrossWords.map(buildWordRow).join('') +
-            '</section>' +
-            '<section class="vocab-cw-section">' +
-              '<h3 class="vocab-cw-section-title">Down</h3>' +
-              downWords.map(buildWordRow).join('') +
-            '</section>' +
+        '<div class="vocab-cw-active-def vocab-cw-active-def--under-header" id="cw-active-def"><em>Click a word to begin</em></div>' +
+        '<div class="vocab-cw-body">' +
+          '<div class="vocab-cw-play-area">' +
+            '<div class="vocab-cw-strip-dir-row" role="toolbar" aria-label="Word direction">' +
+              '<button type="button" class="vocab-cw-strip-dir-btn vocab-cw-strip-dir-btn-active" id="cw-strip-tab-across" aria-label="Across words" title="Across">' +
+                '<span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>' +
+                '<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>' +
+                '<span class="vocab-cw-strip-dir-label">Across</span>' +
+              '</button>' +
+              '<button type="button" class="vocab-cw-strip-dir-btn" id="cw-strip-tab-down" aria-label="Down words" title="Down">' +
+                '<span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>' +
+                '<span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span>' +
+                '<span class="vocab-cw-strip-dir-label">Down</span>' +
+              '</button>' +
+            '</div>' +
+            '<div class="vocab-cw-word-list" id="cw-word-list" data-cw-words-dir="across">' +
+              '<section class="vocab-cw-section vocab-cw-section--across">' +
+                '<h3 class="vocab-cw-section-title">Across</h3>' +
+                acrossWords.map(buildWordRow).join('') +
+              '</section>' +
+              '<section class="vocab-cw-section vocab-cw-section--down">' +
+                '<h3 class="vocab-cw-section-title">Down</h3>' +
+                downWords.map(buildWordRow).join('') +
+              '</section>' +
+            '</div>' +
           '</div>' +
+          '<aside class="vocab-cw-clues vocab-cw-clues--play" id="cw-clues" aria-label="Clues">' +
+            '<h3 class="vocab-cw-clues-heading">Clues</h3>' +
+            '<div class="vocab-cw-clues-scroll">' +
+              '<div class="vocab-cw-clue-section-title">Across</div>' +
+              '<div class="vocab-cw-clue-section" id="cw-clues-across">' +
+                acrossWords.map(buildClue).join('') +
+              '</div>' +
+              '<div class="vocab-cw-clue-section-title">Down</div>' +
+              '<div class="vocab-cw-clue-section" id="cw-clues-down">' +
+                downWords.map(buildClue).join('') +
+              '</div>' +
+            '</div>' +
+          '</aside>' +
         '</div>' +
-        '<div class="vocab-cw-active-def" id="cw-active-def"><em>Click a word to begin</em></div>' +
         '<input type="text" id="cw-strip-input" class="vocab-cw-strip-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Crossword letter input" />';
 
       var cwState = {
@@ -6416,6 +6463,24 @@
       if (solveBtn) solveBtn.addEventListener('click', function() { FastExercises._cwSolveWord(); });
       var resetBtn = document.getElementById('cw-reset-btn');
       if (resetBtn) resetBtn.addEventListener('click', function() { FastExercises._cwReset(); });
+
+      var clueEls = document.querySelectorAll('.vocab-cw-clue');
+      for (var ci = 0; ci < clueEls.length; ci++) {
+        (function(clueEl) {
+          clueEl.addEventListener('click', function() {
+            var r2 = parseInt(clueEl.getAttribute('data-r'), 10);
+            var c2 = parseInt(clueEl.getAttribute('data-c'), 10);
+            var dir = clueEl.getAttribute('data-dir');
+            if (!isNaN(r2) && !isNaN(c2) && dir) FastExercises._cwSelectCell(r2, c2, dir);
+          });
+        })(clueEls[ci]);
+      }
+
+      FastExercises._cwShowClueTab('across');
+      var stripTabA = document.getElementById('cw-strip-tab-across');
+      var stripTabD = document.getElementById('cw-strip-tab-down');
+      if (stripTabA) stripTabA.addEventListener('click', function() { FastExercises._cwShowClueTab('across'); });
+      if (stripTabD) stripTabD.addEventListener('click', function() { FastExercises._cwShowClueTab('down'); });
     },
 
     _cwSelectWord: function(word, cellIndex, forceDir) {
@@ -6464,6 +6529,8 @@
       for (var ri = 0; ri < rowEls.length; ri++) rowEls[ri].classList.remove('active');
       var cellEls = document.querySelectorAll('.vocab-cw-cell');
       for (var i = 0; i < cellEls.length; i++) cellEls[i].classList.remove('vocab-cw-cell-active', 'vocab-cw-cell-word');
+      var clueEls = document.querySelectorAll('.vocab-cw-clue');
+      for (var ci = 0; ci < clueEls.length; ci++) clueEls[ci].classList.remove('vocab-cw-clue-active');
 
       var activeWord = null;
       for (var i = 0; i < wordsHere.length; i++) {
@@ -6492,6 +6559,13 @@
             state.activeStripPos = wordCells[si].index;
             break;
           }
+        }
+
+        FastExercises._cwShowClueTab(activeWord.dir);
+        var clueEl = document.querySelector('.vocab-cw-clue[data-dir="' + activeWord.dir + '"][data-num="' + activeWord.number + '"]');
+        if (clueEl) {
+          clueEl.classList.add('vocab-cw-clue-active');
+          clueEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         FastExercises._cwRefreshActiveDef();

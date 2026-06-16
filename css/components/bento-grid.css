@@ -1661,13 +1661,13 @@ margin-top: -2px;
     max-height: none;
   }
 
-  .dashboard-layout--crossword-scroll {
+  .dashboard-layout--crossword-scroll:not(.dashboard-layout--crossword-play) {
     padding-right: calc(var(--dashboard-right-sidebar-width) + 24px);
     padding-bottom: 48px;
   }
 
-  .dashboard-layout--crossword-scroll > .dashboard-right-sidebar,
-  .dashboard-layout--crossword-scroll > .dashboard-right-sidebar.dashboard-sidebar-shell {
+  .dashboard-layout--crossword-scroll:not(.dashboard-layout--crossword-play) > .dashboard-right-sidebar,
+  .dashboard-layout--crossword-scroll:not(.dashboard-layout--crossword-play) > .dashboard-right-sidebar.dashboard-sidebar-shell {
     position: fixed;
     right: 0;
     top: 0;
@@ -1678,6 +1678,16 @@ margin-top: -2px;
     background: #f7f7f7;
     padding-top: var(--dashboard-top-spacing, 28px);
     box-sizing: border-box;
+  }
+
+  .dashboard-layout--crossword-play {
+    grid-template-columns: minmax(0, 1fr);
+    padding-right: 24px;
+  }
+
+  .dashboard-center--crossword-play {
+    width: 100%;
+    max-width: none;
   }
 }
 
@@ -1702,27 +1712,6 @@ margin-top: -2px;
   margin-bottom: 28px;
 }
 
-.dashboard-layout--crossword-play .dashboard-right-sidebar--crossword {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  min-width: 0;
-}
-
-.dashboard-layout--crossword-play .vocab-cw-clues-host {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.dashboard-layout--crossword-play .vocab-cw-clues--in-sidebar {
-  flex: 1;
-  min-height: 0;
-  max-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 16px);
-  overflow-y: auto;
-}
-
 .dashboard-layout--crossword-play .vocab-cw-play-section {
   min-height: auto;
   height: auto;
@@ -1732,12 +1721,6 @@ margin-top: -2px;
 .dashboard-layout--crossword-play .vocab-cw-play-section .vocab-cw-main {
   min-height: auto;
   height: auto;
-}
-
-@media (max-width: 768px) {
-  .dashboard-layout--crossword-play .dashboard-right-sidebar--crossword {
-    display: none !important;
-  }
 }
 
 .cw-page-content,
