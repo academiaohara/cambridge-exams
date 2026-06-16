@@ -1225,6 +1225,7 @@ content: '';
 .sidebar-widget-duo {
   background: #fff;
   border: 2px solid #e5e5e5;
+  border-bottom: 4px solid #d0d0d0;
   border-radius: 16px;
   padding: 16px 18px;
   margin-bottom: 0;
@@ -1234,8 +1235,8 @@ content: '';
 }
 
 .sidebar-widget-duo:hover {
-  border-color: #d0d0d0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border-color: #c8c8c8;
+  border-bottom-color: #b8b8b8;
 }
 
 .sw-duo-header {
