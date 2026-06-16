@@ -1424,6 +1424,9 @@
 
   .dashboard-layout:not(.dashboard-layout--crossword-play):not(.dashboard-layout-right-closed) .dashboard-center {
     margin-left: 80px;
+    width: calc(100% - 80px);
+    max-width: calc(100% - 80px);
+    box-sizing: border-box;
   }
 
   .dashboard-layout:not(.dashboard-layout--crossword-play):not(.dashboard-layout-right-closed) > .dashboard-right-sidebar,
