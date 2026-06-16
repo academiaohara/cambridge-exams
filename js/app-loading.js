@@ -84,6 +84,11 @@
     _shownAt: null,
     _onHiddenCallback: null,
     _customMinMs: null,
+    _manual: false,
+
+    getMarkup: function () {
+      return buildLoadingMarkup();
+    },
 
     init: function () {
       this._shownAt = _pageStart;
@@ -101,6 +106,7 @@
       this._shownAt = Date.now();
       this._onHiddenCallback = typeof options.onHidden === 'function' ? options.onHidden : null;
       this._customMinMs = typeof options.minMs === 'number' ? options.minMs : null;
+      this._manual = options.manual === true;
 
       var el = document.getElementById('app-loading-screen');
       if (!el) {
@@ -117,10 +123,12 @@
       el.style.display = 'flex';
       document.body.classList.add('app-is-loading');
 
-      var self = this;
-      setTimeout(function () {
-        self.hide();
-      }, this._customMinMs || getMinLoadingMs());
+      if (!this._manual) {
+        var self = this;
+        setTimeout(function () {
+          self.hide();
+        }, this._customMinMs || getMinLoadingMs());
+      }
     },
 
     skipDelay: function () {
@@ -148,6 +156,7 @@
 
       this._hidden = true;
       this._customMinMs = null;
+      this._manual = false;
       el.classList.add('app-loading-screen--hiding');
 
       var callback = this._onHiddenCallback;
