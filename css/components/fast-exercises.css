@@ -5212,6 +5212,7 @@
   width: 100%;
   box-sizing: border-box;
   background: #f7f7f7;
+  padding-bottom: 4px;
 }
 
 /* Header */
@@ -5458,6 +5459,7 @@
 .vocab-cw-btn--duo .material-symbols-outlined {
   font-size: 1.2rem;
 }
+.vocab-cw-btn--duo.vocab-cw-grid-btn,
 .vocab-cw-btn--duo.vocab-cw-hint-btn,
 .vocab-cw-btn--duo.vocab-cw-solve-btn,
 .vocab-cw-btn--duo.vocab-cw-reset-btn {
@@ -5502,6 +5504,8 @@
   align-items: flex-start;
   min-width: 0;
   width: 100%;
+  margin-top: 20px;
+  scroll-margin-top: calc(var(--dashboard-top-spacing, 28px) + 180px);
 }
 
 /* Word list play area */
@@ -5545,6 +5549,7 @@
   border-radius: 20px;
   cursor: pointer;
   transition: background 0.15s ease;
+  scroll-margin-top: calc(var(--dashboard-top-spacing, 28px) + 180px);
 }
 
 .vocab-cw-word-row.active {
@@ -5797,6 +5802,108 @@
   font-size: 0.82rem;
   display: block;
   margin-top: 4px;
+}
+
+/* Full crossword grid modal */
+.vocab-cw-grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(15, 23, 42, 0.62);
+  backdrop-filter: blur(8px);
+}
+
+.vocab-cw-grid-modal {
+  width: min(96vw, 920px);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 24px 64px rgba(15, 23, 42, 0.28);
+  overflow: hidden;
+}
+
+.vocab-cw-grid-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.vocab-cw-grid-modal-title {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.vocab-cw-grid-modal-close {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: #f1f5f9;
+  color: #475569;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.vocab-cw-grid-modal-close .material-symbols-outlined {
+  font-size: 1.2rem;
+}
+
+.vocab-cw-grid-modal-body {
+  padding: 20px;
+  overflow: auto;
+}
+
+.vocab-cw-grid-board {
+  display: grid;
+  gap: 4px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.vocab-cw-grid-slot--empty {
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.vocab-cw-grid-board .vocab-cw-grid-slot:not(.vocab-cw-grid-slot--empty) {
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  border-radius: 10px;
+  box-shadow: 0 4px 0 #c6def8;
+  position: relative;
+  padding-top: 6px;
+}
+
+.vocab-cw-grid-cell-num {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1;
+  color: #64748b;
+  pointer-events: none;
 }
 
 /* Clues panel */
@@ -6235,6 +6342,7 @@
   .vocab-cw-body {
     flex-direction: column;
     gap: 14px;
+    margin-top: 16px;
   }
   .vocab-cw-play-area {
     flex: 1 1 auto;
@@ -6327,6 +6435,12 @@
   .vocab-cw-wordle-actions .vocab-cw-btn {
     justify-content: center;
     padding: 8px 12px;
+  }
+  .vocab-cw-grid-board .vocab-cw-grid-slot:not(.vocab-cw-grid-slot--empty),
+  .vocab-cw-grid-slot--empty {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
   }
 }
 @media (max-width: 420px) {
