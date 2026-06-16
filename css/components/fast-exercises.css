@@ -5201,6 +5201,19 @@
   background: #f7f7f7;
 }
 
+/* Sticky header + active definition while scrolling play page */
+.vocab-cw-play-sticky-top {
+  position: sticky;
+  top: var(--dashboard-top-spacing, 28px);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  background: #f7f7f7;
+}
+
 /* Header */
 .vocab-cw-header {
   display: flex;
@@ -5802,9 +5815,7 @@
   box-sizing: border-box;
 }
 .vocab-cw-clues--play {
-  position: sticky;
-  top: 12px;
-  max-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 48px);
+  align-self: flex-start;
 }
 #cw-clues[data-cw-clues-dir="across"] .vocab-cw-clue-section--down,
 #cw-clues[data-cw-clues-dir="down"] .vocab-cw-clue-section--across {
@@ -5823,13 +5834,9 @@
   color: #a855f7;
 }
 .vocab-cw-clues-scroll {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  scrollbar-width: thin;
 }
 .vocab-cw-clues-panel {
   display: flex;
