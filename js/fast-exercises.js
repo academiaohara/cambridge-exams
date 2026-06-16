@@ -1125,14 +1125,7 @@
         }
       }
 
-      // All complete - offer next level
-      var nextLevelIdx = -1;
-      for (var i = 0; i < data.levels.length; i++) {
-        if (data.levels[i].id === levelId) { nextLevelIdx = i + 1; break; }
-      }
-      if (nextLevelIdx >= 0 && nextLevelIdx < data.levels.length) {
-        this._switchLevel(categoryId, data.levels[nextLevelIdx].id);
-      }
+      // All complete - stay on current level; user must switch manually
     },
 
     // ── QUICK REVIEW ─────────────────────────────────────────────────────
