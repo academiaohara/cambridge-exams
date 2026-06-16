@@ -6316,11 +6316,21 @@
         '<div class="vocab-cw-header vocab-cw-header--full vocab-cw-header--duo vocab-cw-header--lvl-' + self._escapeHTML(levelId.toLowerCase()) + '">' +
           '<button class="vocab-cw-back-btn vocab-cw-back-btn--duo" title="Back" aria-label="Back" onclick="BentoGrid._cwPlayBack()">' + _symbolButtonContent('arrow_back', 'Back') + '</button>' +
           '<div class="vocab-cw-header-title">' +
-            '<div class="vocab-cw-header-kicker">Crossword · ' + self._escapeHTML(levelId) + '</div>' +
+            '<div class="vocab-cw-header-kicker">' + self._escapeHTML(levelId) + '</div>' +
             '<div class="vocab-cw-header-text">' + self._escapeHTML(headerTitle) + '</div>' +
             (headerDetail ? '<div class="vocab-cw-header-lesson">' + self._escapeHTML(headerDetail) + '</div>' : '') +
           '</div>' +
           '<div class="vocab-cw-header-btns">' +
+            '<div class="vocab-cw-header-dir-row" role="toolbar" aria-label="Word direction">' +
+              '<button type="button" class="vocab-cw-strip-dir-btn vocab-cw-strip-dir-btn--header vocab-cw-strip-dir-btn-active" id="cw-strip-tab-across" aria-label="Across words" title="Across">' +
+                '<span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>' +
+                '<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>' +
+              '</button>' +
+              '<button type="button" class="vocab-cw-strip-dir-btn vocab-cw-strip-dir-btn--header" id="cw-strip-tab-down" aria-label="Down words" title="Down">' +
+                '<span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>' +
+                '<span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span>' +
+              '</button>' +
+            '</div>' +
             '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-hint-btn" id="cw-hint-btn" title="Hint" aria-label="Hint">' + _mi('lightbulb') + '</button>' +
             '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-solve-btn" id="cw-solve-btn" title="Solve" aria-label="Solve">' + _mi('auto_fix') + '</button>' +
             '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-reset-btn" id="cw-reset-btn" title="Reset" aria-label="Reset">' + _mi('refresh') + '</button>' +
@@ -6329,16 +6339,6 @@
         '<div class="vocab-cw-active-def vocab-cw-active-def--under-header" id="cw-active-def"><em>Click a word to begin</em></div>' +
         '<div class="vocab-cw-body">' +
           '<div class="vocab-cw-play-area">' +
-            '<div class="vocab-cw-strip-dir-row" role="toolbar" aria-label="Word direction">' +
-              '<button type="button" class="vocab-cw-strip-dir-btn vocab-cw-strip-dir-btn-active" id="cw-strip-tab-across" aria-label="Across words" title="Across">' +
-                '<span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>' +
-                '<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>' +
-              '</button>' +
-              '<button type="button" class="vocab-cw-strip-dir-btn" id="cw-strip-tab-down" aria-label="Down words" title="Down">' +
-                '<span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>' +
-                '<span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span>' +
-              '</button>' +
-            '</div>' +
             '<div class="vocab-cw-word-list" id="cw-word-list" data-cw-words-dir="across">' +
               '<section class="vocab-cw-section vocab-cw-section--across">' +
                 '<h3 class="vocab-cw-section-title">Across</h3>' +
