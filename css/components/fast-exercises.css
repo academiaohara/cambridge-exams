@@ -5580,7 +5580,9 @@
 .vocab-cw-word-number {
   width: 38px;
   height: 38px;
-  border-radius: 999px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 50%;
   border: none;
   background: #dbeafe;
   color: #1d4ed8;
@@ -6401,6 +6403,9 @@
 
 /* Mobile responsive */
 @media (max-width: 700px) {
+  #cw-grid-btn {
+    display: none !important;
+  }
   #cw-strip-cells {
     display: none !important;
   }
@@ -6412,7 +6417,7 @@
     padding-bottom: 4px;
   }
   .vocab-cw-main {
-    padding: 10px;
+    padding: 10px 12px;
     padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 96px);
     box-sizing: border-box;
     gap: 12px;
@@ -6421,6 +6426,7 @@
     flex-direction: column;
     gap: 14px;
     margin-top: 16px;
+    align-items: center;
   }
   .vocab-cw-grid-body {
     flex: 1 1 auto;
@@ -6429,6 +6435,58 @@
   .vocab-cw-play-area {
     flex: 1 1 auto;
     width: 100%;
+    align-items: center;
+  }
+  .vocab-cw-word-list {
+    width: 100%;
+    max-width: 100%;
+  }
+  .vocab-cw-section {
+    width: 100%;
+    align-items: center;
+  }
+  .vocab-cw-word-row {
+    width: 100%;
+    max-width: 100%;
+    padding: 8px 2px;
+    gap: 6px;
+    box-sizing: border-box;
+  }
+  .vocab-cw-word-number {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+    border-radius: 50%;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .vocab-cw-cells {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 4px;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+  }
+  .vocab-cw-cell {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    height: auto;
+    aspect-ratio: 1;
+    max-height: 36px;
+    font-size: clamp(11px, calc((100vw - 108px) / var(--cw-cells, 8) * 0.58), 18px);
+    border-radius: 8px;
+    box-shadow: 0 3px 0 #c6def8;
+  }
+  .vocab-cw-word-clear-btn {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+    border-radius: 8px;
+    box-shadow: 0 2px 0 #d1d5db;
+    flex-shrink: 0;
   }
   .vocab-cw-strip-dir-row {
     max-width: 200px;
@@ -6440,34 +6498,15 @@
     min-height: 44px;
     padding: 8px 10px;
   }
-  .vocab-cw-word-row {
-    padding: 10px;
-    gap: 10px;
-  }
-  .vocab-cw-word-clear-btn {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    box-shadow: 0 3px 0 #d1d5db;
-  }
-  .vocab-cw-cell {
-    width: 38px;
-    height: 38px;
-    font-size: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 0 #c6def8;
-  }
-  .vocab-cw-word-number {
-    width: 34px;
-    height: 34px;
-    font-size: 15px;
-  }
   .vocab-cw-section-title {
     font-size: 16px;
+    text-align: center;
+    width: 100%;
   }
   .vocab-cw-active-def {
     padding: 12px 14px;
     border-radius: 14px;
+    text-align: center;
   }
   .vocab-cw-active-def-line {
     font-size: 15px;
@@ -6484,18 +6523,36 @@
   }
   .vocab-cw-header--duo {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 12px;
+    position: relative;
     align-items: center;
     padding: 14px 14px 16px;
+    text-align: center;
   }
-  .vocab-cw-header-title { gap: 2px; }
+  .vocab-cw-back-btn--duo {
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    z-index: 1;
+  }
+  .vocab-cw-header-title {
+    grid-row: 1;
+    align-items: center;
+    text-align: center;
+    padding: 0 48px;
+    box-sizing: border-box;
+    gap: 2px;
+  }
   .vocab-cw-header-text { font-size: 1.1rem; }
   .vocab-cw-header-lesson { font-size: 0.8rem; }
   .vocab-cw-header-btns {
-    grid-column: 1 / -1;
+    grid-row: 2;
+    grid-column: 1;
     width: 100%;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 6px;
   }
   .vocab-cw-dir-toggle {
@@ -6537,9 +6594,8 @@
     padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 88px);
   }
   .vocab-cw-cell {
-    width: 34px;
-    height: 34px;
-    font-size: 18px;
+    max-height: 32px;
+    font-size: clamp(10px, calc((100vw - 100px) / var(--cw-cells, 8) * 0.55), 16px);
   }
   .vocab-cw-wordle-box { font-size: 0.9rem; }
 }

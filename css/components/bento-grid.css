@@ -1657,6 +1657,19 @@ margin-top: -2px;
   overflow: visible;
 }
 
+@media (max-width: 768px) {
+  .dashboard-center--crossword,
+  .dashboard-center--crossword-play {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .dashboard-center--crossword .mobile-nav-top-bar {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 @media (min-width: 769px) {
   .dashboard-center--crossword {
     max-height: none;
@@ -1723,8 +1736,9 @@ margin-top: -2px;
   flex: none;
   min-height: auto;
   overflow: visible;
-  padding-right: 4px;
   padding-bottom: 32px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .cw-section-header {
@@ -1803,7 +1817,7 @@ margin-top: -2px;
 .cw-path-map {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   gap: 28px;
   width: 100%;
   padding: 0 0 48px;
@@ -1855,6 +1869,11 @@ margin-top: -2px;
   letter-spacing: -0.03em;
   line-height: 1;
   pointer-events: none;
+  width: 92%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .cw-path-cell--current:not(.cw-path-cell--done) {
@@ -2406,26 +2425,45 @@ margin-top: -2px;
   }
 
   .cw-path-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 8px;
-  }
-}
-
-@media (max-width: 600px) {
-  .cw-path-grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
   }
 
   .cw-path-cell-num {
-    font-size: clamp(0.72rem, 3.2vw, 0.9rem);
+    font-size: clamp(0.5rem, 2.6vw, 0.78rem);
+    width: 96%;
   }
-}
 
-@media (max-width: 400px) {
-  .cw-path-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
+  .cw-section-header {
+    position: relative;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cw-section-back {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .cw-section-header-text {
+    width: 100%;
+    padding: 0 52px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .cw-list-page,
+  .cw-level-cards {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cw-path-next-level {
+    align-self: center;
   }
 }
 
@@ -2772,7 +2810,8 @@ margin-top: -2px;
 @media (max-width: 600px) {
   .cw-daily-banner {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 12px;
   }
 

@@ -5773,6 +5773,7 @@
     },
 
     _cwToggleViewMode: function() {
+      if (window.matchMedia('(max-width: 700px)').matches) return;
       FastExercises._cwSetViewMode(FastExercises._cwGetViewMode() === 'grid' ? 'list' : 'grid');
     },
 
@@ -6457,7 +6458,7 @@
           var cell = cells[ci];
           cellsHtml += '<button type="button" class="vocab-cw-cell" data-r="' + cell.row + '" data-c="' + cell.col + '" data-cell-key="' + cell.cellKey + '" data-word-id="' + wordId + '" data-index="' + cell.index + '" id="cw-cell-' + cell.row + '-' + cell.col + '-' + wordId + '" aria-label="Letter ' + (cell.index + 1) + ' of word ' + word.number + '"></button>';
         }
-        return '<div class="vocab-cw-word-row" data-word-id="' + wordId + '" data-dir="' + word.dir + '" data-r="' + word.row + '" data-c="' + word.col + '">' +
+        return '<div class="vocab-cw-word-row" data-word-id="' + wordId + '" data-dir="' + word.dir + '" data-r="' + word.row + '" data-c="' + word.col + '" style="--cw-cells:' + cells.length + '">' +
           '<button type="button" class="vocab-cw-word-number" data-word-id="' + wordId + '" aria-label="Select word ' + word.number + '">' + word.number + '</button>' +
           '<div class="vocab-cw-cells">' + cellsHtml + '</div>' +
           '<button type="button" class="vocab-cw-word-clear-btn" data-word-id="' + wordId + '" aria-label="Clear incorrect letters" title="Clear incorrect">' +
@@ -6545,6 +6546,9 @@
       };
       window._cwState = cwState;
       FastExercises._cwMountInlineGrid();
+      if (window.matchMedia('(max-width: 700px)').matches) {
+        FastExercises._cwSetViewMode('list');
+      }
 
       // Restore previously saved cell state so the user can continue where they left off
       if (savedState && savedState.cellState && typeof savedState.cellState === 'object') {
