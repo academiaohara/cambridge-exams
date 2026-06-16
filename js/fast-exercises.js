@@ -5812,6 +5812,13 @@
       return !!(state.lockedCells[key] || state.revealedCells[key] || state.checkedCells[key] === 'correct');
     },
 
+    _cwShouldHighlightActive: function(state, key) {
+      if (!state || !key) return false;
+      if (state.lockedCells[key] || state.revealedCells[key]) return false;
+      if (state.checkedCells[key] === 'correct' || state.checkedCells[key] === 'incorrect') return false;
+      return true;
+    },
+
     _cwWordId: function(word) {
       return word.dir + '_' + word.number;
     },
@@ -6762,7 +6769,9 @@
       var allCellEls = document.querySelectorAll('.vocab-cw-cell, .vocab-cw-grid-slot:not(.vocab-cw-grid-slot--empty)');
       for (var i = 0; i < allCellEls.length; i++) allCellEls[i].classList.remove('vocab-cw-cell-active');
       var activeCellEls = document.querySelectorAll('.vocab-cw-cell[data-cell-key="' + cellKey + '"], .vocab-cw-grid-slot[data-cell-key="' + cellKey + '"]');
-      for (var j = 0; j < activeCellEls.length; j++) activeCellEls[j].classList.add('vocab-cw-cell-active');
+      if (FastExercises._cwShouldHighlightActive(state, cellKey)) {
+        for (var j = 0; j < activeCellEls.length; j++) activeCellEls[j].classList.add('vocab-cw-cell-active');
+      }
       if (FastExercises._cwGetViewMode() === 'grid' && activeCellEls.length) {
         activeCellEls[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
