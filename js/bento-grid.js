@@ -860,12 +860,12 @@
 
     _cwLevelMeta: function() {
       return {
-        'A2':  { label: 'A2',   difficulty: 'Easy',   iconColor: '#10b981', headerColor: '#1cb0f6', icon: 'star' },
-        'B1':  { label: 'B1',   difficulty: 'Easy',   iconColor: '#3b82f6', headerColor: '#58cc02', icon: 'star' },
-        'B2':  { label: 'B2',   difficulty: 'Medium', iconColor: '#f59e0b', headerColor: '#ff9600', icon: 'star' },
-        'C1':  { label: 'C1',   difficulty: 'Hard',   iconColor: '#f97316', headerColor: '#ff4b4b', icon: 'star' },
-        'C2':  { label: 'C2',   difficulty: 'Expert', iconColor: '#ef4444', headerColor: '#ea2b2b', icon: 'star' },
-        'mix': { label: 'Mix',  difficulty: 'Mixed',  iconColor: '#1d4ed8', headerColor: '#ce82ff', icon: 'shuffle' }
+        'A2':  { label: 'A2',   difficulty: 'Easy',          iconColor: '#059669', headerColor: '#10b981', cardBg: '#ecfdf5', cardBorder: '#6ee7b7', cardText: '#064e3b', icon: 'star' },
+        'B1':  { label: 'B1',   difficulty: 'Pre-Intermediate', iconColor: '#2563eb', headerColor: '#3b82f6', cardBg: '#eff6ff', cardBorder: '#93c5fd', cardText: '#1e3a8a', icon: 'star' },
+        'B2':  { label: 'B2',   difficulty: 'Intermediate',  iconColor: '#d97706', headerColor: '#f59e0b', cardBg: '#fffbeb', cardBorder: '#fcd34d', cardText: '#78350f', icon: 'star' },
+        'C1':  { label: 'C1',   difficulty: 'Advanced',      iconColor: '#dc2626', headerColor: '#ef4444', cardBg: '#fff1f2', cardBorder: '#fca5a5', cardText: '#7f1d1d', icon: 'star' },
+        'C2':  { label: 'C2',   difficulty: 'Expert',        iconColor: '#7c3aed', headerColor: '#8b5cf6', cardBg: '#f5f3ff', cardBorder: '#c4b5fd', cardText: '#4c1d95', icon: 'star' },
+        'mix': { label: 'Mix',  difficulty: 'Mixed',         iconColor: '#0369a1', headerColor: '#0ea5e9', cardBg: '#f0f9ff', cardBorder: '#7dd3fc', cardText: '#0c4a6e', icon: 'shuffle' }
       };
     },
 
@@ -946,7 +946,9 @@
         var statusClass = completed > 0 ? 'mode-card-status-done' : '';
         var badge = completed > 0 ? completed + '' : '';
 
-        html += '<div class="mode-card" onclick="BentoGrid.openCrosswordList(null, \'' + lvl + '\')" role="button" tabindex="0">' +
+        html += '<div class="mode-card mode-card--cw-level" data-cw-level="' + lvl.toLowerCase() + '"' +
+          ' style="--cw-card-bg:' + meta.cardBg + ';--cw-card-border:' + meta.cardBorder + ';--cw-card-text:' + meta.cardText + ';--cw-icon-color:' + meta.iconColor + '"' +
+          ' onclick="BentoGrid.openCrosswordList(null, \'' + lvl + '\')" role="button" tabindex="0">' +
           '<div class="mode-card-body">' +
             '<div class="mode-card-title-row">' +
               '<span class="mode-card-title">' + self._escapeHTML(meta.label) + '</span>' +
@@ -1038,7 +1040,13 @@
       if (nextLevel) trackHeight += 120;
       var svgPath = this._buildCwPathSvgD(points);
 
-      var html = '<div class="cw-path-map" data-level="' + levelId + '" style="--cw-header-color:' + meta.headerColor + '">';
+      var html = '<div class="cw-path-map" data-level="' + levelId + '" style="' +
+        '--cw-header-color:' + meta.headerColor + ';' +
+        '--cw-icon-color:' + meta.iconColor + ';' +
+        '--cw-card-bg:' + meta.cardBg + ';' +
+        '--cw-card-border:' + meta.cardBorder + ';' +
+        '--cw-card-text:' + meta.cardText +
+        '">';
       html += '<div class="cw-path-track" style="height:' + trackHeight + 'px">';
       if (svgPath) {
         html += '<svg class="cw-path-svg" viewBox="0 0 ' + layout.trackWidth + ' ' + trackHeight + '" preserveAspectRatio="xMidYMin meet" aria-hidden="true">';
