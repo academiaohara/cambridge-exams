@@ -5793,7 +5793,113 @@
     },
 
     _cwIsMobilePlay: function() {
-      return !!(window.matchMedia && window.matchMedia('(max-width: 700px)').matches);
+      if (!window.matchMedia) return false;
+      return window.matchMedia('(max-width: 700px)').matches ||
+        window.matchMedia('(max-height: 520px) and (orientation: landscape) and (max-width: 1024px)').matches;
+    },
+
+    _cwEnsureMobileDock: function() {
+      var dock = document.getElementById('cw-mobile-dock');
+      if (dock) return dock;
+      dock = document.createElement('div');
+      dock.id = 'cw-mobile-dock';
+      dock.className = 'vocab-cw-mobile-dock';
+      var mainEl = document.getElementById('vocab-cw-main');
+      if (mainEl) mainEl.appendChild(dock);
+      return dock;
+    },
+
+    _cwGetWordsInDir: function(dir) {
+      var state = window._cwState;
+      if (!state || !state.cwData || !state.cwData.placed) return [];
+      var normalized = dir === 'down' ? 'down' : 'across';
+      var words = state.cwData.placed.filter(function(p) { return p.dir === normalized; });
+      words.sort(function(a, b) { return a.number - b.number; });
+      return words;
+    },
+
+    _cwNavigateWord: function(delta) {
+      var state = window._cwState;
+      if (!state || !state.activeWord) return;
+      var words = FastExercises._cwGetWordsInDir(state.activeWord.dir);
+      var idx = -1;
+      for (var i = 0; i < words.length; i++) {
+        if (words[i].number === state.activeWord.number && words[i].dir === state.activeWord.dir) {
+          idx = i;
+          break;
+        }
+      }
+      var nextIdx = idx + delta;
+      if (nextIdx >= 0 && nextIdx < words.length) {
+        FastExercises._cwSelectWord(words[nextIdx], 0);
+      }
+    },
+
+    _cwEnsureMobileWordNav: function() {
+      var nav = document.getElementById('cw-mobile-word-nav');
+      if (nav) return nav;
+      nav = document.createElement('div');
+      nav.id = 'cw-mobile-word-nav';
+      nav.className = 'vocab-cw-mobile-word-nav';
+      nav.innerHTML =
+        '<button type="button" class="vocab-cw-word-nav-btn" id="cw-word-prev" aria-label="Previous word">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>' +
+        '</button>' +
+        '<span class="vocab-cw-word-nav-label" id="cw-word-nav-label"></span>' +
+        '<button type="button" class="vocab-cw-word-nav-btn" id="cw-word-next" aria-label="Next word">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>' +
+        '</button>';
+      nav.querySelector('#cw-word-prev').addEventListener('click', function(e) {
+        e.preventDefault();
+        FastExercises._cwNavigateWord(-1);
+      });
+      nav.querySelector('#cw-word-next').addEventListener('click', function(e) {
+        e.preventDefault();
+        FastExercises._cwNavigateWord(1);
+      });
+      return nav;
+    },
+
+    _cwSyncMobileWordNav: function() {
+      var nav = document.getElementById('cw-mobile-word-nav');
+      var label = document.getElementById('cw-word-nav-label');
+      var state = window._cwState;
+      if (!nav || !label || !state || !state.activeWord) return;
+      var words = FastExercises._cwGetWordsInDir(state.activeWord.dir);
+      var idx = -1;
+      for (var i = 0; i < words.length; i++) {
+        if (words[i].number === state.activeWord.number) { idx = i; break; }
+      }
+      var dirLabel = state.activeWord.dir === 'down' ? 'Down' : 'Across';
+      label.textContent = state.activeWord.number + ' ' + dirLabel + ' · ' + (idx + 1) + '/' + words.length;
+      var prevBtn = document.getElementById('cw-word-prev');
+      var nextBtn = document.getElementById('cw-word-next');
+      if (prevBtn) prevBtn.disabled = idx <= 0;
+      if (nextBtn) nextBtn.disabled = idx < 0 || idx >= words.length - 1;
+    },
+
+    _cwBindMobileResize: function() {
+      if (FastExercises._cwResizeBound) return;
+      FastExercises._cwResizeBound = true;
+      var onResize = function() {
+        if (!window._cwState) return;
+        var stripInput = document.getElementById('cw-strip-input');
+        if (stripInput) {
+          if (FastExercises._cwIsMobilePlay()) {
+            stripInput.setAttribute('readonly', 'readonly');
+            stripInput.setAttribute('inputmode', 'none');
+          } else {
+            stripInput.removeAttribute('readonly');
+            stripInput.removeAttribute('inputmode');
+          }
+        }
+        if (FastExercises._cwIsMobilePlay()) {
+          FastExercises._cwSetViewMode('list');
+        }
+        FastExercises._cwSyncMobilePanel();
+      };
+      window.addEventListener('resize', onResize);
+      window.addEventListener('orientationchange', onResize);
     },
 
     _cwFocusCwInput: function() {
@@ -5843,16 +5949,36 @@
     _cwSyncMobilePanel: function() {
       var defEl = document.getElementById('cw-active-def');
       var stickyTop = document.querySelector('.vocab-cw-play-sticky-top');
+      var mainEl = document.getElementById('vocab-cw-main');
       var kb = document.getElementById('cw-mobile-keyboard');
+      var dock = document.getElementById('cw-mobile-dock');
+      var wordNav = document.getElementById('cw-mobile-word-nav');
+      var dirToggle = document.getElementById('cw-dir-toggle');
+      var headerBtns = document.querySelector('.vocab-cw-header-btns');
+
       if (kb) kb.remove();
+      if (wordNav) wordNav.remove();
+      if (dock) {
+        if (dirToggle && dock.contains(dirToggle)) {
+          dock.removeChild(dirToggle);
+        }
+        dock.remove();
+      }
 
       if (!FastExercises._cwIsMobilePlay()) {
+        if (mainEl) mainEl.classList.remove('vocab-cw-main--mobile-play');
         if (defEl) {
           defEl.classList.remove('vocab-cw-active-def--inline');
           if (stickyTop && !stickyTop.contains(defEl)) stickyTop.appendChild(defEl);
         }
+        if (dirToggle && headerBtns && !headerBtns.contains(dirToggle)) {
+          headerBtns.insertBefore(dirToggle, headerBtns.firstChild);
+        }
         return;
       }
+
+      if (mainEl) mainEl.classList.add('vocab-cw-main--mobile-play');
+      dock = FastExercises._cwEnsureMobileDock();
 
       var state = window._cwState;
       if (!state || !state.activeWord || !defEl) {
@@ -5860,16 +5986,30 @@
           defEl.classList.remove('vocab-cw-active-def--inline');
           if (stickyTop && !stickyTop.contains(defEl)) stickyTop.appendChild(defEl);
         }
+        kb = FastExercises._cwEnsureMobileKeyboard();
+        dock.appendChild(kb);
+        if (dirToggle) dock.appendChild(dirToggle);
         return;
       }
 
       var activeRow = document.querySelector('.vocab-cw-word-row.active');
-      if (!activeRow) return;
+      if (!activeRow) {
+        kb = FastExercises._cwEnsureMobileKeyboard();
+        dock.appendChild(kb);
+        if (dirToggle) dock.appendChild(dirToggle);
+        return;
+      }
 
       defEl.classList.add('vocab-cw-active-def--inline');
       activeRow.parentNode.insertBefore(defEl, activeRow);
+
+      wordNav = FastExercises._cwEnsureMobileWordNav();
+      activeRow.parentNode.insertBefore(wordNav, activeRow);
+      FastExercises._cwSyncMobileWordNav();
+
       kb = FastExercises._cwEnsureMobileKeyboard();
-      activeRow.insertAdjacentElement('afterend', kb);
+      dock.appendChild(kb);
+      if (dirToggle) dock.appendChild(dirToggle);
     },
 
     _cwSetViewMode: function(mode) {
@@ -5889,7 +6029,7 @@
     },
 
     _cwToggleViewMode: function() {
-      if (window.matchMedia('(max-width: 700px)').matches) return;
+      if (FastExercises._cwIsMobilePlay()) return;
       FastExercises._cwSetViewMode(FastExercises._cwGetViewMode() === 'grid' ? 'list' : 'grid');
     },
 
@@ -5921,6 +6061,21 @@
       if (tabD) {
         tabD.classList.toggle('vocab-cw-dir-toggle-btn-active', normalized === 'down');
         tabD.setAttribute('aria-selected', normalized === 'down' ? 'true' : 'false');
+      }
+
+      if (FastExercises._cwIsMobilePlay()) {
+        var state = window._cwState;
+        if (state) {
+          var wordsInDir = FastExercises._cwGetWordsInDir(normalized);
+          if (wordsInDir.length) {
+            var currentInDir = state.activeWord && state.activeWord.dir === normalized;
+            if (!currentInDir) {
+              FastExercises._cwSelectWord(wordsInDir[0], 0, normalized);
+              return;
+            }
+          }
+        }
+        FastExercises._cwSyncMobilePanel();
       }
     },
 
@@ -6575,7 +6730,7 @@
           cellsHtml += '<button type="button" class="vocab-cw-cell" data-r="' + cell.row + '" data-c="' + cell.col + '" data-cell-key="' + cell.cellKey + '" data-word-id="' + wordId + '" data-index="' + cell.index + '" id="cw-cell-' + cell.row + '-' + cell.col + '-' + wordId + '" aria-label="Letter ' + (cell.index + 1) + ' of word ' + word.number + '"></button>';
         }
         var cellSlots = cells.length;
-        if (window.matchMedia && window.matchMedia('(max-width: 700px)').matches) cellSlots = 12;
+        if (FastExercises._cwIsMobilePlay()) cellSlots = 12;
         return '<div class="vocab-cw-word-row" data-word-id="' + wordId + '" data-dir="' + word.dir + '" data-r="' + word.row + '" data-c="' + word.col + '" style="--cw-cells:' + cellSlots + '">' +
           '<button type="button" class="vocab-cw-word-number" data-word-id="' + wordId + '" aria-label="Select word ' + word.number + '">' + word.number + '</button>' +
           '<div class="vocab-cw-cells">' + cellsHtml + '</div>' +
@@ -6664,7 +6819,7 @@
       };
       window._cwState = cwState;
       FastExercises._cwMountInlineGrid();
-      if (window.matchMedia('(max-width: 700px)').matches) {
+      if (FastExercises._cwIsMobilePlay()) {
         FastExercises._cwSetViewMode('list');
       }
 
@@ -6789,6 +6944,16 @@
       var stripTabD = document.getElementById('cw-strip-tab-down');
       if (stripTabA) stripTabA.addEventListener('click', function() { FastExercises._cwShowClueTab('across'); });
       if (stripTabD) stripTabD.addEventListener('click', function() { FastExercises._cwShowClueTab('down'); });
+
+      FastExercises._cwBindMobileResize();
+      if (FastExercises._cwIsMobilePlay()) {
+        var firstAcross = FastExercises._cwGetWordsInDir('across');
+        if (firstAcross.length) {
+          FastExercises._cwSelectWord(firstAcross[0], 0);
+        } else {
+          FastExercises._cwSyncMobilePanel();
+        }
+      }
     },
 
     _cwSelectWord: function(word, cellIndex, forceDir) {
