@@ -5768,6 +5768,86 @@
       return body.getAttribute('data-cw-view') === 'grid' ? 'grid' : 'list';
     },
 
+    _cwIsMobilePlay: function() {
+      return !!(window.matchMedia && window.matchMedia('(max-width: 700px)').matches);
+    },
+
+    _cwFocusCwInput: function() {
+      if (FastExercises._cwIsMobilePlay()) return;
+      var stripInput = document.getElementById('cw-strip-input');
+      if (stripInput) stripInput.focus();
+    },
+
+    _cwEnsureMobileKeyboard: function() {
+      var kb = document.getElementById('cw-mobile-keyboard');
+      if (kb) return kb;
+      var rows = [
+        ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+        ['BACKSPACE', 'Z', 'X', 'C', 'V', 'B', 'N', 'M']
+      ];
+      var html = '';
+      for (var ri = 0; ri < rows.length; ri++) {
+        html += '<div class="vocab-cw-mobile-keyboard-row">';
+        for (var ki = 0; ki < rows[ri].length; ki++) {
+          var key = rows[ri][ki];
+          if (key === 'BACKSPACE') {
+            html += '<button type="button" class="vocab-cw-mobile-key vocab-cw-mobile-key--wide" data-key="Backspace" aria-label="Backspace">' +
+              '<span class="material-symbols-outlined" aria-hidden="true">backspace</span>' +
+            '</button>';
+          } else {
+            html += '<button type="button" class="vocab-cw-mobile-key" data-key="' + key + '" aria-label="' + key + '">' + key + '</button>';
+          }
+        }
+        html += '</div>';
+      }
+      kb = document.createElement('div');
+      kb.id = 'cw-mobile-keyboard';
+      kb.className = 'vocab-cw-mobile-keyboard';
+      kb.setAttribute('role', 'group');
+      kb.setAttribute('aria-label', 'Letter keyboard');
+      kb.innerHTML = html;
+      kb.addEventListener('click', function(e) {
+        var keyBtn = e.target.closest('[data-key]');
+        if (!keyBtn) return;
+        e.preventDefault();
+        FastExercises._cwKeyHandler({ key: keyBtn.getAttribute('data-key'), preventDefault: function() {} });
+      });
+      return kb;
+    },
+
+    _cwSyncMobilePanel: function() {
+      var defEl = document.getElementById('cw-active-def');
+      var stickyTop = document.querySelector('.vocab-cw-play-sticky-top');
+      var kb = document.getElementById('cw-mobile-keyboard');
+      if (kb) kb.remove();
+
+      if (!FastExercises._cwIsMobilePlay()) {
+        if (defEl) {
+          defEl.classList.remove('vocab-cw-active-def--inline');
+          if (stickyTop && !stickyTop.contains(defEl)) stickyTop.appendChild(defEl);
+        }
+        return;
+      }
+
+      var state = window._cwState;
+      if (!state || !state.activeWord || !defEl) {
+        if (defEl) {
+          defEl.classList.remove('vocab-cw-active-def--inline');
+          if (stickyTop && !stickyTop.contains(defEl)) stickyTop.appendChild(defEl);
+        }
+        return;
+      }
+
+      var activeRow = document.querySelector('.vocab-cw-word-row.active');
+      if (!activeRow) return;
+
+      defEl.classList.add('vocab-cw-active-def--inline');
+      activeRow.parentNode.insertBefore(defEl, activeRow);
+      kb = FastExercises._cwEnsureMobileKeyboard();
+      activeRow.insertAdjacentElement('afterend', kb);
+    },
+
     _cwSetViewMode: function(mode) {
       var normalized = mode === 'grid' ? 'grid' : 'list';
       var body = document.querySelector('.vocab-cw-body');
@@ -6470,7 +6550,9 @@
           var cell = cells[ci];
           cellsHtml += '<button type="button" class="vocab-cw-cell" data-r="' + cell.row + '" data-c="' + cell.col + '" data-cell-key="' + cell.cellKey + '" data-word-id="' + wordId + '" data-index="' + cell.index + '" id="cw-cell-' + cell.row + '-' + cell.col + '-' + wordId + '" aria-label="Letter ' + (cell.index + 1) + ' of word ' + word.number + '"></button>';
         }
-        return '<div class="vocab-cw-word-row" data-word-id="' + wordId + '" data-dir="' + word.dir + '" data-r="' + word.row + '" data-c="' + word.col + '" style="--cw-cells:' + cells.length + '">' +
+        var cellSlots = cells.length;
+        if (window.matchMedia && window.matchMedia('(max-width: 700px)').matches) cellSlots = 14;
+        return '<div class="vocab-cw-word-row" data-word-id="' + wordId + '" data-dir="' + word.dir + '" data-r="' + word.row + '" data-c="' + word.col + '" style="--cw-cells:' + cellSlots + '">' +
           '<button type="button" class="vocab-cw-word-number" data-word-id="' + wordId + '" aria-label="Select word ' + word.number + '">' + word.number + '</button>' +
           '<div class="vocab-cw-cells">' + cellsHtml + '</div>' +
           '<button type="button" class="vocab-cw-word-clear-btn" data-word-id="' + wordId + '" aria-label="Clear incorrect letters" title="Clear incorrect">' +
@@ -6639,17 +6721,22 @@
 
       var stripInput = document.getElementById('cw-strip-input');
       if (stripInput) {
+        if (FastExercises._cwIsMobilePlay()) {
+          stripInput.setAttribute('readonly', 'readonly');
+          stripInput.setAttribute('inputmode', 'none');
+        }
         stripInput.addEventListener('keydown', function(e) {
           FastExercises._cwKeyHandler(e);
         });
-        // Mobile input fallback
-        stripInput.addEventListener('input', function() {
-          var val = stripInput.value;
-          stripInput.value = '';
-          if (val && /[a-zA-Z]/.test(val[val.length - 1])) {
-            FastExercises._cwKeyHandler({ key: val[val.length - 1], preventDefault: function() {} });
-          }
-        });
+        if (!FastExercises._cwIsMobilePlay()) {
+          stripInput.addEventListener('input', function() {
+            var val = stripInput.value;
+            stripInput.value = '';
+            if (val && /[a-zA-Z]/.test(val[val.length - 1])) {
+              FastExercises._cwKeyHandler({ key: val[val.length - 1], preventDefault: function() {} });
+            }
+          });
+        }
       }
 
       var gridBtn = document.getElementById('cw-grid-btn');
@@ -6769,10 +6856,12 @@
 
         FastExercises._cwRefreshActiveDef();
         FastExercises._cwSyncActiveCellHighlight();
+        FastExercises._cwSyncMobilePanel();
+      } else {
+        FastExercises._cwSyncMobilePanel();
       }
 
-      var stripInput = document.getElementById('cw-strip-input');
-      if (stripInput) stripInput.focus();
+      FastExercises._cwFocusCwInput();
     },
 
     _cwSyncActiveCellHighlight: function() {
@@ -7146,6 +7235,7 @@
       var activeWord = state.activeWord;
       if (!activeWord) {
         defEl.innerHTML = '<em>Click a word to begin</em>';
+        FastExercises._cwSyncMobilePanel();
         return;
       }
       var wordSolved = FastExercises._cwIsWordComplete(activeWord, state);
@@ -7175,6 +7265,7 @@
           '</div>' +
         '</div>' +
         '<div class="vocab-cw-active-def-body">' + clueHtml + exampleHtml + '</div>';
+      FastExercises._cwSyncMobilePanel();
     },
 
     _cwSelectStripPos: function(pos) {
@@ -7187,8 +7278,7 @@
       if (FastExercises._cwIsCellProtected(state, wr + ',' + wc)) return;
       state.activeStripPos = pos;
       FastExercises._cwSyncActiveCellHighlight();
-      var stripInput = document.getElementById('cw-strip-input');
-      if (stripInput) stripInput.focus();
+      FastExercises._cwFocusCwInput();
     },
 
     _cwClearWordIncorrect: function(wordId) {
