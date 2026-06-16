@@ -5698,17 +5698,9 @@
       return classes.join(' ');
     },
 
-    _cwCloseGridView: function() {
-      var modal = document.getElementById('cw-grid-modal');
-      if (modal) modal.remove();
-    },
-
-    _cwShowGridView: function() {
-      var state = window._cwState;
-      if (!state || !state.cwData) return;
+    _cwBuildGridBoardHtml: function(state) {
+      if (!state || !state.cwData) return '';
       var self = this;
-      self._cwCloseGridView();
-
       var grid = state.cwData.grid;
       var rows = state.cwData.rows;
       var cols = state.cwData.cols;
@@ -5731,45 +5723,66 @@
           var numHtml = num ? '<span class="vocab-cw-grid-cell-num">' + num + '</span>' : '';
           var letter = state.userGrid[cellKey] || '';
           gridHtml += '<button type="button" class="' + self._cwGetGridCellClasses(state, cellKey) + ' vocab-cw-grid-slot" data-r="' + r + '" data-c="' + c + '" data-cell-key="' + cellKey + '" aria-label="Cell ' + (r + 1) + ',' + (c + 1) + '">' +
-            numHtml + self._escapeHTML(letter) +
+            numHtml + '<span class="vocab-cw-grid-cell-letter">' + self._escapeHTML(letter) + '</span>' +
           '</button>';
         }
       }
       gridHtml += '</div>';
+      return gridHtml;
+    },
 
-      var modal = document.createElement('div');
-      modal.id = 'cw-grid-modal';
-      modal.className = 'vocab-cw-grid-overlay';
-      modal.innerHTML =
-        '<div class="vocab-cw-grid-modal" role="dialog" aria-modal="true" aria-label="Crossword grid">' +
-          '<div class="vocab-cw-grid-modal-header">' +
-            '<h2 class="vocab-cw-grid-modal-title">Crossword</h2>' +
-            '<button type="button" class="vocab-cw-grid-modal-close" aria-label="Close">' + _mi('close') + '</button>' +
-          '</div>' +
-          '<div class="vocab-cw-grid-modal-body">' + gridHtml + '</div>' +
-        '</div>';
-
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) self._cwCloseGridView();
-      });
-      var closeBtn = modal.querySelector('.vocab-cw-grid-modal-close');
-      if (closeBtn) closeBtn.addEventListener('click', function() { self._cwCloseGridView(); });
-
-      var cellEls = modal.querySelectorAll('.vocab-cw-grid-slot:not(.vocab-cw-grid-slot--empty)');
+    _cwBindGridCellHandlers: function(container) {
+      if (!container) return;
+      var self = this;
+      var cellEls = container.querySelectorAll('.vocab-cw-grid-slot:not(.vocab-cw-grid-slot--empty)');
       for (var i = 0; i < cellEls.length; i++) {
         (function(cellEl) {
           cellEl.addEventListener('click', function() {
+            var state = window._cwState;
+            if (!state) return;
             var r2 = parseInt(cellEl.getAttribute('data-r'), 10);
             var c2 = parseInt(cellEl.getAttribute('data-c'), 10);
-            self._cwCloseGridView();
             if (isNaN(r2) || isNaN(c2)) return;
             var words = state.cellMap[r2 + ',' + c2] || [];
             if (words.length) self._cwSelectCell(r2, c2, words[0].dir);
           });
         })(cellEls[i]);
       }
+    },
 
-      document.body.appendChild(modal);
+    _cwGetViewMode: function() {
+      var body = document.querySelector('.vocab-cw-body');
+      if (!body) return 'list';
+      return body.getAttribute('data-cw-view') === 'grid' ? 'grid' : 'list';
+    },
+
+    _cwSetViewMode: function(mode) {
+      var normalized = mode === 'grid' ? 'grid' : 'list';
+      var body = document.querySelector('.vocab-cw-body');
+      if (body) body.setAttribute('data-cw-view', normalized);
+      var gridBtn = document.getElementById('cw-grid-btn');
+      if (gridBtn) {
+        gridBtn.classList.toggle('vocab-cw-grid-btn-active', normalized === 'grid');
+        gridBtn.setAttribute('aria-pressed', normalized === 'grid' ? 'true' : 'false');
+        gridBtn.title = normalized === 'grid' ? 'List view' : 'Grid view';
+        gridBtn.setAttribute('aria-label', normalized === 'grid' ? 'List view' : 'Grid view');
+        var icon = gridBtn.querySelector('.material-symbols-outlined');
+        if (icon) icon.textContent = normalized === 'grid' ? 'view_list' : 'grid_view';
+      }
+      if (normalized === 'grid') FastExercises._cwSyncActiveCellHighlight();
+    },
+
+    _cwToggleViewMode: function() {
+      FastExercises._cwSetViewMode(FastExercises._cwGetViewMode() === 'grid' ? 'list' : 'grid');
+    },
+
+    _cwMountInlineGrid: function() {
+      var state = window._cwState;
+      if (!state) return;
+      var gridArea = document.getElementById('cw-grid-area');
+      if (!gridArea) return;
+      gridArea.innerHTML = FastExercises._cwBuildGridBoardHtml(state);
+      FastExercises._cwBindGridCellHandlers(gridArea);
     },
 
     _cwShowClueTab: function(dir) {
@@ -6423,7 +6436,7 @@
                   '<span class="vocab-cw-dir-toggle-label">D</span>' +
                 '</button>' +
               '</div>' +
-              '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-grid-btn" id="cw-grid-btn" title="Grid view" aria-label="Grid view">' + _mi('grid_view') + '</button>' +
+              '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-grid-btn" id="cw-grid-btn" title="Grid view" aria-label="Grid view" aria-pressed="false">' + _mi('grid_view') + '</button>' +
               '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-hint-btn" id="cw-hint-btn" title="Hint" aria-label="Hint">' + _mi('lightbulb') + '</button>' +
               '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-solve-btn" id="cw-solve-btn" title="Solve" aria-label="Solve">' + _mi('auto_fix') + '</button>' +
               '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-reset-btn" id="cw-reset-btn" title="Reset" aria-label="Reset">' + _mi('refresh') + '</button>' +
@@ -6431,7 +6444,7 @@
           '</div>' +
           '<div class="vocab-cw-active-def vocab-cw-active-def--under-header" id="cw-active-def"><em>Click a word to begin</em></div>' +
         '</div>' +
-        '<div class="vocab-cw-body">' +
+        '<div class="vocab-cw-body" data-cw-view="list">' +
           '<div class="vocab-cw-play-area">' +
             '<div class="vocab-cw-word-list" id="cw-word-list" data-cw-words-dir="across">' +
               '<section class="vocab-cw-section vocab-cw-section--across">' +
@@ -6444,6 +6457,7 @@
               '</section>' +
             '</div>' +
           '</div>' +
+          '<div class="vocab-cw-grid-body" id="cw-grid-area" aria-label="Crossword grid"></div>' +
           '<aside class="vocab-cw-clues vocab-cw-clues--play" id="cw-clues" data-cw-clues-dir="across" aria-label="Clues">' +
             '<h3 class="vocab-cw-clues-heading" id="cw-clues-heading">Across</h3>' +
             '<div class="vocab-cw-clues-scroll">' +
@@ -6475,6 +6489,7 @@
         cwIndex: cwIndex
       };
       window._cwState = cwState;
+      FastExercises._cwMountInlineGrid();
 
       // Restore previously saved cell state so the user can continue where they left off
       if (savedState && savedState.cellState && typeof savedState.cellState === 'object') {
@@ -6567,7 +6582,7 @@
       }
 
       var gridBtn = document.getElementById('cw-grid-btn');
-      if (gridBtn) gridBtn.addEventListener('click', function() { FastExercises._cwShowGridView(); });
+      if (gridBtn) gridBtn.addEventListener('click', function() { FastExercises._cwToggleViewMode(); });
       var hintBtn = document.getElementById('cw-hint-btn');
       if (hintBtn) hintBtn.addEventListener('click', function() { FastExercises._cwHint(); });
       var solveBtn = document.getElementById('cw-solve-btn');
@@ -6638,7 +6653,7 @@
 
       var rowEls = document.querySelectorAll('.vocab-cw-word-row');
       for (var ri = 0; ri < rowEls.length; ri++) rowEls[ri].classList.remove('active');
-      var cellEls = document.querySelectorAll('.vocab-cw-cell');
+      var cellEls = document.querySelectorAll('.vocab-cw-cell, .vocab-cw-grid-slot:not(.vocab-cw-grid-slot--empty)');
       for (var i = 0; i < cellEls.length; i++) cellEls[i].classList.remove('vocab-cw-cell-active', 'vocab-cw-cell-word');
       var clueEls = document.querySelectorAll('.vocab-cw-clue');
       for (var ci = 0; ci < clueEls.length; ci++) clueEls[ci].classList.remove('vocab-cw-clue-active');
@@ -6652,15 +6667,17 @@
       if (activeWord) {
         state.selectedWordId = FastExercises._cwWordId(activeWord);
         var activeRowEl = document.querySelector('.vocab-cw-word-row[data-word-id="' + state.selectedWordId + '"]');
-        if (activeRowEl) {
+        if (activeRowEl && FastExercises._cwGetViewMode() !== 'grid') {
           activeRowEl.classList.add('active');
           activeRowEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else if (activeRowEl) {
+          activeRowEl.classList.add('active');
         }
 
         var wordCells = FastExercises._cwGetWordCells(activeWord);
         for (var wi = 0; wi < wordCells.length; wi++) {
           var wc = wordCells[wi];
-          var wordCellEls = document.querySelectorAll('.vocab-cw-cell[data-cell-key="' + wc.cellKey + '"]');
+          var wordCellEls = document.querySelectorAll('.vocab-cw-cell[data-cell-key="' + wc.cellKey + '"], .vocab-cw-grid-slot[data-cell-key="' + wc.cellKey + '"]');
           for (var wj = 0; wj < wordCellEls.length; wj++) wordCellEls[wj].classList.add('vocab-cw-cell-word');
         }
 
@@ -6694,10 +6711,13 @@
       var wr = state.activeWord.dir === 'across' ? state.activeWord.row : state.activeWord.row + pos;
       var wc = state.activeWord.dir === 'across' ? state.activeWord.col + pos : state.activeWord.col;
       var cellKey = wr + ',' + wc;
-      var allCellEls = document.querySelectorAll('.vocab-cw-cell');
+      var allCellEls = document.querySelectorAll('.vocab-cw-cell, .vocab-cw-grid-slot:not(.vocab-cw-grid-slot--empty)');
       for (var i = 0; i < allCellEls.length; i++) allCellEls[i].classList.remove('vocab-cw-cell-active');
-      var activeCellEls = document.querySelectorAll('.vocab-cw-cell[data-cell-key="' + cellKey + '"]');
+      var activeCellEls = document.querySelectorAll('.vocab-cw-cell[data-cell-key="' + cellKey + '"], .vocab-cw-grid-slot[data-cell-key="' + cellKey + '"]');
       for (var j = 0; j < activeCellEls.length; j++) activeCellEls[j].classList.add('vocab-cw-cell-active');
+      if (FastExercises._cwGetViewMode() === 'grid' && activeCellEls.length) {
+        activeCellEls[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     },
 
     _cwKeyHandler: function(e) {
@@ -6802,16 +6822,27 @@
       var state = window._cwState;
       if (!state) return;
       var key = r + ',' + c;
+      var letter = state.userGrid[key] || '';
       var cellEls = document.querySelectorAll('.vocab-cw-cell[data-cell-key="' + key + '"]');
-      if (!cellEls.length) return;
       for (var i = 0; i < cellEls.length; i++) {
         var cellEl = cellEls[i];
-        cellEl.textContent = state.userGrid[key] || '';
+        cellEl.textContent = letter;
         cellEl.classList.remove('vocab-cw-cell-correct', 'vocab-cw-cell-incorrect', 'vocab-cw-cell-revealed', 'vocab-cw-cell-locked');
         if (state.lockedCells[key]) cellEl.classList.add('vocab-cw-cell-locked');
         else if (state.revealedCells[key]) cellEl.classList.add('vocab-cw-cell-revealed');
         else if (state.checkedCells[key] === 'correct') cellEl.classList.add('vocab-cw-cell-correct');
         else if (state.checkedCells[key] === 'incorrect') cellEl.classList.add('vocab-cw-cell-incorrect');
+      }
+      var gridCellEls = document.querySelectorAll('.vocab-cw-grid-slot[data-cell-key="' + key + '"]');
+      for (var gi = 0; gi < gridCellEls.length; gi++) {
+        var gridEl = gridCellEls[gi];
+        var letterEl = gridEl.querySelector('.vocab-cw-grid-cell-letter');
+        if (letterEl) letterEl.textContent = letter;
+        gridEl.classList.remove('vocab-cw-cell-correct', 'vocab-cw-cell-incorrect', 'vocab-cw-cell-revealed', 'vocab-cw-cell-locked');
+        if (state.lockedCells[key]) gridEl.classList.add('vocab-cw-cell-locked');
+        else if (state.revealedCells[key]) gridEl.classList.add('vocab-cw-cell-revealed');
+        else if (state.checkedCells[key] === 'correct') gridEl.classList.add('vocab-cw-cell-correct');
+        else if (state.checkedCells[key] === 'incorrect') gridEl.classList.add('vocab-cw-cell-incorrect');
       }
     },
 
