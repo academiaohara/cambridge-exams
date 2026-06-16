@@ -944,11 +944,54 @@
       return html;
     },
 
+    _cwPathLayout: function() {
+      return {
+        trackWidth: 400,
+        nodeSize: 72,
+        rowGap: 84,
+        topPad: 36,
+        bottomPad: 48,
+        xRatios: [0.5, 0.78, 0.22, 0.5]
+      };
+    },
+
+    _cwPathNodePosition: function(idx) {
+      var layout = this._cwPathLayout();
+      var posIdx = idx % 4;
+      var xRatio = layout.xRatios[posIdx];
+      return {
+        x: Math.round(layout.trackWidth * xRatio),
+        xPercent: (xRatio * 100).toFixed(2) + '%',
+        y: layout.topPad + idx * layout.rowGap,
+        posClass: 'cw-path-node--pos-' + posIdx
+      };
+    },
+
+    _cwPathSpecialNodeType: function(idx) {
+      var n = idx + 1;
+      if (n % 10 === 0) return 'chest';
+      if (n % 5 === 0) return 'challenge';
+      return null;
+    },
+
+    _buildCwPathSvgD: function(points) {
+      if (points.length < 2) return '';
+      var d = 'M ' + points[0].x + ' ' + points[0].y;
+      for (var i = 0; i < points.length - 1; i++) {
+        var p0 = points[i];
+        var p1 = points[i + 1];
+        var midY = (p0.y + p1.y) / 2;
+        d += ' C ' + p0.x + ' ' + midY + ', ' + p1.x + ' ' + midY + ', ' + p1.x + ' ' + p1.y;
+      }
+      return d;
+    },
+
     _buildCrosswordPathMapHtml: function(entries, progress, levelId) {
       var self = this;
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var LEVEL_META = this._cwLevelMeta();
       var meta = LEVEL_META[levelId] || LEVEL_META['B2'];
+      var layout = this._cwPathLayout();
 
       var firstIncompleteIdx = -1;
       entries.forEach(function(entry, idx) {
@@ -958,45 +1001,62 @@
       });
       if (firstIncompleteIdx === -1) firstIncompleteIdx = entries.length - 1;
 
+      var points = [];
+      entries.forEach(function(entry, idx) {
+        points.push(self._cwPathNodePosition(idx));
+      });
+
+      var trackHeight = layout.topPad + Math.max(0, entries.length - 1) * layout.rowGap + layout.bottomPad;
+      var svgPath = this._buildCwPathSvgD(points);
+
       var html = '<div class="cw-path-map" data-level="' + levelId + '" style="--cw-header-color:' + meta.headerColor + '">';
+      html += '<div class="cw-path-track" style="height:' + trackHeight + 'px">';
+      if (svgPath) {
+        html += '<svg class="cw-path-svg" viewBox="0 0 ' + layout.trackWidth + ' ' + trackHeight + '" preserveAspectRatio="xMidYMin meet" aria-hidden="true">';
+        html += '<path d="' + svgPath + '"></path>';
+        html += '</svg>';
+      }
+      html += '<div class="cw-path-nodes">';
+
       entries.forEach(function(entry, idx) {
         var pKey = entry.levelId + '_cw' + entry.cwIndex;
         var prog = progress[pKey];
         var isCompleted = !!(prog && prog.completed);
         var isInProgress = !!(prog && !isCompleted && (prog.wordsCorrect || prog.wordsComplete || 0) > 0);
         var isCurrent = idx === firstIncompleteIdx;
-        var posClass = 'cw-path-node--pos-' + (idx % 4);
+        var pos = self._cwPathNodePosition(idx);
+        var specialType = self._cwPathSpecialNodeType(idx);
+        var levelNum = idx + 1;
 
-        var nodeIcon = 'star';
-        if ((idx + 1) % 10 === 0) nodeIcon = 'redeem';
-        else if ((idx + 1) % 5 === 0) nodeIcon = 'fitness_center';
-
-        var nodeClass = 'cw-path-node ' + posClass;
+        var nodeClass = 'cw-path-node ' + pos.posClass;
         if (isCompleted) nodeClass += ' cw-path-node--done';
         else if (isCurrent) nodeClass += ' cw-path-node--current';
         else if (isInProgress) nodeClass += ' cw-path-node--progress';
         else nodeClass += ' cw-path-node--pending';
+        if (specialType) nodeClass += ' cw-path-node--special cw-path-node--' + specialType;
 
-        if (idx > 0) {
-          html += '<div class="cw-path-connector ' + posClass + '"></div>';
-        }
-
-        html += '<div class="' + nodeClass + '" onclick="FastExercises._openMixedCrossword(\'' + entry.levelId + '\',' + entry.cwIndex + ')" role="button" tabindex="0" title="' + self._escapeHTML(entry.title) + '">';
+        html += '<div class="' + nodeClass + '" style="left:' + pos.xPercent + ';top:' + pos.y + 'px" onclick="FastExercises._openMixedCrossword(\'' + entry.levelId + '\',' + entry.cwIndex + ')" role="button" tabindex="0" title="' + self._escapeHTML(entry.title) + '">';
         if (isCurrent) {
           html += '<div class="cw-path-start-label">START</div>';
         }
         html += '<div class="cw-path-node-circle">';
-        if (isCompleted) {
-          html += _mi('check');
+        if (specialType === 'chest') {
+          html += _mi('redeem');
+        } else if (specialType === 'challenge') {
+          html += _mi('fitness_center');
         } else {
-          html += _mi(nodeIcon);
+          html += '<span class="cw-path-node-label">' + levelNum + '</span>';
+        }
+        if (isCompleted && !specialType) {
+          html += '<span class="cw-path-node-check" aria-hidden="true">' + _mi('check') + '</span>';
+        } else if (isCompleted && specialType) {
+          html += '<span class="cw-path-node-check cw-path-node-check--special" aria-hidden="true">' + _mi('check') + '</span>';
         }
         html += '</div>';
-        html += '<div class="cw-path-node-num">#' + (idx + 1) + '</div>';
         html += '</div>';
       });
-      html += '</div>';
 
+      html += '</div></div></div>';
       return html;
     },
 
