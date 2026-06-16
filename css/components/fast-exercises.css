@@ -6461,24 +6461,6 @@
     font-size: 13px;
     flex-shrink: 0;
   }
-  .vocab-cw-cells {
-    flex: 1 1 auto;
-    min-width: 0;
-    gap: 4px;
-    flex-wrap: nowrap;
-    justify-content: stretch;
-  }
-  .vocab-cw-cell {
-    flex: 1 1 0;
-    min-width: 0;
-    width: auto;
-    height: auto;
-    aspect-ratio: 1;
-    max-height: 36px;
-    font-size: clamp(11px, calc((100vw - 108px) / var(--cw-cells, 8) * 0.58), 18px);
-    border-radius: 8px;
-    box-shadow: 0 3px 0 #c6def8;
-  }
   .vocab-cw-word-clear-btn {
     width: 28px;
     height: 28px;
@@ -6499,27 +6481,97 @@
     padding: 8px 10px;
   }
   .vocab-cw-section-title {
-    font-size: 16px;
-    text-align: center;
+    display: none !important;
+  }
+  .vocab-cw-play-sticky-top > .vocab-cw-active-def--under-header {
+    display: none !important;
+  }
+  .vocab-cw-active-def--inline {
     width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    text-align: left;
   }
-  .vocab-cw-active-def {
-    padding: 12px 14px;
-    border-radius: 14px;
-    text-align: center;
-  }
-  .vocab-cw-active-def-line {
-    font-size: 15px;
-  }
-  .vocab-cw-active-def-line--phrase {
+  .vocab-cw-active-def--inline .vocab-cw-active-def-line {
     font-size: 14px;
   }
-  .vocab-cw-active-def-dir-icon {
-    width: 28px;
-    height: 28px;
+  .vocab-cw-active-def--inline .vocab-cw-active-def-line--phrase {
+    font-size: 13px;
   }
-  .vocab-cw-active-def-dir-icon .material-symbols-outlined {
-    font-size: 16px;
+  .vocab-cw-cells {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(14, minmax(0, 1fr));
+    gap: 3px;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-items: center;
+  }
+  .vocab-cw-cell {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    aspect-ratio: 1;
+    max-height: 26px;
+    font-size: clamp(9px, 2.35vw, 13px);
+    border-radius: 6px;
+    box-shadow: 0 2px 0 #c6def8;
+  }
+  .vocab-cw-mobile-keyboard {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0 4px;
+    padding: 8px 4px 4px;
+    border-radius: 14px;
+    background: #eef4fb;
+    border: 2px solid #d8ecff;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  .vocab-cw-mobile-keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+  .vocab-cw-mobile-key {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 34px;
+    height: 38px;
+    border: none;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 3px 0 #c6def8;
+    color: #1f2937;
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+  }
+  .vocab-cw-mobile-key--wide {
+    flex: 1.6 1 0;
+    max-width: 52px;
+    color: #64748b;
+  }
+  .vocab-cw-mobile-key--wide .material-symbols-outlined {
+    font-size: 20px;
+  }
+  .vocab-cw-mobile-key:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #c6def8;
   }
   .vocab-cw-header--duo {
     display: grid;
@@ -6594,8 +6646,13 @@
     padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 88px);
   }
   .vocab-cw-cell {
-    max-height: 32px;
-    font-size: clamp(10px, calc((100vw - 100px) / var(--cw-cells, 8) * 0.55), 16px);
+    max-height: 22px;
+    font-size: clamp(8px, 2.1vw, 11px);
+  }
+  .vocab-cw-mobile-key {
+    height: 34px;
+    font-size: 13px;
+    max-width: 30px;
   }
   .vocab-cw-wordle-box { font-size: 0.9rem; }
 }
