@@ -1723,12 +1723,21 @@ margin-top: -2px;
   height: auto;
 }
 
-.dashboard-layout--crossword-play {
+.dashboard-layout--crossword-play,
+.dashboard-layout--wordle-play {
   padding-top: 8px;
 }
 
 .dashboard-layout--crossword-play .vocab-cw-play-section .vocab-cw-main {
   padding-top: 8px;
+}
+
+.dashboard-layout--wordle-scroll .cw-section-header--wordle {
+  background: #a855f7;
+}
+
+.mode-card--wordle-level .mode-card-icon {
+  color: #a855f7;
 }
 
 .cw-page-content,
@@ -2601,29 +2610,6 @@ margin-top: -2px;
   border-radius: 999px;
   background: linear-gradient(90deg, #a78bfa 0%, #6040c0 100%);
   transition: width 0.4s ease;
-}
-
-/* ── Badges ── */
-.cw-sidebar-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-
-.cw-badge {
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 3px 9px;
-  border-radius: 999px;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-}
-
-.cw-badge-earned {
-  background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%);
-  color: #713f12;
-  border: 1px solid rgba(113,63,18,0.2);
 }
 
 /* ── Dashboard bento card meta ── */

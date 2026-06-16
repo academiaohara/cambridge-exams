@@ -35,6 +35,16 @@
     { id: 'mix', count: 100 }
   ];
 
+  var WL_LEVEL_CONFIG = [
+    { id: 'A2',  count: 100 },
+    { id: 'B1',  count: 100 },
+    { id: 'B2',  count: 100 },
+    { id: 'C1',  count: 100 },
+    { id: 'mix', count: 100 }
+  ];
+
+  var WL_PROGRESS_KEY = 'cambridge_wordle_progress';
+
   // Common words excluded when extracting the key word from an idiom
   var CW_STOPWORDS = { 'the': 1, 'a': 1, 'an': 1, 'in': 1, 'at': 1, 'on': 1, 'to': 1,
     'of': 1, 'for': 1, 'with': 1, 'by': 1, 'from': 1, 'up': 1, 'about': 1, 'into': 1,
@@ -5540,6 +5550,8 @@
     // Returns the level configuration for mixed crosswords.
     _cwLevelConfig: function() { return CW_LEVEL_CONFIG; },
 
+    _wlLevelConfig: function() { return WL_LEVEL_CONFIG; },
+
     // Deterministic Fisher-Yates shuffle using a simple LCG seeded by cwIndex.
     // LCG parameters (1664525 multiplier, 1013904223 increment) are the classic
     // Numerical Recipes values chosen for good distribution on 32-bit integers.
@@ -7273,29 +7285,157 @@
 
     // ── STANDALONE WORDLE SECTION ───────────────────────────────────────────
 
-    _openWordlePage: async function(pageEl) {
+    _getWlProgress: function() {
+      try {
+        return JSON.parse(localStorage.getItem(WL_PROGRESS_KEY) || '{}');
+      } catch (e) {
+        return {};
+      }
+    },
+
+    _saveWlProgress: function(pKey, data) {
+      try {
+        var progress = this._getWlProgress();
+        progress[pKey] = Object.assign({}, progress[pKey] || {}, data, { lastPlayed: new Date().toISOString() });
+        localStorage.setItem(WL_PROGRESS_KEY, JSON.stringify(progress));
+      } catch (e) {}
+    },
+
+    _buildVocabWordPool: async function(levelId) {
+      var self = this;
+      if (levelId === 'mix') {
+        var mixSeen = {};
+        var mixPool = [];
+        var mixLevels = ['A2', 'B1', 'B2', 'C1'];
+        for (var mi = 0; mi < mixLevels.length; mi++) {
+          var lvlPool = await self._buildVocabWordPool(mixLevels[mi]);
+          for (var pi = 0; pi < lvlPool.length; pi++) {
+            var key = lvlPool[pi].word.toLowerCase();
+            if (!mixSeen[key]) { mixSeen[key] = 1; mixPool.push(lvlPool[pi]); }
+          }
+        }
+        return mixPool;
+      }
+
+      var WORD_RE = /^[a-zA-Z]{3,12}$/;
+      var seen = {};
+      var pool = [];
+
+      try {
+        var vocabRes = await fetch('data/vocabulary/dictionary.json');
+        if (vocabRes.ok) {
+          var vd = await vocabRes.json();
+          (vd.entries || []).forEach(function(e) {
+            if (e.level !== levelId || !e.word) return;
+            var key = e.word.toLowerCase();
+            if (!WORD_RE.test(key) || seen[key]) return;
+            seen[key] = 1;
+            pool.push({
+              word: e.word.toUpperCase(),
+              clue: self._cwSanitizeClue(e.word, e.definition || '')
+            });
+          });
+        }
+      } catch (e) {}
+
+      return pool;
+    },
+
+    _openWordleLevel: async function(levelId, wlIndex, options) {
+      options = options || {};
+      var self = this;
+      AppState.currentView = 'wordlePlay';
+      if (!options.fromRoute && typeof Router !== 'undefined') {
+        var playState = { view: 'wordlePlay', level: levelId, wlIndex: wlIndex };
+        history.pushState(playState, '', Router.stateToPath(playState));
+      }
+
+      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
+      var level = AppState.currentLevel || 'C1';
+      var exams = window.EXAMS_DATA[level] || [];
+      var sidebars = (typeof BentoGrid !== 'undefined')
+        ? BentoGrid._buildDashboardSidebars(exams)
+        : { left: '', right: '' };
+      var LEVEL_META = (typeof BentoGrid !== 'undefined' && BentoGrid._wlLevelMeta)
+        ? BentoGrid._wlLevelMeta()
+        : {};
+      var meta = LEVEL_META[levelId] || LEVEL_META['B2'] || { headerColor: '#a855f7' };
+
+      var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
+        ? MainNav.buildMobileTopBarHtml() : '';
+      var mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
+        ? MainNav.buildMobileBottomNavHtml('wordle')
+        : '';
+
+      var content = document.getElementById('main-content');
+      if (!content) return;
+
+      content.innerHTML =
+        '<div class="dashboard-layout dashboard-layout--crossword-scroll dashboard-layout--wordle-scroll dashboard-layout--wordle-play">' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
+            : '<div class="dashboard-left-sidebar">' + sidebars.left + '</div>') +
+          '<div class="dashboard-center dashboard-center--crossword" id="wlPlayCenter">' +
+            mobileTopBarHtml +
+            '<div class="cw-section-header cw-section-header--wordle cw-section-header--level" style="--cw-header-color:' + meta.headerColor + '">' +
+              '<button class="cw-section-back" onclick="history.back()" aria-label="Back">' + _mi('arrow_back') + '</button>' +
+              '<div class="cw-section-header-text">' +
+                '<div class="cw-section-kicker">' + levelId.toUpperCase() + ' · LEVEL ' + (wlIndex + 1) + '</div>' +
+                '<div class="cw-section-title">Guess the Word</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="cw-page-content" id="wlWordlePage">' +
+              '<div class="fe-loading-inline">' + _mi('hourglass_empty') + ' Loading…</div>' +
+            '</div>' +
+            mobileNavHtml +
+          '</div>' +
+        '</div>';
+
+      if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+      if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('wordle');
+
+      var pageEl = document.getElementById('wlWordlePage');
+      if (!pageEl) return;
+
+      await self._openWordlePage(pageEl, levelId, wlIndex);
+    },
+
+    _openWordlePage: async function(pageEl, levelId, wlIndex) {
       var self = this;
       try {
-        var pool = await this._buildMixedWordPool('mix');
-        if (!pool.length) {
+        var wordEntry = null;
+        try {
+          var wlRes = await fetch('/wordle/' + levelId + '/wl' + wlIndex + '.json');
+          if (!wlRes.ok) throw new Error('HTTP ' + wlRes.status);
+          wordEntry = await wlRes.json();
+        } catch (fetchErr) {
+          var pool = await this._buildVocabWordPool(levelId);
+          if (!pool.length) {
+            pageEl.innerHTML = '<div class="fe-error">No words available for Wordle.</div>';
+            return;
+          }
+          var shuffled = this._cwSeededShuffle(pool, wlIndex);
+          wordEntry = shuffled[0];
+        }
+
+        if (!wordEntry || !wordEntry.word) {
           pageEl.innerHTML = '<div class="fe-error">No words available for Wordle.</div>';
           return;
         }
-        var today = new Date().toISOString().slice(0, 10);
-        var dateSeed = 0;
-        for (var i = 0; i < today.length; i++) {
-          dateSeed = ((dateSeed << 5) - dateSeed) + today.charCodeAt(i);
-          dateSeed = dateSeed & dateSeed;
-        }
-        var wordEntry = pool[Math.abs(dateSeed) % pool.length];
+
+        var pKey = levelId + '_wl' + wlIndex;
+        var saved = this._getWlProgress()[pKey] || null;
+
         window._wdlState = {
           target: wordEntry.word.toUpperCase(),
           clue: self._cwFormatClueDisplay(wordEntry.clue || ''),
-          guesses: [],
-          results: [],
-          solved: false,
+          guesses: saved && saved.guessHistory ? saved.guessHistory.slice() : [],
+          results: saved && saved.resultHistory ? saved.resultHistory.slice() : [],
+          solved: !!(saved && saved.completed),
           currentInput: '',
-          date: today
+          levelId: levelId,
+          wlIndex: wlIndex,
+          levelLabel: 'Level ' + (wlIndex + 1)
         };
 
         self._renderStandaloneWordle(pageEl);
@@ -7352,7 +7492,7 @@
           '<div class="cw-wordle-def-card">' +
             '<div class="cw-wordle-def-label">Definition</div>' +
             '<p class="cw-wordle-def-text">' + FastExercises._escapeHTML(state.clue) + '</p>' +
-            '<div class="cw-wordle-def-meta">' + wordLen + ' letters · Daily word</div>' +
+            '<div class="cw-wordle-def-meta">' + wordLen + ' letters · ' + FastExercises._escapeHTML(state.levelLabel || 'Wordle') + '</div>' +
           '</div>' +
           '<div class="cw-wordle-play-card">' +
             '<div class="vocab-cw-wordle-grid">' + rowsHtml + '</div>' +
@@ -7414,6 +7554,17 @@
       state.results.push(result);
       if (result.every(function(r) { return r === 'green'; })) state.solved = true;
       state.currentInput = '';
+
+      if (state.levelId !== undefined && typeof state.wlIndex !== 'undefined') {
+        var pKey = state.levelId + '_wl' + state.wlIndex;
+        FastExercises._saveWlProgress(pKey, {
+          completed: state.solved,
+          guesses: state.guesses.length,
+          guessHistory: state.guesses.slice(),
+          resultHistory: state.results.slice()
+        });
+      }
+
       FastExercises._wdlRerender();
     },
 
@@ -7424,11 +7575,20 @@
       state.results = [];
       state.solved = false;
       state.currentInput = '';
+      if (state.levelId !== undefined && typeof state.wlIndex !== 'undefined') {
+        var pKey = state.levelId + '_wl' + state.wlIndex;
+        FastExercises._saveWlProgress(pKey, {
+          completed: false,
+          guesses: 0,
+          guessHistory: [],
+          resultHistory: []
+        });
+      }
       FastExercises._wdlRerender();
     },
 
     _wdlRerender: function() {
-      var pageEl = document.getElementById('cwWordlePage');
+      var pageEl = document.getElementById('wlWordlePage');
       if (pageEl) FastExercises._renderStandaloneWordle(pageEl);
     },
 
