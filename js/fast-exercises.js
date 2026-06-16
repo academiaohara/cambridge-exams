@@ -36,14 +36,15 @@
   ];
 
   var WL_LEVEL_CONFIG = [
-    { id: 'A2',  count: 100 },
-    { id: 'B1',  count: 100 },
-    { id: 'B2',  count: 100 },
-    { id: 'C1',  count: 100 },
-    { id: 'mix', count: 100 }
+    { id: 'A2',  count: 0 },
+    { id: 'B1',  count: 0 },
+    { id: 'B2',  count: 0 },
+    { id: 'C1',  count: 0 },
+    { id: 'mix', count: 0 }
   ];
 
   var WL_PROGRESS_KEY = 'cambridge_wordle_progress';
+  var _wlManifestPromise = null;
 
   // Common words excluded when extracting the key word from an idiom
   var CW_STOPWORDS = { 'the': 1, 'a': 1, 'an': 1, 'in': 1, 'at': 1, 'on': 1, 'to': 1,
@@ -5552,6 +5553,29 @@
 
     _wlLevelConfig: function() { return WL_LEVEL_CONFIG; },
 
+    _ensureWlManifest: function() {
+      if (_wlManifestPromise) return _wlManifestPromise;
+      _wlManifestPromise = fetch('/wordle/manifest.json')
+        .then(function(res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function(manifest) {
+          if (manifest && manifest.levels) {
+            manifest.levels.forEach(function(level) {
+              for (var i = 0; i < WL_LEVEL_CONFIG.length; i++) {
+                if (WL_LEVEL_CONFIG[i].id === level.id) {
+                  WL_LEVEL_CONFIG[i].count = level.count || 0;
+                  break;
+                }
+              }
+            });
+          }
+        })
+        .catch(function() {});
+      return _wlManifestPromise;
+    },
+
     // Deterministic Fisher-Yates shuffle using a simple LCG seeded by cwIndex.
     // LCG parameters (1664525 multiplier, 1013904223 increment) are the classic
     // Numerical Recipes values chosen for good distribution on 32-bit integers.
@@ -7467,7 +7491,7 @@
             : '<div class="dashboard-left-sidebar">' + sidebars.left + '</div>') +
           '<div class="dashboard-center dashboard-center--crossword" id="wlPlayCenter">' +
             mobileTopBarHtml +
-            '<div class="cw-section-header cw-section-header--wordle cw-section-header--level" style="--cw-header-color:' + meta.headerColor + '">' +
+            '<div class="cw-section-header cw-section-header--wordle cw-section-header--level cw-section-header--duo" style="--cw-header-color:' + meta.headerColor + '">' +
               '<button class="cw-section-back" onclick="history.back()" aria-label="Back">' + _mi('arrow_back') + '</button>' +
               '<div class="cw-section-header-text">' +
                 '<div class="cw-section-kicker">' + levelId.toUpperCase() + ' · LEVEL ' + (wlIndex + 1) + '</div>' +
@@ -7479,9 +7503,13 @@
             '</div>' +
             mobileNavHtml +
           '</div>' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', sidebars.right)
+            : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + sidebars.right + '</div>') +
         '</div>';
 
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+      if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('wordle');
 
       var pageEl = document.getElementById('wlWordlePage');
@@ -7534,11 +7562,87 @@
       }
     },
 
+    _wdlIsMobilePlay: function() {
+      return FastExercises._cwIsMobilePlay();
+    },
+
+    _wdlBuildMobileKeyboardHtml: function() {
+      var rows = [
+        ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+        ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACKSPACE']
+      ];
+      var html = '';
+      for (var ri = 0; ri < rows.length; ri++) {
+        html += '<div class="wdl-mobile-keyboard-row">';
+        for (var ki = 0; ki < rows[ri].length; ki++) {
+          var key = rows[ri][ki];
+          if (key === 'BACKSPACE') {
+            html += '<button type="button" class="wdl-mobile-key wdl-mobile-key--wide" data-key="Backspace" aria-label="Backspace">' +
+              '<span class="material-symbols-outlined" aria-hidden="true">backspace</span>' +
+            '</button>';
+          } else if (key === 'ENTER') {
+            html += '<button type="button" class="wdl-mobile-key wdl-mobile-key--enter" data-key="Enter" aria-label="Submit">CHECK</button>';
+          } else {
+            html += '<button type="button" class="wdl-mobile-key" data-key="' + key + '" aria-label="' + key + '">' + key + '</button>';
+          }
+        }
+        html += '</div>';
+      }
+      return html;
+    },
+
+    _wdlBindMobileKeyboard: function(kbEl) {
+      if (!kbEl || kbEl._wdlBound) return;
+      kbEl._wdlBound = true;
+      kbEl.addEventListener('click', function(e) {
+        var keyBtn = e.target.closest('[data-key]');
+        if (!keyBtn) return;
+        e.preventDefault();
+        FastExercises._wdlHandleKey(keyBtn.getAttribute('data-key'));
+      });
+    },
+
+    _wdlFocusInput: function() {
+      if (FastExercises._wdlIsMobilePlay()) return;
+      var wdlInput = document.getElementById('wdl-input');
+      if (wdlInput) wdlInput.focus();
+    },
+
+    _wdlHandleKey: function(key) {
+      var state = window._wdlState;
+      if (!state || state.solved || state.guesses.length >= 6) return;
+      var wordLen = state.target.length;
+
+      if (key === 'Enter') {
+        FastExercises._wdlSubmit();
+        return;
+      }
+      if (key === 'Backspace') {
+        if (state.currentInput.length > 0) {
+          state.currentInput = state.currentInput.slice(0, -1);
+          FastExercises._wdlRerender();
+        }
+        return;
+      }
+      if (key && key.length === 1 && /[a-zA-Z]/.test(key)) {
+        if (state.currentInput.length < wordLen) {
+          state.currentInput += key.toUpperCase();
+          FastExercises._wdlRerender();
+        }
+      }
+    },
+
     _renderStandaloneWordle: function(pageEl) {
       var state = window._wdlState;
       if (!state || !pageEl) return;
       var wordLen = state.target.length;
       var MAX_GUESSES = 6;
+      var isMobile = FastExercises._wdlIsMobilePlay();
+      var guessNum = state.guesses.length;
+      var progressPct = state.solved
+        ? 100
+        : Math.round((guessNum / MAX_GUESSES) * 100);
 
       var rowsHtml = '';
       for (var g = 0; g < state.guesses.length; g++) {
@@ -7573,56 +7677,67 @@
 
       var actionsHtml = '';
       if (!state.solved && state.guesses.length < MAX_GUESSES) {
-        actionsHtml += '<button class="vocab-cw-btn vocab-cw-wordle-submit-btn" onclick="FastExercises._wdlSubmit()">' + _mi('send') + '<span>Submit</span></button>';
+        actionsHtml += '<button type="button" class="wdl-duo-btn wdl-duo-btn--check" onclick="FastExercises._wdlSubmit()">' + _mi('check') + '<span>CHECK</span></button>';
       }
-      actionsHtml += '<button class="vocab-cw-btn vocab-cw-wordle-reset-btn" onclick="FastExercises._wdlReset()">' + _mi('restart_alt') + '<span>Retry</span></button>';
+      actionsHtml += '<button type="button" class="wdl-duo-btn wdl-duo-btn--retry" onclick="FastExercises._wdlReset()">' + _mi('restart_alt') + '<span>Retry</span></button>';
+
+      var keyboardHtml = isMobile
+        ? '<div id="wdl-mobile-keyboard" class="wdl-mobile-keyboard" role="group" aria-label="Letter keyboard">' +
+            FastExercises._wdlBuildMobileKeyboardHtml() +
+          '</div>'
+        : '';
 
       pageEl.innerHTML =
-        '<div class="cw-wordle-standalone">' +
-          '<div class="cw-wordle-def-card">' +
+        '<div class="cw-wordle-duo">' +
+          '<div class="cw-wordle-duo-progress" aria-hidden="true">' +
+            '<div class="cw-wordle-duo-progress-fill" style="width:' + progressPct + '%"></div>' +
+          '</div>' +
+          '<div class="cw-wordle-def-card cw-wordle-def-card--duo">' +
             '<div class="cw-wordle-def-label">Definition</div>' +
             '<p class="cw-wordle-def-text">' + FastExercises._escapeHTML(state.clue) + '</p>' +
-            '<div class="cw-wordle-def-meta">' + wordLen + ' letters · ' + FastExercises._escapeHTML(state.levelLabel || 'Wordle') + '</div>' +
+            '<div class="cw-wordle-def-meta">' +
+              '<span class="cw-wordle-duo-badge">' + wordLen + ' letters</span>' +
+              '<span class="cw-wordle-duo-badge">' + FastExercises._escapeHTML(state.levelLabel || 'Wordle') + '</span>' +
+              '<span class="cw-wordle-duo-badge">' + guessNum + ' / ' + MAX_GUESSES + ' tries</span>' +
+            '</div>' +
           '</div>' +
-          '<div class="cw-wordle-play-card">' +
+          '<div class="cw-wordle-play-card cw-wordle-play-card--duo">' +
             '<div class="vocab-cw-wordle-grid">' + rowsHtml + '</div>' +
-            '<div class="vocab-cw-wordle-actions">' + actionsHtml + '</div>' +
+            '<div class="vocab-cw-wordle-actions wdl-duo-actions">' + actionsHtml + '</div>' +
             '<div class="vocab-cw-wordle-msg" id="wdl-msg">' + msgHtml + '</div>' +
           '</div>' +
+          keyboardHtml +
           '<input type="text" id="wdl-input" class="vocab-cw-strip-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Wordle input" />' +
         '</div>';
 
       var wdlInput = document.getElementById('wdl-input');
       if (wdlInput) {
-        wdlInput.addEventListener('keydown', function(e) { FastExercises._wdlKeyHandler(e); });
-        wdlInput.focus();
+        if (isMobile) {
+          wdlInput.setAttribute('readonly', 'readonly');
+          wdlInput.setAttribute('inputmode', 'none');
+        } else {
+          wdlInput.removeAttribute('readonly');
+          wdlInput.removeAttribute('inputmode');
+          if (!wdlInput._wdlBound) {
+            wdlInput._wdlBound = true;
+            wdlInput.addEventListener('keydown', function(e) { FastExercises._wdlKeyHandler(e); });
+          }
+          FastExercises._wdlFocusInput();
+        }
       }
+
+      var kbEl = document.getElementById('wdl-mobile-keyboard');
+      if (kbEl) FastExercises._wdlBindMobileKeyboard(kbEl);
     },
 
     _wdlKeyHandler: function(e) {
+      if (!e || !e.key) return;
       var state = window._wdlState;
       if (!state || state.solved || state.guesses.length >= 6) return;
       var wordLen = state.target.length;
-
-      if (e.key === 'Enter') {
+      if (e.key === 'Enter' || e.key === 'Backspace' || (e.key.length === 1 && /[a-zA-Z]/.test(e.key))) {
         e.preventDefault();
-        FastExercises._wdlSubmit();
-        return;
-      }
-      if (e.key === 'Backspace') {
-        e.preventDefault();
-        if (state.currentInput.length > 0) {
-          state.currentInput = state.currentInput.slice(0, -1);
-          FastExercises._wdlRerender();
-        }
-        return;
-      }
-      if (e.key.length === 1 && /[a-zA-Z]/.test(e.key)) {
-        e.preventDefault();
-        if (state.currentInput.length < wordLen) {
-          state.currentInput += e.key.toUpperCase();
-          FastExercises._wdlRerender();
-        }
+        FastExercises._wdlHandleKey(e.key);
       }
     },
 

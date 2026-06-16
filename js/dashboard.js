@@ -83,8 +83,7 @@
         var hasLeft = !!layout.querySelector('.dashboard-left-sidebar');
         var hasRight = !!layout.querySelector('.dashboard-right-sidebar');
         var isRightClosed = layout.classList.contains('dashboard-layout-right-closed');
-        var isPlayLayout = layout.classList.contains('dashboard-layout--crossword-play') ||
-          layout.classList.contains('dashboard-layout--wordle-play');
+        var isPlayLayout = layout.classList.contains('dashboard-layout--crossword-play');
 
         layout.style.removeProperty('grid-template-columns');
 
