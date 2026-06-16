@@ -1820,6 +1820,9 @@ margin-top: -2px;
 
 .cw-level-cards {
   padding: 4px 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 /* ── Crossword-style level grid ── */
@@ -2676,18 +2679,20 @@ margin-top: -2px;
 
 @media (max-width: 900px) {
   .cw-level-cards {
-    gap: 10px;
+    gap: 12px;
+    padding: 8px 0 14px;
   }
 
   .cw-path-map {
-    padding: 0 0 40px;
-    gap: 20px;
+    padding: 6px 0 44px;
+    gap: 24px;
   }
 
   .cw-path-grid {
     grid-template-columns: repeat(8, minmax(0, 1fr));
-    gap: 6px;
+    gap: 8px;
     width: 100%;
+    padding: 4px 0 8px;
   }
 
   .cw-path-cell-num {
@@ -2727,12 +2732,60 @@ margin-top: -2px;
   }
 }
 
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  .cw-section-header {
+    margin-bottom: 20px;
+  }
+
+  .cw-page-content,
+  .cw-center-scroll {
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+  }
+
+  .cw-list-page {
+    gap: 22px;
+    padding-top: 6px;
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+  }
+
+  .cw-level-cards {
+    gap: 14px;
+    padding: 10px 0 18px;
+  }
+
+  .cw-daily-banner {
+    margin-bottom: 2px;
+  }
+
+  .cw-path-map {
+    gap: 26px;
+    padding-top: 6px;
+    padding-bottom: calc(48px + env(safe-area-inset-bottom));
+  }
+
+  .cw-path-grid {
+    gap: 8px;
+    padding: 6px 0 10px;
+  }
+
+  .cw-path-next-level {
+    margin-top: 8px;
+  }
+}
+
 @media (max-width: 600px) {
   .cw-list-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .cw-list-page {
-    gap: 14px;
+    gap: 18px;
+  }
+  .cw-level-cards {
+    gap: 12px;
+    padding: 8px 0 14px;
+  }
+  .cw-path-grid {
+    gap: 7px;
   }
   .cw-list-header {
     align-items: flex-start;

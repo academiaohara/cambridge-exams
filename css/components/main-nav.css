@@ -1109,12 +1109,12 @@ body.mobile-popover-open {
 /* ── Mobile mode cards ── */
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .desktop-mode-cards {
-    gap: 10px;
-    padding-bottom: 4px;
+    gap: 14px;
+    padding-bottom: 8px;
   }
 
   .mode-card {
-    padding: 16px 18px;
+    padding: 18px 20px;
     border-radius: 16px;
     border-bottom: 4px solid #d0d0d0;
   }
