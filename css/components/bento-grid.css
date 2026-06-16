@@ -2090,6 +2090,10 @@ margin-top: -2px;
   justify-content: center;
 }
 
+.cw-wordle-play-card--duo .vocab-cw-wordle-grid {
+  margin-bottom: 8px;
+}
+
 .cw-wordle-play-card--duo .vocab-cw-wordle-box {
   border-width: 2px;
   border-bottom-width: 4px;
@@ -2128,7 +2132,7 @@ margin-top: -2px;
 }
 
 .wdl-duo-actions {
-  margin-top: 16px;
+  margin-top: 28px;
   gap: 12px;
 }
 
@@ -2158,6 +2162,14 @@ margin-top: -2px;
   background: #58cc02;
   color: #fff;
   box-shadow: 0 4px 0 #58a700;
+}
+
+.wdl-duo-btn--check:disabled {
+  background: #b8e986;
+  color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 0 #9ccc65;
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
 .wdl-duo-btn--retry {
@@ -2260,14 +2272,26 @@ margin-top: -2px;
     box-shadow: 0 1px 0 #58a700;
   }
 
+  .wdl-mobile-key--enter:disabled {
+    background: #b8e986;
+    color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 3px 0 #9ccc65;
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
   .wdl-duo-actions {
-    flex-direction: column;
+    flex-direction: row;
     align-items: stretch;
+    margin-top: 24px;
+    gap: 10px;
   }
 
   .wdl-duo-btn {
-    width: 100%;
+    flex: 1 1 0;
     min-width: 0;
+    padding: 12px 10px;
+    font-size: 0.82rem;
   }
 }
 
