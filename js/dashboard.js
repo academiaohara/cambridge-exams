@@ -9,8 +9,6 @@
   var leftSidebarCollapsed = false;
   var rightSidebarCollapsed = false;
   var LEFT_SIDEBAR_WIDTH = '256px';
-  var RIGHT_SIDEBAR_WIDTH = '240px';
-  var SIDEBAR_COLLAPSED_WIDTH = '52px';
 
   try {
     leftSidebarCollapsed = localStorage.getItem('cambridge_dashboard_sidebar_left') === '1';
@@ -84,24 +82,17 @@
       document.querySelectorAll('.dashboard-layout').forEach(function(layout) {
         var hasLeft = !!layout.querySelector('.dashboard-left-sidebar');
         var hasRight = !!layout.querySelector('.dashboard-right-sidebar');
+        var isRightClosed = layout.classList.contains('dashboard-layout-right-closed');
+        var isPlayLayout = layout.classList.contains('dashboard-layout--crossword-play');
 
-        if (layout.classList.contains('dashboard-layout-right-closed')) {
-          layout.style.gridTemplateColumns = hasRight
-            ? 'minmax(0, 1fr) ' + SIDEBAR_COLLAPSED_WIDTH
-            : 'minmax(0, 1fr)';
+        layout.style.removeProperty('grid-template-columns');
+
+        if (isRightClosed || isPlayLayout || !hasRight) {
           if (hasLeft && appContainer) appContainer.style.paddingLeft = LEFT_SIDEBAR_WIDTH;
           return;
         }
-        if (!hasLeft && !hasRight) return;
-        if (hasLeft && hasRight) {
-          layout.style.gridTemplateColumns = 'minmax(0, 1fr) ' + RIGHT_SIDEBAR_WIDTH;
-          if (appContainer) appContainer.style.paddingLeft = LEFT_SIDEBAR_WIDTH;
-        } else if (hasLeft) {
-          layout.style.gridTemplateColumns = 'minmax(0, 1fr)';
-          if (appContainer) appContainer.style.paddingLeft = LEFT_SIDEBAR_WIDTH;
-        } else if (hasRight) {
-          layout.style.gridTemplateColumns = 'minmax(0, 1fr) ' + RIGHT_SIDEBAR_WIDTH;
-        }
+
+        if (hasLeft && appContainer) appContainer.style.paddingLeft = LEFT_SIDEBAR_WIDTH;
       });
     },
 

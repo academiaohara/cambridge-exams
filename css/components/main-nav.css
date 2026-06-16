@@ -777,6 +777,8 @@ button.stats-bar-item.is-active {
     min-width: 0;
     padding-top: 4px;
     padding-left: 14px;
+    max-width: none;
+    width: 100%;
   }
 
   .dashboard-center .bento-center-wrapper {
@@ -787,11 +789,6 @@ button.stats-bar-item.is-active {
   }
 
   .dashboard-right-sidebar {
-    position: sticky;
-    top: 0;
-    align-self: start;
-    max-height: 100vh;
-    overflow: visible;
     padding-top: 4px;
     padding-right: 16px;
     z-index: 5;

@@ -1660,12 +1660,7 @@ margin-top: -2px;
 @media (min-width: 769px) {
   .dashboard-center--crossword {
     max-height: none;
-  }
-
-  /* Center the crossword section within the available space between sidebars */
-  .dashboard-layout--crossword-scroll:not(.dashboard-layout--crossword-play) .dashboard-center--crossword {
     padding-left: 0;
-    align-items: center;
   }
 
   .dashboard-layout--crossword-scroll:not(.dashboard-layout--crossword-play) .cw-section-header {
@@ -1673,32 +1668,8 @@ margin-top: -2px;
   }
 
   .dashboard-layout--crossword-scroll:not(.dashboard-layout--crossword-play) .cw-page-content {
-    max-width: 720px;
     width: 100%;
-  }
-
-  .dashboard-layout--crossword-scroll:not(.dashboard-layout--crossword-play) {
-    padding-right: calc(var(--dashboard-right-sidebar-width) + 24px);
-    padding-bottom: 48px;
-  }
-
-  .dashboard-layout--crossword-scroll:not(.dashboard-layout--crossword-play) > .dashboard-right-sidebar,
-  .dashboard-layout--crossword-scroll:not(.dashboard-layout--crossword-play) > .dashboard-right-sidebar.dashboard-sidebar-shell {
-    position: fixed;
-    right: 0;
-    top: 0;
-    height: 100vh;
-    width: var(--dashboard-right-sidebar-width);
-    overflow-y: auto;
-    z-index: 50;
-    background: #f7f7f7;
-    padding-top: var(--dashboard-top-spacing, 28px);
-    box-sizing: border-box;
-  }
-
-  .dashboard-layout--crossword-play {
-    grid-template-columns: minmax(0, 1fr);
-    padding-right: 24px;
+    max-width: none;
   }
 
   .dashboard-center--crossword-play {
