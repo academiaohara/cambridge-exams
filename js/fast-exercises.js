@@ -6198,6 +6198,19 @@
       return count;
     },
 
+    // For phrasal verbs, collocations and idioms the clue is "definition | phrase with ___".
+    // Always show both parts so the user has enough context to guess the answer.
+    _cwFormatClueDisplay: function(clue) {
+      if (!clue) return '';
+      var sep = clue.indexOf(CW_CLUE_SEP);
+      if (sep === -1) return clue;
+      var definition = clue.slice(0, sep).trim();
+      var blankPart = clue.slice(sep + CW_CLUE_SEP.length).trim();
+      if (!definition) return blankPart;
+      if (!blankPart) return definition;
+      return definition + ' — ' + blankPart;
+    },
+
     _cwSanitizeClue: function(word, clue) {
       if (!clue || !word) return clue || '';
       var escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -6360,17 +6373,10 @@
         return '<span class="vocab-cw-type-badge vocab-cw-type-' + self._escapeHTML(type) + '">' + label + '</span>';
       };
 
-      var cwClueText = function(clue, solved) {
-        if (!clue) return '';
-        var sep = clue.indexOf(CW_CLUE_SEP);
-        if (sep !== -1) return solved ? clue : clue.slice(sep + CW_CLUE_SEP.length);
-        return clue;
-      };
-
       var buildClue = function(p) {
         return '<button type="button" class="vocab-cw-clue" data-dir="' + p.dir + '" data-num="' + p.number + '" data-r="' + p.row + '" data-c="' + p.col + '">' +
           '<span class="vocab-cw-clue-num">' + p.number + (p.dir === 'across' ? 'A' : 'D') + '</span> ' +
-          '<span class="vocab-cw-clue-text">' + self._escapeHTML(cwClueText(p.clue || p.definition || '', false)) + '</span>' +
+          '<span class="vocab-cw-clue-text">' + self._escapeHTML(self._cwFormatClueDisplay(p.clue || p.definition || '')) + '</span>' +
           cwTypeBadge(p.type) +
         '</button>';
       };
@@ -7039,9 +7045,7 @@
         return;
       }
       var wordSolved = FastExercises._cwIsWordComplete(activeWord, state);
-      var rawClue = activeWord.clue || activeWord.definition || '';
-      var sep = rawClue.indexOf(CW_CLUE_SEP);
-      var displayClue = (sep !== -1 && !wordSolved) ? rawClue.slice(sep + CW_CLUE_SEP.length) : rawClue;
+      var displayClue = FastExercises._cwFormatClueDisplay(activeWord.clue || activeWord.definition || '');
       var solvedHtml = '';
       if (wordSolved) {
         solvedHtml = ' <strong class="vocab-cw-active-word">→ ' + FastExercises._escapeHTML(activeWord.word.toLowerCase()) + '</strong>';
@@ -7168,8 +7172,7 @@
       if (!clueEl) return;
       var textEl = clueEl.querySelector('.vocab-cw-clue-text');
       if (!textEl) return;
-      // Show full clue (including definition before the separator) once the word is solved
-      textEl.textContent = word.clue || word.definition || '';
+      textEl.textContent = FastExercises._cwFormatClueDisplay(word.clue || word.definition || '');
     },
 
     // ── STANDALONE WORDLE SECTION ───────────────────────────────────────────
@@ -7189,13 +7192,9 @@
           dateSeed = dateSeed & dateSeed;
         }
         var wordEntry = pool[Math.abs(dateSeed) % pool.length];
-        var rawClue = wordEntry.clue || '';
-        var sep = rawClue.indexOf(CW_CLUE_SEP);
-        var displayClue = sep !== -1 ? rawClue.slice(sep + CW_CLUE_SEP.length) : rawClue;
-
         window._wdlState = {
           target: wordEntry.word.toUpperCase(),
-          clue: displayClue,
+          clue: self._cwFormatClueDisplay(wordEntry.clue || ''),
           guesses: [],
           results: [],
           solved: false,
