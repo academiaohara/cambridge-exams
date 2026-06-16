@@ -171,10 +171,10 @@
         if (segments.length >= 3 && /^cw\d+$/i.test(segments[2])) {
           var cwNum = parseInt(segments[2].replace(/^cw/i, ''), 10);
           if (!isNaN(cwNum) && cwNum >= 1) {
-            return { view: 'crosswordPlay', level: segments[1], cwIndex: cwNum - 1 };
+            return { view: 'crosswordPlay', level: segments[1].toUpperCase(), cwIndex: cwNum - 1 };
           }
         }
-        if (segments.length >= 2) return { view: 'crosswordList', level: segments[1] };
+        if (segments.length >= 2) return { view: 'crosswordList', level: segments[1].toUpperCase() };
         return { view: 'crosswordList' };
       }
       if (first === 'terms')                              return { view: 'terms' };

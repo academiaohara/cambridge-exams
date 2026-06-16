@@ -282,11 +282,17 @@
         Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openQuickstepsChooser();
       } else if (initialState.view === 'crosswordList') {
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openCrosswordList(null, initialState.level || null, { fromRoute: true });
+        if (typeof Landing !== 'undefined') Landing.hide();
+        var _cwAppEl = document.getElementById('app'); if (_cwAppEl) _cwAppEl.style.display = '';
+        if (typeof BentoGrid !== 'undefined') await BentoGrid.openCrosswordList(null, initialState.level || null, { fromRoute: true });
       } else if (initialState.view === 'crosswordPlay' && initialState.level && typeof initialState.cwIndex !== 'undefined') {
-        if (typeof FastExercises !== 'undefined') FastExercises._openMixedCrossword(initialState.level, initialState.cwIndex, { fromRoute: true });
+        if (typeof Landing !== 'undefined') Landing.hide();
+        var _cwAppEl = document.getElementById('app'); if (_cwAppEl) _cwAppEl.style.display = '';
+        if (typeof FastExercises !== 'undefined') await FastExercises._openMixedCrossword(initialState.level, initialState.cwIndex, { fromRoute: true });
       } else if (initialState.view === 'crosswordWordle') {
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openWordleSection({ fromRoute: true });
+        if (typeof Landing !== 'undefined') Landing.hide();
+        var _cwAppEl = document.getElementById('app'); if (_cwAppEl) _cwAppEl.style.display = '';
+        if (typeof BentoGrid !== 'undefined') await BentoGrid.openWordleSection({ fromRoute: true });
       } else if (initialState.view === 'fastExercises') {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
