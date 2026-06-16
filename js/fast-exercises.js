@@ -5696,12 +5696,22 @@
     },
 
     _cwShowClueTab: function(dir) {
+      var normalized = dir === 'down' ? 'down' : 'across';
       var wordList = document.getElementById('cw-word-list');
-      if (wordList) wordList.setAttribute('data-cw-words-dir', dir === 'down' ? 'down' : 'across');
+      if (wordList) wordList.setAttribute('data-cw-words-dir', normalized);
+      var cluesPanel = document.getElementById('cw-clues');
+      if (cluesPanel) cluesPanel.setAttribute('data-cw-clues-dir', normalized);
+      var cluesHeading = document.getElementById('cw-clues-heading');
+      if (cluesHeading) cluesHeading.textContent = normalized === 'down' ? 'Down' : 'Across';
       var tabA = document.getElementById('cw-strip-tab-across');
       var tabD = document.getElementById('cw-strip-tab-down');
-      if (tabA) tabA.classList.toggle('vocab-cw-strip-dir-btn-active', dir === 'across');
-      if (tabD) tabD.classList.toggle('vocab-cw-strip-dir-btn-active', dir === 'down');
+      if (tabA) tabA.classList.toggle('vocab-cw-strip-dir-btn-active', normalized === 'across');
+      if (tabD) tabD.classList.toggle('vocab-cw-strip-dir-btn-active', normalized === 'down');
+    },
+
+    _cwIsCellProtected: function(state, key) {
+      if (!state || !key) return false;
+      return !!(state.lockedCells[key] || state.revealedCells[key] || state.checkedCells[key] === 'correct');
     },
 
     _cwWordId: function(word) {
@@ -6291,6 +6301,9 @@
         return '<div class="vocab-cw-word-row" data-word-id="' + wordId + '" data-dir="' + word.dir + '" data-r="' + word.row + '" data-c="' + word.col + '">' +
           '<button type="button" class="vocab-cw-word-number" data-word-id="' + wordId + '" aria-label="Select word ' + word.number + '">' + word.number + '</button>' +
           '<div class="vocab-cw-cells">' + cellsHtml + '</div>' +
+          '<button type="button" class="vocab-cw-word-clear-btn" data-word-id="' + wordId + '" aria-label="Clear incorrect letters" title="Clear incorrect">' +
+            '<span class="material-symbols-outlined" aria-hidden="true">ink_eraser</span>' +
+          '</button>' +
         '</div>';
       };
 
@@ -6300,18 +6313,17 @@
       var headerDetail = (!isStandaloneCrossword && lessonTitle) ? lessonTitle : '';
 
       mainEl.innerHTML =
-        '<div class="vocab-cw-header vocab-cw-header--full">' +
-          '<button class="vocab-cw-btn vocab-cw-back-btn" title="Back" aria-label="Back" onclick="BentoGrid._cwPlayBack()">' + _symbolButtonContent('arrow_back', 'Back') + '</button>' +
+        '<div class="vocab-cw-header vocab-cw-header--full vocab-cw-header--duo vocab-cw-header--lvl-' + self._escapeHTML(levelId.toLowerCase()) + '">' +
+          '<button class="vocab-cw-back-btn vocab-cw-back-btn--duo" title="Back" aria-label="Back" onclick="BentoGrid._cwPlayBack()">' + _symbolButtonContent('arrow_back', 'Back') + '</button>' +
           '<div class="vocab-cw-header-title">' +
-            '<span class="material-symbols-outlined vocab-cw-header-icon">grid_on</span>' +
-            '<span class="vocab-cw-header-text">' + self._escapeHTML(headerTitle) + '</span>' +
-            (headerDetail ? '<span class="vocab-cw-header-sep">—</span><span class="vocab-cw-header-lesson">' + self._escapeHTML(headerDetail) + '</span>' : '') +
-            '<span class="vocab-cw-level-badge vocab-cw-lvl-' + self._escapeHTML(levelId.toLowerCase()) + '">' + self._escapeHTML(levelId) + '</span>' +
+            '<div class="vocab-cw-header-kicker">Crossword · ' + self._escapeHTML(levelId) + '</div>' +
+            '<div class="vocab-cw-header-text">' + self._escapeHTML(headerTitle) + '</div>' +
+            (headerDetail ? '<div class="vocab-cw-header-lesson">' + self._escapeHTML(headerDetail) + '</div>' : '') +
           '</div>' +
           '<div class="vocab-cw-header-btns">' +
-            '<button class="vocab-cw-btn vocab-cw-hint-btn" id="cw-hint-btn" title="Hint" aria-label="Hint">' + _mi('lightbulb') + '<span>Hint</span></button>' +
-            '<button class="vocab-cw-btn vocab-cw-solve-btn" id="cw-solve-btn" title="Solve" aria-label="Solve">' + _mi('auto_fix') + '<span>Solve</span></button>' +
-            '<button class="vocab-cw-btn vocab-cw-reset-btn" id="cw-reset-btn" title="Reset" aria-label="Reset">' + _mi('refresh') + '<span>Reset</span></button>' +
+            '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-hint-btn" id="cw-hint-btn" title="Hint" aria-label="Hint">' + _mi('lightbulb') + '</button>' +
+            '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-solve-btn" id="cw-solve-btn" title="Solve" aria-label="Solve">' + _mi('auto_fix') + '</button>' +
+            '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-reset-btn" id="cw-reset-btn" title="Reset" aria-label="Reset">' + _mi('refresh') + '</button>' +
           '</div>' +
         '</div>' +
         '<div class="vocab-cw-active-def vocab-cw-active-def--under-header" id="cw-active-def"><em>Click a word to begin</em></div>' +
@@ -6321,12 +6333,10 @@
               '<button type="button" class="vocab-cw-strip-dir-btn vocab-cw-strip-dir-btn-active" id="cw-strip-tab-across" aria-label="Across words" title="Across">' +
                 '<span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>' +
                 '<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>' +
-                '<span class="vocab-cw-strip-dir-label">Across</span>' +
               '</button>' +
               '<button type="button" class="vocab-cw-strip-dir-btn" id="cw-strip-tab-down" aria-label="Down words" title="Down">' +
                 '<span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>' +
                 '<span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span>' +
-                '<span class="vocab-cw-strip-dir-label">Down</span>' +
               '</button>' +
             '</div>' +
             '<div class="vocab-cw-word-list" id="cw-word-list" data-cw-words-dir="across">' +
@@ -6340,15 +6350,13 @@
               '</section>' +
             '</div>' +
           '</div>' +
-          '<aside class="vocab-cw-clues vocab-cw-clues--play" id="cw-clues" aria-label="Clues">' +
-            '<h3 class="vocab-cw-clues-heading">Clues</h3>' +
+          '<aside class="vocab-cw-clues vocab-cw-clues--play" id="cw-clues" data-cw-clues-dir="across" aria-label="Clues">' +
+            '<h3 class="vocab-cw-clues-heading" id="cw-clues-heading">Across</h3>' +
             '<div class="vocab-cw-clues-scroll">' +
-              '<div class="vocab-cw-clue-section-title">Across</div>' +
-              '<div class="vocab-cw-clue-section" id="cw-clues-across">' +
+              '<div class="vocab-cw-clue-section vocab-cw-clue-section--across" id="cw-clues-across">' +
                 acrossWords.map(buildClue).join('') +
               '</div>' +
-              '<div class="vocab-cw-clue-section-title">Down</div>' +
-              '<div class="vocab-cw-clue-section" id="cw-clues-down">' +
+              '<div class="vocab-cw-clue-section vocab-cw-clue-section--down" id="cw-clues-down">' +
                 downWords.map(buildClue).join('') +
               '</div>' +
             '</div>' +
@@ -6419,6 +6427,13 @@
       if (wordListEl) {
         wordListEl.addEventListener('click', function(e) {
           var target = e.target;
+          var clearBtn = target.closest('.vocab-cw-word-clear-btn');
+          if (clearBtn) {
+            e.stopPropagation();
+            var clearWordId = clearBtn.getAttribute('data-word-id');
+            if (clearWordId) FastExercises._cwClearWordIncorrect(clearWordId);
+            return;
+          }
           var wordId = target.getAttribute('data-word-id');
           if (!wordId) {
             var rowEl = target.closest('.vocab-cw-word-row');
@@ -6617,24 +6632,24 @@
         var wr = activeWord.dir === 'across' ? activeWord.row : activeWord.row + pos;
         var wc = activeWord.dir === 'across' ? activeWord.col + pos : activeWord.col;
         var wkey = wr + ',' + wc;
-        if (!state.revealedCells[wkey] && !state.lockedCells[wkey] && state.userGrid[wkey]) {
+        if (!FastExercises._cwIsCellProtected(state, wkey) && state.userGrid[wkey]) {
           delete state.userGrid[wkey];
           delete state.checkedCells[wkey];
           FastExercises._cwUpdateCell(wr, wc);
           FastExercises._cwUpdateStatus();
         } else if (pos > 0) {
-          // Move back, skipping locked/revealed cells, then delete
+          // Move back, skipping protected cells, then delete
           var newPos = pos - 1;
           while (newPos > 0) {
             var checkR = activeWord.dir === 'across' ? activeWord.row : activeWord.row + newPos;
             var checkC = activeWord.dir === 'across' ? activeWord.col + newPos : activeWord.col;
-            if (!state.revealedCells[checkR + ',' + checkC] && !state.lockedCells[checkR + ',' + checkC]) break;
+            if (!FastExercises._cwIsCellProtected(state, checkR + ',' + checkC)) break;
             newPos--;
           }
           var pr = activeWord.dir === 'across' ? activeWord.row : activeWord.row + newPos;
           var pc = activeWord.dir === 'across' ? activeWord.col + newPos : activeWord.col;
           var pkey = pr + ',' + pc;
-          if (!state.revealedCells[pkey] && !state.lockedCells[pkey]) {
+          if (!FastExercises._cwIsCellProtected(state, pkey)) {
             delete state.userGrid[pkey];
             delete state.checkedCells[pkey];
             FastExercises._cwUpdateCell(pr, pc);
@@ -6652,19 +6667,19 @@
         var wr2 = activeWord.dir === 'across' ? activeWord.row : activeWord.row + pos;
         var wc2 = activeWord.dir === 'across' ? activeWord.col + pos : activeWord.col;
         var ltKey = wr2 + ',' + wc2;
-        if (!state.revealedCells[ltKey] && !state.lockedCells[ltKey]) {
+        if (!FastExercises._cwIsCellProtected(state, ltKey)) {
           state.userGrid[ltKey] = e.key.toUpperCase();
           delete state.checkedCells[ltKey];
           FastExercises._cwUpdateCell(wr2, wc2);
           FastExercises._cwUpdateStatus();
           FastExercises._cwRefreshActiveDef();
         }
-        // Advance to next non-revealed, non-locked position
+        // Advance to next non-protected position
         var nextPos = pos + 1;
         while (nextPos < wordLen) {
           var nr3 = activeWord.dir === 'across' ? activeWord.row : activeWord.row + nextPos;
           var nc3 = activeWord.dir === 'across' ? activeWord.col + nextPos : activeWord.col;
-          if (!state.revealedCells[nr3 + ',' + nc3] && !state.lockedCells[nr3 + ',' + nc3]) break;
+          if (!FastExercises._cwIsCellProtected(state, nr3 + ',' + nc3)) break;
           nextPos++;
         }
         if (nextPos < wordLen) state.activeStripPos = nextPos;
@@ -6959,11 +6974,41 @@
       if (pos < 0 || pos >= wordLen) return;
       var wr = state.activeWord.dir === 'across' ? state.activeWord.row : state.activeWord.row + pos;
       var wc = state.activeWord.dir === 'across' ? state.activeWord.col + pos : state.activeWord.col;
-      if (state.revealedCells[wr + ',' + wc] || state.lockedCells[wr + ',' + wc]) return;
+      if (FastExercises._cwIsCellProtected(state, wr + ',' + wc)) return;
       state.activeStripPos = pos;
       FastExercises._cwSyncActiveCellHighlight();
       var stripInput = document.getElementById('cw-strip-input');
       if (stripInput) stripInput.focus();
+    },
+
+    _cwClearWordIncorrect: function(wordId) {
+      var state = window._cwState;
+      if (!state) return;
+      var word = FastExercises._cwFindWordById(wordId);
+      if (!word) return;
+      var changed = false;
+      for (var i = 0; i < word.word.length; i++) {
+        var wr = word.dir === 'across' ? word.row : word.row + i;
+        var wc = word.dir === 'across' ? word.col + i : word.col;
+        var key = wr + ',' + wc;
+        if (FastExercises._cwIsCellProtected(state, key)) continue;
+        if (state.userGrid[key] || state.checkedCells[key]) {
+          delete state.userGrid[key];
+          delete state.checkedCells[key];
+          FastExercises._cwUpdateCell(wr, wc);
+          changed = true;
+        }
+      }
+      if (!changed) return;
+      if (state.selectedWordId === wordId) {
+        var cells = FastExercises._cwGetWordCells(word);
+        var nextPos = 0;
+        while (nextPos < cells.length && FastExercises._cwIsCellProtected(state, cells[nextPos].cellKey)) nextPos++;
+        if (nextPos < cells.length) state.activeStripPos = nextPos;
+        FastExercises._cwSyncActiveCellHighlight();
+        FastExercises._cwRefreshActiveDef();
+      }
+      FastExercises._cwUpdateStatus();
     },
 
     // ── AUTO-CHECK (crossword) ──────────────────────────────────────────────
