@@ -5688,6 +5688,90 @@
       return pool;
     },
 
+    _cwGetGridCellClasses: function(state, key) {
+      var classes = ['vocab-cw-cell', 'vocab-cw-grid-cell'];
+      if (!state || !key) return classes.join(' ');
+      if (state.lockedCells[key]) classes.push('vocab-cw-cell-locked');
+      else if (state.revealedCells[key]) classes.push('vocab-cw-cell-revealed');
+      else if (state.checkedCells[key] === 'correct') classes.push('vocab-cw-cell-correct');
+      else if (state.checkedCells[key] === 'incorrect') classes.push('vocab-cw-cell-incorrect');
+      return classes.join(' ');
+    },
+
+    _cwCloseGridView: function() {
+      var modal = document.getElementById('cw-grid-modal');
+      if (modal) modal.remove();
+    },
+
+    _cwShowGridView: function() {
+      var state = window._cwState;
+      if (!state || !state.cwData) return;
+      var self = this;
+      self._cwCloseGridView();
+
+      var grid = state.cwData.grid;
+      var rows = state.cwData.rows;
+      var cols = state.cwData.cols;
+      var numberMap = {};
+      (state.cwData.placed || []).forEach(function(p) {
+        if (!p.number) return;
+        var key = p.row + ',' + p.col;
+        if (!numberMap[key] || p.number < numberMap[key]) numberMap[key] = p.number;
+      });
+
+      var gridHtml = '<div class="vocab-cw-grid-board" style="grid-template-columns: repeat(' + cols + ', 1fr);">';
+      for (var r = 0; r < rows; r++) {
+        for (var c = 0; c < cols; c++) {
+          if (grid[r][c] === null) {
+            gridHtml += '<div class="vocab-cw-grid-slot vocab-cw-grid-slot--empty" aria-hidden="true"></div>';
+            continue;
+          }
+          var cellKey = r + ',' + c;
+          var num = numberMap[cellKey];
+          var numHtml = num ? '<span class="vocab-cw-grid-cell-num">' + num + '</span>' : '';
+          var letter = state.userGrid[cellKey] || '';
+          gridHtml += '<button type="button" class="' + self._cwGetGridCellClasses(state, cellKey) + ' vocab-cw-grid-slot" data-r="' + r + '" data-c="' + c + '" data-cell-key="' + cellKey + '" aria-label="Cell ' + (r + 1) + ',' + (c + 1) + '">' +
+            numHtml + self._escapeHTML(letter) +
+          '</button>';
+        }
+      }
+      gridHtml += '</div>';
+
+      var modal = document.createElement('div');
+      modal.id = 'cw-grid-modal';
+      modal.className = 'vocab-cw-grid-overlay';
+      modal.innerHTML =
+        '<div class="vocab-cw-grid-modal" role="dialog" aria-modal="true" aria-label="Crossword grid">' +
+          '<div class="vocab-cw-grid-modal-header">' +
+            '<h2 class="vocab-cw-grid-modal-title">Crossword</h2>' +
+            '<button type="button" class="vocab-cw-grid-modal-close" aria-label="Close">' + _mi('close') + '</button>' +
+          '</div>' +
+          '<div class="vocab-cw-grid-modal-body">' + gridHtml + '</div>' +
+        '</div>';
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) self._cwCloseGridView();
+      });
+      var closeBtn = modal.querySelector('.vocab-cw-grid-modal-close');
+      if (closeBtn) closeBtn.addEventListener('click', function() { self._cwCloseGridView(); });
+
+      var cellEls = modal.querySelectorAll('.vocab-cw-grid-slot:not(.vocab-cw-grid-slot--empty)');
+      for (var i = 0; i < cellEls.length; i++) {
+        (function(cellEl) {
+          cellEl.addEventListener('click', function() {
+            var r2 = parseInt(cellEl.getAttribute('data-r'), 10);
+            var c2 = parseInt(cellEl.getAttribute('data-c'), 10);
+            self._cwCloseGridView();
+            if (isNaN(r2) || isNaN(c2)) return;
+            var words = state.cellMap[r2 + ',' + c2] || [];
+            if (words.length) self._cwSelectCell(r2, c2, words[0].dir);
+          });
+        })(cellEls[i]);
+      }
+
+      document.body.appendChild(modal);
+    },
+
     _cwShowClueTab: function(dir) {
       var normalized = dir === 'down' ? 'down' : 'across';
       var wordList = document.getElementById('cw-word-list');
@@ -6333,6 +6417,7 @@
                   '<span class="vocab-cw-dir-toggle-label">D</span>' +
                 '</button>' +
               '</div>' +
+              '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-grid-btn" id="cw-grid-btn" title="Grid view" aria-label="Grid view">' + _mi('grid_view') + '</button>' +
               '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-hint-btn" id="cw-hint-btn" title="Hint" aria-label="Hint">' + _mi('lightbulb') + '</button>' +
               '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-solve-btn" id="cw-solve-btn" title="Solve" aria-label="Solve">' + _mi('auto_fix') + '</button>' +
               '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-reset-btn" id="cw-reset-btn" title="Reset" aria-label="Reset">' + _mi('refresh') + '</button>' +
@@ -6475,6 +6560,8 @@
         });
       }
 
+      var gridBtn = document.getElementById('cw-grid-btn');
+      if (gridBtn) gridBtn.addEventListener('click', function() { FastExercises._cwShowGridView(); });
       var hintBtn = document.getElementById('cw-hint-btn');
       if (hintBtn) hintBtn.addEventListener('click', function() { FastExercises._cwHint(); });
       var solveBtn = document.getElementById('cw-solve-btn');
