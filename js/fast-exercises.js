@@ -6960,10 +6960,18 @@
           solvedHtml += '<em class="vocab-cw-active-example">&ldquo;' + FastExercises._escapeHTML(activeWord.example) + '&rdquo;</em>';
         }
       }
+      var typeBadgeHtml = '';
+      if (activeWord.type) {
+        var typeLabel = CW_TYPE_LABELS[activeWord.type] || activeWord.type;
+        typeBadgeHtml = '<span class="vocab-cw-type-badge vocab-cw-type-' + FastExercises._escapeHTML(activeWord.type) + '">' + typeLabel + '</span>';
+      }
       defEl.innerHTML =
         '<div class="vocab-cw-active-def-header">' +
           '<span class="vocab-cw-active-def-number">' + activeWord.number + '</span>' +
-          '<span class="vocab-cw-active-def-direction">' + (activeWord.dir === 'across' ? 'Across' : 'Down') + '</span>' +
+          '<div class="vocab-cw-active-def-meta">' +
+            '<span class="vocab-cw-active-def-direction">' + (activeWord.dir === 'across' ? 'Across' : 'Down') + '</span>' +
+            typeBadgeHtml +
+          '</div>' +
         '</div>' +
         '<p class="vocab-cw-active-def-text">' + FastExercises._escapeHTML(displayClue) + solvedHtml + '</p>';
     },
