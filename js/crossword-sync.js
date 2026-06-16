@@ -45,6 +45,8 @@
         wordsTotal:       wordsTotal,
         progressPct:      wordsTotal > 0 ? Math.round((wordsCorrect / wordsTotal) * 100) : (prev.progressPct || 0),
         hintsUsed:        data.hintsUsed        !== undefined ? data.hintsUsed : (prev.hintsUsed || 0),
+        lettersXp:        data.lettersXp        !== undefined ? data.lettersXp : (prev.lettersXp || 0),
+        earnedLetters:    data.earnedLetters    !== undefined ? data.earnedLetters : (prev.earnedLetters || {}),
         timeSpentSeconds: data.timeSpentSeconds !== undefined ? data.timeSpentSeconds : (prev.timeSpentSeconds || 0),
         cellState:        data.cellState        || prev.cellState || {},
         lockedCells:      data.lockedCells      !== undefined ? data.lockedCells  : (prev.lockedCells  || {}),

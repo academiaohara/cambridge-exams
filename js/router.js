@@ -66,6 +66,15 @@
           if (state.level) return '/crosswords/' + String(state.level).toLowerCase();
           return '/crosswords';
 
+        case 'crosswordPlay':
+          if (state.level && typeof state.cwIndex !== 'undefined') {
+            return '/crosswords/' + String(state.level).toLowerCase() + '/cw' + (state.cwIndex + 1);
+          }
+          return '/crosswords';
+
+        case 'crosswordWordle':
+          return '/crosswords/wordle';
+
         case 'terms':
           return '/terms';
 
@@ -156,6 +165,15 @@
       if (first === 'stats')                              return { view: 'gradeEvolution' };
       if (first === 'quicksteps')                         return { view: 'quicksteps' };
       if (first === 'crosswords') {
+        if (segments.length >= 2 && segments[1].toLowerCase() === 'wordle') {
+          return { view: 'crosswordWordle' };
+        }
+        if (segments.length >= 3 && /^cw\d+$/i.test(segments[2])) {
+          var cwNum = parseInt(segments[2].replace(/^cw/i, ''), 10);
+          if (!isNaN(cwNum) && cwNum >= 1) {
+            return { view: 'crosswordPlay', level: segments[1], cwIndex: cwNum - 1 };
+          }
+        }
         if (segments.length >= 2) return { view: 'crosswordList', level: segments[1] };
         return { view: 'crosswordList' };
       }
