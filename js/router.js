@@ -63,6 +63,7 @@
           return '/quicksteps';
 
         case 'crosswordList':
+          if (state.level) return '/crosswords/' + String(state.level).toLowerCase();
           return '/crosswords';
 
         case 'terms':
@@ -154,7 +155,10 @@
       if (first === 'premium')                            return { view: 'premium' };
       if (first === 'stats')                              return { view: 'gradeEvolution' };
       if (first === 'quicksteps')                         return { view: 'quicksteps' };
-      if (first === 'crosswords')                         return { view: 'crosswordList' };
+      if (first === 'crosswords') {
+        if (segments.length >= 2) return { view: 'crosswordList', level: segments[1] };
+        return { view: 'crosswordList' };
+      }
       if (first === 'terms')                              return { view: 'terms' };
       if (first === 'about')                              return { view: 'about' };
       if (first === 'contact')                            return { view: 'contact' };

@@ -148,8 +148,7 @@
         Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openQuickstepsChooser();
       } else if (state.view === 'crosswordList') {
-        Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openCrosswordList();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openCrosswordList(null, state.level || null);
       } else if (state.view === 'fastExercises') {
         Dashboard.render();
         if (typeof FastExercises !== 'undefined') FastExercises.openCategories();
@@ -279,9 +278,7 @@
         Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openQuickstepsChooser();
       } else if (initialState.view === 'crosswordList') {
-        history.replaceState({ view: 'dashboard' }, '', '/');
-        Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openCrosswordList();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openCrosswordList(null, initialState.level || null);
       } else if (initialState.view === 'fastExercises') {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
