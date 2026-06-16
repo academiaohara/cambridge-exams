@@ -5703,10 +5703,18 @@
       if (cluesPanel) cluesPanel.setAttribute('data-cw-clues-dir', normalized);
       var cluesHeading = document.getElementById('cw-clues-heading');
       if (cluesHeading) cluesHeading.textContent = normalized === 'down' ? 'Down' : 'Across';
+      var toggle = document.getElementById('cw-dir-toggle');
+      if (toggle) toggle.setAttribute('data-cw-dir', normalized);
       var tabA = document.getElementById('cw-strip-tab-across');
       var tabD = document.getElementById('cw-strip-tab-down');
-      if (tabA) tabA.classList.toggle('vocab-cw-strip-dir-btn-active', normalized === 'across');
-      if (tabD) tabD.classList.toggle('vocab-cw-strip-dir-btn-active', normalized === 'down');
+      if (tabA) {
+        tabA.classList.toggle('vocab-cw-dir-toggle-btn-active', normalized === 'across');
+        tabA.setAttribute('aria-selected', normalized === 'across' ? 'true' : 'false');
+      }
+      if (tabD) {
+        tabD.classList.toggle('vocab-cw-dir-toggle-btn-active', normalized === 'down');
+        tabD.setAttribute('aria-selected', normalized === 'down' ? 'true' : 'false');
+      }
     },
 
     _cwIsCellProtected: function(state, key) {
@@ -6321,14 +6329,14 @@
             (headerDetail ? '<div class="vocab-cw-header-lesson">' + self._escapeHTML(headerDetail) + '</div>' : '') +
           '</div>' +
           '<div class="vocab-cw-header-btns">' +
-            '<div class="vocab-cw-header-dir-row" role="toolbar" aria-label="Word direction">' +
-              '<button type="button" class="vocab-cw-strip-dir-btn vocab-cw-strip-dir-btn--header vocab-cw-strip-dir-btn-active" id="cw-strip-tab-across" aria-label="Across words" title="Across">' +
-                '<span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>' +
-                '<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>' +
+            '<div class="vocab-cw-dir-toggle" id="cw-dir-toggle" data-cw-dir="across" role="tablist" aria-label="Word direction">' +
+              '<button type="button" class="vocab-cw-dir-toggle-btn vocab-cw-dir-toggle-btn-active" id="cw-strip-tab-across" role="tab" aria-selected="true" aria-label="Across words" title="Across">' +
+                '<span class="material-symbols-outlined vocab-cw-dir-toggle-icon" aria-hidden="true">trending_flat</span>' +
+                '<span class="vocab-cw-dir-toggle-label">A</span>' +
               '</button>' +
-              '<button type="button" class="vocab-cw-strip-dir-btn vocab-cw-strip-dir-btn--header" id="cw-strip-tab-down" aria-label="Down words" title="Down">' +
-                '<span class="material-symbols-outlined" aria-hidden="true">arrow_upward</span>' +
-                '<span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span>' +
+              '<button type="button" class="vocab-cw-dir-toggle-btn" id="cw-strip-tab-down" role="tab" aria-selected="false" aria-label="Down words" title="Down">' +
+                '<span class="material-symbols-outlined vocab-cw-dir-toggle-icon" aria-hidden="true">south</span>' +
+                '<span class="vocab-cw-dir-toggle-label">D</span>' +
               '</button>' +
             '</div>' +
             '<button class="vocab-cw-btn vocab-cw-btn--duo vocab-cw-hint-btn" id="cw-hint-btn" title="Hint" aria-label="Hint">' + _mi('lightbulb') + '</button>' +
