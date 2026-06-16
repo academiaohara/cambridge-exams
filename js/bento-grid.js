@@ -1011,15 +1011,12 @@
 
         var cellClass = 'cw-path-cell';
         if (isCompleted) cellClass += ' cw-path-cell--done';
-        else if (isCurrent) cellClass += ' cw-path-cell--current';
         else if (isInProgress) cellClass += ' cw-path-cell--progress';
         else cellClass += ' cw-path-cell--pending';
+        if (isCurrent && !isCompleted) cellClass += ' cw-path-cell--current';
 
         html += '<button type="button" class="' + cellClass + '" onclick="FastExercises._openMixedCrossword(\'' + entry.levelId + '\',' + entry.cwIndex + ')" title="' + self._escapeHTML(entry.title) + '" aria-label="Crossword ' + levelNum + '">';
         html += '<span class="cw-path-cell-num">' + levelNum + '</span>';
-        if (isCompleted) {
-          html += '<span class="cw-path-cell-check" aria-hidden="true">' + _mi('check') + '</span>';
-        }
         html += '</button>';
       });
 
