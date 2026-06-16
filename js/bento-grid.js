@@ -976,51 +976,11 @@
       return html;
     },
 
-    _cwPathLayout: function() {
-      return {
-        trackWidth: 400,
-        nodeSize: 72,
-        rowGap: 84,
-        topPad: 88,
-        bottomPad: 64,
-        xRatios: [0.5, 0.84, 0.68, 0.24, 0.42, 0.78, 0.56, 0.18]
-      };
-    },
-
-    _cwPathNodePosition: function(idx) {
-      var layout = this._cwPathLayout();
-      var posIdx = idx % layout.xRatios.length;
-      var xRatio = layout.xRatios[posIdx];
-      return {
-        x: Math.round(layout.trackWidth * xRatio),
-        xPercent: (xRatio * 100).toFixed(2) + '%',
-        y: layout.topPad + idx * layout.rowGap,
-        posClass: 'cw-path-node--pos-' + posIdx
-      };
-    },
-
-    _buildCwPathSvgD: function(points) {
-      if (points.length < 2) return '';
-      var d = 'M ' + points[0].x + ' ' + points[0].y;
-      for (var i = 0; i < points.length - 1; i++) {
-        var p0 = points[i];
-        var p1 = points[i + 1];
-        var dy = p1.y - p0.y;
-        var ctrl1x = p0.x;
-        var ctrl1y = p0.y + dy * 0.35;
-        var ctrl2x = p1.x;
-        var ctrl2y = p0.y + dy * 0.65;
-        d += ' C ' + ctrl1x + ' ' + ctrl1y + ', ' + ctrl2x + ' ' + ctrl2y + ', ' + p1.x + ' ' + p1.y;
-      }
-      return d;
-    },
-
     _buildCrosswordPathMapHtml: function(entries, progress, levelId) {
       var self = this;
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var LEVEL_META = this._cwLevelMeta();
       var meta = LEVEL_META[levelId] || LEVEL_META['B2'];
-      var layout = this._cwPathLayout();
 
       var firstIncompleteIdx = -1;
       entries.forEach(function(entry, idx) {
@@ -1030,15 +990,7 @@
       });
       if (firstIncompleteIdx === -1) firstIncompleteIdx = entries.length - 1;
 
-      var points = [];
-      entries.forEach(function(entry, idx) {
-        points.push(self._cwPathNodePosition(idx));
-      });
-
-      var trackHeight = layout.topPad + Math.max(0, entries.length - 1) * layout.rowGap + layout.bottomPad;
       var nextLevel = self._getNextCwLevel(levelId);
-      if (nextLevel) trackHeight += 120;
-      var svgPath = this._buildCwPathSvgD(points);
 
       var html = '<div class="cw-path-map" data-level="' + levelId + '" style="' +
         '--cw-header-color:' + meta.headerColor + ';' +
@@ -1047,13 +999,7 @@
         '--cw-card-border:' + meta.cardBorder + ';' +
         '--cw-card-text:' + meta.cardText +
         '">';
-      html += '<div class="cw-path-track" style="height:' + trackHeight + 'px">';
-      if (svgPath) {
-        html += '<svg class="cw-path-svg" viewBox="0 0 ' + layout.trackWidth + ' ' + trackHeight + '" preserveAspectRatio="xMidYMin meet" aria-hidden="true">';
-        html += '<path d="' + svgPath + '"></path>';
-        html += '</svg>';
-      }
-      html += '<div class="cw-path-nodes">';
+      html += '<div class="cw-path-grid" role="list" aria-label="' + self._escapeHTML(levelId) + ' crosswords">';
 
       entries.forEach(function(entry, idx) {
         var pKey = entry.levelId + '_cw' + entry.cwIndex;
@@ -1061,32 +1007,27 @@
         var isCompleted = !!(prog && prog.completed);
         var isInProgress = !!(prog && !isCompleted && (prog.wordsCorrect || prog.wordsComplete || 0) > 0);
         var isCurrent = idx === firstIncompleteIdx;
-        var pos = self._cwPathNodePosition(idx);
-        var levelNum = idx + 1;
+        var levelNum = String(idx + 1).padStart(3, '0');
 
-        var nodeClass = 'cw-path-node ' + pos.posClass;
-        if (isCompleted) nodeClass += ' cw-path-node--done';
-        else if (isCurrent) nodeClass += ' cw-path-node--current';
-        else if (isInProgress) nodeClass += ' cw-path-node--progress';
-        else nodeClass += ' cw-path-node--pending';
+        var cellClass = 'cw-path-cell';
+        if (isCompleted) cellClass += ' cw-path-cell--done';
+        else if (isCurrent) cellClass += ' cw-path-cell--current';
+        else if (isInProgress) cellClass += ' cw-path-cell--progress';
+        else cellClass += ' cw-path-cell--pending';
 
-        html += '<div class="' + nodeClass + '" style="left:' + pos.xPercent + ';top:' + pos.y + 'px" onclick="FastExercises._openMixedCrossword(\'' + entry.levelId + '\',' + entry.cwIndex + ')" role="button" tabindex="0" title="' + self._escapeHTML(entry.title) + '">';
-        if (isCurrent) {
-          html += '<div class="cw-path-start-label">START</div>';
-        }
-        html += '<div class="cw-path-node-circle">';
-        html += '<span class="cw-path-node-label">' + levelNum + '</span>';
+        html += '<button type="button" class="' + cellClass + '" onclick="FastExercises._openMixedCrossword(\'' + entry.levelId + '\',' + entry.cwIndex + ')" title="' + self._escapeHTML(entry.title) + '" aria-label="Crossword ' + levelNum + '">';
+        html += '<span class="cw-path-cell-num">' + levelNum + '</span>';
         if (isCompleted) {
-          html += '<span class="cw-path-node-check" aria-hidden="true">' + _mi('check') + '</span>';
+          html += '<span class="cw-path-cell-check" aria-hidden="true">' + _mi('check') + '</span>';
         }
-        html += '</div>';
-        html += '</div>';
+        html += '</button>';
       });
+
+      html += '</div>';
 
       if (nextLevel) {
         var nextMeta = LEVEL_META[nextLevel] || LEVEL_META['B2'];
-        var nextY = layout.topPad + entries.length * layout.rowGap + 24;
-        html += '<div class="cw-path-next-level" style="top:' + nextY + 'px">' +
+        html += '<div class="cw-path-next-level">' +
           '<button type="button" class="cw-path-next-level-card" onclick="BentoGrid.openCrosswordList(null, \'' + nextLevel + '\')">' +
             '<span class="cw-path-next-level-kicker">Next Level</span>' +
             '<span class="cw-path-next-level-title">' + self._escapeHTML(nextMeta.label) + ' Crosswords</span>' +
@@ -1095,13 +1036,13 @@
         '</div>';
       }
 
-      html += '</div></div></div>';
+      html += '</div>';
       return html;
     },
 
     _scrollCrosswordPathToCurrent: function() {
       requestAnimationFrame(function() {
-        var current = document.querySelector('.cw-path-node--current');
+        var current = document.querySelector('.cw-path-cell--current');
         if (!current) return;
         var rect = current.getBoundingClientRect();
         var targetY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
