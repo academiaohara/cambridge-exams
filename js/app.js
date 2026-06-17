@@ -175,6 +175,11 @@
       } else if (state.view === 'courseSection' && state.section) {
         Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseSection(state.section, state.level, { fromRoute: true });
+      } else if (state.view === 'courseEtapa' && state.section && state.level && state.etapaKey) {
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') {
+          BentoGrid.openCourseSection(state.section, state.level, { fromRoute: true, etapaKey: state.etapaKey });
+        }
       } else if (state.view === 'courseTheory') {
         Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseSection('learning', state.level, { fromRoute: true });
@@ -331,6 +336,12 @@
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseSection(initialState.section, initialState.level, { fromRoute: true });
+      } else if (initialState.view === 'courseEtapa' && initialState.section && initialState.level && initialState.etapaKey) {
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') {
+          BentoGrid.openCourseSection(initialState.section, initialState.level, { fromRoute: true, etapaKey: initialState.etapaKey });
+        }
       } else if (initialState.view === 'courseTheory') {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();

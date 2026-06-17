@@ -3,7 +3,8 @@
 (function() {
   var NAV_ITEMS = [
     { id: 'home', label: 'Home', icon: 'home', color: '#1cb0f6', onclick: 'loadDashboard()' },
-    { id: 'course', label: 'Course', icon: 'auto_stories', color: '#ff9600', onclick: 'BentoGrid.openLessons()' },
+    { id: 'learning', label: 'Learning', icon: 'menu_book', color: '#3b82f6', onclick: 'BentoGrid.openCourseSection(\'learning\')' },
+    { id: 'vocabulary', label: 'Vocabulary', icon: 'translate', color: '#10b981', onclick: 'BentoGrid.openCourseSection(\'vocabulary\')' },
     { id: 'tests', label: 'Tests', icon: 'assignment', color: '#58cc02', onclick: 'BentoGrid.openTests()' },
     { id: 'crosswords', label: 'Crosswords', icon: 'grid_on', color: '#ff4b4b', onclick: 'BentoGrid.openCrosswordList()' },
     { id: 'wordle', label: 'Wordle', icon: 'casino', color: '#a855f7', onclick: 'BentoGrid.openWordleSection()' },
@@ -12,7 +13,8 @@
 
   var MOBILE_BOTTOM_ITEMS = [
     { id: 'home', label: 'Home', icon: 'home', color: '#1cb0f6', onclick: 'BentoGrid.goMobileHome()' },
-    { id: 'course', label: 'Course', icon: 'auto_stories', color: '#ff9600', onclick: 'BentoGrid.openLessons()' },
+    { id: 'learning', label: 'Learning', icon: 'menu_book', color: '#3b82f6', onclick: 'BentoGrid.openCourseSection(\'learning\')' },
+    { id: 'vocabulary', label: 'Vocabulary', icon: 'translate', color: '#10b981', onclick: 'BentoGrid.openCourseSection(\'vocabulary\')' },
     { id: 'tests', label: 'Tests', icon: 'assignment', color: '#58cc02', onclick: 'BentoGrid.openTests()' },
     { id: 'dictionaries', label: 'Dict', icon: 'menu_book', color: '#6366f1', onclick: 'BentoGrid.openMobileDictionaries()' },
     { id: 'more', label: 'More', icon: 'menu', color: '#777777', onclick: 'MainNav.toggleMobileMenu()' }
@@ -34,7 +36,10 @@
     var view = (typeof AppState !== 'undefined') ? AppState.currentView : 'dashboard';
     if (view === 'dashboard') return 'home';
     if (view === 'subpage' || view === 'testsHub') return 'tests';
-    if (view === 'course' || view === 'courseBlock' || view === 'courseUnit' || view === 'courseTheory') return 'course';
+    if (view === 'course' || view === 'courseBlock' || view === 'courseUnit' || view === 'courseTheory' || view === 'courseEtapa') {
+      var courseSection = (typeof BentoGrid !== 'undefined' && BentoGrid._courseSection) ? BentoGrid._courseSection : 'learning';
+      return courseSection === 'vocabulary' ? 'vocabulary' : 'learning';
+    }
     if (view === 'crosswordList' || view === 'crosswordPlay') return 'crosswords';
     if (view === 'wordleList' || view === 'wordlePlay') return 'wordle';
     if (view === 'fastExercises' || view === 'fastExerciseCategory' || view === 'fastExercisePoint') return 'dictionaries';
