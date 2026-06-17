@@ -200,28 +200,37 @@
       overlay.innerHTML =
         '<div class="tests-mode-help-modal" role="dialog" aria-modal="true" aria-labelledby="tests-mode-help-title">' +
           '<button type="button" class="tests-mode-help-close" onclick="BentoGrid.closeTestsModeHelp()" aria-label="Close">' + _mi('close') + '</button>' +
-          '<h2 id="tests-mode-help-title" class="tests-mode-help-title">Practice vs Simulation</h2>' +
+          '<div class="tests-mode-help-hero">' +
+            '<img src="Assets/images/Cabezasune.svg" alt="" class="tests-mode-help-mascot" aria-hidden="true">' +
+            '<div class="tests-mode-help-speech">' +
+              '<p class="tests-mode-help-kicker">Test modes</p>' +
+              '<h2 id="tests-mode-help-title" class="tests-mode-help-title">Practice vs Simulation</h2>' +
+            '</div>' +
+          '</div>' +
           '<div class="tests-mode-help-cards">' +
             '<div class="tests-mode-help-card tests-mode-help-card--practice">' +
-              '<div class="tests-mode-help-card-head">' + _mi('edit_note') + '<span>Practice</span></div>' +
-              '<ul>' +
-                '<li>No time limits — learn at your own pace</li>' +
-                '<li>Pick any part or section freely</li>' +
-                '<li>AI feedback on writing tasks</li>' +
-                '<li>Ideal for focused study and revision</li>' +
+              '<div class="tests-mode-help-card-badge">' + _mi('edit_note') + '</div>' +
+              '<div class="tests-mode-help-card-head"><span>Practice</span></div>' +
+              '<ul class="tests-mode-help-list">' +
+                '<li><span class="tests-mode-help-check">' + _mi('check') + '</span>No time limits — learn at your own pace</li>' +
+                '<li><span class="tests-mode-help-check">' + _mi('check') + '</span>Pick any part or section freely</li>' +
+                '<li><span class="tests-mode-help-check">' + _mi('check') + '</span>AI feedback on writing tasks</li>' +
+                '<li><span class="tests-mode-help-check">' + _mi('check') + '</span>Ideal for focused study and revision</li>' +
               '</ul>' +
             '</div>' +
             '<div class="tests-mode-help-card tests-mode-help-card--simulation">' +
-              '<div class="tests-mode-help-card-head">' + _mi('timer') + '<span>Simulation</span></div>' +
-              '<ul>' +
-                '<li>Timed exam conditions like the real test</li>' +
-                '<li>Full exam mode with section timers</li>' +
-                '<li>Limited daily exam attempts</li>' +
-                '<li>Best for exam-day preparation</li>' +
+              '<div class="tests-mode-help-card-badge">' + _mi('timer') + '</div>' +
+              '<div class="tests-mode-help-card-head"><span>Simulation</span></div>' +
+              '<ul class="tests-mode-help-list">' +
+                '<li><span class="tests-mode-help-check">' + _mi('check') + '</span>Timed exam conditions like the real test</li>' +
+                '<li><span class="tests-mode-help-check">' + _mi('check') + '</span>Full exam mode with section timers</li>' +
+                '<li><span class="tests-mode-help-check">' + _mi('check') + '</span>Limited daily exam attempts</li>' +
+                '<li><span class="tests-mode-help-check">' + _mi('check') + '</span>Best for exam-day preparation</li>' +
               '</ul>' +
             '</div>' +
           '</div>' +
           '<p class="tests-mode-help-foot">Switch anytime with the toggle above. Your progress is saved in both modes.</p>' +
+          '<button type="button" class="tests-mode-help-cta" onclick="BentoGrid.closeTestsModeHelp()">Got it!</button>' +
         '</div>';
 
       overlay.addEventListener('click', function(e) {
