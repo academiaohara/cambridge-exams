@@ -2,7 +2,7 @@
 (function() {
   var VALID_LEVELS = ['b1', 'b2', 'c1', 'c2'];
   var VALID_SECTIONS = ['reading', 'listening', 'writing', 'speaking'];
-  var COURSE_CATEGORIES = ['phrasal-verbs', 'collocations', 'word-formation'];
+  var COURSE_CATEGORIES = ['phrasal-verbs', 'idioms', 'word-formation'];
   var TIPS_SKILLS = ['reading', 'listening', 'writing', 'speaking'];
 
   window.Router = {

@@ -5,9 +5,8 @@
   var STORAGE_KEY = 'cambridge_fast_exercises';
   var CATEGORIES = [
     { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6' },
-    { id: 'collocations', icon: 'format_quote', name: 'Collocations', color: '#8b5cf6' },
-    { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48' },
-    { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b' }
+    { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b' },
+    { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48' }
   ];
 
   // Vocabulary flashcard constants
@@ -425,7 +424,7 @@
         legendHtml = '';
       }
 
-      var _isCourseCategory = ['phrasal-verbs', 'collocations', 'word-formation'].indexOf(categoryId) !== -1;
+      var _isCourseCategory = ['phrasal-verbs', 'idioms', 'word-formation'].indexOf(categoryId) !== -1;
       var _backFn = _isCourseCategory ? 'BentoGrid.openCourseSection(\'vocabulary\')' : 'FastExercises.openCategories()';
 
       content.innerHTML =

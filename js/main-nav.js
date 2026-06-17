@@ -478,7 +478,7 @@
         },
         {
           title: 'Vocabulary',
-          status: 'Phrasal verbs, collocations & word formation',
+          status: 'Units, phrasal verbs & idioms',
           statusClass: '',
           onclick: 'BentoGrid.openCourseSection(\'vocabulary\')',
           icon: 'translate',

@@ -364,7 +364,7 @@
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Vocabulary</div>' +
             '<div id="bento-vocabulary-prog-desc" class="bento-course-prog"></div>' +
-            '<div class="bento-card-hover-info">Phrasal verbs, collocations and word formation practice.</div>' +
+            '<div class="bento-card-hover-info">Vocabulary units, phrasal verbs, idioms and word formation practice.</div>' +
           '</div>' +
         '</div>' +
 
@@ -657,13 +657,13 @@
         var results = await Promise.all([
           fetch('data/Course/' + level + '/index.json').then(function(r) { return r.ok ? r.json() : null; }).catch(function() { return null; }),
           (typeof FastExercises !== 'undefined') ? FastExercises._loadCategoryData('phrasal-verbs') : Promise.resolve(null),
-          (typeof FastExercises !== 'undefined') ? FastExercises._loadCategoryData('collocations') : Promise.resolve(null),
+          (typeof FastExercises !== 'undefined') ? FastExercises._loadCategoryData('idioms') : Promise.resolve(null),
           (typeof FastExercises !== 'undefined') ? FastExercises._loadCategoryData('word-formation') : Promise.resolve(null)
         ]);
 
         var courseIndex = results[0];
         var pvData = results[1];
-        var collocData = results[2];
+        var idData = results[2];
         var wfData = results[3];
 
         var courseProg = {};
@@ -685,7 +685,7 @@
         }
 
         var pvPct = (pvData && pvData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getLevelPercent('phrasal-verbs', level, pvData.levels) : 0;
-        var collocPct = (collocData && collocData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getLevelPercent('collocations', level, collocData.levels) : 0;
+        var idPct = (idData && idData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getLevelPercent('idioms', level, idData.levels) : 0;
         var wfPct = (wfData && wfData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getLevelPercent('word-formation', level, wfData.levels) : 0;
 
         if (learningEl) {
@@ -697,7 +697,7 @@
           vocabEl.innerHTML =
             '<div class="bcp-row"><span class="bcp-label">Units</span><span class="bcp-dots"></span><span class="bcp-pct">' + vocabPct + '%</span></div>' +
             '<div class="bcp-row"><span class="bcp-label">Phrasal Verbs</span><span class="bcp-dots"></span><span class="bcp-pct">' + pvPct + '%</span></div>' +
-            '<div class="bcp-row"><span class="bcp-label">Collocations</span><span class="bcp-dots"></span><span class="bcp-pct">' + collocPct + '%</span></div>' +
+            '<div class="bcp-row"><span class="bcp-label">Idioms</span><span class="bcp-dots"></span><span class="bcp-pct">' + idPct + '%</span></div>' +
             '<div class="bcp-row"><span class="bcp-label">Word Formation</span><span class="bcp-dots"></span><span class="bcp-pct">' + wfPct + '%</span></div>';
         }
       } catch(e) {}
