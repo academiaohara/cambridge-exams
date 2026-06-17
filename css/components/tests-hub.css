@@ -1,8 +1,23 @@
 /* css/components/tests-hub.css — Unified Tests hub */
 
-.dashboard-center--tests .cw-section-header {
+.tests-hub-section {
+  min-height: 0;
+}
+
+.subpage-header--tests {
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.subpage-header--tests .subpage-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subpage-header--tests .subpage-title .material-symbols-outlined {
+  font-size: 1.5rem;
+  color: #58cc02;
 }
 
 .tests-mode-toggle-wrap {
@@ -730,7 +745,7 @@
     order: 3;
   }
 
-  .dashboard-center--tests .cw-section-header {
+  .subpage-header--tests {
     justify-content: center;
   }
 

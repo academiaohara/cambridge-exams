@@ -86,22 +86,15 @@
         history.pushState(testsState, '', Router.stateToPath(testsState));
       }
 
-      var leftSidebarContent = '';
+      var sidebars = { left: '', right: '' };
       if (typeof BentoGrid !== 'undefined') {
-        leftSidebarContent = BentoGrid._buildDashboardSidebars(exams).left;
+        sidebars = BentoGrid._buildDashboardSidebars(exams);
       }
-      var rightSidebarContent = BentoGrid._buildTestsStatsSidebarHtml(exams);
-
-      var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
-        ? MainNav.buildMobileTopBarHtml() : '';
-      var mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
-        ? MainNav.buildMobileBottomNavHtml('tests')
-        : '';
+      var leftSidebarContent = sidebars.left;
+      var rightSidebarContent = sidebars.right;
 
       var headerKicker = 'TESTS';
       var headerTitle = 'Choose a Level';
-      var headerClass = ' cw-section-header--picker';
-      var headerStyle = '';
       var backOnclick = 'loadDashboard()';
 
       if (activeExamId) {
@@ -109,37 +102,31 @@
         var examNum = examMatch ? examMatch.number : activeExamId.replace('Test', '');
         headerKicker = (activeLevel || level).toUpperCase() + ' · TEST ' + examNum;
         headerTitle = 'Choose a Section';
-        headerClass = ' cw-section-header--level';
-        headerStyle = ' style="--cw-header-color:' + (LEVEL_META[activeLevel || level] || LEVEL_META['B2']).headerColor + '"';
         backOnclick = 'BentoGrid.openTests(\'' + (activeLevel || level) + '\')';
       } else if (activeLevel) {
         var meta = LEVEL_META[activeLevel] || LEVEL_META['B2'];
         headerKicker = activeLevel.toUpperCase() + ' · ' + exams.filter(function(e) { return e.status === 'available'; }).length + ' TESTS';
         headerTitle = meta.difficulty;
-        headerClass = ' cw-section-header--level';
-        headerStyle = ' style="--cw-header-color:' + meta.headerColor + '"';
         backOnclick = 'BentoGrid.openTests()';
       }
 
       content.innerHTML =
-        '<div class="dashboard-layout dashboard-layout--crossword-scroll">' +
+        '<div class="dashboard-layout">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
-          '<div class="dashboard-center dashboard-center--crossword dashboard-center--tests" id="testsDashboardCenter">' +
-            mobileTopBarHtml +
-            '<div class="cw-section-header' + headerClass + '"' + headerStyle + '>' +
-              '<button class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '</button>' +
-              '<div class="cw-section-header-text">' +
-                '<div class="cw-section-kicker">' + headerKicker + '</div>' +
-                '<div class="cw-section-title">' + headerTitle + '</div>' +
+          '<div class="dashboard-center">' +
+            '<div class="fe-section tests-hub-section">' +
+              '<div class="subpage-header subpage-header--tests">' +
+                '<button class="subpage-back-btn" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '<span class="icon-btn-label">Back</span></button>' +
+                '<div class="subpage-header-titles">' +
+                  '<div class="subpage-title">' + _mi('assignment') + ' ' + _escape(headerTitle) + '</div>' +
+                  '<div class="subpage-subtitle">' + _escape(headerKicker) + '</div>' +
+                '</div>' +
+                BentoGrid._buildTestsModeToggleHtml() +
               '</div>' +
-              BentoGrid._buildTestsModeToggleHtml() +
-            '</div>' +
-            '<div class="cw-page-content" id="testsCenterScroll">' +
               '<div class="tests-hub-page" id="testsHubPage">' + BentoGrid._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
-            mobileNavHtml +
           '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent)
@@ -148,6 +135,7 @@
 
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
+      if (typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
       if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('tests');
 
       var hubPage = document.getElementById('testsHubPage');
