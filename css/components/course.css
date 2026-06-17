@@ -6632,3 +6632,244 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     font-size: 0.92rem;
   }
 }
+
+/* ── Duolingo-style lesson focus (Learning / Vocabulary exercises) ─────── */
+
+.dashboard-layout--lesson-focus {
+  grid-template-columns: minmax(0, 1fr) !important;
+  padding: 0 !important;
+  max-width: none;
+}
+
+.dashboard-layout--lesson-focus .dashboard-left-sidebar,
+.dashboard-layout--lesson-focus .dashboard-left-sidebar.dashboard-sidebar-shell {
+  display: none !important;
+}
+
+.course-center--lesson-focus {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - var(--dashboard-top-spacing, 28px));
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px 24px;
+  box-sizing: border-box;
+}
+
+.cu-lesson-chrome {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 4px 12px;
+  flex-shrink: 0;
+}
+
+.cu-lesson-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cu-lesson-close:hover {
+  background: rgba(148, 163, 184, 0.12);
+  color: #64748b;
+}
+
+.cu-lesson-close .material-symbols-outlined {
+  font-size: 1.4rem;
+}
+
+.cu-lesson-progress-wrap {
+  flex: 1;
+  height: 16px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.cu-lesson-progress-fill {
+  height: 100%;
+  background: #58cc02;
+  border-radius: 999px;
+  transition: width 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cu-lesson-hearts {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.cu-lesson-heart .material-symbols-outlined {
+  font-size: 1.35rem;
+  color: #ff4b4b;
+  font-variation-settings: 'FILL' 1;
+}
+
+.course-center--lesson-focus .course-unit-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.course-center--lesson-focus .cu-section.cu-exercise {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cu-lesson-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
+  padding: 8px 0 0;
+}
+
+.cu-lesson-instruction {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #3c3c3c;
+  text-align: center;
+  line-height: 1.35;
+  margin: 0;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+.course-center--lesson-focus .cu-section-title,
+.course-center--lesson-focus .cu-ex-instructions {
+  display: none;
+}
+
+.course-center--lesson-focus .cu-ex-items,
+.course-center--lesson-focus .cu-ex-wordbank,
+.course-center--lesson-focus .cu-matching-grid,
+.course-center--lesson-focus .cu-passage-wrap {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 2px 16px rgba(45, 46, 95, 0.06);
+  border: 2px solid #e5e7eb;
+}
+
+.course-center--lesson-focus .cu-section-nav {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: none;
+}
+
+.course-center--lesson-focus .cu-section-nav .cu-nav-prev,
+.course-center--lesson-focus .cu-section-nav .cu-nav-next {
+  border-radius: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.82rem;
+}
+
+.course-center--lesson-focus .cu-ex-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+  width: 100%;
+}
+
+.course-center--lesson-focus .cu-section-nav-center {
+  width: 100%;
+}
+
+.course-center--lesson-focus .cu-section-nav-center .cu-ex-footer {
+  width: 100%;
+}
+
+.cu-lesson-secondary-btn {
+  background: transparent !important;
+  border: none !important;
+  color: #afafaf !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.78rem !important;
+  padding: 12px 8px !important;
+  min-height: auto !important;
+  box-shadow: none !important;
+}
+
+.cu-lesson-secondary-btn:hover {
+  color: #8a8a8a !important;
+  background: transparent !important;
+}
+
+.cu-lesson-secondary-btn .material-symbols-outlined {
+  display: none;
+}
+
+.cu-lesson-primary-btn {
+  flex: 1;
+  max-width: 280px;
+  margin-left: auto;
+  justify-content: center;
+  background: #e5e7eb !important;
+  color: #afafaf !important;
+  border: none !important;
+  border-radius: 16px !important;
+  padding: 16px 24px !important;
+  min-height: 52px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.9rem !important;
+  box-shadow: none !important;
+}
+
+.cu-lesson-primary-btn:not(:disabled) {
+  background: #58cc02 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 0 #46a302 !important;
+}
+
+.cu-lesson-primary-btn:not(:disabled):hover {
+  background: #61d802 !important;
+}
+
+.cu-lesson-primary-btn:not(:disabled):active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #46a302 !important;
+}
+
+@media (max-width: 768px) {
+  .course-center--lesson-focus {
+    max-width: 100%;
+    padding: 0 12px 16px;
+  }
+
+  .cu-lesson-instruction {
+    font-size: 1.2rem;
+  }
+
+  .cu-lesson-primary-btn {
+    max-width: none;
+  }
+}

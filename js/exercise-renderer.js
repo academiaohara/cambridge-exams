@@ -1,6 +1,43 @@
 // js/exercise-renderer.js
 (function() {
   window.ExerciseRenderer = {
+    _buildExerciseLayoutShell: function(centerHtml, toolsBarHTML, showTools) {
+      var level = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1';
+      var exams = window.EXAMS_DATA[level] || [];
+      var leftSidebar = '';
+      if (typeof BentoGrid !== 'undefined' && BentoGrid._buildDashboardSidebars) {
+        leftSidebar = BentoGrid._buildDashboardSidebars(exams).left;
+      }
+
+      var leftShell = (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell)
+        ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebar)
+        : '<div class="dashboard-left-sidebar" id="dashboardLeftSidebar">' + leftSidebar + '</div>';
+
+      var layoutClass = 'dashboard-layout dashboard-layout--exercise';
+      if (!showTools) layoutClass += ' dashboard-layout-right-closed';
+
+      var rightShell = '';
+      if (showTools) {
+        var toolsWrap = '<div class="exercise-tools-sidebar-wrap">' + toolsBarHTML + '</div>';
+        rightShell = (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell)
+          ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebarTools', toolsWrap)
+          : '<div class="dashboard-right-sidebar dashboard-right-sidebar--tools" id="dashboardRightSidebarTools">' +
+              '<div class="dashboard-sidebar-content">' + toolsWrap + '</div></div>';
+      }
+
+      return '<div class="' + layoutClass + '">' +
+        leftShell +
+        '<div class="dashboard-center dashboard-center--exercise">' + centerHtml + '</div>' +
+        rightShell +
+      '</div>';
+    },
+
+    _applyExerciseDashboardChrome: function() {
+      if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+      if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
+      if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('tests');
+    },
+
     render: async function(exercise, examId, section, part) {
       const content = document.getElementById('main-content');
       const partConfig = CONFIG.getPartConfig(section, part);
@@ -240,7 +277,7 @@
       let toolsBarHTML = '';
       if (showTools) {
         toolsBarHTML = `
-          <div class="tools-sidebar" id="tools-sidebar">
+          <div class="tools-sidebar tools-sidebar--right-column" id="tools-sidebar">
             <div class="sidebar-panel" id="sidebar-panel">
               <div class="sidebar-panel-header">
                 <span class="sidebar-panel-title" id="sidebar-panel-title"></span>
@@ -276,8 +313,8 @@
           </div>`;
       }
 
-      let html = `
-        <div class="exercise-page-wrapper no-sidebar">
+      const exerciseInnerHtml = `
+        <div class="exercise-page-wrapper">
           <div class="exercise-container">
             <div class="exercise-header">
               <div class="exercise-title">
@@ -349,11 +386,14 @@
             <div class="exercise-footer">
               ${this.renderExerciseFooter(displayPart, totalParts)}
             </div>
-            ${toolsBarHTML}
           </div>
         </div>`;
+
+      let html = this._buildExerciseLayoutShell(exerciseInnerHtml, toolsBarHTML, showTools);
       
       content.innerHTML = html;
+      
+      this._applyExerciseDashboardChrome();
       
       // Initialize type-specific listeners (JS already loaded above)
       this.initTypeSpecificListeners(partConfig.type);

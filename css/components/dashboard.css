@@ -2899,3 +2899,66 @@
     bottom: calc(52px + env(safe-area-inset-bottom));
   }
 }
+
+/* ── Test exercise 3-column layout (nav + exercise + tools) ───────────── */
+
+.dashboard-layout--exercise {
+  align-items: stretch;
+}
+
+.dashboard-center--exercise {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.dashboard-center--exercise .exercise-page-wrapper {
+  width: 100%;
+}
+
+.dashboard-center--exercise .exercise-container {
+  margin-bottom: 24px;
+}
+
+.dashboard-right-sidebar--tools,
+#dashboardRightSidebarTools {
+  position: sticky;
+  top: var(--dashboard-top-spacing, 28px);
+  align-self: start;
+  max-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 24px);
+  overflow: hidden;
+}
+
+.exercise-tools-sidebar-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 320px;
+}
+
+@media (min-width: 901px) {
+  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) {
+    padding-right: 24px;
+  }
+
+  .dashboard-layout--exercise .dashboard-center--exercise {
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout--exercise .dashboard-right-sidebar--tools,
+  .dashboard-layout--exercise #dashboardRightSidebarTools,
+  .dashboard-layout--exercise .dashboard-right-sidebar.dashboard-sidebar-shell {
+    display: flex !important;
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    order: 3;
+    padding-right: 0;
+  }
+
+  .dashboard-layout--exercise .exercise-tools-sidebar-wrap {
+    min-height: auto;
+  }
+}

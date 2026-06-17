@@ -1199,3 +1199,119 @@
     gap: 6px;
   }
 }
+
+/* =============================================
+   RIGHT COLUMN TOOLS (test exercise sidebar)
+   ============================================= */
+.tools-sidebar--right-column {
+  position: static;
+  bottom: auto;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(45, 46, 95, 0.08);
+  box-shadow: 0 4px 20px rgba(45, 46, 95, 0.08);
+  background: rgba(255, 255, 255, 0.98);
+  min-height: 320px;
+  height: 100%;
+}
+
+.tools-sidebar--right-column .sidebar-rail {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 16px 12px;
+  background: #f7f7f7;
+  border-top: none;
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+  order: 2;
+  width: 72px;
+  flex-shrink: 0;
+}
+
+.tools-sidebar--right-column {
+  flex-direction: row-reverse;
+}
+
+.tools-sidebar--right-column .sidebar-tools-list {
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.tools-sidebar--right-column .sidebar-tool-btn {
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  padding: 0;
+}
+
+.tools-sidebar--right-column .sidebar-tool-btn .tool-label {
+  display: none;
+}
+
+.tools-sidebar--right-column .sidebar-panel {
+  order: 1;
+  flex: 1;
+  min-width: 0;
+  max-height: none;
+  border-top: none;
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.tools-sidebar--right-column.open .sidebar-panel {
+  display: flex;
+}
+
+.tools-sidebar--right-column:not(.open) .sidebar-panel {
+  display: none;
+}
+
+.tools-sidebar--right-column:not(.open) .sidebar-rail {
+  width: 100%;
+  border-left: none;
+}
+
+.tools-sidebar--right-column .active-tool-content {
+  flex: 1;
+  overflow-y: auto;
+  max-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 120px);
+}
+
+.tools-sidebar--right-column .sidebar-panel-header {
+  padding: 12px 14px 8px;
+}
+
+@media (max-width: 768px) {
+  .tools-sidebar--right-column {
+    position: sticky;
+    bottom: 0;
+    flex-direction: column;
+    margin: 16px -14px -14px;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .tools-sidebar--right-column .sidebar-rail {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    order: 2;
+  }
+
+  .tools-sidebar--right-column .sidebar-tools-list {
+    flex-direction: row;
+  }
+
+  .tools-sidebar--right-column .sidebar-panel {
+    order: 1;
+    max-height: 45vh;
+  }
+}

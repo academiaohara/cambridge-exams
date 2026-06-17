@@ -1501,6 +1501,7 @@
         ? 'BentoGrid.openCourseEtapa(\'' + courseSection + '\', \'' + level + '\', \'' + blockKey + '\')'
         : 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')';
       var backFn = courseBackFn;
+      BentoGrid._courseUnitBackFn = backFn;
       var backLabel = 'Units';
       var unitHasProgress = !!(BentoGrid._getCourseSectionProgress(level)[unitId] && Object.keys(BentoGrid._getCourseSectionProgress(level)[unitId]).length);
       var resetUnitBtn = (unitData.type !== 'progress_test' && unitHasProgress)
@@ -1567,9 +1568,10 @@
         sectionStartIdx = startSection;
       }
       BentoGrid._initCuSectionNav(sectionStartIdx);
+      BentoGrid._updateCuLessonFocus(sectionStartIdx);
 
       // Update URL to reflect the current unit and section
-      var cuBlockKey = blockNum ? String(blockNum) : '1';
+      var cuBlockKey = blockKey || '1';
       BentoGrid._currentBlockKey = cuBlockKey;
       BentoGrid._currentUnitFilePath = filePath;
       // filePath is stored in state (not part of the URL path) so popstate can reload the unit without needing the index
@@ -3133,10 +3135,10 @@
 
     _renderCuExFooter: function(secId) {
       return '<div class="cu-ex-footer">' +
-        '<button class="cu-check-btn" onclick="BentoGrid._checkCuExSection(\'' + secId + '\')">' +
-          '<span class="material-symbols-outlined">check_circle</span> Check</button>' +
-        '<button class="cu-show-all-btn" onclick="BentoGrid._toggleCuAnswers(\'' + secId + '\')">' +
+        '<button class="cu-show-all-btn cu-lesson-secondary-btn" onclick="BentoGrid._toggleCuAnswers(\'' + secId + '\')">' +
           '<span class="material-symbols-outlined">visibility</span> Show answers</button>' +
+        '<button class="cu-check-btn cu-lesson-primary-btn" onclick="BentoGrid._checkCuExSection(\'' + secId + '\')">' +
+          'Check</button>' +
         '<button class="cu-retry-btn" onclick="BentoGrid._resetCuExSection(\'' + secId + '\')" style="display:none">' +
           '<span class="material-symbols-outlined">replay</span> Retry</button>' +
         '</div>';
@@ -6801,6 +6803,100 @@
       return m ? parseInt(m[1], 10) : -1;
     },
 
+    _buildCuLessonChrome: function() {
+      var backFn = BentoGrid._courseUnitBackFn || 'BentoGrid.openCourseSection(\'learning\')';
+      return '<div class="cu-lesson-chrome" id="cu-lesson-chrome" style="display:none">' +
+        '<button type="button" class="cu-lesson-close" onclick="' + backFn + '" aria-label="Close">' +
+          '<span class="material-symbols-outlined">close</span>' +
+        '</button>' +
+        '<div class="cu-lesson-progress-wrap">' +
+          '<div class="cu-lesson-progress-fill" id="cu-lesson-progress-fill" style="width:0%"></div>' +
+        '</div>' +
+        '<div class="cu-lesson-hearts" aria-hidden="true">' +
+          '<span class="cu-lesson-heart"><span class="material-symbols-outlined">favorite</span></span>' +
+          '<span class="cu-lesson-heart"><span class="material-symbols-outlined">favorite</span></span>' +
+          '<span class="cu-lesson-heart"><span class="material-symbols-outlined">favorite</span></span>' +
+          '<span class="cu-lesson-heart"><span class="material-symbols-outlined">favorite</span></span>' +
+          '<span class="cu-lesson-heart"><span class="material-symbols-outlined">favorite</span></span>' +
+        '</div>' +
+      '</div>';
+    },
+
+    _getCuExerciseSectionIndices: function() {
+      var indices = [];
+      var sections = document.querySelectorAll('.course-unit-content .cu-section');
+      sections.forEach(function(sec, idx) {
+        if (sec.classList.contains('cu-exercise')) indices.push(idx);
+      });
+      return indices;
+    },
+
+    _updateCuLessonProgress: function(sectionIdx) {
+      var fill = document.getElementById('cu-lesson-progress-fill');
+      if (!fill) return;
+      var exerciseIndices = BentoGrid._getCuExerciseSectionIndices();
+      if (!exerciseIndices.length) {
+        fill.style.width = '0%';
+        return;
+      }
+      var pos = exerciseIndices.indexOf(sectionIdx);
+      if (pos < 0) pos = 0;
+      var pct = Math.round(((pos + 1) / exerciseIndices.length) * 100);
+      fill.style.width = pct + '%';
+    },
+
+    _updateCuLessonFocus: function(sectionIdx) {
+      var layout = document.querySelector('.dashboard-layout');
+      var centerSection = document.getElementById('courseCenterSection');
+      if (!layout || !centerSection) return;
+
+      var sections = centerSection.querySelectorAll('.course-unit-content .cu-section');
+      var sec = sections[sectionIdx];
+      var isExercise = !!(sec && sec.classList.contains('cu-exercise'));
+
+      layout.classList.toggle('dashboard-layout--lesson-focus', isExercise);
+      centerSection.classList.toggle('course-center--lesson-focus', isExercise);
+
+      var chrome = document.getElementById('cu-lesson-chrome');
+      if (chrome) chrome.style.display = isExercise ? '' : 'none';
+
+      var header = centerSection.querySelector('.subpage-header--course-unit');
+      if (header) header.style.display = isExercise ? 'none' : '';
+
+      var dotsNav = document.getElementById('cu-dots-nav');
+      if (dotsNav) dotsNav.style.display = isExercise ? 'none' : '';
+
+      if (isExercise) {
+        BentoGrid._updateCuLessonProgress(sectionIdx);
+        if (!sec.classList.contains('cu-lesson-wrapped')) {
+          sec.classList.add('cu-lesson-wrapped');
+          var stage = document.createElement('div');
+          stage.className = 'cu-lesson-stage';
+          while (sec.firstChild) stage.appendChild(sec.firstChild);
+          sec.appendChild(stage);
+        }
+      }
+
+      document.querySelectorAll('.course-unit-content .cu-section.cu-exercise').forEach(function(exSec) {
+        var stage = exSec.querySelector('.cu-lesson-stage');
+        if (!stage) return;
+        var title = stage.querySelector('.cu-section-title');
+        var instructions = stage.querySelector('.cu-ex-instructions');
+        if (!stage.querySelector('.cu-lesson-instruction')) {
+          var instructionText = instructions ? instructions.textContent.trim() : '';
+          if (!instructionText && title) {
+            instructionText = title.textContent.trim().replace(/^\s*[^\s]+\s*/, '');
+          }
+          if (instructionText) {
+            var instructionEl = document.createElement('div');
+            instructionEl.className = 'cu-lesson-instruction';
+            instructionEl.textContent = instructionText;
+            stage.insertBefore(instructionEl, stage.firstChild);
+          }
+        }
+      });
+    },
+
     _initCuSectionNav: function(startIdx) {
       var container = document.querySelector('.course-unit-content');
       if (!container) return;
@@ -6811,6 +6907,13 @@
       startIdx = Math.max(0, Math.min(startIdx, total - 1));
 
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+
+      var centerSection = document.getElementById('courseCenterSection');
+      if (centerSection) {
+        var oldChrome = document.getElementById('cu-lesson-chrome');
+        if (oldChrome) oldChrome.remove();
+        centerSection.insertAdjacentHTML('afterbegin', BentoGrid._buildCuLessonChrome());
+      }
 
       // Build dots navigation bar above all sections
       // Collect dot data and sort: theory first, then vocab, then exercises
@@ -6933,6 +7036,7 @@
         // Resize inputs in the newly visible section (restore already calls resize internally)
         if (targetSec) BentoGrid._resizeAllCuInputs(targetSec);
       }
+      BentoGrid._updateCuLessonFocus(idx);
       // Update URL to reflect the current section
       if (BentoGrid._currentUnitId && BentoGrid._currentBlockKey && BentoGrid._currentUnitFilePath) {
         var secState = { view: 'courseUnit', blockKey: BentoGrid._currentBlockKey, unitId: BentoGrid._currentUnitId, level: _cuLevel, filePath: BentoGrid._currentUnitFilePath, sectionIdx: idx };
