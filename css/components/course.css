@@ -5839,6 +5839,17 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   gap: 12px;
 }
 
+.dashboard-center--learning-no-header .cw-page-content {
+  padding-top: 8px;
+}
+
+.course-etapa-card--available,
+.course-pt-card--available {
+  background: #fff;
+  border-color: #e5e7eb;
+  box-shadow: 0 2px 0 #e5e7eb;
+}
+
 .course-hub-page {
   padding: 0 4px 24px;
 }
