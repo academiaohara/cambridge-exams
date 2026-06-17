@@ -459,12 +459,21 @@
 
       var cards = [
         {
-          title: 'Course',
-          status: 'Structured lessons & theory',
+          title: 'Learning',
+          status: 'Grammar, reviews & progress tests',
           statusClass: '',
-          onclick: 'BentoGrid.openLessons()',
-          icon: 'auto_stories',
-          iconColor: '#ff9600',
+          onclick: 'BentoGrid.openCourseSection(\'learning\')',
+          icon: 'menu_book',
+          iconColor: '#3b82f6',
+          super: true
+        },
+        {
+          title: 'Vocabulary',
+          status: 'Units, phrasal verbs & idioms',
+          statusClass: '',
+          onclick: 'BentoGrid.openCourseSection(\'vocabulary\')',
+          icon: 'translate',
+          iconColor: '#10b981',
           super: true
         },
         {
