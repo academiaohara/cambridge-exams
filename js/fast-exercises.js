@@ -39,8 +39,7 @@
     { id: 'A2',  count: 0 },
     { id: 'B1',  count: 0 },
     { id: 'B2',  count: 0 },
-    { id: 'C1',  count: 0 },
-    { id: 'mix', count: 0 }
+    { id: 'C1',  count: 0 }
   ];
 
   var WL_PROGRESS_KEY = 'cambridge_wordle_progress';
@@ -7600,20 +7599,6 @@
 
     _buildVocabWordPool: async function(levelId) {
       var self = this;
-      if (levelId === 'mix') {
-        var mixSeen = {};
-        var mixPool = [];
-        var mixLevels = ['A2', 'B1', 'B2', 'C1'];
-        for (var mi = 0; mi < mixLevels.length; mi++) {
-          var lvlPool = await self._buildVocabWordPool(mixLevels[mi]);
-          for (var pi = 0; pi < lvlPool.length; pi++) {
-            var key = lvlPool[pi].word.toLowerCase();
-            if (!mixSeen[key]) { mixSeen[key] = 1; mixPool.push(lvlPool[pi]); }
-          }
-        }
-        return mixPool;
-      }
-
       var WORD_RE = /^[a-zA-Z]{3,12}$/;
       var seen = {};
       var pool = [];

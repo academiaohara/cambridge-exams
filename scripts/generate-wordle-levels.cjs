@@ -5,8 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const WL_LEVEL_IDS = ['A2', 'B1', 'B2', 'C1', 'mix'];
-const WL_MIX_LEVELS = ['A2', 'B1', 'B2', 'C1'];
+const WL_LEVEL_IDS = ['A2', 'B1', 'B2', 'C1'];
 const WORD_RE = /^[a-zA-Z]{3,12}$/;
 
 function sanitizeClue(word, clue) {
@@ -30,21 +29,6 @@ function seededShuffle(arr, seed) {
 }
 
 function buildVocabPool(levelId) {
-  if (levelId === 'mix') {
-    const mixSeen = {};
-    const mixPool = [];
-    for (const lvl of WL_MIX_LEVELS) {
-      for (const entry of buildVocabPool(lvl)) {
-        const key = entry.word.toLowerCase();
-        if (!mixSeen[key]) {
-          mixSeen[key] = 1;
-          mixPool.push(entry);
-        }
-      }
-    }
-    return mixPool;
-  }
-
   const seen = {};
   const pool = [];
   try {
