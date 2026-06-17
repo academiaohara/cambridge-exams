@@ -101,7 +101,7 @@
       html += `<div class="modal-header"><h3>Question ${qNum}</h3><p>Select an option</p></div>`;
       html += '<div class="options-grid">';
       
-      Object.keys(texts).forEach(key => {
+      Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); }).forEach(function(key) {
         html += `
           <button class="opt-btn" onclick="ReadingType8.selectAnswer(${qNum}, '${key}')">
             ${key}
