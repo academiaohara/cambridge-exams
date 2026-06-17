@@ -1046,7 +1046,7 @@
       if (!options.main) {
         html += '<div class="course-vocab-categories-title">' + _mi('category') + ' Practice Categories</div>';
       }
-      html += '<div class="course-section-cards-grid' + (options.main ? ' course-section-cards-grid--stacked' : '') + '">';
+      html += '<div class="desktop-mode-cards course-vocab-mode-cards">';
 
       for (var i = 0; i < catDefs.length; i++) {
         var cat = catDefs[i];
@@ -1058,18 +1058,24 @@
           totalPoints = data ? FastExercises._getTotalPoints(data.levels) : 0;
         } catch (e) { /* ignore */ }
 
-        html += '<button type="button" class="course-section-card" style="--course-card-color:' + cat.color + '" onclick="FastExercises.openCategory(\'' + cat.id + '\')">' +
-          '<div class="course-section-card-icon">' + _mi(cat.icon) + '</div>' +
-          '<div class="course-section-card-body">' +
-            '<div class="course-section-card-title">' + self._escapeHTML(cat.name) + '</div>' +
-            '<div class="course-section-card-desc">' + self._escapeHTML(cat.desc) + '</div>' +
-            '<div class="course-section-card-progress">' +
-              '<div class="course-section-card-progress-bar"><div class="course-section-card-progress-fill" style="width:' + pct + '%;background:' + cat.color + '"></div></div>' +
-              '<span class="course-section-card-progress-text">' + pct + '% · ' + totalPoints + ' items</span>' +
+        var statusText = pct > 0
+          ? pct + '% complete · ' + totalPoints + ' items'
+          : totalPoints + ' items · B1 to C1';
+        var statusClass = pct >= 100 ? 'mode-card-status-done' : '';
+
+        html += '<div class="mode-card mode-card--vocab-category" onclick="FastExercises.openCategory(\'' + cat.id + '\')" role="button" tabindex="0">' +
+          '<div class="mode-card-body">' +
+            '<div class="mode-card-title-row">' +
+              '<span class="mode-card-title">' + self._escapeHTML(cat.name) + '</span>' +
             '</div>' +
+            '<div class="mode-card-status ' + statusClass + '">' + self._escapeHTML(cat.desc) + '</div>' +
+            '<div class="mode-card-status ' + statusClass + '">' + statusText + '</div>' +
           '</div>' +
-          '<span class="course-section-card-arrow">' + _mi('chevron_right') + '</span>' +
-        '</button>';
+          '<div class="mode-card-icon-wrap">' +
+            '<div class="mode-card-icon" style="color:' + cat.color + '">' + _mi(cat.icon) + '</div>' +
+            (pct > 0 && pct < 100 ? '<span class="mode-card-icon-badge">' + pct + '%</span>' : '') +
+          '</div>' +
+        '</div>';
       }
 
       html += '</div></div>';
