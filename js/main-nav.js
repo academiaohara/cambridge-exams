@@ -65,7 +65,7 @@
       var scope = this._getActiveStatsBarScope();
       if (!scope) return null;
       var selectors = {
-        level: '.stats-bar-level',
+        lang: '.stats-bar-lang',
         streak: '.stats-bar-streak',
         dict: '.stats-bar-xp'
       };
@@ -113,29 +113,23 @@
     },
 
     buildStatsBarHtml: function() {
-      var level = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1';
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
 
-      var levelColors = {
-        'C1': { bg: '#fff3e0', color: '#e65100' },
-        'B1': { bg: '#fff8e6', color: '#ce7c3a' },
-        'B2': { bg: '#fff3e0', color: '#e65100' }
-      };
-      var lc = levelColors[level] || levelColors['C1'];
-
       var streakInactive = streakCount === 0;
       var popoverHtml = this.buildStreakPopoverHtml(streak);
-      var levelPopoverHtml = this.buildLevelPopoverHtml(level);
+      var langPopoverHtml = this.buildLangPopoverHtml();
       var dictPopoverHtml = this.buildDictPopoverHtml();
+      var currentLang = this._getCurrentTranslateLang();
+      var langLabel = this._getTranslateLangLabel(currentLang);
 
       return '<div class="main-nav-stats-bar" aria-label="Your stats">' +
-        '<div class="stats-bar-level-wrap">' +
-          '<button type="button" class="stats-bar-item stats-bar-level" aria-label="Change level" aria-expanded="false" aria-haspopup="true" style="background:' + lc.bg + ';color:' + lc.color + '">' +
-            '<span class="material-symbols-outlined">school</span>' +
-            '<strong>' + escapeHTML(level) + '</strong>' +
+        '<div class="stats-bar-lang-wrap">' +
+          '<button type="button" class="stats-bar-item stats-bar-lang" aria-label="Change translation language" aria-expanded="false" aria-haspopup="true">' +
+            '<span class="material-symbols-outlined">translate</span>' +
+            '<strong>' + escapeHTML(langLabel) + '</strong>' +
           '</button>' +
-          '<div class="level-popover" role="dialog" aria-hidden="true">' + levelPopoverHtml + '</div>' +
+          '<div class="lang-popover" role="dialog" aria-hidden="true">' + langPopoverHtml + '</div>' +
         '</div>' +
         '<div class="stats-bar-streak-wrap">' +
           '<button type="button" class="stats-bar-item stats-bar-streak' + (streakInactive ? ' stats-bar-streak-inactive' : '') + '" aria-label="View streak" aria-expanded="false" aria-haspopup="true">' +
@@ -158,22 +152,40 @@
       '</div>';
     },
 
-    buildLevelPopoverHtml: function(currentLevel) {
-      currentLevel = (currentLevel || (typeof AppState !== 'undefined' && AppState.currentLevel) || 'C1').toUpperCase();
-      var levels = [
-        { code: 'B1', name: 'Preliminary', icon: 'school' },
-        { code: 'B2', name: 'First', icon: 'workspace_premium' },
-        { code: 'C1', name: 'Advanced', icon: 'auto_stories' }
-      ];
-      var html = '<div class="level-popover-inner">' +
-        '<div class="level-popover-kicker">Choose level</div>' +
-        '<div class="level-popover-title">What are you studying?</div>' +
-        '<div class="level-popover-options">';
-      levels.forEach(function(level) {
-        var isActive = level.code === currentLevel;
-        html += '<button type="button" class="level-popover-option' + (isActive ? ' active' : '') + '" onclick="MainNav.selectLevel(\'' + level.code + '\')">' +
-          '<span class="material-symbols-outlined">' + level.icon + '</span>' +
-          '<div><strong>' + level.code + '</strong><small>' + level.name + '</small></div>' +
+    _getCurrentTranslateLang: function() {
+      if (typeof Tools !== 'undefined' && Tools.getTranslateLang) {
+        return Tools.getTranslateLang();
+      }
+      try {
+        return localStorage.getItem('cambridge_translate_lang') || 'es';
+      } catch (e) {
+        return 'es';
+      }
+    },
+
+    _getTranslateLangLabel: function(code) {
+      var langs = (typeof Tools !== 'undefined' && Tools.getTranslateLanguages)
+        ? Tools.getTranslateLanguages()
+        : [];
+      var found = langs.find(function(l) { return l.code === code; });
+      if (found) return found.label;
+      return String(code || 'es').toUpperCase();
+    },
+
+    buildLangPopoverHtml: function() {
+      var currentLang = this._getCurrentTranslateLang();
+      var langs = (typeof Tools !== 'undefined' && Tools.getTranslateLanguages)
+        ? Tools.getTranslateLanguages()
+        : [{ code: 'es', label: 'Español' }];
+      var html = '<div class="lang-popover-inner">' +
+        '<div class="lang-popover-kicker">Translations</div>' +
+        '<div class="lang-popover-title">Translate to</div>' +
+        '<div class="lang-popover-options">';
+      langs.forEach(function(lang) {
+        var isActive = lang.code === currentLang;
+        html += '<button type="button" class="lang-popover-option' + (isActive ? ' active' : '') + '" onclick="MainNav.selectLang(\'' + lang.code + '\')">' +
+          '<span class="material-symbols-outlined">language</span>' +
+          '<div><strong>' + escapeHTML(lang.label) + '</strong><small>' + escapeHTML(lang.code.toUpperCase()) + '</small></div>' +
         '</button>';
       });
       html += '</div></div>';
@@ -209,11 +221,14 @@
       if (obj && typeof obj[method] === 'function') obj[method]();
     },
 
-    selectLevel: function(level) {
-      this.closeLevelPopover();
-      if (typeof BentoGrid !== 'undefined' && BentoGrid.changeLevel) {
-        BentoGrid.changeLevel(level);
+    selectLang: function(code) {
+      this.closeLangPopover();
+      if (typeof Tools !== 'undefined' && Tools.setTranslateLang) {
+        Tools.setTranslateLang(code);
+      } else {
+        try { localStorage.setItem('cambridge_translate_lang', code); } catch (e) {}
       }
+      this.refreshLangPopover();
     },
 
     _initAnchoredPopover: function(opts) {
@@ -284,17 +299,17 @@
       wrap._setPopoverOpen = setOpen;
     },
 
-    initLevelPopover: function() {
+    initLangPopover: function() {
       this._initAnchoredPopover({
-        wrapSelector: '.stats-bar-level-wrap',
-        btnSelector: '.stats-bar-level',
-        popoverSelector: '.level-popover',
-        initFlag: '_levelPopoverInit'
+        wrapSelector: '.stats-bar-lang-wrap',
+        btnSelector: '.stats-bar-lang',
+        popoverSelector: '.lang-popover',
+        initFlag: '_langPopoverInit'
       });
     },
 
-    closeLevelPopover: function() {
-      document.querySelectorAll('.stats-bar-level-wrap').forEach(function(wrap) {
+    closeLangPopover: function() {
+      document.querySelectorAll('.stats-bar-lang-wrap').forEach(function(wrap) {
         if (wrap._setPopoverOpen) wrap._setPopoverOpen(false);
       });
     },
@@ -321,7 +336,7 @@
     },
 
     _closeAllStatsBarPopovers: function() {
-      this.closeLevelPopover();
+      this.closeLangPopover();
       this.closeStreakPopover();
       this.closeDictPopover();
       this._closeAllMobilePopovers();
@@ -330,23 +345,17 @@
       }
     },
 
-    refreshLevelPopover: function() {
+    refreshLangPopover: function() {
       var self = this;
-      var level = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1';
-      var levelColors = {
-        'C1': { bg: '#fff3e0', color: '#e65100' },
-        'B1': { bg: '#fff8e6', color: '#ce7c3a' },
-        'B2': { bg: '#fff3e0', color: '#e65100' }
-      };
-      var lc = levelColors[level] || levelColors['C1'];
-      document.querySelectorAll('.stats-bar-level-wrap').forEach(function(wrap) {
-        var popover = wrap.querySelector('.level-popover');
-        var btn = wrap.querySelector('.stats-bar-level');
+      var currentLang = this._getCurrentTranslateLang();
+      var langLabel = this._getTranslateLangLabel(currentLang);
+      document.querySelectorAll('.stats-bar-lang-wrap').forEach(function(wrap) {
+        var popover = wrap.querySelector('.lang-popover');
+        var btn = wrap.querySelector('.stats-bar-lang');
         if (!popover || !btn) return;
-        popover.innerHTML = self.buildLevelPopoverHtml(level);
-        btn.querySelector('strong').textContent = level;
-        btn.style.background = lc.bg;
-        btn.style.color = lc.color;
+        popover.innerHTML = self.buildLangPopoverHtml();
+        var strong = btn.querySelector('strong');
+        if (strong) strong.textContent = langLabel;
       });
     },
 
@@ -663,7 +672,7 @@
       if (!scope) return;
 
       var popoverConfigs = [
-        { wrapSelector: '.stats-bar-level-wrap', btnSelector: '.stats-bar-level', popoverSelector: '.level-popover' },
+        { wrapSelector: '.stats-bar-lang-wrap', btnSelector: '.stats-bar-lang', popoverSelector: '.lang-popover' },
         { wrapSelector: '.stats-bar-streak-wrap', btnSelector: '.stats-bar-streak', popoverSelector: '.streak-popover' },
         { wrapSelector: '.stats-bar-dict-wrap', btnSelector: '.stats-bar-xp', popoverSelector: '.dict-popover' }
       ];
@@ -694,14 +703,14 @@
         document._mobilePopoverBackdropInit = true;
         document.addEventListener('click', function(e) {
           if (!document.body.classList.contains('mobile-popover-open')) return;
-          if (e.target.closest('.stats-bar-level-wrap, .stats-bar-streak-wrap, .stats-bar-dict-wrap')) return;
+          if (e.target.closest('.stats-bar-lang-wrap, .stats-bar-streak-wrap, .stats-bar-dict-wrap')) return;
           self._closeAllMobilePopovers();
         });
       }
     },
 
     _closeAllMobilePopovers: function() {
-      document.querySelectorAll('.level-popover, .streak-popover, .dict-popover').forEach(function(p) {
+      document.querySelectorAll('.lang-popover, .streak-popover, .dict-popover').forEach(function(p) {
         p.classList.remove('is-open');
         p.setAttribute('aria-hidden', 'true');
       });

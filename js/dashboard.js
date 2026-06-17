@@ -48,7 +48,7 @@
         if (MainNav.initMobileStatsPopovers) MainNav.initMobileStatsPopovers();
       } else {
         if (MainNav.initStreakPopover) MainNav.initStreakPopover();
-        if (MainNav.initLevelPopover) MainNav.initLevelPopover();
+        if (MainNav.initLangPopover) MainNav.initLangPopover();
         if (MainNav.initDictPopover) MainNav.initDictPopover();
       }
       if (MainNav.ensureMobileMenuSheet) MainNav.ensureMobileMenuSheet();

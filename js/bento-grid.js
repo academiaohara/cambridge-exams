@@ -216,15 +216,6 @@
     },
 
     openMobileLevelModal: function() {
-      var isDesktop = window.matchMedia && window.matchMedia('(min-width: 769px)').matches;
-      var levelBtn = typeof MainNav !== 'undefined' && MainNav._getStatsBarButton
-        ? MainNav._getStatsBarButton('level')
-        : document.querySelector('.dashboard-right-sidebar .stats-bar-level, .mobile-nav-top-stats .stats-bar-level');
-      if (isDesktop && levelBtn && typeof MainNav !== 'undefined') {
-        levelBtn.click();
-        return;
-      }
-
       var existing = document.getElementById('mobile-level-modal');
       if (existing) existing.remove();
 
@@ -272,6 +263,69 @@
     selectMobileLevel: function(level) {
       this.closeMobileLevelModal();
       this.changeLevel(level);
+    },
+
+    openMobileLangModal: function() {
+      var isDesktop = window.matchMedia && window.matchMedia('(min-width: 769px)').matches;
+      var langBtn = typeof MainNav !== 'undefined' && MainNav._getStatsBarButton
+        ? MainNav._getStatsBarButton('lang')
+        : document.querySelector('.dashboard-right-sidebar .stats-bar-lang, .mobile-nav-top-stats .stats-bar-lang');
+      if (isDesktop && langBtn && typeof MainNav !== 'undefined') {
+        langBtn.click();
+        return;
+      }
+
+      var existing = document.getElementById('mobile-lang-modal');
+      if (existing) existing.remove();
+
+      var currentLang = (typeof MainNav !== 'undefined' && MainNav._getCurrentTranslateLang)
+        ? MainNav._getCurrentTranslateLang()
+        : (localStorage.getItem('cambridge_translate_lang') || 'es');
+      var langs = (typeof Tools !== 'undefined' && Tools.getTranslateLanguages)
+        ? Tools.getTranslateLanguages()
+        : [{ code: 'es', label: 'Español' }];
+
+      var html = '<div class="mobile-level-modal-card" role="dialog" aria-modal="true" aria-labelledby="mobile-lang-title">' +
+        '<button class="mobile-level-modal-close" onclick="BentoGrid.closeMobileLangModal()" aria-label="Close language picker">' +
+          '<span class="material-symbols-outlined">close</span>' +
+        '</button>' +
+        '<div class="mobile-level-modal-kicker">Translations</div>' +
+        '<h2 id="mobile-lang-title">Translate to</h2>' +
+        '<div class="mobile-level-modal-options">';
+
+      langs.forEach(function(lang) {
+        var isActive = lang.code === currentLang;
+        html += '<button class="mobile-level-option' + (isActive ? ' active' : '') + '" onclick="BentoGrid.selectMobileLang(\'' + lang.code + '\')">' +
+          '<span class="material-symbols-outlined">language</span>' +
+          '<strong>' + lang.label + '</strong>' +
+          '<small>' + lang.code.toUpperCase() + '</small>' +
+        '</button>';
+      });
+
+      html += '</div></div>';
+
+      var modal = document.createElement('div');
+      modal.id = 'mobile-lang-modal';
+      modal.className = 'mobile-level-modal-overlay';
+      modal.innerHTML = html;
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) BentoGrid.closeMobileLangModal();
+      });
+      document.body.appendChild(modal);
+    },
+
+    closeMobileLangModal: function() {
+      var modal = document.getElementById('mobile-lang-modal');
+      if (modal) modal.remove();
+    },
+
+    selectMobileLang: function(code) {
+      this.closeMobileLangModal();
+      if (typeof MainNav !== 'undefined' && MainNav.selectLang) {
+        MainNav.selectLang(code);
+      } else if (typeof Tools !== 'undefined' && Tools.setTranslateLang) {
+        Tools.setTranslateLang(code);
+      }
     },
 
     openMobileDictionaries: function() {
@@ -1583,9 +1637,6 @@
         filterByLevel(level);
       } else if (typeof Dashboard !== 'undefined' && Dashboard.filterByLevel) {
         Dashboard.filterByLevel(level);
-      }
-      if (typeof MainNav !== 'undefined' && MainNav.refreshLevelPopover) {
-        MainNav.refreshLevelPopover();
       }
       // Sync level with user profile
       if (typeof UserProfile !== 'undefined' && UserProfile.updateProfile) {
