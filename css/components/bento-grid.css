@@ -2078,6 +2078,10 @@ margin-top: -2px;
   margin: 0 auto;
 }
 
+.cw-wordle-duo {
+  padding-top: 28px;
+}
+
 .cw-section-header--duo {
   border: none;
   box-shadow: 0 4px 0 rgba(0, 0, 0, 0.18), 0 8px 24px rgba(0, 0, 0, 0.12);
@@ -2199,6 +2203,10 @@ margin-top: -2px;
   border-color: #1cb0f6;
   border-bottom-color: #1899d6;
   box-shadow: 0 0 0 2px rgba(28, 176, 246, 0.2);
+}
+
+.cw-wordle-play-card--duo .vocab-cw-wordle-cur-row .vocab-cw-wordle-box {
+  cursor: pointer;
 }
 
 .wdl-duo-actions {
