@@ -85,7 +85,7 @@
           id: 'vocabulary',
           label: 'Vocabulary',
           kicker: 'WORDS & EXPRESSIONS',
-          subtitle: 'Vocabulary units, phrasal verbs, idioms and more',
+          subtitle: 'Phrasal verbs, collocations and word formation',
           icon: 'translate',
           color: '#10b981',
           headerColor: '#10b981'
@@ -1033,7 +1033,7 @@
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       var catDefs = [
         { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6', desc: 'Common phrasal verbs by level' },
-        { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b', desc: 'Idiomatic expressions' },
+        { id: 'collocations', icon: 'format_quote', name: 'Collocations', color: '#8b5cf6', desc: 'Natural word combinations and patterns' },
         { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48', desc: 'Prefixes, suffixes and roots' }
       ];
 

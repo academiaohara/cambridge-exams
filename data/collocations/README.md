@@ -6,7 +6,11 @@ Este directorio contiene los datos para el módulo de **colocaciones** del apren
 
 ```
 collocations/
+├── levels.json         # Catálogo de niveles y lecciones (B1, B2, C1)
 ├── dictionary.json     # Diccionario completo de colocaciones
+├── B1/                 # Lecciones B1 (una por palabra base)
+├── B2/                 # Lecciones B2
+├── C1/                 # Lecciones C1
 └── Collocations.csv    # Datos fuente en CSV
 ```
 
