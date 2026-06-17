@@ -594,7 +594,8 @@
       } else if (etapaUnlocked) {
         html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + etapaOnclick + '">START</button>';
       } else if (showAdvance) {
-        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--advance" onclick="BentoGrid._advanceToCourseStage(' + globalIndex + ')">JUMP AHEAD</button>';
+        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--advance" onclick="BentoGrid._advanceToCourseStage(' + globalIndex + ')" aria-label="Jump ahead">' +
+          _mi('fast_forward') + '</button>';
       }
       html += '</div>';
       return html;
@@ -655,6 +656,21 @@
       var colonIdx = title.indexOf(':');
       if (colonIdx !== -1) title = title.slice(colonIdx + 1).trim();
       return title || ('Stage ' + etapa.number);
+    },
+
+    _areBlockUnitsBeforeReviewComplete: function(levelId, etapaItems, reviewItem, progress) {
+      var blockNum = reviewItem.block;
+      var unitsInBlock = (etapaItems || []).filter(function(item) {
+        return item.type !== 'review' && item.type !== 'progress_test' && item.block === blockNum;
+      });
+      if (!unitsInBlock.length) return false;
+      return unitsInBlock.every(function(unit) {
+        var metaInfo = BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[unit.id];
+        if (!metaInfo || !metaInfo.exercises || !metaInfo.exercises.length) return !!(progress && progress[unit.id]);
+        return metaInfo.exercises.every(function(ex) {
+          return BentoGrid._isCourseExercisePassed(levelId, unit.id, ex.sectionIdx, unit.type, progress);
+        });
+      });
     },
 
     _isCourseExercisePassed: function(level, unitId, sectionIdx, itemType, progress) {
@@ -932,22 +948,25 @@
           var reviewPath = 'data/Course/' + levelId + '/' + reviewItem.file;
           var reviewCellIdx = seqIndex;
           var reviewPassed = BentoGrid._isCourseExercisePassed(levelId, reviewItem.id, 0, 'review', progress);
+          var blockUnitsDone = BentoGrid._areBlockUnitsBeforeReviewComplete(levelId, etapa.items, reviewItem, progress);
           var sequentialLocked = firstUnlockedSeqIdx >= 0 && reviewCellIdx > firstUnlockedSeqIdx;
           var reviewQueueLocked = firstActiveReviewIdx >= 0 && reviewIdxInEtapa > firstActiveReviewIdx;
-          var reviewLocked = !etapaUnlocked || sequentialLocked || reviewQueueLocked;
+          var reviewRequired = blockUnitsDone && !reviewPassed;
+          var reviewLocked = !etapaUnlocked || reviewPassed || !reviewRequired || sequentialLocked || reviewQueueLocked;
           var reviewClass = 'course-review-accelerator';
           if (reviewPassed) reviewClass += ' course-review-accelerator--done';
           else if (!reviewLocked) reviewClass += ' course-review-accelerator--active';
-          if (reviewLocked) reviewClass += ' course-review-accelerator--locked';
+          if (reviewLocked && !reviewPassed) reviewClass += ' course-review-accelerator--locked';
 
           var reviewOnclick = reviewLocked
             ? 'return false;'
             : 'BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'' + reviewPath + '\')';
+          var reviewLabel = reviewPassed ? 'Review completed' : 'Review';
 
           html += '<div class="course-review-accelerator-wrap">';
-          html += '<button type="button" class="' + reviewClass + '" onclick="' + reviewOnclick + '" title="Skip-ahead review">';
-          html += reviewPassed ? _mi('check_circle') : _mi('fast_forward');
-          html += '<span class="course-review-accelerator-text">Skip ahead to here?</span>';
+          html += '<button type="button" class="' + reviewClass + '" onclick="' + reviewOnclick + '" title="' + self._escapeHTML(reviewLabel) + '">';
+          html += reviewPassed ? _mi('check_circle') : _mi('military_tech');
+          html += '<span class="course-review-accelerator-text">' + self._escapeHTML(reviewLabel) + '</span>';
           html += '</button></div>';
           seqIndex++;
           return;
@@ -972,9 +991,10 @@
         }
 
         var headerClass = 'course-etapa-header';
+        var unitNumber = parseInt(item.unit, 10) || 0;
         if (item.type === 'progress_test') {
           headerClass += ' course-etapa-header--section';
-        } else if (item.type === 'vocabulary') {
+        } else if (item.type === 'vocabulary' && unitNumber % 3 !== 0) {
           headerClass += ' course-etapa-header--unit course-etapa-header--vocab';
         } else {
           headerClass += ' course-etapa-header--unit';
@@ -6816,6 +6836,250 @@
       return m ? parseInt(m[1], 10) : -1;
     },
 
+    _CU_LESSON_HEARTS_MAX: 5,
+    _cuLessonHearts: 5,
+    _cuLessonSectionId: null,
+
+    _getCuLessonItems: function(sec) {
+      if (!sec) return [];
+      var selectors = '.cu-ex-item, .cu-bc-item, .cu-few-item, .cu-comma-item, .cu-cw-clue-item';
+      var items = Array.prototype.slice.call(sec.querySelectorAll(selectors));
+      if (items.length) return items;
+      var whole = sec.querySelector('.cu-match-exercise, .cu-drag-category-exercise, .cu-ws-passage, .cu-passage-exercise, .cu-mc-passage-wrap, .cu-bc-exercise, .cu-comma-exercise');
+      return whole ? [whole] : [];
+    },
+
+    _isCuLessonItemCorrect: function(item) {
+      if (!item) return false;
+      if (item.classList.contains('cu-bc-item-correct') || item.classList.contains('cu-few-ok-correct') || item.classList.contains('cu-comma-item-correct')) return true;
+      if (item.classList.contains('cu-bc-item-incorrect') || item.classList.contains('cu-comma-item-incorrect')) return false;
+      if (item.querySelector('.cu-input-incorrect, .cu-option-incorrect, .cu-yn-incorrect, .cu-ab-incorrect, .cu-few-incorrect, .cu-drag-chip-incorrect, .cu-match-incorrect, .cu-mc-gap-pill-incorrect, .cu-ws-incorrect, .cu-word-tick-incorrect, .cu-cw-letter-incorrect')) return false;
+      if (item.querySelector('.cu-input-correct, .cu-option-correct, .cu-yn-correct, .cu-ab-correct, .cu-few-correct, .cu-drag-chip-correct, .cu-match-correct, .cu-mc-gap-pill-correct, .cu-ws-correct, .cu-word-tick-correct, .cu-cw-letter-correct')) return true;
+      if (item.classList.contains('cu-match-exercise')) return !item.querySelector('.cu-match-incorrect');
+      if (item.classList.contains('cu-drag-category-exercise')) return !item.querySelector('.cu-drag-chip-incorrect, .cu-drag-chip-unplaced');
+      return false;
+    },
+
+    _updateCuLessonHearts: function() {
+      var container = document.querySelector('.cu-lesson-hearts');
+      if (!container) return;
+      var hearts = container.querySelectorAll('.cu-lesson-heart');
+      hearts.forEach(function(heart, idx) {
+        heart.classList.toggle('cu-lesson-heart--empty', idx >= BentoGrid._cuLessonHearts);
+      });
+    },
+
+    _loseCuLessonHeart: function() {
+      if (BentoGrid._cuLessonHearts > 0) {
+        BentoGrid._cuLessonHearts--;
+        BentoGrid._updateCuLessonHearts();
+      }
+    },
+
+    _resetCuLessonHearts: function() {
+      BentoGrid._cuLessonHearts = BentoGrid._CU_LESSON_HEARTS_MAX;
+      BentoGrid._updateCuLessonHearts();
+    },
+
+    _showCuLessonItem: function(sec, itemIdx) {
+      var items = BentoGrid._getCuLessonItems(sec);
+      if (!items.length) return;
+      itemIdx = Math.max(0, Math.min(itemIdx, items.length - 1));
+      sec.setAttribute('data-lesson-item-idx', String(itemIdx));
+      items.forEach(function(item, idx) {
+        item.classList.toggle('cu-lesson-item-hidden', idx !== itemIdx);
+        item.classList.toggle('cu-lesson-item-visible', idx === itemIdx);
+      });
+      var btn = sec.querySelector('.cu-check-btn');
+      if (btn) {
+        btn.textContent = 'Check';
+        btn.disabled = false;
+        btn.removeAttribute('data-lesson-mode');
+      }
+      BentoGrid._updateCuLessonProgressForItems(sec, itemIdx, items.length);
+    },
+
+    _updateCuLessonProgressForItems: function(sec, itemIdx, totalItems) {
+      var fill = document.getElementById('cu-lesson-progress-fill');
+      if (!fill || !totalItems) return;
+      var pct = Math.round(((itemIdx + 1) / totalItems) * 100);
+      fill.style.width = pct + '%';
+    },
+
+    _initCuLessonFlow: function(sec) {
+      if (!sec || !sec.classList.contains('cu-exercise') || sec.classList.contains('cu-review-section')) return;
+      if (sec.getAttribute('data-checked') === 'true') return;
+      var items = BentoGrid._getCuLessonItems(sec);
+      if (!items.length) return;
+
+      var secId = sec.id || '';
+      if (sec.getAttribute('data-lesson-flow') === 'true' && sec.getAttribute('data-lesson-finished') !== 'true') {
+        BentoGrid._updateCuLessonHearts();
+        return;
+      }
+      if (BentoGrid._cuLessonSectionId !== secId) {
+        BentoGrid._cuLessonSectionId = secId;
+        BentoGrid._resetCuLessonHearts();
+      }
+
+      sec.classList.add('cu-lesson-flow-active');
+      sec.setAttribute('data-lesson-flow', 'true');
+      sec.removeAttribute('data-lesson-finished');
+      sec.setAttribute('data-lesson-correct', '0');
+      sec.setAttribute('data-lesson-total', '0');
+
+      var showBtn = sec.querySelector('.cu-show-all-btn');
+      if (showBtn) showBtn.style.display = 'none';
+      var retryBtn = sec.querySelector('.cu-retry-btn');
+      if (retryBtn) retryBtn.style.display = 'none';
+
+      var nav = sec.querySelector('.cu-section-nav');
+      if (nav) {
+        nav.classList.add('cu-section-nav--lesson');
+        var prev = nav.querySelector('.cu-nav-prev');
+        var next = nav.querySelector('.cu-nav-next');
+        if (prev) prev.style.display = 'none';
+        if (next) next.style.display = 'none';
+      }
+
+      BentoGrid._showCuLessonItem(sec, 0);
+      var checkBtn = sec.querySelector('.cu-check-btn');
+      if (checkBtn) {
+        checkBtn.onclick = function() {
+          if (checkBtn.getAttribute('data-lesson-mode') === 'continue') {
+            BentoGrid._continueCuLessonItem(sec.id);
+          } else {
+            BentoGrid._checkCuLessonItem(sec.id);
+          }
+        };
+      }
+    },
+
+    _checkCuLessonItem: function(sectionId) {
+      var sec = document.getElementById(sectionId);
+      if (!sec) return;
+      if (window.Modal) Modal.closeOptionsModal();
+      if (sec.getAttribute('data-answers-showing') === 'true') return;
+
+      var items = BentoGrid._getCuLessonItems(sec);
+      var itemIdx = parseInt(sec.getAttribute('data-lesson-item-idx') || '0', 10);
+      var currentItem = items[itemIdx];
+      if (!currentItem) return;
+
+      var unanswered = BentoGrid._getCuLessonItemUnanswered(currentItem);
+      if (unanswered.length > 0) {
+        var msg = 'Answer this question before checking.';
+        BentoGrid._cuConfirm(msg, function() { BentoGrid._doCheckCuLessonItem(sec, currentItem); });
+        return;
+      }
+      BentoGrid._doCheckCuLessonItem(sec, currentItem);
+    },
+
+    _getCuLessonItemUnanswered: function(item) {
+      var unanswered = [];
+      if (!item) return unanswered;
+      var inputs = item.querySelectorAll('.cu-gap-input');
+      var optGroups = {};
+      item.querySelectorAll('.cu-option-btn').forEach(function(btn) {
+        var g = btn.getAttribute('data-group');
+        if (g) { if (!optGroups[g]) optGroups[g] = []; optGroups[g].push(btn); }
+      });
+      var ynGroups = {};
+      item.querySelectorAll('.cu-yn-btn:not(.cu-item-tick-btn)').forEach(function(btn) {
+        var g = btn.getAttribute('data-group');
+        if (g) { if (!ynGroups[g]) ynGroups[g] = []; ynGroups[g].push(btn); }
+      });
+      var isEmpty = true;
+      inputs.forEach(function(inp) { if (BentoGrid._cuGapGetValue(inp).trim() !== '') isEmpty = false; });
+      Object.keys(optGroups).forEach(function(g) {
+        if (optGroups[g].some(function(b) { return b.classList.contains('cu-option-selected'); })) isEmpty = false;
+      });
+      Object.keys(ynGroups).forEach(function(g) {
+        if (ynGroups[g].some(function(b) { return b.classList.contains('cu-yn-selected'); })) isEmpty = false;
+      });
+      var hasAnyInput = inputs.length > 0 || Object.keys(optGroups).length > 0 || Object.keys(ynGroups).length > 0;
+      if (!hasAnyInput) isEmpty = false;
+      if (isEmpty && hasAnyInput) unanswered.push(1);
+      if (item.classList.contains('cu-few-item')) {
+        var hasWord = !!item.querySelector('.cu-few-word.cu-few-selected');
+        var okBtn = item.querySelector('.cu-few-ok-btn');
+        var hasOk = okBtn && okBtn.classList.contains('cu-few-ok-selected');
+        if (!hasWord && !hasOk) unanswered.push(1);
+      }
+      if (item.classList.contains('cu-bc-item')) {
+        var bcInput = item.querySelector('.cu-bc-input');
+        var bcOk = item.querySelector('.cu-bc-ok-btn');
+        var hasBcInput = bcInput && BentoGrid._cuGapGetValue(bcInput).trim() !== '';
+        var hasBcOk = bcOk && bcOk.classList.contains('cu-bc-ok-selected');
+        if (!hasBcInput && !hasBcOk) unanswered.push(1);
+      }
+      return unanswered;
+    },
+
+    _doCheckCuLessonItem: function(sec, currentItem) {
+      var beforeCorrect = parseInt(sec.getAttribute('data-lesson-correct') || '0', 10);
+      var beforeTotal = parseInt(sec.getAttribute('data-lesson-total') || '0', 10);
+      var result = BentoGrid._doCheckCuExSection(sec, { onlyItem: currentItem, lessonItem: true });
+      var gainedCorrect = (result.correctItems || 0);
+      var gainedTotal = (result.totalItems || 0);
+      sec.setAttribute('data-lesson-correct', String(beforeCorrect + gainedCorrect));
+      sec.setAttribute('data-lesson-total', String(beforeTotal + gainedTotal));
+
+      var itemCorrect = BentoGrid._isCuLessonItemCorrect(currentItem);
+      if (!itemCorrect) BentoGrid._loseCuLessonHeart();
+
+      var checkBtn = sec.querySelector('.cu-check-btn');
+      if (checkBtn) {
+        checkBtn.textContent = 'Continue';
+        checkBtn.disabled = false;
+        checkBtn.setAttribute('data-lesson-mode', 'continue');
+      }
+    },
+
+    _continueCuLessonItem: function(sectionId) {
+      var sec = document.getElementById(sectionId);
+      if (!sec) return;
+      var items = BentoGrid._getCuLessonItems(sec);
+      var itemIdx = parseInt(sec.getAttribute('data-lesson-item-idx') || '0', 10);
+      if (itemIdx < items.length - 1) {
+        BentoGrid._showCuLessonItem(sec, itemIdx + 1);
+        return;
+      }
+      BentoGrid._finishCuLessonFlow(sec);
+    },
+
+    _finishCuLessonFlow: function(sec) {
+      if (!sec || sec.getAttribute('data-lesson-finished') === 'true') return;
+      sec.setAttribute('data-lesson-finished', 'true');
+      var correctItems = parseInt(sec.getAttribute('data-lesson-correct') || '0', 10);
+      var totalItems = parseInt(sec.getAttribute('data-lesson-total') || '0', 10);
+      sec.setAttribute('data-checked', 'true');
+      sec.setAttribute('data-correct-items', String(correctItems));
+      sec.setAttribute('data-total-items', String(totalItems));
+
+      var checkBtn = sec.querySelector('.cu-check-btn');
+      if (checkBtn) checkBtn.disabled = true;
+
+      var unitId = BentoGrid._currentUnitId;
+      var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''), 10);
+      if (unitId && !isNaN(sectionIdx) && !BentoGrid._isRestoringCuAnswers) {
+        var checkedAnswers = BentoGrid._getReviewSectionAnswers(sec);
+        BentoGrid._saveCuExSectionChecked(unitId, sectionIdx, checkedAnswers, correctItems, totalItems);
+        var _exLevel = BentoGrid._courseLevel || 'C1';
+        BentoGrid._markCourseSectionVisited(_exLevel, unitId, sectionIdx);
+        BentoGrid._checkCourseUnitAllDone(_exLevel, unitId);
+      }
+
+      var container = document.querySelector('.course-unit-content');
+      if (!container) return;
+      var sections = container.querySelectorAll('.cu-section');
+      var currentIdx = -1;
+      sections.forEach(function(s, i) { if (s === sec) currentIdx = i; });
+      if (currentIdx >= 0 && currentIdx < sections.length - 1) {
+        BentoGrid._showCuSection(currentIdx + 1);
+      }
+    },
+
     _buildCuLessonChrome: function() {
       var backFn = BentoGrid._courseUnitBackFn || 'BentoGrid.openCourseSection(\'learning\')';
       return '<div class="cu-lesson-chrome" id="cu-lesson-chrome" style="display:none">' +
@@ -6825,7 +7089,7 @@
         '<div class="cu-lesson-progress-wrap">' +
           '<div class="cu-lesson-progress-fill" id="cu-lesson-progress-fill" style="width:0%"></div>' +
         '</div>' +
-        '<div class="cu-lesson-hearts" aria-hidden="true">' +
+        '<div class="cu-lesson-hearts" id="cu-lesson-hearts" aria-label="Lives remaining">' +
           '<span class="cu-lesson-heart"><span class="material-symbols-outlined">favorite</span></span>' +
           '<span class="cu-lesson-heart"><span class="material-symbols-outlined">favorite</span></span>' +
           '<span class="cu-lesson-heart"><span class="material-symbols-outlined">favorite</span></span>' +
@@ -6888,6 +7152,8 @@
           while (sec.firstChild) stage.appendChild(sec.firstChild);
           sec.appendChild(stage);
         }
+        BentoGrid._initCuLessonFlow(sec);
+        BentoGrid._updateCuLessonHearts();
       }
 
       document.querySelectorAll('.course-unit-content .cu-section.cu-exercise').forEach(function(exSec) {
@@ -7078,6 +7344,10 @@
     _checkCuExSection: function(sectionId) {
       var sec = document.getElementById(sectionId);
       if (!sec) return;
+      if (sec.getAttribute('data-lesson-flow') === 'true') {
+        BentoGrid._checkCuLessonItem(sectionId);
+        return;
+      }
 
       // Close the options modal when the user checks the section
       if (window.Modal) Modal.closeOptionsModal();
@@ -7230,12 +7500,19 @@
       return parts;
     },
 
-    _doCheckCuExSection: function(sec) {
+    _doCheckCuExSection: function(sec, opts) {
+      opts = opts || {};
+      function inScope(el) {
+        if (!opts.onlyItem) return true;
+        if (!el) return false;
+        return el === opts.onlyItem || opts.onlyItem.contains(el) || el.contains(opts.onlyItem);
+      }
       var totalItems = 0;
       var correctItems = 0;
       var hasMcPassage = false;
       // Handle bold-correct exercises (input + OK button for each item)
       sec.querySelectorAll('.cu-bc-item').forEach(function(item) {
+        if (!inScope(item)) return;
         totalItems++;
         var answer = (item.getAttribute('data-answer') || '').trim();
         var isOkAnswer = answer === '\u2713';
@@ -7293,6 +7570,7 @@
       });
       // Handle find-extra-word exercises (clickable sentence words)
       sec.querySelectorAll('.cu-few-item').forEach(function(item) {
+        if (!inScope(item)) return;
         totalItems++;
         var isOkItem = item.classList.contains('cu-few-ok-item');
         var okBtn = item.querySelector('.cu-few-ok-btn');
@@ -7342,6 +7620,7 @@
       // but don't affect the score denominator.
       var freeWsPassage = sec.querySelector('.cu-ws-passage[data-free-ws="true"]');
       sec.querySelectorAll('.cu-ws-word').forEach(function(span) {
+        if (!inScope(span)) return;
         var isAnswer = span.getAttribute('data-ws-answer') === '1';
         var isFreeWs = !!freeWsPassage;
         if (!isFreeWs || isAnswer) totalItems++;
@@ -7354,6 +7633,7 @@
       });
       // Handle comma-placement exercises (clickable comma slots between words)
       sec.querySelectorAll('.cu-comma-item').forEach(function(item) {
+        if (!inScope(item)) return;
         totalItems++;
         var expected = (item.getAttribute('data-comma-answer') || '').split(',')
           .map(function(n) { return parseInt(n, 10); })
@@ -7392,6 +7672,7 @@
       });
       // Handle word-tick exercises (e.g. Exercise P)
       sec.querySelectorAll('.cu-word-tick-btn').forEach(function(btn) {
+        if (!inScope(btn)) return;
         totalItems++;
         var word = (btn.getAttribute('data-word') || '').trim().toLowerCase();
         var answerWords = (btn.getAttribute('data-answer-words') || '').split(',').map(function(w) { return w.trim().toLowerCase(); }).filter(Boolean);
@@ -7405,6 +7686,7 @@
       });
       // Handle MC passage exercises (multiple-choice cloze, e.g. Exercise D)
       sec.querySelectorAll('.cu-mc-passage-exercise').forEach(function(mcPassage) {
+        if (!inScope(mcPassage)) return;
         hasMcPassage = true;
         mcPassage.querySelectorAll('.cu-mc-passage-gap').forEach(function(gap) {
           totalItems++;
@@ -7463,6 +7745,7 @@
       }
       // Handle passage exercises (word formation passage like Exercise O)
       sec.querySelectorAll('.cu-passage-exercise').forEach(function(passageEl) {
+        if (!inScope(passageEl)) return;
           passageEl.querySelectorAll('.cu-gap-input[data-passage-num]').forEach(function(input) {
           totalItems++;
           var expectedRaw = (input.getAttribute('data-answer') || '').trim();
@@ -7500,6 +7783,7 @@
       });
       // Handle yn-items
       sec.querySelectorAll('.cu-yn-item').forEach(function(item) {
+        if (!inScope(item)) return;
         totalItems++;
         var answer = (item.getAttribute('data-answer') || '').trim().toUpperCase();
         var selected = item.querySelector('.cu-yn-btn.cu-yn-selected');
@@ -7532,6 +7816,7 @@
       });
       // Handle drag-category exercises
       sec.querySelectorAll('.cu-drag-category-exercise').forEach(function(exEl) {
+        if (!inScope(exEl)) return;
         exEl.querySelectorAll('.cu-drag-chip').forEach(function(chip) {
           totalItems++;
           var word = chip.getAttribute('data-word') || '';
@@ -7553,7 +7838,7 @@
       });
       // Handle matching exercise
       var matchExercise = sec.querySelector('.cu-match-exercise');
-      if (matchExercise) {
+      if (matchExercise && inScope(matchExercise)) {
         var answerMap = {};
         matchExercise.querySelectorAll('.cu-match-answers span').forEach(function(sp) {
           answerMap[sp.getAttribute('data-num')] = sp.getAttribute('data-letter');
@@ -7598,6 +7883,7 @@
         }
       }
       sec.querySelectorAll('.cu-ex-item:not(.cu-yn-item)').forEach(function(item) {
+        if (!inScope(item)) return;
         var answer = (item.getAttribute('data-answer') || '').trim();
         // Handle A/B circle-select items (sentenceA/sentenceB format)
         var abBtns = item.querySelectorAll('.cu-ab-btn');
@@ -7880,6 +8166,7 @@
       });
       // Handle crossword exercises (letter-box style)
       sec.querySelectorAll('.cu-cw-clue-item').forEach(function(item) {
+        if (!inScope(item)) return;
         totalItems++;
         var expected = (item.getAttribute('data-answer') || '').toLowerCase();
         var boxes = item.querySelectorAll('.cu-cw-letter');
@@ -7908,6 +8195,13 @@
         }
         if (ok) correctItems++;
       });
+      if (opts.lessonItem) {
+        if (opts.onlyItem) {
+          opts.onlyItem.querySelectorAll('.cu-gap-input').forEach(function(input) { BentoGrid._cuGapSetDisabled(input, true); });
+          opts.onlyItem.querySelectorAll('.cu-option-btn, .cu-yn-btn, .cu-few-ok-btn, .cu-bc-ok-btn, .cu-ab-btn').forEach(function(btn) { btn.disabled = true; });
+        }
+        return { correctItems: correctItems, totalItems: totalItems };
+      }
       var checkBtn = sec.querySelector('.cu-check-btn');
       if (checkBtn) checkBtn.disabled = true;
       // Mark the section as checked so Show/Hide answers doesn't re-enable Check
