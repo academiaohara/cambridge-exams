@@ -14,7 +14,7 @@
     reading:   { bg: '#eff6ff', border: '#93c5fd', title: '#1e3a8a', accent: '#3b82f6' },
     listening: { bg: '#fffbeb', border: '#fcd34d', title: '#78350f', accent: '#f59e0b' },
     writing:   { bg: '#ecfdf5', border: '#6ee7b7', title: '#064e3b', accent: '#10b981' },
-    speaking:  { bg: '#fff1f2', border: '#fca5a5', title: '#7f1d1d', accent: '#ef4444' }
+    speaking:  { bg: '#fff8e6', border: '#ffca6b', title: '#78350f', accent: '#e28000' }
   };
 
   function _mi(name) {
@@ -374,7 +374,7 @@
 
       var isExamMode = AppState.currentMode === 'exam';
       var isB1 = levelId === 'B1';
-      var readingLabel = isB1 ? 'Reading' : 'Reading & UOE';
+      var readingLabel = isB1 ? 'READING' : 'READING & UOE';
 
       var html = '<div class="tests-section-cards">';
 

@@ -160,7 +160,7 @@
     getSectionTitle: function(section) {
       var lvl = (typeof AppState !== 'undefined' && AppState.currentLevel) || 'C1';
       const titles = {
-        'reading': lvl === 'B1' ? 'Reading' : 'READING & UOE',
+        'reading': lvl === 'B1' ? 'READING' : 'READING & UOE',
         'listening': 'LISTENING',
         'writing': 'WRITING',
         'speaking': 'SPEAKING'
