@@ -702,7 +702,6 @@
       });
 
       var pct = total > 0 ? Math.round((completedCount / total) * 100) : 0;
-      var streak = this._calcCwStreak(progress);
       var xp = this._calcCwXP(progress);
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
 
@@ -725,16 +724,6 @@
         '<div class="cw-sidebar-prog-track"><div class="cw-sidebar-prog-fill" style="width:' + pct + '%"></div></div>' +
         '<div class="cw-sidebar-prog-label">' + pct + '% overall progress</div>' +
       '</div>';
-
-      // ── Streak widget ──
-      html += '<div class="cw-sidebar-streak">';
-      if (streak > 0) {
-        html += '<div class="cw-sidebar-streak-num">🔥 ' + streak + '</div>';
-        html += '<div class="cw-sidebar-streak-label">day streak</div>';
-      } else {
-        html += '<div class="cw-sidebar-streak-empty">Start your streak today!</div>';
-      }
-      html += '</div>';
 
       // ── XP bar ──
       var XP_TIER = 500;
