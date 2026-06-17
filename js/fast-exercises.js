@@ -217,6 +217,184 @@
       return ['phrasal-verbs', 'idioms', 'word-formation'].indexOf(categoryId) !== -1;
     },
 
+    _setVocabLessonFocus: function(active) {
+      var layout = document.querySelector('.dashboard-layout');
+      var center = document.querySelector('.dashboard-center');
+      if (layout) layout.classList.toggle('dashboard-layout--lesson-focus', !!active);
+      if (center) center.classList.toggle('course-center--lesson-focus', !!active);
+    },
+
+    _ensureVocabCenterSection: function() {
+      var content = document.getElementById('main-content');
+      if (!content) return null;
+
+      var centerSection = document.getElementById('feCenterSection');
+      if (!centerSection) {
+        var exams = window.EXAMS_DATA[AppState.currentLevel || 'C1'] || [];
+        var sidebars = { left: '', right: '' };
+        if (typeof BentoGrid !== 'undefined') {
+          sidebars = BentoGrid._buildDashboardSidebars(exams, { includeGradeTracker: true });
+        }
+
+        content.innerHTML =
+          '<div class="dashboard-layout dashboard-layout--crossword-scroll">' +
+            (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+              ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
+              : '<div class="dashboard-left-sidebar" id="dashboardLeftSidebar">' + sidebars.left + '</div>') +
+            '<div class="dashboard-center dashboard-center--course">' +
+              '<div class="fe-section fe-section--merged-path fe-section--vocab-exercise" id="feCenterSection"></div>' +
+            '</div>' +
+            (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+              ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', sidebars.right)
+              : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + sidebars.right + '</div>') +
+          '</div>';
+
+        if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+        if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
+        if (typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
+        if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('vocabulary');
+        centerSection = document.getElementById('feCenterSection');
+      } else {
+        centerSection.className = 'fe-section fe-section--merged-path fe-section--vocab-exercise';
+      }
+
+      this._setVocabLessonFocus(true);
+      return centerSection;
+    },
+
+    _isMapPointAccessible: function(catMeta, levelId, lesson, pi, levelUnlocked) {
+      if (!levelUnlocked || !lesson.points || !lesson.points[pi]) return false;
+      var point = lesson.points[pi];
+      var isLastGate = (point.type === 'pv-mixed' || point.type === 'id-quiz') && pi === lesson.points.length - 1;
+      if (!isLastGate) return true;
+      for (var prev = 0; prev < pi; prev++) {
+        if (!this._isPointComplete(catMeta.id, levelId, lesson.id, prev)) return false;
+      }
+      return true;
+    },
+
+    _findCurrentPointKey: function(catMeta, data, activeLevel) {
+      var entries = [];
+      if (activeLevel) {
+        var level = null;
+        if (data && data.levels) {
+          for (var i = 0; i < data.levels.length; i++) {
+            if (data.levels[i].id === activeLevel) { level = data.levels[i]; break; }
+          }
+        }
+        if (level && level.lessons) {
+          level.lessons.forEach(function(lesson) {
+            entries.push({ levelId: activeLevel, lesson: lesson });
+          });
+        }
+      } else {
+        this._getMergedLessons(data).forEach(function(entry) {
+          entries.push({ levelId: entry.levelId, lesson: entry.lesson });
+        });
+      }
+
+      for (var ei = 0; ei < entries.length; ei++) {
+        var entry = entries[ei];
+        var lesson = entry.lesson;
+        var levelId = entry.levelId;
+        var levelUnlocked = this._isLevelUnlocked(catMeta.id, levelId, data.levels);
+        if (!levelUnlocked || !lesson.points) continue;
+        for (var pi = 0; pi < lesson.points.length; pi++) {
+          var point = lesson.points[pi];
+          if (point.type === 'review') continue;
+          if (this._isPointComplete(catMeta.id, levelId, lesson.id, pi)) continue;
+          if (this._isMapPointAccessible(catMeta, levelId, lesson, pi, levelUnlocked)) {
+            return levelId + '|' + lesson.id + '|' + pi;
+          }
+        }
+      }
+      return null;
+    },
+
+    _getPointDotTypeMeta: function(point) {
+      var dotClass = 'fe-dot';
+      var dotIcon = '';
+      if (point.type === 'explanation') {
+        dotClass += ' fe-dot-explanation';
+        dotIcon = _mi('article');
+      } else if (point.type === 'exercise') {
+        dotClass += ' fe-dot-exercise';
+        dotIcon = _mi('fitness_center');
+      } else if (point.type === 'trophy' || point.type === 'id-trophy') {
+        dotClass += ' fe-dot-trophy';
+        dotIcon = _mi('emoji_events');
+      } else if (point.type === 'pv-gallery' || point.type === 'id-gallery') {
+        dotClass += point.type === 'pv-gallery' ? ' fe-dot-pv-gallery' : ' fe-dot-id-gallery';
+        dotIcon = _mi('collections_bookmark');
+      } else if (point.type === 'pv-fill-in' || point.type === 'id-fill-in') {
+        dotClass += point.type === 'pv-fill-in' ? ' fe-dot-pv-fill-in' : ' fe-dot-id-fill-in';
+        dotIcon = _mi('edit');
+      } else if (point.type === 'pv-conversations' || point.type === 'id-conversations') {
+        dotClass += point.type === 'pv-conversations' ? ' fe-dot-pv-conv' : ' fe-dot-id-conv';
+        dotIcon = _mi('forum');
+      } else if (point.type === 'pv-conversation-drag' || point.type === 'id-conversation-drag') {
+        dotClass += point.type === 'pv-conversation-drag' ? ' fe-dot-pv-drag' : ' fe-dot-id-drag';
+        dotIcon = _mi('drag_indicator');
+      } else if (point.type === 'pv-mixed') {
+        dotClass += ' fe-dot-pv-mixed';
+        dotIcon = _mi('shuffle');
+      } else if (point.type === 'wf-explanation') {
+        dotClass += ' fe-dot-wf-explanation';
+        dotIcon = _mi('school');
+      } else if (point.type === 'wf-multiple-choice') {
+        dotClass += ' fe-dot-wf-multiple-choice';
+        dotIcon = _mi('rule');
+      } else if (point.type === 'wf-transform') {
+        dotClass += ' fe-dot-wf-transform';
+        dotIcon = _mi('transform');
+      } else if (point.type === 'id-quiz') {
+        dotClass += ' fe-dot-id-quiz';
+        dotIcon = _mi('quiz');
+      } else if (point.type === 'vocab-flashcards') {
+        dotClass += ' fe-dot-vocab-flashcards';
+        dotIcon = _mi('style');
+      } else if (point.type === 'review') {
+        dotClass += ' fe-dot-review';
+        dotIcon = _mi('replay');
+      }
+      return { dotClass: dotClass, dotIcon: dotIcon };
+    },
+
+    _buildMapPointDotHtml: function(catMeta, levelId, lessonId, point, pi, options) {
+      var self = this;
+      options = options || {};
+      var meta = this._getPointDotTypeMeta(point);
+      var dotClass = meta.dotClass;
+      var dotIcon = meta.dotIcon;
+      var isDone = !!options.isDone;
+      var isAccessible = !!options.isAccessible;
+      var pointKey = levelId + '|' + lessonId + '|' + pi;
+      var useFilledStyle = options.useFilledStyle !== false;
+
+      if (isDone) {
+        dotClass += ' fe-dot-done';
+        dotIcon = _mi('check');
+      } else if (!isAccessible) {
+        dotClass += ' fe-dot-locked';
+        dotIcon = _mi('lock');
+      } else if (useFilledStyle) {
+        if (options.currentKey === pointKey) dotClass += ' fe-dot-current';
+      } else {
+        dotClass += ' fe-dot-outline';
+      }
+
+      var onclick = (isAccessible || isDone)
+        ? 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pi + ')"'
+        : '';
+      var tooltip = self._escapeHTML(point.label || '');
+      var lineHtml = options.showLine ? '<div class="fe-map-line"></div>' : '';
+
+      return lineHtml +
+        '<div class="' + dotClass + '" ' + onclick + ' title="' + tooltip + '">' +
+          '<span class="fe-dot-icon">' + dotIcon + '</span>' +
+        '</div>';
+    },
+
     _getMergedLessons: function(data) {
       var LEVEL_ORDER = ['B1', 'B2', 'C1'];
       var merged = [];
@@ -440,23 +618,23 @@
       var legendHtml = '';
       if (categoryId === 'phrasal-verbs') {
         legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-gallery fe-dot-mini fe-dot-outline">' + _mi('collections_bookmark') + '</span> ' + 'Gallery' + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-fill-in fe-dot-mini fe-dot-outline">' + _mi('edit') + '</span> ' + 'Fill In' + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-conv fe-dot-mini fe-dot-outline">' + _mi('forum') + '</span> ' + 'Conversations' + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-drag fe-dot-mini fe-dot-outline">' + _mi('drag_indicator') + '</span> ' + 'Drag & Drop' + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-mixed fe-dot-mini fe-dot-outline">' + _mi('shuffle') + '</span> ' + 'Mixed' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-gallery fe-dot-mini">' + _mi('collections_bookmark') + '</span> ' + 'Gallery' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-fill-in fe-dot-mini">' + _mi('edit') + '</span> ' + 'Fill In' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-conv fe-dot-mini">' + _mi('forum') + '</span> ' + 'Conversations' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-drag fe-dot-mini">' + _mi('drag_indicator') + '</span> ' + 'Drag & Drop' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-mixed fe-dot-mini">' + _mi('shuffle') + '</span> ' + 'Mixed' + '</span>' +
         '</div>';
       } else if (categoryId === 'word-formation') {
         legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-explanation fe-dot-mini fe-dot-outline">' + _mi('school') + '</span> ' + 'Explanation' + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-multiple-choice fe-dot-mini fe-dot-outline">' + _mi('rule') + '</span> ' + 'Multiple Choice' + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-transform fe-dot-mini fe-dot-outline">' + _mi('transform') + '</span> ' + 'Transformation' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-explanation fe-dot-mini">' + _mi('school') + '</span> ' + 'Explanation' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-multiple-choice fe-dot-mini">' + _mi('rule') + '</span> ' + 'Multiple Choice' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-transform fe-dot-mini">' + _mi('transform') + '</span> ' + 'Transformation' + '</span>' +
         '</div>';
       } else if (categoryId === 'collocations') {
         legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-explanation fe-dot-mini fe-dot-outline">' + _mi('school') + '</span> ' + 'Explanation' + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-exercise fe-dot-mini fe-dot-outline">' + _mi('rule') + '</span> ' + 'Exercise' + '</span>' +
-          '<span class="fe-legend-item"><span class="fe-dot fe-dot-review fe-dot-mini fe-dot-outline">' + _mi('replay') + '</span> ' + 'Review' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-explanation fe-dot-mini">' + _mi('school') + '</span> ' + 'Explanation' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-exercise fe-dot-mini">' + _mi('rule') + '</span> ' + 'Exercise' + '</span>' +
+          '<span class="fe-legend-item"><span class="fe-dot fe-dot-review fe-dot-mini">' + _mi('replay') + '</span> ' + 'Review' + '</span>' +
         '</div>';
       } else if (categoryId === 'vocabulary') {
         legendHtml = '';
@@ -477,7 +655,7 @@
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
           '<div class="dashboard-center">' +
-            '<div class="fe-section' + (isCourseVocab ? ' fe-section--merged-path' : '') + '">' +
+            '<div class="fe-section' + (isCourseVocab ? ' fe-section--merged-path' : '') + '" id="feCenterSection">' +
               '<div class="' + headerClass + '">' +
                 '<button class="subpage-back-btn" onclick="' + _backFn + '" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
                 '<div class="subpage-header-core">' +
@@ -504,6 +682,7 @@
 
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
+      if (isCourseVocab) this._setVocabLessonFocus(false);
       if (isCourseVocab && typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
       if (isCourseVocab && typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('vocabulary');
       var catState = { view: 'fastExerciseCategory', categoryId: categoryId };
@@ -682,6 +861,7 @@
       }
       var initialPage = Math.floor(firstIncompleteLessonIdx / LESSONS_PER_PAGE);
       this._currentMapPage = initialPage;
+      var currentKey = isCourseVocabCategory ? self._findCurrentPointKey(catMeta, data, activeLevel) : null;
 
       var html = '<div class="fe-map-outer' + (totalPages <= 1 ? ' fe-map-single-page' : '') + '">';
 
@@ -740,18 +920,7 @@
             for (var pi = 0; pi < lesson.points.length; pi++) {
               var point = lesson.points[pi];
               var isDone = self._isPointComplete(catMeta.id, activeLevel, lesson.id, pi);
-
-              var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1) ||
-                                  (point.type === 'id-quiz' && pi === lesson.points.length - 1);
-              var isAccessible = true;
-              if (isLastPvMixed) {
-                for (var prev = 0; prev < pi; prev++) {
-                  if (!self._isPointComplete(catMeta.id, activeLevel, lesson.id, prev)) {
-                    isAccessible = false;
-                    break;
-                  }
-                }
-              }
+              var isAccessible = self._isMapPointAccessible(catMeta, activeLevel, lesson, pi, true);
 
               // Review points render as rows
               if (point.type === 'review') {
@@ -768,79 +937,13 @@
                 continue;
               }
 
-              var dotClass = 'fe-dot';
-              var dotIcon = '';
-              if (point.type === 'explanation') {
-                dotClass += ' fe-dot-explanation';
-                dotIcon = _mi('article');
-              } else if (point.type === 'exercise') {
-                dotClass += ' fe-dot-exercise';
-                dotIcon = _mi('fitness_center');
-              } else if (point.type === 'trophy') {
-                dotClass += ' fe-dot-trophy';
-                dotIcon = _mi('emoji_events');
-              } else if (point.type === 'pv-gallery') {
-                dotClass += ' fe-dot-pv-gallery';
-                dotIcon = _mi('collections_bookmark');
-              } else if (point.type === 'pv-fill-in') {
-                dotClass += ' fe-dot-pv-fill-in';
-                dotIcon = _mi('edit');
-              } else if (point.type === 'pv-conversations') {
-                dotClass += ' fe-dot-pv-conv';
-                dotIcon = _mi('forum');
-              } else if (point.type === 'pv-conversation-drag') {
-                dotClass += ' fe-dot-pv-drag';
-                dotIcon = _mi('drag_indicator');
-              } else if (point.type === 'pv-mixed') {
-                dotClass += ' fe-dot-pv-mixed';
-                dotIcon = _mi('shuffle');
-              } else if (point.type === 'wf-explanation') {
-                dotClass += ' fe-dot-wf-explanation';
-                dotIcon = _mi('school');
-              } else if (point.type === 'wf-multiple-choice') {
-                dotClass += ' fe-dot-wf-multiple-choice';
-                dotIcon = _mi('rule');
-              } else if (point.type === 'wf-transform') {
-                dotClass += ' fe-dot-wf-transform';
-                dotIcon = _mi('transform');
-              } else if (point.type === 'id-gallery') {
-                dotClass += ' fe-dot-id-gallery';
-                dotIcon = _mi('collections_bookmark');
-              } else if (point.type === 'id-fill-in') {
-                dotClass += ' fe-dot-id-fill-in';
-                dotIcon = _mi('edit');
-              } else if (point.type === 'id-conversations') {
-                dotClass += ' fe-dot-id-conv';
-                dotIcon = _mi('forum');
-              } else if (point.type === 'id-conversation-drag') {
-                dotClass += ' fe-dot-id-drag';
-                dotIcon = _mi('drag_indicator');
-              } else if (point.type === 'id-quiz') {
-                dotClass += ' fe-dot-id-quiz';
-                dotIcon = _mi('quiz');
-              } else if (point.type === 'id-trophy') {
-                dotClass += ' fe-dot-trophy';
-                dotIcon = _mi('emoji_events');
-              } else if (point.type === 'vocab-flashcards') {
-                dotClass += ' fe-dot-vocab-flashcards';
-                dotIcon = _mi('style');
-              }
-
-              if (isDone) {
-                dotClass += ' fe-dot-done';
-              } else if (!isAccessible) {
-                dotClass += ' fe-dot-locked';
-              } else {
-                dotClass += ' fe-dot-outline';
-              }
-
-              var onclick = (isAccessible || isDone) ? 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\', \'' + activeLevel + '\', \'' + lesson.id + '\', ' + pi + ')"' : '';
-              var tooltip = self._escapeHTML(point.label || '');
-
-              html += (pi > 0 ? '<div class="fe-map-line"></div>' : '') +
-                '<div class="' + dotClass + '" ' + onclick + ' title="' + tooltip + '">' +
-                  '<span class="fe-dot-icon">' + dotIcon + '</span>' +
-                '</div>';
+              html += self._buildMapPointDotHtml(catMeta, activeLevel, lesson.id, point, pi, {
+                isDone: isDone,
+                isAccessible: isAccessible,
+                currentKey: currentKey,
+                useFilledStyle: isCourseVocabCategory,
+                showLine: pi > 0
+              });
             }
           }
 
@@ -875,6 +978,7 @@
       }
 
       this._currentMapPage = 0;
+      var currentKey = self._findCurrentPointKey(catMeta, data, null);
 
       var html = '<div class="fe-map-outer fe-map-single-page fe-map-merged">';
       html += '<div class="fe-map-main">';
@@ -908,24 +1012,14 @@
             '<span class="fe-map-lesson-level">' + levelId + '</span>' +
             '<span class="fe-map-lesson-name">' + self._escapeHTML(lesson.title) + '</span>' +
           '</div>' +
-          '<div class="fe-map-points-row">';
+          '<div class="fe-map-points-row course-exercise-grid">';
 
         if (lesson.points) {
           for (var pi = 0; pi < lesson.points.length; pi++) {
             var point = lesson.points[pi];
             var isDone = self._isPointComplete(catMeta.id, levelId, lesson.id, pi);
 
-            var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1) ||
-                                (point.type === 'id-quiz' && pi === lesson.points.length - 1);
-            var isAccessible = levelUnlocked;
-            if (isAccessible && isLastPvMixed) {
-              for (var prev = 0; prev < pi; prev++) {
-                if (!self._isPointComplete(catMeta.id, levelId, lesson.id, prev)) {
-                  isAccessible = false;
-                  break;
-                }
-              }
-            }
+            var isAccessible = levelUnlocked && self._isMapPointAccessible(catMeta, levelId, lesson, pi, levelUnlocked);
 
             if (point.type === 'review') {
               var reviewStateClass = isDone ? 'fe-level-active' : (isAccessible ? 'fe-level-unlocked' : 'fe-level-locked');
@@ -941,79 +1035,13 @@
               continue;
             }
 
-            var dotClass = 'fe-dot';
-            var dotIcon = '';
-            if (point.type === 'explanation') {
-              dotClass += ' fe-dot-explanation';
-              dotIcon = _mi('article');
-            } else if (point.type === 'exercise') {
-              dotClass += ' fe-dot-exercise';
-              dotIcon = _mi('fitness_center');
-            } else if (point.type === 'trophy') {
-              dotClass += ' fe-dot-trophy';
-              dotIcon = _mi('emoji_events');
-            } else if (point.type === 'pv-gallery') {
-              dotClass += ' fe-dot-pv-gallery';
-              dotIcon = _mi('collections_bookmark');
-            } else if (point.type === 'pv-fill-in') {
-              dotClass += ' fe-dot-pv-fill-in';
-              dotIcon = _mi('edit');
-            } else if (point.type === 'pv-conversations') {
-              dotClass += ' fe-dot-pv-conv';
-              dotIcon = _mi('forum');
-            } else if (point.type === 'pv-conversation-drag') {
-              dotClass += ' fe-dot-pv-drag';
-              dotIcon = _mi('drag_indicator');
-            } else if (point.type === 'pv-mixed') {
-              dotClass += ' fe-dot-pv-mixed';
-              dotIcon = _mi('shuffle');
-            } else if (point.type === 'wf-explanation') {
-              dotClass += ' fe-dot-wf-explanation';
-              dotIcon = _mi('school');
-            } else if (point.type === 'wf-multiple-choice') {
-              dotClass += ' fe-dot-wf-multiple-choice';
-              dotIcon = _mi('rule');
-            } else if (point.type === 'wf-transform') {
-              dotClass += ' fe-dot-wf-transform';
-              dotIcon = _mi('transform');
-            } else if (point.type === 'id-gallery') {
-              dotClass += ' fe-dot-id-gallery';
-              dotIcon = _mi('collections_bookmark');
-            } else if (point.type === 'id-fill-in') {
-              dotClass += ' fe-dot-id-fill-in';
-              dotIcon = _mi('edit');
-            } else if (point.type === 'id-conversations') {
-              dotClass += ' fe-dot-id-conv';
-              dotIcon = _mi('forum');
-            } else if (point.type === 'id-conversation-drag') {
-              dotClass += ' fe-dot-id-drag';
-              dotIcon = _mi('drag_indicator');
-            } else if (point.type === 'id-quiz') {
-              dotClass += ' fe-dot-id-quiz';
-              dotIcon = _mi('quiz');
-            } else if (point.type === 'id-trophy') {
-              dotClass += ' fe-dot-trophy';
-              dotIcon = _mi('emoji_events');
-            } else if (point.type === 'vocab-flashcards') {
-              dotClass += ' fe-dot-vocab-flashcards';
-              dotIcon = _mi('style');
-            }
-
-            if (isDone) {
-              dotClass += ' fe-dot-done';
-            } else if (!isAccessible) {
-              dotClass += ' fe-dot-locked';
-            } else {
-              dotClass += ' fe-dot-outline';
-            }
-
-            var onclick = (isAccessible || isDone) ? 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lesson.id + '\', ' + pi + ')"' : '';
-            var tooltip = self._escapeHTML(point.label || '');
-
-            html += (pi > 0 ? '<div class="fe-map-line"></div>' : '') +
-              '<div class="' + dotClass + '" ' + onclick + ' title="' + tooltip + '">' +
-                '<span class="fe-dot-icon">' + dotIcon + '</span>' +
-              '</div>';
+            html += self._buildMapPointDotHtml(catMeta, levelId, lesson.id, point, pi, {
+              isDone: isDone,
+              isAccessible: isAccessible,
+              currentKey: currentKey,
+              useFilledStyle: true,
+              showLine: pi > 0
+            });
           }
         }
 
@@ -1696,13 +1724,16 @@
       var content = document.getElementById('main-content');
       if (!content) return;
       var self = this;
+      var isCourseVocab = this._isCourseVocabCategory(categoryId);
+      var container = isCourseVocab ? this._ensureVocabCenterSection() : content;
+      if (!container) return;
 
       this._currentCategory = categoryId;
       this._currentLevel = levelId;
       this._currentLesson = lessonId;
       this._currentPointIndex = pointIndex;
 
-      content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+      container.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
 
       var lessonData = await this._loadLessonData(categoryId, levelId, lessonId);
       var catData = await this._loadCategoryData(categoryId);
@@ -1740,7 +1771,7 @@
       if (pvTypes.indexOf(pointType) !== -1) {        if (!lessonData || (!lessonData.phrasalVerbs && !lessonData.fillInExercises && !lessonData.conversations)) {
           // Data file not available yet
           this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
-          content.innerHTML =
+          container.innerHTML =
             '<div class="fe-point-view">' +
               '<div class="subpage-header">' +
                 '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
@@ -1760,15 +1791,15 @@
           return;
         }
         if (pointType === 'pv-gallery') {
-          this._renderPvGallery(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+          this._renderPvGallery(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'pv-fill-in') {
-          this._renderPvFillIn(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+          this._renderPvFillIn(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'pv-conversations') {
-          this._renderPvConversations(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+          this._renderPvConversations(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'pv-conversation-drag') {
-          this._renderPvConversationDrag(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+          this._renderPvConversationDrag(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'pv-mixed') {
-          this._renderPvMixed(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+          this._renderPvMixed(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         }
         var pvState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
         history.pushState(pvState, '', Router.stateToPath(pvState));
@@ -1780,7 +1811,7 @@
       if (wfTypes.indexOf(pointType) !== -1) {
         if (!lessonData || (!lessonData.wordForms && !lessonData.multipleChoiceExercises && !lessonData.transformExercises)) {
           this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
-          content.innerHTML =
+          container.innerHTML =
             '<div class="fe-point-view">' +
               '<div class="fe-point-card">' +
                 '<div class="fe-point-message">' + 'Content coming soon!' + '</div>' +
@@ -1790,11 +1821,11 @@
           return;
         }
         if (pointType === 'wf-explanation') {
-          this._renderWfExplanation(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+          this._renderWfExplanation(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'wf-multiple-choice') {
-          this._renderWfMultipleChoice(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+          this._renderWfMultipleChoice(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'wf-transform') {
-          this._renderWfTransform(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+          this._renderWfTransform(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         }
         var wfState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
         history.pushState(wfState, '', Router.stateToPath(wfState));
@@ -1806,7 +1837,7 @@
       if (idTypes.indexOf(pointType) !== -1) {
         if (pointType === 'id-trophy') {
           this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
-          content.innerHTML =
+          container.innerHTML =
             '<div class="fe-point-view">' +
               '<div class="fe-point-card">' +
                 '<div class="fe-point-icon">' + _mi('emoji_events') + '</div>' +
@@ -1822,7 +1853,7 @@
         }
         if (!lessonData || (!lessonData.idioms && !lessonData.fillInExercises && !lessonData.conversations && !lessonData.quizExercises)) {
           this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
-          content.innerHTML =
+          container.innerHTML =
             '<div class="fe-point-view">' +
               '<div class="fe-point-card">' +
                 '<div class="fe-point-message">' + 'Content coming soon!' + '</div>' +
@@ -1832,15 +1863,15 @@
           return;
         }
         if (pointType === 'id-gallery') {
-          this._renderIdGallery(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+          this._renderIdGallery(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'id-fill-in') {
-          this._renderIdFillIn(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+          this._renderIdFillIn(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'id-conversations') {
-          this._renderIdConversations(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+          this._renderIdConversations(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'id-conversation-drag') {
-          this._renderIdConversationDrag(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+          this._renderIdConversationDrag(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         } else if (pointType === 'id-quiz') {
-          this._renderIdQuiz(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+          this._renderIdQuiz(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         }
         var idState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
         history.pushState(idState, '', Router.stateToPath(idState));
@@ -1851,7 +1882,7 @@
       if (pointType === 'vocab-flashcards') {
         if (!lessonData || !lessonData.words || lessonData.words.length === 0) {
           this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
-          content.innerHTML =
+          container.innerHTML =
             '<div class="fe-point-view">' +
               '<div class="fe-point-card">' +
                 '<div class="fe-point-message">' + 'Content coming soon!' + '</div>' +
@@ -1860,7 +1891,7 @@
             '</div>';
           return;
         }
-        this._renderVocabFlashcards(content, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+        this._renderVocabFlashcards(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         var vocabState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
         history.pushState(vocabState, '', Router.stateToPath(vocabState));
         return;
@@ -1870,7 +1901,7 @@
         // No detailed lesson data - mark complete and show simple view
         this._markPointComplete(categoryId, levelId, lessonId, pointIndex);
 
-        content.innerHTML =
+        container.innerHTML =
           '<div class="fe-point-view">' +
             '<div class="subpage-header">' +
               '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
@@ -1893,11 +1924,11 @@
       var point = lessonData.points[pointIndex];
 
       if (point.type === 'explanation') {
-        this._renderExplanationPoint(content, point, catMeta, levelId, lessonId, lessonData.title, pointIndex);
+        this._renderExplanationPoint(container, point, catMeta, levelId, lessonId, lessonData.title, pointIndex);
       } else if (point.type === 'exercise' || point.type === 'review') {
-        this._renderExercisePoint(content, point, catMeta, levelId, lessonId, lessonData.title, pointIndex);
+        this._renderExercisePoint(container, point, catMeta, levelId, lessonId, lessonData.title, pointIndex);
       } else if (point.type === 'trophy') {
-        this._renderExercisePoint(content, point, catMeta, levelId, lessonId, lessonData.title, pointIndex);
+        this._renderExercisePoint(container, point, catMeta, levelId, lessonId, lessonData.title, pointIndex);
       }
 
       var pointState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
