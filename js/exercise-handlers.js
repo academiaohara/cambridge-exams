@@ -642,7 +642,7 @@
         options = question.options;
       } else if (partType === 'multiple-matching') {
         var texts = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.texts || {};
-        options = Object.keys(texts);
+        options = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
       } else if (partType === 'speaker-matching') {
         var spTexts = AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.texts || {};
         options = Object.entries(spTexts).map(function(entry) { return entry[0] + ') ' + entry[1]; });

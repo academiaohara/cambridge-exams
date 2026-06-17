@@ -470,8 +470,8 @@
       var self = this;
       
       let html = '<div class="' + typePrefix + '-texts">';
-      Object.entries(texts).forEach(function(entry) {
-        var key = entry[0], text = entry[1];
+      Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); }).forEach(function(key) {
+        var text = texts[key];
         if (typeof text !== 'string') return;
         html += '<div class="' + typePrefix + '-text-card">';
         // For type8 (multiple-matching), extract ### Title from first line
