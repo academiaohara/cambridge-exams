@@ -209,8 +209,10 @@
           '</div>' +
           '<div class="tests-mode-help-cards">' +
             '<div class="tests-mode-help-card tests-mode-help-card--practice">' +
-              '<div class="tests-mode-help-card-badge">' + _mi('edit_note') + '</div>' +
-              '<div class="tests-mode-help-card-head"><span>Practice</span></div>' +
+              '<div class="tests-mode-help-card-header">' +
+                '<div class="tests-mode-help-card-badge">' + _mi('edit_note') + '</div>' +
+                '<div class="tests-mode-help-card-head"><span>Practice</span></div>' +
+              '</div>' +
               '<ul class="tests-mode-help-list">' +
                 '<li><span class="tests-mode-help-check">' + _mi('check') + '</span>No time limits — learn at your own pace</li>' +
                 '<li><span class="tests-mode-help-check">' + _mi('check') + '</span>Pick any part or section freely</li>' +
@@ -219,8 +221,10 @@
               '</ul>' +
             '</div>' +
             '<div class="tests-mode-help-card tests-mode-help-card--simulation">' +
-              '<div class="tests-mode-help-card-badge">' + _mi('timer') + '</div>' +
-              '<div class="tests-mode-help-card-head"><span>Simulation</span></div>' +
+              '<div class="tests-mode-help-card-header">' +
+                '<div class="tests-mode-help-card-badge">' + _mi('timer') + '</div>' +
+                '<div class="tests-mode-help-card-head"><span>Simulation</span></div>' +
+              '</div>' +
               '<ul class="tests-mode-help-list">' +
                 '<li><span class="tests-mode-help-check">' + _mi('check') + '</span>Timed exam conditions like the real test</li>' +
                 '<li><span class="tests-mode-help-check">' + _mi('check') + '</span>Full exam mode with section timers</li>' +

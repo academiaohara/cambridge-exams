@@ -248,6 +248,13 @@
   border-bottom-color: #c084fc;
 }
 
+.tests-mode-help-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
 .tests-mode-help-card-badge {
   width: 36px;
   height: 36px;
@@ -255,7 +262,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 8px;
+  flex-shrink: 0;
 }
 
 .tests-mode-help-card--practice .tests-mode-help-card-badge {
@@ -277,7 +284,6 @@
 .tests-mode-help-card-head {
   font-weight: 900;
   font-size: 0.95rem;
-  margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -345,7 +351,7 @@
   padding: 14px 20px;
   border: none;
   border-radius: 16px;
-  background: #58cc02;
+  background: #ff9600;
   color: #fff;
   font-family: 'Nunito', sans-serif;
   font-size: 0.92rem;
@@ -353,7 +359,7 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   cursor: pointer;
-  box-shadow: 0 4px 0 #46a302;
+  box-shadow: 0 4px 0 #e68600;
   transition: filter 0.15s, transform 0.1s, box-shadow 0.1s;
 }
 
@@ -363,7 +369,7 @@
 
 .tests-mode-help-cta:active {
   transform: translateY(2px);
-  box-shadow: 0 2px 0 #46a302;
+  box-shadow: 0 2px 0 #e68600;
 }
 
 .tests-path-map .bento-card-mixed,
