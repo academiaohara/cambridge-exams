@@ -7637,15 +7637,43 @@
       return pool;
     },
 
-    _openWordleLevel: async function(levelId, wlIndex, options) {
-      options = options || {};
+    _loadWordleLevelData: async function(levelId, wlIndex) {
       var self = this;
-      AppState.currentView = 'wordlePlay';
-      if (!options.fromRoute && typeof Router !== 'undefined') {
-        var playState = { view: 'wordlePlay', level: levelId, wlIndex: wlIndex };
-        history.pushState(playState, '', Router.stateToPath(playState));
+      var wordEntry = null;
+      try {
+        var wlRes = await fetch('/wordle/' + levelId + '/wl' + wlIndex + '.json');
+        if (!wlRes.ok) throw new Error('HTTP ' + wlRes.status);
+        wordEntry = await wlRes.json();
+      } catch (fetchErr) {
+        var pool = await this._buildVocabWordPool(levelId);
+        if (!pool.length) return { error: 'No words available for Wordle.' };
+        var shuffled = this._cwSeededShuffle(pool, wlIndex);
+        wordEntry = shuffled[0];
       }
 
+      if (!wordEntry || !wordEntry.word) {
+        return { error: 'No words available for Wordle.' };
+      }
+
+      var pKey = levelId + '_wl' + wlIndex;
+      var saved = this._getWlProgress()[pKey] || null;
+
+      window._wdlState = {
+        target: wordEntry.word.toUpperCase(),
+        clue: self._cwFormatClueDisplay(wordEntry.clue || ''),
+        guesses: saved && saved.guessHistory ? saved.guessHistory.slice() : [],
+        results: saved && saved.resultHistory ? saved.resultHistory.slice() : [],
+        solved: !!(saved && saved.completed),
+        currentInput: '',
+        levelId: levelId,
+        wlIndex: wlIndex,
+        levelLabel: 'Level ' + (wlIndex + 1)
+      };
+
+      return { ok: true };
+    },
+
+    _mountWordlePlayDashboard: function(levelId, wlIndex) {
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
@@ -7664,7 +7692,7 @@
         : '';
 
       var content = document.getElementById('main-content');
-      if (!content) return;
+      if (!content) return null;
 
       content.innerHTML =
         '<div class="dashboard-layout dashboard-layout--crossword-scroll dashboard-layout--wordle-scroll dashboard-layout--wordle-play">' +
@@ -7680,9 +7708,7 @@
                 '<div class="cw-section-title">Guess the Word</div>' +
               '</div>' +
             '</div>' +
-            '<div class="cw-page-content" id="wlWordlePage">' +
-              '<div class="fe-loading-inline">' + _mi('hourglass_empty') + ' Loading…</div>' +
-            '</div>' +
+            '<div class="cw-page-content" id="wlWordlePage"></div>' +
             mobileNavHtml +
           '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
@@ -7694,54 +7720,39 @@
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('wordle');
 
-      var pageEl = document.getElementById('wlWordlePage');
-      if (!pageEl) return;
-
-      await self._openWordlePage(pageEl, levelId, wlIndex);
+      return document.getElementById('wlWordlePage');
     },
 
-    _openWordlePage: async function(pageEl, levelId, wlIndex) {
+    _openWordleLevel: async function(levelId, wlIndex, options) {
+      options = options || {};
       var self = this;
-      try {
-        var wordEntry = null;
-        try {
-          var wlRes = await fetch('/wordle/' + levelId + '/wl' + wlIndex + '.json');
-          if (!wlRes.ok) throw new Error('HTTP ' + wlRes.status);
-          wordEntry = await wlRes.json();
-        } catch (fetchErr) {
-          var pool = await this._buildVocabWordPool(levelId);
-          if (!pool.length) {
-            pageEl.innerHTML = '<div class="fe-error">No words available for Wordle.</div>';
-            return;
-          }
-          var shuffled = this._cwSeededShuffle(pool, wlIndex);
-          wordEntry = shuffled[0];
-        }
+      AppState.currentView = 'wordlePlay';
+      if (!options.fromRoute && typeof Router !== 'undefined') {
+        var playState = { view: 'wordlePlay', level: levelId, wlIndex: wlIndex };
+        history.pushState(playState, '', Router.stateToPath(playState));
+      }
 
-        if (!wordEntry || !wordEntry.word) {
-          pageEl.innerHTML = '<div class="fe-error">No words available for Wordle.</div>';
+      this._showCrosswordLoading();
+
+      try {
+        var loadResult = await this._loadWordleLevelData(levelId, wlIndex);
+        if (loadResult.error) {
+          this._hideCrosswordLoading();
+          var errContent = document.getElementById('main-content');
+          if (errContent) errContent.innerHTML = '<div class="fe-error">' + loadResult.error + '</div>';
           return;
         }
 
-        var pKey = levelId + '_wl' + wlIndex;
-        var saved = this._getWlProgress()[pKey] || null;
-
-        window._wdlState = {
-          target: wordEntry.word.toUpperCase(),
-          clue: self._cwFormatClueDisplay(wordEntry.clue || ''),
-          guesses: saved && saved.guessHistory ? saved.guessHistory.slice() : [],
-          results: saved && saved.resultHistory ? saved.resultHistory.slice() : [],
-          solved: !!(saved && saved.completed),
-          currentInput: '',
-          levelId: levelId,
-          wlIndex: wlIndex,
-          levelLabel: 'Level ' + (wlIndex + 1)
-        };
+        this._hideCrosswordLoading();
+        var pageEl = this._mountWordlePlayDashboard(levelId, wlIndex);
+        if (!pageEl) return;
 
         self._wdlBindPlayEvents(pageEl);
         self._renderStandaloneWordle(pageEl);
       } catch (e) {
-        pageEl.innerHTML = '<div class="fe-error">Could not load Wordle. Please try again.</div>';
+        this._hideCrosswordLoading();
+        var errContent3 = document.getElementById('main-content');
+        if (errContent3) errContent3.innerHTML = '<div class="fe-error">Could not load Wordle. Please try again.</div>';
       }
     },
 
