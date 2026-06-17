@@ -4,8 +4,7 @@
   var NAV_ITEMS = [
     { id: 'home', label: 'Home', icon: 'home', color: '#1cb0f6', onclick: 'loadDashboard()' },
     { id: 'course', label: 'Course', icon: 'auto_stories', color: '#ff9600', onclick: 'BentoGrid.openLessons()' },
-    { id: 'practice', label: 'Practice', icon: 'edit_note', color: '#ff9600', onclick: 'BentoGrid.selectMode(\'practice\')' },
-    { id: 'simulation', label: 'Simulation', icon: 'assignment', color: '#ce82ff', onclick: 'BentoGrid.selectMode(\'exam\')' },
+    { id: 'tests', label: 'Tests', icon: 'assignment', color: '#58cc02', onclick: 'BentoGrid.openTests()' },
     { id: 'crosswords', label: 'Crosswords', icon: 'grid_on', color: '#ff4b4b', onclick: 'BentoGrid.openCrosswordList()' },
     { id: 'wordle', label: 'Wordle', icon: 'casino', color: '#a855f7', onclick: 'BentoGrid.openWordleSection()' },
     { id: 'profile', label: 'Profile', icon: 'person', color: '#777777', onclick: 'BentoGrid.openMobileProfile()' }
@@ -14,13 +13,13 @@
   var MOBILE_BOTTOM_ITEMS = [
     { id: 'home', label: 'Home', icon: 'home', color: '#1cb0f6', onclick: 'BentoGrid.goMobileHome()' },
     { id: 'course', label: 'Course', icon: 'auto_stories', color: '#ff9600', onclick: 'BentoGrid.openLessons()' },
-    { id: 'practice', label: 'Practice', icon: 'edit_note', color: '#ff9600', onclick: 'BentoGrid.selectMode(\'practice\')' },
+    { id: 'tests', label: 'Tests', icon: 'assignment', color: '#58cc02', onclick: 'BentoGrid.openTests()' },
     { id: 'dictionaries', label: 'Dict', icon: 'menu_book', color: '#6366f1', onclick: 'BentoGrid.openMobileDictionaries()' },
     { id: 'more', label: 'More', icon: 'menu', color: '#777777', onclick: 'MainNav.toggleMobileMenu()' }
   ];
 
   var MOBILE_MENU_ITEMS = [
-    'simulation', 'crosswords', 'wordle', 'profile'
+    'crosswords', 'wordle', 'profile'
   ];
 
   function escapeHTML(str) {
@@ -34,9 +33,7 @@
   function getActiveId() {
     var view = (typeof AppState !== 'undefined') ? AppState.currentView : 'dashboard';
     if (view === 'dashboard') return 'home';
-    if (view === 'subpage') {
-      return AppState.currentMode === 'exam' ? 'simulation' : 'practice';
-    }
+    if (view === 'subpage' || view === 'testsHub') return 'tests';
     if (view === 'course' || view === 'courseBlock' || view === 'courseUnit' || view === 'courseTheory') return 'course';
     if (view === 'crosswordList' || view === 'crosswordPlay') return 'crosswords';
     if (view === 'wordleList' || view === 'wordlePlay') return 'wordle';
@@ -466,23 +463,14 @@
           super: true
         },
         {
-          title: 'Test Practice',
+          title: 'Tests',
           status: testStatus,
           statusClass: completedExams > 0 ? 'mode-card-status-done' : '',
-          onclick: 'BentoGrid.selectMode(\'practice\')',
-          icon: 'edit_note',
+          onclick: 'BentoGrid.openTests()',
+          icon: 'assignment',
           iconColor: '#58cc02',
           super: true,
           badge: availableCount > 0 ? availableCount + '+' : ''
-        },
-        {
-          title: 'Test Simulation',
-          status: testStatus,
-          statusClass: completedExams > 0 ? 'mode-card-status-done' : '',
-          onclick: 'BentoGrid.selectMode(\'exam\')',
-          icon: 'assignment',
-          iconColor: '#ce82ff',
-          super: true
         },
         {
           title: 'Crosswords',

@@ -1,6 +1,11 @@
 /* css/components/tests.css */
 /* Tests section: exam/practice mode cards and grade evolution chart */
 
+/* ── Row 1: Unified Tests card ── */
+.bento-top-row--tests {
+  grid-template-columns: 1fr;
+}
+
 /* ── Row 1: Top row (Summit · Ascent) ── */
 .bento-top-row {
   display: grid;

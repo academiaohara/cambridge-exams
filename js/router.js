@@ -62,6 +62,15 @@
         case 'quicksteps':
           return '/quicksteps';
 
+        case 'testsHub':
+          if (state.examId && state.level) {
+            var thLevel = String(state.level).toLowerCase();
+            var thNum = String(state.examId).replace(/^Test/i, '');
+            return '/tests/' + thLevel + '/test-' + thNum;
+          }
+          if (state.level) return '/tests/' + String(state.level).toLowerCase();
+          return '/tests';
+
         case 'crosswordList':
           if (state.level) return '/crosswords/' + String(state.level).toLowerCase();
           return '/crosswords';
@@ -181,6 +190,19 @@
         if (segments.length >= 2) return { view: 'wordleList', level: segments[1].toUpperCase() };
         return { view: 'wordleList' };
       }
+      if (first === 'tests') {
+        if (segments.length >= 3 && /^test-\d+$/i.test(segments[2])) {
+          var testsLevel = segments[1].toUpperCase();
+          var testsExamId = segments[2].replace('test-', 'Test');
+          if (VALID_LEVELS.indexOf(segments[1].toLowerCase()) !== -1) {
+            return { view: 'testsHub', level: testsLevel, examId: testsExamId };
+          }
+        }
+        if (segments.length >= 2 && VALID_LEVELS.indexOf(segments[1].toLowerCase()) !== -1) {
+          return { view: 'testsHub', level: segments[1].toUpperCase() };
+        }
+        return { view: 'testsHub' };
+      }
       if (first === 'crosswords') {
         if (segments.length >= 2 && segments[1].toLowerCase() === 'wordle') {
           return { view: 'wordleList' };
@@ -227,7 +249,7 @@
         var mode = modeMap[first];
         // Subpage: /testpractice or /testsimulation (no further segments)
         if (segments.length === 1) {
-          return { view: 'subpage', mode: mode };
+          return { view: 'testsHub', mode: mode };
         }
         // Exercise: /testpractice/{level}/{test-N}/{section}/{part}
         if (segments.length >= 5 && VALID_LEVELS.indexOf(segments[1].toLowerCase()) !== -1) {
