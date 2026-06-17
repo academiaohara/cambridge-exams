@@ -197,7 +197,7 @@ button.stats-bar-item.is-active {
   top: calc(100% + 8px);
   right: 0;
   width: 300px;
-  z-index: 1500;
+  z-index: 2600;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -1282,7 +1282,20 @@ body.mobile-popover-open {
     width: auto;
     max-width: none;
     transform: translateY(12px);
-    z-index: 2300;
+    z-index: 2600;
+  }
+
+  .mobile-nav-top-stats .lang-popover {
+    max-height: min(70vh, 520px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-nav-top-stats .lang-popover .lang-popover-inner {
+    max-height: none;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
   }
 
   .mobile-nav-top-stats .lang-popover.is-open,
@@ -1295,5 +1308,17 @@ body.mobile-popover-open {
   .mobile-nav-top-stats .streak-popover::before,
   .mobile-nav-top-stats .dict-popover::before {
     display: none;
+  }
+}
+
+/* Desktop: escape the scrollable right sidebar so the language picker is not clipped */
+@media (min-width: 901px) {
+  .dashboard-right-sidebar .lang-popover.is-open {
+    position: fixed;
+    z-index: 2600;
+  }
+
+  .dashboard-layout:not(.dashboard-layout--crossword-play):not(.dashboard-layout-right-closed) > .dashboard-right-sidebar:has(.lang-popover.is-open) {
+    overflow: visible;
   }
 }

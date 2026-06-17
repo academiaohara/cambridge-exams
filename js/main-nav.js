@@ -299,12 +299,69 @@
       wrap._setPopoverOpen = setOpen;
     },
 
+    _needsFixedLangPopover: function() {
+      return !!(window.matchMedia && window.matchMedia('(min-width: 901px)').matches);
+    },
+
+    _positionLangPopover: function() {
+      if (!this._needsFixedLangPopover()) return;
+
+      var gap = 8;
+      var margin = 12;
+      var vw = window.innerWidth;
+      var vh = window.innerHeight;
+      var popW = 300;
+
+      document.querySelectorAll('.stats-bar-lang-wrap').forEach(function(wrap) {
+        var popover = wrap.querySelector('.lang-popover');
+        var btn = wrap.querySelector('.stats-bar-lang');
+        if (!popover || !btn || !popover.classList.contains('is-open')) return;
+
+        var rect = btn.getBoundingClientRect();
+        var popH = popover.offsetHeight || 360;
+        var top = rect.bottom + gap;
+        var right = Math.max(margin, vw - rect.right);
+
+        if (top + popH > vh - margin) {
+          top = Math.max(margin, rect.top - popH - gap);
+        }
+
+        popover.style.top = top + 'px';
+        popover.style.right = right + 'px';
+        popover.style.left = 'auto';
+        popover.style.bottom = 'auto';
+        popover.style.width = popW + 'px';
+      });
+    },
+
+    _resetLangPopoverPosition: function() {
+      document.querySelectorAll('.lang-popover').forEach(function(popover) {
+        popover.style.removeProperty('top');
+        popover.style.removeProperty('right');
+        popover.style.removeProperty('left');
+        popover.style.removeProperty('bottom');
+        popover.style.removeProperty('width');
+      });
+    },
+
     initLangPopover: function() {
+      var self = this;
       this._initAnchoredPopover({
         wrapSelector: '.stats-bar-lang-wrap',
         btnSelector: '.stats-bar-lang',
         popoverSelector: '.lang-popover',
-        initFlag: '_langPopoverInit'
+        initFlag: '_langPopoverInit',
+        onOpen: function() {
+          self._positionLangPopover();
+          if (!self._langPopoverResizeHandler) {
+            self._langPopoverResizeHandler = function() { self._positionLangPopover(); };
+            window.addEventListener('resize', self._langPopoverResizeHandler);
+            window.addEventListener('scroll', self._langPopoverResizeHandler, true);
+          }
+        },
+        onClose: function() {
+          self._resetLangPopoverPosition();
+        }
       });
     },
 
@@ -349,14 +406,17 @@
       var self = this;
       var currentLang = this._getCurrentTranslateLang();
       var langLabel = this._getTranslateLangLabel(currentLang);
+      var hadOpen = false;
       document.querySelectorAll('.stats-bar-lang-wrap').forEach(function(wrap) {
         var popover = wrap.querySelector('.lang-popover');
         var btn = wrap.querySelector('.stats-bar-lang');
         if (!popover || !btn) return;
+        hadOpen = hadOpen || popover.classList.contains('is-open');
         popover.innerHTML = self.buildLangPopoverHtml();
         var strong = btn.querySelector('strong');
         if (strong) strong.textContent = langLabel;
       });
+      if (hadOpen) this._positionLangPopover();
     },
 
     buildStreakPopoverHtml: function(streak) {
