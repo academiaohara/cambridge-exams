@@ -158,18 +158,22 @@ button.stats-bar-item.is-active {
   display: inline-flex;
 }
 
-.stats-bar-level {
+.stats-bar-lang .material-symbols-outlined {
+  color: #1cb0f6;
+}
+
+.stats-bar-lang {
   font-weight: 900;
 }
 
-/* ── Level popover (Duolingo-style, anchored to level button) ── */
-.stats-bar-level-wrap {
+/* ── Language popover (translation target language) ── */
+.stats-bar-lang-wrap {
   position: relative;
   display: inline-flex;
 }
 
 /* Invisible hover bridge between stats bar buttons and their popovers */
-.stats-bar-level-wrap::after,
+.stats-bar-lang-wrap::after,
 .stats-bar-streak-wrap::after,
 .stats-bar-dict-wrap::after {
   content: '';
@@ -181,13 +185,138 @@ button.stats-bar-item.is-active {
   pointer-events: none;
 }
 
-.stats-bar-level-wrap:has(.level-popover.is-open)::after,
+.stats-bar-lang-wrap:has(.lang-popover.is-open)::after,
 .stats-bar-streak-wrap:has(.streak-popover.is-open)::after,
 .stats-bar-dict-wrap:has(.dict-popover.is-open)::after {
   height: 32px;
   pointer-events: auto;
 }
 
+.lang-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 300px;
+  z-index: 1500;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+.lang-popover.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.lang-popover.is-open::after {
+  content: '';
+  position: absolute;
+  top: -28px;
+  left: -40px;
+  right: -40px;
+  height: 28px;
+  pointer-events: auto;
+}
+
+.lang-popover::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 28px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-left: 2px solid #e5e5e5;
+  border-top: 2px solid #e5e5e5;
+  transform: rotate(45deg);
+  border-radius: 2px 0 0 0;
+}
+
+.lang-popover-inner {
+  background: #fff;
+  border: 2px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 18px 16px 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.lang-popover-kicker {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1cb0f6;
+  margin-bottom: 4px;
+}
+
+.lang-popover-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #3c3c3c;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.lang-popover-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lang-popover-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e5e5e5;
+  border-bottom-width: 4px;
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  text-align: left;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.lang-popover-option:hover {
+  background: #f0f9ff;
+  border-color: #93c5fd;
+}
+
+.lang-popover-option.active {
+  background: #f0f9ff;
+  border-color: #1cb0f6;
+}
+
+.lang-popover-option .material-symbols-outlined {
+  font-size: 1.3rem;
+  color: #1cb0f6;
+}
+
+.lang-popover-option strong {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #3c3c3c;
+  display: block;
+  line-height: 1.1;
+}
+
+.lang-popover-option small {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #777;
+}
+
+/* Legacy level popover styles kept for mobile-level-modal */
 .level-popover {
   position: absolute;
   top: calc(100% + 8px);
@@ -1142,7 +1271,7 @@ body.mobile-popover-open {
   }
 
   /* Mobile popovers as bottom sheets */
-  .mobile-nav-top-stats .level-popover,
+  .mobile-nav-top-stats .lang-popover,
   .mobile-nav-top-stats .streak-popover,
   .mobile-nav-top-stats .dict-popover {
     position: fixed;
@@ -1156,13 +1285,13 @@ body.mobile-popover-open {
     z-index: 2300;
   }
 
-  .mobile-nav-top-stats .level-popover.is-open,
+  .mobile-nav-top-stats .lang-popover.is-open,
   .mobile-nav-top-stats .streak-popover.is-open,
   .mobile-nav-top-stats .dict-popover.is-open {
     transform: translateY(0);
   }
 
-  .mobile-nav-top-stats .level-popover::before,
+  .mobile-nav-top-stats .lang-popover::before,
   .mobile-nav-top-stats .streak-popover::before,
   .mobile-nav-top-stats .dict-popover::before {
     display: none;

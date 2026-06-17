@@ -623,6 +623,17 @@
     setTranslateLang: function(code) {
       _translateTargetLang = code;
       try { localStorage.setItem('cambridge_translate_lang', code); } catch(e) { console.warn('Could not persist translate language:', e); }
+      if (typeof MainNav !== 'undefined' && MainNav.refreshLangPopover) {
+        MainNav.refreshLangPopover();
+      }
+    },
+
+    getTranslateLang: function() {
+      return _translateTargetLang;
+    },
+
+    getTranslateLanguages: function() {
+      return _TRANSLATE_LANGUAGES.slice();
     },
 
     translateFromInput: function() {

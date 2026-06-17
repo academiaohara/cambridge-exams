@@ -398,7 +398,7 @@
       </footer>
     </div>
 
-    <!-- Onboarding: level selection (shown once for new users / guests) -->
+    <!-- Onboarding: level selection + placement test (shown once for new users / guests) -->
     <div id="onboarding-screen" class="onboarding-screen" style="display:none;" aria-modal="true" role="dialog" aria-labelledby="onboarding-title">
       <header class="onboarding-header">
         <button type="button" class="preauth-back-btn" onclick="Auth.navigateTo('/')" aria-label="Volver">
@@ -406,53 +406,41 @@
         </button>
         <img src="Assets/images/sunelogoreduced2.svg" class="preauth-brand-logo" alt="Sune English">
       </header>
-      <div class="onboarding-body">
-        <div class="onboarding-prompt">
-          <img src="Assets/images/Cabezasune.svg" alt="" class="onboarding-mascot" aria-hidden="true">
-          <div class="onboarding-speech-bubble">
-            <p>Which exam level are you preparing for?</p>
+
+      <div id="onboarding-level-step" class="onboarding-level-step">
+        <div class="onboarding-body">
+          <div class="onboarding-prompt">
+            <img src="Assets/images/Cabezasune.svg" alt="" class="onboarding-mascot" aria-hidden="true">
+            <div class="onboarding-speech-bubble">
+              <p>Which exam level are you preparing for?</p>
+            </div>
+          </div>
+          <h2 id="onboarding-title" class="sr-only">Elige tu nivel de examen</h2>
+          <div id="onboarding-level-options" class="onboarding-options" role="radiogroup" aria-labelledby="onboarding-title"></div>
+        </div>
+        <footer class="onboarding-footer">
+          <button type="button" id="onboarding-continue-btn" class="onboarding-continue-btn" disabled onclick="Onboarding.complete()">CONTINUE</button>
+        </footer>
+      </div>
+
+      <div id="onboarding-placement-step" class="onboarding-placement-step" style="display:none;">
+        <div class="onboarding-placement-header">
+          <button type="button" class="preauth-back-btn" onclick="Onboarding.backToLevelSelection()" aria-label="Back">
+            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+          </button>
+          <div>
+            <h2 class="onboarding-placement-title">Placement test</h2>
+            <p id="onboarding-placement-subtitle" class="onboarding-placement-subtitle">Answer the questions to confirm your level</p>
           </div>
         </div>
-        <h2 id="onboarding-title" class="sr-only">Elige tu nivel de examen</h2>
-        <div class="onboarding-options" role="radiogroup" aria-labelledby="onboarding-title">
-          <button type="button" class="onboarding-option" data-level="B1" onclick="Onboarding.selectLevel('B1')">
-            <span class="onboarding-option-icon" aria-hidden="true">
-              <span class="onboarding-bar onboarding-bar--filled"></span>
-              <span class="onboarding-bar"></span>
-              <span class="onboarding-bar"></span>
-            </span>
-            <span class="onboarding-option-text">
-              <strong class="onboarding-level-name">Principiante</strong>
-              <span class="onboarding-level-equiv">B1 Preliminary</span>
-            </span>
-          </button>
-          <button type="button" class="onboarding-option" data-level="B2" onclick="Onboarding.selectLevel('B2')">
-            <span class="onboarding-option-icon" aria-hidden="true">
-              <span class="onboarding-bar onboarding-bar--filled"></span>
-              <span class="onboarding-bar onboarding-bar--filled"></span>
-              <span class="onboarding-bar"></span>
-            </span>
-            <span class="onboarding-option-text">
-              <strong class="onboarding-level-name">Intermedio</strong>
-              <span class="onboarding-level-equiv">B2 First</span>
-            </span>
-          </button>
-          <button type="button" class="onboarding-option" data-level="C1" onclick="Onboarding.selectLevel('C1')">
-            <span class="onboarding-option-icon" aria-hidden="true">
-              <span class="onboarding-bar onboarding-bar--filled"></span>
-              <span class="onboarding-bar onboarding-bar--filled"></span>
-              <span class="onboarding-bar onboarding-bar--filled"></span>
-            </span>
-            <span class="onboarding-option-text">
-              <strong class="onboarding-level-name">Avanzado</strong>
-              <span class="onboarding-level-equiv">C1 Advanced</span>
-            </span>
-          </button>
+        <div id="onboarding-placement-loading" class="onboarding-placement-loading" style="display:none;">
+          <div class="fe-spinner"></div>
         </div>
+        <div id="onboarding-placement-content" class="onboarding-placement-content"></div>
+        <footer class="onboarding-footer onboarding-placement-footer">
+          <button type="button" id="onboarding-placement-finish-btn" class="onboarding-continue-btn" disabled onclick="Onboarding.finishPlacementTest()">FINISH TEST</button>
+        </footer>
       </div>
-      <footer class="onboarding-footer">
-        <button type="button" id="onboarding-continue-btn" class="onboarding-continue-btn" disabled onclick="Onboarding.complete()">CONTINUE</button>
-      </footer>
     </div>
 
     <div id="app">
