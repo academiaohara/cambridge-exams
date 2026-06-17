@@ -784,7 +784,7 @@
       modal.id = 'pv-info-modal';
       modal.className = 'pv-info-modal-overlay';
       modal.innerHTML =
-        '<div class="pv-info-modal-box">' +
+        '<div class="pv-info-modal-box pv-info-modal-box--pv">' +
           '<div class="pv-info-modal-header">' +
             '<span class="pv-info-modal-icon">' + '<span class="material-symbols-outlined">auto_stories</span>' + '</span>' +
             '<h2 class="pv-info-modal-title">' + 'What are Phrasal Verbs' + '</h2>' +
@@ -2956,7 +2956,7 @@
       modal.id = 'pv-lesson-info-modal';
       modal.className = 'pv-info-modal-overlay';
       modal.innerHTML =
-        '<div class="pv-info-modal-box">' +
+        '<div class="pv-info-modal-box pv-info-modal-box--pv">' +
           '<div class="pv-info-modal-header">' +
             '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">school</span></span>' +
             '<h2 class="pv-info-modal-title">' + self._escapeHTML(lessonTitle || '') + '</h2>' +
@@ -4039,7 +4039,7 @@
       modal.id = 'wf-info-modal';
       modal.className = 'pv-info-modal-overlay';
       modal.innerHTML =
-        '<div class="pv-info-modal-box">' +
+        '<div class="pv-info-modal-box pv-info-modal-box--wf">' +
           '<div class="pv-info-modal-header">' +
             '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">text_fields</span></span>' +
             '<h2 class="pv-info-modal-title">What is Word Formation?</h2>' +
@@ -4063,7 +4063,7 @@
             '<p><button class="wf-info-dict-link" onclick="FastExercises._showWfDictionary(); document.getElementById(\'wf-info-modal\').remove();">' + _mi('search') + ' Open the Word Formation Dictionary</button></p>' +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
-            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'wf-info-modal\').remove()" style="background:#e11d48">Got it!</button>' +
+            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'wf-info-modal\').remove()">Got it!</button>' +
           '</div>' +
         '</div>';
 
@@ -4323,7 +4323,7 @@
       modal.id = 'colloc-info-modal';
       modal.className = 'pv-info-modal-overlay';
       modal.innerHTML =
-        '<div class="pv-info-modal-box">' +
+        '<div class="pv-info-modal-box pv-info-modal-box--colloc">' +
           '<div class="pv-info-modal-header">' +
             '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">format_quote</span></span>' +
             '<h2 class="pv-info-modal-title">What are Collocations?</h2>' +
@@ -4347,7 +4347,7 @@
             '<p><button class="colloc-info-dict-link" onclick="FastExercises._showCollocDictionary(); document.getElementById(\'colloc-info-modal\').remove();">' + _mi('search') + ' Open the Collocations Dictionary</button></p>' +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
-            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'colloc-info-modal\').remove()" style="background:#8b5cf6">Got it!</button>' +
+            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'colloc-info-modal\').remove()">Got it!</button>' +
           '</div>' +
         '</div>';
 
@@ -4366,7 +4366,7 @@
       modal.id = 'id-info-modal';
       modal.className = 'pv-info-modal-overlay';
       modal.innerHTML =
-        '<div class="pv-info-modal-box">' +
+        '<div class="pv-info-modal-box pv-info-modal-box--id">' +
           '<div class="pv-info-modal-header">' +
             '<span class="pv-info-modal-icon"><span class="material-symbols-outlined">record_voice_over</span></span>' +
             '<h2 class="pv-info-modal-title">What are Idioms?</h2>' +
@@ -4387,10 +4387,10 @@
             '<p>Idioms appear frequently in Cambridge exams (B1 Preliminary, B2 First, C1 Advanced). Using them correctly will help you sound more natural and score higher in Speaking and Writing.</p>' +
             '<p><strong>Tip 💡</strong></p>' +
             '<p>Learn idioms in context — pay attention to the situation in which they are used, not just their meaning.</p>' +
-            '<p><button class="wf-info-dict-link" onclick="FastExercises._showIdDictionary(); document.getElementById(\'id-info-modal\').remove();" style="background:#f59e0b">' + _mi('search') + ' Open the Idioms Dictionary</button></p>' +
+            '<p><button class="pv-info-dict-link" onclick="FastExercises._showIdDictionary(); document.getElementById(\'id-info-modal\').remove();">' + _mi('search') + ' Open the Idioms Dictionary</button></p>' +
           '</div>' +
           '<div class="pv-info-modal-footer">' +
-            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'id-info-modal\').remove()" style="background:#f59e0b">Got it!</button>' +
+            '<button class="pv-info-modal-btn" onclick="document.getElementById(\'id-info-modal\').remove()">Got it!</button>' +
           '</div>' +
         '</div>';
 
