@@ -6064,6 +6064,10 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 .course-etapa-card,
 .course-pt-card {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   border-radius: 18px;
   border: 2px solid #e5e7eb;
   background: #fff;
@@ -6255,10 +6259,21 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 }
 
 .course-etapa-card-btn--advance {
-  background: #f59e0b;
-  border-color: #d97706;
+  width: 56px;
+  height: 56px;
+  min-width: 0;
+  padding: 0;
+  margin-left: auto;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #ffc800;
+  border-color: #e08600;
   color: #fff;
-  min-width: 180px;
+  box-shadow: 0 4px 0 #e08600;
+}
+
+.course-etapa-card-btn--advance .material-symbols-outlined {
+  font-size: 1.65rem;
 }
 
 .course-pt-card-kicker,
@@ -6268,7 +6283,7 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 
 /* Etapa map (path inside a stage) */
 .course-etapa-map {
-  max-width: 720px;
+  max-width: 840px;
   margin: 0 auto;
   padding-bottom: 48px;
   padding-top: 4px;
@@ -6662,7 +6677,7 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   display: flex;
   flex-direction: column;
   min-height: calc(100dvh - var(--dashboard-top-spacing, 28px));
-  max-width: 720px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 16px 24px;
   box-sizing: border-box;
@@ -6726,6 +6741,16 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   font-size: 1.35rem;
   color: #ff4b4b;
   font-variation-settings: 'FILL' 1;
+  transition: color 0.2s ease, font-variation-settings 0.2s ease;
+}
+
+.cu-lesson-heart--empty .material-symbols-outlined {
+  color: #e5e7eb;
+  font-variation-settings: 'FILL' 0;
+}
+
+.cu-lesson-item-hidden {
+  display: none !important;
 }
 
 .course-center--lesson-focus .course-unit-content {
@@ -6777,9 +6802,11 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 .course-center--lesson-focus .cu-passage-wrap {
   background: #fff;
   border-radius: 20px;
-  padding: 24px;
+  padding: 28px 32px;
   box-shadow: 0 2px 16px rgba(45, 46, 95, 0.06);
   border: 2px solid #e5e7eb;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .course-center--lesson-focus .cu-section-nav {
@@ -6790,22 +6817,28 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 
 .course-center--lesson-focus .cu-section-nav .cu-nav-prev,
 .course-center--lesson-focus .cu-section-nav .cu-nav-next {
-  border-radius: 14px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  font-size: 0.82rem;
+  display: none !important;
+}
+
+.course-center--lesson-focus .cu-section-nav--lesson {
+  display: flex;
+  justify-content: center;
 }
 
 .course-center--lesson-focus .cu-ex-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px;
   margin-top: 0;
   padding-top: 0;
   border-top: none;
   width: 100%;
+}
+
+.course-center--lesson-focus .cu-show-all-btn,
+.course-center--lesson-focus .cu-retry-btn {
+  display: none !important;
 }
 
 .course-center--lesson-focus .cu-section-nav-center {
@@ -6840,8 +6873,9 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 
 .cu-lesson-primary-btn {
   flex: 1;
-  max-width: 280px;
-  margin-left: auto;
+  max-width: none;
+  width: 100%;
+  margin-left: 0;
   justify-content: center;
   background: #e5e7eb !important;
   color: #afafaf !important;
