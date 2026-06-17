@@ -7920,9 +7920,14 @@
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
-      var sidebars = (typeof BentoGrid !== 'undefined')
-        ? BentoGrid._buildDashboardSidebars(exams)
-        : { left: '', right: '' };
+      var sidebars = { left: '', right: '' };
+      if (typeof BentoGrid !== 'undefined') {
+        sidebars.left = BentoGrid._buildDashboardSidebars(exams).left;
+        var wlEntries = BentoGrid._getWordleEntries ? BentoGrid._getWordleEntries() : [];
+        sidebars.right = BentoGrid._buildWordleStatsSidebarHtml
+          ? BentoGrid._buildWordleStatsSidebarHtml(wlEntries)
+          : '';
+      }
       var LEVEL_META = (typeof BentoGrid !== 'undefined' && BentoGrid._wlLevelMeta)
         ? BentoGrid._wlLevelMeta()
         : {};

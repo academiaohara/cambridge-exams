@@ -837,6 +837,97 @@
       return html;
     },
 
+    _calcWlXP: function(progressObj) {
+      var xp = 0;
+      Object.values(progressObj || {}).forEach(function(p) {
+        if (!p || !p.completed) return;
+        xp += 40;
+        if (p.guesses && p.guesses <= 3) xp += 20;
+        else if (p.guesses && p.guesses <= 5) xp += 10;
+      });
+      return xp;
+    },
+
+    _buildWordleStatsSidebarHtml: function(entries) {
+      var progress = this._getWlProgress();
+      var total = entries.length;
+      var completedCount = 0;
+      var inProgressCount = 0;
+      var lastUnfinished = null;
+      var lastUnfinishedTime = 0;
+
+      entries.forEach(function(e) {
+        var key = e.levelId + '_wl' + e.wlIndex;
+        var p = progress[key];
+        if (!p) return;
+        if (p.completed) {
+          completedCount++;
+        } else if ((p.guesses || 0) > 0) {
+          inProgressCount++;
+          if (p.lastPlayed) {
+            var t = new Date(p.lastPlayed).getTime();
+            if (t > lastUnfinishedTime) {
+              lastUnfinishedTime = t;
+              lastUnfinished = e;
+            }
+          }
+        }
+      });
+
+      var pct = total > 0 ? Math.round((completedCount / total) * 100) : 0;
+      var xp = this._calcWlXP(progress);
+      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
+
+      var html = '<div class="cw-sidebar-stats">' +
+        '<div class="cw-sidebar-stats-row">' +
+          '<div class="cw-sidebar-stat">' +
+            '<div class="cw-sidebar-stat-num">' + completedCount + '</div>' +
+            '<div class="cw-sidebar-stat-label">Done</div>' +
+          '</div>' +
+          '<div class="cw-sidebar-stat">' +
+            '<div class="cw-sidebar-stat-num">' + inProgressCount + '</div>' +
+            '<div class="cw-sidebar-stat-label">In Progress</div>' +
+          '</div>' +
+          '<div class="cw-sidebar-stat">' +
+            '<div class="cw-sidebar-stat-num">' + total + '</div>' +
+            '<div class="cw-sidebar-stat-label">Total</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="cw-sidebar-prog-track"><div class="cw-sidebar-prog-fill cw-sidebar-prog-fill--wordle" style="width:' + pct + '%"></div></div>' +
+        '<div class="cw-sidebar-prog-label">' + pct + '% overall progress</div>' +
+      '</div>';
+
+      var XP_TIER = 500;
+      var xpInTier = xp % XP_TIER;
+      var xpPct = Math.round((xpInTier / XP_TIER) * 100);
+      var tier = Math.floor(xp / XP_TIER);
+      html += '<div class="cw-sidebar-xp">' +
+        '<div class="cw-sidebar-xp-row">' +
+          '<span class="cw-sidebar-xp-label">' + _mi('bolt') + ' ' + xp + ' XP</span>' +
+          (tier > 0 ? '<span class="cw-sidebar-xp-tier">Tier ' + tier + '</span>' : '') +
+          '<span class="cw-sidebar-xp-next">' + xpInTier + ' / ' + XP_TIER + '</span>' +
+        '</div>' +
+        '<div class="cw-sidebar-xp-track"><div class="cw-sidebar-xp-fill cw-sidebar-xp-fill--wordle" style="width:' + xpPct + '%"></div></div>' +
+      '</div>';
+
+      if (lastUnfinished) {
+        var p2 = progress[lastUnfinished.levelId + '_wl' + lastUnfinished.wlIndex] || {};
+        var triesPct = (p2.guesses > 0) ? Math.round((p2.guesses / 6) * 100) : 0;
+        html += '<div class="cw-sidebar-continue" onclick="FastExercises._openWordleLevel(\'' + this._escapeHTML(lastUnfinished.levelId) + '\',' + lastUnfinished.wlIndex + ')">' +
+          '<div class="cw-sidebar-continue-label">' + _mi('play_circle') + ' Continue</div>' +
+          '<div class="cw-sidebar-continue-title">' + this._escapeHTML(lastUnfinished.title) + '</div>' +
+          '<div class="cw-sidebar-continue-sub">' + lastUnfinished.levelId + ' · ' + (p2.guesses || 0) + ' / 6 tries</div>' +
+          '<div class="cw-sidebar-prog-track" style="margin-top:8px"><div class="cw-sidebar-prog-fill cw-sidebar-prog-fill--wordle" style="width:' + triesPct + '%"></div></div>' +
+        '</div>';
+      }
+
+      html += '<div class="cw-sidebar-decor-wrap" aria-hidden="true">' +
+        '<img src="Assets/images/wordle.svg" alt="" class="cw-sidebar-decor cw-sidebar-decor--wordle">' +
+      '</div>';
+
+      return html;
+    },
+
     _cwDiffMap: function() {
       return {
         'A2': { label: 'Easy',   difficulty: 'easy',   cssClass: 'cw-list-card-a2', badgeColor: '#065f46' },
@@ -1336,9 +1427,11 @@
         history.pushState(wlState, '', Router.stateToPath(wlState));
       }
 
-      var sidebars = this._buildDashboardSidebars(exams);
-      var leftSidebarContent = sidebars.left;
-      var rightSidebarContent = sidebars.right;
+      var leftSidebarContent = '';
+      if (typeof BentoGrid !== 'undefined') {
+        leftSidebarContent = BentoGrid._buildDashboardSidebars(exams).left;
+      }
+      var rightSidebarContent = this._buildWordleStatsSidebarHtml(allEntries);
 
       var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
         ? MainNav.buildMobileTopBarHtml() : '';
