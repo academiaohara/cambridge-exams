@@ -1,4 +1,5 @@
 {
+  "buildCommand": "node scripts/inject-asset-version.js",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],

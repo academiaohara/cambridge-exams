@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "description": "Cambridge exam practice platform with AI-powered writing evaluation",
+  "scripts": {
+    "build": "node scripts/inject-asset-version.js"
+  },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "dotenv": "^17.3.1",

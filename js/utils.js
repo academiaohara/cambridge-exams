@@ -56,11 +56,11 @@
       };
 
       const baseUrl = `${window.CONFIG.CSS_BASE_URL}exercise-types/`;
-      const typePromise = loadStylesheet(cssId, `${baseUrl}${fileInfo.css}`, fileInfo.css);
+      const typePromise = loadStylesheet(cssId, window.CONFIG.assetUrl(`${baseUrl}${fileInfo.css}`), fileInfo.css);
       const isWritingType = fileInfo.css.indexOf('writing-type') === 0;
       const sharedPromise = isWritingType
         ? typePromise.then(function() {
-            return loadStylesheet('css-writing-shared', `${baseUrl}writing-shared.css`, 'writing-shared.css');
+            return loadStylesheet('css-writing-shared', window.CONFIG.assetUrl(`${baseUrl}writing-shared.css`), 'writing-shared.css');
           })
         : typePromise;
 
@@ -84,7 +84,7 @@
       return new Promise(function(resolve) {
         const script = document.createElement('script');
         script.id = jsId;
-        script.src = `${window.CONFIG.JS_BASE_URL}exercise-types/${fileInfo.js}`;
+        script.src = window.CONFIG.assetUrl(`${window.CONFIG.JS_BASE_URL}exercise-types/${fileInfo.js}`);
         script.onload = function() { console.log(`📦 JS cargado: ${fileInfo.js}`); resolve(); };
         script.onerror = function() { console.error(`❌ Error cargando JS: ${fileInfo.js}`); resolve(); };
         document.body.appendChild(script);
@@ -103,7 +103,7 @@
           const link = document.createElement('link');
           link.id = item.id;
           link.rel = 'stylesheet';
-          link.href = `${window.CONFIG.CSS_BASE_URL}components/${item.file}`;
+          link.href = window.CONFIG.assetUrl(`${window.CONFIG.CSS_BASE_URL}components/${item.file}`);
           document.head.appendChild(link);
           console.log(`📁 CSS base cargado: ${item.file}`);
         }
