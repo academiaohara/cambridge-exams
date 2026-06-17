@@ -129,8 +129,17 @@
         case 'course':
           return '/course';
 
+        case 'courseSection':
+          var courseSec = state.section || 'learning';
+          var courseSecPath = '/course/' + courseSec;
+          if (state.level) courseSecPath += '/' + state.level.toLowerCase();
+          return courseSecPath;
+
         case 'courseTheory':
-          return '/course/theory' + (state.level ? '/' + state.level.toLowerCase() : '');
+          if (state.level) {
+            return '/course/learning/' + state.level.toLowerCase();
+          }
+          return '/course/learning';
 
         case 'courseBlock':
           var cbLevel = (state.level || (typeof AppState !== 'undefined' && AppState.currentLevel) || 'C1').toLowerCase();
@@ -296,19 +305,24 @@
         }
         if (segments.length === 2) {
           if (segments[1] === 'theory') {
-            return { view: 'courseTheory' };
+            return { view: 'courseSection', section: 'learning' };
+          }
+          if (segments[1] === 'learning' || segments[1] === 'vocabulary') {
+            return { view: 'courseSection', section: segments[1] };
           }
           var _courseCategories = COURSE_CATEGORIES;
           if (_courseCategories.indexOf(segments[1]) !== -1) {
             return { view: 'fastExerciseCategory', categoryId: segments[1] };
           }
         }
-        if (segments.length === 3 && segments[1] === 'theory') {
-          var theoryLevel = segments[2].toLowerCase();
-          if (VALID_LEVELS.indexOf(theoryLevel) !== -1) {
-            return { view: 'courseTheory', level: theoryLevel.toUpperCase() };
+        if (segments.length === 3) {
+          if (segments[1] === 'theory' && VALID_LEVELS.indexOf(segments[2].toLowerCase()) !== -1) {
+            return { view: 'courseSection', section: 'learning', level: segments[2].toUpperCase() };
           }
-          return { view: 'courseTheory' };
+          if ((segments[1] === 'learning' || segments[1] === 'vocabulary') &&
+              VALID_LEVELS.indexOf(segments[2].toLowerCase()) !== -1) {
+            return { view: 'courseSection', section: segments[1], level: segments[2].toUpperCase() };
+          }
         }
         // New format: /course/{level}/block-{key}[/{unitId}[/{sectionIdx}]]
         if (segments.length >= 3 && VALID_LEVELS.indexOf(segments[1].toLowerCase()) !== -1 && segments[2].indexOf('block-') === 0) {

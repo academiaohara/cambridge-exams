@@ -171,10 +171,13 @@
         if (typeof FastExercises !== 'undefined') FastExercises.openPoint(state.categoryId, state.levelId, state.lessonId, state.pointIndex);
       } else if (state.view === 'course') {
         Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons({ fromRoute: true });
+      } else if (state.view === 'courseSection' && state.section) {
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseSection(state.section, state.level, { fromRoute: true });
       } else if (state.view === 'courseTheory') {
         Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseTheory(state.level);
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseSection('learning', state.level, { fromRoute: true });
       } else if (state.view === 'courseBlock' && state.blockKey) {
         Dashboard.render();
         if (state.level) AppState.currentLevel = state.level;
@@ -323,11 +326,15 @@
       } else if (initialState.view === 'course') {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons({ fromRoute: true });
+      } else if (initialState.view === 'courseSection' && initialState.section) {
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        Dashboard.render();
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseSection(initialState.section, initialState.level, { fromRoute: true });
       } else if (initialState.view === 'courseTheory') {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseTheory(initialState.level);
+        if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseSection('learning', initialState.level, { fromRoute: true });
       } else if (initialState.view === 'courseBlock' && initialState.blockKey) {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();

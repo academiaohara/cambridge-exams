@@ -5831,3 +5831,196 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     padding-bottom: 1px !important;
   }
 }
+
+/* ── Course hub (Duolingo-style, shared with tests/crosswords) ─────────── */
+
+.dashboard-center--course .cw-section-header {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.course-hub-page {
+  padding: 0 4px 24px;
+}
+
+.course-section-cards,
+.course-level-cards {
+  margin-top: 8px;
+}
+
+.course-path-map {
+  margin-top: 4px;
+}
+
+.course-path-grid {
+  margin-bottom: 8px;
+}
+
+.course-path-cell {
+  position: relative;
+}
+
+.course-path-cell--review .cw-path-cell-num {
+  font-size: 0.72rem;
+  letter-spacing: -0.02em;
+}
+
+.course-path-cell--pt .cw-path-cell-num {
+  font-size: 0.68rem;
+  font-weight: 900;
+}
+
+.course-path-cell--locked {
+  opacity: 0.72;
+}
+
+.course-path-lock {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  line-height: 1;
+}
+
+.course-path-lock .material-symbols-outlined {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.course-vocab-categories {
+  margin-top: 28px;
+  padding-top: 8px;
+}
+
+.course-vocab-categories-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+.course-vocab-categories-title .material-symbols-outlined {
+  font-size: 1.1rem;
+  color: #10b981;
+}
+
+.course-section-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.course-section-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 18px;
+  border: 2px solid #e5e5e5;
+  border-bottom: 5px solid #d0d0d0;
+  border-radius: 18px;
+  background: #fff;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.1s ease, border-color 0.12s ease;
+  font-family: 'Nunito', sans-serif;
+}
+
+.course-section-card:hover {
+  border-color: var(--course-card-color, #3b82f6);
+}
+
+.course-section-card:active {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+}
+
+.course-section-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--course-card-color, #3b82f6) 12%, white);
+  color: var(--course-card-color, #3b82f6);
+  border: 2px solid color-mix(in srgb, var(--course-card-color, #3b82f6) 25%, white);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--course-card-color, #3b82f6) 20%, #d0d0d0);
+}
+
+.course-section-card-icon .material-symbols-outlined {
+  font-size: 1.5rem;
+}
+
+.course-section-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.course-section-card-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 2px;
+}
+
+.course-section-card-desc {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.course-section-card-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.course-section-card-progress-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  overflow: hidden;
+}
+
+.course-section-card-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.2s ease;
+}
+
+.course-section-card-progress-text {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.course-section-card-arrow {
+  color: #cbd5e1;
+  flex-shrink: 0;
+}
+
+.course-section-card-arrow .material-symbols-outlined {
+  font-size: 1.4rem;
+}
+
+@media (min-width: 640px) {
+  .course-section-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .course-section-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

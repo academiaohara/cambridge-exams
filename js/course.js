@@ -58,109 +58,211 @@
       }
     },
 
-    openLessons: async function() {
+    openLessons: async function(options) {
+      return BentoGrid.openCourseSection(null, null, options);
+    },
+
+    _courseLevelMeta: function() {
+      return {
+        'B1': { label: 'B1', difficulty: 'Preliminary (PET)', iconColor: '#2563eb', headerColor: '#3b82f6', cardBg: '#eff6ff', cardBorder: '#93c5fd', cardText: '#1e3a8a', icon: 'school' },
+        'B2': { label: 'B2', difficulty: 'First (FCE)', iconColor: '#d97706', headerColor: '#f59e0b', cardBg: '#fffbeb', cardBorder: '#fcd34d', cardText: '#78350f', icon: 'school' },
+        'C1': { label: 'C1', difficulty: 'Advanced (CAE)', iconColor: '#dc2626', headerColor: '#ef4444', cardBg: '#fff1f2', cardBorder: '#fca5a5', cardText: '#7f1d1d', icon: 'auto_stories' }
+      };
+    },
+
+    _courseSectionMeta: function() {
+      return {
+        learning: {
+          id: 'learning',
+          label: 'Learning',
+          kicker: 'GRAMMAR & THEORY',
+          subtitle: 'Grammar units, reviews and progress tests',
+          icon: 'menu_book',
+          color: '#3b82f6',
+          headerColor: '#3b82f6'
+        },
+        vocabulary: {
+          id: 'vocabulary',
+          label: 'Vocabulary',
+          kicker: 'WORDS & EXPRESSIONS',
+          subtitle: 'Vocabulary units, phrasal verbs, idioms and more',
+          icon: 'translate',
+          color: '#10b981',
+          headerColor: '#10b981'
+        }
+      };
+    },
+
+    openCourseSection: async function(sectionFilter, levelFilter, options) {
+      options = options || {};
       var content = document.getElementById('main-content');
       if (!content) return;
-      var level = AppState.currentLevel || 'C1';
 
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
-      // Build home-page style sidebars
+      var activeSection = sectionFilter || null;
+      var activeLevel = levelFilter ? levelFilter.toUpperCase() : null;
+      if (activeLevel) AppState.currentLevel = activeLevel;
+      if (activeSection) BentoGrid._courseSection = activeSection;
+
+      var level = AppState.currentLevel || 'C1';
+      var exams = window.EXAMS_DATA[level] || [];
+      var SECTION_META = BentoGrid._courseSectionMeta();
+      var LEVEL_META = BentoGrid._courseLevelMeta();
+
+      var courseState = { view: activeSection ? 'courseSection' : 'course' };
+      if (activeSection) courseState.section = activeSection;
+      if (activeLevel) courseState.level = activeLevel;
+      if (!options.fromRoute && !options.skipHistory) {
+        history.pushState(courseState, '', Router.stateToPath(courseState));
+      }
+
       var sidebars = { left: '', right: '' };
       if (typeof BentoGrid !== 'undefined') {
-        sidebars = BentoGrid._buildDashboardSidebars(window.EXAMS_DATA[level] || []);
+        sidebars = BentoGrid._buildDashboardSidebars(exams);
       }
-      var leftSidebarContent = sidebars.left;
-      var rightSidebarContent = sidebars.right;
 
-      // Render initial layout with loading spinner in center
+      var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
+        ? MainNav.buildMobileTopBarHtml() : '';
+      var mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
+        ? MainNav.buildMobileBottomNavHtml('course') : '';
+
+      var headerKicker = 'COURSE';
+      var headerTitle = 'Choose a Section';
+      var headerClass = ' cw-section-header--picker';
+      var headerStyle = '';
+      var backOnclick = 'loadDashboard()';
+
+      if (activeLevel && activeSection) {
+        var secMeta = SECTION_META[activeSection] || SECTION_META.learning;
+        var lvlMeta = LEVEL_META[activeLevel] || LEVEL_META['B2'];
+        headerKicker = activeLevel + ' · ' + secMeta.kicker;
+        headerTitle = lvlMeta.difficulty;
+        headerClass = ' cw-section-header--level';
+        headerStyle = ' style="--cw-header-color:' + lvlMeta.headerColor + '"';
+        backOnclick = 'BentoGrid.openCourseSection(\'' + activeSection + '\')';
+      } else if (activeSection) {
+        var secMeta2 = SECTION_META[activeSection] || SECTION_META.learning;
+        headerKicker = 'COURSE · ' + secMeta2.kicker;
+        headerTitle = secMeta2.label;
+        headerClass = ' cw-section-header--level';
+        headerStyle = ' style="--cw-header-color:' + secMeta2.headerColor + '"';
+        backOnclick = 'BentoGrid.openLessons()';
+      }
+
       content.innerHTML =
-        '<div class="dashboard-layout">' +
+        '<div class="dashboard-layout dashboard-layout--crossword-scroll">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
-            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
-            : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
-          '<div class="dashboard-center">' +
-            '<div class="fe-section" id="courseCenterSection">' +
-              '<div class="fe-loading"><div class="fe-spinner"></div></div>' +
+            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
+            : '<div class="dashboard-left-sidebar">' + sidebars.left + '</div>') +
+          '<div class="dashboard-center dashboard-center--crossword dashboard-center--course" id="courseDashboardCenter">' +
+            mobileTopBarHtml +
+            '<div class="cw-section-header' + headerClass + '"' + headerStyle + '>' +
+              '<button class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '</button>' +
+              '<div class="cw-section-header-text">' +
+                '<div class="cw-section-kicker">' + headerKicker + '</div>' +
+                '<div class="cw-section-title">' + headerTitle + '</div>' +
+              '</div>' +
             '</div>' +
+            '<div class="cw-page-content" id="courseCenterScroll">' +
+              '<div class="course-hub-page" id="courseHubPage">' + BentoGrid._buildInlinePawLoadingHtml() + '</div>' +
+            '</div>' +
+            mobileNavHtml +
           '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
-            ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent)
-            : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>') +
+            ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', sidebars.right)
+            : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + sidebars.right + '</div>') +
         '</div>';
+
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       if (typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
+      if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('course');
 
-      var centerSection = document.getElementById('courseCenterSection');
-      if (!centerSection) return;
+      var hubPage = document.getElementById('courseHubPage');
+      if (!hubPage) return;
 
-      var headerHtml =
-        '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="loadDashboard()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
-          '<div>' +
-            '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
-            '<div class="subpage-subtitle">Structured lessons for ' + level + '</div>' +
-          '</div>' +
-        '</div>';
+      await new Promise(function(resolve) { requestAnimationFrame(function() { requestAnimationFrame(resolve); }); });
 
-      centerSection.innerHTML = headerHtml + await BentoGrid._renderCourseLearningTiles();
-      var courseState = { view: 'course', level: level };
-      history.pushState(courseState, '', Router.stateToPath(courseState));
+      var bodyHtml = '';
+      if (activeSection && activeLevel) {
+        bodyHtml = await BentoGrid._buildCoursePathMapHtml(activeSection, activeLevel);
+      } else if (activeSection) {
+        bodyHtml = BentoGrid._buildCourseLevelCardsHtml(activeSection);
+      } else {
+        bodyHtml = BentoGrid._buildCourseSectionCardsHtml();
+      }
+
+      hubPage.innerHTML = bodyHtml;
+
+      if (activeSection && activeLevel) {
+        BentoGrid._scrollCoursePathToCurrent();
+      }
     },
 
-    openCourseTheory: async function(level) {
-      var content = document.getElementById('main-content');
-      if (!content) return;
-      level = (level || AppState.currentLevel || 'C1').toUpperCase();
-      BentoGrid._courseLevel = level;
-
-      // Reset cached course data when switching level
-      BentoGrid._courseIndexData = null;
-      BentoGrid._courseBlocks = null;
-      BentoGrid._courseBlockOrder = null;
-
+    _buildCourseSectionCardsHtml: function() {
+      var self = this;
+      var SECTION_META = BentoGrid._courseSectionMeta();
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
-      // Render initial layout with loading spinners
-      content.innerHTML =
-        '<div class="dashboard-layout dashboard-layout-right-closed">' +
-          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
-            ? Dashboard._renderSidebarShell('left', 'courseLeftSidebarShell', 'courseLeftSidebar', '<div class="fe-loading"><div class="fe-spinner"></div></div>')
-            : '<div class="dashboard-left-sidebar" id="courseLeftSidebar"><div class="fe-loading"><div class="fe-spinner"></div></div></div>') +
-          '<div class="dashboard-center">' +
-            '<div class="fe-section" id="courseCenterSection">' +
-              '<div class="fe-loading"><div class="fe-spinner"></div></div>' +
+      var html = '<div class="cw-level-cards desktop-mode-cards course-section-cards">';
+      ['learning', 'vocabulary'].forEach(function(secId) {
+        var meta = SECTION_META[secId];
+        html += '<div class="mode-card mode-card--course-section" data-course-section="' + secId + '"' +
+          ' onclick="BentoGrid.openCourseSection(\'' + secId + '\')" role="button" tabindex="0">' +
+          '<div class="mode-card-body">' +
+            '<div class="mode-card-title-row">' +
+              '<span class="mode-card-title">' + self._escapeHTML(meta.label) + '</span>' +
             '</div>' +
+            '<div class="mode-card-status">' + self._escapeHTML(meta.subtitle) + '</div>' +
+          '</div>' +
+          '<div class="mode-card-icon-wrap">' +
+            '<div class="mode-card-icon" style="color:' + meta.color + '">' + _mi(meta.icon) + '</div>' +
           '</div>' +
         '</div>';
-      if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
-      if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
+      });
+      html += '</div>';
+      return html;
+    },
 
-      // Try to fetch index.json for this level
+    _buildCourseLevelCardsHtml: function(section) {
+      var self = this;
+      var LEVEL_META = BentoGrid._courseLevelMeta();
+      var LEVEL_ORDER = ['B1', 'B2', 'C1'];
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+
+      var html = '<div class="cw-level-cards desktop-mode-cards course-level-cards">';
+      LEVEL_ORDER.forEach(function(lvl) {
+        var meta = LEVEL_META[lvl] || LEVEL_META['B2'];
+        var statusText = meta.difficulty;
+        html += '<div class="mode-card mode-card--course-level" data-course-level="' + lvl.toLowerCase() + '"' +
+          ' onclick="BentoGrid.openCourseSection(\'' + section + '\', \'' + lvl + '\')" role="button" tabindex="0">' +
+          '<div class="mode-card-body">' +
+            '<div class="mode-card-title-row">' +
+              '<span class="mode-card-title">' + self._escapeHTML(meta.label) + '</span>' +
+            '</div>' +
+            '<div class="mode-card-status">' + self._escapeHTML(statusText) + '</div>' +
+          '</div>' +
+          '<div class="mode-card-icon-wrap">' +
+            '<div class="mode-card-icon">' + _mi(meta.icon) + '</div>' +
+          '</div>' +
+        '</div>';
+      });
+      html += '</div>';
+      return html;
+    },
+
+    _loadCourseIndexForLevel: async function(level) {
+      level = (level || 'C1').toUpperCase();
+      if (BentoGrid._courseIndexData && BentoGrid._courseLevel === level) {
+        return BentoGrid._courseIndexData;
+      }
       var indexData = null;
       try {
         var r = await fetch('data/Course/' + level + '/index.json');
         if (r.ok) indexData = await r.json();
-      } catch(e) { /* no index available */ }
-
-      var leftSidebar = document.getElementById('courseLeftSidebar');
-      var centerSection = document.getElementById('courseCenterSection');
-      if (!leftSidebar || !centerSection) return;
-
-      var headerHtml =
-        '<div class="subpage-header subpage-header--course-theory">' +
-          '<button type="button" class="subpage-back-btn" onclick="BentoGrid.openLessons()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
-          '<div class="subpage-header-core">' +
-            '<div class="subpage-header-titles">' +
-              '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
-              '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
-            '</div>' +
-          '</div>' +
-        '</div>';
-
-      if (indexData && indexData.items && indexData.items.length > 0) {
-        // Group items by block and store for block switching
+      } catch (e) { /* no index */ }
+      if (indexData && indexData.items) {
         var blocks = {};
         var blockOrder = [];
         indexData.items.forEach(function(item) {
@@ -171,32 +273,169 @@
           }
           blocks[blockKey].push(item);
         });
-
         BentoGrid._courseBlocks = blocks;
         BentoGrid._courseBlockOrder = blockOrder;
         BentoGrid._courseLevel = level;
         BentoGrid._courseIndexData = indexData;
         await BentoGrid._ensureCourseUnitMeta(level, indexData.items);
+      }
+      return indexData;
+    },
 
-        leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(indexData, level, null);
-        centerSection.innerHTML = headerHtml + BentoGrid._renderCourseOverview();
-        BentoGrid._bindCourseOverviewFilterEvents();
-        BentoGrid._applyCourseOverviewFilter();
-      } else {
-        leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(null, level, null);
-        centerSection.innerHTML = headerHtml +
-          '<div class="fe-map-container">' +
-          '<div class="lt-coming-soon-banner">' +
-            _mi('schedule') +
-            '<div class="lt-coming-soon-text">' +
-              '<strong>Coming Soon</strong>' +
-              '<span>The Course curriculum is under development. Structured lessons with explanations, exercises, and progress tracking will be available here soon.</span>' +
+    _getCoursePathItems: function(section, indexData) {
+      var learningTypes = ['grammar', 'review', 'progress_test'];
+      var vocabTypes = ['vocabulary'];
+      var allowed = section === 'vocabulary' ? vocabTypes : learningTypes;
+      return (indexData.items || []).filter(function(item) {
+        return allowed.indexOf(item.type) !== -1;
+      });
+    },
+
+    _getCoursePathItemState: function(item, level, progress, sectionProgress) {
+      if (!item || item.status !== 'available') return 'locked';
+      if (progress[item.id]) return 'done';
+      var secProg = sectionProgress[item.id];
+      if (secProg && Object.keys(secProg).length > 0) return 'progress';
+      return 'pending';
+    },
+
+    _buildCoursePathMapHtml: async function(section, levelId) {
+      var self = this;
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      var LEVEL_META = BentoGrid._courseLevelMeta();
+      var meta = LEVEL_META[levelId] || LEVEL_META['B2'];
+      var indexData = await BentoGrid._loadCourseIndexForLevel(levelId);
+      BentoGrid._courseSection = section;
+
+      if (!indexData || !indexData.items || indexData.items.length === 0) {
+        return '<div class="lt-coming-soon-banner">' + _mi('schedule') +
+          '<div class="lt-coming-soon-text"><strong>Coming Soon</strong>' +
+          '<span>The ' + (section === 'vocabulary' ? 'Vocabulary' : 'Learning') + ' curriculum for ' + levelId + ' is under development.</span></div></div>';
+      }
+
+      var pathItems = BentoGrid._getCoursePathItems(section, indexData);
+      var progress = BentoGrid._getCourseProgress(levelId);
+      var sectionProgress = BentoGrid._getCourseSectionProgress(levelId);
+      var blockOrder = BentoGrid._courseBlockOrder || [];
+      var hasTheoryPack = typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack;
+
+      var firstIncompleteIdx = -1;
+      pathItems.forEach(function(item, idx) {
+        if (firstIncompleteIdx !== -1) return;
+        if (item.status !== 'available') return;
+        if (BentoGrid._getCoursePathItemState(item, levelId, progress, sectionProgress) !== 'done') {
+          firstIncompleteIdx = idx;
+        }
+      });
+      if (firstIncompleteIdx === -1) firstIncompleteIdx = pathItems.length - 1;
+
+      var html = '<div class="cw-path-map course-path-map" data-section="' + section + '" data-level="' + levelId + '" style="' +
+        '--cw-header-color:' + meta.headerColor + ';' +
+        '--cw-icon-color:' + meta.iconColor + ';' +
+        '--cw-card-bg:' + meta.cardBg + ';' +
+        '--cw-card-border:' + meta.cardBorder + ';' +
+        '--cw-card-text:' + meta.cardText +
+        '">';
+
+      html += '<div class="cw-path-grid course-path-grid" role="list" aria-label="' + self._escapeHTML(levelId) + ' ' + section + ' units">';
+
+      pathItems.forEach(function(item, idx) {
+        var state = BentoGrid._getCoursePathItemState(item, levelId, progress, sectionProgress);
+        var isCurrent = idx === firstIncompleteIdx;
+        var unitNum = String(item.unit || (idx + 1)).padStart(3, '0');
+        if (item.type === 'review') unitNum = 'R' + String(item.block || (idx + 1)).padStart(2, '0');
+        if (item.type === 'progress_test') unitNum = 'PT';
+
+        var blockIndex = blockOrder.indexOf(item.block != null ? String(item.block) : 'misc');
+        var locked = item.status !== 'available' ||
+          (!(typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack) && blockIndex > 0);
+
+        var cellClass = 'cw-path-cell course-path-cell';
+        if (state === 'done') cellClass += ' cw-path-cell--done';
+        else if (state === 'progress') cellClass += ' cw-path-cell--progress';
+        else if (state === 'locked') cellClass += ' cw-path-cell--pending course-path-cell--locked';
+        else cellClass += ' cw-path-cell--pending';
+        if (isCurrent && state !== 'done' && !locked) cellClass += ' cw-path-cell--current';
+        if (item.type === 'review') cellClass += ' course-path-cell--review';
+        if (item.type === 'progress_test') cellClass += ' course-path-cell--pt';
+
+        var filePath = 'data/Course/' + levelId + '/' + item.file;
+        var onclick = locked
+          ? (item.status !== 'available' ? 'return false;' : 'Dashboard.showTheoryUpgradeGate()')
+          : 'BentoGrid.openCourseUnit(\'' + item.id + '\',\'' + filePath + '\')';
+
+        var shortTitle = item.title || item.id;
+        var colonIdx = shortTitle.indexOf(':');
+        if (colonIdx !== -1) shortTitle = shortTitle.slice(colonIdx + 1).trim();
+
+        html += '<button type="button" class="' + cellClass + '" onclick="' + onclick + '" title="' + self._escapeHTML(shortTitle) + '" aria-label="' + self._escapeHTML(item.title || item.id) + '">';
+        html += '<span class="cw-path-cell-num">' + unitNum + '</span>';
+        if (locked && item.status === 'available') html += '<span class="course-path-lock">' + _mi('lock') + '</span>';
+        html += '</button>';
+      });
+
+      html += '</div>';
+
+      if (section === 'vocabulary') {
+        html += await BentoGrid._buildCourseVocabCategoryCardsHtml();
+      }
+
+      html += '</div>';
+      return html;
+    },
+
+    _buildCourseVocabCategoryCardsHtml: async function() {
+      var self = this;
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      var catDefs = [
+        { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6', desc: 'Common phrasal verbs by level' },
+        { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b', desc: 'Idiomatic expressions' },
+        { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48', desc: 'Prefixes, suffixes and roots' }
+      ];
+
+      var html = '<div class="course-vocab-categories">' +
+        '<div class="course-vocab-categories-title">' + _mi('category') + ' Practice Categories</div>' +
+        '<div class="course-section-cards-grid">';
+
+      for (var i = 0; i < catDefs.length; i++) {
+        var cat = catDefs[i];
+        var pct = 0;
+        var totalPoints = 0;
+        try {
+          var data = await FastExercises._loadCategoryData(cat.id);
+          pct = data ? FastExercises._getCategoryPercent(cat.id, data.levels) : 0;
+          totalPoints = data ? FastExercises._getTotalPoints(data.levels) : 0;
+        } catch (e) { /* ignore */ }
+
+        html += '<button type="button" class="course-section-card" style="--course-card-color:' + cat.color + '" onclick="FastExercises.openCategory(\'' + cat.id + '\')">' +
+          '<div class="course-section-card-icon">' + _mi(cat.icon) + '</div>' +
+          '<div class="course-section-card-body">' +
+            '<div class="course-section-card-title">' + self._escapeHTML(cat.name) + '</div>' +
+            '<div class="course-section-card-desc">' + self._escapeHTML(cat.desc) + '</div>' +
+            '<div class="course-section-card-progress">' +
+              '<div class="course-section-card-progress-bar"><div class="course-section-card-progress-fill" style="width:' + pct + '%;background:' + cat.color + '"></div></div>' +
+              '<span class="course-section-card-progress-text">' + pct + '% · ' + totalPoints + ' items</span>' +
             '</div>' +
           '</div>' +
-          '</div>';
+          '<span class="course-section-card-arrow">' + _mi('chevron_right') + '</span>' +
+        '</button>';
       }
-      var theoryState = { view: 'courseTheory', level: level };
-      history.pushState(theoryState, '', Router.stateToPath(theoryState));
+
+      html += '</div></div>';
+      return html;
+    },
+
+    _scrollCoursePathToCurrent: function() {
+      requestAnimationFrame(function() {
+        var current = document.querySelector('.course-path-cell.cw-path-cell--current');
+        if (current && typeof current.scrollIntoView === 'function') {
+          current.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+        }
+      });
+    },
+
+    openCourseTheory: async function(level, options) {
+      return BentoGrid.openCourseSection('learning', level, options);
     },
 
     _buildCourseTheoryLevelButtons: function(activeLevel) {
@@ -213,78 +452,6 @@
           _mi(ic) + '<span class="fe-cat-level-btn-label">' + lv + '</span></button>';
       }).join('');
       return '<div class="fe-cat-level-btns fe-cat-level-btns-header">' + buttons + '</div>';
-    },
-
-    _renderCourseLearningTiles: async function() {
-      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
-
-      // Theory tile: full-width card styled like fe-category-card with B1/B2/C1 level buttons
-      var theoryLevelBtns =
-        '<button type="button" class="fe-cat-level-btn fe-cat-level-btn--icon" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'B1\')">' + _mi('school') + '<span class="fe-cat-level-btn-label">B1</span></button>' +
-        '<button type="button" class="fe-cat-level-btn fe-cat-level-btn--icon" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'B2\')">' + _mi('workspace_premium') + '<span class="fe-cat-level-btn-label">B2</span></button>' +
-        '<button type="button" class="fe-cat-level-btn fe-cat-level-btn--icon" style="background:#0284c7" onclick="event.stopPropagation();BentoGrid.openCourseTheory(\'C1\')">' + _mi('auto_stories') + '<span class="fe-cat-level-btn-label">C1</span></button>';
-      var theoryCard =
-        '<div class="fe-category-card fe-category-card--theory" style="--cat-color:#0284c7" onclick="BentoGrid.openCourseTheory()">' +
-          '<div class="fe-category-card-header">' +
-            '<span class="fe-category-icon">' + _mi('menu_book') + '</span>' +
-            '<div class="fe-category-info">' +
-              '<div class="fe-category-name">Theory</div>' +
-            '</div>' +
-          '</div>' +
-          '<div class="fe-cat-level-btns">' + theoryLevelBtns + '</div>' +
-        '</div>';
-
-      // Category tiles: load progress data for each
-      var catDefs = [
-        { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6' },
-        { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b' },
-        { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48' }
-      ];
-
-      var categoryCards = '';
-      for (var i = 0; i < catDefs.length; i++) {
-        var cat = catDefs[i];
-        var data = null;
-        try { data = await FastExercises._loadCategoryData(cat.id); } catch(e) { console.warn('Course hub: failed to load category data for ' + cat.id, e); }
-        var pct = data ? FastExercises._getCategoryPercent(cat.id, data.levels) : 0;
-        var totalPoints = data ? FastExercises._getTotalPoints(data.levels) : 0;
-
-        var levelBtnsHtml = '';
-        if (data && data.levels) {
-          for (var lvIdx = 0; lvIdx < data.levels.length; lvIdx++) {
-            var lv = data.levels[lvIdx];
-            var isUnlocked = FastExercises._isLevelUnlocked(cat.id, lv.id, data.levels);
-            var lockClass = isUnlocked ? '' : ' fe-cat-level-btn-locked';
-            var lvClick = isUnlocked
-              ? 'onclick="event.stopPropagation(); FastExercises._switchLevel(\'' + cat.id + '\', \'' + lv.id + '\')"'
-              : '';
-            levelBtnsHtml += '<button class="fe-cat-level-btn' + lockClass + '" style="background:' + cat.color + '" ' + lvClick + '>' + lv.id + '</button>';
-          }
-        }
-
-        categoryCards +=
-          '<div class="fe-category-card" style="--cat-color:' + cat.color + '" onclick="FastExercises.openCategory(\'' + cat.id + '\')">' +
-            '<div class="fe-category-card-header">' +
-              '<span class="fe-category-icon">' + _mi(cat.icon) + '</span>' +
-              '<div class="fe-category-info">' +
-                '<div class="fe-category-name">' + cat.name + '</div>' +
-                '<div class="fe-category-stats">' + totalPoints + ' items</div>' +
-              '</div>' +
-            '</div>' +
-            '<div class="fe-category-progress">' +
-              '<div class="fe-progress-bar-bg">' +
-                '<div class="fe-progress-bar-fill" style="width:' + pct + '%;background:' + cat.color + '"></div>' +
-              '</div>' +
-              '<span class="fe-progress-text">' + pct + '% complete</span>' +
-            '</div>' +
-            '<div class="fe-cat-level-btns">' + levelBtnsHtml + '</div>' +
-          '</div>';
-      }
-
-      return '<div class="course-hub-grid">' +
-        theoryCard +
-        categoryCards +
-      '</div>';
     },
 
     _getBlockLabel: function(bk) {
@@ -330,30 +497,9 @@
     },
 
     _backToCourseOverview: function() {
-      var centerSection = document.getElementById('courseCenterSection');
-      if (!centerSection) return;
       var level = BentoGrid._courseLevel || 'C1';
-      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
-      var headerHtml =
-        '<div class="subpage-header subpage-header--course-theory">' +
-          '<button type="button" class="subpage-back-btn" onclick="BentoGrid.openLessons()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
-          '<div class="subpage-header-core">' +
-            '<div class="subpage-header-titles">' +
-              '<div class="subpage-title">' + _mi('menu_book') + ' Theory</div>' +
-              '<div class="subpage-subtitle">Grammar &amp; Vocabulary theory blocks for ' + level + '</div>' +
-            '</div>' +
-          '</div>' +
-        '</div>';
-      centerSection.innerHTML = headerHtml + BentoGrid._renderCourseOverview();
-      BentoGrid._bindCourseOverviewFilterEvents();
-      BentoGrid._applyCourseOverviewFilter();
-      // Update left sidebar to deselect any active unit
-      var leftSidebar = document.getElementById('courseLeftSidebar');
-      if (leftSidebar && BentoGrid._courseIndexData) {
-        leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(BentoGrid._courseIndexData, level, null);
-      }
-      var theoryState = { view: 'courseTheory', level: level };
-      history.pushState(theoryState, '', Router.stateToPath(theoryState));
+      var section = BentoGrid._courseSection || 'learning';
+      BentoGrid.openCourseSection(section, level);
     },
 
     _renderCourseBlockView: function(activeBlockKey) {
@@ -650,10 +796,13 @@
         }
       }
 
+      var courseSection = BentoGrid._courseSection || 'learning';
+      var courseBackFn = 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')';
+
       // Show loading in center
       centerSection.innerHTML =
         '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="BentoGrid.openCourseTheory()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
+          '<button class="subpage-back-btn" onclick="' + courseBackFn + '" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
           '<div>' +
             '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
             '<div class="subpage-subtitle">' + level + ' Advanced</div>' +
@@ -689,7 +838,7 @@
       if (!unitData) {
         centerSection.innerHTML =
           '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="BentoGrid.openCourseTheory()" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
+            '<button class="subpage-back-btn" onclick="' + courseBackFn + '" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
             '<div><div class="subpage-title">' + _mi('auto_stories') + ' Course</div></div>' +
           '</div>' +
           '<div class="fe-error">Could not load unit content.</div>';
@@ -707,13 +856,21 @@
         rightSidebar.innerHTML = BentoGrid._buildCourseRoadmapSidebarHtml(unitData, unitId);
       }
 
+      if (unitData && unitData.type === 'vocabulary') {
+        BentoGrid._courseSection = 'vocabulary';
+      } else if (unitData) {
+        BentoGrid._courseSection = BentoGrid._courseSection || 'learning';
+      }
+      courseSection = BentoGrid._courseSection || 'learning';
+      courseBackFn = 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')';
+
       var blockNum = null;
       if (BentoGrid._courseIndexData && BentoGrid._courseIndexData.items) {
         var foundItem = BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
         if (foundItem) blockNum = foundItem.block;
       }
-      var backFn = blockNum ? 'BentoGrid._selectCourseBlock(\'' + blockNum + '\')' : 'BentoGrid.openCourseTheory()';
-      var backLabel = blockNum ? BentoGrid._getBlockLabel(String(blockNum)) : 'Back';
+      var backFn = courseBackFn;
+      var backLabel = 'Units';
       var unitHasProgress = !!(BentoGrid._getCourseSectionProgress(level)[unitId] && Object.keys(BentoGrid._getCourseSectionProgress(level)[unitId]).length);
       var resetUnitBtn = (unitData.type !== 'progress_test' && unitHasProgress)
         ? '<button type="button" class="cu-reset-btn" onclick="BentoGrid._resetCourseUnit(\'' + unitId + '\')" title="Restart unit">' + CU_RESET_ICON_SVG + '<span>Restart</span></button>'
@@ -4572,9 +4729,8 @@
       });
     },
     _popstateCourseBlock: async function(blockKey) {
-      // Ensure course data is loaded, then select the block
       if (!BentoGrid._courseBlocks) {
-        await BentoGrid.openCourseTheory();
+        await BentoGrid.openCourseSection('learning', AppState.currentLevel, { fromRoute: true });
       }
       BentoGrid._selectCourseBlock(blockKey);
     },
@@ -4582,9 +4738,8 @@
     _popstateCourseUnit: async function(state) {
       var unitId = state.unitId;
       var filePath = state.filePath;
-      // Ensure course index data is loaded before trying to derive filePath
       if (!BentoGrid._courseIndexData) {
-        await BentoGrid.openCourseTheory(state.level || AppState.currentLevel);
+        await BentoGrid._loadCourseIndexForLevel(state.level || AppState.currentLevel);
       }
       // Derive filePath from index data if not stored in state
       if (!filePath && BentoGrid._courseIndexData) {
@@ -4592,8 +4747,8 @@
         if (item) filePath = 'data/Course/' + (BentoGrid._courseLevel || 'C1') + '/' + item.file;
       }
       if (!filePath) {
-        // Cannot navigate without a file path — fall back to theory overview
-        await BentoGrid.openCourseTheory();
+        var fallbackSection = BentoGrid._courseSection || 'learning';
+        await BentoGrid.openCourseSection(fallbackSection, state.level || AppState.currentLevel, { fromRoute: true });
         return;
       }
       var sectionIdx = typeof state.sectionIdx !== 'undefined' ? state.sectionIdx : 0;
