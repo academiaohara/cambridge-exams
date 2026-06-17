@@ -5914,11 +5914,16 @@
       var rows = [
         ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
         ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
-        ['BACKSPACE', 'Z', 'X', 'C', 'V', 'B', 'N', 'M']
+        ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACKSPACE']
       ];
       var html = '';
       for (var ri = 0; ri < rows.length; ri++) {
         html += '<div class="vocab-cw-mobile-keyboard-row">';
+        if (ri === 2) {
+          html += '<button type="button" class="vocab-cw-mobile-key vocab-cw-mobile-key--wide vocab-cw-mobile-key--clear vocab-cw-word-clear-btn" aria-label="Clear incorrect letters" title="Clear incorrect">' +
+            '<span class="material-symbols-outlined" aria-hidden="true">ink_eraser</span>' +
+          '</button>';
+        }
         for (var ki = 0; ki < rows[ri].length; ki++) {
           var key = rows[ri][ki];
           if (key === 'BACKSPACE') {
@@ -5938,6 +5943,15 @@
       kb.setAttribute('aria-label', 'Letter keyboard');
       kb.innerHTML = html;
       kb.addEventListener('click', function(e) {
+        var clearBtn = e.target.closest('.vocab-cw-mobile-key--clear');
+        if (clearBtn) {
+          e.preventDefault();
+          var cwState = window._cwState;
+          if (cwState && cwState.selectedWordId) {
+            FastExercises._cwClearWordIncorrect(cwState.selectedWordId);
+          }
+          return;
+        }
         var keyBtn = e.target.closest('[data-key]');
         if (!keyBtn) return;
         e.preventDefault();
@@ -5965,14 +5979,15 @@
         dock.remove();
       }
 
+      if (dirToggle && headerBtns && !headerBtns.contains(dirToggle)) {
+        headerBtns.insertBefore(dirToggle, headerBtns.firstChild);
+      }
+
       if (!FastExercises._cwIsMobilePlay()) {
         if (mainEl) mainEl.classList.remove('vocab-cw-main--mobile-play');
         if (defEl) {
           defEl.classList.remove('vocab-cw-active-def--inline');
           if (stickyTop && !stickyTop.contains(defEl)) stickyTop.appendChild(defEl);
-        }
-        if (dirToggle && headerBtns && !headerBtns.contains(dirToggle)) {
-          headerBtns.insertBefore(dirToggle, headerBtns.firstChild);
         }
         return;
       }
@@ -5988,7 +6003,6 @@
         }
         kb = FastExercises._cwEnsureMobileKeyboard();
         dock.appendChild(kb);
-        if (dirToggle) dock.appendChild(dirToggle);
         return;
       }
 
@@ -5996,7 +6010,6 @@
       if (!activeRow) {
         kb = FastExercises._cwEnsureMobileKeyboard();
         dock.appendChild(kb);
-        if (dirToggle) dock.appendChild(dirToggle);
         return;
       }
 
@@ -6009,7 +6022,6 @@
 
       kb = FastExercises._cwEnsureMobileKeyboard();
       dock.appendChild(kb);
-      if (dirToggle) dock.appendChild(dirToggle);
     },
 
     _cwSetViewMode: function(mode) {
@@ -6730,7 +6742,6 @@
           cellsHtml += '<button type="button" class="vocab-cw-cell" data-r="' + cell.row + '" data-c="' + cell.col + '" data-cell-key="' + cell.cellKey + '" data-word-id="' + wordId + '" data-index="' + cell.index + '" id="cw-cell-' + cell.row + '-' + cell.col + '-' + wordId + '" aria-label="Letter ' + (cell.index + 1) + ' of word ' + word.number + '"></button>';
         }
         var cellSlots = cells.length;
-        if (FastExercises._cwIsMobilePlay()) cellSlots = 12;
         return '<div class="vocab-cw-word-row" data-word-id="' + wordId + '" data-dir="' + word.dir + '" data-r="' + word.row + '" data-c="' + word.col + '" style="--cw-cells:' + cellSlots + '">' +
           '<button type="button" class="vocab-cw-word-number" data-word-id="' + wordId + '" aria-label="Select word ' + word.number + '">' + word.number + '</button>' +
           '<div class="vocab-cw-cells">' + cellsHtml + '</div>' +
