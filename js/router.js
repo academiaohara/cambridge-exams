@@ -135,6 +135,11 @@
           if (state.level) courseSecPath += '/' + state.level.toLowerCase();
           return courseSecPath;
 
+        case 'courseEtapa':
+          return '/course/' + (state.section || 'learning') + '/' +
+            (state.level || (typeof AppState !== 'undefined' && AppState.currentLevel) || 'C1').toLowerCase() +
+            '/etapa-' + (state.etapaKey || '1');
+
         case 'courseTheory':
           if (state.level) {
             return '/course/learning/' + state.level.toLowerCase();
@@ -322,6 +327,18 @@
           if ((segments[1] === 'learning' || segments[1] === 'vocabulary') &&
               VALID_LEVELS.indexOf(segments[2].toLowerCase()) !== -1) {
             return { view: 'courseSection', section: segments[1], level: segments[2].toUpperCase() };
+          }
+        }
+        if (segments.length === 4) {
+          if ((segments[1] === 'learning' || segments[1] === 'vocabulary') &&
+              VALID_LEVELS.indexOf(segments[2].toLowerCase()) !== -1 &&
+              segments[3].indexOf('etapa-') === 0) {
+            return {
+              view: 'courseEtapa',
+              section: segments[1],
+              level: segments[2].toUpperCase(),
+              etapaKey: segments[3].replace('etapa-', '')
+            };
           }
         }
         // New format: /course/{level}/block-{key}[/{unitId}[/{sectionIdx}]]

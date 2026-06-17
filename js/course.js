@@ -59,7 +59,7 @@
     },
 
     openLessons: async function(options) {
-      return BentoGrid.openCourseSection(null, null, options);
+      return BentoGrid.openCourseSection('learning', null, options);
     },
 
     _courseLevelMeta: function() {
@@ -102,6 +102,7 @@
 
       var activeSection = sectionFilter || null;
       var activeLevel = levelFilter ? levelFilter.toUpperCase() : null;
+      var activeEtapaKey = options.etapaKey || null;
       if (activeLevel) AppState.currentLevel = activeLevel;
       if (activeSection) BentoGrid._courseSection = activeSection;
 
@@ -113,6 +114,10 @@
       var courseState = { view: activeSection ? 'courseSection' : 'course' };
       if (activeSection) courseState.section = activeSection;
       if (activeLevel) courseState.level = activeLevel;
+      if (activeEtapaKey) {
+        courseState.view = 'courseEtapa';
+        courseState.etapaKey = activeEtapaKey;
+      }
       if (!options.fromRoute && !options.skipHistory) {
         history.pushState(courseState, '', Router.stateToPath(courseState));
       }
@@ -137,10 +142,12 @@
         var secMeta = SECTION_META[activeSection] || SECTION_META.learning;
         var lvlMeta = LEVEL_META[activeLevel] || LEVEL_META['B2'];
         headerKicker = activeLevel + ' · ' + secMeta.kicker;
-        headerTitle = lvlMeta.difficulty;
+        headerTitle = activeEtapaKey ? ('Etapa ' + activeEtapaKey) : lvlMeta.difficulty;
         headerClass = ' cw-section-header--level';
         headerStyle = ' style="--cw-header-color:' + lvlMeta.headerColor + '"';
-        backOnclick = 'BentoGrid.openCourseSection(\'' + activeSection + '\')';
+        backOnclick = activeEtapaKey
+          ? 'BentoGrid.openCourseSection(\'' + activeSection + '\', \'' + activeLevel + '\')'
+          : 'BentoGrid.openCourseSection(\'' + activeSection + '\')';
       } else if (activeSection) {
         var secMeta2 = SECTION_META[activeSection] || SECTION_META.learning;
         headerKicker = 'COURSE · ' + secMeta2.kicker;
@@ -177,7 +184,9 @@
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       if (typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
-      if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('course');
+      if (typeof MainNav !== 'undefined' && MainNav.setActive) {
+        MainNav.setActive(activeSection === 'vocabulary' ? 'vocabulary' : (activeSection ? 'learning' : 'learning'));
+      }
 
       var hubPage = document.getElementById('courseHubPage');
       if (!hubPage) return;
@@ -185,8 +194,10 @@
       await new Promise(function(resolve) { requestAnimationFrame(function() { requestAnimationFrame(resolve); }); });
 
       var bodyHtml = '';
-      if (activeSection && activeLevel) {
-        bodyHtml = await BentoGrid._buildCoursePathMapHtml(activeSection, activeLevel);
+      if (activeSection && activeLevel && activeEtapaKey) {
+        bodyHtml = await BentoGrid._buildCourseEtapaMapHtml(activeSection, activeLevel, activeEtapaKey);
+      } else if (activeSection && activeLevel) {
+        bodyHtml = await BentoGrid._buildCourseEtapaCardsHtml(activeSection, activeLevel);
       } else if (activeSection) {
         bodyHtml = BentoGrid._buildCourseLevelCardsHtml(activeSection);
       } else {
@@ -195,7 +206,7 @@
 
       hubPage.innerHTML = bodyHtml;
 
-      if (activeSection && activeLevel) {
+      if (activeSection && activeLevel && activeEtapaKey) {
         BentoGrid._scrollCoursePathToCurrent();
       }
     },
@@ -291,6 +302,114 @@
       });
     },
 
+    _getCourseEtapasList: function(section, indexData) {
+      var blocks = BentoGrid._courseBlocks || {};
+      var blockOrder = BentoGrid._courseBlockOrder || [];
+      var learningTypes = ['grammar', 'review', 'progress_test'];
+      var vocabTypes = ['vocabulary'];
+      var allowed = section === 'vocabulary' ? vocabTypes : learningTypes;
+      var result = [];
+
+      blockOrder.forEach(function(bk) {
+        if (/^pt\d+$/.test(bk)) {
+          var ptItem = (blocks[bk] || []).find(function(i) { return i.type === 'progress_test'; });
+          if (ptItem) result.push({ type: 'progress_test', key: bk, item: ptItem });
+          return;
+        }
+        var blockItems = (blocks[bk] || []).filter(function(i) {
+          return allowed.indexOf(i.type) !== -1;
+        });
+        if (!blockItems.length) return;
+        result.push({
+          type: 'etapa',
+          key: bk,
+          number: parseInt(bk, 10) || (result.filter(function(r) { return r.type === 'etapa'; }).length + 1),
+          items: blockItems
+        });
+      });
+      return result;
+    },
+
+    _isEtapaComplete: function(etapa, level, progress) {
+      if (!etapa || etapa.type !== 'etapa' || !etapa.items) return false;
+      return etapa.items.every(function(item) {
+        return !!progress[item.id];
+      });
+    },
+
+    _getEtapaProgress: function(etapa, level, progress, sectionProgress) {
+      if (!etapa || etapa.type !== 'etapa' || !etapa.items.length) return 0;
+      var done = 0;
+      etapa.items.forEach(function(item) {
+        if (progress[item.id]) {
+          done++;
+          return;
+        }
+        var secProg = sectionProgress[item.id];
+        if (secProg && Object.keys(secProg).length > 0) done += 0.5;
+      });
+      return Math.round((done / etapa.items.length) * 100);
+    },
+
+    _isEtapaUnlocked: function(etapaIndex, etapasList, level, progress) {
+      if (etapaIndex <= 0) return true;
+      for (var i = 0; i < etapaIndex; i++) {
+        var entry = etapasList[i];
+        if (entry.type === 'progress_test') {
+          if (!progress[entry.item.id]) return false;
+        } else if (entry.type === 'etapa') {
+          if (!BentoGrid._isEtapaComplete(entry, level, progress)) return false;
+        }
+      }
+      return true;
+    },
+
+    _isProgressTestUnlocked: function(ptIndex, etapasList, level, progress) {
+      if (ptIndex <= 0) return true;
+      for (var i = 0; i < ptIndex; i++) {
+        var entry = etapasList[i];
+        if (entry.type === 'progress_test') {
+          if (!progress[entry.item.id]) return false;
+        } else if (entry.type === 'etapa') {
+          if (!BentoGrid._isEtapaComplete(entry, level, progress)) return false;
+        }
+      }
+      return true;
+    },
+
+    _getActiveReviewId: function(level, indexData, progress) {
+      var reviews = (indexData.items || []).filter(function(i) {
+        return i.type === 'review' && i.status === 'available';
+      });
+      for (var i = 0; i < reviews.length; i++) {
+        if (!progress[reviews[i].id]) return reviews[i].id;
+      }
+      return null;
+    },
+
+    _getReviewCellState: function(item, level, progress, activeReviewId) {
+      if (!item || item.type !== 'review') return 'normal';
+      if (progress[item.id]) return 'done';
+      if (item.id === activeReviewId) return 'active';
+      return 'locked';
+    },
+
+    _getEtapaTitle: function(etapa) {
+      if (!etapa || !etapa.items || !etapa.items.length) return 'Etapa ' + (etapa.number || '');
+      var grammar = etapa.items.find(function(i) { return i.type === 'grammar'; });
+      var vocab = etapa.items.find(function(i) { return i.type === 'vocabulary'; });
+      var primary = grammar || vocab || etapa.items[0];
+      var title = primary.title || primary.id || '';
+      var colonIdx = title.indexOf(':');
+      if (colonIdx !== -1) title = title.slice(colonIdx + 1).trim();
+      return title || ('Etapa ' + etapa.number);
+    },
+
+    openCourseEtapa: async function(section, levelId, etapaKey, options) {
+      options = options || {};
+      return BentoGrid.openCourseSection(section, levelId, Object.assign({}, options, { etapaKey: etapaKey }));
+    },
+
     _getCoursePathItemState: function(item, level, progress, sectionProgress) {
       if (!item || item.status !== 'available') return 'locked';
       if (progress[item.id]) return 'done';
@@ -299,7 +418,7 @@
       return 'pending';
     },
 
-    _buildCoursePathMapHtml: async function(section, levelId) {
+    _buildCourseEtapaCardsHtml: async function(section, levelId) {
       var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       var LEVEL_META = BentoGrid._courseLevelMeta();
@@ -313,68 +432,91 @@
           '<span>The ' + (section === 'vocabulary' ? 'Vocabulary' : 'Learning') + ' curriculum for ' + levelId + ' is under development.</span></div></div>';
       }
 
-      var pathItems = BentoGrid._getCoursePathItems(section, indexData);
+      var etapasList = BentoGrid._getCourseEtapasList(section, indexData);
       var progress = BentoGrid._getCourseProgress(levelId);
       var sectionProgress = BentoGrid._getCourseSectionProgress(levelId);
-      var blockOrder = BentoGrid._courseBlockOrder || [];
-      var hasTheoryPack = typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack;
 
-      var firstIncompleteIdx = -1;
-      pathItems.forEach(function(item, idx) {
-        if (firstIncompleteIdx !== -1) return;
-        if (item.status !== 'available') return;
-        if (BentoGrid._getCoursePathItemState(item, levelId, progress, sectionProgress) !== 'done') {
-          firstIncompleteIdx = idx;
+      var firstActiveEtapaIdx = -1;
+      etapasList.forEach(function(entry, idx) {
+        if (firstActiveEtapaIdx !== -1) return;
+        if (entry.type === 'etapa') {
+          if (!BentoGrid._isEtapaComplete(entry, levelId, progress)) firstActiveEtapaIdx = idx;
+        } else if (entry.type === 'progress_test') {
+          if (!progress[entry.item.id]) firstActiveEtapaIdx = idx;
         }
       });
-      if (firstIncompleteIdx === -1) firstIncompleteIdx = pathItems.length - 1;
 
-      var html = '<div class="cw-path-map course-path-map" data-section="' + section + '" data-level="' + levelId + '" style="' +
+      var html = '<div class="course-etapas-page" data-section="' + section + '" data-level="' + levelId + '" style="' +
         '--cw-header-color:' + meta.headerColor + ';' +
-        '--cw-icon-color:' + meta.iconColor + ';' +
-        '--cw-card-bg:' + meta.cardBg + ';' +
-        '--cw-card-border:' + meta.cardBorder + ';' +
-        '--cw-card-text:' + meta.cardText +
-        '">';
+        '--cw-icon-color:' + meta.iconColor + '">';
 
-      html += '<div class="cw-path-grid course-path-grid" role="list" aria-label="' + self._escapeHTML(levelId) + ' ' + section + ' units">';
+      etapasList.forEach(function(entry, idx) {
+        if (entry.type === 'progress_test') {
+          var pt = entry.item;
+          var ptUnlocked = BentoGrid._isProgressTestUnlocked(idx, etapasList, levelId, progress);
+          var ptDone = !!progress[pt.id];
+          var ptClass = 'course-pt-card';
+          if (ptDone) ptClass += ' course-pt-card--done';
+          else if (ptUnlocked) ptClass += ' course-pt-card--active';
+          else ptClass += ' course-pt-card--locked';
 
-      pathItems.forEach(function(item, idx) {
-        var state = BentoGrid._getCoursePathItemState(item, levelId, progress, sectionProgress);
-        var isCurrent = idx === firstIncompleteIdx;
-        var unitNum = String(item.unit || (idx + 1)).padStart(3, '0');
-        if (item.type === 'review') unitNum = 'R' + String(item.block || (idx + 1)).padStart(2, '0');
-        if (item.type === 'progress_test') unitNum = 'PT';
+          var ptOnclick = ptUnlocked
+            ? 'BentoGrid.openCourseUnit(\'' + pt.id + '\',\'data/Course/' + levelId + '/' + pt.file + '\')'
+            : 'return false;';
+          var ptScore = BentoGrid._getPtScore(levelId, pt.id);
+          var ptTotal = pt.totalPoints || 100;
 
-        var blockIndex = blockOrder.indexOf(item.block != null ? String(item.block) : 'misc');
-        var locked = item.status !== 'available' ||
-          (!(typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack) && blockIndex > 0);
+          html += '<div class="' + ptClass + '">';
+          html += '<div class="course-pt-card-kicker">' + levelId + ' · PROGRESS TEST</div>';
+          html += '<div class="course-pt-card-title">' + self._escapeHTML(pt.title || 'Progress Test') + '</div>';
+          if (ptDone) {
+            html += '<div class="course-pt-card-status">' + _mi('check_circle') + ' COMPLETADO · ' + (ptScore !== null ? ptScore : '–') + '/' + ptTotal + '</div>';
+            html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--review" onclick="' + ptOnclick + '">REPASAR</button>';
+          } else if (ptUnlocked) {
+            html += '<div class="course-pt-card-desc">Completa todas las etapas anteriores para desbloquear el test de progreso.</div>';
+            html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + ptOnclick + '">EMPEZAR TEST</button>';
+          } else {
+            html += '<div class="course-pt-card-desc">' + _mi('lock') + ' Completa la etapa anterior para desbloquear.</div>';
+          }
+          html += '</div>';
+          return;
+        }
 
-        var cellClass = 'cw-path-cell course-path-cell';
-        if (state === 'done') cellClass += ' cw-path-cell--done';
-        else if (state === 'progress') cellClass += ' cw-path-cell--progress';
-        else if (state === 'locked') cellClass += ' cw-path-cell--pending course-path-cell--locked';
-        else cellClass += ' cw-path-cell--pending';
-        if (isCurrent && state !== 'done' && !locked) cellClass += ' cw-path-cell--current';
-        if (item.type === 'review') cellClass += ' course-path-cell--review';
-        if (item.type === 'progress_test') cellClass += ' course-path-cell--pt';
+        var etapa = entry;
+        var etapaUnlocked = BentoGrid._isEtapaUnlocked(idx, etapasList, levelId, progress);
+        var etapaDone = BentoGrid._isEtapaComplete(etapa, levelId, progress);
+        var etapaPct = BentoGrid._getEtapaProgress(etapa, levelId, progress, sectionProgress);
+        var isActive = idx === firstActiveEtapaIdx && !etapaDone && etapaUnlocked;
+        var etapaTitle = BentoGrid._getEtapaTitle(etapa);
 
-        var filePath = 'data/Course/' + levelId + '/' + item.file;
-        var onclick = locked
-          ? (item.status !== 'available' ? 'return false;' : 'Dashboard.showTheoryUpgradeGate()')
-          : 'BentoGrid.openCourseUnit(\'' + item.id + '\',\'' + filePath + '\')';
+        var cardClass = 'course-etapa-card';
+        if (etapaDone) cardClass += ' course-etapa-card--done';
+        else if (isActive) cardClass += ' course-etapa-card--active';
+        else if (!etapaUnlocked) cardClass += ' course-etapa-card--locked';
+        else cardClass += ' course-etapa-card--available';
 
-        var shortTitle = item.title || item.id;
-        var colonIdx = shortTitle.indexOf(':');
-        if (colonIdx !== -1) shortTitle = shortTitle.slice(colonIdx + 1).trim();
+        var etapaOnclick = etapaUnlocked
+          ? 'BentoGrid.openCourseEtapa(\'' + section + '\', \'' + levelId + '\', \'' + etapa.key + '\')'
+          : 'return false;';
 
-        html += '<button type="button" class="' + cellClass + '" onclick="' + onclick + '" title="' + self._escapeHTML(shortTitle) + '" aria-label="' + self._escapeHTML(item.title || item.id) + '">';
-        html += '<span class="cw-path-cell-num">' + unitNum + '</span>';
-        if (locked && item.status === 'available') html += '<span class="course-path-lock">' + _mi('lock') + '</span>';
-        html += '</button>';
+        html += '<div class="' + cardClass + '">';
+        html += '<button type="button" class="course-etapa-card-details" onclick="event.stopPropagation();' + etapaOnclick + '">' + levelId + ' · VER DETALLES</button>';
+        html += '<div class="course-etapa-card-title">Etapa ' + etapa.number + '</div>';
+        html += '<div class="course-etapa-card-subtitle">' + self._escapeHTML(etapaTitle) + '</div>';
+
+        if (etapaDone) {
+          html += '<div class="course-etapa-card-status">' + _mi('check_circle') + ' ¡COMPLETADO!</div>';
+          html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--review" onclick="' + etapaOnclick + '">REPASAR</button>';
+        } else if (isActive || (etapaUnlocked && etapaPct > 0)) {
+          html += '<div class="course-etapa-progress"><div class="course-etapa-progress-fill" style="width:' + Math.max(etapaPct, 8) + '%">' + etapaPct + '%</div></div>';
+          html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + etapaOnclick + '">CONTINUAR</button>';
+        } else if (etapaUnlocked) {
+          html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + etapaOnclick + '">EMPEZAR</button>';
+        } else {
+          html += '<div class="course-etapa-card-locked-msg">' + _mi('lock') + ' Completa la etapa anterior</div>';
+        }
+        html += '</div>';
       });
-
-      html += '</div>';
 
       if (section === 'vocabulary') {
         html += await BentoGrid._buildCourseVocabCategoryCardsHtml();
@@ -382,6 +524,166 @@
 
       html += '</div>';
       return html;
+    },
+
+    _buildCourseEtapaMapHtml: async function(section, levelId, etapaKey) {
+      var self = this;
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      var LEVEL_META = BentoGrid._courseLevelMeta();
+      var meta = LEVEL_META[levelId] || LEVEL_META['B2'];
+      var indexData = await BentoGrid._loadCourseIndexForLevel(levelId);
+      BentoGrid._courseSection = section;
+
+      if (!indexData) {
+        return '<div class="fe-error">Could not load course data.</div>';
+      }
+
+      var etapasList = BentoGrid._getCourseEtapasList(section, indexData);
+      var etapa = etapasList.find(function(e) { return e.type === 'etapa' && e.key === String(etapaKey); });
+      if (!etapa) {
+        return '<div class="fe-error">Etapa not found.</div>';
+      }
+
+      await BentoGrid._ensureCourseUnitMeta(levelId, etapa.items);
+
+      var progress = BentoGrid._getCourseProgress(levelId);
+      var sectionProgress = BentoGrid._getCourseSectionProgress(levelId);
+      var blockOrder = BentoGrid._courseBlockOrder || [];
+      var hasTheoryPack = typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack;
+      var activeReviewId = BentoGrid._getActiveReviewId(levelId, indexData, progress);
+      var etapaTitle = BentoGrid._getEtapaTitle(etapa);
+      var etapaUnlocked = true;
+      var etapaIdx = etapasList.indexOf(etapa);
+      etapaUnlocked = BentoGrid._isEtapaUnlocked(etapaIdx, etapasList, levelId, progress);
+
+      var html = '<div class="course-etapa-map" data-section="' + section + '" data-level="' + levelId + '" data-etapa="' + etapaKey + '" style="' +
+        '--cw-header-color:' + meta.headerColor + '">';
+
+      html += '<div class="course-etapa-header">';
+      html += '<div class="course-etapa-header-text">';
+      html += '<div class="course-etapa-header-kicker">← ETAPA ' + etapa.number + '</div>';
+      html += '<div class="course-etapa-header-title">' + self._escapeHTML(etapaTitle) + '</div>';
+      html += '</div>';
+      var firstGrammar = etapa.items.find(function(i) { return i.type === 'grammar' || i.type === 'vocabulary'; });
+      if (firstGrammar) {
+        var guidePath = 'data/Course/' + levelId + '/' + firstGrammar.file;
+        html += '<button type="button" class="course-etapa-header-guide" onclick="BentoGrid.openCourseUnit(\'' + firstGrammar.id + '\',\'' + guidePath + '\',0)">' +
+          _mi('menu_book') + ' GUÍA</button>';
+      }
+      html += '</div>';
+
+      html += '<div class="course-etapa-path" role="list">';
+
+      var cellIndex = 0;
+      var firstIncompleteCellIdx = -1;
+
+      etapa.items.forEach(function(item) {
+        if (item.type === 'review') return;
+        var metaInfo = BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[item.id];
+        var unitNum = item.unit || item.id;
+        var unitLabel = 'Unit ' + unitNum;
+        if (item.title) {
+          var t = item.title;
+          if (t.indexOf('Unit') === 0 || t.indexOf('Vocabulary:') === 0) {
+            unitLabel = t.indexOf('Vocabulary:') === 0 ? ('Unit ' + unitNum + ': ' + t.replace('Vocabulary:', '').trim()) : t;
+          } else {
+            unitLabel = 'Unit ' + unitNum + ': ' + t;
+          }
+        }
+
+        var guidePath = 'data/Course/' + levelId + '/' + item.file;
+        html += '<div class="course-unit-divider">';
+        html += '<span class="course-unit-divider-line"></span>';
+        html += '<span class="course-unit-divider-label">' + self._escapeHTML(unitLabel) + '</span>';
+        html += '<button type="button" class="course-unit-guide-btn" onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'' + guidePath + '\',0)">' +
+          _mi('menu_book') + ' GUÍA</button>';
+        html += '<span class="course-unit-divider-line"></span>';
+        html += '</div>';
+
+        var cells = [];
+        if (metaInfo && metaInfo.theory && metaInfo.theory.length) {
+          metaInfo.theory.forEach(function(pt) {
+            cells.push({ kind: 'theory', unitId: item.id, file: item.file, sectionIdx: pt.sectionIdx, label: pt.label, icon: 'menu_book' });
+          });
+        }
+        if (metaInfo && metaInfo.exercises && metaInfo.exercises.length) {
+          metaInfo.exercises.forEach(function(pt) {
+            cells.push({ kind: 'exercise', unitId: item.id, file: item.file, sectionIdx: pt.sectionIdx, label: pt.label, icon: 'edit' });
+          });
+        }
+        if (!cells.length) {
+          cells.push({ kind: 'unit', unitId: item.id, file: item.file, sectionIdx: 0, label: String(unitNum).padStart(3, '0'), icon: 'auto_stories' });
+        }
+
+        cells.forEach(function(cell) {
+          var secProg = sectionProgress[cell.unitId] || {};
+          var unitDone = !!progress[cell.unitId];
+          var cellDone = unitDone || !!secProg[cell.sectionIdx];
+          var cellProgress = !cellDone && !!secProg[cell.sectionIdx];
+          var state = cellDone ? 'done' : (cellProgress ? 'progress' : 'pending');
+
+          if (firstIncompleteCellIdx === -1 && state !== 'done' && etapaUnlocked) {
+            firstIncompleteCellIdx = cellIndex;
+          }
+
+          var blockIndex = blockOrder.indexOf(item.block != null ? String(item.block) : 'misc');
+          var locked = !etapaUnlocked || item.status !== 'available' ||
+            (!(typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack) && blockIndex > 0);
+
+          var cellClass = 'course-path-circle';
+          if (state === 'done') cellClass += ' course-path-circle--done';
+          else if (state === 'progress') cellClass += ' course-path-circle--progress';
+          else cellClass += ' course-path-circle--pending';
+          if (cellIndex === firstIncompleteCellIdx && !locked) cellClass += ' course-path-circle--current';
+          if (locked) cellClass += ' course-path-circle--locked';
+
+          var posClass = 'course-path-circle-pos--' + (cellIndex % 3);
+          var filePath = 'data/Course/' + levelId + '/' + cell.file;
+          var onclick = locked
+            ? (item.status !== 'available' ? 'return false;' : 'Dashboard.showTheoryUpgradeGate()')
+            : 'BentoGrid.openCourseUnit(\'' + cell.unitId + '\',\'' + filePath + '\',' + cell.sectionIdx + ')';
+
+          html += '<button type="button" class="' + cellClass + ' ' + posClass + '" onclick="' + onclick + '" title="' + self._escapeHTML(unitLabel) + '">';
+          if (state === 'done') {
+            html += _mi('check');
+          } else {
+            html += _mi(cell.icon);
+          }
+          html += '</button>';
+          cellIndex++;
+        });
+      });
+
+      var reviewItem = etapa.items.find(function(i) { return i.type === 'review'; });
+      if (reviewItem) {
+        var reviewState = BentoGrid._getReviewCellState(reviewItem, levelId, progress, activeReviewId);
+        var reviewClass = 'course-path-circle course-path-circle--review';
+        if (reviewState === 'done') reviewClass += ' course-path-circle--done';
+        else if (reviewState === 'active') reviewClass += ' course-path-circle--current course-path-circle--review-active';
+        else reviewClass += ' course-path-circle--locked';
+
+        var reviewPath = 'data/Course/' + levelId + '/' + reviewItem.file;
+        var reviewOnclick = reviewState === 'locked'
+          ? 'return false;'
+          : 'BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'' + reviewPath + '\')';
+
+        html += '<div class="course-unit-divider course-unit-divider--review">';
+        html += '<span class="course-unit-divider-line"></span>';
+        html += '<span class="course-unit-divider-label">Review · Acelerador</span>';
+        html += '<span class="course-unit-divider-line"></span>';
+        html += '</div>';
+
+        html += '<button type="button" class="' + reviewClass + ' course-path-circle-pos--1" onclick="' + reviewOnclick + '" title="Review acelerador">';
+        html += reviewState === 'done' ? _mi('check') : _mi('military_tech');
+        html += '</button>';
+      }
+
+      html += '</div></div>';
+      return html;
+    },
+
+    _buildCoursePathMapHtml: async function(section, levelId) {
+      return BentoGrid._buildCourseEtapaCardsHtml(section, levelId);
     },
 
     _buildCourseVocabCategoryCardsHtml: async function() {
@@ -427,7 +729,7 @@
 
     _scrollCoursePathToCurrent: function() {
       requestAnimationFrame(function() {
-        var current = document.querySelector('.course-path-cell.cw-path-cell--current');
+        var current = document.querySelector('.course-path-circle--current, .course-path-cell.cw-path-cell--current');
         if (current && typeof current.scrollIntoView === 'function') {
           current.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
         }
@@ -747,57 +1049,39 @@
 
       var centerSection = content.querySelector('#courseCenterSection');
       if (!centerSection) {
-        // Re-render layout if navigated directly — use course-specific sidebars
+        var exams = window.EXAMS_DATA[level] || [];
+        var sidebars = { left: '', right: '' };
+        if (typeof BentoGrid !== 'undefined') {
+          sidebars = BentoGrid._buildDashboardSidebars(exams);
+        }
+
         content.innerHTML =
-          '<div class="dashboard-layout dashboard-layout-right-closed">' +
+          '<div class="dashboard-layout dashboard-layout-right-closed dashboard-layout--crossword-scroll">' +
             (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
-              ? Dashboard._renderSidebarShell('left', 'courseLeftSidebarShell', 'courseLeftSidebar', '<div class="fe-loading"><div class="fe-spinner"></div></div>')
-              : '<div class="dashboard-left-sidebar" id="courseLeftSidebar"><div class="fe-loading"><div class="fe-spinner"></div></div></div>') +
-            '<div class="dashboard-center">' +
+              ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
+              : '<div class="dashboard-left-sidebar" id="dashboardLeftSidebar">' + sidebars.left + '</div>') +
+            '<div class="dashboard-center dashboard-center--course">' +
               '<div class="fe-section" id="courseCenterSection"></div>' +
             '</div>' +
           '</div>';
         if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
         if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
+        if (typeof MainNav !== 'undefined' && MainNav.setActive) {
+          var navSection = BentoGrid._courseSection || 'learning';
+          MainNav.setActive(navSection === 'vocabulary' ? 'vocabulary' : 'learning');
+        }
         centerSection = document.getElementById('courseCenterSection');
-        // Load index.json to build navigation sidebar
-        var leftSidebar = document.getElementById('courseLeftSidebar');
-        if (leftSidebar && !BentoGrid._courseIndexData) {
-          try {
-            var ri = await fetch('data/Course/' + level + '/index.json');
-            if (ri.ok) {
-              var idxData = await ri.json();
-              if (idxData && idxData.items) {
-                var blocks = {}, blockOrder = [];
-                idxData.items.forEach(function(item) {
-                  var bk = item.block != null ? String(item.block) : 'misc';
-                  if (!blocks[bk]) { blocks[bk] = []; blockOrder.push(bk); }
-                  blocks[bk].push(item);
-                });
-                BentoGrid._courseBlocks = blocks;
-                BentoGrid._courseBlockOrder = blockOrder;
-                BentoGrid._courseLevel = level;
-                BentoGrid._courseIndexData = idxData;
-                leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(idxData, level, unitId);
-              }
-            }
-          } catch(e) { /* index not available */ }
-          if (leftSidebar.querySelector('.fe-spinner')) {
-            leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(null, level, unitId);
-          }
-        } else if (leftSidebar) {
-          leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(BentoGrid._courseIndexData || null, level, unitId);
-        }
-      } else {
-        // Update left sidebar to highlight the newly active unit
-        var leftSidebar = document.getElementById('courseLeftSidebar');
-        if (leftSidebar && BentoGrid._courseIndexData) {
-          leftSidebar.innerHTML = BentoGrid._buildCourseNavSidebarHtml(BentoGrid._courseIndexData, level, unitId);
-        }
       }
 
       var courseSection = BentoGrid._courseSection || 'learning';
-      var courseBackFn = 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')';
+      var blockKey = null;
+      if (BentoGrid._courseIndexData && BentoGrid._courseIndexData.items) {
+        var _foundForBack = BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
+        if (_foundForBack && _foundForBack.block != null) blockKey = String(_foundForBack.block);
+      }
+      var courseBackFn = blockKey && !/^pt\d+$/.test(blockKey)
+        ? 'BentoGrid.openCourseEtapa(\'' + courseSection + '\', \'' + level + '\', \'' + blockKey + '\')'
+        : 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')';
 
       // Show loading in center
       centerSection.innerHTML =
@@ -862,13 +1146,14 @@
         BentoGrid._courseSection = BentoGrid._courseSection || 'learning';
       }
       courseSection = BentoGrid._courseSection || 'learning';
-      courseBackFn = 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')';
-
-      var blockNum = null;
+      blockKey = null;
       if (BentoGrid._courseIndexData && BentoGrid._courseIndexData.items) {
         var foundItem = BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
-        if (foundItem) blockNum = foundItem.block;
+        if (foundItem && foundItem.block != null) blockKey = String(foundItem.block);
       }
+      courseBackFn = blockKey && !/^pt\d+$/.test(blockKey)
+        ? 'BentoGrid.openCourseEtapa(\'' + courseSection + '\', \'' + level + '\', \'' + blockKey + '\')'
+        : 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')';
       var backFn = courseBackFn;
       var backLabel = 'Units';
       var unitHasProgress = !!(BentoGrid._getCourseSectionProgress(level)[unitId] && Object.keys(BentoGrid._getCourseSectionProgress(level)[unitId]).length);
@@ -4780,6 +5065,34 @@
       try {
         localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(prog));
       } catch(e) {}
+      if (BentoGrid._courseIndexData && BentoGrid._courseIndexData.items) {
+        var item = BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
+        if (item && item.type === 'review') {
+          BentoGrid._applyReviewAccelerator(level, unitId);
+        }
+      }
+    },
+
+    _applyReviewAccelerator: function(level, reviewId) {
+      if (!BentoGrid._courseIndexData || !BentoGrid._courseIndexData.items) return;
+      var items = BentoGrid._courseIndexData.items;
+      var reviewIdx = -1;
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].id === reviewId) { reviewIdx = i; break; }
+      }
+      if (reviewIdx < 0) return;
+      var prog = BentoGrid._getCourseProgress(level);
+      var changed = false;
+      for (var j = 0; j < reviewIdx; j++) {
+        var prev = items[j];
+        if ((prev.type === 'grammar' || prev.type === 'vocabulary' || prev.type === 'review') && !prog[prev.id]) {
+          prog[prev.id] = true;
+          changed = true;
+        }
+      }
+      if (changed) {
+        try { localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(prog)); } catch(e) {}
+      }
     },
 
     _markCourseSectionVisited: function(level, unitId, sectionIdx) {
@@ -7240,6 +7553,19 @@
         pctEl.textContent = '(' + pct + '%)';
       }
       totalPanel.style.display = '';
+      var unitId = BentoGrid._currentUnitId;
+      var allSections = document.querySelectorAll('.cu-review-section');
+      if (unitId && allSections.length > 0) {
+        var allChecked = true;
+        allSections.forEach(function(sec) {
+          var c = parseInt(sec.getAttribute('data-correct-items') || '-1');
+          if (c < 0) allChecked = false;
+        });
+        if (allChecked) {
+          var level = BentoGrid._courseLevel || 'C1';
+          BentoGrid._markCourseUnitOpened(level, unitId);
+        }
+      }
     },
 
     _toggleCuAnswers: function(sectionId) {
