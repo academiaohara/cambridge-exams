@@ -493,9 +493,15 @@
 }
 
 .tests-part-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
   min-width: 34px;
+  max-width: 34px;
   height: 34px;
-  padding: 0 8px;
+  padding: 0;
+  box-sizing: border-box;
   border-radius: 10px;
   border: 2px solid #d1d5db;
   border-bottom-width: 3px;
@@ -597,11 +603,24 @@
   pointer-events: none;
 }
 
+.tests-section-card--speaking .tests-section-card-art {
+  align-items: center;
+  justify-content: center;
+  width: 168px;
+  padding: 0 12px 0 0;
+}
+
 .tests-section-card-img {
   max-width: 100%;
   max-height: 130px;
   object-fit: contain;
   object-position: bottom right;
+}
+
+.tests-section-card--speaking .tests-section-card-img {
+  max-width: 150px;
+  max-height: 150px;
+  object-position: center;
 }
 
 .tests-section-card-img.is-hidden {
@@ -719,8 +738,17 @@
     width: 88px;
   }
 
+  .tests-section-card--speaking .tests-section-card-art {
+    width: 120px;
+  }
+
   .tests-section-card-img {
     max-height: 100px;
+  }
+
+  .tests-section-card--speaking .tests-section-card-img {
+    max-width: 110px;
+    max-height: 110px;
   }
 }
 
