@@ -455,11 +455,19 @@
       }
       const safeSection = Utils.getSectionTitle ? Utils.getSectionTitle(section) : section;
       const safePart = parseInt(part, 10);
-      content.innerHTML = `
-        <div class="exercise-container">
-          <div class="loading-exercise"><i class="fas fa-spinner fa-spin"></i><h3>Loading exercise...</h3><p>${safeSection} - Part ${safePart}</p></div>
-          <div class="exercise-footer">${loadingFooterHTML}</div>
+      const loadingInner = `
+        <div class="exercise-page-wrapper">
+          <div class="exercise-container">
+            <div class="loading-exercise"><i class="fas fa-spinner fa-spin"></i><h3>Loading exercise...</h3><p>${safeSection} - Part ${safePart}</p></div>
+            <div class="exercise-footer">${loadingFooterHTML}</div>
+          </div>
         </div>`;
+      content.innerHTML = (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer._buildExerciseLayoutShell)
+        ? ExerciseRenderer._buildExerciseLayoutShell(loadingInner, '', section !== 'writing' && section !== 'speaking')
+        : `<div class="exercise-container"><div class="loading-exercise"><i class="fas fa-spinner fa-spin"></i><h3>Loading exercise...</h3><p>${safeSection} - Part ${safePart}</p></div><div class="exercise-footer">${loadingFooterHTML}</div></div>`;
+      if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer._applyExerciseDashboardChrome) {
+        ExerciseRenderer._applyExerciseDashboardChrome();
+      }
       
       try {
         const response = await Utils.fetchWithNoCache(targetUrl);
