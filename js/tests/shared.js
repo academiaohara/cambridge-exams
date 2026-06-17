@@ -24,41 +24,22 @@
         else if (hasInProgress) startedExams++;
       });
 
-      var summitSubtitle, ascentSubtitle;
-      if (availableCount === 0) {
-        summitSubtitle = 'No tests available yet';
-        ascentSubtitle = 'No tests available yet';
-      } else {
-        var countPart = availableCount + ' test' + (availableCount !== 1 ? 's' : '') + ' available';
-        if (completedExams > 0) {
-          summitSubtitle = countPart + ' · ' + completedExams + ' completed';
-          ascentSubtitle = countPart + ' · ' + completedExams + ' completed';
-        } else if (startedExams > 0) {
-          summitSubtitle = countPart + ' · ' + startedExams + ' in progress';
-          ascentSubtitle = countPart + ' · ' + startedExams + ' in progress';
-        } else {
-          summitSubtitle = countPart;
-          ascentSubtitle = countPart;
-        }
-      }
+      var testsSubtitle = availableCount === 0
+        ? 'No tests available yet'
+        : (completedExams > 0
+          ? availableCount + ' tests · ' + completedExams + ' completed'
+          : (startedExams > 0
+            ? availableCount + ' tests · ' + startedExams + ' in progress'
+            : availableCount + ' tests available'));
 
-      return '<div class="bento-top-row">' +
+      return '<div class="bento-top-row bento-top-row--tests">' +
 
-        '<div class="bento-card bento-card-summit" onclick="BentoGrid.selectMode(\'exam\')">' +
+        '<div class="bento-card bento-card-tests" onclick="BentoGrid.openTests()">' +
           '<div class="bento-hover-overlay"></div>' +
           '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Test Simulation</div>' +
-            '<div class="bento-card-desc">' + summitSubtitle + '</div>' +
-            '<div class="bento-card-hover-info">Sit the full Cambridge exam under real timed conditions — all sections in sequence, just like the real thing.</div>' +
-          '</div>' +
-        '</div>' +
-
-        '<div class="bento-card bento-card-ascent" onclick="BentoGrid.selectMode(\'practice\')">' +
-          '<div class="bento-hover-overlay"></div>' +
-          '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Test Practice</div>' +
-            '<div class="bento-card-desc">' + ascentSubtitle + '</div>' +
-            '<div class="bento-card-hover-info">Practice individual sections at your own pace — pick any part and focus on what you need most.</div>' +
+            '<div class="bento-card-title">Tests</div>' +
+            '<div class="bento-card-desc">' + testsSubtitle + '</div>' +
+            '<div class="bento-card-hover-info">Practice or simulate Cambridge exams — choose your level, pick a test, and work through each section at your own pace or under timed conditions.</div>' +
           '</div>' +
         '</div>' +
 
@@ -138,6 +119,10 @@
     },
 
     selectMode: function(mode) {
+      if (typeof BentoGrid !== 'undefined' && BentoGrid.openTests) {
+        BentoGrid.openTests(AppState.currentLevel || 'C1', null, { mode: mode });
+        return;
+      }
       if (typeof Dashboard !== 'undefined' && Dashboard.renderSubpage) {
         var modeState = { view: 'subpage', mode: mode };
         history.pushState(modeState, '', Router.stateToPath(modeState));

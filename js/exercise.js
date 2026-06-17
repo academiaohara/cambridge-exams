@@ -1186,10 +1186,26 @@
       App.restoreExamStatuses();
       var closingMode = AppState.currentMode;
       if (!opts.forceDashboard && (closingMode === 'practice' || closingMode === 'exam')) {
-        Dashboard.renderSubpage(closingMode, returnToExamId);
-        if (!opts.skipHistory) {
-          var subpageState = { view: 'subpage', mode: closingMode, expandExamId: returnToExamId };
-          history.pushState(subpageState, '', Router.stateToPath(subpageState));
+        if (typeof BentoGrid !== 'undefined' && BentoGrid.openTests) {
+          BentoGrid.openTests(AppState.currentLevel || 'C1', returnToExamId, {
+            mode: closingMode,
+            skipHistory: !!opts.skipHistory
+          });
+          if (!opts.skipHistory) {
+            var testsState = {
+              view: 'testsHub',
+              level: AppState.currentLevel || 'C1',
+              mode: closingMode
+            };
+            if (returnToExamId) testsState.examId = returnToExamId;
+            history.pushState(testsState, '', Router.stateToPath(testsState));
+          }
+        } else {
+          Dashboard.renderSubpage(closingMode, returnToExamId);
+          if (!opts.skipHistory) {
+            var subpageState = { view: 'subpage', mode: closingMode, expandExamId: returnToExamId };
+            history.pushState(subpageState, '', Router.stateToPath(subpageState));
+          }
         }
       } else {
         Dashboard.render(returnToExamId);

@@ -297,7 +297,7 @@
       if (typeof BentoGrid !== 'undefined') {
         BentoGrid._startGradeCarousel();
         if (typeof MainNav !== 'undefined' && MainNav.setMobileActive) {
-          MainNav.setMobileActive(AppState.currentMode === 'exam' ? 'simulation' : 'practice');
+          MainNav.setMobileActive('tests');
         }
       }
       this._initStatsPopovers();

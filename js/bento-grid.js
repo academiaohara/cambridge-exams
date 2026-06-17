@@ -70,8 +70,7 @@
           '<span class="mobile-app-pill">' + _mi('assignment') + availableCount + ' tests</span>' +
         '</div>' +
         '<div class="mobile-app-actions" aria-label="Mobile sections">' +
-          '<button onclick="BentoGrid.selectMode(\'practice\')">' + _mi('edit_note') + '<span>Practice</span></button>' +
-          '<button onclick="BentoGrid.selectMode(\'exam\')">' + _mi('timer') + '<span>Simulation</span></button>' +
+          '<button onclick="BentoGrid.openTests()">' + _mi('assignment') + '<span>Tests</span></button>' +
           '<button onclick="BentoGrid.openLessons()">' + _mi('auto_stories') + '<span>Course</span></button>' +
           '<button onclick="BentoGrid.openCrosswordList()">' + _mi('grid_on') + '<span>Crosswords</span></button>' +
           (typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI() ? '' :
@@ -143,7 +142,7 @@
       return '<nav class="mobile-bottom-nav" aria-label="Mobile dashboard">' +
         '<button type="button" class="mobile-bottom-nav-btn" data-mobile-tab="home" onclick="BentoGrid.goMobileHome()">' + _mi('home') + '<span>Home</span></button>' +
         '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.openLessons()">' + _mi('auto_stories') + '<span>Course</span></button>' +
-        '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.selectMode(\'practice\')">' + _mi('edit_note') + '<span>Practice</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.openTests()">' + _mi('assignment') + '<span>Tests</span></button>' +
         '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.openMobileDictionaries()">' + _mi('menu_book') + '<span>Dict</span></button>' +
         '<button type="button" class="mobile-bottom-nav-btn mobile-bottom-nav-profile" onclick="BentoGrid.openMobileProfile()" aria-label="Account">' + profileMarkup + '</button>' +
       '</nav>';
@@ -768,6 +767,10 @@
           '<div class="cw-sidebar-prog-track" style="margin-top:8px"><div class="cw-sidebar-prog-fill" style="width:' + wordsPct + '%"></div></div>' +
         '</div>';
       }
+
+      html += '<div class="cw-sidebar-decor-wrap" aria-hidden="true">' +
+        '<img src="Assets/images/sune_crossword.svg" alt="" class="cw-sidebar-decor">' +
+      '</div>';
 
       return html;
     },

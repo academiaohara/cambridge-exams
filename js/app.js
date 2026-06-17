@@ -120,6 +120,11 @@
         } else {
           Dashboard.render();
         }
+      } else if (state.view === 'testsHub') {
+        if (typeof BentoGrid !== 'undefined') {
+          if (state.mode) AppState.currentMode = state.mode;
+          BentoGrid.openTests(state.level || null, state.examId || null, { fromRoute: true, mode: state.mode });
+        }
       } else if (state.view === 'subpage' && state.mode) {
         Dashboard.renderSubpage(state.mode, state.expandExamId || null);
       } else if (state.view === 'exercise' && state.examId && state.section && state.part) {
@@ -257,6 +262,10 @@
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         Exercise.openPart(initialState.examId, initialState.section, initialState.part);
+      } else if (initialState.view === 'testsHub') {
+        if (typeof Landing !== 'undefined') Landing.hide();
+        var _testsAppEl = document.getElementById('app'); if (_testsAppEl) _testsAppEl.style.display = '';
+        if (typeof BentoGrid !== 'undefined') await BentoGrid.openTests(initialState.level || null, initialState.examId || null, { fromRoute: true, mode: initialState.mode });
       } else if (initialState.view === 'subpage' && initialState.mode) {
         Dashboard.renderSubpage(initialState.mode);
         // renderSubpage does not push state itself, so replace initial entry
@@ -350,7 +359,7 @@
         }
       } else if (this.hasAppAccess()) {
         this._renderAppView(initialState);
-        if (initialState.view === 'dashboard' || initialState.view === 'subpage') {
+        if (initialState.view === 'dashboard' || initialState.view === 'subpage' || initialState.view === 'testsHub') {
           history.replaceState(initialState, '', Router.stateToPath(initialState));
         }
       } else {

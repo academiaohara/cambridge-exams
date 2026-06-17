@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="css/components/writing-validator.css">
     <link rel="stylesheet" href="css/components/fast-exercises.css">
     <link rel="stylesheet" href="css/components/tests.css">
+    <link rel="stylesheet" href="css/components/tests-hub.css">
     <link rel="stylesheet" href="css/components/course.css">
     <link rel="stylesheet" href="css/components/tips-page.css">
     <link rel="stylesheet" href="css/components/static-pages.css">
@@ -467,13 +468,9 @@
                         <span class="material-symbols-outlined">home</span>
                         <span class="header-nav-label">Home</span>
                     </button>
-                    <button class="header-nav-btn" onclick="BentoGrid.selectMode('practice')" title="Test Practice">
-                        <span class="material-symbols-outlined">edit_note</span>
-                        <span class="header-nav-label">Practice</span>
-                    </button>
-                    <button class="header-nav-btn" onclick="BentoGrid.selectMode('exam')" title="Test Simulation">
+                    <button class="header-nav-btn" onclick="BentoGrid.openTests()" title="Tests">
                         <span class="material-symbols-outlined">assignment</span>
-                        <span class="header-nav-label">Simulation</span>
+                        <span class="header-nav-label">Tests</span>
                     </button>
                     <button class="header-nav-btn" onclick="UserProfile.renderPremiumSection()" title="Plans">
                         <span class="material-symbols-outlined">workspace_premium</span>
@@ -682,6 +679,7 @@
     <script src="js/tests/b2/config.js"></script>
     <script src="js/tests/c1/config.js"></script>
     <script src="js/tests/shared.js"></script>
+    <script src="js/tests/tests-hub.js"></script>
     <script src="js/course.js"></script>
     <script src="js/mixed-test.js"></script>
     <script src="js/tips-page.js"></script>
