@@ -7665,6 +7665,7 @@
         results: saved && saved.resultHistory ? saved.resultHistory.slice() : [],
         solved: !!(saved && saved.completed),
         currentInput: '',
+        cursorPos: 0,
         levelId: levelId,
         wlIndex: wlIndex,
         levelLabel: 'Level ' + (wlIndex + 1)
@@ -7776,10 +7777,44 @@
           FastExercises._wdlHandleKey(keyBtn.getAttribute('data-key'));
           return;
         }
+        var box = e.target.closest('.vocab-cw-wordle-cur-row .vocab-cw-wordle-box');
+        if (box) {
+          e.preventDefault();
+          var boxes = box.parentElement.querySelectorAll('.vocab-cw-wordle-box');
+          for (var bi = 0; bi < boxes.length; bi++) {
+            if (boxes[bi] === box) {
+              FastExercises._wdlSetCursorPos(bi);
+              break;
+            }
+          }
+          return;
+        }
         if (e.target.closest('.vocab-cw-wordle-grid, .cw-wordle-play-card, .cw-wordle-def-card')) {
           FastExercises._wdlFocusInput();
         }
       });
+
+      if (!window._wdlGlobalKeyBound) {
+        window._wdlGlobalKeyBound = true;
+        document.addEventListener('keydown', function(e) {
+          if (!e || !e.key) return;
+          if (typeof AppState === 'undefined' || AppState.currentView !== 'wordlePlay') return;
+          if (FastExercises._wdlIsMobilePlay()) return;
+          var target = e.target;
+          if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' ||
+              target.tagName === 'SELECT' || target.isContentEditable)) {
+            return;
+          }
+          var state = window._wdlState;
+          if (!state || state.solved || state.guesses.length >= 6) return;
+          if (e.key === 'Enter' || e.key === 'Backspace' || (e.key.length === 1 && /[a-zA-Z]/.test(e.key))) {
+            e.preventDefault();
+            FastExercises._wdlFocusInput();
+            if (e.key === 'Enter' && !FastExercises._wdlCanSubmit(state)) return;
+            FastExercises._wdlHandleKey(e.key);
+          }
+        });
+      }
     },
 
     _wdlBindInputEvents: function(wdlInput) {
@@ -7831,27 +7866,58 @@
       if (wdlInput) wdlInput.focus();
     },
 
+    _wdlEnsureCursorPos: function(state) {
+      if (!state) return 0;
+      var wordLen = state.target ? state.target.length : 0;
+      if (typeof state.cursorPos !== 'number' || isNaN(state.cursorPos)) {
+        state.cursorPos = state.currentInput.length;
+      }
+      state.cursorPos = Math.max(0, Math.min(state.cursorPos, wordLen));
+      if (state.cursorPos > state.currentInput.length) {
+        state.cursorPos = state.currentInput.length;
+      }
+      return state.cursorPos;
+    },
+
+    _wdlSetCursorPos: function(pos) {
+      var state = window._wdlState;
+      if (!state || state.solved || state.guesses.length >= 6) return;
+      var wordLen = state.target.length;
+      pos = Math.max(0, Math.min(pos, wordLen - 1));
+      if (pos > state.currentInput.length) pos = state.currentInput.length;
+      state.cursorPos = pos;
+      FastExercises._wdlUpdateInputUI();
+      FastExercises._wdlFocusInput();
+    },
+
     _wdlHandleKey: function(key) {
       var state = window._wdlState;
       if (!state || state.solved || state.guesses.length >= 6) return;
       var wordLen = state.target.length;
+      var pos = FastExercises._wdlEnsureCursorPos(state);
 
       if (key === 'Enter') {
         if (FastExercises._wdlCanSubmit(state)) FastExercises._wdlSubmit();
         return;
       }
       if (key === 'Backspace') {
-        if (state.currentInput.length > 0) {
-          state.currentInput = state.currentInput.slice(0, -1);
+        if (state.currentInput.length > 0 && pos > 0) {
+          state.currentInput = state.currentInput.slice(0, pos - 1) + state.currentInput.slice(pos);
+          state.cursorPos = pos - 1;
           FastExercises._wdlUpdateInputUI();
         }
         return;
       }
       if (key && key.length === 1 && /[a-zA-Z]/.test(key)) {
-        if (state.currentInput.length < wordLen) {
-          state.currentInput += key.toUpperCase();
-          FastExercises._wdlUpdateInputUI();
+        var letter = key.toUpperCase();
+        if (pos < state.currentInput.length) {
+          state.currentInput = state.currentInput.slice(0, pos) + letter + state.currentInput.slice(pos + 1);
+          state.cursorPos = Math.min(pos + 1, wordLen);
+        } else if (state.currentInput.length < wordLen) {
+          state.currentInput += letter;
+          state.cursorPos = state.currentInput.length;
         }
+        FastExercises._wdlUpdateInputUI();
       }
     },
 
@@ -7859,6 +7925,7 @@
       var state = window._wdlState;
       if (!state) return;
       var wordLen = state.target.length;
+      var cursorPos = FastExercises._wdlEnsureCursorPos(state);
       var rowEl = document.querySelector('.vocab-cw-wordle-cur-row');
       if (rowEl) {
         var boxes = rowEl.querySelectorAll('.vocab-cw-wordle-box');
@@ -7866,7 +7933,7 @@
           var ltr = state.currentInput[ci] || '';
           var box = boxes[ci];
           box.textContent = ltr;
-          box.className = 'vocab-cw-wordle-box wdl-empty' + (ci === state.currentInput.length ? ' wdl-cur' : '');
+          box.className = 'vocab-cw-wordle-box wdl-empty' + (ci === cursorPos ? ' wdl-cur' : '');
         }
       }
       var canSubmit = FastExercises._wdlCanSubmit(state);
@@ -7901,9 +7968,10 @@
       }
       if (!state.solved && state.guesses.length < MAX_GUESSES) {
         rowsHtml += '<div class="vocab-cw-wordle-row vocab-cw-wordle-cur-row">';
+        var renderCursor = FastExercises._wdlEnsureCursorPos(state);
         for (var ci = 0; ci < wordLen; ci++) {
           var ltr = state.currentInput[ci] || '';
-          var boxCls = 'vocab-cw-wordle-box wdl-empty' + (ci === state.currentInput.length ? ' wdl-cur' : '');
+          var boxCls = 'vocab-cw-wordle-box wdl-empty' + (ci === renderCursor ? ' wdl-cur' : '');
           rowsHtml += '<div class="' + boxCls + '">' + ltr + '</div>';
         }
         rowsHtml += '</div>';
@@ -7996,6 +8064,7 @@
       state.results.push(result);
       if (result.every(function(r) { return r === 'green'; })) state.solved = true;
       state.currentInput = '';
+      state.cursorPos = 0;
 
       if (state.levelId !== undefined && typeof state.wlIndex !== 'undefined') {
         var pKey = state.levelId + '_wl' + state.wlIndex;
@@ -8017,6 +8086,7 @@
       state.results = [];
       state.solved = false;
       state.currentInput = '';
+      state.cursorPos = 0;
       if (state.levelId !== undefined && typeof state.wlIndex !== 'undefined') {
         var pKey = state.levelId + '_wl' + state.wlIndex;
         FastExercises._saveWlProgress(pKey, {
