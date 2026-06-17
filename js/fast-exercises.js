@@ -425,7 +425,7 @@
       }
 
       var _isCourseCategory = ['phrasal-verbs', 'idioms', 'word-formation'].indexOf(categoryId) !== -1;
-      var _backFn = _isCourseCategory ? 'BentoGrid.openLessons()' : 'FastExercises.openCategories()';
+      var _backFn = _isCourseCategory ? 'BentoGrid.openCourseSection(\'vocabulary\')' : 'FastExercises.openCategories()';
 
       content.innerHTML =
         '<div class="dashboard-layout">' +
