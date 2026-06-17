@@ -7769,29 +7769,34 @@
       if (!pageEl || pageEl._wdlPlayBound) return;
       pageEl._wdlPlayBound = true;
 
-      pageEl.addEventListener('keydown', function(e) {
-        if (!e.target || e.target.id !== 'wdl-input') return;
-        FastExercises._wdlKeyHandler(e);
-      });
-
-      pageEl.addEventListener('input', function(e) {
-        var wdlInput = e.target;
-        if (!wdlInput || wdlInput.id !== 'wdl-input') return;
-        if (FastExercises._wdlIsMobilePlay()) return;
-        var val = wdlInput.value;
-        wdlInput.value = '';
-        if (!val) return;
-        for (var i = 0; i < val.length; i++) {
-          if (/[a-zA-Z]/.test(val[i])) FastExercises._wdlHandleKey(val[i]);
-        }
-      });
-
       pageEl.addEventListener('click', function(e) {
         var keyBtn = e.target.closest('#wdl-mobile-keyboard [data-key]');
-        if (!keyBtn || keyBtn.disabled) return;
-        e.preventDefault();
-        FastExercises._wdlHandleKey(keyBtn.getAttribute('data-key'));
+        if (keyBtn && !keyBtn.disabled) {
+          e.preventDefault();
+          FastExercises._wdlHandleKey(keyBtn.getAttribute('data-key'));
+          return;
+        }
+        if (e.target.closest('.vocab-cw-wordle-grid, .cw-wordle-play-card, .cw-wordle-def-card')) {
+          FastExercises._wdlFocusInput();
+        }
       });
+    },
+
+    _wdlBindInputEvents: function(wdlInput) {
+      if (!wdlInput || wdlInput._wdlInputBound) return;
+      wdlInput._wdlInputBound = true;
+      wdlInput.addEventListener('keydown', function(e) {
+        FastExercises._wdlKeyHandler(e);
+      });
+      if (!FastExercises._wdlIsMobilePlay()) {
+        wdlInput.addEventListener('input', function() {
+          var val = wdlInput.value;
+          wdlInput.value = '';
+          if (val && /[a-zA-Z]/.test(val[val.length - 1])) {
+            FastExercises._wdlHandleKey(val[val.length - 1]);
+          }
+        });
+      }
     },
 
     _wdlBuildMobileKeyboardHtml: function() {
@@ -7962,8 +7967,9 @@
           wdlInput.removeAttribute('readonly');
           wdlInput.removeAttribute('inputmode');
           wdlInput.value = '';
-          FastExercises._wdlFocusInput();
         }
+        FastExercises._wdlBindInputEvents(wdlInput);
+        FastExercises._wdlFocusInput();
       }
 
       FastExercises._wdlUpdateInputUI();
