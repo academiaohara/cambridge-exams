@@ -1864,17 +1864,18 @@ margin-top: -2px;
   position: relative;
   aspect-ratio: 1;
   min-width: 0;
-  border-radius: 10px;
-  border: 2px solid #d1d5db;
-  background: #f3f4f6;
-  box-shadow: 0 4px 0 #e5e7eb;
+  container-type: inline-size;
+  border-radius: 12px;
+  border: 2px solid #9cc8f5;
+  background: #fff;
+  box-shadow: 0 5px 0 #c6def8;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
   font: inherit;
-  color: #9ca3af;
+  color: #1f2937;
   box-sizing: border-box;
   user-select: none;
   transition: transform 0.08s ease, box-shadow 0.08s ease, border-color 0.12s ease, background 0.12s ease, color 0.12s ease;
@@ -1891,8 +1892,8 @@ margin-top: -2px;
 
 .cw-path-cell-num {
   font-family: 'Nunito', sans-serif;
-  font-size: clamp(0.72rem, 1.4vw, 1rem);
-  font-weight: 800;
+  font-size: clamp(0.75rem, 34cqw, 1.5rem);
+  font-weight: 900;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -1902,68 +1903,76 @@ margin-top: -2px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: inherit;
 }
 
 .cw-path-cell--current:not(.cw-path-cell--done) {
-  outline: 2px solid var(--cw-header-color, #1cb0f6);
-  outline-offset: 2px;
+  border-color: #1cb0f6;
+  background: #eff8ff;
+  color: #0369a1;
+  box-shadow: 0 3px 0 #1cb0f6;
+  transform: translateY(2px);
+}
+
+.cw-path-cell--current:not(.cw-path-cell--done) .cw-path-cell-num {
+  color: #0284c7;
 }
 
 .cw-path-cell--done {
-  border-color: #22c55e;
-  background: #dcfce7;
-  color: #166534;
-  box-shadow: 0 4px 0 #86efac;
+  border-color: #16a34a;
+  background: #16a34a;
+  color: #fff;
+  box-shadow: 0 5px 0 #15803d;
 }
 
 .cw-path-cell--done .cw-path-cell-num {
-  color: #166534;
+  color: #fff;
 }
 
 .cw-path-cell--done:hover {
-  box-shadow: 0 5px 0 #86efac;
+  box-shadow: 0 6px 0 #15803d;
 }
 
 .cw-path-cell--done:focus {
-  box-shadow: 0 2px 0 #86efac;
+  box-shadow: 0 2px 0 #15803d;
 }
 
 .cw-path-cell--progress {
-  border-color: #f59e0b;
-  background: #fef3c7;
-  color: #b45309;
-  box-shadow: 0 4px 0 #fcd34d;
+  border-color: #1cb0f6;
+  background: #fff;
+  color: #0369a1;
+  box-shadow: 0 5px 0 #b8e4fb;
 }
 
 .cw-path-cell--progress .cw-path-cell-num {
-  color: #b45309;
+  color: #0284c7;
 }
 
 .cw-path-cell--progress:hover {
-  box-shadow: 0 5px 0 #fcd34d;
+  box-shadow: 0 6px 0 #b8e4fb;
 }
 
 .cw-path-cell--progress:focus {
-  box-shadow: 0 2px 0 #fcd34d;
+  box-shadow: 0 2px 0 #b8e4fb;
 }
 
 .cw-path-cell--pending {
-  border-color: #d1d5db;
-  background: #f3f4f6;
-  color: #9ca3af;
-  box-shadow: 0 4px 0 #e5e7eb;
+  border-color: #a78bfa;
+  background: #f5f3ff;
+  color: #6d28d9;
+  box-shadow: 0 5px 0 #c4b5fd;
 }
 
 .cw-path-cell--pending .cw-path-cell-num {
-  color: #9ca3af;
+  color: #7c3aed;
 }
 
 .cw-path-cell--pending:hover {
-  box-shadow: 0 5px 0 #e5e7eb;
+  box-shadow: 0 6px 0 #c4b5fd;
 }
 
 .cw-path-cell--pending:focus {
-  box-shadow: 0 2px 0 #e5e7eb;
+  box-shadow: 0 2px 0 #c4b5fd;
 }
 
 .cw-path-next-level {
@@ -2712,7 +2721,7 @@ margin-top: -2px;
   }
 
   .cw-path-cell-num {
-    font-size: clamp(0.5rem, 2.6vw, 0.78rem);
+    font-size: clamp(0.65rem, 34cqw, 1.1rem);
     width: 96%;
   }
 
