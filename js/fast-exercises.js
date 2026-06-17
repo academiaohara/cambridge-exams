@@ -6013,11 +6013,11 @@
         return;
       }
 
-      defEl.classList.add('vocab-cw-active-def--inline');
-      activeRow.parentNode.insertBefore(defEl, activeRow);
-
       wordNav = FastExercises._cwEnsureMobileWordNav();
       activeRow.parentNode.insertBefore(wordNav, activeRow);
+
+      defEl.classList.add('vocab-cw-active-def--inline');
+      activeRow.parentNode.insertBefore(defEl, activeRow);
       FastExercises._cwSyncMobileWordNav();
 
       kb = FastExercises._cwEnsureMobileKeyboard();
@@ -7319,6 +7319,12 @@
         }
       }
       FastExercises._cwUpdateStatus();
+      var dir = state.selectedDir || 'across';
+      var wordsInDir = FastExercises._cwGetWordsInDir(dir);
+      if (wordsInDir.length) {
+        FastExercises._cwSelectWord(wordsInDir[0], 0);
+        return;
+      }
       state.selectedWordId = null;
       state.activeWord = null;
       var rowEls = document.querySelectorAll('.vocab-cw-word-row');
