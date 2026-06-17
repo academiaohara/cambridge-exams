@@ -7544,3 +7544,190 @@
     display: none;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   VOCABULARY — Learning-style map dots & integrated exercises
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.fe-section--merged-path .fe-map-points-row.course-exercise-grid {
+  gap: 12px;
+  justify-content: center;
+  padding: 6px 0 2px;
+}
+
+.fe-section--merged-path .fe-map-points-row.course-exercise-grid .fe-map-line {
+  display: none;
+}
+
+.fe-section--merged-path .fe-dot:not(.fe-dot-mini) {
+  width: 56px;
+  height: 56px;
+  border: none;
+  color: #fff;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.18);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.fe-section--merged-path .fe-dot:not(.fe-dot-mini):active:not(.fe-dot-locked) {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+}
+
+.fe-section--merged-path .fe-dot:not(.fe-dot-mini) .material-symbols-outlined {
+  font-size: 1.35rem;
+  color: #fff;
+}
+
+.fe-section--merged-path .fe-dot.fe-dot-done:not(.fe-dot-mini) {
+  background: #58cc02 !important;
+  box-shadow: 0 4px 0 #46a302 !important;
+  color: #fff !important;
+}
+
+.fe-section--merged-path .fe-dot.fe-dot-locked:not(.fe-dot-mini) {
+  background: #e5e7eb !important;
+  color: #94a3b8 !important;
+  box-shadow: 0 4px 0 #cbd5e1 !important;
+  cursor: not-allowed;
+}
+
+.fe-section--merged-path .fe-dot.fe-dot-current:not(.fe-dot-mini) {
+  background: linear-gradient(180deg, #ffc800 0%, #ff9600 100%) !important;
+  color: #fff !important;
+  transform: scale(1.08);
+  box-shadow: 0 0 0 4px rgba(255, 150, 0, 0.35), 0 4px 0 #e08600 !important;
+  animation: course-circle-pulse 1.8s ease-in-out infinite;
+}
+
+.fe-map-legend-top .fe-dot-mini:not(.fe-dot-outline) {
+  border: none;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.fe-map-legend-top .fe-dot-mini:not(.fe-dot-outline) .material-symbols-outlined {
+  font-size: 0.65rem;
+  color: #fff;
+}
+
+/* Exercises rendered inside dashboard center (#feCenterSection) */
+.fe-section--vocab-exercise .fe-point-view.pv-point-layout {
+  max-width: none;
+  width: 100%;
+  padding: 0;
+  gap: 12px;
+}
+
+.fe-section--vocab-exercise .pv-point-sidebar {
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  border-bottom-width: 4px;
+  border-bottom-color: #d0d0d0;
+  box-shadow: none;
+}
+
+.fe-section--vocab-exercise .pv-point-main {
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  border-bottom-width: 4px;
+  border-bottom-color: #d0d0d0;
+  border-radius: 18px;
+  padding: 20px;
+  min-width: 0;
+  flex: 1;
+}
+
+.fe-section--vocab-exercise .fe-exercise-card,
+.fe-section--vocab-exercise .fe-explanation-card,
+.fe-section--vocab-exercise .fe-point-card {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 14px;
+  padding: 8px 4px 4px;
+}
+
+.fe-section--vocab-exercise .fe-quiz-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+  min-height: 44px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark, #0f172a);
+  background: rgba(45, 46, 95, 0.04);
+  border: 1.5px solid rgba(45, 46, 95, 0.16);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.12s;
+  text-align: left;
+}
+
+.fe-section--vocab-exercise .fe-quiz-option:hover:not(:disabled) {
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.38);
+  color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.fe-section--vocab-exercise .fe-quiz-option.fe-quiz-correct {
+  background: #059669 !important;
+  border-color: #059669 !important;
+  color: #fff !important;
+}
+
+.fe-section--vocab-exercise .fe-quiz-option.fe-quiz-wrong {
+  background: #d97706 !important;
+  border-color: #d97706 !important;
+  color: #fff !important;
+}
+
+.fe-section--vocab-exercise .fe-point-next-btn,
+.fe-section--vocab-exercise .pv-gallery-footer .fe-point-next-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+  background: #2563eb;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 24px;
+  min-height: 44px;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.28);
+}
+
+.fe-section--vocab-exercise .fe-point-next-btn:hover {
+  background: #1d4ed8;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.38);
+  filter: none;
+  transform: none;
+}
+
+.fe-section--vocab-exercise .fe-point-next-btn:active {
+  transform: scale(0.97);
+}
+
+.dashboard-layout--lesson-focus .fe-section--vocab-exercise .subpage-header {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .fe-section--merged-path .fe-dot:not(.fe-dot-mini) {
+    width: 48px;
+    height: 48px;
+  }
+
+  .fe-section--vocab-exercise .fe-point-view.pv-point-layout {
+    flex-direction: column;
+  }
+
+  .fe-section--vocab-exercise .pv-point-sidebar {
+    width: 100%;
+    max-height: none;
+  }
+}
