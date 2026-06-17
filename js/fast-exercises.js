@@ -213,6 +213,32 @@
       return total;
     },
 
+    _isCourseVocabCategory: function(categoryId) {
+      return ['phrasal-verbs', 'idioms', 'word-formation'].indexOf(categoryId) !== -1;
+    },
+
+    _getMergedLessons: function(data) {
+      var LEVEL_ORDER = ['B1', 'B2', 'C1'];
+      var merged = [];
+      if (!data || !data.levels) return merged;
+      for (var li = 0; li < LEVEL_ORDER.length; li++) {
+        var levelId = LEVEL_ORDER[li];
+        var level = null;
+        for (var i = 0; i < data.levels.length; i++) {
+          if (data.levels[i].id === levelId) { level = data.levels[i]; break; }
+        }
+        if (!level || !level.lessons) continue;
+        for (var lj = 0; lj < level.lessons.length; lj++) {
+          merged.push({
+            levelId: levelId,
+            lesson: level.lessons[lj],
+            globalIndex: merged.length
+          });
+        }
+      }
+      return merged;
+    },
+
     // ── Data Loading ─────────────────────────────────────────────────────
     _loadCategoryData: async function(categoryId) {
       if (this._cache[categoryId]) return this._cache[categoryId];
@@ -367,6 +393,8 @@
       }
       if (!catMeta) return;
 
+      var isCourseVocab = this._isCourseVocabCategory(categoryId);
+
       // Determine active level (validate stored level exists in data)
       var catProg = this._getCategoryProgress(categoryId);
       var storedLevel = catProg.activeLevel;
@@ -380,22 +408,33 @@
       var activeLevel = levelExists ? storedLevel : firstLevelId;
       this._currentLevel = activeLevel;
 
-      // ── LEFT WIDGET: Category Info + Level Selector ──
-      var leftWidget = this._buildCategoryInfoWidget(catMeta, data, activeLevel);
+      // ── Sidebars: main dashboard nav for course vocabulary categories ──
+      var sidebars = { left: '', right: '' };
+      if (typeof BentoGrid !== 'undefined') {
+        var exams = window.EXAMS_DATA[AppState.currentLevel || 'C1'] || [];
+        sidebars = BentoGrid._buildDashboardSidebars(exams, { includeGradeTracker: true });
+      }
+      var leftSidebarContent = isCourseVocab
+        ? sidebars.left
+        : this._buildCategoryInfoWidget(catMeta, data, activeLevel);
+      var rightSidebarContent = isCourseVocab
+        ? sidebars.right
+        : this._buildQuickReviewWidget(catMeta, data, activeLevel);
 
       // ── CENTER: Vertical Progression Map / Topic List (vocabulary) ──
       var centerMap;
       if (categoryId === 'vocabulary') {
         centerMap = await self._buildVocabTopicList(catMeta, data, activeLevel);
+      } else if (isCourseVocab) {
+        centerMap = self._buildMergedProgressionMap(catMeta, data);
       } else {
         centerMap = self._buildProgressionMap(catMeta, data, activeLevel);
       }
 
-      // ── RIGHT WIDGET: Quick Review Mixer ──
-      var rightWidget = this._buildQuickReviewWidget(catMeta, data, activeLevel);
-
       // ── PROGRESS BAR ──
-      var bottomBar = this._buildBottomProgressBar(catMeta, data, activeLevel);
+      var bottomBar = isCourseVocab
+        ? this._buildMergedBottomProgressBar(catMeta, data)
+        : this._buildBottomProgressBar(catMeta, data, activeLevel);
 
       // ── LEGEND (PV only) ──
       var legendHtml = '';
@@ -423,24 +462,30 @@
         legendHtml = '';
       }
 
-      var _isCourseCategory = ['phrasal-verbs', 'idioms', 'word-formation'].indexOf(categoryId) !== -1;
+      var _isCourseCategory = isCourseVocab;
       var _backFn = _isCourseCategory ? 'BentoGrid.openCourseSection(\'vocabulary\')' : 'FastExercises.openCategories()';
+      var catPct = this._getCategoryPercent(catMeta.id, data.levels);
+      var subtitleText = isCourseVocab
+        ? 'B1 to C1 · ' + catPct + '% complete'
+        : 'Level Progress' + ' — ' + activeLevel;
+      var headerLevelRow = isCourseVocab ? '' : this._buildSubpageLevelRow(catMeta, data, activeLevel);
+      var headerClass = isCourseVocab ? 'subpage-header' : 'subpage-header subpage-header--with-levels';
 
       content.innerHTML =
         '<div class="dashboard-layout">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
-            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftWidget)
-            : '<div class="dashboard-left-sidebar">' + leftWidget + '</div>') +
+            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
+            : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
           '<div class="dashboard-center">' +
-            '<div class="fe-section">' +
-              '<div class="subpage-header subpage-header--with-levels">' +
+            '<div class="fe-section' + (isCourseVocab ? ' fe-section--merged-path' : '') + '">' +
+              '<div class="' + headerClass + '">' +
                 '<button class="subpage-back-btn" onclick="' + _backFn + '" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
                 '<div class="subpage-header-core">' +
                   '<div class="subpage-header-titles">' +
                     '<div class="subpage-title">' + _mi(catMeta.icon) + ' ' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
-                    '<div class="subpage-subtitle">' + 'Level Progress' + ' — ' + activeLevel + '</div>' +
+                    '<div class="subpage-subtitle">' + subtitleText + '</div>' +
                   '</div>' +
-                  this._buildSubpageLevelRow(catMeta, data, activeLevel) +
+                  headerLevelRow +
                 '</div>' +
                 (categoryId === 'phrasal-verbs' ? '<button class="subpage-info-btn" onclick="FastExercises._showPvInfoModal()" title="' + 'What are phrasal verbs?' + '">' + _mi('info') + '</button>' : '') +
                 (categoryId === 'word-formation' ? '<button class="subpage-info-btn" onclick="FastExercises._showWfInfoModal()" title="' + 'What is word formation?' + '">' + _mi('info') + '</button>' : '') +
@@ -453,12 +498,14 @@
             '</div>' +
           '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
-            ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightWidget)
-            : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightWidget + '</div>') +
+            ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent)
+            : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>') +
         '</div>';
 
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
+      if (isCourseVocab && typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
+      if (isCourseVocab && typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('vocabulary');
       var catState = { view: 'fastExerciseCategory', categoryId: categoryId };
       history.pushState(catState, '', Router.stateToPath(catState));
       var self = this;
@@ -819,6 +866,168 @@
       return html;
     },
 
+    /** B1→C1 continuous vertical path for course vocabulary categories. */
+    _buildMergedProgressionMap: function(catMeta, data) {
+      var self = this;
+      var merged = this._getMergedLessons(data);
+      if (merged.length === 0) {
+        return '<div class="fe-map-empty">' + 'No lessons available yet.' + '</div>';
+      }
+
+      this._currentMapPage = 0;
+
+      var html = '<div class="fe-map-outer fe-map-single-page fe-map-merged">';
+      html += '<div class="fe-map-main">';
+      html += '<div class="fe-map-page fe-map-page-active" data-page="0">';
+      html += '<div class="fe-map-container fe-map-container--merged">';
+
+      for (var mi = 0; mi < merged.length; mi++) {
+        var entry = merged[mi];
+        var lesson = entry.lesson;
+        var levelId = entry.levelId;
+        var lessonComplete = true;
+        var lessonStarted = false;
+        var levelUnlocked = self._isLevelUnlocked(catMeta.id, levelId, data.levels);
+        var lessonLocked = !levelUnlocked;
+
+        if (lesson.points) {
+          for (var pi = 0; pi < lesson.points.length; pi++) {
+            if (!self._isPointComplete(catMeta.id, levelId, lesson.id, pi)) {
+              lessonComplete = false;
+            } else {
+              lessonStarted = true;
+            }
+          }
+        }
+
+        var lessonClass = lessonLocked ? 'fe-lesson-locked' : (lessonComplete ? 'fe-lesson-complete' : (lessonStarted ? 'fe-lesson-active' : 'fe-lesson-pending'));
+
+        html += '<div class="fe-map-lesson ' + lessonClass + '" data-lesson-global-idx="' + mi + '">' +
+          '<div class="fe-map-lesson-title">' +
+            '<span class="fe-map-lesson-num">' + 'Lesson' + ' ' + (mi + 1) + '</span>' +
+            '<span class="fe-map-lesson-level">' + levelId + '</span>' +
+            '<span class="fe-map-lesson-name">' + self._escapeHTML(lesson.title) + '</span>' +
+          '</div>' +
+          '<div class="fe-map-points-row">';
+
+        if (lesson.points) {
+          for (var pi = 0; pi < lesson.points.length; pi++) {
+            var point = lesson.points[pi];
+            var isDone = self._isPointComplete(catMeta.id, levelId, lesson.id, pi);
+
+            var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1) ||
+                                (point.type === 'id-quiz' && pi === lesson.points.length - 1);
+            var isAccessible = levelUnlocked;
+            if (isAccessible && isLastPvMixed) {
+              for (var prev = 0; prev < pi; prev++) {
+                if (!self._isPointComplete(catMeta.id, levelId, lesson.id, prev)) {
+                  isAccessible = false;
+                  break;
+                }
+              }
+            }
+
+            if (point.type === 'review') {
+              var reviewStateClass = isDone ? 'fe-level-active' : (isAccessible ? 'fe-level-unlocked' : 'fe-level-locked');
+              var reviewIcon = (isAccessible || isDone) ? _mi('rate_review') : _mi('lock');
+              var reviewOnclick = (isAccessible || isDone) ? 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lesson.id + '\', ' + pi + ')"' : '';
+              html += '<div class="fe-review-row fe-level-item ' + reviewStateClass + '" ' + reviewOnclick + '>' +
+                '<span class="fe-level-icon">' + reviewIcon + '</span>' +
+                '<div class="fe-level-label">' +
+                  '<span class="fe-level-name">' + self._escapeHTML(point.label || 'Review') + '</span>' +
+                  '<span class="fe-level-pct">' + (isDone ? 'Completed' : (isAccessible ? 'Available' : 'Locked')) + '</span>' +
+                '</div>' +
+              '</div>';
+              continue;
+            }
+
+            var dotClass = 'fe-dot';
+            var dotIcon = '';
+            if (point.type === 'explanation') {
+              dotClass += ' fe-dot-explanation';
+              dotIcon = _mi('article');
+            } else if (point.type === 'exercise') {
+              dotClass += ' fe-dot-exercise';
+              dotIcon = _mi('fitness_center');
+            } else if (point.type === 'trophy') {
+              dotClass += ' fe-dot-trophy';
+              dotIcon = _mi('emoji_events');
+            } else if (point.type === 'pv-gallery') {
+              dotClass += ' fe-dot-pv-gallery';
+              dotIcon = _mi('collections_bookmark');
+            } else if (point.type === 'pv-fill-in') {
+              dotClass += ' fe-dot-pv-fill-in';
+              dotIcon = _mi('edit');
+            } else if (point.type === 'pv-conversations') {
+              dotClass += ' fe-dot-pv-conv';
+              dotIcon = _mi('forum');
+            } else if (point.type === 'pv-conversation-drag') {
+              dotClass += ' fe-dot-pv-drag';
+              dotIcon = _mi('drag_indicator');
+            } else if (point.type === 'pv-mixed') {
+              dotClass += ' fe-dot-pv-mixed';
+              dotIcon = _mi('shuffle');
+            } else if (point.type === 'wf-explanation') {
+              dotClass += ' fe-dot-wf-explanation';
+              dotIcon = _mi('school');
+            } else if (point.type === 'wf-multiple-choice') {
+              dotClass += ' fe-dot-wf-multiple-choice';
+              dotIcon = _mi('rule');
+            } else if (point.type === 'wf-transform') {
+              dotClass += ' fe-dot-wf-transform';
+              dotIcon = _mi('transform');
+            } else if (point.type === 'id-gallery') {
+              dotClass += ' fe-dot-id-gallery';
+              dotIcon = _mi('collections_bookmark');
+            } else if (point.type === 'id-fill-in') {
+              dotClass += ' fe-dot-id-fill-in';
+              dotIcon = _mi('edit');
+            } else if (point.type === 'id-conversations') {
+              dotClass += ' fe-dot-id-conv';
+              dotIcon = _mi('forum');
+            } else if (point.type === 'id-conversation-drag') {
+              dotClass += ' fe-dot-id-drag';
+              dotIcon = _mi('drag_indicator');
+            } else if (point.type === 'id-quiz') {
+              dotClass += ' fe-dot-id-quiz';
+              dotIcon = _mi('quiz');
+            } else if (point.type === 'id-trophy') {
+              dotClass += ' fe-dot-trophy';
+              dotIcon = _mi('emoji_events');
+            } else if (point.type === 'vocab-flashcards') {
+              dotClass += ' fe-dot-vocab-flashcards';
+              dotIcon = _mi('style');
+            }
+
+            if (isDone) {
+              dotClass += ' fe-dot-done';
+            } else if (!isAccessible) {
+              dotClass += ' fe-dot-locked';
+            } else {
+              dotClass += ' fe-dot-outline';
+            }
+
+            var onclick = (isAccessible || isDone) ? 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lesson.id + '\', ' + pi + ')"' : '';
+            var tooltip = self._escapeHTML(point.label || '');
+
+            html += (pi > 0 ? '<div class="fe-map-line"></div>' : '') +
+              '<div class="' + dotClass + '" ' + onclick + ' title="' + tooltip + '">' +
+                '<span class="fe-dot-icon">' + dotIcon + '</span>' +
+              '</div>';
+          }
+        }
+
+        html += '</div></div>';
+
+        if (mi < merged.length - 1) {
+          html += '<div class="fe-map-connector"></div>';
+        }
+      }
+
+      html += '</div></div></div></div>';
+      return html;
+    },
+
     // ── COMPACT DOTS ─────────────────────────────────────────────────────
     // If a points row wraps to more than one line, shrink the dots to fit.
     _compactDots: function() {
@@ -1074,6 +1283,23 @@
       '</div>';
     },
 
+    _buildMergedBottomProgressBar: function(catMeta, data) {
+      var catPct = this._getCategoryPercent(catMeta.id, data.levels);
+
+      return '<div class="fe-bottom-bar">' +
+        '<div class="fe-bottom-breadcrumb">' + this._escapeHTML(catMeta.name) + ' · B1 to C1</div>' +
+        '<div class="fe-bottom-progress">' +
+          '<div class="fe-progress-bar-bg fe-bottom-progress-bg">' +
+            '<div class="fe-progress-bar-fill" style="width:' + catPct + '%; background:' + catMeta.color + '"></div>' +
+          '</div>' +
+          '<span class="fe-bottom-pct">' + catPct + '%</span>' +
+        '</div>' +
+        '<button class="fe-bottom-continue-btn" onclick="FastExercises._continueMergedCategory(\'' + catMeta.id + '\')" style="background:' + catMeta.color + '">' +
+          'Continue' +
+        '</button>' +
+      '</div>';
+    },
+
     /** Compact level pills for mobile subpage header (hidden on wide screens via CSS). */
     _buildSubpageLevelRow: function(catMeta, data, activeLevel) {
       if (!data || !data.levels) return '';
@@ -1137,6 +1363,36 @@
       }
 
       // All complete - stay on current level; user must switch manually
+    },
+
+    _continueMergedCategory: async function(categoryId) {
+      var data = await this._loadCategoryData(categoryId);
+      if (!data) return;
+
+      var merged = this._getMergedLessons(data);
+      for (var mi = 0; mi < merged.length; mi++) {
+        var entry = merged[mi];
+        if (!this._isLevelUnlocked(categoryId, entry.levelId, data.levels)) continue;
+        var lesson = entry.lesson;
+        if (!lesson.points) continue;
+
+        for (var pi = 0; pi < lesson.points.length; pi++) {
+          if (!this._isPointComplete(categoryId, entry.levelId, lesson.id, pi)) {
+            var point = lesson.points[pi];
+            var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1) ||
+                                 (point.type === 'id-quiz' && pi === lesson.points.length - 1);
+            if (isLastPvMixed) {
+              var allPriorDone = true;
+              for (var prev = 0; prev < pi; prev++) {
+                if (!this._isPointComplete(categoryId, entry.levelId, lesson.id, prev)) { allPriorDone = false; break; }
+              }
+              if (!allPriorDone) continue;
+            }
+            this.openPoint(categoryId, entry.levelId, lesson.id, pi);
+            return;
+          }
+        }
+      }
     },
 
     // ── QUICK REVIEW ─────────────────────────────────────────────────────

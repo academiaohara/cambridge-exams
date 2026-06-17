@@ -5910,6 +5910,16 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   margin-right: auto;
 }
 
+.course-vocab-mode-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.course-vocab-mode-cards .mode-card {
+  width: 100%;
+}
+
 .course-section-cards-grid--stacked {
   grid-template-columns: 1fr;
 }
