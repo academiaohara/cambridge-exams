@@ -2748,27 +2748,85 @@ margin-top: -2px;
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .cw-section-header {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
+    padding: 14px 16px 16px;
+  }
+
+  .cw-section-header--picker {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .cw-section-header--picker .cw-section-title {
+    font-size: 1.25rem;
+  }
+
+  .cw-section-header--picker .cw-section-kicker {
+    font-size: 0.68rem;
+    margin-bottom: 1px;
+  }
+
+  .dashboard-center--crossword {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+
+  .dashboard-center--crossword .cw-page-content {
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
   }
 
   .cw-page-content,
   .cw-center-scroll {
-    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
   }
 
   .cw-list-page {
-    gap: 22px;
-    padding-top: 6px;
-    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+    gap: 16px;
+    padding-top: 4px;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
   }
 
   .cw-level-cards {
+    gap: 16px;
+    padding: 4px 0 calc(20px + env(safe-area-inset-bottom));
+  }
+
+  .cw-level-cards .mode-card--cw-level {
+    padding: 16px 18px;
     gap: 14px;
-    padding: 10px 0 18px;
+  }
+
+  .cw-level-cards .mode-card--cw-level .mode-card-icon-wrap {
+    width: 52px;
+    height: 52px;
+  }
+
+  .cw-level-cards .mode-card--cw-level .mode-card-icon .material-symbols-outlined {
+    font-size: 2.25rem;
   }
 
   .cw-daily-banner {
-    margin-bottom: 2px;
+    margin-bottom: 6px;
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .cw-daily-banner-icon {
+    font-size: 1.5rem;
+  }
+
+  .cw-daily-banner-title {
+    font-size: 0.9rem;
+  }
+
+  .cw-daily-banner-sub {
+    font-size: 0.74rem;
+  }
+
+  .cw-daily-banner-btn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
   }
 
   .cw-path-map {
@@ -2792,11 +2850,11 @@ margin-top: -2px;
     grid-template-columns: repeat(2, 1fr);
   }
   .cw-list-page {
-    gap: 18px;
+    gap: 14px;
   }
   .cw-level-cards {
-    gap: 12px;
-    padding: 8px 0 14px;
+    gap: 14px;
+    padding: 4px 0 calc(20px + env(safe-area-inset-bottom));
   }
   .cw-path-grid {
     gap: 7px;
@@ -3111,12 +3169,16 @@ margin-top: -2px;
   vertical-align: middle;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 420px) {
   .cw-daily-banner {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 12px;
+    align-items: stretch;
+    text-align: left;
+    gap: 10px;
+  }
+
+  .cw-daily-banner-left {
+    justify-content: flex-start;
   }
 
   .cw-daily-banner-btn {
