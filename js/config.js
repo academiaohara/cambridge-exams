@@ -5,6 +5,7 @@
     REPO_NAME: 'cambridge-exams',
     BRANCH: 'main',
     APP_VERSION: '3.2.0',
+    BUILD_ID: 'dev',
     MIN_LOADING_MS: 5000,
 
     /**
@@ -124,6 +125,12 @@
   window.CONFIG.TIPS_BASE_URL = `/tips/`;
   window.CONFIG.JS_BASE_URL = `/js/`;
   window.CONFIG.CSS_BASE_URL = `/css/`;
+
+  window.CONFIG.assetUrl = function(assetPath) {
+    var base = String(assetPath || '').split('?')[0];
+    var version = window.CONFIG.BUILD_ID || 'dev';
+    return base + '?v=' + version;
+  };
   // Configuración de tipos de ejercicios
   // Level-specific part type overrides (keys match AppState.currentLevel)
   window.CONFIG.LEVEL_PART_TYPES = {
