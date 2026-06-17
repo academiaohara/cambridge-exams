@@ -98,16 +98,18 @@
   transition: color 0.25s ease;
 }
 
-/* ── Row 2: Learning row (Quicksteps · Basecamp) ── */
+/* ── Row 2: Learning row (Crossword · Learning · Vocabulary) ── */
 .bento-learning-row {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 14px;
 }
 
 /* Ground effect for illustration cards */
 .bento-card-quicksteps::before,
 .bento-card-basecamp::before,
+.bento-card-learning::before,
+.bento-card-vocabulary::before,
 .bento-card-crossword::before {
     content: '';
     position: absolute;
@@ -151,6 +153,36 @@ content: '';
     background-position: bottom right;
     pointer-events: none;
     z-index: 0;
+}
+
+/* ── LEARNING card ── */
+.bento-card-learning {
+  background: #eef2ff;
+  color: #1e3a8a;
+  cursor: pointer;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.bento-card-learning .bento-card-title {
+  color: #3b82f6;
+}
+
+/* ── VOCABULARY card ── */
+.bento-card-vocabulary {
+  background: #ecfdf5;
+  color: #064e3b;
+  cursor: pointer;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.bento-card-vocabulary .bento-card-title {
+  color: #10b981;
 }
 
 /* ── BASECAMP card (lessons) ── */
@@ -292,6 +324,14 @@ content: '';
 .bento-card-quicksteps:hover .bento-card-title   { color: #2e7a10; }
 .bento-card-quicksteps:hover                     { color: #1a4a1a; }
 .bento-card-quicksteps:hover .bento-card-hover-info { color: #2d6e18; }
+
+.bento-card-learning:hover .bento-card-title     { color: #2563eb; }
+.bento-card-learning:hover                       { color: #1e3a8a; }
+.bento-card-learning:hover .bento-card-hover-info { color: #2563eb; }
+
+.bento-card-vocabulary:hover .bento-card-title     { color: #059669; }
+.bento-card-vocabulary:hover                       { color: #064e3b; }
+.bento-card-vocabulary:hover .bento-card-hover-info { color: #059669; }
 
 .bento-card-basecamp:hover .bento-card-title     { color: #3848c8; }
 .bento-card-basecamp:hover                       { color: #252550; }
@@ -613,6 +653,8 @@ content: '';
 
   .bento-card-quicksteps,
   .bento-card-basecamp,
+  .bento-card-learning,
+  .bento-card-vocabulary,
   .bento-card-weakspot,
   .bento-card-checkpoint,
   .bento-card-crossword {

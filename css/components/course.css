@@ -6190,37 +6190,42 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 
 /* Etapa map (path inside a stage) */
 .course-etapa-map {
-  max-width: 420px;
+  max-width: 720px;
   margin: 0 auto;
   padding-bottom: 48px;
 }
 
-.course-etapa-header {
+.course-etapa-path {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Unit headers inside etapa map (full-width section headers) */
+.course-etapa-map .course-etapa-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  background: #58cc02;
-  border-radius: 16px;
-  padding: 16px 18px;
-  margin-bottom: 28px;
+  gap: 14px;
+  width: 100%;
+  margin: 0;
+  padding: 18px 20px 20px;
+  border-radius: 18px;
+  background: var(--cw-header-color, #1cb0f6);
   color: #fff;
-  box-shadow: 0 4px 0 #46a302;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
 }
 
-.course-etapa-header-kicker {
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  opacity: 0.92;
-  margin-bottom: 4px;
+.course-etapa-header-text {
+  flex: 1;
+  min-width: 0;
 }
 
 .course-etapa-header-title {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 900;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .course-etapa-header-guide {
@@ -6231,7 +6236,7 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   padding: 10px 14px;
   border: none;
   border-radius: 12px;
-  background: rgba(0,0,0,0.14);
+  background: rgba(255, 255, 255, 0.2);
   color: #fff;
   font-family: 'Nunito', sans-serif;
   font-size: 0.78rem;
@@ -6240,65 +6245,87 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   cursor: pointer;
 }
 
+.course-etapa-header-guide:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+
 .course-etapa-header-guide .material-symbols-outlined {
   font-size: 1rem;
 }
 
-.course-etapa-path {
+.course-exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 12px;
+  width: 100%;
+  padding: 0 2px 8px;
+}
+
+.course-exercise-cell {
+  position: relative;
+  min-height: 88px;
+  border-radius: 16px;
+  border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  font: inherit;
+  color: #fff;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.18);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  padding: 12px 8px;
 }
 
-.course-unit-divider {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  margin: 8px 0 4px;
+.course-exercise-cell .material-symbols-outlined {
+  font-size: 1.5rem;
 }
 
-.course-unit-divider-line {
-  flex: 1;
-  height: 2px;
-  background: #e5e7eb;
-  border-radius: 1px;
-}
-
-.course-unit-divider-label {
-  flex-shrink: 0;
+.course-exercise-cell-label {
   font-family: 'Nunito', sans-serif;
   font-size: 0.78rem;
-  font-weight: 800;
-  color: #94a3b8;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  max-width: 42%;
-  text-align: center;
-  line-height: 1.25;
-}
-
-.course-unit-guide-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  flex-shrink: 0;
-  padding: 6px 10px;
-  border: 2px solid #d1d5db;
-  border-bottom-width: 3px;
-  border-radius: 10px;
-  background: #fff;
-  color: #58cc02;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.68rem;
   font-weight: 900;
   letter-spacing: 0.04em;
-  cursor: pointer;
 }
 
-.course-unit-guide-btn .material-symbols-outlined {
-  font-size: 0.95rem;
+.course-exercise-cell:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.18);
+}
+
+.course-exercise-cell--done {
+  background: #58cc02;
+  box-shadow: 0 6px 0 #46a302;
+}
+
+.course-exercise-cell--progress {
+  background: #1cb0f6;
+  box-shadow: 0 6px 0 #1899d6;
+}
+
+.course-exercise-cell--pending {
+  background: #58cc02;
+  box-shadow: 0 6px 0 #46a302;
+}
+
+.course-exercise-cell--current {
+  transform: scale(1.04);
+  box-shadow: 0 0 0 4px rgba(28, 176, 246, 0.35), 0 6px 0 #46a302;
+  animation: course-circle-pulse 1.8s ease-in-out infinite;
+}
+
+.course-exercise-cell--locked {
+  background: #e5e7eb;
+  color: #94a3b8;
+  box-shadow: 0 6px 0 #cbd5e1;
+  cursor: not-allowed;
+}
+
+.course-exercise-cell--review {
+  background: linear-gradient(180deg, #ffc800 0%, #ff9600 100%);
+  box-shadow: 0 6px 0 #e08600;
 }
 
 /* Circular path nodes */
@@ -6386,19 +6413,22 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     height: 64px;
   }
 
-  .course-unit-divider {
+  .course-exercise-grid {
+    grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+    gap: 10px;
+  }
+
+  .course-exercise-cell {
+    min-height: 76px;
+    padding: 10px 6px;
+  }
+
+  .course-etapa-map .course-etapa-header {
     flex-wrap: wrap;
-    justify-content: center;
+    padding: 16px;
   }
 
-  .course-unit-divider-label {
-    max-width: 100%;
-    order: -1;
-    width: 100%;
-    margin-bottom: 4px;
-  }
-
-  .course-unit-divider-line:first-child {
-    display: none;
+  .course-etapa-header-title {
+    font-size: 0.95rem;
   }
 }
