@@ -283,16 +283,43 @@
       return html;
     },
 
+    _fetchCourseIndexOnly: async function(level) {
+      level = (level || 'C1').toUpperCase();
+      if (!BentoGrid._courseIndexByLevel) BentoGrid._courseIndexByLevel = {};
+      if (BentoGrid._courseIndexByLevel[level]) return BentoGrid._courseIndexByLevel[level];
+      try {
+        var r = await fetch('data/Course/' + level + '/index.json');
+        if (r.ok) {
+          var data = await r.json();
+          BentoGrid._courseIndexByLevel[level] = data;
+          return data;
+        }
+      } catch (e) { /* no index */ }
+      return null;
+    },
+
+    _countProgressTests: function(indexData) {
+      if (!indexData || !indexData.items) return 0;
+      return indexData.items.filter(function(i) { return i.type === 'progress_test'; }).length;
+    },
+
+    _getGlobalStageOffset: async function(levelId) {
+      var LEVEL_ORDER = ['B1', 'B2', 'C1'];
+      var offset = 0;
+      for (var i = 0; i < LEVEL_ORDER.length; i++) {
+        if (LEVEL_ORDER[i] === levelId) break;
+        var idx = await BentoGrid._fetchCourseIndexOnly(LEVEL_ORDER[i]);
+        offset += BentoGrid._countProgressTests(idx);
+      }
+      return offset;
+    },
+
     _loadCourseIndexForLevel: async function(level) {
       level = (level || 'C1').toUpperCase();
       if (BentoGrid._courseIndexData && BentoGrid._courseLevel === level) {
         return BentoGrid._courseIndexData;
       }
-      var indexData = null;
-      try {
-        var r = await fetch('data/Course/' + level + '/index.json');
-        if (r.ok) indexData = await r.json();
-      } catch (e) { /* no index */ }
+      var indexData = await BentoGrid._fetchCourseIndexOnly(level);
       if (indexData && indexData.items) {
         var blocks = {};
         var blockOrder = [];
@@ -340,46 +367,38 @@
       return html;
     },
 
-    _getCourseEtapasList: function(section, indexData) {
+    _getCourseEtapasList: function(section, indexData, stageOffset) {
+      stageOffset = stageOffset || 0;
       if (section === 'learning') {
         var pathItems = BentoGrid._getCoursePathItems(section, indexData);
         if (!pathItems.length) return [];
 
         var result = [];
-        var currentBlock = null;
         var currentItems = [];
         var stageNum = 0;
 
-        function flushBlock() {
+        function flushStage() {
           if (!currentItems.length) return;
           stageNum++;
+          var globalNum = stageOffset + stageNum;
           result.push({
             type: 'etapa',
-            key: 'stage-' + stageNum,
-            number: stageNum,
-            block: currentBlock,
+            key: 'stage-' + globalNum,
+            number: globalNum,
             items: currentItems.slice()
           });
           currentItems = [];
-          currentBlock = null;
         }
 
         pathItems.forEach(function(item) {
           if (item.type === 'progress_test') {
-            flushBlock();
+            flushStage();
             result.push({ type: 'progress_test', item: item });
             return;
           }
-          var bk = item.block != null ? String(item.block) : 'misc';
-          if (currentBlock !== bk) {
-            flushBlock();
-            currentBlock = bk;
-            currentItems = [item];
-          } else {
-            currentItems.push(item);
-          }
+          currentItems.push(item);
         });
-        flushBlock();
+        flushStage();
         return result;
       }
 
@@ -572,7 +591,8 @@
           '<span>The ' + (section === 'vocabulary' ? 'Vocabulary' : 'Learning') + ' curriculum for ' + levelId + ' is under development.</span></div></div>';
       }
 
-      var etapasList = BentoGrid._getCourseEtapasList(section, indexData);
+      var stageOffset = section === 'learning' ? await BentoGrid._getGlobalStageOffset(levelId) : 0;
+      var etapasList = BentoGrid._getCourseEtapasList(section, indexData, stageOffset);
       var progress = BentoGrid._getCourseProgress(levelId);
       var sectionProgress = BentoGrid._getCourseSectionProgress(levelId);
 
@@ -684,7 +704,8 @@
         return '<div class="fe-error">Could not load course data.</div>';
       }
 
-      var etapasList = BentoGrid._getCourseEtapasList(section, indexData);
+      var stageOffset = section === 'learning' ? await BentoGrid._getGlobalStageOffset(levelId) : 0;
+      var etapasList = BentoGrid._getCourseEtapasList(section, indexData, stageOffset);
       var etapa = etapasList.find(function(e) { return e.type === 'etapa' && e.key === String(etapaKey); });
       if (!etapa) {
         return '<div class="fe-error">Stage not found.</div>';
