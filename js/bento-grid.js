@@ -958,7 +958,7 @@
     },
 
     _getWordleEntries: function() {
-      var CEFR_ORDER = ['A2', 'B1', 'B2', 'C1', 'mix'];
+      var CEFR_ORDER = ['A2', 'B1', 'B2', 'C1'];
       var LEVEL_CONFIG = (typeof FastExercises !== 'undefined' && FastExercises._wlLevelConfig)
         ? FastExercises._wlLevelConfig()
         : [];
@@ -981,14 +981,17 @@
     },
 
     _getNextWlLevel: function(levelId) {
-      return this._getNextCwLevel(levelId);
+      var ORDER = ['A2', 'B1', 'B2', 'C1'];
+      var idx = ORDER.indexOf(levelId);
+      if (idx === -1 || idx >= ORDER.length - 1) return null;
+      return ORDER[idx + 1];
     },
 
     _buildWordleLevelCardsHtml: function(allEntries, progress) {
       var self = this;
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var LEVEL_META = this._wlLevelMeta();
-      var availableLevels = ['A2', 'B1', 'B2', 'C1', 'mix'];
+      var availableLevels = ['A2', 'B1', 'B2', 'C1'];
 
       var html = '<div class="cw-level-cards desktop-mode-cards">';
       availableLevels.forEach(function(lvl) {
