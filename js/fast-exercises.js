@@ -613,8 +613,9 @@
       }
 
       var totalLessons = level.lessons.length;
-      /* On narrow viewports, one vertical list is easier than paginated horizontal cards. */
-      var LESSONS_PER_PAGE = _mobileMap ? totalLessons : 4;
+      var isCourseVocabCategory = ['phrasal-verbs', 'idioms', 'word-formation'].indexOf(catMeta.id) !== -1;
+      /* Course vocabulary categories show every lesson in one vertical path. */
+      var LESSONS_PER_PAGE = (_mobileMap || isCourseVocabCategory) ? totalLessons : 4;
       var totalPages = Math.ceil(totalLessons / LESSONS_PER_PAGE);
 
       // Find page containing the first incomplete lesson

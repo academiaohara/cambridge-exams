@@ -364,7 +364,7 @@
           '<div class="bento-card-inner">' +
             '<div class="bento-card-title">Vocabulary</div>' +
             '<div id="bento-vocabulary-prog-desc" class="bento-course-prog"></div>' +
-            '<div class="bento-card-hover-info">Vocabulary units, phrasal verbs, idioms and word formation practice.</div>' +
+            '<div class="bento-card-hover-info">Phrasal verbs, idioms and word formation practice.</div>' +
           '</div>' +
         '</div>' +
 
@@ -671,22 +671,14 @@
 
         var grammarPct = 0;
         var reviewPct = 0;
-        var vocabPct = 0;
         if (courseIndex && courseIndex.items) {
           var grammarItems = courseIndex.items.filter(function(i) { return i.type === 'grammar'; });
           var reviewItems = courseIndex.items.filter(function(i) { return i.type === 'review'; });
-          var vocabItems = courseIndex.items.filter(function(i) { return i.type === 'vocabulary'; });
           var doneGrammar = grammarItems.filter(function(i) { return !!courseProg[i.id]; }).length;
           var doneReview = reviewItems.filter(function(i) { return !!courseProg[i.id]; }).length;
-          var doneVocab = vocabItems.filter(function(i) { return !!courseProg[i.id]; }).length;
           grammarPct = grammarItems.length > 0 ? Math.round((doneGrammar / grammarItems.length) * 100) : 0;
           reviewPct = reviewItems.length > 0 ? Math.round((doneReview / reviewItems.length) * 100) : 0;
-          vocabPct = vocabItems.length > 0 ? Math.round((doneVocab / vocabItems.length) * 100) : 0;
         }
-
-        var pvPct = (pvData && pvData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getLevelPercent('phrasal-verbs', level, pvData.levels) : 0;
-        var idPct = (idData && idData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getLevelPercent('idioms', level, idData.levels) : 0;
-        var wfPct = (wfData && wfData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getLevelPercent('word-formation', level, wfData.levels) : 0;
 
         if (learningEl) {
           learningEl.innerHTML =
@@ -694,11 +686,13 @@
             '<div class="bcp-row"><span class="bcp-label">Reviews</span><span class="bcp-dots"></span><span class="bcp-pct">' + reviewPct + '%</span></div>';
         }
         if (vocabEl) {
+          var pvCatPct = (pvData && pvData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getCategoryPercent('phrasal-verbs', pvData.levels) : 0;
+          var idCatPct = (idData && idData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getCategoryPercent('idioms', idData.levels) : 0;
+          var wfCatPct = (wfData && wfData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getCategoryPercent('word-formation', wfData.levels) : 0;
           vocabEl.innerHTML =
-            '<div class="bcp-row"><span class="bcp-label">Units</span><span class="bcp-dots"></span><span class="bcp-pct">' + vocabPct + '%</span></div>' +
-            '<div class="bcp-row"><span class="bcp-label">Phrasal Verbs</span><span class="bcp-dots"></span><span class="bcp-pct">' + pvPct + '%</span></div>' +
-            '<div class="bcp-row"><span class="bcp-label">Idioms</span><span class="bcp-dots"></span><span class="bcp-pct">' + idPct + '%</span></div>' +
-            '<div class="bcp-row"><span class="bcp-label">Word Formation</span><span class="bcp-dots"></span><span class="bcp-pct">' + wfPct + '%</span></div>';
+            '<div class="bcp-row"><span class="bcp-label">Phrasal Verbs</span><span class="bcp-dots"></span><span class="bcp-pct">' + pvCatPct + '%</span></div>' +
+            '<div class="bcp-row"><span class="bcp-label">Idioms</span><span class="bcp-dots"></span><span class="bcp-pct">' + idCatPct + '%</span></div>' +
+            '<div class="bcp-row"><span class="bcp-label">Word Formation</span><span class="bcp-dots"></span><span class="bcp-pct">' + wfCatPct + '%</span></div>';
         }
       } catch(e) {}
     },

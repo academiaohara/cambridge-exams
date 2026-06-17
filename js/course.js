@@ -85,7 +85,7 @@
           id: 'vocabulary',
           label: 'Vocabulary',
           kicker: 'WORDS & EXPRESSIONS',
-          subtitle: 'Vocabulary units, phrasal verbs, idioms and more',
+          subtitle: 'Phrasal verbs, idioms and word formation',
           icon: 'translate',
           color: '#10b981',
           headerColor: '#10b981'
@@ -104,6 +104,12 @@
       var skipLevelPicker = activeSection === 'learning' && !levelFilter;
       var activeLevel = levelFilter ? levelFilter.toUpperCase() : null;
       var activeEtapaKey = options.etapaKey || null;
+
+      // Vocabulary uses practice categories (phrasal verbs, idioms, word formation), not B1/B2/C1.
+      if (activeSection === 'vocabulary') {
+        activeLevel = null;
+        activeEtapaKey = null;
+      }
       if (activeLevel) AppState.currentLevel = activeLevel;
       if (activeSection) BentoGrid._courseSection = activeSection;
 
@@ -220,6 +226,8 @@
         bodyHtml = await BentoGrid._buildCourseLearningPathHtml();
       } else if (activeSection && activeLevel) {
         bodyHtml = await BentoGrid._buildCourseEtapaCardsHtml(activeSection, activeLevel);
+      } else if (activeSection === 'vocabulary') {
+        bodyHtml = await BentoGrid._buildCourseVocabCategoryCardsHtml({ main: true });
       } else if (activeSection) {
         bodyHtml = BentoGrid._buildCourseLevelCardsHtml(activeSection);
       } else {
@@ -803,10 +811,6 @@
         });
       });
 
-      if (section === 'vocabulary') {
-        html += await BentoGrid._buildCourseVocabCategoryCardsHtml();
-      }
-
       html += '</div>';
       return html;
     },
@@ -1028,18 +1032,21 @@
       return BentoGrid._buildCourseEtapaCardsHtml(section, levelId);
     },
 
-    _buildCourseVocabCategoryCardsHtml: async function() {
+    _buildCourseVocabCategoryCardsHtml: async function(options) {
+      options = options || {};
       var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       var catDefs = [
-        { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6', desc: 'Common phrasal verbs by level' },
-        { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b', desc: 'Idiomatic expressions' },
-        { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48', desc: 'Prefixes, suffixes and roots' }
+        { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6', desc: 'Learn and practise common phrasal verbs' },
+        { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b', desc: 'Idiomatic expressions in context' },
+        { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48', desc: 'Prefixes, suffixes and word roots' }
       ];
 
-      var html = '<div class="course-vocab-categories">' +
-        '<div class="course-vocab-categories-title">' + _mi('category') + ' Practice Categories</div>' +
-        '<div class="course-section-cards-grid">';
+      var html = '<div class="course-vocab-categories' + (options.main ? ' course-vocab-categories--main' : '') + '">';
+      if (!options.main) {
+        html += '<div class="course-vocab-categories-title">' + _mi('category') + ' Practice Categories</div>';
+      }
+      html += '<div class="course-section-cards-grid' + (options.main ? ' course-section-cards-grid--stacked' : '') + '">';
 
       for (var i = 0; i < catDefs.length; i++) {
         var cat = catDefs[i];
