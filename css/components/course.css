@@ -5902,6 +5902,18 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   padding-top: 8px;
 }
 
+.course-vocab-categories--main {
+  margin-top: 8px;
+  padding-top: 0;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.course-section-cards-grid--stacked {
+  grid-template-columns: 1fr;
+}
+
 .course-vocab-categories-title {
   display: flex;
   align-items: center;

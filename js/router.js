@@ -326,6 +326,9 @@
           }
           if ((segments[1] === 'learning' || segments[1] === 'vocabulary') &&
               VALID_LEVELS.indexOf(segments[2].toLowerCase()) !== -1) {
+            if (segments[1] === 'vocabulary') {
+              return { view: 'courseSection', section: 'vocabulary' };
+            }
             return { view: 'courseSection', section: segments[1], level: segments[2].toUpperCase() };
           }
         }
@@ -333,6 +336,9 @@
           if ((segments[1] === 'learning' || segments[1] === 'vocabulary') &&
               VALID_LEVELS.indexOf(segments[2].toLowerCase()) !== -1 &&
               segments[3].indexOf('etapa-') === 0) {
+            if (segments[1] === 'vocabulary') {
+              return { view: 'courseSection', section: 'vocabulary' };
+            }
             return {
               view: 'courseEtapa',
               section: segments[1],
