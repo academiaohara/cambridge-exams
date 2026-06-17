@@ -3054,6 +3054,15 @@ margin-top: -2px;
   filter: drop-shadow(0 6px 14px rgba(96, 64, 192, 0.18));
 }
 
+.cw-sidebar-decor--wordle {
+  filter: drop-shadow(0 6px 14px rgba(168, 85, 247, 0.22));
+}
+
+.cw-sidebar-prog-fill--wordle,
+.cw-sidebar-xp-fill--wordle {
+  background: linear-gradient(90deg, #c084fc 0%, #a855f7 100%);
+}
+
 @media (max-width: 900px) {
   .cw-sidebar-decor-wrap {
     display: none;
