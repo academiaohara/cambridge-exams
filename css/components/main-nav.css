@@ -852,11 +852,6 @@ button.stats-bar-item.is-active {
     display: none !important;
   }
 
-  body:has(.dashboard-layout) .main-header,
-  body:has(.dashboard-layout) .main-footer {
-    display: none;
-  }
-
   body:has(.dashboard-layout) .app-container {
     max-width: none;
     margin: 0;
