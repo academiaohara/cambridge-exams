@@ -81,7 +81,7 @@
           var qList = AppState.currentExercise.content.questions || [];
           var qNum = parseInt(wrap.getAttribute('data-qnum'), 10);
           var qObj = qList.find(function(x) { return x.number === qNum; });
-          if (qObj && qObj.correct === letter && value && value !== qObj.correct) {
+          if (qObj && qObj.correct === letter && value !== qObj.correct) {
             chip.classList.add('b1-reading2-chip-key');
           }
         }

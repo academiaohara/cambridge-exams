@@ -587,11 +587,14 @@
         var sel = userAnswer[qNum] || '';
         var cardCls = 'reading-type8-text-card b1-reading2-person-card';
         if (isChecked) {
-          cardCls += sel === q.correct ? ' b1-reading2-row-correct' : ' b1-reading2-row-incorrect';
+          if (!sel) cardCls += ' b1-reading2-row-unanswered';
+          else if (sel === q.correct) cardCls += ' b1-reading2-row-correct';
+          else cardCls += ' b1-reading2-row-incorrect';
         }
         var selClass = 'b1-reading2-select b1-reading2-select-sr';
         if (isChecked) {
-          if (sel === q.correct) selClass += ' b1-reading2-select-correct';
+          if (!sel) selClass += ' b1-reading2-select-unanswered';
+          else if (sel === q.correct) selClass += ' b1-reading2-select-correct';
           else selClass += ' b1-reading2-select-incorrect';
         }
         html += '<div class="' + cardCls + '" data-qnum="' + qNum + '">';
