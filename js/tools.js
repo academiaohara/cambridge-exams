@@ -61,12 +61,15 @@
     switchTool: function(tool) {
       var sidebar = document.getElementById('tools-sidebar');
       var isRightColumn = sidebar && sidebar.classList.contains('tools-sidebar--right-column');
+      var isMobile = window.matchMedia('(max-width: 768px)').matches;
 
       // Cancel any in-flight async requests
       _toolRequestId++;
 
       if (AppState.activeTool === tool) {
-        if (isRightColumn) return;
+        // Desktop right-column: same tool click does nothing (panel stays open).
+        // Mobile: same tool click closes the panel (toggle behavior).
+        if (isRightColumn && !isMobile) return;
         AppState.activeTool = null;
         if (sidebar) sidebar.classList.remove('open');
       } else {

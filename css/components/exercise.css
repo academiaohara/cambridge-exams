@@ -1659,59 +1659,57 @@ body:has(.dashboard-layout--exercise) #main-content {
   box-shadow: 0 1px 0 #e5e5e5;
 }
 
-@media (max-width: 768px) {
-  /* Fixed footer always visible at the bottom of the viewport */
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  /* In-flow footer below the reading text — not fixed, user scrolls to it */
   .dashboard-layout--exercise .exercise-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 200;
+    position: static;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    z-index: auto;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
     flex-wrap: nowrap;
-    gap: 8px;
-    margin-top: 0;
-    padding: 10px 16px max(12px, env(safe-area-inset-bottom));
-    background: var(--ex-duo-canvas, #f7f7f7);
+    gap: 10px;
+    margin-top: 16px;
+    /* Pad bottom so last button isn't hidden behind the tools rail */
+    padding: 14px 16px max(80px, calc(72px + env(safe-area-inset-bottom)));
+    background: transparent;
     border-top: 2px solid var(--ex-duo-border, #e5e5e5);
     border-radius: 0;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.09);
+    box-shadow: none;
   }
 
-  /* Compensate for the fixed footer height so content is not hidden underneath */
+  /* Remove the padding-bottom previously added for the fixed footer */
   .dashboard-layout--exercise .exercise-page-wrapper {
-    padding-bottom: 90px;
+    padding-bottom: 0;
   }
 
+  /* Icon-only square buttons */
   .dashboard-layout--exercise .exercise-footer button {
-    flex: 1 1 0;
-    min-width: 0;
-    width: auto;
-    min-height: 46px;
-    padding: 10px 8px;
+    flex: 0 0 auto;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    padding: 0;
     border-radius: 14px;
-    font-size: 0.7rem;
-    gap: 5px;
-    line-height: 1.2;
+    font-size: 0;
+    gap: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .dashboard-layout--exercise .exercise-footer button span:not(.material-symbols-outlined) {
-    display: inline;
-    white-space: normal;
-    text-align: center;
-    overflow-wrap: anywhere;
+  /* Hide all text labels — only icons/symbols remain */
+  .dashboard-layout--exercise .exercise-footer button span:not(.material-symbols-outlined):not(.btn-toggle-answer-icon) {
+    display: none;
   }
 
   .dashboard-layout--exercise .exercise-footer button i,
   .dashboard-layout--exercise .exercise-footer button .material-symbols-outlined,
   .dashboard-layout--exercise .exercise-footer button .btn-toggle-answer-icon {
-    font-size: 0.95rem;
-  }
-
-  .dashboard-layout--exercise .exercise-footer button .btn-toggle-answer-label {
-    font-size: 0.7rem;
-    line-height: 1.2;
+    font-size: 1.15rem;
   }
 }
 
@@ -1826,15 +1824,14 @@ body:has(.dashboard-layout--exercise) #main-content {
   }
 
   .dashboard-layout--exercise .exercise-footer {
-    padding-left: 12px;
-    padding-right: 12px;
-    gap: 6px;
+    gap: 7px;
   }
 
   .dashboard-layout--exercise .exercise-footer button {
-    font-size: 0.62rem;
-    min-height: 42px;
-    padding: 8px 4px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     border-radius: 12px;
   }
 

@@ -2983,31 +2983,32 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  /* The tools-sidebar is now position:fixed on mobile, so its container
+     must not occupy any height in the normal document flow. */
   .dashboard-layout--exercise .dashboard-right-sidebar--tools,
   .dashboard-layout--exercise #dashboardRightSidebarTools,
   .dashboard-layout--exercise .dashboard-right-sidebar.dashboard-sidebar-shell {
-    display: flex !important;
+    display: block !important;
     position: static;
     width: 100%;
-    max-width: 100%;
-    max-height: none;
-    order: 3;
-    padding-right: 0;
-    padding-left: 0;
-    background: var(--dashboard-exercise-tools-bg, #fff4e5);
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
   }
 
   .dashboard-layout--exercise .exercise-tools-sidebar-wrap {
-    min-height: auto;
+    min-height: 0;
     max-width: none;
     margin: 0;
-  }
-
-  .dashboard-layout--exercise .dashboard-right-sidebar .dashboard-sidebar-content,
-  .dashboard-layout--exercise #dashboardRightSidebarTools {
-    max-width: none;
-    padding: 0 16px 16px;
+    padding: 0;
+    height: 0;
+    overflow: visible;
   }
 }
 

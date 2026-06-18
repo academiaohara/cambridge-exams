@@ -1377,31 +1377,108 @@
   background: var(--brand-orange, #ff9600);
 }
 
-@media (max-width: 768px) {
+/* ── Mobile: fixed bottom app-nav bar, panel slides up ── */
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .tools-sidebar--right-column {
-    position: sticky;
+    /* Fixed to the viewport bottom, full width */
+    position: fixed !important;
     bottom: 0;
-    flex-direction: column;
+    left: 0;
+    right: 0;
+    z-index: 150;
+    /* column-reverse: sidebar-rail is visually at the bottom,
+       sidebar-panel grows upward above it */
+    flex-direction: column-reverse;
     margin: 0;
-    border-radius: 0;
-    background: rgba(255, 255, 255, 0.55);
+    border-radius: 20px 20px 0 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.11), 0 -1px 0 rgba(0,0,0,0.06);
+    min-height: 0;
+    height: auto;
+    overflow: visible;
   }
 
+  /* Rail: the visible icon bar at the bottom */
   .tools-sidebar--right-column .sidebar-rail {
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
     width: 100%;
-    border-bottom: 1px solid rgba(45, 46, 95, 0.08);
-    padding: 10px 8px;
+    gap: 0;
+    padding: 10px 16px max(12px, env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+    border-bottom: none;
+    background: transparent;
+    border-radius: 20px 20px 0 0;
+    flex-shrink: 0;
   }
 
   .tools-sidebar--right-column .sidebar-tools-list {
     flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 0;
   }
 
+  /* Panel: collapses to 0 when closed, expands upward when open */
   .tools-sidebar--right-column .sidebar-panel {
-    max-height: 45vh;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     margin: 0;
-    border-radius: 0;
+    border-radius: 20px 20px 0 0;
+    background: #fff;
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  .tools-sidebar--right-column.open .sidebar-panel {
+    max-height: 55dvh;
+    overflow-y: auto;
+  }
+
+  /* Tool buttons: larger, pill-shaped, evenly spaced */
+  .tools-sidebar--right-column .sidebar-tool-btn {
+    width: 52px;
+    min-width: 52px;
+    height: 44px;
+    border-radius: 12px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: #94a3b8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    transition: color 0.15s, background 0.15s;
+    padding: 6px 4px;
+  }
+
+  .tools-sidebar--right-column .sidebar-tool-btn:hover {
+    background: rgba(255, 150, 0, 0.08);
+    color: var(--brand-orange, #ff9600);
+    transform: none;
+    box-shadow: none;
+  }
+
+  .tools-sidebar--right-column .sidebar-tool-btn.active {
+    color: var(--brand-orange, #ff9600);
+    background: rgba(255, 150, 0, 0.1);
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  .tools-sidebar--right-column .sidebar-tool-btn i {
+    font-size: 1.15rem;
+  }
+
+  /* Active-tool content: comfy scrollable area */
+  .tools-sidebar--right-column .active-tool-content {
+    max-height: none;
+    padding: 14px 16px 8px;
   }
 }
