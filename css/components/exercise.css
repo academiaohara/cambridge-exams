@@ -1716,6 +1716,47 @@ body:has(.dashboard-layout--exercise) #main-content {
   }
 }
 
+/* B1 Reading Parts 3–6 — normal body text (no drop cap, no paragraph hover) */
+.reading-text-enhanced--b1r-plain .toggle-text-section p:first-of-type::first-letter {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  float: none;
+  line-height: inherit;
+  margin: 0;
+}
+
+.reading-text-enhanced--b1r-plain .toggle-text-section p {
+  border-radius: 0;
+  transition: none;
+}
+
+.reading-text-enhanced--b1r-plain .toggle-text-section p:hover {
+  background: transparent;
+}
+
+.dashboard-layout--exercise .reading-text-enhanced--b1r-plain {
+  padding: 20px 22px 24px;
+  border-top-color: var(--ex-duo-blue, #1cb0f6);
+}
+
+.dashboard-layout--exercise .reading-text-enhanced--b1r-plain .content-title-block {
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--ex-duo-border, #e5e5e5);
+}
+
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  .dashboard-layout--exercise .reading-text-enhanced--b1r-plain {
+    padding: 16px 18px 20px;
+  }
+
+  .reading-text-enhanced--b1r-plain .toggle-text-section p:first-of-type::first-letter {
+    font-size: inherit;
+  }
+}
+
 .dashboard-layout--exercise .content-section-header {
   background: #fff;
   border: 2px solid var(--ex-duo-border);
