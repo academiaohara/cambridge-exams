@@ -1233,6 +1233,39 @@ body:has(.dashboard-layout--exercise) #main-content {
 }
 
 /* Header & meta — Duolingo-inspired */
+.dashboard-layout--exercise .exercise-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.dashboard-layout--exercise .exercise-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.dashboard-layout--exercise .exercise-heading {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ex-duo-text);
+  letter-spacing: -0.01em;
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.dashboard-layout--exercise .exercise-header-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
 .dashboard-layout--exercise .exercise-title h2 {
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-size: 1.45rem;
@@ -1265,9 +1298,73 @@ body:has(.dashboard-layout--exercise) #main-content {
   background: #fff;
   color: var(--ex-duo-text);
   border: 2px solid var(--ex-duo-border);
-  box-shadow: none;
+  box-shadow: 0 2px 0 #e5e5e5;
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
+  padding: 8px 14px;
+  border-radius: 12px;
+  min-width: auto;
+}
+
+.dashboard-layout--exercise .exercise-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.dashboard-layout--exercise .exercise-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dashboard-layout--exercise .btn-cambridge-score {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border);
+  color: #e30613;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  box-shadow: 0 2px 0 #e5e5e5;
+  font-size: 0.95rem;
+}
+
+.dashboard-layout--exercise .btn-cambridge-score:hover {
+  background: #fff5f5;
+  border-color: #fca5a5;
+  color: #c00510;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 0 #e5e5e5;
+}
+
+.dashboard-layout--exercise .btn-cambridge-overall {
+  background: #fff;
+  color: #b71c1c;
+  box-shadow: 0 2px 0 #e5e5e5;
+}
+
+.dashboard-layout--exercise .btn-cambridge-overall:hover {
+  background: #fff5f5;
+  box-shadow: 0 3px 0 #e5e5e5;
+}
+
+.dashboard-layout--exercise .btn-exit {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border);
+  color: #afafaf;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  box-shadow: 0 2px 0 #e5e5e5;
+}
+
+.dashboard-layout--exercise .btn-exit:hover {
+  background: #fff5f5;
+  border-color: #fca5a5;
+  color: var(--incorrect);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 0 #e5e5e5;
 }
 
 .dashboard-layout--exercise .part-score-display {
@@ -1374,19 +1471,7 @@ body:has(.dashboard-layout--exercise) #main-content {
   box-shadow: 0 2px 0 var(--ex-duo-orange-dark);
 }
 
-.dashboard-layout--exercise .btn-exit {
-  background: #fff;
-  border: 2px solid var(--ex-duo-border);
-  color: #afafaf;
-}
-
-.dashboard-layout--exercise .btn-exit:hover {
-  background: #fff5f5;
-  border-color: #fca5a5;
-  color: var(--incorrect);
-}
-
-/* ── Duolingo-style exercise footer (orange primary) ─────────────────── */
+/* Duolingo-style exercise footer (orange primary) */
 
 .dashboard-layout--exercise .exercise-footer {
   display: flex;
