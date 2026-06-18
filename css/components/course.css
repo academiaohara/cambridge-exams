@@ -7155,6 +7155,103 @@ body:has(.dashboard-layout--lesson-focus) .app-container {
   color: #8a8a8a;
 }
 
+/* ── Lesson completion modal ──────────────────────────────────────────── */
+
+.cu-lesson-complete-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: cuExitOverlayIn 0.18s ease;
+}
+
+.cu-lesson-complete-box {
+  position: relative;
+  background: #fff;
+  border-radius: 24px;
+  border: 2px solid #e5e5e5;
+  border-bottom-width: 5px;
+  border-bottom-color: #d0d0d0;
+  max-width: 420px;
+  width: 100%;
+  padding: 32px 28px 28px;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.14);
+  animation: cuExitBoxIn 0.22s ease;
+}
+
+.cu-lesson-complete-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: var(--cu-duo-green-light, #d7ffb8);
+  color: var(--cu-duo-green, #58cc02);
+}
+
+.cu-lesson-complete-icon .material-symbols-outlined {
+  font-size: 2.4rem;
+}
+
+.cu-lesson-complete-title {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--cu-duo-green-dark, #58a700);
+}
+
+.cu-lesson-complete-text {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4b4b4b;
+}
+
+.cu-lesson-complete-score {
+  margin: 0 0 24px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #777;
+}
+
+.cu-lesson-complete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  border: none;
+  border-radius: 14px;
+  border-bottom: 4px solid var(--cu-duo-green-dark, #58a700);
+  padding: 12px 24px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--cu-duo-green, #58cc02);
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.1s;
+}
+
+.cu-lesson-complete-btn:hover {
+  filter: brightness(1.05);
+}
+
+.cu-lesson-complete-btn:active {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
 @media (max-width: 768px) {
   .course-center--lesson-focus {
     max-width: 100%;

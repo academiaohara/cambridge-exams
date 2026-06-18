@@ -7049,6 +7049,7 @@
       var sec = document.getElementById(sectionId);
       if (!sec || sec.getAttribute('data-lesson-flow') !== 'true') return;
       BentoGrid._hideCuLessonFeedback(sec);
+      BentoGrid._loseCuLessonHeart();
       BentoGrid._cuLessonStreak = 0;
       BentoGrid._updateCuLessonStreakLabel();
       BentoGrid._continueCuLessonItem(sectionId);
@@ -7286,14 +7287,46 @@
         BentoGrid._checkCourseUnitAllDone(_exLevel, unitId);
       }
 
-      var container = document.querySelector('.course-unit-content');
-      if (!container) return;
-      var sections = container.querySelectorAll('.cu-section');
-      var currentIdx = -1;
-      sections.forEach(function(s, i) { if (s === sec) currentIdx = i; });
-      if (currentIdx >= 0 && currentIdx < sections.length - 1) {
-        BentoGrid._showCuSection(currentIdx + 1);
-      }
+      BentoGrid._showCuLessonCompleteModal(sec, correctItems, totalItems);
+    },
+
+    _showCuLessonCompleteModal: function(sec, correctItems, totalItems) {
+      var existing = document.getElementById('cu-lesson-complete-modal');
+      if (existing) existing.remove();
+
+      var scoreText = totalItems > 0
+        ? correctItems + '/' + totalItems + ' correct'
+        : 'Exercise completed';
+
+      var modal = document.createElement('div');
+      modal.id = 'cu-lesson-complete-modal';
+      modal.className = 'cu-lesson-complete-overlay';
+      modal.innerHTML =
+        '<div class="cu-lesson-complete-box">' +
+          '<div class="cu-lesson-complete-icon" aria-hidden="true">' +
+            '<span class="material-symbols-outlined">celebration</span>' +
+          '</div>' +
+          '<h2 class="cu-lesson-complete-title">¡Felicidades!</h2>' +
+          '<p class="cu-lesson-complete-text">Has completado el ejercicio.</p>' +
+          '<p class="cu-lesson-complete-score">' + BentoGrid._escapeHTML(scoreText) + '</p>' +
+          '<button type="button" class="cu-lesson-complete-btn">Volver a la etapa</button>' +
+        '</div>';
+
+      document.body.appendChild(modal);
+
+      modal.querySelector('.cu-lesson-complete-btn').addEventListener('click', function() {
+        modal.remove();
+        var backFn = BentoGrid._courseUnitBackFn || 'BentoGrid.openCourseSection(\'learning\')';
+        try { new Function(backFn)(); } catch (e) { console.error('Completion navigation failed:', e); }
+      });
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.remove();
+          var backFn = BentoGrid._courseUnitBackFn || 'BentoGrid.openCourseSection(\'learning\')';
+          try { new Function(backFn)(); } catch (err) { console.error('Completion navigation failed:', err); }
+        }
+      });
     },
 
     _buildCuLessonChrome: function() {
