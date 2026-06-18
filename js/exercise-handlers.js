@@ -625,10 +625,7 @@
       html += '<div class="eq-content">';
 
       if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui && question.correct) {
-        html += '<div class="eq-b1r2-correct-callout">' +
-          '<span class="eq-b1r2-correct-label">Correct answer</span> ' +
-          '<span class="eq-option eq-option-correct eq-b1r2-correct-letter">' + question.correct + '</span>' +
-          '</div>';
+        html += '<span class="eq-option eq-option-correct eq-b1r2-correct-letter">' + question.correct + '</span>';
       }
 
       // Add question text
@@ -903,7 +900,7 @@
       });
       
       document.querySelectorAll('.b1-reading2-preview-key-mode').forEach(function(el) {
-        el.classList.remove('b1-reading2-preview-key-mode');
+        el.classList.remove('b1-reading2-preview-key-mode', 'b1-reading2-preview-incorrect', 'b1-reading2-preview-correct');
       });
       
       // Remove injected correction text spans (e.g., reading-type4)
@@ -973,7 +970,7 @@
           }
           document.querySelectorAll('.b1-reading2-preview').forEach(function(p) {
             p.innerHTML = '';
-            p.classList.remove('has-text');
+            p.classList.remove('has-text', 'b1-reading2-preview-incorrect', 'b1-reading2-preview-correct', 'b1-reading2-preview-key-mode');
           });
           document.querySelectorAll('.b1-reading2-person-card').forEach(function(card) {
             card.classList.remove('b1-reading2-row-correct', 'b1-reading2-row-incorrect', 'b1-reading2-row-unanswered');

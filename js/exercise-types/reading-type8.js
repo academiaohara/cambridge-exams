@@ -16,7 +16,7 @@
       if (!el) return;
       if (!letter) {
         el.innerHTML = '';
-        el.classList.remove('has-text');
+        el.classList.remove('has-text', 'b1-reading2-preview-incorrect', 'b1-reading2-preview-correct');
         return;
       }
       var body = String(rawText || '').replace(/\r\n/g, '\n');
@@ -35,6 +35,16 @@
       html += '</div>';
       el.innerHTML = html;
       el.classList.add('has-text');
+      var isIncorrect = false;
+      if (AppState.answersChecked && AppState.currentExercise) {
+        var qList = AppState.currentExercise.content.questions || [];
+        var qObj = qList.find(function(x) { return x.number === qNum; });
+        if (qObj && letter !== qObj.correct) {
+          isIncorrect = true;
+        }
+      }
+      el.classList.toggle('b1-reading2-preview-incorrect', isIncorrect);
+      el.classList.toggle('b1-reading2-preview-correct', AppState.answersChecked && !isIncorrect);
     },
 
     syncB1Reading2ChipsForQuestion: function(qNum) {
