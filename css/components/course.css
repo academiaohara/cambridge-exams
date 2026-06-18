@@ -5871,6 +5871,11 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   padding: 0 4px 24px;
 }
 
+.course-hub-page:has(.course-vocab-categories--main) {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .course-section-cards,
 .course-level-cards {
   margin-top: 8px;
@@ -5922,9 +5927,7 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 .course-vocab-categories--main {
   margin-top: 8px;
   padding-top: 0;
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 .course-vocab-mode-cards {
