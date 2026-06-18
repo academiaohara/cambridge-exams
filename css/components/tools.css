@@ -921,7 +921,7 @@
 
 .translate-columns {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 10px;
 }
 
@@ -1167,8 +1167,8 @@
   width: 32px;
   height: 32px;
   border-radius: 12px;
-  border: 2px solid var(--tool-duo-orange-dark);
-  background: var(--tool-duo-orange);
+  border: 2px solid var(--tool-duo-blue-dark);
+  background: var(--tool-duo-blue);
   color: white;
   cursor: pointer;
   display: flex;
@@ -1177,17 +1177,17 @@
   font-size: 0.8rem;
   transition: all 0.15s;
   flex-shrink: 0;
-  box-shadow: var(--tool-duo-btn-shadow);
+  box-shadow: var(--tool-duo-blue-btn-shadow);
 }
 
 .dict-search-go:hover {
-  background: var(--tool-duo-orange-hover);
+  background: #2eb8f7;
   transform: translateY(-1px);
 }
 
 .dict-search-go:active {
   transform: translateY(2px);
-  box-shadow: 0 1px 0 var(--tool-duo-orange-dark);
+  box-shadow: 0 1px 0 var(--tool-duo-blue-dark);
 }
 
 .dict-help-text {
