@@ -1259,7 +1259,9 @@
 :root {
   --dashboard-left-sidebar-width: 256px;
   --dashboard-right-sidebar-width: 360px;
-  --dashboard-exercise-tools-width: 300px;
+  --dashboard-exercise-tools-width: 340px;
+  --dashboard-exercise-tools-min-width: 320px;
+  --dashboard-exercise-tools-gap: 16px;
   --dashboard-exercise-tools-bg: #fff4e5;
   --dashboard-top-spacing: 28px;
   --brand-orange: #ff9600;
@@ -1418,21 +1420,21 @@
 
 /* Unified 3-column desktop layout (left nav + center content + right widgets) */
 @media (min-width: 901px) {
-  .dashboard-layout:not(.dashboard-layout--crossword-play):not(.dashboard-layout-right-closed) {
+  .dashboard-layout:not(.dashboard-layout--crossword-play):not(.dashboard-layout--exercise):not(.dashboard-layout-right-closed) {
     grid-template-columns: minmax(0, 1fr);
     padding-right: calc(var(--dashboard-right-sidebar-width) + 160px);
     padding-bottom: 48px;
   }
 
-  .dashboard-layout:not(.dashboard-layout--crossword-play):not(.dashboard-layout-right-closed) .dashboard-center {
+  .dashboard-layout:not(.dashboard-layout--crossword-play):not(.dashboard-layout--exercise):not(.dashboard-layout-right-closed) .dashboard-center {
     margin-left: 80px;
     width: calc(100% - 80px);
     max-width: calc(100% - 80px);
     box-sizing: border-box;
   }
 
-  .dashboard-layout:not(.dashboard-layout--crossword-play):not(.dashboard-layout-right-closed) > .dashboard-right-sidebar,
-  .dashboard-layout:not(.dashboard-layout--crossword-play):not(.dashboard-layout-right-closed) > .dashboard-right-sidebar.dashboard-sidebar-shell {
+  .dashboard-layout:not(.dashboard-layout--crossword-play):not(.dashboard-layout--exercise):not(.dashboard-layout-right-closed) > .dashboard-right-sidebar,
+  .dashboard-layout:not(.dashboard-layout--crossword-play):not(.dashboard-layout--exercise):not(.dashboard-layout-right-closed) > .dashboard-right-sidebar.dashboard-sidebar-shell {
     position: fixed;
     right: 0;
     top: 0;
@@ -2911,7 +2913,7 @@
 .dashboard-center--exercise {
   min-width: 0;
   width: 100%;
-  max-width: 100%;
+  max-width: none;
 }
 
 .dashboard-center--exercise .exercise-page-wrapper {
@@ -2931,8 +2933,10 @@
 
 @media (min-width: 901px) {
   .dashboard-layout--exercise:not(.dashboard-layout-right-closed) {
-    /* Reserve only up to where sidebar-content starts (centered 260px in 300px panel) */
-    padding-right: calc(var(--dashboard-exercise-tools-width, 300px) - 20px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--dashboard-exercise-tools-gap, 16px);
+    padding-right: calc(var(--dashboard-exercise-tools-width, 340px) + var(--dashboard-exercise-tools-gap, 16px));
+    padding-bottom: 48px;
   }
 
   .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .dashboard-center,
@@ -2941,7 +2945,7 @@
     padding-right: 0;
     padding-left: 8px;
     width: 100%;
-    max-width: 100%;
+    max-width: none;
   }
 
   .dashboard-layout--exercise:not(.dashboard-layout-right-closed) > .dashboard-right-sidebar,
@@ -2952,7 +2956,8 @@
     right: 0;
     top: 0;
     height: 100vh;
-    width: var(--dashboard-exercise-tools-width, 300px);
+    width: var(--dashboard-exercise-tools-width, 340px);
+    min-width: var(--dashboard-exercise-tools-min-width, 320px);
     padding-left: 0;
     padding-right: 0;
     overflow-y: auto;
@@ -2970,16 +2975,16 @@
   .dashboard-layout--exercise #dashboardRightSidebarTools {
     width: 100%;
     gap: 0;
-    padding: 0 20px 20px;
+    padding: 0 16px 20px;
     box-sizing: border-box;
-    max-width: 260px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
   }
 
   .dashboard-layout--exercise .exercise-tools-sidebar-wrap {
     width: 100%;
-    max-width: 260px;
-    margin: 0 auto;
+    max-width: none;
+    margin: 0;
     min-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 24px);
   }
 }
