@@ -1098,6 +1098,29 @@
   }
 }
 
+@media (max-width: 360px) {
+  .exercise-container {
+    padding: 10px;
+  }
+
+  .dashboard-layout--exercise .exercise-footer {
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .reading-text-enhanced {
+    padding: 12px 12px 14px;
+    font-size: 0.93rem;
+  }
+
+  .exercise-description {
+    padding: 7px 9px;
+    font-size: 0.82rem;
+  }
+}
+
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .exercise-container {
     position: relative;
@@ -1649,20 +1672,29 @@ body:has(.dashboard-layout--exercise) #main-content {
     align-items: stretch;
     flex-wrap: nowrap;
     gap: 6px;
-    margin-top: 16px;
-    padding: 14px 8px max(10px, env(safe-area-inset-bottom));
+    margin-top: 0;
+    margin-left: -14px;
+    margin-right: -14px;
+    padding: 12px 14px max(14px, env(safe-area-inset-bottom));
+    background: var(--ex-duo-canvas, #f7f7f7);
+    border-top: 2px solid var(--ex-duo-border, #e5e5e5);
+    border-radius: 0;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
   }
 
   .dashboard-layout--exercise .exercise-footer button {
     flex: 1 1 0;
     min-width: 0;
     width: auto;
-    min-height: 40px;
+    min-height: 44px;
     padding: 8px 6px;
     border-radius: 12px;
-    font-size: 0.65rem;
+    font-size: 0.68rem;
     gap: 4px;
-    line-height: 1.15;
+    line-height: 1.2;
   }
 
   .dashboard-layout--exercise .exercise-footer button span:not(.material-symbols-outlined) {
@@ -1675,11 +1707,140 @@ body:has(.dashboard-layout--exercise) #main-content {
   .dashboard-layout--exercise .exercise-footer button i,
   .dashboard-layout--exercise .exercise-footer button .material-symbols-outlined,
   .dashboard-layout--exercise .exercise-footer button .btn-toggle-answer-icon {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .dashboard-layout--exercise .exercise-footer button .btn-toggle-answer-label {
-    font-size: 0.65rem;
-    line-height: 1.15;
+    font-size: 0.68rem;
+    line-height: 1.2;
+  }
+
+  /* Extra space at the bottom of the exercise so content isn't hidden behind the sticky footer */
+  .dashboard-layout--exercise .exercise-main-layout,
+  .dashboard-layout--exercise .explanations-section,
+  .dashboard-layout--exercise .explanations-panel {
+    margin-bottom: 0;
+  }
+}
+
+/* ── Mobile-specific overrides for the Duolingo-style exercise layout ── */
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  /* Reduce exercise container top padding (no white card frame) */
+  .dashboard-layout--exercise .exercise-container {
+    padding: 12px 14px 0;
+  }
+
+  /* Compact header on mobile */
+  .dashboard-layout--exercise .exercise-header {
+    gap: 7px;
+    margin-bottom: 10px;
+  }
+
+  .dashboard-layout--exercise .exercise-header-top {
+    gap: 10px;
+  }
+
+  .dashboard-layout--exercise .exercise-heading {
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+
+  .dashboard-layout--exercise .exercise-badge {
+    font-size: 0.68rem;
+    padding: 4px 9px;
+  }
+
+  /* Score and toolbar buttons tighter */
+  .dashboard-layout--exercise .score-display {
+    font-size: 0.78rem;
+    padding: 6px 10px;
+  }
+
+  .dashboard-layout--exercise .btn-exit,
+  .dashboard-layout--exercise .btn-cambridge-score {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  /* Exercise info: single-row scrollable on mobile */
+  .dashboard-layout--exercise .exercise-info {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 10px;
+    scrollbar-width: none;
+  }
+
+  .dashboard-layout--exercise .exercise-info::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dashboard-layout--exercise .exercise-info-left,
+  .dashboard-layout--exercise .exercise-info-right {
+    flex-shrink: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  /* Part nav cells — slightly smaller but still touch-friendly */
+  .dashboard-layout--exercise .part-nav-cell {
+    width: 34px;
+    height: 34px;
+    min-height: 34px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+  }
+
+  /* Compact exercise description */
+  .dashboard-layout--exercise .exercise-description {
+    padding: 8px 11px;
+    font-size: 0.86rem;
+    margin-bottom: 8px;
+    border-radius: 12px;
+  }
+
+  /* Reading text */
+  .dashboard-layout--exercise .reading-text-enhanced {
+    padding: 14px 16px 18px;
+    border-radius: 14px;
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+
+  /* Content section header: compact */
+  .dashboard-layout--exercise .content-section-header {
+    padding: 10px 12px;
+    margin: 8px 0;
+    border-radius: 14px;
+    gap: 8px;
+  }
+
+  /* Main layout gap */
+  .dashboard-layout--exercise .exercise-main-layout {
+    gap: 10px;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .dashboard-layout--exercise .exercise-container {
+    padding: 10px 10px 0;
+  }
+
+  .dashboard-layout--exercise .exercise-footer {
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .dashboard-layout--exercise .exercise-heading {
+    font-size: 0.95rem;
   }
 }

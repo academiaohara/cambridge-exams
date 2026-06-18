@@ -643,5 +643,21 @@
   .writing-type1-toolbar .btn-copy-clipboard i {
     font-size: 1rem;
   }
+
+  /* Textarea: shorter on mobile so it doesn't push Check button off screen */
+  .writing-type1-textarea {
+    min-height: 220px;
+    font-size: 0.95rem;
+  }
+
+  /* Writing wrapper: tighter gap */
+  .writing-type1-wrapper {
+    gap: 0.75rem;
+  }
+
+  /* Prompt: reduced padding */
+  .writing-type1-prompt {
+    padding: 1rem;
+  }
 }
 

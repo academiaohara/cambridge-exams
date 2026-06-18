@@ -789,7 +789,30 @@
   }
 
   .tests-section-card {
-    min-height: 132px;
+    min-height: 120px;
+  }
+
+  /* Larger touch targets for part chips on mobile */
+  .tests-part-chip {
+    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 0.88rem;
+  }
+
+  /* Section play button: taller for easier tapping */
+  .tests-section-play-btn {
+    padding: 10px 16px;
+    min-height: 40px;
+    font-size: 0.82rem;
+  }
+
+  .tests-section-results-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
   }
 
   .bento-card-tests {
@@ -798,5 +821,68 @@
 
   .bento-card-tests::after {
     display: none !important;
+  }
+}
+
+/* Hide section card art on very small screens to give more space to content */
+@media (max-width: 480px) {
+  .tests-section-card-art {
+    display: none;
+  }
+
+  .tests-section-card-body {
+    padding: 14px 14px 12px;
+  }
+
+  /* Ensure section card title row wraps nicely */
+  .tests-section-card-title-row {
+    gap: 6px;
+  }
+
+  /* Mode toggle: make buttons fill available space */
+  .tests-mode-toggle-btn {
+    padding: 8px 10px;
+    font-size: 0.74rem;
+  }
+
+  .tests-full-exam-btn {
+    padding: 12px 20px;
+    font-size: 0.88rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Very small phones: further compaction */
+@media (max-width: 360px) {
+  .tests-part-chip {
+    width: 36px;
+    min-width: 36px;
+    max-width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 0.82rem;
+  }
+
+  .tests-section-card {
+    min-height: 100px;
+  }
+
+  .tests-section-card-body {
+    padding: 12px 12px 10px;
+    gap: 8px;
+  }
+
+  .tests-section-card-title {
+    font-size: 0.95rem;
+  }
+
+  /* Stack the mode toggle buttons */
+  .tests-mode-toggle-btn span {
+    display: none;
+  }
+
+  .tests-mode-toggle-btn {
+    padding: 8px 12px;
   }
 }

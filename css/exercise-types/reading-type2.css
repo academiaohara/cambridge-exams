@@ -135,3 +135,27 @@
   margin-left: 4px;
   font-style: italic;
 }
+
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  .reading-type2-container {
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .reading-type2-text {
+    padding: 16px 18px;
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+
+  .reading-type2-input {
+    width: 100px;
+    font-size: 0.95rem;
+    padding: 6px 10px;
+  }
+
+  .reading-type2-example {
+    padding: 12px 16px;
+    margin: 14px 0;
+  }
+}

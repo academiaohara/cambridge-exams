@@ -68,3 +68,11 @@
   }
 
 }
+
+/* Exercise view: use minimal horizontal padding to maximize reading width */
+@media (max-width: 768px) {
+  body:has(.dashboard-layout--exercise) .app-container {
+    padding-left: max(8px, env(safe-area-inset-left));
+    padding-right: max(8px, env(safe-area-inset-right));
+  }
+}
