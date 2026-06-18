@@ -75,7 +75,7 @@
           '<button onclick="BentoGrid.openCrosswordList()">' + _mi('grid_on') + '<span>Crosswords</span></button>' +
           (typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI() ? '' :
           '<button onclick="UserProfile.renderPremiumSection()">' + _mi('workspace_premium') + '<span>Plans</span></button>') +
-          '<button onclick="UserProfile.renderProfileSection()">' + _mi('settings') + '<span>Profile</span></button>' +
+          '<button onclick="BentoGrid.openMobileProfile()">' + _mi('settings') + '<span>Profile</span></button>' +
         '</div>' +
       '</section>';
     },
