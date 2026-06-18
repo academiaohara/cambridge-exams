@@ -1727,6 +1727,19 @@ body:has(.dashboard-layout--exercise) #main-content {
     font-size: 1.2rem;
     margin: 0;
   }
+
+  .dashboard-layout--exercise .btn-check:not(:disabled) {
+    background: var(--ex-duo-blue);
+    box-shadow: 0 4px 0 var(--ex-duo-blue-dark);
+  }
+
+  .dashboard-layout--exercise .btn-check:hover:not(:disabled) {
+    background: var(--ex-duo-blue-hover);
+  }
+
+  .dashboard-layout--exercise .btn-check:active:not(:disabled) {
+    box-shadow: 0 1px 0 var(--ex-duo-blue-dark);
+  }
 }
 
 /* ── Mobile-specific overrides for the Duolingo-style exercise layout ── */
