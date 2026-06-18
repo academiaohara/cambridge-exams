@@ -88,11 +88,19 @@
         layout.style.removeProperty('grid-template-columns');
 
         if (isRightClosed || isPlayLayout || !hasRight) {
-          if (hasLeft && appContainer) appContainer.style.paddingLeft = LEFT_SIDEBAR_WIDTH;
+          if (hasLeft && appContainer && !layout.classList.contains('dashboard-layout--lesson-focus')) {
+            appContainer.style.paddingLeft = LEFT_SIDEBAR_WIDTH;
+          } else if (layout.classList.contains('dashboard-layout--lesson-focus') && appContainer) {
+            appContainer.style.paddingLeft = '0';
+          }
           return;
         }
 
-        if (hasLeft && appContainer) appContainer.style.paddingLeft = LEFT_SIDEBAR_WIDTH;
+        if (hasLeft && appContainer && !layout.classList.contains('dashboard-layout--lesson-focus')) {
+          appContainer.style.paddingLeft = LEFT_SIDEBAR_WIDTH;
+        } else if (layout.classList.contains('dashboard-layout--lesson-focus') && appContainer) {
+          appContainer.style.paddingLeft = '0';
+        }
       });
     },
 
