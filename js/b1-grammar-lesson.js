@@ -204,14 +204,6 @@
       html += '</div>';
     }
 
-    if (step.cardTotal > 1) {
-      html += '<div class="bgl-card-dots" aria-hidden="true">';
-      for (var d = 0; d < step.cardTotal; d++) {
-        html += '<span class="bgl-card-dot' + (d === step.cardIdx ? ' bgl-card-dot--active' : '') + '"></span>';
-      }
-      html += '</div>';
-    }
-
     html += '</div>';
     return html;
   }
@@ -698,10 +690,43 @@
 
   function updateProgress() {
     if (!state) return;
+    var step = state.steps[state.stepIdx];
+    var isTheory = step && step.kind === 'theory';
+    var track = document.querySelector('.bgl-progress-track');
+    if (track) track.style.display = isTheory ? 'none' : '';
     var fill = document.getElementById('bgl-progress-fill');
-    if (!fill) return;
-    var pct = state.steps.length ? Math.round(((state.stepIdx + 1) / state.steps.length) * 100) : 0;
+    if (!fill || isTheory) return;
+    var exTotal = 0;
+    var exDone = 0;
+    state.steps.forEach(function(s, i) {
+      if (s.kind !== 'exercise') return;
+      exTotal++;
+      if (i <= state.stepIdx) exDone++;
+    });
+    var pct = exTotal ? Math.round((exDone / exTotal) * 100) : 0;
     fill.style.width = pct + '%';
+  }
+
+  function updateTheoryFooter() {
+    if (!state) return;
+    var step = state.steps[state.stepIdx];
+    var isTheory = step && step.kind === 'theory';
+    var lessonRoot = document.getElementById('bgl-lesson-root');
+    var theoryNav = document.getElementById('bgl-footer-theory');
+    var actionBtn = document.getElementById('bgl-action-btn');
+    var backBtn = document.getElementById('bgl-back-btn');
+    var nextBtn = document.getElementById('bgl-next-btn');
+
+    if (lessonRoot) {
+      lessonRoot.classList.toggle('bgl-lesson--theory', isTheory);
+      lessonRoot.classList.toggle('bgl-lesson--exercise', !isTheory);
+    }
+    if (theoryNav) theoryNav.style.display = isTheory ? '' : 'none';
+    if (actionBtn) actionBtn.style.display = isTheory ? 'none' : '';
+    if (backBtn) backBtn.disabled = state.stepIdx <= 0;
+    if (nextBtn) {
+      nextBtn.textContent = state.stepIdx >= state.steps.length - 1 ? 'Finish' : 'Next';
+    }
   }
 
   function renderCurrentStep() {
@@ -732,11 +757,29 @@
     }
 
     updateProgress();
+    updateTheoryFooter();
 
     var existingFb = document.getElementById('bgl-feedback');
     if (existingFb) existingFb.remove();
     var footer = document.querySelector('.bgl-footer');
     if (footer) footer.classList.remove('bgl-footer--hidden');
+  }
+
+  function goBackStep() {
+    if (!state || state.stepIdx <= 0) return;
+    state.stepIdx--;
+    renderCurrentStep();
+    saveProgress();
+  }
+
+  function goNextTheoryStep() {
+    if (!state) return;
+    var step = state.steps[state.stepIdx];
+    if (step && step.kind === 'theory' && typeof BentoGrid !== 'undefined') {
+      BentoGrid._markCourseSectionVisited(state.level, state.unitId, step.secIdx);
+      BentoGrid._checkCourseUnitAllDone(state.level, state.unitId);
+    }
+    advanceStep();
   }
 
   function advanceStep() {
@@ -868,7 +911,13 @@
       '<div class="bgl-card-shell">' +
         '<div class="bgl-card" id="bgl-step-content"></div>' +
       '</div>' +
-      '<div class="bgl-footer">' +
+      '<div class="bgl-footer" id="bgl-footer">' +
+        '<div class="bgl-footer-theory" id="bgl-footer-theory" style="display:none">' +
+          '<button type="button" class="bgl-nav-btn" id="bgl-back-btn">' +
+            '<span class="material-symbols-outlined">arrow_back</span> Back' +
+          '</button>' +
+          '<button type="button" class="bgl-nav-btn bgl-nav-btn--primary" id="bgl-next-btn">Next</button>' +
+        '</div>' +
         '<button type="button" class="bgl-action-btn" id="bgl-action-btn" disabled>Continue</button>' +
       '</div>' +
     '</div>';
@@ -911,6 +960,8 @@
     };
 
     document.getElementById('bgl-action-btn').addEventListener('click', handleAction);
+    document.getElementById('bgl-back-btn').addEventListener('click', goBackStep);
+    document.getElementById('bgl-next-btn').addEventListener('click', goNextTheoryStep);
     document.getElementById('bgl-close-btn').addEventListener('click', function() {
       if (opts.backFn) {
         try { new Function(opts.backFn)(); } catch (e) { console.error(e); }

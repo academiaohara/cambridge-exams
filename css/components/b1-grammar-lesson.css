@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
-  --bgl-bg: #eef2f9;
+  --bgl-bg: #ece8f8;
   --bgl-card: #ffffff;
   --bgl-primary: #5b6ee8;
   --bgl-primary-dark: #4a5cd4;
@@ -555,6 +555,72 @@
   display: none;
 }
 
+.bgl-footer-theory {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.bgl-lesson--theory .bgl-action-btn {
+  display: none;
+}
+
+.bgl-lesson--exercise .bgl-footer-theory {
+  display: none !important;
+}
+
+.bgl-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 1;
+  max-width: 48%;
+  padding: 14px 20px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid #d4ccef;
+  border-radius: var(--bgl-radius);
+  background: #fff;
+  color: #5b6ee8;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.bgl-nav-btn:hover:not(:disabled) {
+  background: #f5f2fc;
+  border-color: var(--bgl-primary);
+}
+
+.bgl-nav-btn:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bgl-nav-btn--primary {
+  background: var(--bgl-primary);
+  border-color: var(--bgl-primary);
+  color: #fff;
+  box-shadow: 0 4px 0 var(--bgl-primary-dark);
+}
+
+.bgl-nav-btn--primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+  background: var(--bgl-primary);
+}
+
+.bgl-nav-btn--primary:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--bgl-primary-dark);
+}
+
+.bgl-nav-btn .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+
 .bgl-action-btn {
   width: 100%;
   padding: 16px 24px;
@@ -843,10 +909,23 @@
 }
 
 /* Lesson focus layout */
+body:has(.dashboard-layout--lesson-focus) {
+  background: var(--bgl-bg, #ece8f8);
+}
+
+body:has(.dashboard-layout--lesson-focus) .app-container {
+  max-width: none;
+  margin: 0;
+  padding: 0 !important;
+  width: 100%;
+}
+
 body:has(.dashboard-layout--lesson-focus) #main-content,
 body:has(.dashboard-layout--lesson-focus) .dashboard-layout--lesson-focus,
 body:has(.dashboard-layout--lesson-focus) .dashboard-center--course,
-body:has(.dashboard-layout--lesson-focus) .course-center--lesson-focus {
+body:has(.dashboard-layout--lesson-focus) .course-center--lesson-focus,
+body:has(.dashboard-layout--lesson-focus) #courseCenterSection,
+body:has(.dashboard-layout--lesson-focus) #courseCenterSection > .fe-section {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -854,11 +933,11 @@ body:has(.dashboard-layout--lesson-focus) .course-center--lesson-focus {
 }
 
 .dashboard-center--lesson-focus .course-unit-content {
-  background: var(--bgl-bg, #eef2f9);
+  background: var(--bgl-bg, #ece8f8);
 }
 
 .dashboard-layout--lesson-focus .dashboard-center--course {
-  background: #eef2f9;
+  background: var(--bgl-bg, #ece8f8);
   padding-bottom: 0 !important;
 }
 
