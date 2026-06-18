@@ -2916,16 +2916,7 @@
 }
 
 .dashboard-center--exercise .exercise-container {
-  margin-bottom: 24px;
-}
-
-.dashboard-right-sidebar--tools,
-#dashboardRightSidebarTools {
-  position: sticky;
-  top: var(--dashboard-top-spacing, 28px);
-  align-self: start;
-  max-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 24px);
-  overflow: hidden;
+  margin-bottom: 0;
 }
 
 .exercise-tools-sidebar-wrap {
@@ -2937,11 +2928,37 @@
 
 @media (min-width: 901px) {
   .dashboard-layout--exercise:not(.dashboard-layout-right-closed) {
-    padding-right: 24px;
+    padding-right: calc(var(--dashboard-right-sidebar-width) + 160px);
   }
 
-  .dashboard-layout--exercise .dashboard-center--exercise {
-    padding-right: 8px;
+  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .dashboard-center--exercise {
+    padding-right: 16px;
+    width: calc(100% - 80px);
+    max-width: calc(100% - 80px);
+  }
+
+  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) > .dashboard-right-sidebar,
+  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) > .dashboard-right-sidebar.dashboard-sidebar-shell,
+  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .dashboard-right-sidebar--tools,
+  .dashboard-layout--exercise:not(.dashboard-layout-right-closed) #dashboardRightSidebarTools {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: calc(var(--dashboard-right-sidebar-width) + 86px);
+    padding-left: 86px;
+    padding-right: 16px;
+    overflow-y: auto;
+    z-index: 50;
+    background: #ece8f8;
+    padding-top: var(--dashboard-top-spacing, 28px);
+    box-sizing: border-box;
+    align-self: auto;
+    max-height: none;
+  }
+
+  .dashboard-layout--exercise .exercise-tools-sidebar-wrap {
+    min-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 24px);
   }
 }
 
@@ -2956,6 +2973,8 @@
     max-height: none;
     order: 3;
     padding-right: 0;
+    padding-left: 0;
+    background: #ece8f8;
   }
 
   .dashboard-layout--exercise .exercise-tools-sidebar-wrap {
