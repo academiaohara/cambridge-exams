@@ -818,26 +818,6 @@
   text-underline-offset: 3px;
 }
 
-/* B1 Reading Part 2 explanation strip: correct letter chip only */
-.eq-b1r2-correct-letter,
-.eq-b1r2-correct-letter.eq-option.eq-option-correct {
-  margin-bottom: 4px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 42px;
-  height: 42px;
-  padding: 0 12px;
-  border-radius: 14px;
-  border: 2px solid var(--ex-duo-blue, #1cb0f6);
-  background: var(--ex-duo-blue-light, #ddf4ff);
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
-  font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--ex-duo-blue-dark, #1899d6);
-}
-
 /* Evidence markers in text (rendered from [n]...[/n]) */
 .evidence-marker {
   transition: background 0.2s, border-bottom 0.2s;
