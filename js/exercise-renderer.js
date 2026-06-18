@@ -239,6 +239,9 @@
 
       const b1ReadingPlainText =
         AppState.currentLevel === 'B1' && section === 'reading' && part >= 3 && part <= 6;
+      const b1Reading4Gapped =
+        AppState.currentLevel === 'B1' && section === 'reading' && part === 4 &&
+        partConfig.type === 'gapped-text';
       
       // For parts 5-8, use content.title/subtitle; for parts 1-4, no content header
       let contentHeaderHTML = '';
@@ -246,7 +249,7 @@
       // B1 reading part 1 (multiple-choice-text with questions only, no passage).
       if (needsToggle || hasTranscript) {
         contentHeaderHTML = `
-          <div class="content-section-header">
+          <div class="content-section-header${b1Reading4Gapped ? ' b1-reading4-header' : ''}">
             ${questionNavRowHTML}
             ${toggleHTML}
           </div>
@@ -369,7 +372,7 @@
             
             <div class="exercise-main-layout" lang="en">
               <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
-              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${b1ReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}" id="selectable-text">
+              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${b1ReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${b1Reading4Gapped ? ' b1-reading4' : ''}" id="selectable-text">
                 ${paragraphsHTML}
               </div>
             </div>
