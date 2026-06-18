@@ -159,7 +159,8 @@
 
       const noteCreator = container.querySelector('#note-creator');
       const wrapper = document.createElement('div');
-      wrapper.className = 'writing-type2-container';
+      const level = (typeof AppState !== 'undefined' && AppState.currentLevel) || '';
+      wrapper.className = 'writing-type2-container' + (level === 'B1' ? ' b1-writing' : '');
       wrapper.innerHTML = html;
       container.insertBefore(wrapper, noteCreator);
 

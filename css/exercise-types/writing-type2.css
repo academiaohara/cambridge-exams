@@ -445,3 +445,98 @@
     font-size: 1rem;
   }
 }
+
+/* ── B1 Preliminary Writing Part 2 — Duolingo task cards ─────────────── */
+
+.b1-writing .writing-type2-tasks-list {
+  gap: 10px;
+}
+
+.b1-writing .writing-type2-task-option {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 16px;
+  padding: 14px 16px 16px;
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.1s, transform 0.1s;
+}
+
+.b1-writing .writing-type2-task-option:hover {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.b1-writing .writing-type2-task-option:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.b1-writing .writing-type2-task-option.selected {
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.b1-writing .writing-type2-task-badge {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--ex-duo-orange, #f47417);
+  border-radius: 999px;
+  padding: 4px 10px;
+  box-shadow: 0 2px 0 var(--ex-duo-orange-dark, #d45f0a);
+}
+
+.b1-writing .writing-type2-task-title {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.b1-writing .writing-type2-task-preview,
+.b1-writing .writing-type2-task-full-prompt {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.b1-writing #panel-type2-strengths .writing-feedback-criterion-title {
+  color: #58a700;
+  border-bottom-color: #d7ffb8;
+}
+
+.b1-writing #panel-type2-strengths .writing-score-line {
+  background: #d7ffb8;
+  border-left-color: #58cc02;
+}
+
+.b1-writing #panel-type2-strengths .writing-feedback-list-item {
+  border-left-color: #58cc02;
+}
+
+.b1-writing #panel-type2-strengths .writing-feedback-list-icon {
+  color: #58cc02;
+}
+
+.b1-writing #panel-type2-improvements .writing-feedback-criterion-title {
+  color: var(--ex-duo-orange-dark, #d45f0a);
+  border-bottom-color: var(--ex-duo-orange-light, #fff0e6);
+}
+
+.b1-writing #panel-type2-improvements .writing-score-line {
+  background: var(--ex-duo-orange-light, #fff0e6);
+  border-left-color: var(--ex-duo-orange, #f47417);
+}
+
+.b1-writing #panel-type2-improvements .writing-feedback-list-item {
+  border-left-color: var(--ex-duo-orange, #f47417);
+}
+
+.b1-writing #panel-type2-improvements .writing-feedback-list-icon {
+  color: var(--ex-duo-orange, #f47417);
+}

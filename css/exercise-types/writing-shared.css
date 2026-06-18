@@ -132,3 +132,43 @@
   font-size: 0.95rem;
   margin: 0;
 }
+
+/* B1 Writing — clean Duolingo textarea (no notebook lines) */
+.b1-writing .writing-textarea,
+.b1-writing .writing-corrected-text {
+  --writing-paper: #fff;
+  --writing-line-color: transparent;
+  --writing-margin-color: transparent;
+
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--ex-duo-text, #4b4b4b);
+  background-color: #fff;
+  background-image: none;
+  padding: 16px 18px;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+  min-height: 280px;
+}
+
+.b1-writing .writing-textarea:focus {
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 4px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.b1-writing .writing-textarea:disabled {
+  background-color: #f7f7f7;
+  color: var(--ex-duo-text-muted, #afafaf);
+}
+
+.b1-writing .writing-textarea::placeholder {
+  color: var(--ex-duo-text-muted, #afafaf);
+  font-weight: 600;
+}
+
+.b1-writing .writing-type1-textarea-b1-email {
+  min-height: 260px;
+}

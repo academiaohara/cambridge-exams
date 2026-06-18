@@ -172,7 +172,8 @@
               <div><strong>From:</strong> ${this._escapeHtml(t.from)}</div>
               <div><strong>Subject:</strong> ${this._escapeHtml(t.subject)}</div>
             </div>
-            <div class="writing-b1-initial-mail" aria-label="Email you are replying to">
+            <div class="writing-b1-initial-mail" data-writing-source="email" aria-label="Email you are replying to">
+              <span class="writing-b1-source-label">Email</span>
               ${this._formatB1InitialEmailToHtml(t.initialEmail)}
             </div>
             ${notesHtml}
@@ -220,7 +221,7 @@
 
       const noteCreator = container.querySelector('#note-creator');
       const wrapper = document.createElement('div');
-      wrapper.className = 'writing-type1-container';
+      wrapper.className = 'writing-type1-container' + (level === 'B1' ? ' b1-writing' : '');
       wrapper.innerHTML = html;
       container.insertBefore(wrapper, noteCreator);
 
