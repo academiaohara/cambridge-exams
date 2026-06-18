@@ -198,11 +198,11 @@
   background: #fff;
   padding: 28px 32px 32px;
   border-radius: 16px;
-  border: 2px solid #e5e5e5;
-  border-top: 4px solid var(--ex-duo-orange, #ff9600);
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
   position: relative;
   text-align: left;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
   font-family: 'Nunito', sans-serif;
 }
 
@@ -225,7 +225,7 @@
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-size: 1.45rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--ex-duo-text, #4b4b4b);
   line-height: 1.25;
   white-space: normal;
   overflow: visible;
@@ -249,7 +249,7 @@
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-size: 3em;
   font-weight: 700;
-  color: var(--ex-duo-orange, #ff9600);
+  color: var(--ex-duo-orange, #f47417);
   float: left;
   line-height: 0.8;
   margin-right: 6px;
@@ -263,7 +263,7 @@
 }
 
 .reading-text-enhanced .toggle-text-section p:hover {
-  background: #fffbf5;
+  background: var(--ex-duo-blue-light, #ddf4ff);
 }
 
 /* Reading card icon badge in top-right corner */
@@ -275,7 +275,7 @@
   top: 10px;
   right: 14px;
   font-size: 1rem;
-  color: var(--ex-duo-orange, #ff9600);
+  color: var(--ex-duo-blue, #1cb0f6);
   opacity: 0.35;
   pointer-events: none;
 }
@@ -1290,16 +1290,20 @@
 /* ── Test exercise layout: full-width content, no white card ─────────── */
 
 :root {
-  --ex-duo-orange: #ff9600;
-  --ex-duo-orange-dark: #e68600;
-  --ex-duo-orange-hover: #ffa31a;
-  --ex-duo-orange-light: #fff4e5;
+  --ex-duo-blue: #1cb0f6;
+  --ex-duo-blue-dark: #1899d6;
+  --ex-duo-blue-hover: #2eb8f7;
+  --ex-duo-blue-light: #ddf4ff;
+  --ex-duo-orange: #f47417;
+  --ex-duo-orange-dark: #d45f0a;
+  --ex-duo-orange-hover: #f6802a;
+  --ex-duo-orange-light: #fff0e6;
   --ex-duo-border: #e5e5e5;
   --ex-duo-text: #4b4b4b;
   --ex-duo-text-muted: #afafaf;
   --ex-duo-canvas: #f7f7f7;
   --ex-duo-info-bg: #ddf4ff;
-  --ex-duo-info-border: #84d8ff;
+  --ex-duo-info-border: #1cb0f6;
 }
 
 body:has(.dashboard-layout--exercise) {
@@ -1545,10 +1549,20 @@ body:has(.dashboard-layout--exercise) #main-content {
 .dashboard-layout--exercise .reading-text-enhanced {
   background: #fff;
   border: 2px solid var(--ex-duo-border);
-  border-top: 4px solid var(--ex-duo-orange);
+  border-top: 4px solid var(--ex-duo-blue);
   border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 0 var(--ex-duo-border);
   padding: 28px 32px 32px;
+}
+
+/* B1 Reading Part 1 — notice cards + MC options inside the reading card */
+.dashboard-layout--exercise .reading-text-enhanced:has(.reading-type5-with-notice) {
+  padding: 20px 22px 24px;
+  border-top-color: var(--ex-duo-orange);
+}
+
+.dashboard-layout--exercise .reading-text-enhanced:has(.reading-type5-with-notice)::after {
+  color: var(--ex-duo-orange);
 }
 
 .dashboard-layout--exercise .content-section-header {
