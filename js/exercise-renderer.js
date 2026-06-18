@@ -599,18 +599,19 @@
         html += '<span class="b1-reading2-q-badge">' + qNum + '</span>';
         html += '</div>';
         html += '<div class="reading-type8-text-content b1-reading2-person-content">' + safe + '</div>';
-        var wrapDataCorrect = '';
-        if (isChecked && q.correct && sel !== q.correct) {
-          wrapDataCorrect = ' data-correct="✓ ' + self._escapeHtmlAttr(String(q.correct)) + '"';
-        }
-        html += '<div class="b1-reading2-picker-wrap"' + wrapDataCorrect + ' data-qnum="' + qNum + '">';
+        html += '<div class="b1-reading2-picker-wrap" data-qnum="' + qNum + '">';
         html += '<span class="b1-reading2-picker-label">Choose an option</span>';
         html += '<div class="b1-reading2-chip-row" role="group" aria-label="Choose option for question ' + qNum + '">';
         letters.forEach(function(L) {
           var chipCls = 'b1-reading2-chip';
           if (sel === L) chipCls += ' b1-reading2-chip-selected';
-          if (isChecked && sel === L) {
-            chipCls += sel === q.correct ? ' b1-reading2-chip-correct' : ' b1-reading2-chip-incorrect';
+          if (isChecked) {
+            if (sel === L) {
+              chipCls += sel === q.correct ? ' b1-reading2-chip-correct' : ' b1-reading2-chip-incorrect';
+            }
+            if (q.correct && L === q.correct && sel !== q.correct) {
+              chipCls += ' b1-reading2-chip-key';
+            }
           }
           html += '<button type="button" class="' + chipCls + '" data-letter="' + L + '"' +
             ' aria-pressed="' + (sel === L ? 'true' : 'false') + '"' +
@@ -661,7 +662,7 @@
         }
         cells += '<button type="button" class="' + cls + '" data-letter="' + letter + '" onclick="QuestionNav.openReading2Letter(\'' + letter + '\')">' + letter + '</button>';
       });
-      return '<div class="question-nav-row question-nav-row-letters" id="question-nav-row" data-nav-letters="1">' + cells + '</div>';
+      return '<div class="question-nav-row question-nav-row-letters b1-reading2-letter-nav" id="question-nav-row" data-nav-letters="1">' + cells + '</div>';
     },
 
     /** B1 Reading Part 2: in explanation mode, nav shows question numbers to switch explanations. */
