@@ -1688,127 +1688,251 @@
 }
 .fe-reset-level-btn .material-symbols-outlined { font-size: 1rem; }
 
-/* ── PV Info Modal ────────────────────────────────────────────────────── */
+/* ── PV Info Modal (Duolingo-style) ───────────────────────────────────── */
 .pv-info-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.55);
+  background: rgba(15, 23, 42, 0.5);
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  backdrop-filter: blur(4px);
+  animation: pvModalOverlayIn 0.18s ease;
+}
+@keyframes pvModalOverlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 .pv-info-modal-box {
+  --pv-info-accent: #1cb0f6;
+  --pv-info-accent-dark: #1689c7;
+  --pv-info-surface: #eff8ff;
+  --pv-info-surface-border: #9cc8f5;
+  --pv-info-check-bg: #dbeafe;
+  --pv-info-check-color: #1d4ed8;
+  position: relative;
   background: #fff;
   border-radius: 24px;
-  max-width: 560px;
+  border: 2px solid #e5e5e5;
+  border-bottom-width: 5px;
+  border-bottom-color: #d0d0d0;
+  max-width: 540px;
   width: 100%;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.2);
-  overflow: hidden;
-  animation: pvModalIn 0.25s ease;
+  padding: 22px 22px 20px;
+  font-family: 'Nunito', sans-serif;
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.14);
+  animation: pvModalIn 0.22s ease;
+}
+.pv-info-modal-box--wf {
+  --pv-info-accent: #ff4b4b;
+  --pv-info-accent-dark: #ea2b2b;
+  --pv-info-surface: #fff1f2;
+  --pv-info-surface-border: #fecdd3;
+  --pv-info-check-bg: #ffe4e6;
+  --pv-info-check-color: #e11d48;
+}
+.pv-info-modal-box--colloc {
+  --pv-info-accent: #ce82ff;
+  --pv-info-accent-dark: #a855f7;
+  --pv-info-surface: #faf5ff;
+  --pv-info-surface-border: #d8b4fe;
+  --pv-info-check-bg: #f3e8ff;
+  --pv-info-check-color: #9333ea;
+}
+.pv-info-modal-box--id {
+  --pv-info-accent: #ff9600;
+  --pv-info-accent-dark: #e68600;
+  --pv-info-surface: #fff8e6;
+  --pv-info-surface-border: #f0e0b8;
+  --pv-info-check-bg: #ffedd5;
+  --pv-info-check-color: #c2410c;
 }
 @keyframes pvModalIn {
-  from { opacity: 0; transform: scale(0.92) translateY(10px); }
+  from { opacity: 0; transform: scale(0.94) translateY(8px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 .pv-info-modal-header {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 20px 24px 16px;
-  border-bottom: 1px solid rgba(45, 46, 95, 0.08);
+  margin: 0 36px 16px 0;
+  padding: 0;
+  border-bottom: none;
+}
+.pv-info-modal-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--pv-info-accent);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 3px 0 var(--pv-info-accent-dark);
 }
 .pv-info-modal-icon .material-symbols-outlined {
-  font-size: 1.6rem;
-  color: #3b82f6;
+  font-size: 1.25rem;
+  color: #fff;
 }
 .pv-info-modal-title {
   flex: 1;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.15rem;
   font-weight: 900;
-  color: var(--text-dark, #0f172a);
+  color: #3c3c3c;
+  line-height: 1.25;
   margin: 0;
 }
 .pv-info-modal-close {
-  width: 32px;
-  height: 32px;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  border: none;
-  background: rgba(45, 46, 95, 0.06);
-  color: var(--text-medium, #64748b);
+  border: 2px solid #e5e5e5;
+  border-bottom-width: 3px;
+  background: #fff;
+  color: #94a3b8;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  transition: transform 0.1s, border-color 0.12s, color 0.12s;
 }
-.pv-info-modal-close:hover { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+.pv-info-modal-close:hover {
+  border-color: #cbd5e1;
+  color: #64748b;
+}
+.pv-info-modal-close:active {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
 .pv-info-modal-close .material-symbols-outlined { font-size: 1.1rem; }
 .pv-info-modal-body {
-  padding: 20px 24px;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-height: 60vh;
+  gap: 10px;
+  max-height: 55vh;
   overflow-y: auto;
 }
 .pv-info-modal-body p {
-  font-size: 0.93rem;
-  color: var(--text-dark, #0f172a);
-  line-height: 1.65;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #4b5563;
+  line-height: 1.55;
   margin: 0;
 }
+.pv-info-modal-body p > strong:only-child {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--pv-info-accent);
+  margin-bottom: 4px;
+}
 .pv-info-example {
-  background: rgba(59, 130, 246, 0.07);
-  border-left: 3px solid #3b82f6;
-  border-radius: 0 10px 10px 0;
-  padding: 10px 14px !important;
+  background: var(--pv-info-surface);
+  border: 2px solid var(--pv-info-surface-border);
+  border-bottom-width: 4px;
+  border-radius: 14px;
+  padding: 12px 14px !important;
   display: flex !important;
   align-items: flex-start !important;
   gap: 8px !important;
 }
-.pv-info-example .material-symbols-outlined { font-size: 1rem; color: #3b82f6; flex-shrink: 0; margin-top: 2px; }
+.pv-info-example .material-symbols-outlined {
+  font-size: 1rem;
+  color: var(--pv-info-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
 .pv-info-list {
   margin: 0;
-  padding-left: 20px;
+  padding: 0;
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
 }
 .pv-info-list li {
-  font-size: 0.9rem;
-  color: var(--text-dark, #0f172a);
-  line-height: 1.5;
+  position: relative;
+  padding-left: 26px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #4b5563;
+  line-height: 1.45;
+}
+.pv-info-list li::before {
+  content: 'check';
+  font-family: 'Material Symbols Outlined';
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--pv-info-check-bg);
+  color: var(--pv-info-check-color);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 .pv-info-modal-footer {
-  padding: 16px 24px;
-  border-top: 1px solid rgba(45, 46, 95, 0.08);
+  padding: 16px 0 0;
+  border-top: none;
   display: flex;
-  justify-content: flex-end;
+  justify-content: stretch;
 }
 .pv-info-modal-btn {
-  padding: 10px 24px;
+  width: 100%;
+  padding: 14px 20px;
   border: none;
-  border-radius: 14px;
-  background: #3b82f6;
+  border-radius: 16px;
+  background: var(--pv-info-accent);
   color: #fff;
-  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
   font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   cursor: pointer;
-  transition: filter 0.2s;
-  font-family: inherit;
+  box-shadow: 0 4px 0 var(--pv-info-accent-dark);
+  transition: filter 0.15s, transform 0.1s, box-shadow 0.1s;
 }
-.pv-info-modal-btn:hover { filter: brightness(1.1); }
+.pv-info-modal-btn:hover { filter: brightness(1.05); }
+.pv-info-modal-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--pv-info-accent-dark);
+}
+.pv-info-modal-body p:has(.pv-info-dict-link, .wf-info-dict-link, .colloc-info-dict-link) {
+  margin-top: 6px;
+}
+@media (max-width: 480px) {
+  .pv-info-modal-overlay { padding: 14px; }
+  .pv-info-modal-box {
+    padding: 18px 16px 16px;
+    border-radius: 20px;
+  }
+  .pv-info-modal-title { font-size: 1.05rem; }
+  .pv-info-modal-body { max-height: 52vh; }
+}
 
 /* ── PV Lesson Info Modal ────────────────────────────────────────────── */
 .pv-lesson-info-level {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.85rem;
-  color: var(--text-medium, #64748b);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #777;
   margin-bottom: 12px !important;
 }
 .pv-lesson-info-level .material-symbols-outlined { font-size: 1rem; }
@@ -1823,10 +1947,11 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: 8px 12px;
-  background: rgba(59, 130, 246, 0.05);
-  border-radius: 10px;
-  border-left: 3px solid rgba(59, 130, 246, 0.3);
+  padding: 10px 12px;
+  background: var(--pv-info-surface, #eff8ff);
+  border-radius: 14px;
+  border: 2px solid var(--pv-info-surface-border, #9cc8f5);
+  border-bottom-width: 4px;
 }
 
 .pv-lesson-info-verb strong {
@@ -3421,43 +3546,7 @@
 .wf-dict-empty .material-symbols-outlined { font-size: 2rem; }
 .wf-dict-empty p { margin: 0; font-size: 0.95rem; }
 
-/* WF info dict link */
-.wf-info-dict-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: #e11d48;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  font-family: inherit;
-  font-size: inherit;
-}
-.wf-info-dict-link:hover { text-decoration: underline; }
-.wf-info-dict-link .material-symbols-outlined { font-size: 1rem; }
-
-/* ═══════════════════════════════════════════════════════════════════════
-   COLLOCATIONS – Info dict link
-   ═══════════════════════════════════════════════════════════════════════ */
-.colloc-info-dict-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: #8b5cf6;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  font-family: inherit;
-  font-size: inherit;
-}
-.colloc-info-dict-link:hover { text-decoration: underline; }
-.colloc-info-dict-link .material-symbols-outlined { font-size: 1rem; }
+/* WF / Collocations info dict links inherit Duolingo styles from .pv-info-dict-link above */
 
 /* ═══════════════════════════════════════════════════════════════════════
    COLLOCATIONS – Dictionary Modal
@@ -3872,23 +3961,44 @@
 .pv-dict-empty .material-symbols-outlined { font-size: 2rem; }
 .pv-dict-empty p { margin: 0; font-size: 0.95rem; }
 
-/* PV info dict link */
-.pv-info-dict-link {
+/* PV info dict link (Duolingo secondary button) */
+.pv-info-dict-link,
+.wf-info-dict-link,
+.colloc-info-dict-link {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: #3b82f6;
-  font-weight: 700;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 4px;
+  padding: 12px 16px;
+  border: 2px solid #e5e5e5;
+  border-bottom-width: 4px;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--pv-info-accent, #1cb0f6);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.82rem;
   text-decoration: none;
   cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  font-family: inherit;
-  font-size: inherit;
+  transition: transform 0.1s, border-color 0.12s, background 0.12s;
 }
-.pv-info-dict-link:hover { text-decoration: underline; }
-.pv-info-dict-link .material-symbols-outlined { font-size: 1rem; }
+.pv-info-dict-link:hover,
+.wf-info-dict-link:hover,
+.colloc-info-dict-link:hover {
+  background: var(--pv-info-surface, #eff8ff);
+  border-color: var(--pv-info-surface-border, #9cc8f5);
+}
+.pv-info-dict-link:active,
+.wf-info-dict-link:active,
+.colloc-info-dict-link:active {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+.pv-info-dict-link .material-symbols-outlined,
+.wf-info-dict-link .material-symbols-outlined,
+.colloc-info-dict-link .material-symbols-outlined { font-size: 1rem; }
 
 /* ═══════════════════════════════════════════════════════════════════════
    PHRASAL VERBS – Dictionary Responsive
