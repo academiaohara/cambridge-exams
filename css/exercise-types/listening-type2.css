@@ -139,3 +139,34 @@
   padding: 2px 10px;
   border-radius: 30px;
 }
+
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  .listening-type2-container {
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  .listening-type2-audio-section {
+    padding: 14px 16px;
+    border-radius: 14px;
+    margin-bottom: 16px;
+  }
+
+  .listening-type2-sentences {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .listening-type2-sentence {
+    padding: 12px 14px;
+    font-size: 1rem;
+    line-height: 1.95;
+    margin-bottom: 14px;
+  }
+
+  .listening-type2-input {
+    min-width: 90px;
+    font-size: 0.95rem;
+    padding: 7px 10px;
+  }
+}

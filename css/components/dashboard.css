@@ -3011,3 +3011,37 @@
     padding: 0 16px 16px;
   }
 }
+
+/* Tests hub: use wider max-width on tablets/large phones to fill the screen better */
+@media (min-width: 431px) and (max-width: 768px) {
+  .dashboard-center:has(.tests-hub-section) {
+    max-width: 100%;
+  }
+}
+
+/* Mobile subpage header improvements for tests hub */
+@media (max-width: 768px) {
+  .subpage-header--tests {
+    padding: 12px 14px;
+    gap: 8px;
+    border-radius: 16px;
+  }
+
+  .subpage-header--tests .subpage-header-titles {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .subpage-header--tests .subpage-title {
+    font-size: 1rem;
+  }
+
+  .subpage-header--tests .subpage-subtitle {
+    font-size: 0.78rem;
+  }
+
+  .tests-sections-container,
+  .tests-path-map {
+    padding-bottom: 20px;
+  }
+}
