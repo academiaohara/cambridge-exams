@@ -43,6 +43,7 @@
 
       body.innerHTML = this._buildContent(question, qNum, isChecked, userAnswer, partConfig);
       this._resetCollapse();
+      this._syncPanelVariant();
       overlay.style.display = 'flex';
     },
 
@@ -67,6 +68,7 @@
         '</div>' +
         '<div class="qnav-body"><p class="qnav-question-text">' + this._escapeHtml(ReadingType7._stripBrackets(paragraphText)) + '</p></div>';
       this._resetCollapse();
+      this._syncPanelVariant();
       overlay.style.display = 'flex';
     },
 
@@ -75,6 +77,7 @@
       if (overlay) overlay.style.display = 'none';
       this.currentQNum = null;
       this._resetCollapse();
+      this._syncPanelVariant(false);
     },
 
     toggleCollapse: function() {
@@ -107,6 +110,20 @@
       if (icon) {
         icon.className = 'fas fa-chevron-down qnav-collapse-icon';
       }
+    },
+
+    _isB1Reading4: function() {
+      return typeof AppState !== 'undefined' &&
+        AppState.currentLevel === 'B1' &&
+        AppState.currentSection === 'reading' &&
+        AppState.currentPart === 4;
+    },
+
+    _syncPanelVariant: function(forceOff) {
+      var panel = document.querySelector('#question-nav-overlay .question-nav-panel');
+      if (!panel) return;
+      var useB1r4 = forceOff === false ? false : this._isB1Reading4();
+      panel.classList.toggle('qnav-b1r4', useB1r4);
     },
 
     _headerActionsHtml: function() {
@@ -223,6 +240,7 @@
         '<div class="b1-reading2-letter-modal-card">' +
         '<div class="b1-reading2-letter-modal-text">' + safeBody + '</div></div></div>';
       this._resetCollapse();
+      this._syncPanelVariant();
       overlay.style.display = 'flex';
     },
 
@@ -306,7 +324,10 @@
       Object.keys(answers).forEach(function(n) {
         if (parseInt(n, 10) !== qNum && answers[n]) usedLetters.add(answers[n]);
       });
-      var html = '<div class="qnav-opts-grid qnav-opts-grid-part8">';
+      var gridCls = this._isB1Reading4()
+        ? 'qnav-opts-grid qnav-opts-grid-b1r4'
+        : 'qnav-opts-grid qnav-opts-grid-part8';
+      var html = '<div class="' + gridCls + '">';
       keys.forEach(function(key) {
         var isSelected = userAnswer === key;
         var cls = 'qnav-opt-btn';

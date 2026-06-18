@@ -402,11 +402,108 @@
   background: #d4d4d4;
 }
 
+/* B1 Reading Part 4 — compact letter row in question panel */
+.question-nav-panel.qnav-b1r4 {
+  max-width: 420px;
+  padding: 14px 16px max(18px, env(safe-area-inset-bottom));
+}
+
+.qnav-b1r4 .qnav-header {
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+}
+
+.qnav-b1r4 .qnav-title {
+  min-width: 38px;
+  height: 38px;
+  padding: 0 12px;
+  font-size: 1rem;
+}
+
+.qnav-b1r4 .qnav-close-btn,
+.qnav-b1r4 .qnav-collapse-btn {
+  width: 38px;
+  height: 38px;
+}
+
+.qnav-b1r4 .qnav-opts-grid-b1r4 {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0 2px;
+}
+
+.qnav-b1r4 .qnav-opt-btn {
+  flex: 0 0 auto;
+  min-width: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  letter-spacing: 0;
+  text-transform: none;
+  background: #fff;
+  color: var(--ex-duo-text, #4b4b4b);
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.qnav-b1r4 .qnav-opt-btn:hover:not(.disabled):not(.selected) {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+  color: var(--ex-duo-blue-dark, #1899d6);
+  transform: translateY(-1px);
+}
+
+.qnav-b1r4 .qnav-opt-btn:active:not(.disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.qnav-b1r4 .qnav-opt-btn.selected {
+  background: var(--ex-duo-blue, #1cb0f6);
+  color: #fff;
+  border-color: var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.qnav-b1r4 .qnav-opt-btn.used {
+  background: #f7f7f7;
+  border-color: #dcdcdc;
+  box-shadow: 0 2px 0 #dcdcdc;
+  color: #b0b0b0;
+}
+
+.qnav-b1r4 .qnav-opt-btn.used:hover:not(.disabled) {
+  background: #efefef;
+  transform: none;
+}
+
 @media (max-width: 480px) {
   .question-nav-panel {
     max-height: calc(70dvh - env(safe-area-inset-bottom));
     border-radius: 18px 18px 0 0;
     padding: 16px 14px max(18px, env(safe-area-inset-bottom));
+  }
+
+  .question-nav-panel.qnav-b1r4 {
+    max-width: 100%;
+    padding: 12px 12px max(16px, env(safe-area-inset-bottom));
+  }
+
+  .qnav-b1r4 .qnav-opts-grid-b1r4 {
+    gap: 4px;
+  }
+
+  .qnav-b1r4 .qnav-opt-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+    border-radius: 10px;
   }
 
   #question-nav-overlay .qnav-title {

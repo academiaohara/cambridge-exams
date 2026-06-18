@@ -61,7 +61,7 @@
       return `
         <span class="reading-type7-gap${inlineClass}" data-qnum="${qNum}"${inlineAttr}>
           <span class="reading-type7-gap-pill${userAnswer ? ' has-value' : ''}"
-                onclick="ReadingType7.openSelectModal(${qNum})">
+                onclick="QuestionNav.openQuestion(${qNum})">
             <span class="reading-type7-gap-num">${qNum}</span>
             <span class="reading-type7-gap-circle">${userAnswer || '?'}</span>
           </span>
