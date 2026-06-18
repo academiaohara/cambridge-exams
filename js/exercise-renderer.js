@@ -327,7 +327,6 @@
                 </div>
               </div>
               <div class="exercise-header-meta">
-                <div class="exercise-subtitle" data-i18n="part">${isMixed ? 'Exercise ' + displayPart + ' of ' + totalParts : 'Part ' + part + ' of ' + totalParts}</div>
                 <span class="exercise-badge">${exercise.title || 'Exercise'}</span>
                 ${isMixed ? `<span class="mixed-mode-badge"><span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle">shuffle</span> Random Test</span>` : (AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><i class="fas fa-file-alt"></i> Exam Mode</span>` : '')}
               </div>
