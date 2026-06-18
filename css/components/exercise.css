@@ -1730,7 +1730,22 @@ body:has(.dashboard-layout--exercise) #main-content {
   flex-shrink: 0;
 }
 
-.dashboard-layout--exercise .btn-check,
+.dashboard-layout--exercise .btn-check {
+  background: var(--ex-duo-blue);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 0 var(--ex-duo-blue-dark);
+}
+
+.dashboard-layout--exercise .btn-check:hover:not(:disabled) {
+  background: var(--ex-duo-blue-hover);
+}
+
+.dashboard-layout--exercise .btn-check:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--ex-duo-blue-dark);
+}
+
 .dashboard-layout--exercise .btn-next,
 .dashboard-layout--exercise .btn-finish-section {
   background: var(--ex-duo-orange);
@@ -1739,13 +1754,11 @@ body:has(.dashboard-layout--exercise) #main-content {
   box-shadow: 0 4px 0 var(--ex-duo-orange-dark);
 }
 
-.dashboard-layout--exercise .btn-check:hover:not(:disabled),
 .dashboard-layout--exercise .btn-next:hover,
 .dashboard-layout--exercise .btn-finish-section:hover {
   background: var(--ex-duo-orange-hover);
 }
 
-.dashboard-layout--exercise .btn-check:active:not(:disabled),
 .dashboard-layout--exercise .btn-next:active,
 .dashboard-layout--exercise .btn-finish-section:active {
   transform: translateY(2px);
@@ -1840,19 +1853,6 @@ body:has(.dashboard-layout--exercise) #main-content {
   .dashboard-layout--exercise .exercise-footer button .btn-toggle-answer-icon {
     font-size: 1.2rem;
     margin: 0;
-  }
-
-  .dashboard-layout--exercise .btn-check:not(:disabled) {
-    background: var(--ex-duo-blue);
-    box-shadow: 0 4px 0 var(--ex-duo-blue-dark);
-  }
-
-  .dashboard-layout--exercise .btn-check:hover:not(:disabled) {
-    background: var(--ex-duo-blue-hover);
-  }
-
-  .dashboard-layout--exercise .btn-check:active:not(:disabled) {
-    box-shadow: 0 1px 0 var(--ex-duo-blue-dark);
   }
 }
 
