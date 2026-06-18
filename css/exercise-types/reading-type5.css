@@ -526,6 +526,16 @@
 
 /* ── Layout inside .reading-text-enhanced (B1 Reading Part 1) ───────────── */
 
+/* B1 Reading Part 1: all source cards use blue theme (notice, advert, email, etc.) */
+.dashboard-layout--exercise .reading-text-enhanced .reading-type5-notice-card {
+  --rt5-card-border: var(--ex-duo-blue, #1cb0f6);
+  --rt5-card-bg: linear-gradient(180deg, #f0f9ff 0%, var(--ex-duo-blue-light, #ddf4ff) 100%);
+  --rt5-label-color: var(--ex-duo-blue-dark, #1899d6);
+  --rt5-heading-color: #0c6a96;
+  --rt5-body-color: var(--ex-duo-text, #3c3c3c);
+  --rt5-accent-bar: var(--ex-duo-blue, #1cb0f6);
+}
+
 .dashboard-layout--exercise .reading-text-enhanced .reading-type5-with-notice {
   gap: 14px;
   margin: 0 0 18px;

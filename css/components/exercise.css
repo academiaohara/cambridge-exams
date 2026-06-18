@@ -1672,11 +1672,11 @@ body:has(.dashboard-layout--exercise) #main-content {
 /* B1 Reading Part 1 — notice cards + MC options inside the reading card */
 .dashboard-layout--exercise .reading-text-enhanced:has(.reading-type5-with-notice) {
   padding: 20px 22px 24px;
-  border-top-color: var(--ex-duo-orange);
+  border-top-color: var(--ex-duo-blue);
 }
 
 .dashboard-layout--exercise .reading-text-enhanced:has(.reading-type5-with-notice)::after {
-  color: var(--ex-duo-orange);
+  color: var(--ex-duo-blue);
 }
 
 .dashboard-layout--exercise .content-section-header {
