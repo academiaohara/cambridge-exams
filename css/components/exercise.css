@@ -732,7 +732,7 @@
   justify-content: center;
   min-width: 42px;
   height: 42px;
-  padding: 0 14px;
+  padding: 0 12px;
   border-radius: 14px;
   border: 2px solid var(--ex-duo-border, #e5e5e5);
   background: #fff;
@@ -827,13 +827,13 @@
   justify-content: center;
   min-width: 42px;
   height: 42px;
-  padding: 0 14px;
+  padding: 0 12px;
   border-radius: 14px;
   border: 2px solid var(--ex-duo-blue, #1cb0f6);
-  background: #fff;
+  background: var(--ex-duo-blue-light, #ddf4ff);
   box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
   font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 800;
   color: var(--ex-duo-blue-dark, #1899d6);
 }
@@ -1725,8 +1725,11 @@ body:has(.dashboard-layout--exercise) #main-content {
   }
 
   .dashboard-layout--exercise .reading-text-enhanced--b1r2 .b1-reading2-chip,
-  .dashboard-layout--exercise .reading-text-enhanced:has(.b1-reading2-people) .b1-reading2-chip {
+  .dashboard-layout--exercise .reading-text-enhanced:has(.b1-reading2-people) .b1-reading2-chip,
+  .dashboard-layout--exercise .reading-text-enhanced--b1r2 .b1-reading2-preview-letter,
+  .dashboard-layout--exercise .reading-text-enhanced:has(.b1-reading2-people) .b1-reading2-preview-letter {
     min-width: 38px;
+    width: 38px;
     height: 38px;
     border-radius: 12px;
     font-size: 0.95rem;
