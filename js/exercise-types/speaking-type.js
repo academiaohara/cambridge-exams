@@ -238,6 +238,11 @@
     // AI partner for speaking3/4
     _hasAIPartner: false,
 
+    _isB1DuoUi: function(exercise) {
+      if (exercise && exercise._b1PetSpeakingUi) return true;
+      return typeof AppState !== 'undefined' && AppState.currentLevel === 'B1';
+    },
+
     // ── Public API ──
 
     initListeners: function() {
@@ -317,8 +322,9 @@
       //  collaborative speaking3: shown in dedicated Options view; speaking4: examiner info only)
       var taskHTML = '';
 
+      var b1Duo = this._isB1DuoUi(exercise);
       var html =
-        '<div class="speaking-type-wrapper">' +
+        '<div class="speaking-type-wrapper' + (b1Duo ? ' speaking-type-wrapper--b1-duo' : '') + '">' +
           taskHTML +
           this._buildModeToggle() +
           '<div id="speaking-simulation">' +
@@ -328,7 +334,7 @@
 
       var noteCreator = container.querySelector('#note-creator');
       var wrapper = document.createElement('div');
-      wrapper.className = 'speaking-type-container';
+      wrapper.className = 'speaking-type-container' + (b1Duo ? ' speaking-type-container--b1-duo' : '');
       wrapper.innerHTML = html;
       container.insertBefore(wrapper, noteCreator);
 

@@ -1396,3 +1396,611 @@
     max-width: none;
   }
 }
+
+/* ══════════════════════════════════════
+   B1 Speaking — Duolingo style (matches B1 Reading)
+   ══════════════════════════════════════ */
+.speaking-type-wrapper--b1-duo {
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Mode toggle — pill track like B1 Reading Part 4 */
+.speaking-type-wrapper--b1-duo .speaking-mode-toggle {
+  background: var(--ex-duo-border, #e5e5e5);
+  border-radius: 14px;
+  padding: 4px;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-toggle-btn {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.82rem;
+  border-radius: 10px;
+  color: var(--ex-duo-text, #777);
+  padding: 8px 14px;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-toggle-btn:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-toggle-btn.active {
+  background: #fff;
+  color: var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Task prompt */
+.speaking-type-wrapper--b1-duo .speaking-type-task {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-type-task h3 {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+/* Videocall — light card instead of dark stage */
+.speaking-type-wrapper--b1-duo .speaking-videocall {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-scene {
+  background: var(--ex-duo-canvas, #f7f7f7);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-featured {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-featured::before {
+  opacity: 0.04;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-featured-label {
+  background: var(--ex-duo-blue, #1cb0f6);
+  color: #fff;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-featured .speaking-vc-indicator {
+  color: var(--ex-duo-text-muted, #afafaf);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-featured.speaking-stage--speaking {
+  box-shadow: 0 0 0 3px #58cc02, 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-featured.speaking-stage--speaking .speaking-stage-featured-avatar {
+  border-color: #58cc02;
+  box-shadow: 0 0 0 3px rgba(88, 204, 2, 0.45);
+}
+
+/* Thumbnail cards — 3D bordered */
+.speaking-type-wrapper--b1-duo .speaking-stage-card {
+  background: #fff;
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-card::before {
+  display: none;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-card--gold {
+  border: 2px solid var(--ex-duo-orange, #f47417);
+  box-shadow: 0 3px 0 var(--ex-duo-orange-dark, #d45f0a);
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-card--blue {
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-card--examiner {
+  border: 2px solid var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-blue-dark, #1899d6) 55%, #000);
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-card-label {
+  background: var(--ex-duo-blue, #1cb0f6);
+  color: #fff;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.62rem;
+  border-radius: 999px;
+  text-shadow: none;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-card--gold .speaking-stage-card-label {
+  background: var(--ex-duo-orange, #f47417);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-card .speaking-vc-indicator {
+  color: var(--ex-duo-text-muted, #afafaf);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-card.speaking-stage--speaking {
+  box-shadow: 0 0 0 3px #58cc02, 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  transform: scale(1.02);
+}
+
+/* Speaking indicators — Duolingo green */
+.speaking-type-wrapper--b1-duo .speaking-vc-indicator--active {
+  color: #58cc02;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-pulse {
+  background: #58cc02;
+}
+
+/* Status bar & timer */
+.speaking-type-wrapper--b1-duo .speaking-vc-status {
+  background: var(--ex-duo-canvas, #f7f7f7);
+  border-top: 2px solid var(--ex-duo-border, #e5e5e5);
+  color: var(--ex-duo-text, #4b4b4b);
+  font-weight: 600;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-vc-status--yours {
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-stage-timer {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+  color: var(--ex-duo-text, #4b4b4b);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-timer-warning {
+  color: var(--ex-duo-orange, #f47417);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-timer-danger {
+  color: #ff4b4b;
+}
+
+/* Controls */
+.speaking-type-wrapper--b1-duo .speaking-videocall .speaking-controls,
+.speaking-type-wrapper--b1-duo .speaking-chat .speaking-controls,
+.speaking-type-wrapper--b1-duo .speaking-images-view .speaking-controls {
+  background: var(--ex-duo-canvas, #f7f7f7);
+  border-top: 2px solid var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-start-btn {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 12px 28px;
+  border-radius: 14px;
+  background: var(--ex-duo-orange, #f47417);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 0 var(--ex-duo-orange-dark, #d45f0a);
+  transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-start-btn:hover {
+  background: var(--ex-duo-orange-hover, #f6802a);
+  opacity: 1;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-start-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--ex-duo-orange-dark, #d45f0a);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-text-input {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ex-duo-text, #4b4b4b);
+  font-family: 'Nunito', sans-serif;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-text-input:focus {
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 0 0 2px var(--ex-duo-blue-light, #ddf4ff);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-mic-btn {
+  background: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  border-radius: 50%;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-send-btn {
+  background: var(--ex-duo-orange, #f47417);
+  box-shadow: 0 3px 0 var(--ex-duo-orange-dark, #d45f0a);
+  border-radius: 50%;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-mic-btn:hover,
+.speaking-type-wrapper--b1-duo .speaking-send-btn:hover {
+  opacity: 1;
+  filter: brightness(1.05);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-mic-btn:active,
+.speaking-type-wrapper--b1-duo .speaking-send-btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-mic-recording {
+  background: #ff4b4b !important;
+  box-shadow: 0 3px 0 #d33131 !important;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-end-btn {
+  background: #ff4b4b;
+  box-shadow: 0 3px 0 #d33131;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-end-btn:hover {
+  background: #ff6b6b;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-your-turn {
+  color: var(--ex-duo-blue-dark, #1899d6);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-ended-msg {
+  color: var(--ex-duo-text, #4b4b4b);
+  font-weight: 600;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-skip-btn {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 12px;
+  color: var(--ex-duo-text-muted, #afafaf);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 700;
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-skip-btn:hover {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+/* Chat view */
+.speaking-type-wrapper--b1-duo .speaking-chat {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-chat-history {
+  background: var(--ex-duo-canvas, #f7f7f7);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-chat-timer {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+  color: var(--ex-duo-text, #4b4b4b);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-chat-name {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  color: var(--ex-duo-text-muted, #afafaf);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-chat-bubble {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  border-radius: 14px;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-chat-bubble--examiner {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-chat-bubble--partner {
+  background: var(--ex-duo-orange-light, #fff0e6);
+  border: 2px solid var(--ex-duo-orange, #f47417);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--ex-duo-orange-dark, #d45f0a) 35%, #e5e5e5);
+  color: var(--ex-duo-orange-dark, #d45f0a);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-chat-bubble--candidate {
+  background: var(--ex-duo-blue, #1cb0f6);
+  border: 2px solid var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+  color: #fff;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-type-start-msg {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  color: var(--ex-duo-text-muted, #afafaf);
+}
+
+/* Images view (long turn) */
+.speaking-type-wrapper--b1-duo .speaking-images-view {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-img-instructions,
+.speaking-type-wrapper--b1-duo .speaking-img-task-selector {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-color: var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-img-candidate-badge {
+  background: var(--ex-duo-orange, #f47417);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  box-shadow: 0 2px 0 var(--ex-duo-orange-dark, #d45f0a);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-img-topic {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-img-task-btn {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 700;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 12px;
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-img-task-btn.active {
+  background: var(--ex-duo-blue, #1cb0f6);
+  border-color: var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+  color: #fff;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-img-card {
+  border: 2px solid var(--ex-duo-orange, #f47417);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--ex-duo-orange-dark, #d45f0a) 55%, #000);
+  background: var(--ex-duo-orange-light, #fff0e6);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-img-label {
+  background: var(--ex-duo-orange, #f47417);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+}
+
+/* Options view (collaborative) */
+.speaking-type-wrapper--b1-duo .speaking-options-view {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-options-header {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-color: var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-options-task {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-options-card {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 14px;
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-options-card:hover {
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-options-card-num {
+  background: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+}
+
+/* Score card & evaluation */
+.speaking-type-wrapper--b1-duo .speaking-eval-loading {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+  color: var(--ex-duo-blue-dark, #1899d6);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-score-card {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 16px;
+  box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-score-header {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-score-total {
+  border-radius: 14px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-total-good {
+  background: #d7ffb8;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-total-good .speaking-score-number {
+  color: #58cc02;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-total-average {
+  background: var(--ex-duo-orange-light, #fff0e6);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-total-average .speaking-score-number {
+  color: var(--ex-duo-orange, #f47417);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-total-low {
+  background: #ffdfe0;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-total-low .speaking-score-number {
+  color: #ff4b4b;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-bar-good {
+  background: #58cc02;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-bar-average {
+  background: var(--ex-duo-orange, #f47417);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-bar-low {
+  background: #ff4b4b;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-criterion-label,
+.speaking-type-wrapper--b1-duo .speaking-criterion-score {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 700;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-criterion-bar-wrap {
+  border-radius: 8px;
+  background: var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-part-btn {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 700;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 12px;
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+  background: #fff;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-part-btn.active {
+  background: var(--ex-duo-orange, #f47417);
+  border-color: var(--ex-duo-orange-dark, #d45f0a);
+  box-shadow: 0 2px 0 var(--ex-duo-orange-dark, #d45f0a);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-feedback-tab-btn {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 700;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-feedback-tab-btn.active {
+  background: var(--ex-duo-blue, #1cb0f6);
+  border-color: var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-feedback-tab-panel {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 14px;
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-feedback-criterion-title {
+  color: var(--ex-duo-blue-dark, #1899d6);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-feedback-list-item {
+  border-left-color: var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-radius: 10px;
+}
+
+.speaking-type-wrapper--b1-duo #panel-sf-strengths .speaking-feedback-list-item {
+  border-left-color: #58cc02;
+  background: #d7ffb8;
+}
+
+.speaking-type-wrapper--b1-duo #panel-sf-strengths .speaking-feedback-list-icon {
+  color: #58cc02;
+}
+
+.speaking-type-wrapper--b1-duo #panel-sf-improvements .speaking-feedback-list-item {
+  border-left-color: var(--ex-duo-orange, #f47417);
+  background: var(--ex-duo-orange-light, #fff0e6);
+}
+
+.speaking-type-wrapper--b1-duo #panel-sf-improvements .speaking-feedback-list-icon {
+  color: var(--ex-duo-orange-dark, #d45f0a);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-feedback-tab-btn[data-tab="strengths"].active {
+  background: #58cc02;
+  border-color: #46a302;
+  box-shadow: 0 2px 0 #46a302;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-feedback-tab-btn[data-tab="improvements"].active {
+  background: var(--ex-duo-orange, #f47417);
+  border-color: var(--ex-duo-orange-dark, #d45f0a);
+  box-shadow: 0 2px 0 var(--ex-duo-orange-dark, #d45f0a);
+}
+
+.speaking-type-wrapper--b1-duo #panel-sf-strengths {
+  border-color: #58cc02;
+}
+
+.speaking-type-wrapper--b1-duo #panel-sf-improvements {
+  border-color: var(--ex-duo-orange, #f47417);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-ai-thinking {
+  color: var(--ex-duo-blue-dark, #1899d6);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
