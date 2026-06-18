@@ -16,6 +16,11 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 16px;
+  padding: 16px 18px 18px;
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
 }
 
 /* Source text card (notice, email, advert, message, generic text) — Duolingo 3D cards */
@@ -36,12 +41,12 @@
   font-family: 'Nunito', sans-serif;
 
   /* Default / notice — brand orange */
-  --rt5-card-border: #f47417;
-  --rt5-card-bg: linear-gradient(165deg, #fff8f3 0%, #fff0e6 45%, #ffe8d9 100%);
-  --rt5-label-color: #c45d0f;
+  --rt5-card-border: var(--ex-duo-orange, #f47417);
+  --rt5-card-bg: linear-gradient(165deg, #fff8f3 0%, var(--ex-duo-orange-light, #fff0e6) 45%, #ffe8d9 100%);
+  --rt5-label-color: var(--ex-duo-orange-dark, #d45f0a);
   --rt5-heading-color: #a34d0c;
-  --rt5-body-color: #3c3c3c;
-  --rt5-accent-bar: #f47417;
+  --rt5-body-color: var(--ex-duo-text, #3c3c3c);
+  --rt5-accent-bar: var(--ex-duo-orange, #f47417);
 }
 
 .reading-type5-notice-card::before {
@@ -58,30 +63,30 @@
 
 .reading-type5-notice-card[data-reading-type5-source='text_message'],
 .reading-type5-notice-card[data-reading-type5-source='email'] {
-  --rt5-card-border: #1cb0f6;
-  --rt5-card-bg: linear-gradient(180deg, #f0f9ff 0%, #ddf4ff 100%);
-  --rt5-label-color: #1899d6;
+  --rt5-card-border: var(--ex-duo-blue, #1cb0f6);
+  --rt5-card-bg: linear-gradient(180deg, #f0f9ff 0%, var(--ex-duo-blue-light, #ddf4ff) 100%);
+  --rt5-label-color: var(--ex-duo-blue-dark, #1899d6);
   --rt5-heading-color: #0c6a96;
-  --rt5-body-color: #3c3c3c;
-  --rt5-accent-bar: #1cb0f6;
+  --rt5-body-color: var(--ex-duo-text, #3c3c3c);
+  --rt5-accent-bar: var(--ex-duo-blue, #1cb0f6);
 }
 
 .reading-type5-notice-card[data-reading-type5-source='advert'] {
-  --rt5-card-border: #f47417;
+  --rt5-card-border: var(--ex-duo-orange, #f47417);
   --rt5-card-bg: linear-gradient(180deg, #fff8f3 0%, #ffe8d9 100%);
-  --rt5-label-color: #c45d0f;
+  --rt5-label-color: var(--ex-duo-orange-dark, #d45f0a);
   --rt5-heading-color: #a34d0c;
-  --rt5-body-color: #3c3c3c;
-  --rt5-accent-bar: #f47417;
+  --rt5-body-color: var(--ex-duo-text, #3c3c3c);
+  --rt5-accent-bar: var(--ex-duo-orange, #f47417);
 }
 
 .reading-type5-notice-card[data-reading-type5-source='text'] {
-  --rt5-card-border: #1cb0f6;
+  --rt5-card-border: var(--ex-duo-blue, #1cb0f6);
   --rt5-card-bg: linear-gradient(180deg, #f5fbff 0%, #e8f6ff 100%);
-  --rt5-label-color: #1899d6;
+  --rt5-label-color: var(--ex-duo-blue-dark, #1899d6);
   --rt5-heading-color: #0c6a96;
-  --rt5-body-color: #3c3c3c;
-  --rt5-accent-bar: #1cb0f6;
+  --rt5-body-color: var(--ex-duo-text, #3c3c3c);
+  --rt5-accent-bar: var(--ex-duo-blue, #1cb0f6);
 }
 
 .reading-type5-notice-label {
@@ -172,6 +177,15 @@
   box-shadow: 0 3px 0 var(--ex-duo-orange-dark, #d45f0a);
 }
 
+@supports selector(:has(*)) {
+  .reading-type5-with-notice:has([data-reading-type5-source='text_message']) .reading-type5-question-number,
+  .reading-type5-with-notice:has([data-reading-type5-source='email']) .reading-type5-question-number,
+  .reading-type5-with-notice:has([data-reading-type5-source='text']) .reading-type5-question-number {
+    background: var(--ex-duo-blue, #1cb0f6);
+    box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  }
+}
+
 .reading-type5-question-header {
   display: flex;
   align-items: flex-start;
@@ -253,6 +267,12 @@
 }
 
 @supports selector(:has(*)) {
+  .reading-type5-option:has(input:checked):not(.disabled) {
+    border-color: var(--ex-duo-blue, #1cb0f6);
+    background: var(--ex-duo-blue-light, #ddf4ff);
+    box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  }
+
   @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
     .reading-type5-option input[type="radio"] {
       position: absolute;
@@ -266,12 +286,6 @@
     .reading-type5-option {
       position: relative;
       padding-left: 14px;
-    }
-
-    .reading-type5-option:has(input:checked) {
-      border-color: var(--ex-duo-blue, #1cb0f6);
-      background: var(--ex-duo-blue-light, #ddf4ff);
-      box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
     }
   }
 }
@@ -556,6 +570,11 @@
   }
 
   .dashboard-layout--exercise .reading-text-enhanced .reading-type5-notice-card {
+    border-radius: 14px;
+    padding: 14px 16px 16px;
+  }
+
+  .dashboard-layout--exercise .reading-text-enhanced .reading-type5-with-notice .reading-type5-question {
     border-radius: 14px;
     padding: 14px 16px 16px;
   }
