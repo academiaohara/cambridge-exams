@@ -156,6 +156,14 @@
       }
     },
     
+    // Etiqueta del badge de ejercicio (p. ej. "Reading - Part 2", no el título del texto)
+    getExerciseBadgeLabel: function(section, part, exercise) {
+      if (section === 'reading') {
+        return 'Reading - Part ' + part;
+      }
+      return (exercise && exercise.title) || 'Exercise';
+    },
+
     // Obtener título de sección
     getSectionTitle: function(section) {
       var lvl = (typeof AppState !== 'undefined' && AppState.currentLevel) || 'C1';

@@ -327,7 +327,7 @@
                 </div>
               </div>
               <div class="exercise-header-meta">
-                <span class="exercise-badge">${exercise.title || 'Exercise'}</span>
+                <span class="exercise-badge">${Utils.getExerciseBadgeLabel(section, displayPart, exercise)}</span>
                 ${isMixed ? `<span class="mixed-mode-badge"><span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle">shuffle</span> Random Test</span>` : (AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><i class="fas fa-file-alt"></i> Exam Mode</span>` : '')}
               </div>
             </div>
