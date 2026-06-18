@@ -1667,33 +1667,39 @@ body:has(.dashboard-layout--exercise) #main-content {
 }
 
 @media (max-width: 768px) {
+  /* Fixed footer always visible at the bottom of the viewport */
   .dashboard-layout--exercise .exercise-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
     justify-content: center;
     align-items: stretch;
     flex-wrap: nowrap;
-    gap: 6px;
+    gap: 8px;
     margin-top: 0;
-    margin-left: -14px;
-    margin-right: -14px;
-    padding: 12px 14px max(14px, env(safe-area-inset-bottom));
+    padding: 10px 16px max(12px, env(safe-area-inset-bottom));
     background: var(--ex-duo-canvas, #f7f7f7);
     border-top: 2px solid var(--ex-duo-border, #e5e5e5);
     border-radius: 0;
-    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
-    position: sticky;
-    bottom: 0;
-    z-index: 20;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.09);
+  }
+
+  /* Compensate for the fixed footer height so content is not hidden underneath */
+  .dashboard-layout--exercise .exercise-page-wrapper {
+    padding-bottom: 90px;
   }
 
   .dashboard-layout--exercise .exercise-footer button {
     flex: 1 1 0;
     min-width: 0;
     width: auto;
-    min-height: 44px;
-    padding: 8px 6px;
-    border-radius: 12px;
-    font-size: 0.68rem;
-    gap: 4px;
+    min-height: 46px;
+    padding: 10px 8px;
+    border-radius: 14px;
+    font-size: 0.7rem;
+    gap: 5px;
     line-height: 1.2;
   }
 
@@ -1707,19 +1713,12 @@ body:has(.dashboard-layout--exercise) #main-content {
   .dashboard-layout--exercise .exercise-footer button i,
   .dashboard-layout--exercise .exercise-footer button .material-symbols-outlined,
   .dashboard-layout--exercise .exercise-footer button .btn-toggle-answer-icon {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .dashboard-layout--exercise .exercise-footer button .btn-toggle-answer-label {
-    font-size: 0.68rem;
+    font-size: 0.7rem;
     line-height: 1.2;
-  }
-
-  /* Extra space at the bottom of the exercise so content isn't hidden behind the sticky footer */
-  .dashboard-layout--exercise .exercise-main-layout,
-  .dashboard-layout--exercise .explanations-section,
-  .dashboard-layout--exercise .explanations-panel {
-    margin-bottom: 0;
   }
 }
 
@@ -1834,10 +1833,16 @@ body:has(.dashboard-layout--exercise) #main-content {
   }
 
   .dashboard-layout--exercise .exercise-footer {
-    margin-left: -10px;
-    margin-right: -10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+    gap: 6px;
+  }
+
+  .dashboard-layout--exercise .exercise-footer button {
+    font-size: 0.62rem;
+    min-height: 42px;
+    padding: 8px 4px;
+    border-radius: 12px;
   }
 
   .dashboard-layout--exercise .exercise-heading {
