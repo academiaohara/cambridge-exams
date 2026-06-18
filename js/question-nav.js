@@ -42,6 +42,7 @@
       const partConfig = CONFIG.getPartConfig(AppState.currentSection, part);
 
       body.innerHTML = this._buildContent(question, qNum, isChecked, userAnswer, partConfig);
+      this._resetCollapse();
       overlay.style.display = 'flex';
     },
 
@@ -62,11 +63,10 @@
 
       body.innerHTML = '<div class="qnav-header">' +
         '<span class="qnav-title">' + this._escapeHtml(key) + '</span>' +
-        '<button class="qnav-close-btn" onclick="QuestionNav.close()">' +
-          '<i class="fas fa-times"></i>' +
-        '</button>' +
+        this._headerActionsHtml() +
         '</div>' +
         '<div class="qnav-body"><p class="qnav-question-text">' + this._escapeHtml(ReadingType7._stripBrackets(paragraphText)) + '</p></div>';
+      this._resetCollapse();
       overlay.style.display = 'flex';
     },
 
@@ -74,6 +74,50 @@
       const overlay = document.getElementById('question-nav-overlay');
       if (overlay) overlay.style.display = 'none';
       this.currentQNum = null;
+      this._resetCollapse();
+    },
+
+    toggleCollapse: function() {
+      var panel = document.querySelector('#question-nav-overlay .question-nav-panel');
+      if (!panel) return;
+      var collapsed = panel.classList.toggle('qnav-collapsed');
+      var btn = panel.querySelector('.qnav-collapse-btn');
+      var icon = panel.querySelector('.qnav-collapse-icon');
+      if (btn) {
+        btn.setAttribute('aria-label', collapsed ? 'Expand panel' : 'Collapse panel');
+        btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+      }
+      if (icon) {
+        icon.className = collapsed
+          ? 'fas fa-chevron-up qnav-collapse-icon'
+          : 'fas fa-chevron-down qnav-collapse-icon';
+      }
+    },
+
+    _resetCollapse: function() {
+      var panel = document.querySelector('#question-nav-overlay .question-nav-panel');
+      if (!panel) return;
+      panel.classList.remove('qnav-collapsed');
+      var btn = panel.querySelector('.qnav-collapse-btn');
+      var icon = panel.querySelector('.qnav-collapse-icon');
+      if (btn) {
+        btn.setAttribute('aria-label', 'Collapse panel');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      if (icon) {
+        icon.className = 'fas fa-chevron-down qnav-collapse-icon';
+      }
+    },
+
+    _headerActionsHtml: function() {
+      return '<div class="qnav-header-actions">' +
+        '<button type="button" class="qnav-collapse-btn" onclick="QuestionNav.toggleCollapse()" aria-label="Collapse panel" aria-expanded="true">' +
+          '<i class="fas fa-chevron-down qnav-collapse-icon"></i>' +
+        '</button>' +
+        '<button type="button" class="qnav-close-btn" onclick="QuestionNav.close()" aria-label="Close">' +
+          '<i class="fas fa-times"></i>' +
+        '</button>' +
+        '</div>';
     },
 
     // --- answer handlers ---
@@ -173,12 +217,12 @@
         '<span class="qnav-title">' + this._escapeHtml(letter) + '</span>' +
         '<span class="qnav-question-text qnav-question-text-header">Text ' + this._escapeHtml(letter) + '</span>' +
         '</div>' +
-        '<button type="button" class="qnav-close-btn" onclick="QuestionNav.close()" aria-label="Close">' +
-        '<i class="fas fa-times"></i></button>' +
+        this._headerActionsHtml() +
         '</div>' +
         '<div class="qnav-body">' +
         '<div class="b1-reading2-letter-modal-card">' +
         '<div class="b1-reading2-letter-modal-text">' + safeBody + '</div></div></div>';
+      this._resetCollapse();
       overlay.style.display = 'flex';
     },
 
@@ -206,9 +250,7 @@
           '<span class="qnav-title">' + titleText + '</span>' +
           headerQuestion +
         '</div>' +
-        '<button class="qnav-close-btn" onclick="QuestionNav.close()">' +
-          '<i class="fas fa-times"></i>' +
-        '</button>' +
+        this._headerActionsHtml() +
         '</div>' +
         '<div class="qnav-body">' + inner + '</div>';
     },

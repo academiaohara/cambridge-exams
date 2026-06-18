@@ -188,6 +188,51 @@
   transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
+.qnav-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.qnav-collapse-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  background: #fff;
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+  color: #afafaf;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.qnav-collapse-btn:hover {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+.question-nav-panel.qnav-collapsed {
+  max-height: none;
+  overflow: hidden;
+}
+
+.question-nav-panel.qnav-collapsed .qnav-body {
+  display: none;
+}
+
+.question-nav-panel.qnav-collapsed .qnav-header {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
 .qnav-close-btn:hover {
   background: #fff5f5;
   border-color: #fca5a5;
@@ -371,7 +416,8 @@
     padding: 0 12px;
   }
 
-  #question-nav-overlay .qnav-close-btn {
+  #question-nav-overlay .qnav-close-btn,
+  #question-nav-overlay .qnav-collapse-btn {
     width: 38px;
     height: 38px;
   }
