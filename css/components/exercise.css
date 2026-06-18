@@ -1694,7 +1694,6 @@ body:has(.dashboard-layout--exercise) #main-content {
     min-height: 50px;
     padding: 0;
     border-radius: 14px;
-    font-size: 0;
     gap: 0;
     display: inline-flex;
     align-items: center;
@@ -1702,14 +1701,17 @@ body:has(.dashboard-layout--exercise) #main-content {
   }
 
   /* Hide all text labels — only icons/symbols remain */
-  .dashboard-layout--exercise .exercise-footer button span:not(.material-symbols-outlined):not(.btn-toggle-answer-icon) {
-    display: none;
+  .dashboard-layout--exercise .exercise-footer button > span:not(.material-symbols-outlined):not(.btn-toggle-answer-icon),
+  .dashboard-layout--exercise .exercise-footer button > [data-i18n],
+  .dashboard-layout--exercise .exercise-footer .btn-toggle-answer-label {
+    display: none !important;
   }
 
   .dashboard-layout--exercise .exercise-footer button i,
   .dashboard-layout--exercise .exercise-footer button .material-symbols-outlined,
   .dashboard-layout--exercise .exercise-footer button .btn-toggle-answer-icon {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
+    margin: 0;
   }
 }
 

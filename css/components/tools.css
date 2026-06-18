@@ -1403,7 +1403,7 @@
   /* Rail: the visible icon bar at the bottom */
   .tools-sidebar--right-column .sidebar-rail {
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     width: 100%;
     gap: 0;
@@ -1417,8 +1417,12 @@
 
   .tools-sidebar--right-column .sidebar-tools-list {
     flex-direction: row;
-    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1;
     width: 100%;
+    max-width: 340px;
     gap: 0;
   }
 
