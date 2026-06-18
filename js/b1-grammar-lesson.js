@@ -799,24 +799,33 @@
 
     var score = state.totalChecked > 0
       ? state.correctCount + '/' + state.totalChecked + ' correct'
-      : 'Exercise complete';
+      : 'Exercise completed';
 
     var modal = document.createElement('div');
     modal.id = 'bgl-complete-modal';
     modal.className = 'bgl-complete-overlay';
     modal.innerHTML =
-      '<div class="bgl-complete-box">' +
-        '<div class="bgl-complete-icon"><span class="material-symbols-outlined">celebration</span></div>' +
-        '<h2>¡Felicidades!</h2>' +
+      '<div class="bgl-complete-box" role="dialog" aria-labelledby="bgl-complete-title" aria-modal="true">' +
+        '<div class="bgl-complete-icon" aria-hidden="true">' +
+          '<span class="material-symbols-outlined">celebration</span>' +
+        '</div>' +
+        '<h2 class="bgl-complete-title" id="bgl-complete-title">Congratulations!</h2>' +
+        '<p class="bgl-complete-text">You completed this exercise.</p>' +
         '<p class="bgl-complete-score">' + esc(score) + '</p>' +
-        '<button type="button" class="bgl-complete-btn" id="bgl-complete-back">Volver a la etapa</button>' +
+        '<button type="button" class="bgl-complete-btn" id="bgl-complete-back">Back to unit</button>' +
       '</div>';
     document.body.appendChild(modal);
-    modal.querySelector('#bgl-complete-back').addEventListener('click', function() {
+
+    function goBack() {
       modal.remove();
       if (state.backFn) {
         try { new Function(state.backFn)(); } catch (e) { console.error(e); }
       }
+    }
+
+    modal.querySelector('#bgl-complete-back').addEventListener('click', goBack);
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) goBack();
     });
   }
 
