@@ -36,7 +36,7 @@
       }
 
       if (state.view === 'login') {
-        if (this.hasAppAccess()) {
+        if (AppState.isAuthenticated) {
           Dashboard.render();
           history.replaceState({ view: 'dashboard' }, '', '/');
           return;
@@ -45,7 +45,7 @@
         return;
       }
       if (state.view === 'register') {
-        if (this.hasAppAccess()) {
+        if (AppState.isAuthenticated) {
           Dashboard.render();
           history.replaceState({ view: 'dashboard' }, '', '/');
           return;
@@ -64,6 +64,11 @@
         } else if (typeof Landing !== 'undefined') {
           Landing.render();
         }
+        return;
+      }
+
+      if (state.view === 'profile' && !AppState.isAuthenticated) {
+        if (typeof Auth !== 'undefined') Auth.navigateTo('/login');
         return;
       }
 
@@ -398,7 +403,8 @@
           return;
         }
         if (state.view === 'landing' || state.view === 'welcome' ||
-            state.view === 'login' || state.view === 'register') {
+            state.view === 'login' || state.view === 'register' ||
+            state.view === 'profile') {
           App.handleRoute(state);
           return;
         }

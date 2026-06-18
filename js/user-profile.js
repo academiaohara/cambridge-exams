@@ -343,6 +343,13 @@
 
     // ── Full Profile Section (rendered inside main-content) ────────────
     renderProfileSection: function () {
+      if (typeof AppState !== 'undefined' && !AppState.isAuthenticated) {
+        if (typeof Auth !== 'undefined' && Auth.navigateTo) {
+          Auth.navigateTo('/login');
+        }
+        return;
+      }
+
       var content = document.getElementById('main-content');
       if (!content) return;
 
