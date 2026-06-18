@@ -194,21 +194,90 @@
 .reading-text-enhanced {
   font-size: 1.15rem;
   line-height: 1.9;
-  color: var(--text-dark);
-  background: #fafcff;
-  padding: 28px;
-  border-radius: 20px;
-  border: 1px solid var(--border-light);
+  color: #3c3c3c;
+  background: #fff;
+  padding: 28px 32px 32px;
+  border-radius: 16px;
+  border: 2px solid #e5e5e5;
+  border-top: 4px solid var(--ex-duo-orange, #ff9600);
   position: relative;
-  text-align: justify;
+  text-align: left;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  font-family: 'Nunito', sans-serif;
 }
 
 .reading-text-enhanced p {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .reading-text-enhanced p:last-child {
   margin-bottom: 0;
+}
+
+/* Duolingo-style article title inside the reading card */
+.reading-text-enhanced .content-title-block {
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.reading-text-enhanced .content-title {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.25;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  letter-spacing: -0.01em;
+}
+
+.reading-text-enhanced .content-subtitle {
+  font-size: 0.98rem;
+  color: #888;
+  font-style: italic;
+  margin-top: 4px;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  line-height: 1.45;
+}
+
+/* Drop cap on first paragraph for Duolingo-style reading feel */
+.reading-text-enhanced .toggle-text-section p:first-of-type::first-letter {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 3em;
+  font-weight: 700;
+  color: var(--ex-duo-orange, #ff9600);
+  float: left;
+  line-height: 0.8;
+  margin-right: 6px;
+  margin-top: 6px;
+}
+
+/* Subtle paragraph hover highlight (reading text only, not cloze/gap paragraphs) */
+.reading-text-enhanced .toggle-text-section p {
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.reading-text-enhanced .toggle-text-section p:hover {
+  background: #fffbf5;
+}
+
+/* Reading card icon badge in top-right corner */
+.reading-text-enhanced::after {
+  content: '\f518';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 1rem;
+  color: var(--ex-duo-orange, #ff9600);
+  opacity: 0.35;
+  pointer-events: none;
 }
 
 .explanations-section {
@@ -970,9 +1039,13 @@
   }
 
   .reading-text-enhanced {
-    padding: 18px;
+    padding: 18px 20px 22px;
     font-size: 1.02rem;
     line-height: 1.75;
+  }
+
+  .reading-text-enhanced .content-title {
+    font-size: 1.25rem;
   }
 
   .content-section-header {
@@ -1016,9 +1089,12 @@
   }
 
   .exercise-description,
-  .reading-text-enhanced,
   .explanations-section {
     padding: 14px;
+  }
+
+  .reading-text-enhanced {
+    padding: 14px 16px 18px;
   }
 }
 
@@ -1169,10 +1245,18 @@
   }
 
   .reading-text-enhanced {
-    padding: 14px;
-    border-radius: 16px;
+    padding: 14px 16px 18px;
+    border-radius: 14px;
     font-size: 0.96rem;
     line-height: 1.65;
+  }
+
+  .reading-text-enhanced .content-title {
+    font-size: 1.15rem;
+  }
+
+  .reading-text-enhanced .toggle-text-section p:first-of-type::first-letter {
+    font-size: 2.4em;
   }
 
   .content-section-header {
@@ -1445,9 +1529,10 @@ body:has(.dashboard-layout--exercise) #main-content {
 .dashboard-layout--exercise .reading-text-enhanced {
   background: #fff;
   border: 2px solid var(--ex-duo-border);
+  border-top: 4px solid var(--ex-duo-orange);
   border-radius: 16px;
-  box-shadow: none;
-  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  padding: 28px 32px 32px;
 }
 
 .dashboard-layout--exercise .content-section-header {
