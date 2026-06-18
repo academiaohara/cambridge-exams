@@ -1207,46 +1207,45 @@
   position: static;
   bottom: auto;
   margin: 0;
-  border-radius: 20px;
+  border-radius: 0;
   overflow: hidden;
-  border: 1px solid rgba(45, 46, 95, 0.08);
-  box-shadow: 0 4px 20px rgba(45, 46, 95, 0.08);
-  background: rgba(255, 255, 255, 0.98);
+  border: none;
+  box-shadow: none;
+  background: transparent;
   min-height: 320px;
   height: 100%;
+  flex-direction: column;
 }
 
 .tools-sidebar--right-column .sidebar-rail {
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 16px 12px;
-  background: #f7f7f7;
+  padding: 12px 10px;
+  background: transparent;
   border-top: none;
-  border-left: 1px solid rgba(0, 0, 0, 0.06);
-  order: 2;
-  width: 72px;
+  border-bottom: 1px solid rgba(45, 46, 95, 0.08);
+  width: 100%;
   flex-shrink: 0;
 }
 
-.tools-sidebar--right-column {
-  flex-direction: row-reverse;
-}
-
 .tools-sidebar--right-column .sidebar-tools-list {
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
   width: 100%;
 }
 
 .tools-sidebar--right-column .sidebar-tool-btn {
-  width: 48px;
-  min-width: 48px;
-  height: 48px;
-  border-radius: 16px;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  border-radius: 14px;
   padding: 0;
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .tools-sidebar--right-column .sidebar-tool-btn .tool-label {
@@ -1254,15 +1253,18 @@
 }
 
 .tools-sidebar--right-column .sidebar-panel {
-  order: 1;
   flex: 1;
   min-width: 0;
+  width: 100%;
   max-height: none;
   border-top: none;
-  border-right: 1px solid rgba(0, 0, 0, 0.06);
+  border-right: none;
   box-shadow: none;
   display: flex;
   flex-direction: column;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 12px;
+  margin: 0 4px 8px;
 }
 
 .tools-sidebar--right-column.open .sidebar-panel {
@@ -1273,15 +1275,10 @@
   display: none;
 }
 
-.tools-sidebar--right-column:not(.open) .sidebar-rail {
-  width: 100%;
-  border-left: none;
-}
-
 .tools-sidebar--right-column .active-tool-content {
   flex: 1;
   overflow-y: auto;
-  max-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 120px);
+  max-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 140px);
 }
 
 .tools-sidebar--right-column .sidebar-panel-header {
@@ -1293,17 +1290,17 @@
     position: sticky;
     bottom: 0;
     flex-direction: column;
-    margin: 16px -14px -14px;
-    border-radius: 0 0 20px 20px;
+    margin: 0;
+    border-radius: 0;
+    background: #ece8f8;
   }
 
   .tools-sidebar--right-column .sidebar-rail {
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    border-left: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
-    order: 2;
+    border-bottom: 1px solid rgba(45, 46, 95, 0.08);
+    padding: 10px 8px;
   }
 
   .tools-sidebar--right-column .sidebar-tools-list {
@@ -1311,7 +1308,8 @@
   }
 
   .tools-sidebar--right-column .sidebar-panel {
-    order: 1;
     max-height: 45vh;
+    margin: 0;
+    border-radius: 0;
   }
 }

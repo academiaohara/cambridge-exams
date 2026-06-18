@@ -278,17 +278,6 @@
       if (showTools) {
         toolsBarHTML = `
           <div class="tools-sidebar tools-sidebar--right-column" id="tools-sidebar">
-            <div class="sidebar-panel" id="sidebar-panel">
-              <div class="sidebar-panel-header">
-                <span class="sidebar-panel-title" id="sidebar-panel-title"></span>
-                <button class="sidebar-panel-close" onclick="Tools.toggleSidebar()">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-              <div id="active-tool-content" class="active-tool-content">
-                <p class="placeholder-text" data-i18n="activateTool">Activate a tool to see details here.</p>
-              </div>
-            </div>
             <div class="sidebar-rail">
               <div class="sidebar-tools-list">
                 <button class="sidebar-tool-btn" id="tab-notes" onclick="Tools.switchTool('notes')" data-tooltip="HIGHLIGHT">
@@ -308,6 +297,17 @@
                   <i class="fas fa-lightbulb"></i><span class="tool-label">TIPS</span>
                 </button>
                 ` : ''}
+              </div>
+            </div>
+            <div class="sidebar-panel" id="sidebar-panel">
+              <div class="sidebar-panel-header">
+                <span class="sidebar-panel-title" id="sidebar-panel-title"></span>
+                <button class="sidebar-panel-close" onclick="Tools.toggleSidebar()">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <div id="active-tool-content" class="active-tool-content">
+                <p class="placeholder-text" data-i18n="activateTool">Activate a tool to see details here.</p>
               </div>
             </div>
           </div>`;
