@@ -104,6 +104,20 @@
       var skipLevelPicker = activeSection === 'learning' && !levelFilter;
       var activeLevel = levelFilter ? levelFilter.toUpperCase() : null;
       var activeEtapaKey = options.etapaKey || null;
+      if (activeEtapaKey && activeSection === 'learning' && activeLevel) {
+        if (!BentoGrid._courseIndexData || BentoGrid._courseLevel !== activeLevel) {
+          await BentoGrid._loadCourseIndexForLevel(activeLevel);
+        }
+        var normalizedEtapaKey = BentoGrid._resolveCourseEtapaKey(activeSection, activeLevel, activeEtapaKey);
+        if (normalizedEtapaKey !== String(activeEtapaKey)) {
+          activeEtapaKey = normalizedEtapaKey;
+          if (options.fromRoute && !options.skipHistory) {
+            options = Object.assign({}, options, { replaceHistory: true });
+          }
+        } else {
+          activeEtapaKey = normalizedEtapaKey;
+        }
+      }
 
       // Vocabulary uses practice categories (phrasal verbs, idioms, word formation), not B1/B2/C1.
       if (activeSection === 'vocabulary') {
@@ -124,9 +138,14 @@
       if (activeEtapaKey) {
         courseState.view = 'courseEtapa';
         courseState.etapaKey = activeEtapaKey;
+        BentoGrid._currentEtapaKey = activeEtapaKey;
+      } else {
+        BentoGrid._currentEtapaKey = null;
       }
       if (!options.fromRoute && !options.skipHistory) {
         history.pushState(courseState, '', Router.stateToPath(courseState));
+      } else if (options.replaceHistory && !options.skipHistory) {
+        history.replaceState(courseState, '', Router.stateToPath(courseState));
       }
 
       var sidebars = { left: '', right: '' };
@@ -322,6 +341,41 @@
         offset += BentoGrid._countProgressTests(idx);
       }
       return offset;
+    },
+
+    _getGlobalStageOffsetSync: function(levelId) {
+      var LEVEL_ORDER = ['B1', 'B2', 'C1'];
+      var offset = 0;
+      for (var i = 0; i < LEVEL_ORDER.length; i++) {
+        if (LEVEL_ORDER[i] === levelId) break;
+        var idx = BentoGrid._courseIndexByLevel && BentoGrid._courseIndexByLevel[LEVEL_ORDER[i]];
+        if (idx) offset += BentoGrid._countProgressTests(idx);
+      }
+      return offset;
+    },
+
+    _resolveCourseEtapaKey: function(section, levelId, etapaOrBlockKey) {
+      var key = String(etapaOrBlockKey || '');
+      if (!key) return key;
+      if (section !== 'learning') return key;
+      if (/^stage-\d+$/.test(key)) return key;
+
+      var indexData = BentoGrid._courseIndexData;
+      if (!indexData || (levelId && BentoGrid._courseLevel !== levelId)) {
+        return /^pt\d+$/.test(key) ? key : 'stage-' + key;
+      }
+
+      var stageOffset = BentoGrid._getGlobalStageOffsetSync(levelId || BentoGrid._courseLevel);
+      var etapasList = BentoGrid._getCourseEtapasList('learning', indexData, stageOffset);
+      for (var i = 0; i < etapasList.length; i++) {
+        var entry = etapasList[i];
+        if (entry.type !== 'etapa') continue;
+        var hasBlock = entry.items.some(function(item) {
+          return item.block != null && String(item.block) === key;
+        });
+        if (hasBlock) return entry.key;
+      }
+      return 'stage-' + key;
     },
 
     _loadCourseIndexForLevel: async function(level) {
@@ -845,10 +899,12 @@
 
       var stageOffset = section === 'learning' ? await BentoGrid._getGlobalStageOffset(levelId) : 0;
       var etapasList = BentoGrid._getCourseEtapasList(section, indexData, stageOffset);
-      var etapa = etapasList.find(function(e) { return e.type === 'etapa' && e.key === String(etapaKey); });
+      var resolvedEtapaKey = BentoGrid._resolveCourseEtapaKey(section, levelId, etapaKey);
+      var etapa = etapasList.find(function(e) { return e.type === 'etapa' && e.key === String(resolvedEtapaKey); });
       if (!etapa) {
         return '<div class="fe-error">Stage not found.</div>';
       }
+      etapaKey = resolvedEtapaKey;
 
       await BentoGrid._ensureCourseUnitMeta(levelId, etapa.items);
 
@@ -1423,6 +1479,9 @@
       var content = document.getElementById('main-content');
       if (!content) return;
       var level = BentoGrid._courseLevel || AppState.currentLevel || 'C1';
+      if (!BentoGrid._courseIndexData || BentoGrid._courseLevel !== level) {
+        await BentoGrid._loadCourseIndexForLevel(level);
+      }
 
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
@@ -1458,8 +1517,10 @@
         var _foundForBack = BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
         if (_foundForBack && _foundForBack.block != null) blockKey = String(_foundForBack.block);
       }
-      var courseBackFn = blockKey && !/^pt\d+$/.test(blockKey)
-        ? 'BentoGrid.openCourseEtapa(\'' + courseSection + '\', \'' + level + '\', \'' + blockKey + '\')'
+      var etapaBackKey = BentoGrid._currentEtapaKey
+        || (blockKey && !/^pt\d+$/.test(blockKey) ? BentoGrid._resolveCourseEtapaKey(courseSection, level, blockKey) : null);
+      var courseBackFn = etapaBackKey
+        ? 'BentoGrid.openCourseEtapa(\'' + courseSection + '\', \'' + level + '\', \'' + etapaBackKey + '\')'
         : 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')';
 
       // Show loading in center
@@ -1530,8 +1591,10 @@
         var foundItem = BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
         if (foundItem && foundItem.block != null) blockKey = String(foundItem.block);
       }
-      courseBackFn = blockKey && !/^pt\d+$/.test(blockKey)
-        ? 'BentoGrid.openCourseEtapa(\'' + courseSection + '\', \'' + level + '\', \'' + blockKey + '\')'
+      etapaBackKey = BentoGrid._currentEtapaKey
+        || (blockKey && !/^pt\d+$/.test(blockKey) ? BentoGrid._resolveCourseEtapaKey(courseSection, level, blockKey) : null);
+      courseBackFn = etapaBackKey
+        ? 'BentoGrid.openCourseEtapa(\'' + courseSection + '\', \'' + level + '\', \'' + etapaBackKey + '\')'
         : 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')';
       var backFn = courseBackFn;
       BentoGrid._courseUnitBackFn = backFn;
