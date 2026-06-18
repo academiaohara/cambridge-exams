@@ -1189,6 +1189,36 @@
 
 /* ── Test exercise layout: full-width content, no white card ─────────── */
 
+:root {
+  --ex-duo-orange: #ff9600;
+  --ex-duo-orange-dark: #e68600;
+  --ex-duo-orange-hover: #ffa31a;
+  --ex-duo-orange-light: #fff4e5;
+  --ex-duo-border: #e5e5e5;
+  --ex-duo-text: #4b4b4b;
+  --ex-duo-text-muted: #afafaf;
+  --ex-duo-canvas: #f7f7f7;
+  --ex-duo-info-bg: #ddf4ff;
+  --ex-duo-info-border: #84d8ff;
+}
+
+body:has(.dashboard-layout--exercise) {
+  background: var(--ex-duo-canvas);
+}
+
+body:has(.dashboard-layout--exercise) .app-container,
+body:has(.dashboard-layout--exercise) #main-content {
+  background: var(--ex-duo-canvas);
+}
+
+.dashboard-layout--exercise {
+  background: var(--ex-duo-canvas);
+}
+
+.dashboard-layout--exercise .dashboard-center--exercise {
+  background: var(--ex-duo-canvas);
+}
+
 .dashboard-layout--exercise .exercise-container {
   background: transparent;
   border-radius: 0;
@@ -1202,15 +1232,161 @@
   width: 100%;
 }
 
-/* ── Duolingo-style exercise footer ──────────────────────────────────── */
-
-:root {
-  --ex-duo-green: #58cc02;
-  --ex-duo-green-dark: #58a700;
-  --ex-duo-green-hover: #61d802;
-  --ex-duo-border: #e5e5e5;
-  --ex-duo-text-muted: #afafaf;
+/* Header & meta — Duolingo-inspired */
+.dashboard-layout--exercise .exercise-title h2 {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--ex-duo-text);
+  letter-spacing: -0.01em;
 }
+
+.dashboard-layout--exercise .exercise-subtitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.dashboard-layout--exercise .exercise-badge {
+  background: var(--ex-duo-orange);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 5px 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 0 var(--ex-duo-orange-dark);
+}
+
+.dashboard-layout--exercise .score-display {
+  background: #fff;
+  color: var(--ex-duo-text);
+  border: 2px solid var(--ex-duo-border);
+  box-shadow: none;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.dashboard-layout--exercise .part-score-display {
+  background: var(--ex-duo-orange);
+  color: #fff;
+  box-shadow: 0 2px 0 var(--ex-duo-orange-dark);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.dashboard-layout--exercise .exercise-info {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border);
+  border-radius: 16px;
+  box-shadow: none;
+  padding: 12px 16px;
+}
+
+.dashboard-layout--exercise .exercise-info-left {
+  font-weight: 700;
+  color: #777;
+}
+
+.dashboard-layout--exercise .exercise-duration,
+.dashboard-layout--exercise .exercise-timer {
+  font-weight: 800;
+  color: var(--ex-duo-text);
+  font-size: 0.95rem;
+}
+
+.dashboard-layout--exercise .exercise-duration i,
+.dashboard-layout--exercise .exercise-timer i {
+  color: var(--ex-duo-orange);
+}
+
+.dashboard-layout--exercise .part-nav-cell {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 2px solid var(--ex-duo-border);
+  background: #fff;
+  color: #afafaf;
+  font-weight: 800;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 0 #e5e5e5;
+}
+
+.dashboard-layout--exercise .part-nav-cell:hover {
+  border-color: #cfcfcf;
+  background: #fafafa;
+  color: #777;
+}
+
+.dashboard-layout--exercise .part-nav-cell.active {
+  background: var(--ex-duo-orange);
+  color: #fff;
+  border-color: var(--ex-duo-orange-dark);
+  box-shadow: 0 3px 0 var(--ex-duo-orange-dark);
+}
+
+.dashboard-layout--exercise .part-nav-cell.completed {
+  background: var(--ex-duo-orange-light);
+  border-color: #ffc78a;
+  color: var(--ex-duo-orange-dark);
+}
+
+.dashboard-layout--exercise .part-nav-cell.completed.active {
+  background: var(--ex-duo-orange);
+  color: #fff;
+  border-color: var(--ex-duo-orange-dark);
+}
+
+.dashboard-layout--exercise .part-nav-check {
+  background: var(--ex-duo-orange);
+}
+
+.dashboard-layout--exercise .exercise-description {
+  background: var(--ex-duo-info-bg);
+  border-left: 3px solid var(--ex-duo-info-border);
+  border-radius: 14px;
+  color: #3c3c3c;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.dashboard-layout--exercise .reading-text-enhanced {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border);
+  border-radius: 16px;
+  box-shadow: none;
+  padding: 24px;
+}
+
+.dashboard-layout--exercise .content-section-header {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border);
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+.dashboard-layout--exercise .toggle-view-btn.active {
+  background: var(--ex-duo-orange);
+  border-color: var(--ex-duo-orange-dark);
+  box-shadow: 0 2px 0 var(--ex-duo-orange-dark);
+}
+
+.dashboard-layout--exercise .btn-exit {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border);
+  color: #afafaf;
+}
+
+.dashboard-layout--exercise .btn-exit:hover {
+  background: #fff5f5;
+  border-color: #fca5a5;
+  color: var(--incorrect);
+}
+
+/* ── Duolingo-style exercise footer (orange primary) ─────────────────── */
 
 .dashboard-layout--exercise .exercise-footer {
   display: flex;
@@ -1251,23 +1427,23 @@
 .dashboard-layout--exercise .btn-check,
 .dashboard-layout--exercise .btn-next,
 .dashboard-layout--exercise .btn-finish-section {
-  background: var(--ex-duo-green);
+  background: var(--ex-duo-orange);
   color: #fff;
   border: none;
-  box-shadow: 0 4px 0 var(--ex-duo-green-dark);
+  box-shadow: 0 4px 0 var(--ex-duo-orange-dark);
 }
 
 .dashboard-layout--exercise .btn-check:hover:not(:disabled),
 .dashboard-layout--exercise .btn-next:hover,
 .dashboard-layout--exercise .btn-finish-section:hover {
-  background: var(--ex-duo-green-hover);
+  background: var(--ex-duo-orange-hover);
 }
 
 .dashboard-layout--exercise .btn-check:active:not(:disabled),
 .dashboard-layout--exercise .btn-next:active,
 .dashboard-layout--exercise .btn-finish-section:active {
   transform: translateY(2px);
-  box-shadow: 0 1px 0 var(--ex-duo-green-dark);
+  box-shadow: 0 1px 0 var(--ex-duo-orange-dark);
 }
 
 .dashboard-layout--exercise .btn-check:disabled {
@@ -1282,10 +1458,10 @@
 .dashboard-layout--exercise .btn-reset,
 .dashboard-layout--exercise .btn-explanations,
 .dashboard-layout--exercise .btn-toggle-answer {
-  background: transparent;
+  background: #fff;
   border: 2px solid var(--ex-duo-border);
   color: #777;
-  box-shadow: none;
+  box-shadow: 0 2px 0 #e5e5e5;
 }
 
 .dashboard-layout--exercise .btn-prev:hover,
@@ -1294,7 +1470,7 @@
 .dashboard-layout--exercise .btn-toggle-answer:hover {
   color: #555;
   border-color: #cfcfcf;
-  background: rgba(255, 255, 255, 0.6);
+  background: #fafafa;
 }
 
 .dashboard-layout--exercise .btn-prev:active,
@@ -1302,6 +1478,7 @@
 .dashboard-layout--exercise .btn-explanations:active,
 .dashboard-layout--exercise .btn-toggle-answer:active {
   transform: translateY(1px);
+  box-shadow: 0 1px 0 #e5e5e5;
 }
 
 @media (max-width: 768px) {
