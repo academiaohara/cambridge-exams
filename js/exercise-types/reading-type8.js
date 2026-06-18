@@ -55,7 +55,8 @@
           'b1-reading2-chip-incorrect',
           'b1-reading2-chip-unanswered',
           'b1-reading2-chip-expl-show',
-          'b1-reading2-chip-answer-toggle-correct'
+          'b1-reading2-chip-answer-toggle-correct',
+          'b1-reading2-chip-key'
         );
         if (isDisabled && isSelected) {
           if (selClasses.indexOf('b1-reading2-select-correct') !== -1) {
@@ -64,6 +65,14 @@
             chip.classList.add('b1-reading2-chip-incorrect');
           } else if (selClasses.indexOf('b1-reading2-select-unanswered') !== -1) {
             chip.classList.add('b1-reading2-chip-unanswered');
+          }
+        }
+        if (isDisabled && !isSelected && letter && AppState.currentExercise) {
+          var qList = AppState.currentExercise.content.questions || [];
+          var qNum = parseInt(wrap.getAttribute('data-qnum'), 10);
+          var qObj = qList.find(function(x) { return x.number === qNum; });
+          if (qObj && qObj.correct === letter && value && value !== qObj.correct) {
+            chip.classList.add('b1-reading2-chip-key');
           }
         }
         if (isSelected && selClasses.indexOf('b1-reading2-select-expl-show') !== -1) {

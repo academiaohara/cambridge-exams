@@ -253,17 +253,23 @@
 }
 
 .b1-reading2-chip-expl-show {
-  border-color: var(--ex-duo-orange, #f47417) !important;
-  background: var(--ex-duo-orange-light, #fff0e6) !important;
-  box-shadow: 0 3px 0 var(--ex-duo-orange-dark, #d45f0a) !important;
-  color: var(--ex-duo-orange-dark, #d45f0a) !important;
+  border-color: var(--ex-duo-blue, #1cb0f6) !important;
+  background: var(--ex-duo-blue-light, #ddf4ff) !important;
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6) !important;
+  color: var(--ex-duo-blue-dark, #1899d6) !important;
 }
 
-.b1-reading2-chip-answer-toggle-correct {
-  border-color: #7c3aed !important;
-  background: #f5f3ff !important;
-  box-shadow: 0 3px 0 #6d28d9 !important;
-  color: #5b21b6 !important;
+.b1-reading2-chip-answer-toggle-correct,
+.b1-reading2-chip-key {
+  border-color: var(--ex-duo-blue, #1cb0f6) !important;
+  background: var(--ex-duo-blue-light, #ddf4ff) !important;
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6) !important;
+  color: var(--ex-duo-blue-dark, #1899d6) !important;
+}
+
+.b1-reading2-chip-key:not(.b1-reading2-chip-selected) {
+  outline: 2px solid var(--ex-duo-blue, #1cb0f6);
+  outline-offset: 1px;
 }
 
 .b1-reading2-select-sr {
@@ -278,32 +284,8 @@
   border: 0;
 }
 
-.b1-reading2-picker-wrap[data-correct]::after {
-  content: attr(data-correct);
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  background: var(--ex-duo-blue-dark, #1899d6);
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 10px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  white-space: nowrap;
-  margin-bottom: 8px;
-  display: none;
-  z-index: 20;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .b1-reading2-picker-wrap[data-correct]:hover::after {
-    display: block;
-  }
-}
-
 .b1-reading2-picker-wrap[data-correct] {
-  cursor: help;
+  cursor: default;
 }
 
 .question-nav-row-letters {
@@ -436,23 +418,23 @@
   color: #64748b;
 }
 
-/* Explanation mode: letter select shows the key only, in orange (not user attempt colours). */
+/* Explanation mode: selected answer chip shows the key in blue */
 .explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show,
 .explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show:disabled,
 .explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show.b1-reading2-select-correct,
 .explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show.b1-reading2-select-incorrect,
 .explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show.b1-reading2-select-unanswered,
-.explanation-mode-text .b1-reading2-select.b1-reading2-select-expl-show.b1-reading2-select-answer-toggle-correct {
+.explanation-mode-text .b1-reading2-select.b1-reading2-select-answer-toggle-correct {
   pointer-events: none;
   min-width: 2.75rem !important;
   height: 36px !important;
   padding: 0 28px 0 10px !important;
-  border: 2px solid #ea580c !important;
-  background-color: #fff7ed !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23c2410c' d='M5 7L1 3h8z'/%3E%3C/svg%3E") !important;
+  border: 2px solid var(--ex-duo-blue, #1cb0f6) !important;
+  background-color: var(--ex-duo-blue-light, #ddf4ff) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%231899d6' d='M5 7L1 3h8z'/%3E%3C/svg%3E") !important;
   background-repeat: no-repeat !important;
   background-position: right 8px center !important;
-  color: #c2410c !important;
+  color: var(--ex-duo-blue-dark, #1899d6) !important;
 }
 
 .explanation-mode-text .b1-reading2-preview {
@@ -475,12 +457,13 @@
   display: none;
   margin-top: 12px;
   padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px solid #fed7aa;
-  background: #fffbeb;
+  border-radius: 16px;
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
   font-size: 0.95rem;
   line-height: 1.65;
-  color: var(--text-dark, #1e293b);
+  color: var(--ex-duo-blue-dark, #1899d6);
 }
 
 .explanation-mode-text .b1-reading2-solution-expl {
@@ -520,13 +503,14 @@
 }
 
 .b1-reading2-preview.has-text.b1-reading2-preview-key-mode {
-  border-color: #7c3aed;
-  background: linear-gradient(180deg, #faf5ff 0%, #f3e8ff 100%);
-  box-shadow: 0 3px 0 #6d28d9;
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  background: linear-gradient(180deg, #f0f9ff 0%, var(--ex-duo-blue-light, #ddf4ff) 100%);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .b1-reading2-preview-key-mode .b1-reading2-preview-letter {
-  background: #7c3aed;
+  background: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .b1-reading2-preview-inner {
@@ -610,26 +594,182 @@
   line-height: 1.55;
 }
 
-/* Footer toggle: show key answer in purple (distinct from green correct / red incorrect after check). */
+/* Footer toggle: show key answer in blue */
 .b1-reading2-select:disabled.b1-reading2-select-answer-toggle-correct {
-  border-color: #7c3aed !important;
-  background-color: #f5f3ff !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%237c3aed' d='M5 7L1 3h8z'/%3E%3C/svg%3E") !important;
-  color: #5b21b6 !important;
+  border-color: var(--ex-duo-blue, #1cb0f6) !important;
+  background-color: var(--ex-duo-blue-light, #ddf4ff) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%231899d6' d='M5 7L1 3h8z'/%3E%3C/svg%3E") !important;
+  color: var(--ex-duo-blue-dark, #1899d6) !important;
 }
 
-.b1-reading2-letter-modal-text {
+/* B1 Reading Part 2 — letter nav row (A–H quick access) */
+.b1-reading2-letter-nav {
+  padding: 10px 0 14px;
+  gap: 8px;
+}
+
+.b1-reading2-letter-nav .question-nav-letter {
+  min-width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  background: #fff;
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+  color: var(--ex-duo-text, #4b4b4b);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
   font-size: 1rem;
-  line-height: 1.65;
-  color: var(--text-dark);
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.1s, transform 0.1s;
 }
 
-/* B1 Reading Part 2: in explanation mode only the active question keeps evidence marker chrome;
-   other [n]…[/n] spans stay as plain text (see .explanation-mode-text .evidence-explanation-mode in exercise.css). */
+.b1-reading2-letter-nav .question-nav-letter:hover {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  color: var(--ex-duo-blue-dark, #1899d6);
+  transform: translateY(-1px);
+}
+
+.b1-reading2-letter-nav .question-nav-letter:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.b1-reading2-letter-nav .question-nav-letter.answered {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+/* B1 R2 explanation question nav (6–10) — blue instead of orange */
+.question-nav-row-b1r2-expl.explanation-mode .question-nav-cell {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  background: #fff;
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+  color: var(--ex-duo-text, #4b4b4b);
+  border-radius: 14px;
+  min-width: 42px;
+  height: 42px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+}
+
+.question-nav-row-b1r2-expl.explanation-mode .question-nav-cell:hover {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+.question-nav-row-b1r2-expl .question-nav-cell.explanation-active {
+  background: var(--ex-duo-blue, #1cb0f6) !important;
+  border-color: var(--ex-duo-blue-dark, #1899d6) !important;
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6) !important;
+  color: #fff !important;
+}
+
+/* B1 R2 letter modal — Duolingo-style bottom sheet */
+.dashboard-layout--exercise #question-nav-overlay .question-nav-panel:has(.qnav-header--b1r2-duo) {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-bottom: none;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -4px 0 var(--ex-duo-border, #e5e5e5);
+  padding: 18px 22px max(22px, env(safe-area-inset-bottom));
+}
+
+.qnav-header--b1r2-duo {
+  border-bottom: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-image: none;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+.qnav-title--b1r2-duo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 14px;
+  background: var(--ex-duo-blue, #1cb0f6);
+  color: #fff;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.qnav-question-text--b1r2-duo {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 700;
+  color: var(--ex-duo-text, #4b4b4b);
+  font-size: 1.05rem;
+}
+
+.qnav-close-btn--duo {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  background: #fff;
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+  color: #afafaf;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qnav-close-btn--duo:hover {
+  background: #fff5f5;
+  border-color: #fca5a5;
+  color: var(--incorrect, #ff4b4b);
+}
+
+.b1-reading2-letter-modal-card {
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #f0f9ff 0%, var(--ex-duo-blue-light, #ddf4ff) 100%);
+  box-shadow: 0 4px 0 var(--ex-duo-blue-dark, #1899d6);
+  padding: 16px 18px;
+}
+
+.b1-reading2-letter-modal-card .b1-reading2-letter-modal-text,
+.b1-reading2-letter-modal-card .b1-reading2-notice-plain,
+.b1-reading2-letter-modal-card .reading-type8-text-content {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ex-duo-text, #3c3c3c);
+}
+
+.b1-reading2-letter-modal-card .reading-type8-text-title {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+/* B1 Reading Part 2: inactive questions keep evidence as plain text;
+   active question uses inline underline (distinct from solid blue answer chips). */
 .explanation-mode-text:has(.b1-reading2-people) .evidence-explanation-mode.evidence-marker:not(.evidence-active) {
   color: inherit;
   background: transparent;
   border-radius: 0;
   padding: 0;
   text-decoration: none;
+}
+
+.explanation-mode-text:has(.b1-reading2-people) .evidence-wrap.evidence-active-q .evidence-explanation-mode .evidence-core {
+  background: rgba(28, 176, 246, 0.12);
+  color: #0c6a96;
+  border-radius: 4px;
+  padding: 0 3px;
+  font-weight: 700;
+  text-decoration: underline wavy;
+  text-decoration-color: var(--ex-duo-blue, #1cb0f6);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  box-decoration-break: clone;
 }

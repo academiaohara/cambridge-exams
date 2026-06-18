@@ -794,23 +794,45 @@
   text-underline-offset: 3px;
 }
 
-/* B1 Reading Part 2 explanation strip: correct letter callout */
+/* B1 Reading Part 2 explanation strip: correct letter callout (blue Duolingo chip) */
 .eq-b1r2-correct-callout {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .eq-b1r2-correct-label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-medium);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ex-duo-blue-dark, #1899d6);
 }
 
-.eq-b1r2-correct-letter {
-  font-size: 1rem;
+.eq-b1r2-correct-letter,
+.eq-b1r2-correct-letter.eq-option.eq-option-correct {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  background: #fff;
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--ex-duo-blue-dark, #1899d6);
 }
 
 /* Evidence markers in text (rendered from [n]...[/n]) */

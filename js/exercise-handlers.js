@@ -965,6 +965,9 @@
           document.querySelectorAll('.b1-reading2-picker-wrap').forEach(function(w) {
             w.removeAttribute('data-correct');
           });
+          document.querySelectorAll('.b1-reading2-chip').forEach(function(chip) {
+            chip.classList.remove('b1-reading2-chip-key');
+          });
           if (typeof ReadingType8 !== 'undefined' && ReadingType8.syncAllB1Reading2Chips) {
             ReadingType8.syncAllB1Reading2Chips();
           }
