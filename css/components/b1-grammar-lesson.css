@@ -111,14 +111,9 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 0;
   min-width: 0;
-}
-
-.bgl-lesson--theory .bgl-card-shell {
-  justify-content: flex-start;
-  padding-top: 0;
 }
 
 .bgl-lesson--theory .bgl-unit-header {
