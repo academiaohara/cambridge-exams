@@ -6865,7 +6865,13 @@
       if (!container) return;
       var hearts = container.querySelectorAll('.cu-lesson-heart');
       hearts.forEach(function(heart, idx) {
-        heart.classList.toggle('cu-lesson-heart--empty', idx >= BentoGrid._cuLessonHearts);
+        var isEmpty = idx >= BentoGrid._cuLessonHearts;
+        heart.classList.toggle('cu-lesson-heart--empty', isEmpty);
+        var icon = heart.querySelector('i');
+        if (icon) {
+          icon.classList.toggle('fa-solid', !isEmpty);
+          icon.classList.toggle('fa-regular', isEmpty);
+        }
       });
     },
 
@@ -7081,22 +7087,55 @@
     },
 
     _buildCuLessonChrome: function() {
-      var backFn = BentoGrid._courseUnitBackFn || 'BentoGrid.openCourseSection(\'learning\')';
       return '<div class="cu-lesson-chrome" id="cu-lesson-chrome" style="display:none">' +
-        '<button type="button" class="cu-lesson-close" onclick="' + backFn + '" aria-label="Close">' +
+        '<button type="button" class="cu-lesson-close" onclick="BentoGrid._confirmCuLessonExit()" aria-label="Close">' +
           '<span class="material-symbols-outlined">close</span>' +
         '</button>' +
         '<div class="cu-lesson-progress-wrap">' +
           '<div class="cu-lesson-progress-fill" id="cu-lesson-progress-fill" style="width:0%"></div>' +
         '</div>' +
         '<div class="cu-lesson-hearts" id="cu-lesson-hearts" aria-label="Lives remaining">' +
-          '<span class="cu-lesson-heart"><span class="material-symbols-outlined">favorite</span></span>' +
-          '<span class="cu-lesson-heart"><span class="material-symbols-outlined">favorite</span></span>' +
-          '<span class="cu-lesson-heart"><span class="material-symbols-outlined">favorite</span></span>' +
-          '<span class="cu-lesson-heart"><span class="material-symbols-outlined">favorite</span></span>' +
-          '<span class="cu-lesson-heart"><span class="material-symbols-outlined">favorite</span></span>' +
+          '<span class="cu-lesson-heart"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>' +
+          '<span class="cu-lesson-heart"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>' +
+          '<span class="cu-lesson-heart"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>' +
+          '<span class="cu-lesson-heart"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>' +
+          '<span class="cu-lesson-heart"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>' +
         '</div>' +
       '</div>';
+    },
+
+    _confirmCuLessonExit: function() {
+      var existing = document.getElementById('cu-lesson-exit-modal');
+      if (existing) existing.remove();
+
+      var modal = document.createElement('div');
+      modal.id = 'cu-lesson-exit-modal';
+      modal.className = 'cu-lesson-exit-overlay';
+      modal.innerHTML =
+        '<div class="cu-lesson-exit-box">' +
+          '<img src="Assets/images/asomado.svg" alt="" class="cu-lesson-exit-fox" aria-hidden="true">' +
+          '<p class="cu-lesson-exit-text">Are you sure you want to leave? You will return to the stage you were on.</p>' +
+          '<div class="cu-lesson-exit-actions">' +
+            '<button type="button" class="cu-lesson-exit-btn cu-lesson-exit-btn--stay">Keep learning</button>' +
+            '<button type="button" class="cu-lesson-exit-btn cu-lesson-exit-btn--leave">Leave</button>' +
+          '</div>' +
+        '</div>';
+
+      document.body.appendChild(modal);
+
+      modal.querySelector('.cu-lesson-exit-btn--stay').addEventListener('click', function() {
+        modal.remove();
+      });
+
+      modal.querySelector('.cu-lesson-exit-btn--leave').addEventListener('click', function() {
+        modal.remove();
+        var backFn = BentoGrid._courseUnitBackFn || 'BentoGrid.openCourseSection(\'learning\')';
+        try { new Function(backFn)(); } catch (e) { console.error('Exit navigation failed:', e); }
+      });
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.remove();
+      });
     },
 
     _getCuExerciseSectionIndices: function() {
@@ -7133,6 +7172,15 @@
 
       layout.classList.toggle('dashboard-layout--lesson-focus', isExercise);
       centerSection.classList.toggle('course-center--lesson-focus', isExercise);
+
+      var appContainer = document.querySelector('.app-container');
+      if (appContainer) {
+        if (isExercise) {
+          appContainer.style.paddingLeft = '0';
+        } else if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) {
+          Dashboard._applySidebarState();
+        }
+      }
 
       var chrome = document.getElementById('cu-lesson-chrome');
       if (chrome) chrome.style.display = isExercise ? '' : 'none';

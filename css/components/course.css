@@ -6673,6 +6673,10 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 
 /* ── Duolingo-style lesson focus (Learning / Vocabulary exercises) ─────── */
 
+body:has(.dashboard-layout--lesson-focus) .app-container {
+  padding-left: 0 !important;
+}
+
 .dashboard-layout--lesson-focus {
   grid-template-columns: minmax(0, 1fr) !important;
   padding: 0 !important;
@@ -6748,16 +6752,14 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   flex-shrink: 0;
 }
 
-.cu-lesson-heart .material-symbols-outlined {
-  font-size: 1.35rem;
+.cu-lesson-heart i {
+  font-size: 1.2rem;
   color: #ff4b4b;
-  font-variation-settings: 'FILL' 1;
-  transition: color 0.2s ease, font-variation-settings 0.2s ease;
+  transition: color 0.2s ease;
 }
 
-.cu-lesson-heart--empty .material-symbols-outlined {
+.cu-lesson-heart--empty i {
   color: #e5e7eb;
-  font-variation-settings: 'FILL' 0;
 }
 
 .cu-lesson-item-hidden {
@@ -6883,21 +6885,21 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 }
 
 .cu-lesson-primary-btn {
-  flex: 1;
-  max-width: none;
-  width: 100%;
+  flex: 0 0 auto;
+  max-width: 160px;
+  width: auto;
   margin-left: 0;
   justify-content: center;
   background: #e5e7eb !important;
   color: #afafaf !important;
   border: none !important;
-  border-radius: 16px !important;
-  padding: 16px 24px !important;
-  min-height: 52px !important;
+  border-radius: 12px !important;
+  padding: 8px 20px !important;
+  min-height: 36px !important;
   font-weight: 800 !important;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.9rem !important;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem !important;
   box-shadow: none !important;
 }
 
@@ -6912,8 +6914,120 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 }
 
 .cu-lesson-primary-btn:not(:disabled):active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #46a302 !important;
+}
+
+.course-center--lesson-focus .cu-check-btn {
+  padding: 8px 20px;
+  min-height: 36px;
+  font-size: 0.75rem;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+/* ── Lesson exit confirmation modal ───────────────────────────────────── */
+
+.cu-lesson-exit-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: cuExitOverlayIn 0.18s ease;
+}
+
+@keyframes cuExitOverlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.cu-lesson-exit-box {
+  position: relative;
+  background: #fff;
+  border-radius: 24px;
+  border: 2px solid #e5e5e5;
+  border-bottom-width: 5px;
+  border-bottom-color: #d0d0d0;
+  max-width: 400px;
+  width: 100%;
+  padding: 72px 28px 24px;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.14);
+  animation: cuExitBoxIn 0.22s ease;
+}
+
+@keyframes cuExitBoxIn {
+  from { opacity: 0; transform: scale(0.94) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.cu-lesson-exit-fox {
+  position: absolute;
+  top: -64px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: auto;
+  pointer-events: none;
+}
+
+.cu-lesson-exit-text {
+  margin: 0 0 24px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #3c3c3c;
+  line-height: 1.45;
+}
+
+.cu-lesson-exit-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cu-lesson-exit-btn {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  font-family: inherit;
+  transition: filter 0.15s, transform 0.1s;
+}
+
+.cu-lesson-exit-btn--stay {
+  background: #58cc02;
+  color: #fff;
+  border: none;
+  border-bottom: 4px solid #46a302;
+}
+
+.cu-lesson-exit-btn--stay:hover {
+  filter: brightness(1.05);
+}
+
+.cu-lesson-exit-btn--stay:active {
   transform: translateY(2px);
-  box-shadow: 0 2px 0 #46a302 !important;
+  border-bottom-width: 2px;
+}
+
+.cu-lesson-exit-btn--leave {
+  background: transparent;
+  color: #afafaf;
+  border: none;
+}
+
+.cu-lesson-exit-btn--leave:hover {
+  color: #8a8a8a;
 }
 
 @media (max-width: 768px) {
@@ -6924,9 +7038,5 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 
   .cu-lesson-instruction {
     font-size: 1.2rem;
-  }
-
-  .cu-lesson-primary-btn {
-    max-width: none;
   }
 }
