@@ -245,6 +245,8 @@
       const b1Reading4Gapped =
         AppState.currentLevel === 'B1' && section === 'reading' && part === 4 &&
         partConfig.type === 'gapped-text';
+      const b1Listening =
+        AppState.currentLevel === 'B1' && section === 'listening';
       
       // For parts 5-8, use content.title/subtitle; for parts 1-4, no content header
       let contentHeaderHTML = '';
@@ -375,7 +377,7 @@
             
             <div class="exercise-main-layout" lang="en">
               <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
-              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${b1ReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${b1Reading4Gapped ? ' b1-reading4' : ''}${b1Reading6OpenCloze ? ' b1-reading6' : ''}" id="selectable-text">
+              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${b1ReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${b1Reading4Gapped ? ' b1-reading4' : ''}${b1Reading6OpenCloze ? ' b1-reading6' : ''}${b1Listening ? ' b1-listening' : ''}" id="selectable-text">
                 ${paragraphsHTML}
               </div>
             </div>

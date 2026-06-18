@@ -1084,6 +1084,93 @@
   text-align: left;
 }
 
+/* B1 Listening — Duolingo transcript styling */
+.dashboard-layout--exercise .b1-listening .listening-transcript-context {
+  margin-bottom: 20px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #f0f9ff 0%, var(--ex-duo-blue-light, #ddf4ff) 100%);
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 4px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-context-label {
+  display: inline-flex;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--ex-duo-blue, #1cb0f6);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-context-text {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-extract-interview {
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-turn-interviewer {
+  border-left: 4px solid var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-radius: 0 12px 12px 0;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-turn-guest {
+  border-left: 4px solid var(--ex-duo-orange, #f47417);
+  background: var(--ex-duo-orange-light, #fff0e6);
+  border-radius: 0 12px 12px 0;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-turn-interviewer .transcript-speaker-label {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-turn-guest .transcript-speaker-label {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  color: var(--ex-duo-orange-dark, #d45f0a);
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-text {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  color: var(--ex-duo-text, #4b4b4b);
+  line-height: 1.7;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-speaker-card {
+  padding: 14px 16px;
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-left: 4px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 12px;
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+  margin-bottom: 10px;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-speaker-label {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .exercise-container {
     border-radius: 18px;

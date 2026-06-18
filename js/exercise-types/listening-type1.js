@@ -397,9 +397,15 @@
         }
 
         const noteCreator = container.querySelector('#note-creator');
+        var isB1Listening =
+          typeof AppState !== 'undefined' &&
+          AppState.currentLevel === 'B1' &&
+          AppState.currentSection === 'listening';
         const wrapper = document.createElement('div');
         wrapper.className =
-          'listening-type1-questions-wrapper' + (isB1Listening4 ? ' listening-type1-b1-interview' : '');
+          'listening-type1-questions-wrapper' +
+          (isB1Listening ? ' listening-type1-questions-wrapper--duo' : '') +
+          (isB1Listening4 ? ' listening-type1-b1-interview' : '');
         wrapper.innerHTML = html;
         if (noteCreator) {
           container.insertBefore(wrapper, noteCreator);
