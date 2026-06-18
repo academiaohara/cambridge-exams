@@ -318,10 +318,10 @@
 
 .explanation-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   padding: 14px 16px;
-  background: var(--ex-duo-blue-light, #ddf4ff);
+  background: #fff;
   border: 2px solid var(--ex-duo-info-border, #1cb0f6);
   border-radius: 14px;
   margin-bottom: 10px;
@@ -1599,7 +1599,7 @@ body:has(.dashboard-layout--exercise) #main-content {
 }
 
 .dashboard-layout--exercise .explanation-item {
-  background: var(--ex-duo-blue-light);
+  background: #fff;
   border-color: var(--ex-duo-info-border);
 }
 
