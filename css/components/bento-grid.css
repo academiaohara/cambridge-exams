@@ -3040,18 +3040,18 @@ margin-top: -2px;
   position: relative;
   display: flex;
   justify-content: flex-end;
-  margin-top: 8px;
+  margin-top: -12px;
   overflow: visible;
   pointer-events: none;
 }
 
 .cw-sidebar-decor {
-  width: 300px;
+  width: 350px;
   height: auto;
   margin-right: 0px;
   margin-bottom: -8px;
   opacity: 0.96;
-  filter: drop-shadow(0 6px 14px rgba(96, 64, 192, 0.18));
+  /* filter: drop-shadow(0 6px 14px rgba(96, 64, 192, 0.18)); */
 }
 
 .cw-sidebar-decor--wordle {
