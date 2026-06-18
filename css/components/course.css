@@ -6705,6 +6705,18 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   --cu-duo-yellow: #ffc800;
 }
 
+body:has(.dashboard-layout--lesson-focus) {
+  background: #ece8f8;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+body:has(.dashboard-layout--lesson-focus) #app {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #ece8f8;
+}
+
 body:has(.dashboard-layout--lesson-focus) .app-container {
   max-width: none;
   margin: 0;
@@ -6712,29 +6724,29 @@ body:has(.dashboard-layout--lesson-focus) .app-container {
   width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
-}
-
-body:has(.dashboard-layout--lesson-focus) {
   background: #ece8f8;
 }
 
 body:has(.dashboard-layout--lesson-focus) #main-content,
-body:has(.dashboard-layout--lesson-focus) #courseCenterSection,
-body:has(.dashboard-layout--lesson-focus) #courseCenterSection > .fe-section {
+body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #ece8f8;
 }
 
 .dashboard-layout--lesson-focus {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
   grid-template-columns: minmax(0, 1fr) !important;
   padding: 0 !important;
   max-width: none;
+  background: #ece8f8;
 }
 
 .dashboard-layout--lesson-focus .dashboard-left-sidebar,
@@ -6748,18 +6760,22 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection > .fe-section {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #ece8f8;
 }
 
 .course-center--lesson-focus {
   display: flex;
   flex-direction: column;
   flex: 1;
-  min-height: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
   max-width: 960px;
   margin: 0 auto;
   padding: 0 16px 0;
   box-sizing: border-box;
+  background: #ece8f8;
 }
 
 .cu-lesson-chrome {
@@ -6856,7 +6872,8 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection > .fe-section {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
   background: #ece8f8;
 }
 
