@@ -624,10 +624,6 @@
       var html = '<span class="eq-number">' + qNum + '</span>';
       html += '<div class="eq-content">';
 
-      if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui && question.correct) {
-        html += '<span class="eq-option eq-option-correct eq-b1r2-correct-letter">' + question.correct + '</span>';
-      }
-
       // Add question text
       if (question.question) {
         html += '<span class="eq-question-text">' + question.question + '</span>';
