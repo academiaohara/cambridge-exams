@@ -8,6 +8,9 @@
 }
 
 .bgl-lesson {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
   --bgl-bg: #eef2f9;
   --bgl-card: #ffffff;
   --bgl-primary: #5b6ee8;
@@ -101,7 +104,10 @@
 
 .bgl-card-shell {
   display: flex;
+  flex: 1;
+  flex-direction: column;
   justify-content: center;
+  min-height: 0;
 }
 
 .bgl-card {
@@ -539,8 +545,10 @@
 
 /* Footer */
 .bgl-footer {
-  margin-top: 24px;
+  margin-top: auto;
+  padding-top: 24px;
   padding-bottom: 16px;
+  flex-shrink: 0;
 }
 
 .bgl-footer.bgl-footer--hidden {
@@ -579,11 +587,12 @@
 
 /* Feedback panel */
 .bgl-feedback {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 3000;
+  flex-shrink: 0;
+  margin-top: auto;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+  z-index: 10;
   animation: bgl-feedback-in 0.28s ease-out;
 }
 
@@ -597,7 +606,7 @@
 }
 
 @keyframes bgl-feedback-in {
-  from { transform: translateY(100%); opacity: 0; }
+  from { transform: translateY(12px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
 
@@ -696,12 +705,10 @@
 
 .bgl-feedback--correct .bgl-feedback-continue {
   background: var(--bgl-success);
-  box-shadow: 0 4px 0 #158f82;
 }
 
 .bgl-feedback--wrong .bgl-feedback-continue {
   background: var(--bgl-wrong);
-  box-shadow: 0 4px 0 #c96a52;
 }
 
 .bgl-feedback-continue:hover {
@@ -709,8 +716,7 @@
 }
 
 .bgl-feedback-continue:active {
-  transform: translateY(2px);
-  box-shadow: none;
+  filter: brightness(0.95);
 }
 
 /* Complete modal */
@@ -793,9 +799,18 @@
 }
 
 /* Lesson focus layout */
+body:has(.dashboard-layout--lesson-focus) #main-content,
+body:has(.dashboard-layout--lesson-focus) .dashboard-layout--lesson-focus,
+body:has(.dashboard-layout--lesson-focus) .dashboard-center--course,
+body:has(.dashboard-layout--lesson-focus) .course-center--lesson-focus {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
 .dashboard-center--lesson-focus .course-unit-content {
   background: var(--bgl-bg, #eef2f9);
-  min-height: 60vh;
 }
 
 .dashboard-layout--lesson-focus .dashboard-center--course {
@@ -809,7 +824,15 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--subpage {
 }
 
 .dashboard-layout--lesson-focus .bgl-lesson-mount {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
   padding-bottom: 0;
+}
+
+.dashboard-layout--lesson-focus .bgl-lesson {
+  flex: 1;
 }
 
 @media (min-width: 640px) {

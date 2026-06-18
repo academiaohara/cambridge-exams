@@ -6707,9 +6707,15 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 
 body:has(.dashboard-layout--lesson-focus) .app-container {
   padding-left: 0 !important;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .dashboard-layout--lesson-focus {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
   grid-template-columns: minmax(0, 1fr) !important;
   padding: 0 !important;
   max-width: none;
@@ -6720,10 +6726,18 @@ body:has(.dashboard-layout--lesson-focus) .app-container {
   display: none !important;
 }
 
+.dashboard-layout--lesson-focus > .dashboard-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
 .course-center--lesson-focus {
   display: flex;
   flex-direction: column;
-  min-height: calc(100dvh - var(--dashboard-top-spacing, 28px));
+  flex: 1;
+  min-height: 0;
   max-width: 960px;
   margin: 0 auto;
   padding: 0 16px 0;
