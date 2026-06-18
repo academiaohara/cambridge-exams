@@ -453,14 +453,6 @@
     },
     
     updateHeaderModeButtons: function() {
-      var mode = AppState.currentView === 'subpage' ? AppState.currentMode : null;
-      document.querySelectorAll('.header-mode-btn, .header-nav-btn[data-mode]').forEach(function(btn) {
-        if (mode && btn.getAttribute('data-mode') === mode) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
       if (typeof MainNav !== 'undefined' && MainNav.setActive) {
         MainNav.setActive();
       }

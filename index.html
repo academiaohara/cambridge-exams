@@ -25,9 +25,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     
     <!-- CSS BASE - COMPONENTES PRINCIPALES -->
-    <link rel="stylesheet" href="css/components/header.css">
     <link rel="stylesheet" href="css/components/main-nav.css">
-    <link rel="stylesheet" href="css/components/footer.css">
     <link rel="stylesheet" href="css/components/dashboard.css">
     <link rel="stylesheet" href="css/components/modal.css">
     <link rel="stylesheet" href="css/components/question-nav.css">
@@ -445,82 +443,6 @@
     </div>
 
     <div id="app">
-        <!-- Header -->
-        <header class="main-header">
-            <div class="header-container">
-                <a class="logo" href="/" onclick="event.preventDefault(); loadDashboard()">
-                    <img src="Assets/images/sunelogoreduced2.svg" class="logo-icon" alt="Sune English">
-                </a>
-                
-                <nav class="header-quick-nav" id="headerQuickNav">
-                    <button class="header-nav-btn" onclick="loadDashboard()" data-view="dashboard" title="Home">
-                        <span class="material-symbols-outlined">home</span>
-                        <span class="header-nav-label">Home</span>
-                    </button>
-                    <button class="header-nav-btn" onclick="BentoGrid.openTests()" title="Tests">
-                        <span class="material-symbols-outlined">assignment</span>
-                        <span class="header-nav-label">Tests</span>
-                    </button>
-                    <button class="header-nav-btn" onclick="UserProfile.renderPremiumSection()" title="Plans">
-                        <span class="material-symbols-outlined">workspace_premium</span>
-                        <span class="header-nav-label">Plans</span>
-                    </button>
-                    <button class="header-nav-btn" onclick="BentoGrid.openLessons()" title="Course">
-                        <span class="material-symbols-outlined">auto_stories</span>
-                        <span class="header-nav-label">Course</span>
-                    </button>
-                </nav>
-
-                <div class="header-nav-group" id="headerNavGroup">
-                
-                <div class="header-dict-dropdown">
-                    <button class="header-dict-btn" title="Dictionaries">
-                        <span class="material-symbols-outlined">menu_book</span>
-                        <span class="header-dict-label">Dictionaries</span>
-                        <span class="material-symbols-outlined header-dict-arrow">expand_more</span>
-                    </button>
-                    <div class="header-dict-menu">
-                        <button class="header-dict-menu-item" onclick="FastExercises._showGeneralDictionary()">
-                            <span class="material-symbols-outlined" style="color:#6366f1">book</span>
-                            General Dictionary
-                        </button>
-                        <button class="header-dict-menu-item" onclick="FastExercises._showVocabDictionary()">
-                            <span class="material-symbols-outlined" style="color:#0ea5e9">book_2</span>
-                            Vocabulary Dictionary
-                        </button>
-                        <div class="header-dict-menu-divider"></div>
-                        <button class="header-dict-menu-item" onclick="FastExercises._showWfDictionary()">
-                            <span class="material-symbols-outlined" style="color:#e11d48">text_fields</span>
-                            Word Formation
-                        </button>
-                        <button class="header-dict-menu-item" onclick="FastExercises._showPvDictionary()">
-                            <span class="material-symbols-outlined" style="color:#3b82f6">auto_stories</span>
-                            Phrasal Verbs
-                        </button>
-                        <button class="header-dict-menu-item" onclick="FastExercises._showIdDictionary()">
-                            <span class="material-symbols-outlined" style="color:#f59e0b">record_voice_over</span>
-                            Idioms
-                        </button>
-                        <button class="header-dict-menu-item" onclick="FastExercises._showCollocDictionary()">
-                            <span class="material-symbols-outlined" style="color:#8b5cf6">format_quote</span>
-                            Collocations
-                        </button>
-                        <button class="header-dict-menu-item" onclick="FastExercises._showIrregularVerbsDictionary()">
-                            <span class="material-symbols-outlined" style="color:#2563eb">table_view</span>
-                            Irregular Verbs
-                        </button>
-                    </div>
-                </div>
-
-                <button class="header-calc-btn" onclick="openScoreCalculator(event)" title="Score Calculator">
-                    <span class="material-symbols-outlined">calculate</span>
-                </button>
-
-                <!-- Language selector removed: English only -->
-                </div>
-            </div>
-        </header>
-
         <!-- Contenido principal -->
         <main class="app-container">
             <div id="main-content"></div>
@@ -575,59 +497,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Footer -->
-        <footer class="main-footer">
-            <img src="Assets/images/Footer_left.png" alt="" class="footer-deco-left" aria-hidden="true">
-            <img src="Assets/images/Footer_right.png" alt="" class="footer-deco-right" aria-hidden="true">
-            <div class="footer-stripe-bar"></div>
-            <div class="footer-container">
-                <div class="footer-grid">
-                    <div class="footer-col">
-                        <h4><i class="fas fa-info-circle"></i> EngagEd</h4>
-                        <ul>
-                            <li><a href="#" onclick="openAboutPage(); return false;"><i class="fas fa-question-circle"></i> About</a></li>
-                            <li><a href="#" onclick="openContactPage(); return false;"><i class="fas fa-envelope"></i> Contact</a></li>
-                            <li><a href="#" onclick="openPrivacyPage(); return false;"><i class="fas fa-shield-alt"></i> Privacy</a></li>
-                            <li><a href="#" onclick="openTermsPage(); return false;"><i class="fas fa-file-contract"></i> Terms and Conditions</a></li>
-                            <li><a href="#" onclick="openFaqPage(); return false;"><i class="fas fa-question"></i> FAQ</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4><a href="#" class="footer-col-title-link" onclick="FastExercises._showDictionariesHome(); return false;"><i class="fas fa-book-open"></i> Dictionaries</a></h4>
-                        <ul>
-                            <li><a href="#" onclick="FastExercises._showGeneralDictionary(); return false;"><i class="fas fa-book"></i> <span>General Dictionary</span></a></li>
-                            <li><a href="#" onclick="FastExercises._showVocabDictionary(); return false;"><i class="fas fa-book-open"></i> <span>Vocabulary Dictionary</span></a></li>
-                            <li><a href="#" onclick="FastExercises._showWfDictionary(); return false;"><i class="fas fa-spell-check"></i> <span>Word Formation Dictionary</span></a></li>
-                            <li><a href="#" onclick="FastExercises._showPvDictionary(); return false;"><i class="fas fa-exchange-alt"></i> <span>Phrasal Verbs Dictionary</span></a></li>
-                            <li><a href="#" onclick="FastExercises._showIdDictionary(); return false;"><i class="fas fa-comment-dots"></i> <span>Idioms Dictionary</span></a></li>
-                            <li><a href="#" onclick="FastExercises._showCollocDictionary(); return false;"><i class="fas fa-quote-right"></i> <span>Collocations Dictionary</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4><a href="#" class="footer-col-title-link" onclick="TipsPage.openTipsHome(); return false;"><i class="fas fa-graduation-cap"></i> Exam Tips</a></h4>
-                        <ul>
-                            <li><a href="#" onclick="openScoreCalculator(event); return false;"><i class="fas fa-chart-line"></i> <span>Score Calculator</span></a></li>
-                            <li><a href="#" onclick="TipsPage.openTipsHome(); return false;"><i class="fas fa-book-reader"></i> <span>Reading Tips</span></a></li>
-                            <li><a href="#" onclick="TipsPage.openTipsHome(); return false;"><i class="fas fa-pen"></i> <span>Writing Tips</span></a></li>
-                            <li><a href="#" onclick="TipsPage.openTipsHome(); return false;"><i class="fas fa-microphone"></i> <span>Speaking Tips</span></a></li>
-                            <li><a href="#" onclick="TipsPage.openTipsHome(); return false;"><i class="fas fa-headphones"></i> <span>Listening Tips</span></a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4><i class="fas fa-share-alt"></i> Follow Us</h4>
-                        <ul>
-                            <li><a href="https://www.instagram.com/engagedtoenglish/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> <span>Instagram</span></a></li>
-                            <li><a href="https://www.youtube.com/@engagetoenglish" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> <span>YouTube</span></a></li>
-                            <li><a href="https://www.tiktok.com/@engagedinenglish" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i> <span>TikTok</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2024 EngagEd. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
 
     </div>
 

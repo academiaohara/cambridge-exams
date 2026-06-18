@@ -609,10 +609,12 @@
         qDisplay.classList.remove('sticky-mode');
       }
 
-      // Offset sticky top to sit below the sticky header
-      var header = document.querySelector('.main-header');
-      if (header) {
-        qDisplay.style.top = header.offsetHeight + 'px';
+      // Offset sticky top to sit below the mobile stats bar when present
+      var stickyAnchor = document.querySelector('.mobile-nav-top-bar');
+      if (stickyAnchor) {
+        qDisplay.style.top = stickyAnchor.offsetHeight + 'px';
+      } else {
+        qDisplay.style.top = '';
       }
 
       // Determine part type for layout
