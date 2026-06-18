@@ -6706,9 +6706,25 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 }
 
 body:has(.dashboard-layout--lesson-focus) .app-container {
-  padding-left: 0 !important;
+  max-width: none;
+  margin: 0;
+  padding: 0 !important;
+  width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
+}
+
+body:has(.dashboard-layout--lesson-focus) {
+  background: #ece8f8;
+}
+
+body:has(.dashboard-layout--lesson-focus) #main-content,
+body:has(.dashboard-layout--lesson-focus) #courseCenterSection,
+body:has(.dashboard-layout--lesson-focus) #courseCenterSection > .fe-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .dashboard-layout--lesson-focus {
@@ -6722,7 +6738,9 @@ body:has(.dashboard-layout--lesson-focus) .app-container {
 }
 
 .dashboard-layout--lesson-focus .dashboard-left-sidebar,
-.dashboard-layout--lesson-focus .dashboard-left-sidebar.dashboard-sidebar-shell {
+.dashboard-layout--lesson-focus .dashboard-left-sidebar.dashboard-sidebar-shell,
+.dashboard-layout--lesson-focus .dashboard-right-sidebar,
+.dashboard-layout--lesson-focus .dashboard-right-sidebar.dashboard-sidebar-shell {
   display: none !important;
 }
 
@@ -6839,6 +6857,28 @@ body:has(.dashboard-layout--lesson-focus) .app-container {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  background: #ece8f8;
+}
+
+.course-center--theory-focus .cu-section.cu-theory {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 16px 0 0;
+  margin: 0;
+}
+
+.course-center--theory-focus .cu-theory-body {
+  flex: 1;
+}
+
+.course-center--theory-focus .cu-section-nav--theory {
+  margin-top: auto;
+  padding: 20px 0 16px;
+  border-top: 2px solid rgba(91, 110, 232, 0.15);
 }
 
 .course-center--lesson-focus .cu-section.cu-exercise {

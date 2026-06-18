@@ -7439,17 +7439,24 @@
 
       var sections = centerSection.querySelectorAll('.course-unit-content .cu-section');
       var sec = sections[sectionIdx];
+      var isTheory = !!(sec && sec.classList.contains('cu-theory'));
       var isExercise = !!(sec && sec.classList.contains('cu-exercise'));
+      var isLessonView = isTheory || isExercise;
 
-      layout.classList.toggle('dashboard-layout--lesson-focus', isExercise);
-      centerSection.classList.toggle('course-center--lesson-focus', isExercise);
+      layout.classList.toggle('dashboard-layout--lesson-focus', isLessonView);
+      centerSection.classList.toggle('course-center--lesson-focus', isLessonView);
+      centerSection.classList.toggle('course-center--theory-focus', isTheory);
 
       var appContainer = document.querySelector('.app-container');
       if (appContainer) {
-        if (isExercise) {
+        if (isLessonView) {
           appContainer.style.paddingLeft = '0';
+          appContainer.style.paddingRight = '0';
+          appContainer.style.paddingTop = '0';
         } else if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) {
           Dashboard._applySidebarState();
+          appContainer.style.paddingRight = '';
+          appContainer.style.paddingTop = '';
         }
       }
 
@@ -7457,10 +7464,15 @@
       if (chrome) chrome.style.display = isExercise ? '' : 'none';
 
       var header = centerSection.querySelector('.subpage-header--course-unit');
-      if (header) header.style.display = isExercise ? 'none' : '';
+      if (header) header.style.display = isLessonView ? 'none' : '';
 
       var dotsNav = document.getElementById('cu-dots-nav');
-      if (dotsNav) dotsNav.style.display = isExercise ? 'none' : '';
+      if (dotsNav) dotsNav.style.display = isLessonView ? 'none' : '';
+
+      var rightSidebar = document.getElementById('dashboardRightSidebar');
+      var rightSidebarShell = document.getElementById('dashboardRightSidebarShell');
+      if (rightSidebar) rightSidebar.style.display = isLessonView ? 'none' : '';
+      if (rightSidebarShell) rightSidebarShell.style.display = isLessonView ? 'none' : '';
 
       if (isExercise) {
         BentoGrid._updateCuLessonProgress(sectionIdx);
@@ -7545,7 +7557,7 @@
         sec.style.display = (idx === startIdx) ? '' : 'none';
 
         var isTheorySec = sec.classList.contains('cu-theory');
-        var navHtml = '<div class="cu-section-nav">';
+        var navHtml = '<div class="cu-section-nav' + (isTheorySec ? ' cu-section-nav--theory' : '') + '">';
         if (idx > 0) {
           navHtml += '<button class="cu-nav-btn cu-nav-prev" onclick="BentoGrid._showCuSection(' + (idx - 1) + ')">' +
             _mi('arrow_back') + ' Previous</button>';
@@ -7553,18 +7565,15 @@
           navHtml += '<span></span>';
         }
 
-        // Middle: "Got it" button for theory sections
         if (isTheorySec) {
-          navHtml += '<button class="cu-entendido-btn" onclick="BentoGrid._markCuTheoryDone(' + idx + ',' + total + ',true,' + (idx + 1) + ')">' +
-            _mi('check_circle') + ' Got it</button>';
+          navHtml += '<span></span>';
         } else {
           navHtml += '<div class="cu-section-nav-center"></div>';
         }
 
         if (idx < total - 1) {
           if (isTheorySec) {
-            // Next on theory also marks as done
-            navHtml += '<button class="cu-nav-btn cu-nav-next" onclick="BentoGrid._markCuTheoryDone(' + idx + ',' + total + ',true,' + (idx + 1) + ')">' +
+            navHtml += '<button class="cu-nav-btn cu-nav-next" onclick="BentoGrid._advanceCuTheory(' + idx + ',' + (idx + 1) + ')">' +
               'Next ' + _mi('arrow_forward') + '</button>';
           } else {
             navHtml += '<button class="cu-nav-btn cu-nav-next" onclick="BentoGrid._showCuSection(' + (idx + 1) + ')">' +
@@ -7640,6 +7649,21 @@
         var secState = { view: 'courseUnit', blockKey: BentoGrid._currentBlockKey, unitId: BentoGrid._currentUnitId, level: _cuLevel, filePath: BentoGrid._currentUnitFilePath, sectionIdx: idx };
         history.replaceState(secState, '', Router.stateToPath(secState));
       }
+    },
+
+    _advanceCuTheory: function(idx, nextIdx) {
+      var level = BentoGrid._courseLevel || 'C1';
+      var unitId = BentoGrid._currentUnitId;
+      BentoGrid._markCourseSectionVisited(level, unitId, idx);
+      BentoGrid._checkCourseUnitAllDone(level, unitId);
+      var container = document.querySelector('.course-unit-content');
+      if (container) {
+        var dots = container.querySelectorAll('.cu-dot-nav');
+        dots.forEach(function(dot) {
+          if (BentoGrid._getCuDotSectionIdx(dot) === idx) dot.classList.add('cu-dot-done-mark');
+        });
+      }
+      BentoGrid._showCuSection(nextIdx);
     },
 
     _markCuTheoryDone: function(idx, total, goNext, nextIdx) {
