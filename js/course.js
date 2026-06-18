@@ -3231,10 +3231,10 @@
 
     _renderCuExFooter: function(secId) {
       return '<div class="cu-ex-footer">' +
+        '<button class="cu-skip-btn cu-lesson-secondary-btn" onclick="BentoGrid._skipCuLessonItem(\'' + secId + '\')">Skip</button>' +
         '<button class="cu-show-all-btn cu-lesson-secondary-btn" onclick="BentoGrid._toggleCuAnswers(\'' + secId + '\')">' +
           '<span class="material-symbols-outlined">visibility</span> Show answers</button>' +
-        '<button class="cu-check-btn cu-lesson-primary-btn" onclick="BentoGrid._checkCuExSection(\'' + secId + '\')">' +
-          'Check</button>' +
+        '<button class="cu-check-btn cu-lesson-primary-btn" onclick="BentoGrid._checkCuExSection(\'' + secId + '\')">Check</button>' +
         '<button class="cu-retry-btn" onclick="BentoGrid._resetCuExSection(\'' + secId + '\')" style="display:none">' +
           '<span class="material-symbols-outlined">replay</span> Retry</button>' +
         '</div>';
@@ -6902,6 +6902,8 @@
     _CU_LESSON_HEARTS_MAX: 5,
     _cuLessonHearts: 5,
     _cuLessonSectionId: null,
+    _cuLessonStreak: 0,
+    _CU_LESSON_CORRECT_MSGS: ['Nice!', 'Great job!', 'Excellent!', 'Amazing!', 'Well done!'],
 
     _getCuLessonItems: function(sec) {
       if (!sec) return [];
@@ -6921,6 +6923,135 @@
       if (item.classList.contains('cu-match-exercise')) return !item.querySelector('.cu-match-incorrect');
       if (item.classList.contains('cu-drag-category-exercise')) return !item.querySelector('.cu-drag-chip-incorrect, .cu-drag-chip-unplaced');
       return false;
+    },
+
+    _updateCuLessonStreakLabel: function() {
+      var label = document.getElementById('cu-lesson-streak');
+      if (!label) return;
+      if (BentoGrid._cuLessonStreak >= 2) {
+        label.textContent = BentoGrid._cuLessonStreak + ' IN A ROW';
+        label.classList.add('cu-lesson-streak--visible');
+      } else {
+        label.textContent = '';
+        label.classList.remove('cu-lesson-streak--visible');
+      }
+    },
+
+    _hideCuLessonFeedback: function(sec) {
+      var existing = document.getElementById('cu-lesson-feedback');
+      if (existing) existing.remove();
+      if (sec) {
+        var footer = sec.querySelector('.cu-ex-footer');
+        if (footer) footer.classList.remove('cu-ex-footer--hidden');
+      }
+    },
+
+    _getCuLessonCorrectAnswerText: function(item) {
+      if (!item) return '';
+      var ansEl = item.querySelector('.cu-answer');
+      var answer = ansEl ? ansEl.textContent.trim() : (item.getAttribute('data-answer') || '');
+      if (!answer) return '';
+      var revealBtn = item.querySelector('.cu-option-correct-reveal, .cu-ab-correct-reveal');
+      if (revealBtn) {
+        var revealText = revealBtn.querySelector('.cu-ex-kwtrans-text');
+        if (revealText) return revealText.textContent.trim();
+        return (revealBtn.textContent || '').trim();
+      }
+      return answer;
+    },
+
+    _showCuLessonFeedback: function(sec, correct, item) {
+      BentoGrid._hideCuLessonFeedback(sec);
+      var feedback = document.createElement('div');
+      feedback.id = 'cu-lesson-feedback';
+      feedback.className = 'cu-lesson-feedback ' + (correct ? 'cu-lesson-feedback--correct' : 'cu-lesson-feedback--wrong');
+      feedback.setAttribute('role', 'status');
+      feedback.setAttribute('aria-live', 'polite');
+
+      var msgs = BentoGrid._CU_LESSON_CORRECT_MSGS;
+      var headline = correct
+        ? msgs[Math.floor(Math.random() * msgs.length)]
+        : 'Correct solution:';
+      var detail = '';
+      if (!correct) {
+        detail = BentoGrid._getCuLessonCorrectAnswerText(item);
+      }
+
+      feedback.innerHTML =
+        '<div class="cu-lesson-feedback-icon" aria-hidden="true">' +
+          '<span class="material-symbols-outlined">' + (correct ? 'check' : 'close') + '</span>' +
+        '</div>' +
+        '<div class="cu-lesson-feedback-body">' +
+          '<div class="cu-lesson-feedback-title">' + BentoGrid._escapeHTML(headline) + '</div>' +
+          (detail ? '<div class="cu-lesson-feedback-detail">' + BentoGrid._escapeHTML(detail) + '</div>' : '') +
+        '</div>' +
+        '<button type="button" class="cu-lesson-feedback-continue">Continue</button>';
+
+      feedback.querySelector('.cu-lesson-feedback-continue').addEventListener('click', function() {
+        BentoGrid._continueCuLessonItem(sec.id);
+      });
+
+      document.body.appendChild(feedback);
+
+      var footer = sec.querySelector('.cu-ex-footer');
+      if (footer) footer.classList.add('cu-ex-footer--hidden');
+    },
+
+    _updateCuLessonPrompt: function(sec, item) {
+      var stage = sec ? sec.querySelector('.cu-lesson-stage') : null;
+      if (!stage || !item) return;
+      var existing = stage.querySelector('.cu-lesson-prompt');
+      if (existing) existing.remove();
+
+      var contextEl = item.querySelector('.cu-ex-context');
+      var text = contextEl ? contextEl.textContent.trim() : '';
+      if (!text) return;
+
+      var prompt = document.createElement('div');
+      prompt.className = 'cu-lesson-prompt';
+      prompt.innerHTML =
+        '<img src="Assets/images/Cabezasune.svg" alt="" class="cu-lesson-prompt-mascot" aria-hidden="true">' +
+        '<div class="cu-lesson-prompt-bubble">' +
+          '<button type="button" class="cu-lesson-prompt-speaker" aria-label="Listen">' +
+            '<span class="material-symbols-outlined">volume_up</span>' +
+          '</button>' +
+          '<span class="cu-lesson-prompt-text">' + BentoGrid._escapeHTML(text) + '</span>' +
+        '</div>';
+      var instruction = stage.querySelector('.cu-lesson-instruction');
+      if (instruction && instruction.nextSibling) {
+        stage.insertBefore(prompt, instruction.nextSibling);
+      } else if (instruction) {
+        instruction.insertAdjacentElement('afterend', prompt);
+      } else {
+        stage.insertBefore(prompt, stage.firstChild);
+      }
+    },
+
+    _updateCuLessonCheckState: function(sec, item) {
+      if (!sec || sec.getAttribute('data-lesson-flow') !== 'true') return;
+      var checkBtn = sec.querySelector('.cu-check-btn');
+      if (!checkBtn || checkBtn.getAttribute('data-lesson-mode') === 'continue') return;
+      var unanswered = item ? BentoGrid._getCuLessonItemUnanswered(item) : [1];
+      checkBtn.disabled = unanswered.length > 0;
+    },
+
+    _bindCuLessonItemListeners: function(sec, item) {
+      if (!sec || !item || sec.getAttribute('data-lesson-flow') !== 'true') return;
+      if (item.getAttribute('data-lesson-bound') === 'true') return;
+      item.setAttribute('data-lesson-bound', 'true');
+      var refresh = function() { BentoGrid._updateCuLessonCheckState(sec, item); };
+      item.addEventListener('input', refresh, true);
+      item.addEventListener('click', refresh, true);
+      item.addEventListener('change', refresh, true);
+    },
+
+    _skipCuLessonItem: function(sectionId) {
+      var sec = document.getElementById(sectionId);
+      if (!sec || sec.getAttribute('data-lesson-flow') !== 'true') return;
+      BentoGrid._hideCuLessonFeedback(sec);
+      BentoGrid._cuLessonStreak = 0;
+      BentoGrid._updateCuLessonStreakLabel();
+      BentoGrid._continueCuLessonItem(sectionId);
     },
 
     _updateCuLessonHearts: function() {
@@ -6959,12 +7090,16 @@
         item.classList.toggle('cu-lesson-item-hidden', idx !== itemIdx);
         item.classList.toggle('cu-lesson-item-visible', idx === itemIdx);
       });
+      var currentItem = items[itemIdx];
+      BentoGrid._hideCuLessonFeedback(sec);
+      BentoGrid._updateCuLessonPrompt(sec, currentItem);
+      BentoGrid._bindCuLessonItemListeners(sec, currentItem);
       var btn = sec.querySelector('.cu-check-btn');
       if (btn) {
         btn.textContent = 'Check';
-        btn.disabled = false;
         btn.removeAttribute('data-lesson-mode');
       }
+      BentoGrid._updateCuLessonCheckState(sec, currentItem);
       BentoGrid._updateCuLessonProgressForItems(sec, itemIdx, items.length);
     },
 
@@ -6989,6 +7124,8 @@
       if (BentoGrid._cuLessonSectionId !== secId) {
         BentoGrid._cuLessonSectionId = secId;
         BentoGrid._resetCuLessonHearts();
+        BentoGrid._cuLessonStreak = 0;
+        BentoGrid._updateCuLessonStreakLabel();
       }
 
       sec.classList.add('cu-lesson-flow-active');
@@ -6999,6 +7136,8 @@
 
       var showBtn = sec.querySelector('.cu-show-all-btn');
       if (showBtn) showBtn.style.display = 'none';
+      var skipBtn = sec.querySelector('.cu-skip-btn');
+      if (skipBtn) skipBtn.style.display = '';
       var retryBtn = sec.querySelector('.cu-retry-btn');
       if (retryBtn) retryBtn.style.display = 'none';
 
@@ -7095,7 +7234,14 @@
       sec.setAttribute('data-lesson-total', String(beforeTotal + gainedTotal));
 
       var itemCorrect = BentoGrid._isCuLessonItemCorrect(currentItem);
-      if (!itemCorrect) BentoGrid._loseCuLessonHeart();
+      if (!itemCorrect) {
+        BentoGrid._loseCuLessonHeart();
+        BentoGrid._cuLessonStreak = 0;
+      } else {
+        BentoGrid._cuLessonStreak++;
+      }
+      BentoGrid._updateCuLessonStreakLabel();
+      BentoGrid._showCuLessonFeedback(sec, itemCorrect, currentItem);
 
       var checkBtn = sec.querySelector('.cu-check-btn');
       if (checkBtn) {
@@ -7108,6 +7254,7 @@
     _continueCuLessonItem: function(sectionId) {
       var sec = document.getElementById(sectionId);
       if (!sec) return;
+      BentoGrid._hideCuLessonFeedback(sec);
       var items = BentoGrid._getCuLessonItems(sec);
       var itemIdx = parseInt(sec.getAttribute('data-lesson-item-idx') || '0', 10);
       if (itemIdx < items.length - 1) {
@@ -7155,6 +7302,7 @@
           '<span class="material-symbols-outlined">close</span>' +
         '</button>' +
         '<div class="cu-lesson-progress-wrap">' +
+          '<span class="cu-lesson-streak" id="cu-lesson-streak" aria-hidden="true"></span>' +
           '<div class="cu-lesson-progress-fill" id="cu-lesson-progress-fill" style="width:0%"></div>' +
         '</div>' +
         '<div class="cu-lesson-hearts" id="cu-lesson-hearts" aria-label="Lives remaining">' +
