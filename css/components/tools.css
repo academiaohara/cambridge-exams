@@ -1207,11 +1207,11 @@
   position: static;
   bottom: auto;
   margin: 0;
-  border-radius: 0;
+  border-radius: 16px;
   overflow: hidden;
   border: none;
   box-shadow: none;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.55);
   min-height: 320px;
   height: 100%;
   flex-direction: column;
@@ -1222,10 +1222,10 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 10px;
+  padding: 12px 8px;
   background: transparent;
   border-top: none;
-  border-bottom: 1px solid rgba(45, 46, 95, 0.08);
+  border-bottom: 1px solid rgba(255, 150, 0, 0.15);
   width: 100%;
   flex-shrink: 0;
 }
@@ -1307,7 +1307,7 @@
   flex: 1;
   overflow-y: auto;
   max-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 120px);
-  padding: 10px 0 16px;
+  padding: 12px 4px 16px;
 }
 
 /* Duolingo-style tool content in right column */
@@ -1384,7 +1384,7 @@
     flex-direction: column;
     margin: 0;
     border-radius: 0;
-    background: #ece8f8;
+    background: rgba(255, 255, 255, 0.55);
   }
 
   .tools-sidebar--right-column .sidebar-rail {
