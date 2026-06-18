@@ -118,36 +118,192 @@
   }
 }
 
-/* B1 Preliminary Reading Part 2 — people vs notices + per-person letter select */
+/* B1 Preliminary Reading Part 2 — Duolingo-style people cards + letter chips */
 .b1-reading2-people {
   margin-bottom: 0;
+  gap: 14px;
 }
 
-.b1-reading2-person-card .reading-type8-text-label {
-  border-radius: 8px;
-  width: auto;
-  min-width: 2rem;
-  padding: 0 10px;
-  height: 32px;
-  margin-right: 0;
-  margin-bottom: 10px;
+.b1-reading2-person-card {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 16px;
+  padding: 16px 18px 18px;
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+  font-family: 'Nunito', sans-serif;
 }
 
 .b1-reading2-person-header {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   gap: 12px;
   width: 100%;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
-.b1-reading2-person-header .b1-reading2-select-wrap {
-  margin-left: auto;
+.b1-reading2-q-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ex-duo-blue, #1cb0f6);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 1;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .b1-reading2-person-content {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--ex-duo-text, #4b4b4b);
+  margin-bottom: 14px;
+}
+
+.b1-reading2-picker-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.b1-reading2-picker-label {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.b1-reading2-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.b1-reading2-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 12px;
+  border-radius: 14px;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  background: #fff;
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
   font-size: 1rem;
+  font-weight: 800;
+  color: var(--ex-duo-text, #4b4b4b);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.1s, transform 0.1s;
+}
+
+.b1-reading2-chip:hover:not(:disabled):not(.b1-reading2-chip-selected) {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.b1-reading2-chip:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.b1-reading2-chip-selected:not(:disabled):not(.b1-reading2-chip-correct):not(.b1-reading2-chip-incorrect) {
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+.b1-reading2-chip:disabled {
+  cursor: not-allowed;
+}
+
+.b1-reading2-chip-correct {
+  background: #d7ffb8 !important;
+  border-color: #58cc02 !important;
+  box-shadow: 0 3px 0 #58a700 !important;
+  color: #3c3c3c !important;
+}
+
+.b1-reading2-chip-incorrect {
+  background: #ffdfe0 !important;
+  border-color: #ff4b4b !important;
+  box-shadow: 0 3px 0 #ea2b2b !important;
+  color: #3c3c3c !important;
+}
+
+.b1-reading2-chip-unanswered {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 3px 0 #cbd5e1 !important;
+  color: #64748b !important;
+}
+
+.b1-reading2-chip-expl-show {
+  border-color: var(--ex-duo-orange, #f47417) !important;
+  background: var(--ex-duo-orange-light, #fff0e6) !important;
+  box-shadow: 0 3px 0 var(--ex-duo-orange-dark, #d45f0a) !important;
+  color: var(--ex-duo-orange-dark, #d45f0a) !important;
+}
+
+.b1-reading2-chip-answer-toggle-correct {
+  border-color: #7c3aed !important;
+  background: #f5f3ff !important;
+  box-shadow: 0 3px 0 #6d28d9 !important;
+  color: #5b21b6 !important;
+}
+
+.b1-reading2-select-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.b1-reading2-picker-wrap[data-correct]::after {
+  content: attr(data-correct);
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background: var(--ex-duo-blue-dark, #1899d6);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  margin-bottom: 8px;
+  display: none;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .b1-reading2-picker-wrap[data-correct]:hover::after {
+    display: block;
+  }
+}
+
+.b1-reading2-picker-wrap[data-correct] {
+  cursor: help;
 }
 
 .question-nav-row-letters {
@@ -159,6 +315,7 @@
   min-width: 2.25rem;
 }
 
+/* Legacy select styles kept for screen-reader / state sync */
 .b1-reading2-select-wrap {
   display: inline-flex;
   align-items: center;
@@ -173,7 +330,6 @@
   white-space: nowrap;
 }
 
-/* Post-check: show correct letter on hover (same idea as .gap-box.incorrect in gaps.css). */
 .b1-reading2-select-wrap[data-correct]::after {
   content: attr(data-correct);
   position: absolute;
@@ -198,7 +354,6 @@
   }
 }
 
-/* Letter select: same box for practising + post-check (correct / incorrect / unanswered). */
 .b1-reading2-select {
   box-sizing: border-box;
   min-width: 2.75rem;
@@ -307,10 +462,11 @@
 .explanation-mode-text .b1-reading2-person-card.b1-reading2-row-correct,
 .explanation-mode-text .b1-reading2-person-card.b1-reading2-row-incorrect,
 .explanation-mode-text .b1-reading2-person-card.b1-reading2-row-unanswered {
-  border-color: #e9d5ff;
-  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.06);
+  border-color: var(--ex-duo-border, #e5e5e5);
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
 }
 
+.explanation-mode-text .b1-reading2-picker-wrap[data-correct]::after,
 .explanation-mode-text .b1-reading2-select-wrap[data-correct]::after {
   display: none !important;
 }
@@ -353,21 +509,20 @@
 }
 
 .b1-reading2-preview.has-text {
-  padding: 12px 14px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #f0f4ff 0%, #eef2ff 100%);
-  border: 1px solid #c7d2fe;
-  border-left: 4px solid #6366f1;
-  font-size: 0.92rem;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  background: linear-gradient(180deg, #f0f9ff 0%, var(--ex-duo-blue-light, #ddf4ff) 100%);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  font-size: 0.95rem;
   line-height: 1.55;
-  color: #334155;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  color: var(--ex-duo-text, #3c3c3c);
 }
 
 .b1-reading2-preview.has-text.b1-reading2-preview-key-mode {
-  border-left-color: #7c3aed;
-  background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
-  border-color: #e9d5ff;
+  border-color: #7c3aed;
+  background: linear-gradient(180deg, #faf5ff 0%, #f3e8ff 100%);
+  box-shadow: 0 3px 0 #6d28d9;
 }
 
 .b1-reading2-preview-key-mode .b1-reading2-preview-letter {
@@ -385,13 +540,15 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  background: #6366f1;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--ex-duo-blue, #1cb0f6);
   color: #fff;
-  font-weight: 700;
-  font-size: 0.88rem;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .b1-reading2-preview-text {
@@ -401,18 +558,56 @@
 }
 
 .b1-reading2-person-card.b1-reading2-row-correct {
-  border-color: #22c55e;
-  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.25);
+  border-color: #58cc02;
+  box-shadow: 0 3px 0 #58a700;
 }
 
 .b1-reading2-person-card.b1-reading2-row-incorrect {
-  border-color: #ef4444;
-  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.2);
+  border-color: #ff4b4b;
+  box-shadow: 0 3px 0 #ea2b2b;
 }
 
 .b1-reading2-person-card.b1-reading2-row-unanswered {
-  border-color: #94a3b8;
-  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.2);
+  border-color: #cbd5e1;
+  box-shadow: 0 3px 0 #cbd5e1;
+}
+
+/* B1 Reading Part 2 — Options tab notice cards (Duolingo 3D) */
+.b1-reading2-notices {
+  gap: 14px;
+}
+
+.b1-reading2-notices .reading-type8-text-card {
+  background: #fff;
+  border: 2px solid var(--ex-duo-orange, #f47417);
+  border-radius: 16px;
+  padding: 16px 18px 18px;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--ex-duo-orange, #f47417) 55%, #000);
+  font-family: 'Nunito', sans-serif;
+}
+
+.b1-reading2-notices .reading-type8-text-label {
+  background: var(--ex-duo-orange, #f47417);
+  border-radius: 10px;
+  width: auto;
+  min-width: 2rem;
+  padding: 0 10px;
+  height: 32px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  box-shadow: 0 2px 0 var(--ex-duo-orange-dark, #d45f0a);
+}
+
+.b1-reading2-notices .reading-type8-text-title {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  color: #a34d0c;
+}
+
+.b1-reading2-notices .reading-type8-text-content {
+  font-weight: 600;
+  color: var(--ex-duo-text, #3c3c3c);
+  line-height: 1.55;
 }
 
 /* Footer toggle: show key answer in purple (distinct from green correct / red incorrect after check). */

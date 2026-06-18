@@ -1679,6 +1679,40 @@ body:has(.dashboard-layout--exercise) #main-content {
   color: var(--ex-duo-orange);
 }
 
+/* B1 Reading Part 2 — matching exercise inside the reading card */
+.dashboard-layout--exercise .reading-text-enhanced--b1r2,
+.dashboard-layout--exercise .reading-text-enhanced:has(.b1-reading2-people) {
+  padding: 20px 22px 24px;
+  border-top-color: var(--ex-duo-blue, #1cb0f6);
+}
+
+.dashboard-layout--exercise .reading-text-enhanced--b1r2::after,
+.dashboard-layout--exercise .reading-text-enhanced:has(.b1-reading2-people)::after {
+  color: var(--ex-duo-blue, #1cb0f6);
+}
+
+.dashboard-layout--exercise .reading-text-enhanced--b1r2 .content-title-block,
+.dashboard-layout--exercise .reading-text-enhanced:has(.b1-reading2-people) .content-title-block {
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--ex-duo-border, #e5e5e5);
+}
+
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  .dashboard-layout--exercise .reading-text-enhanced--b1r2,
+  .dashboard-layout--exercise .reading-text-enhanced:has(.b1-reading2-people) {
+    padding: 16px 18px 20px;
+  }
+
+  .dashboard-layout--exercise .reading-text-enhanced--b1r2 .b1-reading2-chip,
+  .dashboard-layout--exercise .reading-text-enhanced:has(.b1-reading2-people) .b1-reading2-chip {
+    min-width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+  }
+}
+
 .dashboard-layout--exercise .content-section-header {
   background: #fff;
   border: 2px solid var(--ex-duo-border);

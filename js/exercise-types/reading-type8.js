@@ -37,6 +37,62 @@
       el.classList.add('has-text');
     },
 
+    syncB1Reading2ChipsForQuestion: function(qNum) {
+      var sel = document.querySelector('.b1-reading2-select[data-qnum="' + qNum + '"]');
+      var wrap = document.querySelector('.b1-reading2-picker-wrap[data-qnum="' + qNum + '"]');
+      if (!sel || !wrap) return;
+      var value = sel.value || '';
+      var isDisabled = sel.disabled;
+      var selClasses = sel.className.split(/\s+/);
+      wrap.querySelectorAll('.b1-reading2-chip').forEach(function(chip) {
+        var letter = chip.getAttribute('data-letter');
+        var isSelected = letter === value;
+        chip.classList.toggle('b1-reading2-chip-selected', isSelected);
+        chip.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+        chip.disabled = isDisabled;
+        chip.classList.remove(
+          'b1-reading2-chip-correct',
+          'b1-reading2-chip-incorrect',
+          'b1-reading2-chip-unanswered',
+          'b1-reading2-chip-expl-show',
+          'b1-reading2-chip-answer-toggle-correct'
+        );
+        if (isDisabled && isSelected) {
+          if (selClasses.indexOf('b1-reading2-select-correct') !== -1) {
+            chip.classList.add('b1-reading2-chip-correct');
+          } else if (selClasses.indexOf('b1-reading2-select-incorrect') !== -1) {
+            chip.classList.add('b1-reading2-chip-incorrect');
+          } else if (selClasses.indexOf('b1-reading2-select-unanswered') !== -1) {
+            chip.classList.add('b1-reading2-chip-unanswered');
+          }
+        }
+        if (isSelected && selClasses.indexOf('b1-reading2-select-expl-show') !== -1) {
+          chip.classList.add('b1-reading2-chip-expl-show');
+        }
+        if (isSelected && selClasses.indexOf('b1-reading2-select-answer-toggle-correct') !== -1) {
+          chip.classList.add('b1-reading2-chip-answer-toggle-correct');
+        }
+      });
+    },
+
+    syncAllB1Reading2Chips: function() {
+      if (!AppState.currentExercise || !AppState.currentExercise._b1PetReading2Ui) return;
+      document.querySelectorAll('.b1-reading2-select[data-qnum]').forEach(function(sel) {
+        var qNum = parseInt(sel.getAttribute('data-qnum'), 10);
+        if (!isNaN(qNum)) ReadingType8.syncB1Reading2ChipsForQuestion(qNum);
+      });
+    },
+
+    onB1Reading2ChipClick: function(qNum, letter) {
+      if (AppState.answersChecked) return;
+      var sel = document.querySelector('.b1-reading2-select[data-qnum="' + qNum + '"]');
+      if (!sel || sel.disabled) return;
+      var next = sel.value === letter ? '' : letter;
+      sel.value = next;
+      this.onB1Reading2SelectChange(qNum, next);
+      this.syncB1Reading2ChipsForQuestion(qNum);
+    },
+
     initB1Reading2StripIfNeeded: function() {
       if (!AppState.currentExercise || !AppState.currentExercise._b1PetReading2Ui) return;
       var texts = AppState.currentExercise.content.texts || {};
@@ -47,6 +103,7 @@
           if (sel && q.correct) sel.value = q.correct;
           ReadingType8._setB1Reading2Preview(q.number, '', '');
         });
+        this.syncAllB1Reading2Chips();
         return;
       }
       (AppState.currentExercise.content.questions || []).forEach(function(q) {
@@ -56,6 +113,7 @@
         if (sel) sel.value = v;
         ReadingType8._setB1Reading2Preview(q.number, v, texts[v]);
       });
+      this.syncAllB1Reading2Chips();
     },
 
     onB1Reading2SelectChange: function(qNum, letter) {
@@ -135,6 +193,7 @@
         }
         var texts = AppState.currentExercise.content.texts || {};
         ReadingType8._setB1Reading2Preview(qNum, letter, letter ? texts[letter] : '');
+        ReadingType8.syncB1Reading2ChipsForQuestion(qNum);
       }
 
       var overlay = document.getElementById('exercise-modal-overlay');
@@ -209,6 +268,7 @@
         }
       });
       ReadingType8._refreshB1Reading2PreviewsForAnswerMode(mode);
+      this.syncAllB1Reading2Chips();
     },
 
     _refreshB1Reading2PreviewsForAnswerMode: function(mode) {
