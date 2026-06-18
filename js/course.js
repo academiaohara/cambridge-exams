@@ -7113,7 +7113,7 @@
       modal.className = 'cu-lesson-exit-overlay';
       modal.innerHTML =
         '<div class="cu-lesson-exit-box">' +
-          '<img src="Assets/images/asomado.svg" alt="" class="cu-lesson-exit-fox" aria-hidden="true">' +
+          '<img src="Assets/images/Cabezasune.svg" alt="" class="cu-lesson-exit-fox" aria-hidden="true">' +
           '<p class="cu-lesson-exit-text">Are you sure you want to leave? You will return to the stage you were on.</p>' +
           '<div class="cu-lesson-exit-actions">' +
             '<button type="button" class="cu-lesson-exit-btn cu-lesson-exit-btn--stay">Keep learning</button>' +
