@@ -2928,11 +2928,11 @@
 
 @media (min-width: 901px) {
   .dashboard-layout--exercise:not(.dashboard-layout-right-closed) {
-    padding-right: calc(var(--dashboard-right-sidebar-width) + 160px);
+    padding-right: calc(var(--dashboard-exercise-tools-width, 300px) + 16px);
   }
 
   .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .dashboard-center--exercise {
-    padding-right: 16px;
+    padding-right: 12px;
     width: calc(100% - 80px);
     max-width: calc(100% - 80px);
   }
@@ -2945,9 +2945,9 @@
     right: 0;
     top: 0;
     height: 100vh;
-    width: calc(var(--dashboard-right-sidebar-width) + 86px);
-    padding-left: 86px;
-    padding-right: 16px;
+    width: var(--dashboard-exercise-tools-width, 300px);
+    padding-left: 0;
+    padding-right: 12px;
     overflow-y: auto;
     z-index: 50;
     background: #ece8f8;
@@ -2955,6 +2955,7 @@
     box-sizing: border-box;
     align-self: auto;
     max-height: none;
+    border-left: 1px solid rgba(45, 46, 95, 0.06);
   }
 
   .dashboard-layout--exercise .exercise-tools-sidebar-wrap {
