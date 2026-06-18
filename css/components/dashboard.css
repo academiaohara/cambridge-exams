@@ -2931,13 +2931,14 @@
 
 @media (min-width: 901px) {
   .dashboard-layout--exercise:not(.dashboard-layout-right-closed) {
-    padding-right: var(--dashboard-exercise-tools-width, 300px);
+    /* Reserve only up to where sidebar-content starts (centered 260px in 300px panel) */
+    padding-right: calc(var(--dashboard-exercise-tools-width, 300px) - 20px);
   }
 
   .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .dashboard-center,
   .dashboard-layout--exercise:not(.dashboard-layout-right-closed) .dashboard-center--exercise {
     margin-left: 0;
-    padding-right: 20px;
+    padding-right: 0;
     padding-left: 8px;
     width: 100%;
     max-width: 100%;
