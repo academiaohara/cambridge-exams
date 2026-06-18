@@ -277,7 +277,7 @@
       let toolsBarHTML = '';
       if (showTools) {
         toolsBarHTML = `
-          <div class="tools-sidebar tools-sidebar--right-column open" id="tools-sidebar">
+          <div class="tools-sidebar tools-sidebar--right-column" id="tools-sidebar">
             <div class="sidebar-rail">
               <div class="sidebar-tools-list">
                 <button class="sidebar-tool-btn" id="tab-notes" onclick="Tools.switchTool('notes')" data-tooltip="HIGHLIGHT">
@@ -392,7 +392,10 @@
       this.initTypeSpecificListeners(partConfig.type);
 
       if (showTools && typeof Tools !== 'undefined') {
-        Tools.switchTool('notes');
+        // On mobile the tools bar starts closed; user taps an icon to open it.
+        if (!window.matchMedia('(max-width: 768px)').matches) {
+          Tools.switchTool('notes');
+        }
       }
     },
     
