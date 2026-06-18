@@ -543,6 +543,10 @@
   padding-bottom: 16px;
 }
 
+.bgl-footer.bgl-footer--hidden {
+  display: none;
+}
+
 .bgl-action-btn {
   width: 100%;
   padding: 16px 24px;
@@ -579,34 +583,48 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1000;
+  z-index: 3000;
+  animation: bgl-feedback-in 0.28s ease-out;
+}
+
+.bgl-feedback-inner {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 14px;
-  padding: 20px 20px max(20px, env(safe-area-inset-bottom));
-  border-radius: var(--bgl-radius) var(--bgl-radius) 0 0;
-  animation: bgl-feedback-in 0.3s ease;
   max-width: 520px;
   margin: 0 auto;
+  padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
 }
 
 @keyframes bgl-feedback-in {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 .bgl-feedback--correct {
   background: var(--bgl-success-bg);
-  border-top: 3px solid var(--bgl-success);
+  border-top: 2px solid #a8e0d8;
 }
 
 .bgl-feedback--wrong {
   background: var(--bgl-wrong-bg);
-  border-top: 3px solid var(--bgl-wrong);
+  border-top: 2px solid #f5c4b8;
+}
+
+.bgl-feedback-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
 }
 
 .bgl-feedback-icon .material-symbols-outlined {
-  font-size: 32px;
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 
 .bgl-feedback--correct .bgl-feedback-icon {
@@ -624,23 +642,33 @@
 
 .bgl-feedback-title {
   font-family: 'Fredoka', sans-serif;
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-bottom: 6px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.bgl-feedback--correct .bgl-feedback-title {
+  color: #158f82;
+}
+
+.bgl-feedback--wrong .bgl-feedback-title {
+  color: var(--bgl-wrong);
 }
 
 .bgl-feedback-answer {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  margin-bottom: 6px;
-  line-height: 1.5;
+  margin-bottom: 4px;
+  line-height: 1.45;
+  color: #4a4b7c;
 }
 
 .bgl-feedback-exp {
   margin: 0;
-  font-size: 0.88rem;
-  color: #4a4b7c;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.45;
 }
 
 .bgl-diff-mark {
@@ -652,24 +680,37 @@
 
 .bgl-feedback-continue {
   flex-shrink: 0;
-  padding: 10px 18px;
   border: none;
-  border-radius: 999px;
+  border-radius: 14px;
+  padding: 12px 24px;
+  min-height: 48px;
   font-family: inherit;
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
   cursor: pointer;
-  align-self: center;
+  transition: filter 0.15s, transform 0.1s;
 }
 
 .bgl-feedback--correct .bgl-feedback-continue {
   background: var(--bgl-success);
-  color: #fff;
+  box-shadow: 0 4px 0 #158f82;
 }
 
 .bgl-feedback--wrong .bgl-feedback-continue {
   background: var(--bgl-wrong);
-  color: #fff;
+  box-shadow: 0 4px 0 #c96a52;
+}
+
+.bgl-feedback-continue:hover {
+  filter: brightness(1.05);
+}
+
+.bgl-feedback-continue:active {
+  transform: translateY(2px);
+  box-shadow: none;
 }
 
 /* Complete modal */
@@ -759,6 +800,16 @@
 
 .dashboard-layout--lesson-focus .dashboard-center--course {
   background: #eef2f9;
+  padding-bottom: 0 !important;
+}
+
+body:has(.dashboard-layout--lesson-focus) .dashboard-center,
+body:has(.dashboard-layout--lesson-focus) .dashboard-center--subpage {
+  padding-bottom: 0 !important;
+}
+
+.dashboard-layout--lesson-focus .bgl-lesson-mount {
+  padding-bottom: 0;
 }
 
 @media (min-width: 640px) {

@@ -6726,7 +6726,7 @@ body:has(.dashboard-layout--lesson-focus) .app-container {
   min-height: calc(100dvh - var(--dashboard-top-spacing, 28px));
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 16px 24px;
+  padding: 0 16px 0;
   box-sizing: border-box;
 }
 
@@ -6916,7 +6916,7 @@ body:has(.dashboard-layout--lesson-focus) .app-container {
 }
 
 .course-center--lesson-focus .cu-ex-footer.cu-ex-footer--hidden {
-  visibility: hidden;
+  display: none;
   pointer-events: none;
 }
 
