@@ -2177,9 +2177,8 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view pv-point-layout">' +
-          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
-          '<div class="pv-point-main">' +
+        '<div class="fe-point-view">' +
+          this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
             '<div class="pv-gallery-single-wrap">' +
               '<div class="pv-gallery-cards-area" id="id-gallery-cards">' +
                 cardsHtml +
@@ -2193,7 +2192,6 @@
                 'Got it! Next' +
               '</button>' +
             '</div>' +
-          '</div>' +
         '</div>';
 
       var cardsArea = document.getElementById('id-gallery-cards');
@@ -2261,9 +2259,8 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view pv-point-layout">' +
-          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
-          '<div class="pv-point-main">' +
+        '<div class="fe-point-view">' +
+          this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
             '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
               '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
               '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + exercises.length + '" data-answered="0" data-correct="0">' +
@@ -2275,7 +2272,6 @@
                 '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>' +
               '</div>' +
             '</div>' +
-          '</div>' +
         '</div>';
 
       this._showQuizQuestion(0);
@@ -2347,9 +2343,8 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view pv-point-layout">' +
-          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
-          '<div class="pv-point-main">' +
+        '<div class="fe-point-view">' +
+          this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
             '<div class="pv-gallery-single-wrap">' +
               '<div class="pv-conversations-slides" id="id-conv-slides">' +
                 convsHtml +
@@ -2364,7 +2359,6 @@
                 'Ready! Next' +
               '</button>' +
             '</div>' +
-          '</div>' +
         '</div>';
 
       var slidesArea = document.getElementById('id-conv-slides');
@@ -2531,9 +2525,8 @@
       var numHtml = totalConvs > 1 ? '<span class="pv-conv-num">' + (convIdx + 1) + '/' + totalConvs + '</span>' : '';
 
       container.innerHTML =
-        '<div class="fe-point-view pv-point-layout">' +
-          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, ctx.lessonPoints) +
-          '<div class="pv-point-main">' +
+        '<div class="fe-point-view">' +
+          this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, ctx.lessonPoints) +
             '<div class="pv-drag-container">' +
               '<div class="pv-chips-panel" id="id-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
                 '<div class="pv-chips-title">' + 'Idioms' + ':</div>' +
@@ -2554,7 +2547,6 @@
                 '</div>' +
               '</div>' +
             '</div>' +
-          '</div>' +
         '</div>';
 
       this._idDragContext.totalGaps = totalGaps;
@@ -2726,9 +2718,8 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view pv-point-layout">' +
-          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
-          '<div class="pv-point-main">' +
+        '<div class="fe-point-view">' +
+          this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
             '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
               '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
               '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + questions.length + '" data-answered="0" data-correct="0">' +
@@ -2740,7 +2731,6 @@
                 '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>' +
               '</div>' +
             '</div>' +
-          '</div>' +
         '</div>';
 
       this._showQuizQuestion(0);
@@ -2762,118 +2752,20 @@
       this._processPvFillInAnswer(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex);
     },
 
-    // ── PV SIDEBAR BUILDER ───────────────────────────────────────────────
-    _buildPvSidebarHtml: function(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
+    // ── Point exercise header (replaces pv-point-sidebar) ────────────────
+    _buildPointExerciseHeaderHtml: function(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) {
       var self = this;
-
-      var pvIconMap = {
-        'pv-gallery':           'collections_bookmark',
-        'pv-fill-in':           'edit',
-        'pv-conversations':     'forum',
-        'pv-conversation-drag': 'drag_indicator',
-        'pv-mixed':             'shuffle',
-        'wf-explanation':       'school',
-        'wf-multiple-choice':   'rule',
-        'wf-transform':         'transform',
-        'id-gallery':           'collections_bookmark',
-        'id-fill-in':           'edit',
-        'id-conversations':     'forum',
-        'id-conversation-drag': 'drag_indicator',
-        'id-quiz':              'quiz',
-        'id-trophy':            'emoji_events'
-      };
-
-      var pvDescriptions = {
-        'pv-gallery':           'Read and learn the phrasal verbs for this lesson.',
-        'pv-fill-in':           'Choose or write the correct phrasal verb for each sentence.',
-        'pv-conversations':     'Read the conversations. Tap highlighted verbs to see their definition.',
-        'pv-conversation-drag': 'Drag each phrasal verb to the correct gap in the conversation.',
-        'pv-mixed':             'Mixed practice: test yourself with questions from the whole lesson.',
-        'wf-explanation':       'Learn the transformation rule with examples and word cards.',
-        'wf-multiple-choice':   'Choose the correct derived form for each sentence.',
-        'wf-transform':         'Write the correct form of the root word in CAPITALS.',
-        'id-gallery':           'Read and learn the idioms for this lesson.',
-        'id-fill-in':           'Choose the correct idiom to complete each sentence.',
-        'id-conversations':     'Read the conversations. Click highlighted idioms to see their meaning.',
-        'id-conversation-drag': 'Drag each idiom to the correct gap in the conversation.',
-        'id-quiz':              'Quiz: test yourself with different question types.',
-        'id-trophy':            'Congratulations! You have completed this level.'
-      };
-
-      var dotsHtml = '';
-      if (lessonPoints && lessonPoints.length > 0) {
-        lessonPoints.forEach(function(pt, pi) {
-          var isDone   = self._isPointComplete(catMeta.id, levelId, lessonId, pi);
-          var isActive = (pi === pointIndex);
-
-          // pv-mixed / id-quiz locked until all previous points are done
-          var isAccessible = true;
-          if ((pt.type === 'pv-mixed' || pt.type === 'id-quiz') && pi === lessonPoints.length - 1) {
-            for (var prev = 0; prev < pi; prev++) {
-              if (!self._isPointComplete(catMeta.id, levelId, lessonId, prev)) {
-                isAccessible = false;
-                break;
-              }
-            }
-          }
-
-          var icon = isDone ? 'check' : (pvIconMap[pt.type] || 'circle');
-          var cls = 'pv-sidebar-point-dot';
-          if (isActive)          cls += ' pv-sidebar-point-active';
-          else if (isDone)       cls += ' pv-sidebar-point-done';
-          else if (!isAccessible) cls += ' pv-sidebar-point-locked';
-
-          var onclick = '';
-          if (!isActive && (isDone || isAccessible)) {
-            onclick = 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pi + ')"';
-          }
-
-          // Use the category color for the active dot
-          var style = isActive ? 'style="--dot-color:' + catMeta.color + '"' : '';
-
-          if (pi > 0) {
-            dotsHtml += '<div class="pv-sidebar-connector"></div>';
-          }
-          dotsHtml += '<div class="' + cls + '" ' + onclick + ' ' + style + ' title="' + self._escapeHTML(pt.label || '') + '">' +
-            '<span class="material-symbols-outlined">' + icon + '</span>' +
-          '</div>';
-        });
-      }
-
-      var currentPointType = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex].type : '';
-      var exerciseDesc = pvDescriptions[currentPointType] || '';
-
-      return '<div class="pv-point-sidebar" id="pv-point-sidebar">' +
-        '<div class="pv-sidebar-top-row">' +
-          '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back">' +
-            _backButtonContent('Back') +
-          '</button>' +
-          '<div class="pv-sidebar-lesson-info">' +
-            '<div class="pv-sidebar-lesson-info-header">' +
-              '<div class="pv-sidebar-lesson-info-text">' +
-                '<div class="pv-sidebar-lesson-name">' + self._escapeHTML(lessonTitle || '') + '</div>' +
-                '<div class="pv-sidebar-level-label">' + self._escapeHTML(levelId || '') + '</div>' +
-              '</div>' +
-            '</div>' +
-          '</div>' +
-        '</div>' +
-        '<button class="pv-sidebar-exit-btn" title="' + 'Back' + '" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')">' +
-          '<span class="material-symbols-outlined">close</span>' +
+      var point = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
+      var pointLabel = point ? (point.label || '') : '';
+      return '<div class="subpage-header fe-point-exercise-header">' +
+        '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back">' +
+          _backButtonContent('Back') +
         '</button>' +
-        '<div class="pv-sidebar-content" id="pv-sidebar-content">' +
-          (exerciseDesc ? '<div class="pv-sidebar-exercise-desc">' + exerciseDesc + '</div>' : '') +
+        '<div class="subpage-header-titles">' +
+          '<div class="subpage-title">' + self._escapeHTML(pointLabel || lessonTitle || '') + '</div>' +
+          '<div class="subpage-subtitle">' + self._escapeHTML(levelId || '') + ' · ' + self._escapeHTML(lessonTitle || '') + '</div>' +
         '</div>' +
-        '<div class="pv-sidebar-points">' + dotsHtml + '</div>' +
       '</div>';
-    },
-
-    _pvToggleSidebar: function() {
-      var sidebar = document.getElementById('pv-point-sidebar');
-      var icon = document.querySelector('#pv-sidebar-toggle .pv-sidebar-toggle-icon');
-      if (!sidebar) return;
-      var isCollapsed = sidebar.classList.contains('pv-sidebar-collapsed');
-      sidebar.classList.toggle('pv-sidebar-collapsed', !isCollapsed);
-      if (icon) icon.textContent = isCollapsed ? 'chevron_left' : 'chevron_right';
     },
 
     // ── VOCABULARY SIDEBAR ───────────────────────────────────────────────
@@ -3011,9 +2903,8 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view pv-point-layout">' +
-          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
-          '<div class="pv-point-main">' +
+        '<div class="fe-point-view">' +
+          this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
             '<div class="pv-gallery-single-wrap">' +
               '<div class="pv-gallery-cards-area" id="pv-gallery-cards">' +
                 cardsHtml +
@@ -3027,7 +2918,6 @@
                 'Got it! Next' + '' +
               '</button>' +
             '</div>' +
-          '</div>' +
         '</div>';
 
       // Attach wheel scroll handler
@@ -3108,9 +2998,8 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view pv-point-layout">' +
-          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
-          '<div class="pv-point-main">' +
+        '<div class="fe-point-view">' +
+          this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
             '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
               '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
               '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + exercises.length + '" data-answered="0" data-correct="0">' +
@@ -3122,7 +3011,6 @@
                 '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>' +
               '</div>' +
             '</div>' +
-          '</div>' +
         '</div>';
 
       this._showQuizQuestion(0);
@@ -3274,9 +3162,8 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view pv-point-layout">' +
-          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
-          '<div class="pv-point-main">' +
+        '<div class="fe-point-view">' +
+          this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
             '<div class="pv-gallery-single-wrap">' +
               '<div class="pv-conversations-slides" id="pv-conv-slides">' +
                 convsHtml +
@@ -3291,7 +3178,6 @@
                 'Ready! Next' +
               '</button>' +
             '</div>' +
-          '</div>' +
         '</div>';
 
       // Attach wheel scroll handler
@@ -3429,9 +3315,8 @@
       var numHtml = totalConvs > 1 ? '<span class="pv-conv-num">' + (convIdx + 1) + '/' + totalConvs + '</span>' : '';
 
       container.innerHTML =
-        '<div class="fe-point-view pv-point-layout">' +
-          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, ctx.lessonPoints) +
-          '<div class="pv-point-main">' +
+        '<div class="fe-point-view">' +
+          this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, ctx.lessonPoints) +
             '<div class="pv-drag-container">' +
               '<div class="pv-chips-panel" id="pv-chips-panel" data-total-gaps="' + totalGaps + '" data-filled="0">' +
                 '<div class="pv-chips-title">' + 'Phrasal Verbs' + ':</div>' +
@@ -3452,7 +3337,6 @@
                 '</div>' +
               '</div>' +
             '</div>' +
-          '</div>' +
         '</div>';
 
       // Update context for drag handlers
@@ -3640,9 +3524,8 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view pv-point-layout">' +
-          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
-          '<div class="pv-point-main">' +
+        '<div class="fe-point-view">' +
+          this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
             '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
               '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
               '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + mixed.length + '" data-answered="0" data-correct="0">' +
@@ -3654,7 +3537,6 @@
                 '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>' +
               '</div>' +
             '</div>' +
-          '</div>' +
         '</div>';
 
       this._showQuizQuestion(0);
@@ -3828,9 +3710,8 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view pv-point-layout">' +
-          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
-          '<div class="pv-point-main">' +
+        '<div class="fe-point-view">' +
+          this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
             '<div class="wf-explanation-wrap">' +
               (groups.length > 0 ?
                 '<div class="wf-exp-panel">' + ruleHtml + groupsHtml + '</div>' : '') +
@@ -3845,7 +3726,6 @@
                 'Got it! Next' +
               '</button>' +
             '</div>' +
-          '</div>' +
         '</div>';
 
       // Attach wheel scroll handler
@@ -3916,9 +3796,8 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view pv-point-layout">' +
-          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
-          '<div class="pv-point-main">' +
+        '<div class="fe-point-view">' +
+          this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
             '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
               '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
               '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + exercises.length + '" data-answered="0" data-correct="0">' +
@@ -3930,7 +3809,6 @@
                 '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>' +
               '</div>' +
             '</div>' +
-          '</div>' +
         '</div>';
 
       this._showQuizQuestion(0);
@@ -3982,9 +3860,8 @@
       });
 
       container.innerHTML =
-        '<div class="fe-point-view pv-point-layout">' +
-          this._buildPvSidebarHtml(catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) +
-          '<div class="pv-point-main">' +
+        '<div class="fe-point-view">' +
+          this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
             '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
               '<div class="wf-transform-header">' +
                 _mi('transform') + ' <span>' + 'Word Transformation' + '</span>' +
@@ -4000,7 +3877,6 @@
                 '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button>' +
               '</div>' +
             '</div>' +
-          '</div>' +
         '</div>';
 
       this._showQuizQuestion(0);

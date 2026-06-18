@@ -6467,10 +6467,10 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 }
 
 .course-exercise-cell--current {
-  background: linear-gradient(180deg, #ffc800 0%, #ff9600 100%);
+  background: #ff9600;
   color: #fff;
   transform: scale(1.08);
-  box-shadow: 0 0 0 4px rgba(255, 150, 0, 0.35), 0 5px 0 #e08600;
+  box-shadow: 0 5px 0 #e08600;
   animation: course-circle-pulse 1.8s ease-in-out infinite;
 }
 
@@ -6590,8 +6590,9 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 }
 
 .course-path-circle--current {
+  background: #1cb0f6;
   transform: scale(1.08);
-  box-shadow: 0 0 0 4px rgba(28, 176, 246, 0.35), 0 6px 0 #46a302;
+  box-shadow: 0 6px 0 #1899d6;
   animation: course-circle-pulse 1.8s ease-in-out infinite;
 }
 
@@ -6603,7 +6604,7 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 }
 
 .course-path-circle--review {
-  background: linear-gradient(180deg, #ffc800 0%, #ff9600 100%);
+  background: #ff9600;
   box-shadow: 0 6px 0 #e08600;
   width: 80px;
   height: 80px;
