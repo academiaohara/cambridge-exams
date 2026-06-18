@@ -1,7 +1,7 @@
 // js/exercise-handlers.js
 (function() {
   window.ExerciseHandlers = {
-    _ALT_BADGE_CONTAINERS_SELECTOR: '.reading-type2-gap, .listening-type2-gap, .reading-type3-gap-inline, .reading-type4-inline-wrap',
+    _ALT_BADGE_CONTAINERS_SELECTOR: '.reading-type2-gap, .reading-type2-gap--duo, .listening-type2-gap, .reading-type3-gap-inline, .reading-type4-inline-wrap',
 
     handleTextGap: function(qNum, value) {
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
@@ -846,7 +846,12 @@
       
       // Re-render exercise for types that use new gap design
       const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations', 'multiple-choice-text', 'cross-text-matching', 'gapped-text', 'multiple-matching', 'speaker-matching', 'dual-matching'];
-      if (reRenderTypes.includes(partConfig.type)) {
+      const b1Reading6OpenCloze =
+        partConfig.type === 'open-cloze' &&
+        AppState.currentLevel === 'B1' &&
+        AppState.currentSection === 'reading' &&
+        AppState.currentPart === 6;
+      if (reRenderTypes.includes(partConfig.type) || b1Reading6OpenCloze) {
         await ExerciseRenderer.render(
           AppState.currentExercise,
           AppState.currentExamId,
@@ -988,7 +993,7 @@
         case 'sentence-completion':
         case 'transformations':
           const altBadgeContainersSelector = this._ALT_BADGE_CONTAINERS_SELECTOR;
-          document.querySelectorAll('.gap-input, .reading-type2-input, .listening-type2-input').forEach(input => {
+          document.querySelectorAll('.gap-input, .reading-type2-input, .reading-type2-pill-input, .listening-type2-input').forEach(input => {
             input.value = '';
             input.classList.remove('correct', 'incorrect');
             input.classList.remove('cu-input-show-correct');
@@ -1003,16 +1008,21 @@
             input.removeAttribute('data-alt-idx');
             if (input._cuAltBadge) { input._cuAltBadge.remove(); input._cuAltBadge = null; }
             if (input._cuAltClickHandler) { input.removeEventListener('click', input._cuAltClickHandler); input._cuAltClickHandler = null; }
-            const gap = input.closest('.reading-type2-gap, .listening-type2-gap');
+            const gap = input.closest('.reading-type2-gap, .reading-type2-gap--duo, .listening-type2-gap');
             if (gap) {
               gap.classList.remove('incorrect');
               gap.removeAttribute('data-correct');
             }
           });
-          document.querySelectorAll('.reading-type3-gap-inline').forEach(gap => {
+          document.querySelectorAll('.reading-type3-gap-inline, .reading-type2-gap--duo').forEach(gap => {
             if (gap._cuAltBadge) { gap._cuAltBadge.remove(); gap._cuAltBadge = null; }
             gap.removeAttribute('data-alt-answers');
             gap.removeAttribute('data-alt-idx');
+            gap.removeAttribute('data-student-value');
+            gap.removeAttribute('data-check-class');
+            gap.removeAttribute('data-correct-raw');
+            gap.classList.remove('incorrect');
+            gap.removeAttribute('data-correct');
           });
           document.querySelectorAll('.cu-alt-badge').forEach(badge => {
             if (badge.closest(altBadgeContainersSelector)) {

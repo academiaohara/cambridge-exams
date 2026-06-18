@@ -239,6 +239,9 @@
 
       const b1ReadingPlainText =
         AppState.currentLevel === 'B1' && section === 'reading' && part >= 3 && part <= 6;
+      const b1Reading6OpenCloze =
+        AppState.currentLevel === 'B1' && section === 'reading' && part === 6 &&
+        partConfig.type === 'open-cloze';
       const b1Reading4Gapped =
         AppState.currentLevel === 'B1' && section === 'reading' && part === 4 &&
         partConfig.type === 'gapped-text';
@@ -372,7 +375,7 @@
             
             <div class="exercise-main-layout" lang="en">
               <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
-              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${b1ReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${b1Reading4Gapped ? ' b1-reading4' : ''}" id="selectable-text">
+              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${b1ReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${b1Reading4Gapped ? ' b1-reading4' : ''}${b1Reading6OpenCloze ? ' b1-reading6' : ''}" id="selectable-text">
                 ${paragraphsHTML}
               </div>
             </div>
@@ -1274,6 +1277,13 @@
             document.querySelectorAll('.reading-type2-input').forEach(function(inp) {
               if (typeof ReadingType2 !== 'undefined') ReadingType2.resizeInput(inp);
             });
+            document.querySelectorAll('.reading-type2-pill-input').forEach(function(inp) {
+              if (typeof BentoGrid !== 'undefined' && typeof BentoGrid._resizeCuInput === 'function') {
+                BentoGrid._resizeCuInput(inp);
+              } else if (typeof ReadingType2 !== 'undefined') {
+                ReadingType2.resizeInput(inp);
+              }
+            });
           }, 50);
           break;
         case 'word-formation':
@@ -1377,6 +1387,14 @@
       }
       
       if (partConfig.type === 'open-cloze') {
+        if (typeof ReadingType2 !== 'undefined' && ReadingType2._isB1Reading6 && ReadingType2._isB1Reading6()) {
+          return ReadingType2._renderDuoGap(
+            { correct: exampleText },
+            qNum,
+            false,
+            exampleText
+          );
+        }
         return `
           <span class="reading-type2-gap">
             <span class="reading-type2-gap-number">(${qNum})</span>
