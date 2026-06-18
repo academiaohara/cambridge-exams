@@ -1458,13 +1458,14 @@
       
       let explanations = `
         <div class="explanations-section" id="explanations-section" style="display: none;" lang="en">
-          <h3><i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">Show explanations</span></h3>
+          <h3><i class="fas fa-lightbulb"></i> <span data-i18n="showExplanations">Show explanations</span></h3>
       `;
       
       allQuestions.forEach(q => {
         explanations += `
           <div class="explanation-item" data-question="${q.number}">
-            <strong>${q.number}.</strong> — ${q.explanation || 'No explanation available'}
+            <span class="explanation-item-number">${q.number}</span>
+            <span class="explanation-item-text">${q.explanation || 'No explanation available'}</span>
           </div>
         `;
       });
@@ -1560,13 +1561,13 @@
             isB1Reading5Or6FooterExplanations) {
           footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
-            <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">Show explanations</span>
+            <i class="fas fa-lightbulb"></i> <span data-i18n="showExplanations">Show explanations</span>
           </button>
           `;
         } else if (!isReading && !isListening) {
           footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()">
-            <i class="fas fa-info-circle"></i> <span data-i18n="showExplanations">Show explanations</span>
+            <i class="fas fa-lightbulb"></i> <span data-i18n="showExplanations">Show explanations</span>
           </button>
           `;
         }
