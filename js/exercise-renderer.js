@@ -842,7 +842,7 @@
         questions.forEach(function(q) {
           const qNum = q.number;
           const answer = answers[qNum];
-          let cls = 'question-nav-cell';
+          let cls = 'question-nav-cell question-nav-letter';
           if (isChecked) {
             if (answer) cls += answer === q.correct ? ' correct' : ' incorrect';
             else cls += ' unanswered-checked';
@@ -856,7 +856,7 @@
       questions.forEach(function(q) {
         const qNum = q.number;
         const answer = answers[qNum];
-        let cls = 'question-nav-cell';
+        let cls = 'question-nav-cell question-nav-letter';
         if (isChecked) {
           if (answer) cls += answer === q.correct ? ' correct' : ' incorrect';
           else cls += ' unanswered-checked';
@@ -1126,7 +1126,7 @@
         if (!answer && exercise.content.task1) {
           answer = answers['t1_' + qNum] || answers['t2_' + qNum];
         }
-        var cls = 'question-nav-cell';
+        var cls = 'question-nav-cell question-nav-letter';
         if (isChecked) {
           if (answer) {
             var correct = q.correct;

@@ -168,15 +168,15 @@
         safeBody = this._escapeHtml(raw).replace(/\n/g, '<br>');
       }
       bodyEl.innerHTML =
-        '<div class="qnav-header qnav-header--b1r2-duo">' +
+        '<div class="qnav-header">' +
         '<div class="qnav-header-main">' +
-        '<span class="qnav-title qnav-title--b1r2-duo">' + this._escapeHtml(letter) + '</span>' +
-        '<span class="qnav-question-text qnav-question-text-header qnav-question-text--b1r2-duo">Text ' + this._escapeHtml(letter) + '</span>' +
+        '<span class="qnav-title">' + this._escapeHtml(letter) + '</span>' +
+        '<span class="qnav-question-text qnav-question-text-header">Text ' + this._escapeHtml(letter) + '</span>' +
         '</div>' +
-        '<button type="button" class="qnav-close-btn qnav-close-btn--duo" onclick="QuestionNav.close()" aria-label="Close">' +
+        '<button type="button" class="qnav-close-btn" onclick="QuestionNav.close()" aria-label="Close">' +
         '<i class="fas fa-times"></i></button>' +
         '</div>' +
-        '<div class="qnav-body qnav-body--b1r2-duo">' +
+        '<div class="qnav-body">' +
         '<div class="b1-reading2-letter-modal-card">' +
         '<div class="b1-reading2-letter-modal-text">' + safeBody + '</div></div></div>';
       overlay.style.display = 'flex';
