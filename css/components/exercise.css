@@ -722,8 +722,32 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 4px;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.eq-options.eq-options-columns .eq-option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  background: #fff;
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.eq-options.eq-options-columns .eq-option.eq-option-correct {
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  color: var(--ex-duo-blue-dark, #1899d6);
 }
 
 /* Evidence [n]...[/n]: explanation styling only under .explanation-mode-text */
@@ -794,31 +818,10 @@
   text-underline-offset: 3px;
 }
 
-/* B1 Reading Part 2 explanation strip: correct letter callout (blue Duolingo chip) */
-.eq-b1r2-correct-callout {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-  padding: 10px 14px;
-  border-radius: 14px;
-  border: 2px solid var(--ex-duo-blue, #1cb0f6);
-  background: var(--ex-duo-blue-light, #ddf4ff);
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
-}
-
-.eq-b1r2-correct-label {
-  font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ex-duo-blue-dark, #1899d6);
-}
-
+/* B1 Reading Part 2 explanation strip: correct letter chip only */
 .eq-b1r2-correct-letter,
 .eq-b1r2-correct-letter.eq-option.eq-option-correct {
+  margin-bottom: 4px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1691,14 +1694,14 @@ body:has(.dashboard-layout--exercise) #main-content {
   padding: 28px 32px 32px;
 }
 
+.dashboard-layout--exercise .reading-text-enhanced::after {
+  display: none;
+}
+
 /* B1 Reading Part 1 — notice cards + MC options inside the reading card */
 .dashboard-layout--exercise .reading-text-enhanced:has(.reading-type5-with-notice) {
   padding: 20px 22px 24px;
   border-top-color: var(--ex-duo-blue);
-}
-
-.dashboard-layout--exercise .reading-text-enhanced:has(.reading-type5-with-notice)::after {
-  color: var(--ex-duo-blue);
 }
 
 /* B1 Reading Part 2 — matching exercise inside the reading card */
@@ -1706,11 +1709,6 @@ body:has(.dashboard-layout--exercise) #main-content {
 .dashboard-layout--exercise .reading-text-enhanced:has(.b1-reading2-people) {
   padding: 20px 22px 24px;
   border-top-color: var(--ex-duo-blue, #1cb0f6);
-}
-
-.dashboard-layout--exercise .reading-text-enhanced--b1r2::after,
-.dashboard-layout--exercise .reading-text-enhanced:has(.b1-reading2-people)::after {
-  color: var(--ex-duo-blue, #1cb0f6);
 }
 
 .dashboard-layout--exercise .reading-text-enhanced--b1r2 .content-title-block,
