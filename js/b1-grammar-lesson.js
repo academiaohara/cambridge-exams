@@ -691,7 +691,9 @@
     var footer = document.querySelector('.bgl-footer');
     if (footer) footer.classList.add('bgl-footer--hidden');
 
-    document.body.appendChild(panel);
+    var lessonRoot = document.getElementById('bgl-lesson-root');
+    if (lessonRoot) lessonRoot.appendChild(panel);
+    else document.body.appendChild(panel);
   }
 
   function updateProgress() {
