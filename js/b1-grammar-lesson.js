@@ -70,18 +70,30 @@
     return esc(str).replace(/\*\*([^*]+)\*\*/g, '<strong class="bgl-highlight">$1</strong>');
   }
 
-  function highlightDiff(correct, user) {
-    var cWords = normCompare(correct, true).split(/\s+/);
-    var uWords = normCompare(user, true).split(/\s+/);
-    var rawWords = correct.split(/\s+/);
-    var html = [];
-    for (var i = 0; i < rawWords.length; i++) {
-      var changed = i >= uWords.length || normCompare(rawWords[i], false) !== normCompare(uWords[i] || '', false);
-      html.push(changed
-        ? '<mark class="bgl-diff-mark">' + esc(rawWords[i]) + '</mark>'
-        : esc(rawWords[i]));
+  var HEARTS_MAX = 5;
+
+  function getStepMeta(step) {
+    if (!step || step.kind !== 'exercise') return { explanation: '', correctAnswer: '' };
+    var item = step.item;
+    if (step.exerciseType === 'passage_error_hunt') {
+      return {
+        explanation: 'Keep tapping the incorrect verb phrases.',
+        correctAnswer: ''
+      };
     }
-    return html.join(' ');
+    if (!item) return { explanation: '', correctAnswer: '' };
+    var answer = primaryAnswer(item);
+    if (step.exerciseType === 'gap_fill') {
+      answer = (item.sentence || '').replace(GAP_RE, answer);
+    } else if (step.exerciseType === 'tap_choice') {
+      answer = item.completedSentence || item.answer || answer;
+    } else if (step.exerciseType === 'verb_bank_gap_fill') {
+      answer = item.completedSentence || answer;
+    }
+    return {
+      explanation: item.explanation || step.section.instructions || '',
+      correctAnswer: answer
+    };
   }
 
   function buildSteps(unitData, skipTheory, limitSectionIdx) {
@@ -453,7 +465,7 @@
       explanation: input.getAttribute('data-explanation') || '',
       correctAnswer: expected,
       userAnswer: given,
-      highlight: !correct ? highlightDiff(expected, given) : esc(expected)
+      highlight: esc(expected)
     };
   }
 
@@ -642,6 +654,145 @@
 
   var state = null;
 
+  function updateHearts() {
+    var container = document.getElementById('bgl-hearts');
+    if (!container || !state) return;
+    container.querySelectorAll('.bgl-heart').forEach(function(heart, idx) {
+      heart.classList.toggle('bgl-heart--empty', idx >= state.hearts);
+    });
+  }
+
+  function loseHeart() {
+    if (!state || state.hearts <= 0) return;
+    state.hearts--;
+    updateHearts();
+    if (state.hearts <= 0) {
+      showOutOfHeartsModal();
+    }
+  }
+
+  function resetSession() {
+    if (!state) return;
+    state.hearts = HEARTS_MAX;
+    state.retryQueue = [];
+    state.inRetryMode = false;
+    state.retryPos = 0;
+    state.correctCount = 0;
+    state.totalChecked = 0;
+    state.stepIdx = 0;
+    updateHearts();
+  }
+
+  function queueRetry(stepIdx) {
+    if (!state || state.retryQueue.indexOf(stepIdx) !== -1) return;
+    state.retryQueue.push(stepIdx);
+  }
+
+  function isExerciseStep(step) {
+    return step && step.kind === 'exercise';
+  }
+
+  function lastMainStepIdx() {
+    if (!state) return 0;
+    for (var i = state.steps.length - 1; i >= 0; i--) {
+      if (isExerciseStep(state.steps[i])) return i;
+    }
+    return state.steps.length - 1;
+  }
+
+  function firstTheoryStepIdxForSection(secIdx) {
+    if (!state) return 0;
+    for (var i = 0; i < state.steps.length; i++) {
+      var s = state.steps[i];
+      if (s.kind === 'theory' && s.secIdx === secIdx) return i;
+    }
+    return 0;
+  }
+
+  function getTheoryStepIndices(secIdx) {
+    if (!state) return [];
+    var out = [];
+    state.steps.forEach(function(s, i) {
+      if (s.kind === 'theory' && s.secIdx === secIdx) out.push(i);
+    });
+    return out;
+  }
+
+  function renderTheoryDots() {
+    var dotsEl = document.getElementById('bgl-theory-dots');
+    if (!dotsEl || !state) return;
+    var step = state.steps[state.stepIdx];
+    if (!step || step.kind !== 'theory') {
+      dotsEl.innerHTML = '';
+      dotsEl.hidden = true;
+      return;
+    }
+    var indices = getTheoryStepIndices(step.secIdx);
+    if (indices.length <= 1) {
+      dotsEl.innerHTML = '';
+      dotsEl.hidden = true;
+      return;
+    }
+    dotsEl.hidden = false;
+    dotsEl.innerHTML = indices.map(function(idx) {
+      var s = state.steps[idx];
+      var active = idx === state.stepIdx;
+      return '<button type="button" class="bgl-card-dot' + (active ? ' bgl-card-dot--active' : '') + '" ' +
+        'data-step-idx="' + idx + '" aria-label="Card ' + (s.cardIdx + 1) + ' of ' + s.cardTotal + '"></button>';
+    }).join('');
+    dotsEl.querySelectorAll('.bgl-card-dot').forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        var target = parseInt(dot.getAttribute('data-step-idx'), 10);
+        if (isNaN(target) || target === state.stepIdx) return;
+        state.stepIdx = target;
+        renderCurrentStep();
+      });
+    });
+  }
+
+  function showOutOfHeartsModal() {
+    var existing = document.getElementById('bgl-hearts-modal');
+    if (existing) existing.remove();
+
+    var modal = document.createElement('div');
+    modal.id = 'bgl-hearts-modal';
+    modal.className = 'bgl-complete-overlay bgl-hearts-overlay';
+    modal.innerHTML =
+      '<div class="bgl-complete-box" role="dialog" aria-labelledby="bgl-hearts-title" aria-modal="true">' +
+        '<div class="bgl-complete-icon bgl-complete-icon--hearts" aria-hidden="true">' +
+          '<span class="material-symbols-outlined">favorite</span>' +
+        '</div>' +
+        '<h2 class="bgl-complete-title bgl-complete-title--hearts" id="bgl-hearts-title">Out of hearts</h2>' +
+        '<p class="bgl-complete-text">You ran out of hearts. Try again or go back to the unit.</p>' +
+        '<div class="bgl-hearts-actions">' +
+          '<button type="button" class="bgl-complete-btn bgl-complete-btn--secondary" id="bgl-hearts-exit">Exit</button>' +
+          '<button type="button" class="bgl-complete-btn" id="bgl-hearts-retry">Try again</button>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    modal.querySelector('#bgl-hearts-retry').addEventListener('click', function() {
+      modal.remove();
+      clearProgress(state.unitId, state.sectionIdx);
+      resetSession();
+      renderCurrentStep();
+    });
+    modal.querySelector('#bgl-hearts-exit').addEventListener('click', function() {
+      modal.remove();
+      if (state.backFn) {
+        try { new Function(state.backFn)(); } catch (e) { console.error(e); }
+      }
+    });
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.remove();
+        if (state.backFn) {
+          try { new Function(state.backFn)(); } catch (err) { console.error(err); }
+        }
+      }
+    });
+  }
+
   function showFeedback(result, onContinue) {
     var existing = document.getElementById('bgl-feedback');
     if (existing) existing.remove();
@@ -693,17 +844,19 @@
     var step = state.steps[state.stepIdx];
     var isTheory = step && step.kind === 'theory';
     var track = document.querySelector('.bgl-progress-track');
+    var heartsEl = document.getElementById('bgl-hearts');
     if (track) track.style.display = isTheory ? 'none' : '';
+    if (heartsEl) heartsEl.style.display = isTheory ? 'none' : '';
     var fill = document.getElementById('bgl-progress-fill');
     if (!fill || isTheory) return;
-    var exTotal = 0;
-    var exDone = 0;
+    var exIndices = [];
     state.steps.forEach(function(s, i) {
-      if (s.kind !== 'exercise') return;
-      exTotal++;
-      if (i <= state.stepIdx) exDone++;
+      if (s.kind === 'exercise') exIndices.push(i);
     });
-    var pct = exTotal ? Math.round((exDone / exTotal) * 100) : 0;
+    if (!exIndices.length) return;
+    var pos = exIndices.indexOf(state.stepIdx);
+    if (pos < 0) pos = exIndices.length - 1;
+    var pct = Math.round(((pos + 1) / exIndices.length) * 100);
     fill.style.width = pct + '%';
   }
 
@@ -713,17 +866,26 @@
     var isTheory = step && step.kind === 'theory';
     var lessonRoot = document.getElementById('bgl-lesson-root');
     var theoryNav = document.getElementById('bgl-footer-theory');
+    var exerciseNav = document.getElementById('bgl-footer-exercise');
     var actionBtn = document.getElementById('bgl-action-btn');
     var backBtn = document.getElementById('bgl-back-btn');
     var nextBtn = document.getElementById('bgl-next-btn');
+    var skipBtn = document.getElementById('bgl-skip-btn');
 
     if (lessonRoot) {
       lessonRoot.classList.toggle('bgl-lesson--theory', isTheory);
       lessonRoot.classList.toggle('bgl-lesson--exercise', !isTheory);
     }
     if (theoryNav) theoryNav.style.display = isTheory ? '' : 'none';
+    if (exerciseNav) exerciseNav.style.display = isTheory ? 'none' : '';
     if (actionBtn) actionBtn.style.display = isTheory ? 'none' : '';
-    if (backBtn) backBtn.disabled = state.stepIdx <= 0;
+    if (skipBtn) skipBtn.style.display = isTheory ? 'none' : '';
+    if (backBtn) {
+      var firstTheoryIdx = step && step.kind === 'theory'
+        ? firstTheoryStepIdxForSection(step.secIdx)
+        : 0;
+      backBtn.disabled = state.stepIdx <= firstTheoryIdx;
+    }
     if (nextBtn) {
       nextBtn.textContent = state.stepIdx >= state.steps.length - 1 ? 'Finish' : 'Next';
     }
@@ -751,13 +913,17 @@
     }
 
     if (footerBtn) {
-      footerBtn.textContent = isTheory ? 'Continue' : 'Check';
-      footerBtn.disabled = !isTheory && !isAnswered(state.root, step);
-      footerBtn.setAttribute('data-mode', isTheory ? 'continue' : 'check');
+      footerBtn.textContent = 'Check';
+      footerBtn.disabled = !isAnswered(state.root, step);
+      footerBtn.setAttribute('data-mode', 'check');
     }
+
+    var skipBtn = document.getElementById('bgl-skip-btn');
+    if (skipBtn) skipBtn.disabled = step.kind !== 'exercise';
 
     updateProgress();
     updateTheoryFooter();
+    renderTheoryDots();
 
     var existingFb = document.getElementById('bgl-feedback');
     if (existingFb) existingFb.remove();
@@ -767,9 +933,13 @@
 
   function goBackStep() {
     if (!state || state.stepIdx <= 0) return;
+    var step = state.steps[state.stepIdx];
+    if (step && step.kind === 'theory') {
+      var firstIdx = firstTheoryStepIdxForSection(step.secIdx);
+      if (state.stepIdx <= firstIdx) return;
+    }
     state.stepIdx--;
     renderCurrentStep();
-    saveProgress();
   }
 
   function goNextTheoryStep() {
@@ -779,30 +949,71 @@
       BentoGrid._markCourseSectionVisited(state.level, state.unitId, step.secIdx);
       BentoGrid._checkCourseUnitAllDone(state.level, state.unitId);
     }
-    advanceStep();
-  }
-
-  function advanceStep() {
-    if (!state) return;
     if (state.stepIdx < state.steps.length - 1) {
       state.stepIdx++;
       renderCurrentStep();
-      saveProgress();
     } else {
       finishLesson();
     }
   }
 
-  function handleAction() {
+  function advanceStep() {
     if (!state) return;
+    if (state.hearts <= 0) return;
+
+    if (state.inRetryMode) {
+      state.retryPos++;
+      if (state.retryPos < state.retryQueue.length) {
+        state.stepIdx = state.retryQueue[state.retryPos];
+        renderCurrentStep();
+        return;
+      }
+      finishLesson();
+      return;
+    }
+
+    var lastMain = lastMainStepIdx();
+    if (state.stepIdx < lastMain) {
+      state.stepIdx++;
+      renderCurrentStep();
+      return;
+    }
+
+    if (state.retryQueue.length > 0) {
+      state.inRetryMode = true;
+      state.retryPos = 0;
+      state.stepIdx = state.retryQueue[0];
+      renderCurrentStep();
+      return;
+    }
+
+    finishLesson();
+  }
+
+  function afterExerciseResult(result, stepIdx) {
+    if (!result.correct) {
+      if (!state.inRetryMode) queueRetry(stepIdx);
+      loseHeart();
+      if (state.hearts <= 0) return;
+    }
+    var btn = document.getElementById('bgl-action-btn');
+    var skipBtn = document.getElementById('bgl-skip-btn');
+    if (btn) {
+      btn.textContent = 'Continue';
+      btn.setAttribute('data-mode', 'continue');
+      btn.disabled = false;
+    }
+    if (skipBtn) skipBtn.disabled = true;
+    showFeedback(result, function() {
+      advanceStep();
+    });
+  }
+
+  function handleAction() {
+    if (!state || state.hearts <= 0) return;
     var step = state.steps[state.stepIdx];
     var btn = document.getElementById('bgl-action-btn');
     if (!step || !btn) return;
-
-    if (btn.getAttribute('data-mode') === 'continue' && step.kind === 'theory') {
-      advanceStep();
-      return;
-    }
 
     if (btn.getAttribute('data-mode') === 'continue') {
       advanceStep();
@@ -814,14 +1025,26 @@
     var result = checkStep(state.root, step);
     if (result.correct) state.correctCount++;
     state.totalChecked++;
+    afterExerciseResult(result, state.stepIdx);
+  }
 
-    btn.textContent = 'Continue';
-    btn.setAttribute('data-mode', 'continue');
-    btn.disabled = false;
+  function handleSkip() {
+    if (!state || state.hearts <= 0) return;
+    var step = state.steps[state.stepIdx];
+    var btn = document.getElementById('bgl-action-btn');
+    if (!step || step.kind !== 'exercise' || !btn || btn.getAttribute('data-mode') === 'continue') return;
 
-    showFeedback(result, function() {
-      advanceStep();
-    });
+    var meta = getStepMeta(step);
+    var result = {
+      correct: false,
+      explanation: meta.explanation,
+      correctAnswer: meta.correctAnswer,
+      highlight: esc(meta.correctAnswer)
+    };
+
+    checkStep(state.root, step);
+    state.totalChecked++;
+    afterExerciseResult(result, state.stepIdx);
   }
 
   function finishLesson() {
@@ -859,7 +1082,9 @@
         '<p class="bgl-complete-score">' + esc(score) + '</p>' +
         '<button type="button" class="bgl-complete-btn" id="bgl-complete-back">Back to unit</button>' +
       '</div>';
-    document.body.appendChild(modal);
+    var lessonRoot = document.getElementById('bgl-lesson-root');
+    if (lessonRoot) lessonRoot.appendChild(modal);
+    else document.body.appendChild(modal);
 
     function goBack() {
       modal.remove();
@@ -893,7 +1118,17 @@
     return null;
   }
 
+  function clearProgress(unitId, sectionIdx) {
+    try {
+      localStorage.removeItem(progressKey(unitId, sectionIdx));
+    } catch (e) { /* ignore */ }
+  }
+
   function buildChrome(unitData, backFn) {
+    var heartsHtml = '';
+    for (var h = 0; h < HEARTS_MAX; h++) {
+      heartsHtml += '<span class="bgl-heart"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>';
+    }
     return '<div class="bgl-lesson" id="bgl-lesson-root">' +
       '<div class="bgl-chrome">' +
         '<button type="button" class="bgl-close" id="bgl-close-btn" aria-label="Close lesson">' +
@@ -902,12 +1137,14 @@
         '<div class="bgl-progress-track">' +
           '<div class="bgl-progress-fill" id="bgl-progress-fill" style="width:0%"></div>' +
         '</div>' +
+        '<div class="bgl-hearts" id="bgl-hearts" aria-label="Lives remaining">' + heartsHtml + '</div>' +
       '</div>' +
       '<div class="bgl-unit-header">' +
         '<h1 class="bgl-unit-title">' + esc(unitData.unitTitle || '') + '</h1>' +
         (unitData.unitSubtitle ? '<p class="bgl-unit-subtitle">' + esc(unitData.unitSubtitle) + '</p>' : '') +
       '</div>' +
       '<p class="bgl-instruction" id="bgl-instruction"></p>' +
+      '<div class="bgl-theory-dots" id="bgl-theory-dots" hidden></div>' +
       '<div class="bgl-card-shell">' +
         '<div class="bgl-card" id="bgl-step-content"></div>' +
       '</div>' +
@@ -918,7 +1155,10 @@
           '</button>' +
           '<button type="button" class="bgl-nav-btn bgl-nav-btn--primary" id="bgl-next-btn">Next</button>' +
         '</div>' +
-        '<button type="button" class="bgl-action-btn" id="bgl-action-btn" disabled>Continue</button>' +
+        '<div class="bgl-footer-exercise" id="bgl-footer-exercise">' +
+          '<button type="button" class="bgl-skip-btn" id="bgl-skip-btn">Skip</button>' +
+          '<button type="button" class="bgl-action-btn" id="bgl-action-btn" disabled>Check</button>' +
+        '</div>' +
       '</div>' +
     '</div>';
   }
@@ -940,10 +1180,20 @@
     mount.innerHTML = buildChrome(opts.unitData, opts.backFn);
     var root = mount.querySelector('#bgl-lesson-root');
 
+    clearProgress(opts.unitId, sectionIdx);
+
     var startStep = 0;
-    var saved = loadProgress(opts.unitId, sectionIdx);
-    if (saved && typeof saved.stepIdx === 'number') {
-      startStep = Math.min(saved.stepIdx, steps.length - 1);
+    if (targetSection && targetSection.type === 'theory') {
+      for (var ti = 0; ti < steps.length; ti++) {
+        if (steps[ti].kind === 'theory' && steps[ti].secIdx === sectionIdx) {
+          startStep = ti;
+          break;
+        }
+      }
+    } else if (skipTheory) {
+      for (var si = 0; si < steps.length; si++) {
+        if (steps[si].kind === 'exercise') { startStep = si; break; }
+      }
     }
 
     state = {
@@ -952,7 +1202,11 @@
       level: opts.level || 'B1',
       sectionIdx: sectionIdx,
       steps: steps,
-      stepIdx: Math.max(0, Math.min(startStep, steps.length - 1)),
+      stepIdx: startStep,
+      hearts: HEARTS_MAX,
+      retryQueue: [],
+      inRetryMode: false,
+      retryPos: 0,
       correctCount: 0,
       totalChecked: 0,
       backFn: opts.backFn,
@@ -960,6 +1214,7 @@
     };
 
     document.getElementById('bgl-action-btn').addEventListener('click', handleAction);
+    document.getElementById('bgl-skip-btn').addEventListener('click', handleSkip);
     document.getElementById('bgl-back-btn').addEventListener('click', goBackStep);
     document.getElementById('bgl-next-btn').addEventListener('click', goNextTheoryStep);
     document.getElementById('bgl-close-btn').addEventListener('click', function() {
@@ -975,6 +1230,7 @@
       }
     });
 
+    updateHearts();
     renderCurrentStep();
 
     var layout = document.querySelector('.dashboard-layout');
