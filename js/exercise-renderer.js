@@ -366,7 +366,7 @@
             
             <div class="exercise-main-layout" lang="en">
               <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
-              <div class="reading-text-enhanced" id="selectable-text">
+              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}" id="selectable-text">
                 ${paragraphsHTML}
               </div>
             </div>
@@ -508,8 +508,12 @@
       const texts = exercise.content.texts;
       const typePrefix = partConfig.type === 'cross-text-matching' ? 'reading-type6' : 'reading-type8';
       var self = this;
-      
-      let html = '<div class="' + typePrefix + '-texts">';
+      var textsCls = typePrefix + '-texts';
+      if (exercise._b1PetReading2Ui && typePrefix === 'reading-type8') {
+        textsCls += ' b1-reading2-notices';
+      }
+
+      let html = '<div class="' + textsCls + '">';
       Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); }).forEach(function(key) {
         var text = texts[key];
         if (typeof text !== 'string') return;
@@ -567,7 +571,7 @@
         self.processEvidenceMarkers(self._escapeHtmlAttr(r).replace(/\n/g, '<br>')) + '</div>';
     },
 
-    /** B1 Preliminary Reading Part 2: person card + letter select + chosen notice preview. */
+    /** B1 Preliminary Reading Part 2: person card + letter chips + chosen notice preview. */
     renderB1Reading2PeopleCards: function(exercise) {
       var questions = exercise.content.questions || [];
       var texts = exercise.content.texts || {};
@@ -585,28 +589,43 @@
         if (isChecked) {
           cardCls += sel === q.correct ? ' b1-reading2-row-correct' : ' b1-reading2-row-incorrect';
         }
-        var selClass = 'b1-reading2-select';
+        var selClass = 'b1-reading2-select b1-reading2-select-sr';
         if (isChecked) {
           if (sel === q.correct) selClass += ' b1-reading2-select-correct';
           else selClass += ' b1-reading2-select-incorrect';
         }
         html += '<div class="' + cardCls + '" data-qnum="' + qNum + '">';
         html += '<div class="b1-reading2-person-header">';
-        html += '<span class="reading-type8-text-label">' + qNum + '</span>';
+        html += '<span class="b1-reading2-q-badge">' + qNum + '</span>';
+        html += '</div>';
+        html += '<div class="reading-type8-text-content b1-reading2-person-content">' + safe + '</div>';
         var wrapDataCorrect = '';
         if (isChecked && q.correct && sel !== q.correct) {
           wrapDataCorrect = ' data-correct="✓ ' + self._escapeHtmlAttr(String(q.correct)) + '"';
         }
-        html += '<label class="b1-reading2-select-wrap"' + wrapDataCorrect + '><span class="b1-reading2-select-label">Option</span>';
+        html += '<div class="b1-reading2-picker-wrap"' + wrapDataCorrect + ' data-qnum="' + qNum + '">';
+        html += '<span class="b1-reading2-picker-label">Choose an option</span>';
+        html += '<div class="b1-reading2-chip-row" role="group" aria-label="Choose option for question ' + qNum + '">';
+        letters.forEach(function(L) {
+          var chipCls = 'b1-reading2-chip';
+          if (sel === L) chipCls += ' b1-reading2-chip-selected';
+          if (isChecked && sel === L) {
+            chipCls += sel === q.correct ? ' b1-reading2-chip-correct' : ' b1-reading2-chip-incorrect';
+          }
+          html += '<button type="button" class="' + chipCls + '" data-letter="' + L + '"' +
+            ' aria-pressed="' + (sel === L ? 'true' : 'false') + '"' +
+            (isChecked ? ' disabled' : '') +
+            ' onclick="ReadingType8.onB1Reading2ChipClick(' + qNum + ', \'' + L + '\')">' + L + '</button>';
+        });
+        html += '</div>';
         html += '<select class="' + selClass + '" data-qnum="' + qNum + '"' + (isChecked ? ' disabled' : ' required') +
-          ' onchange="ReadingType8.onB1Reading2SelectChange(' + qNum + ', this.value)">';
+          ' onchange="ReadingType8.onB1Reading2SelectChange(' + qNum + ', this.value)" tabindex="-1" aria-hidden="true">';
         html += '<option value="">' + (isChecked ? '—' : 'Choose…') + '</option>';
         letters.forEach(function(L) {
           html += '<option value="' + L + '"' + (sel === L ? ' selected' : '') + '>' + L + '</option>';
         });
         html += '</select>';
-        html += '</label></div>';
-        html += '<div class="reading-type8-text-content b1-reading2-person-content">' + safe + '</div>';
+        html += '</div>';
         var solKey = q.correct ? String(q.correct).trim().toUpperCase().charAt(0) : '';
         var solRaw = solKey && texts[solKey] != null ? texts[solKey] : '';
         if (solRaw) {

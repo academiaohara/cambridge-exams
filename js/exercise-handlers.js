@@ -962,9 +962,12 @@
             sel.value = '';
             sel.classList.remove('b1-reading2-select-correct', 'b1-reading2-select-incorrect', 'b1-reading2-select-unanswered');
           });
-          document.querySelectorAll('.b1-reading2-select-wrap').forEach(function(w) {
+          document.querySelectorAll('.b1-reading2-picker-wrap').forEach(function(w) {
             w.removeAttribute('data-correct');
           });
+          if (typeof ReadingType8 !== 'undefined' && ReadingType8.syncAllB1Reading2Chips) {
+            ReadingType8.syncAllB1Reading2Chips();
+          }
           document.querySelectorAll('.b1-reading2-preview').forEach(function(p) {
             p.innerHTML = '';
             p.classList.remove('has-text');
