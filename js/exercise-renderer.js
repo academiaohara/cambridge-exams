@@ -277,7 +277,7 @@
       let toolsBarHTML = '';
       if (showTools) {
         toolsBarHTML = `
-          <div class="tools-sidebar tools-sidebar--right-column" id="tools-sidebar">
+          <div class="tools-sidebar tools-sidebar--right-column open" id="tools-sidebar">
             <div class="sidebar-rail">
               <div class="sidebar-tools-list">
                 <button class="sidebar-tool-btn" id="tab-notes" onclick="Tools.switchTool('notes')" data-tooltip="HIGHLIGHT">
@@ -300,15 +300,7 @@
               </div>
             </div>
             <div class="sidebar-panel" id="sidebar-panel">
-              <div class="sidebar-panel-header">
-                <span class="sidebar-panel-title" id="sidebar-panel-title"></span>
-                <button class="sidebar-panel-close" onclick="Tools.toggleSidebar()">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-              <div id="active-tool-content" class="active-tool-content">
-                <p class="placeholder-text" data-i18n="activateTool">Activate a tool to see details here.</p>
-              </div>
+              <div id="active-tool-content" class="active-tool-content"></div>
             </div>
           </div>`;
       }
@@ -317,25 +309,27 @@
         <div class="exercise-page-wrapper">
           <div class="exercise-container">
             <div class="exercise-header">
-              <div class="exercise-title">
-                <h2>${levelName} - ${isMixed ? 'Random Test' : sectionTitle}</h2>
+              <div class="exercise-header-top">
+                <h2 class="exercise-heading">${levelName} - ${isMixed ? 'Random Test' : sectionTitle}</h2>
+                <div class="exercise-header-right">
+                  <div class="score-display" id="score-display">${displayTotal}/${sectionTotalQuestions}</div>
+                  <div class="exercise-toolbar">
+                    <button class="btn-cambridge-score" onclick="ScoreCalculator.showLiveSectionResults()" title="Cambridge Score">
+                      <i class="fas fa-chart-bar"></i>
+                    </button>
+                    <button class="btn-cambridge-score btn-cambridge-overall" onclick="ScoreCalculator.showLiveOverallResults()" title="Overall Results">
+                      <i class="fas fa-chart-line"></i>
+                    </button>
+                    <button class="btn-exit" onclick="Exercise.closeExercise()">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="exercise-header-meta">
                 <div class="exercise-subtitle" data-i18n="part">${isMixed ? 'Exercise ' + displayPart + ' of ' + totalParts : 'Part ' + part + ' of ' + totalParts}</div>
                 <span class="exercise-badge">${exercise.title || 'Exercise'}</span>
                 ${isMixed ? `<span class="mixed-mode-badge"><span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle">shuffle</span> Random Test</span>` : (AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><i class="fas fa-file-alt"></i> Exam Mode</span>` : '')}
-              </div>
-              <div class="exercise-header-right">
-                <div class="score-display" id="score-display">${displayTotal}/${sectionTotalQuestions}</div>
-                <div class="exercise-toolbar">
-                  <button class="btn-cambridge-score" onclick="ScoreCalculator.showLiveSectionResults()" title="Cambridge Score">
-                    <i class="fas fa-chart-bar"></i>
-                  </button>
-                  <button class="btn-cambridge-score btn-cambridge-overall" onclick="ScoreCalculator.showLiveOverallResults()" title="Overall Results">
-                    <i class="fas fa-chart-line"></i>
-                  </button>
-                  <button class="btn-exit" onclick="Exercise.closeExercise()">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
               </div>
             </div>
             
@@ -397,6 +391,10 @@
       
       // Initialize type-specific listeners (JS already loaded above)
       this.initTypeSpecificListeners(partConfig.type);
+
+      if (showTools && typeof Tools !== 'undefined') {
+        Tools.switchTool('notes');
+      }
     },
     
     /** [n]...[/n] evidence: plain inner text; styled phrase only under .explanation-mode-text (no bracket labels). */

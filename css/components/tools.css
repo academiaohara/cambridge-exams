@@ -1289,40 +1289,92 @@
   min-width: 0;
   width: 100%;
   max-height: none;
-  border-top: none;
-  border-right: none;
+  border: none;
   box-shadow: none;
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border-radius: 16px;
-  margin: 8px 0 0;
-  border: 2px solid rgba(45, 46, 95, 0.06);
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
 }
 
-.tools-sidebar--right-column .sidebar-panel-header {
-  padding: 14px 16px 10px;
-  border-bottom: 2px solid #f0f0f0;
-}
-
-.tools-sidebar--right-column .sidebar-panel-title {
-  color: #4b4b4b;
-  font-weight: 800;
-  font-size: 0.72rem;
-}
-
-.tools-sidebar--right-column.open .sidebar-panel {
+.tools-sidebar--right-column.open .sidebar-panel,
+.tools-sidebar--right-column .sidebar-panel {
   display: flex;
-}
-
-.tools-sidebar--right-column:not(.open) .sidebar-panel {
-  display: none;
 }
 
 .tools-sidebar--right-column .active-tool-content {
   flex: 1;
   overflow-y: auto;
-  max-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 140px);
+  max-height: calc(100vh - var(--dashboard-top-spacing, 28px) - 120px);
+  padding: 10px 0 16px;
+}
+
+/* Duolingo-style tool content in right column */
+.tools-sidebar--right-column .placeholder-text,
+.tools-sidebar--right-column .empty-msg {
+  padding: 12px 4px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #777;
+  text-align: center;
+}
+
+.tools-sidebar--right-column .free-notes-container {
+  padding: 0;
+}
+
+.tools-sidebar--right-column #free-notes-area {
+  min-height: 160px;
+  padding: 14px;
+  border: 2px solid #e5e5e5;
+  border-radius: 14px;
+  background: #fff;
+  font-size: 0.92rem;
+  box-shadow: 0 2px 0 #e5e5e5;
+}
+
+.tools-sidebar--right-column #free-notes-area:focus {
+  border-color: var(--brand-orange, #ff9600);
+  box-shadow: 0 2px 0 var(--brand-orange-dark, #e68600);
+}
+
+.tools-sidebar--right-column .notes-list-container,
+.tools-sidebar--right-column .dict-card-container,
+.tools-sidebar--right-column .translator-card {
+  background: #fff;
+  border: 2px solid #e5e5e5;
+  border-radius: 14px;
+  box-shadow: 0 2px 0 #e5e5e5;
+}
+
+.tools-sidebar--right-column .notes-nav-btn,
+.tools-sidebar--right-column .dict-search-go {
+  border: 2px solid #e5e5e5;
+  border-radius: 12px;
+  background: #fff;
+  font-weight: 800;
+  color: #777;
+  box-shadow: 0 2px 0 #e5e5e5;
+}
+
+.tools-sidebar--right-column .dict-search-go {
+  background: var(--brand-orange, #ff9600);
+  border-color: var(--brand-orange-dark, #e68600);
+  color: #fff;
+  box-shadow: 0 3px 0 var(--brand-orange-dark, #e68600);
+}
+
+.tools-sidebar--right-column .tool-toggle-row {
+  background: #fff;
+  border: 2px solid #e5e5e5;
+  border-radius: 14px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.tools-sidebar--right-column .tool-toggle-switch input:checked + .tool-toggle-slider {
+  background: var(--brand-orange, #ff9600);
 }
 
 @media (max-width: 768px) {

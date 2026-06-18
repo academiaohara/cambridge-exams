@@ -60,11 +60,13 @@
 
     switchTool: function(tool) {
       var sidebar = document.getElementById('tools-sidebar');
+      var isRightColumn = sidebar && sidebar.classList.contains('tools-sidebar--right-column');
 
       // Cancel any in-flight async requests
       _toolRequestId++;
 
       if (AppState.activeTool === tool) {
+        if (isRightColumn) return;
         AppState.activeTool = null;
         if (sidebar) sidebar.classList.remove('open');
       } else {
@@ -81,7 +83,7 @@
         if (activeBtn) activeBtn.classList.add('active');
       }
 
-      // Update panel title
+      // Update panel title (legacy bottom-bar layout)
       var titleEl = document.getElementById('sidebar-panel-title');
       if (titleEl) {
         var titles = {
@@ -94,9 +96,6 @@
         };
         titleEl.textContent = titles[AppState.activeTool] || '';
       }
-
-      // Show/hide toggle for selection-based tools
-      this._renderToolToggle();
       
       var container = document.getElementById('active-tool-content');
       if (!container) return;
@@ -130,6 +129,8 @@
         default:
           container.innerHTML = '<p class="placeholder-text">' + 'Activate a tool to see details here.' + '</p>';
       }
+
+      this._renderToolToggle();
     },
 
     _isSelectionTool: function(tool) {
@@ -142,8 +143,8 @@
 
       if (!AppState.activeTool || !this._isSelectionTool(AppState.activeTool)) return;
 
-      var header = document.querySelector('.sidebar-panel-header');
-      if (!header) return;
+      var container = document.getElementById('active-tool-content');
+      if (!container) return;
 
       var row = document.createElement('div');
       row.className = 'tool-toggle-row';
@@ -155,7 +156,7 @@
           '<span class="tool-toggle-slider"></span>' +
         '</label>';
 
-      header.parentNode.insertBefore(row, header.nextSibling);
+      container.insertBefore(row, container.firstChild);
     },
 
     toggleToolSelection: function(enabled) {
