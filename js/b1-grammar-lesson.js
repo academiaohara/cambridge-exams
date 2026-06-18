@@ -84,9 +84,10 @@
     return html.join(' ');
   }
 
-  function buildSteps(unitData, skipTheory) {
+  function buildSteps(unitData, skipTheory, limitSectionIdx) {
     var steps = [];
     (unitData.sections || []).forEach(function(section, secIdx) {
+      if (limitSectionIdx != null && secIdx !== limitSectionIdx) return;
       if (section.type === 'theory' && section.theoryType === 'rule_cards') {
         if (skipTheory) return;
         (section.content || []).forEach(function(card, cardIdx) {
@@ -116,6 +117,14 @@
       }
     });
     return steps;
+  }
+
+  function firstExerciseSectionIndex(unitData) {
+    var sections = unitData.sections || [];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].type === 'exercise') return i;
+    }
+    return 0;
   }
 
   function firstExerciseStepIndex(unitData) {
@@ -661,19 +670,27 @@
     }
 
     panel.innerHTML =
-      '<div class="bgl-feedback-icon" aria-hidden="true">' +
-        '<span class="material-symbols-outlined">' + (result.correct ? 'check_circle' : 'lightbulb') + '</span>' +
-      '</div>' +
-      '<div class="bgl-feedback-body">' +
-        '<div class="bgl-feedback-title">' + title + '</div>' +
-        answerHtml +
-      '</div>' +
-      '<button type="button" class="bgl-feedback-continue">Continue</button>';
+      '<div class="bgl-feedback-inner">' +
+        '<div class="bgl-feedback-icon" aria-hidden="true">' +
+          '<span class="material-symbols-outlined">' + (result.correct ? 'check_circle' : 'lightbulb') + '</span>' +
+        '</div>' +
+        '<div class="bgl-feedback-body">' +
+          '<div class="bgl-feedback-title">' + title + '</div>' +
+          answerHtml +
+        '</div>' +
+        '<button type="button" class="bgl-feedback-continue">Continue</button>' +
+      '</div>';
 
     panel.querySelector('.bgl-feedback-continue').addEventListener('click', function() {
       panel.remove();
+      var footer = document.querySelector('.bgl-footer');
+      if (footer) footer.classList.remove('bgl-footer--hidden');
       onContinue();
     });
+
+    var footer = document.querySelector('.bgl-footer');
+    if (footer) footer.classList.add('bgl-footer--hidden');
+
     document.body.appendChild(panel);
   }
 
@@ -716,6 +733,8 @@
 
     var existingFb = document.getElementById('bgl-feedback');
     if (existingFb) existingFb.remove();
+    var footer = document.querySelector('.bgl-footer');
+    if (footer) footer.classList.remove('bgl-footer--hidden');
   }
 
   function advanceStep() {
@@ -767,9 +786,10 @@
     var unitData = state.unitData;
 
     if (typeof BentoGrid !== 'undefined') {
-      var sections = unitData.sections || [];
-      sections.forEach(function(sec, idx) {
-        BentoGrid._markCourseSectionVisited(level, unitId, idx);
+      var visitedSections = {};
+      state.steps.forEach(function(step) { visitedSections[step.secIdx] = true; });
+      Object.keys(visitedSections).forEach(function(idx) {
+        BentoGrid._markCourseSectionVisited(level, unitId, parseInt(idx, 10));
       });
       BentoGrid._checkCourseUnitAllDone(level, unitId);
     }
@@ -779,7 +799,7 @@
 
     var score = state.totalChecked > 0
       ? state.correctCount + '/' + state.totalChecked + ' correct'
-      : 'Lesson complete';
+      : 'Exercise complete';
 
     var modal = document.createElement('div');
     modal.id = 'bgl-complete-modal';
@@ -787,9 +807,9 @@
     modal.innerHTML =
       '<div class="bgl-complete-box">' +
         '<div class="bgl-complete-icon"><span class="material-symbols-outlined">celebration</span></div>' +
-        '<h2>Lesson complete!</h2>' +
+        '<h2>¡Felicidades!</h2>' +
         '<p class="bgl-complete-score">' + esc(score) + '</p>' +
-        '<button type="button" class="bgl-complete-btn" id="bgl-complete-back">Back to unit</button>' +
+        '<button type="button" class="bgl-complete-btn" id="bgl-complete-back">Volver a la etapa</button>' +
       '</div>';
     document.body.appendChild(modal);
     modal.querySelector('#bgl-complete-back').addEventListener('click', function() {
@@ -800,16 +820,20 @@
     });
   }
 
+  function progressKey(unitId, sectionIdx) {
+    return 'bgl-progress-' + unitId + (sectionIdx != null ? '-' + sectionIdx : '');
+  }
+
   function saveProgress() {
     if (!state) return;
     try {
-      localStorage.setItem('bgl-progress-' + state.unitId, JSON.stringify({ stepIdx: state.stepIdx }));
+      localStorage.setItem(progressKey(state.unitId, state.sectionIdx), JSON.stringify({ stepIdx: state.stepIdx }));
     } catch (e) { /* ignore */ }
   }
 
-  function loadProgress(unitId) {
+  function loadProgress(unitId, sectionIdx) {
     try {
-      var raw = localStorage.getItem('bgl-progress-' + unitId);
+      var raw = localStorage.getItem(progressKey(unitId, sectionIdx));
       if (raw) return JSON.parse(raw);
     } catch (e) { /* ignore */ }
     return null;
@@ -844,8 +868,10 @@
     var mount = opts.mount || document.getElementById('bgl-lesson-mount');
     if (!mount || !opts.unitData) return;
 
-    var skipTheory = !!opts.skipTheory;
-    var steps = buildSteps(opts.unitData, skipTheory);
+    var sectionIdx = typeof opts.sectionIdx === 'number' ? opts.sectionIdx : null;
+    var targetSection = sectionIdx != null ? (opts.unitData.sections || [])[sectionIdx] : null;
+    var skipTheory = !!opts.skipTheory || (targetSection && targetSection.type === 'exercise');
+    var steps = buildSteps(opts.unitData, skipTheory, sectionIdx);
     if (!steps.length) {
       mount.innerHTML = '<p class="bgl-empty">No lesson content found.</p>';
       return;
@@ -854,9 +880,9 @@
     mount.innerHTML = buildChrome(opts.unitData, opts.backFn);
     var root = mount.querySelector('#bgl-lesson-root');
 
-    var startStep = typeof opts.startStep === 'number' ? opts.startStep : 0;
-    var saved = loadProgress(opts.unitId);
-    if (saved && typeof saved.stepIdx === 'number' && !opts.startStep) {
+    var startStep = 0;
+    var saved = loadProgress(opts.unitId, sectionIdx);
+    if (saved && typeof saved.stepIdx === 'number') {
       startStep = Math.min(saved.stepIdx, steps.length - 1);
     }
 
@@ -864,6 +890,7 @@
       unitId: opts.unitId,
       unitData: opts.unitData,
       level: opts.level || 'B1',
+      sectionIdx: sectionIdx,
       steps: steps,
       stepIdx: Math.max(0, Math.min(startStep, steps.length - 1)),
       correctCount: 0,
@@ -902,6 +929,7 @@
     init: init,
     buildSteps: buildSteps,
     firstExerciseStepIndex: firstExerciseStepIndex,
+    firstExerciseSectionIndex: firstExerciseSectionIndex,
     sectionIndexToStep: sectionIndexToStep,
     isDuolingoUnit: function(data) {
       return data && data.type === 'grammar' && (

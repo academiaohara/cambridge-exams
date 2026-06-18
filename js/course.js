@@ -1665,17 +1665,15 @@
       }
 
       if (BentoGrid._isDuolingoGrammarUnit(unitData)) {
-        var bglStart = 0;
+        var bglSectionIdx = sectionStartIdx;
         if (startSection === 'exercises') {
-          bglStart = B1GrammarLesson.firstExerciseStepIndex(unitData);
-        } else if (typeof startSection === 'number') {
-          bglStart = B1GrammarLesson.sectionIndexToStep(unitData, startSection);
+          bglSectionIdx = B1GrammarLesson.firstExerciseSectionIndex(unitData);
         }
         B1GrammarLesson.init({
           unitId: unitId,
           unitData: unitData,
           level: level,
-          startStep: bglStart,
+          sectionIdx: bglSectionIdx,
           backFn: backFn,
           mount: document.getElementById('bgl-lesson-mount')
         });
