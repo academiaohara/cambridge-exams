@@ -113,10 +113,7 @@
     },
 
     _isB1Reading4: function() {
-      return typeof AppState !== 'undefined' &&
-        AppState.currentLevel === 'B1' &&
-        AppState.currentSection === 'reading' &&
-        AppState.currentPart === 4;
+      return typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading();
     },
 
     _syncPanelVariant: function(forceOff) {

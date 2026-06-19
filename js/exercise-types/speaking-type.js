@@ -240,7 +240,7 @@
 
     _isB1DuoUi: function(exercise) {
       if (exercise && exercise._b1PetSpeakingUi) return true;
-      return typeof AppState !== 'undefined' && AppState.currentLevel === 'B1';
+      return typeof Utils !== 'undefined' && Utils.isDuoExerciseUi();
     },
 
     // ── Public API ──

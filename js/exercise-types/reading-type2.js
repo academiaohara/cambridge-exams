@@ -4,10 +4,7 @@
 (function() {
   window.ReadingType2 = {
     _isB1Reading6: function() {
-      return typeof AppState !== 'undefined' &&
-        AppState.currentLevel === 'B1' &&
-        AppState.currentSection === 'reading' &&
-        AppState.currentPart === 6;
+      return typeof Utils !== 'undefined' && Utils.isDuoOpenClozeReading();
     },
 
     _escapeHtml: function(str) {

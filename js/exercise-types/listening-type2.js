@@ -58,12 +58,10 @@
     },
 
     renderGap: function(question, qNum, isChecked, userAnswer) {
-      var isB1Listening =
-        typeof AppState !== 'undefined' &&
-        AppState.currentLevel === 'B1' &&
-        AppState.currentSection === 'listening';
+      var isDuoListening =
+        typeof Utils !== 'undefined' && Utils.isDuoListeningSection();
       var inputClass = 'listening-type2-input gap-input';
-      var gapClass = 'listening-type2-gap' + (isB1Listening ? ' listening-type2-gap--duo' : '');
+      var gapClass = 'listening-type2-gap' + (isDuoListening ? ' listening-type2-gap--duo' : '');
       var gapDataAttr = '';
       if (isChecked) {
         var isCorrect = this.isAnswerCorrect(userAnswer, question.correct);
@@ -109,10 +107,8 @@
           }
         } catch(e) { hasAudioSource = false; }
         
-        var isB1Listening =
-          typeof AppState !== 'undefined' &&
-          AppState.currentLevel === 'B1' &&
-          AppState.currentSection === 'listening';
+        var isDuoListening =
+          typeof Utils !== 'undefined' && Utils.isDuoListeningSection();
         
         var html = '';
         
@@ -132,7 +128,7 @@
         exercise.content.questions.forEach(function(q) {
           var userAnswer = exercise.answers?.[q.number] || '';
           var inputClass = 'listening-type2-input gap-input';
-          var gapClass = 'listening-type2-gap' + (isB1Listening ? ' listening-type2-gap--duo' : '');
+          var gapClass = 'listening-type2-gap' + (isDuoListening ? ' listening-type2-gap--duo' : '');
           var gapDataAttr = '';
           if (isChecked) {
             var isCorrect = self.isAnswerCorrect(userAnswer, q.correct);
@@ -170,7 +166,7 @@
         
         var noteCreator = container.querySelector('#note-creator');
         var wrapper = document.createElement('div');
-        wrapper.className = 'listening-type2-questions-wrapper' + (isB1Listening ? ' listening-type2-questions-wrapper--duo' : '');
+        wrapper.className = 'listening-type2-questions-wrapper' + (isDuoListening ? ' listening-type2-questions-wrapper--duo' : '');
         wrapper.innerHTML = html;
         if (noteCreator) {
           container.insertBefore(wrapper, noteCreator);

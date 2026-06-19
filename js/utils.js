@@ -157,6 +157,66 @@
     },
     
     // Etiqueta del badge de ejercicio (p. ej. "Reading - Part 2", no el título del texto)
+    /** B1/B2/C1 test exercises use the shared Duolingo-style UI shell. */
+    isDuoExerciseUi: function(level) {
+      var lvl = level || (typeof AppState !== 'undefined' && AppState.currentLevel) || '';
+      return lvl === 'B1' || lvl === 'B2' || lvl === 'C1';
+    },
+
+    isDuoListeningSection: function() {
+      return this.isDuoExerciseUi() &&
+        typeof AppState !== 'undefined' &&
+        AppState.currentSection === 'listening';
+    },
+
+    isDuoOpenClozeReading: function(section, part) {
+      if (!this.isDuoExerciseUi() || typeof AppState === 'undefined') return false;
+      section = section || AppState.currentSection;
+      part = part != null ? part : AppState.currentPart;
+      if (section !== 'reading') return false;
+      var pc = CONFIG.getPartConfig('reading', part);
+      return !!(pc && pc.type === 'open-cloze');
+    },
+
+    isDuoGappedTextReading: function(section, part) {
+      if (!this.isDuoExerciseUi() || typeof AppState === 'undefined') return false;
+      section = section || AppState.currentSection;
+      part = part != null ? part : AppState.currentPart;
+      if (section !== 'reading') return false;
+      var pc = CONFIG.getPartConfig('reading', part);
+      return !!(pc && pc.type === 'gapped-text');
+    },
+
+    isB1InlineMcClozeReading: function() {
+      return typeof AppState !== 'undefined' &&
+        AppState.currentLevel === 'B1' &&
+        AppState.currentSection === 'reading' &&
+        AppState.currentPart === 5;
+    },
+
+    isDuoReadingPlainPassage: function(section, part) {
+      if (!this.isDuoExerciseUi() || typeof AppState === 'undefined') return false;
+      section = section || AppState.currentSection;
+      part = part != null ? part : AppState.currentPart;
+      if (section !== 'reading') return false;
+      var pc = CONFIG.getPartConfig('reading', part);
+      var typesWithPassage = ['open-cloze', 'gapped-text', 'multiple-choice-text', 'word-formation', 'transformations'];
+      return !!(pc && typesWithPassage.indexOf(pc.type) !== -1);
+    },
+
+    isDuoListeningInterviewPart: function() {
+      if (!this.isDuoListeningSection() || typeof AppState === 'undefined') return false;
+      if (AppState.currentLevel === 'B1' && AppState.currentPart === 4) return true;
+      if (AppState.currentLevel === 'B2' && AppState.currentPart === 4) return true;
+      return false;
+    },
+
+    isDuoListeningSentenceCompletion: function() {
+      if (!this.isDuoListeningSection() || typeof AppState === 'undefined') return false;
+      var pc = CONFIG.getPartConfig('listening', AppState.currentPart);
+      return !!(pc && pc.type === 'sentence-completion');
+    },
+
     getExerciseBadgeLabel: function(section, part, exercise) {
       if (section === 'reading') {
         return 'Reading - Part ' + part;

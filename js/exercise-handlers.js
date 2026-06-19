@@ -92,7 +92,7 @@
 
       // For reading parts 5–8 (except B1 part 5), B1 reading parts 3–4, and listening: reveal the header Explanation toggle
       if (((AppState.currentSection === 'reading' && AppState.currentPart >= 5) &&
-            !(AppState.currentLevel === 'B1' && AppState.currentPart === 5)) ||
+            !(typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading())) ||
           (AppState.currentSection === 'reading' &&
             AppState.currentLevel === 'B1' &&
             (AppState.currentPart === 3 || AppState.currentPart === 4)) ||
@@ -159,17 +159,13 @@
       if (AppState.currentExercise && AppState.currentExercise._b1PetHideAnswerToggle) return false;
       if (AppState.currentSection === 'reading') {
         var in14 = AppState.currentPart >= 1 && AppState.currentPart <= 4;
-        var b1r5or6 =
-          AppState.currentLevel === 'B1' &&
-          (AppState.currentPart === 5 || AppState.currentPart === 6);
-        return in14 || b1r5or6;
+        var duoInlineMcCloze = typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading();
+        var duoOpenCloze = typeof Utils !== 'undefined' && Utils.isDuoOpenClozeReading();
+        return in14 || duoInlineMcCloze || duoOpenCloze;
       }
       if (AppState.currentSection !== 'listening') return false;
-      // B1 Preliminary Listening Part 2: multiple-choice text — no footer "show correct answers" toggle.
-      if (AppState.currentLevel === 'B1' && AppState.currentPart === 2) return false;
-      if (AppState.currentPart === 2) return true;
-      // B1 Preliminary Listening Part 3: sentence-completion gaps (same toggle + alt-badge as C1 L2)
-      return AppState.currentLevel === 'B1' && AppState.currentPart === 3;
+      // Duo listening: sentence-completion parts only (B1 L3, B2/C1 L2).
+      return typeof Utils !== 'undefined' && Utils.isDuoListeningSentenceCompletion();
     },
 
     syncAnswerToggleButton: function() {
@@ -180,13 +176,13 @@
         return;
       }
       btn.style.display = '';
-      const isB1Reading5Or6Toggle =
-        AppState.currentLevel === 'B1' && AppState.currentSection === 'reading' &&
-        (AppState.currentPart === 5 || AppState.currentPart === 6);
-      const isB1Listening3Toggle =
-        AppState.currentLevel === 'B1' && AppState.currentSection === 'listening' &&
-        AppState.currentPart === 3;
-      const usePluralCorrectLabel = isB1Reading5Or6Toggle || isB1Listening3Toggle;
+      const isDuoInlineMcClozeToggle =
+        typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading();
+      const isDuoOpenClozeToggle =
+        typeof Utils !== 'undefined' && Utils.isDuoOpenClozeReading();
+      const isDuoListeningSentenceToggle =
+        typeof Utils !== 'undefined' && Utils.isDuoListeningSentenceCompletion();
+      const usePluralCorrectLabel = isDuoInlineMcClozeToggle || isDuoOpenClozeToggle || isDuoListeningSentenceToggle;
       const label = AppState.answerViewMode === 'correct'
         ? 'Show your answer'
         : (usePluralCorrectLabel ? 'Show correct answers' : 'Show correct answer');
@@ -848,9 +844,8 @@
       const reRenderTypes = ['multiple-choice', 'word-formation', 'transformations', 'multiple-choice-text', 'cross-text-matching', 'gapped-text', 'multiple-matching', 'speaker-matching', 'dual-matching'];
       const b1Reading6OpenCloze =
         partConfig.type === 'open-cloze' &&
-        AppState.currentLevel === 'B1' &&
-        AppState.currentSection === 'reading' &&
-        AppState.currentPart === 6;
+        typeof Utils !== 'undefined' &&
+        Utils.isDuoOpenClozeReading();
       if (reRenderTypes.includes(partConfig.type) || b1Reading6OpenCloze) {
         await ExerciseRenderer.render(
           AppState.currentExercise,
