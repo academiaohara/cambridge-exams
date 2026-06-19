@@ -221,7 +221,7 @@
 
       const noteCreator = container.querySelector('#note-creator');
       const wrapper = document.createElement('div');
-      wrapper.className = 'writing-type1-container' + (level === 'B1' ? ' b1-writing' : '');
+      wrapper.className = 'writing-type1-container' + (Utils.isDuoExerciseUi(level) ? ' b1-writing' : '');
       wrapper.innerHTML = html;
       container.insertBefore(wrapper, noteCreator);
 

@@ -36,10 +36,7 @@
         html += `<span class="reading-type7-gap-num">${qNum}</span>`;
         html += `<span class="reading-type7-gap-circle"${circleStyle}>${displayLetter || '—'}</span>`;
         html += `</span>`;
-        var hideRevealBtn = typeof AppState !== 'undefined' &&
-          AppState.currentLevel === 'B1' &&
-          AppState.currentSection === 'reading' &&
-          AppState.currentPart === 4;
+        var hideRevealBtn = typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading();
         if (!showCorrectOnly && !isCorrect && !hideRevealBtn) {
           html += `<button class="reading-type7-reveal-btn" onclick="ReadingType7.toggleReveal(${qNum}, this)" data-revealed="false">`;
           html += `<i class="fas fa-eye"></i>`;

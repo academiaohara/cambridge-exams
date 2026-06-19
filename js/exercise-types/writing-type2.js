@@ -160,7 +160,7 @@
       const noteCreator = container.querySelector('#note-creator');
       const wrapper = document.createElement('div');
       const level = (typeof AppState !== 'undefined' && AppState.currentLevel) || '';
-      wrapper.className = 'writing-type2-container' + (level === 'B1' ? ' b1-writing' : '');
+      wrapper.className = 'writing-type2-container' + (Utils.isDuoExerciseUi(level) ? ' b1-writing' : '');
       wrapper.innerHTML = html;
       container.insertBefore(wrapper, noteCreator);
 

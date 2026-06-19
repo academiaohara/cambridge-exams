@@ -108,8 +108,7 @@
         const isGappedWithParagraphs = partConfig.type === 'gapped-text' &&
           exercise.content.paragraphs && Object.keys(exercise.content.paragraphs).length > 0;
         const isGappedSentencesToggle = isGappedWithParagraphs &&
-          ((AppState.currentLevel === 'B2' && part === 6) ||
-            (AppState.currentLevel === 'B1' && section === 'reading' && part === 4));
+          (typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading(section, part));
         let secondToggleI18nKey = isGappedWithParagraphs
           ? (isGappedSentencesToggle ? 'showSentences' : 'showParagraphs')
           : 'showQuestions';
@@ -237,19 +236,16 @@
       
       const partTotal = (section === 'writing' || section === 'speaking') ? partConfig.total : (partConfig.maxMarks || exercise.totalQuestions || partConfig.total);
 
-      const b1ReadingPlainText =
-        AppState.currentLevel === 'B1' && section === 'reading' && part >= 3 && part <= 6;
-      const b1Reading6OpenCloze =
-        AppState.currentLevel === 'B1' && section === 'reading' && part === 6 &&
-        partConfig.type === 'open-cloze';
-      const b1Reading4Gapped =
-        AppState.currentLevel === 'B1' && section === 'reading' && part === 4 &&
-        partConfig.type === 'gapped-text';
-      const b1Reading5Cloze =
-        AppState.currentLevel === 'B1' && section === 'reading' && part === 5 &&
-        partConfig.type === 'multiple-choice-text';
-      const b1Listening =
-        AppState.currentLevel === 'B1' && section === 'listening';
+      const duoReadingPlainText =
+        typeof Utils !== 'undefined' && Utils.isDuoReadingPlainPassage(section, part);
+      const duoReading6OpenCloze =
+        typeof Utils !== 'undefined' && Utils.isDuoOpenClozeReading(section, part);
+      const duoReading4Gapped =
+        typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading(section, part);
+      const duoReading5Cloze =
+        typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading();
+      const duoListening =
+        typeof Utils !== 'undefined' && Utils.isDuoListeningSection();
       
       // For parts 5-8, use content.title/subtitle; for parts 1-4, no content header
       let contentHeaderHTML = '';
@@ -257,7 +253,7 @@
       // B1 reading part 1 (multiple-choice-text with questions only, no passage).
       if (needsToggle || hasTranscript) {
         contentHeaderHTML = `
-          <div class="content-section-header${b1Reading4Gapped ? ' b1-reading4-header' : ''}">
+          <div class="content-section-header${duoReading4Gapped ? ' b1-reading4-header' : ''}">
             ${questionNavRowHTML}
             ${toggleHTML}
           </div>
@@ -380,13 +376,13 @@
             
             <div class="exercise-main-layout" lang="en">
               <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
-              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${b1ReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${b1Reading4Gapped ? ' b1-reading4' : ''}${b1Reading5Cloze ? ' b1-reading5' : ''}${b1Reading6OpenCloze ? ' b1-reading6' : ''}${b1Listening ? ' b1-listening' : ''}" id="selectable-text">
+              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${duoReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${duoReading4Gapped ? ' b1-reading4' : ''}${duoReading5Cloze ? ' b1-reading5' : ''}${duoReading6OpenCloze ? ' b1-reading6' : ''}${duoListening ? ' b1-listening' : ''}" id="selectable-text">
                 ${paragraphsHTML}
               </div>
             </div>
 
             ${this.renderExplanationsSection(exercise)}
-            ${(needsToggle || hasTranscript) && !(AppState.currentLevel === 'B1' && section === 'reading' && part === 5)
+            ${(needsToggle || hasTranscript) && !(typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading())
               ? this.renderExplanationsPanel(exercise, partConfig)
               : ''}
             
@@ -1558,24 +1554,21 @@
       var isListening = AppState.currentSection === 'listening';
       // In mixed mode, use actual section part for content-based conditions (explanations)
       var actualPart = AppState.currentPart || part;
-      var isB1Reading5AnswerToggle =
-        AppState.currentLevel === 'B1' && isReading && actualPart === 5;
-      var isB1Reading6AnswerToggle =
-        AppState.currentLevel === 'B1' && isReading && actualPart === 6;
-      var isB1Listening3AnswerToggle =
-        AppState.currentLevel === 'B1' && isListening && actualPart === 3;
-      var isListening2AnswerToggle =
-        isListening && actualPart === 2 && AppState.currentLevel !== 'B1';
+      var isDuoInlineMcClozeAnswerToggle =
+        typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading();
+      var isDuoOpenClozeAnswerToggle =
+        typeof Utils !== 'undefined' && Utils.isDuoOpenClozeReading();
+      var isDuoListeningSentenceAnswerToggle =
+        typeof Utils !== 'undefined' && Utils.isDuoListeningSentenceCompletion();
       var supportsAnswerToggle =
         ((isReading && actualPart >= 1 && actualPart <= 4) ||
-          isB1Reading5AnswerToggle ||
-          isB1Reading6AnswerToggle ||
-          isListening2AnswerToggle ||
-          isB1Listening3AnswerToggle) &&
+          isDuoInlineMcClozeAnswerToggle ||
+          isDuoOpenClozeAnswerToggle ||
+          isDuoListeningSentenceAnswerToggle) &&
         !(AppState.currentExercise && AppState.currentExercise._b1PetHideAnswerToggle);
       var answerToggleLabel = AppState.answerViewMode === 'correct'
         ? 'Show your answer'
-        : (isB1Reading5AnswerToggle || isB1Reading6AnswerToggle || isB1Listening3AnswerToggle
+        : (isDuoInlineMcClozeAnswerToggle || isDuoOpenClozeAnswerToggle || isDuoListeningSentenceAnswerToggle
           ? 'Show correct answers'
           : 'Show correct answer');
       var answerToggleIcon = AppState.answerViewMode === 'correct' ? 'visibility_off' : 'visibility';
@@ -1605,12 +1598,15 @@
         // all other sections: always show in practice mode
         // Reading parts 1–2: footer "Show explanations" (part 4 excluded; B1 part 3 and other 5–8 use header Explanation;
         // B1 Preliminary Reading Part 2 uses header only).
-        var isB1Reading5Or6FooterExplanations =
-          AppState.currentLevel === 'B1' && isReading && (actualPart === 5 || actualPart === 6);
+        var isDuoOpenClozeFooterExplanations =
+          typeof Utils !== 'undefined' && Utils.isDuoOpenClozeReading();
+        var isDuoInlineMcClozeFooterExplanations =
+          typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading();
         if ((isReading && actualPart > 0 && actualPart < 4 &&
             !(AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) &&
             !(AppState.currentLevel === 'B1' && actualPart === 3)) ||
-            isB1Reading5Or6FooterExplanations) {
+            isDuoOpenClozeFooterExplanations ||
+            isDuoInlineMcClozeFooterExplanations) {
           footer += `
           <button class="btn-explanations" onclick="ExerciseHandlers.toggleExplanations()" ${AppState.answersChecked ? '' : 'style="display:none"'}>
             <i class="fas fa-lightbulb"></i> <span data-i18n="showExplanations">Show explanations</span>
