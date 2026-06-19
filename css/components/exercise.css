@@ -1834,74 +1834,13 @@ body:has(.dashboard-layout--exercise) #main-content {
   border-bottom: 2px solid var(--ex-duo-border, #e5e5e5);
 }
 
-/* B1 Reading Part 4 — segmented toggle + sentences panel */
+/* B1 Reading Part 4 — header layout (toggle uses standard .toggle-view-header) */
 .b1-reading4-header,
 .b1-reading4 .content-section-header {
   flex-wrap: wrap;
   align-items: center;
   gap: 10px 14px;
   padding: 12px 16px;
-}
-
-.b1-reading4-header .toggle-view-header,
-.b1-reading4 .toggle-view-header {
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 4px;
-  margin-bottom: 0;
-  padding: 4px;
-  background: var(--ex-duo-border, #e5e5e5);
-  border-radius: 14px;
-}
-
-.b1-reading4-header .toggle-view-btn,
-.b1-reading4 .toggle-view-btn {
-  border: none;
-  border-radius: 10px;
-  background: transparent;
-  color: var(--ex-duo-text, #777);
-  font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 0.82rem;
-  padding: 8px 14px;
-  box-shadow: none;
-  transition: background 0.15s, color 0.15s, box-shadow 0.15s, transform 0.1s;
-}
-
-.b1-reading4-header .toggle-view-btn:hover,
-.b1-reading4 .toggle-view-btn:hover {
-  background: rgba(255, 255, 255, 0.55);
-  color: var(--ex-duo-blue-dark, #1899d6);
-  border-color: transparent;
-}
-
-.b1-reading4-header .toggle-view-btn.active,
-.b1-reading4 .toggle-view-btn.active {
-  background: #fff;
-  color: var(--ex-duo-blue-dark, #1899d6);
-  border-color: transparent;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
-}
-
-.b1-reading4-header .toggle-view-btn.active:hover,
-.b1-reading4 .toggle-view-btn.active:hover {
-  background: #fff;
-  color: var(--ex-duo-blue-dark, #1899d6);
-  border-color: transparent;
-}
-
-.b1-reading4-header .toggle-view-btn.btn-explanation-mode,
-.b1-reading4 .toggle-view-btn.btn-explanation-mode {
-  background: transparent;
-  color: var(--ex-duo-text, #777);
-}
-
-.b1-reading4-header .toggle-view-btn.btn-explanation-mode.explanation-active,
-.b1-reading4 .toggle-view-btn.btn-explanation-mode.explanation-active {
-  background: #fff;
-  color: var(--ex-duo-blue-dark, #1899d6);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .b1-reading4-header .question-nav-row,
