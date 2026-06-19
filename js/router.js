@@ -63,6 +63,9 @@
           return '/quicksteps';
 
         case 'testsHub':
+          if (state.examId === 'Random' && state.level) {
+            return '/tests/' + String(state.level).toLowerCase() + '/random';
+          }
           if (state.examId && state.level) {
             var thLevel = String(state.level).toLowerCase();
             var thNum = String(state.examId).replace(/^Test/i, '');
@@ -205,6 +208,11 @@
         return { view: 'wordleList' };
       }
       if (first === 'tests') {
+        if (segments.length >= 3 && segments[2].toLowerCase() === 'random') {
+          if (VALID_LEVELS.indexOf(segments[1].toLowerCase()) !== -1) {
+            return { view: 'testsHub', level: segments[1].toUpperCase(), examId: 'Random' };
+          }
+        }
         if (segments.length >= 3 && /^test-\d+$/i.test(segments[2])) {
           var testsLevel = segments[1].toUpperCase();
           var testsExamId = segments[2].replace('test-', 'Test');

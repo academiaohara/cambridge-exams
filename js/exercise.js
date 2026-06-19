@@ -1167,9 +1167,8 @@
       }
       
       // Remember which exam was open so we can expand it in the dashboard.
-      // When exiting a mixed test pass null so renderSubpage resets to page 1
-      // (passing null with keepPage=false triggers subpageCurrentPage = 1).
-      var returnToExamId = wasMixedTest ? null : AppState.currentExamId;
+      // When exiting a mixed test, return to the Random Test page.
+      var returnToExamId = wasMixedTest ? 'Random' : AppState.currentExamId;
       
       AppState.currentExercise = null;
       AppState.currentSection = null;
