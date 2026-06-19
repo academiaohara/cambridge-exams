@@ -45,6 +45,12 @@
       // Cargar CSS y JS específicos del tipo de ejercicio (esperar ambos antes de renderizar)
       const cssPromises = [Utils.loadExerciseTypeCSS(partConfig.type)];
       const jsPromises = [Utils.loadExerciseTypeJS(partConfig.type)];
+
+      // C1 Reading Part 1 uses inline gap chips from ReadingType5 (multiple-choice-text assets).
+      if (typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading() && partConfig.type === 'multiple-choice') {
+        cssPromises.push(Utils.loadExerciseTypeCSS('multiple-choice-text'));
+        jsPromises.push(Utils.loadExerciseTypeJS('multiple-choice-text'));
+      }
       
       // Cargar CSS/JS adicional para secciones de listening
       if (section === 'listening') {
@@ -243,7 +249,11 @@
       const duoReading4Gapped =
         typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading(section, part);
       const duoReading5Cloze =
-        typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading();
+        typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading();
+      const duoReading3WordFormation =
+        typeof Utils !== 'undefined' && Utils.isDuoWordFormationReading(section, part);
+      const duoReading4Transformations =
+        typeof Utils !== 'undefined' && Utils.isDuoTransformationsReading(section, part);
       const duoListening =
         typeof Utils !== 'undefined' && Utils.isDuoListeningSection();
       
@@ -376,13 +386,13 @@
             
             <div class="exercise-main-layout" lang="en">
               <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
-              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${duoReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${duoReading4Gapped ? ' b1-reading4' : ''}${duoReading5Cloze ? ' b1-reading5' : ''}${duoReading6OpenCloze ? ' b1-reading6' : ''}${duoListening ? ' b1-listening' : ''}" id="selectable-text">
+              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${duoReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${duoReading4Gapped ? ' b1-reading4' : ''}${duoReading5Cloze ? ' b1-reading5' : ''}${duoReading6OpenCloze ? ' b1-reading6' : ''}${duoReading3WordFormation ? ' c1-reading3' : ''}${duoReading4Transformations ? ' c1-reading4' : ''}${duoListening ? ' b1-listening' : ''}" id="selectable-text">
                 ${paragraphsHTML}
               </div>
             </div>
 
             ${this.renderExplanationsSection(exercise)}
-            ${(needsToggle || hasTranscript) && !(typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading())
+            ${(needsToggle || hasTranscript) && !(typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading())
               ? this.renderExplanationsPanel(exercise, partConfig)
               : ''}
             
@@ -435,7 +445,9 @@
           para.trim().match(/^\(\d+\)$/);
         const isInlineGapContext = gapNumbers.length > 0 && !isIsolatedGap && (
           partConfig.type === 'gapped-text' ||
-          (partConfig.type === 'multiple-choice-text' && sec === 'reading')
+          (partConfig.type === 'multiple-choice-text' && sec === 'reading') ||
+          (partConfig.type === 'multiple-choice' && sec === 'reading' &&
+            typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading())
         );
         
         let paraProcessed = para;
@@ -1192,6 +1204,11 @@
       
       switch(partConfig.type) {
         case 'multiple-choice':
+          if (isInline && typeof window.ReadingType5 !== 'undefined' &&
+              typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading() &&
+              typeof ReadingType5.renderInlineGap === 'function') {
+            return ReadingType5.renderInlineGap(question, qNum, isChecked, userAnswer);
+          }
           if (typeof window.ReadingType1 !== 'undefined') {
             return ReadingType1.renderGap(question, qNum, isChecked, userAnswer);
           }
@@ -1258,7 +1275,11 @@
     initTypeSpecificListeners: function(type) {
       switch(type) {
         case 'multiple-choice':
-          if (AppState.currentSection === 'listening' && typeof ListeningType1?.initListeners === 'function') {
+          if (typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading()) {
+            if (typeof ReadingType5?.initListeners === 'function') {
+              ReadingType5.initListeners();
+            }
+          } else if (AppState.currentSection === 'listening' && typeof ListeningType1?.initListeners === 'function') {
             ListeningType1.initListeners();
           } else if (typeof ReadingType1?.initListeners === 'function') {
             ReadingType1.initListeners();
@@ -1362,6 +1383,15 @@
       if (exampleAnswer) AppState.currentExercise.answers[qNum] = exampleAnswer;
       
       if (partConfig.type === 'multiple-choice') {
+        if (typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading()) {
+          var duoLabel = '(' + qNum + ') ' + exampleText;
+          var duoEsc = duoLabel.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          return (
+            '<span class="reading-type5-gap-wrap" data-qnum="' + qNum + '">' +
+            '<button type="button" class="reading-type5-gap-trigger correct" disabled>' + duoEsc + '</button>' +
+            '</span>'
+          );
+        }
         return `
           <span class="reading-type1-gap">
             <span class="reading-type1-gap-number">(${qNum})</span>
@@ -1555,7 +1585,7 @@
       // In mixed mode, use actual section part for content-based conditions (explanations)
       var actualPart = AppState.currentPart || part;
       var isDuoInlineMcClozeAnswerToggle =
-        typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading();
+        typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading();
       var isDuoOpenClozeAnswerToggle =
         typeof Utils !== 'undefined' && Utils.isDuoOpenClozeReading();
       var isDuoListeningSentenceAnswerToggle =
@@ -1601,7 +1631,7 @@
         var isDuoOpenClozeFooterExplanations =
           typeof Utils !== 'undefined' && Utils.isDuoOpenClozeReading();
         var isDuoInlineMcClozeFooterExplanations =
-          typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading();
+          typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading();
         if ((isReading && actualPart > 0 && actualPart < 4 &&
             !(AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) &&
             !(AppState.currentLevel === 'B1' && actualPart === 3)) ||
