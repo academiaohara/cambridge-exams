@@ -764,9 +764,12 @@
       
       // Show loading screen while auto-checking / evaluating all parts
       var loadingHtml = `
-        <div class="section-complete-screen">
-          <div class="section-complete-icon"><i class="fas fa-spinner fa-spin"></i></div>
-          <h2>Calculating results...</h2>
+        <div class="section-report section-report--loading">
+          <div class="section-report-loading">
+            <div class="section-report-loading-icon"><i class="fas fa-spinner fa-spin"></i></div>
+            <h2>Calculating results…</h2>
+            <p>Checking your answers and building your section report.</p>
+          </div>
         </div>
       `;
       if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.setCenterContent) {
@@ -812,6 +815,9 @@
         } else {
           // Already checked — just ensure sectionScores is up to date
           AppState.sectionScores[sectionKey][i] = savedState.partScore || 0;
+          if (!isWriting && !isSpeaking && !savedState.questionOutcomes) {
+            await this._backfillQuestionOutcomes(examId, section, i, savedState);
+          }
         }
         
         this.markPartCompleted(examId, section, i);
@@ -855,6 +861,7 @@
         
         var score = 0;
         var answers = savedState.answers || {};
+        var questionOutcomes = this._computeQuestionOutcomes(questions, answers, partConfig);
         questions.forEach(function(q) {
           if (partConfig && partConfig.type === 'transformations') {
             // Key word transformations: 0, 1, or 2 marks per question
@@ -874,7 +881,11 @@
         });
         
         var key = this.getStorageKey(examId, section, part);
-        this._persistPartStateBlob(key, Object.assign({}, savedState, { answersChecked: true, partScore: score }));
+        this._persistPartStateBlob(key, Object.assign({}, savedState, {
+          answersChecked: true,
+          partScore: score,
+          questionOutcomes: questionOutcomes
+        }));
         
         var sectionKey = examId + '_' + section;
         if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
@@ -1022,25 +1033,150 @@
       }
     },
     
+    _sectionReportChartMode: 'cambridge',
+
+    switchSectionReportChart: function(mode) {
+      this._sectionReportChartMode = mode;
+      if (!AppState.currentExamId) return;
+      if (document.querySelector('.section-report--final')) {
+        this.showFinalResults(AppState.currentExamId);
+      } else if (AppState.currentSection) {
+        this._renderSectionComplete(AppState.currentExamId, AppState.currentSection);
+      }
+    },
+
+    _hasUserAnswer: function(answer) {
+      if (answer === undefined || answer === null) return false;
+      return String(answer).trim() !== '';
+    },
+
+    _computeQuestionOutcomes: function(questions, answers, partConfig) {
+      var outcomes = [];
+      questions.forEach(function(q) {
+        var userAnswer = answers[q.number];
+        var hasAnswer = userAnswer !== undefined && userAnswer !== null && String(userAnswer).trim() !== '';
+        var status = 'empty';
+        if (partConfig && partConfig.type === 'transformations') {
+          var evalScore = 0;
+          if (hasAnswer) {
+            if (window.ReadingType4 && typeof ReadingType4.evaluateTransformation === 'function') {
+              evalScore = ReadingType4.evaluateTransformation(userAnswer, q.routes).score;
+            } else if (Utils.compareAnswers(userAnswer, q.correct, 'transformations')) {
+              evalScore = 2;
+            }
+          }
+          status = evalScore >= 2 ? 'correct' : (hasAnswer ? 'incorrect' : 'empty');
+        } else if (!hasAnswer) {
+          status = 'empty';
+        } else {
+          status = Utils.compareAnswers(userAnswer, q.correct, partConfig && partConfig.type) ? 'correct' : 'incorrect';
+        }
+        outcomes.push({ num: q.number, status: status });
+      });
+      outcomes.sort(function(a, b) { return a.num - b.num; });
+      return outcomes;
+    },
+
+    _backfillQuestionOutcomes: async function(examId, section, part, savedState) {
+      try {
+        var fileName = '';
+        if (section === 'reading') fileName = 'reading' + part + '.json';
+        else if (section === 'listening') fileName = 'listening' + part + '.json';
+        else return;
+
+        var baseUrl = CONFIG.EXERCISES_URL.replace('Nivel/C1/Exams/', 'Nivel/' + AppState.currentLevel + '/Exams/');
+        var targetUrl = baseUrl + examId + '/' + fileName;
+        var response = await Utils.fetchWithNoCache(targetUrl);
+        var exercise = await response.json();
+
+        if (AppState.currentLevel === 'B1' && window.B1ExerciseProcessors) {
+          B1ExerciseProcessors.normalizeExercise(exercise, section, part, examId);
+        }
+        if (!exercise.content && exercise.extracts) {
+          exercise.content = { questions: [] };
+          exercise.extracts.forEach(function(extract) {
+            extract.questions.forEach(function(q) {
+              if (q.answer && !q.correct) q.correct = q.answer;
+              exercise.content.questions.push(q);
+            });
+          });
+        }
+        if (AppState.currentLevel === 'B2' && section === 'listening') {
+          normalizeB2ListeningExercise(exercise, part);
+        }
+
+        var questions = (exercise.content && exercise.content.questions) || [];
+        var partConfig = CONFIG.getPartConfig(section, part);
+        var questionOutcomes = this._computeQuestionOutcomes(questions, savedState.answers || {}, partConfig);
+        var key = this.getStorageKey(examId, section, part);
+        this._persistPartStateBlob(key, Object.assign({}, savedState, { questionOutcomes: questionOutcomes }));
+      } catch (e) {
+        console.warn('Could not backfill question outcomes for ' + section + part + ':', e);
+      }
+    },
+
+    _buildQuestionCellsHTML: function(partState, partScore, partConfig, section) {
+      var isAiSection = section === 'writing' || section === 'speaking';
+      var cells = '';
+
+      if (isAiSection) {
+        var answers = (partState && partState.answers) || {};
+        var hasAttempt = Object.keys(answers).some(function(k) {
+          return k.charAt(0) !== '_' && Exercise._hasUserAnswer(answers[k]);
+        });
+        var status = !hasAttempt ? 'empty' : (partScore > 0 ? 'correct' : 'incorrect');
+        cells += '<span class="sc-q-cell sc-q-' + status + '" title="Task"></span>';
+        return '<div class="sc-question-cells sc-question-cells--single">' + cells + '</div>';
+      }
+
+      var outcomes = partState && partState.questionOutcomes;
+      if (outcomes && outcomes.length) {
+        outcomes.forEach(function(o) {
+          cells += '<span class="sc-q-cell sc-q-' + o.status + '" title="Question ' + o.num + '"></span>';
+        });
+        return '<div class="sc-question-cells">' + cells + '</div>';
+      }
+
+      var count = partConfig ? (partConfig.total || 0) : 0;
+      for (var i = 0; i < count; i++) {
+        cells += '<span class="sc-q-cell sc-q-empty" title="Question ' + (i + 1) + '"></span>';
+      }
+      return '<div class="sc-question-cells">' + cells + '</div>';
+    },
+
+    _buildSectionPartNavHTML: function(examId, section, totalParts) {
+      var cells = '';
+      for (var i = 1; i <= totalParts; i++) {
+        cells += '<span class="part-nav-cell completed" title="Part ' + i + ' completed">' + i + '</span>';
+      }
+      return '<div class="part-nav-row section-report-part-nav">' + cells + '</div>';
+    },
+
     _renderSectionComplete: function(examId, section) {
       var sectionKey = examId + '_' + section;
       var sectionScore = ExerciseRenderer.getSectionRunningTotal(sectionKey);
       var sectionTotal = ExerciseRenderer.getSectionTotalQuestions(section);
       var sectionLabels = { reading: 'Reading', listening: 'Listening', writing: 'Writing', speaking: 'Speaking' };
       var sectionName = sectionLabels[section] || section;
-      
+      var sectionTitle = typeof Utils !== 'undefined' && Utils.getSectionTitle
+        ? Utils.getSectionTitle(section)
+        : sectionName.toUpperCase();
+      var levelName = typeof Utils !== 'undefined' && Utils.getLevelName
+        ? Utils.getLevelName(AppState.currentLevel)
+        : (AppState.currentLevel || 'C1');
+
       var currentIdx = AppState.examSectionsOrder.indexOf(section);
       var nextSection = null;
       if (currentIdx >= 0 && currentIdx < AppState.examSectionsOrder.length - 1) {
         nextSection = AppState.examSectionsOrder[currentIdx + 1];
       }
-      
       var nextSectionName = nextSection ? (sectionLabels[nextSection] || nextSection) : '';
-      
+
       var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
       var totalParts = (exam && exam.sections[section] && exam.sections[section].total) || 1;
       var partsHTML = '';
-      
+      var pct = sectionTotal > 0 ? Math.round(sectionScore / sectionTotal * 100) : 0;
+
       for (var i = 1; i <= totalParts; i++) {
         var partState = this.loadPartState(examId, section, i);
         var partScore = (AppState.sectionScores[sectionKey] && AppState.sectionScores[sectionKey][i]) !== undefined
@@ -1048,50 +1184,91 @@
           : (partState ? (partState.partScore || 0) : 0);
         var partConfig = CONFIG.getPartConfig(section, i);
         var partTotal = partConfig ? (partConfig.maxMarks || partConfig.total) : 0;
-        
-        partsHTML += `
-          <div class="section-complete-part-row">
-            <span class="section-complete-part-name">Part ${i}</span>
-            <span class="section-complete-part-score">${partScore}/${partTotal}</span>
-            <button class="btn-review-part" onclick="Exercise.openPart('${examId}', '${section}', ${i})">
-              <i class="fas fa-eye"></i> Review Answers
-            </button>
-          </div>
-        `;
+        var cellsHTML = this._buildQuestionCellsHTML(partState, partScore, partConfig, section);
+
+        partsHTML += ''
+          + '<div class="section-report-part-card">'
+          + '  <div class="section-report-part-head">'
+          + '    <span class="section-report-part-label">Part ' + i + '</span>'
+          + '    <span class="section-report-part-score">' + partScore + '<span class="section-report-part-score-sep">/</span>' + partTotal + '</span>'
+          + '  </div>'
+          + '  ' + cellsHTML
+          + '  <button type="button" class="btn-review-part" onclick="Exercise.openPart(\'' + examId + '\', \'' + section + '\', ' + i + ')">'
+          + '    <i class="fas fa-eye"></i> Review'
+          + '  </button>'
+          + '</div>';
       }
-      
-      var html = `
-        <div class="section-complete-screen">
-          <div class="section-complete-icon"><i class="fas fa-check-circle"></i></div>
-          <h2>You have completed ${sectionName}!</h2>
-          <div class="section-complete-score">
-            <span class="section-complete-label">Your score for this section:</span>
-            <span class="section-complete-value">${sectionScore} / ${sectionTotal}</span>
-          </div>
-          <div class="section-complete-parts-breakdown">
-            ${partsHTML}
-          </div>
-          <div class="section-complete-actions">
-      `;
-      
+
+      var chartsHTML = '';
+      if (typeof ScoreCalculator !== 'undefined' && ScoreCalculator.buildSectionReportCharts) {
+        chartsHTML = ScoreCalculator.buildSectionReportCharts(examId, section, this._sectionReportChartMode || 'cambridge');
+      }
+
+      var html = ''
+        + '<div class="section-report">'
+        + '  <div class="exercise-header">'
+        + '    <div class="exercise-header-top">'
+        + '      <h2 class="exercise-heading">' + levelName + ' - ' + sectionTitle + '</h2>'
+        + '      <div class="exercise-header-right">'
+        + '        <div class="score-display">' + sectionScore + '/' + sectionTotal + '</div>'
+        + '        <div class="exercise-toolbar">'
+        + '          <button type="button" class="btn-exit" onclick="Exercise.closeExercise()" title="Close">'
+        + '            <i class="fas fa-times"></i>'
+        + '          </button>'
+        + '        </div>'
+        + '      </div>'
+        + '    </div>'
+        + '    <div class="exercise-header-meta">'
+        + '      <span class="exercise-badge">' + sectionTitle + ' — Report</span>'
+        + '      <span class="exam-mode-badge"><i class="fas fa-file-alt"></i> Exam Mode</span>'
+        + '    </div>'
+        + '  </div>'
+        + '  <div class="exercise-info section-report-info">'
+        + '    <div class="exercise-info-left">' + this._buildSectionPartNavHTML(examId, section, totalParts) + '</div>'
+        + '    <div class="exercise-info-right">'
+        + '      <span class="section-report-status"><i class="fas fa-check-circle"></i> Section complete</span>'
+        + '      <div class="part-score-display section-report-raw-pill">' + sectionScore + '/' + sectionTotal + ' raw</div>'
+        + '    </div>'
+        + '  </div>'
+        + '  <div class="exercise-description section-report-banner">'
+        + '    <p><strong>' + sectionName + ' finished.</strong> Review your Cambridge scale, raw score and per-question breakdown below.</p>'
+        + '  </div>'
+        + '  <div class="section-report-body">'
+        + '    <div class="section-report-summary-card">'
+        + '      <div class="section-report-summary-main">'
+        + '        <span class="section-report-summary-label">Raw score</span>'
+        + '        <span class="section-report-summary-value">' + sectionScore + '<span>/' + sectionTotal + '</span></span>'
+        + '      </div>'
+        + '      <div class="section-report-summary-bar-wrap">'
+        + '        <div class="section-report-summary-bar" style="width:' + pct + '%"></div>'
+        + '      </div>'
+        + '      <span class="section-report-summary-pct">' + pct + '% correct</span>'
+        + '    </div>'
+        + (chartsHTML ? '<div class="section-report-charts-card">' + chartsHTML + '</div>' : '')
+        + '    <div class="section-report-parts">'
+        + '      <h3 class="section-report-parts-title"><i class="fas fa-list-check"></i> Breakdown by part</h3>'
+        + '      <div class="section-report-parts-grid">' + partsHTML + '</div>'
+        + '    </div>'
+        + '  </div>'
+        + '  <div class="exercise-footer section-report-actions">';
+
       if (nextSection) {
-        html += `<button class="btn-next-section" onclick="Exercise.continueToNextSection('${examId}', '${nextSection}')">
-          Continue to ${nextSectionName} <i class="fas fa-chevron-right"></i>
-        </button>`;
+        html += '<button type="button" class="btn-finish-section" onclick="Exercise.continueToNextSection(\'' + examId + '\', \'' + nextSection + '\')">'
+          + 'Continue to ' + nextSectionName + ' <i class="fas fa-chevron-right"></i>'
+          + '</button>';
       } else {
-        html += `<button class="btn-final-results" onclick="Exercise.showFinalResults('${examId}')">
-          <i class="fas fa-trophy"></i> View Final Results
-        </button>`;
+        html += '<button type="button" class="btn-finish-section" onclick="Exercise.showFinalResults(\'' + examId + '\')">'
+          + '<i class="fas fa-trophy"></i> Final results'
+          + '</button>';
       }
-      
-      html += `
-            <button class="btn-back-dashboard" onclick="Exercise.closeExercise()">
-              <i class="fas fa-home"></i> Back
-            </button>
-          </div>
-        </div>
-      `;
-      
+
+      html += ''
+        + '    <button type="button" class="btn-prev" onclick="Exercise.closeExercise()">'
+        + '      <i class="fas fa-home"></i> Back'
+        + '    </button>'
+        + '  </div>'
+        + '</div>';
+
       if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.setCenterContent) {
         ExerciseRenderer.setCenterContent(html, false);
       } else {
@@ -1112,42 +1289,82 @@
       var totalScore = 0;
       var totalQuestions = 0;
       var sectionsHTML = '';
-      
+      var sectionLabels2 = { reading: 'Reading', listening: 'Listening', writing: 'Writing', speaking: 'Speaking' };
+      var levelName = typeof Utils !== 'undefined' && Utils.getLevelName
+        ? Utils.getLevelName(AppState.currentLevel)
+        : (AppState.currentLevel || 'C1');
+
       AppState.examSectionsOrder.forEach(function(section) {
         var sectionKey = examId + '_' + section;
         var score = ExerciseRenderer.getSectionRunningTotal(sectionKey);
         var total = ExerciseRenderer.getSectionTotalQuestions(section);
-        var sectionLabels2 = { reading: 'Reading', listening: 'Listening', writing: 'Writing', speaking: 'Speaking' };
         var sectionName = sectionLabels2[section] || section;
         totalScore += score;
         totalQuestions += total;
-        sectionsHTML += `
-          <div class="final-results-section-row">
-            <span class="final-results-section-name">${sectionName}</span>
-            <span class="final-results-section-score">${score} / ${total}</span>
-          </div>
-        `;
+        var pct = total > 0 ? Math.round(score / total * 100) : 0;
+        sectionsHTML += ''
+          + '<div class="section-report-part-card section-report-part-card--section">'
+          + '  <div class="section-report-part-head">'
+          + '    <span class="section-report-part-label">' + sectionName + '</span>'
+          + '    <span class="section-report-part-score">' + score + '<span class="section-report-part-score-sep">/</span>' + total + '</span>'
+          + '  </div>'
+          + '  <div class="section-report-summary-bar-wrap section-report-summary-bar-wrap--inline">'
+          + '    <div class="section-report-summary-bar" style="width:' + pct + '%"></div>'
+          + '  </div>'
+          + '</div>';
       });
-      
-      var html = `
-        <div class="section-complete-screen">
-          <div class="section-complete-icon final"><i class="fas fa-trophy"></i></div>
-          <h2>Exam Finished!</h2>
-          <p>You have completed all sections.</p>
-          <div class="final-results-breakdown">
-            ${sectionsHTML}
-          </div>
-          <div class="section-complete-score final-total">
-            <span class="section-complete-label">Final Score:</span>
-            <span class="section-complete-value">${totalScore} / ${totalQuestions}</span>
-          </div>
-          <div class="section-complete-actions">
-            <button class="btn-back-dashboard" onclick="Exercise.closeExercise()">
-              <i class="fas fa-home"></i> Back
-            </button>
-          </div>
-        </div>
-      `;
+
+      var chartsHTML = '';
+      if (typeof ScoreCalculator !== 'undefined' && ScoreCalculator.buildSectionReportCharts) {
+        chartsHTML = ScoreCalculator.buildExamReportCharts(examId, this._sectionReportChartMode || 'cambridge');
+      }
+
+      var totalPct = totalQuestions > 0 ? Math.round(totalScore / totalQuestions * 100) : 0;
+      var html = ''
+        + '<div class="section-report section-report--final">'
+        + '  <div class="exercise-header">'
+        + '    <div class="exercise-header-top">'
+        + '      <h2 class="exercise-heading">' + levelName + ' — Exam complete</h2>'
+        + '      <div class="exercise-header-right">'
+        + '        <div class="score-display">' + totalScore + '/' + totalQuestions + '</div>'
+        + '        <div class="exercise-toolbar">'
+        + '          <button type="button" class="btn-exit" onclick="Exercise.closeExercise()" title="Close">'
+        + '            <i class="fas fa-times"></i>'
+        + '          </button>'
+        + '        </div>'
+        + '      </div>'
+        + '    </div>'
+        + '    <div class="exercise-header-meta">'
+        + '      <span class="exercise-badge">Final report</span>'
+        + '      <span class="exam-mode-badge"><i class="fas fa-trophy"></i> Exam finished</span>'
+        + '    </div>'
+        + '  </div>'
+        + '  <div class="exercise-description section-report-banner">'
+        + '    <p><strong>All sections completed.</strong> Here is your overall Cambridge scale and raw breakdown.</p>'
+        + '  </div>'
+        + '  <div class="section-report-body">'
+        + '    <div class="section-report-summary-card section-report-summary-card--final">'
+        + '      <div class="section-report-summary-main">'
+        + '        <span class="section-report-summary-label">Total raw score</span>'
+        + '        <span class="section-report-summary-value">' + totalScore + '<span>/' + totalQuestions + '</span></span>'
+        + '      </div>'
+        + '      <div class="section-report-summary-bar-wrap">'
+        + '        <div class="section-report-summary-bar section-report-summary-bar--final" style="width:' + totalPct + '%"></div>'
+        + '      </div>'
+        + '      <span class="section-report-summary-pct">' + totalPct + '% overall</span>'
+        + '    </div>'
+        + (chartsHTML ? '<div class="section-report-charts-card">' + chartsHTML + '</div>' : '')
+        + '    <div class="section-report-parts">'
+        + '      <h3 class="section-report-parts-title"><i class="fas fa-layer-group"></i> By section</h3>'
+        + '      <div class="section-report-parts-grid section-report-parts-grid--sections">' + sectionsHTML + '</div>'
+        + '    </div>'
+        + '  </div>'
+        + '  <div class="exercise-footer section-report-actions">'
+        + '    <button type="button" class="btn-prev" onclick="Exercise.closeExercise()">'
+        + '      <i class="fas fa-home"></i> Back'
+        + '    </button>'
+        + '  </div>'
+        + '</div>';
       
       if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.setCenterContent) {
         ExerciseRenderer.setCenterContent(html, false);
