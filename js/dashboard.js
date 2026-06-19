@@ -730,10 +730,15 @@
       overlay.className = 'confirm-dialog-overlay';
       overlay.innerHTML = `
         <div class="confirm-dialog">
+          <div class="confirm-dialog-header">
+            <div class="confirm-dialog-icon" aria-hidden="true">
+              <span class="material-symbols-outlined">help</span>
+            </div>
+          </div>
           <p>${message}</p>
           <div class="confirm-dialog-buttons">
-            <button class="confirm-dialog-btn confirm-cancel">Cancel</button>
-            <button class="confirm-dialog-btn confirm-ok">Confirm</button>
+            <button type="button" class="confirm-dialog-btn confirm-cancel">Cancel</button>
+            <button type="button" class="confirm-dialog-btn confirm-ok">Confirm</button>
           </div>
         </div>
       `;
