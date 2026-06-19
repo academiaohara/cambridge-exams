@@ -245,6 +245,9 @@
       const b1Reading4Gapped =
         AppState.currentLevel === 'B1' && section === 'reading' && part === 4 &&
         partConfig.type === 'gapped-text';
+      const b1Reading5Cloze =
+        AppState.currentLevel === 'B1' && section === 'reading' && part === 5 &&
+        partConfig.type === 'multiple-choice-text';
       const b1Listening =
         AppState.currentLevel === 'B1' && section === 'listening';
       
@@ -377,7 +380,7 @@
             
             <div class="exercise-main-layout" lang="en">
               <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
-              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${b1ReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${b1Reading4Gapped ? ' b1-reading4' : ''}${b1Reading6OpenCloze ? ' b1-reading6' : ''}${b1Listening ? ' b1-listening' : ''}" id="selectable-text">
+              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${b1ReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${b1Reading4Gapped ? ' b1-reading4' : ''}${b1Reading5Cloze ? ' b1-reading5' : ''}${b1Reading6OpenCloze ? ' b1-reading6' : ''}${b1Listening ? ' b1-listening' : ''}" id="selectable-text">
                 ${paragraphsHTML}
               </div>
             </div>
