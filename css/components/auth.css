@@ -3174,22 +3174,21 @@ body.auth-screen-open #app {
 .profile-duo-side-card--hero {
   grid-area: 1 / 1;
   text-align: left;
-  padding: 20px 18px 18px 72px;
+  padding: 20px 18px 18px;
   position: relative;
+  overflow: visible;
   z-index: 1;
 }
 
 .profile-duo-side-illust {
   grid-area: 1 / 1;
-  align-self: end;
+  align-self: center;
   justify-self: start;
-  width: 88px;
+  width: 86px;
   height: auto;
-  margin-left: -12px;
-  margin-bottom: -4px;
-  z-index: 2;
+  margin-left: -82px;
+  z-index: 3;
   pointer-events: none;
-  display: block;
 }
 
 .profile-duo-side-hero-text {
