@@ -763,13 +763,18 @@
       }
       
       // Show loading screen while auto-checking / evaluating all parts
-      var content = document.getElementById('main-content');
-      content.innerHTML = `
+      var loadingHtml = `
         <div class="section-complete-screen">
           <div class="section-complete-icon"><i class="fas fa-spinner fa-spin"></i></div>
           <h2>Calculating results...</h2>
         </div>
       `;
+      if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.setCenterContent) {
+        ExerciseRenderer.setCenterContent(loadingHtml, false);
+      } else {
+        var content = document.getElementById('main-content');
+        content.innerHTML = loadingHtml;
+      }
       
       // Auto-check all parts of the section (including writing AI evaluation)
       await this._autoCheckAllParts(examId, currentSection);
@@ -1055,8 +1060,6 @@
         `;
       }
       
-      var content = document.getElementById('main-content');
-      
       var html = `
         <div class="section-complete-screen">
           <div class="section-complete-icon"><i class="fas fa-check-circle"></i></div>
@@ -1089,7 +1092,12 @@
         </div>
       `;
       
-      content.innerHTML = html;
+      if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.setCenterContent) {
+        ExerciseRenderer.setCenterContent(html, false);
+      } else {
+        var content = document.getElementById('main-content');
+        content.innerHTML = html;
+      }
     },
     
     continueToNextSection: async function(examId, nextSection) {
@@ -1101,7 +1109,6 @@
     },
     
     showFinalResults: function(examId) {
-      var content = document.getElementById('main-content');
       var totalScore = 0;
       var totalQuestions = 0;
       var sectionsHTML = '';
@@ -1142,7 +1149,12 @@
         </div>
       `;
       
-      content.innerHTML = html;
+      if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.setCenterContent) {
+        ExerciseRenderer.setCenterContent(html, false);
+      } else {
+        var content = document.getElementById('main-content');
+        content.innerHTML = html;
+      }
     },
     
     closeExercise: function(opts) {
