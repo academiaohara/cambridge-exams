@@ -421,3 +421,143 @@
     font-size: 0.82rem;
   }
 }
+
+/* ── C1 Reading Part 3 — Duolingo-style word-formation pills (mirrors b1-reading6) ── */
+
+.c1-reading3 .reading-type3-gap-inline {
+  display: inline;
+  white-space: nowrap;
+  position: relative;
+  margin: 0 2px;
+  vertical-align: baseline;
+}
+
+.c1-reading3 .reading-type3-wf-pill {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 14px;
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+  padding: 2px 6px 2px 4px;
+  gap: 4px;
+  margin: 2px 1px;
+  vertical-align: middle;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+}
+
+.c1-reading3 .reading-type3-wf-pill:focus-within {
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6), 0 0 0 3px rgba(28, 176, 246, 0.18);
+}
+
+.c1-reading3 .reading-type3-wf-pill .cu-hint-pill-num {
+  background: var(--ex-duo-blue, #1cb0f6);
+  color: #fff;
+  border: 2px solid var(--ex-duo-blue-dark, #1899d6);
+  border-radius: 10px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.75rem;
+  padding: 1px 7px;
+  min-width: 1.5em;
+  text-align: center;
+  line-height: 1.45;
+}
+
+.c1-reading3 .reading-type3-pill-input {
+  border: 2px solid var(--ex-duo-border, #e5e5e5) !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem !important;
+  min-width: 52px;
+  width: 65px;
+  color: var(--ex-duo-text, #4b4b4b) !important;
+}
+
+.c1-reading3 .reading-type3-pill-input:focus {
+  border-color: var(--ex-duo-blue, #1cb0f6) !important;
+  box-shadow: none !important;
+}
+
+.c1-reading3 .reading-type3-wf-pill .reading-type3-answered-word,
+.c1-reading3 .reading-type3-wf-pill .reading-type3-answered.reading-type3-example-answer,
+.c1-reading3 .reading-type3-wf-pill .reading-type3-example-answer {
+  margin-left: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.45;
+  padding: 3px 8px;
+  min-width: 52px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  border: none;
+  background: transparent;
+}
+
+.c1-reading3 .reading-type3-wf-pill .cu-hint-pill-word.cu-wf-pill-word {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--ex-duo-blue-dark, #1899d6);
+  background: #fff;
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 10px;
+  padding: 1px 8px;
+}
+
+.c1-reading3 .reading-type3-correct {
+  color: #065f46;
+  background: #d7ffb8;
+  border: 2px solid #58cc02;
+}
+
+.c1-reading3 .reading-type3-incorrect {
+  color: #991b1b;
+  background: #ffdfe0;
+  border: 2px solid #ff4b4b;
+  text-decoration: line-through;
+}
+
+.c1-reading3 .reading-type3-show-correct {
+  color: #5b21b6;
+  font-weight: 700;
+  background: rgba(124, 58, 237, 0.1);
+  border: 2px solid #7c3aed;
+}
+
+.c1-reading3 .reading-type3-gap-inline.incorrect::after {
+  background: var(--ex-duo-text, #3c3c3c);
+  font-family: 'Nunito', sans-serif;
+}
+
+.c1-reading3 .reading-type3-wf-pill.reading-type3-gap-pill--example,
+.c1-reading3 .reading-type3-wf-pill:has(.reading-type3-example-answer) {
+  pointer-events: none;
+}
+
+.c1-reading3 .reading-type3-example-answer {
+  color: #065f46;
+  font-weight: 700;
+}
+
+.reading-text-enhanced--b1r-plain.c1-reading3 .toggle-text-section p {
+  line-height: 2.25;
+}
+
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  .reading-text-enhanced--b1r-plain.c1-reading3 .toggle-text-section p {
+    line-height: 2.05;
+  }
+
+  .c1-reading3 .reading-type3-pill-input {
+    min-width: 44px;
+    width: 56px;
+    font-size: 0.85rem !important;
+  }
+
+  .c1-reading3 .reading-type3-wf-pill .cu-hint-pill-num {
+    font-size: 0.7rem;
+    padding: 1px 5px;
+  }
+}

@@ -92,7 +92,7 @@
 
       // For reading parts 5–8 (except B1 part 5), B1 reading parts 3–4, and listening: reveal the header Explanation toggle
       if (((AppState.currentSection === 'reading' && AppState.currentPart >= 5) &&
-            !(typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading())) ||
+            !(typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading())) ||
           (AppState.currentSection === 'reading' &&
             AppState.currentLevel === 'B1' &&
             (AppState.currentPart === 3 || AppState.currentPart === 4)) ||
@@ -135,6 +135,12 @@
     },
     
     getTypeChecker: function(type) {
+      if (type === 'multiple-choice' &&
+          AppState.currentSection === 'reading' &&
+          typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading() &&
+          typeof window.ReadingType5 !== 'undefined') {
+        return window.ReadingType5;
+      }
       const typeMap = {
         'multiple-choice': AppState.currentSection === 'listening' ? window.ListeningType1 : window.ReadingType1,
         'open-cloze': window.ReadingType2,
@@ -159,7 +165,7 @@
       if (AppState.currentExercise && AppState.currentExercise._b1PetHideAnswerToggle) return false;
       if (AppState.currentSection === 'reading') {
         var in14 = AppState.currentPart >= 1 && AppState.currentPart <= 4;
-        var duoInlineMcCloze = typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading();
+        var duoInlineMcCloze = typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading();
         var duoOpenCloze = typeof Utils !== 'undefined' && Utils.isDuoOpenClozeReading();
         return in14 || duoInlineMcCloze || duoOpenCloze;
       }
@@ -177,7 +183,7 @@
       }
       btn.style.display = '';
       const isDuoInlineMcClozeToggle =
-        typeof Utils !== 'undefined' && Utils.isB1InlineMcClozeReading();
+        typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading();
       const isDuoOpenClozeToggle =
         typeof Utils !== 'undefined' && Utils.isDuoOpenClozeReading();
       const isDuoListeningSentenceToggle =

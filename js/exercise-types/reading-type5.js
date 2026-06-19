@@ -31,11 +31,8 @@
     return { letter: s.charAt(0) || '', word: s };
   }
 
-  function isB1ReadingPart5() {
-    return typeof AppState !== 'undefined' &&
-      AppState.currentLevel === 'B1' &&
-      AppState.currentSection === 'reading' &&
-      AppState.currentPart === 5;
+  function isDuoInlineMcClozePart() {
+    return typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading();
   }
 
   function wordFromQuestionOption(question, letter) {
@@ -77,7 +74,7 @@
   function gapTriggerLabel(qNum, userAnswer, question) {
     var letter = (userAnswer || '').trim();
     if (!letter) return '(' + qNum + ')';
-    if (isB1ReadingPart5()) {
+    if (isDuoInlineMcClozePart()) {
       var w = wordFromQuestionOption(question, letter) || letter;
       return '(' + qNum + ') ' + w;
     }
@@ -91,7 +88,7 @@
      */
     renderInlineGap: function(question, qNum, isChecked, userAnswer) {
       var options = question.options || ['A', 'B', 'C', 'D'];
-      var b1r5 = isB1ReadingPart5();
+      var b1r5 = isDuoInlineMcClozePart();
       var ua = userAnswer;
       var viewCorrect =
         typeof AppState !== 'undefined' && AppState.answerViewMode === 'correct';
@@ -231,7 +228,7 @@
     renderOptions: function(question, qNum, isChecked, userAnswer) {
       let html = '';
       const options = question.options || ['A', 'B', 'C', 'D'];
-      const b1r5 = isB1ReadingPart5();
+      const b1r5 = isDuoInlineMcClozePart();
       const viewKey =
         isChecked && b1r5 && typeof AppState !== 'undefined' && AppState.answerViewMode === 'correct';
       options.forEach(function(opt, idx) {
@@ -264,7 +261,7 @@
      * for explanation panels; otherwise returns null so callers keep the raw option string.
      */
     explanationOptionHtml: function(opt) {
-      if (!isB1ReadingPart5()) return null;
+      if (!isDuoInlineMcClozePart()) return null;
       return optionInnerHtmlNumbered(opt);
     },
 
@@ -324,7 +321,7 @@
           }
         }
       }
-      var b1r5 = isB1ReadingPart5();
+      var b1r5 = isDuoInlineMcClozePart();
       if (checked && b1r5 && question) {
         var viewCorrect = typeof AppState !== 'undefined' && AppState.answerViewMode === 'correct';
         if (viewCorrect) {
@@ -425,7 +422,7 @@
               'filled',
               'reading-type5-gap-trigger-show-correct'
             );
-            var b1r5 = isB1ReadingPart5();
+            var b1r5 = isDuoInlineMcClozePart();
             if (b1r5) {
               wrap.removeAttribute('data-correct');
               if (userAnswer === q.correct) {
@@ -463,7 +460,7 @@
      */
     setAnswerMode: function(mode) {
       if (!AppState.currentExercise || !AppState.answersChecked) return;
-      if (!isB1ReadingPart5()) return;
+      if (!isDuoInlineMcClozePart()) return;
       var qs = AppState.currentExercise.content.questions || [];
       qs.forEach(function(q) {
         if (!q || q.number === 0) return;

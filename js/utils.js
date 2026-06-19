@@ -187,11 +187,35 @@
       return !!(pc && pc.type === 'gapped-text');
     },
 
+    /** B1 Reading Part 5 and C1 Reading Part 1: inline MC cloze chips in the passage. */
+    isDuoInlineMcClozeReading: function() {
+      if (typeof AppState === 'undefined' || !this.isDuoExerciseUi()) return false;
+      if (AppState.currentSection !== 'reading') return false;
+      if (AppState.currentLevel === 'B1' && AppState.currentPart === 5) return true;
+      if (AppState.currentLevel === 'C1' && AppState.currentPart === 1) return true;
+      return false;
+    },
+
     isB1InlineMcClozeReading: function() {
-      return typeof AppState !== 'undefined' &&
-        AppState.currentLevel === 'B1' &&
-        AppState.currentSection === 'reading' &&
-        AppState.currentPart === 5;
+      return this.isDuoInlineMcClozeReading();
+    },
+
+    isDuoWordFormationReading: function(section, part) {
+      if (!this.isDuoExerciseUi() || typeof AppState === 'undefined') return false;
+      section = section || AppState.currentSection;
+      part = part != null ? part : AppState.currentPart;
+      if (section !== 'reading') return false;
+      var pc = CONFIG.getPartConfig('reading', part);
+      return !!(pc && pc.type === 'word-formation');
+    },
+
+    isDuoTransformationsReading: function(section, part) {
+      if (!this.isDuoExerciseUi() || typeof AppState === 'undefined') return false;
+      section = section || AppState.currentSection;
+      part = part != null ? part : AppState.currentPart;
+      if (section !== 'reading') return false;
+      var pc = CONFIG.getPartConfig('reading', part);
+      return !!(pc && pc.type === 'transformations');
     },
 
     isDuoReadingPlainPassage: function(section, part) {
