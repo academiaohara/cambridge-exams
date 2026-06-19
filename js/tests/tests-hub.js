@@ -63,6 +63,9 @@
       if (options.mode) {
         AppState.currentMode = options.mode;
         localStorage.setItem('preferred_mode', options.mode);
+      } else if (AppState.currentView !== 'testsHub') {
+        // Entering Tests from elsewhere — default to practice (not persisted global exam mode)
+        AppState.currentMode = 'practice';
       }
 
       AppState.currentView = 'testsHub';
