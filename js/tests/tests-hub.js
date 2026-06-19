@@ -70,6 +70,7 @@
 
       var activeLevel = levelFilter || null;
       var activeExamId = examId || null;
+      var isRandomTest = activeExamId === 'Random';
       if (options.fromRoute && options.mode && !activeLevel && !activeExamId) {
         activeLevel = AppState.currentLevel || 'C1';
       }
@@ -97,7 +98,11 @@
       var headerTitle = 'Choose a Level';
       var backOnclick = 'loadDashboard()';
 
-      if (activeExamId) {
+      if (isRandomTest) {
+        headerKicker = (activeLevel || level).toUpperCase() + ' · RANDOM TEST';
+        headerTitle = 'Random Mix';
+        backOnclick = 'BentoGrid.openTests(\'' + (activeLevel || level) + '\')';
+      } else if (activeExamId) {
         var examMatch = exams.find(function(e) { return e.id === activeExamId; });
         var examNum = examMatch ? examMatch.number : activeExamId.replace('Test', '');
         headerKicker = (activeLevel || level).toUpperCase() + ' · TEST ' + examNum;
@@ -144,7 +149,9 @@
       await new Promise(function(resolve) { requestAnimationFrame(function() { requestAnimationFrame(resolve); }); });
 
       var bodyHtml = '';
-      if (activeExamId) {
+      if (isRandomTest) {
+        bodyHtml = BentoGrid._buildRandomTestPageHtml(activeLevel || level);
+      } else if (activeExamId) {
         bodyHtml = BentoGrid._buildTestsSectionCardsHtml(exams, activeExamId, activeLevel || level);
       } else if (activeLevel) {
         bodyHtml = BentoGrid._buildTestsPathMapHtml(exams, activeLevel);
@@ -173,6 +180,10 @@
       var segments = path.split('/').filter(Boolean);
       if (segments[0] === 'tests' && segments.length >= 3) {
         var level = (segments[1] || AppState.currentLevel || 'C1').toUpperCase();
+        if (segments[2].toLowerCase() === 'random') {
+          hubPage.innerHTML = BentoGrid._buildRandomTestPageHtml(level);
+          return;
+        }
         var examId = segments[2].replace('test-', 'Test');
         var exams = window.EXAMS_DATA[level] || [];
         hubPage.innerHTML = BentoGrid._buildTestsSectionCardsHtml(exams, examId, level);
@@ -322,8 +333,8 @@
         '--cw-card-text:' + meta.cardText +
         '">';
 
-      if (typeof Dashboard !== 'undefined' && Dashboard._renderRandomTestCard) {
-        html += Dashboard._renderRandomTestCard(AppState.currentMode || 'practice');
+      if (typeof BentoGrid !== 'undefined' && BentoGrid._buildRandomTestPathCardHtml) {
+        html += BentoGrid._buildRandomTestPathCardHtml(levelId);
       }
 
       html += '<div class="cw-path-grid tests-path-grid" role="list" aria-label="' + self._escapeHTML(levelId) + ' tests">';
@@ -349,6 +360,149 @@
         html += '<span class="cw-path-cell-num">' + testNum + '</span>';
         if (locked) html += '<span class="tests-path-lock">' + _mi('lock') + '</span>';
         html += '</button>';
+      });
+
+      html += '</div></div>';
+      return html;
+    },
+
+    _buildRandomTestPathCardHtml: function(levelId) {
+      var hasExamsPack = typeof AccessControl !== 'undefined'
+        ? AccessControl.effectiveHasExamsPack()
+        : !!AppState.hasExamsPack;
+      var plan = window.MixedTest ? MixedTest.getStoredPlan() : null;
+      var completedSet = window.MixedTest ? MixedTest.getCompletedSet() : new Set();
+      var hasPlan = Array.isArray(plan) && plan.length > 0;
+      var completedCount = hasPlan
+        ? plan.filter(function(_, idx) { return completedSet.has(idx); }).length
+        : 0;
+      var allDone = hasPlan && completedCount === plan.length;
+
+      var cardClass = 'tests-random-path-card';
+      if (!hasExamsPack) cardClass += ' tests-random-path-card--locked';
+      else if (allDone) cardClass += ' tests-random-path-card--done';
+      else if (hasPlan && completedCount > 0) cardClass += ' tests-random-path-card--progress';
+
+      var onclick = !hasExamsPack
+        ? 'Dashboard.showExamsUpgradeGate()'
+        : 'BentoGrid.openTests(\'' + levelId + '\', \'Random\')';
+
+      var statusText = !hasExamsPack
+        ? 'Pack Exams required'
+        : (hasPlan
+          ? (allDone ? 'Completed · ' + plan.length + ' exercises' : completedCount + '/' + plan.length + ' done')
+          : 'Generate a custom mix');
+
+      var html = '<button type="button" class="' + cardClass + '" onclick="' + onclick + '" aria-label="Random Test">';
+      html += '<span class="tests-random-path-icon-wrap">' + _mi('shuffle') + '</span>';
+      html += '<span class="tests-random-path-body">';
+      html += '<span class="tests-random-path-title">Random Test</span>';
+      html += '<span class="tests-random-path-sub">' + _escape(statusText) + '</span>';
+      html += '</span>';
+      if (!hasExamsPack) {
+        html += '<span class="tests-random-path-lock">' + _mi('lock') + '</span>';
+      } else if (hasPlan) {
+        html += '<span class="tests-random-path-badge">' + completedCount + '/' + plan.length + '</span>';
+      }
+      html += '<span class="tests-random-path-chevron">' + _mi('chevron_right') + '</span>';
+      html += '</button>';
+      return html;
+    },
+
+    _buildRandomTestPageHtml: function(levelId) {
+      var self = this;
+      var hasExamsPack = typeof AccessControl !== 'undefined'
+        ? AccessControl.effectiveHasExamsPack()
+        : !!AppState.hasExamsPack;
+
+      if (!hasExamsPack) {
+        return '<div class="tests-random-locked">' +
+          '<div class="tests-random-locked-icon">' + _mi('lock') + '</div>' +
+          '<h2>Random Test</h2>' +
+          '<p>Unlock Pack Exams to generate custom mixes from your available tests.</p>' +
+          '<button type="button" class="tests-random-generate-btn" onclick="Dashboard.showExamsUpgradeGate()">' +
+            _mi('lock') + '<span>Upgrade to unlock</span>' +
+          '</button>' +
+        '</div>';
+      }
+
+      var plan = window.MixedTest ? MixedTest.getStoredPlan() : null;
+      var completedSet = window.MixedTest ? MixedTest.getCompletedSet() : new Set();
+      var hasPlan = Array.isArray(plan) && plan.length > 0;
+
+      if (!hasPlan) {
+        return '<div class="tests-random-empty">' +
+          '<div class="tests-random-empty-icon">' + _mi('shuffle') + '</div>' +
+          '<h2>Build your random mix</h2>' +
+          '<p>Combine exercises from different tests into one practice session. Speaking parts 3 &amp; 4 always share the same source test.</p>' +
+          '<button type="button" class="tests-random-generate-btn" onclick="MixedTest.generateNew({ refreshPage: true })">' +
+            _mi('shuffle') + '<span>Generate Random Test</span>' +
+          '</button>' +
+        '</div>';
+      }
+
+      var completedCount = plan.filter(function(_, idx) { return completedSet.has(idx); }).length;
+      var isB1 = levelId === 'B1';
+      var readingLabel = isB1 ? 'READING' : 'READING & UOE';
+
+      var html = '<div class="tests-section-cards tests-random-page">';
+      html += '<div class="tests-random-actions">';
+      html += '<button type="button" class="tests-random-action-btn tests-random-action-btn--primary" onclick="MixedTest.generateNew({ refreshPage: true })">' +
+        _mi('shuffle') + '<span>New mix</span></button>';
+      html += '<button type="button" class="tests-random-action-btn" onclick="MixedTest.restart()">' +
+        _mi('replay') + '<span>Repeat</span></button>';
+      html += '<span class="tests-random-progress-pill">' + completedCount + '/' + plan.length + '</span>';
+      html += '</div>';
+      html += '<div class="tests-section-cards-grid">';
+
+      SECTION_KEYS.forEach(function(sectionKey) {
+        var items = [];
+        plan.forEach(function(item, idx) {
+          if (item.section === sectionKey) items.push({ item: item, idx: idx });
+        });
+        if (!items.length) return;
+
+        var theme = SECTION_CARD_THEME[sectionKey] || SECTION_CARD_THEME.reading;
+        var label = sectionKey === 'reading'
+          ? readingLabel
+          : sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
+        var iconName = typeof Utils !== 'undefined' ? Utils.getMaterialIcon(sectionKey) : 'menu_book';
+        var artSrc = SECTION_ART[sectionKey];
+        var completedInSection = items.filter(function(o) { return completedSet.has(o.idx); }).length;
+        var firstIncomplete = items.find(function(o) { return !completedSet.has(o.idx); });
+        var startIdx = firstIncomplete ? firstIncomplete.idx : items[0].idx;
+
+        html += '<div class="tests-section-card tests-section-card--' + sectionKey + '"' +
+          ' style="--tests-card-bg:' + theme.bg + ';--tests-card-border:' + theme.border + ';--tests-card-title:' + theme.title + ';--tests-card-accent:' + theme.accent + '">';
+
+        html += '<div class="tests-section-card-body">';
+        html += '<div class="tests-section-card-title-row">';
+        html += '<span class="material-symbols-outlined tests-section-card-icon">' + iconName + '</span>';
+        html += '<h3 class="tests-section-card-title">' + _escape(label) + '</h3>';
+        html += '<span class="tests-random-section-progress">' + completedInSection + '/' + items.length + '</span>';
+        html += '</div>';
+
+        html += '<div class="tests-section-card-parts">';
+        items.forEach(function(o) {
+          var chipClass = 'tests-part-chip';
+          if (completedSet.has(o.idx)) chipClass += ' tests-part-chip--done';
+          var tip = o.item.examId + ' · Part ' + o.item.part;
+          html += '<button type="button" class="' + chipClass + '" onclick="MixedTest.startAtIndex(' + o.idx + ')" title="' + _escape(tip) + '">' + o.item.part + '</button>';
+        });
+        html += '</div>';
+
+        html += '<div class="tests-section-card-footer">';
+        html += '<button type="button" class="tests-section-play-btn" onclick="MixedTest.startAtIndex(' + startIdx + ')">' +
+          _mi('play_arrow') + '<span>Play section</span></button>';
+        html += '</div>';
+        html += '</div>';
+
+        html += '<div class="tests-section-card-art" aria-hidden="true">' +
+          '<img src="' + artSrc + '" alt="" class="tests-section-card-img" onerror="this.classList.add(\'is-hidden\');this.nextElementSibling.classList.add(\'is-visible\')">' +
+          '<span class="material-symbols-outlined tests-section-card-fallback">' + iconName + '</span>' +
+        '</div>';
+
+        html += '</div>';
       });
 
       html += '</div></div>';

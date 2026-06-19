@@ -126,8 +126,9 @@
       _saveCompleted(set);
     },
 
-    /** Generate a brand-new random test and start it immediately. */
-    generateNew: function () {
+    /** Generate a brand-new random test. Options: { refreshPage, skipStart } */
+    generateNew: function (opts) {
+      opts = opts || {};
       var plan = this.generatePlan();
       if (plan.length === 0) {
         alert('No tests available yet. Please check back later.');
@@ -140,7 +141,13 @@
       try { localStorage.setItem(_PLAN_KEY, JSON.stringify(plan)); } catch (e) { /* ignore */ }
       try { localStorage.setItem(_COMPLETED_KEY, JSON.stringify([])); } catch (e) { /* ignore */ }
 
-      this._openCurrent();
+      if (opts.refreshPage && typeof BentoGrid !== 'undefined' && BentoGrid.openTests) {
+        BentoGrid.openTests(AppState.currentLevel || 'C1', 'Random', { skipHistory: true });
+        return;
+      }
+      if (!opts.skipStart) {
+        this._openCurrent();
+      }
     },
 
     /** Keep the existing plan but reset progress and start from the beginning. */
@@ -159,7 +166,10 @@
     /** Start (or resume) the plan at a specific index. */
     startAtIndex: function (index) {
       var plan = AppState.mixedTestPlan || _loadPlan();
-      if (!plan || !plan.length) { this.generateNew(); return; }
+      if (!plan || !plan.length) {
+        this.generateNew({ refreshPage: true });
+        return;
+      }
       AppState.mixedTestPlan = plan;
       // Save state of current exercise before navigating away
       if (typeof Exercise !== 'undefined' && typeof Exercise.savePartState === 'function') {
@@ -171,9 +181,13 @@
       this._openCurrent();
     },
 
-    /** Start a brand-new mixed test session (alias kept for back-compat). */
+    /** Start a brand-new mixed test session (opens the random test page). */
     start: function () {
-      this.generateNew();
+      if (typeof BentoGrid !== 'undefined' && BentoGrid.openTests) {
+        BentoGrid.openTests(AppState.currentLevel || 'C1', 'Random');
+      } else {
+        this.generateNew();
+      }
     },
 
     /** Open the exercise at the current index of the plan. */
@@ -230,21 +244,24 @@
     _showFinishScreen: function () {
       var content = document.getElementById('main-content');
       if (!content) { loadDashboard(); return; }
-      var mode = AppState.currentMode || 'practice';
+      var level = AppState.currentLevel || 'C1';
+      var backAction = typeof BentoGrid !== 'undefined' && BentoGrid.openTests
+        ? 'BentoGrid.openTests(\'' + level + '\', \'Random\')'
+        : 'Dashboard.renderSubpage(\'practice\')';
       content.innerHTML =
         '<div class="mixed-test-finish">' +
           '<div class="mixed-test-finish-icon"><span class="material-symbols-outlined">celebration</span></div>' +
           '<h2>Congratulations!</h2>' +
           '<p>You have completed your Random Test session.<br>All exercises have been saved to your progress.</p>' +
           '<div class="mixed-test-finish-btns">' +
-            '<button class="btn-mixed-again" onclick="MixedTest.generateNew()">' +
+            '<button class="btn-mixed-again" onclick="MixedTest.generateNew({ refreshPage: true })">' +
               '<span class="material-symbols-outlined">shuffle</span> New Random Test' +
             '</button>' +
             '<button class="btn-mixed-again" onclick="MixedTest.restart()">' +
               '<i class="fas fa-redo-alt"></i> Repeat This Test' +
             '</button>' +
-            '<button class="btn-mixed-home" onclick="Dashboard.renderSubpage(\'' + mode + '\')">' +
-              '<i class="fas fa-arrow-left" aria-hidden="true"></i><span class="icon-btn-label">Tests</span>' +
+            '<button class="btn-mixed-home" onclick="' + backAction + '">' +
+              '<i class="fas fa-arrow-left" aria-hidden="true"></i><span class="icon-btn-label">Random Test</span>' +
             '</button>' +
           '</div>' +
         '</div>';
