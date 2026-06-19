@@ -5,21 +5,25 @@
 }
 
 .listening-type3-audio-section {
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  background: #ffffff;
   border-radius: 10px;
   padding: 1rem 1.25rem;
   margin-bottom: 1.25rem;
-  color: #fff;
+  color: var(--text-dark, #1e293b);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .listening-type3-audio-section p {
   margin: 0 0 0.75rem 0;
   font-size: 1rem;
+  color: var(--text-dark, #1e293b);
 }
 
 .listening-type3-audio-section audio {
   width: 100%;
   border-radius: 6px;
+  background: #ffffff;
 }
 
 .listening-type3-panel {
