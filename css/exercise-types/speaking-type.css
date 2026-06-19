@@ -289,15 +289,52 @@
 
 /* Status bar */
 .speaking-vc-status {
-  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1rem;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: #94a3b8;
   border-top: 1px solid rgba(255,255,255,0.08);
-  min-height: 2rem;
+  min-height: 2.25rem;
   background: rgba(20, 20, 35, 0.6);
+  letter-spacing: 0.01em;
 }
-.speaking-vc-status--yours { color: #cbd5e1; font-weight: 600; }
+.speaking-vc-status i { font-size: 0.78rem; opacity: 0.85; }
+.speaking-vc-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #64748b;
+}
+.speaking-vc-status-dot--speaking {
+  background: #22c55e;
+  animation: speaking-pulse-anim 1.2s ease-in-out infinite;
+}
+.speaking-vc-status-dot--yours {
+  background: #38bdf8;
+  animation: speaking-pulse-anim 1.4s ease-in-out infinite;
+}
+.speaking-vc-status-dot--ended {
+  background: #22c55e;
+}
+.speaking-vc-status--yours {
+  color: #e2e8f0;
+  font-weight: 600;
+  background: rgba(56, 189, 248, 0.08);
+}
+.speaking-vc-status--speaking {
+  color: #cbd5e1;
+  font-weight: 500;
+}
+.speaking-vc-status--ended {
+  color: #86efac;
+  font-weight: 600;
+  background: rgba(34, 197, 94, 0.08);
+}
 
 /* Stage countdown timer */
 .speaking-stage-timer {
@@ -703,11 +740,40 @@
 
 /* Ended message */
 .speaking-ended-msg {
-  font-size: 0.9rem; color: var(--text-medium);
-  display: flex; align-items: center; gap: 0.4rem;
-  padding: 0.5rem 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  box-shadow: 0 1px 3px rgba(22, 101, 52, 0.08);
 }
-.speaking-videocall .speaking-ended-msg { color: #e2e8f0; }
+.speaking-ended-msg-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: #22c55e;
+  color: #fff;
+  flex-shrink: 0;
+}
+.speaking-ended-msg-icon i { font-size: 0.72rem; }
+.speaking-ended-msg-text { line-height: 1.3; }
+.speaking-videocall .speaking-ended-msg {
+  color: #bbf7d0;
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.35);
+}
+.speaking-videocall .speaking-ended-msg-icon {
+  background: #22c55e;
+  color: #fff;
+}
 
 /* Skip button */
 .speaking-skip-row { width: 100%; text-align: center; }
@@ -1014,6 +1080,59 @@
 }
 #panel-sf-improvements {
   border-color: #f59e0b;
+}
+
+/* Upgrade List tab — purple accent */
+.speaking-feedback-tab-btn[data-tab="upgradeList"].active {
+  background: #8b5cf6;
+  border-color: #7c3aed;
+  color: var(--white);
+}
+#panel-sf-upgradeList {
+  border-color: #8b5cf6;
+}
+#panel-sf-upgradeList .speaking-upgrade-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.65rem 0.75rem;
+  margin: 0.4rem 0;
+  background: #f5f3ff;
+  border: 1px solid #ddd6fe;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+#panel-sf-upgradeList .speaking-upgrade-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  background: #8b5cf6;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+#panel-sf-upgradeList .speaking-upgrade-body { flex: 1; min-width: 0; }
+#panel-sf-upgradeList .speaking-upgrade-phrase {
+  display: inline;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background: #ede9fe;
+  color: #6d28d9;
+  font-weight: 600;
+  font-style: italic;
+}
+#panel-sf-upgradeList .speaking-feedback-list-item {
+  border-left-color: #8b5cf6;
+  background: #f5f3ff;
+}
+#panel-sf-upgradeList .speaking-feedback-list-icon {
+  color: #7c3aed;
 }
 
 /* ══════════════════════════════════════
@@ -1558,11 +1677,36 @@
   background: var(--ex-duo-canvas, #f7f7f7);
   border-top: 2px solid var(--ex-duo-border, #e5e5e5);
   color: var(--ex-duo-text, #4b4b4b);
-  font-weight: 600;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.84rem;
+  gap: 0.5rem;
 }
 
 .speaking-type-wrapper--b1-duo .speaking-vc-status--yours {
   color: var(--ex-duo-blue-dark, #1899d6);
+  background: var(--ex-duo-blue-light, #ddf4ff);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-vc-status--speaking {
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-vc-status--ended {
+  color: #46a302;
+  background: #d7ffb8;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-vc-status-dot--speaking {
+  background: #58cc02;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-vc-status-dot--yours {
+  background: var(--ex-duo-blue, #1cb0f6);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-vc-status-dot--ended {
+  background: #58cc02;
 }
 
 .speaking-type-wrapper--b1-duo .speaking-stage-timer {
@@ -1671,8 +1815,25 @@
 }
 
 .speaking-type-wrapper--b1-duo .speaking-ended-msg {
-  color: var(--ex-duo-text, #4b4b4b);
-  font-weight: 600;
+  color: #46a302;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  background: #d7ffb8;
+  border: 2px solid #58cc02;
+  box-shadow: 0 2px 0 #46a302;
+  border-radius: 14px;
+  padding: 0.6rem 1.2rem;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-ended-msg-icon {
+  background: #58cc02;
+  box-shadow: 0 2px 0 #46a302;
+}
+
+.speaking-type-wrapper--b1-duo .speaking-videocall .speaking-ended-msg {
+  color: #46a302;
+  background: #d7ffb8;
+  border-color: #58cc02;
 }
 
 .speaking-type-wrapper--b1-duo .speaking-skip-btn {
@@ -1998,6 +2159,44 @@
 
 .speaking-type-wrapper--b1-duo #panel-sf-improvements {
   border-color: var(--ex-duo-orange, #f47417);
+}
+
+.speaking-type-wrapper--b1-duo .speaking-feedback-tab-btn[data-tab="upgradeList"].active {
+  background: #ce82ff;
+  border-color: #a855f7;
+  box-shadow: 0 2px 0 #9333ea;
+}
+
+.speaking-type-wrapper--b1-duo #panel-sf-upgradeList {
+  border-color: #ce82ff;
+}
+
+.speaking-type-wrapper--b1-duo #panel-sf-upgradeList .speaking-upgrade-item {
+  background: #f3e8ff;
+  border: 2px solid #e9d5ff;
+  border-radius: 12px;
+  box-shadow: 0 2px 0 #e9d5ff;
+}
+
+.speaking-type-wrapper--b1-duo #panel-sf-upgradeList .speaking-upgrade-num {
+  background: #ce82ff;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  box-shadow: 0 2px 0 #a855f7;
+}
+
+.speaking-type-wrapper--b1-duo #panel-sf-upgradeList .speaking-upgrade-phrase {
+  background: #ede9fe;
+  color: #7e22ce;
+}
+
+.speaking-type-wrapper--b1-duo #panel-sf-upgradeList .speaking-feedback-list-item {
+  border-left-color: #ce82ff;
+  background: #f3e8ff;
+}
+
+.speaking-type-wrapper--b1-duo #panel-sf-upgradeList .speaking-feedback-list-icon {
+  color: #a855f7;
 }
 
 .speaking-type-wrapper--b1-duo .speaking-ai-thinking {

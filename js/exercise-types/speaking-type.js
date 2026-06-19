@@ -669,7 +669,7 @@
         '</div>';
       }
       if (this._conversationEnded) {
-        return '<div class="speaking-controls"><div class="speaking-ended-msg"><i class="fas fa-check-circle"></i> ' + 'The conversation has ended' + '</div></div>';
+        return '<div class="speaking-controls"><div class="speaking-ended-msg"><span class="speaking-ended-msg-icon"><i class="fas fa-check-circle"></i></span><span class="speaking-ended-msg-text">' + 'The conversation has ended' + '</span></div></div>';
       }
       // (no AI fetching in interview mode — questions are selected locally)
       var current = this._script[this._scriptIndex];
@@ -1617,6 +1617,23 @@
         .replace(/\n/g, '<br>');
     },
 
+    _formatUpgradeListContent: function(text) {
+      var escaped = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      var upgradeNum = 0;
+      return escaped
+        .replace(/\*\*(.+?)\*\*/g, '<span class="speaking-upgrade-phrase">$1</span>')
+        .replace(/"([^"]+)"/g, '<span class="speaking-upgrade-phrase">"$1"</span>')
+        .replace(/^(\d+)\.\s*(.+)/gm, function(_match, _num, content) {
+          upgradeNum++;
+          return '<div class="speaking-upgrade-item"><span class="speaking-upgrade-num">' + upgradeNum + '</span><div class="speaking-upgrade-body">' + content.trim() + '</div></div>';
+        })
+        .replace(/^- (.+)/gm, function(_match, content) {
+          upgradeNum++;
+          return '<div class="speaking-upgrade-item"><span class="speaking-upgrade-num">' + upgradeNum + '</span><div class="speaking-upgrade-body">' + content.trim() + '</div></div>';
+        })
+        .replace(/\n+/g, '');
+    },
+
     _buildFeedbackTabs: function(sections) {
       var self = this;
       var tabs = [
@@ -1641,7 +1658,7 @@
       html += '</div>';
       tabs.forEach(function(tab, i) {
         html += '<div class="speaking-feedback-tab-panel' + (i === 0 ? ' active' : '') + '" id="panel-sf-' + tab.id + '">' +
-          '<div class="speaking-ai-feedback">' + self._formatFeedbackContent(tab.content) + '</div>' +
+          '<div class="speaking-ai-feedback">' + (tab.id === 'upgradeList' ? self._formatUpgradeListContent(tab.content) : self._formatFeedbackContent(tab.content)) + '</div>' +
         '</div>';
       });
       html += '</div>';
@@ -1823,13 +1840,14 @@
       if (status) {
         var current = this._script[this._scriptIndex];
         if (this._conversationEnded) {
-          status.innerHTML = '<i class="fas fa-check-circle"></i> ' + 'Ended';
+          status.innerHTML = '<span class="speaking-vc-status-dot speaking-vc-status-dot--ended"></span><i class="fas fa-check-circle"></i> ' + 'Ended';
+          status.className = 'speaking-vc-status speaking-vc-status--ended';
         } else if (current && current.role === 'candidate') {
-          status.innerHTML = 'Waiting for your response';
+          status.innerHTML = '<span class="speaking-vc-status-dot speaking-vc-status-dot--yours"></span> Waiting for your response';
           status.className = 'speaking-vc-status speaking-vc-status--yours';
         } else if (active) {
-          status.innerHTML = '<i class="fas fa-volume-up"></i> ' + roleName(active) + ' — ' + 'Speaking...';
-          status.className = 'speaking-vc-status';
+          status.innerHTML = '<span class="speaking-vc-status-dot speaking-vc-status-dot--speaking"></span><i class="fas fa-volume-up"></i> ' + roleName(active) + ' — ' + 'Speaking...';
+          status.className = 'speaking-vc-status speaking-vc-status--speaking';
         }
       }
 
