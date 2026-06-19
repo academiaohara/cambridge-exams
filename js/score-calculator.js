@@ -863,50 +863,53 @@
       if (body) this._renderResultsContent(body);
     },
 
-    buildSectionReportCharts: function(examId, sectionKey, chartMode) {
-      return this._buildInlineReportCharts(this.getLiveSkillScoresForSection(examId, sectionKey), chartMode, 'section');
-    },
-
-    buildExamReportCharts: function(examId, chartMode) {
-      return this._buildInlineReportCharts(this.getAllLiveSkillScores(examId), chartMode, 'exam');
-    },
-
-    _buildInlineReportCharts: function(skillScores, chartMode, reportType) {
-      if (!skillScores || !skillScores.length) return '';
-
+    getSectionReportStats: function(examId, sectionKey) {
+      var skillScores = this.getLiveSkillScoresForSection(examId, sectionKey);
+      if (!skillScores.length) return null;
       var examType = AppState.currentLevel || 'C1';
       var totalScale = 0;
       skillScores.forEach(function(s) { totalScale += s.scale; });
       var overall = Math.round(totalScale / skillScores.length);
-      var gradeInfo = getGradeInfo(overall, examType);
-      var grades = conversionData[examType].grades;
-      chartMode = chartMode || 'cambridge';
+      return {
+        overall: overall,
+        gradeInfo: getGradeInfo(overall, examType),
+        examType: examType,
+        skillScores: skillScores
+      };
+    },
 
-      var switchFn = reportType === 'exam'
-        ? 'Exercise.switchSectionReportChart'
-        : 'Exercise.switchSectionReportChart';
+    getExamReportStats: function(examId) {
+      var skillScores = this.getAllLiveSkillScores(examId);
+      if (!skillScores.length) return null;
+      var examType = AppState.currentLevel || 'C1';
+      var totalScale = 0;
+      skillScores.forEach(function(s) { totalScale += s.scale; });
+      var overall = Math.round(totalScale / skillScores.length);
+      return {
+        overall: overall,
+        gradeInfo: getGradeInfo(overall, examType),
+        examType: examType,
+        skillScores: skillScores
+      };
+    },
 
-      var html = '<div class="section-report-charts-inner">';
-      html += '<div class="section-report-charts-hero">';
-      html += '<div class="section-report-grade">' + gradeInfo.result + '</div>';
+    buildReportSummaryHTML: function(stats, chartOnclick, label) {
+      if (!stats) return '';
+      var heading = label || 'Cambridge level for this section';
+      var html = '<div class="section-report-cambridge-card">';
+      html += '<div class="section-report-cambridge-main">';
+      html += '<span class="section-report-cambridge-label">' + heading + '</span>';
+      html += '<div class="section-report-grade">' + stats.gradeInfo.result + '</div>';
       html += '<div class="section-report-meta">';
-      html += '<span class="section-report-pill"><span class="section-report-pill-label">Cambridge</span><strong>' + overall + '</strong></span>';
-      html += '<span class="section-report-pill"><span class="section-report-pill-label">CEFR</span><strong>' + gradeInfo.cefr + '</strong></span>';
+      html += '<span class="section-report-pill"><span class="section-report-pill-label">Scale</span><strong>' + stats.overall + '</strong></span>';
+      html += '<span class="section-report-pill"><span class="section-report-pill-label">CEFR</span><strong>' + stats.gradeInfo.cefr + '</strong></span>';
       html += '</div></div>';
-
-      html += '<div class="results-chart-section section-report-chart-section">';
-      html += '<div class="cb-chart-toggle">';
-      html += '<button type="button" class="cb-toggle-btn' + (chartMode === 'cambridge' ? ' cb-toggle-active' : '') + '" onclick="' + switchFn + '(\'cambridge\')">Cambridge</button>';
-      html += '<button type="button" class="cb-toggle-btn' + (chartMode === 'raw' ? ' cb-toggle-active' : '') + '" onclick="' + switchFn + '(\'raw\')">Raw</button>';
-      html += '</div>';
-
-      if (chartMode === 'cambridge') {
-        html += this._buildCambridgeChart(skillScores, grades, overall, gradeInfo);
-      } else {
-        html += this._buildRawChart(skillScores);
+      if (chartOnclick) {
+        html += '<button type="button" class="section-report-charts-btn" onclick="' + chartOnclick + '">';
+        html += '<i class="fas fa-chart-bar"></i> View charts';
+        html += '</button>';
       }
-      html += '</div></div>';
-
+      html += '</div>';
       return html;
     },
 
