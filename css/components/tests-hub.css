@@ -388,10 +388,18 @@
 }
 
 .tests-path-map .bento-card-mixed,
-.tests-path-map .mixed-test-card {
+.tests-path-map .mixed-test-card,
+.tests-path-map .random-test-item {
   width: 100%;
   max-width: 100%;
-  margin-bottom: 8px;
+}
+
+.tests-path-map .random-test-item {
+  margin-bottom: 4px;
+}
+
+.tests-path-map .random-test-item .exam-header {
+  border-radius: 20px 20px 0 0;
 }
 
 .tests-path-cell--locked {

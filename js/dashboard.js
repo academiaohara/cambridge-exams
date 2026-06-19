@@ -258,7 +258,7 @@
           paginationHtml += '</div>';
         }
 
-        mainContentHtml = Dashboard._renderRandomTestCard(mode) + '<div class="exams-container">' + examListHtml + '</div>' + paginationHtml;
+        mainContentHtml = '<div class="exams-container">' + Dashboard._renderRandomTestCard(mode) + examListHtml + '</div>' + paginationHtml;
       } else {
         // ── By Section view ──────────────────────────────────────────────
         if (subpageSectionKey) {
@@ -551,13 +551,15 @@
         ? AccessControl.effectiveHasExamsPack()
         : !!AppState.hasExamsPack;
       if (!hasExams) {
-        return '<div class="exam-item guest-exam-locked" onclick="Dashboard.showExamsUpgradeGate()">' +
+        return '<div class="exam-item random-test-item guest-exam-locked" onclick="Dashboard.showExamsUpgradeGate()">' +
           '<div class="exam-header">' +
             '<div class="exam-header-left">' +
-              '<span class="exam-number exam-number-random"><span class="material-symbols-outlined" style="font-size:1.1rem;line-height:1">shuffle</span></span>' +
+              '<span class="exam-number exam-number-random">' +
+                '<span class="material-symbols-outlined random-test-icon">shuffle</span>' +
+              '</span>' +
               '<div>' +
-                '<div class="exam-title">Random Test</div>' +
-                '<div class="exam-subtitle"><i class="fas fa-lock" style="margin-right:4px;font-size:0.75rem"></i>Pack Exams required</div>' +
+                '<div class="exam-title">Random Test <span class="random-test-pill">Mix</span></div>' +
+                '<div class="exam-subtitle"><i class="fas fa-lock random-test-lock-icon"></i>Pack Exams required</div>' +
               '</div>' +
             '</div>' +
             '<div class="exam-progress-badge"><i class="fas fa-lock"></i> Upgrade</div>' +
@@ -567,23 +569,32 @@
       var plan         = window.MixedTest ? MixedTest.getStoredPlan() : null;
       var completedSet = window.MixedTest ? MixedTest.getCompletedSet() : new Set();
       var hasPlan      = Array.isArray(plan) && plan.length > 0;
+      var completedCount = hasPlan
+        ? plan.filter(function(_, idx) { return completedSet.has(idx); }).length
+        : 0;
+      var subtitle = hasPlan
+        ? 'Mixed exercises from available tests'
+        : 'Generate a custom mix of exercises';
 
       var html =
         '<div class="exam-item random-test-item">' +
           '<div class="exam-header" onclick="Dashboard.toggleExam(this)">' +
             '<div class="exam-header-left">' +
               '<span class="exam-number exam-number-random">' +
-                '<span class="material-symbols-outlined" style="font-size:1.1rem;line-height:1">shuffle</span>' +
+                '<span class="material-symbols-outlined random-test-icon">shuffle</span>' +
               '</span>' +
               '<div>' +
-                '<div class="exam-title">Random Test</div>' +
-                '<div class="exam-subtitle">' + (hasPlan ? 'Exercises from available tests' : 'No test generated yet') + '</div>' +
+                '<div class="exam-title">Random Test <span class="random-test-pill">Mix</span></div>' +
+                '<div class="exam-subtitle">' + subtitle + '</div>' +
               '</div>' +
             '</div>' +
+            (hasPlan
+              ? '<div class="exam-progress-badge random-test-progress-badge">' + completedCount + '/' + plan.length + '</div>'
+              : '') +
             '<button class="exam-play-btn random-test-btn-generate" ' +
               'onclick="event.stopPropagation(); MixedTest.generateNew()" ' +
               'title="Generate a new random test">' +
-              '<span class="material-symbols-outlined" style="font-size:1.1rem">shuffle</span>' +
+              '<span class="material-symbols-outlined random-test-icon">shuffle</span>' +
             '</button>' +
             (hasPlan
               ? '<button class="exam-play-btn random-test-btn-repeat" ' +
@@ -598,7 +609,10 @@
             '<div class="exam-sections">' +
               (hasPlan
                 ? this._renderRandomTestSections(plan, completedSet)
-                : '<div class="random-test-empty">Click <span class="material-symbols-outlined" style="font-size:0.9rem;vertical-align:middle">shuffle</span> to generate a Random Test</div>') +
+                : '<div class="random-test-empty">' +
+                    '<span class="material-symbols-outlined random-test-empty-icon">shuffle</span>' +
+                    '<p>Tap <strong>shuffle</strong> above to build a random mix from your available tests.</p>' +
+                  '</div>') +
             '</div>' +
           '</div>' +
         '</div>';
