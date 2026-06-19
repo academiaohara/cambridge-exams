@@ -83,25 +83,6 @@
   box-shadow: 0 2px 8px rgba(14, 165, 233, 0.1);
 }
 
-.listening-type1-extract-number {
-  background: #0ea5e9;
-  color: white;
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
-  min-height: 36px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  line-height: 1;
-  padding: 0;
-}
-
 .listening-type1-options {
   display: grid;
   grid-template-columns: 1fr;
@@ -362,14 +343,6 @@
     padding: 16px;
   }
 
-  .listening-type1-extract-number {
-    width: 34px;
-    height: 34px;
-    min-width: 34px;
-    min-height: 34px;
-    font-size: 0.95rem;
-  }
-
   .listening-type1-question-number {
     font-size: 0.95rem;
   }
@@ -377,10 +350,6 @@
   .listening-type1-context {
     font-size: 1.05rem;
     line-height: 1.45;
-  }
-
-  .listening-type1-extract-number {
-    display: none !important;
   }
 }
 
@@ -580,15 +549,6 @@
   box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
 }
 
-.dashboard-layout--exercise .b1-listening .listening-type1-extract-number {
-  background: var(--ex-duo-blue, #1cb0f6);
-  color: #fff;
-  font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-weight: 800;
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
-  border: none;
-}
-
 .dashboard-layout--exercise .b1-listening .listening-type1-context {
   font-family: 'Nunito', sans-serif;
   font-size: 1.05rem;
@@ -663,13 +623,13 @@
 /* Question text */
 .dashboard-layout--exercise .b1-listening .listening-type1-question-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   margin-bottom: 12px;
 }
 
 .dashboard-layout--exercise .b1-listening .listening-type1-question-header .listening-type1-question-text {
-  margin-bottom: 0;
+  margin: 0;
   flex: 1;
   min-width: 0;
 }
@@ -683,14 +643,17 @@
   width: 36px;
   height: 36px;
   min-width: 36px;
+  min-height: 36px;
   border-radius: 50%;
   text-align: center;
   line-height: 1;
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: 1.15rem;
   flex-shrink: 0;
   box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  box-sizing: border-box;
+  padding: 0;
 }
 
 .dashboard-layout--exercise .b1-listening .listening-type1-question-text {
