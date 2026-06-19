@@ -756,7 +756,7 @@
   padding: 16px 18px 18px;
   border-radius: 16px;
   border: 2px solid var(--ex-duo-blue, #1cb0f6);
-  background: linear-gradient(180deg, #f0f9ff 0%, var(--ex-duo-blue-light, #ddf4ff) 100%);
+  background: #fff;
   box-shadow: 0 4px 0 color-mix(in srgb, var(--ex-duo-blue-dark, #1899d6) 55%, #000);
   font-size: 1.05rem;
   font-weight: 600;
@@ -807,13 +807,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 1.35rem;
+  flex-shrink: 0;
+  width: 1.35rem;
   height: 1.35rem;
   margin-right: 0.25rem;
-  padding: 0 0.35rem;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-size: 0.72rem;
   font-weight: 800;
+  line-height: 1;
   color: #fff;
   background: var(--ex-duo-orange, #f47417);
   border-radius: 50%;
@@ -825,7 +828,7 @@
 .b1-writing .writing-b1-notes-hint {
   margin-top: 1rem;
   padding: 14px 16px 16px;
-  background: var(--ex-duo-blue-light, #ddf4ff);
+  background: #fff;
   border: 2px solid var(--ex-duo-info-border, #1cb0f6);
   border-radius: 16px;
   font-size: 0.9rem;
@@ -855,14 +858,19 @@
 }
 
 .b1-writing .writing-b1-note-pill {
-  min-width: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.5rem;
   height: 1.5rem;
   padding: 0;
   margin-right: 0.45rem;
+  box-sizing: border-box;
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-size: 0.75rem;
   font-weight: 800;
-  line-height: 1.5rem;
+  line-height: 1;
   text-align: center;
   color: #fff;
   background: #58cc02;
