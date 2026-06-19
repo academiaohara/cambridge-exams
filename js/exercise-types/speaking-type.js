@@ -145,12 +145,22 @@
         assigns[role] = '/Assets/images/Profiles/Examiner/' + pickEx;
         usedExaminers.push(pickEx);
       } else {
-        // Partner uses images from Profiles/
-        var available = ANIMAL_IMAGES.filter(function(img) { return usedProfiles.indexOf(img) === -1; });
-        if (available.length === 0) available = ANIMAL_IMAGES;
-        var pick = available[Math.floor(Math.random() * available.length)];
-        assigns[role] = '/Assets/images/Profiles/' + pick;
-        usedProfiles.push(pick);
+        // Partner: use saved character if available, otherwise random from Profiles/
+        var savedAvatar = null;
+        try { savedAvatar = localStorage.getItem('cambridge_animal_avatar'); } catch (e) { /* ignore */ }
+        if (!savedAvatar && profile && profile.animal_avatar) {
+          savedAvatar = profile.animal_avatar;
+        }
+        if (savedAvatar && ANIMAL_IMAGES.indexOf(savedAvatar) !== -1) {
+          assigns[role] = '/Assets/images/Profiles/' + savedAvatar;
+          usedProfiles.push(savedAvatar);
+        } else {
+          var available = ANIMAL_IMAGES.filter(function(img) { return usedProfiles.indexOf(img) === -1; });
+          if (available.length === 0) available = ANIMAL_IMAGES;
+          var pick = available[Math.floor(Math.random() * available.length)];
+          assigns[role] = '/Assets/images/Profiles/' + pick;
+          usedProfiles.push(pick);
+        }
       }
     });
 

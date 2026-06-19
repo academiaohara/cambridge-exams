@@ -2621,10 +2621,22 @@ body.auth-screen-open #app {
   min-height: 100vh;
 }
 
+@media (min-width: 901px) {
+  .dashboard-layout--profile:not(.dashboard-layout-right-closed) {
+    padding-right: calc(var(--dashboard-right-sidebar-width) + 72px);
+  }
+
+  .dashboard-layout--profile:not(.dashboard-layout-right-closed) .dashboard-center {
+    margin-left: 32px;
+    width: calc(100% - 32px);
+    max-width: calc(100% - 32px);
+  }
+}
+
 .profile-duo-page {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 20px 16px 40px;
+  max-width: min(1040px, 100%);
+  margin: 0;
+  padding: 24px 24px 40px;
   box-sizing: border-box;
   font-family: 'Nunito', sans-serif;
   color: #3c3c3c;
@@ -2697,9 +2709,9 @@ body.auth-screen-open #app {
 }
 
 .profile-duo-badge--member {
-  background: #e8f5e9;
-  color: #2e7d32;
-  border-color: #a5d6a7;
+  background: #fff4eb;
+  color: #c45a0a;
+  border-color: #f9c89a;
 }
 
 .profile-duo-badge--admin {
@@ -2723,7 +2735,7 @@ body.auth-screen-open #app {
 }
 
 .profile-duo-signin-btn {
-  color: #1cb0f6;
+  color: var(--brand-orange, #f47417);
 }
 
 .profile-duo-signout-btn:hover,
@@ -2762,7 +2774,7 @@ body.auth-screen-open #app {
   font-size: 1.6rem;
   font-weight: 800;
   color: #fff;
-  background: #1cb0f6;
+  background: var(--brand-orange, #f47417);
   width: 100%;
   height: 100%;
   display: flex;
@@ -2788,8 +2800,8 @@ body.auth-screen-open #app {
   border: 2px solid rgba(0, 0, 0, 0.08);
 }
 
-.profile-duo-level-pill--b1 { background: #58cc02; }
-.profile-duo-level-pill--b2 { background: #1cb0f6; }
+.profile-duo-level-pill--b1 { background: var(--brand-orange, #f47417); }
+.profile-duo-level-pill--b2 { background: #2D2E5F; }
 .profile-duo-level-pill--c1 { background: #ce82ff; }
 
 .profile-duo-promo {
@@ -2798,8 +2810,8 @@ body.auth-screen-open #app {
   gap: 16px;
   padding: 18px 20px;
   margin-bottom: 28px;
-  background: #ddf4ff;
-  border: 2px solid #84d8ff;
+  background: #fff4eb;
+  border: 2px solid #f9c89a;
   border-radius: 16px;
   position: relative;
   overflow: hidden;
@@ -2808,6 +2820,7 @@ body.auth-screen-open #app {
 .profile-duo-promo-copy {
   flex: 1;
   min-width: 0;
+  padding-right: 88px;
 }
 
 .profile-duo-promo-copy strong {
@@ -2831,33 +2844,33 @@ body.auth-screen-open #app {
   padding: 12px 18px;
   border: none;
   border-radius: 12px;
-  background: #1cb0f6;
+  background: var(--brand-orange, #f47417);
   color: #fff;
   font-family: inherit;
   font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   cursor: pointer;
-  box-shadow: 0 4px 0 #1899d6;
+  box-shadow: 0 4px 0 var(--brand-orange-dark, #d46110);
   transition: transform 0.1s, box-shadow 0.1s;
 }
 
 .profile-duo-promo-btn:hover {
-  background: #2bbfff;
+  background: #ff8533;
 }
 
 .profile-duo-promo-btn:active {
   transform: translateY(2px);
-  box-shadow: 0 2px 0 #1899d6;
+  box-shadow: 0 2px 0 var(--brand-orange-dark, #d46110);
 }
 
 .profile-duo-promo-illust {
   position: absolute;
-  right: -8px;
-  bottom: -12px;
-  width: 80px;
+  right: 12px;
+  bottom: -4px;
+  width: 96px;
   height: auto;
-  opacity: 0.9;
+  opacity: 1;
   pointer-events: none;
 }
 
@@ -2905,10 +2918,10 @@ body.auth-screen-open #app {
   font-size: 1.6rem;
 }
 
-.profile-duo-stat-card--streak .profile-duo-stat-icon { color: #ff9600; }
+.profile-duo-stat-card--streak .profile-duo-stat-icon { color: var(--brand-orange, #f47417); }
 .profile-duo-stat-card--level .profile-duo-stat-icon { color: #ffc800; }
-.profile-duo-stat-card--done .profile-duo-stat-icon { color: #1cb0f6; }
-.profile-duo-stat-card--score .profile-duo-stat-icon { color: #58cc02; }
+.profile-duo-stat-card--done .profile-duo-stat-icon { color: #2D2E5F; }
+.profile-duo-stat-card--score .profile-duo-stat-icon { color: var(--brand-orange, #f47417); }
 
 .profile-duo-stat-value {
   font-size: 1.5rem;
@@ -2929,9 +2942,15 @@ body.auth-screen-open #app {
 }
 
 .profile-duo-achievements-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .profile-duo-achievements-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .profile-duo-achievement {
@@ -2945,8 +2964,8 @@ body.auth-screen-open #app {
 }
 
 .profile-duo-achievement--done {
-  border-color: #bbf7d0;
-  background: #f0fdf4;
+  border-color: #f9c89a;
+  background: #fff8f2;
 }
 
 .profile-duo-achievement-icon {
@@ -3000,13 +3019,13 @@ body.auth-screen-open #app {
 
 .profile-duo-progress-fill {
   height: 100%;
-  background: #ffc800;
+  background: var(--brand-orange, #f47417);
   border-radius: 999px;
   transition: width 0.3s ease;
 }
 
 .profile-duo-achievement--done .profile-duo-progress-fill {
-  background: #58cc02;
+  background: var(--brand-orange-dark, #d46110);
 }
 
 .profile-duo-progress-label {
@@ -3146,15 +3165,30 @@ body.auth-screen-open #app {
   gap: 16px;
 }
 
+.profile-duo-side-hero-wrap {
+  display: grid;
+  position: relative;
+  overflow: visible;
+}
+
 .profile-duo-side-card--hero {
-  text-align: center;
-  padding-top: 20px;
+  grid-area: 1 / 1;
+  text-align: left;
+  padding: 20px 18px 18px 72px;
+  position: relative;
+  z-index: 1;
 }
 
 .profile-duo-side-illust {
-  width: 72px;
+  grid-area: 1 / 1;
+  align-self: end;
+  justify-self: start;
+  width: 88px;
   height: auto;
-  margin: 0 auto 12px;
+  margin-left: -12px;
+  margin-bottom: -4px;
+  z-index: 2;
+  pointer-events: none;
   display: block;
 }
 
@@ -3195,7 +3229,7 @@ body.auth-screen-open #app {
 
 .profile-duo-side-link .material-symbols-outlined:first-child {
   font-size: 1.2rem;
-  color: #1cb0f6;
+  color: var(--brand-orange, #f47417);
 }
 
 .profile-duo-side-chevron {
@@ -3219,6 +3253,10 @@ body.auth-screen-open #app {
 }
 
 @media (max-width: 600px) {
+  .profile-duo-page {
+    padding: 20px 16px 40px;
+  }
+
   .profile-duo-header {
     flex-direction: column-reverse;
     align-items: flex-start;
