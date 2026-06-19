@@ -661,3 +661,376 @@
   }
 }
 
+/* ── B1 Preliminary Writing — Duolingo style (matches B1 Reading) ─────── */
+
+.b1-writing {
+  font-family: 'Nunito', sans-serif;
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.b1-writing .writing-type1-prompt,
+.b1-writing .writing-type2-select-section {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 16px;
+  padding: 18px 20px 20px;
+  box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.b1-writing .writing-type1-prompt h3,
+.b1-writing .writing-type2-select-section h3 {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ex-duo-text, #4b4b4b);
+  margin: 0 0 0.85rem 0;
+  letter-spacing: -0.01em;
+}
+
+.b1-writing .writing-type1-prompt h3 i,
+.b1-writing .writing-type2-select-section h3 i {
+  color: var(--ex-duo-blue, #1cb0f6);
+}
+
+.b1-writing .writing-type1-question {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--ex-duo-text, #4b4b4b);
+  margin: 0 0 0.85rem 0;
+}
+
+.b1-writing .writing-type1-word-limit,
+.b1-writing .writing-type2-range-hint {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ex-duo-text-muted, #afafaf);
+}
+
+.b1-writing .writing-type2-range-hint strong {
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+/* Email meta strip */
+.b1-writing .writing-b1-email-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0.65rem 0 0.85rem 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font-size: 0.9rem;
+}
+
+.b1-writing .writing-b1-email-meta > div {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 6px 12px;
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border: 2px solid var(--ex-duo-info-border, #1cb0f6);
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--ex-duo-text, #4b4b4b);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--ex-duo-blue-dark, #1899d6) 30%, #e5e5e5);
+}
+
+.b1-writing .writing-b1-email-meta strong {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+/* Incoming email card — mirrors B1 Reading email notice */
+.b1-writing .writing-b1-initial-mail {
+  position: relative;
+  overflow: hidden;
+  margin: 0.75rem 0 0.25rem 0;
+  padding: 16px 18px 18px;
+  border-radius: 16px;
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  background: linear-gradient(180deg, #f0f9ff 0%, var(--ex-duo-blue-light, #ddf4ff) 100%);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--ex-duo-blue-dark, #1899d6) 55%, #000);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--ex-duo-text, #3c3c3c);
+}
+
+.b1-writing .writing-b1-initial-mail::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--ex-duo-blue, #1cb0f6);
+  border-radius: 16px 0 0 16px;
+  pointer-events: none;
+}
+
+.b1-writing .writing-b1-source-label {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--ex-duo-blue-dark, #1899d6);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.b1-writing .writing-b1-email-para {
+  margin: 0.5rem 0;
+}
+
+.b1-writing .writing-b1-reply-slot {
+  background: var(--ex-duo-orange-light, #fff0e6);
+  border-radius: 8px;
+  padding: 0 4px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.b1-writing .writing-b1-slot-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  margin-right: 0.25rem;
+  padding: 0 0.35rem;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--ex-duo-orange, #f47417);
+  border-radius: 50%;
+  box-shadow: 0 2px 0 var(--ex-duo-orange-dark, #d45f0a);
+  vertical-align: middle;
+}
+
+/* Handwritten notes checklist */
+.b1-writing .writing-b1-notes-hint {
+  margin-top: 1rem;
+  padding: 14px 16px 16px;
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border: 2px solid var(--ex-duo-info-border, #1cb0f6);
+  border-radius: 16px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--ex-duo-text, #4b4b4b);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-blue-dark, #1899d6) 35%, #e5e5e5);
+}
+
+.b1-writing .writing-b1-notes-hint strong {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+.b1-writing .writing-b1-notes-checklist {
+  gap: 8px;
+}
+
+.b1-writing .writing-b1-notes-checklist li {
+  padding: 10px 12px;
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-left: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+  font-weight: 600;
+}
+
+.b1-writing .writing-b1-note-pill {
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  margin-right: 0.45rem;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  line-height: 1.5rem;
+  text-align: center;
+  color: #fff;
+  background: #58cc02;
+  border-radius: 50%;
+  box-shadow: 0 2px 0 #58a700;
+  vertical-align: middle;
+}
+
+/* Toolbar buttons */
+.b1-writing .btn-evaluate-ai {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--ex-duo-blue, #1cb0f6);
+  border: 2px solid var(--ex-duo-blue-dark, #1899d6);
+  border-radius: 14px;
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
+}
+
+.b1-writing .btn-evaluate-ai:hover {
+  opacity: 1;
+  background: var(--ex-duo-blue-hover, #2eb8f7);
+}
+
+.b1-writing .btn-evaluate-ai:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.b1-writing .btn-copy-clipboard {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ex-duo-text-muted, #afafaf);
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+  font-weight: 700;
+}
+
+.b1-writing .btn-copy-clipboard:hover {
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  color: var(--ex-duo-blue-dark, #1899d6);
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.b1-writing .writing-type1-word-count,
+.b1-writing .writing-type2-word-count {
+  font-weight: 700;
+  color: var(--ex-duo-text-muted, #afafaf);
+}
+
+.b1-writing .wv-counter-number.wv-green { color: #58cc02; }
+.b1-writing .wv-counter-number.wv-orange { color: var(--ex-duo-orange, #f47417); }
+.b1-writing .wv-counter-number.wv-red { color: #ff4b4b; }
+
+/* AI results & feedback */
+.b1-writing .writing-type1-ai-results,
+.b1-writing .writing-type2-ai-results {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 16px;
+  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.b1-writing .writing-type1-ai-results h4,
+.b1-writing .writing-type2-ai-results h4 {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.b1-writing .writing-feedback-tab-btn {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 700;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.b1-writing .writing-feedback-tab-btn:hover {
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  color: var(--ex-duo-blue-dark, #1899d6);
+  background: var(--ex-duo-blue-light, #ddf4ff);
+}
+
+.b1-writing .writing-feedback-tab-btn.active {
+  background: var(--ex-duo-blue, #1cb0f6);
+  border-color: var(--ex-duo-blue-dark, #1899d6);
+  color: #fff;
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.b1-writing .writing-feedback-tab-panel {
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 14px;
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.b1-writing .writing-feedback-heading,
+.b1-writing .writing-feedback-criterion-title {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  color: var(--ex-duo-blue-dark, #1899d6);
+  border-bottom-color: var(--ex-duo-border, #e5e5e5);
+}
+
+.b1-writing .writing-score-line {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  border-left: 3px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 12px;
+}
+
+.b1-writing .writing-feedback-list-item {
+  border-left: 3px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 12px;
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.b1-writing .writing-feedback-list-icon {
+  color: var(--ex-duo-blue, #1cb0f6);
+}
+
+.b1-writing .writing-model-answer {
+  background: var(--ex-duo-orange-light, #fff0e6);
+  border: 2px solid var(--ex-duo-orange, #f47417);
+  border-left: 4px solid var(--ex-duo-orange, #f47417);
+  border-radius: 14px;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-orange-dark, #d45f0a) 30%, #e5e5e5);
+}
+
+.b1-writing .writing-b1-ideal-note-ref__seg {
+  background: var(--ex-duo-orange-light, #fff0e6);
+  border: 2px solid var(--ex-duo-orange, #f47417);
+  border-radius: 8px;
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--ex-duo-orange-dark, #d45f0a) 25%, #e5e5e5);
+}
+
+.b1-writing .writing-b1-ideal-note-ref:hover .writing-b1-ideal-note-ref__seg,
+.b1-writing .writing-b1-ideal-note-ref:focus-visible .writing-b1-ideal-note-ref__seg {
+  background: #fff8f3;
+  border-color: var(--ex-duo-orange-dark, #d45f0a);
+}
+
+.b1-writing .writing-b1-ideal-note-ref__tip {
+  background: #fff;
+  border: 2px solid var(--ex-duo-orange, #f47417);
+  border-radius: 14px;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--ex-duo-orange-dark, #d45f0a) 30%, #e5e5e5);
+}
+
+.b1-writing .writing-b1-ideal-note-ref__tip::before {
+  background: #fff;
+  border-color: var(--ex-duo-orange, #f47417);
+}
+
+.b1-writing .writing-b1-ideal-note-ref__tip-kicker {
+  color: var(--ex-duo-orange-dark, #d45f0a);
+}
+
+.b1-writing .writing-correction-del {
+  color: #ff4b4b;
+  background: #ffdfe0;
+}
+
+.b1-writing .writing-correction-ins {
+  color: #58a700;
+  background: #d7ffb8;
+}
+
