@@ -462,7 +462,7 @@
 }
 
 .b1-writing .writing-type2-task-option:hover {
-  background: var(--ex-duo-blue-light, #ddf4ff);
+  background: #fff;
   border-color: var(--ex-duo-blue, #1cb0f6);
   box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
 }
@@ -474,7 +474,7 @@
 
 .b1-writing .writing-type2-task-option.selected {
   border-color: var(--ex-duo-blue, #1cb0f6);
-  background: var(--ex-duo-blue-light, #ddf4ff);
+  background: #fff;
   box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
