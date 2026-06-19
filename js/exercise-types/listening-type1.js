@@ -342,7 +342,6 @@
             var extractCtx = String(extract.context || '').trim();
             if (!isC1Listening3) {
               html += '<div class="listening-type1-extract-header">';
-              html += '<span class="listening-type1-extract-number">' + extract.id + '</span>';
               html += '<span class="listening-type1-context">' + nlToBrEscaped(String(extract.context || '')) + '</span>';
               html += '</div>';
             } else if (extractCtx) {
