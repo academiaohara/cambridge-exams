@@ -455,13 +455,15 @@
 /* ── B1 Listening — Duolingo style (matches B1 Reading) ─────────────────── */
 
 .dashboard-layout--exercise .b1-listening .listening-type1-questions-wrapper,
-.dashboard-layout--exercise .b1-listening .listening-type2-questions-wrapper {
+.dashboard-layout--exercise .b1-listening .listening-type2-questions-wrapper,
+.dashboard-layout--exercise .b1-listening .listening-type4-container {
   padding: 0;
 }
 
 /* Audio player section */
 .dashboard-layout--exercise .b1-listening .listening-type1-audio-section,
-.dashboard-layout--exercise .b1-listening .listening-type2-audio-section {
+.dashboard-layout--exercise .b1-listening .listening-type2-audio-section,
+.dashboard-layout--exercise .b1-listening .listening-type4-audio-section {
   background: #ffffff;
   color: var(--ex-duo-text, #4b4b4b);
   padding: 18px 20px;
@@ -473,6 +475,7 @@
 
 .dashboard-layout--exercise .b1-listening .listening-type1-audio-section p,
 .dashboard-layout--exercise .b1-listening .listening-type2-audio-section p,
+.dashboard-layout--exercise .b1-listening .listening-type4-audio-section p,
 .dashboard-layout--exercise .b1-listening .listening-type1-audio-lead {
   margin: 0 0 12px 0;
   font-family: 'Nunito', sans-serif;
@@ -484,7 +487,8 @@
 }
 
 .dashboard-layout--exercise .b1-listening .listening-type1-audio-section audio,
-.dashboard-layout--exercise .b1-listening .listening-type2-audio-section audio {
+.dashboard-layout--exercise .b1-listening .listening-type2-audio-section audio,
+.dashboard-layout--exercise .b1-listening .listening-type4-audio-section audio {
   width: 100%;
   border-radius: 12px;
   background: #ffffff;
