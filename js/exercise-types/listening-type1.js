@@ -27,6 +27,27 @@
     );
   }
 
+  function renderQuestionTextBlock(q, showC1Number, showB1Number) {
+    var text = q.question || '';
+    if (showB1Number) {
+      return (
+        '<div class="listening-type1-question-header">' +
+        '<div class="listening-type1-question-number">' + String(q.number) + '</div>' +
+        '<p class="listening-type1-question-text">' + text + '</p>' +
+        '</div>'
+      );
+    }
+    if (showC1Number) {
+      return (
+        '<p class="listening-type1-question-text">' +
+        '<span class="listening-type1-question-number">' + String(q.number) + '.</span> ' +
+        text +
+        '</p>'
+      );
+    }
+    return '<p class="listening-type1-question-text">' + text + '</p>';
+  }
+
   window.ListeningType1 = {
     audioElements: {},
     currentPlaying: null,
@@ -279,6 +300,10 @@
           AppState.currentLevel === 'C1' &&
           AppState.currentSection === 'listening' &&
           (AppState.currentPart === 1 || AppState.currentPart === 3);
+        var showB1ListeningQuestionNumber =
+          typeof AppState !== 'undefined' &&
+          AppState.currentLevel === 'B1' &&
+          AppState.currentSection === 'listening';
         var ctxBlock = '';
         if (exercise.content && exercise.content.context) {
           var ctxTrim = String(exercise.content.context).trim();
@@ -340,14 +365,7 @@
             extract.questions.forEach(function(q) {
               var userAnswer = exercise.answers?.[q.number] || '';
               html += '<div class="listening-type1-item" data-listening-q="' + String(q.number) + '">';
-              if (showC1ListeningQuestionNumber) {
-                html += '<p class="listening-type1-question-text">';
-                html += '<span class="listening-type1-question-number">' + String(q.number) + '.</span> ';
-                html += q.question;
-                html += '</p>';
-              } else {
-                html += '<p class="listening-type1-question-text">' + q.question + '</p>';
-              }
+              html += renderQuestionTextBlock(q, showC1ListeningQuestionNumber, showB1ListeningQuestionNumber);
               html += '<div class="' + ListeningType1.optionsRowClass(q) + '">';
               html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
               html += '</div>';
@@ -377,14 +395,7 @@
               html +=
                 '<p class="listening-type1-item-context" lang="en">' + nlToBrEscaped(itemCtx) + '</p>';
             }
-            if (showC1ListeningQuestionNumber) {
-              html += '<p class="listening-type1-question-text">';
-              html += '<span class="listening-type1-question-number">' + String(q.number) + '.</span> ';
-              html += (q.question || '');
-              html += '</p>';
-            } else {
-              html += '<p class="listening-type1-question-text">' + (q.question || '') + '</p>';
-            }
+            html += renderQuestionTextBlock(q, showC1ListeningQuestionNumber, showB1ListeningQuestionNumber);
             html += '<div class="' + ListeningType1.optionsRowClass(q) + '">';
             html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
             html += '</div>';
