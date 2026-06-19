@@ -341,6 +341,155 @@
       }
     },
 
+    _escapeHtml: function (str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    },
+
+    _formatJoinDate: function (createdAt) {
+      if (!createdAt) return '';
+      try {
+        var d = new Date(createdAt);
+        var months = ['January', 'February', 'March', 'April', 'May', 'June',
+          'July', 'August', 'September', 'October', 'November', 'December'];
+        return 'Joined in ' + months[d.getMonth()] + ' ' + d.getFullYear();
+      } catch (e) {
+        return '';
+      }
+    },
+
+    _getProfileStats: function () {
+      var level = AppState.currentLevel || 'C1';
+      var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
+      var streakCount = streak ? (streak.currentStreak || 0) : 0;
+      var longestStreak = streak ? (streak.longestStreak || 0) : 0;
+      var totalDaysActive = streak ? (streak.totalDaysActive || 0) : 0;
+      var exams = window.EXAMS_DATA[level] || [];
+      var completedParts = 0;
+      var inProgressParts = 0;
+      var totalParts = 0;
+      var availableCount = 0;
+      var scaleTotal = 0;
+      var scaleCount = 0;
+
+      exams.forEach(function (exam) {
+        if (exam.status !== 'available') return;
+        availableCount++;
+        Object.keys(exam.sections || {}).forEach(function (sectionKey) {
+          var section = exam.sections[sectionKey] || {};
+          completedParts += (section.completed || []).length;
+          inProgressParts += (section.inProgress || []).length;
+          totalParts += section.total || 0;
+        });
+        if (typeof ScoreCalculator !== 'undefined') {
+          try {
+            ScoreCalculator.getAllSkillScores(exam.id).forEach(function (score) {
+              if (score.raw > 0) {
+                scaleTotal += score.scale;
+                scaleCount++;
+              }
+            });
+          } catch (e) { /* ignore */ }
+        }
+      });
+
+      return {
+        level: level,
+        streakCount: streakCount,
+        longestStreak: longestStreak,
+        totalDaysActive: totalDaysActive,
+        completedParts: completedParts,
+        inProgressParts: inProgressParts,
+        totalParts: totalParts,
+        availableCount: availableCount,
+        avgScale: scaleCount ? Math.round(scaleTotal / scaleCount) : null
+      };
+    },
+
+    _nextStreakMilestone: function (current) {
+      var milestones = [7, 30, 100, 365];
+      for (var i = 0; i < milestones.length; i++) {
+        if (current < milestones[i]) return milestones[i];
+      }
+      return Math.max(current + 1, 365);
+    },
+
+    _buildProfileStatCard: function (icon, colorClass, value, label) {
+      return '<div class="profile-duo-stat-card profile-duo-stat-card--' + colorClass + '">' +
+        '<div class="profile-duo-stat-icon" aria-hidden="true">' +
+          '<span class="material-symbols-outlined">' + icon + '</span>' +
+        '</div>' +
+        '<div class="profile-duo-stat-value">' + this._escapeHtml(String(value)) + '</div>' +
+        '<div class="profile-duo-stat-label">' + this._escapeHtml(label) + '</div>' +
+      '</div>';
+    },
+
+    _buildProfileAchievementCard: function (opts) {
+      var pct = opts.total > 0 ? Math.min(100, Math.round((opts.current / opts.total) * 100)) : 0;
+      return '<article class="profile-duo-achievement' + (opts.done ? ' profile-duo-achievement--done' : '') + '">' +
+        '<div class="profile-duo-achievement-icon" style="background:' + opts.iconBg + '">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">' + opts.icon + '</span>' +
+        '</div>' +
+        '<div class="profile-duo-achievement-body">' +
+          '<div class="profile-duo-achievement-name">' + this._escapeHtml(opts.title) + '</div>' +
+          '<div class="profile-duo-achievement-desc">' + this._escapeHtml(opts.desc) + '</div>' +
+          '<div class="profile-duo-achievement-progress">' +
+            '<div class="profile-duo-progress-bar" role="progressbar" aria-valuenow="' + pct + '" aria-valuemin="0" aria-valuemax="100">' +
+              '<div class="profile-duo-progress-fill" style="width:' + pct + '%"></div>' +
+            '</div>' +
+            '<span class="profile-duo-progress-label">' + opts.current + '/' + opts.total + '</span>' +
+          '</div>' +
+        '</div>' +
+      '</article>';
+    },
+
+    _buildProfileRightSidebarHtml: function (hidePlans) {
+      var html = '';
+      if (typeof MainNav !== 'undefined' && MainNav.buildStatsBarHtml) {
+        html += MainNav.buildStatsBarHtml();
+      }
+
+      html += '<div class="profile-duo-sidebar-widgets">' +
+        '<div class="sidebar-widget-duo profile-duo-side-card profile-duo-side-card--hero">' +
+          '<img src="Assets/images/asomado.svg" alt="" class="profile-duo-side-illust" aria-hidden="true">' +
+          '<p class="profile-duo-side-hero-text">Keep practising every day to grow your streak and track your Cambridge scores.</p>' +
+        '</div>' +
+        '<div class="sidebar-widget-duo profile-duo-side-card">' +
+          '<div class="sw-duo-header">' +
+            '<span class="sw-duo-title">Quick links</span>' +
+          '</div>' +
+          '<div class="profile-duo-side-links">' +
+            '<button type="button" class="profile-duo-side-link" onclick="BentoGrid.openGradeEvolution()">' +
+              '<span class="material-symbols-outlined" aria-hidden="true">query_stats</span>' +
+              '<span>Grade evolution</span>' +
+              '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
+            '</button>' +
+            '<button type="button" class="profile-duo-side-link" onclick="BentoGrid.openStreakSection()">' +
+              '<span class="material-symbols-outlined" aria-hidden="true">local_fire_department</span>' +
+              '<span>Streak calendar</span>' +
+              '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
+            '</button>' +
+            '<button type="button" class="profile-duo-side-link" onclick="openScoreCalculator(event)">' +
+              '<span class="material-symbols-outlined" aria-hidden="true">calculate</span>' +
+              '<span>Score calculator</span>' +
+              '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
+            '</button>' +
+            (hidePlans ? '' :
+              '<button type="button" class="profile-duo-side-link" onclick="UserProfile.renderPremiumSection()">' +
+                '<span class="material-symbols-outlined" aria-hidden="true">workspace_premium</span>' +
+                '<span>View plans</span>' +
+                '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
+              '</button>') +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+      return html;
+    },
+
     // ── Full Profile Section (rendered inside main-content) ────────────
     renderProfileSection: function () {
       if (typeof AppState !== 'undefined' && !AppState.isAuthenticated) {
@@ -353,14 +502,21 @@
       var content = document.getElementById('main-content');
       if (!content) return;
 
+      if (typeof AppState !== 'undefined') AppState.currentView = 'profile';
+      if (typeof Landing !== 'undefined') Landing.hide();
+      var app = document.getElementById('app');
+      if (app) app.style.display = '';
+
       var user = Auth.getUser();
       var profile = this._profile || {};
       var isGuest = AppState.isGuest;
+      var stats = this._getProfileStats();
 
       var name = profile.full_name || (user && (user.user_metadata && (user.user_metadata.full_name || user.user_metadata.name))) || (user && user.email) || 'Guest';
       var email = profile.email || (user && user.email) || '';
       var avatarUrl = profile.avatar_url || (user && user.user_metadata && user.user_metadata.avatar_url) || '';
       var initials = name.split(' ').filter(function (w) { return w; }).map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
+      var joinDate = this._formatJoinDate(profile.created_at || (user && user.created_at));
 
       var hidePlans = typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI();
       var isPremium = AppState.isPremium;
@@ -371,139 +527,188 @@
         ? AccessControl.effectiveHasExamsPack()
         : AppState.hasExamsPack;
 
-      var identityStatusTag = hidePlans
-        ? ''
-        : (isPremium
-          ? '<span class="account-editorial-tag account-editorial-tag--premium">Premium</span>'
-          : '<span class="account-editorial-tag account-editorial-tag--free">Free plan</span>');
-
-      var adminMeta = (!isGuest && AppState.isAdmin)
-        ? '<p class="account-identity-meta">Administrator</p>'
-        : '';
-
-      var membershipKicker = hidePlans ? 'EngagEd member' : (isPremium ? 'Premium membership' : 'Free plan');
-      var membershipSummary = '';
-      if (!isGuest) {
-        if (hidePlans) {
-          membershipSummary = 'Full access while you are signed in. Writing and Speaking AI feedback have a daily limit.';
-        } else if (isPremium) {
-          membershipSummary = 'Theory and Exams included';
-        } else if (hasTheoryPack) {
-          membershipSummary = 'Theory included';
-        } else if (hasExamsPack) {
-          membershipSummary = 'Exams included';
-        } else {
-          membershipSummary = 'Upgrade to unlock theory blocks and exams.';
-        }
-      } else {
-        membershipSummary = 'Sign in to sync your profile and manage access.';
-      }
-
-      var accessListHtml = '';
-      if (!isGuest) {
-        accessListHtml =
-          '<ul class="account-access-list" role="list">' +
-            '<li class="account-access-line' + (hasTheoryPack ? ' account-access-line--on' : ' account-access-line--off') + '" role="listitem">' +
-              (hasTheoryPack ? '<i class="fas fa-check account-access-icon" aria-hidden="true"></i>' : '<span class="account-access-marker" aria-hidden="true"></span>') +
-              '<span>Theory access</span>' +
-            '</li>' +
-            '<li class="account-access-line' + (hasExamsPack ? ' account-access-line--on' : ' account-access-line--off') + '" role="listitem">' +
-              (hasExamsPack ? '<i class="fas fa-check account-access-icon" aria-hidden="true"></i>' : '<span class="account-access-marker" aria-hidden="true"></span>') +
-              '<span>Exams access</span>' +
-            '</li>' +
-          '</ul>';
-      }
-
-      var viewPlansControl = hidePlans ? '' :
-        '<div class="account-module-footer">' +
-          '<button type="button" class="account-text-link" onclick="UserProfile.renderPremiumSection()">View plans</button>' +
-        '</div>';
-
-      // Always use Google profile photo for user display
       var avatarHtml = avatarUrl
-        ? '<img class="account-identity-photo" src="' + avatarUrl + '" alt="' + name + '">'
-        : '<span class="account-initials" aria-hidden="true">' + initials + '</span>';
+        ? '<img class="profile-duo-avatar-img" src="' + this._escapeHtml(avatarUrl) + '" alt="">'
+        : '<span class="profile-duo-avatar-initials" aria-hidden="true">' + this._escapeHtml(initials) + '</span>';
+
+      var badgeHtml = '';
+      if (!hidePlans) {
+        badgeHtml += isPremium
+          ? '<span class="profile-duo-badge profile-duo-badge--premium">Premium</span>'
+          : '<span class="profile-duo-badge profile-duo-badge--free">Free plan</span>';
+      } else {
+        badgeHtml += '<span class="profile-duo-badge profile-duo-badge--member">EngagEd member</span>';
+      }
+      if (!isGuest && AppState.isAdmin) {
+        badgeHtml += '<span class="profile-duo-badge profile-duo-badge--admin">Administrator</span>';
+      }
+
+      var promoBanner = '';
+      if (!hidePlans && !isPremium && !isGuest) {
+        promoBanner =
+          '<div class="profile-duo-promo">' +
+            '<div class="profile-duo-promo-copy">' +
+              '<strong>Unlock Theory + Exams!</strong>' +
+              '<p>Get full access to all course blocks and Cambridge tests.</p>' +
+            '</div>' +
+            '<button type="button" class="profile-duo-promo-btn" onclick="UserProfile.renderPremiumSection()">VIEW PLANS</button>' +
+            '<img src="Assets/images/asomado.svg" alt="" class="profile-duo-promo-illust" aria-hidden="true">' +
+          '</div>';
+      }
+
+      var statsGrid =
+        '<section class="profile-duo-stats" aria-labelledby="profile-duo-stats-title">' +
+          '<h2 id="profile-duo-stats-title" class="profile-duo-section-title">Statistics</h2>' +
+          '<div class="profile-duo-stats-grid">' +
+            this._buildProfileStatCard('local_fire_department', 'streak', stats.streakCount, stats.streakCount === 1 ? 'day streak' : 'days streak') +
+            this._buildProfileStatCard('bolt', 'level', stats.level, stats.availableCount + ' tests') +
+            this._buildProfileStatCard('shield', 'done', stats.completedParts, stats.inProgressParts + ' in progress') +
+            this._buildProfileStatCard('emoji_events', 'score', stats.avgScale !== null ? stats.avgScale : '–', 'avg scale') +
+          '</div>' +
+        '</section>';
+
+      var streakMilestone = this._nextStreakMilestone(stats.streakCount);
+      var achievements =
+        this._buildProfileAchievementCard({
+          title: 'Theory Pack',
+          desc: hasTheoryPack ? 'All grammar and vocabulary blocks unlocked' : 'Unlock all theory blocks',
+          icon: 'menu_book',
+          iconBg: '#1cb0f6',
+          current: hasTheoryPack ? 1 : 0,
+          total: 1,
+          done: hasTheoryPack
+        }) +
+        this._buildProfileAchievementCard({
+          title: 'Exams Pack',
+          desc: hasExamsPack ? 'All exams and practice modes unlocked' : 'Unlock exams, writing and speaking',
+          icon: 'assignment',
+          iconBg: '#58cc02',
+          current: hasExamsPack ? 1 : 0,
+          total: 1,
+          done: hasExamsPack
+        }) +
+        this._buildProfileAchievementCard({
+          title: 'Streak milestone',
+          desc: 'Reach ' + streakMilestone + ' days in a row',
+          icon: 'local_fire_department',
+          iconBg: '#ff9600',
+          current: stats.streakCount,
+          total: streakMilestone,
+          done: stats.streakCount >= streakMilestone
+        }) +
+        this._buildProfileAchievementCard({
+          title: 'Test parts',
+          desc: 'Complete exam parts at ' + stats.level,
+          icon: 'emoji_events',
+          iconBg: '#ffc800',
+          current: stats.completedParts,
+          total: Math.max(stats.totalParts, 1),
+          done: stats.totalParts > 0 && stats.completedParts >= stats.totalParts
+        });
 
       var levels = ['B1', 'B2', 'C1'];
-
       function levelOptions(current) {
         return levels.map(function (l) {
           return '<option value="' + l + '"' + (l === current ? ' selected' : '') + '>' + l + '</option>';
         }).join('');
       }
 
-      var identityFooterActions = '';
-      if (isGuest) {
-        identityFooterActions =
-          '<div class="account-identity-actions">' +
-            '<button type="button" class="account-btn-secondary" onclick="Auth._showAuthModal()">' +
-              '<i class="fas fa-sign-in-alt" aria-hidden="true"></i> Sign in' +
-            '</button>' +
-          '</div>';
-      } else {
-        identityFooterActions =
-          '<div class="account-identity-actions">' +
-            '<button type="button" class="account-signout-btn" onclick="Auth.signOut()">' +
-              '<i class="fas fa-sign-out-alt" aria-hidden="true"></i> Sign out' +
-            '</button>' +
-          '</div>';
-      }
+      var animalAvatar = profile.animal_avatar || '';
+      var characterPreview = animalAvatar
+        ? '<img src="/Assets/images/Profiles/' + this._escapeHtml(animalAvatar) + '" alt="" class="profile-duo-character-preview">'
+        : '<span class="profile-duo-character-empty"><span class="material-symbols-outlined">pets</span></span>';
 
-      var prefsBlock =
-        '<section class="account-module account-module--prefs" aria-labelledby="account-prefs-title">' +
-          '<h3 id="account-prefs-title" class="account-module-title">Learning preferences</h3>' +
-          '<div class="account-module-body">' +
-            '<div class="account-pref-row">' +
-              '<label class="account-pref-label" for="pref-level">Level</label>' +
-              '<select id="pref-level" class="account-level-select" onchange="UserProfile._onPrefChange()">' +
-                levelOptions(profile.preferred_level || AppState.currentLevel) +
-              '</select>' +
+      var signOutBtn = isGuest
+        ? '<button type="button" class="profile-duo-signin-btn" onclick="Auth._showAuthModal()">Sign in</button>'
+        : '<button type="button" class="profile-duo-signout-btn" onclick="Auth.signOut()">Sign out</button>';
+
+      var profileCenterHtml =
+        '<div class="profile-duo-page">' +
+          '<header class="profile-duo-header">' +
+            '<div class="profile-duo-header-main">' +
+              '<h1 class="profile-duo-name">' + this._escapeHtml(name) + '</h1>' +
+              (email ? '<p class="profile-duo-handle">' + this._escapeHtml(email) + '</p>' : '') +
+              (joinDate ? '<p class="profile-duo-joined">' + this._escapeHtml(joinDate) + '</p>' : '') +
+              '<div class="profile-duo-badges">' + badgeHtml + '</div>' +
+              '<div class="profile-duo-header-actions">' + signOutBtn + '</div>' +
             '</div>' +
-            (!isGuest ? '<div class="profile-sync-status" id="profile-sync-status"></div>' : '') +
-          '</div>' +
-        '</section>';
-
-      var membershipBlock =
-        '<section class="account-module account-module--membership" aria-labelledby="account-access-title">' +
-          '<h3 id="account-access-title" class="account-module-title">Access &amp; membership</h3>' +
-          '<div class="account-module-body">' +
-            '<p class="account-membership-kicker">' + membershipKicker + '</p>' +
-            '<p class="account-membership-summary">' + membershipSummary + '</p>' +
-            accessListHtml +
-            viewPlansControl +
-          '</div>' +
-        '</section>';
-
-      var html =
-        '<div class="account-page">' +
-          '<header class="account-page-header">' +
-            '<button type="button" class="btn-back" onclick="loadDashboard()" aria-label="Back">' +
-              '<i class="fas fa-arrow-left" aria-hidden="true"></i><span class="icon-btn-label">Back</span>' +
-            '</button>' +
-            '<div class="account-page-header-titles">' +
-              '<h2 class="account-page-title">My account</h2>' +
-              '<p class="account-page-subtitle">Manage your learning profile and access</p>' +
+            '<div class="profile-duo-header-side">' +
+              '<div class="profile-duo-avatar">' + avatarHtml + '</div>' +
+              '<div class="profile-duo-level-pills">' +
+                '<span class="profile-duo-level-pill profile-duo-level-pill--' + stats.level.toLowerCase() + '">' + stats.level + '</span>' +
+              '</div>' +
             '</div>' +
           '</header>' +
-          '<div class="account-grid">' +
-            '<section class="account-identity-card" aria-label="Account identity">' +
-              '<div class="account-identity-avatar-wrap">' + avatarHtml + '</div>' +
-              '<div class="account-identity-text">' +
-                '<p class="account-identity-name">' + name + '</p>' +
-                (email ? '<p class="account-identity-email">' + email + '</p>' : '') +
-                '<div class="account-identity-tags">' + identityStatusTag + '</div>' +
-                adminMeta +
-              '</div>' +
-              identityFooterActions +
-            '</section>' +
-            '<div class="account-modules">' +
-              prefsBlock +
-              membershipBlock +
+          promoBanner +
+          statsGrid +
+          '<section class="profile-duo-achievements" aria-labelledby="profile-duo-achievements-title">' +
+            '<div class="profile-duo-section-header">' +
+              '<h2 id="profile-duo-achievements-title" class="profile-duo-section-title">Progress</h2>' +
             '</div>' +
-          '</div>' +
+            '<div class="profile-duo-achievements-list">' + achievements + '</div>' +
+          '</section>' +
+          '<section class="profile-duo-settings" aria-labelledby="profile-duo-settings-title">' +
+            '<h2 id="profile-duo-settings-title" class="profile-duo-section-title">Settings</h2>' +
+            '<div class="profile-duo-settings-card">' +
+              '<div class="profile-duo-setting-row">' +
+                '<label class="profile-duo-setting-label" for="pref-level">Cambridge level</label>' +
+                '<select id="pref-level" class="profile-duo-level-select" onchange="UserProfile._onPrefChange()">' +
+                  levelOptions(profile.preferred_level || AppState.currentLevel) +
+                '</select>' +
+              '</div>' +
+              (!isGuest ? '<div class="profile-sync-status" id="profile-sync-status"></div>' : '') +
+            '</div>' +
+            '<div class="profile-duo-settings-card profile-duo-character-card">' +
+              '<div class="profile-duo-character-header">' +
+                '<div class="profile-duo-character-info">' +
+                  '<div class="profile-duo-setting-label">Your character</div>' +
+                  '<p class="profile-duo-character-desc">Used in speaking exercises as your partner avatar.</p>' +
+                '</div>' +
+                characterPreview +
+              '</div>' +
+              '<button type="button" class="profile-duo-character-toggle" onclick="UserProfile._toggleAvatarGrid()">' +
+                'Choose character' +
+              '</button>' +
+              '<div id="animal-avatar-grid-container" class="profile-duo-avatar-grid-wrap" style="display:none"></div>' +
+            '</div>' +
+          '</section>' +
         '</div>';
 
-      content.innerHTML = html;
+      var level = AppState.currentLevel || 'C1';
+      var exams = window.EXAMS_DATA[level] || [];
+      var leftSidebarContent = '';
+      if (typeof BentoGrid !== 'undefined' && BentoGrid._buildDashboardSidebars) {
+        leftSidebarContent = BentoGrid._buildDashboardSidebars(exams, { includeGradeTracker: false, includeNextLesson: false }).left;
+      } else if (typeof MainNav !== 'undefined') {
+        leftSidebarContent = MainNav.buildSidebarHtml('profile');
+      }
+
+      var rightSidebarContent = this._buildProfileRightSidebarHtml(hidePlans);
+      var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
+        ? MainNav.buildMobileTopBarHtml() : '';
+      var mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
+        ? MainNav.buildMobileBottomNavHtml('profile') : '';
+
+      content.innerHTML =
+        '<div class="dashboard-layout dashboard-layout--profile">' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
+            : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
+          '<div class="dashboard-center dashboard-center--profile">' +
+            mobileTopBarHtml +
+            profileCenterHtml +
+            mobileNavHtml +
+          '</div>' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent)
+            : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + rightSidebarContent + '</div>') +
+        '</div>';
+
+      if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+      if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
+      if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('profile');
+      if (typeof AppLoadingScreen !== 'undefined') AppLoadingScreen.hide();
+
       var profState = { view: 'profile' };
       history.pushState(profState, '', Router.stateToPath(profState));
     },
