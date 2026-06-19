@@ -602,3 +602,14 @@
     padding: 11px 12px;
   }
 }
+
+/* B1 Reading Part 5 — extra line spacing in the cloze passage */
+.reading-text-enhanced--b1r-plain.b1-reading5 .toggle-text-section p {
+  line-height: 2.25;
+}
+
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  .reading-text-enhanced--b1r-plain.b1-reading5 .toggle-text-section p {
+    line-height: 2.05;
+  }
+}
