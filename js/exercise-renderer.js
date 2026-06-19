@@ -38,6 +38,18 @@
       if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('tests');
     },
 
+    wrapExerciseCenter: function(innerHtml) {
+      return '<div class="exercise-page-wrapper"><div class="exercise-container">' + innerHtml + '</div></div>';
+    },
+
+    setCenterContent: function(centerHtml, showTools) {
+      var content = document.getElementById('main-content');
+      if (!content) return;
+      var wrapped = this.wrapExerciseCenter(centerHtml);
+      content.innerHTML = this._buildExerciseLayoutShell(wrapped, '', !!showTools);
+      this._applyExerciseDashboardChrome();
+    },
+
     render: async function(exercise, examId, section, part) {
       const content = document.getElementById('main-content');
       const partConfig = CONFIG.getPartConfig(section, part);
