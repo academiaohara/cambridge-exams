@@ -1114,6 +1114,16 @@
   color: var(--ex-duo-text, #4b4b4b);
 }
 
+.dashboard-layout--exercise .b1-listening .toggle-text-section .listening-transcript-context-text::first-letter {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  float: none;
+  line-height: inherit;
+  margin: 0;
+}
+
 .dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-extract-interview {
   border-radius: 16px;
   padding: 14px 16px;
@@ -1159,10 +1169,17 @@
   padding: 14px 16px;
   background: #fff;
   border: 2px solid var(--ex-duo-border, #e5e5e5);
-  border-left: 4px solid var(--ex-duo-blue, #1cb0f6);
   border-radius: 12px;
   box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
   margin-bottom: 10px;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-speaker-card.transcript-turn-interviewer {
+  border-left: 4px solid var(--ex-duo-blue, #1cb0f6);
+}
+
+.dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-speaker-card.transcript-turn-guest {
+  border-left: 4px solid var(--ex-duo-orange, #f47417);
 }
 
 .dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-speaker-label {
