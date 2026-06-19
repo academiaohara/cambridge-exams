@@ -2470,6 +2470,27 @@
     font-size: 1.35rem;
   }
 
+  .exam-number-random {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 14px;
+  }
+
+  .random-test-icon {
+    font-size: 1.15rem !important;
+  }
+
+  .random-test-pill {
+    margin-left: 6px;
+    font-size: 0.58rem;
+  }
+
+  .random-test-empty {
+    padding: 22px 16px;
+    font-size: 0.85rem;
+  }
+
   .exam-title {
     font-size: 1.05rem;
   }
@@ -2746,43 +2767,110 @@
 }
 
 /* ── Random Test card ── */
-.random-test-item {
-  border-left: 3px solid #8b5cf6;
-  margin-bottom: 16px;
+.random-test-item .exam-header {
+  background: linear-gradient(135deg, #e8eeff 0%, #e4e0f8 55%, #ebe4ff 100%);
+}
+
+.random-test-item.guest-exam-locked .exam-header {
+  background: linear-gradient(135deg, #e8f0ff 0%, #d8d0f0 100%);
 }
 
 .exam-number-random {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
-  opacity: 0.85;
-  color: #8b5cf6;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 16px;
+  font-size: 0;
+  opacity: 1;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.28);
 }
 
-.random-test-btn-generate {
-  background: rgba(139, 92, 246, 0.12) !important;
-  color: #8b5cf6 !important;
+.random-test-icon {
+  font-size: 1.35rem !important;
+  line-height: 1;
+  color: #fff;
 }
 
-.random-test-btn-generate:hover {
-  background: rgba(139, 92, 246, 0.25) !important;
+.random-test-pill {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.14);
+  color: #4f46e5;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 800;
+  font-style: normal;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: middle;
 }
 
-.random-test-btn-repeat {
-  background: rgba(59, 130, 246, 0.1) !important;
-  color: #3b82f6 !important;
+.random-test-lock-icon {
+  margin-right: 4px;
+  font-size: 0.75rem;
 }
 
-.random-test-btn-repeat:hover {
-  background: rgba(59, 130, 246, 0.22) !important;
+.random-test-progress-badge {
+  background: rgba(99, 102, 241, 0.12);
+  color: #4338ca;
+}
+
+.random-test-item .random-test-btn-generate {
+  background: rgba(99, 102, 241, 0.14);
+  color: #4f46e5;
+}
+
+.random-test-item .random-test-btn-generate:hover {
+  background: rgba(99, 102, 241, 0.26);
+}
+
+.random-test-item .random-test-btn-repeat {
+  background: rgba(45, 46, 95, 0.08);
+  color: #2D2E5F;
+}
+
+.random-test-item .random-test-btn-repeat:hover {
+  background: rgba(45, 46, 95, 0.16);
 }
 
 .random-test-empty {
-  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px 24px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
   color: #64748b;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.random-test-empty-icon {
+  font-size: 1.75rem !important;
+  color: #a5b4fc;
+}
+
+.random-test-empty p {
+  margin: 0;
+  max-width: 28ch;
+  line-height: 1.45;
   font-style: italic;
+}
+
+.random-test-empty strong {
+  color: #4f46e5;
+  font-weight: 700;
+  font-style: normal;
 }
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
