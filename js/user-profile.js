@@ -453,9 +453,11 @@
       }
 
       html += '<div class="profile-duo-sidebar-widgets">' +
-        '<div class="sidebar-widget-duo profile-duo-side-card profile-duo-side-card--hero">' +
+        '<div class="profile-duo-side-hero-wrap">' +
           '<img src="Assets/images/asomado.svg" alt="" class="profile-duo-side-illust" aria-hidden="true">' +
-          '<p class="profile-duo-side-hero-text">Keep practising every day to grow your streak and track your Cambridge scores.</p>' +
+          '<div class="sidebar-widget-duo profile-duo-side-card profile-duo-side-card--hero">' +
+            '<p class="profile-duo-side-hero-text">Keep practising every day to grow your streak and track your Cambridge scores.</p>' +
+          '</div>' +
         '</div>' +
         '<div class="sidebar-widget-duo profile-duo-side-card">' +
           '<div class="sw-duo-header">' +
@@ -582,7 +584,7 @@
           title: 'Exams Pack',
           desc: hasExamsPack ? 'All exams and practice modes unlocked' : 'Unlock exams, writing and speaking',
           icon: 'assignment',
-          iconBg: '#58cc02',
+          iconBg: '#f47417',
           current: hasExamsPack ? 1 : 0,
           total: 1,
           done: hasExamsPack
@@ -591,7 +593,7 @@
           title: 'Streak milestone',
           desc: 'Reach ' + streakMilestone + ' days in a row',
           icon: 'local_fire_department',
-          iconBg: '#ff9600',
+          iconBg: '#f47417',
           current: stats.streakCount,
           total: streakMilestone,
           done: stats.streakCount >= streakMilestone
@@ -605,18 +607,6 @@
           total: Math.max(stats.totalParts, 1),
           done: stats.totalParts > 0 && stats.completedParts >= stats.totalParts
         });
-
-      var levels = ['B1', 'B2', 'C1'];
-      function levelOptions(current) {
-        return levels.map(function (l) {
-          return '<option value="' + l + '"' + (l === current ? ' selected' : '') + '>' + l + '</option>';
-        }).join('');
-      }
-
-      var animalAvatar = profile.animal_avatar || '';
-      var characterPreview = animalAvatar
-        ? '<img src="/Assets/images/Profiles/' + this._escapeHtml(animalAvatar) + '" alt="" class="profile-duo-character-preview">'
-        : '<span class="profile-duo-character-empty"><span class="material-symbols-outlined">pets</span></span>';
 
       var signOutBtn = isGuest
         ? '<button type="button" class="profile-duo-signin-btn" onclick="Auth._showAuthModal()">Sign in</button>'
@@ -646,31 +636,6 @@
               '<h2 id="profile-duo-achievements-title" class="profile-duo-section-title">Progress</h2>' +
             '</div>' +
             '<div class="profile-duo-achievements-list">' + achievements + '</div>' +
-          '</section>' +
-          '<section class="profile-duo-settings" aria-labelledby="profile-duo-settings-title">' +
-            '<h2 id="profile-duo-settings-title" class="profile-duo-section-title">Settings</h2>' +
-            '<div class="profile-duo-settings-card">' +
-              '<div class="profile-duo-setting-row">' +
-                '<label class="profile-duo-setting-label" for="pref-level">Cambridge level</label>' +
-                '<select id="pref-level" class="profile-duo-level-select" onchange="UserProfile._onPrefChange()">' +
-                  levelOptions(profile.preferred_level || AppState.currentLevel) +
-                '</select>' +
-              '</div>' +
-              (!isGuest ? '<div class="profile-sync-status" id="profile-sync-status"></div>' : '') +
-            '</div>' +
-            '<div class="profile-duo-settings-card profile-duo-character-card">' +
-              '<div class="profile-duo-character-header">' +
-                '<div class="profile-duo-character-info">' +
-                  '<div class="profile-duo-setting-label">Your character</div>' +
-                  '<p class="profile-duo-character-desc">Used in speaking exercises as your partner avatar.</p>' +
-                '</div>' +
-                characterPreview +
-              '</div>' +
-              '<button type="button" class="profile-duo-character-toggle" onclick="UserProfile._toggleAvatarGrid()">' +
-                'Choose character' +
-              '</button>' +
-              '<div id="animal-avatar-grid-container" class="profile-duo-avatar-grid-wrap" style="display:none"></div>' +
-            '</div>' +
           '</section>' +
         '</div>';
 
