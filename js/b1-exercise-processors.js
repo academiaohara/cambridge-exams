@@ -801,6 +801,7 @@
       });
     }
     mergeDescription(ex);
+    ex._b1PetSpeakingUi = true;
   }
 
   /**
