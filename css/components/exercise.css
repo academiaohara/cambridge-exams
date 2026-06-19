@@ -1604,7 +1604,7 @@ body:has(.dashboard-layout--exercise) #main-content {
 }
 
 .dashboard-layout--exercise .section-report-summary-card,
-.dashboard-layout--exercise .section-report-charts-card {
+.dashboard-layout--exercise .section-report-cambridge-card {
   background: #fff;
   border: 2px solid var(--ex-duo-border, #e5e5e5);
   border-radius: 16px;
@@ -1612,10 +1612,59 @@ body:has(.dashboard-layout--exercise) #main-content {
   box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
 }
 
-.dashboard-layout--exercise .section-report-charts-card {
+.dashboard-layout--exercise .section-report-cambridge-card {
   border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
-  padding: 16px 14px 18px;
-  overflow-x: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.dashboard-layout--exercise .section-report-cambridge-main {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+}
+
+.dashboard-layout--exercise .section-report-cambridge-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #afafaf;
+  margin-bottom: 6px;
+}
+
+.dashboard-layout--exercise .section-report-charts-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ex-duo-blue-dark, #1899d6);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.dashboard-layout--exercise .section-report-charts-btn:hover {
+  background: var(--ex-duo-blue-light, #ddf4ff);
+}
+
+.dashboard-layout--exercise .section-report-charts-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .dashboard-layout--exercise .section-report-summary-card--final {
@@ -1686,11 +1735,6 @@ body:has(.dashboard-layout--exercise) #main-content {
   text-align: right;
 }
 
-.dashboard-layout--exercise .section-report-charts-hero {
-  text-align: center;
-  padding: 4px 8px 14px;
-}
-
 .dashboard-layout--exercise .section-report-grade {
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-size: clamp(1.5rem, 4vw, 2rem);
@@ -1730,43 +1774,6 @@ body:has(.dashboard-layout--exercise) #main-content {
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-weight: 800;
   color: var(--ex-duo-blue-dark, #1899d6);
-}
-
-.dashboard-layout--exercise .section-report-chart-section {
-  margin-top: 4px;
-}
-
-.dashboard-layout--exercise .section-report-chart-section .cb-chart-toggle {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 12px;
-}
-
-.dashboard-layout--exercise .section-report-chart-section .cb-toggle-btn {
-  padding: 6px 16px;
-  border: 2px solid var(--ex-duo-border, #e5e5e5);
-  border-radius: 10px;
-  background: #fff;
-  font-weight: 800;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #777;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.15s;
-}
-
-.dashboard-layout--exercise .section-report-chart-section .cb-toggle-btn.cb-toggle-active {
-  background: var(--ex-duo-blue, #1cb0f6);
-  border-color: var(--ex-duo-blue-dark, #1899d6);
-  color: #fff;
-  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
-}
-
-.dashboard-layout--exercise .section-report-chart-section .cb-chart {
-  min-width: 520px;
 }
 
 .dashboard-layout--exercise .section-report-parts-title {
@@ -2638,8 +2645,13 @@ body:has(.dashboard-layout--exercise) #main-content {
     font-size: 1.6rem;
   }
 
-  .dashboard-layout--exercise .section-report-chart-section .cb-chart {
-    min-width: 480px;
+  .dashboard-layout--exercise .section-report-cambridge-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dashboard-layout--exercise .section-report-charts-btn {
+    width: 100%;
   }
 
   .dashboard-layout--exercise .section-report-info .exercise-info-right {

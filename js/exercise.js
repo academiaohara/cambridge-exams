@@ -1033,18 +1033,6 @@
       }
     },
     
-    _sectionReportChartMode: 'cambridge',
-
-    switchSectionReportChart: function(mode) {
-      this._sectionReportChartMode = mode;
-      if (!AppState.currentExamId) return;
-      if (document.querySelector('.section-report--final')) {
-        this.showFinalResults(AppState.currentExamId);
-      } else if (AppState.currentSection) {
-        this._renderSectionComplete(AppState.currentExamId, AppState.currentSection);
-      }
-    },
-
     _hasUserAnswer: function(answer) {
       if (answer === undefined || answer === null) return false;
       return String(answer).trim() !== '';
@@ -1199,9 +1187,10 @@
           + '</div>';
       }
 
-      var chartsHTML = '';
-      if (typeof ScoreCalculator !== 'undefined' && ScoreCalculator.buildSectionReportCharts) {
-        chartsHTML = ScoreCalculator.buildSectionReportCharts(examId, section, this._sectionReportChartMode || 'cambridge');
+      var cambridgeHTML = '';
+      if (typeof ScoreCalculator !== 'undefined' && ScoreCalculator.getSectionReportStats && ScoreCalculator.buildReportSummaryHTML) {
+        var stats = ScoreCalculator.getSectionReportStats(examId, section);
+        cambridgeHTML = ScoreCalculator.buildReportSummaryHTML(stats, 'ScoreCalculator.showLiveSectionResults()');
       }
 
       var html = ''
@@ -1231,9 +1220,14 @@
         + '    </div>'
         + '  </div>'
         + '  <div class="exercise-description section-report-banner">'
-        + '    <p><strong>' + sectionName + ' finished.</strong> Review your Cambridge scale, raw score and per-question breakdown below.</p>'
+        + '    <p><strong>' + sectionName + ' finished.</strong> Review your Cambridge level, per-part breakdown and raw score below.</p>'
         + '  </div>'
         + '  <div class="section-report-body">'
+        + cambridgeHTML
+        + '    <div class="section-report-parts">'
+        + '      <h3 class="section-report-parts-title"><i class="fas fa-list-check"></i> Breakdown by part</h3>'
+        + '      <div class="section-report-parts-grid">' + partsHTML + '</div>'
+        + '    </div>'
         + '    <div class="section-report-summary-card">'
         + '      <div class="section-report-summary-main">'
         + '        <span class="section-report-summary-label">Raw score</span>'
@@ -1243,11 +1237,6 @@
         + '        <div class="section-report-summary-bar" style="width:' + pct + '%"></div>'
         + '      </div>'
         + '      <span class="section-report-summary-pct">' + pct + '% correct</span>'
-        + '    </div>'
-        + (chartsHTML ? '<div class="section-report-charts-card">' + chartsHTML + '</div>' : '')
-        + '    <div class="section-report-parts">'
-        + '      <h3 class="section-report-parts-title"><i class="fas fa-list-check"></i> Breakdown by part</h3>'
-        + '      <div class="section-report-parts-grid">' + partsHTML + '</div>'
         + '    </div>'
         + '  </div>'
         + '  <div class="exercise-footer section-report-actions">';
@@ -1314,9 +1303,14 @@
           + '</div>';
       });
 
-      var chartsHTML = '';
-      if (typeof ScoreCalculator !== 'undefined' && ScoreCalculator.buildSectionReportCharts) {
-        chartsHTML = ScoreCalculator.buildExamReportCharts(examId, this._sectionReportChartMode || 'cambridge');
+      var cambridgeHTML = '';
+      if (typeof ScoreCalculator !== 'undefined' && ScoreCalculator.getExamReportStats && ScoreCalculator.buildReportSummaryHTML) {
+        var examStats = ScoreCalculator.getExamReportStats(examId);
+        cambridgeHTML = ScoreCalculator.buildReportSummaryHTML(
+          examStats,
+          'ScoreCalculator.showLiveOverallResults()',
+          'Overall Cambridge level'
+        );
       }
 
       var totalPct = totalQuestions > 0 ? Math.round(totalScore / totalQuestions * 100) : 0;
@@ -1340,9 +1334,14 @@
         + '    </div>'
         + '  </div>'
         + '  <div class="exercise-description section-report-banner">'
-        + '    <p><strong>All sections completed.</strong> Here is your overall Cambridge scale and raw breakdown.</p>'
+        + '    <p><strong>All sections completed.</strong> Review your Cambridge level, section breakdown and raw score below.</p>'
         + '  </div>'
         + '  <div class="section-report-body">'
+        + cambridgeHTML
+        + '    <div class="section-report-parts">'
+        + '      <h3 class="section-report-parts-title"><i class="fas fa-layer-group"></i> By section</h3>'
+        + '      <div class="section-report-parts-grid section-report-parts-grid--sections">' + sectionsHTML + '</div>'
+        + '    </div>'
         + '    <div class="section-report-summary-card section-report-summary-card--final">'
         + '      <div class="section-report-summary-main">'
         + '        <span class="section-report-summary-label">Total raw score</span>'
@@ -1352,11 +1351,6 @@
         + '        <div class="section-report-summary-bar section-report-summary-bar--final" style="width:' + totalPct + '%"></div>'
         + '      </div>'
         + '      <span class="section-report-summary-pct">' + totalPct + '% overall</span>'
-        + '    </div>'
-        + (chartsHTML ? '<div class="section-report-charts-card">' + chartsHTML + '</div>' : '')
-        + '    <div class="section-report-parts">'
-        + '      <h3 class="section-report-parts-title"><i class="fas fa-layer-group"></i> By section</h3>'
-        + '      <div class="section-report-parts-grid section-report-parts-grid--sections">' + sectionsHTML + '</div>'
         + '    </div>'
         + '  </div>'
         + '  <div class="exercise-footer section-report-actions">'
