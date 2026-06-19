@@ -14,7 +14,7 @@
 
   function enhanceAppleProfileUI(root) {
     if (!root || !root.querySelector) return;
-    var el = root.querySelector('.account-page');
+    var el = root.querySelector('.profile-duo-page') || root.querySelector('.account-page');
     if (!el || el.getAttribute('data-account-profile-ui') === '1') return;
     el.setAttribute('data-account-profile-ui', '1');
 
@@ -23,7 +23,7 @@
       return;
     }
 
-    var cards = el.querySelectorAll('.account-identity-card, .account-module');
+    var cards = el.querySelectorAll('.profile-duo-stat-card, .profile-duo-achievement, .profile-duo-settings-card, .profile-duo-promo, .account-identity-card, .account-module');
     for (var i = 0; i < cards.length; i++) {
       cards[i].style.setProperty('--apple-stagger', String(i * 52) + 'ms');
       cards[i].classList.add('apple-ui-profile-card-enter');
