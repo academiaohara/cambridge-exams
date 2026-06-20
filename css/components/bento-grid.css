@@ -1620,7 +1620,18 @@ margin-top: -2px;
   justify-content: center;
   padding: 4px 0 8px;
   position: relative;
-  gap: 6px;
+}
+
+.grade-carousel-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 auto;
+}
+
+.grade-carousel-content--empty {
+  opacity: 0.75;
 }
 
 .grade-carousel-body {
@@ -1668,13 +1679,24 @@ margin-top: -2px;
   min-width: 0;
 }
 
+.grade-carousel-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+  text-align: center;
+}
+
 .sw-grade .grade-carousel-raw {
   font-size: 0.78rem;
   font-weight: 800;
   color: #afafaf;
   line-height: 1;
-  margin: 0 0 1px;
+  margin: 0;
   letter-spacing: 0.02em;
+  text-align: center;
 }
 
 .sw-grade .grade-carousel-cefr {
@@ -1685,6 +1707,7 @@ margin-top: -2px;
   line-height: 0.95;
   margin: 0;
   letter-spacing: -0.02em;
+  text-align: center;
 }
 
 .sw-grade .grade-carousel-cefr.grade-carousel-cefr-dash {
@@ -1693,19 +1716,17 @@ margin-top: -2px;
 }
 
 .sw-grade .grade-carousel-skill-label {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: static;
   font-size: 0.72rem;
   font-weight: 800;
   color: #777;
-  letter-spacing: 0.06em;
   text-transform: uppercase;
-  border-radius: 0;
-  margin: 0;
-  padding: 0;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+  width: auto;
+  position: static;
 }
 
 .sw-grade .grade-carousel-skill-label::before {
