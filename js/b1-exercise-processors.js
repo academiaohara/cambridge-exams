@@ -412,6 +412,7 @@
       }
       mergeDescription(ex);
       ex._b1PetScoring = true;
+      ex._b1PetHideAnswerToggle = true;
       return;
     }
 
@@ -437,6 +438,7 @@
     };
     mergeDescription(ex);
     ex._b1PetScoring = true;
+    ex._b1PetHideAnswerToggle = true;
   }
 
   function readingPart6(ex) {

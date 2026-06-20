@@ -632,26 +632,26 @@
 
 /* Explanation button in toggle-view-header */
 .toggle-view-btn.btn-explanation-mode {
-  border-color: var(--ex-duo-blue, #1cb0f6);
-  color: var(--ex-duo-blue-dark, #1899d6);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  color: var(--ex-duo-purple-dark, #a855f7);
 }
 
 .toggle-view-btn.btn-explanation-mode:hover {
-  background: var(--ex-duo-blue-light, #ddf4ff);
-  border-color: var(--ex-duo-blue, #1cb0f6);
-  color: var(--ex-duo-blue-dark, #1899d6);
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  color: var(--ex-duo-purple-dark, #a855f7);
 }
 
 .toggle-view-btn.btn-explanation-mode.explanation-active {
-  background: var(--ex-duo-blue, #1cb0f6);
-  border-color: var(--ex-duo-blue-dark, #1899d6);
+  background: var(--ex-duo-purple, #ce82ff);
+  border-color: var(--ex-duo-purple-dark, #a855f7);
   color: #fff;
-  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 .toggle-view-btn.btn-explanation-mode.explanation-active:hover {
-  background: var(--ex-duo-blue-hover, #2eb8f7);
-  border-color: var(--ex-duo-blue-dark, #1899d6);
+  background: #d9a0ff;
+  border-color: var(--ex-duo-purple-dark, #a855f7);
   color: #fff;
 }
 
@@ -660,8 +660,8 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background: var(--ex-duo-blue-light, #ddf4ff);
-  border: 2px solid var(--ex-duo-info-border, #1cb0f6);
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  border: 2px solid var(--ex-duo-purple, #ce82ff);
   border-radius: 16px;
   padding: 14px 18px;
   margin-bottom: 14px;
@@ -670,7 +670,7 @@
   color: var(--ex-duo-text, #4b4b4b);
   position: static;
   z-index: 10;
-  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-blue-dark, #1899d6) 35%, #e5e5e5);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-purple-dark, #a855f7) 35%, #e5e5e5);
   font-family: 'Nunito', sans-serif;
 }
 
@@ -691,7 +691,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-purple, #ce82ff);
   color: #fff;
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-weight: 800;
@@ -702,7 +702,7 @@
   border-radius: 10px;
   flex-shrink: 0;
   padding: 0;
-  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 .eq-text {
@@ -2541,7 +2541,6 @@ body:has(.dashboard-layout--exercise) #main-content {
 
 .dashboard-layout--exercise .btn-prev,
 .dashboard-layout--exercise .btn-reset,
-.dashboard-layout--exercise .btn-explanations,
 .dashboard-layout--exercise .btn-toggle-answer {
   background: #fff;
   border: 2px solid var(--ex-duo-border);
@@ -2549,21 +2548,37 @@ body:has(.dashboard-layout--exercise) #main-content {
   box-shadow: 0 2px 0 #e5e5e5;
 }
 
+.dashboard-layout--exercise .btn-explanations {
+  background: #fff;
+  border: 2px solid var(--ex-duo-purple, #ce82ff);
+  color: var(--ex-duo-purple-dark, #a855f7);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
+}
+
 .dashboard-layout--exercise .btn-prev:hover,
 .dashboard-layout--exercise .btn-reset:hover,
-.dashboard-layout--exercise .btn-explanations:hover,
 .dashboard-layout--exercise .btn-toggle-answer:hover {
   color: #555;
   border-color: #cfcfcf;
   background: #fafafa;
 }
 
+.dashboard-layout--exercise .btn-explanations:hover {
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  color: var(--ex-duo-purple-dark, #a855f7);
+}
+
 .dashboard-layout--exercise .btn-prev:active,
 .dashboard-layout--exercise .btn-reset:active,
-.dashboard-layout--exercise .btn-explanations:active,
 .dashboard-layout--exercise .btn-toggle-answer:active {
   transform: translateY(1px);
   box-shadow: 0 1px 0 #e5e5e5;
+}
+
+.dashboard-layout--exercise .btn-explanations:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {

@@ -30,10 +30,7 @@
 
         let html = `<span class="reading-type7-gap${inlineClass}" data-qnum="${qNum}"${inlineAttr}>`;
         html += `<span class="reading-type7-gap-check-row"${!showCorrectOnly && !isCorrect && userAnswer ? ` data-correct="${question.correct}"` : ''}>`;
-        html += `<span class="${pillClass}">`;
-        html += `<span class="reading-type7-gap-num">${qNum}</span>`;
-        html += `<span class="reading-type7-gap-circle">${displayLetter || '—'}</span>`;
-        html += `</span>`;
+        html += ReadingType7._renderCheckedPillHtml(pillClass, qNum, displayLetter);
         var hideRevealBtn = typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading();
         if (!showCorrectOnly && !isCorrect && userAnswer && !hideRevealBtn) {
           html += `<button class="reading-type7-reveal-btn" onclick="ReadingType7.toggleReveal(${qNum}, this)" data-revealed="false">`;
@@ -183,11 +180,30 @@
     _stripBrackets: function(text) {
       return String(text || '').replace(/\[\/?(\d+)\]/g, '');
     },
-    
+
+    _isB1GappedText: function() {
+      return typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading();
+    },
+
+    _renderCheckedPillHtml: function(pillClass, qNum, letter) {
+      var display = letter || '—';
+      if (ReadingType7._isB1GappedText()) {
+        return '<span class="' + pillClass + '">' +
+          '<span class="reading-type7-gap-circle"><span class="reading-type7-gap-num">' + qNum + '</span></span>' +
+          '<span class="reading-type7-gap-letter">' + display + '</span>' +
+          '</span>';
+      }
+      return '<span class="' + pillClass + '">' +
+        '<span class="reading-type7-gap-num">' + qNum + '</span>' +
+        '<span class="reading-type7-gap-circle">' + display + '</span>' +
+        '</span>';
+    },
+
     applyExplanationMode: function() {
       var questions = AppState.currentExercise.content.questions || [];
       var paragraphs = AppState.currentExercise.content.paragraphs || {};
       var answers = AppState.currentExercise.answers || {};
+      var isB1R4 = ReadingType7._isB1GappedText();
 
       questions.forEach(function(q) {
         var userAnswer = answers[q.number];
@@ -197,30 +213,58 @@
         if (!gap || gap.dataset.rt7ExplMode === '1') return;
         gap.dataset.rt7ExplMode = '1';
 
-        // Update gap-circle to show correct answer in orange
+        if (isB1R4) {
+          var pill = gap.querySelector('.reading-type7-gap-pill');
+          if (pill) {
+            pill.dataset.origClass = pill.className;
+            pill.className = 'reading-type7-gap-pill rt7-pill-show-correct';
+            var letterEl = pill.querySelector('.reading-type7-gap-letter');
+            if (letterEl) {
+              letterEl.dataset.origText = letterEl.textContent;
+              letterEl.textContent = q.correct;
+            } else {
+              var circle = pill.querySelector('.reading-type7-gap-circle');
+              if (circle) {
+                circle.dataset.origText = circle.textContent;
+                circle.textContent = q.correct;
+              }
+            }
+          }
+
+          var correctText = paragraphs[q.correct] || '';
+          var paraBlock = gap.querySelector('.reading-type7-answer-block:not(.reading-type7-explanation-block)');
+          if (paraBlock) {
+            paraBlock.dataset.origClass = paraBlock.className;
+            paraBlock.dataset.origInner = paraBlock.innerHTML;
+            paraBlock.className = 'reading-type7-answer-block rt7-show-correct rt7-explanation';
+            paraBlock.innerHTML = '<span class="reading-type7-para-text">' +
+              ExerciseRenderer.processEvidenceMarkers(correctText) + '</span>';
+          }
+          return;
+        }
+
         var circle = gap.querySelector('.reading-type7-gap-circle');
         if (circle) {
           circle.dataset.origText = circle.textContent;
           circle.dataset.origStyle = circle.getAttribute('style') || '';
           circle.textContent = q.correct;
-          circle.style.color = '#f97316';
+          circle.style.color = 'var(--ex-duo-purple-dark, #a855f7)';
         }
 
         if (isCorrect) {
-          // For correct answers: add orange styling to the existing answer block
-          var paraBlock = gap.querySelector('.reading-type7-answer-block');
-          if (paraBlock) paraBlock.classList.add('rt7-explanation');
+          var correctBlock = gap.querySelector('.reading-type7-answer-block');
+          if (correctBlock) correctBlock.classList.add('rt7-explanation');
         } else {
-          // For incorrect answers: hide the incorrect answer block and reveal button, add fixed orange explanation block
           var incorrectBlock = gap.querySelector('.reading-type7-answer-block.incorrect');
           if (incorrectBlock) incorrectBlock.style.display = 'none';
           var revealBtn = gap.querySelector('.reading-type7-reveal-btn');
           if (revealBtn) revealBtn.style.display = 'none';
 
-          var correctText = paragraphs[q.correct] || '';
+          var explText = paragraphs[q.correct] || '';
           var explanationBlock = document.createElement('span');
           explanationBlock.className = 'reading-type7-answer-block reading-type7-explanation-block';
-          explanationBlock.innerHTML = '<span class="reading-type7-para-text">' + ExerciseRenderer.processEvidenceMarkers(correctText) + '</span>';
+          explanationBlock.innerHTML = '<span class="reading-type7-para-text">' +
+            ExerciseRenderer.processEvidenceMarkers(explText) + '</span>';
           gap.appendChild(explanationBlock);
         }
       });
@@ -229,6 +273,7 @@
     removeExplanationMode: function() {
       var questions = AppState.currentExercise.content.questions || [];
       var answers = AppState.currentExercise.answers || {};
+      var isB1R4 = ReadingType7._isB1GappedText();
 
       questions.forEach(function(q) {
         var userAnswer = answers[q.number];
@@ -238,7 +283,33 @@
         if (!gap || gap.dataset.rt7ExplMode !== '1') return;
         delete gap.dataset.rt7ExplMode;
 
-        // Restore gap-circle to original content and color
+        if (isB1R4) {
+          var pill = gap.querySelector('.reading-type7-gap-pill');
+          if (pill && pill.dataset.origClass) {
+            pill.className = pill.dataset.origClass;
+            delete pill.dataset.origClass;
+            var letterEl = pill.querySelector('.reading-type7-gap-letter');
+            if (letterEl && letterEl.dataset.origText != null) {
+              letterEl.textContent = letterEl.dataset.origText;
+              delete letterEl.dataset.origText;
+            }
+          }
+
+          var paraBlock = gap.querySelector('.reading-type7-answer-block:not(.reading-type7-explanation-block)');
+          if (paraBlock && paraBlock.dataset.origClass) {
+            paraBlock.className = paraBlock.dataset.origClass;
+            if (paraBlock.dataset.origInner) {
+              paraBlock.innerHTML = paraBlock.dataset.origInner;
+            }
+            delete paraBlock.dataset.origClass;
+            delete paraBlock.dataset.origInner;
+          }
+          gap.querySelectorAll('.reading-type7-explanation-block').forEach(function(el) {
+            el.remove();
+          });
+          return;
+        }
+
         var circle = gap.querySelector('.reading-type7-gap-circle');
         if (circle && Object.prototype.hasOwnProperty.call(circle.dataset, 'origText')) {
           circle.textContent = circle.dataset.origText;
@@ -253,17 +324,14 @@
         }
 
         if (isCorrect) {
-          var paraBlock = gap.querySelector('.reading-type7-answer-block');
-          if (paraBlock) paraBlock.classList.remove('rt7-explanation');
+          var correctBlock = gap.querySelector('.reading-type7-answer-block');
+          if (correctBlock) correctBlock.classList.remove('rt7-explanation');
         } else {
-          // Remove added explanation block
           gap.querySelectorAll('.reading-type7-explanation-block').forEach(function(el) {
             el.remove();
           });
-          // Restore hidden incorrect answer block
           var incorrectBlock = gap.querySelector('.reading-type7-answer-block.incorrect');
           if (incorrectBlock) incorrectBlock.style.display = '';
-          // Restore reveal button
           var revealBtn = gap.querySelector('.reading-type7-reveal-btn');
           if (revealBtn) revealBtn.style.display = '';
         }

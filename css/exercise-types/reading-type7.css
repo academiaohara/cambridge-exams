@@ -224,19 +224,27 @@
 }
 
 .reading-type7-answer-block.rt7-show-correct {
-  border-color: #8b5cf6;
-  background: var(--ex-feedback-bg, #fff);
-  color: #5b21b6;
+  border-color: var(--ex-duo-purple, #ce82ff);
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  color: var(--ex-duo-purple-text, #5b21b6);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 /* "Show correct answer" toggle: purple highlight for key + inserted sentence (text + sentence cards) */
 .reading-type7-gap-pill.rt7-pill-show-correct {
   border-color: var(--ex-duo-purple, #ce82ff);
   background: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 .reading-type7-gap-pill.rt7-pill-show-correct .reading-type7-gap-circle {
-  color: var(--ex-duo-purple-text, #5b21b6) !important;
+  background: #fff;
+  color: var(--ex-duo-purple-dark, #a855f7) !important;
+  border-color: #fff;
+}
+
+.reading-type7-gap-pill.rt7-pill-show-correct .reading-type7-gap-letter {
+  color: #fff;
 }
 
 .reading-type7-toggle-card.reading-type7-toggle-card-show-correct {
@@ -251,11 +259,12 @@
   color: #fff;
 }
 
-/* Explanation mode: orange border for correct block, and added correct-answer block for incorrect */
+/* Explanation mode: purple border for correct block, and added correct-answer block for incorrect */
 .reading-type7-answer-block.correct.rt7-explanation,
 .reading-type7-explanation-block {
-  border-color: #f97316;
-  background: var(--ex-feedback-bg, #fff);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 /* Letter badge shown after checking (legacy, kept for safety) */
@@ -494,8 +503,9 @@
 
 .reading-type7-gap--inline .reading-type7-answer-block.correct.rt7-explanation,
 .reading-type7-gap--inline .reading-type7-explanation-block {
-  background: transparent;
-  border-color: #f97316;
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 /* ===== Paragraph / sentence list (toggle second tab, B2 P6 / C1 P7) ===== */
@@ -662,9 +672,18 @@
   border: 2px solid var(--ex-duo-blue, #1cb0f6);
   border-radius: 14px;
   box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
-  padding: 2px 4px 2px 10px;
+  padding: 2px 8px 2px 4px;
   gap: 6px;
   flex-shrink: 0;
+  align-items: center;
+}
+
+.b1-reading4 .reading-type7-gap-letter {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
 }
 
 .b1-reading4 .reading-type7-gap-pill:hover:not(.correct):not(.incorrect):not(.rt7-pill-show-correct) {
@@ -688,6 +707,16 @@
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-size: 0.82rem;
   font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.b1-reading4 .reading-type7-gap-circle .reading-type7-gap-num {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 .b1-reading4 .reading-type7-gap-pill.has-value .reading-type7-gap-circle {
@@ -717,74 +746,78 @@
   color: var(--ex-duo-text, #4b4b4b);
 }
 
-/* Post-correction: green / red / purple (Duolingo-style) */
+/* Post-correction: green / red / purple (Duolingo-style badge + tinted sentence box) */
 .b1-reading4 .reading-type7-gap-pill.correct {
-  background: #d1fae5;
-  border-color: var(--correct, #10b981);
-  box-shadow: 0 2px 0 #059669;
+  background: #58cc02;
+  border-color: #58a700;
+  box-shadow: 0 2px 0 #58a700;
   cursor: default;
-}
-
-.b1-reading4 .reading-type7-gap-pill.correct .reading-type7-gap-num {
-  color: #065f46;
 }
 
 .b1-reading4 .reading-type7-gap-pill.correct .reading-type7-gap-circle {
-  background: var(--correct, #10b981);
+  background: #fff;
+  color: #58a700;
+  border-color: #fff;
+}
+
+.b1-reading4 .reading-type7-gap-pill.correct .reading-type7-gap-letter {
   color: #fff;
-  border-color: #059669;
 }
 
 .b1-reading4 .reading-type7-gap-pill.incorrect {
-  background: #fee2e2;
-  border-color: var(--incorrect, #ef4444);
-  box-shadow: 0 2px 0 #dc2626;
+  background: #ff4b4b;
+  border-color: #ea2b2b;
+  box-shadow: 0 2px 0 #ea2b2b;
   cursor: default;
-}
-
-.b1-reading4 .reading-type7-gap-pill.incorrect .reading-type7-gap-num {
-  color: #991b1b;
 }
 
 .b1-reading4 .reading-type7-gap-pill.incorrect .reading-type7-gap-circle {
   background: #fff;
-  color: var(--incorrect, #ef4444);
-  border-color: var(--incorrect, #ef4444);
+  color: #ff4b4b;
+  border-color: #fff;
+}
+
+.b1-reading4 .reading-type7-gap-pill.incorrect .reading-type7-gap-letter {
+  color: #fff;
 }
 
 .b1-reading4 .reading-type7-gap-pill.rt7-pill-show-correct {
-  background: var(--ex-feedback-bg, #fff);
-  border-color: #8b5cf6;
-  box-shadow: 0 2px 0 #7c3aed;
+  background: var(--ex-duo-purple, #ce82ff);
+  border-color: var(--ex-duo-purple-dark, #a855f7);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
   cursor: default;
-}
-
-.b1-reading4 .reading-type7-gap-pill.rt7-pill-show-correct .reading-type7-gap-num {
-  color: #5b21b6;
 }
 
 .b1-reading4 .reading-type7-gap-pill.rt7-pill-show-correct .reading-type7-gap-circle {
   background: #fff;
-  color: #8b5cf6;
-  border-color: #8b5cf6;
+  color: var(--ex-duo-purple-dark, #a855f7);
+  border-color: #fff;
+}
+
+.b1-reading4 .reading-type7-gap-pill.rt7-pill-show-correct .reading-type7-gap-letter {
+  color: #fff;
 }
 
 .b1-reading4 .reading-type7-answer-block.correct {
-  background: var(--ex-feedback-bg, #fff);
-  border-color: var(--correct, #10b981);
-  box-shadow: 0 2px 0 #059669;
+  background: #ecfdf5;
+  border: 2px solid #58cc02;
+  border-width: 2px 2px 4px 2px;
+  box-shadow: none;
 }
 
 .b1-reading4 .reading-type7-answer-block.incorrect {
-  background: var(--ex-feedback-bg, #fff);
-  border-color: var(--incorrect, #ef4444);
-  box-shadow: 0 2px 0 #dc2626;
+  background: #fef2f2;
+  border: 2px solid #ff4b4b;
+  border-width: 2px 2px 4px 2px;
+  box-shadow: none;
 }
 
-.b1-reading4 .reading-type7-answer-block.rt7-show-correct {
-  background: var(--ex-feedback-bg, #fff);
-  border-color: #8b5cf6;
-  box-shadow: 0 2px 0 #7c3aed;
+.b1-reading4 .reading-type7-answer-block.rt7-show-correct,
+.b1-reading4 .reading-type7-answer-block.rt7-explanation {
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  border: 2px solid var(--ex-duo-purple, #ce82ff);
+  border-width: 2px 2px 4px 2px;
+  box-shadow: none;
 }
 
 /* Keep full pill + sentence row even when gap is inline in the passage */

@@ -93,25 +93,73 @@
 }
 
 /* ---- Explanation mode styles ---- */
-.question-nav-row.explanation-mode .question-nav-cell {
+.question-nav-row.explanation-mode .question-nav-cell:not(.correct):not(.incorrect):not(.unanswered-checked):not(.show-correct) {
   border: 2px solid var(--ex-duo-border, #e5e5e5);
   background: #fff;
   box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
   color: var(--ex-duo-text, #4b4b4b);
 }
 
-.question-nav-row.explanation-mode .question-nav-cell:hover {
-  background: var(--ex-duo-blue-light, #ddf4ff);
-  border-color: var(--ex-duo-blue, #1cb0f6);
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
-  color: var(--ex-duo-blue-dark, #1899d6);
+.question-nav-row.explanation-mode .question-nav-cell:not(.correct):not(.incorrect):not(.unanswered-checked):not(.show-correct):hover {
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 3px 0 var(--ex-duo-purple-dark, #a855f7);
+  color: var(--ex-duo-purple-dark, #a855f7);
+  transform: translateY(-1px);
+}
+
+/* Keep correct/incorrect colours on non-active question cells in explanation mode */
+.question-nav-row.explanation-mode .question-nav-cell.correct:not(.explanation-active) {
+  background: #58cc02;
+  border-color: #58a700;
+  box-shadow: 0 3px 0 #58a700;
+  color: #fff;
+}
+
+.question-nav-row.explanation-mode .question-nav-cell.incorrect:not(.explanation-active),
+.question-nav-row.explanation-mode .question-nav-cell.unanswered-checked:not(.explanation-active) {
+  background: #ff4b4b;
+  border-color: #ea2b2b;
+  box-shadow: 0 3px 0 #ea2b2b;
+  color: #fff;
+}
+
+.question-nav-row.explanation-mode .question-nav-cell.show-correct:not(.explanation-active) {
+  background: var(--ex-duo-purple, #ce82ff);
+  border-color: var(--ex-duo-purple-dark, #a855f7);
+  box-shadow: 0 3px 0 var(--ex-duo-purple-dark, #a855f7);
+  color: #fff;
+}
+
+.question-nav-row.explanation-mode .question-nav-cell.correct:not(.explanation-active):hover {
+  background: #58cc02;
+  border-color: #58a700;
+  box-shadow: 0 3px 0 #58a700;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.question-nav-row.explanation-mode .question-nav-cell.incorrect:not(.explanation-active):hover,
+.question-nav-row.explanation-mode .question-nav-cell.unanswered-checked:not(.explanation-active):hover {
+  background: #ff4b4b;
+  border-color: #ea2b2b;
+  box-shadow: 0 3px 0 #ea2b2b;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.question-nav-row.explanation-mode .question-nav-cell.show-correct:not(.explanation-active):hover {
+  background: var(--ex-duo-purple, #ce82ff);
+  border-color: var(--ex-duo-purple-dark, #a855f7);
+  box-shadow: 0 3px 0 var(--ex-duo-purple-dark, #a855f7);
+  color: #fff;
   transform: translateY(-1px);
 }
 
 .question-nav-cell.explanation-active {
-  background: var(--ex-duo-blue, #1cb0f6) !important;
-  border-color: var(--ex-duo-blue-dark, #1899d6) !important;
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6) !important;
+  background: var(--ex-duo-purple, #ce82ff) !important;
+  border-color: var(--ex-duo-purple-dark, #a855f7) !important;
+  box-shadow: 0 3px 0 var(--ex-duo-purple-dark, #a855f7) !important;
   color: #fff !important;
 }
 
