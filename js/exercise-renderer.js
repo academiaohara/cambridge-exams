@@ -715,11 +715,23 @@
     /** B1 Reading Part 2: in explanation mode, nav shows question numbers to switch explanations. */
     renderB1Reading2ExplanationQuestionNav: function(exercise) {
       var questions = (exercise && exercise.content && exercise.content.questions) || [];
+      var answers = AppState.currentExercise && AppState.currentExercise.answers ? AppState.currentExercise.answers : {};
+      var isChecked = AppState.answersChecked;
+      var questionType = 'multiple-matching';
       var activeQ = typeof AppState !== 'undefined' ? AppState.explanationActiveQuestion : null;
       var cells = '';
       questions.forEach(function(q) {
         var qNum = q.number;
         var cls = 'question-nav-cell question-nav-letter';
+        var stateClass = typeof Utils !== 'undefined'
+          ? Utils.getQuestionNumberStateClass({
+            answer: answers[qNum],
+            correct: q.correct,
+            isChecked: isChecked,
+            questionType: questionType
+          })
+          : '';
+        if (stateClass) cls += ' ' + stateClass;
         if (activeQ != null && qNum === activeQ) cls += ' explanation-active';
         cells += '<button type="button" class="' + cls + '" data-qnum="' + qNum + '"' +
           ' onclick="ExerciseHandlers.selectExplanationQuestion(' + qNum + ')">' + qNum + '</button>';
