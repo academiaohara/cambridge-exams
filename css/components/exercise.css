@@ -796,16 +796,16 @@
 }
 
 .explanation-mode-text .evidence-explanation-mode {
-  color: var(--ex-duo-blue-dark, #1899d6);
-  background: var(--ex-duo-blue-light, #ddf4ff);
+  color: var(--ex-duo-purple-text, #5b21b6);
+  background: var(--ex-duo-purple-light, #f3e8ff);
   border-radius: 4px;
   padding: 0 2px;
   text-decoration: underline;
-  text-decoration-color: var(--ex-duo-blue, #1cb0f6);
+  text-decoration-color: var(--ex-duo-purple, #ce82ff);
   text-underline-offset: 2px;
 }
 
-/* Active question only: inner .evidence-core carries the orange highlight and a darker
+/* Active question only: inner .evidence-core carries the purple highlight and a darker
    double underline; avoid stacking .evidence-explanation-mode underline/background with
    .evidence-marker.evidence-active border. */
 .explanation-mode-text .evidence-wrap.evidence-active-q > .evidence-explanation-mode.evidence-marker.evidence-active {
@@ -829,13 +829,13 @@
 }
 
 .explanation-mode-text .evidence-wrap.evidence-active-q .evidence-explanation-mode .evidence-core {
-  background: var(--ex-duo-blue-light, #ddf4ff);
-  color: #0c6a96;
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  color: var(--ex-duo-purple-text, #5b21b6);
   border-radius: 4px;
   padding: 0 3px;
   font-weight: 700;
   text-decoration: underline double;
-  text-decoration-color: var(--ex-duo-blue, #1cb0f6);
+  text-decoration-color: var(--ex-duo-purple, #ce82ff);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
@@ -846,8 +846,8 @@
 }
 
 .evidence-marker.evidence-active {
-  background: var(--ex-duo-blue-light, #ddf4ff);
-  border-bottom: 2px solid var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  border-bottom: 2px solid var(--ex-duo-purple, #ce82ff);
   border-radius: 4px;
   padding: 0 1px;
   position: relative;
@@ -862,7 +862,7 @@
   transform: translateX(-50%);
   background: #fff;
   color: var(--ex-duo-text, #4b4b4b);
-  border: 2px solid var(--ex-duo-info-border, #1cb0f6);
+  border: 2px solid var(--ex-duo-purple, #ce82ff);
   padding: 10px 14px;
   border-radius: 12px;
   font-size: 0.82rem;
@@ -871,7 +871,7 @@
   min-width: 150px;
   display: none;
   z-index: 30;
-  box-shadow: 0 4px 0 color-mix(in srgb, var(--ex-duo-blue-dark, #1899d6) 35%, #e5e5e5);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--ex-duo-purple-dark, #a855f7) 35%, #e5e5e5);
   font-weight: 600;
   line-height: 1.45;
   pointer-events: none;
@@ -919,7 +919,7 @@
 .explanations-panel {
   background: #fff;
   border: 2px solid var(--ex-duo-border, #e5e5e5);
-  border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
+  border-top: 4px solid var(--ex-duo-purple, #ce82ff);
   border-radius: 16px;
   padding: 20px 22px 22px;
   margin-top: 24px;
@@ -946,8 +946,8 @@
   width: 32px;
   height: 32px;
   border-radius: 10px;
-  background: var(--ex-duo-blue-light, #ddf4ff);
-  color: var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  color: var(--ex-duo-purple-dark, #a855f7);
   font-size: 0.95rem;
   flex-shrink: 0;
 }
@@ -968,15 +968,15 @@
 }
 
 .explanation-card:hover {
-  border-color: var(--ex-duo-blue, #1cb0f6);
+  border-color: var(--ex-duo-purple, #ce82ff);
   transform: translateY(-1px);
-  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-blue-dark, #1899d6) 30%, #e5e5e5);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-purple-dark, #a855f7) 30%, #e5e5e5);
 }
 
 .explanation-card.explanation-active {
-  border-color: var(--ex-duo-blue, #1cb0f6);
-  background: var(--ex-duo-blue-light, #ddf4ff);
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  box-shadow: 0 3px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 .explanation-card-header {
@@ -989,7 +989,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-purple, #ce82ff);
   color: #fff;
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-weight: 800;
@@ -999,12 +999,12 @@
   border-radius: 10px;
   flex-shrink: 0;
   padding: 0 4px;
-  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 .explanation-card.explanation-active .explanation-card-number {
-  background: var(--ex-duo-orange, #f47417);
-  box-shadow: 0 2px 0 var(--ex-duo-orange-dark, #d45f0a);
+  background: var(--ex-duo-purple-dark, #a855f7);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--ex-duo-purple-dark, #a855f7) 80%, #000);
 }
 
 .explanation-card-text {
@@ -2213,7 +2213,7 @@ body:has(.dashboard-layout--exercise) #main-content {
 .dashboard-layout--exercise .explanations-panel {
   background: #fff;
   border: 2px solid var(--ex-duo-border);
-  border-top: 4px solid var(--ex-duo-blue);
+  border-top: 4px solid var(--ex-duo-purple);
   border-radius: 16px;
   box-shadow: 0 4px 0 var(--ex-duo-border);
 }
@@ -2225,9 +2225,9 @@ body:has(.dashboard-layout--exercise) #main-content {
 }
 
 .dashboard-layout--exercise .explanation-card.explanation-active {
-  border-color: var(--ex-duo-orange);
-  background: var(--ex-duo-orange-light);
-  box-shadow: 0 3px 0 var(--ex-duo-orange-dark);
+  border-color: var(--ex-duo-purple);
+  background: var(--ex-duo-purple-light);
+  box-shadow: 0 3px 0 var(--ex-duo-purple-dark);
 }
 
 .dashboard-layout--exercise .explanation-item {
