@@ -487,13 +487,18 @@
   box-shadow: 0 3px 0 #ea2b2b;
 }
 
-.b1-reading2-preview.has-text.b1-reading2-preview-key-mode {
+.b1-reading2-preview.has-text.b1-reading2-preview-key-mode,
+.b1-reading2-preview.has-text.b1-reading2-preview-key-mode.b1-reading2-preview-correct,
+.b1-reading2-preview.has-text.b1-reading2-preview-key-mode.b1-reading2-preview-incorrect {
   border-color: var(--ex-duo-purple, #ce82ff);
   background: linear-gradient(180deg, #faf5ff 0%, var(--ex-duo-purple-light, #f3e8ff) 100%);
   box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
+  color: var(--ex-duo-purple-text, #5b21b6);
 }
 
-.b1-reading2-preview-key-mode .b1-reading2-preview-letter {
+.b1-reading2-preview.has-text.b1-reading2-preview-key-mode .b1-reading2-preview-letter,
+.b1-reading2-preview.has-text.b1-reading2-preview-key-mode.b1-reading2-preview-correct .b1-reading2-preview-letter,
+.b1-reading2-preview.has-text.b1-reading2-preview-key-mode.b1-reading2-preview-incorrect .b1-reading2-preview-letter {
   background: var(--ex-duo-purple, #ce82ff);
   box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
