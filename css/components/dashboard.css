@@ -144,11 +144,65 @@
 }
 
 .confirm-dialog-header {
-  background: var(--confirm-duo-blue-light);
-  border-bottom: 2px solid color-mix(in srgb, var(--confirm-duo-blue) 22%, #e5e5e5);
-  padding: 24px 24px 20px;
+  display: none;
+}
+
+.confirm-dialog-prompt {
   display: flex;
-  justify-content: center;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 22px 22px 8px;
+}
+
+.confirm-dialog-mascot {
+  flex-shrink: 0;
+  width: 72px;
+  height: auto;
+  pointer-events: none;
+}
+
+.confirm-dialog-bubble {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  background: #fff;
+  border: 2px solid var(--confirm-duo-border);
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.confirm-dialog-bubble::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  bottom: 20px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 12px solid var(--confirm-duo-border);
+}
+
+.confirm-dialog-bubble::after {
+  content: '';
+  position: absolute;
+  left: -7px;
+  bottom: 21px;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 10px solid #fff;
+}
+
+.confirm-dialog-bubble p {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--confirm-duo-text);
+  margin: 0;
+  line-height: 1.5;
+  text-align: left;
 }
 
 .confirm-dialog-icon {
@@ -168,13 +222,7 @@
 }
 
 .confirm-dialog p {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--confirm-duo-text);
-  margin: 0;
-  padding: 22px 24px 8px;
-  line-height: 1.5;
-  text-align: center;
+  display: none;
 }
 
 .confirm-dialog-buttons {
@@ -419,19 +467,41 @@
 }
 
 /* ── Exam mode badge ── */
-.exam-mode-badge {
+.exam-mode-badge,
+.practice-mode-badge {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 3px 10px;
-  background: linear-gradient(135deg, #f59e0b, #ef4444);
-  color: white;
-  border-radius: 20px;
-  font-size: 0.72rem;
-  font-weight: 600;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   margin-left: 8px;
   vertical-align: middle;
   white-space: nowrap;
+  border: 2px solid transparent;
+}
+
+.exam-mode-badge {
+  background: #f3e8ff;
+  color: #6b21a8;
+  border-color: #ce82ff;
+  box-shadow: 0 2px 0 #a855f7;
+}
+
+.exam-mode-badge .material-symbols-outlined,
+.practice-mode-badge .material-symbols-outlined {
+  font-size: 0.95rem;
+}
+
+.practice-mode-badge {
+  background: #d7ffb8;
+  color: #166534;
+  border-color: #58cc02;
+  box-shadow: 0 2px 0 #58a700;
 }
 
 .mode-header {

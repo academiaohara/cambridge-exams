@@ -147,16 +147,26 @@
   justify-content: center;
   background: var(--ex-duo-blue, #1cb0f6);
   color: #fff;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   text-align: center;
   line-height: 1;
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   flex-shrink: 0;
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.b1-reading2-q-badge-correct {
+  background: #58cc02;
+  box-shadow: 0 2px 0 #58a700;
+}
+
+.b1-reading2-q-badge-incorrect {
+  background: #ff4b4b;
+  box-shadow: 0 2px 0 #ea2b2b;
 }
 
 .b1-reading2-person-content {
@@ -194,15 +204,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 42px;
-  height: 42px;
-  padding: 0 12px;
-  border-radius: 14px;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 12px;
   border: 2px solid var(--ex-duo-border, #e5e5e5);
   background: #fff;
-  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
   font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 800;
   color: var(--ex-duo-text, #4b4b4b);
   cursor: pointer;
@@ -253,22 +263,22 @@
 }
 
 .b1-reading2-chip-expl-show {
-  border-color: var(--ex-duo-blue, #1cb0f6) !important;
-  background: var(--ex-duo-blue-light, #ddf4ff) !important;
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6) !important;
-  color: var(--ex-duo-blue-dark, #1899d6) !important;
+  border-color: var(--ex-duo-purple, #ce82ff) !important;
+  background: var(--ex-duo-purple-light, #f3e8ff) !important;
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7) !important;
+  color: var(--ex-duo-purple-text, #5b21b6) !important;
 }
 
 .b1-reading2-chip-answer-toggle-correct,
 .b1-reading2-chip-key {
-  border-color: var(--ex-duo-blue, #1cb0f6) !important;
-  background: var(--ex-duo-blue-light, #ddf4ff) !important;
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6) !important;
-  color: var(--ex-duo-blue-dark, #1899d6) !important;
+  border-color: var(--ex-duo-purple, #ce82ff) !important;
+  background: var(--ex-duo-purple-light, #f3e8ff) !important;
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7) !important;
+  color: var(--ex-duo-purple-text, #5b21b6) !important;
 }
 
 .b1-reading2-chip-key:not(.b1-reading2-chip-selected) {
-  outline: 2px solid var(--ex-duo-blue, #1cb0f6);
+  outline: 2px solid var(--ex-duo-purple, #ce82ff);
   outline-offset: 1px;
 }
 
@@ -303,25 +313,29 @@
   white-space: nowrap;
 }
 
+.b1-reading2-picker-wrap[data-correct]::after,
 .b1-reading2-select-wrap[data-correct]::after {
   content: attr(data-correct);
   position: absolute;
-  bottom: 100%;
+  bottom: calc(100% + 8px);
   left: 0;
-  background: var(--primary-dark);
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  background: #fff;
+  color: var(--ex-duo-text, #4b4b4b);
+  border: 2px solid var(--ex-duo-purple, #ce82ff);
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
   white-space: nowrap;
-  margin-bottom: 8px;
   display: none;
   z-index: 20;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3px 0 var(--ex-duo-purple-dark, #a855f7);
+  pointer-events: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .b1-reading2-picker-wrap[data-correct]:hover::after,
   .b1-reading2-select-wrap[data-correct]:hover::after {
     display: block;
   }
@@ -420,12 +434,12 @@
   min-width: 2.75rem !important;
   height: 36px !important;
   padding: 0 28px 0 10px !important;
-  border: 2px solid var(--ex-duo-blue, #1cb0f6) !important;
-  background-color: var(--ex-duo-blue-light, #ddf4ff) !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%231899d6' d='M5 7L1 3h8z'/%3E%3C/svg%3E") !important;
+  border: 2px solid var(--ex-duo-purple, #ce82ff) !important;
+  background-color: var(--ex-duo-purple-light, #f3e8ff) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23a855f7' d='M5 7L1 3h8z'/%3E%3C/svg%3E") !important;
   background-repeat: no-repeat !important;
   background-position: right 8px center !important;
-  color: var(--ex-duo-blue-dark, #1899d6) !important;
+  color: var(--ex-duo-purple-text, #5b21b6) !important;
 }
 
 .explanation-mode-text .b1-reading2-preview {
@@ -507,14 +521,14 @@
 }
 
 .b1-reading2-preview.has-text.b1-reading2-preview-key-mode {
-  border-color: var(--ex-duo-blue, #1cb0f6);
-  background: linear-gradient(180deg, #f0f9ff 0%, var(--ex-duo-blue-light, #ddf4ff) 100%);
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  background: linear-gradient(180deg, #faf5ff 0%, var(--ex-duo-purple-light, #f3e8ff) 100%);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 .b1-reading2-preview-key-mode .b1-reading2-preview-letter {
-  background: var(--ex-duo-blue, #1cb0f6);
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  background: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 .b1-reading2-preview-inner {
@@ -528,16 +542,16 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  min-width: 42px;
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
+  min-width: 34px;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
   background: var(--ex-duo-blue, #1cb0f6);
   color: #fff;
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-weight: 800;
-  font-size: 1rem;
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  font-size: 0.85rem;
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .b1-reading2-preview-text {
@@ -599,12 +613,12 @@
   line-height: 1.55;
 }
 
-/* Footer toggle: show key answer in blue */
+/* Footer toggle: show key answer in purple */
 .b1-reading2-select:disabled.b1-reading2-select-answer-toggle-correct {
-  border-color: var(--ex-duo-blue, #1cb0f6) !important;
-  background-color: var(--ex-duo-blue-light, #ddf4ff) !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%231899d6' d='M5 7L1 3h8z'/%3E%3C/svg%3E") !important;
-  color: var(--ex-duo-blue-dark, #1899d6) !important;
+  border-color: var(--ex-duo-purple, #ce82ff) !important;
+  background-color: var(--ex-duo-purple-light, #f3e8ff) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23a855f7' d='M5 7L1 3h8z'/%3E%3C/svg%3E") !important;
+  color: var(--ex-duo-purple-text, #5b21b6) !important;
 }
 
 /* B1 Reading Part 2 — letter nav row (A–H quick access) */

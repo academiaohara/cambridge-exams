@@ -713,8 +713,30 @@
 .eq-options.eq-options-rows {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   margin-top: 4px;
+}
+
+.eq-options.eq-options-rows .eq-option {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 6px 12px;
+  border-radius: 12px;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  background: #fff;
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.eq-options.eq-options-rows .eq-option.eq-option-correct {
+  border-color: var(--ex-duo-purple, #ce82ff);
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
+  color: var(--ex-duo-purple-text, #5b21b6);
 }
 
 /* Options layout: columns for Parts 6, 8 */
@@ -722,32 +744,32 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 6px;
+  gap: 6px;
+  margin-top: 4px;
 }
 
 .eq-options.eq-options-columns .eq-option {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 42px;
-  height: 42px;
-  padding: 0 12px;
-  border-radius: 14px;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 12px;
   border: 2px solid var(--ex-duo-border, #e5e5e5);
   background: #fff;
-  box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
   font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 800;
   color: var(--ex-duo-text, #4b4b4b);
 }
 
 .eq-options.eq-options-columns .eq-option.eq-option-correct {
-  border-color: var(--ex-duo-blue, #1cb0f6);
-  background: var(--ex-duo-blue-light, #ddf4ff);
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
-  color: var(--ex-duo-blue-dark, #1899d6);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
+  color: var(--ex-duo-purple-text, #5b21b6);
 }
 
 /* Evidence [n]...[/n]: explanation styling only under .explanation-mode-text */
@@ -886,11 +908,11 @@
 }
 
 .eq-option.eq-option-correct {
-  background: var(--ex-duo-orange-light, #fff0e6);
-  color: var(--ex-duo-orange-dark, #d45f0a);
-  border-color: var(--ex-duo-orange, #f47417);
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  color: var(--ex-duo-purple-text, #5b21b6);
+  border-color: var(--ex-duo-purple, #ce82ff);
   font-weight: 700;
-  box-shadow: 0 2px 0 color-mix(in srgb, var(--ex-duo-orange-dark, #d45f0a) 30%, #e5e5e5);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 /* Explanations panel below exercise (Parts 5-8) */
@@ -1330,7 +1352,8 @@
   .exercise-subtitle,
   .exercise-badge,
   .mixed-mode-badge,
-  .exam-mode-badge {
+  .exam-mode-badge,
+  .practice-mode-badge {
     font-size: 0.72rem;
   }
 
@@ -1494,6 +1517,13 @@
   --ex-duo-orange-dark: #d45f0a;
   --ex-duo-orange-hover: #f6802a;
   --ex-duo-orange-light: #fff0e6;
+  --ex-duo-purple: #ce82ff;
+  --ex-duo-purple-dark: #a855f7;
+  --ex-duo-purple-light: #f3e8ff;
+  --ex-duo-purple-text: #5b21b6;
+  --ex-duo-practice: #58cc02;
+  --ex-duo-practice-dark: #58a700;
+  --ex-duo-practice-light: #d7ffb8;
   --ex-duo-border: #e5e5e5;
   --ex-duo-text: #4b4b4b;
   --ex-duo-text-muted: #afafaf;
@@ -2679,4 +2709,42 @@ body:has(.dashboard-layout--exercise) #main-content {
   .dashboard-layout--exercise .exercise-heading {
     font-size: 0.95rem;
   }
+}
+
+/* ── Duolingo-style hover hints (correct answer on incorrect gaps) ───── */
+.dashboard-layout--exercise .gap-box.incorrect::after,
+.dashboard-layout--exercise .reading-type1-incorrect[data-correct]::after,
+.dashboard-layout--exercise .reading-type2-gap.incorrect::after,
+.dashboard-layout--exercise .reading-type3-gap-inline.incorrect::after,
+.dashboard-layout--exercise .reading-type4-inline-wrap.incorrect::after,
+.dashboard-layout--exercise .reading-type7-gap-check-row[data-correct]::after,
+.dashboard-layout--exercise .listening-type2-gap.incorrect::after {
+  background: #fff !important;
+  color: var(--ex-duo-text, #4b4b4b) !important;
+  border: 2px solid var(--ex-duo-purple, #ce82ff) !important;
+  border-radius: 12px !important;
+  padding: 8px 12px !important;
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.82rem !important;
+  box-shadow: 0 3px 0 var(--ex-duo-purple-dark, #a855f7) !important;
+  text-decoration: none !important;
+}
+
+/* Show-correct answer mode: unified purple across exercise types */
+.dashboard-layout--exercise .reading-type1-show-correct,
+.dashboard-layout--exercise .reading-type2-show-correct,
+.dashboard-layout--exercise .reading-type3-show-correct,
+.dashboard-layout--exercise .reading-type4-show-correct,
+.dashboard-layout--exercise .reading-type4-inline-input.cu-input-show-correct,
+.dashboard-layout--exercise .listening-type2-input.cu-input-show-correct,
+.dashboard-layout--exercise .reading-type5-gap-trigger-show-correct,
+.dashboard-layout--exercise .reading-type5-option-key,
+.dashboard-layout--exercise .b1-reading2-chip-key,
+.dashboard-layout--exercise .b1-reading2-chip-answer-toggle-correct,
+.dashboard-layout--exercise .b1-reading2-chip-expl-show,
+.dashboard-layout--exercise .b1-reading2-select-answer-toggle-correct {
+  border-color: var(--ex-duo-purple, #ce82ff) !important;
+  background: var(--ex-duo-purple-light, #f3e8ff) !important;
+  color: var(--ex-duo-purple-text, #5b21b6) !important;
 }

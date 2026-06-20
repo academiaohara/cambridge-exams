@@ -360,7 +360,7 @@
               </div>
               <div class="exercise-header-meta">
                 <span class="exercise-badge">${Utils.getExerciseBadgeLabel(section, displayPart, exercise)}</span>
-                ${isMixed ? `<span class="mixed-mode-badge"><span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle">shuffle</span> Random Test</span>` : (AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><i class="fas fa-file-alt"></i> Exam Mode</span>` : '')}
+                ${isMixed ? `<span class="mixed-mode-badge"><span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle">shuffle</span> Random Test</span>` : (AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><span class="material-symbols-outlined" style="font-size:0.95rem">timer</span> Simulation</span>` : `<span class="practice-mode-badge"><span class="material-symbols-outlined" style="font-size:0.95rem">school</span> Practice</span>`)}
               </div>
             </div>
             
@@ -620,23 +620,32 @@
         var safe = self.processEvidenceMarkers(self._escapeHtmlAttr(body).replace(/\n/g, '<br>'));
         var sel = userAnswer[qNum] || '';
         var cardCls = 'reading-type8-text-card b1-reading2-person-card';
+        var badgeCls = 'b1-reading2-q-badge';
         if (isChecked) {
-          if (!sel) cardCls += ' b1-reading2-row-unanswered';
-          else if (sel === q.correct) cardCls += ' b1-reading2-row-correct';
-          else cardCls += ' b1-reading2-row-incorrect';
+          if (!sel) {
+            cardCls += ' b1-reading2-row-incorrect';
+            badgeCls += ' b1-reading2-q-badge-incorrect';
+          } else if (sel === q.correct) {
+            cardCls += ' b1-reading2-row-correct';
+            badgeCls += ' b1-reading2-q-badge-correct';
+          } else {
+            cardCls += ' b1-reading2-row-incorrect';
+            badgeCls += ' b1-reading2-q-badge-incorrect';
+          }
         }
         var selClass = 'b1-reading2-select b1-reading2-select-sr';
         if (isChecked) {
-          if (!sel) selClass += ' b1-reading2-select-unanswered';
+          if (!sel) selClass += ' b1-reading2-select-incorrect';
           else if (sel === q.correct) selClass += ' b1-reading2-select-correct';
           else selClass += ' b1-reading2-select-incorrect';
         }
         html += '<div class="' + cardCls + '" data-qnum="' + qNum + '">';
         html += '<div class="b1-reading2-person-header">';
-        html += '<span class="b1-reading2-q-badge">' + qNum + '</span>';
+        html += '<span class="' + badgeCls + '">' + qNum + '</span>';
         html += '</div>';
         html += '<div class="reading-type8-text-content b1-reading2-person-content">' + safe + '</div>';
-        html += '<div class="b1-reading2-picker-wrap" data-qnum="' + qNum + '">';
+        html += '<div class="b1-reading2-picker-wrap" data-qnum="' + qNum + '"' +
+          (isChecked && sel !== q.correct ? ' data-correct="✓ ' + q.correct + '"' : '') + '>';
         html += '<span class="b1-reading2-picker-label">Choose an option</span>';
         html += '<div class="b1-reading2-chip-row" role="group" aria-label="Choose option for question ' + qNum + '">';
         letters.forEach(function(L) {

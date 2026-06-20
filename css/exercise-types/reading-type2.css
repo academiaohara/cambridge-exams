@@ -235,15 +235,17 @@
 .b1-reading6 .reading-type2-gap--duo.incorrect::after {
   content: attr(data-correct);
   position: absolute;
-  bottom: calc(100% + 6px);
+  bottom: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
-  background: var(--ex-duo-text, #4b4b4b);
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 10px;
-  font-size: 0.8rem;
+  background: #fff;
+  color: var(--ex-duo-text, #4b4b4b);
+  border: 2px solid var(--ex-duo-purple, #ce82ff);
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.82rem;
   font-weight: 700;
+  font-family: 'Nunito', sans-serif;
   white-space: nowrap;
   display: none;
   z-index: 50;

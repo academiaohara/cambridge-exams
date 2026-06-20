@@ -201,8 +201,10 @@
 }
 
 .reading-type3-show-correct {
-  color: #1e3a8a;
-  font-weight: 500;
+  color: var(--ex-duo-purple-text, #5b21b6);
+  font-weight: 600;
+  border-color: var(--ex-duo-purple, #ce82ff);
+  background: var(--ex-duo-purple-light, #f3e8ff);
 }
 
 .reading-type3-incorrect {
