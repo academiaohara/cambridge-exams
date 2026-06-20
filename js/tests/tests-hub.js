@@ -610,20 +610,20 @@
 
       if (typeof AccessControl !== 'undefined') {
         if (!AccessControl.canAccessWritingSpeaking().allowed) {
-          return { locked: true, click: 'Auth._showAuthModal()', label: 'Sign in required', badge: '<span class="tests-lock-badge">Sign in</span>' };
+          return { locked: true, click: 'Auth._showAuthModal()', label: 'Sign in required', badge: '' };
         }
         if (AccessControl.isWritingSpeakingSectionLocked(sectionKey)) {
           var click = AccessControl.isPromotionMode()
             ? 'AccessControl.showRateLimitModal({ feature: \'' + sectionKey + '\' })'
             : 'Dashboard.showExamsUpgradeGate()';
-          return { locked: true, click: click, label: 'Daily limit', badge: '<span class="tests-lock-badge">Limit</span>' };
+          return { locked: true, click: click, label: 'Daily limit', badge: '' };
         }
       } else if (!AppState.isAuthenticated) {
-        return { locked: true, click: 'Auth._showAuthModal()', label: 'Sign in required', badge: '<span class="tests-lock-badge">Sign in</span>' };
+        return { locked: true, click: 'Auth._showAuthModal()', label: 'Sign in required', badge: '' };
       } else if (!AppState.hasExamsPack) {
         var trialKey = sectionKey === 'writing' ? 'cambridge_free_writing_used' : 'cambridge_free_speaking_used';
         if (localStorage.getItem(trialKey)) {
-          return { locked: true, click: 'Dashboard.showExamsUpgradeGate()', label: 'Upgrade required', badge: '<span class="tests-lock-badge">Premium</span>' };
+          return { locked: true, click: 'Dashboard.showExamsUpgradeGate()', label: 'Upgrade required', badge: '' };
         }
         return { locked: false, click: '', label: '', badge: '<span class="tests-free-badge">1 free try</span>' };
       }

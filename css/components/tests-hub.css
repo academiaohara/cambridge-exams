@@ -922,7 +922,6 @@
   display: block;
 }
 
-.tests-lock-badge,
 .tests-free-badge {
   font-size: 0.65rem;
   font-weight: 800;
@@ -930,14 +929,6 @@
   letter-spacing: 0.04em;
   padding: 3px 7px;
   border-radius: 999px;
-}
-
-.tests-lock-badge {
-  background: #fee2e2;
-  color: #b91c1c;
-}
-
-.tests-free-badge {
   background: #dbeafe;
   color: #1d4ed8;
 }
