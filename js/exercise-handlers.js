@@ -434,10 +434,10 @@
         }
 
         if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui &&
-            typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.renderB1Reading2LetterNav) {
+            typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.renderB1Reading2QuestionNav) {
           var b1Nav = document.getElementById('question-nav-row');
           if (b1Nav) {
-            b1Nav.outerHTML = ExerciseRenderer.renderB1Reading2LetterNav(AppState.currentExercise);
+            b1Nav.outerHTML = ExerciseRenderer.renderB1Reading2QuestionNav(AppState.currentExercise);
           }
           if (typeof QuestionNav !== 'undefined' && QuestionNav.updateAllNavCells) {
             QuestionNav.updateAllNavCells();

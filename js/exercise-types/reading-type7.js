@@ -29,29 +29,28 @@
         }
 
         let html = `<span class="reading-type7-gap${inlineClass}" data-qnum="${qNum}"${inlineAttr}>`;
-        html += `<span class="reading-type7-gap-check-row"${!showCorrectOnly && !isCorrect ? ` data-correct="✓ ${question.correct}"` : ''}>`;
+        html += `<span class="reading-type7-gap-check-row"${!showCorrectOnly && !isCorrect && userAnswer ? ` data-correct="${question.correct}"` : ''}>`;
         html += `<span class="${pillClass}">`;
         html += `<span class="reading-type7-gap-num">${qNum}</span>`;
         html += `<span class="reading-type7-gap-circle">${displayLetter || '—'}</span>`;
         html += `</span>`;
         var hideRevealBtn = typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading();
-        if (!showCorrectOnly && !isCorrect && !hideRevealBtn) {
+        if (!showCorrectOnly && !isCorrect && userAnswer && !hideRevealBtn) {
           html += `<button class="reading-type7-reveal-btn" onclick="ReadingType7.toggleReveal(${qNum}, this)" data-revealed="false">`;
           html += `<i class="fas fa-eye"></i>`;
           html += `<span class="reading-type7-correct-circle">${question.correct}</span>`;
           html += `</button>`;
         }
         html += `</span>`;
-        var blockClass = showCorrectOnly
-          ? 'reading-type7-answer-block rt7-show-correct'
-          : 'reading-type7-answer-block ' + (isCorrect ? 'correct' : 'incorrect');
-        html += `<span class="${blockClass}" data-qnum-block="${qNum}">`;
         if (displayLetter) {
+          var blockClass = showCorrectOnly
+            ? 'reading-type7-answer-block rt7-show-correct'
+            : 'reading-type7-answer-block ' + (isCorrect ? 'correct' : 'incorrect');
+          html += `<span class="${blockClass}" data-qnum-block="${qNum}">`;
           html += `<span class="reading-type7-para-text">${this._escapeHtml(this._stripBrackets(chosenText))}</span>`;
-        } else {
-          html += `<span class="reading-type7-para-empty">—</span>`;
+          html += `</span>`;
         }
-        html += `</span></span>`;
+        html += `</span>`;
         return html;
       }
       

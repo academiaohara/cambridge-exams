@@ -593,10 +593,53 @@
   color: var(--ex-duo-purple-text, #5b21b6) !important;
 }
 
-/* B1 Reading Part 2 — letter nav row (A–H quick access) */
-.b1-reading2-letter-nav {
+/* B1 Reading Part 2 — question nav row */
+.b1-reading2-question-nav {
   padding: 10px 0 14px;
   gap: 8px;
+}
+
+/* B1 Reading Part 2 — purple explanation UI */
+.b1-reading2-header .toggle-view-btn.btn-explanation-mode {
+  border-color: var(--ex-duo-purple, #ce82ff);
+  color: var(--ex-duo-purple-dark, #a855f7);
+}
+
+.b1-reading2-header .toggle-view-btn.btn-explanation-mode:hover {
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  color: var(--ex-duo-purple-dark, #a855f7);
+}
+
+.b1-reading2-header .toggle-view-btn.btn-explanation-mode.explanation-active {
+  background: var(--ex-duo-purple, #ce82ff);
+  border-color: var(--ex-duo-purple-dark, #a855f7);
+  color: #fff;
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
+}
+
+.b1-reading2-header .toggle-view-btn.btn-explanation-mode.explanation-active:hover {
+  background: #d9a0ff;
+  border-color: var(--ex-duo-purple-dark, #a855f7);
+  color: #fff;
+}
+
+.exercise-main-layout:has(.reading-text-enhanced--b1r2) .explanation-question-display.sticky-mode {
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-purple-dark, #a855f7) 35%, #e5e5e5);
+}
+
+.exercise-main-layout:has(.reading-text-enhanced--b1r2) .explanation-question-display.sticky-mode .eq-number {
+  background: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
+}
+
+.question-nav-row-b1r2-expl .question-nav-cell.explanation-active {
+  background: var(--ex-duo-purple, #ce82ff) !important;
+  border-color: var(--ex-duo-purple-dark, #a855f7) !important;
+  box-shadow: 0 3px 0 var(--ex-duo-purple-dark, #a855f7) !important;
+  color: #fff !important;
 }
 
 .b1-reading2-letter-modal-card {

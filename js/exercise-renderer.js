@@ -184,7 +184,7 @@
         `;
 
         questionNavRowHTML = isB1Reading2Pet
-          ? this.renderB1Reading2LetterNav(exercise)
+          ? this.renderB1Reading2QuestionNav(exercise)
           : this.renderQuestionNavRow(exercise, partConfig);
         const cTitle = exercise.content?.title || '';
         const cSubtitle = (section === 'reading' && (part === 5 || (AppState.currentLevel === 'B1' && part === 3)))
@@ -275,7 +275,7 @@
       // B1 reading part 1 (multiple-choice-text with questions only, no passage).
       if (needsToggle || hasTranscript) {
         contentHeaderHTML = `
-          <div class="content-section-header${duoReading4Gapped ? ' b1-reading4-header' : ''}">
+          <div class="content-section-header${duoReading4Gapped ? ' b1-reading4-header' : ''}${exercise._b1PetReading2Ui ? ' b1-reading2-header' : ''}">
             ${questionNavRowHTML}
             ${toggleHTML}
           </div>
@@ -686,28 +686,30 @@
       return html;
     },
 
-    /** B1 Reading Part 2: quick access to notices A–H (opens read-only detail). */
-    renderB1Reading2LetterNav: function(exercise) {
-      var texts = exercise.content.texts || {};
-      var keys = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
+    /** B1 Reading Part 2: question-number nav with correct/incorrect state colours. */
+    renderB1Reading2QuestionNav: function(exercise) {
+      var questions = exercise.content.questions || [];
       var answers = AppState.currentExercise && AppState.currentExercise.answers ? AppState.currentExercise.answers : {};
       var isChecked = AppState.answersChecked;
-      var used = {};
-      Object.keys(answers).forEach(function(k) {
-        var v = answers[k];
-        if (v) used[v] = true;
-      });
+      var questionType = 'multiple-matching';
       var cells = '';
-      keys.forEach(function(letter) {
+      questions.forEach(function(q) {
+        var qNum = q.number;
+        var answer = answers[qNum];
         var cls = 'question-nav-cell question-nav-letter';
-        if (isChecked) {
-          cls += used[letter] ? ' answered' : '';
-        } else if (used[letter]) {
-          cls += ' answered';
-        }
-        cells += '<button type="button" class="' + cls + '" data-letter="' + letter + '" onclick="QuestionNav.openReading2Letter(\'' + letter + '\')">' + letter + '</button>';
+        var stateClass = typeof Utils !== 'undefined'
+          ? Utils.getQuestionNumberStateClass({
+            answer: answer,
+            correct: q.correct,
+            isChecked: isChecked,
+            questionType: questionType
+          })
+          : '';
+        if (stateClass) cls += ' ' + stateClass;
+        cells += '<button type="button" class="' + cls + '" data-qnum="' + qNum + '"' +
+          ' onclick="QuestionNav.openQuestion(' + qNum + ')">' + qNum + '</button>';
       });
-      return '<div class="question-nav-row question-nav-row-letters b1-reading2-letter-nav" id="question-nav-row" data-nav-letters="1">' + cells + '</div>';
+      return '<div class="question-nav-row b1-reading2-question-nav" id="question-nav-row">' + cells + '</div>';
     },
 
     /** B1 Reading Part 2: in explanation mode, nav shows question numbers to switch explanations. */

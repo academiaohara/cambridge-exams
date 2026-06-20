@@ -103,7 +103,7 @@
         var escapedCorrect = this._escapeAttr(String(question.correct || ''));
         var answerText = userAnswer || '_____';
         var escapedAnswer = this._escapeHtml(answerText);
-        var dataAttr = !isCorrect ? ' data-correct="✓ ' + this._escapeHtml(question.correct) + '"' : '';
+        var dataAttr = !isCorrect ? ' data-correct="' + this._escapeHtml(question.correct) + '"' : '';
         var innerChecked = '<span class="cu-hint-pill-num">' + qNum + '</span>' +
           '<span class="reading-type2-answered-word ' + colorClass + '">' + escapedAnswer + '</span>';
         return (
@@ -144,7 +144,7 @@
         inputClass += isCorrect ? ' correct' : ' incorrect';
         if (!isCorrect) {
           gapClass += ' incorrect';
-          gapDataAttr = ` data-correct="✓ ${question.correct}"`;
+          gapDataAttr = ` data-correct="${question.correct}"`;
         }
         var dataAttrs = ` data-student-value="${(userAnswer || '').replace(/"/g, '&quot;')}" data-check-class="${isCorrect ? 'correct' : 'incorrect'}" data-correct-raw="${String(question.correct || '').replace(/"/g, '&quot;')}"`;
       } else {
@@ -230,7 +230,7 @@
             gap.setAttribute('data-check-class', colorClass);
             ReadingType2._clearAltBadge(gap);
             gap.className = 'reading-type2-gap reading-type2-gap--duo' + (!isCorrect ? ' incorrect' : '');
-            if (!isCorrect) gap.setAttribute('data-correct', '✓ ' + escapedCorrect);
+            if (!isCorrect) gap.setAttribute('data-correct', escapedCorrect);
             else gap.removeAttribute('data-correct');
             var inner = '<span class="cu-hint-pill-num">' + q.number + '</span>' +
               '<span class="reading-type2-answered-word ' + colorClass + '">' + escapedAnswerText + '</span>';
@@ -252,7 +252,7 @@
             const gap = input.closest('.reading-type2-gap');
             if (gap) {
               gap.classList.add('incorrect');
-              gap.setAttribute('data-correct', '✓ ' + q.correct);
+              gap.setAttribute('data-correct', q.correct);
             }
           }
         }
@@ -286,7 +286,7 @@
           answerEl.classList.add(checkClass);
           if (checkClass === 'reading-type2-incorrect') {
             gap.classList.add('incorrect');
-            gap.setAttribute('data-correct', '✓ ' + correctRaw);
+            gap.setAttribute('data-correct', correctRaw);
           } else {
             gap.classList.remove('incorrect');
             gap.removeAttribute('data-correct');

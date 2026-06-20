@@ -147,6 +147,7 @@
       ex.type = ex.type || 'multiple-matching';
       ex.totalQuestions = qs.length;
       ex._b1PetReading2Ui = true;
+      ex._b1PetHideAnswerToggle = true;
       mergeDescription(ex);
       ex._b1PetScoring = true;
       return;
@@ -173,6 +174,8 @@
       texts: textsObj,
       questions: qs
     };
+    ex._b1PetReading2Ui = true;
+    ex._b1PetHideAnswerToggle = true;
     mergeDescription(ex);
     ex._b1PetScoring = true;
   }
