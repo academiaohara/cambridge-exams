@@ -677,6 +677,14 @@
 .explanation-question-display.sticky-mode {
   position: sticky;
   top: 0;
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-purple-dark, #a855f7) 35%, #e5e5e5);
+}
+
+.explanation-question-display.sticky-mode .eq-number {
+  background: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 .eq-number {
@@ -828,16 +836,26 @@
   text-underline-offset: inherit;
 }
 
+/* Inactive markers within the active question stay plain until .evidence-active is applied. */
+.explanation-mode-text .evidence-explanation-mode.evidence-marker:not(.evidence-active) {
+  color: inherit;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
 .explanation-mode-text .evidence-wrap.evidence-active-q .evidence-explanation-mode .evidence-core {
   background: var(--ex-duo-purple-light, #f3e8ff);
   color: var(--ex-duo-purple-text, #5b21b6);
   border-radius: 4px;
   padding: 0 3px;
   font-weight: 700;
-  text-decoration: underline double;
+  text-decoration: underline wavy;
   text-decoration-color: var(--ex-duo-purple, #ce82ff);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
+  box-decoration-break: clone;
 }
 
 /* Evidence markers in text (rendered from [n]...[/n]) */
@@ -2223,6 +2241,17 @@ body:has(.dashboard-layout--exercise) #main-content {
   background: var(--ex-duo-blue-light);
   border-color: var(--ex-duo-info-border);
   box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-blue-dark) 35%, #e5e5e5);
+}
+
+.dashboard-layout--exercise .explanation-question-display.sticky-mode {
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-purple-dark, #a855f7) 35%, #e5e5e5);
+}
+
+.dashboard-layout--exercise .explanation-question-display.sticky-mode .eq-number {
+  background: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 .dashboard-layout--exercise .explanation-card.explanation-active {
