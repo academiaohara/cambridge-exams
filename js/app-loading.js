@@ -2,8 +2,8 @@
 (function () {
   'use strict';
 
-  var DEFAULT_MIN_MS = 5000;
-  var INLINE_MIN_MS = 3000;
+  var DEFAULT_MIN_MS = 0;
+  var INLINE_MIN_MS = 0;
   var _pageStart = Date.now();
 
   var TIPS = [
