@@ -2815,16 +2815,33 @@
 .mixed-mode-badge {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 3px 10px;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  color: white;
-  border-radius: 20px;
-  font-size: 0.72rem;
-  font-weight: 600;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   margin-left: 8px;
   vertical-align: middle;
   white-space: nowrap;
+  border: 2px solid transparent;
+  background: #e0f2fe;
+  color: #0369a1;
+  border-color: #1cb0f6;
+  box-shadow: 0 2px 0 #1899d6;
+}
+
+.mixed-mode-badge .material-symbols-outlined {
+  font-size: 0.95rem;
+}
+
+.mixed-mode-badge--simulation {
+  background: #f3e8ff;
+  color: #6b21a8;
+  border-color: #ce82ff;
+  box-shadow: 0 2px 0 #a855f7;
 }
 
 /* ── Mixed-test progress bar (exercise-info row) ── */

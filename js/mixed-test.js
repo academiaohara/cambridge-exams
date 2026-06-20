@@ -126,6 +126,34 @@
       _saveCompleted(set);
     },
 
+    /** True when the plan item at index is the last one in its section group. */
+    isLastInSection: function (index) {
+      var plan = this.getStoredPlan();
+      if (!plan || index < 0 || index >= plan.length) return false;
+      var section = plan[index].section;
+      for (var i = index + 1; i < plan.length; i++) {
+        if (plan[i].section === section) return false;
+      }
+      return true;
+    },
+
+    /** True when the plan item at index is the last one in the full plan. */
+    isLastInPlan: function (index) {
+      var plan = this.getStoredPlan();
+      return !!plan && index >= plan.length - 1;
+    },
+
+    /** Returns indices of all plan items belonging to a section. */
+    getSectionIndices: function (section) {
+      var plan = this.getStoredPlan();
+      if (!plan) return [];
+      var indices = [];
+      for (var i = 0; i < plan.length; i++) {
+        if (plan[i].section === section) indices.push(i);
+      }
+      return indices;
+    },
+
     /** Generate a brand-new random test. Options: { refreshPage, skipStart } */
     generateNew: function (opts) {
       opts = opts || {};
@@ -136,7 +164,6 @@
       }
       AppState.mixedTestPlan = plan;
       AppState.mixedTestCurrentIndex = 0;
-      AppState.currentMode = 'practice';
 
       try { localStorage.setItem(_PLAN_KEY, JSON.stringify(plan)); } catch (e) { /* ignore */ }
       try { localStorage.setItem(_COMPLETED_KEY, JSON.stringify([])); } catch (e) { /* ignore */ }
@@ -156,7 +183,6 @@
       if (!plan || !plan.length) { this.generateNew(); return; }
       AppState.mixedTestPlan = plan;
       AppState.mixedTestCurrentIndex = 0;
-      AppState.currentMode = 'practice';
 
       try { localStorage.setItem(_COMPLETED_KEY, JSON.stringify([])); } catch (e) { /* ignore */ }
 
@@ -176,7 +202,6 @@
         Exercise.savePartState();
       }
       AppState.mixedTestCurrentIndex = Math.max(0, Math.min(index, plan.length - 1));
-      AppState.currentMode = 'practice';
 
       this._openCurrent();
     },
@@ -195,12 +220,20 @@
       if (!this.isActive()) return;
       var item = AppState.mixedTestPlan[AppState.mixedTestCurrentIndex];
       if (!item) return;
+      AppState.examFullMode = AppState.currentMode === 'exam';
+      if (AppState.examFullMode && typeof Exercise !== 'undefined') {
+        AppState.sectionElapsedSeconds = Exercise.loadSectionTimerState(item.examId, item.section);
+      }
       Exercise.openPart(item.examId, item.section, item.part);
     },
 
     /** Navigate to the next exercise in the plan. */
     goToNext: function () {
       if (!this.isActive()) return;
+      if (AppState.examFullMode && this.isLastInSection(AppState.mixedTestCurrentIndex)) {
+        this.finishSection();
+        return;
+      }
       this.markItemComplete(AppState.mixedTestCurrentIndex);
       Exercise.savePartState();
       AppState.mixedTestCurrentIndex++;
@@ -209,6 +242,29 @@
       } else {
         this._openCurrent();
       }
+    },
+
+    /** Finish the current section in simulation mode and show the section report. */
+    finishSection: function () {
+      if (!this.isActive()) return;
+      this.markItemComplete(AppState.mixedTestCurrentIndex);
+      if (typeof Exercise !== 'undefined' && typeof Exercise.showMixedSectionComplete === 'function') {
+        Exercise.showMixedSectionComplete(AppState.currentSection);
+      }
+    },
+
+    /** Continue to the next section after a mixed section report. */
+    continueToNextSection: function () {
+      if (!this.isActive()) return;
+      var idx = AppState.mixedTestCurrentIndex + 1;
+      if (idx >= AppState.mixedTestPlan.length) {
+        this.finish();
+        return;
+      }
+      AppState.mixedTestCurrentIndex = idx;
+      AppState.examFullMode = AppState.currentMode === 'exam';
+      AppState.sectionElapsedSeconds = 0;
+      this._openCurrent();
     },
 
     /** Navigate to the previous exercise in the plan. */

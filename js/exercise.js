@@ -93,6 +93,9 @@
     },
     
     getSectionTimerKey: function(examId, section) {
+      if (window.MixedTest && MixedTest.isActive()) {
+        return 'cambridge_mixed_' + AppState.currentLevel + '_' + section + '_sectimer';
+      }
       return `cambridge_${AppState.currentMode}_${AppState.currentLevel}_${examId}_${section}_sectimer`;
     },
     
@@ -390,6 +393,9 @@
       AppState.currentPart = part;
       AppState.currentExamId = examId;
       AppState.answersChecked = false;
+      if (window.MixedTest && MixedTest.isActive()) {
+        AppState.examFullMode = AppState.currentMode === 'exam';
+      }
       if (document.body) document.body.classList.remove('answers-checked-app');
       AppState.answerViewMode = 'student';
       AppState.currentPartScore = 0;
@@ -435,6 +441,9 @@
       
       const loadingExam = EXAMS_DATA[AppState.currentLevel]?.find(e => e.id === examId);
       const loadingIsMixed = window.MixedTest && MixedTest.isActive();
+      const loadingMixedIdx = loadingIsMixed ? AppState.mixedTestCurrentIndex : -1;
+      const loadingMixedLastInSection = loadingIsMixed && MixedTest.isLastInSection(loadingMixedIdx);
+      const loadingMixedLastInPlan = loadingIsMixed && MixedTest.isLastInPlan(loadingMixedIdx);
       const loadingTotalParts = loadingIsMixed
         ? AppState.mixedTestPlan.length
         : (loadingExam?.sections[section]?.total || 1);
@@ -445,10 +454,20 @@
         loadingFooterHTML += `<button class="btn-check" disabled><i class="fas fa-check"></i> <span data-i18n="checkAnswers">Check answers</span></button>`;
         loadingFooterHTML += `<button class="btn-reset" disabled><i class="fas fa-redo-alt"></i> <span data-i18n="reset">Reset</span></button>`;
       }
-      if (loadingDisplayPart > 1 && (!loadingIsExamMode || AppState.examFullMode)) {
+      if ((loadingIsMixed ? loadingMixedIdx > 0 : loadingDisplayPart > 1) && (!loadingIsExamMode || AppState.examFullMode)) {
         loadingFooterHTML += `<button class="btn-prev" disabled><i class="fas fa-chevron-left"></i> <span data-i18n="previous">Previous</span></button>`;
       }
-      if (loadingDisplayPart < loadingTotalParts) {
+      if (loadingIsMixed) {
+        if (!loadingMixedLastInSection) {
+          loadingFooterHTML += `<button class="btn-next" disabled><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
+        } else if (AppState.examFullMode) {
+          loadingFooterHTML += `<button class="btn-next btn-finish-section" disabled><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
+        } else if (loadingMixedLastInPlan) {
+          loadingFooterHTML += `<button class="btn-next btn-finish-section" disabled><span>Finish Test</span> <i class="fas fa-check"></i></button>`;
+        } else {
+          loadingFooterHTML += `<button class="btn-next" disabled><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
+        }
+      } else if (loadingDisplayPart < loadingTotalParts) {
         loadingFooterHTML += `<button class="btn-next" disabled><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
       } else if (AppState.examFullMode) {
         loadingFooterHTML += `<button class="btn-next btn-finish-section" disabled><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
@@ -788,6 +807,38 @@
       // Now render the full section complete screen with per-part breakdown
       this._renderSectionComplete(examId, currentSection);
     },
+
+    showMixedSectionComplete: async function(section) {
+      if (Timer.timerInterval) {
+        clearInterval(Timer.timerInterval);
+        Timer.timerInterval = null;
+      }
+
+      this.savePartState();
+      if (!AppState.answersChecked && AppState.currentExercise && section !== 'writing' && section !== 'speaking') {
+        ExerciseHandlers.checkAnswers();
+        this.savePartState();
+      }
+
+      var loadingHtml = `
+        <div class="section-report section-report--loading">
+          <div class="section-report-loading">
+            <div class="section-report-loading-icon"><i class="fas fa-spinner fa-spin"></i></div>
+            <h2>Calculating results…</h2>
+            <p>Checking your answers and building your section report.</p>
+          </div>
+        </div>
+      `;
+      if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.setCenterContent) {
+        ExerciseRenderer.setCenterContent(loadingHtml, false);
+      } else {
+        var content = document.getElementById('main-content');
+        content.innerHTML = loadingHtml;
+      }
+
+      await this._autoCheckMixedSectionParts(section);
+      this._renderMixedSectionComplete(section);
+    },
     
     _autoCheckAllParts: async function(examId, section) {
       var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
@@ -824,6 +875,43 @@
         }
         
         this.markPartCompleted(examId, section, i);
+      }
+    },
+
+    _autoCheckMixedSectionParts: async function(section) {
+      if (!window.MixedTest || !MixedTest.isActive()) return;
+      var indices = MixedTest.getSectionIndices(section);
+      var isWriting = section === 'writing';
+      var isSpeaking = section === 'speaking';
+
+      for (var i = 0; i < indices.length; i++) {
+        var planIdx = indices[i];
+        var item = AppState.mixedTestPlan[planIdx];
+        MixedTest.markItemComplete(planIdx);
+        var savedState = this.loadPartState(item.examId, section, item.part);
+        var sectionKey = item.examId + '_' + section;
+        if (!AppState.sectionScores[sectionKey]) AppState.sectionScores[sectionKey] = {};
+
+        if (!savedState) {
+          var key = this.getStorageKey(item.examId, section, item.part);
+          this._persistPartStateBlob(key, { answers: {}, answersChecked: true, partScore: 0, elapsedSeconds: 0 });
+          AppState.sectionScores[sectionKey][item.part] = 0;
+        } else if (!savedState.answersChecked) {
+          if (isWriting) {
+            await this._evaluateWritingPart(item.examId, section, item.part, savedState);
+          } else if (isSpeaking) {
+            await this._evaluateSpeakingPart(item.examId, section, item.part, savedState);
+          } else {
+            await this._checkNonWritingPart(item.examId, section, item.part, savedState);
+          }
+          var updated = this.loadPartState(item.examId, section, item.part);
+          AppState.sectionScores[sectionKey][item.part] = updated ? (updated.partScore || 0) : 0;
+        } else {
+          AppState.sectionScores[sectionKey][item.part] = savedState.partScore || 0;
+          if (!isWriting && !isSpeaking && !savedState.questionOutcomes) {
+            await this._backfillQuestionOutcomes(item.examId, section, item.part, savedState);
+          }
+        }
       }
     },
     
@@ -1245,6 +1333,134 @@
       } else {
         html += '<button type="button" class="btn-finish-section" onclick="Exercise.showFinalResults(\'' + examId + '\')">'
           + '<i class="fas fa-trophy"></i> Final results'
+          + '</button>';
+      }
+
+      html += ''
+        + '    <button type="button" class="btn-prev" onclick="Exercise.closeExercise()">'
+        + '      <i class="fas fa-home"></i> Back'
+        + '    </button>'
+        + '  </div>'
+        + '</div>';
+
+      if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.setCenterContent) {
+        ExerciseRenderer.setCenterContent(html, false);
+      } else {
+        var content = document.getElementById('main-content');
+        content.innerHTML = html;
+      }
+    },
+
+    _renderMixedSectionComplete: function(section) {
+      if (!window.MixedTest || !MixedTest.isActive()) return;
+      var indices = MixedTest.getSectionIndices(section);
+      var sectionLabels = { reading: 'Reading', listening: 'Listening', writing: 'Writing', speaking: 'Speaking' };
+      var sectionName = sectionLabels[section] || section;
+      var sectionTitle = typeof Utils !== 'undefined' && Utils.getSectionTitle
+        ? Utils.getSectionTitle(section)
+        : sectionName.toUpperCase();
+      var levelName = typeof Utils !== 'undefined' && Utils.getLevelName
+        ? Utils.getLevelName(AppState.currentLevel)
+        : (AppState.currentLevel || 'C1');
+      var sectionScore = 0;
+      var sectionTotal = 0;
+      var partsHTML = '';
+
+      indices.forEach(function(planIdx) {
+        var item = AppState.mixedTestPlan[planIdx];
+        var partState = Exercise.loadPartState(item.examId, section, item.part);
+        var partScore = partState ? (partState.partScore || 0) : 0;
+        var partConfig = CONFIG.getPartConfig(section, item.part);
+        var partTotal = partConfig ? (partConfig.maxMarks || partConfig.total) : 0;
+        sectionScore += partScore;
+        sectionTotal += partTotal;
+        var cellsHTML = Exercise._buildQuestionCellsHTML(partState, partScore, partConfig, section);
+
+        partsHTML += ''
+          + '<div class="section-report-part-card">'
+          + '  <div class="section-report-part-head">'
+          + '    <span class="section-report-part-label">'
+          + '      Part ' + item.part
+          + '      <button type="button" class="btn-review-part btn-review-part--icon" onclick="MixedTest.startAtIndex(' + planIdx + ')" title="Review" aria-label="Review Part ' + item.part + '">'
+          + '        <i class="fas fa-eye"></i>'
+          + '      </button>'
+          + '    </span>'
+          + '    <span class="section-report-part-score">' + partScore + '<span class="section-report-part-score-sep">/</span>' + partTotal + '</span>'
+          + '  </div>'
+          + '  ' + cellsHTML
+          + '</div>';
+      });
+
+      var cambridgeHTML = '';
+      if (typeof ScoreCalculator !== 'undefined' && ScoreCalculator.getMixedSectionReportStats && ScoreCalculator.buildReportSummaryHTML) {
+        var stats = ScoreCalculator.getMixedSectionReportStats(section);
+        cambridgeHTML = ScoreCalculator.buildReportSummaryHTML(stats, 'ScoreCalculator.showLiveSectionResults()', {
+          rawScore: sectionScore,
+          rawTotal: sectionTotal
+        });
+      }
+
+      var lastIdx = indices[indices.length - 1];
+      var hasNextSection = lastIdx < AppState.mixedTestPlan.length - 1;
+      var nextItem = hasNextSection ? AppState.mixedTestPlan[lastIdx + 1] : null;
+      var nextSectionName = nextItem
+        ? (sectionLabels[nextItem.section] || nextItem.section)
+        : '';
+      var mixedBadgeClass = AppState.currentMode === 'exam' ? ' mixed-mode-badge--simulation' : '';
+      var mixedBadgeIcon = AppState.currentMode === 'exam' ? 'timer' : 'shuffle';
+      var mixedBadgeLabel = AppState.currentMode === 'exam' ? 'Simulation' : 'Random Test';
+
+      var navCells = '';
+      indices.forEach(function(planIdx) {
+        var item = AppState.mixedTestPlan[planIdx];
+        navCells += '<span class="part-nav-cell completed" title="Part ' + item.part + ' completed">' + item.part + '</span>';
+      });
+
+      var html = ''
+        + '<div class="section-report">'
+        + '  <div class="exercise-header">'
+        + '    <div class="exercise-header-top">'
+        + '      <h2 class="exercise-heading">' + levelName + ' - Random Test</h2>'
+        + '      <div class="exercise-header-right">'
+        + '        <div class="score-display">' + sectionScore + '/' + sectionTotal + '</div>'
+        + '        <div class="exercise-toolbar">'
+        + '          <button type="button" class="btn-exit" onclick="Exercise.closeExercise()" title="Close">'
+        + '            <i class="fas fa-times"></i>'
+        + '          </button>'
+        + '        </div>'
+        + '      </div>'
+        + '    </div>'
+        + '    <div class="exercise-header-meta">'
+        + '      <span class="exercise-badge">' + sectionTitle + ' — Report</span>'
+        + '      <span class="mixed-mode-badge' + mixedBadgeClass + '"><span class="material-symbols-outlined">' + mixedBadgeIcon + '</span> ' + mixedBadgeLabel + '</span>'
+        + '    </div>'
+        + '  </div>'
+        + '  <div class="exercise-info section-report-info">'
+        + '    <div class="exercise-info-left"><div class="part-nav-row section-report-part-nav">' + navCells + '</div></div>'
+        + '    <div class="exercise-info-right">'
+        + '      <span class="section-report-status"><i class="fas fa-check-circle"></i> Section complete</span>'
+        + '      <div class="part-score-display section-report-raw-pill">' + sectionScore + '/' + sectionTotal + ' raw</div>'
+        + '    </div>'
+        + '  </div>'
+        + '  <div class="exercise-description section-report-banner">'
+        + '    <p><strong>' + sectionName + ' finished.</strong> Review your Cambridge level, per-part breakdown and raw score below.</p>'
+        + '  </div>'
+        + '  <div class="section-report-body">'
+        + cambridgeHTML
+        + '    <div class="section-report-parts">'
+        + '      <h3 class="section-report-parts-title"><i class="fas fa-list-check"></i> Breakdown by part</h3>'
+        + '      <div class="section-report-parts-grid">' + partsHTML + '</div>'
+        + '    </div>'
+        + '  </div>'
+        + '  <div class="exercise-footer section-report-actions">';
+
+      if (hasNextSection) {
+        html += '<button type="button" class="btn-finish-section" onclick="MixedTest.continueToNextSection()">'
+          + 'Continue to ' + nextSectionName + ' <i class="fas fa-chevron-right"></i>'
+          + '</button>';
+      } else {
+        html += '<button type="button" class="btn-finish-section" onclick="MixedTest.finish()">'
+          + '<i class="fas fa-trophy"></i> Finish test'
           + '</button>';
       }
 

@@ -492,6 +492,134 @@
       return this._getBestScoreFromModes(examId, section, part, false);
     },
 
+    getMixedLiveSectionScore: function(examId, section, part) {
+      if (AppState.currentExamId === examId && AppState.currentSection === section && AppState.currentPart === part) {
+        return AppState.currentPartScore || 0;
+      }
+      var sectionKey = examId + '_' + section;
+      if (AppState.sectionScores[sectionKey] && AppState.sectionScores[sectionKey][part] !== undefined) {
+        return AppState.sectionScores[sectionKey][part];
+      }
+      var key = 'cambridge_mixed_' + AppState.currentLevel + '_' + examId + '_' + section + '_' + part;
+      try {
+        var raw = localStorage.getItem(key);
+        if (raw) return JSON.parse(raw).partScore || 0;
+      } catch (e) { /* ignore */ }
+      return 0;
+    },
+
+    getMixedSectionReportStats: function(sectionKey) {
+      if (!window.MixedTest || !MixedTest.isActive()) return null;
+      var plan = AppState.mixedTestPlan;
+      var indices = MixedTest.getSectionIndices(sectionKey);
+      if (!plan || !indices.length) return null;
+
+      var self = this;
+      function scoreForPart(partNum) {
+        for (var i = 0; i < indices.length; i++) {
+          var item = plan[indices[i]];
+          if (item.part === partNum) {
+            return self.getMixedLiveSectionScore(item.examId, sectionKey, partNum);
+          }
+        }
+        return 0;
+      }
+
+      var skillScores = [];
+      var examType = AppState.currentLevel || 'C1';
+      var data = conversionData[examType];
+      if (!data) return null;
+      var hasUoE = data.skills.indexOf('Use of English') !== -1;
+
+      if (sectionKey === 'reading') {
+        if (hasUoE) {
+          var isB2 = examType === 'B2';
+          var uoeParts = isB2 ? [1, 2, 3, 4] : [2, 3, 4];
+          var readPartsList = isB2 ? [5, 6, 7] : [1, 5, 6, 7, 8];
+
+          var uoeRaw = 0; var uoeMax = 0;
+          uoeParts.forEach(function(p) {
+            uoeRaw += scoreForPart(p);
+            var cfg = CONFIG.getPartConfig('reading', p);
+            uoeMax += cfg ? (cfg.maxMarks || cfg.total || 0) : 0;
+          });
+          var uoeTableMax = data.tables['Use of English'][data.tables['Use of English'].length - 1][0];
+          var uoeNormalized = uoeMax > 0 ? Math.round(uoeRaw / uoeMax * uoeTableMax) : 0;
+          skillScores.push({
+            skill: 'Use of English',
+            raw: isB2 ? uoeNormalized : uoeRaw,
+            maxRaw: isB2 ? uoeTableMax : uoeMax,
+            scale: getScaleScore(uoeNormalized, data.tables['Use of English'])
+          });
+
+          var readRaw = 0; var readMax = 0;
+          readPartsList.forEach(function(p2) {
+            readRaw += scoreForPart(p2);
+            var cfg2 = CONFIG.getPartConfig('reading', p2);
+            readMax += cfg2 ? (cfg2.maxMarks || cfg2.total || 0) : 0;
+          });
+          var readTableMax = data.tables['Reading'][data.tables['Reading'].length - 1][0];
+          var readNormalized = readMax > 0 ? Math.round(readRaw / readMax * readTableMax) : 0;
+          skillScores.push({
+            skill: 'Reading',
+            raw: isB2 ? readNormalized : readRaw,
+            maxRaw: isB2 ? readTableMax : readMax,
+            scale: getScaleScore(readNormalized, data.tables['Reading'])
+          });
+        } else {
+          var rawTotal2 = 0;
+          var maxTotal2 = examType === 'B1' && typeof CONFIG.B1_READING_MAX_RAW === 'number'
+            ? CONFIG.B1_READING_MAX_RAW
+            : 0;
+          var readEnd2 = examType === 'B1' ? CONFIG.getReadingPartCount('B1') : 8;
+          for (var p3 = 1; p3 <= readEnd2; p3++) {
+            rawTotal2 += scoreForPart(p3);
+            if (examType !== 'B1') {
+              var cfg3b = CONFIG.getPartConfig('reading', p3);
+              maxTotal2 += cfg3b ? (cfg3b.maxMarks || cfg3b.total || 0) : 0;
+            }
+          }
+          var tableMax2 = data.tables['Reading'][data.tables['Reading'].length - 1][0];
+          var normalized2 = maxTotal2 > 0 ? Math.round(rawTotal2 / maxTotal2 * tableMax2) : 0;
+          skillScores.push({
+            skill: 'Reading',
+            raw: rawTotal2,
+            maxRaw: maxTotal2,
+            scale: getScaleScore(normalized2, data.tables['Reading'])
+          });
+        }
+      } else {
+        var skillName = sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
+        var parts = sectionKey === 'writing' ? [1, 2] : [1, 2, 3, 4];
+        var sRaw = 0; var sMax = 0;
+        parts.forEach(function(pp) {
+          sRaw += scoreForPart(pp);
+          sMax += (CONFIG.PART_TYPES[sectionKey + pp]?.total || 0);
+        });
+        if (data.tables[skillName]) {
+          var stMax = data.tables[skillName][data.tables[skillName].length - 1][0];
+          var sNorm = sMax > 0 ? Math.round(sRaw / sMax * stMax) : 0;
+          skillScores.push({
+            skill: skillName,
+            raw: sRaw,
+            maxRaw: sMax,
+            scale: getScaleScore(sNorm, data.tables[skillName])
+          });
+        }
+      }
+
+      if (!skillScores.length) return null;
+      var totalScale = 0;
+      skillScores.forEach(function(s) { totalScale += s.scale; });
+      var overall = Math.round(totalScale / skillScores.length);
+      return {
+        overall: overall,
+        gradeInfo: getGradeInfo(overall, examType),
+        examType: examType,
+        skillScores: skillScores
+      };
+    },
+
     getSectionMaxRaw: function(section) {
       if (section === 'reading') {
         var level = (typeof AppState !== 'undefined') ? AppState.currentLevel : 'C1';
@@ -927,15 +1055,13 @@
         html += '</button>';
       }
       if (hasRaw) {
-        html += '<div class="section-report-cambridge-raw">';
-        html += '<div class="section-report-summary-main">';
-        html += '<span class="section-report-summary-label">' + rawLabel + '</span>';
-        html += '<span class="section-report-summary-value section-report-summary-value--compact">' + rawScore + '<span>/' + rawTotal + '</span></span>';
-        html += '</div>';
-        html += '<div class="section-report-summary-bar-wrap">';
+        html += '<div class="section-report-cambridge-tile section-report-cambridge-tile--raw">';
+        html += '<span class="section-report-cambridge-tile-label">' + rawLabel + '</span>';
+        html += '<strong class="section-report-cambridge-tile-value section-report-cambridge-tile-value--score">' + rawScore + '<span>/' + rawTotal + '</span></strong>';
+        html += '<div class="section-report-summary-bar-wrap section-report-summary-bar-wrap--inline">';
         html += '<div class="section-report-summary-bar' + barClass + '" style="width:' + pct + '%"></div>';
         html += '</div>';
-        html += '<span class="section-report-summary-pct">' + pctLabel + '</span>';
+        html += '<span class="section-report-cambridge-tile-pct">' + pctLabel + '</span>';
         html += '</div>';
       }
       html += '</div>';

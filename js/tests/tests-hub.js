@@ -479,7 +479,6 @@
           : sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1);
         var iconName = typeof Utils !== 'undefined' ? Utils.getMaterialIcon(sectionKey) : 'menu_book';
         var artSrc = SECTION_ART[sectionKey];
-        var completedInSection = items.filter(function(o) { return completedSet.has(o.idx); }).length;
         var firstIncomplete = items.find(function(o) { return !completedSet.has(o.idx); });
         var startIdx = firstIncomplete ? firstIncomplete.idx : items[0].idx;
 
@@ -490,7 +489,6 @@
         html += '<div class="tests-section-card-title-row">';
         html += '<span class="material-symbols-outlined tests-section-card-icon">' + iconName + '</span>';
         html += '<h3 class="tests-section-card-title">' + _escape(label) + '</h3>';
-        html += '<span class="tests-random-section-progress">' + completedInSection + '/' + items.length + '</span>';
         html += '</div>';
 
         html += '<div class="tests-section-card-parts">';
