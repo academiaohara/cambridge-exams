@@ -339,10 +339,9 @@
     },
     
     toggleExplanations: function() {
-      const explanations = document.getElementById('explanations-section');
-      if (explanations) {
-        explanations.style.display = explanations.style.display === 'none' ? 'block' : 'none';
-      }
+      var panel = document.getElementById('explanations-panel');
+      if (!panel) return;
+      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
     },
 
     toggleExplanationMode: function() {

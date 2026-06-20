@@ -403,10 +403,7 @@
               </div>
             </div>
 
-            ${this.renderExplanationsSection(exercise)}
-            ${(needsToggle || hasTranscript) && !(typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading())
-              ? this.renderExplanationsPanel(exercise, partConfig)
-              : ''}
+            ${this.renderExplanationsPanel(exercise, partConfig)}
             
             <div class="exercise-footer">
               ${this.renderExerciseFooter(displayPart, totalParts)}
@@ -1567,38 +1564,11 @@
       `;
     },
     
-    renderExplanationsSection: function(exercise) {
-      // Collect all questions: from content.questions or from dual-matching tasks
-      var allQuestions = [];
-      if (exercise.content?.questions) {
-        allQuestions = exercise.content.questions;
-      } else if (exercise.content?.task1 && exercise.content?.task2) {
-        allQuestions = (exercise.content.task1.questions || []).concat(exercise.content.task2.questions || []);
-      }
-      if (allQuestions.length === 0) return '';
-      
-      let explanations = `
-        <div class="explanations-section" id="explanations-section" style="display: none;" lang="en">
-          <h3><i class="fas fa-lightbulb"></i> <span data-i18n="showExplanations">Show explanations</span></h3>
-      `;
-      
-      allQuestions.forEach(q => {
-        explanations += `
-          <div class="explanation-item" data-question="${q.number}">
-            <span class="explanation-item-number">${q.number}</span>
-            <span class="explanation-item-text">${q.explanation || 'No explanation available'}</span>
-          </div>
-        `;
-      });
-      
-      explanations += `</div>`;
-      return explanations;
-    },
-
-    renderExplanationsPanel: function(exercise, partConfig) {
-      var questions = exercise.content.questions || [];
-      // Also include questions from dual-matching tasks
-      if (questions.length === 0 && exercise.content.task1 && exercise.content.task2) {
+    renderExplanationsPanel: function(exercise) {
+      var questions = [];
+      if (exercise.content && exercise.content.questions) {
+        questions = exercise.content.questions;
+      } else if (exercise.content && exercise.content.task1 && exercise.content.task2) {
         questions = (exercise.content.task1.questions || []).concat(exercise.content.task2.questions || []);
       }
       if (questions.length === 0) return '';
@@ -1610,9 +1580,7 @@
         html += '<div class="explanation-card" data-qnum="' + q.number + '" onclick="ExerciseHandlers.selectExplanationQuestion(' + q.number + ')">';
         html += '<div class="explanation-card-header">';
         html += '<span class="explanation-card-number">' + q.number + '</span>';
-        if (q.explanation) {
-          html += '<span class="explanation-card-text">' + q.explanation + '</span>';
-        }
+        html += '<span class="explanation-card-text">' + (q.explanation || 'No explanation available') + '</span>';
         html += '</div>';
         html += '</div>';
       });
