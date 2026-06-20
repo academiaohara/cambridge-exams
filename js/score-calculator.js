@@ -893,20 +893,39 @@
       };
     },
 
-    buildReportSummaryHTML: function(stats, chartOnclick, label) {
+    buildReportSummaryHTML: function(stats, chartOnclick, options) {
       if (!stats) return '';
-      var heading = label || 'Cambridge level for this section';
+      var opts = options || {};
+      if (typeof options === 'string') {
+        opts = { label: options };
+      }
+      var rawScore = opts.rawScore;
+      var rawTotal = opts.rawTotal;
+      var rawDisplay = (rawScore !== undefined && rawTotal !== undefined)
+        ? rawScore + '/' + rawTotal
+        : '—';
+
       var html = '<div class="section-report-cambridge-card">';
-      html += '<div class="section-report-cambridge-main">';
-      html += '<span class="section-report-cambridge-label">' + heading + '</span>';
-      html += '<div class="section-report-grade">' + stats.gradeInfo.result + '</div>';
-      html += '<div class="section-report-meta">';
-      html += '<span class="section-report-pill"><span class="section-report-pill-label">Scale</span><strong>' + stats.overall + '</strong></span>';
-      html += '<span class="section-report-pill"><span class="section-report-pill-label">CEFR</span><strong>' + stats.gradeInfo.cefr + '</strong></span>';
-      html += '</div></div>';
+      html += '<div class="section-report-cambridge-tile">';
+      html += '<span class="section-report-cambridge-tile-label">Level</span>';
+      html += '<strong class="section-report-cambridge-tile-value">' + stats.gradeInfo.result + '</strong>';
+      html += '</div>';
+      html += '<div class="section-report-cambridge-tile">';
+      html += '<span class="section-report-cambridge-tile-label">Scale</span>';
+      html += '<strong class="section-report-cambridge-tile-value">' + stats.overall + '</strong>';
+      html += '</div>';
+      html += '<div class="section-report-cambridge-tile">';
+      html += '<span class="section-report-cambridge-tile-label">CEFR</span>';
+      html += '<strong class="section-report-cambridge-tile-value">' + stats.gradeInfo.cefr + '</strong>';
+      html += '</div>';
+      html += '<div class="section-report-cambridge-tile">';
+      html += '<span class="section-report-cambridge-tile-label">Raw score</span>';
+      html += '<strong class="section-report-cambridge-tile-value">' + rawDisplay + '</strong>';
+      html += '</div>';
       if (chartOnclick) {
-        html += '<button type="button" class="section-report-charts-btn" onclick="' + chartOnclick + '">';
-        html += '<i class="fas fa-chart-bar"></i> View charts';
+        html += '<button type="button" class="section-report-cambridge-tile section-report-cambridge-tile--charts" onclick="' + chartOnclick + '">';
+        html += '<i class="fas fa-chart-bar"></i>';
+        html += '<span class="section-report-cambridge-tile-label">View charts</span>';
         html += '</button>';
       }
       html += '</div>';

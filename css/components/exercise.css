@@ -1614,55 +1614,66 @@ body:has(.dashboard-layout--exercise) #main-content {
 
 .dashboard-layout--exercise .section-report-cambridge-card {
   border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  padding: 14px;
+}
+
+.dashboard-layout--exercise .section-report-cambridge-tile {
+  aspect-ratio: 1;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.dashboard-layout--exercise .section-report-cambridge-main {
-  flex: 1;
-  min-width: 200px;
-  text-align: center;
-}
-
-.dashboard-layout--exercise .section-report-cambridge-label {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #afafaf;
-  margin-bottom: 6px;
-}
-
-.dashboard-layout--exercise .section-report-charts-btn {
-  display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border: 2px solid var(--ex-duo-blue, #1cb0f6);
-  border-radius: 12px;
-  background: #fff;
-  color: var(--ex-duo-blue-dark, #1899d6);
-  font-family: inherit;
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
-  transition: all 0.15s;
-  flex-shrink: 0;
+  gap: 6px;
+  background: #f7f7f7;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 14px;
+  padding: 10px 8px;
+  text-align: center;
+  min-width: 0;
 }
 
-.dashboard-layout--exercise .section-report-charts-btn:hover {
+.dashboard-layout--exercise .section-report-cambridge-tile-label {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #afafaf;
+  line-height: 1.2;
+}
+
+.dashboard-layout--exercise .section-report-cambridge-tile-value {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: clamp(0.85rem, 2.4vw, 1.1rem);
+  font-weight: 800;
+  color: var(--ex-duo-text, #4b4b4b);
+  line-height: 1.1;
+  word-break: break-word;
+}
+
+.dashboard-layout--exercise .section-report-cambridge-tile--charts {
+  background: #fff;
+  color: var(--ex-duo-blue-dark, #1899d6);
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.dashboard-layout--exercise .section-report-cambridge-tile--charts i {
+  font-size: 1.15rem;
+  color: var(--ex-duo-blue, #1cb0f6);
+}
+
+.dashboard-layout--exercise .section-report-cambridge-tile--charts:hover {
   background: var(--ex-duo-blue-light, #ddf4ff);
 }
 
-.dashboard-layout--exercise .section-report-charts-btn:active {
+.dashboard-layout--exercise .section-report-cambridge-tile--charts:active {
   transform: translateY(2px);
   box-shadow: 0 1px 0 var(--ex-duo-blue-dark, #1899d6);
 }
@@ -1824,6 +1835,9 @@ body:has(.dashboard-layout--exercise) #main-content {
   font-weight: 800;
   font-size: 0.95rem;
   color: var(--ex-duo-text, #4b4b4b);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .dashboard-layout--exercise .section-report-part-score {
@@ -1876,27 +1890,24 @@ body:has(.dashboard-layout--exercise) #main-content {
   border-color: #d4d4d4;
 }
 
-.dashboard-layout--exercise .section-report-part-card .btn-review-part {
-  align-self: flex-start;
-  margin-top: auto;
-  padding: 6px 12px;
+.dashboard-layout--exercise .section-report-part-card .btn-review-part--icon {
+  padding: 4px 7px;
   border: 2px solid var(--ex-duo-blue, #1cb0f6);
-  border-radius: 10px;
+  border-radius: 8px;
   background: #fff;
   color: var(--ex-duo-blue, #1cb0f6);
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  font-size: 0.72rem;
   cursor: pointer;
   font-family: inherit;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  line-height: 1;
   transition: all 0.15s;
+  flex-shrink: 0;
 }
 
-.dashboard-layout--exercise .section-report-part-card .btn-review-part:hover {
+.dashboard-layout--exercise .section-report-part-card .btn-review-part--icon:hover {
   background: var(--ex-duo-blue, #1cb0f6);
   color: #fff;
 }
@@ -2646,12 +2657,7 @@ body:has(.dashboard-layout--exercise) #main-content {
   }
 
   .dashboard-layout--exercise .section-report-cambridge-card {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .dashboard-layout--exercise .section-report-charts-btn {
-    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .dashboard-layout--exercise .section-report-info .exercise-info-right {
