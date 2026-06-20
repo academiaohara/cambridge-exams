@@ -224,6 +224,10 @@ body.onboarding-open #app {
   padding: 40px;
 }
 
+.onboarding-placement-loading .app-loading-paws {
+  margin: 0 auto;
+}
+
 .onboarding-placement-content {
   flex: 1;
   overflow-y: auto;

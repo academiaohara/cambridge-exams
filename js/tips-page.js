@@ -144,7 +144,17 @@
       var levelMeta = LEVEL_META[level] || { label: level };
 
       // Show loading state
-      content.innerHTML = '<div class="tips-page"><div class="tips-loading"><i class="fas fa-circle-notch fa-spin"></i> Loading tips...</div></div>';
+      var loadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
+        ? AppLoadingScreen.markShown()
+        : Date.now();
+      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.wrapInlineLoading) {
+        content.innerHTML = '<div class="tips-page">' + AppLoadingScreen.wrapInlineLoading(
+          AppLoadingScreen.buildInlineMarkup({ showLogo: false, showTip: false, title: 'Loading tips...' }),
+          'tips-loading'
+        ) + '</div>';
+      } else {
+        content.innerHTML = '<div class="tips-page"><div class="tips-loading"><i class="fas fa-circle-notch fa-spin"></i> Loading tips...</div></div>';
+      }
 
       var tipsData = null;
       try {
@@ -155,6 +165,10 @@
         }
       } catch (e) {
         // handled below
+      }
+
+      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+        await AppLoadingScreen.waitMinDuration(loadingStart);
       }
 
       var html = '<div class="tips-page">';

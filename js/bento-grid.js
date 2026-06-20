@@ -940,10 +940,8 @@
     },
 
     _buildInlinePawLoadingHtml: function() {
-      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.getMarkup) {
-        return '<div class="cw-inline-loading" role="status" aria-live="polite" aria-label="Loading">' +
-          AppLoadingScreen.getMarkup() +
-        '</div>';
+      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.wrapInlineLoading) {
+        return AppLoadingScreen.wrapInlineLoading(AppLoadingScreen.getMarkup());
       }
       return '<div class="fe-loading"><div class="fe-spinner"></div></div>';
     },
@@ -1346,6 +1344,10 @@
         ? MainNav.buildMobileBottomNavHtml('crosswords')
         : '';
 
+      var loadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
+        ? AppLoadingScreen.markShown()
+        : Date.now();
+
       content.innerHTML =
         '<div class="dashboard-layout dashboard-layout--crossword-scroll">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
@@ -1395,6 +1397,10 @@
         bodyHtml = this._buildCrosswordDailyBannerHtml(progress) + this._buildCrosswordLevelCardsHtml(allEntries, progress);
       }
 
+      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+        await AppLoadingScreen.waitMinDuration(loadingStart);
+      }
+
       cwListPage.innerHTML = bodyHtml;
 
       if (activeLevel) {
@@ -1438,6 +1444,10 @@
       var mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
         ? MainNav.buildMobileBottomNavHtml('wordle')
         : '';
+
+      var loadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
+        ? AppLoadingScreen.markShown()
+        : Date.now();
 
       content.innerHTML =
         '<div class="dashboard-layout dashboard-layout--crossword-scroll dashboard-layout--wordle-scroll">' +
@@ -1486,6 +1496,10 @@
         }
       } else {
         bodyHtml = this._buildWordleLevelCardsHtml(allEntries, progress);
+      }
+
+      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+        await AppLoadingScreen.waitMinDuration(loadingStart);
       }
 
       wlListPage.innerHTML = bodyHtml;

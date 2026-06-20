@@ -179,7 +179,15 @@
       }
 
       showStep('placement');
-      if (loadingEl) loadingEl.style.display = 'flex';
+      var placementLoadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
+        ? AppLoadingScreen.markShown()
+        : Date.now();
+      if (loadingEl) {
+        loadingEl.style.display = 'flex';
+        if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.getPawsMarkup) {
+          loadingEl.innerHTML = AppLoadingScreen.getPawsMarkup();
+        }
+      }
       if (finishBtn) finishBtn.disabled = true;
       contentEl.innerHTML = '';
 
@@ -217,9 +225,12 @@
       } catch (e) {
         contentEl.innerHTML = '<div class="onboarding-placement-error">Could not load the placement test. You will start from Etapa 1.</div>';
         if (finishBtn) finishBtn.disabled = false;
-      } finally {
-        if (loadingEl) loadingEl.style.display = 'none';
       }
+
+      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+        await AppLoadingScreen.waitMinDuration(placementLoadingStart);
+      }
+      if (loadingEl) loadingEl.style.display = 'none';
     },
 
     finishPlacementTest: function () {

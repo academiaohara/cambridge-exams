@@ -118,6 +118,10 @@
         backOnclick = 'BentoGrid.openTests()';
       }
 
+      var loadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
+        ? AppLoadingScreen.markShown()
+        : Date.now();
+
       content.innerHTML =
         '<div class="dashboard-layout">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
@@ -160,6 +164,10 @@
         bodyHtml = BentoGrid._buildTestsPathMapHtml(exams, activeLevel);
       } else {
         bodyHtml = BentoGrid._buildTestsLevelCardsHtml();
+      }
+
+      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+        await AppLoadingScreen.waitMinDuration(loadingStart);
       }
 
       hubPage.innerHTML = bodyHtml;
