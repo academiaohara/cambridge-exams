@@ -22,19 +22,17 @@
         var chosenText = displayLetter ? (paragraphs[displayLetter] || '') : '';
 
         var pillClass;
-        var circleStyle = '';
         if (showCorrectOnly) {
           pillClass = 'reading-type7-gap-pill rt7-pill-show-correct';
         } else {
           pillClass = isCorrect ? 'reading-type7-gap-pill correct' : 'reading-type7-gap-pill incorrect';
-          circleStyle = ' style="color:' + (isCorrect ? '#065f46' : '#ef4444') + '"';
         }
 
         let html = `<span class="reading-type7-gap${inlineClass}" data-qnum="${qNum}"${inlineAttr}>`;
         html += `<span class="reading-type7-gap-check-row"${!showCorrectOnly && !isCorrect ? ` data-correct="✓ ${question.correct}"` : ''}>`;
         html += `<span class="${pillClass}">`;
         html += `<span class="reading-type7-gap-num">${qNum}</span>`;
-        html += `<span class="reading-type7-gap-circle"${circleStyle}>${displayLetter || '—'}</span>`;
+        html += `<span class="reading-type7-gap-circle">${displayLetter || '—'}</span>`;
         html += `</span>`;
         var hideRevealBtn = typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading();
         if (!showCorrectOnly && !isCorrect && !hideRevealBtn) {
