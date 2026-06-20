@@ -463,9 +463,9 @@
   margin-top: 12px;
   padding: 14px 16px;
   border-radius: 16px;
-  border: 2px solid var(--ex-duo-border, #e5e5e5);
-  background: #fff;
-  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-border, #e5e5e5) 70%, #fff);
+  border: 2px solid var(--ex-duo-purple, #ce82ff);
+  background: linear-gradient(180deg, #faf5ff 0%, var(--ex-duo-purple-light, #f3e8ff) 100%);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
   font-size: 0.95rem;
   line-height: 1.65;
   color: var(--ex-duo-text, #3c3c3c);
@@ -481,7 +481,7 @@
 
 .b1-reading2-solution-expl .reading-type8-text-title {
   font-size: 1rem;
-  color: var(--ex-duo-text, #3c3c3c);
+  color: var(--ex-duo-purple-text, #5b21b6);
 }
 
 .b1-reading2-solution-expl .b1-reading2-notice-body,
@@ -662,13 +662,13 @@
 }
 
 .explanation-mode-text:has(.b1-reading2-people) .evidence-wrap.evidence-active-q .evidence-explanation-mode .evidence-core {
-  background: rgba(28, 176, 246, 0.12);
-  color: #0c6a96;
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  color: var(--ex-duo-purple-text, #5b21b6);
   border-radius: 4px;
   padding: 0 3px;
   font-weight: 700;
   text-decoration: underline wavy;
-  text-decoration-color: var(--ex-duo-blue, #1cb0f6);
+  text-decoration-color: var(--ex-duo-purple, #ce82ff);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   box-decoration-break: clone;
