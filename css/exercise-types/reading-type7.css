@@ -636,6 +636,26 @@
 }
 
 /* ===== B1 Reading Part 4 — Duolingo-style gaps & sentences panel ===== */
+
+/* Badge + sentence row: same layout while answering and after correction */
+.b1-reading4 .reading-type7-gap:has(.reading-type7-selected-text),
+.b1-reading4 .reading-type7-gap:has(.reading-type7-answer-block) {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  vertical-align: middle;
+  margin: 6px 0;
+  max-width: 100%;
+}
+
+.b1-reading4 .reading-type7-gap-check-row {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
 .b1-reading4 .reading-type7-gap-pill {
   background: var(--ex-duo-blue-light, #ddf4ff);
   border: 2px solid var(--ex-duo-blue, #1cb0f6);
@@ -643,6 +663,7 @@
   box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
   padding: 2px 4px 2px 10px;
   gap: 6px;
+  flex-shrink: 0;
 }
 
 .b1-reading4 .reading-type7-gap-pill:hover:not(.correct):not(.incorrect):not(.rt7-pill-show-correct) {
@@ -674,16 +695,24 @@
   border-color: var(--ex-duo-blue-dark, #1899d6);
 }
 
-.b1-reading4 .reading-type7-selected-text {
-  margin-top: 8px;
+/* Sentence box — shared chrome for answering and post-correction (only theme color changes) */
+.b1-reading4 .reading-type7-selected-text,
+.b1-reading4 .reading-type7-answer-block {
+  flex: 1;
+  min-width: min(12rem, 100%);
+  margin-top: 0;
   padding: 10px 14px;
-  background: var(--ex-duo-blue-light, #ddf4ff);
   border: 2px solid var(--ex-duo-blue, #1cb0f6);
   border-radius: 14px;
   box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+  background: var(--ex-duo-blue-light, #ddf4ff);
   font-family: 'Nunito', sans-serif;
   font-size: 0.98rem;
   line-height: 1.55;
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.b1-reading4 .reading-type7-para-text {
   color: var(--ex-duo-text, #4b4b4b);
 }
 
@@ -739,78 +768,29 @@
   border-color: #8b5cf6;
 }
 
-.b1-reading4 .reading-type7-answer-block {
-  margin-top: 12px;
-  padding: 10px 14px;
-  border-radius: 14px;
-  border-width: 2px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.98rem;
-  line-height: 1.55;
-}
-
 .b1-reading4 .reading-type7-answer-block.correct {
-  background: #ecfdf5;
+  background: #d1fae5;
   border-color: var(--correct, #10b981);
   box-shadow: 0 2px 0 #059669;
-  color: #065f46;
 }
 
 .b1-reading4 .reading-type7-answer-block.incorrect {
-  background: #fef2f2;
+  background: #fee2e2;
   border-color: var(--incorrect, #ef4444);
   box-shadow: 0 2px 0 #dc2626;
-  color: #991b1b;
 }
 
 .b1-reading4 .reading-type7-answer-block.rt7-show-correct {
-  background: #faf5ff;
+  background: #f5f3ff;
   border-color: #8b5cf6;
   box-shadow: 0 2px 0 #7c3aed;
-  color: #5b21b6;
 }
 
+/* Keep full pill + sentence row even when gap is inline in the passage */
+.b1-reading4 .reading-type7-gap--inline .reading-type7-selected-text,
 .b1-reading4 .reading-type7-gap--inline .reading-type7-answer-block {
-  display: inline;
+  display: block;
   margin-top: 0;
-  padding: 2px 8px;
-  border-width: 2px;
-  border-radius: 10px;
-  box-shadow: none;
-  width: auto;
-}
-
-.b1-reading4 .reading-type7-gap--inline .reading-type7-answer-block.correct {
-  background: #ecfdf5;
-  border-color: var(--correct, #10b981);
-  box-shadow: none;
-  color: #065f46;
-}
-
-.b1-reading4 .reading-type7-gap--inline .reading-type7-answer-block.incorrect {
-  background: #fef2f2;
-  border-color: var(--incorrect, #ef4444);
-  box-shadow: none;
-  color: #991b1b;
-}
-
-.b1-reading4 .reading-type7-gap--inline .reading-type7-answer-block.rt7-show-correct {
-  background: #faf5ff;
-  border-color: #8b5cf6;
-  box-shadow: none;
-  color: #5b21b6;
-}
-
-.b1-reading4 .reading-type7-gap--inline .reading-type7-selected-text {
-  display: inline;
-  margin-top: 0;
-  padding: 2px 8px;
-  border-width: 2px;
-  border-radius: 10px;
-  box-shadow: none;
-  background: var(--ex-duo-blue-light, #ddf4ff);
-  border-color: var(--ex-duo-blue, #1cb0f6);
-  color: var(--ex-duo-text, #4b4b4b);
 }
 
 .b1-reading4 .reading-type7-reveal-btn {
