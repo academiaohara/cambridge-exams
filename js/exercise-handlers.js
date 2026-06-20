@@ -966,9 +966,6 @@
             sel.value = '';
             sel.classList.remove('b1-reading2-select-correct', 'b1-reading2-select-incorrect', 'b1-reading2-select-unanswered');
           });
-          document.querySelectorAll('.b1-reading2-picker-wrap').forEach(function(w) {
-            w.removeAttribute('data-correct');
-          });
           document.querySelectorAll('.b1-reading2-chip').forEach(function(chip) {
             chip.classList.remove('b1-reading2-chip-key');
           });
