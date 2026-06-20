@@ -135,7 +135,7 @@
       const isRevealed = btn.dataset.revealed === 'true';
       if (!isRevealed) {
         const correctText = paragraphs[question.correct] || '';
-        block.className = 'reading-type7-answer-block correct';
+        block.className = 'reading-type7-answer-block rt7-show-correct';
         block.innerHTML = `<span class="reading-type7-para-text">${ReadingType7._escapeHtml(ReadingType7._stripBrackets(correctText))}</span>`;
         btn.dataset.revealed = 'true';
         const icon = btn.querySelector('i');
