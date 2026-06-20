@@ -644,8 +644,7 @@
         html += '<span class="' + badgeCls + '">' + qNum + '</span>';
         html += '</div>';
         html += '<div class="reading-type8-text-content b1-reading2-person-content">' + safe + '</div>';
-        html += '<div class="b1-reading2-picker-wrap" data-qnum="' + qNum + '"' +
-          (isChecked && sel !== q.correct ? ' data-correct="✓ ' + q.correct + '"' : '') + '>';
+        html += '<div class="b1-reading2-picker-wrap" data-qnum="' + qNum + '">';
         html += '<span class="b1-reading2-picker-label">Choose an option</span>';
         html += '<div class="b1-reading2-chip-row" role="group" aria-label="Choose option for question ' + qNum + '">';
         letters.forEach(function(L) {
