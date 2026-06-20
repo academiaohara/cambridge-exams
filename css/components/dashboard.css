@@ -1812,9 +1812,17 @@
 }
 
 /* ── Grade Tracker Carousel ── */
+.grade-carousel-shell {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .grade-carousel-viewport {
   position: relative;
-  min-height: 100px;
+  min-height: 96px;
+  flex: 1;
+  min-width: 0;
 }
 
 .grade-carousel-slide {
@@ -1822,24 +1830,38 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 8px 0;
-  animation: gradeCarouselFadeIn 0.4s ease;
+  padding: 6px 0;
+  animation: gradeCarouselFadeIn 0.35s ease;
+}
+
+.grade-carousel-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.grade-carousel-metrics {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .grade-carousel-cefr {
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   font-weight: 900;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-style: italic;
-  line-height: 1.1;
-  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  line-height: 0.95;
+  text-align: left;
 }
 
 .grade-carousel-raw {
-  font-size: 1.2rem;
-  font-weight: 700;
-  line-height: 1.1;
-  text-align: center;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+  text-align: left;
+  color: #94a3b8;
 }
 
 .grade-carousel-skill {
@@ -1854,7 +1876,7 @@
   display: flex;
   justify-content: center;
   gap: 6px;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .grade-carousel-dot {

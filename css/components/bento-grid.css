@@ -1564,6 +1564,52 @@ margin-top: -2px;
   align-items: stretch;
   justify-content: center;
   width: 100%;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.grade-carousel-shell {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+}
+
+.grade-carousel-shell--single .grade-carousel-viewport {
+  padding: 0 4px;
+}
+
+.grade-carousel-nav {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border: 2px solid #e5e5e5;
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  background: #fff;
+  color: #afafaf;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.15s, color 0.15s, transform 0.1s;
+}
+
+.grade-carousel-nav .material-symbols-outlined {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.grade-carousel-nav:hover {
+  border-color: #1cb0f6;
+  border-bottom-color: #1899d6;
+  color: #1cb0f6;
+}
+
+.grade-carousel-nav:active {
+  transform: translateY(1px);
+  border-bottom-width: 2px;
 }
 
 .sw-grade .grade-carousel-slide {
@@ -1572,28 +1618,78 @@ margin-top: -2px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 8px 0 12px;
+  padding: 4px 0 8px;
   position: relative;
+  gap: 6px;
+}
+
+.grade-carousel-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 220px;
+}
+
+.grade-carousel-body--empty {
+  opacity: 0.75;
+}
+
+.grade-carousel-icon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--grade-skill-color, #1cb0f6) 16%, #fff);
+  border: 2px solid color-mix(in srgb, var(--grade-skill-color, #1cb0f6) 28%, #e5e5e5);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--grade-skill-color, #1cb0f6) 22%, #d0d0d0);
+}
+
+.grade-carousel-icon .material-symbols-outlined {
+  font-size: 1.55rem;
+  color: var(--grade-skill-color, #1cb0f6);
+  line-height: 1;
+}
+
+.grade-carousel-icon--empty {
+  --grade-skill-color: #afafaf;
+}
+
+.grade-carousel-metrics {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  min-width: 0;
 }
 
 .sw-grade .grade-carousel-raw {
-  font-size: 0.82rem;
-  font-weight: 700;
+  font-size: 0.78rem;
+  font-weight: 800;
   color: #afafaf;
-  margin-bottom: 2px;
+  line-height: 1;
+  margin: 0 0 1px;
+  letter-spacing: 0.02em;
 }
 
 .sw-grade .grade-carousel-cefr {
-  font-size: 2.2rem;
+  font-size: 2.35rem;
   font-weight: 900;
   color: #3c3c3c;
   font-family: 'Nunito', sans-serif;
-  line-height: 1;
+  line-height: 0.95;
   margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .sw-grade .grade-carousel-cefr.grade-carousel-cefr-dash {
   margin: 0;
+  font-size: 2rem;
 }
 
 .sw-grade .grade-carousel-skill-label {
@@ -1602,13 +1698,13 @@ margin-top: -2px;
   align-items: center;
   justify-content: center;
   position: static;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 800;
   color: #777;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   border-radius: 0;
-  margin: 8px 0 0;
+  margin: 0;
   padding: 0;
 }
 
@@ -1622,7 +1718,10 @@ margin-top: -2px;
 }
 
 .sw-grade .grade-carousel-dot {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.12);
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .sw-grade .grade-carousel-dot.active {
@@ -1632,7 +1731,15 @@ margin-top: -2px;
 .sw-grade .grade-carousel-dots {
   position: relative;
   z-index: 2;
-  margin-bottom: 10px;
+  margin: 6px 0 2px;
+}
+
+.grade-tracker-see-all {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
 }
 
 /* Calculator widget */
