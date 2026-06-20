@@ -360,7 +360,7 @@
               </div>
               <div class="exercise-header-meta">
                 <span class="exercise-badge">${Utils.getExerciseBadgeLabel(section, displayPart, exercise)}</span>
-                ${isMixed ? `<span class="mixed-mode-badge"><span class="material-symbols-outlined" style="font-size:1rem;vertical-align:middle">shuffle</span> Random Test</span>` : (AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><span class="material-symbols-outlined" style="font-size:0.95rem">timer</span> Simulation</span>` : `<span class="practice-mode-badge"><span class="material-symbols-outlined" style="font-size:0.95rem">school</span> Practice</span>`)}
+                ${isMixed ? `<span class="mixed-mode-badge${AppState.currentMode === 'exam' ? ' mixed-mode-badge--simulation' : ''}"><span class="material-symbols-outlined">${AppState.currentMode === 'exam' ? 'timer' : 'shuffle'}</span> ${AppState.currentMode === 'exam' ? 'Simulation' : 'Random Test'}</span>` : (AppState.currentMode === 'exam' ? `<span class="exam-mode-badge"><span class="material-symbols-outlined" style="font-size:0.95rem">timer</span> Simulation</span>` : `<span class="practice-mode-badge"><span class="material-symbols-outlined" style="font-size:0.95rem">school</span> Practice</span>`)}
               </div>
             </div>
             
@@ -1591,6 +1591,10 @@
     
     renderExerciseFooter: function(part, totalParts) {
       var isExamMode = AppState.currentMode === 'exam';
+      var isMixed = window.MixedTest && MixedTest.isActive();
+      var mixedIdx = isMixed ? AppState.mixedTestCurrentIndex : -1;
+      var mixedLastInSection = isMixed && MixedTest.isLastInSection(mixedIdx);
+      var mixedLastInPlan = isMixed && MixedTest.isLastInPlan(mixedIdx);
       var isReading = AppState.currentSection === 'reading';
       var isListening = AppState.currentSection === 'listening';
       // In mixed mode, use actual section part for content-based conditions (explanations)
@@ -1615,7 +1619,7 @@
       var answerToggleIcon = AppState.answerViewMode === 'correct' ? 'visibility_off' : 'visibility';
       let footer = '';
 
-      if (part > 1 && (!isExamMode || AppState.examFullMode)) {
+      if ((isMixed ? mixedIdx > 0 : part > 1) && (!isExamMode || AppState.examFullMode)) {
         footer += `<button class="btn-prev" onclick="Exercise.goToPrevPart()"><i class="fas fa-chevron-left"></i> <span data-i18n="previous">Previous</span></button>`;
       }
       
@@ -1668,15 +1672,21 @@
         `;
       }
       
-      if (part < totalParts) {
+      if (isMixed) {
+        if (!mixedLastInSection) {
+          footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
+        } else if (AppState.examFullMode) {
+          footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
+        } else if (mixedLastInPlan) {
+          footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span>Finish Test</span> <i class="fas fa-check"></i></button>`;
+        } else {
+          footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
+        }
+      } else if (part < totalParts) {
         footer += `<button class="btn-next" onclick="Exercise.goToNextPart()"><span data-i18n="next">Next</span> <i class="fas fa-chevron-right"></i></button>`;
       } else if (AppState.examFullMode) {
         // Last part of a section in exam full mode: show "Finish Section" button
         footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span data-i18n="finishSection">Finish Section</span> <i class="fas fa-check"></i></button>`;
-      } else if (window.MixedTest && MixedTest.isActive() &&
-                 AppState.mixedTestCurrentIndex >= AppState.mixedTestPlan.length - 1) {
-        // Last exercise in a mixed-test plan
-        footer += `<button class="btn-next btn-finish-section" onclick="Exercise.goToNextPart()"><span>Finish Test</span> <i class="fas fa-check"></i></button>`;
       }
       
       return footer;
