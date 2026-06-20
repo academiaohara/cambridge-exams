@@ -1163,7 +1163,6 @@
       var exam = EXAMS_DATA[AppState.currentLevel]?.find(function(e) { return e.id === examId; });
       var totalParts = (exam && exam.sections[section] && exam.sections[section].total) || 1;
       var partsHTML = '';
-      var pct = sectionTotal > 0 ? Math.round(sectionScore / sectionTotal * 100) : 0;
 
       for (var i = 1; i <= totalParts; i++) {
         var partState = this.loadPartState(examId, section, i);
@@ -1177,20 +1176,25 @@
         partsHTML += ''
           + '<div class="section-report-part-card">'
           + '  <div class="section-report-part-head">'
-          + '    <span class="section-report-part-label">Part ' + i + '</span>'
+          + '    <span class="section-report-part-label">'
+          + '      Part ' + i
+          + '      <button type="button" class="btn-review-part btn-review-part--icon" onclick="Exercise.openPart(\'' + examId + '\', \'' + section + '\', ' + i + ')" title="Review" aria-label="Review Part ' + i + '">'
+          + '        <i class="fas fa-eye"></i>'
+          + '      </button>'
+          + '    </span>'
           + '    <span class="section-report-part-score">' + partScore + '<span class="section-report-part-score-sep">/</span>' + partTotal + '</span>'
           + '  </div>'
           + '  ' + cellsHTML
-          + '  <button type="button" class="btn-review-part" onclick="Exercise.openPart(\'' + examId + '\', \'' + section + '\', ' + i + ')">'
-          + '    <i class="fas fa-eye"></i> Review'
-          + '  </button>'
           + '</div>';
       }
 
       var cambridgeHTML = '';
       if (typeof ScoreCalculator !== 'undefined' && ScoreCalculator.getSectionReportStats && ScoreCalculator.buildReportSummaryHTML) {
         var stats = ScoreCalculator.getSectionReportStats(examId, section);
-        cambridgeHTML = ScoreCalculator.buildReportSummaryHTML(stats, 'ScoreCalculator.showLiveSectionResults()');
+        cambridgeHTML = ScoreCalculator.buildReportSummaryHTML(stats, 'ScoreCalculator.showLiveSectionResults()', {
+          rawScore: sectionScore,
+          rawTotal: sectionTotal
+        });
       }
 
       var html = ''
@@ -1227,16 +1231,6 @@
         + '    <div class="section-report-parts">'
         + '      <h3 class="section-report-parts-title"><i class="fas fa-list-check"></i> Breakdown by part</h3>'
         + '      <div class="section-report-parts-grid">' + partsHTML + '</div>'
-        + '    </div>'
-        + '    <div class="section-report-summary-card">'
-        + '      <div class="section-report-summary-main">'
-        + '        <span class="section-report-summary-label">Raw score</span>'
-        + '        <span class="section-report-summary-value">' + sectionScore + '<span>/' + sectionTotal + '</span></span>'
-        + '      </div>'
-        + '      <div class="section-report-summary-bar-wrap">'
-        + '        <div class="section-report-summary-bar" style="width:' + pct + '%"></div>'
-        + '      </div>'
-        + '      <span class="section-report-summary-pct">' + pct + '% correct</span>'
         + '    </div>'
         + '  </div>'
         + '  <div class="exercise-footer section-report-actions">';
@@ -1309,11 +1303,14 @@
         cambridgeHTML = ScoreCalculator.buildReportSummaryHTML(
           examStats,
           'ScoreCalculator.showLiveOverallResults()',
-          'Overall Cambridge level'
+          {
+            rawScore: totalScore,
+            rawTotal: totalQuestions
+          }
         );
       }
 
-      var totalPct = totalQuestions > 0 ? Math.round(totalScore / totalQuestions * 100) : 0;
+
       var html = ''
         + '<div class="section-report section-report--final">'
         + '  <div class="exercise-header">'
@@ -1341,16 +1338,6 @@
         + '    <div class="section-report-parts">'
         + '      <h3 class="section-report-parts-title"><i class="fas fa-layer-group"></i> By section</h3>'
         + '      <div class="section-report-parts-grid section-report-parts-grid--sections">' + sectionsHTML + '</div>'
-        + '    </div>'
-        + '    <div class="section-report-summary-card section-report-summary-card--final">'
-        + '      <div class="section-report-summary-main">'
-        + '        <span class="section-report-summary-label">Total raw score</span>'
-        + '        <span class="section-report-summary-value">' + totalScore + '<span>/' + totalQuestions + '</span></span>'
-        + '      </div>'
-        + '      <div class="section-report-summary-bar-wrap">'
-        + '        <div class="section-report-summary-bar section-report-summary-bar--final" style="width:' + totalPct + '%"></div>'
-        + '      </div>'
-        + '      <span class="section-report-summary-pct">' + totalPct + '% overall</span>'
         + '    </div>'
         + '  </div>'
         + '  <div class="exercise-footer section-report-actions">'
