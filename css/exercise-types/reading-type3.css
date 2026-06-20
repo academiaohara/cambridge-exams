@@ -197,14 +197,14 @@
   color: var(--correct);
   font-weight: 500;
   border-color: var(--correct);
-  background: #ecfdf5;
+  background: var(--ex-feedback-bg, #fff);
 }
 
 .reading-type3-show-correct {
   color: var(--ex-duo-purple-text, #5b21b6);
   font-weight: 600;
   border-color: var(--ex-duo-purple, #ce82ff);
-  background: var(--ex-duo-purple-light, #f3e8ff);
+  background: var(--ex-feedback-bg, #fff);
 }
 
 .reading-type3-incorrect {
@@ -213,7 +213,7 @@
   font-weight: 500;
   cursor: help;
   border-color: var(--incorrect);
-  background: #fef2f2;
+  background: var(--ex-feedback-bg, #fff);
 }
 
 /* Modal styles for word formation */
@@ -306,13 +306,13 @@
 
 .reading-type3-input.correct {
   border-color: var(--correct);
-  background-color: #d1fae5;
+  background-color: var(--ex-feedback-bg, #fff);
   color: #065f46;
 }
 
 .reading-type3-input.incorrect {
   border-color: var(--incorrect);
-  background-color: #fee2e2;
+  background-color: var(--ex-feedback-bg, #fff);
   color: #991b1b;
 }
 
@@ -545,7 +545,7 @@
 .c1-reading3 .reading-type3-show-correct {
   color: #5b21b6;
   font-weight: 700;
-  background: rgba(124, 58, 237, 0.1);
+  background: var(--ex-feedback-bg, #fff);
   border: 2px solid #7c3aed;
 }
 

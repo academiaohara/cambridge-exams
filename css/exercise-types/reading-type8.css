@@ -242,21 +242,21 @@
 }
 
 .b1-reading2-chip-correct {
-  background: #d7ffb8 !important;
+  background: var(--ex-feedback-bg, #fff) !important;
   border-color: #58cc02 !important;
   box-shadow: 0 3px 0 #58a700 !important;
   color: #3c3c3c !important;
 }
 
 .b1-reading2-chip-incorrect {
-  background: #ffdfe0 !important;
+  background: var(--ex-feedback-bg, #fff) !important;
   border-color: #ff4b4b !important;
   box-shadow: 0 3px 0 #ea2b2b !important;
   color: #3c3c3c !important;
 }
 
 .b1-reading2-chip-unanswered {
-  background: #f1f5f9 !important;
+  background: var(--ex-feedback-bg, #fff) !important;
   border-color: #cbd5e1 !important;
   box-shadow: 0 3px 0 #cbd5e1 !important;
   color: #64748b !important;
@@ -264,7 +264,7 @@
 
 .b1-reading2-chip-expl-show {
   border-color: var(--ex-duo-purple, #ce82ff) !important;
-  background: var(--ex-duo-purple-light, #f3e8ff) !important;
+  background: var(--ex-feedback-bg, #fff) !important;
   box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7) !important;
   color: var(--ex-duo-purple-text, #5b21b6) !important;
 }
@@ -272,7 +272,7 @@
 .b1-reading2-chip-answer-toggle-correct,
 .b1-reading2-chip-key {
   border-color: var(--ex-duo-purple, #ce82ff) !important;
-  background: var(--ex-duo-purple-light, #f3e8ff) !important;
+  background: var(--ex-feedback-bg, #fff) !important;
   box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7) !important;
   color: var(--ex-duo-purple-text, #5b21b6) !important;
 }
@@ -350,7 +350,7 @@
   padding: 0 28px 0 10px;
   border-width: 2px;
   border-color: #22c55e;
-  background-color: #f0fdf4;
+  background-color: var(--ex-feedback-bg, #fff);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23166534' d='M5 7L1 3h8z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 8px center;
@@ -363,7 +363,7 @@
   padding: 0 28px 0 10px;
   border-width: 2px;
   border-color: #ef4444;
-  background-color: #fef2f2;
+  background-color: var(--ex-feedback-bg, #fff);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23991b1b' d='M5 7L1 3h8z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 8px center;
@@ -395,7 +395,7 @@
   height: 36px !important;
   padding: 0 28px 0 10px !important;
   border: 2px solid var(--ex-duo-purple, #ce82ff) !important;
-  background-color: var(--ex-duo-purple-light, #f3e8ff) !important;
+  background-color: var(--ex-feedback-bg, #fff) !important;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23a855f7' d='M5 7L1 3h8z'/%3E%3C/svg%3E") !important;
   background-repeat: no-repeat !important;
   background-position: right 8px center !important;
@@ -419,7 +419,7 @@
   padding: 14px 16px;
   border-radius: 16px;
   border: 2px solid var(--ex-duo-purple, #ce82ff);
-  background: linear-gradient(180deg, #faf5ff 0%, var(--ex-duo-purple-light, #f3e8ff) 100%);
+  background: var(--ex-feedback-bg, #fff);
   box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
   font-size: 0.95rem;
   line-height: 1.65;
@@ -465,7 +465,7 @@
 
 .b1-reading2-preview.has-text.b1-reading2-preview-correct {
   border-color: #58cc02;
-  background: linear-gradient(180deg, #f7fff0 0%, #d7ffb8 100%);
+  background: var(--ex-feedback-bg, #fff);
   box-shadow: 0 3px 0 #58a700;
   color: var(--ex-duo-text, #3c3c3c);
 }
@@ -491,7 +491,7 @@
 .b1-reading2-preview.has-text.b1-reading2-preview-key-mode.b1-reading2-preview-correct,
 .b1-reading2-preview.has-text.b1-reading2-preview-key-mode.b1-reading2-preview-incorrect {
   border-color: var(--ex-duo-purple, #ce82ff);
-  background: linear-gradient(180deg, #faf5ff 0%, var(--ex-duo-purple-light, #f3e8ff) 100%);
+  background: var(--ex-feedback-bg, #fff);
   box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
   color: var(--ex-duo-purple-text, #5b21b6);
 }
@@ -588,7 +588,7 @@
 /* Footer toggle: show key answer in purple */
 .b1-reading2-select:disabled.b1-reading2-select-answer-toggle-correct {
   border-color: var(--ex-duo-purple, #ce82ff) !important;
-  background-color: var(--ex-duo-purple-light, #f3e8ff) !important;
+  background-color: var(--ex-feedback-bg, #fff) !important;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23a855f7' d='M5 7L1 3h8z'/%3E%3C/svg%3E") !important;
   color: var(--ex-duo-purple-text, #5b21b6) !important;
 }

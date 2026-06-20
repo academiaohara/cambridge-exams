@@ -734,7 +734,7 @@
 
 .eq-options.eq-options-rows .eq-option.eq-option-correct {
   border-color: var(--ex-duo-purple, #ce82ff);
-  background: var(--ex-duo-purple-light, #f3e8ff);
+  background: var(--ex-feedback-bg, #fff);
   box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
   color: var(--ex-duo-purple-text, #5b21b6);
 }
@@ -767,7 +767,7 @@
 
 .eq-options.eq-options-columns .eq-option.eq-option-correct {
   border-color: var(--ex-duo-purple, #ce82ff);
-  background: var(--ex-duo-purple-light, #f3e8ff);
+  background: var(--ex-feedback-bg, #fff);
   box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
   color: var(--ex-duo-purple-text, #5b21b6);
 }
@@ -1530,6 +1530,7 @@
   --ex-duo-canvas: #f7f7f7;
   --ex-duo-info-bg: #ddf4ff;
   --ex-duo-info-border: #1cb0f6;
+  --ex-feedback-bg: #fff;
 }
 
 body:has(.dashboard-layout--exercise) {
@@ -2226,7 +2227,7 @@ body:has(.dashboard-layout--exercise) #main-content {
 
 .dashboard-layout--exercise .explanation-card.explanation-active {
   border-color: var(--ex-duo-purple);
-  background: var(--ex-duo-purple-light);
+  background: var(--ex-feedback-bg, #fff);
   box-shadow: 0 3px 0 var(--ex-duo-purple-dark);
 }
 
@@ -2779,6 +2780,6 @@ body:has(.dashboard-layout--exercise) #main-content {
 .dashboard-layout--exercise .b1-reading2-chip-expl-show,
 .dashboard-layout--exercise .b1-reading2-select-answer-toggle-correct {
   border-color: var(--ex-duo-purple, #ce82ff) !important;
-  background: var(--ex-duo-purple-light, #f3e8ff) !important;
+  background: var(--ex-feedback-bg, #fff) !important;
   color: var(--ex-duo-purple-text, #5b21b6) !important;
 }

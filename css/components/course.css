@@ -1889,21 +1889,21 @@ button.cu-ex-kwtrans-label.cu-ab-btn:disabled {
 /* Correct: orange + bounce */
 .cu-gap-input.cu-input-correct {
   border-color: var(--cu-ex-correct) !important;
-  background: var(--cu-ex-correct-muted) !important;
+  background: var(--ex-feedback-bg, #fff) !important;
   color: var(--cu-ex-correct-text-deep) !important;
   animation: feBounceIn 0.35s ease;
 }
 /* Incorrect: amber — constructive, non-punitive */
 .cu-gap-input.cu-input-incorrect {
   border-color: #d97706 !important;
-  background: rgba(217, 119, 6, 0.07) !important;
+  background: var(--ex-feedback-bg, #fff) !important;
   color: #78350f !important;
   animation: feShake 0.4s ease;
 }
 /* Show correct answer in input (toggle mode) */
 .cu-gap-input.cu-input-show-correct {
   border-color: #7c3aed !important;
-  background: rgba(124, 58, 237, 0.09) !important;
+  background: var(--ex-feedback-bg, #fff) !important;
   color: #5b21b6 !important;
   animation: feBounceIn 0.3s ease;
   max-width: none;
@@ -5018,7 +5018,7 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 .cu-cw-box:disabled { cursor: default; }
 .cu-cw-letter-correct { background: var(--cu-ex-correct-soft) !important; border-color: var(--cu-ex-correct-bright) !important; color: var(--cu-ex-correct-text); }
 .cu-cw-letter-incorrect { background: #fce4ec !important; border-color: #e53935 !important; color: #c62828; }
-.cu-cw-box.cu-input-show-correct { background: #f5f3ff !important; border-color: #8b5cf6 !important; color: #5b21b6; }
+.cu-cw-box.cu-input-show-correct { background: var(--ex-feedback-bg, #fff) !important; border-color: #8b5cf6 !important; color: #5b21b6; }
 .cu-cw-answer-reveal { font-size: .82rem; font-weight: 600; color: var(--accent, #1976d2); margin-top: 3px; letter-spacing: .04em; }
 .cu-cw-input { display: none; }
 

@@ -79,14 +79,14 @@
   color: var(--correct);
   font-weight: 700;
   border-color: var(--correct);
-  background: #ecfdf5;
+  background: var(--ex-feedback-bg, #fff);
 }
 
 .reading-type1-show-correct {
   color: var(--ex-duo-purple-text, #5b21b6);
   font-weight: 700;
   border-color: var(--ex-duo-purple, #ce82ff);
-  background: var(--ex-duo-purple-light, #f3e8ff);
+  background: var(--ex-feedback-bg, #fff);
 }
 
 .reading-type1-incorrect {
@@ -96,7 +96,7 @@
   cursor: help;
   position: relative;
   border-color: var(--incorrect);
-  background: #fef2f2;
+  background: var(--ex-feedback-bg, #fff);
 }
 
 .reading-type1-incorrect[data-correct]::after {

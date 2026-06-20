@@ -69,13 +69,13 @@
 
 .reading-type2-input.correct {
   border-color: var(--correct);
-  background-color: #d1fae5;
+  background-color: var(--ex-feedback-bg, #fff);
   color: #065f46;
 }
 
 .reading-type2-input.incorrect {
   border-color: var(--incorrect);
-  background-color: #fee2e2;
+  background-color: var(--ex-feedback-bg, #fff);
   color: #991b1b;
 }
 
@@ -90,7 +90,7 @@
 
 .reading-type2-input.cu-input-show-correct {
   border-color: #8b5cf6 !important;
-  background: #f5f3ff !important;
+  background: var(--ex-feedback-bg, #fff) !important;
   color: #5b21b6 !important;
   font-weight: 700;
 }
@@ -230,13 +230,13 @@
 
 .b1-reading6 .reading-type2-correct {
   color: #065f46;
-  background: #d1fae5;
+  background: var(--ex-feedback-bg, #fff);
   border: 2px solid var(--correct, #10b981);
 }
 
 .b1-reading6 .reading-type2-incorrect {
   color: #991b1b;
-  background: #fee2e2;
+  background: var(--ex-feedback-bg, #fff);
   border: 2px solid var(--incorrect, #ef4444);
   text-decoration: line-through;
   cursor: help;
@@ -244,7 +244,7 @@
 
 .b1-reading6 .reading-type2-show-correct {
   color: #5b21b6;
-  background: #f5f3ff;
+  background: var(--ex-feedback-bg, #fff);
   border: 2px solid #8b5cf6;
   font-weight: 700;
 }
