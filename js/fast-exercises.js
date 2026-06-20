@@ -458,10 +458,8 @@
       return Date.now();
     },
 
-    _waitLoading: async function(shownAt) {
-      if (typeof AppLoadingScreen !== 'undefined') {
-        await AppLoadingScreen.waitMinDuration(shownAt);
-      }
+    _waitLoading: async function() {
+      // No artificial delay — loading stays visible until content is ready.
     },
 
     // Escape a string for safe embedding in a JS single-quoted string literal

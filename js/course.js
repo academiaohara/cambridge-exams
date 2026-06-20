@@ -1577,9 +1577,6 @@
       }
 
       if (!unitData) {
-        if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
-          await AppLoadingScreen.waitMinDuration(unitLoadingStart);
-        }
         centerSection.innerHTML =
           '<div class="subpage-header">' +
             '<button class="subpage-back-btn" onclick="' + courseBackFn + '" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
@@ -1648,9 +1645,6 @@
       }
 
       html += '</div>';
-      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
-        await AppLoadingScreen.waitMinDuration(unitLoadingStart);
-      }
       centerSection.innerHTML = html;
 
       // Restore saved answers and scores for review/progress test units

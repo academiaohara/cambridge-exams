@@ -458,9 +458,6 @@
       const loadingPaws = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.getPawsMarkup)
         ? AppLoadingScreen.getPawsMarkup()
         : '<i class="fas fa-spinner fa-spin"></i>';
-      const loadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
-        ? AppLoadingScreen.markShown()
-        : Date.now();
       const loadingInner = `
         <div class="exercise-page-wrapper">
           <div class="exercise-container">
@@ -561,10 +558,6 @@
           AppState.elapsedSeconds = savedState ? (savedState.elapsedSeconds || 0) : 0;
         }
 
-        if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
-          await AppLoadingScreen.waitMinDuration(loadingStart);
-        }
-        
         await ExerciseRenderer.render(exercise, examId, section, part);
         
         this.restoreSavedAnswers();
