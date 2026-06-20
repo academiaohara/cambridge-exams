@@ -280,10 +280,11 @@
   pointer-events: none;
 }
 
+/* Legacy aliases — same purple card style as explanations-panel (B1 Reading 3/4) */
 .explanations-section {
   background: #fff;
   border: 2px solid var(--ex-duo-border, #e5e5e5);
-  border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
+  border-top: 4px solid var(--ex-duo-purple, #ce82ff);
   border-radius: 16px;
   padding: 20px 22px 22px;
   margin-top: 24px;
@@ -310,8 +311,8 @@
   width: 32px;
   height: 32px;
   border-radius: 10px;
-  background: var(--ex-duo-blue-light, #ddf4ff);
-  color: var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  color: var(--ex-duo-purple-dark, #a855f7);
   font-size: 0.95rem;
   flex-shrink: 0;
 }
@@ -322,13 +323,13 @@
   gap: 12px;
   padding: 14px 16px;
   background: #fff;
-  border: 2px solid var(--ex-duo-info-border, #1cb0f6);
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
   border-radius: 14px;
   margin-bottom: 10px;
-  font-size: 1rem;
+  font-size: 0.98rem;
   color: var(--ex-duo-text, #4b4b4b);
   line-height: 1.6;
-  box-shadow: 0 2px 0 color-mix(in srgb, var(--ex-duo-blue-dark, #1899d6) 35%, #e5e5e5);
+  box-shadow: 0 2px 0 #e5e5e5;
 }
 
 .explanation-item:last-child {
@@ -339,7 +340,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-purple, #ce82ff);
   color: #fff;
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-weight: 800;
@@ -348,7 +349,8 @@
   height: 30px;
   border-radius: 10px;
   flex-shrink: 0;
-  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+  padding: 0 4px;
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 .explanation-item-text {
@@ -2238,18 +2240,12 @@ body:has(.dashboard-layout--exercise) #main-content {
 }
 
 .dashboard-layout--exercise .explanation-question-display {
-  background: var(--ex-duo-blue-light);
-  border-color: var(--ex-duo-info-border);
-  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-blue-dark) 35%, #e5e5e5);
-}
-
-.dashboard-layout--exercise .explanation-question-display.sticky-mode {
   background: var(--ex-duo-purple-light, #f3e8ff);
   border-color: var(--ex-duo-purple, #ce82ff);
   box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-purple-dark, #a855f7) 35%, #e5e5e5);
 }
 
-.dashboard-layout--exercise .explanation-question-display.sticky-mode .eq-number {
+.dashboard-layout--exercise .explanation-question-display .eq-number {
   background: var(--ex-duo-purple, #ce82ff);
   box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
@@ -2262,7 +2258,7 @@ body:has(.dashboard-layout--exercise) #main-content {
 
 .dashboard-layout--exercise .explanation-item {
   background: #fff;
-  border-color: var(--ex-duo-info-border);
+  border-color: var(--ex-duo-border);
 }
 
 .dashboard-layout--exercise .exercise-duration,
