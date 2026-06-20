@@ -295,21 +295,21 @@
 }
 
 .reading-type5-option.correct {
-  background: #d7ffb8;
+  background: var(--ex-feedback-bg, #fff);
   border-color: #58cc02;
   box-shadow: 0 3px 0 #58a700;
   color: #3c3c3c;
 }
 
 .reading-type5-option.incorrect {
-  background: #ffdfe0;
+  background: var(--ex-feedback-bg, #fff);
   border-color: #ff4b4b;
   box-shadow: 0 3px 0 #ea2b2b;
 }
 
 /* B1 Reading Part 5 — Questions row: highlight key option when showing correct answers */
 .reading-type5-option.reading-type5-option-key {
-  background: #f3e8ff;
+  background: var(--ex-feedback-bg, #fff);
   border-color: #7c3aed;
   color: #5b21b6;
 }
@@ -375,7 +375,7 @@
 }
 
 .reading-type5-gap-trigger.correct {
-  background: #d7ffb8;
+  background: var(--ex-feedback-bg, #fff);
   border-color: #58cc02;
   border-style: solid;
   box-shadow: 0 2px 0 #58a700;
@@ -383,7 +383,7 @@
 }
 
 .reading-type5-gap-trigger.incorrect {
-  background: #ffdfe0;
+  background: var(--ex-feedback-bg, #fff);
   border-color: #ff4b4b;
   border-style: solid;
   box-shadow: 0 2px 0 #ea2b2b;
@@ -391,7 +391,7 @@
 }
 
 .reading-type5-gap-trigger.unanswered-checked {
-  background: #fff4cc;
+  background: var(--ex-feedback-bg, #fff);
   border-color: #ffc800;
   border-style: solid;
   box-shadow: 0 2px 0 #e5b400;
@@ -429,7 +429,7 @@
 
 /* "Show correct answers" mode: gap number + key word */
 .reading-type5-gap-trigger.reading-type5-gap-trigger-show-correct {
-  background: var(--ex-duo-purple-light, #f3e8ff);
+  background: var(--ex-feedback-bg, #fff);
   border-color: var(--ex-duo-purple, #ce82ff);
   color: var(--ex-duo-purple-text, #5b21b6);
   border-style: solid;
@@ -504,12 +504,12 @@
 }
 
 .reading-type5-gap-choice.correct {
-  background: #d1fae5;
+  background: var(--ex-feedback-bg, #fff);
   border-color: var(--correct);
 }
 
 .reading-type5-gap-choice.incorrect {
-  background: #fee2e2;
+  background: var(--ex-feedback-bg, #fff);
   border-color: var(--incorrect);
 }
 
