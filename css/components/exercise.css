@@ -1691,6 +1691,10 @@ body:has(.dashboard-layout--exercise) #main-content {
   box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
 }
 
+.dashboard-layout--exercise .section-report-cambridge-tile--stat {
+  flex: 0 0 64px;
+}
+
 .dashboard-layout--exercise .section-report-cambridge-tile-label {
   display: block;
   font-size: 0.52rem;
@@ -1717,21 +1721,30 @@ body:has(.dashboard-layout--exercise) #main-content {
 
 .dashboard-layout--exercise .section-report-cambridge-tile--raw {
   flex: 1.4 1 0;
-  gap: 3px;
+  align-items: stretch;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 12px;
+}
+
+.dashboard-layout--exercise .section-report-cambridge-tile-raw-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  width: 100%;
+}
+
+.dashboard-layout--exercise .section-report-cambridge-tile--raw .section-report-cambridge-tile-label,
+.dashboard-layout--exercise .section-report-cambridge-tile--raw .section-report-cambridge-tile-value {
+  text-align: right;
 }
 
 .dashboard-layout--exercise .section-report-summary-bar-wrap--inline {
   width: 100%;
-  max-width: 120px;
+  max-width: none;
   height: 6px;
-  margin-top: 2px;
-}
-
-.dashboard-layout--exercise .section-report-cambridge-tile-pct {
-  font-size: 0.52rem;
-  font-weight: 800;
-  color: #afafaf;
-  line-height: 1.1;
+  margin-top: 0;
 }
 
 .dashboard-layout--exercise .section-report-cambridge-raw {
@@ -2769,6 +2782,10 @@ body:has(.dashboard-layout--exercise) #main-content {
   .dashboard-layout--exercise .section-report-cambridge-tile {
     flex: 0 0 72px;
     padding: 8px 6px;
+  }
+
+  .dashboard-layout--exercise .section-report-cambridge-tile--stat {
+    flex: 0 0 56px;
   }
 
   .dashboard-layout--exercise .section-report-cambridge-tile--raw {

@@ -1032,19 +1032,18 @@
       var hasRaw = rawScore !== undefined && rawTotal !== undefined;
       var pct = hasRaw && rawTotal > 0 ? Math.round(rawScore / rawTotal * 100) : 0;
       var rawLabel = opts.isFinal ? 'Total raw score' : 'Raw score';
-      var pctLabel = opts.isFinal ? pct + '% overall' : pct + '% correct';
       var barClass = opts.isFinal ? ' section-report-summary-bar--final' : '';
 
       var html = '<div class="section-report-cambridge-card">';
-      html += '<div class="section-report-cambridge-tile">';
+      html += '<div class="section-report-cambridge-tile section-report-cambridge-tile--stat">';
       html += '<span class="section-report-cambridge-tile-label">Level</span>';
       html += '<strong class="section-report-cambridge-tile-value">' + stats.gradeInfo.result + '</strong>';
       html += '</div>';
-      html += '<div class="section-report-cambridge-tile">';
+      html += '<div class="section-report-cambridge-tile section-report-cambridge-tile--stat">';
       html += '<span class="section-report-cambridge-tile-label">Scale</span>';
       html += '<strong class="section-report-cambridge-tile-value">' + stats.overall + '</strong>';
       html += '</div>';
-      html += '<div class="section-report-cambridge-tile">';
+      html += '<div class="section-report-cambridge-tile section-report-cambridge-tile--stat">';
       html += '<span class="section-report-cambridge-tile-label">CEFR</span>';
       html += '<strong class="section-report-cambridge-tile-value">' + stats.gradeInfo.cefr + '</strong>';
       html += '</div>';
@@ -1056,12 +1055,13 @@
       }
       if (hasRaw) {
         html += '<div class="section-report-cambridge-tile section-report-cambridge-tile--raw">';
+        html += '<div class="section-report-cambridge-tile-raw-top">';
         html += '<span class="section-report-cambridge-tile-label">' + rawLabel + '</span>';
         html += '<strong class="section-report-cambridge-tile-value section-report-cambridge-tile-value--score">' + rawScore + '<span>/' + rawTotal + '</span></strong>';
+        html += '</div>';
         html += '<div class="section-report-summary-bar-wrap section-report-summary-bar-wrap--inline">';
         html += '<div class="section-report-summary-bar' + barClass + '" style="width:' + pct + '%"></div>';
         html += '</div>';
-        html += '<span class="section-report-cambridge-tile-pct">' + pctLabel + '</span>';
         html += '</div>';
       }
       html += '</div>';
