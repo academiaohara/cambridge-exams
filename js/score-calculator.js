@@ -1035,6 +1035,17 @@
       var barClass = opts.isFinal ? ' section-report-summary-bar--final' : '';
 
       var html = '<div class="section-report-cambridge-card">';
+      if (hasRaw) {
+        html += '<div class="section-report-cambridge-tile section-report-cambridge-tile--raw">';
+        html += '<div class="section-report-cambridge-tile-raw-top">';
+        html += '<span class="section-report-cambridge-tile-label">' + rawLabel + '</span>';
+        html += '<strong class="section-report-cambridge-tile-value section-report-cambridge-tile-value--score">' + rawScore + '<span>/' + rawTotal + '</span></strong>';
+        html += '</div>';
+        html += '<div class="section-report-summary-bar-wrap section-report-summary-bar-wrap--inline">';
+        html += '<div class="section-report-summary-bar' + barClass + '" style="width:' + pct + '%"></div>';
+        html += '</div>';
+        html += '</div>';
+      }
       html += '<div class="section-report-cambridge-tile section-report-cambridge-tile--stat">';
       html += '<span class="section-report-cambridge-tile-label">Level</span>';
       html += '<strong class="section-report-cambridge-tile-value">' + stats.gradeInfo.result + '</strong>';
@@ -1052,17 +1063,6 @@
         html += '<i class="fas fa-chart-bar"></i>';
         html += '<span class="section-report-cambridge-tile-label">Charts</span>';
         html += '</button>';
-      }
-      if (hasRaw) {
-        html += '<div class="section-report-cambridge-tile section-report-cambridge-tile--raw">';
-        html += '<div class="section-report-cambridge-tile-raw-top">';
-        html += '<span class="section-report-cambridge-tile-label">' + rawLabel + '</span>';
-        html += '<strong class="section-report-cambridge-tile-value section-report-cambridge-tile-value--score">' + rawScore + '<span>/' + rawTotal + '</span></strong>';
-        html += '</div>';
-        html += '<div class="section-report-summary-bar-wrap section-report-summary-bar-wrap--inline">';
-        html += '<div class="section-report-summary-bar' + barClass + '" style="width:' + pct + '%"></div>';
-        html += '</div>';
-        html += '</div>';
       }
       html += '</div>';
       return html;

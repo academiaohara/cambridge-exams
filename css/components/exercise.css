@@ -1729,15 +1729,20 @@ body:has(.dashboard-layout--exercise) #main-content {
 
 .dashboard-layout--exercise .section-report-cambridge-tile-raw-top {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
   width: 100%;
 }
 
 .dashboard-layout--exercise .section-report-cambridge-tile--raw .section-report-cambridge-tile-label,
 .dashboard-layout--exercise .section-report-cambridge-tile--raw .section-report-cambridge-tile-value {
-  text-align: right;
+  text-align: left;
+}
+
+.dashboard-layout--exercise .section-report-cambridge-tile--raw .section-report-cambridge-tile-value {
+  flex-shrink: 0;
 }
 
 .dashboard-layout--exercise .section-report-summary-bar-wrap--inline {
@@ -1752,6 +1757,7 @@ body:has(.dashboard-layout--exercise) #main-content {
 }
 
 .dashboard-layout--exercise .section-report-cambridge-tile--charts {
+  flex: 0 0 64px;
   background: #fff;
   color: var(--ex-duo-blue-dark, #1899d6);
   border-color: var(--ex-duo-blue, #1cb0f6);
@@ -2785,6 +2791,10 @@ body:has(.dashboard-layout--exercise) #main-content {
   }
 
   .dashboard-layout--exercise .section-report-cambridge-tile--stat {
+    flex: 0 0 56px;
+  }
+
+  .dashboard-layout--exercise .section-report-cambridge-tile--charts {
     flex: 0 0 56px;
   }
 
