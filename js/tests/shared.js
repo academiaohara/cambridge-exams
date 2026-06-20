@@ -188,10 +188,14 @@
           '</button>' +
           '<div class="grade-evolution-section">' +
             '<div class="grade-evolution-modal-header">' +
-              '<div class="grade-evolution-hero-icon" aria-hidden="true"><span class="material-symbols-outlined">trending_up</span></div>' +
-              '<div class="subpage-title" id="grade-evolution-title">' + 'Grade Evolution' + '</div>' +
-              '<div class="grade-evolution-level-pill">' + level + '</div>' +
-              '<div class="subpage-subtitle">' + 'Track your progress across exams' + '</div>' +
+              '<div class="grade-evolution-header-main">' +
+                '<div class="grade-evolution-hero-icon" aria-hidden="true"><span class="material-symbols-outlined">trending_up</span></div>' +
+                '<div class="grade-evolution-header-text">' +
+                  '<div class="subpage-title" id="grade-evolution-title">' + 'Grade Evolution' + '</div>' +
+                  '<div class="subpage-subtitle">' + 'Track your progress across exams' + '</div>' +
+                '</div>' +
+                '<div class="grade-evolution-level-pill">' + level + '</div>' +
+              '</div>' +
               (examCount > 0
                 ? '<div class="grade-evolution-stat-row">' +
                     '<div class="grade-evolution-stat"><span class="grade-evolution-stat-val">' + examCount + '</span><span class="grade-evolution-stat-lbl">Exams</span></div>' +
@@ -244,10 +248,10 @@
       var self = this;
 
       // SVG dimensions – include a grades-column on the right
-      var svgW = 700, svgH = 320;
-      var gradeColW = 62;  // width of the grade-labels column
-      var gradeColGap = 8; // gap between chart area and grade column
-      var marginL = 48, marginR = 8, marginT = 20, marginB = 32;
+      var svgW = 720, svgH = 340;
+      var gradeColW = 68;  // width of the grade-labels column
+      var gradeColGap = 10; // gap between chart area and grade column
+      var marginL = 52, marginR = 10, marginT = 24, marginB = 36;
       var chartW = svgW - marginL - marginR - gradeColW - gradeColGap;
       var chartH = svgH - marginT - marginB;
       var scoreRange = scaleMax - scaleMin;
@@ -301,10 +305,14 @@
       });
       svg += '</defs>';
 
+      // Chart plot background
+      svg += '<rect x="' + marginL + '" y="' + marginT + '" width="' + chartW + '" height="' + chartH + '" fill="#f8fafc" rx="8"/>';
+      svg += '<rect x="' + gradeColX + '" y="' + marginT + '" width="' + gradeColW + '" height="' + chartH + '" fill="#f8fafc" rx="8"/>';
+
       // Grade band backgrounds (chart area) + grade labels column (outside chart)
       var bandPalette = ['#22c55e', '#84cc16', '#eab308', '#f97316', '#ef4444'];
       // Grade column header
-      svg += '<text x="' + (gradeColX + gradeColW / 2) + '" y="' + (marginT - 5) + '" text-anchor="middle" font-size="8" fill="#94a3b8" font-weight="600" font-family="inherit">Grade</text>';
+      svg += '<text x="' + (gradeColX + gradeColW / 2) + '" y="' + (marginT - 7) + '" text-anchor="middle" font-size="9" fill="#64748b" font-weight="700" font-family="inherit" letter-spacing="0.04em">GRADE</text>';
       gradeBands.forEach(function(band, i) {
         var topScore = i === 0 ? scaleMax : gradeBands[i - 1].min;
         var y1 = scoreToY(topScore);
@@ -312,43 +320,49 @@
         var bandH = y2 - y1;
         var color = bandPalette[i % bandPalette.length];
         // Subtle background stripe in chart area
-        svg += '<rect x="' + marginL + '" y="' + y1 + '" width="' + chartW + '" height="' + bandH + '" fill="' + color + '" opacity="0.07"/>';
+        svg += '<rect x="' + marginL + '" y="' + y1 + '" width="' + chartW + '" height="' + bandH + '" fill="' + color + '" opacity="0.08"/>';
         // Dashed boundary line spanning chart + gap + grade column
-        svg += '<line x1="' + marginL + '" y1="' + y2 + '" x2="' + (gradeColX + gradeColW) + '" y2="' + y2 + '" stroke="#94a3b8" stroke-dasharray="4,3" stroke-width="0.75" opacity="0.4"/>';
+        if (i < gradeBands.length - 1) {
+          svg += '<line x1="' + marginL + '" y1="' + y2 + '" x2="' + (gradeColX + gradeColW) + '" y2="' + y2 + '" stroke="#cbd5e1" stroke-dasharray="5,4" stroke-width="0.8" opacity="0.65"/>';
+        }
         // Grade column: colored band rect
-        svg += '<rect x="' + gradeColX + '" y="' + y1 + '" width="' + gradeColW + '" height="' + bandH + '" fill="' + color + '" opacity="0.14" rx="3"/>';
+        svg += '<rect x="' + (gradeColX + 2) + '" y="' + (y1 + 1) + '" width="' + (gradeColW - 4) + '" height="' + Math.max(bandH - 2, 0) + '" fill="' + color + '" opacity="0.16" rx="4"/>';
         // Label centered in grade band (skip if too short)
-        if (bandH >= 12) {
-          svg += '<text x="' + (gradeColX + gradeColW / 2) + '" y="' + ((y1 + y2) / 2 + 3.5) + '" text-anchor="middle" font-size="9" fill="' + color + '" opacity="0.9" font-weight="700" font-family="inherit">' + self._escapeHTML(band.label) + '</text>';
+        if (bandH >= 14) {
+          svg += '<text x="' + (gradeColX + gradeColW / 2) + '" y="' + ((y1 + y2) / 2 + 4) + '" text-anchor="middle" font-size="10" fill="' + color + '" opacity="0.95" font-weight="800" font-family="inherit">' + self._escapeHTML(band.label) + '</text>';
         }
       });
       // Top dashed line at scaleMax spanning chart + grade column
-      svg += '<line x1="' + marginL + '" y1="' + marginT + '" x2="' + (gradeColX + gradeColW) + '" y2="' + marginT + '" stroke="#94a3b8" stroke-dasharray="4,3" stroke-width="0.75" opacity="0.4"/>';
+      svg += '<line x1="' + marginL + '" y1="' + marginT + '" x2="' + (gradeColX + gradeColW) + '" y2="' + marginT + '" stroke="#cbd5e1" stroke-dasharray="5,4" stroke-width="0.8" opacity="0.65"/>';
 
       // Light horizontal grid lines and Y-axis labels (every 10 score points)
       for (var score = scaleMin; score <= scaleMax; score += 10) {
         var gy = scoreToY(score);
-        svg += '<line x1="' + marginL + '" y1="' + gy + '" x2="' + (marginL + chartW) + '" y2="' + gy + '" stroke="#e2e8f0" stroke-width="0.6"/>';
-        svg += '<text x="' + (marginL - 5) + '" y="' + (gy + 3.5) + '" text-anchor="end" font-size="9" fill="#94a3b8" font-family="inherit">' + score + '</text>';
+        var isMajor = score % 20 === 0;
+        svg += '<line x1="' + marginL + '" y1="' + gy + '" x2="' + (marginL + chartW) + '" y2="' + gy + '" stroke="' + (isMajor ? '#cbd5e1' : '#e2e8f0') + '" stroke-width="' + (isMajor ? '0.8' : '0.5') + '"/>';
+        if (isMajor || score === scaleMin || score === scaleMax) {
+          svg += '<text x="' + (marginL - 8) + '" y="' + (gy + 4) + '" text-anchor="end" font-size="10" fill="#64748b" font-weight="700" font-family="inherit">' + score + '</text>';
+        }
       }
 
       // Vertical grid lines at each exam X position
       examScores.forEach(function(entry, i) {
         var x = indexToX(i);
-        svg += '<line x1="' + x + '" y1="' + marginT + '" x2="' + x + '" y2="' + axisBottom + '" stroke="#e2e8f0" stroke-width="0.5" opacity="0.8"/>';
+        svg += '<line x1="' + x + '" y1="' + marginT + '" x2="' + x + '" y2="' + axisBottom + '" stroke="#e2e8f0" stroke-width="0.6" opacity="0.9"/>';
       });
 
       // X-axis tick marks and labels (exam ids)
       examScores.forEach(function(entry, i) {
         var x = indexToX(i);
-        svg += '<line x1="' + x + '" y1="' + axisBottom + '" x2="' + x + '" y2="' + (axisBottom + 4) + '" stroke="#cbd5e1" stroke-width="1"/>';
-        svg += '<text x="' + x + '" y="' + (svgH - 6) + '" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="inherit">' + self._escapeHTML(entry.examId.replace('Test', 'T')) + '</text>';
+        svg += '<line x1="' + x + '" y1="' + axisBottom + '" x2="' + x + '" y2="' + (axisBottom + 5) + '" stroke="#94a3b8" stroke-width="1.2"/>';
+        svg += '<text x="' + x + '" y="' + (svgH - 8) + '" text-anchor="middle" font-size="10" fill="#64748b" font-weight="700" font-family="inherit">' + self._escapeHTML(entry.examId.replace('Test', 'T')) + '</text>';
       });
 
       // Axis borders
-      svg += '<line x1="' + marginL + '" y1="' + marginT + '" x2="' + marginL + '" y2="' + axisBottom + '" stroke="#cbd5e1" stroke-width="1.5"/>';
-      svg += '<line x1="' + marginL + '" y1="' + axisBottom + '" x2="' + (marginL + chartW) + '" y2="' + axisBottom + '" stroke="#cbd5e1" stroke-width="1.5"/>';
-      svg += '<line x1="' + (marginL + chartW) + '" y1="' + marginT + '" x2="' + (marginL + chartW) + '" y2="' + axisBottom + '" stroke="#cbd5e1" stroke-width="1"/>';
+      svg += '<line x1="' + marginL + '" y1="' + marginT + '" x2="' + marginL + '" y2="' + axisBottom + '" stroke="#94a3b8" stroke-width="1.5"/>';
+      svg += '<line x1="' + marginL + '" y1="' + axisBottom + '" x2="' + (marginL + chartW) + '" y2="' + axisBottom + '" stroke="#94a3b8" stroke-width="1.5"/>';
+      svg += '<line x1="' + (marginL + chartW) + '" y1="' + marginT + '" x2="' + (marginL + chartW) + '" y2="' + axisBottom + '" stroke="#e2e8f0" stroke-width="1"/>';
+      svg += '<line x1="' + gradeColX + '" y1="' + marginT + '" x2="' + gradeColX + '" y2="' + axisBottom + '" stroke="#e2e8f0" stroke-width="1"/>';
 
       // Data series inside clip region
       svg += '<g clip-path="url(#ge-clip)">';
@@ -391,7 +405,9 @@
         // Dots with interactive tooltip via data attributes
         points.forEach(function(p) {
           var tipText = safeSkill + ': ' + p.score + ' (' + self._escapeHTML(p.label) + ')';
-          svg += '<circle cx="' + p.x + '" cy="' + p.y + '" r="' + (isTotal ? 5.5 : 4.5) + '" fill="' + color + '" stroke="white" stroke-width="2"' +
+          var dotR = isTotal ? 6 : 5;
+          svg += '<circle cx="' + p.x + '" cy="' + p.y + '" r="' + (dotR + 2) + '" fill="' + color + '" opacity="0.18"/>';
+          svg += '<circle cx="' + p.x + '" cy="' + p.y + '" r="' + dotR + '" fill="' + color + '" stroke="white" stroke-width="2.5"' +
             ' data-ge-tip="' + tipText + '" data-ge-color="' + color + '"' +
             ' onmouseenter="BentoGrid._showGeTip(event,this)" onmouseleave="BentoGrid._hideGeTip()"' +
             ' style="cursor:pointer"/>';

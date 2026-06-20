@@ -211,15 +211,29 @@ content: '';
   border-bottom-width: 2px;
 }
 .grade-evolution-modal-header {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   padding-right: 44px;
-  text-align: center;
 }
+
+.grade-evolution-header-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.grade-evolution-header-text {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
 .grade-evolution-hero-icon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 10px;
-  border-radius: 18px;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  margin: 0;
+  border-radius: 16px;
   background: linear-gradient(145deg, #1cb0f6, #1899d6);
   border: 2px solid #1899d6;
   box-shadow: 0 4px 0 #1480b8;
@@ -234,49 +248,53 @@ content: '';
 }
 .grade-evolution-modal-header .subpage-title {
   font-family: 'Nunito', sans-serif;
-  font-size: 1.65rem;
+  font-size: 1.45rem;
   font-weight: 900;
   color: #3c3c3c;
-  margin-bottom: 6px;
+  margin-bottom: 2px;
+  line-height: 1.1;
 }
 .grade-evolution-level-pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 14px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  padding: 5px 12px;
   border-radius: 100px;
   background: #fff;
   border: 2px solid #1cb0f6;
   color: #1899d6;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin: 0;
 }
 .grade-evolution-modal-header .subpage-subtitle {
   font-family: 'Nunito', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.86rem;
   font-weight: 600;
   color: #777;
+  line-height: 1.3;
 }
 .grade-evolution-stat-row {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  margin-top: 14px;
+  margin-top: 0;
 }
 .grade-evolution-stat {
-  min-width: 88px;
-  padding: 10px 14px;
+  min-width: 0;
+  padding: 12px 14px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   border: 2px solid #e5e5e5;
   border-bottom: 3px solid #d0d0d0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
 }
 .grade-evolution-stat-val {
   font-size: 1.35rem;
@@ -290,6 +308,19 @@ content: '';
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #afafaf;
+}
+@media (max-width: 520px) {
+  .grade-evolution-header-main {
+    gap: 10px;
+  }
+  .grade-evolution-hero-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+  }
+  .grade-evolution-modal-header .subpage-title {
+    font-size: 1.25rem;
+  }
 }
 .grade-evolution-section {
   width: 100%;
@@ -382,7 +413,7 @@ content: '';
 .ge-chart-card {
   background: #fff;
   border-radius: 20px;
-  padding: 18px 18px 16px;
+  padding: 16px 14px 14px;
   box-shadow: none;
   border: 2px solid #e5e5e5;
   border-bottom: 4px solid #d0d0d0;
@@ -392,13 +423,16 @@ content: '';
   height: auto;
   display: block;
   overflow: visible;
+  font-family: 'Nunito', sans-serif;
 }
 .ge-legend {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #eef2f7;
 }
 .ge-legend-btn {
   display: inline-flex;

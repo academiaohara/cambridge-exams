@@ -1831,16 +1831,16 @@
         var meta = BentoGrid._gradeSkillMeta(skill);
         slides.push(
           '<div class="grade-carousel-slide" style="display:flex" data-skill="' + BentoGrid._escapeHTML(skill) + '">' +
-            '<div class="grade-carousel-body">' +
+            '<div class="grade-carousel-content">' +
               '<div class="grade-carousel-icon" style="--grade-skill-color:' + meta.color + '">' +
                 '<span class="material-symbols-outlined" aria-hidden="true">' + meta.icon + '</span>' +
               '</div>' +
-              '<div class="grade-carousel-metrics">' +
+              '<div class="grade-carousel-data">' +
                 '<div class="grade-carousel-raw">' + (hasData ? avgScale : '–') + '</div>' +
                 '<div class="grade-carousel-cefr' + (cefrText === '–' ? ' grade-carousel-cefr-dash' : '') + '">' + cefrText + '</div>' +
+                '<div class="grade-carousel-skill-label"><span>' + skill + '</span></div>' +
               '</div>' +
             '</div>' +
-            '<div class="grade-carousel-skill-label"><span>' + skill + '</span></div>' +
           '</div>'
         );
       });
@@ -1848,15 +1848,15 @@
       var slidesHtml = '';
       if (slides.length === 0) {
         slidesHtml = '<div class="grade-carousel-slide" style="display:flex;opacity:0.6">' +
-          '<div class="grade-carousel-body grade-carousel-body--empty">' +
+          '<div class="grade-carousel-content grade-carousel-content--empty">' +
             '<div class="grade-carousel-icon grade-carousel-icon--empty">' +
               '<span class="material-symbols-outlined" aria-hidden="true">insights</span>' +
             '</div>' +
-            '<div class="grade-carousel-metrics">' +
+            '<div class="grade-carousel-data">' +
               '<div class="grade-carousel-raw">–</div>' +
+              '<div class="grade-carousel-skill-label"><span>' + 'Complete exercises to see results' + '</span></div>' +
             '</div>' +
           '</div>' +
-          '<div class="grade-carousel-skill-label"><span>' + 'Complete exercises to see results' + '</span></div>' +
         '</div>';
       } else {
         slides.forEach(function(s, idx) {
