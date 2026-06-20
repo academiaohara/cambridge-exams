@@ -177,6 +177,22 @@
   box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
+.reading-type5-question-number.correct {
+  background: var(--ex-duo-practice, #58cc02);
+  box-shadow: 0 3px 0 var(--ex-duo-practice-dark, #58a700);
+}
+
+.reading-type5-question-number.incorrect,
+.reading-type5-question-number.unanswered-checked {
+  background: #ff4b4b;
+  box-shadow: 0 3px 0 #ea2b2b;
+}
+
+.reading-type5-question-number.show-correct {
+  background: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 3px 0 var(--ex-duo-purple-dark, #a855f7);
+}
+
 .reading-type5-question-header {
   display: flex;
   align-items: center;

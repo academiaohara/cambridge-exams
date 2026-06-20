@@ -164,10 +164,20 @@
 
     /** B1 Reading Part 5 “Questions” tab: question number + options on one row. */
     renderQuestionRow: function(question, qNum, isChecked, userAnswer) {
+      var numClass = 'reading-type5-question-number';
+      if (typeof Utils !== 'undefined') {
+        var stateClass = Utils.getQuestionNumberStateClass({
+          answer: userAnswer,
+          correct: question.correct,
+          isChecked: isChecked,
+          questionType: 'multiple-choice-text'
+        });
+        if (stateClass) numClass += ' ' + stateClass;
+      }
       return (
         '<div class="reading-type5-question reading-type5-cloze-row">' +
         '<div class="reading-type5-cloze-row-inner">' +
-        '<div class="reading-type5-question-number">' + qNum + '</div>' +
+        '<div class="' + numClass + '" data-qnum="' + qNum + '">' + qNum + '</div>' +
         '<div class="reading-type5-options reading-type5-options-row">' +
         this.renderOptions(question, qNum, isChecked, userAnswer) +
         '</div></div></div>'
@@ -183,10 +193,20 @@
         (heading != null && String(heading).trim() !== '') ||
         (bodyText != null && String(bodyText).trim() !== '');
       const showSourceCard = hasLegacyNotice || hasPassage;
+      var numClass = 'reading-type5-question-number';
+      if (typeof Utils !== 'undefined') {
+        var stateClass = Utils.getQuestionNumberStateClass({
+          answer: userAnswer,
+          correct: question.correct,
+          isChecked: isChecked,
+          questionType: 'multiple-choice-text'
+        });
+        if (stateClass) numClass += ' ' + stateClass;
+      }
       const questionBlock = `
         <div class="reading-type5-question">
           <div class="reading-type5-question-header">
-            <div class="reading-type5-question-number">${qNum}</div>
+            <div class="${numClass}" data-qnum="${qNum}">${qNum}</div>
             <div class="reading-type5-question-text">${question.question}</div>
           </div>
           <div class="reading-type5-options">

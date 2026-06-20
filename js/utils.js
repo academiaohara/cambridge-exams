@@ -155,6 +155,63 @@
           return userAnswer === correctAnswer;
       }
     },
+
+    isAnswerViewCorrectActive: function() {
+      return typeof AppState !== 'undefined' &&
+        AppState.answersChecked &&
+        AppState.answerViewMode === 'correct' &&
+        typeof ExerciseHandlers !== 'undefined' &&
+        typeof ExerciseHandlers.shouldEnableAnswerToggle === 'function' &&
+        ExerciseHandlers.shouldEnableAnswerToggle();
+    },
+
+    QUESTION_NUMBER_STATE_CLASSES: ['answered', 'correct', 'incorrect', 'unanswered-checked', 'show-correct'],
+
+    getQuestionNumberStateClass: function(opts) {
+      if (!opts.isChecked) {
+        return opts.answer ? 'answered' : '';
+      }
+      if (this.isAnswerViewCorrectActive()) {
+        return 'show-correct';
+      }
+      var isCorrect = this.compareAnswers(opts.answer, opts.correct, opts.questionType);
+      if (isCorrect) return 'correct';
+      return opts.answer ? 'incorrect' : 'unanswered-checked';
+    },
+
+    applyQuestionNumberStateClass: function(el, stateClass) {
+      if (!el) return;
+      var self = this;
+      this.QUESTION_NUMBER_STATE_CLASSES.forEach(function(cls) {
+        el.classList.toggle(cls, cls === stateClass);
+      });
+    },
+
+    syncQuestionNumberBadges: function() {
+      if (typeof AppState === 'undefined' || !AppState.currentExercise) return;
+      var questions = (AppState.currentExercise.content && AppState.currentExercise.content.questions) || [];
+      var answers = AppState.currentExercise.answers || {};
+      var isChecked = AppState.answersChecked;
+      var partConfig = typeof CONFIG !== 'undefined' && CONFIG.getPartConfig
+        ? CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart)
+        : null;
+      var questionType = partConfig ? partConfig.type : undefined;
+      var self = this;
+
+      document.querySelectorAll('.reading-type5-question-number[data-qnum], .listening-type1-question-number[data-qnum]').forEach(function(el) {
+        var qNum = parseInt(el.getAttribute('data-qnum'), 10);
+        if (!qNum) return;
+        var question = questions.find(function(q) { return q.number === qNum; });
+        if (!question) return;
+        var stateClass = self.getQuestionNumberStateClass({
+          answer: answers[qNum],
+          correct: question.correct,
+          isChecked: isChecked,
+          questionType: questionType
+        });
+        self.applyQuestionNumberStateClass(el, stateClass);
+      });
+    },
     
     // Etiqueta del badge de ejercicio (p. ej. "Reading - Part 2", no el título del texto)
     /** B1/B2/C1 test exercises use the shared Duolingo-style UI shell. */

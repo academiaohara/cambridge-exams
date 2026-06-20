@@ -208,6 +208,11 @@
       if (typeHandler && typeof typeHandler.setAnswerMode === 'function') {
         typeHandler.setAnswerMode(AppState.answerViewMode);
       }
+      if (typeof QuestionNav !== 'undefined' && typeof QuestionNav.updateAllNavCells === 'function') {
+        QuestionNav.updateAllNavCells();
+      } else if (typeof Utils !== 'undefined' && typeof Utils.syncQuestionNumberBadges === 'function') {
+        Utils.syncQuestionNumberBadges();
+      }
       this.syncAnswerToggleButton();
     },
     

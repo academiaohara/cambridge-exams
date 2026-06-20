@@ -176,10 +176,25 @@
       }
     },
 
+    _syncNavCellState: function(cell, answer, correct, isChecked, questionType) {
+      if (!cell || typeof Utils === 'undefined') return;
+      var stateClass = Utils.getQuestionNumberStateClass({
+        answer: answer,
+        correct: correct,
+        isChecked: isChecked,
+        questionType: questionType
+      });
+      Utils.applyQuestionNumberStateClass(cell, stateClass);
+    },
+
     updateAllNavCells: function() {
       var questions = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions) || [];
       var answers = (AppState.currentExercise && AppState.currentExercise.answers) || {};
       var isChecked = AppState.answersChecked;
+      var partConfig = typeof CONFIG !== 'undefined' && CONFIG.getPartConfig
+        ? CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart)
+        : null;
+      var questionType = partConfig ? partConfig.type : undefined;
       var letterRow = document.getElementById('question-nav-row');
       if (letterRow && letterRow.getAttribute('data-nav-letters') === '1') {
         var used = {};
@@ -190,19 +205,21 @@
         letterRow.querySelectorAll('.question-nav-cell[data-letter]').forEach(function(cell) {
           var L = cell.getAttribute('data-letter');
           cell.classList.toggle('answered', !!(L && used[L] && !isChecked));
-          cell.classList.remove('correct', 'incorrect', 'unanswered-checked');
+          cell.classList.remove('correct', 'incorrect', 'unanswered-checked', 'show-correct');
         });
+        if (typeof Utils !== 'undefined' && typeof Utils.syncQuestionNumberBadges === 'function') {
+          Utils.syncQuestionNumberBadges();
+        }
         return;
       }
       questions.forEach(function(q) {
         var cell = document.querySelector('.question-nav-cell[data-qnum="' + q.number + '"]');
         if (!cell) return;
-        var answer = answers[q.number];
-        cell.classList.toggle('answered', !!answer && !isChecked);
-        cell.classList.toggle('correct', !!(isChecked && answer && answer === q.correct));
-        cell.classList.toggle('incorrect', !!(isChecked && answer && answer !== q.correct));
-        cell.classList.toggle('unanswered-checked', !!(isChecked && !answer));
+        QuestionNav._syncNavCellState(cell, answers[q.number], q.correct, isChecked, questionType);
       });
+      if (typeof Utils !== 'undefined' && typeof Utils.syncQuestionNumberBadges === 'function') {
+        Utils.syncQuestionNumberBadges();
+      }
     },
 
     openReading2Letter: function(letter) {

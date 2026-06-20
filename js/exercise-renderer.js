@@ -877,18 +877,22 @@
       };
       const answers = AppState.currentExercise?.answers || {};
       const isChecked = AppState.answersChecked;
+      const questionType = partConfig ? partConfig.type : undefined;
       let cells = '';
       if (isPart7) {
         questions.forEach(function(q) {
           const qNum = q.number;
           const answer = answers[qNum];
           let cls = 'question-nav-cell question-nav-letter';
-          if (isChecked) {
-            if (answer) cls += answer === q.correct ? ' correct' : ' incorrect';
-            else cls += ' unanswered-checked';
-          } else if (answer) {
-            cls += ' answered';
-          }
+          var stateClass = typeof Utils !== 'undefined'
+            ? Utils.getQuestionNumberStateClass({
+              answer: answer,
+              correct: q.correct,
+              isChecked: isChecked,
+              questionType: questionType
+            })
+            : '';
+          if (stateClass) cls += ' ' + stateClass;
           cells += '<button class="' + cls + '" data-qnum="' + qNum + '" onclick="QuestionNav.openQuestion(' + qNum + ')">' + qNum + '</button>';
         });
         return '<div class="question-nav-row" id="question-nav-row">' + cells + '</div>';
@@ -897,12 +901,15 @@
         const qNum = q.number;
         const answer = answers[qNum];
         let cls = 'question-nav-cell question-nav-letter';
-        if (isChecked) {
-          if (answer) cls += answer === q.correct ? ' correct' : ' incorrect';
-          else cls += ' unanswered-checked';
-        } else if (answer) {
-          cls += ' answered';
-        }
+        var stateClass = typeof Utils !== 'undefined'
+          ? Utils.getQuestionNumberStateClass({
+            answer: answer,
+            correct: q.correct,
+            isChecked: isChecked,
+            questionType: questionType
+          })
+          : '';
+        if (stateClass) cls += ' ' + stateClass;
         cells += '<button class="' + cls + '" data-qnum="' + qNum + '" onclick="QuestionNav.openQuestion(' + qNum + ')">' + qNum + '</button>';
       });
       return '<div class="question-nav-row" id="question-nav-row">' + cells + '</div>';
@@ -1158,6 +1165,7 @@
 
       var answers = AppState.currentExercise?.answers || {};
       var isChecked = AppState.answersChecked;
+      var questionType = partConfig ? partConfig.type : undefined;
       var cells = '';
       questions.forEach(function(q) {
         var qNum = q.number;
@@ -1167,14 +1175,15 @@
           answer = answers['t1_' + qNum] || answers['t2_' + qNum];
         }
         var cls = 'question-nav-cell question-nav-letter';
-        if (isChecked) {
-          if (answer) {
-            var correct = q.correct;
-            cls += answer === correct ? ' correct' : ' incorrect';
-          } else cls += ' unanswered-checked';
-        } else if (answer) {
-          cls += ' answered';
-        }
+        var stateClass = typeof Utils !== 'undefined'
+          ? Utils.getQuestionNumberStateClass({
+            answer: answer,
+            correct: q.correct,
+            isChecked: isChecked,
+            questionType: questionType
+          })
+          : '';
+        if (stateClass) cls += ' ' + stateClass;
         cells += '<button class="' + cls + '" data-qnum="' + qNum + '" onclick="QuestionNav.openQuestion(' + qNum + ')">' + qNum + '</button>';
       });
       return '<div class="question-nav-row" id="question-nav-row">' + cells + '</div>';

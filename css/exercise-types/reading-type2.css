@@ -177,6 +177,27 @@
   line-height: 1.45;
 }
 
+.b1-reading6 .reading-type2-oc-pill:has(.reading-type2-correct) .cu-hint-pill-num,
+.b1-reading6 .reading-type2-oc-pill:has(.cu-input-correct) .cu-hint-pill-num {
+  background: var(--ex-duo-practice, #58cc02);
+  border-color: var(--ex-duo-practice-dark, #58a700);
+  color: #fff;
+}
+
+.b1-reading6 .reading-type2-oc-pill:has(.reading-type2-incorrect) .cu-hint-pill-num,
+.b1-reading6 .reading-type2-oc-pill:has(.cu-input-incorrect) .cu-hint-pill-num {
+  background: #ff4b4b;
+  border-color: #ea2b2b;
+  color: #fff;
+}
+
+.b1-reading6 .reading-type2-oc-pill:has(.reading-type2-show-correct) .cu-hint-pill-num,
+.b1-reading6 .reading-type2-oc-pill:has(.cu-input-show-correct) .cu-hint-pill-num {
+  background: var(--ex-duo-purple, #ce82ff);
+  border-color: var(--ex-duo-purple-dark, #a855f7);
+  color: #fff;
+}
+
 .b1-reading6 .reading-type2-pill-input {
   border: 2px solid var(--ex-duo-border, #e5e5e5) !important;
   border-radius: 10px !important;
