@@ -119,14 +119,23 @@
 }
 
 .listening-type4-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 1.05rem;
   color: var(--text-dark);
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
-.listening-type4-option strong {
+.listening-type4-option-letter {
   color: var(--primary);
-  margin-right: 0.3rem;
+  flex-shrink: 0;
+}
+
+.listening-type4-option-text {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.5;
 }
 
 /* Question rows - compact */
@@ -300,9 +309,9 @@
 
 .dashboard-layout--exercise .b1-listening .listening-type4-instruction {
   font-family: 'Nunito', sans-serif;
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--ex-duo-text, #4b4b4b);
   margin: 0 0 14px 0;
 }
@@ -318,28 +327,41 @@
 }
 
 .dashboard-layout--exercise .b1-listening .listening-type4-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: 'Nunito', sans-serif;
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   font-weight: 600;
   line-height: 1.5;
   color: var(--ex-duo-text, #4b4b4b);
 }
 
-.dashboard-layout--exercise .b1-listening .listening-type4-option strong {
+.dashboard-layout--exercise .b1-listening .listening-type4-option-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: inherit;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-type4-option-letter {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 28px;
-  height: 28px;
-  margin-right: 8px;
-  padding: 0 6px;
-  border-radius: 10px;
+  min-width: 30px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
   background: #fff;
   color: var(--ex-duo-blue-dark, #1899d6);
   border: 2px solid var(--ex-duo-blue, #1cb0f6);
   font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-size: 0.82rem;
+  font-size: 1.05rem;
   font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .dashboard-layout--exercise .b1-listening .listening-type4-questions {

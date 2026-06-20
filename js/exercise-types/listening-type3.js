@@ -70,8 +70,8 @@
     _renderOptionsList: function(texts) {
       var letters = Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); });
       var optionsHTML = letters.map(function(letter) {
-        return '<div class="listening-type3-option"><strong>' + letter + '</strong> ' +
-          this._escapeHtml(texts[letter]) + '</div>';
+        return '<div class="listening-type3-option"><strong class="listening-type3-option-letter">' + letter + '</strong>' +
+          '<span class="listening-type3-option-text">' + this._escapeHtml(texts[letter]) + '</span></div>';
       }.bind(this)).join('');
 
       return '<div class="listening-type3-options-col">' +

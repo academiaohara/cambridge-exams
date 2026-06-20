@@ -16,7 +16,7 @@
   }
 
   function optionLabelHtml(text) {
-    return '<span>' + escapeAttr(text) + '</span>';
+    return '<span class="listening-type1-option-text">' + escapeAttr(text) + '</span>';
   }
 
   function optionImageHtml(url) {

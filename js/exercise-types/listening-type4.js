@@ -63,7 +63,7 @@
     _renderTask: function(task, taskNum, isChecked, isDuoListening) {
       var optionEntries = Object.entries(task.options || {});
       var optionsHTML = optionEntries.map(function(entry) {
-        return '<div class="listening-type4-option"><strong>' + entry[0] + '</strong> ' + entry[1] + '</div>';
+        return '<div class="listening-type4-option"><strong class="listening-type4-option-letter">' + entry[0] + '</strong><span class="listening-type4-option-text">' + entry[1] + '</span></div>';
       }).join('');
 
       var self = this;
