@@ -177,6 +177,7 @@
       });
 
       var bodyHtml = BentoGrid._buildGradeEvoChart(examScores, allSkills, skillColors, gradeBands, scaleMin, scaleMax);
+      var examCount = examScores.length;
 
       var el = document.createElement('div');
       el.className = 'grade-evolution-modal-overlay';
@@ -187,8 +188,16 @@
           '</button>' +
           '<div class="grade-evolution-section">' +
             '<div class="grade-evolution-modal-header">' +
+              '<div class="grade-evolution-hero-icon" aria-hidden="true"><span class="material-symbols-outlined">trending_up</span></div>' +
               '<div class="subpage-title" id="grade-evolution-title">' + 'Grade Evolution' + '</div>' +
-              '<div class="subpage-subtitle">' + level + ' · ' + 'Track your progress across exams' + '</div>' +
+              '<div class="grade-evolution-level-pill">' + level + '</div>' +
+              '<div class="subpage-subtitle">' + 'Track your progress across exams' + '</div>' +
+              (examCount > 0
+                ? '<div class="grade-evolution-stat-row">' +
+                    '<div class="grade-evolution-stat"><span class="grade-evolution-stat-val">' + examCount + '</span><span class="grade-evolution-stat-lbl">Exams</span></div>' +
+                    '<div class="grade-evolution-stat"><span class="grade-evolution-stat-val">' + allSkills.length + '</span><span class="grade-evolution-stat-lbl">Skills</span></div>' +
+                  '</div>'
+                : '') +
             '</div>' +
             '<div class="grade-evolution-body">' +
               '<button type="button" class="grade-evolution-expand-btn" onclick="BentoGrid._toggleGradeEvolutionExpand()" title="Larger chart" aria-label="Larger chart">' +

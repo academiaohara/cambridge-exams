@@ -1786,6 +1786,17 @@
       '</div>';
     },
 
+    _gradeSkillMeta: function(skill) {
+      var map = {
+        'Reading': { icon: 'menu_book', color: '#1cb0f6' },
+        'Use of English': { icon: 'spellcheck', color: '#ce82ff' },
+        'Writing': { icon: 'edit_note', color: '#58cc02' },
+        'Listening': { icon: 'headphones', color: '#ff9600' },
+        'Speaking': { icon: 'record_voice_over', color: '#ff4b4b' }
+      };
+      return map[skill] || { icon: 'description', color: '#1cb0f6' };
+    },
+
     _buildGradeTrackerSidebarHtml: function(exams) {
       var level = AppState.currentLevel || 'C1';
 
@@ -1817,10 +1828,18 @@
         var avgScale = hasData ? Math.round(d.scale / d.count) : 0;
         var gradeInfo = (hasData && typeof ScoreCalculator !== 'undefined') ? ScoreCalculator.getGradeInfo(avgScale, level) : { cefr: '–' };
         var cefrText = gradeInfo.cefr || '–';
+        var meta = BentoGrid._gradeSkillMeta(skill);
         slides.push(
-          '<div class="grade-carousel-slide" style="display:flex">' +
-            '<div class="grade-carousel-raw">' + (hasData ? avgScale : '–') + '</div>' +
-            '<div class="grade-carousel-cefr' + (cefrText === '–' ? ' grade-carousel-cefr-dash' : '') + '">' + cefrText + '</div>' +
+          '<div class="grade-carousel-slide" style="display:flex" data-skill="' + BentoGrid._escapeHTML(skill) + '">' +
+            '<div class="grade-carousel-body">' +
+              '<div class="grade-carousel-icon" style="--grade-skill-color:' + meta.color + '">' +
+                '<span class="material-symbols-outlined" aria-hidden="true">' + meta.icon + '</span>' +
+              '</div>' +
+              '<div class="grade-carousel-metrics">' +
+                '<div class="grade-carousel-raw">' + (hasData ? avgScale : '–') + '</div>' +
+                '<div class="grade-carousel-cefr' + (cefrText === '–' ? ' grade-carousel-cefr-dash' : '') + '">' + cefrText + '</div>' +
+              '</div>' +
+            '</div>' +
             '<div class="grade-carousel-skill-label"><span>' + skill + '</span></div>' +
           '</div>'
         );
@@ -1829,7 +1848,14 @@
       var slidesHtml = '';
       if (slides.length === 0) {
         slidesHtml = '<div class="grade-carousel-slide" style="display:flex;opacity:0.6">' +
-          '<div class="grade-carousel-raw" style="font-size:1.6rem;">–</div>' +
+          '<div class="grade-carousel-body grade-carousel-body--empty">' +
+            '<div class="grade-carousel-icon grade-carousel-icon--empty">' +
+              '<span class="material-symbols-outlined" aria-hidden="true">insights</span>' +
+            '</div>' +
+            '<div class="grade-carousel-metrics">' +
+              '<div class="grade-carousel-raw">–</div>' +
+            '</div>' +
+          '</div>' +
           '<div class="grade-carousel-skill-label"><span>' + 'Complete exercises to see results' + '</span></div>' +
         '</div>';
       } else {
@@ -1839,15 +1865,40 @@
       }
 
       var totalSlides = slides.length || 1;
+      var showNav = totalSlides > 1;
 
-      return '<div class="sidebar-widget-duo sw-grade grade-tracker-carousel-widget" data-total-slides="' + totalSlides + '" onclick="BentoGrid.openGradeEvolution()" style="cursor:pointer">' +
+      return '<div class="sidebar-widget-duo sw-grade grade-tracker-carousel-widget" data-total-slides="' + totalSlides + '">' +
         '<div class="sw-duo-header">' +
           '<span class="sw-duo-title">' + 'Grade Tracker' + '</span>' +
-          '<span class="sw-duo-link">SEE ALL</span>' +
+          '<button type="button" class="sw-duo-link grade-tracker-see-all" onclick="BentoGrid.openGradeEvolution()">SEE ALL</button>' +
         '</div>' +
-        '<div class="grade-carousel-viewport">' + slidesHtml + '</div>' +
+        '<div class="grade-carousel-shell' + (showNav ? '' : ' grade-carousel-shell--single') + '">' +
+          (showNav ? '<button type="button" class="grade-carousel-nav grade-carousel-prev" aria-label="Previous skill"><span class="material-symbols-outlined">chevron_left</span></button>' : '') +
+          '<div class="grade-carousel-viewport" onclick="BentoGrid.openGradeEvolution()" role="button" tabindex="0" aria-label="Open grade evolution">' + slidesHtml + '</div>' +
+          (showNav ? '<button type="button" class="grade-carousel-nav grade-carousel-next" aria-label="Next skill"><span class="material-symbols-outlined">chevron_right</span></button>' : '') +
+        '</div>' +
         '<div class="grade-carousel-dots"></div>' +
       '</div>';
+    },
+
+    _goGradeCarouselSlide: function(widget, targetIdx) {
+      var total = parseInt(widget.getAttribute('data-total-slides'), 10) || 1;
+      if (total <= 1) return 0;
+      var slides = widget.querySelectorAll('.grade-carousel-slide');
+      var dots = widget.querySelectorAll('.grade-carousel-dot');
+      if (!slides.length) return 0;
+
+      var current = parseInt(widget.getAttribute('data-current-slide'), 10) || 0;
+      var next = ((targetIdx % total) + total) % total;
+
+      slides[current].style.display = 'none';
+      if (dots[current]) dots[current].classList.remove('active');
+
+      slides[next].style.display = 'flex';
+      if (dots[next]) dots[next].classList.add('active');
+
+      widget.setAttribute('data-current-slide', next);
+      return next;
     },
 
     _startGradeCarousel: function() {
@@ -1859,35 +1910,72 @@
       var widget = document.querySelector('.grade-tracker-carousel-widget');
       if (!widget) return;
       var total = parseInt(widget.getAttribute('data-total-slides'), 10);
-      if (!total || total <= 1) return;
+      if (!total) return;
+
+      widget.setAttribute('data-current-slide', '0');
 
       // Build dots
       var dotsContainer = widget.querySelector('.grade-carousel-dots');
-      if (dotsContainer && dotsContainer.children.length === 0) {
-        for (var i = 0; i < total; i++) {
-          var dot = document.createElement('span');
-          dot.className = 'grade-carousel-dot' + (i === 0 ? ' active' : '');
-          dot.setAttribute('data-idx', i);
-          dotsContainer.appendChild(dot);
+      if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        if (total > 1) {
+          for (var i = 0; i < total; i++) {
+            var dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'grade-carousel-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('data-idx', i);
+            dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+            dotsContainer.appendChild(dot);
+          }
         }
       }
 
-      var currentSlide = 0;
-      if (BentoGrid._gradeCarouselTimer) clearInterval(BentoGrid._gradeCarouselTimer);
+      var restartTimer = function() {
+        if (BentoGrid._gradeCarouselTimer) clearInterval(BentoGrid._gradeCarouselTimer);
+        if (total <= 1) return;
+        BentoGrid._gradeCarouselTimer = setInterval(function() {
+          var current = parseInt(widget.getAttribute('data-current-slide'), 10) || 0;
+          BentoGrid._goGradeCarouselSlide(widget, current + 1);
+        }, 4000);
+      };
 
-      BentoGrid._gradeCarouselTimer = setInterval(function() {
-        var slides = widget.querySelectorAll('.grade-carousel-slide');
-        var dots = widget.querySelectorAll('.grade-carousel-dot');
-        if (!slides.length) return;
+      var prevBtn = widget.querySelector('.grade-carousel-prev');
+      var nextBtn = widget.querySelector('.grade-carousel-next');
+      if (prevBtn && !prevBtn._gradeNavBound) {
+        prevBtn._gradeNavBound = true;
+        prevBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var current = parseInt(widget.getAttribute('data-current-slide'), 10) || 0;
+          BentoGrid._goGradeCarouselSlide(widget, current - 1);
+          restartTimer();
+        });
+      }
+      if (nextBtn && !nextBtn._gradeNavBound) {
+        nextBtn._gradeNavBound = true;
+        nextBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var current = parseInt(widget.getAttribute('data-current-slide'), 10) || 0;
+          BentoGrid._goGradeCarouselSlide(widget, current + 1);
+          restartTimer();
+        });
+      }
+      if (dotsContainer && !dotsContainer._gradeNavBound) {
+        dotsContainer._gradeNavBound = true;
+        dotsContainer.addEventListener('click', function(e) {
+          var dot = e.target.closest('.grade-carousel-dot');
+          if (!dot) return;
+          e.preventDefault();
+          e.stopPropagation();
+          var idx = parseInt(dot.getAttribute('data-idx'), 10);
+          if (isNaN(idx)) return;
+          BentoGrid._goGradeCarouselSlide(widget, idx);
+          restartTimer();
+        });
+      }
 
-        slides[currentSlide].style.display = 'none';
-        if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
-
-        currentSlide = (currentSlide + 1) % total;
-
-        slides[currentSlide].style.display = 'flex';
-        if (dots[currentSlide]) dots[currentSlide].classList.add('active');
-      }, 3000);
+      restartTimer();
     },
 
     _buildNextLessonSidebarHtml: function(lesson) {
