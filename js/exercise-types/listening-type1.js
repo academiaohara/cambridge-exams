@@ -27,12 +27,22 @@
     );
   }
 
-  function renderQuestionTextBlock(q, showC1Number, showB1Number) {
+  function renderQuestionTextBlock(q, showC1Number, showB1Number, isChecked, userAnswer) {
     var text = q.question || '';
+    var numClass = 'listening-type1-question-number';
+    if (isChecked && typeof Utils !== 'undefined') {
+      var stateClass = Utils.getQuestionNumberStateClass({
+        answer: userAnswer,
+        correct: q.correct,
+        isChecked: isChecked,
+        questionType: 'multiple-choice'
+      });
+      if (stateClass) numClass += ' ' + stateClass;
+    }
     if (showB1Number) {
       return (
         '<div class="listening-type1-question-header">' +
-        '<div class="listening-type1-question-number">' + String(q.number) + '</div>' +
+        '<div class="' + numClass + '" data-qnum="' + String(q.number) + '">' + String(q.number) + '</div>' +
         '<p class="listening-type1-question-text">' + text + '</p>' +
         '</div>'
       );
@@ -40,7 +50,7 @@
     if (showC1Number) {
       return (
         '<p class="listening-type1-question-text">' +
-        '<span class="listening-type1-question-number">' + String(q.number) + '.</span> ' +
+        '<span class="' + numClass + '" data-qnum="' + String(q.number) + '">' + String(q.number) + '.</span> ' +
         text +
         '</p>'
       );
@@ -360,7 +370,7 @@
             extract.questions.forEach(function(q) {
               var userAnswer = exercise.answers?.[q.number] || '';
               html += '<div class="listening-type1-item" data-listening-q="' + String(q.number) + '">';
-              html += renderQuestionTextBlock(q, showC1ListeningQuestionNumber, showDuoListeningQuestionNumber);
+              html += renderQuestionTextBlock(q, showC1ListeningQuestionNumber, showDuoListeningQuestionNumber, isChecked, userAnswer);
               html += '<div class="' + ListeningType1.optionsRowClass(q) + '">';
               html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
               html += '</div>';
@@ -390,7 +400,7 @@
               html +=
                 '<p class="listening-type1-item-context" lang="en">' + nlToBrEscaped(itemCtx) + '</p>';
             }
-            html += renderQuestionTextBlock(q, showC1ListeningQuestionNumber, showDuoListeningQuestionNumber);
+            html += renderQuestionTextBlock(q, showC1ListeningQuestionNumber, showDuoListeningQuestionNumber, isChecked, userAnswer);
             html += '<div class="' + ListeningType1.optionsRowClass(q) + '">';
             html += ListeningType1.renderOptions(q, q.number, isChecked, userAnswer);
             html += '</div>';
