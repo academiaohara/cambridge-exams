@@ -344,11 +344,15 @@
 .tips-loading {
   text-align: center;
   color: #64748b;
-  padding: 60px 20px;
+  padding: 40px 20px;
   font-size: 1rem;
   background: #fff;
   border: 1px solid #e2e8f0;
   border-radius: 14px;
+}
+
+.tips-loading .app-loading-paws {
+  margin: 0 auto 16px;
 }
 
 .tips-error {

@@ -201,6 +201,10 @@
         backOnclick = 'loadDashboard()';
       }
 
+      var loadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
+        ? AppLoadingScreen.markShown()
+        : Date.now();
+
       content.innerHTML =
         '<div class="dashboard-layout dashboard-layout--crossword-scroll">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
@@ -251,6 +255,10 @@
         bodyHtml = BentoGrid._buildCourseLevelCardsHtml(activeSection);
       } else {
         bodyHtml = BentoGrid._buildCourseSectionCardsHtml();
+      }
+
+      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+        await AppLoadingScreen.waitMinDuration(loadingStart);
       }
 
       hubPage.innerHTML = bodyHtml;
@@ -1524,6 +1532,15 @@
         : 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')';
 
       // Show loading in center
+      var unitLoadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
+        ? AppLoadingScreen.markShown()
+        : Date.now();
+      var unitLoadingBlock = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.wrapInlineLoading)
+        ? AppLoadingScreen.wrapInlineLoading(
+            AppLoadingScreen.buildInlineMarkup({ showLogo: false, showTip: false }),
+            'cw-inline-loading'
+          )
+        : '<div class="fe-loading"><div class="fe-spinner"></div></div>';
       centerSection.innerHTML =
         '<div class="subpage-header">' +
           '<button class="subpage-back-btn" onclick="' + courseBackFn + '" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
@@ -1532,7 +1549,7 @@
             '<div class="subpage-subtitle">' + level + ' Advanced</div>' +
           '</div>' +
         '</div>' +
-        '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+        unitLoadingBlock;
 
       var unitData = null;
       try {
@@ -1560,6 +1577,9 @@
       }
 
       if (!unitData) {
+        if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+          await AppLoadingScreen.waitMinDuration(unitLoadingStart);
+        }
         centerSection.innerHTML =
           '<div class="subpage-header">' +
             '<button class="subpage-back-btn" onclick="' + courseBackFn + '" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
@@ -1628,6 +1648,9 @@
       }
 
       html += '</div>';
+      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+        await AppLoadingScreen.waitMinDuration(unitLoadingStart);
+      }
       centerSection.innerHTML = html;
 
       // Restore saved answers and scores for review/progress test units

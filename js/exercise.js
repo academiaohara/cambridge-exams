@@ -455,16 +455,22 @@
       }
       const safeSection = Utils.getSectionTitle ? Utils.getSectionTitle(section) : section;
       const safePart = parseInt(part, 10);
+      const loadingPaws = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.getPawsMarkup)
+        ? AppLoadingScreen.getPawsMarkup()
+        : '<i class="fas fa-spinner fa-spin"></i>';
+      const loadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
+        ? AppLoadingScreen.markShown()
+        : Date.now();
       const loadingInner = `
         <div class="exercise-page-wrapper">
           <div class="exercise-container">
-            <div class="loading-exercise"><i class="fas fa-spinner fa-spin"></i><h3>Loading exercise...</h3><p>${safeSection} - Part ${safePart}</p></div>
+            <div class="loading-exercise">${loadingPaws}<h3>Loading exercise...</h3><p>${safeSection} - Part ${safePart}</p></div>
             <div class="exercise-footer">${loadingFooterHTML}</div>
           </div>
         </div>`;
       content.innerHTML = (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer._buildExerciseLayoutShell)
         ? ExerciseRenderer._buildExerciseLayoutShell(loadingInner, '', section !== 'writing' && section !== 'speaking')
-        : `<div class="exercise-container"><div class="loading-exercise"><i class="fas fa-spinner fa-spin"></i><h3>Loading exercise...</h3><p>${safeSection} - Part ${safePart}</p></div><div class="exercise-footer">${loadingFooterHTML}</div></div>`;
+        : `<div class="exercise-container"><div class="loading-exercise">${loadingPaws}<h3>Loading exercise...</h3><p>${safeSection} - Part ${safePart}</p></div><div class="exercise-footer">${loadingFooterHTML}</div></div>`;
       if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer._applyExerciseDashboardChrome) {
         ExerciseRenderer._applyExerciseDashboardChrome();
       }
@@ -553,6 +559,10 @@
         // In exam mode with countdown, set elapsed to saved or 0 (countdown calculates remaining)
         if (AppState.currentMode === 'exam') {
           AppState.elapsedSeconds = savedState ? (savedState.elapsedSeconds || 0) : 0;
+        }
+
+        if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+          await AppLoadingScreen.waitMinDuration(loadingStart);
         }
         
         await ExerciseRenderer.render(exercise, examId, section, part);

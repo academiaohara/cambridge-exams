@@ -25,6 +25,10 @@
   align-items: center;
   min-height: 300px;
 }
+.fe-loading .cw-inline-loading {
+  min-height: auto;
+  width: 100%;
+}
 .fe-spinner {
   width: 40px;
   height: 40px;

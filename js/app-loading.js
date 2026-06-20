@@ -3,6 +3,7 @@
   'use strict';
 
   var DEFAULT_MIN_MS = 5000;
+  var INLINE_MIN_MS = 3000;
   var _pageStart = Date.now();
 
   var TIPS = [
@@ -50,32 +51,59 @@
     return TIPS[Math.floor(Math.random() * TIPS.length)];
   }
 
-  function buildLoadingMarkup() {
+  function buildPawsMarkup() {
     return (
-      '<div class="app-loading-inner">' +
-        '<img src="Assets/images/sunelogoreduced2.svg" alt="Sune English" class="app-loading-logo">' +
-        '<p class="app-loading-title">Loading</p>' +
-        '<div class="app-loading-paws" aria-hidden="true">' +
-          '<div class="app-loading-paws-row app-loading-paws-row--top">' +
-            '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--1" width="52" height="65">' +
-            '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--3" width="52" height="65">' +
-            '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--5" width="52" height="65">' +
-          '</div>' +
-          '<div class="app-loading-paws-row app-loading-paws-row--bottom">' +
-            '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--2" width="52" height="65">' +
-            '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--4" width="52" height="65">' +
-            '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--6" width="52" height="65">' +
-          '</div>' +
+      '<div class="app-loading-paws" aria-hidden="true">' +
+        '<div class="app-loading-paws-row app-loading-paws-row--top">' +
+          '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--1" width="52" height="65">' +
+          '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--3" width="52" height="65">' +
+          '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--5" width="52" height="65">' +
         '</div>' +
+        '<div class="app-loading-paws-row app-loading-paws-row--bottom">' +
+          '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--2" width="52" height="65">' +
+          '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--4" width="52" height="65">' +
+          '<img src="Assets/images/huella.svg" alt="" class="app-loading-paw app-loading-paw--6" width="52" height="65">' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  function buildInlineMarkup(options) {
+    options = options || {};
+    var title = options.title || 'Loading';
+    var subtitle = options.subtitle || '';
+    var showLogo = options.showLogo !== false;
+    var showTip = options.showTip !== false;
+    var compact = options.compact === true;
+
+    var html = '<div class="app-loading-inner' + (compact ? ' app-loading-inner--compact' : '') + '">';
+    if (showLogo && !compact) {
+      html += '<img src="Assets/images/sunelogoreduced2.svg" alt="Sune English" class="app-loading-logo">';
+    }
+    if (title) {
+      html += '<p class="app-loading-title">' + title + '</p>';
+    }
+    html += buildPawsMarkup();
+    if (subtitle) {
+      html += '<p class="app-loading-subtitle">' + subtitle + '</p>';
+    }
+    if (showTip && !compact) {
+      html += (
         '<div class="app-loading-tip">' +
           '<div class="app-loading-tip-label">' +
             '<span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>' +
             '<span>English tip</span>' +
           '</div>' +
-          '<p id="app-loading-tip-text" class="app-loading-tip-text">' + pickRandomTip() + '</p>' +
-        '</div>' +
-      '</div>'
-    );
+          '<p class="app-loading-tip-text">' + pickRandomTip() + '</p>' +
+        '</div>'
+      );
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function buildLoadingMarkup() {
+    return buildInlineMarkup({ title: 'Loading', showLogo: true, showTip: true });
   }
 
   window.AppLoadingScreen = {
@@ -85,9 +113,51 @@
     _onHiddenCallback: null,
     _customMinMs: null,
     _manual: false,
+    INLINE_MIN_MS: INLINE_MIN_MS,
 
     getMarkup: function () {
       return buildLoadingMarkup();
+    },
+
+    getPawsMarkup: function () {
+      return buildPawsMarkup();
+    },
+
+    buildInlineMarkup: function (options) {
+      return buildInlineMarkup(options);
+    },
+
+    wrapInlineLoading: function (innerHtml, wrapperClass) {
+      wrapperClass = wrapperClass || 'cw-inline-loading';
+      return (
+        '<div class="' + wrapperClass + '" role="status" aria-live="polite" aria-label="Loading">' +
+          innerHtml +
+        '</div>'
+      );
+    },
+
+    markShown: function () {
+      return Date.now();
+    },
+
+    waitMinDuration: function (shownAt, minMs) {
+      minMs = typeof minMs === 'number' ? minMs : INLINE_MIN_MS;
+      var elapsed = Date.now() - (shownAt || Date.now());
+      var remaining = Math.max(0, minMs - elapsed);
+      return new Promise(function (resolve) {
+        setTimeout(resolve, remaining);
+      });
+    },
+
+    showInline: function (el, options) {
+      options = options || {};
+      var shownAt = Date.now();
+      var inner = this.buildInlineMarkup(options);
+      var wrapperClass = options.wrapperClass || 'cw-inline-loading';
+      var html = this.wrapInlineLoading(inner, wrapperClass);
+      if (typeof el === 'string') el = document.getElementById(el);
+      if (el) el.innerHTML = html;
+      return shownAt;
     },
 
     init: function () {

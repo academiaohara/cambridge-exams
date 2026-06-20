@@ -469,7 +469,16 @@
       '</div>';
 
       if (requestId !== _toolRequestId) return;
-      areaHerramientas.innerHTML = searchBoxHTML + '<p class="loading-mini"><i class="fas fa-spinner fa-spin"></i> ' + 'Loading exercise...' + '...</p>';
+      var loadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
+        ? AppLoadingScreen.markShown()
+        : Date.now();
+      var dictLoadingHtml = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.wrapInlineLoading)
+        ? AppLoadingScreen.wrapInlineLoading(
+            AppLoadingScreen.buildInlineMarkup({ showLogo: false, showTip: false, compact: true, title: '' }),
+            'loading-mini'
+          )
+        : '<p class="loading-mini"><i class="fas fa-spinner fa-spin"></i> ' + 'Loading exercise...' + '...</p>';
+      areaHerramientas.innerHTML = searchBoxHTML + dictLoadingHtml;
       var searchInput = document.getElementById('dict-search-input');
       if (searchInput) {
         searchInput.addEventListener('keydown', function(e) {
@@ -505,6 +514,9 @@
 
         if (!Array.isArray(data) || data.length === 0 || (data.title && data.title === "No Definitions Found")) {
           if (requestId !== _toolRequestId) return;
+          if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+            await AppLoadingScreen.waitMinDuration(loadingStart);
+          }
           areaHerramientas.innerHTML = searchBoxHTML + '<p class="dict-not-found">' + 'No definition found for' + ' "' + query + '".</p>';
           var searchInput2 = document.getElementById('dict-search-input');
           if (searchInput2) {
@@ -516,6 +528,9 @@
         }
 
         if (requestId !== _toolRequestId) return;
+        if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+          await AppLoadingScreen.waitMinDuration(loadingStart);
+        }
         
         const info = data[0];
         let allMeaningsHTML = '';
@@ -568,6 +583,9 @@
       } catch (error) {
         if (requestId !== _toolRequestId) return;
         console.error('Error en diccionario:', error);
+        if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+          await AppLoadingScreen.waitMinDuration(loadingStart);
+        }
         areaHerramientas.innerHTML = searchBoxHTML + '<p>' + 'Error connecting to dictionary.' + '</p>';
         var searchInput4 = document.getElementById('dict-search-input');
         if (searchInput4) {
@@ -761,7 +779,17 @@
     showTips: async function(section) {
       const requestId = ++_toolRequestId;
       const container = document.getElementById('active-tool-content');
-      container.innerHTML = '<p class="loading-mini"><i class="fas fa-spinner fa-spin"></i> ' + 'Loading exercise...' + '...</p>';
+      const loadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
+        ? AppLoadingScreen.markShown()
+        : Date.now();
+      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.wrapInlineLoading) {
+        container.innerHTML = AppLoadingScreen.wrapInlineLoading(
+          AppLoadingScreen.buildInlineMarkup({ showLogo: false, showTip: false, compact: true, title: 'Loading tips...' }),
+          'loading-mini'
+        );
+      } else {
+        container.innerHTML = '<p class="loading-mini"><i class="fas fa-spinner fa-spin"></i> ' + 'Loading exercise...' + '...</p>';
+      }
       
       try {
         const tipFile = {
@@ -776,6 +804,9 @@
         const tips = await response.json();
 
         if (requestId !== _toolRequestId) return;
+        if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+          await AppLoadingScreen.waitMinDuration(loadingStart);
+        }
         
         let html = `<div class="tips-content">`;
         
@@ -805,6 +836,9 @@
       } catch (error) {
         if (requestId !== _toolRequestId) return;
         console.error('Error cargando tips:', error);
+        if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
+          await AppLoadingScreen.waitMinDuration(loadingStart);
+        }
         container.innerHTML = '<p class="error-message">Error cargando tips</p>';
       }
     }

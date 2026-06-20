@@ -50,6 +50,25 @@ body.app-is-loading #app {
   color: #2D2E5F;
 }
 
+.app-loading-subtitle {
+  margin: -20px 0 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4a4b7c;
+  text-align: center;
+}
+
+.app-loading-inner--compact .app-loading-title {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.app-loading-inner--compact .app-loading-paws {
+  margin-bottom: 0;
+}
+
 .app-loading-paws {
   width: min(320px, 84vw);
   margin-bottom: 36px;

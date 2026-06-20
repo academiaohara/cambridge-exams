@@ -448,6 +448,22 @@
       return div.innerHTML;
     },
 
+    _showLoading: function(target) {
+      var el = target || document.getElementById('main-content');
+      if (!el) return Date.now();
+      if (typeof AppLoadingScreen !== 'undefined') {
+        return AppLoadingScreen.showInline(el, { showLogo: false, showTip: false });
+      }
+      el.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+      return Date.now();
+    },
+
+    _waitLoading: async function(shownAt) {
+      if (typeof AppLoadingScreen !== 'undefined') {
+        await AppLoadingScreen.waitMinDuration(shownAt);
+      }
+    },
+
     // Escape a string for safe embedding in a JS single-quoted string literal
     _jsStr: function(str) {
       return (str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
@@ -470,7 +486,7 @@
       if (!content) return;
 
       // Show loading state
-      content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+      var loadingStart = this._showLoading(content);
 
       // Load all category data
       var categoryCards = '';
@@ -519,6 +535,8 @@
       var leftSidebarContent = sidebars.left;
       var rightSidebarContent = sidebars.right;
 
+      await this._waitLoading(loadingStart);
+
       content.innerHTML =
         '<div class="dashboard-layout">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
@@ -557,10 +575,11 @@
       var self = this;
       this._currentCategory = categoryId;
 
-      content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+      var loadingStart = this._showLoading(content);
 
       var data = await this._loadCategoryData(categoryId);
       if (!data || !data.levels) {
+        await this._waitLoading(loadingStart);
         content.innerHTML = '<div class="fe-error">Category data not available.</div>';
         return;
       }
@@ -648,6 +667,8 @@
         : 'Level Progress' + ' — ' + activeLevel;
       var headerLevelRow = isCourseVocab ? '' : this._buildSubpageLevelRow(catMeta, data, activeLevel);
       var headerClass = isCourseVocab ? 'subpage-header' : 'subpage-header subpage-header--with-levels';
+
+      await this._waitLoading(loadingStart);
 
       content.innerHTML =
         '<div class="dashboard-layout">' +
@@ -1212,10 +1233,11 @@
         if (CATEGORIES[i].id === 'vocabulary') { catMeta = CATEGORIES[i]; break; }
       }
 
-      content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+      var loadingStart = this._showLoading(content);
 
       var lessonData = await this._loadLessonData('vocabulary', levelId, lessonId);
       if (!lessonData || !lessonData.words || lessonData.words.length === 0) {
+        await this._waitLoading(loadingStart);
         content.innerHTML = '<div class="fe-error">No words available.</div>';
         return;
       }
@@ -1237,6 +1259,7 @@
       }
 
       if (filteredWords.length === 0) {
+        await this._waitLoading(loadingStart);
         var emptyIcon = mode === 'review' ? 'info' : 'emoji_events';
         var emptyTitle = mode === 'review' ? 'Nothing to review yet!' : 'All words learned!';
         var emptyMsg = mode === 'review' ? 'Learn some words first, then come back to review them.' : 'You\'ve learned all the words in this topic. Try reviewing them!';
@@ -1271,6 +1294,8 @@
 
       this._currentCategory = 'vocabulary';
       this._currentLevel = levelId;
+
+      await this._waitLoading(loadingStart);
 
       var wrapper = document.createElement('div');
       wrapper.className = 'fe-section';
@@ -1429,7 +1454,7 @@
       if (!content) return;
       var self = this;
 
-      content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+      var loadingStart = this._showLoading(content);
 
       var catMeta = null;
       for (var c = 0; c < CATEGORIES.length; c++) {
@@ -1467,6 +1492,7 @@
       var selected = allExercises.slice(0, 10);
 
       if (selected.length === 0) {
+        await this._waitLoading(loadingStart);
         content.innerHTML =
           '<div class="fe-point-view">' +
             '<div class="subpage-header">' +
@@ -1487,6 +1513,7 @@
         return;
       }
 
+      await this._waitLoading(loadingStart);
       this._renderQuickReview(content, selected, catMeta, activeLevel, allExercises);
     },
 
@@ -1733,10 +1760,12 @@
       this._currentLesson = lessonId;
       this._currentPointIndex = pointIndex;
 
-      container.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+      var loadingStart = this._showLoading(container);
 
       var lessonData = await this._loadLessonData(categoryId, levelId, lessonId);
       var catData = await this._loadCategoryData(categoryId);
+
+      await this._waitLoading(loadingStart);
 
       // Get point metadata from levels.json
       var pointLabel = 'Point ' + (pointIndex + 1);
@@ -6589,10 +6618,11 @@
         if (CATEGORIES[i].id === 'vocabulary') { catMeta = CATEGORIES[i]; break; }
       }
 
-      content.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+      var loadingStart = this._showLoading(content);
 
       var lessonData = await this._loadLessonData('vocabulary', levelId, lessonId);
       if (!lessonData || !lessonData.words || lessonData.words.length === 0) {
+        await this._waitLoading(loadingStart);
         content.innerHTML = '<div class="fe-error">No words available.</div>';
         return;
       }
@@ -6601,9 +6631,12 @@
       var cwData = this._generateCrossword(lessonData.words);
 
       if (!cwData || !cwData.placed || cwData.placed.length < 2) {
+        await this._waitLoading(loadingStart);
         content.innerHTML = '<div class="fe-error">Not enough words to generate a crossword for this lesson.</div>';
         return;
       }
+
+      await this._waitLoading(loadingStart);
 
       var wrapper = document.createElement('div');
       wrapper.className = 'fe-section';
