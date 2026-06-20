@@ -1305,7 +1305,8 @@
           'ScoreCalculator.showLiveOverallResults()',
           {
             rawScore: totalScore,
-            rawTotal: totalQuestions
+            rawTotal: totalQuestions,
+            isFinal: true
           }
         );
       }

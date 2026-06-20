@@ -901,9 +901,11 @@
       }
       var rawScore = opts.rawScore;
       var rawTotal = opts.rawTotal;
-      var rawDisplay = (rawScore !== undefined && rawTotal !== undefined)
-        ? rawScore + '/' + rawTotal
-        : '—';
+      var hasRaw = rawScore !== undefined && rawTotal !== undefined;
+      var pct = hasRaw && rawTotal > 0 ? Math.round(rawScore / rawTotal * 100) : 0;
+      var rawLabel = opts.isFinal ? 'Total raw score' : 'Raw score';
+      var pctLabel = opts.isFinal ? pct + '% overall' : pct + '% correct';
+      var barClass = opts.isFinal ? ' section-report-summary-bar--final' : '';
 
       var html = '<div class="section-report-cambridge-card">';
       html += '<div class="section-report-cambridge-tile">';
@@ -918,15 +920,23 @@
       html += '<span class="section-report-cambridge-tile-label">CEFR</span>';
       html += '<strong class="section-report-cambridge-tile-value">' + stats.gradeInfo.cefr + '</strong>';
       html += '</div>';
-      html += '<div class="section-report-cambridge-tile">';
-      html += '<span class="section-report-cambridge-tile-label">Raw score</span>';
-      html += '<strong class="section-report-cambridge-tile-value">' + rawDisplay + '</strong>';
-      html += '</div>';
       if (chartOnclick) {
         html += '<button type="button" class="section-report-cambridge-tile section-report-cambridge-tile--charts" onclick="' + chartOnclick + '">';
         html += '<i class="fas fa-chart-bar"></i>';
-        html += '<span class="section-report-cambridge-tile-label">View charts</span>';
+        html += '<span class="section-report-cambridge-tile-label">Charts</span>';
         html += '</button>';
+      }
+      if (hasRaw) {
+        html += '<div class="section-report-cambridge-raw">';
+        html += '<div class="section-report-summary-main">';
+        html += '<span class="section-report-summary-label">' + rawLabel + '</span>';
+        html += '<span class="section-report-summary-value section-report-summary-value--compact">' + rawScore + '<span>/' + rawTotal + '</span></span>';
+        html += '</div>';
+        html += '<div class="section-report-summary-bar-wrap">';
+        html += '<div class="section-report-summary-bar' + barClass + '" style="width:' + pct + '%"></div>';
+        html += '</div>';
+        html += '<span class="section-report-summary-pct">' + pctLabel + '</span>';
+        html += '</div>';
       }
       html += '</div>';
       return html;
