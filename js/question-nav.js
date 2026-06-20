@@ -23,6 +23,18 @@
       }
 
       if (!AppState.currentExercise) return;
+
+      if (AppState.currentExercise._b1PetReading2Ui) {
+        if (typeof ExerciseRenderer !== 'undefined') {
+          ExerciseRenderer.toggleView('text');
+        }
+        var card = document.querySelector('.b1-reading2-person-card[data-qnum="' + qNum + '"]');
+        if (card && typeof card.scrollIntoView === 'function') {
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        return;
+      }
+
       this.currentQNum = qNum;
 
       const questions = AppState.currentExercise.content.questions || [];
@@ -195,23 +207,6 @@
         ? CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart)
         : null;
       var questionType = partConfig ? partConfig.type : undefined;
-      var letterRow = document.getElementById('question-nav-row');
-      if (letterRow && letterRow.getAttribute('data-nav-letters') === '1') {
-        var used = {};
-        Object.keys(answers).forEach(function(k) {
-          var v = answers[k];
-          if (v) used[v] = true;
-        });
-        letterRow.querySelectorAll('.question-nav-cell[data-letter]').forEach(function(cell) {
-          var L = cell.getAttribute('data-letter');
-          cell.classList.toggle('answered', !!(L && used[L] && !isChecked));
-          cell.classList.remove('correct', 'incorrect', 'unanswered-checked', 'show-correct');
-        });
-        if (typeof Utils !== 'undefined' && typeof Utils.syncQuestionNumberBadges === 'function') {
-          Utils.syncQuestionNumberBadges();
-        }
-        return;
-      }
       questions.forEach(function(q) {
         var cell = document.querySelector('.question-nav-cell[data-qnum="' + q.number + '"]');
         if (!cell) return;
