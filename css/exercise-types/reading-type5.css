@@ -390,18 +390,20 @@
 .reading-type5-gap-wrap[data-correct]::after {
   content: attr(data-correct);
   position: absolute;
-  bottom: calc(100% + 6px);
+  bottom: calc(100% + 8px);
   left: 0;
-  background: #1a3a5c;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  background: #fff;
+  color: var(--ex-duo-text, #4b4b4b);
+  border: 2px solid var(--ex-duo-purple, #ce82ff);
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
   white-space: nowrap;
   display: none;
   z-index: 50;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 0 var(--ex-duo-purple-dark, #a855f7);
   pointer-events: none;
 }
 
@@ -411,12 +413,12 @@
 
 /* "Show correct answers" mode: gap number + key word */
 .reading-type5-gap-trigger.reading-type5-gap-trigger-show-correct {
-  background: #d7ffb8;
-  border-color: #58cc02;
-  color: #3c3c3c;
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  border-color: var(--ex-duo-purple, #ce82ff);
+  color: var(--ex-duo-purple-text, #5b21b6);
   border-style: solid;
   font-weight: 800;
-  box-shadow: 0 2px 0 #58a700;
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 .reading-type5-gap-panel {

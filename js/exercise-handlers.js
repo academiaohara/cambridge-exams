@@ -974,6 +974,9 @@
             p.innerHTML = '';
             p.classList.remove('has-text', 'b1-reading2-preview-incorrect', 'b1-reading2-preview-correct', 'b1-reading2-preview-key-mode');
           });
+          document.querySelectorAll('.b1-reading2-q-badge').forEach(function(badge) {
+            badge.classList.remove('b1-reading2-q-badge-correct', 'b1-reading2-q-badge-incorrect');
+          });
           document.querySelectorAll('.b1-reading2-person-card').forEach(function(card) {
             card.classList.remove('b1-reading2-row-correct', 'b1-reading2-row-incorrect', 'b1-reading2-row-unanswered');
           });

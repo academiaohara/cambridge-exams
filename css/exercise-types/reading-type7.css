@@ -182,6 +182,19 @@
   color: var(--text-dark);
 }
 
+/* Show-correct answer blocks */
+.reading-type7-answer-block.rt7-show-correct {
+  display: block;
+  margin-top: 6px;
+  padding: 10px 14px;
+  background: var(--ex-duo-purple-light, #f3e8ff);
+  border: 2px solid var(--ex-duo-purple, #ce82ff);
+  border-radius: 12px;
+  font-size: 1.1rem;
+  line-height: 1.55;
+  color: var(--ex-duo-purple-text, #5b21b6);
+}
+
 /* Answer block shown after checking */
 .reading-type7-answer-block {
   display: block;
@@ -217,23 +230,23 @@
 
 /* "Show correct answer" toggle: purple highlight for key + inserted sentence (text + sentence cards) */
 .reading-type7-gap-pill.rt7-pill-show-correct {
-  border-color: #8b5cf6;
-  background: #8b5cf6;
+  border-color: var(--ex-duo-purple, #ce82ff);
+  background: var(--ex-duo-purple, #ce82ff);
 }
 
 .reading-type7-gap-pill.rt7-pill-show-correct .reading-type7-gap-circle {
-  color: #5b21b6 !important;
+  color: var(--ex-duo-purple-text, #5b21b6) !important;
 }
 
 .reading-type7-toggle-card.reading-type7-toggle-card-show-correct {
-  border-color: #8b5cf6;
-  box-shadow: 0 0 0 1px #a78bfa;
-  background: #faf5ff;
+  border-color: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 0 0 1px var(--ex-duo-purple-dark, #a855f7);
+  background: var(--ex-duo-purple-light, #f3e8ff);
 }
 
 .reading-type7-toggle-gapbtn.checked.rt7-gapbtn-show-correct {
-  background: #7c3aed;
-  border-color: #7c3aed;
+  background: var(--ex-duo-purple-dark, #a855f7);
+  border-color: var(--ex-duo-purple-dark, #a855f7);
   color: #fff;
 }
 
