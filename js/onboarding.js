@@ -283,7 +283,6 @@
 
       if (typeof AppLoadingScreen !== 'undefined') {
         AppLoadingScreen.show({
-          minMs: 2500,
           onHidden: function () {
             if (typeof Dashboard !== 'undefined') Dashboard.render();
           }

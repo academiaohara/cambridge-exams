@@ -6,7 +6,7 @@
     BRANCH: 'main',
     APP_VERSION: '3.2.0',
     BUILD_ID: 'dev',
-    MIN_LOADING_MS: 5000,
+    MIN_LOADING_MS: 0,
 
     /**
      * Promotion / growth mode — set false to restore plans UI and pack gating.
