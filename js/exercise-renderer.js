@@ -853,7 +853,9 @@
             }
           } else if (correctForQ) {
             var correctUa = userAnswer[correctForQ.number];
-            if (!correctUa || correctUa !== correctForQ.correct) {
+            if (!correctUa) {
+              cardCls += ' reading-type7-toggle-card-incorrect';
+            } else if (correctUa !== correctForQ.correct) {
               cardCls += ' reading-type7-toggle-card-correct';
             }
           } else {
@@ -879,7 +881,11 @@
               }
             } else {
               var gapUa = userAnswer[qNum];
-              if (q.correct === key && (!gapUa || gapUa !== q.correct)) {
+              if (!gapUa) {
+                if (q.correct === key) {
+                  btnCls += ' checked incorrect';
+                }
+              } else if (q.correct === key && gapUa !== q.correct) {
                 btnCls += ' checked correct';
               } else if (selected && gapUa) {
                 btnCls += ' checked';

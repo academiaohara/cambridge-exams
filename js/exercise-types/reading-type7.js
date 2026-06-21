@@ -39,12 +39,16 @@
           html += `</button>`;
         }
         html += `</span>`;
-        if (displayLetter) {
+        if (displayLetter || (!showCorrectOnly && !isCorrect && !userAnswer)) {
           var blockClass = showCorrectOnly
             ? 'reading-type7-answer-block rt7-show-correct'
             : 'reading-type7-answer-block ' + (isCorrect ? 'correct' : 'incorrect');
           html += `<span class="${blockClass}" data-qnum-block="${qNum}">`;
-          html += `<span class="reading-type7-para-text">${this._formatParaText(chosenText)}</span>`;
+          if (displayLetter) {
+            html += `<span class="reading-type7-para-text">${this._formatParaText(chosenText)}</span>`;
+          } else {
+            html += `<span class="reading-type7-para-empty">—</span>`;
+          }
           html += `</span>`;
         }
         html += `</span>`;
