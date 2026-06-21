@@ -535,6 +535,8 @@
       return BentoGrid._isEtapaUnlocked(ptIndex, etapasList, level, progress);
     },
 
+    _COURSE_PT_PASS_PCT: 60,
+
     _getCoursePathAdvanceIndex: function() {
       try {
         var v = localStorage.getItem('cambridge_course_path_advance_index');
@@ -544,11 +546,77 @@
       } catch (e) { return -1; }
     },
 
-    _advanceToCourseStage: function(globalIndex) {
+    _getCoursePathAdvancePending: function() {
       try {
-        localStorage.setItem('cambridge_course_path_advance_index', String(globalIndex));
+        var v = localStorage.getItem('cambridge_course_path_advance_pending');
+        if (v === null || v === '') return -1;
+        var n = parseInt(v, 10);
+        return isNaN(n) ? -1 : n;
+      } catch (e) { return -1; }
+    },
+
+    _getGateProgressTestForGlobalStage: async function(globalIndex, allStages) {
+      if (!allStages || globalIndex < 1) return null;
+      var target = allStages[globalIndex];
+      if (!target) return null;
+
+      var levelId = target.levelId;
+      var indexData = await BentoGrid._fetchCourseIndexOnly(levelId);
+      if (!indexData) return null;
+
+      var stageOffset = await BentoGrid._getGlobalStageOffset(levelId);
+      var etapasList = BentoGrid._getCourseEtapasList('learning', indexData, stageOffset);
+      var etapaIdx = -1;
+      for (var i = 0; i < etapasList.length; i++) {
+        if (etapasList[i].type === 'etapa' && etapasList[i].key === target.etapaKey) {
+          etapaIdx = i;
+          break;
+        }
+      }
+      if (etapaIdx < 0) return null;
+
+      if (etapaIdx > 0 && etapasList[etapaIdx - 1].type === 'progress_test') {
+        return { levelId: levelId, item: etapasList[etapaIdx - 1].item };
+      }
+
+      var LEVEL_ORDER = ['B1', 'B2', 'C1'];
+      var levelIdx = LEVEL_ORDER.indexOf(levelId);
+      if (levelIdx <= 0) return null;
+
+      var prevLevel = LEVEL_ORDER[levelIdx - 1];
+      var prevIndex = await BentoGrid._fetchCourseIndexOnly(prevLevel);
+      if (!prevIndex || !prevIndex.items) return null;
+      var pts = prevIndex.items.filter(function(i) { return i.type === 'progress_test'; });
+      if (!pts.length) return null;
+      return { levelId: prevLevel, item: pts[pts.length - 1] };
+    },
+
+    _tryApplyProgressTestAdvance: async function(level, unitId, score, maxScore) {
+      var pending = BentoGrid._getCoursePathAdvancePending();
+      if (pending < 0) return;
+      if (!maxScore || maxScore <= 0) return;
+      if ((score / maxScore) * 100 < BentoGrid._COURSE_PT_PASS_PCT) return;
+
+      var allStages = await BentoGrid._buildGlobalLearningStages();
+      var gate = await BentoGrid._getGateProgressTestForGlobalStage(pending, allStages);
+      if (!gate || gate.item.id !== unitId || gate.levelId !== level) return;
+
+      try {
+        localStorage.setItem('cambridge_course_path_advance_index', String(pending));
+        localStorage.removeItem('cambridge_course_path_advance_pending');
       } catch (e) {}
-      BentoGrid.openCourseSection('learning');
+    },
+
+    _advanceToCourseStage: async function(globalIndex) {
+      try {
+        var allStages = await BentoGrid._buildGlobalLearningStages();
+        var gate = await BentoGrid._getGateProgressTestForGlobalStage(globalIndex, allStages);
+        if (!gate || !gate.item || gate.item.status !== 'available') return;
+
+        localStorage.setItem('cambridge_course_path_advance_pending', String(globalIndex));
+        var ptPath = 'data/Course/' + gate.levelId + '/' + gate.item.file;
+        BentoGrid.openCourseUnit(gate.item.id, ptPath);
+      } catch (e) {}
     },
 
     _buildGlobalLearningStages: async function() {
@@ -656,7 +724,7 @@
       } else if (etapaUnlocked) {
         html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + etapaOnclick + '">START</button>';
       } else if (showAdvance) {
-        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--advance" onclick="BentoGrid._advanceToCourseStage(' + globalIndex + ')" aria-label="Jump ahead">' +
+        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--advance" onclick="BentoGrid._advanceToCourseStage(' + globalIndex + ')" aria-label="Take level test to jump ahead" title="Pass the level test to unlock this stage">' +
           _mi('fast_forward') + '</button>';
       }
       html += '</div>';
@@ -8681,6 +8749,7 @@
         if (allChecked) {
           var level = BentoGrid._courseLevel || 'C1';
           BentoGrid._markCourseUnitOpened(level, unitId);
+          BentoGrid._tryApplyProgressTestAdvance(level, unitId, totalCorrect, totalMax);
         }
       }
     },
