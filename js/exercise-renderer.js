@@ -808,6 +808,7 @@
   /**
    * C1 Reading 7 (checked, not explanation): which gap badges to show per paragraph card.
    * One green badge if correct; red (user) + green (key) if wrong; green key-only if gap failed elsewhere.
+   * Card color reflects user placement only (see renderGappedTextParagraphToggleInner).
    */
   _c1Reading7ParagraphResultBadges: function(key, questions, userAnswer) {
     var userGap = null;
@@ -884,7 +885,8 @@
                 ? ' reading-type7-toggle-card-correct'
                 : ' reading-type7-toggle-card-incorrect';
             } else if (c1Result.correctGap != null && userAnswer[c1Result.correctGap] !== key) {
-              cardCls += ' reading-type7-toggle-card-correct';
+              // Correct answer paragraph not placed by user — gap failed, card red; badge stays green.
+              cardCls += ' reading-type7-toggle-card-incorrect';
             }
           } else if (assignedQ) {
             var assignedUa = userAnswer[assignedQ.number];
@@ -898,7 +900,7 @@
             if (!correctUa) {
               cardCls += ' reading-type7-toggle-card-incorrect';
             } else if (correctUa !== correctForQ.correct) {
-              cardCls += ' reading-type7-toggle-card-correct';
+              cardCls += ' reading-type7-toggle-card-incorrect';
             }
           } else {
             cardCls += ' reading-type7-toggle-card-unused';
