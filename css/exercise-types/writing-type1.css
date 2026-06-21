@@ -147,6 +147,22 @@
   color: var(--text-dark);
 }
 
+.writing-feedback-none {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 10px;
+  color: #15803d;
+  font-weight: 600;
+}
+
+.writing-feedback-none .fa-check-circle {
+  font-size: 1.1rem;
+}
+
 .writing-feedback-heading {
   font-size: 1rem;
   font-weight: 700;
@@ -364,9 +380,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  min-width: 1.45rem;
-  height: 1.45rem;
-  padding: 0 0.3rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  min-width: 1.5rem;
+  padding: 0;
+  box-sizing: border-box;
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1;
@@ -571,6 +589,9 @@
 }
 
 .writing-type1-notes-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
   font-size: 0.875rem;
   color: var(--text-dark);
   padding: 0.3rem 0.5rem 0.3rem 0.75rem;
@@ -578,6 +599,24 @@
   border-left: 3px solid var(--primary);
   border-radius: 4px;
   line-height: 1.4;
+}
+
+.writing-type1-note-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  min-width: 1.4rem;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  background: var(--primary);
+  border-radius: 50%;
 }
 
 /* B1 Preliminary Writing Part 1 — reply to email */
@@ -968,6 +1007,56 @@
   vertical-align: middle;
 }
 
+/* Essay notes — Duolingo style */
+.b1-writing .writing-type1-notes {
+  margin-top: 1rem;
+  padding: 14px 16px 16px;
+  background: #fff;
+  border: 2px solid var(--ex-duo-info-border, #1cb0f6);
+  border-radius: 16px;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-blue-dark, #1899d6) 35%, #e5e5e5);
+}
+
+.b1-writing .writing-type1-notes-label {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--ex-duo-blue-dark, #1899d6);
+  margin-bottom: 0.5rem;
+}
+
+.b1-writing .writing-type1-notes-list {
+  gap: 8px;
+}
+
+.b1-writing .writing-type1-notes-list li {
+  padding: 10px 12px;
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-left: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+  font-weight: 600;
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.b1-writing .writing-type1-note-pill {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  background: #58cc02;
+  box-shadow: 0 2px 0 #58a700;
+}
+
+.b1-writing .writing-feedback-none {
+  background: #e5f9d9;
+  border: 2px solid #58cc02;
+  border-radius: 12px;
+  color: #58a700;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 700;
+  box-shadow: 0 2px 0 #58a700;
+}
+
 /* Toolbar buttons */
 .b1-writing .btn-evaluate-ai {
   font-family: 'Fredoka', 'Nunito', sans-serif;
@@ -1089,6 +1178,12 @@
 .b1-writing .writing-feedback-list-num {
   background: var(--ex-duo-blue, #1cb0f6);
   font-family: 'Fredoka', 'Nunito', sans-serif;
+  width: 1.5rem;
+  height: 1.5rem;
+  min-width: 1.5rem;
+  padding: 0;
+  box-sizing: border-box;
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .b1-writing .writing-model-answer,

@@ -40,6 +40,19 @@ const WritingFeedback = (function() {
       '</div>';
   }
 
+  function isImprovementsEmpty(text) {
+    if (!text || !String(text).trim()) return true;
+    var t = String(text).trim().toLowerCase().replace(/[.!]+$/, '');
+    return /^(none|n\/a|no improvements?( needed)?|nothing( to improve)?|no areas?( for improvement)?|—|-)$/.test(t);
+  }
+
+  function improvementsDisplayContent(text) {
+    if (isImprovementsEmpty(text)) {
+      return 'Your writing does not need any improvements.';
+    }
+    return text;
+  }
+
   function formatSectionContent(text) {
     var listCounter = 0;
 
@@ -54,6 +67,12 @@ const WritingFeedback = (function() {
     return text
       .replace(/^(Content|Communicative Achievement|Organisation|Language):/gm,
         '<div class="writing-feedback-criterion-title"><strong>$1</strong></div>')
+      .replace(/^\d+\.\s+(.+)$/gm, function(_match, line) {
+        if (/:\s*\d+\s*\/\s*\d+\s*$/.test(line)) {
+          return formatScoreLine(line);
+        }
+        return nextListItem(applyMarkdown(line));
+      })
       .replace(/^• (.+)/gm, function(_match, line) {
         if (/:\s*\d+\s*\/\s*\d+\s*$/.test(line)) {
           return formatScoreLine(line);
@@ -74,6 +93,8 @@ const WritingFeedback = (function() {
   return {
     applyMarkdown: applyMarkdown,
     formatScoreLine: formatScoreLine,
-    formatSectionContent: formatSectionContent
+    formatSectionContent: formatSectionContent,
+    isImprovementsEmpty: isImprovementsEmpty,
+    improvementsDisplayContent: improvementsDisplayContent
   };
 })();

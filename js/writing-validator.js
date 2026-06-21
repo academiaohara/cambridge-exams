@@ -19,12 +19,42 @@
       return 'wv-red';
     },
 
-    /** Word-count colour for tasks with an explicit min/max (e.g. B1 email). */
+    /** Parse "220-260 words" or "90-120" into { min, max }. */
+    parseWordLimit: function(str) {
+      if (!str) return null;
+      var m = String(str).match(/(\d+)\s*[-–]\s*(\d+)/);
+      if (!m) return null;
+      return { min: parseInt(m[1], 10), max: parseInt(m[2], 10) };
+    },
+
+    /** Green = stated range; orange = slightly wider; red = outside orange. */
+    getTaskRanges: function(min, max) {
+      var lo = typeof min === 'number' ? min : 0;
+      var hi = typeof max === 'number' ? max : lo;
+      if (hi < lo) hi = lo;
+      var margin = Math.max(10, Math.round((hi - lo) * 0.25));
+      return {
+        greenMin: lo,
+        greenMax: hi,
+        orangeMin: lo - margin,
+        orangeMax: hi + margin
+      };
+    },
+
+    getTaskZone: function(count, min, max) {
+      var r = this.getTaskRanges(min, max);
+      if (count >= r.greenMin && count <= r.greenMax) return 'green';
+      if (count >= r.orangeMin && count <= r.orangeMax) return 'orange';
+      return 'red';
+    },
+
+    /** Word-count colour for tasks with an explicit min/max (B1 email, B2/C1 essay). */
     getColorClassForRange: function(count, min, max) {
       if (typeof min !== 'number') return this.getColorClass(count);
-      if (count < min) return 'wv-red';
-      if (typeof max === 'number' && count > max) return 'wv-orange';
-      return 'wv-green';
+      var zone = this.getTaskZone(count, min, typeof max === 'number' ? max : min);
+      if (zone === 'green') return 'wv-green';
+      if (zone === 'orange') return 'wv-orange';
+      return 'wv-red';
     },
 
     getEstimatedScore: function(count) {
@@ -57,6 +87,18 @@
     validateBeforeSubmit: function(text, onProceed, onCancel, options) {
       var opts = options || {};
       var count = this.countWords(text);
+      var hasTaskRange = typeof opts.min === 'number' && typeof opts.max === 'number';
+
+      if (hasTaskRange) {
+        var zone = this.getTaskZone(count, opts.min, opts.max);
+        if (zone === 'green' || zone === 'orange') {
+          if (typeof onProceed === 'function') onProceed();
+          return;
+        }
+        this._showTaskRangeBlockedModal(count, opts.min, opts.max, onCancel);
+        return;
+      }
+
       var min = typeof opts.min === 'number' ? opts.min : this.MIN_WORDS;
       var max = typeof opts.max === 'number' ? opts.max : null;
       var inRange = count >= min && (max == null || count <= max);
@@ -88,7 +130,33 @@
         extraNote = '<p class="wv-modal-note">Estimated score at current length: <strong>' + estimated + ' pts</strong></p>';
       }
 
-      // Create a simple inline confirmation dialog
+      this._showConfirmModal(title, mainP, extraNote, onProceed, onCancel);
+    },
+
+    _showTaskRangeBlockedModal: function(count, min, max, onCancel) {
+      var r = this.getTaskRanges(min, max);
+      var mainP = 'Your response is <strong>' + count + ' words</strong>. This task asks for about <strong>' +
+        min + '–' + max + ' words</strong> (accepted range: ' + r.orangeMin + '–' + r.orangeMax + ').';
+      this._showConfirmModal(
+        'Word count out of range',
+        mainP,
+        '<p class="wv-modal-note wv-red">Please adjust your text before evaluating.</p>',
+        null,
+        onCancel,
+        true
+      );
+    },
+
+    _showConfirmModal: function(title, mainP, extraNote, onProceed, onCancel, blockOnly) {
+      var actions = blockOnly
+        ? '<div class="wv-modal-actions">' +
+            '<button class="wv-modal-btn wv-modal-btn-primary" id="wv-keep-writing">✏️ Keep writing</button>' +
+          '</div>'
+        : '<div class="wv-modal-actions">' +
+            '<button class="wv-modal-btn wv-modal-btn-primary" id="wv-keep-writing">✏️ Keep writing</button>' +
+            '<button class="wv-modal-btn wv-modal-btn-secondary" id="wv-submit-anyway">Submit anyway</button>' +
+          '</div>';
+
       var overlay = document.createElement('div');
       overlay.className = 'wv-modal-overlay';
       overlay.innerHTML =
@@ -96,11 +164,8 @@
           '<div class="wv-modal-icon">⚠️</div>' +
           '<h4 class="wv-modal-title">' + title + '</h4>' +
           '<p>' + mainP + '</p>' +
-          extraNote +
-          '<div class="wv-modal-actions">' +
-            '<button class="wv-modal-btn wv-modal-btn-primary" id="wv-keep-writing">✏️ Keep writing</button>' +
-            '<button class="wv-modal-btn wv-modal-btn-secondary" id="wv-submit-anyway">Submit anyway</button>' +
-          '</div>' +
+          (extraNote || '') +
+          actions +
         '</div>';
 
       document.body.appendChild(overlay);
@@ -113,10 +178,13 @@
         dismiss();
         if (typeof onCancel === 'function') onCancel();
       };
-      document.getElementById('wv-submit-anyway').onclick = function() {
-        dismiss();
-        if (typeof onProceed === 'function') onProceed();
-      };
+
+      if (!blockOnly) {
+        document.getElementById('wv-submit-anyway').onclick = function() {
+          dismiss();
+          if (typeof onProceed === 'function') onProceed();
+        };
+      }
     }
   };
 })();

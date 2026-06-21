@@ -290,6 +290,22 @@
   color: var(--text-dark);
 }
 
+.writing-feedback-none {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 10px;
+  color: #15803d;
+  font-weight: 600;
+}
+
+.writing-feedback-none .fa-check-circle {
+  font-size: 1.1rem;
+}
+
 .writing-feedback-criterion-title {
   display: flex;
   align-items: center;
@@ -393,9 +409,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  min-width: 1.45rem;
-  height: 1.45rem;
-  padding: 0 0.3rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  min-width: 1.5rem;
+  padding: 0;
+  box-sizing: border-box;
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1;

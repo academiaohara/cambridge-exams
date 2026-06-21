@@ -261,6 +261,19 @@
       }
     },
 
+    _getTaskWordRange: function(exercise) {
+      if (!exercise) return null;
+      if (exercise.wordRange && typeof exercise.wordRange.min === 'number') {
+        var maxFromEx = typeof exercise.wordRange.max === 'number' ? exercise.wordRange.max : exercise.wordRange.min;
+        return { min: exercise.wordRange.min, max: maxFromEx };
+      }
+      var wl = exercise.content && exercise.content.wordLimit;
+      if (wl && typeof WritingValidator !== 'undefined' && WritingValidator.parseWordLimit) {
+        return WritingValidator.parseWordLimit(wl);
+      }
+      return null;
+    },
+
     _buildNotesHtml: function(notes) {
       if (!notes || typeof notes !== 'object') return '';
       const topicKey = Object.keys(notes).find(k => k !== 'opinions');
@@ -273,23 +286,24 @@
         : '';
 
       let html = '<div class="writing-type1-notes">';
+      const self = this;
 
       if (topicItems.length) {
         html += `<div class="writing-type1-notes-section">
-          <span class="writing-type1-notes-label">${label}:</span>
+          <span class="writing-type1-notes-label">${label}</span>
           <ul class="writing-type1-notes-list">`;
-        topicItems.forEach(item => {
-          html += `<li>${item}</li>`;
+        topicItems.forEach((item, i) => {
+          html += `<li><span class="writing-type1-note-pill">${i + 1}</span>${self._escapeHtml(item)}</li>`;
         });
         html += '</ul></div>';
       }
 
       if (opinions.length) {
         html += `<div class="writing-type1-notes-section">
-          <span class="writing-type1-notes-label">Opinions:</span>
+          <span class="writing-type1-notes-label">Opinions</span>
           <ul class="writing-type1-notes-list">`;
-        opinions.forEach(op => {
-          html += `<li>${op}</li>`;
+        opinions.forEach((op, i) => {
+          html += `<li><span class="writing-type1-note-pill">${i + 1}</span>${self._escapeHtml(op)}</li>`;
         });
         html += '</ul></div>';
       }
@@ -304,12 +318,10 @@
       if (el) {
         el.textContent = count;
         const ex = AppState.currentExercise;
+        const range = this._getTaskWordRange(ex);
         let cls;
-        if (this._isB1EmailTask(ex) && ex.wordRange && typeof ex.wordRange.min === 'number') {
-          const mx = typeof ex.wordRange.max === 'number' ? ex.wordRange.max : null;
-          cls = typeof WritingValidator !== 'undefined'
-            ? WritingValidator.getColorClassForRange(count, ex.wordRange.min, mx)
-            : 'wv-green';
+        if (range && typeof WritingValidator !== 'undefined') {
+          cls = WritingValidator.getColorClassForRange(count, range.min, range.max);
         } else if (typeof WritingValidator !== 'undefined') {
           cls = WritingValidator.getColorClass(count);
         } else {
@@ -420,14 +432,11 @@
       // Pre-submit word count validation
       if (typeof WritingValidator !== 'undefined') {
         const ex = AppState.currentExercise;
-        const wr = ex && ex.wordRange;
-        const rangeOpts = (this._isB1EmailTask(ex) && wr && typeof wr.min === 'number')
-          ? { min: wr.min, max: typeof wr.max === 'number' ? wr.max : undefined }
-          : null;
-        if (rangeOpts) {
+        const range = this._getTaskWordRange(ex);
+        if (range) {
           WritingValidator.validateBeforeSubmit(essay, () => {
             this._doEvaluate(essay);
-          }, null, rangeOpts);
+          }, null, { min: range.min, max: range.max });
         } else {
           WritingValidator.validateBeforeSubmit(essay, () => {
             this._doEvaluate(essay);
@@ -520,14 +529,17 @@
     _buildFeedbackTabs: function(text, prefix) {
       const sections = this._parseFeedbackSections(text);
       const modelAnswer = this._getModelAnswer();
+      const improvementsContent = typeof WritingFeedback.improvementsDisplayContent === 'function'
+        ? WritingFeedback.improvementsDisplayContent(sections.improvements)
+        : (sections.improvements || 'Your writing does not need any improvements.');
 
       const tabs = [
         { id: 'scores', icon: 'fa-chart-bar', label: 'Scores', content: sections.scores },
         { id: 'detailed', icon: 'fa-comment-dots', label: 'Feedback', content: sections.detailed },
         { id: 'strengths', icon: 'fa-check-circle', label: 'Strengths', content: sections.strengths },
-        { id: 'improvements', icon: 'fa-exclamation-triangle', label: 'Improvements', content: sections.improvements },
+        { id: 'improvements', icon: 'fa-exclamation-triangle', label: 'Improvements', content: improvementsContent, alwaysShow: true },
         { id: 'ideal', icon: 'fa-star', label: 'Ideal Response', content: modelAnswer }
-      ].filter(t => t.content);
+      ].filter(t => t.content || t.alwaysShow);
 
       if (!tabs.length) return '<div class="writing-ai-feedback">' + text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>') + '</div>';
 
@@ -548,7 +560,9 @@
           ? '<div class="writing-ai-feedback writing-ideal-response">' + (idealB1Email
             ? this._formatB1IdealModelAnswerHtml(tab.content, exercise.content.b1EmailTask.notes)
             : tab.content.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>')) + '</div>'
-          : '<div class="writing-ai-feedback">' + this._formatSectionContent(tab.content) + '</div>';
+          : tab.id === 'improvements' && typeof WritingFeedback.isImprovementsEmpty === 'function' && WritingFeedback.isImprovementsEmpty(sections.improvements)
+            ? '<div class="writing-ai-feedback writing-feedback-none"><i class="fas fa-check-circle"></i> ' + tab.content + '</div>'
+            : '<div class="writing-ai-feedback">' + this._formatSectionContent(tab.content) + '</div>';
         html += `<div class="writing-feedback-tab-panel${i === 0 ? ' active' : ''}" id="panel-${prefix}-${tab.id}">
           ${contentHtml}
         </div>`;
