@@ -132,10 +132,13 @@
 
         const isGappedWithParagraphs = partConfig.type === 'gapped-text' &&
           exercise.content.paragraphs && Object.keys(exercise.content.paragraphs).length > 0;
+        const isC1Reading7Gapped = isGappedWithParagraphs &&
+          (typeof Utils !== 'undefined' && Utils.isC1GappedTextReading(section, part));
         const isGappedSentencesToggle = isGappedWithParagraphs &&
-          (typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading(section, part));
+          (typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading(section, part)) &&
+          !isC1Reading7Gapped;
         let secondToggleI18nKey = isGappedWithParagraphs
-          ? (isGappedSentencesToggle ? 'showSentences' : 'showParagraphs')
+          ? (isC1Reading7Gapped ? 'showParagraphs' : (isGappedSentencesToggle ? 'showSentences' : 'showParagraphs'))
           : 'showQuestions';
         if (isB1Reading2Pet) {
           secondToggleI18nKey = 'showOptionsReading2';
@@ -268,6 +271,9 @@
         typeof Utils !== 'undefined' && Utils.isDuoOpenClozeReading(section, part);
       const duoReading4Gapped =
         typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading(section, part);
+      const c1Reading7Gapped =
+        typeof Utils !== 'undefined' && Utils.isC1GappedTextReading(section, part);
+      const duoGappedSentenceStyle = duoReading4Gapped && !c1Reading7Gapped;
       const duoReading5Cloze =
         typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading();
       const duoReading3WordFormation =
@@ -287,7 +293,7 @@
       // B1 reading part 1 (multiple-choice-text with questions only, no passage).
       if (needsToggle || hasTranscript) {
         contentHeaderHTML = `
-          <div class="content-section-header${duoReading4Gapped ? ' b1-reading4-header' : ''}${hasDuoMatchingUiShell ? ' b1-reading2-header' : ''}">
+          <div class="content-section-header${duoGappedSentenceStyle ? ' b1-reading4-header' : ''}${c1Reading7Gapped ? ' c1-reading7-header' : ''}${hasDuoMatchingUiShell ? ' b1-reading2-header' : ''}">
             ${questionNavRowHTML}
             ${toggleHTML}
           </div>
@@ -410,7 +416,7 @@
             
             <div class="exercise-main-layout" lang="en">
               <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
-              <div class="reading-text-enhanced${hasDuoMatchingUiShell ? ' reading-text-enhanced--b1r2' : ''}${duoReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${duoReading4Gapped ? ' b1-reading4' : ''}${duoReading5Cloze ? ' b1-reading5' : ''}${duoReading6OpenCloze ? ' b1-reading6' : ''}${duoReading3WordFormation ? ' c1-reading3' : ''}${duoReading4Transformations ? ' c1-reading4' : ''}${duoReadingMultipleMatching ? ' duo-reading-matching' : ''}${duoListening ? ' b1-listening' : ''}" id="selectable-text">
+              <div class="reading-text-enhanced${hasDuoMatchingUiShell ? ' reading-text-enhanced--b1r2' : ''}${duoReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${duoGappedSentenceStyle ? ' b1-reading4' : ''}${c1Reading7Gapped ? ' c1-reading7' : ''}${duoReading5Cloze ? ' b1-reading5' : ''}${duoReading6OpenCloze ? ' b1-reading6' : ''}${duoReading3WordFormation ? ' c1-reading3' : ''}${duoReading4Transformations ? ' c1-reading4' : ''}${duoReadingMultipleMatching ? ' duo-reading-matching' : ''}${duoListening ? ' b1-listening' : ''}" id="selectable-text">
                 ${paragraphsHTML}
               </div>
             </div>

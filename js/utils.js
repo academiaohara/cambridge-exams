@@ -244,6 +244,20 @@
       return !!(pc && pc.type === 'gapped-text');
     },
 
+    isB1GappedTextReading: function(section, part) {
+      if (!this.isDuoGappedTextReading(section, part)) return false;
+      section = section || AppState.currentSection;
+      part = part != null ? part : AppState.currentPart;
+      return AppState.currentLevel === 'B1' && part === 4;
+    },
+
+    isC1GappedTextReading: function(section, part) {
+      if (!this.isDuoGappedTextReading(section, part)) return false;
+      section = section || AppState.currentSection;
+      part = part != null ? part : AppState.currentPart;
+      return AppState.currentLevel === 'C1' && part === 7;
+    },
+
     /** B1 Reading Part 5 and C1 Reading Part 1: inline MC cloze chips in the passage. */
     isDuoInlineMcClozeReading: function() {
       if (typeof AppState === 'undefined' || !this.isDuoExerciseUi()) return false;
