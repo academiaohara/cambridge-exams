@@ -621,8 +621,11 @@
       if (!qDisplay) return;
       qDisplay.style.display = '';
 
-      // Apply sticky-mode for Listening parts 2-4 and Reading parts 5, 6, 8
-      if ((AppState.currentSection === 'listening' && (AppState.currentPart === 2 || AppState.currentPart === 3 || AppState.currentPart === 4)) ||
+      // Apply sticky-mode for Listening parts 2-4, C1 Listening Part 1, and Reading parts 5, 6, 8
+      if ((AppState.currentSection === 'listening' && (
+            AppState.currentPart === 2 || AppState.currentPart === 3 || AppState.currentPart === 4 ||
+            (AppState.currentPart === 1 && AppState.currentLevel === 'C1')
+          )) ||
           (AppState.currentSection === 'reading' && (AppState.currentPart === 5 || AppState.currentPart === 6 || AppState.currentPart === 8)) ||
           (AppState.currentSection === 'reading' &&
             AppState.currentLevel === 'B1' &&
