@@ -85,9 +85,6 @@
           : String(solRaw);
         html += '<div class="b1-reading2-solution-expl c1-reading6-solution-expl" data-qnum="' + qNum +
           '" data-sol-letter="' + solKey + '">';
-        html += '<div class="c1-reading6-solution-header">';
-        html += '<span class="reading-type6-text-label">' + solKey + '</span>';
-        html += '</div>';
         html += '<div class="reading-type6-text-content">' + bodyHtml + '</div>';
         html += '</div>';
       }
