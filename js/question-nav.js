@@ -24,9 +24,9 @@
 
       if (!AppState.currentExercise) return;
 
-      if (AppState.currentExercise._b1PetReading2Ui) {
+      if (typeof Utils !== 'undefined' && Utils.hasDuoMatchingUi(AppState.currentExercise)) {
         if (typeof ExerciseRenderer !== 'undefined') {
-          ExerciseRenderer.toggleView('text');
+          ExerciseRenderer.toggleView(Utils.duoMatchingResultsView(AppState.currentExercise));
         }
         var card = document.querySelector('.b1-reading2-person-card[data-qnum="' + qNum + '"]');
         if (card && typeof card.scrollIntoView === 'function') {
@@ -219,7 +219,7 @@
 
     openReading2Letter: function(letter) {
       if (AppState.explanationMode) return;
-      if (!AppState.currentExercise || !AppState.currentExercise._b1PetReading2Ui) return;
+      if (typeof Utils === 'undefined' || !Utils.hasDuoMatchingUi(AppState.currentExercise)) return;
       var texts = AppState.currentExercise.content.texts || {};
       var body = texts[letter];
       if (body == null) return;

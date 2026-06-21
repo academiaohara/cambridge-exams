@@ -109,10 +109,17 @@
         let textsSectionHTML = '';
         let questionsSectionHTML = '';
         const isB1Reading2Pet = !!exercise._b1PetReading2Ui;
+        const hasDuoMatchingUi = typeof Utils !== 'undefined' &&
+          Utils.hasDuoMatchingUi(exercise, section, part);
 
         if (isB1Reading2Pet) {
           textsSectionHTML = this.renderB1Reading2PeopleCards(exercise);
           questionsSectionHTML = this.renderTextsCards(exercise, partConfig);
+        } else if (hasDuoMatchingUi) {
+          if (exercise.content.texts && Object.keys(exercise.content.texts).length) {
+            textsSectionHTML = this.renderTextsCards(exercise, partConfig);
+          }
+          questionsSectionHTML = this.renderB1Reading2PeopleCards(exercise);
         } else {
           if (hasTextsContent) {
             textsSectionHTML = this.renderTextsCards(exercise, partConfig);
@@ -163,6 +170,7 @@
         const showExplanationBtn =
           (isReadingPart5to8 && !isB1Reading5FooterExplanations) ||
           isB1Reading2Pet ||
+          hasDuoMatchingUi ||
           isB1Reading3Explanation ||
           isB1Reading4Explanation;
         toggleHTML = `
@@ -183,7 +191,7 @@
           </div>
         `;
 
-        questionNavRowHTML = isB1Reading2Pet
+        questionNavRowHTML = (isB1Reading2Pet || hasDuoMatchingUi)
           ? this.renderB1Reading2QuestionNav(exercise)
           : this.renderQuestionNavRow(exercise, partConfig);
         const cTitle = exercise.content?.title || '';
@@ -266,8 +274,12 @@
         typeof Utils !== 'undefined' && Utils.isDuoWordFormationReading(section, part);
       const duoReading4Transformations =
         typeof Utils !== 'undefined' && Utils.isDuoTransformationsReading(section, part);
+      const duoReadingMultipleMatching =
+        typeof Utils !== 'undefined' && Utils.isDuoMultipleMatchingReading(section, part);
       const duoListening =
         typeof Utils !== 'undefined' && Utils.isDuoListeningSection();
+      const hasDuoMatchingUiShell = typeof Utils !== 'undefined' &&
+        Utils.hasDuoMatchingUi(exercise, section, part);
       
       // For parts 5-8, use content.title/subtitle; for parts 1-4, no content header
       let contentHeaderHTML = '';
@@ -275,7 +287,7 @@
       // B1 reading part 1 (multiple-choice-text with questions only, no passage).
       if (needsToggle || hasTranscript) {
         contentHeaderHTML = `
-          <div class="content-section-header${duoReading4Gapped ? ' b1-reading4-header' : ''}${exercise._b1PetReading2Ui ? ' b1-reading2-header' : ''}">
+          <div class="content-section-header${duoReading4Gapped ? ' b1-reading4-header' : ''}${hasDuoMatchingUiShell ? ' b1-reading2-header' : ''}">
             ${questionNavRowHTML}
             ${toggleHTML}
           </div>
@@ -398,7 +410,7 @@
             
             <div class="exercise-main-layout" lang="en">
               <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
-              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${duoReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${duoReading4Gapped ? ' b1-reading4' : ''}${duoReading5Cloze ? ' b1-reading5' : ''}${duoReading6OpenCloze ? ' b1-reading6' : ''}${duoReading3WordFormation ? ' c1-reading3' : ''}${duoReading4Transformations ? ' c1-reading4' : ''}${duoListening ? ' b1-listening' : ''}" id="selectable-text">
+              <div class="reading-text-enhanced${hasDuoMatchingUiShell ? ' reading-text-enhanced--b1r2' : ''}${duoReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${duoReading4Gapped ? ' b1-reading4' : ''}${duoReading5Cloze ? ' b1-reading5' : ''}${duoReading6OpenCloze ? ' b1-reading6' : ''}${duoReading3WordFormation ? ' c1-reading3' : ''}${duoReading4Transformations ? ' c1-reading4' : ''}${duoReadingMultipleMatching ? ' duo-reading-matching' : ''}${duoListening ? ' b1-listening' : ''}" id="selectable-text">
                 ${paragraphsHTML}
               </div>
             </div>
@@ -540,7 +552,11 @@
       const typePrefix = partConfig.type === 'cross-text-matching' ? 'reading-type6' : 'reading-type8';
       var self = this;
       var textsCls = typePrefix + '-texts';
-      if (exercise._b1PetReading2Ui && typePrefix === 'reading-type8') {
+      var hasDuoMatchingTexts = typePrefix === 'reading-type8' && (
+        exercise._b1PetReading2Ui || exercise._duoMatchingUi ||
+        (typeof Utils !== 'undefined' && Utils.hasDuoMatchingUi(exercise))
+      );
+      if (hasDuoMatchingTexts) {
         textsCls += ' b1-reading2-notices';
       }
 
@@ -549,8 +565,27 @@
         var text = texts[key];
         if (typeof text !== 'string') return;
         html += '<div class="' + typePrefix + '-text-card">';
-        // For type8 (multiple-matching), extract ### Title from first line
-        if (typePrefix === 'reading-type8' && text.startsWith('### ')) {
+        if (hasDuoMatchingTexts) {
+          if (text.startsWith('### ')) {
+            var duoNl = text.indexOf('\n');
+            var duoTitle = duoNl !== -1 ? text.substring(4, duoNl).trim() : text.substring(4).trim();
+            var duoBody = duoNl !== -1 ? text.substring(duoNl + 1) : '';
+            var duoBodyCls = AppState.answersChecked
+              ? 'reading-type8-text-content b1-reading2-notice-body'
+              : 'b1-reading2-notice-plain';
+            html += '<div class="reading-type8-text-header">';
+            html += '<span class="reading-type8-text-label">' + key + '</span>';
+            html += '<strong class="reading-type8-text-title">' + self._escapeHtmlAttr(duoTitle) + '</strong>';
+            html += '</div>';
+            html += '<div class="' + duoBodyCls + '">' +
+              self.processEvidenceMarkers(self._escapeHtmlAttr(duoBody).replace(/\n/g, '<br>')) + '</div>';
+          } else {
+            html += '<div class="reading-type8-text-header">';
+            html += '<span class="reading-type8-text-label">' + key + '</span>';
+            html += '</div>';
+            html += self.formatB1Reading2NoticeHtml(text, !!AppState.answersChecked);
+          }
+        } else if (typePrefix === 'reading-type8' && text.startsWith('### ')) {
           var firstNewline = text.indexOf('\n');
           var titleLine = firstNewline !== -1 ? text.substring(4, firstNewline) : text.substring(4);
           var bodyText = firstNewline !== -1 ? text.substring(firstNewline + 1) : '';
@@ -613,7 +648,9 @@
       var html = '<div class="reading-type8-texts b1-reading2-people" id="b1-reading2-people-root">';
       questions.forEach(function(q) {
         var qNum = q.number;
-        var body = (q.personText != null ? q.personText : '').toString().replace(/\r\n/g, '\n');
+        var body = (q.personText != null && String(q.personText).trim() !== ''
+          ? q.personText
+          : (q.question || '')).toString().replace(/\r\n/g, '\n');
         var safe = self.processEvidenceMarkers(self._escapeHtmlAttr(body).replace(/\n/g, '<br>'));
         var sel = userAnswer[qNum] || '';
         var cardCls = 'reading-type8-text-card b1-reading2-person-card';
@@ -642,7 +679,9 @@
         html += '</div>';
         html += '<div class="reading-type8-text-content b1-reading2-person-content">' + safe + '</div>';
         html += '<div class="b1-reading2-picker-wrap" data-qnum="' + qNum + '">';
-        html += '<span class="b1-reading2-picker-label">Choose an option</span>';
+        html += '<span class="b1-reading2-picker-label">' +
+          (exercise._b1PetReading2Ui ? 'Choose an option' : 'Choose a person') +
+          '</span>';
         html += '<div class="b1-reading2-chip-row" role="group" aria-label="Choose option for question ' + qNum + '">';
         letters.forEach(function(L) {
           var chipCls = 'b1-reading2-chip';
@@ -1648,7 +1687,8 @@
         var isDuoInlineMcClozeFooterExplanations =
           typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading();
         if ((isReading && actualPart > 0 && actualPart < 4 &&
-            !(AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) &&
+            !(AppState.currentExercise && typeof Utils !== 'undefined' &&
+              Utils.hasDuoMatchingUi(AppState.currentExercise)) &&
             !(AppState.currentLevel === 'B1' && actualPart === 3)) ||
             isDuoOpenClozeFooterExplanations ||
             isDuoInlineMcClozeFooterExplanations) {

@@ -696,3 +696,51 @@
   font-weight: 800;
   color: var(--ex-duo-blue-dark, #1899d6);
 }
+
+/* ── C1 Reading Part 8 / B2 Reading Part 7 — Duolingo multiple matching ── */
+.duo-reading-matching .reading-type8-texts.b1-reading2-notices {
+  gap: 14px;
+}
+
+.duo-reading-matching .b1-reading2-person-content {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ex-duo-text, #3c3c3c);
+}
+
+.duo-reading-matching .b1-reading2-notice-head .reading-type8-text-title,
+.duo-reading-matching .reading-type8-text-header .reading-type8-text-title {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: #a34d0c;
+}
+
+.duo-reading-matching .b1-reading2-notice-body,
+.duo-reading-matching .b1-reading2-notice-plain {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ex-duo-text, #3c3c3c);
+}
+
+.duo-reading-matching .reading-type8-texts.b1-reading2-people {
+  gap: 14px;
+}
+
+.duo-reading-matching .toggle-text-section .content-title {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  color: var(--ex-duo-text, #3c3c3c);
+}
+
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  .duo-reading-matching .b1-reading2-person-content,
+  .duo-reading-matching .b1-reading2-notice-body,
+  .duo-reading-matching .b1-reading2-notice-plain {
+    font-size: 1rem;
+  }
+}
