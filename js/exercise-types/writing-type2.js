@@ -465,14 +465,17 @@
     _buildFeedbackTabs: function(text, prefix) {
       const sections = this._parseFeedbackSections(text);
       const modelAnswer = this._getModelAnswer();
+      const improvementsContent = typeof WritingFeedback.improvementsDisplayContent === 'function'
+        ? WritingFeedback.improvementsDisplayContent(sections.improvements)
+        : (sections.improvements || 'Your writing does not need any improvements.');
 
       const tabs = [
         { id: 'scores', icon: 'fa-chart-bar', label: 'Scores', content: sections.scores },
         { id: 'detailed', icon: 'fa-comment-dots', label: 'Feedback', content: sections.detailed },
         { id: 'strengths', icon: 'fa-check-circle', label: 'Strengths', content: sections.strengths },
-        { id: 'improvements', icon: 'fa-exclamation-triangle', label: 'Improvements', content: sections.improvements },
+        { id: 'improvements', icon: 'fa-exclamation-triangle', label: 'Improvements', content: improvementsContent, alwaysShow: true },
         { id: 'ideal', icon: 'fa-star', label: 'Ideal Response', content: modelAnswer }
-      ].filter(t => t.content);
+      ].filter(t => t.content || t.alwaysShow);
 
       if (!tabs.length) return '<div class="writing-ai-feedback">' + text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>') + '</div>';
 
@@ -489,7 +492,9 @@
         const isIdeal = tab.id === 'ideal';
         const contentHtml = isIdeal
           ? '<div class="writing-ai-feedback writing-ideal-response">' + this._formatPromptBodyHtml(tab.content) + '</div>'
-          : '<div class="writing-ai-feedback">' + this._formatSectionContent(tab.content) + '</div>';
+          : tab.id === 'improvements' && typeof WritingFeedback.isImprovementsEmpty === 'function' && WritingFeedback.isImprovementsEmpty(sections.improvements)
+            ? '<div class="writing-ai-feedback writing-feedback-none"><i class="fas fa-check-circle"></i> ' + tab.content + '</div>'
+            : '<div class="writing-ai-feedback">' + this._formatSectionContent(tab.content) + '</div>';
         html += `<div class="writing-feedback-tab-panel${i === 0 ? ' active' : ''}" id="panel-${prefix}-${tab.id}">
           ${contentHtml}
         </div>`;
