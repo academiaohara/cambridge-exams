@@ -1,44 +1,59 @@
 /* css/components/example.css */
-/* Example box styles used across exercise types */
+/* Example box styles used across exercise types — Duolingo 3D cards */
 
 .example-container {
-  background: #f0fdf4;
-  border: 2px solid #86efac;
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-top: 4px solid var(--ex-duo-green, #58cc02);
   border-radius: 16px;
-  padding: 20px 24px;
-  margin: 20px 0;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);
+  padding: 16px 18px 18px;
+  margin: 18px 0;
+  box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
+  font-family: 'Nunito', sans-serif;
 }
 
 .example-container.simple {
-  background: #f0fdf4;
-  border-color: #86efac;
+  padding: 14px 16px 16px;
 }
 
 .example-title {
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #065f46;
-  margin-bottom: 12px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: var(--ex-duo-green, #58cc02);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 0 var(--ex-duo-green-dark, #46a302);
 }
 
 .example-title i {
-  color: #10b981;
+  color: #fff;
+  font-size: 0.78rem;
 }
 
 .example-text {
   font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text-dark);
-  margin-bottom: 12px;
-  padding: 10px 14px;
-  background: white;
-  border-radius: 10px;
+  font-weight: 600;
+  line-height: 1.65;
+  color: var(--ex-duo-text, #4b4b4b);
+  margin: 0;
+  padding: 12px 14px;
+  background: color-mix(in srgb, var(--ex-duo-green, #58cc02) 6%, #fff);
+  border: 2px solid color-mix(in srgb, var(--ex-duo-green, #58cc02) 22%, var(--ex-duo-border, #e5e5e5));
+  border-radius: 12px;
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--ex-duo-green, #58cc02) 18%, var(--ex-duo-border, #e5e5e5));
+}
+
+.example-text strong {
+  color: var(--ex-duo-green-dark, #46a302);
+  font-weight: 800;
 }
 
 .example-options {
@@ -53,18 +68,21 @@
   align-items: center;
   gap: 10px;
   padding: 10px 14px;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 0.95rem;
-  background: white;
-  border: 1px solid #d1fae5;
-  color: var(--text-medium);
+  font-weight: 600;
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  color: var(--ex-duo-text, #4b4b4b);
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
 }
 
 .example-option.correct {
-  background: #d1fae5;
-  color: #065f46;
-  font-weight: 600;
-  border-color: #6ee7b7;
+  background: color-mix(in srgb, var(--ex-duo-green, #58cc02) 12%, #fff);
+  color: var(--ex-duo-green-dark, #46a302);
+  font-weight: 700;
+  border-color: color-mix(in srgb, var(--ex-duo-green, #58cc02) 40%, var(--ex-duo-border, #e5e5e5));
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--ex-duo-green-dark, #46a302) 35%, var(--ex-duo-border, #e5e5e5));
 }
 
 .example-option i {
@@ -73,40 +91,62 @@
 }
 
 .example-option.correct i {
-  color: #10b981;
+  color: var(--ex-duo-green, #58cc02);
 }
 
 .example-explanation {
   margin-top: 12px;
-  padding: 10px 14px;
-  background: white;
-  border-left: 3px solid #10b981;
-  border-radius: 0 10px 10px 0;
-  font-size: 0.9rem;
-  color: var(--text-medium);
-  line-height: 1.5;
+  padding: 12px 14px;
+  background: color-mix(in srgb, var(--ex-duo-green, #58cc02) 6%, #fff);
+  border: 2px solid color-mix(in srgb, var(--ex-duo-green, #58cc02) 22%, var(--ex-duo-border, #e5e5e5));
+  border-left: 4px solid var(--ex-duo-green, #58cc02);
+  border-radius: 0 12px 12px 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ex-duo-text, #4b4b4b);
+  line-height: 1.55;
 }
 
 .example-options-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .example-option-inline {
-  display: inline-block;
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  background: white;
-  border: 1px solid #d1fae5;
-  color: var(--text-medium);
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  color: var(--ex-duo-text, #4b4b4b);
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
 }
 
 .example-option-inline.correct {
-  background: #d1fae5;
-  color: #065f46;
-  font-weight: 600;
-  border-color: #6ee7b7;
+  background: color-mix(in srgb, var(--ex-duo-green, #58cc02) 12%, #fff);
+  color: var(--ex-duo-green-dark, #46a302);
+  border-color: color-mix(in srgb, var(--ex-duo-green, #58cc02) 40%, var(--ex-duo-border, #e5e5e5));
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--ex-duo-green-dark, #46a302) 35%, var(--ex-duo-border, #e5e5e5));
+}
+
+@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  .example-container {
+    padding: 14px 14px 16px;
+    margin: 14px 0;
+  }
+
+  .example-text {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+
+  .example-option-inline {
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
 }

@@ -110,6 +110,8 @@
   font-weight: 600;
   line-height: 1.55;
   color: var(--rt5-body-color);
+  text-align: justify;
+  hyphens: auto;
 }
 
 .reading-type5-passage-heading {
@@ -127,6 +129,8 @@
   line-height: 1.55;
   color: var(--rt5-body-color);
   white-space: pre-wrap;
+  text-align: justify;
+  hyphens: auto;
 }
 
 @media (min-width: 900px) {
