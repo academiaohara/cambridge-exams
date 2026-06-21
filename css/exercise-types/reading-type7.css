@@ -667,7 +667,8 @@
   flex-shrink: 0;
 }
 
-.b1-reading4 .reading-type7-gap-pill {
+.b1-reading4 .reading-type7-gap-pill,
+.c1-reading7 .reading-type7-gap-pill {
   background: var(--ex-duo-blue-light, #ddf4ff);
   border: 2px solid var(--ex-duo-blue, #1cb0f6);
   border-radius: 14px;
@@ -678,7 +679,8 @@
   align-items: center;
 }
 
-.b1-reading4 .reading-type7-gap-letter {
+.b1-reading4 .reading-type7-gap-letter,
+.c1-reading7 .reading-type7-gap-letter {
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-size: 0.82rem;
   font-weight: 800;
@@ -686,18 +688,21 @@
   line-height: 1;
 }
 
-.b1-reading4 .reading-type7-gap-pill:hover:not(.correct):not(.incorrect):not(.rt7-pill-show-correct) {
+.b1-reading4 .reading-type7-gap-pill:hover:not(.correct):not(.incorrect):not(.rt7-pill-show-correct),
+.c1-reading7 .reading-type7-gap-pill:hover:not(.correct):not(.incorrect):not(.rt7-pill-show-correct) {
   background: #c8ecff;
   transform: translateY(-1px);
 }
 
-.b1-reading4 .reading-type7-gap-num {
+.b1-reading4 .reading-type7-gap-num,
+.c1-reading7 .reading-type7-gap-num {
   color: var(--ex-duo-blue-dark, #1899d6);
   font-family: 'Fredoka', 'Nunito', sans-serif;
   font-size: 0.82rem;
 }
 
-.b1-reading4 .reading-type7-gap-circle {
+.b1-reading4 .reading-type7-gap-circle,
+.c1-reading7 .reading-type7-gap-circle {
   width: 28px;
   height: 28px;
   border-radius: 10px;
@@ -713,19 +718,21 @@
   flex-shrink: 0;
 }
 
-.b1-reading4 .reading-type7-gap-circle .reading-type7-gap-num {
+.b1-reading4 .reading-type7-gap-circle .reading-type7-gap-num,
+.c1-reading7 .reading-type7-gap-circle .reading-type7-gap-num {
   color: inherit;
   font-size: inherit;
   font-weight: inherit;
 }
 
-.b1-reading4 .reading-type7-gap-pill.has-value .reading-type7-gap-circle {
+.b1-reading4 .reading-type7-gap-pill.has-value .reading-type7-gap-circle,
+.c1-reading7 .reading-type7-gap-pill.has-value .reading-type7-gap-circle {
   background: var(--ex-duo-blue, #1cb0f6);
   color: #fff;
   border-color: var(--ex-duo-blue-dark, #1899d6);
 }
 
-/* Sentence box — shared chrome for answering and post-correction (only theme color changes) */
+/* Sentence box — B1: beside pill; C1: full width below pill */
 .b1-reading4 .reading-type7-selected-text,
 .b1-reading4 .reading-type7-answer-block {
   flex: 1;
@@ -742,70 +749,98 @@
   color: var(--ex-duo-text, #4b4b4b);
 }
 
-.b1-reading4 .reading-type7-para-text {
+.c1-reading7 .reading-type7-selected-text,
+.c1-reading7 .reading-type7-answer-block {
+  display: block;
+  width: 100%;
+  margin-top: 0;
+  padding: 12px 16px;
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  border-radius: 16px;
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ex-duo-text, #4b4b4b);
+}
+
+.b1-reading4 .reading-type7-para-text,
+.c1-reading7 .reading-type7-para-text {
   color: var(--ex-duo-text, #4b4b4b);
 }
 
 /* Post-correction: green / red / purple (Duolingo-style badge + tinted sentence box) */
-.b1-reading4 .reading-type7-gap-pill.correct {
+.b1-reading4 .reading-type7-gap-pill.correct,
+.c1-reading7 .reading-type7-gap-pill.correct {
   background: #58cc02;
   border-color: #58a700;
   box-shadow: 0 2px 0 #58a700;
   cursor: default;
 }
 
-.b1-reading4 .reading-type7-gap-pill.correct .reading-type7-gap-circle {
+.b1-reading4 .reading-type7-gap-pill.correct .reading-type7-gap-circle,
+.c1-reading7 .reading-type7-gap-pill.correct .reading-type7-gap-circle {
   background: #fff;
   color: #58a700;
   border-color: #fff;
 }
 
-.b1-reading4 .reading-type7-gap-pill.correct .reading-type7-gap-letter {
+.b1-reading4 .reading-type7-gap-pill.correct .reading-type7-gap-letter,
+.c1-reading7 .reading-type7-gap-pill.correct .reading-type7-gap-letter {
   color: #fff;
 }
 
-.b1-reading4 .reading-type7-gap-pill.incorrect {
+.b1-reading4 .reading-type7-gap-pill.incorrect,
+.c1-reading7 .reading-type7-gap-pill.incorrect {
   background: #ff4b4b;
   border-color: #ea2b2b;
   box-shadow: 0 2px 0 #ea2b2b;
   cursor: default;
 }
 
-.b1-reading4 .reading-type7-gap-pill.incorrect .reading-type7-gap-circle {
+.b1-reading4 .reading-type7-gap-pill.incorrect .reading-type7-gap-circle,
+.c1-reading7 .reading-type7-gap-pill.incorrect .reading-type7-gap-circle {
   background: #fff;
   color: #ff4b4b;
   border-color: #fff;
 }
 
-.b1-reading4 .reading-type7-gap-pill.incorrect .reading-type7-gap-letter {
+.b1-reading4 .reading-type7-gap-pill.incorrect .reading-type7-gap-letter,
+.c1-reading7 .reading-type7-gap-pill.incorrect .reading-type7-gap-letter {
   color: #fff;
 }
 
-.b1-reading4 .reading-type7-gap-pill.rt7-pill-show-correct {
+.b1-reading4 .reading-type7-gap-pill.rt7-pill-show-correct,
+.c1-reading7 .reading-type7-gap-pill.rt7-pill-show-correct {
   background: var(--ex-duo-purple, #ce82ff);
   border-color: var(--ex-duo-purple-dark, #a855f7);
   box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
   cursor: default;
 }
 
-.b1-reading4 .reading-type7-gap-pill.rt7-pill-show-correct .reading-type7-gap-circle {
+.b1-reading4 .reading-type7-gap-pill.rt7-pill-show-correct .reading-type7-gap-circle,
+.c1-reading7 .reading-type7-gap-pill.rt7-pill-show-correct .reading-type7-gap-circle {
   background: #fff;
   color: var(--ex-duo-purple-dark, #a855f7);
   border-color: #fff;
 }
 
-.b1-reading4 .reading-type7-gap-pill.rt7-pill-show-correct .reading-type7-gap-letter {
+.b1-reading4 .reading-type7-gap-pill.rt7-pill-show-correct .reading-type7-gap-letter,
+.c1-reading7 .reading-type7-gap-pill.rt7-pill-show-correct .reading-type7-gap-letter {
   color: #fff;
 }
 
-.b1-reading4 .reading-type7-answer-block.correct {
+.b1-reading4 .reading-type7-answer-block.correct,
+.c1-reading7 .reading-type7-answer-block.correct {
   background: #ecfdf5;
   border: 2px solid #58cc02;
   border-width: 2px 2px 4px 2px;
   box-shadow: none;
 }
 
-.b1-reading4 .reading-type7-answer-block.incorrect {
+.b1-reading4 .reading-type7-answer-block.incorrect,
+.c1-reading7 .reading-type7-answer-block.incorrect {
   background: #fef2f2;
   border: 2px solid #ff4b4b;
   border-width: 2px 2px 4px 2px;
@@ -813,7 +848,9 @@
 }
 
 .b1-reading4 .reading-type7-answer-block.rt7-show-correct,
-.b1-reading4 .reading-type7-answer-block.rt7-explanation {
+.b1-reading4 .reading-type7-answer-block.rt7-explanation,
+.c1-reading7 .reading-type7-answer-block.rt7-show-correct,
+.c1-reading7 .reading-type7-answer-block.rt7-explanation {
   background: var(--ex-duo-purple-light, #f3e8ff);
   border: 2px solid var(--ex-duo-purple, #ce82ff);
   border-width: 2px 2px 4px 2px;
@@ -827,34 +864,40 @@
   margin-top: 0;
 }
 
-.b1-reading4 .reading-type7-reveal-btn {
+.b1-reading4 .reading-type7-reveal-btn,
+.c1-reading7 .reading-type7-reveal-btn {
   display: none;
 }
 
-.b1-reading4 #toggle-questions-section {
+.b1-reading4 #toggle-questions-section,
+.c1-reading7 #toggle-questions-section {
   padding-top: 2px;
 }
 
-.b1-reading4 .reading-type7-toggle-paras {
+.b1-reading4 .reading-type7-toggle-paras,
+.c1-reading7 .reading-type7-toggle-paras {
   gap: 12px;
   max-width: none;
   margin: 0;
 }
 
-.b1-reading4 .reading-type7-toggle-card {
+.b1-reading4 .reading-type7-toggle-card,
+.c1-reading7 .reading-type7-toggle-card {
   border: 2px solid var(--ex-duo-border, #e5e5e5);
   border-radius: 16px;
   box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
   overflow: hidden;
 }
 
-.b1-reading4 .reading-type7-toggle-card-head {
+.b1-reading4 .reading-type7-toggle-card-head,
+.c1-reading7 .reading-type7-toggle-card-head {
   padding: 8px 12px;
   background: var(--ex-duo-blue-light, #ddf4ff);
   border-bottom: 2px solid var(--ex-duo-border, #e5e5e5);
 }
 
-.b1-reading4 .reading-type7-toggle-letter {
+.b1-reading4 .reading-type7-toggle-letter,
+.c1-reading7 .reading-type7-toggle-letter {
   min-width: 34px;
   height: 34px;
   border-radius: 12px;
@@ -865,25 +908,29 @@
   font-size: 0.92rem;
 }
 
-.b1-reading4 .reading-type7-toggle-card-body {
+.b1-reading4 .reading-type7-toggle-card-body,
+.c1-reading7 .reading-type7-toggle-card-body {
   padding: 12px 14px;
   font-size: 0.98rem;
   line-height: 1.6;
 }
 
-.b1-reading4 .reading-type7-toggle-card-actions {
+.b1-reading4 .reading-type7-toggle-card-actions,
+.c1-reading7 .reading-type7-toggle-card-actions {
   padding: 8px 12px 12px;
   border-top: 2px dashed var(--ex-duo-border, #e5e5e5);
   background: #fafafa;
   gap: 6px;
 }
 
-.b1-reading4 .reading-type7-toggle-actions-label {
+.b1-reading4 .reading-type7-toggle-actions-label,
+.c1-reading7 .reading-type7-toggle-actions-label {
   color: var(--ex-duo-blue-dark, #1899d6);
   font-size: 0.72rem;
 }
 
-.b1-reading4 .reading-type7-toggle-gapbtn {
+.b1-reading4 .reading-type7-toggle-gapbtn,
+.c1-reading7 .reading-type7-toggle-gapbtn {
   min-width: 40px;
   padding: 5px 10px;
   border-radius: 10px;
@@ -896,53 +943,91 @@
   color: var(--ex-duo-text, #4b4b4b);
 }
 
-.b1-reading4 .reading-type7-toggle-gapbtn:hover:not(:disabled):not(.checked) {
+.b1-reading4 .reading-type7-toggle-gapbtn:hover:not(:disabled):not(.checked),
+.c1-reading7 .reading-type7-toggle-gapbtn:hover:not(:disabled):not(.checked) {
   background: var(--ex-duo-blue-light, #ddf4ff);
   border-color: var(--ex-duo-blue, #1cb0f6);
   box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
   color: var(--ex-duo-blue-dark, #1899d6);
 }
 
-.b1-reading4 .reading-type7-toggle-gapbtn.selected {
+.b1-reading4 .reading-type7-toggle-gapbtn.selected,
+.c1-reading7 .reading-type7-toggle-gapbtn.selected {
   background: var(--ex-duo-blue, #1cb0f6);
   border-color: var(--ex-duo-blue-dark, #1899d6);
   box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
   color: #fff;
 }
 
-.b1-reading4 .reading-type7-toggle-gapbtn.checked.correct.selected {
+.b1-reading4 .reading-type7-toggle-gapbtn.checked.correct.selected,
+.c1-reading7 .reading-type7-toggle-gapbtn.checked.correct.selected {
   background: var(--correct, #10b981);
   border-color: #059669;
   box-shadow: 0 2px 0 #059669;
   color: #fff;
 }
 
-.b1-reading4 .reading-type7-toggle-gapbtn.checked.incorrect.selected {
+.b1-reading4 .reading-type7-toggle-gapbtn.checked.incorrect.selected,
+.c1-reading7 .reading-type7-toggle-gapbtn.checked.incorrect.selected {
   background: var(--incorrect, #ef4444);
   border-color: #dc2626;
   box-shadow: 0 2px 0 #dc2626;
   color: #fff;
 }
 
-.b1-reading4 .reading-type7-toggle-gapbtn.checked.rt7-gapbtn-show-correct {
+.b1-reading4 .reading-type7-toggle-gapbtn.checked.rt7-gapbtn-show-correct,
+.c1-reading7 .reading-type7-toggle-gapbtn.checked.rt7-gapbtn-show-correct {
   background: #8b5cf6;
   border-color: #7c3aed;
   box-shadow: 0 2px 0 #7c3aed;
   color: #fff;
 }
 
-.b1-reading4 .reading-type7-toggle-card.reading-type7-toggle-card-correct {
+.b1-reading4 .reading-type7-toggle-card.reading-type7-toggle-card-correct,
+.c1-reading7 .reading-type7-toggle-card.reading-type7-toggle-card-correct {
   border-color: var(--correct, #10b981);
   box-shadow: 0 3px 0 #059669;
 }
 
-.b1-reading4 .reading-type7-toggle-card.reading-type7-toggle-card-incorrect {
+.b1-reading4 .reading-type7-toggle-card.reading-type7-toggle-card-incorrect,
+.c1-reading7 .reading-type7-toggle-card.reading-type7-toggle-card-incorrect {
   border-color: var(--incorrect, #ef4444);
   box-shadow: 0 3px 0 #dc2626;
 }
 
-.b1-reading4 .reading-type7-toggle-card.reading-type7-toggle-card-show-correct {
+.b1-reading4 .reading-type7-toggle-card.reading-type7-toggle-card-show-correct,
+.c1-reading7 .reading-type7-toggle-card.reading-type7-toggle-card-show-correct {
   border-color: #8b5cf6;
   box-shadow: 0 3px 0 #7c3aed;
   background: var(--ex-feedback-bg, #fff);
+}
+
+/* ===== C1 Reading Part 7 — paragraph below badge (not beside) ===== */
+
+.c1-reading7 .reading-type7-gap:has(.reading-type7-selected-text),
+.c1-reading7 .reading-type7-gap:has(.reading-type7-answer-block) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 10px 0 14px;
+  max-width: 100%;
+}
+
+.c1-reading7 .reading-type7-gap-check-row {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.c1-reading7 .reading-type7-gap-para {
+  margin: 12px 0;
+}
+
+.c1-reading7 .reading-type7-gap--inline .reading-type7-selected-text,
+.c1-reading7 .reading-type7-gap--inline .reading-type7-answer-block {
+  display: block;
+  width: 100%;
+  margin-top: 0;
 }

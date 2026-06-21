@@ -83,8 +83,9 @@
       // For types 5, 6, 8: auto-switch after correction so user sees results (B1 Reading 2 → People strip).
       const autoSwitchTypes = ['multiple-choice-text', 'cross-text-matching', 'multiple-matching'];
       if (typeof ExerciseRenderer !== 'undefined') {
-        if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) {
-          ExerciseRenderer.toggleView('text');
+        if (AppState.currentExercise && typeof Utils !== 'undefined' &&
+            Utils.hasDuoMatchingUi(AppState.currentExercise)) {
+          ExerciseRenderer.toggleView(Utils.duoMatchingResultsView(AppState.currentExercise));
         } else if (autoSwitchTypes.includes(partConfig.type)) {
           ExerciseRenderer.toggleView('questions');
         }
@@ -96,7 +97,8 @@
           (AppState.currentSection === 'reading' &&
             AppState.currentLevel === 'B1' &&
             (AppState.currentPart === 3 || AppState.currentPart === 4)) ||
-          (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) ||
+          (AppState.currentExercise && typeof Utils !== 'undefined' &&
+            Utils.hasDuoMatchingUi(AppState.currentExercise)) ||
           AppState.currentSection === 'listening') {
         const explBtn = document.getElementById('toggle-explanation-btn');
         if (explBtn) explBtn.style.display = '';
@@ -358,7 +360,8 @@
         if (btn) btn.classList.add('explanation-active');
 
         var navRow = document.getElementById('question-nav-row');
-        if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui && navRow &&
+        if (AppState.currentExercise && typeof Utils !== 'undefined' &&
+            Utils.hasDuoMatchingUi(AppState.currentExercise) && navRow &&
             typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.renderB1Reading2ExplanationQuestionNav) {
           navRow.outerHTML = ExerciseRenderer.renderB1Reading2ExplanationQuestionNav(AppState.currentExercise);
         } else if (navRow) {
@@ -369,7 +372,8 @@
         const textContainer = document.getElementById('selectable-text');
         if (textContainer) textContainer.classList.add('explanation-mode-text');
 
-        if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) {
+        if (AppState.currentExercise && typeof Utils !== 'undefined' &&
+            Utils.hasDuoMatchingUi(AppState.currentExercise)) {
           document.querySelectorAll('.b1-reading2-select').forEach(function(sel) {
             var qn = parseInt(sel.getAttribute('data-qnum'), 10);
             var qsList = AppState.currentExercise.content.questions || [];
@@ -422,7 +426,8 @@
       } else {
         if (btn) btn.classList.remove('explanation-active');
 
-        if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui) {
+        if (AppState.currentExercise && typeof Utils !== 'undefined' &&
+            Utils.hasDuoMatchingUi(AppState.currentExercise)) {
           document.querySelectorAll('.b1-reading2-select').forEach(function(sel) {
             if (sel.dataset.b1ExplPrev !== undefined) {
               sel.value = sel.dataset.b1ExplPrev;
@@ -435,7 +440,8 @@
           }
         }
 
-        if (AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui &&
+        if (AppState.currentExercise && typeof Utils !== 'undefined' &&
+            Utils.hasDuoMatchingUi(AppState.currentExercise) &&
             typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.renderB1Reading2QuestionNav) {
           var b1Nav = document.getElementById('question-nav-row');
           if (b1Nav) {
@@ -612,7 +618,8 @@
           (AppState.currentSection === 'reading' &&
             AppState.currentLevel === 'B1' &&
             AppState.currentPart === 3) ||
-          (AppState.currentSection === 'reading' && AppState.currentExercise && AppState.currentExercise._b1PetReading2Ui)) {
+          (AppState.currentSection === 'reading' && AppState.currentExercise &&
+            typeof Utils !== 'undefined' && Utils.hasDuoMatchingUi(AppState.currentExercise))) {
         qDisplay.classList.add('sticky-mode');
       } else {
         qDisplay.classList.remove('sticky-mode');

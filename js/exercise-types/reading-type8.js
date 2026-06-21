@@ -3,6 +3,14 @@
 
 (function() {
   window.ReadingType8 = {
+    _hasDuoMatchingUi: function() {
+      if (!AppState.currentExercise) return false;
+      if (AppState.currentExercise._b1PetReading2Ui || AppState.currentExercise._duoMatchingUi) {
+        return true;
+      }
+      return typeof Utils !== 'undefined' && Utils.isDuoMultipleMatchingReading();
+    },
+
     _b1PreviewEscape: function(text) {
       return String(text == null ? '' : text)
         .replace(/&/g, '&amp;')
@@ -95,7 +103,7 @@
     },
 
     syncAllB1Reading2Chips: function() {
-      if (!AppState.currentExercise || !AppState.currentExercise._b1PetReading2Ui) return;
+      if (!this._hasDuoMatchingUi()) return;
       document.querySelectorAll('.b1-reading2-select[data-qnum]').forEach(function(sel) {
         var qNum = parseInt(sel.getAttribute('data-qnum'), 10);
         if (!isNaN(qNum)) ReadingType8.syncB1Reading2ChipsForQuestion(qNum);
@@ -113,7 +121,7 @@
     },
 
     initB1Reading2StripIfNeeded: function() {
-      if (!AppState.currentExercise || !AppState.currentExercise._b1PetReading2Ui) return;
+      if (!this._hasDuoMatchingUi()) return;
       var texts = AppState.currentExercise.content.texts || {};
       var answers = AppState.currentExercise.answers || {};
       if (AppState.explanationMode) {
@@ -205,7 +213,7 @@
         }
       }
 
-      if (AppState.currentExercise._b1PetReading2Ui) {
+      if (this._hasDuoMatchingUi()) {
         var sel = document.querySelector('.b1-reading2-select[data-qnum="' + qNum + '"]');
         if (sel && !AppState.answersChecked) {
           sel.value = letter || '';
@@ -251,7 +259,7 @@
 
     /** After check answers, rebuild people strip so notice markup uses post-check classes. */
     reRender: function() {
-      if (!AppState.currentExercise || !AppState.currentExercise._b1PetReading2Ui) return;
+      if (!this._hasDuoMatchingUi()) return;
       var root = document.getElementById('b1-reading2-people-root');
       if (root && typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.renderB1Reading2PeopleCards) {
         root.outerHTML = ExerciseRenderer.renderB1Reading2PeopleCards(AppState.currentExercise);
@@ -266,7 +274,7 @@
      * between the student's choices and the key; purple styling while showing the key.
      */
     setAnswerMode: function(mode) {
-      if (!AppState.currentExercise || !AppState.currentExercise._b1PetReading2Ui) return;
+      if (!this._hasDuoMatchingUi()) return;
       var answers = AppState.currentExercise.answers || {};
       var questions = AppState.currentExercise.content.questions || [];
       questions.forEach(function(q) {
@@ -291,7 +299,7 @@
     },
 
     _refreshB1Reading2PreviewsForAnswerMode: function(mode) {
-      if (!AppState.currentExercise || !AppState.currentExercise._b1PetReading2Ui) return;
+      if (!this._hasDuoMatchingUi()) return;
       var texts = AppState.currentExercise.content.texts || {};
       var answers = AppState.currentExercise.answers || {};
       (AppState.currentExercise.content.questions || []).forEach(function(q) {

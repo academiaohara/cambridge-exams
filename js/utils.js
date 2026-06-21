@@ -244,6 +244,20 @@
       return !!(pc && pc.type === 'gapped-text');
     },
 
+    isB1GappedTextReading: function(section, part) {
+      if (!this.isDuoGappedTextReading(section, part)) return false;
+      section = section || AppState.currentSection;
+      part = part != null ? part : AppState.currentPart;
+      return AppState.currentLevel === 'B1' && part === 4;
+    },
+
+    isC1GappedTextReading: function(section, part) {
+      if (!this.isDuoGappedTextReading(section, part)) return false;
+      section = section || AppState.currentSection;
+      part = part != null ? part : AppState.currentPart;
+      return AppState.currentLevel === 'C1' && part === 7;
+    },
+
     /** B1 Reading Part 5 and C1 Reading Part 1: inline MC cloze chips in the passage. */
     isDuoInlineMcClozeReading: function() {
       if (typeof AppState === 'undefined' || !this.isDuoExerciseUi()) return false;
@@ -293,6 +307,36 @@
       if (section !== 'reading') return false;
       var pc = CONFIG.getPartConfig('reading', part);
       return !!(pc && pc.type === 'cross-text-matching');
+    },
+
+    /** B1 Reading 2, B2 Reading 7, C1 Reading 8 — Duolingo chip + card matching UI. */
+    isDuoMultipleMatchingReading: function(section, part) {
+      if (!this.isDuoExerciseUi() || typeof AppState === 'undefined') return false;
+      section = section || AppState.currentSection;
+      part = part != null ? part : AppState.currentPart;
+      if (section !== 'reading') return false;
+      var pc = CONFIG.getPartConfig('reading', part);
+      if (!pc || pc.type !== 'multiple-matching') return false;
+      var level = AppState.currentLevel;
+      if (level === 'B1' && part === 2) return true;
+      if (level === 'B2' && part === 7) return true;
+      if (level === 'C1' && part === 8) return true;
+      return false;
+    },
+
+    /** B1 Reading 2 swaps People/Options tabs; C1/B2 keep Text/Questions order. */
+    usesDuoMatchingSwappedLayout: function(exercise) {
+      return !!(exercise && exercise._b1PetReading2Ui);
+    },
+
+    hasDuoMatchingUi: function(exercise, section, part) {
+      if (exercise && exercise._b1PetReading2Ui) return true;
+      return this.isDuoMultipleMatchingReading(section, part) || this.isDuoCrossTextReading(section, part);
+    },
+
+    /** After check answers: which toggle view shows the chip results strip. */
+    duoMatchingResultsView: function(exercise) {
+      return this.usesDuoMatchingSwappedLayout(exercise) ? 'text' : 'questions';
     },
 
     isDuoListeningInterviewPart: function() {

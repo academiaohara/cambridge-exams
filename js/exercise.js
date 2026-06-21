@@ -575,6 +575,12 @@
           throw new Error('El archivo JSON no tiene la estructura correcta');
         }
 
+        if (typeof Utils !== 'undefined' && Utils.isDuoMultipleMatchingReading(section, part) &&
+            !exercise._b1PetReading2Ui) {
+          exercise._duoMatchingUi = true;
+          exercise._b1PetHideAnswerToggle = true;
+        }
+
         // Apply shared defaults for time and description from exercise-defaults.json
         const defaults = await this._loadExerciseDefaults();
         const defaultKey = section + part;
@@ -676,7 +682,7 @@
           case 'multiple-choice':
           case 'cross-text-matching':
           case 'multiple-matching':
-            if (AppState.currentExercise._b1PetReading2Ui) {
+            if (typeof Utils !== 'undefined' && Utils.hasDuoMatchingUi(AppState.currentExercise)) {
               break;
             }
             const option = question.options?.find(opt => opt.startsWith(answer));
@@ -742,7 +748,8 @@
         ReadingType5.syncAllFromAppState();
       }
 
-      if (partConfig.type === 'multiple-matching' && AppState.currentExercise._b1PetReading2Ui &&
+      if (partConfig.type === 'multiple-matching' &&
+          typeof Utils !== 'undefined' && Utils.hasDuoMatchingUi(AppState.currentExercise) &&
           typeof ReadingType8 !== 'undefined' && ReadingType8.initB1Reading2StripIfNeeded) {
         ReadingType8.initB1Reading2StripIfNeeded();
       }
