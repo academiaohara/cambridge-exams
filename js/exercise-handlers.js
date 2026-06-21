@@ -289,6 +289,9 @@
           document.querySelectorAll('.b1-reading2-select').forEach(function(sel) {
             sel.disabled = true;
           });
+          document.querySelectorAll('.c1-reading6-chip').forEach(function(chip) {
+            chip.disabled = true;
+          });
           break;
           
         case 'word-formation':
@@ -980,6 +983,25 @@
           });
           document.querySelectorAll('.b1-reading2-person-card').forEach(function(card) {
             card.classList.remove('b1-reading2-row-correct', 'b1-reading2-row-incorrect', 'b1-reading2-row-unanswered');
+          });
+
+          document.querySelectorAll('.c1-reading6-chip').forEach(function(chip) {
+            chip.disabled = false;
+            chip.classList.remove(
+              'c1-reading6-chip-selected',
+              'c1-reading6-chip-correct',
+              'c1-reading6-chip-incorrect',
+              'c1-reading6-chip-unanswered',
+              'c1-reading6-chip-key'
+            );
+            chip.setAttribute('aria-pressed', 'false');
+          });
+          document.querySelectorAll('.c1-reading6-q-badge').forEach(function(badge) {
+            badge.classList.remove(
+              'c1-reading6-q-badge-correct',
+              'c1-reading6-q-badge-incorrect',
+              'c1-reading6-q-badge-unanswered'
+            );
           });
 
           document.querySelectorAll('.gap-box').forEach(box => {

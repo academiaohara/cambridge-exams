@@ -285,6 +285,16 @@
       return !!(pc && typesWithPassage.indexOf(pc.type) !== -1);
     },
 
+    /** C1 Reading Part 6: cross-text multiple matching with Duo text cards + letter chips. */
+    isDuoCrossTextReading: function(section, part) {
+      if (!this.isDuoExerciseUi() || typeof AppState === 'undefined') return false;
+      section = section || AppState.currentSection;
+      part = part != null ? part : AppState.currentPart;
+      if (section !== 'reading') return false;
+      var pc = CONFIG.getPartConfig('reading', part);
+      return !!(pc && pc.type === 'cross-text-matching');
+    },
+
     isDuoListeningInterviewPart: function() {
       if (!this.isDuoListeningSection() || typeof AppState === 'undefined') return false;
       if (AppState.currentLevel === 'B1' && AppState.currentPart === 4) return true;

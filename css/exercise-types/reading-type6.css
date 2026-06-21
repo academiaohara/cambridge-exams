@@ -2,10 +2,10 @@
 /* Cross-text multiple matching - Part 6 */
 
 .reading-type6-container {
-  background: linear-gradient(135deg, #fff1f2 0%, #ffffff 100%);
+  background: linear-gradient(135deg, #fff8f3 0%, #ffffff 100%);
   border-radius: 20px;
   padding: 24px;
-  border: 1px solid #fecdd3;
+  border: 1px solid var(--ex-duo-border, #e5e5e5);
 }
 
 .reading-type6-texts {
@@ -13,6 +13,64 @@
   grid-template-columns: 1fr;
   gap: 16px;
   margin-bottom: 28px;
+}
+
+/* Duolingo 3D expert text cards — C1 Reading Part 6 */
+.c1-reading6 .reading-type6-texts {
+  gap: 14px;
+  margin-bottom: 0;
+}
+
+.c1-reading6-text-card {
+  box-sizing: border-box;
+  padding: 16px 18px 18px;
+  border-radius: 16px;
+  border: 2px solid var(--rt6-card-border, var(--ex-duo-border, #e5e5e5));
+  background: var(--rt6-card-bg, #fff);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--rt6-card-border, #e5e5e5) 55%, #000);
+  font-family: 'Nunito', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.c1-reading6-text-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--rt6-accent-bar, var(--ex-duo-orange, #f47417));
+  border-radius: 16px 0 0 16px;
+  pointer-events: none;
+}
+
+.c1-reading6-text-card[data-letter="A"] {
+  --rt6-card-border: var(--ex-duo-orange, #f47417);
+  --rt6-card-bg: linear-gradient(165deg, #fff8f3 0%, var(--ex-duo-orange-light, #fff0e6) 45%, #ffe8d9 100%);
+  --rt6-label-color: var(--ex-duo-orange-dark, #d45f0a);
+  --rt6-accent-bar: var(--ex-duo-orange, #f47417);
+}
+
+.c1-reading6-text-card[data-letter="B"] {
+  --rt6-card-border: var(--ex-duo-blue, #1cb0f6);
+  --rt6-card-bg: linear-gradient(180deg, #f0f9ff 0%, var(--ex-duo-blue-light, #ddf4ff) 100%);
+  --rt6-label-color: var(--ex-duo-blue-dark, #1899d6);
+  --rt6-accent-bar: var(--ex-duo-blue, #1cb0f6);
+}
+
+.c1-reading6-text-card[data-letter="C"] {
+  --rt6-card-border: #58cc02;
+  --rt6-card-bg: linear-gradient(180deg, #f7fee7 0%, #ecfccb 100%);
+  --rt6-label-color: #58a700;
+  --rt6-accent-bar: #58cc02;
+}
+
+.c1-reading6-text-card[data-letter="D"] {
+  --rt6-card-border: var(--ex-duo-purple, #ce82ff);
+  --rt6-card-bg: linear-gradient(180deg, #faf5ff 0%, #f3e8ff 100%);
+  --rt6-label-color: var(--ex-duo-purple-dark, #a855f7);
+  --rt6-accent-bar: var(--ex-duo-purple, #ce82ff);
 }
 
 .reading-type6-text-card {
@@ -23,27 +81,46 @@
   border: 1px solid #fecdd3;
 }
 
+.reading-type6-text-label,
+.c1-reading6-text-card .reading-type6-text-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  color: #fff;
+  background: var(--rt6-label-color, #f43f5e);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--rt6-label-color, #f43f5e) 70%, #000);
+}
+
 .reading-type6-text-label {
-  display: inline-block;
   background: #f43f5e;
-  color: white;
   padding: 4px 14px;
   border-radius: 30px;
-  font-weight: 700;
   font-size: 0.95rem;
-  margin-bottom: 12px;
 }
 
-.reading-type6-text-content {
+.reading-type6-text-content,
+.c1-reading6-text-card .reading-type6-text-content {
   font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--text-dark);
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--ex-duo-text, #3c3c3c);
+  text-align: justify;
+  hyphens: auto;
 }
 
-.reading-type6-questions {
+.reading-type6-questions,
+.c1-reading6-questions {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .reading-type6-question {
@@ -72,10 +149,161 @@
   text-align: center;
 }
 
+/* Duolingo question cards with letter chips */
+.c1-reading6-question-card {
+  background: #fff;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-radius: 16px;
+  padding: 16px 18px 18px;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-border, #e5e5e5) 70%, #fff);
+  font-family: 'Nunito', sans-serif;
+}
+
+.c1-reading6-question-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.c1-reading6-q-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ex-duo-blue, #1cb0f6);
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
+}
+
+.c1-reading6-q-badge-correct {
+  background: #58cc02;
+  box-shadow: 0 2px 0 #58a700;
+}
+
+.c1-reading6-q-badge-incorrect,
+.c1-reading6-q-badge-unanswered {
+  background: #ff4b4b;
+  box-shadow: 0 2px 0 #ea2b2b;
+}
+
+.c1-reading6-question-text {
+  flex: 1;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ex-duo-text, #4b4b4b);
+  text-align: justify;
+  hyphens: auto;
+}
+
+.c1-reading6-picker-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.c1-reading6-picker-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted, #64748b);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.c1-reading6-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.c1-reading6-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 38px;
+  padding: 0 10px;
+  border-radius: 12px;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  background: #fff;
+  box-shadow: 0 2px 0 var(--ex-duo-border, #e5e5e5);
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--ex-duo-text, #4b4b4b);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.1s, transform 0.1s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .c1-reading6-chip:hover:not(:disabled):not(.c1-reading6-chip-selected) {
+    background: var(--ex-duo-blue-light, #ddf4ff);
+    border-color: var(--ex-duo-blue, #1cb0f6);
+    box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  }
+}
+
+.c1-reading6-chip:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 var(--ex-duo-border, #e5e5e5);
+}
+
+.c1-reading6-chip-selected:not(:disabled):not(.c1-reading6-chip-correct):not(.c1-reading6-chip-incorrect) {
+  border-color: var(--ex-duo-blue, #1cb0f6);
+  background: var(--ex-duo-blue-light, #ddf4ff);
+  box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+.c1-reading6-chip:disabled {
+  cursor: not-allowed;
+}
+
+.c1-reading6-chip-correct {
+  background: var(--ex-feedback-bg, #fff) !important;
+  border-color: #58cc02 !important;
+  box-shadow: 0 3px 0 #58a700 !important;
+  color: #3c3c3c !important;
+}
+
+.c1-reading6-chip-incorrect {
+  background: var(--ex-feedback-bg, #fff) !important;
+  border-color: #ff4b4b !important;
+  box-shadow: 0 3px 0 #ea2b2b !important;
+  color: #3c3c3c !important;
+}
+
+.c1-reading6-chip-unanswered {
+  background: var(--ex-feedback-bg, #fff) !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 3px 0 #cbd5e1 !important;
+  color: #64748b !important;
+}
+
+.c1-reading6-chip-key {
+  border-color: var(--ex-duo-purple, #ce82ff) !important;
+  background: var(--ex-feedback-bg, #fff) !important;
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7) !important;
+  color: var(--ex-duo-purple-text, #5b21b6) !important;
+  outline: 2px solid var(--ex-duo-purple, #ce82ff);
+  outline-offset: 1px;
+}
+
 @media (max-width: 480px) {
   .reading-type6-container,
   .reading-type6-text-card,
-  .reading-type6-question {
+  .reading-type6-question,
+  .c1-reading6-text-card,
+  .c1-reading6-question-card {
     padding: 14px;
   }
 
@@ -84,8 +312,14 @@
     flex-direction: column;
   }
 
-  .reading-type6-question-text {
+  .reading-type6-question-text,
+  .c1-reading6-question-text {
     min-width: 0;
     font-size: 1rem;
+  }
+
+  .c1-reading6-picker-wrap {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

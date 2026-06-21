@@ -266,6 +266,8 @@
         typeof Utils !== 'undefined' && Utils.isDuoWordFormationReading(section, part);
       const duoReading4Transformations =
         typeof Utils !== 'undefined' && Utils.isDuoTransformationsReading(section, part);
+      const duoReading6CrossText =
+        typeof Utils !== 'undefined' && Utils.isDuoCrossTextReading(section, part);
       const duoListening =
         typeof Utils !== 'undefined' && Utils.isDuoListeningSection();
       
@@ -398,7 +400,7 @@
             
             <div class="exercise-main-layout" lang="en">
               <div class="explanation-question-display" id="explanation-question-display" style="display:none" lang="en"></div>
-              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${duoReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${duoReading4Gapped ? ' b1-reading4' : ''}${duoReading5Cloze ? ' b1-reading5' : ''}${duoReading6OpenCloze ? ' b1-reading6' : ''}${duoReading3WordFormation ? ' c1-reading3' : ''}${duoReading4Transformations ? ' c1-reading4' : ''}${duoListening ? ' b1-listening' : ''}" id="selectable-text">
+              <div class="reading-text-enhanced${exercise._b1PetReading2Ui ? ' reading-text-enhanced--b1r2' : ''}${duoReadingPlainText ? ' reading-text-enhanced--b1r-plain' : ''}${duoReading4Gapped ? ' b1-reading4' : ''}${duoReading5Cloze ? ' b1-reading5' : ''}${duoReading6OpenCloze ? ' b1-reading6' : ''}${duoReading3WordFormation ? ' c1-reading3' : ''}${duoReading4Transformations ? ' c1-reading4' : ''}${duoReading6CrossText ? ' c1-reading6' : ''}${duoListening ? ' b1-listening' : ''}" id="selectable-text">
                 ${paragraphsHTML}
               </div>
             </div>
@@ -539,16 +541,23 @@
       const texts = exercise.content.texts;
       const typePrefix = partConfig.type === 'cross-text-matching' ? 'reading-type6' : 'reading-type8';
       var self = this;
+      var isDuoCrossText = partConfig.type === 'cross-text-matching' &&
+        typeof Utils !== 'undefined' && Utils.isDuoCrossTextReading();
       var textsCls = typePrefix + '-texts';
       if (exercise._b1PetReading2Ui && typePrefix === 'reading-type8') {
         textsCls += ' b1-reading2-notices';
+      }
+      if (isDuoCrossText) {
+        textsCls += ' c1-reading6-texts';
       }
 
       let html = '<div class="' + textsCls + '">';
       Object.keys(texts).sort(function(a, b) { return a.localeCompare(b); }).forEach(function(key) {
         var text = texts[key];
         if (typeof text !== 'string') return;
-        html += '<div class="' + typePrefix + '-text-card">';
+        var cardCls = typePrefix + '-text-card';
+        if (isDuoCrossText) cardCls += ' c1-reading6-text-card';
+        html += '<div class="' + cardCls + '" data-letter="' + key + '">';
         // For type8 (multiple-matching), extract ### Title from first line
         if (typePrefix === 'reading-type8' && text.startsWith('### ')) {
           var firstNewline = text.indexOf('\n');
@@ -829,6 +838,8 @@
       const typePrefix = partConfig.type === 'cross-text-matching' ? 'reading-type6' : 
                          partConfig.type === 'multiple-matching' ? 'reading-type8' :
                          partConfig.type === 'gapped-text' ? 'reading-type7' : 'reading-type5';
+      const isDuoCrossText = partConfig.type === 'cross-text-matching' &&
+        typeof Utils !== 'undefined' && Utils.isDuoCrossTextReading();
       
       let html = '';
       
@@ -840,10 +851,14 @@
         return html;
       }
       
-      html += '<div class="' + typePrefix + '-questions">';
+      html += '<div class="' + typePrefix + '-questions' + (isDuoCrossText ? ' c1-reading6-questions' : '') + '">';
       questions.forEach(function(q) {
         var questionGap = '';
         if (partConfig.type === 'cross-text-matching' && typeof window.ReadingType6 !== 'undefined') {
+          if (isDuoCrossText && typeof ReadingType6.renderDuoQuestionCard === 'function') {
+            html += ReadingType6.renderDuoQuestionCard(q, q.number, isChecked, userAnswer[q.number] || '');
+            return;
+          }
           questionGap = ReadingType6.renderQuestion(q, q.number, isChecked, userAnswer[q.number] || '');
         } else if (partConfig.type === 'multiple-matching' && typeof window.ReadingType8 !== 'undefined') {
           questionGap = ReadingType8.renderQuestion(q, q.number, isChecked, userAnswer[q.number] || '');
