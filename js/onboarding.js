@@ -1,4 +1,4 @@
-// js/onboarding.js — Level selection + placement progress test after first sign-in / guest entry
+// js/onboarding.js — Path choice + level selection + placement progress test after first sign-in / guest entry
 (function () {
   'use strict';
 
@@ -6,11 +6,11 @@
   var PLACEMENT_PASS_PCT = 60;
 
   var ONBOARDING_LEVELS = [
-    { code: 'A2', name: 'Elemental', equiv: 'A2 Key', bars: 1, courseLevel: 'B1' },
-    { code: 'B1', name: 'Principiante', equiv: 'B1 Preliminary', bars: 2, courseLevel: 'B1' },
-    { code: 'B2', name: 'Intermedio', equiv: 'B2 First', bars: 3, courseLevel: 'B2' },
-    { code: 'C1', name: 'Avanzado', equiv: 'C1 Advanced', bars: 4, courseLevel: 'C1' },
-    { code: 'C2', name: 'Experto', equiv: 'C2 Proficiency', bars: 5, courseLevel: 'C1' }
+    { code: 'tier1', name: 'Elemental', equiv: 'B1 Preliminary', bars: 1, courseLevel: 'B1' },
+    { code: 'tier2', name: 'Principiante', equiv: 'B2 First', bars: 2, courseLevel: 'B2' },
+    { code: 'tier3', name: 'Intermedio', equiv: 'B2 First', bars: 3, courseLevel: 'B2' },
+    { code: 'tier4', name: 'Avanzado', equiv: 'C1 Advanced', bars: 4, courseLevel: 'C1' },
+    { code: 'tier5', name: 'Experto', equiv: 'C1 Advanced', bars: 5, courseLevel: 'C1' }
   ];
 
   var _selectedLevel = null;
@@ -78,8 +78,10 @@
   }
 
   function showStep(step) {
+    var pathStep = document.getElementById('onboarding-path-step');
     var levelStep = document.getElementById('onboarding-level-step');
     var placementStep = document.getElementById('onboarding-placement-step');
+    if (pathStep) pathStep.style.display = step === 'path' ? 'flex' : 'none';
     if (levelStep) levelStep.style.display = step === 'level' ? 'flex' : 'none';
     if (placementStep) placementStep.style.display = step === 'placement' ? 'flex' : 'none';
   }
@@ -102,6 +104,16 @@
     };
   }
 
+  function openFirstB1Topic() {
+    if (typeof BentoGrid === 'undefined') return;
+    BentoGrid._courseLevel = 'B1';
+    BentoGrid._courseSection = 'learning';
+    if (typeof MainNav !== 'undefined' && MainNav.setActive) {
+      MainNav.setActive('learning');
+    }
+    BentoGrid.openCourseUnit('Unit1', 'data/Course/B1/Unit1.json', 0);
+  }
+
   window.Onboarding = {
     needsShow: function () {
       if (isDone()) return false;
@@ -119,9 +131,12 @@
       ensureLevelOptions();
       _selectedLevel = null;
       _placementCourseLevel = null;
-      showStep('level');
+      showStep('path');
 
-      screen.querySelectorAll('.onboarding-option').forEach(function (btn) {
+      screen.querySelectorAll('.onboarding-option[data-level]').forEach(function (btn) {
+        btn.classList.remove('selected');
+      });
+      screen.querySelectorAll('.onboarding-path-option').forEach(function (btn) {
         btn.classList.remove('selected');
       });
       var continueBtn = document.getElementById('onboarding-continue-btn');
@@ -143,9 +158,36 @@
       document.body.classList.remove('onboarding-open');
     },
 
+    selectPath: function (path) {
+      document.querySelectorAll('.onboarding-path-option').forEach(function (btn) {
+        btn.classList.toggle('selected', btn.getAttribute('data-path') === path);
+      });
+
+      if (path === 'from-zero') {
+        this.startFromZero();
+      } else if (path === 'by-level') {
+        showStep('level');
+      }
+    },
+
+    backToPathSelection: function () {
+      _selectedLevel = null;
+      showStep('path');
+      var continueBtn = document.getElementById('onboarding-continue-btn');
+      if (continueBtn) continueBtn.disabled = true;
+      document.querySelectorAll('.onboarding-option[data-level]').forEach(function (btn) {
+        btn.classList.remove('selected');
+      });
+    },
+
+    startFromZero: function () {
+      clearCourseProgress('B1');
+      this._finalizeOnboarding('B1', true, null, { openFirstB1Topic: true });
+    },
+
     selectLevel: function (level) {
       _selectedLevel = level;
-      document.querySelectorAll('.onboarding-option').forEach(function (btn) {
+      document.querySelectorAll('.onboarding-option[data-level]').forEach(function (btn) {
         btn.classList.toggle('selected', btn.getAttribute('data-level') === level);
       });
       var continueBtn = document.getElementById('onboarding-continue-btn');
@@ -256,7 +298,8 @@
       this._finalizeOnboarding(courseLevel, passed, score);
     },
 
-    _finalizeOnboarding: async function (courseLevel, passed, score) {
+    _finalizeOnboarding: async function (courseLevel, passed, score, options) {
+      options = options || {};
       AppState.currentLevel = courseLevel;
       try {
         localStorage.setItem('preferred_level', courseLevel);
@@ -281,14 +324,18 @@
 
       history.replaceState({ view: 'dashboard' }, '', '/');
 
+      var afterLoad = function () {
+        if (options.openFirstB1Topic) {
+          openFirstB1Topic();
+        } else if (typeof Dashboard !== 'undefined') {
+          Dashboard.render();
+        }
+      };
+
       if (typeof AppLoadingScreen !== 'undefined') {
-        AppLoadingScreen.show({
-          onHidden: function () {
-            if (typeof Dashboard !== 'undefined') Dashboard.render();
-          }
-        });
-      } else if (typeof Dashboard !== 'undefined') {
-        Dashboard.render();
+        AppLoadingScreen.show({ onHidden: afterLoad });
+      } else {
+        afterLoad();
       }
     },
 
