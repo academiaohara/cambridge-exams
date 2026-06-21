@@ -152,6 +152,77 @@
       var existing = document.querySelector('.listening-type4-container');
       if (existing) existing.remove();
       this.initListeners();
+    },
+
+    _getCorrectForKey: function(key) {
+      var exercise = AppState.currentExercise;
+      if (!exercise || !exercise.content || !key) return '';
+      var match = String(key).match(/^t(\d+)_(\d+)$/);
+      if (!match) return '';
+      var task = match[1] === '1' ? exercise.content.task1 : exercise.content.task2;
+      if (!task || !task.questions) return '';
+      var qNum = parseInt(match[2], 10);
+      var q = task.questions.find(function(item) { return item.number === qNum; });
+      return q && q.correct ? q.correct : '';
+    },
+
+    setAnswerMode: function(mode) {
+      document.querySelectorAll('.listening-type4-select[data-key]').forEach(function(sel) {
+        var key = sel.getAttribute('data-key') || '';
+        var correct = ListeningType4._getCorrectForKey(key);
+        var wrapper = sel.closest('.listening-type4-answer-wrapper');
+        var tooltip = wrapper && wrapper.querySelector('.listening-type4-correct-tooltip');
+
+        if (mode === 'correct') {
+          if (sel.dataset.lt4ExplPrev === undefined) {
+            sel.dataset.lt4ExplPrev = sel.value;
+          }
+          if (correct) sel.value = correct;
+          sel.classList.remove('correct', 'incorrect');
+          sel.classList.add('listening-type4-select-expl-show');
+          if (wrapper) wrapper.classList.remove('listening-type4-answer-wrapper--incorrect');
+          if (tooltip) tooltip.style.display = 'none';
+        } else {
+          if (sel.dataset.lt4ExplPrev !== undefined) {
+            sel.value = sel.dataset.lt4ExplPrev;
+            delete sel.dataset.lt4ExplPrev;
+          }
+          sel.classList.remove('listening-type4-select-expl-show');
+          if (tooltip) tooltip.style.display = '';
+          if (AppState.answersChecked) {
+            var isCorrect = sel.value === correct;
+            sel.classList.toggle('correct', isCorrect);
+            sel.classList.toggle('incorrect', !isCorrect);
+            if (wrapper) {
+              wrapper.classList.toggle('listening-type4-answer-wrapper--incorrect', !isCorrect);
+            }
+          }
+        }
+      });
+    },
+
+    syncExplanationActiveQuestion: function(qNum) {
+      document.querySelectorAll('.listening-type4-question').forEach(function(row) {
+        var isActive = String(row.getAttribute('data-listening-q')) === String(qNum);
+        row.classList.toggle('listening-type4-question--expl-active', isActive);
+      });
+    },
+
+    applyExplanationMode: function() {
+      this.setAnswerMode('correct');
+      var container = document.querySelector('.listening-type4-container');
+      if (container) container.classList.add('listening-type4-explanation-mode');
+      var activeQ = typeof AppState !== 'undefined' ? AppState.explanationActiveQuestion : null;
+      if (activeQ != null) this.syncExplanationActiveQuestion(activeQ);
+    },
+
+    removeExplanationMode: function() {
+      this.setAnswerMode('student');
+      var container = document.querySelector('.listening-type4-container');
+      if (container) container.classList.remove('listening-type4-explanation-mode');
+      document.querySelectorAll('.listening-type4-question--expl-active').forEach(function(row) {
+        row.classList.remove('listening-type4-question--expl-active');
+      });
     }
   };
 })();
