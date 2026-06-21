@@ -201,7 +201,6 @@
   border: 2px solid var(--ex-duo-border, #e5e5e5);
   border-top: 4px solid var(--ex-duo-blue, #1cb0f6);
   position: relative;
-  text-align: left;
   box-shadow: 0 4px 0 var(--ex-duo-border, #e5e5e5);
   font-family: 'Nunito', sans-serif;
 }
@@ -219,6 +218,7 @@
   margin-bottom: 22px;
   padding-bottom: 18px;
   border-bottom: 2px solid #f0f0f0;
+  text-align: left;
 }
 
 .reading-text-enhanced .content-title {
@@ -260,6 +260,8 @@
 .reading-text-enhanced .toggle-text-section p {
   border-radius: 6px;
   transition: background 0.2s;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .reading-text-enhanced .toggle-text-section p:hover {
@@ -1048,6 +1050,7 @@
   font-size: 1rem;
   line-height: 1.8;
   text-align: justify;
+  hyphens: auto;
 }
 
 .listening-transcript-context {
@@ -1073,7 +1076,8 @@
   font-size: 1.05rem;
   line-height: 1.55;
   color: var(--text-dark);
-  text-align: left;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .listening-transcript-main .transcript-extract-interview {
@@ -1123,7 +1127,8 @@
 }
 
 .listening-transcript-main .transcript-extract-interview .transcript-text {
-  text-align: left;
+  text-align: justify;
+  hyphens: auto;
 }
 
 /* B1 Listening — Duolingo transcript styling */
@@ -1154,6 +1159,8 @@
   font-family: 'Nunito', sans-serif;
   font-weight: 600;
   color: var(--ex-duo-text, #4b4b4b);
+  text-align: justify;
+  hyphens: auto;
 }
 
 .dashboard-layout--exercise .b1-listening .toggle-text-section .listening-transcript-context-text::first-letter {
@@ -1205,6 +1212,8 @@
   font-weight: 600;
   color: var(--ex-duo-text, #4b4b4b);
   line-height: 1.7;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .dashboard-layout--exercise .b1-listening .listening-transcript-main .transcript-speaker-card {
@@ -1271,9 +1280,10 @@
     align-self: flex-start;
   }
 
-  .reading-text-enhanced,
+  .reading-text-enhanced .toggle-text-section p,
   .listening-transcript-main .transcript-text {
-    text-align: left;
+    text-align: justify;
+    hyphens: auto;
   }
 
   .reading-text-enhanced {
