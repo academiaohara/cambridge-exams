@@ -172,7 +172,7 @@
         return in14 || duoInlineMcCloze || duoOpenCloze;
       }
       if (AppState.currentSection !== 'listening') return false;
-      // Duo listening: sentence-completion parts only (B1 L3, B2 L2). C1 L2 uses explanation mode instead.
+      // Duo listening: sentence-completion with answer toggle (B1 L3 only). B2/C1 L2 use explanation mode instead.
       if (typeof Utils !== 'undefined' && Utils.isC1ListeningSentenceCompletion()) return false;
       return typeof Utils !== 'undefined' && Utils.isDuoListeningSentenceCompletion();
     },

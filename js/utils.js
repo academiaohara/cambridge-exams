@@ -274,12 +274,12 @@
       return AppState.currentLevel === 'C1' && part === 7;
     },
 
-    /** B1 Reading Part 5 and C1 Reading Part 1: inline MC cloze chips in the passage. */
+    /** B1 Reading Part 5, B2/C1 Reading Part 1: inline MC cloze chips in the passage. */
     isDuoInlineMcClozeReading: function() {
       if (typeof AppState === 'undefined' || !this.isDuoExerciseUi()) return false;
       if (AppState.currentSection !== 'reading') return false;
       if (AppState.currentLevel === 'B1' && AppState.currentPart === 5) return true;
-      if (AppState.currentLevel === 'C1' && AppState.currentPart === 1) return true;
+      if ((AppState.currentLevel === 'B2' || AppState.currentLevel === 'C1') && AppState.currentPart === 1) return true;
       return false;
     },
 
@@ -368,9 +368,11 @@
       return !!(pc && pc.type === 'sentence-completion');
     },
 
+    /** B2/C1 Listening Part 2: transcript explanation mode (not answer toggle). */
     isC1ListeningSentenceCompletion: function() {
       if (!this.isDuoListeningSentenceCompletion()) return false;
-      return AppState.currentLevel === 'C1' && AppState.currentPart === 2;
+      if (AppState.currentPart !== 2) return false;
+      return AppState.currentLevel === 'B2' || AppState.currentLevel === 'C1';
     },
 
     isC1ListeningDualMatching: function() {
