@@ -204,10 +204,11 @@
 
 .writing-score-square {
   display: inline-block;
+  flex-shrink: 0;
   width: 14px;
   height: 14px;
   border: 2px solid var(--primary);
-  border-radius: 3px;
+  border-radius: 50%;
   background: #fff;
   box-sizing: border-box;
 }
