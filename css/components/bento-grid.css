@@ -1768,11 +1768,38 @@ margin-top: -2px;
 }
 
 .grade-tracker-see-all {
-  background: none;
-  border: none;
-  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  padding: 5px 9px 4px 10px;
+  border: 2px solid #84d8ff;
+  border-radius: 10px;
+  background: #ddf4ff;
+  color: #1cb0f6;
+  box-shadow: 0 3px 0 #84d8ff;
   cursor: pointer;
-  font: inherit;
+  line-height: 1;
+  transition: transform 0.1s, box-shadow 0.1s, filter 0.15s;
+}
+
+.grade-tracker-see-all .material-symbols-outlined {
+  font-size: 0.9rem;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.grade-tracker-see-all:hover {
+  filter: brightness(1.04);
+}
+
+.grade-tracker-see-all:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #84d8ff;
+}
+
+.grade-tracker-see-all:focus-visible {
+  outline: 2px solid #1cb0f6;
+  outline-offset: 2px;
 }
 
 /* Calculator widget */
