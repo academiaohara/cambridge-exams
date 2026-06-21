@@ -207,12 +207,12 @@
   color: var(--incorrect);
 }
 
-/* Wrapper for incorrect select + tooltip */
+/* Wrapper for select + optional tooltip */
 .listening-type4-answer-wrapper {
   position: relative;
   display: inline-flex;
   align-items: center;
-  flex: 1;
+  flex: 0 0 auto;
   min-width: 0;
 }
 
@@ -375,6 +375,13 @@
   padding: 10px 12px;
   box-shadow: 0 3px 0 var(--ex-duo-border, #e5e5e5);
   gap: 10px;
+  transition: border-color 0.15s, box-shadow 0.1s, background 0.15s;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-type4-question:hover {
+  background: #fff;
+  border-color: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 3px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 .dashboard-layout--exercise .b1-listening .listening-type4-q-number {
@@ -393,6 +400,22 @@
   font-weight: 800;
   box-shadow: 0 3px 0 var(--ex-duo-blue-dark, #1899d6);
   flex-shrink: 0;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-type4-q-number.correct {
+  background: var(--ex-duo-practice, #58cc02);
+  box-shadow: 0 3px 0 var(--ex-duo-practice-dark, #58a700);
+}
+
+.dashboard-layout--exercise .b1-listening .listening-type4-q-number.incorrect,
+.dashboard-layout--exercise .b1-listening .listening-type4-q-number.unanswered-checked {
+  background: #ff4b4b;
+  box-shadow: 0 3px 0 #ea2b2b;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-type4-q-number.show-correct {
+  background: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 3px 0 var(--ex-duo-purple-dark, #a855f7);
 }
 
 .dashboard-layout--exercise .b1-listening .listening-type4-speaker-label {
@@ -432,6 +455,21 @@
   border-color: var(--ex-duo-blue, #1cb0f6);
   background-color: var(--ex-duo-blue-light, #ddf4ff);
   box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6), 0 0 0 3px rgba(28, 176, 246, 0.18);
+}
+
+.dashboard-layout--exercise .b1-listening .listening-type4-select:hover:not(:disabled) {
+  background-color: #fff;
+  border-color: var(--ex-duo-purple, #ce82ff);
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
+}
+
+.dashboard-layout--exercise .b1-listening .listening-type4-answer-wrapper {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.dashboard-layout--exercise .b1-listening .listening-type4-answer-wrapper .listening-type4-select {
+  flex: 0 0 auto;
 }
 
 .dashboard-layout--exercise .b1-listening .listening-type4-select.correct {
@@ -483,6 +521,7 @@
   .dashboard-layout--exercise .b1-listening .listening-type4-answer-wrapper {
     width: 100%;
     flex: 1 1 100%;
+    margin-left: 0;
   }
 
   .dashboard-layout--exercise .b1-listening .listening-type4-answer-wrapper .listening-type4-select {

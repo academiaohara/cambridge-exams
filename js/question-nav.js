@@ -200,17 +200,27 @@
     },
 
     updateAllNavCells: function() {
-      var questions = (AppState.currentExercise && AppState.currentExercise.content && AppState.currentExercise.content.questions) || [];
-      var answers = (AppState.currentExercise && AppState.currentExercise.answers) || {};
+      var exercise = AppState.currentExercise;
+      var content = exercise && exercise.content;
+      var questions = (content && content.questions) || [];
+      if (!questions.length && content && content.task1 && content.task2) {
+        questions = (content.task1.questions || []).concat(content.task2.questions || []);
+      }
+      var answers = (exercise && exercise.answers) || {};
       var isChecked = AppState.answersChecked;
       var partConfig = typeof CONFIG !== 'undefined' && CONFIG.getPartConfig
         ? CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart)
         : null;
       var questionType = partConfig ? partConfig.type : undefined;
+      var hasDualTasks = !!(content && content.task1);
       questions.forEach(function(q) {
         var cell = document.querySelector('.question-nav-cell[data-qnum="' + q.number + '"]');
         if (!cell) return;
-        QuestionNav._syncNavCellState(cell, answers[q.number], q.correct, isChecked, questionType);
+        var answer = answers[q.number];
+        if (!answer && hasDualTasks) {
+          answer = answers['t1_' + q.number] || answers['t2_' + q.number];
+        }
+        QuestionNav._syncNavCellState(cell, answer, q.correct, isChecked, questionType);
       });
       if (typeof Utils !== 'undefined' && typeof Utils.syncQuestionNumberBadges === 'function') {
         Utils.syncQuestionNumberBadges();

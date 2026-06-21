@@ -88,21 +88,29 @@
         var selectHTML = '<select class="' + selectClass + '" data-key="' + key + '"' +
             (isChecked ? ' disabled' : '') +
             ' onchange="ListeningType4.handleSelect(' + taskNum + ', ' + q.number + ', this.value)">' +
-            '<option value="">' + 'Choose option' + '</option>' +
+            '<option value="" disabled' + (savedAnswer ? '' : ' selected') + ' hidden></option>' +
             optSelectHTML +
           '</select>';
 
-        // Wrap incorrect answers with a tooltip showing the correct answer
-        if (isIncorrect) {
-          selectHTML = '<span class="listening-type4-answer-wrapper">' +
-            selectHTML +
-            '<span class="listening-type4-correct-tooltip">' + 'Correct answer' + ': ' + q.correct + '</span>' +
-          '</span>';
+        selectHTML = '<span class="listening-type4-answer-wrapper' + (isIncorrect ? ' listening-type4-answer-wrapper--incorrect' : '') + '">' +
+          selectHTML +
+          (isIncorrect ? '<span class="listening-type4-correct-tooltip">' + 'Correct answer' + ': ' + q.correct + '</span>' : '') +
+        '</span>';
+
+        var numClass = 'listening-type4-q-number';
+        if (isChecked && typeof Utils !== 'undefined') {
+          var stateClass = Utils.getQuestionNumberStateClass({
+            answer: savedAnswer,
+            correct: q.correct,
+            isChecked: isChecked,
+            questionType: 'dual-matching'
+          });
+          if (stateClass) numClass += ' ' + stateClass;
         }
 
         var speakerNum = String(q.speaker || '').replace(/^Speaker\s*/i, '').trim();
         return '<div class="listening-type4-question' + (isDuoListening ? ' listening-type4-question--duo' : '') + '" data-listening-q="' + String(q.number) + '">' +
-          '<span class="listening-type4-q-number">' + q.number + '</span>' +
+          '<span class="' + numClass + '" data-qnum="' + q.number + '">' + q.number + '</span>' +
           '<span class="listening-type4-speaker-label">' + 'Speaker ' + speakerNum + '</span>' +
           selectHTML +
         '</div>';
