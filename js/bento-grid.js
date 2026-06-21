@@ -1901,7 +1901,7 @@
       return '<div class="sidebar-widget-duo sw-grade grade-tracker-carousel-widget" data-total-slides="' + totalSlides + '">' +
         '<div class="sw-duo-header">' +
           '<span class="sw-duo-title">' + 'Grade Tracker' + '</span>' +
-          '<button type="button" class="sw-duo-link grade-tracker-see-all" onclick="BentoGrid.openGradeEvolution()">SEE ALL</button>' +
+          '<button type="button" class="sw-duo-link grade-tracker-see-all" onclick="BentoGrid.openGradeEvolution()">SEE ALL<span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></button>' +
         '</div>' +
         '<div class="grade-carousel-shell' + (showNav ? '' : ' grade-carousel-shell--single') + '">' +
           (showNav ? '<button type="button" class="grade-carousel-nav grade-carousel-prev" aria-label="Previous skill: ' + BentoGrid._escapeHTML(prevSkill) + '">' + BentoGrid._gradeCarouselNavIconHtml(prevSkill) + '</button>' : '') +
