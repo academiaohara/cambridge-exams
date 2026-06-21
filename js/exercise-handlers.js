@@ -421,6 +421,10 @@
               typeof ListeningType2 !== 'undefined' && ListeningType2.applyExplanationMode) {
             ListeningType2.applyExplanationMode();
           }
+          if (typeof Utils !== 'undefined' && Utils.isC1ListeningDualMatching() &&
+              typeof ListeningType4 !== 'undefined' && ListeningType4.applyExplanationMode) {
+            ListeningType4.applyExplanationMode();
+          }
           var questions = this._getAllQuestions();
           if (questions.length > 0) {
             AppState.explanationActiveQuestion = questions[0].number;
@@ -498,6 +502,10 @@
               typeof ListeningType2 !== 'undefined' && ListeningType2.removeExplanationMode) {
             ListeningType2.removeExplanationMode();
           }
+          if (typeof Utils !== 'undefined' && Utils.isC1ListeningDualMatching() &&
+              typeof ListeningType4 !== 'undefined' && ListeningType4.removeExplanationMode) {
+            ListeningType4.removeExplanationMode();
+          }
           ExerciseRenderer.toggleView('questions');
         }
 
@@ -563,6 +571,11 @@
       var card = document.querySelector('.explanation-card[data-qnum="' + qNum + '"]');
       if (card) {
         card.classList.add('explanation-active');
+      }
+
+      if (typeof Utils !== 'undefined' && Utils.isC1ListeningDualMatching() &&
+          typeof ListeningType4 !== 'undefined' && ListeningType4.syncExplanationActiveQuestion) {
+        ListeningType4.syncExplanationActiveQuestion(qNum);
       }
 
       var questions = this._getAllQuestions();
@@ -819,6 +832,10 @@
         if (typeof Utils !== 'undefined' && Utils.isC1ListeningSentenceCompletion() &&
             typeof ListeningType2 !== 'undefined' && ListeningType2.removeExplanationMode) {
           ListeningType2.removeExplanationMode();
+        }
+        if (typeof Utils !== 'undefined' && Utils.isC1ListeningDualMatching() &&
+            typeof ListeningType4 !== 'undefined' && ListeningType4.removeExplanationMode) {
+          ListeningType4.removeExplanationMode();
         }
         ExerciseRenderer.toggleView('questions');
       }

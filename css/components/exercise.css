@@ -2881,6 +2881,7 @@ body:has(.dashboard-layout--exercise) #main-content {
 .dashboard-layout--exercise .reading-type4-show-correct,
 .dashboard-layout--exercise .reading-type4-inline-input.cu-input-show-correct,
 .dashboard-layout--exercise .listening-type2-input.cu-input-show-correct,
+.dashboard-layout--exercise .listening-type4-select.listening-type4-select-expl-show,
 .dashboard-layout--exercise .reading-type5-gap-trigger-show-correct,
 .dashboard-layout--exercise .reading-type5-option-key,
 .dashboard-layout--exercise .b1-reading2-chip-key,
@@ -2895,5 +2896,10 @@ body:has(.dashboard-layout--exercise) #main-content {
 .dashboard-layout--exercise .listening-type2-questions-wrapper.listening-type2-explanation-mode .listening-type2-gap.incorrect::after,
 .dashboard-layout--exercise .listening-type2-questions-wrapper.listening-type2-explanation-mode .listening-type2-gap.incorrect:hover::after,
 .dashboard-layout--exercise .listening-type2-questions-wrapper.listening-type2-explanation-mode .listening-type2-gap.incorrect:focus-within::after {
+  display: none !important;
+}
+
+.dashboard-layout--exercise .listening-type4-container.listening-type4-explanation-mode .listening-type4-correct-tooltip,
+.dashboard-layout--exercise .listening-type4-container.listening-type4-explanation-mode .listening-type4-answer-wrapper:hover .listening-type4-correct-tooltip {
   display: none !important;
 }

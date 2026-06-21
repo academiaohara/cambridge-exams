@@ -1040,6 +1040,12 @@
           ReadingType5.syncAllFromAppState();
         }
       }
+
+      if (view === 'questions' && typeof AppState !== 'undefined' && AppState.explanationMode &&
+          typeof Utils !== 'undefined' && Utils.isC1ListeningDualMatching() &&
+          typeof ListeningType4 !== 'undefined' && ListeningType4.applyExplanationMode) {
+        ListeningType4.applyExplanationMode();
+      }
     },
 
     _hasTranscriptContent: function(exercise) {

@@ -366,6 +366,13 @@
       return AppState.currentLevel === 'C1' && AppState.currentPart === 2;
     },
 
+    isC1ListeningDualMatching: function() {
+      if (!this.isDuoListeningSection() || typeof AppState === 'undefined') return false;
+      if (AppState.currentLevel !== 'C1' || AppState.currentPart !== 4) return false;
+      var pc = CONFIG.getPartConfig('listening', AppState.currentPart);
+      return !!(pc && pc.type === 'dual-matching');
+    },
+
     getExerciseBadgeLabel: function(section, part, exercise) {
       if (section === 'reading') {
         return 'Reading - Part ' + part;
