@@ -189,22 +189,31 @@
 
     syncQuestionNumberBadges: function() {
       if (typeof AppState === 'undefined' || !AppState.currentExercise) return;
-      var questions = (AppState.currentExercise.content && AppState.currentExercise.content.questions) || [];
+      var content = AppState.currentExercise.content || {};
+      var questions = content.questions || [];
+      if (!questions.length && content.task1 && content.task2) {
+        questions = (content.task1.questions || []).concat(content.task2.questions || []);
+      }
       var answers = AppState.currentExercise.answers || {};
       var isChecked = AppState.answersChecked;
       var partConfig = typeof CONFIG !== 'undefined' && CONFIG.getPartConfig
         ? CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart)
         : null;
       var questionType = partConfig ? partConfig.type : undefined;
+      var hasDualTasks = !!content.task1;
       var self = this;
 
-      document.querySelectorAll('.reading-type5-question-number[data-qnum], .listening-type1-question-number[data-qnum]').forEach(function(el) {
+      document.querySelectorAll('.reading-type5-question-number[data-qnum], .listening-type1-question-number[data-qnum], .listening-type4-q-number[data-qnum]').forEach(function(el) {
         var qNum = parseInt(el.getAttribute('data-qnum'), 10);
         if (!qNum) return;
         var question = questions.find(function(q) { return q.number === qNum; });
         if (!question) return;
+        var answer = answers[qNum];
+        if (!answer && hasDualTasks) {
+          answer = answers['t1_' + qNum] || answers['t2_' + qNum];
+        }
         var stateClass = self.getQuestionNumberStateClass({
-          answer: answers[qNum],
+          answer: answer,
           correct: question.correct,
           isChecked: isChecked,
           questionType: questionType

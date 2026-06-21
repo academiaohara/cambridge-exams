@@ -937,10 +937,9 @@
       });
 
       document.querySelectorAll('.listening-type4-answer-wrapper').forEach(function(wrapper) {
-        var select = wrapper.querySelector('.listening-type4-select');
-        if (select && wrapper.parentNode) {
-          wrapper.parentNode.replaceChild(select, wrapper);
-        }
+        wrapper.classList.remove('listening-type4-answer-wrapper--incorrect');
+        var tooltip = wrapper.querySelector('.listening-type4-correct-tooltip');
+        if (tooltip) tooltip.remove();
       });
     },
     
