@@ -536,8 +536,29 @@
   border-radius: 10px;
   box-sizing: border-box;
   text-align: center;
-  border: none;
-  background: transparent;
+  background: #fff;
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+}
+
+.c1-reading3 .reading-type3-wf-pill .reading-type3-answered-word.reading-type3-correct,
+.c1-reading3 .reading-type3-wf-pill .reading-type3-answered.reading-type3-example-answer {
+  color: #065f46;
+  background: #fff;
+  border: 2px solid var(--ex-duo-practice, #58cc02);
+}
+
+.c1-reading3 .reading-type3-wf-pill .reading-type3-answered-word.reading-type3-incorrect {
+  color: #991b1b;
+  background: #fff;
+  border: 2px solid #ff4b4b;
+  text-decoration: line-through;
+}
+
+.c1-reading3 .reading-type3-wf-pill .reading-type3-answered-word.reading-type3-show-correct {
+  color: #5b21b6;
+  font-weight: 700;
+  background: #fff;
+  border: 2px solid var(--ex-duo-purple, #ce82ff);
 }
 
 /* Hint word: same badge style as the question number */
@@ -573,26 +594,6 @@
   background: var(--ex-duo-purple, #ce82ff);
   border-color: var(--ex-duo-purple-dark, #a855f7);
   color: #fff;
-}
-
-.c1-reading3 .reading-type3-correct {
-  color: #065f46;
-  background: transparent;
-  border: 2px solid var(--ex-duo-practice, #58cc02);
-}
-
-.c1-reading3 .reading-type3-incorrect {
-  color: #991b1b;
-  background: transparent;
-  border: 2px solid #ff4b4b;
-  text-decoration: line-through;
-}
-
-.c1-reading3 .reading-type3-show-correct {
-  color: #5b21b6;
-  font-weight: 700;
-  background: transparent;
-  border: 2px solid var(--ex-duo-purple, #ce82ff);
 }
 
 .c1-reading3 .reading-type3-gap-inline.incorrect::after {
