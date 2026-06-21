@@ -1691,11 +1691,13 @@
         typeof Utils !== 'undefined' && Utils.isDuoOpenClozeReading();
       var isDuoListeningSentenceAnswerToggle =
         typeof Utils !== 'undefined' && Utils.isDuoListeningSentenceCompletion();
+      var isC1ListeningSentenceAnswerToggle =
+        typeof Utils !== 'undefined' && Utils.isC1ListeningSentenceCompletion();
       var supportsAnswerToggle =
         ((isReading && actualPart >= 1 && actualPart <= 4) ||
           isDuoInlineMcClozeAnswerToggle ||
           isDuoOpenClozeAnswerToggle ||
-          isDuoListeningSentenceAnswerToggle) &&
+          (isDuoListeningSentenceAnswerToggle && !isC1ListeningSentenceAnswerToggle)) &&
         !(AppState.currentExercise && AppState.currentExercise._b1PetHideAnswerToggle);
       var answerToggleLabel = AppState.answerViewMode === 'correct'
         ? 'Show your answer'

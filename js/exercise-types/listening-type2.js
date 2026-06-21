@@ -250,6 +250,7 @@
     setAnswerMode: function(mode) {
       var self = this;
       document.querySelectorAll('.listening-type2-input[data-question]').forEach(function(input) {
+        var gap = input.closest('.listening-type2-gap');
         var studentValue = input.getAttribute('data-student-value') || '';
         var checkClass = input.getAttribute('data-check-class') || '';
         var correctRaw = input.getAttribute('data-correct-raw') || '';
@@ -259,15 +260,52 @@
           input.classList.remove('correct', 'incorrect');
           input.classList.add('cu-input-show-correct');
           self._attachAltBadge(input, alternatives);
+          if (gap) {
+            gap.classList.remove('incorrect');
+            gap.removeAttribute('data-correct');
+          }
         } else {
           input.value = studentValue;
           input.classList.remove('cu-input-show-correct');
           input.classList.remove('correct', 'incorrect');
           if (checkClass) input.classList.add(checkClass);
           self._clearAltBadge(input);
+          if (gap && checkClass === 'incorrect' && correctRaw) {
+            gap.classList.add('incorrect');
+            gap.setAttribute('data-correct', '\u2713 ' + correctRaw);
+          } else if (gap) {
+            gap.classList.remove('incorrect');
+            gap.removeAttribute('data-correct');
+          }
         }
         self.resizeInput(input);
       });
+    },
+
+    renderExplanationGap: function(correctAnswer) {
+      var alternatives = this._answerAlternatives(correctAnswer);
+      var value = alternatives[0] || '';
+      return '<span class="listening-type2-gap">' +
+        '<input type="text" class="listening-type2-input gap-input cu-input-show-correct"' +
+        ' disabled readonly value="' + String(value).replace(/"/g, '&quot;') + '">' +
+        '</span>';
+    },
+
+    replaceQuestionGapForExplanation: function(questionText, correctAnswer) {
+      var gapHtml = this.renderExplanationGap(correctAnswer);
+      return String(questionText || '').replace(GAP_PATTERN, gapHtml);
+    },
+
+    applyExplanationMode: function() {
+      this.setAnswerMode('correct');
+      var wrapper = document.querySelector('.listening-type2-questions-wrapper');
+      if (wrapper) wrapper.classList.add('listening-type2-explanation-mode');
+    },
+
+    removeExplanationMode: function() {
+      this.setAnswerMode('student');
+      var wrapper = document.querySelector('.listening-type2-questions-wrapper');
+      if (wrapper) wrapper.classList.remove('listening-type2-explanation-mode');
     }
   };
 })();

@@ -172,7 +172,8 @@
         return in14 || duoInlineMcCloze || duoOpenCloze;
       }
       if (AppState.currentSection !== 'listening') return false;
-      // Duo listening: sentence-completion parts only (B1 L3, B2/C1 L2).
+      // Duo listening: sentence-completion parts only (B1 L3, B2 L2). C1 L2 uses explanation mode instead.
+      if (typeof Utils !== 'undefined' && Utils.isC1ListeningSentenceCompletion()) return false;
       return typeof Utils !== 'undefined' && Utils.isDuoListeningSentenceCompletion();
     },
 
@@ -416,6 +417,10 @@
           this._addEvidenceTooltips();
           // Switch to text/transcript view, activate first question
           ExerciseRenderer.toggleView('text');
+          if (typeof Utils !== 'undefined' && Utils.isC1ListeningSentenceCompletion() &&
+              typeof ListeningType2 !== 'undefined' && ListeningType2.applyExplanationMode) {
+            ListeningType2.applyExplanationMode();
+          }
           var questions = this._getAllQuestions();
           if (questions.length > 0) {
             AppState.explanationActiveQuestion = questions[0].number;
@@ -489,6 +494,10 @@
 
         // For listening: switch back to questions view
         if (isListening) {
+          if (typeof Utils !== 'undefined' && Utils.isC1ListeningSentenceCompletion() &&
+              typeof ListeningType2 !== 'undefined' && ListeningType2.removeExplanationMode) {
+            ListeningType2.removeExplanationMode();
+          }
           ExerciseRenderer.toggleView('questions');
         }
 
@@ -642,7 +651,14 @@
 
       // Add question text
       if (question.question) {
-        html += '<span class="eq-question-text">' + question.question + '</span>';
+        var questionText = question.question;
+        if (partType === 'sentence-completion' &&
+            typeof Utils !== 'undefined' && Utils.isC1ListeningSentenceCompletion() &&
+            question.correct && typeof ListeningType2 !== 'undefined' &&
+            typeof ListeningType2.replaceQuestionGapForExplanation === 'function') {
+          questionText = ListeningType2.replaceQuestionGapForExplanation(questionText, question.correct);
+        }
+        html += '<span class="eq-question-text">' + questionText + '</span>';
       }
 
       // Add options based on part type
@@ -695,8 +711,9 @@
         html += '</div>';
       }
 
-      // For sentence-completion, show correct answer
-      if (partType === 'sentence-completion' && question.correct) {
+      // For sentence-completion, show correct answer (C1 L2 embeds it in the question gap)
+      if (partType === 'sentence-completion' && question.correct &&
+          !(typeof Utils !== 'undefined' && Utils.isC1ListeningSentenceCompletion())) {
         html += '<span class="eq-option eq-option-correct" style="display:inline-block;margin-top:4px">' + question.correct + '</span>';
       }
 
@@ -796,6 +813,10 @@
       }
 
       if (AppState.currentSection === 'listening') {
+        if (typeof Utils !== 'undefined' && Utils.isC1ListeningSentenceCompletion() &&
+            typeof ListeningType2 !== 'undefined' && ListeningType2.removeExplanationMode) {
+          ListeningType2.removeExplanationMode();
+        }
         ExerciseRenderer.toggleView('questions');
       }
 
