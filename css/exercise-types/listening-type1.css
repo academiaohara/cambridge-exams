@@ -394,10 +394,7 @@
 /* PET-style scene line (e.g. B1 Listening Part 1: "You hear two people…") */
 .listening-type1-compact .listening-type1-item-context {
   margin: 0 0 12px 0;
-  padding: 10px 14px;
-  background: #f8fafc;
-  border-left: 3px solid #0ea5e9;
-  border-radius: 8px;
+  padding: 0;
   font-size: 0.98rem;
   line-height: 1.45;
   color: #334155;
@@ -612,16 +609,13 @@
 
 .dashboard-layout--exercise .b1-listening .listening-type1-compact .listening-type1-item-context {
   margin: 0 0 12px 0;
-  padding: 12px 14px;
-  background: linear-gradient(180deg, #f0f9ff 0%, var(--ex-duo-blue-light, #ddf4ff) 100%);
-  border: 2px solid var(--ex-duo-blue, #1cb0f6);
-  border-radius: 12px;
+  padding: 0;
   font-family: 'Nunito', sans-serif;
   font-size: 0.98rem;
   font-weight: 600;
+  font-style: italic;
   line-height: 1.45;
   color: var(--ex-duo-text, #4b4b4b);
-  box-shadow: 0 2px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .dashboard-layout--exercise .b1-listening .listening-type1-separator {
