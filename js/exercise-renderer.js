@@ -737,7 +737,7 @@
         var solKey = q.correct ? String(q.correct).trim().toUpperCase().charAt(0) : '';
         var solRaw = solKey && texts[solKey] != null ? texts[solKey] : '';
         if (solRaw) {
-          html += '<div class="b1-reading2-solution-expl" data-sol-letter="' + self._escapeHtmlAttr(solKey) + '">';
+          html += '<div class="b1-reading2-solution-expl" data-qnum="' + qNum + '" data-sol-letter="' + self._escapeHtmlAttr(solKey) + '">';
           html += self.formatB1Reading2NoticeHtml(solRaw, isChecked);
           html += '</div>';
         }
@@ -1045,6 +1045,25 @@
           typeof Utils !== 'undefined' && Utils.isC1ListeningDualMatching() &&
           typeof ListeningType4 !== 'undefined' && ListeningType4.applyExplanationMode) {
         ListeningType4.applyExplanationMode();
+      }
+
+      if (typeof AppState !== 'undefined' && AppState.explanationMode &&
+          typeof Utils !== 'undefined' && AppState.currentExercise &&
+          Utils.hasDuoMatchingUi(AppState.currentExercise) &&
+          !Utils.usesDuoMatchingSwappedLayout(AppState.currentExercise) &&
+          typeof ExerciseHandlers !== 'undefined') {
+        var textContainer = document.getElementById('selectable-text');
+        if (textContainer) {
+          textContainer.classList.toggle('explanation-mode-questions-view', view === 'questions');
+        }
+        if (view === 'questions' && ExerciseHandlers.syncDuoMatchingQuestionsExplanationView) {
+          ExerciseHandlers.syncDuoMatchingQuestionsExplanationView();
+        } else if (view === 'text' && AppState.explanationActiveQuestion != null &&
+            ExerciseHandlers._updateExplanationActiveQuestion) {
+          ExerciseHandlers._clearEvidenceHighlights();
+          ExerciseHandlers._updateExplanationActiveQuestion(AppState.explanationActiveQuestion);
+          ExerciseHandlers._applyEvidenceHighlight(AppState.explanationActiveQuestion);
+        }
       }
     },
 
