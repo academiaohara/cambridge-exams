@@ -604,6 +604,7 @@
       try {
         localStorage.setItem('cambridge_course_path_advance_index', String(pending));
         localStorage.removeItem('cambridge_course_path_advance_pending');
+        BentoGrid._courseAdvanceReturnFn = null;
       } catch (e) {}
     },
 
@@ -614,9 +615,23 @@
         if (!gate || !gate.item || gate.item.status !== 'available') return;
 
         localStorage.setItem('cambridge_course_path_advance_pending', String(globalIndex));
+        BentoGrid._courseAdvanceReturnFn = true;
         var ptPath = 'data/Course/' + gate.levelId + '/' + gate.item.file;
-        BentoGrid.openCourseUnit(gate.item.id, ptPath);
+        await BentoGrid.openCourseUnit(gate.item.id, ptPath, 0, { level: gate.levelId });
       } catch (e) {}
+    },
+
+    _resolveCourseUnitBackFn: function(courseBackFn) {
+      if (BentoGrid._courseAdvanceReturnFn) {
+        return 'BentoGrid._backFromAdvanceProgressTest()';
+      }
+      return courseBackFn;
+    },
+
+    _backFromAdvanceProgressTest: function() {
+      BentoGrid._courseAdvanceReturnFn = null;
+      try { localStorage.removeItem('cambridge_course_path_advance_pending'); } catch (e) {}
+      BentoGrid.openLessons();
     },
 
     _buildGlobalLearningStages: async function() {
@@ -1539,7 +1554,13 @@
       return dotsHtml;
     },
 
-    openCourseUnit: async function(unitId, filePath, startSection) {
+    openCourseUnit: async function(unitId, filePath, startSection, options) {
+      options = options || {};
+      var level = (options.level || BentoGrid._courseLevel || AppState.currentLevel || 'C1').toUpperCase();
+      if (!BentoGrid._courseIndexData || BentoGrid._courseLevel !== level) {
+        await BentoGrid._loadCourseIndexForLevel(level);
+      }
+
       if (BentoGrid._courseIndexData && !(typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack)) {
         var foundItem = (BentoGrid._courseIndexData.items || []).find(function(i) { return i.id === unitId; });
         if (foundItem) {
@@ -1554,10 +1575,6 @@
 
       var content = document.getElementById('main-content');
       if (!content) return;
-      var level = BentoGrid._courseLevel || AppState.currentLevel || 'C1';
-      if (!BentoGrid._courseIndexData || BentoGrid._courseLevel !== level) {
-        await BentoGrid._loadCourseIndexForLevel(level);
-      }
 
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
@@ -1595,9 +1612,9 @@
       }
       var etapaBackKey = BentoGrid._currentEtapaKey
         || (blockKey && !/^pt\d+$/.test(blockKey) ? BentoGrid._resolveCourseEtapaKey(courseSection, level, blockKey) : null);
-      var courseBackFn = etapaBackKey
+      var courseBackFn = BentoGrid._resolveCourseUnitBackFn(etapaBackKey
         ? 'BentoGrid.openCourseEtapa(\'' + courseSection + '\', \'' + level + '\', \'' + etapaBackKey + '\')'
-        : 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')';
+        : 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')');
 
       // Show loading in center
       var unitLoadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
@@ -1678,9 +1695,9 @@
       }
       etapaBackKey = BentoGrid._currentEtapaKey
         || (blockKey && !/^pt\d+$/.test(blockKey) ? BentoGrid._resolveCourseEtapaKey(courseSection, level, blockKey) : null);
-      courseBackFn = etapaBackKey
+      courseBackFn = BentoGrid._resolveCourseUnitBackFn(etapaBackKey
         ? 'BentoGrid.openCourseEtapa(\'' + courseSection + '\', \'' + level + '\', \'' + etapaBackKey + '\')'
-        : 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')';
+        : 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')');
       var backFn = courseBackFn;
       BentoGrid._courseUnitBackFn = backFn;
       var backLabel = 'Units';
