@@ -805,6 +805,35 @@
      * B2 Reading 6 / C1 Reading 7: full paragraph or sentence cards with gap assignment buttons.
      * Inner HTML only (wrapper is added by renderToggleQuestions).
      */
+  /**
+   * C1 Reading 7 (checked, not explanation): which gap badges to show per paragraph card.
+   * One green badge if correct; red (user) + green (key) if wrong; green key-only if gap failed elsewhere.
+   */
+  _c1Reading7ParagraphResultBadges: function(key, questions, userAnswer) {
+    var userGap = null;
+    questions.forEach(function(q) {
+      if (userAnswer[q.number] === key) userGap = q.number;
+    });
+    var correctQ = questions.find(function(q) { return q.correct === key; });
+    var correctGap = correctQ ? correctQ.number : null;
+    var badges = [];
+
+    if (userGap != null) {
+      if (userGap === correctGap) {
+        badges.push({ qNum: userGap, selected: true, outcome: 'correct' });
+      } else {
+        badges.push({ qNum: userGap, selected: true, outcome: 'incorrect' });
+        if (correctGap != null) {
+          badges.push({ qNum: correctGap, selected: false, outcome: 'correct' });
+        }
+      }
+    } else if (correctGap != null && userAnswer[correctGap] !== key) {
+      badges.push({ qNum: correctGap, selected: false, outcome: 'correct' });
+    }
+
+    return { badges: badges, userGap: userGap, correctGap: correctGap };
+  },
+
     renderGappedTextParagraphToggleInner: function(exercise, partConfig) {
       var paragraphs = exercise.content.paragraphs || {};
       var questions = exercise.content.questions || [];
@@ -812,6 +841,8 @@
       var isChecked = AppState.answersChecked;
       var viewAsCorrect = typeof AppState !== 'undefined' && isChecked &&
         AppState.answerViewMode === 'correct';
+      var isC1Gapped = typeof Utils !== 'undefined' && Utils.isC1GappedTextReading();
+      var c1CheckedFeedback = isC1Gapped && isChecked && !viewAsCorrect;
       var effectiveAnswer = function(qNum) {
         if (viewAsCorrect) {
           var fq = questions.find(function(x) { return x.number === qNum; });
@@ -841,9 +872,20 @@
         questions.forEach(function(q) {
           if (effectiveAnswer(q.number) === key) assignedQ = q;
         });
+        var c1Result = c1CheckedFeedback
+          ? ExerciseRenderer._c1Reading7ParagraphResultBadges(key, questions, userAnswer)
+          : null;
         if (isChecked) {
           if (viewAsCorrect) {
             if (correctForQ) cardCls += ' reading-type7-toggle-card-show-correct';
+          } else if (c1CheckedFeedback) {
+            if (c1Result.userGap != null) {
+              cardCls += c1Result.userGap === c1Result.correctGap
+                ? ' reading-type7-toggle-card-correct'
+                : ' reading-type7-toggle-card-incorrect';
+            } else if (c1Result.correctGap != null && userAnswer[c1Result.correctGap] !== key) {
+              cardCls += ' reading-type7-toggle-card-correct';
+            }
           } else if (assignedQ) {
             var assignedUa = userAnswer[assignedQ.number];
             if (assignedUa && assignedUa === assignedQ.correct) {
@@ -869,40 +911,50 @@
         html += '<div class="reading-type7-toggle-card-body">' + bodyHtml + '</div>';
         html += '<div class="reading-type7-toggle-card-actions">';
         html += '<span class="reading-type7-toggle-actions-label">Gap</span>';
-        questions.forEach(function(q) {
-          var qNum = q.number;
-          var selected = effectiveAnswer(qNum) === key;
-          var btnCls = 'reading-type7-toggle-gapbtn';
-          if (selected) btnCls += ' selected';
-          if (isChecked) {
-            if (viewAsCorrect) {
-              if (q.correct === key) {
-                btnCls += ' checked rt7-gapbtn-show-correct';
-              }
-            } else {
-              var gapUa = userAnswer[qNum];
-              if (!gapUa) {
+        if (c1CheckedFeedback) {
+          c1Result.badges.forEach(function(badge) {
+            var btnCls = 'reading-type7-toggle-gapbtn checked';
+            if (badge.selected) btnCls += ' selected';
+            btnCls += badge.outcome === 'correct' ? ' correct' : ' incorrect';
+            html += '<button type="button" class="' + btnCls + '" data-qnum="' + badge.qNum +
+              '" data-letter="' + escapeHtml(key) + '" disabled>' + badge.qNum + '</button>';
+          });
+        } else {
+          questions.forEach(function(q) {
+            var qNum = q.number;
+            var selected = effectiveAnswer(qNum) === key;
+            var btnCls = 'reading-type7-toggle-gapbtn';
+            if (selected) btnCls += ' selected';
+            if (isChecked) {
+              if (viewAsCorrect) {
                 if (q.correct === key) {
-                  btnCls += ' checked incorrect';
+                  btnCls += ' checked rt7-gapbtn-show-correct';
                 }
-              } else if (q.correct === key && gapUa !== q.correct) {
-                btnCls += ' checked correct';
-              } else if (selected && gapUa) {
-                btnCls += ' checked';
-                btnCls += gapUa === q.correct ? ' correct' : ' incorrect';
+              } else {
+                var gapUa = userAnswer[qNum];
+                if (!gapUa) {
+                  if (q.correct === key) {
+                    btnCls += ' checked incorrect';
+                  }
+                } else if (q.correct === key && gapUa !== q.correct) {
+                  btnCls += ' checked correct';
+                } else if (selected && gapUa) {
+                  btnCls += ' checked';
+                  btnCls += gapUa === q.correct ? ' correct' : ' incorrect';
+                }
               }
+            } else if (userAnswer[qNum] && userAnswer[qNum] !== key) {
+              btnCls += ' other-filled';
             }
-          } else if (userAnswer[qNum] && userAnswer[qNum] !== key) {
-            btnCls += ' other-filled';
-          }
-          var attrs = 'type="button" class="' + btnCls + '" data-qnum="' + qNum + '" data-letter="' + escapeHtml(key) + '"';
-          if (isChecked) {
-            attrs += ' disabled';
-          } else {
-            attrs += ' onclick="ReadingType7.handleSelect(' + qNum + ', \'' + key + '\')"';
-          }
-          html += '<button ' + attrs + '>' + qNum + '</button>';
-        });
+            var attrs = 'type="button" class="' + btnCls + '" data-qnum="' + qNum + '" data-letter="' + escapeHtml(key) + '"';
+            if (isChecked) {
+              attrs += ' disabled';
+            } else {
+              attrs += ' onclick="ReadingType7.handleSelect(' + qNum + ', \'' + key + '\')"';
+            }
+            html += '<button ' + attrs + '>' + qNum + '</button>';
+          });
+        }
         html += '</div></div>';
       });
       return html;
