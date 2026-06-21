@@ -132,11 +132,13 @@
             </div>
           </div>
           <div class="writing-type2-writing-section" id="writing-type2-writing-area" style="display:none;">
-            <textarea class="writing-type2-textarea writing-textarea"
-                      lang="en" spellcheck="true"
-                      placeholder="${WritingType2._escapeAttr(WritingType2._placeholderText())}"
-                      oninput="WritingType2.handleInput(this.value)"></textarea>
-            <div class="writing-corrected-text" id="writing-type2-corrected" style="display:none;"></div>
+            <div class="writing-area">
+              <textarea class="writing-type2-textarea writing-textarea"
+                        lang="en" spellcheck="true"
+                        placeholder="${WritingType2._escapeAttr(WritingType2._placeholderText())}"
+                        oninput="WritingType2.handleInput(this.value)"></textarea>
+              <div class="writing-corrected-text" id="writing-type2-corrected" style="display:none;"></div>
+            </div>
             <div class="writing-type2-toolbar">
               <div class="writing-type2-word-count">
                 <span id="writing-type2-count">0</span> words written
@@ -449,12 +451,7 @@
     },
 
     _formatSectionContent: function(text) {
-      return text
-        .replace(/^(Content|Communicative Achievement|Organisation|Language):/gm,
-          '<div class="writing-feedback-criterion-title"><i class="fas fa-angle-right"></i> <strong>$1</strong></div>')
-        .replace(/^• (.+)/gm, '<div class="writing-score-line">$1</div>')
-        .replace(/^- (.+)/gm, '<div class="writing-feedback-list-item"><i class="fas fa-chevron-right writing-feedback-list-icon"></i> $1</div>')
-        .replace(/\n/g, '<br>');
+      return WritingFeedback.formatSectionContent(text);
     },
 
     _getModelAnswer: function() {
@@ -491,7 +488,7 @@
       tabs.forEach((tab, i) => {
         const isIdeal = tab.id === 'ideal';
         const contentHtml = isIdeal
-          ? '<div class="writing-model-answer">' + this._formatPromptBodyHtml(tab.content) + '</div>'
+          ? '<div class="writing-ai-feedback writing-ideal-response">' + this._formatPromptBodyHtml(tab.content) + '</div>'
           : '<div class="writing-ai-feedback">' + this._formatSectionContent(tab.content) + '</div>';
         html += `<div class="writing-feedback-tab-panel${i === 0 ? ' active' : ''}" id="panel-${prefix}-${tab.id}">
           ${contentHtml}

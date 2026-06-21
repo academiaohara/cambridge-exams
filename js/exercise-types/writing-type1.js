@@ -112,6 +112,7 @@
           '<span class="writing-b1-ideal-note-ref" tabindex="0" aria-label="' +
           escapeAttr(ariaLabel) +
           '">' +
+          '<span class="writing-b1-ideal-note-num">' + self._escapeHtml(nid) + '</span>' +
           '<span class="writing-b1-ideal-note-ref__seg">' +
           escapeAndBr(m[2]) +
           '</span>' +
@@ -195,11 +196,13 @@
           <div class="writing-type1-prompt">
             ${promptInner}
           </div>
-          <textarea class="${textareaClass}"
-                    lang="en" spellcheck="true"
-                    placeholder="${placeholder}"
-                    oninput="WritingType1.handleInput(this.value)">${savedAnswer}</textarea>
-          <div class="writing-corrected-text" id="writing-type1-corrected" style="display:none;"></div>
+          <div class="writing-area">
+            <textarea class="${textareaClass}"
+                      lang="en" spellcheck="true"
+                      placeholder="${placeholder}"
+                      oninput="WritingType1.handleInput(this.value)">${savedAnswer}</textarea>
+            <div class="writing-corrected-text" id="writing-type1-corrected" style="display:none;"></div>
+          </div>
           <div class="writing-type1-toolbar">
             <div class="writing-type1-word-count">
               <span id="writing-type1-count">0</span> words written
@@ -506,12 +509,7 @@
     },
 
     _formatSectionContent: function(text) {
-      return text
-        .replace(/^(Content|Communicative Achievement|Organisation|Language):/gm,
-          '<div class="writing-feedback-criterion-title"><i class="fas fa-angle-right"></i> <strong>$1</strong></div>')
-        .replace(/^• (.+)/gm, '<div class="writing-score-line">$1</div>')
-        .replace(/^- (.+)/gm, '<div class="writing-feedback-list-item"><i class="fas fa-chevron-right writing-feedback-list-icon"></i> $1</div>')
-        .replace(/\n/g, '<br>');
+      return WritingFeedback.formatSectionContent(text);
     },
 
     _getModelAnswer: function() {
@@ -547,7 +545,7 @@
         const isIdeal = tab.id === 'ideal';
         const idealB1Email = isIdeal && this._isB1EmailTask(exercise);
         const contentHtml = isIdeal
-          ? '<div class="writing-model-answer">' + (idealB1Email
+          ? '<div class="writing-ai-feedback writing-ideal-response">' + (idealB1Email
             ? this._formatB1IdealModelAnswerHtml(tab.content, exercise.content.b1EmailTask.notes)
             : tab.content.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>')) + '</div>'
           : '<div class="writing-ai-feedback">' + this._formatSectionContent(tab.content) + '</div>';
