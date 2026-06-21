@@ -29,7 +29,7 @@
         }
 
         let html = `<span class="reading-type7-gap${inlineClass}" data-qnum="${qNum}"${inlineAttr}>`;
-        html += `<span class="reading-type7-gap-check-row"${!showCorrectOnly && !isCorrect && userAnswer ? ` data-correct="${question.correct}"` : ''}>`;
+        html += `<span class="reading-type7-gap-check-row">`;
         html += ReadingType7._renderCheckedPillHtml(pillClass, qNum, displayLetter);
         var hideRevealBtn = typeof Utils !== 'undefined' && Utils.isDuoGappedTextReading();
         if (!showCorrectOnly && !isCorrect && userAnswer && !hideRevealBtn) {
@@ -44,7 +44,7 @@
             ? 'reading-type7-answer-block rt7-show-correct'
             : 'reading-type7-answer-block ' + (isCorrect ? 'correct' : 'incorrect');
           html += `<span class="${blockClass}" data-qnum-block="${qNum}">`;
-          html += `<span class="reading-type7-para-text">${this._escapeHtml(this._stripBrackets(chosenText))}</span>`;
+          html += `<span class="reading-type7-para-text">${this._formatParaText(chosenText)}</span>`;
           html += `</span>`;
         }
         html += `</span>`;
@@ -60,7 +60,7 @@
             <span class="reading-type7-gap-num">${qNum}</span>
             <span class="reading-type7-gap-circle">${userAnswer || '?'}</span>
           </span>
-          ${userAnswer ? `<span class="reading-type7-selected-text">${this._escapeHtml(this._stripBrackets(paraText))}</span>` : ''}
+          ${userAnswer ? `<span class="reading-type7-selected-text">${this._formatParaText(paraText)}</span>` : ''}
         </span>
       `;
     },
@@ -130,7 +130,7 @@
       if (!isRevealed) {
         const correctText = paragraphs[question.correct] || '';
         block.className = 'reading-type7-answer-block rt7-show-correct';
-        block.innerHTML = `<span class="reading-type7-para-text">${ReadingType7._escapeHtml(ReadingType7._stripBrackets(correctText))}</span>`;
+        block.innerHTML = `<span class="reading-type7-para-text">${ReadingType7._formatParaText(correctText)}</span>`;
         btn.dataset.revealed = 'true';
         const icon = btn.querySelector('i');
         if (icon) icon.className = 'fas fa-eye-slash';
@@ -138,7 +138,7 @@
         const chosenText = userAnswer ? (paragraphs[userAnswer] || '') : '';
         block.className = 'reading-type7-answer-block incorrect';
         block.innerHTML = userAnswer
-          ? `<span class="reading-type7-para-text">${ReadingType7._escapeHtml(ReadingType7._stripBrackets(chosenText))}</span>`
+          ? `<span class="reading-type7-para-text">${ReadingType7._formatParaText(chosenText)}</span>`
           : `<span class="reading-type7-para-empty">—</span>`;
         btn.dataset.revealed = 'false';
         const icon = btn.querySelector('i');
@@ -199,143 +199,176 @@
         '</span>';
     },
 
-    applyExplanationMode: function() {
+    _formatParaText: function(text) {
+      var stripped = this._stripBrackets(text);
+      if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.formatReadingPassageText) {
+        return ExerciseRenderer.formatReadingPassageText(stripped);
+      }
+      return this._escapeHtml(stripped);
+    },
+
+    _applyGapExplanationMode: function(gap, q, paragraphs) {
+      var pill = gap.querySelector('.reading-type7-gap-pill');
+      if (pill) {
+        pill.dataset.origClass = pill.className;
+        pill.className = 'reading-type7-gap-pill rt7-pill-show-correct';
+        var letterEl = pill.querySelector('.reading-type7-gap-letter');
+        if (letterEl) {
+          letterEl.dataset.origText = letterEl.textContent;
+          letterEl.textContent = q.correct;
+        } else {
+          var circle = pill.querySelector('.reading-type7-gap-circle');
+          if (circle) {
+            circle.dataset.origText = circle.textContent;
+            circle.textContent = q.correct;
+          }
+        }
+      }
+
+      var correctText = paragraphs[q.correct] || '';
+      var paraBlock = gap.querySelector('.reading-type7-answer-block:not(.reading-type7-explanation-block)');
+      if (paraBlock) {
+        paraBlock.dataset.origClass = paraBlock.className;
+        paraBlock.dataset.origInner = paraBlock.innerHTML;
+        paraBlock.className = 'reading-type7-answer-block rt7-show-correct rt7-explanation';
+        paraBlock.style.display = '';
+        paraBlock.innerHTML = '<span class="reading-type7-para-text">' +
+          ExerciseRenderer.processEvidenceMarkers(ReadingType7._formatParaText(correctText)) + '</span>';
+      } else {
+        gap.querySelectorAll('.reading-type7-explanation-block').forEach(function(el) { el.remove(); });
+        var revealBtn = gap.querySelector('.reading-type7-reveal-btn');
+        if (revealBtn) revealBtn.style.display = 'none';
+        var explanationBlock = document.createElement('span');
+        explanationBlock.className = 'reading-type7-answer-block reading-type7-explanation-block rt7-explanation';
+        explanationBlock.innerHTML = '<span class="reading-type7-para-text">' +
+          ExerciseRenderer.processEvidenceMarkers(ReadingType7._formatParaText(correctText)) + '</span>';
+        gap.appendChild(explanationBlock);
+      }
+    },
+
+    _applyParagraphToggleExplanationMode: function() {
+      var el = document.getElementById('reading-type7-paragraph-toggle');
+      if (!el || el.dataset.rt7ExplMode === '1') return;
+      el.dataset.rt7ExplMode = '1';
+      el.classList.add('explanation-mode-text');
+
       var questions = AppState.currentExercise.content.questions || [];
       var paragraphs = AppState.currentExercise.content.paragraphs || {};
-      var answers = AppState.currentExercise.answers || {};
-      var isB1R4 = ReadingType7._isB1GappedText();
-
+      var correctByLetter = {};
       questions.forEach(function(q) {
-        var userAnswer = answers[q.number];
-        var viewCorrect = typeof AppState !== 'undefined' && AppState.answerViewMode === 'correct';
-        var isCorrect = viewCorrect ? true : (userAnswer === q.correct);
-        var gap = document.querySelector('.reading-type7-gap[data-qnum="' + q.number + '"]');
-        if (!gap || gap.dataset.rt7ExplMode === '1') return;
-        gap.dataset.rt7ExplMode = '1';
+        if (q.correct) correctByLetter[q.correct] = q;
+      });
 
-        if (isB1R4) {
-          var pill = gap.querySelector('.reading-type7-gap-pill');
-          if (pill) {
-            pill.dataset.origClass = pill.className;
-            pill.className = 'reading-type7-gap-pill rt7-pill-show-correct';
-            var letterEl = pill.querySelector('.reading-type7-gap-letter');
-            if (letterEl) {
-              letterEl.dataset.origText = letterEl.textContent;
-              letterEl.textContent = q.correct;
-            } else {
-              var circle = pill.querySelector('.reading-type7-gap-circle');
-              if (circle) {
-                circle.dataset.origText = circle.textContent;
-                circle.textContent = q.correct;
-              }
-            }
-          }
+      el.querySelectorAll('.reading-type7-toggle-card').forEach(function(card) {
+        var letter = card.getAttribute('data-letter');
+        var q = correctByLetter[letter];
+        if (!q) return;
 
-          var correctText = paragraphs[q.correct] || '';
-          var paraBlock = gap.querySelector('.reading-type7-answer-block:not(.reading-type7-explanation-block)');
-          if (paraBlock) {
-            paraBlock.dataset.origClass = paraBlock.className;
-            paraBlock.dataset.origInner = paraBlock.innerHTML;
-            paraBlock.className = 'reading-type7-answer-block rt7-show-correct rt7-explanation';
-            paraBlock.innerHTML = '<span class="reading-type7-para-text">' +
-              ExerciseRenderer.processEvidenceMarkers(correctText) + '</span>';
-          }
-          return;
+        card.dataset.rt7ExplOrigClass = card.className;
+        card.className = card.className
+          .replace(/\s*reading-type7-toggle-card-(correct|incorrect|unused)\b/g, '')
+          .replace(/\s*reading-type7-toggle-card-show-correct\b/g, '')
+          .trim() + ' reading-type7-toggle-card-show-correct';
+
+        var body = card.querySelector('.reading-type7-toggle-card-body');
+        if (body) {
+          body.dataset.rt7ExplOrigInner = body.innerHTML;
+          var raw = paragraphs[letter] || '';
+          body.innerHTML = ExerciseRenderer.processEvidenceMarkers(
+            ReadingType7._formatParaText(raw).replace(/\n/g, '<br>')
+          );
         }
 
-        var circle = gap.querySelector('.reading-type7-gap-circle');
-        if (circle) {
-          circle.dataset.origText = circle.textContent;
-          circle.dataset.origStyle = circle.getAttribute('style') || '';
-          circle.textContent = q.correct;
-          circle.style.color = 'var(--ex-duo-purple-dark, #a855f7)';
-        }
-
-        if (isCorrect) {
-          var correctBlock = gap.querySelector('.reading-type7-answer-block');
-          if (correctBlock) correctBlock.classList.add('rt7-explanation');
-        } else {
-          var incorrectBlock = gap.querySelector('.reading-type7-answer-block.incorrect');
-          if (incorrectBlock) incorrectBlock.style.display = 'none';
-          var revealBtn = gap.querySelector('.reading-type7-reveal-btn');
-          if (revealBtn) revealBtn.style.display = 'none';
-
-          var explText = paragraphs[q.correct] || '';
-          var explanationBlock = document.createElement('span');
-          explanationBlock.className = 'reading-type7-answer-block reading-type7-explanation-block';
-          explanationBlock.innerHTML = '<span class="reading-type7-para-text">' +
-            ExerciseRenderer.processEvidenceMarkers(explText) + '</span>';
-          gap.appendChild(explanationBlock);
+        var btn = card.querySelector('.reading-type7-toggle-gapbtn[data-qnum="' + q.number + '"]');
+        if (btn) {
+          btn.dataset.rt7ExplOrigClass = btn.className;
+          btn.className = 'reading-type7-toggle-gapbtn checked rt7-gapbtn-show-correct';
         }
       });
     },
 
-    removeExplanationMode: function() {
+    _removeParagraphToggleExplanationMode: function() {
+      var el = document.getElementById('reading-type7-paragraph-toggle');
+      if (!el || el.dataset.rt7ExplMode !== '1') return;
+      delete el.dataset.rt7ExplMode;
+      el.classList.remove('explanation-mode-text');
+
+      el.querySelectorAll('.reading-type7-toggle-card').forEach(function(card) {
+        if (card.dataset.rt7ExplOrigClass) {
+          card.className = card.dataset.rt7ExplOrigClass;
+          delete card.dataset.rt7ExplOrigClass;
+        }
+        var body = card.querySelector('.reading-type7-toggle-card-body');
+        if (body && body.dataset.rt7ExplOrigInner) {
+          body.innerHTML = body.dataset.rt7ExplOrigInner;
+          delete body.dataset.rt7ExplOrigInner;
+        }
+      });
+
+      el.querySelectorAll('.reading-type7-toggle-gapbtn').forEach(function(btn) {
+        if (btn.dataset.rt7ExplOrigClass) {
+          btn.className = btn.dataset.rt7ExplOrigClass;
+          delete btn.dataset.rt7ExplOrigClass;
+        }
+      });
+    },
+
+    applyExplanationMode: function() {
       var questions = AppState.currentExercise.content.questions || [];
-      var answers = AppState.currentExercise.answers || {};
-      var isB1R4 = ReadingType7._isB1GappedText();
+      var paragraphs = AppState.currentExercise.content.paragraphs || {};
 
       questions.forEach(function(q) {
-        var userAnswer = answers[q.number];
-        var viewCorrect = typeof AppState !== 'undefined' && AppState.answerViewMode === 'correct';
-        var isCorrect = viewCorrect ? true : (userAnswer === q.correct);
+        var gap = document.querySelector('.reading-type7-gap[data-qnum="' + q.number + '"]');
+        if (!gap || gap.dataset.rt7ExplMode === '1') return;
+        gap.dataset.rt7ExplMode = '1';
+        ReadingType7._applyGapExplanationMode(gap, q, paragraphs);
+      });
+
+      ReadingType7._applyParagraphToggleExplanationMode();
+    },
+
+    removeExplanationMode: function() {
+      var questions = AppState.currentExercise.content.questions || [];
+
+      questions.forEach(function(q) {
         var gap = document.querySelector('.reading-type7-gap[data-qnum="' + q.number + '"]');
         if (!gap || gap.dataset.rt7ExplMode !== '1') return;
         delete gap.dataset.rt7ExplMode;
 
-        if (isB1R4) {
-          var pill = gap.querySelector('.reading-type7-gap-pill');
-          if (pill && pill.dataset.origClass) {
-            pill.className = pill.dataset.origClass;
-            delete pill.dataset.origClass;
-            var letterEl = pill.querySelector('.reading-type7-gap-letter');
-            if (letterEl && letterEl.dataset.origText != null) {
-              letterEl.textContent = letterEl.dataset.origText;
-              delete letterEl.dataset.origText;
-            }
-          }
-
-          var paraBlock = gap.querySelector('.reading-type7-answer-block:not(.reading-type7-explanation-block)');
-          if (paraBlock && paraBlock.dataset.origClass) {
-            paraBlock.className = paraBlock.dataset.origClass;
-            if (paraBlock.dataset.origInner) {
-              paraBlock.innerHTML = paraBlock.dataset.origInner;
-            }
-            delete paraBlock.dataset.origClass;
-            delete paraBlock.dataset.origInner;
-          }
-          gap.querySelectorAll('.reading-type7-explanation-block').forEach(function(el) {
-            el.remove();
-          });
-          return;
-        }
-
-        var circle = gap.querySelector('.reading-type7-gap-circle');
-        if (circle && Object.prototype.hasOwnProperty.call(circle.dataset, 'origText')) {
-          circle.textContent = circle.dataset.origText;
-          var origStyle = circle.dataset.origStyle;
-          if (origStyle) {
-            circle.setAttribute('style', origStyle);
+        var pill = gap.querySelector('.reading-type7-gap-pill');
+        if (pill && pill.dataset.origClass) {
+          pill.className = pill.dataset.origClass;
+          delete pill.dataset.origClass;
+          var letterEl = pill.querySelector('.reading-type7-gap-letter');
+          if (letterEl && letterEl.dataset.origText != null) {
+            letterEl.textContent = letterEl.dataset.origText;
+            delete letterEl.dataset.origText;
           } else {
-            circle.removeAttribute('style');
+            var circle = pill.querySelector('.reading-type7-gap-circle');
+            if (circle && circle.dataset.origText != null) {
+              circle.textContent = circle.dataset.origText;
+              delete circle.dataset.origText;
+            }
           }
-          delete circle.dataset.origText;
-          delete circle.dataset.origStyle;
         }
 
-        if (isCorrect) {
-          var correctBlock = gap.querySelector('.reading-type7-answer-block');
-          if (correctBlock) correctBlock.classList.remove('rt7-explanation');
-        } else {
-          gap.querySelectorAll('.reading-type7-explanation-block').forEach(function(el) {
-            el.remove();
-          });
-          var incorrectBlock = gap.querySelector('.reading-type7-answer-block.incorrect');
-          if (incorrectBlock) incorrectBlock.style.display = '';
-          var revealBtn = gap.querySelector('.reading-type7-reveal-btn');
-          if (revealBtn) revealBtn.style.display = '';
+        var paraBlock = gap.querySelector('.reading-type7-answer-block:not(.reading-type7-explanation-block)');
+        if (paraBlock && paraBlock.dataset.origClass) {
+          paraBlock.className = paraBlock.dataset.origClass;
+          if (paraBlock.dataset.origInner) {
+            paraBlock.innerHTML = paraBlock.dataset.origInner;
+          }
+          delete paraBlock.dataset.origClass;
+          delete paraBlock.dataset.origInner;
         }
+        gap.querySelectorAll('.reading-type7-explanation-block').forEach(function(el) {
+          el.remove();
+        });
+        var revealBtn = gap.querySelector('.reading-type7-reveal-btn');
+        if (revealBtn) revealBtn.style.display = '';
       });
+
+      ReadingType7._removeParagraphToggleExplanationMode();
     },
 
     checkAnswers: function() {

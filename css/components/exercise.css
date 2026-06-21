@@ -2860,7 +2860,6 @@ body:has(.dashboard-layout--exercise) #main-content {
 .dashboard-layout--exercise .reading-type2-gap.incorrect::after,
 .dashboard-layout--exercise .reading-type3-gap-inline.incorrect::after,
 .dashboard-layout--exercise .reading-type4-inline-wrap.incorrect::after,
-.dashboard-layout--exercise .reading-type7-gap-check-row[data-correct]::after,
 .dashboard-layout--exercise .listening-type2-gap.incorrect::after {
   background: #fff !important;
   color: var(--ex-duo-text, #4b4b4b) !important;
