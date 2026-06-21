@@ -448,6 +448,17 @@
       }
     },
     
+    /** *word* / **word** in reading passages → bold (Cambridge-style emphasis in JSON). */
+    formatReadingEmphasis: function(text) {
+      return String(text || '')
+        .replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*([^*]+?)\*/g, '<strong>$1</strong>');
+    },
+
+    formatReadingPassageText: function(text) {
+      return this.formatReadingEmphasis(this._escapeHtmlAttr(text));
+    },
+
     /** [n]...[/n] evidence: plain inner text; styled phrase only under .explanation-mode-text (no bracket labels). */
     processEvidenceMarkers: function(text) {
       return String(text || '').replace(/\[(\d+)\]([\s\S]*?)\[\/\1\]/g, function(_, n, inner) {
@@ -479,7 +490,7 @@
             typeof Utils !== 'undefined' && Utils.isDuoInlineMcClozeReading())
         );
         
-        let paraProcessed = para;
+        let paraProcessed = this.formatReadingPassageText(para);
         
         gapNumbers.forEach(qNum => {
           const question = exercise.content.questions?.find(q => q.number === qNum);
@@ -820,20 +831,30 @@
       var html = '';
       keys.forEach(function(key) {
         var raw = paragraphs[key] || '';
-        var bodyHtml = escapeHtml(ReadingType7._stripBrackets(raw)).replace(/\n/g, '<br>');
+        var stripped = ReadingType7._stripBrackets(raw);
+        var bodyHtml = typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.formatReadingPassageText
+          ? ExerciseRenderer.formatReadingPassageText(stripped).replace(/\n/g, '<br>')
+          : escapeHtml(stripped).replace(/\n/g, '<br>');
         var cardCls = 'reading-type7-toggle-card';
+        var correctForQ = questions.find(function(q) { return q.correct === key; });
         var assignedQ = null;
         questions.forEach(function(q) {
           if (effectiveAnswer(q.number) === key) assignedQ = q;
         });
         if (isChecked) {
-          if (assignedQ) {
-            if (viewAsCorrect) {
-              cardCls += ' reading-type7-toggle-card-show-correct';
-            } else {
-              cardCls += userAnswer[assignedQ.number] === assignedQ.correct
-                ? ' reading-type7-toggle-card-correct'
-                : ' reading-type7-toggle-card-incorrect';
+          if (viewAsCorrect) {
+            if (correctForQ) cardCls += ' reading-type7-toggle-card-show-correct';
+          } else if (assignedQ) {
+            var assignedUa = userAnswer[assignedQ.number];
+            if (assignedUa && assignedUa === assignedQ.correct) {
+              cardCls += ' reading-type7-toggle-card-correct';
+            } else if (assignedUa) {
+              cardCls += ' reading-type7-toggle-card-incorrect';
+            }
+          } else if (correctForQ) {
+            var correctUa = userAnswer[correctForQ.number];
+            if (!correctUa || correctUa !== correctForQ.correct) {
+              cardCls += ' reading-type7-toggle-card-correct';
             }
           } else {
             cardCls += ' reading-type7-toggle-card-unused';
@@ -853,12 +874,17 @@
           if (selected) btnCls += ' selected';
           if (isChecked) {
             if (viewAsCorrect) {
-              if (selected && effectiveAnswer(qNum)) {
+              if (q.correct === key) {
                 btnCls += ' checked rt7-gapbtn-show-correct';
               }
-            } else if (selected && userAnswer[qNum]) {
-              btnCls += ' checked';
-              btnCls += userAnswer[qNum] === q.correct ? ' correct' : ' incorrect';
+            } else {
+              var gapUa = userAnswer[qNum];
+              if (q.correct === key && (!gapUa || gapUa !== q.correct)) {
+                btnCls += ' checked correct';
+              } else if (selected && gapUa) {
+                btnCls += ' checked';
+                btnCls += gapUa === q.correct ? ' correct' : ' incorrect';
+              }
             }
           } else if (userAnswer[qNum] && userAnswer[qNum] !== key) {
             btnCls += ' other-filled';
