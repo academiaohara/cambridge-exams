@@ -14,7 +14,7 @@
       "voices": {
         "julia": "en-GB-LibbyNeural"
       },
-      "audio_script": "Good morning. My name is Dr. Julia Vance. I’ve spent the last decade working at the intersection of medicine and technology. Artificial Intelligence is no longer a futuristic concept; it’s a tool we use every day to save lives. [7]I first realized the potential of AI after seeing a demonstration of an automated diagnostic tool[/7] that could identify skin cancer with 99% accuracy. It was a game-changer. One of the most significant benefits is speed. [8]AI can analyze thousands of medical images in a fraction of the time a human doctor would take[/8], allowing for much earlier interventions. However, the technology is not without its controversies. [9]I found that the most common concern among patients was the issue of data privacy[/9]. People are naturally worried about who has access to their sensitive health information. We have to be incredibly transparent about how we use and protect this data. Regarding the implementation, it's not just about software. [10]We are currently testing a series of robotic surgical arms that can perform complex procedures with unmatched precision[/10]. It’s fascinating to watch. My daily routine has changed significantly. [11]The unexpected challenge of my current role is the amount of time I spend in legal meetings[/11] discussing ethics and regulations. It’s a side of the job I didn't anticipate. Despite the complexity, the results are worth it. [12]Observing the successful recovery of our first patient treated using an AI-guided plan was truly moving[/12]. It validated years of hard work. Looking to the future, [13]I believe that personalized medicine is the ultimate goal of AI in healthcare[/13]. Every treatment will be tailored to the individual's genetic code. As we often say in the lab, [14]we are not replacing doctors, we are 'empowering healers' with the best possible data[/14]. It’s an exciting time to be in medicine.",
+      "audio_script": "Good morning. My name is Dr. Julia Vance. I’ve spent the last decade working at the intersection of medicine and technology. Artificial Intelligence is no longer a futuristic concept; it’s a tool we use every day to save lives. automated diagnostic [7]tool[/7] that could identify skin cancer with 99% accuracy. It was a game-changer. One of the most significant benefits is speed. [8]AI can analyze thousands of medical images in a fraction of the time a human doctor would take[/8], allowing for much earlier interventions. However, the technology is not without its controversies. [9]I found that the most common concern among patients was the issue of data privacy[/9]. People are naturally worried about who has access to their sensitive health information. We have to be incredibly transparent about how we use and protect this data. Regarding the implementation, it's not just about software. robotic surgical [10]arms[/10]. It’s fascinating to watch. My daily routine has changed significantly. [11]The unexpected challenge of my current role is the amount of time I spend in legal meetings[/11] discussing ethics and regulations. It’s a side of the job I didn't anticipate. Despite the complexity, the results are worth it. [12]Observing the successful recovery of our first patient treated using an AI-guided plan was truly moving[/12]. It validated years of hard work. Looking to the future, [13]I believe that personalized medicine is the ultimate goal of AI in healthcare[/13]. Every treatment will be tailored to the individual's genetic code. As we often say in the lab, [14]we are not replacing doctors, we are 'empowering healers' with the best possible data[/14]. It’s an exciting time to be in medicine.",
       "dialogue": [
         {
           "speaker": "julia",
@@ -24,8 +24,8 @@
       "questions": [
         {
           "number": 7,
-          "question": "Julia’s interest in AI was triggered by a presentation of an (7) .",
-          "answer": "automated diagnostic tool",
+          "question": "Julia’s interest in AI was triggered by a presentation of an automated diagnostic (7) .",
+          "answer": "tool",
           "explanation": "She mentions a demonstration of an automated diagnostic tool for skin cancer."
         },
         {
@@ -42,8 +42,8 @@
         },
         {
           "number": 10,
-          "question": "The hospital is currently experimenting with (10) as a way to improve surgery.",
-          "answer": "robotic surgical arms",
+          "question": "The hospital is currently experimenting with robotic surgical (10) as a way to improve surgery.",
+          "answer": "arms",
           "explanation": "They are testing robotic surgical arms that perform procedures with precision."
         },
         {
