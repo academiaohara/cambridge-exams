@@ -375,6 +375,15 @@
       return AppState.currentLevel === 'B2' || AppState.currentLevel === 'C1';
     },
 
+    isB1ListeningSentenceCompletion: function() {
+      if (!this.isDuoListeningSentenceCompletion()) return false;
+      return AppState.currentLevel === 'B1' && AppState.currentPart === 3;
+    },
+
+    usesListeningType2ExplanationMode: function() {
+      return this.isC1ListeningSentenceCompletion() || this.isB1ListeningSentenceCompletion();
+    },
+
     isC1ListeningDualMatching: function() {
       if (!this.isDuoListeningSection() || typeof AppState === 'undefined') return false;
       if (AppState.currentLevel !== 'C1' || AppState.currentPart !== 4) return false;

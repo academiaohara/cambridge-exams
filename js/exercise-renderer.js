@@ -1110,6 +1110,24 @@
       if (typeof AppState !== 'undefined' && AppState.explanationMode &&
           typeof Utils !== 'undefined' && AppState.currentExercise &&
           Utils.hasDuoMatchingUi(AppState.currentExercise) &&
+          Utils.usesDuoMatchingSwappedLayout(AppState.currentExercise) &&
+          typeof ExerciseHandlers !== 'undefined') {
+        var swappedTextContainer = document.getElementById('selectable-text');
+        if (swappedTextContainer) {
+          swappedTextContainer.classList.toggle('explanation-mode-questions-view', view === 'questions');
+        }
+        if (view === 'text' && AppState.explanationActiveQuestion != null &&
+            ExerciseHandlers._updateExplanationActiveQuestion) {
+          ExerciseHandlers._updateExplanationActiveQuestion(AppState.explanationActiveQuestion);
+        } else if (view === 'questions' && AppState.explanationActiveQuestion != null &&
+            ExerciseHandlers._updateExplanationActiveQuestion) {
+          ExerciseHandlers._clearEvidenceHighlights();
+          ExerciseHandlers._updateExplanationActiveQuestion(AppState.explanationActiveQuestion);
+          ExerciseHandlers._applyEvidenceHighlight(AppState.explanationActiveQuestion);
+        }
+      } else if (typeof AppState !== 'undefined' && AppState.explanationMode &&
+          typeof Utils !== 'undefined' && AppState.currentExercise &&
+          Utils.hasDuoMatchingUi(AppState.currentExercise) &&
           !Utils.usesDuoMatchingSwappedLayout(AppState.currentExercise) &&
           typeof ExerciseHandlers !== 'undefined') {
         var textContainer = document.getElementById('selectable-text');

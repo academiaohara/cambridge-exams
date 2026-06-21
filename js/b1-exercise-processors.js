@@ -637,6 +637,7 @@
     }
     ex.content = base;
     mergeDescription(ex);
+    ex._b1PetHideAnswerToggle = true;
   }
 
   function listeningNestedContent(ex, part) {
