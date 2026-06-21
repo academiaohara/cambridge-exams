@@ -689,6 +689,42 @@ textarea.reading-type4-inline-input.reading-type4-inline-textarea {
   color: #5b21b6;
 }
 
+/* Alt-solution cycle badge — Duolingo pill (show-correct mode, multiple routes) */
+.c1-reading4 .reading-type4-inline-wrap .cu-alt-badge {
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: #fff;
+  background: var(--ex-duo-purple, #ce82ff);
+  border: 2px solid var(--ex-duo-purple-dark, #a855f7);
+  border-radius: 10px;
+  padding: 2px 8px;
+  margin: 0 0 0 4px;
+  line-height: 1.35;
+  box-shadow: 0 2px 0 var(--ex-duo-purple-dark, #a855f7);
+  transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
+}
+
+.c1-reading4 .reading-type4-inline-wrap .cu-alt-badge::before {
+  content: '↻';
+  margin-right: 3px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.c1-reading4 .reading-type4-inline-wrap .cu-alt-badge:hover {
+  background: #d8a0ff;
+  border-color: var(--ex-duo-purple-dark, #a855f7);
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 var(--ex-duo-purple-dark, #a855f7);
+}
+
+.c1-reading4 .reading-type4-inline-wrap .cu-alt-badge:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
 .c1-reading4 .reading-type4-show-all-btn {
   background: var(--ex-duo-orange, #ff9600);
   border: 2px solid var(--ex-duo-orange-dark, #e08600);
@@ -745,5 +781,12 @@ textarea.reading-type4-inline-input.reading-type4-inline-textarea {
   .c1-reading4 .reading-type4-question {
     padding: 14px 16px;
     border-radius: 14px;
+  }
+
+  .c1-reading4 .reading-type4-inline-wrap .cu-alt-badge {
+    font-size: 0.62rem;
+    padding: 1px 6px;
+    border-radius: 8px;
+    margin-left: 2px;
   }
 }
