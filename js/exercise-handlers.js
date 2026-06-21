@@ -371,7 +371,15 @@
 
         // Apply explanation mode paragraph styling
         const textContainer = document.getElementById('selectable-text');
-        if (textContainer) textContainer.classList.add('explanation-mode-text');
+        if (textContainer) {
+          textContainer.classList.add('explanation-mode-text');
+          if (AppState.currentExercise && typeof Utils !== 'undefined' &&
+              Utils.hasDuoMatchingUi(AppState.currentExercise)) {
+            var solutionInQuestions = !Utils.usesDuoMatchingSwappedLayout(AppState.currentExercise);
+            textContainer.classList.toggle('duo-solution-in-questions', solutionInQuestions);
+            textContainer.classList.toggle('duo-solution-in-text', !solutionInQuestions);
+          }
+        }
 
         if (AppState.currentExercise && typeof Utils !== 'undefined' &&
             Utils.hasDuoMatchingUi(AppState.currentExercise)) {
@@ -390,6 +398,10 @@
           });
           if (typeof ReadingType8 !== 'undefined' && ReadingType8.initB1Reading2StripIfNeeded) {
             ReadingType8.initB1Reading2StripIfNeeded();
+          }
+          if (typeof Utils !== 'undefined' && Utils.isDuoCrossTextReading() &&
+              typeof ReadingType6 !== 'undefined' && ReadingType6.applyExplanationMode) {
+            ReadingType6.applyExplanationMode();
           }
         }
 
@@ -447,6 +459,9 @@
           if (typeof ReadingType8 !== 'undefined' && ReadingType8.initB1Reading2StripIfNeeded) {
             ReadingType8.initB1Reading2StripIfNeeded();
           }
+          if (typeof ReadingType6 !== 'undefined' && ReadingType6.removeExplanationMode) {
+            ReadingType6.removeExplanationMode();
+          }
         }
 
         if (AppState.currentExercise && typeof Utils !== 'undefined' &&
@@ -466,7 +481,12 @@
 
         // Remove explanation mode paragraph styling
         const textContainer = document.getElementById('selectable-text');
-        if (textContainer) textContainer.classList.remove('explanation-mode-text');
+        if (textContainer) {
+          textContainer.classList.remove('explanation-mode-text');
+          textContainer.classList.remove('explanation-mode-questions-view');
+          textContainer.classList.remove('duo-solution-in-questions');
+          textContainer.classList.remove('duo-solution-in-text');
+        }
 
         document.querySelectorAll('.evidence-wrap.evidence-active-q').forEach(function(wrap) {
           wrap.classList.remove('evidence-active-q');
@@ -525,7 +545,41 @@
       AppState.explanationActiveQuestion = qNum;
       this._clearEvidenceHighlights();
       this._updateExplanationActiveQuestion(qNum);
-      this._applyEvidenceHighlight(qNum);
+      if (!this._isDuoMatchingExplanationQuestionsView()) {
+        this._applyEvidenceHighlight(qNum);
+      }
+    },
+
+    _isDuoMatchingExplanationQuestionsView: function() {
+      if (!AppState.explanationMode) return false;
+      if (!AppState.currentExercise || typeof Utils === 'undefined' ||
+          !Utils.hasDuoMatchingUi(AppState.currentExercise) ||
+          Utils.usesDuoMatchingSwappedLayout(AppState.currentExercise)) {
+        return false;
+      }
+      var questionsSection = document.getElementById('toggle-questions-section');
+      return !!(questionsSection && questionsSection.style.display !== 'none');
+    },
+
+    syncDuoMatchingQuestionsExplanationView: function() {
+      var qDisplay = document.getElementById('explanation-question-display');
+      if (qDisplay) qDisplay.style.display = 'none';
+
+      this._clearEvidenceHighlights();
+      document.querySelectorAll('.evidence-wrap.evidence-active-q').forEach(function(wrap) {
+        wrap.classList.remove('evidence-active-q');
+      });
+
+      document.querySelectorAll('.b1-reading2-solution-expl[data-qnum], .c1-reading6-solution-expl[data-qnum]').forEach(function(block) {
+        var qn = block.getAttribute('data-qnum');
+        if (!qn) return;
+        block.querySelectorAll('.evidence-wrap[data-qnum="' + qn + '"]').forEach(function(wrap) {
+          wrap.classList.add('evidence-active-q');
+        });
+        block.querySelectorAll('.evidence-marker[data-qnum="' + qn + '"]').forEach(function(marker) {
+          marker.classList.add('evidence-active');
+        });
+      });
     },
 
     _getAllQuestions: function() {
@@ -562,8 +616,6 @@
       var cell = document.querySelector('.question-nav-cell[data-qnum="' + qNum + '"]');
       if (cell) cell.classList.add('explanation-active');
 
-      this._syncEvidenceActiveQuestionWraps(qNum);
-
       // Update explanation panel cards
       document.querySelectorAll('.explanation-card.explanation-active').forEach(function(card) {
         card.classList.remove('explanation-active');
@@ -572,6 +624,13 @@
       if (card) {
         card.classList.add('explanation-active');
       }
+
+      if (this._isDuoMatchingExplanationQuestionsView()) {
+        this.syncDuoMatchingQuestionsExplanationView();
+        return;
+      }
+
+      this._syncEvidenceActiveQuestionWraps(qNum);
 
       if (typeof Utils !== 'undefined' && Utils.isC1ListeningDualMatching() &&
           typeof ListeningType4 !== 'undefined' && ListeningType4.syncExplanationActiveQuestion) {
@@ -644,7 +703,8 @@
             AppState.currentLevel === 'B1' &&
             AppState.currentPart === 3) ||
           (AppState.currentSection === 'reading' && AppState.currentExercise &&
-            typeof Utils !== 'undefined' && Utils.hasDuoMatchingUi(AppState.currentExercise))) {
+            typeof Utils !== 'undefined' && Utils.hasDuoMatchingUi(AppState.currentExercise) &&
+            !this._isDuoMatchingExplanationQuestionsView())) {
         qDisplay.classList.add('sticky-mode');
       } else {
         qDisplay.classList.remove('sticky-mode');
@@ -801,7 +861,12 @@
       if (navRow) navRow.classList.remove('explanation-mode');
 
       const textContainer = document.getElementById('selectable-text');
-      if (textContainer) textContainer.classList.remove('explanation-mode-text');
+      if (textContainer) {
+        textContainer.classList.remove('explanation-mode-text');
+        textContainer.classList.remove('explanation-mode-questions-view');
+        textContainer.classList.remove('duo-solution-in-questions');
+        textContainer.classList.remove('duo-solution-in-text');
+      }
 
       document.querySelectorAll('.evidence-wrap.evidence-active-q').forEach(function(wrap) {
         wrap.classList.remove('evidence-active-q');
@@ -826,6 +891,10 @@
       const partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
       if (partConfig && partConfig.type === 'gapped-text' && typeof ReadingType7 !== 'undefined') {
         ReadingType7.removeExplanationMode();
+      }
+
+      if (typeof ReadingType6 !== 'undefined' && ReadingType6.removeExplanationMode) {
+        ReadingType6.removeExplanationMode();
       }
 
       if (AppState.currentSection === 'listening') {
