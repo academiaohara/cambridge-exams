@@ -75,11 +75,24 @@
         try { localStorage.setItem('preferred_level', profile.preferred_level); } catch (e) {}
       }
       if (profile.preferred_mode) {
-        AppState.currentMode = profile.preferred_mode;
-        try { localStorage.setItem('preferred_mode', profile.preferred_mode); } catch (e) {}
+        this.setPreferredMode(profile.preferred_mode);
       }
       if (profile.preferred_language) {
         try { localStorage.setItem('preferred_language', profile.preferred_language); } catch (e) {}
+      }
+    },
+
+    setPreferredMode: function (mode) {
+      if (mode !== 'practice' && mode !== 'exam') return;
+      AppState.currentMode = mode;
+      try { localStorage.setItem('preferred_mode', mode); } catch (e) {}
+      if (this._profile) this._profile.preferred_mode = mode;
+    },
+
+    persistPreferredMode: function (mode) {
+      this.setPreferredMode(mode);
+      if (typeof Auth !== 'undefined' && Auth.getUser && Auth.getUser()) {
+        this.updateProfile({ preferred_mode: mode });
       }
     },
 
