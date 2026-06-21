@@ -408,7 +408,7 @@
         ? ' · ' + Math.round(weak.ratio * 100) + '%'
         : '';
 
-      return '<div class="bento-card bento-card-weakspot" onclick="Exercise.openPart(\'' + this._escapeHTML(weak.examId) + '\', \'' + weak.section + '\', ' + (weak.part || 1) + ')">' +
+      return '<div class="bento-card bento-card-weakspot" onclick="Exercise.openPart(\'' + this._escapeHTML(weak.examId) + '\', \'' + weak.section + '\', ' + (weak.part || 1) + ', \'practice\')">' +
         '<div class="bento-hover-overlay"></div>' +
         '<div class="bento-card-inner">' +
           '<div class="bento-card-title">Weak Spot</div>' +
@@ -506,8 +506,9 @@
     _renderNextLesson: function(lesson) {
       var completedParts = lesson.completedParts || 0;
       var totalParts = lesson.totalParts || 1;
+      var lessonMode = lesson.mode || 'practice';
 
-      return '<div class="bento-card bento-card-checkpoint" onclick="Exercise.openPart(\'' + this._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ')">' +
+      return '<div class="bento-card bento-card-checkpoint" onclick="Exercise.openPart(\'' + this._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ', \'' + lessonMode + '\')">' +
         '<div class="bento-hover-overlay"></div>' +
         '<div class="bento-card-inner">' +
           '<div class="bento-card-title">Checkpoint</div>' +
@@ -557,10 +558,15 @@
           if (!sectionData) continue;
           var inProgress = sectionData.inProgress || [];
           if (inProgress.length > 0) {
+            var partNum = inProgress[0];
+            var storedMode = (typeof Exercise !== 'undefined' && Exercise.detectPartMode)
+              ? Exercise.detectPartMode(exam.id, sec, partNum, AppState.currentLevel)
+              : 'practice';
             return {
               examId: exam.id,
               section: sec,
-              part: inProgress[0],
+              part: partNum,
+              mode: storedMode,
               completedParts: (sectionData.completed || []).length,
               totalParts: sectionData.total || 1
             };
@@ -1754,8 +1760,9 @@
       var completedParts = lesson.completedParts || 0;
       var totalParts = lesson.totalParts || 1;
       var pct = Math.round((completedParts / totalParts) * 100);
+      var lessonMode = lesson.mode || 'practice';
       var self = this;
-      return '<div class="sidebar-widget-duo sw-next-exam" onclick="Exercise.openPart(\'' + self._escapeHTML(lesson.examId) + '\', \'' + self._escapeHTML(lesson.section) + '\', ' + parseInt(lesson.part, 10) + ')" style="cursor:pointer">' +
+      return '<div class="sidebar-widget-duo sw-next-exam" onclick="Exercise.openPart(\'' + self._escapeHTML(lesson.examId) + '\', \'' + self._escapeHTML(lesson.section) + '\', ' + parseInt(lesson.part, 10) + ', \'' + lessonMode + '\')" style="cursor:pointer">' +
         '<div class="sw-duo-header">' +
           '<span class="sw-duo-title">' + 'Next Exam' + '</span>' +
           '<span class="sw-duo-link">CONTINUE</span>' +
@@ -1983,8 +1990,9 @@
       var totalParts = lesson.totalParts || 1;
       var sectionIcon = { reading: 'menu_book', listening: 'headphones', writing: 'edit_note', speaking: 'record_voice_over' };
       var icon = sectionIcon[lesson.section] || 'auto_stories';
+      var lessonMode = lesson.mode || 'practice';
       var self = this;
-      return '<div class="sidebar-widget" onclick="Exercise.openPart(\'' + self._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ')" style="cursor:pointer">' +
+      return '<div class="sidebar-widget" onclick="Exercise.openPart(\'' + self._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ', \'' + lessonMode + '\')" style="cursor:pointer">' +
         '<div class="sidebar-widget-title"><span class="material-symbols-outlined">push_pin</span> ' + 'Next Up' + '</div>' +
         '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">' +
           '<span style="font-size:1.5rem;"><span class="material-symbols-outlined">' + icon + '</span></span>' +

@@ -20,6 +20,40 @@
       return (mode || 'practice') === 'exam' ? 'testsimulation' : 'testpractice';
     },
 
+    _testsModeSegment: function(mode) {
+      if (mode === 'exam') return '/simulation';
+      if (mode === 'practice') return '/practice';
+      return '';
+    },
+
+    _parseTestsRoute: function(segments) {
+      var idx = 1;
+      var mode = null;
+      if (segments[idx] === 'practice') { mode = 'practice'; idx++; }
+      else if (segments[idx] === 'simulation') { mode = 'exam'; idx++; }
+
+      var state = { view: 'testsHub' };
+      if (mode) state.mode = mode;
+
+      if (segments.length > idx) {
+        var levelSeg = segments[idx].toLowerCase();
+        if (VALID_LEVELS.indexOf(levelSeg) !== -1) {
+          state.level = segments[idx].toUpperCase();
+          idx++;
+          if (segments.length > idx && segments[idx].toLowerCase() === 'random') {
+            state.examId = 'Random';
+            return state;
+          }
+          if (segments.length > idx && /^test-\d+$/i.test(segments[idx])) {
+            state.examId = segments[idx].replace('test-', 'Test');
+            return state;
+          }
+          return state;
+        }
+      }
+      return state;
+    },
+
     stateToPath: function(state) {
       if (!state || !state.view) return '/';
 
@@ -63,16 +97,17 @@
           return '/quicksteps';
 
         case 'testsHub':
+          var testsModeSeg = this._testsModeSegment(state.mode);
           if (state.examId === 'Random' && state.level) {
-            return '/tests/' + String(state.level).toLowerCase() + '/random';
+            return '/tests' + testsModeSeg + '/' + String(state.level).toLowerCase() + '/random';
           }
           if (state.examId && state.level) {
             var thLevel = String(state.level).toLowerCase();
             var thNum = String(state.examId).replace(/^Test/i, '');
-            return '/tests/' + thLevel + '/test-' + thNum;
+            return '/tests' + testsModeSeg + '/' + thLevel + '/test-' + thNum;
           }
-          if (state.level) return '/tests/' + String(state.level).toLowerCase();
-          return '/tests';
+          if (state.level) return '/tests' + testsModeSeg + '/' + String(state.level).toLowerCase();
+          return '/tests' + testsModeSeg;
 
         case 'crosswordList':
           if (state.level) return '/crosswords/' + String(state.level).toLowerCase();
@@ -208,22 +243,7 @@
         return { view: 'wordleList' };
       }
       if (first === 'tests') {
-        if (segments.length >= 3 && segments[2].toLowerCase() === 'random') {
-          if (VALID_LEVELS.indexOf(segments[1].toLowerCase()) !== -1) {
-            return { view: 'testsHub', level: segments[1].toUpperCase(), examId: 'Random' };
-          }
-        }
-        if (segments.length >= 3 && /^test-\d+$/i.test(segments[2])) {
-          var testsLevel = segments[1].toUpperCase();
-          var testsExamId = segments[2].replace('test-', 'Test');
-          if (VALID_LEVELS.indexOf(segments[1].toLowerCase()) !== -1) {
-            return { view: 'testsHub', level: testsLevel, examId: testsExamId };
-          }
-        }
-        if (segments.length >= 2 && VALID_LEVELS.indexOf(segments[1].toLowerCase()) !== -1) {
-          return { view: 'testsHub', level: segments[1].toUpperCase() };
-        }
-        return { view: 'testsHub' };
+        return this._parseTestsRoute(segments);
       }
       if (first === 'crosswords') {
         if (segments.length >= 2 && segments[1].toLowerCase() === 'wordle') {

@@ -61,11 +61,21 @@
       if (!content) return;
 
       if (options.mode) {
-        AppState.currentMode = options.mode;
-        localStorage.setItem('preferred_mode', options.mode);
-      } else if (AppState.currentView !== 'testsHub') {
+        if (options.fromRoute && typeof UserProfile !== 'undefined' && UserProfile.setPreferredMode) {
+          UserProfile.setPreferredMode(options.mode);
+        } else if (typeof UserProfile !== 'undefined' && UserProfile.persistPreferredMode) {
+          UserProfile.persistPreferredMode(options.mode);
+        } else {
+          AppState.currentMode = options.mode;
+          localStorage.setItem('preferred_mode', options.mode);
+        }
+      } else if (AppState.currentView !== 'testsHub' && AppState.currentView !== 'exercise') {
         // Entering Tests from elsewhere — default to practice (not persisted global exam mode)
-        AppState.currentMode = 'practice';
+        if (typeof UserProfile !== 'undefined' && UserProfile.setPreferredMode) {
+          UserProfile.setPreferredMode('practice');
+        } else {
+          AppState.currentMode = 'practice';
+        }
       }
 
       AppState.currentView = 'testsHub';
@@ -83,7 +93,7 @@
       var exams = window.EXAMS_DATA[level] || [];
       var LEVEL_META = _testsLevelMeta();
 
-      var testsState = { view: 'testsHub' };
+      var testsState = { view: 'testsHub', mode: AppState.currentMode || 'practice' };
       if (activeLevel) testsState.level = activeLevel;
       if (activeExamId) testsState.examId = activeExamId;
       if (!options.fromRoute && !options.skipHistory) {
@@ -178,8 +188,12 @@
     },
 
     setTestsMode: function(mode) {
-      AppState.currentMode = mode;
-      localStorage.setItem('preferred_mode', mode);
+      if (typeof UserProfile !== 'undefined' && UserProfile.persistPreferredMode) {
+        UserProfile.persistPreferredMode(mode);
+      } else {
+        AppState.currentMode = mode;
+        localStorage.setItem('preferred_mode', mode);
+      }
       var hubPage = document.getElementById('testsHubPage');
       if (!hubPage) return;
 
@@ -190,14 +204,22 @@
       var path = window.location.pathname || '';
       var segments = path.split('/').filter(Boolean);
       if (segments[0] === 'tests' && segments.length >= 3) {
-        var level = (segments[1] || AppState.currentLevel || 'C1').toUpperCase();
-        if (segments[2].toLowerCase() === 'random') {
+        var levelIdx = 1;
+        if (segments[1] === 'practice' || segments[1] === 'simulation') levelIdx = 2;
+        var level = (segments[levelIdx] || AppState.currentLevel || 'C1').toUpperCase();
+        if (segments[levelIdx + 1] && segments[levelIdx + 1].toLowerCase() === 'random') {
           hubPage.innerHTML = BentoGrid._buildRandomTestPageHtml(level);
+          var randomState = { view: 'testsHub', mode: mode, level: level, examId: 'Random' };
+          history.replaceState(randomState, '', Router.stateToPath(randomState));
           return;
         }
-        var examId = segments[2].replace('test-', 'Test');
-        var exams = window.EXAMS_DATA[level] || [];
-        hubPage.innerHTML = BentoGrid._buildTestsSectionCardsHtml(exams, examId, level);
+        if (segments[levelIdx + 1] && /^test-\d+$/i.test(segments[levelIdx + 1])) {
+          var examId = segments[levelIdx + 1].replace('test-', 'Test');
+          var exams = window.EXAMS_DATA[level] || [];
+          hubPage.innerHTML = BentoGrid._buildTestsSectionCardsHtml(exams, examId, level);
+          var examState = { view: 'testsHub', mode: mode, level: level, examId: examId };
+          history.replaceState(examState, '', Router.stateToPath(examState));
+        }
       }
     },
 

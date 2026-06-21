@@ -127,7 +127,13 @@
         }
       } else if (state.view === 'testsHub') {
         if (typeof BentoGrid !== 'undefined') {
-          if (state.mode) AppState.currentMode = state.mode;
+          if (state.mode) {
+            if (typeof UserProfile !== 'undefined' && UserProfile.setPreferredMode) {
+              UserProfile.setPreferredMode(state.mode);
+            } else {
+              AppState.currentMode = state.mode;
+            }
+          }
           BentoGrid.openTests(state.level || null, state.examId || null, { fromRoute: true, mode: state.mode });
         }
       } else if (state.view === 'subpage' && state.mode) {
@@ -135,8 +141,12 @@
       } else if (state.view === 'exercise' && state.examId && state.section && state.part) {
         if (state.level) AppState.currentLevel = state.level;
         if (state.mode) {
-          AppState.currentMode = state.mode;
-          localStorage.setItem('preferred_mode', state.mode);
+          if (typeof UserProfile !== 'undefined' && UserProfile.setPreferredMode) {
+            UserProfile.setPreferredMode(state.mode);
+          } else {
+            AppState.currentMode = state.mode;
+            localStorage.setItem('preferred_mode', state.mode);
+          }
         }
         Exercise.openPart(state.examId, state.section, state.part);
       } else if (state.view === 'profile') {
@@ -238,7 +248,11 @@
       
       // Cargar modo guardado
       const savedMode = localStorage.getItem('preferred_mode') || 'practice';
-      AppState.currentMode = savedMode;
+      if (typeof UserProfile !== 'undefined' && UserProfile.setPreferredMode) {
+        UserProfile.setPreferredMode(savedMode);
+      } else {
+        AppState.currentMode = savedMode;
+      }
       
       document.querySelectorAll('.level-btn').forEach(btn => {
         if (btn.getAttribute('data-level') === savedLevel) {
@@ -266,8 +280,12 @@
       
       // If the URL indicates a mode, apply it
       if (initialState.mode) {
-        AppState.currentMode = initialState.mode;
-        localStorage.setItem('preferred_mode', initialState.mode);
+        if (typeof UserProfile !== 'undefined' && UserProfile.setPreferredMode) {
+          UserProfile.setPreferredMode(initialState.mode);
+        } else {
+          AppState.currentMode = initialState.mode;
+          localStorage.setItem('preferred_mode', initialState.mode);
+        }
       }
       
       // Render the view indicated by the URL

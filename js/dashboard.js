@@ -166,9 +166,13 @@
 
     // keepPage: if true, do not reset pagination to page 1
     renderSubpage: function(mode, expandExamId, keepPage) {
-      AppState.currentMode = mode;
+      if (typeof UserProfile !== 'undefined' && UserProfile.persistPreferredMode) {
+        UserProfile.persistPreferredMode(mode);
+      } else {
+        AppState.currentMode = mode;
+        localStorage.setItem('preferred_mode', mode);
+      }
       AppState.currentView = 'subpage';
-      localStorage.setItem('preferred_mode', mode);
       if (typeof App !== 'undefined') App.restoreExamStatuses();
 
       const content = document.getElementById('main-content');
@@ -719,8 +723,12 @@
     },
     
     setMode: function(mode) {
-      AppState.currentMode = mode;
-      localStorage.setItem('preferred_mode', mode);
+      if (typeof UserProfile !== 'undefined' && UserProfile.persistPreferredMode) {
+        UserProfile.persistPreferredMode(mode);
+      } else {
+        AppState.currentMode = mode;
+        localStorage.setItem('preferred_mode', mode);
+      }
       App.restoreExamStatuses();
       this.render();
     },

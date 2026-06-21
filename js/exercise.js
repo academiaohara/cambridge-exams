@@ -91,6 +91,30 @@
       var modePrefix = (window.MixedTest && MixedTest.isActive()) ? 'mixed' : AppState.currentMode;
       return `cambridge_${modePrefix}_${AppState.currentLevel}_${examId}_${section}_${part}`;
     },
+
+    detectPartMode: function(examId, section, part, level) {
+      level = level || AppState.currentLevel;
+      var modes = ['practice', 'exam'];
+      for (var i = 0; i < modes.length; i++) {
+        var key = 'cambridge_' + modes[i] + '_' + level + '_' + examId + '_' + section + '_' + part;
+        try {
+          if (localStorage.getItem(key)) return modes[i];
+        } catch (e) { /* ignore */ }
+      }
+      return 'practice';
+    },
+
+    _buildModeBadgeHtml: function(finished) {
+      var isExam = AppState.currentMode === 'exam';
+      if (isExam) {
+        var examLabel = finished ? 'Simulation finished' : 'Simulation';
+        var examIcon = finished ? 'emoji_events' : 'timer';
+        return '<span class="exam-mode-badge"><span class="material-symbols-outlined">' + examIcon + '</span> ' + examLabel + '</span>';
+      }
+      var practiceLabel = finished ? 'Practice complete' : 'Practice';
+      var practiceIcon = finished ? 'check_circle' : 'school';
+      return '<span class="practice-mode-badge"><span class="material-symbols-outlined">' + practiceIcon + '</span> ' + practiceLabel + '</span>';
+    },
     
     getSectionTimerKey: function(examId, section) {
       if (window.MixedTest && MixedTest.isActive()) {
@@ -335,7 +359,20 @@
       await this.openPart(examId, section, 1);
     },
     
-    openPart: async function(examId, section, part) {
+    openPart: async function(examId, section, part, modeOrOptions) {
+      var options = typeof modeOrOptions === 'string' ? { mode: modeOrOptions } : (modeOrOptions || {});
+      if (options.mode) {
+        if (typeof UserProfile !== 'undefined' && UserProfile.persistPreferredMode) {
+          UserProfile.persistPreferredMode(options.mode);
+        } else {
+          AppState.currentMode = options.mode;
+          try { localStorage.setItem('preferred_mode', options.mode); } catch (e) { /* ignore */ }
+        }
+      }
+
+      AppState.currentView = 'exercise';
+      if (typeof App !== 'undefined' && App.updateHeaderModeButtons) App.updateHeaderModeButtons();
+
       // Cleanup speaking if navigating away from a speaking exercise
       if (window.SpeakingType && typeof SpeakingType.cleanup === 'function') {
         SpeakingType.cleanup();
@@ -1304,7 +1341,7 @@
         + '    </div>'
         + '    <div class="exercise-header-meta">'
         + '      <span class="exercise-badge">' + sectionTitle + ' — Report</span>'
-        + '      <span class="exam-mode-badge"><span class="material-symbols-outlined">timer</span> Simulation</span>'
+        + '      ' + this._buildModeBadgeHtml(false)
         + '    </div>'
         + '  </div>'
         + '  <div class="exercise-info section-report-info">'
@@ -1547,7 +1584,7 @@
         + '    </div>'
         + '    <div class="exercise-header-meta">'
         + '      <span class="exercise-badge">Final report</span>'
-        + '      <span class="exam-mode-badge"><span class="material-symbols-outlined">emoji_events</span> Simulation finished</span>'
+        + '      ' + this._buildModeBadgeHtml(true)
         + '    </div>'
         + '  </div>'
         + '  <div class="exercise-description section-report-banner">'
