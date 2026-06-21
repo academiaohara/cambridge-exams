@@ -2891,3 +2891,9 @@ body:has(.dashboard-layout--exercise) #main-content {
   background: var(--ex-feedback-bg, #fff) !important;
   color: var(--ex-duo-purple-text, #5b21b6) !important;
 }
+
+.dashboard-layout--exercise .listening-type2-questions-wrapper.listening-type2-explanation-mode .listening-type2-gap.incorrect::after,
+.dashboard-layout--exercise .listening-type2-questions-wrapper.listening-type2-explanation-mode .listening-type2-gap.incorrect:hover::after,
+.dashboard-layout--exercise .listening-type2-questions-wrapper.listening-type2-explanation-mode .listening-type2-gap.incorrect:focus-within::after {
+  display: none !important;
+}

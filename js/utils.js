@@ -352,6 +352,11 @@
       return !!(pc && pc.type === 'sentence-completion');
     },
 
+    isC1ListeningSentenceCompletion: function() {
+      if (!this.isDuoListeningSentenceCompletion()) return false;
+      return AppState.currentLevel === 'C1' && AppState.currentPart === 2;
+    },
+
     getExerciseBadgeLabel: function(section, part, exercise) {
       if (section === 'reading') {
         return 'Reading - Part ' + part;
