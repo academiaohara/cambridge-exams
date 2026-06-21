@@ -156,7 +156,11 @@
         '<button type="button" class="' + trigCls + '" aria-haspopup="listbox" aria-expanded="false"' +
         triggerDisabled + onTrig + '>' + escapeHtml(label) + '</button>' +
         '<span class="reading-type5-gap-panel" role="listbox" aria-label="Question ' + qNum + '">' +
-        choicesHtml +
+        '<span class="reading-type5-gap-panel-head">' +
+        '<span class="reading-type5-gap-panel-kicker">Choose answer</span>' +
+        '<span class="reading-type5-gap-panel-qnum">' + qNum + '</span>' +
+        '</span>' +
+        '<span class="reading-type5-gap-panel-options">' + choicesHtml + '</span>' +
         '</span>' +
         '</span>'
       );
@@ -296,12 +300,104 @@
       if (!wasOpen) {
         wrap.classList.add('reading-type5-gap-open');
         if (trig) trig.setAttribute('aria-expanded', 'true');
+        ReadingType5.positionGapPanel(wrap);
+        ReadingType5._bindGapPanelReposition();
       }
+    },
+
+    _gapPanelRepositionBound: false,
+    _bindGapPanelReposition: function() {
+      if (ReadingType5._gapPanelRepositionBound) return;
+      ReadingType5._gapPanelRepositionBound = true;
+      var reposition = function() {
+        var open = document.querySelector('.reading-type5-gap-wrap.reading-type5-gap-open');
+        if (open) ReadingType5.positionGapPanel(open);
+      };
+      window.addEventListener('resize', reposition);
+      window.addEventListener('scroll', reposition, true);
+    },
+
+    _getExerciseToolsSidebarWidth: function() {
+      var layout = document.querySelector('.dashboard-layout--exercise:not(.dashboard-layout-right-closed)');
+      if (!layout) return 0;
+      var sidebar = layout.querySelector(
+        '.dashboard-right-sidebar--tools, #dashboardRightSidebarTools, .dashboard-right-sidebar'
+      );
+      if (!sidebar) return 0;
+      var rect = sidebar.getBoundingClientRect();
+      if (!rect.width || rect.left >= window.innerWidth) return 0;
+      return Math.max(0, window.innerWidth - rect.left);
+    },
+
+    positionGapPanel: function(wrap) {
+      var panel = wrap && wrap.querySelector('.reading-type5-gap-panel');
+      var trig = wrap && wrap.querySelector('.reading-type5-gap-trigger');
+      if (!panel || !trig) return;
+
+      panel.classList.add('reading-type5-gap-panel--fixed');
+      panel.style.visibility = 'hidden';
+      panel.style.pointerEvents = 'none';
+
+      var gap = 8;
+      var margin = 12;
+      var vw = window.innerWidth;
+      var vh = window.innerHeight;
+      var rect = trig.getBoundingClientRect();
+      var sidebarW = ReadingType5._getExerciseToolsSidebarWidth();
+      var availRight = vw - sidebarW - margin;
+      var popW = Math.min(400, Math.max(280, panel.offsetWidth || 320), vw - margin * 2);
+      var popH = panel.offsetHeight || 220;
+
+      var left = rect.left;
+      var top = rect.bottom + gap;
+      var opensAbove = false;
+
+      if (left + popW > availRight) {
+        left = Math.max(margin, availRight - popW);
+      }
+      if (left < margin) left = margin;
+
+      if (top + popH > vh - margin) {
+        top = rect.top - popH - gap;
+        opensAbove = true;
+      }
+      if (top < margin) top = margin;
+
+      var triggerCenter = rect.left + rect.width / 2;
+      var arrowLeft = Math.max(16, Math.min(popW - 16, triggerCenter - left - 6));
+
+      panel.style.left = left + 'px';
+      panel.style.top = top + 'px';
+      panel.style.width = popW + 'px';
+      panel.style.maxWidth = popW + 'px';
+      panel.style.right = 'auto';
+      panel.style.bottom = 'auto';
+      panel.style.setProperty('--rt5-gap-arrow-left', arrowLeft + 'px');
+      panel.classList.toggle('reading-type5-gap-panel--above', opensAbove);
+
+      panel.style.visibility = '';
+      panel.style.pointerEvents = '';
+    },
+
+    resetGapPanelPosition: function(wrap) {
+      var panel = wrap && wrap.querySelector('.reading-type5-gap-panel');
+      if (!panel) return;
+      panel.classList.remove('reading-type5-gap-panel--fixed', 'reading-type5-gap-panel--above');
+      panel.style.left = '';
+      panel.style.top = '';
+      panel.style.width = '';
+      panel.style.maxWidth = '';
+      panel.style.right = '';
+      panel.style.bottom = '';
+      panel.style.visibility = '';
+      panel.style.pointerEvents = '';
+      panel.style.removeProperty('--rt5-gap-arrow-left');
     },
 
     closeAllGapPopovers: function() {
       document.querySelectorAll('.reading-type5-gap-wrap.reading-type5-gap-open').forEach(function(w) {
         w.classList.remove('reading-type5-gap-open');
+        ReadingType5.resetGapPanelPosition(w);
         var t = w.querySelector('.reading-type5-gap-trigger');
         if (t) t.setAttribute('aria-expanded', 'false');
       });
