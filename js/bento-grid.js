@@ -1797,6 +1797,35 @@
       return map[skill] || { icon: 'description', color: '#1cb0f6' };
     },
 
+    _gradeCarouselNavIconHtml: function(skill) {
+      var meta = BentoGrid._gradeSkillMeta(skill);
+      return '<span class="grade-carousel-nav-icon" style="--grade-skill-color:' + meta.color + '">' +
+        '<span class="material-symbols-outlined" aria-hidden="true">' + meta.icon + '</span>' +
+      '</span>';
+    },
+
+    _updateGradeCarouselNav: function(widget) {
+      var total = parseInt(widget.getAttribute('data-total-slides'), 10) || 1;
+      if (total <= 1) return;
+      var current = parseInt(widget.getAttribute('data-current-slide'), 10) || 0;
+      var slides = widget.querySelectorAll('.grade-carousel-slide');
+      var prevIdx = (current - 1 + total) % total;
+      var nextIdx = (current + 1) % total;
+      var prevSkill = slides[prevIdx] && slides[prevIdx].getAttribute('data-skill');
+      var nextSkill = slides[nextIdx] && slides[nextIdx].getAttribute('data-skill');
+      var prevBtn = widget.querySelector('.grade-carousel-prev');
+      var nextBtn = widget.querySelector('.grade-carousel-next');
+
+      if (prevBtn && prevSkill) {
+        prevBtn.innerHTML = BentoGrid._gradeCarouselNavIconHtml(prevSkill);
+        prevBtn.setAttribute('aria-label', 'Previous skill: ' + prevSkill);
+      }
+      if (nextBtn && nextSkill) {
+        nextBtn.innerHTML = BentoGrid._gradeCarouselNavIconHtml(nextSkill);
+        nextBtn.setAttribute('aria-label', 'Next skill: ' + nextSkill);
+      }
+    },
+
     _buildGradeTrackerSidebarHtml: function(exams) {
       var level = AppState.currentLevel || 'C1';
 
@@ -1828,13 +1857,9 @@
         var avgScale = hasData ? Math.round(d.scale / d.count) : 0;
         var gradeInfo = (hasData && typeof ScoreCalculator !== 'undefined') ? ScoreCalculator.getGradeInfo(avgScale, level) : { cefr: '–' };
         var cefrText = gradeInfo.cefr || '–';
-        var meta = BentoGrid._gradeSkillMeta(skill);
         slides.push(
           '<div class="grade-carousel-slide" style="display:flex" data-skill="' + BentoGrid._escapeHTML(skill) + '">' +
             '<div class="grade-carousel-content">' +
-              '<div class="grade-carousel-icon" style="--grade-skill-color:' + meta.color + '">' +
-                '<span class="material-symbols-outlined" aria-hidden="true">' + meta.icon + '</span>' +
-              '</div>' +
               '<div class="grade-carousel-data">' +
                 '<div class="grade-carousel-raw">' + (hasData ? avgScale : '–') + '</div>' +
                 '<div class="grade-carousel-cefr' + (cefrText === '–' ? ' grade-carousel-cefr-dash' : '') + '">' + cefrText + '</div>' +
@@ -1849,9 +1874,6 @@
       if (slides.length === 0) {
         slidesHtml = '<div class="grade-carousel-slide" style="display:flex;opacity:0.6">' +
           '<div class="grade-carousel-content grade-carousel-content--empty">' +
-            '<div class="grade-carousel-icon grade-carousel-icon--empty">' +
-              '<span class="material-symbols-outlined" aria-hidden="true">insights</span>' +
-            '</div>' +
             '<div class="grade-carousel-data">' +
               '<div class="grade-carousel-raw">–</div>' +
               '<div class="grade-carousel-skill-label"><span>' + 'Complete exercises to see results' + '</span></div>' +
@@ -1866,6 +1888,8 @@
 
       var totalSlides = slides.length || 1;
       var showNav = totalSlides > 1;
+      var prevSkill = showNav ? allSkills[(totalSlides - 1) % totalSlides] : '';
+      var nextSkill = showNav ? allSkills[1 % totalSlides] : '';
 
       return '<div class="sidebar-widget-duo sw-grade grade-tracker-carousel-widget" data-total-slides="' + totalSlides + '">' +
         '<div class="sw-duo-header">' +
@@ -1873,9 +1897,9 @@
           '<button type="button" class="sw-duo-link grade-tracker-see-all" onclick="BentoGrid.openGradeEvolution()">SEE ALL</button>' +
         '</div>' +
         '<div class="grade-carousel-shell' + (showNav ? '' : ' grade-carousel-shell--single') + '">' +
-          (showNav ? '<button type="button" class="grade-carousel-nav grade-carousel-prev" aria-label="Previous skill"><span class="material-symbols-outlined">chevron_left</span></button>' : '') +
+          (showNav ? '<button type="button" class="grade-carousel-nav grade-carousel-prev" aria-label="Previous skill: ' + BentoGrid._escapeHTML(prevSkill) + '">' + BentoGrid._gradeCarouselNavIconHtml(prevSkill) + '</button>' : '') +
           '<div class="grade-carousel-viewport" onclick="BentoGrid.openGradeEvolution()" role="button" tabindex="0" aria-label="Open grade evolution">' + slidesHtml + '</div>' +
-          (showNav ? '<button type="button" class="grade-carousel-nav grade-carousel-next" aria-label="Next skill"><span class="material-symbols-outlined">chevron_right</span></button>' : '') +
+          (showNav ? '<button type="button" class="grade-carousel-nav grade-carousel-next" aria-label="Next skill: ' + BentoGrid._escapeHTML(nextSkill) + '">' + BentoGrid._gradeCarouselNavIconHtml(nextSkill) + '</button>' : '') +
         '</div>' +
         '<div class="grade-carousel-dots"></div>' +
       '</div>';
@@ -1898,6 +1922,7 @@
       if (dots[next]) dots[next].classList.add('active');
 
       widget.setAttribute('data-current-slide', next);
+      BentoGrid._updateGradeCarouselNav(widget);
       return next;
     },
 
@@ -1975,6 +2000,7 @@
         });
       }
 
+      BentoGrid._updateGradeCarouselNav(widget);
       restartTimer();
     },
 

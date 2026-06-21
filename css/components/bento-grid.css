@@ -1571,7 +1571,8 @@ margin-top: -2px;
 .grade-carousel-shell {
   display: flex;
   align-items: center;
-  gap: 2px;
+  justify-content: center;
+  gap: 8px;
   width: 100%;
 }
 
@@ -1581,35 +1582,46 @@ margin-top: -2px;
 
 .grade-carousel-nav {
   flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  border: 2px solid #e5e5e5;
-  border-bottom-width: 3px;
-  border-radius: 10px;
-  background: #fff;
-  color: #afafaf;
+  width: auto;
+  height: auto;
+  border: none;
+  background: transparent;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   padding: 0;
-  transition: border-color 0.15s, color 0.15s, transform 0.1s;
+  transition: transform 0.1s;
 }
 
-.grade-carousel-nav .material-symbols-outlined {
-  font-size: 1.15rem;
+.grade-carousel-nav-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--grade-skill-color, #1cb0f6) 16%, #fff);
+  border: 2px solid color-mix(in srgb, var(--grade-skill-color, #1cb0f6) 28%, #e5e5e5);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--grade-skill-color, #1cb0f6) 22%, #d0d0d0);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.grade-carousel-nav-icon .material-symbols-outlined {
+  font-size: 1.35rem;
+  color: var(--grade-skill-color, #1cb0f6);
   line-height: 1;
 }
 
-.grade-carousel-nav:hover {
-  border-color: #1cb0f6;
-  border-bottom-color: #1899d6;
-  color: #1cb0f6;
+.grade-carousel-nav:hover .grade-carousel-nav-icon {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--grade-skill-color, #1cb0f6) 22%, #d0d0d0);
 }
 
-.grade-carousel-nav:active {
+.grade-carousel-nav:active .grade-carousel-nav-icon {
   transform: translateY(1px);
-  border-bottom-width: 2px;
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--grade-skill-color, #1cb0f6) 22%, #d0d0d0);
 }
 
 .sw-grade .grade-carousel-slide {
@@ -1626,7 +1638,7 @@ margin-top: -2px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  width: 100%;
   margin: 0 auto;
 }
 
