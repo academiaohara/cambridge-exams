@@ -6555,6 +6555,17 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   cursor: not-allowed;
 }
 
+.course-review-accelerator--locked.course-review-accelerator--active {
+  background: linear-gradient(180deg, #ffc800 0%, #ff9600 100%);
+  color: #fff;
+  box-shadow: 0 6px 0 #e08600;
+  opacity: 0.55;
+}
+
+.course-review-accelerator--current {
+  transform: scale(1.02);
+}
+
 .course-review-accelerator--locked:active {
   transform: none;
   box-shadow: 0 6px 0 #cbd5e1;
