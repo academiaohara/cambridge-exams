@@ -6298,8 +6298,10 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   box-shadow: 0 4px 0 #e08600;
 }
 
-.course-etapa-card-btn--advance .material-symbols-outlined {
-  font-size: 1.65rem;
+.course-etapa-card-btn--advance .course-etapa-card-btn-advance-icon {
+  width: 1.65rem;
+  height: auto;
+  display: block;
 }
 
 .course-pt-card-kicker,
