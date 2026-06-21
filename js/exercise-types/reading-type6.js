@@ -73,8 +73,69 @@
           ' onclick="ReadingType6.onChipClick(' + qNum + ', \'' + opt + '\')">' + opt + '</button>';
       });
 
-      html += '</div></div></div>';
+      html += '</div></div>';
+
+      var texts = (AppState.currentExercise && AppState.currentExercise.content &&
+        AppState.currentExercise.content.texts) || {};
+      var solKey = question.correct ? String(question.correct).trim().toUpperCase().charAt(0) : '';
+      var solRaw = solKey && texts[solKey] != null ? texts[solKey] : '';
+      if (solRaw) {
+        var bodyHtml = typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.processEvidenceMarkers
+          ? ExerciseRenderer.processEvidenceMarkers(String(solRaw))
+          : String(solRaw);
+        html += '<div class="b1-reading2-solution-expl c1-reading6-solution-expl" data-qnum="' + qNum +
+          '" data-sol-letter="' + solKey + '">';
+        html += '<div class="c1-reading6-solution-header">';
+        html += '<span class="reading-type6-text-label">' + solKey + '</span>';
+        html += '</div>';
+        html += '<div class="reading-type6-text-content">' + bodyHtml + '</div>';
+        html += '</div>';
+      }
+
+      html += '</div>';
       return html;
+    },
+
+    applyExplanationMode: function() {
+      if (!this._isDuoCrossText()) return;
+      (AppState.currentExercise.content.questions || []).forEach(function(q) {
+        var wrap = document.querySelector('.c1-reading6-picker-wrap[data-qnum="' + q.number + '"]');
+        if (!wrap || !q.correct) return;
+        wrap.querySelectorAll('.c1-reading6-chip').forEach(function(chip) {
+          var letter = chip.getAttribute('data-letter');
+          var isCorrect = letter === q.correct;
+          if (chip.dataset.r6ExplPrevSelected === undefined) {
+            chip.dataset.r6ExplPrevSelected = chip.classList.contains('c1-reading6-chip-selected') ? '1' : '0';
+          }
+          chip.classList.toggle('c1-reading6-chip-selected', isCorrect);
+          chip.classList.toggle('c1-reading6-chip-expl-show', isCorrect);
+          chip.setAttribute('aria-pressed', isCorrect ? 'true' : 'false');
+        });
+      });
+    },
+
+    removeExplanationMode: function() {
+      if (!this._isDuoCrossText()) return;
+      var answers = AppState.currentExercise.answers || {};
+      (AppState.currentExercise.content.questions || []).forEach(function(q) {
+        var wrap = document.querySelector('.c1-reading6-picker-wrap[data-qnum="' + q.number + '"]');
+        if (!wrap) return;
+        var userAnswer = answers[q.number] || '';
+        wrap.querySelectorAll('.c1-reading6-chip').forEach(function(chip) {
+          var letter = chip.getAttribute('data-letter');
+          chip.classList.remove('c1-reading6-chip-expl-show');
+          if (chip.dataset.r6ExplPrevSelected !== undefined) {
+            var wasSelected = chip.dataset.r6ExplPrevSelected === '1';
+            chip.classList.toggle('c1-reading6-chip-selected', wasSelected);
+            chip.setAttribute('aria-pressed', wasSelected ? 'true' : 'false');
+            delete chip.dataset.r6ExplPrevSelected;
+          } else {
+            var isSelected = letter === userAnswer;
+            chip.classList.toggle('c1-reading6-chip-selected', isSelected);
+            chip.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+          }
+        });
+      });
     },
 
     onChipClick: function(qNum, letter) {

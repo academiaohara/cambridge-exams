@@ -399,6 +399,10 @@
           if (typeof ReadingType8 !== 'undefined' && ReadingType8.initB1Reading2StripIfNeeded) {
             ReadingType8.initB1Reading2StripIfNeeded();
           }
+          if (typeof Utils !== 'undefined' && Utils.isDuoCrossTextReading() &&
+              typeof ReadingType6 !== 'undefined' && ReadingType6.applyExplanationMode) {
+            ReadingType6.applyExplanationMode();
+          }
         }
 
         // Show explanations panel
@@ -454,6 +458,9 @@
           });
           if (typeof ReadingType8 !== 'undefined' && ReadingType8.initB1Reading2StripIfNeeded) {
             ReadingType8.initB1Reading2StripIfNeeded();
+          }
+          if (typeof ReadingType6 !== 'undefined' && ReadingType6.removeExplanationMode) {
+            ReadingType6.removeExplanationMode();
           }
         }
 
@@ -563,7 +570,7 @@
         wrap.classList.remove('evidence-active-q');
       });
 
-      document.querySelectorAll('.b1-reading2-solution-expl[data-qnum]').forEach(function(block) {
+      document.querySelectorAll('.b1-reading2-solution-expl[data-qnum], .c1-reading6-solution-expl[data-qnum]').forEach(function(block) {
         var qn = block.getAttribute('data-qnum');
         if (!qn) return;
         block.querySelectorAll('.evidence-wrap[data-qnum="' + qn + '"]').forEach(function(wrap) {
@@ -884,6 +891,10 @@
       const partConfig = CONFIG.getPartConfig(AppState.currentSection, AppState.currentPart);
       if (partConfig && partConfig.type === 'gapped-text' && typeof ReadingType7 !== 'undefined') {
         ReadingType7.removeExplanationMode();
+      }
+
+      if (typeof ReadingType6 !== 'undefined' && ReadingType6.removeExplanationMode) {
+        ReadingType6.removeExplanationMode();
       }
 
       if (AppState.currentSection === 'listening') {
