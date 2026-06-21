@@ -790,7 +790,11 @@
       // For sentence-completion, show correct answer (C1 L2 embeds it in the question gap)
       if (partType === 'sentence-completion' && question.correct &&
           !(typeof Utils !== 'undefined' && Utils.isC1ListeningSentenceCompletion())) {
-        html += '<span class="eq-option eq-option-correct" style="display:inline-block;margin-top:4px">' + question.correct + '</span>';
+        var correctDisplay = (typeof ListeningType2 !== 'undefined' &&
+          typeof ListeningType2._formatCorrectAnswer === 'function')
+          ? ListeningType2._formatCorrectAnswer(question.correct)
+          : (Array.isArray(question.correct) ? question.correct[0] : question.correct);
+        html += '<span class="eq-option eq-option-correct" style="display:inline-block;margin-top:4px">' + correctDisplay + '</span>';
       }
 
       // Add explanation text

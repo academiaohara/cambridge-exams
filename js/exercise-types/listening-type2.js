@@ -7,13 +7,29 @@
   window.ListeningType2 = {
     _answerAlternatives: function(correctAnswer) {
       if (!correctAnswer) return [];
-      var raw = String(correctAnswer).split('/');
+      var raw = Array.isArray(correctAnswer)
+        ? correctAnswer
+        : String(correctAnswer).split('/');
       var out = [];
       raw.forEach(function(part) {
-        var candidate = part.trim();
+        var candidate = String(part == null ? '' : part).trim();
         if (candidate && out.indexOf(candidate) === -1) out.push(candidate);
       });
       return out;
+    },
+
+    _formatCorrectAnswer: function(correctAnswer) {
+      var alternatives = this._answerAlternatives(correctAnswer);
+      return alternatives[0] || '';
+    },
+
+    _serializeCorrectAnswer: function(correctAnswer) {
+      if (Array.isArray(correctAnswer)) {
+        return correctAnswer.map(function(part) {
+          return String(part == null ? '' : part).trim();
+        }).filter(Boolean).join('/');
+      }
+      return String(correctAnswer == null ? '' : correctAnswer);
     },
 
     _clearAltBadge: function(input) {
@@ -68,11 +84,11 @@
         inputClass += isCorrect ? ' correct' : ' incorrect';
         if (!isCorrect) {
           gapClass += ' incorrect';
-          gapDataAttr = ' data-correct="\u2713 ' + question.correct + '"';
+          gapDataAttr = ' data-correct="\u2713 ' + this._formatCorrectAnswer(question.correct) + '"';
         }
         var dataAttrs = ' data-student-value="' + String(userAnswer || '').replace(/"/g, '&quot;') + '"' +
           ' data-check-class="' + (isCorrect ? 'correct' : 'incorrect') + '"' +
-          ' data-correct-raw="' + String(question.correct || '').replace(/"/g, '&quot;') + '"';
+          ' data-correct-raw="' + String(this._serializeCorrectAnswer(question.correct)).replace(/"/g, '&quot;') + '"';
       } else {
         var dataAttrs = '';
       }
@@ -135,11 +151,11 @@
             inputClass += isCorrect ? ' correct' : ' incorrect';
             if (!isCorrect) {
               gapClass += ' incorrect';
-              gapDataAttr = ' data-correct="\u2713 ' + q.correct + '"';
+              gapDataAttr = ' data-correct="\u2713 ' + self._formatCorrectAnswer(q.correct) + '"';
             }
             var dataAttrs = ' data-student-value="' + String(userAnswer || '').replace(/"/g, '&quot;') + '"' +
               ' data-check-class="' + (isCorrect ? 'correct' : 'incorrect') + '"' +
-              ' data-correct-raw="' + String(q.correct || '').replace(/"/g, '&quot;') + '"';
+              ' data-correct-raw="' + String(self._serializeCorrectAnswer(q.correct)).replace(/"/g, '&quot;') + '"';
           } else {
             var dataAttrs = '';
           }
@@ -207,12 +223,10 @@
     
     isAnswerCorrect: function(userAnswer, correctAnswer) {
       if (!userAnswer) return false;
-      if (typeof correctAnswer === 'string' && correctAnswer.includes('/')) {
-        return correctAnswer.split('/').some(function(ans) {
-          return userAnswer.trim().toLowerCase() === ans.trim().toLowerCase();
-        });
-      }
-      return userAnswer.trim().toLowerCase() === correctAnswer.trim().toLowerCase();
+      var ua = userAnswer.trim().toLowerCase();
+      return this._answerAlternatives(correctAnswer).some(function(ans) {
+        return ua === ans.trim().toLowerCase();
+      });
     },
     
     checkAnswers: function() {
@@ -232,13 +246,13 @@
           input.disabled = true;
           input.setAttribute('data-student-value', userAnswer || '');
           input.setAttribute('data-check-class', colorClass);
-          input.setAttribute('data-correct-raw', q.correct || '');
+          input.setAttribute('data-correct-raw', self._serializeCorrectAnswer(q.correct));
           self._clearAltBadge(input);
           if (!isCorrect) {
             var gap = input.closest('.listening-type2-gap');
             if (gap) {
               gap.classList.add('incorrect');
-              gap.setAttribute('data-correct', '\u2713 ' + q.correct);
+              gap.setAttribute('data-correct', '\u2713 ' + self._formatCorrectAnswer(q.correct));
             }
           }
         }

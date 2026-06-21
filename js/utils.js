@@ -127,13 +127,20 @@
         case 'sentence-completion': {
           var ua = String(userAnswer == null ? '' : userAnswer).trim();
           if (!ua) return false;
+          var uaLower = ua.toLowerCase();
+          function sentenceCompletionMatch(ans) {
+            return uaLower === String(ans == null ? '' : ans).trim().toLowerCase();
+          }
+          if (Array.isArray(correctAnswer)) {
+            return correctAnswer.some(sentenceCompletionMatch);
+          }
           var ca = String(correctAnswer == null ? '' : correctAnswer);
           if (ca.indexOf('/') !== -1) {
             return ca.split('/').some(function(ans) {
-              return ua.toLowerCase() === ans.trim().toLowerCase();
+              return sentenceCompletionMatch(ans);
             });
           }
-          return ua.toLowerCase() === ca.trim().toLowerCase();
+          return sentenceCompletionMatch(ca);
         }
           
         case 'transformations': {
