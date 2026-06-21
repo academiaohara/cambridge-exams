@@ -427,9 +427,11 @@
         } else {
           // Add explanation tooltips to evidence markers
           this._addEvidenceTooltips();
-          // Switch to text/transcript view, activate first question
-          ExerciseRenderer.toggleView('text');
-          if (typeof Utils !== 'undefined' && Utils.isC1ListeningSentenceCompletion() &&
+          // Switch to text/transcript view (or questions for B1 L3 gap-fill), activate first question
+          var explanationView = (typeof Utils !== 'undefined' && Utils.isB1ListeningSentenceCompletion())
+            ? 'questions' : 'text';
+          ExerciseRenderer.toggleView(explanationView);
+          if (typeof Utils !== 'undefined' && Utils.usesListeningType2ExplanationMode() &&
               typeof ListeningType2 !== 'undefined' && ListeningType2.applyExplanationMode) {
             ListeningType2.applyExplanationMode();
           }
@@ -518,7 +520,7 @@
 
         // For listening: switch back to questions view
         if (isListening) {
-          if (typeof Utils !== 'undefined' && Utils.isC1ListeningSentenceCompletion() &&
+          if (typeof Utils !== 'undefined' && Utils.usesListeningType2ExplanationMode() &&
               typeof ListeningType2 !== 'undefined' && ListeningType2.removeExplanationMode) {
             ListeningType2.removeExplanationMode();
           }
@@ -545,9 +547,29 @@
       AppState.explanationActiveQuestion = qNum;
       this._clearEvidenceHighlights();
       this._updateExplanationActiveQuestion(qNum);
-      if (!this._isDuoMatchingExplanationQuestionsView()) {
+      if (!this._isDuoMatchingExplanationQuestionsView() &&
+          !this._isB1Reading2SwappedExplanationPeopleView()) {
         this._applyEvidenceHighlight(qNum);
       }
+    },
+
+    _isB1Reading2SwappedExplanation: function() {
+      return AppState.explanationMode &&
+        AppState.currentExercise && typeof Utils !== 'undefined' &&
+        Utils.hasDuoMatchingUi(AppState.currentExercise) &&
+        Utils.usesDuoMatchingSwappedLayout(AppState.currentExercise);
+    },
+
+    _isB1Reading2SwappedExplanationPeopleView: function() {
+      if (!this._isB1Reading2SwappedExplanation()) return false;
+      var textSection = document.getElementById('toggle-text-section');
+      return !!(textSection && textSection.style.display !== 'none');
+    },
+
+    _isB1Reading2SwappedExplanationOptionsView: function() {
+      if (!this._isB1Reading2SwappedExplanation()) return false;
+      var questionsSection = document.getElementById('toggle-questions-section');
+      return !!(questionsSection && questionsSection.style.display !== 'none');
     },
 
     _isDuoMatchingExplanationQuestionsView: function() {
@@ -623,6 +645,11 @@
       var card = document.querySelector('.explanation-card[data-qnum="' + qNum + '"]');
       if (card) {
         card.classList.add('explanation-active');
+      }
+
+      if (this._isB1Reading2SwappedExplanationPeopleView()) {
+        this.syncDuoMatchingQuestionsExplanationView();
+        return;
       }
 
       if (this._isDuoMatchingExplanationQuestionsView()) {
@@ -704,7 +731,8 @@
             AppState.currentPart === 3) ||
           (AppState.currentSection === 'reading' && AppState.currentExercise &&
             typeof Utils !== 'undefined' && Utils.hasDuoMatchingUi(AppState.currentExercise) &&
-            !this._isDuoMatchingExplanationQuestionsView())) {
+            !this._isDuoMatchingExplanationQuestionsView() &&
+            !this._isB1Reading2SwappedExplanationPeopleView())) {
         qDisplay.classList.add('sticky-mode');
       } else {
         qDisplay.classList.remove('sticky-mode');
@@ -902,7 +930,7 @@
       }
 
       if (AppState.currentSection === 'listening') {
-        if (typeof Utils !== 'undefined' && Utils.isC1ListeningSentenceCompletion() &&
+        if (typeof Utils !== 'undefined' && Utils.usesListeningType2ExplanationMode() &&
             typeof ListeningType2 !== 'undefined' && ListeningType2.removeExplanationMode) {
           ListeningType2.removeExplanationMode();
         }

@@ -434,6 +434,22 @@
   display: block;
 }
 
+.explanation-mode-text.duo-solution-in-text:not(.explanation-mode-questions-view) .b1-reading2-solution-expl .evidence-wrap:not(.evidence-active-q) > .evidence-normal {
+  display: inline;
+}
+
+.explanation-mode-text.duo-solution-in-text:not(.explanation-mode-questions-view) .b1-reading2-solution-expl .evidence-wrap:not(.evidence-active-q) > .evidence-explanation-mode {
+  display: none;
+}
+
+.explanation-mode-text.duo-solution-in-text:not(.explanation-mode-questions-view) .b1-reading2-solution-expl .evidence-wrap.evidence-active-q > .evidence-normal {
+  display: none;
+}
+
+.explanation-mode-text.duo-solution-in-text:not(.explanation-mode-questions-view) .b1-reading2-solution-expl .evidence-wrap.evidence-active-q > .evidence-explanation-mode {
+  display: inline;
+}
+
 .explanation-mode-text.duo-solution-in-questions.explanation-mode-questions-view .b1-reading2-solution-expl {
   display: block;
 }
