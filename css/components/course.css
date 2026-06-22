@@ -6331,14 +6331,37 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  background-color: #fff;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 8px,
-    rgba(229, 231, 235, 0.55) 8px,
-    rgba(229, 231, 235, 0.55) 16px
-  );
+  border-color: #86efac;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 55%, #bbf7d0 100%);
+  box-shadow: 0 4px 0 #22c55e;
+}
+
+.course-etapa-card--done .course-etapa-card-title,
+.course-pt-card--done .course-pt-card-title {
+  color: #14532d;
+}
+
+.course-etapa-card--done .course-etapa-card-details,
+.course-pt-card--done .course-pt-card-kicker {
+  color: #16a34a;
+}
+
+.course-etapa-card--done .course-etapa-card-status,
+.course-pt-card--done .course-pt-card-status {
+  display: inline-flex;
+  margin-bottom: 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(88, 204, 2, 0.2);
+  color: #15803d;
+}
+
+.course-etapa-card-btn--review {
+  background: linear-gradient(180deg, #ffc800 0%, #ff9600 100%);
+  border-color: #e08600;
+  color: #fff;
+  box-shadow: 0 4px 0 #e08600;
+  min-width: 150px;
 }
 
 .course-etapa-card-main {
@@ -6913,8 +6936,10 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     align-items: stretch;
   }
 
-  .course-etapa-card--done .course-etapa-card-btn {
+  .course-etapa-card--done .course-etapa-card-btn--review {
     align-self: flex-end;
+    width: 100%;
+    min-width: 0;
   }
 
   .course-review-accelerator {
