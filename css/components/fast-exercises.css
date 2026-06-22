@@ -546,11 +546,46 @@
   border-radius: 18px;
   box-shadow: 0 2px 0 #e5e7eb;
   background: #fff;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.fe-map-container--merged .fe-map-lesson.fe-lesson-active {
+  border-color: #1cb0f6;
+  box-shadow: 0 4px 0 #1899d6, 0 8px 24px rgba(28, 176, 246, 0.15);
+  animation: fe-lesson-pulse 2.4s ease-in-out infinite;
+}
+
+.fe-map-container--merged .fe-map-lesson.fe-lesson-complete {
+  border-color: #58cc02;
+  box-shadow: 0 2px 0 #46a302;
 }
 
 .fe-map-container--merged .fe-map-lesson.fe-lesson-locked {
-  opacity: 0.55;
+  opacity: 0.65;
   pointer-events: none;
+  border-color: #e2e8f0;
+  box-shadow: 0 2px 0 #e2e8f0;
+  background: #f8fafc;
+}
+
+.fe-map-lesson-lock-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+.fe-map-lesson-lock-badge .material-symbols-outlined {
+  font-size: 0.85rem;
+}
+
+@keyframes fe-lesson-pulse {
+  0%, 100% { box-shadow: 0 4px 0 #1899d6, 0 8px 24px rgba(28, 176, 246, 0.12); }
+  50% { box-shadow: 0 4px 0 #1899d6, 0 8px 32px rgba(28, 176, 246, 0.22); }
 }
 
 .fe-map-container--merged .fe-map-lesson-title {
@@ -576,11 +611,20 @@
 }
 
 .fe-map-container--merged .fe-map-connector {
-  height: 20px;
+  height: 28px;
   margin: 0 auto;
-  width: 4px;
+  width: 6px;
   background: #e2e8f0;
-  border-radius: 2px;
+  border-radius: 3px;
+  position: relative;
+}
+
+.fe-map-container--merged .fe-map-connector.fe-map-connector--done {
+  background: #58cc02;
+}
+
+.fe-map-container--merged .fe-map-connector::after {
+  display: none;
 }
 
 /* Dots row - horizontal within a lesson */
@@ -861,18 +905,25 @@
   white-space: nowrap;
 }
 .fe-bottom-continue-btn {
-  padding: 8px 20px;
+  padding: 10px 24px;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   color: #fff;
-  font-weight: 700;
-  font-size: 0.85rem;
+  font-weight: 800;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.15s ease;
   white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
 }
 .fe-bottom-continue-btn:hover {
-  filter: brightness(1.1);
+  filter: brightness(1.05);
+}
+.fe-bottom-continue-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* ── Point Views (Explanation, Exercise) ──────────────────────────────── */
@@ -1244,8 +1295,14 @@
 
 /* ── Legend at top (below subpage-header) ─────────────────────────────── */
 .fe-map-legend-top {
-  margin-top: 4px;
-  margin-bottom: 0;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 2px 0 #e5e7eb;
+  padding: 14px 18px;
+  gap: 16px;
 }
 
 /* ── Map page navigation ──────────────────────────────────────────────── */
@@ -7697,6 +7754,17 @@
   color: #94a3b8 !important;
   box-shadow: 0 4px 0 #cbd5e1 !important;
   cursor: not-allowed;
+}
+
+.fe-section--merged-path .fe-dot.fe-dot-current:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
+  outline: 3px solid rgba(28, 176, 246, 0.45);
+  outline-offset: 3px;
+  animation: fe-dot-current-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes fe-dot-current-pulse {
+  0%, 100% { outline-color: rgba(28, 176, 246, 0.35); }
+  50% { outline-color: rgba(28, 176, 246, 0.65); }
 }
 
 /* Flat entry buttons with bottom relief per exercise type */
