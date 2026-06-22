@@ -5970,9 +5970,9 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 .course-stages-header--duo {
   border: none;
   border-radius: 18px;
-  background: #3b82f6;
+  background: var(--cw-header-color, #3b82f6);
   color: #fff;
-  box-shadow: 0 4px 0 #2563eb, 0 8px 24px rgba(37, 99, 235, 0.22);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--cw-header-color, #3b82f6) 72%, #000), 0 8px 24px color-mix(in srgb, var(--cw-header-color, #3b82f6) 22%, transparent);
   position: sticky;
   top: var(--dashboard-top-spacing, 28px);
   z-index: 4;

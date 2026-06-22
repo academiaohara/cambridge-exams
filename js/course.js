@@ -102,17 +102,24 @@
       return { levelId: stage.levelId, etapaKey: stage.etapaKey };
     },
 
-    _buildCourseStagesListHeaderHtml: function(backOnclick) {
+    _buildCourseSectionDuoHeaderHtml: function(sectionId, backOnclick) {
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
-      return '<div class="course-stages-header course-stages-header--duo">' +
+      var SECTION_META = BentoGrid._courseSectionMeta();
+      var meta = SECTION_META[sectionId] || SECTION_META.learning;
+      var title = sectionId === 'learning' ? 'Learning Path' : (meta.label + ' Path');
+      return '<div class="course-stages-header course-stages-header--duo" style="--cw-header-color:' + meta.headerColor + '">' +
         '<button type="button" class="course-stages-back course-stages-back--duo" onclick="' + backOnclick + '" aria-label="Back">' +
           _mi('arrow_back') +
         '</button>' +
         '<div class="course-stages-header-text">' +
-          '<div class="course-stages-kicker">GRAMMAR & THEORY</div>' +
-          '<div class="course-stages-title">Learning Path</div>' +
+          '<div class="course-stages-kicker">' + meta.kicker + '</div>' +
+          '<div class="course-stages-title">' + title + '</div>' +
         '</div>' +
       '</div>';
+    },
+
+    _buildCourseStagesListHeaderHtml: function(backOnclick) {
+      return BentoGrid._buildCourseSectionDuoHeaderHtml('learning', backOnclick);
     },
 
     _getFirstUnlockedExerciseInEtapa: async function(section, levelId, etapaKey) {
@@ -260,7 +267,9 @@
       var headerStyle = '';
       var backOnclick = 'loadDashboard()';
 
+      var isVocabListView = activeSection === 'vocabulary' && !activeLevel && !activeEtapaKey;
       var isStageListView = activeSection === 'learning' && skipLevelPicker && !activeEtapaKey;
+      var isSectionListView = isStageListView || isVocabListView;
 
       if (activeLevel && activeSection) {
         var secMeta = SECTION_META[activeSection] || SECTION_META.learning;
@@ -306,10 +315,13 @@
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
             : '<div class="dashboard-left-sidebar">' + sidebars.left + '</div>') +
-          '<div class="dashboard-center dashboard-center--crossword dashboard-center--course' + (isStageListView ? ' dashboard-center--learning-stages' : '') + '" id="courseDashboardCenter">' +
+          '<div class="dashboard-center dashboard-center--crossword dashboard-center--course' + (isSectionListView ? ' dashboard-center--learning-stages' : '') + '" id="courseDashboardCenter">' +
             mobileTopBarHtml +
-            (isStageListView
-              ? BentoGrid._buildCourseStagesListHeaderHtml('BentoGrid._resumeCurrentLearningPoint()')
+            (isSectionListView
+              ? BentoGrid._buildCourseSectionDuoHeaderHtml(
+                  activeSection,
+                  isStageListView ? 'BentoGrid._resumeCurrentLearningPoint()' : 'loadDashboard()'
+                )
               : '<div class="cw-section-header' + headerClass + '"' + headerStyle + '>' +
                 '<button class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '</button>' +
                 '<div class="cw-section-header-text">' +
@@ -1530,22 +1542,58 @@
       return BentoGrid._buildCourseEtapaCardsHtml(section, levelId);
     },
 
-    _buildCourseVocabCategoryCardsHtml: async function(options) {
-      options = options || {};
+    _renderCourseVocabCategoryCard: function(opts) {
       var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+      var cat = opts.cat;
+      var pct = opts.pct || 0;
+      var totalPoints = opts.totalPoints || 0;
+      var isActive = opts.isActive;
+      var done = pct >= 100;
+      var openOnclick = 'FastExercises.openCategory(\'' + cat.id + '\')';
+      var scopeLabel = totalPoints > 0 ? (totalPoints + ' items · B1 to C1') : 'B1 to C1';
+
+      var cardClass = 'course-etapa-card';
+      if (done) cardClass += ' course-etapa-card--done';
+      else if (isActive) cardClass += ' course-etapa-card--active';
+      else cardClass += ' course-etapa-card--available';
+
+      var html = '<div class="' + cardClass + '">';
+      html += '<div class="course-etapa-card-main">';
+      html += '<button type="button" class="course-etapa-card-details" onclick="event.stopPropagation();' + openOnclick + '">' + scopeLabel + ' · VIEW DETAILS</button>';
+      html += '<div class="course-etapa-card-title">' + self._escapeHTML(cat.name) + '</div>';
+      if (!done) {
+        html += '<div class="course-etapa-card-subtitle">' + self._escapeHTML(cat.desc) + '</div>';
+      }
+
+      if (done) {
+        html += '<div class="course-etapa-card-status">' + _mi('check_circle') + ' COMPLETED!</div>';
+      } else if (isActive && pct > 0) {
+        html += '<div class="course-etapa-progress"><div class="course-etapa-progress-fill" style="width:' + Math.max(pct, 8) + '%">' + pct + '%</div></div>';
+      }
+      html += '</div>';
+
+      if (done) {
+        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--review" onclick="' + openOnclick + '">REVIEW</button>';
+      } else if (isActive && pct > 0) {
+        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + openOnclick + '">CONTINUE</button>';
+      } else {
+        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + openOnclick + '">START</button>';
+      }
+      html += '</div>';
+      return html;
+    },
+
+    _buildCourseVocabCategoryCardsHtml: async function(options) {
+      options = options || {};
       var catDefs = [
         { id: 'phrasal-verbs', icon: 'auto_stories', name: 'Phrasal Verbs', color: '#3b82f6', desc: 'Learn and practise common phrasal verbs' },
         { id: 'idioms', icon: 'record_voice_over', name: 'Idioms', color: '#f59e0b', desc: 'Idiomatic expressions in context' },
         { id: 'word-formation', icon: 'text_fields', name: 'Word Formation', color: '#e11d48', desc: 'Prefixes, suffixes and word roots' }
       ];
 
-      var html = '<div class="course-vocab-categories' + (options.main ? ' course-vocab-categories--main' : '') + '">';
-      if (!options.main) {
-        html += '<div class="course-vocab-categories-title">' + _mi('category') + ' Practice Categories</div>';
-      }
-      html += '<div class="desktop-mode-cards course-vocab-mode-cards">';
-
+      var catData = [];
+      var firstActiveIdx = -1;
       for (var i = 0; i < catDefs.length; i++) {
         var cat = catDefs[i];
         var pct = 0;
@@ -1555,28 +1603,20 @@
           pct = data ? FastExercises._getCategoryPercent(cat.id, data.levels) : 0;
           totalPoints = data ? FastExercises._getTotalPoints(data.levels) : 0;
         } catch (e) { /* ignore */ }
-
-        var statusText = pct > 0
-          ? pct + '% complete · ' + totalPoints + ' items'
-          : totalPoints + ' items · B1 to C1';
-        var statusClass = pct >= 100 ? 'mode-card-status-done' : '';
-
-        html += '<div class="mode-card mode-card--vocab-category" onclick="FastExercises.openCategory(\'' + cat.id + '\')" role="button" tabindex="0">' +
-          '<div class="mode-card-body">' +
-            '<div class="mode-card-title-row">' +
-              '<span class="mode-card-title">' + self._escapeHTML(cat.name) + '</span>' +
-            '</div>' +
-            '<div class="mode-card-status ' + statusClass + '">' + self._escapeHTML(cat.desc) + '</div>' +
-            '<div class="mode-card-status ' + statusClass + '">' + statusText + '</div>' +
-          '</div>' +
-          '<div class="mode-card-icon-wrap">' +
-            '<div class="mode-card-icon" style="color:' + cat.color + '">' + _mi(cat.icon) + '</div>' +
-            (pct > 0 && pct < 100 ? '<span class="mode-card-icon-badge">' + pct + '%</span>' : '') +
-          '</div>' +
-        '</div>';
+        catData.push({ cat: cat, pct: pct, totalPoints: totalPoints });
+        if (firstActiveIdx === -1 && pct < 100) firstActiveIdx = i;
       }
 
-      html += '</div></div>';
+      var html = '<div class="course-etapas-page course-etapas-page--unified" data-section="vocabulary">';
+      for (var j = 0; j < catData.length; j++) {
+        html += BentoGrid._renderCourseVocabCategoryCard({
+          cat: catData[j].cat,
+          pct: catData[j].pct,
+          totalPoints: catData[j].totalPoints,
+          isActive: j === firstActiveIdx
+        });
+      }
+      html += '</div>';
       return html;
     },
 
