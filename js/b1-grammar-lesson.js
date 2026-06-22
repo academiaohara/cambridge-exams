@@ -1047,19 +1047,38 @@
     afterExerciseResult(result, state.stepIdx);
   }
 
+  function isExerciseInProgress() {
+    if (!state) return false;
+    if (document.getElementById('bgl-complete-modal')) return false;
+    var step = state.steps[state.stepIdx];
+    return !!(step && step.kind === 'exercise' && state.hearts > 0);
+  }
+
+  function requestLessonExit() {
+    var goBack = function() {
+      if (state && state.backFn) {
+        try { new Function(state.backFn)(); } catch (e) { console.error(e); }
+      }
+    };
+    if (isExerciseInProgress() && typeof BentoGrid !== 'undefined' && BentoGrid._showLearningExitConfirm) {
+      BentoGrid._showLearningExitConfirm(goBack);
+      return;
+    }
+    goBack();
+  }
+
   function finishLesson() {
     if (!state) return;
     var level = state.level;
     var unitId = state.unitId;
-    var unitData = state.unitData;
 
-    if (typeof BentoGrid !== 'undefined') {
-      var visitedSections = {};
-      state.steps.forEach(function(step) { visitedSections[step.secIdx] = true; });
-      Object.keys(visitedSections).forEach(function(idx) {
-        BentoGrid._markCourseSectionVisited(level, unitId, parseInt(idx, 10));
-      });
-      BentoGrid._checkCourseUnitAllDone(level, unitId);
+    if (typeof BentoGrid !== 'undefined' && state.sectionIdx != null && state.totalChecked > 0) {
+      var passed = (state.correctCount / state.totalChecked) >= 0.7;
+      if (passed) {
+        BentoGrid._saveCuExSectionChecked(unitId, state.sectionIdx, null, state.correctCount, state.totalChecked);
+        BentoGrid._markCourseSectionVisited(level, unitId, state.sectionIdx);
+        BentoGrid._checkCourseUnitAllDone(level, unitId);
+      }
     }
 
     var existing = document.getElementById('bgl-complete-modal');
@@ -1101,21 +1120,6 @@
 
   function progressKey(unitId, sectionIdx) {
     return 'bgl-progress-' + unitId + (sectionIdx != null ? '-' + sectionIdx : '');
-  }
-
-  function saveProgress() {
-    if (!state) return;
-    try {
-      localStorage.setItem(progressKey(state.unitId, state.sectionIdx), JSON.stringify({ stepIdx: state.stepIdx }));
-    } catch (e) { /* ignore */ }
-  }
-
-  function loadProgress(unitId, sectionIdx) {
-    try {
-      var raw = localStorage.getItem(progressKey(unitId, sectionIdx));
-      if (raw) return JSON.parse(raw);
-    } catch (e) { /* ignore */ }
-    return null;
   }
 
   function clearProgress(unitId, sectionIdx) {
@@ -1217,11 +1221,7 @@
     document.getElementById('bgl-skip-btn').addEventListener('click', handleSkip);
     document.getElementById('bgl-back-btn').addEventListener('click', goBackStep);
     document.getElementById('bgl-next-btn').addEventListener('click', goNextTheoryStep);
-    document.getElementById('bgl-close-btn').addEventListener('click', function() {
-      if (opts.backFn) {
-        try { new Function(opts.backFn)(); } catch (e) { console.error(e); }
-      }
-    });
+    document.getElementById('bgl-close-btn').addEventListener('click', requestLessonExit);
     root.addEventListener('bgl-answer-change', function() {
       var step = state.steps[state.stepIdx];
       var btn = document.getElementById('bgl-action-btn');
