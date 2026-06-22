@@ -56,6 +56,9 @@
 
   function clearAllCourseProgress() {
     ['B1', 'B2', 'C1'].forEach(clearCourseProgress);
+    ['B1', 'B2', 'C1'].forEach(function (level) {
+      try { localStorage.removeItem('course_ex_state_' + level); } catch (e) { /* ignore */ }
+    });
     try {
       localStorage.removeItem('cambridge_course_path_advance_index');
       localStorage.removeItem('cambridge_course_path_advance_pending');
@@ -123,6 +126,8 @@
   }
 
   window.Onboarding = {
+    clearAllCourseProgress: clearAllCourseProgress,
+
     needsShow: function () {
       if (isDone()) return false;
       return _pendingNewUser || AppState.isGuest;
