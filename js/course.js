@@ -1363,7 +1363,7 @@
           var reviewOnclick = reviewLocked
             ? 'return false;'
             : 'BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'' + reviewPath + '\')';
-          var reviewLabel = reviewPassed ? 'Salto completado' : '¿Avanzar hasta aquí?';
+          var reviewLabel = reviewPassed ? ('Review ' + (reviewIdxInEtapa + 1)) : '¿Avanzar hasta aquí?';
 
           html += '<div class="course-review-accelerator-wrap">';
           html += '<button type="button" class="' + reviewClass + '" onclick="' + reviewOnclick + '" title="' + self._escapeHTML(reviewLabel) + '">';
@@ -1937,11 +1937,6 @@
         rightSidebar.innerHTML = BentoGrid._buildCourseRoadmapSidebarHtml(unitData, unitId);
       }
 
-      if (unitData && unitData.type === 'vocabulary') {
-        BentoGrid._courseSection = 'vocabulary';
-      } else if (unitData) {
-        BentoGrid._courseSection = BentoGrid._courseSection || 'learning';
-      }
       courseSection = BentoGrid._courseSection || 'learning';
       blockKey = null;
       if (BentoGrid._courseIndexData && BentoGrid._courseIndexData.items) {
