@@ -1548,14 +1548,12 @@
       var cat = opts.cat;
       var pct = opts.pct || 0;
       var totalPoints = opts.totalPoints || 0;
-      var isActive = opts.isActive;
       var done = pct >= 100;
       var openOnclick = 'FastExercises.openCategory(\'' + cat.id + '\')';
       var scopeLabel = totalPoints > 0 ? (totalPoints + ' items · B1 to C1') : 'B1 to C1';
 
       var cardClass = 'course-etapa-card';
       if (done) cardClass += ' course-etapa-card--done';
-      else if (isActive) cardClass += ' course-etapa-card--active';
       else cardClass += ' course-etapa-card--available';
 
       var html = '<div class="' + cardClass + '">';
@@ -1568,14 +1566,14 @@
 
       if (done) {
         html += '<div class="course-etapa-card-status">' + _mi('check_circle') + ' COMPLETED!</div>';
-      } else if (isActive && pct > 0) {
+      } else if (pct > 0) {
         html += '<div class="course-etapa-progress"><div class="course-etapa-progress-fill" style="width:' + Math.max(pct, 8) + '%">' + pct + '%</div></div>';
       }
       html += '</div>';
 
       if (done) {
         html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--review" onclick="' + openOnclick + '">REVIEW</button>';
-      } else if (isActive && pct > 0) {
+      } else if (pct > 0) {
         html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + openOnclick + '">CONTINUE</button>';
       } else {
         html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + openOnclick + '">START</button>';
@@ -1593,7 +1591,6 @@
       ];
 
       var catData = [];
-      var firstActiveIdx = -1;
       for (var i = 0; i < catDefs.length; i++) {
         var cat = catDefs[i];
         var pct = 0;
@@ -1604,7 +1601,6 @@
           totalPoints = data ? FastExercises._getTotalPoints(data.levels) : 0;
         } catch (e) { /* ignore */ }
         catData.push({ cat: cat, pct: pct, totalPoints: totalPoints });
-        if (firstActiveIdx === -1 && pct < 100) firstActiveIdx = i;
       }
 
       var html = '<div class="course-etapas-page course-etapas-page--unified" data-section="vocabulary">';
@@ -1612,8 +1608,7 @@
         html += BentoGrid._renderCourseVocabCategoryCard({
           cat: catData[j].cat,
           pct: catData[j].pct,
-          totalPoints: catData[j].totalPoints,
-          isActive: j === firstActiveIdx
+          totalPoints: catData[j].totalPoints
         });
       }
       html += '</div>';

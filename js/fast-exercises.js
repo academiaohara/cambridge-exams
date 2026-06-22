@@ -997,7 +997,6 @@
       }
 
       this._currentMapPage = 0;
-      var currentKey = self._findCurrentPointKey(catMeta, data, null);
 
       var html = '<div class="fe-map-outer fe-map-single-page fe-map-merged">';
       html += '<div class="fe-map-main">';
@@ -1008,22 +1007,10 @@
         var entry = merged[mi];
         var lesson = entry.lesson;
         var levelId = entry.levelId;
-        var lessonComplete = true;
-        var lessonStarted = false;
         var levelUnlocked = self._isLevelUnlocked(catMeta.id, levelId, data.levels);
         var lessonLocked = !levelUnlocked;
 
-        if (lesson.points) {
-          for (var pi = 0; pi < lesson.points.length; pi++) {
-            if (!self._isPointComplete(catMeta.id, levelId, lesson.id, pi)) {
-              lessonComplete = false;
-            } else {
-              lessonStarted = true;
-            }
-          }
-        }
-
-        var lessonClass = lessonLocked ? 'fe-lesson-locked' : (lessonComplete ? 'fe-lesson-complete' : (lessonStarted ? 'fe-lesson-active' : 'fe-lesson-pending'));
+        var lessonClass = lessonLocked ? 'fe-lesson-locked' : 'fe-lesson-pending';
 
         html += '<div class="fe-map-lesson ' + lessonClass + '" data-lesson-global-idx="' + mi + '">' +
           '<div class="fe-map-lesson-title">' +
@@ -1057,7 +1044,6 @@
             html += self._buildMapPointDotHtml(catMeta, levelId, lesson.id, point, pi, {
               isDone: isDone,
               isAccessible: isAccessible,
-              currentKey: currentKey,
               useFilledStyle: true,
               showLine: pi > 0
             });

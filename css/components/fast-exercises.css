@@ -541,30 +541,16 @@
   flex-direction: column;
   align-items: stretch;
   gap: 12px;
-  padding: 18px 20px;
+  padding: 20px 22px 18px;
   border: 2px solid #e5e7eb;
-  border-bottom: 4px solid #d0d0d0;
   border-radius: 18px;
-  box-shadow: none;
+  box-shadow: 0 2px 0 #e5e7eb;
   background: #fff;
 }
 
-.fe-map-container--merged .fe-map-lesson.fe-lesson-complete {
-  border-left: 2px solid #e5e7eb;
-  border-color: #86efac;
-  border-bottom-color: #4ade80;
-  background: linear-gradient(180deg, #f0fdf4 0%, #fff 100%);
-}
-
-.fe-map-container--merged .fe-map-lesson.fe-lesson-active {
-  border-left: 2px solid #e5e7eb;
-  border-color: #93c5fd;
-  border-bottom-color: #3b82f6;
-  box-shadow: 0 4px 0 #dbeafe;
-}
-
-.fe-map-container--merged .fe-map-lesson.fe-lesson-pending {
-  border-left: 2px solid #e5e7eb;
+.fe-map-container--merged .fe-map-lesson.fe-lesson-locked {
+  opacity: 0.55;
+  pointer-events: none;
 }
 
 .fe-map-container--merged .fe-map-lesson-title {
@@ -7713,64 +7699,56 @@
   cursor: not-allowed;
 }
 
-.fe-section--merged-path .fe-dot.fe-dot-current:not(.fe-dot-mini) {
-  background: #ff9600 !important;
-  color: #fff !important;
-  transform: scale(1.08);
-  box-shadow: 0 4px 0 #e08600 !important;
-  animation: course-circle-pulse 1.8s ease-in-out infinite;
-}
-
 /* Flat entry buttons with bottom relief per exercise type */
-.fe-section--merged-path .fe-dot.fe-dot-pv-gallery:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked):not(.fe-dot-current) {
+.fe-section--merged-path .fe-dot.fe-dot-pv-gallery:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #1cb0f6 !important;
   box-shadow: 0 4px 0 #1899d6 !important;
 }
-.fe-section--merged-path .fe-dot.fe-dot-pv-fill-in:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked):not(.fe-dot-current) {
+.fe-section--merged-path .fe-dot.fe-dot-pv-fill-in:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #a855f7 !important;
   box-shadow: 0 4px 0 #7c3aed !important;
 }
-.fe-section--merged-path .fe-dot.fe-dot-pv-conv:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked):not(.fe-dot-current) {
+.fe-section--merged-path .fe-dot.fe-dot-pv-conv:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #58cc02 !important;
   box-shadow: 0 4px 0 #46a302 !important;
 }
-.fe-section--merged-path .fe-dot.fe-dot-pv-drag:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked):not(.fe-dot-current) {
+.fe-section--merged-path .fe-dot.fe-dot-pv-drag:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #ff9600 !important;
   box-shadow: 0 4px 0 #e08600 !important;
 }
-.fe-section--merged-path .fe-dot.fe-dot-pv-mixed:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked):not(.fe-dot-current) {
+.fe-section--merged-path .fe-dot.fe-dot-pv-mixed:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #6366f1 !important;
   box-shadow: 0 4px 0 #4f46e5 !important;
 }
-.fe-section--merged-path .fe-dot.fe-dot-wf-explanation:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked):not(.fe-dot-current) {
+.fe-section--merged-path .fe-dot.fe-dot-wf-explanation:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #e11d48 !important;
   box-shadow: 0 4px 0 #be123c !important;
 }
-.fe-section--merged-path .fe-dot.fe-dot-wf-multiple-choice:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked):not(.fe-dot-current) {
+.fe-section--merged-path .fe-dot.fe-dot-wf-multiple-choice:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #db2777 !important;
   box-shadow: 0 4px 0 #be185d !important;
 }
-.fe-section--merged-path .fe-dot.fe-dot-wf-transform:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked):not(.fe-dot-current) {
+.fe-section--merged-path .fe-dot.fe-dot-wf-transform:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #be185d !important;
   box-shadow: 0 4px 0 #9d174d !important;
 }
-.fe-section--merged-path .fe-dot.fe-dot-id-gallery:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked):not(.fe-dot-current) {
+.fe-section--merged-path .fe-dot.fe-dot-id-gallery:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #f59e0b !important;
   box-shadow: 0 4px 0 #d97706 !important;
 }
-.fe-section--merged-path .fe-dot.fe-dot-id-fill-in:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked):not(.fe-dot-current) {
+.fe-section--merged-path .fe-dot.fe-dot-id-fill-in:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #fb923c !important;
   box-shadow: 0 4px 0 #ea580c !important;
 }
-.fe-section--merged-path .fe-dot.fe-dot-id-conv:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked):not(.fe-dot-current) {
+.fe-section--merged-path .fe-dot.fe-dot-id-conv:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #10b981 !important;
   box-shadow: 0 4px 0 #059669 !important;
 }
-.fe-section--merged-path .fe-dot.fe-dot-id-drag:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked):not(.fe-dot-current) {
+.fe-section--merged-path .fe-dot.fe-dot-id-drag:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #f59e0b !important;
   box-shadow: 0 4px 0 #d97706 !important;
 }
-.fe-section--merged-path .fe-dot.fe-dot-id-quiz:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked):not(.fe-dot-current) {
+.fe-section--merged-path .fe-dot.fe-dot-id-quiz:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
   background: #6366f1 !important;
   box-shadow: 0 4px 0 #4f46e5 !important;
 }
