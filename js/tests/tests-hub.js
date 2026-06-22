@@ -109,23 +109,29 @@
 
       var headerKicker = 'TESTS';
       var headerTitle = 'Choose a Level';
-      var backOnclick = 'loadDashboard()';
+      var headerClass = ' cw-section-header--picker cw-section-header--tests';
+      var headerStyle = ' style="--cw-header-color:#58cc02"';
 
       if (isRandomTest) {
+        var randomMeta = LEVEL_META[activeLevel || level] || LEVEL_META['B2'];
         headerKicker = (activeLevel || level).toUpperCase() + ' · RANDOM TEST';
         headerTitle = 'Random Mix';
-        backOnclick = 'BentoGrid.openTests(\'' + (activeLevel || level) + '\')';
+        headerClass = ' cw-section-header--level cw-section-header--tests';
+        headerStyle = ' style="--cw-header-color:' + randomMeta.headerColor + '"';
       } else if (activeExamId) {
         var examMatch = exams.find(function(e) { return e.id === activeExamId; });
         var examNum = examMatch ? examMatch.number : activeExamId.replace('Test', '');
+        var examMeta = LEVEL_META[activeLevel || level] || LEVEL_META['B2'];
         headerKicker = (activeLevel || level).toUpperCase() + ' · TEST ' + examNum;
         headerTitle = 'Choose a Section';
-        backOnclick = 'BentoGrid.openTests(\'' + (activeLevel || level) + '\')';
+        headerClass = ' cw-section-header--level cw-section-header--tests';
+        headerStyle = ' style="--cw-header-color:' + examMeta.headerColor + '"';
       } else if (activeLevel) {
         var meta = LEVEL_META[activeLevel] || LEVEL_META['B2'];
         headerKicker = activeLevel.toUpperCase() + ' · ' + exams.filter(function(e) { return e.status === 'available'; }).length + ' TESTS';
         headerTitle = meta.difficulty;
-        backOnclick = 'BentoGrid.openTests()';
+        headerClass = ' cw-section-header--level cw-section-header--tests';
+        headerStyle = ' style="--cw-header-color:' + meta.headerColor + '"';
       }
 
       var loadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
@@ -139,11 +145,10 @@
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
           '<div class="dashboard-center">' +
             '<div class="fe-section tests-hub-section">' +
-              '<div class="subpage-header subpage-header--tests">' +
-                '<button class="subpage-back-btn" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '<span class="icon-btn-label">Back</span></button>' +
-                '<div class="subpage-header-titles">' +
-                  '<div class="subpage-title">' + _mi('assignment') + ' ' + _escape(headerTitle) + '</div>' +
-                  '<div class="subpage-subtitle">' + _escape(headerKicker) + '</div>' +
+              '<div class="cw-section-header' + headerClass + '"' + headerStyle + '>' +
+                '<div class="cw-section-header-text">' +
+                  '<div class="cw-section-kicker">' + _escape(headerKicker) + '</div>' +
+                  '<div class="cw-section-title">' + _escape(headerTitle) + '</div>' +
                 '</div>' +
                 BentoGrid._buildTestsModeToggleHtml() +
               '</div>' +

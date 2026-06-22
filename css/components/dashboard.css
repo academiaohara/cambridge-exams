@@ -3298,22 +3298,22 @@
 
 /* Mobile subpage header improvements for tests hub */
 @media (max-width: 768px) {
-  .subpage-header--tests {
+  .dashboard-center:has(.tests-hub-section) .cw-section-header {
     padding: 12px 14px;
     gap: 8px;
     border-radius: 16px;
   }
 
-  .subpage-header--tests .subpage-header-titles {
+  .dashboard-center:has(.tests-hub-section) .cw-section-header-text {
     flex: 1;
     min-width: 0;
   }
 
-  .subpage-header--tests .subpage-title {
+  .dashboard-center:has(.tests-hub-section) .cw-section-title {
     font-size: 1rem;
   }
 
-  .subpage-header--tests .subpage-subtitle {
+  .dashboard-center:has(.tests-hub-section) .cw-section-kicker {
     font-size: 0.78rem;
   }
 

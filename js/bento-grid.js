@@ -1356,7 +1356,6 @@
             mobileTopBarHtml +
             '<div class="cw-section-header' + (activeLevel ? ' cw-section-header--level' : ' cw-section-header--picker') + '"' +
               (activeLevel ? ' style="--cw-header-color:' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).headerColor + '"' : '') + '>' +
-              '<button class="cw-section-back" onclick="' + (activeLevel ? 'history.back()' : 'loadDashboard()') + '" aria-label="Back">' + _mi('arrow_back') + '</button>' +
               '<div class="cw-section-header-text">' +
                 (activeLevel
                   ? '<div class="cw-section-kicker">' + activeLevel.toUpperCase() + ' · ' + allEntries.filter(function(e) { return e.levelId === activeLevel; }).length + ' PUZZLES</div>' +
@@ -1457,7 +1456,6 @@
             mobileTopBarHtml +
             '<div class="cw-section-header cw-section-header--wordle' + (activeLevel ? ' cw-section-header--level' : ' cw-section-header--picker') + '"' +
               (activeLevel ? ' style="--cw-header-color:' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).headerColor + '"' : '') + '>' +
-              '<button class="cw-section-back" onclick="' + (activeLevel ? 'history.back()' : 'loadDashboard()') + '" aria-label="Back">' + _mi('arrow_back') + '</button>' +
               '<div class="cw-section-header-text">' +
                 (activeLevel
                   ? '<div class="cw-section-kicker">' + activeLevel.toUpperCase() + ' · ' + allEntries.filter(function(e) { return e.levelId === activeLevel; }).length + ' LEVELS</div>' +
@@ -1553,7 +1551,6 @@
           '<div class="dashboard-center">' +
             '<div class="qs-chooser-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="loadDashboard()" aria-label="Back">' + _mi('arrow_back') + '<span class="icon-btn-label">Back</span></button>' +
                 '<div>' +
                   '<div class="subpage-title">' + 'Quicksteps' + '</div>' +
                   '<div class="subpage-subtitle">' + 'Choose a category to start practicing' + '</div>' +
