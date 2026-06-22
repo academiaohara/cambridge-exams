@@ -6250,49 +6250,33 @@
       return 'course_ex_state_' + (level || BentoGrid._courseLevel || 'C1');
     },
 
-    // Save the current (draft) answers of an exercise section to localStorage.
-    // Skipped when restoring answers from storage to avoid circular saves.
-    _saveCuExSectionState: function(sec) {
-      if (BentoGrid._isRestoringCuAnswers) return;
-      if (!sec || !sec.classList.contains('cu-exercise')) return;
-      // Don't save while "Show answers" is active — those values were filled by the app, not the user
-      if (sec.getAttribute('data-answers-showing') === 'true') return;
-      var unitId = BentoGrid._currentUnitId;
-      if (!unitId) return;
-      var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
-      if (isNaN(sectionIdx)) return;
-      var level = BentoGrid._courseLevel || 'C1';
-      try {
-        var key = BentoGrid._cuExStateKey(level);
-        var state = JSON.parse(localStorage.getItem(key) || '{}');
-        var skey = unitId + '_' + sectionIdx;
-        // Don't overwrite a checked state with a plain draft save
-        if ((state[skey] || {}).checked) return;
-        state[skey] = { answers: BentoGrid._getReviewSectionAnswers(sec) };
-        localStorage.setItem(key, JSON.stringify(state));
-      } catch(e) {}
-    },
+    // Learning exercises do not persist draft answers — only pass status is stored.
+    _saveCuExSectionState: function(sec) { /* no-op */ },
 
-    // Persist the final checked result (score + answers) and push to Supabase.
+    // Persist pass status only (score/total). Answers are not stored.
     _saveCuExSectionChecked: function(unitId, sectionIdx, answers, score, total) {
-      // Skip when called from programmatic restoration to avoid redundant API calls
       if (BentoGrid._isRestoringCuAnswers) return;
+      if (!total || total <= 0 || (score / total) < 0.7) return;
       var level = BentoGrid._courseLevel || 'C1';
       try {
         var key = BentoGrid._cuExStateKey(level);
         var state = JSON.parse(localStorage.getItem(key) || '{}');
         var skey = unitId + '_' + sectionIdx;
-        state[skey] = { answers: answers, checked: true, score: score, total: total };
+        state[skey] = { checked: true, score: score, total: total };
         localStorage.setItem(key, JSON.stringify(state));
       } catch(e) {}
-      BentoGrid._saveCuExToSupabase(level, unitId, sectionIdx, answers, score);
+      BentoGrid._saveCuExToSupabase(level, unitId, sectionIdx, score, total);
     },
 
     _loadCuExSectionState: function(level, unitId, sectionIdx) {
       try {
         var key = BentoGrid._cuExStateKey(level);
         var state = JSON.parse(localStorage.getItem(key) || '{}');
-        return state[unitId + '_' + sectionIdx] || null;
+        var entry = state[unitId + '_' + sectionIdx] || null;
+        if (!entry || !entry.checked) return null;
+        if (!entry.total || entry.total <= 0) return entry;
+        if (entry.score / entry.total < 0.7) return null;
+        return { checked: true, score: entry.score, total: entry.total };
       } catch(e) { return null; }
     },
 
@@ -6305,9 +6289,8 @@
       } catch(e) {}
     },
 
-    // Upsert score + answers to Supabase user_progress table on check.
-    _saveCuExToSupabase: async function(level, unitId, sectionIdx, answers, score) {
-      // Skip when called during programmatic restoration to avoid redundant API calls
+    // Upsert pass status to Supabase (no answer payload).
+    _saveCuExToSupabase: async function(level, unitId, sectionIdx, score, total) {
       if (BentoGrid._isRestoringCuAnswers) return;
       var client = window.Auth && window.Auth._client;
       var user = window.Auth && window.Auth.getUser();
@@ -6319,7 +6302,7 @@
           exam_id: unitId,
           section: 'ex_' + sectionIdx,
           part: 1,
-          answers: answers,
+          answers: { passed: true, score: score, total: total },
           score: score,
           mode: 'course',
           completed_at: new Date().toISOString()
@@ -6329,42 +6312,14 @@
       }
     },
 
-    // Flag used to suppress saves triggered by programmatic answer restoration.
+    // Flag used to suppress redundant saves during programmatic updates.
     _isRestoringCuAnswers: false,
 
-    // Restore saved answers (and re-check if already checked) for a section.
+    // Learning exercises always start fresh — only pass status is kept on the path map.
     _restoreCuExSectionAnswers: function(sec) {
       if (!sec || !sec.classList.contains('cu-exercise')) return;
       if (sec.classList.contains('cu-review-section')) return;
-      var unitId = BentoGrid._currentUnitId;
-      if (!unitId) return;
-      var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
-      if (isNaN(sectionIdx)) return;
-      var level = BentoGrid._courseLevel || 'C1';
-      var saved = BentoGrid._loadCuExSectionState(level, unitId, sectionIdx);
-      if (!saved || !saved.answers) return;
-      // Keep the flag true for the entire restore (including re-check) to suppress
-      // redundant localStorage writes and Supabase API calls.
-      BentoGrid._isRestoringCuAnswers = true;
-      // If "Show answers" was active when the user navigated away, remember it so we
-      // can re-apply it after restoring draft answers.
-      var wasShowingAnswers = sec.getAttribute('data-answers-showing') === 'true';
-      if (wasShowingAnswers) {
-        // Reset the flag so _toggleCuAnswers enters the "show" branch (not "hide") below.
-        sec.setAttribute('data-answers-showing', 'false');
-      }
-      BentoGrid._applyReviewSectionAnswers(sec, saved.answers);
-      if (saved.checked) {
-        BentoGrid._doCheckCuExSection(sec);
-      } else {
-        BentoGrid._resizeAllCuInputs(sec);
-      }
-      BentoGrid._isRestoringCuAnswers = false;
-      // Re-apply "Show answers" if it was active when the user navigated away
-      // (only for unchecked sections — checked sections already show results).
-      if (wasShowingAnswers && !saved.checked) {
-        BentoGrid._toggleCuAnswers(sec.id);
-      }
+      BentoGrid._resizeAllCuInputs(sec);
     },
 
     _saveReviewSectionState: function(sec, unitId, sectionIdx, correctItems, totalItems) {
@@ -7737,9 +7692,9 @@
 
       var unitId = BentoGrid._currentUnitId;
       var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''), 10);
-      if (unitId && !isNaN(sectionIdx) && !BentoGrid._isRestoringCuAnswers) {
-        var checkedAnswers = BentoGrid._getReviewSectionAnswers(sec);
-        BentoGrid._saveCuExSectionChecked(unitId, sectionIdx, checkedAnswers, correctItems, totalItems);
+      var passed = totalItems <= 0 || (correctItems / totalItems) >= 0.7;
+      if (unitId && !isNaN(sectionIdx) && !BentoGrid._isRestoringCuAnswers && passed) {
+        BentoGrid._saveCuExSectionChecked(unitId, sectionIdx, null, correctItems, totalItems);
         var _exLevel = BentoGrid._courseLevel || 'C1';
         BentoGrid._markCourseSectionVisited(_exLevel, unitId, sectionIdx);
         BentoGrid._checkCourseUnitAllDone(_exLevel, unitId);
@@ -7806,7 +7761,16 @@
       '</div>';
     },
 
-    _confirmCuLessonExit: function() {
+    _isLearningExerciseInProgress: function() {
+      var centerSection = document.getElementById('courseCenterSection');
+      if (!centerSection) return false;
+      var sec = centerSection.querySelector('.cu-section.cu-exercise:not(.cu-review-section)');
+      if (!sec) return false;
+      if (sec.getAttribute('data-lesson-finished') === 'true') return false;
+      return sec.getAttribute('data-lesson-flow') === 'true';
+    },
+
+    _showLearningExitConfirm: function(onLeave) {
       var existing = document.getElementById('cu-lesson-exit-modal');
       if (existing) existing.remove();
 
@@ -7818,12 +7782,12 @@
           '<div class="cu-lesson-exit-hero">' +
             '<img src="Assets/images/Cabezasune.svg" alt="" class="cu-lesson-exit-fox" aria-hidden="true">' +
             '<div class="cu-lesson-exit-bubble">' +
-              '<p class="cu-lesson-exit-text">Are you sure you want to leave? You will return to the stage you were on.</p>' +
+              '<p class="cu-lesson-exit-text">¿Seguro que quieres salir? Tendrás que empezar el ejercicio desde cero.</p>' +
             '</div>' +
           '</div>' +
           '<div class="cu-lesson-exit-actions">' +
-            '<button type="button" class="cu-lesson-exit-btn cu-lesson-exit-btn--stay">Keep learning</button>' +
-            '<button type="button" class="cu-lesson-exit-btn cu-lesson-exit-btn--leave">Leave</button>' +
+            '<button type="button" class="cu-lesson-exit-btn cu-lesson-exit-btn--stay">Seguir aprendiendo</button>' +
+            '<button type="button" class="cu-lesson-exit-btn cu-lesson-exit-btn--leave">Salir</button>' +
           '</div>' +
         '</div>';
 
@@ -7835,13 +7799,24 @@
 
       modal.querySelector('.cu-lesson-exit-btn--leave').addEventListener('click', function() {
         modal.remove();
-        var backFn = BentoGrid._courseUnitBackFn || 'BentoGrid.openCourseSection(\'learning\')';
-        try { new Function(backFn)(); } catch (e) { console.error('Exit navigation failed:', e); }
+        if (typeof onLeave === 'function') onLeave();
       });
 
       modal.addEventListener('click', function(e) {
         if (e.target === modal) modal.remove();
       });
+    },
+
+    _confirmCuLessonExit: function() {
+      var backFn = BentoGrid._courseUnitBackFn || 'BentoGrid.openCourseSection(\'learning\')';
+      var leave = function() {
+        try { new Function(backFn)(); } catch (e) { console.error('Exit navigation failed:', e); }
+      };
+      if (!BentoGrid._isLearningExerciseInProgress()) {
+        leave();
+        return;
+      }
+      BentoGrid._showLearningExitConfirm(leave);
     },
 
     _getCuExerciseSectionIndices: function() {
@@ -9047,20 +9022,15 @@
             BentoGrid._saveReviewSectionState(sec, unitId, sectionIdx, weightedCorrect, weightedTotal);
           }
         } else {
-          // Non-review exercise: persist checked answers + score locally and to Supabase
+          // Non-review exercise: persist pass status only (>= 70%)
           var unitId = BentoGrid._currentUnitId;
           var sectionIdx = parseInt((sec.id || '').replace('cu-sec-', ''));
-          if (unitId && !isNaN(sectionIdx)) {
-            var checkedAnswers = BentoGrid._getReviewSectionAnswers(sec);
-            BentoGrid._saveCuExSectionChecked(unitId, sectionIdx, checkedAnswers, correctItems, totalItems);
-            // Mark section as done only on first check, not during answer restoration.
-            // _isRestoringCuAnswers is set true by _restoreCuExSectionAnswers to suppress
-            // redundant localStorage/Supabase writes when re-checking previously saved answers.
-            if (!BentoGrid._isRestoringCuAnswers) {
-              var _exLevel = BentoGrid._courseLevel || 'C1';
-              BentoGrid._markCourseSectionVisited(_exLevel, unitId, sectionIdx);
-              BentoGrid._checkCourseUnitAllDone(_exLevel, unitId);
-            }
+          var passed = totalItems > 0 && (correctItems / totalItems) >= 0.7;
+          if (unitId && !isNaN(sectionIdx) && passed && !BentoGrid._isRestoringCuAnswers) {
+            BentoGrid._saveCuExSectionChecked(unitId, sectionIdx, null, correctItems, totalItems);
+            var _exLevel = BentoGrid._courseLevel || 'C1';
+            BentoGrid._markCourseSectionVisited(_exLevel, unitId, sectionIdx);
+            BentoGrid._checkCourseUnitAllDone(_exLevel, unitId);
           }
         }
         // Update total review score if this is a review section
