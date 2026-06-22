@@ -2,7 +2,6 @@
 
 (function() {
   var NAV_ITEMS = [
-    { id: 'home', label: 'Home', icon: 'home', color: '#1cb0f6', onclick: 'loadDashboard()' },
     { id: 'learning', label: 'Learning', icon: 'menu_book', color: '#3b82f6', onclick: 'BentoGrid.openCourseSection(\'learning\')' },
     { id: 'vocabulary', label: 'Vocabulary', icon: 'translate', color: '#10b981', onclick: 'BentoGrid.openCourseSection(\'vocabulary\')' },
     { id: 'tests', label: 'Tests', icon: 'assignment', color: '#58cc02', onclick: 'BentoGrid.openTests()' },
@@ -12,7 +11,6 @@
   ];
 
   var MOBILE_BOTTOM_ITEMS = [
-    { id: 'home', label: 'Home', icon: 'home', color: '#1cb0f6', onclick: 'BentoGrid.goMobileHome()' },
     { id: 'learning', label: 'Learning', icon: 'menu_book', color: '#3b82f6', onclick: 'BentoGrid.openCourseSection(\'learning\')' },
     { id: 'vocabulary', label: 'Vocabulary', icon: 'translate', color: '#10b981', onclick: 'BentoGrid.openCourseSection(\'vocabulary\')' },
     { id: 'tests', label: 'Tests', icon: 'assignment', color: '#58cc02', onclick: 'BentoGrid.openTests()' },
@@ -34,7 +32,7 @@
 
   function getActiveId() {
     var view = (typeof AppState !== 'undefined') ? AppState.currentView : 'dashboard';
-    if (view === 'dashboard') return 'home';
+    if (view === 'dashboard') return 'learning';
     if (view === 'subpage' || view === 'testsHub') return 'tests';
     if (view === 'course' || view === 'courseBlock' || view === 'courseUnit' || view === 'courseTheory' || view === 'courseEtapa') {
       var courseSection = (typeof BentoGrid !== 'undefined' && BentoGrid._courseSection) ? BentoGrid._courseSection : 'learning';
@@ -73,11 +71,11 @@
     },
 
     buildSidebarHtml: function(activeId) {
-      activeId = activeId || getActiveId() || 'home';
+      activeId = activeId || getActiveId() || 'learning';
       var hidePlans = typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI();
 
       var html = '<nav class="main-nav-sidebar" aria-label="Main navigation">' +
-        '<a class="main-nav-brand" href="/" onclick="event.preventDefault(); loadDashboard()">' +
+        '<a class="main-nav-brand" href="/course/learning" onclick="event.preventDefault(); BentoGrid.openCourseSection(\'learning\')">' +
           '<img src="Assets/images/sunelogoreduced2.svg" class="main-nav-logo" alt="Sune English">' +
         '</a>' +
         '<ul class="main-nav-list">';
@@ -599,7 +597,7 @@
 
     buildMobileTopBarHtml: function() {
       return '<header class="mobile-nav-top-bar" aria-label="Mobile stats">' +
-        '<a class="mobile-nav-top-brand" href="/" onclick="event.preventDefault(); loadDashboard()">' +
+        '<a class="mobile-nav-top-brand" href="/course/learning" onclick="event.preventDefault(); BentoGrid.openCourseSection(\'learning\')">' +
           '<img src="Assets/images/sunelogoreduced2.svg" class="mobile-nav-top-logo" alt="Sune English">' +
         '</a>' +
         '<div class="mobile-nav-top-stats">' + this.buildStatsBarHtml() + '</div>' +
@@ -607,7 +605,7 @@
     },
 
     buildMobileBottomNavHtml: function(activeId) {
-      activeId = activeId || getActiveId() || 'home';
+      activeId = activeId || getActiveId() || 'learning';
       var html = '<nav class="mobile-bottom-nav mobile-bottom-nav--duo" aria-label="Mobile navigation">';
       MOBILE_BOTTOM_ITEMS.forEach(function(item) {
         var isActive = item.id === activeId || (item.id === 'more' && MOBILE_MENU_ITEMS.indexOf(activeId) !== -1);
@@ -624,7 +622,7 @@
     },
 
     buildMobileMenuSheetHtml: function(activeId) {
-      activeId = activeId || getActiveId() || 'home';
+      activeId = activeId || getActiveId() || 'learning';
       var hidePlans = typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI();
       var html = '<div class="mobile-menu-sheet" id="mobileMenuSheet" aria-hidden="true">' +
         '<div class="mobile-menu-sheet-backdrop" onclick="MainNav.closeMobileMenu()"></div>' +

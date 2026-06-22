@@ -93,6 +93,15 @@
       };
     },
 
+    _getCurrentLearningStage: async function() {
+      var allStages = await BentoGrid._buildGlobalLearningStages();
+      if (!allStages.length) return null;
+      var idx = BentoGrid._getFirstActiveGlobalStageIndex(allStages);
+      if (idx < 0) idx = allStages.length - 1;
+      var stage = allStages[idx];
+      return { levelId: stage.levelId, etapaKey: stage.etapaKey };
+    },
+
     openCourseSection: async function(sectionFilter, levelFilter, options) {
       options = options || {};
       var content = document.getElementById('main-content');
@@ -101,9 +110,19 @@
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
 
       var activeSection = sectionFilter || null;
+      var showStageList = !!options.showStageList;
       var skipLevelPicker = activeSection === 'learning' && !levelFilter;
       var activeLevel = levelFilter ? levelFilter.toUpperCase() : null;
       var activeEtapaKey = options.etapaKey || null;
+
+      if (activeSection === 'learning' && !activeLevel && !activeEtapaKey && !showStageList) {
+        var currentStage = await BentoGrid._getCurrentLearningStage();
+        if (currentStage) {
+          activeLevel = currentStage.levelId;
+          activeEtapaKey = currentStage.etapaKey;
+        }
+      }
+
       if (activeEtapaKey && activeSection === 'learning' && activeLevel) {
         if (!BentoGrid._courseIndexData || BentoGrid._courseLevel !== activeLevel) {
           await BentoGrid._loadCourseIndexForLevel(activeLevel);
@@ -135,6 +154,9 @@
       var courseState = { view: activeSection ? 'courseSection' : 'course' };
       if (activeSection) courseState.section = activeSection;
       if (activeLevel) courseState.level = activeLevel;
+      if (showStageList && activeSection === 'learning' && !activeEtapaKey) {
+        courseState.showStageList = true;
+      }
       if (activeEtapaKey) {
         courseState.view = 'courseEtapa';
         courseState.etapaKey = activeEtapaKey;
@@ -185,7 +207,7 @@
         }
         if (activeEtapaKey) {
           backOnclick = activeSection === 'learning'
-            ? 'BentoGrid.openCourseSection(\'learning\')'
+            ? 'BentoGrid.openCourseSection(\'learning\', null, { showStageList: true })'
             : 'BentoGrid.openCourseSection(\'' + activeSection + '\', \'' + activeLevel + '\')';
         } else if (skipLevelPicker) {
           backOnclick = 'loadDashboard()';
