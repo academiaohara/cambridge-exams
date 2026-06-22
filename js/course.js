@@ -1426,22 +1426,20 @@
           var reviewIdxInEtapa = reviewGroupCounter;
           reviewGroupCounter++;
           var reviewPath = 'data/Course/' + levelId + '/' + reviewItem.file;
-          var reviewCellIdx = seqIndex;
           var reviewPassed = BentoGrid._isCourseExercisePassed(levelId, reviewItem.id, 0, 'review', progress);
-          var isNextInPath = firstUnlockedSeqIdx >= 0 && reviewCellIdx === firstUnlockedSeqIdx;
           var reviewQueueLocked = firstActiveReviewIdx >= 0 && reviewIdxInEtapa > firstActiveReviewIdx;
           var isFirstPendingReview = firstActiveReviewIdx >= 0 && reviewIdxInEtapa === firstActiveReviewIdx;
-          var reviewLocked = !etapaUnlocked || reviewPassed || !isNextInPath || reviewQueueLocked;
+          var reviewLocked = !etapaUnlocked || reviewPassed || reviewQueueLocked || !isFirstPendingReview;
           var reviewClass = 'course-review-accelerator';
           if (reviewPassed) reviewClass += ' course-review-accelerator--done';
           else if (isFirstPendingReview || !reviewLocked) reviewClass += ' course-review-accelerator--active';
           if (reviewLocked && !reviewPassed) reviewClass += ' course-review-accelerator--locked';
-          if (isNextInPath && !reviewLocked) reviewClass += ' course-review-accelerator--current';
+          if (isFirstPendingReview && !reviewLocked) reviewClass += ' course-review-accelerator--current';
 
           var reviewOnclick = reviewLocked
             ? 'return false;'
             : 'BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'' + reviewPath + '\')';
-          var reviewLabel = reviewPassed ? ('Review ' + (reviewIdxInEtapa + 1)) : '¿Avanzar hasta aquí?';
+          var reviewLabel = reviewPassed ? ('Review ' + (reviewIdxInEtapa + 1)) : 'Advance to here?';
 
           html += '<div class="course-review-accelerator-wrap">';
           html += '<button type="button" class="' + reviewClass + '" onclick="' + reviewOnclick + '" title="' + self._escapeHTML(reviewLabel) + '">';
