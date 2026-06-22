@@ -6571,21 +6571,21 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 }
 
 .course-etapa-card-btn--continue {
-  background: linear-gradient(180deg, #2eb8f7 0%, #1cb0f6 55%, #1899d6 100%);
-  border-color: #1899d6;
+  background: var(--ex-duo-blue, #1cb0f6);
+  border: 2px solid var(--ex-duo-blue-dark, #1899d6);
+  border-bottom-width: 2px;
   color: #fff;
   min-width: 180px;
-  box-shadow: 0 4px 0 #1899d6;
+  box-shadow: 0 4px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .course-etapa-card-btn--continue:hover {
-  background: linear-gradient(180deg, #3ec0f8 0%, #2eb8f7 55%, #1cb0f6 100%);
+  background: var(--ex-duo-blue-hover, #2eb8f6);
 }
 
 .course-etapa-card-btn--continue:active {
-  transform: translateY(2px);
-  border-bottom-width: 2px;
-  box-shadow: 0 2px 0 #1899d6;
+  transform: translateY(4px);
+  box-shadow: none;
 }
 
 .course-etapa-card-btn--advance {
