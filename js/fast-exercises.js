@@ -1081,7 +1081,6 @@
       }
 
       this._currentMapPage = 0;
-      var currentKey = self._findCurrentPointKey(catMeta, data, null);
 
       var html = '<div class="fe-map-outer fe-map-single-page fe-map-merged">';
       html += '<div class="fe-map-main">';
@@ -1139,7 +1138,6 @@
             html += self._buildMapPointDotHtml(catMeta, levelId, lesson.id, point, pi, {
               isDone: isDone,
               isAccessible: isAccessible,
-              currentKey: currentKey,
               useFilledStyle: true,
               showLine: pi > 0
             });
