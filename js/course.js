@@ -772,11 +772,85 @@
         var gate = await BentoGrid._getGateProgressTestForGlobalStage(globalIndex, allStages);
         if (!gate || !gate.item || gate.item.status !== 'available') return;
 
-        localStorage.setItem('cambridge_course_path_advance_pending', String(globalIndex));
-        BentoGrid._courseAdvanceReturnFn = true;
-        var ptPath = 'data/Course/' + gate.levelId + '/' + gate.item.file;
-        await BentoGrid.openCourseUnit(gate.item.id, ptPath, 0, { level: gate.levelId });
+        if (AppState.isAdmin) {
+          BentoGrid._showAdminAdvanceChoiceDialog(globalIndex, gate);
+          return;
+        }
+
+        await BentoGrid._openAdvanceProgressTest(globalIndex, gate);
       } catch (e) {}
+    },
+
+    _openAdvanceProgressTest: async function(globalIndex, gate) {
+      localStorage.setItem('cambridge_course_path_advance_pending', String(globalIndex));
+      BentoGrid._courseAdvanceReturnFn = true;
+      var ptPath = 'data/Course/' + gate.levelId + '/' + gate.item.file;
+      await BentoGrid.openCourseUnit(gate.item.id, ptPath, 0, { level: gate.levelId });
+    },
+
+    _adminAdvanceDirectly: async function(globalIndex) {
+      await BentoGrid._markGlobalStagesCompleteThrough(globalIndex);
+      BentoGrid._courseAdvanceReturnFn = null;
+      await BentoGrid.openLessons();
+    },
+
+    _showAdminAdvanceChoiceDialog: function(globalIndex, gate) {
+      var existing = document.getElementById('cu-admin-advance-overlay');
+      if (existing) existing.remove();
+
+      var overlay = document.createElement('div');
+      overlay.id = 'cu-admin-advance-overlay';
+      overlay.className = 'cu-confirm-overlay';
+      overlay.innerHTML =
+        '<div class="cu-confirm-dialog cu-admin-advance-dialog">' +
+          '<div class="cu-admin-advance-badge">Admin</div>' +
+          '<div class="cu-confirm-message">¿Cómo quieres avanzar?</div>' +
+          '<p class="cu-admin-advance-hint">Puedes saltar el test y desbloquear la etapa directamente, o hacer el test como un usuario normal.</p>' +
+          '<div class="cu-admin-advance-buttons">' +
+            '<button class="cu-confirm-btn cu-admin-advance-skip" type="button">Avanzar directamente</button>' +
+            '<button class="cu-confirm-btn cu-admin-advance-test" type="button">Hacer el test</button>' +
+            '<button class="cu-confirm-btn cu-confirm-cancel" type="button">Cancelar</button>' +
+          '</div>' +
+        '</div>';
+
+      document.body.appendChild(overlay);
+
+      overlay.querySelector('.cu-admin-advance-skip').addEventListener('click', function() {
+        overlay.remove();
+        BentoGrid._adminAdvanceDirectly(globalIndex);
+      });
+      overlay.querySelector('.cu-admin-advance-test').addEventListener('click', function() {
+        overlay.remove();
+        BentoGrid._openAdvanceProgressTest(globalIndex, gate);
+      });
+      overlay.querySelector('.cu-confirm-cancel').addEventListener('click', function() {
+        overlay.remove();
+      });
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) overlay.remove();
+      });
+    },
+
+    _adminResetAllCourseProgress: function() {
+      if (!AppState.isAdmin) return;
+      BentoGrid._cuConfirm('¿Reiniciar todo el progreso del curso a cero? Esta acción es solo para pruebas.', function() {
+        if (typeof Onboarding !== 'undefined' && Onboarding.clearAllCourseProgress) {
+          Onboarding.clearAllCourseProgress();
+        }
+        BentoGrid._courseAdvanceReturnFn = null;
+        BentoGrid.openLessons();
+      });
+    },
+
+    _buildCourseAdminToolbarHtml: function() {
+      if (!AppState.isAdmin) return '';
+      return '<div class="course-admin-toolbar">' +
+        '<span class="course-admin-toolbar-label">Herramientas de prueba</span>' +
+        '<button type="button" class="course-admin-toolbar-btn" onclick="BentoGrid._adminResetAllCourseProgress()" title="Borrar todo el progreso del curso">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">restart_alt</span>' +
+          'Reiniciar progreso' +
+        '</button>' +
+      '</div>';
     },
 
     _resolveCourseUnitBackFn: function(courseBackFn) {
@@ -915,7 +989,8 @@
 
       var firstActiveIdx = BentoGrid._getFirstActiveGlobalStageIndex(allStages);
       var nextLockedIdx = BentoGrid._getNextLockedGlobalStageIndex(allStages);
-      var html = '<div class="course-etapas-page course-etapas-page--unified" data-section="learning">';
+      var html = BentoGrid._buildCourseAdminToolbarHtml();
+      html += '<div class="course-etapas-page course-etapas-page--unified" data-section="learning">';
       allStages.forEach(function(stage, idx) {
         html += BentoGrid._renderCourseEtapaStageCard({
           section: 'learning',

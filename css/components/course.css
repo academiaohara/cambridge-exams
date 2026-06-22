@@ -4880,6 +4880,99 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   background: #2563eb;
 }
 
+.cu-admin-advance-dialog {
+  max-width: 420px;
+}
+
+.cu-admin-advance-badge {
+  align-self: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cu-admin-advance-hint {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.cu-admin-advance-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cu-admin-advance-skip {
+  background: #10b981;
+  color: #fff;
+}
+
+.cu-admin-advance-skip:hover {
+  background: #059669;
+}
+
+.cu-admin-advance-test {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.cu-admin-advance-test:hover {
+  background: #2563eb;
+}
+
+.course-admin-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 720px;
+  margin: 0 auto 14px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px dashed #fbbf24;
+  background: #fffbeb;
+}
+
+.course-admin-toolbar-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #92400e;
+  letter-spacing: 0.02em;
+}
+
+.course-admin-toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 10px;
+  background: #f59e0b;
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.course-admin-toolbar-btn:hover {
+  background: #d97706;
+}
+
+.course-admin-toolbar-btn .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+
 /* ── COURSE HUB TILES (Theory + Phrasal Verbs + Idioms + Word Formation) ── */
 .course-hub-tiles {
   display: flex;
