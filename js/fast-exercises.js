@@ -144,6 +144,62 @@
       return true;
     },
 
+    /** Sequential unlock: first lesson in level is open; each next requires the previous lesson complete. */
+    _isLevelLessonUnlocked: function(categoryId, levelId, lessonIndex, level) {
+      if (!level || !level.lessons || lessonIndex < 0) return false;
+      if (lessonIndex === 0) return true;
+      var prevLesson = level.lessons[lessonIndex - 1];
+      return this._isLessonComplete(categoryId, levelId, prevLesson.id, prevLesson.points);
+    },
+
+    /** Sequential unlock on the merged B1→C1 path (also gates first lesson of each new level). */
+    _isMergedLessonUnlocked: function(categoryId, merged, lessonIndex, data) {
+      if (!merged || lessonIndex < 0 || lessonIndex >= merged.length) return false;
+      var entry = merged[lessonIndex];
+      if (!this._isLevelUnlocked(categoryId, entry.levelId, data.levels)) return false;
+      if (lessonIndex === 0) return true;
+      var prevEntry = merged[lessonIndex - 1];
+      return this._isLessonComplete(categoryId, prevEntry.levelId, prevEntry.lesson.id, prevEntry.lesson.points);
+    },
+
+    _canAccessPoint: function(categoryId, levelId, lessonId, pointIndex, catData) {
+      if (!catData || !catData.levels) return false;
+      var catMeta = null;
+      for (var c = 0; c < CATEGORIES.length; c++) {
+        if (CATEGORIES[c].id === categoryId) { catMeta = CATEGORIES[c]; break; }
+      }
+      if (!catMeta) return false;
+
+      var levelUnlocked = this._isLevelUnlocked(categoryId, levelId, catData.levels);
+      if (!levelUnlocked) return false;
+
+      if (this._isCourseVocabCategory(categoryId)) {
+        var merged = this._getMergedLessons(catData);
+        for (var mi = 0; mi < merged.length; mi++) {
+          var mEntry = merged[mi];
+          if (mEntry.levelId === levelId && mEntry.lesson.id === lessonId) {
+            var lessonUnlocked = this._isMergedLessonUnlocked(categoryId, merged, mi, catData);
+            return this._isMapPointAccessible(catMeta, levelId, mEntry.lesson, pointIndex, levelUnlocked, lessonUnlocked);
+          }
+        }
+        return false;
+      }
+
+      var level = null;
+      for (var i = 0; i < catData.levels.length; i++) {
+        if (catData.levels[i].id === levelId) { level = catData.levels[i]; break; }
+      }
+      if (!level || !level.lessons) return false;
+
+      for (var li = 0; li < level.lessons.length; li++) {
+        if (level.lessons[li].id === lessonId) {
+          var lessonUnlocked = this._isLevelLessonUnlocked(categoryId, levelId, li, level);
+          return this._isMapPointAccessible(catMeta, levelId, level.lessons[li], pointIndex, levelUnlocked, lessonUnlocked);
+        }
+      }
+      return false;
+    },
+
     _isLevelUnlocked: function(categoryId, levelId, levelsData) {
       if (!levelsData) return false;
       var level = null;
@@ -262,8 +318,8 @@
       return centerSection;
     },
 
-    _isMapPointAccessible: function(catMeta, levelId, lesson, pi, levelUnlocked) {
-      if (!levelUnlocked || !lesson.points || !lesson.points[pi]) return false;
+    _isMapPointAccessible: function(catMeta, levelId, lesson, pi, levelUnlocked, lessonUnlocked) {
+      if (!levelUnlocked || lessonUnlocked === false || !lesson.points || !lesson.points[pi]) return false;
       var point = lesson.points[pi];
       var isLastGate = (point.type === 'pv-mixed' || point.type === 'id-quiz') && pi === lesson.points.length - 1;
       if (!isLastGate) return true;
@@ -299,11 +355,37 @@
         var levelId = entry.levelId;
         var levelUnlocked = this._isLevelUnlocked(catMeta.id, levelId, data.levels);
         if (!levelUnlocked || !lesson.points) continue;
+
+        var lessonUnlocked = true;
+        if (activeLevel) {
+          var level = null;
+          for (var li = 0; li < data.levels.length; li++) {
+            if (data.levels[li].id === levelId) { level = data.levels[li]; break; }
+          }
+          if (level && level.lessons) {
+            for (var lj = 0; lj < level.lessons.length; lj++) {
+              if (level.lessons[lj].id === lesson.id) {
+                lessonUnlocked = this._isLevelLessonUnlocked(catMeta.id, levelId, lj, level);
+                break;
+              }
+            }
+          }
+        } else {
+          var merged = this._getMergedLessons(data);
+          for (var mi = 0; mi < merged.length; mi++) {
+            if (merged[mi].levelId === levelId && merged[mi].lesson.id === lesson.id) {
+              lessonUnlocked = this._isMergedLessonUnlocked(catMeta.id, merged, mi, data);
+              break;
+            }
+          }
+        }
+        if (!lessonUnlocked) continue;
+
         for (var pi = 0; pi < lesson.points.length; pi++) {
           var point = lesson.points[pi];
           if (point.type === 'review') continue;
           if (this._isPointComplete(catMeta.id, levelId, lesson.id, pi)) continue;
-          if (this._isMapPointAccessible(catMeta, levelId, lesson, pi, levelUnlocked)) {
+          if (this._isMapPointAccessible(catMeta, levelId, lesson, pi, levelUnlocked, lessonUnlocked)) {
             return levelId + '|' + lesson.id + '|' + pi;
           }
         }
@@ -914,7 +996,7 @@
           var lesson = level.lessons[li];
           var lessonComplete = true;
           var lessonStarted = false;
-          var lessonLocked = false;
+          var lessonLocked = !self._isLevelLessonUnlocked(catMeta.id, activeLevel, li, level);
 
           if (lesson.points) {
             for (var pi = 0; pi < lesson.points.length; pi++) {
@@ -927,10 +1009,12 @@
           }
 
           var lessonClass = lessonLocked ? 'fe-lesson-locked' : (lessonComplete ? 'fe-lesson-complete' : (lessonStarted ? 'fe-lesson-active' : 'fe-lesson-pending'));
+          var lessonUnlocked = !lessonLocked;
 
           html += '<div class="fe-map-lesson ' + lessonClass + '" data-lesson-global-idx="' + li + '">' +
             '<div class="fe-map-lesson-title">' +
               '<span class="fe-map-lesson-num">' + 'Lesson' + ' ' + (li + 1) + '</span>' +
+              (lessonLocked ? '<span class="fe-map-lesson-lock-badge">' + _mi('lock') + '</span>' : '') +
               '<span class="fe-map-lesson-name">' + self._escapeHTML(lesson.title) + '</span>' +
             '</div>' +
             '<div class="fe-map-points-row">';
@@ -939,7 +1023,7 @@
             for (var pi = 0; pi < lesson.points.length; pi++) {
               var point = lesson.points[pi];
               var isDone = self._isPointComplete(catMeta.id, activeLevel, lesson.id, pi);
-              var isAccessible = self._isMapPointAccessible(catMeta, activeLevel, lesson, pi, true);
+              var isAccessible = lessonUnlocked && self._isMapPointAccessible(catMeta, activeLevel, lesson, pi, true, lessonUnlocked);
 
               // Review points render as rows
               if (point.type === 'review') {
@@ -997,6 +1081,7 @@
       }
 
       this._currentMapPage = 0;
+      var currentKey = self._findCurrentPointKey(catMeta, data, null);
 
       var html = '<div class="fe-map-outer fe-map-single-page fe-map-merged">';
       html += '<div class="fe-map-main">';
@@ -1008,14 +1093,24 @@
         var lesson = entry.lesson;
         var levelId = entry.levelId;
         var levelUnlocked = self._isLevelUnlocked(catMeta.id, levelId, data.levels);
-        var lessonLocked = !levelUnlocked;
+        var lessonUnlocked = levelUnlocked && self._isMergedLessonUnlocked(catMeta.id, merged, mi, data);
+        var lessonLocked = !lessonUnlocked;
 
-        var lessonClass = lessonLocked ? 'fe-lesson-locked' : 'fe-lesson-pending';
+        var lessonComplete = lessonUnlocked && self._isLessonComplete(catMeta.id, levelId, lesson.id, lesson.points);
+        var lessonStarted = false;
+        if (lessonUnlocked && lesson.points) {
+          for (var spi = 0; spi < lesson.points.length; spi++) {
+            if (self._isPointComplete(catMeta.id, levelId, lesson.id, spi)) lessonStarted = true;
+          }
+        }
+
+        var lessonClass = lessonLocked ? 'fe-lesson-locked' : (lessonComplete ? 'fe-lesson-complete' : (lessonStarted ? 'fe-lesson-active' : 'fe-lesson-pending'));
 
         html += '<div class="fe-map-lesson ' + lessonClass + '" data-lesson-global-idx="' + mi + '">' +
           '<div class="fe-map-lesson-title">' +
             '<span class="fe-map-lesson-num">' + 'Lesson' + ' ' + (mi + 1) + '</span>' +
             '<span class="fe-map-lesson-level">' + levelId + '</span>' +
+            (lessonLocked ? '<span class="fe-map-lesson-lock-badge">' + _mi('lock') + '</span>' : '') +
             '<span class="fe-map-lesson-name">' + self._escapeHTML(lesson.title) + '</span>' +
           '</div>' +
           '<div class="fe-map-points-row course-exercise-grid">';
@@ -1025,7 +1120,7 @@
             var point = lesson.points[pi];
             var isDone = self._isPointComplete(catMeta.id, levelId, lesson.id, pi);
 
-            var isAccessible = levelUnlocked && self._isMapPointAccessible(catMeta, levelId, lesson, pi, levelUnlocked);
+            var isAccessible = lessonUnlocked && self._isMapPointAccessible(catMeta, levelId, lesson, pi, levelUnlocked, lessonUnlocked);
 
             if (point.type === 'review') {
               var reviewStateClass = isDone ? 'fe-level-active' : (isAccessible ? 'fe-level-unlocked' : 'fe-level-locked');
@@ -1044,6 +1139,7 @@
             html += self._buildMapPointDotHtml(catMeta, levelId, lesson.id, point, pi, {
               isDone: isDone,
               isAccessible: isAccessible,
+              currentKey: currentKey,
               useFilledStyle: true,
               showLine: pi > 0
             });
@@ -1053,7 +1149,8 @@
         html += '</div></div>';
 
         if (mi < merged.length - 1) {
-          html += '<div class="fe-map-connector"></div>';
+          var connectorClass = lessonComplete ? ' fe-map-connector--done' : '';
+          html += '<div class="fe-map-connector' + connectorClass + '"></div>';
         }
       }
 
@@ -1374,27 +1471,21 @@
       if (!level || !level.lessons) return;
 
       // Find first incomplete accessible point across all lessons.
-      // All points are free except the last pv-mixed in each lesson,
-      // which requires all prior points in the lesson to be done.
       for (var li = 0; li < level.lessons.length; li++) {
         var lesson = level.lessons[li];
         if (!lesson.points) continue;
+        if (!this._isLevelLessonUnlocked(categoryId, levelId, li, level)) continue;
 
         for (var pi = 0; pi < lesson.points.length; pi++) {
           if (!this._isPointComplete(categoryId, levelId, lesson.id, pi)) {
-            // Skip locked pv-mixed (last point) if not all prior done
-            var point = lesson.points[pi];
-            var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1) ||
-                                 (point.type === 'id-quiz' && pi === lesson.points.length - 1);
-            if (isLastPvMixed) {
-              var allPriorDone = true;
-              for (var prev = 0; prev < pi; prev++) {
-                if (!this._isPointComplete(categoryId, levelId, lesson.id, prev)) { allPriorDone = false; break; }
-              }
-              if (!allPriorDone) continue;
+            var catMeta = null;
+            for (var c = 0; c < CATEGORIES.length; c++) {
+              if (CATEGORIES[c].id === categoryId) { catMeta = CATEGORIES[c]; break; }
             }
-            this.openPoint(categoryId, levelId, lesson.id, pi);
-            return;
+            if (catMeta && this._isMapPointAccessible(catMeta, levelId, lesson, pi, true, true)) {
+              this.openPoint(categoryId, levelId, lesson.id, pi);
+              return;
+            }
           }
         }
       }
@@ -1406,27 +1497,26 @@
       var data = await this._loadCategoryData(categoryId);
       if (!data) return;
 
+      var catMeta = null;
+      for (var c = 0; c < CATEGORIES.length; c++) {
+        if (CATEGORIES[c].id === categoryId) { catMeta = CATEGORIES[c]; break; }
+      }
+      if (!catMeta) return;
+
       var merged = this._getMergedLessons(data);
       for (var mi = 0; mi < merged.length; mi++) {
         var entry = merged[mi];
         if (!this._isLevelUnlocked(categoryId, entry.levelId, data.levels)) continue;
+        if (!this._isMergedLessonUnlocked(categoryId, merged, mi, data)) continue;
         var lesson = entry.lesson;
         if (!lesson.points) continue;
 
         for (var pi = 0; pi < lesson.points.length; pi++) {
           if (!this._isPointComplete(categoryId, entry.levelId, lesson.id, pi)) {
-            var point = lesson.points[pi];
-            var isLastPvMixed = (point.type === 'pv-mixed' && pi === lesson.points.length - 1) ||
-                                 (point.type === 'id-quiz' && pi === lesson.points.length - 1);
-            if (isLastPvMixed) {
-              var allPriorDone = true;
-              for (var prev = 0; prev < pi; prev++) {
-                if (!this._isPointComplete(categoryId, entry.levelId, lesson.id, prev)) { allPriorDone = false; break; }
-              }
-              if (!allPriorDone) continue;
+            if (this._isMapPointAccessible(catMeta, entry.levelId, lesson, pi, true, true)) {
+              this.openPoint(categoryId, entry.levelId, lesson.id, pi);
+              return;
             }
-            this.openPoint(categoryId, entry.levelId, lesson.id, pi);
-            return;
           }
         }
       }
@@ -1748,6 +1838,12 @@
 
       var lessonData = await this._loadLessonData(categoryId, levelId, lessonId);
       var catData = await this._loadCategoryData(categoryId);
+
+      if (!this._canAccessPoint(categoryId, levelId, lessonId, pointIndex, catData)) {
+        await this._waitLoading(loadingStart);
+        this.openCategory(categoryId);
+        return;
+      }
 
       await this._waitLoading(loadingStart);
 
