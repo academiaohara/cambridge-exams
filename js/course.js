@@ -1428,15 +1428,15 @@
           var reviewPath = 'data/Course/' + levelId + '/' + reviewItem.file;
           var reviewCellIdx = seqIndex;
           var reviewPassed = BentoGrid._isCourseExercisePassed(levelId, reviewItem.id, 0, 'review', progress);
-          var isNextInPath = firstUnlockedSeqIdx >= 0 && reviewCellIdx === firstUnlockedSeqIdx;
           var reviewQueueLocked = firstActiveReviewIdx >= 0 && reviewIdxInEtapa > firstActiveReviewIdx;
           var isFirstPendingReview = firstActiveReviewIdx >= 0 && reviewIdxInEtapa === firstActiveReviewIdx;
-          var reviewLocked = !etapaUnlocked || reviewPassed || !isNextInPath || reviewQueueLocked;
+          var sequentialLocked = firstUnlockedSeqIdx >= 0 && reviewCellIdx > firstUnlockedSeqIdx;
+          var reviewLocked = !etapaUnlocked || sequentialLocked || reviewQueueLocked;
           var reviewClass = 'course-review-accelerator';
           if (reviewPassed) reviewClass += ' course-review-accelerator--done';
           else if (isFirstPendingReview || !reviewLocked) reviewClass += ' course-review-accelerator--active';
           if (reviewLocked && !reviewPassed) reviewClass += ' course-review-accelerator--locked';
-          if (isNextInPath && !reviewLocked) reviewClass += ' course-review-accelerator--current';
+          if (reviewCellIdx === firstUnlockedSeqIdx && !reviewLocked) reviewClass += ' course-review-accelerator--current';
 
           var reviewOnclick = reviewLocked
             ? 'return false;'
