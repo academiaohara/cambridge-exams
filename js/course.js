@@ -542,6 +542,74 @@
       return changed;
     },
 
+    _markCourseUnitExercisesPassed: async function(levelId, item) {
+      if (!item || item.status !== 'available') return;
+      if (item.type !== 'grammar' && item.type !== 'vocabulary') return;
+
+      if (!BentoGrid._courseUnitMeta || BentoGrid._courseUnitMetaLevel !== levelId) {
+        BentoGrid._courseUnitMeta = {};
+        BentoGrid._courseUnitMetaLevel = levelId;
+      }
+
+      if (!BentoGrid._courseUnitMeta[item.id]) {
+        try {
+          var response = await fetch('data/Course/' + levelId + '/' + item.file);
+          if (!response.ok) return;
+          var unitData = await response.json();
+          BentoGrid._courseUnitMeta[item.id] = BentoGrid._extractCourseUnitMeta(unitData);
+        } catch (e) {
+          return;
+        }
+      }
+
+      var metaInfo = BentoGrid._courseUnitMeta[item.id];
+      if (!metaInfo) return;
+
+      try {
+        var exKey = BentoGrid._cuExStateKey(levelId);
+        var exState = JSON.parse(localStorage.getItem(exKey) || '{}');
+        var exChanged = false;
+        (metaInfo.exercises || []).forEach(function(ex) {
+          var skey = item.id + '_' + ex.sectionIdx;
+          if (!(exState[skey] && exState[skey].checked)) {
+            exState[skey] = { answers: {}, checked: true, score: 1, total: 1 };
+            exChanged = true;
+          }
+        });
+        if (exChanged) localStorage.setItem(exKey, JSON.stringify(exState));
+      } catch (e) {}
+
+      try {
+        var secProg = BentoGrid._getCourseSectionProgress(levelId);
+        var unitProg = secProg[item.id] || {};
+        var secChanged = false;
+        (metaInfo.theory || []).concat(metaInfo.exercises || []).forEach(function(sec) {
+          if (!unitProg[sec.sectionIdx]) {
+            unitProg[sec.sectionIdx] = true;
+            secChanged = true;
+          }
+        });
+        if (secChanged) {
+          secProg[item.id] = unitProg;
+          localStorage.setItem('cambridge_course_section_progress_' + levelId, JSON.stringify(secProg));
+        }
+      } catch (e) {}
+    },
+
+    _markCoursePathEntryFullyComplete: async function(entry, levelId, progress) {
+      if (!entry) return;
+      if (entry.type === 'progress_test' && entry.item) {
+        BentoGrid._markCoursePathEntryInProgress(entry, progress);
+        return;
+      }
+      if (entry.type !== 'etapa' || !entry.items) return;
+
+      BentoGrid._markCoursePathEntryInProgress(entry, progress);
+      await Promise.all(entry.items.map(function(item) {
+        return BentoGrid._markCourseUnitExercisesPassed(levelId, item);
+      }));
+    },
+
     _markGlobalStagesCompleteThrough: async function(targetGlobalIndex) {
       if (!targetGlobalIndex || targetGlobalIndex <= 0) return;
 
@@ -576,7 +644,7 @@
           if (entry.type !== 'etapa') continue;
 
           if (entry.number < targetStageNum) {
-            BentoGrid._markCoursePathEntryInProgress(entry, progress);
+            await BentoGrid._markCoursePathEntryFullyComplete(entry, levelId, progress);
             if (pendingPT) {
               BentoGrid._markCoursePathEntryInProgress(pendingPT, progress);
               pendingPT = null;
