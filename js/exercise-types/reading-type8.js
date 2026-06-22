@@ -28,6 +28,10 @@
         return;
       }
       var body = String(rawText || '').replace(/\r\n/g, '\n');
+      if (body.startsWith('### ')) {
+        var titleNl = body.indexOf('\n');
+        body = titleNl !== -1 ? body.substring(titleNl + 1) : '';
+      }
       var bodyHtml;
       if (typeof ExerciseRenderer !== 'undefined' && ExerciseRenderer.formatB1Reading2NoticeHtml) {
         bodyHtml = ExerciseRenderer.formatB1Reading2NoticeHtml(body, !!AppState.answersChecked);
@@ -37,11 +41,7 @@
           ? ExerciseRenderer.processEvidenceMarkers(escaped)
           : escaped;
       }
-      var html = '<div class="b1-reading2-preview-inner">';
-      html += '<span class="b1-reading2-preview-letter">' + letter + '</span>';
-      html += '<div class="b1-reading2-preview-text">' + bodyHtml + '</div>';
-      html += '</div>';
-      el.innerHTML = html;
+      el.innerHTML = '<div class="b1-reading2-preview-text">' + bodyHtml + '</div>';
       el.classList.add('has-text');
       var isIncorrect = false;
       if (AppState.answersChecked && AppState.currentExercise) {
