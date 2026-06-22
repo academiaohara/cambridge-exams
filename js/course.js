@@ -104,10 +104,14 @@
 
     _buildCourseStagesListHeaderHtml: function(backOnclick) {
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
-      return '<div class="course-stages-header">' +
-        '<button type="button" class="course-stages-back" onclick="' + backOnclick + '" aria-label="Back">' +
-          _mi('arrow_back') + '<span>Back</span>' +
+      return '<div class="course-stages-header course-stages-header--duo">' +
+        '<button type="button" class="course-stages-back course-stages-back--duo" onclick="' + backOnclick + '" aria-label="Back">' +
+          _mi('arrow_back') +
         '</button>' +
+        '<div class="course-stages-header-text">' +
+          '<div class="course-stages-kicker">GRAMMAR & THEORY</div>' +
+          '<div class="course-stages-title">Learning Path</div>' +
+        '</div>' +
       '</div>';
     },
 
@@ -164,16 +168,7 @@
     },
 
     _openCourseEtapaAtCurrent: async function(section, levelId, etapaKey, options) {
-      options = options || {};
-      BentoGrid._courseSection = section;
-      BentoGrid._currentEtapaKey = etapaKey;
-      AppState.currentLevel = levelId;
-
-      var target = await BentoGrid._getFirstUnlockedExerciseInEtapa(section, levelId, etapaKey);
-      if (target) {
-        return BentoGrid.openCourseUnit(target.unitId, target.filePath, target.sectionIdx, Object.assign({ level: levelId }, options));
-      }
-      return BentoGrid.openCourseEtapa(section, levelId, etapaKey, options);
+      return BentoGrid.openCourseEtapa(section, levelId, etapaKey, options || {});
     },
 
     _resumeCurrentLearningPoint: async function(options) {
@@ -278,8 +273,8 @@
           headerTitle = skipLevelPicker ? secMeta.label : lvlMeta.difficulty;
         }
         if (activeSection === 'learning') {
-          headerClass = ' cw-section-header--picker';
-          headerStyle = '';
+          headerClass = ' cw-section-header--picker cw-section-header--duo cw-section-header--learning';
+          headerStyle = ' style="--cw-header-color:' + lvlMeta.headerColor + '"';
         } else {
           headerClass = ' cw-section-header--level';
           headerStyle = ' style="--cw-header-color:' + lvlMeta.headerColor + '"';
