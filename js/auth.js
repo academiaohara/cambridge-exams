@@ -321,8 +321,10 @@
     _afterAuthEntry: function () {
       if (typeof Onboarding !== 'undefined') {
         Onboarding.maybeShowAfterAuth();
-      } else if (typeof Dashboard !== 'undefined') {
-        Dashboard.render();
+      } else if (typeof App !== 'undefined' && App.openLearningHome) {
+        App.openLearningHome();
+      } else if (typeof BentoGrid !== 'undefined') {
+        BentoGrid.openCourseSection('learning');
       }
     },
 

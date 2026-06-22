@@ -140,7 +140,7 @@
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var profileMarkup = this._buildMobileBottomNavProfileMarkup(_mi);
       return '<nav class="mobile-bottom-nav" aria-label="Mobile dashboard">' +
-        '<button type="button" class="mobile-bottom-nav-btn" data-mobile-tab="home" onclick="BentoGrid.goMobileHome()">' + _mi('home') + '<span>Home</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn" data-mobile-tab="learning" onclick="BentoGrid.goMobileHome()">' + _mi('menu_book') + '<span>Learning</span></button>' +
         '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.openLessons()">' + _mi('auto_stories') + '<span>Course</span></button>' +
         '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.openTests()">' + _mi('assignment') + '<span>Tests</span></button>' +
         '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.openMobileDictionaries()">' + _mi('menu_book') + '<span>Dict</span></button>' +
@@ -193,18 +193,11 @@
       }
     },
 
-    /** Leave any screen (profile, course, exercises, subpages) and open the main dashboard home. */
+    /** Leave any screen and open Learning at the current stage. */
     goMobileHome: function() {
       if (typeof MainNav !== 'undefined' && MainNav.closeMobileMenu) MainNav.closeMobileMenu();
-      if (typeof AppState !== 'undefined' && AppState.currentView === 'dashboard') {
-        this.setMobileDashboardTab('home');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        if (typeof MainNav !== 'undefined' && MainNav.setMobileActive) MainNav.setMobileActive('home');
-        return;
-      }
-      this._mobileDashboardTab = 'home';
-      if (typeof loadDashboard === 'function') {
-        loadDashboard();
+      if (typeof BentoGrid !== 'undefined' && BentoGrid.openCourseSection) {
+        BentoGrid.openCourseSection('learning');
       }
     },
 

@@ -1689,10 +1689,10 @@
           }
         }
       } else {
-        Dashboard.render(returnToExamId);
-        if (!opts.skipHistory) {
-          var dashState = { view: 'dashboard' };
-          history.pushState(dashState, '', Router.stateToPath(dashState));
+        if (typeof App !== 'undefined' && App.openLearningHome) {
+          App.openLearningHome({ skipHistory: !!opts.skipHistory });
+        } else if (typeof BentoGrid !== 'undefined') {
+          BentoGrid.openCourseSection('learning');
         }
       }
     },

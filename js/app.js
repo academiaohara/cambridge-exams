@@ -22,6 +22,16 @@
       } catch (e) { /* ignore */ }
     },
 
+    openLearningHome: async function(options) {
+      options = options || {};
+      if (typeof Landing !== 'undefined') Landing.hide();
+      var app = document.getElementById('app');
+      if (app) app.style.display = '';
+      if (typeof BentoGrid !== 'undefined' && BentoGrid.openCourseSection) {
+        await BentoGrid.openCourseSection('learning', null, options);
+      }
+    },
+
     handleRoute: function (state) {
       state = state || { view: 'landing' };
 
@@ -37,8 +47,7 @@
 
       if (state.view === 'login') {
         if (AppState.isAuthenticated) {
-          Dashboard.render();
-          history.replaceState({ view: 'dashboard' }, '', '/');
+          this.openLearningHome({ fromRoute: true });
           return;
         }
         if (typeof Auth !== 'undefined') Auth.showLoginPage();
@@ -46,8 +55,7 @@
       }
       if (state.view === 'register') {
         if (AppState.isAuthenticated) {
-          Dashboard.render();
-          history.replaceState({ view: 'dashboard' }, '', '/');
+          this.openLearningHome({ fromRoute: true });
           return;
         }
         if (typeof Auth !== 'undefined') Auth.showRegisterPage();
@@ -59,8 +67,7 @@
       }
       if (state.view === 'landing') {
         if (this.hasAppAccess()) {
-          Dashboard.render();
-          history.replaceState({ view: 'dashboard' }, '', '/');
+          this.openLearningHome({ fromRoute: true });
         } else if (typeof Landing !== 'undefined') {
           Landing.render();
         }
@@ -86,8 +93,7 @@
       if (typeof Auth !== 'undefined') Auth._hideAuthScreen();
 
       if (this.hasAppAccess() && typeof Onboarding !== 'undefined' && !Onboarding.needsShow()) {
-        Dashboard.render();
-        history.replaceState({ view: 'dashboard' }, '', '/');
+        this.openLearningHome({ fromRoute: true });
         return;
       }
 
@@ -105,8 +111,7 @@
         history.replaceState({ view: 'welcome' }, '', '/welcome');
         this.showWelcome();
       } else {
-        Dashboard.render();
-        history.replaceState({ view: 'dashboard' }, '', '/');
+        this.openLearningHome({ fromRoute: true });
       }
     },
 
@@ -123,7 +128,7 @@
         if (AppState.currentExercise) {
           Exercise.closeExercise({ skipHistory: true });
         } else {
-          Dashboard.render();
+          this.openLearningHome({ fromRoute: true });
         }
       } else if (state.view === 'testsHub') {
         if (typeof BentoGrid !== 'undefined') {
@@ -185,18 +190,19 @@
         Dashboard.render();
         if (typeof FastExercises !== 'undefined') FastExercises.openPoint(state.categoryId, state.levelId, state.lessonId, state.pointIndex);
       } else if (state.view === 'course') {
-        Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons({ fromRoute: true });
       } else if (state.view === 'courseSection' && state.section) {
-        Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseSection(state.section, state.level, { fromRoute: true });
+        if (typeof BentoGrid !== 'undefined') {
+          BentoGrid.openCourseSection(state.section, state.level, {
+            fromRoute: true,
+            showStageList: !!state.showStageList
+          });
+        }
       } else if (state.view === 'courseEtapa' && state.section && state.level && state.etapaKey) {
-        Dashboard.render();
         if (typeof BentoGrid !== 'undefined') {
           BentoGrid.openCourseSection(state.section, state.level, { fromRoute: true, etapaKey: state.etapaKey });
         }
       } else if (state.view === 'courseTheory') {
-        Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseSection('learning', state.level, { fromRoute: true });
       } else if (state.view === 'courseBlock' && state.blockKey) {
         Dashboard.render();
@@ -215,7 +221,7 @@
       } else if (STATIC_PAGE_VIEWS.indexOf(state.view) !== -1) {
         if (typeof StaticPages !== 'undefined') StaticPages.render(state.view, false);
       } else {
-        Dashboard.render();
+        this.openLearningHome({ fromRoute: true });
       }
     },
 
@@ -352,22 +358,19 @@
         Dashboard.render();
         if (typeof FastExercises !== 'undefined') FastExercises.openPoint(initialState.categoryId, initialState.levelId, initialState.lessonId, initialState.pointIndex);
       } else if (initialState.view === 'course') {
-        history.replaceState({ view: 'dashboard' }, '', '/');
-        Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons({ fromRoute: true });
       } else if (initialState.view === 'courseSection' && initialState.section) {
-        history.replaceState({ view: 'dashboard' }, '', '/');
-        Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseSection(initialState.section, initialState.level, { fromRoute: true });
+        if (typeof BentoGrid !== 'undefined') {
+          BentoGrid.openCourseSection(initialState.section, initialState.level, {
+            fromRoute: true,
+            showStageList: !!initialState.showStageList
+          });
+        }
       } else if (initialState.view === 'courseEtapa' && initialState.section && initialState.level && initialState.etapaKey) {
-        history.replaceState({ view: 'dashboard' }, '', '/');
-        Dashboard.render();
         if (typeof BentoGrid !== 'undefined') {
           BentoGrid.openCourseSection(initialState.section, initialState.level, { fromRoute: true, etapaKey: initialState.etapaKey });
         }
       } else if (initialState.view === 'courseTheory') {
-        history.replaceState({ view: 'dashboard' }, '', '/');
-        Dashboard.render();
         if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseSection('learning', initialState.level, { fromRoute: true });
       } else if (initialState.view === 'courseBlock' && initialState.blockKey) {
         history.replaceState({ view: 'dashboard' }, '', '/');
@@ -391,9 +394,8 @@
         if (typeof StaticPages !== 'undefined') StaticPages.render(initialState.view, false);
       } else if (initialState.view === 'landing' || initialState.view === 'welcome' ||
                  initialState.view === 'login' || initialState.view === 'register') {
-        if (AppState.isAuthenticated && (initialState.view === 'landing' || initialState.view === 'welcome')) {
-          Dashboard.render();
-          history.replaceState({ view: 'dashboard' }, '', '/');
+        if (this.hasAppAccess() && (initialState.view === 'landing' || initialState.view === 'welcome')) {
+          this.openLearningHome({ fromRoute: true });
         } else {
           this.handleRoute(initialState);
           history.replaceState(initialState, '', Router.stateToPath(initialState));
@@ -481,7 +483,11 @@
     },
     
     loadDashboard: function() {
-      Exercise.closeExercise({ forceDashboard: true });
+      if (AppState.currentExercise) {
+        Exercise.closeExercise({ forceDashboard: true });
+        return;
+      }
+      this.openLearningHome();
     },
     
     syncExamsFromFolders: async function() {

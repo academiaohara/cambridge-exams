@@ -338,8 +338,10 @@
       var afterLoad = function () {
         if (options.openFirstB1Topic) {
           openFirstB1Topic();
-        } else if (typeof Dashboard !== 'undefined') {
-          Dashboard.render();
+        } else if (typeof App !== 'undefined' && App.openLearningHome) {
+          App.openLearningHome();
+        } else if (typeof BentoGrid !== 'undefined') {
+          BentoGrid.openCourseSection('learning');
         }
       };
 
@@ -352,8 +354,11 @@
 
     maybeShowAfterAuth: function () {
       if (!this.needsShow()) {
-        if (typeof Dashboard !== 'undefined') Dashboard.render();
-        history.replaceState({ view: 'dashboard' }, '', '/');
+        if (typeof App !== 'undefined' && App.openLearningHome) {
+          App.openLearningHome();
+        } else if (typeof BentoGrid !== 'undefined') {
+          BentoGrid.openCourseSection('learning');
+        }
         return;
       }
       history.replaceState({ view: 'welcome' }, '', '/welcome');
