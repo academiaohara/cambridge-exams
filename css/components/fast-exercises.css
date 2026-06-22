@@ -527,9 +527,39 @@
 }
 
 /* Merged B1→C1 path (course vocabulary categories) */
+.dashboard-center:has(.fe-section--merged-path) {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: calc(100dvh - var(--dashboard-top-spacing, 28px) - 12px);
+}
+
+.fe-section--merged-path {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.fe-section--merged-path > .subpage-header,
+.fe-section--merged-path > .fe-bottom-bar {
+  flex-shrink: 0;
+}
+
 .fe-section--merged-path .fe-map-outer.fe-map-merged {
   max-width: 720px;
   margin: 0 auto;
+  width: 100%;
+}
+
+.fe-section--merged-path .fe-map-outer.fe-map-single-page.fe-map-merged {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  scrollbar-width: thin;
 }
 
 .fe-map-container--merged {
@@ -1386,6 +1416,10 @@
 }
 
 @media (max-width: 768px) {
+  .dashboard-center:has(.fe-section--merged-path) {
+    max-height: calc(100dvh - var(--dashboard-top-spacing, 28px) - 64px - env(safe-area-inset-bottom, 0px));
+  }
+
   .fe-map-outer .fe-map-page-dots,
   .fe-map-outer .fe-map-arrow-btn {
     display: none !important;
@@ -7754,17 +7788,6 @@
   color: #94a3b8 !important;
   box-shadow: 0 4px 0 #cbd5e1 !important;
   cursor: not-allowed;
-}
-
-.fe-section--merged-path .fe-dot.fe-dot-current:not(.fe-dot-mini):not(.fe-dot-done):not(.fe-dot-locked) {
-  outline: 3px solid rgba(28, 176, 246, 0.45);
-  outline-offset: 3px;
-  animation: fe-dot-current-pulse 1.8s ease-in-out infinite;
-}
-
-@keyframes fe-dot-current-pulse {
-  0%, 100% { outline-color: rgba(28, 176, 246, 0.35); }
-  50% { outline-color: rgba(28, 176, 246, 0.65); }
 }
 
 /* Flat entry buttons with bottom relief per exercise type */
