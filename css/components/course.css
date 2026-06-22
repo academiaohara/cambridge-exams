@@ -5952,6 +5952,44 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   padding-top: 8px;
 }
 
+.dashboard-center--learning-stages .cw-page-content {
+  padding-top: 0;
+}
+
+.course-stages-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 14px 20px 12px;
+  margin: 0 0 0;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.course-stages-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #9ca3af;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.course-stages-back:hover {
+  color: #6b7280;
+}
+
+.course-stages-back .material-symbols-outlined {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
 .course-etapa-card--available,
 .course-pt-card--available {
   background: #fff;
