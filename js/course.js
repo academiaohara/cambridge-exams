@@ -107,10 +107,13 @@
       var SECTION_META = BentoGrid._courseSectionMeta();
       var meta = SECTION_META[sectionId] || SECTION_META.learning;
       var title = sectionId === 'learning' ? 'Learning Path' : (meta.label + ' Path');
+      var showBack = sectionId === 'learning';
       return '<div class="course-stages-header course-stages-header--duo" style="--cw-header-color:' + meta.headerColor + '">' +
-        '<button type="button" class="course-stages-back course-stages-back--duo" onclick="' + backOnclick + '" aria-label="Back">' +
-          _mi('arrow_back') +
-        '</button>' +
+        (showBack
+          ? '<button type="button" class="course-stages-back course-stages-back--duo" onclick="' + backOnclick + '" aria-label="Back">' +
+              _mi('arrow_back') +
+            '</button>'
+          : '') +
         '<div class="course-stages-header-text">' +
           '<div class="course-stages-kicker">' + meta.kicker + '</div>' +
           '<div class="course-stages-title">' + title + '</div>' +
@@ -323,7 +326,9 @@
                   isStageListView ? 'BentoGrid._resumeCurrentLearningPoint()' : 'loadDashboard()'
                 )
               : '<div class="cw-section-header' + headerClass + '"' + headerStyle + '>' +
-                '<button class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '</button>' +
+                (activeSection === 'learning'
+                  ? '<button class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '</button>'
+                  : '') +
                 '<div class="cw-section-header-text">' +
                   '<div class="cw-section-kicker">' + headerKicker + '</div>' +
                   '<div class="cw-section-title">' + headerTitle + '</div>' +
@@ -1671,9 +1676,13 @@
         ? '<button type="button" class="cu-reset-btn" onclick="BentoGrid._resetCourseBlock(\'' + blockKey + '\')" title="Restart block">' + CU_RESET_ICON_SVG + '<span>Restart</span></button>'
         : '';
       var blockLabel = BentoGrid._getBlockLabel(blockKey);
+      var courseSection = BentoGrid._courseSection || 'learning';
+      var showLearningBack = courseSection === 'learning';
       var headerHtml =
         '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="BentoGrid._backToCourseOverview()" title="Overview">' + _mi('dashboard') + '<span>Overview</span></button>' +
+          (showLearningBack
+            ? '<button class="subpage-back-btn" onclick="BentoGrid._backToCourseOverview()" title="Overview">' + _mi('dashboard') + '<span>Overview</span></button>'
+            : '') +
           '<div>' +
             '<div class="subpage-title">' + _mi('auto_stories') + ' ' + blockLabel + '</div>' +
             '<div class="subpage-subtitle">Structured lessons for ' + level + '</div>' +
@@ -1994,7 +2003,9 @@
         : '<div class="fe-loading"><div class="fe-spinner"></div></div>';
       centerSection.innerHTML =
         '<div class="subpage-header">' +
-          '<button class="subpage-back-btn" onclick="' + courseBackFn + '" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
+          (courseSection === 'learning'
+            ? '<button class="subpage-back-btn" onclick="' + courseBackFn + '" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>'
+            : '') +
           '<div>' +
             '<div class="subpage-title">' + _mi('auto_stories') + ' Course</div>' +
             '<div class="subpage-subtitle">' + level + ' Advanced</div>' +
@@ -2030,7 +2041,9 @@
       if (!unitData) {
         centerSection.innerHTML =
           '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="' + courseBackFn + '" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>' +
+            (courseSection === 'learning'
+              ? '<button class="subpage-back-btn" onclick="' + courseBackFn + '" title="Back">' + _mi('arrow_back') + '<span>Back</span></button>'
+              : '') +
             '<div><div class="subpage-title">' + _mi('auto_stories') + ' Course</div></div>' +
           '</div>' +
           '<div class="fe-error">Could not load unit content.</div>';
@@ -2069,7 +2082,9 @@
 
       var html =
         '<div class="subpage-header subpage-header--course-unit">' +
-          '<button type="button" class="subpage-back-btn" onclick="' + backFn + '" title="' + backLabel + '">' + _mi('arrow_back') + '<span>' + backLabel + '</span></button>' +
+          (courseSection === 'learning'
+            ? '<button type="button" class="subpage-back-btn" onclick="' + backFn + '" title="' + backLabel + '">' + _mi('arrow_back') + '<span>' + backLabel + '</span></button>'
+            : '') +
           '<div class="subpage-header-unit-core">' +
             '<div class="subpage-title">' + _mi('auto_stories') + ' ' + (unitData.unitTitle || '') + '</div>' +
             '<div class="subpage-subtitle">' + level + ' Advanced</div>' +

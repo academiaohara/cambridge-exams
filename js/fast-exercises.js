@@ -625,7 +625,6 @@
           '<div class="dashboard-center">' +
             '<div class="fe-section">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="loadDashboard()" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
                 '<div>' +
                   '<div class="subpage-title">' + _mi('bolt') + ' ' + 'Fast Learning' + '</div>' +
                   '<div class="subpage-subtitle">' + 'Choose a category and start your learning path' + '</div>' +
@@ -758,7 +757,6 @@
           '<div class="dashboard-center">' +
             '<div class="fe-section' + (isCourseVocab ? ' fe-section--merged-path' : '') + '" id="feCenterSection">' +
               '<div class="' + headerClass + '">' +
-                '<button class="subpage-back-btn" onclick="' + _backFn + '" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
                 '<div class="subpage-header-core">' +
                   '<div class="subpage-header-titles">' +
                     '<div class="subpage-title">' + _mi(catMeta.icon) + ' ' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
@@ -978,7 +976,6 @@
       }
 
       html += '<div class="fe-map-main">';
-      html += '<button type="button" class="fe-map-mobile-back subpage-back-btn" onclick="FastExercises._closeMobileLessonRoadmap()" aria-label="' + 'Lessons' + '">' + _backButtonContent('Lessons') + '</button>';
 
       // Up arrow
       if (totalPages > 1) {
@@ -1568,7 +1565,6 @@
         content.innerHTML =
           '<div class="fe-point-view">' +
             '<div class="subpage-header">' +
-              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
               '<div class="subpage-header-titles">' +
                 '<div class="subpage-title">' + _mi('quiz') + ' Quick Review</div>' +
                 '<div class="subpage-subtitle">' + self._escapeHTML(catMeta.name) + ' · ' + activeLevel + '</div>' +
@@ -1684,9 +1680,8 @@
 
       container.innerHTML =
         '<div class="fe-point-view">' +
-          '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
-            '<div class="subpage-header-titles">' +
+            '<div class="subpage-header">' +
+              '<div class="subpage-header-titles">' +
               '<div class="subpage-title">' + _mi('quiz') + ' Quick Review</div>' +
               '<div class="subpage-subtitle">' + self._escapeHTML(catMeta.name) + ' · ' + activeLevel + ' · ' + exercises.length + ' exercises</div>' +
             '</div>' +
@@ -1881,7 +1876,6 @@
           container.innerHTML =
             '<div class="fe-point-view">' +
               '<div class="subpage-header">' +
-                '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
                 '<div>' +
                   '<div class="subpage-title">' + self._escapeHTML(pointLabel) + '</div>' +
                   '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle) + '</div>' +
@@ -2011,7 +2005,6 @@
         container.innerHTML =
           '<div class="fe-point-view">' +
             '<div class="subpage-header">' +
-              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + categoryId + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
               '<div>' +
                 '<div class="subpage-title">' + self._escapeHTML(pointLabel) + '</div>' +
                 '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonId) + '</div>' +
@@ -2072,7 +2065,6 @@
       container.innerHTML =
         '<div class="fe-point-view">' +
           '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
             '<div>' +
               '<div class="subpage-title">' + self._escapeHTML(point.label) + '</div>' +
               '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle || '') + '</div>' +
@@ -2102,7 +2094,6 @@
         container.innerHTML =
           '<div class="fe-point-view">' +
             '<div class="subpage-header">' +
-              '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
               '<div>' +
                 '<div class="subpage-title">' + self._escapeHTML(point.label) + '</div>' +
                 '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle || '') + '</div>' +
@@ -2139,7 +2130,6 @@
       container.innerHTML =
         '<div class="fe-point-view">' +
           '<div class="subpage-header">' +
-            '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back">' + _backButtonContent('Back') + '</button>' +
             '<div>' +
               '<div class="subpage-title">' + self._escapeHTML(point.label) + '</div>' +
               '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle || '') + ' · ' + (ct.instructions || '') + '</div>' +
@@ -2865,9 +2855,6 @@
       var point = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
       var pointLabel = point ? (point.label || '') : '';
       return '<div class="subpage-header fe-point-exercise-header">' +
-        '<button class="subpage-back-btn" onclick="FastExercises.openCategory(\'' + catMeta.id + '\')" aria-label="Back">' +
-          _backButtonContent('Back') +
-        '</button>' +
         '<div class="subpage-header-titles">' +
           '<div class="subpage-title">' + self._escapeHTML(pointLabel || lessonTitle || '') + '</div>' +
           '<div class="subpage-subtitle">' + self._escapeHTML(levelId || '') + ' · ' + self._escapeHTML(lessonTitle || '') + '</div>' +
@@ -2906,9 +2893,6 @@
 
       return '<div class="pv-point-sidebar vocab-fc-sidebar-right" id="vocab-fc-sidebar">' +
         '<div class="pv-sidebar-top-row">' +
-          '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'' + self._jsStr(catMeta.id) + '\')" aria-label="Back">' +
-            _backButtonContent('Back') +
-          '</button>' +
           '<button class="pv-sidebar-collapse-btn" id="vocab-fc-sidebar-toggle" title="Collapse" onclick="FastExercises._vocabToggleSidebar()">' +
             '<span class="material-symbols-outlined pv-sidebar-toggle-icon">chevron_right</span>' +
           '</button>' +
@@ -5796,9 +5780,6 @@
       }
       return '<div class="pv-point-sidebar vocab-fc-sidebar-right" id="vocab-fc-sidebar">' +
         '<div class="pv-sidebar-top-row">' +
-          '<button class="subpage-back-btn pv-sidebar-back" onclick="FastExercises.openCategory(\'vocabulary\')" aria-label="Back">' +
-            _backButtonContent('Back') +
-          '</button>' +
           '<button class="pv-sidebar-collapse-btn" id="vocab-fc-sidebar-toggle" title="Collapse" onclick="FastExercises._vocabToggleSidebar()">' +
             '<span class="material-symbols-outlined pv-sidebar-toggle-icon">chevron_right</span>' +
           '</button>' +
@@ -7968,7 +7949,6 @@
           '<div class="dashboard-center dashboard-center--crossword" id="wlPlayCenter">' +
             mobileTopBarHtml +
             '<div class="cw-section-header cw-section-header--wordle cw-section-header--level cw-section-header--duo" style="--cw-header-color:' + meta.headerColor + '">' +
-              '<button class="cw-section-back" onclick="history.back()" aria-label="Back">' + _mi('arrow_back') + '</button>' +
               '<div class="cw-section-header-text">' +
                 '<div class="cw-section-kicker">' + levelId.toUpperCase() + ' · LEVEL ' + (wlIndex + 1) + '</div>' +
                 '<div class="cw-section-title">Guess the Word</div>' +
