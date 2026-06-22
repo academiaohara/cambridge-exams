@@ -560,6 +560,48 @@
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
   scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  padding-right: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fe-section--merged-path .fe-map-outer.fe-map-single-page.fe-map-merged:hover {
+    scrollbar-color: rgba(45, 46, 95, 0.22) transparent;
+  }
+
+  .fe-section--merged-path .fe-map-outer.fe-map-single-page.fe-map-merged::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .fe-section--merged-path .fe-map-outer.fe-map-single-page.fe-map-merged::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 16px 0;
+  }
+
+  .fe-section--merged-path .fe-map-outer.fe-map-single-page.fe-map-merged::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 999px;
+    transition: background 0.2s ease;
+  }
+
+  .fe-section--merged-path .fe-map-outer.fe-map-single-page.fe-map-merged:hover::-webkit-scrollbar-thumb {
+    background: rgba(45, 46, 95, 0.16);
+  }
+
+  .fe-section--merged-path .fe-map-outer.fe-map-single-page.fe-map-merged::-webkit-scrollbar-thumb:hover {
+    background: rgba(45, 46, 95, 0.3);
+  }
+}
+
+@media (max-width: 768px) {
+  .fe-section--merged-path .fe-map-outer.fe-map-single-page.fe-map-merged {
+    scrollbar-width: none;
+    padding-right: 0;
+  }
+
+  .fe-section--merged-path .fe-map-outer.fe-map-single-page.fe-map-merged::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .fe-map-container--merged {
