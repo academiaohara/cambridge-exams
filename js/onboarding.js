@@ -54,6 +54,14 @@
     });
   }
 
+  function clearAllCourseProgress() {
+    ['B1', 'B2', 'C1'].forEach(clearCourseProgress);
+    try {
+      localStorage.removeItem('cambridge_course_path_advance_index');
+      localStorage.removeItem('cambridge_course_path_advance_pending');
+    } catch (e) { /* ignore */ }
+  }
+
   function buildLevelOptionsHtml() {
     return ONBOARDING_LEVELS.map(function (level) {
       var barsHtml = '';
@@ -181,7 +189,7 @@
     },
 
     startFromZero: function () {
-      clearCourseProgress('B1');
+      clearAllCourseProgress();
       this._finalizeOnboarding('B1', true, null, { openFirstB1Topic: true });
     },
 
@@ -275,7 +283,7 @@
       if (loadingEl) loadingEl.style.display = 'none';
     },
 
-    finishPlacementTest: function () {
+    finishPlacementTest: async function () {
       if (typeof BentoGrid !== 'undefined' && BentoGrid._checkCuExSection) {
         document.querySelectorAll('#onboarding-placement-content .cu-review-section').forEach(function (sec) {
           if (sec.getAttribute('data-checked') !== 'true' && sec.id) {
@@ -289,9 +297,12 @@
       var courseLevel = passed ? (_placementCourseLevel || mapToCourseLevel(_selectedLevel)) : 'B1';
 
       if (!passed) {
-        clearCourseProgress('B1');
-        if (_placementCourseLevel && _placementCourseLevel !== 'B1') {
-          clearCourseProgress(_placementCourseLevel);
+        clearAllCourseProgress();
+      } else {
+        clearAllCourseProgress();
+        var cfg = getLevelConfig(_selectedLevel);
+        if (cfg && typeof BentoGrid !== 'undefined' && BentoGrid._markGlobalStagesCompleteThrough) {
+          await BentoGrid._markGlobalStagesCompleteThrough(cfg.bars - 1);
         }
       }
 
