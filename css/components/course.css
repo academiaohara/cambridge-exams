@@ -2735,16 +2735,6 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   -webkit-overflow-scrolling: touch;
   flex-wrap: nowrap;
   padding-bottom: 2px;
-  scrollbar-width: thin;
-}
-
-.cu-overview-block-filter-scroll::-webkit-scrollbar {
-  height: 4px;
-}
-
-.cu-overview-block-filter-scroll::-webkit-scrollbar-thumb {
-  background: rgba(45, 46, 95, 0.2);
-  border-radius: 4px;
 }
 
 .cu-overview-block-filter-fixed {

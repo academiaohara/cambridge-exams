@@ -142,27 +142,6 @@
   max-height: 45vh;
   flex-shrink: 0;
   animation: toolsPanelIn 0.3s cubic-bezier(.4,0,.2,1);
-  scrollbar-width: thin;
-  scrollbar-color: rgba(30, 58, 138, 0.25) transparent;
-}
-
-.sidebar-panel::-webkit-scrollbar {
-  width: 6px;
-}
-
-.sidebar-panel::-webkit-scrollbar-track {
-  background: transparent;
-  margin: 8px 0;
-}
-
-.sidebar-panel::-webkit-scrollbar-thumb {
-  background: rgba(30, 58, 138, 0.2);
-  border-radius: 3px;
-  transition: background 0.2s;
-}
-
-.sidebar-panel::-webkit-scrollbar-thumb:hover {
-  background: rgba(30, 58, 138, 0.4);
 }
 
 .tools-sidebar.open .sidebar-panel {
