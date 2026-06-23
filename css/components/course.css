@@ -6321,19 +6321,19 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  border-color: #86efac;
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 55%, #bbf7d0 100%);
-  box-shadow: 0 4px 0 #22c55e;
+  border-color: #7dd3fc;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 55%, #ddf4ff 100%);
+  box-shadow: 0 4px 0 #38bdf8;
 }
 
 .course-etapa-card--done .course-etapa-card-title,
 .course-pt-card--done .course-pt-card-title {
-  color: #14532d;
+  color: #0c4a6e;
 }
 
 .course-etapa-card--done .course-etapa-card-details,
 .course-pt-card--done .course-pt-card-kicker {
-  color: #16a34a;
+  color: #0284c7;
 }
 
 .course-etapa-card--done .course-etapa-card-status,
@@ -6342,16 +6342,23 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   margin-bottom: 0;
   padding: 6px 12px;
   border-radius: 999px;
-  background: rgba(88, 204, 2, 0.2);
-  color: #15803d;
+  background: rgba(28, 176, 246, 0.18);
+  color: #0369a1;
 }
 
 .course-etapa-card-btn--review {
-  background: linear-gradient(180deg, #ffc800 0%, #ff9600 100%);
-  border-color: #e08600;
-  color: #fff;
-  box-shadow: 0 4px 0 #e08600;
+  background: #fff;
+  border-color: #7dd3fc;
+  border-bottom-width: 4px;
+  color: #0369a1;
+  box-shadow: 0 4px 0 #38bdf8;
   min-width: 150px;
+  letter-spacing: 0.1em;
+  font-size: 0.78rem;
+}
+
+.course-etapa-card-btn--review:hover {
+  background: #eff6ff;
 }
 
 .course-etapa-card-main {
@@ -6478,7 +6485,7 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   font-weight: 900;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #58cc02;
+  color: #0369a1;
   margin-bottom: 12px;
 }
 
@@ -6774,8 +6781,8 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 }
 
 .course-exercise-cell--done {
-  background: #58cc02;
-  box-shadow: 0 5px 0 #46a302;
+  background: #1cb0f6;
+  box-shadow: 0 5px 0 #1899d6;
 }
 
 .course-exercise-cell--progress {
@@ -6819,52 +6826,58 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   width: 100%;
   max-width: 100%;
   padding: 18px 24px;
-  border: none;
+  border: 2px solid #7dd3fc;
   border-radius: 16px;
-  background: linear-gradient(180deg, #ffc800 0%, #ff9600 100%);
+  background: linear-gradient(180deg, #38bdf8 0%, #1cb0f6 100%);
   color: #fff;
   font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 900;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 6px 0 #e08600;
+  box-shadow: 0 6px 0 #1899d6;
   transition: transform 0.08s ease, box-shadow 0.08s ease;
 }
 
 .course-review-accelerator .material-symbols-outlined {
-  font-size: 1.75rem;
+  display: none;
 }
 
 .course-review-accelerator-text {
-  text-transform: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .course-review-accelerator:active {
   transform: translateY(4px);
-  box-shadow: 0 2px 0 #e08600;
+  box-shadow: 0 2px 0 #1899d6;
 }
 
 .course-review-accelerator--done {
-  background: linear-gradient(180deg, #7ae82a 0%, #58cc02 100%);
-  box-shadow: 0 6px 0 #46a302;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 55%, #ddf4ff 100%);
+  color: #0369a1;
+  border-color: #7dd3fc;
+  box-shadow: 0 6px 0 #38bdf8;
 }
 
 .course-review-accelerator--done:active {
-  box-shadow: 0 2px 0 #46a302;
+  box-shadow: 0 2px 0 #38bdf8;
 }
 
 .course-review-accelerator--locked {
   background: #e5e7eb;
   color: #94a3b8;
+  border-color: #d1d5db;
   box-shadow: 0 6px 0 #cbd5e1;
   cursor: not-allowed;
 }
 
 .course-review-accelerator--locked.course-review-accelerator--active {
-  background: linear-gradient(180deg, #ffc800 0%, #ff9600 100%);
+  background: linear-gradient(180deg, #38bdf8 0%, #1cb0f6 100%);
   color: #fff;
-  box-shadow: 0 6px 0 #e08600;
+  border-color: #7dd3fc;
+  box-shadow: 0 6px 0 #1899d6;
   opacity: 0.55;
 }
 
@@ -6908,8 +6921,8 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 }
 
 .course-path-circle--done {
-  background: #58cc02;
-  box-shadow: 0 6px 0 #46a302;
+  background: #1cb0f6;
+  box-shadow: 0 6px 0 #1899d6;
 }
 
 .course-path-circle--progress {

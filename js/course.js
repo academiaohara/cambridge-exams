@@ -1456,11 +1456,12 @@
           var reviewOnclick = reviewLocked
             ? 'return false;'
             : 'BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'' + reviewPath + '\')';
-          var reviewLabel = reviewPassed ? ('Review ' + (reviewIdxInEtapa + 1)) : 'Advance to here?';
+          var reviewLabel = reviewPassed
+            ? ('REVIEW ' + (reviewIdxInEtapa + 1))
+            : 'ADVANCE TO HERE?';
 
           html += '<div class="course-review-accelerator-wrap">';
           html += '<button type="button" class="' + reviewClass + '" onclick="' + reviewOnclick + '" title="' + self._escapeHTML(reviewLabel) + '">';
-          html += reviewPassed ? _mi('check_circle') : _mi('fast_forward');
           html += '<span class="course-review-accelerator-text">' + self._escapeHTML(reviewLabel) + '</span>';
           html += '</button></div>';
           seqIndex++;
