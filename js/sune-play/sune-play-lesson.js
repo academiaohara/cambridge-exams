@@ -144,6 +144,13 @@
           lessonState._returnPhase = null;
           lessonState._savedSession = null;
           lessonState.phase = 'session';
+        } else if (lessonState.pendingNodeId) {
+          var pendingNode = lessonState.pendingNodeId;
+          lessonState.pendingNodeId = null;
+          lessonState.phase = 'nodes';
+          renderPhase();
+          startPracticeSession(pendingNode);
+          return;
         } else {
           lessonState.phase = lessonState._returnPhase || 'nodes';
           lessonState._returnPhase = null;
@@ -179,6 +186,14 @@
 
   function startPracticeSession(nodeId) {
     var unit = lessonState.unitData;
+    var theoryRequired = unit.unitStructure && unit.unitStructure.theoryRequiredBeforePractice;
+    if (theoryRequired && !lessonState.progress.theoryCompleted) {
+      lessonState.phase = 'theory';
+      lessonState.pendingNodeId = nodeId;
+      renderPhase();
+      return;
+    }
+
     var node = (unit.practiceNodes || []).find(function(n) { return n.nodeId === nodeId; });
     if (!node) return;
 
@@ -435,7 +450,11 @@
     var theoryRequired = unitData.unitStructure && unitData.unitStructure.theoryRequiredBeforePractice;
     var startPhase = 'theory';
     if (progress.theoryCompleted || !theoryRequired) {
-      if (opts.startSection === 'exercises' || progress.theoryCompleted) startPhase = 'nodes';
+      if (opts.startSection === 'session' && opts.startNodeId) {
+        startPhase = 'session';
+      } else if (opts.startSection === 'nodes' || progress.theoryCompleted) {
+        startPhase = 'nodes';
+      }
     }
     if (opts.startSection === 'theory') startPhase = 'theory';
 
@@ -447,8 +466,14 @@
       level: opts.level,
       progress: progress,
       phase: startPhase,
-      theoryCardIdx: 0
+      theoryCardIdx: 0,
+      pendingNodeId: opts.startNodeId || null
     };
+
+    if (startPhase === 'session' && opts.startNodeId) {
+      startPracticeSession(opts.startNodeId);
+      return;
+    }
 
     renderPhase();
   }

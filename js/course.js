@@ -1172,6 +1172,13 @@
       if (itemType === 'review' || itemType === 'progress_test') {
         return !!(progress && progress[unitId]);
       }
+      if (typeof sectionIdx === 'string' && sectionIdx.indexOf('node:') === 0) {
+        var nodeId = sectionIdx.slice(5);
+        try {
+          var spProg = JSON.parse(localStorage.getItem('sune_play_progress_' + unitId) || '{}');
+          return !!(spProg.completedNodes && spProg.completedNodes[nodeId]);
+        } catch (e) { return false; }
+      }
       var exState = BentoGrid._loadCuExSectionState(level, unitId, sectionIdx);
       if (!exState || !exState.checked) return false;
       if (!exState.total || exState.total <= 0) return true;
@@ -1530,7 +1537,7 @@
           var filePath = 'data/Course/' + levelId + '/' + cell.file;
           var onclick = locked
             ? (cell.item.status !== 'available' ? 'return false;' : (sequentialLocked ? 'return false;' : 'Dashboard.showTheoryUpgradeGate()'))
-            : 'BentoGrid.openCourseUnit(\'' + cell.unitId + '\',\'' + filePath + '\',' + cell.sectionIdx + ')';
+            : 'BentoGrid.openCourseUnit(\'' + cell.unitId + '\',\'' + filePath + '\',' + BentoGrid._formatCourseUnitSectionJsArg(cell.sectionIdx) + ')';
 
           html += '<button type="button" class="' + cellClass + '" onclick="' + onclick + '" title="' + self._escapeHTML(unitLabel + ' · ' + cell.label) + '">';
           html += '<span class="course-exercise-cell-label">' + self._escapeHTML(cell.label) + '</span>';
@@ -1920,7 +1927,7 @@
         var isOpened = !!(openedPoints && openedPoints[point.sectionIdx]);
         var dotClass = isVisited ? 'fe-dot-done' : (isOpened ? 'fe-dot-in-progress' : 'fe-dot-outline ' + pendingClass);
         var clickAttr = (unitId && unitPath)
-          ? ' onclick="event.stopPropagation();BentoGrid.openCourseUnit(\'' + unitId + '\',\'' + unitPath + '\',' + point.sectionIdx + ')" style="cursor:pointer"'
+          ? ' onclick="event.stopPropagation();BentoGrid.openCourseUnit(\'' + unitId + '\',\'' + unitPath + '\',' + BentoGrid._formatCourseUnitSectionJsArg(point.sectionIdx) + ')" style="cursor:pointer"'
           : '';
         dotsHtml += '<span class="fe-dot fe-dot-section-marker ' + dotClass + '" title="' + point.label + '"' + clickAttr + '>' +
           '<span class="fe-dot-label">' + point.label + '</span>' +
@@ -2144,12 +2151,22 @@
       }
 
       if (BentoGrid._isSunePlayUnit(unitData)) {
-        var spStart = startSection === 'exercises' ? 'exercises' : (startSection === 0 || startSection === 'theory' ? 'theory' : 'nodes');
+        var spStart = 'nodes';
+        var startNodeId = null;
+        if (startSection === 'exercises') {
+          spStart = 'nodes';
+        } else if (startSection === 0 || startSection === 'theory') {
+          spStart = 'theory';
+        } else if (typeof startSection === 'string' && startSection.indexOf('node:') === 0) {
+          spStart = 'session';
+          startNodeId = startSection.slice(5);
+        }
         SunePlayLesson.init({
           unitId: unitId,
           unitData: unitData,
           level: level,
           startSection: spStart,
+          startNodeId: startNodeId,
           backFn: backFn,
           mount: document.getElementById('sp-lesson-mount')
         });
@@ -6183,6 +6200,27 @@
     _extractCourseUnitMeta: function(unitData) {
       if (!unitData) return null;
 
+      if (unitData.type === 'grammar' && (
+        unitData.schemaVersion === 'sune-english-unit-v2' ||
+        unitData.lessonStyle === 'sune-play'
+      )) {
+        var theoryCards = (unitData.theory && unitData.theory.cards) || [];
+        var practiceNodes = unitData.practiceNodes || [];
+        return {
+          sunePlay: true,
+          theory: theoryCards.length
+            ? theoryCards.map(function(_, idx) { return { label: String(idx + 1), sectionIdx: idx }; })
+            : [{ label: '1', sectionIdx: 0 }],
+          exercises: practiceNodes.map(function(node, idx) {
+            return {
+              label: node.shortTitle || BentoGrid._getCourseExerciseLabel(idx),
+              sectionIdx: 'node:' + node.nodeId,
+              nodeId: node.nodeId
+            };
+          })
+        };
+      }
+
       if (unitData.type === 'grammar') {
         var sections = unitData.sections || [];
         var theoryCount = sections.filter(function(section) { return section.type === 'theory'; }).length;
@@ -6295,6 +6333,13 @@
         n = Math.floor((n - 1) / 26);
       }
       return label;
+    },
+
+    _formatCourseUnitSectionJsArg: function(sectionIdx) {
+      if (typeof sectionIdx === 'string') {
+        return '\'' + sectionIdx.replace(/\\/g, '\\\\').replace(/'/g, '\\\'') + '\'';
+      }
+      return String(sectionIdx);
     },
 
     _trackReviewItem: function(unitId, sectionIdx, pts) {
