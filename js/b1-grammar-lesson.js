@@ -799,7 +799,11 @@
 
     var panel = document.createElement('div');
     panel.id = 'bgl-feedback';
-    panel.className = 'bgl-feedback ' + (result.correct ? 'bgl-feedback--correct' : 'bgl-feedback--wrong');
+    var useExplainSheet = typeof LessonExplanation !== 'undefined' &&
+      LessonExplanation.isMobile() && !!result.explanation;
+    panel.className = 'bgl-feedback ' +
+      (result.correct ? 'bgl-feedback--correct' : 'bgl-feedback--wrong') +
+      (useExplainSheet ? ' bgl-feedback--mobile-explain' : '');
     panel.setAttribute('role', 'alert');
 
     var title = result.correct ? 'Nice!' : 'Not quite';
@@ -808,28 +812,52 @@
       answerHtml = '<div class="bgl-feedback-answer">' +
         (result.highlight || esc(result.correctAnswer)) + '</div>';
     }
-    if (result.explanation) {
+    if (result.explanation && !useExplainSheet) {
       answerHtml += '<p class="bgl-feedback-exp">' + esc(result.explanation) + '</p>';
     }
 
+    var explainBtnHtml = useExplainSheet
+      ? '<button type="button" class="bgl-feedback-explain">Explain my answer</button>'
+      : '';
+
     panel.innerHTML =
       '<div class="bgl-feedback-inner">' +
-        '<div class="bgl-feedback-icon" aria-hidden="true">' +
-          '<span class="material-symbols-outlined">' + (result.correct ? 'check_circle' : 'lightbulb') + '</span>' +
+        '<div class="bgl-feedback-top">' +
+          '<div class="bgl-feedback-icon" aria-hidden="true">' +
+            '<span class="material-symbols-outlined">' + (result.correct ? 'check_circle' : 'lightbulb') + '</span>' +
+          '</div>' +
+          '<div class="bgl-feedback-body">' +
+            '<div class="bgl-feedback-title">' + title + '</div>' +
+            answerHtml +
+          '</div>' +
         '</div>' +
-        '<div class="bgl-feedback-body">' +
-          '<div class="bgl-feedback-title">' + title + '</div>' +
-          answerHtml +
+        '<div class="bgl-feedback-actions">' +
+          explainBtnHtml +
+          '<button type="button" class="bgl-feedback-continue">Continue</button>' +
         '</div>' +
-        '<button type="button" class="bgl-feedback-continue">Continue</button>' +
       '</div>';
 
     panel.querySelector('.bgl-feedback-continue').addEventListener('click', function() {
+      if (typeof LessonExplanation !== 'undefined') LessonExplanation.close();
       panel.remove();
       var footer = document.querySelector('.bgl-footer');
       if (footer) footer.classList.remove('bgl-footer--hidden');
       onContinue();
     });
+
+    var explainBtn = panel.querySelector('.bgl-feedback-explain');
+    if (explainBtn && typeof LessonExplanation !== 'undefined') {
+      explainBtn.addEventListener('click', function() {
+        var instruction = document.getElementById('bgl-instruction');
+        LessonExplanation.open({
+          title: 'Explain my answer',
+          context: instruction ? instruction.textContent.trim() : '',
+          explanation: result.explanation,
+          correctAnswer: result.correct ? '' : result.correctAnswer,
+          continueLabel: 'Back'
+        });
+      });
+    }
 
     var footer = document.querySelector('.bgl-footer');
     if (footer) footer.classList.add('bgl-footer--hidden');

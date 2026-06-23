@@ -16,16 +16,16 @@
   min-width: 0;
   height: 100%;
   max-height: 100dvh;
-  --bgl-bg: #ece8f8;
+  --bgl-bg: var(--bg-light, #F4F7FF);
   --bgl-card: #ffffff;
-  --bgl-primary: #5b6ee8;
-  --bgl-primary-dark: #4a5cd4;
-  --bgl-success: #1e9d8e;
+  --bgl-primary: var(--primary, #2D2E5F);
+  --bgl-primary-dark: var(--primary-dark, #1e1f42);
+  --bgl-success: var(--secondary, #1e9d8e);
   --bgl-success-bg: #e6f7f4;
   --bgl-wrong-bg: #fff4f0;
   --bgl-wrong: #e07a5f;
   --bgl-chip-bg: #e8ecff;
-  --bgl-chip-text: #3d4a9e;
+  --bgl-chip-text: var(--primary-light, #4a4b7c);
   --bgl-radius: 20px;
   --bgl-radius-sm: 12px;
   font-family: 'Nunito', sans-serif;
@@ -74,7 +74,7 @@
 
 .bgl-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--bgl-primary), #7b8ef5);
+  background: linear-gradient(90deg, var(--bgl-primary), var(--primary-light, #4a4b7c));
   border-radius: 999px;
   transition: width 0.35s ease;
   min-width: 4%;
@@ -751,11 +751,61 @@
 
 .bgl-feedback-inner {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
   max-width: 520px;
   margin: 0 auto;
   padding: 16px 20px calc(16px + env(safe-area-inset-bottom));
+}
+
+.bgl-feedback:not(.bgl-feedback--mobile-explain) .bgl-feedback-inner {
+  flex-direction: row;
+  align-items: center;
+}
+
+.bgl-feedback-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.bgl-feedback:not(.bgl-feedback--mobile-explain) .bgl-feedback-actions {
+  display: contents;
+}
+
+.bgl-feedback-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.bgl-feedback-explain {
+  flex-shrink: 0;
+  border: 2px solid var(--bgl-success);
+  border-radius: 14px;
+  padding: 12px 20px;
+  min-height: 48px;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: #fff;
+  color: var(--bgl-success);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.bgl-feedback-explain:hover {
+  background: var(--bgl-success-bg);
+}
+
+.bgl-feedback--mobile-explain .bgl-feedback-continue {
+  width: 100%;
 }
 
 @keyframes bgl-feedback-in {
