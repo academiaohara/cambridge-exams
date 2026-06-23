@@ -9,6 +9,16 @@
   min-width: 0;
 }
 
+@media (min-width: 769px) {
+  .bgl-lesson-mount {
+    max-width: none;
+  }
+
+  .bgl-feedback-inner {
+    max-width: none;
+  }
+}
+
 .bgl-lesson {
   display: flex;
   flex-direction: column;
@@ -16,7 +26,7 @@
   min-width: 0;
   height: 100%;
   max-height: 100dvh;
-  --bgl-bg: var(--bg-light, #F4F7FF);
+  --bgl-bg: #ffffff;
   --bgl-card: #ffffff;
   --bgl-primary: var(--primary, #2D2E5F);
   --bgl-primary-dark: var(--primary-dark, #1e1f42);
@@ -1084,7 +1094,7 @@
 
 /* Lesson focus layout */
 body:has(.dashboard-layout--lesson-focus) {
-  background: var(--bgl-bg, #ece8f8);
+  background: var(--bgl-bg, #ffffff);
   min-height: 100vh;
   min-height: 100dvh;
   max-height: 100dvh;
@@ -1096,7 +1106,7 @@ body:has(.dashboard-layout--lesson-focus) #app {
   min-height: 100dvh;
   max-height: 100dvh;
   overflow: hidden;
-  background: var(--bgl-bg, #ece8f8);
+  background: var(--bgl-bg, #ffffff);
 }
 
 body:has(.dashboard-layout--lesson-focus) .app-container {
@@ -1108,7 +1118,7 @@ body:has(.dashboard-layout--lesson-focus) .app-container {
   min-height: 100dvh;
   max-height: 100dvh;
   overflow: hidden;
-  background: var(--bgl-bg, #ece8f8);
+  background: var(--bgl-bg, #ffffff);
 }
 
 body:has(.dashboard-layout--lesson-focus) #main-content,
@@ -1122,7 +1132,7 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
   min-height: 0;
   max-height: 100dvh;
   overflow: hidden;
-  background: var(--bgl-bg, #ece8f8);
+  background: var(--bgl-bg, #ffffff);
 }
 
 .dashboard-center--lesson-focus .course-unit-content {
@@ -1132,11 +1142,11 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
   min-height: 0;
   max-height: 100dvh;
   overflow: hidden;
-  background: var(--bgl-bg, #ece8f8);
+  background: var(--bgl-bg, #ffffff);
 }
 
 .dashboard-layout--lesson-focus .dashboard-center--course {
-  background: var(--bgl-bg, #ece8f8);
+  background: var(--bgl-bg, #ffffff);
   padding-bottom: 0 !important;
 }
 
@@ -1153,7 +1163,7 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--subpage {
   min-width: 0;
   max-height: 100dvh;
   padding-bottom: 0;
-  background: var(--bgl-bg, #ece8f8);
+  background: var(--bgl-bg, #ffffff);
 }
 
 .dashboard-layout--lesson-focus .bgl-lesson {
@@ -1161,7 +1171,7 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--subpage {
   min-height: 0;
   min-width: 0;
   max-height: 100dvh;
-  background: var(--bgl-bg, #ece8f8);
+  background: var(--bgl-bg, #ffffff);
 }
 
 @media (min-width: 640px) {
