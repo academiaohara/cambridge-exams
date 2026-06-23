@@ -2736,11 +2736,6 @@ body:has(.dashboard-layout--exercise) #main-content {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     gap: 10px;
-    scrollbar-width: none;
-  }
-
-  .dashboard-layout--exercise .exercise-info::-webkit-scrollbar {
-    display: none;
   }
 
   .dashboard-layout--exercise .exercise-info-left,

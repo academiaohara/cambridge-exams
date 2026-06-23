@@ -1414,8 +1414,6 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
   min-width: 0;
 }
 
@@ -1498,11 +1496,6 @@
 .dashboard-sidebar-shell.is-collapsed .dashboard-sidebar-toggle {
   position: sticky;
   top: 10px;
-}
-
-.dashboard-left-sidebar::-webkit-scrollbar,
-.dashboard-right-sidebar::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
 }
 
 .dashboard-left-sidebar > *,

@@ -1,0 +1,221 @@
+/* =============================================
+   SUNE SCROLL SYSTEM — Duolingo-inspired, adapted
+   Pill thumbs, hover-reveal on desktop, hidden on touch
+   ============================================= */
+
+:root {
+  --scroll-size-y: 6px;
+  --scroll-size-x: 5px;
+  --scroll-thumb: rgba(45, 46, 95, 0.2);
+  --scroll-thumb-hover: rgba(45, 46, 95, 0.36);
+  --scroll-thumb-active: rgba(45, 46, 95, 0.48);
+  --scroll-track: transparent;
+  --scroll-radius: 999px;
+  --scroll-transition: background 0.22s ease, opacity 0.22s ease;
+
+  /* Duo exercise palette (matches --ex-duo-text / --ex-duo-border) */
+  --scroll-duo-thumb: rgba(75, 75, 75, 0.22);
+  --scroll-duo-thumb-hover: rgba(75, 75, 75, 0.4);
+  --scroll-duo-thumb-active: rgba(75, 75, 75, 0.52);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Firefox base ───────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+}
+
+/* ── WebKit base ────────────────────────────── */
+*::-webkit-scrollbar {
+  width: var(--scroll-size-y);
+  height: var(--scroll-size-x);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+  margin: 8px 0;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: var(--scroll-radius);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: var(--scroll-transition);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: var(--scroll-thumb-active);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Horizontal scroll tracks: side margins */
+*[style*="overflow-x"]:not([style*="overflow-x: hidden"])::-webkit-scrollbar-track,
+*[class*="scroll-x"]::-webkit-scrollbar-track {
+  margin: 0 8px;
+}
+
+/* ── Duo exercise context ───────────────────── */
+body:has(.dashboard-layout--exercise) {
+  --scroll-thumb: var(--scroll-duo-thumb);
+  --scroll-thumb-hover: var(--scroll-duo-thumb-hover);
+  --scroll-thumb-active: var(--scroll-duo-thumb-active);
+}
+
+/* ── Desktop: hover-reveal (Duolingo-style) ─── */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    scrollbar-color: transparent transparent;
+  }
+
+  *:hover {
+    scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  *:hover::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb);
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll-thumb-hover);
+  }
+
+  *::-webkit-scrollbar-thumb:active {
+    background: var(--scroll-thumb-active);
+  }
+
+  /* Always-visible panels override hover-reveal */
+  .scroll-visible,
+  .scroll-visible:hover,
+  .sidebar-panel,
+  .sidebar-panel:hover,
+  .question-nav-panel,
+  .question-nav-panel:hover,
+  .results-modal-content,
+  .results-modal-content:hover,
+  .lang-popover-inner,
+  .lang-popover-inner:hover {
+    scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+  }
+
+  .scroll-visible::-webkit-scrollbar-thumb,
+  .scroll-visible:hover::-webkit-scrollbar-thumb,
+  .sidebar-panel::-webkit-scrollbar-thumb,
+  .sidebar-panel:hover::-webkit-scrollbar-thumb,
+  .question-nav-panel::-webkit-scrollbar-thumb,
+  .question-nav-panel:hover::-webkit-scrollbar-thumb,
+  .results-modal-content::-webkit-scrollbar-thumb,
+  .results-modal-content:hover::-webkit-scrollbar-thumb,
+  .lang-popover-inner::-webkit-scrollbar-thumb,
+  .lang-popover-inner:hover::-webkit-scrollbar-thumb {
+    background: var(--scroll-thumb);
+  }
+}
+
+/* ── Touch: hide native scrollbars ──────────── */
+@media (hover: none), (pointer: coarse) {
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ── Utility: permanently hidden ────────────── */
+.scroll-hidden,
+.dashboard-left-sidebar,
+.dashboard-right-sidebar,
+.cw-level-filter {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.scroll-hidden::-webkit-scrollbar,
+.dashboard-left-sidebar::-webkit-scrollbar,
+.dashboard-right-sidebar::-webkit-scrollbar,
+.cw-level-filter::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Exercise info chips: horizontal swipe, no bar */
+@media (max-width: 768px) {
+  .dashboard-layout--exercise .exercise-info {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  .dashboard-layout--exercise .exercise-info::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
+/* ── Utility: always visible (modals, side panels) */
+.scroll-visible,
+.sidebar-panel,
+.question-nav-panel,
+.results-modal-content,
+.lang-popover-inner {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+}
+
+/* ── Utility: accent green (practice / success areas) */
+.scroll-accent,
+.fe-section--merged-path .fe-map-outer.fe-map-merged {
+  --scroll-thumb: rgba(30, 204, 2, 0.28);
+  --scroll-thumb-hover: rgba(30, 204, 2, 0.45);
+  --scroll-thumb-active: rgba(30, 204, 2, 0.58);
+}
+
+/* ── Utility: accent blue (info / course areas) */
+.scroll-accent-blue,
+.cu-overview-block-filter-scroll,
+.lesson-explanation-body,
+.cu-lesson-stage {
+  --scroll-thumb: rgba(28, 176, 246, 0.28);
+  --scroll-thumb-hover: rgba(28, 176, 246, 0.45);
+  --scroll-thumb-active: rgba(28, 176, 246, 0.58);
+}
+
+/* ── Smooth momentum on key scroll containers ─ */
+.sidebar-panel,
+.results-modal-content,
+.question-nav-panel,
+.lang-popover-inner,
+.mobile-menu-sheet-panel,
+.modal-content,
+.fe-map-outer,
+.lesson-explanation-body,
+.cu-lesson-stage,
+.speaking-chat-history,
+.wf-dict-results,
+.pv-dict-results,
+.vocab-dict-results,
+.gd-dict-body,
+.vocab-cw-main,
+.bgl-card,
+.onboarding-placement-content,
+.grade-evolution-modal,
+.notes-list-container,
+.active-tool-content {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
