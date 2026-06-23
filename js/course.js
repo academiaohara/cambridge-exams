@@ -2143,7 +2143,17 @@
         sectionStartIdx = startSection;
       }
 
-      if (BentoGrid._isDuolingoGrammarUnit(unitData)) {
+      if (BentoGrid._isSunePlayUnit(unitData)) {
+        var spStart = startSection === 'exercises' ? 'exercises' : (startSection === 0 || startSection === 'theory' ? 'theory' : 'nodes');
+        SunePlayLesson.init({
+          unitId: unitId,
+          unitData: unitData,
+          level: level,
+          startSection: spStart,
+          backFn: backFn,
+          mount: document.getElementById('sp-lesson-mount')
+        });
+      } else if (BentoGrid._isDuolingoGrammarUnit(unitData)) {
         var bglSectionIdx = sectionStartIdx;
         if (startSection === 'exercises') {
           bglSectionIdx = B1GrammarLesson.firstExerciseSectionIndex(unitData);
@@ -2170,11 +2180,18 @@
       history.pushState(cuState, '', Router.stateToPath(cuState));
     },
 
+    _isSunePlayUnit: function(data) {
+      return typeof SunePlayLesson !== 'undefined' && SunePlayLesson.isSunePlayUnit(data);
+    },
+
     _isDuolingoGrammarUnit: function(data) {
       return typeof B1GrammarLesson !== 'undefined' && B1GrammarLesson.isDuolingoUnit(data);
     },
 
     _renderGrammarUnit: function(data) {
+      if (BentoGrid._isSunePlayUnit(data)) {
+        return '<div id="sp-lesson-mount" class="sp-lesson-mount course-unit-content"></div>';
+      }
       if (BentoGrid._isDuolingoGrammarUnit(data)) {
         return '<div id="bgl-lesson-mount" class="bgl-lesson-mount course-unit-content"></div>';
       }

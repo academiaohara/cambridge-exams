@@ -1,0 +1,60 @@
+// js/sune-play/normalize-answer.js
+// Answer normalization for Sune Play practice screens
+
+(function() {
+  'use strict';
+
+  var APOSTROPHE_RE = /[\u2018\u2019\u201a\u201b`´]/g;
+
+  function normalizeAnswer(answer) {
+    if (answer == null) return '';
+    var s = String(answer);
+    s = s.replace(APOSTROPHE_RE, "'");
+    s = s.replace(/\s+/g, ' ').trim();
+    s = s.replace(/\s*\.\s*$/, '');
+    return s.toLowerCase();
+  }
+
+  function normalizeAnswerPreserveCase(answer) {
+    if (answer == null) return '';
+    var s = String(answer);
+    s = s.replace(APOSTROPHE_RE, "'");
+    s = s.replace(/\s+/g, ' ').trim();
+    return s.replace(/\s*\.\s*$/, '');
+  }
+
+  function answersMatch(given, expected, opts) {
+    opts = opts || {};
+    var g = opts.caseSensitive ? normalizeAnswerPreserveCase(given) : normalizeAnswer(given);
+    if (!g) return false;
+    var list = Array.isArray(expected) ? expected : [expected];
+    return list.some(function(a) {
+      var e = opts.caseSensitive ? normalizeAnswerPreserveCase(a) : normalizeAnswer(a);
+      return e === g;
+    });
+  }
+
+  function matchesAnyAccepted(given, item, opts) {
+    opts = opts || {};
+    var accepted = item.acceptedAnswers;
+    if (accepted && accepted.length) {
+      if (typeof accepted[0] === 'string') {
+        return answersMatch(given, accepted, opts);
+      }
+    }
+    if (item.answer != null) {
+      if (typeof item.answer === 'string') return answersMatch(given, item.answer, opts);
+      if (Array.isArray(item.answer) && typeof item.answer[0] === 'string') {
+        return answersMatch(given, item.answer, opts);
+      }
+    }
+    return false;
+  }
+
+  window.SunePlayNormalize = {
+    normalizeAnswer: normalizeAnswer,
+    normalizeAnswerPreserveCase: normalizeAnswerPreserveCase,
+    answersMatch: answersMatch,
+    matchesAnyAccepted: matchesAnyAccepted
+  };
+})();
