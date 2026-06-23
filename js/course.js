@@ -2155,7 +2155,7 @@
         var startNodeId = null;
         if (startSection === 'exercises') {
           spStart = 'nodes';
-        } else if (startSection === 0 || startSection === 'theory') {
+        } else if (startSection === 'theory') {
           spStart = 'theory';
         } else if (typeof startSection === 'string' && startSection.indexOf('node:') === 0) {
           spStart = 'session';

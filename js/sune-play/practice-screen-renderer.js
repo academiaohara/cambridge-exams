@@ -495,13 +495,13 @@
       : randomFeedback(feedbackTone, 'incorrect');
     var html = '<div class="sp-feedback-sheet ' + cls + '" data-component="FeedbackSheet">';
     html += '<p class="sp-feedback-title">' + esc(title) + '</p>';
-    if (!result.correct && result.explanation) {
-      html += '<p class="sp-feedback-explanation">' + esc(result.explanation) + '</p>';
-    }
     if (!result.correct && result.correctAnswer) {
-      html += '<p class="sp-feedback-answer"><span>Correct:</span> ' + esc(result.correctAnswer) + '</p>';
+      html += '<p class="sp-feedback-answer"><span>Correcto:</span> ' + esc(result.correctAnswer) + '</p>';
     }
-    html += '<button type="button" class="sp-btn sp-btn--primary sp-btn--continue" data-action="feedback-continue">Continue</button>';
+    if (!result.correct && result.explanation) {
+      html += '<button type="button" class="sp-btn sp-btn--ghost sp-btn--explain" data-action="show-explanation" aria-label="Ver explicación">' +
+        '<span class="material-symbols-outlined">help</span></button>';
+    }
     html += '</div>';
     return html;
   }
