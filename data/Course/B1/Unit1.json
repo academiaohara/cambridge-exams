@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "sune-english-unit-v1",
+  "schemaVersion": "sune-english-unit-v2",
   "course": "B1 English",
   "block": 1,
   "unit": 1,
@@ -16,855 +16,659 @@
     "habits and routines"
   ],
   "estimatedDurationMinutes": 25,
-  "lessonStyle": "duolingo-inspired",
-  "sections": [
-    {
-      "id": "b1-u1-theory-1",
-      "type": "theory",
-      "theoryType": "rule_cards",
-      "title": "Present simple",
-      "shortTitle": "Habits and facts",
-      "content": [
-        {
-          "cardTitle": "Form",
-          "rows": [
-            {
-              "label": "Positive",
-              "left": "I / you / we / they play",
-              "right": "he / she / it plays"
-            },
-            {
-              "label": "Negative",
-              "left": "I / you / we / they don't play",
-              "right": "he / she / it doesn't play"
-            },
-            {
-              "label": "Question",
-              "left": "Do I / you / we / they play?",
-              "right": "Does he / she / it play?"
-            }
-          ]
-        },
-        {
-          "cardTitle": "Use",
-          "items": [
-            "Regular habits and routines",
-            "Permanent or long-lasting situations",
-            "Facts that are always true",
-            "States, opinions and feelings"
-          ]
-        },
-        {
-          "cardTitle": "Examples",
-          "items": [
-            "Tom catches the bus every morning.",
-            "My aunt lives in a small town.",
-            "She loves Italian food.",
-            "Water boils at 100 degrees Celsius."
-          ]
-        },
-        {
-          "cardTitle": "Useful words",
-          "chipStyle": true,
-          "items": [
-            "always",
-            "usually",
-            "often",
-            "sometimes",
-            "rarely",
-            "never",
-            "every day",
-            "twice a week",
-            "once a month"
-          ]
-        },
-        {
-          "cardTitle": "Remember",
-          "items": [
-            "Frequency adverbs usually come before the main verb.",
-            "They come after the verb be."
-          ],
-          "examples": [
-            "She usually walks to school.",
-            "She is always early."
-          ]
-        }
-      ]
+  "lessonStyle": "sune-play",
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u1-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
     },
-    {
-      "id": "b1-u1-theory-2",
-      "type": "theory",
-      "theoryType": "rule_cards",
-      "title": "Present continuous",
-      "shortTitle": "Now and temporary situations",
-      "content": [
-        {
-          "cardTitle": "Form",
-          "rows": [
-            {
-              "label": "Positive",
-              "left": "I am playing",
-              "right": "he / she / it is playing; you / we / they are playing"
-            },
-            {
-              "label": "Negative",
-              "left": "I am not playing",
-              "right": "he / she / it isn't playing; you / we / they aren't playing"
-            },
-            {
-              "label": "Question",
-              "left": "Am I playing?",
-              "right": "Is he / she / it playing? Are you / we / they playing?"
-            }
-          ]
-        },
-        {
-          "cardTitle": "Use",
-          "items": [
-            "Actions happening now",
-            "Temporary situations",
-            "Changing situations",
-            "Annoying repeated actions with always"
-          ]
-        },
-        {
-          "cardTitle": "Examples",
-          "items": [
-            "Sam is talking on the phone right now.",
-            "Lucy is staying with her grandparents this week.",
-            "My sister is always leaving her clothes on the floor!"
-          ]
-        },
-        {
-          "cardTitle": "Useful words",
-          "chipStyle": true,
-          "items": [
-            "now",
-            "right now",
-            "at the moment",
-            "today",
-            "this week",
-            "these days"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "b1-u1-theory-3",
-      "type": "theory",
-      "theoryType": "rule_cards",
-      "title": "Stative verbs",
-      "shortTitle": "States, not actions",
-      "content": [
-        {
-          "cardTitle": "What are stative verbs?",
-          "description": "Stative verbs describe states, feelings, opinions, senses or possession. We do not normally use them in continuous forms.",
-          "examples": [
-            "I understand what you mean.",
-            "I am understanding what you mean."
-          ],
-          "incorrectExamples": [
-            "I am understanding what you mean."
-          ]
-        },
-        {
-          "cardTitle": "Common stative verbs",
-          "chipStyle": true,
-          "items": [
-            "be",
-            "believe",
-            "belong to",
-            "hate",
-            "have",
-            "know",
-            "like",
-            "love",
-            "need",
-            "prefer",
-            "seem",
-            "understand",
-            "want"
-          ]
-        },
-        {
-          "cardTitle": "Be careful",
-          "description": "Some verbs can be stative or active depending on the meaning.",
-          "examples": [
-            "What do you think of this song? = opinion",
-            "I'm thinking about changing schools. = considering"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "b1-u1-ex-1",
-      "type": "exercise",
-      "exerciseType": "prompt_to_sentence",
-      "exerciseTypeName": "Build the Sentence",
-      "title": "A: Build the routine",
-      "instructions": "Use the prompts to write complete present simple sentences.",
-      "studentInstruction": "Conjugate the verb.",
-      "grammarFocus": "present simple for routines",
-      "items": [
-        {
-          "id": "b1-u1-ex1-1",
-          "prompt": {
-            "subject": "Jake",
-            "timeExpression": "every morning",
-            "verbPhrase": "walk to school"
+    "cards": [
+      {
+        "id": "b1-u1-theory-card-1",
+        "title": "Present simple",
+        "subtitle": "Habits and facts",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "rows": [
+              {
+                "label": "Positive",
+                "left": "I / you / we / they play",
+                "right": "he / she / it plays"
+              },
+              {
+                "label": "Negative",
+                "left": "I / you / we / they don't play",
+                "right": "he / she / it doesn't play"
+              },
+              {
+                "label": "Question",
+                "left": "Do I / you / we / they play?",
+                "right": "Does he / she / it play?"
+              }
+            ]
           },
-          "displayPrompt": "Jake / every morning / walk to school",
-          "answer": "Every morning, Jake walks to school.",
-          "acceptedAnswers": [
-            "Every morning, Jake walks to school.",
-            "Jake walks to school every morning."
-          ],
-          "explanation": "Use the present simple for routines. Jake is a singular subject, so walk becomes walks."
-        },
-        {
-          "id": "b1-u1-ex1-2",
-          "prompt": {
-            "subject": "Mia",
-            "timeExpression": "usually",
-            "verbPhrase": "drink tea for breakfast"
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Regular habits and routines",
+              "Permanent or long-lasting situations",
+              "Facts that are always true",
+              "States, opinions and feelings"
+            ]
           },
-          "displayPrompt": "Mia / usually / drink tea for breakfast",
-          "answer": "Mia usually drinks tea for breakfast.",
-          "acceptedAnswers": [
-            "Mia usually drinks tea for breakfast."
-          ],
-          "explanation": "Usually goes before the main verb. Mia is singular, so drink becomes drinks."
-        },
-        {
-          "id": "b1-u1-ex1-3",
-          "prompt": {
-            "subject": "Sara",
-            "timeExpression": "after school / often",
-            "verbPhrase": "do her homework in the library"
+          {
+            "type": "example_list",
+            "title": "Examples",
+            "items": [
+              "Tom catches the bus every morning.",
+              "My aunt lives in a small town.",
+              "She loves Italian food.",
+              "Water boils at 100 degrees Celsius."
+            ]
           },
-          "displayPrompt": "Sara / after school / often / do her homework in the library",
-          "answer": "After school, Sara often does her homework in the library.",
-          "acceptedAnswers": [
-            "After school, Sara often does her homework in the library.",
-            "Sara often does her homework in the library after school."
-          ],
-          "explanation": "Often normally goes before the main verb. With Sara, use does, not do."
-        },
-        {
-          "id": "b1-u1-ex1-4",
-          "prompt": {
-            "subject": "Lena",
-            "timeExpression": "twice a month",
-            "verbPhrase": "visit her grandparents"
+          {
+            "type": "chips",
+            "title": "Useful words",
+            "items": [
+              "always",
+              "usually",
+              "often",
+              "sometimes",
+              "rarely",
+              "never",
+              "every day",
+              "twice a week",
+              "once a month"
+            ]
           },
-          "displayPrompt": "Lena / visit her grandparents / twice a month",
-          "answer": "Lena visits her grandparents twice a month.",
-          "acceptedAnswers": [
-            "Lena visits her grandparents twice a month.",
-            "Twice a month, Lena visits her grandparents."
-          ],
-          "explanation": "Twice a month shows a repeated habit. Lena is singular, so visit becomes visits."
-        },
-        {
-          "id": "b1-u1-ex1-5",
-          "prompt": {
-            "subject": "Emma",
-            "timeExpression": "never / on weekdays",
-            "verbPhrase": "stay up late"
+          {
+            "type": "remember_box",
+            "title": "Remember",
+            "items": [
+              "Frequency adverbs usually come before the main verb.",
+              "They come after the verb be."
+            ],
+            "examples": [
+              "She usually walks to school.",
+              "She is always early."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u1-theory-card-2",
+        "title": "Present continuous",
+        "subtitle": "Now and temporary situations",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "rows": [
+              {
+                "label": "Positive",
+                "left": "I am playing",
+                "right": "he / she / it is playing; you / we / they are playing"
+              },
+              {
+                "label": "Negative",
+                "left": "I am not playing",
+                "right": "he / she / it isn't playing; you / we / they aren't playing"
+              },
+              {
+                "label": "Question",
+                "left": "Am I playing?",
+                "right": "Is he / she / it playing? Are you / we / they playing?"
+              }
+            ]
           },
-          "displayPrompt": "Emma / never / stay up late / on weekdays",
-          "answer": "Emma never stays up late on weekdays.",
-          "acceptedAnswers": [
-            "Emma never stays up late on weekdays."
-          ],
-          "explanation": "Never goes before the main verb. Emma is singular, so stay becomes stays."
-        },
-        {
-          "id": "b1-u1-ex1-6",
-          "prompt": {
-            "subject": "Nora",
-            "timeExpression": "every Saturday",
-            "verbPhrase": "play basketball"
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Actions happening now",
+              "Temporary situations",
+              "Changing situations",
+              "Annoying repeated actions with always"
+            ]
           },
-          "displayPrompt": "Nora / play basketball / every Saturday",
-          "answer": "Nora plays basketball every Saturday.",
-          "acceptedAnswers": [
-            "Nora plays basketball every Saturday.",
-            "Every Saturday, Nora plays basketball."
-          ],
-          "explanation": "Every Saturday describes a routine. Nora is singular, so play becomes plays."
-        }
+          {
+            "type": "example_list",
+            "title": "Examples",
+            "items": [
+              "Sam is talking on the phone right now.",
+              "Lucy is staying with her grandparents this week.",
+              "My sister is always leaving her clothes on the floor!"
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful words",
+            "items": [
+              "now",
+              "right now",
+              "at the moment",
+              "today",
+              "this week",
+              "these days"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u1-theory-card-3",
+        "title": "Stative verbs",
+        "subtitle": "States, not actions",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "explanation",
+            "title": "What are stative verbs?",
+            "description": "Stative verbs describe states, feelings, opinions, senses or possession. We do not normally use them in continuous forms."
+          },
+          {
+            "type": "correct_incorrect_examples",
+            "title": "Compare",
+            "correctExamples": [
+              "I understand what you mean."
+            ],
+            "incorrectExamples": [
+              "I am understanding what you mean."
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Common stative verbs",
+            "items": [
+              "be",
+              "believe",
+              "belong to",
+              "hate",
+              "have",
+              "know",
+              "like",
+              "love",
+              "need",
+              "prefer",
+              "seem",
+              "understand",
+              "want"
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "description": "Some verbs can be stative or active depending on the meaning.",
+            "examples": [
+              "What do you think of this song? = opinion",
+              "I'm thinking about changing schools. = considering"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "globalRules": {
+      "defaultHeartsIcon": "heart",
+      "loseLifeOnIncorrectEvaluableAction": true,
+      "showExplanationAfterIncorrect": true,
+      "showCorrectAnswerAfterMaxAttempts": true,
+      "failedItemsReturnToQueue": true,
+      "removeCompletedItemsFromQueue": true,
+      "adaptiveFallbackEnabled": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
       ]
     },
+    "formatDefinitions": [
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct form",
+        "defaultLives": 4,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue"
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Type the missing form",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 2,
+        "attemptsPerScreen": 2,
+        "failureAction": "show_correct_answer_then_continue"
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the full sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 2,
+        "attemptsPerScreen": 2,
+        "fallbackFormatType": "word_order_tiles"
+      },
+      {
+        "formatType": "word_order_tiles",
+        "displayName": "Build the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1
+      },
+      {
+        "formatType": "error_correction",
+        "displayName": "Fix the mistake",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 2,
+        "attemptsPerScreen": 2
+      },
+      {
+        "formatType": "verb_bank_two_step",
+        "displayName": "Choose the verb, make the form",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 2,
+        "attemptsPerScreen": 2,
+        "steps": [
+          {
+            "stepId": "choose_base_verb",
+            "lifeLossOnError": 1
+          },
+          {
+            "stepId": "type_conjugated_form",
+            "lifeLossOnError": 1
+          }
+        ],
+        "fallbackFormatType": "preselected_verb_gap_fill"
+      },
+      {
+        "formatType": "passage_error_hunt_single",
+        "displayName": "Find and fix one error",
+        "defaultLives": 6,
+        "maxLifeLossPerScreen": 2,
+        "attemptsPerScreen": 2,
+        "steps": [
+          {
+            "stepId": "tap_wrong_verb_phrase",
+            "lifeLossOnError": 1
+          },
+          {
+            "stepId": "type_correction",
+            "lifeLossOnError": 1
+          }
+        ]
+      },
+      {
+        "formatType": "stative_sorting",
+        "displayName": "Sort the verbs",
+        "defaultLives": 4,
+        "maxLifeLossPerScreen": 2,
+        "attemptsPerScreen": 1
+      },
+      {
+        "formatType": "meaning_contrast",
+        "displayName": "Choose the meaning",
+        "defaultLives": 4,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1
+      }
+    ]
+  },
+  "practiceNodes": [
     {
-      "id": "b1-u1-ex-2",
-      "type": "exercise",
-      "exerciseType": "gap_fill",
-      "exerciseTypeName": "Complete the Gap",
-      "title": "B: What is happening now?",
-      "instructions": "Complete each sentence with the correct present continuous form of the verb.",
-      "studentInstruction": "Type the missing form.",
-      "grammarFocus": "present continuous",
-      "items": [
-        {
-          "id": "b1-u1-ex2-1",
-          "sentence": "Be quiet! The baby ...... .",
-          "verbPrompt": "sleep",
-          "answer": "is sleeping",
-          "acceptedAnswers": [
-            "is sleeping"
-          ],
-          "explanation": "Use the present continuous for something happening now. The baby is singular, so use is sleeping."
-        },
-        {
-          "id": "b1-u1-ex2-2",
-          "sentence": "We ...... the film because it's boring.",
-          "verbPrompt": "not / watch",
-          "answer": "aren't watching",
-          "acceptedAnswers": [
-            "aren't watching",
-            "are not watching"
-          ],
-          "explanation": "Use the negative present continuous: subject + am/is/are + not + verb-ing. With we, use aren't watching."
-        },
-        {
-          "id": "b1-u1-ex2-3",
-          "sentence": "At the moment, Carla ...... for her science test.",
-          "verbPrompt": "study",
-          "answer": "is studying",
-          "acceptedAnswers": [
-            "is studying"
-          ],
-          "explanation": "At the moment tells us the action is happening now, so use is studying."
-        },
-        {
-          "id": "b1-u1-ex2-4",
-          "sentence": "Tom ...... with his cousins this week.",
-          "verbPrompt": "stay",
-          "answer": "is staying",
-          "acceptedAnswers": [
-            "is staying"
-          ],
-          "explanation": "This week describes a temporary situation, so the present continuous is natural."
-        },
-        {
-          "id": "b1-u1-ex2-5",
-          "sentence": "I ...... ! I'm serious!",
-          "verbPrompt": "not / joke",
-          "answer": "am not joking",
-          "acceptedAnswers": [
-            "am not joking",
-            "'m not joking"
-          ],
-          "explanation": "Use am not with I. The speaker is talking about what they are doing right now."
-        },
-        {
-          "id": "b1-u1-ex2-6",
-          "sentence": "My brother ...... my headphones without asking!",
-          "verbPrompt": "always / borrow",
-          "answer": "is always borrowing",
-          "acceptedAnswers": [
-            "is always borrowing"
-          ],
-          "explanation": "Always with the present continuous can show annoyance about a repeated action."
-        },
-        {
-          "id": "b1-u1-ex2-7",
-          "sentence": "We ...... dinner right now. Can I call you later?",
-          "verbPrompt": "eat",
-          "answer": "are eating",
-          "acceptedAnswers": [
-            "are eating"
-          ],
-          "explanation": "Right now shows the action is happening at this moment. With we, use are eating."
-        },
-        {
-          "id": "b1-u1-ex2-8",
-          "sentence": "...... the computer at the moment?",
-          "verbPrompt": "you / use",
-          "answer": "Are you using",
-          "acceptedAnswers": [
-            "Are you using",
-            "are you using"
-          ],
-          "explanation": "In present continuous questions, put are before you: Are you using...?"
-        }
-      ]
-    },
-    {
-      "id": "b1-u1-ex-3",
-      "type": "exercise",
-      "exerciseType": "error_correction",
-      "exerciseTypeName": "Fix the Mistake",
-      "title": "C: Correct the tense",
-      "instructions": "Rewrite each sentence correctly. Change the highlighted words.",
-      "studentInstruction": "Correct the mistake.",
-      "grammarFocus": "present simple vs present continuous",
-      "items": [
-        {
-          "id": "b1-u1-ex3-1",
-          "sentence": "**Are students needing** a lot of sleep during exams?",
-          "highlightedText": "Are students needing",
-          "answer": "Do students need a lot of sleep during exams?",
-          "acceptedAnswers": [
-            "Do students need a lot of sleep during exams?"
-          ],
-          "explanation": "Need is normally a stative verb, so we usually use the present simple: Do students need...?"
-        },
-        {
-          "id": "b1-u1-ex3-2",
-          "sentence": "Why are you so quiet? I hope you **don't feel** upset.",
-          "highlightedText": "don't feel",
-          "answer": "Why are you so quiet? I hope you aren't feeling upset.",
-          "acceptedAnswers": [
-            "Why are you so quiet? I hope you aren't feeling upset.",
-            "Why are you so quiet? I hope you are not feeling upset."
-          ],
-          "explanation": "The speaker is talking about how someone seems right now, so the present continuous sounds natural."
-        },
-        {
-          "id": "b1-u1-ex3-3",
-          "sentence": "My dad **is working** in a bank in the city centre.",
-          "highlightedText": "is working",
-          "answer": "My dad works in a bank in the city centre.",
-          "acceptedAnswers": [
-            "My dad works in a bank in the city centre."
-          ],
-          "explanation": "A permanent or long-term job is usually expressed with the present simple."
-        },
-        {
-          "id": "b1-u1-ex3-4",
-          "sentence": "**Does Anna read** that magazine right now?",
-          "highlightedText": "Does Anna read",
-          "answer": "Is Anna reading that magazine right now?",
-          "acceptedAnswers": [
-            "Is Anna reading that magazine right now?"
-          ],
-          "explanation": "Right now signals the present continuous. In a question, use Is Anna reading...?"
-        },
-        {
-          "id": "b1-u1-ex3-5",
-          "sentence": "I **am always taking** the bus to college.",
-          "highlightedText": "am always taking",
-          "answer": "I always take the bus to college.",
-          "acceptedAnswers": [
-            "I always take the bus to college."
-          ],
-          "explanation": "This sentence describes a normal routine, so use the present simple."
-        },
-        {
-          "id": "b1-u1-ex3-6",
-          "sentence": "This game console **is working** with two batteries.",
-          "highlightedText": "is working",
-          "answer": "This game console works with two batteries.",
-          "acceptedAnswers": [
-            "This game console works with two batteries."
-          ],
-          "explanation": "This describes how the console functions in general, so the present simple is correct."
-        },
-        {
-          "id": "b1-u1-ex3-7",
-          "sentence": "Look at the score! **Does our team play** well today?",
-          "highlightedText": "Does our team play",
-          "answer": "Look at the score! Is our team playing well today?",
-          "acceptedAnswers": [
-            "Look at the score! Is our team playing well today?"
-          ],
-          "explanation": "The score is happening now, so the present continuous is more natural."
-        },
-        {
-          "id": "b1-u1-ex3-8",
-          "sentence": "Most teenagers **are liking** music festivals.",
-          "highlightedText": "are liking",
-          "answer": "Most teenagers like music festivals.",
-          "acceptedAnswers": [
-            "Most teenagers like music festivals."
-          ],
-          "explanation": "Like is normally stative when it expresses preference, so use the present simple."
-        }
-      ]
-    },
-    {
-      "id": "b1-u1-ex-4",
-      "type": "exercise",
-      "exerciseType": "tap_choice",
-      "exerciseTypeName": "Choose the Best Option",
-      "title": "D: Choose the natural form",
-      "instructions": "Choose the correct word or phrase.",
-      "studentInstruction": "Tap the best answer.",
-      "grammarFocus": "present simple vs present continuous",
-      "items": [
-        {
-          "id": "b1-u1-ex4-1",
-          "sentenceBefore": "I",
-          "sentenceAfter": "with my uncle this month.",
-          "options": [
-            "stay",
-            "am staying"
-          ],
-          "answer": "am staying",
-          "completedSentence": "I am staying with my uncle this month.",
-          "explanation": "This month describes a temporary situation, so the present continuous is the best choice."
-        },
-        {
-          "id": "b1-u1-ex4-2",
-          "sentenceBefore": "We",
-          "sentenceAfter": "meat very often.",
-          "options": [
-            "don't eat",
-            "aren't eating"
-          ],
-          "answer": "don't eat",
-          "completedSentence": "We don't eat meat very often.",
-          "explanation": "Very often describes a general habit, so use the present simple."
-        },
-        {
-          "id": "b1-u1-ex4-3",
-          "sentenceBefore": "Olivia",
-          "sentenceAfter": "her homework right now.",
-          "options": [
-            "does",
-            "is doing"
-          ],
-          "answer": "is doing",
-          "completedSentence": "Olivia is doing her homework right now.",
-          "explanation": "Right now signals the present continuous."
-        },
-        {
-          "id": "b1-u1-ex4-4",
-          "sentenceBefore": "",
-          "sentenceAfter": "to work?",
-          "options": [
-            "Does Ben usually drive",
-            "Is Ben usually driving"
-          ],
-          "answer": "Does Ben usually drive",
-          "completedSentence": "Does Ben usually drive to work?",
-          "explanation": "Usually describes a routine, so use the present simple question form."
-        },
-        {
-          "id": "b1-u1-ex4-5",
-          "sentenceBefore": "In tennis, you",
-          "sentenceAfter": "the ball over the net.",
-          "options": [
-            "hit",
-            "are hitting"
-          ],
-          "answer": "hit",
-          "completedSentence": "In tennis, you hit the ball over the net.",
-          "explanation": "This is a general fact about tennis, so use the present simple."
-        },
-        {
-          "id": "b1-u1-ex4-6",
-          "sentenceBefore": "I",
-          "sentenceAfter": "my emails every evening.",
-          "options": [
-            "check",
-            "am checking"
-          ],
-          "answer": "check",
-          "completedSentence": "I check my emails every evening.",
-          "explanation": "Every evening describes a routine, so use the present simple."
-        },
-        {
-          "id": "b1-u1-ex4-7",
-          "sentenceBefore": "",
-          "sentenceAfter": "for the exam at the moment?",
-          "options": [
-            "Do they study",
-            "Are they studying"
-          ],
-          "answer": "Are they studying",
-          "completedSentence": "Are they studying for the exam at the moment?",
-          "explanation": "At the moment signals the present continuous question form."
-        },
-        {
-          "id": "b1-u1-ex4-8",
-          "sentenceBefore": "Maria and Ellie",
-          "sentenceAfter": "more confident these days.",
-          "options": [
-            "become",
-            "are becoming"
-          ],
-          "answer": "are becoming",
-          "completedSentence": "Maria and Ellie are becoming more confident these days.",
-          "explanation": "These days can describe a changing temporary situation, so the present continuous is natural."
-        },
-        {
-          "id": "b1-u1-ex4-9",
-          "sentenceBefore": "A good teacher",
-          "sentenceAfter": "their students.",
-          "options": [
-            "understands",
-            "is understanding"
-          ],
-          "answer": "understands",
-          "completedSentence": "A good teacher understands their students.",
-          "explanation": "Understand is normally stative, and this sentence expresses a general truth."
-        },
-        {
-          "id": "b1-u1-ex4-10",
-          "sentenceBefore": "How",
-          "sentenceAfter": "this word?",
-          "options": [
-            "do you pronounce",
-            "are you pronouncing"
-          ],
-          "answer": "do you pronounce",
-          "completedSentence": "How do you pronounce this word?",
-          "explanation": "This asks about the general correct pronunciation of a word, so the present simple is natural."
-        }
-      ]
-    },
-    {
-      "id": "b1-u1-ex-5",
-      "type": "exercise",
-      "exerciseType": "verb_bank_gap_fill",
-      "exerciseTypeName": "Verb Bank Challenge",
-      "title": "E: Choose the verb, make the form",
-      "instructions": "Use the verbs in the box to complete the sentences. Write the correct present simple or present continuous form.",
-      "studentInstruction": "Choose a verb and type the correct form.",
-      "grammarFocus": "present simple, present continuous and stative verbs",
-      "wordBank": [
-        "belong",
-        "carry",
-        "do",
-        "help",
-        "listen",
-        "look",
-        "stay",
-        "wear"
+      "nodeId": "b1-u1-node-1",
+      "title": "Habits and routines",
+      "shortTitle": "Habits",
+      "focus": [
+        "present simple",
+        "frequency adverbs",
+        "third person singular"
       ],
-      "items": [
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 6,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
         {
-          "id": "b1-u1-ex5-1",
-          "sentence": "Tourists usually ...... in this hotel during the summer.",
-          "baseVerb": "stay",
-          "answer": [
-            "stay"
+          "sourceExerciseId": "b1-u1-ex-4",
+          "sourceItemIds": [
+            "b1-u1-ex4-2",
+            "b1-u1-ex4-4",
+            "b1-u1-ex4-5",
+            "b1-u1-ex4-6",
+            "b1-u1-ex4-10"
           ],
-          "completedSentence": "Tourists usually stay in this hotel during the summer.",
-          "explanation": "Usually describes a general habit. Tourists is plural, so use stay."
+          "formatType": "two_option_choice"
         },
         {
-          "id": "b1-u1-ex5-2",
-          "sentence": "...... you ...... to the radio, or can I switch it off?",
-          "baseVerb": "listen",
-          "answer": [
-            "Are",
-            "listening"
+          "sourceExerciseId": "b1-u1-ex-1",
+          "sourceItemIds": [
+            "b1-u1-ex1-1",
+            "b1-u1-ex1-2",
+            "b1-u1-ex1-3"
           ],
-          "acceptedAnswers": [
-            [
-              "Are",
-              "listening"
-            ],
-            [
-              "are",
-              "listening"
-            ]
-          ],
-          "completedSentence": "Are you listening to the radio, or can I switch it off?",
-          "explanation": "The speaker is asking about an action happening now, so use the present continuous question form."
-        },
-        {
-          "id": "b1-u1-ex5-3",
-          "sentence": "Regular exercise ...... you feel healthier.",
-          "baseVerb": "help",
-          "answer": [
-            "helps"
-          ],
-          "completedSentence": "Regular exercise helps you feel healthier.",
-          "explanation": "This is a general fact. Regular exercise is singular, so help becomes helps."
-        },
-        {
-          "id": "b1-u1-ex5-4",
-          "sentence": "I ...... my sister's coat today because mine is dirty.",
-          "baseVerb": "wear",
-          "answer": [
-            "am wearing"
-          ],
-          "completedSentence": "I am wearing my sister's coat today because mine is dirty.",
-          "explanation": "Today describes a temporary situation, so use the present continuous."
-        },
-        {
-          "id": "b1-u1-ex5-5",
-          "sentence": "...... Emma always ...... the shopping on Fridays?",
-          "baseVerb": "do",
-          "answer": [
-            "Does",
-            "do"
-          ],
-          "acceptedAnswers": [
-            [
-              "Does",
-              "do"
-            ],
-            [
-              "does",
-              "do"
-            ]
-          ],
-          "completedSentence": "Does Emma always do the shopping on Fridays?",
-          "explanation": "Always and on Fridays describe a routine. In present simple questions with a singular subject, use Does + base verb."
-        },
-        {
-          "id": "b1-u1-ex5-6",
-          "sentence": "...... you ...... for your keys? They're on the table.",
-          "baseVerb": "look",
-          "answer": [
-            "Are",
-            "looking"
-          ],
-          "acceptedAnswers": [
-            [
-              "Are",
-              "looking"
-            ],
-            [
-              "are",
-              "looking"
-            ]
-          ],
-          "completedSentence": "Are you looking for your keys? They're on the table.",
-          "explanation": "The speaker is asking about an action happening now, so use Are you looking...?"
-        },
-        {
-          "id": "b1-u1-ex5-7",
-          "sentence": "You ...... that box correctly. It's going to fall.",
-          "baseVerb": "carry",
-          "answer": [
-            "aren't carrying"
-          ],
-          "acceptedAnswers": [
-            [
-              "aren't carrying"
-            ],
-            [
-              "are not carrying"
-            ]
-          ],
-          "completedSentence": "You aren't carrying that box correctly. It's going to fall.",
-          "explanation": "The action is happening now, and the sentence is negative, so use aren't carrying."
-        },
-        {
-          "id": "b1-u1-ex5-8",
-          "sentence": "This backpack ...... to my brother.",
-          "baseVerb": "belong",
-          "answer": [
-            "belongs"
-          ],
-          "completedSentence": "This backpack belongs to my brother.",
-          "explanation": "Belong is normally stative, so use the present simple. Backpack is singular, so belong becomes belongs."
+          "formatType": "full_sentence_write",
+          "fallbackFormatType": "word_order_tiles"
         }
       ]
     },
     {
-      "id": "b1-u1-ex-6",
-      "type": "exercise",
-      "exerciseType": "passage_error_hunt",
-      "exerciseTypeName": "Find and Fix",
-      "title": "F: Correct the wrong tenses",
-      "instructions": "Find ten verbs in the wrong tense and rewrite them correctly.",
-      "studentInstruction": "Tap the wrong verb phrase and type the correction.",
-      "grammarFocus": "present simple, present continuous and stative verbs in context",
-      "hideCorrectInline": true,
-      "passage": "One hobby I am enjoying a lot is painting. First, you are choosing the colours you want to use. It is looking easy at first, but good painting takes practice. You are needing patience and creativity. When people make mistakes, they sometimes are throwing their work away and starting again. You are improving by practising regularly. Some people are preferring photography, but I am not believing it's more interesting than painting. Right now, I paint a picture for my bedroom. My sister practises the guitar in the next room, so it's quite noisy!",
-      "items": [
+      "nodeId": "b1-u1-node-2",
+      "title": "Actions happening now",
+      "shortTitle": "Right now",
+      "focus": [
+        "present continuous",
+        "actions happening now",
+        "temporary situations"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 6,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
         {
-          "id": "b1-u1-ex6-1",
-          "wrong": "am enjoying",
-          "answer": "enjoy",
-          "acceptedAnswers": [
-            "enjoy"
+          "sourceExerciseId": "b1-u1-ex-2",
+          "sourceItemIds": [
+            "b1-u1-ex2-1",
+            "b1-u1-ex2-2",
+            "b1-u1-ex2-3",
+            "b1-u1-ex2-4",
+            "b1-u1-ex2-5",
+            "b1-u1-ex2-7",
+            "b1-u1-ex2-8"
           ],
-          "explanation": "Enjoy describes a general feeling here, so the present simple is better."
+          "formatType": "free_text_gap_fill",
+          "fallbackFormatType": "two_option_choice"
         },
         {
-          "id": "b1-u1-ex6-2",
-          "wrong": "are choosing",
-          "answer": "choose",
-          "acceptedAnswers": [
-            "choose"
+          "sourceExerciseId": "b1-u1-ex-4",
+          "sourceItemIds": [
+            "b1-u1-ex4-1",
+            "b1-u1-ex4-3",
+            "b1-u1-ex4-7",
+            "b1-u1-ex4-8"
           ],
-          "explanation": "This sentence gives a general instruction, not an action happening now."
+          "formatType": "two_option_choice"
+        }
+      ]
+    },
+    {
+      "nodeId": "b1-u1-node-3",
+      "title": "Stative verbs",
+      "shortTitle": "States",
+      "focus": [
+        "stative verbs",
+        "opinions",
+        "feelings",
+        "possession"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 6,
+        "allowFinishWithZeroLives": false
+      },
+      "customScreens": [
+        {
+          "screenId": "b1-u1-node3-sort-1",
+          "formatType": "stative_sorting",
+          "prompt": "Sort the verbs.",
+          "groups": [
+            {
+              "groupId": "stative",
+              "label": "Stative verbs",
+              "answers": [
+                "know",
+                "like",
+                "want",
+                "believe",
+                "belong",
+                "prefer",
+                "understand",
+                "need"
+              ]
+            },
+            {
+              "groupId": "action",
+              "label": "Action verbs",
+              "answers": [
+                "play",
+                "carry",
+                "listen",
+                "study",
+                "walk",
+                "wear",
+                "borrow",
+                "look for"
+              ]
+            }
+          ],
+          "lives": 4,
+          "maxLifeLossPerScreen": 2
         },
         {
-          "id": "b1-u1-ex6-3",
-          "wrong": "is looking",
-          "answer": "looks",
-          "acceptedAnswers": [
-            "looks"
+          "screenId": "b1-u1-node3-meaning-1",
+          "formatType": "meaning_contrast",
+          "prompt": "What does this sentence mean?",
+          "sentence": "I'm thinking about changing schools.",
+          "options": [
+            "opinion",
+            "considering"
           ],
-          "explanation": "Look means seem here, so it is stative. Use the present simple."
+          "answer": "considering",
+          "explanation": "Here, think describes a mental action, so the continuous form is possible."
+        }
+      ],
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u1-ex-3",
+          "sourceItemIds": [
+            "b1-u1-ex3-1",
+            "b1-u1-ex3-8"
+          ],
+          "formatType": "error_correction"
         },
         {
-          "id": "b1-u1-ex6-4",
-          "wrong": "are needing",
-          "answer": "need",
-          "acceptedAnswers": [
-            "need"
+          "sourceExerciseId": "b1-u1-ex-4",
+          "sourceItemIds": [
+            "b1-u1-ex4-9"
           ],
-          "explanation": "Need is normally stative, so use the present simple."
+          "formatType": "two_option_choice"
         },
         {
-          "id": "b1-u1-ex6-5",
-          "wrong": "are throwing",
-          "answer": "throw",
-          "acceptedAnswers": [
-            "throw"
+          "sourceExerciseId": "b1-u1-ex-5",
+          "sourceItemIds": [
+            "b1-u1-ex5-8"
           ],
-          "explanation": "Sometimes describes a general habit, so use the present simple."
+          "formatType": "verb_bank_two_step",
+          "fallbackFormatType": "preselected_verb_gap_fill"
+        }
+      ]
+    },
+    {
+      "nodeId": "b1-u1-node-4",
+      "title": "Simple or continuous?",
+      "shortTitle": "Choose the tense",
+      "focus": [
+        "present simple vs present continuous",
+        "routine vs now",
+        "permanent vs temporary"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 7,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u1-ex-3",
+          "sourceItemIds": [
+            "b1-u1-ex3-2",
+            "b1-u1-ex3-3",
+            "b1-u1-ex3-4",
+            "b1-u1-ex3-5",
+            "b1-u1-ex3-6",
+            "b1-u1-ex3-7"
+          ],
+          "formatType": "error_correction"
         },
         {
-          "id": "b1-u1-ex6-6",
-          "wrong": "are improving",
-          "answer": "improve",
-          "acceptedAnswers": [
-            "improve"
+          "sourceExerciseId": "b1-u1-ex-2",
+          "sourceItemIds": [
+            "b1-u1-ex2-6"
           ],
-          "explanation": "This is a general statement about how people get better, so use the present simple."
-        },
+          "formatType": "free_text_gap_fill",
+          "fallbackFormatType": "two_option_choice"
+        }
+      ]
+    },
+    {
+      "nodeId": "b1-u1-node-5",
+      "title": "Verb Bank Challenge",
+      "shortTitle": "Verb Bank",
+      "focus": [
+        "choose correct base verb",
+        "conjugate correctly",
+        "simple, continuous and stative contrast"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 6,
+        "allowFinishWithZeroLives": false
+      },
+      "verbBankRules": {
+        "showAllRemainingVerbs": true,
+        "removeVerbWhenCorrectlyCompleted": true,
+        "removeSentenceWhenCorrectlyCompleted": true,
+        "wrongVerbAction": "lose_1_life_and_return_item_to_queue",
+        "wrongConjugationAction": "lose_1_life_and_return_item_with_preselected_verb",
+        "failedTwiceAction": "convert_to_two_option_choice"
+      },
+      "screenGeneration": [
         {
-          "id": "b1-u1-ex6-7",
-          "wrong": "are preferring",
-          "answer": "prefer",
-          "acceptedAnswers": [
-            "prefer"
+          "sourceExerciseId": "b1-u1-ex-5",
+          "sourceItemIds": [
+            "b1-u1-ex5-1",
+            "b1-u1-ex5-2",
+            "b1-u1-ex5-3",
+            "b1-u1-ex5-4",
+            "b1-u1-ex5-5",
+            "b1-u1-ex5-6",
+            "b1-u1-ex5-7",
+            "b1-u1-ex5-8"
           ],
-          "explanation": "Prefer is normally stative, so use the present simple."
-        },
+          "formatType": "verb_bank_two_step",
+          "fallbackFormatType": "preselected_verb_gap_fill"
+        }
+      ]
+    },
+    {
+      "nodeId": "b1-u1-node-6",
+      "title": "Final challenge",
+      "shortTitle": "Final",
+      "focus": [
+        "contextual grammar",
+        "error detection",
+        "present simple",
+        "present continuous",
+        "stative verbs"
+      ],
+      "lives": 6,
+      "passCondition": {
+        "minimumCorrectScreens": 8,
+        "allowFinishWithZeroLives": false
+      },
+      "passageRules": {
+        "showFullPassage": true,
+        "askForOneErrorAtATime": true,
+        "hideCorrectInline": true,
+        "removeFixedErrorsFromQueue": true,
+        "wrongTapAction": "lose_1_life",
+        "wrongCorrectionAction": "lose_1_life",
+        "maxLifeLossPerError": 2,
+        "failedTwiceAction": "show_guided_hint"
+      },
+      "screenGeneration": [
         {
-          "id": "b1-u1-ex6-8",
-          "wrong": "am not believing",
-          "answer": "don't believe",
-          "acceptedAnswers": [
-            "don't believe",
-            "do not believe"
+          "sourceExerciseId": "b1-u1-ex-6",
+          "sourceItemIds": [
+            "b1-u1-ex6-1",
+            "b1-u1-ex6-2",
+            "b1-u1-ex6-3",
+            "b1-u1-ex6-4",
+            "b1-u1-ex6-5",
+            "b1-u1-ex6-6",
+            "b1-u1-ex6-7",
+            "b1-u1-ex6-8",
+            "b1-u1-ex6-9",
+            "b1-u1-ex6-10"
           ],
-          "explanation": "Believe is normally stative, so use the present simple negative."
-        },
-        {
-          "id": "b1-u1-ex6-9",
-          "wrong": "paint",
-          "answer": "am painting",
-          "acceptedAnswers": [
-            "am painting",
-            "'m painting"
-          ],
-          "explanation": "Right now signals an action happening at this moment, so use the present continuous."
-        },
-        {
-          "id": "b1-u1-ex6-10",
-          "wrong": "practises",
-          "answer": "is practising",
-          "acceptedAnswers": [
-            "is practising",
-            "is practicing"
-          ],
-          "explanation": "The sister is playing in the next room now, so the present continuous is the natural form."
+          "formatType": "passage_error_hunt_single",
+          "fallbackFormatType": "guided_error_choice"
         }
       ]
     }
-  ]
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 10,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Great job!",
+      "Perfect!",
+      "Exactly!"
+    ],
+    "incorrect": [
+      "Almost.",
+      "Not quite.",
+      "Check the time expression.",
+      "Look at the subject."
+    ],
+    "hintPrompts": [
+      "Is this a habit or something happening now?",
+      "Is the verb stative?",
+      "Does the subject need -s?",
+      "Do you need am, is or are?"
+    ]
+  },
+  "contentBanks": {
+    "source": "Use the existing exercise sections from this unit as the content bank.",
+    "requiredExerciseIds": [
+      "b1-u1-ex-1",
+      "b1-u1-ex-2",
+      "b1-u1-ex-3",
+      "b1-u1-ex-4",
+      "b1-u1-ex-5",
+      "b1-u1-ex-6"
+    ],
+    "implementationNote": "Keep the original exercise items unchanged. The practiceNodes above decide how those items are transformed into playable screens."
+  }
 }
