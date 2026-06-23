@@ -70,6 +70,46 @@
     return esc(str).replace(/\*\*([^*]+)\*\*/g, '<strong class="bgl-highlight">$1</strong>');
   }
 
+  function splitVerbPhrase(verbPhrase) {
+    var parts = (verbPhrase || '').trim().split(/\s+/);
+    if (!parts.length || !parts[0]) return { baseVerb: '', rest: '' };
+    return { baseVerb: parts[0], rest: parts.slice(1).join(' ') };
+  }
+
+  function addFixedWords(fixed, phrase) {
+    normCompare(phrase).split(/\s+/).forEach(function(w) {
+      w = w.replace(/[.,!?;:]/g, '');
+      if (w) fixed[w] = true;
+    });
+  }
+
+  function getFixedWordsNorm(item) {
+    var p = (item && item.prompt) || {};
+    var fixed = {};
+    if (p.subject) addFixedWords(fixed, p.subject);
+    (p.timeExpression || '').split(/\s*\/\s*/).forEach(function(part) {
+      addFixedWords(fixed, part);
+    });
+    var vp = splitVerbPhrase(p.verbPhrase || '');
+    if (vp.rest) addFixedWords(fixed, vp.rest);
+    return fixed;
+  }
+
+  function getConjugatedVerbAnswers(item) {
+    var fixed = getFixedWordsNorm(item);
+    var verbs = [];
+    var seen = {};
+    acceptedStrings(item).forEach(function(ans) {
+      normCompare(ans).split(/\s+/).forEach(function(w) {
+        w = w.replace(/[.,!?;:]/g, '');
+        if (!w || fixed[w] || seen[w]) return;
+        seen[w] = true;
+        verbs.push(w);
+      });
+    });
+    return verbs;
+  }
+
   var HEARTS_MAX = 5;
 
   function getStepMeta(step) {
@@ -225,19 +265,36 @@
   function renderBuildTheSentence(step) {
     var item = step.item;
     var p = item.prompt || {};
+    var vp = splitVerbPhrase(p.verbPhrase || '');
+    var timeParts = (p.timeExpression || '').split(/\s*\/\s*/).map(function(s) { return s.trim(); }).filter(Boolean);
+    var expectedVerbs = getConjugatedVerbAnswers(item);
+
     var html = '<div class="bgl-exercise bgl-exercise--build" data-component="BuildTheSentenceExercise">' +
       '<p class="bgl-prompt-display">' + esc(item.displayPrompt || '') + '</p>' +
-      '<div class="bgl-prompt-chips">';
-    if (p.subject) html += '<span class="bgl-chip bgl-chip--prompt">' + esc(p.subject) + '</span>';
-    if (p.timeExpression) html += '<span class="bgl-chip bgl-chip--prompt">' + esc(p.timeExpression) + '</span>';
-    if (p.verbPhrase) html += '<span class="bgl-chip bgl-chip--prompt">' + esc(p.verbPhrase) + '</span>';
-    html += '</div>' +
-      '<label class="bgl-input-label" for="bgl-sentence-input">Write the full sentence</label>' +
-      '<textarea id="bgl-sentence-input" class="bgl-text-input bgl-text-input--sentence" rows="3" ' +
+      '<div class="bgl-sentence-builder" role="group" aria-label="Conjugate the verb">';
+
+    if (p.subject) {
+      html += '<span class="bgl-fixed-chip">' + esc(p.subject) + '</span>';
+    }
+
+    html += '<span class="bgl-verb-slot">' +
+      '<input type="text" id="bgl-sentence-input" class="bgl-gap-input bgl-gap-input--verb bgl-gap-input--build" ' +
+        'autocomplete="off" spellcheck="false" aria-label="Conjugated verb" ' +
         'data-explanation="' + esc(item.explanation || '') + '" ' +
         'data-answer="' + esc(primaryAnswer(item)) + '" ' +
-        'placeholder="Type your sentence here…"></textarea>' +
-      '</div>';
+        'data-expected-verbs="' + esc(JSON.stringify(expectedVerbs)) + '" ' +
+        'placeholder="' + esc(vp.baseVerb) + '">' +
+      '</span>';
+
+    if (vp.rest) {
+      html += '<span class="bgl-fixed-chip">' + esc(vp.rest) + '</span>';
+    }
+
+    timeParts.forEach(function(part) {
+      html += '<span class="bgl-fixed-chip">' + esc(part) + '</span>';
+    });
+
+    html += '</div></div>';
     return html;
   }
 
@@ -458,7 +515,14 @@
     var input = ex.querySelector('#bgl-sentence-input');
     var given = input.value.trim();
     var item = (ex._bglItem && ex._bglItem.item) || { answer: input.getAttribute('data-answer') };
-    var correct = matchesText(given, item);
+    var expectedVerbs = [];
+    try {
+      expectedVerbs = JSON.parse(input.getAttribute('data-expected-verbs') || '[]');
+    } catch (e) { /* ignore */ }
+    if (!expectedVerbs.length) expectedVerbs = getConjugatedVerbAnswers(item);
+    var correct = expectedVerbs.some(function(v) {
+      return normCompare(given, false) === normCompare(v, false);
+    });
     var expected = primaryAnswer(item);
     return {
       correct: correct,
