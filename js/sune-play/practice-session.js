@@ -1,0 +1,170 @@
+// js/sune-play/practice-session.js
+// Practice node list and session UI for Sune Play
+
+(function() {
+  'use strict';
+
+  function esc(str) {
+    if (typeof BentoGrid !== 'undefined' && BentoGrid._escapeHTML) return BentoGrid._escapeHTML(str);
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // ─── HeartsBar ───────────────────────────────────────────────────────
+
+  function HeartsBar(current, max) {
+    var html = '<div class="sp-hearts-bar" data-component="HeartsBar">';
+    for (var i = 0; i < max; i++) {
+      var filled = i < current;
+      html += '<span class="sp-heart' + (filled ? '' : ' sp-heart--empty') + '">' +
+        '<span class="material-symbols-outlined">favorite</span></span>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  // ─── SessionProgressBar ──────────────────────────────────────────────
+
+  function SessionProgressBar(completed, total) {
+    var pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+    return '<div class="sp-session-progress" data-component="SessionProgressBar">' +
+      '<div class="sp-session-progress-track">' +
+        '<div class="sp-session-progress-fill" style="width:' + pct + '%"></div>' +
+      '</div>' +
+      '<span class="sp-session-progress-label">' + completed + ' / ' + total + '</span>' +
+    '</div>';
+  }
+
+  // ─── PracticeHeader ──────────────────────────────────────────────────
+
+  function PracticeHeader(opts) {
+    opts = opts || {};
+    return '<header class="sp-practice-header" data-component="PracticeHeader">' +
+      '<button type="button" class="sp-header-btn sp-header-exit" data-action="exit-session" aria-label="Exit">' +
+        '<span class="material-symbols-outlined">close</span>' +
+      '</button>' +
+      SessionProgressBar(opts.completed || 0, opts.total || 1) +
+      HeartsBar(opts.lives || 0, opts.maxLives || 5) +
+      (opts.showReviewTheory ? '<button type="button" class="sp-header-btn sp-header-theory" data-action="review-theory" title="Review theory">' +
+        '<span class="material-symbols-outlined">menu_book</span></button>' : '') +
+    '</header>';
+  }
+
+  // ─── PracticeNodeCard ────────────────────────────────────────────────
+
+  function PracticeNodeCard(node, idx, opts) {
+    opts = opts || {};
+    var locked = !!opts.locked;
+    var completed = !!opts.completed;
+    var cls = 'sp-node-card' + (locked ? ' sp-node-card--locked' : '') + (completed ? ' sp-node-card--done' : '');
+    return '<button type="button" class="' + cls + '" data-component="PracticeNodeCard" data-node-id="' + esc(node.nodeId) + '"' +
+      (locked ? ' disabled' : '') + '>' +
+      '<span class="sp-node-num">' + (idx + 1) + '</span>' +
+      '<div class="sp-node-body">' +
+        '<h3 class="sp-node-title">' + esc(node.title) + '</h3>' +
+        '<p class="sp-node-focus">' + esc((node.focus || []).slice(0, 2).join(' · ')) + '</p>' +
+      '</div>' +
+      (completed ? '<span class="sp-node-check material-symbols-outlined">check_circle</span>' :
+        locked ? '<span class="sp-node-lock material-symbols-outlined">lock</span>' :
+        '<span class="sp-node-arrow material-symbols-outlined">chevron_right</span>') +
+    '</button>';
+  }
+
+  // ─── PracticeNodeList ────────────────────────────────────────────────
+
+  function PracticeNodeList(unit, opts) {
+    opts = opts || {};
+    var nodes = unit.practiceNodes || [];
+    var completedNodes = opts.completedNodes || {};
+    var theoryRequired = unit.unitStructure && unit.unitStructure.theoryRequiredBeforePractice;
+    var theoryDone = opts.theoryCompleted;
+
+    var html = '<div class="sp-node-list" data-component="PracticeNodeList">';
+    html += '<div class="sp-node-list-header">';
+    html += '<h2 class="sp-node-list-title">Sune Play</h2>';
+    html += '<p class="sp-node-list-subtitle">' + esc(unit.unitSubtitle || '') + '</p>';
+    if (theoryRequired && !theoryDone) {
+      html += '<p class="sp-node-list-hint">Complete the theory to unlock practice.</p>';
+    }
+    html += '</div><div class="sp-node-list-cards">';
+    nodes.forEach(function(node, i) {
+      var locked = theoryRequired && !theoryDone;
+      html += PracticeNodeCard(node, i, { locked: locked, completed: !!completedNodes[node.nodeId] });
+    });
+    html += '</div>';
+    if (opts.showReviewTheory && theoryDone) {
+      html += '<button type="button" class="sp-btn sp-btn--ghost sp-review-theory-btn" data-action="review-theory">Review theory</button>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  // ─── PracticeSession shell ───────────────────────────────────────────
+
+  function PracticeSession(node, opts) {
+    opts = opts || {};
+    return '<div class="sp-practice-session" data-component="PracticeSession" data-node-id="' + esc(node.nodeId) + '">' +
+      PracticeHeader(opts) +
+      '<div class="sp-practice-body">' +
+        '<div class="sp-exercise-card" id="sp-screen-mount"></div>' +
+      '</div>' +
+      '<footer class="sp-practice-footer">' +
+        '<button type="button" class="sp-btn sp-btn--primary sp-btn--check" id="sp-check-btn" disabled>Check</button>' +
+        '<div id="sp-feedback-mount"></div>' +
+      '</footer>' +
+    '</div>';
+  }
+
+  // ─── PracticeCompleteScreen ──────────────────────────────────────────
+
+  function PracticeCompleteScreen(node, stats) {
+    stats = stats || {};
+    var passed = stats.passed !== false;
+    return '<div class="sp-result-screen sp-result-screen--complete" data-component="PracticeCompleteScreen">' +
+      '<div class="sp-result-icon"><span class="material-symbols-outlined">celebration</span></div>' +
+      '<h2 class="sp-result-title">' + (passed ? 'Node complete!' : 'Session finished') + '</h2>' +
+      '<p class="sp-result-subtitle">' + esc(node.title) + '</p>' +
+      '<div class="sp-result-stats">' +
+        '<div class="sp-stat"><span class="sp-stat-val">' + (stats.correct || 0) + '</span><span class="sp-stat-lbl">Correct</span></div>' +
+        '<div class="sp-stat"><span class="sp-stat-val">' + (stats.livesLeft || 0) + '</span><span class="sp-stat-lbl">Lives left</span></div>' +
+        '<div class="sp-stat"><span class="sp-stat-val">' + (stats.xp || 0) + '</span><span class="sp-stat-lbl">XP</span></div>' +
+      '</div>' +
+      '<button type="button" class="sp-btn sp-btn--primary" data-action="back-to-nodes">Back to practice</button>' +
+    '</div>';
+  }
+
+  // ─── PracticeFailedScreen ────────────────────────────────────────────
+
+  function PracticeFailedScreen(node) {
+    return '<div class="sp-result-screen sp-result-screen--failed" data-component="PracticeFailedScreen">' +
+      '<div class="sp-result-icon sp-result-icon--failed"><span class="material-symbols-outlined">heart_broken</span></div>' +
+      '<h2 class="sp-result-title">Out of lives</h2>' +
+      '<p class="sp-result-subtitle">You ran out of hearts in <strong>' + esc(node.shortTitle || node.title) + '</strong>.</p>' +
+      '<button type="button" class="sp-btn sp-btn--primary" data-action="retry-node">Try again</button>' +
+      '<button type="button" class="sp-btn sp-btn--ghost" data-action="back-to-nodes">Back to practice</button>' +
+    '</div>';
+  }
+
+  function RetryScreen(node, stats) {
+    return '<div class="sp-result-screen sp-result-screen--retry" data-component="PracticeRetryScreen">' +
+      '<div class="sp-result-icon"><span class="material-symbols-outlined">replay</span></div>' +
+      '<h2 class="sp-result-title">Keep practising</h2>' +
+      '<p class="sp-result-subtitle">You need ' + (stats.required || 0) + ' correct screens. You got ' + (stats.correct || 0) + '.</p>' +
+      '<button type="button" class="sp-btn sp-btn--primary" data-action="retry-node">Try again</button>' +
+      '<button type="button" class="sp-btn sp-btn--ghost" data-action="back-to-nodes">Back to practice</button>' +
+    '</div>';
+  }
+
+  window.SunePlayPracticeUI = {
+    HeartsBar: HeartsBar,
+    SessionProgressBar: SessionProgressBar,
+    PracticeHeader: PracticeHeader,
+    PracticeNodeCard: PracticeNodeCard,
+    PracticeNodeList: PracticeNodeList,
+    PracticeSession: PracticeSession,
+    PracticeCompleteScreen: PracticeCompleteScreen,
+    PracticeFailedScreen: PracticeFailedScreen,
+    RetryScreen: RetryScreen
+  };
+})();
