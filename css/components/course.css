@@ -7046,7 +7046,7 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   --cu-duo-text: var(--text-dark, #2D2E5F);
   --cu-duo-border: #e8ecf4;
   --cu-duo-yellow: #FFD28E;
-  --cu-lesson-bg: var(--bg-light, #F4F7FF);
+  --cu-lesson-bg: #ffffff;
 }
 
 body:has(.dashboard-layout--lesson-focus) {
@@ -7120,6 +7120,19 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
   padding: 0 16px 0;
   box-sizing: border-box;
   background: var(--cu-lesson-bg);
+}
+
+@media (min-width: 769px) {
+  .course-center--lesson-focus {
+    max-width: none;
+    width: 50%;
+    min-width: 50%;
+  }
+
+  .course-center--lesson-focus .cu-gap-standalone,
+  .course-center--lesson-focus .cu-inline-gap-wrap--block {
+    max-width: none;
+  }
 }
 
 .cu-lesson-chrome {
@@ -8136,7 +8149,7 @@ body.lesson-explanation-open {
   position: fixed;
   inset: 0;
   z-index: 12000;
-  background: var(--cu-lesson-bg, #F4F7FF);
+  background: var(--cu-lesson-bg, #ffffff);
   display: flex;
   flex-direction: column;
   animation: lessonExplanationIn 0.28s ease-out;
