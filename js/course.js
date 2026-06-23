@@ -3973,7 +3973,8 @@
       questions.forEach(function(item, idx) {
         var iId = idBase + '-yn-' + idx;
         var contextHtml = item.context ? '<div class="cu-ex-context">' + self._escapeHTML(item.context) + '</div>' : '';
-        html += '<div class="cu-ex-item cu-yn-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
+        var explanationAttr = self._cuExExplanationAttr(item);
+        html += '<div class="cu-ex-item cu-yn-item" data-answer="' + self._escapeHTML(item.answer || '') + '"' + explanationAttr + '>' +
           '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
           '<div class="cu-yn-row">' +
             '<div class="cu-yn-content">' +
@@ -4029,7 +4030,7 @@
           keyword = keywordMatch[1];
           sentB = sentB.slice(keywordMatch[0].length);
         }
-        html += '<div class="cu-ex-item cu-kwtrans-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
+        html += '<div class="cu-ex-item cu-kwtrans-item" data-answer="' + self._escapeHTML(item.answer || '') + '"' + self._cuExExplanationAttr(item) + '>' +
           '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>' +
           '<div class="cu-kwtrans-block">' +
             '<div class="cu-kwtrans-original">' + self._escapeHTML(sentA) + '</div>' +
@@ -4053,7 +4054,7 @@
         var globalIdx = startNum + idx;
         var syncGroup = idBase + '-sync-' + globalIdx;
         var sentences = Array.isArray(item.sentences) ? item.sentences : (item.sentence || '').split('\n');
-        html += '<div class="cu-ex-item cu-sync-item" data-answer="' + self._escapeHTML(item.answer || '') + '">' +
+        html += '<div class="cu-ex-item cu-sync-item" data-answer="' + self._escapeHTML(item.answer || '') + '"' + self._cuExExplanationAttr(item) + '>' +
           '<div class="cu-ex-num-badge">' + (globalIdx + 1) + '</div>' +
           '<div class="cu-sync-sentences">';
         sentences.forEach(function(sent, sIdx) {
@@ -4907,6 +4908,7 @@
         : (Array.isArray(item.answers) ? item.answers.join(', ') : '');
       var inputId = 'cuex-' + idBase;
       var numBadgeHtml = hideNumBadge ? '' : '<div class="cu-ex-num-badge">' + (idx + 1) + '</div>';
+      var explanationAttr = self._cuExExplanationAttr(item);
 
       // Handle paired-sentence format (sentenceA / sentenceB).
       // A/B meaning-choice (answer "A" or "B", no gaps): clickable label buttons + plain text.
@@ -4919,7 +4921,7 @@
         var isAbChoice = /^[AB]$/i.test(String(answer).trim()) &&
           !pairGapPattern.test(rawA) && !pairGapPattern.test(rawB);
         if (isAbChoice) {
-          return '<div class="cu-ex-item cu-ab-choice-item" data-answer="' + self._escapeHTML(answer) + '">' +
+          return '<div class="cu-ex-item cu-ab-choice-item" data-answer="' + self._escapeHTML(answer) + '"' + explanationAttr + '>' +
             numBadgeHtml +
             contextHtmlAB +
             '<div class="cu-ex-sentence">' +
@@ -4941,7 +4943,7 @@
             '</div>' +
           '</div>';
         }
-        return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '">' +
+        return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '"' + explanationAttr + '>' +
           numBadgeHtml +
           contextHtmlAB +
           '<div class="cu-ex-sentence">' +
@@ -4977,7 +4979,7 @@
         var kwtCopyBtnHtml = showCopyBtn
           ? '<button class="cu-copy-btn cu-kwt-copy-btn" type="button" onclick="BentoGrid._copyKwtInputToClipboard(this)" title="Copy answer to clipboard">\u2398</button>'
           : '';
-        return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '">' +
+        return '<div class="cu-ex-item" data-answer="' + self._escapeHTML(answer) + '"' + explanationAttr + '>' +
           numBadgeHtml +
           '<div class="cu-ex-sentence">' +
             '<div class="cu-ex-kwtrans">' +
@@ -5004,7 +5006,7 @@
       // stores either "OK" (correct as written) or a correction word.
       if (showOkBtn) {
         var sentHtmlOk = self._renderCourseExSentence(sentence, inputId, useTextarea, undefined, 'OK or correction');
-        return '<div class="cu-ex-item cu-ok-btn-item" data-answer="' + self._escapeHTML(answer) + '">' +
+        return '<div class="cu-ex-item cu-ok-btn-item" data-answer="' + self._escapeHTML(answer) + '"' + explanationAttr + '>' +
           numBadgeHtml +
           contextHtml +
           '<div class="cu-ok-inline-row">' +
@@ -5065,7 +5067,7 @@
           '</div>';
       }
 
-      return '<div class="cu-ex-item' + (item.tick !== undefined ? ' cu-has-tick' : '') + '"' + multiAnswerAttr + ' data-answer="' + self._escapeHTML(answer) + '"' + (item.tick !== undefined ? ' data-tick="' + self._escapeHTML(item.tick || '') + '"' : '') + '>' +
+      return '<div class="cu-ex-item' + (item.tick !== undefined ? ' cu-has-tick' : '') + '"' + multiAnswerAttr + ' data-answer="' + self._escapeHTML(answer) + '"' + (item.tick !== undefined ? ' data-tick="' + self._escapeHTML(item.tick || '') + '"' : '') + explanationAttr + '>' +
         numBadgeHtml +
         contextHtml +
         '<div class="cu-ex-sentence">' + sentenceHtml + '</div>' +
@@ -7394,12 +7396,34 @@
     },
 
     _hideCuLessonFeedback: function(sec) {
+      if (typeof LessonExplanation !== 'undefined') LessonExplanation.close();
       var existing = document.getElementById('cu-lesson-feedback');
       if (existing) existing.remove();
       if (sec) {
         var footer = sec.querySelector('.cu-ex-footer');
         if (footer) footer.classList.remove('cu-ex-footer--hidden');
       }
+    },
+
+    _cuExExplanationAttr: function(item) {
+      if (!item || !item.explanation) return '';
+      return ' data-explanation="' + this._escapeHTML(String(item.explanation)) + '"';
+    },
+
+    _getCuLessonItemExplanation: function(item) {
+      if (!item) return '';
+      var attr = item.getAttribute('data-explanation');
+      return attr ? attr.trim() : '';
+    },
+
+    _getCuLessonItemContext: function(item) {
+      if (!item) return '';
+      var contextEl = item.querySelector('.cu-ex-context, .cu-lesson-prompt-text');
+      return contextEl ? contextEl.textContent.trim() : '';
+    },
+
+    _isMobileLessonLayout: function() {
+      return typeof LessonExplanation !== 'undefined' && LessonExplanation.isMobile();
     },
 
     _getCuLessonCorrectAnswerText: function(item) {
@@ -7420,7 +7444,11 @@
       BentoGrid._hideCuLessonFeedback(sec);
       var feedback = document.createElement('div');
       feedback.id = 'cu-lesson-feedback';
-      feedback.className = 'cu-lesson-feedback ' + (correct ? 'cu-lesson-feedback--correct' : 'cu-lesson-feedback--wrong');
+      var explanation = BentoGrid._getCuLessonItemExplanation(item);
+      var useExplainSheet = BentoGrid._isMobileLessonLayout() && !!explanation;
+      feedback.className = 'cu-lesson-feedback ' +
+        (correct ? 'cu-lesson-feedback--correct' : 'cu-lesson-feedback--wrong') +
+        (useExplainSheet ? ' cu-lesson-feedback--mobile-explain' : '');
       feedback.setAttribute('role', 'status');
       feedback.setAttribute('aria-live', 'polite');
 
@@ -7433,19 +7461,46 @@
         detail = BentoGrid._getCuLessonCorrectAnswerText(item);
       }
 
+      var explainBtnHtml = useExplainSheet
+        ? '<button type="button" class="cu-lesson-feedback-explain">Explain my answer</button>'
+        : '';
+      var inlineDetailHtml = (!useExplainSheet && detail)
+        ? '<div class="cu-lesson-feedback-detail">' + BentoGrid._escapeHTML(detail) + '</div>'
+        : (useExplainSheet && !correct && detail
+          ? '<div class="cu-lesson-feedback-detail">' + BentoGrid._escapeHTML(detail) + '</div>'
+          : '');
+
       feedback.innerHTML =
-        '<div class="cu-lesson-feedback-icon" aria-hidden="true">' +
-          '<span class="material-symbols-outlined">' + (correct ? 'check' : 'close') + '</span>' +
+        '<div class="cu-lesson-feedback-top">' +
+          '<div class="cu-lesson-feedback-icon" aria-hidden="true">' +
+            '<span class="material-symbols-outlined">' + (correct ? 'check' : 'close') + '</span>' +
+          '</div>' +
+          '<div class="cu-lesson-feedback-body">' +
+            '<div class="cu-lesson-feedback-title">' + BentoGrid._escapeHTML(headline) + '</div>' +
+            inlineDetailHtml +
+          '</div>' +
         '</div>' +
-        '<div class="cu-lesson-feedback-body">' +
-          '<div class="cu-lesson-feedback-title">' + BentoGrid._escapeHTML(headline) + '</div>' +
-          (detail ? '<div class="cu-lesson-feedback-detail">' + BentoGrid._escapeHTML(detail) + '</div>' : '') +
-        '</div>' +
-        '<button type="button" class="cu-lesson-feedback-continue">Continue</button>';
+        '<div class="cu-lesson-feedback-actions">' +
+          explainBtnHtml +
+          '<button type="button" class="cu-lesson-feedback-continue">Continue</button>' +
+        '</div>';
 
       feedback.querySelector('.cu-lesson-feedback-continue').addEventListener('click', function() {
         BentoGrid._continueCuLessonItem(sec.id);
       });
+
+      var explainBtn = feedback.querySelector('.cu-lesson-feedback-explain');
+      if (explainBtn && typeof LessonExplanation !== 'undefined') {
+        explainBtn.addEventListener('click', function() {
+          LessonExplanation.open({
+            title: 'Explain my answer',
+            context: BentoGrid._getCuLessonItemContext(item),
+            explanation: explanation,
+            correctAnswer: correct ? '' : BentoGrid._getCuLessonCorrectAnswerText(item),
+            continueLabel: 'Back'
+          });
+        });
+      }
 
       document.body.appendChild(feedback);
 
