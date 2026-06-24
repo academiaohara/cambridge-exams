@@ -104,13 +104,14 @@
     if (lessonState.backFn) lessonState.backFn();
   }
 
-  function enterPractice(nodeId) {
+  function enterPractice(nodeId, opts) {
+    opts = opts || {};
     var targetNodeId = nodeId || getFirstIncompleteNodeId();
     if (!targetNodeId) {
       exitLesson();
       return;
     }
-    if (theoryRequiredAndIncomplete()) {
+    if (!opts.skipTheoryGate && theoryRequiredAndIncomplete()) {
       lessonState.pendingNodeId = targetNodeId;
       lessonState.phase = 'theory';
       renderPhase();
@@ -600,12 +601,14 @@
     };
 
     if (opts.startSection === 'theory') {
+      lessonState.phase = 'theory';
+      lessonState.theoryCardIdx = opts.theoryCardIdx || 0;
       renderPhase();
       return;
     }
 
     if (opts.startSection === 'session' && opts.startNodeId) {
-      enterPractice(opts.startNodeId);
+      enterPractice(opts.startNodeId, { skipTheoryGate: true });
       return;
     }
 
