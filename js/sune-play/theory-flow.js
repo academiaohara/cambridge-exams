@@ -153,7 +153,7 @@
           '<h3 class="sp-theory-card-title">' + esc(card.title) + '</h3>' +
           (card.subtitle ? '<p class="sp-theory-card-subtitle">' + esc(card.subtitle) + '</p>' : '') +
         '</div>' +
-        '<button type="button" class="sp-theory-close" data-action="theory-exit" aria-label="Salir">' +
+        '<button type="button" class="sp-theory-close" data-action="theory-exit" aria-label="Close">' +
           '<span class="material-symbols-outlined" aria-hidden="true">close</span>' +
         '</button>' +
       '</header>' +
