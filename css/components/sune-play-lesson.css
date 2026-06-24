@@ -542,11 +542,15 @@ button.sp-example-line.sp-speakable {
 
 .sp-btn--continue-mode.sp-btn--correct {
   background: var(--sp-correct);
+  border-color: var(--sp-correct);
+  border-bottom-color: #16a34a;
   box-shadow: 0 4px 0 #16a34a;
 }
 
 .sp-btn--continue-mode.sp-btn--incorrect {
   background: var(--sp-incorrect);
+  border-color: var(--sp-incorrect);
+  border-bottom-color: #dc2626;
   box-shadow: 0 4px 0 #dc2626;
 }
 
@@ -555,7 +559,12 @@ button.sp-example-line.sp-speakable {
   box-shadow: 0 2px 0 #16a34a;
 }
 
+.sp-btn--continue-mode.sp-btn--correct:active:not(:disabled) {
+  border-bottom-color: #16a34a;
+}
+
 .sp-btn--continue-mode.sp-btn--incorrect:active:not(:disabled) {
+  border-bottom-color: #dc2626;
   box-shadow: 0 2px 0 #dc2626;
 }
 
@@ -951,11 +960,14 @@ button.sp-example-line.sp-speakable {
 
 .sp-practice-footer .sp-btn--action[data-mode="check"]:not(:disabled) {
   background: var(--sp-correct);
+  border-color: var(--sp-correct);
+  border-bottom-color: #16a34a;
   box-shadow: 0 4px 0 #16a34a;
 }
 
 .sp-practice-footer .sp-btn--action[data-mode="check"]:not(:disabled):active {
   transform: translateY(2px);
+  border-bottom-color: #16a34a;
   box-shadow: 0 2px 0 #16a34a;
 }
 
