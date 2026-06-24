@@ -114,7 +114,7 @@
       esc(p.sentenceBefore) +
       ' <span class="sp-gap-slot" id="sp-choice-slot"></span> ' +
       esc(p.sentenceAfter) + '</p>';
-    html += renderSentenceSpeakBtn('Escuchar frase completa');
+    html += renderSentenceSpeakBtn('Listen to full sentence');
     html += '</div>';
     html += '<div class="sp-option-grid">';
     (p.options || []).forEach(function(opt, i) {
@@ -254,7 +254,7 @@
     var html = '<div class="sp-screen sp-screen--meaning" data-format="meaning_contrast">';
     html += '<div class="sp-prompt-row">';
     html += '<p class="sp-meaning-sentence">' + bold(p.sentence || '') + '</p>';
-    html += renderSentenceSpeakBtn('Escuchar frase');
+    html += renderSentenceSpeakBtn('Listen to sentence');
     html += '</div>';
     html += '<p class="sp-meaning-question">' + esc(p.prompt || '') + '</p>';
     html += '<div class="sp-option-grid">';
@@ -605,7 +605,7 @@
     html += '<div class="sp-feedback-body">';
     html += '<p class="sp-feedback-title">' + esc(title) + '</p>';
     if (!result.correct && result.correctAnswer) {
-      html += '<p class="sp-feedback-answer"><span>Correcto:</span> ' + esc(result.correctAnswer) + '</p>';
+      html += '<p class="sp-feedback-answer"><span>Correct:</span> ' + esc(result.correctAnswer) + '</p>';
     }
     html += '</div></div>';
     return html;

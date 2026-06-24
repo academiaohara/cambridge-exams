@@ -388,7 +388,7 @@
         '<span class="bgl-tap-after">' + esc(item.sentenceAfter || '') + '</span>' +
       '</div>' +
       '<button type="button" class="bgl-sentence-speak" data-action="bgl-speak-sentence"' +
-        ' aria-label="Escuchar frase completa" title="Escuchar frase completa">' +
+        ' aria-label="Listen to full sentence" title="Listen to full sentence">' +
         '<span class="material-symbols-outlined" aria-hidden="true">volume_up</span>' +
       '</button>' +
       '</div>' +

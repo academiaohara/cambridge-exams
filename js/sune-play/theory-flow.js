@@ -23,7 +23,7 @@
     var text = plainText(rawText);
     if (!text) return contentHtml;
     return '<button type="button" class="' + className + ' sp-speakable" data-action="theory-speak" data-speak-text="' + esc(text) + '"' +
-      ' aria-label="Escuchar: ' + esc(text) + '">' +
+      ' aria-label="Listen: ' + esc(text) + '">' +
       '<span class="sp-speakable-text">' + contentHtml + '</span>' +
       '<span class="sp-speak-icon material-symbols-outlined" aria-hidden="true">volume_up</span>' +
     '</button>';
@@ -200,7 +200,7 @@
       var active = i === cardIdx;
       dots += '<button type="button" class="sp-theory-dot' + (active ? ' sp-theory-dot--active' : '') + '"' +
         ' data-action="theory-goto" data-card-idx="' + i + '"' +
-        ' aria-label="Tarjeta ' + (i + 1) + ' de ' + total + '"' +
+        ' aria-label="Card ' + (i + 1) + ' of ' + total + '"' +
         (active ? ' aria-current="true"' : '') + '></button>';
     }
     return '<div class="sp-theory-dots" data-component="TheoryDots" role="tablist">' + dots + '</div>';
@@ -213,7 +213,7 @@
     var isPrev = direction === 'prev';
     var action = isPrev ? 'theory-prev' : 'theory-next';
     var icon = isPrev ? 'arrow_back' : (opts.isLast && opts.exitToStage ? 'arrow_forward' : (opts.isLast ? 'play_arrow' : 'arrow_forward'));
-    var label = isPrev ? 'Anterior' : (opts.isLast ? (opts.exitToStage ? 'Volver al stage' : 'Empezar práctica') : 'Siguiente');
+    var label = isPrev ? 'Previous' : (opts.isLast ? (opts.exitToStage ? 'Back to stage' : 'Start practice') : 'Next');
     var disabled = isPrev && opts.isFirst;
     return '<button type="button" class="sp-theory-nav sp-theory-nav--' + direction + '"' +
       ' data-component="TheoryNavButton" data-action="' + action + '"' +

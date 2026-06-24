@@ -87,7 +87,7 @@
     });
     html += '</div>';
     if (opts.showReviewTheory) {
-      html += '<button type="button" class="sp-btn sp-btn--ghost sp-review-theory-btn" data-action="review-theory" aria-label="Revisar teoría">' +
+      html += '<button type="button" class="sp-btn sp-btn--ghost sp-review-theory-btn" data-action="review-theory" aria-label="Review theory">' +
         '<span class="material-symbols-outlined">menu_book</span></button>';
     }
     html += '</div>';
@@ -110,10 +110,10 @@
             '<div class="sp-practice-footer-actions">' +
               '<button type="button" class="sp-btn sp-btn--skip" id="sp-skip-btn" aria-label="Skip">Skip</button>' +
               '<div class="sp-footer-actions-right">' +
-                '<button type="button" class="sp-btn sp-btn--explain-icon" id="sp-explain-btn" hidden aria-label="Ver explicación">' +
+                '<button type="button" class="sp-btn sp-btn--explain-icon" id="sp-explain-btn" hidden aria-label="View explanation">' +
                   '<span class="material-symbols-outlined">help</span>' +
                 '</button>' +
-                '<button type="button" class="sp-btn sp-btn--primary sp-btn--action" id="sp-action-btn" data-mode="check" disabled aria-label="Comprobar">' +
+                '<button type="button" class="sp-btn sp-btn--primary sp-btn--action" id="sp-action-btn" data-mode="check" disabled aria-label="Check">' +
                   '<span class="material-symbols-outlined">check</span>' +
                 '</button>' +
               '</div>' +
@@ -156,8 +156,8 @@
           '<span class="sp-stat-lbl">XP</span>' +
         '</div>' +
       '</div>' +
-      '<button type="button" class="sp-btn sp-btn--primary sp-btn--labeled" data-action="back-to-stage" aria-label="Volver al stage">' +
-        '<span class="sp-btn-label">Volver al stage</span>' +
+      '<button type="button" class="sp-btn sp-btn--primary sp-btn--labeled" data-action="back-to-stage" aria-label="Back to stage">' +
+        '<span class="sp-btn-label">Back to stage</span>' +
         '<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>' +
       '</button>' +
     '</div>';
@@ -170,9 +170,9 @@
       '<div class="sp-result-icon sp-result-icon--failed"><span class="material-symbols-outlined">heart_broken</span></div>' +
       '<h2 class="sp-result-title">Out of lives</h2>' +
       '<p class="sp-result-subtitle">You ran out of hearts in <strong>' + esc(node.shortTitle || node.title) + '</strong>.</p>' +
-      '<button type="button" class="sp-btn sp-btn--primary" data-action="retry-node" aria-label="Reintentar">' +
+      '<button type="button" class="sp-btn sp-btn--primary" data-action="retry-node" aria-label="Retry">' +
         '<span class="material-symbols-outlined">refresh</span></button>' +
-      '<button type="button" class="sp-btn sp-btn--ghost" data-action="back-to-nodes" aria-label="Volver a práctica">' +
+      '<button type="button" class="sp-btn sp-btn--ghost" data-action="back-to-nodes" aria-label="Back to practice">' +
         '<span class="material-symbols-outlined">arrow_back</span></button>' +
     '</div>';
   }
@@ -182,9 +182,9 @@
       '<div class="sp-result-icon"><span class="material-symbols-outlined">replay</span></div>' +
       '<h2 class="sp-result-title">Keep practising</h2>' +
       '<p class="sp-result-subtitle">You need ' + (stats.required || 0) + ' correct screens. You got ' + (stats.correct || 0) + '.</p>' +
-      '<button type="button" class="sp-btn sp-btn--primary" data-action="retry-node" aria-label="Reintentar">' +
+      '<button type="button" class="sp-btn sp-btn--primary" data-action="retry-node" aria-label="Retry">' +
         '<span class="material-symbols-outlined">refresh</span></button>' +
-      '<button type="button" class="sp-btn sp-btn--ghost" data-action="back-to-nodes" aria-label="Volver a práctica">' +
+      '<button type="button" class="sp-btn sp-btn--ghost" data-action="back-to-nodes" aria-label="Back to practice">' +
         '<span class="material-symbols-outlined">arrow_back</span></button>' +
     '</div>';
   }
