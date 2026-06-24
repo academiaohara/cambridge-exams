@@ -8035,7 +8035,14 @@
       }
 
       var chrome = document.getElementById('cu-lesson-chrome');
-      if (chrome) chrome.style.display = isExercise ? '' : 'none';
+      if (chrome) {
+        chrome.style.display = isLessonView ? '' : 'none';
+        chrome.classList.toggle('cu-lesson-chrome--theory', isTheory);
+        var progressWrap = chrome.querySelector('.cu-lesson-progress-wrap');
+        var heartsEl = chrome.querySelector('.cu-lesson-hearts');
+        if (progressWrap) progressWrap.style.display = isExercise ? '' : 'none';
+        if (heartsEl) heartsEl.style.display = isExercise ? '' : 'none';
+      }
 
       var header = centerSection.querySelector('.subpage-header--course-unit');
       if (header) header.style.display = isLessonView ? 'none' : '';
