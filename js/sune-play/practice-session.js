@@ -77,24 +77,19 @@
     opts = opts || {};
     var nodes = unit.practiceNodes || [];
     var completedNodes = opts.completedNodes || {};
-    var theoryRequired = unit.unitStructure && unit.unitStructure.theoryRequiredBeforePractice;
-    var theoryDone = opts.theoryCompleted;
 
     var html = '<div class="sp-node-list" data-component="PracticeNodeList">';
     html += '<div class="sp-node-list-header">';
     html += '<h2 class="sp-node-list-title">Sune Play</h2>';
     html += '<p class="sp-node-list-subtitle">' + esc(unit.unitSubtitle || '') + '</p>';
-    if (theoryRequired && !theoryDone) {
-      html += '<p class="sp-node-list-hint">Complete the theory to unlock practice.</p>';
-    }
     html += '</div><div class="sp-node-list-cards">';
     nodes.forEach(function(node, i) {
-      var locked = theoryRequired && !theoryDone;
-      html += PracticeNodeCard(node, i, { locked: locked, completed: !!completedNodes[node.nodeId] });
+      html += PracticeNodeCard(node, i, { locked: false, completed: !!completedNodes[node.nodeId] });
     });
     html += '</div>';
-    if (opts.showReviewTheory && theoryDone) {
-      html += '<button type="button" class="sp-btn sp-btn--ghost sp-review-theory-btn" data-action="review-theory">Review theory</button>';
+    if (opts.showReviewTheory) {
+      html += '<button type="button" class="sp-btn sp-btn--ghost sp-review-theory-btn" data-action="review-theory" aria-label="Revisar teoría">' +
+        '<span class="material-symbols-outlined">menu_book</span></button>';
     }
     html += '</div>';
     return html;
@@ -110,8 +105,10 @@
         '<div class="sp-exercise-card" id="sp-screen-mount"></div>' +
       '</div>' +
       '<footer class="sp-practice-footer">' +
-        '<button type="button" class="sp-btn sp-btn--primary sp-btn--check" id="sp-check-btn" disabled>Check</button>' +
         '<div id="sp-feedback-mount"></div>' +
+        '<button type="button" class="sp-btn sp-btn--primary sp-btn--action" id="sp-action-btn" data-mode="check" disabled aria-label="Comprobar">' +
+          '<span class="material-symbols-outlined">check</span>' +
+        '</button>' +
       '</footer>' +
     '</div>';
   }
@@ -130,7 +127,8 @@
         '<div class="sp-stat"><span class="sp-stat-val">' + (stats.livesLeft || 0) + '</span><span class="sp-stat-lbl">Lives left</span></div>' +
         '<div class="sp-stat"><span class="sp-stat-val">' + (stats.xp || 0) + '</span><span class="sp-stat-lbl">XP</span></div>' +
       '</div>' +
-      '<button type="button" class="sp-btn sp-btn--primary" data-action="back-to-nodes">Back to practice</button>' +
+      '<button type="button" class="sp-btn sp-btn--primary" data-action="back-to-nodes" aria-label="Volver a práctica">' +
+        '<span class="material-symbols-outlined">arrow_back</span></button>' +
     '</div>';
   }
 
@@ -141,8 +139,10 @@
       '<div class="sp-result-icon sp-result-icon--failed"><span class="material-symbols-outlined">heart_broken</span></div>' +
       '<h2 class="sp-result-title">Out of lives</h2>' +
       '<p class="sp-result-subtitle">You ran out of hearts in <strong>' + esc(node.shortTitle || node.title) + '</strong>.</p>' +
-      '<button type="button" class="sp-btn sp-btn--primary" data-action="retry-node">Try again</button>' +
-      '<button type="button" class="sp-btn sp-btn--ghost" data-action="back-to-nodes">Back to practice</button>' +
+      '<button type="button" class="sp-btn sp-btn--primary" data-action="retry-node" aria-label="Reintentar">' +
+        '<span class="material-symbols-outlined">refresh</span></button>' +
+      '<button type="button" class="sp-btn sp-btn--ghost" data-action="back-to-nodes" aria-label="Volver a práctica">' +
+        '<span class="material-symbols-outlined">arrow_back</span></button>' +
     '</div>';
   }
 
@@ -151,8 +151,10 @@
       '<div class="sp-result-icon"><span class="material-symbols-outlined">replay</span></div>' +
       '<h2 class="sp-result-title">Keep practising</h2>' +
       '<p class="sp-result-subtitle">You need ' + (stats.required || 0) + ' correct screens. You got ' + (stats.correct || 0) + '.</p>' +
-      '<button type="button" class="sp-btn sp-btn--primary" data-action="retry-node">Try again</button>' +
-      '<button type="button" class="sp-btn sp-btn--ghost" data-action="back-to-nodes">Back to practice</button>' +
+      '<button type="button" class="sp-btn sp-btn--primary" data-action="retry-node" aria-label="Reintentar">' +
+        '<span class="material-symbols-outlined">refresh</span></button>' +
+      '<button type="button" class="sp-btn sp-btn--ghost" data-action="back-to-nodes" aria-label="Volver a práctica">' +
+        '<span class="material-symbols-outlined">arrow_back</span></button>' +
     '</div>';
   }
 

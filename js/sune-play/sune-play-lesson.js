@@ -186,13 +186,6 @@
 
   function startPracticeSession(nodeId) {
     var unit = lessonState.unitData;
-    var theoryRequired = unit.unitStructure && unit.unitStructure.theoryRequiredBeforePractice;
-    if (theoryRequired && !lessonState.progress.theoryCompleted) {
-      lessonState.phase = 'theory';
-      lessonState.pendingNodeId = nodeId;
-      renderPhase();
-      return;
-    }
 
     var node = (unit.practiceNodes || []).find(function(n) { return n.nodeId === nodeId; });
     if (!node) return;
@@ -220,15 +213,34 @@
     renderPhase();
   }
 
+  function setActionBtn(mode, enabled) {
+    var actionBtn = lessonState.mount.querySelector('#sp-action-btn');
+    if (!actionBtn) return;
+    actionBtn.dataset.mode = mode;
+    actionBtn.disabled = !enabled;
+    actionBtn.hidden = false;
+    var icon = actionBtn.querySelector('.material-symbols-outlined');
+    var labels = { check: 'Comprobar', continue: 'Continuar', retry: 'Reintentar' };
+    actionBtn.setAttribute('aria-label', labels[mode] || 'Acción');
+    if (icon) {
+      icon.textContent = mode === 'check' ? 'check' : mode === 'retry' ? 'refresh' : 'arrow_forward';
+    }
+    actionBtn.classList.toggle('sp-btn--continue-mode', mode === 'continue');
+    actionBtn.classList.toggle('sp-btn--correct', mode === 'continue' && lessonState._lastResultCorrect);
+    actionBtn.classList.toggle('sp-btn--incorrect', mode === 'continue' && lessonState._lastResultCorrect === false);
+    actionBtn.classList.toggle('sp-btn--retry-mode', mode === 'retry');
+  }
+
   function renderCurrentScreen() {
     var mount = lessonState.mount;
     var screenMount = mount.querySelector('#sp-screen-mount');
-    var checkBtn = mount.querySelector('#sp-check-btn');
     var feedbackMount = mount.querySelector('#sp-feedback-mount');
     if (!screenMount) return;
 
     feedbackMount.innerHTML = '';
     lessonState.awaitingContinue = false;
+    lessonState._lastFeedbackResult = null;
+    lessonState._lastResultCorrect = null;
 
     var screen = lessonState.queue.currentScreen;
     if (!screen) {
@@ -244,14 +256,12 @@
     if (screenRoot) {
       screenRoot._spScreen = screen;
       renderer.bindScreen(screenRoot, screen, function() {
-        if (checkBtn) checkBtn.disabled = !renderer.isScreenReady(screenRoot, screen);
+        if (!lessonState.awaitingContinue) {
+          setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+        }
       });
     }
-    if (checkBtn) {
-      checkBtn.disabled = true;
-      checkBtn.textContent = 'Check';
-      checkBtn.hidden = false;
-    }
+    setActionBtn('check', false);
     updateSessionHeader();
   }
 
@@ -272,9 +282,9 @@
 
   function bindSessionEvents() {
     var mount = lessonState.mount;
-    var checkBtn = mount.querySelector('#sp-check-btn');
-    if (checkBtn) {
-      checkBtn.addEventListener('click', handleCheck);
+    var actionBtn = mount.querySelector('#sp-action-btn');
+    if (actionBtn) {
+      actionBtn.addEventListener('click', handleActionClick);
     }
     mount.querySelector('[data-action="exit-session"]') && mount.querySelector('[data-action="exit-session"]').addEventListener('click', function() {
       lessonState.phase = 'nodes';
@@ -300,8 +310,33 @@
     }
   }
 
+  function handleActionClick() {
+    var actionBtn = lessonState.mount.querySelector('#sp-action-btn');
+    if (!actionBtn || actionBtn.disabled) return;
+    if (lessonState.awaitingContinue) {
+      handleContinue();
+      return;
+    }
+    handleCheck();
+  }
+
+  function handleContinue() {
+    var mount = lessonState.mount;
+    var feedbackMount = mount.querySelector('#sp-feedback-mount');
+    if (lessonState._isRetryContinue) {
+      feedbackMount.innerHTML = '';
+      lessonState.awaitingContinue = false;
+      lessonState._isRetryContinue = false;
+      var screenRoot = mount.querySelector('.sp-screen');
+      if (screenRoot) screenRoot.classList.remove('sp-screen--locked');
+      setActionBtn('check', false);
+      return;
+    }
+    if (lessonState.hearts.isGameOver) return;
+    renderCurrentScreen();
+  }
+
   function handleCheck() {
-    if (lessonState.awaitingContinue) return;
     var mount = lessonState.mount;
     var screenRoot = mount.querySelector('.sp-screen');
     var screen = lessonState.currentScreen;
@@ -335,8 +370,6 @@
       lessonState.sessionCorrect++;
       showFeedback(result, true);
     } else if (canRetry) {
-      var checkBtn = mount.querySelector('#sp-check-btn');
-      if (checkBtn) checkBtn.disabled = !renderer.isScreenReady(screenRoot, screen);
       showFeedback(result, false, true);
     } else {
       screenRoot.classList.add('sp-screen--locked');
@@ -360,27 +393,26 @@
   function showFeedback(result, advanceOnContinue, isRetry) {
     var mount = lessonState.mount;
     var feedbackMount = mount.querySelector('#sp-feedback-mount');
-    var checkBtn = mount.querySelector('#sp-check-btn');
-    if (checkBtn) checkBtn.hidden = true;
-
     var tone = lessonState.unitData.feedbackTone;
     feedbackMount.innerHTML = renderer.FeedbackSheet(result, tone);
     lessonState.awaitingContinue = true;
+    lessonState._lastFeedbackResult = result;
+    lessonState._lastResultCorrect = result.correct;
+    lessonState._isRetryContinue = !!isRetry;
 
-    var continueBtn = feedbackMount.querySelector('[data-action="feedback-continue"]');
-    if (continueBtn) {
-      continueBtn.textContent = isRetry ? 'Try again' : 'Continue';
-      continueBtn.addEventListener('click', function() {
-        if (isRetry) {
-          feedbackMount.innerHTML = '';
-          lessonState.awaitingContinue = false;
-          if (checkBtn) { checkBtn.hidden = false; checkBtn.disabled = true; }
-          var screenRoot = mount.querySelector('.sp-screen');
-          if (screenRoot) screenRoot.classList.remove('sp-screen--locked');
-          return;
+    setActionBtn(isRetry ? 'retry' : 'continue', true);
+
+    var explainBtn = feedbackMount.querySelector('[data-action="show-explanation"]');
+    if (explainBtn) {
+      explainBtn.addEventListener('click', function() {
+        if (typeof LessonExplanation !== 'undefined') {
+          LessonExplanation.open({
+            title: 'Explicación',
+            explanation: result.explanation,
+            correctAnswer: result.correctAnswer || '',
+            continueLabel: 'Cerrar'
+          });
         }
-        if (lessonState.hearts.isGameOver) return;
-        renderCurrentScreen();
       });
     }
   }
@@ -447,16 +479,12 @@
     var progress = loadProgress(unitId);
     if (theory.isTheoryCompleted(unitId)) progress.theoryCompleted = true;
 
-    var theoryRequired = unitData.unitStructure && unitData.unitStructure.theoryRequiredBeforePractice;
-    var startPhase = 'theory';
-    if (progress.theoryCompleted || !theoryRequired) {
-      if (opts.startSection === 'session' && opts.startNodeId) {
-        startPhase = 'session';
-      } else if (opts.startSection === 'nodes' || progress.theoryCompleted) {
-        startPhase = 'nodes';
-      }
+    var startPhase = 'nodes';
+    if (opts.startSection === 'session' && opts.startNodeId) {
+      startPhase = 'session';
+    } else if (opts.startSection === 'theory') {
+      startPhase = 'theory';
     }
-    if (opts.startSection === 'theory') startPhase = 'theory';
 
     lessonState = {
       unitId: unitId,

@@ -168,11 +168,12 @@
 
   // ─── TheoryCompleteButton ────────────────────────────────────────────
 
-  function TheoryCompleteButton(isLast, label) {
-    var text = label || (isLast ? 'Start practice' : 'Next');
-    var cls = isLast ? 'sp-btn sp-btn--primary sp-btn--start-practice' : 'sp-btn sp-btn--primary';
-    return '<button type="button" class="' + cls + '" data-component="TheoryCompleteButton" data-action="theory-next">' +
-      esc(text) + '</button>';
+  function TheoryCompleteButton(isLast) {
+    var icon = isLast ? 'play_arrow' : 'arrow_forward';
+    var label = isLast ? 'Empezar práctica' : 'Siguiente';
+    var cls = isLast ? 'sp-btn sp-btn--primary sp-btn--start-practice sp-btn--icon' : 'sp-btn sp-btn--primary sp-btn--icon';
+    return '<button type="button" class="' + cls + '" data-component="TheoryCompleteButton" data-action="theory-next" aria-label="' + esc(label) + '">' +
+      '<span class="material-symbols-outlined">' + icon + '</span></button>';
   }
 
   // ─── TheoryFlow ──────────────────────────────────────────────────────
