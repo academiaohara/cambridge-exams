@@ -72,6 +72,64 @@
     if (rightSidebar) rightSidebar.style.display = '';
   }
 
+  function getPracticeNodes() {
+    return (lessonState.unitData.practiceNodes || []);
+  }
+
+  function getFirstIncompleteNodeId() {
+    var nodes = getPracticeNodes();
+    var completed = lessonState.progress.completedNodes || {};
+    for (var i = 0; i < nodes.length; i++) {
+      if (!completed[nodes[i].nodeId]) return nodes[i].nodeId;
+    }
+    return nodes.length ? nodes[0].nodeId : null;
+  }
+
+  function getNextNodeId(currentNodeId) {
+    var nodes = getPracticeNodes();
+    for (var i = 0; i < nodes.length; i++) {
+      if (nodes[i].nodeId === currentNodeId && i < nodes.length - 1) {
+        return nodes[i + 1].nodeId;
+      }
+    }
+    return null;
+  }
+
+  function theoryRequiredAndIncomplete() {
+    var structure = lessonState.unitData.unitStructure || {};
+    return !!structure.theoryRequiredBeforePractice && !lessonState.progress.theoryCompleted;
+  }
+
+  function exitLesson() {
+    if (lessonState.backFn) lessonState.backFn();
+  }
+
+  function enterPractice(nodeId) {
+    var targetNodeId = nodeId || getFirstIncompleteNodeId();
+    if (!targetNodeId) {
+      exitLesson();
+      return;
+    }
+    if (theoryRequiredAndIncomplete()) {
+      lessonState.pendingNodeId = targetNodeId;
+      lessonState.phase = 'theory';
+      renderPhase();
+      return;
+    }
+    startPracticeSession(targetNodeId);
+  }
+
+  function advanceAfterNode() {
+    var currentId = lessonState.activeNode && lessonState.activeNode.nodeId;
+    lessonState.activeNode = null;
+    var nextId = getNextNodeId(currentId);
+    if (nextId) {
+      enterPractice(nextId);
+      return;
+    }
+    exitLesson();
+  }
+
   // ─── Phase rendering ─────────────────────────────────────────────────
 
   function renderPhase() {
@@ -81,16 +139,6 @@
     if (s.phase === 'theory') {
       s.mount.innerHTML = '<div class="sp-lesson">' + theory.TheoryFlow(s.unitData, { cardIdx: s.theoryCardIdx }) + '</div>';
       bindTheoryEvents();
-      return;
-    }
-
-    if (s.phase === 'nodes') {
-      s.mount.innerHTML = '<div class="sp-lesson">' + practiceUI.PracticeNodeList(s.unitData, {
-        theoryCompleted: s.progress.theoryCompleted,
-        completedNodes: s.progress.completedNodes,
-        showReviewTheory: s.unitData.unitStructure && s.unitData.unitStructure.allowTheoryReviewFromPractice
-      }) + '</div>';
-      bindNodeListEvents();
       return;
     }
 
@@ -147,39 +195,18 @@
         } else if (lessonState.pendingNodeId) {
           var pendingNode = lessonState.pendingNodeId;
           lessonState.pendingNodeId = null;
-          lessonState.phase = 'nodes';
-          renderPhase();
           startPracticeSession(pendingNode);
           return;
-        } else {
-          lessonState.phase = lessonState._returnPhase || 'nodes';
+        } else if (lessonState._returnPhase) {
+          lessonState.phase = lessonState._returnPhase;
           lessonState._returnPhase = null;
+          renderPhase();
+        } else {
+          enterPractice();
         }
-        renderPhase();
+        return;
       }
     });
-  }
-
-  // ─── Node list events ────────────────────────────────────────────────
-
-  function bindNodeListEvents() {
-    var mount = lessonState.mount;
-    mount.querySelectorAll('[data-node-id]').forEach(function(btn) {
-      if (btn.disabled) return;
-      btn.addEventListener('click', function() {
-        var nodeId = btn.getAttribute('data-node-id');
-        startPracticeSession(nodeId);
-      });
-    });
-    var reviewBtn = mount.querySelector('[data-action="review-theory"]');
-    if (reviewBtn) {
-      reviewBtn.addEventListener('click', function() {
-        lessonState.theoryCardIdx = 0;
-        lessonState.phase = 'theory';
-        lessonState._returnPhase = 'nodes';
-        renderPhase();
-      });
-    }
   }
 
   // ─── Session ─────────────────────────────────────────────────────────
@@ -323,9 +350,8 @@
       explainBtn.addEventListener('click', handleExplainClick);
     }
     mount.querySelector('[data-action="exit-session"]') && mount.querySelector('[data-action="exit-session"]').addEventListener('click', function() {
-      lessonState.phase = 'nodes';
       lessonState.activeNode = null;
-      renderPhase();
+      exitLesson();
     });
     var theoryBtn = mount.querySelector('[data-action="review-theory"]');
     if (theoryBtn) {
@@ -537,9 +563,12 @@
     var back = mount.querySelector('[data-action="back-to-nodes"]');
     if (back) {
       back.addEventListener('click', function() {
-        lessonState.phase = 'nodes';
-        lessonState.activeNode = null;
-        renderPhase();
+        if (lessonState.phase === 'complete') {
+          advanceAfterNode();
+        } else {
+          lessonState.activeNode = null;
+          exitLesson();
+        }
       });
     }
   }
@@ -558,13 +587,6 @@
     var progress = loadProgress(unitId);
     if (theory.isTheoryCompleted(unitId)) progress.theoryCompleted = true;
 
-    var startPhase = 'nodes';
-    if (opts.startSection === 'session' && opts.startNodeId) {
-      startPhase = 'session';
-    } else if (opts.startSection === 'theory') {
-      startPhase = 'theory';
-    }
-
     lessonState = {
       unitId: unitId,
       unitData: unitData,
@@ -572,17 +594,22 @@
       backFn: opts.backFn,
       level: opts.level,
       progress: progress,
-      phase: startPhase,
+      phase: 'theory',
       theoryCardIdx: 0,
       pendingNodeId: opts.startNodeId || null
     };
 
-    if (startPhase === 'session' && opts.startNodeId) {
-      startPracticeSession(opts.startNodeId);
+    if (opts.startSection === 'theory') {
+      renderPhase();
       return;
     }
 
-    renderPhase();
+    if (opts.startSection === 'session' && opts.startNodeId) {
+      enterPractice(opts.startNodeId);
+      return;
+    }
+
+    enterPractice();
   }
 
   function destroy() {
