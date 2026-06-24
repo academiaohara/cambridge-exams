@@ -7522,7 +7522,7 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
   content: '';
   position: absolute;
   left: -10px;
-  bottom: 22px;
+  bottom: 52px;
   width: 0;
   height: 0;
   border-top: 8px solid transparent;
@@ -7534,7 +7534,7 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
   content: '';
   position: absolute;
   left: -7px;
-  bottom: 23px;
+  bottom: 53px;
   width: 0;
   height: 0;
   border-top: 7px solid transparent;
@@ -7571,19 +7571,21 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
 }
 
 .cu-lesson-exit-btn--stay {
-  background: var(--cu-duo-green, #58cc02);
+  background: var(--ex-duo-orange, #f47417);
   color: #fff;
   border: none;
-  border-bottom: 4px solid var(--cu-duo-green-dark, #58a700);
+  border-bottom: 4px solid var(--ex-duo-orange-dark, #d45f0a);
+  box-shadow: 0 4px 0 var(--ex-duo-orange-dark, #d45f0a);
 }
 
 .cu-lesson-exit-btn--stay:hover {
-  filter: brightness(1.05);
+  background: var(--ex-duo-orange-hover, #f6802a);
 }
 
 .cu-lesson-exit-btn--stay:active {
   transform: translateY(2px);
   border-bottom-width: 2px;
+  box-shadow: 0 1px 0 var(--ex-duo-orange-dark, #d45f0a);
 }
 
 .cu-lesson-exit-btn--leave {
