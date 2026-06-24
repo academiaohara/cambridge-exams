@@ -36,6 +36,20 @@
     return defs.find(function(d) { return d.formatType === formatType; }) || {};
   }
 
+  function normalizeFormatType(formatType) {
+    switch (formatType) {
+      case 'conjugation_gap_fill': return 'free_text_gap_fill';
+      case 'marked_error_gap_correction': return 'error_correction';
+      case 'verb_tile_conjugation_gap': return 'verb_bank_two_step';
+      case 'passage_error_hunt_counter': return 'passage_error_hunt_single';
+      default: return formatType;
+    }
+  }
+
+  function shuffleCopy(list) {
+    return list.slice().sort(function() { return Math.random() - 0.5; });
+  }
+
   function buildScreenId(nodeId, exerciseId, itemId, formatType) {
     return [nodeId, exerciseId, itemId, formatType].filter(Boolean).join('__');
   }
@@ -73,13 +87,17 @@
 
       case 'word_order_tiles': {
         var ans = item.answer || (item.acceptedAnswers && item.acceptedAnswers[0]) || '';
-        var words = String(ans).replace(/\s*\.\s*$/, '').split(/\s+/).filter(Boolean);
+        var tiles = item.tiles && item.tiles.length
+          ? shuffleCopy(item.tiles)
+          : shuffleCopy(String(ans).replace(/\s*\.\s*$/, '').split(/\s+/).filter(Boolean));
         return {
           prompt: item.displayPrompt || item.sentence || 'Build the sentence.',
-          tiles: words.slice().sort(function() { return Math.random() - 0.5; }),
+          tiles: tiles,
           answer: ans,
           acceptedAnswers: item.acceptedAnswers || [ans],
-          explanation: item.explanation || ''
+          explanation: item.explanation || '',
+          answerTiles: item.answerTiles || null,
+          tileValidation: item.tileValidation || null
         };
       }
 
@@ -105,16 +123,50 @@
           selectedVerb: item.preselectedVerb || null
         };
 
+      case 'conjugation_gap_fill':
+        return {
+          sentence: item.blankSentence || item.sentence || '',
+          verbPrompt: item.verbPrompt || '',
+          answer: item.answer,
+          acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
+          explanation: item.explanation || '',
+          completedSentence: (item.sentence || '').replace(GAP_RE, item.answer || '')
+        };
+
+      case 'marked_error_gap_correction':
+        return {
+          sentence: item.incorrectSentence || item.sentence || '',
+          highlightedText: item.markedError || item.highlightedText || '',
+          answer: item.answer,
+          acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
+          explanation: item.explanation || '',
+          replacementOnly: item.answerMode === 'typed_replacement_only'
+        };
+
+      case 'verb_tile_conjugation_gap':
+        return {
+          sentence: item.blankSentence || item.sentence || '',
+          baseVerb: item.baseVerb || '',
+          answer: item.answer,
+          acceptedAnswers: item.acceptedAnswers,
+          completedSentence: item.completedSentence || '',
+          explanation: item.explanation || '',
+          wordBank: exercise.wordBank || exercise.words || [],
+          step: item.preselectedVerb || item.selectedTileAnswer ? 'type_form' : 'choose_verb',
+          selectedVerb: item.preselectedVerb || item.selectedTileAnswer || null
+        };
+
+      case 'passage_error_hunt_counter':
       case 'passage_error_hunt_single':
         return {
           passage: exercise.passage || '',
-          wrong: item.wrong || '',
+          wrong: item.targetPhrase || item.wrong || '',
           answer: item.answer,
           acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
           explanation: item.explanation || '',
           itemId: item.id,
           allErrors: (exercise.items || []).map(function(it) {
-            return { id: it.id, wrong: it.wrong, fixed: false };
+            return { id: it.id, wrong: it.targetPhrase || it.wrong, fixed: false };
           }),
           hideCorrectInline: exercise.hideCorrectInline !== false
         };
@@ -160,11 +212,13 @@
 
   function buildScreen(unit, node, formatType, payload, meta) {
     meta = meta || {};
-    var formatDef = getFormatDef(unit, formatType);
+    var normalizedType = normalizeFormatType(formatType);
+    var formatDef = getFormatDef(unit, formatType) || getFormatDef(unit, normalizedType);
     return {
       screenId: meta.screenId,
       nodeId: node.nodeId,
-      formatType: formatType,
+      formatType: normalizedType,
+      sourceFormatType: formatType,
       itemId: meta.itemId || meta.screenId,
       sourceExerciseId: meta.sourceExerciseId,
       payload: payload,

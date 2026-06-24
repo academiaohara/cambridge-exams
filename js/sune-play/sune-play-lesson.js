@@ -21,10 +21,13 @@
   }
 
   function isSunePlayUnit(data) {
-    return data && data.type === 'grammar' && (
-      data.schemaVersion === 'sune-english-unit-v2' ||
-      data.lessonStyle === 'sune-play'
-    );
+    if (!data || data.type !== 'grammar') return false;
+    var schema = String(data.schemaVersion || '');
+    var style = String(data.lessonStyle || '');
+    if (schema.indexOf('sune-english-unit-v2') === 0) return true;
+    if (style.indexOf('sune-play') === 0) return true;
+    if (data.theory && data.practiceNodes && data.practiceNodes.length) return true;
+    return false;
   }
 
   function getProgressKey(unitId) {
