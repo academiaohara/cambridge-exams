@@ -1019,6 +1019,15 @@ button.sp-example-line.sp-speakable {
   border-color: rgba(239, 68, 68, 0.25);
 }
 
+.sp-practice-footer--feedback.sp-practice-footer--incorrect .sp-practice-footer-inner {
+  background: var(--sp-incorrect-tint);
+  border-radius: 12px;
+}
+
+.sp-practice-footer--feedback.sp-practice-footer--incorrect .sp-practice-footer-actions {
+  background: transparent;
+}
+
 .sp-practice-footer--feedback.sp-practice-footer--retry {
   background: var(--sp-primary-tint);
   border-color: rgba(100, 181, 246, 0.3);
@@ -1169,6 +1178,12 @@ button.sp-example-line.sp-speakable {
 
 .sp-screen--locked .sp-gap-inline-input {
   pointer-events: none;
+  cursor: default;
+}
+
+.sp-screen--locked .sp-gap-inline-input:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .sp-inline-gap-group.sp-gap-slot--correct .sp-gap-inline-input {

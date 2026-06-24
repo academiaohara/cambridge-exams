@@ -236,7 +236,8 @@
         "capitalization_only",
         "extra_spaces",
         "missing_final_period",
-        "minor_punctuation"
+        "minor_punctuation",
+        "isnt_arenot_contraction_equivalence"
       ]
     },
     "formatDefinitions": [
@@ -262,7 +263,7 @@
         "displayName": "Type the conjugation",
         "defaultLives": 5,
         "maxLifeLossPerScreen": 2,
-        "attemptsPerScreen": 2,
+        "attemptsPerScreen": 1,
         "failureAction": "show_correct_answer_then_continue",
         "fallbackFormatType": "two_option_choice",
         "interaction": {
@@ -315,7 +316,7 @@
         "displayName": "Fix the marked conjugation",
         "defaultLives": 5,
         "maxLifeLossPerScreen": 2,
-        "attemptsPerScreen": 2,
+        "attemptsPerScreen": 1,
         "failureAction": "show_correct_answer_then_continue",
         "interaction": {
           "component": "marked_error_replacement_input",
@@ -336,7 +337,7 @@
         "displayName": "Choose the verb tile and conjugate it",
         "defaultLives": 5,
         "maxLifeLossPerScreen": 2,
-        "attemptsPerScreen": 2,
+        "attemptsPerScreen": 1,
         "failureAction": "show_correct_answer_then_continue",
         "fallbackFormatType": "preselected_verb_gap_fill",
         "steps": [
@@ -366,7 +367,7 @@
         "displayName": "Find the 10 wrong conjugations",
         "defaultLives": 6,
         "maxLifeLossPerScreen": 2,
-        "attemptsPerScreen": 2,
+        "attemptsPerScreen": 1,
         "failureAction": "show_guided_hint",
         "interaction": {
           "component": "passage_tap_error_counter",

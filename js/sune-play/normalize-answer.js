@@ -6,12 +6,19 @@
 
   var APOSTROPHE_RE = /[\u2018\u2019\u201a\u201b`´]/g;
 
+  function normalizeContractions(s) {
+    return s
+      .replace(/\bisn't\b/g, 'is not')
+      .replace(/\baren't\b/g, 'are not');
+  }
+
   function normalizeAnswer(answer) {
     if (answer == null) return '';
     var s = String(answer);
     s = s.replace(APOSTROPHE_RE, "'");
     s = s.replace(/\s+/g, ' ').trim();
     s = s.replace(/\s*\.\s*$/, '');
+    s = normalizeContractions(s);
     return s.toLowerCase();
   }
 
@@ -20,7 +27,8 @@
     var s = String(answer);
     s = s.replace(APOSTROPHE_RE, "'");
     s = s.replace(/\s+/g, ' ').trim();
-    return s.replace(/\s*\.\s*$/, '');
+    s = s.replace(/\s*\.\s*$/, '');
+    return normalizeContractions(s);
   }
 
   function answersMatch(given, expected, opts) {

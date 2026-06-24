@@ -129,13 +129,11 @@
     lessonState.awaitingContinue = !!saved.awaitingContinue;
     lessonState._lastFeedbackResult = saved._lastFeedbackResult || null;
     lessonState._lastResultCorrect = saved._lastResultCorrect;
-    lessonState._isRetryContinue = !!saved._isRetryContinue;
     renderPhase();
     if (saved.awaitingContinue && saved._lastFeedbackResult) {
       lessonState.awaitingContinue = saved.awaitingContinue;
       lessonState._lastFeedbackResult = saved._lastFeedbackResult;
       lessonState._lastResultCorrect = saved._lastResultCorrect;
-      lessonState._isRetryContinue = saved._isRetryContinue;
       restoreSessionFeedback();
     }
     syncLessonUrl(true);
@@ -151,7 +149,8 @@
     var tone = lessonState.unitData.feedbackTone;
     feedbackMount.innerHTML = renderer.FeedbackSheet(result, tone);
     applyGapResultStyles(result.correct);
-    setActionBtn(lessonState._isRetryContinue ? 'retry' : 'continue', true);
+    setScreenInputsLocked(true);
+    setActionBtn('continue', true);
     var screenRoot = mount.querySelector('.sp-screen');
     if (screenRoot) screenRoot.classList.add('sp-screen--locked');
   }
@@ -434,15 +433,15 @@
     actionBtn.disabled = !enabled;
     actionBtn.hidden = false;
     var icon = actionBtn.querySelector('.material-symbols-outlined');
-    var labels = { check: 'Check', continue: 'Continue', retry: 'Retry' };
+    var labels = { check: 'Check', continue: 'Continue' };
     actionBtn.setAttribute('aria-label', labels[mode] || 'Action');
     if (icon) {
-      icon.textContent = mode === 'check' ? 'check' : mode === 'retry' ? 'refresh' : 'arrow_forward';
+      icon.textContent = mode === 'check' ? 'check' : 'arrow_forward';
     }
     actionBtn.classList.toggle('sp-btn--continue-mode', mode === 'continue');
     actionBtn.classList.toggle('sp-btn--correct', mode === 'continue' && lessonState._lastResultCorrect);
     actionBtn.classList.toggle('sp-btn--incorrect', mode === 'continue' && lessonState._lastResultCorrect === false);
-    actionBtn.classList.toggle('sp-btn--retry-mode', mode === 'retry');
+    actionBtn.classList.remove('sp-btn--retry-mode');
 
     if (skipBtn) {
       skipBtn.hidden = mode !== 'check';
@@ -453,19 +452,27 @@
       explainBtn.hidden = mode === 'check' || !hasExplanation;
     }
     var practiceMain = lessonState.mount.querySelector('.sp-practice-main');
-    var isFeedback = mode === 'continue' || mode === 'retry';
+    var isFeedback = mode === 'continue';
     var isCorrect = lessonState._lastResultCorrect === true;
     var isIncorrect = lessonState._lastResultCorrect === false;
     if (footer) {
       footer.classList.toggle('sp-practice-footer--feedback', isFeedback);
       footer.classList.toggle('sp-practice-footer--correct', mode === 'continue' && isCorrect);
       footer.classList.toggle('sp-practice-footer--incorrect', isFeedback && isIncorrect);
-      footer.classList.toggle('sp-practice-footer--retry', mode === 'retry');
+      footer.classList.remove('sp-practice-footer--retry');
     }
     if (practiceMain) {
       practiceMain.classList.toggle('sp-practice-main--correct', mode === 'continue' && isCorrect);
       practiceMain.classList.toggle('sp-practice-main--incorrect', isFeedback && isIncorrect);
     }
+  }
+
+  function setScreenInputsLocked(locked) {
+    var mount = lessonState.mount;
+    if (!mount) return;
+    mount.querySelectorAll('.sp-screen input, .sp-screen textarea').forEach(function(el) {
+      el.readOnly = locked;
+    });
   }
 
   function applyGapResultStyles(correct) {
@@ -538,6 +545,7 @@
         }
       });
     }
+    setScreenInputsLocked(false);
     setActionBtn('check', false);
     updateSessionHeader();
   }
@@ -585,13 +593,39 @@
           currentScreen: lessonState.currentScreen,
           awaitingContinue: lessonState.awaitingContinue,
           _lastFeedbackResult: lessonState._lastFeedbackResult,
-          _lastResultCorrect: lessonState._lastResultCorrect,
-          _isRetryContinue: lessonState._isRetryContinue
+          _lastResultCorrect: lessonState._lastResultCorrect
         };
         lessonState.theoryCardIdx = 0;
         lessonState.phase = 'theory';
         renderPhase();
       });
+    }
+  }
+
+  function getScreenContext(screen) {
+    if (!screen) return '';
+    var p = screen.payload || {};
+    switch (screen.formatType) {
+      case 'two_option_choice':
+      case 'meaning_contrast':
+        return ((p.sentenceBefore || '') + ' ___ ' + (p.sentenceAfter || '')).replace(/\s+/g, ' ').trim();
+      case 'free_text_gap_fill':
+      case 'preselected_verb_gap_fill':
+        return p.sentence || p.instruction || '';
+      case 'full_sentence_write':
+        return p.displayPrompt || p.prompt || '';
+      case 'error_correction':
+        return p.sentence || '';
+      case 'word_order_tiles':
+        return p.prompt || p.instruction || '';
+      case 'verb_bank_two_step':
+        return p.sentence || '';
+      case 'passage_error_hunt_single':
+        return 'Find the error in the passage.';
+      case 'stative_sorting':
+        return p.instruction || 'Sort the verbs into groups.';
+      default:
+        return p.instruction || p.sentence || '';
     }
   }
 
@@ -620,6 +654,7 @@
 
     screen._attemptsUsed = (screen.attemptsPerScreen || 1);
     screenRoot.classList.add('sp-screen--locked');
+    setScreenInputsLocked(true);
 
     var lost = lessonState.hearts.loseLife(1, {
       screenId: screen.screenId,
@@ -642,24 +677,21 @@
 
   function handleExplainClick() {
     var result = lessonState._lastFeedbackResult;
+    var screen = lessonState.currentScreen;
     if (!result || !result.explanation || typeof LessonExplanation === 'undefined') return;
+    var explainOpts = {
+      title: 'Explanation',
+      context: getScreenContext(screen),
+      explanation: result.explanation,
+      correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen),
+      continueLabel: 'Close'
+    };
     var mount = lessonState.mount && lessonState.mount.querySelector('#sp-screen-mount');
     if (mount) {
-      LessonExplanation.open({
-        title: 'Explanation',
-        explanation: result.explanation,
-        correctAnswer: result.correct ? '' : (result.correctAnswer || ''),
-        continueLabel: 'Close',
-        inlineMount: mount
-      });
+      LessonExplanation.open(Object.assign({ inlineMount: mount }, explainOpts));
       return;
     }
-    LessonExplanation.open({
-      title: 'Explanation',
-      explanation: result.explanation,
-      correctAnswer: result.correct ? '' : (result.correctAnswer || ''),
-      continueLabel: 'Close'
-    });
+    LessonExplanation.open(explainOpts);
   }
 
   function handleActionClick() {
@@ -674,17 +706,6 @@
 
   function handleContinue() {
     var mount = lessonState.mount;
-    var feedbackMount = mount.querySelector('#sp-feedback-mount');
-    if (lessonState._isRetryContinue) {
-      feedbackMount.innerHTML = '';
-      lessonState.awaitingContinue = false;
-      lessonState._isRetryContinue = false;
-      clearResultStyles();
-      var screenRoot = mount.querySelector('.sp-screen');
-      if (screenRoot) screenRoot.classList.remove('sp-screen--locked');
-      setActionBtn('check', false);
-      return;
-    }
     if (lessonState.hearts.isGameOver) return;
     renderCurrentScreen();
   }
@@ -705,9 +726,6 @@
       return;
     }
 
-    var maxAttempts = screen.attemptsPerScreen || 1;
-    var canRetry = !result.correct && screen._attemptsUsed < maxAttempts;
-
     if (!result.correct && result.lifeLoss > 0) {
       var lost = lessonState.hearts.loseLife(result.lifeLoss, {
         screenId: screen.screenId,
@@ -722,13 +740,11 @@
       lessonState.queue.removeCompletedItem(screen);
       lessonState.sessionCorrect++;
       showFeedback(result, true);
-    } else if (canRetry) {
-      showFeedback(result, false, true);
     } else {
       screenRoot.classList.add('sp-screen--locked');
       var failCount = lessonState.queue.incrementFailure(screen);
       var globalRules = (lessonState.unitData.practiceConfig && lessonState.unitData.practiceConfig.globalRules) || {};
-      if (result.shouldRequeue || globalRules.failedItemsReturnToQueue) {
+      if (result.shouldRequeue || globalRules.failedItemsReturnToQueue !== false) {
         lessonState.queue.returnFailedItemToQueue(screen);
       } else {
         lessonState.queue.removeCompletedItem(screen);
@@ -743,7 +759,7 @@
     updateSessionHeader();
   }
 
-  function showFeedback(result, advanceOnContinue, isRetry) {
+  function showFeedback(result, advanceOnContinue) {
     if (window.AudioUtils) {
       if (result.correct) AudioUtils.playSuccessSound();
       else AudioUtils.playFailureSound();
@@ -755,10 +771,10 @@
     lessonState.awaitingContinue = true;
     lessonState._lastFeedbackResult = result;
     lessonState._lastResultCorrect = result.correct;
-    lessonState._isRetryContinue = !!isRetry;
 
     applyGapResultStyles(result.correct);
-    setActionBtn(isRetry ? 'retry' : 'continue', true);
+    setScreenInputsLocked(true);
+    setActionBtn('continue', true);
   }
 
   function finishSession() {

@@ -35,6 +35,36 @@ var LessonExplanation = (function() {
 
   var _inlineRestore = null;
 
+  function captureFormState(mountEl) {
+    var fields = [];
+    if (!mountEl) return fields;
+    mountEl.querySelectorAll('input, textarea').forEach(function(el, idx) {
+      fields.push({
+        id: el.id || '',
+        idx: idx,
+        value: el.value
+      });
+    });
+    return fields;
+  }
+
+  function restoreFormState(mountEl, fields) {
+    if (!mountEl || !fields || !fields.length) return;
+    var inputs = mountEl.querySelectorAll('input, textarea');
+    fields.forEach(function(field) {
+      var el = field.id ? mountEl.querySelector('#' + field.id) : inputs[field.idx];
+      if (el) el.value = field.value;
+    });
+  }
+
+  function contextBlockHtml(label, text) {
+    if (!text) return '';
+    return '<div class="lesson-explanation-answer">' +
+        '<span class="lesson-explanation-answer-label">' + esc(label) + '</span>' +
+        '<p class="lesson-explanation-answer-text">' + formatBody(text) + '</p>' +
+      '</div>';
+  }
+
   function explanationCardHtml(text) {
     return '<div class="lesson-explanation-card">' +
         '<div class="lesson-explanation-card-label">' +
@@ -61,17 +91,15 @@ var LessonExplanation = (function() {
 
     var previousHtml = mountEl.innerHTML;
     var previousClass = mountEl.className;
+    var formState = captureFormState(mountEl);
     _inlineRestore = function() {
       mountEl.innerHTML = previousHtml;
       mountEl.className = previousClass;
+      restoreFormState(mountEl, formState);
     };
 
-    var answerHtml = opts.correctAnswer
-      ? '<div class="lesson-explanation-answer">' +
-          '<span class="lesson-explanation-answer-label">Correct answer</span>' +
-          '<p class="lesson-explanation-answer-text">' + formatBody(opts.correctAnswer) + '</p>' +
-        '</div>'
-      : '';
+    var contextHtml = contextBlockHtml('Question', opts.context);
+    var answerHtml = contextBlockHtml('Correct answer', opts.correctAnswer);
 
     mountEl.className = (mountEl.className ? mountEl.className + ' ' : '') + 'sp-explanation-inline-mount';
     mountEl.innerHTML =
@@ -85,6 +113,7 @@ var LessonExplanation = (function() {
           '</h2>' +
         '</header>' +
         '<div class="sp-explanation-inline-body">' +
+          contextHtml +
           answerHtml +
           inlineExplanationCardHtml(opts.explanation) +
         '</div>' +
@@ -118,12 +147,7 @@ var LessonExplanation = (function() {
     var contextHtml = opts.context
       ? '<p class="lesson-explanation-context">' + formatBody(opts.context) + '</p>'
       : '';
-    var answerHtml = opts.correctAnswer
-      ? '<div class="lesson-explanation-answer">' +
-          '<span class="lesson-explanation-answer-label">Correct answer</span>' +
-          '<p class="lesson-explanation-answer-text">' + formatBody(opts.correctAnswer) + '</p>' +
-        '</div>'
-      : '';
+    var answerHtml = contextBlockHtml('Correct answer', opts.correctAnswer);
 
     var closeLabel = opts.compact ? 'close' : 'arrow_back';
     var closeAria = opts.compact ? 'Close' : 'Back';
