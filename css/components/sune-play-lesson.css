@@ -751,6 +751,19 @@
   min-width: 0;
   width: 100%;
   box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sp-practice-main--correct {
+  border-color: var(--sp-correct);
+  border-bottom-color: #16a34a;
+  box-shadow: 0 4px 0 #16a34a;
+}
+
+.sp-practice-main--incorrect {
+  border-color: var(--sp-incorrect);
+  border-bottom-color: #dc2626;
+  box-shadow: 0 4px 0 #dc2626;
 }
 
 .sp-practice-body {
@@ -829,6 +842,14 @@
 .sp-btn--skip:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.sp-practice-footer--feedback .sp-btn--skip {
+  display: none !important;
+}
+
+.sp-practice-footer:not(.sp-practice-footer--feedback) .sp-btn--explain-icon {
+  display: none !important;
 }
 
 .sp-btn--explain-icon {
@@ -945,6 +966,19 @@
   color: var(--sp-primary);
   font-weight: 700;
   text-align: center;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.sp-gap-slot--correct,
+.sp-inline-gap.sp-gap-slot--correct {
+  color: var(--sp-correct);
+  border-bottom-color: var(--sp-correct);
+}
+
+.sp-gap-slot--incorrect,
+.sp-inline-gap.sp-gap-slot--incorrect {
+  color: var(--sp-incorrect);
+  border-bottom-color: var(--sp-incorrect);
 }
 
 .sp-verb-prompt,
@@ -1175,7 +1209,7 @@
 
 .sp-feedback-sheet {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 14px;
 }
 
@@ -1184,15 +1218,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--white);
+  width: auto;
+  height: auto;
+  background: none;
 }
 
-.sp-feedback-icon .material-symbols-outlined {
-  font-size: 1.6rem;
-  font-weight: 700;
+.sp-feedback-svg {
+  width: 2.75rem;
+  height: 2.75rem;
+  transform-origin: center;
+  animation: sp-feedback-icon-zoom 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes sp-feedback-icon-zoom {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .sp-feedback--correct .sp-feedback-icon {
@@ -1206,7 +1253,6 @@
 .sp-feedback-body {
   flex: 1;
   min-width: 0;
-  padding-top: 2px;
 }
 
 .sp-feedback--correct .sp-feedback-title {
