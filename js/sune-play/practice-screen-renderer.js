@@ -170,6 +170,18 @@
   function renderWordOrder(screen) {
     var p = screen.payload || {};
     var html = '<div class="sp-screen sp-screen--tiles" data-format="word_order_tiles">';
+    if (p.imageUrl || p.contextQuestion) {
+      html += '<div class="sp-visual-prompt">';
+      if (p.imageUrl) {
+        html += '<div class="sp-visual-prompt__image-wrap">' +
+          '<img class="sp-visual-prompt__image" src="' + esc(p.imageUrl) + '" alt="' + esc(p.imageAlt || '') + '">' +
+        '</div>';
+      }
+      if (p.contextQuestion) {
+        html += '<p class="sp-visual-prompt__question">' + esc(p.contextQuestion) + '</p>';
+      }
+      html += '</div>';
+    }
     html += '<div class="sp-tile-answer" id="sp-tile-answer"></div>';
     html += '<div class="sp-tile-bank" id="sp-tile-bank">';
     (p.tiles || []).forEach(function(word, i) {

@@ -625,7 +625,7 @@
       case 'full_sentence_write':
         return p.instruction || 'Write the full sentence.';
       case 'word_order_tiles':
-        return p.instruction || p.prompt || 'Put the words in the correct order.';
+        return p.instruction || 'Look at the picture and answer the question by building the sentence.';
       case 'error_correction':
         return p.instruction || 'Correct the mistake in the sentence.';
       case 'verb_bank_two_step':
@@ -656,7 +656,7 @@
       case 'error_correction':
         return p.sentence || '';
       case 'word_order_tiles':
-        return p.prompt || p.instruction || '';
+        return p.contextQuestion || p.instruction || p.prompt || '';
       case 'verb_bank_two_step':
         return p.sentence || '';
       case 'passage_error_hunt_single':
