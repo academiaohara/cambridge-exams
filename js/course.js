@@ -6203,10 +6203,7 @@
     _extractCourseUnitMeta: function(unitData) {
       if (!unitData) return null;
 
-      if (unitData.type === 'grammar' && (
-        unitData.schemaVersion === 'sune-english-unit-v2' ||
-        unitData.lessonStyle === 'sune-play'
-      )) {
+      if (BentoGrid._isSunePlayUnit(unitData)) {
         var theoryCards = (unitData.theory && unitData.theory.cards) || [];
         var practiceNodes = unitData.practiceNodes || [];
         return {

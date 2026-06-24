@@ -166,9 +166,12 @@
         '<mark class="sp-error-mark">' + bold(p.highlightedText) + '</mark>'
       );
     }
+    var placeholder = p.replacementOnly
+      ? 'Type the corrected form'
+      : 'Write the corrected sentence';
     return '<div class="sp-screen sp-screen--error" data-format="error_correction">' +
       '<p class="sp-prompt-sentence">' + sentence + '</p>' +
-      '<input type="text" class="sp-text-input sp-text-input--large" id="sp-error-input" placeholder="Write the corrected sentence" autocomplete="off">' +
+      '<input type="text" class="sp-text-input sp-text-input--large" id="sp-error-input" placeholder="' + esc(placeholder) + '" autocomplete="off">' +
     '</div>';
   }
 
@@ -489,7 +492,27 @@
         var built = words.join(' ');
         result.userAnswer = built;
         result.correctAnswer = p.answer;
-        result.correct = norm.matchesAnyAccepted(built, p);
+        if (p.answerTiles && p.answerTiles.length) {
+          var expected = p.answerTiles.join(' ');
+          var ignoreCase = p.tileValidation && p.tileValidation.ignoreCapitalization;
+          var ignorePeriod = p.tileValidation && p.tileValidation.ignoreMissingFinalPeriod;
+          var normBuilt = built;
+          var normExpected = expected;
+          if (ignoreCase) {
+            normBuilt = normBuilt.toLowerCase();
+            normExpected = normExpected.toLowerCase();
+          }
+          if (ignorePeriod) {
+            normBuilt = normBuilt.replace(/\.\s*$/, '');
+            normExpected = normExpected.replace(/\.\s*$/, '');
+          }
+          result.correct = normBuilt === normExpected;
+          if (!result.correct && p.acceptedAnswers && p.acceptedAnswers.length) {
+            result.correct = norm.matchesAnyAccepted(built, p);
+          }
+        } else {
+          result.correct = norm.matchesAnyAccepted(built, p);
+        }
         result.lifeLoss = result.correct ? 0 : 1;
         break;
       }
