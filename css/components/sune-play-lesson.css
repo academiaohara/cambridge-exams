@@ -47,7 +47,10 @@
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   gap: 12px;
-  flex: 1 1 0;
+  flex: 0 1 60vw;
+  width: 60vw;
+  max-width: 60%;
+  margin: 0 auto;
   min-height: 0;
   min-width: 0;
   height: 100%;
@@ -64,6 +67,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  padding-bottom: 4px;
 }
 
 .sp-theory-nav {
