@@ -101,7 +101,12 @@
   }
 
   function exitLesson() {
-    if (lessonState.backFn) lessonState.backFn();
+    if (!lessonState) return;
+    var backFn = lessonState.backFn;
+    destroy();
+    if (backFn) {
+      try { new Function(backFn)(); } catch (e) { console.error('Exit navigation failed:', e); }
+    }
   }
 
   function enterPractice(nodeId, opts) {
