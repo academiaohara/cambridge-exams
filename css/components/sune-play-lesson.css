@@ -850,6 +850,51 @@ button.sp-example-line.sp-speakable {
   min-height: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sp-session-instruction {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 32rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #3c3c3c;
+  text-align: center;
+  line-height: 1.35;
+  margin: 0 0 20px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  flex-shrink: 0;
+}
+
+.sp-session-instruction-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.sp-instruction-speak {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--sp-duo-blue-border);
+  border-radius: 50%;
+  background: var(--sp-duo-blue-light);
+  color: var(--sp-duo-blue-dark);
+  cursor: pointer;
+  padding: 0;
+}
+
+.sp-instruction-speak .material-symbols-outlined {
+  font-size: 1.15rem;
 }
 
 .sp-exercise-card:has(.sp-screen--gap) {
@@ -857,6 +902,15 @@ button.sp-example-line.sp-speakable {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.sp-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
 }
 
 .sp-practice-footer {

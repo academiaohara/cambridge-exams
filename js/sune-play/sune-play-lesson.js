@@ -536,6 +536,29 @@
     lessonState.currentScreen = screen;
 
     screenMount.innerHTML = renderer.PracticeScreenRenderer(screen);
+    var instructionText = getScreenInstruction(screen);
+    if (instructionText) {
+      var existingInstruction = screenMount.querySelector('.sp-session-instruction');
+      if (existingInstruction) existingInstruction.remove();
+      var instructionEl = document.createElement('p');
+      instructionEl.className = 'sp-session-instruction';
+      instructionEl.innerHTML =
+        '<button type="button" class="sp-instruction-speak" data-action="practice-speak-instruction" aria-label="Listen to instruction">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">volume_up</span>' +
+        '</button>' +
+        '<span class="sp-session-instruction-text">' + (typeof BentoGrid !== 'undefined' && BentoGrid._escapeHTML ? BentoGrid._escapeHTML(instructionText) : instructionText) + '</span>';
+      screenMount.insertBefore(instructionEl, screenMount.firstChild);
+      var instrSpeakBtn = instructionEl.querySelector('[data-action="practice-speak-instruction"]');
+      if (instrSpeakBtn && window.SunePlayTheory) {
+        instrSpeakBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          instrSpeakBtn.classList.add('sp-sentence-speak--speaking');
+          window.SunePlayTheory.speakText(instructionText, function() {
+            instrSpeakBtn.classList.remove('sp-sentence-speak--speaking');
+          });
+        });
+      }
+    }
     var screenRoot = screenMount.querySelector('.sp-screen');
     if (screenRoot) {
       screenRoot._spScreen = screen;
@@ -599,6 +622,36 @@
         lessonState.phase = 'theory';
         renderPhase();
       });
+    }
+  }
+
+  function getScreenInstruction(screen) {
+    if (!screen) return '';
+    var p = screen.payload || {};
+    switch (screen.formatType) {
+      case 'two_option_choice':
+        return p.instruction || 'Choose the correct option to complete the sentence.';
+      case 'free_text_gap_fill':
+      case 'preselected_verb_gap_fill':
+        return p.instruction || (p.verbPrompt || p.preselectedVerb
+          ? 'Use the correct form of the highlighted word.'
+          : 'Complete the sentence with the correct word.');
+      case 'full_sentence_write':
+        return p.instruction || 'Write the full sentence.';
+      case 'word_order_tiles':
+        return p.instruction || p.prompt || 'Put the words in the correct order.';
+      case 'error_correction':
+        return p.instruction || 'Correct the mistake in the sentence.';
+      case 'verb_bank_two_step':
+        return p.instruction || 'Choose the verb and write the correct form.';
+      case 'passage_error_hunt_single':
+        return p.instruction || 'Find one wrong verb phrase.';
+      case 'stative_sorting':
+        return p.instruction || p.prompt || 'Sort the verbs into groups.';
+      case 'meaning_contrast':
+        return p.instruction || p.prompt || 'Choose the option that best fits the meaning.';
+      default:
+        return p.instruction || '';
     }
   }
 
