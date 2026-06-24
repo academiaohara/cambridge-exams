@@ -1568,8 +1568,14 @@ button.sp-example-line.sp-speakable {
   box-shadow: 0 2px 0 var(--sp-duo-blue-dark);
 }
 
+.sp-screen--tiles {
+  text-align: center;
+}
+
 .sp-visual-prompt {
-  margin-bottom: 20px;
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto 20px;
 }
 
 .sp-visual-prompt__image-wrap {
@@ -1584,6 +1590,7 @@ button.sp-example-line.sp-speakable {
   width: 100%;
   max-height: 220px;
   object-fit: cover;
+  object-position: center;
 }
 
 .sp-visual-prompt__question {
@@ -1593,9 +1600,12 @@ button.sp-example-line.sp-speakable {
   font-weight: 700;
   line-height: 1.4;
   color: var(--text-dark);
+  text-align: center;
 }
 
 .sp-tile-answer {
+  width: 100%;
+  max-width: 32rem;
   min-height: 52px;
   border: 2px dashed var(--border-light);
   border-radius: 14px;
@@ -1607,8 +1617,11 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-tile-bank {
+  width: 100%;
+  max-width: 32rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
 }
 
