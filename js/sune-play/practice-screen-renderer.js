@@ -488,15 +488,25 @@
 
   // ─── FeedbackSheet ───────────────────────────────────────────────────
 
+  function feedbackIconSvg(correct) {
+    if (correct) {
+      return '<svg class="sp-feedback-svg sp-feedback-svg--check" viewBox="0 0 24 24" fill="none" ' +
+        'stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+        '<polyline points="4 12 10 18 20 6"></polyline></svg>';
+    }
+    return '<svg class="sp-feedback-svg sp-feedback-svg--cross" viewBox="0 0 24 24" fill="none" ' +
+      'stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<line x1="6" y1="6" x2="18" y2="18"></line>' +
+      '<line x1="18" y1="6" x2="6" y2="18"></line></svg>';
+  }
+
   function FeedbackSheet(result, feedbackTone) {
     var cls = result.correct ? 'sp-feedback--correct' : 'sp-feedback--incorrect';
     var title = result.correct
       ? randomFeedback(feedbackTone, 'correct')
       : randomFeedback(feedbackTone, 'incorrect');
-    var icon = result.correct ? 'check_circle' : 'cancel';
     var html = '<div class="sp-feedback-sheet ' + cls + '" data-component="FeedbackSheet">';
-    html += '<div class="sp-feedback-icon" aria-hidden="true">' +
-      '<span class="material-symbols-outlined">' + icon + '</span></div>';
+    html += '<div class="sp-feedback-icon" aria-hidden="true">' + feedbackIconSvg(result.correct) + '</div>';
     html += '<div class="sp-feedback-body">';
     html += '<p class="sp-feedback-title">' + esc(title) + '</p>';
     if (!result.correct && result.correctAnswer) {

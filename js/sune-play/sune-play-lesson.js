@@ -363,12 +363,41 @@
       var hasExplanation = lessonState._lastFeedbackResult && lessonState._lastFeedbackResult.explanation;
       explainBtn.hidden = mode === 'check' || !hasExplanation;
     }
+    var practiceMain = lessonState.mount.querySelector('.sp-practice-main');
+    var isFeedback = mode === 'continue' || mode === 'retry';
+    var isCorrect = lessonState._lastResultCorrect === true;
+    var isIncorrect = lessonState._lastResultCorrect === false;
     if (footer) {
-      footer.classList.toggle('sp-practice-footer--feedback', mode === 'continue' || mode === 'retry');
-      footer.classList.toggle('sp-practice-footer--correct', mode === 'continue' && lessonState._lastResultCorrect);
-      footer.classList.toggle('sp-practice-footer--incorrect', mode === 'continue' && lessonState._lastResultCorrect === false);
+      footer.classList.toggle('sp-practice-footer--feedback', isFeedback);
+      footer.classList.toggle('sp-practice-footer--correct', mode === 'continue' && isCorrect);
+      footer.classList.toggle('sp-practice-footer--incorrect', isFeedback && isIncorrect);
       footer.classList.toggle('sp-practice-footer--retry', mode === 'retry');
     }
+    if (practiceMain) {
+      practiceMain.classList.toggle('sp-practice-main--correct', mode === 'continue' && isCorrect);
+      practiceMain.classList.toggle('sp-practice-main--incorrect', isFeedback && isIncorrect);
+    }
+  }
+
+  function applyGapResultStyles(correct) {
+    var mount = lessonState.mount;
+    if (!mount) return;
+    mount.querySelectorAll('.sp-gap-slot, .sp-inline-gap').forEach(function(slot) {
+      slot.classList.toggle('sp-gap-slot--correct', correct === true);
+      slot.classList.toggle('sp-gap-slot--incorrect', correct === false);
+    });
+  }
+
+  function clearResultStyles() {
+    var mount = lessonState.mount;
+    if (!mount) return;
+    var practiceMain = mount.querySelector('.sp-practice-main');
+    if (practiceMain) {
+      practiceMain.classList.remove('sp-practice-main--correct', 'sp-practice-main--incorrect');
+    }
+    mount.querySelectorAll('.sp-gap-slot, .sp-inline-gap').forEach(function(slot) {
+      slot.classList.remove('sp-gap-slot--correct', 'sp-gap-slot--incorrect');
+    });
   }
 
   function renderCurrentScreen() {
@@ -381,6 +410,7 @@
     lessonState.awaitingContinue = false;
     lessonState._lastFeedbackResult = null;
     lessonState._lastResultCorrect = null;
+    clearResultStyles();
 
     var footer = mount.querySelector('#sp-practice-footer');
     if (footer) {
@@ -541,6 +571,7 @@
       feedbackMount.innerHTML = '';
       lessonState.awaitingContinue = false;
       lessonState._isRetryContinue = false;
+      clearResultStyles();
       var screenRoot = mount.querySelector('.sp-screen');
       if (screenRoot) screenRoot.classList.remove('sp-screen--locked');
       setActionBtn('check', false);
@@ -614,6 +645,7 @@
     lessonState._lastResultCorrect = result.correct;
     lessonState._isRetryContinue = !!isRetry;
 
+    applyGapResultStyles(result.correct);
     setActionBtn(isRetry ? 'retry' : 'continue', true);
   }
 
