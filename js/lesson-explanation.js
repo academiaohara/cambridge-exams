@@ -27,10 +27,66 @@ var LessonExplanation = (function() {
     var sheet = document.getElementById(SHEET_ID);
     if (sheet) sheet.remove();
     document.body.classList.remove('lesson-explanation-open');
+    if (_inlineRestore) {
+      _inlineRestore();
+      _inlineRestore = null;
+    }
+  }
+
+  var _inlineRestore = null;
+
+  function openInline(mountEl, opts) {
+    if (!mountEl || !opts || !opts.explanation) return;
+    close();
+
+    var previousHtml = mountEl.innerHTML;
+    var previousClass = mountEl.className;
+    _inlineRestore = function() {
+      mountEl.innerHTML = previousHtml;
+      mountEl.className = previousClass;
+    };
+
+    var answerHtml = opts.correctAnswer
+      ? '<div class="lesson-explanation-answer">' +
+          '<span class="lesson-explanation-answer-label">Correct answer</span>' +
+          '<p class="lesson-explanation-answer-text">' + formatBody(opts.correctAnswer) + '</p>' +
+        '</div>'
+      : '';
+
+    mountEl.className = (mountEl.className ? mountEl.className + ' ' : '') + 'sp-explanation-inline-mount';
+    mountEl.innerHTML =
+      '<div class="sp-explanation-inline" role="dialog" aria-labelledby="sp-explanation-inline-title">' +
+        '<header class="sp-explanation-inline-header">' +
+          '<button type="button" class="sp-explanation-inline-close" aria-label="Close">' +
+            '<span class="material-symbols-outlined">close</span>' +
+          '</button>' +
+          '<h2 class="sp-explanation-inline-title" id="sp-explanation-inline-title">' +
+            esc(opts.title || 'Explanation') +
+          '</h2>' +
+        '</header>' +
+        '<div class="sp-explanation-inline-body">' +
+          answerHtml +
+          '<div class="sp-explanation-inline-card">' +
+            '<p class="sp-explanation-inline-text">' + formatBody(opts.explanation) + '</p>' +
+          '</div>' +
+        '</div>' +
+        '<footer class="sp-explanation-inline-footer">' +
+          '<button type="button" class="sp-explanation-inline-continue">' +
+            esc(opts.continueLabel || 'Close') +
+          '</button>' +
+        '</footer>' +
+      '</div>';
+
+    mountEl.querySelector('.sp-explanation-inline-close').addEventListener('click', close);
+    mountEl.querySelector('.sp-explanation-inline-continue').addEventListener('click', close);
   }
 
   function open(opts) {
     if (!opts || !opts.explanation) return;
+    if (opts.inlineMount) {
+      openInline(opts.inlineMount, opts);
+      return;
+    }
     close();
 
     var sheet = document.createElement('div');

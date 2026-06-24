@@ -192,7 +192,16 @@
           var cuLevel = (state.level || (typeof AppState !== 'undefined' && AppState.currentLevel) || 'C1').toLowerCase();
           var cuPath = '/course/' + cuLevel + '/block-' + (state.blockKey || '1') + '/' + (state.unitId || '');
           if (typeof state.sectionIdx !== 'undefined' && state.sectionIdx !== null) {
-            cuPath += '/' + state.sectionIdx;
+            var cuSec = state.sectionIdx;
+            if (cuSec === 'exercises') {
+              cuPath += '/exercises';
+            } else if (typeof cuSec === 'string' && cuSec.indexOf('node:') === 0) {
+              cuPath += '/node/' + encodeURIComponent(cuSec.slice(5));
+            } else if (typeof cuSec === 'string' && cuSec.indexOf('theory:') === 0) {
+              cuPath += '/theory/' + cuSec.slice(7);
+            } else {
+              cuPath += '/' + cuSec;
+            }
           }
           return cuPath;
 
@@ -386,8 +395,18 @@
             var courseUnitId = segments[3];
             var courseUnitState = { view: 'courseUnit', blockKey: blockKey, unitId: courseUnitId, level: levelFromPath };
             if (segments.length >= 5) {
-              var sIdx = parseInt(segments[4], 10);
-              if (!isNaN(sIdx)) courseUnitState.sectionIdx = sIdx;
+              var seg4 = segments[4];
+              if (seg4 === 'exercises') {
+                courseUnitState.sectionIdx = 'exercises';
+              } else if (seg4 === 'node' && segments.length >= 6) {
+                courseUnitState.sectionIdx = 'node:' + decodeURIComponent(segments[5]);
+              } else if (seg4 === 'theory' && segments.length >= 6) {
+                var theoryIdx = parseInt(segments[5], 10);
+                courseUnitState.sectionIdx = !isNaN(theoryIdx) ? ('theory:' + theoryIdx) : 'theory:0';
+              } else {
+                var sIdx = parseInt(seg4, 10);
+                if (!isNaN(sIdx)) courseUnitState.sectionIdx = sIdx;
+              }
             }
             return courseUnitState;
           }
@@ -402,8 +421,18 @@
             var courseUnitId = segments[2];
             var courseUnitState = { view: 'courseUnit', blockKey: blockKey, unitId: courseUnitId };
             if (segments.length >= 4) {
-              var sIdx = parseInt(segments[3], 10);
-              if (!isNaN(sIdx)) courseUnitState.sectionIdx = sIdx;
+              var legSeg = segments[3];
+              if (legSeg === 'exercises') {
+                courseUnitState.sectionIdx = 'exercises';
+              } else if (legSeg === 'node' && segments.length >= 5) {
+                courseUnitState.sectionIdx = 'node:' + decodeURIComponent(segments[4]);
+              } else if (legSeg === 'theory' && segments.length >= 5) {
+                var legTheoryIdx = parseInt(segments[4], 10);
+                courseUnitState.sectionIdx = !isNaN(legTheoryIdx) ? ('theory:' + legTheoryIdx) : 'theory:0';
+              } else {
+                var sIdx = parseInt(legSeg, 10);
+                if (!isNaN(sIdx)) courseUnitState.sectionIdx = sIdx;
+              }
             }
             return courseUnitState;
           }

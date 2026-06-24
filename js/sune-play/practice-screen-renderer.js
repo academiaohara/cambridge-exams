@@ -290,10 +290,7 @@
           if (slot) slot.textContent = optText;
           onChange();
           if (!optText) return;
-          speakText(optText, function() {
-            var full = buildGapSentence(payload.sentenceBefore, optText, payload.sentenceAfter);
-            if (full) speakText(full);
-          });
+          speakText(optText);
         });
       });
     }

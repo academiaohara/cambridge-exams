@@ -2156,9 +2156,16 @@
         var spTheoryCardIdx = 0;
         if (startSection === 'exercises') {
           spStart = 'nodes';
-        } else if (startSection === 'theory' || typeof startSection === 'number') {
+        } else if (startSection === 'theory' || (typeof startSection === 'string' && startSection.indexOf('theory:') === 0)) {
           spStart = 'theory';
-          if (typeof startSection === 'number') spTheoryCardIdx = startSection;
+          if (typeof startSection === 'string' && startSection.indexOf('theory:') === 0) {
+            spTheoryCardIdx = parseInt(startSection.slice(7), 10) || 0;
+          } else if (typeof startSection === 'number') {
+            spTheoryCardIdx = startSection;
+          }
+        } else if (typeof startSection === 'number') {
+          spStart = 'theory';
+          spTheoryCardIdx = startSection;
         } else if (typeof startSection === 'string' && startSection.indexOf('node:') === 0) {
           spStart = 'session';
           startNodeId = startSection.slice(5);
@@ -2195,8 +2202,8 @@
       var cuBlockKey = blockKey || '1';
       BentoGrid._currentBlockKey = cuBlockKey;
       BentoGrid._currentUnitFilePath = filePath;
-      // filePath is stored in state (not part of the URL path) so popstate can reload the unit without needing the index
-      var cuState = { view: 'courseUnit', blockKey: cuBlockKey, unitId: unitId, level: level, filePath: filePath, sectionIdx: sectionStartIdx };
+      var urlSectionIdx = BentoGrid._resolveCourseUnitUrlSection(startSection, unitData, sectionStartIdx);
+      var cuState = { view: 'courseUnit', blockKey: cuBlockKey, unitId: unitId, level: level, filePath: filePath, sectionIdx: urlSectionIdx };
       history.pushState(cuState, '', Router.stateToPath(cuState));
     },
 
@@ -6340,6 +6347,40 @@
         return '\'' + sectionIdx.replace(/\\/g, '\\\\').replace(/'/g, '\\\'') + '\'';
       }
       return String(sectionIdx);
+    },
+
+    _syncCourseUnitUrl: function(sectionIdx, replace) {
+      if (!BentoGrid._currentUnitId || !BentoGrid._currentBlockKey) return;
+      var level = BentoGrid._courseLevel || (typeof AppState !== 'undefined' && AppState.currentLevel) || 'C1';
+      var secState = {
+        view: 'courseUnit',
+        blockKey: BentoGrid._currentBlockKey,
+        unitId: BentoGrid._currentUnitId,
+        level: level,
+        filePath: BentoGrid._currentUnitFilePath,
+        sectionIdx: sectionIdx
+      };
+      var url = Router.stateToPath(secState);
+      if (replace) {
+        history.replaceState(secState, '', url);
+      } else {
+        history.pushState(secState, '', url);
+      }
+    },
+
+    _resolveCourseUnitUrlSection: function(startSection, unitData, sectionStartIdx) {
+      if (typeof startSection === 'string' && startSection.indexOf('node:') === 0) {
+        return startSection;
+      }
+      if (startSection === 'exercises') return 'exercises';
+      if (startSection === 'theory') return 'theory:0';
+      if (typeof startSection === 'string' && startSection.indexOf('theory:') === 0) {
+        return startSection;
+      }
+      if (BentoGrid._isSunePlayUnit(unitData) && typeof startSection === 'number') {
+        return 'theory:' + startSection;
+      }
+      return sectionStartIdx;
     },
 
     _trackReviewItem: function(unitId, sectionIdx, pts) {
