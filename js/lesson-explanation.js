@@ -57,11 +57,14 @@ var LessonExplanation = (function() {
     });
   }
 
-  function contextBlockHtml(label, text) {
+  function contextBlockHtml(label, text, variant) {
     if (!text) return '';
-    return '<div class="lesson-explanation-answer">' +
-        '<span class="lesson-explanation-answer-label">' + esc(label) + '</span>' +
-        '<p class="lesson-explanation-answer-text">' + formatBody(text) + '</p>' +
+    var blockClass = variant === 'question'
+      ? 'lesson-explanation-question'
+      : 'lesson-explanation-answer';
+    return '<div class="' + blockClass + '">' +
+        '<span class="' + blockClass + '-label">' + esc(label) + '</span>' +
+        '<p class="' + blockClass + '-text">' + formatBody(text) + '</p>' +
       '</div>';
   }
 
@@ -98,7 +101,7 @@ var LessonExplanation = (function() {
       restoreFormState(mountEl, formState);
     };
 
-    var contextHtml = contextBlockHtml('Question', opts.context);
+    var contextHtml = contextBlockHtml('Question', opts.context, 'question');
     var answerHtml = contextBlockHtml('Correct answer', opts.correctAnswer);
 
     mountEl.className = (mountEl.className ? mountEl.className + ' ' : '') + 'sp-explanation-inline-mount';
@@ -144,9 +147,7 @@ var LessonExplanation = (function() {
     sheet.setAttribute('aria-modal', 'true');
     sheet.setAttribute('aria-labelledby', 'lesson-explanation-title');
 
-    var contextHtml = opts.context
-      ? '<p class="lesson-explanation-context">' + formatBody(opts.context) + '</p>'
-      : '';
+    var contextHtml = contextBlockHtml('Question', opts.context, 'question');
     var answerHtml = contextBlockHtml('Correct answer', opts.correctAnswer);
 
     var closeLabel = opts.compact ? 'close' : 'arrow_back';

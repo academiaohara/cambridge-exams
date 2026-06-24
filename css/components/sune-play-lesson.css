@@ -1417,6 +1417,32 @@ button.sp-example-line.sp-speakable {
   background: var(--white);
 }
 
+.sp-explanation-inline .lesson-explanation-question {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #f7f7f7;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-bottom-width: 3px;
+  border-bottom-color: #d1d1d1;
+  box-shadow: 0 3px 0 #d1d1d1;
+}
+
+.sp-explanation-inline .lesson-explanation-question-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.sp-explanation-inline .lesson-explanation-question-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: var(--text-dark);
+}
+
 .sp-explanation-inline .lesson-explanation-answer {
   padding: 14px 16px;
   border-radius: 16px;
