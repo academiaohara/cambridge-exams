@@ -1472,7 +1472,14 @@ button.sp-example-line.sp-speakable {
   animation: spResultPopIn 0.45s ease;
 }
 
+.sp-lesson:has(.sp-result-screen--complete) {
+  justify-content: center;
+  align-items: center;
+}
+
 .sp-result-screen--complete {
+  width: 100%;
+  max-width: 420px;
   background: linear-gradient(180deg, #ffffff 0%, #f7fcff 100%);
 }
 
