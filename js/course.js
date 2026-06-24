@@ -2153,10 +2153,12 @@
       if (BentoGrid._isSunePlayUnit(unitData)) {
         var spStart = 'nodes';
         var startNodeId = null;
+        var spTheoryCardIdx = 0;
         if (startSection === 'exercises') {
           spStart = 'nodes';
-        } else if (startSection === 'theory') {
+        } else if (startSection === 'theory' || typeof startSection === 'number') {
           spStart = 'theory';
+          if (typeof startSection === 'number') spTheoryCardIdx = startSection;
         } else if (typeof startSection === 'string' && startSection.indexOf('node:') === 0) {
           spStart = 'session';
           startNodeId = startSection.slice(5);
@@ -2167,6 +2169,7 @@
           level: level,
           startSection: spStart,
           startNodeId: startNodeId,
+          theoryCardIdx: spTheoryCardIdx,
           backFn: backFn,
           mount: document.getElementById('sp-lesson-mount')
         });

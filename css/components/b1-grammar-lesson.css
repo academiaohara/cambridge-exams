@@ -133,6 +133,8 @@
   justify-content: flex-start;
   min-height: 0;
   min-width: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .bgl-lesson--theory .bgl-unit-header {
@@ -677,9 +679,13 @@
 /* Footer */
 .bgl-footer {
   margin-top: auto;
-  padding-top: 24px;
-  padding-bottom: 16px;
+  padding-top: 16px;
+  padding-bottom: max(16px, env(safe-area-inset-bottom, 0px));
   flex-shrink: 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  background: linear-gradient(180deg, transparent 0%, var(--bgl-bg) 24%);
 }
 
 .bgl-footer.bgl-footer--hidden {
@@ -1162,6 +1168,21 @@
 }
 
 /* Lesson focus layout */
+.course-center--lesson-focus:has(.bgl-lesson-mount) {
+  max-width: 640px;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+
+@media (min-width: 769px) {
+  .course-center--lesson-focus:has(.bgl-lesson-mount) {
+    max-width: 680px;
+    width: 100%;
+    min-width: 0;
+  }
+}
+
 body:has(.dashboard-layout--lesson-focus) {
   background: var(--bgl-bg, #ffffff);
   min-height: 100vh;

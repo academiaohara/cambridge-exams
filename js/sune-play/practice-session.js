@@ -108,7 +108,7 @@
           '<div class="sp-practice-footer-inner">' +
             '<div id="sp-feedback-mount" class="sp-feedback-mount"></div>' +
             '<div class="sp-practice-footer-actions">' +
-              '<button type="button" class="sp-btn sp-btn--skip" id="sp-skip-btn" aria-label="Saltar">Saltar</button>' +
+              '<button type="button" class="sp-btn sp-btn--skip" id="sp-skip-btn" aria-label="Skip">Skip</button>' +
               '<div class="sp-footer-actions-right">' +
                 '<button type="button" class="sp-btn sp-btn--explain-icon" id="sp-explain-btn" hidden aria-label="Ver explicación">' +
                   '<span class="material-symbols-outlined">help</span>' +
