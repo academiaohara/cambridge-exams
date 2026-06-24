@@ -282,12 +282,12 @@
       },
       {
         "formatType": "word_order_tiles",
-        "displayName": "Build the sentence with tiles",
+        "displayName": "Build the sentence with visual tiles",
         "defaultLives": 5,
         "maxLifeLossPerScreen": 1,
         "attemptsPerScreen": 1,
         "interaction": {
-          "component": "word_tiles_ordering",
+          "component": "visual_context_word_tiles_ordering",
           "studentAction": "tap_or_drag_tiles",
           "tapAction": "append_tile_to_answer_end",
           "dragAction": "insert_tile_anywhere_in_answer",
@@ -295,8 +295,20 @@
           "canRemovePlacedTiles": true,
           "tileBankIncludesDistractors": true,
           "shuffleTiles": true,
-          "evaluationTrigger": "check_button"
-        }
+          "evaluationTrigger": "check_button",
+          "topPrompt": {
+            "preferredModes": [
+              "visual_prompt",
+              "context_question"
+            ],
+            "renderLegacyTextPrompt": false,
+            "visualPromptPosition": "top_card",
+            "contextQuestionPosition": "below_visual",
+            "allowAudioOrReadingContextQuestion": true,
+            "fallbackWhenNoVisualAsset": "show_context_question_only"
+          }
+        },
+        "pedagogicalGoal": "The learner answers a meaningful visual/context question by building the sentence, instead of translating a slash prompt."
       },
       {
         "formatType": "marked_error_gap_correction",
@@ -483,7 +495,8 @@
             "b1-u1-ex1-2",
             "b1-u1-ex1-3"
           ],
-          "formatType": "word_order_tiles"
+          "formatType": "word_order_tiles",
+          "promptMode": "visual_plus_context_question"
         }
       ]
     },
@@ -791,7 +804,7 @@
         "exerciseType": "word_order_tiles",
         "exerciseTypeName": "Build the Sentence",
         "title": "A: Build the routine",
-        "instructions": "Tap or drag the words to build the correct present simple sentence. Some words are extra.",
+        "instructions": "Look at the picture and answer the question by building the sentence. Some words are extra.",
         "studentInstruction": "Tap words to add them to the end, or drag them to place them anywhere.",
         "grammarFocus": "present simple for routines",
         "items": [
@@ -802,7 +815,6 @@
               "timeExpression": "every morning",
               "verbPhrase": "walk to school"
             },
-            "displayPrompt": "Jake / every morning / walk to school",
             "answer": "Every morning, Jake walks to school.",
             "acceptedAnswers": [
               "Every morning, Jake walks to school.",
@@ -843,6 +855,33 @@
               "target": "answerTiles",
               "ignoreCapitalization": false,
               "ignoreMissingFinalPeriod": false
+            },
+            "legacyDisplayPrompt": "Jake / every morning / walk to school",
+            "promptMode": "visual_plus_context_question",
+            "topPrompt": {
+              "type": "visual_plus_context_question",
+              "renderLegacyTextPrompt": false,
+              "visualAssetKey": "b1-u1-ex1-1-jake-walks-to-school-morning",
+              "contextQuestion": "What does Jake do every morning?"
+            },
+            "contextQuestion": "What does Jake do every morning?",
+            "visualPrompt": {
+              "assetKey": "b1-u1-ex1-1-jake-walks-to-school-morning",
+              "mediaType": "illustration",
+              "status": "needs_asset_generation",
+              "altText": "Jake walks to school in the morning.",
+              "imageGenerationPrompt": "Jake walking to school in the morning, with a warm sunrise and a school building in the background. Style: bright flat vector illustration for a language-learning app. Lighting: soft morning light. Composition: medium-wide shot, clear action, no visible text.",
+              "styleGuide": {
+                "brand": "Sune English",
+                "visualSystem": "bright flat vector language-learning illustration",
+                "background": "light non-white background",
+                "avoidVisibleText": true,
+                "avoidTranslationClues": true,
+                "size": {
+                  "widthCm": 19.1,
+                  "heightCm": 12.97
+                }
+              }
             }
           },
           {
@@ -852,7 +891,6 @@
               "timeExpression": "usually",
               "verbPhrase": "drink tea for breakfast"
             },
-            "displayPrompt": "Mia / usually / drink tea for breakfast",
             "answer": "Mia usually drinks tea for breakfast.",
             "acceptedAnswers": [
               "Mia usually drinks tea for breakfast."
@@ -892,6 +930,33 @@
               "target": "answerTiles",
               "ignoreCapitalization": false,
               "ignoreMissingFinalPeriod": false
+            },
+            "legacyDisplayPrompt": "Mia / usually / drink tea for breakfast",
+            "promptMode": "visual_plus_context_question",
+            "topPrompt": {
+              "type": "visual_plus_context_question",
+              "renderLegacyTextPrompt": false,
+              "visualAssetKey": "b1-u1-ex1-2-mia-drinks-tea-breakfast",
+              "contextQuestion": "What does Mia usually drink for breakfast?"
+            },
+            "contextQuestion": "What does Mia usually drink for breakfast?",
+            "visualPrompt": {
+              "assetKey": "b1-u1-ex1-2-mia-drinks-tea-breakfast",
+              "mediaType": "illustration",
+              "status": "needs_asset_generation",
+              "altText": "Mia drinks tea at breakfast.",
+              "imageGenerationPrompt": "Mia sitting at a breakfast table and drinking tea, with toast and a simple kitchen background. Style: bright flat vector illustration for a language-learning app. Lighting: natural morning light. Composition: medium shot, clear action, no visible text.",
+              "styleGuide": {
+                "brand": "Sune English",
+                "visualSystem": "bright flat vector language-learning illustration",
+                "background": "light non-white background",
+                "avoidVisibleText": true,
+                "avoidTranslationClues": true,
+                "size": {
+                  "widthCm": 19.1,
+                  "heightCm": 12.97
+                }
+              }
             }
           },
           {
@@ -901,7 +966,6 @@
               "timeExpression": "after school / often",
               "verbPhrase": "do her homework in the library"
             },
-            "displayPrompt": "Sara / after school / often / do her homework in the library",
             "answer": "After school, Sara often does her homework in the library.",
             "acceptedAnswers": [
               "After school, Sara often does her homework in the library.",
@@ -952,6 +1016,33 @@
               "target": "answerTiles",
               "ignoreCapitalization": false,
               "ignoreMissingFinalPeriod": false
+            },
+            "legacyDisplayPrompt": "Sara / after school / often / do her homework in the library",
+            "promptMode": "visual_plus_context_question",
+            "topPrompt": {
+              "type": "visual_plus_context_question",
+              "renderLegacyTextPrompt": false,
+              "visualAssetKey": "b1-u1-ex1-3-sara-homework-library-after-school",
+              "contextQuestion": "What does Sara often do after school?"
+            },
+            "contextQuestion": "What does Sara often do after school?",
+            "visualPrompt": {
+              "assetKey": "b1-u1-ex1-3-sara-homework-library-after-school",
+              "mediaType": "illustration",
+              "status": "needs_asset_generation",
+              "altText": "Sara does her homework in the library after school.",
+              "imageGenerationPrompt": "Sara doing homework at a library table after school, with bookshelves and a backpack nearby. Style: bright flat vector illustration for a language-learning app. Lighting: calm indoor afternoon light. Composition: medium shot, clear action, no visible text.",
+              "styleGuide": {
+                "brand": "Sune English",
+                "visualSystem": "bright flat vector language-learning illustration",
+                "background": "light non-white background",
+                "avoidVisibleText": true,
+                "avoidTranslationClues": true,
+                "size": {
+                  "widthCm": 19.1,
+                  "heightCm": 12.97
+                }
+              }
             }
           },
           {
@@ -961,7 +1052,6 @@
               "timeExpression": "twice a month",
               "verbPhrase": "visit her grandparents"
             },
-            "displayPrompt": "Lena / visit her grandparents / twice a month",
             "answer": "Lena visits her grandparents twice a month.",
             "acceptedAnswers": [
               "Lena visits her grandparents twice a month.",
@@ -1004,6 +1094,33 @@
               "target": "answerTiles",
               "ignoreCapitalization": false,
               "ignoreMissingFinalPeriod": false
+            },
+            "legacyDisplayPrompt": "Lena / visit her grandparents / twice a month",
+            "promptMode": "visual_plus_context_question",
+            "topPrompt": {
+              "type": "visual_plus_context_question",
+              "renderLegacyTextPrompt": false,
+              "visualAssetKey": "b1-u1-ex1-4-lena-visits-grandparents",
+              "contextQuestion": "Who does Lena visit twice a month?"
+            },
+            "contextQuestion": "Who does Lena visit twice a month?",
+            "visualPrompt": {
+              "assetKey": "b1-u1-ex1-4-lena-visits-grandparents",
+              "mediaType": "illustration",
+              "status": "needs_asset_generation",
+              "altText": "Lena visits her grandparents.",
+              "imageGenerationPrompt": "Lena visiting her grandparents at their home, smiling together near the front door. Style: bright flat vector illustration for a language-learning app. Lighting: warm natural light. Composition: medium shot, clear relationship, no visible text.",
+              "styleGuide": {
+                "brand": "Sune English",
+                "visualSystem": "bright flat vector language-learning illustration",
+                "background": "light non-white background",
+                "avoidVisibleText": true,
+                "avoidTranslationClues": true,
+                "size": {
+                  "widthCm": 19.1,
+                  "heightCm": 12.97
+                }
+              }
             }
           },
           {
@@ -1013,7 +1130,6 @@
               "timeExpression": "never / on weekdays",
               "verbPhrase": "stay up late"
             },
-            "displayPrompt": "Emma / never / stay up late / on weekdays",
             "answer": "Emma never stays up late on weekdays.",
             "acceptedAnswers": [
               "Emma never stays up late on weekdays."
@@ -1055,6 +1171,33 @@
               "target": "answerTiles",
               "ignoreCapitalization": false,
               "ignoreMissingFinalPeriod": false
+            },
+            "legacyDisplayPrompt": "Emma / never / stay up late / on weekdays",
+            "promptMode": "visual_plus_context_question",
+            "topPrompt": {
+              "type": "visual_plus_context_question",
+              "renderLegacyTextPrompt": false,
+              "visualAssetKey": "b1-u1-ex1-5-emma-does-not-stay-up-late",
+              "contextQuestion": "What does Emma never do on weekdays?"
+            },
+            "contextQuestion": "What does Emma never do on weekdays?",
+            "visualPrompt": {
+              "assetKey": "b1-u1-ex1-5-emma-does-not-stay-up-late",
+              "mediaType": "illustration",
+              "status": "needs_asset_generation",
+              "altText": "Emma goes to bed on time on a weekday night.",
+              "imageGenerationPrompt": "Emma in her bedroom on a weekday night, looking sleepy and getting ready for bed early, with a small bedside lamp and school bag nearby. Style: bright flat vector illustration for a language-learning app. Lighting: soft evening light. Composition: medium shot, clear routine, no visible text.",
+              "styleGuide": {
+                "brand": "Sune English",
+                "visualSystem": "bright flat vector language-learning illustration",
+                "background": "light non-white background",
+                "avoidVisibleText": true,
+                "avoidTranslationClues": true,
+                "size": {
+                  "widthCm": 19.1,
+                  "heightCm": 12.97
+                }
+              }
             }
           },
           {
@@ -1064,7 +1207,6 @@
               "timeExpression": "every Saturday",
               "verbPhrase": "play basketball"
             },
-            "displayPrompt": "Nora / play basketball / every Saturday",
             "answer": "Nora plays basketball every Saturday.",
             "acceptedAnswers": [
               "Nora plays basketball every Saturday.",
@@ -1103,6 +1245,33 @@
               "target": "answerTiles",
               "ignoreCapitalization": false,
               "ignoreMissingFinalPeriod": false
+            },
+            "legacyDisplayPrompt": "Nora / play basketball / every Saturday",
+            "promptMode": "visual_plus_context_question",
+            "topPrompt": {
+              "type": "visual_plus_context_question",
+              "renderLegacyTextPrompt": false,
+              "visualAssetKey": "b1-u1-ex1-6-nora-plays-basketball-saturday",
+              "contextQuestion": "What does Nora do every Saturday?"
+            },
+            "contextQuestion": "What does Nora do every Saturday?",
+            "visualPrompt": {
+              "assetKey": "b1-u1-ex1-6-nora-plays-basketball-saturday",
+              "mediaType": "illustration",
+              "status": "needs_asset_generation",
+              "altText": "Nora plays basketball on Saturday.",
+              "imageGenerationPrompt": "Nora playing basketball on an outdoor court on a sunny Saturday, dribbling the ball with a hoop in the background. Style: bright flat vector illustration for a language-learning app. Lighting: natural daylight. Composition: medium action shot, sharp focus, no visible text.",
+              "styleGuide": {
+                "brand": "Sune English",
+                "visualSystem": "bright flat vector language-learning illustration",
+                "background": "light non-white background",
+                "avoidVisibleText": true,
+                "avoidTranslationClues": true,
+                "size": {
+                  "widthCm": 19.1,
+                  "heightCm": 12.97
+                }
+              }
             }
           }
         ],
@@ -1113,6 +1282,27 @@
           "canRemovePlacedTiles": true,
           "shuffleTiles": true,
           "usesDistractorTiles": true
+        },
+        "promptDesign": {
+          "topPromptType": "visual_plus_context_question",
+          "renderTextClue": false,
+          "renderLegacyDisplayPrompt": false,
+          "visualSupport": {
+            "enabled": true,
+            "allowedMediaTypes": [
+              "illustration",
+              "short_comic",
+              "gif"
+            ],
+            "preferredMediaType": "illustration",
+            "avoidVisibleTextInImage": true,
+            "purpose": "associate meaning with image and sentence, not translation"
+          },
+          "contextQuestion": {
+            "enabled": true,
+            "purpose": "make the learner answer a real context question with tiles",
+            "useWhenFromReadingOrAudio": true
+          }
         }
       },
       {
@@ -2069,5 +2259,24 @@
     ],
     "implementationNote": "Original exercise items used as content bank for practice screen generation."
   },
-  "interactionDesignVersion": "2026-06-24"
+  "interactionDesignVersion": "interactive-formats-v3-visual-context-prompts",
+  "implementationNotes": [
+    "Word-order screens use visual/context prompts instead of slash-separated text prompts. The UI should render visualPrompt and contextQuestion as the top prompt; legacyDisplayPrompt is kept only for authoring/debugging."
+  ],
+  "uiImplementation": {
+    "wordOrderTiles": {
+      "topPromptRendering": {
+        "useVisualPromptWhenAvailable": true,
+        "showContextQuestion": true,
+        "hideLegacySlashPromptFromLearner": true,
+        "legacyPromptAllowedForTeacherPreview": true
+      },
+      "tileBehaviour": {
+        "tapTile": "append_to_last_position",
+        "dragTile": "insert_at_drop_position",
+        "tapPlacedTile": "return_to_tile_bank",
+        "dragPlacedTile": "reorder_or_return_to_bank"
+      }
+    }
+  }
 }
