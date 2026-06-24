@@ -450,6 +450,7 @@
   }
 
   function renderCurrentScreen() {
+    if (window.AudioUtils) AudioUtils.stopPhrasePlayback();
     var mount = lessonState.mount;
     var screenMount = mount.querySelector('#sp-screen-mount');
     var feedbackMount = mount.querySelector('#sp-feedback-mount');
@@ -682,6 +683,10 @@
   }
 
   function showFeedback(result, advanceOnContinue, isRetry) {
+    if (window.AudioUtils) {
+      if (result.correct) AudioUtils.playSuccessSound();
+      else AudioUtils.playFailureSound();
+    }
     var mount = lessonState.mount;
     var feedbackMount = mount.querySelector('#sp-feedback-mount');
     var tone = lessonState.unitData.feedbackTone;
