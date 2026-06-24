@@ -18,6 +18,28 @@
     return esc(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   }
 
+  function renderSentenceWithGap(sentence, gapHtml) {
+    var parts = (sentence || '').split(GAP_RE);
+    var gapCount = (sentence.match(GAP_RE) || []).length;
+    var html = '';
+    for (var i = 0; i < parts.length; i++) {
+      html += bold(parts[i]);
+      if (i < gapCount) html += gapHtml;
+    }
+    return html;
+  }
+
+  function buildInlineGapField(verbRef) {
+    var inputHtml = '<input type="text" class="sp-gap-inline-input" id="sp-gap-input" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer">';
+    if (!verbRef) {
+      return '<span class="sp-inline-gap-pill sp-inline-gap" role="group" aria-label="Gap fill">' + inputHtml + '</span>';
+    }
+    return '<span class="sp-inline-gap-group sp-inline-gap" role="group" aria-label="Gap fill">' +
+      '<span class="sp-gap-verb-ref">' + esc(verbRef) + '</span>' +
+      '<span class="sp-inline-gap-pill">' + inputHtml + '</span>' +
+    '</span>';
+  }
+
   function randomFeedback(tone, kind) {
     var list = (tone && tone[kind]) || [];
     if (!list.length) return kind === 'correct' ? 'Nice!' : 'Not quite.';
@@ -126,12 +148,10 @@
 
   function renderGapFill(screen) {
     var p = screen.payload || {};
-    var sentence = bold((p.sentence || '').replace(GAP_RE, '<span class="sp-inline-gap"></span>'));
+    var verbRef = p.verbPrompt || p.preselectedVerb || '';
+    var gapField = buildInlineGapField(verbRef);
     var html = '<div class="sp-screen sp-screen--gap" data-format="free_text_gap_fill">';
-    html += '<p class="sp-prompt-sentence">' + sentence + '</p>';
-    if (p.verbPrompt) html += '<p class="sp-verb-prompt">' + esc(p.verbPrompt) + '</p>';
-    if (p.preselectedVerb) html += '<p class="sp-preselected-verb">Verb: <strong>' + esc(p.preselectedVerb) + '</strong></p>';
-    html += '<input type="text" class="sp-text-input" id="sp-gap-input" placeholder="Type your answer" autocomplete="off" autocapitalize="off">';
+    html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap">' + renderSentenceWithGap(p.sentence, gapField) + '</p>';
     html += '</div>';
     return html;
   }
@@ -338,6 +358,20 @@
     root.querySelectorAll('input, textarea').forEach(function(el) {
       el.addEventListener('input', onChange);
     });
+
+    if (format === 'free_text_gap_fill' || format === 'preselected_verb_gap_fill') {
+      var gapInput = root.querySelector('#sp-gap-input');
+      if (gapInput) {
+        gapInput.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && !root.classList.contains('sp-screen--locked')) {
+            e.preventDefault();
+            var actionBtn = document.getElementById('sp-action-btn');
+            if (actionBtn && !actionBtn.disabled) actionBtn.click();
+          }
+        });
+        setTimeout(function() { gapInput.focus(); }, 0);
+      }
+    }
   }
 
   function bindWordOrderTiles(root, onChange) {
