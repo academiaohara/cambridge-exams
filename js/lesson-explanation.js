@@ -35,6 +35,26 @@ var LessonExplanation = (function() {
 
   var _inlineRestore = null;
 
+  function explanationCardHtml(text) {
+    return '<div class="lesson-explanation-card">' +
+        '<div class="lesson-explanation-card-label">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>' +
+          'Why' +
+        '</div>' +
+        '<p class="lesson-explanation-text">' + formatBody(text) + '</p>' +
+      '</div>';
+  }
+
+  function inlineExplanationCardHtml(text) {
+    return '<div class="sp-explanation-inline-card">' +
+        '<div class="sp-explanation-inline-card-label">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>' +
+          'Why' +
+        '</div>' +
+        '<p class="sp-explanation-inline-text">' + formatBody(text) + '</p>' +
+      '</div>';
+  }
+
   function openInline(mountEl, opts) {
     if (!mountEl || !opts || !opts.explanation) return;
     close();
@@ -66,9 +86,7 @@ var LessonExplanation = (function() {
         '</header>' +
         '<div class="sp-explanation-inline-body">' +
           answerHtml +
-          '<div class="sp-explanation-inline-card">' +
-            '<p class="sp-explanation-inline-text">' + formatBody(opts.explanation) + '</p>' +
-          '</div>' +
+          inlineExplanationCardHtml(opts.explanation) +
         '</div>' +
         '<footer class="sp-explanation-inline-footer">' +
           '<button type="button" class="sp-explanation-inline-continue">' +
@@ -123,9 +141,7 @@ var LessonExplanation = (function() {
         '<div class="lesson-explanation-body">' +
           contextHtml +
           answerHtml +
-          '<div class="lesson-explanation-card">' +
-            '<p class="lesson-explanation-text">' + formatBody(opts.explanation) + '</p>' +
-          '</div>' +
+          explanationCardHtml(opts.explanation) +
         '</div>' +
         '<footer class="lesson-explanation-footer">' +
           '<button type="button" class="lesson-explanation-continue">' +

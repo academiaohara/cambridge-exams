@@ -1230,10 +1230,12 @@ button.sp-example-line.sp-speakable {
   flex-direction: column;
   flex: 1;
   min-height: 280px;
-  border-radius: 20px;
+  border-radius: 24px;
   background: var(--white);
-  border: 1px solid var(--border-light);
-  box-shadow: var(--shadow-md, 0 2px 8px rgba(45, 46, 95, 0.06));
+  border: 2px solid var(--sp-duo-blue);
+  border-bottom-width: 4px;
+  border-bottom-color: var(--sp-duo-blue-dark);
+  box-shadow: 0 4px 0 var(--sp-duo-blue-dark);
   overflow: hidden;
 }
 
@@ -1242,8 +1244,8 @@ button.sp-example-line.sp-speakable {
   align-items: center;
   gap: 8px;
   padding: 14px 16px;
-  border-bottom: 1px solid var(--border-light);
-  background: var(--white);
+  border-bottom: 2px solid var(--sp-duo-blue-border);
+  background: var(--sp-duo-blue-light);
   flex-shrink: 0;
 }
 
@@ -1251,77 +1253,148 @@ button.sp-example-line.sp-speakable {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: 10px;
-  background: transparent;
-  color: var(--text-dark);
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid var(--sp-duo-blue-border);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--sp-duo-blue);
   cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.sp-explanation-inline-close:hover {
+  background: var(--white);
+  border-color: var(--sp-duo-blue);
+}
+
+.sp-explanation-inline-close:active {
+  transform: scale(0.94);
+}
+
+.sp-explanation-inline-close .material-symbols-outlined {
+  font-size: 1.25rem;
 }
 
 .sp-explanation-inline-title {
   flex: 1;
   margin: 0;
   font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: var(--primary, #2D2E5F);
+  color: var(--sp-duo-blue-dark);
   text-align: center;
-  padding-right: 36px;
+  padding-right: 40px;
 }
 
 .sp-explanation-inline-body {
   flex: 1;
   overflow-y: auto;
-  padding: 20px 18px;
+  padding: 18px 16px 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
+  background: var(--white);
+}
+
+.sp-explanation-inline .lesson-explanation-answer {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--sp-correct-tint);
+  border: 2px solid var(--sp-correct);
+  border-bottom-width: 3px;
+  border-bottom-color: #16a34a;
+  box-shadow: 0 3px 0 #16a34a;
+}
+
+.sp-explanation-inline .lesson-explanation-answer-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #16a34a;
+  margin-bottom: 6px;
+}
+
+.sp-explanation-inline .lesson-explanation-answer-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: var(--sp-correct);
 }
 
 .sp-explanation-inline-card {
   flex: 1;
-  padding: 20px 18px;
-  border-radius: 16px;
-  background: var(--bg-light, #f8f9ff);
-  border: 1px solid var(--border-light);
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--sp-duo-blue-light);
+  border: 2px solid var(--sp-duo-blue);
+  border-bottom-width: 3px;
+  border-bottom-color: var(--sp-duo-blue-dark);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--sp-duo-blue-dark) 30%, #e5e5e5);
+}
+
+.sp-explanation-inline-card-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sp-duo-blue-dark);
+}
+
+.sp-explanation-inline-card-label .material-symbols-outlined {
+  font-size: 1.1rem;
 }
 
 .sp-explanation-inline-text {
   margin: 0;
-  font-size: 1.08rem;
-  line-height: 1.7;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
   color: var(--text-dark);
 }
 
 .sp-explanation-inline-text strong {
   font-weight: 800;
-  color: var(--primary, #2D2E5F);
+  color: var(--sp-duo-blue-dark);
 }
 
 .sp-explanation-inline-footer {
   flex-shrink: 0;
   padding: 12px 16px 16px;
-  border-top: 1px solid var(--border-light);
+  border-top: none;
   background: var(--white);
 }
 
 .sp-explanation-inline-continue {
   width: 100%;
-  border: none;
-  border-radius: 14px;
+  border: 2px solid var(--sp-duo-blue);
+  border-bottom-width: 4px;
+  border-bottom-color: var(--sp-duo-blue-dark);
+  border-radius: 16px;
   padding: 14px 20px;
-  min-height: 48px;
-  font-family: inherit;
-  font-size: 0.88rem;
+  min-height: 52px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #fff;
-  background: var(--primary, #2D2E5F);
+  background: var(--sp-duo-blue);
   cursor: pointer;
-  box-shadow: 0 4px 0 var(--primary-dark, #1e1f42);
+  box-shadow: 0 4px 0 var(--sp-duo-blue-dark);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.sp-explanation-inline-continue:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--sp-duo-blue-dark);
 }
 
 .sp-tile-answer {

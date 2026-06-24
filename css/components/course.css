@@ -8188,8 +8188,8 @@ body.lesson-explanation-open {
   gap: 8px;
   padding: calc(12px + env(safe-area-inset-top)) 12px 12px;
   flex-shrink: 0;
-  border-bottom: 1px solid var(--cu-duo-border, #e8ecf4);
-  background: #fff;
+  border-bottom: 2px solid var(--cu-duo-blue-border, #b8e8fc);
+  background: var(--cu-duo-blue-bg, #ddf4ff);
 }
 
 .lesson-explanation-back {
@@ -8198,24 +8198,30 @@ body.lesson-explanation-open {
   justify-content: center;
   width: 40px;
   height: 40px;
-  border: none;
-  border-radius: 12px;
-  background: transparent;
-  color: var(--primary, #2D2E5F);
+  padding: 0;
+  border: 2px solid var(--cu-duo-blue-border, #b8e8fc);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ex-duo-blue, #1cb0f6);
   cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.lesson-explanation-back:active {
+  transform: scale(0.94);
 }
 
 .lesson-explanation-back .material-symbols-outlined {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
 }
 
 .lesson-explanation-title {
   flex: 1;
   margin: 0;
   font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--primary, #2D2E5F);
+  color: var(--ex-duo-blue-dark, #1899d6);
   text-align: center;
   padding-right: 40px;
 }
@@ -8227,60 +8233,86 @@ body.lesson-explanation-open {
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
+  background: #fff;
 }
 
 .lesson-explanation-context {
   margin: 0;
+  font-family: 'Nunito', sans-serif;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.5;
-  color: var(--primary, #2D2E5F);
+  color: var(--cu-duo-text, #4b4b4b);
 }
 
 .lesson-explanation-answer {
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: #fff;
-  border: 1px solid var(--cu-duo-border, #e8ecf4);
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--cu-duo-green-light, #d7ffb8);
+  border: 2px solid var(--cu-duo-green, #58cc02);
+  border-bottom-width: 3px;
+  border-bottom-color: var(--cu-duo-green-dark, #58a700);
+  box-shadow: 0 3px 0 var(--cu-duo-green-dark, #58a700);
 }
 
 .lesson-explanation-answer-label {
   display: block;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-light, #7b7ca0);
-  margin-bottom: 4px;
+  color: var(--cu-duo-green-dark, #58a700);
+  margin-bottom: 6px;
 }
 
 .lesson-explanation-answer-text {
   margin: 0;
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
   line-height: 1.45;
-  color: var(--secondary, #1E9D8E);
+  color: var(--cu-duo-green, #58cc02);
 }
 
 .lesson-explanation-card {
   flex: 1;
-  padding: 20px 18px;
-  border-radius: 20px;
-  background: #fff;
-  border: 1px solid var(--cu-duo-border, #e8ecf4);
-  box-shadow: var(--shadow-md, 0 2px 8px rgba(45, 46, 95, 0.06));
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--cu-duo-blue-bg, #ddf4ff);
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  border-bottom-width: 3px;
+  border-bottom-color: var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-blue-dark, #1899d6) 30%, #e5e5e5);
+}
+
+.lesson-explanation-card-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ex-duo-blue-dark, #1899d6);
+}
+
+.lesson-explanation-card-label .material-symbols-outlined {
+  font-size: 1.1rem;
 }
 
 .lesson-explanation-text {
   margin: 0;
+  font-family: 'Nunito', sans-serif;
   font-size: 1.05rem;
   line-height: 1.65;
-  color: var(--text-dark, #2D2E5F);
+  color: var(--cu-duo-text, #4b4b4b);
 }
 
 .lesson-explanation-text strong {
-  color: var(--primary, #2D2E5F);
+  color: var(--ex-duo-blue-dark, #1899d6);
   font-weight: 800;
 }
 
@@ -8288,30 +8320,36 @@ body.lesson-explanation-open {
   flex-shrink: 0;
   padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
   background: #fff;
-  border-top: 1px solid var(--cu-duo-border, #e8ecf4);
+  border-top: none;
 }
 
 .lesson-explanation-continue {
   width: 100%;
-  border: none;
+  border: 2px solid var(--cu-duo-green, #58cc02);
+  border-bottom-width: 4px;
+  border-bottom-color: var(--cu-duo-green-dark, #58a700);
   border-radius: 16px;
   padding: 14px 20px;
   min-height: 52px;
-  font-family: inherit;
-  font-size: 0.88rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #fff;
-  background: var(--primary, #2D2E5F);
+  background: var(--cu-duo-green, #58cc02);
   cursor: pointer;
-  box-shadow: 0 4px 0 var(--primary-dark, #1e1f42);
+  box-shadow: 0 4px 0 var(--cu-duo-green-dark, #58a700);
   transition: filter 0.15s, transform 0.1s;
+}
+
+.lesson-explanation-continue:hover {
+  filter: brightness(1.04);
 }
 
 .lesson-explanation-continue:active {
   transform: translateY(2px);
-  box-shadow: 0 2px 0 var(--primary-dark, #1e1f42);
+  box-shadow: 0 2px 0 var(--cu-duo-green-dark, #58a700);
 }
 
 .lesson-explanation-sheet--compact {
@@ -8332,8 +8370,11 @@ body.lesson-explanation-open {
   max-width: 440px;
   max-height: min(70vh, 520px);
   height: auto;
-  border-radius: 20px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+  border-radius: 24px;
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  border-bottom-width: 4px;
+  border-bottom-color: var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 8px 0 var(--ex-duo-blue-dark, #1899d6), 0 16px 48px rgba(0, 0, 0, 0.14);
   overflow: hidden;
   animation: lessonExplanationModalIn 0.22s ease-out;
 }
