@@ -150,21 +150,18 @@
     var p = screen.payload || {};
     var verbRef = p.verbPrompt || p.preselectedVerb || '';
     var gapField = buildInlineGapField(verbRef);
-    var instruction = p.instruction || (verbRef ? 'Use the correct form of the highlighted word.' : '');
     var html = '<div class="sp-screen sp-screen--gap" data-format="free_text_gap_fill">';
-    if (instruction) {
-      html += '<p class="sp-gap-instruction">' + esc(instruction) + '</p>';
-    }
+    html += '<div class="sp-prompt-row">';
     html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap">' + renderSentenceWithGap(p.sentence, gapField) + '</p>';
+    html += renderSentenceSpeakBtn('Listen to full sentence');
+    html += '</div>';
     html += '</div>';
     return html;
   }
 
   function renderFullSentence(screen) {
     var p = screen.payload || {};
-    var instruction = p.instruction || 'Write the full sentence.';
     return '<div class="sp-screen sp-screen--write" data-format="full_sentence_write">' +
-      '<p class="sp-gap-instruction">' + esc(instruction) + '</p>' +
       '<p class="sp-display-prompt">' + esc(p.displayPrompt || '') + '</p>' +
       '<textarea class="sp-text-input sp-text-input--large" id="sp-sentence-input" rows="3" placeholder="Write the full sentence" autocomplete="off"></textarea>' +
     '</div>';
@@ -172,9 +169,7 @@
 
   function renderWordOrder(screen) {
     var p = screen.payload || {};
-    var instruction = p.instruction || p.prompt || 'Put the words in the correct order.';
     var html = '<div class="sp-screen sp-screen--tiles" data-format="word_order_tiles">';
-    html += '<p class="sp-gap-instruction">' + esc(instruction) + '</p>';
     html += '<div class="sp-tile-answer" id="sp-tile-answer"></div>';
     html += '<div class="sp-tile-bank" id="sp-tile-bank">';
     (p.tiles || []).forEach(function(word, i) {
@@ -196,9 +191,7 @@
     var placeholder = p.replacementOnly
       ? 'Type the corrected form'
       : 'Write the corrected sentence';
-    var instruction = p.instruction || 'Correct the mistake in the sentence.';
     return '<div class="sp-screen sp-screen--error" data-format="error_correction">' +
-      '<p class="sp-gap-instruction">' + esc(instruction) + '</p>' +
       '<div class="sp-prompt-row">' +
       '<p class="sp-prompt-sentence">' + sentence + '</p>' +
       renderSentenceSpeakBtn('Listen to sentence') +
@@ -210,9 +203,7 @@
   function renderVerbBankTwoStep(screen) {
     var p = screen.payload || {};
     var step = p.step || 'choose_verb';
-    var instruction = p.instruction || 'Choose the verb and write the correct form.';
     var html = '<div class="sp-screen sp-screen--verb-bank" data-format="verb_bank_two_step" data-step="' + step + '">';
-    html += '<p class="sp-gap-instruction">' + esc(instruction) + '</p>';
     html += '<div class="sp-prompt-row">';
     html += '<p class="sp-prompt-sentence">' + bold((p.sentence || '').replace(GAP_RE, '<span class="sp-inline-gap"></span>')) + '</p>';
     html += renderSentenceSpeakBtn('Listen to sentence');
@@ -250,7 +241,6 @@
     }
 
     return '<div class="sp-screen sp-screen--hunt" data-format="passage_error_hunt_single">' +
-      '<p class="sp-hunt-instruction">Find one wrong verb phrase.</p>' +
       '<div class="sp-passage-card" id="sp-passage-text">' + passageHtml + '</div>' +
       '<div class="sp-hunt-correction" id="sp-hunt-correction" hidden></div>' +
     '</div>';
@@ -274,7 +264,6 @@
     }
 
     var html = '<div class="sp-screen sp-screen--sort" data-format="stative_sorting">';
-    html += '<p class="sp-display-prompt">' + esc(p.prompt || 'Sort the verbs.') + '</p>';
     html += '<div class="sp-sort-verb-pool" id="sp-sort-pool">';
     verbs.forEach(function(v) {
       html += '<button type="button" class="sp-sort-verb" data-verb="' + esc(v.verb) + '" draggable="true">' + esc(v.verb) + '</button>';
@@ -390,7 +379,13 @@
 
     if (format === 'free_text_gap_fill' || format === 'preselected_verb_gap_fill') {
       bindSentenceSpeak(root, function() {
-        return String((screen.payload && screen.payload.sentence) || '').replace(GAP_RE, ' blank ').replace(/\s+/g, ' ').trim();
+        var p = screen.payload || {};
+        var gapInput = root.querySelector('#sp-gap-input');
+        var userAnswer = gapInput ? gapInput.value.trim() : '';
+        if (userAnswer) {
+          return String(p.sentence || '').replace(GAP_RE, userAnswer).replace(/\s+/g, ' ').trim();
+        }
+        return String(p.completedSentence || '').replace(/\s+/g, ' ').trim();
       });
     }
 
