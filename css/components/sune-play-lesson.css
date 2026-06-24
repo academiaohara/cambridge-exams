@@ -35,7 +35,8 @@
 .sp-theory-shell {
   display: flex;
   align-items: stretch;
-  gap: 8px;
+  justify-content: center;
+  gap: 2px;
   flex: 1 1 0;
   min-height: 0;
   height: 100%;
@@ -50,7 +51,6 @@
   flex: 0 1 60vw;
   width: 60vw;
   max-width: 60%;
-  margin: 0 auto;
   min-height: 0;
   min-width: 0;
   height: 100%;
@@ -315,6 +315,55 @@
   line-height: 1.4;
 }
 
+.sp-speakable {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.sp-speakable:focus-visible {
+  outline: 2px solid var(--sp-duo-blue);
+  outline-offset: 2px;
+}
+
+.sp-speakable--speaking {
+  box-shadow: 0 0 0 2px rgba(28, 176, 246, 0.35);
+}
+
+.sp-speakable-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.sp-speak-icon {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  color: var(--sp-duo-blue);
+  opacity: 0.45;
+  transition: opacity 0.15s ease;
+}
+
+.sp-speakable:hover .sp-speak-icon,
+.sp-speakable:focus-visible .sp-speak-icon,
+.sp-speakable--speaking .sp-speak-icon {
+  opacity: 1;
+}
+
+button.sp-chip.sp-speakable {
+  width: auto;
+  border: 1px solid var(--sp-duo-blue-border);
+}
+
+button.sp-example-line.sp-speakable {
+  border: none;
+}
+
 .sp-example-line--small {
   font-size: 0.875rem;
   padding: 8px 12px;
@@ -400,6 +449,19 @@
 
 .sp-compare-item p {
   margin: 8px 0 0;
+  font-size: 0.95rem;
+}
+
+.sp-compare-speak {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.sp-compare-speak .sp-speakable-text p {
+  margin: 0;
   font-size: 0.95rem;
 }
 
@@ -1531,7 +1593,7 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
 
 @media (max-width: 480px) {
   .sp-theory-shell {
-    gap: 4px;
+    gap: 0;
   }
 
   .sp-theory-nav {

@@ -336,6 +336,21 @@
 
     var swipeRoot = mount.querySelector('.sp-theory-shell') || mount.querySelector('.sp-theory-flow');
     bindTheorySwipe(swipeRoot);
+
+    mount.querySelectorAll('[data-action="theory-speak"]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var text = btn.getAttribute('data-speak-text');
+        if (!text) return;
+        mount.querySelectorAll('.sp-speakable--speaking').forEach(function(el) {
+          el.classList.remove('sp-speakable--speaking');
+        });
+        btn.classList.add('sp-speakable--speaking');
+        theory.speakText(text, function() {
+          btn.classList.remove('sp-speakable--speaking');
+        });
+      });
+    });
   }
 
   // ─── Session ─────────────────────────────────────────────────────────

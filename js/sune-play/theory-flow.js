@@ -15,6 +15,34 @@
     return esc(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   }
 
+  function plainText(str) {
+    return String(str == null ? '' : str).replace(/\*\*([^*]+)\*\*/g, '$1').trim();
+  }
+
+  function speakableButton(className, rawText, contentHtml) {
+    var text = plainText(rawText);
+    if (!text) return contentHtml;
+    return '<button type="button" class="' + className + ' sp-speakable" data-action="theory-speak" data-speak-text="' + esc(text) + '"' +
+      ' aria-label="Escuchar: ' + esc(text) + '">' +
+      '<span class="sp-speakable-text">' + contentHtml + '</span>' +
+      '<span class="sp-speak-icon material-symbols-outlined" aria-hidden="true">volume_up</span>' +
+    '</button>';
+  }
+
+  function speakText(text, onEnd) {
+    if (!text || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    var utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'en-GB';
+    utter.rate = 0.85;
+    utter.pitch = 1;
+    if (typeof onEnd === 'function') {
+      utter.onend = onEnd;
+      utter.onerror = onEnd;
+    }
+    window.speechSynthesis.speak(utter);
+  }
+
   // ─── TheoryCardSection ───────────────────────────────────────────────
 
   function TheoryCardSection(section) {
@@ -76,7 +104,7 @@
     html += sectionTitle(section.title);
     html += '<div class="sp-example-list">';
     (section.items || []).forEach(function(item) {
-      html += '<div class="sp-example-line">' + bold(item) + '</div>';
+      html += speakableButton('sp-example-line', item, bold(item));
     });
     html += '</div></div>';
     return html;
@@ -87,7 +115,7 @@
     html += sectionTitle(section.title);
     html += '<div class="sp-chip-row">';
     (section.items || []).forEach(function(item) {
-      html += '<span class="sp-chip">' + esc(item) + '</span>';
+      html += speakableButton('sp-chip', item, esc(item));
     });
     html += '</div></div>';
     return html;
@@ -108,7 +136,7 @@
     if (section.examples && section.examples.length) {
       html += '<div class="sp-remember-examples">';
       section.examples.forEach(function(ex) {
-        html += '<div class="sp-example-line sp-example-line--small">' + bold(ex) + '</div>';
+        html += speakableButton('sp-example-line sp-example-line--small', ex, bold(ex));
       });
       html += '</div>';
     }
@@ -131,12 +159,14 @@
     (section.correctExamples || []).forEach(function(ex) {
       html += '<div class="sp-compare-item sp-compare-item--correct">' +
         '<span class="sp-badge sp-badge--correct">Correct</span>' +
-        '<p>' + bold(ex) + '</p></div>';
+        speakableButton('sp-compare-speak', ex, '<p>' + bold(ex) + '</p>') +
+      '</div>';
     });
     (section.incorrectExamples || []).forEach(function(ex) {
       html += '<div class="sp-compare-item sp-compare-item--careful">' +
         '<span class="sp-badge sp-badge--careful">Not natural</span>' +
-        '<p>' + bold(ex) + '</p></div>';
+        speakableButton('sp-compare-speak', ex, '<p>' + bold(ex) + '</p>') +
+      '</div>';
     });
     html += '</div></div>';
     return html;
@@ -242,6 +272,7 @@
     TheoryCardSection: TheoryCardSection,
     TheoryDots: TheoryDots,
     TheoryNavButton: TheoryNavButton,
+    speakText: speakText,
     isTheoryCompleted: isTheoryCompleted,
     markTheoryCompleted: markTheoryCompleted,
     getTheoryStorageKey: getTheoryStorageKey
