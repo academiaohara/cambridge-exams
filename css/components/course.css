@@ -8246,6 +8246,35 @@ body.lesson-explanation-open {
   color: var(--cu-duo-text, #4b4b4b);
 }
 
+.lesson-explanation-question {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #f7f7f7;
+  border: 2px solid var(--ex-duo-border, #e5e5e5);
+  border-bottom-width: 3px;
+  border-bottom-color: #d1d1d1;
+  box-shadow: 0 3px 0 #d1d1d1;
+}
+
+.lesson-explanation-question-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.lesson-explanation-question-text {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: var(--cu-duo-text, #4b4b4b);
+}
+
 .lesson-explanation-answer {
   padding: 14px 16px;
   border-radius: 16px;
