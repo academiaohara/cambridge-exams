@@ -1308,6 +1308,44 @@
 
 /* ─── Lesson focus layout ───────────────────────────────────────────── */
 
+body:has(.sp-lesson--theory) {
+  background: transparent;
+}
+
+body:has(.sp-lesson--theory)::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: url('../../Assets/images/Background.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+body:has(.sp-lesson--theory) #app,
+body:has(.sp-lesson--theory) .app-container,
+body:has(.sp-lesson--theory) #main-content,
+body:has(.sp-lesson--theory) #courseDashboardCenter,
+body:has(.sp-lesson--theory) #courseCenterScroll,
+body:has(.sp-lesson--theory) .cw-page-content,
+body:has(.sp-lesson--theory) .course-hub-page,
+body:has(.sp-lesson--theory) #courseCenterSection,
+body:has(.sp-lesson--theory) .dashboard-layout--lesson-focus,
+body:has(.sp-lesson--theory) .dashboard-layout--lesson-focus > .dashboard-center,
+body:has(.sp-lesson--theory) .course-center--lesson-focus {
+  background: transparent !important;
+}
+
+body:has(.sp-lesson--theory) #app,
+body:has(.sp-lesson--theory) .app-container,
+body:has(.sp-lesson--theory) #main-content,
+body:has(.sp-lesson--theory) .dashboard-layout--lesson-focus {
+  position: relative;
+  z-index: 1;
+}
+
 body:has(.dashboard-layout--lesson-focus) #courseCenterSection.course-center--lesson-focus:has(.sp-lesson-mount),
 body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-lesson-mount) {
   min-height: 0;
@@ -1322,6 +1360,13 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
   min-height: 0;
   max-height: 100dvh;
   overflow: hidden;
+}
+
+.course-center--lesson-focus:has(.sp-lesson--theory) {
+  max-width: none;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
 }
 
 .course-center--lesson-focus:has(.sp-lesson-mount) > .course-unit-content {
@@ -1341,6 +1386,12 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
 @media (min-width: 769px) {
   .course-center--lesson-focus:has(.sp-lesson-mount) {
     max-width: 960px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .course-center--lesson-focus:has(.sp-lesson--theory) {
+    max-width: none;
     width: 100%;
     min-width: 0;
   }
@@ -1369,13 +1420,12 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
   gap: 0;
 }
 
+.dashboard-layout--lesson-focus .sp-lesson-mount:has(.sp-lesson--theory) {
+  padding: 0;
+}
+
 .dashboard-layout--lesson-focus .sp-lesson--theory {
-  background-image: url('../../Assets/images/Background.png');
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  border-radius: 16px;
-  padding: 8px 4px;
+  padding: max(12px, env(safe-area-inset-top, 0px)) 16px max(20px, env(safe-area-inset-bottom, 0px));
   box-sizing: border-box;
 }
 
@@ -1418,12 +1468,12 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
     padding-right: 8px;
   }
 
-  .dashboard-layout--lesson-focus .sp-lesson-mount {
+  .dashboard-layout--lesson-focus .sp-lesson-mount:not(:has(.sp-lesson--theory)) {
     padding: 16px 12px 24px;
   }
 
   .dashboard-layout--lesson-focus .sp-lesson--theory {
-    padding: 4px 0;
+    padding: max(8px, env(safe-area-inset-top, 0px)) 12px max(16px, env(safe-area-inset-bottom, 0px));
   }
 }
 
@@ -1433,9 +1483,13 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
     padding: 0 24px 32px;
   }
 
-  .dashboard-layout--lesson-focus .sp-lesson-mount {
+  .dashboard-layout--lesson-focus .sp-lesson-mount:not(:has(.sp-lesson--theory)) {
     max-width: none;
     padding: 24px 28px 32px;
+  }
+
+  .dashboard-layout--lesson-focus .sp-lesson--theory {
+    padding: max(16px, env(safe-area-inset-top, 0px)) 28px max(24px, env(safe-area-inset-bottom, 0px));
   }
 
   .sp-theory-card {
