@@ -1291,38 +1291,7 @@
       "useWhenFromReadingOrAudio": true
     }
   }
-}
-        ],
-        "tileInteraction": {
-          "tapAction": "append_to_answer_end",
-          "dragAction": "insert_anywhere",
-          "canReorderAnswerTiles": true,
-          "canRemovePlacedTiles": true,
-          "shuffleTiles": true,
-          "usesDistractorTiles": true
-        },
-        "promptDesign": {
-          "topPromptType": "visual_plus_context_question",
-          "renderTextClue": false,
-          "renderLegacyDisplayPrompt": false,
-          "visualSupport": {
-            "enabled": true,
-            "allowedMediaTypes": [
-              "illustration",
-              "short_comic",
-              "gif"
-            ],
-            "preferredMediaType": "illustration",
-            "avoidVisibleTextInImage": true,
-            "purpose": "associate meaning with image and sentence, not translation"
-          },
-          "contextQuestion": {
-            "enabled": true,
-            "purpose": "make the learner answer a real context question with tiles",
-            "useWhenFromReadingOrAudio": true
-          }
-        }
-      },
+},
       {
         "id": "b1-u1-ex-2",
         "type": "exercise",
