@@ -1312,11 +1312,11 @@
 
 /* ─── Lesson focus layout ───────────────────────────────────────────── */
 
-body:has(.sp-lesson--theory) {
+body:has(.sp-lesson-mount) {
   background: transparent;
 }
 
-body:has(.sp-lesson--theory)::before {
+body:has(.sp-lesson-mount)::before {
   content: '';
   position: fixed;
   inset: 0;
@@ -1328,24 +1328,28 @@ body:has(.sp-lesson--theory)::before {
   pointer-events: none;
 }
 
-body:has(.sp-lesson--theory) #app,
-body:has(.sp-lesson--theory) .app-container,
-body:has(.sp-lesson--theory) #main-content,
-body:has(.sp-lesson--theory) #courseDashboardCenter,
-body:has(.sp-lesson--theory) #courseCenterScroll,
-body:has(.sp-lesson--theory) .cw-page-content,
-body:has(.sp-lesson--theory) .course-hub-page,
-body:has(.sp-lesson--theory) #courseCenterSection,
-body:has(.sp-lesson--theory) .dashboard-layout--lesson-focus,
-body:has(.sp-lesson--theory) .dashboard-layout--lesson-focus > .dashboard-center,
-body:has(.sp-lesson--theory) .course-center--lesson-focus {
+body:has(.sp-lesson-mount) #app,
+body:has(.sp-lesson-mount) .app-container,
+body:has(.sp-lesson-mount) #main-content,
+body:has(.sp-lesson-mount) #courseDashboardCenter,
+body:has(.sp-lesson-mount) #courseCenterScroll,
+body:has(.sp-lesson-mount) .cw-page-content,
+body:has(.sp-lesson-mount) .course-hub-page,
+body:has(.sp-lesson-mount) #courseCenterSection,
+body:has(.sp-lesson-mount) .dashboard-layout--lesson-focus,
+body:has(.sp-lesson-mount) .dashboard-layout--lesson-focus > .dashboard-center,
+body:has(.sp-lesson-mount) .dashboard-center--course,
+body:has(.sp-lesson-mount) .course-center--lesson-focus,
+body:has(.sp-lesson-mount) .course-center--lesson-focus .course-unit-content,
+body:has(.sp-lesson-mount) .sp-lesson-mount,
+body:has(.sp-lesson-mount) .sp-lesson {
   background: transparent !important;
 }
 
-body:has(.sp-lesson--theory) #app,
-body:has(.sp-lesson--theory) .app-container,
-body:has(.sp-lesson--theory) #main-content,
-body:has(.sp-lesson--theory) .dashboard-layout--lesson-focus {
+body:has(.sp-lesson-mount) #app,
+body:has(.sp-lesson-mount) .app-container,
+body:has(.sp-lesson-mount) #main-content,
+body:has(.sp-lesson-mount) .dashboard-layout--lesson-focus {
   position: relative;
   z-index: 1;
 }
