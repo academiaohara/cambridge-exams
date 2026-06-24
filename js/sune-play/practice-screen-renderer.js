@@ -32,11 +32,11 @@
   function buildInlineGapField(verbRef) {
     var inputHtml = '<input type="text" class="sp-gap-inline-input" id="sp-gap-input" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer">';
     if (!verbRef) {
-      return '<span class="sp-inline-gap-pill sp-inline-gap" role="group" aria-label="Gap fill">' + inputHtml + '</span>';
+      return '<span class="sp-inline-gap-group sp-inline-gap sp-inline-gap-group--solo" role="group" aria-label="Gap fill">' + inputHtml + '</span>';
     }
     return '<span class="sp-inline-gap-group sp-inline-gap" role="group" aria-label="Gap fill">' +
+      inputHtml +
       '<span class="sp-gap-verb-ref">' + esc(verbRef) + '</span>' +
-      '<span class="sp-inline-gap-pill">' + inputHtml + '</span>' +
     '</span>';
   }
 
@@ -150,7 +150,11 @@
     var p = screen.payload || {};
     var verbRef = p.verbPrompt || p.preselectedVerb || '';
     var gapField = buildInlineGapField(verbRef);
+    var instruction = p.instruction || (verbRef ? 'Use the correct form of the highlighted word.' : '');
     var html = '<div class="sp-screen sp-screen--gap" data-format="free_text_gap_fill">';
+    if (instruction) {
+      html += '<p class="sp-gap-instruction">' + esc(instruction) + '</p>';
+    }
     html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap">' + renderSentenceWithGap(p.sentence, gapField) + '</p>';
     html += '</div>';
     return html;

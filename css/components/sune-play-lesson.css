@@ -1092,6 +1092,14 @@ button.sp-example-line.sp-speakable {
   text-align: center;
 }
 
+.sp-gap-instruction {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 20px;
+  color: var(--text-medium);
+  max-width: 28rem;
+}
+
 .sp-prompt-sentence--inline-gap {
   font-size: 1.15rem;
   line-height: 1.8;
@@ -1114,15 +1122,9 @@ button.sp-example-line.sp-speakable {
 .sp-inline-gap-group {
   display: inline-flex;
   align-items: center;
-  gap: 0;
+  gap: 8px;
   margin: 0 4px;
-  padding: 4px;
-  border: 2px solid var(--sp-duo-blue);
-  border-radius: 16px;
-  background: var(--sp-duo-blue-light);
-  box-shadow: 0 3px 0 var(--sp-duo-blue-dark);
   vertical-align: middle;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .sp-gap-verb-ref {
@@ -1130,29 +1132,13 @@ button.sp-example-line.sp-speakable {
   align-items: center;
   padding: 8px 14px;
   border-radius: 12px;
-  background: var(--white);
-  border: 2px solid var(--sp-duo-blue);
-  color: var(--sp-duo-blue-dark);
+  background: var(--sp-duo-blue-dark);
+  color: #fff;
   font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.3;
   white-space: nowrap;
-}
-
-.sp-inline-gap-pill {
-  display: inline-flex;
-  align-items: center;
-  margin-left: 4px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.sp-inline-gap-pill:not(.sp-inline-gap-group .sp-inline-gap-pill) {
-  margin-left: 0;
-  padding: 4px;
-  border: 2px solid var(--sp-duo-blue);
-  border-radius: 16px;
-  background: var(--sp-duo-blue-light);
-  box-shadow: 0 3px 0 var(--sp-duo-blue-dark);
+  flex-shrink: 0;
 }
 
 .sp-gap-inline-input {
@@ -1162,10 +1148,9 @@ button.sp-example-line.sp-speakable {
   max-width: 180px;
   margin: 0;
   padding: 8px 14px;
-  border: 2px solid var(--sp-duo-blue);
+  border: none;
   border-radius: 12px;
-  background: var(--white);
-  box-shadow: 0 2px 0 var(--sp-duo-blue-dark);
+  background: var(--sp-duo-blue-light);
   font-family: 'Nunito', sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
@@ -1173,60 +1158,39 @@ button.sp-example-line.sp-speakable {
   text-align: center;
   vertical-align: middle;
   box-sizing: border-box;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .sp-gap-inline-input:focus {
   outline: none;
-  border-color: var(--sp-duo-blue);
-  box-shadow: 0 2px 0 var(--sp-duo-blue-dark), 0 0 0 3px rgba(28, 176, 246, 0.2);
+  background: #fff;
+  box-shadow: 0 0 0 2px var(--sp-duo-blue);
 }
 
 .sp-screen--locked .sp-gap-inline-input {
   pointer-events: none;
-  opacity: 0.85;
 }
 
-.sp-gap-slot--correct,
-.sp-inline-gap-group.sp-gap-slot--correct {
-  border-color: var(--sp-correct);
-  box-shadow: 0 3px 0 #16a34a;
-  background: #ecfdf3;
-}
-
-.sp-gap-slot--correct .sp-gap-verb-ref,
-.sp-gap-slot--correct .sp-gap-inline-input,
-.sp-inline-gap-group.sp-gap-slot--correct .sp-gap-verb-ref,
 .sp-inline-gap-group.sp-gap-slot--correct .sp-gap-inline-input {
-  border-color: var(--sp-correct);
-  color: var(--sp-correct);
+  background: #bbf7d0;
+  color: #15803d;
   box-shadow: none;
 }
 
-.sp-gap-slot--incorrect,
-.sp-inline-gap-group.sp-gap-slot--incorrect {
-  border-color: var(--sp-incorrect);
-  box-shadow: 0 3px 0 #dc2626;
-  background: #fff5f5;
-}
-
-.sp-gap-slot--incorrect .sp-gap-verb-ref,
-.sp-gap-slot--incorrect .sp-gap-inline-input,
-.sp-inline-gap-group.sp-gap-slot--incorrect .sp-gap-verb-ref,
 .sp-inline-gap-group.sp-gap-slot--incorrect .sp-gap-inline-input {
-  border-color: var(--sp-incorrect);
-  color: var(--sp-incorrect);
+  background: #fecaca;
+  color: #b91c1c;
   box-shadow: none;
 }
 
-.sp-inline-gap-pill.sp-gap-slot--correct .sp-gap-inline-input {
-  border-color: var(--sp-correct);
+.sp-gap-slot--correct {
   color: var(--sp-correct);
+  border-bottom-color: var(--sp-correct);
 }
 
-.sp-inline-gap-pill.sp-gap-slot--incorrect .sp-gap-inline-input {
-  border-color: var(--sp-incorrect);
+.sp-gap-slot--incorrect {
   color: var(--sp-incorrect);
+  border-bottom-color: var(--sp-incorrect);
 }
 
 .sp-verb-prompt,

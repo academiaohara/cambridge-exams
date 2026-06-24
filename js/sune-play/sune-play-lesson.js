@@ -471,7 +471,7 @@
   function applyGapResultStyles(correct) {
     var mount = lessonState.mount;
     if (!mount) return;
-    mount.querySelectorAll('.sp-gap-slot, .sp-inline-gap, .sp-inline-gap-group, .sp-inline-gap-pill').forEach(function(slot) {
+    mount.querySelectorAll('.sp-gap-slot, .sp-inline-gap-group').forEach(function(slot) {
       slot.classList.toggle('sp-gap-slot--correct', correct === true);
       slot.classList.toggle('sp-gap-slot--incorrect', correct === false);
     });
@@ -488,7 +488,7 @@
     if (practiceMain) {
       practiceMain.classList.remove('sp-practice-main--correct', 'sp-practice-main--incorrect');
     }
-    mount.querySelectorAll('.sp-gap-slot, .sp-inline-gap, .sp-inline-gap-group, .sp-inline-gap-pill').forEach(function(slot) {
+    mount.querySelectorAll('.sp-gap-slot, .sp-inline-gap-group').forEach(function(slot) {
       slot.classList.remove('sp-gap-slot--correct', 'sp-gap-slot--incorrect');
     });
     mount.querySelectorAll('.sp-option-btn').forEach(function(btn) {
