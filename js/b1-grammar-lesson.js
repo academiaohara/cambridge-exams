@@ -39,6 +39,33 @@
     return item.answer || item.completedSentence || '';
   }
 
+  function speakText(text, onEnd) {
+    if (window.SunePlayTheory && window.SunePlayTheory.speakText) {
+      window.SunePlayTheory.speakText(text, onEnd);
+      return;
+    }
+    if (!text || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    var utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'en-GB';
+    utter.rate = 0.85;
+    utter.pitch = 1;
+    if (typeof onEnd === 'function') {
+      utter.onend = onEnd;
+      utter.onerror = onEnd;
+    }
+    window.speechSynthesis.speak(utter);
+  }
+
+  function buildGapSentence(before, selected, after) {
+    if (!selected) return '';
+    return [before, selected, after]
+      .filter(function(part) { return part != null && String(part).trim(); })
+      .join(' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
   function matchesText(given, item, opts) {
     opts = opts || {};
     var g = normCompare(given, !!opts.caseSensitive);
@@ -354,10 +381,16 @@
       'data-answer="' + esc(item.answer || '') + '" ' +
       'data-completed="' + esc(item.completedSentence || '') + '" ' +
       'data-explanation="' + esc(item.explanation || '') + '">' +
+      '<div class="bgl-tap-sentence-row">' +
       '<div class="bgl-tap-sentence">' +
         '<span class="bgl-tap-before">' + esc(item.sentenceBefore || '') + '</span> ' +
         '<span class="bgl-tap-blank" id="bgl-tap-slot" aria-live="polite"></span> ' +
         '<span class="bgl-tap-after">' + esc(item.sentenceAfter || '') + '</span>' +
+      '</div>' +
+      '<button type="button" class="bgl-sentence-speak" data-action="bgl-speak-sentence"' +
+        ' aria-label="Escuchar frase completa" title="Escuchar frase completa">' +
+        '<span class="material-symbols-outlined" aria-hidden="true">volume_up</span>' +
+      '</button>' +
       '</div>' +
       '<div class="bgl-tap-options">';
     (item.options || []).forEach(function(opt, idx) {
@@ -644,14 +677,36 @@
     ex._bglItem = step;
 
     if (step.exerciseType === 'tap_choice') {
+      var item = step.item || {};
+      var speakBtn = ex.querySelector('[data-action="bgl-speak-sentence"]');
+      if (speakBtn) {
+        speakBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var selected = '';
+          var sel = ex.querySelector('.bgl-tap-option--selected');
+          if (sel) selected = sel.getAttribute('data-value') || '';
+          var full = buildGapSentence(item.sentenceBefore, selected, item.sentenceAfter);
+          if (!full) return;
+          speakBtn.classList.add('bgl-sentence-speak--speaking');
+          speakText(full, function() {
+            speakBtn.classList.remove('bgl-sentence-speak--speaking');
+          });
+        });
+      }
       ex.querySelectorAll('.bgl-tap-option').forEach(function(btn) {
         btn.addEventListener('click', function() {
           if (ex.classList.contains('bgl-exercise--checked')) return;
           ex.querySelectorAll('.bgl-tap-option').forEach(function(b) { b.classList.remove('bgl-tap-option--selected'); });
           btn.classList.add('bgl-tap-option--selected');
+          var optText = btn.getAttribute('data-value') || '';
           var slot = ex.querySelector('#bgl-tap-slot');
-          if (slot) slot.textContent = btn.getAttribute('data-value');
+          if (slot) slot.textContent = optText;
           root.dispatchEvent(new CustomEvent('bgl-answer-change', { bubbles: true }));
+          if (!optText) return;
+          speakText(optText, function() {
+            var full = buildGapSentence(item.sentenceBefore, optText, item.sentenceAfter);
+            if (full) speakText(full);
+          });
         });
       });
     }
