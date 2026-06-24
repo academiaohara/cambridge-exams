@@ -460,29 +460,92 @@
 
   function bindStativeSorting(root, onChange) {
     var pool = root.querySelector('#sp-sort-pool');
+    var draggedEl = null;
+
+    function isLocked() {
+      return root.classList.contains('sp-screen--locked');
+    }
+
+    function clearDragOver() {
+      root.querySelectorAll('.sp-sort-dropzone--over, .sp-sort-verb-pool--over').forEach(function(el) {
+        el.classList.remove('sp-sort-dropzone--over', 'sp-sort-verb-pool--over');
+      });
+    }
+
+    function clearSelection() {
+      root.querySelectorAll('.sp-sort-verb--selected').forEach(function(btn) {
+        btn.classList.remove('sp-sort-verb--selected');
+      });
+    }
+
+    function moveVerb(btn, target) {
+      if (!btn || !target || isLocked()) return;
+      target.appendChild(btn);
+      onChange();
+    }
+
+    function bindDropTarget(el, overClass) {
+      el.addEventListener('dragover', function(e) {
+        if (isLocked()) return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        clearDragOver();
+        el.classList.add(overClass);
+      });
+      el.addEventListener('dragleave', function(e) {
+        if (el.contains(e.relatedTarget)) return;
+        el.classList.remove(overClass);
+      });
+      el.addEventListener('drop', function(e) {
+        e.preventDefault();
+        el.classList.remove(overClass);
+        if (isLocked() || !draggedEl) return;
+        moveVerb(draggedEl, el);
+        clearSelection();
+      });
+    }
+
     root.querySelectorAll('.sp-sort-verb').forEach(function(btn) {
+      btn.addEventListener('dragstart', function(e) {
+        if (isLocked()) {
+          e.preventDefault();
+          return;
+        }
+        draggedEl = btn;
+        e.dataTransfer.setData('text/plain', btn.getAttribute('data-verb') || '');
+        e.dataTransfer.effectAllowed = 'move';
+        btn.classList.add('sp-sort-verb--dragging');
+      });
+
+      btn.addEventListener('dragend', function() {
+        btn.classList.remove('sp-sort-verb--dragging');
+        clearDragOver();
+        draggedEl = null;
+      });
+
       btn.addEventListener('click', function() {
-        if (root.classList.contains('sp-screen--locked')) return;
-        var groups = root.querySelectorAll('.sp-sort-dropzone');
-        var placed = false;
-        groups.forEach(function(zone) {
-          if (placed) return;
-          if (!zone.querySelector('.sp-sort-verb')) {
-            zone.appendChild(btn);
-            placed = true;
-          }
-        });
-        if (!placed && btn.parentElement !== pool) pool.appendChild(btn);
-        onChange();
+        if (isLocked()) return;
+        if (btn.parentElement !== pool) {
+          moveVerb(btn, pool);
+          clearSelection();
+          return;
+        }
+        var wasSelected = btn.classList.contains('sp-sort-verb--selected');
+        clearSelection();
+        if (!wasSelected) btn.classList.add('sp-sort-verb--selected');
       });
     });
 
+    if (pool) bindDropTarget(pool, 'sp-sort-verb-pool--over');
+
     root.querySelectorAll('.sp-sort-dropzone').forEach(function(zone) {
+      bindDropTarget(zone, 'sp-sort-dropzone--over');
       zone.addEventListener('click', function() {
-        var verb = zone.querySelector('.sp-sort-verb');
-        if (verb && !root.classList.contains('sp-screen--locked')) {
-          pool.appendChild(verb);
-          onChange();
+        if (isLocked()) return;
+        var selected = root.querySelector('.sp-sort-verb--selected');
+        if (selected) {
+          moveVerb(selected, zone);
+          clearSelection();
         }
       });
     });
