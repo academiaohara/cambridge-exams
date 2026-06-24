@@ -1011,6 +1011,50 @@ button.sp-example-line.sp-speakable {
 
 /* ─── Screen formats ────────────────────────────────────────────────── */
 
+.sp-prompt-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.sp-prompt-row .sp-prompt-sentence,
+.sp-prompt-row .sp-meaning-sentence {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.sp-sentence-speak {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-top: 2px;
+  border: 2px solid #dce3f0;
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--sp-duo-blue);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sp-sentence-speak:hover,
+.sp-sentence-speak:focus-visible {
+  border-color: var(--sp-duo-blue);
+  background: var(--sp-duo-blue-light);
+  outline: none;
+}
+
+.sp-sentence-speak--speaking {
+  box-shadow: 0 0 0 2px rgba(28, 176, 246, 0.35);
+}
+
+.sp-sentence-speak .material-symbols-outlined {
+  font-size: 1.2rem;
+}
+
 .sp-prompt-sentence,
 .sp-display-prompt,
 .sp-meaning-sentence {

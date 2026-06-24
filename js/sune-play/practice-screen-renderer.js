@@ -24,6 +24,61 @@
     return list[Math.floor(Math.random() * list.length)];
   }
 
+  function speakText(text, onEnd) {
+    if (window.SunePlayTheory && window.SunePlayTheory.speakText) {
+      window.SunePlayTheory.speakText(text, onEnd);
+      return;
+    }
+    if (!text || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    var utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'en-GB';
+    utter.rate = 0.85;
+    utter.pitch = 1;
+    if (typeof onEnd === 'function') {
+      utter.onend = onEnd;
+      utter.onerror = onEnd;
+    }
+    window.speechSynthesis.speak(utter);
+  }
+
+  function buildGapSentence(before, selected, after) {
+    if (!selected) return '';
+    return [before, selected, after]
+      .filter(function(part) { return part != null && String(part).trim(); })
+      .join(' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function getSelectedChoiceText(root) {
+    var sel = root.querySelector('.sp-option-btn--selected');
+    if (sel) return sel.getAttribute('data-value') || '';
+    var slot = root.querySelector('#sp-choice-slot');
+    return slot ? slot.textContent.trim() : '';
+  }
+
+  function renderSentenceSpeakBtn(label) {
+    return '<button type="button" class="sp-sentence-speak" data-action="practice-speak-sentence"' +
+      ' aria-label="' + esc(label) + '" title="' + esc(label) + '">' +
+      '<span class="material-symbols-outlined" aria-hidden="true">volume_up</span>' +
+    '</button>';
+  }
+
+  function bindSentenceSpeak(root, getText) {
+    var btn = root.querySelector('[data-action="practice-speak-sentence"]');
+    if (!btn) return;
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var text = getText();
+      if (!text) return;
+      btn.classList.add('sp-sentence-speak--speaking');
+      speakText(text, function() {
+        btn.classList.remove('sp-sentence-speak--speaking');
+      });
+    });
+  }
+
   // ─── PracticeScreenRenderer ──────────────────────────────────────────
 
   function PracticeScreenRenderer(screen) {
@@ -54,10 +109,13 @@
   function renderTwoOption(screen) {
     var p = screen.payload || {};
     var html = '<div class="sp-screen sp-screen--choice" data-format="two_option_choice">';
+    html += '<div class="sp-prompt-row">';
     html += '<p class="sp-prompt-sentence">' +
       esc(p.sentenceBefore) +
       ' <span class="sp-gap-slot" id="sp-choice-slot"></span> ' +
       esc(p.sentenceAfter) + '</p>';
+    html += renderSentenceSpeakBtn('Escuchar frase completa');
+    html += '</div>';
     html += '<div class="sp-option-grid">';
     (p.options || []).forEach(function(opt, i) {
       html += renderOptionBtn(opt, i);
@@ -194,7 +252,10 @@
   function renderMeaningContrast(screen) {
     var p = screen.payload || {};
     var html = '<div class="sp-screen sp-screen--meaning" data-format="meaning_contrast">';
+    html += '<div class="sp-prompt-row">';
     html += '<p class="sp-meaning-sentence">' + bold(p.sentence || '') + '</p>';
+    html += renderSentenceSpeakBtn('Escuchar frase');
+    html += '</div>';
     html += '<p class="sp-meaning-question">' + esc(p.prompt || '') + '</p>';
     html += '<div class="sp-option-grid">';
     (p.options || []).forEach(function(opt, i) {
@@ -212,15 +273,42 @@
 
     var format = screen.formatType;
 
-    if (format === 'two_option_choice' || format === 'meaning_contrast') {
+    if (format === 'two_option_choice') {
+      var payload = screen.payload || {};
+      bindSentenceSpeak(root, function() {
+        return buildGapSentence(payload.sentenceBefore, getSelectedChoiceText(root), payload.sentenceAfter);
+      });
       root.querySelectorAll('.sp-option-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
           if (root.classList.contains('sp-screen--locked')) return;
           root.querySelectorAll('.sp-option-btn').forEach(function(b) { b.classList.remove('sp-option-btn--selected'); });
           btn.classList.add('sp-option-btn--selected');
+          var optText = btn.getAttribute('data-value') || '';
           var slot = root.querySelector('#sp-choice-slot');
-          if (slot) slot.textContent = btn.getAttribute('data-value');
+          if (slot) slot.textContent = optText;
           onChange();
+          if (!optText) return;
+          speakText(optText, function() {
+            var full = buildGapSentence(payload.sentenceBefore, optText, payload.sentenceAfter);
+            if (full) speakText(full);
+          });
+        });
+      });
+    }
+
+    if (format === 'meaning_contrast') {
+      var meaningPayload = screen.payload || {};
+      bindSentenceSpeak(root, function() {
+        return String(meaningPayload.sentence || '').replace(/\*\*([^*]+)\*\*/g, '$1').trim();
+      });
+      root.querySelectorAll('.sp-option-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          if (root.classList.contains('sp-screen--locked')) return;
+          root.querySelectorAll('.sp-option-btn').forEach(function(b) { b.classList.remove('sp-option-btn--selected'); });
+          btn.classList.add('sp-option-btn--selected');
+          onChange();
+          var optText = btn.getAttribute('data-value') || '';
+          if (optText) speakText(optText);
         });
       });
     }
