@@ -131,7 +131,8 @@
           answer: item.answer,
           acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
           explanation: item.explanation || '',
-          completedSentence: (item.sentence || '').replace(GAP_RE, item.answer || '')
+          completedSentence: (item.sentence || '').replace(GAP_RE, item.answer || ''),
+          instruction: exercise.instructions || exercise.studentInstruction || ''
         };
 
       case 'marked_error_gap_correction':

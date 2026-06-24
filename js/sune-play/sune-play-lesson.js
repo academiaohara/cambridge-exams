@@ -542,22 +542,8 @@
       if (existingInstruction) existingInstruction.remove();
       var instructionEl = document.createElement('p');
       instructionEl.className = 'sp-session-instruction';
-      instructionEl.innerHTML =
-        '<button type="button" class="sp-instruction-speak" data-action="practice-speak-instruction" aria-label="Listen to instruction">' +
-          '<span class="material-symbols-outlined" aria-hidden="true">volume_up</span>' +
-        '</button>' +
-        '<span class="sp-session-instruction-text">' + (typeof BentoGrid !== 'undefined' && BentoGrid._escapeHTML ? BentoGrid._escapeHTML(instructionText) : instructionText) + '</span>';
+      instructionEl.textContent = instructionText;
       screenMount.insertBefore(instructionEl, screenMount.firstChild);
-      var instrSpeakBtn = instructionEl.querySelector('[data-action="practice-speak-instruction"]');
-      if (instrSpeakBtn && window.SunePlayTheory) {
-        instrSpeakBtn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          instrSpeakBtn.classList.add('sp-sentence-speak--speaking');
-          window.SunePlayTheory.speakText(instructionText, function() {
-            instrSpeakBtn.classList.remove('sp-sentence-speak--speaking');
-          });
-        });
-      }
     }
     var screenRoot = screenMount.querySelector('.sp-screen');
     if (screenRoot) {
