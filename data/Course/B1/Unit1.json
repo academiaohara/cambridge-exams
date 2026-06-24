@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "sune-english-unit-v2",
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
   "course": "B1 English",
   "block": 1,
   "unit": 1,
@@ -16,7 +16,7 @@
     "habits and routines"
   ],
   "estimatedDurationMinutes": 25,
-  "lessonStyle": "sune-play",
+  "lessonStyle": "sune-play-interactive",
   "unitStructure": {
     "mode": "theory_then_practice_nodes",
     "theoryRequiredBeforePractice": true,
@@ -242,76 +242,138 @@
     "formatDefinitions": [
       {
         "formatType": "two_option_choice",
-        "displayName": "Choose the correct form",
+        "displayName": "Test: choose the correct conjugation",
         "defaultLives": 4,
         "maxLifeLossPerScreen": 1,
         "attemptsPerScreen": 1,
-        "failureAction": "show_explanation_then_continue"
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons",
+          "showSentenceBeforeAndAfter": true,
+          "showCorrectStateImmediately": true,
+          "showExplanationAfterAnswer": "when_incorrect"
+        }
       },
       {
-        "formatType": "free_text_gap_fill",
-        "displayName": "Type the missing form",
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
         "defaultLives": 5,
         "maxLifeLossPerScreen": 2,
         "attemptsPerScreen": 2,
-        "failureAction": "show_correct_answer_then_continue"
-      },
-      {
-        "formatType": "full_sentence_write",
-        "displayName": "Write the full sentence",
-        "defaultLives": 5,
-        "maxLifeLossPerScreen": 2,
-        "attemptsPerScreen": 2,
-        "fallbackFormatType": "word_order_tiles"
+        "failureAction": "show_correct_answer_then_continue",
+        "fallbackFormatType": "two_option_choice",
+        "interaction": {
+          "component": "sentence_gap_input",
+          "studentAction": "type_missing_conjugated_form",
+          "evaluationTrigger": "submit_button_or_enter",
+          "gapDisplay": "inline_rounded_input",
+          "inputNormalization": [
+            "trim_spaces",
+            "collapse_multiple_spaces",
+            "case_insensitive_first_letter",
+            "accept_missing_final_period"
+          ],
+          "keyboardHint": "text",
+          "showOnlyMissingForm": true
+        }
       },
       {
         "formatType": "word_order_tiles",
-        "displayName": "Build the sentence",
+        "displayName": "Build the sentence with tiles",
         "defaultLives": 5,
         "maxLifeLossPerScreen": 1,
-        "attemptsPerScreen": 1
+        "attemptsPerScreen": 1,
+        "interaction": {
+          "component": "word_tiles_ordering",
+          "studentAction": "tap_or_drag_tiles",
+          "tapAction": "append_tile_to_answer_end",
+          "dragAction": "insert_tile_anywhere_in_answer",
+          "canReorderAnswerTiles": true,
+          "canRemovePlacedTiles": true,
+          "tileBankIncludesDistractors": true,
+          "shuffleTiles": true,
+          "evaluationTrigger": "check_button"
+        }
       },
       {
-        "formatType": "error_correction",
-        "displayName": "Fix the mistake",
-        "defaultLives": 5,
-        "maxLifeLossPerScreen": 2,
-        "attemptsPerScreen": 2
-      },
-      {
-        "formatType": "verb_bank_two_step",
-        "displayName": "Choose the verb, make the form",
+        "formatType": "marked_error_gap_correction",
+        "displayName": "Fix the marked conjugation",
         "defaultLives": 5,
         "maxLifeLossPerScreen": 2,
         "attemptsPerScreen": 2,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "marked_error_replacement_input",
+          "studentAction": "type_replacement_for_marked_error",
+          "sentenceDisplay": "full_sentence",
+          "errorMarking": {
+            "style": "highlight_underline",
+            "tokenWrapper": "markedError",
+            "accessibilityLabel": "incorrect conjugation"
+          },
+          "gapBehaviour": "marked_error_becomes_input_on_tap",
+          "evaluationTrigger": "submit_button_or_enter",
+          "showFullCorrectSentenceAfterAnswer": true
+        }
+      },
+      {
+        "formatType": "verb_tile_conjugation_gap",
+        "displayName": "Choose the verb tile and conjugate it",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 2,
+        "attemptsPerScreen": 2,
+        "failureAction": "show_correct_answer_then_continue",
+        "fallbackFormatType": "preselected_verb_gap_fill",
         "steps": [
           {
-            "stepId": "choose_base_verb",
+            "stepId": "choose_base_verb_tile",
             "lifeLossOnError": 1
           },
           {
-            "stepId": "type_conjugated_form",
+            "stepId": "type_conjugated_form_in_gap",
             "lifeLossOnError": 1
           }
         ],
-        "fallbackFormatType": "preselected_verb_gap_fill"
+        "interaction": {
+          "component": "verb_bank_tiles_plus_gap_input",
+          "studentAction": "tap_base_verb_tile_then_type_conjugation",
+          "tileBank": "exercise.wordBank",
+          "tapAction": "select_tile_as_base_verb",
+          "selectedTileState": "pinned_above_gap",
+          "gapDisplay": "inline_rounded_input",
+          "evaluationTrigger": "submit_button",
+          "removeVerbWhenCorrect": true,
+          "allowChangingSelectedTileBeforeSubmit": true
+        }
       },
       {
-        "formatType": "passage_error_hunt_single",
-        "displayName": "Find and fix one error",
+        "formatType": "passage_error_hunt_counter",
+        "displayName": "Find the 10 wrong conjugations",
         "defaultLives": 6,
         "maxLifeLossPerScreen": 2,
         "attemptsPerScreen": 2,
-        "steps": [
-          {
-            "stepId": "tap_wrong_verb_phrase",
-            "lifeLossOnError": 1
+        "failureAction": "show_guided_hint",
+        "interaction": {
+          "component": "passage_tap_error_counter",
+          "studentAction": "tap_wrong_conjugated_phrases_in_text",
+          "counter": {
+            "target": 10,
+            "initialValue": 0,
+            "labelTemplate": "{found}/10 errors found",
+            "showProgressBar": true
           },
-          {
-            "stepId": "type_correction",
-            "lifeLossOnError": 1
-          }
-        ]
+          "tapBehaviour": {
+            "correctTap": "mark_phrase_and_increment_counter",
+            "secondTapOnMarkedPhrase": "unmark_phrase_and_decrement_counter",
+            "wrongTap": "lose_life_and_show_soft_feedback"
+          },
+          "correctionFlow": "after_all_10_marked_show_correction_inputs",
+          "showCorrectInline": false,
+          "hideAnswersUntilComplete": true
+        }
       },
       {
         "formatType": "stative_sorting",
@@ -327,7 +389,66 @@
         "maxLifeLossPerScreen": 1,
         "attemptsPerScreen": 1
       }
-    ]
+    ],
+    "interactiveFormatSystem": {
+      "goal": "Reusable interactive exercise screens for grammar practice.",
+      "screenTypes": [
+        {
+          "formatType": "two_option_choice",
+          "purpose": "Test-style choice: choose the correct conjugated form.",
+          "studentFlow": [
+            "Read sentence context",
+            "Tap one option",
+            "See instant result"
+          ]
+        },
+        {
+          "formatType": "conjugation_gap_fill",
+          "purpose": "Write only the missing conjugated form inside a sentence gap.",
+          "studentFlow": [
+            "Read sentence with inline gap",
+            "Type conjugation",
+            "Submit"
+          ]
+        },
+        {
+          "formatType": "marked_error_gap_correction",
+          "purpose": "See a full sentence with the wrong conjugation marked and type the replacement.",
+          "studentFlow": [
+            "Read full sentence",
+            "Tap/focus marked error",
+            "Type corrected form"
+          ]
+        },
+        {
+          "formatType": "verb_tile_conjugation_gap",
+          "purpose": "Choose a base verb from word tiles, then write it correctly conjugated in the gap.",
+          "studentFlow": [
+            "Tap a verb tile",
+            "Type the conjugated form",
+            "Submit"
+          ]
+        },
+        {
+          "formatType": "passage_error_hunt_counter",
+          "purpose": "Find all wrong conjugations in a text, with a visible counter.",
+          "studentFlow": [
+            "Tap wrong verb phrases",
+            "Watch the counter",
+            "Correct marked errors after finding all 10"
+          ]
+        },
+        {
+          "formatType": "word_order_tiles",
+          "purpose": "Build a sentence by ordering word tiles, with extra distractors.",
+          "studentFlow": [
+            "Tap to append",
+            "Drag to insert/reorder",
+            "Submit"
+          ]
+        }
+      ]
+    }
   },
   "practiceNodes": [
     {
@@ -362,8 +483,7 @@
             "b1-u1-ex1-2",
             "b1-u1-ex1-3"
           ],
-          "formatType": "full_sentence_write",
-          "fallbackFormatType": "word_order_tiles"
+          "formatType": "word_order_tiles"
         }
       ]
     },
@@ -392,7 +512,7 @@
             "b1-u1-ex2-7",
             "b1-u1-ex2-8"
           ],
-          "formatType": "free_text_gap_fill",
+          "formatType": "conjugation_gap_fill",
           "fallbackFormatType": "two_option_choice"
         },
         {
@@ -479,7 +599,7 @@
             "b1-u1-ex3-1",
             "b1-u1-ex3-8"
           ],
-          "formatType": "error_correction"
+          "formatType": "marked_error_gap_correction"
         },
         {
           "sourceExerciseId": "b1-u1-ex-4",
@@ -493,8 +613,8 @@
           "sourceItemIds": [
             "b1-u1-ex5-8"
           ],
-          "formatType": "verb_bank_two_step",
-          "fallbackFormatType": "preselected_verb_gap_fill"
+          "formatType": "verb_tile_conjugation_gap",
+          "fallbackFormatType": "conjugation_gap_fill"
         }
       ]
     },
@@ -522,14 +642,14 @@
             "b1-u1-ex3-6",
             "b1-u1-ex3-7"
           ],
-          "formatType": "error_correction"
+          "formatType": "marked_error_gap_correction"
         },
         {
           "sourceExerciseId": "b1-u1-ex-2",
           "sourceItemIds": [
             "b1-u1-ex2-6"
           ],
-          "formatType": "free_text_gap_fill",
+          "formatType": "conjugation_gap_fill",
           "fallbackFormatType": "two_option_choice"
         }
       ]
@@ -568,8 +688,8 @@
             "b1-u1-ex5-7",
             "b1-u1-ex5-8"
           ],
-          "formatType": "verb_bank_two_step",
-          "fallbackFormatType": "preselected_verb_gap_fill"
+          "formatType": "verb_tile_conjugation_gap",
+          "fallbackFormatType": "conjugation_gap_fill"
         }
       ]
     },
@@ -613,8 +733,9 @@
             "b1-u1-ex6-9",
             "b1-u1-ex6-10"
           ],
-          "formatType": "passage_error_hunt_single",
-          "fallbackFormatType": "guided_error_choice"
+          "formatType": "passage_error_hunt_counter",
+          "fallbackFormatType": "guided_error_choice",
+          "screenMode": "single_passage_with_counter"
         }
       ]
     }
@@ -667,11 +788,11 @@
       {
         "id": "b1-u1-ex-1",
         "type": "exercise",
-        "exerciseType": "prompt_to_sentence",
+        "exerciseType": "word_order_tiles",
         "exerciseTypeName": "Build the Sentence",
         "title": "A: Build the routine",
-        "instructions": "Use the prompts to write complete present simple sentences.",
-        "studentInstruction": "Write the full sentence.",
+        "instructions": "Tap or drag the words to build the correct present simple sentence. Some words are extra.",
+        "studentInstruction": "Tap words to add them to the end, or drag them to place them anywhere.",
         "grammarFocus": "present simple for routines",
         "items": [
           {
@@ -687,7 +808,42 @@
               "Every morning, Jake walks to school.",
               "Jake walks to school every morning."
             ],
-            "explanation": "Use the present simple for routines. Jake is a singular subject, so walk becomes walks."
+            "explanation": "Use the present simple for routines. Jake is a singular subject, so walk becomes walks.",
+            "formatType": "word_order_tiles",
+            "answerTiles": [
+              "Every",
+              "morning,",
+              "Jake",
+              "walks",
+              "to",
+              "school."
+            ],
+            "tiles": [
+              "Jake",
+              "usually",
+              "walks",
+              "school.",
+              "Every",
+              "drives",
+              "to",
+              "morning,",
+              "walk",
+              "afternoon",
+              "is"
+            ],
+            "distractorTiles": [
+              "walk",
+              "usually",
+              "drives",
+              "afternoon",
+              "is"
+            ],
+            "tileValidation": {
+              "type": "exact_order",
+              "target": "answerTiles",
+              "ignoreCapitalization": false,
+              "ignoreMissingFinalPeriod": false
+            }
           },
           {
             "id": "b1-u1-ex1-2",
@@ -701,7 +857,42 @@
             "acceptedAnswers": [
               "Mia usually drinks tea for breakfast."
             ],
-            "explanation": "Usually goes before the main verb. Mia is singular, so drink becomes drinks."
+            "explanation": "Usually goes before the main verb. Mia is singular, so drink becomes drinks.",
+            "formatType": "word_order_tiles",
+            "answerTiles": [
+              "Mia",
+              "usually",
+              "drinks",
+              "tea",
+              "for",
+              "breakfast."
+            ],
+            "tiles": [
+              "usually",
+              "tea",
+              "drink",
+              "Mia",
+              "for",
+              "coffee",
+              "drinks",
+              "every",
+              "breakfast.",
+              "at",
+              "eats"
+            ],
+            "distractorTiles": [
+              "drink",
+              "coffee",
+              "at",
+              "every",
+              "eats"
+            ],
+            "tileValidation": {
+              "type": "exact_order",
+              "target": "answerTiles",
+              "ignoreCapitalization": false,
+              "ignoreMissingFinalPeriod": false
+            }
           },
           {
             "id": "b1-u1-ex1-3",
@@ -716,7 +907,52 @@
               "After school, Sara often does her homework in the library.",
               "Sara often does her homework in the library after school."
             ],
-            "explanation": "Often normally goes before the main verb. With Sara, use does, not do."
+            "explanation": "Often normally goes before the main verb. With Sara, use does, not do.",
+            "formatType": "word_order_tiles",
+            "answerTiles": [
+              "After",
+              "school,",
+              "Sara",
+              "often",
+              "does",
+              "her",
+              "homework",
+              "in",
+              "the",
+              "library."
+            ],
+            "tiles": [
+              "Sara",
+              "do",
+              "After",
+              "her",
+              "often",
+              "classroom.",
+              "school,",
+              "does",
+              "now",
+              "homework",
+              "in",
+              "his",
+              "the",
+              "usually",
+              "library.",
+              "on"
+            ],
+            "distractorTiles": [
+              "do",
+              "usually",
+              "his",
+              "classroom.",
+              "on",
+              "now"
+            ],
+            "tileValidation": {
+              "type": "exact_order",
+              "target": "answerTiles",
+              "ignoreCapitalization": false,
+              "ignoreMissingFinalPeriod": false
+            }
           },
           {
             "id": "b1-u1-ex1-4",
@@ -731,7 +967,44 @@
               "Lena visits her grandparents twice a month.",
               "Twice a month, Lena visits her grandparents."
             ],
-            "explanation": "Twice a month shows a repeated habit. Lena is singular, so visit becomes visits."
+            "explanation": "Twice a month shows a repeated habit. Lena is singular, so visit becomes visits.",
+            "formatType": "word_order_tiles",
+            "answerTiles": [
+              "Lena",
+              "visits",
+              "her",
+              "grandparents",
+              "twice",
+              "a",
+              "month."
+            ],
+            "tiles": [
+              "twice",
+              "Lena",
+              "visit",
+              "her",
+              "every",
+              "grandparents",
+              "a",
+              "usually",
+              "visits",
+              "his",
+              "month.",
+              "week."
+            ],
+            "distractorTiles": [
+              "visit",
+              "every",
+              "week.",
+              "his",
+              "usually"
+            ],
+            "tileValidation": {
+              "type": "exact_order",
+              "target": "answerTiles",
+              "ignoreCapitalization": false,
+              "ignoreMissingFinalPeriod": false
+            }
           },
           {
             "id": "b1-u1-ex1-5",
@@ -745,7 +1018,44 @@
             "acceptedAnswers": [
               "Emma never stays up late on weekdays."
             ],
-            "explanation": "Never goes before the main verb. Emma is singular, so stay becomes stays."
+            "explanation": "Never goes before the main verb. Emma is singular, so stay becomes stays.",
+            "formatType": "word_order_tiles",
+            "answerTiles": [
+              "Emma",
+              "never",
+              "stays",
+              "up",
+              "late",
+              "on",
+              "weekdays."
+            ],
+            "tiles": [
+              "never",
+              "Emma",
+              "stay",
+              "on",
+              "always",
+              "stays",
+              "late",
+              "at",
+              "up",
+              "weekend.",
+              "weekdays.",
+              "early"
+            ],
+            "distractorTiles": [
+              "stay",
+              "always",
+              "at",
+              "weekend.",
+              "early"
+            ],
+            "tileValidation": {
+              "type": "exact_order",
+              "target": "answerTiles",
+              "ignoreCapitalization": false,
+              "ignoreMissingFinalPeriod": false
+            }
           },
           {
             "id": "b1-u1-ex1-6",
@@ -760,18 +1070,59 @@
               "Nora plays basketball every Saturday.",
               "Every Saturday, Nora plays basketball."
             ],
-            "explanation": "Every Saturday describes a routine. Nora is singular, so play becomes plays."
+            "explanation": "Every Saturday describes a routine. Nora is singular, so play becomes plays.",
+            "formatType": "word_order_tiles",
+            "answerTiles": [
+              "Nora",
+              "plays",
+              "basketball",
+              "every",
+              "Saturday."
+            ],
+            "tiles": [
+              "basketball",
+              "Nora",
+              "play",
+              "every",
+              "usually",
+              "plays",
+              "football",
+              "Saturday.",
+              "on",
+              "Sunday."
+            ],
+            "distractorTiles": [
+              "play",
+              "football",
+              "usually",
+              "on",
+              "Sunday."
+            ],
+            "tileValidation": {
+              "type": "exact_order",
+              "target": "answerTiles",
+              "ignoreCapitalization": false,
+              "ignoreMissingFinalPeriod": false
+            }
           }
-        ]
+        ],
+        "tileInteraction": {
+          "tapAction": "append_to_answer_end",
+          "dragAction": "insert_anywhere",
+          "canReorderAnswerTiles": true,
+          "canRemovePlacedTiles": true,
+          "shuffleTiles": true,
+          "usesDistractorTiles": true
+        }
       },
       {
         "id": "b1-u1-ex-2",
         "type": "exercise",
-        "exerciseType": "gap_fill",
-        "exerciseTypeName": "Complete the Gap",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Type the Conjugation",
         "title": "B: What is happening now?",
-        "instructions": "Complete each sentence with the correct present continuous form of the verb.",
-        "studentInstruction": "Type the missing form.",
+        "instructions": "Write the correct present continuous form in the gap.",
+        "studentInstruction": "Type only the missing conjugated form.",
         "grammarFocus": "present continuous",
         "items": [
           {
@@ -782,7 +1133,17 @@
             "acceptedAnswers": [
               "is sleeping"
             ],
-            "explanation": "Use the present continuous for something happening now. The baby is singular, so use is sleeping."
+            "explanation": "Use the present continuous for something happening now. The baby is singular, so use is sleeping.",
+            "template": "Be quiet! The baby {gap1} .",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "is sleeping"
+              }
+            ],
+            "blankSentence": "Be quiet! The baby ____ .",
+            "answerMode": "typed_conjugation_only"
           },
           {
             "id": "b1-u1-ex2-2",
@@ -793,7 +1154,17 @@
               "aren't watching",
               "are not watching"
             ],
-            "explanation": "Use the negative present continuous: subject + am/is/are + not + verb-ing. With we, use aren't watching."
+            "explanation": "Use the negative present continuous: subject + am/is/are + not + verb-ing. With we, use aren't watching.",
+            "template": "We {gap1} the film because it's boring.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "aren't watching"
+              }
+            ],
+            "blankSentence": "We ____ the film because it's boring.",
+            "answerMode": "typed_conjugation_only"
           },
           {
             "id": "b1-u1-ex2-3",
@@ -803,7 +1174,17 @@
             "acceptedAnswers": [
               "is studying"
             ],
-            "explanation": "At the moment tells us the action is happening now, so use is studying."
+            "explanation": "At the moment tells us the action is happening now, so use is studying.",
+            "template": "At the moment, Carla {gap1} for her science test.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "is studying"
+              }
+            ],
+            "blankSentence": "At the moment, Carla ____ for her science test.",
+            "answerMode": "typed_conjugation_only"
           },
           {
             "id": "b1-u1-ex2-4",
@@ -813,7 +1194,17 @@
             "acceptedAnswers": [
               "is staying"
             ],
-            "explanation": "This week describes a temporary situation, so the present continuous is natural."
+            "explanation": "This week describes a temporary situation, so the present continuous is natural.",
+            "template": "Tom {gap1} with his cousins this week.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "is staying"
+              }
+            ],
+            "blankSentence": "Tom ____ with his cousins this week.",
+            "answerMode": "typed_conjugation_only"
           },
           {
             "id": "b1-u1-ex2-5",
@@ -824,7 +1215,17 @@
               "am not joking",
               "'m not joking"
             ],
-            "explanation": "Use am not with I. The speaker is talking about what they are doing right now."
+            "explanation": "Use am not with I. The speaker is talking about what they are doing right now.",
+            "template": "I {gap1} ! I'm serious!",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "am not joking"
+              }
+            ],
+            "blankSentence": "I ____ ! I'm serious!",
+            "answerMode": "typed_conjugation_only"
           },
           {
             "id": "b1-u1-ex2-6",
@@ -834,7 +1235,17 @@
             "acceptedAnswers": [
               "is always borrowing"
             ],
-            "explanation": "Always with the present continuous can show annoyance about a repeated action."
+            "explanation": "Always with the present continuous can show annoyance about a repeated action.",
+            "template": "My brother {gap1} my headphones without asking!",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "is always borrowing"
+              }
+            ],
+            "blankSentence": "My brother ____ my headphones without asking!",
+            "answerMode": "typed_conjugation_only"
           },
           {
             "id": "b1-u1-ex2-7",
@@ -844,7 +1255,17 @@
             "acceptedAnswers": [
               "are eating"
             ],
-            "explanation": "Right now shows the action is happening at this moment. With we, use are eating."
+            "explanation": "Right now shows the action is happening at this moment. With we, use are eating.",
+            "template": "We {gap1} dinner right now. Can I call you later?",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "are eating"
+              }
+            ],
+            "blankSentence": "We ____ dinner right now. Can I call you later?",
+            "answerMode": "typed_conjugation_only"
           },
           {
             "id": "b1-u1-ex2-8",
@@ -855,110 +1276,198 @@
               "Are you using",
               "are you using"
             ],
-            "explanation": "In present continuous questions, put are before you: Are you using...?"
+            "explanation": "In present continuous questions, put are before you: Are you using...?",
+            "template": "{gap1} the computer at the moment?",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "Are you using"
+              }
+            ],
+            "blankSentence": "____ the computer at the moment?",
+            "answerMode": "typed_conjugation_only"
           }
-        ]
+        ],
+        "interaction": {
+          "formatType": "conjugation_gap_fill",
+          "gapDisplay": "inline_rounded_input",
+          "userWrites": "missing_conjugated_form_only"
+        }
       },
       {
         "id": "b1-u1-ex-3",
         "type": "exercise",
-        "exerciseType": "error_correction",
-        "exerciseTypeName": "Fix the Mistake",
+        "exerciseType": "marked_error_gap_correction",
+        "exerciseTypeName": "Fix the Marked Conjugation",
         "title": "C: Correct the tense",
-        "instructions": "Rewrite each sentence correctly. Change the highlighted words.",
-        "studentInstruction": "Correct the mistake.",
+        "instructions": "Read the full sentence. The wrong conjugation is marked. Type the correct replacement only.",
+        "studentInstruction": "Write only the correction for the marked part.",
         "grammarFocus": "present simple vs present continuous",
         "items": [
           {
             "id": "b1-u1-ex3-1",
             "sentence": "**Are students needing** a lot of sleep during exams?",
             "highlightedText": "Are students needing",
-            "answer": "Do students need a lot of sleep during exams?",
+            "answer": "Do students need",
             "acceptedAnswers": [
+              "Do students need",
+              "do students need"
+            ],
+            "explanation": "Need is normally a stative verb, so we usually use the present simple: Do students need...?",
+            "incorrectSentence": "**Are students needing** a lot of sleep during exams?",
+            "markedError": "Are students needing",
+            "correctionTarget": "replace_marked_error",
+            "fullCorrectSentence": "Do students need a lot of sleep during exams?",
+            "fullSentenceAcceptedAnswers": [
               "Do students need a lot of sleep during exams?"
             ],
-            "explanation": "Need is normally a stative verb, so we usually use the present simple: Do students need...?"
+            "answerMode": "typed_replacement_only"
           },
           {
             "id": "b1-u1-ex3-2",
             "sentence": "Why are you so quiet? I hope you **don't feel** upset.",
             "highlightedText": "don't feel",
-            "answer": "Why are you so quiet? I hope you aren't feeling upset.",
+            "answer": "aren't feeling",
             "acceptedAnswers": [
+              "aren't feeling",
+              "are not feeling"
+            ],
+            "explanation": "The speaker is talking about how someone seems right now, so the present continuous sounds natural.",
+            "incorrectSentence": "Why are you so quiet? I hope you **don't feel** upset.",
+            "markedError": "don't feel",
+            "correctionTarget": "replace_marked_error",
+            "fullCorrectSentence": "Why are you so quiet? I hope you aren't feeling upset.",
+            "fullSentenceAcceptedAnswers": [
               "Why are you so quiet? I hope you aren't feeling upset.",
               "Why are you so quiet? I hope you are not feeling upset."
             ],
-            "explanation": "The speaker is talking about how someone seems right now, so the present continuous sounds natural."
+            "answerMode": "typed_replacement_only"
           },
           {
             "id": "b1-u1-ex3-3",
             "sentence": "My dad **is working** in a bank in the city centre.",
             "highlightedText": "is working",
-            "answer": "My dad works in a bank in the city centre.",
+            "answer": "works",
             "acceptedAnswers": [
+              "works"
+            ],
+            "explanation": "A permanent or long-term job is usually expressed with the present simple.",
+            "incorrectSentence": "My dad **is working** in a bank in the city centre.",
+            "markedError": "is working",
+            "correctionTarget": "replace_marked_error",
+            "fullCorrectSentence": "My dad works in a bank in the city centre.",
+            "fullSentenceAcceptedAnswers": [
               "My dad works in a bank in the city centre."
             ],
-            "explanation": "A permanent or long-term job is usually expressed with the present simple."
+            "answerMode": "typed_replacement_only"
           },
           {
             "id": "b1-u1-ex3-4",
             "sentence": "**Does Anna read** that magazine right now?",
             "highlightedText": "Does Anna read",
-            "answer": "Is Anna reading that magazine right now?",
+            "answer": "Is Anna reading",
             "acceptedAnswers": [
+              "Is Anna reading",
+              "is Anna reading"
+            ],
+            "explanation": "Right now signals the present continuous. In a question, use Is Anna reading...?",
+            "incorrectSentence": "**Does Anna read** that magazine right now?",
+            "markedError": "Does Anna read",
+            "correctionTarget": "replace_marked_error",
+            "fullCorrectSentence": "Is Anna reading that magazine right now?",
+            "fullSentenceAcceptedAnswers": [
               "Is Anna reading that magazine right now?"
             ],
-            "explanation": "Right now signals the present continuous. In a question, use Is Anna reading...?"
+            "answerMode": "typed_replacement_only"
           },
           {
             "id": "b1-u1-ex3-5",
             "sentence": "I **am always taking** the bus to college.",
             "highlightedText": "am always taking",
-            "answer": "I always take the bus to college.",
+            "answer": "always take",
             "acceptedAnswers": [
+              "always take"
+            ],
+            "explanation": "This sentence describes a normal routine, so use the present simple.",
+            "incorrectSentence": "I **am always taking** the bus to college.",
+            "markedError": "am always taking",
+            "correctionTarget": "replace_marked_error",
+            "fullCorrectSentence": "I always take the bus to college.",
+            "fullSentenceAcceptedAnswers": [
               "I always take the bus to college."
             ],
-            "explanation": "This sentence describes a normal routine, so use the present simple."
+            "answerMode": "typed_replacement_only"
           },
           {
             "id": "b1-u1-ex3-6",
             "sentence": "This game console **is working** with two batteries.",
             "highlightedText": "is working",
-            "answer": "This game console works with two batteries.",
+            "answer": "works",
             "acceptedAnswers": [
+              "works"
+            ],
+            "explanation": "This describes how the console functions in general, so the present simple is correct.",
+            "incorrectSentence": "This game console **is working** with two batteries.",
+            "markedError": "is working",
+            "correctionTarget": "replace_marked_error",
+            "fullCorrectSentence": "This game console works with two batteries.",
+            "fullSentenceAcceptedAnswers": [
               "This game console works with two batteries."
             ],
-            "explanation": "This describes how the console functions in general, so the present simple is correct."
+            "answerMode": "typed_replacement_only"
           },
           {
             "id": "b1-u1-ex3-7",
             "sentence": "Look at the score! **Does our team play** well today?",
             "highlightedText": "Does our team play",
-            "answer": "Look at the score! Is our team playing well today?",
+            "answer": "Is our team playing",
             "acceptedAnswers": [
+              "Is our team playing",
+              "is our team playing"
+            ],
+            "explanation": "The score is happening now, so the present continuous is more natural.",
+            "incorrectSentence": "Look at the score! **Does our team play** well today?",
+            "markedError": "Does our team play",
+            "correctionTarget": "replace_marked_error",
+            "fullCorrectSentence": "Look at the score! Is our team playing well today?",
+            "fullSentenceAcceptedAnswers": [
               "Look at the score! Is our team playing well today?"
             ],
-            "explanation": "The score is happening now, so the present continuous is more natural."
+            "answerMode": "typed_replacement_only"
           },
           {
             "id": "b1-u1-ex3-8",
             "sentence": "Most teenagers **are liking** music festivals.",
             "highlightedText": "are liking",
-            "answer": "Most teenagers like music festivals.",
+            "answer": "like",
             "acceptedAnswers": [
+              "like"
+            ],
+            "explanation": "Like is normally stative when it expresses preference, so use the present simple.",
+            "incorrectSentence": "Most teenagers **are liking** music festivals.",
+            "markedError": "are liking",
+            "correctionTarget": "replace_marked_error",
+            "fullCorrectSentence": "Most teenagers like music festivals.",
+            "fullSentenceAcceptedAnswers": [
               "Most teenagers like music festivals."
             ],
-            "explanation": "Like is normally stative when it expresses preference, so use the present simple."
+            "answerMode": "typed_replacement_only"
           }
-        ]
+        ],
+        "interaction": {
+          "formatType": "marked_error_gap_correction",
+          "markingStyle": "highlight_underline",
+          "userWrites": "replacement_for_marked_error_only"
+        }
       },
       {
         "id": "b1-u1-ex-4",
         "type": "exercise",
-        "exerciseType": "tap_choice",
-        "exerciseTypeName": "Choose the Best Option",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Choose the Correct Conjugation",
         "title": "D: Choose the natural form",
-        "instructions": "Choose the correct word or phrase.",
+        "instructions": "Choose the correct conjugated form for the sentence.",
         "studentInstruction": "Tap the best answer.",
         "grammarFocus": "present simple vs present continuous",
         "items": [
@@ -972,7 +1481,9 @@
             ],
             "answer": "am staying",
             "completedSentence": "I am staying with my uncle this month.",
-            "explanation": "This month describes a temporary situation, so the present continuous is the best choice."
+            "explanation": "This month describes a temporary situation, so the present continuous is the best choice.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "I {choice} with my uncle this month."
           },
           {
             "id": "b1-u1-ex4-2",
@@ -984,7 +1495,9 @@
             ],
             "answer": "don't eat",
             "completedSentence": "We don't eat meat very often.",
-            "explanation": "Very often describes a general habit, so use the present simple."
+            "explanation": "Very often describes a general habit, so use the present simple.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "We {choice} meat very often."
           },
           {
             "id": "b1-u1-ex4-3",
@@ -996,7 +1509,9 @@
             ],
             "answer": "is doing",
             "completedSentence": "Olivia is doing her homework right now.",
-            "explanation": "Right now signals the present continuous."
+            "explanation": "Right now signals the present continuous.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "Olivia {choice} her homework right now."
           },
           {
             "id": "b1-u1-ex4-4",
@@ -1008,7 +1523,9 @@
             ],
             "answer": "Does Ben usually drive",
             "completedSentence": "Does Ben usually drive to work?",
-            "explanation": "Usually describes a routine, so use the present simple question form."
+            "explanation": "Usually describes a routine, so use the present simple question form.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "{choice} to work?"
           },
           {
             "id": "b1-u1-ex4-5",
@@ -1020,7 +1537,9 @@
             ],
             "answer": "hit",
             "completedSentence": "In tennis, you hit the ball over the net.",
-            "explanation": "This is a general fact about tennis, so use the present simple."
+            "explanation": "This is a general fact about tennis, so use the present simple.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "In tennis, you {choice} the ball over the net."
           },
           {
             "id": "b1-u1-ex4-6",
@@ -1032,7 +1551,9 @@
             ],
             "answer": "check",
             "completedSentence": "I check my emails every evening.",
-            "explanation": "Every evening describes a routine, so use the present simple."
+            "explanation": "Every evening describes a routine, so use the present simple.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "I {choice} my emails every evening."
           },
           {
             "id": "b1-u1-ex4-7",
@@ -1044,7 +1565,9 @@
             ],
             "answer": "Are they studying",
             "completedSentence": "Are they studying for the exam at the moment?",
-            "explanation": "At the moment signals the present continuous question form."
+            "explanation": "At the moment signals the present continuous question form.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "{choice} for the exam at the moment?"
           },
           {
             "id": "b1-u1-ex4-8",
@@ -1056,7 +1579,9 @@
             ],
             "answer": "are becoming",
             "completedSentence": "Maria and Ellie are becoming more confident these days.",
-            "explanation": "These days can describe a changing temporary situation, so the present continuous is natural."
+            "explanation": "These days can describe a changing temporary situation, so the present continuous is natural.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "Maria and Ellie {choice} more confident these days."
           },
           {
             "id": "b1-u1-ex4-9",
@@ -1068,7 +1593,9 @@
             ],
             "answer": "understands",
             "completedSentence": "A good teacher understands their students.",
-            "explanation": "Understand is normally stative, and this sentence expresses a general truth."
+            "explanation": "Understand is normally stative, and this sentence expresses a general truth.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "A good teacher {choice} their students."
           },
           {
             "id": "b1-u1-ex4-10",
@@ -1080,18 +1607,25 @@
             ],
             "answer": "do you pronounce",
             "completedSentence": "How do you pronounce this word?",
-            "explanation": "This asks about the general correct pronunciation of a word, so the present simple is natural."
+            "explanation": "This asks about the general correct pronunciation of a word, so the present simple is natural.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "How {choice} this word?"
           }
-        ]
+        ],
+        "interaction": {
+          "formatType": "two_option_choice",
+          "choiceMode": "two_options",
+          "userAction": "tap_one_option"
+        }
       },
       {
         "id": "b1-u1-ex-5",
         "type": "exercise",
-        "exerciseType": "verb_bank_gap_fill",
-        "exerciseTypeName": "Verb Bank Challenge",
+        "exerciseType": "verb_tile_conjugation_gap",
+        "exerciseTypeName": "Choose the Verb Tile and Conjugate It",
         "title": "E: Choose the verb, make the form",
-        "instructions": "Use the verbs in the box to complete the sentences. Write the correct present simple or present continuous form.",
-        "studentInstruction": "Choose a verb and type the correct form.",
+        "instructions": "Choose the correct base verb from the tiles. Then write its correct present simple or present continuous form in the gap.",
+        "studentInstruction": "Tap a verb tile, then type the conjugated form.",
         "grammarFocus": "present simple, present continuous and stative verbs",
         "wordBank": [
           "belong",
@@ -1112,7 +1646,18 @@
               "stay"
             ],
             "completedSentence": "Tourists usually stay in this hotel during the summer.",
-            "explanation": "Usually describes a general habit. Tourists is plural, so use stay."
+            "explanation": "Usually describes a general habit. Tourists is plural, so use stay.",
+            "template": "Tourists usually {gap1} in this hotel during the summer.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "stay"
+              }
+            ],
+            "selectedTileAnswer": "stay",
+            "answerMode": "choose_tile_then_type_conjugation",
+            "blankSentence": "Tourists usually ____ in this hotel during the summer."
           },
           {
             "id": "b1-u1-ex5-2",
@@ -1133,7 +1678,22 @@
               ]
             ],
             "completedSentence": "Are you listening to the radio, or can I switch it off?",
-            "explanation": "The speaker is asking about an action happening now, so use the present continuous question form."
+            "explanation": "The speaker is asking about an action happening now, so use the present continuous question form.",
+            "template": "{gap1} you {gap2} to the radio, or can I switch it off?",
+            "gapCount": 2,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "Are"
+              },
+              {
+                "gapId": "gap2",
+                "expectedAnswer": "listening"
+              }
+            ],
+            "selectedTileAnswer": "listen",
+            "answerMode": "choose_tile_then_type_conjugation",
+            "blankSentence": "____ you ____ to the radio, or can I switch it off?"
           },
           {
             "id": "b1-u1-ex5-3",
@@ -1143,7 +1703,18 @@
               "helps"
             ],
             "completedSentence": "Regular exercise helps you feel healthier.",
-            "explanation": "This is a general fact. Regular exercise is singular, so help becomes helps."
+            "explanation": "This is a general fact. Regular exercise is singular, so help becomes helps.",
+            "template": "Regular exercise {gap1} you feel healthier.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "helps"
+              }
+            ],
+            "selectedTileAnswer": "help",
+            "answerMode": "choose_tile_then_type_conjugation",
+            "blankSentence": "Regular exercise ____ you feel healthier."
           },
           {
             "id": "b1-u1-ex5-4",
@@ -1153,7 +1724,18 @@
               "am wearing"
             ],
             "completedSentence": "I am wearing my sister's coat today because mine is dirty.",
-            "explanation": "Today describes a temporary situation, so use the present continuous."
+            "explanation": "Today describes a temporary situation, so use the present continuous.",
+            "template": "I {gap1} my sister's coat today because mine is dirty.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "am wearing"
+              }
+            ],
+            "selectedTileAnswer": "wear",
+            "answerMode": "choose_tile_then_type_conjugation",
+            "blankSentence": "I ____ my sister's coat today because mine is dirty."
           },
           {
             "id": "b1-u1-ex5-5",
@@ -1174,7 +1756,22 @@
               ]
             ],
             "completedSentence": "Does Emma always do the shopping on Fridays?",
-            "explanation": "Always and on Fridays describe a routine. In present simple questions with a singular subject, use Does + base verb."
+            "explanation": "Always and on Fridays describe a routine. In present simple questions with a singular subject, use Does + base verb.",
+            "template": "{gap1} Emma always {gap2} the shopping on Fridays?",
+            "gapCount": 2,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "Does"
+              },
+              {
+                "gapId": "gap2",
+                "expectedAnswer": "do"
+              }
+            ],
+            "selectedTileAnswer": "do",
+            "answerMode": "choose_tile_then_type_conjugation",
+            "blankSentence": "____ Emma always ____ the shopping on Fridays?"
           },
           {
             "id": "b1-u1-ex5-6",
@@ -1195,7 +1792,22 @@
               ]
             ],
             "completedSentence": "Are you looking for your keys? They're on the table.",
-            "explanation": "The speaker is asking about an action happening now, so use Are you looking...?"
+            "explanation": "The speaker is asking about an action happening now, so use Are you looking...?",
+            "template": "{gap1} you {gap2} for your keys? They're on the table.",
+            "gapCount": 2,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "Are"
+              },
+              {
+                "gapId": "gap2",
+                "expectedAnswer": "looking"
+              }
+            ],
+            "selectedTileAnswer": "look",
+            "answerMode": "choose_tile_then_type_conjugation",
+            "blankSentence": "____ you ____ for your keys? They're on the table."
           },
           {
             "id": "b1-u1-ex5-7",
@@ -1213,7 +1825,18 @@
               ]
             ],
             "completedSentence": "You aren't carrying that box correctly. It's going to fall.",
-            "explanation": "The action is happening now, and the sentence is negative, so use aren't carrying."
+            "explanation": "The action is happening now, and the sentence is negative, so use aren't carrying.",
+            "template": "You {gap1} that box correctly. It's going to fall.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "aren't carrying"
+              }
+            ],
+            "selectedTileAnswer": "carry",
+            "answerMode": "choose_tile_then_type_conjugation",
+            "blankSentence": "You ____ that box correctly. It's going to fall."
           },
           {
             "id": "b1-u1-ex5-8",
@@ -1223,18 +1846,71 @@
               "belongs"
             ],
             "completedSentence": "This backpack belongs to my brother.",
-            "explanation": "Belong is normally stative, so use the present simple. Backpack is singular, so belong becomes belongs."
+            "explanation": "Belong is normally stative, so use the present simple. Backpack is singular, so belong becomes belongs.",
+            "template": "This backpack {gap1} to my brother.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "belongs"
+              }
+            ],
+            "selectedTileAnswer": "belong",
+            "answerMode": "choose_tile_then_type_conjugation",
+            "blankSentence": "This backpack ____ to my brother."
+          }
+        ],
+        "interaction": {
+          "formatType": "verb_tile_conjugation_gap",
+          "tileBankSource": "wordBank",
+          "tapAction": "select_base_verb_tile",
+          "afterSelectingTile": "focus_sentence_gap",
+          "userWrites": "conjugated_form",
+          "removeTileWhenCorrect": true
+        },
+        "wordTiles": [
+          {
+            "tileId": "verb-1",
+            "text": "belong"
+          },
+          {
+            "tileId": "verb-2",
+            "text": "carry"
+          },
+          {
+            "tileId": "verb-3",
+            "text": "do"
+          },
+          {
+            "tileId": "verb-4",
+            "text": "help"
+          },
+          {
+            "tileId": "verb-5",
+            "text": "listen"
+          },
+          {
+            "tileId": "verb-6",
+            "text": "look"
+          },
+          {
+            "tileId": "verb-7",
+            "text": "stay"
+          },
+          {
+            "tileId": "verb-8",
+            "text": "wear"
           }
         ]
       },
       {
         "id": "b1-u1-ex-6",
         "type": "exercise",
-        "exerciseType": "passage_error_hunt",
-        "exerciseTypeName": "Find and Fix",
+        "exerciseType": "passage_error_hunt_counter",
+        "exerciseTypeName": "Find the 10 Wrong Conjugations",
         "title": "F: Correct the wrong tenses",
-        "instructions": "Find ten verbs in the wrong tense and rewrite them correctly.",
-        "studentInstruction": "Tap the wrong verb phrase and type the correction.",
+        "instructions": "Tap the ten wrongly conjugated verb phrases in the text. Use the counter to track your progress.",
+        "studentInstruction": "Find and mark 10 errors.",
         "grammarFocus": "present simple, present continuous and stative verbs in context",
         "hideCorrectInline": true,
         "passage": "One hobby I am enjoying a lot is painting. First, you are choosing the colours you want to use. It is looking easy at first, but good painting takes practice. You are needing patience and creativity. When people make mistakes, they sometimes are throwing their work away and starting again. You are improving by practising regularly. Some people are preferring photography, but I am not believing it's more interesting than painting. Right now, I paint a picture for my bedroom. My sister practises the guitar in the next room, so it's quite noisy!",
@@ -1246,7 +1922,11 @@
             "acceptedAnswers": [
               "enjoy"
             ],
-            "explanation": "Enjoy describes a general feeling here, so the present simple is better."
+            "explanation": "Enjoy describes a general feeling here, so the present simple is better.",
+            "errorIndex": 1,
+            "targetPhrase": "am enjoying",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
           },
           {
             "id": "b1-u1-ex6-2",
@@ -1255,7 +1935,11 @@
             "acceptedAnswers": [
               "choose"
             ],
-            "explanation": "This sentence gives a general instruction, not an action happening now."
+            "explanation": "This sentence gives a general instruction, not an action happening now.",
+            "errorIndex": 2,
+            "targetPhrase": "are choosing",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
           },
           {
             "id": "b1-u1-ex6-3",
@@ -1264,7 +1948,11 @@
             "acceptedAnswers": [
               "looks"
             ],
-            "explanation": "Look means seem here, so it is stative. Use the present simple."
+            "explanation": "Look means seem here, so it is stative. Use the present simple.",
+            "errorIndex": 3,
+            "targetPhrase": "is looking",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
           },
           {
             "id": "b1-u1-ex6-4",
@@ -1273,7 +1961,11 @@
             "acceptedAnswers": [
               "need"
             ],
-            "explanation": "Need is normally stative, so use the present simple."
+            "explanation": "Need is normally stative, so use the present simple.",
+            "errorIndex": 4,
+            "targetPhrase": "are needing",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
           },
           {
             "id": "b1-u1-ex6-5",
@@ -1282,7 +1974,11 @@
             "acceptedAnswers": [
               "throw"
             ],
-            "explanation": "Sometimes describes a general habit, so use the present simple."
+            "explanation": "Sometimes describes a general habit, so use the present simple.",
+            "errorIndex": 5,
+            "targetPhrase": "are throwing",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
           },
           {
             "id": "b1-u1-ex6-6",
@@ -1291,7 +1987,11 @@
             "acceptedAnswers": [
               "improve"
             ],
-            "explanation": "This is a general statement about how people get better, so use the present simple."
+            "explanation": "This is a general statement about how people get better, so use the present simple.",
+            "errorIndex": 6,
+            "targetPhrase": "are improving",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
           },
           {
             "id": "b1-u1-ex6-7",
@@ -1300,7 +2000,11 @@
             "acceptedAnswers": [
               "prefer"
             ],
-            "explanation": "Prefer is normally stative, so use the present simple."
+            "explanation": "Prefer is normally stative, so use the present simple.",
+            "errorIndex": 7,
+            "targetPhrase": "are preferring",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
           },
           {
             "id": "b1-u1-ex6-8",
@@ -1310,7 +2014,11 @@
               "don't believe",
               "do not believe"
             ],
-            "explanation": "Believe is normally stative, so use the present simple negative."
+            "explanation": "Believe is normally stative, so use the present simple negative.",
+            "errorIndex": 8,
+            "targetPhrase": "am not believing",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
           },
           {
             "id": "b1-u1-ex6-9",
@@ -1320,7 +2028,11 @@
               "am painting",
               "'m painting"
             ],
-            "explanation": "Right now signals an action happening at this moment, so use the present continuous."
+            "explanation": "Right now signals an action happening at this moment, so use the present continuous.",
+            "errorIndex": 9,
+            "targetPhrase": "paint",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
           },
           {
             "id": "b1-u1-ex6-10",
@@ -1330,11 +2042,32 @@
               "is practising",
               "is practicing"
             ],
-            "explanation": "The sister is playing in the next room now, so the present continuous is the natural form."
+            "explanation": "The sister is playing in the next room now, so the present continuous is the natural form.",
+            "errorIndex": 10,
+            "targetPhrase": "practises",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
           }
-        ]
+        ],
+        "errorCount": 10,
+        "counter": {
+          "target": 10,
+          "initialValue": 0,
+          "labelTemplate": "{found}/10 errors found",
+          "showProgressBar": true,
+          "showRemainingCount": true
+        },
+        "interaction": {
+          "formatType": "passage_error_hunt_counter",
+          "tapAction": "mark_or_unmark_wrong_conjugation",
+          "correctTap": "increment_counter",
+          "wrongTap": "lose_life",
+          "whenCounterReachesTarget": "show_correction_inputs_for_marked_errors",
+          "hideCorrectAnswersUntilAllErrorsFound": true
+        }
       }
     ],
     "implementationNote": "Original exercise items used as content bank for practice screen generation."
-  }
+  },
+  "interactionDesignVersion": "2026-06-24"
 }
