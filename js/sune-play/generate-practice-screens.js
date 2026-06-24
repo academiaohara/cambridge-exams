@@ -73,7 +73,8 @@
           answer: item.answer,
           acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
           explanation: item.explanation || '',
-          completedSentence: (item.sentence || '').replace(GAP_RE, item.answer || '')
+          completedSentence: (item.sentence || '').replace(GAP_RE, item.answer || ''),
+          instruction: exercise.instructions || ''
         };
 
       case 'full_sentence_write':
@@ -193,7 +194,8 @@
           preselectedVerb: item.baseVerb || item.preselectedVerb,
           answer: Array.isArray(item.answer) ? item.answer[0] : item.answer,
           acceptedAnswers: item.acceptedAnswers,
-          explanation: item.explanation || ''
+          explanation: item.explanation || '',
+          instruction: exercise.instructions || ''
         };
 
       default:
