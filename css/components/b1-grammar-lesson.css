@@ -602,6 +602,32 @@
   box-shadow: 0 3px 0 var(--bgl-primary-dark);
 }
 
+.bgl-tap-blank--correct {
+  color: var(--bgl-correct, #1e9d8e);
+  border-bottom-color: var(--bgl-correct, #1e9d8e);
+}
+
+.bgl-tap-blank--incorrect {
+  color: var(--bgl-wrong, #e74c3c);
+  border-bottom-color: var(--bgl-wrong, #e74c3c);
+}
+
+.bgl-tap-option--correct,
+.bgl-tap-option--selected.bgl-tap-option--correct {
+  border-color: var(--bgl-correct, #1e9d8e);
+  background: #e6f7f4;
+  box-shadow: 0 3px 0 #178a7d;
+  color: #12665c;
+}
+
+.bgl-tap-option--incorrect,
+.bgl-tap-option--selected.bgl-tap-option--incorrect {
+  border-color: var(--bgl-wrong, #e74c3c);
+  background: #fdecea;
+  box-shadow: 0 3px 0 #c0392b;
+  color: #a93226;
+}
+
 .bgl-verb-bank {
   display: flex;
   flex-wrap: wrap;

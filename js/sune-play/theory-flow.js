@@ -212,8 +212,13 @@
     opts = opts || {};
     var isPrev = direction === 'prev';
     var action = isPrev ? 'theory-prev' : 'theory-next';
-    var icon = isPrev ? 'arrow_back' : (opts.isLast && opts.exitToStage ? 'arrow_forward' : (opts.isLast ? 'play_arrow' : 'arrow_forward'));
-    var label = isPrev ? 'Previous' : (opts.isLast ? (opts.exitToStage ? 'Back to stage' : 'Start practice') : 'Next');
+    var icon = isPrev ? 'arrow_back'
+      : (opts.isLast && opts.returnToSession ? 'arrow_forward'
+        : (opts.isLast && opts.exitToStage ? 'arrow_forward'
+          : (opts.isLast ? 'play_arrow' : 'arrow_forward')));
+    var label = isPrev ? 'Previous'
+      : (opts.isLast ? (opts.returnToSession ? 'Back to exercise'
+        : (opts.exitToStage ? 'Back to stage' : 'Start practice')) : 'Next');
     var disabled = isPrev && opts.isFirst;
     return '<button type="button" class="sp-theory-nav sp-theory-nav--' + direction + '"' +
       ' data-component="TheoryNavButton" data-action="' + action + '"' +
@@ -239,6 +244,7 @@
 
     var isFirst = cardIdx <= 0;
     var exitToStage = !!opts.exitToStage;
+    var returnToSession = !!opts.returnToSession;
 
     return '<div class="sp-theory-shell" data-component="TheoryShell">' +
       TheoryNavButton('prev', { isFirst: isFirst }) +
@@ -248,7 +254,7 @@
         '</div>' +
         '<div class="sp-theory-flow-card-wrap">' + TheoryCard(card, opts) + '</div>' +
       '</div>' +
-      TheoryNavButton('next', { isLast: isLast, exitToStage: exitToStage }) +
+      TheoryNavButton('next', { isLast: isLast, exitToStage: exitToStage, returnToSession: returnToSession }) +
     '</div>';
   }
 

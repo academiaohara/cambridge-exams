@@ -703,10 +703,7 @@
           if (slot) slot.textContent = optText;
           root.dispatchEvent(new CustomEvent('bgl-answer-change', { bubbles: true }));
           if (!optText) return;
-          speakText(optText, function() {
-            var full = buildGapSentence(item.sentenceBefore, optText, item.sentenceAfter);
-            if (full) speakText(full);
-          });
+          speakText(optText);
         });
       });
     }
@@ -912,6 +909,27 @@
     });
   }
 
+  function applyTapChoiceResultStyles(ex, result) {
+    if (!ex || !result) return;
+    var slot = ex.querySelector('#bgl-tap-slot');
+    if (slot) {
+      slot.classList.toggle('bgl-tap-blank--correct', result.correct === true);
+      slot.classList.toggle('bgl-tap-blank--incorrect', result.correct === false);
+    }
+    var selected = ex.querySelector('.bgl-tap-option--selected');
+    if (selected) {
+      selected.classList.toggle('bgl-tap-option--correct', result.correct === true);
+      selected.classList.toggle('bgl-tap-option--incorrect', result.correct === false);
+    }
+  }
+
+  function syncStepUrl() {
+    if (!state || typeof BentoGrid === 'undefined' || !BentoGrid._syncCourseUnitUrl) return;
+    var step = state.steps[state.stepIdx];
+    if (!step) return;
+    BentoGrid._syncCourseUnitUrl(step.secIdx, true);
+  }
+
   function showFeedback(result, onContinue) {
     if (window.AudioUtils) {
       if (result.correct) AudioUtils.playSuccessSound();
@@ -972,12 +990,14 @@
     if (explainBtn && typeof LessonExplanation !== 'undefined') {
       explainBtn.addEventListener('click', function() {
         var instruction = document.getElementById('bgl-instruction');
+        var stepContent = document.getElementById('bgl-step-content');
         LessonExplanation.open({
           title: 'Explain my answer',
           context: instruction ? instruction.textContent.trim() : '',
           explanation: result.explanation,
           correctAnswer: result.correct ? '' : result.correctAnswer,
-          continueLabel: 'Back'
+          continueLabel: 'Back',
+          inlineMount: stepContent || null
         });
       });
     }
@@ -1075,6 +1095,7 @@
     updateProgress();
     updateTheoryFooter();
     renderTheoryDots();
+    syncStepUrl();
 
     var existingFb = document.getElementById('bgl-feedback');
     if (existingFb) existingFb.remove();
@@ -1177,6 +1198,10 @@
     var result = checkStep(state.root, step);
     if (result.correct) state.correctCount++;
     state.totalChecked++;
+    if (step.exerciseType === 'tap_choice') {
+      var tapEx = state.root.querySelector('.bgl-exercise--tap');
+      if (tapEx) applyTapChoiceResultStyles(tapEx, result);
+    }
     afterExerciseResult(result, state.stepIdx);
   }
 
@@ -1196,6 +1221,10 @@
 
     checkStep(state.root, step);
     state.totalChecked++;
+    if (step.exerciseType === 'tap_choice') {
+      var tapEx = state.root.querySelector('.bgl-exercise--tap');
+      if (tapEx) applyTapChoiceResultStyles(tapEx, result);
+    }
     afterExerciseResult(result, state.stepIdx);
   }
 

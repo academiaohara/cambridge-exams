@@ -116,12 +116,44 @@
     if (!lessonState || lessonState._returnPhase !== 'session' || !lessonState._savedSession) {
       return false;
     }
-    Object.assign(lessonState, lessonState._savedSession);
+    var saved = lessonState._savedSession;
     lessonState._returnPhase = null;
     lessonState._savedSession = null;
     lessonState.phase = 'session';
+    lessonState.queue = saved.queue;
+    lessonState.hearts = saved.hearts;
+    lessonState.sessionCorrect = saved.sessionCorrect;
+    lessonState.sessionTotal = saved.sessionTotal;
+    lessonState.activeNode = saved.activeNode;
+    lessonState.currentScreen = saved.currentScreen;
+    lessonState.awaitingContinue = !!saved.awaitingContinue;
+    lessonState._lastFeedbackResult = saved._lastFeedbackResult || null;
+    lessonState._lastResultCorrect = saved._lastResultCorrect;
+    lessonState._isRetryContinue = !!saved._isRetryContinue;
     renderPhase();
+    if (saved.awaitingContinue && saved._lastFeedbackResult) {
+      lessonState.awaitingContinue = saved.awaitingContinue;
+      lessonState._lastFeedbackResult = saved._lastFeedbackResult;
+      lessonState._lastResultCorrect = saved._lastResultCorrect;
+      lessonState._isRetryContinue = saved._isRetryContinue;
+      restoreSessionFeedback();
+    }
+    syncLessonUrl(true);
     return true;
+  }
+
+  function restoreSessionFeedback() {
+    var mount = lessonState.mount;
+    if (!mount) return;
+    var feedbackMount = mount.querySelector('#sp-feedback-mount');
+    var result = lessonState._lastFeedbackResult;
+    if (!feedbackMount || !result) return;
+    var tone = lessonState.unitData.feedbackTone;
+    feedbackMount.innerHTML = renderer.FeedbackSheet(result, tone);
+    applyGapResultStyles(result.correct);
+    setActionBtn(lessonState._isRetryContinue ? 'retry' : 'continue', true);
+    var screenRoot = mount.querySelector('.sp-screen');
+    if (screenRoot) screenRoot.classList.add('sp-screen--locked');
   }
 
   function closeTheory() {
@@ -183,13 +215,16 @@
 
     if (s.phase === 'theory') {
       var exitToStage = !!(s.theoryOnly && !s.pendingNodeId && !s._returnPhase);
+      var returnToSession = s._returnPhase === 'session';
       s.mount.innerHTML = '<div class="sp-lesson sp-lesson--theory">' + theory.TheoryFlow(s.unitData, {
         cardIdx: s.theoryCardIdx,
-        exitToStage: exitToStage
+        exitToStage: exitToStage,
+        returnToSession: returnToSession
       }) + '</div>';
       bindTheoryEvents();
       var theoryBody = s.mount.querySelector('.sp-theory-card-body');
       if (theoryBody) theoryBody.scrollTop = 0;
+      syncLessonUrl(true);
       return;
     }
 
@@ -231,15 +266,14 @@
   }
 
   function completeTheoryAndContinue() {
+    if (lessonState._returnPhase === 'session') {
+      closeTheory();
+      return;
+    }
     lessonState.progress.theoryCompleted = true;
     theory.markTheoryCompleted(lessonState.unitId);
     saveProgress(lessonState.unitId, lessonState.progress);
-    if (lessonState._returnPhase === 'session' && lessonState._savedSession) {
-      Object.assign(lessonState, lessonState._savedSession);
-      lessonState._returnPhase = null;
-      lessonState._savedSession = null;
-      lessonState.phase = 'session';
-    } else if (lessonState.pendingNodeId) {
+    if (lessonState.pendingNodeId) {
       var pendingNode = lessonState.pendingNodeId;
       lessonState.pendingNodeId = null;
       startPracticeSession(pendingNode);
@@ -260,6 +294,8 @@
     if (lessonState.theoryCardIdx < cards.length - 1) {
       lessonState.theoryCardIdx++;
       renderPhase();
+    } else if (lessonState._returnPhase === 'session') {
+      closeTheory();
     } else {
       completeTheoryAndContinue();
     }
@@ -385,6 +421,7 @@
     lessonState.awaitingContinue = false;
     lessonState.phase = 'session';
     renderPhase();
+    syncLessonUrl(true);
   }
 
   function setActionBtn(mode, enabled) {
@@ -438,6 +475,10 @@
       slot.classList.toggle('sp-gap-slot--correct', correct === true);
       slot.classList.toggle('sp-gap-slot--incorrect', correct === false);
     });
+    mount.querySelectorAll('.sp-option-btn--selected').forEach(function(btn) {
+      btn.classList.toggle('sp-option-btn--correct', correct === true);
+      btn.classList.toggle('sp-option-btn--incorrect', correct === false);
+    });
   }
 
   function clearResultStyles() {
@@ -449,6 +490,9 @@
     }
     mount.querySelectorAll('.sp-gap-slot, .sp-inline-gap').forEach(function(slot) {
       slot.classList.remove('sp-gap-slot--correct', 'sp-gap-slot--incorrect');
+    });
+    mount.querySelectorAll('.sp-option-btn').forEach(function(btn) {
+      btn.classList.remove('sp-option-btn--correct', 'sp-option-btn--incorrect');
     });
   }
 
@@ -538,7 +582,11 @@
           sessionCorrect: lessonState.sessionCorrect,
           sessionTotal: lessonState.sessionTotal,
           activeNode: lessonState.activeNode,
-          currentScreen: lessonState.currentScreen
+          currentScreen: lessonState.currentScreen,
+          awaitingContinue: lessonState.awaitingContinue,
+          _lastFeedbackResult: lessonState._lastFeedbackResult,
+          _lastResultCorrect: lessonState._lastResultCorrect,
+          _isRetryContinue: lessonState._isRetryContinue
         };
         lessonState.theoryCardIdx = 0;
         lessonState.phase = 'theory';
@@ -595,12 +643,22 @@
   function handleExplainClick() {
     var result = lessonState._lastFeedbackResult;
     if (!result || !result.explanation || typeof LessonExplanation === 'undefined') return;
+    var mount = lessonState.mount && lessonState.mount.querySelector('#sp-screen-mount');
+    if (mount) {
+      LessonExplanation.open({
+        title: 'Explanation',
+        explanation: result.explanation,
+        correctAnswer: result.correct ? '' : (result.correctAnswer || ''),
+        continueLabel: 'Close',
+        inlineMount: mount
+      });
+      return;
+    }
     LessonExplanation.open({
       title: 'Explanation',
       explanation: result.explanation,
       correctAnswer: result.correct ? '' : (result.correctAnswer || ''),
-      continueLabel: 'Close',
-      compact: true
+      continueLabel: 'Close'
     });
   }
 
@@ -758,6 +816,24 @@
 
   // ─── Init ────────────────────────────────────────────────────────────
 
+  function syncLessonUrl(replace) {
+    if (!lessonState || typeof Router === 'undefined' || typeof BentoGrid === 'undefined') return;
+    if (!BentoGrid._syncCourseUnitUrl || !BentoGrid._currentUnitId || !BentoGrid._currentBlockKey) return;
+
+    var sectionIdx;
+    if (lessonState.phase === 'theory') {
+      sectionIdx = 'theory:' + (lessonState.theoryCardIdx || 0);
+    } else if (lessonState.phase === 'session' && lessonState.activeNode) {
+      sectionIdx = 'node:' + lessonState.activeNode.nodeId;
+    } else if (lessonState.activeNode) {
+      sectionIdx = 'node:' + lessonState.activeNode.nodeId;
+    } else {
+      sectionIdx = lessonState.theoryCardIdx || 0;
+    }
+
+    BentoGrid._syncCourseUnitUrl(sectionIdx, replace !== false);
+  }
+
   function init(opts) {
     opts = opts || {};
     var unitData = opts.unitData;
@@ -787,6 +863,7 @@
       lessonState.phase = 'theory';
       lessonState.theoryCardIdx = opts.theoryCardIdx || 0;
       renderPhase();
+      syncLessonUrl(true);
       return;
     }
 
