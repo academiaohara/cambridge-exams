@@ -130,16 +130,36 @@
     stats = stats || {};
     var passed = stats.passed !== false;
     return '<div class="sp-result-screen sp-result-screen--complete" data-component="PracticeCompleteScreen">' +
-      '<div class="sp-result-icon"><span class="material-symbols-outlined">celebration</span></div>' +
+      '<div class="sp-result-celebration" aria-hidden="true">' +
+        '<span class="sp-result-confetti sp-result-confetti--1"></span>' +
+        '<span class="sp-result-confetti sp-result-confetti--2"></span>' +
+        '<span class="sp-result-confetti sp-result-confetti--3"></span>' +
+        '<span class="sp-result-confetti sp-result-confetti--4"></span>' +
+      '</div>' +
+      '<div class="sp-result-icon sp-result-icon--success"><span class="material-symbols-outlined">celebration</span></div>' +
       '<h2 class="sp-result-title">' + (passed ? 'Node complete!' : 'Session finished') + '</h2>' +
       '<p class="sp-result-subtitle">' + esc(node.title) + '</p>' +
       '<div class="sp-result-stats">' +
-        '<div class="sp-stat"><span class="sp-stat-val">' + (stats.correct || 0) + '</span><span class="sp-stat-lbl">Correct</span></div>' +
-        '<div class="sp-stat"><span class="sp-stat-val">' + (stats.livesLeft || 0) + '</span><span class="sp-stat-lbl">Lives left</span></div>' +
-        '<div class="sp-stat"><span class="sp-stat-val">' + (stats.xp || 0) + '</span><span class="sp-stat-lbl">XP</span></div>' +
+        '<div class="sp-stat sp-stat--correct">' +
+          '<span class="sp-stat-icon material-symbols-outlined" aria-hidden="true">check_circle</span>' +
+          '<span class="sp-stat-val">' + (stats.correct || 0) + '</span>' +
+          '<span class="sp-stat-lbl">Correct</span>' +
+        '</div>' +
+        '<div class="sp-stat sp-stat--lives">' +
+          '<span class="sp-stat-icon material-symbols-outlined" aria-hidden="true">favorite</span>' +
+          '<span class="sp-stat-val">' + (stats.livesLeft || 0) + '</span>' +
+          '<span class="sp-stat-lbl">Lives left</span>' +
+        '</div>' +
+        '<div class="sp-stat sp-stat--xp">' +
+          '<span class="sp-stat-icon material-symbols-outlined" aria-hidden="true">bolt</span>' +
+          '<span class="sp-stat-val">' + (stats.xp || 0) + '</span>' +
+          '<span class="sp-stat-lbl">XP</span>' +
+        '</div>' +
       '</div>' +
-      '<button type="button" class="sp-btn sp-btn--primary" data-action="back-to-nodes" aria-label="Volver a práctica">' +
-        '<span class="material-symbols-outlined">arrow_back</span></button>' +
+      '<button type="button" class="sp-btn sp-btn--primary sp-btn--labeled" data-action="back-to-stage" aria-label="Volver al stage">' +
+        '<span class="sp-btn-label">Volver al stage</span>' +
+        '<span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>' +
+      '</button>' +
     '</div>';
   }
 

@@ -725,6 +725,11 @@
     renderPhase();
   }
 
+  function returnToStage() {
+    lessonState.activeNode = null;
+    exitLesson();
+  }
+
   function bindResultEvents() {
     var mount = lessonState.mount;
     var retry = mount.querySelector('[data-action="retry-node"]');
@@ -733,16 +738,13 @@
         startPracticeSession(lessonState.activeNode.nodeId);
       });
     }
+    var backStage = mount.querySelector('[data-action="back-to-stage"]');
+    if (backStage) {
+      backStage.addEventListener('click', returnToStage);
+    }
     var back = mount.querySelector('[data-action="back-to-nodes"]');
     if (back) {
-      back.addEventListener('click', function() {
-        if (lessonState.phase === 'complete') {
-          advanceAfterNode();
-        } else {
-          lessonState.activeNode = null;
-          exitLesson();
-        }
-      });
+      back.addEventListener('click', returnToStage);
     }
   }
 
