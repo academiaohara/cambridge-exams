@@ -138,7 +138,11 @@
     var s = lessonState;
 
     if (s.phase === 'theory') {
-      s.mount.innerHTML = '<div class="sp-lesson">' + theory.TheoryFlow(s.unitData, { cardIdx: s.theoryCardIdx }) + '</div>';
+      var exitToStage = !!(s.theoryOnly && !s.pendingNodeId && !s._returnPhase);
+      s.mount.innerHTML = '<div class="sp-lesson sp-lesson--theory">' + theory.TheoryFlow(s.unitData, {
+        cardIdx: s.theoryCardIdx,
+        exitToStage: exitToStage
+      }) + '</div>';
       bindTheoryEvents();
       var theoryBody = s.mount.querySelector('.sp-theory-card-body');
       if (theoryBody) theoryBody.scrollTop = 0;
@@ -200,6 +204,8 @@
       lessonState.phase = lessonState._returnPhase;
       lessonState._returnPhase = null;
       renderPhase();
+    } else if (lessonState.theoryOnly) {
+      exitLesson();
     } else {
       enterPractice();
     }
@@ -281,6 +287,13 @@
         if (!isNaN(idx)) goToTheoryCard(idx);
       });
     });
+
+    var exitBtn = mount.querySelector('[data-action="theory-exit"]');
+    if (exitBtn) {
+      exitBtn.addEventListener('click', function() {
+        exitLesson();
+      });
+    }
 
     var swipeRoot = mount.querySelector('.sp-theory-shell') || mount.querySelector('.sp-theory-flow');
     bindTheorySwipe(swipeRoot);
@@ -673,6 +686,7 @@
       progress: progress,
       phase: 'theory',
       theoryCardIdx: 0,
+      theoryOnly: opts.startSection === 'theory',
       pendingNodeId: opts.startNodeId || null
     };
 
