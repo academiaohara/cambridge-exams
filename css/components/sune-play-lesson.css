@@ -155,7 +155,7 @@
   padding: 24px 20px;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  gap: 16px;
+  gap: 24px;
   flex: 1 1 0;
   min-height: 0;
   height: 100%;
@@ -164,6 +164,44 @@
 
 .sp-theory-card-header {
   flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sp-theory-card-header-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.sp-theory-close {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 2px solid var(--sp-duo-blue-border);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--sp-duo-blue);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+.sp-theory-close .material-symbols-outlined {
+  font-size: 1.2rem;
+}
+
+.sp-theory-close:hover {
+  background: var(--sp-duo-blue-light);
+  border-color: var(--sp-duo-blue);
+}
+
+.sp-theory-close:active {
+  transform: scale(0.95);
 }
 
 .sp-theory-card-title {
@@ -189,7 +227,9 @@
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-  padding-right: 2px;
+  padding: 16px 12px 4px 0;
+  margin-top: 4px;
+  border-top: 1px solid var(--sp-duo-blue-border);
 }
 
 .sp-theory-section-title {
@@ -1276,7 +1316,7 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
 }
 
 .course-center--lesson-focus:has(.sp-lesson-mount) {
-  max-width: 640px;
+  max-width: 880px;
   width: 100%;
   min-width: 0;
   min-height: 0;
@@ -1300,7 +1340,7 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
 
 @media (min-width: 769px) {
   .course-center--lesson-focus:has(.sp-lesson-mount) {
-    max-width: 680px;
+    max-width: 960px;
     width: 100%;
     min-width: 0;
   }
@@ -1317,9 +1357,8 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
   max-width: none;
   width: 100%;
   margin: 0 auto;
-  padding: 0 16px 0;
+  padding: 20px 20px 28px;
   box-sizing: border-box;
-  padding-bottom: 0;
 }
 
 .dashboard-layout--lesson-focus .sp-lesson {
@@ -1330,12 +1369,23 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
   gap: 0;
 }
 
+.dashboard-layout--lesson-focus .sp-lesson--theory {
+  background-image: url('../../Assets/images/Background.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  padding: 8px 4px;
+  box-sizing: border-box;
+}
+
 .dashboard-layout--lesson-focus .sp-theory-shell {
   flex: 1 1 0;
   min-height: 0;
   height: 100%;
-  max-height: calc(100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
-  padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+  max-height: calc(100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 48px);
+  padding-top: 12px;
+  padding-bottom: max(20px, env(safe-area-inset-bottom, 0px));
 }
 
 .dashboard-layout--lesson-focus .sp-practice-session {
@@ -1360,6 +1410,20 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
 
   .sp-theory-card {
     padding: 20px 16px;
+    gap: 20px;
+  }
+
+  .sp-theory-card-body {
+    padding-top: 12px;
+    padding-right: 8px;
+  }
+
+  .dashboard-layout--lesson-focus .sp-lesson-mount {
+    padding: 16px 12px 24px;
+  }
+
+  .dashboard-layout--lesson-focus .sp-lesson--theory {
+    padding: 4px 0;
   }
 }
 
@@ -1371,11 +1435,16 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
 
   .dashboard-layout--lesson-focus .sp-lesson-mount {
     max-width: none;
-    padding: 0 24px 0;
+    padding: 24px 28px 32px;
   }
 
   .sp-theory-card {
     padding: 32px 28px;
+    gap: 28px;
+  }
+
+  .sp-theory-card-body {
+    padding: 20px 16px 8px 0;
   }
 
   .sp-exercise-card {
