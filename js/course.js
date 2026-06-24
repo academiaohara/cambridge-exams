@@ -918,12 +918,12 @@
       overlay.innerHTML =
         '<div class="cu-confirm-dialog cu-admin-advance-dialog">' +
           '<div class="cu-admin-advance-badge">Admin</div>' +
-          '<div class="cu-confirm-message">¿Cómo quieres avanzar?</div>' +
-          '<p class="cu-admin-advance-hint">Puedes saltar el test y desbloquear la etapa directamente, o hacer el test como un usuario normal.</p>' +
+          '<div class="cu-confirm-message">How would you like to proceed?</div>' +
+          '<p class="cu-admin-advance-hint">You can skip the test and unlock the stage directly, or take the test like a normal user.</p>' +
           '<div class="cu-admin-advance-buttons">' +
-            '<button class="cu-confirm-btn cu-admin-advance-skip" type="button">Avanzar directamente</button>' +
-            '<button class="cu-confirm-btn cu-admin-advance-test" type="button">Hacer el test</button>' +
-            '<button class="cu-confirm-btn cu-confirm-cancel" type="button">Cancelar</button>' +
+            '<button class="cu-confirm-btn cu-admin-advance-skip" type="button">Skip ahead</button>' +
+            '<button class="cu-confirm-btn cu-admin-advance-test" type="button">Take the test</button>' +
+            '<button class="cu-confirm-btn cu-confirm-cancel" type="button">Cancel</button>' +
           '</div>' +
         '</div>';
 
@@ -947,7 +947,7 @@
 
     _adminResetAllCourseProgress: function() {
       if (!AppState.isAdmin) return;
-      BentoGrid._cuConfirm('¿Reiniciar todo el progreso del curso a cero? Esta acción es solo para pruebas.', function() {
+      BentoGrid._cuConfirm('Reset all course progress to zero? This action is for testing only.', function() {
         if (typeof Onboarding !== 'undefined' && Onboarding.clearAllCourseProgress) {
           Onboarding.clearAllCourseProgress();
         }
@@ -959,10 +959,10 @@
     _buildCourseAdminToolbarHtml: function() {
       if (!AppState.isAdmin) return '';
       return '<div class="course-admin-toolbar">' +
-        '<span class="course-admin-toolbar-label">Herramientas de prueba</span>' +
-        '<button type="button" class="course-admin-toolbar-btn" onclick="BentoGrid._adminResetAllCourseProgress()" title="Borrar todo el progreso del curso">' +
+        '<span class="course-admin-toolbar-label">Testing tools</span>' +
+        '<button type="button" class="course-admin-toolbar-btn" onclick="BentoGrid._adminResetAllCourseProgress()" title="Clear all course progress">' +
           '<span class="material-symbols-outlined" aria-hidden="true">restart_alt</span>' +
-          'Reiniciar progreso' +
+          'Reset progress' +
         '</button>' +
       '</div>';
     },
@@ -7888,10 +7888,10 @@
           '<div class="cu-lesson-complete-icon" aria-hidden="true">' +
             '<span class="material-symbols-outlined">celebration</span>' +
           '</div>' +
-          '<h2 class="cu-lesson-complete-title">¡Felicidades!</h2>' +
-          '<p class="cu-lesson-complete-text">Has completado el ejercicio.</p>' +
+          '<h2 class="cu-lesson-complete-title">Congratulations!</h2>' +
+          '<p class="cu-lesson-complete-text">You have completed the exercise.</p>' +
           '<p class="cu-lesson-complete-score">' + BentoGrid._escapeHTML(scoreText) + '</p>' +
-          '<button type="button" class="cu-lesson-complete-btn">Volver a la etapa</button>' +
+          '<button type="button" class="cu-lesson-complete-btn">Back to stage</button>' +
         '</div>';
 
       document.body.appendChild(modal);
@@ -7941,9 +7941,9 @@
 
     _showLearningExitConfirm: function(onLeave, texts) {
       texts = texts || {};
-      var message = texts.message || '¿Seguro que quieres salir? Tendrás que empezar el ejercicio desde cero.';
-      var stayLabel = texts.stayLabel || 'Seguir aprendiendo';
-      var leaveLabel = texts.leaveLabel || 'Salir';
+      var message = texts.message || 'Are you sure you want to leave? You will have to start the exercise from scratch.';
+      var stayLabel = texts.stayLabel || 'Keep learning';
+      var leaveLabel = texts.leaveLabel || 'Leave';
 
       var existing = document.getElementById('cu-lesson-exit-modal');
       if (existing) existing.remove();
@@ -9175,7 +9175,7 @@
         summary.setAttribute('aria-live', 'polite');
         var emojiLabel = isGood ? '(celebration)' : '(hint)';
         var scoreText = weightedCorrect + '/' + weightedTotal + (pointsPerItem > 1 ? ' pts' : ' correct');
-        var feedbackText = isGood ? '¡Muy bien!' : 'Review the highlighted answers above.';
+        var feedbackText = isGood ? 'Well done!' : 'Review the highlighted answers above.';
         summary.innerHTML =
           '<span aria-hidden="true">' + (isGood ? '🎉' : '💡') + '</span>' +
           '<span class="visually-hidden">' + emojiLabel + ' </span>' +

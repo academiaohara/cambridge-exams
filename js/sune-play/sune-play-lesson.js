@@ -394,8 +394,8 @@
     actionBtn.disabled = !enabled;
     actionBtn.hidden = false;
     var icon = actionBtn.querySelector('.material-symbols-outlined');
-    var labels = { check: 'Comprobar', continue: 'Continuar', retry: 'Reintentar' };
-    actionBtn.setAttribute('aria-label', labels[mode] || 'Acción');
+    var labels = { check: 'Check', continue: 'Continue', retry: 'Retry' };
+    actionBtn.setAttribute('aria-label', labels[mode] || 'Action');
     if (icon) {
       icon.textContent = mode === 'check' ? 'check' : mode === 'retry' ? 'refresh' : 'arrow_forward';
     }
@@ -593,10 +593,10 @@
     var result = lessonState._lastFeedbackResult;
     if (!result || !result.explanation || typeof LessonExplanation === 'undefined') return;
     LessonExplanation.open({
-      title: 'Explicación',
+      title: 'Explanation',
       explanation: result.explanation,
       correctAnswer: result.correct ? '' : (result.correctAnswer || ''),
-      continueLabel: 'Cerrar',
+      continueLabel: 'Close',
       compact: true
     });
   }
