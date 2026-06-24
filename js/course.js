@@ -7508,6 +7508,10 @@
 
     _showCuLessonFeedback: function(sec, correct, item) {
       BentoGrid._hideCuLessonFeedback(sec);
+      if (window.AudioUtils) {
+        if (correct) AudioUtils.playSuccessSound();
+        else AudioUtils.playFailureSound();
+      }
       var feedback = document.createElement('div');
       feedback.id = 'cu-lesson-feedback';
       var explanation = BentoGrid._getCuLessonItemExplanation(item);
@@ -7660,6 +7664,7 @@
     },
 
     _showCuLessonItem: function(sec, itemIdx) {
+      if (window.AudioUtils) AudioUtils.stopPhrasePlayback();
       var items = BentoGrid._getCuLessonItems(sec);
       if (!items.length) return;
       itemIdx = Math.max(0, Math.min(itemIdx, items.length - 1));

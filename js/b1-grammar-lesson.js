@@ -913,6 +913,10 @@
   }
 
   function showFeedback(result, onContinue) {
+    if (window.AudioUtils) {
+      if (result.correct) AudioUtils.playSuccessSound();
+      else AudioUtils.playFailureSound();
+    }
     var existing = document.getElementById('bgl-feedback');
     if (existing) existing.remove();
 
@@ -1107,6 +1111,7 @@
   function advanceStep() {
     if (!state) return;
     if (state.hearts <= 0) return;
+    if (window.AudioUtils) AudioUtils.stopPhrasePlayback();
 
     if (state.inRetryMode) {
       state.retryPos++;
