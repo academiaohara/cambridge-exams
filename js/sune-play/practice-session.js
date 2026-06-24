@@ -32,7 +32,6 @@
       '<div class="sp-session-progress-track">' +
         '<div class="sp-session-progress-fill" style="width:' + pct + '%"></div>' +
       '</div>' +
-      '<span class="sp-session-progress-label">' + completed + ' / ' + total + '</span>' +
     '</div>';
   }
 
@@ -101,15 +100,27 @@
     opts = opts || {};
     return '<div class="sp-practice-session" data-component="PracticeSession" data-node-id="' + esc(node.nodeId) + '">' +
       PracticeHeader(opts) +
-      '<div class="sp-practice-body">' +
-        '<div class="sp-exercise-card" id="sp-screen-mount"></div>' +
+      '<div class="sp-practice-main">' +
+        '<div class="sp-practice-body">' +
+          '<div class="sp-exercise-card" id="sp-screen-mount"></div>' +
+        '</div>' +
+        '<footer class="sp-practice-footer" id="sp-practice-footer">' +
+          '<div class="sp-practice-footer-inner">' +
+            '<div id="sp-feedback-mount" class="sp-feedback-mount"></div>' +
+            '<div class="sp-practice-footer-actions">' +
+              '<button type="button" class="sp-btn sp-btn--skip" id="sp-skip-btn" aria-label="Saltar">Saltar</button>' +
+              '<div class="sp-footer-actions-right">' +
+                '<button type="button" class="sp-btn sp-btn--explain-icon" id="sp-explain-btn" hidden aria-label="Ver explicación">' +
+                  '<span class="material-symbols-outlined">help</span>' +
+                '</button>' +
+                '<button type="button" class="sp-btn sp-btn--primary sp-btn--action" id="sp-action-btn" data-mode="check" disabled aria-label="Comprobar">' +
+                  '<span class="material-symbols-outlined">check</span>' +
+                '</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</footer>' +
       '</div>' +
-      '<footer class="sp-practice-footer">' +
-        '<div id="sp-feedback-mount"></div>' +
-        '<button type="button" class="sp-btn sp-btn--primary sp-btn--action" id="sp-action-btn" data-mode="check" disabled aria-label="Comprobar">' +
-          '<span class="material-symbols-outlined">check</span>' +
-        '</button>' +
-      '</footer>' +
     '</div>';
   }
 

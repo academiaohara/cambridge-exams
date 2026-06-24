@@ -35,7 +35,8 @@ var LessonExplanation = (function() {
 
     var sheet = document.createElement('div');
     sheet.id = SHEET_ID;
-    sheet.className = 'lesson-explanation-sheet';
+    sheet.className = 'lesson-explanation-sheet' +
+      (opts.compact ? ' lesson-explanation-sheet--compact' : '');
     sheet.setAttribute('role', 'dialog');
     sheet.setAttribute('aria-modal', 'true');
     sheet.setAttribute('aria-labelledby', 'lesson-explanation-title');
@@ -50,11 +51,14 @@ var LessonExplanation = (function() {
         '</div>'
       : '';
 
+    var closeLabel = opts.compact ? 'close' : 'arrow_back';
+    var closeAria = opts.compact ? 'Close' : 'Back';
+
     sheet.innerHTML =
       '<div class="lesson-explanation-sheet-inner">' +
         '<header class="lesson-explanation-header">' +
-          '<button type="button" class="lesson-explanation-back" aria-label="Back">' +
-            '<span class="material-symbols-outlined">arrow_back</span>' +
+          '<button type="button" class="lesson-explanation-back" aria-label="' + closeAria + '">' +
+            '<span class="material-symbols-outlined">' + closeLabel + '</span>' +
           '</button>' +
           '<h2 class="lesson-explanation-title" id="lesson-explanation-title">' +
             esc(opts.title || 'Explain my answer') +

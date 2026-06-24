@@ -319,12 +319,21 @@
 
 .sp-btn--continue-mode.sp-btn--correct {
   background: var(--sp-correct);
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+  box-shadow: 0 4px 0 #16a34a;
 }
 
 .sp-btn--continue-mode.sp-btn--incorrect {
   background: var(--sp-incorrect);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  box-shadow: 0 4px 0 #dc2626;
+}
+
+.sp-btn--continue-mode:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #16a34a;
+}
+
+.sp-btn--continue-mode.sp-btn--incorrect:active:not(:disabled) {
+  box-shadow: 0 2px 0 #dc2626;
 }
 
 .sp-btn--retry-mode {
@@ -506,7 +515,6 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
   min-width: 0;
 }
 
@@ -519,16 +527,9 @@
 
 .sp-session-progress-fill {
   height: 100%;
-  background: var(--sp-primary);
+  background: var(--sp-correct);
   border-radius: 99px;
   transition: width 0.3s;
-}
-
-.sp-session-progress-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--text-light);
-  text-align: center;
 }
 
 .sp-hearts-bar {
@@ -555,6 +556,17 @@
   font-variation-settings: 'FILL' 0;
 }
 
+.sp-practice-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.06);
+  background: var(--white);
+  overflow: hidden;
+}
+
 .sp-practice-body {
   flex: 1;
   display: flex;
@@ -562,18 +574,147 @@
 }
 
 .sp-exercise-card {
-  background: var(--white);
-  border-radius: 20px;
-  box-shadow: var(--shadow-md);
   padding: 24px 20px;
   flex: 1;
 }
 
 .sp-practice-footer {
-  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+  background: var(--white);
+}
+
+.sp-practice-footer-inner {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+}
+
+.sp-practice-footer-actions {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
   gap: 12px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--border-light);
+}
+
+.sp-footer-actions-right {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.sp-btn--skip {
+  width: auto;
+  min-width: 96px;
+  min-height: 52px;
+  padding: 14px 20px;
+  background: var(--white);
+  color: var(--text-medium);
+  border: 2px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.sp-btn--skip:hover:not(:disabled) {
+  background: var(--bg-light);
+  border-color: var(--text-light);
+}
+
+.sp-btn--skip:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.sp-btn--explain-icon {
+  width: 52px;
+  min-width: 52px;
+  min-height: 52px;
+  padding: 0;
+  background: var(--white);
+  color: var(--text-medium);
+  border: 2px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+.sp-btn--explain-icon .material-symbols-outlined {
+  font-size: 1.5rem;
+}
+
+.sp-btn--explain-icon:hover {
+  background: var(--bg-light);
+  border-color: var(--text-light);
+}
+
+.sp-practice-footer .sp-btn--action {
+  width: auto;
+  min-width: 140px;
+  flex: 0 1 auto;
+}
+
+.sp-practice-footer .sp-btn--action[data-mode="check"]:not(:disabled) {
+  background: var(--sp-correct);
+  box-shadow: 0 4px 0 #16a34a;
+}
+
+.sp-practice-footer .sp-btn--action[data-mode="check"]:not(:disabled):active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #16a34a;
+}
+
+.sp-practice-footer--feedback .sp-practice-footer-inner {
+  padding: 16px 20px;
+  gap: 16px;
+}
+
+.sp-practice-footer--feedback .sp-feedback-mount {
+  padding: 0;
+}
+
+.sp-practice-footer--feedback .sp-practice-footer-actions {
+  padding: 0;
+  border-top: none;
+}
+
+@media (min-width: 520px) {
+  .sp-practice-footer--feedback .sp-practice-footer-inner {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .sp-practice-footer--feedback .sp-feedback-mount {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sp-practice-footer--feedback .sp-practice-footer-actions {
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+}
+
+.sp-practice-footer--feedback.sp-practice-footer--correct {
+  background: var(--sp-correct-tint);
+  border-color: rgba(34, 197, 94, 0.25);
+}
+
+.sp-practice-footer--feedback.sp-practice-footer--incorrect {
+  background: var(--sp-incorrect-tint);
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+.sp-practice-footer--feedback.sp-practice-footer--retry {
+  background: var(--sp-primary-tint);
+  border-color: rgba(100, 181, 246, 0.3);
+}
+
+.sp-feedback-mount:empty {
+  display: none;
 }
 
 /* ─── Screen formats ────────────────────────────────────────────────── */
@@ -809,21 +950,39 @@
 /* ─── Feedback sheet ────────────────────────────────────────────────── */
 
 .sp-feedback-sheet {
-  background: var(--white);
-  border-radius: 16px;
-  padding: 16px 18px;
-  box-shadow: var(--shadow-md);
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  align-items: flex-start;
+  gap: 14px;
 }
 
-.sp-feedback--correct {
-  border-left: 4px solid var(--sp-correct);
+.sp-feedback-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
 }
 
-.sp-feedback--incorrect {
-  border-left: 4px solid var(--sp-incorrect);
+.sp-feedback-icon .material-symbols-outlined {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.sp-feedback--correct .sp-feedback-icon {
+  color: var(--sp-correct);
+}
+
+.sp-feedback--incorrect .sp-feedback-icon {
+  color: var(--sp-incorrect);
+}
+
+.sp-feedback-body {
+  flex: 1;
+  min-width: 0;
+  padding-top: 2px;
 }
 
 .sp-feedback--correct .sp-feedback-title {
@@ -835,22 +994,17 @@
 }
 
 .sp-feedback-title {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 800;
-  margin: 0 0 8px;
-}
-
-.sp-feedback-explanation {
-  font-size: 0.9rem;
-  color: var(--text-medium);
-  margin: 0 0 8px;
-  line-height: 1.45;
+  margin: 0 0 4px;
+  line-height: 1.3;
 }
 
 .sp-feedback-answer {
   font-size: 0.9rem;
-  margin: 0 0 16px;
+  margin: 0;
   color: var(--text-dark);
+  line-height: 1.45;
 }
 
 .sp-feedback-answer span {
@@ -949,7 +1103,10 @@
     max-width: 800px;
   }
 
-  .sp-theory-card,
+  .sp-theory-card {
+    padding: 32px 28px;
+  }
+
   .sp-exercise-card {
     padding: 32px 28px;
   }
