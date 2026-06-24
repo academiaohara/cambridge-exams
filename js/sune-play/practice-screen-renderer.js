@@ -493,16 +493,16 @@
     var title = result.correct
       ? randomFeedback(feedbackTone, 'correct')
       : randomFeedback(feedbackTone, 'incorrect');
+    var icon = result.correct ? 'check_circle' : 'cancel';
     var html = '<div class="sp-feedback-sheet ' + cls + '" data-component="FeedbackSheet">';
+    html += '<div class="sp-feedback-icon" aria-hidden="true">' +
+      '<span class="material-symbols-outlined">' + icon + '</span></div>';
+    html += '<div class="sp-feedback-body">';
     html += '<p class="sp-feedback-title">' + esc(title) + '</p>';
     if (!result.correct && result.correctAnswer) {
       html += '<p class="sp-feedback-answer"><span>Correcto:</span> ' + esc(result.correctAnswer) + '</p>';
     }
-    if (!result.correct && result.explanation) {
-      html += '<button type="button" class="sp-btn sp-btn--ghost sp-btn--explain" data-action="show-explanation" aria-label="Ver explicación">' +
-        '<span class="material-symbols-outlined">help</span></button>';
-    }
-    html += '</div>';
+    html += '</div></div>';
     return html;
   }
 

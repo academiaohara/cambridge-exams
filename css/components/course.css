@@ -8311,3 +8311,41 @@ body.lesson-explanation-open {
   transform: translateY(2px);
   box-shadow: 0 2px 0 var(--primary-dark, #1e1f42);
 }
+
+.lesson-explanation-sheet--compact {
+  background: rgba(45, 46, 95, 0.45);
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  animation: lessonExplanationCompactIn 0.22s ease-out;
+}
+
+@keyframes lessonExplanationCompactIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lesson-explanation-sheet--compact .lesson-explanation-sheet-inner {
+  width: 100%;
+  max-width: 440px;
+  max-height: min(70vh, 520px);
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  animation: lessonExplanationModalIn 0.22s ease-out;
+}
+
+@keyframes lessonExplanationModalIn {
+  from { transform: translateY(12px) scale(0.98); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.lesson-explanation-sheet--compact .lesson-explanation-body {
+  flex: 1;
+  min-height: 0;
+}
+
+.lesson-explanation-sheet--compact .lesson-explanation-card {
+  flex: initial;
+}
