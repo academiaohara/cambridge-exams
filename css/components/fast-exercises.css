@@ -967,6 +967,103 @@
   max-width: 720px;
   margin: 0 auto;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.fe-lesson-instruction {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #3c3c3c;
+  text-align: center;
+  line-height: 1.35;
+  margin: 0 0 16px;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+}
+
+.fe-lesson-instruction-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.fe-instruction-speak-btn,
+.fe-speak-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(45, 46, 95, 0.16);
+  border-radius: 50%;
+  background: rgba(45, 46, 95, 0.04);
+  color: var(--text-medium, #64748b);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  padding: 0;
+}
+
+.fe-instruction-speak-btn:hover,
+.fe-speak-btn:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.35);
+  color: #2563eb;
+}
+
+.fe-instruction-speak-btn .material-symbols-outlined,
+.fe-speak-btn .material-symbols-outlined {
+  font-size: 1.15rem;
+}
+
+.fe-speak-btn--speaking {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.fe-sentence-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.fe-sentence-row .fe-quiz-sentence,
+.fe-sentence-row .pv-fillin-sentence {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.fe-sentence-speak-btn {
+  margin-top: 2px;
+}
+
+.fe-gallery-speak-btn {
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.pv-gallery-verb,
+.id-gallery-idiom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.fe-point-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  width: 100%;
 }
 .fe-point-card {
   background: rgba(255, 255, 255, 0.96);
@@ -7857,10 +7954,39 @@
 }
 
 /* Exercises rendered inside dashboard center (#feCenterSection) */
+.fe-section--vocab-exercise {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
 .fe-section--vocab-exercise .fe-point-view {
   max-width: none;
   width: 100%;
   padding: 0;
+  flex: 1;
+  min-height: 0;
+}
+
+.dashboard-layout--lesson-focus .fe-section--vocab-exercise .fe-point-exercise-header .subpage-subtitle {
+  display: none;
+}
+
+.dashboard-layout--lesson-focus .fe-section--vocab-exercise .fe-lesson-instruction {
+  margin-bottom: 20px;
+}
+
+.dashboard-layout--lesson-focus .fe-section--vocab-exercise .fe-point-stage {
+  justify-content: center;
+}
+
+.dashboard-layout--lesson-focus .fe-section--vocab-exercise .fe-exercise-card,
+.dashboard-layout--lesson-focus .fe-section--vocab-exercise .pv-gallery-single-wrap,
+.dashboard-layout--lesson-focus .fe-section--vocab-exercise .pv-drag-container,
+.dashboard-layout--lesson-focus .fe-section--vocab-exercise .fe-explanation-card,
+.dashboard-layout--lesson-focus .fe-section--vocab-exercise .fe-point-card {
+  justify-content: center;
 }
 
 .fe-section--vocab-exercise .fe-point-exercise-header {

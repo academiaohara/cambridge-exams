@@ -119,22 +119,56 @@
 }
 
 .bgl-instruction {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
   text-align: center;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 800;
   margin: 0 0 16px;
-  color: #4a4b7c;
+  color: #3c3c3c;
+  font-family: 'Fredoka', 'Nunito', sans-serif;
+  line-height: 1.35;
+}
+
+.bgl-instruction-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.bgl-instruction-speak {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #b8e8fc;
+  border-radius: 50%;
+  background: var(--bgl-duo-blue-light);
+  color: var(--bgl-duo-blue-dark);
+  cursor: pointer;
+  padding: 0;
+}
+
+.bgl-instruction-speak .material-symbols-outlined {
+  font-size: 1.15rem;
 }
 
 .bgl-card-shell {
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   min-height: 0;
   min-width: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+.bgl-lesson--theory .bgl-card-shell {
+  justify-content: flex-start;
 }
 
 .bgl-lesson--theory .bgl-unit-header {

@@ -7644,6 +7644,27 @@
       } else {
         stage.insertBefore(prompt, stage.firstChild);
       }
+
+      var speakerBtn = prompt.querySelector('.cu-lesson-prompt-speaker');
+      if (speakerBtn && !speakerBtn._cuSpeakBound) {
+        speakerBtn._cuSpeakBound = true;
+        speakerBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (!text || !window.speechSynthesis) return;
+          window.speechSynthesis.cancel();
+          speakerBtn.classList.add('cu-lesson-prompt-speaker--speaking');
+          var utter = new SpeechSynthesisUtterance(text);
+          utter.lang = 'en-GB';
+          utter.rate = 0.85;
+          utter.pitch = 1;
+          var done = function() {
+            speakerBtn.classList.remove('cu-lesson-prompt-speaker--speaking');
+          };
+          utter.onend = done;
+          utter.onerror = done;
+          window.speechSynthesis.speak(utter);
+        });
+      }
     },
 
     _updateCuLessonCheckState: function(sec, item) {

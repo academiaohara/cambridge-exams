@@ -550,14 +550,162 @@
     },
 
     // Text-to-Speech using the Web Speech API (en-GB, no external API)
-    _speakWord: function(word) {
-      if (!word || !window.speechSynthesis) return;
+    _speakText: function(text, onEnd) {
+      if (window.SunePlayTheory && window.SunePlayTheory.speakText) {
+        window.SunePlayTheory.speakText(text, onEnd);
+        return;
+      }
+      if (!text || !window.speechSynthesis) return;
       window.speechSynthesis.cancel();
-      var utter = new SpeechSynthesisUtterance(word.trim());
+      var utter = new SpeechSynthesisUtterance(String(text).trim());
       utter.lang = 'en-GB';
       utter.rate = 0.85;
       utter.pitch = 1;
+      if (typeof onEnd === 'function') {
+        utter.onend = onEnd;
+        utter.onerror = onEnd;
+      }
       window.speechSynthesis.speak(utter);
+    },
+
+    _speakWord: function(word) {
+      this._speakText(word);
+    },
+
+    _POINT_DEFAULT_INSTRUCTIONS: {
+      'pv-gallery': 'Study each phrasal verb, its meaning and examples.',
+      'pv-fill-in': 'Complete each sentence with the correct phrasal verb.',
+      'pv-conversations': 'Read the conversations and notice how the phrasal verbs are used.',
+      'pv-conversation-drag': 'Drag the phrasal verbs into the gaps to complete each conversation.',
+      'pv-mixed': 'Complete each exercise using the phrasal verbs from this lesson.',
+      'id-gallery': 'Study each idiom, its meaning and examples.',
+      'id-fill-in': 'Choose the correct idiom to complete each sentence.',
+      'id-conversations': 'Read the conversations and notice how the idioms are used.',
+      'id-conversation-drag': 'Drag the idioms into the gaps to complete each conversation.',
+      'id-quiz': 'Choose the correct answer for each question.',
+      'wf-explanation': 'Read the explanation and learn the different word forms.',
+      'wf-multiple-choice': 'Choose the correct form of the word.',
+      'wf-transform': 'Write the correct form of the word in CAPITALS.',
+      'vocab-flashcards': 'Tap the card to reveal the meaning. Mark whether you know the word.',
+      'explanation': 'Read the explanation carefully.',
+      'exercise': 'Complete each question below.',
+      'review': 'Review what you have learned.',
+      'quick-review': 'Complete each exercise to review what you have learned.'
+    },
+
+    _getPointInstruction: function(point, extraInstruction) {
+      if (extraInstruction) return extraInstruction;
+      if (!point) return '';
+      if (point.instructions) return point.instructions;
+      var type = point.type || '';
+      return this._POINT_DEFAULT_INSTRUCTIONS[type] || point.label || '';
+    },
+
+    _buildPointInstructionHtml: function(point, extraInstruction) {
+      var instruction = this._getPointInstruction(point, extraInstruction);
+      if (!instruction) return '';
+      return '<div class="fe-lesson-instruction">' +
+        '<button type="button" class="fe-instruction-speak-btn" data-speak-text="' + this._escapeHTML(instruction) + '" aria-label="Listen to instruction" title="Listen to instruction">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">volume_up</span>' +
+        '</button>' +
+        '<span class="fe-lesson-instruction-text">' + this._escapeHTML(instruction) + '</span>' +
+      '</div>';
+    },
+
+    _bindSpeakButtons: function(root) {
+      if (!root) return;
+      var self = this;
+      root.querySelectorAll('[data-speak-text]').forEach(function(btn) {
+        if (btn._feSpeakBound) return;
+        btn._feSpeakBound = true;
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var text = btn.getAttribute('data-speak-text');
+          if (!text) return;
+          btn.classList.add('fe-speak-btn--speaking');
+          self._speakText(text, function() {
+            btn.classList.remove('fe-speak-btn--speaking');
+          });
+        });
+      });
+    },
+
+    _enhanceSentenceTts: function(root) {
+      if (!root) return;
+      var self = this;
+      root.querySelectorAll('.fe-quiz-sentence:not([data-speak-added]), .pv-fillin-sentence:not([data-speak-added])').forEach(function(el) {
+        el.setAttribute('data-speak-added', 'true');
+        var text = el.textContent.trim();
+        if (!text) return;
+        var wrap = document.createElement('div');
+        wrap.className = 'fe-sentence-row';
+        el.parentNode.insertBefore(wrap, el);
+        wrap.appendChild(el);
+        var speakBtn = document.createElement('button');
+        speakBtn.type = 'button';
+        speakBtn.className = 'fe-speak-btn fe-sentence-speak-btn';
+        speakBtn.setAttribute('aria-label', 'Listen to sentence');
+        speakBtn.setAttribute('title', 'Listen to sentence');
+        speakBtn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">volume_up</span>';
+        speakBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          speakBtn.classList.add('fe-speak-btn--speaking');
+          self._speakText(text, function() {
+            speakBtn.classList.remove('fe-speak-btn--speaking');
+          });
+        });
+        wrap.appendChild(speakBtn);
+      });
+    },
+
+    _finishPointRender: function(container, lessonPoints, pointIndex, extraInstruction) {
+      var root = container;
+      if (root && !root.querySelector) root = document.getElementById('feCenterSection') || document.getElementById('main-content');
+      if (!root || !root.querySelector) return;
+
+      var view = root.querySelector('.fe-point-view');
+      if (!view) return;
+
+      var point = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
+      if (!view.querySelector('.fe-lesson-instruction')) {
+        var instructionHtml = this._buildPointInstructionHtml(point, extraInstruction);
+        if (instructionHtml) {
+          var header = view.querySelector('.fe-point-exercise-header, .subpage-header');
+          if (header) header.insertAdjacentHTML('afterend', instructionHtml);
+          else view.insertAdjacentHTML('afterbegin', instructionHtml);
+        }
+      }
+
+      if (!view.querySelector('.fe-point-stage')) {
+        var stage = document.createElement('div');
+        stage.className = 'fe-point-stage';
+        var children = Array.prototype.slice.call(view.children);
+        children.forEach(function(child) {
+          if (!child.classList.contains('fe-point-exercise-header') &&
+              !child.classList.contains('subpage-header') &&
+              !child.classList.contains('fe-lesson-instruction')) {
+            stage.appendChild(child);
+          }
+        });
+        if (stage.children.length) view.appendChild(stage);
+      }
+
+      this._bindSpeakButtons(view);
+      this._enhanceSentenceTts(view);
+
+      view.querySelectorAll('.pv-gallery-verb, .id-gallery-idiom').forEach(function(el) {
+        if (el.querySelector('.fe-gallery-speak-btn')) return;
+        var text = el.textContent.trim();
+        if (!text) return;
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'fe-speak-btn fe-gallery-speak-btn';
+        btn.setAttribute('data-speak-text', text);
+        btn.setAttribute('aria-label', 'Listen');
+        btn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">volume_up</span>';
+        el.appendChild(btn);
+      });
+      this._bindSpeakButtons(view);
     },
 
 
@@ -1686,6 +1834,7 @@
               '<div class="subpage-subtitle">' + self._escapeHTML(catMeta.name) + ' · ' + activeLevel + ' · ' + exercises.length + ' exercises</div>' +
             '</div>' +
           '</div>' +
+          self._buildPointInstructionHtml({ type: 'quick-review' }) +
           '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
             '<div class="fe-quiz-progress-bar"><div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div></div>' +
             '<div class="fe-quiz-questions" id="fe-quiz-questions" data-total="' + exercises.length + '" data-answered="0" data-correct="0">' +
@@ -1704,6 +1853,7 @@
         '</div>';
 
       this._showQuizQuestion(0);
+      this._finishPointRender(container, [{ type: 'quick-review' }], 0);
 
       // Allow Enter key for write inputs
       var inputs = container.querySelectorAll('.wf-transform-input');
@@ -1902,6 +2052,7 @@
         } else if (pointType === 'pv-mixed') {
           this._renderPvMixed(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         }
+        this._finishPointRender(container, lessonPoints, pointIndex);
         var pvState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
         history.pushState(pvState, '', Router.stateToPath(pvState));
         return;
@@ -1928,6 +2079,7 @@
         } else if (pointType === 'wf-transform') {
           this._renderWfTransform(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         }
+        this._finishPointRender(container, lessonPoints, pointIndex);
         var wfState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
         history.pushState(wfState, '', Router.stateToPath(wfState));
         return;
@@ -1974,6 +2126,7 @@
         } else if (pointType === 'id-quiz') {
           this._renderIdQuiz(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         }
+        this._finishPointRender(container, lessonPoints, pointIndex);
         var idState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
         history.pushState(idState, '', Router.stateToPath(idState));
         return;
@@ -1993,6 +2146,7 @@
           return;
         }
         this._renderVocabFlashcards(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
+        this._finishPointRender(container, lessonPoints, pointIndex);
         var vocabState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
         history.pushState(vocabState, '', Router.stateToPath(vocabState));
         return;
@@ -2031,6 +2185,7 @@
         this._renderExercisePoint(container, point, catMeta, levelId, lessonId, lessonData.title, pointIndex);
       }
 
+      this._finishPointRender(container, lessonPoints, pointIndex);
       var pointState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
       history.pushState(pointState, '', Router.stateToPath(pointState));
     },
@@ -2070,6 +2225,7 @@
               '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle || '') + '</div>' +
             '</div>' +
           '</div>' +
+          self._buildPointInstructionHtml({ type: 'explanation', label: point.label }) +
           '<div class="fe-explanation-card" style="--cat-color:' + catMeta.color + '">' +
             '<div class="fe-explanation-verb">' + self._escapeHTML(ct.phrasalVerb || point.label) + '</div>' +
             '<div class="fe-explanation-def">' + self._escapeHTML(ct.definition || '') + '</div>' +
@@ -2132,9 +2288,10 @@
           '<div class="subpage-header">' +
             '<div>' +
               '<div class="subpage-title">' + self._escapeHTML(point.label) + '</div>' +
-              '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle || '') + ' · ' + (ct.instructions || '') + '</div>' +
+              '<div class="subpage-subtitle">' + levelId + ' · ' + self._escapeHTML(lessonTitle || '') + '</div>' +
             '</div>' +
           '</div>' +
+          self._buildPointInstructionHtml({ type: point.type || 'exercise', instructions: ct.instructions, label: point.label }) +
           '<div class="fe-exercise-card" style="--cat-color:' + catMeta.color + '">' +
             '<div class="fe-quiz-progress-bar">' +
               '<div class="fe-quiz-progress-fill" id="fe-quiz-progress-fill" style="background:' + catMeta.color + '"></div>' +
@@ -2160,6 +2317,11 @@
       var questions = document.querySelectorAll('.fe-quiz-question');
       for (var i = 0; i < questions.length; i++) {
         questions[i].style.display = i === qIndex ? 'block' : 'none';
+      }
+      var visible = document.getElementById('fe-quiz-q-' + qIndex);
+      if (visible) {
+        this._enhanceSentenceTts(visible);
+        this._bindSpeakButtons(visible);
       }
     },
 
@@ -2859,7 +3021,8 @@
           '<div class="subpage-title">' + self._escapeHTML(pointLabel || lessonTitle || '') + '</div>' +
           '<div class="subpage-subtitle">' + self._escapeHTML(levelId || '') + ' · ' + self._escapeHTML(lessonTitle || '') + '</div>' +
         '</div>' +
-      '</div>';
+      '</div>' +
+      self._buildPointInstructionHtml(point);
     },
 
     // ── VOCABULARY SIDEBAR ───────────────────────────────────────────────
@@ -3432,6 +3595,7 @@
 
       // Update context for drag handlers
       this._pvDragContext.totalGaps = totalGaps;
+      this._finishPointRender(container, ctx.lessonPoints, pointIndex);
     },
 
     _pvDragNextConv: function() {

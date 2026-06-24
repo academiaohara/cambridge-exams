@@ -192,6 +192,41 @@
         cardEl.classList.remove('ml-card-enter');
         cardEl.classList.add('ml-card-visible');
       });
+
+      this._bindCardSpeakButtons(cardEl);
+    },
+
+    _speakCardText: function(text, btn) {
+      if (!text || !window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      if (btn) btn.classList.add('ml-speak-btn--speaking');
+      var utter = new SpeechSynthesisUtterance(String(text).trim());
+      utter.lang = 'en-GB';
+      utter.rate = 0.85;
+      utter.pitch = 1;
+      var done = function() {
+        if (btn) btn.classList.remove('ml-speak-btn--speaking');
+      };
+      utter.onend = done;
+      utter.onerror = done;
+      window.speechSynthesis.speak(utter);
+    },
+
+    _renderSpeakBtn: function(label, text) {
+      return '<button type="button" class="ml-speak-btn" data-speak-text="' + (text || '').replace(/"/g, '&quot;') + '" aria-label="' + (label || 'Listen') + '" title="' + (label || 'Listen') + '">' +
+        '<span class="material-symbols-outlined" aria-hidden="true">volume_up</span></button>';
+    },
+
+    _bindCardSpeakButtons: function(cardEl) {
+      if (!cardEl) return;
+      var self = this;
+      cardEl.querySelectorAll('.ml-speak-btn[data-speak-text]').forEach(function(btn) {
+        if (btn._mlSpeakBound) return;
+        btn._mlSpeakBound = true;
+        btn.addEventListener('click', function() {
+          self._speakCardText(btn.getAttribute('data-speak-text'), btn);
+        });
+      });
     },
 
     _renderMCCard: function(card, idx) {
@@ -205,22 +240,30 @@
         : '';
 
       return '<div class="ml-card-source">' + card.source + '</div>' +
+        '<p class="ml-instruction">Choose the correct word for gap <strong>(' + card.questionNumber + ')</strong>:</p>' +
         contextHTML +
-        '<div class="ml-question">Choose the correct word for gap <strong>(' + card.questionNumber + ')</strong>:</div>' +
+        '<div class="ml-answer-stage">' +
         '<div class="ml-options">' + optionsHTML + '</div>' +
+        '</div>' +
         '<div class="ml-feedback" id="ml-feedback-' + idx + '" style="display:none;"></div>';
     },
 
     _renderTransformCard: function(card, idx) {
       return '<div class="ml-card-source">' + card.source + '</div>' +
+        '<p class="ml-instruction">Complete the second sentence using the key word <strong>' + card.keyWord + '</strong>:</p>' +
         '<div class="ml-question">' +
-          '<div class="ml-transform-sentence">' + (card.sentence || '') + '</div>' +
+          '<div class="ml-transform-row">' +
+            this._renderSpeakBtn('Listen to sentence', card.sentence || '') +
+            '<div class="ml-transform-sentence">' + (card.sentence || '') + '</div>' +
+          '</div>' +
           '<div class="ml-transform-keyword">Key word: <strong>' + card.keyWord + '</strong></div>' +
           '<div class="ml-transform-gapped">' + (card.gapped || '') + '</div>' +
         '</div>' +
+        '<div class="ml-answer-stage">' +
         '<div class="ml-transform-answer-area">' +
           '<input class="ml-transform-input" id="ml-transform-input-' + idx + '" type="text" placeholder="Type your answer..." />' +
           '<button class="ml-submit-btn" onclick="MicroLearning.answerTransform(' + idx + ')">Check</button>' +
+        '</div>' +
         '</div>' +
         '<div class="ml-feedback" id="ml-feedback-' + idx + '" style="display:none;"></div>';
     },

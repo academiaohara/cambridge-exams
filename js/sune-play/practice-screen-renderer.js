@@ -162,7 +162,9 @@
 
   function renderFullSentence(screen) {
     var p = screen.payload || {};
+    var instruction = p.instruction || 'Write the full sentence.';
     return '<div class="sp-screen sp-screen--write" data-format="full_sentence_write">' +
+      '<p class="sp-gap-instruction">' + esc(instruction) + '</p>' +
       '<p class="sp-display-prompt">' + esc(p.displayPrompt || '') + '</p>' +
       '<textarea class="sp-text-input sp-text-input--large" id="sp-sentence-input" rows="3" placeholder="Write the full sentence" autocomplete="off"></textarea>' +
     '</div>';
@@ -170,7 +172,9 @@
 
   function renderWordOrder(screen) {
     var p = screen.payload || {};
+    var instruction = p.instruction || p.prompt || 'Put the words in the correct order.';
     var html = '<div class="sp-screen sp-screen--tiles" data-format="word_order_tiles">';
+    html += '<p class="sp-gap-instruction">' + esc(instruction) + '</p>';
     html += '<div class="sp-tile-answer" id="sp-tile-answer"></div>';
     html += '<div class="sp-tile-bank" id="sp-tile-bank">';
     (p.tiles || []).forEach(function(word, i) {
@@ -192,8 +196,13 @@
     var placeholder = p.replacementOnly
       ? 'Type the corrected form'
       : 'Write the corrected sentence';
+    var instruction = p.instruction || 'Correct the mistake in the sentence.';
     return '<div class="sp-screen sp-screen--error" data-format="error_correction">' +
+      '<p class="sp-gap-instruction">' + esc(instruction) + '</p>' +
+      '<div class="sp-prompt-row">' +
       '<p class="sp-prompt-sentence">' + sentence + '</p>' +
+      renderSentenceSpeakBtn('Listen to sentence') +
+      '</div>' +
       '<input type="text" class="sp-text-input sp-text-input--large" id="sp-error-input" placeholder="' + esc(placeholder) + '" autocomplete="off">' +
     '</div>';
   }
@@ -201,8 +210,13 @@
   function renderVerbBankTwoStep(screen) {
     var p = screen.payload || {};
     var step = p.step || 'choose_verb';
+    var instruction = p.instruction || 'Choose the verb and write the correct form.';
     var html = '<div class="sp-screen sp-screen--verb-bank" data-format="verb_bank_two_step" data-step="' + step + '">';
+    html += '<p class="sp-gap-instruction">' + esc(instruction) + '</p>';
+    html += '<div class="sp-prompt-row">';
     html += '<p class="sp-prompt-sentence">' + bold((p.sentence || '').replace(GAP_RE, '<span class="sp-inline-gap"></span>')) + '</p>';
+    html += renderSentenceSpeakBtn('Listen to sentence');
+    html += '</div>';
 
     if (step === 'choose_verb') {
       html += '<p class="sp-step-label">Step 1: Choose the base verb</p>';
@@ -337,6 +351,9 @@
     }
 
     if (format === 'verb_bank_two_step') {
+      bindSentenceSpeak(root, function() {
+        return String((screen.payload && screen.payload.sentence) || '').replace(GAP_RE, ' ').replace(/\s+/g, ' ').trim();
+      });
       root.querySelectorAll('.sp-verb-chip').forEach(function(chip) {
         chip.addEventListener('click', function() {
           if (root.classList.contains('sp-screen--locked')) return;
@@ -357,6 +374,24 @@
 
     if (format === 'stative_sorting') {
       bindStativeSorting(root, onChange);
+    }
+
+    if (format === 'error_correction') {
+      bindSentenceSpeak(root, function() {
+        return String((screen.payload && screen.payload.sentence) || '').replace(/\*\*([^*]+)\*\*/g, '$1').trim();
+      });
+    }
+
+    if (format === 'full_sentence_write') {
+      bindSentenceSpeak(root, function() {
+        return String((screen.payload && screen.payload.displayPrompt) || '').trim();
+      });
+    }
+
+    if (format === 'free_text_gap_fill' || format === 'preselected_verb_gap_fill') {
+      bindSentenceSpeak(root, function() {
+        return String((screen.payload && screen.payload.sentence) || '').replace(GAP_RE, ' blank ').replace(/\s+/g, ' ').trim();
+      });
     }
 
     root.querySelectorAll('input, textarea').forEach(function(el) {

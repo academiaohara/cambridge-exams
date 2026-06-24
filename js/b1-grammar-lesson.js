@@ -1076,11 +1076,34 @@
 
     var isTheory = step.kind === 'theory';
     if (instruction) {
+      var instructionText = '';
       if (isTheory) {
-        instruction.textContent = step.section.title || '';
+        instructionText = step.section.title || '';
       } else {
-        instruction.textContent = step.section.studentInstruction || step.section.instructions || '';
+        instructionText = step.section.studentInstruction || step.section.instructions || '';
       }
+      if (!instruction.querySelector('.bgl-instruction-text')) {
+        instruction.innerHTML =
+          '<button type="button" class="bgl-instruction-speak" aria-label="Listen to instruction">' +
+            '<span class="material-symbols-outlined" aria-hidden="true">volume_up</span>' +
+          '</button>' +
+          '<span class="bgl-instruction-text"></span>';
+        var speakBtn = instruction.querySelector('.bgl-instruction-speak');
+        if (speakBtn && !speakBtn._bglSpeakBound) {
+          speakBtn._bglSpeakBound = true;
+          speakBtn.addEventListener('click', function() {
+            var textEl = instruction.querySelector('.bgl-instruction-text');
+            var text = textEl ? textEl.textContent.trim() : '';
+            if (!text) return;
+            speakBtn.classList.add('bgl-instruction-speak--speaking');
+            speakText(text, function() {
+              speakBtn.classList.remove('bgl-instruction-speak--speaking');
+            });
+          });
+        }
+      }
+      var textEl = instruction.querySelector('.bgl-instruction-text');
+      if (textEl) textEl.textContent = instructionText;
     }
 
     if (footerBtn) {
