@@ -140,6 +140,8 @@
     if (s.phase === 'theory') {
       s.mount.innerHTML = '<div class="sp-lesson">' + theory.TheoryFlow(s.unitData, { cardIdx: s.theoryCardIdx }) + '</div>';
       bindTheoryEvents();
+      var theoryBody = s.mount.querySelector('.sp-theory-card-body');
+      if (theoryBody) theoryBody.scrollTop = 0;
       return;
     }
 
@@ -176,38 +178,112 @@
 
   // ─── Theory events ───────────────────────────────────────────────────
 
+  function getTheoryCards() {
+    return (lessonState.unitData.theory && lessonState.unitData.theory.cards) || [];
+  }
+
+  function completeTheoryAndContinue() {
+    lessonState.progress.theoryCompleted = true;
+    theory.markTheoryCompleted(lessonState.unitId);
+    saveProgress(lessonState.unitId, lessonState.progress);
+    if (lessonState._returnPhase === 'session' && lessonState._savedSession) {
+      Object.assign(lessonState, lessonState._savedSession);
+      lessonState._returnPhase = null;
+      lessonState._savedSession = null;
+      lessonState.phase = 'session';
+    } else if (lessonState.pendingNodeId) {
+      var pendingNode = lessonState.pendingNodeId;
+      lessonState.pendingNodeId = null;
+      startPracticeSession(pendingNode);
+      return;
+    } else if (lessonState._returnPhase) {
+      lessonState.phase = lessonState._returnPhase;
+      lessonState._returnPhase = null;
+      renderPhase();
+    } else {
+      enterPractice();
+    }
+  }
+
+  function advanceTheoryCard() {
+    var cards = getTheoryCards();
+    if (lessonState.theoryCardIdx < cards.length - 1) {
+      lessonState.theoryCardIdx++;
+      renderPhase();
+    } else {
+      completeTheoryAndContinue();
+    }
+  }
+
+  function retreatTheoryCard() {
+    if (lessonState.theoryCardIdx > 0) {
+      lessonState.theoryCardIdx--;
+      renderPhase();
+    }
+  }
+
+  function goToTheoryCard(idx) {
+    var cards = getTheoryCards();
+    var target = Math.max(0, Math.min(idx, cards.length - 1));
+    if (target === lessonState.theoryCardIdx) return;
+    lessonState.theoryCardIdx = target;
+    renderPhase();
+  }
+
+  function bindTheorySwipe(el) {
+    if (!el || el._spTheorySwipeBound) return;
+    el._spTheorySwipeBound = true;
+    var startX = 0;
+    var startY = 0;
+    var tracking = false;
+
+    el.addEventListener('touchstart', function(e) {
+      if (!e.touches || e.touches.length !== 1) return;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      tracking = true;
+    }, { passive: true });
+
+    el.addEventListener('touchend', function(e) {
+      if (!tracking) return;
+      tracking = false;
+      var touch = e.changedTouches && e.changedTouches[0];
+      if (!touch) return;
+      var dx = touch.clientX - startX;
+      var dy = touch.clientY - startY;
+      if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+      if (dx < 0) advanceTheoryCard();
+      else retreatTheoryCard();
+    }, { passive: true });
+
+    el.addEventListener('touchcancel', function() {
+      tracking = false;
+    }, { passive: true });
+  }
+
   function bindTheoryEvents() {
-    var btn = lessonState.mount.querySelector('[data-action="theory-next"]');
-    if (!btn) return;
-    btn.addEventListener('click', function() {
-      var cards = (lessonState.unitData.theory && lessonState.unitData.theory.cards) || [];
-      if (lessonState.theoryCardIdx < cards.length - 1) {
-        lessonState.theoryCardIdx++;
-        renderPhase();
-      } else {
-        lessonState.progress.theoryCompleted = true;
-        theory.markTheoryCompleted(lessonState.unitId);
-        saveProgress(lessonState.unitId, lessonState.progress);
-        if (lessonState._returnPhase === 'session' && lessonState._savedSession) {
-          Object.assign(lessonState, lessonState._savedSession);
-          lessonState._returnPhase = null;
-          lessonState._savedSession = null;
-          lessonState.phase = 'session';
-        } else if (lessonState.pendingNodeId) {
-          var pendingNode = lessonState.pendingNodeId;
-          lessonState.pendingNodeId = null;
-          startPracticeSession(pendingNode);
-          return;
-        } else if (lessonState._returnPhase) {
-          lessonState.phase = lessonState._returnPhase;
-          lessonState._returnPhase = null;
-          renderPhase();
-        } else {
-          enterPractice();
-        }
-        return;
-      }
+    var mount = lessonState.mount;
+    if (!mount) return;
+
+    var nextBtn = mount.querySelector('[data-action="theory-next"]');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', advanceTheoryCard);
+    }
+
+    var prevBtn = mount.querySelector('[data-action="theory-prev"]');
+    if (prevBtn) {
+      prevBtn.addEventListener('click', retreatTheoryCard);
+    }
+
+    mount.querySelectorAll('[data-action="theory-goto"]').forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        var idx = parseInt(dot.getAttribute('data-card-idx'), 10);
+        if (!isNaN(idx)) goToTheoryCard(idx);
+      });
     });
+
+    var swipeRoot = mount.querySelector('.sp-theory-shell') || mount.querySelector('.sp-theory-flow');
+    bindTheorySwipe(swipeRoot);
   }
 
   // ─── Session ─────────────────────────────────────────────────────────

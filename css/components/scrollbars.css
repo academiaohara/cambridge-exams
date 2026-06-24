@@ -189,7 +189,8 @@ body:has(.dashboard-layout--exercise) {
 .scroll-accent-blue,
 .cu-overview-block-filter-scroll,
 .lesson-explanation-body,
-.cu-lesson-stage {
+.cu-lesson-stage,
+.sp-theory-card-body {
   --scroll-thumb: rgba(28, 176, 246, 0.28);
   --scroll-thumb-hover: rgba(28, 176, 246, 0.45);
   --scroll-thumb-active: rgba(28, 176, 246, 0.58);
@@ -205,6 +206,7 @@ body:has(.dashboard-layout--exercise) {
 .fe-map-outer,
 .lesson-explanation-body,
 .cu-lesson-stage,
+.sp-theory-card-body,
 .speaking-chat-history,
 .wf-dict-results,
 .pv-dict-results,

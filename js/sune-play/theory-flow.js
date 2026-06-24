@@ -151,29 +151,40 @@
         '<h3 class="sp-theory-card-title">' + esc(card.title) + '</h3>' +
         (card.subtitle ? '<p class="sp-theory-card-subtitle">' + esc(card.subtitle) + '</p>' : '') +
       '</header>' +
-      '<div class="sp-theory-card-body">' + sectionsHtml + '</div>' +
+      '<div class="sp-theory-card-body scroll-accent-blue">' + sectionsHtml + '</div>' +
     '</article>';
   }
 
-  // ─── TheoryProgress ──────────────────────────────────────────────────
+  // ─── TheoryDots ──────────────────────────────────────────────────────
 
-  function TheoryProgress(current, total) {
-    return '<div class="sp-theory-progress" data-component="TheoryProgress">' +
-      '<span class="sp-theory-progress-text">' + current + ' / ' + total + '</span>' +
-      '<div class="sp-theory-progress-bar">' +
-        '<div class="sp-theory-progress-fill" style="width:' + Math.round((current / total) * 100) + '%"></div>' +
-      '</div>' +
-    '</div>';
+  function TheoryDots(cardIdx, total) {
+    if (total <= 1) return '';
+    var dots = '';
+    for (var i = 0; i < total; i++) {
+      var active = i === cardIdx;
+      dots += '<button type="button" class="sp-theory-dot' + (active ? ' sp-theory-dot--active' : '') + '"' +
+        ' data-action="theory-goto" data-card-idx="' + i + '"' +
+        ' aria-label="Tarjeta ' + (i + 1) + ' de ' + total + '"' +
+        (active ? ' aria-current="true"' : '') + '></button>';
+    }
+    return '<div class="sp-theory-dots" data-component="TheoryDots" role="tablist">' + dots + '</div>';
   }
 
-  // ─── TheoryCompleteButton ────────────────────────────────────────────
+  // ─── TheoryNavButton ─────────────────────────────────────────────────
 
-  function TheoryCompleteButton(isLast) {
-    var icon = isLast ? 'play_arrow' : 'arrow_forward';
-    var label = isLast ? 'Empezar práctica' : 'Siguiente';
-    var cls = isLast ? 'sp-btn sp-btn--primary sp-btn--start-practice sp-btn--icon' : 'sp-btn sp-btn--primary sp-btn--icon';
-    return '<button type="button" class="' + cls + '" data-component="TheoryCompleteButton" data-action="theory-next" aria-label="' + esc(label) + '">' +
-      '<span class="material-symbols-outlined">' + icon + '</span></button>';
+  function TheoryNavButton(direction, opts) {
+    opts = opts || {};
+    var isPrev = direction === 'prev';
+    var action = isPrev ? 'theory-prev' : 'theory-next';
+    var icon = isPrev ? 'arrow_back' : (opts.isLast ? 'play_arrow' : 'arrow_forward');
+    var label = isPrev ? 'Anterior' : (opts.isLast ? 'Empezar práctica' : 'Siguiente');
+    var disabled = isPrev && opts.isFirst;
+    return '<button type="button" class="sp-theory-nav sp-theory-nav--' + direction + '"' +
+      ' data-component="TheoryNavButton" data-action="' + action + '"' +
+      ' aria-label="' + esc(label) + '"' +
+      (disabled ? ' disabled' : '') + '>' +
+      '<span class="material-symbols-outlined" aria-hidden="true">' + icon + '</span>' +
+    '</button>';
   }
 
   // ─── TheoryFlow ──────────────────────────────────────────────────────
@@ -190,14 +201,17 @@
       return '<div class="sp-theory-empty">No theory cards available.</div>';
     }
 
-    return '<div class="sp-theory-flow" data-component="TheoryFlow">' +
-      '<div class="sp-theory-flow-top">' +
-        TheoryProgress(cardIdx + 1, cards.length) +
+    var isFirst = cardIdx <= 0;
+
+    return '<div class="sp-theory-shell" data-component="TheoryShell">' +
+      TheoryNavButton('prev', { isFirst: isFirst }) +
+      '<div class="sp-theory-flow" data-component="TheoryFlow">' +
+        '<div class="sp-theory-flow-top">' +
+          TheoryDots(cardIdx, cards.length) +
+        '</div>' +
+        '<div class="sp-theory-flow-card-wrap">' + TheoryCard(card) + '</div>' +
       '</div>' +
-      '<div class="sp-theory-flow-card-wrap">' + TheoryCard(card) + '</div>' +
-      '<div class="sp-theory-flow-footer">' +
-        TheoryCompleteButton(isLast) +
-      '</div>' +
+      TheoryNavButton('next', { isLast: isLast }) +
     '</div>';
   }
 
@@ -219,8 +233,8 @@
     TheoryFlow: TheoryFlow,
     TheoryCard: TheoryCard,
     TheoryCardSection: TheoryCardSection,
-    TheoryProgress: TheoryProgress,
-    TheoryCompleteButton: TheoryCompleteButton,
+    TheoryDots: TheoryDots,
+    TheoryNavButton: TheoryNavButton,
     isTheoryCompleted: isTheoryCompleted,
     markTheoryCompleted: markTheoryCompleted,
     getTheoryStorageKey: getTheoryStorageKey
