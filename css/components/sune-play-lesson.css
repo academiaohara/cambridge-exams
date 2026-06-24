@@ -1568,6 +1568,33 @@ button.sp-example-line.sp-speakable {
   box-shadow: 0 2px 0 var(--sp-duo-blue-dark);
 }
 
+.sp-visual-prompt {
+  margin-bottom: 20px;
+}
+
+.sp-visual-prompt__image-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f4f7fb;
+  margin-bottom: 14px;
+}
+
+.sp-visual-prompt__image {
+  display: block;
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+}
+
+.sp-visual-prompt__question {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-dark);
+}
+
 .sp-tile-answer {
   min-height: 52px;
   border: 2px dashed var(--border-light);
