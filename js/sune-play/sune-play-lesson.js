@@ -109,6 +109,42 @@
     }
   }
 
+  function returnToSessionFromTheory() {
+    if (!lessonState || lessonState._returnPhase !== 'session' || !lessonState._savedSession) {
+      return false;
+    }
+    Object.assign(lessonState, lessonState._savedSession);
+    lessonState._returnPhase = null;
+    lessonState._savedSession = null;
+    lessonState.phase = 'session';
+    renderPhase();
+    return true;
+  }
+
+  function closeTheory() {
+    if (returnToSessionFromTheory()) return;
+    exitLesson();
+  }
+
+  function showSessionExitConfirm(onLeave) {
+    if (typeof BentoGrid !== 'undefined' && BentoGrid._showLearningExitConfirm) {
+      BentoGrid._showLearningExitConfirm(onLeave, {
+        message: 'Are you sure you want to leave? You will have to start the exercise from scratch.',
+        stayLabel: 'Keep learning',
+        leaveLabel: 'Leave'
+      });
+      return;
+    }
+    onLeave();
+  }
+
+  function requestSessionExit() {
+    showSessionExitConfirm(function() {
+      lessonState.activeNode = null;
+      exitLesson();
+    });
+  }
+
   function enterPractice(nodeId, opts) {
     opts = opts || {};
     var targetNodeId = nodeId || getFirstIncompleteNodeId();
@@ -295,9 +331,7 @@
 
     var exitBtn = mount.querySelector('[data-action="theory-exit"]');
     if (exitBtn) {
-      exitBtn.addEventListener('click', function() {
-        exitLesson();
-      });
+      exitBtn.addEventListener('click', closeTheory);
     }
 
     var swipeRoot = mount.querySelector('.sp-theory-shell') || mount.querySelector('.sp-theory-flow');
@@ -474,10 +508,7 @@
     if (explainBtn) {
       explainBtn.addEventListener('click', handleExplainClick);
     }
-    mount.querySelector('[data-action="exit-session"]') && mount.querySelector('[data-action="exit-session"]').addEventListener('click', function() {
-      lessonState.activeNode = null;
-      exitLesson();
-    });
+    mount.querySelector('[data-action="exit-session"]') && mount.querySelector('[data-action="exit-session"]').addEventListener('click', requestSessionExit);
     var theoryBtn = mount.querySelector('[data-action="review-theory"]');
     if (theoryBtn) {
       theoryBtn.addEventListener('click', function() {

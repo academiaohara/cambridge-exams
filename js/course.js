@@ -7934,7 +7934,12 @@
       return sec.getAttribute('data-lesson-flow') === 'true';
     },
 
-    _showLearningExitConfirm: function(onLeave) {
+    _showLearningExitConfirm: function(onLeave, texts) {
+      texts = texts || {};
+      var message = texts.message || '¿Seguro que quieres salir? Tendrás que empezar el ejercicio desde cero.';
+      var stayLabel = texts.stayLabel || 'Seguir aprendiendo';
+      var leaveLabel = texts.leaveLabel || 'Salir';
+
       var existing = document.getElementById('cu-lesson-exit-modal');
       if (existing) existing.remove();
 
@@ -7946,12 +7951,12 @@
           '<div class="cu-lesson-exit-hero">' +
             '<img src="Assets/images/Cabezasune.svg" alt="" class="cu-lesson-exit-fox" aria-hidden="true">' +
             '<div class="cu-lesson-exit-bubble">' +
-              '<p class="cu-lesson-exit-text">¿Seguro que quieres salir? Tendrás que empezar el ejercicio desde cero.</p>' +
+              '<p class="cu-lesson-exit-text">' + BentoGrid._escapeHTML(message) + '</p>' +
             '</div>' +
           '</div>' +
           '<div class="cu-lesson-exit-actions">' +
-            '<button type="button" class="cu-lesson-exit-btn cu-lesson-exit-btn--stay">Seguir aprendiendo</button>' +
-            '<button type="button" class="cu-lesson-exit-btn cu-lesson-exit-btn--leave">Salir</button>' +
+            '<button type="button" class="cu-lesson-exit-btn cu-lesson-exit-btn--stay">' + BentoGrid._escapeHTML(stayLabel) + '</button>' +
+            '<button type="button" class="cu-lesson-exit-btn cu-lesson-exit-btn--leave">' + BentoGrid._escapeHTML(leaveLabel) + '</button>' +
           '</div>' +
         '</div>';
 
