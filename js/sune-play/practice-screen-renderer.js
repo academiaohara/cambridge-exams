@@ -147,7 +147,6 @@
   function renderWordOrder(screen) {
     var p = screen.payload || {};
     var html = '<div class="sp-screen sp-screen--tiles" data-format="word_order_tiles">';
-    html += '<p class="sp-display-prompt">' + esc(p.prompt || 'Build the sentence.') + '</p>';
     html += '<div class="sp-tile-answer" id="sp-tile-answer"></div>';
     html += '<div class="sp-tile-bank" id="sp-tile-bank">';
     (p.tiles || []).forEach(function(word, i) {
