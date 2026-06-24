@@ -44,16 +44,23 @@
     }
   }
 
+  function renderOptionBtn(opt, index) {
+    return '<button type="button" class="sp-option-btn" data-value="' + esc(opt) + '">' +
+      '<span class="sp-option-num">' + (index + 1) + '</span>' +
+      '<span class="sp-option-label">' + esc(opt) + '</span>' +
+    '</button>';
+  }
+
   function renderTwoOption(screen) {
     var p = screen.payload || {};
     var html = '<div class="sp-screen sp-screen--choice" data-format="two_option_choice">';
     html += '<p class="sp-prompt-sentence">' +
       esc(p.sentenceBefore) +
-      ' <span class="sp-gap-slot" id="sp-choice-slot">______</span> ' +
+      ' <span class="sp-gap-slot" id="sp-choice-slot"></span> ' +
       esc(p.sentenceAfter) + '</p>';
     html += '<div class="sp-option-grid">';
-    (p.options || []).forEach(function(opt) {
-      html += '<button type="button" class="sp-option-btn" data-value="' + esc(opt) + '">' + esc(opt) + '</button>';
+    (p.options || []).forEach(function(opt, i) {
+      html += renderOptionBtn(opt, i);
     });
     html += '</div></div>';
     return html;
@@ -61,7 +68,7 @@
 
   function renderGapFill(screen) {
     var p = screen.payload || {};
-    var sentence = bold((p.sentence || '').replace(GAP_RE, '<span class="sp-inline-gap">______</span>'));
+    var sentence = bold((p.sentence || '').replace(GAP_RE, '<span class="sp-inline-gap"></span>'));
     var html = '<div class="sp-screen sp-screen--gap" data-format="free_text_gap_fill">';
     html += '<p class="sp-prompt-sentence">' + sentence + '</p>';
     if (p.verbPrompt) html += '<p class="sp-verb-prompt">' + esc(p.verbPrompt) + '</p>';
@@ -111,7 +118,7 @@
     var p = screen.payload || {};
     var step = p.step || 'choose_verb';
     var html = '<div class="sp-screen sp-screen--verb-bank" data-format="verb_bank_two_step" data-step="' + step + '">';
-    html += '<p class="sp-prompt-sentence">' + bold((p.sentence || '').replace(GAP_RE, '<span class="sp-inline-gap">______</span>')) + '</p>';
+    html += '<p class="sp-prompt-sentence">' + bold((p.sentence || '').replace(GAP_RE, '<span class="sp-inline-gap"></span>')) + '</p>';
 
     if (step === 'choose_verb') {
       html += '<p class="sp-step-label">Step 1: Choose the base verb</p>';
@@ -190,8 +197,8 @@
     html += '<p class="sp-meaning-sentence">' + bold(p.sentence || '') + '</p>';
     html += '<p class="sp-meaning-question">' + esc(p.prompt || '') + '</p>';
     html += '<div class="sp-option-grid">';
-    (p.options || []).forEach(function(opt) {
-      html += '<button type="button" class="sp-option-btn" data-value="' + esc(opt) + '">' + esc(opt) + '</button>';
+    (p.options || []).forEach(function(opt, i) {
+      html += renderOptionBtn(opt, i);
     });
     html += '</div></div>';
     return html;
