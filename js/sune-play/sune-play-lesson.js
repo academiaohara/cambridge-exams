@@ -629,7 +629,7 @@
       case 'error_correction':
         return p.instruction || 'Correct the mistake in the sentence.';
       case 'verb_bank_two_step':
-        return p.instruction || 'Choose the verb and write the correct form.';
+        return p.instruction || 'Escribe el verbo en la forma correcta.';
       case 'passage_error_hunt_single':
         return p.instruction || 'Find one wrong verb phrase.';
       case 'stative_sorting':

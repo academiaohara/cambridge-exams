@@ -295,8 +295,6 @@
         html += '<button type="button" class="sp-verb-chip" data-verb="' + esc(v) + '">' + esc(v) + '</button>';
       });
       html += '</div>';
-    } else {
-      html += '<p class="sp-step-label">Step 2: Write the correct form</p>';
     }
     html += '</div>';
     return html;
