@@ -309,6 +309,7 @@
 
   window.SunePlayScreens = {
     generatePracticeScreens: generatePracticeScreens,
-    getExerciseBank: getExerciseBank
+    getExerciseBank: getExerciseBank,
+    normalizeFormatType: normalizeFormatType
   };
 })();
