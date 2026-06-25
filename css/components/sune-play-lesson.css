@@ -1149,6 +1149,14 @@ button.sp-example-line.sp-speakable {
   box-sizing: border-box;
 }
 
+.sp-inline-gap:empty {
+  display: inline-block;
+  min-width: 60px;
+  min-height: 1.4em;
+  border-bottom: 2px dashed var(--sp-primary);
+  vertical-align: baseline;
+}
+
 .sp-inline-gap-group {
   display: inline-flex;
   align-items: center;

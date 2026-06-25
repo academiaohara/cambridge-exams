@@ -273,9 +273,17 @@
   function renderVerbBankTwoStep(screen) {
     var p = screen.payload || {};
     var step = p.step || 'choose_verb';
-    var html = '<div class="sp-screen sp-screen--verb-bank" data-format="verb_bank_two_step" data-step="' + step + '">';
+    var isTypeForm = step === 'type_form';
+    var screenCls = 'sp-screen sp-screen--verb-bank' + (isTypeForm ? ' sp-screen--gap' : '');
+    var html = '<div class="' + screenCls + '" data-format="verb_bank_two_step" data-step="' + step + '">';
     html += '<div class="sp-prompt-row">';
-    html += '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + bold((p.sentence || '').replace(GAP_RE, '<span class="sp-inline-gap"></span>')) + '</p>';
+    if (isTypeForm) {
+      var verbRef = p.selectedVerb || p.baseVerb || '';
+      var gapField = buildInlineGapField(verbRef);
+      html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + renderSentenceWithGap(p.sentence, gapField) + '</p>';
+    } else {
+      html += '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + bold((p.sentence || '').replace(GAP_RE, '<span class="sp-inline-gap"></span>')) + '</p>';
+    }
     html += '</div>';
 
     if (step === 'choose_verb') {
@@ -289,8 +297,6 @@
       html += '</div>';
     } else {
       html += '<p class="sp-step-label">Step 2: Write the correct form</p>';
-      html += '<p class="sp-preselected-verb">Verb: <strong>' + esc(p.selectedVerb || p.baseVerb) + '</strong></p>';
-      html += '<input type="text" class="sp-text-input" id="sp-verb-form-input" placeholder="Type the conjugated form" autocomplete="off">';
     }
     html += '</div>';
     return html;
@@ -413,8 +419,18 @@
     }
 
     if (format === 'verb_bank_two_step') {
+      var verbPayload = screen.payload || {};
+      var verbStep = verbPayload.step || 'choose_verb';
       bindSentenceSpeak(root, function() {
-        return String((screen.payload && screen.payload.sentence) || '').replace(GAP_RE, ' ').replace(/\s+/g, ' ').trim();
+        var p = screen.payload || {};
+        if (verbStep === 'type_form') {
+          var gapInput = root.querySelector('#sp-gap-input');
+          var userAnswer = gapInput ? gapInput.value.trim() : '';
+          if (userAnswer) {
+            return String(p.sentence || '').replace(GAP_RE, userAnswer).replace(/\s+/g, ' ').trim();
+          }
+        }
+        return String(p.sentence || '').replace(GAP_RE, ' ').replace(/\s+/g, ' ').trim();
       });
       root.querySelectorAll('.sp-verb-chip').forEach(function(chip) {
         chip.addEventListener('click', function() {
@@ -424,6 +440,19 @@
           onChange();
         });
       });
+      if (verbStep === 'type_form') {
+        var verbGapInput = root.querySelector('#sp-gap-input');
+        if (verbGapInput) {
+          verbGapInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !root.classList.contains('sp-screen--locked')) {
+              e.preventDefault();
+              var actionBtn = document.getElementById('sp-action-btn');
+              if (actionBtn && !actionBtn.disabled) actionBtn.click();
+            }
+          });
+          setTimeout(function() { verbGapInput.focus(); }, 0);
+        }
+      }
     }
 
     if (format === 'word_order_tiles') {
@@ -751,7 +780,7 @@
     if (f === 'verb_bank_two_step') {
       var step = (screen.payload && screen.payload.step) || 'choose_verb';
       if (step === 'choose_verb') return !!root.querySelector('.sp-verb-chip--selected');
-      var vf = root.querySelector('#sp-verb-form-input');
+      var vf = root.querySelector('#sp-gap-input');
       return vf && !!vf.value.trim();
     }
     if (f === 'passage_error_hunt_single') {
@@ -859,7 +888,7 @@
             result._selectedVerb = verb;
           }
         } else {
-          var formInp = root.querySelector('#sp-verb-form-input');
+          var formInp = root.querySelector('#sp-gap-input');
           var form = formInp ? formInp.value.trim() : '';
           result.userAnswer = form;
           var expected = Array.isArray(p.answer) ? p.answer : [p.answer];
