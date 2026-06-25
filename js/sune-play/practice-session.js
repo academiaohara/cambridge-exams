@@ -163,6 +163,19 @@
     '</div>';
   }
 
+  function ResultActionButtons() {
+    return '<div class="sp-result-actions">' +
+      '<button type="button" class="sp-btn sp-btn--primary sp-btn--labeled" data-action="retry-node" aria-label="Try again">' +
+        '<span class="material-symbols-outlined" aria-hidden="true">refresh</span>' +
+        '<span class="sp-btn-label">Try again</span>' +
+      '</button>' +
+      '<button type="button" class="sp-btn sp-btn--ghost sp-btn--labeled" data-action="back-to-nodes" aria-label="Go back">' +
+        '<span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>' +
+        '<span class="sp-btn-label">Go back</span>' +
+      '</button>' +
+    '</div>';
+  }
+
   // ─── PracticeFailedScreen ────────────────────────────────────────────
 
   function PracticeFailedScreen(node) {
@@ -170,10 +183,7 @@
       '<div class="sp-result-icon sp-result-icon--failed"><span class="material-symbols-outlined">heart_broken</span></div>' +
       '<h2 class="sp-result-title">Out of lives</h2>' +
       '<p class="sp-result-subtitle">You ran out of hearts in <strong>' + esc(node.shortTitle || node.title) + '</strong>.</p>' +
-      '<button type="button" class="sp-btn sp-btn--primary" data-action="retry-node" aria-label="Retry">' +
-        '<span class="material-symbols-outlined">refresh</span></button>' +
-      '<button type="button" class="sp-btn sp-btn--ghost" data-action="back-to-nodes" aria-label="Back to practice">' +
-        '<span class="material-symbols-outlined">arrow_back</span></button>' +
+      ResultActionButtons() +
     '</div>';
   }
 
@@ -182,10 +192,7 @@
       '<div class="sp-result-icon"><span class="material-symbols-outlined">replay</span></div>' +
       '<h2 class="sp-result-title">Keep practising</h2>' +
       '<p class="sp-result-subtitle">You need ' + (stats.required || 0) + ' correct screens. You got ' + (stats.correct || 0) + '.</p>' +
-      '<button type="button" class="sp-btn sp-btn--primary" data-action="retry-node" aria-label="Retry">' +
-        '<span class="material-symbols-outlined">refresh</span></button>' +
-      '<button type="button" class="sp-btn sp-btn--ghost" data-action="back-to-nodes" aria-label="Back to practice">' +
-        '<span class="material-symbols-outlined">arrow_back</span></button>' +
+      ResultActionButtons() +
     '</div>';
   }
 

@@ -1981,7 +1981,9 @@ button.sp-example-line.sp-speakable {
   animation: spResultPopIn 0.45s ease;
 }
 
-.sp-lesson:has(.sp-result-screen--complete) {
+.sp-lesson:has(.sp-result-screen--complete),
+.sp-lesson:has(.sp-result-screen--failed),
+.sp-lesson:has(.sp-result-screen--retry) {
   justify-content: center;
   align-items: center;
 }
@@ -1990,6 +1992,16 @@ button.sp-example-line.sp-speakable {
   width: 100%;
   max-width: 420px;
   background: linear-gradient(180deg, #ffffff 0%, #f7fcff 100%);
+}
+
+.sp-result-screen--failed,
+.sp-result-screen--retry {
+  width: 100%;
+  max-width: 420px;
+}
+
+.sp-result-screen--failed {
+  background: linear-gradient(180deg, #ffffff 0%, #fff8fb 100%);
 }
 
 .sp-result-celebration {
@@ -2061,8 +2073,9 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-result-icon--failed {
-  background: rgba(244, 114, 182, 0.12);
+  background: linear-gradient(145deg, rgba(244, 114, 182, 0.18), #ffffff);
   color: #f472b6;
+  box-shadow: 0 8px 24px rgba(244, 114, 182, 0.18);
 }
 
 .sp-result-title {
@@ -2075,11 +2088,17 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-result-subtitle {
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.5;
   color: var(--text-light);
   margin: 0 0 28px;
   position: relative;
   z-index: 1;
+}
+
+.sp-result-subtitle strong {
+  color: var(--primary);
+  font-weight: 800;
 }
 
 .sp-result-stats {
@@ -2140,9 +2159,40 @@ button.sp-example-line.sp-speakable {
   z-index: 1;
 }
 
+.sp-result-actions {
+  display: flex;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.sp-result-actions .sp-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  margin: 0;
+  min-height: 48px;
+  padding: 12px 14px;
+}
+
+.sp-result-actions .sp-btn--ghost {
+  margin-top: 0;
+  background: var(--white);
+  color: var(--primary);
+  border-color: var(--sp-duo-blue-border);
+}
+
+.sp-result-actions .sp-btn--ghost:active:not(:disabled) {
+  background: var(--sp-duo-blue-light);
+}
+
 .sp-btn--labeled {
   flex-direction: row;
-  gap: 10px;
+  gap: 8px;
+}
+
+.sp-result-actions .sp-btn--labeled .sp-btn-label {
+  font-size: 0.92rem;
 }
 
 .sp-btn--labeled .sp-btn-label {
@@ -2151,6 +2201,20 @@ button.sp-example-line.sp-speakable {
 
 .sp-btn--labeled .material-symbols-outlined {
   font-size: 1.4rem;
+}
+
+.sp-result-actions .sp-btn--labeled .material-symbols-outlined {
+  font-size: 1.25rem;
+}
+
+@media (max-width: 380px) {
+  .sp-result-actions {
+    flex-direction: column;
+  }
+
+  .sp-result-actions .sp-btn {
+    width: 100%;
+  }
 }
 
 /* ─── Lesson focus layout ───────────────────────────────────────────── */
