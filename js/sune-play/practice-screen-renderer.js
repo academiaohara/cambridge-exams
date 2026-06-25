@@ -273,6 +273,7 @@
     var p = screen.payload || {};
     var groups = p.groups || [];
     var verbs = p.verbs || [];
+    var alreadyCorrect = screen._stativeCorrect || [];
     if (!verbs.length && groups.length) {
       groups.forEach(function(g) {
         (g.answers || []).forEach(function(v) {
@@ -283,6 +284,11 @@
     } else {
       verbs = verbs.map(function(v) {
         return typeof v === 'string' ? { verb: v } : v;
+      });
+    }
+    if (alreadyCorrect.length) {
+      verbs = verbs.filter(function(v) {
+        return alreadyCorrect.indexOf(v.verb) === -1;
       });
     }
 
@@ -468,9 +474,42 @@
     });
   }
 
+  function lockSortContainerSizes(root, screen) {
+    var pool = root.querySelector('#sp-sort-pool');
+    if (pool && !pool.dataset.sizeLocked) {
+      var groups = (screen.payload && screen.payload.groups) || [];
+      var totalVerbs = groups.reduce(function(sum, g) {
+        return sum + (g.answers || []).length;
+      }, 0);
+      var poolRows = Math.ceil(Math.max(totalVerbs, 1) / 4);
+      pool.style.minHeight = Math.max(56, poolRows * 48 + 24) + 'px';
+      pool.dataset.sizeLocked = '1';
+    }
+
+    var groups = (screen.payload && screen.payload.groups) || [];
+    var maxPerGroup = 0;
+    groups.forEach(function(g) {
+      var count = (g.answers || []).length;
+      if (count > maxPerGroup) maxPerGroup = count;
+    });
+    var dropzoneMinHeight = Math.max(120, Math.ceil(maxPerGroup / 2) * 48 + 20);
+    root.querySelectorAll('.sp-sort-dropzone').forEach(function(zone) {
+      if (zone.dataset.sizeLocked) return;
+      zone.style.minHeight = dropzoneMinHeight + 'px';
+      zone.dataset.sizeLocked = '1';
+    });
+  }
+
   function bindStativeSorting(root, onChange) {
     var pool = root.querySelector('#sp-sort-pool');
+    var screen = root._spScreen;
     var draggedEl = null;
+
+    if (screen) {
+      requestAnimationFrame(function() {
+        lockSortContainerSizes(root, screen);
+      });
+    }
 
     function isLocked() {
       return root.classList.contains('sp-screen--locked');
@@ -559,6 +598,65 @@
         }
       });
     });
+  }
+
+  function processStativeSortingCheck(root, screen, done) {
+    var p = screen.payload || {};
+    var groups = p.groups || [];
+    var pool = root.querySelector('#sp-sort-pool');
+    var totalExpected = 0;
+    var alreadyCorrect = (screen._stativeCorrect || []).slice();
+    var wrongCount = 0;
+    var roundCorrect = 0;
+    var toProcess = [];
+
+    groups.forEach(function(g) {
+      totalExpected += (g.answers || []).length;
+      var zone = root.querySelector('.sp-sort-dropzone[data-group="' + g.groupId + '"]');
+      if (!zone) return;
+      var expected = g.answers || [];
+      zone.querySelectorAll('.sp-sort-verb').forEach(function(btn) {
+        var verb = btn.getAttribute('data-verb');
+        var isCorrect = expected.indexOf(verb) !== -1;
+        toProcess.push({ btn: btn, verb: verb, isCorrect: isCorrect });
+        btn.classList.remove('sp-sort-verb--correct', 'sp-sort-verb--incorrect');
+        btn.classList.add(isCorrect ? 'sp-sort-verb--correct' : 'sp-sort-verb--incorrect');
+        btn.setAttribute('draggable', 'false');
+        if (isCorrect) roundCorrect++;
+        else wrongCount++;
+      });
+    });
+
+    root.classList.add('sp-screen--locked');
+
+    setTimeout(function() {
+      toProcess.forEach(function(item) {
+        item.btn.classList.remove('sp-sort-verb--correct', 'sp-sort-verb--incorrect');
+        item.btn.setAttribute('draggable', 'true');
+        if (item.isCorrect) {
+          item.btn.remove();
+          if (alreadyCorrect.indexOf(item.verb) === -1) alreadyCorrect.push(item.verb);
+        } else if (pool) {
+          pool.appendChild(item.btn);
+        }
+      });
+
+      screen._stativeCorrect = alreadyCorrect;
+      root.classList.remove('sp-screen--locked');
+
+      var allDone = alreadyCorrect.length >= totalExpected;
+      done({
+        correct: allDone,
+        explanation: p.explanation || '',
+        correctAnswer: '',
+        userAnswer: 'sorted',
+        lifeLoss: allDone ? 0 : Math.min(wrongCount, 2),
+        wrongCount: wrongCount,
+        roundCorrect: roundCorrect,
+        shouldRequeue: false,
+        partial: !allDone
+      });
+    }, 700);
   }
 
   // ─── Check answers ───────────────────────────────────────────────────
@@ -788,6 +886,7 @@
     FeedbackSheet: FeedbackSheet,
     bindScreen: bindScreen,
     isScreenReady: isScreenReady,
-    checkScreen: checkScreen
+    checkScreen: checkScreen,
+    processStativeSortingCheck: processStativeSortingCheck
   };
 })();

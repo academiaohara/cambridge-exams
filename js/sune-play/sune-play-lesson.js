@@ -755,6 +755,11 @@
     var screen = lessonState.currentScreen;
     if (!screenRoot || !screen) return;
 
+    if (screen.formatType === 'stative_sorting') {
+      handleStativeSortingCheck(screenRoot, screen);
+      return;
+    }
+
     var result = renderer.checkScreen(screenRoot, screen);
     screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
 
@@ -796,6 +801,36 @@
     }
 
     updateSessionHeader();
+  }
+
+  function handleStativeSortingCheck(screenRoot, screen) {
+    renderer.processStativeSortingCheck(screenRoot, screen, function(result) {
+      screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
+
+      if (!result.correct && result.lifeLoss > 0) {
+        var lost = lessonState.hearts.loseLife(result.lifeLoss, {
+          screenId: screen.screenId,
+          itemId: screen.itemId,
+          maxLifeLossPerScreen: screen.maxLifeLossPerScreen
+        });
+        if (lost) lessonState.sessionLivesLost += result.lifeLoss;
+      }
+
+      if (result.correct) {
+        screenRoot.classList.add('sp-screen--locked');
+        lessonState.queue.removeCompletedItem(screen);
+        lessonState.sessionCorrect++;
+        showFeedback(result, true);
+      } else {
+        if (window.AudioUtils) {
+          if (result.wrongCount > 0) AudioUtils.playFailureSound();
+          else if (result.roundCorrect > 0) AudioUtils.playSuccessSound();
+        }
+        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+      }
+
+      updateSessionHeader();
+    });
   }
 
   function showFeedback(result, advanceOnContinue) {
