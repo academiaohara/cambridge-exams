@@ -1115,11 +1115,27 @@ button.sp-example-line.sp-speakable {
   max-width: 28rem;
 }
 
+.sp-prompt-row--gap {
+  justify-content: center;
+  width: 100%;
+}
+
+.sp-prompt-row--gap .sp-prompt-sentence--inline-gap {
+  text-align: left;
+  display: inline-block;
+  max-width: 100%;
+}
+
 .sp-prompt-sentence--inline-gap {
   font-size: 1.15rem;
   line-height: 1.8;
   margin: 0;
   max-width: 100%;
+}
+
+.sp-prompt-sentence--multi-gap .sp-gap-verb-ref--trailing {
+  margin-left: 6px;
+  vertical-align: middle;
 }
 
 .sp-gap-slot {

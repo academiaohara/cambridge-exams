@@ -59,10 +59,33 @@
     return false;
   }
 
+  function matchesBlanks(givens, item, opts) {
+    opts = opts || {};
+    var expectedRows = [];
+    if (item.acceptedAnswers && item.acceptedAnswers.length && Array.isArray(item.acceptedAnswers[0])) {
+      expectedRows = item.acceptedAnswers;
+    } else if (Array.isArray(item.answer)) {
+      expectedRows = [item.answer];
+    }
+    if (!expectedRows.length) return false;
+    return expectedRows.some(function(row) {
+      if (!Array.isArray(row) || row.length !== givens.length) return false;
+      return row.every(function(exp, i) {
+        var g = opts.caseSensitive ? normalizeAnswerPreserveCase(givens[i]) : normalizeAnswer(givens[i]);
+        var variants = String(exp).split(/\s*\/\s*/);
+        return variants.some(function(v) {
+          var e = opts.caseSensitive ? normalizeAnswerPreserveCase(v) : normalizeAnswer(v);
+          return e === g;
+        });
+      });
+    });
+  }
+
   window.SunePlayNormalize = {
     normalizeAnswer: normalizeAnswer,
     normalizeAnswerPreserveCase: normalizeAnswerPreserveCase,
     answersMatch: answersMatch,
-    matchesAnyAccepted: matchesAnyAccepted
+    matchesAnyAccepted: matchesAnyAccepted,
+    matchesBlanks: matchesBlanks
   };
 })();
