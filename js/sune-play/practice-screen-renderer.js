@@ -141,6 +141,14 @@
       });
     }
     el.addEventListener('click', function(e) {
+      var target = e.target;
+      if (target && (target.classList.contains('sp-gap-inline-input') ||
+          target.closest('.sp-gap-inline-input') ||
+          target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.isContentEditable)) {
+        return;
+      }
       e.stopPropagation();
       play();
     });
@@ -264,8 +272,8 @@
     var gapLine = renderErrorCorrectionGapLine(sentence, highlightedText, gapField);
     return '<div class="sp-screen sp-screen--error sp-screen--error-inline" data-format="error_correction">' +
       '<div class="sp-prompt-row sp-prompt-row--error">' +
-      '<p class="sp-prompt-sentence sp-prompt-sentence--error-original">' + markedSentence + '</p>' +
-      '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap sp-prompt-sentence--error-gap sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + gapLine + '</p>' +
+      '<p class="sp-prompt-sentence sp-prompt-sentence--error-original sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + markedSentence + '</p>' +
+      '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap sp-prompt-sentence--error-gap">' + gapLine + '</p>' +
       '</div>' +
     '</div>';
   }
