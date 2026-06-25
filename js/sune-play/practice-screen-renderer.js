@@ -97,11 +97,14 @@
       play();
     });
     el.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        e.stopPropagation();
-        play();
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var target = e.target;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+        return;
       }
+      e.preventDefault();
+      e.stopPropagation();
+      play();
     });
   }
 
