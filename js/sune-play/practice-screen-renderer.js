@@ -382,17 +382,98 @@
     return html;
   }
 
+  function escapeRegExp(str) {
+    return String(str).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function normalizeHuntText(str) {
+    return String(str || '').trim().replace(/\s+/g, ' ');
+  }
+
+  function rangesOverlap(a, b) {
+    return a.start < b.end && b.start < a.end;
+  }
+
+  function findAllErrorPositions(passage, wrong) {
+    var positions = [];
+    var phrase = normalizeHuntText(wrong);
+    if (!phrase) return positions;
+    var isSingleWord = !/\s/.test(phrase);
+    if (isSingleWord) {
+      var re = new RegExp('\\b' + escapeRegExp(phrase) + '\\b', 'gi');
+      var match;
+      while ((match = re.exec(passage)) !== null) {
+        positions.push({ start: match.index, end: match.index + match[0].length, text: match[0] });
+      }
+    } else {
+      var phraseRe = new RegExp(escapeRegExp(phrase).replace(/\s+/g, '\\s+'), 'gi');
+      var phraseMatch;
+      while ((phraseMatch = phraseRe.exec(passage)) !== null) {
+        positions.push({
+          start: phraseMatch.index,
+          end: phraseMatch.index + phraseMatch[0].length,
+          text: phraseMatch[0]
+        });
+      }
+    }
+    return positions;
+  }
+
   function findHuntMarkers(passage, items) {
     var markers = [];
+    var used = [];
     (items || []).forEach(function(it, idx) {
       var wrong = typeof it === 'string' ? it : (it.wrong || it.targetPhrase || '');
-      if (!wrong) return;
-      var pos = passage.indexOf(wrong);
-      if (pos === -1) return;
-      markers.push({ idx: idx, start: pos, end: pos + wrong.length, wrong: wrong, item: it });
+      var positions = findAllErrorPositions(passage, wrong);
+      for (var i = 0; i < positions.length; i++) {
+        var pos = positions[i];
+        var overlaps = used.some(function(u) { return rangesOverlap(u, pos); });
+        if (!overlaps) {
+          markers.push({ idx: idx, start: pos.start, end: pos.end, wrong: pos.text, item: it });
+          used.push(pos);
+          break;
+        }
+      }
     });
     markers.sort(function(a, b) { return a.start - b.start; });
     return markers;
+  }
+
+  function buildMarkedPassageHtml(passage, markers) {
+    var html = '';
+    var cursor = 0;
+    (markers || []).forEach(function(m) {
+      html += esc(passage.slice(cursor, m.start));
+      html += '<mark class="sp-hunt-mark" data-item-idx="' + m.idx + '" role="button" tabindex="0">' +
+        esc(passage.slice(m.start, m.end)) + '</mark>';
+      cursor = m.end;
+    });
+    html += esc(passage.slice(cursor));
+    return html;
+  }
+
+  function getPassageSelection(passageEl) {
+    var sel = window.getSelection();
+    if (!sel || sel.isCollapsed || !sel.rangeCount) return null;
+    var range = sel.getRangeAt(0);
+    if (!passageEl.contains(range.commonAncestorContainer)) return null;
+    var text = sel.toString();
+    if (!text || !normalizeHuntText(text)) return null;
+    return { text: text };
+  }
+
+  function matchSelectionToItem(text, items, alreadySelected) {
+    var normalized = normalizeHuntText(text);
+    if (!normalized) return -1;
+    var matchIdx = -1;
+    (items || []).forEach(function(it, idx) {
+      if (alreadySelected[idx]) return;
+      var wrong = normalizeHuntText(it.wrong || it.targetPhrase || '');
+      if (wrong && normalized.toLowerCase() === wrong.toLowerCase()) {
+        matchIdx = idx;
+      }
+    });
+    return matchIdx;
   }
 
   function renderClickableWords(text) {
@@ -431,6 +512,19 @@
     '</div>';
   }
 
+  function renderHuntSelectedPanelSlots(target) {
+    var slots = '';
+    for (var i = 0; i < target; i++) {
+      slots += '<li class="sp-hunt-selected-slot sp-hunt-selected-slot--empty" data-slot="' + i + '">' +
+        '<span class="sp-hunt-selected-num">' + (i + 1) + '.</span> ' +
+        '<span class="sp-hunt-selected-text sp-hunt-selected-placeholder">—</span></li>';
+    }
+    return '<div class="sp-hunt-selected-panel" id="sp-hunt-selected-panel">' +
+      '<p class="sp-hunt-selected-label">Selected errors:</p>' +
+      '<ol class="sp-hunt-selected-list sp-hunt-selected-list--grid" id="sp-hunt-selected-list">' +
+      slots + '</ol></div>';
+  }
+
   function renderPassageHunt(screen) {
     var p = screen.payload || {};
     var targetWrong = p.wrong || '';
@@ -448,12 +542,11 @@
     var p = screen.payload || {};
     var items = p.items || [];
     var target = (p.counter && p.counter.target) || p.errorCount || items.length;
-    var passageHtml = buildHuntPassageHtml(p.passage || '', items);
 
     return '<div class="sp-screen sp-screen--hunt sp-screen--hunt-counter" data-format="passage_error_hunt_counter">' +
       '<div class="sp-hunt-counter"><span id="sp-hunt-found">0</span>/' + target + ' errors found</div>' +
-      '<div class="sp-passage-card" id="sp-passage-text">' + passageHtml + '</div>' +
-      renderHuntSelectedPanel() +
+      '<div class="sp-passage-card sp-passage-selectable" id="sp-passage-text">' + esc(p.passage || '') + '</div>' +
+      renderHuntSelectedPanelSlots(target) +
       '<div class="sp-hunt-corrections" id="sp-hunt-corrections" hidden></div>' +
     '</div>';
   }
@@ -747,30 +840,58 @@
   function bindPassageHuntCounter(root, screen, onChange) {
     var p = screen.payload || {};
     var items = p.items || [];
+    var passage = p.passage || '';
     var target = (p.counter && p.counter.target) || p.errorCount || items.length;
     var counterEl = root.querySelector('#sp-hunt-found');
+    var passageEl = root.querySelector('#sp-passage-text');
     var selectedList = root.querySelector('#sp-hunt-selected-list');
     var correctionsEl = root.querySelector('#sp-hunt-corrections');
     var selected = {};
+    var slotOrder = [];
     root._huntSelected = selected;
     root._huntPhase = 'find';
 
-    function renderSelectedList() {
+    function buildSelectionMarkers() {
+      return slotOrder.map(function(itemIdx) {
+        var wrong = items[itemIdx] ? (items[itemIdx].wrong || items[itemIdx].targetPhrase || '') : selected[itemIdx];
+        var positions = findAllErrorPositions(passage, wrong);
+        if (!positions.length) return null;
+        var pos = positions[0];
+        return { idx: itemIdx, start: pos.start, end: pos.end, wrong: pos.text };
+      }).filter(Boolean).sort(function(a, b) { return a.start - b.start; });
+    }
+
+    function renderPassage() {
+      if (!passageEl) return;
+      passageEl.innerHTML = buildMarkedPassageHtml(passage, buildSelectionMarkers());
+    }
+
+    function renderSlots() {
       if (!selectedList) return;
-      var keys = Object.keys(selected).map(function(k) { return parseInt(k, 10); }).sort(function(a, b) { return a - b; });
-      if (!keys.length) {
-        selectedList.innerHTML = '<li class="sp-hunt-selected-empty">Tap the wrong verb phrases in the text.</li>';
-        return;
-      }
-      selectedList.innerHTML = keys.map(function(idx, i) {
-        return '<li class="sp-hunt-selected-item" data-hunt-idx="' + idx + '">' +
-          '<span class="sp-hunt-selected-num">' + (i + 1) + '.</span> ' +
-          esc(selected[idx]) + '</li>';
-      }).join('');
+      var slots = selectedList.querySelectorAll('.sp-hunt-selected-slot');
+      slots.forEach(function(slot, i) {
+        var itemIdx = slotOrder[i];
+        var textEl = slot.querySelector('.sp-hunt-selected-text');
+        if (itemIdx != null && selected[itemIdx]) {
+          slot.classList.remove('sp-hunt-selected-slot--empty');
+          slot.setAttribute('data-item-idx', String(itemIdx));
+          if (textEl) {
+            textEl.textContent = selected[itemIdx];
+            textEl.classList.remove('sp-hunt-selected-placeholder');
+          }
+        } else {
+          slot.classList.add('sp-hunt-selected-slot--empty');
+          slot.removeAttribute('data-item-idx');
+          if (textEl) {
+            textEl.textContent = '—';
+            textEl.classList.add('sp-hunt-selected-placeholder');
+          }
+        }
+      });
     }
 
     function updateCounter() {
-      if (counterEl) counterEl.textContent = String(Object.keys(selected).length);
+      if (counterEl) counterEl.textContent = String(slotOrder.length);
     }
 
     function showCorrections() {
@@ -793,10 +914,24 @@
       });
     }
 
+    function clearSelection() {
+      var sel = window.getSelection();
+      if (sel) sel.removeAllRanges();
+    }
+
+    function deselectItem(itemIdx) {
+      if (root.classList.contains('sp-screen--locked')) return;
+      if (!selected[itemIdx]) return;
+      delete selected[itemIdx];
+      slotOrder = slotOrder.filter(function(idx) { return idx !== itemIdx; });
+      maybeAdvancePhase();
+    }
+
     function maybeAdvancePhase() {
-      var count = Object.keys(selected).length;
+      var count = slotOrder.length;
       updateCounter();
-      renderSelectedList();
+      renderSlots();
+      renderPassage();
       if (count >= target && root._huntPhase === 'find') {
         root._huntPhase = 'correct';
         showCorrections();
@@ -808,25 +943,57 @@
       onChange();
     }
 
-    root.querySelectorAll('.sp-hunt-phrase[data-is-error="1"]').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        if (root.classList.contains('sp-screen--locked')) return;
-        var idx = parseInt(btn.getAttribute('data-hunt-idx'), 10);
-        var wrong = btn.getAttribute('data-wrong');
-        if (selected[idx]) {
-          delete selected[idx];
-          btn.classList.remove('sp-hunt-phrase--selected');
-        } else {
-          selected[idx] = wrong;
-          btn.classList.add('sp-hunt-phrase--selected');
-        }
-        maybeAdvancePhase();
-      });
-    });
+    function handlePassageSelection() {
+      if (root._huntPhase !== 'find' || root.classList.contains('sp-screen--locked')) return;
+      var selection = getPassageSelection(passageEl);
+      clearSelection();
+      if (!selection) return;
 
-    bindHuntWrongWordTaps(root);
-    renderSelectedList();
+      var matchedIdx = matchSelectionToItem(selection.text, items, selected);
+      if (matchedIdx === -1) {
+        if (passageEl) {
+          passageEl.classList.add('sp-passage-selectable--wrong');
+          setTimeout(function() { passageEl.classList.remove('sp-passage-selectable--wrong'); }, 450);
+        }
+        root.dispatchEvent(new CustomEvent('sp-hunt-wrong-tap', { bubbles: true }));
+        return;
+      }
+
+      if (slotOrder.length >= target) return;
+
+      var wrong = items[matchedIdx].wrong || items[matchedIdx].targetPhrase || '';
+      selected[matchedIdx] = wrong;
+      slotOrder.push(matchedIdx);
+      maybeAdvancePhase();
+    }
+
+    if (passageEl) {
+      passageEl.addEventListener('mouseup', function() {
+        setTimeout(handlePassageSelection, 0);
+      });
+      passageEl.addEventListener('touchend', function() {
+        setTimeout(handlePassageSelection, 0);
+      });
+      passageEl.addEventListener('click', function(e) {
+        var mark = e.target.closest('.sp-hunt-mark');
+        if (!mark || root._huntPhase !== 'find') return;
+        e.preventDefault();
+        deselectItem(parseInt(mark.getAttribute('data-item-idx'), 10));
+      });
+    }
+
+    if (selectedList) {
+      selectedList.addEventListener('click', function(e) {
+        var slot = e.target.closest('.sp-hunt-selected-slot:not(.sp-hunt-selected-slot--empty)');
+        if (!slot || root._huntPhase !== 'find') return;
+        var itemIdx = parseInt(slot.getAttribute('data-item-idx'), 10);
+        if (!isNaN(itemIdx)) deselectItem(itemIdx);
+      });
+    }
+
+    renderSlots();
     updateCounter();
+    renderPassage();
   }
 
   function lockSortPoolHeight(pool) {
