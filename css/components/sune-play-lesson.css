@@ -1784,6 +1784,11 @@ button.sp-example-line.sp-speakable {
   box-shadow: inset 0 -2px 0 rgba(224, 122, 95, 0.55);
 }
 
+.sp-hunt-word--selected {
+  background: rgba(255, 184, 173, 0.45);
+  box-shadow: inset 0 -2px 0 rgba(224, 122, 95, 0.55);
+}
+
 .sp-hunt-word--wrong {
   animation: sp-hunt-shake 0.45s ease;
   background: rgba(255, 120, 120, 0.25);
@@ -1847,7 +1852,44 @@ button.sp-example-line.sp-speakable {
   background: rgba(255, 184, 173, 0.2);
   border-style: solid;
   border-color: rgba(224, 122, 95, 0.35);
-  cursor: pointer;
+}
+
+.sp-hunt-selected-slot--pending {
+  background: rgba(255, 184, 173, 0.2);
+  border-style: solid;
+  border-color: rgba(224, 122, 95, 0.35);
+}
+
+.sp-hunt-selected-slot--correct {
+  background: rgba(88, 204, 2, 0.12);
+  border-style: solid;
+  border-color: rgba(88, 204, 2, 0.45);
+  color: #3a7d00;
+}
+
+.sp-hunt-selected-slot--correct .sp-hunt-selected-text {
+  color: #3a7d00;
+}
+
+.sp-hunt-corrected {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.sp-hunt-reveal {
+  display: inline;
+}
+
+.sp-hunt-reveal-wrong {
+  text-decoration: line-through;
+  color: #c45c26;
+  font-weight: 600;
+}
+
+.sp-hunt-reveal-correct {
+  font-weight: 700;
+  color: #3a7d00;
+  margin-left: 0.2em;
 }
 
 .sp-hunt-selected-slot--empty .sp-hunt-selected-text {
