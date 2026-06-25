@@ -25,7 +25,6 @@
     return '<button type="button" class="' + className + ' sp-speakable" data-action="theory-speak" data-speak-text="' + esc(text) + '"' +
       ' aria-label="Listen: ' + esc(text) + '">' +
       '<span class="sp-speakable-text">' + contentHtml + '</span>' +
-      '<span class="sp-speak-icon material-symbols-outlined" aria-hidden="true">volume_up</span>' +
     '</button>';
   }
 
