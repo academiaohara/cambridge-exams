@@ -316,7 +316,6 @@
     html += '<div class="sp-prompt-row">';
     html += '<p class="sp-meaning-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + bold(p.sentence || '') + '</p>';
     html += '</div>';
-    html += '<p class="sp-meaning-question">' + esc(p.prompt || '') + '</p>';
     html += '<div class="sp-option-grid">';
     (p.options || []).forEach(function(opt, i) {
       html += renderOptionBtn(opt, i);
