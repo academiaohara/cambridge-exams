@@ -128,15 +128,26 @@
     '</button>';
   }
 
+  function getChoiceGapWidthCh(options) {
+    var max = 0;
+    (options || []).forEach(function(opt) {
+      max = Math.max(max, String(opt).length);
+    });
+    return Math.max(max + 1, 8);
+  }
+
   function renderTwoOption(screen) {
     var p = screen.payload || {};
+    var gapWidth = getChoiceGapWidthCh(p.options);
     var html = '<div class="sp-screen sp-screen--choice" data-format="two_option_choice">';
-    html += '<div class="sp-prompt-row">';
+    html += '<div class="sp-prompt-row sp-prompt-row--choice">';
     html += '<p class="sp-prompt-sentence">' +
       esc(p.sentenceBefore) +
-      ' <span class="sp-gap-slot" id="sp-choice-slot"></span> ' +
+      ' <span class="sp-gap-anchor" style="--sp-gap-width:' + gapWidth + 'ch">' +
+        '<span class="sp-gap-slot" id="sp-choice-slot"></span>' +
+        renderSentenceSpeakBtn('Listen to full sentence') +
+      '</span> ' +
       esc(p.sentenceAfter) + '</p>';
-    html += renderSentenceSpeakBtn('Listen to full sentence');
     html += '</div>';
     html += '<div class="sp-option-grid">';
     (p.options || []).forEach(function(opt, i) {
