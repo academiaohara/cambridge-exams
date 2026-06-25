@@ -18,15 +18,85 @@
     return esc(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   }
 
+  function countGaps(sentence) {
+    return (String(sentence || '').match(GAP_RE) || []).length;
+  }
+
   function renderSentenceWithGap(sentence, gapHtml) {
     var parts = (sentence || '').split(GAP_RE);
-    var gapCount = (sentence.match(GAP_RE) || []).length;
+    var gapCount = countGaps(sentence);
     var html = '';
     for (var i = 0; i < parts.length; i++) {
       html += bold(parts[i]);
       if (i < gapCount) html += gapHtml;
     }
     return html;
+  }
+
+  function fillGapsInSentence(sentence, answers) {
+    var idx = 0;
+    return String(sentence || '').replace(GAP_RE, function() {
+      var ans = answers[idx++];
+      return ans != null && String(ans).trim() ? ans : ' ';
+    }).replace(/\s+/g, ' ').trim();
+  }
+
+  function buildInlineGapInput(gapIdx) {
+    var idAttr = gapIdx === 0 ? ' id="sp-gap-input"' : '';
+    return '<span class="sp-inline-gap-group sp-inline-gap sp-inline-gap-group--solo" role="group" aria-label="Gap ' + (gapIdx + 1) + '">' +
+      '<input type="text" class="sp-gap-inline-input" data-gap-idx="' + gapIdx + '"' + idAttr +
+      ' autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer">' +
+    '</span>';
+  }
+
+  function renderInlineGapSentence(sentence, verbRef) {
+    var parts = (sentence || '').split(GAP_RE);
+    var gapCount = countGaps(sentence);
+    if (gapCount <= 1) {
+      return renderSentenceWithGap(sentence, buildInlineGapField(verbRef));
+    }
+    var html = '';
+    for (var i = 0; i < parts.length; i++) {
+      html += bold(parts[i]);
+      if (i < gapCount) html += buildInlineGapInput(i);
+    }
+    if (verbRef) {
+      html += '<span class="sp-gap-verb-ref sp-gap-verb-ref--trailing">' + esc(verbRef) + '</span>';
+    }
+    return html;
+  }
+
+  function getGapInputValues(root) {
+    var values = [];
+    root.querySelectorAll('.sp-gap-inline-input').forEach(function(inp) {
+      values.push(inp.value.trim());
+    });
+    return values;
+  }
+
+  function allGapInputsFilled(root) {
+    var inputs = root.querySelectorAll('.sp-gap-inline-input');
+    if (!inputs.length) return false;
+    for (var i = 0; i < inputs.length; i++) {
+      if (!inputs[i].value.trim()) return false;
+    }
+    return true;
+  }
+
+  function bindGapInputs(root, onChange) {
+    var inputs = root.querySelectorAll('.sp-gap-inline-input');
+    inputs.forEach(function(inp) {
+      inp.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !root.classList.contains('sp-screen--locked')) {
+          e.preventDefault();
+          var actionBtn = document.getElementById('sp-action-btn');
+          if (actionBtn && !actionBtn.disabled) actionBtn.click();
+        }
+      });
+    });
+    if (inputs.length) {
+      setTimeout(function() { inputs[0].focus(); }, 0);
+    }
   }
 
   function splitSentenceAtHighlight(sentence, highlightedText) {
@@ -222,10 +292,11 @@
   function renderGapFill(screen) {
     var p = screen.payload || {};
     var verbRef = p.verbPrompt || p.preselectedVerb || '';
-    var gapField = buildInlineGapField(verbRef);
+    var gapCount = countGaps(p.sentence);
+    var multiCls = gapCount > 1 ? ' sp-prompt-sentence--multi-gap' : '';
     var html = '<div class="sp-screen sp-screen--gap" data-format="free_text_gap_fill">';
-    html += '<div class="sp-prompt-row">';
-    html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + renderSentenceWithGap(p.sentence, gapField) + '</p>';
+    html += '<div class="sp-prompt-row sp-prompt-row--gap">';
+    html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap' + multiCls + ' sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + renderInlineGapSentence(p.sentence, verbRef) + '</p>';
     html += '</div>';
     html += '</div>';
     return html;
@@ -284,11 +355,12 @@
     var isTypeForm = step === 'type_form';
     var screenCls = 'sp-screen sp-screen--verb-bank' + (isTypeForm ? ' sp-screen--gap' : '');
     var html = '<div class="' + screenCls + '" data-format="verb_bank_two_step" data-step="' + step + '">';
-    html += '<div class="sp-prompt-row">';
+    html += '<div class="sp-prompt-row' + (isTypeForm ? ' sp-prompt-row--gap' : '') + '">';
     if (isTypeForm) {
       var verbRef = p.selectedVerb || p.baseVerb || '';
-      var gapField = buildInlineGapField(verbRef);
-      html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + renderSentenceWithGap(p.sentence, gapField) + '</p>';
+      var gapCount = countGaps(p.sentence);
+      var multiCls = gapCount > 1 ? ' sp-prompt-sentence--multi-gap' : '';
+      html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap' + multiCls + ' sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + renderInlineGapSentence(p.sentence, verbRef) + '</p>';
     } else {
       html += '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + bold((p.sentence || '').replace(GAP_RE, '<span class="sp-inline-gap"></span>')) + '</p>';
     }
@@ -430,10 +502,9 @@
       bindSentenceSpeak(root, function() {
         var p = screen.payload || {};
         if (verbStep === 'type_form') {
-          var gapInput = root.querySelector('#sp-gap-input');
-          var userAnswer = gapInput ? gapInput.value.trim() : '';
-          if (userAnswer) {
-            return String(p.sentence || '').replace(GAP_RE, userAnswer).replace(/\s+/g, ' ').trim();
+          var values = getGapInputValues(root);
+          if (values.some(function(v) { return !!v; })) {
+            return fillGapsInSentence(p.sentence, values);
           }
         }
         return String(p.sentence || '').replace(GAP_RE, ' ').replace(/\s+/g, ' ').trim();
@@ -447,17 +518,7 @@
         });
       });
       if (verbStep === 'type_form') {
-        var verbGapInput = root.querySelector('#sp-gap-input');
-        if (verbGapInput) {
-          verbGapInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && !root.classList.contains('sp-screen--locked')) {
-              e.preventDefault();
-              var actionBtn = document.getElementById('sp-action-btn');
-              if (actionBtn && !actionBtn.disabled) actionBtn.click();
-            }
-          });
-          setTimeout(function() { verbGapInput.focus(); }, 0);
-        }
+        bindGapInputs(root, onChange);
       }
     }
 
@@ -506,10 +567,9 @@
     if (format === 'free_text_gap_fill' || format === 'preselected_verb_gap_fill') {
       bindSentenceSpeak(root, function() {
         var p = screen.payload || {};
-        var gapInput = root.querySelector('#sp-gap-input');
-        var userAnswer = gapInput ? gapInput.value.trim() : '';
-        if (userAnswer) {
-          return String(p.sentence || '').replace(GAP_RE, userAnswer).replace(/\s+/g, ' ').trim();
+        var values = getGapInputValues(root);
+        if (values.some(function(v) { return !!v; })) {
+          return fillGapsInSentence(p.sentence, values);
         }
         return String(p.completedSentence || '').replace(/\s+/g, ' ').trim();
       });
@@ -520,17 +580,7 @@
     });
 
     if (format === 'free_text_gap_fill' || format === 'preselected_verb_gap_fill') {
-      var gapInput = root.querySelector('#sp-gap-input');
-      if (gapInput) {
-        gapInput.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' && !root.classList.contains('sp-screen--locked')) {
-            e.preventDefault();
-            var actionBtn = document.getElementById('sp-action-btn');
-            if (actionBtn && !actionBtn.disabled) actionBtn.click();
-          }
-        });
-        setTimeout(function() { gapInput.focus(); }, 0);
-      }
+      bindGapInputs(root, onChange);
     }
   }
 
@@ -769,8 +819,7 @@
       return !!root.querySelector('.sp-option-btn--selected');
     }
     if (f === 'free_text_gap_fill' || f === 'preselected_verb_gap_fill') {
-      var inp = root.querySelector('#sp-gap-input');
-      return inp && !!inp.value.trim();
+      return allGapInputsFilled(root);
     }
     if (f === 'full_sentence_write') {
       var ta = root.querySelector('#sp-sentence-input');
@@ -786,8 +835,7 @@
     if (f === 'verb_bank_two_step') {
       var step = (screen.payload && screen.payload.step) || 'choose_verb';
       if (step === 'choose_verb') return !!root.querySelector('.sp-verb-chip--selected');
-      var vf = root.querySelector('#sp-gap-input');
-      return vf && !!vf.value.trim();
+      return allGapInputsFilled(root);
     }
     if (f === 'passage_error_hunt_single') {
       if (!root._huntTappedCorrect) return false;
@@ -817,11 +865,17 @@
       }
       case 'free_text_gap_fill':
       case 'preselected_verb_gap_fill': {
-        var gap = root.querySelector('#sp-gap-input');
-        var given = gap ? gap.value.trim() : '';
-        result.userAnswer = given;
-        result.correctAnswer = p.answer;
-        result.correct = norm.matchesAnyAccepted(given, p);
+        var gapValues = getGapInputValues(root);
+        if (gapValues.length > 1) {
+          result.userAnswer = gapValues.join(' / ');
+          result.correctAnswer = Array.isArray(p.answer) ? p.answer.join(' / ') : p.answer;
+          result.correct = norm.matchesBlanks(gapValues, p);
+        } else {
+          var given = gapValues[0] || '';
+          result.userAnswer = given;
+          result.correctAnswer = p.answer;
+          result.correct = norm.matchesAnyAccepted(given, p);
+        }
         result.lifeLoss = result.correct ? 0 : 1;
         break;
       }
@@ -894,12 +948,19 @@
             result._selectedVerb = verb;
           }
         } else {
-          var formInp = root.querySelector('#sp-gap-input');
-          var form = formInp ? formInp.value.trim() : '';
-          result.userAnswer = form;
-          var expected = Array.isArray(p.answer) ? p.answer : [p.answer];
-          result.correctAnswer = expected.join(' / ');
-          result.correct = norm.matchesAnyAccepted(form, { acceptedAnswers: expected, answer: expected[0] });
+          var formValues = getGapInputValues(root);
+          if (formValues.length > 1) {
+            result.userAnswer = formValues.join(' / ');
+            var expectedParts = Array.isArray(p.answer) ? p.answer : [p.answer];
+            result.correctAnswer = expectedParts.join(' / ');
+            result.correct = norm.matchesBlanks(formValues, p);
+          } else {
+            var form = formValues[0] || '';
+            result.userAnswer = form;
+            var expected = Array.isArray(p.answer) ? p.answer : [p.answer];
+            result.correctAnswer = expected.join(' / ');
+            result.correct = norm.matchesAnyAccepted(form, { acceptedAnswers: expected, answer: expected[0] });
+          }
           result.lifeLoss = result.correct ? 0 : 1;
           result.shouldRequeue = !result.correct;
         }
