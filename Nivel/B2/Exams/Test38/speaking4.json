@@ -5,13 +5,20 @@
   "totalQuestions": 6,
   "description": "The examiner will ask you some questions related to the topic from Part 3. Give your opinions and discuss with your partner.",
   "content": {
-    "task": "Discuss how the shift to remote work affects these areas of life, then decide which two are the most challenging for companies to manage.",
-    "options": [
-      "Employee mental health",
-      "Team collaboration",
-      "Professional boundaries",
-      "Office rental costs",
-      "Career progression"
+    "task": "Discussion on the future of remote work and work-life balance.",
+    "questions": [
+      {
+        "number": 1,
+        "question": "How important do you think it is for employees to have the option to work from home?"
+      },
+      {
+        "number": 2,
+        "question": "Do you think people's attitudes towards remote working will change in the future? Why or why not?"
+      },
+      {
+        "number": 3,
+        "question": "Some people say it's harder to build a team spirit when everyone works remotely. Do you agree?"
+      }
     ],
     "participants": [
       "examiner",
@@ -21,7 +28,7 @@
     "script": [
       {
         "role": "examiner",
-        "text": "How important do you think this topic is in today's world?"
+        "text": "How important do you think it is for employees to have the option to work from home?"
       },
       {
         "role": "candidate",
@@ -33,7 +40,7 @@
       },
       {
         "role": "examiner",
-        "text": "Do you think people's attitudes to this will change in the future? Why / why not?"
+        "text": "Do you think people's attitudes towards remote working will change in the future? Why or why not?"
       },
       {
         "role": "candidate",
@@ -45,19 +52,7 @@
       },
       {
         "role": "examiner",
-        "text": "Please discuss how working from home affects these different aspects of professional life."
-      },
-      {
-        "role": "candidate",
-        "text": ""
-      },
-      {
-        "role": "partner",
-        "text": ""
-      },
-      {
-        "role": "examiner",
-        "text": "Now decide which two aspects are the hardest for employers to get right."
+        "text": "Some people say it's harder to build a team spirit when everyone works remotely. Do you agree?"
       },
       {
         "role": "candidate",
@@ -70,16 +65,6 @@
       {
         "role": "examiner",
         "text": "Thank you. That's the end of the speaking test."
-      }
-    ],
-    "questions": [
-      {
-        "number": 1,
-        "question": "How important do you think this topic is in today's world?"
-      },
-      {
-        "number": 2,
-        "question": "Do you think people's attitudes to this will change in the future? Why / why not?"
       }
     ]
   }
