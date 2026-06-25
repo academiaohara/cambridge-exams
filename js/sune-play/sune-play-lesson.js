@@ -553,6 +553,7 @@
           setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
         }
       });
+      screenRoot.addEventListener('sp-hunt-wrong-tap', handleHuntWrongTap);
     }
     setScreenInputsLocked(false);
     setActionBtn('check', false);
@@ -633,6 +634,8 @@
         return p.instruction || 'Escribe el verbo en la forma correcta.';
       case 'passage_error_hunt_single':
         return p.instruction || 'Find one wrong verb phrase.';
+      case 'passage_error_hunt_counter':
+        return p.instruction || 'Find and mark 10 errors.';
       case 'stative_sorting':
         return p.instruction || p.prompt || 'Sort the verbs into groups.';
       case 'meaning_contrast':
@@ -663,6 +666,8 @@
         return p.sentence || '';
       case 'passage_error_hunt_single':
         return 'Find the error in the passage.';
+      case 'passage_error_hunt_counter':
+        return p.passage || 'Find the errors in the passage.';
       case 'stative_sorting':
         return p.instruction || 'Sort the verbs into groups.';
       default:
@@ -675,6 +680,20 @@
     if (p.answer) return p.answer;
     if (p.acceptedAnswers && p.acceptedAnswers.length) return p.acceptedAnswers[0];
     return '';
+  }
+
+  function handleHuntWrongTap() {
+    if (!lessonState || lessonState.awaitingContinue || !lessonState.hearts) return;
+    if (lessonState.hearts.isGameOver) return;
+    var screen = lessonState.currentScreen;
+    var lost = lessonState.hearts.loseLife(1, {
+      screenId: screen && screen.screenId,
+      itemId: screen && screen.itemId,
+      maxLifeLossPerScreen: screen && screen.maxLifeLossPerScreen
+    });
+    if (lost) lessonState.sessionLivesLost += 1;
+    if (window.AudioUtils) AudioUtils.playFailureSound();
+    updateSessionHeader();
   }
 
   function handleSkip() {

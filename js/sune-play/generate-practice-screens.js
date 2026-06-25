@@ -46,6 +46,26 @@
     }
   }
 
+  function buildCounterHuntPayload(exercise) {
+    var items = exercise.items || [];
+    return {
+      passage: exercise.passage || '',
+      items: items.map(function(it) {
+        return {
+          id: it.id,
+          wrong: it.targetPhrase || it.wrong || '',
+          answer: it.answer,
+          acceptedAnswers: it.acceptedAnswers || (it.answer ? [it.answer] : []),
+          explanation: it.explanation || ''
+        };
+      }),
+      errorCount: exercise.errorCount || items.length,
+      counter: exercise.counter || { target: items.length },
+      hideCorrectInline: exercise.hideCorrectInline !== false,
+      instruction: exercise.studentInstruction || exercise.instructions || ''
+    };
+  }
+
   function shuffleCopy(list) {
     return list.slice().sort(function() { return Math.random() - 0.5; });
   }
@@ -228,7 +248,7 @@
 
   function buildScreen(unit, node, formatType, payload, meta) {
     meta = meta || {};
-    var normalizedType = normalizeFormatType(formatType);
+    var normalizedType = meta.formatTypeOverride || normalizeFormatType(formatType);
     var formatDef = getFormatDef(unit, formatType) || getFormatDef(unit, normalizedType);
     return {
       screenId: meta.screenId,
@@ -280,6 +300,20 @@
       var exercise = findExercise(bank, exerciseId);
       if (!exercise) {
         warn('Exercise not found in content bank: ' + exerciseId + ' (node ' + nodeId + ')');
+        return;
+      }
+
+      if (rule.screenMode === 'single_passage_with_counter') {
+        var counterFormat = rule.formatType || 'passage_error_hunt_counter';
+        var counterPayload = buildCounterHuntPayload(exercise);
+        var counterScreenId = buildScreenId(nodeId, exerciseId, null, counterFormat);
+        screens.push(buildScreen(unit, node, counterFormat, counterPayload, {
+          screenId: counterScreenId,
+          itemId: exerciseId,
+          sourceExerciseId: exerciseId,
+          fallbackFormatType: rule.fallbackFormatType,
+          formatTypeOverride: 'passage_error_hunt_counter'
+        }));
         return;
       }
 
