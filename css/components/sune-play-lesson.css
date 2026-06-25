@@ -329,10 +329,6 @@
   outline-offset: 2px;
 }
 
-.sp-speakable--speaking {
-  box-shadow: 0 0 0 2px rgba(28, 176, 246, 0.35);
-}
-
 .sp-speakable-text {
   display: block;
 }
@@ -1091,10 +1087,6 @@ button.sp-example-line.sp-speakable {
 .sp-speakable-sentence:focus-visible {
   background: rgba(28, 176, 246, 0.06);
   outline: none;
-}
-
-.sp-speakable-sentence--speaking {
-  box-shadow: 0 0 0 2px rgba(28, 176, 246, 0.35);
 }
 
 .sp-prompt-sentence,
