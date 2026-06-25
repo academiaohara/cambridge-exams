@@ -719,12 +719,12 @@
       ],
       "lives": 6,
       "passCondition": {
-        "minimumCorrectScreens": 8,
+        "minimumCorrectScreens": 1,
         "allowFinishWithZeroLives": false
       },
       "passageRules": {
         "showFullPassage": true,
-        "askForOneErrorAtATime": true,
+        "askForOneErrorAtATime": false,
         "hideCorrectInline": true,
         "removeFixedErrorsFromQueue": true,
         "wrongTapAction": "lose_1_life",
