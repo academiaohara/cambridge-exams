@@ -29,6 +29,35 @@
     return html;
   }
 
+  function splitSentenceAtHighlight(sentence, highlightedText) {
+    var plain = String(sentence || '').replace(/\*\*([^*]+)\*\*/g, '$1');
+    var highlight = String(highlightedText || '').trim();
+    if (!highlight) return { before: '', after: plain.trim() };
+    var idx = plain.toLowerCase().indexOf(highlight.toLowerCase());
+    if (idx === -1) return { before: '', after: plain.trim() };
+    return {
+      before: plain.slice(0, idx).trim(),
+      after: plain.slice(idx + highlight.length).trim()
+    };
+  }
+
+  function renderErrorMarkedSentence(sentence, highlightedText) {
+    if (!highlightedText) return bold(sentence);
+    var wrapped = '**' + highlightedText + '**';
+    if (sentence.indexOf(wrapped) !== -1) {
+      var parts = sentence.split(wrapped);
+      return bold(parts[0]) +
+        '<mark class="sp-error-mark"><strong>' + esc(highlightedText) + '</strong></mark>' +
+        bold(parts.slice(1).join(wrapped));
+    }
+    var plain = sentence.replace(/\*\*/g, '');
+    var idx = plain.toLowerCase().indexOf(highlightedText.toLowerCase());
+    if (idx === -1) return bold(sentence);
+    return esc(plain.slice(0, idx)) +
+      '<mark class="sp-error-mark"><strong>' + esc(highlightedText) + '</strong></mark>' +
+      esc(plain.slice(idx + highlightedText.length));
+  }
+
   function buildInlineGapField(verbRef) {
     var inputHtml = '<input type="text" class="sp-gap-inline-input" id="sp-gap-input" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer">';
     if (!verbRef) {
@@ -38,6 +67,25 @@
       inputHtml +
       '<span class="sp-gap-verb-ref">' + esc(verbRef) + '</span>' +
     '</span>';
+  }
+
+  function buildErrorCorrectionGapField(highlightedText) {
+    var minWidth = Math.max(String(highlightedText || '').length + 2, 10);
+    var inputHtml = '<input type="text" class="sp-gap-inline-input" id="sp-error-input" ' +
+      'style="min-width:' + minWidth + 'ch" autocomplete="off" autocapitalize="off" spellcheck="false" ' +
+      'aria-label="Type the corrected form">';
+    return '<span class="sp-inline-gap-group sp-inline-gap-group--solo" role="group" aria-label="Error correction">' +
+      inputHtml +
+    '</span>';
+  }
+
+  function renderErrorCorrectionGapLine(sentence, highlightedText, gapField) {
+    var parts = splitSentenceAtHighlight(sentence, highlightedText);
+    var html = '';
+    if (parts.before) html += bold(parts.before) + ' ';
+    html += gapField;
+    if (parts.after) html += ' ' + bold(parts.after);
+    return html.trim();
   }
 
   function randomFeedback(tone, kind) {
@@ -210,20 +258,15 @@
   function renderErrorCorrection(screen) {
     var p = screen.payload || {};
     var sentence = p.sentence || '';
-    if (p.highlightedText) {
-      sentence = sentence.replace(
-        new RegExp(esc(p.highlightedText).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'),
-        '<mark class="sp-error-mark">' + bold(p.highlightedText) + '</mark>'
-      );
-    }
-    var placeholder = p.replacementOnly
-      ? 'Type the corrected form'
-      : 'Write the corrected sentence';
-    return '<div class="sp-screen sp-screen--error" data-format="error_correction">' +
-      '<div class="sp-prompt-row">' +
-      '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + sentence + '</p>' +
+    var highlightedText = p.highlightedText || '';
+    var markedSentence = renderErrorMarkedSentence(sentence, highlightedText);
+    var gapField = buildErrorCorrectionGapField(highlightedText);
+    var gapLine = renderErrorCorrectionGapLine(sentence, highlightedText, gapField);
+    return '<div class="sp-screen sp-screen--error sp-screen--error-inline" data-format="error_correction">' +
+      '<div class="sp-prompt-row sp-prompt-row--error">' +
+      '<p class="sp-prompt-sentence sp-prompt-sentence--error-original">' + markedSentence + '</p>' +
+      '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap sp-prompt-sentence--error-gap sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + gapLine + '</p>' +
       '</div>' +
-      '<input type="text" class="sp-text-input sp-text-input--large" id="sp-error-input" placeholder="' + esc(placeholder) + '" autocomplete="off">' +
     '</div>';
   }
 
@@ -396,9 +439,27 @@
     }
 
     if (format === 'error_correction') {
+      var errPayload = screen.payload || {};
       bindSentenceSpeak(root, function() {
-        return String((screen.payload && screen.payload.sentence) || '').replace(/\*\*([^*]+)\*\*/g, '$1').trim();
+        var parts = splitSentenceAtHighlight(errPayload.sentence, errPayload.highlightedText);
+        var errInput = root.querySelector('#sp-error-input');
+        var userAnswer = errInput ? errInput.value.trim() : '';
+        if (userAnswer) {
+          return buildGapSentence(parts.before, userAnswer, parts.after);
+        }
+        return String(errPayload.sentence || '').replace(/\*\*([^*]+)\*\*/g, '$1').trim();
       });
+      var errInput = root.querySelector('#sp-error-input');
+      if (errInput) {
+        errInput.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && !root.classList.contains('sp-screen--locked')) {
+            e.preventDefault();
+            var actionBtn = document.getElementById('sp-action-btn');
+            if (actionBtn && !actionBtn.disabled) actionBtn.click();
+          }
+        });
+        setTimeout(function() { errInput.focus(); }, 0);
+      }
     }
 
     if (format === 'full_sentence_write') {
