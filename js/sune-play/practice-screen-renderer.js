@@ -80,24 +80,28 @@
     return slot ? slot.textContent.trim() : '';
   }
 
-  function renderSentenceSpeakBtn(label) {
-    return '<button type="button" class="sp-sentence-speak" data-action="practice-speak-sentence"' +
-      ' aria-label="' + esc(label) + '" title="' + esc(label) + '">' +
-      '<span class="material-symbols-outlined" aria-hidden="true">volume_up</span>' +
-    '</button>';
-  }
-
   function bindSentenceSpeak(root, getText) {
-    var btn = root.querySelector('[data-action="practice-speak-sentence"]');
-    if (!btn) return;
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
+    var el = root.querySelector('[data-action="practice-speak-sentence"]');
+    if (!el || el._spSpeakBound) return;
+    el._spSpeakBound = true;
+    function play() {
       var text = getText();
       if (!text) return;
-      btn.classList.add('sp-sentence-speak--speaking');
+      el.classList.add('sp-speakable-sentence--speaking');
       speakText(text, function() {
-        btn.classList.remove('sp-sentence-speak--speaking');
+        el.classList.remove('sp-speakable-sentence--speaking');
       });
+    }
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      play();
+    });
+    el.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        e.stopPropagation();
+        play();
+      }
     });
   }
 
@@ -141,11 +145,10 @@
     var gapWidth = getChoiceGapWidthCh(p.options);
     var html = '<div class="sp-screen sp-screen--choice" data-format="two_option_choice">';
     html += '<div class="sp-prompt-row sp-prompt-row--choice">';
-    html += '<p class="sp-prompt-sentence">' +
+    html += '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
       esc(p.sentenceBefore) +
       ' <span class="sp-gap-anchor" style="--sp-gap-width:' + gapWidth + 'ch">' +
         '<span class="sp-gap-slot" id="sp-choice-slot"></span>' +
-        renderSentenceSpeakBtn('Listen to full sentence') +
       '</span> ' +
       esc(p.sentenceAfter) + '</p>';
     html += '</div>';
@@ -163,8 +166,7 @@
     var gapField = buildInlineGapField(verbRef);
     var html = '<div class="sp-screen sp-screen--gap" data-format="free_text_gap_fill">';
     html += '<div class="sp-prompt-row">';
-    html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap">' + renderSentenceWithGap(p.sentence, gapField) + '</p>';
-    html += renderSentenceSpeakBtn('Listen to full sentence');
+    html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + renderSentenceWithGap(p.sentence, gapField) + '</p>';
     html += '</div>';
     html += '</div>';
     return html;
@@ -173,7 +175,7 @@
   function renderFullSentence(screen) {
     var p = screen.payload || {};
     return '<div class="sp-screen sp-screen--write" data-format="full_sentence_write">' +
-      '<p class="sp-display-prompt">' + esc(p.displayPrompt || '') + '</p>' +
+      '<p class="sp-display-prompt sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + esc(p.displayPrompt || '') + '</p>' +
       '<textarea class="sp-text-input sp-text-input--large" id="sp-sentence-input" rows="3" placeholder="Write the full sentence" autocomplete="off"></textarea>' +
     '</div>';
   }
@@ -216,8 +218,7 @@
       : 'Write the corrected sentence';
     return '<div class="sp-screen sp-screen--error" data-format="error_correction">' +
       '<div class="sp-prompt-row">' +
-      '<p class="sp-prompt-sentence">' + sentence + '</p>' +
-      renderSentenceSpeakBtn('Listen to sentence') +
+      '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + sentence + '</p>' +
       '</div>' +
       '<input type="text" class="sp-text-input sp-text-input--large" id="sp-error-input" placeholder="' + esc(placeholder) + '" autocomplete="off">' +
     '</div>';
@@ -228,8 +229,7 @@
     var step = p.step || 'choose_verb';
     var html = '<div class="sp-screen sp-screen--verb-bank" data-format="verb_bank_two_step" data-step="' + step + '">';
     html += '<div class="sp-prompt-row">';
-    html += '<p class="sp-prompt-sentence">' + bold((p.sentence || '').replace(GAP_RE, '<span class="sp-inline-gap"></span>')) + '</p>';
-    html += renderSentenceSpeakBtn('Listen to sentence');
+    html += '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + bold((p.sentence || '').replace(GAP_RE, '<span class="sp-inline-gap"></span>')) + '</p>';
     html += '</div>';
 
     if (step === 'choose_verb') {
@@ -305,8 +305,7 @@
     var p = screen.payload || {};
     var html = '<div class="sp-screen sp-screen--meaning" data-format="meaning_contrast">';
     html += '<div class="sp-prompt-row">';
-    html += '<p class="sp-meaning-sentence">' + bold(p.sentence || '') + '</p>';
-    html += renderSentenceSpeakBtn('Listen to sentence');
+    html += '<p class="sp-meaning-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + bold(p.sentence || '') + '</p>';
     html += '</div>';
     html += '<p class="sp-meaning-question">' + esc(p.prompt || '') + '</p>';
     html += '<div class="sp-option-grid">';

@@ -316,10 +316,7 @@
 }
 
 .sp-speakable {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+  display: block;
   width: 100%;
   font: inherit;
   text-align: left;
@@ -337,22 +334,12 @@
 }
 
 .sp-speakable-text {
-  flex: 1;
-  min-width: 0;
+  display: block;
 }
 
-.sp-speak-icon {
-  flex-shrink: 0;
-  font-size: 1.1rem;
-  color: var(--sp-duo-blue);
-  opacity: 0.45;
-  transition: opacity 0.15s ease;
-}
-
-.sp-speakable:hover .sp-speak-icon,
-.sp-speakable:focus-visible .sp-speak-icon,
-.sp-speakable--speaking .sp-speak-icon {
-  opacity: 1;
+.sp-speakable:hover,
+.sp-speakable:focus-visible {
+  background: rgba(28, 176, 246, 0.06);
 }
 
 button.sp-chip.sp-speakable {
@@ -1090,48 +1077,24 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-gap-anchor {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
+  display: inline-block;
   vertical-align: baseline;
 }
 
-.sp-gap-anchor .sp-sentence-speak {
-  margin-top: 0;
-  width: 36px;
-  height: 36px;
-}
-
-.sp-sentence-speak {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  margin-top: 2px;
-  border: 2px solid #dce3f0;
-  border-radius: 12px;
-  background: var(--white);
-  color: var(--sp-duo-blue);
+.sp-speakable-sentence {
   cursor: pointer;
-  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  border-radius: 12px;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
 }
 
-.sp-sentence-speak:hover,
-.sp-sentence-speak:focus-visible {
-  border-color: var(--sp-duo-blue);
-  background: var(--sp-duo-blue-light);
+.sp-speakable-sentence:hover,
+.sp-speakable-sentence:focus-visible {
+  background: rgba(28, 176, 246, 0.06);
   outline: none;
 }
 
-.sp-sentence-speak--speaking {
+.sp-speakable-sentence--speaking {
   box-shadow: 0 0 0 2px rgba(28, 176, 246, 0.35);
-}
-
-.sp-sentence-speak .material-symbols-outlined {
-  font-size: 1.2rem;
 }
 
 .sp-prompt-sentence,
@@ -1180,7 +1143,7 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-gap-anchor .sp-gap-slot {
-  display: block;
+  display: inline-block;
   width: var(--sp-gap-width, 80px);
   min-width: var(--sp-gap-width, 80px);
   box-sizing: border-box;
