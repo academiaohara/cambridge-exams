@@ -618,6 +618,7 @@
       case 'two_option_choice':
         return p.instruction || 'Choose the correct option to complete the sentence.';
       case 'free_text_gap_fill':
+      case 'conjugation_gap_fill':
       case 'preselected_verb_gap_fill':
         return p.instruction || (p.verbPrompt || p.preselectedVerb
           ? 'Use the correct form of the highlighted word.'
@@ -649,6 +650,7 @@
       case 'meaning_contrast':
         return ((p.sentenceBefore || '') + ' ___ ' + (p.sentenceAfter || '')).replace(/\s+/g, ' ').trim();
       case 'free_text_gap_fill':
+      case 'conjugation_gap_fill':
       case 'preselected_verb_gap_fill':
         return p.sentence || p.instruction || '';
       case 'full_sentence_write':

@@ -240,7 +240,8 @@
     if (!screen) return '<p class="sp-empty">No screen loaded.</p>';
     switch (screen.formatType) {
       case 'two_option_choice': return renderTwoOption(screen);
-      case 'free_text_gap_fill': return renderGapFill(screen);
+      case 'free_text_gap_fill':
+      case 'conjugation_gap_fill': return renderGapFill(screen);
       case 'full_sentence_write': return renderFullSentence(screen);
       case 'word_order_tiles': return renderWordOrder(screen);
       case 'error_correction': return renderErrorCorrection(screen);
@@ -564,7 +565,7 @@
       });
     }
 
-    if (format === 'free_text_gap_fill' || format === 'preselected_verb_gap_fill') {
+    if (format === 'free_text_gap_fill' || format === 'conjugation_gap_fill' || format === 'preselected_verb_gap_fill') {
       bindSentenceSpeak(root, function() {
         var p = screen.payload || {};
         var values = getGapInputValues(root);
@@ -579,7 +580,7 @@
       el.addEventListener('input', onChange);
     });
 
-    if (format === 'free_text_gap_fill' || format === 'preselected_verb_gap_fill') {
+    if (format === 'free_text_gap_fill' || format === 'conjugation_gap_fill' || format === 'preselected_verb_gap_fill') {
       bindGapInputs(root, onChange);
     }
   }
@@ -818,7 +819,7 @@
     if (f === 'two_option_choice' || f === 'meaning_contrast') {
       return !!root.querySelector('.sp-option-btn--selected');
     }
-    if (f === 'free_text_gap_fill' || f === 'preselected_verb_gap_fill') {
+    if (f === 'free_text_gap_fill' || f === 'conjugation_gap_fill' || f === 'preselected_verb_gap_fill') {
       return allGapInputsFilled(root);
     }
     if (f === 'full_sentence_write') {
@@ -864,6 +865,7 @@
         break;
       }
       case 'free_text_gap_fill':
+      case 'conjugation_gap_fill':
       case 'preselected_verb_gap_fill': {
         var gapValues = getGapInputValues(root);
         if (gapValues.length > 1) {

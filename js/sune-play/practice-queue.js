@@ -45,6 +45,19 @@
       }
     }
 
+    function normalizeFormatType(formatType) {
+      if (window.SunePlayScreens && window.SunePlayScreens.normalizeFormatType) {
+        return window.SunePlayScreens.normalizeFormatType(formatType);
+      }
+      switch (formatType) {
+        case 'conjugation_gap_fill': return 'free_text_gap_fill';
+        case 'marked_error_gap_correction': return 'error_correction';
+        case 'verb_tile_conjugation_gap': return 'verb_bank_two_step';
+        case 'passage_error_hunt_counter': return 'passage_error_hunt_single';
+        default: return formatType;
+      }
+    }
+
     function applyFallbackIfNeeded(screen) {
       if (!screen) return screen;
       var key = screen.screenId || screen.itemId;
@@ -52,25 +65,36 @@
       if (count < maxFailures || !screen.fallbackFormatType) return screen;
 
       var fallback = screen.fallbackFormatType;
-      if (fallback === screen.formatType) return screen;
+      var normalizedFallback = normalizeFormatType(fallback);
+      if (normalizedFallback === screen.formatType) return screen;
 
       var converted = Object.assign({}, screen, {
-        formatType: fallback,
+        formatType: normalizedFallback,
+        sourceFormatType: fallback,
         _convertedFrom: screen.formatType,
         _isFallback: true
       });
 
-      if (fallback === 'word_order_tiles' && screen.payload) {
+      if (normalizedFallback === 'word_order_tiles' && screen.payload) {
         converted.payload = buildWordOrderPayload(screen.payload);
       }
-      if (fallback === 'two_option_choice' && screen.payload) {
+      if (normalizedFallback === 'two_option_choice' && screen.payload) {
         converted.payload = buildTwoOptionFromGapFill(screen.payload);
       }
-      if (fallback === 'preselected_verb_gap_fill' && screen.payload) {
-        converted.formatType = 'free_text_gap_fill';
-        converted.payload = Object.assign({}, screen.payload, {
-          preselectedVerb: screen.payload.selectedVerb || screen.payload.baseVerb
-        });
+      if (normalizedFallback === 'free_text_gap_fill' && screen.payload) {
+        if (fallback === 'conjugation_gap_fill' || screen.formatType === 'verb_bank_two_step') {
+          converted.payload = Object.assign({}, screen.payload, {
+            sentence: screen.payload.sentence || screen.payload.blankSentence || '',
+            verbPrompt: screen.payload.verbPrompt
+              || screen.payload.baseVerb
+              || screen.payload.selectedVerb
+              || ''
+          });
+        } else if (fallback === 'preselected_verb_gap_fill') {
+          converted.payload = Object.assign({}, screen.payload, {
+            preselectedVerb: screen.payload.selectedVerb || screen.payload.baseVerb
+          });
+        }
       }
 
       return converted;
