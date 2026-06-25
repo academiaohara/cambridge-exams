@@ -1705,11 +1705,16 @@ button.sp-example-line.sp-speakable {
   margin-top: 16px;
 }
 
+.sp-screen--sort {
+  align-items: stretch;
+}
+
 .sp-sort-verb-pool {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   align-content: flex-start;
+  width: 100%;
   margin-bottom: 20px;
   min-height: 56px;
   padding: 12px;
@@ -1729,6 +1734,7 @@ button.sp-example-line.sp-speakable {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  width: 100%;
 }
 
 .sp-sort-group {

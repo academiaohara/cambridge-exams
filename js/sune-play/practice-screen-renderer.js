@@ -477,15 +477,17 @@
     });
   }
 
+  function lockSortPoolHeight(pool) {
+    if (!pool) return;
+    pool.style.minHeight = '';
+    var naturalHeight = pool.scrollHeight;
+    pool.style.minHeight = Math.max(56, naturalHeight) + 'px';
+  }
+
   function lockSortContainerSizes(root, screen) {
     var pool = root.querySelector('#sp-sort-pool');
     if (pool && !pool.dataset.sizeLocked) {
-      var groups = (screen.payload && screen.payload.groups) || [];
-      var totalVerbs = groups.reduce(function(sum, g) {
-        return sum + (g.answers || []).length;
-      }, 0);
-      var poolRows = Math.ceil(Math.max(totalVerbs, 1) / 4);
-      pool.style.minHeight = Math.max(56, poolRows * 48 + 24) + 'px';
+      lockSortPoolHeight(pool);
       pool.dataset.sizeLocked = '1';
     }
 
@@ -533,6 +535,7 @@
     function moveVerb(btn, target) {
       if (!btn || !target || isLocked()) return;
       target.appendChild(btn);
+      if (pool) lockSortPoolHeight(pool);
       onChange();
     }
 
