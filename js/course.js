@@ -679,19 +679,43 @@
       var metaInfo = BentoGrid._courseUnitMeta[item.id];
       if (!metaInfo) return;
 
-      try {
-        var exKey = BentoGrid._cuExStateKey(levelId);
-        var exState = JSON.parse(localStorage.getItem(exKey) || '{}');
-        var exChanged = false;
-        (metaInfo.exercises || []).forEach(function(ex) {
-          var skey = item.id + '_' + ex.sectionIdx;
-          if (!(exState[skey] && exState[skey].checked)) {
-            exState[skey] = { answers: {}, checked: true, score: 1, total: 1 };
-            exChanged = true;
+      if (metaInfo.sunePlay) {
+        try {
+          var spKey = 'sune_play_progress_' + item.id;
+          var spProg = JSON.parse(localStorage.getItem(spKey) || '{}');
+          if (!spProg.completedNodes) spProg.completedNodes = {};
+          var spChanged = false;
+          (metaInfo.exercises || []).forEach(function(ex) {
+            var nodeId = ex.nodeId ||
+              (typeof ex.sectionIdx === 'string' && ex.sectionIdx.indexOf('node:') === 0
+                ? ex.sectionIdx.slice(5)
+                : null);
+            if (nodeId && !spProg.completedNodes[nodeId]) {
+              spProg.completedNodes[nodeId] = true;
+              spChanged = true;
+            }
+          });
+          if (!spProg.theoryCompleted) {
+            spProg.theoryCompleted = true;
+            spChanged = true;
           }
-        });
-        if (exChanged) localStorage.setItem(exKey, JSON.stringify(exState));
-      } catch (e) {}
+          if (spChanged) localStorage.setItem(spKey, JSON.stringify(spProg));
+        } catch (e) {}
+      } else {
+        try {
+          var exKey = BentoGrid._cuExStateKey(levelId);
+          var exState = JSON.parse(localStorage.getItem(exKey) || '{}');
+          var exChanged = false;
+          (metaInfo.exercises || []).forEach(function(ex) {
+            var skey = item.id + '_' + ex.sectionIdx;
+            if (!(exState[skey] && exState[skey].checked)) {
+              exState[skey] = { answers: {}, checked: true, score: 1, total: 1 };
+              exChanged = true;
+            }
+          });
+          if (exChanged) localStorage.setItem(exKey, JSON.stringify(exState));
+        } catch (e) {}
+      }
 
       try {
         var secProg = BentoGrid._getCourseSectionProgress(levelId);
