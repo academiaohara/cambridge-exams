@@ -744,7 +744,7 @@
       context: getScreenContext(screen),
       explanation: result.explanation,
       correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen),
-      continueLabel: 'Close'
+      continueLabel: 'Continue'
     };
     if (lessonState.mount) {
       LessonExplanation.open(Object.assign({ inlineMount: lessonState.mount }, explainOpts));

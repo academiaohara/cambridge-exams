@@ -78,10 +78,29 @@ var LessonExplanation = (function() {
       '</div>';
   }
 
+  function inlineContextBlockHtml(label, text, variant) {
+    if (!text) return '';
+    var blockClass = variant === 'question'
+      ? 'lesson-explanation-question sp-explanation-inline-block'
+      : 'lesson-explanation-answer sp-explanation-inline-block';
+    var icon = variant === 'question' ? 'quiz' : 'check_circle';
+    return '<div class="' + blockClass + '">' +
+        '<span class="' + blockClass + '-label sp-explanation-inline-block-label">' +
+          '<span class="sp-explanation-inline-block-icon material-symbols-outlined" aria-hidden="true">' +
+            icon +
+          '</span>' +
+          esc(label) +
+        '</span>' +
+        '<p class="' + blockClass + '-text">' + formatBody(text) + '</p>' +
+      '</div>';
+  }
+
   function inlineExplanationCardHtml(text) {
-    return '<div class="sp-explanation-inline-card">' +
-        '<div class="sp-explanation-inline-card-label">' +
-          '<span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>' +
+    return '<div class="sp-explanation-inline-card sp-explanation-inline-block">' +
+        '<div class="sp-explanation-inline-card-label sp-explanation-inline-block-label">' +
+          '<span class="sp-explanation-inline-block-icon sp-explanation-inline-block-icon--why" aria-hidden="true">' +
+            '<span class="material-symbols-outlined">lightbulb</span>' +
+          '</span>' +
           'Why' +
         '</div>' +
         '<p class="sp-explanation-inline-text">' + formatBody(text) + '</p>' +
@@ -101,8 +120,8 @@ var LessonExplanation = (function() {
       restoreFormState(mountEl, formState);
     };
 
-    var contextHtml = contextBlockHtml('Question', opts.context, 'question');
-    var answerHtml = contextBlockHtml('Correct answer', opts.correctAnswer);
+    var contextHtml = inlineContextBlockHtml('Question', opts.context, 'question');
+    var answerHtml = inlineContextBlockHtml('Correct answer', opts.correctAnswer);
 
     mountEl.className = (mountEl.className ? mountEl.className + ' ' : '') + 'sp-explanation-inline-mount';
     if (mountEl.classList.contains('sp-lesson-mount')) {
@@ -114,9 +133,14 @@ var LessonExplanation = (function() {
           '<button type="button" class="sp-explanation-inline-close" aria-label="Close">' +
             '<span class="material-symbols-outlined">close</span>' +
           '</button>' +
-          '<h2 class="sp-explanation-inline-title" id="sp-explanation-inline-title">' +
-            esc(opts.title || 'Explanation') +
-          '</h2>' +
+          '<div class="sp-explanation-inline-header-main">' +
+            '<span class="sp-explanation-inline-hero" aria-hidden="true">' +
+              '<span class="material-symbols-outlined">menu_book</span>' +
+            '</span>' +
+            '<h2 class="sp-explanation-inline-title" id="sp-explanation-inline-title">' +
+              esc(opts.title || 'Explanation') +
+            '</h2>' +
+          '</div>' +
         '</header>' +
         '<div class="sp-explanation-inline-body">' +
           contextHtml +
@@ -125,7 +149,7 @@ var LessonExplanation = (function() {
         '</div>' +
         '<footer class="sp-explanation-inline-footer">' +
           '<button type="button" class="sp-explanation-inline-continue">' +
-            esc(opts.continueLabel || 'Close') +
+            esc(opts.continueLabel || 'Continue') +
           '</button>' +
         '</footer>' +
       '</div>';
