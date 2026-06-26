@@ -8188,8 +8188,11 @@ body.lesson-explanation-open {
   gap: 8px;
   padding: calc(12px + env(safe-area-inset-top)) 12px 12px;
   flex-shrink: 0;
-  border-bottom: 2px solid var(--cu-duo-blue-border, #b8e8fc);
-  background: var(--cu-duo-blue-bg, #ddf4ff);
+  border-bottom: 3px solid var(--cu-duo-blue, #1cb0f6);
+  background:
+    radial-gradient(circle at 12% 30%, rgba(255, 200, 0, 0.22) 0%, transparent 42%),
+    radial-gradient(circle at 88% 20%, rgba(88, 204, 2, 0.18) 0%, transparent 40%),
+    linear-gradient(180deg, #b8e8fc 0%, var(--cu-duo-blue-bg, #ddf4ff) 55%, #ffffff 100%);
 }
 
 .lesson-explanation-back {
@@ -8219,11 +8222,12 @@ body.lesson-explanation-open {
   flex: 1;
   margin: 0;
   font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--ex-duo-blue-dark, #1899d6);
   text-align: center;
   padding-right: 40px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 .lesson-explanation-body {
@@ -8234,7 +8238,10 @@ body.lesson-explanation-open {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  background: #fff;
+  background:
+    radial-gradient(circle at 95% 8%, rgba(28, 176, 246, 0.08) 0%, transparent 28%),
+    radial-gradient(circle at 5% 92%, rgba(88, 204, 2, 0.08) 0%, transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #f4fbff 45%, #f8fff2 100%);
 }
 
 .lesson-explanation-context {
@@ -8246,73 +8253,124 @@ body.lesson-explanation-open {
   color: var(--cu-duo-text, #4b4b4b);
 }
 
+.lesson-explanation-question-label .material-symbols-outlined,
+.lesson-explanation-answer-label .material-symbols-outlined {
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lesson-explanation-question-label .material-symbols-outlined {
+  color: var(--ex-duo-blue, #1cb0f6);
+}
+
+.lesson-explanation-answer-label .material-symbols-outlined {
+  color: var(--cu-duo-green-dark, #58a700);
+}
+
 .lesson-explanation-question {
-  padding: 14px 16px;
-  border-radius: 16px;
-  background: #f7f7f7;
-  border: 2px solid var(--ex-duo-border, #e5e5e5);
-  border-bottom-width: 3px;
-  border-bottom-color: #d1d1d1;
-  box-shadow: 0 3px 0 #d1d1d1;
+  padding: 16px;
+  border-radius: 18px;
+  background: linear-gradient(155deg, #ffffff 0%, var(--cu-duo-blue-bg, #ddf4ff) 100%);
+  border: 2px solid var(--ex-duo-blue, #1cb0f6);
+  border-bottom-width: 4px;
+  border-bottom-color: var(--ex-duo-blue-dark, #1899d6);
+  box-shadow: 0 4px 0 var(--ex-duo-blue-dark, #1899d6);
 }
 
 .lesson-explanation-question-label {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #777;
-  margin-bottom: 6px;
+  color: #fff;
+  margin-bottom: 10px;
+  padding: 5px 12px 5px 8px;
+  border-radius: 999px;
+  background: var(--ex-duo-blue, #1cb0f6);
+  border: 2px solid var(--ex-duo-blue-dark, #1899d6);
+  border-bottom-width: 3px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
 }
 
 .lesson-explanation-question-text {
   margin: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
   font-family: 'Nunito', sans-serif;
   font-size: 1.05rem;
   font-weight: 800;
   line-height: 1.45;
   color: var(--cu-duo-text, #4b4b4b);
+  background: #fff;
+  border: 2px solid var(--cu-duo-blue-border, #b8e8fc);
+  border-bottom-width: 3px;
+  border-bottom-color: color-mix(in srgb, var(--ex-duo-blue, #1cb0f6) 35%, #d8eef8);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--ex-duo-blue-dark, #1899d6) 18%, #e8f4fc);
 }
 
 .lesson-explanation-answer {
-  padding: 14px 16px;
-  border-radius: 16px;
-  background: var(--cu-duo-green-light, #d7ffb8);
+  padding: 16px;
+  border-radius: 18px;
+  background: linear-gradient(155deg, #ffffff 0%, var(--cu-duo-green-light, #d7ffb8) 100%);
   border: 2px solid var(--cu-duo-green, #58cc02);
-  border-bottom-width: 3px;
+  border-bottom-width: 4px;
   border-bottom-color: var(--cu-duo-green-dark, #58a700);
-  box-shadow: 0 3px 0 var(--cu-duo-green-dark, #58a700);
+  box-shadow: 0 4px 0 var(--cu-duo-green-dark, #58a700);
 }
 
 .lesson-explanation-answer-label {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--cu-duo-green-dark, #58a700);
-  margin-bottom: 6px;
+  color: #fff;
+  margin-bottom: 10px;
+  padding: 5px 12px 5px 8px;
+  border-radius: 999px;
+  background: var(--cu-duo-green, #58cc02);
+  border: 2px solid var(--cu-duo-green-dark, #58a700);
+  border-bottom-width: 3px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
 }
 
 .lesson-explanation-answer-text {
+  display: inline-block;
   margin: 0;
+  padding: 10px 18px;
+  border-radius: 14px;
   font-family: 'Nunito', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.12rem;
   font-weight: 800;
-  line-height: 1.45;
-  color: var(--cu-duo-green, #58cc02);
+  line-height: 1.35;
+  color: var(--cu-duo-green-dark, #58a700);
+  background: #fff;
+  border: 2px solid #a8e06c;
+  border-bottom-width: 3px;
+  border-bottom-color: var(--cu-duo-green-dark, #58a700);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--cu-duo-green-dark, #58a700) 35%, #d8f0c8);
 }
 
 .lesson-explanation-card {
   flex: 1;
   padding: 16px;
   border-radius: 18px;
-  background: var(--cu-duo-blue-bg, #ddf4ff);
-  border: 2px solid var(--ex-duo-blue, #1cb0f6);
-  border-bottom-width: 3px;
-  border-bottom-color: var(--ex-duo-blue-dark, #1899d6);
-  box-shadow: 0 3px 0 color-mix(in srgb, var(--ex-duo-blue-dark, #1899d6) 30%, #e5e5e5);
+  background: linear-gradient(160deg, #fff8d6 0%, #fff4c4 100%);
+  border: 2px solid #ffc800;
+  border-bottom-width: 4px;
+  border-bottom-color: #e5b400;
+  box-shadow: 0 4px 0 #e5b400;
 }
 
 .lesson-explanation-card-label {
@@ -8320,36 +8378,47 @@ body.lesson-explanation-open {
   align-items: center;
   gap: 6px;
   margin-bottom: 10px;
+  padding: 5px 12px 5px 8px;
+  border-radius: 999px;
   font-family: 'Nunito', sans-serif;
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--ex-duo-blue-dark, #1899d6);
+  color: #7a5a00;
+  background: #ffc800;
+  border: 2px solid #e5b400;
+  border-bottom-width: 3px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
 }
 
 .lesson-explanation-card-label .material-symbols-outlined {
   font-size: 1.1rem;
+  color: #c99000;
 }
 
 .lesson-explanation-text {
   margin: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
   font-family: 'Nunito', sans-serif;
   font-size: 1.05rem;
   line-height: 1.65;
   color: var(--cu-duo-text, #4b4b4b);
+  background: rgba(255, 255, 255, 0.72);
+  border: 2px solid #ffe066;
 }
 
 .lesson-explanation-text strong {
-  color: var(--ex-duo-blue-dark, #1899d6);
+  color: #9a7200;
   font-weight: 800;
 }
 
 .lesson-explanation-footer {
   flex-shrink: 0;
   padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-  background: #fff;
-  border-top: none;
+  background: linear-gradient(180deg, #f8fff2 0%, #ffffff 100%);
+  border-top: 3px solid #a8e06c;
 }
 
 .lesson-explanation-continue {

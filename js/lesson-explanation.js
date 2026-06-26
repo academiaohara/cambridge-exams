@@ -62,8 +62,12 @@ var LessonExplanation = (function() {
     var blockClass = variant === 'question'
       ? 'lesson-explanation-question'
       : 'lesson-explanation-answer';
+    var icon = variant === 'question' ? 'quiz' : 'check_circle';
     return '<div class="' + blockClass + '">' +
-        '<span class="' + blockClass + '-label">' + esc(label) + '</span>' +
+        '<span class="' + blockClass + '-label">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">' + icon + '</span>' +
+          esc(label) +
+        '</span>' +
         '<p class="' + blockClass + '-text">' + formatBody(text) + '</p>' +
       '</div>';
   }

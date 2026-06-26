@@ -12,6 +12,10 @@
   --sp-duo-green-dark: #46a302;
   --sp-duo-green-light: #e5f8d0;
   --sp-duo-green-border: #a8e06c;
+  --sp-duo-yellow: #ffc800;
+  --sp-duo-yellow-dark: #e5b400;
+  --sp-duo-yellow-light: #fff8d6;
+  --sp-duo-yellow-border: #ffe066;
   --sp-correct: #58cc02;
   --sp-correct-tint: rgba(88, 204, 2, 0.12);
   --sp-incorrect: #ef4444;
@@ -1444,9 +1448,14 @@ button.sp-example-line.sp-speakable {
   align-items: flex-start;
   gap: 8px;
   padding: 16px 16px 14px;
-  border-bottom: 2px solid var(--sp-duo-blue-border);
-  background: linear-gradient(180deg, var(--sp-duo-blue-light) 0%, #eef9ff 100%);
+  border-bottom: 3px solid var(--sp-duo-blue);
+  background:
+    radial-gradient(circle at 12% 30%, rgba(255, 200, 0, 0.22) 0%, transparent 42%),
+    radial-gradient(circle at 88% 20%, rgba(88, 204, 2, 0.18) 0%, transparent 40%),
+    linear-gradient(180deg, #b8e8fc 0%, var(--sp-duo-blue-light) 55%, #ffffff 100%);
   flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .sp-explanation-inline-header-main {
@@ -1462,14 +1471,14 @@ button.sp-example-line.sp-speakable {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: var(--white);
+  background: linear-gradient(145deg, #ffffff 0%, var(--sp-duo-blue-light) 100%);
   border: 2px solid var(--sp-duo-blue);
-  border-bottom-width: 3px;
+  border-bottom-width: 4px;
   border-bottom-color: var(--sp-duo-blue-dark);
-  box-shadow: 0 3px 0 var(--sp-duo-blue-dark);
+  box-shadow: 0 4px 0 var(--sp-duo-blue-dark);
   color: var(--sp-duo-blue);
   animation: spExplanationBlockIn 0.4s cubic-bezier(0.34, 1.4, 0.64, 1) 0.08s both;
 }
@@ -1514,11 +1523,12 @@ button.sp-example-line.sp-speakable {
   flex: 1;
   margin: 0;
   font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.28rem;
   font-weight: 700;
   color: var(--sp-duo-blue-dark);
   text-align: center;
   line-height: 1.25;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 .sp-explanation-inline-body {
@@ -1528,8 +1538,11 @@ button.sp-example-line.sp-speakable {
   padding: 18px 16px 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  gap: 14px;
+  background:
+    radial-gradient(circle at 95% 8%, rgba(28, 176, 246, 0.08) 0%, transparent 28%),
+    radial-gradient(circle at 5% 92%, rgba(88, 204, 2, 0.08) 0%, transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #f4fbff 45%, #f8fff2 100%);
 }
 
 .sp-explanation-inline-body > .sp-explanation-inline-block {
@@ -1551,13 +1564,19 @@ button.sp-example-line.sp-speakable {
 .sp-explanation-inline-block-label {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  margin-bottom: 8px;
+  gap: 5px;
+  margin-bottom: 10px;
+  padding: 5px 12px 5px 6px;
+  border-radius: 999px;
   font-family: 'Nunito', sans-serif;
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: #fff;
+  border: 2px solid transparent;
+  border-bottom-width: 3px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
 }
 
 .sp-explanation-inline-block-icon {
@@ -1568,6 +1587,7 @@ button.sp-example-line.sp-speakable {
   height: 22px;
   border-radius: 50%;
   flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .sp-explanation-inline-block-icon .material-symbols-outlined {
@@ -1575,80 +1595,97 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-explanation-inline .lesson-explanation-question {
-  padding: 14px 16px;
-  border-radius: 16px;
-  background: #f7f7f7;
-  border: 2px solid var(--ex-duo-border, #e5e5e5);
-  border-bottom-width: 3px;
-  border-bottom-color: #d1d1d1;
-  box-shadow: 0 3px 0 #d1d1d1;
+  padding: 16px;
+  border-radius: 18px;
+  background: linear-gradient(155deg, #ffffff 0%, var(--sp-duo-blue-light) 100%);
+  border: 2px solid var(--sp-duo-blue);
+  border-bottom-width: 4px;
+  border-bottom-color: var(--sp-duo-blue-dark);
+  box-shadow: 0 4px 0 var(--sp-duo-blue-dark);
+}
+
+.sp-explanation-inline .lesson-explanation-question .sp-explanation-inline-block-label {
+  background: var(--sp-duo-blue);
+  border-color: var(--sp-duo-blue-dark);
+  border-bottom-color: color-mix(in srgb, var(--sp-duo-blue-dark) 80%, #000);
 }
 
 .sp-explanation-inline .lesson-explanation-question .sp-explanation-inline-block-icon {
-  background: #ececec;
-  color: #777;
-}
-
-.sp-explanation-inline .lesson-explanation-question-label {
-  color: #777;
+  color: var(--sp-duo-blue);
 }
 
 .sp-explanation-inline .lesson-explanation-question-text {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
   font-family: 'Nunito', sans-serif;
   font-size: 1.05rem;
   font-weight: 800;
   line-height: 1.45;
   color: var(--text-dark);
+  background: #fff;
+  border: 2px solid var(--sp-duo-blue-border);
+  border-bottom-width: 3px;
+  border-bottom-color: color-mix(in srgb, var(--sp-duo-blue) 35%, #d8eef8);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--sp-duo-blue-dark) 18%, #e8f4fc);
 }
 
 .sp-explanation-inline .lesson-explanation-answer {
-  padding: 14px 16px;
-  border-radius: 16px;
-  background: var(--sp-duo-green-light);
+  padding: 16px;
+  border-radius: 18px;
+  background: linear-gradient(155deg, #ffffff 0%, var(--sp-duo-green-light) 100%);
   border: 2px solid var(--sp-duo-green);
-  border-bottom-width: 3px;
+  border-bottom-width: 4px;
   border-bottom-color: var(--sp-duo-green-dark);
-  box-shadow: 0 3px 0 var(--sp-duo-green-dark);
+  box-shadow: 0 4px 0 var(--sp-duo-green-dark);
+}
+
+.sp-explanation-inline .lesson-explanation-answer .sp-explanation-inline-block-label {
+  background: var(--sp-duo-green);
+  border-color: var(--sp-duo-green-dark);
+  border-bottom-color: color-mix(in srgb, var(--sp-duo-green-dark) 80%, #000);
 }
 
 .sp-explanation-inline .lesson-explanation-answer .sp-explanation-inline-block-icon {
-  background: rgba(88, 204, 2, 0.2);
-  color: var(--sp-duo-green-dark);
-}
-
-.sp-explanation-inline .lesson-explanation-answer-label {
   color: var(--sp-duo-green-dark);
 }
 
 .sp-explanation-inline .lesson-explanation-answer-text {
+  display: inline-block;
+  margin: 0;
+  padding: 10px 18px;
+  border-radius: 14px;
   font-family: 'Nunito', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.12rem;
   font-weight: 800;
-  line-height: 1.45;
-  color: var(--sp-duo-green);
+  line-height: 1.35;
+  color: var(--sp-duo-green-dark);
+  background: #fff;
+  border: 2px solid var(--sp-duo-green-border);
+  border-bottom-width: 3px;
+  border-bottom-color: var(--sp-duo-green-dark);
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--sp-duo-green-dark) 35%, #d8f0c8);
 }
 
 .sp-explanation-inline-card {
   flex: 1;
   padding: 16px;
   border-radius: 18px;
-  background: linear-gradient(160deg, var(--sp-duo-blue-light) 0%, #f0faff 100%);
-  border: 2px solid var(--sp-duo-blue);
-  border-bottom-width: 3px;
-  border-bottom-color: var(--sp-duo-blue-dark);
-  box-shadow: 0 3px 0 color-mix(in srgb, var(--sp-duo-blue-dark) 30%, #e5e5e5);
+  background: linear-gradient(160deg, var(--sp-duo-yellow-light) 0%, #fff4c4 100%);
+  border: 2px solid var(--sp-duo-yellow);
+  border-bottom-width: 4px;
+  border-bottom-color: var(--sp-duo-yellow-dark);
+  box-shadow: 0 4px 0 var(--sp-duo-yellow-dark);
 }
 
 .sp-explanation-inline-card .sp-explanation-inline-block-icon--why {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: var(--white);
-  border: 2px solid var(--sp-duo-blue);
-  border-bottom-width: 2px;
-  border-bottom-color: var(--sp-duo-blue-dark);
-  box-shadow: 0 2px 0 color-mix(in srgb, var(--sp-duo-blue-dark) 25%, #d8eef8);
-  color: var(--sp-duo-blue);
+  background: #fff;
+  border: none;
+  box-shadow: none;
+  color: #c99000;
 }
 
 .sp-explanation-inline-card .sp-explanation-inline-block-icon--why .material-symbols-outlined {
@@ -1656,27 +1693,34 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-explanation-inline-card-label {
-  color: var(--sp-duo-blue-dark);
+  background: var(--sp-duo-yellow);
+  color: #7a5a00;
+  border-color: var(--sp-duo-yellow-dark);
+  border-bottom-color: color-mix(in srgb, var(--sp-duo-yellow-dark) 80%, #000);
 }
 
 .sp-explanation-inline-text {
   margin: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
   font-family: 'Nunito', sans-serif;
   font-size: 1.05rem;
   line-height: 1.65;
-  color: var(--text-dark);
+  color: #4b4b4b;
+  background: rgba(255, 255, 255, 0.72);
+  border: 2px solid var(--sp-duo-yellow-border);
 }
 
 .sp-explanation-inline-text strong {
   font-weight: 800;
-  color: var(--sp-duo-blue-dark);
+  color: #9a7200;
 }
 
 .sp-explanation-inline-footer {
   flex-shrink: 0;
   padding: 12px 16px 16px;
-  border-top: 2px solid var(--sp-duo-blue-border);
-  background: var(--white);
+  border-top: 3px solid var(--sp-duo-green-border);
+  background: linear-gradient(180deg, #f8fff2 0%, #ffffff 100%);
 }
 
 .sp-explanation-inline-continue {
