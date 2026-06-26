@@ -1789,6 +1789,12 @@ button.sp-example-line.sp-speakable {
   text-align: center;
 }
 
+.sp-screen--hunt .sp-passage-card,
+.sp-screen--hunt .sp-hunt-selected-panel {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .sp-passage-card {
   font-size: 0.95rem;
   line-height: 1.65;
