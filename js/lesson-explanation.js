@@ -105,6 +105,9 @@ var LessonExplanation = (function() {
     var answerHtml = contextBlockHtml('Correct answer', opts.correctAnswer);
 
     mountEl.className = (mountEl.className ? mountEl.className + ' ' : '') + 'sp-explanation-inline-mount';
+    if (mountEl.classList.contains('sp-lesson-mount')) {
+      document.body.classList.add('lesson-explanation-open');
+    }
     mountEl.innerHTML =
       '<div class="sp-explanation-inline" role="dialog" aria-labelledby="sp-explanation-inline-title">' +
         '<header class="sp-explanation-inline-header">' +

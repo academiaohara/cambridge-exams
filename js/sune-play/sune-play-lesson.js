@@ -746,9 +746,8 @@
       correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen),
       continueLabel: 'Close'
     };
-    var mount = lessonState.mount && lessonState.mount.querySelector('#sp-screen-mount');
-    if (mount) {
-      LessonExplanation.open(Object.assign({ inlineMount: mount }, explainOpts));
+    if (lessonState.mount) {
+      LessonExplanation.open(Object.assign({ inlineMount: lessonState.mount }, explainOpts));
       return;
     }
     LessonExplanation.open(explainOpts);

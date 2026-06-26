@@ -1381,6 +1381,16 @@ button.sp-example-line.sp-speakable {
   flex-direction: column;
 }
 
+.sp-lesson-mount.sp-explanation-inline-mount {
+  flex: 1 1 0;
+  min-height: 0;
+  height: 100%;
+  max-height: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .sp-explanation-inline {
   display: flex;
   flex-direction: column;
@@ -1393,6 +1403,13 @@ button.sp-example-line.sp-speakable {
   border-bottom-color: var(--sp-duo-blue-dark);
   box-shadow: 0 4px 0 var(--sp-duo-blue-dark);
   overflow: hidden;
+}
+
+.sp-lesson-mount.sp-explanation-inline-mount .sp-explanation-inline {
+  flex: 1 1 0;
+  min-height: 0;
+  height: 100%;
+  border-radius: 20px;
 }
 
 .sp-explanation-inline-header {
@@ -1577,6 +1594,43 @@ button.sp-example-line.sp-speakable {
 .sp-explanation-inline-continue:active {
   transform: translateY(2px);
   box-shadow: 0 2px 0 var(--sp-duo-blue-dark);
+}
+
+@media (max-width: 768px) {
+  .sp-lesson-mount.sp-explanation-inline-mount {
+    position: fixed;
+    inset: 0;
+    z-index: 12000;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    height: 100dvh;
+    max-height: 100dvh;
+    background: var(--white);
+    animation: lessonExplanationIn 0.28s ease-out;
+  }
+
+  .sp-lesson-mount.sp-explanation-inline-mount .sp-explanation-inline {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    height: 100%;
+    max-height: 100dvh;
+  }
+
+  .sp-lesson-mount.sp-explanation-inline-mount .sp-explanation-inline-header {
+    padding-top: calc(14px + env(safe-area-inset-top, 0px));
+  }
+
+  .sp-lesson-mount.sp-explanation-inline-mount .sp-explanation-inline-footer {
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+.dashboard-layout--lesson-focus .sp-lesson-mount.sp-explanation-inline-mount {
+  padding: 0;
+  max-height: 100%;
 }
 
 .sp-screen--tiles {
