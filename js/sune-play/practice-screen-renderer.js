@@ -613,14 +613,14 @@
   function renderHuntSelectedPanel() {
     return '<div class="sp-hunt-selected-panel" id="sp-hunt-selected-panel">' +
       '<p class="sp-hunt-selected-label">Selected errors:</p>' +
-      '<ol class="sp-hunt-selected-list" id="sp-hunt-selected-list"></ol>' +
+      '<ol class="sp-hunt-selected-list sp-hunt-selected-list--grid" id="sp-hunt-selected-list"></ol>' +
     '</div>';
   }
 
   function renderHuntSelectedPanelSlots(target) {
     return '<div class="sp-hunt-selected-panel" id="sp-hunt-selected-panel">' +
       '<p class="sp-hunt-selected-label">Selected errors:</p>' +
-      '<ol class="sp-hunt-selected-list" id="sp-hunt-selected-list"></ol></div>';
+      '<ol class="sp-hunt-selected-list sp-hunt-selected-list--grid" id="sp-hunt-selected-list"></ol></div>';
   }
 
   function renderPassageHunt(screen) {
@@ -978,13 +978,24 @@
       bindWordClicks();
     }
 
+    function slotDisplayText(entry) {
+      if (fixed[entry.itemIdx] && fixed[entry.itemIdx].correction) {
+        return fixed[entry.itemIdx].correction;
+      }
+      if (root._huntRevealIdx === entry.itemIdx) {
+        var revealItem = items[entry.itemIdx];
+        if (revealItem) return getItemCorrection(revealItem);
+      }
+      return entry.text;
+    }
+
     function renderSlots() {
       if (!selectedList) return;
       var html = '';
       foundEntries.forEach(function(entry, i) {
         html += '<li class="sp-hunt-selected-slot sp-hunt-selected-slot--correct">' +
           '<span class="sp-hunt-selected-num">' + (i + 1) + '.</span> ' +
-          '<span class="sp-hunt-selected-text">' + esc(entry.text) + '</span></li>';
+          '<span class="sp-hunt-selected-text">' + esc(slotDisplayText(entry)) + '</span></li>';
       });
       if (fixedCount() < target && root._huntPhase !== 'reveal') {
         var slotNum = fixedCount() + 1;

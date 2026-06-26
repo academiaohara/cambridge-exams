@@ -8,8 +8,12 @@
   --sp-duo-blue-dark: #1899d6;
   --sp-duo-blue-light: #ddf4ff;
   --sp-duo-blue-border: #b8e8fc;
-  --sp-correct: #22c55e;
-  --sp-correct-tint: rgba(34, 197, 94, 0.12);
+  --sp-duo-green: #58cc02;
+  --sp-duo-green-dark: #46a302;
+  --sp-duo-green-light: #e5f8d0;
+  --sp-duo-green-border: #a8e06c;
+  --sp-correct: #58cc02;
+  --sp-correct-tint: rgba(88, 204, 2, 0.12);
   --sp-incorrect: #ef4444;
   --sp-incorrect-tint: rgba(239, 68, 68, 0.12);
   display: flex;
@@ -1805,8 +1809,8 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-hunt-mark {
-  background: rgba(255, 184, 173, 0.45);
-  box-shadow: inset 0 -2px 0 rgba(224, 122, 95, 0.55);
+  background: var(--sp-duo-blue-light);
+  box-shadow: inset 0 -2px 0 var(--sp-duo-blue);
   border-radius: 2px;
   padding: 0 1px;
   cursor: pointer;
@@ -1830,17 +1834,20 @@ button.sp-example-line.sp-speakable {
 
 .sp-hunt-phrase:hover,
 .sp-hunt-word:hover {
-  background: rgba(120, 160, 220, 0.12);
+  background: var(--sp-duo-blue-light);
 }
 
 .sp-hunt-phrase--selected {
-  background: rgba(255, 184, 173, 0.45);
-  box-shadow: inset 0 -2px 0 rgba(224, 122, 95, 0.55);
+  background: var(--sp-duo-blue-light);
+  box-shadow: inset 0 -2px 0 var(--sp-duo-blue);
+  color: var(--sp-duo-blue-dark);
 }
 
 .sp-hunt-word--selected {
-  background: rgba(255, 184, 173, 0.45);
-  box-shadow: inset 0 -2px 0 rgba(224, 122, 95, 0.55);
+  background: var(--sp-duo-blue-light);
+  box-shadow: inset 0 -2px 0 var(--sp-duo-blue);
+  color: var(--sp-duo-blue-dark);
+  font-weight: 600;
 }
 
 .sp-hunt-word--wrong {
@@ -1884,7 +1891,7 @@ button.sp-example-line.sp-speakable {
 
 .sp-hunt-selected-list--grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 8px;
 }
 
@@ -1902,32 +1909,45 @@ button.sp-example-line.sp-speakable {
   gap: 4px;
 }
 
-.sp-hunt-selected-slot:not(.sp-hunt-selected-slot--empty) {
-  background: rgba(255, 184, 173, 0.2);
-  border-style: solid;
-  border-color: rgba(224, 122, 95, 0.35);
+.sp-hunt-selected-slot--empty {
+  background: var(--sp-duo-blue-light);
+  border: 2px dashed var(--sp-duo-blue-border);
+  color: var(--sp-duo-blue);
 }
 
 .sp-hunt-selected-slot--pending {
-  background: rgba(255, 184, 173, 0.2);
-  border-style: solid;
-  border-color: rgba(224, 122, 95, 0.35);
+  background: var(--sp-duo-blue-light);
+  border: 2px solid var(--sp-duo-blue);
+  color: var(--sp-duo-blue-dark);
+  box-shadow: 0 2px 0 var(--sp-duo-blue-border);
+}
+
+.sp-hunt-selected-slot--pending .sp-hunt-selected-text {
+  color: var(--sp-duo-blue-dark);
 }
 
 .sp-hunt-selected-slot--correct {
-  background: rgba(88, 204, 2, 0.12);
-  border-style: solid;
-  border-color: rgba(88, 204, 2, 0.45);
-  color: #3a7d00;
+  background: var(--sp-duo-green-light);
+  border: 2px solid var(--sp-duo-green-border);
+  color: var(--sp-duo-green-dark);
+  box-shadow: none;
 }
 
 .sp-hunt-selected-slot--correct .sp-hunt-selected-text {
-  color: #3a7d00;
+  color: var(--sp-duo-green-dark);
+  font-weight: 700;
+}
+
+.sp-hunt-selected-slot--correct .sp-hunt-selected-num {
+  color: var(--sp-duo-green);
 }
 
 .sp-hunt-corrected {
-  font-weight: 600;
-  color: var(--text);
+  font-weight: 700;
+  color: var(--sp-duo-green-dark);
+  background: var(--sp-duo-green-light);
+  border-radius: 3px;
+  padding: 0 2px;
 }
 
 .sp-hunt-reveal {
@@ -1942,12 +1962,12 @@ button.sp-example-line.sp-speakable {
 
 .sp-hunt-reveal-correct {
   font-weight: 700;
-  color: #3a7d00;
+  color: var(--sp-duo-green-dark);
   margin-left: 0.2em;
 }
 
 .sp-hunt-selected-slot--empty .sp-hunt-selected-text {
-  color: var(--text-light);
+  color: var(--sp-duo-blue);
   font-style: italic;
   font-weight: 500;
 }
@@ -1955,9 +1975,10 @@ button.sp-example-line.sp-speakable {
 .sp-hunt-selected-item {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--sp-duo-blue-dark);
   padding: 8px 10px;
-  background: rgba(255, 184, 173, 0.2);
+  background: var(--sp-duo-blue-light);
+  border: 2px solid var(--sp-duo-blue-border);
   border-radius: 8px;
 }
 
