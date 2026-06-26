@@ -757,11 +757,82 @@
   function handleActionClick() {
     var actionBtn = lessonState.mount.querySelector('#sp-action-btn');
     if (!actionBtn || actionBtn.disabled) return;
+
+    var screenRoot = lessonState.mount.querySelector('.sp-screen');
+    var screen = lessonState.currentScreen;
+
+    if (screen && screen.formatType === 'passage_error_hunt_counter' && screenRoot) {
+      if (screenRoot._huntPhase === 'reveal') {
+        handleHuntCounterRevealContinue(screenRoot, screen);
+        return;
+      }
+      if (!lessonState.awaitingContinue) {
+        handleHuntCounterCheck(screenRoot, screen);
+        return;
+      }
+    }
+
     if (lessonState.awaitingContinue) {
       handleContinue();
       return;
     }
     handleCheck();
+  }
+
+  function handleHuntCounterCheck(screenRoot, screen) {
+    renderer.processPassageHuntCounterCheck(screenRoot, screen, function(result) {
+      if (!result.handled) {
+        handleCheck();
+        return;
+      }
+      if (result.noop) return;
+
+      if (!result.correct) {
+        if (result.lifeLoss > 0) {
+          var lost = lessonState.hearts.loseLife(result.lifeLoss, {
+            screenId: screen.screenId,
+            itemId: screen.itemId,
+            maxLifeLossPerScreen: screen.maxLifeLossPerScreen
+          });
+          if (lost) lessonState.sessionLivesLost += result.lifeLoss;
+        }
+        if (window.AudioUtils) AudioUtils.playFailureSound();
+        updateSessionHeader();
+        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+        return;
+      }
+
+      if (result.reveal) {
+        if (window.AudioUtils) AudioUtils.playSuccessSound();
+        lessonState._lastResultCorrect = true;
+        setActionBtn('continue', true);
+      }
+    });
+  }
+
+  function handleHuntCounterRevealContinue(screenRoot, screen) {
+    renderer.commitHuntCounterReveal(screenRoot, screen, function(result) {
+      if (!result.handled) return;
+
+      if (result.allDone) {
+        screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
+        screenRoot.classList.add('sp-screen--locked');
+        lessonState.queue.removeCompletedItem(screen);
+        lessonState.sessionCorrect++;
+        showFeedback({
+          correct: true,
+          explanation: result.explanation || '',
+          correctAnswer: '',
+          userAnswer: result.userAnswer || '',
+          lifeLoss: 0
+        }, true);
+        updateSessionHeader();
+        return;
+      }
+
+      lessonState._lastResultCorrect = null;
+      setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+    });
   }
 
   function handleContinue() {
