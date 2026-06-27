@@ -647,8 +647,12 @@
         return p.instruction || 'Find one wrong verb phrase.';
       case 'passage_error_hunt_counter': {
         var huntPhase = screen._huntState && screen._huntState.phase;
-        if (huntPhase === 'correct') return 'Correct each marked error, one at a time.';
-        return p.instruction || 'Find and mark 10 errors.';
+        if (huntPhase === 'correct') return 'Write the correction for the error you marked.';
+        var fixedCount = screen._huntState && screen._huntState.fixed
+          ? Object.keys(screen._huntState.fixed).length
+          : 0;
+        if (fixedCount > 0) return 'Find and mark the next error in the passage.';
+        return p.instruction || p.studentInstruction || 'Find and mark an error in the passage.';
       }
       case 'guided_error_choice':
         return p.instruction || 'Choose the correct form for each error.';
@@ -808,16 +812,6 @@
       }
       if (result.noop) return;
 
-      if (result.markOnly) {
-        if (window.AudioUtils) AudioUtils.playSuccessSound();
-        if (result.phaseTransition === 'correct') {
-          var instructionEl = lessonState.mount.querySelector('.sp-session-instruction');
-          if (instructionEl) instructionEl.textContent = getScreenInstruction(screen);
-        }
-        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
-        return;
-      }
-
       if (!result.correct) {
         if (result.lifeLoss > 0) {
           var lost = lessonState.hearts.loseLife(result.lifeLoss, {
@@ -846,8 +840,7 @@
         return;
       }
 
-      if (result._huntProgress) {
-        lessonState.sessionCorrect++;
+      if (result._huntMarkResult || result._huntFixResult) {
         lessonState._lastHuntResult = result;
         screenRoot.classList.add('sp-screen--locked');
         if (result.allDone) {
@@ -855,6 +848,7 @@
         }
         showFeedback(result, true);
         updateSessionHeader();
+        return;
       }
     });
   }
@@ -935,6 +929,30 @@
       return;
     }
 
+    if (screen && screen.formatType === 'passage_error_hunt_counter' && screenRoot && lastResult) {
+      if (lastResult.correct && lastResult._huntMarkResult) {
+        renderer.commitHuntMarkAfterFeedback(screenRoot, screen);
+        lessonState.sessionCorrect++;
+        var markInstructionEl = lessonState.mount.querySelector('.sp-session-instruction');
+        if (markInstructionEl) markInstructionEl.textContent = getScreenInstruction(screen);
+      } else if (lastResult.correct && lastResult._huntFixResult) {
+        renderer.commitHuntFixAfterFeedback(screenRoot, screen);
+        if (lastResult.allDone) {
+          renderCurrentScreen();
+          return;
+        }
+        var fixInstructionEl = lessonState.mount.querySelector('.sp-session-instruction');
+        if (fixInstructionEl) fixInstructionEl.textContent = getScreenInstruction(screen);
+      } else {
+        renderer.resumeHuntCounterAfterFeedback(screenRoot, screen);
+      }
+      screenRoot.classList.remove('sp-screen--locked');
+      setScreenInputsLocked(false);
+      setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+      updateSessionHeader();
+      return;
+    }
+
     if (lastResult && lastResult.allDone) {
       renderCurrentScreen();
       return;
@@ -943,18 +961,6 @@
     if (screen && screen.formatType === 'guided_error_choice' && screenRoot && lastResult && lastResult.correct && lastResult.partial) {
       screen._guidedIdx = (screen._guidedIdx || 0) + 1;
       renderCurrentScreen();
-      return;
-    }
-
-    if (screen && screen.formatType === 'passage_error_hunt_counter' && screenRoot) {
-      if (lastResult && lastResult.correct && lastResult._huntProgress && !lastResult.allDone) {
-        renderer.advanceHuntCorrectionAfterFeedback(screenRoot, screen);
-      } else {
-        renderer.resumeHuntCounterAfterFeedback(screenRoot, screen);
-      }
-      setScreenInputsLocked(false);
-      setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
-      updateSessionHeader();
       return;
     }
 

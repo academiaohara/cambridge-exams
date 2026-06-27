@@ -648,9 +648,10 @@
       pendingWordIndices: saved.pendingWordIndices || []
     });
 
+    var initialMarked = Object.keys(saved.marked || {}).length;
     return '<div class="sp-screen sp-screen--hunt sp-screen--hunt-counter" data-format="passage_error_hunt_counter">' +
       '<div class="sp-hunt-counter" id="sp-hunt-phase-label">' +
-        '<span id="sp-hunt-found">' + Object.keys(saved.marked || {}).length + '</span>/' + target + ' errors marked' +
+        '<span id="sp-hunt-found">' + initialMarked + '</span>/' + target + ' errors found' +
       '</div>' +
       '<div class="sp-passage-card" id="sp-passage-text">' + passageHtml + '</div>' +
       '<div class="sp-hunt-correction" id="sp-hunt-correction" hidden></div>' +
@@ -982,8 +983,7 @@
       marked: root._huntMarked,
       fixed: root._huntFixed,
       foundEntries: root._huntFoundEntries,
-      correctQueue: root._huntCorrectQueue,
-      correctCursor: root._huntCorrectCursor,
+      currentCorrectIdx: root._huntCurrentCorrectIdx,
       pendingWordIndices: root._huntPendingIndices
     };
   }
@@ -995,8 +995,7 @@
     root._huntMarked = saved.marked || {};
     root._huntFixed = saved.fixed || {};
     root._huntFoundEntries = saved.foundEntries || [];
-    root._huntCorrectQueue = saved.correctQueue || [];
-    root._huntCorrectCursor = saved.correctCursor || 0;
+    root._huntCurrentCorrectIdx = saved.currentCorrectIdx != null ? saved.currentCorrectIdx : null;
     root._huntPendingIndices = saved.pendingWordIndices || [];
   }
 
@@ -1017,8 +1016,7 @@
     if (!root._huntMarked) root._huntMarked = {};
     if (!root._huntFixed) root._huntFixed = {};
     if (!root._huntFoundEntries) root._huntFoundEntries = [];
-    if (!root._huntCorrectQueue) root._huntCorrectQueue = [];
-    if (root._huntCorrectCursor == null) root._huntCorrectCursor = 0;
+    if (root._huntCurrentCorrectIdx == null) root._huntCurrentCorrectIdx = null;
     if (!root._huntPendingIndices) root._huntPendingIndices = [];
     if (!root._huntPhase) root._huntPhase = 'mark';
 
@@ -1037,9 +1035,9 @@
     function updatePhaseLabel() {
       if (!phaseLabelEl) return;
       if (root._huntPhase === 'mark') {
-        phaseLabelEl.innerHTML = '<span id="sp-hunt-found">' + markedCount() + '</span>/' + target + ' errors marked';
+        phaseLabelEl.innerHTML = '<span id="sp-hunt-found">' + markedCount() + '</span>/' + target + ' errors found';
       } else if (root._huntPhase === 'correct') {
-        phaseLabelEl.textContent = 'Correct error ' + (root._huntCorrectCursor + 1) + ' of ' + target;
+        phaseLabelEl.textContent = 'Write the correction for error ' + markedCount() + ' of ' + target;
       } else if (root._huntPhase === 'done') {
         phaseLabelEl.textContent = target + '/' + target + ' errors corrected';
       }
@@ -1058,47 +1056,38 @@
     function renderSlots() {
       if (!selectedList) return;
       var html = '';
-      if (root._huntPhase === 'mark') {
-        root._huntFoundEntries.forEach(function(entry, i) {
-          html += '<li class="sp-hunt-selected-slot sp-hunt-selected-slot--marked">' +
-            '<span class="sp-hunt-selected-num">' + (i + 1) + '.</span> ' +
-            '<span class="sp-hunt-selected-text"><s>' + esc(entry.text) + '</s></span></li>';
-        });
-        if (markedCount() < target) {
-          var pendingText = getPendingText();
-          var slotCls = 'sp-hunt-selected-slot';
-          if (!pendingText) slotCls += ' sp-hunt-selected-slot--empty';
-          else slotCls += ' sp-hunt-selected-slot--pending';
-          html += '<li class="' + slotCls + '">' +
-            '<span class="sp-hunt-selected-num">' + (markedCount() + 1) + '.</span> ' +
-            '<span class="sp-hunt-selected-text' + (!pendingText ? ' sp-hunt-selected-placeholder' : '') + '">' +
-            esc(pendingText || '—') + '</span></li>';
-        }
-      } else {
-        root._huntCorrectQueue.forEach(function(itemIdx, i) {
-          var entry = items[itemIdx];
-          if (!entry) return;
-          var wrong = entry.wrong || entry.targetPhrase || '';
-          var isFixed = !!root._huntFixed[itemIdx];
-          var isCurrent = i === root._huntCorrectCursor && !isFixed;
-          var cls = 'sp-hunt-selected-slot';
-          if (isFixed) cls += ' sp-hunt-selected-slot--correct';
-          else if (isCurrent) cls += ' sp-hunt-selected-slot--pending';
-          else cls += ' sp-hunt-selected-slot--empty';
-          var display = isFixed
-            ? esc(root._huntFixed[itemIdx].correction)
-            : '<s>' + esc(wrong) + '</s>';
-          html += '<li class="' + cls + '">' +
-            '<span class="sp-hunt-selected-num">' + (i + 1) + '.</span> ' +
-            '<span class="sp-hunt-selected-text">' + display + '</span></li>';
-        });
+      root._huntFoundEntries.forEach(function(entry, i) {
+        var itemIdx = entry.itemIdx;
+        var isFixed = !!root._huntFixed[itemIdx];
+        var isCurrentCorrect = root._huntPhase === 'correct' &&
+          root._huntCurrentCorrectIdx === itemIdx && !isFixed;
+        var cls = 'sp-hunt-selected-slot';
+        if (isFixed) cls += ' sp-hunt-selected-slot--correct';
+        else if (isCurrentCorrect) cls += ' sp-hunt-selected-slot--pending';
+        else cls += ' sp-hunt-selected-slot--marked';
+        var display = isFixed
+          ? esc(root._huntFixed[itemIdx].correction)
+          : '<s>' + esc(entry.text) + '</s>';
+        html += '<li class="' + cls + '">' +
+          '<span class="sp-hunt-selected-num">' + (i + 1) + '.</span> ' +
+          '<span class="sp-hunt-selected-text">' + display + '</span></li>';
+      });
+      if (root._huntPhase === 'mark' && markedCount() < target) {
+        var pendingText = getPendingText();
+        var slotCls = 'sp-hunt-selected-slot';
+        if (!pendingText) slotCls += ' sp-hunt-selected-slot--empty';
+        else slotCls += ' sp-hunt-selected-slot--pending';
+        html += '<li class="' + slotCls + '">' +
+          '<span class="sp-hunt-selected-num">' + (markedCount() + 1) + '.</span> ' +
+          '<span class="sp-hunt-selected-text' + (!pendingText ? ' sp-hunt-selected-placeholder' : '') + '">' +
+          esc(pendingText || '—') + '</span></li>';
       }
       selectedList.innerHTML = html;
     }
 
     function showCorrectionUI() {
       if (!correctionEl) return;
-      var idx = root._huntCorrectQueue[root._huntCorrectCursor];
+      var idx = root._huntCurrentCorrectIdx;
       var item = items[idx];
       if (!item) {
         correctionEl.hidden = true;
@@ -1132,10 +1121,9 @@
       }
     }
 
-    function beginCorrectionPhase() {
+    function beginSingleItemCorrection(itemIdx) {
       root._huntPhase = 'correct';
-      root._huntCorrectQueue = root._huntFoundEntries.map(function(entry) { return entry.itemIdx; });
-      root._huntCorrectCursor = 0;
+      root._huntCurrentCorrectIdx = itemIdx;
       root._huntPendingIndices = [];
       hideCorrectionUI();
       showCorrectionUI();
@@ -1144,25 +1132,6 @@
       renderPassage();
       syncHuntStateToScreen(screen, root);
       onChange();
-    }
-
-    function advanceCorrection() {
-      if (root._huntCorrectCursor < root._huntCorrectQueue.length - 1) {
-        root._huntCorrectCursor += 1;
-        showCorrectionUI();
-        updatePhaseLabel();
-        renderSlots();
-        renderPassage();
-        onChange();
-        return false;
-      }
-      root._huntPhase = 'done';
-      hideCorrectionUI();
-      updatePhaseLabel();
-      renderSlots();
-      renderPassage();
-      onChange();
-      return true;
     }
 
     function refresh() {
@@ -1241,39 +1210,26 @@
       }
 
       var item = items[matchedIdx];
-      root._huntMarked[matchedIdx] = {
-        wrong: item.wrong || item.targetPhrase || '',
-        text: selectionText
+      root._huntPendingMarkCommit = {
+        itemIdx: matchedIdx,
+        text: selectionText,
+        item: item
       };
-      root._huntFoundEntries.push({ itemIdx: matchedIdx, text: selectionText });
       clearPending();
       refresh();
-
-      var allMarked = markedCount() >= target;
-      if (allMarked) {
-        beginCorrectionPhase();
-        return {
-          handled: true,
-          correct: true,
-          markOnly: true,
-          phaseTransition: 'correct',
-          userAnswer: selectionText,
-          explanation: 'Great! Now correct each marked error one by one.'
-        };
-      }
 
       return {
         handled: true,
         correct: true,
-        markOnly: true,
+        _huntMarkResult: true,
         userAnswer: selectionText,
-        explanation: item.explanation || ''
+        explanation: item.explanation || 'Correct! Now write the correction for this error.'
       };
     };
 
     root._huntValidateCorrection = function() {
       if (root._huntPhase !== 'correct') return { handled: false };
-      var idx = root._huntCorrectQueue[root._huntCorrectCursor];
+      var idx = root._huntCurrentCorrectIdx;
       var item = items[idx];
       if (!item) return { handled: false };
 
@@ -1294,44 +1250,65 @@
         };
       }
 
-      root._huntFixed[idx] = {
-        correction: fixVal,
-        wrong: item.wrong || item.targetPhrase || ''
+      root._huntPendingFixCommit = {
+        itemIdx: idx,
+        fixVal: fixVal,
+        item: item
       };
-      syncHuntStateToScreen(screen, root);
-      renderPassage();
-      renderSlots();
+
+      var allDone = fixedCount() + 1 >= target;
+      return {
+        handled: true,
+        correct: true,
+        _huntFixResult: true,
+        allDone: allDone,
+        userAnswer: fixVal,
+        correctAnswer: expected,
+        explanation: allDone
+          ? (item.explanation || p.explanation || 'You found and corrected all the tense mistakes in the passage.')
+          : (item.explanation || '')
+      };
+    };
+
+    root._huntCommitMark = function() {
+      var pending = root._huntPendingMarkCommit;
+      if (!pending) return;
+      var item = pending.item;
+      root._huntMarked[pending.itemIdx] = {
+        wrong: item.wrong || item.targetPhrase || '',
+        text: pending.text
+      };
+      root._huntFoundEntries.push({ itemIdx: pending.itemIdx, text: pending.text });
+      root._huntPendingMarkCommit = null;
+      beginSingleItemCorrection(pending.itemIdx);
+    };
+
+    root._huntCommitFix = function() {
+      var pending = root._huntPendingFixCommit;
+      if (!pending) return false;
+      var idx = pending.itemIdx;
+      root._huntFixed[idx] = {
+        correction: pending.fixVal,
+        wrong: pending.item.wrong || pending.item.targetPhrase || ''
+      };
+      root._huntPendingFixCommit = null;
 
       var allDone = fixedCount() >= target;
       if (allDone) {
         root._huntPhase = 'done';
+        root._huntCurrentCorrectIdx = null;
         hideCorrectionUI();
-        updatePhaseLabel();
-        syncHuntStateToScreen(screen, root);
-        return {
-          handled: true,
-          correct: true,
-          allDone: true,
-          _huntProgress: true,
-          userAnswer: fixVal,
-          correctAnswer: expected,
-          explanation: item.explanation || p.explanation || 'You found and corrected all the tense mistakes in the passage.'
-        };
+      } else {
+        root._huntPhase = 'mark';
+        root._huntCurrentCorrectIdx = null;
+        hideCorrectionUI();
       }
-
-      return {
-        handled: true,
-        correct: true,
-        partial: true,
-        _huntProgress: true,
-        userAnswer: fixVal,
-        correctAnswer: expected,
-        explanation: item.explanation || ''
-      };
-    };
-
-    root._huntAdvanceCorrection = function() {
-      return advanceCorrection();
+      updatePhaseLabel();
+      renderSlots();
+      renderPassage();
+      syncHuntStateToScreen(screen, root);
+      onChange();
+      return allDone;
     };
 
     if (root._huntPhase === 'correct') {
@@ -1363,12 +1340,20 @@
   function resumeHuntCounterAfterFeedback(root, screen) {
     if (!root || !screen) return;
     root.classList.remove('sp-screen--locked');
+    root._huntPendingMarkCommit = null;
+    root._huntPendingFixCommit = null;
     syncHuntStateToScreen(screen, root);
   }
 
-  function advanceHuntCorrectionAfterFeedback(root, screen) {
-    if (!root || typeof root._huntAdvanceCorrection !== 'function') return false;
-    var done = root._huntAdvanceCorrection();
+  function commitHuntMarkAfterFeedback(root, screen) {
+    if (!root || typeof root._huntCommitMark !== 'function') return;
+    root._huntCommitMark();
+    syncHuntStateToScreen(screen || root._spScreen, root);
+  }
+
+  function commitHuntFixAfterFeedback(root, screen) {
+    if (!root || typeof root._huntCommitFix !== 'function') return false;
+    var done = root._huntCommitFix();
     syncHuntStateToScreen(screen || root._spScreen, root);
     return done;
   }
@@ -1838,6 +1823,7 @@
     processStativeSortingCheck: processStativeSortingCheck,
     processPassageHuntCounterCheck: processPassageHuntCounterCheck,
     resumeHuntCounterAfterFeedback: resumeHuntCounterAfterFeedback,
-    advanceHuntCorrectionAfterFeedback: advanceHuntCorrectionAfterFeedback
+    commitHuntMarkAfterFeedback: commitHuntMarkAfterFeedback,
+    commitHuntFixAfterFeedback: commitHuntFixAfterFeedback
   };
 })();
