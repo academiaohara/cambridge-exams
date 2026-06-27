@@ -8175,12 +8175,9 @@ body.lesson-explanation-open {
   to { transform: translateY(0); opacity: 1; }
 }
 
-@keyframes lessonExplHeroBounce {
-  0%   { transform: scale(0.3); opacity: 0; }
-  55%  { transform: scale(1.12); opacity: 1; }
-  78%  { transform: scale(0.94); }
-  92%  { transform: scale(1.04); }
-  100% { transform: scale(1); }
+@keyframes lessonExplBlockIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .lesson-explanation-sheet-inner {
@@ -8190,128 +8187,66 @@ body.lesson-explanation-open {
   max-height: 100dvh;
 }
 
-/* ── Sheet header ─────────────────────────────────────────────────────────── */
+/* ── Minimal header ───────────────────────────────────────────────────────── */
 
 .lesson-explanation-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: calc(16px + env(safe-area-inset-top)) 16px 20px;
+  justify-content: space-between;
+  padding: calc(12px + env(safe-area-inset-top)) 14px 12px;
   flex-shrink: 0;
-  border-bottom: 3px solid rgba(28, 176, 246, 0.22);
-  background: linear-gradient(160deg, #9cdcf8 0%, #b8e8fc 28%, #d6f2ff 58%, #eef8ff 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.lesson-explanation-header::before,
-.lesson-explanation-header::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.lesson-explanation-header::before {
-  width: 100px;
-  height: 100px;
-  top: -40px;
-  right: 8px;
-  background: radial-gradient(circle, rgba(88, 204, 2, 0.2) 0%, transparent 70%);
-}
-
-.lesson-explanation-header::after {
-  width: 60px;
-  height: 60px;
-  bottom: -25px;
-  left: 70px;
-  background: radial-gradient(circle, rgba(255, 200, 0, 0.22) 0%, transparent 70%);
+  border-bottom: 2px solid #f0f0f0;
+  background: #ffffff;
 }
 
 .lesson-explanation-back {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   padding: 0;
-  border: 2px solid rgba(28, 176, 246, 0.38);
-  border-bottom-width: 3px;
-  border-bottom-color: rgba(24, 153, 214, 0.45);
+  border: 2px solid #e8e8e8;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
-  color: #1899d6;
+  background: #ffffff;
+  color: #9ca3af;
   cursor: pointer;
-  box-shadow: 0 2px 0 rgba(24, 153, 214, 0.24);
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transition: background 0.15s ease, color 0.15s ease;
   flex-shrink: 0;
-  z-index: 1;
 }
 
 .lesson-explanation-back:hover {
-  background: #fff;
-  border-color: #1cb0f6;
+  background: #f5f5f5;
+  color: #4b4b4b;
 }
 
 .lesson-explanation-back:active {
-  transform: translateY(2px);
-  box-shadow: none;
+  transform: scale(0.92);
 }
 
 .lesson-explanation-back .material-symbols-outlined {
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 24;
 }
 
-/* ── Header center area with hero icon + title ────────────────────────────── */
-
-.lesson-explanation-header-center {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding-right: 40px;
-}
-
-.lesson-explanation-hero {
+.lesson-explanation-header-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 68px;
-  height: 68px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: #1cb0f6;
-  border: 3px solid #1899d6;
-  border-bottom-width: 5px;
-  box-shadow: 0 5px 0 #1899d6, 0 8px 22px rgba(28, 176, 246, 0.32);
   color: #ffffff;
-  animation: lessonExplHeroBounce 0.52s cubic-bezier(0.34, 1.7, 0.64, 1) 0.08s both;
+  flex-shrink: 0;
 }
 
-.lesson-explanation-hero .material-symbols-outlined {
-  font-size: 2rem;
+.lesson-explanation-header-icon .material-symbols-outlined {
+  font-size: 1.2rem;
   font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
 }
 
-.lesson-explanation-title {
-  margin: 0;
-  font-family: 'Fredoka', 'Nunito', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #1899d6;
-  text-align: center;
-  line-height: 1.2;
-  letter-spacing: 0.01em;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
 /* ── Sheet body ───────────────────────────────────────────────────────────── */
-
-@keyframes lessonExplBlockIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 
 .lesson-explanation-body {
   flex: 1;
@@ -8333,7 +8268,7 @@ body.lesson-explanation-open {
   color: #4b4b4b;
 }
 
-/* Shared icon style inside label pills */
+/* Icon styles inside label pills */
 
 .lesson-explanation-question-label .material-symbols-outlined,
 .lesson-explanation-answer-label .material-symbols-outlined {
@@ -8361,7 +8296,7 @@ body.lesson-explanation-open {
 .lesson-explanation-question {
   padding: 14px 16px;
   border-radius: 16px;
-  background: linear-gradient(155deg, #ffffff 0%, #eaf7ff 100%);
+  background: #edf8ff;
   border: 2.5px solid #1cb0f6;
   border-bottom-width: 4px;
   border-bottom-color: #1899d6;
@@ -8408,7 +8343,7 @@ body.lesson-explanation-open {
 .lesson-explanation-answer {
   padding: 14px 16px;
   border-radius: 16px;
-  background: linear-gradient(155deg, #ffffff 0%, #e5ffd1 100%);
+  background: #e8ffd6;
   border: 2.5px solid #58cc02;
   border-bottom-width: 4px;
   border-bottom-color: #46a302;
@@ -8435,7 +8370,7 @@ body.lesson-explanation-open {
 }
 
 .lesson-explanation-answer-text {
-  display: inline-block;
+  display: block;
   margin: 0;
   padding: 10px 18px;
   border-radius: 12px;
@@ -8456,7 +8391,7 @@ body.lesson-explanation-open {
 .lesson-explanation-card {
   padding: 16px;
   border-radius: 16px;
-  background: linear-gradient(155deg, #fffce8 0%, #fff3b0 100%);
+  background: #fffbe6;
   border: 2.5px solid #ffc800;
   border-bottom-width: 4px;
   border-bottom-color: #e5b400;
@@ -8526,7 +8461,7 @@ body.lesson-explanation-open {
 .lesson-explanation-continue {
   width: 100%;
   border: none;
-  border-bottom: 4px solid #46a302;
+  border-bottom: 4px solid #e68600;
   border-radius: 16px;
   padding: 16px 20px;
   min-height: 54px;
@@ -8536,9 +8471,9 @@ body.lesson-explanation-open {
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #fff;
-  background: #58cc02;
+  background: #ff9600;
   cursor: pointer;
-  box-shadow: 0 4px 0 #46a302;
+  box-shadow: 0 4px 0 #e68600;
   transition: filter 0.15s, transform 0.1s, box-shadow 0.1s;
 }
 
@@ -8548,7 +8483,7 @@ body.lesson-explanation-open {
 
 .lesson-explanation-continue:active {
   transform: translateY(3px);
-  box-shadow: 0 1px 0 #46a302;
+  box-shadow: 0 1px 0 #e68600;
 }
 
 /* ── Compact (modal) variant ──────────────────────────────────────────────── */
