@@ -1,393 +1,1864 @@
 {
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
   "block": 1,
   "unit": 2,
   "type": "grammar",
   "unitTitle": "Unit 2: Past simple, continuous & used to",
-  "sections": [
-    {
-      "type": "theory",
-      "title": "Past simple",
-      "content": [
-        {
-          "subtitle": "Form",
-          "rows": [
-            {
-              "label": "statement",
-              "left": "I/you/he/she/it/we/they **played** ..."
-            },
-            {
-              "label": "negative",
-              "left": "I/you/he/she/it/we/they **did not (didn't) play** ..."
-            },
-            {
-              "label": "question",
-              "left": "**Did** I/you/he/she/it/we/they **play** ...?"
-            }
-          ]
-        },
-        {
-          "subtitle": "Use",
-          "items": [
-            "Actions or events finished in the past",
-            "Things that happened again and again in the past",
-            "Situations that existed in the past but no longer do",
-            "The key events that move a story forward"
-          ]
-        },
-        {
-          "subtitle": "Examples",
-          "items": [
-            "We **moved** to a new house last spring.",
-            "As a child, she **visited** her grandparents every Sunday.",
-            "People **didn't use** smartphones thirty years ago.",
-            "He **grabbed** his bag, **ran** down the stairs and **jumped** into the car."
-          ]
-        },
-        {
-          "subtitle": "Useful notes",
-          "items": [
-            "yesterday",
-            "last week/summer/year/etc",
-            "in January/2001/etc",
-            "an hour/a week/a year ago"
-          ]
-        },
-        {
-          "subtitle": "Be careful",
-          "notes": [
-            "Some verbs have irregular past simple forms."
-          ]
+  "unitSubtitle": "Finished past actions, actions in progress in the past, and past habits with used to",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "past simple",
+    "past continuous",
+    "used to",
+    "finished past actions",
+    "past habits",
+    "story sequence"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u2-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "b1-u2-theory-card-1",
+        "title": "Past simple",
+        "subtitle": "Finished past actions",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "rows": [
+              {
+                "label": "statement",
+                "left": "I/you/he/she/it/we/they **played** ..."
+              },
+              {
+                "label": "negative",
+                "left": "I/you/he/she/it/we/they **did not (didn't) play** ..."
+              },
+              {
+                "label": "question",
+                "left": "**Did** I/you/he/she/it/we/they **play** ...?"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Actions or events finished in the past",
+              "Things that happened again and again in the past",
+              "Situations that existed in the past but no longer do",
+              "The key events that move a story forward"
+            ]
+          },
+          {
+            "type": "example_list",
+            "title": "Examples",
+            "items": [
+              "We **moved** to a new house last spring.",
+              "As a child, she **visited** her grandparents every Sunday.",
+              "People **didn't use** smartphones thirty years ago.",
+              "He **grabbed** his bag, **ran** down the stairs and **jumped** into the car."
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful words",
+            "items": [
+              "yesterday",
+              "last week/summer/year/etc",
+              "in January/2001/etc",
+              "an hour/a week/a year ago"
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "Some verbs have irregular past simple forms."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u2-theory-card-2",
+        "title": "Past continuous",
+        "subtitle": "Actions in progress in the past",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "rows": [
+              {
+                "label": "statement",
+                "left": "I/he/she/it **was playing** ...",
+                "right": "You/we/they **were playing** ..."
+              },
+              {
+                "label": "negative",
+                "left": "I/he/she/it **was not (wasn't) playing** ...",
+                "right": "You/we/they **were not (weren't) playing** ..."
+              },
+              {
+                "label": "question",
+                "left": "**Was** I/he/she/it **playing** ...?",
+                "right": "**Were** you/we/they **playing** ...?"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Describing what was happening at a specific time in the past",
+              "Two activities going on simultaneously in the past",
+              "Setting the scene at the start of a story"
+            ]
+          },
+          {
+            "type": "example_list",
+            "title": "Examples",
+            "items": [
+              "At eight o'clock this morning, Dad **was making** breakfast.",
+              "She **was talking** on the phone while her brother **was playing** video games.",
+              "The sun **was shining** and the birds **were singing** — it was a perfect day."
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful words",
+            "items": [
+              "at that moment",
+              "at one/two/etc o'clock",
+              "while"
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "When a shorter action interrupts a longer one in the past, combine the past simple and past continuous: I **dropped** my keys while I **was running** to the bus.",
+              "Do not use the past continuous for regular or repeated actions in the past."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u2-theory-card-3",
+        "title": "used to",
+        "subtitle": "Past habits and states",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "formula": "used to + bare infinitive",
+            "rows": [
+              {
+                "label": "statement",
+                "left": "I/you/he/she/it/we/they **used to** ..."
+              },
+              {
+                "label": "negative",
+                "left": "I/you/he/she/it/we/they **never used to** ... / **didn't use to** ..."
+              },
+              {
+                "label": "question",
+                "left": "**Did** I/you/he/she/it/we/they **use to** ...?"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Past habits or states that no longer exist"
+            ]
+          },
+          {
+            "type": "example_list",
+            "title": "Example",
+            "items": [
+              "My grandfather **used to** walk five kilometres to school when he was young."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "globalRules": {
+      "defaultHeartsIcon": "heart",
+      "loseLifeOnIncorrectEvaluableAction": true,
+      "showExplanationAfterIncorrect": true,
+      "showCorrectAnswerAfterMaxAttempts": true,
+      "failedItemsReturnToQueue": true,
+      "removeCompletedItemsFromQueue": true,
+      "adaptiveFallbackEnabled": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation",
+        "didnt_did_not_contraction_equivalence",
+        "wasnt_was_not_contraction_equivalence",
+        "werent_were_not_contraction_equivalence"
+      ]
+    },
+    "formatDefinitions": [
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Test: choose the correct conjugation",
+        "defaultLives": 4,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons",
+          "showSentenceBeforeAndAfter": true,
+          "showCorrectStateImmediately": true,
+          "showExplanationAfterAnswer": "when_incorrect"
         }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "Past continuous",
-      "content": [
-        {
-          "subtitle": "Form",
-          "rows": [
-            {
-              "label": "statement",
-              "left": "I/he/she/it **was playing** ...",
-              "right": "You/we/they **were playing** ..."
-            },
-            {
-              "label": "negative",
-              "left": "I/he/she/it **was not (wasn't) playing** ...",
-              "right": "You/we/they **were not (weren't) playing** ..."
-            },
-            {
-              "label": "question",
-              "left": "**Was** I/he/she/it **playing** ...?",
-              "right": "**Were** you/we/they **playing** ...?"
-            }
-          ]
-        },
-        {
-          "subtitle": "Use",
-          "items": [
-            "Describing what was happening at a specific time in the past",
-            "Two activities going on simultaneously in the past",
-            "Setting the scene at the start of a story"
-          ]
-        },
-        {
-          "subtitle": "Examples",
-          "items": [
-            "At eight o'clock this morning, Dad **was making** breakfast.",
-            "She **was talking** on the phone while her brother **was playing** video games.",
-            "The sun **was shining** and the birds **were singing** — it was a perfect day."
-          ]
-        },
-        {
-          "subtitle": "Useful notes",
-          "items": [
-            "at that moment",
-            "at one/two/etc o'clock",
-            "while"
-          ]
-        },
-        {
-          "subtitle": "Be careful",
-          "notes": [
-            "When a shorter action interrupts a longer one in the past, combine the past simple and past continuous: I **dropped** my keys while I **was running** to the bus.",
-            "Do not use the past continuous for regular or repeated actions in the past."
-          ]
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 2,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "fallbackFormatType": "two_option_choice",
+        "interaction": {
+          "component": "sentence_gap_input",
+          "studentAction": "type_missing_conjugated_form",
+          "evaluationTrigger": "submit_button_or_enter",
+          "gapDisplay": "inline_rounded_input",
+          "inputNormalization": [
+            "trim_spaces",
+            "collapse_multiple_spaces",
+            "case_insensitive_first_letter",
+            "accept_missing_final_period"
+          ],
+          "keyboardHint": "text",
+          "showOnlyMissingForm": true
         }
-      ]
-    },
-    {
-      "type": "theory",
-      "title": "used to",
-      "content": [
+      },
+      {
+        "formatType": "word_order_tiles",
+        "displayName": "Build the sentence with visual tiles",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "interaction": {
+          "component": "visual_context_word_tiles_ordering",
+          "studentAction": "tap_or_drag_tiles",
+          "tapAction": "append_tile_to_answer_end",
+          "dragAction": "insert_tile_anywhere_in_answer",
+          "canReorderAnswerTiles": true,
+          "canRemovePlacedTiles": true,
+          "tileBankIncludesDistractors": true,
+          "shuffleTiles": true,
+          "evaluationTrigger": "check_button",
+          "topPrompt": {
+            "preferredModes": [
+              "visual_prompt",
+              "context_question"
+            ],
+            "renderLegacyTextPrompt": false,
+            "visualPromptPosition": "top_card",
+            "contextQuestionPosition": "below_visual",
+            "allowAudioOrReadingContextQuestion": true,
+            "fallbackWhenNoVisualAsset": "show_context_question_only"
+          }
+        },
+        "pedagogicalGoal": "The learner answers a meaningful visual/context question by building the sentence, instead of translating a slash prompt."
+      },
+      {
+        "formatType": "marked_error_gap_correction",
+        "displayName": "Fix the marked conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 2,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "marked_error_replacement_input",
+          "studentAction": "type_replacement_for_marked_error",
+          "sentenceDisplay": "full_sentence",
+          "errorMarking": {
+            "style": "highlight_underline",
+            "tokenWrapper": "markedError",
+            "accessibilityLabel": "incorrect conjugation"
+          },
+          "gapBehaviour": "marked_error_becomes_input_on_tap",
+          "evaluationTrigger": "submit_button_or_enter",
+          "showFullCorrectSentenceAfterAnswer": true
+        }
+      },
+      {
+        "formatType": "verb_tile_conjugation_gap",
+        "displayName": "Choose the verb tile and conjugate it",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 2,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "fallbackFormatType": "preselected_verb_gap_fill",
+        "steps": [
+          {
+            "stepId": "choose_base_verb_tile",
+            "lifeLossOnError": 1
+          },
+          {
+            "stepId": "type_conjugated_form_in_gap",
+            "lifeLossOnError": 1
+          }
+        ],
+        "interaction": {
+          "component": "verb_bank_tiles_plus_gap_input",
+          "studentAction": "tap_base_verb_tile_then_type_conjugation",
+          "tileBank": "exercise.wordBank",
+          "tapAction": "select_tile_as_base_verb",
+          "selectedTileState": "pinned_above_gap",
+          "gapDisplay": "inline_rounded_input",
+          "evaluationTrigger": "submit_button",
+          "removeVerbWhenCorrect": true,
+          "allowChangingSelectedTileBeforeSubmit": true
+        }
+      },
+      {
+        "formatType": "passage_error_hunt_counter",
+        "displayName": "Find the 10 wrong conjugations",
+        "defaultLives": 6,
+        "maxLifeLossPerScreen": 2,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "passage_tap_error_counter",
+          "studentAction": "tap_wrong_conjugated_phrases_in_text",
+          "counter": {
+            "target": 10,
+            "initialValue": 0,
+            "labelTemplate": "{found}/10 errors found",
+            "showProgressBar": true
+          },
+          "tapBehaviour": {
+            "correctTap": "mark_phrase_and_increment_counter",
+            "secondTapOnMarkedPhrase": "unmark_phrase_and_decrement_counter",
+            "wrongTap": "lose_life_and_show_soft_feedback"
+          },
+          "correctionFlow": "mark_then_correct_each_error_in_turn",
+          "showCorrectInline": false,
+          "hideAnswersUntilComplete": true
+        }
+      }
+    ],
+    "interactiveFormatSystem": {
+      "goal": "Reusable interactive exercise screens for grammar practice.",
+      "screenTypes": [
         {
-          "subtitle": "Form",
-          "formula": "used to + bare infinitive",
-          "rows": [
-            {
-              "label": "statement",
-              "left": "I/you/he/she/it/we/they **used to** ..."
-            },
-            {
-              "label": "negative",
-              "left": "I/you/he/she/it/we/they **never used to** ... / **didn't use to** ..."
-            },
-            {
-              "label": "question",
-              "left": "**Did** I/you/he/she/it/we/they **use to** ...?"
-            }
+          "formatType": "two_option_choice",
+          "purpose": "Test-style choice: choose the correct conjugated form.",
+          "studentFlow": [
+            "Read sentence context",
+            "Tap one option",
+            "See instant result"
           ]
         },
         {
-          "subtitle": "Use",
-          "items": [
-            "Past habits or states that no longer exist"
+          "formatType": "conjugation_gap_fill",
+          "purpose": "Write only the missing conjugated form inside a sentence gap.",
+          "studentFlow": [
+            "Read sentence with inline gap",
+            "Type conjugation",
+            "Submit"
           ]
         },
         {
-          "subtitle": "Example",
-          "items": [
-            "My grandfather **used to** walk five kilometres to school when he was young."
+          "formatType": "marked_error_gap_correction",
+          "purpose": "See a full sentence with the wrong conjugation marked and type the replacement.",
+          "studentFlow": [
+            "Read full sentence",
+            "Tap/focus marked error",
+            "Type corrected form"
           ]
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "A: Past simple (verbs in the box)",
-      "instructions": "Complete using the correct past simple form of the verbs in the box. You may have to use some negative forms.",
-      "words": [
-        "bring",
-        "buy",
-        "drive",
-        "find",
-        "leave",
-        "meet",
-        "speak",
-        "write"
-      ],
-      "items": [
-        {
-          "sentence": "I was thirsty, so Dad ...... me a bottle of water.",
-          "answer": "brought"
         },
         {
-          "sentence": "We waited for Alex for an hour, but he ...... .",
-          "answer": "didn't come"
+          "formatType": "verb_tile_conjugation_gap",
+          "purpose": "Choose a base verb from word tiles, then write it correctly conjugated in the gap.",
+          "studentFlow": [
+            "Tap a verb tile",
+            "Type the conjugated form",
+            "Submit"
+          ]
         },
         {
-          "sentence": "Sarah ...... a really interesting article for the school magazine.",
-          "answer": "wrote"
+          "formatType": "passage_error_hunt_counter",
+          "purpose": "Find wrong conjugations in a text one at a time, then write each correction.",
+          "studentFlow": [
+            "Tap a wrong verb phrase and press Check",
+            "Press Continue to confirm the mark and advance the progress bar",
+            "Write the correction for that error",
+            "Press Continue to see the fix in green, then find the next error"
+          ]
         },
         {
-          "sentence": "Nobody ...... the answer to the teacher's question.",
-          "answer": "knew"
-        },
-        {
-          "sentence": "Tom ...... his wallet under the sofa yesterday.",
-          "answer": "found"
-        },
-        {
-          "sentence": "My uncle ...... us to the airport early in the morning.",
-          "answer": "drove"
-        },
-        {
-          "sentence": "Last summer, we ...... some new friends at camp.",
-          "answer": "met"
-        },
-        {
-          "sentence": "I was cold, so I ...... a new jacket.",
-          "answer": "bought"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "subtype": "matching",
-      "title": "B: Match to make sentences (past simple)",
-      "instructions": "Match each sentence beginning (1–6) with the correct ending (A–F).",
-      "items": [
-        {
-          "sentence": "I don't want another sandwich because **D** I ate lunch an hour ago.",
-          "answer": "D – I ate lunch an hour ago."
-        },
-        {
-          "sentence": "I don't need your bike because **F** I bought one last month.",
-          "answer": "F – I bought one last month."
-        },
-        {
-          "sentence": "I know a lot about Rome because **A** I visited it last year.",
-          "answer": "A – I visited it last year."
-        },
-        {
-          "sentence": "I don't have to clean my room now because **E** I tidied it yesterday.",
-          "answer": "E – I tidied it yesterday."
-        },
-        {
-          "sentence": "I can't play that computer game any more because **B** I lost it last weekend.",
-          "answer": "B – I lost it last weekend."
-        },
-        {
-          "sentence": "Dad is upset with me because **C** I forgot his birthday.",
-          "answer": "C – I forgot his birthday."
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "C: Past continuous",
-      "instructions": "Complete using the correct past continuous form of the verbs in brackets.",
-      "items": [
-        {
-          "sentence": "Mia ...... (read) a magazine at nine o'clock.",
-          "answer": "was reading"
-        },
-        {
-          "sentence": "At midnight, we ...... (drive) home while it ...... (snow).",
-          "answer": "were driving, was snowing"
-        },
-        {
-          "sentence": "Ben ...... (wait) outside the cinema when his friends arrived.",
-          "answer": "was waiting"
-        },
-        {
-          "sentence": "I saw Olivia while she ...... (shop) in the town centre.",
-          "answer": "was shopping"
-        },
-        {
-          "sentence": "...... they ...... (watch) TV when the lights went out?",
-          "answer": "Were, watching"
-        },
-        {
-          "sentence": "Ella ...... (cycle) to school when it started raining.",
-          "answer": "was cycling"
-        },
-        {
-          "sentence": "When you called Harry, ...... he ...... (sleep)?",
-          "answer": "was, sleeping"
-        },
-        {
-          "sentence": "At ten o'clock last night, we ...... (study) for the exam.",
-          "answer": "were studying"
-        }
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "D: Circle the correct word or phrase",
-      "instructions": "Circle the correct word or phrase.",
-      "items": [
-        {
-          "sentence": "When we were in Scotland, we **walked / were walking** in the mountains every day.",
-          "answer": "walked"
-        },
-        {
-          "sentence": "A few years ago, I **started / was starting** learning Japanese.",
-          "answer": "started"
-        },
-        {
-          "sentence": "Emma **made / was making** dinner when the guests arrived.",
-          "answer": "was making"
-        },
-        {
-          "sentence": "We hurried home because it **snowed / was snowing** heavily.",
-          "answer": "was snowing"
-        },
-        {
-          "sentence": "Two children **fought / were fighting** in the playground, so a teacher stopped them.",
-          "answer": "were fighting"
-        },
-        {
-          "sentence": "Chris **sent / was sending** me a text message yesterday afternoon.",
-          "answer": "sent"
-        },
-        {
-          "sentence": "We **had / were having** dinner when somebody knocked at the door.",
-          "answer": "were having"
-        },
-        {
-          "sentence": "As I passed the kitchen, I saw Mum **baked / was baking** a cake.",
-          "answer": "was baking"
-        },
-        {
-          "sentence": "I **slept / was sleeping** when the storm began.",
-          "answer": "was sleeping"
-        },
-        {
-          "sentence": "While Jake **did / was doing** his homework, his sister listened to music.",
-          "answer": "was doing"
-        }
-      ]
-    },
-    {
-      "type": "passage-input",
-      "title": "E: The School Trip",
-      "instructions": "Complete using the correct past simple or past continuous form of the verbs in the box.",
-      "words": [
-        "arrive",
-        "be",
-        "chat",
-        "eat",
-        "fall",
-        "laugh",
-        "pack",
-        "play",
-        "rain",
-        "ride",
-        "say",
-        "start",
-        "wait",
-        "walk"
-      ],
-      "passage": "Last Friday, our class (1) ...... very excited because we were going on a school trip. Some students (2) ...... their bags while others (3) ...... outside the school gate. It (4) ...... lightly, but nobody cared.\nAt eight o'clock, the bus finally (5) ...... . Everyone (6) ...... onto the bus quickly and the teachers (7) ...... hello to all the students.\nWhile we (8) ...... to the museum, some people (9) ...... games and others (10) ...... loudly at jokes.\nWhen we finally arrived, we (11) ...... around the museum in groups. Suddenly, one boy (12) ...... over while he (13) ...... a sandwich.\nLuckily, he wasn't hurt and everyone (14) ...... laughing again a few minutes later.",
-      "answers": [
-        "was",
-        "were packing",
-        "were waiting",
-        "was raining",
-        "arrived",
-        "rode",
-        "said",
-        "were travelling",
-        "were playing",
-        "were laughing",
-        "walked",
-        "fell",
-        "was eating",
-        "started"
-      ]
-    },
-    {
-      "type": "exercise",
-      "title": "E: used to",
-      "instructions": "Complete using the correct form of used to. You may have to use some negative forms.",
-      "items": [
-        {
-          "sentence": "When I was a child, I ...... play outside for hours.",
-          "answer": "used to"
-        },
-        {
-          "sentence": "...... there ...... be a cinema in this street?",
-          "answer": "Did, use to"
-        },
-        {
-          "sentence": "Sophie works in a hospital now, but she ...... want to be an artist.",
-          "answer": "used to"
-        },
-        {
-          "sentence": "I ...... enjoy spicy food, but now I love it.",
-          "answer": "didn't use to"
-        },
-        {
-          "sentence": "...... your grandfather ...... wear glasses?",
-          "answer": "Did, use to"
-        },
-        {
-          "sentence": "We ...... go camping very often, but now we do every summer.",
-          "answer": "didn't use to"
+          "formatType": "word_order_tiles",
+          "purpose": "Build a sentence by ordering word tiles, with extra distractors.",
+          "studentFlow": [
+            "Tap to append",
+            "Drag to insert/reorder",
+            "Submit"
+          ]
         }
       ]
     }
-  ]
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u2-node-1",
+      "title": "Finished past actions",
+      "focus": [
+        "past simple",
+        "finished actions",
+        "irregular verbs"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 6,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u2-ex-1",
+          "sourceItemIds": [
+            "b1-u2-ex1-1",
+            "b1-u2-ex1-2",
+            "b1-u2-ex1-3",
+            "b1-u2-ex1-4",
+            "b1-u2-ex1-5",
+            "b1-u2-ex1-6",
+            "b1-u2-ex1-7",
+            "b1-u2-ex1-8"
+          ],
+          "formatType": "conjugation_gap_fill",
+          "fallbackFormatType": "two_option_choice"
+        },
+        {
+          "sourceExerciseId": "b1-u2-ex-2",
+          "sourceItemIds": [
+            "b1-u2-ex2-1",
+            "b1-u2-ex2-2",
+            "b1-u2-ex2-3",
+            "b1-u2-ex2-4",
+            "b1-u2-ex2-5",
+            "b1-u2-ex2-6"
+          ],
+          "formatType": "two_option_choice"
+        }
+      ]
+    },
+    {
+      "nodeId": "b1-u2-node-2",
+      "title": "Actions in progress",
+      "focus": [
+        "past continuous",
+        "background actions",
+        "interrupted actions"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 6,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u2-ex-3",
+          "sourceItemIds": [
+            "b1-u2-ex3-1",
+            "b1-u2-ex3-2",
+            "b1-u2-ex3-3",
+            "b1-u2-ex3-4",
+            "b1-u2-ex3-5",
+            "b1-u2-ex3-6",
+            "b1-u2-ex3-7",
+            "b1-u2-ex3-8"
+          ],
+          "formatType": "conjugation_gap_fill",
+          "fallbackFormatType": "two_option_choice"
+        }
+      ]
+    },
+    {
+      "nodeId": "b1-u2-node-3",
+      "title": "Simple or continuous?",
+      "focus": [
+        "past simple vs past continuous",
+        "completed action vs action in progress"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 7,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u2-ex-4",
+          "sourceItemIds": [
+            "b1-u2-ex4-1",
+            "b1-u2-ex4-2",
+            "b1-u2-ex4-3",
+            "b1-u2-ex4-4",
+            "b1-u2-ex4-5",
+            "b1-u2-ex4-6",
+            "b1-u2-ex4-7",
+            "b1-u2-ex4-8",
+            "b1-u2-ex4-9",
+            "b1-u2-ex4-10"
+          ],
+          "formatType": "two_option_choice"
+        }
+      ]
+    },
+    {
+      "nodeId": "b1-u2-node-4",
+      "title": "Past habits with used to",
+      "focus": [
+        "used to",
+        "past habits",
+        "past states"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 5,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u2-ex-6",
+          "sourceItemIds": [
+            "b1-u2-ex6-1",
+            "b1-u2-ex6-2",
+            "b1-u2-ex6-3",
+            "b1-u2-ex6-4",
+            "b1-u2-ex6-5",
+            "b1-u2-ex6-6"
+          ],
+          "formatType": "conjugation_gap_fill",
+          "fallbackFormatType": "two_option_choice"
+        }
+      ]
+    },
+    {
+      "nodeId": "b1-u2-node-5",
+      "title": "Story challenge",
+      "focus": [
+        "contextual grammar",
+        "past simple",
+        "past continuous",
+        "story sequence"
+      ],
+      "lives": 6,
+      "passCondition": {
+        "minimumCorrectScreens": 10,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u2-ex-5",
+          "sourceItemIds": [
+            "b1-u2-ex5-1",
+            "b1-u2-ex5-2",
+            "b1-u2-ex5-3",
+            "b1-u2-ex5-4",
+            "b1-u2-ex5-5",
+            "b1-u2-ex5-6",
+            "b1-u2-ex5-7",
+            "b1-u2-ex5-8",
+            "b1-u2-ex5-9",
+            "b1-u2-ex5-10",
+            "b1-u2-ex5-11",
+            "b1-u2-ex5-12",
+            "b1-u2-ex5-13",
+            "b1-u2-ex5-14"
+          ],
+          "formatType": "conjugation_gap_fill",
+          "fallbackFormatType": "two_option_choice",
+          "screenMode": "passage_split_into_single_gap_screens"
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 14,
+    "minimumScreensPerNode": 5
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Great job!",
+      "Perfect!",
+      "Exactly!"
+    ],
+    "incorrect": [
+      "Almost.",
+      "Not quite.",
+      "Check the time expression.",
+      "Look at the verb form."
+    ],
+    "hintPrompts": [
+      "Is this a finished action or an action in progress?",
+      "Do you need past simple or past continuous?",
+      "Is it a past habit that is different now?",
+      "Do you need did, was or were?"
+    ]
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u2-ex-1",
+      "b1-u2-ex-2",
+      "b1-u2-ex-3",
+      "b1-u2-ex-4",
+      "b1-u2-ex-5",
+      "b1-u2-ex-6"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u2-ex-1",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Type the Conjugation",
+        "title": "A: Past simple (verbs in the box)",
+        "instructions": "Complete using the correct past simple form of the verbs in the box. You may have to use some negative forms.",
+        "studentInstruction": "Type only the missing past simple form.",
+        "grammarFocus": "past simple",
+        "words": [
+          "bring",
+          "buy",
+          "drive",
+          "find",
+          "leave",
+          "meet",
+          "speak",
+          "write"
+        ],
+        "wordBank": [
+          "bring",
+          "buy",
+          "drive",
+          "find",
+          "leave",
+          "meet",
+          "speak",
+          "write"
+        ],
+        "items": [
+          {
+            "id": "b1-u2-ex1-1",
+            "sentence": "I was thirsty, so Dad ...... me a bottle of water.",
+            "verbPrompt": "bring",
+            "answer": "brought",
+            "acceptedAnswers": [
+              "brought"
+            ],
+            "explanation": "Use the past simple because the action is finished in the past.",
+            "template": "I was thirsty, so Dad {gap1} me a bottle of water.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "brought"
+              }
+            ],
+            "blankSentence": "I was thirsty, so Dad ____ me a bottle of water.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex1-2",
+            "sentence": "We waited for Alex for an hour, but he ...... .",
+            "verbPrompt": "not / come",
+            "answer": "didn't come",
+            "acceptedAnswers": [
+              "didn't come",
+              "did not come"
+            ],
+            "explanation": "Use did not / didn't + base verb for a negative action in the past.",
+            "template": "We waited for Alex for an hour, but he {gap1} .",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "didn't come"
+              }
+            ],
+            "blankSentence": "We waited for Alex for an hour, but he ____ .",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex1-3",
+            "sentence": "Sarah ...... a really interesting article for the school magazine.",
+            "verbPrompt": "write",
+            "answer": "wrote",
+            "acceptedAnswers": [
+              "wrote"
+            ],
+            "explanation": "Use the past simple because the action is finished in the past.",
+            "template": "Sarah {gap1} a really interesting article for the school magazine.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "wrote"
+              }
+            ],
+            "blankSentence": "Sarah ____ a really interesting article for the school magazine.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex1-4",
+            "sentence": "Nobody ...... the answer to the teacher's question.",
+            "verbPrompt": "know",
+            "answer": "knew",
+            "acceptedAnswers": [
+              "knew"
+            ],
+            "explanation": "Use the past simple because the action is finished in the past.",
+            "template": "Nobody {gap1} the answer to the teacher's question.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "knew"
+              }
+            ],
+            "blankSentence": "Nobody ____ the answer to the teacher's question.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex1-5",
+            "sentence": "Tom ...... his wallet under the sofa yesterday.",
+            "verbPrompt": "find",
+            "answer": "found",
+            "acceptedAnswers": [
+              "found"
+            ],
+            "explanation": "Use the past simple because the action is finished in the past.",
+            "template": "Tom {gap1} his wallet under the sofa yesterday.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "found"
+              }
+            ],
+            "blankSentence": "Tom ____ his wallet under the sofa yesterday.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex1-6",
+            "sentence": "My uncle ...... us to the airport early in the morning.",
+            "verbPrompt": "drive",
+            "answer": "drove",
+            "acceptedAnswers": [
+              "drove"
+            ],
+            "explanation": "Use the past simple because the action is finished in the past.",
+            "template": "My uncle {gap1} us to the airport early in the morning.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "drove"
+              }
+            ],
+            "blankSentence": "My uncle ____ us to the airport early in the morning.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex1-7",
+            "sentence": "Last summer, we ...... some new friends at camp.",
+            "verbPrompt": "meet",
+            "answer": "met",
+            "acceptedAnswers": [
+              "met"
+            ],
+            "explanation": "Use the past simple because the action is finished in the past.",
+            "template": "Last summer, we {gap1} some new friends at camp.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "met"
+              }
+            ],
+            "blankSentence": "Last summer, we ____ some new friends at camp.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex1-8",
+            "sentence": "I was cold, so I ...... a new jacket.",
+            "verbPrompt": "buy",
+            "answer": "bought",
+            "acceptedAnswers": [
+              "bought"
+            ],
+            "explanation": "Use the past simple because the action is finished in the past.",
+            "template": "I was cold, so I {gap1} a new jacket.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "bought"
+              }
+            ],
+            "blankSentence": "I was cold, so I ____ a new jacket.",
+            "answerMode": "typed_conjugation_only"
+          }
+        ],
+        "interaction": {
+          "formatType": "conjugation_gap_fill",
+          "gapDisplay": "inline_rounded_input",
+          "userWrites": "missing_conjugated_form_only"
+        }
+      },
+      {
+        "id": "b1-u2-ex-2",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Choose the Correct Ending",
+        "title": "B: Match to make sentences (past simple)",
+        "instructions": "Match each sentence beginning (1–6) with the correct ending (A–F).",
+        "studentInstruction": "Tap the ending that completes the sentence correctly.",
+        "grammarFocus": "past simple reasons and finished actions",
+        "items": [
+          {
+            "id": "b1-u2-ex2-1",
+            "originalSentence": "I don't want another sandwich because **D** I ate lunch an hour ago.",
+            "originalAnswer": "D – I ate lunch an hour ago.",
+            "sentenceBefore": "I don't want another sandwich because",
+            "sentenceAfter": "",
+            "options": [
+              "D – I ate lunch an hour ago.",
+              "F – I bought one last month."
+            ],
+            "answer": "D – I ate lunch an hour ago.",
+            "completedSentence": "I don't want another sandwich because I ate lunch an hour ago.",
+            "explanation": "The ending gives the past reason that explains the first part of the sentence.",
+            "answerMode": "tap_correct_ending",
+            "template": "I don't want another sandwich because {choice}"
+          },
+          {
+            "id": "b1-u2-ex2-2",
+            "originalSentence": "I don't need your bike because **F** I bought one last month.",
+            "originalAnswer": "F – I bought one last month.",
+            "sentenceBefore": "I don't need your bike because",
+            "sentenceAfter": "",
+            "options": [
+              "A – I visited it last year.",
+              "F – I bought one last month."
+            ],
+            "answer": "F – I bought one last month.",
+            "completedSentence": "I don't need your bike because I bought one last month.",
+            "explanation": "The ending gives the past reason that explains the first part of the sentence.",
+            "answerMode": "tap_correct_ending",
+            "template": "I don't need your bike because {choice}"
+          },
+          {
+            "id": "b1-u2-ex2-3",
+            "originalSentence": "I know a lot about Rome because **A** I visited it last year.",
+            "originalAnswer": "A – I visited it last year.",
+            "sentenceBefore": "I know a lot about Rome because",
+            "sentenceAfter": "",
+            "options": [
+              "A – I visited it last year.",
+              "E – I tidied it yesterday."
+            ],
+            "answer": "A – I visited it last year.",
+            "completedSentence": "I know a lot about Rome because I visited it last year.",
+            "explanation": "The ending gives the past reason that explains the first part of the sentence.",
+            "answerMode": "tap_correct_ending",
+            "template": "I know a lot about Rome because {choice}"
+          },
+          {
+            "id": "b1-u2-ex2-4",
+            "originalSentence": "I don't have to clean my room now because **E** I tidied it yesterday.",
+            "originalAnswer": "E – I tidied it yesterday.",
+            "sentenceBefore": "I don't have to clean my room now because",
+            "sentenceAfter": "",
+            "options": [
+              "B – I lost it last weekend.",
+              "E – I tidied it yesterday."
+            ],
+            "answer": "E – I tidied it yesterday.",
+            "completedSentence": "I don't have to clean my room now because I tidied it yesterday.",
+            "explanation": "The ending gives the past reason that explains the first part of the sentence.",
+            "answerMode": "tap_correct_ending",
+            "template": "I don't have to clean my room now because {choice}"
+          },
+          {
+            "id": "b1-u2-ex2-5",
+            "originalSentence": "I can't play that computer game any more because **B** I lost it last weekend.",
+            "originalAnswer": "B – I lost it last weekend.",
+            "sentenceBefore": "I can't play that computer game any more because",
+            "sentenceAfter": "",
+            "options": [
+              "B – I lost it last weekend.",
+              "C – I forgot his birthday."
+            ],
+            "answer": "B – I lost it last weekend.",
+            "completedSentence": "I can't play that computer game any more because I lost it last weekend.",
+            "explanation": "The ending gives the past reason that explains the first part of the sentence.",
+            "answerMode": "tap_correct_ending",
+            "template": "I can't play that computer game any more because {choice}"
+          },
+          {
+            "id": "b1-u2-ex2-6",
+            "originalSentence": "Dad is upset with me because **C** I forgot his birthday.",
+            "originalAnswer": "C – I forgot his birthday.",
+            "sentenceBefore": "Dad is upset with me because",
+            "sentenceAfter": "",
+            "options": [
+              "D – I ate lunch an hour ago.",
+              "C – I forgot his birthday."
+            ],
+            "answer": "C – I forgot his birthday.",
+            "completedSentence": "Dad is upset with me because I forgot his birthday.",
+            "explanation": "The ending gives the past reason that explains the first part of the sentence.",
+            "answerMode": "tap_correct_ending",
+            "template": "Dad is upset with me because {choice}"
+          }
+        ],
+        "originalSubtype": "matching",
+        "interaction": {
+          "formatType": "two_option_choice",
+          "optionLayout": "two_large_buttons",
+          "userTaps": "correct_sentence_ending"
+        }
+      },
+      {
+        "id": "b1-u2-ex-3",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Type the Conjugation",
+        "title": "C: Past continuous",
+        "instructions": "Complete using the correct past continuous form of the verbs in brackets.",
+        "studentInstruction": "Type only the missing past continuous form.",
+        "grammarFocus": "past continuous",
+        "items": [
+          {
+            "id": "b1-u2-ex3-1",
+            "sentence": "Mia ...... (read) a magazine at nine o'clock.",
+            "verbPrompt": "read",
+            "answer": "was reading",
+            "acceptedAnswers": [
+              "was reading"
+            ],
+            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
+            "template": "Mia {gap1} a magazine at nine o'clock.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "was reading"
+              }
+            ],
+            "blankSentence": "Mia ____ a magazine at nine o'clock.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex3-2",
+            "sentence": "At midnight, we ...... (drive) home while it ...... (snow).",
+            "verbPrompt": "drive, snow",
+            "answer": "were driving, was snowing",
+            "acceptedAnswers": [
+              "were driving, was snowing"
+            ],
+            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
+            "template": "At midnight, we {gap1} home while it {gap2}.",
+            "gapCount": 2,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "were driving"
+              },
+              {
+                "gapId": "gap2",
+                "expectedAnswer": "was snowing"
+              }
+            ],
+            "blankSentence": "At midnight, we ____ home while it ____.",
+            "answerMode": "typed_multiple_conjugation_gaps"
+          },
+          {
+            "id": "b1-u2-ex3-3",
+            "sentence": "Ben ...... (wait) outside the cinema when his friends arrived.",
+            "verbPrompt": "wait",
+            "answer": "was waiting",
+            "acceptedAnswers": [
+              "was waiting"
+            ],
+            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
+            "template": "Ben {gap1} outside the cinema when his friends arrived.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "was waiting"
+              }
+            ],
+            "blankSentence": "Ben ____ outside the cinema when his friends arrived.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex3-4",
+            "sentence": "I saw Olivia while she ...... (shop) in the town centre.",
+            "verbPrompt": "shop",
+            "answer": "was shopping",
+            "acceptedAnswers": [
+              "was shopping"
+            ],
+            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
+            "template": "I saw Olivia while she {gap1} in the town centre.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "was shopping"
+              }
+            ],
+            "blankSentence": "I saw Olivia while she ____ in the town centre.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex3-5",
+            "sentence": "...... they ...... (watch) TV when the lights went out?",
+            "verbPrompt": "watch",
+            "answer": "Were, watching",
+            "acceptedAnswers": [
+              "Were, watching",
+              "were, watching"
+            ],
+            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
+            "template": "{gap1} they {gap2} TV when the lights went out?",
+            "gapCount": 2,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "Were"
+              },
+              {
+                "gapId": "gap2",
+                "expectedAnswer": "watching"
+              }
+            ],
+            "blankSentence": "____ they ____ TV when the lights went out?",
+            "answerMode": "typed_multiple_conjugation_gaps"
+          },
+          {
+            "id": "b1-u2-ex3-6",
+            "sentence": "Ella ...... (cycle) to school when it started raining.",
+            "verbPrompt": "cycle",
+            "answer": "was cycling",
+            "acceptedAnswers": [
+              "was cycling"
+            ],
+            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
+            "template": "Ella {gap1} to school when it started raining.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "was cycling"
+              }
+            ],
+            "blankSentence": "Ella ____ to school when it started raining.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex3-7",
+            "sentence": "When you called Harry, ...... he ...... (sleep)?",
+            "verbPrompt": "sleep",
+            "answer": "was, sleeping",
+            "acceptedAnswers": [
+              "was, sleeping"
+            ],
+            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
+            "template": "When you called Harry, {gap1} he {gap2}?",
+            "gapCount": 2,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "was"
+              },
+              {
+                "gapId": "gap2",
+                "expectedAnswer": "sleeping"
+              }
+            ],
+            "blankSentence": "When you called Harry, ____ he ____?",
+            "answerMode": "typed_multiple_conjugation_gaps"
+          },
+          {
+            "id": "b1-u2-ex3-8",
+            "sentence": "At ten o'clock last night, we ...... (study) for the exam.",
+            "verbPrompt": "study",
+            "answer": "were studying",
+            "acceptedAnswers": [
+              "were studying"
+            ],
+            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
+            "template": "At ten o'clock last night, we {gap1} for the exam.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "were studying"
+              }
+            ],
+            "blankSentence": "At ten o'clock last night, we ____ for the exam.",
+            "answerMode": "typed_conjugation_only"
+          }
+        ],
+        "interaction": {
+          "formatType": "conjugation_gap_fill",
+          "gapDisplay": "inline_rounded_input",
+          "userWrites": "missing_conjugated_form_only"
+        }
+      },
+      {
+        "id": "b1-u2-ex-4",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Choose the Correct Conjugation",
+        "title": "D: Circle the correct word or phrase",
+        "instructions": "Circle the correct word or phrase.",
+        "studentInstruction": "Tap the best answer.",
+        "grammarFocus": "past simple vs past continuous",
+        "items": [
+          {
+            "id": "b1-u2-ex4-1",
+            "sentenceBefore": "When we were in Scotland, we",
+            "sentenceAfter": "in the mountains every day.",
+            "options": [
+              "walked",
+              "were walking"
+            ],
+            "answer": "walked",
+            "completedSentence": "When we were in Scotland, we walked in the mountains every day.",
+            "originalSentence": "When we were in Scotland, we **walked / were walking** in the mountains every day.",
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "When we were in Scotland, we {choice} in the mountains every day."
+          },
+          {
+            "id": "b1-u2-ex4-2",
+            "sentenceBefore": "A few years ago, I",
+            "sentenceAfter": "learning Japanese.",
+            "options": [
+              "started",
+              "was starting"
+            ],
+            "answer": "started",
+            "completedSentence": "A few years ago, I started learning Japanese.",
+            "originalSentence": "A few years ago, I **started / was starting** learning Japanese.",
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "A few years ago, I {choice} learning Japanese."
+          },
+          {
+            "id": "b1-u2-ex4-3",
+            "sentenceBefore": "Emma",
+            "sentenceAfter": "dinner when the guests arrived.",
+            "options": [
+              "made",
+              "was making"
+            ],
+            "answer": "was making",
+            "completedSentence": "Emma was making dinner when the guests arrived.",
+            "originalSentence": "Emma **made / was making** dinner when the guests arrived.",
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "Emma {choice} dinner when the guests arrived."
+          },
+          {
+            "id": "b1-u2-ex4-4",
+            "sentenceBefore": "We hurried home because it",
+            "sentenceAfter": "heavily.",
+            "options": [
+              "snowed",
+              "was snowing"
+            ],
+            "answer": "was snowing",
+            "completedSentence": "We hurried home because it was snowing heavily.",
+            "originalSentence": "We hurried home because it **snowed / was snowing** heavily.",
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "We hurried home because it {choice} heavily."
+          },
+          {
+            "id": "b1-u2-ex4-5",
+            "sentenceBefore": "Two children",
+            "sentenceAfter": "in the playground, so a teacher stopped them.",
+            "options": [
+              "fought",
+              "were fighting"
+            ],
+            "answer": "were fighting",
+            "completedSentence": "Two children were fighting in the playground, so a teacher stopped them.",
+            "originalSentence": "Two children **fought / were fighting** in the playground, so a teacher stopped them.",
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "Two children {choice} in the playground, so a teacher stopped them."
+          },
+          {
+            "id": "b1-u2-ex4-6",
+            "sentenceBefore": "Chris",
+            "sentenceAfter": "me a text message yesterday afternoon.",
+            "options": [
+              "sent",
+              "was sending"
+            ],
+            "answer": "sent",
+            "completedSentence": "Chris sent me a text message yesterday afternoon.",
+            "originalSentence": "Chris **sent / was sending** me a text message yesterday afternoon.",
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "Chris {choice} me a text message yesterday afternoon."
+          },
+          {
+            "id": "b1-u2-ex4-7",
+            "sentenceBefore": "We",
+            "sentenceAfter": "dinner when somebody knocked at the door.",
+            "options": [
+              "had",
+              "were having"
+            ],
+            "answer": "were having",
+            "completedSentence": "We were having dinner when somebody knocked at the door.",
+            "originalSentence": "We **had / were having** dinner when somebody knocked at the door.",
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "We {choice} dinner when somebody knocked at the door."
+          },
+          {
+            "id": "b1-u2-ex4-8",
+            "sentenceBefore": "As I passed the kitchen, I saw Mum",
+            "sentenceAfter": "a cake.",
+            "options": [
+              "baked",
+              "was baking"
+            ],
+            "answer": "was baking",
+            "completedSentence": "As I passed the kitchen, I saw Mum was baking a cake.",
+            "originalSentence": "As I passed the kitchen, I saw Mum **baked / was baking** a cake.",
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "As I passed the kitchen, I saw Mum {choice} a cake."
+          },
+          {
+            "id": "b1-u2-ex4-9",
+            "sentenceBefore": "I",
+            "sentenceAfter": "when the storm began.",
+            "options": [
+              "slept",
+              "was sleeping"
+            ],
+            "answer": "was sleeping",
+            "completedSentence": "I was sleeping when the storm began.",
+            "originalSentence": "I **slept / was sleeping** when the storm began.",
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "I {choice} when the storm began."
+          },
+          {
+            "id": "b1-u2-ex4-10",
+            "sentenceBefore": "While Jake",
+            "sentenceAfter": "his homework, his sister listened to music.",
+            "options": [
+              "did",
+              "was doing"
+            ],
+            "answer": "was doing",
+            "completedSentence": "While Jake was doing his homework, his sister listened to music.",
+            "originalSentence": "While Jake **did / was doing** his homework, his sister listened to music.",
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "answerMode": "tap_correct_conjugation",
+            "template": "While Jake {choice} his homework, his sister listened to music."
+          }
+        ],
+        "interaction": {
+          "formatType": "two_option_choice",
+          "optionLayout": "two_large_buttons",
+          "userTaps": "correct_conjugation"
+        }
+      },
+      {
+        "id": "b1-u2-ex-5",
+        "type": "passage-input",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Story Gap Fill",
+        "title": "E: The School Trip",
+        "instructions": "Complete using the correct past simple or past continuous form of the verbs in the box.",
+        "studentInstruction": "Complete one gap at a time with the correct past simple or past continuous form.",
+        "grammarFocus": "past simple and past continuous in a story",
+        "words": [
+          "arrive",
+          "be",
+          "chat",
+          "eat",
+          "fall",
+          "laugh",
+          "pack",
+          "play",
+          "rain",
+          "ride",
+          "say",
+          "start",
+          "wait",
+          "walk"
+        ],
+        "wordBank": [
+          "arrive",
+          "be",
+          "chat",
+          "eat",
+          "fall",
+          "laugh",
+          "pack",
+          "play",
+          "rain",
+          "ride",
+          "say",
+          "start",
+          "wait",
+          "walk"
+        ],
+        "passage": "Last Friday, our class (1) ...... very excited because we were going on a school trip. Some students (2) ...... their bags while others (3) ...... outside the school gate. It (4) ...... lightly, but nobody cared.\nAt eight o'clock, the bus finally (5) ...... . Everyone (6) ...... onto the bus quickly and the teachers (7) ...... hello to all the students.\nWhile we (8) ...... to the museum, some people (9) ...... games and others (10) ...... loudly at jokes.\nWhen we finally arrived, we (11) ...... around the museum in groups. Suddenly, one boy (12) ...... over while he (13) ...... a sandwich.\nLuckily, he wasn't hurt and everyone (14) ...... laughing again a few minutes later.",
+        "answers": [
+          "was",
+          "were packing",
+          "were waiting",
+          "was raining",
+          "arrived",
+          "rode",
+          "said",
+          "were travelling",
+          "were playing",
+          "were laughing",
+          "walked",
+          "fell",
+          "was eating",
+          "started"
+        ],
+        "items": [
+          {
+            "id": "b1-u2-ex5-1",
+            "passageGapNumber": 1,
+            "sentence": "Last Friday, our class (1) ...... very excited because we were going on a school trip.",
+            "verbPrompt": "be",
+            "answer": "was",
+            "acceptedAnswers": [
+              "was"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "Last Friday, our class {gap1} very excited because we were going on a school trip.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "was"
+              }
+            ],
+            "blankSentence": "Last Friday, our class ____ very excited because we were going on a school trip.",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          },
+          {
+            "id": "b1-u2-ex5-2",
+            "passageGapNumber": 2,
+            "sentence": "Some students (2) ...... their bags while others (3) ...... outside the school gate.",
+            "verbPrompt": "pack",
+            "answer": "were packing",
+            "acceptedAnswers": [
+              "were packing"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "Some students {gap1} their bags while others (3) ...... outside the school gate.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "were packing"
+              }
+            ],
+            "blankSentence": "Some students ____ their bags while others (3) ...... outside the school gate.",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          },
+          {
+            "id": "b1-u2-ex5-3",
+            "passageGapNumber": 3,
+            "sentence": "Some students (2) ...... their bags while others (3) ...... outside the school gate.",
+            "verbPrompt": "wait",
+            "answer": "were waiting",
+            "acceptedAnswers": [
+              "were waiting"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "Some students (2) ...... their bags while others {gap1} outside the school gate.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "were waiting"
+              }
+            ],
+            "blankSentence": "Some students (2) ...... their bags while others ____ outside the school gate.",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          },
+          {
+            "id": "b1-u2-ex5-4",
+            "passageGapNumber": 4,
+            "sentence": "It (4) ...... lightly, but nobody cared.",
+            "verbPrompt": "rain",
+            "answer": "was raining",
+            "acceptedAnswers": [
+              "was raining"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "It {gap1} lightly, but nobody cared.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "was raining"
+              }
+            ],
+            "blankSentence": "It ____ lightly, but nobody cared.",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          },
+          {
+            "id": "b1-u2-ex5-5",
+            "passageGapNumber": 5,
+            "sentence": "At eight o'clock, the bus finally (5) ...... .",
+            "verbPrompt": "arrive",
+            "answer": "arrived",
+            "acceptedAnswers": [
+              "arrived"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "At eight o'clock, the bus finally {gap1} .",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "arrived"
+              }
+            ],
+            "blankSentence": "At eight o'clock, the bus finally ____ .",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          },
+          {
+            "id": "b1-u2-ex5-6",
+            "passageGapNumber": 6,
+            "sentence": "Everyone (6) ...... onto the bus quickly and the teachers (7) ...... hello to all the students.",
+            "verbPrompt": "ride",
+            "answer": "rode",
+            "acceptedAnswers": [
+              "rode"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "Everyone {gap1} onto the bus quickly and the teachers (7) ...... hello to all the students.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "rode"
+              }
+            ],
+            "blankSentence": "Everyone ____ onto the bus quickly and the teachers (7) ...... hello to all the students.",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          },
+          {
+            "id": "b1-u2-ex5-7",
+            "passageGapNumber": 7,
+            "sentence": "Everyone (6) ...... onto the bus quickly and the teachers (7) ...... hello to all the students.",
+            "verbPrompt": "say",
+            "answer": "said",
+            "acceptedAnswers": [
+              "said"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "Everyone (6) ...... onto the bus quickly and the teachers {gap1} hello to all the students.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "said"
+              }
+            ],
+            "blankSentence": "Everyone (6) ...... onto the bus quickly and the teachers ____ hello to all the students.",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          },
+          {
+            "id": "b1-u2-ex5-8",
+            "passageGapNumber": 8,
+            "sentence": "While we (8) ...... to the museum, some people (9) ...... games and others (10) ...... loudly at jokes.",
+            "verbPrompt": "travel",
+            "answer": "were travelling",
+            "acceptedAnswers": [
+              "were travelling"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "While we {gap1} to the museum, some people (9) ...... games and others (10) ...... loudly at jokes.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "were travelling"
+              }
+            ],
+            "blankSentence": "While we ____ to the museum, some people (9) ...... games and others (10) ...... loudly at jokes.",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          },
+          {
+            "id": "b1-u2-ex5-9",
+            "passageGapNumber": 9,
+            "sentence": "While we (8) ...... to the museum, some people (9) ...... games and others (10) ...... loudly at jokes.",
+            "verbPrompt": "play",
+            "answer": "were playing",
+            "acceptedAnswers": [
+              "were playing"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "While we (8) ...... to the museum, some people {gap1} games and others (10) ...... loudly at jokes.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "were playing"
+              }
+            ],
+            "blankSentence": "While we (8) ...... to the museum, some people ____ games and others (10) ...... loudly at jokes.",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          },
+          {
+            "id": "b1-u2-ex5-10",
+            "passageGapNumber": 10,
+            "sentence": "While we (8) ...... to the museum, some people (9) ...... games and others (10) ...... loudly at jokes.",
+            "verbPrompt": "laugh",
+            "answer": "were laughing",
+            "acceptedAnswers": [
+              "were laughing"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "While we (8) ...... to the museum, some people (9) ...... games and others {gap1} loudly at jokes.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "were laughing"
+              }
+            ],
+            "blankSentence": "While we (8) ...... to the museum, some people (9) ...... games and others ____ loudly at jokes.",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          },
+          {
+            "id": "b1-u2-ex5-11",
+            "passageGapNumber": 11,
+            "sentence": "When we finally arrived, we (11) ...... around the museum in groups.",
+            "verbPrompt": "walk",
+            "answer": "walked",
+            "acceptedAnswers": [
+              "walked"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "When we finally arrived, we {gap1} around the museum in groups.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "walked"
+              }
+            ],
+            "blankSentence": "When we finally arrived, we ____ around the museum in groups.",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          },
+          {
+            "id": "b1-u2-ex5-12",
+            "passageGapNumber": 12,
+            "sentence": "Suddenly, one boy (12) ...... over while he (13) ...... a sandwich.",
+            "verbPrompt": "fall",
+            "answer": "fell",
+            "acceptedAnswers": [
+              "fell"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "Suddenly, one boy {gap1} over while he (13) ...... a sandwich.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "fell"
+              }
+            ],
+            "blankSentence": "Suddenly, one boy ____ over while he (13) ...... a sandwich.",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          },
+          {
+            "id": "b1-u2-ex5-13",
+            "passageGapNumber": 13,
+            "sentence": "Suddenly, one boy (12) ...... over while he (13) ...... a sandwich.",
+            "verbPrompt": "eat",
+            "answer": "was eating",
+            "acceptedAnswers": [
+              "was eating"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "Suddenly, one boy (12) ...... over while he {gap1} a sandwich.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "was eating"
+              }
+            ],
+            "blankSentence": "Suddenly, one boy (12) ...... over while he ____ a sandwich.",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          },
+          {
+            "id": "b1-u2-ex5-14",
+            "passageGapNumber": 14,
+            "sentence": "Luckily, he wasn't hurt and everyone (14) ...... laughing again a few minutes later.",
+            "verbPrompt": "start",
+            "answer": "started",
+            "acceptedAnswers": [
+              "started"
+            ],
+            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "template": "Luckily, he wasn't hurt and everyone {gap1} laughing again a few minutes later.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "started"
+              }
+            ],
+            "blankSentence": "Luckily, he wasn't hurt and everyone ____ laughing again a few minutes later.",
+            "answerMode": "typed_conjugation_only",
+            "passageContextMode": "single_gap_from_passage"
+          }
+        ],
+        "interaction": {
+          "formatType": "conjugation_gap_fill",
+          "gapDisplay": "inline_rounded_input",
+          "userWrites": "missing_conjugated_form_only"
+        }
+      },
+      {
+        "id": "b1-u2-ex-6",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Type the Conjugation",
+        "title": "E: used to",
+        "instructions": "Complete using the correct form of used to. You may have to use some negative forms.",
+        "studentInstruction": "Type only the missing used to form.",
+        "grammarFocus": "used to",
+        "items": [
+          {
+            "id": "b1-u2-ex6-1",
+            "sentence": "When I was a child, I ...... play outside for hours.",
+            "verbPrompt": "used to",
+            "answer": "used to",
+            "acceptedAnswers": [
+              "used to"
+            ],
+            "explanation": "Use used to / didn't use to / Did ... use to for past habits or states that are different now.",
+            "template": "When I was a child, I {gap1} play outside for hours.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "used to"
+              }
+            ],
+            "blankSentence": "When I was a child, I ____ play outside for hours.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex6-2",
+            "sentence": "...... there ...... be a cinema in this street?",
+            "verbPrompt": "use to",
+            "answer": "Did, use to",
+            "acceptedAnswers": [
+              "Did, use to",
+              "did, use to"
+            ],
+            "explanation": "Use used to / didn't use to / Did ... use to for past habits or states that are different now.",
+            "template": "{gap1} there {gap2} be a cinema in this street?",
+            "gapCount": 2,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "Did"
+              },
+              {
+                "gapId": "gap2",
+                "expectedAnswer": "use to"
+              }
+            ],
+            "blankSentence": "____ there ____ be a cinema in this street?",
+            "answerMode": "typed_multiple_conjugation_gaps"
+          },
+          {
+            "id": "b1-u2-ex6-3",
+            "sentence": "Sophie works in a hospital now, but she ...... want to be an artist.",
+            "verbPrompt": "used to",
+            "answer": "used to",
+            "acceptedAnswers": [
+              "used to"
+            ],
+            "explanation": "Use used to / didn't use to / Did ... use to for past habits or states that are different now.",
+            "template": "Sophie works in a hospital now, but she {gap1} want to be an artist.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "used to"
+              }
+            ],
+            "blankSentence": "Sophie works in a hospital now, but she ____ want to be an artist.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex6-4",
+            "sentence": "I ...... enjoy spicy food, but now I love it.",
+            "verbPrompt": "not / use to",
+            "answer": "didn't use to",
+            "acceptedAnswers": [
+              "didn't use to",
+              "did not use to"
+            ],
+            "explanation": "Use used to / didn't use to / Did ... use to for past habits or states that are different now.",
+            "template": "I {gap1} enjoy spicy food, but now I love it.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "didn't use to"
+              }
+            ],
+            "blankSentence": "I ____ enjoy spicy food, but now I love it.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex6-5",
+            "sentence": "...... your grandfather ...... wear glasses?",
+            "verbPrompt": "use to",
+            "answer": "Did, use to",
+            "acceptedAnswers": [
+              "Did, use to",
+              "did, use to"
+            ],
+            "explanation": "Use used to / didn't use to / Did ... use to for past habits or states that are different now.",
+            "template": "{gap1} your grandfather {gap2} wear glasses?",
+            "gapCount": 2,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "Did"
+              },
+              {
+                "gapId": "gap2",
+                "expectedAnswer": "use to"
+              }
+            ],
+            "blankSentence": "____ your grandfather ____ wear glasses?",
+            "answerMode": "typed_multiple_conjugation_gaps"
+          },
+          {
+            "id": "b1-u2-ex6-6",
+            "sentence": "We ...... go camping very often, but now we do every summer.",
+            "verbPrompt": "not / use to",
+            "answer": "didn't use to",
+            "acceptedAnswers": [
+              "didn't use to",
+              "did not use to"
+            ],
+            "explanation": "Use used to / didn't use to / Did ... use to for past habits or states that are different now.",
+            "template": "We {gap1} go camping very often, but now we do every summer.",
+            "gapCount": 1,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "didn't use to"
+              }
+            ],
+            "blankSentence": "We ____ go camping very often, but now we do every summer.",
+            "answerMode": "typed_conjugation_only"
+          }
+        ],
+        "interaction": {
+          "formatType": "conjugation_gap_fill",
+          "gapDisplay": "inline_rounded_input",
+          "userWrites": "missing_conjugated_form_only"
+        }
+      }
+    ]
+  },
+  "interactionDesignVersion": "interactive-formats-v3-unit1-compatible",
+  "implementationNotes": [
+    "Adapted from the Unit 1 interactive unit structure so Unit 2 uses theory cards, practice nodes, format definitions and content banks.",
+    "Original Unit 2 exercise sentences, answers, word banks and passage have been preserved. Matching and passage-input content are represented with Unit 1-compatible screen formats."
+  ],
+  "sourceTransformationNotes": {
+    "fromFile": "Unit2.json",
+    "templateFile": "Pegado text(39).txt",
+    "contentPreservation": "Original exercise content kept; added IDs, explanations, templates, acceptedAnswers, practice nodes and interaction metadata.",
+    "formatAdaptations": [
+      "Original matching exercise rendered as two_option_choice using the same sentence beginnings and endings.",
+      "Original passage-input exercise split into single-gap conjugation screens while preserving the original full passage and answers."
+    ]
+  }
 }
