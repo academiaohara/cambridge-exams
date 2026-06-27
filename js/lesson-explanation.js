@@ -190,9 +190,14 @@ var LessonExplanation = (function() {
           '<button type="button" class="lesson-explanation-back" aria-label="' + closeAria + '">' +
             '<span class="material-symbols-outlined">' + closeLabel + '</span>' +
           '</button>' +
-          '<h2 class="lesson-explanation-title" id="lesson-explanation-title">' +
-            esc(opts.title || 'Explain my answer') +
-          '</h2>' +
+          '<div class="lesson-explanation-header-center">' +
+            '<span class="lesson-explanation-hero" aria-hidden="true">' +
+              '<span class="material-symbols-outlined">menu_book</span>' +
+            '</span>' +
+            '<h2 class="lesson-explanation-title" id="lesson-explanation-title">' +
+              esc(opts.title || 'Explain my answer') +
+            '</h2>' +
+          '</div>' +
         '</header>' +
         '<div class="lesson-explanation-body">' +
           contextHtml +
