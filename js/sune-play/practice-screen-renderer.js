@@ -41,27 +41,73 @@
     }).replace(/\s+/g, ' ').trim();
   }
 
-  function buildInlineGapInput(gapIdx) {
-    var idAttr = gapIdx === 0 ? ' id="sp-gap-input"' : '';
-    return '<span class="sp-inline-gap-group sp-inline-gap sp-inline-gap-group--solo" role="group" aria-label="Gap ' + (gapIdx + 1) + '">' +
-      '<input type="text" class="sp-gap-inline-input" data-gap-idx="' + gapIdx + '"' + idAttr +
-      ' autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer">' +
-    '</span>';
+  function extractBracketVerbs(sourceSentence) {
+    var verbs = [];
+    var re = /(?:\.{3,}|…{2,}|_{3,})\s*\(([^)]+)\)/g;
+    var match;
+    while ((match = re.exec(sourceSentence || '')) !== null) {
+      verbs.push(match[1].trim());
+    }
+    return verbs;
   }
 
-  function renderInlineGapSentence(sentence, verbRef) {
+  function splitVerbPromptList(verbRef) {
+    if (!verbRef) return [];
+    return verbRef.split(',').map(function(part) { return part.trim(); }).filter(Boolean);
+  }
+
+  function resolvePerGapVerbPrompts(verbRef, gapCount, gaps, sourceSentence) {
+    var prompts = new Array(gapCount);
+    var i;
+
+    if (gaps && gaps.length) {
+      var hasAllGapPrompts = true;
+      for (i = 0; i < gapCount; i++) {
+        if (gaps[i] && gaps[i].verbPrompt) {
+          prompts[i] = gaps[i].verbPrompt;
+        } else {
+          hasAllGapPrompts = false;
+        }
+      }
+      if (hasAllGapPrompts) return prompts;
+    }
+
+    var bracketVerbs = extractBracketVerbs(sourceSentence);
+    if (bracketVerbs.length === gapCount) return bracketVerbs;
+    if (bracketVerbs.length === 1 && gapCount > 1) {
+      prompts[gapCount - 1] = bracketVerbs[0];
+      return prompts;
+    }
+
+    var parts = splitVerbPromptList(verbRef);
+    if (parts.length === gapCount) return parts;
+
+    if (verbRef && gapCount > 1) {
+      prompts[gapCount - 1] = verbRef;
+      return prompts;
+    }
+
+    if (gapCount === 1) return [verbRef || ''];
+    return prompts;
+  }
+
+  function renderInlineGapSentence(sentence, verbRef, options) {
+    options = options || {};
     var parts = (sentence || '').split(GAP_RE);
     var gapCount = countGaps(sentence);
     if (gapCount <= 1) {
-      return renderSentenceWithGap(sentence, buildInlineGapField(verbRef));
+      return renderSentenceWithGap(sentence, buildInlineGapField(verbRef, 0));
     }
+    var perGapVerbs = resolvePerGapVerbPrompts(
+      verbRef,
+      gapCount,
+      options.gaps,
+      options.sourceSentence
+    );
     var html = '';
     for (var i = 0; i < parts.length; i++) {
       html += bold(parts[i]);
-      if (i < gapCount) html += buildInlineGapInput(i);
-    }
-    if (verbRef) {
-      html += '<span class="sp-gap-verb-ref sp-gap-verb-ref--trailing">' + esc(verbRef) + '</span>';
+      if (i < gapCount) html += buildInlineGapField(perGapVerbs[i] || '', i);
     }
     return html;
   }
@@ -128,10 +174,14 @@
       esc(plain.slice(idx + highlightedText.length));
   }
 
-  function buildInlineGapField(verbRef) {
-    var inputHtml = '<input type="text" class="sp-gap-inline-input" id="sp-gap-input" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer">';
+  function buildInlineGapField(verbRef, gapIdx) {
+    gapIdx = gapIdx || 0;
+    var idAttr = gapIdx === 0 ? ' id="sp-gap-input"' : '';
+    var idxAttr = gapIdx > 0 ? ' data-gap-idx="' + gapIdx + '"' : '';
+    var inputHtml = '<input type="text" class="sp-gap-inline-input"' + idAttr + idxAttr +
+      ' autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer for gap ' + (gapIdx + 1) + '">';
     if (!verbRef) {
-      return '<span class="sp-inline-gap-group sp-inline-gap sp-inline-gap-group--solo" role="group" aria-label="Gap fill">' + inputHtml + '</span>';
+      return '<span class="sp-inline-gap-group sp-inline-gap sp-inline-gap-group--solo" role="group" aria-label="Gap ' + (gapIdx + 1) + '">' + inputHtml + '</span>';
     }
     return '<span class="sp-inline-gap-group sp-inline-gap" role="group" aria-label="Gap fill">' +
       inputHtml +
@@ -292,6 +342,13 @@
     return html;
   }
 
+  function buildInlineGapRenderOptions(payload) {
+    return {
+      gaps: payload.gaps || [],
+      sourceSentence: payload.sourceSentence || ''
+    };
+  }
+
   function renderGapFill(screen) {
     var p = screen.payload || {};
     var verbRef = p.verbPrompt || p.preselectedVerb || '';
@@ -299,7 +356,7 @@
     var multiCls = gapCount > 1 ? ' sp-prompt-sentence--multi-gap' : '';
     var html = '<div class="sp-screen sp-screen--gap" data-format="free_text_gap_fill">';
     html += '<div class="sp-prompt-row sp-prompt-row--gap">';
-    html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap' + multiCls + ' sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + renderInlineGapSentence(p.sentence, verbRef) + '</p>';
+    html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap' + multiCls + ' sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + renderInlineGapSentence(p.sentence, verbRef, buildInlineGapRenderOptions(p)) + '</p>';
     html += '</div>';
     html += '</div>';
     return html;
@@ -363,7 +420,7 @@
       var verbRef = p.selectedVerb || p.baseVerb || '';
       var gapCount = countGaps(p.sentence);
       var multiCls = gapCount > 1 ? ' sp-prompt-sentence--multi-gap' : '';
-      html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap' + multiCls + ' sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + renderInlineGapSentence(p.sentence, verbRef) + '</p>';
+      html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap' + multiCls + ' sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + renderInlineGapSentence(p.sentence, verbRef, buildInlineGapRenderOptions(p)) + '</p>';
     } else {
       html += '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + bold((p.sentence || '').replace(GAP_RE, '<span class="sp-inline-gap"></span>')) + '</p>';
     }
