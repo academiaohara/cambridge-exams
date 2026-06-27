@@ -96,8 +96,42 @@
           });
         }
       }
+      if (normalizedFallback === 'guided_error_choice' && screen.payload) {
+        converted.payload = buildGuidedErrorChoicePayload(screen.payload);
+      }
 
       return converted;
+    }
+
+    function getItemCorrection(item) {
+      if (!item) return '';
+      if (item.answer) return item.answer;
+      if (item.acceptedAnswers && item.acceptedAnswers.length) return item.acceptedAnswers[0];
+      return '';
+    }
+
+    function buildGuidedErrorChoicePayload(payload) {
+      var items = (payload.items || []).map(function(it) {
+        var correct = getItemCorrection(it);
+        var wrong = it.wrong || it.targetPhrase || '';
+        var options = [correct, wrong].filter(function(v, i, a) {
+          return v && a.indexOf(v) === i;
+        });
+        if (options.length < 2) options.push('is ' + wrong);
+        options = options.sort(function() { return Math.random() - 0.5; });
+        return {
+          wrong: wrong,
+          answer: correct,
+          acceptedAnswers: it.acceptedAnswers || (correct ? [correct] : []),
+          explanation: it.explanation || '',
+          options: options
+        };
+      });
+      return {
+        items: items,
+        instruction: 'Choose the correct form for each error.',
+        passage: payload.passage || ''
+      };
     }
 
     function buildWordOrderPayload(payload) {
