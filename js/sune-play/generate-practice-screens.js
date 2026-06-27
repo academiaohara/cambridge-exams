@@ -70,6 +70,13 @@
     return list.slice().sort(function() { return Math.random() - 0.5; });
   }
 
+  function shuffleChoicePayload(payload) {
+    if (!payload || !payload.options || payload.options.length < 2) return payload;
+    return Object.assign({}, payload, {
+      options: shuffleCopy(payload.options)
+    });
+  }
+
   function buildScreenId(nodeId, exerciseId, itemId, formatType) {
     return [nodeId, exerciseId, itemId, formatType].filter(Boolean).join('__');
   }
@@ -77,14 +84,14 @@
   function itemToPayload(formatType, item, exercise, genRule) {
     switch (formatType) {
       case 'two_option_choice':
-        return {
+        return shuffleChoicePayload({
           sentenceBefore: item.sentenceBefore || '',
           sentenceAfter: item.sentenceAfter || '',
           options: item.options || [],
           answer: item.answer,
           completedSentence: item.completedSentence || '',
           explanation: item.explanation || ''
-        };
+        });
 
       case 'free_text_gap_fill':
         return {
@@ -214,13 +221,13 @@
         };
 
       case 'meaning_contrast':
-        return {
+        return shuffleChoicePayload({
           prompt: item.prompt || genRule.prompt || 'What does this sentence mean?',
           sentence: item.sentence || genRule.sentence || '',
           options: item.options || genRule.options || [],
           answer: item.answer || genRule.answer,
           explanation: item.explanation || genRule.explanation || ''
-        };
+        });
 
       case 'preselected_verb_gap_fill':
         return {
@@ -286,7 +293,10 @@
 
     (node.customScreens || []).forEach(function(custom) {
       var formatType = custom.formatType;
-      screens.push(buildScreen(unit, node, formatType, custom, {
+      var payload = (formatType === 'two_option_choice' || formatType === 'meaning_contrast')
+        ? shuffleChoicePayload(custom)
+        : custom;
+      screens.push(buildScreen(unit, node, formatType, payload, {
         screenId: custom.screenId,
         itemId: custom.screenId,
         isCustom: true,
