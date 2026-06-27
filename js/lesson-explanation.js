@@ -42,7 +42,7 @@ var LessonExplanation = (function() {
     }
   }
 
-  function inlineContextBlockHtml(label, text, variant) {
+  function contextBlockHtml(label, text, variant) {
     if (!text) return '';
     var blockClass = variant === 'question'
       ? 'lesson-explanation-question'
@@ -54,16 +54,6 @@ var LessonExplanation = (function() {
           esc(label) +
         '</span>' +
         '<p class="' + blockClass + '-text">' + formatBody(text) + '</p>' +
-      '</div>';
-  }
-
-  function explanationCardHtml(text) {
-    return '<div class="lesson-explanation-card">' +
-        '<div class="lesson-explanation-card-label">' +
-          '<span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>' +
-          'Why' +
-        '</div>' +
-        '<p class="lesson-explanation-text">' + formatBody(text) + '</p>' +
       '</div>';
   }
 
@@ -81,6 +71,16 @@ var LessonExplanation = (function() {
           esc(label) +
         '</span>' +
         '<p class="' + blockClass + '-text">' + formatBody(text) + '</p>' +
+      '</div>';
+  }
+
+  function explanationCardHtml(text) {
+    return '<div class="lesson-explanation-card">' +
+        '<div class="lesson-explanation-card-label">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>' +
+          'Why' +
+        '</div>' +
+        '<p class="lesson-explanation-text">' + formatBody(text) + '</p>' +
       '</div>';
   }
 
