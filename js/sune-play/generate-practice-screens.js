@@ -167,6 +167,7 @@
       case 'conjugation_gap_fill':
         return {
           sentence: item.blankSentence || item.sentence || '',
+          sourceSentence: item.sentence || '',
           verbPrompt: item.verbPrompt || '',
           answer: item.answer,
           acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
