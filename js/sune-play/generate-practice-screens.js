@@ -170,6 +170,7 @@
           verbPrompt: item.verbPrompt || '',
           answer: item.answer,
           acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
+          gaps: item.gaps || [],
           explanation: item.explanation || '',
           completedSentence: (item.sentence || '').replace(GAP_RE, item.answer || ''),
           instruction: exercise.instructions || exercise.studentInstruction || ''
