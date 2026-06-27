@@ -451,14 +451,8 @@
         {
           "sourceExerciseId": "b1-u2-ex-1",
           "sourceItemIds": [
-            "b1-u2-ex1-1",
             "b1-u2-ex1-2",
-            "b1-u2-ex1-3",
-            "b1-u2-ex1-4",
-            "b1-u2-ex1-5",
-            "b1-u2-ex1-6",
-            "b1-u2-ex1-7",
-            "b1-u2-ex1-8"
+            "b1-u2-ex1-4"
           ],
           "formatType": "conjugation_gap_fill",
           "fallbackFormatType": "two_option_choice"
@@ -606,6 +600,88 @@
           "screenMode": "passage_split_into_single_gap_screens"
         }
       ]
+    },
+    {
+      "nodeId": "b1-u2-node-6",
+      "title": "Verb Bank Challenge",
+      "focus": [
+        "choose correct base verb",
+        "past simple conjugation",
+        "irregular verbs"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 6,
+        "allowFinishWithZeroLives": false
+      },
+      "verbBankRules": {
+        "showAllRemainingVerbs": true,
+        "removeVerbWhenCorrectlyCompleted": true,
+        "removeSentenceWhenCorrectlyCompleted": true,
+        "wrongVerbAction": "lose_1_life_and_return_item_to_queue",
+        "wrongConjugationAction": "lose_1_life_and_return_item_with_preselected_verb",
+        "failedTwiceAction": "convert_to_two_option_choice"
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u2-ex-1",
+          "sourceItemIds": [
+            "b1-u2-ex1-1",
+            "b1-u2-ex1-3",
+            "b1-u2-ex1-5",
+            "b1-u2-ex1-6",
+            "b1-u2-ex1-7",
+            "b1-u2-ex1-8"
+          ],
+          "formatType": "verb_tile_conjugation_gap",
+          "fallbackFormatType": "conjugation_gap_fill"
+        }
+      ]
+    },
+    {
+      "nodeId": "b1-u2-node-7",
+      "title": "Final challenge",
+      "focus": [
+        "contextual grammar",
+        "error detection",
+        "past simple",
+        "past continuous",
+        "used to"
+      ],
+      "lives": 6,
+      "passCondition": {
+        "minimumCorrectScreens": 1,
+        "allowFinishWithZeroLives": false
+      },
+      "passageRules": {
+        "showFullPassage": true,
+        "askForOneErrorAtATime": true,
+        "hideCorrectInline": true,
+        "removeFixedErrorsFromQueue": true,
+        "wrongTapAction": "lose_1_life",
+        "wrongCorrectionAction": "lose_1_life",
+        "maxLifeLossPerError": 2,
+        "failedTwiceAction": "retry_same_mode"
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u2-ex-7",
+          "sourceItemIds": [
+            "b1-u2-ex7-1",
+            "b1-u2-ex7-2",
+            "b1-u2-ex7-3",
+            "b1-u2-ex7-4",
+            "b1-u2-ex7-5",
+            "b1-u2-ex7-6",
+            "b1-u2-ex7-7",
+            "b1-u2-ex7-8",
+            "b1-u2-ex7-9",
+            "b1-u2-ex7-10"
+          ],
+          "formatType": "passage_error_hunt_counter",
+          "screenMode": "single_passage_with_counter"
+        }
+      ]
     }
   ],
   "queueBehaviour": {
@@ -650,17 +726,18 @@
       "b1-u2-ex-3",
       "b1-u2-ex-4",
       "b1-u2-ex-5",
-      "b1-u2-ex-6"
+      "b1-u2-ex-6",
+      "b1-u2-ex-7"
     ],
     "exercises": [
       {
         "id": "b1-u2-ex-1",
         "type": "exercise",
-        "exerciseType": "conjugation_gap_fill",
-        "exerciseTypeName": "Type the Conjugation",
+        "exerciseType": "verb_tile_conjugation_gap",
+        "exerciseTypeName": "Choose the Verb Tile and Conjugate It",
         "title": "A: Past simple (verbs in the box)",
         "instructions": "Complete using the correct past simple form of the verbs in the box. You may have to use some negative forms.",
-        "studentInstruction": "Type only the missing past simple form.",
+        "studentInstruction": "Tap a verb tile, then type the past simple form.",
         "grammarFocus": "past simple",
         "words": [
           "bring",
@@ -687,6 +764,7 @@
             "id": "b1-u2-ex1-1",
             "sentence": "I was thirsty, so Dad ...... me a bottle of water.",
             "verbPrompt": "bring",
+            "baseVerb": "bring",
             "answer": "brought",
             "acceptedAnswers": [
               "brought"
@@ -701,7 +779,7 @@
               }
             ],
             "blankSentence": "I was thirsty, so Dad ____ me a bottle of water.",
-            "answerMode": "typed_conjugation_only"
+            "answerMode": "choose_tile_then_type_conjugation"
           },
           {
             "id": "b1-u2-ex1-2",
@@ -728,6 +806,7 @@
             "id": "b1-u2-ex1-3",
             "sentence": "Sarah ...... a really interesting article for the school magazine.",
             "verbPrompt": "write",
+            "baseVerb": "write",
             "answer": "wrote",
             "acceptedAnswers": [
               "wrote"
@@ -742,7 +821,7 @@
               }
             ],
             "blankSentence": "Sarah ____ a really interesting article for the school magazine.",
-            "answerMode": "typed_conjugation_only"
+            "answerMode": "choose_tile_then_type_conjugation"
           },
           {
             "id": "b1-u2-ex1-4",
@@ -768,6 +847,7 @@
             "id": "b1-u2-ex1-5",
             "sentence": "Tom ...... his wallet under the sofa yesterday.",
             "verbPrompt": "find",
+            "baseVerb": "find",
             "answer": "found",
             "acceptedAnswers": [
               "found"
@@ -782,12 +862,13 @@
               }
             ],
             "blankSentence": "Tom ____ his wallet under the sofa yesterday.",
-            "answerMode": "typed_conjugation_only"
+            "answerMode": "choose_tile_then_type_conjugation"
           },
           {
             "id": "b1-u2-ex1-6",
             "sentence": "My uncle ...... us to the airport early in the morning.",
             "verbPrompt": "drive",
+            "baseVerb": "drive",
             "answer": "drove",
             "acceptedAnswers": [
               "drove"
@@ -802,12 +883,13 @@
               }
             ],
             "blankSentence": "My uncle ____ us to the airport early in the morning.",
-            "answerMode": "typed_conjugation_only"
+            "answerMode": "choose_tile_then_type_conjugation"
           },
           {
             "id": "b1-u2-ex1-7",
             "sentence": "Last summer, we ...... some new friends at camp.",
             "verbPrompt": "meet",
+            "baseVerb": "meet",
             "answer": "met",
             "acceptedAnswers": [
               "met"
@@ -822,12 +904,13 @@
               }
             ],
             "blankSentence": "Last summer, we ____ some new friends at camp.",
-            "answerMode": "typed_conjugation_only"
+            "answerMode": "choose_tile_then_type_conjugation"
           },
           {
             "id": "b1-u2-ex1-8",
             "sentence": "I was cold, so I ...... a new jacket.",
             "verbPrompt": "buy",
+            "baseVerb": "buy",
             "answer": "bought",
             "acceptedAnswers": [
               "bought"
@@ -842,13 +925,13 @@
               }
             ],
             "blankSentence": "I was cold, so I ____ a new jacket.",
-            "answerMode": "typed_conjugation_only"
+            "answerMode": "choose_tile_then_type_conjugation"
           }
         ],
         "interaction": {
-          "formatType": "conjugation_gap_fill",
-          "gapDisplay": "inline_rounded_input",
-          "userWrites": "missing_conjugated_form_only"
+          "formatType": "verb_tile_conjugation_gap",
+          "tapAction": "select_base_verb_tile",
+          "userWrites": "conjugated_form_in_gap"
         }
       },
       {
@@ -1844,13 +1927,174 @@
           "gapDisplay": "inline_rounded_input",
           "userWrites": "missing_conjugated_form_only"
         }
+      },
+      {
+        "id": "b1-u2-ex-7",
+        "type": "exercise",
+        "exerciseType": "passage_error_hunt_counter",
+        "exerciseTypeName": "Find the 10 Wrong Conjugations",
+        "title": "F: Correct the wrong tenses",
+        "instructions": "Mark one wrongly conjugated verb phrase at a time. After each correct mark, write its correction before finding the next error.",
+        "studentInstruction": "Find an error, confirm it, then write its correction. Repeat until all 10 are fixed.",
+        "grammarFocus": "past simple, past continuous and used to in context",
+        "hideCorrectInline": true,
+        "passage": "When I was a child, I use to spend every Saturday at my grandparents' house. While grandma was cooked lunch, grandpa usually was worked in the garden. One afternoon, I was deciding to explore the attic. I was climbing the wooden stairs when I was hearing a strange sound above me. Suddenly, a box was falling from a shelf and papers was scattering everywhere. Grandpa was running upstairs because he was thought something was wrong. Later, grandma was smiled and was gave me a slice of cake.",
+        "items": [
+          {
+            "id": "b1-u2-ex7-1",
+            "wrong": "use to",
+            "answer": "used to",
+            "acceptedAnswers": [
+              "used to"
+            ],
+            "explanation": "Use used to for past habits or states that are different now.",
+            "errorIndex": 1,
+            "targetPhrase": "use to",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
+          },
+          {
+            "id": "b1-u2-ex7-2",
+            "wrong": "was cooked",
+            "answer": "was cooking",
+            "acceptedAnswers": [
+              "was cooking"
+            ],
+            "explanation": "While shows an action in progress in the past, so use the past continuous.",
+            "errorIndex": 2,
+            "targetPhrase": "was cooked",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
+          },
+          {
+            "id": "b1-u2-ex7-3",
+            "wrong": "was worked",
+            "answer": "worked",
+            "acceptedAnswers": [
+              "worked"
+            ],
+            "explanation": "Usually describes a repeated past habit, so use the past simple.",
+            "errorIndex": 3,
+            "targetPhrase": "was worked",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
+          },
+          {
+            "id": "b1-u2-ex7-4",
+            "wrong": "was deciding",
+            "answer": "decided",
+            "acceptedAnswers": [
+              "decided"
+            ],
+            "explanation": "This is a finished decision in the past, so use the past simple.",
+            "errorIndex": 4,
+            "targetPhrase": "was deciding",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
+          },
+          {
+            "id": "b1-u2-ex7-5",
+            "wrong": "was hearing",
+            "answer": "heard",
+            "acceptedAnswers": [
+              "heard"
+            ],
+            "explanation": "A short completed action interrupts the longer background action, so use the past simple.",
+            "errorIndex": 5,
+            "targetPhrase": "was hearing",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
+          },
+          {
+            "id": "b1-u2-ex7-6",
+            "wrong": "was falling",
+            "answer": "fell",
+            "acceptedAnswers": [
+              "fell"
+            ],
+            "explanation": "Suddenly signals a short completed action, so use the past simple.",
+            "errorIndex": 6,
+            "targetPhrase": "was falling",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
+          },
+          {
+            "id": "b1-u2-ex7-7",
+            "wrong": "was scattering",
+            "answer": "scattered",
+            "acceptedAnswers": [
+              "scattered"
+            ],
+            "explanation": "This describes a completed result in the past, so use the past simple.",
+            "errorIndex": 7,
+            "targetPhrase": "was scattering",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
+          },
+          {
+            "id": "b1-u2-ex7-8",
+            "wrong": "was thought",
+            "answer": "thought",
+            "acceptedAnswers": [
+              "thought"
+            ],
+            "explanation": "Because introduces the reason for a finished reaction, so use the past simple.",
+            "errorIndex": 8,
+            "targetPhrase": "was thought",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
+          },
+          {
+            "id": "b1-u2-ex7-9",
+            "wrong": "was smiled",
+            "answer": "smiled",
+            "acceptedAnswers": [
+              "smiled"
+            ],
+            "explanation": "Later introduces a completed action, so use the past simple.",
+            "errorIndex": 9,
+            "targetPhrase": "was smiled",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
+          },
+          {
+            "id": "b1-u2-ex7-10",
+            "wrong": "was gave",
+            "answer": "gave",
+            "acceptedAnswers": [
+              "gave"
+            ],
+            "explanation": "This is a finished action in the past, so use the past simple.",
+            "errorIndex": 10,
+            "targetPhrase": "was gave",
+            "tapTargetType": "verb_phrase",
+            "answerMode": "mark_phrase_then_correct"
+          }
+        ],
+        "errorCount": 10,
+        "counter": {
+          "target": 10,
+          "initialValue": 0,
+          "labelTemplate": "{found}/10 errors found",
+          "showProgressBar": true,
+          "showRemainingCount": true
+        },
+        "interaction": {
+          "formatType": "passage_error_hunt_counter",
+          "tapAction": "mark_or_unmark_wrong_conjugation",
+          "correctTap": "increment_counter_after_continue",
+          "wrongTap": "lose_life",
+          "correctionFlow": "mark_then_correct_each_error_in_turn",
+          "hideCorrectAnswersUntilAllErrorsFound": true
+        }
       }
     ]
   },
   "interactionDesignVersion": "interactive-formats-v3-unit1-compatible",
   "implementationNotes": [
     "Adapted from the Unit 1 interactive unit structure so Unit 2 uses theory cards, practice nodes, format definitions and content banks.",
-    "Original Unit 2 exercise sentences, answers, word banks and passage have been preserved. Matching and passage-input content are represented with Unit 1-compatible screen formats."
+    "Original Unit 2 exercise sentences, answers, word banks and passage have been preserved. Matching and passage-input content are represented with Unit 1-compatible screen formats.",
+    "Exercise A now uses the verb-tile flow in practice node 6, and a new error-hunt final challenge mirrors Unit 1's mark-and-correct passage flow."
   ],
   "sourceTransformationNotes": {
     "fromFile": "Unit2.json",
@@ -1858,7 +2102,9 @@
     "contentPreservation": "Original exercise content kept; added IDs, explanations, templates, acceptedAnswers, practice nodes and interaction metadata.",
     "formatAdaptations": [
       "Original matching exercise rendered as two_option_choice using the same sentence beginnings and endings.",
-      "Original passage-input exercise split into single-gap conjugation screens while preserving the original full passage and answers."
+      "Original passage-input exercise split into single-gap conjugation screens while preserving the original full passage and answers.",
+      "Original verbs-in-the-box exercise now powers a verb-tile practice node.",
+      "Added a final error-hunt passage for contextual past tense correction."
     ]
   }
 }
