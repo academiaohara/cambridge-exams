@@ -368,7 +368,7 @@
         "defaultLives": 6,
         "maxLifeLossPerScreen": 2,
         "attemptsPerScreen": 1,
-        "failureAction": "show_guided_hint",
+        "failureAction": "show_explanation_then_continue",
         "interaction": {
           "component": "passage_tap_error_counter",
           "studentAction": "tap_wrong_conjugated_phrases_in_text",
@@ -731,7 +731,7 @@
         "wrongTapAction": "lose_1_life",
         "wrongCorrectionAction": "lose_1_life",
         "maxLifeLossPerError": 2,
-        "failedTwiceAction": "show_guided_hint"
+        "failedTwiceAction": "retry_same_mode"
       },
       "screenGeneration": [
         {
@@ -749,7 +749,6 @@
             "b1-u1-ex6-10"
           ],
           "formatType": "passage_error_hunt_counter",
-          "fallbackFormatType": "guided_error_choice",
           "screenMode": "single_passage_with_counter"
         }
       ]
