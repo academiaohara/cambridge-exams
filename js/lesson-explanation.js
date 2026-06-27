@@ -23,6 +23,9 @@ var LessonExplanation = (function() {
       .replace(/\n/g, '<br>');
   }
 
+  var _inlineRestore = null;
+  var _onClose = null;
+
   function close() {
     var sheet = document.getElementById(SHEET_ID);
     if (sheet) sheet.remove();
@@ -31,9 +34,12 @@ var LessonExplanation = (function() {
       _inlineRestore();
       _inlineRestore = null;
     }
+    if (_onClose) {
+      var callback = _onClose;
+      _onClose = null;
+      callback();
+    }
   }
-
-  var _inlineRestore = null;
 
   function captureFormState(mountEl) {
     var fields = [];
@@ -114,6 +120,7 @@ var LessonExplanation = (function() {
   function openInline(mountEl, opts) {
     if (!mountEl || !opts || !opts.explanation) return;
     close();
+    _onClose = opts.onClose || null;
 
     var previousHtml = mountEl.innerHTML;
     var previousClass = mountEl.className;
@@ -164,6 +171,7 @@ var LessonExplanation = (function() {
       return;
     }
     close();
+    _onClose = opts.onClose || null;
 
     var sheet = document.createElement('div');
     sheet.id = SHEET_ID;

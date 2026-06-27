@@ -746,10 +746,6 @@
       correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen),
       continueLabel: 'Continue'
     };
-    if (lessonState.mount) {
-      LessonExplanation.open(Object.assign({ inlineMount: lessonState.mount }, explainOpts));
-      return;
-    }
     LessonExplanation.open(explainOpts);
   }
 
