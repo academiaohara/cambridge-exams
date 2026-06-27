@@ -849,11 +849,12 @@ button.sp-example-line.sp-speakable {
 
 .sp-session-instruction {
   width: 100%;
-  max-width: 32rem;
+  max-width: 100%;
+  align-self: stretch;
   font-size: 1.25rem;
   font-weight: 800;
   color: #3c3c3c;
-  text-align: center;
+  text-align: left;
   line-height: 1.35;
   margin: 0 0 20px;
   font-family: 'Fredoka', 'Nunito', sans-serif;

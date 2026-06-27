@@ -7290,10 +7290,12 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
 }
 
 .cu-lesson-instruction {
+  width: 100%;
+  max-width: 100%;
   font-size: 1.45rem;
   font-weight: 800;
   color: #3c3c3c;
-  text-align: center;
+  text-align: left;
   line-height: 1.35;
   margin: 0;
   font-family: 'Fredoka', 'Nunito', sans-serif;
