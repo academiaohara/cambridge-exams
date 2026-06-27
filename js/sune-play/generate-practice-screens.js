@@ -5,6 +5,7 @@
   'use strict';
 
   var GAP_RE = /(?:\.{3,}|…{2,}|_{3,})/;
+  var NUMBERED_CONTEXT_GAP_RE = /\((\d+)\)\s*(?:\.{3,}|…{2,}|_{2,})/g;
 
   function warn(msg) {
     if (typeof console !== 'undefined' && console.warn) console.warn('[SunePlay] ' + msg);
@@ -79,6 +80,21 @@
 
   function buildScreenId(nodeId, exerciseId, itemId, formatType) {
     return [nodeId, exerciseId, itemId, formatType].filter(Boolean).join('__');
+  }
+
+  /**
+   * Passage exercises split into one screen per gap keep sibling gaps as context
+   * (e.g. "(3) ......"). Those markers must not become extra inputs — only the
+   * active blank (usually "____") should stay a fillable gap.
+   */
+  function prepareSinglePassageGapSentence(sentence, item, genRule) {
+    var mode = item && item.passageContextMode;
+    var screenMode = genRule && genRule.screenMode;
+    if (mode !== 'single_gap_from_passage' &&
+        screenMode !== 'passage_split_into_single_gap_screens') {
+      return sentence;
+    }
+    return String(sentence || '').replace(NUMBERED_CONTEXT_GAP_RE, '($1) \u2026');
   }
 
   function itemToPayload(formatType, item, exercise, genRule) {
@@ -164,9 +180,14 @@
           selectedVerb: item.preselectedVerb || null
         };
 
-      case 'conjugation_gap_fill':
+      case 'conjugation_gap_fill': {
+        var gapSentence = prepareSinglePassageGapSentence(
+          item.blankSentence || item.sentence || '',
+          item,
+          genRule
+        );
         return {
-          sentence: item.blankSentence || item.sentence || '',
+          sentence: gapSentence,
           sourceSentence: item.sentence || '',
           verbPrompt: item.verbPrompt || '',
           answer: item.answer,
@@ -176,6 +197,7 @@
           completedSentence: (item.sentence || '').replace(GAP_RE, item.answer || ''),
           instruction: exercise.instructions || exercise.studentInstruction || ''
         };
+      }
 
       case 'marked_error_gap_correction':
         return {
