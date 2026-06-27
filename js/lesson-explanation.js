@@ -4,6 +4,7 @@
  */
 var LessonExplanation = (function() {
   var SHEET_ID = 'lesson-explanation-sheet';
+  var INLINE_OVERLAY_ID = 'lesson-explanation-inline';
 
   function isMobile() {
     return !!(window.matchMedia && window.matchMedia('(max-width: 768px)').matches);
@@ -41,28 +42,6 @@ var LessonExplanation = (function() {
     }
   }
 
-  function captureFormState(mountEl) {
-    var fields = [];
-    if (!mountEl) return fields;
-    mountEl.querySelectorAll('input, textarea').forEach(function(el, idx) {
-      fields.push({
-        id: el.id || '',
-        idx: idx,
-        value: el.value
-      });
-    });
-    return fields;
-  }
-
-  function restoreFormState(mountEl, fields) {
-    if (!mountEl || !fields || !fields.length) return;
-    var inputs = mountEl.querySelectorAll('input, textarea');
-    fields.forEach(function(field) {
-      var el = field.id ? mountEl.querySelector('#' + field.id) : inputs[field.idx];
-      if (el) el.value = field.value;
-    });
-  }
-
   function contextBlockHtml(label, text, variant) {
     if (!text) return '';
     var blockClass = variant === 'question'
@@ -75,16 +54,6 @@ var LessonExplanation = (function() {
           esc(label) +
         '</span>' +
         '<p class="' + blockClass + '-text">' + formatBody(text) + '</p>' +
-      '</div>';
-  }
-
-  function explanationCardHtml(text) {
-    return '<div class="lesson-explanation-card">' +
-        '<div class="lesson-explanation-card-label">' +
-          '<span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>' +
-          'Why' +
-        '</div>' +
-        '<p class="lesson-explanation-text">' + formatBody(text) + '</p>' +
       '</div>';
   }
 
@@ -105,6 +74,16 @@ var LessonExplanation = (function() {
       '</div>';
   }
 
+  function explanationCardHtml(text) {
+    return '<div class="lesson-explanation-card">' +
+        '<div class="lesson-explanation-card-label">' +
+          '<span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>' +
+          'Why' +
+        '</div>' +
+        '<p class="lesson-explanation-text">' + formatBody(text) + '</p>' +
+      '</div>';
+  }
+
   function inlineExplanationCardHtml(text) {
     return '<div class="sp-explanation-inline-card sp-explanation-inline-block">' +
         '<div class="sp-explanation-inline-card-label sp-explanation-inline-block-label">' +
@@ -122,24 +101,20 @@ var LessonExplanation = (function() {
     close();
     _onClose = opts.onClose || null;
 
-    var previousHtml = mountEl.innerHTML;
-    var previousClass = mountEl.className;
-    var formState = captureFormState(mountEl);
-    _inlineRestore = function() {
-      mountEl.innerHTML = previousHtml;
-      mountEl.className = previousClass;
-      restoreFormState(mountEl, formState);
-    };
-
     var contextHtml = inlineContextBlockHtml('Question', opts.context, 'question');
     var answerHtml = inlineContextBlockHtml('Correct answer', opts.correctAnswer);
 
-    mountEl.className = (mountEl.className ? mountEl.className + ' ' : '') + 'sp-explanation-inline-mount';
+    mountEl.classList.add('sp-explanation-inline-mount');
     if (mountEl.classList.contains('sp-lesson-mount')) {
       document.body.classList.add('lesson-explanation-open');
     }
-    mountEl.innerHTML =
-      '<div class="sp-explanation-inline" role="dialog" aria-label="' + esc(opts.title || 'Explanation') + '">' +
+
+    var overlay = document.createElement('div');
+    overlay.className = 'sp-explanation-inline';
+    overlay.id = INLINE_OVERLAY_ID;
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-label', opts.title || 'Explanation');
+    overlay.innerHTML =
         '<header class="sp-explanation-inline-header">' +
           '<button type="button" class="sp-explanation-inline-close" aria-label="Close">' +
             '<span class="material-symbols-outlined">close</span>' +
@@ -157,11 +132,18 @@ var LessonExplanation = (function() {
           '<button type="button" class="sp-explanation-inline-continue">' +
             esc(opts.continueLabel || 'Continue') +
           '</button>' +
-        '</footer>' +
-      '</div>';
+        '</footer>';
 
-    mountEl.querySelector('.sp-explanation-inline-close').addEventListener('click', close);
-    mountEl.querySelector('.sp-explanation-inline-continue').addEventListener('click', close);
+    mountEl.appendChild(overlay);
+
+    _inlineRestore = function() {
+      var node = mountEl.querySelector('#' + INLINE_OVERLAY_ID);
+      if (node) node.remove();
+      mountEl.classList.remove('sp-explanation-inline-mount');
+    };
+
+    overlay.querySelector('.sp-explanation-inline-close').addEventListener('click', close);
+    overlay.querySelector('.sp-explanation-inline-continue').addEventListener('click', close);
   }
 
   function open(opts) {

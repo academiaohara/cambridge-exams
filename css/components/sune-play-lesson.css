@@ -1384,9 +1384,20 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-explanation-inline-mount {
+  position: relative;
   min-height: 280px;
-  display: flex;
-  flex-direction: column;
+}
+
+.sp-explanation-inline-mount > :not(.sp-explanation-inline) {
+  pointer-events: none;
+}
+
+.sp-explanation-inline-mount > .sp-explanation-inline {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  min-height: 0;
+  height: 100%;
 }
 
 .sp-lesson-mount.sp-explanation-inline-mount {
@@ -1426,10 +1437,7 @@ button.sp-example-line.sp-speakable {
   animation: spExplanationInlineIn 0.3s cubic-bezier(0.34, 1.1, 0.64, 1) both;
 }
 
-.sp-lesson-mount.sp-explanation-inline-mount .sp-explanation-inline {
-  flex: 1 1 0;
-  min-height: 0;
-  height: 100%;
+.sp-lesson-mount.sp-explanation-inline-mount > .sp-explanation-inline {
   border-radius: 20px;
 }
 
@@ -1733,7 +1741,7 @@ button.sp-example-line.sp-speakable {
     animation: lessonExplanationIn 0.28s ease-out;
   }
 
-  .sp-lesson-mount.sp-explanation-inline-mount .sp-explanation-inline {
+  .sp-lesson-mount.sp-explanation-inline-mount > .sp-explanation-inline {
     border-radius: 0;
     border: none;
     box-shadow: none;

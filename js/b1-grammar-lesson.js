@@ -997,12 +997,7 @@
           explanation: result.explanation,
           correctAnswer: result.correct ? '' : result.correctAnswer,
           continueLabel: 'Back',
-          inlineMount: stepContent || null,
-          onClose: function() {
-            if (state && state.steps[state.stepIdx]) {
-              bindExercise(state.root, state.steps[state.stepIdx]);
-            }
-          }
+          inlineMount: stepContent || null
         });
       });
     }
