@@ -132,19 +132,14 @@ var LessonExplanation = (function() {
       document.body.classList.add('lesson-explanation-open');
     }
     mountEl.innerHTML =
-      '<div class="sp-explanation-inline" role="dialog" aria-labelledby="sp-explanation-inline-title">' +
+      '<div class="sp-explanation-inline" role="dialog" aria-label="' + esc(opts.title || 'Explanation') + '">' +
         '<header class="sp-explanation-inline-header">' +
           '<button type="button" class="sp-explanation-inline-close" aria-label="Close">' +
             '<span class="material-symbols-outlined">close</span>' +
           '</button>' +
-          '<div class="sp-explanation-inline-header-main">' +
-            '<span class="sp-explanation-inline-hero" aria-hidden="true">' +
-              '<span class="material-symbols-outlined">menu_book</span>' +
-            '</span>' +
-            '<h2 class="sp-explanation-inline-title" id="sp-explanation-inline-title">' +
-              esc(opts.title || 'Explanation') +
-            '</h2>' +
-          '</div>' +
+          '<span class="sp-explanation-inline-header-icon" aria-hidden="true">' +
+            '<span class="material-symbols-outlined">menu_book</span>' +
+          '</span>' +
         '</header>' +
         '<div class="sp-explanation-inline-body">' +
           contextHtml +
@@ -176,7 +171,7 @@ var LessonExplanation = (function() {
       (opts.compact ? ' lesson-explanation-sheet--compact' : '');
     sheet.setAttribute('role', 'dialog');
     sheet.setAttribute('aria-modal', 'true');
-    sheet.setAttribute('aria-labelledby', 'lesson-explanation-title');
+    sheet.setAttribute('aria-label', 'Explanation');
 
     var contextHtml = contextBlockHtml('Question', opts.context, 'question');
     var answerHtml = contextBlockHtml('Correct answer', opts.correctAnswer);
@@ -190,14 +185,9 @@ var LessonExplanation = (function() {
           '<button type="button" class="lesson-explanation-back" aria-label="' + closeAria + '">' +
             '<span class="material-symbols-outlined">' + closeLabel + '</span>' +
           '</button>' +
-          '<div class="lesson-explanation-header-center">' +
-            '<span class="lesson-explanation-hero" aria-hidden="true">' +
-              '<span class="material-symbols-outlined">menu_book</span>' +
-            '</span>' +
-            '<h2 class="lesson-explanation-title" id="lesson-explanation-title">' +
-              esc(opts.title || 'Explain my answer') +
-            '</h2>' +
-          '</div>' +
+          '<span class="lesson-explanation-header-icon" aria-hidden="true">' +
+            '<span class="material-symbols-outlined">menu_book</span>' +
+          '</span>' +
         '</header>' +
         '<div class="lesson-explanation-body">' +
           contextHtml +
