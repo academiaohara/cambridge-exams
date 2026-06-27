@@ -1124,14 +1124,9 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-prompt-row--gap {
-  justify-content: center;
+  display: block;
+  text-align: center;
   width: 100%;
-}
-
-.sp-prompt-row--gap .sp-prompt-sentence--inline-gap {
-  text-align: left;
-  display: inline-block;
-  max-width: 100%;
 }
 
 .sp-prompt-sentence--inline-gap {
@@ -1139,6 +1134,12 @@ button.sp-example-line.sp-speakable {
   line-height: 1.8;
   margin: 0;
   max-width: 100%;
+  display: inline-block;
+  text-align: left;
+}
+
+.sp-prompt-row--gap .sp-prompt-sentence--inline-gap {
+  flex: none;
 }
 
 .sp-prompt-sentence--multi-gap .sp-gap-verb-ref--trailing {
@@ -1862,6 +1863,10 @@ button.sp-example-line.sp-speakable {
 
 .sp-prompt-sentence--error-gap {
   margin: 0;
+}
+
+.sp-prompt-row--error .sp-prompt-sentence--inline-gap {
+  flex: none;
 }
 
 .sp-error-mark {
