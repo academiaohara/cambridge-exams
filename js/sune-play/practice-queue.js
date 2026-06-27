@@ -151,10 +151,12 @@
       if (payload.verbPrompt) {
         wrong = payload.verbPrompt.indexOf('not') !== -1 ? "aren't watching" : 'plays';
       }
+      var options = [wrong, correct].filter(function(v, i, a) { return a.indexOf(v) === i; }).slice(0, 2);
+      options = options.slice().sort(function() { return Math.random() - 0.5; });
       return Object.assign({}, payload, {
         sentenceBefore: (payload.sentence || '').split(/\.{3,}|…{2,}|_{3,}/)[0] || '',
         sentenceAfter: (payload.sentence || '').split(/\.{3,}|…{2,}|_{3,}/)[1] || '',
-        options: [wrong, correct].filter(function(v, i, a) { return a.indexOf(v) === i; }).slice(0, 2),
+        options: options,
         answer: correct,
         completedSentence: payload.completedSentence || payload.sentence
       });
