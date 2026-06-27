@@ -105,7 +105,7 @@ var LessonExplanation = (function() {
     var answerHtml = inlineContextBlockHtml('Correct answer', opts.correctAnswer);
 
     mountEl.classList.add('sp-explanation-inline-mount');
-    if (mountEl.classList.contains('sp-lesson-mount')) {
+    if (mountEl.classList.contains('sp-lesson-mount') || mountEl.classList.contains('sp-practice-session')) {
       document.body.classList.add('lesson-explanation-open');
     }
 

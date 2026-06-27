@@ -1400,6 +1400,12 @@ button.sp-example-line.sp-speakable {
   height: 100%;
 }
 
+.sp-practice-session.sp-explanation-inline-mount {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+}
+
 .sp-lesson-mount.sp-explanation-inline-mount {
   flex: 1 1 0;
   min-height: 0;
@@ -1408,6 +1414,10 @@ button.sp-example-line.sp-speakable {
   padding: 0;
   display: flex;
   flex-direction: column;
+}
+
+.sp-practice-session.sp-explanation-inline-mount > .sp-explanation-inline {
+  border-radius: 20px;
 }
 
 @keyframes spExplanationInlineIn {
@@ -1429,10 +1439,10 @@ button.sp-example-line.sp-speakable {
   min-height: 300px;
   border-radius: 24px;
   background: #ffffff;
-  border: 2.5px solid #1cb0f6;
+  border: 2.5px solid #ff9600;
   border-bottom-width: 5px;
-  border-bottom-color: #1899d6;
-  box-shadow: 0 6px 0 #1899d6, 0 16px 48px rgba(28, 176, 246, 0.16);
+  border-bottom-color: #e68600;
+  box-shadow: 0 6px 0 #e68600, 0 16px 48px rgba(255, 150, 0, 0.16);
   overflow: hidden;
   animation: spExplanationInlineIn 0.3s cubic-bezier(0.34, 1.1, 0.64, 1) both;
 }
@@ -1448,8 +1458,8 @@ button.sp-example-line.sp-speakable {
   align-items: center;
   justify-content: space-between;
   padding: 12px 14px;
-  border-bottom: 2px solid #f0f0f0;
-  background: #ffffff;
+  border-bottom: 2px solid #ffe0b8;
+  background: #fffaf3;
   flex-shrink: 0;
 }
 
@@ -1489,7 +1499,7 @@ button.sp-example-line.sp-speakable {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #1cb0f6;
+  background: #ff9600;
   color: #ffffff;
   flex-shrink: 0;
 }
@@ -1561,21 +1571,21 @@ button.sp-example-line.sp-speakable {
 .sp-explanation-inline .lesson-explanation-question {
   padding: 14px 16px;
   border-radius: 16px;
-  background: #edf8ff;
-  border: 2.5px solid #1cb0f6;
+  background: #fff4e6;
+  border: 2.5px solid #ff9600;
   border-bottom-width: 4px;
-  border-bottom-color: #1899d6;
-  box-shadow: 0 4px 0 #1899d6;
+  border-bottom-color: #e68600;
+  box-shadow: 0 4px 0 #e68600;
 }
 
 .sp-explanation-inline .lesson-explanation-question .sp-explanation-inline-block-label {
-  background: #1cb0f6;
-  border-color: #1899d6;
-  border-bottom-color: #1478ab;
+  background: #ff9600;
+  border-color: #e68600;
+  border-bottom-color: #cc6f00;
 }
 
 .sp-explanation-inline .lesson-explanation-question .sp-explanation-inline-block-icon {
-  color: #1cb0f6;
+  color: #ff9600;
 }
 
 .sp-explanation-inline .lesson-explanation-question-text {
@@ -1588,10 +1598,10 @@ button.sp-example-line.sp-speakable {
   line-height: 1.45;
   color: #1f2937;
   background: #ffffff;
-  border: 2px solid #b8e8fc;
+  border: 2px solid #ffc266;
   border-bottom-width: 3px;
-  border-bottom-color: #7ec8e4;
-  box-shadow: 0 2px 0 rgba(28, 176, 246, 0.14);
+  border-bottom-color: #e68600;
+  box-shadow: 0 2px 0 rgba(255, 150, 0, 0.14);
 }
 
 /* ── Answer block ─────────────────────────────────────────────────────────── */
@@ -1692,8 +1702,8 @@ button.sp-example-line.sp-speakable {
 .sp-explanation-inline-footer {
   flex-shrink: 0;
   padding: 14px 16px 18px;
-  border-top: 2px solid #f0f0f0;
-  background: #ffffff;
+  border-top: 2px solid #ffe0b8;
+  background: #fffaf3;
 }
 
 .sp-explanation-inline-continue {
@@ -1727,41 +1737,22 @@ button.sp-example-line.sp-speakable {
 /* ── Mobile full-screen overrides ────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  .sp-lesson-mount.sp-explanation-inline-mount {
-    position: fixed;
-    inset: 0;
-    z-index: 12000;
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    height: 100dvh;
-    max-height: 100dvh;
-    background: #ffffff;
-    animation: lessonExplanationIn 0.28s ease-out;
+  .sp-practice-session.sp-explanation-inline-mount > .sp-explanation-inline {
+    border-radius: 16px;
   }
 
-  .sp-lesson-mount.sp-explanation-inline-mount > .sp-explanation-inline {
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-    height: 100%;
-    max-height: 100dvh;
-    animation: none;
-  }
-
-  .sp-lesson-mount.sp-explanation-inline-mount .sp-explanation-inline-header {
+  .sp-practice-session.sp-explanation-inline-mount .sp-explanation-inline-header {
     padding: 12px 16px;
     padding-top: calc(12px + env(safe-area-inset-top, 0px));
   }
 
-  .sp-lesson-mount.sp-explanation-inline-mount .sp-explanation-inline-footer {
+  .sp-practice-session.sp-explanation-inline-mount .sp-explanation-inline-footer {
     padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   }
 }
 
-.dashboard-layout--lesson-focus .sp-lesson-mount.sp-explanation-inline-mount {
-  padding: 0;
+.dashboard-layout--lesson-focus .sp-practice-session.sp-explanation-inline-mount {
+  min-height: 0;
   max-height: 100%;
 }
 

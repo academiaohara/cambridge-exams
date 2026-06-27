@@ -746,6 +746,11 @@
       correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen),
       continueLabel: 'Continue'
     };
+    var sessionEl = lessonState.mount && lessonState.mount.querySelector('.sp-practice-session');
+    if (sessionEl) {
+      LessonExplanation.open(Object.assign({ inlineMount: sessionEl }, explainOpts));
+      return;
+    }
     if (lessonState.mount) {
       LessonExplanation.open(Object.assign({ inlineMount: lessonState.mount }, explainOpts));
       return;
