@@ -2075,6 +2075,65 @@ button.sp-example-line.sp-speakable {
   padding: 0 2px;
 }
 
+.sp-hunt-marked {
+  background: rgba(220, 80, 80, 0.14);
+  border-radius: 4px;
+  padding: 0 2px;
+}
+
+.sp-hunt-marked-wrong {
+  text-decoration: line-through;
+  color: #c0392b;
+  font-weight: 600;
+}
+
+.sp-hunt-selected-slot--marked {
+  border-color: rgba(220, 80, 80, 0.35);
+  background: rgba(220, 80, 80, 0.08);
+}
+
+.sp-hunt-selected-slot--marked .sp-hunt-selected-text {
+  color: #c0392b;
+}
+
+.sp-hunt-fix-wrong {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: var(--text);
+}
+
+.sp-hunt-fix-wrong s {
+  color: #c0392b;
+}
+
+.sp-screen--guided-error .sp-guided-progress {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--sp-primary, var(--primary));
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.sp-screen--guided-error .sp-guided-prompt {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+.sp-screen--guided-error .sp-guided-wrong {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+.sp-screen--guided-error .sp-guided-wrong s {
+  color: #c0392b;
+  text-decoration: line-through;
+}
+
 .sp-hunt-reveal {
   display: inline;
 }

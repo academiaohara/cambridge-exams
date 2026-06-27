@@ -248,6 +248,7 @@
       case 'verb_bank_two_step': return renderVerbBankTwoStep(screen);
       case 'passage_error_hunt_single': return renderPassageHunt(screen);
       case 'passage_error_hunt_counter': return renderPassageHuntCounter(screen);
+      case 'guided_error_choice': return renderGuidedErrorChoice(screen);
       case 'stative_sorting': return renderStativeSorting(screen);
       case 'meaning_contrast': return renderMeaningContrast(screen);
       case 'preselected_verb_gap_fill': return renderGapFill(screen);
@@ -525,7 +526,7 @@
 
   function buildCounterHuntPassageHtml(passage, items, state) {
     var fixed = (state && state.fixed) || {};
-    var revealIdx = state && state.revealIdx;
+    var marked = (state && state.marked) || {};
     var pending = (state && state.pendingWordIndices) || [];
     var tokens = tokenizePassageWords(passage);
     var overlays = [];
@@ -540,14 +541,13 @@
           type: 'fixed',
           html: '<span class="sp-hunt-corrected">' + esc(fixed[idx].correction) + '</span>'
         });
-      } else if (revealIdx === idx) {
+      } else if (marked[idx]) {
         overlays.push({
           start: range.start,
           end: range.end,
-          type: 'reveal',
-          html: '<span class="sp-hunt-reveal">' +
-            '<s class="sp-hunt-reveal-wrong">' + esc(it.wrong || it.targetPhrase || '') + '</s> ' +
-            '<span class="sp-hunt-reveal-correct">' + esc(getItemCorrection(it)) + '</span></span>'
+          type: 'marked',
+          html: '<span class="sp-hunt-marked"><s class="sp-hunt-marked-wrong">' +
+            esc(passage.slice(range.start, range.end)) + '</s></span>'
         });
       }
     });
@@ -641,17 +641,41 @@
     var items = p.items || [];
     var target = (p.counter && p.counter.target) || p.errorCount || items.length;
     var passage = p.passage || '';
+    var saved = screen._huntState || {};
     var passageHtml = buildCounterHuntPassageHtml(passage, items, {
-      fixed: {},
-      revealIdx: null,
-      pendingWordIndices: []
+      fixed: saved.fixed || {},
+      marked: saved.marked || {},
+      pendingWordIndices: saved.pendingWordIndices || []
     });
 
     return '<div class="sp-screen sp-screen--hunt sp-screen--hunt-counter" data-format="passage_error_hunt_counter">' +
-      '<div class="sp-hunt-counter"><span id="sp-hunt-found">0</span>/' + target + ' errors found</div>' +
+      '<div class="sp-hunt-counter" id="sp-hunt-phase-label">' +
+        '<span id="sp-hunt-found">' + Object.keys(saved.marked || {}).length + '</span>/' + target + ' errors marked' +
+      '</div>' +
       '<div class="sp-passage-card" id="sp-passage-text">' + passageHtml + '</div>' +
+      '<div class="sp-hunt-correction" id="sp-hunt-correction" hidden></div>' +
       renderHuntSelectedPanelSlots(target) +
     '</div>';
+  }
+
+  function renderGuidedErrorChoice(screen) {
+    var p = screen.payload || {};
+    var items = p.items || [];
+    var idx = screen._guidedIdx || 0;
+    var item = items[idx];
+    if (!item) return '<p class="sp-empty">No items loaded.</p>';
+
+    var wrong = item.wrong || item.targetPhrase || '';
+    var html = '<div class="sp-screen sp-screen--guided-error" data-format="guided_error_choice">';
+    html += '<div class="sp-guided-progress">' + (idx + 1) + '/' + items.length + '</div>';
+    html += '<p class="sp-guided-prompt">Choose the correct form:</p>';
+    html += '<p class="sp-guided-wrong"><s>' + esc(wrong) + '</s></p>';
+    html += '<div class="sp-option-grid">';
+    (item.options || []).forEach(function(opt, i) {
+      html += renderOptionBtn(opt, i);
+    });
+    html += '</div></div>';
+    return html;
   }
 
   function renderStativeSorting(screen) {
@@ -787,6 +811,17 @@
 
     if (format === 'passage_error_hunt_counter') {
       bindPassageHuntCounter(root, screen, onChange);
+    }
+
+    if (format === 'guided_error_choice') {
+      root.querySelectorAll('.sp-option-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          if (root.classList.contains('sp-screen--locked')) return;
+          root.querySelectorAll('.sp-option-btn').forEach(function(b) { b.classList.remove('sp-option-btn--selected'); });
+          btn.classList.add('sp-option-btn--selected');
+          onChange();
+        });
+      });
     }
 
     if (format === 'stative_sorting') {
@@ -940,115 +975,230 @@
     renderSelectedList();
   }
 
+  function syncHuntStateToScreen(screen, root) {
+    if (!screen || !root) return;
+    screen._huntState = {
+      phase: root._huntPhase,
+      marked: root._huntMarked,
+      fixed: root._huntFixed,
+      foundEntries: root._huntFoundEntries,
+      correctQueue: root._huntCorrectQueue,
+      correctCursor: root._huntCorrectCursor,
+      pendingWordIndices: root._huntPendingIndices
+    };
+  }
+
+  function restoreHuntStateFromScreen(screen, root) {
+    var saved = screen && screen._huntState;
+    if (!saved) return;
+    root._huntPhase = saved.phase || 'mark';
+    root._huntMarked = saved.marked || {};
+    root._huntFixed = saved.fixed || {};
+    root._huntFoundEntries = saved.foundEntries || [];
+    root._huntCorrectQueue = saved.correctQueue || [];
+    root._huntCorrectCursor = saved.correctCursor || 0;
+    root._huntPendingIndices = saved.pendingWordIndices || [];
+  }
+
   function bindPassageHuntCounter(root, screen, onChange) {
     var p = screen.payload || {};
     var items = p.items || [];
     var passage = p.passage || '';
     var target = (p.counter && p.counter.target) || p.errorCount || items.length;
-    var counterEl = root.querySelector('#sp-hunt-found');
+    var phaseLabelEl = root.querySelector('#sp-hunt-phase-label');
     var passageEl = root.querySelector('#sp-passage-text');
     var selectedList = root.querySelector('#sp-hunt-selected-list');
+    var correctionEl = root.querySelector('#sp-hunt-correction');
     var tokens = tokenizePassageWords(passage);
-    var fixed = {};
-    var foundEntries = [];
-    var pendingWordIndices = [];
 
-    root._huntFixed = fixed;
-    root._huntFoundEntries = foundEntries;
-    root._huntPendingIndices = pendingWordIndices;
-    root._huntRevealIdx = null;
-    root._huntPhase = 'select';
     root._huntTokens = tokens;
+    restoreHuntStateFromScreen(screen, root);
+
+    if (!root._huntMarked) root._huntMarked = {};
+    if (!root._huntFixed) root._huntFixed = {};
+    if (!root._huntFoundEntries) root._huntFoundEntries = [];
+    if (!root._huntCorrectQueue) root._huntCorrectQueue = [];
+    if (root._huntCorrectCursor == null) root._huntCorrectCursor = 0;
+    if (!root._huntPendingIndices) root._huntPendingIndices = [];
+    if (!root._huntPhase) root._huntPhase = 'mark';
+
+    function markedCount() {
+      return Object.keys(root._huntMarked).length;
+    }
 
     function fixedCount() {
-      return Object.keys(fixed).length;
+      return Object.keys(root._huntFixed).length;
     }
 
     function getPendingText() {
-      return getSelectionTextFromIndices(passage, tokens, pendingWordIndices);
+      return getSelectionTextFromIndices(passage, tokens, root._huntPendingIndices);
+    }
+
+    function updatePhaseLabel() {
+      if (!phaseLabelEl) return;
+      if (root._huntPhase === 'mark') {
+        phaseLabelEl.innerHTML = '<span id="sp-hunt-found">' + markedCount() + '</span>/' + target + ' errors marked';
+      } else if (root._huntPhase === 'correct') {
+        phaseLabelEl.textContent = 'Correct error ' + (root._huntCorrectCursor + 1) + ' of ' + target;
+      } else if (root._huntPhase === 'done') {
+        phaseLabelEl.textContent = target + '/' + target + ' errors corrected';
+      }
     }
 
     function renderPassage() {
       if (!passageEl) return;
       passageEl.innerHTML = buildCounterHuntPassageHtml(passage, items, {
-        fixed: fixed,
-        revealIdx: root._huntRevealIdx,
-        pendingWordIndices: pendingWordIndices
+        fixed: root._huntFixed,
+        marked: root._huntMarked,
+        pendingWordIndices: root._huntPendingIndices
       });
       bindWordClicks();
-    }
-
-    function slotDisplayText(entry) {
-      if (fixed[entry.itemIdx] && fixed[entry.itemIdx].correction) {
-        return fixed[entry.itemIdx].correction;
-      }
-      if (root._huntRevealIdx === entry.itemIdx) {
-        var revealItem = items[entry.itemIdx];
-        if (revealItem) return getItemCorrection(revealItem);
-      }
-      return entry.text;
     }
 
     function renderSlots() {
       if (!selectedList) return;
       var html = '';
-      foundEntries.forEach(function(entry, i) {
-        html += '<li class="sp-hunt-selected-slot sp-hunt-selected-slot--correct">' +
-          '<span class="sp-hunt-selected-num">' + (i + 1) + '.</span> ' +
-          '<span class="sp-hunt-selected-text">' + esc(slotDisplayText(entry)) + '</span></li>';
-      });
-      if (fixedCount() < target && root._huntPhase !== 'reveal') {
-        var slotNum = fixedCount() + 1;
-        var pendingText = getPendingText();
-        var slotCls = 'sp-hunt-selected-slot';
-        if (!pendingText) slotCls += ' sp-hunt-selected-slot--empty';
-        else slotCls += ' sp-hunt-selected-slot--pending';
-        html += '<li class="' + slotCls + '">' +
-          '<span class="sp-hunt-selected-num">' + slotNum + '.</span> ' +
-          '<span class="sp-hunt-selected-text' + (!pendingText ? ' sp-hunt-selected-placeholder' : '') + '">' +
-          esc(pendingText || '—') + '</span></li>';
+      if (root._huntPhase === 'mark') {
+        root._huntFoundEntries.forEach(function(entry, i) {
+          html += '<li class="sp-hunt-selected-slot sp-hunt-selected-slot--marked">' +
+            '<span class="sp-hunt-selected-num">' + (i + 1) + '.</span> ' +
+            '<span class="sp-hunt-selected-text"><s>' + esc(entry.text) + '</s></span></li>';
+        });
+        if (markedCount() < target) {
+          var pendingText = getPendingText();
+          var slotCls = 'sp-hunt-selected-slot';
+          if (!pendingText) slotCls += ' sp-hunt-selected-slot--empty';
+          else slotCls += ' sp-hunt-selected-slot--pending';
+          html += '<li class="' + slotCls + '">' +
+            '<span class="sp-hunt-selected-num">' + (markedCount() + 1) + '.</span> ' +
+            '<span class="sp-hunt-selected-text' + (!pendingText ? ' sp-hunt-selected-placeholder' : '') + '">' +
+            esc(pendingText || '—') + '</span></li>';
+        }
+      } else {
+        root._huntCorrectQueue.forEach(function(itemIdx, i) {
+          var entry = items[itemIdx];
+          if (!entry) return;
+          var wrong = entry.wrong || entry.targetPhrase || '';
+          var isFixed = !!root._huntFixed[itemIdx];
+          var isCurrent = i === root._huntCorrectCursor && !isFixed;
+          var cls = 'sp-hunt-selected-slot';
+          if (isFixed) cls += ' sp-hunt-selected-slot--correct';
+          else if (isCurrent) cls += ' sp-hunt-selected-slot--pending';
+          else cls += ' sp-hunt-selected-slot--empty';
+          var display = isFixed
+            ? esc(root._huntFixed[itemIdx].correction)
+            : '<s>' + esc(wrong) + '</s>';
+          html += '<li class="' + cls + '">' +
+            '<span class="sp-hunt-selected-num">' + (i + 1) + '.</span> ' +
+            '<span class="sp-hunt-selected-text">' + display + '</span></li>';
+        });
       }
       selectedList.innerHTML = html;
     }
 
-    function updateCounter() {
-      if (counterEl) counterEl.textContent = String(fixedCount());
+    function showCorrectionUI() {
+      if (!correctionEl) return;
+      var idx = root._huntCorrectQueue[root._huntCorrectCursor];
+      var item = items[idx];
+      if (!item) {
+        correctionEl.hidden = true;
+        return;
+      }
+      var wrong = item.wrong || item.targetPhrase || '';
+      correctionEl.hidden = false;
+      correctionEl.innerHTML =
+        '<p class="sp-hunt-fix-label">Type the correction for:</p>' +
+        '<p class="sp-hunt-fix-wrong"><s>' + esc(wrong) + '</s></p>' +
+        '<input type="text" class="sp-text-input" id="sp-hunt-fix-input" ' +
+        'placeholder="Type the correction" autocomplete="off" autocapitalize="off" spellcheck="false">';
+      var fixInput = correctionEl.querySelector('#sp-hunt-fix-input');
+      if (fixInput) {
+        fixInput.addEventListener('input', onChange);
+        fixInput.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && !root.classList.contains('sp-screen--locked')) {
+            e.preventDefault();
+            var actionBtn = document.getElementById('sp-action-btn');
+            if (actionBtn && !actionBtn.disabled) actionBtn.click();
+          }
+        });
+        setTimeout(function() { fixInput.focus(); }, 0);
+      }
+    }
+
+    function hideCorrectionUI() {
+      if (correctionEl) {
+        correctionEl.hidden = true;
+        correctionEl.innerHTML = '';
+      }
+    }
+
+    function beginCorrectionPhase() {
+      root._huntPhase = 'correct';
+      root._huntCorrectQueue = root._huntFoundEntries.map(function(entry) { return entry.itemIdx; });
+      root._huntCorrectCursor = 0;
+      root._huntPendingIndices = [];
+      hideCorrectionUI();
+      showCorrectionUI();
+      updatePhaseLabel();
+      renderSlots();
+      renderPassage();
+      syncHuntStateToScreen(screen, root);
+      onChange();
+    }
+
+    function advanceCorrection() {
+      if (root._huntCorrectCursor < root._huntCorrectQueue.length - 1) {
+        root._huntCorrectCursor += 1;
+        showCorrectionUI();
+        updatePhaseLabel();
+        renderSlots();
+        renderPassage();
+        onChange();
+        return false;
+      }
+      root._huntPhase = 'done';
+      hideCorrectionUI();
+      updatePhaseLabel();
+      renderSlots();
+      renderPassage();
+      onChange();
+      return true;
     }
 
     function refresh() {
       renderPassage();
       renderSlots();
-      updateCounter();
+      updatePhaseLabel();
+      syncHuntStateToScreen(screen, root);
       onChange();
     }
 
     function clearPending() {
-      pendingWordIndices = [];
-      root._huntPendingIndices = pendingWordIndices;
+      root._huntPendingIndices = [];
     }
 
     function handleWordClick(wordIdx) {
-      if (root._huntPhase !== 'select' || root.classList.contains('sp-screen--locked')) return;
+      if (root._huntPhase !== 'mark' || root.classList.contains('sp-screen--locked')) return;
 
-      var pos = pendingWordIndices.indexOf(wordIdx);
+      var pos = root._huntPendingIndices.indexOf(wordIdx);
       if (pos !== -1) {
-        pendingWordIndices = pendingWordIndices.slice(0, pos);
-      } else if (!pendingWordIndices.length) {
-        pendingWordIndices = [wordIdx];
+        root._huntPendingIndices = root._huntPendingIndices.slice(0, pos);
+      } else if (!root._huntPendingIndices.length) {
+        root._huntPendingIndices = [wordIdx];
       } else {
-        var min = pendingWordIndices[0];
-        var max = pendingWordIndices[pendingWordIndices.length - 1];
+        var min = root._huntPendingIndices[0];
+        var max = root._huntPendingIndices[root._huntPendingIndices.length - 1];
         if (wordIdx === max + 1) {
-          pendingWordIndices = pendingWordIndices.concat([wordIdx]);
+          root._huntPendingIndices = root._huntPendingIndices.concat([wordIdx]);
         } else if (wordIdx === min - 1) {
-          pendingWordIndices = [wordIdx].concat(pendingWordIndices);
+          root._huntPendingIndices = [wordIdx].concat(root._huntPendingIndices);
         } else {
-          pendingWordIndices = [wordIdx];
+          root._huntPendingIndices = [wordIdx];
         }
       }
-      root._huntPendingIndices = pendingWordIndices;
       renderSlots();
       renderPassage();
+      syncHuntStateToScreen(screen, root);
       onChange();
     }
 
@@ -1070,12 +1220,12 @@
       });
     }
 
-    root._huntValidateSelection = function() {
-      if (root._huntPhase !== 'select') return { handled: false };
+    root._huntValidateMark = function() {
+      if (root._huntPhase !== 'mark') return { handled: false };
       var selectionText = getPendingText();
       if (!selectionText) return { handled: true, noop: true };
 
-      var matchedIdx = matchSelectionToItem(selectionText, items, fixed);
+      var matchedIdx = matchSelectionToItem(selectionText, items, root._huntMarked);
       if (matchedIdx === -1) {
         shakePendingSelection();
         clearPending();
@@ -1084,85 +1234,143 @@
           handled: true,
           correct: false,
           lifeLoss: 1,
+          userAnswer: selectionText,
+          correctAnswer: '',
           explanation: 'That phrase is not one of the errors. Keep looking.'
         };
       }
 
       var item = items[matchedIdx];
-      var wrong = item.wrong || item.targetPhrase || '';
-      foundEntries.push({ itemIdx: matchedIdx, text: selectionText });
-      root._huntRevealIdx = matchedIdx;
-      root._huntPhase = 'reveal';
+      root._huntMarked[matchedIdx] = {
+        wrong: item.wrong || item.targetPhrase || '',
+        text: selectionText
+      };
+      root._huntFoundEntries.push({ itemIdx: matchedIdx, text: selectionText });
       clearPending();
       refresh();
+
+      var allMarked = markedCount() >= target;
+      if (allMarked) {
+        beginCorrectionPhase();
+        return {
+          handled: true,
+          correct: true,
+          markOnly: true,
+          phaseTransition: 'correct',
+          userAnswer: selectionText,
+          explanation: 'Great! Now correct each marked error one by one.'
+        };
+      }
+
+      return {
+        handled: true,
+        correct: true,
+        markOnly: true,
+        userAnswer: selectionText,
+        explanation: item.explanation || ''
+      };
+    };
+
+    root._huntValidateCorrection = function() {
+      if (root._huntPhase !== 'correct') return { handled: false };
+      var idx = root._huntCorrectQueue[root._huntCorrectCursor];
+      var item = items[idx];
+      if (!item) return { handled: false };
+
+      var fixInp = root.querySelector('#sp-hunt-fix-input');
+      var fixVal = fixInp ? fixInp.value.trim() : '';
+      if (!fixVal) return { handled: true, noop: true };
+
+      var expected = getItemCorrection(item);
+      var isCorrect = norm.matchesAnyAccepted(fixVal, item);
+      if (!isCorrect) {
+        return {
+          handled: true,
+          correct: false,
+          lifeLoss: 1,
+          userAnswer: fixVal,
+          correctAnswer: expected,
+          explanation: item.explanation || ''
+        };
+      }
+
+      root._huntFixed[idx] = {
+        correction: fixVal,
+        wrong: item.wrong || item.targetPhrase || ''
+      };
+      syncHuntStateToScreen(screen, root);
+      renderPassage();
+      renderSlots();
+
+      var allDone = fixedCount() >= target;
+      if (allDone) {
+        root._huntPhase = 'done';
+        hideCorrectionUI();
+        updatePhaseLabel();
+        syncHuntStateToScreen(screen, root);
+        return {
+          handled: true,
+          correct: true,
+          allDone: true,
+          _huntProgress: true,
+          userAnswer: fixVal,
+          correctAnswer: expected,
+          explanation: item.explanation || p.explanation || 'You found and corrected all the tense mistakes in the passage.'
+        };
+      }
 
       return {
         handled: true,
         correct: true,
         partial: true,
-        reveal: true,
-        itemIdx: matchedIdx,
-        userAnswer: selectionText,
-        correctAnswer: wrong,
+        _huntProgress: true,
+        userAnswer: fixVal,
+        correctAnswer: expected,
         explanation: item.explanation || ''
       };
     };
 
-    root._huntCommitReveal = function() {
-      if (root._huntPhase !== 'reveal' || root._huntRevealIdx == null) {
-        return { handled: false };
-      }
-
-      var idx = root._huntRevealIdx;
-      var item = items[idx];
-      fixed[idx] = {
-        correction: getItemCorrection(item),
-        wrong: item.wrong || item.targetPhrase || ''
-      };
-      root._huntRevealIdx = null;
-      root._huntPhase = 'select';
-
-      var allDone = fixedCount() >= target;
-      if (allDone) root._huntPhase = 'done';
-
-      refresh();
-
-      return {
-        handled: true,
-        allDone: allDone,
-        correct: allDone,
-        explanation: allDone
-          ? (p.explanation || 'You found and corrected all the tense mistakes in the passage.')
-          : '',
-        userAnswer: String(fixedCount()) + '/' + target + ' errors found'
-      };
+    root._huntAdvanceCorrection = function() {
+      return advanceCorrection();
     };
+
+    if (root._huntPhase === 'correct') {
+      showCorrectionUI();
+    } else {
+      hideCorrectionUI();
+    }
 
     refresh();
   }
 
   function processPassageHuntCounterCheck(root, screen, callback) {
     callback = callback || function() {};
-    if (!root || root._huntPhase === 'reveal') {
+    if (!root) {
       callback({ handled: false });
       return;
     }
-    if (typeof root._huntValidateSelection !== 'function') {
-      callback({ handled: false });
+    if (root._huntPhase === 'mark' && typeof root._huntValidateMark === 'function') {
+      callback(root._huntValidateMark());
       return;
     }
-    var result = root._huntValidateSelection();
-    callback(result);
+    if (root._huntPhase === 'correct' && typeof root._huntValidateCorrection === 'function') {
+      callback(root._huntValidateCorrection());
+      return;
+    }
+    callback({ handled: false });
   }
 
-  function commitHuntCounterReveal(root, screen, callback) {
-    callback = callback || function() {};
-    if (!root || typeof root._huntCommitReveal !== 'function') {
-      callback({ handled: false });
-      return;
-    }
-    var result = root._huntCommitReveal();
-    callback(result);
+  function resumeHuntCounterAfterFeedback(root, screen) {
+    if (!root || !screen) return;
+    root.classList.remove('sp-screen--locked');
+    syncHuntStateToScreen(screen, root);
+  }
+
+  function advanceHuntCorrectionAfterFeedback(root, screen) {
+    if (!root || typeof root._huntAdvanceCorrection !== 'function') return false;
+    var done = root._huntAdvanceCorrection();
+    syncHuntStateToScreen(screen || root._spScreen, root);
+    return done;
   }
 
   function lockSortPoolHeight(pool) {
@@ -1387,8 +1595,17 @@
     }
     if (f === 'passage_error_hunt_counter') {
       if (root._huntPhase === 'done') return false;
-      if (root._huntPhase === 'reveal') return true;
-      return root._huntPendingIndices && root._huntPendingIndices.length > 0;
+      if (root._huntPhase === 'mark') {
+        return root._huntPendingIndices && root._huntPendingIndices.length > 0;
+      }
+      if (root._huntPhase === 'correct') {
+        var fix = root.querySelector('#sp-hunt-fix-input');
+        return fix && !!fix.value.trim();
+      }
+      return false;
+    }
+    if (f === 'guided_error_choice') {
+      return !!root.querySelector('.sp-option-btn--selected');
     }
     if (f === 'stative_sorting') {
       return root.querySelectorAll('.sp-sort-dropzone .sp-sort-verb').length > 0;
@@ -1534,12 +1751,23 @@
         break;
       }
       case 'passage_error_hunt_counter': {
-        var fixedCount = root._huntFixed ? Object.keys(root._huntFixed).length : 0;
-        var huntTarget = (p.counter && p.counter.target) || p.errorCount || (p.items || []).length;
-        result.correct = fixedCount >= huntTarget;
-        result.userAnswer = fixedCount + '/' + huntTarget + ' errors found';
-        result.correctAnswer = huntTarget + ' errors';
-        result.lifeLoss = 0;
+        result.handled = false;
+        break;
+      }
+      case 'guided_error_choice': {
+        var gItems = p.items || [];
+        var gIdx = screen._guidedIdx || 0;
+        var gItem = gItems[gIdx];
+        var guidedSel = root.querySelector('.sp-option-btn--selected');
+        var guidedVal = guidedSel ? guidedSel.getAttribute('data-value') : '';
+        result.userAnswer = guidedVal;
+        result.correctAnswer = gItem ? getItemCorrection(gItem) : '';
+        result.correct = gItem ? norm.answersMatch(guidedVal, gItem.answer) : false;
+        result.explanation = (gItem && gItem.explanation) || '';
+        result.lifeLoss = result.correct ? 0 : 1;
+        result.partial = result.correct && (gIdx + 1 < gItems.length);
+        result.allDone = result.correct && (gIdx + 1 >= gItems.length);
+        result._guidedProgress = result.correct;
         break;
       }
       case 'stative_sorting': {
@@ -1609,6 +1837,7 @@
     checkScreen: checkScreen,
     processStativeSortingCheck: processStativeSortingCheck,
     processPassageHuntCounterCheck: processPassageHuntCounterCheck,
-    commitHuntCounterReveal: commitHuntCounterReveal
+    resumeHuntCounterAfterFeedback: resumeHuntCounterAfterFeedback,
+    advanceHuntCorrectionAfterFeedback: advanceHuntCorrectionAfterFeedback
   };
 })();

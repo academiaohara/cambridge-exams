@@ -401,6 +401,17 @@
 
     var screenList = screens.generatePracticeScreens(unit, nodeId);
     var globalRules = (unit.practiceConfig && unit.practiceConfig.globalRules) || {};
+    var sessionTotal = screenList.length;
+    screenList.forEach(function(s) {
+      if (s.formatType === 'passage_error_hunt_counter') {
+        var hp = s.payload || {};
+        sessionTotal = (hp.counter && hp.counter.target) || hp.errorCount || (hp.items && hp.items.length) || 1;
+      }
+      if (s.formatType === 'guided_error_choice') {
+        var gp = s.payload || {};
+        sessionTotal = (gp.items && gp.items.length) || 1;
+      }
+    });
 
     lessonState.activeNode = node;
     lessonState.queue = queueMod.createPracticeQueue(screenList, {
@@ -414,7 +425,7 @@
       }
     });
     lessonState.sessionCorrect = 0;
-    lessonState.sessionTotal = screenList.length;
+    lessonState.sessionTotal = sessionTotal;
     lessonState.sessionLivesLost = 0;
     lessonState.currentScreen = null;
     lessonState.awaitingContinue = false;
@@ -634,8 +645,13 @@
         return p.instruction || 'Escribe el verbo en la forma correcta.';
       case 'passage_error_hunt_single':
         return p.instruction || 'Find one wrong verb phrase.';
-      case 'passage_error_hunt_counter':
+      case 'passage_error_hunt_counter': {
+        var huntPhase = screen._huntState && screen._huntState.phase;
+        if (huntPhase === 'correct') return 'Correct each marked error, one at a time.';
         return p.instruction || 'Find and mark 10 errors.';
+      }
+      case 'guided_error_choice':
+        return p.instruction || 'Choose the correct form for each error.';
       case 'stative_sorting':
         return p.instruction || p.prompt || 'Sort the verbs into groups.';
       case 'meaning_contrast':
@@ -766,14 +782,15 @@
     var screen = lessonState.currentScreen;
 
     if (screen && screen.formatType === 'passage_error_hunt_counter' && screenRoot) {
-      if (screenRoot._huntPhase === 'reveal') {
-        handleHuntCounterRevealContinue(screenRoot, screen);
-        return;
-      }
       if (!lessonState.awaitingContinue) {
         handleHuntCounterCheck(screenRoot, screen);
         return;
       }
+    }
+
+    if (screen && screen.formatType === 'guided_error_choice' && screenRoot && !lessonState.awaitingContinue) {
+      handleGuidedErrorCheck(screenRoot, screen);
+      return;
     }
 
     if (lessonState.awaitingContinue) {
@@ -791,6 +808,16 @@
       }
       if (result.noop) return;
 
+      if (result.markOnly) {
+        if (window.AudioUtils) AudioUtils.playSuccessSound();
+        if (result.phaseTransition === 'correct') {
+          var instructionEl = lessonState.mount.querySelector('.sp-session-instruction');
+          if (instructionEl) instructionEl.textContent = getScreenInstruction(screen);
+        }
+        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+        return;
+      }
+
       if (!result.correct) {
         if (result.lifeLoss > 0) {
           var lost = lessonState.hearts.loseLife(result.lifeLoss, {
@@ -800,48 +827,144 @@
           });
           if (lost) lessonState.sessionLivesLost += result.lifeLoss;
         }
-        if (window.AudioUtils) AudioUtils.playFailureSound();
+        var failCount = lessonState.queue.incrementFailure(screen);
+        var globalRules = (lessonState.unitData.practiceConfig && lessonState.unitData.practiceConfig.globalRules) || {};
+        if (failCount >= (globalRules.maxRepeatedFailuresBeforeFallback || 2)) {
+          var converted = lessonState.queue.applyFallbackIfNeeded(screen);
+          if (converted._isFallback) {
+            screen = converted;
+            lessonState.currentScreen = converted;
+            var gp = converted.payload || {};
+            lessonState.sessionTotal = (gp.items && gp.items.length) || lessonState.sessionTotal;
+            result._switchToFallback = true;
+          }
+        }
+        lessonState._lastHuntResult = result;
+        screenRoot.classList.add('sp-screen--locked');
+        showFeedback(result, false);
         updateSessionHeader();
-        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
         return;
       }
 
-      if (result.reveal) {
-        if (window.AudioUtils) AudioUtils.playSuccessSound();
-        lessonState._lastResultCorrect = true;
-        setActionBtn('continue', true);
+      if (result._huntProgress) {
+        lessonState.sessionCorrect++;
+        lessonState._lastHuntResult = result;
+        screenRoot.classList.add('sp-screen--locked');
+        if (result.allDone) {
+          lessonState.queue.removeCompletedItem(screen);
+        }
+        showFeedback(result, true);
+        updateSessionHeader();
       }
     });
   }
 
-  function handleHuntCounterRevealContinue(screenRoot, screen) {
-    renderer.commitHuntCounterReveal(screenRoot, screen, function(result) {
-      if (!result.handled) return;
+  function handleGuidedErrorCheck(screenRoot, screen) {
+    var result = renderer.checkScreen(screenRoot, screen);
+    screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
 
+    if (!result.correct && result.lifeLoss > 0) {
+      var lost = lessonState.hearts.loseLife(result.lifeLoss, {
+        screenId: screen.screenId,
+        itemId: screen.itemId,
+        maxLifeLossPerScreen: screen.maxLifeLossPerScreen
+      });
+      if (lost) lessonState.sessionLivesLost += result.lifeLoss;
+    }
+
+    if (result.correct) {
+      lessonState.sessionCorrect++;
+      lessonState._lastHuntResult = result;
+      screenRoot.classList.add('sp-screen--locked');
       if (result.allDone) {
-        screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
-        screenRoot.classList.add('sp-screen--locked');
         lessonState.queue.removeCompletedItem(screen);
-        lessonState.sessionCorrect++;
-        showFeedback({
-          correct: true,
-          explanation: result.explanation || '',
-          correctAnswer: '',
-          userAnswer: result.userAnswer || '',
-          lifeLoss: 0
-        }, true);
-        updateSessionHeader();
-        return;
       }
+      showFeedback(result, true);
+    } else {
+      lessonState._lastHuntResult = result;
+      var failCount = lessonState.queue.incrementFailure(screen);
+      var globalRules = (lessonState.unitData.practiceConfig && lessonState.unitData.practiceConfig.globalRules) || {};
+      if (globalRules.failedItemsReturnToQueue !== false) {
+        lessonState.queue.returnFailedItemToQueue(screen);
+      }
+      if (failCount >= (globalRules.maxRepeatedFailuresBeforeFallback || 2)) {
+        var converted = lessonState.queue.applyFallbackIfNeeded(screen);
+        if (converted._isFallback) {
+          lessonState.queue.returnFailedItemToQueue(converted, 'front');
+          screen = converted;
+          lessonState.currentScreen = converted;
+          var guidedPayload = converted.payload || {};
+          lessonState.sessionTotal = (guidedPayload.items && guidedPayload.items.length) || lessonState.sessionTotal;
+          result._switchToFallback = true;
+        }
+      }
+      screenRoot.classList.add('sp-screen--locked');
+      showFeedback(result, false);
+    }
 
-      lessonState._lastResultCorrect = null;
-      setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
-    });
+    updateSessionHeader();
   }
 
   function handleContinue() {
     var mount = lessonState.mount;
     if (lessonState.hearts.isGameOver) return;
+
+    var screen = lessonState.currentScreen;
+    var screenRoot = mount.querySelector('.sp-screen');
+    var feedbackMount = mount.querySelector('#sp-feedback-mount');
+    var footer = mount.querySelector('#sp-practice-footer');
+    var lastResult = lessonState._lastHuntResult;
+
+    lessonState.awaitingContinue = false;
+    lessonState._lastFeedbackResult = null;
+    lessonState._lastResultCorrect = null;
+    lessonState._lastHuntResult = null;
+    if (feedbackMount) feedbackMount.innerHTML = '';
+    clearResultStyles();
+    if (footer) {
+      footer.classList.remove(
+        'sp-practice-footer--feedback',
+        'sp-practice-footer--correct',
+        'sp-practice-footer--incorrect',
+        'sp-practice-footer--retry'
+      );
+    }
+
+    if (lastResult && lastResult._switchToFallback) {
+      renderCurrentScreen();
+      return;
+    }
+
+    if (lastResult && lastResult.allDone) {
+      renderCurrentScreen();
+      return;
+    }
+
+    if (screen && screen.formatType === 'guided_error_choice' && screenRoot && lastResult && lastResult.correct && lastResult.partial) {
+      screen._guidedIdx = (screen._guidedIdx || 0) + 1;
+      renderCurrentScreen();
+      return;
+    }
+
+    if (screen && screen.formatType === 'passage_error_hunt_counter' && screenRoot) {
+      if (lastResult && lastResult.correct && lastResult._huntProgress && !lastResult.allDone) {
+        renderer.advanceHuntCorrectionAfterFeedback(screenRoot, screen);
+      } else {
+        renderer.resumeHuntCounterAfterFeedback(screenRoot, screen);
+      }
+      setScreenInputsLocked(false);
+      setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+      updateSessionHeader();
+      return;
+    }
+
+    if (screen && screen.formatType === 'guided_error_choice' && screenRoot) {
+      screenRoot.classList.remove('sp-screen--locked');
+      setScreenInputsLocked(false);
+      setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+      return;
+    }
+
     renderCurrentScreen();
   }
 
