@@ -1,62 +1,147 @@
-/* css/components/video-exercises.css — Video exercises (sp-lesson-mount + 9:16 video) */
+/* css/components/video-exercises.css — Sune's Stories: video episode hub + quiz */
 
-/* ─── Hub (dashboard with sidebar) ─────────────────────────────────── */
+/* ─── Hub wrapper ───────────────────────────────────────────────────── */
 
 .ve-hub {
-  max-width: 880px;
+  max-width: 920px;
   margin: 0 auto;
-  padding: 8px 16px 40px;
+  padding: 4px 16px 48px;
 }
 
-.ve-hub-header {
-  margin-bottom: 24px;
+/* ─── Series header ─────────────────────────────────────────────────── */
+
+.ve-series-header {
+  margin-bottom: 28px;
+  padding: 22px 24px;
+  background: linear-gradient(135deg, #f0f7ff 0%, #fff 60%);
+  border: 1.5px solid #ddeeff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.ve-hub-title {
+.ve-series-header-top {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
+}
+
+.ve-series-brand-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1899d6 0%, #1465a0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(24, 153, 214, 0.3);
+}
+
+.ve-series-brand-icon .material-symbols-outlined {
+  font-size: 28px;
+}
+
+.ve-series-title {
   font-family: 'Fredoka', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.7rem;
+  font-weight: 700;
   color: var(--primary, #2D2E5F);
-  margin: 0 0 6px;
+  margin: 0 0 4px;
+  line-height: 1.15;
 }
 
-.ve-hub-title .material-symbols-outlined {
-  color: #1cb0f6;
-  font-size: 1.6rem;
-}
-
-.ve-hub-sub {
-  margin: 0;
-  font-size: 0.95rem;
+.ve-series-tagline {
+  font-size: 0.9rem;
   color: var(--text-medium, #4a4b7c);
+  margin: 0;
+  line-height: 1.4;
 }
+
+.ve-series-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.ve-series-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1899d6;
+  background: #ddf4ff;
+  border: 1.5px solid #b8e8fc;
+  border-radius: 999px;
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+
+.ve-series-pill .material-symbols-outlined {
+  font-size: 15px;
+}
+
+/* Overall progress bar */
+.ve-series-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ve-series-overall-progress {
+  flex: 1;
+  height: 8px;
+  background: #e8ecf4;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.ve-series-overall-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #58cc02 0%, #82e825 100%);
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+.ve-series-overall-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-medium, #4a4b7c);
+  white-space: nowrap;
+}
+
+/* ─── Episode grid ──────────────────────────────────────────────────── */
 
 .ve-story-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
 }
+
+/* ─── Episode card ──────────────────────────────────────────────────── */
 
 .ve-story-card {
   display: flex;
   flex-direction: column;
-  background: var(--white, #fff);
+  background: #fff;
   border: 2px solid #e8ecf4;
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
   text-align: left;
   padding: 0;
-  transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.14s;
+  box-shadow: 0 2px 8px rgba(45, 46, 95, 0.06);
 }
 
-.ve-story-card:hover {
+.ve-story-card:hover:not(:disabled) {
   border-color: #64B5F6;
-  box-shadow: 0 6px 20px rgba(28, 176, 246, 0.15);
-  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(28, 176, 246, 0.18);
+  transform: translateY(-3px);
 }
 
 .ve-story-card--passed {
@@ -67,36 +152,176 @@
   border-color: #b8e8fc;
 }
 
+.ve-story-card--coming-soon {
+  cursor: default;
+  opacity: 0.78;
+}
+
+.ve-story-card--coming-soon:hover {
+  transform: none;
+  box-shadow: 0 2px 8px rgba(45, 46, 95, 0.06);
+  border-color: #e8ecf4;
+}
+
+/* Thumbnail area */
 .ve-story-preview {
   aspect-ratio: 9 / 16;
-  background: linear-gradient(160deg, #1e1f42 0%, #2D2E5F 50%, #1899d6 100%);
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  overflow: hidden;
 }
 
-.ve-story-preview-inner {
-  width: 56px;
-  height: 56px;
+/* Episode number badge (top-left) */
+.ve-episode-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 9px;
+  border-radius: 999px;
+  z-index: 2;
+}
+
+/* Level badge (top-right) */
+.ve-level-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  padding: 4px 9px;
+  border-radius: 999px;
+  z-index: 2;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+.ve-level-badge--B1 {
+  background: rgba(255, 152, 0, 0.6);
+}
+
+.ve-level-badge--B2 {
+  background: rgba(33, 150, 243, 0.6);
+}
+
+.ve-level-badge--C1 {
+  background: rgba(76, 175, 80, 0.6);
+}
+
+.ve-level-badge--C2 {
+  background: rgba(156, 39, 176, 0.6);
+}
+
+/* Play button in center */
+.ve-story-preview-play {
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
+  transition: transform 0.18s, background 0.18s;
+  z-index: 2;
 }
 
-.ve-story-preview-inner .material-symbols-outlined {
-  font-size: 32px;
+.ve-story-card:hover:not(:disabled) .ve-story-preview-play {
+  background: rgba(255, 255, 255, 0.28);
+  transform: scale(1.1);
 }
 
+.ve-story-preview-play .material-symbols-outlined {
+  font-size: 34px;
+}
+
+/* Progress bar strip at bottom of thumbnail */
+.ve-story-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.25);
+  z-index: 3;
+}
+
+.ve-story-progress-fill {
+  height: 100%;
+  background: #58cc02;
+  border-radius: 0 2px 2px 0;
+  transition: width 0.4s ease;
+}
+
+.ve-story-card--passed .ve-story-progress-fill {
+  background: #58cc02;
+  width: 100% !important;
+}
+
+/* Coming-soon overlay */
+.ve-coming-soon-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 30, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 2;
+}
+
+.ve-coming-soon-lock {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ve-coming-soon-lock .material-symbols-outlined {
+  font-size: 26px;
+}
+
+.ve-coming-soon-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* Card info area */
 .ve-story-body {
   padding: 14px 16px 16px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   flex: 1;
 }
 
@@ -109,60 +334,129 @@
   line-height: 1.3;
 }
 
-.ve-story-desc {
-  font-size: 0.8rem;
-  color: var(--text-medium, #4a4b7c);
-  margin: 0;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+/* Topic tags */
+.ve-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
-.ve-story-status {
+.ve-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #4a4b7c;
+  background: #f0f2fa;
+  border: 1px solid #e0e4f0;
+  border-radius: 999px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+
+/* Vocabulary preview chips */
+.ve-vocab-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.ve-vocab-chip {
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #1899d6;
+  background: #ddf4ff;
+  border: 1px solid #b8e8fc;
+  border-radius: 8px;
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+
+/* CTA footer */
+.ve-story-footer {
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.ve-story-cta {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  margin-top: auto;
-  font-size: 0.75rem;
+  gap: 5px;
+  font-size: 0.8rem;
   font-weight: 700;
   color: #1899d6;
 }
 
-.ve-story-status .material-symbols-outlined {
-  font-size: 16px;
+.ve-story-cta .material-symbols-outlined {
+  font-size: 17px;
 }
 
-.ve-story-card--passed .ve-story-status {
+.ve-story-cta--passed {
   color: #46a302;
 }
 
+.ve-story-cta--started {
+  color: #f97316;
+}
+
+/* Loading / empty / error */
 .ve-loading,
 .ve-error,
 .ve-empty {
   text-align: center;
-  padding: 48px 16px;
+  padding: 56px 16px;
   color: var(--text-medium, #4a4b7c);
-}
-
-/* ─── Lesson mount (reuse sp-lesson-mount layout) ──────────────────── */
-
-.ve-lesson-mount,
-.ve-lesson-mount.ve-lesson-mount {
-  /* inherits sp-lesson-mount sizing from sune-play-lesson.css */
-}
-
-.ve-lesson.sp-lesson {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  min-height: 0;
-  height: 100%;
-  width: 100%;
+  align-items: center;
+  gap: 10px;
 }
 
-/* ─── Practice header (like Sune Play) ─────────────────────────────── */
+.ve-loading .material-symbols-outlined,
+.ve-error .material-symbols-outlined {
+  font-size: 32px;
+  opacity: 0.5;
+}
+
+/* ─── Lesson container ─────────────────────────────────────────────
+   Self-contained overlay: does not rely on the dashboard/course flex
+   height chain (which only uses min-height, causing flex:1 collapse).  */
+
+.ve-lesson-root {
+  width: 100%;
+  min-height: 100dvh;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+/* Background layer */
+.ve-lesson-root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image: url('../../Assets/images/Background.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #d8eaff;
+  pointer-events: none;
+}
+
+.ve-lesson {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 16px 20px 24px;
+  box-sizing: border-box;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Practice header ──────────────────────────────────────────────── */
 
 .ve-practice-header {
   display: grid;
@@ -185,10 +479,19 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 1px 4px rgba(45, 46, 95, 0.08);
+  transition: background 0.15s;
 }
 
 .ve-header-btn:hover {
   background: #fff;
+}
+
+.ve-header-episode-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  letter-spacing: 0.02em;
 }
 
 .ve-session-progress {
@@ -212,20 +515,18 @@
 }
 
 .ve-heart .material-symbols-outlined { font-size: 22px; }
-.ve-heart--full { color: #ef4444; }
+.ve-heart--full  { color: #ef4444; }
 .ve-heart--empty { color: #d1d5db; }
 
-/* ─── Video stage (9:16 vertical) ─────────────────────────────────── */
+/* ─── Video stage (9:16 vertical) ──────────────────────────────────── */
 
 .ve-video-stage {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 16px;
-  min-height: 0;
-  padding-bottom: 8px;
+  padding: 8px 0 16px;
 }
 
 .ve-video-frame {
@@ -234,10 +535,10 @@
   width: auto;
   height: min(72dvh, calc(100dvh - 200px));
   max-width: 100%;
-  border-radius: 20px;
+  border-radius: 22px;
   overflow: hidden;
   background: #000;
-  box-shadow: 0 8px 32px rgba(45, 46, 95, 0.2);
+  box-shadow: 0 12px 40px rgba(10, 12, 30, 0.35);
 }
 
 .ve-video {
@@ -251,11 +552,11 @@
 .ve-video-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.35) 50%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.35) 55%, transparent 100%);
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 24px 16px;
+  padding: 28px 16px;
 }
 
 .ve-video-overlay-actions {
@@ -268,7 +569,7 @@
 
 .ve-video-meta {
   text-align: center;
-  max-width: 360px;
+  max-width: 380px;
   padding: 0 8px;
 }
 
@@ -284,10 +585,10 @@
   font-size: 0.875rem;
   color: var(--text-medium, #4a4b7c);
   margin: 0;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
-/* ─── Chapter break (between section groups) ───────────────────────── */
+/* ─── Chapter break ─────────────────────────────────────────────────── */
 
 .ve-chapter-break {
   flex: 1;
@@ -297,26 +598,50 @@
   justify-content: center;
   text-align: center;
   padding: 24px 20px;
-  max-width: 420px;
+  max-width: 440px;
   margin: 0 auto;
-  gap: 12px;
+  gap: 10px;
+  animation: ve-fade-up 0.3s ease;
+}
+
+@keyframes ve-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ve-chapter-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--ve-chapter-color, #1899d6) 14%, #fff);
+  border: 2px solid color-mix(in srgb, var(--ve-chapter-color, #1899d6) 30%, #fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ve-chapter-color, #1899d6);
+  margin-bottom: 6px;
+}
+
+.ve-chapter-icon-wrap .material-symbols-outlined {
+  font-size: 36px;
 }
 
 .ve-chapter-badge {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   color: #1899d6;
   background: #ddf4ff;
-  padding: 6px 14px;
+  border: 1.5px solid #b8e8fc;
+  padding: 5px 14px;
   border-radius: 999px;
 }
 
 .ve-chapter-title {
   font-family: 'Fredoka', sans-serif;
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--primary, #2D2E5F);
   margin: 0;
   line-height: 1.25;
@@ -330,17 +655,34 @@
 }
 
 .ve-chapter-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-light, #7b7ca0);
-  margin: 0 0 8px;
+  margin: 4px 0 8px;
+}
+
+.ve-chapter-count .material-symbols-outlined {
+  font-size: 17px;
+  opacity: 0.7;
+}
+
+.ve-chapter-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 320px;
 }
 
 .ve-chapter-rewatch {
-  margin-top: 4px;
+  margin-top: 0;
 }
 
-/* ─── Quiz stage ──────────────────────────────────────────────────── */
+/* ─── Quiz stage ────────────────────────────────────────────────────── */
 
 .ve-quiz-stage {
   flex: 1;
@@ -353,10 +695,10 @@
 }
 
 .ve-quiz-chapter-label {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   color: #1899d6;
   text-align: center;
 }
@@ -366,22 +708,24 @@
   font-weight: 600;
   color: var(--text-light, #7b7ca0);
   text-align: center;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .ve-question-card {
   background: rgba(255, 255, 255, 0.92);
   border: 2px solid #e8ecf4;
-  border-radius: 18px;
+  border-radius: 20px;
   padding: 22px 18px;
-  box-shadow: 0 2px 12px rgba(45, 46, 95, 0.06);
+  box-shadow: 0 2px 14px rgba(45, 46, 95, 0.07);
 }
 
 .ve-question-instructions {
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #1899d6;
   margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .ve-question-text {
@@ -410,16 +754,17 @@
   color: var(--primary, #2D2E5F);
   text-align: left;
   cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
+  transition: border-color 0.15s, background 0.15s, transform 0.1s;
   box-sizing: border-box;
 }
 
 .ve-option:hover:not(:disabled) {
   border-color: #64B5F6;
   background: #f8fbff;
+  transform: translateX(3px);
 }
 
-.ve-option:disabled { cursor: default; }
+.ve-option:disabled { cursor: default; transform: none; }
 
 .ve-option--correct {
   border-color: #58cc02 !important;
@@ -433,7 +778,7 @@
   color: #991b1b;
 }
 
-/* ─── Order sentences ─────────────────────────────────────────────── */
+/* ─── Order sentences ───────────────────────────────────────────────── */
 
 .ve-order-wrap {
   display: flex;
@@ -442,11 +787,11 @@
 }
 
 .ve-tile-answer {
-  min-height: 48px;
+  min-height: 52px;
   padding: 10px;
   background: #f8fbff;
   border: 2px dashed #b8e8fc;
-  border-radius: 12px;
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -475,7 +820,7 @@
 .ve-tile:hover:not(:disabled) { border-color: #64B5F6; }
 
 .ve-tile--used {
-  opacity: 0.35;
+  opacity: 0.32;
   cursor: default;
 }
 
@@ -497,7 +842,7 @@
   background: #1cb0f6;
   color: #fff;
   border-radius: 50%;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
 }
 
@@ -506,15 +851,16 @@
   margin-top: 4px;
 }
 
-/* ─── Feedback ────────────────────────────────────────────────────── */
+/* ─── Feedback ──────────────────────────────────────────────────────── */
 
 .ve-feedback {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   margin-top: 14px;
-  padding: 12px 14px;
-  border-radius: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  animation: ve-fade-up 0.25s ease;
 }
 
 .ve-feedback--correct {
@@ -530,15 +876,16 @@
 .ve-feedback-icon .material-symbols-outlined { font-size: 22px; }
 
 .ve-feedback-text {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
 }
 
 .ve-feedback-explanation {
   font-weight: 400;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   margin: 4px 0 0;
   opacity: 0.9;
+  line-height: 1.45;
 }
 
 /* ─── Buttons ───────────────────────────────────────────────────────── */
@@ -554,12 +901,12 @@
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.1s, box-shadow 0.15s;
+  transition: transform 0.1s, box-shadow 0.15s, background 0.15s;
   width: 100%;
   box-sizing: border-box;
 }
 
-.ve-btn:active { transform: scale(0.98); }
+.ve-btn:active { transform: scale(0.97); }
 
 .ve-btn--primary {
   background: #58cc02;
@@ -575,20 +922,25 @@
   border: 2px solid #e8ecf4;
 }
 
-.ve-btn--ghost:hover { border-color: #64B5F6; }
+.ve-btn--ghost:hover { border-color: #64B5F6; background: #fff; }
 
 .ve-video-overlay .ve-btn--ghost {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.38);
   color: #fff;
   box-shadow: none;
+}
+
+.ve-video-overlay .ve-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 .ve-video-overlay .ve-btn--primary {
   box-shadow: 0 4px 0 #3d9900;
 }
 
-/* ─── Results ─────────────────────────────────────────────────────── */
+/* ─── Results ───────────────────────────────────────────────────────── */
 
 .ve-result-stage {
   flex: 1;
@@ -599,19 +951,52 @@
 }
 
 .ve-result-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.96);
   border: 2px solid #e8ecf4;
-  border-radius: 22px;
-  padding: 36px 28px;
+  border-radius: 24px;
+  padding: 36px 28px 28px;
   text-align: center;
   width: 100%;
-  max-width: 380px;
-  box-shadow: 0 4px 24px rgba(45, 46, 95, 0.08);
+  max-width: 400px;
+  box-shadow: 0 6px 32px rgba(45, 46, 95, 0.1);
+  animation: ve-fade-up 0.35s ease;
+}
+
+/* Star rating */
+.ve-result-stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.ve-star {
+  display: inline-flex;
+  animation: ve-star-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.ve-star .material-symbols-outlined {
+  font-size: 38px;
+}
+
+.ve-star--filled {
+  color: #ffc800;
+  filter: drop-shadow(0 2px 6px rgba(255, 200, 0, 0.45));
+}
+
+.ve-star--empty {
+  color: #d1d5db;
+}
+
+@keyframes ve-star-pop {
+  from { opacity: 0; transform: scale(0.3) rotate(-20deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
 .ve-result-icon {
-  font-size: 52px;
-  margin-bottom: 8px;
+  font-size: 50px;
+  margin-bottom: 6px;
 }
 
 .ve-result-card--passed .ve-result-icon { color: #58cc02; }
@@ -619,25 +1004,46 @@
 
 .ve-result-card h2 {
   font-family: 'Fredoka', sans-serif;
-  font-size: 1.5rem;
-  margin: 0 0 8px;
+  font-size: 1.6rem;
+  margin: 0 0 6px;
   color: var(--primary, #2D2E5F);
+}
+
+.ve-result-msg-main {
+  font-size: 0.9rem;
+  color: var(--text-medium, #4a4b7c);
+  margin: 0 0 16px;
+  line-height: 1.45;
+}
+
+.ve-result-score-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 4px;
 }
 
 .ve-result-score {
   font-family: 'Fredoka', sans-serif;
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 700;
   color: #58cc02;
-  margin: 4px 0 12px;
+  line-height: 1;
 }
 
 .ve-result-card--failed .ve-result-score { color: #ef4444; }
 
-.ve-result-msg {
+.ve-result-score-sub {
   font-size: 0.9rem;
+  font-weight: 600;
   color: var(--text-medium, #4a4b7c);
-  margin: 0 0 24px;
+}
+
+.ve-result-pass-note {
+  font-size: 0.8rem;
+  color: var(--text-light, #7b7ca0);
+  margin: 0 0 22px;
 }
 
 .ve-result-actions {
@@ -646,70 +1052,11 @@
   gap: 10px;
 }
 
-/* ─── Lesson focus background (extend sp-lesson-mount) ──────────────── */
 
-body:has(.ve-lesson-mount)::before,
-body:has(.ve-lesson-mount) {
-  background: transparent;
-}
-
-body:has(.ve-lesson-mount)::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background-image: url('../../Assets/images/Background.png');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  pointer-events: none;
-}
-
-body:has(.ve-lesson-mount) #app,
-body:has(.ve-lesson-mount) .app-container,
-body:has(.ve-lesson-mount) #main-content,
-body:has(.ve-lesson-mount) .dashboard-layout--lesson-focus,
-body:has(.ve-lesson-mount) .dashboard-layout--lesson-focus > .dashboard-center,
-body:has(.ve-lesson-mount) .course-center--lesson-focus,
-body:has(.ve-lesson-mount) .ve-lesson-mount,
-body:has(.ve-lesson-mount) .ve-lesson {
-  background: transparent !important;
-}
-
-body:has(.ve-lesson-mount) #app,
-body:has(.ve-lesson-mount) .app-container,
-body:has(.ve-lesson-mount) #main-content,
-body:has(.ve-lesson-mount) .dashboard-layout--lesson-focus {
-  position: relative;
-  z-index: 1;
-}
-
-.dashboard-layout--lesson-focus .ve-lesson-mount {
-  flex: 1 1 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  min-width: 0;
-  max-height: 100dvh;
-  height: 100%;
-  max-width: none;
-  width: 100%;
-  margin: 0 auto;
-  padding: 16px 20px 24px;
-  box-sizing: border-box;
-}
-
-.dashboard-layout--lesson-focus .ve-lesson {
-  flex: 1 1 0;
-  min-height: 0;
-  height: 100%;
-  max-height: 100dvh;
-}
-
-/* ─── Bento card (dashboard row) ────────────────────────────────────── */
+/* ─── Bento card (dashboard) ────────────────────────────────────────── */
 
 .bento-card-video-exercises {
-  background: linear-gradient(135deg, #ddf4ff 0%, #fff 60%);
+  background: linear-gradient(135deg, #ddf4ff 0%, #fff 65%);
 }
 
 .bento-card-video-exercises .bento-card-title {
@@ -719,6 +1066,14 @@ body:has(.ve-lesson-mount) .dashboard-layout--lesson-focus {
 /* ─── Responsive ────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
+  .ve-series-header {
+    padding: 18px 16px;
+  }
+
+  .ve-series-title {
+    font-size: 1.45rem;
+  }
+
   .ve-story-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
@@ -726,7 +1081,7 @@ body:has(.ve-lesson-mount) .dashboard-layout--lesson-focus {
 
   .ve-video-frame {
     height: min(65dvh, calc(100dvh - 220px));
-    border-radius: 16px;
+    border-radius: 18px;
   }
 
   .dashboard-layout--lesson-focus .ve-lesson-mount {
@@ -734,7 +1089,28 @@ body:has(.ve-lesson-mount) .dashboard-layout--lesson-focus {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
+  .ve-series-header-top {
+    gap: 12px;
+  }
+
+  .ve-series-brand-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+  }
+
+  .ve-series-title {
+    font-size: 1.3rem;
+  }
+
+  .ve-story-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (max-width: 360px) {
   .ve-story-grid {
     grid-template-columns: 1fr;
     max-width: 280px;
