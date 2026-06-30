@@ -417,6 +417,16 @@
   opacity: 0.5;
 }
 
+/* ─── Lesson focus height chain ──────────────────────────────────────
+   The parent chain only uses min-height (never explicit height), so
+   flex:1 children collapse to 0. Inject height: 100dvh on the direct
+   container to fix the chain.                                           */
+
+body:has(.ve-lesson-mount) .dashboard-layout--lesson-focus > .dashboard-center,
+body:has(.ve-lesson-mount) .course-center--lesson-focus {
+  height: 100dvh !important;
+}
+
 /* ─── Lesson mount (reuse sp-lesson-mount layout) ───────────────────── */
 
 .ve-lesson-mount,
@@ -425,11 +435,11 @@
 }
 
 .ve-lesson.sp-lesson {
+  flex: 1 1 0;
   display: flex;
   flex-direction: column;
   gap: 0;
-  /* min-height drives the height (parent flex chain has no explicit height) */
-  min-height: calc(100dvh - 40px);
+  min-height: 0;
   width: 100%;
 }
 
