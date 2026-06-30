@@ -124,19 +124,12 @@
     _renderLessonLayout: function(innerHtml) {
       var content = document.getElementById('main-content');
       if (!content) return;
-      var sidebars = this._buildSidebars();
+      // Self-contained overlay: avoids the course/dashboard flex-chain
+      // height problem (parent chain uses only min-height, never explicit height)
       content.innerHTML =
-        '<div class="dashboard-layout dashboard-layout--lesson-focus">' +
-          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
-            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
-            : '<div class="dashboard-left-sidebar dashboard-sidebar-shell">' + sidebars.left + '</div>') +
-          '<div class="dashboard-center course-center--lesson-focus">' +
-            '<div id="sp-lesson-mount" class="sp-lesson-mount ve-lesson-mount course-unit-content">' +
-              '<div class="ve-lesson sp-lesson">' + innerHtml + '</div>' +
-            '</div>' +
-          '</div>' +
+        '<div class="ve-lesson-root">' +
+          '<div class="ve-lesson">' + innerHtml + '</div>' +
         '</div>';
-      this._applyLessonFocus(true);
       this._setView('videoExercise');
     },
 
