@@ -188,9 +188,6 @@
       if (isComplete) rowCls += ' ve-chapter-row--complete';
 
       var epNum = item.episode || 1;
-      var levelBadge = item.level
-        ? '<span class="ve-level-badge ve-level-badge--' + esc(item.level) + '">' + esc(item.level) + '</span>'
-        : '';
 
       var statusLabel = isComingSoon
         ? '<span class="ve-chapter-status ve-chapter-status--soon">Coming soon</span>'
@@ -204,7 +201,6 @@
         '<div class="ve-chapter-row-info">' +
           '<div class="ve-chapter-row-top">' +
             '<span class="ve-chapter-ep">Ep. ' + epNum + '</span>' +
-            levelBadge +
             statusLabel +
           '</div>' +
           '<h3 class="ve-chapter-title">' + esc(item.title) + '</h3>' +
@@ -328,10 +324,15 @@
       return overlay;
     },
 
-    _renderModal: function(innerHtml) {
+    _renderModal: function(innerHtml, opts) {
+      opts = opts || {};
       this._ensureModal();
       var inner = document.getElementById('ve-modal-inner');
       if (inner) inner.innerHTML = innerHtml;
+      var panel = document.querySelector('#ve-modal-overlay .ve-modal-panel');
+      if (panel) {
+        panel.classList.toggle('ve-modal-panel--video', opts.mode === 'video');
+      }
       var overlay = document.getElementById('ve-modal-overlay');
       if (overlay) overlay.classList.add('ve-modal-overlay--open');
       document.body.classList.add('ve-modal-open');
@@ -407,7 +408,7 @@
           self._modalHeader({ title: data.title }) +
           '<div class="ve-modal-video-stage">' +
             '<div class="ve-modal-video-frame">' +
-              '<video class="ve-video" id="ve-video-player" src="' + esc(data.videoUrl) + '" playsinline controls></video>' +
+              '<video class="ve-video" id="ve-video-player" src="' + esc(data.videoUrl) + '" playsinline controls controlsList="nofullscreen nodownload noremoteplayback" disablePictureInPicture></video>' +
             '</div>' +
           '</div>' +
           '<footer class="sp-practice-footer" id="ve-video-footer">' +
@@ -418,7 +419,8 @@
                 '</button>' +
               '</div>' +
             '</div>' +
-          '</footer>'
+          '</footer>',
+          { mode: 'video' }
         );
 
         var video = document.getElementById('ve-video-player');
@@ -428,6 +430,9 @@
             var btn = document.getElementById('ve-video-continue');
             if (btn && session && session.phase === 'ended') btn.disabled = false;
           };
+          video.addEventListener('webkitbeginfullscreen', function(e) {
+            e.preventDefault();
+          });
         }
 
         if (!opts || !opts.fromRoute) {
