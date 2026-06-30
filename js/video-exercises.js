@@ -373,9 +373,9 @@
     _modalHeader: function(opts) {
       opts = opts || {};
       var centerHtml = '';
-      if (opts.showProgress) {
-        var total = session.questionQueue.length;
-        var done = session.questionIdx;
+      if (opts.showProgress && session) {
+        var total = session.initialTotal || session.questionQueue.length;
+        var done = session.completedCount || 0;
         var pct = total > 0 ? Math.round((done / total) * 100) : 0;
         centerHtml = '<div class="sp-session-progress"><div class="sp-session-progress-track">' +
           '<div class="sp-session-progress-fill" style="width:' + pct + '%"></div></div></div>';
@@ -389,6 +389,27 @@
         centerHtml +
         '<span class="ve-modal-header-spacer"></span>' +
       '</header>';
+    },
+
+    _prepareQuestionQueue: function(questions) {
+      return (questions || []).map(function(q, i) {
+        return Object.assign({}, q, { _veKey: i });
+      });
+    },
+
+    _currentQuestion: function() {
+      return session && session.questionQueue.length ? session.questionQueue[0] : null;
+    },
+
+    _requeueCurrentQuestion: function() {
+      if (!session || !session.questionQueue.length) return;
+      var current = session.questionQueue.shift();
+      session.questionQueue.push(current);
+    },
+
+    _removeCurrentQuestion: function() {
+      if (!session || !session.questionQueue.length) return null;
+      return session.questionQueue.shift();
     },
 
     // ─── Video modal ──────────────────────────────────────────────────────
@@ -408,31 +429,52 @@
           self._modalHeader({ title: data.title }) +
           '<div class="ve-modal-video-stage">' +
             '<div class="ve-modal-video-frame">' +
-              '<video class="ve-video" id="ve-video-player" src="' + esc(data.videoUrl) + '" playsinline controls controlsList="nofullscreen nodownload noremoteplayback" disablePictureInPicture></video>' +
-            '</div>' +
-          '</div>' +
-          '<footer class="sp-practice-footer" id="ve-video-footer">' +
-            '<div class="sp-practice-footer-inner">' +
-              '<div class="sp-practice-footer-actions">' +
-                '<button type="button" class="sp-btn sp-btn--primary sp-btn--action" id="ve-video-continue" disabled onclick="VideoExercises._finishVideo()">' +
+              '<video class="ve-video" id="ve-video-player" src="' + esc(data.videoUrl) + '" playsinline preload="metadata" controlsList="nofullscreen nodownload noremoteplayback" disablePictureInPicture></video>' +
+              '<button type="button" class="ve-video-play-btn" id="ve-video-play-btn" aria-label="Play video">' +
+                _mi('play_arrow') +
+              '</button>' +
+              '<div class="ve-video-ended" id="ve-video-ended" hidden>' +
+                '<button type="button" class="sp-btn sp-btn--primary sp-btn--action sp-btn--continue-mode sp-btn--correct ve-video-continue-btn" id="ve-video-continue" onclick="VideoExercises._finishVideo()">' +
                   '<span class="material-symbols-outlined">arrow_forward</span>' +
                 '</button>' +
               '</div>' +
             '</div>' +
-          '</footer>',
+          '</div>',
           { mode: 'video' }
         );
 
         var video = document.getElementById('ve-video-player');
+        var playBtn = document.getElementById('ve-video-play-btn');
         if (video) {
           video.onended = function() { self._onVideoEnded(); };
           video.onplay = function() {
-            var btn = document.getElementById('ve-video-continue');
-            if (btn && session && session.phase === 'ended') btn.disabled = false;
+            if (playBtn) playBtn.hidden = true;
+          };
+          video.onpause = function() {
+            if (playBtn && session && session.phase !== 'ended' && video.currentTime < video.duration) {
+              playBtn.hidden = false;
+            }
           };
           video.addEventListener('webkitbeginfullscreen', function(e) {
             e.preventDefault();
           });
+        }
+        if (playBtn && video) {
+          playBtn.onclick = function() {
+            video.play();
+            playBtn.hidden = true;
+          };
+        }
+        if (video) {
+          video.onclick = function() {
+            if (session && session.phase === 'ended') return;
+            if (video.paused) {
+              video.play();
+              if (playBtn) playBtn.hidden = true;
+            } else {
+              video.pause();
+            }
+          };
         }
 
         if (!opts || !opts.fromRoute) {
@@ -447,10 +489,10 @@
       if (!session) return;
       session.phase = 'ended';
       this._saveExerciseProgress(session.exerciseId, { videoWatched: true });
-      var btn = document.getElementById('ve-video-continue');
-      if (btn) btn.disabled = false;
-      var footer = document.getElementById('ve-video-footer');
-      if (footer) footer.classList.add('sp-practice-footer--correct');
+      var playBtn = document.getElementById('ve-video-play-btn');
+      if (playBtn) playBtn.hidden = true;
+      var ended = document.getElementById('ve-video-ended');
+      if (ended) ended.hidden = false;
     },
 
     _finishVideo: function() {
@@ -471,16 +513,18 @@
         var section = (data.sections || [])[sectionIdx];
         if (!section) return;
 
-        var questions = section.questions || [];
+        var questions = self._prepareQuestionQueue(section.questions || []);
         session = {
           exerciseId: exerciseId,
           data: data,
           mode: 'quiz',
           sectionIdx: sectionIdx,
           section: section,
-          questionQueue: questions,
-          questionIdx: 0,
-          correct: 0,
+          questionQueue: questions.slice(),
+          initialTotal: questions.length,
+          completedCount: 0,
+          firstTryCorrect: 0,
+          attemptCounts: {},
           orderSelection: [],
           awaitingContinue: false,
           _lastResultCorrect: null,
@@ -505,15 +549,13 @@
 
     _renderQuizQuestion: function() {
       if (!session || session.mode !== 'quiz') return;
-      var q = session.questionQueue[session.questionIdx];
+      var q = this._currentQuestion();
       if (!q) {
         this._finishSection();
         return;
       }
 
       var sec = session.section;
-      var globalNum = session.questionIdx + 1;
-      var total = session.questionQueue.length;
       var questionBody = this._renderQuestionBody(q);
 
       this._renderModal(
@@ -522,7 +564,7 @@
           '<div class="sp-practice-main" id="ve-practice-main">' +
             '<div class="sp-practice-body">' +
               '<div class="sp-exercise-card" id="ve-question-card">' +
-                '<p class="sp-session-instruction">' + esc(sec.instructions || sec.title) + '</p>' +
+                '<p class="sp-session-instruction ve-quiz-instruction">' + esc(sec.instructions || sec.title) + '</p>' +
                 '<p class="ve-question-text">' + esc(q.question) + '</p>' +
                 questionBody +
               '</div>' +
@@ -677,7 +719,7 @@
         this._handleContinue();
         return;
       }
-      var q = session.questionQueue[session.questionIdx];
+      var q = this._currentQuestion();
       if (!q) return;
       if (q.type === 'order_sentences') {
         this._checkOrderAnswer();
@@ -686,25 +728,45 @@
       }
     },
 
+    _recordAttempt: function(q) {
+      var key = q._veKey;
+      var count = (session.attemptCounts[key] || 0) + 1;
+      session.attemptCounts[key] = count;
+      return count;
+    },
+
+    _applyQueueResult: function(q, isCorrect) {
+      var attemptNum = this._recordAttempt(q);
+      if (isCorrect) {
+        if (attemptNum === 1) session.firstTryCorrect++;
+        session.completedCount++;
+        this._removeCurrentQuestion();
+      } else {
+        this._requeueCurrentQuestion();
+      }
+    },
+
     _checkMCAnswer: function() {
       if (!session || session.awaitingContinue || !session._selectedMC) return;
-      var q = session.questionQueue[session.questionIdx];
+      var q = this._currentQuestion();
+      if (!q) return;
       var isCorrect = this._normalize(session._selectedMC) === this._normalize(q.answer);
+      this._applyQueueResult(q, isCorrect);
       this._showFeedback(isCorrect, q);
       this._lockMCOptions(session._selectedMC, isCorrect, q.answer);
-      if (isCorrect) session.correct++;
     },
 
     _checkOrderAnswer: function() {
       if (!session || session.awaitingContinue) return;
-      var q = session.questionQueue[session.questionIdx];
+      var q = this._currentQuestion();
+      if (!q) return;
       var expected = q.answer || [];
       var isCorrect = session.orderSelection.length === expected.length &&
         session.orderSelection.every(function(item, i) {
           return VideoExercises._normalize(item) === VideoExercises._normalize(expected[i]);
         });
+      this._applyQueueResult(q, isCorrect);
       this._showFeedback(isCorrect, q);
-      if (isCorrect) session.correct++;
     },
 
     _normalize: function(str) {
@@ -715,10 +777,14 @@
       var self = this;
       document.querySelectorAll('#ve-question-card .sp-option-btn').forEach(function(btn) {
         btn.disabled = true;
+        btn.classList.remove('sp-option-btn--selected');
         var val = btn.getAttribute('data-answer');
-        if (self._normalize(val) === self._normalize(correctAnswer)) {
-          btn.classList.add('sp-option-btn--correct');
-        } else if (self._normalize(val) === self._normalize(selected) && !isCorrect) {
+        var isCorrectOption = self._normalize(val) === self._normalize(correctAnswer);
+        var isSelectedWrong = self._normalize(val) === self._normalize(selected) && !isCorrect;
+        if (isCorrectOption) {
+          btn.classList.add('sp-option-btn--correct', 've-option-btn--revealed-correct');
+        }
+        if (isSelectedWrong) {
           btn.classList.add('sp-option-btn--incorrect');
         }
       });
@@ -769,8 +835,7 @@
         practiceMain.classList.remove('sp-practice-main--correct', 'sp-practice-main--incorrect');
       }
 
-      session.questionIdx++;
-      if (session.questionIdx >= session.questionQueue.length) {
+      if (!session.questionQueue.length) {
         this._finishSection();
         return;
       }
@@ -797,20 +862,44 @@
     _renderSectionComplete: function() {
       if (!session) return;
       var sec = session.section;
-      var total = session.questionQueue ? session.questionQueue.length : 0;
-      var correct = session.correct || 0;
+      var total = session.initialTotal || 0;
+      var correct = session.firstTryCorrect || 0;
 
       this._renderModal(
-        '<div class="ve-section-complete">' +
-          '<div class="ve-section-complete-icon">' + _mi('celebration') + '</div>' +
-          '<h2 class="ve-section-complete-title">Section complete!</h2>' +
-          '<p class="ve-section-complete-sub">' + esc(sec.title) + '</p>' +
-          (total > 0
-            ? '<p class="ve-section-complete-score">' + correct + ' / ' + total + ' correct</p>'
-            : '') +
-          '<button type="button" class="sp-btn sp-btn--primary sp-btn--action sp-btn--continue-mode sp-btn--correct" onclick="VideoExercises.closeModal()">' +
-            '<span class="material-symbols-outlined">arrow_forward</span>' +
-          '</button>' +
+        this._modalHeader({}) +
+        '<div class="sp-practice-session ve-modal-quiz ve-modal-complete">' +
+          '<div class="sp-practice-main">' +
+            '<div class="sp-practice-body ve-section-complete-body">' +
+              '<div class="sp-result-screen sp-result-screen--complete ve-section-complete">' +
+                '<div class="sp-result-celebration" aria-hidden="true">' +
+                  '<span class="sp-result-confetti sp-result-confetti--1"></span>' +
+                  '<span class="sp-result-confetti sp-result-confetti--2"></span>' +
+                  '<span class="sp-result-confetti sp-result-confetti--3"></span>' +
+                  '<span class="sp-result-confetti sp-result-confetti--4"></span>' +
+                '</div>' +
+                '<div class="sp-result-icon sp-result-icon--success">' + _mi('celebration') + '</div>' +
+                '<h2 class="sp-result-title">Section complete!</h2>' +
+                '<p class="sp-result-subtitle ve-section-complete-sub">' + esc(sec.title) + '</p>' +
+                (total > 0
+                  ? '<div class="ve-section-complete-score">' +
+                      '<span class="ve-section-complete-score-val">' + correct + ' / ' + total + '</span>' +
+                      '<span class="ve-section-complete-score-lbl">correct on first try</span>' +
+                    '</div>'
+                  : '') +
+              '</div>' +
+            '</div>' +
+            '<footer class="sp-practice-footer ve-complete-footer">' +
+              '<div class="sp-practice-footer-inner">' +
+                '<div class="sp-practice-footer-actions">' +
+                  '<div class="sp-footer-actions-right">' +
+                    '<button type="button" class="sp-btn sp-btn--primary sp-btn--action sp-btn--continue-mode sp-btn--correct" onclick="VideoExercises.closeModal()">' +
+                      '<span class="material-symbols-outlined">arrow_forward</span>' +
+                    '</button>' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+            '</footer>' +
+          '</div>' +
         '</div>'
       );
     }
