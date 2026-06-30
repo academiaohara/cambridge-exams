@@ -194,7 +194,7 @@
         if (typeof VideoExercises !== 'undefined') VideoExercises.openHub({ fromRoute: true });
       } else if (state.view === 'videoExercise' && state.exerciseId) {
         Dashboard.render();
-        if (typeof VideoExercises !== 'undefined') VideoExercises.openExercise(state.exerciseId, { fromRoute: true, phase: state.phase });
+        if (typeof VideoExercises !== 'undefined') VideoExercises.openExercise(state.exerciseId, { fromRoute: true });
       } else if (state.view === 'course') {
         if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons({ fromRoute: true });
       } else if (state.view === 'courseSection' && state.section) {
