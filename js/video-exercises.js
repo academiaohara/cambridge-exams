@@ -1,5 +1,5 @@
 // js/video-exercises.js
-// Video + post-video test: watch (9:16) → single continuous quiz flow
+// Stories: hub with chapter rows → video / quiz in a shared modal
 
 (function() {
   'use strict';
@@ -28,6 +28,10 @@
     _indexCache: null,
     _dataCache: {},
 
+    _defaultProgress: function() {
+      return { videoWatched: false, sectionsCompleted: {}, passed: false };
+    },
+
     _getProgress: function() {
       try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
       catch (e) { return {}; }
@@ -39,20 +43,51 @@
 
     _getExerciseProgress: function(exerciseId) {
       var all = this._getProgress();
-      return all[exerciseId] || { videoWatched: false, passed: false, bestScore: 0, quizProgressPct: 0 };
+      var current = all[exerciseId] || this._defaultProgress();
+      if (!current.sectionsCompleted) current.sectionsCompleted = {};
+      return current;
     },
 
     _saveExerciseProgress: function(exerciseId, patch) {
       var all = this._getProgress();
-      var current = all[exerciseId] || { videoWatched: false, passed: false, bestScore: 0, quizProgressPct: 0 };
+      var current = all[exerciseId] || this._defaultProgress();
+      if (!current.sectionsCompleted) current.sectionsCompleted = {};
       all[exerciseId] = Object.assign({}, current, patch);
+      if (patch.sectionsCompleted) {
+        all[exerciseId].sectionsCompleted = Object.assign({}, current.sectionsCompleted, patch.sectionsCompleted);
+      }
       this._saveProgress(all);
+    },
+
+    _isSectionComplete: function(prog, sectionIdx) {
+      return !!(prog.sectionsCompleted && prog.sectionsCompleted[String(sectionIdx)]);
+    },
+
+    _countCompletedSections: function(prog, totalSections) {
+      var n = 0;
+      for (var i = 0; i < totalSections; i++) {
+        if (this._isSectionComplete(prog, i)) n++;
+      }
+      return n;
+    },
+
+    _isEpisodeComplete: function(prog, totalSections) {
+      return !!prog.videoWatched && this._countCompletedSections(prog, totalSections) >= totalSections;
+    },
+
+    _syncEpisodePassed: function(exerciseId, totalSections) {
+      var prog = this._getExerciseProgress(exerciseId);
+      var passed = this._isEpisodeComplete(prog, totalSections);
+      if (passed !== prog.passed) {
+        this._saveExerciseProgress(exerciseId, { passed: passed });
+      }
+      return passed;
     },
 
     _loadIndex: async function() {
       if (this._indexCache) return this._indexCache;
       var res = await fetch(DATA_BASE + 'index.json');
-      if (!res.ok) throw new Error('Failed to load video exercises index');
+      if (!res.ok) throw new Error('Failed to load stories index');
       this._indexCache = await res.json();
       return this._indexCache;
     },
@@ -89,21 +124,9 @@
       return sidebars;
     },
 
-    _applyLessonFocus: function(active) {
-      var layout = document.querySelector('.dashboard-layout');
-      var center = document.querySelector('.dashboard-center');
-      if (layout) layout.classList.toggle('dashboard-layout--lesson-focus', !!active);
-      if (center) center.classList.toggle('course-center--lesson-focus', !!active);
-      var rightSidebar = document.getElementById('dashboardRightSidebar');
-      var rightShell = document.getElementById('dashboardRightSidebarShell');
-      if (rightSidebar) rightSidebar.style.display = active ? 'none' : '';
-      if (rightShell) rightShell.style.display = active ? 'none' : '';
-    },
-
     _renderHubLayout: function(centerHtml) {
       var content = document.getElementById('main-content');
       if (!content) return;
-      this._applyLessonFocus(false);
       var sidebars = this._buildSidebars();
       content.innerHTML =
         '<div class="dashboard-layout">' +
@@ -121,148 +144,74 @@
       this._setView('videoExercises');
     },
 
-    _renderLessonLayout: function(innerHtml) {
-      var content = document.getElementById('main-content');
-      if (!content) return;
-      // Self-contained overlay: avoids the course/dashboard flex-chain
-      // height problem (parent chain uses only min-height, never explicit height)
-      content.innerHTML =
-        '<div class="ve-lesson-root">' +
-          '<div class="ve-lesson">' + innerHtml + '</div>' +
-        '</div>';
-      this._setView('videoExercise');
+    _buildStepCirclesHtml: function(item, prog, sectionCount, disabled) {
+      var self = this;
+      var circles = '';
+
+      var playCls = 've-step-circle ve-step-circle--play ve-step-circle--active';
+      if (prog.videoWatched) playCls += ' ve-step-circle--done';
+      circles +=
+        '<button type="button" class="' + playCls + '"' +
+          (disabled ? ' disabled' : '') +
+          ' onclick="event.stopPropagation(); VideoExercises.openVideoModal(\'' + jsStr(item.id) + '\')"' +
+          ' aria-label="Watch video">' +
+          _mi('play_arrow') +
+        '</button>';
+
+      var maxSections = sectionCount;
+      for (var s = 0; s < maxSections; s++) {
+        var num = s + 1;
+        var done = self._isSectionComplete(prog, s);
+        var available = prog.videoWatched;
+        var cls = 've-step-circle ve-step-circle--num';
+        if (done) cls += ' ve-step-circle--done';
+        else if (available && !disabled) cls += ' ve-step-circle--active';
+        else cls += ' ve-step-circle--locked';
+
+        circles +=
+          '<button type="button" class="' + cls + '"' +
+            ((!available || disabled) ? ' disabled' : '') +
+            ' onclick="event.stopPropagation(); VideoExercises.openSectionModal(\'' + jsStr(item.id) + '\', ' + s + ')"' +
+            ' aria-label="Section ' + num + '">' +
+            (done ? _mi('check') : String(num)) +
+          '</button>';
+      }
+
+      return '<div class="ve-chapter-steps">' + circles + '</div>';
     },
 
-    _buildQuestionQueue: function(data) {
-      var queue = [];
-      var globalIdx = 0;
-      (data.sections || []).forEach(function(sec, sectionIdx) {
-        (sec.questions || []).forEach(function(q, qIdx) {
-          queue.push({
-            section: sec,
-            sectionIdx: sectionIdx,
-            question: q,
-            questionIdxInSection: qIdx,
-            globalIdx: globalIdx,
-            isFirstInSection: qIdx === 0
-          });
-          globalIdx++;
-        });
-      });
-      return queue;
-    },
-
-    _totalQuestions: function(data) {
-      if (data.totalQuestions) return data.totalQuestions;
-      var n = 0;
-      (data.sections || []).forEach(function(sec) {
-        n += (sec.questions || []).length;
-      });
-      return n;
-    },
-
-    // ─── Hub ──────────────────────────────────────────────────────────────
-
-    _buildEpisodeCardHtml: function(item, prog) {
-      var isAvailable = item.status === 'available';
+    _buildChapterRowHtml: function(item, prog, sectionCount) {
       var isComingSoon = item.status === 'coming_soon';
+      var isComplete = !isComingSoon && this._isEpisodeComplete(prog, sectionCount);
+      var rowCls = 've-chapter-row';
+      if (isComingSoon) rowCls += ' ve-chapter-row--coming-soon';
+      if (isComplete) rowCls += ' ve-chapter-row--complete';
 
-      var statusCls = isComingSoon ? 've-story-card--coming-soon' :
-                      (prog.passed ? 've-story-card--passed' :
-                      (prog.videoWatched ? 've-story-card--started' : ''));
-
-      // gradient
-      var g = item.thumbnailGradient || {};
-      var gradFrom = g.from || '#1e1f42';
-      var gradVia  = g.via  || '#2D2E5F';
-      var gradTo   = g.to   || '#1899d6';
-      var gradStyle = 'background:linear-gradient(160deg,' + gradFrom + ' 0%,' + gradVia + ' 55%,' + gradTo + ' 100%)';
-
-      // progress bar inside thumbnail
-      var progressPct = 0;
-      if (prog.passed) {
-        progressPct = 100;
-      } else if (prog.videoWatched) {
-        progressPct = Math.max(18, prog.quizProgressPct || 0);
-      }
-
-      // thumbnail inner content
-      var thumbInner = '';
-      if (isComingSoon) {
-        thumbInner =
-          '<div class="ve-coming-soon-overlay">' +
-            '<div class="ve-coming-soon-lock">' + _mi('lock') + '</div>' +
-            '<span class="ve-coming-soon-label">Coming soon</span>' +
-          '</div>';
-      } else {
-        var playIcon = prog.passed ? 'replay' : 'play_arrow';
-        thumbInner = '<div class="ve-story-preview-play">' + _mi(playIcon) + '</div>';
-        if (progressPct > 0) {
-          thumbInner +=
-            '<div class="ve-story-progress-bar">' +
-              '<div class="ve-story-progress-fill" style="width:' + progressPct + '%"></div>' +
-            '</div>';
-        }
-      }
-
-      // badges
       var epNum = item.episode || 1;
       var levelBadge = item.level
         ? '<span class="ve-level-badge ve-level-badge--' + esc(item.level) + '">' + esc(item.level) + '</span>'
         : '';
 
-      // tags
-      var tagsHtml = (item.tags || []).slice(0, 2).map(function(t) {
-        return '<span class="ve-tag">' + esc(t) + '</span>';
-      }).join('');
+      var statusLabel = isComingSoon
+        ? '<span class="ve-chapter-status ve-chapter-status--soon">Coming soon</span>'
+        : (isComplete
+          ? '<span class="ve-chapter-status ve-chapter-status--done">' + _mi('check_circle') + ' Completed</span>'
+          : (prog.videoWatched
+            ? '<span class="ve-chapter-status ve-chapter-status--started">In progress</span>'
+            : ''));
 
-      // vocab preview (available episodes only)
-      var vocabHtml = '';
-      if (isAvailable && item.vocabPreview && item.vocabPreview.length) {
-        var chips = item.vocabPreview.slice(0, 4).map(function(w) {
-          return '<span class="ve-vocab-chip">' + esc(w) + '</span>';
-        }).join('');
-        vocabHtml = '<div class="ve-vocab-row">' + chips + '</div>';
-      }
-
-      // CTA
-      var ctaHtml = '';
-      if (!isComingSoon) {
-        var ctaCls, ctaIcon, ctaText;
-        if (prog.passed) {
-          ctaCls  = 've-story-cta--passed';
-          ctaIcon = 'replay';
-          ctaText = 'Watch again';
-        } else if (prog.videoWatched) {
-          ctaCls  = 've-story-cta--started';
-          ctaIcon = 'play_circle';
-          ctaText = 'Continue';
-        } else {
-          ctaCls  = '';
-          ctaIcon = 'play_arrow';
-          ctaText = 'Watch';
-        }
-        ctaHtml = '<div class="ve-story-footer">' +
-          '<span class="ve-story-cta ' + ctaCls + '">' + _mi(ctaIcon) + ' ' + ctaText + '</span>' +
-        '</div>';
-      }
-
-      var clickAttr    = isComingSoon ? '' : ' onclick="VideoExercises.openExercise(\'' + jsStr(item.id) + '\')"';
-      var disabledAttr = isComingSoon ? ' disabled aria-label="Coming soon"' : '';
-
-      return '<button type="button" class="ve-story-card ' + statusCls + '"' + clickAttr + disabledAttr + '>' +
-        '<div class="ve-story-preview" style="' + gradStyle + '">' +
-          '<div class="ve-episode-badge">Ep. ' + epNum + '</div>' +
-          levelBadge +
-          thumbInner +
+      return '<div class="' + rowCls + '" data-exercise-id="' + esc(item.id) + '">' +
+        '<div class="ve-chapter-row-info">' +
+          '<div class="ve-chapter-row-top">' +
+            '<span class="ve-chapter-ep">Ep. ' + epNum + '</span>' +
+            levelBadge +
+            statusLabel +
+          '</div>' +
+          '<h3 class="ve-chapter-title">' + esc(item.title) + '</h3>' +
+          (item.description ? '<p class="ve-chapter-desc">' + esc(item.description) + '</p>' : '') +
         '</div>' +
-        '<div class="ve-story-body">' +
-          '<h3 class="ve-story-title">' + esc(item.title) + '</h3>' +
-          (tagsHtml ? '<div class="ve-tags-row">' + tagsHtml + '</div>' : '') +
-          vocabHtml +
-          ctaHtml +
-        '</div>' +
-      '</button>';
+        this._buildStepCirclesHtml(item, prog, sectionCount, isComingSoon) +
+      '</div>';
     },
 
     openHub: async function(opts) {
@@ -276,40 +225,42 @@
         var index = await this._loadIndex();
         var items = (index.items || []).filter(function(i) { return i.status !== 'hidden'; });
 
-        var availableCount = items.filter(function(i) { return i.status === 'available'; }).length;
-        var totalCount = items.length;
+        var availableItems = items.filter(function(i) { return i.status === 'available'; });
+        await Promise.all(availableItems.map(function(item) {
+          return self._loadExercise(item.id).catch(function() { return null; });
+        }));
+
         var passedCount = 0;
-        items.forEach(function(item) {
-          if (item.status === 'available') {
-            var p = self._getExerciseProgress(item.id);
-            if (p.passed) passedCount++;
-          }
+        availableItems.forEach(function(item) {
+          var data = self._dataCache[item.id];
+          var sections = (data && data.sections) ? data.sections.length : 3;
+          var prog = self._getExerciseProgress(item.id);
+          if (self._isEpisodeComplete(prog, sections)) passedCount++;
         });
 
-        // Collect unique levels
-        var levels = [];
-        items.forEach(function(i) { if (i.level && levels.indexOf(i.level) < 0) levels.push(i.level); });
-        var levelStr = levels.length ? levels.join(' · ') : '';
-
-        var cardsHtml = items.map(function(item) {
-          var prog = item.status === 'available' ? self._getExerciseProgress(item.id) : {};
-          return self._buildEpisodeCardHtml(item, prog);
+        var rowsHtml = items.map(function(item) {
+          var prog = item.status === 'available' ? self._getExerciseProgress(item.id) : self._defaultProgress();
+          var data = self._dataCache[item.id];
+          var sectionCount = (data && data.sections) ? data.sections.length : 3;
+          return self._buildChapterRowHtml(item, prog, sectionCount);
         }).join('');
 
-        if (!cardsHtml) cardsHtml = '<div class="ve-empty">No episodes available yet.</div>';
+        if (!rowsHtml) rowsHtml = '<div class="ve-empty">No episodes available yet.</div>';
 
-        var overallProgress = availableCount > 0
-          ? '<div class="ve-series-overall-progress">' +
-              '<div class="ve-series-overall-fill" style="width:' + Math.round((passedCount / availableCount) * 100) + '%"></div>' +
-            '</div>' +
-            '<span class="ve-series-overall-label">' + passedCount + ' / ' + availableCount + ' completed</span>'
+        var overallProgress = availableItems.length > 0
+          ? '<div class="ve-series-progress-row">' +
+              '<div class="ve-series-overall-progress">' +
+                '<div class="ve-series-overall-fill" style="width:' + Math.round((passedCount / availableItems.length) * 100) + '%"></div>' +
+              '</div>' +
+              '<span class="ve-series-overall-label">' + passedCount + ' / ' + availableItems.length + ' completed</span>' +
+            '</div>'
           : '';
 
         self._renderHubLayout(
           '<div class="ve-hub">' +
             '<header class="ve-series-header">' +
               '<div class="ve-series-header-top">' +
-                '<div class="ve-series-brand-icon">' + _mi('movie') + '</div>' +
+                '<div class="ve-series-brand-icon">' + _mi('auto_stories') + '</div>' +
                 '<div class="ve-series-header-text">' +
                   '<h1 class="ve-series-title">Sune\'s Stories</h1>' +
                   '<p class="ve-series-tagline">Watch animated episodes &amp; master English vocabulary</p>' +
@@ -317,14 +268,11 @@
               '</div>' +
               '<div class="ve-series-meta-row">' +
                 '<span class="ve-series-pill">' + _mi('tv') + ' Season 1</span>' +
-                '<span class="ve-series-pill">' + _mi('play_circle') + ' ' + totalCount + ' Episodes</span>' +
-                (levelStr ? '<span class="ve-series-pill">' + levelStr + '</span>' : '') +
+                '<span class="ve-series-pill">' + _mi('play_circle') + ' ' + items.length + ' Episodes</span>' +
               '</div>' +
-              (overallProgress
-                ? '<div class="ve-series-progress-row">' + overallProgress + '</div>'
-                : '') +
+              overallProgress +
             '</header>' +
-            '<div class="ve-story-grid">' + cardsHtml + '</div>' +
+            '<div class="ve-chapter-list">' + rowsHtml + '</div>' +
           '</div>'
         );
 
@@ -332,303 +280,285 @@
           self._pushState({ view: 'videoExercises' });
         }
       } catch (e) {
-        content.innerHTML = '<div class="ve-error">Could not load video exercises.</div>';
+        content.innerHTML = '<div class="ve-error">Could not load stories.</div>';
         console.error(e);
       }
     },
 
     openExercise: async function(exerciseId, opts) {
       var self = this;
-      var content = document.getElementById('main-content');
-      if (!content) return;
-
+      await this.openHub({ fromRoute: true });
+      if (!opts || !opts.fromRoute) {
+        self._pushState({ view: 'videoExercise', exerciseId: exerciseId });
+      }
+      var prog = this._getExerciseProgress(exerciseId);
       try {
         var data = await this._loadExercise(exerciseId);
-        var prog = this._getExerciseProgress(exerciseId);
-        var queue = this._buildQuestionQueue(data);
+        var sections = (data.sections || []).length;
+        if (!prog.videoWatched) {
+          this.openVideoModal(exerciseId, { fromRoute: true });
+        } else {
+          var firstIncomplete = 0;
+          for (var i = 0; i < sections; i++) {
+            if (!this._isSectionComplete(prog, i)) { firstIncomplete = i; break; }
+          }
+          this.openSectionModal(exerciseId, firstIncomplete, { fromRoute: true });
+        }
+      } catch (e) {
+        this.openVideoModal(exerciseId, { fromRoute: true });
+      }
+    },
 
+    // ─── Modal shell ──────────────────────────────────────────────────────
+
+    _ensureModal: function() {
+      var existing = document.getElementById('ve-modal-overlay');
+      if (existing) return existing;
+      var overlay = document.createElement('div');
+      overlay.id = 've-modal-overlay';
+      overlay.className = 've-modal-overlay';
+      overlay.innerHTML =
+        '<div class="ve-modal-panel" role="dialog" aria-modal="true">' +
+          '<div class="ve-modal-inner" id="ve-modal-inner"></div>' +
+        '</div>';
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) VideoExercises.closeModal();
+      });
+      document.body.appendChild(overlay);
+      return overlay;
+    },
+
+    _renderModal: function(innerHtml) {
+      this._ensureModal();
+      var inner = document.getElementById('ve-modal-inner');
+      if (inner) inner.innerHTML = innerHtml;
+      var overlay = document.getElementById('ve-modal-overlay');
+      if (overlay) overlay.classList.add('ve-modal-overlay--open');
+      document.body.classList.add('ve-modal-open');
+      this._setView('videoExercise');
+    },
+
+    closeModal: function() {
+      var exerciseId = session && session.exerciseId;
+      var data = session && session.data;
+      var overlay = document.getElementById('ve-modal-overlay');
+      if (overlay) overlay.classList.remove('ve-modal-overlay--open');
+      document.body.classList.remove('ve-modal-open');
+      var video = document.getElementById('ve-video-player');
+      if (video) { try { video.pause(); } catch (e) { /* ignore */ } }
+      session = null;
+      if (exerciseId) this._refreshHubRow(exerciseId, data);
+      this._setView('videoExercises');
+      this._pushState({ view: 'videoExercises' });
+    },
+
+    _refreshHubRow: function(exerciseId, data) {
+      if (!exerciseId) return;
+      var row = document.querySelector('.ve-chapter-row[data-exercise-id="' + exerciseId + '"]');
+      if (!row) return;
+      var item = null;
+      if (this._indexCache) {
+        item = (this._indexCache.items || []).find(function(i) { return i.id === exerciseId; });
+      }
+      if (!item) return;
+      var prog = this._getExerciseProgress(exerciseId);
+      var sectionCount = (data && data.sections) ? data.sections.length : 3;
+      var tmp = document.createElement('div');
+      tmp.innerHTML = this._buildChapterRowHtml(item, prog, sectionCount);
+      var newRow = tmp.firstElementChild;
+      if (newRow) row.replaceWith(newRow);
+    },
+
+    _modalHeader: function(opts) {
+      opts = opts || {};
+      var centerHtml = '';
+      if (opts.showProgress) {
+        var total = session.questionQueue.length;
+        var done = session.questionIdx;
+        var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+        centerHtml = '<div class="sp-session-progress"><div class="sp-session-progress-track">' +
+          '<div class="sp-session-progress-fill" style="width:' + pct + '%"></div></div></div>';
+      } else if (opts.title) {
+        centerHtml = '<span class="ve-modal-header-title">' + esc(opts.title) + '</span>';
+      }
+      return '<header class="sp-practice-header ve-modal-header">' +
+        '<button type="button" class="sp-header-btn sp-header-exit" onclick="VideoExercises.closeModal()" aria-label="Close">' +
+          _mi('close') +
+        '</button>' +
+        centerHtml +
+        '<span class="ve-modal-header-spacer"></span>' +
+      '</header>';
+    },
+
+    // ─── Video modal ──────────────────────────────────────────────────────
+
+    openVideoModal: async function(exerciseId, opts) {
+      var self = this;
+      try {
+        var data = await this._loadExercise(exerciseId);
         session = {
           exerciseId: exerciseId,
           data: data,
-          queue: queue,
-          phase: prog.videoWatched ? 'video_end' : 'video',
-          queueIdx: 0,
-          lives: data.lives || 3,
-          maxLives: data.lives || 3,
-          correct: 0,
-          orderSelection: [],
-          awaitingContinue: false
+          mode: 'video',
+          phase: 'playing'
         };
 
-        this._renderSession();
+        self._renderModal(
+          self._modalHeader({ title: data.title }) +
+          '<div class="ve-modal-video-stage">' +
+            '<div class="ve-modal-video-frame">' +
+              '<video class="ve-video" id="ve-video-player" src="' + esc(data.videoUrl) + '" playsinline controls></video>' +
+            '</div>' +
+          '</div>' +
+          '<footer class="sp-practice-footer" id="ve-video-footer">' +
+            '<div class="sp-practice-footer-inner">' +
+              '<div class="sp-practice-footer-actions">' +
+                '<button type="button" class="sp-btn sp-btn--primary sp-btn--action" id="ve-video-continue" disabled onclick="VideoExercises._finishVideo()">' +
+                  '<span class="material-symbols-outlined">arrow_forward</span>' +
+                '</button>' +
+              '</div>' +
+            '</div>' +
+          '</footer>'
+        );
+
+        var video = document.getElementById('ve-video-player');
+        if (video) {
+          video.onended = function() { self._onVideoEnded(); };
+          video.onplay = function() {
+            var btn = document.getElementById('ve-video-continue');
+            if (btn && session && session.phase === 'ended') btn.disabled = false;
+          };
+        }
 
         if (!opts || !opts.fromRoute) {
           self._pushState({ view: 'videoExercise', exerciseId: exerciseId });
         }
       } catch (e) {
-        content.innerHTML = '<div class="ve-error">Episode not found.</div>';
         console.error(e);
-      }
-    },
-
-    _renderSession: function() {
-      if (!session) return;
-      switch (session.phase) {
-        case 'video':
-        case 'video_end':
-          this._renderVideoPhase();
-          break;
-        case 'chapter':
-          this._renderChapterBreak();
-          break;
-        case 'quiz':
-          this._renderQuizQuestion();
-          break;
-        case 'result_pass':
-        case 'result_fail':
-          this._renderResult();
-          break;
-      }
-    },
-
-    // ─── Lesson header ────────────────────────────────────────────────────
-
-    _renderLessonHeader: function(opts) {
-      opts = opts || {};
-      var heartsHtml = '';
-      for (var h = 0; h < session.maxLives; h++) {
-        heartsHtml += '<span class="ve-heart' + (h < session.lives ? ' ve-heart--full' : ' ve-heart--empty') + '">' +
-          _mi(h < session.lives ? 'favorite' : 'heart_broken') + '</span>';
-      }
-
-      var centerHtml = '';
-      if (opts.showProgress) {
-        var total = session.queue.length;
-        var done  = session.queueIdx;
-        var pct   = total > 0 ? Math.round((done / total) * 100) : 0;
-        centerHtml = '<div class="ve-session-progress"><div class="ve-session-progress-fill" style="width:' + pct + '%"></div></div>';
-      } else if (opts.episodeLabel) {
-        centerHtml = '<span class="ve-header-episode-label">' + esc(opts.episodeLabel) + '</span>';
-      }
-
-      return '<header class="ve-practice-header">' +
-        '<button type="button" class="ve-header-btn" onclick="VideoExercises.' + (opts.exitAction || 'openHub') + '()" aria-label="Exit">' +
-          _mi('close') + '</button>' +
-        centerHtml +
-        (opts.showHearts ? '<div class="ve-hearts">' + heartsHtml + '</div>' : '<span></span>') +
-      '</header>';
-    },
-
-    // ─── Video phase ──────────────────────────────────────────────────────
-
-    _renderVideoPhase: function() {
-      var self = this;
-      var data = session.data;
-      var showEndOverlay = session.phase === 'video_end';
-
-      // find episode info from index cache
-      var episodeMeta = null;
-      if (this._indexCache) {
-        var items = this._indexCache.items || [];
-        for (var i = 0; i < items.length; i++) {
-          if (items[i].id === session.exerciseId) { episodeMeta = items[i]; break; }
-        }
-      }
-
-      var epLabel = episodeMeta
-        ? 'S' + (episodeMeta.season || 1) + ' · Ep. ' + (episodeMeta.episode || 1)
-        : '';
-
-      var overlayHtml = showEndOverlay
-        ? '<div class="ve-video-overlay">' +
-            '<div class="ve-video-overlay-actions">' +
-              '<button type="button" class="ve-btn ve-btn--ghost" onclick="VideoExercises._replayVideo()">' +
-                _mi('replay') + ' Watch again' +
-              '</button>' +
-              '<button type="button" class="ve-btn ve-btn--primary" onclick="VideoExercises._startQuiz()">' +
-                _mi('quiz') + ' Start test' +
-              '</button>' +
-            '</div>' +
-          '</div>'
-        : '';
-
-      this._renderLessonLayout(
-        this._renderLessonHeader({ exitAction: 'openHub', episodeLabel: epLabel }) +
-        '<div class="ve-video-stage">' +
-          '<div class="ve-video-frame' + (showEndOverlay ? ' ve-video-frame--ended' : '') + '">' +
-            '<video class="ve-video" id="ve-video-player" src="' + esc(data.videoUrl) + '" playsinline controls></video>' +
-            overlayHtml +
-          '</div>' +
-          '<div class="ve-video-meta">' +
-            '<h1 class="ve-video-title">' + esc(data.title) + '</h1>' +
-            '<p class="ve-video-desc">' + esc(data.description || '') + '</p>' +
-          '</div>' +
-        '</div>'
-      );
-
-      var video = document.getElementById('ve-video-player');
-      if (video) {
-        video.onended = function() { self._onVideoEnded(); };
-        if (showEndOverlay) video.pause();
       }
     },
 
     _onVideoEnded: function() {
       if (!session) return;
-      session.phase = 'video_end';
+      session.phase = 'ended';
       this._saveExerciseProgress(session.exerciseId, { videoWatched: true });
-      this._renderSession();
+      var btn = document.getElementById('ve-video-continue');
+      if (btn) btn.disabled = false;
+      var footer = document.getElementById('ve-video-footer');
+      if (footer) footer.classList.add('sp-practice-footer--correct');
     },
 
-    _replayVideo: function() {
+    _finishVideo: function() {
       if (!session) return;
-      session.phase = 'video';
-      this._renderSession();
-      var video = document.getElementById('ve-video-player');
-      if (video) {
-        video.currentTime = 0;
-        video.play().catch(function() { /* ignore */ });
-      }
-    },
-
-    _startQuiz: function() {
-      if (!session) return;
-      session.phase = session.queue[0] && session.queue[0].isFirstInSection ? 'chapter' : 'quiz';
-      session.queueIdx = 0;
-      session.lives = session.data.lives || 3;
-      session.correct = 0;
-      session._pendingChapter = session.queue[0] || null;
       this._saveExerciseProgress(session.exerciseId, { videoWatched: true });
-      this._renderSession();
-      this._pushState({ view: 'videoExercise', exerciseId: session.exerciseId, phase: 'quiz' });
+      var exerciseId = session.exerciseId;
+      var data = session.data;
+      this.closeModal();
+      this._syncEpisodePassed(exerciseId, (data.sections || []).length);
     },
 
-    // ─── Chapter break ────────────────────────────────────────────────────
+    // ─── Section quiz modal ───────────────────────────────────────────────
 
-    _sectionIcon: function(title) {
-      var t = (title || '').toLowerCase();
-      if (t.indexOf('vocab') >= 0)                                            return 'menu_book';
-      if (t.indexOf('comprehension') >= 0 || t.indexOf('understanding') >= 0) return 'smart_display';
-      if (t.indexOf('fill') >= 0 || t.indexOf('gap') >= 0 || t.indexOf('complete') >= 0) return 'edit_note';
-      if (t.indexOf('order') >= 0 || t.indexOf('put') >= 0 || t.indexOf('sequence') >= 0) return 'format_list_numbered';
-      if (t.indexOf('word') >= 0 || t.indexOf('spell') >= 0)                 return 'spellcheck';
-      return 'quiz';
-    },
+    openSectionModal: async function(exerciseId, sectionIdx, opts) {
+      var self = this;
+      try {
+        var data = await this._loadExercise(exerciseId);
+        var section = (data.sections || [])[sectionIdx];
+        if (!section) return;
 
-    _sectionIconColor: function(sectionIdx) {
-      var palette = ['#1899d6', '#58cc02', '#ffc800', '#ef4444', '#8b5cf6'];
-      return palette[sectionIdx % palette.length];
-    },
+        var questions = section.questions || [];
+        session = {
+          exerciseId: exerciseId,
+          data: data,
+          mode: 'quiz',
+          sectionIdx: sectionIdx,
+          section: section,
+          questionQueue: questions,
+          questionIdx: 0,
+          correct: 0,
+          orderSelection: [],
+          awaitingContinue: false,
+          _lastResultCorrect: null,
+          phase: questions.length ? 'quiz' : 'complete'
+        };
 
-    _renderChapterBreak: function() {
-      var entry = session._pendingChapter || session.queue[session.queueIdx];
-      if (!entry) {
-        session.phase = 'quiz';
-        this._renderSession();
-        return;
+        if (session.phase === 'complete') {
+          self._markSectionComplete();
+          self._renderSectionComplete();
+          return;
+        }
+
+        self._renderQuizQuestion();
+
+        if (!opts || !opts.fromRoute) {
+          self._pushState({ view: 'videoExercise', exerciseId: exerciseId, sectionIdx: sectionIdx });
+        }
+      } catch (e) {
+        console.error(e);
       }
-      var sec = entry.section;
-      var sectionNum = entry.sectionIdx + 1;
-      var totalSections = (session.data.sections || []).length;
-
-      var icon = this._sectionIcon(sec.title);
-      var iconColor = this._sectionIconColor(entry.sectionIdx);
-      var qCount = (sec.questions || []).length;
-
-      this._renderLessonLayout(
-        this._renderLessonHeader({ showProgress: true, showHearts: true, exitAction: '_exitQuiz' }) +
-        '<div class="ve-chapter-break">' +
-          '<div class="ve-chapter-icon-wrap" style="--ve-chapter-color:' + iconColor + '">' +
-            _mi(icon) +
-          '</div>' +
-          '<div class="ve-chapter-badge">Part ' + sectionNum + ' of ' + totalSections + '</div>' +
-          '<h2 class="ve-chapter-title">' + esc(sec.title) + '</h2>' +
-          '<p class="ve-chapter-instructions">' + esc(sec.instructions || '') + '</p>' +
-          '<p class="ve-chapter-count">' +
-            _mi('help') + ' ' +
-            qCount + ' question' + (qCount !== 1 ? 's' : '') +
-          '</p>' +
-          '<div class="ve-chapter-actions">' +
-            '<button type="button" class="ve-btn ve-btn--primary" onclick="VideoExercises._continueFromChapter()">' +
-              _mi('arrow_forward') + ' Continue' +
-            '</button>' +
-            '<button type="button" class="ve-btn ve-btn--ghost ve-chapter-rewatch" onclick="VideoExercises._goToVideo()">' +
-              _mi('replay') + ' Watch video again' +
-            '</button>' +
-          '</div>' +
-        '</div>'
-      );
-    },
-
-    _continueFromChapter: function() {
-      if (!session) return;
-      session.phase = 'quiz';
-      session._pendingChapter = null;
-      this._renderSession();
-    },
-
-    _goToVideo: function() {
-      if (!session) return;
-      session.phase = 'video_end';
-      this._renderSession();
-    },
-
-    _exitQuiz: function() {
-      if (!session) return;
-      this.openHub();
-    },
-
-    // ─── Quiz ─────────────────────────────────────────────────────────────
-
-    _getCurrentEntry: function() {
-      return session.queue[session.queueIdx] || null;
     },
 
     _renderQuizQuestion: function() {
-      var entry = this._getCurrentEntry();
-      if (!entry) {
-        this._finishQuiz();
+      if (!session || session.mode !== 'quiz') return;
+      var q = session.questionQueue[session.questionIdx];
+      if (!q) {
+        this._finishSection();
         return;
       }
 
-      var sec = entry.section;
-      var q = entry.question;
-      var globalNum = entry.globalIdx + 1;
-      var total = session.queue.length;
+      var sec = session.section;
+      var globalNum = session.questionIdx + 1;
+      var total = session.questionQueue.length;
       var questionBody = this._renderQuestionBody(q);
 
-      this._renderLessonLayout(
-        this._renderLessonHeader({ showProgress: true, showHearts: true, exitAction: '_exitQuiz' }) +
-        '<div class="ve-quiz-stage">' +
-          '<div class="ve-quiz-chapter-label">' + esc(sec.title) + '</div>' +
-          '<div class="ve-quiz-counter">' + globalNum + ' / ' + total + '</div>' +
-          '<div class="ve-question-card" id="ve-question-card">' +
-            '<p class="ve-question-instructions">' + esc(sec.instructions || '') + '</p>' +
-            '<p class="ve-question-text">' + esc(q.question) + '</p>' +
-            questionBody +
-            '<div class="ve-feedback" id="ve-feedback" style="display:none;"></div>' +
+      this._renderModal(
+        this._modalHeader({ showProgress: true }) +
+        '<div class="sp-practice-session ve-modal-quiz">' +
+          '<div class="sp-practice-main" id="ve-practice-main">' +
+            '<div class="sp-practice-body">' +
+              '<div class="sp-exercise-card" id="ve-question-card">' +
+                '<p class="sp-session-instruction">' + esc(sec.instructions || sec.title) + '</p>' +
+                '<p class="ve-question-text">' + esc(q.question) + '</p>' +
+                questionBody +
+              '</div>' +
+            '</div>' +
+            '<footer class="sp-practice-footer" id="ve-practice-footer">' +
+              '<div class="sp-practice-footer-inner">' +
+                '<div id="ve-feedback-mount" class="sp-feedback-mount"></div>' +
+                '<div class="sp-practice-footer-actions">' +
+                  '<div class="sp-footer-actions-right">' +
+                    '<button type="button" class="sp-btn sp-btn--primary sp-btn--action" id="ve-action-btn" data-mode="check" disabled onclick="VideoExercises._handleActionClick()">' +
+                      '<span class="material-symbols-outlined">check</span>' +
+                    '</button>' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+            '</footer>' +
           '</div>' +
-          (q.type === 'order_sentences' ?
-            '<button type="button" class="ve-btn ve-btn--primary ve-check-btn" id="ve-check-btn" onclick="VideoExercises._checkOrderAnswer()">' +
-              _mi('check') + ' Check order' +
-            '</button>' : '') +
         '</div>'
       );
 
       if (q.type === 'order_sentences') {
         session.orderSelection = [];
+        session._selectedMC = null;
         this._initOrderTiles(q);
+        this._setActionBtn('check', false);
+      } else {
+        session._selectedMC = null;
+        this._setActionBtn('check', false);
       }
     },
 
     _renderQuestionBody: function(q) {
       var self = this;
       if (q.type === 'multiple_choice' || q.type === 'fill_gap_choice') {
-        var optsHtml = (q.options || []).map(function(opt) {
-          return '<button type="button" class="ve-option" data-answer="' + esc(opt) + '" onclick="VideoExercises._answerMC(\'' + jsStr(opt) + '\')">' +
-            esc(opt) + '</button>';
+        var optsHtml = (q.options || []).map(function(opt, i) {
+          return '<button type="button" class="sp-option-btn" data-answer="' + esc(opt) + '" onclick="VideoExercises._selectMC(\'' + jsStr(opt) + '\', this)">' +
+            '<span class="sp-option-num">' + (i + 1) + '</span>' +
+            '<span class="sp-option-label">' + esc(opt) + '</span>' +
+          '</button>';
         }).join('');
-        return '<div class="ve-options">' + optsHtml + '</div>';
+        return '<div class="sp-option-grid">' + optsHtml + '</div>';
       }
 
       if (q.type === 'order_sentences') {
@@ -655,9 +585,19 @@
       return arr;
     },
 
+    _selectMC: function(selected, btn) {
+      if (!session || session.awaitingContinue) return;
+      document.querySelectorAll('#ve-question-card .sp-option-btn').forEach(function(b) {
+        b.classList.remove('sp-option-btn--selected');
+      });
+      btn.classList.add('sp-option-btn--selected');
+      session._selectedMC = selected;
+      this._setActionBtn('check', true);
+    },
+
     _initOrderTiles: function(q) {
       var self = this;
-      var bank   = document.getElementById('ve-tile-bank');
+      var bank = document.getElementById('ve-tile-bank');
       var answer = document.getElementById('ve-tile-answer');
       if (!bank || !answer) return;
 
@@ -669,12 +609,13 @@
         btn.classList.add('ve-tile--used');
         session.orderSelection.push(item);
         self._renderOrderAnswer();
+        self._setActionBtn('check', session.orderSelection.length > 0);
       };
 
       answer.onclick = function(e) {
         var rm = e.target.closest('.ve-tile-answer-item');
         if (!rm || session.awaitingContinue) return;
-        var idx  = parseInt(rm.getAttribute('data-idx'), 10);
+        var idx = parseInt(rm.getAttribute('data-idx'), 10);
         var item = session.orderSelection[idx];
         session.orderSelection.splice(idx, 1);
         self._renderOrderAnswer();
@@ -686,6 +627,7 @@
             break;
           }
         }
+        self._setActionBtn('check', session.orderSelection.length > 0);
       };
     },
 
@@ -698,234 +640,174 @@
       }).join('');
     },
 
-    _answerMC: function(selected) {
-      if (!session || session.awaitingContinue) return;
-      var entry = this._getCurrentEntry();
-      if (!entry) return;
-      var q    = entry.question;
-      var self = this;
+    _setActionBtn: function(mode, enabled) {
+      var actionBtn = document.getElementById('ve-action-btn');
+      var footer = document.getElementById('ve-practice-footer');
+      var practiceMain = document.getElementById('ve-practice-main');
+      if (!actionBtn) return;
 
-      var isCorrect = this._normalize(selected) === this._normalize(q.answer);
-      this._showFeedback(isCorrect, q);
-      this._lockOptions(selected, isCorrect, q.answer);
+      actionBtn.dataset.mode = mode;
+      actionBtn.disabled = !enabled;
+      var icon = actionBtn.querySelector('.material-symbols-outlined');
+      if (icon) icon.textContent = mode === 'check' ? 'check' : 'arrow_forward';
 
-      if (isCorrect) session.correct++;
+      actionBtn.classList.toggle('sp-btn--continue-mode', mode === 'continue');
+      actionBtn.classList.toggle('sp-btn--correct', mode === 'continue' && session._lastResultCorrect === true);
+      actionBtn.classList.toggle('sp-btn--incorrect', mode === 'continue' && session._lastResultCorrect === false);
 
-      if (!isCorrect) {
-        session.lives--;
-        if (session.lives <= 0) {
-          setTimeout(function() { self._failQuiz(); }, 1800);
-          return;
-        }
+      var isFeedback = mode === 'continue';
+      if (footer) {
+        footer.classList.toggle('sp-practice-footer--feedback', isFeedback);
+        footer.classList.toggle('sp-practice-footer--correct', mode === 'continue' && session._lastResultCorrect === true);
+        footer.classList.toggle('sp-practice-footer--incorrect', isFeedback && session._lastResultCorrect === false);
       }
+      if (practiceMain) {
+        practiceMain.classList.toggle('sp-practice-main--correct', mode === 'continue' && session._lastResultCorrect === true);
+        practiceMain.classList.toggle('sp-practice-main--incorrect', isFeedback && session._lastResultCorrect === false);
+      }
+    },
 
-      session.awaitingContinue = true;
-      setTimeout(function() { self._advanceQuiz(); }, isCorrect ? 1000 : 2000);
+    _handleActionClick: function() {
+      if (!session || session.awaitingContinue) {
+        this._handleContinue();
+        return;
+      }
+      var q = session.questionQueue[session.questionIdx];
+      if (!q) return;
+      if (q.type === 'order_sentences') {
+        this._checkOrderAnswer();
+      } else {
+        this._checkMCAnswer();
+      }
+    },
+
+    _checkMCAnswer: function() {
+      if (!session || session.awaitingContinue || !session._selectedMC) return;
+      var q = session.questionQueue[session.questionIdx];
+      var isCorrect = this._normalize(session._selectedMC) === this._normalize(q.answer);
+      this._showFeedback(isCorrect, q);
+      this._lockMCOptions(session._selectedMC, isCorrect, q.answer);
+      if (isCorrect) session.correct++;
     },
 
     _checkOrderAnswer: function() {
       if (!session || session.awaitingContinue) return;
-      var entry = this._getCurrentEntry();
-      if (!entry || entry.question.type !== 'order_sentences') return;
-      var q    = entry.question;
-      var self = this;
-
-      var expected  = q.answer || [];
+      var q = session.questionQueue[session.questionIdx];
+      var expected = q.answer || [];
       var isCorrect = session.orderSelection.length === expected.length &&
         session.orderSelection.every(function(item, i) {
-          return self._normalize(item) === self._normalize(expected[i]);
+          return VideoExercises._normalize(item) === VideoExercises._normalize(expected[i]);
         });
-
       this._showFeedback(isCorrect, q);
-      var checkBtn = document.getElementById('ve-check-btn');
-      if (checkBtn) checkBtn.disabled = true;
-
       if (isCorrect) session.correct++;
-
-      if (!isCorrect) {
-        session.lives--;
-        if (session.lives <= 0) {
-          setTimeout(function() { self._failQuiz(); }, 1800);
-          return;
-        }
-      }
-
-      session.awaitingContinue = true;
-      setTimeout(function() { self._advanceQuiz(); }, isCorrect ? 1000 : 2000);
     },
 
     _normalize: function(str) {
       return String(str || '').trim().toLowerCase().replace(/\s+/g, ' ');
     },
 
-    _lockOptions: function(selected, isCorrect, correctAnswer) {
+    _lockMCOptions: function(selected, isCorrect, correctAnswer) {
       var self = this;
-      document.querySelectorAll('.ve-option').forEach(function(btn) {
+      document.querySelectorAll('#ve-question-card .sp-option-btn').forEach(function(btn) {
         btn.disabled = true;
         var val = btn.getAttribute('data-answer');
         if (self._normalize(val) === self._normalize(correctAnswer)) {
-          btn.classList.add('ve-option--correct');
+          btn.classList.add('sp-option-btn--correct');
         } else if (self._normalize(val) === self._normalize(selected) && !isCorrect) {
-          btn.classList.add('ve-option--wrong');
+          btn.classList.add('sp-option-btn--incorrect');
         }
       });
     },
 
     _showFeedback: function(isCorrect, q) {
-      var fb = document.getElementById('ve-feedback');
-      if (!fb) return;
-      fb.style.display = 'block';
-      fb.className = 've-feedback ' + (isCorrect ? 've-feedback--correct' : 've-feedback--wrong');
-      fb.innerHTML =
-        '<div class="ve-feedback-icon">' + _mi(isCorrect ? 'check_circle' : 'cancel') + '</div>' +
-        '<div class="ve-feedback-text">' +
-          (isCorrect ? 'Correct!' : 'Not quite.') +
-          (q.explanation ? '<p class="ve-feedback-explanation">' + esc(q.explanation) + '</p>' : '') +
-        '</div>';
-    },
-
-    _advanceQuiz: function() {
-      if (!session) return;
-      session.awaitingContinue = false;
-      session.queueIdx++;
-
-      // save incremental quiz progress
-      var progressPct = session.queue.length > 0
-        ? Math.round((session.queueIdx / session.queue.length) * 100)
-        : 0;
-      this._saveExerciseProgress(session.exerciseId, { quizProgressPct: progressPct });
-
-      if (session.queueIdx >= session.queue.length) {
-        this._finishQuiz();
-        return;
+      if (window.AudioUtils) {
+        if (isCorrect) AudioUtils.playSuccessSound();
+        else AudioUtils.playFailureSound();
       }
 
-      var next = session.queue[session.queueIdx];
-      if (next.isFirstInSection) {
-        session.phase = 'chapter';
-        session._pendingChapter = next;
-        this._renderSession();
+      var feedbackMount = document.getElementById('ve-feedback-mount');
+      var result = {
+        correct: isCorrect,
+        explanation: q.explanation || '',
+        correctAnswer: q.answer || ''
+      };
+
+      if (feedbackMount && typeof SunePlayScreenRenderer !== 'undefined') {
+        feedbackMount.innerHTML = SunePlayScreenRenderer.FeedbackSheet(result, null);
+      } else if (feedbackMount) {
+        feedbackMount.innerHTML =
+          '<div class="sp-feedback-sheet ' + (isCorrect ? 'sp-feedback--correct' : 'sp-feedback--incorrect') + '">' +
+            '<p class="sp-feedback-title">' + (isCorrect ? 'Correct!' : 'Not quite.') + '</p>' +
+            (!isCorrect && q.answer ? '<p class="sp-feedback-answer"><span>Correct:</span> ' + esc(q.answer) + '</p>' : '') +
+          '</div>';
+      }
+
+      session.awaitingContinue = true;
+      session._lastResultCorrect = isCorrect;
+      this._setActionBtn('continue', true);
+    },
+
+    _handleContinue: function() {
+      if (!session || !session.awaitingContinue) return;
+
+      session.awaitingContinue = false;
+      session._lastResultCorrect = null;
+      var feedbackMount = document.getElementById('ve-feedback-mount');
+      if (feedbackMount) feedbackMount.innerHTML = '';
+
+      var footer = document.getElementById('ve-practice-footer');
+      var practiceMain = document.getElementById('ve-practice-main');
+      if (footer) {
+        footer.classList.remove('sp-practice-footer--feedback', 'sp-practice-footer--correct', 'sp-practice-footer--incorrect');
+      }
+      if (practiceMain) {
+        practiceMain.classList.remove('sp-practice-main--correct', 'sp-practice-main--incorrect');
+      }
+
+      session.questionIdx++;
+      if (session.questionIdx >= session.questionQueue.length) {
+        this._finishSection();
         return;
       }
 
       session.orderSelection = [];
-      this._renderSession();
+      session._selectedMC = null;
+      this._renderQuizQuestion();
     },
 
-    _finishQuiz: function() {
+    _markSectionComplete: function() {
       if (!session) return;
-      var total  = session.queue.length;
-      var score  = total > 0 ? Math.round((session.correct / total) * 100) : 0;
-      var passed = score >= (session.data.passingScore || 70);
-      var prog   = this._getExerciseProgress(session.exerciseId);
-
-      this._saveExerciseProgress(session.exerciseId, {
-        passed: passed,
-        bestScore: Math.max(prog.bestScore || 0, score),
-        lastScore: score,
-        quizProgressPct: 100
-      });
-
-      session.finalScore = score;
-      session.phase = passed ? 'result_pass' : 'result_fail';
-      this._renderSession();
+      var patch = {};
+      patch['sectionsCompleted'] = {};
+      patch.sectionsCompleted[String(session.sectionIdx)] = true;
+      this._saveExerciseProgress(session.exerciseId, patch);
+      this._syncEpisodePassed(session.exerciseId, (session.data.sections || []).length);
     },
 
-    _failQuiz: function() {
+    _finishSection: function() {
+      this._markSectionComplete();
+      this._renderSectionComplete();
+    },
+
+    _renderSectionComplete: function() {
       if (!session) return;
-      var total    = session.queue.length;
-      var score    = total > 0 ? Math.round((session.correct / total) * 100) : 0;
-      session.finalScore = score;
-      session.phase = 'result_fail';
-      this._renderSession();
-    },
+      var sec = session.section;
+      var total = session.questionQueue ? session.questionQueue.length : 0;
+      var correct = session.correct || 0;
 
-    // ─── Results ──────────────────────────────────────────────────────────
-
-    _scoreToStars: function(score) {
-      if (score >= 85) return 3;
-      if (score >= 70) return 2;
-      if (score >= 50) return 1;
-      return 0;
-    },
-
-    _nextAvailableEpisode: function(currentId) {
-      if (!this._indexCache) return null;
-      var items = (this._indexCache.items || []).filter(function(i) { return i.status !== 'hidden'; });
-      var currentIdx = -1;
-      for (var i = 0; i < items.length; i++) {
-        if (items[i].id === currentId) { currentIdx = i; break; }
-      }
-      if (currentIdx < 0) return null;
-      for (var j = currentIdx + 1; j < items.length; j++) {
-        if (items[j].status === 'available') return items[j].id;
-      }
-      return null;
-    },
-
-    _renderResult: function() {
-      var data   = session.data;
-      var passed = session.phase === 'result_pass';
-      var score  = session.finalScore || 0;
-      var stars  = this._scoreToStars(score);
-
-      // star HTML with staggered animation
-      var starsHtml = '';
-      for (var s = 1; s <= 3; s++) {
-        var filled = s <= stars;
-        starsHtml += '<span class="ve-star' + (filled ? ' ve-star--filled' : ' ve-star--empty') + '" style="animation-delay:' + ((s - 1) * 180) + 'ms">' +
-          _mi('star') +
-        '</span>';
-      }
-
-      // next episode
-      var nextId = this._nextAvailableEpisode(session.exerciseId);
-      var nextEpHtml = '';
-      if (passed && nextId) {
-        nextEpHtml =
-          '<button type="button" class="ve-btn ve-btn--primary" onclick="VideoExercises.openExercise(\'' + jsStr(nextId) + '\')">' +
-            _mi('arrow_forward') + ' Next episode' +
-          '</button>';
-      }
-
-      var retryBtnCls = (nextEpHtml || !passed) ? 've-btn--ghost' : 've-btn--primary';
-
-      // motivational message
-      var msg = passed
-        ? (score >= 85 ? 'Excellent! Perfect score territory!' : 'Great job! Keep it up!')
-        : (score >= 50 ? 'Almost there — try once more!' : 'Watch the video again and give it another shot!');
-
-      this._renderLessonLayout(
-        '<div class="ve-result-stage">' +
-          '<div class="ve-result-card ' + (passed ? 've-result-card--passed' : 've-result-card--failed') + '">' +
-            '<div class="ve-result-stars">' + starsHtml + '</div>' +
-            '<div class="ve-result-icon">' + _mi(passed ? 'celebration' : 'sentiment_dissatisfied') + '</div>' +
-            '<h2>' + (passed ? 'Well done!' : 'Keep practising!') + '</h2>' +
-            '<p class="ve-result-msg-main">' + esc(msg) + '</p>' +
-            '<div class="ve-result-score-row">' +
-              '<span class="ve-result-score">' + score + '%</span>' +
-              '<span class="ve-result-score-sub">' + session.correct + ' / ' + session.queue.length + ' correct</span>' +
-            '</div>' +
-            '<p class="ve-result-pass-note">Need ' + (data.passingScore || 70) + '% to pass</p>' +
-            '<div class="ve-result-actions">' +
-              nextEpHtml +
-              '<button type="button" class="ve-btn ' + retryBtnCls + '" onclick="VideoExercises._retryQuiz()">' +
-                _mi('refresh') + ' Try again' +
-              '</button>' +
-              '<button type="button" class="ve-btn ve-btn--ghost" onclick="VideoExercises.openHub()">' +
-                _mi('home') + ' All episodes' +
-              '</button>' +
-            '</div>' +
-          '</div>' +
+      this._renderModal(
+        '<div class="ve-section-complete">' +
+          '<div class="ve-section-complete-icon">' + _mi('celebration') + '</div>' +
+          '<h2 class="ve-section-complete-title">Section complete!</h2>' +
+          '<p class="ve-section-complete-sub">' + esc(sec.title) + '</p>' +
+          (total > 0
+            ? '<p class="ve-section-complete-score">' + correct + ' / ' + total + ' correct</p>'
+            : '') +
+          '<button type="button" class="sp-btn sp-btn--primary sp-btn--action sp-btn--continue-mode sp-btn--correct" onclick="VideoExercises.closeModal()">' +
+            '<span class="material-symbols-outlined">arrow_forward</span>' +
+          '</button>' +
         '</div>'
       );
-    },
-
-    _retryQuiz: function() {
-      if (!session) return;
-      var exerciseId = session.exerciseId;
-      this._saveExerciseProgress(exerciseId, { passed: false, quizProgressPct: 0 });
-      this.openExercise(exerciseId);
     }
   };
 })();

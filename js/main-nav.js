@@ -6,7 +6,7 @@
     { id: 'vocabulary', label: 'Vocabulary', icon: 'translate', color: '#10b981', onclick: 'BentoGrid.openCourseSection(\'vocabulary\')' },
     { id: 'tests', label: 'Tests', icon: 'assignment', color: '#58cc02', onclick: 'BentoGrid.openTests()' },
     { id: 'crosswords', label: 'Crosswords', icon: 'grid_on', color: '#ff4b4b', onclick: 'BentoGrid.openCrosswordList()' },
-    { id: 'video-exercises', label: 'Videos', icon: 'smart_display', color: '#1cb0f6', onclick: 'BentoGrid.openVideoExercises()' },
+    { id: 'video-exercises', label: 'Stories', icon: 'auto_stories', color: '#1cb0f6', onclick: 'BentoGrid.openVideoExercises()' },
     { id: 'wordle', label: 'Wordle', icon: 'casino', color: '#a855f7', onclick: 'BentoGrid.openWordleSection()' },
     { id: 'profile', label: 'Profile', icon: 'person', color: '#777777', onclick: 'BentoGrid.openMobileProfile()' }
   ];
