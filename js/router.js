@@ -164,6 +164,12 @@
             (state.levelId || '') + '/' + (state.lessonId || '') + '/' +
             (typeof state.pointIndex !== 'undefined' ? state.pointIndex : 0);
 
+        case 'videoExercises':
+          return '/video-exercises';
+
+        case 'videoExercise':
+          return '/video-exercises/' + (state.exerciseId || '');
+
         case 'course':
           return '/course';
 
@@ -338,6 +344,17 @@
         }
         // Fallback for fast-exercises with unrecognised sub-path
         return { view: 'fastExercises' };
+      }
+
+      // ── Video Exercises routes ─────────────────────
+      if (first === 'video-exercises') {
+        if (segments.length === 1) {
+          return { view: 'videoExercises' };
+        }
+        if (segments.length >= 2) {
+          return { view: 'videoExercise', exerciseId: segments[1] };
+        }
+        return { view: 'videoExercises' };
       }
 
       // ── Course routes ──────────────────────────────

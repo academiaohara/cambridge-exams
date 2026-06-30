@@ -361,6 +361,15 @@
           '</div>' +
         '</div>' +
 
+        '<div class="bento-card bento-card-video-exercises" onclick="BentoGrid.openVideoExercises()">' +
+          '<div class="bento-hover-overlay"></div>' +
+          '<div class="bento-card-inner">' +
+            '<div class="bento-card-title">Video Exercises</div>' +
+            '<div class="bento-card-desc">Watch &amp; test</div>' +
+            '<div class="bento-card-hover-info">Watch a short story video, then answer questions to practise vocabulary and comprehension.</div>' +
+          '</div>' +
+        '</div>' +
+
       '</div>';
     },
 
@@ -597,6 +606,12 @@
         FastExercises.openCategories();
       } else {
         BentoGrid.openQuickstepsChooser();
+      }
+    },
+
+    openVideoExercises: function() {
+      if (typeof VideoExercises !== 'undefined') {
+        VideoExercises.openHub();
       }
     },
 

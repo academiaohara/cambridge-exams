@@ -189,6 +189,12 @@
       } else if (state.view === 'fastExercisePoint' && state.categoryId && state.levelId && state.lessonId && typeof state.pointIndex !== 'undefined') {
         Dashboard.render();
         if (typeof FastExercises !== 'undefined') FastExercises.openPoint(state.categoryId, state.levelId, state.lessonId, state.pointIndex);
+      } else if (state.view === 'videoExercises') {
+        Dashboard.render();
+        if (typeof VideoExercises !== 'undefined') VideoExercises.openHub({ fromRoute: true });
+      } else if (state.view === 'videoExercise' && state.exerciseId) {
+        Dashboard.render();
+        if (typeof VideoExercises !== 'undefined') VideoExercises.openExercise(state.exerciseId, { fromRoute: true, phase: state.phase });
       } else if (state.view === 'course') {
         if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons({ fromRoute: true });
       } else if (state.view === 'courseSection' && state.section) {
@@ -357,6 +363,14 @@
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (typeof FastExercises !== 'undefined') FastExercises.openPoint(initialState.categoryId, initialState.levelId, initialState.lessonId, initialState.pointIndex);
+      } else if (initialState.view === 'videoExercises') {
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        Dashboard.render();
+        if (typeof VideoExercises !== 'undefined') VideoExercises.openHub({ fromRoute: true });
+      } else if (initialState.view === 'videoExercise' && initialState.exerciseId) {
+        history.replaceState({ view: 'dashboard' }, '', '/');
+        Dashboard.render();
+        if (typeof VideoExercises !== 'undefined') VideoExercises.openExercise(initialState.exerciseId, { fromRoute: true, phase: initialState.phase });
       } else if (initialState.view === 'course') {
         if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons({ fromRoute: true });
       } else if (initialState.view === 'courseSection' && initialState.section) {
