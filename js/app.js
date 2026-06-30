@@ -370,7 +370,7 @@
       } else if (initialState.view === 'videoExercise' && initialState.exerciseId) {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
-        if (typeof VideoExercises !== 'undefined') VideoExercises.openExercise(initialState.exerciseId, { fromRoute: true, phase: initialState.phase });
+        if (typeof VideoExercises !== 'undefined') VideoExercises.openExercise(initialState.exerciseId, { fromRoute: true });
       } else if (initialState.view === 'course') {
         if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons({ fromRoute: true });
       } else if (initialState.view === 'courseSection' && initialState.section) {
