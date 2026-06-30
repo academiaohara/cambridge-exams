@@ -22,6 +22,13 @@
     return String(str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
   }
 
+  function formatVideoTime(sec) {
+    if (!isFinite(sec) || sec < 0) return '0:00';
+    var m = Math.floor(sec / 60);
+    var s = Math.floor(sec % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
   var session = null;
 
   window.VideoExercises = {
@@ -433,49 +440,37 @@
               '<button type="button" class="ve-video-play-btn" id="ve-video-play-btn" aria-label="Play video">' +
                 _mi('play_arrow') +
               '</button>' +
+              '<div class="ve-video-controls" id="ve-video-controls">' +
+                '<div class="ve-video-progress-row">' +
+                  '<input type="range" class="ve-video-seek" id="ve-video-seek" min="0" max="100" value="0" step="0.1" aria-label="Video progress">' +
+                '</div>' +
+                '<div class="ve-video-controls-bar">' +
+                  '<span class="ve-video-time" id="ve-video-time">0:00 / 0:00</span>' +
+                  '<div class="ve-video-volume-wrap">' +
+                    '<button type="button" class="ve-video-mute-btn" id="ve-video-mute" aria-label="Mute">' +
+                      _mi('volume_up') +
+                    '</button>' +
+                    '<input type="range" class="ve-video-volume" id="ve-video-volume" min="0" max="1" value="1" step="0.05" aria-label="Volume">' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
               '<div class="ve-video-ended" id="ve-video-ended" hidden>' +
-                '<button type="button" class="sp-btn sp-btn--primary sp-btn--action sp-btn--continue-mode sp-btn--correct ve-video-continue-btn" id="ve-video-continue" onclick="VideoExercises._finishVideo()">' +
-                  '<span class="material-symbols-outlined">arrow_forward</span>' +
-                '</button>' +
+                '<div class="ve-video-ended-actions">' +
+                  '<button type="button" class="ve-video-restart-btn" id="ve-video-restart" aria-label="Watch again">' +
+                    _mi('replay') +
+                    '<span>Watch again</span>' +
+                  '</button>' +
+                  '<button type="button" class="sp-btn sp-btn--primary sp-btn--action sp-btn--continue-mode sp-btn--correct ve-video-continue-btn" id="ve-video-continue" onclick="VideoExercises._finishVideo()">' +
+                    '<span class="material-symbols-outlined">arrow_forward</span>' +
+                  '</button>' +
+                '</div>' +
               '</div>' +
             '</div>' +
           '</div>',
           { mode: 'video' }
         );
 
-        var video = document.getElementById('ve-video-player');
-        var playBtn = document.getElementById('ve-video-play-btn');
-        if (video) {
-          video.onended = function() { self._onVideoEnded(); };
-          video.onplay = function() {
-            if (playBtn) playBtn.hidden = true;
-          };
-          video.onpause = function() {
-            if (playBtn && session && session.phase !== 'ended' && video.currentTime < video.duration) {
-              playBtn.hidden = false;
-            }
-          };
-          video.addEventListener('webkitbeginfullscreen', function(e) {
-            e.preventDefault();
-          });
-        }
-        if (playBtn && video) {
-          playBtn.onclick = function() {
-            video.play();
-            playBtn.hidden = true;
-          };
-        }
-        if (video) {
-          video.onclick = function() {
-            if (session && session.phase === 'ended') return;
-            if (video.paused) {
-              video.play();
-              if (playBtn) playBtn.hidden = true;
-            } else {
-              video.pause();
-            }
-          };
-        }
+        self._initVideoPlayer();
 
         if (!opts || !opts.fromRoute) {
           self._pushState({ view: 'videoExercise', exerciseId: exerciseId });
@@ -483,6 +478,143 @@
       } catch (e) {
         console.error(e);
       }
+    },
+
+    _initVideoPlayer: function() {
+      var self = this;
+      var video = document.getElementById('ve-video-player');
+      var playBtn = document.getElementById('ve-video-play-btn');
+      var seek = document.getElementById('ve-video-seek');
+      var timeEl = document.getElementById('ve-video-time');
+      var muteBtn = document.getElementById('ve-video-mute');
+      var volume = document.getElementById('ve-video-volume');
+      var restartBtn = document.getElementById('ve-video-restart');
+      if (!video) return;
+
+      var isSeeking = false;
+
+      function updateTimeDisplay() {
+        if (!timeEl) return;
+        var current = video.currentTime;
+        if (isSeeking && seek && isFinite(video.duration)) {
+          current = (parseFloat(seek.value) / 100) * video.duration;
+        }
+        var total = isFinite(video.duration) ? video.duration : 0;
+        timeEl.textContent = formatVideoTime(current) + ' / ' + formatVideoTime(total);
+      }
+
+      function updateSeekBar() {
+        if (!seek || isSeeking || !isFinite(video.duration) || video.duration <= 0) return;
+        seek.value = String((video.currentTime / video.duration) * 100);
+        updateTimeDisplay();
+      }
+
+      function updateMuteIcon() {
+        if (!muteBtn) return;
+        var icon = muteBtn.querySelector('.material-symbols-outlined');
+        if (!icon) return;
+        var vol = video.muted || video.volume === 0 ? 0 : video.volume;
+        icon.textContent = vol === 0 ? 'volume_off' : (vol < 0.5 ? 'volume_down' : 'volume_up');
+        muteBtn.setAttribute('aria-label', vol === 0 ? 'Unmute' : 'Mute');
+      }
+
+      video.onended = function() { self._onVideoEnded(); };
+      video.onplay = function() {
+        if (playBtn) playBtn.hidden = true;
+      };
+      video.onpause = function() {
+        if (playBtn && session && session.phase !== 'ended' && video.currentTime < video.duration) {
+          playBtn.hidden = false;
+        }
+      };
+      video.ontimeupdate = updateSeekBar;
+      video.onloadedmetadata = function() {
+        updateSeekBar();
+        updateTimeDisplay();
+      };
+      video.addEventListener('webkitbeginfullscreen', function(e) {
+        e.preventDefault();
+      });
+
+      if (playBtn) {
+        playBtn.onclick = function() {
+          video.play();
+          playBtn.hidden = true;
+        };
+      }
+
+      video.onclick = function(e) {
+        if (e.target.closest('.ve-video-controls') || e.target.closest('.ve-video-ended')) return;
+        if (session && session.phase === 'ended') return;
+        if (video.paused) {
+          video.play();
+          if (playBtn) playBtn.hidden = true;
+        } else {
+          video.pause();
+        }
+      };
+
+      if (seek) {
+        seek.addEventListener('input', function() {
+          isSeeking = true;
+          var pct = parseFloat(seek.value) / 100;
+          if (isFinite(video.duration)) {
+            updateTimeDisplay();
+          }
+        });
+        seek.addEventListener('change', function() {
+          if (isFinite(video.duration)) {
+            video.currentTime = (parseFloat(seek.value) / 100) * video.duration;
+          }
+          isSeeking = false;
+          updateSeekBar();
+        });
+      }
+
+      if (muteBtn) {
+        muteBtn.onclick = function() {
+          video.muted = !video.muted;
+          if (!video.muted && video.volume === 0 && volume) {
+            video.volume = 0.5;
+            volume.value = '0.5';
+          }
+          updateMuteIcon();
+        };
+      }
+
+      if (volume) {
+        volume.addEventListener('input', function() {
+          video.volume = parseFloat(volume.value);
+          video.muted = video.volume === 0;
+          updateMuteIcon();
+        });
+      }
+
+      if (restartBtn) {
+        restartBtn.onclick = function() {
+          self._restartVideo();
+        };
+      }
+
+      updateMuteIcon();
+      updateTimeDisplay();
+    },
+
+    _restartVideo: function() {
+      if (!session) return;
+      session.phase = 'playing';
+      var video = document.getElementById('ve-video-player');
+      var playBtn = document.getElementById('ve-video-play-btn');
+      var ended = document.getElementById('ve-video-ended');
+      if (ended) ended.hidden = true;
+      if (!video) return;
+      video.currentTime = 0;
+      var seek = document.getElementById('ve-video-seek');
+      if (seek) seek.value = '0';
+      var timeEl = document.getElementById('ve-video-time');
+      if (timeEl) timeEl.textContent = '0:00 / ' + formatVideoTime(video.duration);
+      video.play();
+      if (playBtn) playBtn.hidden = true;
     },
 
     _onVideoEnded: function() {

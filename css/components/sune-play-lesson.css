@@ -1,6 +1,7 @@
 /* css/components/sune-play-lesson.css — Sune Play lesson flow */
 
-.sp-lesson {
+.sp-lesson,
+.ve-modal-inner {
   --sp-primary: #64B5F6;
   --sp-primary-shadow: rgba(100, 181, 246, 0.35);
   --sp-primary-tint: rgba(100, 181, 246, 0.12);
@@ -20,6 +21,9 @@
   --sp-correct-tint: rgba(88, 204, 2, 0.12);
   --sp-incorrect: #ef4444;
   --sp-incorrect-tint: rgba(239, 68, 68, 0.12);
+}
+
+.sp-lesson {
   display: flex;
   flex-direction: column;
   gap: 16px;
