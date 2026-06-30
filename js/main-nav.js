@@ -6,6 +6,7 @@
     { id: 'vocabulary', label: 'Vocabulary', icon: 'translate', color: '#10b981', onclick: 'BentoGrid.openCourseSection(\'vocabulary\')' },
     { id: 'tests', label: 'Tests', icon: 'assignment', color: '#58cc02', onclick: 'BentoGrid.openTests()' },
     { id: 'crosswords', label: 'Crosswords', icon: 'grid_on', color: '#ff4b4b', onclick: 'BentoGrid.openCrosswordList()' },
+    { id: 'video-exercises', label: 'Videos', icon: 'smart_display', color: '#1cb0f6', onclick: 'BentoGrid.openVideoExercises()' },
     { id: 'wordle', label: 'Wordle', icon: 'casino', color: '#a855f7', onclick: 'BentoGrid.openWordleSection()' },
     { id: 'profile', label: 'Profile', icon: 'person', color: '#777777', onclick: 'BentoGrid.openMobileProfile()' }
   ];
@@ -19,7 +20,7 @@
   ];
 
   var MOBILE_MENU_ITEMS = [
-    'crosswords', 'wordle', 'profile'
+    'crosswords', 'video-exercises', 'wordle', 'profile'
   ];
 
   function escapeHTML(str) {
@@ -39,6 +40,7 @@
       return courseSection === 'vocabulary' ? 'vocabulary' : 'learning';
     }
     if (view === 'crosswordList' || view === 'crosswordPlay') return 'crosswords';
+    if (view === 'videoExercises' || view === 'videoExercise') return 'video-exercises';
     if (view === 'wordleList' || view === 'wordlePlay') return 'wordle';
     if (view === 'fastExercises' || view === 'fastExerciseCategory' || view === 'fastExercisePoint') return 'dictionaries';
     if (view === 'profile') return 'profile';

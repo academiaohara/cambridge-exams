@@ -1,5 +1,5 @@
 // js/video-exercises.js
-// Video + post-video test exercises (watch → quiz flow)
+// Video + post-video test: watch (9:16) → single continuous quiz flow
 
 (function() {
   'use strict';
@@ -39,16 +39,13 @@
 
     _getExerciseProgress: function(exerciseId) {
       var all = this._getProgress();
-      return all[exerciseId] || { videoWatched: false, sections: {}, passed: false, bestScore: 0 };
+      return all[exerciseId] || { videoWatched: false, passed: false, bestScore: 0 };
     },
 
     _saveExerciseProgress: function(exerciseId, patch) {
       var all = this._getProgress();
-      var current = all[exerciseId] || { videoWatched: false, sections: {}, passed: false, bestScore: 0 };
+      var current = all[exerciseId] || { videoWatched: false, passed: false, bestScore: 0 };
       all[exerciseId] = Object.assign({}, current, patch);
-      if (patch.sections) {
-        all[exerciseId].sections = Object.assign({}, current.sections, patch.sections);
-      }
       this._saveProgress(all);
     },
 
@@ -78,6 +75,11 @@
       }
     },
 
+    _setView: function(view) {
+      if (typeof AppState !== 'undefined') AppState.currentView = view;
+      if (typeof MainNav !== 'undefined') MainNav.setActive('video-exercises');
+    },
+
     _buildSidebars: function() {
       var sidebars = { left: '', right: '' };
       if (typeof BentoGrid !== 'undefined') {
@@ -87,23 +89,83 @@
       return sidebars;
     },
 
-    _renderLayout: function(centerHtml) {
+    _applyLessonFocus: function(active) {
+      var layout = document.querySelector('.dashboard-layout');
+      var center = document.querySelector('.dashboard-center');
+      if (layout) layout.classList.toggle('dashboard-layout--lesson-focus', !!active);
+      if (center) center.classList.toggle('course-center--lesson-focus', !!active);
+      var rightSidebar = document.getElementById('dashboardRightSidebar');
+      var rightShell = document.getElementById('dashboardRightSidebarShell');
+      if (rightSidebar) rightSidebar.style.display = active ? 'none' : '';
+      if (rightShell) rightShell.style.display = active ? 'none' : '';
+    },
+
+    _renderHubLayout: function(centerHtml) {
       var content = document.getElementById('main-content');
       if (!content) return;
+      this._applyLessonFocus(false);
       var sidebars = this._buildSidebars();
       content.innerHTML =
         '<div class="dashboard-layout">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
-            : '<div class="dashboard-left-sidebar">' + sidebars.left + '</div>') +
+            : '<div class="dashboard-left-sidebar dashboard-sidebar-shell">' + sidebars.left + '</div>') +
           '<div class="dashboard-center">' + centerHtml + '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', sidebars.right)
-            : '<div class="dashboard-right-sidebar" id="dashboardRightSidebar">' + sidebars.right + '</div>') +
+            : '<div class="dashboard-right-sidebar dashboard-sidebar-shell" id="dashboardRightSidebar">' + sidebars.right + '</div>') +
         '</div>';
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       if (typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
+      this._setView('videoExercises');
+    },
+
+    _renderLessonLayout: function(innerHtml) {
+      var content = document.getElementById('main-content');
+      if (!content) return;
+      var sidebars = this._buildSidebars();
+      content.innerHTML =
+        '<div class="dashboard-layout dashboard-layout--lesson-focus">' +
+          (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+            ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
+            : '<div class="dashboard-left-sidebar dashboard-sidebar-shell">' + sidebars.left + '</div>') +
+          '<div class="dashboard-center course-center--lesson-focus">' +
+            '<div id="sp-lesson-mount" class="sp-lesson-mount ve-lesson-mount course-unit-content">' +
+              '<div class="ve-lesson sp-lesson">' + innerHtml + '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      this._applyLessonFocus(true);
+      this._setView('videoExercise');
+    },
+
+    _buildQuestionQueue: function(data) {
+      var queue = [];
+      var globalIdx = 0;
+      (data.sections || []).forEach(function(sec, sectionIdx) {
+        (sec.questions || []).forEach(function(q, qIdx) {
+          queue.push({
+            section: sec,
+            sectionIdx: sectionIdx,
+            question: q,
+            questionIdxInSection: qIdx,
+            globalIdx: globalIdx,
+            isFirstInSection: qIdx === 0
+          });
+          globalIdx++;
+        });
+      });
+      return queue;
+    },
+
+    _totalQuestions: function(data) {
+      if (data.totalQuestions) return data.totalQuestions;
+      var n = 0;
+      (data.sections || []).forEach(function(sec) {
+        n += (sec.questions || []).length;
+      });
+      return n;
     },
 
     openHub: async function(opts) {
@@ -119,34 +181,31 @@
 
         var cardsHtml = items.map(function(item) {
           var prog = self._getExerciseProgress(item.id);
-          var badge = prog.passed
-            ? '<span class="ve-card-badge ve-card-badge--passed">' + _mi('check_circle') + ' Passed</span>'
-            : (prog.videoWatched ? '<span class="ve-card-badge ve-card-badge--started">' + _mi('play_circle') + ' In progress</span>' : '');
-          return '<button type="button" class="ve-card" onclick="VideoExercises.openExercise(\'' + esc(item.id) + '\')">' +
-            '<div class="ve-card-icon">' + _mi('smart_display') + '</div>' +
-            '<div class="ve-card-body">' +
-              '<div class="ve-card-level">' + esc(item.level || '') + '</div>' +
-              '<div class="ve-card-title">' + esc(item.title) + '</div>' +
-              '<div class="ve-card-desc">' + esc(item.description || '') + '</div>' +
-              badge +
+          var statusCls = prog.passed ? 've-story-card--passed' : (prog.videoWatched ? 've-story-card--started' : '');
+          var statusLabel = prog.passed
+            ? _mi('check_circle') + ' Passed'
+            : (prog.videoWatched ? _mi('play_circle') + ' Continue' : _mi('play_arrow') + ' Watch');
+          return '<button type="button" class="ve-story-card ' + statusCls + '" onclick="VideoExercises.openExercise(\'' + jsStr(item.id) + '\')">' +
+            '<div class="ve-story-preview">' +
+              '<div class="ve-story-preview-inner">' + _mi('smart_display') + '</div>' +
             '</div>' +
-            '<div class="ve-card-arrow">' + _mi('chevron_right') + '</div>' +
+            '<div class="ve-story-body">' +
+              '<h3 class="ve-story-title">' + esc(item.title) + '</h3>' +
+              '<p class="ve-story-desc">' + esc(item.description || '') + '</p>' +
+              '<span class="ve-story-status">' + statusLabel + '</span>' +
+            '</div>' +
           '</button>';
         }).join('');
 
-        if (!cardsHtml) {
-          cardsHtml = '<div class="ve-empty">No video exercises available yet.</div>';
-        }
+        if (!cardsHtml) cardsHtml = '<div class="ve-empty">No video exercises available yet.</div>';
 
-        self._renderLayout(
-          '<div class="ve-section">' +
-            '<div class="subpage-header">' +
-              '<div>' +
-                '<div class="subpage-title">' + _mi('smart_display') + ' Video Exercises</div>' +
-                '<div class="subpage-subtitle">Watch a story, then test what you learned</div>' +
-              '</div>' +
-            '</div>' +
-            '<div class="ve-cards-list">' + cardsHtml + '</div>' +
+        self._renderHubLayout(
+          '<div class="ve-hub">' +
+            '<header class="ve-hub-header">' +
+              '<h1 class="ve-hub-title">' + _mi('smart_display') + ' Video Exercises</h1>' +
+              '<p class="ve-hub-sub">Watch a story, then answer questions in one go</p>' +
+            '</header>' +
+            '<div class="ve-story-grid">' + cardsHtml + '</div>' +
           '</div>'
         );
 
@@ -167,27 +226,25 @@
       try {
         var data = await this._loadExercise(exerciseId);
         var prog = this._getExerciseProgress(exerciseId);
+        var queue = this._buildQuestionQueue(data);
 
         session = {
           exerciseId: exerciseId,
           data: data,
-          phase: prog.videoWatched ? 'test_hub' : 'video',
+          queue: queue,
+          phase: prog.videoWatched ? 'video_end' : 'video',
+          queueIdx: 0,
           lives: data.lives || 3,
           maxLives: data.lives || 3,
           correct: 0,
-          answered: 0,
-          currentSectionIdx: null,
-          currentQuestionIdx: 0,
-          sectionResults: {},
-          orderSelection: []
+          orderSelection: [],
+          awaitingContinue: false
         };
 
         this._renderSession();
 
-        var routeOpts = { view: 'videoExercise', exerciseId: exerciseId };
-        if (opts && opts.phase) routeOpts.phase = opts.phase;
         if (!opts || !opts.fromRoute) {
-          self._pushState(routeOpts);
+          self._pushState({ view: 'videoExercise', exerciseId: exerciseId });
         }
       } catch (e) {
         content.innerHTML = '<div class="ve-error">Exercise not found.</div>';
@@ -197,18 +254,46 @@
 
     _renderSession: function() {
       if (!session) return;
-      var phase = session.phase;
-      if (phase === 'video' || phase === 'video_end') {
-        this._renderVideoPhase();
-      } else if (phase === 'test_hub') {
-        this._renderTestHub();
-      } else if (phase === 'section') {
-        this._renderSectionQuestion();
-      } else if (phase === 'section_done') {
-        this._renderSectionDone();
-      } else if (phase === 'test_done' || phase === 'test_failed') {
-        this._renderTestResult();
+      switch (session.phase) {
+        case 'video':
+        case 'video_end':
+          this._renderVideoPhase();
+          break;
+        case 'chapter':
+          this._renderChapterBreak();
+          break;
+        case 'quiz':
+          this._renderQuizQuestion();
+          break;
+        case 'result_pass':
+        case 'result_fail':
+          this._renderResult();
+          break;
       }
+    },
+
+    _renderLessonHeader: function(opts) {
+      opts = opts || {};
+      var heartsHtml = '';
+      for (var h = 0; h < session.maxLives; h++) {
+        heartsHtml += '<span class="ve-heart' + (h < session.lives ? ' ve-heart--full' : ' ve-heart--empty') + '">' +
+          _mi(h < session.lives ? 'favorite' : 'heart_broken') + '</span>';
+      }
+
+      var progressHtml = '';
+      if (opts.showProgress) {
+        var total = session.queue.length;
+        var done = session.queueIdx;
+        var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+        progressHtml = '<div class="ve-session-progress"><div class="ve-session-progress-fill" style="width:' + pct + '%"></div></div>';
+      }
+
+      return '<header class="ve-practice-header">' +
+        '<button type="button" class="ve-header-btn" onclick="VideoExercises.' + (opts.exitAction || 'openHub') + '()" aria-label="Exit">' +
+          _mi('close') + '</button>' +
+        progressHtml +
+        (opts.showHearts ? '<div class="ve-hearts">' + heartsHtml + '</div>' : '<span></span>') +
+      '</header>';
     },
 
     _renderVideoPhase: function() {
@@ -218,49 +303,35 @@
 
       var overlayHtml = showEndOverlay
         ? '<div class="ve-video-overlay">' +
-            '<div class="ve-video-overlay-card">' +
-              '<div class="ve-video-overlay-icon">' + _mi('celebration') + '</div>' +
-              '<h3>Video finished!</h3>' +
-              '<p>Ready to test what you learned?</p>' +
-              '<div class="ve-video-overlay-actions">' +
-                '<button type="button" class="ve-btn ve-btn--secondary" onclick="VideoExercises._replayVideo()">' +
-                  _mi('replay') + ' Watch again' +
-                '</button>' +
-                '<button type="button" class="ve-btn ve-btn--primary" onclick="VideoExercises._startTest()">' +
-                  _mi('quiz') + ' Start test' +
-                '</button>' +
-              '</div>' +
+            '<div class="ve-video-overlay-actions">' +
+              '<button type="button" class="ve-btn ve-btn--ghost" onclick="VideoExercises._replayVideo()">' +
+                _mi('replay') + ' Watch again' +
+              '</button>' +
+              '<button type="button" class="ve-btn ve-btn--primary" onclick="VideoExercises._startQuiz()">' +
+                _mi('quiz') + ' Start test' +
+              '</button>' +
             '</div>' +
           '</div>'
         : '';
 
-      this._renderLayout(
-        '<div class="ve-lesson">' +
-          '<div class="ve-lesson-header">' +
-            '<button type="button" class="ve-back-btn" onclick="VideoExercises.openHub()">' +
-              _mi('arrow_back') + '<span>Back</span>' +
-            '</button>' +
-            '<div class="ve-lesson-titles">' +
-              '<div class="ve-lesson-level">' + esc(data.level || '') + '</div>' +
-              '<h1 class="ve-lesson-title">' + esc(data.title) + '</h1>' +
-            '</div>' +
-          '</div>' +
-          '<div class="ve-video-wrap' + (showEndOverlay ? ' ve-video-wrap--ended' : '') + '" id="ve-video-wrap">' +
+      this._renderLessonLayout(
+        this._renderLessonHeader({ exitAction: 'openHub' }) +
+        '<div class="ve-video-stage">' +
+          '<div class="ve-video-frame' + (showEndOverlay ? ' ve-video-frame--ended' : '') + '">' +
             '<video class="ve-video" id="ve-video-player" src="' + esc(data.videoUrl) + '" playsinline controls></video>' +
             overlayHtml +
           '</div>' +
-          '<p class="ve-video-desc">' + esc(data.description || '') + '</p>' +
+          '<div class="ve-video-meta">' +
+            '<h1 class="ve-video-title">' + esc(data.title) + '</h1>' +
+            '<p class="ve-video-desc">' + esc(data.description || '') + '</p>' +
+          '</div>' +
         '</div>'
       );
 
       var video = document.getElementById('ve-video-player');
       if (video) {
-        video.onended = function() {
-          self._onVideoEnded();
-        };
-        if (showEndOverlay) {
-          video.pause();
-        }
+        video.onended = function() { self._onVideoEnded(); };
+        if (showEndOverlay) video.pause();
       }
     },
 
@@ -278,102 +349,55 @@
       var video = document.getElementById('ve-video-player');
       if (video) {
         video.currentTime = 0;
-        video.play().catch(function() { /* autoplay blocked */ });
+        video.play().catch(function() { /* ignore */ });
       }
     },
 
-    _startTest: function() {
+    _startQuiz: function() {
       if (!session) return;
-      session.phase = 'test_hub';
+      session.phase = session.queue[0] && session.queue[0].isFirstInSection ? 'chapter' : 'quiz';
+      session.queueIdx = 0;
       session.lives = session.data.lives || 3;
       session.correct = 0;
-      session.answered = 0;
-      session.sectionResults = {};
+      session._pendingChapter = session.queue[0] || null;
       this._saveExerciseProgress(session.exerciseId, { videoWatched: true });
       this._renderSession();
-      this._pushState({ view: 'videoExercise', exerciseId: session.exerciseId, phase: 'test' });
+      this._pushState({ view: 'videoExercise', exerciseId: session.exerciseId, phase: 'quiz' });
     },
 
-    _buildProgressDots: function() {
-      var data = session.data;
-      var prog = this._getExerciseProgress(session.exerciseId);
-      var dots = '';
-
-      dots += '<span class="ve-dot ve-dot--video' + (prog.videoWatched ? ' ve-dot--done' : ' ve-dot--current') + '" title="Video">' +
-        _mi('smart_display') + '</span>';
-
-      (data.sections || []).forEach(function(sec, si) {
-        var secProg = (prog.sections || {})[sec.id];
-        var cls = 've-dot';
-        if (secProg && secProg.completed) cls += ' ve-dot--done';
-        else if (session.currentSectionIdx === si) cls += ' ve-dot--current';
-        dots += '<span class="' + cls + '" title="' + esc(sec.title) + '">' + (si + 1) + '</span>';
-      });
-
-      return '<div class="ve-progress-dots" aria-label="Progress">' + dots + '</div>';
-    },
-
-    _renderTestHub: function() {
-      var self = this;
-      var data = session.data;
-      var prog = this._getExerciseProgress(session.exerciseId);
-
-      var sectionsHtml = (data.sections || []).map(function(sec, si) {
-        var secProg = (prog.sections || {})[sec.id];
-        var qCount = (sec.questions || []).length;
-        var miniDots = '';
-        for (var qi = 0; qi < qCount; qi++) {
-          var dotCls = 've-mini-dot';
-          if (secProg && secProg.answers && secProg.answers[qi] === true) dotCls += ' ve-mini-dot--correct';
-          else if (secProg && secProg.answers && secProg.answers[qi] === false) dotCls += ' ve-mini-dot--wrong';
-          miniDots += '<span class="' + dotCls + '"></span>';
-        }
-
-        var statusIcon = secProg && secProg.completed
-          ? '<span class="ve-section-status ve-section-status--done">' + _mi('check_circle') + '</span>'
-          : '<span class="ve-section-status">' + _mi('chevron_right') + '</span>';
-
-        return '<button type="button" class="ve-section-card" onclick="VideoExercises._openSection(' + si + ')">' +
-          '<div class="ve-section-card-main">' +
-            '<div class="ve-section-card-title">' + esc(sec.title) + '</div>' +
-            '<div class="ve-section-card-meta">' + qCount + ' question' + (qCount !== 1 ? 's' : '') + '</div>' +
-          '</div>' +
-          '<div class="ve-section-card-dots">' + miniDots + '</div>' +
-          statusIcon +
-        '</button>';
-      }).join('');
-
-      var heartsHtml = '';
-      for (var h = 0; h < session.maxLives; h++) {
-        heartsHtml += '<span class="ve-heart' + (h < session.lives ? ' ve-heart--full' : ' ve-heart--empty') + '">' +
-          _mi(h < session.lives ? 'favorite' : 'heart_broken') + '</span>';
+    _renderChapterBreak: function() {
+      var entry = session._pendingChapter || session.queue[session.queueIdx];
+      if (!entry) {
+        session.phase = 'quiz';
+        this._renderSession();
+        return;
       }
+      var sec = entry.section;
+      var sectionNum = entry.sectionIdx + 1;
+      var totalSections = (session.data.sections || []).length;
 
-      this._renderLayout(
-        '<div class="ve-lesson">' +
-          '<div class="ve-lesson-header">' +
-            '<button type="button" class="ve-back-btn" onclick="VideoExercises.openHub()">' +
-              _mi('arrow_back') + '<span>Back</span>' +
-            '</button>' +
-            '<div class="ve-lesson-titles">' +
-              '<h1 class="ve-lesson-title">' + esc(data.title) + '</h1>' +
-              '<div class="ve-lesson-sub">Test sections</div>' +
-            '</div>' +
-            '<div class="ve-hearts">' + heartsHtml + '</div>' +
-          '</div>' +
-          this._buildProgressDots() +
-          '<div class="ve-test-hub">' +
-            '<button type="button" class="ve-rewatch-btn" onclick="VideoExercises._goToVideo()">' +
-              _mi('replay') + ' Watch video again' +
-            '</button>' +
-            '<div class="ve-sections-list">' + sectionsHtml + '</div>' +
-            (self._allSectionsComplete() ?
-              '<button type="button" class="ve-btn ve-btn--primary ve-finish-btn" onclick="VideoExercises._finishTest()">' +
-                _mi('flag') + ' See results' +
-              '</button>' : '') +
-          '</div>' +
+      this._renderLessonLayout(
+        this._renderLessonHeader({ showProgress: true, showHearts: true, exitAction: '_exitQuiz' }) +
+        '<div class="ve-chapter-break">' +
+          '<div class="ve-chapter-badge">Part ' + sectionNum + ' / ' + totalSections + '</div>' +
+          '<h2 class="ve-chapter-title">' + esc(sec.title) + '</h2>' +
+          '<p class="ve-chapter-instructions">' + esc(sec.instructions || '') + '</p>' +
+          '<p class="ve-chapter-count">' + (sec.questions || []).length + ' question' + ((sec.questions || []).length !== 1 ? 's' : '') + '</p>' +
+          '<button type="button" class="ve-btn ve-btn--primary" onclick="VideoExercises._continueFromChapter()">' +
+            _mi('arrow_forward') + ' Continue' +
+          '</button>' +
+          '<button type="button" class="ve-btn ve-btn--ghost ve-chapter-rewatch" onclick="VideoExercises._goToVideo()">' +
+            _mi('replay') + ' Watch video again' +
+          '</button>' +
         '</div>'
       );
+    },
+
+    _continueFromChapter: function() {
+      if (!session) return;
+      session.phase = 'quiz';
+      session._pendingChapter = null;
+      this._renderSession();
     },
 
     _goToVideo: function() {
@@ -382,78 +406,33 @@
       this._renderSession();
     },
 
-    _allSectionsComplete: function() {
-      if (!session) return false;
-      var data = session.data;
-      var prog = this._getExerciseProgress(session.exerciseId);
-      return (data.sections || []).every(function(sec) {
-        var sp = (prog.sections || {})[sec.id];
-        return sp && sp.completed;
-      });
-    },
-
-    _openSection: function(sectionIdx) {
+    _exitQuiz: function() {
       if (!session) return;
-      if (session.lives <= 0) {
-        session.phase = 'test_failed';
-        this._renderSession();
-        return;
-      }
-      session.currentSectionIdx = sectionIdx;
-      session.currentQuestionIdx = 0;
-      session.phase = 'section';
-      session.orderSelection = [];
-      session.awaitingContinue = false;
-      this._renderSession();
+      this.openHub();
     },
 
-    _getCurrentSection: function() {
-      if (!session || session.currentSectionIdx == null) return null;
-      return (session.data.sections || [])[session.currentSectionIdx] || null;
+    _getCurrentEntry: function() {
+      return session.queue[session.queueIdx] || null;
     },
 
-    _getCurrentQuestion: function() {
-      var sec = this._getCurrentSection();
-      if (!sec) return null;
-      return (sec.questions || [])[session.currentQuestionIdx] || null;
-    },
-
-    _renderSectionQuestion: function() {
-      var self = this;
-      var data = session.data;
-      var sec = this._getCurrentSection();
-      var q = this._getCurrentQuestion();
-      if (!sec || !q) {
-        session.phase = 'test_hub';
-        this._renderSession();
+    _renderQuizQuestion: function() {
+      var entry = this._getCurrentEntry();
+      if (!entry) {
+        this._finishQuiz();
         return;
       }
 
-      var totalInSection = sec.questions.length;
-      var qNum = session.currentQuestionIdx + 1;
+      var sec = entry.section;
+      var q = entry.question;
+      var globalNum = entry.globalIdx + 1;
+      var total = session.queue.length;
       var questionBody = this._renderQuestionBody(q);
 
-      var heartsHtml = '';
-      for (var h = 0; h < session.maxLives; h++) {
-        heartsHtml += '<span class="ve-heart' + (h < session.lives ? ' ve-heart--full' : ' ve-heart--empty') + '">' +
-          _mi(h < session.lives ? 'favorite' : 'heart_broken') + '</span>';
-      }
-
-      var progressPct = Math.round((session.currentQuestionIdx / totalInSection) * 100);
-
-      this._renderLayout(
-        '<div class="ve-lesson ve-lesson--quiz">' +
-          '<div class="ve-lesson-header">' +
-            '<button type="button" class="ve-back-btn" onclick="VideoExercises._backToHub()">' +
-              _mi('arrow_back') + '<span>Sections</span>' +
-            '</button>' +
-            '<div class="ve-lesson-titles">' +
-              '<div class="ve-lesson-sub">' + esc(sec.title) + '</div>' +
-              '<div class="ve-question-counter">Question ' + qNum + ' / ' + totalInSection + '</div>' +
-            '</div>' +
-            '<div class="ve-hearts">' + heartsHtml + '</div>' +
-          '</div>' +
-          '<div class="ve-quiz-progress"><div class="ve-quiz-progress-fill" style="width:' + progressPct + '%"></div></div>' +
+      this._renderLessonLayout(
+        this._renderLessonHeader({ showProgress: true, showHearts: true, exitAction: '_exitQuiz' }) +
+        '<div class="ve-quiz-stage">' +
+          '<div class="ve-quiz-chapter-label">' + esc(sec.title) + '</div>' +
+          '<div class="ve-quiz-counter">' + globalNum + ' / ' + total + '</div>' +
           '<div class="ve-question-card" id="ve-question-card">' +
             '<p class="ve-question-instructions">' + esc(sec.instructions || '') + '</p>' +
             '<p class="ve-question-text">' + esc(q.question) + '</p>' +
@@ -468,6 +447,7 @@
       );
 
       if (q.type === 'order_sentences') {
+        session.orderSelection = [];
         this._initOrderTiles(q);
       }
     },
@@ -508,12 +488,11 @@
 
     _initOrderTiles: function(q) {
       var self = this;
-      session.orderSelection = [];
       var bank = document.getElementById('ve-tile-bank');
       var answer = document.getElementById('ve-tile-answer');
       if (!bank || !answer) return;
 
-      bank.addEventListener('click', function(e) {
+      bank.onclick = function(e) {
         var btn = e.target.closest('.ve-tile');
         if (!btn || btn.disabled || session.awaitingContinue) return;
         var item = btn.getAttribute('data-item');
@@ -521,9 +500,9 @@
         btn.classList.add('ve-tile--used');
         session.orderSelection.push(item);
         self._renderOrderAnswer();
-      });
+      };
 
-      answer.addEventListener('click', function(e) {
+      answer.onclick = function(e) {
         var rm = e.target.closest('.ve-tile-answer-item');
         if (!rm || session.awaitingContinue) return;
         var idx = parseInt(rm.getAttribute('data-idx'), 10);
@@ -538,7 +517,7 @@
             break;
           }
         }
-      });
+      };
     },
 
     _renderOrderAnswer: function() {
@@ -552,41 +531,34 @@
 
     _answerMC: function(selected) {
       if (!session || session.awaitingContinue) return;
-      var q = this._getCurrentQuestion();
-      if (!q) return;
+      var entry = this._getCurrentEntry();
+      if (!entry) return;
+      var q = entry.question;
+      var self = this;
 
       var isCorrect = this._normalize(selected) === this._normalize(q.answer);
       this._showFeedback(isCorrect, q);
       this._lockOptions(selected, isCorrect, q.answer);
 
-      session.answered++;
       if (isCorrect) session.correct++;
 
       if (!isCorrect) {
         session.lives--;
         if (session.lives <= 0) {
-          var self = this;
-          setTimeout(function() {
-            session.phase = 'test_failed';
-            self._renderSession();
-          }, 1800);
+          setTimeout(function() { self._failQuiz(); }, 1800);
           return;
         }
       }
 
-      this._saveQuestionResult(isCorrect);
       session.awaitingContinue = true;
-
-      var self = this;
-      setTimeout(function() {
-        self._advanceQuestion();
-      }, isCorrect ? 1200 : 2200);
+      setTimeout(function() { self._advanceQuiz(); }, isCorrect ? 1000 : 2000);
     },
 
     _checkOrderAnswer: function() {
       if (!session || session.awaitingContinue) return;
-      var q = this._getCurrentQuestion();
-      if (!q || q.type !== 'order_sentences') return;
+      var entry = this._getCurrentEntry();
+      if (!entry || entry.question.type !== 'order_sentences') return;
+      var q = entry.question;
       var self = this;
 
       var expected = q.answer || [];
@@ -599,26 +571,18 @@
       var checkBtn = document.getElementById('ve-check-btn');
       if (checkBtn) checkBtn.disabled = true;
 
-      session.answered++;
       if (isCorrect) session.correct++;
 
       if (!isCorrect) {
         session.lives--;
         if (session.lives <= 0) {
-          setTimeout(function() {
-            session.phase = 'test_failed';
-            self._renderSession();
-          }, 1800);
+          setTimeout(function() { self._failQuiz(); }, 1800);
           return;
         }
       }
 
-      this._saveQuestionResult(isCorrect);
       session.awaitingContinue = true;
-
-      setTimeout(function() {
-        self._advanceQuestion();
-      }, isCorrect ? 1200 : 2200);
+      setTimeout(function() { self._advanceQuiz(); }, isCorrect ? 1000 : 2000);
     },
 
     _normalize: function(str) {
@@ -627,8 +591,7 @@
 
     _lockOptions: function(selected, isCorrect, correctAnswer) {
       var self = this;
-      var opts = document.querySelectorAll('.ve-option');
-      opts.forEach(function(btn) {
+      document.querySelectorAll('.ve-option').forEach(function(btn) {
         btn.disabled = true;
         var val = btn.getAttribute('data-answer');
         if (self._normalize(val) === self._normalize(correctAnswer)) {
@@ -652,43 +615,20 @@
         '</div>';
     },
 
-    _saveQuestionResult: function(isCorrect) {
-      var sec = this._getCurrentSection();
-      if (!sec || !session) return;
-      var prog = this._getExerciseProgress(session.exerciseId);
-      var secProg = (prog.sections || {})[sec.id] || { answers: {}, completed: false };
-      secProg.answers = secProg.answers || {};
-      secProg.answers[session.currentQuestionIdx] = isCorrect;
-
-      var patch = { sections: {} };
-      patch.sections[sec.id] = secProg;
-      this._saveExerciseProgress(session.exerciseId, patch);
-    },
-
-    _advanceQuestion: function() {
+    _advanceQuiz: function() {
       if (!session) return;
-      var sec = this._getCurrentSection();
-      if (!sec) return;
-
       session.awaitingContinue = false;
-      session.currentQuestionIdx++;
+      session.queueIdx++;
 
-      if (session.currentQuestionIdx >= sec.questions.length) {
-        var correctInSection = 0;
-        var prog = this._getExerciseProgress(session.exerciseId);
-        var secProg = (prog.sections || {})[sec.id] || { answers: {} };
-        Object.keys(secProg.answers || {}).forEach(function(k) {
-          if (secProg.answers[k]) correctInSection++;
-        });
-        secProg.completed = true;
-        secProg.score = Math.round((correctInSection / sec.questions.length) * 100);
+      if (session.queueIdx >= session.queue.length) {
+        this._finishQuiz();
+        return;
+      }
 
-        var patch = { sections: {} };
-        patch.sections[sec.id] = secProg;
-        this._saveExerciseProgress(session.exerciseId, patch);
-
-        session.sectionResults[sec.id] = secProg;
-        session.phase = 'section_done';
+      var next = session.queue[session.queueIdx];
+      if (next.isFirstInSection) {
+        session.phase = 'chapter';
+        session._pendingChapter = next;
         this._renderSession();
         return;
       }
@@ -697,94 +637,52 @@
       this._renderSession();
     },
 
-    _renderSectionDone: function() {
-      var sec = this._getCurrentSection();
-      if (!sec) {
-        session.phase = 'test_hub';
-        this._renderSession();
-        return;
-      }
-      var prog = this._getExerciseProgress(session.exerciseId);
-      var secProg = (prog.sections || {})[sec.id] || {};
-
-      this._renderLayout(
-        '<div class="ve-lesson ve-lesson--result">' +
-          '<div class="ve-section-done-card">' +
-            '<div class="ve-section-done-icon">' + _mi('emoji_events') + '</div>' +
-            '<h2>Section complete!</h2>' +
-            '<p class="ve-section-done-title">' + esc(sec.title) + '</p>' +
-            '<div class="ve-section-done-score">' + (secProg.score || 0) + '%</div>' +
-            '<div class="ve-section-done-actions">' +
-              '<button type="button" class="ve-btn ve-btn--primary" onclick="VideoExercises._backToHub()">' +
-                _mi('dashboard') + ' Back to sections' +
-              '</button>' +
-            '</div>' +
-          '</div>' +
-        '</div>'
-      );
-    },
-
-    _backToHub: function() {
+    _finishQuiz: function() {
       if (!session) return;
-      session.phase = 'test_hub';
-      session.currentSectionIdx = null;
-      session.currentQuestionIdx = 0;
-      this._renderSession();
-    },
-
-    _finishTest: function() {
-      if (!session) return;
-      var data = session.data;
-      var totalQ = data.totalQuestions || 0;
-      var correct = 0;
-
+      var total = session.queue.length;
+      var score = total > 0 ? Math.round((session.correct / total) * 100) : 0;
+      var passed = score >= (session.data.passingScore || 70);
       var prog = this._getExerciseProgress(session.exerciseId);
-      (data.sections || []).forEach(function(sec) {
-        var sp = (prog.sections || {})[sec.id];
-        if (sp && sp.answers) {
-          Object.keys(sp.answers).forEach(function(k) {
-            if (sp.answers[k]) correct++;
-          });
-        }
-      });
-
-      var score = totalQ > 0 ? Math.round((correct / totalQ) * 100) : 0;
-      var passed = score >= (data.passingScore || 70);
 
       this._saveExerciseProgress(session.exerciseId, {
         passed: passed,
         bestScore: Math.max(prog.bestScore || 0, score),
-        finalScore: score
+        lastScore: score
       });
 
       session.finalScore = score;
-      session.finalPassed = passed;
-      session.phase = passed ? 'test_done' : 'test_failed';
+      session.phase = passed ? 'result_pass' : 'result_fail';
       this._renderSession();
     },
 
-    _renderTestResult: function() {
+    _failQuiz: function() {
+      if (!session) return;
+      var total = session.queue.length;
+      var answered = session.queueIdx + (session.awaitingContinue ? 1 : 0);
+      var score = total > 0 ? Math.round((session.correct / total) * 100) : 0;
+      session.finalScore = score;
+      session.phase = 'result_fail';
+      this._renderSession();
+    },
+
+    _renderResult: function() {
       var data = session.data;
-      var passed = session.phase === 'test_done';
+      var passed = session.phase === 'result_pass';
       var score = session.finalScore || 0;
 
-      this._renderLayout(
-        '<div class="ve-lesson ve-lesson--result">' +
+      this._renderLessonLayout(
+        '<div class="ve-result-stage">' +
           '<div class="ve-result-card ' + (passed ? 've-result-card--passed' : 've-result-card--failed') + '">' +
             '<div class="ve-result-icon">' + _mi(passed ? 'celebration' : 'sentiment_dissatisfied') + '</div>' +
             '<h2>' + (passed ? 'Well done!' : 'Keep practising!') + '</h2>' +
             '<div class="ve-result-score">' + score + '%</div>' +
-            '<p class="ve-result-msg">' +
-              (passed
-                ? 'You passed! You need ' + (data.passingScore || 70) + '% to pass.'
-                : 'You need ' + (data.passingScore || 70) + '% to pass. Try again!') +
-            '</p>' +
+            '<p class="ve-result-msg">' + session.correct + ' / ' + session.queue.length + ' correct · need ' + (data.passingScore || 70) + '% to pass</p>' +
             '<div class="ve-result-actions">' +
-              '<button type="button" class="ve-btn ve-btn--secondary" onclick="VideoExercises._retryTest()">' +
+              '<button type="button" class="ve-btn ve-btn--ghost" onclick="VideoExercises._retryQuiz()">' +
                 _mi('refresh') + ' Try again' +
               '</button>' +
               '<button type="button" class="ve-btn ve-btn--primary" onclick="VideoExercises.openHub()">' +
-                _mi('home') + ' All exercises' +
+                _mi('home') + ' All videos' +
               '</button>' +
             '</div>' +
           '</div>' +
@@ -792,26 +690,11 @@
       );
     },
 
-    _retryTest: function() {
+    _retryQuiz: function() {
       if (!session) return;
       var exerciseId = session.exerciseId;
-      var all = this._getProgress();
-      if (all[exerciseId]) {
-        all[exerciseId].sections = {};
-        all[exerciseId].passed = false;
-        this._saveProgress(all);
-      }
+      this._saveExerciseProgress(exerciseId, { passed: false });
       this.openExercise(exerciseId);
-      this._startTest();
-    },
-
-    _popstate: function(state) {
-      if (!state) return;
-      if (state.view === 'videoExercises') {
-        this.openHub({ fromRoute: true });
-      } else if (state.view === 'videoExercise' && state.exerciseId) {
-        this.openExercise(state.exerciseId, { fromRoute: true, phase: state.phase });
-      }
     }
   };
 })();
