@@ -1,17 +1,17 @@
-/* css/components/video-exercises.css — Sune's Stories: video episode hub + quiz */
+/* css/components/video-exercises.css — Sune's Stories hub + modal */
 
-/* ─── Hub wrapper ───────────────────────────────────────────────────── */
+/* ─── Hub wrapper (same width as other dashboard pages) ─────────────── */
 
 .ve-hub {
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 4px 16px 48px;
+  width: 100%;
+  padding: 4px 0 48px;
+  box-sizing: border-box;
 }
 
 /* ─── Series header ─────────────────────────────────────────────────── */
 
 .ve-series-header {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   padding: 22px 24px;
   background: linear-gradient(135deg, #f0f7ff 0%, #fff 60%);
   border: 1.5px solid #ddeeff;
@@ -85,7 +85,6 @@
   font-size: 15px;
 }
 
-/* Overall progress bar */
 .ve-series-progress-row {
   display: flex;
   align-items: center;
@@ -114,291 +113,209 @@
   white-space: nowrap;
 }
 
-/* ─── Episode grid ──────────────────────────────────────────────────── */
+/* ─── Horizontal chapter rows ───────────────────────────────────────── */
 
-.ve-story-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 18px;
-}
-
-/* ─── Episode card ──────────────────────────────────────────────────── */
-
-.ve-story-card {
+.ve-chapter-list {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+}
+
+.ve-chapter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
   background: #fff;
   border: 2px solid #e8ecf4;
-  border-radius: 20px;
-  overflow: hidden;
-  cursor: pointer;
-  text-align: left;
-  padding: 0;
-  transition: border-color 0.18s, box-shadow 0.18s, transform 0.14s;
-  box-shadow: 0 2px 8px rgba(45, 46, 95, 0.06);
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(45, 46, 95, 0.05);
+  transition: border-color 0.18s, box-shadow 0.18s;
 }
 
-.ve-story-card:hover:not(:disabled) {
+.ve-chapter-row:hover:not(.ve-chapter-row--coming-soon) {
   border-color: #64B5F6;
-  box-shadow: 0 8px 28px rgba(28, 176, 246, 0.18);
-  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(28, 176, 246, 0.12);
 }
 
-.ve-story-card--passed {
+.ve-chapter-row--complete {
   border-color: #a8e06c;
+  background: linear-gradient(135deg, #f8fff0 0%, #fff 60%);
 }
 
-.ve-story-card--started {
-  border-color: #b8e8fc;
+.ve-chapter-row--coming-soon {
+  opacity: 0.72;
 }
 
-.ve-story-card--coming-soon {
-  cursor: default;
-  opacity: 0.78;
-}
-
-.ve-story-card--coming-soon:hover {
-  transform: none;
-  box-shadow: 0 2px 8px rgba(45, 46, 95, 0.06);
-  border-color: #e8ecf4;
-}
-
-/* Thumbnail area */
-.ve-story-preview {
-  aspect-ratio: 9 / 16;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-/* Episode number badge (top-left) */
-.ve-episode-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 0.7rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.95);
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 4px 9px;
-  border-radius: 999px;
-  z-index: 2;
-}
-
-/* Level badge (top-right) */
-.ve-level-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  padding: 4px 9px;
-  border-radius: 999px;
-  z-index: 2;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #fff;
-}
-
-.ve-level-badge--B1 {
-  background: rgba(255, 152, 0, 0.6);
-}
-
-.ve-level-badge--B2 {
-  background: rgba(33, 150, 243, 0.6);
-}
-
-.ve-level-badge--C1 {
-  background: rgba(76, 175, 80, 0.6);
-}
-
-.ve-level-badge--C2 {
-  background: rgba(156, 39, 176, 0.6);
-}
-
-/* Play button in center */
-.ve-story-preview-play {
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  transition: transform 0.18s, background 0.18s;
-  z-index: 2;
-}
-
-.ve-story-card:hover:not(:disabled) .ve-story-preview-play {
-  background: rgba(255, 255, 255, 0.28);
-  transform: scale(1.1);
-}
-
-.ve-story-preview-play .material-symbols-outlined {
-  font-size: 34px;
-}
-
-/* Progress bar strip at bottom of thumbnail */
-.ve-story-progress-bar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.25);
-  z-index: 3;
-}
-
-.ve-story-progress-fill {
-  height: 100%;
-  background: #58cc02;
-  border-radius: 0 2px 2px 0;
-  transition: width 0.4s ease;
-}
-
-.ve-story-card--passed .ve-story-progress-fill {
-  background: #58cc02;
-  width: 100% !important;
-}
-
-/* Coming-soon overlay */
-.ve-coming-soon-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(10, 12, 30, 0.55);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  z-index: 2;
-}
-
-.ve-coming-soon-lock {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.ve-coming-soon-lock .material-symbols-outlined {
-  font-size: 26px;
-}
-
-.ve-coming-soon-label {
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.7);
-  background: rgba(0, 0, 0, 0.3);
-  padding: 4px 10px;
-  border-radius: 999px;
-}
-
-/* Card info area */
-.ve-story-body {
-  padding: 14px 16px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.ve-chapter-row-info {
   flex: 1;
+  min-width: 0;
 }
 
-.ve-story-title {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--primary, #2D2E5F);
-  margin: 0;
-  line-height: 1.3;
-}
-
-/* Topic tags */
-.ve-tags-row {
+.ve-chapter-row-top {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
 }
 
-.ve-tag {
+.ve-chapter-ep {
   font-size: 0.72rem;
-  font-weight: 700;
-  color: #4a4b7c;
-  background: #f0f2fa;
-  border: 1px solid #e0e4f0;
-  border-radius: 999px;
-  padding: 3px 9px;
-  white-space: nowrap;
-}
-
-/* Vocabulary preview chips */
-.ve-vocab-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-
-.ve-vocab-chip {
-  font-size: 0.72rem;
-  font-weight: 600;
-  font-style: italic;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   color: #1899d6;
   background: #ddf4ff;
   border: 1px solid #b8e8fc;
-  border-radius: 8px;
-  padding: 3px 8px;
-  white-space: nowrap;
+  border-radius: 999px;
+  padding: 3px 10px;
 }
 
-/* CTA footer */
-.ve-story-footer {
-  margin-top: auto;
-  padding-top: 4px;
+.ve-level-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  color: #fff;
 }
 
-.ve-story-cta {
+.ve-level-badge--B1 { background: #ff9800; }
+.ve-level-badge--B2 { background: #2196f3; }
+.ve-level-badge--C1 { background: #4caf50; }
+.ve-level-badge--C2 { background: #9c27b0; }
+
+.ve-chapter-status {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 0.8rem;
+  gap: 4px;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: #1899d6;
 }
 
-.ve-story-cta .material-symbols-outlined {
-  font-size: 17px;
-}
-
-.ve-story-cta--passed {
+.ve-chapter-status--done {
   color: #46a302;
 }
 
-.ve-story-cta--started {
+.ve-chapter-status--done .material-symbols-outlined {
+  font-size: 16px;
+}
+
+.ve-chapter-status--started {
   color: #f97316;
 }
 
-/* Loading / empty / error */
+.ve-chapter-status--soon {
+  color: var(--text-light, #7b7ca0);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.68rem;
+}
+
+.ve-chapter-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary, #2D2E5F);
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+
+.ve-chapter-desc {
+  font-size: 0.85rem;
+  color: var(--text-medium, #4a4b7c);
+  margin: 0;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Step circles (play + numbered) ────────────────────────────────── */
+
+.ve-chapter-steps {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.ve-step-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #e8ecf4;
+  background: #fff;
+  color: var(--text-medium, #4a4b7c);
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.14s, border-color 0.14s, background 0.14s, box-shadow 0.14s;
+  padding: 0;
+  box-shadow: 0 2px 0 #dce3f0;
+}
+
+.ve-step-circle .material-symbols-outlined {
+  font-size: 24px;
+}
+
+.ve-step-circle--play {
+  background: linear-gradient(135deg, #1899d6 0%, #1cb0f6 100%);
+  border-color: #1465a0;
+  color: #fff;
+  box-shadow: 0 3px 0 #1465a0;
+}
+
+.ve-step-circle--play.ve-step-circle--active:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #1465a0;
+}
+
+.ve-step-circle--active:not(.ve-step-circle--play) {
+  border-color: #64B5F6;
+  color: #1899d6;
+  background: #f0f9ff;
+}
+
+.ve-step-circle--active:not(.ve-step-circle--play):hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: #1899d6;
+}
+
+.ve-step-circle--done {
+  background: #e5f8d0;
+  border-color: #58cc02;
+  color: #46a302;
+  box-shadow: 0 2px 0 #46a302;
+}
+
+.ve-step-circle--done.ve-step-circle--play {
+  background: linear-gradient(135deg, #58cc02 0%, #82e825 100%);
+  border-color: #46a302;
+  color: #fff;
+  box-shadow: 0 3px 0 #46a302;
+}
+
+.ve-step-circle--locked {
+  opacity: 0.45;
+  cursor: default;
+  box-shadow: none;
+}
+
+.ve-step-circle:disabled {
+  cursor: default;
+  transform: none !important;
+}
+
+/* ─── Loading / empty / error ───────────────────────────────────────── */
+
 .ve-loading,
 .ve-error,
 .ve-empty {
@@ -417,128 +334,101 @@
   opacity: 0.5;
 }
 
-/* ─── Lesson container ─────────────────────────────────────────────
-   Self-contained overlay: does not rely on the dashboard/course flex
-   height chain (which only uses min-height, causing flex:1 collapse).  */
+/* ─── Modal overlay ─────────────────────────────────────────────────── */
 
-.ve-lesson-root {
-  width: 100%;
-  min-height: 100dvh;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 1;
-}
-
-/* Background layer */
-.ve-lesson-root::before {
-  content: '';
+.ve-modal-overlay {
   position: fixed;
   inset: 0;
-  z-index: 0;
-  background-image: url('../../Assets/images/Background.png');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: #d8eaff;
+  z-index: 9000;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
   pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
-.ve-lesson {
-  position: relative;
-  z-index: 1;
+.ve-modal-overlay--open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body.ve-modal-open {
+  overflow: hidden;
+}
+
+.ve-modal-panel {
   width: 100%;
-  max-width: 540px;
-  margin: 0 auto;
-  padding: 16px 20px 24px;
-  box-sizing: border-box;
-  min-height: 100dvh;
+  max-width: 520px;
+  max-height: calc(100dvh - 32px);
+  background: var(--cu-lesson-bg, #fff);
+  border-radius: 24px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 20px 60px rgba(10, 12, 30, 0.25);
+  animation: ve-modal-in 0.28s cubic-bezier(0.34, 1.2, 0.64, 1);
 }
 
-/* ─── Practice header ──────────────────────────────────────────────── */
+@keyframes ve-modal-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
 
-.ve-practice-header {
-  display: grid;
-  grid-template-columns: 40px 1fr auto;
-  align-items: center;
-  gap: 12px;
-  padding: 4px 0 12px;
+.ve-modal-inner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  max-height: calc(100dvh - 32px);
+  overflow: hidden;
+}
+
+.ve-modal-header {
+  padding: 12px 16px 8px;
   flex-shrink: 0;
 }
 
-.ve-header-btn {
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.85);
-  color: var(--text-medium, #4a4b7c);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 1px 4px rgba(45, 46, 95, 0.08);
-  transition: background 0.15s;
-}
-
-.ve-header-btn:hover {
-  background: #fff;
-}
-
-.ve-header-episode-label {
-  font-size: 0.8rem;
+.ve-modal-header-title {
+  font-size: 0.85rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--text-medium, #4a4b7c);
   text-align: center;
-  letter-spacing: 0.02em;
-}
-
-.ve-session-progress {
-  height: 14px;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 999px;
+  white-space: nowrap;
   overflow: hidden;
-  box-shadow: inset 0 1px 3px rgba(45, 46, 95, 0.08);
+  text-overflow: ellipsis;
 }
 
-.ve-session-progress-fill {
-  height: 100%;
-  background: #58cc02;
-  border-radius: 999px;
-  transition: width 0.35s ease;
+.ve-modal-header-spacer {
+  width: 40px;
+  flex-shrink: 0;
 }
 
-.ve-hearts {
+/* ─── Video in modal ──────────────────────────────────────────────────── */
+
+.ve-modal-video-stage {
+  flex: 1;
   display: flex;
-  gap: 2px;
-}
-
-.ve-heart .material-symbols-outlined { font-size: 22px; }
-.ve-heart--full  { color: #ef4444; }
-.ve-heart--empty { color: #d1d5db; }
-
-/* ─── Video stage (9:16 vertical) ──────────────────────────────────── */
-
-.ve-video-stage {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  padding: 8px 0 16px;
+  padding: 8px 16px;
+  min-height: 0;
+  overflow: hidden;
 }
 
-.ve-video-frame {
-  position: relative;
+.ve-modal-video-frame {
+  width: 100%;
   aspect-ratio: 9 / 16;
-  width: auto;
-  height: min(72dvh, calc(100dvh - 200px));
-  max-width: 100%;
-  border-radius: 22px;
+  max-height: calc(100dvh - 200px);
+  border-radius: 18px;
   overflow: hidden;
   background: #000;
-  box-shadow: 0 12px 40px rgba(10, 12, 30, 0.35);
+  box-shadow: 0 8px 28px rgba(10, 12, 30, 0.2);
 }
 
 .ve-video {
@@ -549,236 +439,54 @@
   background: #000;
 }
 
-.ve-video-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.35) 55%, transparent 100%);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 28px 16px;
+#ve-video-footer {
+  flex-shrink: 0;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
 }
 
-.ve-video-overlay-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 260px;
-}
+/* ─── Quiz in modal (learning / sp-* style) ─────────────────────────── */
 
-.ve-video-meta {
-  text-align: center;
-  max-width: 380px;
-  padding: 0 8px;
-}
-
-.ve-video-title {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--primary, #2D2E5F);
-  margin: 0 0 6px;
-}
-
-.ve-video-desc {
-  font-size: 0.875rem;
-  color: var(--text-medium, #4a4b7c);
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* ─── Chapter break ─────────────────────────────────────────────────── */
-
-.ve-chapter-break {
+.ve-modal-quiz {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 24px 20px;
-  max-width: 440px;
-  margin: 0 auto;
-  gap: 10px;
-  animation: ve-fade-up 0.3s ease;
-}
-
-@keyframes ve-fade-up {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.ve-chapter-icon-wrap {
-  width: 72px;
-  height: 72px;
-  border-radius: 22px;
-  background: color-mix(in srgb, var(--ve-chapter-color, #1899d6) 14%, #fff);
-  border: 2px solid color-mix(in srgb, var(--ve-chapter-color, #1899d6) 30%, #fff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ve-chapter-color, #1899d6);
-  margin-bottom: 6px;
-}
-
-.ve-chapter-icon-wrap .material-symbols-outlined {
-  font-size: 36px;
-}
-
-.ve-chapter-badge {
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: #1899d6;
-  background: #ddf4ff;
-  border: 1.5px solid #b8e8fc;
-  padding: 5px 14px;
-  border-radius: 999px;
-}
-
-.ve-chapter-title {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary, #2D2E5F);
-  margin: 0;
-  line-height: 1.25;
-}
-
-.ve-chapter-instructions {
-  font-size: 0.95rem;
-  color: var(--text-medium, #4a4b7c);
-  margin: 0;
-  line-height: 1.5;
-}
-
-.ve-chapter-count {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-light, #7b7ca0);
-  margin: 4px 0 8px;
-}
-
-.ve-chapter-count .material-symbols-outlined {
-  font-size: 17px;
-  opacity: 0.7;
-}
-
-.ve-chapter-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 320px;
-}
-
-.ve-chapter-rewatch {
-  margin-top: 0;
-}
-
-/* ─── Quiz stage ────────────────────────────────────────────────────── */
-
-.ve-quiz-stage {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
   min-height: 0;
+  overflow: hidden;
+}
+
+.ve-modal-quiz .sp-practice-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.ve-modal-quiz .sp-practice-body {
+  flex: 1;
   overflow-y: auto;
-  padding-bottom: 16px;
+  padding: 0 16px;
+  -webkit-overflow-scrolling: touch;
 }
 
-.ve-quiz-chapter-label {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #1899d6;
-  text-align: center;
-}
-
-.ve-quiz-counter {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-light, #7b7ca0);
-  text-align: center;
-  margin-bottom: 2px;
-}
-
-.ve-question-card {
-  background: rgba(255, 255, 255, 0.92);
-  border: 2px solid #e8ecf4;
-  border-radius: 20px;
-  padding: 22px 18px;
-  box-shadow: 0 2px 14px rgba(45, 46, 95, 0.07);
-}
-
-.ve-question-instructions {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #1899d6;
-  margin: 0 0 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+.ve-modal-quiz .sp-exercise-card {
+  padding: 8px 0 16px;
 }
 
 .ve-question-text {
-  font-size: 1.05rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: var(--primary, #2D2E5F);
+  color: var(--text-dark, #2D2E5F);
   line-height: 1.5;
   margin: 0 0 18px;
 }
 
-.ve-options {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.ve-modal-quiz .sp-practice-footer {
+  flex-shrink: 0;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
 }
 
-.ve-option {
-  display: block;
-  width: 100%;
-  padding: 14px 16px;
-  background: #fff;
-  border: 2px solid #e8ecf4;
-  border-radius: 14px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--primary, #2D2E5F);
-  text-align: left;
-  cursor: pointer;
-  transition: border-color 0.15s, background 0.15s, transform 0.1s;
-  box-sizing: border-box;
-}
-
-.ve-option:hover:not(:disabled) {
-  border-color: #64B5F6;
-  background: #f8fbff;
-  transform: translateX(3px);
-}
-
-.ve-option:disabled { cursor: default; transform: none; }
-
-.ve-option--correct {
-  border-color: #58cc02 !important;
-  background: #e5f8d0 !important;
-  color: #2d6a00;
-}
-
-.ve-option--wrong {
-  border-color: #ef4444 !important;
-  background: #fef2f2 !important;
-  color: #991b1b;
-}
-
-/* ─── Order sentences ───────────────────────────────────────────────── */
+/* ─── Order sentences tiles ─────────────────────────────────────────── */
 
 .ve-order-wrap {
   display: flex;
@@ -808,6 +516,7 @@
   padding: 10px 12px;
   background: #fff;
   border: 2px solid #e8ecf4;
+  border-bottom-width: 3px;
   border-radius: 12px;
   font-size: 0.85rem;
   font-weight: 600;
@@ -846,212 +555,55 @@
   font-weight: 700;
 }
 
-.ve-check-btn {
-  flex-shrink: 0;
-  margin-top: 4px;
-}
+/* ─── Section complete screen ───────────────────────────────────────── */
 
-/* ─── Feedback ──────────────────────────────────────────────────────── */
-
-.ve-feedback {
+.ve-section-complete {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-top: 14px;
-  padding: 14px;
-  border-radius: 14px;
-  animation: ve-fade-up 0.25s ease;
-}
-
-.ve-feedback--correct {
-  background: #e5f8d0;
-  color: #2d6a00;
-}
-
-.ve-feedback--wrong {
-  background: #fef2f2;
-  color: #991b1b;
-}
-
-.ve-feedback-icon .material-symbols-outlined { font-size: 22px; }
-
-.ve-feedback-text {
-  font-weight: 700;
-  font-size: 0.9rem;
-}
-
-.ve-feedback-explanation {
-  font-weight: 400;
-  font-size: 0.84rem;
-  margin: 4px 0 0;
-  opacity: 0.9;
-  line-height: 1.45;
-}
-
-/* ─── Buttons ───────────────────────────────────────────────────────── */
-
-.ve-btn {
-  display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 14px 22px;
-  border: none;
-  border-radius: 14px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.1s, box-shadow 0.15s, background 0.15s;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.ve-btn:active { transform: scale(0.97); }
-
-.ve-btn--primary {
-  background: #58cc02;
-  color: #fff;
-  box-shadow: 0 4px 0 #46a302;
-}
-
-.ve-btn--primary:hover { background: #61d802; }
-
-.ve-btn--ghost {
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--primary, #2D2E5F);
-  border: 2px solid #e8ecf4;
-}
-
-.ve-btn--ghost:hover { border-color: #64B5F6; background: #fff; }
-
-.ve-video-overlay .ve-btn--ghost {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.38);
-  color: #fff;
-  box-shadow: none;
-}
-
-.ve-video-overlay .ve-btn--ghost:hover {
-  background: rgba(255, 255, 255, 0.22);
-  border-color: rgba(255, 255, 255, 0.6);
-}
-
-.ve-video-overlay .ve-btn--primary {
-  box-shadow: 0 4px 0 #3d9900;
-}
-
-/* ─── Results ───────────────────────────────────────────────────────── */
-
-.ve-result-stage {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px 16px;
-}
-
-.ve-result-card {
-  background: rgba(255, 255, 255, 0.96);
-  border: 2px solid #e8ecf4;
-  border-radius: 24px;
-  padding: 36px 28px 28px;
   text-align: center;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 6px 32px rgba(45, 46, 95, 0.1);
+  padding: 48px 28px;
+  gap: 12px;
   animation: ve-fade-up 0.35s ease;
 }
 
-/* Star rating */
-.ve-result-stars {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 8px;
+@keyframes ve-fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.ve-star {
-  display: inline-flex;
-  animation: ve-star-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
-}
-
-.ve-star .material-symbols-outlined {
-  font-size: 38px;
-}
-
-.ve-star--filled {
-  color: #ffc800;
-  filter: drop-shadow(0 2px 6px rgba(255, 200, 0, 0.45));
-}
-
-.ve-star--empty {
-  color: #d1d5db;
-}
-
-@keyframes ve-star-pop {
-  from { opacity: 0; transform: scale(0.3) rotate(-20deg); }
-  to   { opacity: 1; transform: scale(1) rotate(0deg); }
-}
-
-.ve-result-icon {
-  font-size: 50px;
-  margin-bottom: 6px;
-}
-
-.ve-result-card--passed .ve-result-icon { color: #58cc02; }
-.ve-result-card--failed .ve-result-icon { color: #ef4444; }
-
-.ve-result-card h2 {
-  font-family: 'Fredoka', sans-serif;
-  font-size: 1.6rem;
-  margin: 0 0 6px;
-  color: var(--primary, #2D2E5F);
-}
-
-.ve-result-msg-main {
-  font-size: 0.9rem;
-  color: var(--text-medium, #4a4b7c);
-  margin: 0 0 16px;
-  line-height: 1.45;
-}
-
-.ve-result-score-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 10px;
+.ve-section-complete-icon {
+  font-size: 56px;
+  color: #58cc02;
   margin-bottom: 4px;
 }
 
-.ve-result-score {
+.ve-section-complete-title {
   font-family: 'Fredoka', sans-serif;
-  font-size: 3.2rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #58cc02;
-  line-height: 1;
+  color: var(--primary, #2D2E5F);
+  margin: 0;
 }
 
-.ve-result-card--failed .ve-result-score { color: #ef4444; }
-
-.ve-result-score-sub {
-  font-size: 0.9rem;
-  font-weight: 600;
+.ve-section-complete-sub {
+  font-size: 0.95rem;
   color: var(--text-medium, #4a4b7c);
+  margin: 0;
 }
 
-.ve-result-pass-note {
-  font-size: 0.8rem;
-  color: var(--text-light, #7b7ca0);
-  margin: 0 0 22px;
+.ve-section-complete-score {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #46a302;
+  margin: 0 0 8px;
 }
 
-.ve-result-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.ve-section-complete .sp-btn {
+  margin-top: 12px;
+  min-width: 180px;
 }
-
 
 /* ─── Bento card (dashboard) ────────────────────────────────────────── */
 
@@ -1074,18 +626,42 @@
     font-size: 1.45rem;
   }
 
-  .ve-story-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+  .ve-chapter-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 16px;
   }
 
-  .ve-video-frame {
-    height: min(65dvh, calc(100dvh - 220px));
-    border-radius: 18px;
+  .ve-chapter-steps {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
-  .dashboard-layout--lesson-focus .ve-lesson-mount {
-    padding: 12px 12px 20px;
+  .ve-step-circle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .ve-modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .ve-modal-panel {
+    max-width: 100%;
+    max-height: 100dvh;
+    border-radius: 24px 24px 0 0;
+    animation: ve-modal-slide-up 0.3s cubic-bezier(0.34, 1.1, 0.64, 1);
+  }
+
+  @keyframes ve-modal-slide-up {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+
+  .ve-modal-inner {
+    max-height: 100dvh;
   }
 }
 
@@ -1104,16 +680,13 @@
     font-size: 1.3rem;
   }
 
-  .ve-story-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+  .ve-step-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
   }
-}
 
-@media (max-width: 360px) {
-  .ve-story-grid {
-    grid-template-columns: 1fr;
-    max-width: 280px;
-    margin: 0 auto;
+  .ve-step-circle .material-symbols-outlined {
+    font-size: 20px;
   }
 }
