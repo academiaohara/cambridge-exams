@@ -216,12 +216,37 @@
 .ve-chapter-desc {
   font-size: 0.85rem;
   color: var(--text-medium, #4a4b7c);
-  margin: 0;
+  margin: 0 0 8px;
   line-height: 1.45;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.ve-chapter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ve-chapter-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #5b6b8a;
+  background: #f3f6fb;
+  border: 1px solid #e2e8f2;
+  border-radius: 999px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+
+.ve-series-pill--available {
+  color: #46a302;
+  background: #e8f8d8;
+  border-color: #b8e88a;
 }
 
 /* ─── Step circles (play + numbered) ────────────────────────────────── */
