@@ -204,6 +204,12 @@
             ? '<span class="ve-chapter-status ve-chapter-status--started">In progress</span>'
             : ''));
 
+      var tagsHtml = (item.tags || []).length
+        ? '<div class="ve-chapter-tags">' + (item.tags || []).map(function(tag) {
+            return '<span class="ve-chapter-tag">' + esc(tag) + '</span>';
+          }).join('') + '</div>'
+        : '';
+
       return '<div class="' + rowCls + '" data-exercise-id="' + esc(item.id) + '">' +
         '<div class="ve-chapter-row-info">' +
           '<div class="ve-chapter-row-top">' +
@@ -212,6 +218,7 @@
           '</div>' +
           '<h3 class="ve-chapter-title">' + esc(item.title) + '</h3>' +
           (item.description ? '<p class="ve-chapter-desc">' + esc(item.description) + '</p>' : '') +
+          tagsHtml +
         '</div>' +
         this._buildStepCirclesHtml(item, prog, sectionCount, isComingSoon) +
       '</div>';
@@ -259,6 +266,9 @@
             '</div>'
           : '';
 
+        var availableCount = availableItems.length;
+        var totalCount = items.length;
+
         self._renderHubLayout(
           '<div class="ve-hub">' +
             '<header class="ve-series-header">' +
@@ -271,7 +281,12 @@
               '</div>' +
               '<div class="ve-series-meta-row">' +
                 '<span class="ve-series-pill">' + _mi('tv') + ' Season 1</span>' +
-                '<span class="ve-series-pill">' + _mi('play_circle') + ' ' + items.length + ' Episodes</span>' +
+                (availableCount > 0
+                  ? '<span class="ve-series-pill ve-series-pill--available">' + _mi('play_circle') + ' ' + availableCount + ' Available</span>'
+                  : '') +
+                (totalCount > availableCount
+                  ? '<span class="ve-series-pill">' + _mi('schedule') + ' ' + (totalCount - availableCount) + ' Coming soon</span>'
+                  : '') +
               '</div>' +
               overallProgress +
             '</header>' +
