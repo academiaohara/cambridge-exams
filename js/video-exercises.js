@@ -379,6 +379,15 @@
 
     _modalHeader: function(opts) {
       opts = opts || {};
+      if (opts.videoHeader && opts.title) {
+        return '<header class="sp-practice-header ve-modal-header ve-modal-header--video">' +
+          '<h1 class="ve-modal-header-title">' + esc(opts.title) + '</h1>' +
+          '<button type="button" class="sp-header-btn sp-header-exit" onclick="VideoExercises.closeModal()" aria-label="Close">' +
+            _mi('close') +
+          '</button>' +
+        '</header>';
+      }
+
       var centerHtml = '';
       if (opts.showProgress && session) {
         var total = session.initialTotal || session.questionQueue.length;
@@ -433,13 +442,15 @@
         };
 
         self._renderModal(
-          self._modalHeader({ title: data.title }) +
+          self._modalHeader({ title: data.title, videoHeader: true }) +
           '<div class="ve-modal-video-stage">' +
             '<div class="ve-modal-video-frame">' +
               '<video class="ve-video" id="ve-video-player" src="' + esc(data.videoUrl) + '" playsinline preload="metadata" controlsList="nofullscreen nodownload noremoteplayback" disablePictureInPicture></video>' +
               '<button type="button" class="ve-video-play-btn" id="ve-video-play-btn" aria-label="Play video">' +
                 _mi('play_arrow') +
               '</button>' +
+            '</div>' +
+            '<div class="ve-video-bottom" id="ve-video-bottom">' +
               '<div class="ve-video-controls" id="ve-video-controls">' +
                 '<div class="ve-video-progress-row">' +
                   '<input type="range" class="ve-video-seek" id="ve-video-seek" min="0" max="100" value="0" step="0.1" aria-label="Video progress">' +
@@ -543,8 +554,7 @@
         };
       }
 
-      video.onclick = function(e) {
-        if (e.target.closest('.ve-video-controls') || e.target.closest('.ve-video-ended')) return;
+      video.onclick = function() {
         if (session && session.phase === 'ended') return;
         if (video.paused) {
           video.play();
@@ -606,7 +616,9 @@
       var video = document.getElementById('ve-video-player');
       var playBtn = document.getElementById('ve-video-play-btn');
       var ended = document.getElementById('ve-video-ended');
+      var controls = document.getElementById('ve-video-controls');
       if (ended) ended.hidden = true;
+      if (controls) controls.hidden = false;
       if (!video) return;
       video.currentTime = 0;
       var seek = document.getElementById('ve-video-seek');
@@ -623,6 +635,8 @@
       this._saveExerciseProgress(session.exerciseId, { videoWatched: true });
       var playBtn = document.getElementById('ve-video-play-btn');
       if (playBtn) playBtn.hidden = true;
+      var controls = document.getElementById('ve-video-controls');
+      if (controls) controls.hidden = true;
       var ended = document.getElementById('ve-video-ended');
       if (ended) ended.hidden = false;
     },

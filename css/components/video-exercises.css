@@ -388,6 +388,17 @@ body.ve-modal-open {
   flex-shrink: 0;
 }
 
+.ve-modal-header--video {
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px 10px;
+}
+
+.sp-practice-header.ve-modal-header--video {
+  padding: 14px 16px 10px;
+}
+
 .ve-modal-header-title {
   font-size: 0.85rem;
   font-weight: 700;
@@ -396,6 +407,23 @@ body.ve-modal-open {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.ve-modal-header--video .ve-modal-header-title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--primary, #2D2E5F);
+  text-align: left;
+  line-height: 1.2;
+}
+
+.ve-modal-header--video .sp-header-exit {
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .ve-modal-header-spacer {
@@ -414,9 +442,9 @@ body.ve-modal-open {
 .ve-modal-video-stage {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: stretch;
-  justify-content: center;
-  padding: 0 0 calc(8px + env(safe-area-inset-bottom));
+  justify-content: flex-start;
   min-height: 0;
   overflow: hidden;
 }
@@ -425,8 +453,7 @@ body.ve-modal-open {
   position: relative;
   width: 100%;
   flex: 1;
-  min-height: 320px;
-  max-height: calc(100dvh - 88px);
+  min-height: 0;
   border-radius: 0;
   overflow: hidden;
   background: #0f172a;
@@ -439,7 +466,7 @@ body.ve-modal-open {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   background: #000;
   cursor: pointer;
 }
@@ -480,21 +507,22 @@ body.ve-modal-open {
   display: none;
 }
 
-.ve-video-controls {
-  position: absolute;
-  inset: auto 0 0;
-  padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-  background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.82) 100%);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 2;
+.ve-video-bottom {
+  flex-shrink: 0;
+  background: #fff;
+  border-top: 1px solid #e8ecf4;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
-.ve-video-ended ~ .ve-video-controls,
-.ve-modal-video-frame:has(.ve-video-ended:not([hidden])) .ve-video-controls {
-  opacity: 0.35;
-  pointer-events: none;
+.ve-video-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 16px;
+}
+
+.ve-video-controls[hidden] {
+  display: none;
 }
 
 .ve-video-progress-row {
@@ -507,7 +535,7 @@ body.ve-modal-open {
   width: 100%;
   height: 6px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.28);
+  background: #e8ecf4;
   outline: none;
   cursor: pointer;
 }
@@ -519,7 +547,7 @@ body.ve-modal-open {
   border-radius: 50%;
   background: #1cb0f6;
   border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1px 4px rgba(24, 153, 214, 0.35);
   cursor: pointer;
 }
 
@@ -529,14 +557,14 @@ body.ve-modal-open {
   border-radius: 50%;
   background: #1cb0f6;
   border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1px 4px rgba(24, 153, 214, 0.35);
   cursor: pointer;
 }
 
 .ve-video-seek::-moz-range-track {
   height: 6px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.28);
+  background: #e8ecf4;
 }
 
 .ve-video-controls-bar {
@@ -547,9 +575,9 @@ body.ve-modal-open {
 }
 
 .ve-video-time {
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--text-medium, #4a4b7c);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -557,7 +585,7 @@ body.ve-modal-open {
 .ve-video-volume-wrap {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .ve-video-mute-btn {
@@ -565,8 +593,8 @@ body.ve-modal-open {
   height: 34px;
   border: none;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
+  background: #ddf4ff;
+  color: #1899d6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -577,7 +605,7 @@ body.ve-modal-open {
 }
 
 .ve-video-mute-btn:hover {
-  background: rgba(255, 255, 255, 0.24);
+  background: #c8ecff;
 }
 
 .ve-video-mute-btn .material-symbols-outlined {
@@ -587,10 +615,10 @@ body.ve-modal-open {
 .ve-video-volume {
   -webkit-appearance: none;
   appearance: none;
-  width: 72px;
+  width: 88px;
   height: 4px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.28);
+  background: #e8ecf4;
   outline: none;
   cursor: pointer;
 }
@@ -600,7 +628,7 @@ body.ve-modal-open {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #fff;
+  background: #1899d6;
   cursor: pointer;
 }
 
@@ -608,7 +636,7 @@ body.ve-modal-open {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #fff;
+  background: #1899d6;
   border: none;
   cursor: pointer;
 }
@@ -616,17 +644,14 @@ body.ve-modal-open {
 .ve-video-volume::-moz-range-track {
   height: 4px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.28);
+  background: #e8ecf4;
 }
 
 .ve-video-ended {
-  position: absolute;
-  inset: auto 0 0;
-  padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
-  background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.72) 100%);
+  padding: 12px 16px;
+  background: #fff;
   display: flex;
   justify-content: flex-end;
-  z-index: 3;
 }
 
 .ve-video-ended-actions {
@@ -644,9 +669,9 @@ body.ve-modal-open {
   min-height: 52px;
   padding: 0 18px;
   border-radius: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
+  border: 2px solid #b8e8fc;
+  background: #ddf4ff;
+  color: #1899d6;
   font-family: 'Nunito', sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
@@ -655,8 +680,8 @@ body.ve-modal-open {
 }
 
 .ve-video-restart-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.55);
+  background: #c8ecff;
+  border-color: #1899d6;
 }
 
 .ve-video-restart-btn .material-symbols-outlined {
@@ -1054,6 +1079,14 @@ body.ve-modal-open {
     min-height: 0;
     max-height: none;
     flex: 1;
+  }
+
+  .ve-modal-header--video .ve-modal-header-title {
+    font-size: 1.2rem;
+  }
+
+  .ve-video-bottom {
+    flex-shrink: 0;
   }
 
   @keyframes ve-modal-fullscreen-in {
