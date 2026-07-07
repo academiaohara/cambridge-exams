@@ -489,6 +489,9 @@
   function applyGapResultStyles(correct) {
     var mount = lessonState.mount;
     if (!mount) return;
+    if (lessonState.currentScreen && lessonState.currentScreen.formatType === 'passage_gap_fill') {
+      return;
+    }
     mount.querySelectorAll('.sp-gap-slot, .sp-inline-gap-group').forEach(function(slot) {
       slot.classList.toggle('sp-gap-slot--correct', correct === true);
       slot.classList.toggle('sp-gap-slot--incorrect', correct === false);
@@ -508,6 +511,9 @@
     }
     mount.querySelectorAll('.sp-gap-slot, .sp-inline-gap-group').forEach(function(slot) {
       slot.classList.remove('sp-gap-slot--correct', 'sp-gap-slot--incorrect');
+    });
+    mount.querySelectorAll('.sp-passage-gap-wrap').forEach(function(slot) {
+      slot.classList.remove('sp-passage-gap--correct', 'sp-passage-gap--incorrect');
     });
     mount.querySelectorAll('.sp-option-btn').forEach(function(btn) {
       btn.classList.remove('sp-option-btn--correct', 'sp-option-btn--incorrect');
@@ -654,6 +660,8 @@
         if (fixedCount > 0) return 'Find and mark the next error in the passage.';
         return p.instruction || p.studentInstruction || 'Find and mark an error in the passage.';
       }
+      case 'passage_gap_fill':
+        return p.instruction || 'Complete the passage using the verbs in the box.';
       case 'guided_error_choice':
         return p.instruction || 'Choose the correct form for each error.';
       case 'stative_sorting':
@@ -688,6 +696,8 @@
         return 'Find the error in the passage.';
       case 'passage_error_hunt_counter':
         return p.passage || 'Find the errors in the passage.';
+      case 'passage_gap_fill':
+        return p.passage || p.instruction || '';
       case 'stative_sorting':
         return p.instruction || 'Sort the verbs into groups.';
       default:

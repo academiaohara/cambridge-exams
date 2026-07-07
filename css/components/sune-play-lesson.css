@@ -1316,6 +1316,70 @@ button.sp-example-line.sp-speakable {
   border-bottom-color: var(--sp-incorrect);
 }
 
+.sp-screen--passage-gap {
+  width: 100%;
+}
+
+.sp-passage-wordbank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.sp-passage-wordbank-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--sp-duo-blue-light);
+  color: var(--sp-duo-blue-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.sp-passage-card--gap-fill {
+  line-height: 2;
+}
+
+.sp-passage-gap-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 2px;
+  vertical-align: baseline;
+}
+
+.sp-passage-gap-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  background: var(--sp-duo-blue);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.sp-passage-gap-wrap .sp-gap-inline-input {
+  min-width: 7ch;
+  width: auto;
+  max-width: 16ch;
+}
+
+.sp-passage-gap--correct .sp-gap-inline-input {
+  background: #bbf7d0;
+  color: #15803d;
+}
+
+.sp-passage-gap--incorrect .sp-gap-inline-input {
+  background: #fecaca;
+  color: #b91c1c;
+}
+
 .sp-verb-prompt,
 .sp-step-label {
   font-size: 0.85rem;

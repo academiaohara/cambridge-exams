@@ -6,6 +6,7 @@
 
   var norm = window.SunePlayNormalize;
   var GAP_RE = /(?:\.{3,}|…{2,}|_{3,})/g;
+  var PASSAGE_GAP_MARK_RE = /\((\d+)\)\s*(?:\.{3,}|…{2,}|_{3,})/g;
 
   function esc(str) {
     if (typeof BentoGrid !== 'undefined' && BentoGrid._escapeHTML) return BentoGrid._escapeHTML(str);
@@ -110,6 +111,48 @@
       if (i < gapCount) html += buildInlineGapField(perGapVerbs[i] || '', i);
     }
     return html;
+  }
+
+  function getPassageGapInputValues(root) {
+    var values = [];
+    root.querySelectorAll('.sp-passage-gap-input').forEach(function(inp) {
+      values.push(inp.value.trim());
+    });
+    return values;
+  }
+
+  function markPassageGapResults(root, gaps, givenValues) {
+    root.querySelectorAll('.sp-passage-gap-wrap').forEach(function(wrap) {
+      var num = parseInt(wrap.getAttribute('data-passage-gap'), 10);
+      var idx = -1;
+      for (var i = 0; i < gaps.length; i++) {
+        if (gaps[i].gapNumber === num) {
+          idx = i;
+          break;
+        }
+      }
+      if (idx === -1) return;
+      var ok = norm.answersMatch(givenValues[idx] || '', gaps[idx].expectedAnswer);
+      wrap.classList.toggle('sp-passage-gap--correct', ok);
+      wrap.classList.toggle('sp-passage-gap--incorrect', !ok);
+    });
+  }
+
+  function buildPassageGapField(gapNum) {
+    return '<span class="sp-passage-gap-wrap sp-inline-gap-group" data-passage-gap="' + gapNum + '">' +
+      '<span class="sp-passage-gap-num">' + gapNum + '</span>' +
+      '<input type="text" class="sp-gap-inline-input sp-passage-gap-input" data-passage-gap="' + gapNum + '" ' +
+      'autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Gap ' + gapNum + '">' +
+    '</span>';
+  }
+
+  function renderPassageGapHtml(passage) {
+    return esc(passage)
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(PASSAGE_GAP_MARK_RE, function(_, num) {
+        return buildPassageGapField(num);
+      })
+      .replace(/\n/g, '<br>');
   }
 
   function getGapInputValues(root) {
@@ -298,6 +341,7 @@
       case 'verb_bank_two_step': return renderVerbBankTwoStep(screen);
       case 'passage_error_hunt_single': return renderPassageHunt(screen);
       case 'passage_error_hunt_counter': return renderPassageHuntCounter(screen);
+      case 'passage_gap_fill': return renderPassageGapFill(screen);
       case 'guided_error_choice': return renderGuidedErrorChoice(screen);
       case 'stative_sorting': return renderStativeSorting(screen);
       case 'meaning_contrast': return renderMeaningContrast(screen);
@@ -407,6 +451,22 @@
       '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap sp-prompt-sentence--error-gap">' + gapLine + '</p>' +
       '</div>' +
     '</div>';
+  }
+
+  function renderPassageGapFill(screen) {
+    var p = screen.payload || {};
+    var passageHtml = renderPassageGapHtml(p.passage || '');
+    var html = '<div class="sp-screen sp-screen--passage-gap" data-format="passage_gap_fill">';
+    if (p.wordBank && p.wordBank.length) {
+      html += '<div class="sp-passage-wordbank" aria-label="Word bank">';
+      p.wordBank.forEach(function(word) {
+        html += '<span class="sp-passage-wordbank-chip">' + esc(word) + '</span>';
+      });
+      html += '</div>';
+    }
+    html += '<div class="sp-passage-card sp-passage-card--gap-fill" id="sp-passage-text">' + passageHtml + '</div>';
+    html += '</div>';
+    return html;
   }
 
   function renderVerbBankTwoStep(screen) {
@@ -932,6 +992,10 @@
     });
 
     if (format === 'free_text_gap_fill' || format === 'conjugation_gap_fill' || format === 'preselected_verb_gap_fill') {
+      bindGapInputs(root, onChange);
+    }
+
+    if (format === 'passage_gap_fill') {
       bindGapInputs(root, onChange);
     }
   }
@@ -1614,6 +1678,9 @@
     if (f === 'free_text_gap_fill' || f === 'conjugation_gap_fill' || f === 'preselected_verb_gap_fill') {
       return allGapInputsFilled(root);
     }
+    if (f === 'passage_gap_fill') {
+      return allGapInputsFilled(root);
+    }
     if (f === 'full_sentence_write') {
       var ta = root.querySelector('#sp-sentence-input');
       return ta && !!ta.value.trim();
@@ -1685,6 +1752,23 @@
           result.correct = norm.matchesAnyAccepted(given, p);
         }
         result.lifeLoss = result.correct ? 0 : 1;
+        break;
+      }
+      case 'passage_gap_fill': {
+        var passageGapValues = getPassageGapInputValues(root);
+        var passageGaps = p.gaps || [];
+        result.userAnswer = passageGapValues.join(' / ');
+        result.correctAnswer = passageGaps.map(function(gap) { return gap.expectedAnswer; }).join(' / ');
+        result.correct = passageGapValues.length === passageGaps.length &&
+          norm.matchesBlanks(passageGapValues, p);
+        result.lifeLoss = result.correct ? 0 : 1;
+        if (!result.correct) {
+          markPassageGapResults(root, passageGaps, passageGapValues);
+        } else {
+          markPassageGapResults(root, passageGaps, passageGaps.map(function(gap) {
+            return gap.expectedAnswer;
+          }));
+        }
         break;
       }
       case 'full_sentence_write': {

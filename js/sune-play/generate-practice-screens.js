@@ -67,6 +67,30 @@
     };
   }
 
+  function buildPassageGapFillPayload(exercise) {
+    var passage = exercise.passage || '';
+    var answers = exercise.answers || [];
+    var passageGapRe = /\((\d+)\)\s*(?:\.{3,}|…{2,}|_{3,})/;
+    var firstGapMatch = passageGapRe.exec(passage);
+    var startGap = firstGapMatch ? parseInt(firstGapMatch[1], 10) : 1;
+    var gaps = answers.map(function(ans, idx) {
+      var gapNumber = startGap + idx;
+      return {
+        gapId: 'gap' + gapNumber,
+        gapNumber: gapNumber,
+        expectedAnswer: ans
+      };
+    });
+    return {
+      passage: passage,
+      wordBank: exercise.words || exercise.wordBank || [],
+      answers: answers,
+      gaps: gaps,
+      explanation: exercise.explanation || 'Check each gap against the story context and verb form.',
+      instruction: exercise.instructions || exercise.studentInstruction || ''
+    };
+  }
+
   function shuffleCopy(list) {
     return list.slice().sort(function() { return Math.random() - 0.5; });
   }
@@ -343,6 +367,21 @@
           sourceExerciseId: exerciseId,
           fallbackFormatType: rule.fallbackFormatType,
           formatTypeOverride: 'passage_error_hunt_counter'
+        }));
+        return;
+      }
+
+      if (rule.screenMode === 'single_passage_with_gaps') {
+        var passageFormat = rule.formatType || 'passage_gap_fill';
+        var passagePayload = buildPassageGapFillPayload(exercise);
+        var passageScreenId = buildScreenId(nodeId, exerciseId, null, passageFormat);
+        screens.push(buildScreen(unit, node, passageFormat, passagePayload, {
+          screenId: passageScreenId,
+          itemId: exerciseId,
+          sourceExerciseId: exerciseId,
+          fallbackFormatType: rule.fallbackFormatType,
+          formatTypeOverride: passageFormat,
+          maxLifeLossPerScreen: rule.maxLifeLossPerScreen
         }));
         return;
       }
