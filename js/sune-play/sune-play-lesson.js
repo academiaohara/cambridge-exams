@@ -547,16 +547,16 @@
     lessonState.currentScreen = screen;
 
     screenMount.innerHTML = renderer.PracticeScreenRenderer(screen);
+    var screenRoot = screenMount.querySelector('.sp-screen');
     var instructionText = getScreenInstruction(screen);
-    if (instructionText) {
-      var existingInstruction = screenMount.querySelector('.sp-session-instruction');
+    if (instructionText && screenRoot) {
+      var existingInstruction = screenRoot.querySelector('.sp-session-instruction');
       if (existingInstruction) existingInstruction.remove();
       var instructionEl = document.createElement('p');
       instructionEl.className = 'sp-session-instruction';
       instructionEl.textContent = instructionText;
-      screenMount.insertBefore(instructionEl, screenMount.firstChild);
+      screenRoot.insertBefore(instructionEl, screenRoot.firstChild);
     }
-    var screenRoot = screenMount.querySelector('.sp-screen');
     if (screenRoot) {
       screenRoot._spScreen = screen;
       renderer.bindScreen(screenRoot, screen, function() {
