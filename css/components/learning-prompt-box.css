@@ -90,3 +90,17 @@
 .sp-prompt-row--gap .sp-prompt-sentence--inline-gap {
   text-align: left;
 }
+
+@media (max-width: 768px) {
+  :root {
+    --learning-prompt-inset: 10px;
+  }
+
+  .course-center--lesson-focus .cu-lesson-instruction,
+  .sp-session-instruction,
+  .sp-exercise-card .sp-prompt-sentence,
+  .sp-exercise-card .sp-display-prompt,
+  .sp-exercise-card .sp-meaning-sentence {
+    margin-bottom: 10px;
+  }
+}
