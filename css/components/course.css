@@ -6329,6 +6329,7 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 .course-etapa-card--done .course-etapa-card-title,
 .course-pt-card--done .course-pt-card-title {
   color: #0c4a6e;
+  margin-bottom: 0;
 }
 
 .course-etapa-card--done .course-etapa-card-details,
@@ -6339,11 +6340,33 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 .course-etapa-card--done .course-etapa-card-status,
 .course-pt-card--done .course-pt-card-status {
   display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
   margin-bottom: 0;
-  padding: 6px 12px;
+  padding: 7px 14px;
   border-radius: 999px;
   background: rgba(28, 176, 246, 0.18);
   color: #0369a1;
+  line-height: 1;
+}
+
+.course-etapa-card--done .course-etapa-card-status .material-symbols-outlined,
+.course-pt-card--done .course-pt-card-status .material-symbols-outlined {
+  font-size: 1.05rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-etapa-card-mascot {
+  flex-shrink: 0;
+  width: 78px;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  align-self: flex-end;
 }
 
 .course-etapa-card-btn--review {
@@ -6492,6 +6515,10 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 .course-etapa-card-status .material-symbols-outlined,
 .course-pt-card-status .material-symbols-outlined {
   font-size: 1.1rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .course-etapa-card-locked-msg,
@@ -6516,29 +6543,29 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 }
 
 .course-etapa-progress {
-  height: 36px;
+  height: 22px;
   border-radius: 999px;
-  background: #1a7a3a;
+  background: #e0f2fe;
   overflow: hidden;
   margin-bottom: 14px;
-  border: 2px solid #15803d;
-  box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.15);
+  border: 2px solid #7dd3fc;
+  box-shadow: inset 0 2px 0 rgba(14, 116, 144, 0.1);
 }
 
 .course-etapa-progress-fill {
   height: 100%;
-  min-width: 52px;
+  min-width: 44px;
   border-radius: 999px;
-  background: linear-gradient(180deg, #89e219 0%, #58cc02 55%, #46a302 100%);
+  background: linear-gradient(180deg, #7dd3fc 0%, #38bdf8 55%, #0ea5e9 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   font-weight: 900;
   color: #fff;
   letter-spacing: 0.03em;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.28);
+  text-shadow: 0 1px 0 rgba(3, 105, 161, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
   transition: width 0.25s ease;
 }
 
@@ -7012,10 +7039,9 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     align-items: stretch;
   }
 
-  .course-etapa-card--done .course-etapa-card-btn--review {
-    align-self: flex-end;
-    width: 100%;
-    min-width: 0;
+  .course-etapa-card--done .course-etapa-card-mascot {
+    align-self: center;
+    width: 68px;
   }
 
   .course-etapa-card--active {
