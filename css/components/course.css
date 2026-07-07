@@ -6331,13 +6331,20 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   box-shadow: 0 2px 0 #bae6fd;
 }
 
-.course-etapa-card--done.course-etapa-card--interactive:hover,
+.course-etapa-card--done.course-etapa-card--interactive:hover {
+  border-color: #4ade80;
+  box-shadow: 0 6px 0 #22c55e;
+}
+
 .course-etapa-card--active.course-etapa-card--interactive:hover {
   border-color: #38bdf8;
   box-shadow: 0 6px 0 #38bdf8;
 }
 
-.course-etapa-card--done.course-etapa-card--interactive:active,
+.course-etapa-card--done.course-etapa-card--interactive:active {
+  box-shadow: 0 2px 0 #22c55e;
+}
+
 .course-etapa-card--active.course-etapa-card--interactive:active {
   box-shadow: 0 2px 0 #38bdf8;
 }
@@ -6352,20 +6359,20 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  border-color: #7dd3fc;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 55%, #ddf4ff 100%);
-  box-shadow: 0 4px 0 #38bdf8;
+  border-color: #86efac;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 55%, #d1fae5 100%);
+  box-shadow: 0 4px 0 #22c55e;
 }
 
 .course-etapa-card--done .course-etapa-card-title,
 .course-pt-card--done .course-pt-card-title {
-  color: #0c4a6e;
+  color: #14532d;
   margin-bottom: 0;
 }
 
 .course-etapa-card--done .course-etapa-card-details,
 .course-pt-card--done .course-pt-card-kicker {
-  color: #0284c7;
+  color: #15803d;
 }
 
 .course-etapa-card--done .course-etapa-card-status,
@@ -6376,8 +6383,8 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   margin: 0;
   padding: 7px 14px;
   border-radius: 999px;
-  background: rgba(28, 176, 246, 0.18);
-  color: #0369a1;
+  background: rgba(34, 197, 94, 0.18);
+  color: #166534;
   line-height: 1;
   flex-shrink: 0;
 }
