@@ -67,6 +67,30 @@
     };
   }
 
+  function buildPassageGapFillPayload(exercise) {
+    var passage = exercise.passage || '';
+    var answers = exercise.answers || [];
+    var passageGapRe = /\((\d+)\)\s*(?:\.{3,}|…{2,}|_{3,})/;
+    var firstGapMatch = passageGapRe.exec(passage);
+    var startGap = firstGapMatch ? parseInt(firstGapMatch[1], 10) : 1;
+    var gaps = answers.map(function(ans, idx) {
+      var gapNumber = startGap + idx;
+      return {
+        gapId: 'gap' + gapNumber,
+        gapNumber: gapNumber,
+        expectedAnswer: ans
+      };
+    });
+    return {
+      passage: passage,
+      wordBank: exercise.words || exercise.wordBank || [],
+      answers: answers,
+      gaps: gaps,
+      explanation: exercise.explanation || 'Check each gap against the story context and verb form.',
+      instruction: exercise.instructions || exercise.studentInstruction || ''
+    };
+  }
+
   function shuffleCopy(list) {
     return list.slice().sort(function() { return Math.random() - 0.5; });
   }
@@ -83,15 +107,12 @@
   }
 
   /**
-   * Passage exercises split into one screen per gap should not show sibling gaps
-   * as "(3) …" placeholders. Strip any numbered gap markers that are not the
-   * active blank so each screen only exposes one fillable gap.
+   * Legacy helper for passage items that intentionally show one active blank
+   * while hiding sibling numbered gaps. Only applies when explicitly requested
+   * via passageContextMode on the item.
    */
-  function prepareSinglePassageGapSentence(sentence, item, genRule) {
-    var mode = item && item.passageContextMode;
-    var screenMode = genRule && genRule.screenMode;
-    if (mode !== 'single_gap_from_passage' &&
-        screenMode !== 'passage_split_into_single_gap_screens') {
+  function prepareSinglePassageGapSentence(sentence, item) {
+    if (!item || item.passageContextMode !== 'single_gap_from_passage') {
       return sentence;
     }
     return String(sentence || '')
@@ -187,8 +208,7 @@
       case 'conjugation_gap_fill': {
         var gapSentence = prepareSinglePassageGapSentence(
           item.blankSentence || item.sentence || '',
-          item,
-          genRule
+          item
         );
         return {
           sentence: gapSentence,
@@ -351,6 +371,21 @@
           sourceExerciseId: exerciseId,
           fallbackFormatType: rule.fallbackFormatType,
           formatTypeOverride: 'passage_error_hunt_counter'
+        }));
+        return;
+      }
+
+      if (rule.screenMode === 'single_passage_with_gaps') {
+        var passageFormat = rule.formatType || 'passage_gap_fill';
+        var passagePayload = buildPassageGapFillPayload(exercise);
+        var passageScreenId = buildScreenId(nodeId, exerciseId, null, passageFormat);
+        screens.push(buildScreen(unit, node, passageFormat, passagePayload, {
+          screenId: passageScreenId,
+          itemId: exerciseId,
+          sourceExerciseId: exerciseId,
+          fallbackFormatType: rule.fallbackFormatType,
+          formatTypeOverride: passageFormat,
+          maxLifeLossPerScreen: rule.maxLifeLossPerScreen
         }));
         return;
       }
