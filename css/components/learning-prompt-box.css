@@ -1,12 +1,7 @@
-/* Learning — enunciados y frases en caja centrada con márgenes laterales y texto a la izquierda */
+/* Learning — enunciados y frases alineados a la izquierda con margen lateral */
 
 :root {
   --learning-prompt-inset: 16px;
-  --learning-prompt-pad-y: 14px;
-  --learning-prompt-pad-x: 18px;
-  --learning-prompt-border-color: #e5e5e5;
-  --learning-prompt-bg: #ffffff;
-  --learning-prompt-radius: 16px;
 }
 
 .course-center--lesson-focus .cu-lesson-instruction,
@@ -31,21 +26,30 @@
   align-self: stretch;
   width: calc(100% - 2 * var(--learning-prompt-inset));
   max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: var(--learning-prompt-inset);
+  margin-right: var(--learning-prompt-inset);
   margin-bottom: 12px;
-  padding: var(--learning-prompt-pad-y) var(--learning-prompt-pad-x);
-  background: var(--learning-prompt-bg);
-  border: 2px solid var(--learning-prompt-border-color);
-  border-radius: var(--learning-prompt-radius);
+  padding: 0;
+  background: transparent;
+  border: none;
   text-align: left;
+}
+
+.course-center--lesson-focus .cu-lesson-instruction,
+.sp-session-instruction,
+.sp-exercise-card .sp-prompt-sentence:not(.sp-prompt-sentence--inline-gap),
+.sp-exercise-card .sp-display-prompt,
+.sp-exercise-card .sp-meaning-sentence,
+.ve-modal-quiz .sp-prompt-sentence,
+.ve-modal-quiz .sp-display-prompt {
+  display: block;
 }
 
 /* Bubble de contexto (frase con mascota) — mismo inset lateral */
 .course-center--lesson-focus .cu-lesson-prompt {
   width: calc(100% - 2 * var(--learning-prompt-inset));
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: var(--learning-prompt-inset);
+  margin-right: var(--learning-prompt-inset);
 }
 
 .bgl-instruction {
