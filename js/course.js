@@ -1084,33 +1084,35 @@
       var etapaCurrentOnclick = etapaUnlocked
         ? 'BentoGrid._openCourseEtapaAtCurrent(\'' + section + '\', \'' + levelId + '\', \'' + etapaKey + '\')'
         : 'return false;';
-
-      var html = '<div class="' + cardClass + '"' +
-        (typeof globalIndex === 'number' ? ' data-global-stage="' + globalIndex + '"' : '') + '>';
-      html += '<div class="course-etapa-card-main">';
-      html += '<button type="button" class="course-etapa-card-details" onclick="event.stopPropagation();' + etapaMapOnclick + '">' + levelId + ' · VIEW DETAILS</button>';
-      html += '<div class="course-etapa-card-title">Stage ' + etapa.number + '</div>';
-      if (!etapaDone) {
-        html += '<div class="course-etapa-card-subtitle">' + self._escapeHTML(etapaTitle) + '</div>';
+      var cardOnclick = '';
+      if (etapaUnlocked) {
+        cardOnclick = etapaDone ? etapaMapOnclick : etapaCurrentOnclick;
+        cardClass += ' course-etapa-card--interactive';
       }
 
+      var html = '<div class="' + cardClass + '"' +
+        (cardOnclick ? ' onclick="' + cardOnclick + '" role="button" tabindex="0"' : '') +
+        (typeof globalIndex === 'number' ? ' data-global-stage="' + globalIndex + '"' : '') + '>';
+      html += '<div class="course-etapa-card-main">';
+      html += '<div class="course-etapa-card-details">' + levelId + ' · VIEW DETAILS</div>';
+      html += '<div class="course-etapa-card-title-row">';
+      html += '<div class="course-etapa-card-title">Stage ' + etapa.number + '</div>';
       if (etapaDone) {
         html += '<div class="course-etapa-card-status">' + _mi('check_circle') + ' COMPLETED!</div>';
       } else if (isActive || (etapaUnlocked && etapaPct > 0)) {
         html += '<div class="course-etapa-progress"><div class="course-etapa-progress-fill" style="width:' + Math.max(etapaPct, 8) + '%">' + etapaPct + '%</div></div>';
-      } else if (!etapaUnlocked) {
+      }
+      html += '</div>';
+      if (!etapaDone) {
+        html += '<div class="course-etapa-card-subtitle">' + self._escapeHTML(etapaTitle) + '</div>';
+      }
+      if (!etapaUnlocked) {
         html += '<div class="course-etapa-card-locked-msg">' + _mi('lock') + ' Complete the previous stage</div>';
       }
       html += '</div>';
 
-      if (etapaDone) {
-        html += '<img src="Assets/images/asomado.svg" alt="" class="course-etapa-card-mascot" aria-hidden="true">';
-      } else if (isActive || (etapaUnlocked && etapaPct > 0)) {
-        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + etapaCurrentOnclick + '">CONTINUE</button>';
-      } else if (etapaUnlocked) {
-        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + etapaCurrentOnclick + '">START</button>';
-      } else if (showAdvance) {
-        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--advance" onclick="BentoGrid._advanceToCourseStage(' + globalIndex + ')" aria-label="Take level test to jump ahead" title="Pass the level test to unlock this stage">' +
+      if (!etapaUnlocked && showAdvance) {
+        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--advance" onclick="event.stopPropagation();BentoGrid._advanceToCourseStage(' + globalIndex + ')" aria-label="Take level test to jump ahead" title="Pass the level test to unlock this stage">' +
           '<img src="Assets/images/avance.svg" alt="" class="course-etapa-card-btn-advance-icon" aria-hidden="true">' +
           '</button>';
       }
@@ -1592,30 +1594,23 @@
       var cardClass = 'course-etapa-card';
       if (done) cardClass += ' course-etapa-card--done';
       else cardClass += ' course-etapa-card--available';
+      cardClass += ' course-etapa-card--interactive';
 
-      var html = '<div class="' + cardClass + '">';
+      var html = '<div class="' + cardClass + '" onclick="' + openOnclick + '" role="button" tabindex="0">';
       html += '<div class="course-etapa-card-main">';
-      html += '<button type="button" class="course-etapa-card-details" onclick="event.stopPropagation();' + openOnclick + '">' + scopeLabel + ' · VIEW DETAILS</button>';
+      html += '<div class="course-etapa-card-details">' + scopeLabel + ' · VIEW DETAILS</div>';
+      html += '<div class="course-etapa-card-title-row">';
       html += '<div class="course-etapa-card-title">' + self._escapeHTML(cat.name) + '</div>';
-      if (!done) {
-        html += '<div class="course-etapa-card-subtitle">' + self._escapeHTML(cat.desc) + '</div>';
-      }
-
       if (done) {
         html += '<div class="course-etapa-card-status">' + _mi('check_circle') + ' COMPLETED!</div>';
       } else if (pct > 0) {
         html += '<div class="course-etapa-progress"><div class="course-etapa-progress-fill" style="width:' + Math.max(pct, 8) + '%">' + pct + '%</div></div>';
       }
       html += '</div>';
-
-      if (done) {
-        html += '<img src="Assets/images/asomado.svg" alt="" class="course-etapa-card-mascot" aria-hidden="true">';
-      } else if (pct > 0) {
-        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + openOnclick + '">CONTINUE</button>';
-      } else {
-        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + openOnclick + '">START</button>';
+      if (!done) {
+        html += '<div class="course-etapa-card-subtitle">' + self._escapeHTML(cat.desc) + '</div>';
       }
-      html += '</div>';
+      html += '</div></div>';
       return html;
     },
 
