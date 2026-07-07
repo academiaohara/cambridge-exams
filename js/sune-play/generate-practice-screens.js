@@ -115,7 +115,11 @@
     if (!item || item.passageContextMode !== 'single_gap_from_passage') {
       return sentence;
     }
-    return String(sentence || '').replace(NUMBERED_CONTEXT_GAP_RE, '');
+    return String(sentence || '')
+      .replace(NUMBERED_CONTEXT_GAP_RE, '')
+      .replace(/\s{2,}/g, ' ')
+      .replace(/\s+([,.!?])/g, '$1')
+      .trim();
   }
 
   function itemToPayload(formatType, item, exercise, genRule) {
