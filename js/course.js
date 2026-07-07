@@ -1104,7 +1104,7 @@
       html += '</div>';
 
       if (etapaDone) {
-        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--review" onclick="' + etapaMapOnclick + '">REVIEW</button>';
+        html += '<img src="Assets/images/asomado.svg" alt="" class="course-etapa-card-mascot" aria-hidden="true">';
       } else if (isActive || (etapaUnlocked && etapaPct > 0)) {
         html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + etapaCurrentOnclick + '">CONTINUE</button>';
       } else if (etapaUnlocked) {
@@ -1609,7 +1609,7 @@
       html += '</div>';
 
       if (done) {
-        html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--review" onclick="' + openOnclick + '">REVIEW</button>';
+        html += '<img src="Assets/images/asomado.svg" alt="" class="course-etapa-card-mascot" aria-hidden="true">';
       } else if (pct > 0) {
         html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--continue" onclick="' + openOnclick + '">CONTINUE</button>';
       } else {
