@@ -848,7 +848,7 @@ button.sp-example-line.sp-speakable {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
 }
 
 .sp-session-instruction {
@@ -869,14 +869,14 @@ button.sp-example-line.sp-speakable {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
 }
 
 .sp-screen {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
   min-height: 0;
 }
@@ -1070,13 +1070,14 @@ button.sp-example-line.sp-speakable {
 
 .sp-prompt-row--choice {
   display: block;
-  text-align: center;
+  text-align: left;
+  width: 100%;
 }
 
 .sp-prompt-row--choice .sp-prompt-sentence {
-  display: inline;
+  display: block;
   margin-bottom: 0;
-  text-align: center;
+  text-align: left;
 }
 
 .sp-prompt-row .sp-prompt-sentence,
@@ -1114,10 +1115,10 @@ button.sp-example-line.sp-speakable {
 .sp-screen--gap {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 .sp-gap-instruction {
@@ -1130,7 +1131,7 @@ button.sp-example-line.sp-speakable {
 
 .sp-prompt-row--gap {
   display: block;
-  text-align: center;
+  text-align: left;
   width: 100%;
 }
 
