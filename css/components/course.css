@@ -7763,8 +7763,37 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
   }
 
   .cu-lesson-instruction {
-    font-size: 1rem;
+    font-size: 0.92rem;
     line-height: 1.3;
+  }
+
+  .course-center--lesson-focus .cu-ex-sentence {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .course-center--lesson-focus .cu-skip-btn,
+  .course-center--lesson-focus .cu-lesson-secondary-btn {
+    min-height: 38px !important;
+    padding: 8px 12px !important;
+    font-size: 0.68rem !important;
+    border-radius: 12px !important;
+  }
+
+  .course-center--lesson-focus .cu-check-btn {
+    min-height: 40px;
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    border-radius: 12px;
+    max-width: 180px;
+  }
+
+  .course-center--lesson-focus .cu-ex-footer {
+    gap: 8px;
+  }
+
+  .course-center--lesson-focus .cu-section-nav {
+    padding: 12px 0 0;
   }
 
   .cu-lesson-stage {
@@ -7775,7 +7804,26 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
 
 @media (max-width: 480px) {
   .cu-lesson-instruction {
-    font-size: 0.92rem;
+    font-size: 0.85rem;
+  }
+
+  .course-center--lesson-focus .cu-ex-sentence {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  .course-center--lesson-focus .cu-skip-btn,
+  .course-center--lesson-focus .cu-lesson-secondary-btn {
+    min-height: 36px !important;
+    padding: 7px 10px !important;
+    font-size: 0.65rem !important;
+  }
+
+  .course-center--lesson-focus .cu-check-btn {
+    min-height: 38px;
+    padding: 7px 16px;
+    font-size: 0.76rem;
+    max-width: 160px;
   }
 }
 
@@ -8176,7 +8224,7 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
   }
 
   .cu-lesson-instruction {
-    font-size: 1.2rem;
+    font-size: 0.92rem;
     text-align: left;
     color: var(--primary, #2D2E5F);
   }
