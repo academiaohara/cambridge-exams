@@ -48,15 +48,64 @@
       "thumbnailGradient": { "from": "#0d3320", "via": "#145c36", "to": "#1e9e5e" }
     },
     {
-      "id": "sune_job_interview",
-      "title": "Sune's Job Interview",
-      "description": "Sune tries to impress at his very first job interview — with some truly unexpected results.",
-      "status": "coming_soon",
+      "id": "sune_the_job_interview_test",
+      "title": "The Job Interview",
+      "description": "Sune tries to impress at his very first job interview — ironing his shirt, choosing a tie, and hoping he doesn't go blank.",
+      "file": "sune_the_job_interview_test.json",
+      "status": "available",
       "episode": 5,
       "season": 1,
       "tags": ["Work & Career", "Formal language"],
-      "vocabPreview": ["first impression", "strengths", "qualifications", "nervous", "candidate"],
+      "vocabPreview": ["iron", "suit", "tie", "CV", "go blank"],
       "thumbnailGradient": { "from": "#2a0a4a", "via": "#5b21a0", "to": "#9b5cf0" }
+    },
+    {
+      "id": "sune_bad_hair_day_test",
+      "title": "Bad Hair Day",
+      "description": "Sune visits the barbershop for a fresh cut — but the result is not quite what he had in mind.",
+      "file": "sune_bad_hair_day_test.json",
+      "status": "available",
+      "episode": 6,
+      "season": 1,
+      "tags": ["Daily life", "Barbershop vocabulary"],
+      "vocabPreview": ["barbershop", "cape", "clippers", "snip", "grow out"],
+      "thumbnailGradient": { "from": "#2a1a0a", "via": "#6b4423", "to": "#c49a6c" }
+    },
+    {
+      "id": "sune_moving_day_test",
+      "title": "Moving Day",
+      "description": "Sune is moving house and has to pack boxes, wrap fragile items, and load everything into the removal van.",
+      "file": "sune_moving_day_test.json",
+      "status": "available",
+      "episode": 7,
+      "season": 1,
+      "tags": ["Home", "Moving vocabulary"],
+      "vocabPreview": ["cardboard boxes", "bubble wrap", "fragile", "removal van", "allen key"],
+      "thumbnailGradient": { "from": "#1a2a3a", "via": "#3a5a7a", "to": "#6a9aba" }
+    },
+    {
+      "id": "sune_open_wide_test",
+      "title": "Open Wide",
+      "description": "Sune has a dentist appointment — and discovers that saying \"open wide\" is easier than it sounds.",
+      "file": "sune_open_wide_test.json",
+      "status": "available",
+      "episode": 8,
+      "season": 1,
+      "tags": ["Health", "Dentist vocabulary"],
+      "vocabPreview": ["waiting room", "appointment", "cavity", "numb", "rinse"],
+      "thumbnailGradient": { "from": "#0a2a3a", "via": "#1a6a8a", "to": "#4ac4e0" }
+    },
+    {
+      "id": "sune_table_for_one_test",
+      "title": "Table for One",
+      "description": "Sune books a table at a restaurant and tries to navigate menus, starters, and the bill like a pro.",
+      "file": "sune_table_for_one_test.json",
+      "status": "available",
+      "episode": 9,
+      "season": 1,
+      "tags": ["Food", "Restaurant vocabulary"],
+      "vocabPreview": ["reservation", "menu", "starter", "tablecloth", "mop up"],
+      "thumbnailGradient": { "from": "#3a1a0a", "via": "#8a3a1a", "to": "#e07030" }
     }
   ]
 }

@@ -135,18 +135,27 @@
       var content = document.getElementById('main-content');
       if (!content) return;
       var sidebars = this._buildSidebars();
+      var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
+        ? MainNav.buildMobileTopBarHtml() : '';
+      var mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
+        ? MainNav.buildMobileBottomNavHtml('video-exercises') : '';
       content.innerHTML =
         '<div class="dashboard-layout">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
             : '<div class="dashboard-left-sidebar dashboard-sidebar-shell">' + sidebars.left + '</div>') +
-          '<div class="dashboard-center">' + centerHtml + '</div>' +
+          '<div class="dashboard-center dashboard-center--subpage">' +
+            mobileTopBarHtml +
+            centerHtml +
+            mobileNavHtml +
+          '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', sidebars.right)
             : '<div class="dashboard-right-sidebar dashboard-sidebar-shell" id="dashboardRightSidebar">' + sidebars.right + '</div>') +
         '</div>';
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
+      if (typeof MainNav !== 'undefined' && MainNav.initMobileStatsPopovers) MainNav.initMobileStatsPopovers();
       if (typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
       this._setView('videoExercises');
     },
