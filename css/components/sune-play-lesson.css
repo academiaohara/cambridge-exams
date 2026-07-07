@@ -851,28 +851,48 @@ button.sp-example-line.sp-speakable {
   align-items: stretch;
 }
 
-/* Practice card — contenido con aire lateral; opciones centradas y compactas */
+/* Practice card — todos los formatos comparten ancho centrado del sp-screen */
 .sp-practice-main .sp-exercise-card {
   padding: 28px 36px 24px;
   align-items: center;
 }
 
-.sp-practice-main .sp-screen,
-.sp-practice-main .sp-prompt-row--choice,
-.sp-practice-main .sp-prompt-row--gap {
-  width: 100%;
-  max-width: 34rem;
+.sp-practice-main .sp-exercise-card:has(.sp-screen--gap) {
+  align-items: center;
 }
 
-.sp-practice-main .sp-exercise-card .sp-prompt-sentence,
-.sp-practice-main .sp-exercise-card .sp-display-prompt,
-.sp-practice-main .sp-exercise-card .sp-meaning-sentence,
-.sp-practice-main .sp-screen .sp-session-instruction {
+.sp-practice-main .sp-screen {
+  width: 100%;
+  max-width: 34rem;
+  align-self: center;
+  box-sizing: border-box;
+}
+
+.sp-practice-main .sp-screen .sp-session-instruction,
+.sp-practice-main .sp-screen .sp-prompt-sentence,
+.sp-practice-main .sp-screen .sp-prompt-row,
+.sp-practice-main .sp-screen .sp-display-prompt,
+.sp-practice-main .sp-screen .sp-meaning-sentence,
+.sp-practice-main .sp-screen .sp-gap-instruction,
+.sp-practice-main .sp-screen .sp-step-label,
+.sp-practice-main .sp-screen .sp-text-input,
+.sp-practice-main .sp-screen .sp-passage-card,
+.sp-practice-main .sp-screen .sp-hunt-selected-panel,
+.sp-practice-main .sp-screen .sp-hunt-counter,
+.sp-practice-main .sp-screen .sp-hunt-correction,
+.sp-practice-main .sp-screen .sp-guided-progress,
+.sp-practice-main .sp-screen .sp-guided-prompt,
+.sp-practice-main .sp-screen .sp-guided-wrong,
+.sp-practice-main .sp-screen .sp-verb-bank,
+.sp-practice-main .sp-screen .sp-sort-verb-pool,
+.sp-practice-main .sp-screen .sp-sort-groups,
+.sp-practice-main .sp-screen .sp-tile-answer,
+.sp-practice-main .sp-screen .sp-tile-bank,
+.sp-practice-main .sp-screen .sp-visual-prompt {
   width: 100%;
   max-width: 100%;
   margin-left: 0;
   margin-right: 0;
-  align-self: stretch;
 }
 
 .sp-practice-main .sp-option-grid {
@@ -905,7 +925,7 @@ button.sp-example-line.sp-speakable {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
 }
 
 .sp-screen {
