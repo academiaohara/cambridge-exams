@@ -1489,14 +1489,14 @@
           {
             "id": "b1-u2-ex5-2",
             "passageGapNumber": 2,
-            "sentence": "Some students (2) ...... their bags while others (3) ...... outside the school gate.",
+            "sentence": "Some students (2) ...... their bags.",
             "verbPrompt": "pack",
             "answer": "were packing",
             "acceptedAnswers": [
               "were packing"
             ],
             "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "Some students {gap1} their bags while others (3) ...... outside the school gate.",
+            "template": "Some students {gap1} their bags.",
             "gapCount": 1,
             "gaps": [
               {
@@ -1504,21 +1504,21 @@
                 "expectedAnswer": "were packing"
               }
             ],
-            "blankSentence": "Some students ____ their bags while others (3) ...... outside the school gate.",
+            "blankSentence": "Some students ____ their bags.",
             "answerMode": "typed_conjugation_only",
             "passageContextMode": "single_gap_from_passage"
           },
           {
             "id": "b1-u2-ex5-3",
             "passageGapNumber": 3,
-            "sentence": "Some students (2) ...... their bags while others (3) ...... outside the school gate.",
+            "sentence": "Others (3) ...... outside the school gate.",
             "verbPrompt": "wait",
             "answer": "were waiting",
             "acceptedAnswers": [
               "were waiting"
             ],
             "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "Some students (2) ...... their bags while others {gap1} outside the school gate.",
+            "template": "Others {gap1} outside the school gate.",
             "gapCount": 1,
             "gaps": [
               {
@@ -1526,7 +1526,7 @@
                 "expectedAnswer": "were waiting"
               }
             ],
-            "blankSentence": "Some students (2) ...... their bags while others ____ outside the school gate.",
+            "blankSentence": "Others ____ outside the school gate.",
             "answerMode": "typed_conjugation_only",
             "passageContextMode": "single_gap_from_passage"
           },
@@ -1577,14 +1577,14 @@
           {
             "id": "b1-u2-ex5-6",
             "passageGapNumber": 6,
-            "sentence": "Everyone (6) ...... onto the bus quickly and the teachers (7) ...... hello to all the students.",
+            "sentence": "Everyone (6) ...... onto the bus quickly.",
             "verbPrompt": "ride",
             "answer": "rode",
             "acceptedAnswers": [
               "rode"
             ],
             "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "Everyone {gap1} onto the bus quickly and the teachers (7) ...... hello to all the students.",
+            "template": "Everyone {gap1} onto the bus quickly.",
             "gapCount": 1,
             "gaps": [
               {
@@ -1592,21 +1592,21 @@
                 "expectedAnswer": "rode"
               }
             ],
-            "blankSentence": "Everyone ____ onto the bus quickly and the teachers (7) ...... hello to all the students.",
+            "blankSentence": "Everyone ____ onto the bus quickly.",
             "answerMode": "typed_conjugation_only",
             "passageContextMode": "single_gap_from_passage"
           },
           {
             "id": "b1-u2-ex5-7",
             "passageGapNumber": 7,
-            "sentence": "Everyone (6) ...... onto the bus quickly and the teachers (7) ...... hello to all the students.",
+            "sentence": "The teachers (7) ...... hello to all the students.",
             "verbPrompt": "say",
             "answer": "said",
             "acceptedAnswers": [
               "said"
             ],
             "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "Everyone (6) ...... onto the bus quickly and the teachers {gap1} hello to all the students.",
+            "template": "The teachers {gap1} hello to all the students.",
             "gapCount": 1,
             "gaps": [
               {
@@ -1614,21 +1614,21 @@
                 "expectedAnswer": "said"
               }
             ],
-            "blankSentence": "Everyone (6) ...... onto the bus quickly and the teachers ____ hello to all the students.",
+            "blankSentence": "The teachers ____ hello to all the students.",
             "answerMode": "typed_conjugation_only",
             "passageContextMode": "single_gap_from_passage"
           },
           {
             "id": "b1-u2-ex5-8",
             "passageGapNumber": 8,
-            "sentence": "While we (8) ...... to the museum, some people (9) ...... games and others (10) ...... loudly at jokes.",
+            "sentence": "While we (8) ...... to the museum, some people were busy on the bus.",
             "verbPrompt": "travel",
             "answer": "were travelling",
             "acceptedAnswers": [
               "were travelling"
             ],
             "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "While we {gap1} to the museum, some people (9) ...... games and others (10) ...... loudly at jokes.",
+            "template": "While we {gap1} to the museum, some people were busy on the bus.",
             "gapCount": 1,
             "gaps": [
               {
@@ -1636,21 +1636,21 @@
                 "expectedAnswer": "were travelling"
               }
             ],
-            "blankSentence": "While we ____ to the museum, some people (9) ...... games and others (10) ...... loudly at jokes.",
+            "blankSentence": "While we ____ to the museum, some people were busy on the bus.",
             "answerMode": "typed_conjugation_only",
             "passageContextMode": "single_gap_from_passage"
           },
           {
             "id": "b1-u2-ex5-9",
             "passageGapNumber": 9,
-            "sentence": "While we (8) ...... to the museum, some people (9) ...... games and others (10) ...... loudly at jokes.",
+            "sentence": "Some people (9) ...... games on the bus.",
             "verbPrompt": "play",
             "answer": "were playing",
             "acceptedAnswers": [
               "were playing"
             ],
             "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "While we (8) ...... to the museum, some people {gap1} games and others (10) ...... loudly at jokes.",
+            "template": "Some people {gap1} games on the bus.",
             "gapCount": 1,
             "gaps": [
               {
@@ -1658,21 +1658,21 @@
                 "expectedAnswer": "were playing"
               }
             ],
-            "blankSentence": "While we (8) ...... to the museum, some people ____ games and others (10) ...... loudly at jokes.",
+            "blankSentence": "Some people ____ games on the bus.",
             "answerMode": "typed_conjugation_only",
             "passageContextMode": "single_gap_from_passage"
           },
           {
             "id": "b1-u2-ex5-10",
             "passageGapNumber": 10,
-            "sentence": "While we (8) ...... to the museum, some people (9) ...... games and others (10) ...... loudly at jokes.",
+            "sentence": "Others (10) ...... loudly at jokes.",
             "verbPrompt": "laugh",
             "answer": "were laughing",
             "acceptedAnswers": [
               "were laughing"
             ],
             "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "While we (8) ...... to the museum, some people (9) ...... games and others {gap1} loudly at jokes.",
+            "template": "Others {gap1} loudly at jokes.",
             "gapCount": 1,
             "gaps": [
               {
@@ -1680,7 +1680,7 @@
                 "expectedAnswer": "were laughing"
               }
             ],
-            "blankSentence": "While we (8) ...... to the museum, some people (9) ...... games and others ____ loudly at jokes.",
+            "blankSentence": "Others ____ loudly at jokes.",
             "answerMode": "typed_conjugation_only",
             "passageContextMode": "single_gap_from_passage"
           },
@@ -1709,14 +1709,14 @@
           {
             "id": "b1-u2-ex5-12",
             "passageGapNumber": 12,
-            "sentence": "Suddenly, one boy (12) ...... over while he (13) ...... a sandwich.",
+            "sentence": "Suddenly, one boy (12) ...... over.",
             "verbPrompt": "fall",
             "answer": "fell",
             "acceptedAnswers": [
               "fell"
             ],
             "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "Suddenly, one boy {gap1} over while he (13) ...... a sandwich.",
+            "template": "Suddenly, one boy {gap1} over.",
             "gapCount": 1,
             "gaps": [
               {
@@ -1724,21 +1724,21 @@
                 "expectedAnswer": "fell"
               }
             ],
-            "blankSentence": "Suddenly, one boy ____ over while he (13) ...... a sandwich.",
+            "blankSentence": "Suddenly, one boy ____ over.",
             "answerMode": "typed_conjugation_only",
             "passageContextMode": "single_gap_from_passage"
           },
           {
             "id": "b1-u2-ex5-13",
             "passageGapNumber": 13,
-            "sentence": "Suddenly, one boy (12) ...... over while he (13) ...... a sandwich.",
+            "sentence": "While he (13) ...... a sandwich, one boy fell over.",
             "verbPrompt": "eat",
             "answer": "was eating",
             "acceptedAnswers": [
               "was eating"
             ],
             "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "Suddenly, one boy (12) ...... over while he {gap1} a sandwich.",
+            "template": "While he {gap1} a sandwich, one boy fell over.",
             "gapCount": 1,
             "gaps": [
               {
@@ -1746,7 +1746,7 @@
                 "expectedAnswer": "was eating"
               }
             ],
-            "blankSentence": "Suddenly, one boy (12) ...... over while he ____ a sandwich.",
+            "blankSentence": "While he ____ a sandwich, one boy fell over.",
             "answerMode": "typed_conjugation_only",
             "passageContextMode": "single_gap_from_passage"
           },

@@ -83,9 +83,9 @@
   }
 
   /**
-   * Passage exercises split into one screen per gap keep sibling gaps as context
-   * (e.g. "(3) ......"). Those markers must not become extra inputs — only the
-   * active blank (usually "____") should stay a fillable gap.
+   * Passage exercises split into one screen per gap should not show sibling gaps
+   * as "(3) …" placeholders. Strip any numbered gap markers that are not the
+   * active blank so each screen only exposes one fillable gap.
    */
   function prepareSinglePassageGapSentence(sentence, item, genRule) {
     var mode = item && item.passageContextMode;
@@ -94,7 +94,11 @@
         screenMode !== 'passage_split_into_single_gap_screens') {
       return sentence;
     }
-    return String(sentence || '').replace(NUMBERED_CONTEXT_GAP_RE, '($1) \u2026');
+    return String(sentence || '')
+      .replace(NUMBERED_CONTEXT_GAP_RE, '')
+      .replace(/\s{2,}/g, ' ')
+      .replace(/\s+([,.!?])/g, '$1')
+      .trim();
   }
 
   function itemToPayload(formatType, item, exercise, genRule) {
