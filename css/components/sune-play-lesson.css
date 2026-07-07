@@ -851,6 +851,41 @@ button.sp-example-line.sp-speakable {
   align-items: stretch;
 }
 
+/* Practice card — contenido con aire lateral; opciones centradas y compactas */
+.sp-practice-main .sp-exercise-card {
+  padding: 28px 36px 24px;
+  align-items: center;
+}
+
+.sp-practice-main .sp-session-instruction,
+.sp-practice-main .sp-screen,
+.sp-practice-main .sp-prompt-row--choice,
+.sp-practice-main .sp-prompt-row--gap {
+  width: 100%;
+  max-width: 34rem;
+}
+
+.sp-practice-main .sp-exercise-card .sp-prompt-sentence,
+.sp-practice-main .sp-exercise-card .sp-display-prompt,
+.sp-practice-main .sp-exercise-card .sp-meaning-sentence,
+.sp-practice-main .sp-session-instruction {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.sp-practice-main .sp-option-grid {
+  width: 100%;
+  max-width: 18rem;
+  margin-inline: auto;
+}
+
+.sp-practice-main .sp-option-btn {
+  min-height: 46px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+}
+
 .sp-session-instruction {
   width: 100%;
   max-width: 100%;
@@ -2889,6 +2924,14 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
   .dashboard-layout--lesson-focus .sp-lesson--theory {
     padding: max(8px, env(safe-area-inset-top, 0px)) 12px max(16px, env(safe-area-inset-bottom, 0px));
   }
+
+  .sp-practice-main .sp-exercise-card {
+    padding: 24px 22px 20px;
+  }
+
+  .sp-practice-main .sp-option-grid {
+    max-width: 15rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -2917,5 +2960,13 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
 
   .sp-exercise-card {
     padding: 32px 28px;
+  }
+
+  .sp-practice-main .sp-exercise-card {
+    padding: 32px 44px 28px;
+  }
+
+  .sp-practice-main .sp-option-grid {
+    max-width: 20rem;
   }
 }
