@@ -1,0 +1,81 @@
+/* Learning — enunciados y frases en caja centrada con márgenes laterales y texto a la izquierda */
+
+:root {
+  --learning-prompt-inset: 16px;
+  --learning-prompt-pad-y: 14px;
+  --learning-prompt-pad-x: 18px;
+  --learning-prompt-border-color: #e5e5e5;
+  --learning-prompt-bg: #ffffff;
+  --learning-prompt-radius: 16px;
+}
+
+.course-center--lesson-focus .cu-lesson-instruction,
+.course-center--lesson-focus .cu-ex-item > .cu-ex-sentence,
+.course-center--lesson-focus .cu-ex-item > .cu-ex-kwtrans-text,
+.course-center--lesson-focus .cu-ex-item > .cu-sync-sentence,
+.course-center--lesson-focus .cu-ex-item > .cu-yn-sentence,
+.course-center--lesson-focus .cu-ex-item > .cu-passage-text,
+.cu-exercise > .cu-ex-instructions,
+.bgl-instruction,
+.bgl-prompt-display,
+.bgl-card .bgl-sentence-line,
+.bgl-error-sentence,
+.sp-session-instruction,
+.sp-exercise-card .sp-prompt-sentence,
+.sp-exercise-card .sp-display-prompt,
+.sp-exercise-card .sp-meaning-sentence,
+.ve-modal-quiz .sp-session-instruction,
+.ve-modal-quiz .sp-prompt-sentence,
+.ve-modal-quiz .sp-display-prompt {
+  box-sizing: border-box;
+  align-self: stretch;
+  width: calc(100% - 2 * var(--learning-prompt-inset));
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
+  padding: var(--learning-prompt-pad-y) var(--learning-prompt-pad-x);
+  background: var(--learning-prompt-bg);
+  border: 2px solid var(--learning-prompt-border-color);
+  border-radius: var(--learning-prompt-radius);
+  text-align: left;
+}
+
+/* Bubble de contexto (frase con mascota) — mismo inset lateral */
+.course-center--lesson-focus .cu-lesson-prompt {
+  width: calc(100% - 2 * var(--learning-prompt-inset));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bgl-instruction {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.bgl-instruction-text {
+  text-align: left;
+}
+
+.bgl-prompt-display,
+.bgl-card .bgl-sentence-line,
+.bgl-error-sentence {
+  text-align: left;
+}
+
+.sp-prompt-row--choice,
+.sp-prompt-row--gap,
+.sp-screen--gap {
+  text-align: left;
+}
+
+.sp-prompt-row--choice .sp-prompt-sentence {
+  display: block;
+  text-align: left;
+}
+
+.sp-prompt-row--gap .sp-prompt-sentence--inline-gap {
+  text-align: left;
+}
