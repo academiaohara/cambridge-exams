@@ -573,7 +573,7 @@
       ],
       "lives": 6,
       "passCondition": {
-        "minimumCorrectScreens": 10,
+        "minimumCorrectScreens": 8,
         "allowFinishWithZeroLives": false
       },
       "screenGeneration": [
@@ -588,16 +588,10 @@
             "b1-u2-ex5-6",
             "b1-u2-ex5-7",
             "b1-u2-ex5-8",
-            "b1-u2-ex5-9",
-            "b1-u2-ex5-10",
-            "b1-u2-ex5-11",
-            "b1-u2-ex5-12",
-            "b1-u2-ex5-13",
-            "b1-u2-ex5-14"
+            "b1-u2-ex5-9"
           ],
           "formatType": "conjugation_gap_fill",
-          "fallbackFormatType": "two_option_choice",
-          "screenMode": "passage_split_into_single_gap_screens"
+          "fallbackFormatType": "two_option_choice"
         }
       ]
     },
@@ -689,7 +683,7 @@
     "shuffleWithinNode": false,
     "failedItemPlacement": "end_of_queue",
     "repeatFailedItemsBeforeCompletion": true,
-    "maxScreensPerNode": 14,
+    "maxScreensPerNode": 9,
     "minimumScreensPerNode": 5
   },
   "xpRules": {
@@ -1412,7 +1406,7 @@
         "exerciseTypeName": "Story Gap Fill",
         "title": "E: The School Trip",
         "instructions": "Complete using the correct past simple or past continuous form of the verbs in the box.",
-        "studentInstruction": "Complete one gap at a time with the correct past simple or past continuous form.",
+        "studentInstruction": "Complete each sentence with the correct past simple or past continuous form.",
         "grammarFocus": "past simple and past continuous in a story",
         "words": [
           "arrive",
@@ -1466,311 +1460,217 @@
         "items": [
           {
             "id": "b1-u2-ex5-1",
-            "passageGapNumber": 1,
-            "sentence": "Last Friday, our class (1) ...... very excited because we were going on a school trip.",
+            "sentence": "Last Friday, our class ...... (be) very excited because we were going on a school trip.",
             "verbPrompt": "be",
             "answer": "was",
             "acceptedAnswers": [
               "was"
             ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "explanation": "Use past simple for a state in the past. The class was excited on that Friday.",
             "template": "Last Friday, our class {gap1} very excited because we were going on a school trip.",
             "gapCount": 1,
             "gaps": [
               {
                 "gapId": "gap1",
-                "expectedAnswer": "was"
+                "expectedAnswer": "was",
+                "verbPrompt": "be"
               }
             ],
             "blankSentence": "Last Friday, our class ____ very excited because we were going on a school trip.",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
+            "answerMode": "typed_conjugation_only"
           },
           {
             "id": "b1-u2-ex5-2",
-            "passageGapNumber": 2,
-            "sentence": "Some students (2) ...... their bags.",
-            "verbPrompt": "pack",
-            "answer": "were packing",
+            "sentence": "Some students ...... (pack) their bags while others ...... (wait) outside the school gate.",
+            "verbPrompt": "pack, wait",
+            "answer": "were packing, were waiting",
             "acceptedAnswers": [
-              "were packing"
+              "were packing, were waiting"
             ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "Some students {gap1} their bags.",
-            "gapCount": 1,
+            "explanation": "Both actions were in progress at the same time before the trip started, so use past continuous for both.",
+            "template": "Some students {gap1} their bags while others {gap2} outside the school gate.",
+            "gapCount": 2,
             "gaps": [
               {
                 "gapId": "gap1",
-                "expectedAnswer": "were packing"
+                "expectedAnswer": "were packing",
+                "verbPrompt": "pack"
+              },
+              {
+                "gapId": "gap2",
+                "expectedAnswer": "were waiting",
+                "verbPrompt": "wait"
               }
             ],
-            "blankSentence": "Some students ____ their bags.",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
+            "blankSentence": "Some students ____ their bags while others ____ outside the school gate.",
+            "answerMode": "typed_multiple_conjugation_gaps"
           },
           {
             "id": "b1-u2-ex5-3",
-            "passageGapNumber": 3,
-            "sentence": "Others (3) ...... outside the school gate.",
-            "verbPrompt": "wait",
-            "answer": "were waiting",
-            "acceptedAnswers": [
-              "were waiting"
-            ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "Others {gap1} outside the school gate.",
-            "gapCount": 1,
-            "gaps": [
-              {
-                "gapId": "gap1",
-                "expectedAnswer": "were waiting"
-              }
-            ],
-            "blankSentence": "Others ____ outside the school gate.",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
-          },
-          {
-            "id": "b1-u2-ex5-4",
-            "passageGapNumber": 4,
-            "sentence": "It (4) ...... lightly, but nobody cared.",
+            "sentence": "It ...... (rain) lightly, but nobody cared.",
             "verbPrompt": "rain",
             "answer": "was raining",
             "acceptedAnswers": [
               "was raining"
             ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "explanation": "Use past continuous for weather happening in the background at that moment.",
             "template": "It {gap1} lightly, but nobody cared.",
             "gapCount": 1,
             "gaps": [
               {
                 "gapId": "gap1",
-                "expectedAnswer": "was raining"
+                "expectedAnswer": "was raining",
+                "verbPrompt": "rain"
               }
             ],
             "blankSentence": "It ____ lightly, but nobody cared.",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
+            "answerMode": "typed_conjugation_only"
           },
           {
-            "id": "b1-u2-ex5-5",
-            "passageGapNumber": 5,
-            "sentence": "At eight o'clock, the bus finally (5) ...... .",
+            "id": "b1-u2-ex5-4",
+            "sentence": "At eight o'clock, the bus finally ...... (arrive).",
             "verbPrompt": "arrive",
             "answer": "arrived",
             "acceptedAnswers": [
               "arrived"
             ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "At eight o'clock, the bus finally {gap1} .",
+            "explanation": "Use past simple for a completed event at a specific time.",
+            "template": "At eight o'clock, the bus finally {gap1}.",
             "gapCount": 1,
             "gaps": [
               {
                 "gapId": "gap1",
-                "expectedAnswer": "arrived"
+                "expectedAnswer": "arrived",
+                "verbPrompt": "arrive"
               }
             ],
-            "blankSentence": "At eight o'clock, the bus finally ____ .",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
+            "blankSentence": "At eight o'clock, the bus finally ____.",
+            "answerMode": "typed_conjugation_only"
+          },
+          {
+            "id": "b1-u2-ex5-5",
+            "sentence": "Everyone ...... (ride) onto the bus quickly and the teachers ...... (say) hello to all the students.",
+            "verbPrompt": "ride, say",
+            "answer": "rode, said",
+            "acceptedAnswers": [
+              "rode, said"
+            ],
+            "explanation": "Both are completed actions that happened one after another, so use past simple.",
+            "template": "Everyone {gap1} onto the bus quickly and the teachers {gap2} hello to all the students.",
+            "gapCount": 2,
+            "gaps": [
+              {
+                "gapId": "gap1",
+                "expectedAnswer": "rode",
+                "verbPrompt": "ride"
+              },
+              {
+                "gapId": "gap2",
+                "expectedAnswer": "said",
+                "verbPrompt": "say"
+              }
+            ],
+            "blankSentence": "Everyone ____ onto the bus quickly and the teachers ____ hello to all the students.",
+            "answerMode": "typed_multiple_conjugation_gaps"
           },
           {
             "id": "b1-u2-ex5-6",
-            "passageGapNumber": 6,
-            "sentence": "Everyone (6) ...... onto the bus quickly.",
-            "verbPrompt": "ride",
-            "answer": "rode",
+            "sentence": "While we ...... (travel) to the museum, some people ...... (play) games and others ...... (laugh) loudly at jokes.",
+            "verbPrompt": "travel, play, laugh",
+            "answer": "were travelling, were playing, were laughing",
             "acceptedAnswers": [
-              "rode"
+              "were travelling, were playing, were laughing"
             ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "Everyone {gap1} onto the bus quickly.",
-            "gapCount": 1,
+            "explanation": "All three actions were happening during the journey, so use past continuous for each one.",
+            "template": "While we {gap1} to the museum, some people {gap2} games and others {gap3} loudly at jokes.",
+            "gapCount": 3,
             "gaps": [
               {
                 "gapId": "gap1",
-                "expectedAnswer": "rode"
+                "expectedAnswer": "were travelling",
+                "verbPrompt": "travel"
+              },
+              {
+                "gapId": "gap2",
+                "expectedAnswer": "were playing",
+                "verbPrompt": "play"
+              },
+              {
+                "gapId": "gap3",
+                "expectedAnswer": "were laughing",
+                "verbPrompt": "laugh"
               }
             ],
-            "blankSentence": "Everyone ____ onto the bus quickly.",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
+            "blankSentence": "While we ____ to the museum, some people ____ games and others ____ loudly at jokes.",
+            "answerMode": "typed_multiple_conjugation_gaps"
           },
           {
             "id": "b1-u2-ex5-7",
-            "passageGapNumber": 7,
-            "sentence": "The teachers (7) ...... hello to all the students.",
-            "verbPrompt": "say",
-            "answer": "said",
-            "acceptedAnswers": [
-              "said"
-            ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "The teachers {gap1} hello to all the students.",
-            "gapCount": 1,
-            "gaps": [
-              {
-                "gapId": "gap1",
-                "expectedAnswer": "said"
-              }
-            ],
-            "blankSentence": "The teachers ____ hello to all the students.",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
-          },
-          {
-            "id": "b1-u2-ex5-8",
-            "passageGapNumber": 8,
-            "sentence": "While we (8) ...... to the museum, some people were busy on the bus.",
-            "verbPrompt": "travel",
-            "answer": "were travelling",
-            "acceptedAnswers": [
-              "were travelling"
-            ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "While we {gap1} to the museum, some people were busy on the bus.",
-            "gapCount": 1,
-            "gaps": [
-              {
-                "gapId": "gap1",
-                "expectedAnswer": "were travelling"
-              }
-            ],
-            "blankSentence": "While we ____ to the museum, some people were busy on the bus.",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
-          },
-          {
-            "id": "b1-u2-ex5-9",
-            "passageGapNumber": 9,
-            "sentence": "Some people (9) ...... games on the bus.",
-            "verbPrompt": "play",
-            "answer": "were playing",
-            "acceptedAnswers": [
-              "were playing"
-            ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "Some people {gap1} games on the bus.",
-            "gapCount": 1,
-            "gaps": [
-              {
-                "gapId": "gap1",
-                "expectedAnswer": "were playing"
-              }
-            ],
-            "blankSentence": "Some people ____ games on the bus.",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
-          },
-          {
-            "id": "b1-u2-ex5-10",
-            "passageGapNumber": 10,
-            "sentence": "Others (10) ...... loudly at jokes.",
-            "verbPrompt": "laugh",
-            "answer": "were laughing",
-            "acceptedAnswers": [
-              "were laughing"
-            ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "Others {gap1} loudly at jokes.",
-            "gapCount": 1,
-            "gaps": [
-              {
-                "gapId": "gap1",
-                "expectedAnswer": "were laughing"
-              }
-            ],
-            "blankSentence": "Others ____ loudly at jokes.",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
-          },
-          {
-            "id": "b1-u2-ex5-11",
-            "passageGapNumber": 11,
-            "sentence": "When we finally arrived, we (11) ...... around the museum in groups.",
+            "sentence": "When we finally arrived, we ...... (walk) around the museum in groups.",
             "verbPrompt": "walk",
             "answer": "walked",
             "acceptedAnswers": [
               "walked"
             ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "explanation": "Use past simple for a completed activity after arrival.",
             "template": "When we finally arrived, we {gap1} around the museum in groups.",
             "gapCount": 1,
             "gaps": [
               {
                 "gapId": "gap1",
-                "expectedAnswer": "walked"
+                "expectedAnswer": "walked",
+                "verbPrompt": "walk"
               }
             ],
             "blankSentence": "When we finally arrived, we ____ around the museum in groups.",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
+            "answerMode": "typed_conjugation_only"
           },
           {
-            "id": "b1-u2-ex5-12",
-            "passageGapNumber": 12,
-            "sentence": "Suddenly, one boy (12) ...... over.",
-            "verbPrompt": "fall",
-            "answer": "fell",
+            "id": "b1-u2-ex5-8",
+            "sentence": "Suddenly, one boy ...... (fall) over while he ...... (eat) a sandwich.",
+            "verbPrompt": "fall, eat",
+            "answer": "fell, was eating",
             "acceptedAnswers": [
-              "fell"
+              "fell, was eating"
             ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "Suddenly, one boy {gap1} over.",
-            "gapCount": 1,
+            "explanation": "The fall is a short completed action (past simple). Eating was in progress when it happened (past continuous).",
+            "template": "Suddenly, one boy {gap1} over while he {gap2} a sandwich.",
+            "gapCount": 2,
             "gaps": [
               {
                 "gapId": "gap1",
-                "expectedAnswer": "fell"
-              }
-            ],
-            "blankSentence": "Suddenly, one boy ____ over.",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
-          },
-          {
-            "id": "b1-u2-ex5-13",
-            "passageGapNumber": 13,
-            "sentence": "While he (13) ...... a sandwich, one boy fell over.",
-            "verbPrompt": "eat",
-            "answer": "was eating",
-            "acceptedAnswers": [
-              "was eating"
-            ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
-            "template": "While he {gap1} a sandwich, one boy fell over.",
-            "gapCount": 1,
-            "gaps": [
+                "expectedAnswer": "fell",
+                "verbPrompt": "fall"
+              },
               {
-                "gapId": "gap1",
-                "expectedAnswer": "was eating"
+                "gapId": "gap2",
+                "expectedAnswer": "was eating",
+                "verbPrompt": "eat"
               }
             ],
-            "blankSentence": "While he ____ a sandwich, one boy fell over.",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
+            "blankSentence": "Suddenly, one boy ____ over while he ____ a sandwich.",
+            "answerMode": "typed_multiple_conjugation_gaps"
           },
           {
-            "id": "b1-u2-ex5-14",
-            "passageGapNumber": 14,
-            "sentence": "Luckily, he wasn't hurt and everyone (14) ...... laughing again a few minutes later.",
+            "id": "b1-u2-ex5-9",
+            "sentence": "Luckily, he wasn't hurt and everyone ...... (start) laughing again a few minutes later.",
             "verbPrompt": "start",
             "answer": "started",
             "acceptedAnswers": [
               "started"
             ],
-            "explanation": "Choose past simple for completed events and past continuous for actions in progress or background situations.",
+            "explanation": "Use past simple for a new action that began after the accident.",
             "template": "Luckily, he wasn't hurt and everyone {gap1} laughing again a few minutes later.",
             "gapCount": 1,
             "gaps": [
               {
                 "gapId": "gap1",
-                "expectedAnswer": "started"
+                "expectedAnswer": "started",
+                "verbPrompt": "start"
               }
             ],
             "blankSentence": "Luckily, he wasn't hurt and everyone ____ laughing again a few minutes later.",
-            "answerMode": "typed_conjugation_only",
-            "passageContextMode": "single_gap_from_passage"
+            "answerMode": "typed_conjugation_only"
           }
         ],
         "interaction": {
