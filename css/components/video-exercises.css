@@ -778,6 +778,14 @@ body.ve-modal-open {
 
 .ve-modal-quiz .sp-option-grid {
   width: 100%;
+  max-width: 18rem;
+  margin-inline: auto;
+}
+
+.ve-modal-quiz .sp-option-btn {
+  min-height: 46px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
 }
 
 .ve-modal-quiz .sp-option-btn {
