@@ -1204,6 +1204,10 @@
         (cardOnclick ? ' onclick="' + cardOnclick + '" role="button" tabindex="0"' : '') +
         (typeof globalIndex === 'number' ? ' data-global-stage="' + globalIndex + '"' : '') + '>';
       html += '<div class="course-etapa-card-main">';
+      var hasAdvanceBtn = !etapaUnlocked && showAdvance;
+      if (hasAdvanceBtn) {
+        html += '<div class="course-etapa-card-main-content">';
+      }
       html += '<div class="course-etapa-card-details">' + levelId + ' · VIEW DETAILS</div>';
       html += '<div class="course-etapa-card-title-row">';
       html += '<div class="course-etapa-card-title">Stage ' + etapa.number + '</div>';
@@ -1219,13 +1223,13 @@
       if (!etapaUnlocked) {
         html += '<div class="course-etapa-card-locked-msg">' + _mi('lock') + ' Complete the previous stage</div>';
       }
-      html += '</div>';
-
-      if (!etapaUnlocked && showAdvance) {
+      if (hasAdvanceBtn) {
+        html += '</div>';
         html += '<button type="button" class="course-etapa-card-btn course-etapa-card-btn--advance" onclick="event.stopPropagation();BentoGrid._advanceToCourseStage(' + globalIndex + ')" aria-label="Take level test to jump ahead" title="Pass the level test to unlock this stage">' +
           '<img src="Assets/images/avance.svg" alt="" class="course-etapa-card-btn-advance-icon" aria-hidden="true">' +
           '</button>';
       }
+      html += '</div>';
       html += '</div>';
       return html;
     },
