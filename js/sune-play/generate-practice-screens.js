@@ -242,6 +242,83 @@
     };
   }
 
+  function stripBoldMarkers(str) {
+    return String(str || '').replace(/\*\*([^*]+)\*\*/g, '$1');
+  }
+
+  function tokenizeSentence(sentence) {
+    return String(sentence || '').split(/\s+/).filter(Boolean);
+  }
+
+  function fewWordCore(token) {
+    return String(token || '').replace(/^[^\w\u2019']+|[^\w\u2019']+$/g, '').toLowerCase();
+  }
+
+  function buildFindExtraWordPayload(item, exercise) {
+    var answer = String(item.answer || '').trim();
+    var isOkItem = answer.toUpperCase() === 'OK';
+    var onlyMarkedWordClickable = !!(exercise.onlyMarkedWordClickable || item.onlyMarkedWordClickable);
+
+    if (item.tokens && item.tokens.length) {
+      return {
+        sentence: item.sentence || '',
+        tokens: item.tokens,
+        answer: answer,
+        answerTokenIndex: item.answerTokenIndex != null ? item.answerTokenIndex : -1,
+        isCorrectSentence: item.isCorrectSentence != null ? item.isCorrectSentence : isOkItem,
+        answerMode: item.answerMode || 'tap_extra_word_or_ok',
+        instruction: exercise.studentInstruction || exercise.instructions || '',
+        explanation: item.explanation || '',
+        onlyMarkedWordClickable: onlyMarkedWordClickable
+      };
+    }
+
+    var origSentence = item.sentence || '';
+    var bracketAnswerIdx = -1;
+    var origTokens = origSentence.replace(/\*\*/g, '').split(/\s+/).filter(Boolean);
+    for (var bi = 0; bi < origTokens.length; bi++) {
+      if (origTokens[bi].indexOf('[') !== -1 && origTokens[bi].indexOf(']') !== -1) {
+        bracketAnswerIdx = bi;
+        break;
+      }
+    }
+
+    var displaySentence = stripBoldMarkers(origSentence).replace(/\[([^\]]+)\]/g, '$1');
+    var tokens = tokenizeSentence(displaySentence);
+    var answerCore = isOkItem ? '' : answer.toLowerCase();
+    var answerTokenIndex = -1;
+    var tokenPayload = tokens.map(function(token, ti) {
+      var isAnswer;
+      if (isOkItem) {
+        isAnswer = false;
+      } else if (bracketAnswerIdx !== -1) {
+        isAnswer = ti === bracketAnswerIdx;
+      } else {
+        isAnswer = fewWordCore(token) === answerCore;
+      }
+      if (isAnswer) answerTokenIndex = ti;
+      var isBracketMarked = bracketAnswerIdx !== -1 && ti === bracketAnswerIdx;
+      return {
+        text: token,
+        index: ti,
+        isAnswer: isAnswer,
+        clickable: !onlyMarkedWordClickable || isBracketMarked
+      };
+    });
+
+    return {
+      sentence: displaySentence,
+      tokens: tokenPayload,
+      answer: answer,
+      answerTokenIndex: isOkItem ? -1 : answerTokenIndex,
+      isCorrectSentence: isOkItem,
+      answerMode: 'tap_extra_word_or_ok',
+      instruction: exercise.studentInstruction || exercise.instructions || '',
+      explanation: item.explanation || '',
+      onlyMarkedWordClickable: onlyMarkedWordClickable
+    };
+  }
+
   function buildScreenId(nodeId, exerciseId, itemId, formatType) {
     return [nodeId, exerciseId, itemId, formatType].filter(Boolean).join('__');
   }
@@ -430,6 +507,9 @@
       case 'mc_4_option':
         return buildMc4OptionStandalonePayload(item, exercise);
 
+      case 'find_extra_word':
+        return buildFindExtraWordPayload(item, exercise);
+
       default:
         warn('Unknown formatType: ' + formatType);
         return { raw: item };
@@ -578,6 +658,7 @@
     getExerciseBank: getExerciseBank,
     normalizeFormatType: normalizeFormatType,
     normalizeMcOptions: normalizeMcOptions,
-    buildMc4OptionPassagePayload: buildMc4OptionPassagePayload
+    buildMc4OptionPassagePayload: buildMc4OptionPassagePayload,
+    buildFindExtraWordPayload: buildFindExtraWordPayload
   };
 })();
