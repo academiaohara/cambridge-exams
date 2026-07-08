@@ -70,6 +70,9 @@
   function buildPassageGapFillPayload(exercise) {
     var passage = exercise.passage || '';
     var answers = exercise.answers || [];
+    var wordBank = exercise.words || exercise.wordBank || [];
+    var interaction = exercise.interaction || {};
+    var explicitGapVerbs = exercise.gapVerbs || interaction.gapVerbs || [];
     var passageGapRe = /\((\d+)\)\s*(?:\.{3,}|…{2,}|_{3,})/;
     var firstGapMatch = passageGapRe.exec(passage);
     var startGap = firstGapMatch ? parseInt(firstGapMatch[1], 10) : 1;
@@ -78,16 +81,20 @@
       return {
         gapId: 'gap' + gapNumber,
         gapNumber: gapNumber,
-        expectedAnswer: ans
+        expectedAnswer: ans,
+        baseVerb: explicitGapVerbs[idx] || ''
       };
     });
     return {
       passage: passage,
-      wordBank: exercise.words || exercise.wordBank || [],
+      wordBank: wordBank,
       answers: answers,
       gaps: gaps,
       explanation: exercise.explanation || 'Check each gap against the story context and verb form.',
-      instruction: exercise.instructions || exercise.studentInstruction || ''
+      instruction: exercise.instructions || exercise.studentInstruction || '',
+      sequentialGaps: !!interaction.sequentialGaps,
+      requireWordBankAssignment: interaction.requireWordBankAssignment !== false && !!interaction.sequentialGaps,
+      gapInputStyle: interaction.gapInputStyle || (interaction.sequentialGaps ? 'underline_expand' : 'pill')
     };
   }
 
