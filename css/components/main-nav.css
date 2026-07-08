@@ -1078,21 +1078,14 @@ button.stats-bar-item.is-active {
 .mobile-bottom-nav--duo .mobile-bottom-nav-btn {
   display: flex;
   min-width: 0;
-  min-height: 48px;
+  min-height: 44px;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 2px;
-  padding: 4px 2px;
+  padding: 6px 2px;
   border: 2px solid transparent;
   border-radius: 12px;
   background: transparent;
   color: #afafaf;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.58rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
 }

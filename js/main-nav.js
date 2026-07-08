@@ -613,10 +613,10 @@
         var isActive = item.id === activeId || (item.id === 'more' && MOBILE_MENU_ITEMS.indexOf(activeId) !== -1);
         html += '<button type="button" class="mobile-bottom-nav-btn' + (isActive ? ' active' : '') + '"' +
           ' data-nav-id="' + item.id + '"' +
+          ' aria-label="' + escapeHTML(item.label) + '"' +
           ' onclick="' + item.onclick + '"' +
           ' style="--nav-color:' + item.color + '">' +
           '<span class="mobile-bottom-nav-icon"><span class="material-symbols-outlined">' + item.icon + '</span></span>' +
-          '<span>' + escapeHTML(item.label) + '</span>' +
         '</button>';
       });
       html += '</nav>';
