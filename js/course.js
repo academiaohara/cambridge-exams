@@ -272,6 +272,7 @@
 
       var isVocabListView = activeSection === 'vocabulary' && !activeLevel && !activeEtapaKey;
       var isStageListView = activeSection === 'learning' && skipLevelPicker && !activeEtapaKey;
+      var isLearningStageView = activeSection === 'learning' && !!activeEtapaKey;
       var isSectionListView = isStageListView || isVocabListView;
 
       if (activeLevel && activeSection) {
@@ -318,7 +319,10 @@
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
             : '<div class="dashboard-left-sidebar">' + sidebars.left + '</div>') +
-          '<div class="dashboard-center dashboard-center--crossword dashboard-center--course' + (isSectionListView ? ' dashboard-center--learning-stages' : '') + '" id="courseDashboardCenter">' +
+          '<div class="dashboard-center dashboard-center--crossword dashboard-center--course' +
+            (isSectionListView ? ' dashboard-center--learning-stages' : '') +
+            (isLearningStageView ? ' dashboard-center--learning-stage' : '') +
+          '" id="courseDashboardCenter">' +
             mobileTopBarHtml +
             (isSectionListView
               ? BentoGrid._buildCourseSectionDuoHeaderHtml(
@@ -1764,7 +1768,16 @@
     _scrollCoursePathToCurrent: function() {
       requestAnimationFrame(function() {
         var current = document.querySelector('.course-exercise-cell--current, .course-path-circle--current, .course-path-cell.cw-path-cell--current');
-        if (current && typeof current.scrollIntoView === 'function') {
+        if (!current) return;
+        var scrollRoot = document.getElementById('courseCenterScroll');
+        if (scrollRoot && scrollRoot.scrollHeight > scrollRoot.clientHeight) {
+          var rootRect = scrollRoot.getBoundingClientRect();
+          var cellRect = current.getBoundingClientRect();
+          var targetTop = scrollRoot.scrollTop + (cellRect.top - rootRect.top) - (rootRect.height / 2) + (cellRect.height / 2);
+          scrollRoot.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+          return;
+        }
+        if (typeof current.scrollIntoView === 'function') {
           current.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
         }
       });
