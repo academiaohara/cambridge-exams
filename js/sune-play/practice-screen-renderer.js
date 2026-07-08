@@ -276,14 +276,16 @@
   function updatePassageGapWordBank(root) {
     var state = root._passageGapState;
     if (!state) return;
-    root.querySelectorAll('.sp-passage-wordbank-chip--selectable').forEach(function(chip) {
+    root.querySelectorAll('.sp-passage-wordbank [data-word]').forEach(function(chip) {
       var word = chip.getAttribute('data-word');
       var maxUses = state.verbCounts[word] || 0;
       var confirmed = state.confirmedVerbs[word] || 0;
       var depleted = maxUses > 0 && confirmed >= maxUses;
       chip.classList.toggle('sp-passage-wordbank-chip--used', depleted);
-      chip.disabled = depleted;
-      chip.setAttribute('aria-disabled', depleted ? 'true' : 'false');
+      if (chip.classList.contains('sp-passage-wordbank-chip--selectable')) {
+        chip.disabled = depleted;
+        chip.setAttribute('aria-disabled', depleted ? 'true' : 'false');
+      }
     });
   }
 
@@ -490,6 +492,7 @@
         state.confirmedVerbs[verb] = (state.confirmedVerbs[verb] || 0) + 1;
       }
       syncPassageGapStateToScreen(screen, root);
+      updatePassageGapWordBank(root);
     } else {
       state.failed[gapNumber] = {
         answer: given,
@@ -883,7 +886,7 @@
           html += '<button type="button" class="sp-passage-wordbank-chip sp-passage-wordbank-chip--selectable" ' +
             'data-word="' + esc(word) + '">' + esc(word) + '</button>';
         } else {
-          html += '<span class="sp-passage-wordbank-chip">' + esc(word) + '</span>';
+          html += '<span class="sp-passage-wordbank-chip" data-word="' + esc(word) + '">' + esc(word) + '</span>';
         }
       });
       html += '</div>';

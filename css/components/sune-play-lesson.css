@@ -1368,7 +1368,8 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-passage-wordbank-chip--selectable.sp-passage-wordbank-chip--used,
-.sp-passage-wordbank-chip--selectable:disabled {
+.sp-passage-wordbank-chip--selectable:disabled,
+.sp-passage-wordbank-chip--used {
   opacity: 0.5;
   cursor: default;
   background: #e2e8f0;
