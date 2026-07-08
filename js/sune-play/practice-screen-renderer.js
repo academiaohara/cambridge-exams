@@ -767,6 +767,7 @@
       case 'keyword_transformation': return renderKeywordTransformation(screen);
       case 'column_matching': return renderColumnMatching(screen);
       case 'crossword_clues': return renderCrosswordClues(screen);
+      case 'synced_gap_fill': return renderSyncedGapFill(screen);
       default:
         return '<p class="sp-unknown">Unsupported format: ' + esc(screen.formatType) + '</p>';
     }
@@ -1468,6 +1469,82 @@
     });
   }
 
+  function renderSyncedGapSlot(isMaster, sentenceIndex) {
+    if (isMaster) {
+      return '<span class="sp-inline-gap-group sp-sync-gap-group sp-sync-gap-group--master" role="group" aria-label="Your answer">' +
+        '<input type="text" class="sp-gap-inline-input sp-sync-master-input" id="sp-sync-master-input" ' +
+        'autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Type one word for all three sentences">' +
+      '</span>';
+    }
+    return '<span class="sp-sync-gap-group sp-sync-gap-group--preview">' +
+      '<span class="sp-sync-preview" data-sync-preview="' + sentenceIndex + '" aria-label="Synced preview">…</span>' +
+    '</span>';
+  }
+
+  function renderSyncedSentence(sentence, isMaster, sentenceIndex) {
+    var parts = String(sentence || '').split(GAP_RE);
+    var gapCount = countGaps(sentence);
+    var html = '';
+    for (var i = 0; i < parts.length; i++) {
+      html += bold(parts[i]);
+      if (i < gapCount) html += renderSyncedGapSlot(isMaster, sentenceIndex);
+    }
+    return html;
+  }
+
+  function renderSyncedGapFill(screen) {
+    var p = screen.payload || {};
+    var sentences = p.sentences || [];
+    var html = '<div class="sp-screen sp-screen--sync-gap" data-format="synced_gap_fill">';
+    html += '<div class="sp-sync-sentences">';
+    sentences.forEach(function(sent, idx) {
+      var isMaster = idx === 0;
+      html += '<p class="sp-sync-sentence' + (isMaster ? ' sp-sync-sentence--master' : ' sp-sync-sentence--preview') + '">' +
+        renderSyncedSentence(sent, isMaster, idx) + '</p>';
+    });
+    html += '</div>';
+    if (sentences.length > 1) {
+      html += '<p class="sp-sync-hint">Type in the first gap — the other two update automatically.</p>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function getSyncMasterInput(root) {
+    return root ? root.querySelector('#sp-sync-master-input') : null;
+  }
+
+  function updateSyncPreviews(root, value) {
+    var display = value ? value : '…';
+    root.querySelectorAll('.sp-sync-preview').forEach(function(preview) {
+      preview.textContent = display;
+      preview.classList.toggle('sp-sync-preview--filled', !!value);
+    });
+  }
+
+  function bindSyncedGapFill(root, screen, onChange) {
+    var master = getSyncMasterInput(root);
+    if (!master) return;
+    master.addEventListener('input', function() {
+      updateSyncPreviews(root, master.value);
+      onChange();
+    });
+    updateSyncPreviews(root, master.value);
+  }
+
+  function markSyncedGapResults(root, correct) {
+    var master = getSyncMasterInput(root);
+    if (master) {
+      master.readOnly = true;
+      master.classList.toggle('sp-sync-master-input--correct', correct === true);
+      master.classList.toggle('sp-sync-master-input--incorrect', correct === false);
+    }
+    root.querySelectorAll('.sp-sync-preview').forEach(function(preview) {
+      preview.classList.toggle('sp-sync-preview--correct', correct === true);
+      preview.classList.toggle('sp-sync-preview--incorrect', correct === false);
+    });
+  }
+
   function buildInlineGapRenderOptions(payload) {
     return {
       gaps: payload.gaps || [],
@@ -2113,6 +2190,10 @@
 
     if (format === 'crossword_clues') {
       bindCrosswordClues(root, screen, onChange);
+    }
+
+    if (format === 'synced_gap_fill') {
+      bindSyncedGapFill(root, screen, onChange);
     }
   }
 
@@ -2816,6 +2897,10 @@
     if (f === 'crossword_clues') {
       return allCrosswordLettersFilled(root);
     }
+    if (f === 'synced_gap_fill') {
+      var syncInput = getSyncMasterInput(root);
+      return syncInput && !!syncInput.value.trim();
+    }
     if (f === 'free_text_gap_fill' || f === 'conjugation_gap_fill' || f === 'preselected_verb_gap_fill') {
       return allGapInputsFilled(root);
     }
@@ -2981,6 +3066,16 @@
         result.correct = norm.matchesAnyAccepted(cwWord, p);
         result.lifeLoss = result.correct ? 0 : 1;
         markCrosswordResults(root, p, cwWord);
+        break;
+      }
+      case 'synced_gap_fill': {
+        var syncMaster = getSyncMasterInput(root);
+        var syncValue = syncMaster ? syncMaster.value.trim() : '';
+        result.userAnswer = syncValue;
+        result.correctAnswer = (p.acceptedAnswers && p.acceptedAnswers[0]) || p.answer || '';
+        result.correct = norm.matchesAnyAccepted(syncValue, p);
+        result.lifeLoss = result.correct ? 0 : 1;
+        markSyncedGapResults(root, result.correct);
         break;
       }
       case 'free_text_gap_fill':

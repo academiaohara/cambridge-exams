@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 4,
+  "unit": 8,
+  "type": "vocabulary",
+  "unitTitle": "[TEST] Unit 8: Synced gap fill",
+  "unitSubtitle": "Sandbox for synced_gap_fill exercise type",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "movement and transport",
+    "synced_gap_fill"
+  ],
+  "estimatedDurationMinutes": 12,
+  "lessonStyle": "sune-play-interactive",
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-u8-test-theory",
+    "title": "Test theory",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "c1-u8-test-theory-card-1",
+        "title": "Synced gap fill test",
+        "subtitle": "Sandbox unit",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "What to test",
+            "items": [
+              "One word for three sentences per screen",
+              "Master input + synced previews (not 3 editable inputs)",
+              "Case-insensitive validation against acceptedAnswers",
+              "Real data from C1 Unit8 ex.I"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "synced_gap_fill",
+        "displayName": "One word for three sentences",
+        "defaultLives": 4,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "synced_gap_master_previews",
+          "studentAction": "type_master_word",
+          "evaluationTrigger": "check_button",
+          "syncUiMode": "master_with_previews"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-u8-test-node-1",
+      "title": "Synced gap fill test",
+      "shortTitle": "Sync test",
+      "focus": [
+        "synced_gap_fill"
+      ],
+      "lives": 4,
+      "passCondition": {
+        "minimumCorrectScreens": 4,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u8-test-ex-sync",
+          "sourceItemIds": [
+            "c1-u8-test-sync-1",
+            "c1-u8-test-sync-2",
+            "c1-u8-test-sync-3",
+            "c1-u8-test-sync-4"
+          ],
+          "formatType": "synced_gap_fill"
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 8,
+    "minimumScreensPerNode": 4
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Think of one word for all three."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u8-test-ex-sync"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u8-test-ex-sync",
+        "type": "exercise",
+        "exerciseType": "synced_gap_fill",
+        "exerciseTypeName": "One word for three sentences",
+        "title": "I: One word for three sentences",
+        "instructions": "For each question, write one word which can be used in all three sentences.",
+        "studentInstruction": "Type one word in the first gap — it fills all three sentences.",
+        "items": [
+          {
+            "id": "c1-u8-test-sync-1",
+            "sentences": [
+              "Nobody has been able to explain what ...... her to resign so suddenly after so many years with the organisation.",
+              "The constant background noise in the open-plan office was starting to ...... the whole team completely mad.",
+              "The lead prosecutor ...... the point home with such conviction that even the defence counsel seemed rattled."
+            ],
+            "answer": "drove",
+            "acceptedAnswers": ["drove"],
+            "formatType": "synced_gap_fill"
+          },
+          {
+            "id": "c1-u8-test-sync-2",
+            "sentences": [
+              "We agreed to ...... towards the valley before the weather had a chance to close in from the north.",
+              "She was invited to ...... the newly established committee on sustainable urban development.",
+              "Her debut novel ...... the bestseller list for three consecutive months following its release."
+            ],
+            "answer": "head",
+            "acceptedAnswers": ["head"],
+            "formatType": "synced_gap_fill"
+          },
+          {
+            "id": "c1-u8-test-sync-3",
+            "sentences": [
+              "After months of soul-searching, I've finally ...... to the conclusion that I need a complete change of direction.",
+              "How on earth did you manage to ...... to leave your passport at the hotel reception?",
+              "I realise this might ...... as a surprise, but we've decided to move abroad at the end of the year."
+            ],
+            "answer": "come",
+            "acceptedAnswers": ["come"],
+            "formatType": "synced_gap_fill"
+          },
+          {
+            "id": "c1-u8-test-sync-4",
+            "sentences": [
+              "The construction team needs to maintain a ...... pace if it wants to finish the development phase before the deadline.",
+              "By all accounts they had been in a very ...... relationship for several years before they finally got engaged.",
+              "She gave him a long, ...... look across the table before replying in a single quiet word."
+            ],
+            "answer": "steady",
+            "acceptedAnswers": ["steady"],
+            "formatType": "synced_gap_fill"
+          }
+        ],
+        "interaction": {
+          "formatType": "synced_gap_fill",
+          "syncUiMode": "master_with_previews"
+        }
+      }
+    ]
+  }
+}
