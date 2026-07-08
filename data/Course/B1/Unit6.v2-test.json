@@ -1,0 +1,177 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 2,
+  "unit": 6,
+  "type": "vocabulary",
+  "unitTitle": "[TEST] Unit 6: Keyword transformation",
+  "unitSubtitle": "Sandbox for keyword_transformation exercise type",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "word patterns",
+    "keyword_transformation"
+  ],
+  "estimatedDurationMinutes": 10,
+  "lessonStyle": "sune-play-interactive",
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u6-test-theory",
+    "title": "Test theory",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b1-u6-test-theory-card-1",
+        "title": "Keyword transformation test",
+        "subtitle": "Sandbox unit",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "What to test",
+            "items": [
+              "Prompt sentence + keyword + gap sentence",
+              "Strict 2–5 word limit blocks Check when out of range",
+              "Contractions (don't) count as one word",
+              "Answers from B1 Unit6 ex.H"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "keyword_transformation",
+        "displayName": "Keyword transformation",
+        "defaultLives": 6,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "keyword_gap_fill",
+          "studentAction": "type_two_to_five_words",
+          "evaluationTrigger": "check_button",
+          "wordCountRule": "whitespace_tokens_apostrophe_single_word",
+          "minWords": 2,
+          "maxWords": 5
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u6-test-node-1",
+      "title": "Keyword transformation test",
+      "shortTitle": "KWT test",
+      "focus": [
+        "keyword_transformation"
+      ],
+      "lives": 6,
+      "passCondition": {
+        "minimumCorrectScreens": 4,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u6-test-ex-kwt",
+          "sourceItemIds": [
+            "b1-u6-test-kwt-1",
+            "b1-u6-test-kwt-2",
+            "b1-u6-test-kwt-3",
+            "b1-u6-test-kwt-4"
+          ],
+          "formatType": "keyword_transformation"
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 10,
+    "minimumScreensPerNode": 4
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Check the word pattern."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u6-test-ex-kwt"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u6-test-ex-kwt",
+        "type": "exercise",
+        "exerciseType": "keyword_transformation",
+        "exerciseTypeName": "Keyword transformation",
+        "title": "H: Word patterns (sentence transformation)",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Use the keyword to complete the second sentence. Write 2–5 words only.",
+        "items": [
+          {
+            "id": "b1-u6-test-kwt-1",
+            "sentence": "Mia is very good at drawing portraits.\n**TALENTED** Mia is really ...... portraits.",
+            "answer": "talented at drawing",
+            "formatType": "keyword_transformation"
+          },
+          {
+            "id": "b1-u6-test-kwt-2",
+            "sentence": "The students were tired but didn't stop working.\n**CONTINUED** The students were tired but they ...... their work.",
+            "answer": "continued with",
+            "formatType": "keyword_transformation"
+          },
+          {
+            "id": "b1-u6-test-kwt-3",
+            "sentence": "I have no information about this subject.\n**KNOW** I ...... this subject.",
+            "answer": "don't know anything about",
+            "formatType": "keyword_transformation"
+          },
+          {
+            "id": "b1-u6-test-kwt-4",
+            "sentence": "Nobody can finish this project in ten minutes.\n**CAPABLE** Nobody ...... this project in ten minutes.",
+            "answer": "is capable of finishing",
+            "formatType": "keyword_transformation"
+          }
+        ],
+        "interaction": {
+          "formatType": "keyword_transformation",
+          "minWords": 2,
+          "maxWords": 5,
+          "wordCountRule": "whitespace_tokens_apostrophe_single_word"
+        }
+      }
+    ]
+  }
+}
