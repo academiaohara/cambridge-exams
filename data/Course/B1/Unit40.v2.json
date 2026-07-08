@@ -1,0 +1,922 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 14,
+  "unit": 40,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 40: Connectives",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 40: Connectives"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit40.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 5
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u40-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Time words and phrases",
+        "subtitle": "Time words and phrases",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Common words",
+            "headers": [
+              "Time word / phrase",
+              "Example"
+            ],
+            "rows": [
+              [
+                "after",
+                "I'll send you the results **after** we check everything."
+              ],
+              [
+                "as soon as",
+                "She'll call you **as soon as** she hears the news."
+              ],
+              [
+                "before",
+                "It might be a while **before** we get an answer."
+              ],
+              [
+                "until / till",
+                "I won't go to bed **until** I finish this chapter."
+              ],
+              [
+                "when",
+                "You'll feel better **when** you get some rest."
+              ],
+              [
+                "while",
+                "I'll wait here **while** you get changed."
+              ]
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "✓ **When** you get some rest, you'll feel better."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Although",
+        "subtitle": "Although",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Compare",
+            "headers": [
+              "Form",
+              "Example"
+            ],
+            "rows": [
+              [
+                "although + subject + verb, subject + verb",
+                "**Although** the film got bad reviews, I really enjoyed it."
+              ]
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "✓ I really enjoyed the film, **although** it got bad reviews."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-3",
+        "title": "In spite of / Despite",
+        "subtitle": "In spite of / Despite",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Compare",
+            "headers": [
+              "Form",
+              "Example"
+            ],
+            "rows": [
+              [
+                "in spite of / despite + -ing form, subject + verb",
+                "**In spite of** training hard, she didn't win the race."
+              ],
+              [
+                "in spite of / despite + noun, subject + verb",
+                "**Despite** the heavy traffic, we arrived on time."
+              ]
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "✓ She didn't win the race, **despite** training hard."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-4",
+        "title": "However",
+        "subtitle": "However",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Compare",
+            "headers": [
+              "Form",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Subject + verb. However, subject + verb.",
+                "The plan seemed perfect. **However**, something went wrong."
+              ]
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "✓ The plan seemed perfect. Something went wrong, **however**."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u40-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 21,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u40-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u40-exa-1",
+            "b1-u40-exa-2",
+            "b1-u40-exa-3",
+            "b1-u40-exa-4",
+            "b1-u40-exa-5",
+            "b1-u40-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u40-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u40-exb-1",
+            "b1-u40-exb-2",
+            "b1-u40-exb-3",
+            "b1-u40-exb-4",
+            "b1-u40-exb-5",
+            "b1-u40-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u40-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u40-exc-1",
+            "b1-u40-exc-2",
+            "b1-u40-exc-3",
+            "b1-u40-exc-4",
+            "b1-u40-exc-5",
+            "b1-u40-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u40-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u40-exd-1",
+            "b1-u40-exd-2",
+            "b1-u40-exd-3",
+            "b1-u40-exd-4",
+            "b1-u40-exd-5",
+            "b1-u40-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u40-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u40-exe-1",
+            "b1-u40-exe-2",
+            "b1-u40-exe-3",
+            "b1-u40-exe-4",
+            "b1-u40-exe-5",
+            "b1-u40-exe-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 30,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u40-ex-a",
+      "b1-u40-ex-b",
+      "b1-u40-ex-c",
+      "b1-u40-ex-d",
+      "b1-u40-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u40-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Time clauses",
+        "title": "A: Time clauses",
+        "instructions": "Complete each sentence with one time word or phrase.",
+        "studentInstruction": "Complete each sentence with one time word or phrase.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u40-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'll phone you ...... the train leaves.",
+            "answer": "before",
+            "acceptedAnswers": [
+              "before"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Wait here ...... I come back.",
+            "answer": "until",
+            "acceptedAnswers": [
+              "until"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We'll go outside ...... the rain stops.",
+            "answer": "when",
+            "acceptedAnswers": [
+              "when"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'll tell you the answer ...... I find it.",
+            "answer": "as soon as",
+            "acceptedAnswers": [
+              "as soon as"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Brush your teeth ...... you go to sleep.",
+            "answer": "before",
+            "acceptedAnswers": [
+              "before"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She reads a book ...... she waits for the bus.",
+            "answer": "while",
+            "acceptedAnswers": [
+              "while"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u40-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Although vs despite",
+        "title": "B: Although vs despite",
+        "instructions": "Complete each sentence with although, despite or in spite of.",
+        "studentInstruction": "Complete each sentence with although, despite or in spite of.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u40-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... it was very late, they kept studying.",
+            "answer": "Although",
+            "acceptedAnswers": [
+              "Although"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... feeling ill, he went to work.",
+            "answer": "Despite",
+            "acceptedAnswers": [
+              "Despite"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She enjoyed the trip ...... the bad weather.",
+            "answer": "in spite of",
+            "acceptedAnswers": [
+              "in spite of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... his mistakes, he passed the driving test.",
+            "answer": "Despite",
+            "acceptedAnswers": [
+              "Despite"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... the restaurant was expensive, we ate there.",
+            "answer": "Although",
+            "acceptedAnswers": [
+              "Although"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... the cold, the children played outside.",
+            "answer": "In spite of",
+            "acceptedAnswers": [
+              "In spite of"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u40-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Choose the connector",
+        "title": "C: Choose the connector",
+        "instructions": "Complete each sentence with the correct connector from the box.",
+        "studentInstruction": "Complete each sentence with the correct connector from the box.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "although",
+          "despite",
+          "however",
+          "unless",
+          "until",
+          "while"
+        ],
+        "wordBank": [
+          "although",
+          "despite",
+          "however",
+          "unless",
+          "until",
+          "while"
+        ],
+        "items": [
+          {
+            "id": "b1-u40-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't turn off the computer ...... the update finishes.",
+            "answer": "until",
+            "acceptedAnswers": [
+              "until"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... she was scared, she went on stage.",
+            "answer": "Although",
+            "acceptedAnswers": [
+              "Although"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... the long journey, we weren't tired.",
+            "answer": "Despite",
+            "acceptedAnswers": [
+              "Despite"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You won't improve ...... you practise every day.",
+            "answer": "unless",
+            "acceptedAnswers": [
+              "unless"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The hotel was cheap. ......, it was very comfortable.",
+            "answer": "However",
+            "acceptedAnswers": [
+              "However"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'll wash the dishes ...... you clean the table.",
+            "answer": "while",
+            "acceptedAnswers": [
+              "while"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u40-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Connectors",
+        "title": "D: Connectors",
+        "instructions": "Choose the correct connector.",
+        "studentInstruction": "Choose the correct connector.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u40-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You won't understand the story",
+            "sentenceAfter": "you read the first chapter.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "unless"
+              },
+              {
+                "letter": "B",
+                "text": "although"
+              },
+              {
+                "letter": "C",
+                "text": "despite"
+              },
+              {
+                "letter": "D",
+                "text": "however"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "she was nervous, she answered every question well.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Unless"
+              },
+              {
+                "letter": "B",
+                "text": "Although"
+              },
+              {
+                "letter": "C",
+                "text": "Despite"
+              },
+              {
+                "letter": "D",
+                "text": "However"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We can't enter the building",
+            "sentenceAfter": "we have tickets.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "despite"
+              },
+              {
+                "letter": "B",
+                "text": "however"
+              },
+              {
+                "letter": "C",
+                "text": "unless"
+              },
+              {
+                "letter": "D",
+                "text": "although"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The shop was closed.",
+            "sentenceAfter": ", we found another one nearby.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Unless"
+              },
+              {
+                "letter": "B",
+                "text": "Despite"
+              },
+              {
+                "letter": "C",
+                "text": "Although"
+              },
+              {
+                "letter": "D",
+                "text": "However"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "the rain, the concert continued.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Although"
+              },
+              {
+                "letter": "B",
+                "text": "Despite"
+              },
+              {
+                "letter": "C",
+                "text": "Unless"
+              },
+              {
+                "letter": "D",
+                "text": "However"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You can use my phone",
+            "sentenceAfter": "you don't drop it.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "however"
+              },
+              {
+                "letter": "B",
+                "text": "despite"
+              },
+              {
+                "letter": "C",
+                "text": "although"
+              },
+              {
+                "letter": "D",
+                "text": "unless"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u40-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Multiple choice",
+        "title": "E: Multiple choice",
+        "instructions": "Choose the correct option.",
+        "studentInstruction": "Choose the correct option.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u40-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I'll message you as soon as I",
+            "sentenceAfter": "the answer.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "will know"
+              },
+              {
+                "letter": "B",
+                "text": "know"
+              },
+              {
+                "letter": "C",
+                "text": "am knowing"
+              },
+              {
+                "letter": "D",
+                "text": "knew"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "he was busy, he helped us.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Despite"
+              },
+              {
+                "letter": "B",
+                "text": "However"
+              },
+              {
+                "letter": "C",
+                "text": "Although"
+              },
+              {
+                "letter": "D",
+                "text": "Unless"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "In spite of",
+            "sentenceAfter": "carefully, he made a mistake.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "listen"
+              },
+              {
+                "letter": "B",
+                "text": "listened"
+              },
+              {
+                "letter": "C",
+                "text": "to listen"
+              },
+              {
+                "letter": "D",
+                "text": "listening"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The test was difficult.",
+            "sentenceAfter": ", most students passed.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "However"
+              },
+              {
+                "letter": "B",
+                "text": "Unless"
+              },
+              {
+                "letter": "C",
+                "text": "Although"
+              },
+              {
+                "letter": "D",
+                "text": "Before"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You won't get a seat",
+            "sentenceAfter": "you arrive early.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "if"
+              },
+              {
+                "letter": "B",
+                "text": "unless"
+              },
+              {
+                "letter": "C",
+                "text": "before"
+              },
+              {
+                "letter": "D",
+                "text": "while"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u40-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Stay here",
+            "sentenceAfter": "I call your name.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "until"
+              },
+              {
+                "letter": "B",
+                "text": "however"
+              },
+              {
+                "letter": "C",
+                "text": "despite"
+              },
+              {
+                "letter": "D",
+                "text": "although"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

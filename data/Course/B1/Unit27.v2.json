@@ -1,0 +1,1087 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 9,
+  "unit": 27,
+  "type": "vocabulary",
+  "unitTitle": "[V2] Unit 27: Working and earning",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 27: Working and earning"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit27.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 8
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u27-theory",
+    "title": "Topic vocabulary",
+    "shortTitle": "Vocabulary",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b1-u27-theory-card-1",
+        "title": "Unit 27: Working and earning",
+        "subtitle": "",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Unit focus",
+            "items": [
+              "working and earning"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u27-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 40,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u27-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u27-exa-1",
+            "b1-u27-exa-2",
+            "b1-u27-exa-3",
+            "b1-u27-exa-4",
+            "b1-u27-exa-5",
+            "b1-u27-exa-6",
+            "b1-u27-exa-7",
+            "b1-u27-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u27-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u27-exb-1",
+            "b1-u27-exb-2",
+            "b1-u27-exb-3",
+            "b1-u27-exb-4",
+            "b1-u27-exb-5",
+            "b1-u27-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u27-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u27-exc-1",
+            "b1-u27-exc-2",
+            "b1-u27-exc-3",
+            "b1-u27-exc-4",
+            "b1-u27-exc-5",
+            "b1-u27-exc-6",
+            "b1-u27-exc-7",
+            "b1-u27-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u27-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u27-exd-1",
+            "b1-u27-exd-2",
+            "b1-u27-exd-3",
+            "b1-u27-exd-4",
+            "b1-u27-exd-5",
+            "b1-u27-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u27-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u27-exe-1",
+            "b1-u27-exe-2",
+            "b1-u27-exe-3",
+            "b1-u27-exe-4",
+            "b1-u27-exe-5",
+            "b1-u27-exe-6",
+            "b1-u27-exe-7",
+            "b1-u27-exe-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u27-ex-f",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u27-exf-1",
+            "b1-u27-exf-2",
+            "b1-u27-exf-3",
+            "b1-u27-exf-4",
+            "b1-u27-exf-5",
+            "b1-u27-exf-6",
+            "b1-u27-exf-7",
+            "b1-u27-exf-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u27-ex-g",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u27-exg-1",
+            "b1-u27-exg-2",
+            "b1-u27-exg-3",
+            "b1-u27-exg-4",
+            "b1-u27-exg-5",
+            "b1-u27-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u27-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u27-exh-1",
+            "b1-u27-exh-2",
+            "b1-u27-exh-3",
+            "b1-u27-exh-4",
+            "b1-u27-exh-5",
+            "b1-u27-exh-6",
+            "b1-u27-exh-7",
+            "b1-u27-exh-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 58,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u27-ex-a",
+      "b1-u27-ex-b",
+      "b1-u27-ex-c",
+      "b1-u27-ex-d",
+      "b1-u27-ex-e",
+      "b1-u27-ex-f",
+      "b1-u27-ex-g",
+      "b1-u27-ex-h"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u27-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Topic vocabulary (gap fill)",
+        "title": "Topic vocabulary (gap fill)",
+        "instructions": "Complete the sentences with words from the box.",
+        "studentInstruction": "Complete the sentences with words from the box.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "colleague",
+          "contract",
+          "earn",
+          "experience",
+          "income",
+          "interview",
+          "overtime",
+          "promotion",
+          "qualification",
+          "salary",
+          "staff",
+          "unemployed"
+        ],
+        "wordBank": [
+          "colleague",
+          "contract",
+          "earn",
+          "experience",
+          "income",
+          "interview",
+          "overtime",
+          "promotion",
+          "qualification",
+          "salary",
+          "staff",
+          "unemployed"
+        ],
+        "items": [
+          {
+            "id": "b1-u27-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He has to work ...... this week because the company is very busy.",
+            "answer": "overtime",
+            "acceptedAnswers": [
+              "overtime"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Read the ...... carefully before you accept the job.",
+            "answer": "contract",
+            "acceptedAnswers": [
+              "contract"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "After three years, she finally got a ...... and became assistant manager.",
+            "answer": "promotion",
+            "acceptedAnswers": [
+              "promotion"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My ...... is at ten o'clock tomorrow morning.",
+            "answer": "interview",
+            "acceptedAnswers": [
+              "interview"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You need a university ...... for this teaching job.",
+            "answer": "qualification",
+            "acceptedAnswers": [
+              "qualification"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He has been ...... since the restaurant closed.",
+            "answer": "unemployed",
+            "acceptedAnswers": [
+              "unemployed"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The hotel employs over fifty members of ...... .",
+            "answer": "staff",
+            "acceptedAnswers": [
+              "staff"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Her annual ...... increased when she changed jobs.",
+            "answer": "salary",
+            "acceptedAnswers": [
+              "salary"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u27-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Circle the correct word",
+        "title": "Circle the correct word",
+        "instructions": "Choose the correct option in each sentence.",
+        "studentInstruction": "Choose the correct option in each sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u27-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "My uncle is",
+            "sentenceAfter": "and works as a freelance photographer.",
+            "options": [
+              "self-employed",
+              "unemployed"
+            ],
+            "answer": "self-employed",
+            "originalSentence": "My uncle is **self-employed / unemployed** and works as a freelance photographer.",
+            "completedSentence": "My uncle is self-employed and works as a freelance photographer."
+          },
+          {
+            "id": "b1-u27-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The firm plans to",
+            "sentenceAfter": "more workers in September.",
+            "options": [
+              "apply",
+              "take on"
+            ],
+            "answer": "take on",
+            "originalSentence": "The firm plans to **apply / take on** more workers in September.",
+            "completedSentence": "The firm plans to take on more workers in September."
+          },
+          {
+            "id": "b1-u27-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This is only a",
+            "sentenceAfter": "job for the summer.",
+            "options": [
+              "permanent",
+              "temporary"
+            ],
+            "answer": "temporary",
+            "originalSentence": "This is only a **permanent / temporary** job for the summer.",
+            "completedSentence": "This is only a temporary job for the summer."
+          },
+          {
+            "id": "b1-u27-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The factory pays good",
+            "sentenceAfter": "to its workers.",
+            "options": [
+              "staff",
+              "wages"
+            ],
+            "answer": "wages",
+            "originalSentence": "The factory pays good **staff / wages** to its workers.",
+            "completedSentence": "The factory pays good wages to its workers."
+          },
+          {
+            "id": "b1-u27-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She works for a small",
+            "sentenceAfter": "near the city centre.",
+            "options": [
+              "firm",
+              "trade"
+            ],
+            "answer": "firm",
+            "originalSentence": "She works for a small **firm / trade** near the city centre.",
+            "completedSentence": "She works for a small firm near the city centre."
+          },
+          {
+            "id": "b1-u27-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You need previous",
+            "sentenceAfter": "to become a manager here.",
+            "options": [
+              "experience",
+              "income"
+            ],
+            "answer": "experience",
+            "originalSentence": "You need previous **experience / income** to become a manager here.",
+            "completedSentence": "You need previous experience to become a manager here."
+          }
+        ]
+      },
+      {
+        "id": "b1-u27-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Phrasal verbs (complete the gaps)",
+        "title": "Phrasal verbs (complete the gaps)",
+        "instructions": "Write the correct phrasal verb in each gap.",
+        "studentInstruction": "Write the correct phrasal verb in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "apply for",
+          "carry out",
+          "fill in",
+          "give up",
+          "hand in",
+          "look for",
+          "set up",
+          "take on"
+        ],
+        "wordBank": [
+          "apply for",
+          "carry out",
+          "fill in",
+          "give up",
+          "hand in",
+          "look for",
+          "set up",
+          "take on"
+        ],
+        "items": [
+          {
+            "id": "b1-u27-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They want to ...... a small café near the university.",
+            "answer": "set up",
+            "acceptedAnswers": [
+              "set up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You must ...... the application form online.",
+            "answer": "fill in",
+            "acceptedAnswers": [
+              "fill in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She didn't ...... her dream of becoming a doctor.",
+            "answer": "give up",
+            "acceptedAnswers": [
+              "give up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm going to ...... a job at the new sports centre.",
+            "answer": "apply for",
+            "acceptedAnswers": [
+              "apply for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Students have to ...... their projects by Monday.",
+            "answer": "hand in",
+            "acceptedAnswers": [
+              "hand in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The company will ...... research before launching the product.",
+            "answer": "carry out",
+            "acceptedAnswers": [
+              "carry out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The manager decided to ...... two extra assistants.",
+            "answer": "take on",
+            "acceptedAnswers": [
+              "take on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My brother is ...... work in the hotel industry.",
+            "answer": "looking for",
+            "acceptedAnswers": [
+              "looking for"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u27-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Prepositional phrases (gap fill)",
+        "title": "Prepositional phrases (gap fill)",
+        "instructions": "Complete each sentence with one phrase from the box.",
+        "studentInstruction": "Complete each sentence with one phrase from the box.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "at a meeting",
+          "at work",
+          "in charge of",
+          "on duty",
+          "on time",
+          "out of work"
+        ],
+        "wordBank": [
+          "at a meeting",
+          "at work",
+          "in charge of",
+          "on duty",
+          "on time",
+          "out of work"
+        ],
+        "items": [
+          {
+            "id": "b1-u27-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Try to arrive ...... for your first day in the office.",
+            "answer": "on time",
+            "acceptedAnswers": [
+              "on time"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "After the factory shut down, many people were ...... .",
+            "answer": "out of work",
+            "acceptedAnswers": [
+              "out of work"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I can't check my personal email while I'm ...... .",
+            "answer": "at work",
+            "acceptedAnswers": [
+              "at work"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Who is ...... the customer service team?",
+            "answer": "in charge of",
+            "acceptedAnswers": [
+              "in charge of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There is always a nurse ...... during the night.",
+            "answer": "on duty",
+            "acceptedAnswers": [
+              "on duty"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The director is ...... and can't speak to you now.",
+            "answer": "at a meeting",
+            "acceptedAnswers": [
+              "at a meeting"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u27-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Word patterns",
+        "title": "Word patterns",
+        "instructions": "Write one preposition in each gap.",
+        "studentInstruction": "Write one preposition in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u27-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The manager is responsible ...... all new employees.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She is experienced ...... organising large events.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm interested ...... working abroad next year.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He's good ...... solving technical problems.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I applied ...... a temporary job at the museum.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The employees went ...... strike because of low pay.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He earns a living ...... repairing computers.",
+            "answer": "by",
+            "acceptedAnswers": [
+              "by"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The firm made a profit ...... the first time in three years.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u27-ex-f",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Word formation",
+        "title": "Word formation",
+        "instructions": "Complete each sentence with the correct form of the word in capitals.",
+        "studentInstruction": "Complete each sentence with the correct form of the word in capitals.",
+        "legacyKey": "F",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u27-exf-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The government wants to increase ...... in rural areas. (EMPLOY)",
+            "answer": "employment",
+            "acceptedAnswers": [
+              "employment"
+            ],
+            "explanation": "",
+            "verbPrompt": "EMPLOY"
+          },
+          {
+            "id": "b1-u27-exf-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Only fully ...... nurses can apply for this position. (QUALIFY)",
+            "answer": "qualified",
+            "acceptedAnswers": [
+              "qualified"
+            ],
+            "explanation": "",
+            "verbPrompt": "QUALIFY"
+          },
+          {
+            "id": "b1-u27-exf-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Good ...... is important in every successful company. (MANAGE)",
+            "answer": "management",
+            "acceptedAnswers": [
+              "management"
+            ],
+            "explanation": "",
+            "verbPrompt": "MANAGE"
+          },
+          {
+            "id": "b1-u27-exf-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The final ...... will be made at the end of the month. (PAY)",
+            "answer": "payment",
+            "acceptedAnswers": [
+              "payment"
+            ],
+            "explanation": "",
+            "verbPrompt": "PAY"
+          },
+          {
+            "id": "b1-u27-exf-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "She dealt with the complaint very ...... . (PROFESSION)",
+            "answer": "professionally",
+            "acceptedAnswers": [
+              "professionally"
+            ],
+            "explanation": "",
+            "verbPrompt": "PROFESSION"
+          },
+          {
+            "id": "b1-u27-exf-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My grandfather is enjoying his ...... after forty years of work. (RETIRE)",
+            "answer": "retirement",
+            "acceptedAnswers": [
+              "retirement"
+            ],
+            "explanation": "",
+            "verbPrompt": "RETIRE"
+          },
+          {
+            "id": "b1-u27-exf-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The factory needs more ...... workers to operate the machines. (SKILL)",
+            "answer": "skilled",
+            "acceptedAnswers": [
+              "skilled"
+            ],
+            "explanation": "",
+            "verbPrompt": "SKILL"
+          },
+          {
+            "id": "b1-u27-exf-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The number of ...... adults has increased in the region. (EMPLOY)",
+            "answer": "unemployed",
+            "acceptedAnswers": [
+              "unemployed"
+            ],
+            "explanation": "",
+            "verbPrompt": "EMPLOY"
+          }
+        ]
+      },
+      {
+        "id": "b1-u27-ex-g",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "G: Gap fill",
+        "title": "G: Gap fill",
+        "instructions": "Complete each sentence with a word or phrase from the box.",
+        "studentInstruction": "Complete each sentence with a word or phrase from the box.",
+        "legacyKey": "G",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "colleague",
+          "employee",
+          "income",
+          "overtime",
+          "set up",
+          "temporary"
+        ],
+        "wordBank": [
+          "colleague",
+          "employee",
+          "income",
+          "overtime",
+          "set up",
+          "temporary"
+        ],
+        "items": [
+          {
+            "id": "b1-u27-exg-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Someone who works for a company is an ...... .",
+            "answer": "employee",
+            "acceptedAnswers": [
+              "employee"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exg-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The money you receive regularly from work is your ...... .",
+            "answer": "income",
+            "acceptedAnswers": [
+              "income"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exg-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She accepted a ...... position that lasts until December.",
+            "answer": "temporary",
+            "acceptedAnswers": [
+              "temporary"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exg-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When you work extra hours, you work ...... .",
+            "answer": "overtime",
+            "acceptedAnswers": [
+              "overtime"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exg-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They hope to ...... a new online business next year.",
+            "answer": "set up",
+            "acceptedAnswers": [
+              "set up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exg-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I asked a ...... to help me prepare for the meeting.",
+            "answer": "colleague",
+            "acceptedAnswers": [
+              "colleague"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u27-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Mixed revision",
+        "title": "Mixed revision",
+        "instructions": "Complete the sentences with one suitable word.",
+        "studentInstruction": "Complete the sentences with one suitable word.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u27-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please hand ...... your application before Friday.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He has been out of ...... since losing his job.",
+            "answer": "work",
+            "acceptedAnswers": [
+              "work"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We're looking ...... a new receptionist.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should read the ...... before you sign it.",
+            "answer": "contract",
+            "acceptedAnswers": [
+              "contract"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Maria is in ...... of the training programme.",
+            "answer": "charge",
+            "acceptedAnswers": [
+              "charge"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He has worked in the tourist ...... for ten years.",
+            "answer": "industry",
+            "acceptedAnswers": [
+              "industry"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exh-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They want to set ...... a small business together.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u27-exh-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You need several ...... to become a professional accountant.",
+            "answer": "qualifications",
+            "acceptedAnswers": [
+              "qualifications"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

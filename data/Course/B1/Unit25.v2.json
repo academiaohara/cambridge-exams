@@ -1,0 +1,1252 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 9,
+  "unit": 25,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 25: So, such, too & enough",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 25: So, such, too & enough"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit25.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 8
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u25-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "So and such",
+        "subtitle": "So and such",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Use",
+            "headers": [
+              "Use",
+              "Example"
+            ],
+            "rows": [
+              [
+                "We use **so ... that** and **such ... that** to express a cause and its result — the first part explains the reason, and the second part shows the consequence.",
+                "The film was **so scary** that I couldn't sleep."
+              ]
+            ]
+          },
+          {
+            "type": "form_table",
+            "title": "Form",
+            "rows": [
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Too and enough",
+        "subtitle": "Too and enough",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Use",
+            "headers": [
+              "Use",
+              "Example"
+            ],
+            "rows": [
+              [
+                "We use **too** to say that something is more than necessary or acceptable, with a negative effect.",
+                "The coffee is **too hot** to drink right now."
+              ],
+              [
+                "We use **enough** to say that there is the right amount of something, or to say there is not enough.",
+                "She isn't **old enough** to get a driving licence."
+              ]
+            ]
+          },
+          {
+            "type": "form_table",
+            "title": "Form",
+            "rows": [
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              }
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "**Too** is not the same as **very**. We only use **too** when something causes a problem.",
+              "**Enough** always follows the adjective or adverb: I'm not **confident enough** to speak in public.",
+              "Both **too** and **enough** can be followed by **for + noun/pronoun**: It's too loud **for** the baby to sleep."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u25-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "full_sentence_write",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 39,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u25-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u25-exa-1",
+            "b1-u25-exa-2",
+            "b1-u25-exa-3",
+            "b1-u25-exa-4",
+            "b1-u25-exa-5",
+            "b1-u25-exa-6",
+            "b1-u25-exa-7",
+            "b1-u25-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u25-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u25-exb-1",
+            "b1-u25-exb-2",
+            "b1-u25-exb-3",
+            "b1-u25-exb-4",
+            "b1-u25-exb-5",
+            "b1-u25-exb-6",
+            "b1-u25-exb-7",
+            "b1-u25-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u25-ex-c",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u25-exc-1",
+            "b1-u25-exc-2",
+            "b1-u25-exc-3",
+            "b1-u25-exc-4",
+            "b1-u25-exc-5",
+            "b1-u25-exc-6",
+            "b1-u25-exc-7",
+            "b1-u25-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u25-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u25-exd-1",
+            "b1-u25-exd-2",
+            "b1-u25-exd-3",
+            "b1-u25-exd-4",
+            "b1-u25-exd-5",
+            "b1-u25-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u25-ex-e",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u25-exe-1",
+            "b1-u25-exe-2",
+            "b1-u25-exe-3",
+            "b1-u25-exe-4",
+            "b1-u25-exe-5",
+            "b1-u25-exe-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u25-ex-f",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u25-exf-1",
+            "b1-u25-exf-2",
+            "b1-u25-exf-3",
+            "b1-u25-exf-4",
+            "b1-u25-exf-5",
+            "b1-u25-exf-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u25-ex-g",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u25-exg-1",
+            "b1-u25-exg-2",
+            "b1-u25-exg-3",
+            "b1-u25-exg-4",
+            "b1-u25-exg-5",
+            "b1-u25-exg-6",
+            "b1-u25-exg-7",
+            "b1-u25-exg-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u25-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u25-exh-1",
+            "b1-u25-exh-2",
+            "b1-u25-exh-3",
+            "b1-u25-exh-4",
+            "b1-u25-exh-5",
+            "b1-u25-exh-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 56,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u25-ex-a",
+      "b1-u25-ex-b",
+      "b1-u25-ex-c",
+      "b1-u25-ex-d",
+      "b1-u25-ex-e",
+      "b1-u25-ex-f",
+      "b1-u25-ex-g",
+      "b1-u25-ex-h"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u25-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Complete with so or such",
+        "title": "A: Complete with so or such",
+        "instructions": "Write so or such in each gap.",
+        "studentInstruction": "Write so or such in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u25-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It was ...... a noisy restaurant that we couldn't hear each other.",
+            "answer": "such",
+            "acceptedAnswers": [
+              "such"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The story was ...... sad that I nearly cried.",
+            "answer": "so",
+            "acceptedAnswers": [
+              "so"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They were ...... helpful neighbours that we thanked them with a card.",
+            "answer": "such",
+            "acceptedAnswers": [
+              "such"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He answered ...... quickly that nobody understood him.",
+            "answer": "so",
+            "acceptedAnswers": [
+              "so"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There were ...... many mistakes that I had to rewrite the essay.",
+            "answer": "so",
+            "acceptedAnswers": [
+              "so"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It was ...... an expensive hotel that we stayed somewhere else.",
+            "answer": "such",
+            "acceptedAnswers": [
+              "such"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She had ...... little patience that she left after five minutes.",
+            "answer": "so",
+            "acceptedAnswers": [
+              "so"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They made ...... a lot of noise that the neighbours complained.",
+            "answer": "such",
+            "acceptedAnswers": [
+              "such"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u25-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Complete with too or enough",
+        "title": "B: Complete with too or enough",
+        "instructions": "Use too or enough in each sentence.",
+        "studentInstruction": "Use too or enough in each sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u25-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This jacket is ...... small for me to wear.",
+            "answer": "too",
+            "acceptedAnswers": [
+              "too"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The ladder isn't long ...... to reach the roof.",
+            "answer": "enough",
+            "acceptedAnswers": [
+              "enough"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We haven't got ...... plates for all the guests.",
+            "answer": "enough",
+            "acceptedAnswers": [
+              "enough"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You're walking ...... quickly; I can't keep up.",
+            "answer": "too",
+            "acceptedAnswers": [
+              "too"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He didn't explain the rules clearly ...... .",
+            "answer": "enough",
+            "acceptedAnswers": [
+              "enough"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There are ...... many adverts on this website.",
+            "answer": "too",
+            "acceptedAnswers": [
+              "too"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Is this room quiet ...... for you to study?",
+            "answer": "enough",
+            "acceptedAnswers": [
+              "enough"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They arrived ...... early to enter the building.",
+            "answer": "too",
+            "acceptedAnswers": [
+              "too"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u25-ex-c",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "C: Choose the correct option",
+        "title": "C: Choose the correct option",
+        "instructions": "Circle the correct phrase.",
+        "studentInstruction": "Circle the correct phrase.",
+        "legacyKey": "C",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u25-exc-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The music was",
+            "sentenceAfter": "loud that we left.",
+            "options": [
+              "so",
+              "such"
+            ],
+            "answer": "so",
+            "originalSentence": "The music was **so / such** loud that we left.",
+            "completedSentence": "The music was so loud that we left."
+          },
+          {
+            "id": "b1-u25-exc-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This phone is",
+            "sentenceAfter": "expensive for me.",
+            "options": [
+              "too",
+              "enough"
+            ],
+            "answer": "too",
+            "originalSentence": "This phone is **too / enough** expensive for me.",
+            "completedSentence": "This phone is too expensive for me."
+          },
+          {
+            "id": "b1-u25-exc-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "It was",
+            "sentenceAfter": "a strange dream.",
+            "options": [
+              "so",
+              "such"
+            ],
+            "answer": "such",
+            "originalSentence": "It was **so / such** a strange dream.",
+            "completedSentence": "It was such a strange dream."
+          },
+          {
+            "id": "b1-u25-exc-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The room was warm",
+            "sentenceAfter": "to sleep in.",
+            "options": [
+              "enough",
+              "too"
+            ],
+            "answer": "enough",
+            "originalSentence": "The room was warm **enough / too** to sleep in.",
+            "completedSentence": "The room was warm enough to sleep in."
+          },
+          {
+            "id": "b1-u25-exc-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "There were",
+            "sentenceAfter": "people at the station.",
+            "options": [
+              "so many",
+              "such many"
+            ],
+            "answer": "so many",
+            "originalSentence": "There were **so many / such many** people at the station.",
+            "completedSentence": "There were so many people at the station."
+          },
+          {
+            "id": "b1-u25-exc-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "It was",
+            "sentenceAfter": "a busy day that I forgot lunch.",
+            "options": [
+              "such",
+              "so"
+            ],
+            "answer": "such",
+            "originalSentence": "It was **such / so** a busy day that I forgot lunch.",
+            "completedSentence": "It was such a busy day that I forgot lunch."
+          },
+          {
+            "id": "b1-u25-exc-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You are speaking",
+            "sentenceAfter": "fast for me.",
+            "options": [
+              "too",
+              "enough"
+            ],
+            "answer": "too",
+            "originalSentence": "You are speaking **too / enough** fast for me.",
+            "completedSentence": "You are speaking too fast for me."
+          },
+          {
+            "id": "b1-u25-exc-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "He worked hard",
+            "sentenceAfter": "to pass the exam.",
+            "options": [
+              "too",
+              "enough"
+            ],
+            "answer": "enough",
+            "originalSentence": "He worked hard **too / enough** to pass the exam.",
+            "completedSentence": "He worked hard enough to pass the exam."
+          }
+        ]
+      },
+      {
+        "id": "b1-u25-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Rewrite with so/such/too/enough",
+        "title": "D: Rewrite with so/such/too/enough",
+        "instructions": "Complete the second sentence so it has a similar meaning.",
+        "studentInstruction": "Complete the second sentence so it has a similar meaning.",
+        "legacyKey": "D",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u25-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The bag was very full, so I couldn't close it. **TOO**\nThe bag ...... close.",
+            "answer": "was too full to",
+            "acceptedAnswers": [
+              "was too full to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The singer was very popular, so all the tickets sold out. **SO**\nThe singer was ...... all the tickets sold out.",
+            "answer": "so popular that",
+            "acceptedAnswers": [
+              "so popular that"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The street is not wide enough for two buses. **TOO**\nThe street ...... for two buses.",
+            "answer": "is too narrow",
+            "acceptedAnswers": [
+              "is too narrow"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It was a very cold morning, so we wore gloves. **SUCH**\nIt was ...... we wore gloves.",
+            "answer": "such a cold morning that",
+            "acceptedAnswers": [
+              "such a cold morning that"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She doesn't speak loudly enough for everyone to hear. **TOO**\nShe speaks ...... everyone to hear.",
+            "answer": "too quietly for",
+            "acceptedAnswers": [
+              "too quietly for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There was a lot of rain, so the match was cancelled. **SO**\nThere was ...... the match was cancelled.",
+            "answer": "so much rain that",
+            "acceptedAnswers": [
+              "so much rain that"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u25-ex-e",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "E: Error correction",
+        "title": "E: Error correction",
+        "instructions": "Each sentence has one mistake. Write the correct form.",
+        "studentInstruction": "Each sentence has one mistake. Write the correct form.",
+        "legacyKey": "E",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u25-exe-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "It was so a beautiful painting that everyone stopped to look.",
+            "prompt": {
+              "cues": [
+                "It was so a beautiful painting that everyone stopped to look."
+              ]
+            },
+            "answer": "It was such a beautiful painting that everyone stopped to look.",
+            "acceptedAnswers": [
+              "It was such a beautiful painting that everyone stopped to look."
+            ]
+          },
+          {
+            "id": "b1-u25-exe-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "He isn't enough strong to move the table.",
+            "prompt": {
+              "cues": [
+                "He isn't enough strong to move the table."
+              ]
+            },
+            "answer": "He isn't strong enough to move the table.",
+            "acceptedAnswers": [
+              "He isn't strong enough to move the table."
+            ]
+          },
+          {
+            "id": "b1-u25-exe-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "There were such many people in the queue.",
+            "prompt": {
+              "cues": [
+                "There were such many people in the queue."
+              ]
+            },
+            "answer": "There were so many people in the queue.",
+            "acceptedAnswers": [
+              "There were so many people in the queue."
+            ]
+          },
+          {
+            "id": "b1-u25-exe-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "The exam was enough difficult to make me nervous.",
+            "prompt": {
+              "cues": [
+                "The exam was enough difficult to make me nervous."
+              ]
+            },
+            "answer": "The exam was too difficult to make me nervous.",
+            "acceptedAnswers": [
+              "The exam was too difficult to make me nervous."
+            ]
+          },
+          {
+            "id": "b1-u25-exe-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "She played the piano enough well to win the prize.",
+            "prompt": {
+              "cues": [
+                "She played the piano enough well to win the prize."
+              ]
+            },
+            "answer": "She played the piano well enough to win the prize.",
+            "acceptedAnswers": [
+              "She played the piano well enough to win the prize."
+            ]
+          },
+          {
+            "id": "b1-u25-exe-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "We don't have space enough for another desk.",
+            "prompt": {
+              "cues": [
+                "We don't have space enough for another desk."
+              ]
+            },
+            "answer": "We don't have enough space for another desk.",
+            "acceptedAnswers": [
+              "We don't have enough space for another desk."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u25-ex-f",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "F: Multiple choice",
+        "title": "F: Multiple choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "F",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u25-exf-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The box is",
+            "sentenceAfter": "big to fit in the car.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "enough"
+              },
+              {
+                "letter": "B",
+                "text": "too"
+              },
+              {
+                "letter": "C",
+                "text": "so"
+              },
+              {
+                "letter": "D",
+                "text": "such"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exf-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "It was",
+            "sentenceAfter": "a funny joke that everyone laughed.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "so"
+              },
+              {
+                "letter": "B",
+                "text": "enough"
+              },
+              {
+                "letter": "C",
+                "text": "such"
+              },
+              {
+                "letter": "D",
+                "text": "too"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exf-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You didn't practise",
+            "sentenceAfter": "to play in the concert.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "enough"
+              },
+              {
+                "letter": "B",
+                "text": "too"
+              },
+              {
+                "letter": "C",
+                "text": "such"
+              },
+              {
+                "letter": "D",
+                "text": "so"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exf-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The hotel was",
+            "sentenceAfter": "expensive that we booked a hostel.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "such"
+              },
+              {
+                "letter": "B",
+                "text": "too"
+              },
+              {
+                "letter": "C",
+                "text": "enough"
+              },
+              {
+                "letter": "D",
+                "text": "so"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exf-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He spoke",
+            "sentenceAfter": "quietly to hear.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "enough"
+              },
+              {
+                "letter": "B",
+                "text": "too"
+              },
+              {
+                "letter": "C",
+                "text": "so"
+              },
+              {
+                "letter": "D",
+                "text": "such"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exf-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "There was",
+            "sentenceAfter": "much fog that we couldn't see the road.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "so"
+              },
+              {
+                "letter": "B",
+                "text": "such"
+              },
+              {
+                "letter": "C",
+                "text": "too"
+              },
+              {
+                "letter": "D",
+                "text": "enough"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u25-ex-g",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "G: Mixed revision",
+        "title": "G: Mixed revision",
+        "instructions": "Find and correct the mistake in each sentence. Rewrite the full sentence correctly.",
+        "studentInstruction": "Find and correct the mistake in each sentence. Rewrite the full sentence correctly.",
+        "legacyKey": "G",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "textareaAnswer": true,
+        "items": [
+          {
+            "id": "b1-u25-exg-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "The test was such easy that everyone passed.",
+            "prompt": {
+              "cues": [
+                "The test was such easy that everyone passed."
+              ]
+            },
+            "answer": "The test was so easy that everyone passed.",
+            "acceptedAnswers": [
+              "The test was so easy that everyone passed."
+            ]
+          },
+          {
+            "id": "b1-u25-exg-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "It was so a delicious meal that we asked for the recipe.",
+            "prompt": {
+              "cues": [
+                "It was so a delicious meal that we asked for the recipe."
+              ]
+            },
+            "answer": "It was such a delicious meal that we asked for the recipe.",
+            "acceptedAnswers": [
+              "It was such a delicious meal that we asked for the recipe."
+            ]
+          },
+          {
+            "id": "b1-u25-exg-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "I haven't got too money to buy a new bike.",
+            "prompt": {
+              "cues": [
+                "I haven't got too money to buy a new bike."
+              ]
+            },
+            "answer": "I haven't got enough money to buy a new bike.",
+            "acceptedAnswers": [
+              "I haven't got enough money to buy a new bike."
+            ]
+          },
+          {
+            "id": "b1-u25-exg-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "This tea is so hot to drink.",
+            "prompt": {
+              "cues": [
+                "This tea is so hot to drink."
+              ]
+            },
+            "answer": "This tea is too hot to drink.",
+            "acceptedAnswers": [
+              "This tea is too hot to drink."
+            ]
+          },
+          {
+            "id": "b1-u25-exg-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "They aren't enough old to watch that film.",
+            "prompt": {
+              "cues": [
+                "They aren't enough old to watch that film."
+              ]
+            },
+            "answer": "They aren't old enough to watch that film.",
+            "acceptedAnswers": [
+              "They aren't old enough to watch that film."
+            ]
+          },
+          {
+            "id": "b1-u25-exg-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "There was so many homework that I stayed up late.",
+            "prompt": {
+              "cues": [
+                "There was so many homework that I stayed up late."
+              ]
+            },
+            "answer": "There was so much homework that I stayed up late.",
+            "acceptedAnswers": [
+              "There was so much homework that I stayed up late."
+            ]
+          },
+          {
+            "id": "b1-u25-exg-7",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "The instructions were too confusing for us understand them.",
+            "prompt": {
+              "cues": [
+                "The instructions were too confusing for us understand them."
+              ]
+            },
+            "answer": "The instructions were too confusing for us to understand them.",
+            "acceptedAnswers": [
+              "The instructions were too confusing for us to understand them."
+            ]
+          },
+          {
+            "id": "b1-u25-exg-8",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "It was such windy that we couldn't play tennis.",
+            "prompt": {
+              "cues": [
+                "It was such windy that we couldn't play tennis."
+              ]
+            },
+            "answer": "It was so windy that we couldn't play tennis.",
+            "acceptedAnswers": [
+              "It was so windy that we couldn't play tennis."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u25-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "H: Key word transformation",
+        "title": "H: Key word transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning. Use no more than four words.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning. Use no more than four words.",
+        "legacyKey": "H",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u25-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The book was ...... I finished it in one day. **SO**",
+            "answer": "so interesting that",
+            "acceptedAnswers": [
+              "so interesting that"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The table is ...... to move. **TOO**",
+            "answer": "too heavy for me",
+            "acceptedAnswers": [
+              "too heavy for me"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It was ...... everyone took notes. **SUCH**",
+            "answer": "such a useful lesson that",
+            "acceptedAnswers": [
+              "such a useful lesson that"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He isn't ...... for the job. **ENOUGH**",
+            "answer": "experienced enough",
+            "acceptedAnswers": [
+              "experienced enough"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There were ...... the meeting lasted longer. **SO**",
+            "answer": "so many questions that",
+            "acceptedAnswers": [
+              "so many questions that"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u25-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The room was ...... all to sit down. **TOO**",
+            "answer": "too small for us",
+            "acceptedAnswers": [
+              "too small for us"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

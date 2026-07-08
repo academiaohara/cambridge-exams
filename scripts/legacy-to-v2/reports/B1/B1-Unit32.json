@@ -1,0 +1,66 @@
+{
+  "unit": 32,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: Reported yes/no questions",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: Reported wh- questions",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: Reported orders and requests",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "D: Multiple choice",
+      "legacyPattern": "mc-standalone",
+      "formatType": "mc_4_option",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "E: Key word transformation",
+      "legacyPattern": "word-formation",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 5,
+    "legacyItemCount": 30,
+    "v2ItemCount": 30,
+    "estimatedScreens": 30,
+    "formatTypes": [
+      "full_sentence_write",
+      "free_text_gap_fill",
+      "mc_4_option"
+    ]
+  }
+}

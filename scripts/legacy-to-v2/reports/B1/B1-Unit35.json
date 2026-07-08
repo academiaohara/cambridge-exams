@@ -1,0 +1,67 @@
+{
+  "unit": 35,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: Complete with the correct form",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: Choose the correct option",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: Rewrite with wish or if only",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "D: Error correction",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "E: Key word transformation",
+      "legacyPattern": "word-formation",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 5,
+    "legacyItemCount": 32,
+    "v2ItemCount": 32,
+    "estimatedScreens": 32,
+    "formatTypes": [
+      "conjugation_gap_fill",
+      "two_option_choice",
+      "free_text_gap_fill",
+      "full_sentence_write"
+    ]
+  }
+}

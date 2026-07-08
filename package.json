@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "migrate:unit-v2": "node scripts/legacy-to-v2/migrate-unit.js",
+    "migrate:level-v2": "node scripts/legacy-to-v2/migrate-level.js",
     "validate:unit-v2": "node scripts/validate-v2-unit.js"
   },
   "dependencies": {

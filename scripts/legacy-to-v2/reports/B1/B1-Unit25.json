@@ -1,0 +1,97 @@
+{
+  "unit": 25,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: Complete with so or such",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: Complete with too or enough",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: Choose the correct option",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "D: Rewrite with so/such/too/enough",
+      "legacyPattern": "word-formation",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "E: Error correction",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "F",
+      "title": "F: Multiple choice",
+      "legacyPattern": "mc-standalone",
+      "formatType": "mc_4_option",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "G",
+      "title": "G: Mixed revision",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "H",
+      "title": "H: Key word transformation",
+      "legacyPattern": "word-formation",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 8,
+    "legacyItemCount": 56,
+    "v2ItemCount": 56,
+    "estimatedScreens": 56,
+    "formatTypes": [
+      "free_text_gap_fill",
+      "two_option_choice",
+      "full_sentence_write",
+      "mc_4_option"
+    ]
+  }
+}

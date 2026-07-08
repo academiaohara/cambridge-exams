@@ -1,0 +1,77 @@
+{
+  "unit": 37,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: -ing or infinitive",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: After prepositions",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: Meaning changes",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "D: Bare infinitive",
+      "legacyPattern": "mc-standalone",
+      "formatType": "mc_4_option",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "E: Multiple choice",
+      "legacyPattern": "mc-standalone",
+      "formatType": "mc_4_option",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "F",
+      "title": "F: Key word transformation",
+      "legacyPattern": "word-formation",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 6,
+    "legacyItemCount": 36,
+    "v2ItemCount": 36,
+    "estimatedScreens": 36,
+    "formatTypes": [
+      "conjugation_gap_fill",
+      "two_option_choice",
+      "mc_4_option",
+      "free_text_gap_fill"
+    ]
+  }
+}

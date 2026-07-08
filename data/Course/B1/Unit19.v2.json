@@ -1,0 +1,1253 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 7,
+  "unit": 19,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 19: Modals: ability, permission & advice",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 19: Modals: ability, permission & advice"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit19.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 9
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u19-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Introduction to modals",
+        "subtitle": "Introduction to modals",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "To form a question, invert the modal and the subject: **Should** we leave now?",
+              "Modals can also be used in passive structures: The form **must be signed** by a parent."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Ability",
+        "subtitle": "Ability",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "Use **be able to** when you need a tense that *can* does not have: It's great to **be able to** work from home.",
+              "Future: After more practice, you'll **be able to** speak Spanish fluently.",
+              "Present perfect: Have you **been able to** reach her on the phone?"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-3",
+        "title": "Permission and advice",
+        "subtitle": "Permission and advice",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "**May** sounds more formal and polite than **could**, and **could** is more polite than **can**."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u19-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill",
+        "mc_4_option",
+        "full_sentence_write"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 43,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u19-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u19-exa-1",
+            "b1-u19-exa-2",
+            "b1-u19-exa-3",
+            "b1-u19-exa-4",
+            "b1-u19-exa-5",
+            "b1-u19-exa-6",
+            "b1-u19-exa-7",
+            "b1-u19-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u19-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u19-exb-1",
+            "b1-u19-exb-2",
+            "b1-u19-exb-3",
+            "b1-u19-exb-4",
+            "b1-u19-exb-5",
+            "b1-u19-exb-6",
+            "b1-u19-exb-7",
+            "b1-u19-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u19-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u19-exc-1",
+            "b1-u19-exc-2",
+            "b1-u19-exc-3",
+            "b1-u19-exc-4",
+            "b1-u19-exc-5",
+            "b1-u19-exc-6",
+            "b1-u19-exc-7",
+            "b1-u19-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u19-ex-d",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u19-exd-1",
+            "b1-u19-exd-2",
+            "b1-u19-exd-3",
+            "b1-u19-exd-4",
+            "b1-u19-exd-5",
+            "b1-u19-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u19-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u19-exe-1",
+            "b1-u19-exe-2",
+            "b1-u19-exe-3",
+            "b1-u19-exe-4",
+            "b1-u19-exe-5",
+            "b1-u19-exe-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u19-ex-f",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u19-exf-1",
+            "b1-u19-exf-2",
+            "b1-u19-exf-3",
+            "b1-u19-exf-4",
+            "b1-u19-exf-5",
+            "b1-u19-exf-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u19-ex-g",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u19-exg-1",
+            "b1-u19-exg-2",
+            "b1-u19-exg-3",
+            "b1-u19-exg-4",
+            "b1-u19-exg-5",
+            "b1-u19-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u19-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u19-exh-1",
+            "b1-u19-exh-2",
+            "b1-u19-exh-3",
+            "b1-u19-exh-4",
+            "b1-u19-exh-5",
+            "b1-u19-exh-6",
+            "b1-u19-exh-7",
+            "b1-u19-exh-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u19-ex-i",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u19-exi-1",
+            "b1-u19-exi-2",
+            "b1-u19-exi-3",
+            "b1-u19-exi-4",
+            "b1-u19-exi-5",
+            "b1-u19-exi-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 62,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u19-ex-a",
+      "b1-u19-ex-b",
+      "b1-u19-ex-c",
+      "b1-u19-ex-d",
+      "b1-u19-ex-e",
+      "b1-u19-ex-f",
+      "b1-u19-ex-g",
+      "b1-u19-ex-h",
+      "b1-u19-ex-i"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u19-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Complete with can, could or be able to",
+        "title": "A: Complete with can, could or be able to",
+        "instructions": "Write the correct form in each gap.",
+        "studentInstruction": "Write the correct form in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u19-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I enjoy swimming, but I ...... dive very well yet.",
+            "answer": "can't",
+            "acceptedAnswers": [
+              "can't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When my dad was young, he ...... climb trees easily.",
+            "answer": "could",
+            "acceptedAnswers": [
+              "could"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "After a few more lessons, she'll ...... ride a motorbike safely.",
+            "answer": "be able to",
+            "acceptedAnswers": [
+              "be able to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They haven't ...... contact the hotel yet.",
+            "answer": "been able to",
+            "acceptedAnswers": [
+              "been able to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... you speak English when you were ten?",
+            "answer": "Could",
+            "acceptedAnswers": [
+              "Could"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If we save enough money, we'll ...... buy a better computer.",
+            "answer": "be able to",
+            "acceptedAnswers": [
+              "be able to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm sorry, I ...... meet you after school today.",
+            "answer": "can't",
+            "acceptedAnswers": [
+              "can't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He wasn't ...... open the door because he had lost the key.",
+            "answer": "able to",
+            "acceptedAnswers": [
+              "able to"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u19-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "B: Permission (choose the correct modal)",
+        "title": "B: Permission (choose the correct modal)",
+        "instructions": "Circle the correct word or phrase.",
+        "studentInstruction": "Circle the correct word or phrase.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u19-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "I speak to the manager, please?",
+            "options": [
+              "Can",
+              "May"
+            ],
+            "answer": "May",
+            "originalSentence": "**Can / May** I speak to the manager, please?",
+            "completedSentence": "May I speak to the manager, please?"
+          },
+          {
+            "id": "b1-u19-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You",
+            "sentenceAfter": "use my charger if your phone battery is low.",
+            "options": [
+              "can",
+              "could"
+            ],
+            "answer": "can",
+            "originalSentence": "You **can / could** use my charger if your phone battery is low.",
+            "completedSentence": "You can use my charger if your phone battery is low."
+          },
+          {
+            "id": "b1-u19-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "you help me carry this box, please?",
+            "options": [
+              "Could",
+              "Can"
+            ],
+            "answer": "Could",
+            "originalSentence": "**Could / Can** you help me carry this box, please?",
+            "completedSentence": "Could you help me carry this box, please?"
+          },
+          {
+            "id": "b1-u19-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Visitors",
+            "sentenceAfter": "enter the museum after 10 a.m.",
+            "options": [
+              "may",
+              "could"
+            ],
+            "answer": "may",
+            "originalSentence": "Visitors **may / could** enter the museum after 10 a.m.",
+            "completedSentence": "Visitors may enter the museum after 10 a.m."
+          },
+          {
+            "id": "b1-u19-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "I have another copy of the form?",
+            "options": [
+              "May",
+              "Can"
+            ],
+            "answer": "May",
+            "originalSentence": "**May / Can** I have another copy of the form?",
+            "completedSentence": "May I have another copy of the form?"
+          },
+          {
+            "id": "b1-u19-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You",
+            "sentenceAfter": "swim here. It's dangerous.",
+            "options": [
+              "couldn't",
+              "can't"
+            ],
+            "answer": "can't",
+            "originalSentence": "You **couldn't / can't** swim here. It's dangerous.",
+            "completedSentence": "You can't swim here. It's dangerous."
+          },
+          {
+            "id": "b1-u19-exb-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Excuse me,",
+            "sentenceAfter": "you show me the way to the library?",
+            "options": [
+              "could",
+              "may"
+            ],
+            "answer": "could",
+            "originalSentence": "Excuse me, **could / may** you show me the way to the library?",
+            "completedSentence": "Excuse me, could you show me the way to the library?"
+          },
+          {
+            "id": "b1-u19-exb-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "No, you",
+            "sentenceAfter": "take photographs inside the gallery.",
+            "options": [
+              "may not",
+              "could not"
+            ],
+            "answer": "may not",
+            "originalSentence": "No, you **may not / could not** take photographs inside the gallery.",
+            "completedSentence": "No, you may not take photographs inside the gallery."
+          }
+        ]
+      },
+      {
+        "id": "b1-u19-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Advice (should / ought to)",
+        "title": "C: Advice (should / ought to)",
+        "instructions": "Complete each sentence with should, shouldn't, ought to or ought not to.",
+        "studentInstruction": "Complete each sentence with should, shouldn't, ought to or ought not to.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u19-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's raining. You ...... take an umbrella.",
+            "answer": "should",
+            "acceptedAnswers": [
+              "should"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We ...... leave our bags unattended at the station.",
+            "answer": "shouldn't",
+            "acceptedAnswers": [
+              "shouldn't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If she wants to improve, she ...... practise every day.",
+            "answer": "ought to",
+            "acceptedAnswers": [
+              "ought to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You ...... spend all afternoon looking at a screen.",
+            "answer": "ought not to",
+            "acceptedAnswers": [
+              "ought not to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "What ...... we do if the train is cancelled?",
+            "answer": "should",
+            "acceptedAnswers": [
+              "should"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You ...... ask your parents before you go out.",
+            "answer": "should",
+            "acceptedAnswers": [
+              "should"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Drivers ...... use their phones while driving.",
+            "answer": "shouldn't",
+            "acceptedAnswers": [
+              "shouldn't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We ...... check the address before we leave.",
+            "answer": "ought to",
+            "acceptedAnswers": [
+              "ought to"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u19-ex-d",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "D: Rewrite using a modal",
+        "title": "D: Rewrite using a modal",
+        "instructions": "Rewrite each sentence using the modal in brackets.",
+        "studentInstruction": "Rewrite each sentence using the modal in brackets.",
+        "legacyKey": "D",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u19-exd-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Is it possible for you to send me the file today? (can)\n...... you send me the file today?",
+            "answer": "Can",
+            "acceptedAnswers": [
+              "Can"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exd-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "It is not a good idea to eat too quickly. (shouldn't)\nYou ...... eat too quickly.",
+            "answer": "shouldn't",
+            "acceptedAnswers": [
+              "shouldn't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exd-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I had the ability to play chess when I was six. (could)\nI ...... play chess when I was six.",
+            "answer": "could",
+            "acceptedAnswers": [
+              "could"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exd-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Is it all right if I open the door? (may)\n...... I open the door?",
+            "answer": "May",
+            "acceptedAnswers": [
+              "May"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exd-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "It is not a good idea to leave your bike unlocked. (shouldn't)\nYou ...... leave your bike unlocked.",
+            "answer": "shouldn't",
+            "acceptedAnswers": [
+              "shouldn't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exd-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "They have managed to repair the machine. (been able to)\nThey have ...... repair the machine.",
+            "answer": "been able to",
+            "acceptedAnswers": [
+              "been able to"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u19-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Key word transformation",
+        "title": "E: Key word transformation",
+        "instructions": "Complete the second sentence using a modal verb so that it means the same as the first.",
+        "studentInstruction": "Complete the second sentence using a modal verb so that it means the same as the first.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u19-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's a bad idea to walk home alone late at night.\nYou ...... home alone late at night.",
+            "answer": "shouldn't walk",
+            "acceptedAnswers": [
+              "shouldn't walk"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Is it OK if I borrow your bike?\n...... your bike?",
+            "answer": "May I borrow",
+            "acceptedAnswers": [
+              "May I borrow"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When I was nine, I had the ability to cook simple meals.\nWhen I was nine, I ...... .",
+            "answer": "could cook",
+            "acceptedAnswers": [
+              "could cook"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Soon they will manage to finish the bridge.\nSoon they will ...... finish the bridge.",
+            "answer": "be able to",
+            "acceptedAnswers": [
+              "be able to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Do you think I should apologise to her?\nDo you think I ...... to her?",
+            "answer": "ought to apologise",
+            "acceptedAnswers": [
+              "ought to apologise"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please don't enter this room without permission.\nYou ...... this room without permission.",
+            "answer": "mustn't enter",
+            "acceptedAnswers": [
+              "mustn't enter"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u19-ex-f",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "F: Multiple choice",
+        "title": "F: Multiple choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "F",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u19-exf-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'I feel really nervous about the interview.' 'You",
+            "sentenceAfter": "so much. Just be yourself.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "should worry"
+              },
+              {
+                "letter": "B",
+                "text": "shouldn't worry"
+              },
+              {
+                "letter": "C",
+                "text": "may worry"
+              },
+              {
+                "letter": "D",
+                "text": "can't worry"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exf-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "When I was younger, I",
+            "sentenceAfter": "draw very realistic animals.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "can"
+              },
+              {
+                "letter": "B",
+                "text": "am able to"
+              },
+              {
+                "letter": "C",
+                "text": "could"
+              },
+              {
+                "letter": "D",
+                "text": "should"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exf-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'",
+            "sentenceAfter": "I use your ruler?' 'Yes, of course.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "May"
+              },
+              {
+                "letter": "B",
+                "text": "Should"
+              },
+              {
+                "letter": "C",
+                "text": "Ought"
+              },
+              {
+                "letter": "D",
+                "text": "Must"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exf-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You",
+            "sentenceAfter": "take a coat because it's cold outside.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "should"
+              },
+              {
+                "letter": "B",
+                "text": "can"
+              },
+              {
+                "letter": "C",
+                "text": "could"
+              },
+              {
+                "letter": "D",
+                "text": "may not"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exf-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "By the end of the course, you",
+            "sentenceAfter": "design your own website.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "could"
+              },
+              {
+                "letter": "B",
+                "text": "will be able to"
+              },
+              {
+                "letter": "C",
+                "text": "may"
+              },
+              {
+                "letter": "D",
+                "text": "should"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exf-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "People",
+            "sentenceAfter": "talk loudly in the library.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "should"
+              },
+              {
+                "letter": "B",
+                "text": "can"
+              },
+              {
+                "letter": "C",
+                "text": "shouldn't"
+              },
+              {
+                "letter": "D",
+                "text": "may"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u19-ex-g",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "G: Error correction",
+        "title": "G: Error correction",
+        "instructions": "Each sentence has one mistake with a modal. Write the correct sentence.",
+        "studentInstruction": "Each sentence has one mistake with a modal. Write the correct sentence.",
+        "legacyKey": "G",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u19-exg-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "He cans ride a horse.",
+            "prompt": {
+              "cues": [
+                "He cans ride a horse."
+              ]
+            },
+            "answer": "He can ride a horse.",
+            "acceptedAnswers": [
+              "He can ride a horse."
+            ]
+          },
+          {
+            "id": "b1-u19-exg-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "You should to call your grandmother.",
+            "prompt": {
+              "cues": [
+                "You should to call your grandmother."
+              ]
+            },
+            "answer": "You should call your grandmother.",
+            "acceptedAnswers": [
+              "You should call your grandmother."
+            ]
+          },
+          {
+            "id": "b1-u19-exg-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "May I to ask a question?",
+            "prompt": {
+              "cues": [
+                "May I to ask a question?"
+              ]
+            },
+            "answer": "May I ask a question?",
+            "acceptedAnswers": [
+              "May I ask a question?"
+            ]
+          },
+          {
+            "id": "b1-u19-exg-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "We didn't could find the address.",
+            "prompt": {
+              "cues": [
+                "We didn't could find the address."
+              ]
+            },
+            "answer": "We couldn't find the address.",
+            "acceptedAnswers": [
+              "We couldn't find the address."
+            ]
+          },
+          {
+            "id": "b1-u19-exg-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "She will can join us next week.",
+            "prompt": {
+              "cues": [
+                "She will can join us next week."
+              ]
+            },
+            "answer": "She will be able to join us next week.",
+            "acceptedAnswers": [
+              "She will be able to join us next week."
+            ]
+          },
+          {
+            "id": "b1-u19-exg-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "They ought not arrive so late.",
+            "prompt": {
+              "cues": [
+                "They ought not arrive so late."
+              ]
+            },
+            "answer": "They ought not to arrive so late.",
+            "acceptedAnswers": [
+              "They ought not to arrive so late."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u19-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "H: Mixed practice",
+        "title": "H: Mixed practice",
+        "instructions": "Complete each gap with one suitable modal expression.",
+        "studentInstruction": "Complete each gap with one suitable modal expression.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u19-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Excuse me, ...... I sit next to you?",
+            "answer": "may",
+            "acceptedAnswers": [
+              "may"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You ...... drink more water when it's hot.",
+            "answer": "should",
+            "acceptedAnswers": [
+              "should"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I ...... tie my shoes until I was five.",
+            "answer": "couldn't",
+            "acceptedAnswers": [
+              "couldn't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "With more practice, you'll ...... play this song perfectly.",
+            "answer": "be able to",
+            "acceptedAnswers": [
+              "be able to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... you possibly speak more slowly, please?",
+            "answer": "Could",
+            "acceptedAnswers": [
+              "Could"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We ...... book the tickets before they sell out.",
+            "answer": "ought to",
+            "acceptedAnswers": [
+              "ought to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exh-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Visitors ...... touch the paintings in the museum.",
+            "answer": "mustn't",
+            "acceptedAnswers": [
+              "mustn't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exh-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My cousin ...... speak Italian quite well now.",
+            "answer": "can",
+            "acceptedAnswers": [
+              "can"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u19-ex-i",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "I: Key word transformation",
+        "title": "I: Key word transformation",
+        "instructions": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "studentInstruction": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "legacyKey": "I",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u19-exi-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I knew how to swim at the age of six.\nI ...... at the age of six.",
+            "answer": "could swim",
+            "acceptedAnswers": [
+              "could swim"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exi-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's against the rules to take photos here.\nYou ...... photos here.",
+            "answer": "aren't allowed to take",
+            "acceptedAnswers": [
+              "aren't allowed to take"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exi-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The dentist told me to eat fewer sweets.\nThe dentist said I ...... fewer sweets.",
+            "answer": "should eat",
+            "acceptedAnswers": [
+              "should eat"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exi-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She managed to answer all the questions correctly.\nShe ...... all the questions correctly.",
+            "answer": "was able to answer",
+            "acceptedAnswers": [
+              "was able to answer"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exi-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Is it OK to use dictionaries in the test?\n...... dictionaries in the test?",
+            "answer": "Are we allowed to use",
+            "acceptedAnswers": [
+              "Are we allowed to use"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u19-exi-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My coach says I should train more often.\nMy coach says I ...... more often.",
+            "answer": "ought to train",
+            "acceptedAnswers": [
+              "ought to train"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

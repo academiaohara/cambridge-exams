@@ -1,0 +1,1216 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 10,
+  "unit": 30,
+  "type": "vocabulary",
+  "unitTitle": "[V2] Unit 30: Body and lifestyle",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 30: Body and lifestyle"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit30.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 9
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u30-theory",
+    "title": "Topic vocabulary",
+    "shortTitle": "Vocabulary",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b1-u30-theory-card-1",
+        "title": "Unit 30: Body and lifestyle",
+        "subtitle": "",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Unit focus",
+            "items": [
+              "body and lifestyle"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u30-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 46,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u30-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u30-exa-1",
+            "b1-u30-exa-2",
+            "b1-u30-exa-3",
+            "b1-u30-exa-4",
+            "b1-u30-exa-5",
+            "b1-u30-exa-6",
+            "b1-u30-exa-7",
+            "b1-u30-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u30-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u30-exb-1",
+            "b1-u30-exb-2",
+            "b1-u30-exb-3",
+            "b1-u30-exb-4",
+            "b1-u30-exb-5",
+            "b1-u30-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u30-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u30-exc-1",
+            "b1-u30-exc-2",
+            "b1-u30-exc-3",
+            "b1-u30-exc-4",
+            "b1-u30-exc-5",
+            "b1-u30-exc-6",
+            "b1-u30-exc-7",
+            "b1-u30-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u30-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u30-exd-1",
+            "b1-u30-exd-2",
+            "b1-u30-exd-3",
+            "b1-u30-exd-4",
+            "b1-u30-exd-5",
+            "b1-u30-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u30-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u30-exe-1",
+            "b1-u30-exe-2",
+            "b1-u30-exe-3",
+            "b1-u30-exe-4",
+            "b1-u30-exe-5",
+            "b1-u30-exe-6",
+            "b1-u30-exe-7",
+            "b1-u30-exe-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u30-ex-f",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u30-exf-1",
+            "b1-u30-exf-2",
+            "b1-u30-exf-3",
+            "b1-u30-exf-4",
+            "b1-u30-exf-5",
+            "b1-u30-exf-6",
+            "b1-u30-exf-7",
+            "b1-u30-exf-8",
+            "b1-u30-exf-9",
+            "b1-u30-exf-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u30-ex-g",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u30-exg-1",
+            "b1-u30-exg-2",
+            "b1-u30-exg-3",
+            "b1-u30-exg-4",
+            "b1-u30-exg-5",
+            "b1-u30-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u30-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u30-exh-1",
+            "b1-u30-exh-2",
+            "b1-u30-exh-3",
+            "b1-u30-exh-4",
+            "b1-u30-exh-5",
+            "b1-u30-exh-6",
+            "b1-u30-exh-7",
+            "b1-u30-exh-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u30-ex-j",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u30-exj-1",
+            "b1-u30-exj-2",
+            "b1-u30-exj-3",
+            "b1-u30-exj-4",
+            "b1-u30-exj-5",
+            "b1-u30-exj-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 66,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u30-ex-a",
+      "b1-u30-ex-b",
+      "b1-u30-ex-c",
+      "b1-u30-ex-d",
+      "b1-u30-ex-e",
+      "b1-u30-ex-f",
+      "b1-u30-ex-g",
+      "b1-u30-ex-h",
+      "b1-u30-ex-j"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u30-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Topic vocabulary (gap fill)",
+        "title": "Topic vocabulary (gap fill)",
+        "instructions": "Complete the sentences with words from the box.",
+        "studentInstruction": "Complete the sentences with words from the box.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "balance",
+          "benefits",
+          "chew",
+          "contain",
+          "cough",
+          "flu",
+          "ingredient",
+          "meal",
+          "recover",
+          "salty",
+          "stir",
+          "vitamin"
+        ],
+        "wordBank": [
+          "balance",
+          "benefits",
+          "chew",
+          "contain",
+          "cough",
+          "flu",
+          "ingredient",
+          "meal",
+          "recover",
+          "salty",
+          "stir",
+          "vitamin"
+        ],
+        "items": [
+          {
+            "id": "b1-u30-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This curry is too ...... for me, so I need some water.",
+            "answer": "salty",
+            "acceptedAnswers": [
+              "salty"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please ...... the soup so it doesn't stick to the pan.",
+            "answer": "stir",
+            "acceptedAnswers": [
+              "stir"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Nuts ...... healthy fats and protein.",
+            "answer": "contain",
+            "acceptedAnswers": [
+              "contain"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It took him two weeks to ...... after the operation.",
+            "answer": "recover",
+            "acceptedAnswers": [
+              "recover"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should ...... each mouthful properly before swallowing.",
+            "answer": "chew",
+            "acceptedAnswers": [
+              "chew"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She stayed in bed because she had the ...... .",
+            "answer": "flu",
+            "acceptedAnswers": [
+              "flu"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Regular exercise has many ...... for your body and mind.",
+            "answer": "benefits",
+            "acceptedAnswers": [
+              "benefits"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Breakfast is an important ...... if you have a busy day.",
+            "answer": "meal",
+            "acceptedAnswers": [
+              "meal"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u30-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Circle the correct word",
+        "title": "Circle the correct word",
+        "instructions": "Choose the correct option in each sentence.",
+        "studentInstruction": "Choose the correct option in each sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u30-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This treatment may ...... the infection quickly.",
+            "sentenceAfter": "",
+            "options": [
+              "cure",
+              "ignore"
+            ],
+            "answer": "cure",
+            "originalSentence": "This treatment may ...... the infection quickly. **cure / ignore**",
+            "completedSentence": "This treatment may ...... the infection quickly. cure"
+          },
+          {
+            "id": "b1-u30-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Lack of sleep can ...... your concentration.",
+            "sentenceAfter": "",
+            "options": [
+              "affect",
+              "slice"
+            ],
+            "answer": "affect",
+            "originalSentence": "Lack of sleep can ...... your concentration. **affect / slice**",
+            "completedSentence": "Lack of sleep can ...... your concentration. affect"
+          },
+          {
+            "id": "b1-u30-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Can you ...... the tomatoes for the salad?",
+            "sentenceAfter": "",
+            "options": [
+              "chop",
+              "breathe"
+            ],
+            "answer": "chop",
+            "originalSentence": "Can you ...... the tomatoes for the salad? **chop / breathe**",
+            "completedSentence": "Can you ...... the tomatoes for the salad? chop"
+          },
+          {
+            "id": "b1-u30-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She had an ...... on her knee after the accident.",
+            "sentenceAfter": "",
+            "options": [
+              "operation",
+              "ingredient"
+            ],
+            "answer": "operation",
+            "originalSentence": "She had an ...... on her knee after the accident. **operation / ingredient**",
+            "completedSentence": "She had an ...... on her knee after the accident. operation"
+          },
+          {
+            "id": "b1-u30-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Try to ...... deeply when you feel stressed.",
+            "sentenceAfter": "",
+            "options": [
+              "breathe",
+              "limit"
+            ],
+            "answer": "breathe",
+            "originalSentence": "Try to ...... deeply when you feel stressed. **breathe / limit**",
+            "completedSentence": "Try to ...... deeply when you feel stressed. breathe"
+          },
+          {
+            "id": "b1-u30-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This yoghurt tastes ......, so I don't think it's fresh.",
+            "sentenceAfter": "",
+            "options": [
+              "spicy",
+              "sour"
+            ],
+            "answer": "sour",
+            "originalSentence": "This yoghurt tastes ......, so I don't think it's fresh. **spicy / sour**",
+            "completedSentence": "This yoghurt tastes ......, so I don't think it's fresh. sour"
+          }
+        ]
+      },
+      {
+        "id": "b1-u30-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Phrasal verbs (complete the gaps)",
+        "title": "Phrasal verbs (complete the gaps)",
+        "instructions": "Write the correct phrasal verb in each gap.",
+        "studentInstruction": "Write the correct phrasal verb in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "cut down on",
+          "fall down",
+          "get over",
+          "go off",
+          "lie down",
+          "put on",
+          "sit down",
+          "stand up"
+        ],
+        "wordBank": [
+          "cut down on",
+          "fall down",
+          "get over",
+          "go off",
+          "lie down",
+          "put on",
+          "sit down",
+          "stand up"
+        ],
+        "items": [
+          {
+            "id": "b1-u30-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My doctor told me to ...... coffee and drink more water.",
+            "answer": "cut down on",
+            "acceptedAnswers": [
+              "cut down on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Be careful on the wet floor or you might ...... .",
+            "answer": "fall down",
+            "acceptedAnswers": [
+              "fall down"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She needed several days to ...... the flu.",
+            "answer": "get over",
+            "acceptedAnswers": [
+              "get over"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The milk has ......, so don't use it.",
+            "answer": "gone off",
+            "acceptedAnswers": [
+              "gone off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should ...... if your head hurts.",
+            "answer": "lie down",
+            "acceptedAnswers": [
+              "lie down"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I ...... weight during the holidays because I ate too much.",
+            "answer": "put on",
+            "acceptedAnswers": [
+              "put on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please ...... and wait for the doctor.",
+            "answer": "sit down",
+            "acceptedAnswers": [
+              "sit down"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Try to ...... slowly if you feel dizzy.",
+            "answer": "stand up",
+            "acceptedAnswers": [
+              "stand up"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u30-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Prepositional phrases",
+        "title": "Prepositional phrases",
+        "instructions": "Complete each sentence with a phrase from the list.",
+        "studentInstruction": "Complete each sentence with a phrase from the list.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "at night",
+          "at risk",
+          "in addition to",
+          "in comparison with",
+          "in shape",
+          "on a diet"
+        ],
+        "wordBank": [
+          "at night",
+          "at risk",
+          "in addition to",
+          "in comparison with",
+          "in shape",
+          "on a diet"
+        ],
+        "items": [
+          {
+            "id": "b1-u30-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I often cough more ...... when the air is cold.",
+            "answer": "at night",
+            "acceptedAnswers": [
+              "at night"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "People who smoke are more ...... of serious health problems.",
+            "answer": "at risk",
+            "acceptedAnswers": [
+              "at risk"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... swimming, he cycles to work every day.",
+            "answer": "In addition to",
+            "acceptedAnswers": [
+              "In addition to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This meal is much healthier ...... fast food.",
+            "answer": "in comparison with",
+            "acceptedAnswers": [
+              "in comparison with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She runs three times a week to stay ...... .",
+            "answer": "in shape",
+            "acceptedAnswers": [
+              "in shape"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He's ......, so he is avoiding cakes and sweets.",
+            "answer": "on a diet",
+            "acceptedAnswers": [
+              "on a diet"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u30-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Word patterns",
+        "title": "Word patterns",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u30-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My brother is allergic ...... seafood.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The child came home covered ...... mud after football practice.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Scientists are fighting ...... dangerous infections.",
+            "answer": "against",
+            "acceptedAnswers": [
+              "against"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The kitchen smells ...... fresh bread.",
+            "answer": "of",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He complained ...... the pain in his back.",
+            "answer": "about",
+            "acceptedAnswers": [
+              "about"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Doctors are still searching for a cure ...... some illnesses.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Do you know a good recipe ...... vegetable curry?",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She recovered ...... the operation very quickly.",
+            "answer": "from",
+            "acceptedAnswers": [
+              "from"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u30-ex-f",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Word formation",
+        "title": "Word formation",
+        "instructions": "Complete each sentence with the correct form of the word in capitals.",
+        "studentInstruction": "Complete each sentence with the correct form of the word in capitals.",
+        "legacyKey": "F",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u30-exf-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The ...... makes fresh bread every morning. (BAKE)",
+            "answer": "baker",
+            "acceptedAnswers": [
+              "baker"
+            ],
+            "explanation": "",
+            "verbPrompt": "BAKE"
+          },
+          {
+            "id": "b1-u30-exf-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "His arm was ...... after the accident. (BEND)",
+            "answer": "bent",
+            "acceptedAnswers": [
+              "bent"
+            ],
+            "explanation": "",
+            "verbPrompt": "BEND"
+          },
+          {
+            "id": "b1-u30-exf-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "This ...... uses less electricity than our old one. (COOK)",
+            "answer": "cooker",
+            "acceptedAnswers": [
+              "cooker"
+            ],
+            "explanation": "",
+            "verbPrompt": "COOK"
+          },
+          {
+            "id": "b1-u30-exf-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Her ...... was to eat more healthily this year. (INTEND)",
+            "answer": "intention",
+            "acceptedAnswers": [
+              "intention"
+            ],
+            "explanation": "",
+            "verbPrompt": "INTEND"
+          },
+          {
+            "id": "b1-u30-exf-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "He goes ...... in the park every weekend. (JOG)",
+            "answer": "jogging",
+            "acceptedAnswers": [
+              "jogging"
+            ],
+            "explanation": "",
+            "verbPrompt": "JOG"
+          },
+          {
+            "id": "b1-u30-exf-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "She needs ...... advice before changing her treatment. (MEDICINE)",
+            "answer": "medical",
+            "acceptedAnswers": [
+              "medical"
+            ],
+            "explanation": "",
+            "verbPrompt": "MEDICINE"
+          },
+          {
+            "id": "b1-u30-exf-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My tooth is very ...... today. (PAIN)",
+            "answer": "painful",
+            "acceptedAnswers": [
+              "painful"
+            ],
+            "explanation": "",
+            "verbPrompt": "PAIN"
+          },
+          {
+            "id": "b1-u30-exf-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "There has been a ...... in the amount of salt in the recipe. (REDUCE)",
+            "answer": "reduction",
+            "acceptedAnswers": [
+              "reduction"
+            ],
+            "explanation": "",
+            "verbPrompt": "REDUCE"
+          },
+          {
+            "id": "b1-u30-exf-9",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "It isn't ...... to exercise hard when you're ill. (SENSE)",
+            "answer": "sensible",
+            "acceptedAnswers": [
+              "sensible"
+            ],
+            "explanation": "",
+            "verbPrompt": "SENSE"
+          },
+          {
+            "id": "b1-u30-exf-10",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "He checks his ...... once a week. (WEIGH)",
+            "answer": "weight",
+            "acceptedAnswers": [
+              "weight"
+            ],
+            "explanation": "",
+            "verbPrompt": "WEIGH"
+          }
+        ]
+      },
+      {
+        "id": "b1-u30-ex-g",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "G: Gap fill",
+        "title": "G: Gap fill",
+        "instructions": "Complete each sentence with a word or phrase from the box.",
+        "studentInstruction": "Complete each sentence with a word or phrase from the box.",
+        "legacyKey": "G",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "chop",
+          "cut down on",
+          "gone off",
+          "in shape",
+          "pill",
+          "treatment"
+        ],
+        "wordBank": [
+          "chop",
+          "cut down on",
+          "gone off",
+          "in shape",
+          "pill",
+          "treatment"
+        ],
+        "items": [
+          {
+            "id": "b1-u30-exg-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The cheese smells strange because it has ...... .",
+            "answer": "gone off",
+            "acceptedAnswers": [
+              "gone off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exg-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The doctor gave her a ...... to take after meals.",
+            "answer": "pill",
+            "acceptedAnswers": [
+              "pill"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exg-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should ...... fizzy drinks if you want healthier teeth.",
+            "answer": "cut down on",
+            "acceptedAnswers": [
+              "cut down on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exg-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The hospital offered a new ...... for the injury.",
+            "answer": "treatment",
+            "acceptedAnswers": [
+              "treatment"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exg-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "First, ...... the onions and add them to the pan.",
+            "answer": "chop",
+            "acceptedAnswers": [
+              "chop"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exg-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Cycling helps me stay ...... .",
+            "answer": "in shape",
+            "acceptedAnswers": [
+              "in shape"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u30-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Mixed revision",
+        "title": "Mixed revision",
+        "instructions": "Complete each sentence with one suitable word.",
+        "studentInstruction": "Complete each sentence with one suitable word.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u30-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't ...... a serious cough; ask a doctor for advice.",
+            "answer": "ignore",
+            "acceptedAnswers": [
+              "ignore"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Would you like another ...... of cake?",
+            "answer": "slice",
+            "acceptedAnswers": [
+              "slice"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This soup is too ......, so I can't eat it.",
+            "answer": "salty",
+            "acceptedAnswers": [
+              "salty"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If you feel weak, ...... down for a while.",
+            "answer": "lie",
+            "acceptedAnswers": [
+              "lie"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He started to ...... after breathing in the smoke.",
+            "answer": "cough",
+            "acceptedAnswers": [
+              "cough"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Too much stress can ...... your health.",
+            "answer": "affect",
+            "acceptedAnswers": [
+              "affect"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exh-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "In ...... to running, she does yoga.",
+            "answer": "addition",
+            "acceptedAnswers": [
+              "addition"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exh-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Oranges contain a lot of ...... C.",
+            "answer": "vitamin",
+            "acceptedAnswers": [
+              "vitamin"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u30-ex-j",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Key word transformation",
+        "title": "Key word transformation",
+        "instructions": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "studentInstruction": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "legacyKey": "J",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "set up",
+          "call off",
+          "carry out",
+          "turn out",
+          "manage",
+          "put off"
+        ],
+        "wordBank": [
+          "set up",
+          "call off",
+          "carry out",
+          "turn out",
+          "manage",
+          "put off"
+        ],
+        "items": [
+          {
+            "id": "b1-u30-exj-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They started a new fitness club.\nThey decided to ...... a new fitness club.",
+            "answer": "set up",
+            "acceptedAnswers": [
+              "set up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exj-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The doctor cancelled the appointment.\nThe doctor ...... the appointment.",
+            "answer": "called off",
+            "acceptedAnswers": [
+              "called off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exj-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She agreed to do the test.\nShe agreed to ...... the test.",
+            "answer": "carry out",
+            "acceptedAnswers": [
+              "carry out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exj-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The meal was better than we expected.\nThe meal ...... better than expected.",
+            "answer": "turned out",
+            "acceptedAnswers": [
+              "turned out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exj-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He looks after his diet carefully.\nHe ...... his diet carefully.",
+            "answer": "manages",
+            "acceptedAnswers": [
+              "manages"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u30-exj-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They delayed the operation until Monday.\nThey ...... the operation until Monday.",
+            "answer": "put off",
+            "acceptedAnswers": [
+              "put off"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

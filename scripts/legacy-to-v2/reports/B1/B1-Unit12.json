@@ -1,0 +1,98 @@
+{
+  "unit": 12,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "Topic vocabulary (gap fill)",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "Circle the correct word",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "Phrasal verbs (complete the gaps)",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "Prepositional phrases (matching)",
+      "legacyPattern": "matching",
+      "formatType": "column_matching",
+      "screenMode": "all_pairs_single_screen",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "Word patterns (adjectives, verbs and nouns)",
+      "legacyPattern": "matching",
+      "formatType": "column_matching",
+      "screenMode": "all_pairs_single_screen",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "F",
+      "title": "Word formation",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "G",
+      "title": "Multiple choice",
+      "legacyPattern": "mc-standalone",
+      "formatType": "mc_4_option",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "H",
+      "title": "Mixed revision",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 8,
+    "legacyItemCount": 56,
+    "v2ItemCount": 56,
+    "estimatedScreens": 44,
+    "formatTypes": [
+      "free_text_gap_fill",
+      "two_option_choice",
+      "column_matching",
+      "conjugation_gap_fill",
+      "mc_4_option"
+    ]
+  }
+}

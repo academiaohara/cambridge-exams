@@ -1,0 +1,77 @@
+{
+  "unit": 28,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: Zero conditional",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: First conditional",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: Second conditional",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "D: Choose the correct conditional",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "E: Correct the errors",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "F",
+      "title": "F: Key word transformation",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 6,
+    "legacyItemCount": 36,
+    "v2ItemCount": 36,
+    "estimatedScreens": 36,
+    "formatTypes": [
+      "conjugation_gap_fill",
+      "two_option_choice",
+      "full_sentence_write",
+      "free_text_gap_fill"
+    ]
+  }
+}

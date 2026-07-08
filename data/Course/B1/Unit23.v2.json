@@ -1,0 +1,1450 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 8,
+  "unit": 23,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 23: Questions & question tags",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 23: Questions & question tags"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit23.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 8
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u23-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Questions",
+        "subtitle": "Questions",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Compare",
+            "headers": [
+              "Form",
+              ""
+            ],
+            "rows": [
+              [
+                "With *be* as a main verb",
+                "**Am**/**Was** I on time?\n**Are**/**Were** you/we/they ready to leave?\n**Is**/**Was** he/she/it the right answer?"
+              ],
+              [
+                "With *be* as an auxiliary verb",
+                "**Am**/**Was** I **bothering** you?\n**Are**/**Were** you/we/they **coming** to the event?\n**Is**/**Was** he/she/it **staying** for dinner?"
+              ],
+              [
+                "With *have* as an auxiliary verb",
+                "**Have**/**Had** I/you/we/they packed everything?\n**Has**/**Had** he/she/it received the message?"
+              ],
+              [
+                "With *have* as a main verb and with all other verbs",
+                "**Do**/**Did** I/you/we/they have enough information?\n**Does**/**Did** he/she/it know the answer?"
+              ],
+              [
+                "With modals",
+                "**Should** I turn right here?\n**Could** you lend me your notes?\n**Will** she be there on time?\n**Might** they be lost?"
+              ],
+              [
+                "With *who, whose, whom, what, which, where, when, why* and *how*",
+                "**Who** is running the project?\n**Whose** bag is this?\nTo **whom** should I give the form?\n**What** is the plan for tomorrow?\n**Which** would you prefer?\n**Where** did they spend their holiday?\n**When** is Clara starting her new job?\n**Why** did they cancel the match?\n**How** do you say 'ticket' in Italian?"
+              ]
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              {
+                "note": "With the question words *who* and *what*, whether you need *do* or not depends on whether the question word is the **subject** or the **object** of the sentence."
+              },
+              {
+                "correct": "Subject: *Who **called** you last night?* (= Someone called you. Who was it?)"
+              },
+              {
+                "correct": "Object: *Who **did** you **call** last night?* (= You called someone. Who did you call?)"
+              },
+              {
+                "note": "After *do* or *does*, always use the bare infinitive — not the past form or a conjugated form."
+              },
+              {
+                "correct": "*Did you **go** to the concert?*"
+              },
+              {
+                "incorrect": "*Did you **went** to the concert?*"
+              },
+              {
+                "correct": "*Does he **want** a coffee?*"
+              },
+              {
+                "incorrect": "*Does he **wants** a coffee?*"
+              },
+              {
+                "note": "The verb *mean* follows the same question pattern as other ordinary verbs."
+              },
+              {
+                "correct": "*What **does** 'procrastinate' **mean**?*"
+              },
+              {
+                "incorrect": "*What **means** 'procrastinate'?*"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Question tags",
+        "subtitle": "Question tags",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Compare",
+            "headers": [
+              "Form",
+              ""
+            ],
+            "rows": [
+              [
+                "With *be* as a main verb",
+                "You **are** from Brazil, **aren't** you?\nShe **is** a nurse, **isn't** she?"
+              ],
+              [
+                "With auxiliary verbs and modals",
+                "You **haven't** seen my phone, **have** you?\nWe **are** meeting tomorrow morning, **aren't** we?\nPeople **should** recycle more, **shouldn't** they?\nThere **will** be enough seats, **won't** there?"
+              ],
+              [
+                "With *have* as a main verb",
+                "Tom **has** a great sense of humour, **hasn't**/**doesn't** he?"
+              ],
+              [
+                "With other verbs",
+                "You like jazz, **don't** you?\nEmma works in the city centre now, **doesn't** she?\nYour friends really enjoyed the trip, **didn't** they?"
+              ],
+              [
+                "With *Let's*",
+                "Let's get some fresh air, **shall** we?"
+              ],
+              [
+                "With imperatives",
+                "Pass me that pen, **will**/**would**/**could** you?\nDon't forget to lock up, **will** you?"
+              ]
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "To invite someone to agree with us (falling intonation): *The weather is lovely today, **isn't** it?*",
+              "To check whether something is true (rising intonation): *You've been here before, **haven't** you?*"
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              {
+                "note": "After *I am*, the question tag is *aren't I?* After *I am not*, the question tag is *am I?*"
+              },
+              {
+                "correct": "I'm the last one to arrive, **aren't** I?"
+              },
+              {
+                "correct": "I'm not very punctual, **am** I?"
+              },
+              {
+                "note": "With *everyone*, *no one* and *someone*, we use a plural verb and *they* in the question tag."
+              },
+              {
+                "correct": "Everyone enjoyed the party, **didn't** they?"
+              },
+              {
+                "correct": "No one told you, **did** they?"
+              },
+              {
+                "correct": "Someone borrowed my pen, **didn't** they?"
+              },
+              {
+                "note": "A positive main clause normally takes a negative question tag, and vice versa. When the main clause contains a negative word like *no, never, hardly, nobody*, we use a positive question tag."
+              },
+              {
+                "correct": "She **never** replies to messages, **does** she?"
+              },
+              {
+                "correct": "There's **no** milk left, **is** there?"
+              },
+              {
+                "note": "When the subject is *there*, we also use *there* in the question tag."
+              },
+              {
+                "correct": "There's nothing to worry about, **is there**?"
+              }
+            ]
+          },
+          {
+            "type": "explanation",
+            "title": "American English note",
+            "description": "American English sometimes uses *do* in a question tag after a sentence with *have got*, which is not the usual pattern in British English."
+          }
+        ]
+      },
+      {
+        "id": "theory-card-3",
+        "title": "Indirect questions",
+        "subtitle": "Indirect questions",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "explanation",
+            "title": "Use",
+            "description": "We use indirect questions to ask for information in a more polite or formal way."
+          },
+          {
+            "type": "comparison_table",
+            "title": "Compare",
+            "headers": [
+              "Some introductory phrases and questions",
+              "Example"
+            ],
+            "rows": [
+              [
+                "*Can/Could you tell me ...?*",
+                "*Could you tell me where the nearest pharmacy is?*"
+              ],
+              [
+                "*Could you let me know ...?*",
+                "*Could you let me know when the next flight departs?*"
+              ],
+              [
+                "*Do you know ...?*",
+                "*Do you know what time the museum opens?*"
+              ],
+              [
+                "*I wonder if you could tell me ...*",
+                "*I wonder if you could tell me how much this costs.*"
+              ],
+              [
+                "*I wonder if you know ...*",
+                "*I wonder if you know what the closing date is.*"
+              ],
+              [
+                "*I would like to know ...*",
+                "*I would like to know what the next steps are.*"
+              ]
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              {
+                "note": "The second part of an indirect question uses **normal statement word order** — not question word order."
+              },
+              {
+                "correct": "Could you tell me where **the post office is**?"
+              },
+              {
+                "incorrect": "Could you tell me where **is the post office**?"
+              },
+              {
+                "note": "Some indirect questions starting with a question word still end with a question mark."
+              },
+              {
+                "correct": "***Could** you tell me where the exit is?*"
+              },
+              {
+                "note": "When a direct yes/no question becomes indirect, use *if* or *whether* to introduce the clause."
+              },
+              {
+                "correct": "I wonder ***if***/**whether** the shop is still open."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "error_correction",
+        "displayName": "Correct the error",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_correction_input",
+          "studentAction": "type_correction",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u23-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "error_correction",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 44,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u23-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u23-exa-1",
+            "b1-u23-exa-2",
+            "b1-u23-exa-3",
+            "b1-u23-exa-4",
+            "b1-u23-exa-5",
+            "b1-u23-exa-6",
+            "b1-u23-exa-7",
+            "b1-u23-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u23-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u23-exb-1",
+            "b1-u23-exb-2",
+            "b1-u23-exb-3",
+            "b1-u23-exb-4",
+            "b1-u23-exb-5",
+            "b1-u23-exb-6",
+            "b1-u23-exb-7",
+            "b1-u23-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u23-ex-c",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u23-exc-1",
+            "b1-u23-exc-2",
+            "b1-u23-exc-3",
+            "b1-u23-exc-4",
+            "b1-u23-exc-5",
+            "b1-u23-exc-6",
+            "b1-u23-exc-7",
+            "b1-u23-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u23-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u23-exd-1",
+            "b1-u23-exd-2",
+            "b1-u23-exd-3",
+            "b1-u23-exd-4",
+            "b1-u23-exd-5",
+            "b1-u23-exd-6",
+            "b1-u23-exd-7",
+            "b1-u23-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u23-ex-e",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u23-exe-1",
+            "b1-u23-exe-2",
+            "b1-u23-exe-3",
+            "b1-u23-exe-4",
+            "b1-u23-exe-5",
+            "b1-u23-exe-6",
+            "b1-u23-exe-7",
+            "b1-u23-exe-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u23-ex-f",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u23-exf-1",
+            "b1-u23-exf-2",
+            "b1-u23-exf-3",
+            "b1-u23-exf-4",
+            "b1-u23-exf-5",
+            "b1-u23-exf-6",
+            "b1-u23-exf-7",
+            "b1-u23-exf-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u23-ex-g",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u23-exg-1",
+            "b1-u23-exg-2",
+            "b1-u23-exg-3",
+            "b1-u23-exg-4",
+            "b1-u23-exg-5",
+            "b1-u23-exg-6",
+            "b1-u23-exg-7",
+            "b1-u23-exg-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u23-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u23-exh-1",
+            "b1-u23-exh-2",
+            "b1-u23-exh-3",
+            "b1-u23-exh-4",
+            "b1-u23-exh-5",
+            "b1-u23-exh-6",
+            "b1-u23-exh-7",
+            "b1-u23-exh-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 64,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u23-ex-a",
+      "b1-u23-ex-b",
+      "b1-u23-ex-c",
+      "b1-u23-ex-d",
+      "b1-u23-ex-e",
+      "b1-u23-ex-f",
+      "b1-u23-ex-g",
+      "b1-u23-ex-h"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u23-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Form questions",
+        "title": "A: Form questions",
+        "instructions": "Write the correct question form for each sentence.",
+        "studentInstruction": "Write the correct question form for each sentence.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u23-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You are ready to leave. → ...... ready to leave?",
+            "answer": "Are you",
+            "acceptedAnswers": [
+              "Are you"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She has received the message. → ...... received the message?",
+            "answer": "Has she",
+            "acceptedAnswers": [
+              "Has she"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They went to the concert. → ...... to the concert?",
+            "answer": "Did they go",
+            "acceptedAnswers": [
+              "Did they go"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He could lend you his notes. → ...... lend you his notes?",
+            "answer": "Could he",
+            "acceptedAnswers": [
+              "Could he"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Someone called you last night. → ...... you last night?",
+            "answer": "Who called",
+            "acceptedAnswers": [
+              "Who called"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You called someone last night. → Who ...... last night?",
+            "answer": "did you call",
+            "acceptedAnswers": [
+              "did you call"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Clara is starting her new job on Monday. → ...... starting her new job?",
+            "answer": "When is Clara",
+            "acceptedAnswers": [
+              "When is Clara"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They cancelled the match because of the rain. → ...... they cancel the match?",
+            "answer": "Why did",
+            "acceptedAnswers": [
+              "Why did"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u23-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Complete the question tags",
+        "title": "B: Complete the question tags",
+        "instructions": "Write the correct question tag for each sentence.",
+        "studentInstruction": "Write the correct question tag for each sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u23-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You are from Brazil, ......?",
+            "answer": "aren't you",
+            "acceptedAnswers": [
+              "aren't you"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She is a nurse, ......?",
+            "answer": "isn't she",
+            "acceptedAnswers": [
+              "isn't she"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You haven't seen my phone, ......?",
+            "answer": "have you",
+            "acceptedAnswers": [
+              "have you"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Tom has a great sense of humour, ......?",
+            "answer": "doesn't he",
+            "acceptedAnswers": [
+              "doesn't he"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Let's get some fresh air, ......?",
+            "answer": "shall we",
+            "acceptedAnswers": [
+              "shall we"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Pass me that pen, ...... you?",
+            "answer": "will",
+            "acceptedAnswers": [
+              "will"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm the last one to arrive, ......?",
+            "answer": "aren't I",
+            "acceptedAnswers": [
+              "aren't I"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Everyone enjoyed the party, ......?",
+            "answer": "didn't they",
+            "acceptedAnswers": [
+              "didn't they"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u23-ex-c",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "C: Choose the correct question tag",
+        "title": "C: Choose the correct question tag",
+        "instructions": "Circle the correct question tag in each sentence.",
+        "studentInstruction": "Circle the correct question tag in each sentence.",
+        "legacyKey": "C",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u23-exc-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You like jazz,",
+            "sentenceAfter": "?",
+            "options": [
+              "don't you",
+              "aren't you"
+            ],
+            "answer": "don't you",
+            "originalSentence": "You like jazz, **don't you / aren't you**?",
+            "completedSentence": "You like jazz, don't you ?"
+          },
+          {
+            "id": "b1-u23-exc-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She never replies to messages,",
+            "sentenceAfter": "?",
+            "options": [
+              "does she",
+              "doesn't she"
+            ],
+            "answer": "does she",
+            "originalSentence": "She never replies to messages, **does she / doesn't she**?",
+            "completedSentence": "She never replies to messages, does she ?"
+          },
+          {
+            "id": "b1-u23-exc-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "There's no milk left,",
+            "sentenceAfter": "?",
+            "options": [
+              "is there",
+              "isn't there"
+            ],
+            "answer": "is there",
+            "originalSentence": "There's no milk left, **is there / isn't there**?",
+            "completedSentence": "There's no milk left, is there ?"
+          },
+          {
+            "id": "b1-u23-exc-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We are meeting tomorrow morning,",
+            "sentenceAfter": "?",
+            "options": [
+              "aren't we",
+              "don't we"
+            ],
+            "answer": "aren't we",
+            "originalSentence": "We are meeting tomorrow morning, **aren't we / don't we**?",
+            "completedSentence": "We are meeting tomorrow morning, aren't we ?"
+          },
+          {
+            "id": "b1-u23-exc-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "No one told you,",
+            "sentenceAfter": "?",
+            "options": [
+              "did they",
+              "didn't they"
+            ],
+            "answer": "did they",
+            "originalSentence": "No one told you, **did they / didn't they**?",
+            "completedSentence": "No one told you, did they ?"
+          },
+          {
+            "id": "b1-u23-exc-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "People should recycle more,",
+            "sentenceAfter": "?",
+            "options": [
+              "shouldn't they",
+              "don't they"
+            ],
+            "answer": "shouldn't they",
+            "originalSentence": "People should recycle more, **shouldn't they / don't they**?",
+            "completedSentence": "People should recycle more, shouldn't they ?"
+          },
+          {
+            "id": "b1-u23-exc-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Don't forget to lock up,",
+            "sentenceAfter": "?",
+            "options": [
+              "will you",
+              "do you"
+            ],
+            "answer": "will you",
+            "originalSentence": "Don't forget to lock up, **will you / do you**?",
+            "completedSentence": "Don't forget to lock up, will you ?"
+          },
+          {
+            "id": "b1-u23-exc-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "There will be enough seats,",
+            "sentenceAfter": "?",
+            "options": [
+              "won't there",
+              "will there"
+            ],
+            "answer": "won't there",
+            "originalSentence": "There will be enough seats, **won't there / will there**?",
+            "completedSentence": "There will be enough seats, won't there ?"
+          }
+        ]
+      },
+      {
+        "id": "b1-u23-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Indirect questions",
+        "title": "D: Indirect questions",
+        "instructions": "Complete each indirect question.",
+        "studentInstruction": "Complete each indirect question.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u23-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you tell me where ......?",
+            "answer": "the nearest pharmacy is",
+            "acceptedAnswers": [
+              "the nearest pharmacy is"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Do you know what time ......?",
+            "answer": "the museum opens",
+            "acceptedAnswers": [
+              "the museum opens"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I wonder if you could tell me how much ......",
+            "answer": "this costs",
+            "acceptedAnswers": [
+              "this costs"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you let me know when ......?",
+            "answer": "the next flight departs",
+            "acceptedAnswers": [
+              "the next flight departs"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I would like to know what ......",
+            "answer": "the next steps are",
+            "acceptedAnswers": [
+              "the next steps are"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I wonder if ...... the shop is still open.",
+            "answer": "whether",
+            "acceptedAnswers": [
+              "whether"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exd-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you tell me where ......?",
+            "answer": "the post office is",
+            "acceptedAnswers": [
+              "the post office is"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exd-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Do you know ...... he lives?",
+            "answer": "where",
+            "acceptedAnswers": [
+              "where"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u23-ex-e",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "E: Error correction",
+        "title": "E: Error correction",
+        "instructions": "Find and correct one mistake in each sentence.",
+        "studentInstruction": "Find and correct one mistake in each sentence.",
+        "legacyKey": "E",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u23-exe-1",
+            "formatType": "error_correction",
+            "sentence": "Did you went to the concert?",
+            "highlightedText": "went",
+            "answer": "go",
+            "acceptedAnswers": [
+              "go"
+            ]
+          },
+          {
+            "id": "b1-u23-exe-2",
+            "formatType": "error_correction",
+            "sentence": "Does he wants a coffee?",
+            "highlightedText": "wants",
+            "answer": "want",
+            "acceptedAnswers": [
+              "want"
+            ]
+          },
+          {
+            "id": "b1-u23-exe-3",
+            "formatType": "error_correction",
+            "sentence": "What means 'procrastinate'?",
+            "highlightedText": "means",
+            "answer": "does 'procrastinate' mean",
+            "acceptedAnswers": [
+              "does 'procrastinate' mean"
+            ]
+          },
+          {
+            "id": "b1-u23-exe-4",
+            "formatType": "error_correction",
+            "sentence": "Could you tell me where is the post office?",
+            "highlightedText": "is the post office",
+            "answer": "the post office is",
+            "acceptedAnswers": [
+              "the post office is"
+            ]
+          },
+          {
+            "id": "b1-u23-exe-5",
+            "formatType": "error_correction",
+            "sentence": "She is a doctor, isn't it?",
+            "highlightedText": "isn't it",
+            "answer": "isn't she",
+            "acceptedAnswers": [
+              "isn't she"
+            ]
+          },
+          {
+            "id": "b1-u23-exe-6",
+            "formatType": "error_correction",
+            "sentence": "You have finished, haven't you?",
+            "highlightedText": "haven't you",
+            "answer": "haven't you",
+            "acceptedAnswers": [
+              "haven't you"
+            ]
+          },
+          {
+            "id": "b1-u23-exe-7",
+            "formatType": "error_correction",
+            "sentence": "I wonder if you know where is the exit?",
+            "highlightedText": "is the exit",
+            "answer": "the exit is",
+            "acceptedAnswers": [
+              "the exit is"
+            ]
+          },
+          {
+            "id": "b1-u23-exe-8",
+            "formatType": "error_correction",
+            "sentence": "He works here, doesn't it?",
+            "highlightedText": "doesn't it",
+            "answer": "doesn't he",
+            "acceptedAnswers": [
+              "doesn't he"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u23-ex-f",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "F: Multiple choice",
+        "title": "F: Multiple choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "F",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u23-exf-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "you tell me where the station is?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Could"
+              },
+              {
+                "letter": "B",
+                "text": "Could to"
+              },
+              {
+                "letter": "C",
+                "text": "Could you to"
+              },
+              {
+                "letter": "D",
+                "text": "Could for"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exf-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She's very punctual,",
+            "sentenceAfter": "?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "isn't she"
+              },
+              {
+                "letter": "B",
+                "text": "doesn't she"
+              },
+              {
+                "letter": "C",
+                "text": "is she"
+              },
+              {
+                "letter": "D",
+                "text": "isn't it"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exf-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I wonder if you know",
+            "sentenceAfter": "the meeting starts.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "when does"
+              },
+              {
+                "letter": "B",
+                "text": "when"
+              },
+              {
+                "letter": "C",
+                "text": "when is"
+              },
+              {
+                "letter": "D",
+                "text": "does when"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exf-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "called during the lesson?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Who did"
+              },
+              {
+                "letter": "B",
+                "text": "Who"
+              },
+              {
+                "letter": "C",
+                "text": "Did who"
+              },
+              {
+                "letter": "D",
+                "text": "Who did call"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exf-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "There's nothing to worry about,",
+            "sentenceAfter": "?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "is there"
+              },
+              {
+                "letter": "B",
+                "text": "isn't there"
+              },
+              {
+                "letter": "C",
+                "text": "is it"
+              },
+              {
+                "letter": "D",
+                "text": "isn't it"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exf-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Could you tell me",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "what time is the lesson?"
+              },
+              {
+                "letter": "B",
+                "text": "what time the lesson is?"
+              },
+              {
+                "letter": "C",
+                "text": "what time the lesson is."
+              },
+              {
+                "letter": "D",
+                "text": "what time is the lesson."
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exf-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I'm not very punctual,",
+            "sentenceAfter": "?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "aren't I"
+              },
+              {
+                "letter": "B",
+                "text": "am I"
+              },
+              {
+                "letter": "C",
+                "text": "don't I"
+              },
+              {
+                "letter": "D",
+                "text": "isn't I"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exf-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Someone borrowed my pen,",
+            "sentenceAfter": "?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "didn't they"
+              },
+              {
+                "letter": "B",
+                "text": "didn't he"
+              },
+              {
+                "letter": "C",
+                "text": "didn't someone"
+              },
+              {
+                "letter": "D",
+                "text": "did they"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u23-ex-g",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "G: Mixed practice",
+        "title": "G: Mixed practice",
+        "instructions": "Complete each sentence with the correct form.",
+        "studentInstruction": "Complete each sentence with the correct form.",
+        "legacyKey": "G",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u23-exg-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... you ever been to Rome?",
+            "answer": "Have",
+            "acceptedAnswers": [
+              "Have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exg-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Emma works in the city centre now, ......?",
+            "answer": "doesn't she",
+            "acceptedAnswers": [
+              "doesn't she"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exg-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Do you know where ......?",
+            "answer": "the library is",
+            "acceptedAnswers": [
+              "the library is"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exg-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... will she be there on time?",
+            "answer": "Will",
+            "acceptedAnswers": [
+              "Will"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exg-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Your friends really enjoyed the trip, ......?",
+            "answer": "didn't they",
+            "acceptedAnswers": [
+              "didn't they"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exg-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I wonder if you could tell me ...... the tickets cost.",
+            "answer": "how much",
+            "acceptedAnswers": [
+              "how much"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exg-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... they be lost?",
+            "answer": "Might",
+            "acceptedAnswers": [
+              "Might"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exg-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "How ...... you say 'ticket' in Italian?",
+            "answer": "do",
+            "acceptedAnswers": [
+              "do"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u23-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "H: Key word transformation",
+        "title": "H: Key word transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u23-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Where is the post office? Tell me.\nCould you tell me ......?",
+            "answer": "where the post office is",
+            "acceptedAnswers": [
+              "where the post office is"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You aren't from here, are you?\nYou don't live near here, ......?",
+            "answer": "do you",
+            "acceptedAnswers": [
+              "do you"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "What time does the lesson start? Do you know?\nDo you know ......?",
+            "answer": "what time the lesson starts",
+            "acceptedAnswers": [
+              "what time the lesson starts"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Let's ask someone for directions.\nLet's ask someone for directions, ......?",
+            "answer": "shall we",
+            "acceptedAnswers": [
+              "shall we"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Is the shop still open? I wonder.\nI wonder ...... the shop is still open.",
+            "answer": "if",
+            "acceptedAnswers": [
+              "if"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Who made that noise? I heard something.\n...... made that noise?",
+            "answer": "Who",
+            "acceptedAnswers": [
+              "Who"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exh-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She has a lovely voice, hasn't she?\nShe sings beautifully, ......?",
+            "answer": "doesn't she",
+            "acceptedAnswers": [
+              "doesn't she"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u23-exh-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When does the next flight depart? Could you let me know?\nCould you let me know ......?",
+            "answer": "when the next flight departs",
+            "acceptedAnswers": [
+              "when the next flight departs"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

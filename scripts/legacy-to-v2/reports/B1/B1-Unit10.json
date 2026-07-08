@@ -1,0 +1,99 @@
+{
+  "unit": 10,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: Complete with the correct passive form",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: Change active to passive",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: Circle the correct form",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "D: Complete with by or with",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "E: Phrasal verbs in the passive",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "F",
+      "title": "F: Error correction",
+      "legacyPattern": "error-correction",
+      "formatType": "error_correction",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "G",
+      "title": "G: Multiple choice",
+      "legacyPattern": "mc-standalone",
+      "formatType": "mc_4_option",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "H",
+      "title": "H: Key word transformation",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 8,
+    "legacyItemCount": 50,
+    "v2ItemCount": 50,
+    "estimatedScreens": 50,
+    "formatTypes": [
+      "conjugation_gap_fill",
+      "full_sentence_write",
+      "two_option_choice",
+      "free_text_gap_fill",
+      "error_correction",
+      "mc_4_option"
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "unit": 41,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: Complete the sentences",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: Rewrite using the causative",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: Rewrite using the causative",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 3,
+    "legacyItemCount": 18,
+    "v2ItemCount": 18,
+    "estimatedScreens": 18,
+    "formatTypes": [
+      "conjugation_gap_fill",
+      "full_sentence_write",
+      "free_text_gap_fill"
+    ]
+  }
+}

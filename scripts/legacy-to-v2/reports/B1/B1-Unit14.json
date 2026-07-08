@@ -1,0 +1,106 @@
+{
+  "unit": 14,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: a, an or the",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: Article or no article",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: Circle the correct word",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "D: Special rules (places)",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "E: Special rules (activities and time)",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "F",
+      "title": "F: Error correction",
+      "legacyPattern": "error-correction",
+      "formatType": "error_correction",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "G",
+      "title": "G: Error correction",
+      "legacyPattern": "error-correction",
+      "formatType": "error_correction",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "H",
+      "title": "H: Key word transformation",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "I",
+      "title": "I: Mixed article practice",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 9,
+    "legacyItemCount": 68,
+    "v2ItemCount": 68,
+    "estimatedScreens": 68,
+    "formatTypes": [
+      "free_text_gap_fill",
+      "two_option_choice",
+      "error_correction"
+    ]
+  }
+}

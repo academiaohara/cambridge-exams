@@ -82,6 +82,19 @@
         }
       },
       {
+        "formatType": "error_correction",
+        "displayName": "Correct the error",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_correction_input",
+          "studentAction": "type_correction",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
         "formatType": "mc_4_option",
         "displayName": "Multiple choice",
         "defaultLives": 5,
@@ -168,6 +181,7 @@
       "focus": [
         "two_option_choice",
         "free_text_gap_fill",
+        "error_correction",
         "mc_4_option",
         "column_matching",
         "synced_gap_fill",
@@ -213,7 +227,7 @@
         },
         {
           "sourceExerciseId": "c1-u2-ex-c",
-          "formatType": "free_text_gap_fill",
+          "formatType": "error_correction",
           "sourceItemIds": [
             "c1-u2-exc-1",
             "c1-u2-exc-2",
@@ -706,7 +720,7 @@
       {
         "id": "c1-u2-ex-c",
         "type": "exercise",
-        "exerciseType": "free_text_gap_fill",
+        "exerciseType": "error_correction",
         "exerciseTypeName": "Correct the wrong words in bold",
         "title": "Correct the wrong words in bold",
         "instructions": "Each of the words in bold is in the wrong sentence. Write the correct words on the lines.",
@@ -714,7 +728,7 @@
         "legacyKey": "C",
         "legacyPattern": "bold-swap",
         "interaction": {
-          "formatType": "free_text_gap_fill"
+          "formatType": "error_correction"
         },
         "words": [
           "dilemma",
@@ -745,124 +759,113 @@
         "items": [
           {
             "id": "c1-u2-exc-1",
-            "formatType": "free_text_gap_fill",
+            "formatType": "error_correction",
             "sentence": "The aspiring writer stared at a blank page for hours — she had absolutely no faith for her new novel.",
+            "highlightedText": "faith",
             "answer": "inspiration",
             "acceptedAnswers": [
               "inspiration"
-            ],
-            "explanation": "",
-            "promptWord": "faith"
+            ]
           },
           {
             "id": "c1-u2-exc-2",
-            "formatType": "free_text_gap_fill",
+            "formatType": "error_correction",
             "sentence": "I had a strong inspiration that something about the offer wasn't quite right.",
+            "highlightedText": "inspiration",
             "answer": "hunch",
             "acceptedAnswers": [
               "hunch"
-            ],
-            "explanation": "",
-            "promptWord": "inspiration"
+            ]
           },
           {
             "id": "c1-u2-exc-3",
-            "formatType": "free_text_gap_fill",
+            "formatType": "error_correction",
             "sentence": "With no written records to go on, the archaeologists were forced to rely entirely on hunch.",
+            "highlightedText": "hunch",
             "answer": "guesswork",
             "acceptedAnswers": [
               "guesswork"
-            ],
-            "explanation": "",
-            "promptWord": "hunch"
+            ]
           },
           {
             "id": "c1-u2-exc-4",
-            "formatType": "free_text_gap_fill",
+            "formatType": "error_correction",
             "sentence": "People assume Edison was simply a natural guesswork, but he said his achievements were ninety-nine percent hard work.",
+            "highlightedText": "guesswork",
             "answer": "genius",
             "acceptedAnswers": [
               "genius"
-            ],
-            "explanation": "",
-            "promptWord": "guesswork"
+            ]
           },
           {
             "id": "c1-u2-exc-5",
-            "formatType": "free_text_gap_fill",
+            "formatType": "error_correction",
             "sentence": "She faced a real genius: stay in her stable job or take the risk of starting her own business.",
+            "highlightedText": "genius",
             "answer": "dilemma",
             "acceptedAnswers": [
               "dilemma"
-            ],
-            "explanation": "",
-            "promptWord": "genius"
+            ]
           },
           {
             "id": "c1-u2-exc-6",
-            "formatType": "free_text_gap_fill",
+            "formatType": "error_correction",
             "sentence": "The party's political dilemma was built around the principle that all citizens deserve equal rights.",
+            "highlightedText": "dilemma",
             "answer": "ideology",
             "acceptedAnswers": [
               "ideology"
-            ],
-            "explanation": "",
-            "promptWord": "dilemma"
+            ]
           },
           {
             "id": "c1-u2-exc-7",
-            "formatType": "free_text_gap_fill",
+            "formatType": "error_correction",
             "sentence": "Despite every setback, she had absolute ideology in her students' ability to succeed.",
+            "highlightedText": "ideology",
             "answer": "faith",
             "acceptedAnswers": [
               "faith"
-            ],
-            "explanation": "",
-            "promptWord": "ideology"
+            ]
           },
           {
             "id": "c1-u2-exc-8",
-            "formatType": "free_text_gap_fill",
+            "formatType": "error_correction",
             "sentence": "It's a fascinating idea that the more time you spend on social media, the lonelier you can feel in real life.",
+            "highlightedText": "idea",
             "answer": "paradox",
             "acceptedAnswers": [
               "paradox"
-            ],
-            "explanation": "",
-            "promptWord": "idea"
+            ]
           },
           {
             "id": "c1-u2-exc-9",
-            "formatType": "free_text_gap_fill",
+            "formatType": "error_correction",
             "sentence": "From the very first session, the counsellor had a paradox that this student needed additional support.",
+            "highlightedText": "paradox",
             "answer": "notion",
             "acceptedAnswers": [
               "notion"
-            ],
-            "explanation": "",
-            "promptWord": "paradox"
+            ]
           },
           {
             "id": "c1-u2-exc-10",
-            "formatType": "free_text_gap_fill",
+            "formatType": "error_correction",
             "sentence": "She always trusted her notion when judging people's characters, and she was almost never wrong.",
+            "highlightedText": "notion",
             "answer": "intuition",
             "acceptedAnswers": [
               "intuition"
-            ],
-            "explanation": "",
-            "promptWord": "notion"
+            ]
           },
           {
             "id": "c1-u2-exc-11",
-            "formatType": "free_text_gap_fill",
+            "formatType": "error_correction",
             "sentence": "Without any solid data, the whole business plan was based on nothing more than the intuition that demand would grow.",
+            "highlightedText": "intuition",
             "answer": "idea",
             "acceptedAnswers": [
               "idea"
-            ],
-            "explanation": "",
-            "promptWord": "intuition"
+            ]
           }
         ]
       },

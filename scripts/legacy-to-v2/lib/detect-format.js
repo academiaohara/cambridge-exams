@@ -1,4 +1,10 @@
-import { countLegacyItems, extractBold } from './utils.js';
+import {
+  countLegacyItems,
+  extractBold,
+  flattenExerciseItems,
+  hasGapMarkers,
+  isInlineAbChoice
+} from './utils.js';
 
 function hasBoldChoice(sentence) {
   return /\*\*[^*]+\/[^*]+\*\*/.test(String(sentence || ''));
@@ -37,8 +43,33 @@ function isPassageWordFormation(exercise) {
  * Detect v2 format for a legacy exercise block.
  * Returns { formatType, screenMode, legacyPattern, legacyItemCount, notes }
  */
+function isFullSentenceRewrite(item, instructions) {
+  var sentence = String(item.sentence || '').trim();
+  var answer = String(item.answer || '').trim();
+  if (!sentence || !answer) return false;
+  if (hasGapMarkers(sentence)) return false;
+  if (item.sentenceA || item.sentenceB || item.options) return false;
+  if (/\[[^\]]+\]/.test(sentence)) return false;
+  if (isInlineAbChoice(sentence)) return false;
+  if (/\*\*[^*]+\*\*/.test(sentence) && answer.length < sentence.length * 0.8) return false;
+  var inst = String(instructions || '').toLowerCase();
+  if (/rewrite|write the correct|correct the mistake|join the sentence|change .* to|change into/i.test(inst)) {
+    return true;
+  }
+  return answer.split(/\s+/).length >= 3 && answer !== sentence;
+}
+
+function isCommaRewriteItem(item, instructions) {
+  var answer = String(item.answer || '').trim();
+  var inst = String(instructions || '').toLowerCase();
+  if (!inst.includes('comma')) return false;
+  if (/no commas/i.test(answer)) return true;
+  return /,/.test(answer);
+}
+
 export function detectLegacyFormat(exercise) {
-  var items = exercise.questions || exercise.items || [];
+  var items = flattenExerciseItems(exercise);
+  var instructions = exercise.instructions || '';
   var result = {
     formatType: 'free_text_gap_fill',
     screenMode: null,
@@ -46,6 +77,62 @@ export function detectLegacyFormat(exercise) {
     legacyItemCount: 0,
     notes: []
   };
+
+  if (exercise.subtype === 'find-extra-word' || exercise.type === 'find-extra-word') {
+    result.formatType = 'find_extra_word';
+    result.legacyPattern = 'find-extra-word';
+    result.legacyItemCount = items.length;
+    return result;
+  }
+
+  if (exercise.subtype === 'drag-category' || exercise.type === 'drag-category') {
+    result.formatType = 'stative_sorting';
+    result.legacyPattern = 'drag-category';
+    result.legacyItemCount = (exercise.words || []).length;
+    result.notes.push('drag-category → stative_sorting');
+    return result;
+  }
+
+  if (exercise.type === 'grouped' && exercise.groups) {
+    result.legacyPattern = 'grouped';
+    result.legacyItemCount = items.length;
+    if (items.length && hasGapMarkers(items[0].sentence || '')) {
+      var hasBrackets = /\([^)]*\/[^)]*\)/.test(items[0].sentence || '') ||
+        /\([^)]+\)/.test(items[0].sentence || '');
+      result.formatType = hasBrackets ? 'conjugation_gap_fill' : 'free_text_gap_fill';
+      result.legacyPattern = hasBrackets ? 'grouped-conjugation' : 'grouped-gap-fill';
+      return result;
+    }
+  }
+
+  if (items.length && items[0].sentenceA && items[0].sentenceB) {
+    result.formatType = 'two_option_choice';
+    result.legacyPattern = 'same-meaning-ab';
+    result.legacyItemCount = items.length;
+    return result;
+  }
+
+  if (items.length && isInlineAbChoice(items[0].sentence)) {
+    result.formatType = 'two_option_choice';
+    result.legacyPattern = 'inline-ab-choice';
+    result.legacyItemCount = items.length;
+    return result;
+  }
+
+  if (items.length && items.every(function(it) { return isCommaRewriteItem(it, instructions); })) {
+    result.formatType = 'comma_placement';
+    result.legacyPattern = 'comma-rewrite';
+    result.legacyItemCount = items.length;
+    result.notes.push('comma instructions → comma_placement rewrite_sentence');
+    return result;
+  }
+
+  if (items.length && items.every(function(it) { return isFullSentenceRewrite(it, instructions); })) {
+    result.formatType = 'full_sentence_write';
+    result.legacyPattern = 'sentence-rewrite';
+    result.legacyItemCount = items.length;
+    return result;
+  }
 
   if (exercise.type === 'crossword') {
     result.formatType = 'crossword_clues';
@@ -155,10 +242,10 @@ export function detectLegacyFormat(exercise) {
   if (items.length && extractBold(items[0].sentence) && items[0].answer &&
       items.every(function(it) { return /\*\*[^*]+\*\*/.test(it.sentence || ''); }) &&
       !items[0].sentence.includes('......') && exercise.words) {
-    result.formatType = 'free_text_gap_fill';
+    result.formatType = 'error_correction';
     result.legacyPattern = 'bold-swap';
     result.legacyItemCount = items.length;
-    result.notes.push('bold-swap mapped to free_text_gap_fill; word bank kept on exercise.words');
+    result.notes.push('bold-swap → error_correction (highlightedText = wrong bold word); word bank not shown in UI');
     return result;
   }
 

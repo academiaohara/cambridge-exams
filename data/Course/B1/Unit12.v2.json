@@ -1,0 +1,1103 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 4,
+  "unit": 12,
+  "type": "vocabulary",
+  "unitTitle": "[V2] Unit 12: Friends and relations",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 12: Friends and relations"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit12.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 8
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u12-theory",
+    "title": "Topic vocabulary",
+    "shortTitle": "Vocabulary",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b1-u12-theory-card-1",
+        "title": "Unit 12: Friends and relations",
+        "subtitle": "",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Unit focus",
+            "items": [
+              "friends and relations"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "column_matching",
+        "displayName": "Match columns",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "tap_to_pair",
+          "studentAction": "pair_beginnings_endings",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u12-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "column_matching",
+        "conjugation_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 30,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u12-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u12-exa-1",
+            "b1-u12-exa-2",
+            "b1-u12-exa-3",
+            "b1-u12-exa-4",
+            "b1-u12-exa-5",
+            "b1-u12-exa-6",
+            "b1-u12-exa-7",
+            "b1-u12-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u12-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u12-exb-1",
+            "b1-u12-exb-2",
+            "b1-u12-exb-3",
+            "b1-u12-exb-4",
+            "b1-u12-exb-5",
+            "b1-u12-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u12-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u12-exc-1",
+            "b1-u12-exc-2",
+            "b1-u12-exc-3",
+            "b1-u12-exc-4",
+            "b1-u12-exc-5",
+            "b1-u12-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u12-ex-d",
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen"
+        },
+        {
+          "sourceExerciseId": "b1-u12-ex-e",
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen"
+        },
+        {
+          "sourceExerciseId": "b1-u12-ex-f",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u12-exf-1",
+            "b1-u12-exf-2",
+            "b1-u12-exf-3",
+            "b1-u12-exf-4",
+            "b1-u12-exf-5",
+            "b1-u12-exf-6",
+            "b1-u12-exf-7",
+            "b1-u12-exf-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u12-ex-g",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u12-exg-1",
+            "b1-u12-exg-2",
+            "b1-u12-exg-3",
+            "b1-u12-exg-4",
+            "b1-u12-exg-5",
+            "b1-u12-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u12-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u12-exh-1",
+            "b1-u12-exh-2",
+            "b1-u12-exh-3",
+            "b1-u12-exh-4",
+            "b1-u12-exh-5",
+            "b1-u12-exh-6",
+            "b1-u12-exh-7",
+            "b1-u12-exh-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 44,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u12-ex-a",
+      "b1-u12-ex-b",
+      "b1-u12-ex-c",
+      "b1-u12-ex-d",
+      "b1-u12-ex-e",
+      "b1-u12-ex-f",
+      "b1-u12-ex-g",
+      "b1-u12-ex-h"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u12-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Topic vocabulary (gap fill)",
+        "title": "Topic vocabulary (gap fill)",
+        "instructions": "Complete the sentences with words from the box.",
+        "studentInstruction": "Complete the sentences with words from the box.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "apologise",
+          "close",
+          "generous",
+          "grateful",
+          "independent",
+          "loyal",
+          "mood",
+          "neighbourhood",
+          "respect",
+          "single",
+          "stranger",
+          "trust"
+        ],
+        "wordBank": [
+          "apologise",
+          "close",
+          "generous",
+          "grateful",
+          "independent",
+          "loyal",
+          "mood",
+          "neighbourhood",
+          "respect",
+          "single",
+          "stranger",
+          "trust"
+        ],
+        "items": [
+          {
+            "id": "b1-u12-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should ...... to Max for forgetting his birthday.",
+            "answer": "apologise",
+            "acceptedAnswers": [
+              "apologise"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't open the door to a ...... when you're home alone.",
+            "answer": "stranger",
+            "acceptedAnswers": [
+              "stranger"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They live in a busy ...... near the station.",
+            "answer": "neighbourhood",
+            "acceptedAnswers": [
+              "neighbourhood"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My uncle is very ...... and often pays for everyone's meal.",
+            "answer": "generous",
+            "acceptedAnswers": [
+              "generous"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm really ...... to my neighbours for helping us move house.",
+            "answer": "grateful",
+            "acceptedAnswers": [
+              "grateful"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She's in a cheerful ...... because her best friend is visiting.",
+            "answer": "mood",
+            "acceptedAnswers": [
+              "mood"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should always ...... other people's private opinions.",
+            "answer": "respect",
+            "acceptedAnswers": [
+              "respect"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We're very ...... friends and we tell each other everything.",
+            "answer": "close",
+            "acceptedAnswers": [
+              "close"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u12-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Circle the correct word",
+        "title": "Circle the correct word",
+        "instructions": "Choose the correct option in each sentence.",
+        "studentInstruction": "Choose the correct option in each sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u12-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Jack wants to be",
+            "sentenceAfter": "and pay his own rent.",
+            "options": [
+              "independent",
+              "ordinary"
+            ],
+            "answer": "independent",
+            "originalSentence": "Jack wants to be **independent / ordinary** and pay his own rent.",
+            "completedSentence": "Jack wants to be independent and pay his own rent."
+          },
+          {
+            "id": "b1-u12-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "They decided to",
+            "sentenceAfter": "their flat before the guests arrived.",
+            "options": [
+              "decorate",
+              "recognise"
+            ],
+            "answer": "decorate",
+            "originalSentence": "They decided to **decorate / recognise** their flat before the guests arrived.",
+            "completedSentence": "They decided to decorate their flat before the guests arrived."
+          },
+          {
+            "id": "b1-u12-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I can always",
+            "sentenceAfter": "my cousin with a secret.",
+            "options": [
+              "trust",
+              "rent"
+            ],
+            "answer": "trust",
+            "originalSentence": "I can always **trust / rent** my cousin with a secret.",
+            "completedSentence": "I can always trust my cousin with a secret."
+          },
+          {
+            "id": "b1-u12-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Can you",
+            "sentenceAfter": "me to your new neighbour?",
+            "options": [
+              "introduce",
+              "defend"
+            ],
+            "answer": "introduce",
+            "originalSentence": "Can you **introduce / defend** me to your new neighbour?",
+            "completedSentence": "Can you introduce me to your new neighbour?"
+          },
+          {
+            "id": "b1-u12-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I've never met that",
+            "sentenceAfter": "before, but Dad says he's my uncle.",
+            "options": [
+              "relation",
+              "guest"
+            ],
+            "answer": "relation",
+            "originalSentence": "I've never met that **relation / guest** before, but Dad says he's my uncle.",
+            "completedSentence": "I've never met that relation before, but Dad says he's my uncle."
+          },
+          {
+            "id": "b1-u12-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "My parents are",
+            "sentenceAfter": ", but they are still good friends.",
+            "options": [
+              "divorced",
+              "private"
+            ],
+            "answer": "divorced",
+            "originalSentence": "My parents are **divorced / private**, but they are still good friends.",
+            "completedSentence": "My parents are divorced , but they are still good friends."
+          }
+        ]
+      },
+      {
+        "id": "b1-u12-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Phrasal verbs (complete the gaps)",
+        "title": "Phrasal verbs (complete the gaps)",
+        "instructions": "Write the correct form of the phrasal verb in each gap.",
+        "studentInstruction": "Write the correct form of the phrasal verb in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "bring up",
+          "fall out with",
+          "get on with",
+          "go out with",
+          "grow up",
+          "let down",
+          "look after",
+          "split up"
+        ],
+        "wordBank": [
+          "bring up",
+          "fall out with",
+          "get on with",
+          "go out with",
+          "grow up",
+          "let down",
+          "look after",
+          "split up"
+        ],
+        "items": [
+          {
+            "id": "b1-u12-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My parents worked hard to ...... three children.",
+            "answer": "bring up",
+            "acceptedAnswers": [
+              "bring up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I don't want to ...... Emma over a silly argument.",
+            "answer": "fall out with",
+            "acceptedAnswers": [
+              "fall out with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Do you ...... your brother well?",
+            "answer": "get on with",
+            "acceptedAnswers": [
+              "get on with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Zoe used to ...... Daniel, but they aren't together now.",
+            "answer": "go out with",
+            "acceptedAnswers": [
+              "go out with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I promised to help, so I don't want to ...... anyone.",
+            "answer": "let down",
+            "acceptedAnswers": [
+              "let down"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you ...... the dog while we're away?",
+            "answer": "look after",
+            "acceptedAnswers": [
+              "look after"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u12-ex-d",
+        "type": "exercise",
+        "exerciseType": "column_matching",
+        "exerciseTypeName": "Prepositional phrases (matching)",
+        "title": "Prepositional phrases (matching)",
+        "instructions": "Match sentence beginnings with the correct ending.",
+        "studentInstruction": "Match sentence beginnings with the correct ending.",
+        "legacyKey": "D",
+        "legacyPattern": "matching",
+        "interaction": {
+          "formatType": "column_matching"
+        },
+        "items": [
+          {
+            "id": "b1-u12-exd-1",
+            "formatType": "column_matching",
+            "sentence": "She cooked the whole meal by ...... .",
+            "answer": "herself",
+            "acceptedAnswers": [
+              "herself"
+            ]
+          },
+          {
+            "id": "b1-u12-exd-2",
+            "formatType": "column_matching",
+            "sentence": "My best friend and I have a lot in ...... .",
+            "answer": "common",
+            "acceptedAnswers": [
+              "common"
+            ]
+          },
+          {
+            "id": "b1-u12-exd-3",
+            "formatType": "column_matching",
+            "sentence": "I'm still in ...... with some friends from my old school.",
+            "answer": "contact",
+            "acceptedAnswers": [
+              "contact"
+            ]
+          },
+          {
+            "id": "b1-u12-exd-4",
+            "formatType": "column_matching",
+            "sentence": "They are completely in ...... with each other.",
+            "answer": "love",
+            "acceptedAnswers": [
+              "love"
+            ]
+          },
+          {
+            "id": "b1-u12-exd-5",
+            "formatType": "column_matching",
+            "sentence": "I didn't hurt your feelings on ...... .",
+            "answer": "purpose",
+            "acceptedAnswers": [
+              "purpose"
+            ]
+          },
+          {
+            "id": "b1-u12-exd-6",
+            "formatType": "column_matching",
+            "sentence": "He lives on his ...... in a small flat.",
+            "answer": "own",
+            "acceptedAnswers": [
+              "own"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u12-ex-e",
+        "type": "exercise",
+        "exerciseType": "column_matching",
+        "exerciseTypeName": "Word patterns (adjectives, verbs and nouns)",
+        "title": "Word patterns (adjectives, verbs and nouns)",
+        "instructions": "Match each sentence beginning (1–8) with the correct ending (A–H).",
+        "studentInstruction": "Match each sentence beginning (1–8) with the correct ending (A–H).",
+        "legacyKey": "E",
+        "legacyPattern": "matching",
+        "interaction": {
+          "formatType": "column_matching"
+        },
+        "items": [
+          {
+            "id": "b1-u12-exe-1",
+            "formatType": "column_matching",
+            "sentence": "I'm very fond **D** of my grandparents.",
+            "acceptedAnswers": []
+          },
+          {
+            "id": "b1-u12-exe-2",
+            "formatType": "column_matching",
+            "sentence": "Leo is jealous **A** of his sister's success.",
+            "acceptedAnswers": []
+          },
+          {
+            "id": "b1-u12-exe-3",
+            "formatType": "column_matching",
+            "sentence": "Please be kind **F** to the new student.",
+            "acceptedAnswers": []
+          },
+          {
+            "id": "b1-u12-exe-4",
+            "formatType": "column_matching",
+            "sentence": "My aunt is married **B** to a musician.",
+            "acceptedAnswers": []
+          },
+          {
+            "id": "b1-u12-exe-5",
+            "formatType": "column_matching",
+            "sentence": "We're proud **E** of our cousin's achievements.",
+            "acceptedAnswers": []
+          },
+          {
+            "id": "b1-u12-exe-6",
+            "formatType": "column_matching",
+            "sentence": "She apologised **C** for being late.",
+            "acceptedAnswers": []
+          },
+          {
+            "id": "b1-u12-exe-7",
+            "formatType": "column_matching",
+            "sentence": "They argued **G** about money again.",
+            "acceptedAnswers": []
+          },
+          {
+            "id": "b1-u12-exe-8",
+            "formatType": "column_matching",
+            "sentence": "I admire him **H** for his honesty.",
+            "acceptedAnswers": []
+          }
+        ]
+      },
+      {
+        "id": "b1-u12-ex-f",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Word formation",
+        "title": "Word formation",
+        "instructions": "Complete each sentence with the correct form of the word in capitals.",
+        "studentInstruction": "Complete each sentence with the correct form of the word in capitals.",
+        "legacyKey": "F",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u12-exf-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I have great ...... for people who always help others. (ADMIRE)",
+            "answer": "admiration",
+            "acceptedAnswers": [
+              "admiration"
+            ],
+            "explanation": "",
+            "verbPrompt": "ADMIRE"
+          },
+          {
+            "id": "b1-u12-exf-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "It took a long time, but she finally offered him ...... . (FORGIVE)",
+            "answer": "forgiveness",
+            "acceptedAnswers": [
+              "forgiveness"
+            ],
+            "explanation": "",
+            "verbPrompt": "FORGIVE"
+          },
+          {
+            "id": "b1-u12-exf-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I value ...... more than anything in a friendship. (HONEST)",
+            "answer": "honesty",
+            "acceptedAnswers": [
+              "honesty"
+            ],
+            "explanation": "",
+            "verbPrompt": "HONEST"
+          },
+          {
+            "id": "b1-u12-exf-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The teacher made a short ...... before the new student spoke. (INTRODUCE)",
+            "answer": "introduction",
+            "acceptedAnswers": [
+              "introduction"
+            ],
+            "explanation": "",
+            "verbPrompt": "INTRODUCE"
+          },
+          {
+            "id": "b1-u12-exf-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Moving away from home gave him a lot of ...... . (CONFIDENT)",
+            "answer": "confidence",
+            "acceptedAnswers": [
+              "confidence"
+            ],
+            "explanation": "",
+            "verbPrompt": "CONFIDENT"
+          },
+          {
+            "id": "b1-u12-exf-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Nobody believed him because everyone knew he was a ...... . (LIE)",
+            "answer": "liar",
+            "acceptedAnswers": [
+              "liar"
+            ],
+            "explanation": "",
+            "verbPrompt": "LIE"
+          },
+          {
+            "id": "b1-u12-exf-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Her ...... to stay calm is very useful in difficult situations. (ABLE)",
+            "answer": "ability",
+            "acceptedAnswers": [
+              "ability"
+            ],
+            "explanation": "",
+            "verbPrompt": "ABLE"
+          },
+          {
+            "id": "b1-u12-exf-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Their ...... improved after they talked honestly. (RELATE)",
+            "answer": "relationship",
+            "acceptedAnswers": [
+              "relationship"
+            ],
+            "explanation": "",
+            "verbPrompt": "RELATE"
+          }
+        ]
+      },
+      {
+        "id": "b1-u12-ex-g",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "Multiple choice",
+        "title": "Multiple choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "G",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u12-exg-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I like spending time",
+            "sentenceAfter": "because it helps me think.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "by yourself"
+              },
+              {
+                "letter": "B",
+                "text": "in contact"
+              },
+              {
+                "letter": "C",
+                "text": "on purpose"
+              },
+              {
+                "letter": "D",
+                "text": "on my own"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exg-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My cousins and I",
+            "sentenceAfter": "really well.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "split up"
+              },
+              {
+                "letter": "B",
+                "text": "get on"
+              },
+              {
+                "letter": "C",
+                "text": "let down"
+              },
+              {
+                "letter": "D",
+                "text": "grow up"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exg-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Please don't",
+            "sentenceAfter": "me again. I need the truth.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "trust"
+              },
+              {
+                "letter": "B",
+                "text": "defend"
+              },
+              {
+                "letter": "C",
+                "text": "lie to"
+              },
+              {
+                "letter": "D",
+                "text": "bring up"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exg-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She was proud",
+            "sentenceAfter": "her brother when he won the prize.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "with"
+              },
+              {
+                "letter": "B",
+                "text": "of"
+              },
+              {
+                "letter": "C",
+                "text": "to"
+              },
+              {
+                "letter": "D",
+                "text": "for"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exg-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We stay",
+            "sentenceAfter": "contact by sending messages every week.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in"
+              },
+              {
+                "letter": "B",
+                "text": "on"
+              },
+              {
+                "letter": "C",
+                "text": "at"
+              },
+              {
+                "letter": "D",
+                "text": "by"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exg-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Can you",
+            "sentenceAfter": "my little sister after school?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "look after"
+              },
+              {
+                "letter": "B",
+                "text": "go out with"
+              },
+              {
+                "letter": "C",
+                "text": "fall out with"
+              },
+              {
+                "letter": "D",
+                "text": "split up"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u12-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Mixed revision",
+        "title": "Mixed revision",
+        "instructions": "Complete the sentences with one suitable word.",
+        "studentInstruction": "Complete the sentences with one suitable word.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u12-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I don't want to argue ...... my parents tonight.",
+            "answer": "with",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They ...... up after a long relationship.",
+            "answer": "split",
+            "acceptedAnswers": [
+              "split"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He's in a bad ...... because he lost his phone.",
+            "answer": "mood",
+            "acceptedAnswers": [
+              "mood"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you ...... me to your cousin?",
+            "answer": "introduce",
+            "acceptedAnswers": [
+              "introduce"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It was very ...... of you to help the new student.",
+            "answer": "kind",
+            "acceptedAnswers": [
+              "kind"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I didn't say that on ...... . It was an accident.",
+            "answer": "purpose",
+            "acceptedAnswers": [
+              "purpose"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exh-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They rent a small ...... near the university.",
+            "answer": "flat",
+            "acceptedAnswers": [
+              "flat"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exh-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I keep in ...... with my old neighbours.",
+            "answer": "contact",
+            "acceptedAnswers": [
+              "contact"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

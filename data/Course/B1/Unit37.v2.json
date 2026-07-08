@@ -1,0 +1,947 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 13,
+  "unit": 37,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 37: -ing & infinitive",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 37: -ing & infinitive"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit37.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 6
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u37-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "-ing",
+        "subtitle": "-ing",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "✓ She's thinking of **changing** her job."
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              {
+                "note": "Some phrases end with the preposition *to*. These phrases are also followed by the -ing form, not an infinitive."
+              },
+              {
+                "correct": "I'm used **to getting** up early."
+              },
+              {
+                "incorrect": "I'm used **to get** up early."
+              },
+              {
+                "note": "The -ing form can also function as the subject of a sentence."
+              },
+              {
+                "correct": "**Swimming** keeps you fit!"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Infinitive",
+        "subtitle": "Infinitive",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "Some verbs (let, make) are typically followed by an object + bare infinitive (without to).",
+              "When make is used in the passive, it is followed by a full infinitive: The students were made to rewrite their essays.",
+              "Some verbs can take either the infinitive alone or object + full infinitive: She needs him to explain the problem."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-3",
+        "title": "-ing or infinitive",
+        "subtitle": "-ing or infinitive",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Meaning changes",
+            "headers": [
+              "Verb",
+              "+ -ing",
+              "+ full infinitive"
+            ],
+            "rows": [
+              [
+                "remember",
+                "recall something that happened in the past",
+                "not forget to carry out a planned task"
+              ],
+              [
+                "forget",
+                "be unable to recall a past event or action",
+                "fail to do something that was planned"
+              ],
+              [
+                "stop",
+                "cease doing something permanently or for a time",
+                "pause in order to do something else"
+              ],
+              [
+                "try",
+                "attempt something as an experiment or solution",
+                "make an effort or attempt to do something"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u37-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "mc_4_option",
+        "free_text_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 25,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u37-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u37-exa-1",
+            "b1-u37-exa-2",
+            "b1-u37-exa-3",
+            "b1-u37-exa-4",
+            "b1-u37-exa-5",
+            "b1-u37-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u37-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u37-exb-1",
+            "b1-u37-exb-2",
+            "b1-u37-exb-3",
+            "b1-u37-exb-4",
+            "b1-u37-exb-5",
+            "b1-u37-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u37-ex-c",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u37-exc-1",
+            "b1-u37-exc-2",
+            "b1-u37-exc-3",
+            "b1-u37-exc-4",
+            "b1-u37-exc-5",
+            "b1-u37-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u37-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u37-exd-1",
+            "b1-u37-exd-2",
+            "b1-u37-exd-3",
+            "b1-u37-exd-4",
+            "b1-u37-exd-5",
+            "b1-u37-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u37-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u37-exe-1",
+            "b1-u37-exe-2",
+            "b1-u37-exe-3",
+            "b1-u37-exe-4",
+            "b1-u37-exe-5",
+            "b1-u37-exe-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u37-ex-f",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u37-exf-1",
+            "b1-u37-exf-2",
+            "b1-u37-exf-3",
+            "b1-u37-exf-4",
+            "b1-u37-exf-5",
+            "b1-u37-exf-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 36,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u37-ex-a",
+      "b1-u37-ex-b",
+      "b1-u37-ex-c",
+      "b1-u37-ex-d",
+      "b1-u37-ex-e",
+      "b1-u37-ex-f"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u37-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: -ing or infinitive",
+        "title": "A: -ing or infinitive",
+        "instructions": "Complete each sentence with the correct form of the verb in brackets.",
+        "studentInstruction": "Complete each sentence with the correct form of the verb in brackets.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u37-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My sister loves ...... (paint) landscapes.",
+            "answer": "painting",
+            "acceptedAnswers": [
+              "painting"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "They agreed ...... (meet) after school.",
+            "answer": "to meet",
+            "acceptedAnswers": [
+              "to meet"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "We hope ...... (visit) Italy next summer.",
+            "answer": "to visit",
+            "acceptedAnswers": [
+              "to visit"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "He dislikes ...... (wait) for buses.",
+            "answer": "waiting",
+            "acceptedAnswers": [
+              "waiting"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Would you mind ...... (close) the door?",
+            "answer": "closing",
+            "acceptedAnswers": [
+              "closing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "She offered ...... (carry) my bag.",
+            "answer": "to carry",
+            "acceptedAnswers": [
+              "to carry"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u37-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: After prepositions",
+        "title": "B: After prepositions",
+        "instructions": "Write the -ing form after each preposition.",
+        "studentInstruction": "Write the -ing form after each preposition.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u37-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "She's excited about ...... (travel) abroad.",
+            "answer": "travelling",
+            "acceptedAnswers": [
+              "travelling",
+              "traveling"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Thank you for ...... (invite) me.",
+            "answer": "inviting",
+            "acceptedAnswers": [
+              "inviting"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "He's interested in ...... (collect) coins.",
+            "answer": "collecting",
+            "acceptedAnswers": [
+              "collecting"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "They're worried about ...... (miss) the train.",
+            "answer": "missing",
+            "acceptedAnswers": [
+              "missing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "We talked about ...... (study) together.",
+            "answer": "studying",
+            "acceptedAnswers": [
+              "studying"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I'm used to ...... (wake) up early.",
+            "answer": "waking",
+            "acceptedAnswers": [
+              "waking"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u37-ex-c",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "C: Meaning changes",
+        "title": "C: Meaning changes",
+        "instructions": "Choose the correct form to complete each sentence.",
+        "studentInstruction": "Choose the correct form to complete each sentence.",
+        "legacyKey": "C",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u37-exc-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I forgot ...... him at the party last year.",
+            "sentenceAfter": "",
+            "options": [
+              "meeting",
+              "to meet"
+            ],
+            "answer": "meeting",
+            "originalSentence": "I forgot ...... him at the party last year. **meeting / to meet**",
+            "completedSentence": "I forgot ...... him at the party last year. meeting"
+          },
+          {
+            "id": "b1-u37-exc-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Don't forget ...... the lights before you leave.",
+            "sentenceAfter": "",
+            "options": [
+              "switching off",
+              "to switch off"
+            ],
+            "answer": "to switch off",
+            "originalSentence": "Don't forget ...... the lights before you leave. **switching off / to switch off**",
+            "completedSentence": "Don't forget ...... the lights before you leave. to switch off"
+          },
+          {
+            "id": "b1-u37-exc-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She stopped ...... basketball after her injury.",
+            "sentenceAfter": "",
+            "options": [
+              "playing",
+              "to play"
+            ],
+            "answer": "playing",
+            "originalSentence": "She stopped ...... basketball after her injury. **playing / to play**",
+            "completedSentence": "She stopped ...... basketball after her injury. playing"
+          },
+          {
+            "id": "b1-u37-exc-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We stopped ...... some snacks during the journey.",
+            "sentenceAfter": "",
+            "options": [
+              "buying",
+              "to buy"
+            ],
+            "answer": "to buy",
+            "originalSentence": "We stopped ...... some snacks during the journey. **buying / to buy**",
+            "completedSentence": "We stopped ...... some snacks during the journey. to buy"
+          },
+          {
+            "id": "b1-u37-exc-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Try ...... some honey if your throat hurts.",
+            "sentenceAfter": "",
+            "options": [
+              "adding",
+              "to add"
+            ],
+            "answer": "adding",
+            "originalSentence": "Try ...... some honey if your throat hurts. **adding / to add**",
+            "completedSentence": "Try ...... some honey if your throat hurts. adding"
+          },
+          {
+            "id": "b1-u37-exc-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "He's trying ...... more exercise every week.",
+            "sentenceAfter": "",
+            "options": [
+              "doing",
+              "to do"
+            ],
+            "answer": "to do",
+            "originalSentence": "He's trying ...... more exercise every week. **doing / to do**",
+            "completedSentence": "He's trying ...... more exercise every week. to do"
+          }
+        ]
+      },
+      {
+        "id": "b1-u37-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Bare infinitive",
+        "title": "D: Bare infinitive",
+        "instructions": "Choose the correct form: bare infinitive or to-infinitive.",
+        "studentInstruction": "Choose the correct form: bare infinitive or to-infinitive.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u37-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My dad let me",
+            "sentenceAfter": "his bike.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "use"
+              },
+              {
+                "letter": "B",
+                "text": "to use"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The coach made us",
+            "sentenceAfter": "extra training.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "do"
+              },
+              {
+                "letter": "B",
+                "text": "to do"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She was made",
+            "sentenceAfter": "after class.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "stay"
+              },
+              {
+                "letter": "B",
+                "text": "to stay"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The doctor advised him",
+            "sentenceAfter": "more water.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "drink"
+              },
+              {
+                "letter": "B",
+                "text": "to drink"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They asked us",
+            "sentenceAfter": "quiet.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "be"
+              },
+              {
+                "letter": "B",
+                "text": "to be"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Would you like",
+            "sentenceAfter": "a game with us?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "play"
+              },
+              {
+                "letter": "B",
+                "text": "to play"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u37-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Multiple choice",
+        "title": "E: Multiple choice",
+        "instructions": "Choose the correct option.",
+        "studentInstruction": "Choose the correct option.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u37-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She suggested",
+            "sentenceAfter": "earlier next time.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "leave"
+              },
+              {
+                "letter": "B",
+                "text": "leaving"
+              },
+              {
+                "letter": "C",
+                "text": "to leave"
+              },
+              {
+                "letter": "D",
+                "text": "left"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We can't afford",
+            "sentenceAfter": "another holiday this year.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "take"
+              },
+              {
+                "letter": "B",
+                "text": "taking"
+              },
+              {
+                "letter": "C",
+                "text": "to take"
+              },
+              {
+                "letter": "D",
+                "text": "took"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Do you feel like",
+            "sentenceAfter": "a film tonight?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "watch"
+              },
+              {
+                "letter": "B",
+                "text": "watching"
+              },
+              {
+                "letter": "C",
+                "text": "to watch"
+              },
+              {
+                "letter": "D",
+                "text": "watched"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Please remember",
+            "sentenceAfter": "the windows before you go out.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "close"
+              },
+              {
+                "letter": "B",
+                "text": "closing"
+              },
+              {
+                "letter": "C",
+                "text": "to close"
+              },
+              {
+                "letter": "D",
+                "text": "closed"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The teacher made us",
+            "sentenceAfter": "the exercise again.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "do"
+              },
+              {
+                "letter": "B",
+                "text": "to do"
+              },
+              {
+                "letter": "C",
+                "text": "doing"
+              },
+              {
+                "letter": "D",
+                "text": "done"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Saving money helps us",
+            "sentenceAfter": "more independent.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "become"
+              },
+              {
+                "letter": "B",
+                "text": "becoming"
+              },
+              {
+                "letter": "C",
+                "text": "to become"
+              },
+              {
+                "letter": "D",
+                "text": "became"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u37-ex-f",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "F: Key word transformation",
+        "title": "F: Key word transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning.",
+        "legacyKey": "F",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u37-exf-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I have a memory of visiting that museum. **REMEMBER**\nI ...... that museum.",
+            "answer": "remember visiting",
+            "acceptedAnswers": [
+              "remember visiting"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exf-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't forget that you must lock the door. **REMEMBER**\n...... the door.",
+            "answer": "Remember to lock",
+            "acceptedAnswers": [
+              "Remember to lock"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exf-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We paused our game in order to answer the phone. **STOPPED**\nWe ...... the phone.",
+            "answer": "stopped to answer",
+            "acceptedAnswers": [
+              "stopped to answer"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exf-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I experimented with fixing the problem by turning the computer off. **TRY**\n...... the computer off.",
+            "answer": "I tried turning",
+            "acceptedAnswers": [
+              "I tried turning"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exf-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The teacher forced us to stay after school. **MADE**\nThe teacher ...... after school.",
+            "answer": "made us stay",
+            "acceptedAnswers": [
+              "made us stay"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u37-exf-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They forced him to apologise. **MADE**\nHe ...... apologise.",
+            "answer": "was made to",
+            "acceptedAnswers": [
+              "was made to"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,928 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 5,
+  "unit": 15,
+  "type": "vocabulary",
+  "unitTitle": "[V2] Unit 15: Buying and selling",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 15: Buying and selling"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit15.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 7
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u15-theory",
+    "title": "Topic vocabulary",
+    "shortTitle": "Vocabulary",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b1-u15-theory-card-1",
+        "title": "Unit 15: Buying and selling",
+        "subtitle": "",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Unit focus",
+            "items": [
+              "buying and selling"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u15-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 33,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u15-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u15-exa-1",
+            "b1-u15-exa-2",
+            "b1-u15-exa-3",
+            "b1-u15-exa-4",
+            "b1-u15-exa-5",
+            "b1-u15-exa-6",
+            "b1-u15-exa-7",
+            "b1-u15-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u15-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u15-exb-1",
+            "b1-u15-exb-2",
+            "b1-u15-exb-3",
+            "b1-u15-exb-4",
+            "b1-u15-exb-5",
+            "b1-u15-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u15-ex-c",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u15-exc-1",
+            "b1-u15-exc-2",
+            "b1-u15-exc-3",
+            "b1-u15-exc-4",
+            "b1-u15-exc-5",
+            "b1-u15-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u15-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u15-exd-1",
+            "b1-u15-exd-2",
+            "b1-u15-exd-3",
+            "b1-u15-exd-4",
+            "b1-u15-exd-5",
+            "b1-u15-exd-6",
+            "b1-u15-exd-7",
+            "b1-u15-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u15-ex-e",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u15-exe-1",
+            "b1-u15-exe-2",
+            "b1-u15-exe-3",
+            "b1-u15-exe-4",
+            "b1-u15-exe-5",
+            "b1-u15-exe-6",
+            "b1-u15-exe-7",
+            "b1-u15-exe-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u15-ex-f",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u15-exf-1",
+            "b1-u15-exf-2",
+            "b1-u15-exf-3",
+            "b1-u15-exf-4",
+            "b1-u15-exf-5",
+            "b1-u15-exf-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u15-ex-h",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u15-exh-1",
+            "b1-u15-exh-2",
+            "b1-u15-exh-3",
+            "b1-u15-exh-4",
+            "b1-u15-exh-5",
+            "b1-u15-exh-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 48,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u15-ex-a",
+      "b1-u15-ex-b",
+      "b1-u15-ex-c",
+      "b1-u15-ex-d",
+      "b1-u15-ex-e",
+      "b1-u15-ex-f",
+      "b1-u15-ex-h"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u15-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Topic vocabulary (gap fill)",
+        "title": "Topic vocabulary (gap fill)",
+        "instructions": "Complete the sentences with words from the unit.",
+        "studentInstruction": "Complete the sentences with words from the unit.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u15-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There was an ...... for a new phone on the bus stop.",
+            "answer": "advertisement",
+            "acceptedAnswers": [
+              "advertisement"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I can't ...... those trainers because they cost too much.",
+            "answer": "afford",
+            "acceptedAnswers": [
+              "afford"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This second-hand bike was a real ...... at only €40.",
+            "answer": "bargain",
+            "acceptedAnswers": [
+              "bargain"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Always keep the ...... in case you need to take something back.",
+            "answer": "receipt",
+            "acceptedAnswers": [
+              "receipt"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I gave the assistant €10 and waited for my ...... .",
+            "answer": "change",
+            "acceptedAnswers": [
+              "change"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The market sells a wide ...... of fresh fruit and vegetables.",
+            "answer": "variety",
+            "acceptedAnswers": [
+              "variety"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm trying to ...... enough money for a tablet.",
+            "answer": "save",
+            "acceptedAnswers": [
+              "save"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The sofa is used, but it's still in excellent ...... .",
+            "answer": "condition",
+            "acceptedAnswers": [
+              "condition"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u15-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Phrasal verbs",
+        "title": "Phrasal verbs",
+        "instructions": "Complete each sentence with a phrasal verb from the box.",
+        "studentInstruction": "Complete each sentence with a phrasal verb from the box.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "add up",
+          "come back",
+          "give away",
+          "hurry up",
+          "pay back",
+          "save up",
+          "take back",
+          "take down"
+        ],
+        "wordBank": [
+          "add up",
+          "come back",
+          "give away",
+          "hurry up",
+          "pay back",
+          "save up",
+          "take back",
+          "take down"
+        ],
+        "items": [
+          {
+            "id": "b1-u15-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you ...... the total cost before we pay?",
+            "answer": "add up",
+            "acceptedAnswers": [
+              "add up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm going to ...... these shoes because they hurt my feet.",
+            "answer": "take back",
+            "acceptedAnswers": [
+              "take back"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please ......! The sale ends in ten minutes.",
+            "answer": "hurry up",
+            "acceptedAnswers": [
+              "hurry up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I borrowed £15 from Mia and promised to ...... it ...... on Friday.",
+            "answer": "pay back",
+            "acceptedAnswers": [
+              "pay back"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Liam is ...... for a new games console.",
+            "answer": "saving up",
+            "acceptedAnswers": [
+              "saving up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The shop will ...... free bags to the first fifty customers.",
+            "answer": "give away",
+            "acceptedAnswers": [
+              "give away"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u15-ex-c",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Prepositional phrases",
+        "title": "Prepositional phrases",
+        "instructions": "Choose the correct phrase to complete each sentence.",
+        "studentInstruction": "Choose the correct phrase to complete each sentence.",
+        "legacyKey": "C",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u15-exc-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Do you want to pay",
+            "sentenceAfter": "or by card?",
+            "options": [
+              "in cash",
+              "for rent",
+              "in debt"
+            ],
+            "answer": "in cash",
+            "originalSentence": "Do you want to pay **in cash / for rent / in debt** or by card?",
+            "completedSentence": "Do you want to pay in cash or by card?"
+          },
+          {
+            "id": "b1-u15-exc-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Their old car is",
+            "sentenceAfter": ".",
+            "options": [
+              "for sale",
+              "in cash",
+              "by credit card"
+            ],
+            "answer": "for sale",
+            "originalSentence": "Their old car is **for sale / in cash / by credit card**.",
+            "completedSentence": "Their old car is for sale ."
+          },
+          {
+            "id": "b1-u15-exc-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "That small office is",
+            "sentenceAfter": ".",
+            "options": [
+              "for rent",
+              "in debt",
+              "in cash"
+            ],
+            "answer": "for rent",
+            "originalSentence": "That small office is **for rent / in debt / in cash**.",
+            "completedSentence": "That small office is for rent ."
+          },
+          {
+            "id": "b1-u15-exc-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She paid for the hotel",
+            "sentenceAfter": ".",
+            "options": [
+              "by credit card",
+              "for sale",
+              "in debt"
+            ],
+            "answer": "by credit card",
+            "originalSentence": "She paid for the hotel **by credit card / for sale / in debt**.",
+            "completedSentence": "She paid for the hotel by credit card ."
+          },
+          {
+            "id": "b1-u15-exc-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "He was",
+            "sentenceAfter": "after borrowing too much money.",
+            "options": [
+              "in debt",
+              "for rent",
+              "in good condition"
+            ],
+            "answer": "in debt",
+            "originalSentence": "He was **in debt / for rent / in good condition** after borrowing too much money.",
+            "completedSentence": "He was in debt after borrowing too much money."
+          },
+          {
+            "id": "b1-u15-exc-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The phone is second-hand but",
+            "sentenceAfter": ".",
+            "options": [
+              "in good condition",
+              "for sale",
+              "in cash"
+            ],
+            "answer": "in good condition",
+            "originalSentence": "The phone is second-hand but **in good condition / for sale / in cash**.",
+            "completedSentence": "The phone is second-hand but in good condition ."
+          }
+        ]
+      },
+      {
+        "id": "b1-u15-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Word patterns",
+        "title": "Word patterns",
+        "instructions": "Complete each sentence with one suitable preposition.",
+        "studentInstruction": "Complete each sentence with one suitable preposition.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u15-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This jacket belongs ...... my brother.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Did you borrow that book ...... the library?",
+            "answer": "from",
+            "acceptedAnswers": [
+              "from"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We bought our sofa ...... a furniture shop outside town.",
+            "answer": "from",
+            "acceptedAnswers": [
+              "from"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I can't choose ...... the red bag and the blue one.",
+            "answer": "between",
+            "acceptedAnswers": [
+              "between"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's useful to compare prices ...... different websites.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Have you decided ...... a birthday present for Tom?",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exd-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you lend your calculator ...... me for a minute?",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u15-exd-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She spent all her money ...... clothes.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u15-ex-e",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Word formation",
+        "title": "Word formation",
+        "instructions": "Complete the sentence with the correct form of the word in capitals.",
+        "studentInstruction": "Complete the sentence with the correct form of the word in capitals.",
+        "legacyKey": "E",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u15-exe-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The final bill included an ...... for service. (ADD)",
+            "answer": "addition",
+            "acceptedAnswers": [
+              "addition"
+            ],
+            "explanation": "",
+            "verbPrompt": "ADD"
+          },
+          {
+            "id": "b1-u15-exe-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "This online course is cheap and very ...... . (AFFORD)",
+            "answer": "affordable",
+            "acceptedAnswers": [
+              "affordable"
+            ],
+            "explanation": "",
+            "verbPrompt": "AFFORD"
+          },
+          {
+            "id": "b1-u15-exe-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "There is no ...... between the two products; they are almost the same. (COMPARE)",
+            "answer": "comparison",
+            "acceptedAnswers": [
+              "comparison"
+            ],
+            "explanation": "",
+            "verbPrompt": "COMPARE"
+          },
+          {
+            "id": "b1-u15-exe-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Choosing the smaller flat was a sensible ...... . (DECIDE)",
+            "answer": "decision",
+            "acceptedAnswers": [
+              "decision"
+            ],
+            "explanation": "",
+            "verbPrompt": "DECIDE"
+          },
+          {
+            "id": "b1-u15-exe-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "This watch looks nice, but it isn't very ...... . (EXPENSE)",
+            "answer": "expensive",
+            "acceptedAnswers": [
+              "expensive"
+            ],
+            "explanation": "",
+            "verbPrompt": "EXPENSE"
+          },
+          {
+            "id": "b1-u15-exe-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "That shopping app is really ...... for comparing prices. (USE)",
+            "answer": "useful",
+            "acceptedAnswers": [
+              "useful"
+            ],
+            "explanation": "",
+            "verbPrompt": "USE"
+          },
+          {
+            "id": "b1-u15-exe-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Please tell me the ...... about how much it cost. (TRUE)",
+            "answer": "truth",
+            "acceptedAnswers": [
+              "truth"
+            ],
+            "explanation": "",
+            "verbPrompt": "TRUE"
+          },
+          {
+            "id": "b1-u15-exe-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "This old coin is quite ...... . (VALUE)",
+            "answer": "valuable",
+            "acceptedAnswers": [
+              "valuable"
+            ],
+            "explanation": "",
+            "verbPrompt": "VALUE"
+          }
+        ]
+      },
+      {
+        "id": "b1-u15-ex-f",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Word formation",
+        "title": "Word formation",
+        "instructions": "Complete each sentence with the correct form of the word in capitals.",
+        "studentInstruction": "Complete each sentence with the correct form of the word in capitals.",
+        "legacyKey": "F",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u15-exf-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My parents made a good ...... when they bought that property. (INVEST)",
+            "answer": "investment",
+            "acceptedAnswers": [
+              "investment"
+            ],
+            "explanation": "",
+            "verbPrompt": "INVEST"
+          },
+          {
+            "id": "b1-u15-exf-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The business owner became very ...... after opening five shops. (WEALTH)",
+            "answer": "wealthy",
+            "acceptedAnswers": [
+              "wealthy"
+            ],
+            "explanation": "",
+            "verbPrompt": "WEALTH"
+          },
+          {
+            "id": "b1-u15-exf-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The ...... of the new supermarket is on Saturday. (OPEN)",
+            "answer": "opening",
+            "acceptedAnswers": [
+              "opening"
+            ],
+            "explanation": "",
+            "verbPrompt": "OPEN"
+          },
+          {
+            "id": "b1-u15-exf-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "You need financial ...... if you use a credit card. (RESPONSIBLE)",
+            "answer": "responsibility",
+            "acceptedAnswers": [
+              "responsibility"
+            ],
+            "explanation": "",
+            "verbPrompt": "RESPONSIBLE"
+          },
+          {
+            "id": "b1-u15-exf-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "There was a 20% ...... on winter coats. (REDUCE)",
+            "answer": "reduction",
+            "acceptedAnswers": [
+              "reduction"
+            ],
+            "explanation": "",
+            "verbPrompt": "REDUCE"
+          },
+          {
+            "id": "b1-u15-exf-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The company offers ...... to many local people. (EMPLOY)",
+            "answer": "employment",
+            "acceptedAnswers": [
+              "employment"
+            ],
+            "explanation": "",
+            "verbPrompt": "EMPLOY"
+          }
+        ]
+      },
+      {
+        "id": "b1-u15-ex-h",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Word building",
+        "title": "Word building",
+        "instructions": "Complete each sentence with the correct form of the word in brackets.",
+        "studentInstruction": "Complete each sentence with the correct form of the word in brackets.",
+        "legacyKey": "H",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "words": [
+          "DETERMINE",
+          "CREATE",
+          "BRAVE",
+          "ORGANISE",
+          "ABLE",
+          "ATTEND"
+        ],
+        "wordBank": [
+          "DETERMINE",
+          "CREATE",
+          "BRAVE",
+          "ORGANISE",
+          "ABLE",
+          "ATTEND"
+        ],
+        "items": [
+          {
+            "id": "b1-u15-exh-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Her ...... helped her save enough money for the trip. (DETERMINE)",
+            "answer": "determination",
+            "acceptedAnswers": [
+              "determination"
+            ],
+            "explanation": "",
+            "verbPrompt": "DETERMINE"
+          },
+          {
+            "id": "b1-u15-exh-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The shop window showed a lot of ...... . (CREATE)",
+            "answer": "creativity",
+            "acceptedAnswers": [
+              "creativity"
+            ],
+            "explanation": "",
+            "verbPrompt": "CREATE"
+          },
+          {
+            "id": "b1-u15-exh-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "It took real ...... to start a business at sixteen. (BRAVE)",
+            "answer": "bravery",
+            "acceptedAnswers": [
+              "bravery"
+            ],
+            "explanation": "",
+            "verbPrompt": "BRAVE"
+          },
+          {
+            "id": "b1-u15-exh-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The ...... of the charity sale was excellent. (ORGANISE)",
+            "answer": "organisation",
+            "acceptedAnswers": [
+              "organisation"
+            ],
+            "explanation": "",
+            "verbPrompt": "ORGANISE"
+          },
+          {
+            "id": "b1-u15-exh-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "His ...... to bargain helped him get a lower price. (ABLE)",
+            "answer": "ability",
+            "acceptedAnswers": [
+              "ability"
+            ],
+            "explanation": "",
+            "verbPrompt": "ABLE"
+          },
+          {
+            "id": "b1-u15-exh-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "You must pay ...... to the small details on the receipt. (ATTEND)",
+            "answer": "attention",
+            "acceptedAnswers": [
+              "attention"
+            ],
+            "explanation": "",
+            "verbPrompt": "ATTEND"
+          }
+        ]
+      }
+    ]
+  }
+}

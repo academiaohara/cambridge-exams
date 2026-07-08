@@ -1,0 +1,1275 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 5,
+  "unit": 14,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 14: Articles",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 14: Articles"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit14.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 9
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u14-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "a (indefinite article)",
+        "subtitle": "a (indefinite article)",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "singular countable nouns that are not specific or not yet known to the listener: I'm looking for **a** good restaurant around here."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "an (indefinite article)",
+        "subtitle": "an (indefinite article)",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "used instead of *a* when the following word begins with a vowel sound: She waited for **an** entire hour."
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "theory-card-3",
+        "title": "the (definite article)",
+        "subtitle": "the (definite article)",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "singular countable nouns (specific): Have you been to **the** new café on the high street?",
+              "plural countable nouns (specific): Did you read **the** messages I sent you?",
+              "uncountable nouns (specific): She handed **the** money to the cashier and walked out."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-4",
+        "title": "No article (zero article)",
+        "subtitle": "No article (zero article)",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "plural countable nouns (general): Smartphones have changed the way we communicate.",
+              "uncountable nouns (general): Regular exercise is essential for good health."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-5",
+        "title": "Special rules",
+        "subtitle": "Special rules",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Places",
+            "headers": [
+              "Article",
+              "Examples"
+            ],
+            "rows": [
+              [
+                "the",
+                "seas (the Atlantic), rivers (the Amazon), areas (the Antarctic), some countries (the USA, the UK), public buildings (the theatre), the Earth, the world, the sky, the moon, the sun, the sea, the environment"
+              ],
+              [
+                "no article",
+                "towns and cities (Moscow), most countries (France), continents (Europe), streets (Baker Street), planets (Mars)"
+              ]
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Activities",
+            "headers": [
+              "Article",
+              "Examples"
+            ],
+            "rows": [
+              [
+                "a/an",
+                "have a job, work as a ..."
+              ],
+              [
+                "the",
+                "on the radio, the media, play the piano"
+              ],
+              [
+                "no article",
+                "go to work, on TV, go shopping, play tennis, listen to music, go to school, be at school, be at university, school subjects (maths)"
+              ]
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Time",
+            "headers": [
+              "Article",
+              "Examples"
+            ],
+            "rows": [
+              [
+                "the",
+                "in the morning/afternoon/evening, on the 20th March, in the 1950s"
+              ],
+              [
+                "no article",
+                "days (Thursday), months (May), years (2009), at night"
+              ]
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "People",
+            "headers": [
+              "Article",
+              "Examples"
+            ],
+            "rows": [
+              [
+                "the",
+                "the King, the Prime Minister, the army, the navy, the police, the Germans, the English"
+              ],
+              [
+                "no article",
+                "become king, he's English, speak English"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "error_correction",
+        "displayName": "Correct the error",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_correction_input",
+          "studentAction": "type_correction",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u14-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "error_correction"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 47,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u14-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u14-exa-1",
+            "b1-u14-exa-2",
+            "b1-u14-exa-3",
+            "b1-u14-exa-4",
+            "b1-u14-exa-5",
+            "b1-u14-exa-6",
+            "b1-u14-exa-7",
+            "b1-u14-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u14-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u14-exb-1",
+            "b1-u14-exb-2",
+            "b1-u14-exb-3",
+            "b1-u14-exb-4",
+            "b1-u14-exb-5",
+            "b1-u14-exb-6",
+            "b1-u14-exb-7",
+            "b1-u14-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u14-ex-c",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u14-exc-1",
+            "b1-u14-exc-2",
+            "b1-u14-exc-3",
+            "b1-u14-exc-4",
+            "b1-u14-exc-5",
+            "b1-u14-exc-6",
+            "b1-u14-exc-7",
+            "b1-u14-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u14-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u14-exd-1",
+            "b1-u14-exd-2",
+            "b1-u14-exd-3",
+            "b1-u14-exd-4",
+            "b1-u14-exd-5",
+            "b1-u14-exd-6",
+            "b1-u14-exd-7",
+            "b1-u14-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u14-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u14-exe-1",
+            "b1-u14-exe-2",
+            "b1-u14-exe-3",
+            "b1-u14-exe-4",
+            "b1-u14-exe-5",
+            "b1-u14-exe-6",
+            "b1-u14-exe-7",
+            "b1-u14-exe-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u14-ex-f",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u14-exf-1",
+            "b1-u14-exf-2",
+            "b1-u14-exf-3",
+            "b1-u14-exf-4",
+            "b1-u14-exf-5",
+            "b1-u14-exf-6",
+            "b1-u14-exf-7",
+            "b1-u14-exf-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u14-ex-g",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u14-exg-1",
+            "b1-u14-exg-2",
+            "b1-u14-exg-3",
+            "b1-u14-exg-4",
+            "b1-u14-exg-5",
+            "b1-u14-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u14-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u14-exh-1",
+            "b1-u14-exh-2",
+            "b1-u14-exh-3",
+            "b1-u14-exh-4",
+            "b1-u14-exh-5",
+            "b1-u14-exh-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u14-ex-i",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u14-exi-1",
+            "b1-u14-exi-2",
+            "b1-u14-exi-3",
+            "b1-u14-exi-4",
+            "b1-u14-exi-5",
+            "b1-u14-exi-6",
+            "b1-u14-exi-7",
+            "b1-u14-exi-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 68,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u14-ex-a",
+      "b1-u14-ex-b",
+      "b1-u14-ex-c",
+      "b1-u14-ex-d",
+      "b1-u14-ex-e",
+      "b1-u14-ex-f",
+      "b1-u14-ex-g",
+      "b1-u14-ex-h",
+      "b1-u14-ex-i"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u14-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: a, an or the",
+        "title": "A: a, an or the",
+        "instructions": "Complete each sentence with a, an or the.",
+        "studentInstruction": "Complete each sentence with a, an or the.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We stayed in ...... amazing hotel near the beach.",
+            "answer": "an",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you open ...... door for me, please?",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My uncle is ...... architect in Barcelona.",
+            "answer": "an",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They bought ...... new sofa for the living room.",
+            "answer": "a",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Where are ...... tickets for the concert?",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She waited for ...... hour outside the cinema.",
+            "answer": "an",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We saw ...... beautiful castle during our trip.",
+            "answer": "a",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I really enjoyed ...... book you lent me.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u14-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Article or no article",
+        "title": "B: Article or no article",
+        "instructions": "Write a, an, the or - (no article).",
+        "studentInstruction": "Write a, an, the or - (no article).",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... chocolate can be bad for dogs.",
+            "answer": "-",
+            "acceptedAnswers": [
+              "-"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can I borrow ...... umbrella?",
+            "answer": "an",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... sandwiches on the table are for the guests.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My aunt is ...... doctor.",
+            "answer": "a",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I usually walk to ...... university.",
+            "answer": "-",
+            "acceptedAnswers": [
+              "-"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We met outside ...... university library.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My sister plays ...... violin in an orchestra.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My grandfather enjoys ...... jazz.",
+            "answer": "-",
+            "acceptedAnswers": [
+              "-"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u14-ex-c",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "C: Circle the correct word",
+        "title": "C: Circle the correct word",
+        "instructions": "Choose the correct option in each sentence.",
+        "studentInstruction": "Choose the correct option in each sentence.",
+        "legacyKey": "C",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exc-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She's",
+            "sentenceAfter": "excellent student.",
+            "options": [
+              "a",
+              "an"
+            ],
+            "answer": "an",
+            "originalSentence": "She's **a / an** excellent student.",
+            "completedSentence": "She's an excellent student."
+          },
+          {
+            "id": "b1-u14-exc-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We waited for",
+            "sentenceAfter": "hour in the rain.",
+            "options": [
+              "a",
+              "an"
+            ],
+            "answer": "an",
+            "originalSentence": "We waited for **a / an** hour in the rain.",
+            "completedSentence": "We waited for an hour in the rain."
+          },
+          {
+            "id": "b1-u14-exc-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "He needs",
+            "sentenceAfter": "uniform for his new job.",
+            "options": [
+              "a",
+              "an"
+            ],
+            "answer": "a",
+            "originalSentence": "He needs **a / an** uniform for his new job.",
+            "completedSentence": "He needs a uniform for his new job."
+          },
+          {
+            "id": "b1-u14-exc-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She paid with",
+            "sentenceAfter": "euro note.",
+            "options": [
+              "a",
+              "an"
+            ],
+            "answer": "a",
+            "originalSentence": "She paid with **a / an** euro note.",
+            "completedSentence": "She paid with a euro note."
+          },
+          {
+            "id": "b1-u14-exc-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Let's go to",
+            "sentenceAfter": "theatre tonight.",
+            "options": [
+              "the",
+              "-"
+            ],
+            "answer": "the",
+            "originalSentence": "Let's go to **the / -** theatre tonight.",
+            "completedSentence": "Let's go to the theatre tonight."
+          },
+          {
+            "id": "b1-u14-exc-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I saw the interview on",
+            "sentenceAfter": "TV.",
+            "options": [
+              "the",
+              "-"
+            ],
+            "answer": "-",
+            "originalSentence": "I saw the interview on **the / -** TV.",
+            "completedSentence": "I saw the interview on - TV."
+          },
+          {
+            "id": "b1-u14-exc-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "My dad is at",
+            "sentenceAfter": "work right now.",
+            "options": [
+              "the",
+              "-"
+            ],
+            "answer": "-",
+            "originalSentence": "My dad is at **the / -** work right now.",
+            "completedSentence": "My dad is at - work right now."
+          },
+          {
+            "id": "b1-u14-exc-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We heard the news on",
+            "sentenceAfter": "radio.",
+            "options": [
+              "the",
+              "-"
+            ],
+            "answer": "the",
+            "originalSentence": "We heard the news on **the / -** radio.",
+            "completedSentence": "We heard the news on the radio."
+          }
+        ]
+      },
+      {
+        "id": "b1-u14-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Special rules (places)",
+        "title": "D: Special rules (places)",
+        "instructions": "Complete with the if necessary. If no article is needed, write -.",
+        "studentInstruction": "Complete with the if necessary. If no article is needed, write -.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... Nile is one of the longest rivers in the world.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My cousin wants to travel around ...... Asia.",
+            "answer": "-",
+            "acceptedAnswers": [
+              "-"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They are visiting ...... USA this summer.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My brother works in ...... Germany.",
+            "answer": "-",
+            "acceptedAnswers": [
+              "-"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... Moon looks beautiful tonight.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We watched a play at ...... theatre last night.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My friends live in ...... Paris.",
+            "answer": "-",
+            "acceptedAnswers": [
+              "-"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Astronauts have travelled into space to study ...... Earth.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u14-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Special rules (activities and time)",
+        "title": "E: Special rules (activities and time)",
+        "instructions": "Write the missing article or - (no article).",
+        "studentInstruction": "Write the missing article or - (no article).",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My father goes to ...... work by train.",
+            "answer": "-",
+            "acceptedAnswers": [
+              "-"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We listened to the football match on ...... radio.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They often play ...... basketball after school.",
+            "answer": "-",
+            "acceptedAnswers": [
+              "-"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She can play ...... guitar really well.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The event takes place on ...... 15th June.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My grandparents were born in ...... 1960s.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'll see you on ...... Monday morning.",
+            "answer": "-",
+            "acceptedAnswers": [
+              "-"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We rarely go out at ...... night.",
+            "answer": "-",
+            "acceptedAnswers": [
+              "-"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u14-ex-f",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "F: Error correction",
+        "title": "F: Error correction",
+        "instructions": "Each sentence has one article mistake. Write the correct article, or '–' if no article is needed.",
+        "studentInstruction": "Each sentence has one article mistake. Write the correct article, or '–' if no article is needed.",
+        "legacyKey": "F",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exf-1",
+            "formatType": "error_correction",
+            "sentence": "He is an European football player.",
+            "highlightedText": "an",
+            "answer": "a",
+            "acceptedAnswers": [
+              "a"
+            ]
+          },
+          {
+            "id": "b1-u14-exf-2",
+            "formatType": "error_correction",
+            "sentence": "The French is spoken in several countries.",
+            "highlightedText": "The",
+            "answer": "–",
+            "acceptedAnswers": [
+              "–"
+            ]
+          },
+          {
+            "id": "b1-u14-exf-3",
+            "formatType": "error_correction",
+            "sentence": "She works as the receptionist in a hotel.",
+            "highlightedText": "the",
+            "answer": "a",
+            "acceptedAnswers": [
+              "a"
+            ]
+          },
+          {
+            "id": "b1-u14-exf-4",
+            "formatType": "error_correction",
+            "sentence": "We could see a sun from the mountain.",
+            "highlightedText": "a",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ]
+          },
+          {
+            "id": "b1-u14-exf-5",
+            "formatType": "error_correction",
+            "sentence": "They visited a British Museum in London.",
+            "highlightedText": "a",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ]
+          },
+          {
+            "id": "b1-u14-exf-6",
+            "formatType": "error_correction",
+            "sentence": "My grandmother listens to a radio every evening.",
+            "highlightedText": "a",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ]
+          },
+          {
+            "id": "b1-u14-exf-7",
+            "formatType": "error_correction",
+            "sentence": "The students are going to the school now.",
+            "highlightedText": "the",
+            "answer": "–",
+            "acceptedAnswers": [
+              "–"
+            ]
+          },
+          {
+            "id": "b1-u14-exf-8",
+            "formatType": "error_correction",
+            "sentence": "I love the classical music.",
+            "highlightedText": "the",
+            "answer": "–",
+            "acceptedAnswers": [
+              "–"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u14-ex-g",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "G: Error correction",
+        "title": "G: Error correction",
+        "instructions": "Each sentence has one article mistake. Find the error and write the whole sentence correctly.",
+        "studentInstruction": "Each sentence has one article mistake. Find the error and write the whole sentence correctly.",
+        "legacyKey": "G",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exg-1",
+            "formatType": "error_correction",
+            "sentence": "He bought an new laptop yesterday.",
+            "highlightedText": "an",
+            "answer": "He bought a new laptop yesterday.",
+            "acceptedAnswers": [
+              "He bought a new laptop yesterday."
+            ]
+          },
+          {
+            "id": "b1-u14-exg-2",
+            "formatType": "error_correction",
+            "sentence": "We had dinner at a hotel restaurant.",
+            "highlightedText": "a",
+            "answer": "We had dinner at the hotel restaurant.",
+            "acceptedAnswers": [
+              "We had dinner at the hotel restaurant."
+            ]
+          },
+          {
+            "id": "b1-u14-exg-3",
+            "formatType": "error_correction",
+            "sentence": "My uncle lives in the Italy.",
+            "highlightedText": "the",
+            "answer": "My uncle lives in Italy.",
+            "acceptedAnswers": [
+              "My uncle lives in Italy."
+            ]
+          },
+          {
+            "id": "b1-u14-exg-4",
+            "formatType": "error_correction",
+            "sentence": "Can your sister play a piano?",
+            "highlightedText": "a",
+            "answer": "Can your sister play the piano?",
+            "acceptedAnswers": [
+              "Can your sister play the piano?"
+            ]
+          },
+          {
+            "id": "b1-u14-exg-5",
+            "formatType": "error_correction",
+            "sentence": "She waited for a hour before calling again.",
+            "highlightedText": "a",
+            "answer": "She waited for an hour before calling again.",
+            "acceptedAnswers": [
+              "She waited for an hour before calling again."
+            ]
+          },
+          {
+            "id": "b1-u14-exg-6",
+            "formatType": "error_correction",
+            "sentence": "A students in this class are very friendly.",
+            "highlightedText": "A",
+            "answer": "The students in this class are very friendly.",
+            "acceptedAnswers": [
+              "The students in this class are very friendly."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u14-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "H: Key word transformation",
+        "title": "H: Key word transformation",
+        "instructions": "Complete the second sentence using the keyword given.",
+        "studentInstruction": "Complete the second sentence using the keyword given.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My mother works as doctor in a hospital. **A**\nMy mother works as ...... in a hospital.",
+            "answer": "a doctor",
+            "acceptedAnswers": [
+              "a doctor"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We heard the weather forecast on radio. **THE**\nWe heard the weather forecast on ...... .",
+            "answer": "the radio",
+            "acceptedAnswers": [
+              "the radio"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Her grandfather is in the prison now. **NO**\nHer grandfather is in ...... now.",
+            "answer": "prison",
+            "acceptedAnswers": [
+              "prison"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I enjoy reading books about history. **NO**\nI enjoy reading books about ...... .",
+            "answer": "history",
+            "acceptedAnswers": [
+              "history"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They are travelling around USA this summer. **THE**\nThey are travelling around ...... this summer.",
+            "answer": "the USA",
+            "acceptedAnswers": [
+              "the USA"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She studies at the university in Manchester. **NO**\nShe studies at ...... in Manchester.",
+            "answer": "university",
+            "acceptedAnswers": [
+              "university"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u14-ex-i",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "I: Mixed article practice",
+        "title": "I: Mixed article practice",
+        "instructions": "Complete each sentence with a, an, the or – (no article).",
+        "studentInstruction": "Complete each sentence with a, an, the or – (no article).",
+        "legacyKey": "I",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exi-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He plays ...... violin in the school orchestra.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exi-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I ate ...... orange after lunch.",
+            "answer": "an",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exi-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My sister works as ...... accountant.",
+            "answer": "an",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exi-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We visited ...... Colosseum during our holiday.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exi-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... Pacific Ocean is enormous.",
+            "answer": "The",
+            "acceptedAnswers": [
+              "The"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exi-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They go to ...... school on foot.",
+            "answer": "-",
+            "acceptedAnswers": [
+              "-"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exi-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He studied at ...... Cambridge University.",
+            "answer": "-",
+            "acceptedAnswers": [
+              "-"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exi-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It was ...... best concert I've ever seen.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

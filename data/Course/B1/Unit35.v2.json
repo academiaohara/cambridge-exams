@@ -1,0 +1,735 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 12,
+  "unit": 35,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 35: Wish",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 35: Wish"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit35.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 5
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u35-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "wish",
+        "subtitle": "wish",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Use",
+            "headers": [
+              "Use",
+              "Tense / modal",
+              "Example"
+            ],
+            "rows": [
+              [
+                "To express a wish about the present or a general situation",
+                "wish + past simple",
+                [
+                  "Maria wishes she **lived** near the sea.",
+                  "I wish I **wasn't** so nervous before exams."
+                ]
+              ],
+              [
+                "To express regret about something that happened in the past",
+                "wish + past perfect simple",
+                [
+                  "He wishes he **had listened** to his teacher's advice.",
+                  "I wish we **hadn't stayed** out so late last night."
+                ]
+              ],
+              [
+                "To express annoyance about someone's behaviour, or to complain",
+                "wish + would + bare infinitive",
+                [
+                  "I wish the neighbours **would stop** making so much noise.",
+                  "I wish you **wouldn't leave** your things everywhere."
+                ]
+              ],
+              [
+                "To express wishes about what is possible now or in the future",
+                "wish + could + bare infinitive",
+                [
+                  "She wishes she **could play** the piano.",
+                  "I wish I **could stay** longer, but I have to leave."
+                ]
+              ]
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "We don't use would when wishing for something about ourselves: I wish I knew the answer. (not I wish I would know the answer.)",
+              "For situations that might really happen in the future, use hope instead of wish: I hope the weather is nice tomorrow."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u35-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "free_text_gap_fill",
+        "full_sentence_write"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 22,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u35-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u35-exa-1",
+            "b1-u35-exa-2",
+            "b1-u35-exa-3",
+            "b1-u35-exa-4",
+            "b1-u35-exa-5",
+            "b1-u35-exa-6",
+            "b1-u35-exa-7",
+            "b1-u35-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u35-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u35-exb-1",
+            "b1-u35-exb-2",
+            "b1-u35-exb-3",
+            "b1-u35-exb-4",
+            "b1-u35-exb-5",
+            "b1-u35-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u35-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u35-exc-1",
+            "b1-u35-exc-2",
+            "b1-u35-exc-3",
+            "b1-u35-exc-4",
+            "b1-u35-exc-5",
+            "b1-u35-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u35-ex-d",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u35-exd-1",
+            "b1-u35-exd-2",
+            "b1-u35-exd-3",
+            "b1-u35-exd-4",
+            "b1-u35-exd-5",
+            "b1-u35-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u35-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u35-exe-1",
+            "b1-u35-exe-2",
+            "b1-u35-exe-3",
+            "b1-u35-exe-4",
+            "b1-u35-exe-5",
+            "b1-u35-exe-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 32,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u35-ex-a",
+      "b1-u35-ex-b",
+      "b1-u35-ex-c",
+      "b1-u35-ex-d",
+      "b1-u35-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u35-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Complete with the correct form",
+        "title": "A: Complete with the correct form",
+        "instructions": "Complete each sentence using wish and the verb in brackets.",
+        "studentInstruction": "Complete each sentence using wish and the verb in brackets.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u35-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I wish I ...... (know) how to cook better.",
+            "answer": "knew",
+            "acceptedAnswers": [
+              "knew"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Ella wishes she ...... (not be) afraid of spiders.",
+            "answer": "wasn't",
+            "acceptedAnswers": [
+              "wasn't",
+              "weren't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "We wish we ...... (can) travel around the world.",
+            "answer": "could",
+            "acceptedAnswers": [
+              "could"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "He wishes he ...... (take) more photos on holiday.",
+            "answer": "had taken",
+            "acceptedAnswers": [
+              "had taken"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I wish my brother ...... (not leave) his clothes on the floor.",
+            "answer": "wouldn't leave",
+            "acceptedAnswers": [
+              "wouldn't leave"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Sophie wishes she ...... (not lose) her keys yesterday.",
+            "answer": "hadn't lost",
+            "acceptedAnswers": [
+              "hadn't lost"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exa-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I wish I ...... (be) more confident.",
+            "answer": "was",
+            "acceptedAnswers": [
+              "was",
+              "were"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exa-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Daniel wishes he ...... (can play) the guitar.",
+            "answer": "could play",
+            "acceptedAnswers": [
+              "could play"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u35-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "B: Choose the correct option",
+        "title": "B: Choose the correct option",
+        "instructions": "Choose the best option for each sentence.",
+        "studentInstruction": "Choose the best option for each sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u35-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I wish I",
+            "sentenceAfter": "maths better.",
+            "options": [
+              "understand",
+              "understood",
+              "had understood"
+            ],
+            "answer": "understood",
+            "originalSentence": "I wish I **understand / understood / had understood** maths better.",
+            "completedSentence": "I wish I understood maths better."
+          },
+          {
+            "id": "b1-u35-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She wishes she",
+            "sentenceAfter": "so busy every weekend.",
+            "options": [
+              "wouldn't be",
+              "weren't",
+              "hadn't been"
+            ],
+            "answer": "weren't",
+            "originalSentence": "She wishes she **wouldn't be / weren't / hadn't been** so busy every weekend.",
+            "completedSentence": "She wishes she weren't so busy every weekend."
+          },
+          {
+            "id": "b1-u35-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I wish I",
+            "sentenceAfter": "ski.",
+            "options": [
+              "can",
+              "could",
+              "had been able"
+            ],
+            "answer": "could",
+            "originalSentence": "I wish I **can / could / had been able** ski.",
+            "completedSentence": "I wish I could ski."
+          },
+          {
+            "id": "b1-u35-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I wish you",
+            "sentenceAfter": "making that noise.",
+            "options": [
+              "don't leave",
+              "would stop",
+              "had stopped"
+            ],
+            "answer": "would stop",
+            "originalSentence": "I wish you **don't leave / would stop / had stopped** making that noise.",
+            "completedSentence": "I wish you would stop making that noise."
+          },
+          {
+            "id": "b1-u35-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "They wish they",
+            "sentenceAfter": "the museum yesterday.",
+            "options": [
+              "visited",
+              "had visited",
+              "would visit"
+            ],
+            "answer": "had visited",
+            "originalSentence": "They wish they **visited / had visited / would visit** the museum yesterday.",
+            "completedSentence": "They wish they had visited the museum yesterday."
+          },
+          {
+            "id": "b1-u35-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "If only I",
+            "sentenceAfter": "more organised.",
+            "options": [
+              "am",
+              "were",
+              "had been"
+            ],
+            "answer": "were",
+            "originalSentence": "If only I **am / were / had been** more organised.",
+            "completedSentence": "If only I were more organised."
+          }
+        ]
+      },
+      {
+        "id": "b1-u35-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Rewrite with wish or if only",
+        "title": "C: Rewrite with wish or if only",
+        "instructions": "Rewrite each sentence so it keeps the same meaning.",
+        "studentInstruction": "Rewrite each sentence so it keeps the same meaning.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u35-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I don't know how to dance. → ......",
+            "answer": "I wish I knew how to dance.",
+            "acceptedAnswers": [
+              "I wish I knew how to dance."
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My sister always borrows my clothes. → ......",
+            "answer": "I wish my sister wouldn't borrow my clothes.",
+            "acceptedAnswers": [
+              "I wish my sister wouldn't borrow my clothes."
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I forgot my homework yesterday. → ......",
+            "answer": "I wish I had remembered my homework yesterday.",
+            "acceptedAnswers": [
+              "I wish I had remembered my homework yesterday."
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I can't drive a car. → ......",
+            "answer": "I wish I could drive a car.",
+            "acceptedAnswers": [
+              "I wish I could drive a car."
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It may be sunny tomorrow (possible). → ......",
+            "answer": "I hope it's sunny tomorrow.",
+            "acceptedAnswers": [
+              "I hope it's sunny tomorrow."
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm not famous. → ......",
+            "answer": "If only I was famous.",
+            "acceptedAnswers": [
+              "If only I was famous.",
+              "If only I were famous."
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u35-ex-d",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "D: Error correction",
+        "title": "D: Error correction",
+        "instructions": "Each sentence has one mistake. Write the correct sentence.",
+        "studentInstruction": "Each sentence has one mistake. Write the correct sentence.",
+        "legacyKey": "D",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u35-exd-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "I wish I would know the answer.",
+            "prompt": {
+              "cues": [
+                "I wish I would know the answer."
+              ]
+            },
+            "answer": "I wish I knew the answer.",
+            "acceptedAnswers": [
+              "I wish I knew the answer."
+            ]
+          },
+          {
+            "id": "b1-u35-exd-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "He wishes he would be stronger.",
+            "prompt": {
+              "cues": [
+                "He wishes he would be stronger."
+              ]
+            },
+            "answer": "He wishes he was stronger./He wishes he were stronger.",
+            "acceptedAnswers": [
+              "He wishes he was stronger./He wishes he were stronger."
+            ]
+          },
+          {
+            "id": "b1-u35-exd-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "I wish you will be quieter.",
+            "prompt": {
+              "cues": [
+                "I wish you will be quieter."
+              ]
+            },
+            "answer": "I wish you would be quieter.",
+            "acceptedAnswers": [
+              "I wish you would be quieter."
+            ]
+          },
+          {
+            "id": "b1-u35-exd-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "She wishes she went to bed earlier last night.",
+            "prompt": {
+              "cues": [
+                "She wishes she went to bed earlier last night."
+              ]
+            },
+            "answer": "She wishes she had gone to bed earlier last night.",
+            "acceptedAnswers": [
+              "She wishes she had gone to bed earlier last night."
+            ]
+          },
+          {
+            "id": "b1-u35-exd-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "I wish I could won the competition.",
+            "prompt": {
+              "cues": [
+                "I wish I could won the competition."
+              ]
+            },
+            "answer": "I wish I had won the competition.",
+            "acceptedAnswers": [
+              "I wish I had won the competition."
+            ]
+          },
+          {
+            "id": "b1-u35-exd-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "I wish the test is easy tomorrow.",
+            "prompt": {
+              "cues": [
+                "I wish the test is easy tomorrow."
+              ]
+            },
+            "answer": "I hope the test is easy tomorrow.",
+            "acceptedAnswers": [
+              "I hope the test is easy tomorrow."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u35-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Key word transformation",
+        "title": "E: Key word transformation",
+        "instructions": "Complete the second sentence so it has a similar meaning to the first. Use the word given.",
+        "studentInstruction": "Complete the second sentence so it has a similar meaning to the first. Use the word given.",
+        "legacyKey": "E",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u35-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I wish I ...... enough money to buy a laptop. **HAD**",
+            "answer": "had",
+            "acceptedAnswers": [
+              "had"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He wishes he ...... more before the match. **PRACTISED**",
+            "answer": "had practised",
+            "acceptedAnswers": [
+              "had practised"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I wish I ...... at remembering names. **WERE**",
+            "answer": "were better",
+            "acceptedAnswers": [
+              "were better"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I wish the dog ...... all night. **BARK**",
+            "answer": "wouldn't bark",
+            "acceptedAnswers": [
+              "wouldn't bark"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If only I ...... play chess. **COULD**",
+            "answer": "could",
+            "acceptedAnswers": [
+              "could"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u35-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We wish we ...... our work earlier. **SAVED**",
+            "answer": "had saved",
+            "acceptedAnswers": [
+              "had saved"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

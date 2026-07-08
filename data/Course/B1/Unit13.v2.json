@@ -1,0 +1,1139 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 5,
+  "unit": 13,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 13: Countable & uncountable nouns",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 13: Countable & uncountable nouns"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit13.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 8
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u13-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Countable nouns",
+        "subtitle": "Countable nouns",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "explanation",
+            "title": "Form",
+            "description": "Countable nouns can be counted. They have both singular and plural forms and can be used with either a singular or plural verb."
+          },
+          {
+            "type": "explanation",
+            "title": "Useful notes",
+            "description": "We use these words with countable nouns: **a, an, many, a few, one, two, ...**"
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": []
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Uncountable nouns",
+        "subtitle": "Uncountable nouns",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "explanation",
+            "title": "",
+            "description": "Some nouns cannot be counted (uncountable nouns). They have no plural form and are used with a singular verb, even when they end in **-s**."
+          },
+          {
+            "type": "comparison_table",
+            "title": "Compare",
+            "headers": [
+              "Some uncountable nouns",
+              "Example"
+            ],
+            "rows": [
+              [
+                "advice, bread, fruit, furniture, hair, homework, information, money, news, paper, rice, work",
+                "My **money** is in my wallet.\nYour **hair** is really long!\nThe **news** was a complete shock."
+              ]
+            ]
+          },
+          {
+            "type": "explanation",
+            "title": "",
+            "description": "We use these words with uncountable nouns:"
+          },
+          {
+            "type": "explanation",
+            "title": "",
+            "description": "We use these words with both countable and uncountable nouns:"
+          },
+          {
+            "type": "explanation",
+            "title": "",
+            "description": "We can use **any** in questions and negative statements with both uncountable nouns and plural countable nouns:"
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              {
+                "note": "Plural uncountable nouns"
+              },
+              "Some uncountable nouns are grammatically plural and go with a plural verb. Watch out for these:",
+              {
+                "correct": "**clothes** — Your clean **clothes** are on the bed."
+              },
+              {
+                "correct": "**jeans** — Your new **jeans** look great!"
+              },
+              {
+                "note": "Dual-meaning nouns"
+              },
+              "Certain nouns can be uncountable in one sense and countable in another.",
+              {
+                "correct": "Can you get some **paper** at the supermarket? (= sheets of paper for writing)"
+              },
+              {
+                "correct": "Can you get a **paper** at the supermarket? (= a newspaper)"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "stative_sorting",
+        "displayName": "Sort into categories",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 2,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "drag_sort_groups",
+          "studentAction": "sort_into_groups",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u13-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "stative_sorting",
+        "free_text_gap_fill",
+        "two_option_choice",
+        "full_sentence_write",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 30,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u13-ex-a",
+          "formatType": "stative_sorting",
+          "sourceItemIds": [
+            "b1-u13-exa-1"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u13-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u13-exb-1",
+            "b1-u13-exb-2",
+            "b1-u13-exb-3",
+            "b1-u13-exb-4",
+            "b1-u13-exb-5",
+            "b1-u13-exb-6",
+            "b1-u13-exb-7",
+            "b1-u13-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u13-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u13-exc-1",
+            "b1-u13-exc-2",
+            "b1-u13-exc-3",
+            "b1-u13-exc-4",
+            "b1-u13-exc-5",
+            "b1-u13-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u13-ex-d",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u13-exd-1",
+            "b1-u13-exd-2",
+            "b1-u13-exd-3",
+            "b1-u13-exd-4",
+            "b1-u13-exd-5",
+            "b1-u13-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u13-ex-e",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u13-exe-1",
+            "b1-u13-exe-2",
+            "b1-u13-exe-3",
+            "b1-u13-exe-4",
+            "b1-u13-exe-5",
+            "b1-u13-exe-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u13-ex-f",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u13-exf-1",
+            "b1-u13-exf-2",
+            "b1-u13-exf-3",
+            "b1-u13-exf-4",
+            "b1-u13-exf-5",
+            "b1-u13-exf-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u13-ex-g",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u13-exg-1",
+            "b1-u13-exg-2",
+            "b1-u13-exg-3",
+            "b1-u13-exg-4"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u13-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u13-exh-1",
+            "b1-u13-exh-2",
+            "b1-u13-exh-3",
+            "b1-u13-exh-4",
+            "b1-u13-exh-5",
+            "b1-u13-exh-6",
+            "b1-u13-exh-7"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 44,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u13-ex-a",
+      "b1-u13-ex-b",
+      "b1-u13-ex-c",
+      "b1-u13-ex-d",
+      "b1-u13-ex-e",
+      "b1-u13-ex-f",
+      "b1-u13-ex-g",
+      "b1-u13-ex-h"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u13-ex-a",
+        "type": "exercise",
+        "exerciseType": "stative_sorting",
+        "exerciseTypeName": "A: Countable or uncountable?",
+        "title": "A: Countable or uncountable?",
+        "instructions": "Drag each word to the correct box.",
+        "studentInstruction": "Drag each word to the correct box.",
+        "legacyKey": "A",
+        "legacyPattern": "drag-category",
+        "interaction": {
+          "formatType": "stative_sorting"
+        },
+        "words": [
+          "banana",
+          "furniture",
+          "money",
+          "person",
+          "news",
+          "box",
+          "bread",
+          "woman"
+        ],
+        "wordBank": [
+          "banana",
+          "furniture",
+          "money",
+          "person",
+          "news",
+          "box",
+          "bread",
+          "woman"
+        ],
+        "items": [
+          {
+            "id": "b1-u13-exa-1",
+            "formatType": "stative_sorting",
+            "groups": [
+              {
+                "groupId": "countable",
+                "label": "Countable",
+                "answers": [
+                  "banana",
+                  "person",
+                  "box",
+                  "woman"
+                ]
+              },
+              {
+                "groupId": "uncountable",
+                "label": "Uncountable",
+                "answers": [
+                  "furniture",
+                  "money",
+                  "news",
+                  "bread"
+                ]
+              }
+            ],
+            "verbs": [
+              {
+                "verb": "banana",
+                "groupId": "countable"
+              },
+              {
+                "verb": "furniture",
+                "groupId": "uncountable"
+              },
+              {
+                "verb": "money",
+                "groupId": "uncountable"
+              },
+              {
+                "verb": "person",
+                "groupId": "countable"
+              },
+              {
+                "verb": "news",
+                "groupId": "uncountable"
+              },
+              {
+                "verb": "box",
+                "groupId": "countable"
+              },
+              {
+                "verb": "bread",
+                "groupId": "uncountable"
+              },
+              {
+                "verb": "woman",
+                "groupId": "countable"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u13-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Complete with much, many, a little or a few",
+        "title": "B: Complete with much, many, a little or a few",
+        "instructions": "Choose the best quantifier for each sentence.",
+        "studentInstruction": "Choose the best quantifier for each sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u13-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "How ...... information did you find online?",
+            "answer": "much",
+            "acceptedAnswers": [
+              "much"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There are ...... chairs outside if we need them.",
+            "answer": "a few",
+            "acceptedAnswers": [
+              "a few"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I've got ...... money, so I can buy a snack.",
+            "answer": "a little",
+            "acceptedAnswers": [
+              "a little"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "How ...... photos did you take on holiday?",
+            "answer": "many",
+            "acceptedAnswers": [
+              "many"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can I have ...... rice with my meal?",
+            "answer": "a little",
+            "acceptedAnswers": [
+              "a little"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There weren't ...... people at the meeting.",
+            "answer": "many",
+            "acceptedAnswers": [
+              "many"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We saw ...... interesting museums in the city.",
+            "answer": "a few",
+            "acceptedAnswers": [
+              "a few"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There isn't ...... furniture in the flat yet.",
+            "answer": "much",
+            "acceptedAnswers": [
+              "much"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u13-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: a/an, some or any",
+        "title": "C: a/an, some or any",
+        "instructions": "Complete each sentence with a, an, some or any.",
+        "studentInstruction": "Complete each sentence with a, an, some or any.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u13-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you give me ...... advice about this problem?",
+            "answer": "some",
+            "acceptedAnswers": [
+              "some"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There isn't ...... rice in the cupboard.",
+            "answer": "any",
+            "acceptedAnswers": [
+              "any"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She ate ...... banana and ...... sandwich for lunch.",
+            "answer": "a, a",
+            "acceptedAnswers": [
+              "a, a"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Have they got ...... information about the trip?",
+            "answer": "any",
+            "acceptedAnswers": [
+              "any"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We bought ...... new desks for the office.",
+            "answer": "some",
+            "acceptedAnswers": [
+              "some"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He's ...... intelligent student.",
+            "answer": "an",
+            "acceptedAnswers": [
+              "an"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u13-ex-d",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "D: Circle the correct word",
+        "title": "D: Circle the correct word",
+        "instructions": "Choose the correct option.",
+        "studentInstruction": "Choose the correct option.",
+        "legacyKey": "D",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u13-exd-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "There isn't",
+            "sentenceAfter": "furniture in this room.",
+            "options": [
+              "much",
+              "many"
+            ],
+            "answer": "much",
+            "originalSentence": "There isn't **much / many** furniture in this room.",
+            "completedSentence": "There isn't much furniture in this room."
+          },
+          {
+            "id": "b1-u13-exd-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I've got",
+            "sentenceAfter": "ideas for the project.",
+            "options": [
+              "a few",
+              "a little"
+            ],
+            "answer": "a few",
+            "originalSentence": "I've got **a few / a little** ideas for the project.",
+            "completedSentence": "I've got a few ideas for the project."
+          },
+          {
+            "id": "b1-u13-exd-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "How",
+            "sentenceAfter": "money do you need?",
+            "options": [
+              "much",
+              "many"
+            ],
+            "answer": "much",
+            "originalSentence": "How **much / many** money do you need?",
+            "completedSentence": "How much money do you need?"
+          },
+          {
+            "id": "b1-u13-exd-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We need",
+            "sentenceAfter": "bread for breakfast.",
+            "options": [
+              "a few",
+              "a little"
+            ],
+            "answer": "a little",
+            "originalSentence": "We need **a few / a little** bread for breakfast.",
+            "completedSentence": "We need a little bread for breakfast."
+          },
+          {
+            "id": "b1-u13-exd-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "They didn't send",
+            "sentenceAfter": "postcards.",
+            "options": [
+              "much",
+              "many"
+            ],
+            "answer": "many",
+            "originalSentence": "They didn't send **much / many** postcards.",
+            "completedSentence": "They didn't send many postcards."
+          },
+          {
+            "id": "b1-u13-exd-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "There are",
+            "sentenceAfter": "children in the garden.",
+            "options": [
+              "a little",
+              "a few"
+            ],
+            "answer": "a few",
+            "originalSentence": "There are **a little / a few** children in the garden.",
+            "completedSentence": "There are a few children in the garden."
+          }
+        ]
+      },
+      {
+        "id": "b1-u13-ex-e",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "E: Correct the mistakes",
+        "title": "E: Correct the mistakes",
+        "instructions": "Each sentence has one mistake with countable/uncountable nouns. Write the correct sentence.",
+        "studentInstruction": "Each sentence has one mistake with countable/uncountable nouns. Write the correct sentence.",
+        "legacyKey": "E",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u13-exe-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Can you give me an information about the course?",
+            "prompt": {
+              "cues": [
+                "Can you give me an information about the course?"
+              ]
+            },
+            "answer": "Can you give me some information about the course?",
+            "acceptedAnswers": [
+              "Can you give me some information about the course?"
+            ]
+          },
+          {
+            "id": "b1-u13-exe-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "There isn't many bread on the table.",
+            "prompt": {
+              "cues": [
+                "There isn't many bread on the table."
+              ]
+            },
+            "answer": "There isn't much bread on the table.",
+            "acceptedAnswers": [
+              "There isn't much bread on the table."
+            ]
+          },
+          {
+            "id": "b1-u13-exe-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "She bought two furnitures for her bedroom.",
+            "prompt": {
+              "cues": [
+                "She bought two furnitures for her bedroom."
+              ]
+            },
+            "answer": "She bought two pieces of furniture for her bedroom.",
+            "acceptedAnswers": [
+              "She bought two pieces of furniture for her bedroom."
+            ]
+          },
+          {
+            "id": "b1-u13-exe-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "How many money have you saved?",
+            "prompt": {
+              "cues": [
+                "How many money have you saved?"
+              ]
+            },
+            "answer": "How much money have you saved?",
+            "acceptedAnswers": [
+              "How much money have you saved?"
+            ]
+          },
+          {
+            "id": "b1-u13-exe-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Your jeans is on the chair.",
+            "prompt": {
+              "cues": [
+                "Your jeans is on the chair."
+              ]
+            },
+            "answer": "Your jeans are on the chair.",
+            "acceptedAnswers": [
+              "Your jeans are on the chair."
+            ]
+          },
+          {
+            "id": "b1-u13-exe-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "I need a few advice before I decide.",
+            "prompt": {
+              "cues": [
+                "I need a few advice before I decide."
+              ]
+            },
+            "answer": "I need a little advice before I decide.",
+            "acceptedAnswers": [
+              "I need a little advice before I decide."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u13-ex-f",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "F: Multiple choice",
+        "title": "F: Multiple choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "F",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u13-exf-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Can I have",
+            "sentenceAfter": "bread, please?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "a"
+              },
+              {
+                "letter": "B",
+                "text": "any"
+              },
+              {
+                "letter": "C",
+                "text": "some"
+              },
+              {
+                "letter": "D",
+                "text": "many"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exf-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "How",
+            "sentenceAfter": "students are in your class?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "much"
+              },
+              {
+                "letter": "B",
+                "text": "many"
+              },
+              {
+                "letter": "C",
+                "text": "a little"
+              },
+              {
+                "letter": "D",
+                "text": "any"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exf-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "There isn't",
+            "sentenceAfter": "information on the website.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "many"
+              },
+              {
+                "letter": "B",
+                "text": "a few"
+              },
+              {
+                "letter": "C",
+                "text": "much"
+              },
+              {
+                "letter": "D",
+                "text": "an"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exf-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We've got",
+            "sentenceAfter": "apples in the kitchen.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "a little"
+              },
+              {
+                "letter": "B",
+                "text": "much"
+              },
+              {
+                "letter": "C",
+                "text": "a few"
+              },
+              {
+                "letter": "D",
+                "text": "an"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exf-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My clothes",
+            "sentenceAfter": "clean now.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "is"
+              },
+              {
+                "letter": "B",
+                "text": "are"
+              },
+              {
+                "letter": "C",
+                "text": "was"
+              },
+              {
+                "letter": "D",
+                "text": "be"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exf-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I need",
+            "sentenceAfter": "piece of advice.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "a"
+              },
+              {
+                "letter": "B",
+                "text": "many"
+              },
+              {
+                "letter": "C",
+                "text": "much"
+              },
+              {
+                "letter": "D",
+                "text": "few"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u13-ex-g",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "G: Key word transformations",
+        "title": "G: Key word transformations",
+        "instructions": "Complete the second sentence using the word given.",
+        "studentInstruction": "Complete the second sentence using the word given.",
+        "legacyKey": "G",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u13-exg-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There aren't many chairs. **FEW**\nThere are only ...... chairs.",
+            "answer": "a few",
+            "acceptedAnswers": [
+              "a few"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exg-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There isn't much rice left. **LITTLE**\nThere is only ...... rice left.",
+            "answer": "a little",
+            "acceptedAnswers": [
+              "a little"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exg-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you give me information? **SOME**\nCould you give me ...... ?",
+            "answer": "some information",
+            "acceptedAnswers": [
+              "some information"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exg-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The jeans are expensive. **PAIR**\nThat ...... is expensive.",
+            "answer": "pair of jeans",
+            "acceptedAnswers": [
+              "pair of jeans"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u13-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "H: Complete the text",
+        "title": "H: Complete the text",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u13-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We didn't have ...... money for a big meal, so we cooked at home.",
+            "answer": "much",
+            "acceptedAnswers": [
+              "much"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We found ...... rice and ...... vegetables in the kitchen.",
+            "answer": "some, some",
+            "acceptedAnswers": [
+              "some, some"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There wasn't ...... fruit, so Dad went to the shop.",
+            "answer": "any",
+            "acceptedAnswers": [
+              "any"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He gave me ...... shopping bag to carry the food.",
+            "answer": "a",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "At the market, there were ...... people buying fresh bread.",
+            "answer": "many",
+            "acceptedAnswers": [
+              "many"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I also bought ...... bottle of orange juice.",
+            "answer": "a",
+            "acceptedAnswers": [
+              "a"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exh-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Now we have ...... food for the weekend.",
+            "answer": "some",
+            "acceptedAnswers": [
+              "some"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

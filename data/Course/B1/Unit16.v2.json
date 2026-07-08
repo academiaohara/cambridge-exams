@@ -1,0 +1,1229 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 6,
+  "unit": 16,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 16: Pronouns & possessive determiners",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 16: Pronouns & possessive determiners"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit16.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 9
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u16-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Subject pronouns",
+        "subtitle": "Subject pronouns",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "A subject pronoun tells us who or what performs the action of the verb."
+            ]
+          },
+          {
+            "type": "example_list",
+            "title": "Example",
+            "items": [
+              [
+                "Look at those children! **They** are playing football.",
+                "Maria loves baking, and **she** makes the best cakes in town."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Object pronouns",
+        "subtitle": "Object pronouns",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "As the object of a verb (receives the action): The teacher called **him** to the front.",
+              "After prepositions: Could you send the documents to **us** by Friday?"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-3",
+        "title": "Possessive determiners",
+        "subtitle": "Possessive determiners",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "To indicate who something belongs to. They always come before a noun: I left **my** keys on the table."
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "✓ Have you seen **our** new car?"
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "**its** and **it's** are completely different words.",
+              "The cat licked **its** paw. (= the cat's paw — possessive determiner)",
+              "**It's** a lovely day today. (= It is ... — contraction)"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-4",
+        "title": "Possessive pronouns",
+        "subtitle": "Possessive pronouns",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "To talk about ownership without repeating the noun: I forgot my umbrella. Can I borrow **yours**?"
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "✗ This is mines bag.",
+              "✓ This bag is **mine**."
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "There is no possessive pronoun for **it**."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-5",
+        "title": "Reflexive pronouns",
+        "subtitle": "Reflexive pronouns",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "When the subject and the object of the verb are the same person or thing: She hurt **herself** while cycling.",
+              "To add emphasis — to stress that someone did something without any help: We painted the whole house **ourselves**!"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "error_correction",
+        "displayName": "Correct the error",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_correction_input",
+          "studentAction": "type_correction",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u16-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "mc_4_option",
+        "error_correction",
+        "full_sentence_write"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 37,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u16-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u16-exa-1",
+            "b1-u16-exa-2",
+            "b1-u16-exa-3",
+            "b1-u16-exa-4",
+            "b1-u16-exa-5",
+            "b1-u16-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u16-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u16-exb-1",
+            "b1-u16-exb-2",
+            "b1-u16-exb-3",
+            "b1-u16-exb-4",
+            "b1-u16-exb-5",
+            "b1-u16-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u16-ex-c",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u16-exc-1",
+            "b1-u16-exc-2",
+            "b1-u16-exc-3",
+            "b1-u16-exc-4",
+            "b1-u16-exc-5",
+            "b1-u16-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u16-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u16-exd-1",
+            "b1-u16-exd-2",
+            "b1-u16-exd-3",
+            "b1-u16-exd-4",
+            "b1-u16-exd-5",
+            "b1-u16-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u16-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u16-exe-1",
+            "b1-u16-exe-2",
+            "b1-u16-exe-3",
+            "b1-u16-exe-4",
+            "b1-u16-exe-5",
+            "b1-u16-exe-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u16-ex-f",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u16-exf-1",
+            "b1-u16-exf-2",
+            "b1-u16-exf-3",
+            "b1-u16-exf-4",
+            "b1-u16-exf-5",
+            "b1-u16-exf-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u16-ex-g",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u16-exg-1",
+            "b1-u16-exg-2",
+            "b1-u16-exg-3",
+            "b1-u16-exg-4",
+            "b1-u16-exg-5",
+            "b1-u16-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u16-ex-h",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u16-exh-1",
+            "b1-u16-exh-2",
+            "b1-u16-exh-3",
+            "b1-u16-exh-4",
+            "b1-u16-exh-5",
+            "b1-u16-exh-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u16-ex-i",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u16-exi-1",
+            "b1-u16-exi-2",
+            "b1-u16-exi-3",
+            "b1-u16-exi-4",
+            "b1-u16-exi-5",
+            "b1-u16-exi-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 54,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u16-ex-a",
+      "b1-u16-ex-b",
+      "b1-u16-ex-c",
+      "b1-u16-ex-d",
+      "b1-u16-ex-e",
+      "b1-u16-ex-f",
+      "b1-u16-ex-g",
+      "b1-u16-ex-h",
+      "b1-u16-ex-i"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u16-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Subject pronouns",
+        "title": "A: Subject pronouns",
+        "instructions": "Complete the sentences with a subject pronoun.",
+        "studentInstruction": "Complete the sentences with a subject pronoun.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u16-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Sofia and I are hungry. ...... want some lunch.",
+            "answer": "We",
+            "acceptedAnswers": [
+              "We"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Where is Leo? ...... is upstairs.",
+            "answer": "He",
+            "acceptedAnswers": [
+              "He"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My tablet is old. ...... doesn't work very well.",
+            "answer": "It",
+            "acceptedAnswers": [
+              "It"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Hugo and Clara are cousins. ...... live in Valencia.",
+            "answer": "They",
+            "acceptedAnswers": [
+              "They"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm not ready, but ...... can leave in five minutes.",
+            "answer": "I",
+            "acceptedAnswers": [
+              "I"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Mia, are ...... coming with us?",
+            "answer": "you",
+            "acceptedAnswers": [
+              "you"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u16-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Object pronouns",
+        "title": "B: Object pronouns",
+        "instructions": "Complete the sentences with an object pronoun.",
+        "studentInstruction": "Complete the sentences with an object pronoun.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u16-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you call ...... after school?",
+            "answer": "me",
+            "acceptedAnswers": [
+              "me"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I sent Marta a message, but she didn't read ...... .",
+            "answer": "it",
+            "acceptedAnswers": [
+              "it"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We met Alex and gave ...... the address.",
+            "answer": "him",
+            "acceptedAnswers": [
+              "him"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The plants are dry. Please water ...... .",
+            "answer": "them",
+            "acceptedAnswers": [
+              "them"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My cousins are visiting, so I'm showing ...... the city.",
+            "answer": "them",
+            "acceptedAnswers": [
+              "them"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please tell ...... the answer when you know it.",
+            "answer": "us",
+            "acceptedAnswers": [
+              "us"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u16-ex-c",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "C: Possessive determiners",
+        "title": "C: Possessive determiners",
+        "instructions": "Choose the correct possessive determiner.",
+        "studentInstruction": "Choose the correct possessive determiner.",
+        "legacyKey": "C",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u16-exc-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Is this",
+            "sentenceAfter": "coat?",
+            "options": [
+              "mine",
+              "my"
+            ],
+            "answer": "my",
+            "originalSentence": "Is this **mine / my** coat?",
+            "completedSentence": "Is this my coat?"
+          },
+          {
+            "id": "b1-u16-exc-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Laura can't find",
+            "sentenceAfter": "phone.",
+            "options": [
+              "her",
+              "hers"
+            ],
+            "answer": "her",
+            "originalSentence": "Laura can't find **her / hers** phone.",
+            "completedSentence": "Laura can't find her phone."
+          },
+          {
+            "id": "b1-u16-exc-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The bird is cleaning",
+            "sentenceAfter": "wings.",
+            "options": [
+              "it's",
+              "its"
+            ],
+            "answer": "its",
+            "originalSentence": "The bird is cleaning **it's / its** wings.",
+            "completedSentence": "The bird is cleaning its wings."
+          },
+          {
+            "id": "b1-u16-exc-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We are visiting",
+            "sentenceAfter": "grandparents tomorrow.",
+            "options": [
+              "ours",
+              "our"
+            ],
+            "answer": "our",
+            "originalSentence": "We are visiting **ours / our** grandparents tomorrow.",
+            "completedSentence": "We are visiting our grandparents tomorrow."
+          },
+          {
+            "id": "b1-u16-exc-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The children forgot",
+            "sentenceAfter": "bags.",
+            "options": [
+              "their",
+              "theirs"
+            ],
+            "answer": "their",
+            "originalSentence": "The children forgot **their / theirs** bags.",
+            "completedSentence": "The children forgot their bags."
+          },
+          {
+            "id": "b1-u16-exc-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I really like",
+            "sentenceAfter": "idea.",
+            "options": [
+              "yours",
+              "your"
+            ],
+            "answer": "your",
+            "originalSentence": "I really like **yours / your** idea.",
+            "completedSentence": "I really like your idea."
+          }
+        ]
+      },
+      {
+        "id": "b1-u16-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Possessive pronouns",
+        "title": "D: Possessive pronouns",
+        "instructions": "Complete with the correct possessive pronoun.",
+        "studentInstruction": "Complete with the correct possessive pronoun.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u16-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This pen belongs to me. It's ...... .",
+            "answer": "mine",
+            "acceptedAnswers": [
+              "mine"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "That scarf belongs to Julia. It's ...... .",
+            "answer": "hers",
+            "acceptedAnswers": [
+              "hers"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "These seats are for you. They're ...... .",
+            "answer": "yours",
+            "acceptedAnswers": [
+              "yours"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The small garden belongs to our house. It's ...... .",
+            "answer": "ours",
+            "acceptedAnswers": [
+              "ours"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Those bikes belong to my neighbours. They're ...... .",
+            "answer": "theirs",
+            "acceptedAnswers": [
+              "theirs"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This watch belongs to my father. It's ...... .",
+            "answer": "his",
+            "acceptedAnswers": [
+              "his"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u16-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Reflexive pronouns",
+        "title": "E: Reflexive pronouns",
+        "instructions": "Complete using a reflexive pronoun.",
+        "studentInstruction": "Complete using a reflexive pronoun.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u16-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't touch the oven. You might burn ...... .",
+            "answer": "yourself",
+            "acceptedAnswers": [
+              "yourself"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I made this shelf ...... .",
+            "answer": "myself",
+            "acceptedAnswers": [
+              "myself"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They cleaned the garage ...... .",
+            "answer": "themselves",
+            "acceptedAnswers": [
+              "themselves"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We organised the party ...... .",
+            "answer": "ourselves",
+            "acceptedAnswers": [
+              "ourselves"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My grandmother taught ...... to use a smartphone.",
+            "answer": "herself",
+            "acceptedAnswers": [
+              "herself"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The door closes by ...... .",
+            "answer": "itself",
+            "acceptedAnswers": [
+              "itself"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u16-ex-f",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "F: Mixed pronouns",
+        "title": "F: Mixed pronouns",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "F",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u16-exf-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Laura and I are neighbours.",
+            "sentenceAfter": "walk to school together.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "She"
+              },
+              {
+                "letter": "B",
+                "text": "We"
+              },
+              {
+                "letter": "C",
+                "text": "They"
+              },
+              {
+                "letter": "D",
+                "text": "Us"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exf-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I can't find my glasses. Have you seen",
+            "sentenceAfter": "?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "them"
+              },
+              {
+                "letter": "B",
+                "text": "they"
+              },
+              {
+                "letter": "C",
+                "text": "their"
+              },
+              {
+                "letter": "D",
+                "text": "theirs"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exf-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "That suitcase isn't mine. It's",
+            "sentenceAfter": ".",
+            "options": [
+              {
+                "letter": "A",
+                "text": "their"
+              },
+              {
+                "letter": "B",
+                "text": "theirs"
+              },
+              {
+                "letter": "C",
+                "text": "them"
+              },
+              {
+                "letter": "D",
+                "text": "they"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exf-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Oscar cooked dinner by",
+            "sentenceAfter": ".",
+            "options": [
+              {
+                "letter": "A",
+                "text": "he"
+              },
+              {
+                "letter": "B",
+                "text": "him"
+              },
+              {
+                "letter": "C",
+                "text": "himself"
+              },
+              {
+                "letter": "D",
+                "text": "his"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exf-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My sister and I share",
+            "sentenceAfter": "bedroom.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "our"
+              },
+              {
+                "letter": "B",
+                "text": "ours"
+              },
+              {
+                "letter": "C",
+                "text": "us"
+              },
+              {
+                "letter": "D",
+                "text": "we"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exf-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Where is Carla? I need to speak to",
+            "sentenceAfter": ".",
+            "options": [
+              {
+                "letter": "A",
+                "text": "she"
+              },
+              {
+                "letter": "B",
+                "text": "hers"
+              },
+              {
+                "letter": "C",
+                "text": "her"
+              },
+              {
+                "letter": "D",
+                "text": "herself"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u16-ex-g",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "G: Error correction",
+        "title": "G: Error correction",
+        "instructions": "Each sentence has one pronoun mistake. Write the correct word.",
+        "studentInstruction": "Each sentence has one pronoun mistake. Write the correct word.",
+        "legacyKey": "G",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u16-exg-1",
+            "formatType": "error_correction",
+            "sentence": "This is theirs house.",
+            "highlightedText": "theirs",
+            "answer": "their",
+            "acceptedAnswers": [
+              "their"
+            ]
+          },
+          {
+            "id": "b1-u16-exg-2",
+            "formatType": "error_correction",
+            "sentence": "Him is my cousin.",
+            "highlightedText": "Him",
+            "answer": "He",
+            "acceptedAnswers": [
+              "He"
+            ]
+          },
+          {
+            "id": "b1-u16-exg-3",
+            "formatType": "error_correction",
+            "sentence": "Can you explain this to we?",
+            "highlightedText": "we",
+            "answer": "us",
+            "acceptedAnswers": [
+              "us"
+            ]
+          },
+          {
+            "id": "b1-u16-exg-4",
+            "formatType": "error_correction",
+            "sentence": "The boys repaired the bike by himself.",
+            "highlightedText": "himself",
+            "answer": "themselves",
+            "acceptedAnswers": [
+              "themselves"
+            ]
+          },
+          {
+            "id": "b1-u16-exg-5",
+            "formatType": "error_correction",
+            "sentence": "The dog is sleeping in it's basket.",
+            "highlightedText": "it's",
+            "answer": "its",
+            "acceptedAnswers": [
+              "its"
+            ]
+          },
+          {
+            "id": "b1-u16-exg-6",
+            "formatType": "error_correction",
+            "sentence": "Those notebooks are your.",
+            "highlightedText": "your",
+            "answer": "yours",
+            "acceptedAnswers": [
+              "yours"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u16-ex-h",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "H: Error correction",
+        "title": "H: Error correction",
+        "instructions": "Each sentence has one pronoun mistake. Find the error and write the whole sentence correctly.",
+        "studentInstruction": "Each sentence has one pronoun mistake. Find the error and write the whole sentence correctly.",
+        "legacyKey": "H",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u16-exh-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "That umbrella is **her**.",
+            "prompt": {
+              "cues": [
+                "That umbrella is **her**."
+              ]
+            },
+            "answer": "That umbrella is hers.",
+            "acceptedAnswers": [
+              "That umbrella is hers."
+            ]
+          },
+          {
+            "id": "b1-u16-exh-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Leo fixed the computer by **him**.",
+            "prompt": {
+              "cues": [
+                "Leo fixed the computer by **him**."
+              ]
+            },
+            "answer": "Leo fixed the computer by himself.",
+            "acceptedAnswers": [
+              "Leo fixed the computer by himself."
+            ]
+          },
+          {
+            "id": "b1-u16-exh-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "This is **we** classroom.",
+            "prompt": {
+              "cues": [
+                "This is **we** classroom."
+              ]
+            },
+            "answer": "This is our classroom.",
+            "acceptedAnswers": [
+              "This is our classroom."
+            ]
+          },
+          {
+            "id": "b1-u16-exh-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Could you show **they** the photos?",
+            "prompt": {
+              "cues": [
+                "Could you show **they** the photos?"
+              ]
+            },
+            "answer": "Could you show them the photos?",
+            "acceptedAnswers": [
+              "Could you show them the photos?"
+            ]
+          },
+          {
+            "id": "b1-u16-exh-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "The blue bag is **she**.",
+            "prompt": {
+              "cues": [
+                "The blue bag is **she**."
+              ]
+            },
+            "answer": "The blue bag is hers.",
+            "acceptedAnswers": [
+              "The blue bag is hers."
+            ]
+          },
+          {
+            "id": "b1-u16-exh-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "They prepared everything by **them**.",
+            "prompt": {
+              "cues": [
+                "They prepared everything by **them**."
+              ]
+            },
+            "answer": "They prepared everything by themselves.",
+            "acceptedAnswers": [
+              "They prepared everything by themselves."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u16-ex-i",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "I: Key word transformation",
+        "title": "I: Key word transformation",
+        "instructions": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "studentInstruction": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "legacyKey": "I",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u16-exi-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Anna wrote the story without help from anyone.\nAnna wrote the story ......",
+            "answer": "by herself",
+            "acceptedAnswers": [
+              "by herself"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exi-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The wallet belongs to David.\nThat is ...... .",
+            "answer": "David's wallet",
+            "acceptedAnswers": [
+              "David's wallet"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exi-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My sister cut herself while cooking.\nMy sister ...... while cooking.",
+            "answer": "hurt herself",
+            "acceptedAnswers": [
+              "hurt herself"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exi-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We cleaned the whole kitchen without any help.\nWe cleaned the whole kitchen ...... .",
+            "answer": "by ourselves",
+            "acceptedAnswers": [
+              "by ourselves"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exi-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Does the black backpack belong to you?\n...... black backpack?",
+            "answer": "Is that your",
+            "acceptedAnswers": [
+              "Is that your"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u16-exi-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The students created the posters on their own.\nThe students created ...... .",
+            "answer": "the posters themselves",
+            "acceptedAnswers": [
+              "the posters themselves"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

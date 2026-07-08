@@ -1,0 +1,1018 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 2,
+  "unit": 5,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 5: Past perfect simple & continuous",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 5: Past perfect simple & continuous"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit5.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 6
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u5-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Past perfect simple",
+        "subtitle": "Past perfect simple",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "formula": "had + past participle",
+            "rows": [
+              {
+                "label": "statement",
+                "left": "I/you/he/she/it/we/they **had ('d) written** ..."
+              },
+              {
+                "label": "negative",
+                "left": "I/you/he/she/it/we/they **had not (hadn't) written** ..."
+              },
+              {
+                "label": "question",
+                "left": "**Had** I/you/he/she/it/we/they **written** ...?"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Actions or states that took place before a specific point in the past: By the time the guests arrived, we **had already set** the table. She **had worked** at the company for ten years before she became manager.",
+              "Past actions whose results were relevant at a particular moment in the past: The players were celebrating because they **had won** the match."
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Useful notes",
+            "headers": [
+              "Key word",
+              "Example"
+            ],
+            "rows": [
+              [
+                "by",
+                "I'd finished my homework **by** eight o'clock."
+              ],
+              [
+                "by the time",
+                "**By the time** I got to class, the lesson had started."
+              ],
+              [
+                "before",
+                "The teacher had checked the answers **before** the lesson."
+              ],
+              [
+                "after",
+                "I left **after** I'd finished the test."
+              ],
+              [
+                "just",
+                "Simon had **just** finished the test when the bell rang."
+              ],
+              [
+                "when",
+                "I left **when** I'd finished the test."
+              ]
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "Choosing between the past simple and the past perfect simple changes the order of events.",
+              "The show started when we arrived. (= We arrived first, then the show started.)",
+              "The show had started when we arrived. (= The show started first, then we arrived.)",
+              "Some verbs have irregular past participle forms."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Past perfect continuous",
+        "subtitle": "Past perfect continuous",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "formula": "had + been + -ing",
+            "rows": [
+              {
+                "label": "statement",
+                "left": "I/you/he/she/it/we/they **had ('d) been writing** ..."
+              },
+              {
+                "label": "negative",
+                "left": "I/you/he/she/it/we/they **had not (hadn't) been writing** ..."
+              },
+              {
+                "label": "question",
+                "left": "**Had** I/you/he/she/it/we/they **been writing** ...?"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Activities that were in progress up to, or until just before, a moment in the past: He was out of breath because he **had been running**. They deserved a rest — they **had been working** all morning."
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Useful notes",
+            "headers": [
+              "Key word",
+              "Example"
+            ],
+            "rows": [
+              [
+                "for",
+                "Tony had been studying **for** hours, so he had a headache."
+              ],
+              [
+                "since",
+                "She'd been hoping to win the competition **since** the summer."
+              ],
+              [
+                "before",
+                "We'd been talking about the Internet **before** the lesson started."
+              ],
+              [
+                "all day/night/etc",
+                "I'd been studying **all day**."
+              ]
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "The past perfect simple often emphasises the result of an action: ✓ She'd **written** an article for the school newspaper. (= She'd finished it.)",
+              "The past perfect continuous often emphasises the action, and the time spent on the action, rather than the result: ✓ She'd **been writing** an article for the newspaper. (= She'd started, but she hadn't finished it.)"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "find_extra_word",
+        "displayName": "Find the extra word",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "clickable_sentence_tokens",
+          "studentAction": "tap_extra_word_or_ok",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u5-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "full_sentence_write",
+        "mc_4_option",
+        "find_extra_word"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 28,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u5-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u5-exa-1",
+            "b1-u5-exa-2",
+            "b1-u5-exa-3",
+            "b1-u5-exa-4",
+            "b1-u5-exa-5",
+            "b1-u5-exa-6",
+            "b1-u5-exa-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u5-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u5-exb-1",
+            "b1-u5-exb-2",
+            "b1-u5-exb-3",
+            "b1-u5-exb-4",
+            "b1-u5-exb-5",
+            "b1-u5-exb-6",
+            "b1-u5-exb-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u5-ex-c",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u5-exc-1",
+            "b1-u5-exc-2",
+            "b1-u5-exc-3",
+            "b1-u5-exc-4",
+            "b1-u5-exc-5"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u5-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u5-exd-1",
+            "b1-u5-exd-2",
+            "b1-u5-exd-3",
+            "b1-u5-exd-4",
+            "b1-u5-exd-5",
+            "b1-u5-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u5-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u5-exe-1",
+            "b1-u5-exe-2",
+            "b1-u5-exe-3",
+            "b1-u5-exe-4",
+            "b1-u5-exe-5",
+            "b1-u5-exe-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u5-ex-f",
+          "formatType": "find_extra_word",
+          "sourceItemIds": [
+            "b1-u5-exf-1",
+            "b1-u5-exf-2",
+            "b1-u5-exf-3",
+            "b1-u5-exf-4",
+            "b1-u5-exf-5",
+            "b1-u5-exf-6",
+            "b1-u5-exf-7",
+            "b1-u5-exf-8",
+            "b1-u5-exf-9",
+            "b1-u5-exf-10"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 41,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u5-ex-a",
+      "b1-u5-ex-b",
+      "b1-u5-ex-c",
+      "b1-u5-ex-d",
+      "b1-u5-ex-e",
+      "b1-u5-ex-f"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u5-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Past perfect simple",
+        "title": "A: Past perfect simple",
+        "instructions": "Complete using the correct past perfect simple form of the verbs in brackets.",
+        "studentInstruction": "Complete using the correct past perfect simple form of the verbs in brackets.",
+        "legacyKey": "A",
+        "legacyPattern": "phrasal-particle",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u5-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When we got to the station, the train ...... (already / leave).",
+            "answer": "had already left",
+            "acceptedAnswers": [
+              "had already left"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Mia ...... (finish) her homework before dinner.",
+            "answer": "had finished",
+            "acceptedAnswers": [
+              "had finished"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They ...... (not / book) a table, so the restaurant was full.",
+            "answer": "hadn't booked",
+            "acceptedAnswers": [
+              "hadn't booked"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... (Tom / ever / fly) before he went to Canada?",
+            "answer": "Had Tom ever flown",
+            "acceptedAnswers": [
+              "Had Tom ever flown"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The match started after ...... (the referee / check) the pitch.",
+            "answer": "the referee had checked",
+            "acceptedAnswers": [
+              "the referee had checked"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I couldn't buy a ticket because ...... (I / leave) my wallet at home.",
+            "answer": "I had left",
+            "acceptedAnswers": [
+              "I had left"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... (you / already / finish) lunch when I arrived?",
+            "answer": "Had you already finished",
+            "acceptedAnswers": [
+              "Had you already finished"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u5-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "B: Choose the sentence with the same meaning",
+        "title": "B: Choose the sentence with the same meaning",
+        "instructions": "Choose the sentence (A or B) which means the same as the first sentence.",
+        "studentInstruction": "Choose the sentence (A or B) which means the same as the first sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "same-meaning-ab",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u5-exb-1",
+            "formatType": "two_option_choice",
+            "context": "We had cleaned the kitchen when Mum came home.",
+            "sentenceBefore": "We had cleaned the kitchen when Mum came home.",
+            "sentenceAfter": "",
+            "options": [
+              "A: Mum came home and then we cleaned the kitchen.",
+              "B: We cleaned the kitchen and then Mum came home."
+            ],
+            "answer": "B",
+            "originalSentence": "We had cleaned the kitchen when Mum came home."
+          },
+          {
+            "id": "b1-u5-exb-2",
+            "formatType": "two_option_choice",
+            "context": "I called Sam after I had finished my project.",
+            "sentenceBefore": "I called Sam after I had finished my project.",
+            "sentenceAfter": "",
+            "options": [
+              "A: I finished my project and then I called Sam.",
+              "B: I called Sam and then I finished my project."
+            ],
+            "answer": "A",
+            "originalSentence": "I called Sam after I had finished my project."
+          },
+          {
+            "id": "b1-u5-exb-3",
+            "formatType": "two_option_choice",
+            "context": "By the time the film started, we'd bought popcorn.",
+            "sentenceBefore": "By the time the film started, we'd bought popcorn.",
+            "sentenceAfter": "",
+            "options": [
+              "A: We bought popcorn before the film started.",
+              "B: We bought popcorn after the film started."
+            ],
+            "answer": "A",
+            "originalSentence": "By the time the film started, we'd bought popcorn."
+          },
+          {
+            "id": "b1-u5-exb-4",
+            "formatType": "two_option_choice",
+            "context": "Lily didn't leave until her brother had arrived.",
+            "sentenceBefore": "Lily didn't leave until her brother had arrived.",
+            "sentenceAfter": "",
+            "options": [
+              "A: Lily left before her brother arrived.",
+              "B: Her brother arrived and then Lily left."
+            ],
+            "answer": "B",
+            "originalSentence": "Lily didn't leave until her brother had arrived."
+          },
+          {
+            "id": "b1-u5-exb-5",
+            "formatType": "two_option_choice",
+            "context": "The teacher hadn't marked the tests by Friday.",
+            "sentenceBefore": "The teacher hadn't marked the tests by Friday.",
+            "sentenceAfter": "",
+            "options": [
+              "A: The tests were still unmarked on Friday.",
+              "B: The teacher marked the tests before Friday."
+            ],
+            "answer": "A",
+            "originalSentence": "The teacher hadn't marked the tests by Friday."
+          },
+          {
+            "id": "b1-u5-exb-6",
+            "formatType": "two_option_choice",
+            "context": "They had sold the bike before I phoned about it.",
+            "sentenceBefore": "They had sold the bike before I phoned about it.",
+            "sentenceAfter": "",
+            "options": [
+              "A: They sold the bike and later I phoned.",
+              "B: I phoned and then they sold the bike."
+            ],
+            "answer": "A",
+            "originalSentence": "They had sold the bike before I phoned about it."
+          },
+          {
+            "id": "b1-u5-exb-7",
+            "formatType": "two_option_choice",
+            "context": "Dad had cooked dinner when we arrived.",
+            "sentenceBefore": "Dad had cooked dinner when we arrived.",
+            "sentenceAfter": "",
+            "options": [
+              "A: We arrived and then Dad cooked dinner.",
+              "B: Dad cooked dinner and then we arrived."
+            ],
+            "answer": "B",
+            "originalSentence": "Dad had cooked dinner when we arrived."
+          }
+        ]
+      },
+      {
+        "id": "b1-u5-ex-c",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "C: Write sentences using the prompts",
+        "title": "C: Write sentences using the prompts",
+        "instructions": "Write sentences using the prompts. One of the verbs must be in the past perfect simple.",
+        "studentInstruction": "Write sentences using the prompts. One of the verbs must be in the past perfect simple.",
+        "legacyKey": "C",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "textareaAnswer": true,
+        "items": [
+          {
+            "id": "b1-u5-exc-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "they / already / leave / when / we / arrive",
+            "prompt": {
+              "cues": [
+                "they",
+                "already",
+                "leave",
+                "when",
+                "we",
+                "arrive"
+              ]
+            },
+            "answer": "They had already left when we arrived.",
+            "acceptedAnswers": [
+              "They had already left when we arrived."
+            ]
+          },
+          {
+            "id": "b1-u5-exc-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "I / not / meet / Anna / before / she / join / our class",
+            "prompt": {
+              "cues": [
+                "I",
+                "not",
+                "meet",
+                "Anna",
+                "before",
+                "she",
+                "join",
+                "our class"
+              ]
+            },
+            "answer": "I hadn't met Anna before she joined our class.",
+            "acceptedAnswers": [
+              "I hadn't met Anna before she joined our class."
+            ]
+          },
+          {
+            "id": "b1-u5-exc-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "when / Dad / get home / we / already / eat / dinner",
+            "prompt": {
+              "cues": [
+                "when",
+                "Dad",
+                "get home",
+                "we",
+                "already",
+                "eat",
+                "dinner"
+              ]
+            },
+            "answer": "When Dad got home, we had already eaten dinner.",
+            "acceptedAnswers": [
+              "When Dad got home, we had already eaten dinner."
+            ]
+          },
+          {
+            "id": "b1-u5-exc-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "he / be / tired / because / he / not / sleep / well",
+            "prompt": {
+              "cues": [
+                "he",
+                "be",
+                "tired",
+                "because",
+                "he",
+                "not",
+                "sleep",
+                "well"
+              ]
+            },
+            "answer": "He was tired because he hadn't slept well.",
+            "acceptedAnswers": [
+              "He was tired because he hadn't slept well."
+            ]
+          },
+          {
+            "id": "b1-u5-exc-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "by the time / the concert / begin / everyone / find / their seats",
+            "prompt": {
+              "cues": [
+                "by the time",
+                "the concert",
+                "begin",
+                "everyone",
+                "find",
+                "their seats"
+              ]
+            },
+            "answer": "By the time the concert began, everyone had found their seats.",
+            "acceptedAnswers": [
+              "By the time the concert began, everyone had found their seats."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u5-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Past perfect continuous",
+        "title": "D: Past perfect continuous",
+        "instructions": "Look at the pictures and complete the sentences. Use the correct form of the past perfect continuous.",
+        "studentInstruction": "Look at the pictures and complete the sentences. Use the correct form of the past perfect continuous.",
+        "legacyKey": "D",
+        "legacyPattern": "phrasal-particle",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u5-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He was covered in paint because ...... (paint / the fence).",
+            "answer": "he had been painting the fence",
+            "acceptedAnswers": [
+              "he had been painting the fence"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They were exhausted because ...... (walk / all morning).",
+            "answer": "they had been walking all morning",
+            "acceptedAnswers": [
+              "they had been walking all morning"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The streets were wet because ...... (it / rain).",
+            "answer": "it had been raining",
+            "acceptedAnswers": [
+              "it had been raining"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Did she lose her voice because ...... (sing / for hours)?",
+            "answer": "she had been singing for hours",
+            "acceptedAnswers": [
+              "she had been singing for hours"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When the bus came, ...... (we / wait / for forty minutes).",
+            "answer": "we had been waiting for forty minutes",
+            "acceptedAnswers": [
+              "we had been waiting for forty minutes"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When I called, ...... (they / not / study / long).",
+            "answer": "they hadn't been studying long",
+            "acceptedAnswers": [
+              "they hadn't been studying long"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u5-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Choose the correct answer",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u5-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I'd only",
+            "sentenceAfter": "for ten minutes when the phone rang.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "slept"
+              },
+              {
+                "letter": "B",
+                "text": "been sleeping"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Had they already",
+            "sentenceAfter": "the tickets before you called?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "bought"
+              },
+              {
+                "letter": "B",
+                "text": "been buying"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She hadn't",
+            "sentenceAfter": "us about the change, so we were surprised.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "told"
+              },
+              {
+                "letter": "B",
+                "text": "been telling"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We had",
+            "sentenceAfter": "football for an hour before it started raining.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "played"
+              },
+              {
+                "letter": "B",
+                "text": "been playing"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Mark had",
+            "sentenceAfter": "his room all morning, so it looked much better.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "tidied"
+              },
+              {
+                "letter": "B",
+                "text": "been tidying"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "It was my first time abroad because I'd never",
+            "sentenceAfter": "to another country before.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "been"
+              },
+              {
+                "letter": "B",
+                "text": "been going"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u5-ex-f",
+        "type": "exercise",
+        "exerciseType": "find_extra_word",
+        "exerciseTypeName": "F: Find the extra word",
+        "title": "F: Find the extra word",
+        "instructions": "If a line is correct, click OK. If there is an extra word in a line, click on it.",
+        "studentInstruction": "If a line is correct, click OK. If there is an extra word in a line, click on it.",
+        "legacyKey": "F",
+        "legacyPattern": "find-extra-word",
+        "interaction": {
+          "formatType": "find_extra_word"
+        },
+        "items": [
+          {
+            "id": "b1-u5-exf-1",
+            "formatType": "find_extra_word",
+            "sentence": "Yesterday our team finally [had] won the school basketball final.",
+            "answer": "had",
+            "acceptedAnswers": [
+              "had"
+            ]
+          },
+          {
+            "id": "b1-u5-exf-2",
+            "formatType": "find_extra_word",
+            "sentence": "We had [been] trained hard for weeks, so everyone was excited.",
+            "answer": "been",
+            "acceptedAnswers": [
+              "been"
+            ]
+          },
+          {
+            "id": "b1-u5-exf-3",
+            "formatType": "find_extra_word",
+            "sentence": "Before the game started, the coach [had] gave us a short talk.",
+            "answer": "had",
+            "acceptedAnswers": [
+              "had"
+            ]
+          },
+          {
+            "id": "b1-u5-exf-4",
+            "formatType": "find_extra_word",
+            "sentence": "The other team scored first, but we didn't give up.",
+            "answer": "OK",
+            "acceptedAnswers": [
+              "OK"
+            ]
+          },
+          {
+            "id": "b1-u5-exf-5",
+            "formatType": "find_extra_word",
+            "sentence": "By half-time, we had [been] scored three points.",
+            "answer": "been",
+            "acceptedAnswers": [
+              "been"
+            ]
+          },
+          {
+            "id": "b1-u5-exf-6",
+            "formatType": "find_extra_word",
+            "sentence": "I was tired because I had been running up and down the court all morning.",
+            "answer": "OK",
+            "acceptedAnswers": [
+              "OK"
+            ]
+          },
+          {
+            "id": "b1-u5-exf-7",
+            "formatType": "find_extra_word",
+            "sentence": "When the referee blew the final whistle, everyone shouted with joy.",
+            "answer": "OK",
+            "acceptedAnswers": [
+              "OK"
+            ]
+          },
+          {
+            "id": "b1-u5-exf-8",
+            "formatType": "find_extra_word",
+            "sentence": "Our captain had prepared a speech before the match.",
+            "answer": "OK",
+            "acceptedAnswers": [
+              "OK"
+            ]
+          },
+          {
+            "id": "b1-u5-exf-9",
+            "formatType": "find_extra_word",
+            "sentence": "[Been] After we had collected our medals, we took photos.",
+            "answer": "Been",
+            "acceptedAnswers": [
+              "Been"
+            ]
+          },
+          {
+            "id": "b1-u5-exf-10",
+            "formatType": "find_extra_word",
+            "sentence": "By the time we got home, Dad had [yet] told all our neighbours!",
+            "answer": "yet",
+            "acceptedAnswers": [
+              "yet"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

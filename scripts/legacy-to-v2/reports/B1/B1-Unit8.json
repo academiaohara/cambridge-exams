@@ -1,0 +1,117 @@
+{
+  "unit": 8,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: Tick if correct; correct if wrong",
+      "legacyPattern": "error-correction",
+      "formatType": "error_correction",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: Complete using on, in or at",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: Look at the pictures and complete",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "D: Complete using words in the box",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 10,
+      "v2Items": 10,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "E: Circle the correct word",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "F",
+      "title": "F: Complete the text (Jetlag)",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 11,
+      "v2Items": 11,
+      "notes": []
+    },
+    {
+      "exerciseKey": "G",
+      "title": "G: Error correction",
+      "legacyPattern": "error-correction",
+      "formatType": "error_correction",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "H",
+      "title": "H: Key word transformation",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "I",
+      "title": "I: Multiple choice",
+      "legacyPattern": "mc-standalone",
+      "formatType": "mc_4_option",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "J",
+      "title": "J: Mixed revision",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 10,
+      "v2Items": 10,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 10,
+    "legacyItemCount": 85,
+    "v2ItemCount": 85,
+    "estimatedScreens": 85,
+    "formatTypes": [
+      "error_correction",
+      "free_text_gap_fill",
+      "two_option_choice",
+      "mc_4_option"
+    ]
+  }
+}

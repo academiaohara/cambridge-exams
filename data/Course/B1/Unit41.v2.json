@@ -1,0 +1,508 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 14,
+  "unit": 41,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 41: The causative",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 41: The causative"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit41.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 3
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u41-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "The causative",
+        "subtitle": "The causative",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Use",
+            "headers": [
+              "Use",
+              "Example"
+            ],
+            "rows": [
+              [
+                "To indicate that a subject arranges for somebody else to perform a service or task.",
+                "The manager **has** her office **redecorated** every year."
+              ]
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Tense / modal",
+            "headers": [
+              "Tense / modal",
+              "Example"
+            ],
+            "rows": [
+              [
+                "present simple",
+                "The manager **has** her office **redecorated** every year."
+              ],
+              [
+                "present continuous",
+                "She **is having** the walls **painted** at the moment."
+              ],
+              [
+                "present perfect simple",
+                "She **has had** the carpet **replaced**."
+              ],
+              [
+                "past simple",
+                "She **had** the windows **cleaned** last week."
+              ],
+              [
+                "past continuous",
+                "She **was having** the computers **repaired** when I visited."
+              ],
+              [
+                "past perfect simple",
+                "She **had had** the furniture **rearranged**."
+              ],
+              [
+                "will / would",
+                "She **will have** a new sofa **delivered**. / She **would have** new curtains **put up**."
+              ],
+              [
+                "be going to",
+                "She **is going to have** a new printer **installed**."
+              ],
+              [
+                "-ing form",
+                "She might stop **having** the office **cleaned** so often."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u41-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "conjugation_gap_fill",
+        "full_sentence_write",
+        "free_text_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 12,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u41-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u41-exa-1",
+            "b1-u41-exa-2",
+            "b1-u41-exa-3",
+            "b1-u41-exa-4",
+            "b1-u41-exa-5",
+            "b1-u41-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u41-ex-b",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u41-exb-1",
+            "b1-u41-exb-2",
+            "b1-u41-exb-3",
+            "b1-u41-exb-4",
+            "b1-u41-exb-5",
+            "b1-u41-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u41-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u41-exc-1",
+            "b1-u41-exc-2",
+            "b1-u41-exc-3",
+            "b1-u41-exc-4",
+            "b1-u41-exc-5",
+            "b1-u41-exc-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 20,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u41-ex-a",
+      "b1-u41-ex-b",
+      "b1-u41-ex-c"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u41-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Complete the sentences",
+        "title": "A: Complete the sentences",
+        "instructions": "Use the causative form of have and the verb in brackets.",
+        "studentInstruction": "Use the causative form of have and the verb in brackets.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u41-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "They ...... their garden ...... last weekend. (design)",
+            "answer": "had, designed",
+            "acceptedAnswers": [
+              "had, designed"
+            ],
+            "explanation": "",
+            "verbPrompt": "design"
+          },
+          {
+            "id": "b1-u41-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "He ...... his suit ...... for the ceremony tomorrow. (clean)",
+            "answer": "is having, cleaned",
+            "acceptedAnswers": [
+              "is having, cleaned"
+            ],
+            "explanation": "",
+            "verbPrompt": "clean"
+          },
+          {
+            "id": "b1-u41-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "We ...... our air conditioner ...... before summer. (service)",
+            "answer": "are going to have, serviced",
+            "acceptedAnswers": [
+              "are going to have, serviced"
+            ],
+            "explanation": "",
+            "verbPrompt": "service"
+          },
+          {
+            "id": "b1-u41-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "She ...... her nails ...... every month. (do)",
+            "answer": "has, done",
+            "acceptedAnswers": [
+              "has, done"
+            ],
+            "explanation": "",
+            "verbPrompt": "do"
+          },
+          {
+            "id": "b1-u41-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I ...... my phone screen ...... before I sold it. (replace)",
+            "answer": "had had, replaced",
+            "acceptedAnswers": [
+              "had had, replaced"
+            ],
+            "explanation": "",
+            "verbPrompt": "replace"
+          },
+          {
+            "id": "b1-u41-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "You should ...... the documents ...... professionally. (translate)",
+            "answer": "have, translated",
+            "acceptedAnswers": [
+              "have, translated"
+            ],
+            "explanation": "",
+            "verbPrompt": "translate"
+          }
+        ]
+      },
+      {
+        "id": "b1-u41-ex-b",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "B: Rewrite using the causative",
+        "title": "B: Rewrite using the causative",
+        "instructions": "Keep the meaning the same.",
+        "studentInstruction": "Keep the meaning the same.",
+        "legacyKey": "B",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u41-exb-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "A plumber repaired our shower yesterday.",
+            "prompt": {
+              "cues": [
+                "A plumber repaired our shower yesterday."
+              ]
+            },
+            "answer": "We had our shower repaired yesterday.",
+            "acceptedAnswers": [
+              "We had our shower repaired yesterday."
+            ]
+          },
+          {
+            "id": "b1-u41-exb-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "A stylist is colouring Nina's hair now.",
+            "prompt": {
+              "cues": [
+                "A stylist is colouring Nina's hair now."
+              ]
+            },
+            "answer": "Nina is having her hair coloured now.",
+            "acceptedAnswers": [
+              "Nina is having her hair coloured now."
+            ]
+          },
+          {
+            "id": "b1-u41-exb-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "A company will deliver their new sofa tomorrow.",
+            "prompt": {
+              "cues": [
+                "A company will deliver their new sofa tomorrow."
+              ]
+            },
+            "answer": "They will have their new sofa delivered tomorrow.",
+            "acceptedAnswers": [
+              "They will have their new sofa delivered tomorrow."
+            ]
+          },
+          {
+            "id": "b1-u41-exb-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "A technician is updating his computer software.",
+            "prompt": {
+              "cues": [
+                "A technician is updating his computer software."
+              ]
+            },
+            "answer": "He is having his computer software updated.",
+            "acceptedAnswers": [
+              "He is having his computer software updated."
+            ]
+          },
+          {
+            "id": "b1-u41-exb-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "A gardener trims their trees every spring.",
+            "prompt": {
+              "cues": [
+                "A gardener trims their trees every spring."
+              ]
+            },
+            "answer": "They have their trees trimmed every spring.",
+            "acceptedAnswers": [
+              "They have their trees trimmed every spring."
+            ]
+          },
+          {
+            "id": "b1-u41-exb-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "An optician tested my eyes last week.",
+            "prompt": {
+              "cues": [
+                "An optician tested my eyes last week."
+              ]
+            },
+            "answer": "I had my eyes tested last week.",
+            "acceptedAnswers": [
+              "I had my eyes tested last week."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u41-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Rewrite using the causative",
+        "title": "C: Rewrite using the causative",
+        "instructions": "Complete the second sentence using the causative. Use no more than four words.",
+        "studentInstruction": "Complete the second sentence using the causative. Use no more than four words.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u41-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She ...... her bike fixed yesterday.",
+            "answer": "had",
+            "acceptedAnswers": [
+              "had"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u41-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They are ...... their flat decorated next month.",
+            "answer": "going to have",
+            "acceptedAnswers": [
+              "going to have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u41-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He ...... his teeth cleaned last Friday.",
+            "answer": "had",
+            "acceptedAnswers": [
+              "had"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u41-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They ...... their car washed every week.",
+            "answer": "have",
+            "acceptedAnswers": [
+              "have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u41-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She ...... her passport photo taken yesterday.",
+            "answer": "had",
+            "acceptedAnswers": [
+              "had"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u41-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They are ...... their company logo made.",
+            "answer": "having",
+            "acceptedAnswers": [
+              "having"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

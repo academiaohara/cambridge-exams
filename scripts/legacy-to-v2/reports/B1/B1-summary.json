@@ -1,0 +1,3798 @@
+{
+  "level": "B1",
+  "results": [
+    {
+      "unit": 1,
+      "status": "skipped_native_v2",
+      "input": "data/Course/B1/Unit1.json",
+      "legacyItems": null,
+      "v2Items": null
+    },
+    {
+      "unit": 2,
+      "status": "skipped_native_v2",
+      "input": "data/Course/B1/Unit2.json",
+      "legacyItems": null,
+      "v2Items": null
+    },
+    {
+      "unit": 3,
+      "status": "ok",
+      "input": "data/Course/B1/Unit3.json",
+      "output": "data/Course/B1/Unit3.v2.json",
+      "title": "Unit 3: Fun and games",
+      "type": "vocabulary",
+      "block": 1,
+      "legacyExercises": 9,
+      "legacyItems": 65,
+      "v2Items": 65,
+      "screens": 48,
+      "formatTypes": [
+        "crossword_clues",
+        "passage_gap_fill",
+        "two_option_choice",
+        "free_text_gap_fill",
+        "error_correction"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Complete the crossword",
+          "legacyPattern": "crossword",
+          "formatType": "crossword_clues",
+          "screenMode": "per_item",
+          "legacyItems": 11,
+          "v2Items": 11,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Join our games club! (gap fill)",
+          "legacyPattern": "passage-gap-fill",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps",
+          "legacyItems": 7,
+          "v2Items": 7,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "Phrasal verbs (type-in)",
+          "legacyPattern": "phrasal-particle",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "Prepositional phrases (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "Word formation",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "Young musicians (word formation)",
+          "legacyPattern": "passage-wf",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "Word patterns (dialogue)",
+          "legacyPattern": "passage-input",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps",
+          "legacyItems": 7,
+          "v2Items": 7,
+          "notes": []
+        },
+        {
+          "exerciseKey": "I",
+          "title": "Word patterns (error correction)",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 4,
+      "status": "ok",
+      "input": "data/Course/B1/Unit4.json",
+      "output": "data/Course/B1/Unit4.v2.json",
+      "title": "Unit 4: Present perfect simple & continuous",
+      "type": "grammar",
+      "block": 2,
+      "legacyExercises": 6,
+      "legacyItems": 47,
+      "v2Items": 47,
+      "screens": 38,
+      "formatTypes": [
+        "conjugation_gap_fill",
+        "mc_4_option",
+        "full_sentence_write",
+        "passage_gap_fill",
+        "two_option_choice",
+        "free_text_gap_fill"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Present perfect simple",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Choose the correct answer",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Write sentences",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 7,
+          "v2Items": 7,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Present perfect continuous",
+          "legacyPattern": "passage-input",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Circle the correct word or phrase",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 7,
+          "v2Items": 7,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Complete using the words in the box",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 7,
+          "v2Items": 7,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 5,
+      "status": "ok",
+      "input": "data/Course/B1/Unit5.json",
+      "output": "data/Course/B1/Unit5.v2.json",
+      "title": "Unit 5: Past perfect simple & continuous",
+      "type": "grammar",
+      "block": 2,
+      "legacyExercises": 6,
+      "legacyItems": 41,
+      "v2Items": 41,
+      "screens": 41,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "full_sentence_write",
+        "mc_4_option",
+        "find_extra_word"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Past perfect simple",
+          "legacyPattern": "phrasal-particle",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 7,
+          "v2Items": 7,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Choose the sentence with the same meaning",
+          "legacyPattern": "same-meaning-ab",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 7,
+          "v2Items": 7,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Write sentences using the prompts",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 5,
+          "v2Items": 5,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Past perfect continuous",
+          "legacyPattern": "phrasal-particle",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Choose the correct answer",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Find the extra word",
+          "legacyPattern": "find-extra-word",
+          "formatType": "find_extra_word",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 6,
+      "status": "ok",
+      "input": "data/Course/B1/Unit6.json",
+      "output": "data/Course/B1/Unit6.v2.json",
+      "title": "Unit 6: Learning and doing",
+      "type": "vocabulary",
+      "block": 2,
+      "legacyExercises": 8,
+      "legacyItems": 66,
+      "v2Items": 66,
+      "screens": 59,
+      "formatTypes": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "crossword_clues",
+        "passage_gap_fill",
+        "error_correction",
+        "free_text_gap_fill",
+        "keyword_transformation"
+      ],
+      "ambiguous": [
+        {
+          "exercise": "E",
+          "pattern": "bold-swap",
+          "notes": [
+            "bold-swap → error_correction (highlightedText = wrong bold word); word bank not shown in UI"
+          ]
+        }
+      ],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Topic vocabulary (gap fill)",
+          "legacyPattern": "grouped-conjugation",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 12,
+          "v2Items": 12,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 9,
+          "v2Items": 9,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Crossword",
+          "legacyPattern": "crossword",
+          "formatType": "crossword_clues",
+          "screenMode": "per_item",
+          "legacyItems": 9,
+          "v2Items": 9,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "Phrasal verbs (diary entry)",
+          "legacyPattern": "passage-gap-fill",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "Prepositional phrases",
+          "legacyPattern": "bold-swap",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": [
+            "bold-swap → error_correction (highlightedText = wrong bold word); word bank not shown in UI"
+          ]
+        },
+        {
+          "exerciseKey": "F",
+          "title": "Word formation",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "Word patterns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "Word patterns (sentence transformation)",
+          "legacyPattern": "kwtrans",
+          "formatType": "keyword_transformation",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 7,
+      "status": "ok",
+      "input": "data/Course/B1/Unit7.json",
+      "output": "data/Course/B1/Unit7.v2.json",
+      "title": "Unit 7: Future time",
+      "type": "grammar",
+      "block": 3,
+      "legacyExercises": 5,
+      "legacyItems": 38,
+      "v2Items": 38,
+      "screens": 38,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Present continuous (Emma's diary)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: will or shall",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: be going to",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Circle the correct word or phrase",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Choose the correct answer",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 8,
+      "status": "ok",
+      "input": "data/Course/B1/Unit8.json",
+      "output": "data/Course/B1/Unit8.v2.json",
+      "title": "Unit 8: Prepositions of time & place",
+      "type": "grammar",
+      "block": 3,
+      "legacyExercises": 10,
+      "legacyItems": 85,
+      "v2Items": 85,
+      "screens": 85,
+      "formatTypes": [
+        "error_correction",
+        "free_text_gap_fill",
+        "two_option_choice",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Tick if correct; correct if wrong",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Complete using on, in or at",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Look at the pictures and complete",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Complete using words in the box",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Complete the text (Jetlag)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 11,
+          "v2Items": 11,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Error correction",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "H: Key word transformation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "I",
+          "title": "I: Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "J",
+          "title": "J: Mixed revision",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 9,
+      "status": "ok",
+      "input": "data/Course/B1/Unit9.json",
+      "output": "data/Course/B1/Unit9.v2.json",
+      "title": "Unit 9: Coming and going",
+      "type": "vocabulary",
+      "block": 3,
+      "legacyExercises": 8,
+      "legacyItems": 55,
+      "v2Items": 55,
+      "screens": 50,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "column_matching",
+        "conjugation_gap_fill",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Topic vocabulary (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Phrasal verbs (complete the gaps)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "Prepositional phrases (matching)",
+          "legacyPattern": "matching",
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "Word patterns (adjectives and verbs)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 7,
+          "v2Items": 7,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "Word formation",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "Mixed revision",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 10,
+      "status": "ok",
+      "input": "data/Course/B1/Unit10.json",
+      "output": "data/Course/B1/Unit10.v2.json",
+      "title": "Unit 10: The passive (1)",
+      "type": "grammar",
+      "block": 4,
+      "legacyExercises": 8,
+      "legacyItems": 50,
+      "v2Items": 50,
+      "screens": 50,
+      "formatTypes": [
+        "conjugation_gap_fill",
+        "full_sentence_write",
+        "two_option_choice",
+        "free_text_gap_fill",
+        "error_correction",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Complete with the correct passive form",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Change active to passive",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Circle the correct form",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Complete with by or with",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Phrasal verbs in the passive",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Error correction",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "H: Key word transformation",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 11,
+      "status": "ok",
+      "input": "data/Course/B1/Unit11.json",
+      "output": "data/Course/B1/Unit11.v2.json",
+      "title": "Unit 11: The passive (2)",
+      "type": "grammar",
+      "block": 4,
+      "legacyExercises": 4,
+      "legacyItems": 22,
+      "v2Items": 22,
+      "screens": 22,
+      "formatTypes": [
+        "full_sentence_write",
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Change into the passive",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 5,
+          "v2Items": 5,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Complete with the correct passive form",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: by or with",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 5,
+          "v2Items": 5,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Mixed passive forms",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 12,
+      "status": "ok",
+      "input": "data/Course/B1/Unit12.json",
+      "output": "data/Course/B1/Unit12.v2.json",
+      "title": "Unit 12: Friends and relations",
+      "type": "vocabulary",
+      "block": 4,
+      "legacyExercises": 8,
+      "legacyItems": 56,
+      "v2Items": 56,
+      "screens": 44,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "column_matching",
+        "conjugation_gap_fill",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Topic vocabulary (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Phrasal verbs (complete the gaps)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "Prepositional phrases (matching)",
+          "legacyPattern": "matching",
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "Word patterns (adjectives, verbs and nouns)",
+          "legacyPattern": "matching",
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "Word formation",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "Mixed revision",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 13,
+      "status": "ok",
+      "input": "data/Course/B1/Unit13.json",
+      "output": "data/Course/B1/Unit13.v2.json",
+      "title": "Unit 13: Countable & uncountable nouns",
+      "type": "grammar",
+      "block": 5,
+      "legacyExercises": 8,
+      "legacyItems": 51,
+      "v2Items": 51,
+      "screens": 44,
+      "formatTypes": [
+        "stative_sorting",
+        "free_text_gap_fill",
+        "two_option_choice",
+        "full_sentence_write",
+        "mc_4_option"
+      ],
+      "ambiguous": [
+        {
+          "exercise": "A",
+          "pattern": "drag-category",
+          "notes": [
+            "drag-category → stative_sorting"
+          ]
+        }
+      ],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Countable or uncountable?",
+          "legacyPattern": "drag-category",
+          "formatType": "stative_sorting",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": [
+            "drag-category → stative_sorting"
+          ]
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Complete with much, many, a little or a few",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: a/an, some or any",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Correct the mistakes",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Key word transformations",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 4,
+          "v2Items": 4,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "H: Complete the text",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 7,
+          "v2Items": 7,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 14,
+      "status": "ok",
+      "input": "data/Course/B1/Unit14.json",
+      "output": "data/Course/B1/Unit14.v2.json",
+      "title": "Unit 14: Articles",
+      "type": "grammar",
+      "block": 5,
+      "legacyExercises": 9,
+      "legacyItems": 68,
+      "v2Items": 68,
+      "screens": 68,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "error_correction"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: a, an or the",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Article or no article",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Special rules (places)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Special rules (activities and time)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Error correction",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Error correction",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "H: Key word transformation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "I",
+          "title": "I: Mixed article practice",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 15,
+      "status": "ok",
+      "input": "data/Course/B1/Unit15.json",
+      "output": "data/Course/B1/Unit15.v2.json",
+      "title": "Unit 15: Buying and selling",
+      "type": "vocabulary",
+      "block": 5,
+      "legacyExercises": 7,
+      "legacyItems": 48,
+      "v2Items": 48,
+      "screens": 48,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Topic vocabulary (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Phrasal verbs",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Prepositional phrases",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "Word patterns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "Word formation",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "Word formation",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "Word building",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 16,
+      "status": "ok",
+      "input": "data/Course/B1/Unit16.json",
+      "output": "data/Course/B1/Unit16.v2.json",
+      "title": "Unit 16: Pronouns & possessive determiners",
+      "type": "grammar",
+      "block": 6,
+      "legacyExercises": 9,
+      "legacyItems": 54,
+      "v2Items": 54,
+      "screens": 54,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "mc_4_option",
+        "error_correction",
+        "full_sentence_write"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Subject pronouns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Object pronouns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Possessive determiners",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Possessive pronouns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Reflexive pronouns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Mixed pronouns",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Error correction",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "H: Error correction",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "I",
+          "title": "I: Key word transformation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 17,
+      "status": "ok",
+      "input": "data/Course/B1/Unit17.json",
+      "output": "data/Course/B1/Unit17.v2.json",
+      "title": "Unit 17: Relative clauses",
+      "type": "grammar",
+      "block": 6,
+      "legacyExercises": 9,
+      "legacyItems": 62,
+      "v2Items": 62,
+      "screens": 62,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "comma_placement",
+        "two_option_choice",
+        "full_sentence_write",
+        "mc_4_option"
+      ],
+      "ambiguous": [
+        {
+          "exercise": "B",
+          "pattern": "comma-rewrite",
+          "notes": [
+            "comma instructions → comma_placement rewrite_sentence"
+          ]
+        }
+      ],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Complete with a relative pronoun",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Defining or non-defining",
+          "legacyPattern": "comma-rewrite",
+          "formatType": "comma_placement",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": [
+            "comma instructions → comma_placement rewrite_sentence"
+          ]
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Use who, which or that",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Join the sentences",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Error correction",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Key word transformation",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "H: Complete the text",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "I",
+          "title": "I: Key word transformation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 18,
+      "status": "ok",
+      "input": "data/Course/B1/Unit18.json",
+      "output": "data/Course/B1/Unit18.v2.json",
+      "title": "Unit 18: Inventions and discoveries",
+      "type": "vocabulary",
+      "block": 6,
+      "legacyExercises": 8,
+      "legacyItems": 66,
+      "v2Items": 66,
+      "screens": 66,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Topic vocabulary (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 12,
+          "v2Items": 12,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Phrasal verbs (complete the gaps)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "Prepositional phrases",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "Word patterns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "Word formation",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "Multiple choice",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "Mixed revision",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 19,
+      "status": "ok",
+      "input": "data/Course/B1/Unit19.json",
+      "output": "data/Course/B1/Unit19.v2.json",
+      "title": "Unit 19: Modals: ability, permission & advice",
+      "type": "grammar",
+      "block": 7,
+      "legacyExercises": 9,
+      "legacyItems": 62,
+      "v2Items": 62,
+      "screens": 62,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill",
+        "mc_4_option",
+        "full_sentence_write"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Complete with can, could or be able to",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Permission (choose the correct modal)",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Advice (should / ought to)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Rewrite using a modal",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Key word transformation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Error correction",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "H: Mixed practice",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "I",
+          "title": "I: Key word transformation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 20,
+      "status": "ok",
+      "input": "data/Course/B1/Unit20.json",
+      "output": "data/Course/B1/Unit20.v2.json",
+      "title": "Unit 20: Modals: obligation, probability & possibility",
+      "type": "grammar",
+      "block": 7,
+      "legacyExercises": 10,
+      "legacyItems": 74,
+      "v2Items": 74,
+      "screens": 74,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "error_correction",
+        "full_sentence_write"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Complete with must, have to, need to or mustn't",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Choose don't have to, don't need to or needn't",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Past obligation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Circle the correct phrase",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Probability and possibility",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Error correction",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Error correction",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "H: Key word transformation",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "I",
+          "title": "I: Mixed revision",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "J",
+          "title": "J: Key word transformation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 21,
+      "status": "ok",
+      "input": "data/Course/B1/Unit21.json",
+      "output": "data/Course/B1/Unit21.v2.json",
+      "title": "Unit 21: Sending and receiving",
+      "type": "vocabulary",
+      "block": 7,
+      "legacyExercises": 9,
+      "legacyItems": 66,
+      "v2Items": 66,
+      "screens": 66,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Topic vocabulary (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Phrasal verbs (complete the gaps)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "Prepositional phrases",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "Word patterns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "Word formation",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "Mixed revision",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "J",
+          "title": "Key word transformation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 22,
+      "status": "ok",
+      "input": "data/Course/B1/Unit22.json",
+      "output": "data/Course/B1/Unit22.v2.json",
+      "title": "Unit 22: Modal perfect",
+      "type": "grammar",
+      "block": 8,
+      "legacyExercises": 8,
+      "legacyItems": 58,
+      "v2Items": 58,
+      "screens": 58,
+      "formatTypes": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "free_text_gap_fill",
+        "error_correction"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Complete with modal perfect forms",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Choose the correct option",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Criticism and expectation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Probability and possibility",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Error correction",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Key word transformation",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Error correction",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "H: Key word transformation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 23,
+      "status": "ok",
+      "input": "data/Course/B1/Unit23.json",
+      "output": "data/Course/B1/Unit23.v2.json",
+      "title": "Unit 23: Questions & question tags",
+      "type": "grammar",
+      "block": 8,
+      "legacyExercises": 8,
+      "legacyItems": 64,
+      "v2Items": 64,
+      "screens": 64,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "error_correction",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Form questions",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Complete the question tags",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Choose the correct question tag",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Indirect questions",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Error correction",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Mixed practice",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "H: Key word transformation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 24,
+      "status": "ok",
+      "input": "data/Course/B1/Unit24.json",
+      "output": "data/Course/B1/Unit24.v2.json",
+      "title": "Unit 24: People and daily life",
+      "type": "vocabulary",
+      "block": 8,
+      "legacyExercises": 3,
+      "legacyItems": 22,
+      "v2Items": 22,
+      "screens": 22,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Topic vocabulary (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Phrasal verbs (complete the gaps)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 25,
+      "status": "ok",
+      "input": "data/Course/B1/Unit25.json",
+      "output": "data/Course/B1/Unit25.v2.json",
+      "title": "Unit 25: So, such, too & enough",
+      "type": "grammar",
+      "block": 9,
+      "legacyExercises": 8,
+      "legacyItems": 56,
+      "v2Items": 56,
+      "screens": 56,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "full_sentence_write",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Complete with so or such",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Complete with too or enough",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Choose the correct option",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Rewrite with so/such/too/enough",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Error correction",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Mixed revision",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "H: Key word transformation",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 26,
+      "status": "ok",
+      "input": "data/Course/B1/Unit26.json",
+      "output": "data/Course/B1/Unit26.v2.json",
+      "title": "Unit 26: Comparatives & superlatives",
+      "type": "grammar",
+      "block": 9,
+      "legacyExercises": 7,
+      "legacyItems": 54,
+      "v2Items": 54,
+      "screens": 54,
+      "formatTypes": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "error_correction",
+        "free_text_gap_fill"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Complete with comparative adjectives",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Complete with superlative adjectives",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Comparatives and superlatives of adverbs",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Choose the correct option",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Error correction",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Key word transformation",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Mixed comparison practice",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 27,
+      "status": "ok",
+      "input": "data/Course/B1/Unit27.json",
+      "output": "data/Course/B1/Unit27.v2.json",
+      "title": "Unit 27: Working and earning",
+      "type": "vocabulary",
+      "block": 9,
+      "legacyExercises": 8,
+      "legacyItems": 58,
+      "v2Items": 58,
+      "screens": 58,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Topic vocabulary (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Phrasal verbs (complete the gaps)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "Prepositional phrases (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "Word patterns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "Word formation",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Gap fill",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "Mixed revision",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 28,
+      "status": "ok",
+      "input": "data/Course/B1/Unit28.json",
+      "output": "data/Course/B1/Unit28.v2.json",
+      "title": "Unit 28: Conditionals (zero, first & second)",
+      "type": "grammar",
+      "block": 10,
+      "legacyExercises": 6,
+      "legacyItems": 36,
+      "v2Items": 36,
+      "screens": 36,
+      "formatTypes": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "full_sentence_write",
+        "free_text_gap_fill"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Zero conditional",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: First conditional",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Second conditional",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Choose the correct conditional",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Correct the errors",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Key word transformation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 29,
+      "status": "ok",
+      "input": "data/Course/B1/Unit29.json",
+      "output": "data/Course/B1/Unit29.v2.json",
+      "title": "Unit 29: Third conditional",
+      "type": "grammar",
+      "block": 10,
+      "legacyExercises": 4,
+      "legacyItems": 24,
+      "v2Items": 24,
+      "screens": 24,
+      "formatTypes": [
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "full_sentence_write"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Complete the third conditional sentences",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Choose would have, could have or might have",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Error correction",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Rewrite with the third conditional",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 30,
+      "status": "ok",
+      "input": "data/Course/B1/Unit30.json",
+      "output": "data/Course/B1/Unit30.v2.json",
+      "title": "Unit 30: Body and lifestyle",
+      "type": "vocabulary",
+      "block": 10,
+      "legacyExercises": 9,
+      "legacyItems": 66,
+      "v2Items": 66,
+      "screens": 66,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Topic vocabulary (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Phrasal verbs (complete the gaps)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "Prepositional phrases",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "Word patterns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "Word formation",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Gap fill",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "Mixed revision",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "J",
+          "title": "Key word transformation",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 31,
+      "status": "ok",
+      "input": "data/Course/B1/Unit31.json",
+      "output": "data/Course/B1/Unit31.v2.json",
+      "title": "Unit 31: Reported speech",
+      "type": "grammar",
+      "block": 11,
+      "legacyExercises": 8,
+      "legacyItems": 48,
+      "v2Items": 48,
+      "screens": 48,
+      "formatTypes": [
+        "full_sentence_write",
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "error_correction",
+        "free_text_gap_fill"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Change to reported speech",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Complete the reported sentences",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Time and place changes",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Choose the correct option",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Correct the errors",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Error correction",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Correct the errors",
+          "legacyPattern": "error-correction",
+          "formatType": "error_correction",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "H: Rephrasing",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 32,
+      "status": "ok",
+      "input": "data/Course/B1/Unit32.json",
+      "output": "data/Course/B1/Unit32.v2.json",
+      "title": "Unit 32: Reported questions & orders",
+      "type": "grammar",
+      "block": 11,
+      "legacyExercises": 5,
+      "legacyItems": 30,
+      "v2Items": 30,
+      "screens": 30,
+      "formatTypes": [
+        "full_sentence_write",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Reported yes/no questions",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Reported wh- questions",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Reported orders and requests",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Key word transformation",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 33,
+      "status": "ok",
+      "input": "data/Course/B1/Unit33.json",
+      "output": "data/Course/B1/Unit33.v2.json",
+      "title": "Unit 33: Creating and building",
+      "type": "vocabulary",
+      "block": 11,
+      "legacyExercises": 9,
+      "legacyItems": 72,
+      "v2Items": 72,
+      "screens": 72,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Topic vocabulary (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Phrasal verbs (complete the gaps)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "Prepositional phrases",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "Word patterns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "Word formation",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Gap fill",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "Mixed revision",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "J",
+          "title": "Vocabulary in context",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 34,
+      "status": "ok",
+      "input": "data/Course/B1/Unit34.json",
+      "output": "data/Course/B1/Unit34.v2.json",
+      "title": "Unit 34: Direct & indirect objects",
+      "type": "grammar",
+      "block": 12,
+      "legacyExercises": 6,
+      "legacyItems": 36,
+      "v2Items": 36,
+      "screens": 36,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "full_sentence_write"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Complete with the correct form",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Choose the correct sentence",
+          "legacyPattern": "inline-ab-choice",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Choose the correct sentence",
+          "legacyPattern": "same-meaning-ab",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Gap fill (direct and indirect objects)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Error correction",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Key word transformation",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 35,
+      "status": "ok",
+      "input": "data/Course/B1/Unit35.json",
+      "output": "data/Course/B1/Unit35.v2.json",
+      "title": "Unit 35: Wish",
+      "type": "grammar",
+      "block": 12,
+      "legacyExercises": 5,
+      "legacyItems": 32,
+      "v2Items": 32,
+      "screens": 32,
+      "formatTypes": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "free_text_gap_fill",
+        "full_sentence_write"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Complete with the correct form",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Choose the correct option",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Rewrite with wish or if only",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Error correction",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Key word transformation",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 36,
+      "status": "ok",
+      "input": "data/Course/B1/Unit36.json",
+      "output": "data/Course/B1/Unit36.v2.json",
+      "title": "Unit 36: Nature and the universe",
+      "type": "vocabulary",
+      "block": 12,
+      "legacyExercises": 9,
+      "legacyItems": 72,
+      "v2Items": 72,
+      "screens": 72,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Topic vocabulary (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Phrasal verbs (complete the gaps)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "Prepositional phrases",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "Word patterns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "Word formation",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "G: Gap fill",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "Mixed revision",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "I",
+          "title": "Vocabulary in context",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 37,
+      "status": "ok",
+      "input": "data/Course/B1/Unit37.json",
+      "output": "data/Course/B1/Unit37.v2.json",
+      "title": "Unit 37: -ing & infinitive",
+      "type": "grammar",
+      "block": 13,
+      "legacyExercises": 6,
+      "legacyItems": 36,
+      "v2Items": 36,
+      "screens": 36,
+      "formatTypes": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "mc_4_option",
+        "free_text_gap_fill"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: -ing or infinitive",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: After prepositions",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Meaning changes",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Bare infinitive",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "F: Key word transformation",
+          "legacyPattern": "word-formation",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 38,
+      "status": "ok",
+      "input": "data/Course/B1/Unit38.json",
+      "output": "data/Course/B1/Unit38.v2.json",
+      "title": "Unit 38: Both, either, neither, so & nor",
+      "type": "grammar",
+      "block": 13,
+      "legacyExercises": 3,
+      "legacyItems": 18,
+      "v2Items": 18,
+      "screens": 18,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Complete with both, either or neither",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Complete with so or nor + auxiliary",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 39,
+      "status": "ok",
+      "input": "data/Course/B1/Unit39.json",
+      "output": "data/Course/B1/Unit39.v2.json",
+      "title": "Unit 39: Laughing and crying",
+      "type": "vocabulary",
+      "block": 13,
+      "legacyExercises": 8,
+      "legacyItems": 62,
+      "v2Items": 62,
+      "screens": 62,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Topic vocabulary (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Phrasal verbs (complete the gaps)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "Prepositional phrases",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "Word patterns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "Word formation",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "Mixed revision",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 40,
+      "status": "ok",
+      "input": "data/Course/B1/Unit40.json",
+      "output": "data/Course/B1/Unit40.v2.json",
+      "title": "Unit 40: Connectives",
+      "type": "grammar",
+      "block": 14,
+      "legacyExercises": 5,
+      "legacyItems": 30,
+      "v2Items": 30,
+      "screens": 30,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Time clauses",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Although vs despite",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Choose the connector",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "D: Connectors",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "E: Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 41,
+      "status": "ok",
+      "input": "data/Course/B1/Unit41.json",
+      "output": "data/Course/B1/Unit41.v2.json",
+      "title": "Unit 41: The causative",
+      "type": "grammar",
+      "block": 14,
+      "legacyExercises": 3,
+      "legacyItems": 18,
+      "v2Items": 18,
+      "screens": 18,
+      "formatTypes": [
+        "conjugation_gap_fill",
+        "full_sentence_write",
+        "free_text_gap_fill"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "A: Complete the sentences",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "B: Rewrite using the causative",
+          "legacyPattern": "sentence-rewrite",
+          "formatType": "full_sentence_write",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "C: Rewrite using the causative",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        }
+      ]
+    },
+    {
+      "unit": 42,
+      "status": "ok",
+      "input": "data/Course/B1/Unit42.json",
+      "output": "data/Course/B1/Unit42.v2.json",
+      "title": "Unit 42: Problems and solutions",
+      "type": "vocabulary",
+      "block": 14,
+      "legacyExercises": 9,
+      "legacyItems": 72,
+      "v2Items": 72,
+      "screens": 72,
+      "formatTypes": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill",
+        "mc_4_option"
+      ],
+      "ambiguous": [],
+      "coverage": [
+        {
+          "exerciseKey": "A",
+          "title": "Topic vocabulary (gap fill)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "B",
+          "title": "Circle the correct word",
+          "legacyPattern": "circle-correct",
+          "formatType": "two_option_choice",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "C",
+          "title": "Phrasal verbs (complete the gaps)",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "D",
+          "title": "Prepositional phrases",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "E",
+          "title": "Word patterns",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "F",
+          "title": "Word formation",
+          "legacyPattern": "conjugation-gap",
+          "formatType": "conjugation_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        },
+        {
+          "exerciseKey": "G",
+          "title": "Multiple choice",
+          "legacyPattern": "mc-standalone",
+          "formatType": "mc_4_option",
+          "screenMode": "per_item",
+          "legacyItems": 6,
+          "v2Items": 6,
+          "notes": []
+        },
+        {
+          "exerciseKey": "H",
+          "title": "Mixed revision",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 8,
+          "v2Items": 8,
+          "notes": []
+        },
+        {
+          "exerciseKey": "I",
+          "title": "Vocabulary in context",
+          "legacyPattern": "gap-fill",
+          "formatType": "free_text_gap_fill",
+          "screenMode": "per_item",
+          "legacyItems": 10,
+          "v2Items": 10,
+          "notes": []
+        }
+      ]
+    }
+  ]
+}

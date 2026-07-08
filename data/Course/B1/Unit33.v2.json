@@ -1,0 +1,1294 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 11,
+  "unit": 33,
+  "type": "vocabulary",
+  "unitTitle": "[V2] Unit 33: Creating and building",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 33: Creating and building"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit33.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 9
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u33-theory",
+    "title": "Topic vocabulary",
+    "shortTitle": "Vocabulary",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b1-u33-theory-card-1",
+        "title": "Unit 33: Creating and building",
+        "subtitle": "",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Unit focus",
+            "items": [
+              "creating and building"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u33-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 50,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u33-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u33-exa-1",
+            "b1-u33-exa-2",
+            "b1-u33-exa-3",
+            "b1-u33-exa-4",
+            "b1-u33-exa-5",
+            "b1-u33-exa-6",
+            "b1-u33-exa-7",
+            "b1-u33-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u33-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u33-exb-1",
+            "b1-u33-exb-2",
+            "b1-u33-exb-3",
+            "b1-u33-exb-4",
+            "b1-u33-exb-5",
+            "b1-u33-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u33-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u33-exc-1",
+            "b1-u33-exc-2",
+            "b1-u33-exc-3",
+            "b1-u33-exc-4",
+            "b1-u33-exc-5",
+            "b1-u33-exc-6",
+            "b1-u33-exc-7",
+            "b1-u33-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u33-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u33-exd-1",
+            "b1-u33-exd-2",
+            "b1-u33-exd-3",
+            "b1-u33-exd-4",
+            "b1-u33-exd-5",
+            "b1-u33-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u33-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u33-exe-1",
+            "b1-u33-exe-2",
+            "b1-u33-exe-3",
+            "b1-u33-exe-4",
+            "b1-u33-exe-5",
+            "b1-u33-exe-6",
+            "b1-u33-exe-7",
+            "b1-u33-exe-8",
+            "b1-u33-exe-9",
+            "b1-u33-exe-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u33-ex-f",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u33-exf-1",
+            "b1-u33-exf-2",
+            "b1-u33-exf-3",
+            "b1-u33-exf-4",
+            "b1-u33-exf-5",
+            "b1-u33-exf-6",
+            "b1-u33-exf-7",
+            "b1-u33-exf-8",
+            "b1-u33-exf-9",
+            "b1-u33-exf-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u33-ex-g",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u33-exg-1",
+            "b1-u33-exg-2",
+            "b1-u33-exg-3",
+            "b1-u33-exg-4",
+            "b1-u33-exg-5",
+            "b1-u33-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u33-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u33-exh-1",
+            "b1-u33-exh-2",
+            "b1-u33-exh-3",
+            "b1-u33-exh-4",
+            "b1-u33-exh-5",
+            "b1-u33-exh-6",
+            "b1-u33-exh-7",
+            "b1-u33-exh-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u33-ex-j",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u33-exj-1",
+            "b1-u33-exj-2",
+            "b1-u33-exj-3",
+            "b1-u33-exj-4",
+            "b1-u33-exj-5",
+            "b1-u33-exj-6",
+            "b1-u33-exj-7",
+            "b1-u33-exj-8",
+            "b1-u33-exj-9",
+            "b1-u33-exj-10"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 72,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u33-ex-a",
+      "b1-u33-ex-b",
+      "b1-u33-ex-c",
+      "b1-u33-ex-d",
+      "b1-u33-ex-e",
+      "b1-u33-ex-f",
+      "b1-u33-ex-g",
+      "b1-u33-ex-h",
+      "b1-u33-ex-j"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u33-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Topic vocabulary (gap fill)",
+        "title": "Topic vocabulary (gap fill)",
+        "instructions": "Complete the sentences with words from the box.",
+        "studentInstruction": "Complete the sentences with words from the box.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "ancient",
+          "cotton",
+          "create",
+          "design",
+          "fix",
+          "gallery",
+          "loose",
+          "maintain",
+          "material",
+          "pattern",
+          "sleeve",
+          "tool"
+        ],
+        "wordBank": [
+          "ancient",
+          "cotton",
+          "create",
+          "design",
+          "fix",
+          "gallery",
+          "loose",
+          "maintain",
+          "material",
+          "pattern",
+          "sleeve",
+          "tool"
+        ],
+        "items": [
+          {
+            "id": "b1-u33-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The castle contains ...... paintings from the Middle Ages.",
+            "answer": "ancient",
+            "acceptedAnswers": [
+              "ancient"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My favourite T-shirt is made from pure ...... .",
+            "answer": "cotton",
+            "acceptedAnswers": [
+              "cotton"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They want to ...... a new website for the company.",
+            "answer": "create",
+            "acceptedAnswers": [
+              "create"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The architect showed us her latest ...... for the bridge.",
+            "answer": "design",
+            "acceptedAnswers": [
+              "design"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Dad needs to ...... the broken kitchen chair.",
+            "answer": "fix",
+            "acceptedAnswers": [
+              "fix"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There is a photography ...... next to the library.",
+            "answer": "gallery",
+            "acceptedAnswers": [
+              "gallery"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This sweater feels too ...... around the neck.",
+            "answer": "loose",
+            "acceptedAnswers": [
+              "loose"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The city works hard to ...... its historic monuments.",
+            "answer": "maintain",
+            "acceptedAnswers": [
+              "maintain"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u33-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Circle the correct word",
+        "title": "Circle the correct word",
+        "instructions": "Choose the correct option in each sentence.",
+        "studentInstruction": "Choose the correct option in each sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u33-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "These jeans are too",
+            "sentenceAfter": "for me now.",
+            "options": [
+              "tight",
+              "striped"
+            ],
+            "answer": "tight",
+            "originalSentence": "These jeans are too **tight / striped** for me now.",
+            "completedSentence": "These jeans are too tight for me now."
+          },
+          {
+            "id": "b1-u33-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She put the magazines in a",
+            "sentenceAfter": "beside the sofa.",
+            "options": [
+              "pile",
+              "shape"
+            ],
+            "answer": "pile",
+            "originalSentence": "She put the magazines in a **pile / shape** beside the sofa.",
+            "completedSentence": "She put the magazines in a pile beside the sofa."
+          },
+          {
+            "id": "b1-u33-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "After polishing it, the stone became very",
+            "sentenceAfter": ".",
+            "options": [
+              "rough",
+              "smooth"
+            ],
+            "answer": "smooth",
+            "originalSentence": "After polishing it, the stone became very **rough / smooth**.",
+            "completedSentence": "After polishing it, the stone became very smooth ."
+          },
+          {
+            "id": "b1-u33-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Your shoes don't",
+            "sentenceAfter": "your jacket.",
+            "options": [
+              "stretch",
+              "match"
+            ],
+            "answer": "match",
+            "originalSentence": "Your shoes don't **stretch / match** your jacket.",
+            "completedSentence": "Your shoes don't match your jacket."
+          },
+          {
+            "id": "b1-u33-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Did you ...... the crack in the window?",
+            "sentenceAfter": "",
+            "options": [
+              "notice",
+              "suit"
+            ],
+            "answer": "notice",
+            "originalSentence": "Did you ...... the crack in the window? **notice / suit**",
+            "completedSentence": "Did you ...... the crack in the window? notice"
+          },
+          {
+            "id": "b1-u33-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This is the best ...... for painting walls.",
+            "sentenceAfter": "",
+            "options": [
+              "tool",
+              "style"
+            ],
+            "answer": "tool",
+            "originalSentence": "This is the best ...... for painting walls. **tool / style**",
+            "completedSentence": "This is the best ...... for painting walls. tool"
+          }
+        ]
+      },
+      {
+        "id": "b1-u33-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Phrasal verbs (complete the gaps)",
+        "title": "Phrasal verbs (complete the gaps)",
+        "instructions": "Write the correct phrasal verb in each gap.",
+        "studentInstruction": "Write the correct phrasal verb in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "cut off",
+          "do up",
+          "fill up",
+          "have on",
+          "leave out",
+          "put on",
+          "take off",
+          "try on"
+        ],
+        "wordBank": [
+          "cut off",
+          "do up",
+          "fill up",
+          "have on",
+          "leave out",
+          "put on",
+          "take off",
+          "try on"
+        ],
+        "items": [
+          {
+            "id": "b1-u33-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should ...... a jumper because it's getting colder.",
+            "answer": "put on",
+            "acceptedAnswers": [
+              "put on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please ...... your hat when you enter the classroom.",
+            "answer": "take off",
+            "acceptedAnswers": [
+              "take off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'd like to ...... these trainers before buying them.",
+            "answer": "try on",
+            "acceptedAnswers": [
+              "try on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Be careful not to ...... any important information.",
+            "answer": "leave out",
+            "acceptedAnswers": [
+              "leave out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you ...... your coat properly? It's still open.",
+            "answer": "do up",
+            "acceptedAnswers": [
+              "do up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you ...... my glass with juice?",
+            "answer": "fill up",
+            "acceptedAnswers": [
+              "fill up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He always ...... a black jacket at concerts.",
+            "answer": "has on",
+            "acceptedAnswers": [
+              "has on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The tailor had to ...... the damaged fabric.",
+            "answer": "cut off",
+            "acceptedAnswers": [
+              "cut off"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u33-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Prepositional phrases",
+        "title": "Prepositional phrases",
+        "instructions": "Complete each sentence with a phrase from the list.",
+        "studentInstruction": "Complete each sentence with a phrase from the list.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "at the back of",
+          "at the end of",
+          "in fashion",
+          "in front of",
+          "in the corner of",
+          "out of fashion"
+        ],
+        "wordBank": [
+          "at the back of",
+          "at the end of",
+          "in fashion",
+          "in front of",
+          "in the corner of",
+          "out of fashion"
+        ],
+        "items": [
+          {
+            "id": "b1-u33-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There is a playground ...... the school building.",
+            "answer": "at the back of",
+            "acceptedAnswers": [
+              "at the back of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We sang a song ...... the performance.",
+            "answer": "at the end of",
+            "acceptedAnswers": [
+              "at the end of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Long coats are ...... this winter.",
+            "answer": "in fashion",
+            "acceptedAnswers": [
+              "in fashion"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "A taxi was waiting ...... the hotel.",
+            "answer": "in front of",
+            "acceptedAnswers": [
+              "in front of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There was an old chair ...... the living room.",
+            "answer": "in the corner of",
+            "acceptedAnswers": [
+              "in the corner of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Those huge sunglasses are ...... these days.",
+            "answer": "out of fashion",
+            "acceptedAnswers": [
+              "out of fashion"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u33-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Word patterns",
+        "title": "Word patterns",
+        "instructions": "Write one preposition in each gap.",
+        "studentInstruction": "Write one preposition in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u33-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Everyone was amazed ...... her artistic talent.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Tom was disappointed ...... the final result.",
+            "answer": "with",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Are you familiar ...... this type of material?",
+            "answer": "with",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She was involved ...... designing the new theatre.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This painting is similar ...... one I saw in Paris.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The company changed the warehouse ...... offices.",
+            "answer": "into",
+            "acceptedAnswers": [
+              "into"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you explain the instructions ...... us?",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This smell reminds me ...... my grandmother's kitchen.",
+            "answer": "of",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exe-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please remove the sticker ...... the box.",
+            "answer": "from",
+            "acceptedAnswers": [
+              "from"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exe-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The guide described the castle ...... impressive and unique.",
+            "answer": "as",
+            "acceptedAnswers": [
+              "as"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u33-ex-f",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Word formation",
+        "title": "Word formation",
+        "instructions": "Complete each sentence with the correct form of the word in capitals.",
+        "studentInstruction": "Complete each sentence with the correct form of the word in capitals.",
+        "legacyKey": "F",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u33-exf-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The famous ...... painted several murals in the city. (ART)",
+            "answer": "artist",
+            "acceptedAnswers": [
+              "artist"
+            ],
+            "explanation": "",
+            "verbPrompt": "ART"
+          },
+          {
+            "id": "b1-u33-exf-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "This phone case is nearly ...... . (BREAK)",
+            "answer": "unbreakable",
+            "acceptedAnswers": [
+              "unbreakable"
+            ],
+            "explanation": "",
+            "verbPrompt": "BREAK"
+          },
+          {
+            "id": "b1-u33-exf-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Beethoven was an incredible ...... . (COMPOSE)",
+            "answer": "composer",
+            "acceptedAnswers": [
+              "composer"
+            ],
+            "explanation": "",
+            "verbPrompt": "COMPOSE"
+          },
+          {
+            "id": "b1-u33-exf-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "We visited an ...... about modern architecture. (EXHIBIT)",
+            "answer": "exhibition",
+            "acceptedAnswers": [
+              "exhibition"
+            ],
+            "explanation": "",
+            "verbPrompt": "EXHIBIT"
+          },
+          {
+            "id": "b1-u33-exf-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Education can give people greater ...... . (FREE)",
+            "answer": "freedom",
+            "acceptedAnswers": [
+              "freedom"
+            ],
+            "explanation": "",
+            "verbPrompt": "FREE"
+          },
+          {
+            "id": "b1-u33-exf-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Only a ...... of guests stayed until midnight. (HAND)",
+            "answer": "handful",
+            "acceptedAnswers": [
+              "handful"
+            ],
+            "explanation": "",
+            "verbPrompt": "HAND"
+          },
+          {
+            "id": "b1-u33-exf-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "She found an ...... way to reuse old materials. (IMAGINE)",
+            "answer": "imaginative",
+            "acceptedAnswers": [
+              "imaginative"
+            ],
+            "explanation": "",
+            "verbPrompt": "IMAGINE"
+          },
+          {
+            "id": "b1-u33-exf-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "His ...... impressed all the teachers. (INTELLIGENT)",
+            "answer": "intelligence",
+            "acceptedAnswers": [
+              "intelligence"
+            ],
+            "explanation": "",
+            "verbPrompt": "INTELLIGENT"
+          },
+          {
+            "id": "b1-u33-exf-9",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The drawing is still ......, but it's improving. (PERFECT)",
+            "answer": "imperfect",
+            "acceptedAnswers": [
+              "imperfect"
+            ],
+            "explanation": "",
+            "verbPrompt": "PERFECT"
+          },
+          {
+            "id": "b1-u33-exf-10",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Careful ...... makes construction much easier. (PREPARE)",
+            "answer": "preparation",
+            "acceptedAnswers": [
+              "preparation"
+            ],
+            "explanation": "",
+            "verbPrompt": "PREPARE"
+          }
+        ]
+      },
+      {
+        "id": "b1-u33-ex-g",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "G: Gap fill",
+        "title": "G: Gap fill",
+        "instructions": "Complete each sentence with a word or phrase from the box.",
+        "studentInstruction": "Complete each sentence with a word or phrase from the box.",
+        "legacyKey": "G",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "fold",
+          "influence",
+          "material",
+          "picture",
+          "rough",
+          "suit"
+        ],
+        "wordBank": [
+          "fold",
+          "influence",
+          "material",
+          "picture",
+          "rough",
+          "suit"
+        ],
+        "items": [
+          {
+            "id": "b1-u33-exg-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "These boots don't ...... me because they are too small.",
+            "answer": "suit",
+            "acceptedAnswers": [
+              "suit"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exg-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you ...... the map so it fits in your pocket?",
+            "answer": "fold",
+            "acceptedAnswers": [
+              "fold"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exg-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The wooden bench felt very ...... before we painted it.",
+            "answer": "rough",
+            "acceptedAnswers": [
+              "rough"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exg-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Leather is a durable ...... used for bags and shoes.",
+            "answer": "material",
+            "acceptedAnswers": [
+              "material"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exg-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There is a beautiful ...... of the beach in the hallway.",
+            "answer": "picture",
+            "acceptedAnswers": [
+              "picture"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exg-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Music had a strong ...... on his artistic style.",
+            "answer": "influence",
+            "acceptedAnswers": [
+              "influence"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u33-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Mixed revision",
+        "title": "Mixed revision",
+        "instructions": "Complete each sentence with one suitable word.",
+        "studentInstruction": "Complete each sentence with one suitable word.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u33-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should ...... on a scarf before going outside.",
+            "answer": "put",
+            "acceptedAnswers": [
+              "put"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "These shoes are too ...... for long walks.",
+            "answer": "tight",
+            "acceptedAnswers": [
+              "tight"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "At the ...... of the exhibition, everyone applauded.",
+            "answer": "end",
+            "acceptedAnswers": [
+              "end"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The designer used recycled ...... in her collection.",
+            "answer": "materials",
+            "acceptedAnswers": [
+              "materials"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I didn't ...... the stain on my jacket earlier.",
+            "answer": "notice",
+            "acceptedAnswers": [
+              "notice"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Bright colours are back in ...... this year.",
+            "answer": "fashion",
+            "acceptedAnswers": [
+              "fashion"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exh-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "That song reminds me ...... my childhood.",
+            "answer": "of",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exh-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The engineer wanted to ...... the old mill into a museum.",
+            "answer": "change",
+            "acceptedAnswers": [
+              "change"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u33-ex-j",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Vocabulary in context",
+        "title": "Vocabulary in context",
+        "instructions": "Complete each sentence with a word from the box.",
+        "studentInstruction": "Complete each sentence with a word from the box.",
+        "legacyKey": "J",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "ancient",
+          "cotton",
+          "design",
+          "fold",
+          "gallery",
+          "loose",
+          "maintain",
+          "pattern",
+          "pile",
+          "smooth",
+          "sleeve",
+          "tool"
+        ],
+        "wordBank": [
+          "ancient",
+          "cotton",
+          "design",
+          "fold",
+          "gallery",
+          "loose",
+          "maintain",
+          "pattern",
+          "pile",
+          "smooth",
+          "sleeve",
+          "tool"
+        ],
+        "items": [
+          {
+            "id": "b1-u33-exj-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You need the right ...... to repair the bicycle.",
+            "answer": "tool",
+            "acceptedAnswers": [
+              "tool"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exj-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There was a huge ...... of newspapers on the desk.",
+            "answer": "pile",
+            "acceptedAnswers": [
+              "pile"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exj-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "These socks are made from soft ...... .",
+            "answer": "cotton",
+            "acceptedAnswers": [
+              "cotton"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exj-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The carpet has a colourful geometric ...... .",
+            "answer": "pattern",
+            "acceptedAnswers": [
+              "pattern"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exj-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Tourists visited the ...... temple every summer.",
+            "answer": "ancient",
+            "acceptedAnswers": [
+              "ancient"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exj-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Her paintings were displayed in a famous ...... .",
+            "answer": "gallery",
+            "acceptedAnswers": [
+              "gallery"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exj-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He tore the ...... of his jacket while climbing.",
+            "answer": "sleeve",
+            "acceptedAnswers": [
+              "sleeve"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exj-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please ...... the letter carefully before posting it.",
+            "answer": "fold",
+            "acceptedAnswers": [
+              "fold"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exj-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The marble floor looked clean and ...... .",
+            "answer": "smooth",
+            "acceptedAnswers": [
+              "smooth"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u33-exj-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's difficult to ...... motivation during long projects.",
+            "answer": "maintain",
+            "acceptedAnswers": [
+              "maintain"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

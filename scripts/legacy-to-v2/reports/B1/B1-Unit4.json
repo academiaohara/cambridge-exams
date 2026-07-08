@@ -1,0 +1,79 @@
+{
+  "unit": 4,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: Present perfect simple",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: Choose the correct answer",
+      "legacyPattern": "mc-standalone",
+      "formatType": "mc_4_option",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: Write sentences",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 7,
+      "v2Items": 7,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "D: Present perfect continuous",
+      "legacyPattern": "passage-input",
+      "formatType": "passage_gap_fill",
+      "screenMode": "single_passage_with_gaps",
+      "legacyItems": 10,
+      "v2Items": 10,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "E: Circle the correct word or phrase",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 7,
+      "v2Items": 7,
+      "notes": []
+    },
+    {
+      "exerciseKey": "F",
+      "title": "F: Complete using the words in the box",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 7,
+      "v2Items": 7,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 6,
+    "legacyItemCount": 47,
+    "v2ItemCount": 47,
+    "estimatedScreens": 38,
+    "formatTypes": [
+      "conjugation_gap_fill",
+      "mc_4_option",
+      "full_sentence_write",
+      "passage_gap_fill",
+      "two_option_choice",
+      "free_text_gap_fill"
+    ]
+  }
+}

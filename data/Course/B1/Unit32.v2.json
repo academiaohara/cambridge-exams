@@ -1,0 +1,801 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 11,
+  "unit": 32,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 32: Reported questions & orders",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 32: Reported questions & orders"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit32.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 5
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u32-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Reported questions, orders and requests",
+        "subtitle": "Reported questions, orders and requests",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Use",
+            "headers": [
+              "Use",
+              "Example"
+            ],
+            "rows": [
+              [
+                "To convey what someone wanted to know",
+                "'**Did** you **finish** the report?' she asked him. → She asked him **if** he **had finished** the report."
+              ]
+            ]
+          },
+          {
+            "type": "form_table",
+            "title": "Form",
+            "rows": [
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              },
+              {
+                "label": "",
+                "left": ""
+              }
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "In reported questions, **whether** can be used as an alternative to **if**.",
+              "She asked him whether he had finished the report."
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "Do not use question word order in reported questions.",
+              {
+                "correct": "She asked where I had parked."
+              },
+              {
+                "incorrect": "She asked where had I parked."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u32-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "full_sentence_write",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 21,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u32-ex-a",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u32-exa-1",
+            "b1-u32-exa-2",
+            "b1-u32-exa-3",
+            "b1-u32-exa-4",
+            "b1-u32-exa-5",
+            "b1-u32-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u32-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u32-exb-1",
+            "b1-u32-exb-2",
+            "b1-u32-exb-3",
+            "b1-u32-exb-4",
+            "b1-u32-exb-5",
+            "b1-u32-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u32-ex-c",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u32-exc-1",
+            "b1-u32-exc-2",
+            "b1-u32-exc-3",
+            "b1-u32-exc-4",
+            "b1-u32-exc-5",
+            "b1-u32-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u32-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u32-exd-1",
+            "b1-u32-exd-2",
+            "b1-u32-exd-3",
+            "b1-u32-exd-4",
+            "b1-u32-exd-5",
+            "b1-u32-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u32-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u32-exe-1",
+            "b1-u32-exe-2",
+            "b1-u32-exe-3",
+            "b1-u32-exe-4",
+            "b1-u32-exe-5",
+            "b1-u32-exe-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 30,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u32-ex-a",
+      "b1-u32-ex-b",
+      "b1-u32-ex-c",
+      "b1-u32-ex-d",
+      "b1-u32-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u32-ex-a",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "A: Reported yes/no questions",
+        "title": "A: Reported yes/no questions",
+        "instructions": "Rewrite the direct questions as reported questions using if.",
+        "studentInstruction": "Rewrite the direct questions as reported questions using if.",
+        "legacyKey": "A",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u32-exa-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "\"Are you feeling better?\" the nurse asked me.",
+            "prompt": {
+              "cues": [
+                "\"Are you feeling better?\" the nurse asked me."
+              ]
+            },
+            "answer": "The nurse asked me if I was feeling better.",
+            "acceptedAnswers": [
+              "The nurse asked me if I was feeling better."
+            ]
+          },
+          {
+            "id": "b1-u32-exa-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "\"Have you sent the email?\" Liam asked.",
+            "prompt": {
+              "cues": [
+                "\"Have you sent the email?\" Liam asked."
+              ]
+            },
+            "answer": "Liam asked if I had sent the email.",
+            "acceptedAnswers": [
+              "Liam asked if I had sent the email."
+            ]
+          },
+          {
+            "id": "b1-u32-exa-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "\"Can you speak Italian?\" Sara asked Tom.",
+            "prompt": {
+              "cues": [
+                "\"Can you speak Italian?\" Sara asked Tom."
+              ]
+            },
+            "answer": "Sara asked Tom if he could speak Italian.",
+            "acceptedAnswers": [
+              "Sara asked Tom if he could speak Italian."
+            ]
+          },
+          {
+            "id": "b1-u32-exa-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "\"Will they arrive tonight?\" Mum asked.",
+            "prompt": {
+              "cues": [
+                "\"Will they arrive tonight?\" Mum asked."
+              ]
+            },
+            "answer": "Mum asked if they would arrive that night.",
+            "acceptedAnswers": [
+              "Mum asked if they would arrive that night."
+            ]
+          },
+          {
+            "id": "b1-u32-exa-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "\"Should we wait outside?\" Daniel asked.",
+            "prompt": {
+              "cues": [
+                "\"Should we wait outside?\" Daniel asked."
+              ]
+            },
+            "answer": "Daniel asked if they should wait outside.",
+            "acceptedAnswers": [
+              "Daniel asked if they should wait outside."
+            ]
+          },
+          {
+            "id": "b1-u32-exa-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "\"Did you lock the door?\" Dad asked me.",
+            "prompt": {
+              "cues": [
+                "\"Did you lock the door?\" Dad asked me."
+              ]
+            },
+            "answer": "Dad asked me if I had locked the door.",
+            "acceptedAnswers": [
+              "Dad asked me if I had locked the door."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u32-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Reported wh- questions",
+        "title": "B: Reported wh- questions",
+        "instructions": "Complete each reported question with the correct form.",
+        "studentInstruction": "Complete each reported question with the correct form.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u32-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "\"Where does your cousin work?\" he asked. → He asked where my cousin ...... .",
+            "answer": "worked",
+            "acceptedAnswers": [
+              "worked"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "\"Why are they laughing?\" she asked. → She asked why they ...... laughing.",
+            "answer": "were",
+            "acceptedAnswers": [
+              "were"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "\"When will the concert finish?\" I asked. → I asked when the concert ...... .",
+            "answer": "would finish",
+            "acceptedAnswers": [
+              "would finish"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "\"Who did you invite?\" Emma asked. → Emma asked who I ...... .",
+            "answer": "had invited",
+            "acceptedAnswers": [
+              "had invited"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "\"How long did the film last?\" Tom asked. → Tom asked how long the film ...... .",
+            "answer": "had lasted",
+            "acceptedAnswers": [
+              "had lasted"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "\"Which colour do you prefer?\" Mia asked. → Mia asked which colour I ...... .",
+            "answer": "preferred",
+            "acceptedAnswers": [
+              "preferred"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u32-ex-c",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "C: Reported orders and requests",
+        "title": "C: Reported orders and requests",
+        "instructions": "Rewrite using told/asked + (not) to infinitive.",
+        "studentInstruction": "Rewrite using told/asked + (not) to infinitive.",
+        "legacyKey": "C",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u32-exc-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "\"Open your books,\" the teacher said to us.",
+            "prompt": {
+              "cues": [
+                "\"Open your books,\" the teacher said to us."
+              ]
+            },
+            "answer": "The teacher told us to open our books.",
+            "acceptedAnswers": [
+              "The teacher told us to open our books."
+            ]
+          },
+          {
+            "id": "b1-u32-exc-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "\"Don't park here,\" the police officer said to me.",
+            "prompt": {
+              "cues": [
+                "\"Don't park here,\" the police officer said to me."
+              ]
+            },
+            "answer": "The police officer told me not to park there.",
+            "acceptedAnswers": [
+              "The police officer told me not to park there."
+            ]
+          },
+          {
+            "id": "b1-u32-exc-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "\"Please carry this bag,\" Grandma said to Leo.",
+            "prompt": {
+              "cues": [
+                "\"Please carry this bag,\" Grandma said to Leo."
+              ]
+            },
+            "answer": "Grandma asked Leo to carry that bag.",
+            "acceptedAnswers": [
+              "Grandma asked Leo to carry that bag."
+            ]
+          },
+          {
+            "id": "b1-u32-exc-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "\"Please don't make any noise,\" the librarian said to the children.",
+            "prompt": {
+              "cues": [
+                "\"Please don't make any noise,\" the librarian said to the children."
+              ]
+            },
+            "answer": "The librarian asked the children not to make any noise.",
+            "acceptedAnswers": [
+              "The librarian asked the children not to make any noise."
+            ]
+          },
+          {
+            "id": "b1-u32-exc-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "\"Bring me the receipt,\" the assistant said to Anna.",
+            "prompt": {
+              "cues": [
+                "\"Bring me the receipt,\" the assistant said to Anna."
+              ]
+            },
+            "answer": "The assistant told Anna to bring him the receipt.",
+            "acceptedAnswers": [
+              "The assistant told Anna to bring him the receipt."
+            ]
+          },
+          {
+            "id": "b1-u32-exc-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "\"Please don't eat my sandwich,\" Mark said to me.",
+            "prompt": {
+              "cues": [
+                "\"Please don't eat my sandwich,\" Mark said to me."
+              ]
+            },
+            "answer": "Mark asked me not to eat his sandwich.",
+            "acceptedAnswers": [
+              "Mark asked me not to eat his sandwich."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u32-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Multiple choice",
+        "title": "D: Multiple choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u32-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "\"Do you live nearby?\" he asked me. He asked me",
+            "sentenceAfter": "nearby.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "if I lived"
+              },
+              {
+                "letter": "B",
+                "text": "if did I live"
+              },
+              {
+                "letter": "C",
+                "text": "whether I live"
+              },
+              {
+                "letter": "D",
+                "text": "that I lived"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "\"Where did you put the keys?\" she asked. She asked",
+            "sentenceAfter": "the keys.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "where did I put"
+              },
+              {
+                "letter": "B",
+                "text": "where I had put"
+              },
+              {
+                "letter": "C",
+                "text": "where had I put"
+              },
+              {
+                "letter": "D",
+                "text": "where I putted"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "\"Please wait here,\" the receptionist said. The receptionist",
+            "sentenceAfter": "there.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "asked me wait"
+              },
+              {
+                "letter": "B",
+                "text": "told me to wait"
+              },
+              {
+                "letter": "C",
+                "text": "said me to wait"
+              },
+              {
+                "letter": "D",
+                "text": "asked that I waited"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "\"Don't touch the screen,\" Dad said. Dad told us",
+            "sentenceAfter": "the screen.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "to not touch"
+              },
+              {
+                "letter": "B",
+                "text": "don't touch"
+              },
+              {
+                "letter": "C",
+                "text": "not to touch"
+              },
+              {
+                "letter": "D",
+                "text": "not touch"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "\"Can you open the window?\" she asked. She asked me if I",
+            "sentenceAfter": "open the window.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "can"
+              },
+              {
+                "letter": "B",
+                "text": "could"
+              },
+              {
+                "letter": "C",
+                "text": "will"
+              },
+              {
+                "letter": "D",
+                "text": "should"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "\"When will the shop close?\" he asked. He asked when the shop",
+            "sentenceAfter": ".",
+            "options": [
+              {
+                "letter": "A",
+                "text": "will close"
+              },
+              {
+                "letter": "B",
+                "text": "would close"
+              },
+              {
+                "letter": "C",
+                "text": "did close"
+              },
+              {
+                "letter": "D",
+                "text": "closes"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u32-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Key word transformation",
+        "title": "E: Key word transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning.",
+        "legacyKey": "E",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u32-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "\"Do you play tennis?\" she asked me. **IF**\nShe asked me ...... tennis.",
+            "answer": "if I played",
+            "acceptedAnswers": [
+              "if I played"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "\"Where did you find that wallet?\" Tom asked. **WHERE**\nTom asked ...... that wallet.",
+            "answer": "where I had found",
+            "acceptedAnswers": [
+              "where I had found"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "\"Please text me later,\" Amy said to Ben. **ASKED**\nAmy ...... later.",
+            "answer": "asked Ben to text her",
+            "acceptedAnswers": [
+              "asked Ben to text her"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "\"Don't shout in class,\" the teacher said. **TOLD**\nThe teacher ...... in class.",
+            "answer": "told us not to shout",
+            "acceptedAnswers": [
+              "told us not to shout"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "\"When are you moving house?\" I asked. **WHEN**\nI asked ...... house.",
+            "answer": "when they were moving",
+            "acceptedAnswers": [
+              "when they were moving"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u32-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "\"Can I use your charger?\" Lucy asked me. **WHETHER**\nLucy asked me ...... my charger.",
+            "answer": "whether she could use",
+            "acceptedAnswers": [
+              "whether she could use"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}
