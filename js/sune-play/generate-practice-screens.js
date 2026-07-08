@@ -458,6 +458,22 @@
     };
   }
 
+  function buildSyncedGapFillPayload(item, exercise) {
+    var sentences = item.sentences || [];
+    if (!sentences.length && item.sentence) {
+      sentences = String(item.sentence).split('\n').filter(Boolean);
+    }
+    var answer = item.answer;
+    return {
+      sentences: sentences,
+      answer: answer,
+      acceptedAnswers: item.acceptedAnswers || (answer ? [answer] : []),
+      syncUiMode: 'master_with_previews',
+      explanation: item.explanation || '',
+      instruction: exercise.studentInstruction || exercise.instructions || ''
+    };
+  }
+
   function buildScreenId(nodeId, exerciseId, itemId, formatType) {
     return [nodeId, exerciseId, itemId, formatType].filter(Boolean).join('__');
   }
@@ -655,6 +671,9 @@
       case 'crossword_clues':
         return buildCrosswordCluePayload(item, exercise);
 
+      case 'synced_gap_fill':
+        return buildSyncedGapFillPayload(item, exercise);
+
       default:
         warn('Unknown formatType: ' + formatType);
         return { raw: item };
@@ -823,6 +842,7 @@
     buildFindExtraWordPayload: buildFindExtraWordPayload,
     buildKeywordTransformationPayload: buildKeywordTransformationPayload,
     buildColumnMatchingPayload: buildColumnMatchingPayload,
-    buildCrosswordCluePayload: buildCrosswordCluePayload
+    buildCrosswordCluePayload: buildCrosswordCluePayload,
+    buildSyncedGapFillPayload: buildSyncedGapFillPayload
   };
 })();
