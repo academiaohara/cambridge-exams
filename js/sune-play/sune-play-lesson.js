@@ -680,6 +680,8 @@
         return p.instruction || 'If the line is correct, tap OK. If there is an extra word, tap it.';
       case 'keyword_transformation':
         return p.instruction || 'Complete the second sentence using the keyword. Write between two and five words.';
+      case 'column_matching':
+        return p.instruction || 'Tap a numbered beginning, then tap the matching ending letter.';
       default:
         return p.instruction || '';
     }
@@ -719,6 +721,8 @@
         return p.sentence || p.instruction || '';
       case 'keyword_transformation':
         return p.promptSentence || p.instruction || '';
+      case 'column_matching':
+        return p.instruction || 'Match beginnings with endings.';
       default:
         return p.instruction || p.sentence || '';
     }

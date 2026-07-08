@@ -361,6 +361,85 @@
     };
   }
 
+  function getColumnMatchLib() {
+    return window.SunePlayColumnMatch || {};
+  }
+
+  function buildColumnMatchingPayload(exercise) {
+    var cm = getColumnMatchLib();
+    var parseMatchSentence = cm.parseMatchSentence || function(sentence, idx) {
+      var raw = String(sentence || '').trim();
+      var match = raw.match(/^(.*?)\s*\*\*([A-Z])\*\*\s*(.*)?$/);
+      if (match) {
+        return { leftText: match[1].trim(), markerLetter: match[2].toUpperCase(), endingText: (match[3] || '').trim() };
+      }
+      return { leftText: raw, markerLetter: String.fromCharCode(65 + idx), endingText: '' };
+    };
+
+    var sourceItems = exercise.items || exercise.questions || [];
+    var draftPairs = sourceItems.map(function(item, idx) {
+      var parsed = parseMatchSentence(item.sentence || '', idx);
+      var endingText = parsed.endingText || '';
+      var rawAnswer = String(item.answer || '').trim();
+      if (!endingText && rawAnswer && !/^[A-H](?:\s*[–\-—]|\s*$)/i.test(rawAnswer)) {
+        endingText = rawAnswer;
+      }
+      var dashMatch = rawAnswer.match(/^([A-H])\s*[–\-—]\s*(.+)$/i);
+      if (dashMatch && !parsed.endingText) endingText = dashMatch[2].trim();
+      return {
+        pairId: idx + 1,
+        leftText: parsed.leftText,
+        markerLetter: parsed.markerLetter,
+        endingText: endingText,
+        rawAnswer: rawAnswer,
+        hasEmbeddedLetter: !!parsed.hasEmbeddedLetter
+      };
+    });
+
+    var rightByLetter = {};
+    draftPairs.forEach(function(pair) {
+      if (!pair.markerLetter) return;
+      if (!rightByLetter[pair.markerLetter] && pair.endingText) {
+        rightByLetter[pair.markerLetter] = pair.endingText;
+      }
+    });
+
+    var rightOptions = Object.keys(rightByLetter).sort(function(a, b) {
+      return a.localeCompare(b);
+    }).map(function(letter) {
+      return { letter: letter, endingText: rightByLetter[letter] };
+    });
+
+    var endingLetterMap = cm.buildEndingLetterMap
+      ? cm.buildEndingLetterMap(rightOptions)
+      : {};
+    var normalizeAnswer = cm.normalizeColumnMatchAnswer || function(answer, parsed) {
+      return { correctLetter: parsed.markerLetter, endingText: parsed.endingText };
+    };
+
+    var pairs = draftPairs.map(function(pair) {
+      var normalized = normalizeAnswer(pair.rawAnswer, {
+        markerLetter: pair.markerLetter,
+        endingText: pair.endingText,
+        hasEmbeddedLetter: pair.hasEmbeddedLetter
+      }, endingLetterMap);
+      return {
+        pairId: pair.pairId,
+        leftText: pair.leftText,
+        correctLetter: normalized.correctLetter || pair.markerLetter
+      };
+    });
+
+    return {
+      pairs: pairs,
+      rightOptions: rightOptions,
+      pairCount: pairs.length,
+      answerNormalizationRule: 'column_match_answer_normalization',
+      explanation: exercise.explanation || '',
+      instruction: exercise.studentInstruction || exercise.instructions || ''
+    };
+  }
+
   function buildScreenId(nodeId, exerciseId, itemId, formatType) {
     return [nodeId, exerciseId, itemId, formatType].filter(Boolean).join('__');
   }
@@ -674,6 +753,22 @@
         return;
       }
 
+      if (rule.screenMode === 'all_pairs_single_screen') {
+        var cmFormat = rule.formatType || 'column_matching';
+        var cmPayload = buildColumnMatchingPayload(exercise);
+        var pairCount = cmPayload.pairCount || (cmPayload.pairs || []).length || 1;
+        var cmScreenId = buildScreenId(nodeId, exerciseId, null, cmFormat);
+        screens.push(buildScreen(unit, node, cmFormat, cmPayload, {
+          screenId: cmScreenId,
+          itemId: exerciseId,
+          sourceExerciseId: exerciseId,
+          fallbackFormatType: rule.fallbackFormatType,
+          formatTypeOverride: cmFormat,
+          maxLifeLossPerScreen: rule.maxLifeLossPerScreen != null ? rule.maxLifeLossPerScreen : pairCount
+        }));
+        return;
+      }
+
       (rule.sourceItemIds || []).forEach(function(itemId) {
         var item = findItem(exercise, itemId);
         if (!item) {
@@ -705,6 +800,7 @@
     normalizeMcOptions: normalizeMcOptions,
     buildMc4OptionPassagePayload: buildMc4OptionPassagePayload,
     buildFindExtraWordPayload: buildFindExtraWordPayload,
-    buildKeywordTransformationPayload: buildKeywordTransformationPayload
+    buildKeywordTransformationPayload: buildKeywordTransformationPayload,
+    buildColumnMatchingPayload: buildColumnMatchingPayload
   };
 })();
