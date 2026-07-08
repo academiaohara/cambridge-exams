@@ -20,6 +20,55 @@
     return esc(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   }
 
+  /** Slash-separated hint segments (e.g. "not / watch", "up / off / out"). */
+  function renderSlashHintMarkup(hint) {
+    if (hint == null || hint === '') return '';
+    var parts = String(hint).trim().split(/\s*\/\s*/).map(function(s) { return s.trim(); }).filter(Boolean);
+    if (parts.length <= 1) {
+      return '<span class="sp-hint-word">' + esc(parts[0] || hint) + '</span>';
+    }
+    return parts.map(function(part, i) {
+      var bit = '<span class="sp-hint-word">' + esc(part) + '</span>';
+      return i === 0 ? bit : '<span class="sp-hint-slash-sep">/</span>' + bit;
+    }).join('');
+  }
+
+  /** Bold markers and parenthetical hints — including (word / word) slash hints. */
+  function formatSentenceText(str) {
+    var raw = String(str || '');
+    var result = '';
+    var tokenRe = /\*\*([^*]+)\*\*|\(([^)]+)\)/g;
+    var lastIdx = 0;
+    var m;
+    while ((m = tokenRe.exec(raw)) !== null) {
+      result += esc(raw.slice(lastIdx, m.index));
+      if (m[1] !== undefined) {
+        result += '<strong>' + esc(m[1]) + '</strong>';
+      } else {
+        var inner = m[2].trim();
+        if (/^\d+$/.test(inner)) {
+          result += esc(m[0]);
+        } else if (inner.indexOf('/') !== -1) {
+          result += renderSlashHintMarkup(inner);
+        } else {
+          result += '<span class="sp-hint-word">' + esc(inner) + '</span>';
+        }
+      }
+      lastIdx = m.index + m[0].length;
+    }
+    result += esc(raw.slice(lastIdx));
+    return result;
+  }
+
+  function renderVerbRef(verbRef) {
+    if (!verbRef) return '';
+    var trimmed = String(verbRef).trim();
+    if (trimmed.indexOf('/') !== -1) {
+      return '<span class="sp-gap-verb-ref">' + renderSlashHintMarkup(trimmed) + '</span>';
+    }
+    return '<span class="sp-gap-verb-ref"><span class="sp-hint-word">' + esc(trimmed) + '</span></span>';
+  }
+
   function countGaps(sentence) {
     return (String(sentence || '').match(GAP_RE) || []).length;
   }
@@ -29,7 +78,7 @@
     var gapCount = countGaps(sentence);
     var html = '';
     for (var i = 0; i < parts.length; i++) {
-      html += bold(parts[i]);
+      html += formatSentenceText(parts[i]);
       if (i < gapCount) html += gapHtml;
     }
     return html;
@@ -108,7 +157,7 @@
     );
     var html = '';
     for (var i = 0; i < parts.length; i++) {
-      html += bold(parts[i]);
+      html += formatSentenceText(parts[i]);
       if (i < gapCount) html += buildInlineGapField(perGapVerbs[i] || '', i);
     }
     return html;
@@ -160,8 +209,7 @@
     options = options || {};
     var paragraphs = String(passage || '').split(/\n+/).filter(function(p) { return p.trim(); });
     return paragraphs.map(function(para) {
-      var inner = esc(para.trim())
-        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      var inner = formatSentenceText(para.trim())
         .replace(PASSAGE_GAP_MARK_RE, function(_, num) {
           return buildPassageGapField(num, options);
         });
@@ -218,6 +266,10 @@
   function bindGapInputs(root, onChange) {
     var inputs = root.querySelectorAll('.sp-gap-inline-input');
     inputs.forEach(function(inp) {
+      resizeUnderlineGapInput(inp);
+      inp.addEventListener('input', function() {
+        resizeUnderlineGapInput(inp);
+      });
       inp.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' && !root.classList.contains('sp-screen--locked')) {
           e.preventDefault();
@@ -666,21 +718,20 @@
     gapIdx = gapIdx || 0;
     var idAttr = gapIdx === 0 ? ' id="sp-gap-input"' : '';
     var idxAttr = gapIdx > 0 ? ' data-gap-idx="' + gapIdx + '"' : '';
-    var inputHtml = '<input type="text" class="sp-gap-inline-input"' + idAttr + idxAttr +
+    var inputHtml = '<input type="text" class="sp-gap-inline-input sp-gap-underline-input"' + idAttr + idxAttr +
       ' autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer for gap ' + (gapIdx + 1) + '">';
     if (!verbRef) {
       return '<span class="sp-inline-gap-group sp-inline-gap sp-inline-gap-group--solo" role="group" aria-label="Gap ' + (gapIdx + 1) + '">' + inputHtml + '</span>';
     }
     return '<span class="sp-inline-gap-group sp-inline-gap" role="group" aria-label="Gap fill">' +
       inputHtml +
-      '<span class="sp-gap-verb-ref">' + esc(verbRef) + '</span>' +
+      renderVerbRef(verbRef) +
     '</span>';
   }
 
   function buildErrorCorrectionGapField(highlightedText) {
-    var minWidth = Math.max(String(highlightedText || '').length + 2, 10);
-    var inputHtml = '<input type="text" class="sp-gap-inline-input" id="sp-error-input" ' +
-      'style="min-width:' + minWidth + 'ch" autocomplete="off" autocapitalize="off" spellcheck="false" ' +
+    var inputHtml = '<input type="text" class="sp-gap-inline-input sp-gap-underline-input" id="sp-error-input" ' +
+      'autocomplete="off" autocapitalize="off" spellcheck="false" ' +
       'aria-label="Type the corrected form">';
     return '<span class="sp-inline-gap-group sp-inline-gap-group--solo" role="group" aria-label="Error correction">' +
       inputHtml +
@@ -690,9 +741,9 @@
   function renderErrorCorrectionGapLine(sentence, highlightedText, gapField) {
     var parts = splitSentenceAtHighlight(sentence, highlightedText);
     var html = '';
-    if (parts.before) html += bold(parts.before) + ' ';
+    if (parts.before) html += formatSentenceText(parts.before) + ' ';
     html += gapField;
-    if (parts.after) html += ' ' + bold(parts.after);
+    if (parts.after) html += ' ' + formatSentenceText(parts.after);
     return html.trim();
   }
 
@@ -1158,7 +1209,7 @@
 
   function buildKwtGapField() {
     return '<span class="sp-inline-gap-group sp-inline-gap-group--solo sp-kwt-gap-wrap" role="group" aria-label="Transformation gap">' +
-      '<input type="text" class="sp-gap-inline-input sp-kwt-gap-input" id="sp-kwt-input" ' +
+      '<input type="text" class="sp-gap-inline-input sp-gap-underline-input sp-kwt-gap-input" id="sp-kwt-input" ' +
       'autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="sp-kwt-word-count" ' +
       'aria-label="Write between two and five words">' +
     '</span>';
@@ -1505,7 +1556,7 @@
   function renderSyncedGapSlot(isMaster, sentenceIndex) {
     if (isMaster) {
       return '<span class="sp-inline-gap-group sp-sync-gap-group sp-sync-gap-group--master" role="group" aria-label="Your answer">' +
-        '<input type="text" class="sp-gap-inline-input sp-sync-master-input" id="sp-sync-master-input" ' +
+        '<input type="text" class="sp-gap-inline-input sp-gap-underline-input sp-sync-master-input" id="sp-sync-master-input" ' +
         'autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Type one word for all three sentences">' +
       '</span>';
     }
@@ -1519,7 +1570,7 @@
     var gapCount = countGaps(sentence);
     var html = '';
     for (var i = 0; i < parts.length; i++) {
-      html += bold(parts[i]);
+      html += formatSentenceText(parts[i]);
       if (i < gapCount) html += renderSyncedGapSlot(isMaster, sentenceIndex);
     }
     return html;
@@ -2338,6 +2389,10 @@
       });
       var errInput = root.querySelector('#sp-error-input');
       if (errInput) {
+        resizeUnderlineGapInput(errInput);
+        errInput.addEventListener('input', function() {
+          resizeUnderlineGapInput(errInput);
+        });
         errInput.addEventListener('keydown', function(e) {
           if (e.key === 'Enter' && !root.classList.contains('sp-screen--locked')) {
             e.preventDefault();
