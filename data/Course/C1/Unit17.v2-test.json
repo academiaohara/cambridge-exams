@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 9,
+  "unit": 17,
+  "type": "grammar",
+  "unitTitle": "[TEST] Unit 17: Comma placement",
+  "unitSubtitle": "Sandbox for comma_placement (tap slots + rewrite)",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "relative clauses",
+    "comma_placement"
+  ],
+  "estimatedDurationMinutes": 10,
+  "lessonStyle": "sune-play-interactive",
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-u17-test-theory",
+    "title": "Test theory",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "c1-u17-test-theory-card-1",
+        "title": "Comma placement test",
+        "subtitle": "Sandbox unit",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "What to test",
+            "items": [
+              "tap_comma_slots: tap comma slots between tokens (C1-style)",
+              "rewrite_sentence: textarea with full rewritten sentence (B1-style)",
+              "Separate validator from passage_word_spot",
+              "One life lost per wrong screen"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "comma_placement",
+        "displayName": "Comma placement",
+        "defaultLives": 4,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "comma_placement_dual_mode",
+          "studentAction": "tap_comma_slots_or_rewrite_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-u17-test-node-1",
+      "title": "Comma placement test",
+      "shortTitle": "Comma test",
+      "focus": [
+        "comma_placement tap_comma_slots",
+        "comma_placement rewrite_sentence"
+      ],
+      "lives": 4,
+      "passCondition": {
+        "minimumCorrectScreens": 4,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u17-test-ex-comma",
+          "sourceItemIds": [
+            "c1-u17-test-comma-slot-1",
+            "c1-u17-test-comma-slot-2",
+            "c1-u17-test-comma-rewrite-1",
+            "c1-u17-test-comma-rewrite-2"
+          ],
+          "formatType": "comma_placement"
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 8,
+    "minimumScreensPerNode": 4
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Check the commas again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u17-test-ex-comma"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u17-test-ex-comma",
+        "type": "exercise",
+        "exerciseType": "comma_placement",
+        "exerciseTypeName": "Comma placement",
+        "title": "Comma placement sandbox",
+        "instructions": "Add commas where necessary.",
+        "studentInstruction": "Tap comma slots or rewrite the sentence as instructed.",
+        "items": [
+          {
+            "id": "c1-u17-test-comma-slot-1",
+            "sentence": "The documentary which was produced by Channel 4 won three international awards.",
+            "answer": "The documentary, which was produced by Channel 4, won three international awards.",
+            "interactionMode": "tap_comma_slots",
+            "formatType": "comma_placement"
+          },
+          {
+            "id": "c1-u17-test-comma-slot-2",
+            "sentence": "We visited the museum that you had recommended so highly.",
+            "answer": "No commas needed (defining clause)",
+            "interactionMode": "tap_comma_slots",
+            "formatType": "comma_placement"
+          },
+          {
+            "id": "c1-u17-test-comma-rewrite-1",
+            "sentence": "My brother who lives in Manchester is a chef.",
+            "answer": "My brother, who lives in Manchester, is a chef.",
+            "interactionMode": "rewrite_sentence",
+            "formatType": "comma_placement"
+          },
+          {
+            "id": "c1-u17-test-comma-rewrite-2",
+            "sentence": "The bike which is outside the shop is mine.",
+            "answer": "No commas",
+            "interactionMode": "rewrite_sentence",
+            "formatType": "comma_placement"
+          }
+        ],
+        "interaction": {
+          "formatType": "comma_placement"
+        }
+      }
+    ]
+  }
+}

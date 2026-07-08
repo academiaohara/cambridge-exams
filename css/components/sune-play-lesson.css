@@ -2122,6 +2122,92 @@ button.sp-example-line.sp-speakable {
   text-align: center;
 }
 
+/* ── Comma placement (tap slots + rewrite) ───────────────────────────── */
+.sp-comma-sentence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.9;
+  font-size: 1rem;
+  color: var(--text-primary, #1e293b);
+  padding: 12px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.sp-comma-token {
+  font-weight: 600;
+}
+
+.sp-comma-slot {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1.5px dashed #cbd5e1;
+  background: #fff;
+  color: transparent;
+  font-size: 0.72rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s, transform 0.1s;
+}
+
+.sp-comma-slot:hover:not(:disabled) {
+  border-color: #94a3b8;
+  transform: scale(1.08);
+}
+
+.sp-comma-slot--selected {
+  border-style: solid;
+  border-color: var(--sp-duo-blue, #1cb0f6);
+  background: rgba(28, 176, 246, 0.12);
+  color: var(--sp-duo-blue, #1cb0f6);
+}
+
+.sp-comma-slot--correct {
+  border-color: var(--sp-duo-green, #58cc02) !important;
+  background: rgba(88, 204, 2, 0.14) !important;
+  color: var(--sp-duo-green-dark, #3d8f00) !important;
+}
+
+.sp-comma-slot--incorrect {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #b91c1c !important;
+}
+
+.sp-comma-slot--reveal {
+  border-style: solid;
+  border-color: var(--sp-duo-green, #58cc02) !important;
+  background: rgba(88, 204, 2, 0.08) !important;
+  color: var(--sp-duo-green-dark, #3d8f00) !important;
+}
+
+.sp-comma-slot:disabled {
+  cursor: default;
+}
+
+.sp-comma-prompt {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-primary, #1e293b);
+}
+
+.sp-comma-rewrite-input--correct {
+  border-color: var(--sp-duo-green, #58cc02) !important;
+  background: rgba(88, 204, 2, 0.08) !important;
+}
+
+.sp-comma-rewrite-input--incorrect {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.08) !important;
+}
+
 @media (min-width: 768px) {
   .sp-mc-sheet {
     align-items: center;

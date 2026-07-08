@@ -458,6 +458,95 @@
     };
   }
 
+  function isNoCommaAnswer(answer) {
+    return /^no commas/i.test(String(answer || '').trim());
+  }
+
+  function isCommaBoundaryAllowed(leftToken, rightToken) {
+    var left = String(leftToken || '').trim();
+    var right = String(rightToken || '').trim();
+    if (!left || !right) return false;
+    if (/[.,]$/.test(left)) return false;
+    if (/^[.,]/.test(right)) return false;
+    return true;
+  }
+
+  function parseCommaAfterTokenIndexes(sentence, answer) {
+    var ans = String(answer || '').trim();
+    if (!ans || isNoCommaAnswer(ans)) return [];
+
+    var baseTokens = String(sentence || '').trim().split(/\s+/).filter(Boolean);
+    var ansTokensRaw = ans.split(/\s+/).filter(Boolean);
+    if (!baseTokens.length || baseTokens.length !== ansTokensRaw.length) return [];
+
+    function normalizeToken(tok) {
+      return String(tok || '').toLowerCase().replace(/,+$/, '');
+    }
+
+    var ansTokens = [];
+    var commaAfter = [];
+    for (var i = 0; i < ansTokensRaw.length; i++) {
+      var tok = ansTokensRaw[i];
+      commaAfter.push(/,+$/.test(tok));
+      ansTokens.push(tok.replace(/,+$/, ''));
+      if (normalizeToken(baseTokens[i]) !== normalizeToken(ansTokens[i])) return [];
+    }
+
+    var slots = [];
+    for (var k = 0; k < baseTokens.length - 1; k++) {
+      if (!commaAfter[k]) continue;
+      if (isCommaBoundaryAllowed(baseTokens[k], baseTokens[k + 1])) slots.push(k);
+    }
+    return slots;
+  }
+
+  function buildCommaRewriteAcceptedAnswers(sentence, answer, noCommaNeeded) {
+    if (noCommaNeeded) {
+      return ['No commas', 'no commas', sentence];
+    }
+    return answer ? [answer] : [];
+  }
+
+  function buildCommaPlacementPayload(item, exercise) {
+    var sentence = String(item.sentence || '').trim();
+    var answer = String(item.answer || '').trim();
+    var interaction = exercise.interaction || {};
+    var mode = item.interactionMode || item.commaMode ||
+      interaction.commaPlacementMode || interaction.mode || 'tap_comma_slots';
+    var tokens = tokenizeSentence(sentence);
+    var tokenPayload = tokens.map(function(token, index) {
+      return { text: token, index: index };
+    });
+    var slots = [];
+    for (var i = 0; i < tokens.length - 1; i++) {
+      if (isCommaBoundaryAllowed(tokens[i], tokens[i + 1])) {
+        slots.push({ slotIndex: i, afterTokenIndex: i });
+      }
+    }
+    var noCommaNeeded = item.noCommaNeeded != null ? !!item.noCommaNeeded : isNoCommaAnswer(answer);
+    var commaAfterTokenIndexes = item.commaAfterTokenIndexes ||
+      parseCommaAfterTokenIndexes(sentence, answer);
+
+    var payload = {
+      interactionMode: mode,
+      sentence: sentence,
+      tokens: tokenPayload,
+      slots: slots,
+      commaAfterTokenIndexes: commaAfterTokenIndexes,
+      noCommaNeeded: noCommaNeeded,
+      instruction: exercise.studentInstruction || exercise.instructions || '',
+      explanation: item.explanation || ''
+    };
+
+    if (mode === 'rewrite_sentence') {
+      payload.reconstructedSentence = noCommaNeeded ? sentence : answer;
+      payload.acceptedAnswers = item.acceptedAnswers ||
+        buildCommaRewriteAcceptedAnswers(sentence, answer, noCommaNeeded);
+    }
+
+    return payload;
+  }
+
   function buildSyncedGapFillPayload(item, exercise) {
     var sentences = item.sentences || [];
     if (!sentences.length && item.sentence) {
@@ -674,6 +763,9 @@
       case 'synced_gap_fill':
         return buildSyncedGapFillPayload(item, exercise);
 
+      case 'comma_placement':
+        return buildCommaPlacementPayload(item, exercise);
+
       default:
         warn('Unknown formatType: ' + formatType);
         return { raw: item };
@@ -843,6 +935,8 @@
     buildKeywordTransformationPayload: buildKeywordTransformationPayload,
     buildColumnMatchingPayload: buildColumnMatchingPayload,
     buildCrosswordCluePayload: buildCrosswordCluePayload,
-    buildSyncedGapFillPayload: buildSyncedGapFillPayload
+    buildSyncedGapFillPayload: buildSyncedGapFillPayload,
+    buildCommaPlacementPayload: buildCommaPlacementPayload,
+    parseCommaAfterTokenIndexes: parseCommaAfterTokenIndexes
   };
 })();
