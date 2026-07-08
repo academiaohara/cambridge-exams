@@ -6070,106 +6070,21 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   }
 }
 
-.course-stages-header {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px 18px 18px;
-  margin: 0 0 16px;
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.course-stages-header--duo {
-  border: none;
-  border-radius: 18px;
-  background: var(--cw-header-color, #3b82f6);
-  color: #fff;
-  box-shadow: 0 4px 0 color-mix(in srgb, var(--cw-header-color, #3b82f6) 72%, #000), 0 8px 24px color-mix(in srgb, var(--cw-header-color, #3b82f6) 22%, transparent);
-  position: sticky;
-  top: var(--dashboard-top-spacing, 28px);
-  z-index: 4;
-}
-
-.course-stages-header-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.course-stages-kicker {
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.course-stages-title {
-  font-family: 'Nunito', sans-serif;
-  font-size: 1.35rem;
-  font-weight: 800;
-  line-height: 1.15;
-  color: #fff;
-}
-
-.course-stages-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0;
-  border: none;
-  background: none;
-  color: #9ca3af;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: color 0.15s ease;
-}
-
-.course-stages-back--duo {
-  width: 42px;
-  height: 42px;
-  justify-content: center;
-  border-radius: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.12);
-  flex-shrink: 0;
-  transition: background 0.15s ease, border-color 0.15s ease;
-}
-
-.course-stages-back:hover {
-  color: #6b7280;
-}
-
-.course-stages-back--duo:hover {
-  background: rgba(0, 0, 0, 0.14);
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.course-stages-back .material-symbols-outlined {
-  font-size: 1.3rem;
-  line-height: 1;
-}
-
-.dashboard-center--learning-stages .course-stages-header--duo {
+.dashboard-center--learning-stages .cw-section-header--duo {
   margin-left: 0;
   margin-right: 0;
 }
 
+.cw-section-header--duo.cw-section-header--level,
 .cw-section-header--learning.cw-section-header--duo {
-  background: var(--cw-header-color, #3b82f6);
   box-shadow: 0 4px 0 color-mix(in srgb, var(--cw-header-color, #3b82f6) 72%, #000), 0 8px 24px color-mix(in srgb, var(--cw-header-color, #3b82f6) 22%, transparent);
 }
 
-.cw-section-header--learning.cw-section-header--duo .cw-section-back {
+.cw-section-header--learning.cw-section-header--duo {
+  background: var(--cw-header-color, #3b82f6);
+}
+
+.cw-section-header--duo .cw-section-back {
   width: 42px;
   height: 42px;
   border-radius: 14px;
@@ -6178,22 +6093,9 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   box-shadow: 0 3px 0 rgba(0, 0, 0, 0.12);
 }
 
-.cw-section-header--learning.cw-section-header--duo .cw-section-back:hover {
+.cw-section-header--duo .cw-section-back:hover {
   background: rgba(0, 0, 0, 0.14);
   border-color: rgba(255, 255, 255, 0.5);
-}
-
-@media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
-  .course-stages-header--duo {
-    margin-left: 16px;
-    margin-right: 16px;
-    margin-bottom: 14px;
-    padding: 14px 16px 16px;
-  }
-
-  .course-stages-title {
-    font-size: 1.2rem;
-  }
 }
 
 .course-etapa-card--available,

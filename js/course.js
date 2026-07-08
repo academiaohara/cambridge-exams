@@ -107,16 +107,13 @@
       var SECTION_META = BentoGrid._courseSectionMeta();
       var meta = SECTION_META[sectionId] || SECTION_META.learning;
       var title = sectionId === 'learning' ? 'Learning Path' : (meta.label + ' Path');
-      var showBack = sectionId === 'learning';
-      return '<div class="course-stages-header course-stages-header--duo" style="--cw-header-color:' + meta.headerColor + '">' +
-        (showBack
-          ? '<button type="button" class="course-stages-back course-stages-back--duo" onclick="' + backOnclick + '" aria-label="Back">' +
-              _mi('arrow_back') +
-            '</button>'
-          : '') +
-        '<div class="course-stages-header-text">' +
-          '<div class="course-stages-kicker">' + meta.kicker + '</div>' +
-          '<div class="course-stages-title">' + title + '</div>' +
+      return '<div class="cw-section-header cw-section-header--duo cw-section-header--level" style="--cw-header-color:' + meta.headerColor + '">' +
+        '<button type="button" class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' +
+          _mi('arrow_back') +
+        '</button>' +
+        '<div class="cw-section-header-text">' +
+          '<div class="cw-section-kicker">COURSE · ' + meta.kicker + '</div>' +
+          '<div class="cw-section-title">' + title + '</div>' +
         '</div>' +
       '</div>';
     },
