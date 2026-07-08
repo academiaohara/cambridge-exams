@@ -1,0 +1,2333 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 1,
+  "unit": 2,
+  "type": "vocabulary",
+  "unitTitle": "[PILOT] Unit 2: Thinking and Learning",
+  "unitSubtitle": "Thinking and Learning",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "Unit 2: Thinking and Learning"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/C1/Unit2.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 15
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-u2-theory",
+    "title": "Topic vocabulary",
+    "shortTitle": "Vocabulary",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "c1-u2-theory-card-1",
+        "title": "Unit 2: Thinking and Learning",
+        "subtitle": "",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Unit focus",
+            "items": [
+              "thinking",
+              "learning"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "column_matching",
+        "displayName": "Match columns",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "tap_to_pair",
+          "studentAction": "pair_beginnings_endings",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "synced_gap_fill",
+        "displayName": "One word for three sentences",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "synced_gap_master_previews",
+          "studentAction": "type_master_word",
+          "evaluationTrigger": "check_button",
+          "syncUiMode": "master_with_previews"
+        }
+      },
+      {
+        "formatType": "passage_gap_fill",
+        "displayName": "Complete the passage",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "passage_inline_gaps",
+          "studentAction": "type_gap_answers",
+          "evaluationTrigger": "check_button",
+          "gapInputStyle": "pill"
+        }
+      },
+      {
+        "formatType": "keyword_transformation",
+        "displayName": "Key word transformation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "keyword_gap_input",
+          "studentAction": "type_transformation",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-u2-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "two_option_choice",
+        "free_text_gap_fill",
+        "mc_4_option",
+        "column_matching",
+        "synced_gap_fill",
+        "passage_gap_fill",
+        "keyword_transformation"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 79,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u2-ex-a",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "c1-u2-exa-1",
+            "c1-u2-exa-2",
+            "c1-u2-exa-3",
+            "c1-u2-exa-4",
+            "c1-u2-exa-5",
+            "c1-u2-exa-6",
+            "c1-u2-exa-7",
+            "c1-u2-exa-8",
+            "c1-u2-exa-9",
+            "c1-u2-exa-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u2-exb-1",
+            "c1-u2-exb-2",
+            "c1-u2-exb-3",
+            "c1-u2-exb-4",
+            "c1-u2-exb-5",
+            "c1-u2-exb-6",
+            "c1-u2-exb-7",
+            "c1-u2-exb-8",
+            "c1-u2-exb-9"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u2-exc-1",
+            "c1-u2-exc-2",
+            "c1-u2-exc-3",
+            "c1-u2-exc-4",
+            "c1-u2-exc-5",
+            "c1-u2-exc-6",
+            "c1-u2-exc-7",
+            "c1-u2-exc-8",
+            "c1-u2-exc-9",
+            "c1-u2-exc-10",
+            "c1-u2-exc-11"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-d",
+          "formatType": "mc_4_option",
+          "screenMode": "all_gaps_single_screen"
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-e",
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen"
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-f",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u2-exf-1",
+            "c1-u2-exf-2",
+            "c1-u2-exf-3",
+            "c1-u2-exf-4",
+            "c1-u2-exf-5",
+            "c1-u2-exf-6",
+            "c1-u2-exf-7",
+            "c1-u2-exf-8",
+            "c1-u2-exf-9"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-g",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "c1-u2-exg-1",
+            "c1-u2-exg-2",
+            "c1-u2-exg-3",
+            "c1-u2-exg-4",
+            "c1-u2-exg-5",
+            "c1-u2-exg-6",
+            "c1-u2-exg-7",
+            "c1-u2-exg-8",
+            "c1-u2-exg-9",
+            "c1-u2-exg-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u2-exh-1",
+            "c1-u2-exh-2",
+            "c1-u2-exh-3",
+            "c1-u2-exh-4",
+            "c1-u2-exh-5",
+            "c1-u2-exh-6",
+            "c1-u2-exh-7",
+            "c1-u2-exh-8",
+            "c1-u2-exh-9",
+            "c1-u2-exh-10",
+            "c1-u2-exh-11",
+            "c1-u2-exh-12",
+            "c1-u2-exh-13",
+            "c1-u2-exh-14",
+            "c1-u2-exh-15"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-i",
+          "formatType": "synced_gap_fill",
+          "sourceItemIds": [
+            "c1-u2-exi-1",
+            "c1-u2-exi-2",
+            "c1-u2-exi-3",
+            "c1-u2-exi-4",
+            "c1-u2-exi-5",
+            "c1-u2-exi-6",
+            "c1-u2-exi-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-j",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-k",
+          "formatType": "keyword_transformation",
+          "sourceItemIds": [
+            "c1-u2-exk-1",
+            "c1-u2-exk-2",
+            "c1-u2-exk-3",
+            "c1-u2-exk-4",
+            "c1-u2-exk-5",
+            "c1-u2-exk-6",
+            "c1-u2-exk-7",
+            "c1-u2-exk-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-l",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u2-exl-1",
+            "c1-u2-exl-2",
+            "c1-u2-exl-3",
+            "c1-u2-exl-4",
+            "c1-u2-exl-5",
+            "c1-u2-exl-6",
+            "c1-u2-exl-7",
+            "c1-u2-exl-8",
+            "c1-u2-exl-9",
+            "c1-u2-exl-10",
+            "c1-u2-exl-11",
+            "c1-u2-exl-12"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-m",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u2-exm-1",
+            "c1-u2-exm-2",
+            "c1-u2-exm-3",
+            "c1-u2-exm-4",
+            "c1-u2-exm-5",
+            "c1-u2-exm-6",
+            "c1-u2-exm-7",
+            "c1-u2-exm-8",
+            "c1-u2-exm-9",
+            "c1-u2-exm-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-n",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "c1-u2-exn-1",
+            "c1-u2-exn-2",
+            "c1-u2-exn-3",
+            "c1-u2-exn-4",
+            "c1-u2-exn-5",
+            "c1-u2-exn-6",
+            "c1-u2-exn-7",
+            "c1-u2-exn-8",
+            "c1-u2-exn-9"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-o",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 114,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u2-ex-a",
+      "c1-u2-ex-b",
+      "c1-u2-ex-c",
+      "c1-u2-ex-d",
+      "c1-u2-ex-e",
+      "c1-u2-ex-f",
+      "c1-u2-ex-g",
+      "c1-u2-ex-h",
+      "c1-u2-ex-i",
+      "c1-u2-ex-j",
+      "c1-u2-ex-k",
+      "c1-u2-ex-l",
+      "c1-u2-ex-m",
+      "c1-u2-ex-n",
+      "c1-u2-ex-o"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u2-ex-a",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Circle the correct word",
+        "title": "Circle the correct word",
+        "instructions": "Circle the correct word.",
+        "studentInstruction": "Circle the correct word.",
+        "legacyKey": "A",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exa-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You're being far too",
+            "sentenceAfter": "about your chances — I'm sure you'll pass the exam.",
+            "options": [
+              "optimistic",
+              "pessimistic"
+            ],
+            "answer": "pessimistic",
+            "originalSentence": "You're being far too **optimistic / pessimistic** about your chances — I'm sure you'll pass the exam.",
+            "completedSentence": "You're being far too pessimistic about your chances — I'm sure you'll pass the exam."
+          },
+          {
+            "id": "c1-u2-exa-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The documentary was clearly",
+            "sentenceAfter": "in favour of the company it was supposed to be examining.",
+            "options": [
+              "biased",
+              "prejudiced"
+            ],
+            "answer": "biased",
+            "originalSentence": "The documentary was clearly **biased / prejudiced** in favour of the company it was supposed to be examining.",
+            "completedSentence": "The documentary was clearly biased in favour of the company it was supposed to be examining."
+          },
+          {
+            "id": "c1-u2-exa-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I'm rather",
+            "sentenceAfter": "about politicians — I never believe a word they say.",
+            "options": [
+              "dubious",
+              "cynical"
+            ],
+            "answer": "cynical",
+            "originalSentence": "I'm rather **dubious / cynical** about politicians — I never believe a word they say.",
+            "completedSentence": "I'm rather cynical about politicians — I never believe a word they say."
+          },
+          {
+            "id": "c1-u2-exa-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "It's slightly",
+            "sentenceAfter": "to think you can learn a language fluently in just two months.",
+            "options": [
+              "naïve",
+              "sceptical"
+            ],
+            "answer": "naïve",
+            "originalSentence": "It's slightly **naïve / sceptical** to think you can learn a language fluently in just two months.",
+            "completedSentence": "It's slightly naïve to think you can learn a language fluently in just two months."
+          },
+          {
+            "id": "c1-u2-exa-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She came up with an",
+            "sentenceAfter": "solution that none of us had ever thought of.",
+            "options": [
+              "ingenious",
+              "plausible"
+            ],
+            "answer": "ingenious",
+            "originalSentence": "She came up with an **ingenious / plausible** solution that none of us had ever thought of.",
+            "completedSentence": "She came up with an ingenious solution that none of us had ever thought of."
+          },
+          {
+            "id": "c1-u2-exa-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The long list of technical terms completely",
+            "sentenceAfter": "the students.",
+            "options": [
+              "baffled",
+              "discriminated"
+            ],
+            "answer": "baffled",
+            "originalSentence": "The long list of technical terms completely **baffled / discriminated** the students.",
+            "completedSentence": "The long list of technical terms completely baffled the students."
+          },
+          {
+            "id": "c1-u2-exa-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "It's difficult to",
+            "sentenceAfter": "the full impact of the new policy so soon after its introduction.",
+            "options": [
+              "assess",
+              "assume"
+            ],
+            "answer": "assess",
+            "originalSentence": "It's difficult to **assess / assume** the full impact of the new policy so soon after its introduction.",
+            "completedSentence": "It's difficult to assess the full impact of the new policy so soon after its introduction."
+          },
+          {
+            "id": "c1-u2-exa-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Can you really",
+            "sentenceAfter": "spending so much money on a new computer when the old one works fine?",
+            "options": [
+              "justify",
+              "speculate"
+            ],
+            "answer": "justify",
+            "originalSentence": "Can you really **justify / speculate** spending so much money on a new computer when the old one works fine?",
+            "completedSentence": "Can you really justify spending so much money on a new computer when the old one works fine?"
+          },
+          {
+            "id": "c1-u2-exa-9",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I would",
+            "sentenceAfter": "that around a hundred people attended the lecture.",
+            "options": [
+              "estimate",
+              "deduce"
+            ],
+            "answer": "estimate",
+            "originalSentence": "I would **estimate / deduce** that around a hundred people attended the lecture.",
+            "completedSentence": "I would estimate that around a hundred people attended the lecture."
+          },
+          {
+            "id": "c1-u2-exa-10",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Don't",
+            "sentenceAfter": "that everyone shares your point of view — it's not always the case.",
+            "options": [
+              "reflect",
+              "presume"
+            ],
+            "answer": "presume",
+            "originalSentence": "Don't **reflect / presume** that everyone shares your point of view — it's not always the case.",
+            "completedSentence": "Don't presume that everyone shares your point of view — it's not always the case."
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Complete using the correct form of the words",
+        "title": "Complete using the correct form of the words",
+        "instructions": "Complete using the correct form of the words in the box. More than one word might fit in each gap, but try to use all the words.",
+        "studentInstruction": "Complete using the correct form of the words in the box. More than one word might fit in each gap, but try to use all the words.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "concentrate",
+          "consider",
+          "contemplate",
+          "deliberate",
+          "gather",
+          "grasp",
+          "ponder",
+          "reckon",
+          "suppose"
+        ],
+        "wordBank": [
+          "concentrate",
+          "consider",
+          "contemplate",
+          "deliberate",
+          "gather",
+          "grasp",
+          "ponder",
+          "reckon",
+          "suppose"
+        ],
+        "items": [
+          {
+            "id": "c1-u2-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It took the students a while to …………… the full implications of the new assessment system.",
+            "answer": "grasp",
+            "acceptedAnswers": [
+              "grasp"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The board is still ……………, but a decision is expected before the end of the week.",
+            "answer": "deliberating",
+            "acceptedAnswers": [
+              "deliberating"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I …………… from what he said that he isn't planning to return to university next year.",
+            "answer": "gather",
+            "acceptedAnswers": [
+              "gather"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's almost impossible to …………… when there are so many distractions around you.",
+            "answer": "concentrate",
+            "acceptedAnswers": [
+              "concentrate"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She's seriously …………… changing her degree course after the first semester.",
+            "answer": "considering",
+            "acceptedAnswers": [
+              "considering",
+              "contemplating"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "How long do you …………… it'll take to write up the research project?",
+            "answer": "reckon",
+            "acceptedAnswers": [
+              "reckon",
+              "suppose"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I don't …………… there's any point in submitting the essay after the deadline.",
+            "answer": "suppose",
+            "acceptedAnswers": [
+              "suppose"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She spent the whole evening …………… whether to accept the scholarship or stay at her current university.",
+            "answer": "pondering",
+            "acceptedAnswers": [
+              "pondering",
+              "considering",
+              "contemplating"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exb-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We simply refuse to …………… failure at this stage of the project.",
+            "answer": "contemplate",
+            "acceptedAnswers": [
+              "contemplate",
+              "consider"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Correct the wrong words in bold",
+        "title": "Correct the wrong words in bold",
+        "instructions": "Each of the words in bold is in the wrong sentence. Write the correct words on the lines.",
+        "studentInstruction": "Each of the words in bold is in the wrong sentence. Write the correct words on the lines.",
+        "legacyKey": "C",
+        "legacyPattern": "bold-swap",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "dilemma",
+          "faith",
+          "genius",
+          "guesswork",
+          "hunch",
+          "idea",
+          "ideology",
+          "inspiration",
+          "intuition",
+          "notion",
+          "paradox"
+        ],
+        "wordBank": [
+          "dilemma",
+          "faith",
+          "genius",
+          "guesswork",
+          "hunch",
+          "idea",
+          "ideology",
+          "inspiration",
+          "intuition",
+          "notion",
+          "paradox"
+        ],
+        "items": [
+          {
+            "id": "c1-u2-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The aspiring writer stared at a blank page for hours — she had absolutely no faith for her new novel.",
+            "answer": "inspiration",
+            "acceptedAnswers": [
+              "inspiration"
+            ],
+            "explanation": "",
+            "promptWord": "faith"
+          },
+          {
+            "id": "c1-u2-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I had a strong inspiration that something about the offer wasn't quite right.",
+            "answer": "hunch",
+            "acceptedAnswers": [
+              "hunch"
+            ],
+            "explanation": "",
+            "promptWord": "inspiration"
+          },
+          {
+            "id": "c1-u2-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "With no written records to go on, the archaeologists were forced to rely entirely on hunch.",
+            "answer": "guesswork",
+            "acceptedAnswers": [
+              "guesswork"
+            ],
+            "explanation": "",
+            "promptWord": "hunch"
+          },
+          {
+            "id": "c1-u2-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "People assume Edison was simply a natural guesswork, but he said his achievements were ninety-nine percent hard work.",
+            "answer": "genius",
+            "acceptedAnswers": [
+              "genius"
+            ],
+            "explanation": "",
+            "promptWord": "guesswork"
+          },
+          {
+            "id": "c1-u2-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She faced a real genius: stay in her stable job or take the risk of starting her own business.",
+            "answer": "dilemma",
+            "acceptedAnswers": [
+              "dilemma"
+            ],
+            "explanation": "",
+            "promptWord": "genius"
+          },
+          {
+            "id": "c1-u2-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The party's political dilemma was built around the principle that all citizens deserve equal rights.",
+            "answer": "ideology",
+            "acceptedAnswers": [
+              "ideology"
+            ],
+            "explanation": "",
+            "promptWord": "dilemma"
+          },
+          {
+            "id": "c1-u2-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Despite every setback, she had absolute ideology in her students' ability to succeed.",
+            "answer": "faith",
+            "acceptedAnswers": [
+              "faith"
+            ],
+            "explanation": "",
+            "promptWord": "ideology"
+          },
+          {
+            "id": "c1-u2-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's a fascinating idea that the more time you spend on social media, the lonelier you can feel in real life.",
+            "answer": "paradox",
+            "acceptedAnswers": [
+              "paradox"
+            ],
+            "explanation": "",
+            "promptWord": "idea"
+          },
+          {
+            "id": "c1-u2-exc-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "From the very first session, the counsellor had a paradox that this student needed additional support.",
+            "answer": "notion",
+            "acceptedAnswers": [
+              "notion"
+            ],
+            "explanation": "",
+            "promptWord": "paradox"
+          },
+          {
+            "id": "c1-u2-exc-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She always trusted her notion when judging people's characters, and she was almost never wrong.",
+            "answer": "intuition",
+            "acceptedAnswers": [
+              "intuition"
+            ],
+            "explanation": "",
+            "promptWord": "notion"
+          },
+          {
+            "id": "c1-u2-exc-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Without any solid data, the whole business plan was based on nothing more than the intuition that demand would grow.",
+            "answer": "idea",
+            "acceptedAnswers": [
+              "idea"
+            ],
+            "explanation": "",
+            "promptWord": "intuition"
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "Choose the correct word",
+        "title": "Choose the correct word",
+        "instructions": "Choose the correct word (A, B, C or D) to complete each gap in the text.",
+        "studentInstruction": "Choose the correct word (A, B, C or D) to complete each gap in the text.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-passage",
+        "interaction": {
+          "formatType": "mc_4_option",
+          "displayMode": "passage",
+          "continuous": false
+        },
+        "passage": "The debate about whether schools should focus more on academic knowledge or on practical life skills continues to divide educators. Critics of the current system argue that the national (1) ...... places too much emphasis on preparing students for standardised tests and too little on developing their ability to (2) ...... information critically. In a typical school week, students spend hours (3) ...... for exams, only to forget most of what they have learned shortly afterwards.\n\nWhat gets lost, argue the critics, is the development of genuinely (4) ...... thinkers — students who can engage in deep analysis and independent reasoning. Universities frequently report that first-year students struggle with (5) ...... because they have never been taught how to work without constant guidance. Many are also unaware of what constitutes (6) ...... — they have no idea where the line between borrowing someone else's ideas and simply copying their work actually lies.\n\nSupporters of the current system (7) ...... that it is not the role of schools to prepare students solely for higher education, but to equip them for life as a whole. A broad and balanced curriculum, they argue, gives all students an equal (8) ...... on which to build. However, students who arrive at university (9) ...... of basic study skills will struggle from the start. Perhaps the most (10) ...... solution would be a curriculum that develops both knowledge and independent thinking in equal measure.",
+        "items": [
+          {
+            "id": "c1-u2-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The national (1)",
+            "sentenceAfter": "places too much emphasis on preparing students for standardised tests.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "programme"
+              },
+              {
+                "letter": "B",
+                "text": "timetable"
+              },
+              {
+                "letter": "C",
+                "text": "curriculum"
+              },
+              {
+                "letter": "D",
+                "text": "syllabus"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Developing their ability to (2)",
+            "sentenceAfter": "information critically.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "assume"
+              },
+              {
+                "letter": "B",
+                "text": "assess"
+              },
+              {
+                "letter": "C",
+                "text": "consider"
+              },
+              {
+                "letter": "D",
+                "text": "deduce"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Students spend hours (3)",
+            "sentenceAfter": "for exams, only to forget most of what they have learned.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "revising"
+              },
+              {
+                "letter": "B",
+                "text": "studying"
+              },
+              {
+                "letter": "C",
+                "text": "cramming"
+              },
+              {
+                "letter": "D",
+                "text": "preparing"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The development of genuinely (4)",
+            "sentenceAfter": "thinkers — students who can engage in deep analysis.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "academic"
+              },
+              {
+                "letter": "B",
+                "text": "clever"
+              },
+              {
+                "letter": "C",
+                "text": "gifted"
+              },
+              {
+                "letter": "D",
+                "text": "intellectual"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "First-year students struggle with (5)",
+            "sentenceAfter": "because they have never been taught how to work without constant guidance.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "private study"
+              },
+              {
+                "letter": "B",
+                "text": "home learning"
+              },
+              {
+                "letter": "C",
+                "text": "distance learning"
+              },
+              {
+                "letter": "D",
+                "text": "self-study"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Many are also unaware of what constitutes (6)",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "borrowing"
+              },
+              {
+                "letter": "B",
+                "text": "copying"
+              },
+              {
+                "letter": "C",
+                "text": "plagiarising"
+              },
+              {
+                "letter": "D",
+                "text": "stealing"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Supporters of the current system (7)",
+            "sentenceAfter": "that it is not the role of schools to prepare students solely for higher education.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "reckon"
+              },
+              {
+                "letter": "B",
+                "text": "argue"
+              },
+              {
+                "letter": "C",
+                "text": "speculate"
+              },
+              {
+                "letter": "D",
+                "text": "suppose"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "A broad and balanced curriculum gives all students an equal (8)",
+            "sentenceAfter": "on which to build.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "foundation"
+              },
+              {
+                "letter": "B",
+                "text": "basis"
+              },
+              {
+                "letter": "C",
+                "text": "ground"
+              },
+              {
+                "letter": "D",
+                "text": "level"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Students who arrive at university (9)",
+            "sentenceAfter": "of basic study skills will struggle from the start.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "unaware"
+              },
+              {
+                "letter": "B",
+                "text": "lacking"
+              },
+              {
+                "letter": "C",
+                "text": "ignorant"
+              },
+              {
+                "letter": "D",
+                "text": "short"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Perhaps the most (10)",
+            "sentenceAfter": "solution would be a curriculum that develops both knowledge and independent thinking.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "academic"
+              },
+              {
+                "letter": "B",
+                "text": "logical"
+              },
+              {
+                "letter": "C",
+                "text": "plausible"
+              },
+              {
+                "letter": "D",
+                "text": "knowledgeable"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-e",
+        "type": "exercise",
+        "exerciseType": "column_matching",
+        "exerciseTypeName": "Match to make sentences",
+        "title": "Match to make sentences",
+        "instructions": "Match the sentence beginnings (1–7) with the correct endings (A–G).",
+        "studentInstruction": "Match the sentence beginnings (1–7) with the correct endings (A–G).",
+        "legacyKey": "E",
+        "legacyPattern": "matching",
+        "interaction": {
+          "formatType": "column_matching"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exe-1",
+            "formatType": "column_matching",
+            "sentence": "I'll need to brush **E** up on my statistics before the research methods module starts.",
+            "answer": "E – up on my statistics before the research methods module starts.",
+            "acceptedAnswers": [
+              "E – up on my statistics before the research methods module starts."
+            ]
+          },
+          {
+            "id": "c1-u2-exe-2",
+            "formatType": "column_matching",
+            "sentence": "He's gradually come **B** round to the idea that distance learning could work for him.",
+            "answer": "B – round to the idea that distance learning could work for him.",
+            "acceptedAnswers": [
+              "B – round to the idea that distance learning could work for him."
+            ]
+          },
+          {
+            "id": "c1-u2-exe-3",
+            "formatType": "column_matching",
+            "sentence": "It's time you faced **G** up to the fact that the exam is going to require serious preparation.",
+            "answer": "G – up to the fact that the exam is going to require serious preparation.",
+            "acceptedAnswers": [
+              "G – up to the fact that the exam is going to require serious preparation."
+            ]
+          },
+          {
+            "id": "c1-u2-exe-4",
+            "formatType": "column_matching",
+            "sentence": "We could barely make **A** out what the lecturer was saying from the back of the hall.",
+            "answer": "A – out what the lecturer was saying from the back of the hall.",
+            "acceptedAnswers": [
+              "A – out what the lecturer was saying from the back of the hall."
+            ]
+          },
+          {
+            "id": "c1-u2-exe-5",
+            "formatType": "column_matching",
+            "sentence": "It took the whole class over an hour to puzzle **D** out the answer to the final problem.",
+            "answer": "D – out the answer to the final problem.",
+            "acceptedAnswers": [
+              "D – out the answer to the final problem."
+            ]
+          },
+          {
+            "id": "c1-u2-exe-6",
+            "formatType": "column_matching",
+            "sentence": "She spent the whole weekend reading **C** up on the history of the Renaissance for her essay.",
+            "answer": "C – up on the history of the Renaissance for her essay.",
+            "acceptedAnswers": [
+              "C – up on the history of the Renaissance for her essay."
+            ]
+          },
+          {
+            "id": "c1-u2-exe-7",
+            "formatType": "column_matching",
+            "sentence": "Can you come **F** up with a better argument than that?",
+            "answer": "F – up with a better argument than that?",
+            "acceptedAnswers": [
+              "F – up with a better argument than that?"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-f",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Write one word in each gap (phrasal verbs)",
+        "title": "Write one word in each gap (phrasal verbs)",
+        "instructions": "Write one word in each gap so that each second sentence has a similar meaning to the first sentence.",
+        "studentInstruction": "Write one word in each gap so that each second sentence has a similar meaning to the first sentence.",
+        "legacyKey": "F",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exf-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I need to study more about Italian Renaissance art before my trip.\nI need to read …………… on Italian Renaissance art before my trip.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exf-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My colleagues eventually persuaded me that online collaboration has real advantages.\nMy colleagues eventually brought me …………… to the idea that online collaboration has real advantages.",
+            "answer": "round",
+            "acceptedAnswers": [
+              "round"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exf-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Nobody could understand why the professor cancelled the seminar at such short notice.\nNobody could …………… out why the professor cancelled the seminar at such short notice.",
+            "answer": "figure",
+            "acceptedAnswers": [
+              "figure",
+              "make"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exf-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You really should improve your spoken French before the oral examination.\nYou really should brush …………… on your spoken French before the oral examination.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exf-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She invented a brilliant plan to help students who were falling behind.\nShe thought …………… a brilliant plan to help students who were falling behind.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exf-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We finally understood how to solve the complex logic puzzle after an hour.\nWe finally puzzled …………… how to solve the complex logic puzzle after an hour.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exf-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm going to think carefully about your proposal before I give you an answer.\nI'm going to mull …………… your proposal before I give you an answer.",
+            "answer": "over",
+            "acceptedAnswers": [
+              "over"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exf-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He has to accept the fact that success in this field demands real dedication.\nHe has to face …………… to the fact that success in this field demands real dedication.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exf-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I studied all the key vocabulary the night before the test.\nI swotted …………… on all the key vocabulary the night before the test.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-g",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Phrasal verbs with out",
+        "title": "Phrasal verbs with out",
+        "instructions": "Phrasal verbs with out, such as puzzle out, are often connected to the idea of finding information. Which of these phrasal verbs with out are also connected to this idea?",
+        "studentInstruction": "Phrasal verbs with out, such as puzzle out, are often connected to the idea of finding information. Which of these phrasal verbs with out are also connected to this idea?",
+        "legacyKey": "G",
+        "legacyPattern": "yn",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exg-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Did you work out how to fix the error in the programme?",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "YES",
+            "originalSentence": "Did you **work out** how to fix the error in the programme?"
+          },
+          {
+            "id": "c1-u2-exg-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The children all poured out of the classroom when the bell rang.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "NO",
+            "originalSentence": "The children all **poured out** of the classroom when the bell rang."
+          },
+          {
+            "id": "c1-u2-exg-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I've been checking out whether the library stocks the textbook we need.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "YES",
+            "originalSentence": "I've been **checking out** whether the library stocks the textbook we need."
+          },
+          {
+            "id": "c1-u2-exg-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The reporter managed to ferret out the truth behind the financial scandal.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "YES",
+            "originalSentence": "The reporter managed to **ferret out** the truth behind the financial scandal."
+          },
+          {
+            "id": "c1-u2-exg-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "My phone battery ran out just before the end of the lecture.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "NO",
+            "originalSentence": "My phone battery **ran out** just before the end of the lecture."
+          },
+          {
+            "id": "c1-u2-exg-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I can't fathom out why she changed her mind at the very last minute.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "YES",
+            "originalSentence": "I can't **fathom out** why she changed her mind at the very last minute."
+          },
+          {
+            "id": "c1-u2-exg-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "His voice was completely drowned out by the noise of the crowd outside.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "NO",
+            "originalSentence": "His voice was completely **drowned out** by the noise of the crowd outside."
+          },
+          {
+            "id": "c1-u2-exg-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I'm going to sound my tutor out about submitting the assignment a day late.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "YES",
+            "originalSentence": "I'm going to **sound** my tutor **out** about submitting the assignment a day late."
+          },
+          {
+            "id": "c1-u2-exg-9",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This particular essay really does stand out from all the others in the group.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "NO",
+            "originalSentence": "This particular essay really does **stand out** from all the others in the group."
+          },
+          {
+            "id": "c1-u2-exg-10",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Scientists are still trying to seek out new explanations for the phenomenon.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "YES",
+            "originalSentence": "Scientists are still trying to **seek out** new explanations for the phenomenon."
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Write one word in each gap (collocations)",
+        "title": "Write one word in each gap (collocations)",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I think you may be …………… the misapprehension that this course has no final exam. It does.",
+            "answer": "under",
+            "acceptedAnswers": [
+              "under"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The new report casts doubt …………… the effectiveness of the current teaching method.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The telescope was slightly …………… of focus, so the images weren't as sharp as expected.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Try to look …………… the positive side — at least you've learned something from the experience.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm not opposed …………… principle to the idea of exams, but I think they're far overused.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'll always associate the smell of old books …………… our childhood visits to the local library.",
+            "answer": "with",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please bear …………… mind that the results of this experiment may not be conclusive.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "His belief …………… the power of education helped him overcome very significant obstacles.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Taking a pay cut at this stage would be completely …………… of the question.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Learning a foreign language really does put your own mother tongue …………… perspective.",
+            "answer": "into",
+            "acceptedAnswers": [
+              "into"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "From my point …………… view, the current grading system is fundamentally unfair to students.",
+            "answer": "of",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-12",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The volunteers were recruited …………… the basis that they had relevant previous experience.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-13",
+            "formatType": "free_text_gap_fill",
+            "sentence": "…………… balance, I think the new approach to teaching has been a success.",
+            "answer": "On",
+            "acceptedAnswers": [
+              "On"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-14",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The impact of social media on students' wellbeing has not been taken …………… account.",
+            "answer": "into",
+            "acceptedAnswers": [
+              "into"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exh-15",
+            "formatType": "free_text_gap_fill",
+            "sentence": "…………… conclusion, I would like to thank everyone who contributed to the research project.",
+            "answer": "In",
+            "acceptedAnswers": [
+              "In"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-i",
+        "type": "exercise",
+        "exerciseType": "synced_gap_fill",
+        "exerciseTypeName": "One word for three sentences",
+        "title": "One word for three sentences",
+        "instructions": "For each question, write one word which can be used in all three sentences.",
+        "studentInstruction": "For each question, write one word which can be used in all three sentences.",
+        "legacyKey": "I",
+        "legacyPattern": "sync",
+        "interaction": {
+          "formatType": "synced_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exi-1",
+            "formatType": "synced_gap_fill",
+            "sentences": [
+              "She couldn't keep her …………… during the long lecture and kept drifting off.",
+              "The marketing team decided to shift their …………… to a younger audience.",
+              "The photo is slightly out of …………… — could you take it again?"
+            ],
+            "answer": "focus",
+            "acceptedAnswers": [
+              "focus"
+            ]
+          },
+          {
+            "id": "c1-u2-exi-2",
+            "formatType": "synced_gap_fill",
+            "sentences": [
+              "Would you …………… if I opened the window? It's rather warm in here.",
+              "She couldn't make up her …………… whether to study medicine or law.",
+              "Please keep in …………… that the library closes at six on Fridays."
+            ],
+            "answer": "mind",
+            "acceptedAnswers": [
+              "mind"
+            ]
+          },
+          {
+            "id": "c1-u2-exi-3",
+            "formatType": "synced_gap_fill",
+            "sentences": [
+              "From my point of ……………, the experiment was an unqualified success.",
+              "He refused to change his …………… no matter what evidence was presented to him.",
+              "They climbed to the hilltop to get a better …………… of the whole valley."
+            ],
+            "answer": "view",
+            "acceptedAnswers": [
+              "view"
+            ]
+          },
+          {
+            "id": "c1-u2-exi-4",
+            "formatType": "synced_gap_fill",
+            "sentences": [
+              "I couldn't make …………… of the instructions at all — they were completely unclear.",
+              "It makes perfect …………… to revise regularly rather than cramming the night before.",
+              "She has a wonderful …………… of humour, even in the most stressful situations."
+            ],
+            "answer": "sense",
+            "acceptedAnswers": [
+              "sense"
+            ]
+          },
+          {
+            "id": "c1-u2-exi-5",
+            "formatType": "synced_gap_fill",
+            "sentences": [
+              "The research team came to the …………… that further study was absolutely necessary.",
+              "Don't jump to …………… — we still don't know the full story.",
+              "In ……………, I would argue that the benefits of technology in education outweigh the drawbacks."
+            ],
+            "answer": "conclusion",
+            "acceptedAnswers": [
+              "conclusion"
+            ]
+          },
+          {
+            "id": "c1-u2-exi-6",
+            "formatType": "synced_gap_fill",
+            "sentences": [
+              "There's no …………… that she is the most talented student in the whole year group.",
+              "His commitment to the research project is beyond ……………",
+              "I have serious …………… about whether this particular approach will actually work."
+            ],
+            "answer": "doubt",
+            "acceptedAnswers": [
+              "doubt"
+            ]
+          },
+          {
+            "id": "c1-u2-exi-7",
+            "formatType": "synced_gap_fill",
+            "sentences": [
+              "Could you give a detailed …………… of your experience working in education?",
+              "You need to take into …………… the fact that some students learn in very different ways.",
+              "The journalist wrote a compelling first-hand …………… of life inside the institution."
+            ],
+            "answer": "account",
+            "acceptedAnswers": [
+              "account"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-j",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "Write one word in each gap (text)",
+        "title": "Write one word in each gap (text)",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "J",
+        "legacyPattern": "passage-gap-fill",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": false,
+          "gapInputStyle": "pill"
+        },
+        "passage": "Last year I started a distance learning course in psychology. I made up my (1) …………… to try it after a colleague recommended it highly. I took into (2) …………… the fact that I had very little free time, but decided to give it a go. However, I was under the (3) …………… that it would be less demanding than traditional study. In (4) ……………, I would have to say it was at least as challenging. Looking on the bright (5) ……………, I was able to study entirely at my own pace. On (6) ……………, I would recommend distance learning to anyone who is sufficiently motivated to stick with it.",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "mind",
+          "account",
+          "misapprehension",
+          "conclusion",
+          "side",
+          "balance"
+        ]
+      },
+      {
+        "id": "c1-u2-ex-k",
+        "type": "exercise",
+        "exerciseType": "keyword_transformation",
+        "exerciseTypeName": "Key word transformation",
+        "title": "Key word transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "legacyKey": "K",
+        "legacyPattern": "kwtrans",
+        "interaction": {
+          "formatType": "keyword_transformation"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exk-1",
+            "formatType": "keyword_transformation",
+            "promptSentence": "The idea of learning a language in just three months had never crossed her mind.",
+            "keyword": "occurred",
+            "targetSentence": "The idea of learning a language in just three months had …………………………………………… her.",
+            "answer": "never occurred to",
+            "acceptedAnswers": [
+              "never occurred to"
+            ],
+            "minWords": 2,
+            "maxWords": 8,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word"
+          },
+          {
+            "id": "c1-u2-exk-2",
+            "formatType": "keyword_transformation",
+            "promptSentence": "I finally decided that distance learning was not the right approach for me.",
+            "keyword": "conclusion",
+            "targetSentence": "I finally came …………………………………………… distance learning was not the right approach for me.",
+            "answer": "to the conclusion that",
+            "acceptedAnswers": [
+              "to the conclusion that"
+            ],
+            "minWords": 2,
+            "maxWords": 8,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word"
+          },
+          {
+            "id": "c1-u2-exk-3",
+            "formatType": "keyword_transformation",
+            "promptSentence": "The teacher explained in detail what the students had been doing during the week.",
+            "keyword": "account",
+            "targetSentence": "The teacher …………………………………………… the students' activities during the week.",
+            "answer": "gave a full account of",
+            "acceptedAnswers": [
+              "gave a full account of"
+            ],
+            "minWords": 2,
+            "maxWords": 8,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word"
+          },
+          {
+            "id": "c1-u2-exk-4",
+            "formatType": "keyword_transformation",
+            "promptSentence": "The advertisement made people believe the product was far better than it actually was.",
+            "keyword": "false",
+            "targetSentence": "The advertisement …………………………………………… the product was far better than it actually was.",
+            "answer": "gave a false impression that",
+            "acceptedAnswers": [
+              "gave a false impression that"
+            ],
+            "minWords": 2,
+            "maxWords": 8,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word"
+          },
+          {
+            "id": "c1-u2-exk-5",
+            "formatType": "keyword_transformation",
+            "promptSentence": "In this job you need to use analytical thinking and creativity in equal amounts.",
+            "keyword": "strike",
+            "targetSentence": "In this job you need to …………………………………………… analytical thinking and creativity.",
+            "answer": "strike a balance between",
+            "acceptedAnswers": [
+              "strike a balance between"
+            ],
+            "minWords": 2,
+            "maxWords": 8,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word"
+          },
+          {
+            "id": "c1-u2-exk-6",
+            "formatType": "keyword_transformation",
+            "promptSentence": "He spoke very quietly because he did not want to upset the other students.",
+            "keyword": "consideration",
+            "targetSentence": "He spoke very quietly …………………………………………… the other students.",
+            "answer": "out of consideration for",
+            "acceptedAnswers": [
+              "out of consideration for"
+            ],
+            "minWords": 2,
+            "maxWords": 8,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word"
+          },
+          {
+            "id": "c1-u2-exk-7",
+            "formatType": "keyword_transformation",
+            "promptSentence": "Marcus has been devoted to learning classical guitar for many years.",
+            "keyword": "spent",
+            "targetSentence": "Marcus …………………………………………… classical guitar.",
+            "answer": "has spent years learning",
+            "acceptedAnswers": [
+              "has spent years learning"
+            ],
+            "minWords": 2,
+            "maxWords": 8,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word"
+          },
+          {
+            "id": "c1-u2-exk-8",
+            "formatType": "keyword_transformation",
+            "promptSentence": "The career counsellor said the entrance examinations would be highly competitive.",
+            "keyword": "warned",
+            "targetSentence": "The career counsellor …………………………………………… the entrance examinations would be highly competitive.",
+            "answer": "warned us that",
+            "acceptedAnswers": [
+              "warned us that"
+            ],
+            "minWords": 2,
+            "maxWords": 8,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word"
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-l",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Complete idioms",
+        "title": "Complete idioms",
+        "instructions": "Complete using the words in the box.",
+        "studentInstruction": "Complete using the words in the box.",
+        "legacyKey": "L",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "bell",
+          "bend",
+          "dark",
+          "hairs",
+          "head",
+          "leg",
+          "stock",
+          "two",
+          "uptake",
+          "what",
+          "wits",
+          "wood"
+        ],
+        "wordBank": [
+          "bell",
+          "bend",
+          "dark",
+          "hairs",
+          "head",
+          "leg",
+          "stock",
+          "two",
+          "uptake",
+          "what",
+          "wits",
+          "wood"
+        ],
+        "items": [
+          {
+            "id": "c1-u2-exl-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The name Professor Aldridge rings a ……………, but I can't remember where I've heard it before.",
+            "answer": "bell",
+            "acceptedAnswers": [
+              "bell"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exl-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Stop splitting …………… and focus on the main point of the argument.",
+            "answer": "hairs",
+            "acceptedAnswers": [
+              "hairs"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exl-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Ask Dr Brennan — she always knows what's …………… in the department.",
+            "answer": "what",
+            "acceptedAnswers": [
+              "what"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exl-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You'll need all your …………… about you in that interview — it's going to be tough.",
+            "answer": "wits",
+            "acceptedAnswers": [
+              "wits"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exl-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't let early success go to your …………… — there's still a very long way to go.",
+            "answer": "head",
+            "acceptedAnswers": [
+              "head"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exl-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Nobody explained why she had left the project, but we all put two and …………… together.",
+            "answer": "two",
+            "acceptedAnswers": [
+              "two"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exl-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The noise from the construction site next door is driving me completely round the ……………",
+            "answer": "bend",
+            "acceptedAnswers": [
+              "bend"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exl-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Before making any changes, let's take …………… of where we are with the research.",
+            "answer": "stock",
+            "acceptedAnswers": [
+              "stock"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exl-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I was completely in the …………… about the changes to the exam format until this morning.",
+            "answer": "dark",
+            "acceptedAnswers": [
+              "dark"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exl-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She was so focused on minor details that she couldn't see the …………… for the trees.",
+            "answer": "wood",
+            "acceptedAnswers": [
+              "wood"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exl-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He's usually quick on the ……………, but today he seemed confused even by the simplest questions.",
+            "answer": "uptake",
+            "acceptedAnswers": [
+              "uptake"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exl-12",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You've got absolutely no …………… to stand on — your argument has no supporting evidence whatsoever.",
+            "answer": "leg",
+            "acceptedAnswers": [
+              "leg"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-m",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Word formation",
+        "title": "Word formation",
+        "instructions": "Complete the sentences by changing the form of the word in capitals.",
+        "studentInstruction": "Complete the sentences by changing the form of the word in capitals.",
+        "legacyKey": "M",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exm-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There was considerable …………… when the lecturer handed out the wrong reading lists to the class. **CONFUSE**",
+            "answer": "confusion",
+            "acceptedAnswers": [
+              "confusion"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exm-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The politician spoke with such …………… that even her opponents found it hard to disagree. **CONVINCE**",
+            "answer": "conviction",
+            "acceptedAnswers": [
+              "conviction"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exm-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She stood in complete …………… as she listened to news of his extraordinary discovery. **BELIEVE**",
+            "answer": "disbelief",
+            "acceptedAnswers": [
+              "disbelief"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exm-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The …………… of the modern university system as we know it dates back to medieval Europe. **CONCEIVE**",
+            "answer": "conception",
+            "acceptedAnswers": [
+              "conception"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exm-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The underlying …………… behind the experiment was that regular sleep significantly improves memory. **ASSUME**",
+            "answer": "assumption",
+            "acceptedAnswers": [
+              "assumption"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exm-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "His …………… as a mathematician was already apparent by the time he was a teenager. **BRILLIANT**",
+            "answer": "brilliance",
+            "acceptedAnswers": [
+              "brilliance"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exm-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It is completely …………… why the school decided to cut funding for the arts programme. **EXPLAIN**",
+            "answer": "inexplicable",
+            "acceptedAnswers": [
+              "inexplicable"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exm-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The defendant was found not guilty by reason of …………… and was sent to a secure hospital. **SANE**",
+            "answer": "insanity",
+            "acceptedAnswers": [
+              "insanity"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exm-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Her …………… knew no limits — she could always find a creative solution to any problem. **IMAGINE**",
+            "answer": "imagination",
+            "acceptedAnswers": [
+              "imagination"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exm-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It seems completely …………… to spend three hours commuting when you could work from home. **LOGIC**",
+            "answer": "illogical",
+            "acceptedAnswers": [
+              "illogical"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-n",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Negative prefixes with il-",
+        "title": "Negative prefixes with il-",
+        "instructions": "The prefix il-, as in illogical, is often used to make a positive word negative. Which of the words in bold in the following sentences are negative forms of positive words? Write YES or NO.",
+        "studentInstruction": "The prefix il-, as in illogical, is often used to make a positive word negative. Which of the words in bold in the following sentences are negative forms of positive words? Write YES or NO.",
+        "legacyKey": "N",
+        "legacyPattern": "yn",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exn-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The note had become completely illegible after years of exposure to damp.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "YES",
+            "originalSentence": "The note had become completely **illegible** after years of exposure to damp."
+          },
+          {
+            "id": "c1-u2-exn-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The architect showed us the illustrations of the new university building.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "NO",
+            "originalSentence": "The architect showed us the **illustrations** of the new university building."
+          },
+          {
+            "id": "c1-u2-exn-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Driving through a red traffic light is not just illegal but also extremely dangerous.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "YES",
+            "originalSentence": "Driving through a red traffic light is not just **illegal** but also extremely dangerous."
+          },
+          {
+            "id": "c1-u2-exn-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She had an illustrious reputation as one of the finest academic minds of her generation.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "NO",
+            "originalSentence": "She had an **illustrious** reputation as one of the finest academic minds of her generation."
+          },
+          {
+            "id": "c1-u2-exn-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The new law was widely criticised as deeply illiberal and an attack on personal freedoms.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "YES",
+            "originalSentence": "The new law was widely criticised as deeply **illiberal** and an attack on personal freedoms."
+          },
+          {
+            "id": "c1-u2-exn-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Several witnesses testified about the illegality of the company's accounting practices.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "YES",
+            "originalSentence": "Several witnesses testified about the **illegality** of the company's accounting practices."
+          },
+          {
+            "id": "c1-u2-exn-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The statue cast a long shadow that created an eerie illusion of movement in the moonlight.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "NO",
+            "originalSentence": "The statue cast a long shadow that created an eerie **illusion** of movement in the moonlight."
+          },
+          {
+            "id": "c1-u2-exn-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Her speech was truly illuminating and left the audience with a great deal to think about.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "NO",
+            "originalSentence": "Her speech was truly **illuminating** and left the audience with a great deal to think about."
+          },
+          {
+            "id": "c1-u2-exn-9",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The couple's marriage was later declared illegitimate due to an administrative error in the registration.",
+            "sentenceAfter": "",
+            "options": [
+              "YES",
+              "NO"
+            ],
+            "answer": "YES",
+            "originalSentence": "The couple's marriage was later declared **illegitimate** due to an administrative error in the registration."
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-o",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "Word formation (Learning text)",
+        "title": "Word formation (Learning text)",
+        "instructions": "Complete the text by writing the correct form of each word in capitals.",
+        "studentInstruction": "Complete the text by writing the correct form of each word in capitals.",
+        "legacyKey": "O",
+        "legacyPattern": "passage-wf",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": false,
+          "gapInputStyle": "pill"
+        },
+        "passage": "The …(1)… (CONCEIVE) of critical thinking as a teachable skill has gained widespread acceptance in recent years. The …(2)… (ASSUME) that intelligence is fixed at birth has been largely discredited by modern neuroscience. It is …(3)… (DOUBT) true that learning new things actively changes the physical structure of the brain.\n\nHowever, many students struggle with the …(4)… (CONFUSE) surrounding different study techniques. Which methods are truly effective, and which produce only the …(5)… (BELIEVE) impression of genuine learning? These are important questions. Students who feel …(6)… (CONVINCE) by a teacher's explanation often leave thinking they have understood, only to discover later that they cannot apply what they have learned.\n\nA …(7)… (DECIDE) learner, by contrast, will commit to a method and persevere long enough to see real results. Such a student is not put off by problems that at first seem …(8)… (EXPLAIN). With time, patience, and a truly …(9)… (IMAGINE) approach to problem-solving, most challenges can be overcome. Ultimately, the most …(10)… (DEFINE) measure of learning is not a test score, but the ability to think and act independently.",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "conception",
+          "assumption",
+          "undoubtedly",
+          "confusion",
+          "unbelievable",
+          "unconvinced",
+          "decisive",
+          "inexplicable",
+          "imaginative",
+          "definitive"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1043 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 2,
+  "unit": 4,
+  "type": "grammar",
+  "unitTitle": "[PILOT] Unit 4: Present perfect simple & continuous",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 4: Present perfect simple & continuous"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit4.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 6
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u4-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Present perfect simple",
+        "subtitle": "Present perfect simple",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "formula": "have/has + past participle",
+            "rows": [
+              {
+                "label": "statement",
+                "left": "I/you/we/they **have ('ve) learned** ...",
+                "right": "He/she/it **has ('s) learned** ..."
+              },
+              {
+                "label": "negative",
+                "left": "I/you/we/they **have not (haven't) learned** ...",
+                "right": "He/she/it **has not (hasn't) learned** ..."
+              },
+              {
+                "label": "question",
+                "left": "**Have** I/you/we/they **learned** ...?",
+                "right": "**Has** he/she/it **learned** ...?"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Situations or states that began in the past and continue now",
+              "Actions that happened at some point in the past when the exact time isn't given",
+              "Past actions whose results affect the present moment"
+            ]
+          },
+          {
+            "type": "example_list",
+            "title": "Examples",
+            "items": [
+              "Mr Torres **has taught** at this school for over ten years.",
+              "I **have never tried** sushi — this will be the first time!",
+              "We can't go out — Mum **has lost** her keys."
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "for",
+              "since",
+              "just",
+              "already",
+              "yet",
+              "ever",
+              "never",
+              "It's the first time"
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "We don't use the present perfect simple when we want to say **when** something happened in the past. We use the past simple: ✓ I **did** my homework **last night**.",
+              "We don't use the past simple when we want to show that something happened before now or is still important now. We use the present perfect simple: ✓ I've **finished**! Can I go home now?",
+              "Some verbs have irregular past participle forms."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Present perfect continuous",
+        "subtitle": "Present perfect continuous",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "formula": "have/has + been + -ing",
+            "rows": [
+              {
+                "label": "statement",
+                "left": "I/you/we/they **have ('ve) been studying** ...",
+                "right": "He/she/it **has ('s) been studying** ..."
+              },
+              {
+                "label": "negative",
+                "left": "I/you/we/they **have not (haven't) been studying** ...",
+                "right": "He/she/it **has not (hasn't) been studying** ..."
+              },
+              {
+                "label": "question",
+                "left": "**Have** I/you/we/they **been studying** ...?",
+                "right": "**Has** he/she/it **been studying** ...?"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Activities that have been going on up to the present or have just stopped"
+            ]
+          },
+          {
+            "type": "example_list",
+            "title": "Examples",
+            "items": [
+              "I **have been waiting** here for half an hour — where have you been?",
+              "She looks exhausted because she **has been running**."
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Useful notes",
+            "headers": [
+              "Key word",
+              "Example"
+            ],
+            "rows": [
+              [
+                "for",
+                "I've been learning English **for** over three years."
+              ],
+              [
+                "since",
+                "He's been learning Chinese **since** 2004."
+              ],
+              [
+                "just",
+                "I've **just** been reading the school newspaper."
+              ]
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "The present perfect simple often emphasises the result of an action: ✓ She's **written** an article for the school newspaper. (= She's finished it.)",
+              "The present perfect continuous often emphasises the action, and the time spent on the action, rather than the result: ✓ She's **been writing** an article for the school newspaper. (= She's started, but she hasn't finished it yet.)"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "passage_gap_fill",
+        "displayName": "Complete the passage",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "passage_inline_gaps",
+          "studentAction": "type_gap_answers",
+          "evaluationTrigger": "check_button",
+          "gapInputStyle": "pill"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u4-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "conjugation_gap_fill",
+        "mc_4_option",
+        "full_sentence_write",
+        "passage_gap_fill",
+        "two_option_choice",
+        "free_text_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 26,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u4-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u4-exa-1",
+            "b1-u4-exa-2",
+            "b1-u4-exa-3",
+            "b1-u4-exa-4",
+            "b1-u4-exa-5",
+            "b1-u4-exa-6",
+            "b1-u4-exa-7",
+            "b1-u4-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u4-ex-b",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u4-exb-1",
+            "b1-u4-exb-2",
+            "b1-u4-exb-3",
+            "b1-u4-exb-4",
+            "b1-u4-exb-5",
+            "b1-u4-exb-6",
+            "b1-u4-exb-7",
+            "b1-u4-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u4-ex-c",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u4-exc-1",
+            "b1-u4-exc-2",
+            "b1-u4-exc-3",
+            "b1-u4-exc-4",
+            "b1-u4-exc-5",
+            "b1-u4-exc-6",
+            "b1-u4-exc-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u4-ex-d",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "b1-u4-ex-e",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u4-exe-1",
+            "b1-u4-exe-2",
+            "b1-u4-exe-3",
+            "b1-u4-exe-4",
+            "b1-u4-exe-5",
+            "b1-u4-exe-6",
+            "b1-u4-exe-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u4-ex-f",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u4-exf-1",
+            "b1-u4-exf-2",
+            "b1-u4-exf-3",
+            "b1-u4-exf-4",
+            "b1-u4-exf-5",
+            "b1-u4-exf-6",
+            "b1-u4-exf-7"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 38,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u4-ex-a",
+      "b1-u4-ex-b",
+      "b1-u4-ex-c",
+      "b1-u4-ex-d",
+      "b1-u4-ex-e",
+      "b1-u4-ex-f"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u4-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Present perfect simple",
+        "title": "A: Present perfect simple",
+        "instructions": "Complete using the correct present perfect simple form of the verbs in brackets.",
+        "studentInstruction": "Complete using the correct present perfect simple form of the verbs in brackets.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u4-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "We ...... (finish) our science project already.",
+            "answer": "have finished",
+            "acceptedAnswers": [
+              "have finished"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Emily ...... (live) in this town all her life.",
+            "answer": "has lived",
+            "acceptedAnswers": [
+              "has lived"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I ...... (not / see) Jake today.",
+            "answer": "haven't seen",
+            "acceptedAnswers": [
+              "haven't seen"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My parents ...... (have) this car since 2018.",
+            "answer": "have had",
+            "acceptedAnswers": [
+              "have had"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "...... (you / ever / eat) Mexican food?",
+            "answer": "Have you ever eaten",
+            "acceptedAnswers": [
+              "Have you ever eaten"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The teacher ...... (give) us too much homework!",
+            "answer": "has given",
+            "acceptedAnswers": [
+              "has given"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exa-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "They ...... (not / choose) a name for the puppy yet.",
+            "answer": "haven't chosen",
+            "acceptedAnswers": [
+              "haven't chosen"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exa-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "...... (Sophie / just / arrive) home?",
+            "answer": "Has Sophie just arrived",
+            "acceptedAnswers": [
+              "Has Sophie just arrived"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u4-ex-b",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "B: Choose the correct answer",
+        "title": "B: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "B",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u4-exb-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "never visited Italy before.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "I've"
+              },
+              {
+                "letter": "B",
+                "text": "I"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exb-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Ben",
+            "sentenceAfter": "his homework yesterday evening.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "has finished"
+              },
+              {
+                "letter": "B",
+                "text": "finished"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exb-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "here for a long time?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Have they worked"
+              },
+              {
+                "letter": "B",
+                "text": "Did they work"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exb-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We",
+            "sentenceAfter": "to the zoo last weekend.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "have gone"
+              },
+              {
+                "letter": "B",
+                "text": "went"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exb-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "It's the first time",
+            "sentenceAfter": "this game.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "she's played"
+              },
+              {
+                "letter": "B",
+                "text": "she played"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exb-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I",
+            "sentenceAfter": "my lunch yet.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "haven't eaten"
+              },
+              {
+                "letter": "B",
+                "text": "didn't eat"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exb-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "to Paris when you were in France?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Have you been"
+              },
+              {
+                "letter": "B",
+                "text": "Did you go"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exb-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "a horse before?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Have you ever ridden"
+              },
+              {
+                "letter": "B",
+                "text": "Did you ever ride"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u4-ex-c",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "C: Write sentences",
+        "title": "C: Write sentences",
+        "instructions": "Look at the picture and use the prompts to write sentences. Use the correct form of the present perfect simple.",
+        "studentInstruction": "Look at the picture and use the prompts to write sentences. Use the correct form of the present perfect simple.",
+        "legacyKey": "C",
+        "legacyPattern": "textarea",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "textareaAnswer": true,
+        "items": [
+          {
+            "id": "b1-u4-exc-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "film / not / start / yet",
+            "prompt": {
+              "cues": [
+                "film",
+                "not",
+                "start",
+                "yet"
+              ]
+            },
+            "answer": "The film hasn't started yet.",
+            "acceptedAnswers": [
+              "The film hasn't started yet."
+            ]
+          },
+          {
+            "id": "b1-u4-exc-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Dad / already / buy / the popcorn",
+            "prompt": {
+              "cues": [
+                "Dad",
+                "already",
+                "buy",
+                "the popcorn"
+              ]
+            },
+            "answer": "Dad has already bought the popcorn.",
+            "acceptedAnswers": [
+              "Dad has already bought the popcorn."
+            ]
+          },
+          {
+            "id": "b1-u4-exc-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "the children / just / sit down",
+            "prompt": {
+              "cues": [
+                "the children",
+                "just",
+                "sit down"
+              ]
+            },
+            "answer": "The children have just sat down.",
+            "acceptedAnswers": [
+              "The children have just sat down."
+            ]
+          },
+          {
+            "id": "b1-u4-exc-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Mia / not / finish / her drink",
+            "prompt": {
+              "cues": [
+                "Mia",
+                "not",
+                "finish",
+                "her drink"
+              ]
+            },
+            "answer": "Mia hasn't finished her drink.",
+            "acceptedAnswers": [
+              "Mia hasn't finished her drink."
+            ]
+          },
+          {
+            "id": "b1-u4-exc-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Tom / already / turn off / his phone",
+            "prompt": {
+              "cues": [
+                "Tom",
+                "already",
+                "turn off",
+                "his phone"
+              ]
+            },
+            "answer": "Tom has already turned off his phone.",
+            "acceptedAnswers": [
+              "Tom has already turned off his phone."
+            ]
+          },
+          {
+            "id": "b1-u4-exc-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "someone / drop / a ticket / on the floor",
+            "prompt": {
+              "cues": [
+                "someone",
+                "drop",
+                "a ticket",
+                "on the floor"
+              ]
+            },
+            "answer": "Someone has dropped a ticket on the floor.",
+            "acceptedAnswers": [
+              "Someone has dropped a ticket on the floor."
+            ]
+          },
+          {
+            "id": "b1-u4-exc-7",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "they / not / pick it up / yet",
+            "prompt": {
+              "cues": [
+                "they",
+                "not",
+                "pick it up",
+                "yet"
+              ]
+            },
+            "answer": "They haven't picked it up yet.",
+            "acceptedAnswers": [
+              "They haven't picked it up yet."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u4-ex-d",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "D: Present perfect continuous",
+        "title": "D: Present perfect continuous",
+        "instructions": "Complete using the correct present perfect continuous form of the verbs in brackets. Use short forms where possible.",
+        "studentInstruction": "Complete using the correct present perfect continuous form of the verbs in brackets. Use short forms where possible.",
+        "legacyKey": "D",
+        "legacyPattern": "passage-input",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": false,
+          "gapInputStyle": "underline_expand"
+        },
+        "passage": "Lucy: Hi Ben! You look tired. What (1) ...... (you / do)?\nBen: Hey Lucy. Well, (2) ...... (I / revise) for my maths test.\nLucy: Really? (3) ...... (you / study) all day?\nBen: Pretty much. (4) ...... (I / sit) in the library since this morning and (5) ...... (I / not / take) any breaks.\nLucy: That sounds awful!\nBen: Yeah, but (6) ...... (I / work) with Alex, so it's been a bit easier.\nLucy: Well, my sister and (7) ...... (I / clean) the house all afternoon.\nBen: Fun!\nLucy: Actually, yes! And (8) ...... (we / also / prepare) dinner for tonight.\nBen: Nice. What are you making?\nLucy: Pizza! We can't decide on the toppings, so (9) ...... (we / look) at recipes online.\nBen: Sounds great. By the way, (10) ...... (I / think) about joining the school basketball team.",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "have you been doing",
+          "I've been revising",
+          "Have you been studying",
+          "I've been sitting",
+          "I haven't been taking",
+          "I've been working",
+          "I've been cleaning",
+          "we've also been preparing",
+          "We've been looking",
+          "I've been thinking"
+        ]
+      },
+      {
+        "id": "b1-u4-ex-e",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "E: Circle the correct word or phrase",
+        "title": "E: Circle the correct word or phrase",
+        "instructions": "Circle the correct word or phrase.",
+        "studentInstruction": "Circle the correct word or phrase.",
+        "legacyKey": "E",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u4-exe-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I think I've",
+            "sentenceAfter": "that actor before.",
+            "options": [
+              "seen",
+              "been seeing"
+            ],
+            "answer": "seen",
+            "originalSentence": "I think I've **seen / been seeing** that actor before.",
+            "completedSentence": "I think I've seen that actor before."
+          },
+          {
+            "id": "b1-u4-exe-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She hasn't",
+            "sentenceAfter": "her project yet.",
+            "options": [
+              "finished",
+              "been finishing"
+            ],
+            "answer": "finished",
+            "originalSentence": "She hasn't **finished / been finishing** her project yet.",
+            "completedSentence": "She hasn't finished her project yet."
+          },
+          {
+            "id": "b1-u4-exe-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You've",
+            "sentenceAfter": "for hours. Take a break!",
+            "options": [
+              "studied",
+              "been studying"
+            ],
+            "answer": "been studying",
+            "originalSentence": "You've **studied / been studying** for hours. Take a break!",
+            "completedSentence": "You've been studying for hours. Take a break!"
+          },
+          {
+            "id": "b1-u4-exe-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Have they",
+            "sentenceAfter": "long?",
+            "options": [
+              "waited",
+              "been waiting"
+            ],
+            "answer": "been waiting",
+            "originalSentence": "Have they **waited / been waiting** long?",
+            "completedSentence": "Have they been waiting long?"
+          },
+          {
+            "id": "b1-u4-exe-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Dad has already",
+            "sentenceAfter": "the car.",
+            "options": [
+              "washed",
+              "been washing"
+            ],
+            "answer": "washed",
+            "originalSentence": "Dad has already **washed / been washing** the car.",
+            "completedSentence": "Dad has already washed the car."
+          },
+          {
+            "id": "b1-u4-exe-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I've",
+            "sentenceAfter": "this book all week, but I still haven't finished it.",
+            "options": [
+              "read",
+              "been reading"
+            ],
+            "answer": "been reading",
+            "originalSentence": "I've **read / been reading** this book all week, but I still haven't finished it.",
+            "completedSentence": "I've been reading this book all week, but I still haven't finished it."
+          },
+          {
+            "id": "b1-u4-exe-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Have you",
+            "sentenceAfter": "football since this morning?",
+            "options": [
+              "played",
+              "been playing"
+            ],
+            "answer": "been playing",
+            "originalSentence": "Have you **played / been playing** football since this morning?",
+            "completedSentence": "Have you been playing football since this morning?"
+          }
+        ]
+      },
+      {
+        "id": "b1-u4-ex-f",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "F: Complete using the words in the box",
+        "title": "F: Complete using the words in the box",
+        "instructions": "Complete using the words in the box.",
+        "studentInstruction": "Complete using the words in the box.",
+        "legacyKey": "F",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "already",
+          "ever",
+          "for",
+          "just",
+          "never",
+          "since",
+          "yet"
+        ],
+        "wordBank": [
+          "already",
+          "ever",
+          "for",
+          "just",
+          "never",
+          "since",
+          "yet"
+        ],
+        "items": [
+          {
+            "id": "b1-u4-exf-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I haven't done my homework ...... .",
+            "answer": "yet",
+            "acceptedAnswers": [
+              "yet"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exf-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She's been learning Spanish ...... three years.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exf-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Have you ...... tried Indian food?",
+            "answer": "ever",
+            "acceptedAnswers": [
+              "ever"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exf-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We've ...... finished cleaning the kitchen.",
+            "answer": "already",
+            "acceptedAnswers": [
+              "already"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exf-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Tom has lived here ...... 2020.",
+            "answer": "since",
+            "acceptedAnswers": [
+              "since"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exf-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I've ...... spoken to Mia on the phone.",
+            "answer": "just",
+            "acceptedAnswers": [
+              "just"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exf-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I've ...... been skiing before.",
+            "answer": "never",
+            "acceptedAnswers": [
+              "never"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

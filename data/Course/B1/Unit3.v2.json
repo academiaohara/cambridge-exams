@@ -1,0 +1,982 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 1,
+  "unit": 3,
+  "type": "vocabulary",
+  "unitTitle": "[PILOT] Unit 3: Fun and games",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 3: Fun and games"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit3.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 9
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u3-theory",
+    "title": "Topic vocabulary",
+    "shortTitle": "Vocabulary",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b1-u3-theory-card-1",
+        "title": "Unit 3: Fun and games",
+        "subtitle": "",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Unit focus",
+            "items": [
+              "fun and games"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "crossword_clues",
+        "displayName": "Crossword clue",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "crossword_letter_boxes",
+          "studentAction": "type_letters",
+          "evaluationTrigger": "check_button",
+          "layoutMode": "clue_list"
+        }
+      },
+      {
+        "formatType": "passage_gap_fill",
+        "displayName": "Complete the passage",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "passage_inline_gaps",
+          "studentAction": "type_gap_answers",
+          "evaluationTrigger": "check_button",
+          "gapInputStyle": "pill"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "error_correction",
+        "displayName": "Correct the error",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_correction_input",
+          "studentAction": "type_correction",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u3-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "crossword_clues",
+        "passage_gap_fill",
+        "two_option_choice",
+        "free_text_gap_fill",
+        "error_correction"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 33,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u3-ex-a",
+          "formatType": "crossword_clues",
+          "sourceItemIds": [
+            "b1-u3-exa-1",
+            "b1-u3-exa-2",
+            "b1-u3-exa-3",
+            "b1-u3-exa-4",
+            "b1-u3-exa-5",
+            "b1-u3-exa-6",
+            "b1-u3-exa-7",
+            "b1-u3-exa-8",
+            "b1-u3-exa-9",
+            "b1-u3-exa-10",
+            "b1-u3-exa-11"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u3-ex-b",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "b1-u3-ex-c",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u3-exc-1",
+            "b1-u3-exc-2",
+            "b1-u3-exc-3",
+            "b1-u3-exc-4",
+            "b1-u3-exc-5",
+            "b1-u3-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u3-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u3-exd-1",
+            "b1-u3-exd-2",
+            "b1-u3-exd-3",
+            "b1-u3-exd-4",
+            "b1-u3-exd-5",
+            "b1-u3-exd-6",
+            "b1-u3-exd-7",
+            "b1-u3-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u3-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u3-exe-1",
+            "b1-u3-exe-2",
+            "b1-u3-exe-3",
+            "b1-u3-exe-4",
+            "b1-u3-exe-5",
+            "b1-u3-exe-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u3-ex-f",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u3-exf-1",
+            "b1-u3-exf-2",
+            "b1-u3-exf-3",
+            "b1-u3-exf-4",
+            "b1-u3-exf-5",
+            "b1-u3-exf-6",
+            "b1-u3-exf-7",
+            "b1-u3-exf-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u3-ex-g",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "b1-u3-ex-h",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "b1-u3-ex-i",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u3-exi-1",
+            "b1-u3-exi-2",
+            "b1-u3-exi-3",
+            "b1-u3-exi-4",
+            "b1-u3-exi-5",
+            "b1-u3-exi-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 48,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u3-ex-a",
+      "b1-u3-ex-b",
+      "b1-u3-ex-c",
+      "b1-u3-ex-d",
+      "b1-u3-ex-e",
+      "b1-u3-ex-f",
+      "b1-u3-ex-g",
+      "b1-u3-ex-h",
+      "b1-u3-ex-i"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u3-ex-a",
+        "type": "exercise",
+        "exerciseType": "crossword_clues",
+        "exerciseTypeName": "Complete the crossword",
+        "title": "Complete the crossword",
+        "instructions": "Solve the crossword using the clues below.",
+        "studentInstruction": "Solve the crossword using the clues below.",
+        "legacyKey": "A",
+        "legacyPattern": "crossword",
+        "interaction": {
+          "formatType": "crossword_clues",
+          "layoutMode": "clue_list"
+        },
+        "items": [
+          {
+            "id": "b1-u3-exa-1",
+            "direction": "across",
+            "clueNumber": 1,
+            "clue": "The school football ...... meets every Wednesday after class. (4)",
+            "answer": "club",
+            "acceptedAnswers": [
+              "club"
+            ],
+            "letterCount": 4,
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-exa-2",
+            "direction": "across",
+            "clueNumber": 4,
+            "clue": "Our team needs to ...... two goals to win the match. (5)",
+            "answer": "score",
+            "acceptedAnswers": [
+              "score"
+            ],
+            "letterCount": 5,
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-exa-3",
+            "direction": "across",
+            "clueNumber": 5,
+            "clue": "The dance class listened carefully to the ...... of the music. (6)",
+            "answer": "rhythm",
+            "acceptedAnswers": [
+              "rhythm"
+            ],
+            "letterCount": 6,
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-exa-4",
+            "direction": "across",
+            "clueNumber": 8,
+            "clue": "We entered a swimming ...... at the sports centre. (11)",
+            "answer": "competition",
+            "acceptedAnswers": [
+              "competition"
+            ],
+            "letterCount": 11,
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-exa-5",
+            "direction": "across",
+            "clueNumber": 9,
+            "clue": "Liam wants to ...... for the race every morning. (5)",
+            "answer": "train",
+            "acceptedAnswers": [
+              "train"
+            ],
+            "letterCount": 5,
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-exa-6",
+            "direction": "across",
+            "clueNumber": 11,
+            "clue": "That comedy show was really ...... . (12)",
+            "answer": "entertaining",
+            "acceptedAnswers": [
+              "entertaining"
+            ],
+            "letterCount": 12,
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-exa-7",
+            "direction": "down",
+            "clueNumber": 2,
+            "clue": "Our ...... chose the players for Saturday's match. (7)",
+            "answer": "captain",
+            "acceptedAnswers": [
+              "captain"
+            ],
+            "letterCount": 7,
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-exa-8",
+            "direction": "down",
+            "clueNumber": 3,
+            "clue": "You must never ...... in a game or competition. (5)",
+            "answer": "cheat",
+            "acceptedAnswers": [
+              "cheat"
+            ],
+            "letterCount": 5,
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-exa-9",
+            "direction": "down",
+            "clueNumber": 6,
+            "clue": "The chess ...... shook my hand before the game. (8)",
+            "answer": "opponent",
+            "acceptedAnswers": [
+              "opponent"
+            ],
+            "letterCount": 8,
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-exa-10",
+            "direction": "down",
+            "clueNumber": 7,
+            "clue": "I get a lot of ...... from playing music with friends. (8)",
+            "answer": "pleasure",
+            "acceptedAnswers": [
+              "pleasure"
+            ],
+            "letterCount": 8,
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-exa-11",
+            "direction": "down",
+            "clueNumber": 10,
+            "clue": "The ...... stopped the match after the foul. (7)",
+            "answer": "referee",
+            "acceptedAnswers": [
+              "referee"
+            ],
+            "letterCount": 7,
+            "formatType": "crossword_clues"
+          }
+        ]
+      },
+      {
+        "id": "b1-u3-ex-b",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "Join our games club! (gap fill)",
+        "title": "Join our games club! (gap fill)",
+        "instructions": "Complete using the correct form of the words and phrases in the box.",
+        "studentInstruction": "Complete using the correct form of the words and phrases in the box.",
+        "legacyKey": "B",
+        "legacyPattern": "passage-gap-fill",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": false,
+          "gapInputStyle": "pill"
+        },
+        "words": [
+          "beat",
+          "challenge",
+          "have fun",
+          "interest",
+          "organise",
+          "score",
+          "train"
+        ],
+        "wordBank": [
+          "beat",
+          "challenge",
+          "have fun",
+          "interest",
+          "organise",
+          "score",
+          "train"
+        ],
+        "passageTitle": "Join our games club!",
+        "passage": "Do you enjoy (1) ...... your friends at board games, or do you prefer trying to (2) ...... points in video games? Games (3) ...... lots of young people because they are exciting and social. At our club, you can learn new skills and (4) ...... with people your age. Every month, we (5) ...... a small competition for members. It can be a real (6) ...... to win, but our older players will help you (7) ...... and improve. Come along on Friday and try it!",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "beating",
+          "score",
+          "interest",
+          "have fun",
+          "organise",
+          "challenge",
+          "train"
+        ]
+      },
+      {
+        "id": "b1-u3-ex-c",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Circle the correct word",
+        "title": "Circle the correct word",
+        "instructions": "Circle the correct word.",
+        "studentInstruction": "Circle the correct word.",
+        "legacyKey": "C",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u3-exc-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "My brother spends hours playing",
+            "sentenceAfter": "games online.",
+            "options": [
+              "video",
+              "folk"
+            ],
+            "answer": "video",
+            "originalSentence": "My brother spends hours playing **video / folk** games online.",
+            "completedSentence": "My brother spends hours playing video games online."
+          },
+          {
+            "id": "b1-u3-exc-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The",
+            "sentenceAfter": "gave two players a warning during the match.",
+            "options": [
+              "referee",
+              "rhythm"
+            ],
+            "answer": "referee",
+            "originalSentence": "The **referee / rhythm** gave two players a warning during the match.",
+            "completedSentence": "The referee gave two players a warning during the match."
+          },
+          {
+            "id": "b1-u3-exc-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We saw our favourite band at a huge",
+            "sentenceAfter": "last night.",
+            "options": [
+              "concert",
+              "coach"
+            ],
+            "answer": "concert",
+            "originalSentence": "We saw our favourite band at a huge **concert / coach** last night.",
+            "completedSentence": "We saw our favourite band at a huge concert last night."
+          },
+          {
+            "id": "b1-u3-exc-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The tennis player accepted the",
+            "sentenceAfter": "and played again.",
+            "options": [
+              "challenge",
+              "pleasure"
+            ],
+            "answer": "challenge",
+            "originalSentence": "The tennis player accepted the **challenge / pleasure** and played again.",
+            "completedSentence": "The tennis player accepted the challenge and played again."
+          },
+          {
+            "id": "b1-u3-exc-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Our school",
+            "sentenceAfter": "won the final by three points.",
+            "options": [
+              "team",
+              "member"
+            ],
+            "answer": "team",
+            "originalSentence": "Our school **team / member** won the final by three points.",
+            "completedSentence": "Our school team won the final by three points."
+          },
+          {
+            "id": "b1-u3-exc-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I prefer",
+            "sentenceAfter": "music when I’m studying.",
+            "options": [
+              "classical",
+              "captain"
+            ],
+            "answer": "classical",
+            "originalSentence": "I prefer **classical / captain** music when I’m studying.",
+            "completedSentence": "I prefer classical music when I’m studying."
+          }
+        ]
+      },
+      {
+        "id": "b1-u3-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Phrasal verbs (type-in)",
+        "title": "Phrasal verbs (type-in)",
+        "instructions": "Complete each sentence with the correct particle.",
+        "studentInstruction": "Complete each sentence with the correct particle.",
+        "legacyKey": "D",
+        "legacyPattern": "phrasal-particle",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u3-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Maya wants to take ...... (up / off / out) dancing next term.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please turn the TV ...... (down / in / off) because I'm trying to read.",
+            "answer": "down",
+            "acceptedAnswers": [
+              "down"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Everyone was singing, so I decided to join ...... (up / in / out).",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The referee sent the goalkeeper ...... (off / up / down) after a dangerous foul.",
+            "answer": "off",
+            "acceptedAnswers": [
+              "off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I love this part of the song! Turn it ...... (up / in / out)!",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The lights went out, but the band carried ...... (on / off / up) playing.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exd-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We usually eat ...... (out / up / off) after football practice on Fridays.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exd-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He gave ...... (up / in / down) tennis when he hurt his knee.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u3-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Prepositional phrases (gap fill)",
+        "title": "Prepositional phrases (gap fill)",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u3-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We practised the song ...... a long time before the concert.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I've got their latest performance ...... DVD.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We arrived just ...... time for the start of the match.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The actors walked ...... stage and everyone clapped.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There was a small table ...... the middle of the room for the board game.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I don't want to win prizes. I only play chess ...... fun.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u3-ex-f",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Word formation",
+        "title": "Word formation",
+        "instructions": "Complete by changing the form of the word in capitals when this is necessary.",
+        "studentInstruction": "Complete by changing the form of the word in capitals when this is necessary.",
+        "legacyKey": "F",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u3-exf-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The ...... gave an amazing performance at the concert. **SING**",
+            "answer": "singer",
+            "acceptedAnswers": [
+              "singer"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exf-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My sister is very ...... and can play three instruments. **MUSIC**",
+            "answer": "musical",
+            "acceptedAnswers": [
+              "musical"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exf-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Jake is strong, fast and very ...... . **ATHLETE**",
+            "answer": "athletic",
+            "acceptedAnswers": [
+              "athletic"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exf-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Many ...... enjoy playing games outside after school. **CHILD**",
+            "answer": "children",
+            "acceptedAnswers": [
+              "children"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exf-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The film was full of exciting ...... scenes. **ACT**",
+            "answer": "action",
+            "acceptedAnswers": [
+              "action"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exf-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My cousin is a serious stamp ...... . **COLLECT**",
+            "answer": "collector",
+            "acceptedAnswers": [
+              "collector"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exf-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We went ...... on the lake during our holiday. **SAIL**",
+            "answer": "sailing",
+            "acceptedAnswers": [
+              "sailing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u3-exf-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "That football ...... scored three goals in the final. **PLAY**",
+            "answer": "player",
+            "acceptedAnswers": [
+              "player"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u3-ex-g",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "Young musicians (word formation)",
+        "title": "Young musicians (word formation)",
+        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "studentInstruction": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "legacyKey": "G",
+        "legacyPattern": "passage-wf",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": false,
+          "gapInputStyle": "pill"
+        },
+        "passageTitle": "Young musicians",
+        "passage": "Many children enjoy (1) ...... (SING) before they can read music. Some become excellent (2) ...... (MUSIC) when they are older. Learning an instrument is not always easy, but it is great (3) ...... (ENTERTAIN) for the whole family. Regular practice is an important (4) ...... (ACT), and young performers need to stay (5) ...... (ACT) if they want to improve. A confident child may even feel like a (6) ...... (HERO) when they perform on stage.",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "singing",
+          "musicians",
+          "entertainment",
+          "activity",
+          "active",
+          "hero"
+        ]
+      },
+      {
+        "id": "b1-u3-ex-h",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "Word patterns (dialogue)",
+        "title": "Word patterns (dialogue)",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "H",
+        "legacyPattern": "passage-input",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": false,
+          "gapInputStyle": "underline_expand"
+        },
+        "passageTitle": "A conversation",
+        "passage": "Leo: Hi, Mia. Are you still crazy (1) ...... basketball?\nMia: Yes! I'm really keen (2) ...... it. We have a game (3) ...... a team from another school tomorrow.\nLeo: That sounds exciting. Are you good (4) ...... shooting?\nMia: I'm getting better. Our coach says I should listen (5) ...... his advice and practise every day.\nLeo: I'd like to take part (6) ...... a sport too, but I'm more interested (7) ...... music at the moment.",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "about",
+          "on",
+          "against",
+          "at",
+          "to",
+          "in",
+          "in"
+        ]
+      },
+      {
+        "id": "b1-u3-ex-i",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "Word patterns (error correction)",
+        "title": "Word patterns (error correction)",
+        "instructions": "Each of the words in bold is wrong. Write the correct word.",
+        "studentInstruction": "Each of the words in bold is wrong. Write the correct word.",
+        "legacyKey": "I",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u3-exi-1",
+            "formatType": "error_correction",
+            "sentence": "I'm really interested on joining the drama club.",
+            "highlightedText": "on",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ]
+          },
+          {
+            "id": "b1-u3-exi-2",
+            "formatType": "error_correction",
+            "sentence": "My brother is very good in table tennis.",
+            "highlightedText": "in",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ]
+          },
+          {
+            "id": "b1-u3-exi-3",
+            "formatType": "error_correction",
+            "sentence": "We listened at classical music all evening.",
+            "highlightedText": "at",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ]
+          },
+          {
+            "id": "b1-u3-exi-4",
+            "formatType": "error_correction",
+            "sentence": "Our team has got a game with City School on Saturday.",
+            "highlightedText": "with",
+            "answer": "against",
+            "acceptedAnswers": [
+              "against"
+            ]
+          },
+          {
+            "id": "b1-u3-exi-5",
+            "formatType": "error_correction",
+            "sentence": "I'm a big fan for that singer.",
+            "highlightedText": "for",
+            "answer": "of",
+            "acceptedAnswers": [
+              "of"
+            ]
+          },
+          {
+            "id": "b1-u3-exi-6",
+            "formatType": "error_correction",
+            "sentence": "Do you feel for playing a board game later?",
+            "highlightedText": "for",
+            "answer": "like",
+            "acceptedAnswers": [
+              "like"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
