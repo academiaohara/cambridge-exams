@@ -761,6 +761,7 @@
       case 'stative_sorting': return renderStativeSorting(screen);
       case 'meaning_contrast': return renderMeaningContrast(screen);
       case 'preselected_verb_gap_fill': return renderGapFill(screen);
+      case 'mc_4_option': return renderMc4Option(screen);
       default:
         return '<p class="sp-unknown">Unsupported format: ' + esc(screen.formatType) + '</p>';
     }
@@ -799,6 +800,200 @@
     });
     html += '</div></div>';
     return html;
+  }
+
+  function renderMcOptionBtn(opt, index) {
+    var letter = opt.letter || String.fromCharCode(65 + index);
+    var label = opt.text || '';
+    return '<button type="button" class="sp-option-btn" data-letter="' + esc(letter) + '" data-value="' + esc(letter) + '">' +
+      '<span class="sp-option-num">' + esc(letter) + '</span>' +
+      '<span class="sp-option-label">' + esc(label) + '</span>' +
+    '</button>';
+  }
+
+  function buildMcGapPill(gapNum) {
+    return '<button type="button" class="sp-mc-gap-pill sp-passage-gap-wrap" data-gap-number="' + gapNum + '" ' +
+      'aria-label="Gap ' + gapNum + '">' +
+      '<span class="sp-passage-gap-num">' + gapNum + '</span>' +
+      '<span class="sp-mc-gap-slot" id="sp-mc-gap-slot-' + gapNum + '"></span>' +
+    '</button>';
+  }
+
+  function renderMcPassageGapHtml(passage) {
+    var paragraphs = String(passage || '').split(/\n+/).filter(function(p) { return p.trim(); });
+    return paragraphs.map(function(para) {
+      var inner = esc(para.trim())
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(PASSAGE_GAP_MARK_RE, function(_, num) {
+          return buildMcGapPill(num);
+        });
+      return '<p class="sp-passage-para">' + inner + '</p>';
+    }).join('');
+  }
+
+  function renderMc4OptionStandalone(screen) {
+    var p = screen.payload || {};
+    var gapWidth = 4;
+    var html = '<div class="sp-screen sp-screen--choice sp-screen--mc-standalone" data-format="mc_4_option">';
+    html += '<div class="sp-prompt-row sp-prompt-row--choice">';
+    html += '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
+      esc(p.sentenceBefore || '') +
+      ' <span class="sp-gap-anchor" style="--sp-gap-width:' + gapWidth + 'ch">' +
+        '<span class="sp-gap-slot" id="sp-choice-slot"></span>' +
+      '</span> ' +
+      esc(p.sentenceAfter || '') + '</p>';
+    html += '</div>';
+    html += '<div class="sp-option-grid sp-option-grid--quad" id="sp-mc-option-grid">';
+    (p.options || []).forEach(function(opt, i) {
+      html += renderMcOptionBtn(opt, i);
+    });
+    html += '</div></div>';
+    return html;
+  }
+
+  function renderMc4OptionPassage(screen) {
+    var p = screen.payload || {};
+    var passageHtml = renderMcPassageGapHtml(p.passage || '');
+    var html = '<div class="sp-screen sp-screen--passage-gap sp-screen--mc-passage" data-format="mc_4_option">';
+    html += '<div class="sp-passage-gap-scroll" tabindex="0" aria-label="Story text">';
+    html += '<div class="sp-passage-card sp-passage-card--gap-fill sp-passage-card--justified" id="sp-passage-text">' + passageHtml + '</div>';
+    html += '</div>';
+    html += '<div class="sp-mc-sheet" id="sp-mc-sheet" hidden aria-hidden="true">';
+    html += '<button type="button" class="sp-mc-sheet-backdrop" data-action="mc-sheet-close" aria-label="Close"></button>';
+    html += '<div class="sp-mc-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sp-mc-sheet-title">';
+    html += '<p class="sp-mc-sheet-title" id="sp-mc-sheet-title">Choose an option</p>';
+    html += '<div class="sp-option-grid sp-option-grid--quad" id="sp-mc-sheet-options"></div>';
+    html += '</div></div>';
+    html += '</div>';
+    return html;
+  }
+
+  function renderMc4Option(screen) {
+    var p = screen.payload || {};
+    if (p.displayMode === 'passage') return renderMc4OptionPassage(screen);
+    return renderMc4OptionStandalone(screen);
+  }
+
+  function getMcGapSelections(root) {
+    return root._mcSelections || {};
+  }
+
+  function allMcPassageGapsFilled(root, screen) {
+    var gaps = (screen.payload && screen.payload.gaps) || [];
+    if (!gaps.length) return false;
+    var selections = getMcGapSelections(root);
+    return gaps.every(function(gap) {
+      return !!selections[gap.gapNumber];
+    });
+  }
+
+  function markMcGapResults(root, gaps, selections) {
+    (gaps || []).forEach(function(gap) {
+      var pill = root.querySelector('.sp-mc-gap-pill[data-gap-number="' + gap.gapNumber + '"]');
+      if (!pill) return;
+      var selected = (selections || {})[gap.gapNumber] || '';
+      var ok = selected.toUpperCase() === String(gap.answer || '').toUpperCase();
+      pill.classList.toggle('sp-mc-gap-pill--correct', ok);
+      pill.classList.toggle('sp-mc-gap-pill--incorrect', !ok);
+      pill.disabled = true;
+    });
+  }
+
+  function bindMc4OptionStandalone(root, screen, onChange) {
+    var payload = screen.payload || {};
+    bindSentenceSpeak(root, function() {
+      var slot = root.querySelector('#sp-choice-slot');
+      var letter = slot ? slot.textContent.trim() : '';
+      var opt = (payload.options || []).find(function(o) {
+        return o.letter === letter;
+      });
+      var chosen = opt ? opt.text : letter;
+      return buildGapSentence(payload.sentenceBefore, chosen, payload.sentenceAfter);
+    });
+    root.querySelectorAll('.sp-option-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (root.classList.contains('sp-screen--locked')) return;
+        root.querySelectorAll('.sp-option-btn').forEach(function(b) {
+          b.classList.remove('sp-option-btn--selected');
+        });
+        btn.classList.add('sp-option-btn--selected');
+        var letter = btn.getAttribute('data-letter') || '';
+        var slot = root.querySelector('#sp-choice-slot');
+        if (slot) slot.textContent = letter;
+        onChange();
+        var opt = (payload.options || []).find(function(o) { return o.letter === letter; });
+        if (opt && opt.text) speakText(opt.text);
+      });
+    });
+  }
+
+  function bindMc4OptionPassage(root, screen, onChange) {
+    var payload = screen.payload || {};
+    var gapsByNumber = {};
+    (payload.gaps || []).forEach(function(gap) {
+      gapsByNumber[gap.gapNumber] = gap;
+    });
+    root._mcGapOptions = gapsByNumber;
+    root._mcSelections = root._mcSelections || {};
+
+    var sheet = root.querySelector('#sp-mc-sheet');
+    var sheetTitle = root.querySelector('#sp-mc-sheet-title');
+    var sheetOptions = root.querySelector('#sp-mc-sheet-options');
+
+    function closeSheet() {
+      if (!sheet) return;
+      sheet.hidden = true;
+      sheet.setAttribute('aria-hidden', 'true');
+      root._mcActiveGap = null;
+    }
+
+    function openSheet(gapNumber) {
+      var gap = gapsByNumber[gapNumber];
+      if (!gap || !sheet || !sheetOptions) return;
+      root._mcActiveGap = gapNumber;
+      if (sheetTitle) {
+        sheetTitle.textContent = 'Choose an option for gap ' + gapNumber;
+      }
+      sheetOptions.innerHTML = '';
+      (gap.options || []).forEach(function(opt, i) {
+        sheetOptions.insertAdjacentHTML('beforeend', renderMcOptionBtn(opt, i));
+      });
+      sheetOptions.querySelectorAll('.sp-option-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          if (root.classList.contains('sp-screen--locked')) return;
+          var letter = btn.getAttribute('data-letter') || '';
+          root._mcSelections[gapNumber] = letter;
+          var slot = root.querySelector('#sp-mc-gap-slot-' + gapNumber);
+          if (slot) slot.textContent = letter;
+          var pill = root.querySelector('.sp-mc-gap-pill[data-gap-number="' + gapNumber + '"]');
+          if (pill) pill.classList.add('sp-mc-gap-pill--filled');
+          closeSheet();
+          onChange();
+        });
+      });
+      sheet.hidden = false;
+      sheet.setAttribute('aria-hidden', 'false');
+    }
+
+    root.querySelectorAll('.sp-mc-gap-pill').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        if (root.classList.contains('sp-screen--locked')) return;
+        var gapNumber = parseInt(pill.getAttribute('data-gap-number'), 10);
+        if (!isNaN(gapNumber)) openSheet(gapNumber);
+      });
+    });
+
+    var backdrop = root.querySelector('[data-action="mc-sheet-close"]');
+    if (backdrop) backdrop.addEventListener('click', closeSheet);
+  }
+
+  function bindMc4Option(root, screen, onChange) {
+    var p = screen.payload || {};
+    if (p.displayMode === 'passage') {
+      bindMc4OptionPassage(root, screen, onChange);
+    } else {
+      bindMc4OptionStandalone(root, screen, onChange);
+    }
   }
 
   function buildInlineGapRenderOptions(payload) {
@@ -1426,6 +1621,10 @@
 
     if (format === 'passage_gap_fill') {
       bindPassageGapFill(root, screen, onChange);
+    }
+
+    if (format === 'mc_4_option') {
+      bindMc4Option(root, screen, onChange);
     }
   }
 
@@ -2104,6 +2303,11 @@
     if (f === 'two_option_choice' || f === 'meaning_contrast') {
       return !!root.querySelector('.sp-option-btn--selected');
     }
+    if (f === 'mc_4_option') {
+      var mp = screen.payload || {};
+      if (mp.displayMode === 'passage') return allMcPassageGapsFilled(root, screen);
+      return !!root.querySelector('.sp-option-btn--selected');
+    }
     if (f === 'free_text_gap_fill' || f === 'conjugation_gap_fill' || f === 'preselected_verb_gap_fill') {
       return allGapInputsFilled(root);
     }
@@ -2164,6 +2368,34 @@
         result.correctAnswer = p.answer;
         result.correct = norm.answersMatch(val, p.answer);
         result.lifeLoss = result.correct ? 0 : 1;
+        break;
+      }
+      case 'mc_4_option': {
+        if (p.displayMode === 'passage') {
+          var gaps = p.gaps || [];
+          var selections = getMcGapSelections(root);
+          var wrongCount = 0;
+          var userParts = [];
+          var correctParts = [];
+          gaps.forEach(function(gap) {
+            var selected = selections[gap.gapNumber] || '';
+            userParts.push(selected);
+            correctParts.push(gap.answer);
+            if (selected.toUpperCase() !== String(gap.answer || '').toUpperCase()) wrongCount++;
+          });
+          result.userAnswer = userParts.join(' / ');
+          result.correctAnswer = correctParts.join(' / ');
+          result.correct = wrongCount === 0;
+          result.lifeLoss = wrongCount;
+          markMcGapResults(root, gaps, selections);
+        } else {
+          var mcSel = root.querySelector('.sp-option-btn--selected');
+          var letter = mcSel ? (mcSel.getAttribute('data-letter') || mcSel.getAttribute('data-value') || '') : '';
+          result.userAnswer = letter;
+          result.correctAnswer = p.answer;
+          result.correct = letter.toUpperCase() === String(p.answer || '').toUpperCase();
+          result.lifeLoss = result.correct ? 0 : 1;
+        }
         break;
       }
       case 'free_text_gap_fill':

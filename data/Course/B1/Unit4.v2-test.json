@@ -1,0 +1,266 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 2,
+  "unit": 4,
+  "type": "grammar",
+  "unitTitle": "[TEST] Unit 4: MC 4-option",
+  "unitSubtitle": "Sandbox for mc_4_option standalone and passage modes",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "present perfect simple",
+    "present perfect continuous",
+    "mc_4_option"
+  ],
+  "estimatedDurationMinutes": 10,
+  "lessonStyle": "sune-play-interactive",
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u4-test-theory",
+    "title": "Test theory",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b1-u4-test-theory-card-1",
+        "title": "MC 4-option test",
+        "subtitle": "Sandbox unit",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "What to test",
+            "items": [
+              "Standalone questions with four options",
+              "Passage with multiple numbered gaps",
+              "Multi-life loss when several gaps are wrong"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Choose A, B, C or D",
+        "defaultLives": 8,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "fallbackFormatType": "two_option_choice",
+        "interaction": {
+          "component": "four_option_choice",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button",
+          "optionLayout": "quad_grid",
+          "passageGapStyle": "numbered_pill_sheet"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u4-test-node-1",
+      "title": "MC 4-option test",
+      "shortTitle": "MC test",
+      "focus": [
+        "mc_4_option standalone",
+        "mc_4_option passage"
+      ],
+      "lives": 8,
+      "passCondition": {
+        "minimumCorrectScreens": 3,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u4-test-ex-standalone",
+          "sourceItemIds": [
+            "b1-u4-test-ex-standalone-1",
+            "b1-u4-test-ex-standalone-2"
+          ],
+          "formatType": "mc_4_option"
+        },
+        {
+          "sourceExerciseId": "b1-u4-test-ex-passage",
+          "screenMode": "all_gaps_single_screen",
+          "formatType": "mc_4_option"
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 10,
+    "minimumScreensPerNode": 3
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Check the tense."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u4-test-ex-standalone",
+      "b1-u4-test-ex-passage"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u4-test-ex-standalone",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "Choose A, B, C or D",
+        "title": "B: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Tap the best option.",
+        "items": [
+          {
+            "id": "b1-u4-test-ex-standalone-1",
+            "displayMode": "standalone",
+            "prompt": "...... here for a long time?",
+            "options": [
+              { "letter": "A", "text": "Have they worked" },
+              { "letter": "B", "text": "Did they work" },
+              { "letter": "C", "text": "Do they work" },
+              { "letter": "D", "text": "Had they worked" }
+            ],
+            "answer": "A",
+            "answerText": "Have they worked",
+            "explanation": "For + period → present perfect.",
+            "answerMode": "tap_letter_abcd",
+            "formatType": "mc_4_option"
+          },
+          {
+            "id": "b1-u4-test-ex-standalone-2",
+            "displayMode": "standalone",
+            "prompt": "We ...... to the zoo last weekend.",
+            "options": [
+              { "letter": "A", "text": "have gone" },
+              { "letter": "B", "text": "went" },
+              { "letter": "C", "text": "go" },
+              { "letter": "D", "text": "had gone" }
+            ],
+            "answer": "B",
+            "answerText": "went",
+            "explanation": "Last weekend is a finished past time → past simple.",
+            "answerMode": "tap_letter_abcd",
+            "formatType": "mc_4_option"
+          }
+        ],
+        "interaction": {
+          "formatType": "mc_4_option",
+          "shuffleOptions": true,
+          "showLetters": true
+        }
+      },
+      {
+        "id": "b1-u4-test-ex-passage",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "Multiple Choice Passage",
+        "title": "E: Multiple choice passage",
+        "instructions": "Choose the correct answer: A, B, C or D.",
+        "studentInstruction": "Tap each numbered gap and choose an option.",
+        "displayMode": "passage",
+        "questions": [
+          {
+            "sentence": "She (1) ...... on an urgent assignment this week, so she won't be available until Monday.",
+            "gaps": [
+              {
+                "num": 1,
+                "options": [
+                  "A works",
+                  "B is working",
+                  "C has worked",
+                  "D has been working"
+                ],
+                "answer": "B"
+              }
+            ]
+          },
+          {
+            "sentence": "Water (2) ...... at a lower temperature at high altitudes than it does at sea level.",
+            "gaps": [
+              {
+                "num": 2,
+                "options": [
+                  "A is boiling",
+                  "B has boiled",
+                  "C boils",
+                  "D has been boiling"
+                ],
+                "answer": "C"
+              }
+            ]
+          },
+          {
+            "sentence": "The charity (3) ...... over fifty thousand pounds already this year.",
+            "gaps": [
+              {
+                "num": 3,
+                "options": [
+                  "A raised",
+                  "B raises",
+                  "C is raising",
+                  "D has raised"
+                ],
+                "answer": "D"
+              }
+            ]
+          },
+          {
+            "sentence": "I'm worried — the wind (4) ...... stronger. The forecast mentioned a possible storm.",
+            "gaps": [
+              {
+                "num": 4,
+                "options": [
+                  "A gets",
+                  "B got",
+                  "C is getting",
+                  "D has got"
+                ],
+                "answer": "C"
+              }
+            ]
+          }
+        ],
+        "interaction": {
+          "formatType": "mc_4_option",
+          "passageScreenMode": "all_gaps_single_screen",
+          "gapPillStyle": "numbered_slot"
+        }
+      }
+    ]
+  }
+}

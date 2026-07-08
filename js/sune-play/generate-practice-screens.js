@@ -109,6 +109,139 @@
     });
   }
 
+  var MC_OPTION_LETTER_RE = /^([A-D])\s*(.*)$/i;
+
+  function normalizeMcOption(opt) {
+    if (!opt) return { letter: '', text: '' };
+    if (typeof opt === 'object' && opt.letter != null) {
+      return {
+        letter: String(opt.letter).trim().toUpperCase(),
+        text: String(opt.text || '').trim()
+      };
+    }
+    var raw = String(opt).trim();
+    var match = raw.match(MC_OPTION_LETTER_RE);
+    if (match) {
+      return { letter: match[1].toUpperCase(), text: match[2].trim() };
+    }
+    return { letter: '', text: raw };
+  }
+
+  function normalizeMcOptions(options) {
+    return (options || []).map(normalizeMcOption).filter(function(opt) {
+      return opt.letter || opt.text;
+    });
+  }
+
+  function shuffleMcOptionsPayload(payload) {
+    if (!payload || !payload.options || payload.options.length < 2) return payload;
+    return Object.assign({}, payload, {
+      options: shuffleCopy(payload.options)
+    });
+  }
+
+  function splitMcPrompt(prompt) {
+    var text = String(prompt || '');
+    var match = text.match(/^(.*?)(?:\.{3,}|…{2,}|_{3,})(.*)$/);
+    if (!match) return { before: text, after: '' };
+    return { before: match[1].trim(), after: (match[2] || '').trim() };
+  }
+
+  function collectMcPassageGaps(exercise) {
+    var gaps = [];
+    var gapMap = {};
+
+    if (exercise.gaps && exercise.gaps.length) {
+      exercise.gaps.forEach(function(gap) {
+        gapMap[gap.gapNumber || gap.num] = gap;
+      });
+    }
+
+    (exercise.questions || []).forEach(function(q) {
+      if (q.gaps && q.gaps.length) {
+        q.gaps.forEach(function(gap) {
+          gapMap[gap.num || gap.gapNumber] = gap;
+        });
+        return;
+      }
+      if (q.options && q.options.length) {
+        var numMatch = String(q.sentence || '').match(/\((\d+)\)/);
+        var gapNumber = numMatch ? parseInt(numMatch[1], 10) : gaps.length + 1;
+        gapMap[gapNumber] = {
+          gapNumber: gapNumber,
+          options: q.options,
+          answer: q.answer
+        };
+      }
+    });
+
+    Object.keys(gapMap).sort(function(a, b) {
+      return parseInt(a, 10) - parseInt(b, 10);
+    }).forEach(function(key) {
+      var gap = gapMap[key];
+      var gapNumber = parseInt(gap.gapNumber || gap.num || key, 10);
+      gaps.push({
+        gapId: 'gap' + gapNumber,
+        gapNumber: gapNumber,
+        options: normalizeMcOptions(gap.options || []),
+        answer: String(gap.answer || '').trim().toUpperCase()
+      });
+    });
+
+    return gaps;
+  }
+
+  function buildMcPassageText(exercise, gaps) {
+    if (exercise.passage) return exercise.passage;
+
+    var questions = exercise.questions || [];
+    if (!questions.length) return '';
+
+    if (exercise.interaction && exercise.interaction.continuous) {
+      return questions.map(function(q) { return q.sentence || ''; }).join('\n\n');
+    }
+
+    return questions.map(function(q, idx) {
+      var sentence = q.sentence || '';
+      if (!/\(\d+\)/.test(sentence) && gaps[idx]) {
+        return sentence.replace(/(?:\.{3,}|…{2,}|_{3,})/, '(' + gaps[idx].gapNumber + ') ......');
+      }
+      return sentence;
+    }).join('\n\n');
+  }
+
+  function buildMc4OptionStandalonePayload(item, exercise) {
+    var prompt = item.prompt || item.sentence || '';
+    var parts = splitMcPrompt(prompt);
+    var options = normalizeMcOptions(item.options || []);
+    var answerLetter = String(item.answer || '').trim().toUpperCase();
+    var answerOpt = options.find(function(opt) { return opt.letter === answerLetter; });
+    return shuffleMcOptionsPayload({
+      displayMode: 'standalone',
+      prompt: prompt,
+      sentenceBefore: item.sentenceBefore != null ? item.sentenceBefore : parts.before,
+      sentenceAfter: item.sentenceAfter != null ? item.sentenceAfter : parts.after,
+      options: options,
+      answer: answerLetter,
+      answerText: item.answerText || (answerOpt && answerOpt.text) || '',
+      completedSentence: item.completedSentence || '',
+      explanation: item.explanation || '',
+      instruction: exercise.studentInstruction || exercise.instructions || ''
+    });
+  }
+
+  function buildMc4OptionPassagePayload(exercise) {
+    var gaps = collectMcPassageGaps(exercise);
+    return {
+      displayMode: 'passage',
+      passage: buildMcPassageText(exercise, gaps),
+      gaps: gaps,
+      explanation: exercise.explanation || '',
+      instruction: exercise.studentInstruction || exercise.instructions || '',
+      continuous: !!(exercise.interaction && exercise.interaction.continuous)
+    };
+  }
+
   function buildScreenId(nodeId, exerciseId, itemId, formatType) {
     return [nodeId, exerciseId, itemId, formatType].filter(Boolean).join('__');
   }
@@ -294,6 +427,9 @@
           instruction: exercise.instructions || ''
         };
 
+      case 'mc_4_option':
+        return buildMc4OptionStandalonePayload(item, exercise);
+
       default:
         warn('Unknown formatType: ' + formatType);
         return { raw: item };
@@ -397,6 +533,22 @@
         return;
       }
 
+      if (rule.screenMode === 'all_gaps_single_screen') {
+        var mcFormat = rule.formatType || 'mc_4_option';
+        var mcPayload = buildMc4OptionPassagePayload(exercise);
+        var gapCount = (mcPayload.gaps || []).length || 1;
+        var mcScreenId = buildScreenId(nodeId, exerciseId, null, mcFormat);
+        screens.push(buildScreen(unit, node, mcFormat, mcPayload, {
+          screenId: mcScreenId,
+          itemId: exerciseId,
+          sourceExerciseId: exerciseId,
+          fallbackFormatType: rule.fallbackFormatType,
+          formatTypeOverride: mcFormat,
+          maxLifeLossPerScreen: rule.maxLifeLossPerScreen != null ? rule.maxLifeLossPerScreen : gapCount
+        }));
+        return;
+      }
+
       (rule.sourceItemIds || []).forEach(function(itemId) {
         var item = findItem(exercise, itemId);
         if (!item) {
@@ -424,6 +576,8 @@
   window.SunePlayScreens = {
     generatePracticeScreens: generatePracticeScreens,
     getExerciseBank: getExerciseBank,
-    normalizeFormatType: normalizeFormatType
+    normalizeFormatType: normalizeFormatType,
+    normalizeMcOptions: normalizeMcOptions,
+    buildMc4OptionPassagePayload: buildMc4OptionPassagePayload
   };
 })();

@@ -671,6 +671,11 @@
         return p.instruction || p.prompt || 'Sort the verbs into groups.';
       case 'meaning_contrast':
         return p.instruction || p.prompt || 'Choose the option that best fits the meaning.';
+      case 'mc_4_option':
+        if (p.displayMode === 'passage') {
+          return p.instruction || 'Tap each numbered gap and choose A, B, C or D.';
+        }
+        return p.instruction || 'Choose the correct answer: A, B, C or D.';
       default:
         return p.instruction || '';
     }
@@ -703,6 +708,9 @@
         return p.passage || p.instruction || '';
       case 'stative_sorting':
         return p.instruction || 'Sort the verbs into groups.';
+      case 'mc_4_option':
+        if (p.displayMode === 'passage') return p.passage || p.instruction || '';
+        return ((p.sentenceBefore || '') + ' ___ ' + (p.sentenceAfter || '')).replace(/\s+/g, ' ').trim();
       default:
         return p.instruction || p.sentence || '';
     }
@@ -710,22 +718,31 @@
 
   function getScreenCorrectAnswer(screen) {
     var p = (screen && screen.payload) || {};
+    if (screen && screen.formatType === 'mc_4_option' && p.displayMode === 'passage' && p.gaps && p.gaps.length) {
+      return p.gaps.map(function(gap) { return gap.answer; }).join(' / ');
+    }
     if (p.answer) return p.answer;
     if (p.acceptedAnswers && p.acceptedAnswers.length) return p.acceptedAnswers[0];
     return '';
+  }
+
+  function applyLifeLoss(amount, screen) {
+    if (!lessonState || !lessonState.hearts || amount <= 0) return 0;
+    var lostAmount = lessonState.hearts.loseLife(amount, {
+      screenId: screen && screen.screenId,
+      itemId: screen && screen.itemId,
+      maxLifeLossPerScreen: screen && screen.maxLifeLossPerScreen
+    });
+    if (lostAmount) lessonState.sessionLivesLost += lostAmount;
+    return lostAmount;
   }
 
   function handleHuntWrongTap() {
     if (!lessonState || lessonState.awaitingContinue || !lessonState.hearts) return;
     if (lessonState.hearts.isGameOver) return;
     var screen = lessonState.currentScreen;
-    var lost = lessonState.hearts.loseLife(1, {
-      screenId: screen && screen.screenId,
-      itemId: screen && screen.itemId,
-      maxLifeLossPerScreen: screen && screen.maxLifeLossPerScreen
-    });
-    if (lost) lessonState.sessionLivesLost += 1;
-    if (window.AudioUtils) AudioUtils.playFailureSound();
+    var lostAmount = applyLifeLoss(1, screen);
+    if (lostAmount && window.AudioUtils) AudioUtils.playFailureSound();
     updateSessionHeader();
   }
 
@@ -749,12 +766,7 @@
     screenRoot.classList.add('sp-screen--locked');
     setScreenInputsLocked(true);
 
-    var lost = lessonState.hearts.loseLife(1, {
-      screenId: screen.screenId,
-      itemId: screen.itemId,
-      maxLifeLossPerScreen: screen.maxLifeLossPerScreen
-    });
-    if (lost) lessonState.sessionLivesLost += 1;
+    applyLifeLoss(1, screen);
 
     lessonState.queue.incrementFailure(screen);
     var globalRules = (lessonState.unitData.practiceConfig && lessonState.unitData.practiceConfig.globalRules) || {};
@@ -839,12 +851,7 @@
       lessonState.queue.removeCompletedItem(screen);
       lessonState.sessionCorrect++;
     } else if (!result.correct && result.lifeLoss > 0) {
-      var lostOnWrong = lessonState.hearts.loseLife(result.lifeLoss, {
-        screenId: screen.screenId,
-        itemId: screen.itemId,
-        maxLifeLossPerScreen: screen.maxLifeLossPerScreen
-      });
-      if (lostOnWrong) lessonState.sessionLivesLost += result.lifeLoss;
+      applyLifeLoss(result.lifeLoss, screen);
     }
 
     lessonState._lastHuntResult = result;
@@ -863,12 +870,7 @@
 
       if (!result.correct) {
         if (result.lifeLoss > 0) {
-          var lost = lessonState.hearts.loseLife(result.lifeLoss, {
-            screenId: screen.screenId,
-            itemId: screen.itemId,
-            maxLifeLossPerScreen: screen.maxLifeLossPerScreen
-          });
-          if (lost) lessonState.sessionLivesLost += result.lifeLoss;
+          applyLifeLoss(result.lifeLoss, screen);
         }
         var failCount = lessonState.queue.incrementFailure(screen);
         var globalRules = (lessonState.unitData.practiceConfig && lessonState.unitData.practiceConfig.globalRules) || {};
@@ -907,12 +909,7 @@
     screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
 
     if (!result.correct && result.lifeLoss > 0) {
-      var lost = lessonState.hearts.loseLife(result.lifeLoss, {
-        screenId: screen.screenId,
-        itemId: screen.itemId,
-        maxLifeLossPerScreen: screen.maxLifeLossPerScreen
-      });
-      if (lost) lessonState.sessionLivesLost += result.lifeLoss;
+      applyLifeLoss(result.lifeLoss, screen);
     }
 
     if (result.correct) {
@@ -1058,12 +1055,7 @@
     }
 
     if (!result.correct && result.lifeLoss > 0) {
-      var lost = lessonState.hearts.loseLife(result.lifeLoss, {
-        screenId: screen.screenId,
-        itemId: screen.itemId,
-        maxLifeLossPerScreen: screen.maxLifeLossPerScreen
-      });
-      if (lost) lessonState.sessionLivesLost += result.lifeLoss;
+      applyLifeLoss(result.lifeLoss, screen);
     }
 
     if (result.correct) {
@@ -1095,12 +1087,7 @@
       screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
 
       if (!result.correct && result.lifeLoss > 0) {
-        var lost = lessonState.hearts.loseLife(result.lifeLoss, {
-          screenId: screen.screenId,
-          itemId: screen.itemId,
-          maxLifeLossPerScreen: screen.maxLifeLossPerScreen
-        });
-        if (lost) lessonState.sessionLivesLost += result.lifeLoss;
+        applyLifeLoss(result.lifeLoss, screen);
       }
 
       if (result.correct) {

@@ -17,20 +17,26 @@
       screenLifeLoss: {}
     };
 
+    /**
+     * Lose one or more lives, respecting per-screen budget (maxLifeLossPerScreen).
+     * @returns {number} Actual lives lost (0 if capped or game already over).
+     */
     function loseLife(amount, meta) {
       meta = meta || {};
       amount = amount || 1;
+      if (amount <= 0 || state.currentLives <= 0) return 0;
+
       var screenId = meta.screenId || 'unknown';
       var itemId = meta.itemId || screenId;
       var maxLoss = meta.maxLifeLossPerScreen;
 
       if (maxLoss != null) {
         var alreadyLost = state.screenLifeLoss[screenId] || 0;
-        if (alreadyLost >= maxLoss) return false;
+        if (alreadyLost >= maxLoss) return 0;
         amount = Math.min(amount, maxLoss - alreadyLost);
       }
 
-      if (amount <= 0) return false;
+      if (amount <= 0) return 0;
 
       state.screenLifeLoss[screenId] = (state.screenLifeLoss[screenId] || 0) + amount;
       state.mistakesCount += amount;
@@ -38,7 +44,13 @@
       state.currentLives = Math.max(0, state.currentLives - amount);
 
       if (state.currentLives <= 0) onGameOver();
-      return true;
+      return amount;
+    }
+
+    function getRemainingLifeLossBudget(screenId, maxLifeLossPerScreen) {
+      if (maxLifeLossPerScreen == null) return null;
+      var alreadyLost = state.screenLifeLoss[screenId] || 0;
+      return Math.max(0, maxLifeLossPerScreen - alreadyLost);
     }
 
     function resetLives(newMax) {
@@ -65,7 +77,8 @@
       get screenLifeLoss() { return Object.assign({}, state.screenLifeLoss); },
       loseLife: loseLife,
       resetLives: resetLives,
-      getScreenLifeLoss: getScreenLifeLoss
+      getScreenLifeLoss: getScreenLifeLoss,
+      getRemainingLifeLossBudget: getRemainingLifeLossBudget
     };
   }
 
