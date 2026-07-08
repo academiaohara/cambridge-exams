@@ -21,7 +21,7 @@
   }
 
   function isSunePlayUnit(data) {
-    if (!data || data.type !== 'grammar') return false;
+    if (!data || (data.type !== 'grammar' && data.type !== 'vocabulary')) return false;
     var schema = String(data.schemaVersion || '');
     var style = String(data.lessonStyle || '');
     if (schema.indexOf('sune-english-unit-v2') === 0) return true;
@@ -37,8 +37,8 @@
   function loadProgress(unitId) {
     try {
       var raw = localStorage.getItem(getProgressKey(unitId));
-      return raw ? JSON.parse(raw) : { completedNodes: {}, theoryCompleted: false };
-    } catch (e) { return { completedNodes: {}, theoryCompleted: false }; }
+      return raw ? JSON.parse(raw) : { completedNodes: {}, completedExercises: {}, theoryCompleted: false };
+    } catch (e) { return { completedNodes: {}, completedExercises: {}, theoryCompleted: false }; }
   }
 
   function saveProgress(unitId, progress) {
@@ -188,11 +188,12 @@
     }
     if (!opts.skipTheoryGate && theoryRequiredAndIncomplete()) {
       lessonState.pendingNodeId = targetNodeId;
+      lessonState.pendingExerciseId = opts.exerciseId || null;
       lessonState.phase = 'theory';
       renderPhase();
       return;
     }
-    startPracticeSession(targetNodeId);
+    startPracticeSession(targetNodeId, { exerciseId: opts.exerciseId || null });
   }
 
   function advanceAfterNode() {
@@ -274,8 +275,10 @@
     saveProgress(lessonState.unitId, lessonState.progress);
     if (lessonState.pendingNodeId) {
       var pendingNode = lessonState.pendingNodeId;
+      var pendingExercise = lessonState.pendingExerciseId || null;
       lessonState.pendingNodeId = null;
-      startPracticeSession(pendingNode);
+      lessonState.pendingExerciseId = null;
+      startPracticeSession(pendingNode, { exerciseId: pendingExercise });
       return;
     } else if (lessonState._returnPhase) {
       lessonState.phase = lessonState._returnPhase;
@@ -393,13 +396,21 @@
 
   // ─── Session ─────────────────────────────────────────────────────────
 
-  function startPracticeSession(nodeId) {
+  function startPracticeSession(nodeId, opts) {
+    opts = opts || {};
     var unit = lessonState.unitData;
 
     var node = (unit.practiceNodes || []).find(function(n) { return n.nodeId === nodeId; });
     if (!node) return;
 
     var screenList = screens.generatePracticeScreens(unit, nodeId);
+    if (opts.exerciseId) {
+      screenList = screenList.filter(function(s) { return s.sourceExerciseId === opts.exerciseId; });
+      lessonState.singleExerciseId = opts.exerciseId;
+    } else {
+      lessonState.singleExerciseId = null;
+    }
+    if (!screenList.length) return;
     var globalRules = (unit.practiceConfig && unit.practiceConfig.globalRules) || {};
     var sessionTotal = screenList.length;
     screenList.forEach(function(s) {
@@ -1174,6 +1185,9 @@
     var pass = node.passCondition || {};
     var minCorrect = pass.minimumCorrectScreens || 0;
     var correct = lessonState.sessionCorrect;
+    if (lessonState.singleExerciseId) {
+      minCorrect = Math.max(1, Math.ceil(lessonState.sessionTotal * 0.7));
+    }
     var passed = correct >= minCorrect && (!lessonState.hearts.isGameOver || pass.allowFinishWithZeroLives);
 
     var perfect = lessonState.hearts.mistakesCount === 0;
@@ -1190,7 +1204,12 @@
     if (lessonState.hearts.isGameOver) {
       lessonState.phase = 'failed';
     } else if (passed) {
-      lessonState.progress.completedNodes[node.nodeId] = true;
+      if (lessonState.singleExerciseId) {
+        if (!lessonState.progress.completedExercises) lessonState.progress.completedExercises = {};
+        lessonState.progress.completedExercises[lessonState.singleExerciseId] = true;
+      } else {
+        lessonState.progress.completedNodes[node.nodeId] = true;
+      }
       saveProgress(lessonState.unitId, lessonState.progress);
       lessonState.phase = 'complete';
     } else {
@@ -1209,7 +1228,9 @@
     var retry = mount.querySelector('[data-action="retry-node"]');
     if (retry) {
       retry.addEventListener('click', function() {
-        startPracticeSession(lessonState.activeNode.nodeId);
+        startPracticeSession(lessonState.activeNode.nodeId, {
+          exerciseId: lessonState.singleExerciseId || null
+        });
       });
     }
     var backStage = mount.querySelector('[data-action="back-to-stage"]');
@@ -1231,10 +1252,14 @@
     var sectionIdx;
     if (lessonState.phase === 'theory') {
       sectionIdx = 'theory:' + (lessonState.theoryCardIdx || 0);
+    } else if (lessonState.phase === 'session' && lessonState.singleExerciseId) {
+      sectionIdx = 'exercise:' + lessonState.singleExerciseId;
     } else if (lessonState.phase === 'session' && lessonState.activeNode) {
       sectionIdx = 'node:' + lessonState.activeNode.nodeId;
     } else if (lessonState.activeNode) {
-      sectionIdx = 'node:' + lessonState.activeNode.nodeId;
+      sectionIdx = lessonState.singleExerciseId
+        ? ('exercise:' + lessonState.singleExerciseId)
+        : ('node:' + lessonState.activeNode.nodeId);
     } else {
       sectionIdx = lessonState.theoryCardIdx || 0;
     }
@@ -1264,7 +1289,8 @@
       phase: 'theory',
       theoryCardIdx: 0,
       theoryOnly: opts.startSection === 'theory',
-      pendingNodeId: opts.startNodeId || null
+      pendingNodeId: opts.startNodeId || null,
+      pendingExerciseId: opts.startExerciseId || null
     };
 
     if (opts.startSection === 'theory') {
@@ -1276,7 +1302,10 @@
     }
 
     if (opts.startSection === 'session' && opts.startNodeId) {
-      enterPractice(opts.startNodeId, { skipTheoryGate: true });
+      enterPractice(opts.startNodeId, {
+        skipTheoryGate: true,
+        exerciseId: opts.startExerciseId || null
+      });
       return;
     }
 

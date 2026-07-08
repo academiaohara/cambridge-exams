@@ -703,7 +703,8 @@
 
       var exercises = metaInfo.exercises || [];
       var hasSunePlayNodes = exercises.some(function(ex) {
-        return typeof ex.sectionIdx === 'string' && ex.sectionIdx.indexOf('node:') === 0;
+        return typeof ex.sectionIdx === 'string' &&
+          (ex.sectionIdx.indexOf('node:') === 0 || ex.sectionIdx.indexOf('exercise:') === 0);
       });
 
       if (metaInfo.sunePlay || hasSunePlayNodes) {
@@ -713,6 +714,15 @@
           if (!spProg.completedNodes) spProg.completedNodes = {};
           var spChanged = false;
           exercises.forEach(function(ex) {
+            if (typeof ex.sectionIdx === 'string' && ex.sectionIdx.indexOf('exercise:') === 0) {
+              var exerciseId = ex.sectionIdx.slice(9);
+              if (!spProg.completedExercises) spProg.completedExercises = {};
+              if (exerciseId && !spProg.completedExercises[exerciseId]) {
+                spProg.completedExercises[exerciseId] = true;
+                spChanged = true;
+              }
+              return;
+            }
             var nodeId = ex.nodeId ||
               (typeof ex.sectionIdx === 'string' && ex.sectionIdx.indexOf('node:') === 0
                 ? ex.sectionIdx.slice(5)
@@ -1294,6 +1304,13 @@
     _isCourseExercisePassed: function(level, unitId, sectionIdx, itemType, progress) {
       if (itemType === 'review' || itemType === 'progress_test') {
         return !!(progress && progress[unitId]);
+      }
+      if (typeof sectionIdx === 'string' && sectionIdx.indexOf('exercise:') === 0) {
+        var exerciseId = sectionIdx.slice(9);
+        try {
+          var spExProg = JSON.parse(localStorage.getItem('sune_play_progress_' + unitId) || '{}');
+          return !!(spExProg.completedExercises && spExProg.completedExercises[exerciseId]);
+        } catch (e) { return false; }
       }
       if (typeof sectionIdx === 'string' && sectionIdx.indexOf('node:') === 0) {
         var nodeId = sectionIdx.slice(5);
@@ -2157,7 +2174,7 @@
         if (_idxItem) {
           if (_idxItem.block != null) unitData.block = _idxItem.block;
           if (_idxItem.title && (unitData.type === 'review' || unitData.type === 'progress_test')) {
-            unitData.unitTitle = self._sanitizeCourseDisplayTitle(unitData.unitTitle || _idxItem.title);
+            unitData.unitTitle = BentoGrid._sanitizeCourseDisplayTitle(unitData.unitTitle || _idxItem.title);
           }
         }
       }
@@ -2210,7 +2227,7 @@
             ? '<button type="button" class="subpage-back-btn" onclick="' + backFn + '" title="' + backLabel + '">' + _mi('arrow_back') + '<span>' + backLabel + '</span></button>'
             : '') +
           '<div class="subpage-header-unit-core">' +
-            '<div class="subpage-title">' + _mi('auto_stories') + ' ' + self._sanitizeCourseDisplayTitle(unitData.unitTitle || '') + '</div>' +
+            '<div class="subpage-title">' + _mi('auto_stories') + ' ' + BentoGrid._sanitizeCourseDisplayTitle(unitData.unitTitle || '') + '</div>' +
             '<div class="subpage-subtitle">' + level + ' Advanced</div>' +
           '</div>' +
           resetUnitBtn +
@@ -2269,6 +2286,7 @@
       if (BentoGrid._isSunePlayUnit(unitData)) {
         var spStart = 'nodes';
         var startNodeId = null;
+        var startExerciseId = null;
         var spTheoryCardIdx = 0;
         if (startSection === 'exercises') {
           spStart = 'nodes';
@@ -2282,6 +2300,10 @@
         } else if (typeof startSection === 'number') {
           spStart = 'theory';
           spTheoryCardIdx = startSection;
+        } else if (typeof startSection === 'string' && startSection.indexOf('exercise:') === 0) {
+          spStart = 'session';
+          startExerciseId = startSection.slice(9);
+          startNodeId = BentoGrid._resolveSunePlayNodeForExercise(unitData, startExerciseId);
         } else if (typeof startSection === 'string' && startSection.indexOf('node:') === 0) {
           spStart = 'session';
           startNodeId = startSection.slice(5);
@@ -2292,6 +2314,7 @@
           level: level,
           startSection: spStart,
           startNodeId: startNodeId,
+          startExerciseId: startExerciseId,
           theoryCardIdx: spTheoryCardIdx,
           backFn: backFn,
           mount: document.getElementById('sp-lesson-mount')
@@ -2323,11 +2346,24 @@
       history.pushState(cuState, '', Router.stateToPath(cuState));
     },
 
+    _resolveSunePlayNodeForExercise: function(unitData, exerciseId) {
+      if (!unitData || !exerciseId) return null;
+      var nodes = unitData.practiceNodes || [];
+      for (var i = 0; i < nodes.length; i++) {
+        var node = nodes[i];
+        var rules = node.screenGeneration || [];
+        for (var j = 0; j < rules.length; j++) {
+          if (rules[j].sourceExerciseId === exerciseId) return node.nodeId;
+        }
+      }
+      return nodes.length ? nodes[0].nodeId : null;
+    },
+
     _isSunePlayUnit: function(data) {
       if (typeof SunePlayLesson !== 'undefined' && SunePlayLesson.isSunePlayUnit) {
         return SunePlayLesson.isSunePlayUnit(data);
       }
-      if (!data || data.type !== 'grammar') return false;
+      if (!data || (data.type !== 'grammar' && data.type !== 'vocabulary')) return false;
       var schema = String(data.schemaVersion || '');
       var style = String(data.lessonStyle || '');
       if (schema.indexOf('sune-english-unit-v2') === 0) return true;
@@ -3027,6 +3063,9 @@
     },
 
     _renderVocabUnit: function(data) {
+      if (BentoGrid._isSunePlayUnit(data)) {
+        return '<div id="sp-lesson-mount" class="sp-lesson-mount course-unit-content"></div>';
+      }
       // B2 vocabulary units use sections as an array (same format as grammar units)
       if (Array.isArray(data.sections)) {
         return BentoGrid._renderGrammarUnit(data);
@@ -6348,18 +6387,36 @@
       if (BentoGrid._isSunePlayUnit(unitData)) {
         var theoryCards = (unitData.theory && unitData.theory.cards) || [];
         var practiceNodes = unitData.practiceNodes || [];
-        return {
-          sunePlay: true,
-          theory: theoryCards.length
-            ? theoryCards.map(function(_, idx) { return { label: String(idx + 1), sectionIdx: idx }; })
-            : [{ label: '1', sectionIdx: 0 }],
-          exercises: practiceNodes.map(function(node, idx) {
+        var contentExercises = (unitData.contentBanks && unitData.contentBanks.exercises) || [];
+        var exercises;
+
+        if (contentExercises.length) {
+          exercises = contentExercises.map(function(ex, idx) {
+            var label = ex.legacyKey || BentoGrid._getCourseExerciseLabel(idx);
+            var nodeId = BentoGrid._resolveSunePlayNodeForExercise(unitData, ex.id);
+            return {
+              label: label,
+              sectionIdx: 'exercise:' + ex.id,
+              exerciseId: ex.id,
+              nodeId: nodeId
+            };
+          });
+        } else {
+          exercises = practiceNodes.map(function(node, idx) {
             return {
               label: node.shortTitle || BentoGrid._getCourseExerciseLabel(idx),
               sectionIdx: 'node:' + node.nodeId,
               nodeId: node.nodeId
             };
-          })
+          });
+        }
+
+        return {
+          sunePlay: true,
+          theory: theoryCards.length
+            ? theoryCards.map(function(_, idx) { return { label: String(idx + 1), sectionIdx: idx }; })
+            : [{ label: '1', sectionIdx: 0 }],
+          exercises: exercises
         };
       }
 
@@ -6505,6 +6562,9 @@
 
     _resolveCourseUnitUrlSection: function(startSection, unitData, sectionStartIdx) {
       if (typeof startSection === 'string' && startSection.indexOf('node:') === 0) {
+        return startSection;
+      }
+      if (typeof startSection === 'string' && startSection.indexOf('exercise:') === 0) {
         return startSection;
       }
       if (startSection === 'exercises') return 'exercises';
