@@ -271,6 +271,7 @@
       var isStageListView = activeSection === 'learning' && skipLevelPicker && !activeEtapaKey;
       var isLearningStageView = activeSection === 'learning' && !!activeEtapaKey;
       var isSectionListView = isStageListView || isVocabListView;
+      var isMobileHubView = isLearningStageView || isSectionListView;
 
       if (activeLevel && activeSection) {
         var secMeta = SECTION_META[activeSection] || SECTION_META.learning;
@@ -318,6 +319,7 @@
             : '<div class="dashboard-left-sidebar">' + sidebars.left + '</div>') +
           '<div class="dashboard-center dashboard-center--crossword dashboard-center--course' +
             (isSectionListView ? ' dashboard-center--learning-stages' : '') +
+            (isMobileHubView ? ' dashboard-center--mobile-hub' : '') +
             (isLearningStageView ? ' dashboard-center--learning-stage' : '') +
           '" id="courseDashboardCenter">' +
             mobileTopBarHtml +

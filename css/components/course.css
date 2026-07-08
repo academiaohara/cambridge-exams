@@ -5946,10 +5946,11 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   padding-top: 0;
 }
 
-/* Learning stage map (Stage 1, 2, 3…) — mobile-only layout */
+/* Mobile hub layout — shared by learning stage, vocabulary, tests, etc. */
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
+  .dashboard-center--mobile-hub,
   .dashboard-center--learning-stage {
-    --learning-stage-pad-x: 16px;
+    --mobile-hub-pad-x: 16px;
     --learning-stage-unit-gap: 28px;
     --learning-stage-header-gap: 10px;
     display: flex;
@@ -5960,6 +5961,7 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     padding-bottom: 0 !important;
   }
 
+  .dashboard-center--mobile-hub .mobile-nav-top-bar,
   .dashboard-center--learning-stage .mobile-nav-top-bar {
     flex-shrink: 0;
     position: relative;
@@ -5967,36 +5969,61 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     z-index: auto;
     margin-left: 0;
     margin-right: 0;
+    margin-bottom: 2px;
   }
 
-  .dashboard-center--learning-stage .cw-section-header--learning {
+  .dashboard-center--mobile-hub .cw-section-header,
+  .dashboard-center--learning-stage .cw-section-header {
     flex-shrink: 0;
     position: relative;
     top: auto;
     z-index: 4;
-    margin-left: var(--learning-stage-pad-x);
-    margin-right: var(--learning-stage-pad-x);
+    margin-left: var(--mobile-hub-pad-x);
+    margin-right: var(--mobile-hub-pad-x);
+    margin-top: 0;
     margin-bottom: 0;
+    padding: 12px 14px 14px;
   }
 
+  .dashboard-center--mobile-hub .cw-section-header .cw-section-title,
+  .dashboard-center--learning-stage .cw-section-header .cw-section-title {
+    font-size: 1.25rem;
+  }
+
+  .dashboard-center--mobile-hub .cw-section-header .cw-section-kicker,
+  .dashboard-center--learning-stage .cw-section-header .cw-section-kicker {
+    font-size: 0.68rem;
+    margin-bottom: 1px;
+  }
+
+  .dashboard-center--mobile-hub .cw-page-content,
   .dashboard-center--learning-stage .cw-page-content {
     flex: 1 1 auto;
     min-height: 0;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
-    padding-left: var(--learning-stage-pad-x);
-    padding-right: var(--learning-stage-pad-x);
-    padding-top: 20px;
+    padding-left: var(--mobile-hub-pad-x);
+    padding-right: var(--mobile-hub-pad-x);
+    padding-top: 16px;
     padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
     box-sizing: border-box;
   }
 
+  .dashboard-center--mobile-hub .course-hub-page,
+  .dashboard-center--mobile-hub .tests-hub-page,
   .dashboard-center--learning-stage .course-hub-page {
     padding-left: 0;
     padding-right: 0;
   }
 
+  .dashboard-center--mobile-hub .mobile-bottom-nav--duo,
+  .dashboard-center--learning-stage .mobile-bottom-nav--duo {
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  /* Learning stage map unit blocks */
   .dashboard-center--learning-stage .course-etapa-path {
     gap: 0;
   }
@@ -6068,11 +6095,43 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     transform: scale(1.06);
     box-shadow: 0 4px 0 #e08600;
   }
+
+  .dashboard-center--mobile-hub .tests-mode-bar,
+  .dashboard-center--learning-stage .tests-mode-bar {
+    flex-shrink: 0;
+    margin-left: var(--mobile-hub-pad-x);
+    margin-right: var(--mobile-hub-pad-x);
+    margin-top: 10px;
+  }
+
+  .dashboard-center--mobile-hub .fe-section--merged-path.fe-section--course-vocab {
+    display: contents;
+  }
+
+  .dashboard-center--mobile-hub .fe-section--course-vocab .cw-page-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .dashboard-center--mobile-hub .fe-section--course-vocab .fe-map-outer.fe-map-single-page.fe-map-merged {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  /* Vocabulary / stage list cards */
+  .dashboard-center--mobile-hub .course-etapas-page {
+    padding-top: 0;
+    gap: 14px;
+  }
 }
 
-.dashboard-center--learning-stages .cw-section-header--duo {
-  margin-left: 0;
-  margin-right: 0;
+@media (min-width: 769px) {
+  .dashboard-center--learning-stages .cw-section-header--duo {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .cw-section-header--duo.cw-section-header--level,
@@ -6082,6 +6141,36 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 
 .cw-section-header--learning.cw-section-header--duo {
   background: var(--cw-header-color, #3b82f6);
+}
+
+.cw-section-header--vocab.cw-section-header--duo {
+  background: var(--cw-header-color, #10b981);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--cw-header-color, #10b981) 72%, #000), 0 8px 24px color-mix(in srgb, var(--cw-header-color, #10b981) 22%, transparent);
+}
+
+.cw-section-info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-left: auto;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.cw-section-info-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.cw-section-info-btn .material-symbols-outlined {
+  font-size: 1.2rem;
 }
 
 .cw-section-header--duo .cw-section-back {

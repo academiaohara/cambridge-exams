@@ -109,51 +109,65 @@
 
       var headerKicker = 'TESTS';
       var headerTitle = 'Choose a Level';
-      var headerClass = ' cw-section-header--picker cw-section-header--tests';
+      var headerClass = ' cw-section-header--picker cw-section-header--tests cw-section-header--duo';
       var headerStyle = ' style="--cw-header-color:#58cc02"';
+      var backOnclick = '';
 
       if (isRandomTest) {
         var randomMeta = LEVEL_META[activeLevel || level] || LEVEL_META['B2'];
         headerKicker = (activeLevel || level).toUpperCase() + ' · RANDOM TEST';
         headerTitle = 'Random Mix';
-        headerClass = ' cw-section-header--level cw-section-header--tests';
+        headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + randomMeta.headerColor + '"';
+        backOnclick = 'BentoGrid.openTests(\'' + (activeLevel || level) + '\')';
       } else if (activeExamId) {
         var examMatch = exams.find(function(e) { return e.id === activeExamId; });
         var examNum = examMatch ? examMatch.number : activeExamId.replace('Test', '');
         var examMeta = LEVEL_META[activeLevel || level] || LEVEL_META['B2'];
         headerKicker = (activeLevel || level).toUpperCase() + ' · TEST ' + examNum;
         headerTitle = 'Choose a Section';
-        headerClass = ' cw-section-header--level cw-section-header--tests';
+        headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + examMeta.headerColor + '"';
+        backOnclick = 'BentoGrid.openTests(\'' + (activeLevel || level) + '\')';
       } else if (activeLevel) {
         var meta = LEVEL_META[activeLevel] || LEVEL_META['B2'];
         headerKicker = activeLevel.toUpperCase() + ' · ' + exams.filter(function(e) { return e.status === 'available'; }).length + ' TESTS';
         headerTitle = meta.difficulty;
-        headerClass = ' cw-section-header--level cw-section-header--tests';
+        headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + meta.headerColor + '"';
+        backOnclick = 'BentoGrid.openTests()';
       }
+
+      var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
+        ? MainNav.buildMobileTopBarHtml() : '';
+      var mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
+        ? MainNav.buildMobileBottomNavHtml('tests') : '';
 
       var loadingStart = (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.markShown)
         ? AppLoadingScreen.markShown()
         : Date.now();
 
       content.innerHTML =
-        '<div class="dashboard-layout">' +
+        '<div class="dashboard-layout dashboard-layout--crossword-scroll">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
-          '<div class="dashboard-center">' +
-            '<div class="fe-section tests-hub-section">' +
-              '<div class="cw-section-header' + headerClass + '"' + headerStyle + '>' +
-                '<div class="cw-section-header-text">' +
-                  '<div class="cw-section-kicker">' + _escape(headerKicker) + '</div>' +
-                  '<div class="cw-section-title">' + _escape(headerTitle) + '</div>' +
-                '</div>' +
-                BentoGrid._buildTestsModeToggleHtml() +
+          '<div class="dashboard-center dashboard-center--crossword dashboard-center--mobile-hub dashboard-center--tests-hub">' +
+            mobileTopBarHtml +
+            '<div class="cw-section-header' + headerClass + '"' + headerStyle + '>' +
+              (backOnclick
+                ? '<button type="button" class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '</button>'
+                : '') +
+              '<div class="cw-section-header-text">' +
+                '<div class="cw-section-kicker">' + _escape(headerKicker) + '</div>' +
+                '<div class="cw-section-title">' + _escape(headerTitle) + '</div>' +
               '</div>' +
+            '</div>' +
+            BentoGrid._buildTestsModeBarHtml() +
+            '<div class="cw-page-content" id="testsCenterScroll">' +
               '<div class="tests-hub-page" id="testsHubPage">' + BentoGrid._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
+            mobileNavHtml +
           '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent)
@@ -285,11 +299,11 @@
       if (overlay) overlay.remove();
     },
 
-    _buildTestsModeToggleHtml: function() {
+    _buildTestsModeBarHtml: function() {
       var mode = AppState.currentMode || 'practice';
       var practiceActive = mode !== 'exam' ? ' active' : '';
       var examActive = mode === 'exam' ? ' active' : '';
-      return '<div class="tests-mode-toggle-wrap">' +
+      return '<div class="tests-mode-bar">' +
         '<div class="tests-mode-toggle" role="group" aria-label="Test attempt mode">' +
           '<button type="button" class="tests-mode-toggle-btn tests-mode-toggle-btn--practice' + practiceActive + '" data-mode="practice" onclick="BentoGrid.setTestsMode(\'practice\')">' +
             _mi('edit_note') + '<span>Practice</span>' +
@@ -302,6 +316,10 @@
           _mi('help') +
         '</button>' +
       '</div>';
+    },
+
+    _buildTestsModeToggleHtml: function() {
+      return BentoGrid._buildTestsModeBarHtml();
     },
 
     _buildTestsLevelCardsHtml: function() {
@@ -684,6 +702,14 @@
       requestAnimationFrame(function() {
         var current = document.querySelector('.tests-path-map .cw-path-cell--current');
         if (!current) return;
+        var scrollRoot = document.getElementById('testsCenterScroll');
+        if (scrollRoot && scrollRoot.scrollHeight > scrollRoot.clientHeight) {
+          var rootRect = scrollRoot.getBoundingClientRect();
+          var cellRect = current.getBoundingClientRect();
+          var targetTop = scrollRoot.scrollTop + (cellRect.top - rootRect.top) - (rootRect.height / 2) + (cellRect.height / 2);
+          scrollRoot.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+          return;
+        }
         var rect = current.getBoundingClientRect();
         var targetY = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2);
         window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });

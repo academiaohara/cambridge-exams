@@ -3284,29 +3284,29 @@
 
 /* Tests hub: use wider max-width on tablets/large phones to fill the screen better */
 @media (min-width: 431px) and (max-width: 768px) {
-  .dashboard-center:has(.tests-hub-section) {
+  .dashboard-center--tests-hub {
     max-width: 100%;
   }
 }
 
 /* Mobile subpage header improvements for tests hub */
 @media (max-width: 768px) {
-  .dashboard-center:has(.tests-hub-section) .cw-section-header {
+  .dashboard-center--tests-hub .cw-section-header {
     padding: 12px 14px;
     gap: 8px;
     border-radius: 16px;
   }
 
-  .dashboard-center:has(.tests-hub-section) .cw-section-header-text {
+  .dashboard-center--tests-hub .cw-section-header-text {
     flex: 1;
     min-width: 0;
   }
 
-  .dashboard-center:has(.tests-hub-section) .cw-section-title {
+  .dashboard-center--tests-hub .cw-section-title {
     font-size: 1rem;
   }
 
-  .dashboard-center:has(.tests-hub-section) .cw-section-kicker {
+  .dashboard-center--tests-hub .cw-section-kicker {
     font-size: 0.78rem;
   }
 
