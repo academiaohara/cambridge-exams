@@ -65,6 +65,33 @@
     return row.split(/\s*,\s*/).map(function(part) { return part.trim(); }).filter(Boolean);
   }
 
+  function normalizeCommaRewrite(answer) {
+    if (answer == null) return '';
+    var s = String(answer);
+    s = s.replace(APOSTROPHE_RE, "'");
+    s = s.replace(/\s+/g, ' ').trim();
+    s = s.replace(/\s*,\s*/g, ', ');
+    s = s.replace(/\s+/g, ' ').trim();
+    s = s.replace(/\s*\.\s*$/, '');
+    s = normalizeContractions(s);
+    return s.toLowerCase();
+  }
+
+  function matchesCommaRewrite(given, item) {
+    var normalizedGiven = normalizeCommaRewrite(given);
+    if (!normalizedGiven) return false;
+    var accepted = item.acceptedAnswers;
+    if (accepted && accepted.length) {
+      return accepted.some(function(a) {
+        return normalizeCommaRewrite(a) === normalizedGiven;
+      });
+    }
+    if (item.reconstructedSentence) {
+      return normalizeCommaRewrite(item.reconstructedSentence) === normalizedGiven;
+    }
+    return false;
+  }
+
   function matchesBlanks(givens, item, opts) {
     opts = opts || {};
     var expectedRows = [];
@@ -96,8 +123,10 @@
   window.SunePlayNormalize = {
     normalizeAnswer: normalizeAnswer,
     normalizeAnswerPreserveCase: normalizeAnswerPreserveCase,
+    normalizeCommaRewrite: normalizeCommaRewrite,
     answersMatch: answersMatch,
     matchesAnyAccepted: matchesAnyAccepted,
+    matchesCommaRewrite: matchesCommaRewrite,
     matchesBlanks: matchesBlanks
   };
 })();

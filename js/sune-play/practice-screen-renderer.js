@@ -768,6 +768,7 @@
       case 'column_matching': return renderColumnMatching(screen);
       case 'crossword_clues': return renderCrosswordClues(screen);
       case 'synced_gap_fill': return renderSyncedGapFill(screen);
+      case 'comma_placement': return renderCommaPlacement(screen);
       default:
         return '<p class="sp-unknown">Unsupported format: ' + esc(screen.formatType) + '</p>';
     }
@@ -1545,6 +1546,94 @@
     });
   }
 
+  function renderCommaPlacement(screen) {
+    var p = screen.payload || {};
+    if (p.interactionMode === 'rewrite_sentence') {
+      return '<div class="sp-screen sp-screen--comma-rewrite" data-format="comma_placement" data-comma-mode="rewrite_sentence">' +
+        '<p class="sp-comma-prompt sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + esc(p.sentence || '') + '</p>' +
+        '<textarea class="sp-text-input sp-text-input--large sp-comma-rewrite-input" id="sp-comma-rewrite-input" rows="3" placeholder="Rewrite the sentence with commas where needed" autocomplete="off"></textarea>' +
+      '</div>';
+    }
+
+    var html = '<div class="sp-screen sp-screen--comma-slots" data-format="comma_placement" data-comma-mode="tap_comma_slots">';
+    html += '<div class="sp-comma-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">';
+    (p.tokens || []).forEach(function(token, ti) {
+      html += '<span class="sp-comma-token">' + esc(token.text) + '</span>';
+      if (ti < (p.tokens || []).length - 1) {
+        var allowed = (p.slots || []).some(function(slot) { return slot.slotIndex === ti; });
+        if (allowed) {
+          html += '<button type="button" class="sp-comma-slot" data-slot-index="' + ti + '" aria-pressed="false" aria-label="Comma after word ' + (ti + 1) + '">,</button>';
+        }
+      }
+    });
+    html += '</div></div>';
+    return html;
+  }
+
+  function getCommaSlotSelection(root) {
+    var selected = [];
+    root.querySelectorAll('.sp-comma-slot.sp-comma-slot--selected').forEach(function(slot) {
+      var idx = parseInt(slot.getAttribute('data-slot-index') || '-1', 10);
+      if (idx >= 0) selected.push(idx);
+    });
+    selected.sort(function(a, b) { return a - b; });
+    return selected;
+  }
+
+  function commaIndexSetsMatch(selected, expected) {
+    if (selected.length !== expected.length) return false;
+    for (var i = 0; i < selected.length; i++) {
+      if (selected[i] !== expected[i]) return false;
+    }
+    return true;
+  }
+
+  function markCommaSlotResults(root, payload, selected) {
+    var expected = (payload.commaAfterTokenIndexes || []).slice().sort(function(a, b) { return a - b; });
+    var expectedSet = {};
+    expected.forEach(function(i) { expectedSet[i] = true; });
+    var selectedSet = {};
+    selected.forEach(function(i) { selectedSet[i] = true; });
+    var exactMatch = commaIndexSetsMatch(selected, expected);
+
+    root.querySelectorAll('.sp-comma-slot').forEach(function(slot) {
+      slot.disabled = true;
+      var idx = parseInt(slot.getAttribute('data-slot-index') || '-1', 10);
+      var isSel = !!selectedSet[idx];
+      var isExp = !!expectedSet[idx];
+      slot.classList.remove('sp-comma-slot--correct', 'sp-comma-slot--incorrect', 'sp-comma-slot--reveal');
+      if (exactMatch && isSel) {
+        slot.classList.add('sp-comma-slot--correct');
+      } else if (isSel && !isExp) {
+        slot.classList.add('sp-comma-slot--incorrect');
+      } else if (!isSel && isExp) {
+        slot.classList.add('sp-comma-slot--reveal');
+      }
+    });
+    root.classList.toggle('sp-screen--comma-correct', exactMatch);
+    root.classList.toggle('sp-screen--comma-incorrect', !exactMatch);
+  }
+
+  function bindCommaPlacement(root, screen, onChange) {
+    var payload = screen.payload || {};
+    if (payload.interactionMode === 'rewrite_sentence') {
+      bindSentenceSpeak(root, function() { return payload.sentence || ''; });
+      var rewriteInput = root.querySelector('#sp-comma-rewrite-input');
+      if (rewriteInput) rewriteInput.addEventListener('input', onChange);
+      return;
+    }
+
+    bindSentenceSpeak(root, function() { return payload.sentence || ''; });
+    root.querySelectorAll('.sp-comma-slot').forEach(function(slot) {
+      slot.addEventListener('click', function() {
+        if (root.classList.contains('sp-screen--locked')) return;
+        slot.classList.toggle('sp-comma-slot--selected');
+        slot.setAttribute('aria-pressed', slot.classList.contains('sp-comma-slot--selected') ? 'true' : 'false');
+        onChange();
+      });
+    });
+  }
+
   function buildInlineGapRenderOptions(payload) {
     return {
       gaps: payload.gaps || [],
@@ -2194,6 +2283,10 @@
 
     if (format === 'synced_gap_fill') {
       bindSyncedGapFill(root, screen, onChange);
+    }
+
+    if (format === 'comma_placement') {
+      bindCommaPlacement(root, screen, onChange);
     }
   }
 
@@ -2901,6 +2994,14 @@
       var syncInput = getSyncMasterInput(root);
       return syncInput && !!syncInput.value.trim();
     }
+    if (f === 'comma_placement') {
+      var cpPayload = screen.payload || {};
+      if (cpPayload.interactionMode === 'rewrite_sentence') {
+        var cpRewrite = root.querySelector('#sp-comma-rewrite-input');
+        return cpRewrite && !!cpRewrite.value.trim();
+      }
+      return true;
+    }
     if (f === 'free_text_gap_fill' || f === 'conjugation_gap_fill' || f === 'preselected_verb_gap_fill') {
       return allGapInputsFilled(root);
     }
@@ -3076,6 +3177,37 @@
         result.correct = norm.matchesAnyAccepted(syncValue, p);
         result.lifeLoss = result.correct ? 0 : 1;
         markSyncedGapResults(root, result.correct);
+        break;
+      }
+      case 'comma_placement': {
+        if (p.interactionMode === 'rewrite_sentence') {
+          var cpRewriteInput = root.querySelector('#sp-comma-rewrite-input');
+          var cpRewriteText = cpRewriteInput ? cpRewriteInput.value.trim() : '';
+          result.userAnswer = cpRewriteText;
+          result.correctAnswer = p.reconstructedSentence || ((p.acceptedAnswers && p.acceptedAnswers[0]) || '');
+          result.correct = norm.matchesCommaRewrite(cpRewriteText, p);
+          result.lifeLoss = result.correct ? 0 : 1;
+          if (cpRewriteInput) {
+            cpRewriteInput.readOnly = true;
+            cpRewriteInput.classList.toggle('sp-comma-rewrite-input--correct', result.correct);
+            cpRewriteInput.classList.toggle('sp-comma-rewrite-input--incorrect', !result.correct);
+          }
+        } else {
+          var cpSelected = getCommaSlotSelection(root);
+          var cpExpected = (p.commaAfterTokenIndexes || []).slice().sort(function(a, b) { return a - b; });
+          var cpCorrect = false;
+          if (p.noCommaNeeded) {
+            cpCorrect = cpSelected.length === 0;
+            result.correctAnswer = 'No commas';
+          } else {
+            cpCorrect = commaIndexSetsMatch(cpSelected, cpExpected);
+            result.correctAnswer = cpExpected.join(', ');
+          }
+          result.userAnswer = cpSelected.length ? cpSelected.join(', ') : '(none)';
+          result.correct = cpCorrect;
+          result.lifeLoss = cpCorrect ? 0 : 1;
+          markCommaSlotResults(root, p, cpSelected);
+        }
         break;
       }
       case 'free_text_gap_fill':

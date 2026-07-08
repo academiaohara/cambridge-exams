@@ -686,6 +686,11 @@
         return p.instruction || 'Type one letter in each box to complete the answer.';
       case 'synced_gap_fill':
         return p.instruction || 'Write one word that fits all three sentences.';
+      case 'comma_placement':
+        if (p.interactionMode === 'rewrite_sentence') {
+          return p.instruction || 'Add commas where needed. If no commas are needed, write "No commas".';
+        }
+        return p.instruction || 'Tap the comma slots where commas are needed.';
       default:
         return p.instruction || '';
     }
@@ -731,6 +736,8 @@
         return ((p.direction === 'down' ? 'Down ' : 'Across ') + (p.clueNumber != null ? p.clueNumber : '') + ': ' + (p.clue || '')).trim();
       case 'synced_gap_fill':
         return (p.sentences && p.sentences[0]) || p.instruction || '';
+      case 'comma_placement':
+        return p.sentence || p.instruction || '';
       default:
         return p.instruction || p.sentence || '';
     }
@@ -740,6 +747,13 @@
     var p = (screen && screen.payload) || {};
     if (screen && screen.formatType === 'mc_4_option' && p.displayMode === 'passage' && p.gaps && p.gaps.length) {
       return p.gaps.map(function(gap) { return gap.answer; }).join(' / ');
+    }
+    if (screen && screen.formatType === 'comma_placement') {
+      if (p.interactionMode === 'rewrite_sentence') {
+        return p.reconstructedSentence || ((p.acceptedAnswers && p.acceptedAnswers[0]) || '');
+      }
+      if (p.noCommaNeeded) return 'No commas';
+      return (p.commaAfterTokenIndexes || []).join(', ');
     }
     if (p.answer) return p.answer;
     if (p.acceptedAnswers && p.acceptedAnswers.length) return p.acceptedAnswers[0];
