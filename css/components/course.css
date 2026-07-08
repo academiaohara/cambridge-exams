@@ -6527,6 +6527,18 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   min-width: 0;
 }
 
+.course-etapa-card-main:has(.course-etapa-card-btn--advance) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.course-etapa-card-main-content {
+  flex: 1;
+  min-width: 0;
+}
+
 .course-etapa-card-title-row {
   display: flex;
   align-items: center;
@@ -7213,12 +7225,17 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   }
 
   .course-etapa-card--locked {
-    flex-direction: column;
     align-items: stretch;
   }
 
+  .course-etapa-card-main:has(.course-etapa-card-btn--advance) {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
   .course-etapa-card--locked .course-etapa-card-btn--advance {
-    align-self: flex-end;
+    align-self: center;
+    flex-shrink: 0;
   }
 
   .course-review-accelerator {
