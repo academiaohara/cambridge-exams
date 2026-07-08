@@ -6403,6 +6403,42 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   padding-bottom: 32px;
 }
 
+/* Vocabulary category cards: 3 columns on desktop, 1 on mobile */
+@media (min-width: 769px) {
+  .course-etapas-page[data-section="vocabulary"] {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    max-width: none;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .course-etapas-page[data-section="vocabulary"] .course-etapa-card {
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+    padding: 18px 16px 16px;
+  }
+
+  .course-etapas-page[data-section="vocabulary"] .course-etapa-card-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .course-etapas-page[data-section="vocabulary"] .course-etapa-card-title-row .course-etapa-progress {
+    flex: none;
+    width: 100%;
+    max-width: none;
+  }
+
+  .course-etapas-page[data-section="vocabulary"] .course-etapa-card--done .course-etapa-card-status {
+    align-self: flex-start;
+  }
+}
+
 .course-etapa-card,
 .course-pt-card {
   position: relative;

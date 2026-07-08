@@ -744,10 +744,49 @@
 }
 
 .tests-section-cards-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 14px;
   width: 100%;
+}
+
+@media (min-width: 769px) {
+  .tests-section-cards-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tests-section-cards-grid .tests-section-card {
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+  }
+
+  .tests-section-cards-grid .tests-section-card-art {
+    width: 100%;
+    height: 72px;
+    padding: 0 12px 8px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tests-section-cards-grid .tests-section-card-img {
+    max-height: 64px;
+    width: auto;
+  }
+}
+
+/* Tests level picker: 3 columns on desktop, 1 on mobile */
+@media (min-width: 769px) {
+  .cw-level-cards.tests-level-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+  }
+
+  .cw-level-cards.tests-level-cards .mode-card {
+    height: 100%;
+  }
 }
 
 .tests-section-card {
