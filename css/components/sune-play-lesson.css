@@ -1347,9 +1347,17 @@ button.sp-example-line.sp-speakable {
   text-justify: inter-word;
 }
 
+.sp-passage-para {
+  margin: 0 0 0.85em;
+}
+
+.sp-passage-para:last-child {
+  margin-bottom: 0;
+}
+
 .sp-passage-wordbank-chip--selectable {
   border: 2px solid transparent;
-  cursor: grab;
+  cursor: pointer;
   font-family: 'Nunito', sans-serif;
   transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, transform 0.15s ease;
 }
@@ -1359,20 +1367,15 @@ button.sp-example-line.sp-speakable {
   transform: translateY(-1px);
 }
 
-.sp-passage-wordbank-chip--selectable:active:not(:disabled) {
-  cursor: grabbing;
-}
-
 .sp-passage-wordbank-chip--selectable.sp-passage-wordbank-chip--used,
 .sp-passage-wordbank-chip--selectable:disabled {
-  opacity: 0.45;
+  opacity: 0.5;
   cursor: default;
   background: #e2e8f0;
-  color: #64748b;
-}
-
-.sp-passage-wordbank-chip--selectable.sp-passage-wordbank-chip--dragging {
-  opacity: 0.65;
+  color: #94a3b8;
+  border-color: #cbd5e1;
+  text-decoration: line-through;
+  transform: none;
 }
 
 .sp-passage-gap-wrap {
@@ -1405,13 +1408,14 @@ button.sp-example-line.sp-speakable {
   box-shadow: 0 0 0 2px rgba(28, 176, 246, 0.25);
 }
 
-.sp-passage-gap-wrap--done .sp-passage-gap-num {
+.sp-passage-gap-wrap--done .sp-passage-gap-num,
+.sp-passage-gap--correct .sp-passage-gap-num {
   background: #22c55e;
 }
 
-.sp-passage-gap-wrap--dragover .sp-gap-underline-input {
-  border-bottom-color: var(--sp-duo-blue);
-  background: rgba(28, 176, 246, 0.08);
+.sp-passage-gap-wrap--failed .sp-passage-gap-num,
+.sp-passage-gap--incorrect .sp-passage-gap-num {
+  background: #ef4444;
 }
 
 .sp-gap-underline-input {
@@ -1422,34 +1426,31 @@ button.sp-example-line.sp-speakable {
   border: none;
   border-bottom: 2px solid #94a3b8;
   border-radius: 0;
-  background: transparent;
-  text-align: left;
+  background: transparent !important;
+  text-align: center;
   font-weight: 700;
   box-shadow: none;
 }
 
 .sp-passage-gap-wrap--active .sp-gap-underline-input {
   border-bottom-color: var(--sp-duo-blue);
-  background: transparent;
 }
 
 .sp-passage-gap-wrap--active .sp-gap-underline-input:focus {
   outline: none;
   border-bottom-color: var(--sp-duo-blue-dark);
-  background: transparent;
   box-shadow: none;
 }
 
 .sp-passage-gap-wrap--done .sp-gap-underline-input,
 .sp-passage-gap--correct .sp-gap-underline-input {
   border-bottom-color: #22c55e;
-  background: transparent;
   color: #15803d;
 }
 
+.sp-passage-gap-wrap--failed .sp-gap-underline-input,
 .sp-passage-gap--incorrect .sp-gap-underline-input {
   border-bottom-color: #ef4444;
-  background: transparent;
   color: #b91c1c;
 }
 
@@ -1477,14 +1478,10 @@ button.sp-example-line.sp-speakable {
   max-width: 16ch;
 }
 
-.sp-passage-gap--correct .sp-gap-inline-input {
-  background: #bbf7d0;
-  color: #15803d;
-}
-
-.sp-passage-gap--incorrect .sp-gap-inline-input {
-  background: #fecaca;
-  color: #b91c1c;
+.sp-screen--passage-sequential .sp-passage-gap--correct .sp-gap-inline-input,
+.sp-screen--passage-sequential .sp-passage-gap--incorrect .sp-gap-inline-input {
+  background: transparent !important;
+  box-shadow: none;
 }
 
 .sp-verb-prompt,

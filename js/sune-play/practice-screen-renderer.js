@@ -157,12 +157,15 @@
 
   function renderPassageGapHtml(passage, options) {
     options = options || {};
-    return esc(passage)
-      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-      .replace(PASSAGE_GAP_MARK_RE, function(_, num) {
-        return buildPassageGapField(num, options);
-      })
-      .replace(/\n/g, '<br>');
+    var paragraphs = String(passage || '').split(/\n+/).filter(function(p) { return p.trim(); });
+    return paragraphs.map(function(para) {
+      var inner = esc(para.trim())
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(PASSAGE_GAP_MARK_RE, function(_, num) {
+          return buildPassageGapField(num, options);
+        });
+      return '<p class="sp-passage-para">' + inner + '</p>';
+    }).join('');
   }
 
   function getGapInputValues(root) {
@@ -230,32 +233,41 @@
     var gaps = p.gaps || [];
     var saved = screen._passageGapState || {};
     var completed = saved.completed || {};
+    var failed = saved.failed || {};
     var assignments = saved.assignments || {};
     var activeGap = saved.activeGap;
+    var inRetryPhase = !!saved.inRetryPhase;
 
     if (activeGap == null) {
-      for (var i = 0; i < gaps.length; i++) {
-        var gNum = gaps[i].gapNumber;
-        if (!completed[gNum]) {
-          activeGap = gNum;
-          break;
+      if (inRetryPhase && saved.retryQueue && saved.retryQueue.length) {
+        activeGap = saved.retryQueue[0];
+      } else {
+        for (var i = 0; i < gaps.length; i++) {
+          var gNum = gaps[i].gapNumber;
+          if (!completed[gNum]) {
+            activeGap = gNum;
+            break;
+          }
         }
       }
-      if (activeGap == null && gaps.length) activeGap = gaps[gaps.length - 1].gapNumber;
+      if (activeGap == null && gaps.length) activeGap = gaps[0].gapNumber;
     }
 
     root._passageGapState = {
       activeGap: activeGap,
       completed: completed,
+      failed: failed,
       assignments: assignments,
+      inRetryPhase: inRetryPhase,
+      retryQueue: saved.retryQueue || [],
       verbCounts: buildPassageGapVerbCounts(gaps),
-      verbUsed: {}
+      confirmedVerbs: saved.confirmedVerbs || {}
     };
     gaps.forEach(function(gap) {
-      var gNum = gap.gapNumber;
-      var verb = (completed[gNum] && completed[gNum].verb) || assignments[gNum];
-      if (verb) {
-        root._passageGapState.verbUsed[verb] = (root._passageGapState.verbUsed[verb] || 0) + 1;
+      var done = completed[gap.gapNumber];
+      if (done && done.verb) {
+        root._passageGapState.confirmedVerbs[done.verb] =
+          (root._passageGapState.confirmedVerbs[done.verb] || 0) + 1;
       }
     });
     syncPassageGapStateToScreen(screen, root);
@@ -267,8 +279,8 @@
     root.querySelectorAll('.sp-passage-wordbank-chip--selectable').forEach(function(chip) {
       var word = chip.getAttribute('data-word');
       var maxUses = state.verbCounts[word] || 0;
-      var used = state.verbUsed[word] || 0;
-      var depleted = maxUses > 0 && used >= maxUses;
+      var confirmed = state.confirmedVerbs[word] || 0;
+      var depleted = maxUses > 0 && confirmed >= maxUses;
       chip.classList.toggle('sp-passage-wordbank-chip--used', depleted);
       chip.disabled = depleted;
       chip.setAttribute('aria-disabled', depleted ? 'true' : 'false');
@@ -299,39 +311,56 @@
       var wrap = getPassageGapWrap(root, gap.gapNumber);
       if (!wrap) return;
       var input = wrap.querySelector('.sp-passage-gap-input');
-      var isCompleted = !!state.completed[gap.gapNumber];
-      var isActive = gap.gapNumber === state.activeGap && !isCompleted;
-      var isFuture = !isCompleted && !isActive;
+      var gapNum = gap.gapNumber;
+      var isCompleted = !!state.completed[gapNum];
+      var isFailed = !!state.failed[gapNum];
+      var isActive = gapNum === state.activeGap && !isCompleted;
 
       wrap.classList.remove(
         'sp-passage-gap-wrap--active',
         'sp-passage-gap-wrap--future',
         'sp-passage-gap-wrap--done',
+        'sp-passage-gap-wrap--failed',
         'sp-passage-gap--correct',
         'sp-passage-gap--incorrect'
       );
 
       if (isCompleted) {
         wrap.classList.add('sp-passage-gap-wrap--done', 'sp-passage-gap--correct');
-        var done = state.completed[gap.gapNumber];
+        var done = state.completed[gapNum];
         if (input) {
           input.value = done.answer || '';
           input.disabled = true;
           input.readOnly = true;
           resizeUnderlineGapInput(input);
         }
-        setPassageGapVerbLabel(wrap, done.verb || state.assignments[gap.gapNumber] || gap.baseVerb);
+        setPassageGapVerbLabel(wrap, done.verb || state.assignments[gapNum] || gap.baseVerb);
       } else if (isActive) {
         wrap.classList.add('sp-passage-gap-wrap--active');
         if (input) {
           input.disabled = false;
           input.readOnly = false;
-          if (state.assignments[gap.gapNumber]) {
-            setPassageGapVerbLabel(wrap, state.assignments[gap.gapNumber]);
+          if (state.inRetryPhase && isFailed) {
+            input.value = '';
+          }
+          if (state.assignments[gapNum]) {
+            setPassageGapVerbLabel(wrap, state.assignments[gapNum]);
+          } else {
+            setPassageGapVerbLabel(wrap, '');
           }
           resizeUnderlineGapInput(input);
         }
-      } else if (isFuture) {
+      } else if (isFailed) {
+        wrap.classList.add('sp-passage-gap-wrap--failed', 'sp-passage-gap--incorrect');
+        var fail = state.failed[gapNum];
+        if (input) {
+          input.value = fail.answer || '';
+          input.disabled = true;
+          input.readOnly = true;
+          resizeUnderlineGapInput(input);
+        }
+        setPassageGapVerbLabel(wrap, fail.verb || state.assignments[gapNum] || '');
+      } else {
         wrap.classList.add('sp-passage-gap-wrap--future');
         if (input) {
           input.value = '';
@@ -351,17 +380,14 @@
     if (!state || gapNumber !== state.activeGap) return false;
     if (state.completed[gapNumber]) return false;
 
-    var prevVerb = state.assignments[gapNumber];
-    if (prevVerb) {
-      state.verbUsed[prevVerb] = Math.max(0, (state.verbUsed[prevVerb] || 0) - 1);
-    }
+    var maxUses = state.verbCounts[verb] || 0;
+    var confirmed = state.confirmedVerbs[verb] || 0;
+    if (maxUses > 0 && confirmed >= maxUses) return false;
 
     state.assignments[gapNumber] = verb;
-    state.verbUsed[verb] = (state.verbUsed[verb] || 0) + 1;
 
     var wrap = getPassageGapWrap(root, gapNumber);
     setPassageGapVerbLabel(wrap, verb);
-    updatePassageGapWordBank(root);
     syncPassageGapStateToScreen(screen, root);
 
     var input = wrap && wrap.querySelector('.sp-passage-gap-input');
@@ -412,17 +438,6 @@
         if (chip.disabled) return;
         tryAssignWord(chip.getAttribute('data-word'));
       });
-      chip.addEventListener('dragstart', function(e) {
-        if (chip.disabled) {
-          e.preventDefault();
-          return;
-        }
-        e.dataTransfer.setData('text/plain', chip.getAttribute('data-word') || '');
-        chip.classList.add('sp-passage-wordbank-chip--dragging');
-      });
-      chip.addEventListener('dragend', function() {
-        chip.classList.remove('sp-passage-wordbank-chip--dragging');
-      });
     });
 
     bindPassageGapActiveInput(root, screen, onChange);
@@ -460,7 +475,7 @@
     }
 
     var ok = norm.answersMatch(given, gap.expectedAnswer);
-    var remaining = gaps.filter(function(g) { return !state.completed[g.gapNumber] && g.gapNumber !== gapNumber; });
+    var verb = state.assignments[gapNumber] || gap.baseVerb || '';
 
     wrap.classList.toggle('sp-passage-gap--correct', ok);
     wrap.classList.toggle('sp-passage-gap--incorrect', !ok);
@@ -468,16 +483,28 @@
     if (ok) {
       state.completed[gapNumber] = {
         answer: given,
-        verb: state.assignments[gapNumber] || gap.baseVerb || ''
+        verb: verb
+      };
+      delete state.failed[gapNumber];
+      if (verb) {
+        state.confirmedVerbs[verb] = (state.confirmedVerbs[verb] || 0) + 1;
+      }
+      syncPassageGapStateToScreen(screen, root);
+    } else {
+      state.failed[gapNumber] = {
+        answer: given,
+        verb: verb
       };
       syncPassageGapStateToScreen(screen, root);
     }
 
+    var allComplete = gaps.every(function(g) { return !!state.completed[g.gapNumber]; });
+
     return {
       handled: true,
       correct: ok,
-      partial: ok && remaining.length > 0,
-      allDone: ok && remaining.length === 0,
+      partial: !allComplete,
+      allDone: ok && allComplete,
       lifeLoss: ok ? 0 : 1,
       userAnswer: given,
       correctAnswer: gap.expectedAnswer,
@@ -486,30 +513,60 @@
     };
   }
 
-  function advancePassageGapAfterFeedback(root, screen) {
-    var p = screen.payload || {};
-    var gaps = p.gaps || [];
-    var state = root._passageGapState;
-    if (!state) return;
-
-    var nextGap = null;
+  function getNextPassageGapNumber(state, gaps) {
+    if (!state || !gaps.length) return null;
+    var currentIdx = -1;
     for (var i = 0; i < gaps.length; i++) {
-      if (!state.completed[gaps[i].gapNumber]) {
-        nextGap = gaps[i].gapNumber;
+      if (gaps[i].gapNumber === state.activeGap) {
+        currentIdx = i;
         break;
       }
     }
-    state.activeGap = nextGap;
+    if (state.inRetryPhase && state.retryQueue && state.retryQueue.length) {
+      var retryIdx = state.retryQueue.indexOf(state.activeGap);
+      if (retryIdx >= 0 && retryIdx < state.retryQueue.length - 1) {
+        return state.retryQueue[retryIdx + 1];
+      }
+      return null;
+    }
+    for (var j = currentIdx + 1; j < gaps.length; j++) {
+      return gaps[j].gapNumber;
+    }
+    return null;
+  }
+
+  function startPassageGapRetryRound(state, gaps) {
+    var failedNums = gaps
+      .map(function(g) { return g.gapNumber; })
+      .filter(function(n) { return !state.completed[n]; });
+    if (!failedNums.length) return false;
+    state.inRetryPhase = true;
+    state.retryQueue = failedNums;
+    state.activeGap = failedNums[0];
+    return true;
+  }
+
+  function advancePassageGapAfterFeedback(root, screen) {
+    var gaps = (screen.payload || {}).gaps || [];
+    var state = root._passageGapState;
+    if (!state) return;
+
+    var nextGap = getNextPassageGapNumber(state, gaps);
+    if (nextGap != null) {
+      state.activeGap = nextGap;
+    } else if (!startPassageGapRetryRound(state, gaps)) {
+      syncPassageGapStateToScreen(screen, root);
+      return;
+    }
+
     syncPassageGapStateToScreen(screen, root);
     updatePassageGapUI(root, screen);
 
-    var nextWrap = nextGap != null ? getPassageGapWrap(root, nextGap) : null;
-    var nextInput = nextWrap && nextWrap.querySelector('.sp-passage-gap-input');
-    if (nextInput && !nextInput.disabled) {
-      setTimeout(function() { nextInput.focus(); }, 0);
+    var activeWrap = getPassageGapWrap(root, state.activeGap);
+    var activeInput = activeWrap && activeWrap.querySelector('.sp-passage-gap-input');
+    if (activeInput && !activeInput.disabled) {
+      setTimeout(function() { activeInput.focus(); }, 0);
     }
-
-    bindPassageGapActiveInput(root, screen, function() {});
   }
 
   function bindPassageGapActiveInput(root, screen, onChange) {
@@ -539,48 +596,8 @@
     var activeWrap = getPassageGapWrap(root, state.activeGap);
     if (!activeWrap) return;
 
-    if (!root._passageGapDropDelegation) {
-      root._passageGapDropDelegation = true;
-      root.addEventListener('dragover', function(e) {
-        var wrap = e.target.closest('.sp-passage-gap-wrap--active');
-        if (!wrap) return;
-        e.preventDefault();
-        wrap.classList.add('sp-passage-gap-wrap--dragover');
-      });
-      root.addEventListener('dragleave', function(e) {
-        var wrap = e.target.closest('.sp-passage-gap-wrap--active');
-        if (!wrap) return;
-        wrap.classList.remove('sp-passage-gap-wrap--dragover');
-      });
-      root.addEventListener('drop', function(e) {
-        var wrap = e.target.closest('.sp-passage-gap-wrap--active');
-        if (!wrap) return;
-        e.preventDefault();
-        wrap.classList.remove('sp-passage-gap-wrap--dragover');
-        var word = e.dataTransfer.getData('text/plain');
-        if (!word || !root._passageGapState) return;
-        assignVerbToPassageGap(root, screen, root._passageGapState.activeGap, word, onChange);
-      });
-    }
-
     var inp = activeWrap.querySelector('.sp-passage-gap-input');
     if (inp) resizeUnderlineGapInput(inp);
-  }
-
-  function resumePassageGapAfterFeedback(root, screen) {
-    var state = root._passageGapState;
-    if (!state) return;
-    var wrap = getPassageGapWrap(root, state.activeGap);
-    if (wrap) {
-      wrap.classList.remove('sp-passage-gap--incorrect');
-    }
-    updatePassageGapUI(root, screen);
-    bindPassageGapActiveInput(root, screen, function() {});
-    var activeWrap = getPassageGapWrap(root, state.activeGap);
-    var input = activeWrap && activeWrap.querySelector('.sp-passage-gap-input');
-    if (input && !input.disabled) {
-      setTimeout(function() { input.focus(); }, 0);
-    }
   }
 
   function splitSentenceAtHighlight(sentence, highlightedText) {
@@ -864,7 +881,7 @@
       p.wordBank.forEach(function(word) {
         if (isSequential) {
           html += '<button type="button" class="sp-passage-wordbank-chip sp-passage-wordbank-chip--selectable" ' +
-            'draggable="true" data-word="' + esc(word) + '">' + esc(word) + '</button>';
+            'data-word="' + esc(word) + '">' + esc(word) + '</button>';
         } else {
           html += '<span class="sp-passage-wordbank-chip">' + esc(word) + '</span>';
         }
@@ -2374,7 +2391,6 @@
     commitHuntMarkAfterFeedback: commitHuntMarkAfterFeedback,
     processPassageGapSequentialCheck: processPassageGapSequentialCheck,
     advancePassageGapAfterFeedback: advancePassageGapAfterFeedback,
-    resumePassageGapAfterFeedback: resumePassageGapAfterFeedback,
     isPassageGapSequentialReady: isPassageGapSequentialReady,
     commitHuntFixAfterFeedback: commitHuntFixAfterFeedback
   };

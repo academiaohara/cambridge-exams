@@ -835,32 +835,16 @@
 
     screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
 
-    if (!result.correct && result.lifeLoss > 0) {
-      var lost = lessonState.hearts.loseLife(result.lifeLoss, {
+    if (result.correct && result.allDone) {
+      lessonState.queue.removeCompletedItem(screen);
+      lessonState.sessionCorrect++;
+    } else if (!result.correct && result.lifeLoss > 0) {
+      var lostOnWrong = lessonState.hearts.loseLife(result.lifeLoss, {
         screenId: screen.screenId,
         itemId: screen.itemId,
         maxLifeLossPerScreen: screen.maxLifeLossPerScreen
       });
-      if (lost) lessonState.sessionLivesLost += result.lifeLoss;
-    }
-
-    if (result.correct && result.allDone) {
-      lessonState.queue.removeCompletedItem(screen);
-      lessonState.sessionCorrect++;
-    } else if (!result.correct) {
-      var failCount = lessonState.queue.incrementFailure(screen);
-      var globalRules = (lessonState.unitData.practiceConfig && lessonState.unitData.practiceConfig.globalRules) || {};
-      if (globalRules.failedItemsReturnToQueue !== false) {
-        lessonState.queue.returnFailedItemToQueue(screen);
-      }
-      if (failCount >= (globalRules.maxRepeatedFailuresBeforeFallback || 2)) {
-        var converted = lessonState.queue.applyFallbackIfNeeded(screen);
-        if (converted._isFallback) {
-          lessonState.queue.returnFailedItemToQueue(converted, 'front');
-          screen = converted;
-          lessonState.currentScreen = converted;
-        }
-      }
+      if (lostOnWrong) lessonState.sessionLivesLost += result.lifeLoss;
     }
 
     lessonState._lastHuntResult = result;
@@ -995,17 +979,10 @@
     }
 
     if (screen && screen.formatType === 'passage_gap_fill' &&
-        screen.payload && screen.payload.sequentialGaps && screenRoot && lastResult) {
-      if (lastResult.correct && lastResult.partial) {
+        screen.payload && screen.payload.sequentialGaps && screenRoot && lastResult &&
+        lastResult._passageGapResult) {
+      if (!(lastResult.correct && lastResult.allDone)) {
         renderer.advancePassageGapAfterFeedback(screenRoot, screen);
-        screenRoot.classList.remove('sp-screen--locked');
-        setScreenInputsLocked(false);
-        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
-        updateSessionHeader();
-        return;
-      }
-      if (!lastResult.correct && lastResult._passageGapResult) {
-        renderer.resumePassageGapAfterFeedback(screenRoot, screen);
         screenRoot.classList.remove('sp-screen--locked');
         setScreenInputsLocked(false);
         setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
