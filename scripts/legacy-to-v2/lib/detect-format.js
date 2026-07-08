@@ -155,10 +155,10 @@ export function detectLegacyFormat(exercise) {
   if (items.length && extractBold(items[0].sentence) && items[0].answer &&
       items.every(function(it) { return /\*\*[^*]+\*\*/.test(it.sentence || ''); }) &&
       !items[0].sentence.includes('......') && exercise.words) {
-    result.formatType = 'free_text_gap_fill';
+    result.formatType = 'error_correction';
     result.legacyPattern = 'bold-swap';
     result.legacyItemCount = items.length;
-    result.notes.push('bold-swap mapped to free_text_gap_fill; word bank kept on exercise.words');
+    result.notes.push('bold-swap → error_correction (highlightedText = wrong bold word); word bank not shown in UI');
     return result;
   }
 

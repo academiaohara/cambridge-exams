@@ -82,10 +82,6 @@ function convertItem(exercise, item, index, unitPrefix, exerciseKey, detection) 
         acceptedAnswers: variants.length > 1 ? variants : [answer],
         explanation: item.explanation || ''
       };
-      if (detection.legacyPattern === 'bold-swap') {
-        converted.sentence = stripBold(item.sentence || '');
-        converted.promptWord = extractBold(item.sentence || '');
-      }
       if (/\([^)]+\)/.test(item.sentence || '')) {
         var verbMatch = item.sentence.match(/\(([^)]+)\)\s*$/);
         if (verbMatch) converted.verbPrompt = verbMatch[1].replace(/\s*\/\s*/g, ' / ');
@@ -102,10 +98,10 @@ function convertItem(exercise, item, index, unitPrefix, exerciseKey, detection) 
       });
 
     case 'error_correction': {
-      var wrong = extractBold(item.sentence || '');
+      var wrongWord = extractBold(item.sentence || '');
       return Object.assign(base, {
         sentence: stripBold(item.sentence || ''),
-        highlightedText: wrong,
+        highlightedText: wrongWord,
         answer: item.answer,
         acceptedAnswers: splitAnswerVariants(item.answer)
       });
