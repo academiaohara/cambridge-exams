@@ -1322,19 +1322,25 @@
   border-color: rgba(45, 46, 95, 0.15);
 }
 
-/* Hint words in parentheses (e.g. (EXPLAIN), (do), (1)) */
+/* Hint words in parentheses (e.g. (EXPLAIN), (do), (1)) — Duolingo-style chips */
 .cu-hint-word {
   display: inline-block;
-  padding: 1px 6px;
-  background: rgba(139, 92, 246, 0.09);
-  border: 1px solid rgba(139, 92, 246, 0.22);
-  border-radius: 5px;
-  color: #6d28d9;
-  font-size: 0.82em;
-  font-weight: 600;
+  padding: 2px 9px;
+  margin: 0 2px;
+  background: var(--white, #fff);
+  border: 2px solid #e2e8f4;
+  border-bottom-width: 3px;
+  border-bottom-color: #dce3f0;
+  border-radius: 999px;
+  box-shadow: 0 2px 0 #dce3f0;
+  color: var(--text-dark, #0f172a);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85em;
+  font-weight: 700;
   font-style: normal;
-  margin: 0 1px;
+  line-height: 1.35;
   vertical-align: baseline;
+  white-space: nowrap;
 }
 
 /* Dark pill for gap + hint combinations (e.g. "1 [____] you") — styled like reading-type3-input-word-row */
@@ -1424,18 +1430,22 @@ textarea.cu-hint-pill-input {
   outline: none;
 }
 .cu-hint-pill-word {
-  color: #6d28d9;
+  color: var(--text-dark, #0f172a);
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 0.82em;
   flex-shrink: 0;
-  background: rgba(124, 58, 237, 0.1);
-  border-radius: 10px;
-  padding: 1px 8px;
-  line-height: 1.5;
+  background: var(--white, #fff);
+  border: 2px solid #e2e8f4;
+  border-bottom-width: 3px;
+  border-bottom-color: #dce3f0;
+  border-radius: 999px;
+  box-shadow: 0 2px 0 #dce3f0;
+  padding: 2px 9px;
+  line-height: 1.35;
 }
 .cu-wf-pill-word {
-  color: #7c3aed;
-  background: rgba(124, 58, 237, 0.1);
+  color: var(--text-dark, #0f172a);
+  background: var(--white, #fff);
 }
 
 /* Course gap + word hint: input first, hint badge to the right (DOM: hintline then fieldline — reorder with flex) */
@@ -1502,10 +1512,11 @@ textarea.cu-hint-pill-input {
 
 .cu-hint-pill .cu-hint-slash-sep,
 .cu-hint-slash-hint-line .cu-hint-slash-sep {
-  color: #64748b;
-  font-weight: 600;
+  color: #94a3b8;
+  font-weight: 700;
   user-select: none;
   padding: 0 2px;
+  font-size: 0.9em;
 }
 
 /* Slash-separated hints: answer row without pill chrome (hint badge stays above in .cu-hint-slash-hint-line). */
@@ -5512,14 +5523,17 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     flex-shrink: 0;
     align-self: center;
     max-width: 100%;
-    margin: 0 0 0 1px;
-    padding: 1px 7px !important;
-    border-radius: 6px !important;
-    background: rgba(124, 58, 237, 0.12) !important;
-    border: 1px solid rgba(124, 58, 237, 0.28) !important;
-    color: #5b21b6;
-    font-weight: 600;
-    font-size: 0.74rem;
+    margin: 0 0 0 2px;
+    padding: 2px 8px !important;
+    border-radius: 999px !important;
+    background: var(--white, #fff) !important;
+    border: 2px solid #e2e8f4 !important;
+    border-bottom-width: 3px !important;
+    border-bottom-color: #dce3f0 !important;
+    box-shadow: 0 2px 0 #dce3f0 !important;
+    color: var(--text-dark, #0f172a);
+    font-weight: 700;
+    font-size: 0.78rem;
     line-height: 1.35;
   }
 

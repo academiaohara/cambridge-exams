@@ -5521,7 +5521,7 @@
           '></span>';
       }
       var taCls = opts.textareaClassName || 'cu-gap-input cu-gap-inline-textarea';
-      // Slash-style hints (pista con "/") used to force a desktop <textarea> so answers wrapped,
+      // Slash-style hints (e.g. "not / watch") used to force a desktop <textarea> so answers wrapped,
       // but that matched exercise B poorly — _resizeCuInput grew full-sentence answers to huge
       // heights. Use the same single-line <input> as non-slash gaps; long typing scrolls inline
       // (cu-hint-pill-input nowrap + overflow-x on desktop).

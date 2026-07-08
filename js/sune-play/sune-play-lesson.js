@@ -662,7 +662,7 @@
       case 'error_correction':
         return p.instruction || 'Correct the mistake in the sentence.';
       case 'verb_bank_two_step':
-        return p.instruction || 'Escribe el verbo en la forma correcta.';
+        return p.instruction || 'Write the verb in the correct form.';
       case 'passage_error_hunt_single':
         return p.instruction || 'Find one wrong verb phrase.';
       case 'passage_error_hunt_counter': {
