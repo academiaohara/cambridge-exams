@@ -1531,6 +1531,106 @@ button.sp-example-line.sp-speakable {
   box-shadow: none;
 }
 
+.sp-screen--mc-passage .sp-mc-gap-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 2rem;
+  padding: 2px 10px 2px 4px;
+  margin: 0 2px;
+  border: 2px solid #dce3f0;
+  border-radius: 999px;
+  background: var(--white);
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(0.82rem, 0.5rem + 1.2vw, 0.95rem);
+  font-weight: 700;
+  color: var(--sp-duo-blue-dark);
+  cursor: pointer;
+  vertical-align: baseline;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sp-screen--mc-passage .sp-mc-gap-pill:hover:not(:disabled) {
+  border-color: var(--sp-duo-blue);
+  background: var(--sp-duo-blue-light);
+}
+
+.sp-screen--mc-passage .sp-mc-gap-pill--filled .sp-mc-gap-slot {
+  min-width: 1.2ch;
+}
+
+.sp-screen--mc-passage .sp-mc-gap-pill--correct {
+  border-color: #58a700;
+  background: rgba(88, 167, 0, 0.12);
+  color: #3f7f00;
+}
+
+.sp-screen--mc-passage .sp-mc-gap-pill--incorrect {
+  border-color: #e5383a;
+  background: rgba(229, 56, 58, 0.1);
+  color: #b42318;
+}
+
+.sp-screen--mc-passage .sp-mc-gap-slot {
+  display: inline-block;
+  min-width: 1.6ch;
+  text-align: center;
+}
+
+.sp-mc-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+
+.sp-mc-sheet[hidden] {
+  display: none !important;
+}
+
+.sp-mc-sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(15, 23, 42, 0.45);
+  cursor: pointer;
+}
+
+.sp-mc-sheet-panel {
+  position: relative;
+  width: min(100%, 34rem);
+  max-height: min(70vh, 520px);
+  overflow: auto;
+  margin: 0 auto;
+  padding: clamp(16px, 4vw, 24px);
+  border-radius: 20px 20px 0 0;
+  background: var(--white);
+  box-shadow: 0 -8px 32px rgba(15, 23, 42, 0.18);
+  box-sizing: border-box;
+}
+
+.sp-mc-sheet-title {
+  margin: 0 0 14px;
+  font-size: clamp(0.95rem, 0.6rem + 1.4vw, 1.05rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .sp-mc-sheet {
+    align-items: center;
+    padding: 24px;
+  }
+
+  .sp-mc-sheet-panel {
+    border-radius: 20px;
+  }
+}
+
 .sp-verb-prompt,
 .sp-step-label {
   font-size: 0.85rem;
@@ -1576,6 +1676,19 @@ button.sp-example-line.sp-speakable {
   max-width: min(100%, 34rem);
   margin-inline: auto;
   box-sizing: border-box;
+}
+
+.sp-option-grid--quad {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(8px, 2vw, 12px);
+  max-width: min(100%, 36rem);
+}
+
+@media (max-width: 360px) {
+  .sp-option-grid--quad {
+    grid-template-columns: 1fr;
+  }
 }
 
 .sp-option-btn {
