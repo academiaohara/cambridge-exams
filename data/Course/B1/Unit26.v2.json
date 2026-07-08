@@ -1,0 +1,1119 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 9,
+  "unit": 26,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 26: Comparatives & superlatives",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 26: Comparatives & superlatives"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit26.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 7
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u26-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Comparatives",
+        "subtitle": "Comparatives",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Use",
+            "headers": [
+              "Use",
+              "Example"
+            ],
+            "rows": [
+              [
+                "To say that one person, thing or action differs from another",
+                "The city centre is **more crowded than** the suburbs.\nCould you speak a little **more slowly**, please?"
+              ]
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Form: adjectives",
+            "headers": [
+              "Type",
+              "Rule",
+              "Example"
+            ],
+            "rows": [
+              [
+                "one syllable",
+                "adjective + -er",
+                "tall → **taller**"
+              ],
+              [
+                "one syllable ending in -e",
+                "adjective + -r",
+                "safe → **safer**"
+              ],
+              [
+                "one syllable ending in vowel + consonant",
+                "double last letter + -er",
+                "hot → **hotter**"
+              ],
+              [
+                "two syllables ending in -y",
+                "-y → -ier",
+                "happy → **happier**"
+              ],
+              [
+                "two or more syllables",
+                "more/less + adjective",
+                "comfortable → **more/less comfortable**"
+              ],
+              [
+                "irregular adjectives / quantifiers",
+                "special form",
+                "good → **better**, bad → **worse**, little → **less**, far → **farther/further**, many/much → **more**"
+              ]
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Form: adverbs",
+            "headers": [
+              "Type",
+              "Rule",
+              "Example"
+            ],
+            "rows": [
+              [
+                "regular adverbs",
+                "more/less + adverb",
+                "quietly → **more/less quietly**"
+              ],
+              [
+                "irregular adverbs",
+                "special form",
+                "well → **better**, badly → **worse**, early → **earlier**, near → **nearer**, late → **later**, fast → **faster**, far → **farther/further**"
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "The comparative is usually followed by **than**: *This route is **longer than** the one we took before.*"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Superlatives",
+        "subtitle": "Superlatives",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Use",
+            "headers": [
+              "Use",
+              "Example"
+            ],
+            "rows": [
+              [
+                "To identify the one member of a group that has the most or least of a quality",
+                "This is **the most popular** café in the whole city.\nOf all the runners, she finished **the fastest**."
+              ]
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Form: adjectives",
+            "headers": [
+              "Type",
+              "Rule",
+              "Example"
+            ],
+            "rows": [
+              [
+                "one syllable",
+                "adjective + -est",
+                "tall → **tallest**"
+              ],
+              [
+                "one syllable ending in -e",
+                "adjective + -st",
+                "safe → **safest**"
+              ],
+              [
+                "one syllable ending in vowel + consonant",
+                "double last letter + -est",
+                "hot → **hottest**"
+              ],
+              [
+                "two syllables ending in -y",
+                "-y → -iest",
+                "happy → **happiest**"
+              ],
+              [
+                "two or more syllables",
+                "most/least + adjective",
+                "comfortable → **most/least comfortable**"
+              ],
+              [
+                "irregular adjectives / quantifiers",
+                "special form",
+                "good → **best**, bad → **worst**, little → **least**, far → **farthest/furthest**, many/much → **most**"
+              ]
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Form: adverbs",
+            "headers": [
+              "Type",
+              "Rule",
+              "Example"
+            ],
+            "rows": [
+              [
+                "regular adverbs",
+                "most/least + adverb",
+                "quietly → **most/least quietly**"
+              ],
+              [
+                "irregular adverbs",
+                "special form",
+                "well → **best**, badly → **worst**, early → **earliest**, near → **nearest**, late → **latest**, fast → **fastest**, far → **farthest/furthest**"
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "We normally use **the** before a superlative: *That was **the most memorable** concert I've ever been to.*"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "error_correction",
+        "displayName": "Correct the error",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_correction_input",
+          "studentAction": "type_correction",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u26-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "error_correction",
+        "free_text_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 37,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u26-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u26-exa-1",
+            "b1-u26-exa-2",
+            "b1-u26-exa-3",
+            "b1-u26-exa-4",
+            "b1-u26-exa-5",
+            "b1-u26-exa-6",
+            "b1-u26-exa-7",
+            "b1-u26-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u26-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u26-exb-1",
+            "b1-u26-exb-2",
+            "b1-u26-exb-3",
+            "b1-u26-exb-4",
+            "b1-u26-exb-5",
+            "b1-u26-exb-6",
+            "b1-u26-exb-7",
+            "b1-u26-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u26-ex-c",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u26-exc-1",
+            "b1-u26-exc-2",
+            "b1-u26-exc-3",
+            "b1-u26-exc-4",
+            "b1-u26-exc-5",
+            "b1-u26-exc-6",
+            "b1-u26-exc-7",
+            "b1-u26-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u26-ex-d",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u26-exd-1",
+            "b1-u26-exd-2",
+            "b1-u26-exd-3",
+            "b1-u26-exd-4",
+            "b1-u26-exd-5",
+            "b1-u26-exd-6",
+            "b1-u26-exd-7",
+            "b1-u26-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u26-ex-e",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u26-exe-1",
+            "b1-u26-exe-2",
+            "b1-u26-exe-3",
+            "b1-u26-exe-4",
+            "b1-u26-exe-5",
+            "b1-u26-exe-6",
+            "b1-u26-exe-7",
+            "b1-u26-exe-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u26-ex-f",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u26-exf-1",
+            "b1-u26-exf-2",
+            "b1-u26-exf-3",
+            "b1-u26-exf-4",
+            "b1-u26-exf-5",
+            "b1-u26-exf-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u26-ex-g",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u26-exg-1",
+            "b1-u26-exg-2",
+            "b1-u26-exg-3",
+            "b1-u26-exg-4",
+            "b1-u26-exg-5",
+            "b1-u26-exg-6",
+            "b1-u26-exg-7",
+            "b1-u26-exg-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 54,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u26-ex-a",
+      "b1-u26-ex-b",
+      "b1-u26-ex-c",
+      "b1-u26-ex-d",
+      "b1-u26-ex-e",
+      "b1-u26-ex-f",
+      "b1-u26-ex-g"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u26-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Complete with comparative adjectives",
+        "title": "A: Complete with comparative adjectives",
+        "instructions": "Use the correct comparative form of the adjective in brackets.",
+        "studentInstruction": "Use the correct comparative form of the adjective in brackets.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u26-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "This chair is ...... (comfortable) than the old one.",
+            "answer": "more comfortable",
+            "acceptedAnswers": [
+              "more comfortable"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My cousin is ...... (young) than me.",
+            "answer": "younger",
+            "acceptedAnswers": [
+              "younger"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Travelling by train is ...... (slow) than flying.",
+            "answer": "slower",
+            "acceptedAnswers": [
+              "slower"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Today feels ...... (cold) than yesterday.",
+            "answer": "colder",
+            "acceptedAnswers": [
+              "colder"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "That documentary was ...... (boring) than I expected.",
+            "answer": "more boring",
+            "acceptedAnswers": [
+              "more boring"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "This restaurant is ...... (good) than the one near the station.",
+            "answer": "better",
+            "acceptedAnswers": [
+              "better"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exa-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My headache is ...... (bad) today than it was yesterday.",
+            "answer": "worse",
+            "acceptedAnswers": [
+              "worse"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exa-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The supermarket is ...... (far) away than the pharmacy.",
+            "answer": "farther",
+            "acceptedAnswers": [
+              "farther"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u26-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: Complete with superlative adjectives",
+        "title": "B: Complete with superlative adjectives",
+        "instructions": "Use the correct superlative form of the adjective in brackets.",
+        "studentInstruction": "Use the correct superlative form of the adjective in brackets.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u26-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "This is ...... (quiet) place in the whole building.",
+            "answer": "the quietest",
+            "acceptedAnswers": [
+              "the quietest"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Who is ...... (old) person in your class?",
+            "answer": "the oldest",
+            "acceptedAnswers": [
+              "the oldest"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "That was ...... (amazing) concert I've ever seen.",
+            "answer": "the most amazing",
+            "acceptedAnswers": [
+              "the most amazing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Friday is ...... (busy) day at the restaurant.",
+            "answer": "the busiest",
+            "acceptedAnswers": [
+              "the busiest"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "She is ...... (good) student in the course.",
+            "answer": "the best",
+            "acceptedAnswers": [
+              "the best"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "This is ...... (bad) hotel I've stayed in.",
+            "answer": "the worst",
+            "acceptedAnswers": [
+              "the worst"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exb-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "We found ...... (cheap) option online.",
+            "answer": "the cheapest",
+            "acceptedAnswers": [
+              "the cheapest"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exb-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "That was ...... (strange) dream I've ever had.",
+            "answer": "the strangest",
+            "acceptedAnswers": [
+              "the strangest"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u26-ex-c",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "C: Comparatives and superlatives of adverbs",
+        "title": "C: Comparatives and superlatives of adverbs",
+        "instructions": "Complete each sentence with the correct form.",
+        "studentInstruction": "Complete each sentence with the correct form.",
+        "legacyKey": "C",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u26-exc-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Ella dances ...... (gracefully) than her sister.",
+            "answer": "more gracefully",
+            "acceptedAnswers": [
+              "more gracefully"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exc-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Out of everyone in the race, Josh ran ...... (fast).",
+            "answer": "the fastest",
+            "acceptedAnswers": [
+              "the fastest"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exc-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My dad drives ...... (carefully) than my uncle.",
+            "answer": "more carefully",
+            "acceptedAnswers": [
+              "more carefully"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exc-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Who arrived ...... (late) yesterday?",
+            "answer": "the latest",
+            "acceptedAnswers": [
+              "the latest"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exc-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I played ...... (badly) in the second match.",
+            "answer": "worse",
+            "acceptedAnswers": [
+              "worse"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exc-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Of all the speakers, Mia explained the topic ...... (well).",
+            "answer": "the best",
+            "acceptedAnswers": [
+              "the best"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exc-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Could you walk a little ...... (slowly)?",
+            "answer": "more slowly",
+            "acceptedAnswers": [
+              "more slowly"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exc-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "He answered the questions ...... (quickly) than the others.",
+            "answer": "more quickly",
+            "acceptedAnswers": [
+              "more quickly"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u26-ex-d",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "D: Choose the correct option",
+        "title": "D: Choose the correct option",
+        "instructions": "Circle the correct word or phrase.",
+        "studentInstruction": "Circle the correct word or phrase.",
+        "legacyKey": "D",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u26-exd-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This puzzle is",
+            "sentenceAfter": "than the last one.",
+            "options": [
+              "more difficult",
+              "difficulter"
+            ],
+            "answer": "more difficult",
+            "originalSentence": "This puzzle is **more difficult / difficulter** than the last one.",
+            "completedSentence": "This puzzle is more difficult than the last one."
+          },
+          {
+            "id": "b1-u26-exd-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The Amazon is",
+            "sentenceAfter": "river in South America.",
+            "options": [
+              "the longer",
+              "the longest"
+            ],
+            "answer": "the longest",
+            "originalSentence": "The Amazon is **the longer / the longest** river in South America.",
+            "completedSentence": "The Amazon is the longest river in South America."
+          },
+          {
+            "id": "b1-u26-exd-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Your handwriting is",
+            "sentenceAfter": "than mine.",
+            "options": [
+              "clearer",
+              "the clearest"
+            ],
+            "answer": "clearer",
+            "originalSentence": "Your handwriting is **clearer / the clearest** than mine.",
+            "completedSentence": "Your handwriting is clearer than mine."
+          },
+          {
+            "id": "b1-u26-exd-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Today is",
+            "sentenceAfter": "day this week.",
+            "options": [
+              "the wetter",
+              "the wettest"
+            ],
+            "answer": "the wettest",
+            "originalSentence": "Today is **the wetter / the wettest** day this week.",
+            "completedSentence": "Today is the wettest day this week."
+          },
+          {
+            "id": "b1-u26-exd-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This route is",
+            "sentenceAfter": "than travelling by plane.",
+            "options": [
+              "less expensive",
+              "the less expensive"
+            ],
+            "answer": "less expensive",
+            "originalSentence": "This route is **less expensive / the less expensive** than travelling by plane.",
+            "completedSentence": "This route is less expensive than travelling by plane."
+          },
+          {
+            "id": "b1-u26-exd-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She completed the exercise",
+            "sentenceAfter": "than anyone else.",
+            "options": [
+              "more carefully",
+              "the most carefully"
+            ],
+            "answer": "more carefully",
+            "originalSentence": "She completed the exercise **more carefully / the most carefully** than anyone else.",
+            "completedSentence": "She completed the exercise more carefully than anyone else."
+          },
+          {
+            "id": "b1-u26-exd-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Leo is",
+            "sentenceAfter": "student in the class.",
+            "options": [
+              "the funniest",
+              "funnier"
+            ],
+            "answer": "the funniest",
+            "originalSentence": "Leo is **the funniest / funnier** student in the class.",
+            "completedSentence": "Leo is the funniest student in the class."
+          },
+          {
+            "id": "b1-u26-exd-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "That was",
+            "sentenceAfter": "explanation of all.",
+            "options": [
+              "the least helpful",
+              "less helpful"
+            ],
+            "answer": "the least helpful",
+            "originalSentence": "That was **the least helpful / less helpful** explanation of all.",
+            "completedSentence": "That was the least helpful explanation of all."
+          }
+        ]
+      },
+      {
+        "id": "b1-u26-ex-e",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "E: Error correction",
+        "title": "E: Error correction",
+        "instructions": "Each sentence has one mistake in comparison forms. Find the bold word(s) and write the correct form.",
+        "studentInstruction": "Each sentence has one mistake in comparison forms. Find the bold word(s) and write the correct form.",
+        "legacyKey": "E",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u26-exe-1",
+            "formatType": "error_correction",
+            "sentence": "This lesson is boringer than yesterday's.",
+            "highlightedText": "boringer",
+            "answer": "more boring",
+            "acceptedAnswers": [
+              "more boring"
+            ]
+          },
+          {
+            "id": "b1-u26-exe-2",
+            "formatType": "error_correction",
+            "sentence": "She is the better organised student in class.",
+            "highlightedText": "better",
+            "answer": "the best",
+            "acceptedAnswers": [
+              "the best"
+            ]
+          },
+          {
+            "id": "b1-u26-exe-3",
+            "formatType": "error_correction",
+            "sentence": "My suitcase is biger than yours.",
+            "highlightedText": "biger",
+            "answer": "bigger",
+            "acceptedAnswers": [
+              "bigger"
+            ]
+          },
+          {
+            "id": "b1-u26-exe-4",
+            "formatType": "error_correction",
+            "sentence": "He studies most carefully than his classmates.",
+            "highlightedText": "most carefully",
+            "answer": "more carefully",
+            "acceptedAnswers": [
+              "more carefully"
+            ]
+          },
+          {
+            "id": "b1-u26-exe-5",
+            "formatType": "error_correction",
+            "sentence": "This is the goodest pizza in town.",
+            "highlightedText": "goodest",
+            "answer": "the best",
+            "acceptedAnswers": [
+              "the best"
+            ]
+          },
+          {
+            "id": "b1-u26-exe-6",
+            "formatType": "error_correction",
+            "sentence": "Today we arrived more late than usual.",
+            "highlightedText": "more late",
+            "answer": "later",
+            "acceptedAnswers": [
+              "later"
+            ]
+          },
+          {
+            "id": "b1-u26-exe-7",
+            "formatType": "error_correction",
+            "sentence": "Who speaks the better in your family?",
+            "highlightedText": "better",
+            "answer": "the best",
+            "acceptedAnswers": [
+              "the best"
+            ]
+          },
+          {
+            "id": "b1-u26-exe-8",
+            "formatType": "error_correction",
+            "sentence": "It's the most windy afternoon this month.",
+            "highlightedText": "most windy",
+            "answer": "windiest",
+            "acceptedAnswers": [
+              "windiest"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u26-ex-f",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "F: Key word transformation",
+        "title": "F: Key word transformation",
+        "instructions": "Complete the second sentence so it means the same.",
+        "studentInstruction": "Complete the second sentence so it means the same.",
+        "legacyKey": "F",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u26-exf-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This puzzle is easier than the crossword. **DIFFICULT**\nThe crossword ...... this puzzle.",
+            "answer": "is more difficult than",
+            "acceptedAnswers": [
+              "is more difficult than"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exf-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Nobody in the class speaks as clearly as Emma. **CLEARLY**\nEmma ...... in the class.",
+            "answer": "speaks the most clearly",
+            "acceptedAnswers": [
+              "speaks the most clearly"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exf-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My old bike wasn't as comfortable as this one. **MORE**\nThis bike ...... my old one.",
+            "answer": "is more comfortable than",
+            "acceptedAnswers": [
+              "is more comfortable than"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exf-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Ryan is the strongest player on the team. **THAN**\nRyan is ...... any other player on the team.",
+            "answer": "stronger than",
+            "acceptedAnswers": [
+              "stronger than"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exf-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This was the least useful app on my phone. **USELESS**\nThis was ...... app on my phone.",
+            "answer": "the most useless",
+            "acceptedAnswers": [
+              "the most useless"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u26-exf-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I drive more carefully than my brother. **CAREFULLY**\nMy brother doesn't drive ...... me.",
+            "answer": "as carefully as",
+            "acceptedAnswers": [
+              "as carefully as"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u26-ex-g",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "G: Mixed comparison practice",
+        "title": "G: Mixed comparison practice",
+        "instructions": "Each sentence has a mistake in the comparative or superlative form. Write the correct form.",
+        "studentInstruction": "Each sentence has a mistake in the comparative or superlative form. Write the correct form.",
+        "legacyKey": "G",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u26-exg-1",
+            "formatType": "error_correction",
+            "sentence": "This sofa is more soft than the old one.",
+            "highlightedText": "more soft",
+            "answer": "softer",
+            "acceptedAnswers": [
+              "softer"
+            ]
+          },
+          {
+            "id": "b1-u26-exg-2",
+            "formatType": "error_correction",
+            "sentence": "She is the most young teacher at the school.",
+            "highlightedText": "most young",
+            "answer": "youngest",
+            "acceptedAnswers": [
+              "youngest"
+            ]
+          },
+          {
+            "id": "b1-u26-exg-3",
+            "formatType": "error_correction",
+            "sentence": "My new computer is more fast than my old one.",
+            "highlightedText": "more fast",
+            "answer": "faster",
+            "acceptedAnswers": [
+              "faster"
+            ]
+          },
+          {
+            "id": "b1-u26-exg-4",
+            "formatType": "error_correction",
+            "sentence": "He swims more well than anyone in the team.",
+            "highlightedText": "more well",
+            "answer": "better",
+            "acceptedAnswers": [
+              "better"
+            ]
+          },
+          {
+            "id": "b1-u26-exg-5",
+            "formatType": "error_correction",
+            "sentence": "That was the worstest meal I've ever eaten.",
+            "highlightedText": "worstest",
+            "answer": "worst",
+            "acceptedAnswers": [
+              "worst"
+            ]
+          },
+          {
+            "id": "b1-u26-exg-6",
+            "formatType": "error_correction",
+            "sentence": "This coat is more warm than that one.",
+            "highlightedText": "more warm",
+            "answer": "warmer",
+            "acceptedAnswers": [
+              "warmer"
+            ]
+          },
+          {
+            "id": "b1-u26-exg-7",
+            "formatType": "error_correction",
+            "sentence": "My sister is more short than me.",
+            "highlightedText": "more short",
+            "answer": "shorter",
+            "acceptedAnswers": [
+              "shorter"
+            ]
+          },
+          {
+            "id": "b1-u26-exg-8",
+            "formatType": "error_correction",
+            "sentence": "It was the most foggy morning of the year.",
+            "highlightedText": "most foggy",
+            "answer": "foggiest",
+            "acceptedAnswers": [
+              "foggiest"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

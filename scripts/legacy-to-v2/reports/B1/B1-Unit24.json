@@ -1,0 +1,45 @@
+{
+  "unit": 24,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "Topic vocabulary (gap fill)",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "Circle the correct word",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "Phrasal verbs (complete the gaps)",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 3,
+    "legacyItemCount": 22,
+    "v2ItemCount": 22,
+    "estimatedScreens": 22,
+    "formatTypes": [
+      "free_text_gap_fill",
+      "two_option_choice"
+    ]
+  }
+}

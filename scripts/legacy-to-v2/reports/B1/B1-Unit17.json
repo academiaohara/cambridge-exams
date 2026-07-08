@@ -1,0 +1,110 @@
+{
+  "unit": 17,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: Complete with a relative pronoun",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: Defining or non-defining",
+      "legacyPattern": "comma-rewrite",
+      "formatType": "comma_placement",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": [
+        "comma instructions → comma_placement rewrite_sentence"
+      ]
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: Use who, which or that",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "D: Join the sentences",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "E: Error correction",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "F",
+      "title": "F: Key word transformation",
+      "legacyPattern": "word-formation",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "G",
+      "title": "G: Multiple choice",
+      "legacyPattern": "mc-standalone",
+      "formatType": "mc_4_option",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "H",
+      "title": "H: Complete the text",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "I",
+      "title": "I: Key word transformation",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 9,
+    "legacyItemCount": 62,
+    "v2ItemCount": 62,
+    "estimatedScreens": 62,
+    "formatTypes": [
+      "free_text_gap_fill",
+      "comma_placement",
+      "two_option_choice",
+      "full_sentence_write",
+      "mc_4_option"
+    ]
+  }
+}

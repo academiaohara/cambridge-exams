@@ -32,6 +32,40 @@ export function makeExerciseId(unitPrefix, exerciseKey) {
   return unitPrefix + '-ex-' + String(exerciseKey).toLowerCase();
 }
 
+export function flattenExerciseItems(exercise) {
+  if (exercise.type === 'grouped' && Array.isArray(exercise.groups)) {
+    var flat = [];
+    exercise.groups.forEach(function(g) {
+      (g.questions || g.items || []).forEach(function(q) { flat.push(q); });
+    });
+    return flat;
+  }
+  return exercise.questions || exercise.items || [];
+}
+
+export function hasGapMarkers(text) {
+  return /……|\.{3,}|_{3,}/.test(String(text || ''));
+}
+
+export function isInlineAbChoice(sentence) {
+  return /^A\s+.+\s+\/\s+B\s+/i.test(String(sentence || '').trim());
+}
+
+export function parseInlineAbChoice(sentence, answer) {
+  var text = String(sentence || '').trim();
+  var parts = text.split(/\s+\/\s+/);
+  if (parts.length < 2) return null;
+  var optA = parts[0].replace(/^A\s+/i, '').trim();
+  var optB = parts[1].replace(/^B\s+/i, '').trim();
+  return {
+    sentenceBefore: '',
+    sentenceAfter: '',
+    options: [optA, optB],
+    answer: String(answer || '').trim().toUpperCase(),
+    displayPrompt: text
+  };
+}
+
 export function countLegacyItems(exercise, detection) {
   if (detection.legacyItemCount != null) return detection.legacyItemCount;
   if (exercise.type === 'crossword') {

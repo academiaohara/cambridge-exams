@@ -1,0 +1,522 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 8,
+  "unit": 24,
+  "type": "vocabulary",
+  "unitTitle": "[V2] Unit 24: People and daily life",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 24: People and daily life"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit24.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 3
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u24-theory",
+    "title": "Topic vocabulary",
+    "shortTitle": "Vocabulary",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b1-u24-theory-card-1",
+        "title": "Unit 24: People and daily life",
+        "subtitle": "",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Unit focus",
+            "items": [
+              "people and daily life"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u24-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 15,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u24-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u24-exa-1",
+            "b1-u24-exa-2",
+            "b1-u24-exa-3",
+            "b1-u24-exa-4",
+            "b1-u24-exa-5",
+            "b1-u24-exa-6",
+            "b1-u24-exa-7",
+            "b1-u24-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u24-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u24-exb-1",
+            "b1-u24-exb-2",
+            "b1-u24-exb-3",
+            "b1-u24-exb-4",
+            "b1-u24-exb-5",
+            "b1-u24-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u24-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u24-exc-1",
+            "b1-u24-exc-2",
+            "b1-u24-exc-3",
+            "b1-u24-exc-4",
+            "b1-u24-exc-5",
+            "b1-u24-exc-6",
+            "b1-u24-exc-7",
+            "b1-u24-exc-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 22,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u24-ex-a",
+      "b1-u24-ex-b",
+      "b1-u24-ex-c"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u24-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Topic vocabulary (gap fill)",
+        "title": "Topic vocabulary (gap fill)",
+        "instructions": "Complete the sentences with words from the box.",
+        "studentInstruction": "Complete the sentences with words from the box.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "admit",
+          "arrested",
+          "community",
+          "court",
+          "habit",
+          "identity card",
+          "population",
+          "responsible",
+          "schedule",
+          "society",
+          "typical",
+          "youth club"
+        ],
+        "wordBank": [
+          "admit",
+          "arrested",
+          "community",
+          "court",
+          "habit",
+          "identity card",
+          "population",
+          "responsible",
+          "schedule",
+          "society",
+          "typical",
+          "youth club"
+        ],
+        "items": [
+          {
+            "id": "b1-u24-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You must show your ...... before boarding the plane.",
+            "answer": "identity card",
+            "acceptedAnswers": [
+              "identity card"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Drinking water before bed is a good ...... .",
+            "answer": "habit",
+            "acceptedAnswers": [
+              "habit"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "According to my ......, the lesson starts at nine.",
+            "answer": "schedule",
+            "acceptedAnswers": [
+              "schedule"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The boy finally had to ...... breaking the vase.",
+            "answer": "admit",
+            "acceptedAnswers": [
+              "admit"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The local ...... organises activities for teenagers every Friday.",
+            "answer": "youth club",
+            "acceptedAnswers": [
+              "youth club"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Jack is ...... for feeding the dog this week.",
+            "answer": "responsible",
+            "acceptedAnswers": [
+              "responsible"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The whole ...... worked together after the storm.",
+            "answer": "community",
+            "acceptedAnswers": [
+              "community"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The ...... of the village is only about 2,000 people.",
+            "answer": "population",
+            "acceptedAnswers": [
+              "population"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u24-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Circle the correct word",
+        "title": "Circle the correct word",
+        "instructions": "Choose the correct option in each sentence.",
+        "studentInstruction": "Choose the correct option in each sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u24-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Taking things from shops without paying is",
+            "sentenceAfter": ".",
+            "options": [
+              "illegal",
+              "familiar"
+            ],
+            "answer": "illegal",
+            "originalSentence": "Taking things from shops without paying is **illegal / familiar**.",
+            "completedSentence": "Taking things from shops without paying is illegal ."
+          },
+          {
+            "id": "b1-u24-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The criminal appeared in",
+            "sentenceAfter": "yesterday.",
+            "options": [
+              "court",
+              "society"
+            ],
+            "answer": "court",
+            "originalSentence": "The criminal appeared in **court / society** yesterday.",
+            "completedSentence": "The criminal appeared in court yesterday."
+          },
+          {
+            "id": "b1-u24-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "It's quite",
+            "sentenceAfter": "for him to forget his keys.",
+            "options": [
+              "typical",
+              "social"
+            ],
+            "answer": "typical",
+            "originalSentence": "It's quite **typical / social** for him to forget his keys.",
+            "completedSentence": "It's quite typical for him to forget his keys."
+          },
+          {
+            "id": "b1-u24-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Adults can",
+            "sentenceAfter": "in elections.",
+            "options": [
+              "vote",
+              "rob"
+            ],
+            "answer": "vote",
+            "originalSentence": "Adults can **vote / rob** in elections.",
+            "completedSentence": "Adults can vote in elections."
+          },
+          {
+            "id": "b1-u24-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "A",
+            "sentenceAfter": "usually lives in the area.",
+            "options": [
+              "resident",
+              "criminal"
+            ],
+            "answer": "resident",
+            "originalSentence": "A **resident / criminal** usually lives in the area.",
+            "completedSentence": "A resident usually lives in the area."
+          },
+          {
+            "id": "b1-u24-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The country wants to protect its national",
+            "sentenceAfter": ".",
+            "options": [
+              "culture",
+              "routine"
+            ],
+            "answer": "culture",
+            "originalSentence": "The country wants to protect its national **culture / routine**.",
+            "completedSentence": "The country wants to protect its national culture ."
+          }
+        ]
+      },
+      {
+        "id": "b1-u24-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Phrasal verbs (complete the gaps)",
+        "title": "Phrasal verbs (complete the gaps)",
+        "instructions": "Write the correct phrasal verb in each gap.",
+        "studentInstruction": "Write the correct phrasal verb in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "wake up",
+          "break into",
+          "put away",
+          "get up",
+          "get away with",
+          "wash up",
+          "move in",
+          "catch up with"
+        ],
+        "wordBank": [
+          "wake up",
+          "break into",
+          "put away",
+          "get up",
+          "get away with",
+          "wash up",
+          "move in",
+          "catch up with"
+        ],
+        "items": [
+          {
+            "id": "b1-u24-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I usually ...... at 6:30 during the week.",
+            "answer": "get up",
+            "acceptedAnswers": [
+              "get up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please ...... early tomorrow because we have to leave at seven.",
+            "answer": "wake up",
+            "acceptedAnswers": [
+              "wake up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you ...... your clothes after trying them on?",
+            "answer": "put away",
+            "acceptedAnswers": [
+              "put away"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My brother helps ...... after dinner every evening.",
+            "answer": "wash up",
+            "acceptedAnswers": [
+              "wash up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Someone tried to ...... the shop last night.",
+            "answer": "break into",
+            "acceptedAnswers": [
+              "break into"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "After being ill, she needed time to ...... the rest of the class.",
+            "answer": "catch up with",
+            "acceptedAnswers": [
+              "catch up with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He copied my homework, but he didn't ...... it.",
+            "answer": "get away with",
+            "acceptedAnswers": [
+              "get away with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u24-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Our new neighbours will ...... next weekend.",
+            "answer": "move in",
+            "acceptedAnswers": [
+              "move in"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

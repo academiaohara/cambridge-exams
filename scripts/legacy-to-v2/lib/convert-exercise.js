@@ -7,7 +7,10 @@ import {
   parseSyncSentences,
   extractBold,
   extractLetterCountFromClue,
-  stripBold
+  stripBold,
+  flattenExerciseItems,
+  parseInlineAbChoice,
+  slugify
 } from './utils.js';
 import { detectLegacyFormat } from './detect-format.js';
 
@@ -45,6 +48,23 @@ function convertItem(exercise, item, index, unitPrefix, exerciseKey, detection) 
 
   switch (detection.formatType) {
     case 'two_option_choice': {
+      if (detection.legacyPattern === 'same-meaning-ab') {
+        return Object.assign(base, {
+          context: item.context || '',
+          sentenceBefore: item.context || '',
+          sentenceAfter: '',
+          options: [
+            'A: ' + String(item.sentenceA || '').trim(),
+            'B: ' + String(item.sentenceB || '').trim()
+          ],
+          answer: String(item.answer || '').trim().toUpperCase(),
+          originalSentence: item.context || ''
+        });
+      }
+      if (detection.legacyPattern === 'inline-ab-choice') {
+        var inline = parseInlineAbChoice(item.sentence, item.answer);
+        if (inline) return Object.assign(base, inline);
+      }
       if (detection.legacyPattern === 'yn' || detection.legacyPattern === 'yn-inline') {
         return Object.assign(base, {
           sentenceBefore: stripBold(item.sentence || ''),
@@ -126,6 +146,30 @@ function convertItem(exercise, item, index, unitPrefix, exerciseKey, detection) 
       });
     }
 
+    case 'find_extra_word': {
+      return Object.assign(base, {
+        sentence: item.sentence || '',
+        answer: String(item.answer || '').trim(),
+        acceptedAnswers: [String(item.answer || '').trim()]
+      });
+    }
+
+    case 'comma_placement': {
+      return Object.assign(base, {
+        sentence: item.sentence || '',
+        answer: item.answer,
+        acceptedAnswers: splitAnswerVariants(item.answer),
+        interactionMode: 'rewrite_sentence'
+      });
+    }
+
+    case 'stative_sorting': {
+      return Object.assign(base, {
+        groups: item.groups || [],
+        verbs: item.verbs || []
+      });
+    }
+
     default:
       return Object.assign(base, {
         sentence: item.sentence || '',
@@ -177,6 +221,26 @@ export function convertLegacyExercise(exercise, exerciseKey, unitPrefix, unitMet
     return { exercise: converted, detection: detection };
   }
 
+  if (detection.formatType === 'stative_sorting' && detection.legacyPattern === 'drag-category') {
+    var categories = exercise.categories || [];
+    var words = exercise.words || [];
+    var answers = exercise.answers || {};
+    var groups = categories.map(function(cat) {
+      return {
+        groupId: slugify(cat),
+        label: cat,
+        answers: words.filter(function(w) { return answers[w] === cat; })
+      };
+    });
+    converted.items = [{
+      id: makeItemId(unitPrefix, exerciseKey, 0),
+      formatType: 'stative_sorting',
+      groups: groups,
+      verbs: words.map(function(w) { return { verb: w, groupId: slugify(answers[w]) }; })
+    }];
+    return { exercise: converted, detection: detection };
+  }
+
   if (detection.screenMode === 'single_passage_with_gaps') {
     converted.exerciseType = 'passage_gap_fill';
     converted.formatType = 'passage_gap_fill';
@@ -189,14 +253,14 @@ export function convertLegacyExercise(exercise, exerciseKey, unitPrefix, unitMet
   }
 
   if (detection.screenMode === 'all_pairs_single_screen') {
-    converted.items = (exercise.questions || exercise.items || []).map(function(item, index) {
+    converted.items = flattenExerciseItems(exercise).map(function(item, index) {
       return convertItem(exercise, item, index, unitPrefix, exerciseKey, detection);
     });
     return { exercise: converted, detection: detection };
   }
 
   if (detection.screenMode === 'all_gaps_single_screen') {
-    converted.items = (exercise.questions || exercise.items || []).map(function(item, index) {
+    converted.items = flattenExerciseItems(exercise).map(function(item, index) {
       return convertItem(exercise, item, index, unitPrefix, exerciseKey, detection);
     });
     converted.interaction.displayMode = 'passage';
@@ -204,7 +268,7 @@ export function convertLegacyExercise(exercise, exerciseKey, unitPrefix, unitMet
     return { exercise: converted, detection: detection };
   }
 
-  var sourceItems = exercise.questions || exercise.items || [];
+  var sourceItems = flattenExerciseItems(exercise);
   converted.items = sourceItems.map(function(item, index) {
     return convertItem(exercise, item, index, unitPrefix, exerciseKey, detection);
   });
@@ -234,6 +298,9 @@ export function buildScreenGenerationRule(exercise, detection) {
 
 export function countV2Items(exercise, detection) {
   if (detection.formatType === 'word_bank_tick') return 1;
+  if (detection.formatType === 'stative_sorting' && detection.legacyPattern === 'drag-category') {
+    return detection.legacyItemCount || 1;
+  }
   if (detection.screenMode === 'single_passage_with_gaps') {
     return (exercise.answers || []).length;
   }

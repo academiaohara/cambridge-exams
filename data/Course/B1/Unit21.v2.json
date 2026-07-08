@@ -1,0 +1,1310 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 7,
+  "unit": 21,
+  "type": "vocabulary",
+  "unitTitle": "[V2] Unit 21: Sending and receiving",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 21: Sending and receiving"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit21.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 9
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u21-theory",
+    "title": "Topic vocabulary",
+    "shortTitle": "Vocabulary",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b1-u21-theory-card-1",
+        "title": "Unit 21: Sending and receiving",
+        "subtitle": "",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Unit focus",
+            "items": [
+              "sending and receiving"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u21-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 46,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u21-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u21-exa-1",
+            "b1-u21-exa-2",
+            "b1-u21-exa-3",
+            "b1-u21-exa-4",
+            "b1-u21-exa-5",
+            "b1-u21-exa-6",
+            "b1-u21-exa-7",
+            "b1-u21-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u21-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u21-exb-1",
+            "b1-u21-exb-2",
+            "b1-u21-exb-3",
+            "b1-u21-exb-4",
+            "b1-u21-exb-5",
+            "b1-u21-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u21-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u21-exc-1",
+            "b1-u21-exc-2",
+            "b1-u21-exc-3",
+            "b1-u21-exc-4",
+            "b1-u21-exc-5",
+            "b1-u21-exc-6",
+            "b1-u21-exc-7",
+            "b1-u21-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u21-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u21-exd-1",
+            "b1-u21-exd-2",
+            "b1-u21-exd-3",
+            "b1-u21-exd-4",
+            "b1-u21-exd-5",
+            "b1-u21-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u21-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u21-exe-1",
+            "b1-u21-exe-2",
+            "b1-u21-exe-3",
+            "b1-u21-exe-4",
+            "b1-u21-exe-5",
+            "b1-u21-exe-6",
+            "b1-u21-exe-7",
+            "b1-u21-exe-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u21-ex-f",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u21-exf-1",
+            "b1-u21-exf-2",
+            "b1-u21-exf-3",
+            "b1-u21-exf-4",
+            "b1-u21-exf-5",
+            "b1-u21-exf-6",
+            "b1-u21-exf-7",
+            "b1-u21-exf-8",
+            "b1-u21-exf-9",
+            "b1-u21-exf-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u21-ex-g",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u21-exg-1",
+            "b1-u21-exg-2",
+            "b1-u21-exg-3",
+            "b1-u21-exg-4",
+            "b1-u21-exg-5",
+            "b1-u21-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u21-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u21-exh-1",
+            "b1-u21-exh-2",
+            "b1-u21-exh-3",
+            "b1-u21-exh-4",
+            "b1-u21-exh-5",
+            "b1-u21-exh-6",
+            "b1-u21-exh-7",
+            "b1-u21-exh-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u21-ex-j",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u21-exj-1",
+            "b1-u21-exj-2",
+            "b1-u21-exj-3",
+            "b1-u21-exj-4",
+            "b1-u21-exj-5",
+            "b1-u21-exj-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 66,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u21-ex-a",
+      "b1-u21-ex-b",
+      "b1-u21-ex-c",
+      "b1-u21-ex-d",
+      "b1-u21-ex-e",
+      "b1-u21-ex-f",
+      "b1-u21-ex-g",
+      "b1-u21-ex-h",
+      "b1-u21-ex-j"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u21-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Topic vocabulary (gap fill)",
+        "title": "Topic vocabulary (gap fill)",
+        "instructions": "Complete the sentences with words from the box.",
+        "studentInstruction": "Complete the sentences with words from the box.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "accent",
+          "announcement",
+          "broadcast",
+          "channel",
+          "click",
+          "file",
+          "informal",
+          "interrupt",
+          "link",
+          "mobile phone",
+          "report",
+          "website"
+        ],
+        "wordBank": [
+          "accent",
+          "announcement",
+          "broadcast",
+          "channel",
+          "click",
+          "file",
+          "informal",
+          "interrupt",
+          "link",
+          "mobile phone",
+          "report",
+          "website"
+        ],
+        "items": [
+          {
+            "id": "b1-u21-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I saved the ...... in a folder called 'English homework'.",
+            "answer": "file",
+            "acceptedAnswers": [
+              "file"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please don't ...... the teacher while she's explaining the task.",
+            "answer": "interrupt",
+            "acceptedAnswers": [
+              "interrupt"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There was an ...... at the airport about a cancelled flight.",
+            "answer": "announcement",
+            "acceptedAnswers": [
+              "announcement"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Which ...... usually shows nature documentaries?",
+            "answer": "channel",
+            "acceptedAnswers": [
+              "channel"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "His Scottish ...... is difficult for me to understand sometimes.",
+            "answer": "accent",
+            "acceptedAnswers": [
+              "accent"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You can download the application form from our ...... .",
+            "answer": "website",
+            "acceptedAnswers": [
+              "website"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The radio station will ...... the concert live tomorrow.",
+            "answer": "broadcast",
+            "acceptedAnswers": [
+              "broadcast"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I couldn't call you because my ...... was out of battery.",
+            "answer": "mobile phone",
+            "acceptedAnswers": [
+              "mobile phone"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u21-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Circle the correct word",
+        "title": "Circle the correct word",
+        "instructions": "Choose the correct option in each sentence.",
+        "studentInstruction": "Choose the correct option in each sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u21-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Can you",
+            "sentenceAfter": "your surname slowly, please?",
+            "options": [
+              "pronounce",
+              "persuade"
+            ],
+            "answer": "pronounce",
+            "originalSentence": "Can you **pronounce / persuade** your surname slowly, please?",
+            "completedSentence": "Can you pronounce your surname slowly, please?"
+          },
+          {
+            "id": "b1-u21-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Don't",
+            "sentenceAfter": "during the interview; be polite.",
+            "options": [
+              "swear",
+              "whisper"
+            ],
+            "answer": "swear",
+            "originalSentence": "Don't **swear / whisper** during the interview; be polite.",
+            "completedSentence": "Don't swear during the interview; be polite."
+          },
+          {
+            "id": "b1-u21-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I need to",
+            "sentenceAfter": "my password carefully.",
+            "options": [
+              "type",
+              "ring"
+            ],
+            "answer": "type",
+            "originalSentence": "I need to **type / ring** my password carefully.",
+            "completedSentence": "I need to type my password carefully."
+          },
+          {
+            "id": "b1-u21-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This e-mail sounds too",
+            "sentenceAfter": "for a message to a close friend.",
+            "options": [
+              "formal",
+              "clear"
+            ],
+            "answer": "formal",
+            "originalSentence": "This e-mail sounds too **formal / clear** for a message to a close friend.",
+            "completedSentence": "This e-mail sounds too formal for a message to a close friend."
+          },
+          {
+            "id": "b1-u21-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The weather",
+            "sentenceAfter": "said there might be snow tonight.",
+            "options": [
+              "report",
+              "request"
+            ],
+            "answer": "report",
+            "originalSentence": "The weather **report / request** said there might be snow tonight.",
+            "completedSentence": "The weather report said there might be snow tonight."
+          },
+          {
+            "id": "b1-u21-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You need to",
+            "sentenceAfter": "the blue button to upload the image.",
+            "options": [
+              "click",
+              "pause"
+            ],
+            "answer": "click",
+            "originalSentence": "You need to **click / pause** the blue button to upload the image.",
+            "completedSentence": "You need to click the blue button to upload the image."
+          }
+        ]
+      },
+      {
+        "id": "b1-u21-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Phrasal verbs (complete the gaps)",
+        "title": "Phrasal verbs (complete the gaps)",
+        "instructions": "Write the correct phrasal verb in each gap.",
+        "studentInstruction": "Write the correct phrasal verb in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "call back",
+          "come out",
+          "cut off",
+          "fill in",
+          "hang up",
+          "log off",
+          "log on to",
+          "print out"
+        ],
+        "wordBank": [
+          "call back",
+          "come out",
+          "cut off",
+          "fill in",
+          "hang up",
+          "log off",
+          "log on to",
+          "print out"
+        ],
+        "items": [
+          {
+            "id": "b1-u21-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm busy now, but I'll ...... in ten minutes.",
+            "answer": "call back",
+            "acceptedAnswers": [
+              "call back"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Her new book ...... next month.",
+            "answer": "comes out",
+            "acceptedAnswers": [
+              "comes out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The signal was terrible and we were ...... during the conversation.",
+            "answer": "cut off",
+            "acceptedAnswers": [
+              "cut off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You must ...... your address and phone number on this form.",
+            "answer": "fill in",
+            "acceptedAnswers": [
+              "fill in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please don't ...... before I give you the reference number.",
+            "answer": "hang up",
+            "acceptedAnswers": [
+              "hang up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Make sure you ...... after checking your bank account online.",
+            "answer": "log off",
+            "acceptedAnswers": [
+              "log off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I couldn't ...... my e-mail because I forgot the password.",
+            "answer": "log on to",
+            "acceptedAnswers": [
+              "log on to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you ...... the tickets before we leave?",
+            "answer": "print out",
+            "acceptedAnswers": [
+              "print out"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u21-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Prepositional phrases",
+        "title": "Prepositional phrases",
+        "instructions": "Complete each sentence with a phrase from the list.",
+        "studentInstruction": "Complete each sentence with a phrase from the list.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "by e-mail",
+          "on the Internet",
+          "on the news",
+          "on the phone",
+          "on the radio",
+          "on TV"
+        ],
+        "wordBank": [
+          "by e-mail",
+          "on the Internet",
+          "on the news",
+          "on the phone",
+          "on the radio",
+          "on TV"
+        ],
+        "items": [
+          {
+            "id": "b1-u21-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I listened to the interview ...... while I was cooking.",
+            "answer": "on the radio",
+            "acceptedAnswers": [
+              "on the radio"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They showed the final episode ...... last night.",
+            "answer": "on TV",
+            "acceptedAnswers": [
+              "on TV"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The company sent the contract ...... .",
+            "answer": "by e-mail",
+            "acceptedAnswers": [
+              "by e-mail"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Did you hear about the earthquake ...... ?",
+            "answer": "on the news",
+            "acceptedAnswers": [
+              "on the news"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You can find lots of free language exercises ...... .",
+            "answer": "on the Internet",
+            "acceptedAnswers": [
+              "on the Internet"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My mum is ......, so she can't answer the door.",
+            "answer": "on the phone",
+            "acceptedAnswers": [
+              "on the phone"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u21-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Word patterns",
+        "title": "Word patterns",
+        "instructions": "Write one preposition in each gap.",
+        "studentInstruction": "Write one preposition in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u21-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The teacher commented ...... my pronunciation.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We communicate ...... our exchange students by video call.",
+            "answer": "with",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She glanced ...... the message and smiled.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I received a postcard ...... my cousin in Ireland.",
+            "answer": "from",
+            "acceptedAnswers": [
+              "from"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please reply ...... this e-mail before Friday.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'll write ...... you about my first week at university.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you translate this sentence ...... English?",
+            "answer": "into",
+            "acceptedAnswers": [
+              "into"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He told everyone ...... the new school website.",
+            "answer": "about",
+            "acceptedAnswers": [
+              "about"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u21-ex-f",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Word formation",
+        "title": "Word formation",
+        "instructions": "Complete each sentence with the correct form of the word in capitals.",
+        "studentInstruction": "Complete each sentence with the correct form of the word in capitals.",
+        "legacyKey": "F",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u21-exf-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I'll ...... call you when I arrive. (CERTAIN)",
+            "answer": "certainly",
+            "acceptedAnswers": [
+              "certainly"
+            ],
+            "explanation": "",
+            "verbPrompt": "CERTAIN"
+          },
+          {
+            "id": "b1-u21-exf-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Modern phones have changed ...... completely. (COMMUNICATE)",
+            "answer": "communication",
+            "acceptedAnswers": [
+              "communication"
+            ],
+            "explanation": "",
+            "verbPrompt": "COMMUNICATE"
+          },
+          {
+            "id": "b1-u21-exf-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "There was a problem with the Internet ...... . (CONNECT)",
+            "answer": "connection",
+            "acceptedAnswers": [
+              "connection"
+            ],
+            "explanation": "",
+            "verbPrompt": "CONNECT"
+          },
+          {
+            "id": "b1-u21-exf-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The ...... of the package took three days. (DELIVER)",
+            "answer": "delivery",
+            "acceptedAnswers": [
+              "delivery"
+            ],
+            "explanation": "",
+            "verbPrompt": "DELIVER"
+          },
+          {
+            "id": "b1-u21-exf-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "His angry ...... showed that he was upset. (EXPRESS)",
+            "answer": "expression",
+            "acceptedAnswers": [
+              "expression"
+            ],
+            "explanation": "",
+            "verbPrompt": "EXPRESS"
+          },
+          {
+            "id": "b1-u21-exf-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The website is very ...... and easy to use. (INFORM)",
+            "answer": "informative",
+            "acceptedAnswers": [
+              "informative"
+            ],
+            "explanation": "",
+            "verbPrompt": "INFORM"
+          },
+          {
+            "id": "b1-u21-exf-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The weather ...... was completely wrong yesterday. (PREDICT)",
+            "answer": "prediction",
+            "acceptedAnswers": [
+              "prediction"
+            ],
+            "explanation": "",
+            "verbPrompt": "PREDICT"
+          },
+          {
+            "id": "b1-u21-exf-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "They met ...... to discuss the surprise party. (SECRET)",
+            "answer": "secretly",
+            "acceptedAnswers": [
+              "secretly"
+            ],
+            "explanation": "",
+            "verbPrompt": "SECRET"
+          },
+          {
+            "id": "b1-u21-exf-9",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The main ...... at the conference was excellent. (SPEAK)",
+            "answer": "speaker",
+            "acceptedAnswers": [
+              "speaker"
+            ],
+            "explanation": "",
+            "verbPrompt": "SPEAK"
+          },
+          {
+            "id": "b1-u21-exf-10",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "This ...... is much better than the original text. (TRANSLATE)",
+            "answer": "translation",
+            "acceptedAnswers": [
+              "translation"
+            ],
+            "explanation": "",
+            "verbPrompt": "TRANSLATE"
+          }
+        ]
+      },
+      {
+        "id": "b1-u21-ex-g",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "Multiple choice",
+        "title": "Multiple choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "G",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u21-exg-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Could you",
+            "sentenceAfter": "later? I'm driving right now.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "call back"
+              },
+              {
+                "letter": "B",
+                "text": "cut off"
+              },
+              {
+                "letter": "C",
+                "text": "print out"
+              },
+              {
+                "letter": "D",
+                "text": "log off"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exg-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Their new album will",
+            "sentenceAfter": "in September.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "hang up"
+              },
+              {
+                "letter": "B",
+                "text": "come out"
+              },
+              {
+                "letter": "C",
+                "text": "fill in"
+              },
+              {
+                "letter": "D",
+                "text": "ring"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exg-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I found that article",
+            "sentenceAfter": "and sent you the link.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "by phone"
+              },
+              {
+                "letter": "B",
+                "text": "on TV"
+              },
+              {
+                "letter": "C",
+                "text": "on the Internet"
+              },
+              {
+                "letter": "D",
+                "text": "on the radio"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exg-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Please don't",
+            "sentenceAfter": "while I'm explaining the rules.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "interrupt"
+              },
+              {
+                "letter": "B",
+                "text": "pause"
+              },
+              {
+                "letter": "C",
+                "text": "click"
+              },
+              {
+                "letter": "D",
+                "text": "publish"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exg-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You have to",
+            "sentenceAfter": "this form before joining the club.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "come out"
+              },
+              {
+                "letter": "B",
+                "text": "fill in"
+              },
+              {
+                "letter": "C",
+                "text": "call back"
+              },
+              {
+                "letter": "D",
+                "text": "cut off"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exg-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The call suddenly ended because we were",
+            "sentenceAfter": ".",
+            "options": [
+              {
+                "letter": "A",
+                "text": "broadcast"
+              },
+              {
+                "letter": "B",
+                "text": "interrupted"
+              },
+              {
+                "letter": "C",
+                "text": "cut off"
+              },
+              {
+                "letter": "D",
+                "text": "linked"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u21-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Mixed revision",
+        "title": "Mixed revision",
+        "instructions": "Complete each sentence with one suitable word.",
+        "studentInstruction": "Complete each sentence with one suitable word.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u21-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please send the photos by ...... when you get home.",
+            "answer": "e-mail",
+            "acceptedAnswers": [
+              "e-mail"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I need to ...... up now because my train is arriving.",
+            "answer": "hang",
+            "acceptedAnswers": [
+              "hang"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There was a short ...... on TV about online safety.",
+            "answer": "report",
+            "acceptedAnswers": [
+              "report"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The connection is bad, so your voice isn't very ...... .",
+            "answer": "clear",
+            "acceptedAnswers": [
+              "clear"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you ...... out the worksheet for tomorrow's lesson?",
+            "answer": "print",
+            "acceptedAnswers": [
+              "print"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'll ask Dad to call you ...... when he gets home.",
+            "answer": "back",
+            "acceptedAnswers": [
+              "back"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exh-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't ...... the speaker during the announcement.",
+            "answer": "interrupt",
+            "acceptedAnswers": [
+              "interrupt"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exh-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should log ...... before closing the browser.",
+            "answer": "off",
+            "acceptedAnswers": [
+              "off"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u21-ex-j",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Key word transformation",
+        "title": "Key word transformation",
+        "instructions": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "studentInstruction": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "legacyKey": "J",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "repeat",
+          "lower",
+          "decline",
+          "deliver",
+          "follow",
+          "refer"
+        ],
+        "wordBank": [
+          "repeat",
+          "lower",
+          "decline",
+          "deliver",
+          "follow",
+          "refer"
+        ],
+        "items": [
+          {
+            "id": "b1-u21-exj-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you say your address again, please?\nCould you ...... your address, please?",
+            "answer": "repeat",
+            "acceptedAnswers": [
+              "repeat"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exj-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please speak more quietly in the library.\nPlease ...... your voice in the library.",
+            "answer": "lower",
+            "acceptedAnswers": [
+              "lower"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exj-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She refused to give us any information.\nShe ...... information.",
+            "answer": "gave no",
+            "acceptedAnswers": [
+              "gave no"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exj-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The head teacher made a speech.\nThe head teacher ...... a speech.",
+            "answer": "delivered",
+            "acceptedAnswers": [
+              "delivered"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exj-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I couldn't understand his explanation.\nI ...... his explanation.",
+            "answer": "couldn't follow",
+            "acceptedAnswers": [
+              "couldn't follow"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u21-exj-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The presenter mentioned the problem briefly.\nThe presenter ...... the problem.",
+            "answer": "referred to",
+            "acceptedAnswers": [
+              "referred to"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

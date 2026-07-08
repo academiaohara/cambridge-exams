@@ -168,6 +168,45 @@ const FORMAT_DEFINITIONS = {
       studentAction: 'multi_select_toggle',
       evaluationTrigger: 'check_button'
     }
+  },
+  find_extra_word: {
+    formatType: 'find_extra_word',
+    displayName: 'Find the extra word',
+    defaultLives: 5,
+    maxLifeLossPerScreen: 1,
+    attemptsPerScreen: 1,
+    failureAction: 'show_explanation_then_continue',
+    interaction: {
+      component: 'clickable_sentence_tokens',
+      studentAction: 'tap_extra_word_or_ok',
+      evaluationTrigger: 'check_button'
+    }
+  },
+  comma_placement: {
+    formatType: 'comma_placement',
+    displayName: 'Comma placement',
+    defaultLives: 5,
+    maxLifeLossPerScreen: 1,
+    attemptsPerScreen: 1,
+    failureAction: 'show_explanation_then_continue',
+    interaction: {
+      component: 'comma_placement_dual_mode',
+      studentAction: 'tap_comma_slots_or_rewrite_sentence',
+      evaluationTrigger: 'check_button'
+    }
+  },
+  stative_sorting: {
+    formatType: 'stative_sorting',
+    displayName: 'Sort into categories',
+    defaultLives: 5,
+    maxLifeLossPerScreen: 2,
+    attemptsPerScreen: 1,
+    failureAction: 'show_explanation_then_continue',
+    interaction: {
+      component: 'drag_sort_groups',
+      studentAction: 'sort_into_groups',
+      evaluationTrigger: 'check_button'
+    }
   }
 };
 

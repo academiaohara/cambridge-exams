@@ -1,0 +1,57 @@
+{
+  "unit": 11,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: Change into the passive",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 5,
+      "v2Items": 5,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: Complete with the correct passive form",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: by or with",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 5,
+      "v2Items": 5,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "D: Mixed passive forms",
+      "legacyPattern": "mc-standalone",
+      "formatType": "mc_4_option",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 4,
+    "legacyItemCount": 22,
+    "v2ItemCount": 22,
+    "estimatedScreens": 22,
+    "formatTypes": [
+      "full_sentence_write",
+      "conjugation_gap_fill",
+      "free_text_gap_fill",
+      "mc_4_option"
+    ]
+  }
+}

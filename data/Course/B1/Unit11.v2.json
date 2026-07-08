@@ -1,0 +1,675 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 4,
+  "unit": 11,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 11: The passive (2)",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 11: The passive (2)"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit11.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 4
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u11-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "The passive (continuous, perfect, past perfect, be going to, modals)",
+        "subtitle": "The passive (continuous, perfect, past perfect, be going to, modals)",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "formula": "be in the correct tense + past participle",
+            "rows": [
+              {
+                "label": "statement",
+                "left": "The sandwiches **are being prepared**."
+              },
+              {
+                "label": "negative",
+                "left": "The sandwiches **aren't (are not) being prepared**."
+              },
+              {
+                "label": "question",
+                "left": "**Are** the sandwiches **being prepared**?"
+              }
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Tense transformations (active → passive)",
+            "headers": [
+              "Tense / Structure",
+              "Active",
+              "Passive"
+            ],
+            "rows": [
+              [
+                "present continuous",
+                "The chef is preparing the desserts.",
+                "The desserts **are being prepared** by the chef."
+              ],
+              [
+                "present perfect simple",
+                "The school has organised the event.",
+                "The event **has been organised** by the school."
+              ],
+              [
+                "past continuous",
+                "The workers were repairing the bridge.",
+                "The bridge **was being repaired** by the workers."
+              ],
+              [
+                "past perfect simple",
+                "The police had closed the road.",
+                "The road **had been closed** by the police."
+              ],
+              [
+                "be going to",
+                "They are going to build a new stadium.",
+                "A new stadium **is going to be built**."
+              ],
+              [
+                "modal (might)",
+                "They might cancel the concert.",
+                "The concert **might be cancelled**."
+              ],
+              [
+                "modal (should)",
+                "You should lock the doors.",
+                "The doors **should be locked**."
+              ],
+              [
+                "modal (must)",
+                "Students must wear uniforms.",
+                "Uniforms **must be worn** by students."
+              ],
+              [
+                "modal (can)",
+                "We can solve the problem easily.",
+                "The problem **can be solved** easily."
+              ]
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "Use **by** to introduce the person or thing that performs the action: The mural was painted **by** local artists.",
+              "Use **with** to introduce the tool or instrument used: The bread was cut **with** a sharp knife.",
+              "Leave out **by** or **with** when the agent or instrument is unknown or not relevant: The injured player was taken to hospital immediately."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u11-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "full_sentence_write",
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 15,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u11-ex-a",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u11-exa-1",
+            "b1-u11-exa-2",
+            "b1-u11-exa-3",
+            "b1-u11-exa-4",
+            "b1-u11-exa-5"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u11-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u11-exb-1",
+            "b1-u11-exb-2",
+            "b1-u11-exb-3",
+            "b1-u11-exb-4",
+            "b1-u11-exb-5",
+            "b1-u11-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u11-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u11-exc-1",
+            "b1-u11-exc-2",
+            "b1-u11-exc-3",
+            "b1-u11-exc-4",
+            "b1-u11-exc-5"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u11-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u11-exd-1",
+            "b1-u11-exd-2",
+            "b1-u11-exd-3",
+            "b1-u11-exd-4",
+            "b1-u11-exd-5",
+            "b1-u11-exd-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 22,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u11-ex-a",
+      "b1-u11-ex-b",
+      "b1-u11-ex-c",
+      "b1-u11-ex-d"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u11-ex-a",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "A: Change into the passive",
+        "title": "A: Change into the passive",
+        "instructions": "Rewrite each sentence in the passive.",
+        "studentInstruction": "Rewrite each sentence in the passive.",
+        "legacyKey": "A",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u11-exa-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "The manager is checking the documents.",
+            "prompt": {
+              "cues": [
+                "The manager is checking the documents."
+              ]
+            },
+            "answer": "The documents are being checked by the manager.",
+            "acceptedAnswers": [
+              "The documents are being checked by the manager."
+            ]
+          },
+          {
+            "id": "b1-u11-exa-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "The students have decorated the classroom.",
+            "prompt": {
+              "cues": [
+                "The students have decorated the classroom."
+              ]
+            },
+            "answer": "The classroom has been decorated by the students.",
+            "acceptedAnswers": [
+              "The classroom has been decorated by the students."
+            ]
+          },
+          {
+            "id": "b1-u11-exa-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "The engineers had completed the tunnel before winter.",
+            "prompt": {
+              "cues": [
+                "The engineers had completed the tunnel before winter."
+              ]
+            },
+            "answer": "The tunnel had been completed by the engineers before winter.",
+            "acceptedAnswers": [
+              "The tunnel had been completed by the engineers before winter."
+            ]
+          },
+          {
+            "id": "b1-u11-exa-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "They might postpone the meeting.",
+            "prompt": {
+              "cues": [
+                "They might postpone the meeting."
+              ]
+            },
+            "answer": "The meeting might be postponed.",
+            "acceptedAnswers": [
+              "The meeting might be postponed."
+            ]
+          },
+          {
+            "id": "b1-u11-exa-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "We can organise the event online.",
+            "prompt": {
+              "cues": [
+                "We can organise the event online."
+              ]
+            },
+            "answer": "The event can be organised online.",
+            "acceptedAnswers": [
+              "The event can be organised online."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u11-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: Complete with the correct passive form",
+        "title": "B: Complete with the correct passive form",
+        "instructions": "Use the verb in brackets to complete each sentence in the passive.",
+        "studentInstruction": "Use the verb in brackets to complete each sentence in the passive.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u11-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The sports hall ...... (decorate) at the moment.",
+            "answer": "is being decorated",
+            "acceptedAnswers": [
+              "is being decorated"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "All the tickets ...... (reserve) already.",
+            "answer": "have been reserved",
+            "acceptedAnswers": [
+              "have been reserved"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The computers ...... (install) when we arrived.",
+            "answer": "were being installed",
+            "acceptedAnswers": [
+              "were being installed"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The decision ...... (approve) before the meeting started.",
+            "answer": "had been approved",
+            "acceptedAnswers": [
+              "had been approved"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "A new shopping centre ...... (open) next year.",
+            "answer": "is going to be opened",
+            "acceptedAnswers": [
+              "is going to be opened"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Food ...... (not eat) in the science lab.",
+            "answer": "must not be eaten",
+            "acceptedAnswers": [
+              "must not be eaten"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u11-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: by or with",
+        "title": "C: by or with",
+        "instructions": "Write by, with, or - (no word needed).",
+        "studentInstruction": "Write by, with, or - (no word needed).",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u11-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The article was written ...... a famous journalist.",
+            "answer": "by",
+            "acceptedAnswers": [
+              "by"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The glass was cleaned ...... a special cloth.",
+            "answer": "with",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My wallet was stolen ...... last night.",
+            "answer": "-",
+            "acceptedAnswers": [
+              "-"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The vegetables were chopped ...... a large knife.",
+            "answer": "with",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The winning design was chosen ...... the judges.",
+            "answer": "by",
+            "acceptedAnswers": [
+              "by"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u11-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Mixed passive forms",
+        "title": "D: Mixed passive forms",
+        "instructions": "Choose the correct passive form for each sentence.",
+        "studentInstruction": "Choose the correct passive form for each sentence.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u11-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The files",
+            "sentenceAfter": "before the manager arrived.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "were deleted"
+              },
+              {
+                "letter": "B",
+                "text": "had been deleted"
+              },
+              {
+                "letter": "C",
+                "text": "have been deleted"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The new airport",
+            "sentenceAfter": "at the moment.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "was being designed"
+              },
+              {
+                "letter": "B",
+                "text": "has been designed"
+              },
+              {
+                "letter": "C",
+                "text": "is being designed"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The visitors",
+            "sentenceAfter": "to wait outside the building.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "were asked"
+              },
+              {
+                "letter": "B",
+                "text": "had been asked"
+              },
+              {
+                "letter": "C",
+                "text": "have been asked"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The meal",
+            "sentenceAfter": "when we entered the restaurant.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "had still been prepared"
+              },
+              {
+                "letter": "B",
+                "text": "was still being prepared"
+              },
+              {
+                "letter": "C",
+                "text": "is still being prepared"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "All the work",
+            "sentenceAfter": "by next Friday.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "will be completed"
+              },
+              {
+                "letter": "B",
+                "text": "would have been completed"
+              },
+              {
+                "letter": "C",
+                "text": "will have been completed"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The package",
+            "sentenceAfter": "at the office since Monday.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "was kept"
+              },
+              {
+                "letter": "B",
+                "text": "has been kept"
+              },
+              {
+                "letter": "C",
+                "text": "had been kept"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

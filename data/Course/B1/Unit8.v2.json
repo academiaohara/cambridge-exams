@@ -1,0 +1,1714 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 3,
+  "unit": 8,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 8: Prepositions of time & place",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 8: Prepositions of time & place"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit8.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 10
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u8-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Preposition: in",
+        "subtitle": "Preposition: in",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Time",
+            "headers": [
+              "When",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Months",
+                "My birthday is **in** May."
+              ],
+              [
+                "Years",
+                "The school was built **in** 1995."
+              ],
+              [
+                "Seasons",
+                "The lake freezes over **in** winter."
+              ],
+              [
+                "Parts of the day",
+                "I prefer studying **in** the evening."
+              ]
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Place",
+            "headers": [
+              "Where",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Towns, cities, countries and continents",
+                "Have you ever been **in** Tokyo?"
+              ],
+              [
+                "Areas and regions",
+                "There are amazing waterfalls **in** the rainforest."
+              ],
+              [
+                "Inside spaces",
+                "Your passport is **in** the top drawer."
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "in a minute / an hour / a year",
+              "in front of",
+              "in the middle (of)"
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "With movement verbs (go, come, walk, run, move, fly), we often use **to** for destination: *go to Japan*."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Preposition: on",
+        "subtitle": "Preposition: on",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Time",
+            "headers": [
+              "When",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Days",
+                "The museum is closed **on** Mondays."
+              ],
+              [
+                "Dates",
+                "The exam is **on** 5th November."
+              ]
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Place",
+            "headers": [
+              "Where",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Islands",
+                "They spent the summer **on** Crete."
+              ],
+              [
+                "Pages",
+                "The answer is **on** page 14."
+              ],
+              [
+                "On top of an object",
+                "She left her glasses **on** the coffee table."
+              ],
+              [
+                "On a surface",
+                "There's a map of the world **on** the wall."
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "on the beach",
+              "on the left/right",
+              "on my birthday"
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "**General vs. Specific**: We say *in the morning/afternoon/evening*, but we use **on** when a specific day is mentioned (**on Monday morning** / **on Wednesday evening** / etc.).",
+              "✓ We're flying to Washington in the morning.",
+              "✓ We're flying to Washington on Tuesday morning.",
+              "**No Preposition**: Do not use a preposition with *tomorrow*, *yesterday*, *tomorrow morning*, *yesterday evening*, etc.",
+              "✓ We're flying to Washington tomorrow afternoon."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-3",
+        "title": "Preposition: at",
+        "subtitle": "Preposition: at",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Time",
+            "headers": [
+              "When",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Clock times",
+                "The film starts **at** quarter past eight."
+              ],
+              [
+                "Holiday periods",
+                "Are you visiting your family **at** Easter?"
+              ]
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Place",
+            "headers": [
+              "Where",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Exact places",
+                "It gets very cold **at** the top of the mountain."
+              ],
+              [
+                "Addresses",
+                "They used to live **at** 7 Park Avenue."
+              ],
+              [
+                "Buildings (when referring to the activity)",
+                "She must be **at** the gym — she said she was going this afternoon."
+              ],
+              [
+                "Activities",
+                "He couldn't come to the phone. He was **at** a meeting."
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "at the moment",
+              "at night",
+              "at the top/bottom",
+              "at the door/window"
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "It is important to compare how we use **in** and **at** for places:",
+              "**In**: Used for larger areas that are all around us when we are there. Example: *We spent our holiday in the mountains.*",
+              "**At**: Used for smaller places and specific points on a journey. Example: *Can you meet me at the bus stop?*"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "error_correction",
+        "displayName": "Correct the error",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_correction_input",
+          "studentAction": "type_correction",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u8-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "error_correction",
+        "free_text_gap_fill",
+        "two_option_choice",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 59,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u8-ex-a",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u8-exa-1",
+            "b1-u8-exa-2",
+            "b1-u8-exa-3",
+            "b1-u8-exa-4",
+            "b1-u8-exa-5",
+            "b1-u8-exa-6",
+            "b1-u8-exa-7",
+            "b1-u8-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u8-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u8-exb-1",
+            "b1-u8-exb-2",
+            "b1-u8-exb-3",
+            "b1-u8-exb-4",
+            "b1-u8-exb-5",
+            "b1-u8-exb-6",
+            "b1-u8-exb-7",
+            "b1-u8-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u8-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u8-exc-1",
+            "b1-u8-exc-2",
+            "b1-u8-exc-3",
+            "b1-u8-exc-4",
+            "b1-u8-exc-5",
+            "b1-u8-exc-6",
+            "b1-u8-exc-7",
+            "b1-u8-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u8-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u8-exd-1",
+            "b1-u8-exd-2",
+            "b1-u8-exd-3",
+            "b1-u8-exd-4",
+            "b1-u8-exd-5",
+            "b1-u8-exd-6",
+            "b1-u8-exd-7",
+            "b1-u8-exd-8",
+            "b1-u8-exd-9",
+            "b1-u8-exd-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u8-ex-e",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u8-exe-1",
+            "b1-u8-exe-2",
+            "b1-u8-exe-3",
+            "b1-u8-exe-4",
+            "b1-u8-exe-5",
+            "b1-u8-exe-6",
+            "b1-u8-exe-7",
+            "b1-u8-exe-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u8-ex-f",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u8-exf-1",
+            "b1-u8-exf-2",
+            "b1-u8-exf-3",
+            "b1-u8-exf-4",
+            "b1-u8-exf-5",
+            "b1-u8-exf-6",
+            "b1-u8-exf-7",
+            "b1-u8-exf-8",
+            "b1-u8-exf-9",
+            "b1-u8-exf-10",
+            "b1-u8-exf-11"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u8-ex-g",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u8-exg-1",
+            "b1-u8-exg-2",
+            "b1-u8-exg-3",
+            "b1-u8-exg-4",
+            "b1-u8-exg-5",
+            "b1-u8-exg-6",
+            "b1-u8-exg-7",
+            "b1-u8-exg-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u8-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u8-exh-1",
+            "b1-u8-exh-2",
+            "b1-u8-exh-3",
+            "b1-u8-exh-4",
+            "b1-u8-exh-5",
+            "b1-u8-exh-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u8-ex-i",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u8-exi-1",
+            "b1-u8-exi-2",
+            "b1-u8-exi-3",
+            "b1-u8-exi-4",
+            "b1-u8-exi-5",
+            "b1-u8-exi-6",
+            "b1-u8-exi-7",
+            "b1-u8-exi-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u8-ex-j",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u8-exj-1",
+            "b1-u8-exj-2",
+            "b1-u8-exj-3",
+            "b1-u8-exj-4",
+            "b1-u8-exj-5",
+            "b1-u8-exj-6",
+            "b1-u8-exj-7",
+            "b1-u8-exj-8",
+            "b1-u8-exj-9",
+            "b1-u8-exj-10"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 85,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u8-ex-a",
+      "b1-u8-ex-b",
+      "b1-u8-ex-c",
+      "b1-u8-ex-d",
+      "b1-u8-ex-e",
+      "b1-u8-ex-f",
+      "b1-u8-ex-g",
+      "b1-u8-ex-h",
+      "b1-u8-ex-i",
+      "b1-u8-ex-j"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u8-ex-a",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "A: Tick if correct; correct if wrong",
+        "title": "A: Tick if correct; correct if wrong",
+        "instructions": "If the preposition in bold is correct, type OK. If it is wrong, write the correct preposition.",
+        "studentInstruction": "If the preposition in bold is correct, type OK. If it is wrong, write the correct preposition.",
+        "legacyKey": "A",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exa-1",
+            "formatType": "error_correction",
+            "sentence": "My sister was born at 2012.",
+            "highlightedText": "at",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ]
+          },
+          {
+            "id": "b1-u8-exa-2",
+            "formatType": "error_correction",
+            "sentence": "The meeting is in Friday afternoon.",
+            "highlightedText": "in",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ]
+          },
+          {
+            "id": "b1-u8-exa-3",
+            "formatType": "error_correction",
+            "sentence": "The concert starts at half past eight.",
+            "highlightedText": "at",
+            "answer": "OK",
+            "acceptedAnswers": [
+              "OK"
+            ]
+          },
+          {
+            "id": "b1-u8-exa-4",
+            "formatType": "error_correction",
+            "sentence": "We usually visit our cousins in August.",
+            "highlightedText": "in",
+            "answer": "OK",
+            "acceptedAnswers": [
+              "OK"
+            ]
+          },
+          {
+            "id": "b1-u8-exa-5",
+            "formatType": "error_correction",
+            "sentence": "Are you doing anything at Sunday?",
+            "highlightedText": "at",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ]
+          },
+          {
+            "id": "b1-u8-exa-6",
+            "formatType": "error_correction",
+            "sentence": "I prefer reading on the evening.",
+            "highlightedText": "on",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ]
+          },
+          {
+            "id": "b1-u8-exa-7",
+            "formatType": "error_correction",
+            "sentence": "We always have a big meal at Christmas.",
+            "highlightedText": "at",
+            "answer": "OK",
+            "acceptedAnswers": [
+              "OK"
+            ]
+          },
+          {
+            "id": "b1-u8-exa-8",
+            "formatType": "error_correction",
+            "sentence": "The school trip is in 18th March.",
+            "highlightedText": "in",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u8-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Complete using on, in or at",
+        "title": "B: Complete using on, in or at",
+        "instructions": "Write on, in or at in each gap.",
+        "studentInstruction": "Write on, in or at in each gap.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There were hundreds of fans ...... the stadium.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My grandparents live ...... 25 King Street.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We stayed ...... Madrid for three nights.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Penguins live ...... very cold parts of the world.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There is a beautiful painting ...... the wall.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Did you read the message ...... my notebook?",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They spent their holiday ...... Malta.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The children played volleyball ...... the beach.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u8-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Look at the pictures and complete",
+        "title": "C: Look at the pictures and complete",
+        "instructions": "Complete each sentence with in, on or at.",
+        "studentInstruction": "Complete each sentence with in, on or at.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The picture was taken ...... spring.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They're ...... a football match.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The fish are swimming ...... the river.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The answer is ...... page 38.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The table is ...... the middle of the room.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They're staying ...... a small island.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There's snow ...... the top of the hill.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She's ...... a meeting.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u8-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Complete using words in the box",
+        "title": "D: Complete using words in the box",
+        "instructions": "Use the words in the box to complete the sentences.",
+        "studentInstruction": "Use the words in the box to complete the sentences.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "to",
+          "to",
+          "at",
+          "at",
+          "to",
+          "to",
+          "in",
+          "on",
+          "in",
+          "to"
+        ],
+        "wordBank": [
+          "to",
+          "to",
+          "at",
+          "at",
+          "to",
+          "to",
+          "in",
+          "on",
+          "in",
+          "to"
+        ],
+        "items": [
+          {
+            "id": "b1-u8-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We're planning to move ...... Canada next year.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Would you like to go ...... the cinema tonight?",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We stayed ...... a small hotel near the station.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'll wait ...... the entrance until you arrive.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Come ...... my flat after school.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They were walking ...... the museum when it started raining.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The plane arrived ...... Rome just after midnight.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please put the forms ...... my desk.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There are cows ...... that field.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "How long does it take to fly ...... South America?",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u8-ex-e",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "E: Circle the correct word",
+        "title": "E: Circle the correct word",
+        "instructions": "Choose the correct preposition in each sentence.",
+        "studentInstruction": "Choose the correct preposition in each sentence.",
+        "legacyKey": "E",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exe-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I'll see you",
+            "sentenceAfter": "the station in ten minutes.",
+            "options": [
+              "at",
+              "on"
+            ],
+            "answer": "at",
+            "originalSentence": "I'll see you **at / on** the station in ten minutes.",
+            "completedSentence": "I'll see you at the station in ten minutes."
+          },
+          {
+            "id": "b1-u8-exe-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "There is a fountain",
+            "sentenceAfter": "front of the museum.",
+            "options": [
+              "at",
+              "in"
+            ],
+            "answer": "in",
+            "originalSentence": "There is a fountain **at / in** front of the museum.",
+            "completedSentence": "There is a fountain in front of the museum."
+          },
+          {
+            "id": "b1-u8-exe-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The course begins",
+            "sentenceAfter": "the third of September.",
+            "options": [
+              "in",
+              "on"
+            ],
+            "answer": "on",
+            "originalSentence": "The course begins **in / on** the third of September.",
+            "completedSentence": "The course begins on the third of September."
+          },
+          {
+            "id": "b1-u8-exe-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We're visiting my aunt",
+            "sentenceAfter": "Saturday morning.",
+            "options": [
+              "in",
+              "on"
+            ],
+            "answer": "on",
+            "originalSentence": "We're visiting my aunt **in / on** Saturday morning.",
+            "completedSentence": "We're visiting my aunt on Saturday morning."
+          },
+          {
+            "id": "b1-u8-exe-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Is there any milk",
+            "sentenceAfter": "the fridge?",
+            "options": [
+              "at",
+              "in"
+            ],
+            "answer": "in",
+            "originalSentence": "Is there any milk **at / in** the fridge?",
+            "completedSentence": "Is there any milk in the fridge?"
+          },
+          {
+            "id": "b1-u8-exe-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "People may live on other planets",
+            "sentenceAfter": "the future.",
+            "options": [
+              "at",
+              "in"
+            ],
+            "answer": "in",
+            "originalSentence": "People may live on other planets **at / in** the future.",
+            "completedSentence": "People may live on other planets in the future."
+          },
+          {
+            "id": "b1-u8-exe-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I'm quite busy",
+            "sentenceAfter": "the moment.",
+            "options": [
+              "at",
+              "on"
+            ],
+            "answer": "at",
+            "originalSentence": "I'm quite busy **at / on** the moment.",
+            "completedSentence": "I'm quite busy at the moment."
+          },
+          {
+            "id": "b1-u8-exe-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Someone is waiting",
+            "sentenceAfter": "the window.",
+            "options": [
+              "at",
+              "in"
+            ],
+            "answer": "at",
+            "originalSentence": "Someone is waiting **at / in** the window.",
+            "completedSentence": "Someone is waiting at the window."
+          }
+        ]
+      },
+      {
+        "id": "b1-u8-ex-f",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "F: Complete the text (Jetlag)",
+        "title": "F: Complete the text (Jetlag)",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "F",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exf-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When you fly ...... a distant country, your body can feel confused.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exf-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You might wake up ...... the middle of the night.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exf-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Then you feel tired ...... the morning.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exf-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Jetlag often happens when you travel ...... a different time zone.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exf-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You may leave your home city ...... six o'clock.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exf-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Then you fly ...... another continent.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exf-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When you arrive ...... the airport, everything seems normal.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exf-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Your watch may say it's midnight, but local time could be ...... five in the afternoon.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exf-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You arrive ...... the hotel feeling exhausted.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exf-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... night, you may not feel sleepy at all.",
+            "answer": "At",
+            "acceptedAnswers": [
+              "At"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exf-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Your body still thinks it is ...... your own country.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u8-ex-g",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "G: Error correction",
+        "title": "G: Error correction",
+        "instructions": "Each sentence has one wrong preposition. Write the correct one.",
+        "studentInstruction": "Each sentence has one wrong preposition. Write the correct one.",
+        "legacyKey": "G",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exg-1",
+            "formatType": "error_correction",
+            "sentence": "They usually go camping at summer.",
+            "highlightedText": "at",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ]
+          },
+          {
+            "id": "b1-u8-exg-2",
+            "formatType": "error_correction",
+            "sentence": "The lesson begins on 8:15.",
+            "highlightedText": "on",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ]
+          },
+          {
+            "id": "b1-u8-exg-3",
+            "formatType": "error_correction",
+            "sentence": "Her birthday is in 22nd April.",
+            "highlightedText": "in",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ]
+          },
+          {
+            "id": "b1-u8-exg-4",
+            "formatType": "error_correction",
+            "sentence": "I left my keys in the kitchen table.",
+            "highlightedText": "in",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ]
+          },
+          {
+            "id": "b1-u8-exg-5",
+            "formatType": "error_correction",
+            "sentence": "The taxi is waiting on the door.",
+            "highlightedText": "on",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ]
+          },
+          {
+            "id": "b1-u8-exg-6",
+            "formatType": "error_correction",
+            "sentence": "We arrived to Barcelona in the evening.",
+            "highlightedText": "to",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ]
+          },
+          {
+            "id": "b1-u8-exg-7",
+            "formatType": "error_correction",
+            "sentence": "The children are playing in the beach.",
+            "highlightedText": "in",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ]
+          },
+          {
+            "id": "b1-u8-exg-8",
+            "formatType": "error_correction",
+            "sentence": "Dinner will be ready at ten minutes.",
+            "highlightedText": "at",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u8-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "H: Key word transformation",
+        "title": "H: Key word transformation",
+        "instructions": "Complete the second sentence so it has a similar meaning to the first. Use a maximum of four words.",
+        "studentInstruction": "Complete the second sentence so it has a similar meaning to the first. Use a maximum of four words.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The show starts at eight o'clock.\nThe show doesn't start ...... the morning.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My appointment is on Tuesday afternoon.\nMy appointment isn't ...... Monday morning.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She is currently at the dentist's.\nShe is at the dentist's ...... .",
+            "answer": "at the moment",
+            "acceptedAnswers": [
+              "at the moment"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We landed in Athens at six o'clock.\nWe arrived ...... six o'clock.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Let's meet outside the school entrance.\nLet's meet ...... the school.",
+            "answer": "at the door of",
+            "acceptedAnswers": [
+              "at the door of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The flowers are in the centre of the garden.\nThe flowers are ...... the garden.",
+            "answer": "in the middle of",
+            "acceptedAnswers": [
+              "in the middle of"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u8-ex-i",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "I: Multiple choice",
+        "title": "I: Multiple choice",
+        "instructions": "Choose the correct option.",
+        "studentInstruction": "Choose the correct option.",
+        "legacyKey": "I",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exi-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The bus arrives",
+            "sentenceAfter": "quarter to seven.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in"
+              },
+              {
+                "letter": "B",
+                "text": "on"
+              },
+              {
+                "letter": "C",
+                "text": "at"
+              },
+              {
+                "letter": "D",
+                "text": "to"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exi-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My brother was born",
+            "sentenceAfter": "2009.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in"
+              },
+              {
+                "letter": "B",
+                "text": "at"
+              },
+              {
+                "letter": "C",
+                "text": "on"
+              },
+              {
+                "letter": "D",
+                "text": "to"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exi-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We're meeting our friends",
+            "sentenceAfter": "Saturday.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "at"
+              },
+              {
+                "letter": "B",
+                "text": "on"
+              },
+              {
+                "letter": "C",
+                "text": "in"
+              },
+              {
+                "letter": "D",
+                "text": "to"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exi-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "There's a clock",
+            "sentenceAfter": "the wall.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in"
+              },
+              {
+                "letter": "B",
+                "text": "to"
+              },
+              {
+                "letter": "C",
+                "text": "on"
+              },
+              {
+                "letter": "D",
+                "text": "at"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exi-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My cousin lives",
+            "sentenceAfter": "Australia.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "at"
+              },
+              {
+                "letter": "B",
+                "text": "on"
+              },
+              {
+                "letter": "C",
+                "text": "in"
+              },
+              {
+                "letter": "D",
+                "text": "to"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exi-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We usually visit our family",
+            "sentenceAfter": "Easter.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in"
+              },
+              {
+                "letter": "B",
+                "text": "on"
+              },
+              {
+                "letter": "C",
+                "text": "to"
+              },
+              {
+                "letter": "D",
+                "text": "at"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exi-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The cat is sleeping",
+            "sentenceAfter": "the sofa.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "on"
+              },
+              {
+                "letter": "B",
+                "text": "in"
+              },
+              {
+                "letter": "C",
+                "text": "at"
+              },
+              {
+                "letter": "D",
+                "text": "to"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exi-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They travelled",
+            "sentenceAfter": "the mountains by car.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "on"
+              },
+              {
+                "letter": "B",
+                "text": "to"
+              },
+              {
+                "letter": "C",
+                "text": "in"
+              },
+              {
+                "letter": "D",
+                "text": "at"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u8-ex-j",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "J: Mixed revision",
+        "title": "J: Mixed revision",
+        "instructions": "Complete each sentence with one preposition.",
+        "studentInstruction": "Complete each sentence with one preposition.",
+        "legacyKey": "J",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exj-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We met ...... the library after school.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exj-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I keep my phone ...... my school bag.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exj-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It gets very hot here ...... the summer.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exj-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We're going to a concert ...... Friday night.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exj-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There is a small café ...... the corner.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exj-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They live ...... 42 River Road.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exj-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We are travelling ...... the coast tomorrow.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exj-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I found your wallet ...... the drawer.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exj-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'll meet you ...... the bus station.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exj-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She'll be here ...... a few seconds.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1294 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 12,
+  "unit": 36,
+  "type": "vocabulary",
+  "unitTitle": "[V2] Unit 36: Nature and the universe",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 36: Nature and the universe"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit36.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 9
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u36-theory",
+    "title": "Topic vocabulary",
+    "shortTitle": "Vocabulary",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b1-u36-theory-card-1",
+        "title": "Unit 36: Nature and the universe",
+        "subtitle": "",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Unit focus",
+            "items": [
+              "nature and the universe"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u36-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "conjugation_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 50,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u36-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u36-exa-1",
+            "b1-u36-exa-2",
+            "b1-u36-exa-3",
+            "b1-u36-exa-4",
+            "b1-u36-exa-5",
+            "b1-u36-exa-6",
+            "b1-u36-exa-7",
+            "b1-u36-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u36-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u36-exb-1",
+            "b1-u36-exb-2",
+            "b1-u36-exb-3",
+            "b1-u36-exb-4",
+            "b1-u36-exb-5",
+            "b1-u36-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u36-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u36-exc-1",
+            "b1-u36-exc-2",
+            "b1-u36-exc-3",
+            "b1-u36-exc-4",
+            "b1-u36-exc-5",
+            "b1-u36-exc-6",
+            "b1-u36-exc-7",
+            "b1-u36-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u36-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u36-exd-1",
+            "b1-u36-exd-2",
+            "b1-u36-exd-3",
+            "b1-u36-exd-4",
+            "b1-u36-exd-5",
+            "b1-u36-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u36-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u36-exe-1",
+            "b1-u36-exe-2",
+            "b1-u36-exe-3",
+            "b1-u36-exe-4",
+            "b1-u36-exe-5",
+            "b1-u36-exe-6",
+            "b1-u36-exe-7",
+            "b1-u36-exe-8",
+            "b1-u36-exe-9",
+            "b1-u36-exe-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u36-ex-f",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u36-exf-1",
+            "b1-u36-exf-2",
+            "b1-u36-exf-3",
+            "b1-u36-exf-4",
+            "b1-u36-exf-5",
+            "b1-u36-exf-6",
+            "b1-u36-exf-7",
+            "b1-u36-exf-8",
+            "b1-u36-exf-9",
+            "b1-u36-exf-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u36-ex-g",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u36-exg-1",
+            "b1-u36-exg-2",
+            "b1-u36-exg-3",
+            "b1-u36-exg-4",
+            "b1-u36-exg-5",
+            "b1-u36-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u36-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u36-exh-1",
+            "b1-u36-exh-2",
+            "b1-u36-exh-3",
+            "b1-u36-exh-4",
+            "b1-u36-exh-5",
+            "b1-u36-exh-6",
+            "b1-u36-exh-7",
+            "b1-u36-exh-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u36-ex-i",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u36-exi-1",
+            "b1-u36-exi-2",
+            "b1-u36-exi-3",
+            "b1-u36-exi-4",
+            "b1-u36-exi-5",
+            "b1-u36-exi-6",
+            "b1-u36-exi-7",
+            "b1-u36-exi-8",
+            "b1-u36-exi-9",
+            "b1-u36-exi-10"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 72,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u36-ex-a",
+      "b1-u36-ex-b",
+      "b1-u36-ex-c",
+      "b1-u36-ex-d",
+      "b1-u36-ex-e",
+      "b1-u36-ex-f",
+      "b1-u36-ex-g",
+      "b1-u36-ex-h",
+      "b1-u36-ex-i"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u36-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Topic vocabulary (gap fill)",
+        "title": "Topic vocabulary (gap fill)",
+        "instructions": "Complete the sentences with words from the box.",
+        "studentInstruction": "Complete the sentences with words from the box.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "climate",
+          "countryside",
+          "environment",
+          "forecast",
+          "heatwave",
+          "insect",
+          "lightning",
+          "mild",
+          "planet",
+          "preserve",
+          "recycle",
+          "wildlife"
+        ],
+        "wordBank": [
+          "climate",
+          "countryside",
+          "environment",
+          "forecast",
+          "heatwave",
+          "insect",
+          "lightning",
+          "mild",
+          "planet",
+          "preserve",
+          "recycle",
+          "wildlife"
+        ],
+        "items": [
+          {
+            "id": "b1-u36-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The weather ...... says there will be strong winds tomorrow.",
+            "answer": "forecast",
+            "acceptedAnswers": [
+              "forecast"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Our school teaches students to ...... bottles and cans.",
+            "answer": "recycle",
+            "acceptedAnswers": [
+              "recycle"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We must ...... forests for future generations.",
+            "answer": "preserve",
+            "acceptedAnswers": [
+              "preserve"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The island has a warm ...... all year.",
+            "answer": "climate",
+            "acceptedAnswers": [
+              "climate"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Many people stayed indoors during the summer ...... .",
+            "answer": "heatwave",
+            "acceptedAnswers": [
+              "heatwave"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "A tiny ...... landed on my hand.",
+            "answer": "insect",
+            "acceptedAnswers": [
+              "insect"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We saw bright ...... during the storm.",
+            "answer": "lightning",
+            "acceptedAnswers": [
+              "lightning"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My grandparents live in the ......, far from the city.",
+            "answer": "countryside",
+            "acceptedAnswers": [
+              "countryside"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u36-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Circle the correct word",
+        "title": "Circle the correct word",
+        "instructions": "Choose the correct option in each sentence.",
+        "studentInstruction": "Choose the correct option in each sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u36-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Mars is a ...... in our solar system.",
+            "sentenceAfter": "",
+            "options": [
+              "planet",
+              "satellite"
+            ],
+            "answer": "planet",
+            "originalSentence": "Mars is a ...... in our solar system. **planet / satellite**",
+            "completedSentence": "Mars is a ...... in our solar system. planet"
+          },
+          {
+            "id": "b1-u36-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The lake was almost ...... after the very cold night.",
+            "sentenceAfter": "",
+            "options": [
+              "local",
+              "freezing"
+            ],
+            "answer": "freezing",
+            "originalSentence": "The lake was almost ...... after the very cold night. **local / freezing**",
+            "completedSentence": "The lake was almost ...... after the very cold night. freezing"
+          },
+          {
+            "id": "b1-u36-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Dinosaurs are ...... now.",
+            "sentenceAfter": "",
+            "options": [
+              "wild",
+              "extinct"
+            ],
+            "answer": "extinct",
+            "originalSentence": "Dinosaurs are ...... now. **wild / extinct**",
+            "completedSentence": "Dinosaurs are ...... now. extinct"
+          },
+          {
+            "id": "b1-u36-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Volunteers helped to ...... the injured bird.",
+            "sentenceAfter": "",
+            "options": [
+              "name",
+              "rescue"
+            ],
+            "answer": "rescue",
+            "originalSentence": "Volunteers helped to ...... the injured bird. **name / rescue**",
+            "completedSentence": "Volunteers helped to ...... the injured bird. rescue"
+          },
+          {
+            "id": "b1-u36-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "A dolphin is a ...... because it feeds its babies milk.",
+            "sentenceAfter": "",
+            "options": [
+              "mammal",
+              "reptile"
+            ],
+            "answer": "mammal",
+            "originalSentence": "A dolphin is a ...... because it feeds its babies milk. **mammal / reptile**",
+            "completedSentence": "A dolphin is a ...... because it feeds its babies milk. mammal"
+          },
+          {
+            "id": "b1-u36-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The stars looked ...... through the telescope.",
+            "sentenceAfter": "",
+            "options": [
+              "amazing",
+              "global"
+            ],
+            "answer": "amazing",
+            "originalSentence": "The stars looked ...... through the telescope. **amazing / global**",
+            "completedSentence": "The stars looked ...... through the telescope. amazing"
+          }
+        ]
+      },
+      {
+        "id": "b1-u36-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Phrasal verbs (complete the gaps)",
+        "title": "Phrasal verbs (complete the gaps)",
+        "instructions": "Write the correct phrasal verb in each gap.",
+        "studentInstruction": "Write the correct phrasal verb in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "blow up",
+          "build up",
+          "clear up",
+          "go out",
+          "keep out",
+          "put down",
+          "put out",
+          "put up"
+        ],
+        "wordBank": [
+          "blow up",
+          "build up",
+          "clear up",
+          "go out",
+          "keep out",
+          "put down",
+          "put out",
+          "put up"
+        ],
+        "items": [
+          {
+            "id": "b1-u36-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please ...... that box and come here.",
+            "answer": "put down",
+            "acceptedAnswers": [
+              "put down"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The sky is dark now, but it should ...... later.",
+            "answer": "clear up",
+            "acceptedAnswers": [
+              "clear up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The fence is there to ...... people from the protected beach.",
+            "answer": "keep out",
+            "acceptedAnswers": [
+              "keep out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They used water to ...... the campfire.",
+            "answer": "put out",
+            "acceptedAnswers": [
+              "put out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We decided to ...... a map of the solar system in class.",
+            "answer": "put up",
+            "acceptedAnswers": [
+              "put up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The fire will ...... if there is no more wood.",
+            "answer": "go out",
+            "acceptedAnswers": [
+              "go out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Rubbish can ...... quickly if nobody clears it away.",
+            "answer": "build up",
+            "acceptedAnswers": [
+              "build up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The old gas tank could ...... if it gets too hot.",
+            "answer": "blow up",
+            "acceptedAnswers": [
+              "blow up"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u36-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Prepositional phrases",
+        "title": "Prepositional phrases",
+        "instructions": "Complete each sentence with a phrase from the list.",
+        "studentInstruction": "Complete each sentence with a phrase from the list.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "at most",
+          "at the top of",
+          "in the beginning",
+          "in the distance",
+          "in total",
+          "on top of"
+        ],
+        "wordBank": [
+          "at most",
+          "at the top of",
+          "in the beginning",
+          "in the distance",
+          "in total",
+          "on top of"
+        ],
+        "items": [
+          {
+            "id": "b1-u36-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We could hear thunder ......, but the storm was far away.",
+            "answer": "in the distance",
+            "acceptedAnswers": [
+              "in the distance"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "......, the project seemed difficult.",
+            "answer": "in the beginning",
+            "acceptedAnswers": [
+              "in the beginning"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There were fifty trees planted ...... .",
+            "answer": "in total",
+            "acceptedAnswers": [
+              "in total"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The cat was sitting ...... the garden wall.",
+            "answer": "on top of",
+            "acceptedAnswers": [
+              "on top of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There is snow ...... the mountain.",
+            "answer": "at the top of",
+            "acceptedAnswers": [
+              "at the top of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The walk will take an hour ...... .",
+            "answer": "at most",
+            "acceptedAnswers": [
+              "at most"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u36-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Word patterns",
+        "title": "Word patterns",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u36-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My little sister is afraid ...... storms.",
+            "answer": "of",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Are you aware ...... the damage caused by plastic?",
+            "answer": "of",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He is enthusiastic ...... protecting wildlife.",
+            "answer": "about",
+            "acceptedAnswers": [
+              "about"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The council is serious ...... recycling more waste.",
+            "answer": "about",
+            "acceptedAnswers": [
+              "about"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The campsite was short ...... food after the storm.",
+            "answer": "of",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The glass wall prevents insects ...... entering the house.",
+            "answer": "from",
+            "acceptedAnswers": [
+              "from"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The rescue team saved the dog ...... the flood.",
+            "answer": "from",
+            "acceptedAnswers": [
+              "from"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Parents often worry ...... air pollution near schools.",
+            "answer": "about",
+            "acceptedAnswers": [
+              "about"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exe-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Scientists noticed an increase ...... ocean temperatures.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exe-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The earthquake did damage ...... the old bridge.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u36-ex-f",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Word formation",
+        "title": "Word formation",
+        "instructions": "Complete each sentence with the correct form of the word in capitals.",
+        "studentInstruction": "Complete each sentence with the correct form of the word in capitals.",
+        "legacyKey": "F",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u36-exf-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The park is in a ...... area of the town. (CENTRE)",
+            "answer": "central",
+            "acceptedAnswers": [
+              "central"
+            ],
+            "explanation": "",
+            "verbPrompt": "CENTRE"
+          },
+          {
+            "id": "b1-u36-exf-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The moon looked almost ...... last night. (CIRCLE)",
+            "answer": "circular",
+            "acceptedAnswers": [
+              "circular"
+            ],
+            "explanation": "",
+            "verbPrompt": "CIRCLE"
+          },
+          {
+            "id": "b1-u36-exf-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Some wild animals can be ...... if you get too close. (DANGER)",
+            "answer": "dangerous",
+            "acceptedAnswers": [
+              "dangerous"
+            ],
+            "explanation": "",
+            "verbPrompt": "DANGER"
+          },
+          {
+            "id": "b1-u36-exf-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The ...... of the ocean is difficult to measure. (DEEP)",
+            "answer": "depth",
+            "acceptedAnswers": [
+              "depth"
+            ],
+            "explanation": "",
+            "verbPrompt": "DEEP"
+          },
+          {
+            "id": "b1-u36-exf-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The forest fire caused terrible ...... . (DESTROY)",
+            "answer": "destruction",
+            "acceptedAnswers": [
+              "destruction"
+            ],
+            "explanation": "",
+            "verbPrompt": "DESTROY"
+          },
+          {
+            "id": "b1-u36-exf-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "It was so ...... that we couldn't see the road. (FOG)",
+            "answer": "foggy",
+            "acceptedAnswers": [
+              "foggy"
+            ],
+            "explanation": "",
+            "verbPrompt": "FOG"
+          },
+          {
+            "id": "b1-u36-exf-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The ...... planted new flowers in the park. (GARDEN)",
+            "answer": "gardener",
+            "acceptedAnswers": [
+              "gardener"
+            ],
+            "explanation": "",
+            "verbPrompt": "GARDEN"
+          },
+          {
+            "id": "b1-u36-exf-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The island suffered an ...... of insects last summer. (INVADE)",
+            "answer": "invasion",
+            "acceptedAnswers": [
+              "invasion"
+            ],
+            "explanation": "",
+            "verbPrompt": "INVADE"
+          },
+          {
+            "id": "b1-u36-exf-9",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "It is ...... for leaves to change colour in autumn. (NATURE)",
+            "answer": "natural",
+            "acceptedAnswers": [
+              "natural"
+            ],
+            "explanation": "",
+            "verbPrompt": "NATURE"
+          },
+          {
+            "id": "b1-u36-exf-10",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Air ...... is worse in large cities. (POLLUTE)",
+            "answer": "pollution",
+            "acceptedAnswers": [
+              "pollution"
+            ],
+            "explanation": "",
+            "verbPrompt": "POLLUTE"
+          }
+        ]
+      },
+      {
+        "id": "b1-u36-ex-g",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "G: Gap fill",
+        "title": "G: Gap fill",
+        "instructions": "Complete each sentence with a word or phrase from the box.",
+        "studentInstruction": "Complete each sentence with a word or phrase from the box.",
+        "legacyKey": "G",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "goes out",
+          "litter",
+          "reptile",
+          "shower",
+          "solar system",
+          "wildlife"
+        ],
+        "wordBank": [
+          "goes out",
+          "litter",
+          "reptile",
+          "shower",
+          "solar system",
+          "wildlife"
+        ],
+        "items": [
+          {
+            "id": "b1-u36-exg-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Animals and birds living freely in nature are called ...... .",
+            "answer": "wildlife",
+            "acceptedAnswers": [
+              "wildlife"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exg-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "People who throw rubbish on the beach ...... .",
+            "answer": "litter",
+            "acceptedAnswers": [
+              "litter"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exg-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "A lizard is a type of ...... .",
+            "answer": "reptile",
+            "acceptedAnswers": [
+              "reptile"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exg-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Earth, Mars and Jupiter are part of the ...... .",
+            "answer": "solar system",
+            "acceptedAnswers": [
+              "solar system"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exg-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When a candle ......, the room becomes dark.",
+            "answer": "goes out",
+            "acceptedAnswers": [
+              "goes out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exg-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We got wet during a short rain ...... .",
+            "answer": "shower",
+            "acceptedAnswers": [
+              "shower"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u36-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Mixed revision",
+        "title": "Mixed revision",
+        "instructions": "Complete each sentence with one suitable word.",
+        "studentInstruction": "Complete each sentence with one suitable word.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u36-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Never leave ...... near a river or beach.",
+            "answer": "litter",
+            "acceptedAnswers": [
+              "litter"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "At the ...... of the sea, there are many strange creatures.",
+            "answer": "bottom",
+            "acceptedAnswers": [
+              "bottom"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Some rare birds could become ...... without protection.",
+            "answer": "extinct",
+            "acceptedAnswers": [
+              "extinct"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The weather was ......, so we had lunch outside.",
+            "answer": "mild",
+            "acceptedAnswers": [
+              "mild"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can scientists ...... the satellite in space?",
+            "answer": "locate",
+            "acceptedAnswers": [
+              "locate"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The children heard ...... before the heavy rain started.",
+            "answer": "thunder",
+            "acceptedAnswers": [
+              "thunder"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exh-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "More people are aware ...... the need to save water.",
+            "answer": "of",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exh-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please keep ...... the field because animals are nesting there.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u36-ex-i",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Vocabulary in context",
+        "title": "Vocabulary in context",
+        "instructions": "Complete each sentence with a word from the box.",
+        "studentInstruction": "Complete each sentence with a word from the box.",
+        "legacyKey": "I",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "climate",
+          "earthquake",
+          "extinct",
+          "flood",
+          "freezing",
+          "mammal",
+          "planet",
+          "pollution",
+          "rescue",
+          "satellite",
+          "species",
+          "wild"
+        ],
+        "wordBank": [
+          "climate",
+          "earthquake",
+          "extinct",
+          "flood",
+          "freezing",
+          "mammal",
+          "planet",
+          "pollution",
+          "rescue",
+          "satellite",
+          "species",
+          "wild"
+        ],
+        "items": [
+          {
+            "id": "b1-u36-exi-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "A bat is a ......, although it can fly.",
+            "answer": "mammal",
+            "acceptedAnswers": [
+              "mammal"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exi-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Firefighters worked hard to ...... people after the flood.",
+            "answer": "rescue",
+            "acceptedAnswers": [
+              "rescue"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exi-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The water was ......, so nobody wanted to swim.",
+            "answer": "freezing",
+            "acceptedAnswers": [
+              "freezing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exi-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The ...... shook the ground for several seconds.",
+            "answer": "earthquake",
+            "acceptedAnswers": [
+              "earthquake"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exi-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This bird may become ...... if its forest home disappears.",
+            "answer": "extinct",
+            "acceptedAnswers": [
+              "extinct"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exi-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "A weather ...... can help scientists study storms.",
+            "answer": "satellite",
+            "acceptedAnswers": [
+              "satellite"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exi-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Plastic ...... is dangerous for sea animals.",
+            "answer": "pollution",
+            "acceptedAnswers": [
+              "pollution"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exi-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Venus is the hottest ...... in the solar system.",
+            "answer": "planet",
+            "acceptedAnswers": [
+              "planet"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exi-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Many horses still live ...... in some parts of the world.",
+            "answer": "wild",
+            "acceptedAnswers": [
+              "wild"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u36-exi-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "A dry ...... makes it difficult for some plants to grow.",
+            "answer": "climate",
+            "acceptedAnswers": [
+              "climate"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

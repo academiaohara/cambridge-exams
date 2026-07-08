@@ -1,0 +1,636 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 13,
+  "unit": 38,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 38: Both, either, neither, so & nor",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 38: Both, either, neither, so & nor"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit38.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 3
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u38-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Both",
+        "subtitle": "Both",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "To emphasise that two things are equally true.",
+              "To make the same statement about two people or things."
+            ]
+          },
+          {
+            "type": "example_list",
+            "title": "Examples",
+            "items": [
+              [
+                "**Both** Sophie and James arrived early for the meeting.",
+                "The exam was **both** long **and** difficult."
+              ],
+              [
+                "My brother and I were **both** surprised by the result.",
+                "Anna and Pete **both** enjoyed the concert."
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "We often use **of** with **both** before a pronoun.",
+              "I used to work with Nina and Chris, but I've lost touch with **both of** them."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Either",
+        "subtitle": "Either",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "To present a choice between two options."
+            ]
+          },
+          {
+            "type": "example_list",
+            "title": "Examples",
+            "items": [
+              [
+                "You can take **either** the bus **or** the train.",
+                "He'll be **either** angry **or** relieved when he hears the news.",
+                "You can **either** apologise now **or** explain later."
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "We often use **of** with **either** before a pronoun.",
+              "I like Tom and Sam — I'd be happy going to the cinema with **either of** them."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-3",
+        "title": "Neither",
+        "subtitle": "Neither",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "To indicate that neither of two options applies."
+            ]
+          },
+          {
+            "type": "example_list",
+            "title": "Examples",
+            "items": [
+              [
+                "She has **neither** the time **nor** the money to go on holiday.",
+                "His explanation was **neither** clear **nor** helpful."
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "We often use **of** with **neither** before a pronoun.",
+              "**Neither of** them remembered to bring the tickets."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-4",
+        "title": "So, nor",
+        "subtitle": "So, nor",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Use **so** to add more information to a positive statement.",
+              "Use **nor** to add more information to a negative statement."
+            ]
+          },
+          {
+            "type": "example_list",
+            "title": "Examples",
+            "items": [
+              [
+                "Sam is very patient, and **so is** Emma.",
+                "I've never been to Tokyo, and **nor has** my sister."
+              ],
+              [
+                "He didn't understand the question, and **nor did I**.",
+                "You passed the test, and **so did** your classmate."
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "We can use these structures on their own in conversation.",
+              "'I prefer tea to coffee.' — 'So do I.'",
+              "'I've never tried sushi.' — 'Nor have I.'"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u38-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 12,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u38-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u38-exa-1",
+            "b1-u38-exa-2",
+            "b1-u38-exa-3",
+            "b1-u38-exa-4",
+            "b1-u38-exa-5",
+            "b1-u38-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u38-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u38-exb-1",
+            "b1-u38-exb-2",
+            "b1-u38-exb-3",
+            "b1-u38-exb-4",
+            "b1-u38-exb-5",
+            "b1-u38-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u38-ex-c",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u38-exc-1",
+            "b1-u38-exc-2",
+            "b1-u38-exc-3",
+            "b1-u38-exc-4",
+            "b1-u38-exc-5",
+            "b1-u38-exc-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 20,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u38-ex-a",
+      "b1-u38-ex-b",
+      "b1-u38-ex-c"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u38-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Complete with both, either or neither",
+        "title": "A: Complete with both, either or neither",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u38-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... my sisters love playing tennis.",
+            "answer": "Both",
+            "acceptedAnswers": [
+              "Both"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You can sit in ...... seat by the window.",
+            "answer": "either",
+            "acceptedAnswers": [
+              "either"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... restaurant was open after midnight.",
+            "answer": "Neither",
+            "acceptedAnswers": [
+              "Neither"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The film was ...... funny and exciting.",
+            "answer": "both",
+            "acceptedAnswers": [
+              "both"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I haven't read ...... of those books.",
+            "answer": "either",
+            "acceptedAnswers": [
+              "either"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... of them remembered my birthday.",
+            "answer": "Neither",
+            "acceptedAnswers": [
+              "Neither"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u38-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Complete with so or nor + auxiliary",
+        "title": "B: Complete with so or nor + auxiliary",
+        "instructions": "Complete the second sentence so it means the same.",
+        "studentInstruction": "Complete the second sentence so it means the same.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u38-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I can swim, and ...... my brother.",
+            "answer": "so can",
+            "acceptedAnswers": [
+              "so can"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She hasn't finished yet, and ...... Tom.",
+            "answer": "nor has",
+            "acceptedAnswers": [
+              "nor has"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We've seen that film, and ...... they.",
+            "answer": "so have",
+            "acceptedAnswers": [
+              "so have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I don't eat meat, and ...... my cousin.",
+            "answer": "nor does",
+            "acceptedAnswers": [
+              "nor does"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Lucy was very nervous, and ...... I.",
+            "answer": "so was",
+            "acceptedAnswers": [
+              "so was"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They wouldn't change their minds, and ...... we.",
+            "answer": "nor would",
+            "acceptedAnswers": [
+              "nor would"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u38-ex-c",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "C: Multiple choice",
+        "title": "C: Multiple choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "C",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u38-exc-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "Ben and Oliver enjoy science fiction films.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Both"
+              },
+              {
+                "letter": "B",
+                "text": "Either"
+              },
+              {
+                "letter": "C",
+                "text": "Neither"
+              },
+              {
+                "letter": "D",
+                "text": "Nor"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exc-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You can",
+            "sentenceAfter": "stay here or come back later.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "both"
+              },
+              {
+                "letter": "B",
+                "text": "either"
+              },
+              {
+                "letter": "C",
+                "text": "neither"
+              },
+              {
+                "letter": "D",
+                "text": "nor"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exc-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She speaks neither Spanish",
+            "sentenceAfter": "Italian.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "and"
+              },
+              {
+                "letter": "B",
+                "text": "or"
+              },
+              {
+                "letter": "C",
+                "text": "nor"
+              },
+              {
+                "letter": "D",
+                "text": "so"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exc-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I wasn't hungry, and",
+            "sentenceAfter": "was my brother.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "so"
+              },
+              {
+                "letter": "B",
+                "text": "either"
+              },
+              {
+                "letter": "C",
+                "text": "both"
+              },
+              {
+                "letter": "D",
+                "text": "nor"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exc-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My parents are tired, and so",
+            "sentenceAfter": "I.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "am"
+              },
+              {
+                "letter": "B",
+                "text": "do"
+              },
+              {
+                "letter": "C",
+                "text": "have"
+              },
+              {
+                "letter": "D",
+                "text": "would"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u38-exc-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "of these answers is completely correct.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Both"
+              },
+              {
+                "letter": "B",
+                "text": "Either"
+              },
+              {
+                "letter": "C",
+                "text": "Neither"
+              },
+              {
+                "letter": "D",
+                "text": "Nor"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

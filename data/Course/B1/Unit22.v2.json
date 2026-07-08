@@ -1,0 +1,1003 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 8,
+  "unit": 22,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 22: Modal perfect",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 22: Modal perfect"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit22.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 8
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u22-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "error_correction",
+        "displayName": "Correct the error",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_correction_input",
+          "studentAction": "type_correction",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u22-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "free_text_gap_fill",
+        "error_correction"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 40,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u22-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u22-exa-1",
+            "b1-u22-exa-2",
+            "b1-u22-exa-3",
+            "b1-u22-exa-4",
+            "b1-u22-exa-5",
+            "b1-u22-exa-6",
+            "b1-u22-exa-7",
+            "b1-u22-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u22-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u22-exb-1",
+            "b1-u22-exb-2",
+            "b1-u22-exb-3",
+            "b1-u22-exb-4",
+            "b1-u22-exb-5",
+            "b1-u22-exb-6",
+            "b1-u22-exb-7",
+            "b1-u22-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u22-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u22-exc-1",
+            "b1-u22-exc-2",
+            "b1-u22-exc-3",
+            "b1-u22-exc-4",
+            "b1-u22-exc-5",
+            "b1-u22-exc-6",
+            "b1-u22-exc-7",
+            "b1-u22-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u22-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u22-exd-1",
+            "b1-u22-exd-2",
+            "b1-u22-exd-3",
+            "b1-u22-exd-4",
+            "b1-u22-exd-5",
+            "b1-u22-exd-6",
+            "b1-u22-exd-7",
+            "b1-u22-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u22-ex-e",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u22-exe-1",
+            "b1-u22-exe-2",
+            "b1-u22-exe-3",
+            "b1-u22-exe-4",
+            "b1-u22-exe-5",
+            "b1-u22-exe-6",
+            "b1-u22-exe-7",
+            "b1-u22-exe-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u22-ex-f",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u22-exf-1",
+            "b1-u22-exf-2",
+            "b1-u22-exf-3",
+            "b1-u22-exf-4",
+            "b1-u22-exf-5",
+            "b1-u22-exf-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u22-ex-g",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u22-exg-1",
+            "b1-u22-exg-2",
+            "b1-u22-exg-3",
+            "b1-u22-exg-4",
+            "b1-u22-exg-5",
+            "b1-u22-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u22-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u22-exh-1",
+            "b1-u22-exh-2",
+            "b1-u22-exh-3",
+            "b1-u22-exh-4",
+            "b1-u22-exh-5",
+            "b1-u22-exh-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 58,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u22-ex-a",
+      "b1-u22-ex-b",
+      "b1-u22-ex-c",
+      "b1-u22-ex-d",
+      "b1-u22-ex-e",
+      "b1-u22-ex-f",
+      "b1-u22-ex-g",
+      "b1-u22-ex-h"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u22-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Complete with modal perfect forms",
+        "title": "A: Complete with modal perfect forms",
+        "instructions": "Use the correct modal perfect form of the verbs in brackets.",
+        "studentInstruction": "Use the correct modal perfect form of the verbs in brackets.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u22-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Olivia had plenty of free time, so she ...... (help) us with the decorations.",
+            "answer": "could have helped",
+            "acceptedAnswers": [
+              "could have helped"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Jake looks terrible today. He ...... (rest) properly last night.",
+            "answer": "can't have rested",
+            "acceptedAnswers": [
+              "can't have rested"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "You ...... (warn) me about the traffic. We missed the concert!",
+            "answer": "should have warned",
+            "acceptedAnswers": [
+              "should have warned"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The lights were already off, so they ...... (go) to bed early.",
+            "answer": "must have gone",
+            "acceptedAnswers": [
+              "must have gone"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I ...... (reserve) a table earlier, but I completely forgot.",
+            "answer": "could have reserved",
+            "acceptedAnswers": [
+              "could have reserved"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Nina ...... (stay) at home yesterday because I saw her downtown.",
+            "answer": "can't have stayed",
+            "acceptedAnswers": [
+              "can't have stayed"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exa-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "You ...... (not / say) those rude things to your sister.",
+            "answer": "shouldn't have said",
+            "acceptedAnswers": [
+              "shouldn't have said"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exa-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Tom ...... (leave) his notebook in the classroom by accident.",
+            "answer": "might have left",
+            "acceptedAnswers": [
+              "might have left"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u22-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "B: Choose the correct option",
+        "title": "B: Choose the correct option",
+        "instructions": "Circle the correct modal phrase in each sentence.",
+        "studentInstruction": "Circle the correct modal phrase in each sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u22-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We",
+            "sentenceAfter": "taken a taxi, but we decided to walk.",
+            "options": [
+              "could have",
+              "should have"
+            ],
+            "answer": "could have",
+            "originalSentence": "We **could have / should have** taken a taxi, but we decided to walk.",
+            "completedSentence": "We could have taken a taxi, but we decided to walk."
+          },
+          {
+            "id": "b1-u22-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She",
+            "sentenceAfter": "been nervous before the interview.",
+            "options": [
+              "might have",
+              "must have"
+            ],
+            "answer": "must have",
+            "originalSentence": "She **might have / must have** been nervous before the interview.",
+            "completedSentence": "She must have been nervous before the interview."
+          },
+          {
+            "id": "b1-u22-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "They",
+            "sentenceAfter": "finished already — it was a huge project.",
+            "options": [
+              "can't have",
+              "shouldn't have"
+            ],
+            "answer": "can't have",
+            "originalSentence": "They **can't have / shouldn't have** finished already — it was a huge project.",
+            "completedSentence": "They can't have finished already — it was a huge project."
+          },
+          {
+            "id": "b1-u22-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You",
+            "sentenceAfter": "asked permission before borrowing my laptop.",
+            "options": [
+              "may have",
+              "should have"
+            ],
+            "answer": "should have",
+            "originalSentence": "You **may have / should have** asked permission before borrowing my laptop.",
+            "completedSentence": "You should have asked permission before borrowing my laptop."
+          },
+          {
+            "id": "b1-u22-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Lucas",
+            "sentenceAfter": "forgotten to lock the door.",
+            "options": [
+              "might have",
+              "ought to have"
+            ],
+            "answer": "might have",
+            "originalSentence": "Lucas **might have / ought to have** forgotten to lock the door.",
+            "completedSentence": "Lucas might have forgotten to lock the door."
+          },
+          {
+            "id": "b1-u22-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I",
+            "sentenceAfter": "passed the test if I had studied harder.",
+            "options": [
+              "must have",
+              "could have"
+            ],
+            "answer": "could have",
+            "originalSentence": "I **must have / could have** passed the test if I had studied harder.",
+            "completedSentence": "I could have passed the test if I had studied harder."
+          },
+          {
+            "id": "b1-u22-exb-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Mum",
+            "sentenceAfter": "taken the wrong train. She's very late.",
+            "options": [
+              "must have",
+              "should have"
+            ],
+            "answer": "must have",
+            "originalSentence": "Mum **must have / should have** taken the wrong train. She's very late.",
+            "completedSentence": "Mum must have taken the wrong train. She's very late."
+          },
+          {
+            "id": "b1-u22-exb-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You",
+            "sentenceAfter": "been kinder to your cousin.",
+            "options": [
+              "can't have",
+              "ought to have"
+            ],
+            "answer": "ought to have",
+            "originalSentence": "You **can't have / ought to have** been kinder to your cousin.",
+            "completedSentence": "You ought to have been kinder to your cousin."
+          }
+        ]
+      },
+      {
+        "id": "b1-u22-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Criticism and expectation",
+        "title": "C: Criticism and expectation",
+        "instructions": "Complete with should have, shouldn't have or ought to have.",
+        "studentInstruction": "Complete with should have, shouldn't have or ought to have.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u22-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You ...... worn a warmer coat. It's freezing outside.",
+            "answer": "should have",
+            "acceptedAnswers": [
+              "should have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We ...... eaten so much before the trip.",
+            "answer": "shouldn't have",
+            "acceptedAnswers": [
+              "shouldn't have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I ...... paid more attention during the lesson.",
+            "answer": "should have",
+            "acceptedAnswers": [
+              "should have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They ...... laughed at him in front of everyone.",
+            "answer": "shouldn't have",
+            "acceptedAnswers": [
+              "shouldn't have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The train ...... arrived by now.",
+            "answer": "ought to have",
+            "acceptedAnswers": [
+              "ought to have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You ...... explained the situation more clearly.",
+            "answer": "should have",
+            "acceptedAnswers": [
+              "should have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He ...... lied to his teacher.",
+            "answer": "shouldn't have",
+            "acceptedAnswers": [
+              "shouldn't have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My package ...... come yesterday.",
+            "answer": "should have",
+            "acceptedAnswers": [
+              "should have"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u22-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Probability and possibility",
+        "title": "D: Probability and possibility",
+        "instructions": "Complete each sentence with must have, can't have, may have or might have.",
+        "studentInstruction": "Complete each sentence with must have, can't have, may have or might have.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u22-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "All the windows are open. Someone ...... forgotten to close them.",
+            "answer": "must have",
+            "acceptedAnswers": [
+              "must have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Emma isn't in her room. She ...... gone out with her friends.",
+            "answer": "might have",
+            "acceptedAnswers": [
+              "might have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Ryan answered every question perfectly. He ...... studied really hard.",
+            "answer": "must have",
+            "acceptedAnswers": [
+              "must have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "That smell ...... come from the fridge — it's completely empty.",
+            "answer": "can't have",
+            "acceptedAnswers": [
+              "can't have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They ...... taken the earlier bus, so they arrived before us.",
+            "answer": "may have",
+            "acceptedAnswers": [
+              "may have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This email ...... arrived this morning because I checked my inbox earlier.",
+            "answer": "can't have",
+            "acceptedAnswers": [
+              "can't have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exd-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Laura looks relieved. She ...... solved the problem.",
+            "answer": "must have",
+            "acceptedAnswers": [
+              "must have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exd-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My wallet isn't here. I ...... dropped it at the café.",
+            "answer": "might have",
+            "acceptedAnswers": [
+              "might have"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u22-ex-e",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "E: Error correction",
+        "title": "E: Error correction",
+        "instructions": "Each sentence has one mistake with a modal perfect. Find the bold word and write the correct form.",
+        "studentInstruction": "Each sentence has one mistake with a modal perfect. Find the bold word and write the correct form.",
+        "legacyKey": "E",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u22-exe-1",
+            "formatType": "error_correction",
+            "sentence": "You should spoke to the manager earlier.",
+            "highlightedText": "spoke",
+            "answer": "should have spoken",
+            "acceptedAnswers": [
+              "should have spoken"
+            ]
+          },
+          {
+            "id": "b1-u22-exe-2",
+            "formatType": "error_correction",
+            "sentence": "They might had missed the bus.",
+            "highlightedText": "had",
+            "answer": "might have missed",
+            "acceptedAnswers": [
+              "might have missed"
+            ]
+          },
+          {
+            "id": "b1-u22-exe-3",
+            "formatType": "error_correction",
+            "sentence": "I could have ate dinner before we left.",
+            "highlightedText": "ate",
+            "answer": "could have eaten",
+            "acceptedAnswers": [
+              "could have eaten"
+            ]
+          },
+          {
+            "id": "b1-u22-exe-4",
+            "formatType": "error_correction",
+            "sentence": "She can't have wrote that message.",
+            "highlightedText": "wrote",
+            "answer": "can't have written",
+            "acceptedAnswers": [
+              "can't have written"
+            ]
+          },
+          {
+            "id": "b1-u22-exe-5",
+            "formatType": "error_correction",
+            "sentence": "We ought have to checked the map first.",
+            "highlightedText": "have to",
+            "answer": "ought to have checked",
+            "acceptedAnswers": [
+              "ought to have checked"
+            ]
+          },
+          {
+            "id": "b1-u22-exe-6",
+            "formatType": "error_correction",
+            "sentence": "He shouldn't have drived so fast.",
+            "highlightedText": "drived",
+            "answer": "shouldn't have driven",
+            "acceptedAnswers": [
+              "shouldn't have driven"
+            ]
+          },
+          {
+            "id": "b1-u22-exe-7",
+            "formatType": "error_correction",
+            "sentence": "It may have went wrong somehow.",
+            "highlightedText": "went",
+            "answer": "may have gone",
+            "acceptedAnswers": [
+              "may have gone"
+            ]
+          },
+          {
+            "id": "b1-u22-exe-8",
+            "formatType": "error_correction",
+            "sentence": "You must have see that film already.",
+            "highlightedText": "see",
+            "answer": "must have seen",
+            "acceptedAnswers": [
+              "must have seen"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u22-ex-f",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "F: Key word transformation",
+        "title": "F: Key word transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning.",
+        "legacyKey": "F",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u22-exf-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm sure Ethan lost his keys. **MUST**\nEthan ...... his keys.",
+            "answer": "must have lost",
+            "acceptedAnswers": [
+              "must have lost"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exf-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It wasn't a good idea to ignore her messages. **SHOULDN'T**\nYou ...... her messages.",
+            "answer": "shouldn't have ignored",
+            "acceptedAnswers": [
+              "shouldn't have ignored"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exf-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Perhaps Chloe forgot her homework at home. **MIGHT**\nChloe ...... her homework at home.",
+            "answer": "might have forgotten",
+            "acceptedAnswers": [
+              "might have forgotten"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exf-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I had the opportunity to join the team, but I didn't. **COULD**\nI ...... the team, but I didn't.",
+            "answer": "could have joined",
+            "acceptedAnswers": [
+              "could have joined"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exf-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It is impossible that Noah broke the window. **CAN'T**\nNoah ...... the window.",
+            "answer": "can't have broken",
+            "acceptedAnswers": [
+              "can't have broken"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exf-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It was wrong not to thank her. **OUGHT**\nYou ...... her.",
+            "answer": "ought to have thanked",
+            "acceptedAnswers": [
+              "ought to have thanked"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u22-ex-g",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "G: Error correction",
+        "title": "G: Error correction",
+        "instructions": "Find and correct one mistake in each sentence.",
+        "studentInstruction": "Find and correct one mistake in each sentence.",
+        "legacyKey": "G",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u22-exg-1",
+            "formatType": "error_correction",
+            "sentence": "She might have lose her phone.",
+            "highlightedText": "lose",
+            "answer": "lost",
+            "acceptedAnswers": [
+              "lost"
+            ]
+          },
+          {
+            "id": "b1-u22-exg-2",
+            "formatType": "error_correction",
+            "sentence": "He can't have went home so early.",
+            "highlightedText": "went",
+            "answer": "gone",
+            "acceptedAnswers": [
+              "gone"
+            ]
+          },
+          {
+            "id": "b1-u22-exg-3",
+            "formatType": "error_correction",
+            "sentence": "You should have gave me a call.",
+            "highlightedText": "gave",
+            "answer": "given",
+            "acceptedAnswers": [
+              "given"
+            ]
+          },
+          {
+            "id": "b1-u22-exg-4",
+            "formatType": "error_correction",
+            "sentence": "They may have forget the address.",
+            "highlightedText": "forget",
+            "answer": "forgotten",
+            "acceptedAnswers": [
+              "forgotten"
+            ]
+          },
+          {
+            "id": "b1-u22-exg-5",
+            "formatType": "error_correction",
+            "sentence": "We could have done better if we had more time.",
+            "highlightedText": "done",
+            "answer": "done",
+            "acceptedAnswers": [
+              "done"
+            ]
+          },
+          {
+            "id": "b1-u22-exg-6",
+            "formatType": "error_correction",
+            "sentence": "I ought to have saw the warning sign.",
+            "highlightedText": "saw",
+            "answer": "seen",
+            "acceptedAnswers": [
+              "seen"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u22-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "H: Key word transformation",
+        "title": "H: Key word transformation",
+        "instructions": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "studentInstruction": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u22-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm sure he didn't steal the bicycle.\nHe ...... the bicycle.",
+            "answer": "can't have stolen",
+            "acceptedAnswers": [
+              "can't have stolen"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It was wrong of you to interrupt the teacher.\nYou ...... the teacher.",
+            "answer": "shouldn't have interrupted",
+            "acceptedAnswers": [
+              "shouldn't have interrupted"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm sure they were tired after the journey.\nThey ...... tired after the journey.",
+            "answer": "must have been",
+            "acceptedAnswers": [
+              "must have been"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Perhaps she missed the beginning of the film.\nShe ...... the beginning of the film.",
+            "answer": "might have missed",
+            "acceptedAnswers": [
+              "might have missed"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It was a pity you didn't apply for the job.\nYou ...... for the job.",
+            "answer": "should have applied",
+            "acceptedAnswers": [
+              "should have applied"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u22-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm sure the exam wasn't easy.\nIt ...... easy.",
+            "answer": "can't have been",
+            "acceptedAnswers": [
+              "can't have been"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

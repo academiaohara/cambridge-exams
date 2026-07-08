@@ -1,0 +1,1300 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 7,
+  "unit": 20,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 20: Modals: obligation, probability & possibility",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 20: Modals: obligation, probability & possibility"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit20.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 10
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u20-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Obligation",
+        "subtitle": "Obligation",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "\"I **have to** finish this before tomorrow,\" he said.",
+              "Passengers **must** keep their bags with them at all times."
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              {
+                "correct": "You **mustn't** open that door! (= It is forbidden — do not do it.)"
+              },
+              {
+                "correct": "You **don't have to** open that door. (= You have a choice — it is not necessary.)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Probability and possibility",
+        "subtitle": "Probability and possibility",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "His coat is here but he isn't. He **must** have stepped outside for a moment."
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "To speculate about past events, use a modal followed by the perfect infinitive (have + past participle)."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "error_correction",
+        "displayName": "Correct the error",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_correction_input",
+          "studentAction": "type_correction",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u20-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "error_correction",
+        "full_sentence_write"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 51,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u20-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u20-exa-1",
+            "b1-u20-exa-2",
+            "b1-u20-exa-3",
+            "b1-u20-exa-4",
+            "b1-u20-exa-5",
+            "b1-u20-exa-6",
+            "b1-u20-exa-7",
+            "b1-u20-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u20-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u20-exb-1",
+            "b1-u20-exb-2",
+            "b1-u20-exb-3",
+            "b1-u20-exb-4",
+            "b1-u20-exb-5",
+            "b1-u20-exb-6",
+            "b1-u20-exb-7",
+            "b1-u20-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u20-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u20-exc-1",
+            "b1-u20-exc-2",
+            "b1-u20-exc-3",
+            "b1-u20-exc-4",
+            "b1-u20-exc-5",
+            "b1-u20-exc-6",
+            "b1-u20-exc-7",
+            "b1-u20-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u20-ex-d",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u20-exd-1",
+            "b1-u20-exd-2",
+            "b1-u20-exd-3",
+            "b1-u20-exd-4",
+            "b1-u20-exd-5",
+            "b1-u20-exd-6",
+            "b1-u20-exd-7",
+            "b1-u20-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u20-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u20-exe-1",
+            "b1-u20-exe-2",
+            "b1-u20-exe-3",
+            "b1-u20-exe-4",
+            "b1-u20-exe-5",
+            "b1-u20-exe-6",
+            "b1-u20-exe-7",
+            "b1-u20-exe-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u20-ex-f",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u20-exf-1",
+            "b1-u20-exf-2",
+            "b1-u20-exf-3",
+            "b1-u20-exf-4",
+            "b1-u20-exf-5",
+            "b1-u20-exf-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u20-ex-g",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u20-exg-1",
+            "b1-u20-exg-2",
+            "b1-u20-exg-3",
+            "b1-u20-exg-4",
+            "b1-u20-exg-5",
+            "b1-u20-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u20-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u20-exh-1",
+            "b1-u20-exh-2",
+            "b1-u20-exh-3",
+            "b1-u20-exh-4",
+            "b1-u20-exh-5",
+            "b1-u20-exh-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u20-ex-i",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u20-exi-1",
+            "b1-u20-exi-2",
+            "b1-u20-exi-3",
+            "b1-u20-exi-4",
+            "b1-u20-exi-5",
+            "b1-u20-exi-6",
+            "b1-u20-exi-7",
+            "b1-u20-exi-8",
+            "b1-u20-exi-9",
+            "b1-u20-exi-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u20-ex-j",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u20-exj-1",
+            "b1-u20-exj-2",
+            "b1-u20-exj-3",
+            "b1-u20-exj-4",
+            "b1-u20-exj-5",
+            "b1-u20-exj-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 74,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u20-ex-a",
+      "b1-u20-ex-b",
+      "b1-u20-ex-c",
+      "b1-u20-ex-d",
+      "b1-u20-ex-e",
+      "b1-u20-ex-f",
+      "b1-u20-ex-g",
+      "b1-u20-ex-h",
+      "b1-u20-ex-i",
+      "b1-u20-ex-j"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u20-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Complete with must, have to, need to or mustn't",
+        "title": "A: Complete with must, have to, need to or mustn't",
+        "instructions": "Write the best modal form in each gap.",
+        "studentInstruction": "Write the best modal form in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u20-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You ...... show your ticket before entering the stadium.",
+            "answer": "must",
+            "acceptedAnswers": [
+              "must"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We ...... hurry or the shop will close.",
+            "answer": "have to",
+            "acceptedAnswers": [
+              "have to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I ...... send this form before midnight.",
+            "answer": "need to",
+            "acceptedAnswers": [
+              "need to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Guests ...... take food into the swimming pool area.",
+            "answer": "mustn't",
+            "acceptedAnswers": [
+              "mustn't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "All players ...... wear the correct boots for the match.",
+            "answer": "have to",
+            "acceptedAnswers": [
+              "have to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You ...... open that file. It may contain a virus.",
+            "answer": "mustn't",
+            "acceptedAnswers": [
+              "mustn't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I ...... remember to lock the back door tonight.",
+            "answer": "must",
+            "acceptedAnswers": [
+              "must"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Do we ...... arrive before eight?",
+            "answer": "have to",
+            "acceptedAnswers": [
+              "have to"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u20-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Choose don't have to, don't need to or needn't",
+        "title": "B: Choose don't have to, don't need to or needn't",
+        "instructions": "Complete each sentence with a form showing no obligation.",
+        "studentInstruction": "Complete each sentence with a form showing no obligation.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u20-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You ...... wash the dishes. I've already done them.",
+            "answer": "don't need to",
+            "acceptedAnswers": [
+              "don't need to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's a bank holiday tomorrow, so Dad ...... go to work.",
+            "answer": "doesn't have to",
+            "acceptedAnswers": [
+              "doesn't have to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You ...... come with us if you're too tired.",
+            "answer": "needn't",
+            "acceptedAnswers": [
+              "needn't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We ...... bring chairs; the school will provide them.",
+            "answer": "don't need to",
+            "acceptedAnswers": [
+              "don't need to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Lily ...... study French this year because she chose German.",
+            "answer": "doesn't have to",
+            "acceptedAnswers": [
+              "doesn't have to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You ...... answer now. Think about it first.",
+            "answer": "needn't",
+            "acceptedAnswers": [
+              "needn't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I ...... get a taxi because my brother can drive me.",
+            "answer": "don't have to",
+            "acceptedAnswers": [
+              "don't have to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You ...... write your name twice on the form.",
+            "answer": "don't need to",
+            "acceptedAnswers": [
+              "don't need to"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u20-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Past obligation",
+        "title": "C: Past obligation",
+        "instructions": "Complete using had to, didn't have to or didn't need to.",
+        "studentInstruction": "Complete using had to, didn't have to or didn't need to.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u20-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We ...... wait outside because the doors were locked.",
+            "answer": "had to",
+            "acceptedAnswers": [
+              "had to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I ...... take my umbrella because it didn't rain.",
+            "answer": "didn't have to",
+            "acceptedAnswers": [
+              "didn't have to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Alex ...... finish his homework before dinner yesterday.",
+            "answer": "had to",
+            "acceptedAnswers": [
+              "had to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They ...... wear sports clothes because the match was cancelled.",
+            "answer": "didn't need to",
+            "acceptedAnswers": [
+              "didn't need to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I ...... ask for directions; I had a map.",
+            "answer": "didn't have to",
+            "acceptedAnswers": [
+              "didn't have to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Clara ...... stay in hospital for two nights.",
+            "answer": "had to",
+            "acceptedAnswers": [
+              "had to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We ...... buy tickets. My uncle had already bought them.",
+            "answer": "didn't need to",
+            "acceptedAnswers": [
+              "didn't need to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Tom ...... get up early on Sunday, so he slept until ten.",
+            "answer": "didn't have to",
+            "acceptedAnswers": [
+              "didn't have to"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u20-ex-d",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "D: Circle the correct phrase",
+        "title": "D: Circle the correct phrase",
+        "instructions": "Choose the correct option in each sentence.",
+        "studentInstruction": "Choose the correct option in each sentence.",
+        "legacyKey": "D",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u20-exd-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You",
+            "sentenceAfter": "come if you have other plans.",
+            "options": [
+              "mustn't",
+              "don't have to"
+            ],
+            "answer": "don't have to",
+            "originalSentence": "You **mustn't / don't have to** come if you have other plans.",
+            "completedSentence": "You don't have to come if you have other plans."
+          },
+          {
+            "id": "b1-u20-exd-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You",
+            "sentenceAfter": "touch the paintings in the gallery.",
+            "options": [
+              "mustn't",
+              "don't have to"
+            ],
+            "answer": "mustn't",
+            "originalSentence": "You **mustn't / don't have to** touch the paintings in the gallery.",
+            "completedSentence": "You mustn't touch the paintings in the gallery."
+          },
+          {
+            "id": "b1-u20-exd-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We",
+            "sentenceAfter": "wait long because the bus arrived immediately.",
+            "options": [
+              "had to",
+              "didn't have to"
+            ],
+            "answer": "didn't have to",
+            "originalSentence": "We **had to / didn't have to** wait long because the bus arrived immediately.",
+            "completedSentence": "We didn't have to wait long because the bus arrived immediately."
+          },
+          {
+            "id": "b1-u20-exd-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I",
+            "sentenceAfter": "buy a birthday present for my sister.",
+            "options": [
+              "need to",
+              "mustn't"
+            ],
+            "answer": "need to",
+            "originalSentence": "I **need to / mustn't** buy a birthday present for my sister.",
+            "completedSentence": "I need to buy a birthday present for my sister."
+          },
+          {
+            "id": "b1-u20-exd-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "All visitors",
+            "sentenceAfter": "wear a badge in this building.",
+            "options": [
+              "must",
+              "needn't"
+            ],
+            "answer": "must",
+            "originalSentence": "All visitors **must / needn't** wear a badge in this building.",
+            "completedSentence": "All visitors must wear a badge in this building."
+          },
+          {
+            "id": "b1-u20-exd-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Nina",
+            "sentenceAfter": "call a mechanic when her car stopped.",
+            "options": [
+              "had to",
+              "didn't have to"
+            ],
+            "answer": "had to",
+            "originalSentence": "Nina **had to / didn't have to** call a mechanic when her car stopped.",
+            "completedSentence": "Nina had to call a mechanic when her car stopped."
+          },
+          {
+            "id": "b1-u20-exd-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You",
+            "sentenceAfter": "explain it again — I understand.",
+            "options": [
+              "needn't",
+              "mustn't"
+            ],
+            "answer": "needn't",
+            "originalSentence": "You **needn't / mustn't** explain it again — I understand.",
+            "completedSentence": "You needn't explain it again — I understand."
+          },
+          {
+            "id": "b1-u20-exd-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We",
+            "sentenceAfter": "lose these documents.",
+            "options": [
+              "don't have to",
+              "mustn't"
+            ],
+            "answer": "mustn't",
+            "originalSentence": "We **don't have to / mustn't** lose these documents.",
+            "completedSentence": "We mustn't lose these documents."
+          }
+        ]
+      },
+      {
+        "id": "b1-u20-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Probability and possibility",
+        "title": "E: Probability and possibility",
+        "instructions": "Complete with must, can't, couldn't, should, ought to, could, may or might.",
+        "studentInstruction": "Complete with must, can't, couldn't, should, ought to, could, may or might.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u20-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "That ...... be Omar. He always wears that red jacket.",
+            "answer": "must",
+            "acceptedAnswers": [
+              "must"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This ...... be Anna's bag — she never carries a backpack.",
+            "answer": "can't",
+            "acceptedAnswers": [
+              "can't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The meeting ...... finish late if there are many questions.",
+            "answer": "might",
+            "acceptedAnswers": [
+              "might"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Your parcel ...... arrive tomorrow morning.",
+            "answer": "should",
+            "acceptedAnswers": [
+              "should"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm not sure where Dad is. He ...... be in the garage.",
+            "answer": "could",
+            "acceptedAnswers": [
+              "could"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The shop is closed and the lights are off. It ...... be open.",
+            "answer": "couldn't",
+            "acceptedAnswers": [
+              "couldn't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The team has trained hard, so they ...... win the match.",
+            "answer": "ought to",
+            "acceptedAnswers": [
+              "ought to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Take a jumper — it ...... get cold later.",
+            "answer": "may",
+            "acceptedAnswers": [
+              "may"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u20-ex-f",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "F: Error correction",
+        "title": "F: Error correction",
+        "instructions": "Each sentence has one modal verb mistake. Write the correct modal.",
+        "studentInstruction": "Each sentence has one modal verb mistake. Write the correct modal.",
+        "legacyKey": "F",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u20-exf-1",
+            "formatType": "error_correction",
+            "sentence": "You look ill. You must see a doctor.",
+            "highlightedText": "must",
+            "answer": "should",
+            "acceptedAnswers": [
+              "should"
+            ]
+          },
+          {
+            "id": "b1-u20-exf-2",
+            "formatType": "error_correction",
+            "sentence": "This should be Daniel's notebook. His name is on the cover.",
+            "highlightedText": "should",
+            "answer": "must",
+            "acceptedAnswers": [
+              "must"
+            ]
+          },
+          {
+            "id": "b1-u20-exf-3",
+            "formatType": "error_correction",
+            "sentence": "We must bring lunch; food is provided at the camp.",
+            "highlightedText": "must",
+            "answer": "don't have to",
+            "acceptedAnswers": [
+              "don't have to"
+            ]
+          },
+          {
+            "id": "b1-u20-exf-4",
+            "formatType": "error_correction",
+            "sentence": "You needn't touch those chemicals. They are dangerous.",
+            "highlightedText": "needn't",
+            "answer": "mustn't",
+            "acceptedAnswers": [
+              "mustn't"
+            ]
+          },
+          {
+            "id": "b1-u20-exf-5",
+            "formatType": "error_correction",
+            "sentence": "She left an hour ago, so she can't arrive soon.",
+            "highlightedText": "can't",
+            "answer": "should",
+            "acceptedAnswers": [
+              "should"
+            ]
+          },
+          {
+            "id": "b1-u20-exf-6",
+            "formatType": "error_correction",
+            "sentence": "He mustn't work late yesterday because the deadline was today.",
+            "highlightedText": "mustn't",
+            "answer": "had to",
+            "acceptedAnswers": [
+              "had to"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u20-ex-g",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "G: Error correction",
+        "title": "G: Error correction",
+        "instructions": "Each sentence has one modal error. Write the correct form.",
+        "studentInstruction": "Each sentence has one modal error. Write the correct form.",
+        "legacyKey": "G",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u20-exg-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "You don't have to cross the road when the light is red.",
+            "prompt": {
+              "cues": [
+                "You don't have to cross the road when the light is red."
+              ]
+            },
+            "answer": "mustn't",
+            "acceptedAnswers": [
+              "mustn't"
+            ]
+          },
+          {
+            "id": "b1-u20-exg-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "I must to finish this exercise today.",
+            "prompt": {
+              "cues": [
+                "I must to finish this exercise today."
+              ]
+            },
+            "answer": "must finish",
+            "acceptedAnswers": [
+              "must finish"
+            ]
+          },
+          {
+            "id": "b1-u20-exg-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "We had to not bring books to the trip.",
+            "prompt": {
+              "cues": [
+                "We had to not bring books to the trip."
+              ]
+            },
+            "answer": "didn't have to bring",
+            "acceptedAnswers": [
+              "didn't have to bring"
+            ]
+          },
+          {
+            "id": "b1-u20-exg-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "That must be Sophie; she's on holiday in Portugal.",
+            "prompt": {
+              "cues": [
+                "That must be Sophie; she's on holiday in Portugal."
+              ]
+            },
+            "answer": "can't",
+            "acceptedAnswers": [
+              "can't"
+            ]
+          },
+          {
+            "id": "b1-u20-exg-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "You needn't to pay for the museum today.",
+            "prompt": {
+              "cues": [
+                "You needn't to pay for the museum today."
+              ]
+            },
+            "answer": "needn't pay",
+            "acceptedAnswers": [
+              "needn't pay"
+            ]
+          },
+          {
+            "id": "b1-u20-exg-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "This may is the correct password, but I'm not certain.",
+            "prompt": {
+              "cues": [
+                "This may is the correct password, but I'm not certain."
+              ]
+            },
+            "answer": "may be",
+            "acceptedAnswers": [
+              "may be"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u20-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "H: Key word transformation",
+        "title": "H: Key word transformation",
+        "instructions": "Complete the second sentence using the word given.",
+        "studentInstruction": "Complete the second sentence using the word given.",
+        "legacyKey": "H",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u20-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's necessary for passengers to fasten their seatbelts. **MUST**\nPassengers ...... their seatbelts.",
+            "answer": "must fasten",
+            "acceptedAnswers": [
+              "must fasten"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It wasn't necessary for me to phone the office. **HAVE**\nI ...... to phone the office.",
+            "answer": "didn't have",
+            "acceptedAnswers": [
+              "didn't have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm almost sure that's Maya's umbrella. **MUST**\nThat ...... Maya's umbrella.",
+            "answer": "must be",
+            "acceptedAnswers": [
+              "must be"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Maybe they'll visit us next weekend. **MIGHT**\nThey ...... us next weekend.",
+            "answer": "might visit",
+            "acceptedAnswers": [
+              "might visit"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's prohibited to enter this area. **MUSTN'T**\nYou ...... this area.",
+            "answer": "mustn't enter",
+            "acceptedAnswers": [
+              "mustn't enter"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's probable that the train will arrive soon. **SHOULD**\nThe train ...... soon.",
+            "answer": "should arrive",
+            "acceptedAnswers": [
+              "should arrive"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u20-ex-i",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "I: Mixed revision",
+        "title": "I: Mixed revision",
+        "instructions": "Write one suitable modal form in each gap.",
+        "studentInstruction": "Write one suitable modal form in each gap.",
+        "legacyKey": "I",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u20-exi-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You ...... bring a towel; the hotel provides one.",
+            "answer": "don't have to",
+            "acceptedAnswers": [
+              "don't have to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exi-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The film starts in ten minutes, so we ...... go now.",
+            "answer": "have to",
+            "acceptedAnswers": [
+              "have to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exi-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "His phone is on the table, so he ...... be far away.",
+            "answer": "can't",
+            "acceptedAnswers": [
+              "can't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exi-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I ...... finish the poster today. The deadline is next week.",
+            "answer": "don't need to",
+            "acceptedAnswers": [
+              "don't need to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exi-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She practised a lot, so she ...... do well in the concert.",
+            "answer": "should",
+            "acceptedAnswers": [
+              "should"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exi-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You ...... feed the animals in the park. It's forbidden.",
+            "answer": "mustn't",
+            "acceptedAnswers": [
+              "mustn't"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exi-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The car is in the drive, so Dad ...... be home.",
+            "answer": "must",
+            "acceptedAnswers": [
+              "must"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exi-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We ...... walk yesterday because Mum picked us up.",
+            "answer": "didn't have to",
+            "acceptedAnswers": [
+              "didn't have to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exi-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm not sure, but this key ...... open the side door.",
+            "answer": "might",
+            "acceptedAnswers": [
+              "might"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exi-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The lift was broken, so we ...... use the stairs.",
+            "answer": "had to",
+            "acceptedAnswers": [
+              "had to"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u20-ex-j",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "J: Key word transformation",
+        "title": "J: Key word transformation",
+        "instructions": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "studentInstruction": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "legacyKey": "J",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u20-exj-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There is no need for you to bring your dictionary.\n...... bring your dictionary.",
+            "answer": "You don't need to",
+            "acceptedAnswers": [
+              "You don't need to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exj-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The rules say you cannot eat in this room.\nYou ...... in this room.",
+            "answer": "mustn't eat",
+            "acceptedAnswers": [
+              "mustn't eat"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exj-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm certain he is in the garden now.\nHe ...... in the garden.",
+            "answer": "must be",
+            "acceptedAnswers": [
+              "must be"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exj-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It was necessary for every player to arrive early.\nEvery player ...... early.",
+            "answer": "had to arrive",
+            "acceptedAnswers": [
+              "had to arrive"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exj-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Perhaps she missed the bus.\nShe ...... the bus.",
+            "answer": "might have missed",
+            "acceptedAnswers": [
+              "might have missed"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u20-exj-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You are not required to bring your own lunch.\n...... bring your own lunch.",
+            "answer": "You needn't",
+            "acceptedAnswers": [
+              "You needn't"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1063 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 11,
+  "unit": 31,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 31: Reported speech",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 31: Reported speech"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit31.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 8
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u31-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Reported speech",
+        "subtitle": "Reported speech",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Use",
+            "headers": [
+              "Use",
+              "Example"
+            ],
+            "rows": [
+              [
+                "To report what another person said without using their exact words",
+                "Lena said that she had finished her homework."
+              ]
+            ]
+          },
+          {
+            "type": "comparison_table",
+            "title": "Form: tense changes",
+            "headers": [
+              "Direct speech",
+              "Reported speech"
+            ],
+            "rows": [
+              [
+                "present simple\n'I like pizza,' Tom said.",
+                "past simple\nTom said he liked pizza."
+              ],
+              [
+                "present continuous\n'We are watching a film,' they said.",
+                "past continuous\nThey said they were watching a film."
+              ],
+              [
+                "present perfect\n'I have seen that film,' Anna said.",
+                "past perfect\nAnna said she had seen that film."
+              ],
+              [
+                "past simple\n'I bought a new phone,' Jake said.",
+                "past perfect\nJake said he had bought a new phone."
+              ],
+              [
+                "will\n'I will help you,' Sarah said.",
+                "would\nSarah said she would help me."
+              ],
+              [
+                "can\n'I can swim well,' Leo said.",
+                "could\nLeo said he could swim well."
+              ],
+              [
+                "must\n'You must study harder,' the teacher said.",
+                "had to\nThe teacher said we had to study harder."
+              ],
+              [
+                "may\n'I may travel abroad,' Nina said.",
+                "might\nNina said she might travel abroad."
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "error_correction",
+        "displayName": "Correct the error",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_correction_input",
+          "studentAction": "type_correction",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u31-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "full_sentence_write",
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "error_correction",
+        "free_text_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 33,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u31-ex-a",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u31-exa-1",
+            "b1-u31-exa-2",
+            "b1-u31-exa-3",
+            "b1-u31-exa-4",
+            "b1-u31-exa-5",
+            "b1-u31-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u31-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u31-exb-1",
+            "b1-u31-exb-2",
+            "b1-u31-exb-3",
+            "b1-u31-exb-4",
+            "b1-u31-exb-5",
+            "b1-u31-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u31-ex-c",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u31-exc-1",
+            "b1-u31-exc-2",
+            "b1-u31-exc-3",
+            "b1-u31-exc-4",
+            "b1-u31-exc-5",
+            "b1-u31-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u31-ex-d",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u31-exd-1",
+            "b1-u31-exd-2",
+            "b1-u31-exd-3",
+            "b1-u31-exd-4",
+            "b1-u31-exd-5",
+            "b1-u31-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u31-ex-e",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u31-exe-1",
+            "b1-u31-exe-2",
+            "b1-u31-exe-3",
+            "b1-u31-exe-4",
+            "b1-u31-exe-5",
+            "b1-u31-exe-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u31-ex-f",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u31-exf-1",
+            "b1-u31-exf-2",
+            "b1-u31-exf-3",
+            "b1-u31-exf-4",
+            "b1-u31-exf-5",
+            "b1-u31-exf-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u31-ex-g",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u31-exg-1",
+            "b1-u31-exg-2",
+            "b1-u31-exg-3",
+            "b1-u31-exg-4",
+            "b1-u31-exg-5",
+            "b1-u31-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u31-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u31-exh-1",
+            "b1-u31-exh-2",
+            "b1-u31-exh-3",
+            "b1-u31-exh-4",
+            "b1-u31-exh-5",
+            "b1-u31-exh-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 48,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u31-ex-a",
+      "b1-u31-ex-b",
+      "b1-u31-ex-c",
+      "b1-u31-ex-d",
+      "b1-u31-ex-e",
+      "b1-u31-ex-f",
+      "b1-u31-ex-g",
+      "b1-u31-ex-h"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u31-ex-a",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "A: Change to reported speech",
+        "title": "A: Change to reported speech",
+        "instructions": "Rewrite each sentence in reported speech.",
+        "studentInstruction": "Rewrite each sentence in reported speech.",
+        "legacyKey": "A",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u31-exa-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "'I enjoy painting,' Kate said.",
+            "prompt": {
+              "cues": [
+                "'I enjoy painting,' Kate said."
+              ]
+            },
+            "answer": "Kate said she enjoyed painting.",
+            "acceptedAnswers": [
+              "Kate said she enjoyed painting."
+            ]
+          },
+          {
+            "id": "b1-u31-exa-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "'We are cleaning the house,' they said.",
+            "prompt": {
+              "cues": [
+                "'We are cleaning the house,' they said."
+              ]
+            },
+            "answer": "They said they were cleaning the house.",
+            "acceptedAnswers": [
+              "They said they were cleaning the house."
+            ]
+          },
+          {
+            "id": "b1-u31-exa-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "'I can ride a horse,' Ben said.",
+            "prompt": {
+              "cues": [
+                "'I can ride a horse,' Ben said."
+              ]
+            },
+            "answer": "Ben said he could ride a horse.",
+            "acceptedAnswers": [
+              "Ben said he could ride a horse."
+            ]
+          },
+          {
+            "id": "b1-u31-exa-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "'They are going to travel abroad,' Mia said.",
+            "prompt": {
+              "cues": [
+                "'They are going to travel abroad,' Mia said."
+              ]
+            },
+            "answer": "Mia said they were going to travel abroad.",
+            "acceptedAnswers": [
+              "Mia said they were going to travel abroad."
+            ]
+          },
+          {
+            "id": "b1-u31-exa-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "'I may visit my cousins tomorrow,' Ella said.",
+            "prompt": {
+              "cues": [
+                "'I may visit my cousins tomorrow,' Ella said."
+              ]
+            },
+            "answer": "Ella said she might visit her cousins the next day.",
+            "acceptedAnswers": [
+              "Ella said she might visit her cousins the next day."
+            ]
+          },
+          {
+            "id": "b1-u31-exa-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "'I was studying all evening,' Jack said.",
+            "prompt": {
+              "cues": [
+                "'I was studying all evening,' Jack said."
+              ]
+            },
+            "answer": "Jack said he had been studying all evening.",
+            "acceptedAnswers": [
+              "Jack said he had been studying all evening."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u31-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: Complete the reported sentences",
+        "title": "B: Complete the reported sentences",
+        "instructions": "Use the correct reported form of the verb in brackets.",
+        "studentInstruction": "Use the correct reported form of the verb in brackets.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u31-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Ryan said he ...... (feel) tired after work.",
+            "answer": "felt",
+            "acceptedAnswers": [
+              "felt"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u31-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My friends said they ...... (prepare) dinner then.",
+            "answer": "were preparing",
+            "acceptedAnswers": [
+              "were preparing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u31-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Olivia said she ...... (complete) the task already.",
+            "answer": "had completed",
+            "acceptedAnswers": [
+              "had completed"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u31-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Daniel said he ...... (can) help us later.",
+            "answer": "could",
+            "acceptedAnswers": [
+              "could"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u31-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Mum said we ...... (have to) be careful.",
+            "answer": "had to",
+            "acceptedAnswers": [
+              "had to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u31-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "They said they ...... (travel) to Rome the following month.",
+            "answer": "were going",
+            "acceptedAnswers": [
+              "were going"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u31-ex-c",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "C: Time and place changes",
+        "title": "C: Time and place changes",
+        "instructions": "Rewrite with the correct time/place words.",
+        "studentInstruction": "Rewrite with the correct time/place words.",
+        "legacyKey": "C",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u31-exc-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "'I'll see you tomorrow,' she said.",
+            "prompt": {
+              "cues": [
+                "'I'll see you tomorrow,' she said."
+              ]
+            },
+            "answer": "She said she would see me the next day.",
+            "acceptedAnswers": [
+              "She said she would see me the next day."
+            ]
+          },
+          {
+            "id": "b1-u31-exc-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "'We arrived here yesterday,' they said.",
+            "prompt": {
+              "cues": [
+                "'We arrived here yesterday,' they said."
+              ]
+            },
+            "answer": "They said they had arrived there the day before.",
+            "acceptedAnswers": [
+              "They said they had arrived there the day before."
+            ]
+          },
+          {
+            "id": "b1-u31-exc-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "'I'm busy now,' Luke said.",
+            "prompt": {
+              "cues": [
+                "'I'm busy now,' Luke said."
+              ]
+            },
+            "answer": "Luke said he was busy then.",
+            "acceptedAnswers": [
+              "Luke said he was busy then."
+            ]
+          },
+          {
+            "id": "b1-u31-exc-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "'I met her last week,' Amy said.",
+            "prompt": {
+              "cues": [
+                "'I met her last week,' Amy said."
+              ]
+            },
+            "answer": "Amy said she had met her the week before.",
+            "acceptedAnswers": [
+              "Amy said she had met her the week before."
+            ]
+          },
+          {
+            "id": "b1-u31-exc-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "'I'll stay here tonight,' he said.",
+            "prompt": {
+              "cues": [
+                "'I'll stay here tonight,' he said."
+              ]
+            },
+            "answer": "He said he would stay there that night.",
+            "acceptedAnswers": [
+              "He said he would stay there that night."
+            ]
+          },
+          {
+            "id": "b1-u31-exc-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "'I started this job three years ago,' Paul said.",
+            "prompt": {
+              "cues": [
+                "'I started this job three years ago,' Paul said."
+              ]
+            },
+            "answer": "Paul said he had started that job three years before.",
+            "acceptedAnswers": [
+              "Paul said he had started that job three years before."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u31-ex-d",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "D: Choose the correct option",
+        "title": "D: Choose the correct option",
+        "instructions": "Circle the correct word or phrase.",
+        "studentInstruction": "Circle the correct word or phrase.",
+        "legacyKey": "D",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u31-exd-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Lucy said she",
+            "sentenceAfter": "hungry.",
+            "options": [
+              "was",
+              "is"
+            ],
+            "answer": "was",
+            "originalSentence": "Lucy said she **was / is** hungry.",
+            "completedSentence": "Lucy said she was hungry."
+          },
+          {
+            "id": "b1-u31-exd-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "They said they",
+            "sentenceAfter": "join us later.",
+            "options": [
+              "can",
+              "could"
+            ],
+            "answer": "could",
+            "originalSentence": "They said they **can / could** join us later.",
+            "completedSentence": "They said they could join us later."
+          },
+          {
+            "id": "b1-u31-exd-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "He said he",
+            "sentenceAfter": "phone me that evening.",
+            "options": [
+              "would",
+              "will"
+            ],
+            "answer": "would",
+            "originalSentence": "He said he **would / will** phone me that evening.",
+            "completedSentence": "He said he would phone me that evening."
+          },
+          {
+            "id": "b1-u31-exd-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Dad said we",
+            "sentenceAfter": "leave early.",
+            "options": [
+              "have to",
+              "had to"
+            ],
+            "answer": "had to",
+            "originalSentence": "Dad said we **have to / had to** leave early.",
+            "completedSentence": "Dad said we had to leave early."
+          },
+          {
+            "id": "b1-u31-exd-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Emma said she had seen him",
+            "sentenceAfter": ".",
+            "options": [
+              "yesterday",
+              "the day before"
+            ],
+            "answer": "the day before",
+            "originalSentence": "Emma said she had seen him **yesterday / the day before**.",
+            "completedSentence": "Emma said she had seen him the day before ."
+          },
+          {
+            "id": "b1-u31-exd-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Tom said he might visit us",
+            "sentenceAfter": ".",
+            "options": [
+              "next month",
+              "the following month"
+            ],
+            "answer": "the following month",
+            "originalSentence": "Tom said he might visit us **next month / the following month**.",
+            "completedSentence": "Tom said he might visit us the following month ."
+          }
+        ]
+      },
+      {
+        "id": "b1-u31-ex-e",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "E: Correct the errors",
+        "title": "E: Correct the errors",
+        "instructions": "Each sentence has an error in reported speech. Write the whole sentence correctly.",
+        "studentInstruction": "Each sentence has an error in reported speech. Write the whole sentence correctly.",
+        "legacyKey": "E",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "textareaAnswer": true,
+        "items": [
+          {
+            "id": "b1-u31-exe-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "My uncle said he will buy a new car.",
+            "prompt": {
+              "cues": [
+                "My uncle said he will buy a new car."
+              ]
+            },
+            "answer": "My uncle said he would buy a new car.",
+            "acceptedAnswers": [
+              "My uncle said he would buy a new car."
+            ]
+          },
+          {
+            "id": "b1-u31-exe-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "She said they have to study for the test.",
+            "prompt": {
+              "cues": [
+                "She said they have to study for the test."
+              ]
+            },
+            "answer": "She said they had to study for the test.",
+            "acceptedAnswers": [
+              "She said they had to study for the test."
+            ]
+          },
+          {
+            "id": "b1-u31-exe-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Chris said he can play the piano.",
+            "prompt": {
+              "cues": [
+                "Chris said he can play the piano."
+              ]
+            },
+            "answer": "Chris said he could play the piano.",
+            "acceptedAnswers": [
+              "Chris said he could play the piano."
+            ]
+          },
+          {
+            "id": "b1-u31-exe-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Laura said she is working all afternoon.",
+            "prompt": {
+              "cues": [
+                "Laura said she is working all afternoon."
+              ]
+            },
+            "answer": "Laura said she had been working all afternoon.",
+            "acceptedAnswers": [
+              "Laura said she had been working all afternoon."
+            ]
+          },
+          {
+            "id": "b1-u31-exe-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "They said they are going to move house.",
+            "prompt": {
+              "cues": [
+                "They said they are going to move house."
+              ]
+            },
+            "answer": "They said they were going to move house.",
+            "acceptedAnswers": [
+              "They said they were going to move house."
+            ]
+          },
+          {
+            "id": "b1-u31-exe-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Sophie said she may call me tomorrow.",
+            "prompt": {
+              "cues": [
+                "Sophie said she may call me tomorrow."
+              ]
+            },
+            "answer": "Sophie said she might call me the next day.",
+            "acceptedAnswers": [
+              "Sophie said she might call me the next day."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u31-ex-f",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "F: Error correction",
+        "title": "F: Error correction",
+        "instructions": "Each sentence has one mistake. Write the correct form.",
+        "studentInstruction": "Each sentence has one mistake. Write the correct form.",
+        "legacyKey": "F",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u31-exf-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "He said he is hungry.",
+            "prompt": {
+              "cues": [
+                "He said he is hungry."
+              ]
+            },
+            "answer": "He said he was hungry.",
+            "acceptedAnswers": [
+              "He said he was hungry."
+            ]
+          },
+          {
+            "id": "b1-u31-exf-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "They said they will come later.",
+            "prompt": {
+              "cues": [
+                "They said they will come later."
+              ]
+            },
+            "answer": "They said they would come later.",
+            "acceptedAnswers": [
+              "They said they would come later."
+            ]
+          },
+          {
+            "id": "b1-u31-exf-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Anna said she can speak Italian.",
+            "prompt": {
+              "cues": [
+                "Anna said she can speak Italian."
+              ]
+            },
+            "answer": "Anna said she could speak Italian.",
+            "acceptedAnswers": [
+              "Anna said she could speak Italian."
+            ]
+          },
+          {
+            "id": "b1-u31-exf-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "My teacher said we have to finish the exercise.",
+            "prompt": {
+              "cues": [
+                "My teacher said we have to finish the exercise."
+              ]
+            },
+            "answer": "My teacher said we had to finish the exercise.",
+            "acceptedAnswers": [
+              "My teacher said we had to finish the exercise."
+            ]
+          },
+          {
+            "id": "b1-u31-exf-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "She said she would arrive tomorrow.",
+            "prompt": {
+              "cues": [
+                "She said she would arrive tomorrow."
+              ]
+            },
+            "answer": "She said she would arrive the next day.",
+            "acceptedAnswers": [
+              "She said she would arrive the next day."
+            ]
+          },
+          {
+            "id": "b1-u31-exf-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Ben said he has done his homework already.",
+            "prompt": {
+              "cues": [
+                "Ben said he has done his homework already."
+              ]
+            },
+            "answer": "Ben said he had done his homework already.",
+            "acceptedAnswers": [
+              "Ben said he had done his homework already."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u31-ex-g",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "G: Correct the errors",
+        "title": "G: Correct the errors",
+        "instructions": "Each sentence has one mistake in reported speech. Find the bold word and write the correction.",
+        "studentInstruction": "Each sentence has one mistake in reported speech. Find the bold word and write the correction.",
+        "legacyKey": "G",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u31-exg-1",
+            "formatType": "error_correction",
+            "sentence": "Maria said she is tired after school.",
+            "highlightedText": "is",
+            "answer": "was",
+            "acceptedAnswers": [
+              "was"
+            ]
+          },
+          {
+            "id": "b1-u31-exg-2",
+            "formatType": "error_correction",
+            "sentence": "They said they will help us.",
+            "highlightedText": "will",
+            "answer": "would",
+            "acceptedAnswers": [
+              "would"
+            ]
+          },
+          {
+            "id": "b1-u31-exg-3",
+            "formatType": "error_correction",
+            "sentence": "He said he can drive very well.",
+            "highlightedText": "can",
+            "answer": "could",
+            "acceptedAnswers": [
+              "could"
+            ]
+          },
+          {
+            "id": "b1-u31-exg-4",
+            "formatType": "error_correction",
+            "sentence": "Dad said we have to be quiet.",
+            "highlightedText": "have to",
+            "answer": "had to",
+            "acceptedAnswers": [
+              "had to"
+            ]
+          },
+          {
+            "id": "b1-u31-exg-5",
+            "formatType": "error_correction",
+            "sentence": "She said she saw him yesterday.",
+            "highlightedText": "yesterday",
+            "answer": "the day before",
+            "acceptedAnswers": [
+              "the day before"
+            ]
+          },
+          {
+            "id": "b1-u31-exg-6",
+            "formatType": "error_correction",
+            "sentence": "Tom said he has finished dinner.",
+            "highlightedText": "has",
+            "answer": "had",
+            "acceptedAnswers": [
+              "had"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u31-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "H: Rephrasing",
+        "title": "H: Rephrasing",
+        "instructions": "Complete the second sentence so it has a similar meaning to the first. Use between one and four words.",
+        "studentInstruction": "Complete the second sentence so it has a similar meaning to the first. Use between one and four words.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u31-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Jack said he ...... later.",
+            "answer": "would help me",
+            "acceptedAnswers": [
+              "would help me"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u31-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They said they ...... for the test.",
+            "answer": "were revising",
+            "acceptedAnswers": [
+              "were revising"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u31-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Tina said she ...... a new laptop the following year.",
+            "answer": "might buy",
+            "acceptedAnswers": [
+              "might buy"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u31-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Sam said he ...... a book.",
+            "answer": "had been reading",
+            "acceptedAnswers": [
+              "had been reading"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u31-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Lily said she ...... her room.",
+            "answer": "had cleaned",
+            "acceptedAnswers": [
+              "had cleaned"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u31-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My friends said they ...... the next day.",
+            "answer": "could meet",
+            "acceptedAnswers": [
+              "could meet"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

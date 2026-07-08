@@ -1,0 +1,102 @@
+{
+  "unit": 6,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "Topic vocabulary (gap fill)",
+      "legacyPattern": "grouped-conjugation",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 12,
+      "v2Items": 12,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "Circle the correct word",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 9,
+      "v2Items": 9,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "Crossword",
+      "legacyPattern": "crossword",
+      "formatType": "crossword_clues",
+      "screenMode": "per_item",
+      "legacyItems": 9,
+      "v2Items": 9,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "Phrasal verbs (diary entry)",
+      "legacyPattern": "passage-gap-fill",
+      "formatType": "passage_gap_fill",
+      "screenMode": "single_passage_with_gaps",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "Prepositional phrases",
+      "legacyPattern": "bold-swap",
+      "formatType": "error_correction",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": [
+        "bold-swap → error_correction (highlightedText = wrong bold word); word bank not shown in UI"
+      ]
+    },
+    {
+      "exerciseKey": "F",
+      "title": "Word formation",
+      "legacyPattern": "word-formation",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 10,
+      "v2Items": 10,
+      "notes": []
+    },
+    {
+      "exerciseKey": "G",
+      "title": "Word patterns",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "H",
+      "title": "Word patterns (sentence transformation)",
+      "legacyPattern": "kwtrans",
+      "formatType": "keyword_transformation",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 8,
+    "legacyItemCount": 66,
+    "v2ItemCount": 66,
+    "estimatedScreens": 59,
+    "formatTypes": [
+      "conjugation_gap_fill",
+      "two_option_choice",
+      "crossword_clues",
+      "passage_gap_fill",
+      "error_correction",
+      "free_text_gap_fill",
+      "keyword_transformation"
+    ]
+  }
+}

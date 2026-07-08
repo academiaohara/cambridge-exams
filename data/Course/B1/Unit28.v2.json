@@ -1,0 +1,835 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 10,
+  "unit": 28,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 28: Conditionals (zero, first & second)",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 28: Conditionals (zero, first & second)"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit28.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 6
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u28-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Introduction to conditionals",
+        "subtitle": "Introduction to conditionals",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "When the **if-clause** comes first, we put a comma before the result clause.",
+              "✓ **If the weather improves, we'll go hiking.**",
+              "When the result clause comes first, a comma is not usually needed.",
+              "✓ **We'll stay inside if it rains later.**"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Zero conditional",
+        "subtitle": "Zero conditional",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Use",
+            "headers": [
+              "Use",
+              "Example"
+            ],
+            "rows": [
+              [
+                "To talk about general truths, habits or scientific facts",
+                "If ice **melts**, it **turns** into water."
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-3",
+        "title": "First conditional",
+        "subtitle": "First conditional",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Use",
+            "headers": [
+              "Use",
+              "Example"
+            ],
+            "rows": [
+              [
+                "To talk about real or likely future situations",
+                "If we **leave** now, we **'ll catch** the train."
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "**If you practise more, you might improve quickly.**",
+              "**If you're tired, go to bed earlier!**"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-4",
+        "title": "Second conditional",
+        "subtitle": "Second conditional",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Use",
+            "headers": [
+              "Use",
+              "Example"
+            ],
+            "rows": [
+              [
+                "To talk about imaginary or unlikely situations",
+                "If I **won** the lottery, I **would travel** around the world."
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "**If I were you, I'd apologise immediately.**",
+              "**If I was you, I'd take a break.**"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u28-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "full_sentence_write",
+        "free_text_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 25,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u28-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u28-exa-1",
+            "b1-u28-exa-2",
+            "b1-u28-exa-3",
+            "b1-u28-exa-4",
+            "b1-u28-exa-5",
+            "b1-u28-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u28-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u28-exb-1",
+            "b1-u28-exb-2",
+            "b1-u28-exb-3",
+            "b1-u28-exb-4",
+            "b1-u28-exb-5",
+            "b1-u28-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u28-ex-c",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u28-exc-1",
+            "b1-u28-exc-2",
+            "b1-u28-exc-3",
+            "b1-u28-exc-4",
+            "b1-u28-exc-5",
+            "b1-u28-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u28-ex-d",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u28-exd-1",
+            "b1-u28-exd-2",
+            "b1-u28-exd-3",
+            "b1-u28-exd-4",
+            "b1-u28-exd-5",
+            "b1-u28-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u28-ex-e",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u28-exe-1",
+            "b1-u28-exe-2",
+            "b1-u28-exe-3",
+            "b1-u28-exe-4",
+            "b1-u28-exe-5",
+            "b1-u28-exe-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u28-ex-f",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u28-exf-1",
+            "b1-u28-exf-2",
+            "b1-u28-exf-3",
+            "b1-u28-exf-4",
+            "b1-u28-exf-5",
+            "b1-u28-exf-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 36,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u28-ex-a",
+      "b1-u28-ex-b",
+      "b1-u28-ex-c",
+      "b1-u28-ex-d",
+      "b1-u28-ex-e",
+      "b1-u28-ex-f"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u28-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Zero conditional",
+        "title": "A: Zero conditional",
+        "instructions": "Complete each sentence with the correct present simple form.",
+        "studentInstruction": "Complete each sentence with the correct present simple form.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u28-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If you ...... (freeze) water, it ...... (become) ice.",
+            "answer": "freeze, becomes",
+            "acceptedAnswers": [
+              "freeze, becomes"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If children ...... (not sleep) enough, they ...... (feel) tired.",
+            "answer": "don't sleep, feel",
+            "acceptedAnswers": [
+              "don't sleep, feel"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If people ...... (exercise) regularly, they usually ...... (stay) healthy.",
+            "answer": "exercise, stay",
+            "acceptedAnswers": [
+              "exercise, stay"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If I ...... (eat) too late, I ...... (have) stomach problems.",
+            "answer": "eat, have",
+            "acceptedAnswers": [
+              "eat, have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If we ...... (combine) red and white, we ...... (make) pink.",
+            "answer": "combine, make",
+            "acceptedAnswers": [
+              "combine, make"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If students ...... (not listen), they ...... (miss) important information.",
+            "answer": "don't listen, miss",
+            "acceptedAnswers": [
+              "don't listen, miss"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u28-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: First conditional",
+        "title": "B: First conditional",
+        "instructions": "Complete the first conditional sentences with the correct verb forms.",
+        "studentInstruction": "Complete the first conditional sentences with the correct verb forms.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u28-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If the weather ...... (improve), we ...... (go) to the beach.",
+            "answer": "improves, will go",
+            "acceptedAnswers": [
+              "improves, will go"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If you ...... (practise) every day, you ...... (improve) quickly.",
+            "answer": "practise, will improve",
+            "acceptedAnswers": [
+              "practise, will improve"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If I ...... (meet) Jake later, I ...... (invite) him to dinner.",
+            "answer": "meet, will invite",
+            "acceptedAnswers": [
+              "meet, will invite"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If they ...... (catch) the early train, they ...... (arrive) before noon.",
+            "answer": "catch, will arrive",
+            "acceptedAnswers": [
+              "catch, will arrive"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If we ...... (not leave) soon, we ...... (be) late.",
+            "answer": "don't leave, will be",
+            "acceptedAnswers": [
+              "don't leave, will be"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If you ...... (feel) sick tomorrow, ...... (stay) at home.",
+            "answer": "feel, stay",
+            "acceptedAnswers": [
+              "feel, stay"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u28-ex-c",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "C: Second conditional",
+        "title": "C: Second conditional",
+        "instructions": "Complete each sentence with the correct second conditional form.",
+        "studentInstruction": "Complete each sentence with the correct second conditional form.",
+        "legacyKey": "C",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u28-exc-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If I ...... (know) another language, I ...... (work) abroad.",
+            "answer": "knew, would work",
+            "acceptedAnswers": [
+              "knew, would work"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exc-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If she ...... (have) more confidence, she ...... (speak) in public more often.",
+            "answer": "had, would speak",
+            "acceptedAnswers": [
+              "had, would speak"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exc-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If we ...... (own) a bigger house, we ...... (invite) more guests.",
+            "answer": "owned, would invite",
+            "acceptedAnswers": [
+              "owned, would invite"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exc-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If he ...... (not waste) so much time online, he ...... (finish) earlier.",
+            "answer": "didn't waste, would finish",
+            "acceptedAnswers": [
+              "didn't waste, would finish"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exc-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If they ...... (live) closer, we ...... (see) them every weekend.",
+            "answer": "lived, would see",
+            "acceptedAnswers": [
+              "lived, would see"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exc-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If I ...... (be) you, I ...... (accept) the offer.",
+            "answer": "were, would accept",
+            "acceptedAnswers": [
+              "were, would accept"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u28-ex-d",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "D: Choose the correct conditional",
+        "title": "D: Choose the correct conditional",
+        "instructions": "Circle the correct option in each sentence.",
+        "studentInstruction": "Circle the correct option in each sentence.",
+        "legacyKey": "D",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u28-exd-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "If you",
+            "sentenceAfter": "fire, it **burns / would burn**.",
+            "options": [
+              "touch",
+              "touched"
+            ],
+            "answer": "touch, burns",
+            "originalSentence": "If you **touch / touched** fire, it **burns / would burn**.",
+            "completedSentence": "If you touch, burns fire, it **burns / would burn**."
+          },
+          {
+            "id": "b1-u28-exd-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "If she",
+            "sentenceAfter": "harder, she **will succeed / succeeds**.",
+            "options": [
+              "works",
+              "worked"
+            ],
+            "answer": "works, will succeed",
+            "originalSentence": "If she **works / worked** harder, she **will succeed / succeeds**.",
+            "completedSentence": "If she works, will succeed harder, she **will succeed / succeeds**."
+          },
+          {
+            "id": "b1-u28-exd-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "If I",
+            "sentenceAfter": "famous, I **would help / help** charities.",
+            "options": [
+              "am",
+              "were"
+            ],
+            "answer": "were, would help",
+            "originalSentence": "If I **am / were** famous, I **would help / help** charities.",
+            "completedSentence": "If I were, would help famous, I **would help / help** charities."
+          },
+          {
+            "id": "b1-u28-exd-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "If we",
+            "sentenceAfter": "the battery, the phone **dies / will die**.",
+            "options": [
+              "don't charge",
+              "didn't charge"
+            ],
+            "answer": "don't charge, will die",
+            "originalSentence": "If we **don't charge / didn't charge** the battery, the phone **dies / will die**.",
+            "completedSentence": "If we don't charge, will die the battery, the phone **dies / will die**."
+          },
+          {
+            "id": "b1-u28-exd-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "If they",
+            "sentenceAfter": "a taxi now, they **will arrive / arrive** earlier.",
+            "options": [
+              "take",
+              "took"
+            ],
+            "answer": "take, will arrive",
+            "originalSentence": "If they **take / took** a taxi now, they **will arrive / arrive** earlier.",
+            "completedSentence": "If they take, will arrive a taxi now, they **will arrive / arrive** earlier."
+          },
+          {
+            "id": "b1-u28-exd-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "If he",
+            "sentenceAfter": "more organised, he **wouldn't forget / doesn't forget** deadlines.",
+            "options": [
+              "was",
+              "were"
+            ],
+            "answer": "were, wouldn't forget",
+            "originalSentence": "If he **was / were** more organised, he **wouldn't forget / doesn't forget** deadlines.",
+            "completedSentence": "If he were, wouldn't forget more organised, he **wouldn't forget / doesn't forget** deadlines."
+          }
+        ]
+      },
+      {
+        "id": "b1-u28-ex-e",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "E: Correct the errors",
+        "title": "E: Correct the errors",
+        "instructions": "Each sentence has an error in a conditional structure. Write the whole sentence correctly.",
+        "studentInstruction": "Each sentence has an error in a conditional structure. Write the whole sentence correctly.",
+        "legacyKey": "E",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "textareaAnswer": true,
+        "items": [
+          {
+            "id": "b1-u28-exe-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "If I would know the answer, I would tell you.",
+            "prompt": {
+              "cues": [
+                "If I would know the answer, I would tell you."
+              ]
+            },
+            "answer": "If I knew the answer, I would tell you.",
+            "acceptedAnswers": [
+              "If I knew the answer, I would tell you."
+            ]
+          },
+          {
+            "id": "b1-u28-exe-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "If he will leave now, he will catch the bus.",
+            "prompt": {
+              "cues": [
+                "If he will leave now, he will catch the bus."
+              ]
+            },
+            "answer": "If he leaves now, he will catch the bus.",
+            "acceptedAnswers": [
+              "If he leaves now, he will catch the bus."
+            ]
+          },
+          {
+            "id": "b1-u28-exe-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Plants die if they won't get water.",
+            "prompt": {
+              "cues": [
+                "Plants die if they won't get water."
+              ]
+            },
+            "answer": "Plants die if they don't get water.",
+            "acceptedAnswers": [
+              "Plants die if they don't get water."
+            ]
+          },
+          {
+            "id": "b1-u28-exe-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "If you would practise more, you would improve quickly.",
+            "prompt": {
+              "cues": [
+                "If you would practise more, you would improve quickly."
+              ]
+            },
+            "answer": "If you practised more, you would improve quickly.",
+            "acceptedAnswers": [
+              "If you practised more, you would improve quickly."
+            ]
+          },
+          {
+            "id": "b1-u28-exe-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "If I were you, I wouldn't stayed there.",
+            "prompt": {
+              "cues": [
+                "If I were you, I wouldn't stayed there."
+              ]
+            },
+            "answer": "If I were you, I wouldn't stay there.",
+            "acceptedAnswers": [
+              "If I were you, I wouldn't stay there."
+            ]
+          },
+          {
+            "id": "b1-u28-exe-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Unless she will hurry, she'll miss the lesson.",
+            "prompt": {
+              "cues": [
+                "Unless she will hurry, she'll miss the lesson."
+              ]
+            },
+            "answer": "Unless she hurries, she'll miss the lesson.",
+            "acceptedAnswers": [
+              "Unless she hurries, she'll miss the lesson."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u28-ex-f",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "F: Key word transformation",
+        "title": "F: Key word transformation",
+        "instructions": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "studentInstruction": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "legacyKey": "F",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u28-exf-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Metal expands when it gets hot.\n...... metal, it expands.",
+            "answer": "If you heat",
+            "acceptedAnswers": [
+              "If you heat"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exf-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Maybe we won't arrive before dark.\nWe ...... before dark.",
+            "answer": "might not arrive",
+            "acceptedAnswers": [
+              "might not arrive"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exf-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She never practises, so she doesn't improve.\nIf she ......, she would improve.",
+            "answer": "practised more",
+            "acceptedAnswers": [
+              "practised more"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exf-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He isn't fit because he never exercises.\nIf he exercised regularly, he ...... fitter.",
+            "answer": "would be",
+            "acceptedAnswers": [
+              "would be"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exf-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I don't own a car, so I walk everywhere.\nIf I ...... a car, I wouldn't walk everywhere.",
+            "answer": "had",
+            "acceptedAnswers": [
+              "had"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u28-exf-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "People become stressed when they work too much.\n...... too much, people become stressed.",
+            "answer": "If people work",
+            "acceptedAnswers": [
+              "If people work"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

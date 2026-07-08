@@ -1,0 +1,1360 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 6,
+  "unit": 17,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 17: Relative clauses",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 17: Relative clauses"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit17.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 9
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u17-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Relative pronouns",
+        "subtitle": "Relative pronouns",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "explanation",
+            "title": "",
+            "description": "A relative clause connects two ideas about the same person, place or thing without writing two separate sentences. We introduce these clauses with a relative pronoun."
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "who → refers to people: The student **who** got the highest mark received a prize.",
+              "which → refers to things and animals: The jacket **which** I bought on sale is already broken.",
+              "where → refers to places: That's the park **where** we used to play as children.",
+              "whose → shows who something belongs to: I met a woman **whose** son plays in a famous band."
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "We can use who for a pet or animal when we treat it as a personality: My cat, who's called Luna, sleeps all day.",
+              "After the relative pronoun, do not repeat the subject or object pronoun.",
+              "✓ She's the woman **who** designed this building.",
+              "✓ Here's the report **which** you asked for."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Non-defining relative clauses",
+        "subtitle": "Non-defining relative clauses",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "explanation",
+            "title": "",
+            "description": "A non-defining relative clause adds bonus information about someone or something. The main sentence is still completely clear and correct without it."
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "To add extra detail that is not essential to identifying the noun: My grandfather, **who** turned 80 last year, still goes jogging every morning."
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "Non-defining relative clauses are always separated from the main clause by commas.",
+              "Our history teacher, **whose** books are always fascinating, won an award last month."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-3",
+        "title": "Defining relative clauses",
+        "subtitle": "Defining relative clauses",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "explanation",
+            "title": "",
+            "description": "A defining relative clause identifies exactly which person, thing or place we are talking about. Without it, the sentence loses its meaning or becomes unclear.\nImagine there are several students in a classroom. Only one of them has a red backpack.\n*The student **who** has the red backpack is my best friend.*\nIf we take out the relative clause, we have no idea which student is meant."
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "To specify which person or thing we mean: The phone **which** rang during the lesson belonged to a student."
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "We do not use commas with defining relative clauses.",
+              "In defining relative clauses, *that* can replace *who* or *which*.",
+              "✓ The doctor *who* treated me was very kind.",
+              "✓ The doctor *that* treated me was very kind."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "comma_placement",
+        "displayName": "Comma placement",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "comma_placement_dual_mode",
+          "studentAction": "tap_comma_slots_or_rewrite_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u17-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "comma_placement",
+        "two_option_choice",
+        "full_sentence_write",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 43,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u17-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u17-exa-1",
+            "b1-u17-exa-2",
+            "b1-u17-exa-3",
+            "b1-u17-exa-4",
+            "b1-u17-exa-5",
+            "b1-u17-exa-6",
+            "b1-u17-exa-7",
+            "b1-u17-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u17-ex-b",
+          "formatType": "comma_placement",
+          "sourceItemIds": [
+            "b1-u17-exb-1",
+            "b1-u17-exb-2",
+            "b1-u17-exb-3",
+            "b1-u17-exb-4",
+            "b1-u17-exb-5",
+            "b1-u17-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u17-ex-c",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u17-exc-1",
+            "b1-u17-exc-2",
+            "b1-u17-exc-3",
+            "b1-u17-exc-4",
+            "b1-u17-exc-5",
+            "b1-u17-exc-6",
+            "b1-u17-exc-7",
+            "b1-u17-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u17-ex-d",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u17-exd-1",
+            "b1-u17-exd-2",
+            "b1-u17-exd-3",
+            "b1-u17-exd-4",
+            "b1-u17-exd-5",
+            "b1-u17-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u17-ex-e",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u17-exe-1",
+            "b1-u17-exe-2",
+            "b1-u17-exe-3",
+            "b1-u17-exe-4",
+            "b1-u17-exe-5",
+            "b1-u17-exe-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u17-ex-f",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u17-exf-1",
+            "b1-u17-exf-2",
+            "b1-u17-exf-3",
+            "b1-u17-exf-4",
+            "b1-u17-exf-5",
+            "b1-u17-exf-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u17-ex-g",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u17-exg-1",
+            "b1-u17-exg-2",
+            "b1-u17-exg-3",
+            "b1-u17-exg-4",
+            "b1-u17-exg-5",
+            "b1-u17-exg-6",
+            "b1-u17-exg-7",
+            "b1-u17-exg-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u17-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u17-exh-1",
+            "b1-u17-exh-2",
+            "b1-u17-exh-3",
+            "b1-u17-exh-4",
+            "b1-u17-exh-5",
+            "b1-u17-exh-6",
+            "b1-u17-exh-7",
+            "b1-u17-exh-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u17-ex-i",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u17-exi-1",
+            "b1-u17-exi-2",
+            "b1-u17-exi-3",
+            "b1-u17-exi-4",
+            "b1-u17-exi-5",
+            "b1-u17-exi-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 62,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u17-ex-a",
+      "b1-u17-ex-b",
+      "b1-u17-ex-c",
+      "b1-u17-ex-d",
+      "b1-u17-ex-e",
+      "b1-u17-ex-f",
+      "b1-u17-ex-g",
+      "b1-u17-ex-h",
+      "b1-u17-ex-i"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u17-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Complete with a relative pronoun",
+        "title": "A: Complete with a relative pronoun",
+        "instructions": "Write who, which, where or whose in each gap.",
+        "studentInstruction": "Write who, which, where or whose in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u17-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Do you remember the man ...... helped us at the station?",
+            "answer": "who",
+            "acceptedAnswers": [
+              "who"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This is the camera ...... I used on holiday.",
+            "answer": "which",
+            "acceptedAnswers": [
+              "which"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "That's the library ...... I study after school.",
+            "answer": "where",
+            "acceptedAnswers": [
+              "where"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I have a friend ...... mother works at the hospital.",
+            "answer": "whose",
+            "acceptedAnswers": [
+              "whose"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The doctor ...... examined me was very friendly.",
+            "answer": "who",
+            "acceptedAnswers": [
+              "who"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Is this the song ...... you heard on the radio?",
+            "answer": "which",
+            "acceptedAnswers": [
+              "which"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They stayed in a hotel ...... the rooms had sea views.",
+            "answer": "where",
+            "acceptedAnswers": [
+              "where"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The girl ...... bag was lost looked very upset.",
+            "answer": "whose",
+            "acceptedAnswers": [
+              "whose"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u17-ex-b",
+        "type": "exercise",
+        "exerciseType": "comma_placement",
+        "exerciseTypeName": "B: Defining or non-defining",
+        "title": "B: Defining or non-defining",
+        "instructions": "Add commas where needed. If no commas are needed, write 'No commas'.",
+        "studentInstruction": "Add commas where needed. If no commas are needed, write 'No commas'.",
+        "legacyKey": "B",
+        "legacyPattern": "comma-rewrite",
+        "interaction": {
+          "formatType": "comma_placement"
+        },
+        "items": [
+          {
+            "id": "b1-u17-exb-1",
+            "formatType": "comma_placement",
+            "sentence": "My brother who lives in Manchester is a chef.",
+            "answer": "My brother, who lives in Manchester, is a chef.",
+            "acceptedAnswers": [
+              "My brother, who lives in Manchester, is a chef."
+            ],
+            "interactionMode": "rewrite_sentence"
+          },
+          {
+            "id": "b1-u17-exb-2",
+            "formatType": "comma_placement",
+            "sentence": "The bike which is outside the shop is mine.",
+            "answer": "No commas",
+            "acceptedAnswers": [
+              "No commas"
+            ],
+            "interactionMode": "rewrite_sentence"
+          },
+          {
+            "id": "b1-u17-exb-3",
+            "formatType": "comma_placement",
+            "sentence": "Mrs Carter who teaches history is retiring soon.",
+            "answer": "Mrs Carter, who teaches history, is retiring soon.",
+            "acceptedAnswers": [
+              "Mrs Carter, who teaches history, is retiring soon."
+            ],
+            "interactionMode": "rewrite_sentence"
+          },
+          {
+            "id": "b1-u17-exb-4",
+            "formatType": "comma_placement",
+            "sentence": "The people who arrived late missed the introduction.",
+            "answer": "No commas",
+            "acceptedAnswers": [
+              "No commas"
+            ],
+            "interactionMode": "rewrite_sentence"
+          },
+          {
+            "id": "b1-u17-exb-5",
+            "formatType": "comma_placement",
+            "sentence": "This castle which was built in the 12th century is open to visitors.",
+            "answer": "This castle, which was built in the 12th century, is open to visitors.",
+            "acceptedAnswers": [
+              "This castle, which was built in the 12th century, is open to visitors."
+            ],
+            "interactionMode": "rewrite_sentence"
+          },
+          {
+            "id": "b1-u17-exb-6",
+            "formatType": "comma_placement",
+            "sentence": "Students who forget their homework must speak to the teacher.",
+            "answer": "No commas",
+            "acceptedAnswers": [
+              "No commas"
+            ],
+            "interactionMode": "rewrite_sentence"
+          }
+        ]
+      },
+      {
+        "id": "b1-u17-ex-c",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "C: Use who, which or that",
+        "title": "C: Use who, which or that",
+        "instructions": "Choose the best option in each sentence.",
+        "studentInstruction": "Choose the best option in each sentence.",
+        "legacyKey": "C",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u17-exc-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "He's the neighbour",
+            "sentenceAfter": "looks after our dog.",
+            "options": [
+              "who",
+              "which",
+              "where"
+            ],
+            "answer": "who",
+            "originalSentence": "He's the neighbour **who / which / where** looks after our dog.",
+            "completedSentence": "He's the neighbour who looks after our dog."
+          },
+          {
+            "id": "b1-u17-exc-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This is the programme",
+            "sentenceAfter": "everyone watched last night.",
+            "options": [
+              "who",
+              "that",
+              "where"
+            ],
+            "answer": "that",
+            "originalSentence": "This is the programme **who / that / where** everyone watched last night.",
+            "completedSentence": "This is the programme that everyone watched last night."
+          },
+          {
+            "id": "b1-u17-exc-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Do you know a restaurant",
+            "sentenceAfter": "serves vegetarian food?",
+            "options": [
+              "that",
+              "who",
+              "whose"
+            ],
+            "answer": "that",
+            "originalSentence": "Do you know a restaurant **that / who / whose** serves vegetarian food?",
+            "completedSentence": "Do you know a restaurant that serves vegetarian food?"
+          },
+          {
+            "id": "b1-u17-exc-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The man",
+            "sentenceAfter": "wallet was stolen called the police.",
+            "options": [
+              "which",
+              "whose",
+              "where"
+            ],
+            "answer": "whose",
+            "originalSentence": "The man **which / whose / where** wallet was stolen called the police.",
+            "completedSentence": "The man whose wallet was stolen called the police."
+          },
+          {
+            "id": "b1-u17-exc-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "That's the village",
+            "sentenceAfter": "my dad grew up.",
+            "options": [
+              "who",
+              "where",
+              "whose"
+            ],
+            "answer": "where",
+            "originalSentence": "That's the village **who / where / whose** my dad grew up.",
+            "completedSentence": "That's the village where my dad grew up."
+          },
+          {
+            "id": "b1-u17-exc-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The tablet",
+            "sentenceAfter": "I ordered arrived yesterday.",
+            "options": [
+              "who",
+              "which",
+              "whose"
+            ],
+            "answer": "which",
+            "originalSentence": "The tablet **who / which / whose** I ordered arrived yesterday.",
+            "completedSentence": "The tablet which I ordered arrived yesterday."
+          },
+          {
+            "id": "b1-u17-exc-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She's the singer",
+            "sentenceAfter": "won the competition.",
+            "options": [
+              "which",
+              "that",
+              "where"
+            ],
+            "answer": "that",
+            "originalSentence": "She's the singer **which / that / where** won the competition.",
+            "completedSentence": "She's the singer that won the competition."
+          },
+          {
+            "id": "b1-u17-exc-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We visited the gallery",
+            "sentenceAfter": "has modern paintings.",
+            "options": [
+              "where",
+              "whose",
+              "which"
+            ],
+            "answer": "which",
+            "originalSentence": "We visited the gallery **where / whose / which** has modern paintings.",
+            "completedSentence": "We visited the gallery which has modern paintings."
+          }
+        ]
+      },
+      {
+        "id": "b1-u17-ex-d",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "D: Join the sentences",
+        "title": "D: Join the sentences",
+        "instructions": "Rewrite each pair as one sentence using a relative clause.",
+        "studentInstruction": "Rewrite each pair as one sentence using a relative clause.",
+        "legacyKey": "D",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u17-exd-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "I know a boy. He can solve a Rubik's cube very quickly.",
+            "prompt": {
+              "cues": [
+                "I know a boy. He can solve a Rubik's cube very quickly."
+              ]
+            },
+            "answer": "I know a boy who can solve a Rubik's cube very quickly.",
+            "acceptedAnswers": [
+              "I know a boy who can solve a Rubik's cube very quickly."
+            ]
+          },
+          {
+            "id": "b1-u17-exd-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "We rented a flat. It was close to the station.",
+            "prompt": {
+              "cues": [
+                "We rented a flat. It was close to the station."
+              ]
+            },
+            "answer": "We rented a flat which was close to the station.",
+            "acceptedAnswers": [
+              "We rented a flat which was close to the station."
+            ]
+          },
+          {
+            "id": "b1-u17-exd-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "That's the girl. Her sister won the prize.",
+            "prompt": {
+              "cues": [
+                "That's the girl. Her sister won the prize."
+              ]
+            },
+            "answer": "That's the girl whose sister won the prize.",
+            "acceptedAnswers": [
+              "That's the girl whose sister won the prize."
+            ]
+          },
+          {
+            "id": "b1-u17-exd-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "This is the school. My mother studied there.",
+            "prompt": {
+              "cues": [
+                "This is the school. My mother studied there."
+              ]
+            },
+            "answer": "This is the school where my mother studied.",
+            "acceptedAnswers": [
+              "This is the school where my mother studied."
+            ]
+          },
+          {
+            "id": "b1-u17-exd-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "I found a wallet. It was under the table.",
+            "prompt": {
+              "cues": [
+                "I found a wallet. It was under the table."
+              ]
+            },
+            "answer": "I found a wallet which was under the table.",
+            "acceptedAnswers": [
+              "I found a wallet which was under the table."
+            ]
+          },
+          {
+            "id": "b1-u17-exd-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "The café is very popular. We met there on Saturday.",
+            "prompt": {
+              "cues": [
+                "The café is very popular. We met there on Saturday."
+              ]
+            },
+            "answer": "The café where we met on Saturday is very popular.",
+            "acceptedAnswers": [
+              "The café where we met on Saturday is very popular."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u17-ex-e",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "E: Error correction",
+        "title": "E: Error correction",
+        "instructions": "Each sentence has one mistake with relative clauses. Find the error and write the whole sentence correctly.",
+        "studentInstruction": "Each sentence has one mistake with relative clauses. Find the error and write the whole sentence correctly.",
+        "legacyKey": "E",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u17-exe-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "That's the girl who **she** won the art prize.",
+            "prompt": {
+              "cues": [
+                "That's the girl who **she** won the art prize."
+              ]
+            },
+            "answer": "That's the girl who won the art prize.",
+            "acceptedAnswers": [
+              "That's the girl who won the art prize."
+            ]
+          },
+          {
+            "id": "b1-u17-exe-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "This is the bag which I bought **it** yesterday.",
+            "prompt": {
+              "cues": [
+                "This is the bag which I bought **it** yesterday."
+              ]
+            },
+            "answer": "This is the bag which I bought yesterday.",
+            "acceptedAnswers": [
+              "This is the bag which I bought yesterday."
+            ]
+          },
+          {
+            "id": "b1-u17-exe-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "My cousin, who **he** works in Berlin, is coming home.",
+            "prompt": {
+              "cues": [
+                "My cousin, who **he** works in Berlin, is coming home."
+              ]
+            },
+            "answer": "My cousin, who works in Berlin, is coming home.",
+            "acceptedAnswers": [
+              "My cousin, who works in Berlin, is coming home."
+            ]
+          },
+          {
+            "id": "b1-u17-exe-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "The film **who** we watched was really funny.",
+            "prompt": {
+              "cues": [
+                "The film **who** we watched was really funny."
+              ]
+            },
+            "answer": "The film which we watched was really funny.",
+            "acceptedAnswers": [
+              "The film which we watched was really funny."
+            ]
+          },
+          {
+            "id": "b1-u17-exe-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "The house where I lived **there** is near the river.",
+            "prompt": {
+              "cues": [
+                "The house where I lived **there** is near the river."
+              ]
+            },
+            "answer": "The house where I lived is near the river.",
+            "acceptedAnswers": [
+              "The house where I lived is near the river."
+            ]
+          },
+          {
+            "id": "b1-u17-exe-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "My neighbour **that he** plays the drums is very noisy.",
+            "prompt": {
+              "cues": [
+                "My neighbour **that he** plays the drums is very noisy."
+              ]
+            },
+            "answer": "My neighbour who plays the drums is very noisy.",
+            "acceptedAnswers": [
+              "My neighbour who plays the drums is very noisy."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u17-ex-f",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "F: Key word transformation",
+        "title": "F: Key word transformation",
+        "instructions": "Complete the second sentence using the word in bold.",
+        "studentInstruction": "Complete the second sentence using the word in bold.",
+        "legacyKey": "F",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u17-exf-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The woman is a doctor. Her daughter is in my class. **WHOSE**\nThe woman ...... daughter is in my class is a doctor.",
+            "answer": "whose",
+            "acceptedAnswers": [
+              "whose"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exf-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This is the shop. I bought my jacket there. **WHERE**\nThis is the shop ...... I bought my jacket.",
+            "answer": "where",
+            "acceptedAnswers": [
+              "where"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exf-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I found a phone. It belongs to Sam. **WHICH**\nI found a phone ...... belongs to Sam.",
+            "answer": "which",
+            "acceptedAnswers": [
+              "which"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exf-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The man fixed our car. I spoke to him yesterday. **WHO**\nThe man ...... I spoke to yesterday fixed our car.",
+            "answer": "who",
+            "acceptedAnswers": [
+              "who"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exf-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Do you know the reason? They cancelled the trip for that reason. **WHY**\nDo you know the reason ...... they cancelled the trip?",
+            "answer": "why",
+            "acceptedAnswers": [
+              "why"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exf-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This is the beach. We learned to surf here. **WHERE**\nThis is the beach ...... we learned to surf.",
+            "answer": "where",
+            "acceptedAnswers": [
+              "where"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u17-ex-g",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "G: Multiple choice",
+        "title": "G: Multiple choice",
+        "instructions": "Choose the correct option.",
+        "studentInstruction": "Choose the correct option.",
+        "legacyKey": "G",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u17-exg-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The woman",
+            "sentenceAfter": "opened the door was my aunt.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "which"
+              },
+              {
+                "letter": "B",
+                "text": "where"
+              },
+              {
+                "letter": "C",
+                "text": "who"
+              },
+              {
+                "letter": "D",
+                "text": "whose"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exg-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "That's the dog",
+            "sentenceAfter": "owner lives next door.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "whose"
+              },
+              {
+                "letter": "B",
+                "text": "who"
+              },
+              {
+                "letter": "C",
+                "text": "where"
+              },
+              {
+                "letter": "D",
+                "text": "which"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exg-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "This is the café",
+            "sentenceAfter": "we met Liam.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "who"
+              },
+              {
+                "letter": "B",
+                "text": "where"
+              },
+              {
+                "letter": "C",
+                "text": "whose"
+              },
+              {
+                "letter": "D",
+                "text": "which"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exg-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The jacket",
+            "sentenceAfter": "I bought yesterday is too small.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "where"
+              },
+              {
+                "letter": "B",
+                "text": "whose"
+              },
+              {
+                "letter": "C",
+                "text": "who"
+              },
+              {
+                "letter": "D",
+                "text": "which"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exg-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Do you know the boy",
+            "sentenceAfter": "father is a firefighter?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "who"
+              },
+              {
+                "letter": "B",
+                "text": "whose"
+              },
+              {
+                "letter": "C",
+                "text": "where"
+              },
+              {
+                "letter": "D",
+                "text": "which"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exg-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The town",
+            "sentenceAfter": "we stayed was very quiet.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "where"
+              },
+              {
+                "letter": "B",
+                "text": "whose"
+              },
+              {
+                "letter": "C",
+                "text": "who"
+              },
+              {
+                "letter": "D",
+                "text": "which"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exg-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She's the player",
+            "sentenceAfter": "scored the winning goal.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "where"
+              },
+              {
+                "letter": "B",
+                "text": "which"
+              },
+              {
+                "letter": "C",
+                "text": "who"
+              },
+              {
+                "letter": "D",
+                "text": "whose"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exg-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The headphones",
+            "sentenceAfter": "I want are on sale.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "who"
+              },
+              {
+                "letter": "B",
+                "text": "where"
+              },
+              {
+                "letter": "C",
+                "text": "whose"
+              },
+              {
+                "letter": "D",
+                "text": "which"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u17-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "H: Complete the text",
+        "title": "H: Complete the text",
+        "instructions": "Write one relative word in each gap.",
+        "studentInstruction": "Write one relative word in each gap.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u17-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I know a teacher ...... works in Edinburgh.",
+            "answer": "who",
+            "acceptedAnswers": [
+              "who"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She teaches at a school ...... has students from many countries.",
+            "answer": "which",
+            "acceptedAnswers": [
+              "which"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The school, ...... is near the city centre, is very old.",
+            "answer": "which",
+            "acceptedAnswers": [
+              "which"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Her colleague is a man ...... lessons are always exciting.",
+            "answer": "whose",
+            "acceptedAnswers": [
+              "whose"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The classroom ...... they study has a large screen.",
+            "answer": "where",
+            "acceptedAnswers": [
+              "where"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She explained the reason ...... she became a teacher.",
+            "answer": "why",
+            "acceptedAnswers": [
+              "why"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exh-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She has students ...... speak more than two languages.",
+            "answer": "who",
+            "acceptedAnswers": [
+              "who"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exh-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's the kind of school ...... I would love to visit.",
+            "answer": "where",
+            "acceptedAnswers": [
+              "where"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u17-ex-i",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "I: Key word transformation",
+        "title": "I: Key word transformation",
+        "instructions": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "studentInstruction": "Complete the second sentence using a maximum of four words, so that it has a similar meaning to the first sentence.",
+        "legacyKey": "I",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u17-exi-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I know a musician. She plays in an orchestra.\nI know a musician ...... in an orchestra.",
+            "answer": "who plays",
+            "acceptedAnswers": [
+              "who plays"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exi-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The scarf was beautiful. I bought it at the market.\nThe scarf ...... at the market was beautiful.",
+            "answer": "I bought",
+            "acceptedAnswers": [
+              "I bought"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exi-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There's a shop near here. It sells handmade gifts.\nThere's a shop ...... handmade gifts near here.",
+            "answer": "that sells",
+            "acceptedAnswers": [
+              "that sells"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exi-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She is a painter. Her latest picture won a prize.\nShe is a painter ...... a prize.",
+            "answer": "whose picture won",
+            "acceptedAnswers": [
+              "whose picture won"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exi-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The village was peaceful. We visited it in June.\nThe village ...... in June was peaceful.",
+            "answer": "we visited",
+            "acceptedAnswers": [
+              "we visited"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u17-exi-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He works with a doctor. She studies tropical diseases.\nHe works with a doctor ...... tropical diseases.",
+            "answer": "who studies",
+            "acceptedAnswers": [
+              "who studies"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

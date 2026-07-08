@@ -1,0 +1,1133 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 3,
+  "unit": 9,
+  "type": "vocabulary",
+  "unitTitle": "[V2] Unit 9: Coming and going",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 9: Coming and going"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit9.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 8
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u9-theory",
+    "title": "Topic vocabulary",
+    "shortTitle": "Vocabulary",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b1-u9-theory-card-1",
+        "title": "Unit 9: Coming and going",
+        "subtitle": "",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "Unit focus",
+            "items": [
+              "coming and going"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "column_matching",
+        "displayName": "Match columns",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "tap_to_pair",
+          "studentAction": "pair_beginnings_endings",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u9-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "column_matching",
+        "conjugation_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 35,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u9-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u9-exa-1",
+            "b1-u9-exa-2",
+            "b1-u9-exa-3",
+            "b1-u9-exa-4",
+            "b1-u9-exa-5",
+            "b1-u9-exa-6",
+            "b1-u9-exa-7",
+            "b1-u9-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u9-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u9-exb-1",
+            "b1-u9-exb-2",
+            "b1-u9-exb-3",
+            "b1-u9-exb-4",
+            "b1-u9-exb-5",
+            "b1-u9-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u9-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u9-exc-1",
+            "b1-u9-exc-2",
+            "b1-u9-exc-3",
+            "b1-u9-exc-4",
+            "b1-u9-exc-5",
+            "b1-u9-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u9-ex-d",
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen"
+        },
+        {
+          "sourceExerciseId": "b1-u9-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u9-exe-1",
+            "b1-u9-exe-2",
+            "b1-u9-exe-3",
+            "b1-u9-exe-4",
+            "b1-u9-exe-5",
+            "b1-u9-exe-6",
+            "b1-u9-exe-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u9-ex-f",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u9-exf-1",
+            "b1-u9-exf-2",
+            "b1-u9-exf-3",
+            "b1-u9-exf-4",
+            "b1-u9-exf-5",
+            "b1-u9-exf-6",
+            "b1-u9-exf-7",
+            "b1-u9-exf-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u9-ex-g",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u9-exg-1",
+            "b1-u9-exg-2",
+            "b1-u9-exg-3",
+            "b1-u9-exg-4",
+            "b1-u9-exg-5",
+            "b1-u9-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u9-ex-h",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u9-exh-1",
+            "b1-u9-exh-2",
+            "b1-u9-exh-3",
+            "b1-u9-exh-4",
+            "b1-u9-exh-5",
+            "b1-u9-exh-6",
+            "b1-u9-exh-7",
+            "b1-u9-exh-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 50,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u9-ex-a",
+      "b1-u9-ex-b",
+      "b1-u9-ex-c",
+      "b1-u9-ex-d",
+      "b1-u9-ex-e",
+      "b1-u9-ex-f",
+      "b1-u9-ex-g",
+      "b1-u9-ex-h"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u9-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Topic vocabulary (gap fill)",
+        "title": "Topic vocabulary (gap fill)",
+        "instructions": "Complete the sentences with words from the box.",
+        "studentInstruction": "Complete the sentences with words from the box.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "abroad",
+          "accommodation",
+          "book",
+          "crowded",
+          "destination",
+          "flight",
+          "luggage",
+          "passport",
+          "platform",
+          "traffic",
+          "trip",
+          "vehicle"
+        ],
+        "wordBank": [
+          "abroad",
+          "accommodation",
+          "book",
+          "crowded",
+          "destination",
+          "flight",
+          "luggage",
+          "passport",
+          "platform",
+          "traffic",
+          "trip",
+          "vehicle"
+        ],
+        "items": [
+          {
+            "id": "b1-u9-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We should ...... our train tickets before they become more expensive.",
+            "answer": "book",
+            "acceptedAnswers": [
+              "book"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You need a valid ...... to travel to another country.",
+            "answer": "passport",
+            "acceptedAnswers": [
+              "passport"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The train to London is leaving from ...... 7.",
+            "answer": "platform",
+            "acceptedAnswers": [
+              "platform"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The airport was very ...... because it was the start of the holidays.",
+            "answer": "crowded",
+            "acceptedAnswers": [
+              "crowded"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There was so much ...... on the motorway that we missed our ferry.",
+            "answer": "traffic",
+            "acceptedAnswers": [
+              "traffic"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please don't leave your ...... unattended at the station.",
+            "answer": "luggage",
+            "acceptedAnswers": [
+              "luggage"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Our final ...... is a quiet village in the mountains.",
+            "answer": "destination",
+            "acceptedAnswers": [
+              "destination"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Have you ever studied ...... for more than a month?",
+            "answer": "abroad",
+            "acceptedAnswers": [
+              "abroad"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u9-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Circle the correct word",
+        "title": "Circle the correct word",
+        "instructions": "Choose the correct option in each sentence.",
+        "studentInstruction": "Choose the correct option in each sentence.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u9-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We stayed in comfortable",
+            "sentenceAfter": "near the harbour.",
+            "options": [
+              "accommodation",
+              "luggage"
+            ],
+            "answer": "accommodation",
+            "originalSentence": "We stayed in comfortable **accommodation / luggage** near the harbour.",
+            "completedSentence": "We stayed in comfortable accommodation near the harbour."
+          },
+          {
+            "id": "b1-u9-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The",
+            "sentenceAfter": "from Madrid to Lisbon took six hours.",
+            "options": [
+              "journey",
+              "passport"
+            ],
+            "answer": "journey",
+            "originalSentence": "The **journey / passport** from Madrid to Lisbon took six hours.",
+            "completedSentence": "The journey from Madrid to Lisbon took six hours."
+          },
+          {
+            "id": "b1-u9-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The airline had to",
+            "sentenceAfter": "several flights because of the storm.",
+            "options": [
+              "cancel",
+              "catch"
+            ],
+            "answer": "cancel",
+            "originalSentence": "The airline had to **cancel / catch** several flights because of the storm.",
+            "completedSentence": "The airline had to cancel several flights because of the storm."
+          },
+          {
+            "id": "b1-u9-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Run! We can still",
+            "sentenceAfter": "the coach if we hurry.",
+            "options": [
+              "catch",
+              "crash"
+            ],
+            "answer": "catch",
+            "originalSentence": "Run! We can still **catch / crash** the coach if we hurry.",
+            "completedSentence": "Run! We can still catch the coach if we hurry."
+          },
+          {
+            "id": "b1-u9-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "A bicycle is a useful",
+            "sentenceAfter": "for short journeys.",
+            "options": [
+              "vehicle",
+              "resort"
+            ],
+            "answer": "vehicle",
+            "originalSentence": "A bicycle is a useful **vehicle / resort** for short journeys.",
+            "completedSentence": "A bicycle is a useful vehicle for short journeys."
+          },
+          {
+            "id": "b1-u9-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This hotel is more",
+            "sentenceAfter": "because it's next to the station.",
+            "options": [
+              "convenient",
+              "foreign"
+            ],
+            "answer": "convenient",
+            "originalSentence": "This hotel is more **convenient / foreign** because it's next to the station.",
+            "completedSentence": "This hotel is more convenient because it's next to the station."
+          }
+        ]
+      },
+      {
+        "id": "b1-u9-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Phrasal verbs (complete the gaps)",
+        "title": "Phrasal verbs (complete the gaps)",
+        "instructions": "Write the correct phrasal verb in each gap.",
+        "studentInstruction": "Write the correct phrasal verb in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "get in",
+          "get off",
+          "get on",
+          "get out of",
+          "go away",
+          "go back",
+          "set off",
+          "take off"
+        ],
+        "wordBank": [
+          "get in",
+          "get off",
+          "get on",
+          "get out of",
+          "go away",
+          "go back",
+          "set off",
+          "take off"
+        ],
+        "items": [
+          {
+            "id": "b1-u9-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We should ...... before sunrise if we want to reach the coast by lunch.",
+            "answer": "set off",
+            "acceptedAnswers": [
+              "set off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The bus is here! Let's ...... before it leaves.",
+            "answer": "get on",
+            "acceptedAnswers": [
+              "get on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You need to ...... at the next stop and change trains.",
+            "answer": "get off",
+            "acceptedAnswers": [
+              "get off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I couldn't ...... the taxi because the door was stuck.",
+            "answer": "get out of",
+            "acceptedAnswers": [
+              "get out of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The plane is going to ...... in five minutes.",
+            "answer": "take off",
+            "acceptedAnswers": [
+              "take off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We had such a good time that we didn't want to ...... home.",
+            "answer": "go back",
+            "acceptedAnswers": [
+              "go back"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u9-ex-d",
+        "type": "exercise",
+        "exerciseType": "column_matching",
+        "exerciseTypeName": "Prepositional phrases (matching)",
+        "title": "Prepositional phrases (matching)",
+        "instructions": "Match sentence beginnings with the correct ending.",
+        "studentInstruction": "Match sentence beginnings with the correct ending.",
+        "legacyKey": "D",
+        "legacyPattern": "matching",
+        "interaction": {
+          "formatType": "column_matching"
+        },
+        "items": [
+          {
+            "id": "b1-u9-exd-1",
+            "formatType": "column_matching",
+            "sentence": "They travelled across Europe **D** by train.",
+            "answer": "D – by train.",
+            "acceptedAnswers": [
+              "D – by train."
+            ]
+          },
+          {
+            "id": "b1-u9-exd-2",
+            "formatType": "column_matching",
+            "sentence": "Passengers must remain seated **F** on board.",
+            "answer": "F – on board.",
+            "acceptedAnswers": [
+              "F – on board."
+            ]
+          },
+          {
+            "id": "b1-u9-exd-3",
+            "formatType": "column_matching",
+            "sentence": "We visited the old city centre **B** on foot.",
+            "answer": "B – on foot.",
+            "acceptedAnswers": [
+              "B – on foot."
+            ]
+          },
+          {
+            "id": "b1-u9-exd-4",
+            "formatType": "column_matching",
+            "sentence": "My cousins are **E** on holiday.",
+            "answer": "E – on holiday.",
+            "acceptedAnswers": [
+              "E – on holiday."
+            ]
+          },
+          {
+            "id": "b1-u9-exd-5",
+            "formatType": "column_matching",
+            "sentence": "Luckily, the coach arrived **A** on schedule.",
+            "answer": "A – on schedule.",
+            "acceptedAnswers": [
+              "A – on schedule."
+            ]
+          },
+          {
+            "id": "b1-u9-exd-6",
+            "formatType": "column_matching",
+            "sentence": "Their apartment is **C** on the coast.",
+            "answer": "C – on the coast.",
+            "acceptedAnswers": [
+              "C – on the coast."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u9-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Word patterns (adjectives and verbs)",
+        "title": "Word patterns (adjectives and verbs)",
+        "instructions": "Write one preposition in each gap.",
+        "studentInstruction": "Write one preposition in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u9-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The airport is close ...... our hotel.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This island is famous ...... its beautiful beaches.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The campsite is far ...... the nearest town.",
+            "answer": "from",
+            "acceptedAnswers": [
+              "from"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We were late ...... our flight because of traffic.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I asked the guide ...... the history of the castle.",
+            "answer": "about",
+            "acceptedAnswers": [
+              "about"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We waited ...... the ferry for over an hour.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The hotel provided us ...... clean towels every day.",
+            "answer": "with",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u9-ex-f",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "Word formation",
+        "title": "Word formation",
+        "instructions": "Complete each sentence with the correct form of the word in capitals.",
+        "studentInstruction": "Complete each sentence with the correct form of the word in capitals.",
+        "legacyKey": "F",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u9-exf-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The old town is the main tourist ...... in the area. (ATTRACT)",
+            "answer": "attraction",
+            "acceptedAnswers": [
+              "attraction"
+            ],
+            "explanation": "",
+            "verbPrompt": "ATTRACT"
+          },
+          {
+            "id": "b1-u9-exf-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Can you give me ...... to the nearest underground station? (DIRECT)",
+            "answer": "directions",
+            "acceptedAnswers": [
+              "directions"
+            ],
+            "explanation": "",
+            "verbPrompt": "DIRECT"
+          },
+          {
+            "id": "b1-u9-exf-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Our ...... from London was at seven in the morning. (DEPART)",
+            "answer": "departure",
+            "acceptedAnswers": [
+              "departure"
+            ],
+            "explanation": "",
+            "verbPrompt": "DEPART"
+          },
+          {
+            "id": "b1-u9-exf-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The bus ...... was very friendly and helped us with our bags. (DRIVE)",
+            "answer": "driver",
+            "acceptedAnswers": [
+              "driver"
+            ],
+            "explanation": "",
+            "verbPrompt": "DRIVE"
+          },
+          {
+            "id": "b1-u9-exf-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The ...... from Athens to Rome was delayed. (FLY)",
+            "answer": "flight",
+            "acceptedAnswers": [
+              "flight"
+            ],
+            "explanation": "",
+            "verbPrompt": "FLY"
+          },
+          {
+            "id": "b1-u9-exf-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "A good ...... always checks local customs before visiting a country. (TRAVEL)",
+            "answer": "traveller",
+            "acceptedAnswers": [
+              "traveller"
+            ],
+            "explanation": "",
+            "verbPrompt": "TRAVEL"
+          },
+          {
+            "id": "b1-u9-exf-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The hotel is popular with ...... from all over the world. (VISIT)",
+            "answer": "visitors",
+            "acceptedAnswers": [
+              "visitors"
+            ],
+            "explanation": "",
+            "verbPrompt": "VISIT"
+          },
+          {
+            "id": "b1-u9-exf-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The seats on the coach were really ...... . (COMFORT)",
+            "answer": "comfortable",
+            "acceptedAnswers": [
+              "comfortable"
+            ],
+            "explanation": "",
+            "verbPrompt": "COMFORT"
+          }
+        ]
+      },
+      {
+        "id": "b1-u9-ex-g",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "Multiple choice",
+        "title": "Multiple choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "G",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u9-exg-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We",
+            "sentenceAfter": "the resort just before dinner.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "reached"
+              },
+              {
+                "letter": "B",
+                "text": "caught"
+              },
+              {
+                "letter": "C",
+                "text": "booked"
+              },
+              {
+                "letter": "D",
+                "text": "packed"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exg-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The receptionist will",
+            "sentenceAfter": "you with all the information you need.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "ask"
+              },
+              {
+                "letter": "B",
+                "text": "provide"
+              },
+              {
+                "letter": "C",
+                "text": "wait"
+              },
+              {
+                "letter": "D",
+                "text": "arrive"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exg-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "This trip is suitable",
+            "sentenceAfter": "families with young children.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "to"
+              },
+              {
+                "letter": "B",
+                "text": "with"
+              },
+              {
+                "letter": "C",
+                "text": "for"
+              },
+              {
+                "letter": "D",
+                "text": "about"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exg-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We decided to travel",
+            "sentenceAfter": "because the airport was closed.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "on board"
+              },
+              {
+                "letter": "B",
+                "text": "by road"
+              },
+              {
+                "letter": "C",
+                "text": "on schedule"
+              },
+              {
+                "letter": "D",
+                "text": "on holiday"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exg-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You should",
+            "sentenceAfter": "a window seat when you check in.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "ask"
+              },
+              {
+                "letter": "B",
+                "text": "ask for"
+              },
+              {
+                "letter": "C",
+                "text": "ask about"
+              },
+              {
+                "letter": "D",
+                "text": "wait for"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exg-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The ferry couldn't leave the",
+            "sentenceAfter": "because of strong winds.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "harbour"
+              },
+              {
+                "letter": "B",
+                "text": "passport"
+              },
+              {
+                "letter": "C",
+                "text": "resort"
+              },
+              {
+                "letter": "D",
+                "text": "luggage"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u9-ex-h",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "Mixed revision",
+        "title": "Mixed revision",
+        "instructions": "Complete the sentences with one suitable word.",
+        "studentInstruction": "Complete the sentences with one suitable word.",
+        "legacyKey": "H",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u9-exh-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Let's have a short ...... before we continue driving.",
+            "answer": "break",
+            "acceptedAnswers": [
+              "break"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exh-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The museum is near here, so we can go on ...... .",
+            "answer": "foot",
+            "acceptedAnswers": [
+              "foot"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exh-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Our hotel was far ...... the city centre.",
+            "answer": "from",
+            "acceptedAnswers": [
+              "from"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exh-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't forget to ...... your suitcase tonight.",
+            "answer": "pack",
+            "acceptedAnswers": [
+              "pack"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exh-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We got ...... the train at the wrong station.",
+            "answer": "off",
+            "acceptedAnswers": [
+              "off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exh-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you ...... at the timetable and tell me the departure time?",
+            "answer": "look",
+            "acceptedAnswers": [
+              "look"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exh-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The flight left ...... schedule.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exh-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I bought a small ...... to remember my trip to Venice.",
+            "answer": "souvenir",
+            "acceptedAnswers": [
+              "souvenir"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

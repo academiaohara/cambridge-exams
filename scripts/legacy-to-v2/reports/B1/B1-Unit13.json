@@ -1,0 +1,100 @@
+{
+  "unit": 13,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: Countable or uncountable?",
+      "legacyPattern": "drag-category",
+      "formatType": "stative_sorting",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": [
+        "drag-category → stative_sorting"
+      ]
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: Complete with much, many, a little or a few",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: a/an, some or any",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "D: Circle the correct word",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "E: Correct the mistakes",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "F",
+      "title": "F: Multiple choice",
+      "legacyPattern": "mc-standalone",
+      "formatType": "mc_4_option",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "G",
+      "title": "G: Key word transformations",
+      "legacyPattern": "word-formation",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 4,
+      "v2Items": 4,
+      "notes": []
+    },
+    {
+      "exerciseKey": "H",
+      "title": "H: Complete the text",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 7,
+      "v2Items": 7,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 8,
+    "legacyItemCount": 51,
+    "v2ItemCount": 51,
+    "estimatedScreens": 44,
+    "formatTypes": [
+      "stative_sorting",
+      "free_text_gap_fill",
+      "two_option_choice",
+      "full_sentence_write",
+      "mc_4_option"
+    ]
+  }
+}

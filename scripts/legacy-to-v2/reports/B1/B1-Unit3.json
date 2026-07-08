@@ -1,0 +1,108 @@
+{
+  "unit": 3,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "Complete the crossword",
+      "legacyPattern": "crossword",
+      "formatType": "crossword_clues",
+      "screenMode": "per_item",
+      "legacyItems": 11,
+      "v2Items": 11,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "Join our games club! (gap fill)",
+      "legacyPattern": "passage-gap-fill",
+      "formatType": "passage_gap_fill",
+      "screenMode": "single_passage_with_gaps",
+      "legacyItems": 7,
+      "v2Items": 7,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "Circle the correct word",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "Phrasal verbs (type-in)",
+      "legacyPattern": "phrasal-particle",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "Prepositional phrases (gap fill)",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "F",
+      "title": "Word formation",
+      "legacyPattern": "word-formation",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "G",
+      "title": "Young musicians (word formation)",
+      "legacyPattern": "passage-wf",
+      "formatType": "passage_gap_fill",
+      "screenMode": "single_passage_with_gaps",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "H",
+      "title": "Word patterns (dialogue)",
+      "legacyPattern": "passage-input",
+      "formatType": "passage_gap_fill",
+      "screenMode": "single_passage_with_gaps",
+      "legacyItems": 7,
+      "v2Items": 7,
+      "notes": []
+    },
+    {
+      "exerciseKey": "I",
+      "title": "Word patterns (error correction)",
+      "legacyPattern": "error-correction",
+      "formatType": "error_correction",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 9,
+    "legacyItemCount": 65,
+    "v2ItemCount": 65,
+    "estimatedScreens": 48,
+    "formatTypes": [
+      "crossword_clues",
+      "passage_gap_fill",
+      "two_option_choice",
+      "free_text_gap_fill",
+      "error_correction"
+    ]
+  }
+}

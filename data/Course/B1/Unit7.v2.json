@@ -1,0 +1,991 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 3,
+  "unit": 7,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 7: Future time",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 7: Future time"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit7.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 5
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u7-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Present continuous",
+        "subtitle": "Present continuous",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "rows": [
+              {
+                "label": "statement",
+                "left": "I **am ('m) studying** ...",
+                "right": "He/she/it **is ('s) studying** ... You/we/they **are ('re) studying** ..."
+              },
+              {
+                "label": "negative",
+                "left": "I **am not ('m not) studying** ...",
+                "right": "He/she/it **is not (isn't / 's not) studying** ... You/we/they **are not (aren't / 're not) studying** ..."
+              },
+              {
+                "label": "question",
+                "left": "**Am** I **studying** ...?",
+                "right": "**Is** he/she/it **studying** ...? **Are** you/we/they **studying** ...?"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Fixed future arrangements: We **'re meeting** our cousins on Saturday."
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "We use *be going to* for intentions that are not fully arranged yet. ✗ I **'m becoming** a pilot one day.",
+              "We do not normally use the present continuous for predictions. ✗ I think it **'s snowing** tomorrow."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "will",
+        "subtitle": "will",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "formula": "will + bare infinitive",
+            "rows": [
+              {
+                "label": "statement",
+                "left": "I/you/he/she/it/we/they **will ('ll) travel** ..."
+              },
+              {
+                "label": "negative",
+                "left": "I/you/he/she/it/we/they **will not (won't) travel** ..."
+              },
+              {
+                "label": "question",
+                "left": "**Will** I/you/he/she/it/we/they **travel** ...?"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Predictions and opinions: I think people **will live** longer in the future.",
+              "Offers and promises: I **'ll help** you with your homework.",
+              "Instant decisions: I'm thirsty — I **'ll get** some water."
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "Use *shall* for offers and suggestions with *I* and *we*: **Shall** we go now?",
+              "We do not usually use *will* for planned arrangements."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-3",
+        "title": "be going to",
+        "subtitle": "be going to",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "formula": "be going to + bare infinitive",
+            "rows": [
+              {
+                "label": "statement",
+                "left": "I **am ('m) going to study** ...",
+                "right": "He/she/it **is ('s) going to study** ... You/we/they **are ('re) going to study** ..."
+              },
+              {
+                "label": "negative",
+                "left": "I **am ('m) not going to study** ...",
+                "right": "He/she/it **is not (isn't / 's not) going to study** ... You/we/they **are not (aren't / 're not) going to study** ..."
+              },
+              {
+                "label": "question",
+                "left": "**Am** I **going to study** ...?",
+                "right": "**Is** he/she/it **going to study** ...? **Are** you/we/they **going to study** ...?"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Future intentions: She **'s going to learn** Japanese next year.",
+              "Predictions based on evidence: Look at those clouds — it **'s going to rain**."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "theory-card-4",
+        "title": "Present simple",
+        "subtitle": "Present simple",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "rows": [
+              {
+                "label": "statement",
+                "left": "I/you/we/they **leave** ...",
+                "right": "He/she/it **leaves** ..."
+              },
+              {
+                "label": "negative",
+                "left": "I/you/we/they **do not (don't) leave** ...",
+                "right": "He/she/it **does not (doesn't) leave** ..."
+              },
+              {
+                "label": "question",
+                "left": "**Do** I/you/we/they **leave** ...?",
+                "right": "**Does** he/she/it **leave** ...?"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "Timetables and schedules: The train **arrives** at half past six."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u7-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 26,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u7-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u7-exa-1",
+            "b1-u7-exa-2",
+            "b1-u7-exa-3",
+            "b1-u7-exa-4",
+            "b1-u7-exa-5",
+            "b1-u7-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u7-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u7-exb-1",
+            "b1-u7-exb-2",
+            "b1-u7-exb-3",
+            "b1-u7-exb-4",
+            "b1-u7-exb-5",
+            "b1-u7-exb-6",
+            "b1-u7-exb-7",
+            "b1-u7-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u7-ex-c",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u7-exc-1",
+            "b1-u7-exc-2",
+            "b1-u7-exc-3",
+            "b1-u7-exc-4",
+            "b1-u7-exc-5",
+            "b1-u7-exc-6",
+            "b1-u7-exc-7",
+            "b1-u7-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u7-ex-e",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u7-exe-1",
+            "b1-u7-exe-2",
+            "b1-u7-exe-3",
+            "b1-u7-exe-4",
+            "b1-u7-exe-5",
+            "b1-u7-exe-6",
+            "b1-u7-exe-7",
+            "b1-u7-exe-8",
+            "b1-u7-exe-9",
+            "b1-u7-exe-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u7-ex-f",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u7-exf-1",
+            "b1-u7-exf-2",
+            "b1-u7-exf-3",
+            "b1-u7-exf-4",
+            "b1-u7-exf-5",
+            "b1-u7-exf-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 38,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u7-ex-a",
+      "b1-u7-ex-b",
+      "b1-u7-ex-c",
+      "b1-u7-ex-e",
+      "b1-u7-ex-f"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u7-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Present continuous (Emma's diary)",
+        "title": "A: Present continuous (Emma's diary)",
+        "instructions": "Look at Emma's diary and use the prompts to write sentences. Use the correct form of the present continuous.",
+        "studentInstruction": "Look at Emma's diary and use the prompts to write sentences. Use the correct form of the present continuous.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "meet Josh - school café",
+          "go swimming - cousin",
+          "take bus - city centre",
+          "spend afternoon - grandparents",
+          "fly - Rome - 8 pm",
+          "help - Mum - kitchen"
+        ],
+        "wordBank": [
+          "meet Josh - school café",
+          "go swimming - cousin",
+          "take bus - city centre",
+          "spend afternoon - grandparents",
+          "fly - Rome - 8 pm",
+          "help - Mum - kitchen"
+        ],
+        "items": [
+          {
+            "id": "b1-u7-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "On Monday, she ......",
+            "answer": "is meeting Josh at the school café",
+            "acceptedAnswers": [
+              "is meeting Josh at the school café"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "On Tuesday, she ......",
+            "answer": "is going swimming with her cousin",
+            "acceptedAnswers": [
+              "is going swimming with her cousin"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "On Wednesday, she ......",
+            "answer": "is taking the bus to the city centre",
+            "acceptedAnswers": [
+              "is taking the bus to the city centre"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "On Thursday, she ......",
+            "answer": "is spending the afternoon with her grandparents",
+            "acceptedAnswers": [
+              "is spending the afternoon with her grandparents"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "On Friday, she ......",
+            "answer": "is flying to Rome at 8 pm",
+            "acceptedAnswers": [
+              "is flying to Rome at 8 pm"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "On Saturday, she ......",
+            "answer": "is helping Mum in the kitchen",
+            "acceptedAnswers": [
+              "is helping Mum in the kitchen"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u7-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: will or shall",
+        "title": "B: will or shall",
+        "instructions": "Complete using will or shall and the verbs in the box. You may have to use some negative forms.",
+        "studentInstruction": "Complete using will or shall and the verbs in the box. You may have to use some negative forms.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "buy",
+          "call",
+          "help",
+          "meet",
+          "move",
+          "rain",
+          "show",
+          "wait"
+        ],
+        "wordBank": [
+          "buy",
+          "call",
+          "help",
+          "meet",
+          "move",
+          "rain",
+          "show",
+          "wait"
+        ],
+        "items": [
+          {
+            "id": "b1-u7-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I think it ...... later this evening.",
+            "answer": "will rain",
+            "acceptedAnswers": [
+              "will rain"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't worry — I ...... you with your homework.",
+            "answer": "will help",
+            "acceptedAnswers": [
+              "will help"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... you ...... me after school?",
+            "answer": "Will, call",
+            "acceptedAnswers": [
+              "Will, call"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We ...... to a bigger house next year.",
+            "answer": "will move",
+            "acceptedAnswers": [
+              "will move"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... we ...... outside the cinema for you?",
+            "answer": "Shall, wait",
+            "acceptedAnswers": [
+              "Shall, wait"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I think Sam ...... us the photos tomorrow.",
+            "answer": "will show",
+            "acceptedAnswers": [
+              "will show"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I ...... a sandwich, please.",
+            "answer": "will buy",
+            "acceptedAnswers": [
+              "will buy"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't worry. They ...... us at the station.",
+            "answer": "will meet",
+            "acceptedAnswers": [
+              "will meet"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u7-ex-c",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "C: be going to",
+        "title": "C: be going to",
+        "instructions": "Complete using the correct form of be going to and the verbs in brackets. You may have to use some negative forms.",
+        "studentInstruction": "Complete using the correct form of be going to and the verbs in brackets. You may have to use some negative forms.",
+        "legacyKey": "C",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u7-exc-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I ...... (study) engineering at university.",
+            "answer": "'m going to study",
+            "acceptedAnswers": [
+              "'m going to study"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exc-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "They ...... (paint) their bedroom this weekend.",
+            "answer": "are going to paint",
+            "acceptedAnswers": [
+              "are going to paint"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exc-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "...... Ben ...... (apply) for that job?",
+            "answer": "Is, going to apply",
+            "acceptedAnswers": [
+              "Is, going to apply"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exc-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "We ...... (not / stay) at home this evening.",
+            "answer": "aren't going to stay",
+            "acceptedAnswers": [
+              "aren't going to stay"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exc-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Look out! You ...... (drop) those books!",
+            "answer": "'re going to drop",
+            "acceptedAnswers": [
+              "'re going to drop"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exc-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I ...... (start) a new course next month.",
+            "answer": "'m going to start",
+            "acceptedAnswers": [
+              "'m going to start"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exc-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "...... they ...... (visit) their cousins in July?",
+            "answer": "Are, going to visit",
+            "acceptedAnswers": [
+              "Are, going to visit"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exc-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Dad ...... (not / drive) to work tomorrow.",
+            "answer": "isn't going to drive",
+            "acceptedAnswers": [
+              "isn't going to drive"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u7-ex-e",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "E: Circle the correct word or phrase",
+        "title": "E: Circle the correct word or phrase",
+        "instructions": "Circle the correct word or phrase.",
+        "studentInstruction": "Circle the correct word or phrase.",
+        "legacyKey": "E",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u7-exe-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I think Ella",
+            "sentenceAfter": "a great doctor one day.",
+            "options": [
+              "will become",
+              "is becoming"
+            ],
+            "answer": "will become",
+            "originalSentence": "I think Ella **will become / is becoming** a great doctor one day.",
+            "completedSentence": "I think Ella will become a great doctor one day."
+          },
+          {
+            "id": "b1-u7-exe-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We",
+            "sentenceAfter": "our teacher after class today.",
+            "options": [
+              "are meeting",
+              "will meet"
+            ],
+            "answer": "are meeting",
+            "originalSentence": "We **are meeting / will meet** our teacher after class today.",
+            "completedSentence": "We are meeting our teacher after class today."
+          },
+          {
+            "id": "b1-u7-exe-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "What",
+            "sentenceAfter": "to the party tonight?",
+            "options": [
+              "are you going to wear",
+              "do you wear"
+            ],
+            "answer": "are you going to wear",
+            "originalSentence": "What **are you going to wear / do you wear** to the party tonight?",
+            "completedSentence": "What are you going to wear to the party tonight?"
+          },
+          {
+            "id": "b1-u7-exe-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "me carry these bags?",
+            "options": [
+              "Will you help",
+              "Shall you help"
+            ],
+            "answer": "Will you help",
+            "originalSentence": "**Will you help / Shall you help** me carry these bags?",
+            "completedSentence": "Will you help me carry these bags?"
+          },
+          {
+            "id": "b1-u7-exe-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "My brother",
+            "sentenceAfter": "medicine at university.",
+            "options": [
+              "is going to study",
+              "will study"
+            ],
+            "answer": "is going to study",
+            "originalSentence": "My brother **is going to study / will study** medicine at university.",
+            "completedSentence": "My brother is going to study medicine at university."
+          },
+          {
+            "id": "b1-u7-exe-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We",
+            "sentenceAfter": "a science test tomorrow morning.",
+            "options": [
+              "are having",
+              "will have"
+            ],
+            "answer": "are having",
+            "originalSentence": "We **are having / will have** a science test tomorrow morning.",
+            "completedSentence": "We are having a science test tomorrow morning."
+          },
+          {
+            "id": "b1-u7-exe-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I'm sure you",
+            "sentenceAfter": "the concert.",
+            "options": [
+              "will enjoy",
+              "are enjoying"
+            ],
+            "answer": "will enjoy",
+            "originalSentence": "I'm sure you **will enjoy / are enjoying** the concert.",
+            "completedSentence": "I'm sure you will enjoy the concert."
+          },
+          {
+            "id": "b1-u7-exe-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "to Italy next month?",
+            "options": [
+              "Are they travelling",
+              "Do they travel"
+            ],
+            "answer": "Are they travelling",
+            "originalSentence": "**Are they travelling / Do they travel** to Italy next month?",
+            "completedSentence": "Are they travelling to Italy next month?"
+          },
+          {
+            "id": "b1-u7-exe-9",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I think our team",
+            "sentenceAfter": "the competition.",
+            "options": [
+              "will win",
+              "is winning"
+            ],
+            "answer": "will win",
+            "originalSentence": "I think our team **will win / is winning** the competition.",
+            "completedSentence": "I think our team will win the competition."
+          },
+          {
+            "id": "b1-u7-exe-10",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "If you like, I",
+            "sentenceAfter": "to the teacher for you.",
+            "options": [
+              "will speak",
+              "am speaking"
+            ],
+            "answer": "will speak",
+            "originalSentence": "If you like, I **will speak / am speaking** to the teacher for you.",
+            "completedSentence": "If you like, I will speak to the teacher for you."
+          }
+        ]
+      },
+      {
+        "id": "b1-u7-ex-f",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "F: Choose the correct answer",
+        "title": "F: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "F",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u7-exf-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'Have you arranged your holiday yet?' 'Yes.",
+            "sentenceAfter": "to Greece in August.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "We'll go"
+              },
+              {
+                "letter": "B",
+                "text": "We're going"
+              },
+              {
+                "letter": "C",
+                "text": "We go"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exf-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'I can't carry all these books.' 'Don't worry.",
+            "sentenceAfter": "you.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "I help"
+              },
+              {
+                "letter": "B",
+                "text": "I'm helping"
+              },
+              {
+                "letter": "C",
+                "text": "I'll help"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exf-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'Can you pass me the salt?' 'Sure.",
+            "sentenceAfter": "it to you.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "I'll give"
+              },
+              {
+                "letter": "B",
+                "text": "I'm giving"
+              },
+              {
+                "letter": "C",
+                "text": "I give"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exf-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'What are your plans for next year?' '",
+            "sentenceAfter": "a photography course.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "I take"
+              },
+              {
+                "letter": "B",
+                "text": "I'm going to take"
+              },
+              {
+                "letter": "C",
+                "text": "I'm taking"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exf-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'Do you think Mia will win?' 'Yes, I think",
+            "sentenceAfter": "the race easily.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "she'll win"
+              },
+              {
+                "letter": "B",
+                "text": "she wins"
+              },
+              {
+                "letter": "C",
+                "text": "she's winning"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u7-exf-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'Look at those dark clouds!' 'Yes, I think",
+            "sentenceAfter": "soon.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "it's going to snow"
+              },
+              {
+                "letter": "B",
+                "text": "it's snowing"
+              },
+              {
+                "letter": "C",
+                "text": "it snows"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

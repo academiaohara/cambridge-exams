@@ -1,0 +1,1117 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 4,
+  "unit": 10,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 10: The passive (1)",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 10: The passive (1)"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit10.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 8
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u10-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "The passive (present simple, past simple, will)",
+        "subtitle": "The passive (present simple, past simple, will)",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "form_table",
+            "title": "Form",
+            "rows": [
+              {
+                "label": "statement",
+                "left": "Everyone **is invited**!"
+              },
+              {
+                "label": "negative",
+                "left": "Some people **aren't (are not) invited**."
+              },
+              {
+                "label": "question",
+                "left": "**Is** everyone **invited**?"
+              }
+            ]
+          },
+          {
+            "type": "bullet_list",
+            "title": "Use",
+            "items": [
+              "When the person responsible for the action is unknown: My laptop **was stolen** last week.",
+              "When the person responsible for the action is unimportant or obvious: **Was** the homework **checked** today?"
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "Look at the active sentence. The verb is *broke* and the object is *the classroom window*.",
+              "The object of the active sentence (*the classroom window*) becomes the subject of the passive sentence. *The classroom window* …",
+              "Then we need the verb *be* in the same tense as the verb in the active sentence. Here, *broke* is past simple, so we need *was*. *The classroom window was* …",
+              "Then we need the past participle of the verb in the active sentence. The past participle of *break* is *broken*. *The classroom window was broken* …",
+              "Finally, we finish the sentence in the right way. ***The classroom window was broken yesterday.***"
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "When the verb in a passive sentence is a phrasal verb, don't forget to include the particle. They **turned off** the lights. → The lights were **turned off**.",
+              "Some verbs have irregular past participle forms (e.g. break → broken)."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "error_correction",
+        "displayName": "Correct the error",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_correction_input",
+          "studentAction": "type_correction",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u10-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "conjugation_gap_fill",
+        "full_sentence_write",
+        "two_option_choice",
+        "free_text_gap_fill",
+        "error_correction",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 35,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u10-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u10-exa-1",
+            "b1-u10-exa-2",
+            "b1-u10-exa-3",
+            "b1-u10-exa-4",
+            "b1-u10-exa-5",
+            "b1-u10-exa-6",
+            "b1-u10-exa-7",
+            "b1-u10-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u10-ex-b",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u10-exb-1",
+            "b1-u10-exb-2",
+            "b1-u10-exb-3",
+            "b1-u10-exb-4",
+            "b1-u10-exb-5",
+            "b1-u10-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u10-ex-c",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u10-exc-1",
+            "b1-u10-exc-2",
+            "b1-u10-exc-3",
+            "b1-u10-exc-4",
+            "b1-u10-exc-5",
+            "b1-u10-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u10-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u10-exd-1",
+            "b1-u10-exd-2",
+            "b1-u10-exd-3",
+            "b1-u10-exd-4",
+            "b1-u10-exd-5",
+            "b1-u10-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u10-ex-e",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u10-exe-1",
+            "b1-u10-exe-2",
+            "b1-u10-exe-3",
+            "b1-u10-exe-4",
+            "b1-u10-exe-5",
+            "b1-u10-exe-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u10-ex-f",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b1-u10-exf-1",
+            "b1-u10-exf-2",
+            "b1-u10-exf-3",
+            "b1-u10-exf-4",
+            "b1-u10-exf-5",
+            "b1-u10-exf-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u10-ex-g",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u10-exg-1",
+            "b1-u10-exg-2",
+            "b1-u10-exg-3",
+            "b1-u10-exg-4",
+            "b1-u10-exg-5",
+            "b1-u10-exg-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u10-ex-h",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u10-exh-1",
+            "b1-u10-exh-2",
+            "b1-u10-exh-3",
+            "b1-u10-exh-4",
+            "b1-u10-exh-5",
+            "b1-u10-exh-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 50,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u10-ex-a",
+      "b1-u10-ex-b",
+      "b1-u10-ex-c",
+      "b1-u10-ex-d",
+      "b1-u10-ex-e",
+      "b1-u10-ex-f",
+      "b1-u10-ex-g",
+      "b1-u10-ex-h"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u10-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Complete with the correct passive form",
+        "title": "A: Complete with the correct passive form",
+        "instructions": "Use the verbs in brackets in the present simple passive, past simple passive or will passive.",
+        "studentInstruction": "Use the verbs in brackets in the present simple passive, past simple passive or will passive.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u10-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The school uniforms ...... (wash) every week.",
+            "answer": "are washed",
+            "acceptedAnswers": [
+              "are washed"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The concert hall ...... (decorate) for the festival last month.",
+            "answer": "was decorated",
+            "acceptedAnswers": [
+              "was decorated"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The exam results ...... (email) tomorrow morning.",
+            "answer": "will be emailed",
+            "acceptedAnswers": [
+              "will be emailed"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "These phones ...... (produce) in South Korea.",
+            "answer": "are produced",
+            "acceptedAnswers": [
+              "are produced"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The reports ...... (not finish) yesterday.",
+            "answer": "weren't finished",
+            "acceptedAnswers": [
+              "weren't finished"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "...... the prizes ...... (give) after the competition?",
+            "answer": "Will, be given",
+            "acceptedAnswers": [
+              "Will, be given"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exa-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "All essays ...... (mark) by our English teacher.",
+            "answer": "are marked",
+            "acceptedAnswers": [
+              "are marked"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exa-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My keys ...... (not discover) anywhere after the trip.",
+            "answer": "weren't discovered",
+            "acceptedAnswers": [
+              "weren't discovered"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u10-ex-b",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "B: Change active to passive",
+        "title": "B: Change active to passive",
+        "instructions": "Rewrite each sentence in the passive.",
+        "studentInstruction": "Rewrite each sentence in the passive.",
+        "legacyKey": "B",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u10-exb-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "People grow coffee in Brazil.",
+            "prompt": {
+              "cues": [
+                "People grow coffee in Brazil."
+              ]
+            },
+            "answer": "Coffee is grown in Brazil.",
+            "acceptedAnswers": [
+              "Coffee is grown in Brazil."
+            ]
+          },
+          {
+            "id": "b1-u10-exb-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Someone damaged the school gate last night.",
+            "prompt": {
+              "cues": [
+                "Someone damaged the school gate last night."
+              ]
+            },
+            "answer": "The school gate was damaged last night.",
+            "acceptedAnswers": [
+              "The school gate was damaged last night."
+            ]
+          },
+          {
+            "id": "b1-u10-exb-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "They will announce the winners next week.",
+            "prompt": {
+              "cues": [
+                "They will announce the winners next week."
+              ]
+            },
+            "answer": "The winners will be announced next week.",
+            "acceptedAnswers": [
+              "The winners will be announced next week."
+            ]
+          },
+          {
+            "id": "b1-u10-exb-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "They don't allow phones in class.",
+            "prompt": {
+              "cues": [
+                "They don't allow phones in class."
+              ]
+            },
+            "answer": "Phones aren't allowed in class.",
+            "acceptedAnswers": [
+              "Phones aren't allowed in class."
+            ]
+          },
+          {
+            "id": "b1-u10-exb-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Did they cancel the football match?",
+            "prompt": {
+              "cues": [
+                "Did they cancel the football match?"
+              ]
+            },
+            "answer": "Was the football match cancelled?",
+            "acceptedAnswers": [
+              "Was the football match cancelled?"
+            ]
+          },
+          {
+            "id": "b1-u10-exb-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "The chef prepared the food this morning.",
+            "prompt": {
+              "cues": [
+                "The chef prepared the food this morning."
+              ]
+            },
+            "answer": "The food was prepared this morning.",
+            "acceptedAnswers": [
+              "The food was prepared this morning."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u10-ex-c",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "C: Circle the correct form",
+        "title": "C: Circle the correct form",
+        "instructions": "Choose the correct option in each sentence.",
+        "studentInstruction": "Choose the correct option in each sentence.",
+        "legacyKey": "C",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u10-exc-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This castle",
+            "sentenceAfter": "by thousands of tourists each year.",
+            "options": [
+              "visited",
+              "is visited",
+              "was visiting"
+            ],
+            "answer": "is visited",
+            "originalSentence": "This castle **visited / is visited / was visiting** by thousands of tourists each year.",
+            "completedSentence": "This castle is visited by thousands of tourists each year."
+          },
+          {
+            "id": "b1-u10-exc-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The project",
+            "sentenceAfter": "yesterday afternoon.",
+            "options": [
+              "completed",
+              "was completed",
+              "is completing"
+            ],
+            "answer": "was completed",
+            "originalSentence": "The project **completed / was completed / is completing** yesterday afternoon.",
+            "completedSentence": "The project was completed yesterday afternoon."
+          },
+          {
+            "id": "b1-u10-exc-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The new shopping centre",
+            "sentenceAfter": "next month.",
+            "options": [
+              "will open",
+              "will be opened",
+              "is opened"
+            ],
+            "answer": "will be opened",
+            "originalSentence": "The new shopping centre **will open / will be opened / is opened** next month.",
+            "completedSentence": "The new shopping centre will be opened next month."
+          },
+          {
+            "id": "b1-u10-exc-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The floors",
+            "sentenceAfter": "every night.",
+            "options": [
+              "are cleaned",
+              "clean",
+              "were cleaning"
+            ],
+            "answer": "are cleaned",
+            "originalSentence": "The floors **are cleaned / clean / were cleaning** every night.",
+            "completedSentence": "The floors are cleaned every night."
+          },
+          {
+            "id": "b1-u10-exc-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The windows",
+            "sentenceAfter": "during the storm.",
+            "options": [
+              "wasn't open",
+              "wasn't opened",
+              "didn't opened"
+            ],
+            "answer": "wasn't opened",
+            "originalSentence": "The windows **wasn't open / wasn't opened / didn't opened** during the storm.",
+            "completedSentence": "The windows wasn't opened during the storm."
+          },
+          {
+            "id": "b1-u10-exc-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "every morning?",
+            "options": [
+              "Is the parcel delivered",
+              "Is the parcel delivery",
+              "Does the parcel delivered"
+            ],
+            "answer": "Is the parcel delivered",
+            "originalSentence": "**Is the parcel delivered / Is the parcel delivery / Does the parcel delivered** every morning?",
+            "completedSentence": "Is the parcel delivered every morning?"
+          }
+        ]
+      },
+      {
+        "id": "b1-u10-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Complete with by or with",
+        "title": "D: Complete with by or with",
+        "instructions": "Write by or with in each gap.",
+        "studentInstruction": "Write by or with in each gap.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u10-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The story was written ...... a famous author.",
+            "answer": "by",
+            "acceptedAnswers": [
+              "by"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The vegetables were cut ...... a sharp knife.",
+            "answer": "with",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The school play was organised ...... the drama club.",
+            "answer": "by",
+            "acceptedAnswers": [
+              "by"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The floor was cleaned ...... a mop.",
+            "answer": "with",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The mural was painted ...... local artists.",
+            "answer": "by",
+            "acceptedAnswers": [
+              "by"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The photo was taken ...... a digital camera.",
+            "answer": "with",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u10-ex-e",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "E: Phrasal verbs in the passive",
+        "title": "E: Phrasal verbs in the passive",
+        "instructions": "Complete each sentence with the correct passive form of the phrasal verb in brackets.",
+        "studentInstruction": "Complete each sentence with the correct passive form of the phrasal verb in brackets.",
+        "legacyKey": "E",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u10-exe-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The tables ...... (put away) after the event.",
+            "answer": "were put away",
+            "acceptedAnswers": [
+              "were put away"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "All the posters ...... (put up) before the concert started.",
+            "answer": "were put up",
+            "acceptedAnswers": [
+              "were put up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The computers ...... (switch off) every evening.",
+            "answer": "are switched off",
+            "acceptedAnswers": [
+              "are switched off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The old stadium ...... (knock down) next year.",
+            "answer": "will be knocked down",
+            "acceptedAnswers": [
+              "will be knocked down"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Her name ...... (leave out) of the competition list.",
+            "answer": "was left out",
+            "acceptedAnswers": [
+              "was left out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The students ...... (pick up) after the school trip.",
+            "answer": "were picked up",
+            "acceptedAnswers": [
+              "were picked up"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u10-ex-f",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "F: Error correction",
+        "title": "F: Error correction",
+        "instructions": "Each sentence has one mistake. Write the correct passive form.",
+        "studentInstruction": "Each sentence has one mistake. Write the correct passive form.",
+        "legacyKey": "F",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b1-u10-exf-1",
+            "formatType": "error_correction",
+            "sentence": "The sandwiches is prepared every morning.",
+            "highlightedText": "is",
+            "answer": "are",
+            "acceptedAnswers": [
+              "are"
+            ]
+          },
+          {
+            "id": "b1-u10-exf-2",
+            "formatType": "error_correction",
+            "sentence": "My bag were found at the station.",
+            "highlightedText": "were",
+            "answer": "was",
+            "acceptedAnswers": [
+              "was"
+            ]
+          },
+          {
+            "id": "b1-u10-exf-3",
+            "formatType": "error_correction",
+            "sentence": "The invitations will send tomorrow.",
+            "highlightedText": "will send",
+            "answer": "will be sent",
+            "acceptedAnswers": [
+              "will be sent"
+            ]
+          },
+          {
+            "id": "b1-u10-exf-4",
+            "formatType": "error_correction",
+            "sentence": "Is the documents printed every day?",
+            "highlightedText": "Is",
+            "answer": "Are",
+            "acceptedAnswers": [
+              "Are"
+            ]
+          },
+          {
+            "id": "b1-u10-exf-5",
+            "formatType": "error_correction",
+            "sentence": "The classroom wasn't decorate for the party.",
+            "highlightedText": "decorate",
+            "answer": "decorated",
+            "acceptedAnswers": [
+              "decorated"
+            ]
+          },
+          {
+            "id": "b1-u10-exf-6",
+            "formatType": "error_correction",
+            "sentence": "This game play all over the world.",
+            "highlightedText": "play",
+            "answer": "is played",
+            "acceptedAnswers": [
+              "is played"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u10-ex-g",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "G: Multiple choice",
+        "title": "G: Multiple choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "G",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u10-exg-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Breakfast",
+            "sentenceAfter": "in the hotel restaurant every morning.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "serves"
+              },
+              {
+                "letter": "B",
+                "text": "is served"
+              },
+              {
+                "letter": "C",
+                "text": "was serving"
+              },
+              {
+                "letter": "D",
+                "text": "will serve"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exg-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The bridge",
+            "sentenceAfter": "in 1965.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "was built"
+              },
+              {
+                "letter": "B",
+                "text": "is built"
+              },
+              {
+                "letter": "C",
+                "text": "builds"
+              },
+              {
+                "letter": "D",
+                "text": "will be built"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exg-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The awards ceremony",
+            "sentenceAfter": "next Friday.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "is hold"
+              },
+              {
+                "letter": "B",
+                "text": "held"
+              },
+              {
+                "letter": "C",
+                "text": "will be held"
+              },
+              {
+                "letter": "D",
+                "text": "will hold"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exg-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The messages",
+            "sentenceAfter": "yesterday because the server crashed.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "didn't send"
+              },
+              {
+                "letter": "B",
+                "text": "weren't sent"
+              },
+              {
+                "letter": "C",
+                "text": "aren't sent"
+              },
+              {
+                "letter": "D",
+                "text": "won't be sent"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exg-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Where",
+            "sentenceAfter": "these trainers made?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "are"
+              },
+              {
+                "letter": "B",
+                "text": "did"
+              },
+              {
+                "letter": "C",
+                "text": "will"
+              },
+              {
+                "letter": "D",
+                "text": "was"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exg-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The gym",
+            "sentenceAfter": "after the competition.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "clean"
+              },
+              {
+                "letter": "B",
+                "text": "was clean"
+              },
+              {
+                "letter": "C",
+                "text": "was cleaned"
+              },
+              {
+                "letter": "D",
+                "text": "is clean"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u10-ex-h",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "H: Key word transformation",
+        "title": "H: Key word transformation",
+        "instructions": "Complete the second sentence so it means the same as the first.",
+        "studentInstruction": "Complete the second sentence so it means the same as the first.",
+        "legacyKey": "H",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u10-exh-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Someone washes these towels every day.\nThese towels ...... (WASHED) every day.",
+            "answer": "are washed",
+            "acceptedAnswers": [
+              "are washed"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exh-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "They delivered the furniture this morning.\nThe furniture ...... (DELIVERED) this morning.",
+            "answer": "was delivered",
+            "acceptedAnswers": [
+              "was delivered"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exh-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "They will publish the article next week.\nThe article ...... (PUBLISHED) next week.",
+            "answer": "will be published",
+            "acceptedAnswers": [
+              "will be published"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exh-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Did someone invite Emma to the exhibition?\n...... (INVITED) to the exhibition?",
+            "answer": "Was Emma invited",
+            "acceptedAnswers": [
+              "Was Emma invited"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exh-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "People don't use this classroom during the holidays.\nThis classroom ...... (USED) during the holidays.",
+            "answer": "isn't used",
+            "acceptedAnswers": [
+              "isn't used"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exh-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Someone turned off the lights before we arrived.\nThe lights ...... (TURNED) before we arrived.",
+            "answer": "were turned off",
+            "acceptedAnswers": [
+              "were turned off"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

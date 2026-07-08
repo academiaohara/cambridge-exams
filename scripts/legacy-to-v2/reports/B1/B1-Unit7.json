@@ -1,0 +1,67 @@
+{
+  "unit": 7,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: Present continuous (Emma's diary)",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: will or shall",
+      "legacyPattern": "gap-fill",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: be going to",
+      "legacyPattern": "conjugation-gap",
+      "formatType": "conjugation_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 8,
+      "v2Items": 8,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "E: Circle the correct word or phrase",
+      "legacyPattern": "circle-correct",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 10,
+      "v2Items": 10,
+      "notes": []
+    },
+    {
+      "exerciseKey": "F",
+      "title": "F: Choose the correct answer",
+      "legacyPattern": "mc-standalone",
+      "formatType": "mc_4_option",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 5,
+    "legacyItemCount": 38,
+    "v2ItemCount": 38,
+    "estimatedScreens": 38,
+    "formatTypes": [
+      "free_text_gap_fill",
+      "conjugation_gap_fill",
+      "two_option_choice",
+      "mc_4_option"
+    ]
+  }
+}

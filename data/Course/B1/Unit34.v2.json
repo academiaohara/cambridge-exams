@@ -1,0 +1,809 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 12,
+  "unit": 34,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 34: Direct & indirect objects",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 34: Direct & indirect objects"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit34.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 6
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u34-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Verbs without an object",
+        "subtitle": "Verbs without an object",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "explanation",
+            "title": "Use",
+            "description": "Certain verbs only require a subject to form a complete sentence. No object is needed."
+          }
+        ]
+      },
+      {
+        "id": "theory-card-2",
+        "title": "Verbs with one object",
+        "subtitle": "Verbs with one object",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "explanation",
+            "title": "Use",
+            "description": "A large number of verbs take a single object after them to complete their meaning."
+          }
+        ]
+      },
+      {
+        "id": "theory-card-3",
+        "title": "Verbs with two objects",
+        "subtitle": "Verbs with two objects",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "explanation",
+            "title": "Use",
+            "description": "Certain verbs can take two objects at the same time. One is the direct object (the thing) and the other is the indirect object (usually a person)."
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "He sent a postcard **to** Maria.",
+              "She bought a gift **for** her brother."
+            ]
+          },
+          {
+            "type": "explanation",
+            "title": "",
+            "description": "These verbs can also be used in the passive."
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "When the indirect object is placed before the direct object, do not add a preposition.",
+              "Correct: She gave Leo the keys.",
+              "Incorrect: She gave to Leo the keys."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u34-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "free_text_gap_fill",
+        "two_option_choice",
+        "full_sentence_write"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 25,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u34-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u34-exa-1",
+            "b1-u34-exa-2",
+            "b1-u34-exa-3",
+            "b1-u34-exa-4",
+            "b1-u34-exa-5",
+            "b1-u34-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u34-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u34-exb-1",
+            "b1-u34-exb-2",
+            "b1-u34-exb-3",
+            "b1-u34-exb-4",
+            "b1-u34-exb-5",
+            "b1-u34-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u34-ex-c",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u34-exc-1",
+            "b1-u34-exc-2",
+            "b1-u34-exc-3",
+            "b1-u34-exc-4",
+            "b1-u34-exc-5",
+            "b1-u34-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u34-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u34-exd-1",
+            "b1-u34-exd-2",
+            "b1-u34-exd-3",
+            "b1-u34-exd-4",
+            "b1-u34-exd-5",
+            "b1-u34-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u34-ex-e",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u34-exe-1",
+            "b1-u34-exe-2",
+            "b1-u34-exe-3",
+            "b1-u34-exe-4",
+            "b1-u34-exe-5",
+            "b1-u34-exe-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u34-ex-f",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u34-exf-1",
+            "b1-u34-exf-2",
+            "b1-u34-exf-3",
+            "b1-u34-exf-4",
+            "b1-u34-exf-5",
+            "b1-u34-exf-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 36,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u34-ex-a",
+      "b1-u34-ex-b",
+      "b1-u34-ex-c",
+      "b1-u34-ex-d",
+      "b1-u34-ex-e",
+      "b1-u34-ex-f"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u34-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Complete with the correct form",
+        "title": "A: Complete with the correct form",
+        "instructions": "Complete each sentence with one suitable verb.",
+        "studentInstruction": "Complete each sentence with one suitable verb.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "words": [
+          "close",
+          "laugh",
+          "lend",
+          "put",
+          "send",
+          "sleep"
+        ],
+        "wordBank": [
+          "close",
+          "laugh",
+          "lend",
+          "put",
+          "send",
+          "sleep"
+        ],
+        "items": [
+          {
+            "id": "b1-u34-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "After dinner, Grandpa ...... in his chair.",
+            "answer": "slept",
+            "acceptedAnswers": [
+              "slept"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I ...... my backpack next to the door.",
+            "answer": "put",
+            "acceptedAnswers": [
+              "put"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you ...... me your phone charger?",
+            "answer": "lend",
+            "acceptedAnswers": [
+              "lend"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Jake ...... the door quietly when he left.",
+            "answer": "closed",
+            "acceptedAnswers": [
+              "closed"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Everyone ...... at Sarah's funny story.",
+            "answer": "laughed",
+            "acceptedAnswers": [
+              "laughed"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Mum ...... me a text message this morning.",
+            "answer": "sent",
+            "acceptedAnswers": [
+              "sent"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u34-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "B: Choose the correct sentence",
+        "title": "B: Choose the correct sentence",
+        "instructions": "Choose the sentence that is grammatically correct.",
+        "studentInstruction": "Choose the sentence that is grammatically correct.",
+        "legacyKey": "B",
+        "legacyPattern": "inline-ab-choice",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u34-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              "Emma gave Jack a postcard.",
+              "Emma gave to Jack a postcard."
+            ],
+            "answer": "A",
+            "displayPrompt": "A Emma gave Jack a postcard. / B Emma gave to Jack a postcard."
+          },
+          {
+            "id": "b1-u34-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              "I bought my cousin some headphones.",
+              "I bought for my cousin some headphones."
+            ],
+            "answer": "A",
+            "displayPrompt": "A I bought my cousin some headphones. / B I bought for my cousin some headphones."
+          },
+          {
+            "id": "b1-u34-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              "Dad showed us his holiday photos.",
+              "Dad showed to us his holiday photos."
+            ],
+            "answer": "A",
+            "displayPrompt": "A Dad showed us his holiday photos. / B Dad showed to us his holiday photos."
+          },
+          {
+            "id": "b1-u34-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              "They sent us a package yesterday.",
+              "They sent to us a package yesterday."
+            ],
+            "answer": "A",
+            "displayPrompt": "A They sent us a package yesterday. / B They sent to us a package yesterday."
+          },
+          {
+            "id": "b1-u34-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              "She read the email to her manager.",
+              "She read to her manager the email."
+            ],
+            "answer": "A",
+            "displayPrompt": "A She read the email to her manager. / B She read to her manager the email."
+          },
+          {
+            "id": "b1-u34-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              "Oliver wrote his friend a postcard.",
+              "Oliver wrote to his friend a postcard."
+            ],
+            "answer": "A",
+            "displayPrompt": "A Oliver wrote his friend a postcard. / B Oliver wrote to his friend a postcard."
+          }
+        ]
+      },
+      {
+        "id": "b1-u34-ex-c",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "C: Choose the correct sentence",
+        "title": "C: Choose the correct sentence",
+        "instructions": "Choose the sentence that uses to or for correctly. Click A or B.",
+        "studentInstruction": "Choose the sentence that uses to or for correctly. Click A or B.",
+        "legacyKey": "C",
+        "legacyPattern": "same-meaning-ab",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u34-exc-1",
+            "formatType": "two_option_choice",
+            "context": "",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              "A: Ella gave the keys to her brother.",
+              "B: Ella gave the keys for her brother."
+            ],
+            "answer": "A",
+            "originalSentence": ""
+          },
+          {
+            "id": "b1-u34-exc-2",
+            "formatType": "two_option_choice",
+            "context": "",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              "A: My aunt bought a jacket to me.",
+              "B: My aunt bought a jacket for me."
+            ],
+            "answer": "B",
+            "originalSentence": ""
+          },
+          {
+            "id": "b1-u34-exc-3",
+            "formatType": "two_option_choice",
+            "context": "",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              "A: The coach explained the rules to us.",
+              "B: The coach explained the rules for us."
+            ],
+            "answer": "A",
+            "originalSentence": ""
+          },
+          {
+            "id": "b1-u34-exc-4",
+            "formatType": "two_option_choice",
+            "context": "",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              "A: Ben made dinner to his parents.",
+              "B: Ben made dinner for his parents."
+            ],
+            "answer": "B",
+            "originalSentence": ""
+          },
+          {
+            "id": "b1-u34-exc-5",
+            "formatType": "two_option_choice",
+            "context": "",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              "A: I wrote an email for my teacher.",
+              "B: I wrote an email to my teacher."
+            ],
+            "answer": "B",
+            "originalSentence": ""
+          },
+          {
+            "id": "b1-u34-exc-6",
+            "formatType": "two_option_choice",
+            "context": "",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              "A: The company offered a discount to customers.",
+              "B: The company offered a discount for customers."
+            ],
+            "answer": "A",
+            "originalSentence": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u34-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Gap fill (direct and indirect objects)",
+        "title": "D: Gap fill (direct and indirect objects)",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u34-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you pass ...... the bread, please?",
+            "answer": "me",
+            "acceptedAnswers": [
+              "me"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you explain the homework ...... me again?",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My father taught ...... how to swim.",
+            "answer": "me",
+            "acceptedAnswers": [
+              "me"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We paid ...... cashier before leaving the shop.",
+            "answer": "the",
+            "acceptedAnswers": [
+              "the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She sent an invitation ...... her grandparents.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you make a sandwich ...... me?",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u34-ex-e",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "E: Error correction",
+        "title": "E: Error correction",
+        "instructions": "Each sentence has one mistake. Write the correct sentence.",
+        "studentInstruction": "Each sentence has one mistake. Write the correct sentence.",
+        "legacyKey": "E",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u34-exe-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Lucy gave to Ben her old laptop.",
+            "prompt": {
+              "cues": [
+                "Lucy gave to Ben her old laptop."
+              ]
+            },
+            "answer": "Lucy gave Ben her old laptop.",
+            "acceptedAnswers": [
+              "Lucy gave Ben her old laptop."
+            ]
+          },
+          {
+            "id": "b1-u34-exe-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Dad bought to me a bicycle.",
+            "prompt": {
+              "cues": [
+                "Dad bought to me a bicycle."
+              ]
+            },
+            "answer": "Dad bought me a bicycle.",
+            "acceptedAnswers": [
+              "Dad bought me a bicycle."
+            ]
+          },
+          {
+            "id": "b1-u34-exe-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "Please show me to the manager.",
+            "prompt": {
+              "cues": [
+                "Please show me to the manager."
+              ]
+            },
+            "answer": "Please show the manager to me.",
+            "acceptedAnswers": [
+              "Please show the manager to me."
+            ]
+          },
+          {
+            "id": "b1-u34-exe-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "They offered to him a free ticket.",
+            "prompt": {
+              "cues": [
+                "They offered to him a free ticket."
+              ]
+            },
+            "answer": "They offered him a free ticket.",
+            "acceptedAnswers": [
+              "They offered him a free ticket."
+            ]
+          },
+          {
+            "id": "b1-u34-exe-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "I wrote to my cousin a long email.",
+            "prompt": {
+              "cues": [
+                "I wrote to my cousin a long email."
+              ]
+            },
+            "answer": "I wrote my cousin a long email.",
+            "acceptedAnswers": [
+              "I wrote my cousin a long email."
+            ]
+          },
+          {
+            "id": "b1-u34-exe-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "The teacher read to the students the story.",
+            "prompt": {
+              "cues": [
+                "The teacher read to the students the story."
+              ]
+            },
+            "answer": "The teacher read the students the story.",
+            "acceptedAnswers": [
+              "The teacher read the students the story."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u34-ex-f",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "F: Key word transformation",
+        "title": "F: Key word transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning.",
+        "legacyKey": "F",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u34-exf-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I bought my dad a magazine. **FOR**\nI bought a magazine ...... dad.",
+            "answer": "for my",
+            "acceptedAnswers": [
+              "for my"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exf-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She sent a message to Amy. **SENT**\nShe ...... message.",
+            "answer": "sent Amy a",
+            "acceptedAnswers": [
+              "sent Amy a"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exf-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you give this book to me? **ME**\nCould you ...... book?",
+            "answer": "give me this",
+            "acceptedAnswers": [
+              "give me this"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exf-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He cooked dinner for us. **COOKED**\nHe ...... dinner.",
+            "answer": "cooked us",
+            "acceptedAnswers": [
+              "cooked us"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exf-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The guide showed the paintings to the visitors. **SHOWED**\nThe guide ...... paintings.",
+            "answer": "showed the visitors the",
+            "acceptedAnswers": [
+              "showed the visitors the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u34-exf-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't send your address to strangers. **SEND**\nDon't ...... address.",
+            "answer": "send strangers your",
+            "acceptedAnswers": [
+              "send strangers your"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "unit": 5,
+  "coverage": [
+    {
+      "exerciseKey": "A",
+      "title": "A: Past perfect simple",
+      "legacyPattern": "phrasal-particle",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 7,
+      "v2Items": 7,
+      "notes": []
+    },
+    {
+      "exerciseKey": "B",
+      "title": "B: Choose the sentence with the same meaning",
+      "legacyPattern": "same-meaning-ab",
+      "formatType": "two_option_choice",
+      "screenMode": "per_item",
+      "legacyItems": 7,
+      "v2Items": 7,
+      "notes": []
+    },
+    {
+      "exerciseKey": "C",
+      "title": "C: Write sentences using the prompts",
+      "legacyPattern": "sentence-rewrite",
+      "formatType": "full_sentence_write",
+      "screenMode": "per_item",
+      "legacyItems": 5,
+      "v2Items": 5,
+      "notes": []
+    },
+    {
+      "exerciseKey": "D",
+      "title": "D: Past perfect continuous",
+      "legacyPattern": "phrasal-particle",
+      "formatType": "free_text_gap_fill",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "E",
+      "title": "E: Choose the correct answer",
+      "legacyPattern": "mc-standalone",
+      "formatType": "mc_4_option",
+      "screenMode": "per_item",
+      "legacyItems": 6,
+      "v2Items": 6,
+      "notes": []
+    },
+    {
+      "exerciseKey": "F",
+      "title": "F: Find the extra word",
+      "legacyPattern": "find-extra-word",
+      "formatType": "find_extra_word",
+      "screenMode": "per_item",
+      "legacyItems": 10,
+      "v2Items": 10,
+      "notes": []
+    }
+  ],
+  "stats": {
+    "legacyExerciseCount": 6,
+    "legacyItemCount": 41,
+    "v2ItemCount": 41,
+    "estimatedScreens": 41,
+    "formatTypes": [
+      "free_text_gap_fill",
+      "two_option_choice",
+      "full_sentence_write",
+      "mc_4_option",
+      "find_extra_word"
+    ]
+  }
+}

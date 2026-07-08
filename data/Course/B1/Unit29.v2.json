@@ -1,0 +1,567 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 10,
+  "unit": 29,
+  "type": "grammar",
+  "unitTitle": "[V2] Unit 29: Third conditional",
+  "unitSubtitle": "",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Unit 29: Third conditional"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": true,
+    "sourceFile": "data/Course/B1/Unit29.json",
+    "migratedAt": "2026-07-08",
+    "legacyExerciseCount": 4
+  },
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": true,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u29-theory",
+    "title": "Learn the rule",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": true
+    },
+    "cards": [
+      {
+        "id": "theory-card-1",
+        "title": "Third conditional",
+        "subtitle": "Third conditional",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "comparison_table",
+            "title": "Use",
+            "headers": [
+              "Use",
+              "Example"
+            ],
+            "rows": [
+              [
+                "To talk about imaginary past situations — things that did not happen — and to say what the result would have been",
+                [
+                  "If I **had remembered** her birthday, she **would have been** happier.",
+                  "If they **hadn't missed** the flight, they **would have arrived** on time.",
+                  "If we **had brought** more food, everyone **would have eaten** enough.",
+                  "If he **had studied** harder, he **wouldn't have failed** the course."
+                ]
+              ]
+            ]
+          },
+          {
+            "type": "chips",
+            "title": "Useful notes",
+            "items": [
+              "If you had trained more, you **might have won** the race. (uncertain outcome)",
+              "If she had borrowed my laptop, she **could have finished** the project earlier. (ability in the past)"
+            ]
+          },
+          {
+            "type": "remember_box",
+            "title": "Be careful",
+            "items": [
+              "The third conditional always refers to the past: **If I had brought my charger, my phone wouldn't have died.**",
+              "The second conditional uses past simple but refers to the present or future: **If I had more free time, I would travel more.**",
+              "Second conditional form: **if + past simple, would + bare infinitive** — used for imaginary or unlikely situations in the present or future: **If she lived nearby, we would meet more often.**"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "full_sentence_write",
+        "displayName": "Write the sentence",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "textarea",
+          "studentAction": "write_sentence",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u29-pilot-node-1",
+      "title": "Practice",
+      "shortTitle": "Practice",
+      "focus": [
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "full_sentence_write"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 16,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u29-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u29-exa-1",
+            "b1-u29-exa-2",
+            "b1-u29-exa-3",
+            "b1-u29-exa-4",
+            "b1-u29-exa-5",
+            "b1-u29-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u29-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u29-exb-1",
+            "b1-u29-exb-2",
+            "b1-u29-exb-3",
+            "b1-u29-exb-4",
+            "b1-u29-exb-5",
+            "b1-u29-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u29-ex-c",
+          "formatType": "full_sentence_write",
+          "sourceItemIds": [
+            "b1-u29-exc-1",
+            "b1-u29-exc-2",
+            "b1-u29-exc-3",
+            "b1-u29-exc-4",
+            "b1-u29-exc-5",
+            "b1-u29-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u29-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u29-exd-1",
+            "b1-u29-exd-2",
+            "b1-u29-exd-3",
+            "b1-u29-exd-4",
+            "b1-u29-exd-5",
+            "b1-u29-exd-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 24,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u29-ex-a",
+      "b1-u29-ex-b",
+      "b1-u29-ex-c",
+      "b1-u29-ex-d"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u29-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Complete the third conditional sentences",
+        "title": "A: Complete the third conditional sentences",
+        "instructions": "Use the correct form of the verbs in brackets.",
+        "studentInstruction": "Use the correct form of the verbs in brackets.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u29-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If I ...... (remember) his birthday, I ...... (send) him a card.",
+            "answer": "had remembered, would have sent",
+            "acceptedAnswers": [
+              "had remembered, would have sent"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If they ...... (book) earlier, they ...... (find) cheaper tickets.",
+            "answer": "had booked, would have found",
+            "acceptedAnswers": [
+              "had booked, would have found"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If we ...... (not forget) the camera, we ...... (take) more photos.",
+            "answer": "hadn't forgotten, would have taken",
+            "acceptedAnswers": [
+              "hadn't forgotten, would have taken"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If she ...... (listen) to the directions, she ...... (not get) lost.",
+            "answer": "had listened, wouldn't have got",
+            "acceptedAnswers": [
+              "had listened, wouldn't have got"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If he ...... (wear) warmer clothes, he ...... (not catch) a cold.",
+            "answer": "had worn, wouldn't have caught",
+            "acceptedAnswers": [
+              "had worn, wouldn't have caught"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If you ...... (save) your work, you ...... (not lose) everything.",
+            "answer": "had saved, wouldn't have lost",
+            "acceptedAnswers": [
+              "had saved, wouldn't have lost"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u29-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Choose would have, could have or might have",
+        "title": "B: Choose would have, could have or might have",
+        "instructions": "Complete each sentence with the best option.",
+        "studentInstruction": "Complete each sentence with the best option.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u29-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If I had seen your message earlier, I ...... replied immediately.",
+            "answer": "would have",
+            "acceptedAnswers": [
+              "would have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If we had brought a map, we ...... avoided getting lost.",
+            "answer": "could have",
+            "acceptedAnswers": [
+              "could have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If she had gone to the doctor sooner, she ...... recovered faster.",
+            "answer": "might have",
+            "acceptedAnswers": [
+              "might have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If they had left before rush hour, they ...... arrived on time.",
+            "answer": "would have",
+            "acceptedAnswers": [
+              "would have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If I had borrowed your notes, I ...... studied more effectively.",
+            "answer": "could have",
+            "acceptedAnswers": [
+              "could have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If he had accepted the invitation, he ...... enjoyed the party.",
+            "answer": "might have",
+            "acceptedAnswers": [
+              "might have"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u29-ex-c",
+        "type": "exercise",
+        "exerciseType": "full_sentence_write",
+        "exerciseTypeName": "C: Error correction",
+        "title": "C: Error correction",
+        "instructions": "Each sentence has one mistake. Write the correct form.",
+        "studentInstruction": "Each sentence has one mistake. Write the correct form.",
+        "legacyKey": "C",
+        "legacyPattern": "sentence-rewrite",
+        "interaction": {
+          "formatType": "full_sentence_write"
+        },
+        "items": [
+          {
+            "id": "b1-u29-exc-1",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "If I would had more time, I would have helped you.",
+            "prompt": {
+              "cues": [
+                "If I would had more time, I would have helped you."
+              ]
+            },
+            "answer": "If I had had more time, I would have helped you.",
+            "acceptedAnswers": [
+              "If I had had more time, I would have helped you."
+            ]
+          },
+          {
+            "id": "b1-u29-exc-2",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "If she had drank less coffee, she would have slept better.",
+            "prompt": {
+              "cues": [
+                "If she had drank less coffee, she would have slept better."
+              ]
+            },
+            "answer": "If she had drunk less coffee, she would have slept better.",
+            "acceptedAnswers": [
+              "If she had drunk less coffee, she would have slept better."
+            ]
+          },
+          {
+            "id": "b1-u29-exc-3",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "If we had took a taxi, we would have arrived earlier.",
+            "prompt": {
+              "cues": [
+                "If we had took a taxi, we would have arrived earlier."
+              ]
+            },
+            "answer": "If we had taken a taxi, we would have arrived earlier.",
+            "acceptedAnswers": [
+              "If we had taken a taxi, we would have arrived earlier."
+            ]
+          },
+          {
+            "id": "b1-u29-exc-4",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "If they hadn't lose the address, they could have found the house.",
+            "prompt": {
+              "cues": [
+                "If they hadn't lose the address, they could have found the house."
+              ]
+            },
+            "answer": "If they hadn't lost the address, they could have found the house.",
+            "acceptedAnswers": [
+              "If they hadn't lost the address, they could have found the house."
+            ]
+          },
+          {
+            "id": "b1-u29-exc-5",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "If he had trained harder, he would won the competition.",
+            "prompt": {
+              "cues": [
+                "If he had trained harder, he would won the competition."
+              ]
+            },
+            "answer": "If he had trained harder, he would have won the competition.",
+            "acceptedAnswers": [
+              "If he had trained harder, he would have won the competition."
+            ]
+          },
+          {
+            "id": "b1-u29-exc-6",
+            "formatType": "full_sentence_write",
+            "displayPrompt": "If you had reminded me, I might helped you.",
+            "prompt": {
+              "cues": [
+                "If you had reminded me, I might helped you."
+              ]
+            },
+            "answer": "If you had reminded me, I might have helped you.",
+            "acceptedAnswers": [
+              "If you had reminded me, I might have helped you."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u29-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Rewrite with the third conditional",
+        "title": "D: Rewrite with the third conditional",
+        "instructions": "Complete the second sentence so that it has a similar meaning.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning.",
+        "legacyKey": "D",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u29-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I forgot my passport, so I couldn't board the plane. **IF**\nIf I ...... my passport, I could have boarded the plane.",
+            "answer": "hadn't forgotten",
+            "acceptedAnswers": [
+              "hadn't forgotten"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She didn't charge her phone, so it turned off. **HAD**\nIf she ...... her phone, it wouldn't have turned off.",
+            "answer": "had charged",
+            "acceptedAnswers": [
+              "had charged"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We didn't reserve a table, so we didn't get a seat. **WOULD**\nIf we had reserved a table, we ...... a seat.",
+            "answer": "would have got",
+            "acceptedAnswers": [
+              "would have got"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Tom didn't revise enough, so he failed the test. **COULD**\nIf Tom had revised more, he ...... the test.",
+            "answer": "could have passed",
+            "acceptedAnswers": [
+              "could have passed"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It snowed heavily, so the match was cancelled. **PLAYED**\nIf it hadn't snowed heavily, they ...... the match.",
+            "answer": "would have played",
+            "acceptedAnswers": [
+              "would have played"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u29-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I stayed up too late, so I felt exhausted. **FELT**\nIf I hadn't stayed up so late, I ...... exhausted.",
+            "answer": "wouldn't have felt",
+            "acceptedAnswers": [
+              "wouldn't have felt"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}
