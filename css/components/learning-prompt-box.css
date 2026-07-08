@@ -1,4 +1,4 @@
-/* Learning — enunciados y frases alineados a la izquierda con margen lateral */
+/* Learning — instructions and prompt sentences aligned left with side inset */
 
 :root {
   --learning-prompt-inset: 16px;
@@ -45,7 +45,7 @@
   display: block;
 }
 
-/* Bubble de contexto (frase con mascota) — mismo inset lateral */
+/* Context bubble (sentence with mascot) — same side inset */
 .course-center--lesson-focus .cu-lesson-prompt {
   width: calc(100% - 2 * var(--learning-prompt-inset));
   margin-left: var(--learning-prompt-inset);

@@ -1304,25 +1304,31 @@ button.sp-example-line.sp-speakable {
 
 .sp-hint-word {
   display: inline-block;
-  padding: 1px 6px;
-  background: rgba(139, 92, 246, 0.09);
-  border: 1px solid rgba(139, 92, 246, 0.22);
-  border-radius: 5px;
-  color: #6d28d9;
-  font-size: 0.82em;
-  font-weight: 600;
+  padding: 2px 9px;
+  margin: 0 2px;
+  background: var(--white);
+  border: 2px solid #e2e8f4;
+  border-bottom-width: 3px;
+  border-bottom-color: #dce3f0;
+  border-radius: 999px;
+  box-shadow: 0 2px 0 #dce3f0;
+  color: var(--text-dark);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85em;
+  font-weight: 700;
   font-style: normal;
-  margin: 0 1px;
-  vertical-align: baseline;
   line-height: 1.35;
+  vertical-align: baseline;
+  white-space: nowrap;
 }
 
 .sp-hint-slash-sep {
-  color: #64748b;
-  font-weight: 600;
+  color: #94a3b8;
+  font-weight: 700;
   user-select: none;
-  padding: 0 1px;
+  padding: 0 2px;
   vertical-align: baseline;
+  font-size: 0.9em;
 }
 
 .sp-gap-inline-input {
