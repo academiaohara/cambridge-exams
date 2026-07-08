@@ -138,19 +138,29 @@
     });
   }
 
-  function buildPassageGapField(gapNum) {
+  function buildPassageGapField(gapNum, options) {
+    options = options || {};
+    var inputCls = 'sp-gap-inline-input sp-passage-gap-input';
+    if (options.gapInputStyle === 'underline_expand') {
+      inputCls += ' sp-gap-underline-input';
+    }
+    var verbHtml = options.showVerbSlot
+      ? '<span class="sp-passage-gap-verb" data-passage-gap-verb="' + gapNum + '" hidden aria-hidden="true"></span>'
+      : '';
     return '<span class="sp-passage-gap-wrap sp-inline-gap-group" data-passage-gap="' + gapNum + '">' +
       '<span class="sp-passage-gap-num">' + gapNum + '</span>' +
-      '<input type="text" class="sp-gap-inline-input sp-passage-gap-input" data-passage-gap="' + gapNum + '" ' +
+      '<input type="text" class="' + inputCls + '" data-passage-gap="' + gapNum + '" ' +
       'autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Gap ' + gapNum + '">' +
+      verbHtml +
     '</span>';
   }
 
-  function renderPassageGapHtml(passage) {
+  function renderPassageGapHtml(passage, options) {
+    options = options || {};
     return esc(passage)
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(PASSAGE_GAP_MARK_RE, function(_, num) {
-        return buildPassageGapField(num);
+        return buildPassageGapField(num, options);
       })
       .replace(/\n/g, '<br>');
   }
@@ -185,6 +195,391 @@
     });
     if (inputs.length) {
       setTimeout(function() { inputs[0].focus(); }, 0);
+    }
+  }
+
+  function resizeUnderlineGapInput(input) {
+    if (!input) return;
+    var minCh = 2;
+    var val = input.value || '';
+    var len = Math.max(minCh, val.length + 1);
+    input.style.width = len + 'ch';
+  }
+
+  function buildPassageGapVerbCounts(gaps) {
+    var counts = {};
+    (gaps || []).forEach(function(gap) {
+      var verb = gap.baseVerb;
+      if (!verb) return;
+      counts[verb] = (counts[verb] || 0) + 1;
+    });
+    return counts;
+  }
+
+  function syncPassageGapStateToScreen(screen, root) {
+    if (!screen || !root || !root._passageGapState) return;
+    screen._passageGapState = JSON.parse(JSON.stringify(root._passageGapState));
+  }
+
+  function getPassageGapWrap(root, gapNumber) {
+    return root.querySelector('.sp-passage-gap-wrap[data-passage-gap="' + gapNumber + '"]');
+  }
+
+  function initPassageGapSequentialState(root, screen) {
+    var p = screen.payload || {};
+    var gaps = p.gaps || [];
+    var saved = screen._passageGapState || {};
+    var completed = saved.completed || {};
+    var assignments = saved.assignments || {};
+    var activeGap = saved.activeGap;
+
+    if (activeGap == null) {
+      for (var i = 0; i < gaps.length; i++) {
+        var gNum = gaps[i].gapNumber;
+        if (!completed[gNum]) {
+          activeGap = gNum;
+          break;
+        }
+      }
+      if (activeGap == null && gaps.length) activeGap = gaps[gaps.length - 1].gapNumber;
+    }
+
+    root._passageGapState = {
+      activeGap: activeGap,
+      completed: completed,
+      assignments: assignments,
+      verbCounts: buildPassageGapVerbCounts(gaps),
+      verbUsed: {}
+    };
+    gaps.forEach(function(gap) {
+      var gNum = gap.gapNumber;
+      var verb = (completed[gNum] && completed[gNum].verb) || assignments[gNum];
+      if (verb) {
+        root._passageGapState.verbUsed[verb] = (root._passageGapState.verbUsed[verb] || 0) + 1;
+      }
+    });
+    syncPassageGapStateToScreen(screen, root);
+  }
+
+  function updatePassageGapWordBank(root) {
+    var state = root._passageGapState;
+    if (!state) return;
+    root.querySelectorAll('.sp-passage-wordbank-chip--selectable').forEach(function(chip) {
+      var word = chip.getAttribute('data-word');
+      var maxUses = state.verbCounts[word] || 0;
+      var used = state.verbUsed[word] || 0;
+      var depleted = maxUses > 0 && used >= maxUses;
+      chip.classList.toggle('sp-passage-wordbank-chip--used', depleted);
+      chip.disabled = depleted;
+      chip.setAttribute('aria-disabled', depleted ? 'true' : 'false');
+    });
+  }
+
+  function setPassageGapVerbLabel(wrap, verb) {
+    var label = wrap && wrap.querySelector('.sp-passage-gap-verb');
+    if (!label) return;
+    if (verb) {
+      label.textContent = verb;
+      label.hidden = false;
+      label.removeAttribute('aria-hidden');
+    } else {
+      label.textContent = '';
+      label.hidden = true;
+      label.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  function updatePassageGapUI(root, screen) {
+    var p = screen.payload || {};
+    var gaps = p.gaps || [];
+    var state = root._passageGapState;
+    if (!state) return;
+
+    gaps.forEach(function(gap) {
+      var wrap = getPassageGapWrap(root, gap.gapNumber);
+      if (!wrap) return;
+      var input = wrap.querySelector('.sp-passage-gap-input');
+      var isCompleted = !!state.completed[gap.gapNumber];
+      var isActive = gap.gapNumber === state.activeGap && !isCompleted;
+      var isFuture = !isCompleted && !isActive;
+
+      wrap.classList.remove(
+        'sp-passage-gap-wrap--active',
+        'sp-passage-gap-wrap--future',
+        'sp-passage-gap-wrap--done',
+        'sp-passage-gap--correct',
+        'sp-passage-gap--incorrect'
+      );
+
+      if (isCompleted) {
+        wrap.classList.add('sp-passage-gap-wrap--done', 'sp-passage-gap--correct');
+        var done = state.completed[gap.gapNumber];
+        if (input) {
+          input.value = done.answer || '';
+          input.disabled = true;
+          input.readOnly = true;
+          resizeUnderlineGapInput(input);
+        }
+        setPassageGapVerbLabel(wrap, done.verb || state.assignments[gap.gapNumber] || gap.baseVerb);
+      } else if (isActive) {
+        wrap.classList.add('sp-passage-gap-wrap--active');
+        if (input) {
+          input.disabled = false;
+          input.readOnly = false;
+          if (state.assignments[gap.gapNumber]) {
+            setPassageGapVerbLabel(wrap, state.assignments[gap.gapNumber]);
+          }
+          resizeUnderlineGapInput(input);
+        }
+      } else if (isFuture) {
+        wrap.classList.add('sp-passage-gap-wrap--future');
+        if (input) {
+          input.value = '';
+          input.disabled = true;
+          input.readOnly = true;
+          resizeUnderlineGapInput(input);
+        }
+        setPassageGapVerbLabel(wrap, '');
+      }
+    });
+
+    updatePassageGapWordBank(root);
+  }
+
+  function assignVerbToPassageGap(root, screen, gapNumber, verb, onChange) {
+    var state = root._passageGapState;
+    if (!state || gapNumber !== state.activeGap) return false;
+    if (state.completed[gapNumber]) return false;
+
+    var prevVerb = state.assignments[gapNumber];
+    if (prevVerb) {
+      state.verbUsed[prevVerb] = Math.max(0, (state.verbUsed[prevVerb] || 0) - 1);
+    }
+
+    state.assignments[gapNumber] = verb;
+    state.verbUsed[verb] = (state.verbUsed[verb] || 0) + 1;
+
+    var wrap = getPassageGapWrap(root, gapNumber);
+    setPassageGapVerbLabel(wrap, verb);
+    updatePassageGapWordBank(root);
+    syncPassageGapStateToScreen(screen, root);
+
+    var input = wrap && wrap.querySelector('.sp-passage-gap-input');
+    if (input && !root.classList.contains('sp-screen--locked')) {
+      setTimeout(function() { input.focus(); }, 0);
+    }
+    if (onChange) onChange();
+    return true;
+  }
+
+  function isPassageGapSequentialReady(root, screen) {
+    var p = screen.payload || {};
+    if (!p.sequentialGaps) return allGapInputsFilled(root);
+
+    var state = root._passageGapState;
+    if (!state || state.activeGap == null) return false;
+    if (state.completed[state.activeGap]) return false;
+
+    var wrap = getPassageGapWrap(root, state.activeGap);
+    if (!wrap) return false;
+    var input = wrap.querySelector('.sp-passage-gap-input');
+    var hasInput = input && !!input.value.trim();
+    if (p.requireWordBankAssignment !== false) {
+      return hasInput && !!state.assignments[state.activeGap];
+    }
+    return hasInput;
+  }
+
+  function bindPassageGapFill(root, screen, onChange) {
+    var p = screen.payload || {};
+    if (!p.sequentialGaps) {
+      bindGapInputs(root, onChange);
+      return;
+    }
+
+    initPassageGapSequentialState(root, screen);
+    updatePassageGapUI(root, screen);
+
+    function tryAssignWord(word) {
+      if (root.classList.contains('sp-screen--locked')) return;
+      var state = root._passageGapState;
+      if (!state || state.activeGap == null) return;
+      assignVerbToPassageGap(root, screen, state.activeGap, word, onChange);
+    }
+
+    root.querySelectorAll('.sp-passage-wordbank-chip--selectable').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        if (chip.disabled) return;
+        tryAssignWord(chip.getAttribute('data-word'));
+      });
+      chip.addEventListener('dragstart', function(e) {
+        if (chip.disabled) {
+          e.preventDefault();
+          return;
+        }
+        e.dataTransfer.setData('text/plain', chip.getAttribute('data-word') || '');
+        chip.classList.add('sp-passage-wordbank-chip--dragging');
+      });
+      chip.addEventListener('dragend', function() {
+        chip.classList.remove('sp-passage-wordbank-chip--dragging');
+      });
+    });
+
+    bindPassageGapActiveInput(root, screen, onChange);
+
+    var activeWrap = getPassageGapWrap(root, root._passageGapState.activeGap);
+    var activeInput = activeWrap && activeWrap.querySelector('.sp-passage-gap-input');
+    if (activeInput && !activeInput.disabled) {
+      setTimeout(function() { activeInput.focus(); }, 0);
+    }
+  }
+
+  function processPassageGapSequentialCheck(root, screen) {
+    var p = screen.payload || {};
+    var gaps = p.gaps || [];
+    var state = root._passageGapState;
+    if (!state || state.activeGap == null) {
+      return { handled: true, noop: true };
+    }
+
+    var gapNumber = state.activeGap;
+    var gap = null;
+    for (var i = 0; i < gaps.length; i++) {
+      if (gaps[i].gapNumber === gapNumber) {
+        gap = gaps[i];
+        break;
+      }
+    }
+    if (!gap) return { handled: true, noop: true };
+
+    var wrap = getPassageGapWrap(root, gapNumber);
+    var input = wrap && wrap.querySelector('.sp-passage-gap-input');
+    var given = input ? input.value.trim() : '';
+    if (!given || (p.requireWordBankAssignment !== false && !state.assignments[gapNumber])) {
+      return { handled: true, noop: true };
+    }
+
+    var ok = norm.answersMatch(given, gap.expectedAnswer);
+    var remaining = gaps.filter(function(g) { return !state.completed[g.gapNumber] && g.gapNumber !== gapNumber; });
+
+    wrap.classList.toggle('sp-passage-gap--correct', ok);
+    wrap.classList.toggle('sp-passage-gap--incorrect', !ok);
+
+    if (ok) {
+      state.completed[gapNumber] = {
+        answer: given,
+        verb: state.assignments[gapNumber] || gap.baseVerb || ''
+      };
+      syncPassageGapStateToScreen(screen, root);
+    }
+
+    return {
+      handled: true,
+      correct: ok,
+      partial: ok && remaining.length > 0,
+      allDone: ok && remaining.length === 0,
+      lifeLoss: ok ? 0 : 1,
+      userAnswer: given,
+      correctAnswer: gap.expectedAnswer,
+      explanation: p.explanation || '',
+      _passageGapResult: true
+    };
+  }
+
+  function advancePassageGapAfterFeedback(root, screen) {
+    var p = screen.payload || {};
+    var gaps = p.gaps || [];
+    var state = root._passageGapState;
+    if (!state) return;
+
+    var nextGap = null;
+    for (var i = 0; i < gaps.length; i++) {
+      if (!state.completed[gaps[i].gapNumber]) {
+        nextGap = gaps[i].gapNumber;
+        break;
+      }
+    }
+    state.activeGap = nextGap;
+    syncPassageGapStateToScreen(screen, root);
+    updatePassageGapUI(root, screen);
+
+    var nextWrap = nextGap != null ? getPassageGapWrap(root, nextGap) : null;
+    var nextInput = nextWrap && nextWrap.querySelector('.sp-passage-gap-input');
+    if (nextInput && !nextInput.disabled) {
+      setTimeout(function() { nextInput.focus(); }, 0);
+    }
+
+    bindPassageGapActiveInput(root, screen, function() {});
+  }
+
+  function bindPassageGapActiveInput(root, screen, onChange) {
+    var state = root._passageGapState;
+    if (!state) return;
+
+    if (!root._passageGapInputDelegation) {
+      root._passageGapInputDelegation = true;
+      root.addEventListener('input', function(e) {
+        if (!e.target.classList.contains('sp-passage-gap-input')) return;
+        var wrap = e.target.closest('.sp-passage-gap-wrap');
+        if (!wrap || !wrap.classList.contains('sp-passage-gap-wrap--active')) return;
+        resizeUnderlineGapInput(e.target);
+        if (onChange) onChange();
+      });
+      root.addEventListener('keydown', function(e) {
+        if (e.key !== 'Enter' || root.classList.contains('sp-screen--locked')) return;
+        if (!e.target.classList.contains('sp-passage-gap-input')) return;
+        var wrap = e.target.closest('.sp-passage-gap-wrap');
+        if (!wrap || !wrap.classList.contains('sp-passage-gap-wrap--active')) return;
+        e.preventDefault();
+        var actionBtn = document.getElementById('sp-action-btn');
+        if (actionBtn && !actionBtn.disabled) actionBtn.click();
+      });
+    }
+
+    var activeWrap = getPassageGapWrap(root, state.activeGap);
+    if (!activeWrap) return;
+
+    if (!root._passageGapDropDelegation) {
+      root._passageGapDropDelegation = true;
+      root.addEventListener('dragover', function(e) {
+        var wrap = e.target.closest('.sp-passage-gap-wrap--active');
+        if (!wrap) return;
+        e.preventDefault();
+        wrap.classList.add('sp-passage-gap-wrap--dragover');
+      });
+      root.addEventListener('dragleave', function(e) {
+        var wrap = e.target.closest('.sp-passage-gap-wrap--active');
+        if (!wrap) return;
+        wrap.classList.remove('sp-passage-gap-wrap--dragover');
+      });
+      root.addEventListener('drop', function(e) {
+        var wrap = e.target.closest('.sp-passage-gap-wrap--active');
+        if (!wrap) return;
+        e.preventDefault();
+        wrap.classList.remove('sp-passage-gap-wrap--dragover');
+        var word = e.dataTransfer.getData('text/plain');
+        if (!word || !root._passageGapState) return;
+        assignVerbToPassageGap(root, screen, root._passageGapState.activeGap, word, onChange);
+      });
+    }
+
+    var inp = activeWrap.querySelector('.sp-passage-gap-input');
+    if (inp) resizeUnderlineGapInput(inp);
+  }
+
+  function resumePassageGapAfterFeedback(root, screen) {
+    var state = root._passageGapState;
+    if (!state) return;
+    var wrap = getPassageGapWrap(root, state.activeGap);
+    if (wrap) {
+      wrap.classList.remove('sp-passage-gap--incorrect');
+    }
+    updatePassageGapUI(root, screen);
+    bindPassageGapActiveInput(root, screen, function() {});
+    var activeWrap = getPassageGapWrap(root, state.activeGap);
+    var input = activeWrap && activeWrap.querySelector('.sp-passage-gap-input');
+    if (input && !input.disabled) {
+      setTimeout(function() { input.focus(); }, 0);
     }
   }
 
@@ -455,16 +850,28 @@
 
   function renderPassageGapFill(screen) {
     var p = screen.payload || {};
-    var passageHtml = renderPassageGapHtml(p.passage || '');
-    var html = '<div class="sp-screen sp-screen--passage-gap" data-format="passage_gap_fill">';
+    var isSequential = !!p.sequentialGaps;
+    var fieldOpts = {
+      gapInputStyle: p.gapInputStyle,
+      showVerbSlot: isSequential && p.requireWordBankAssignment !== false
+    };
+    var passageHtml = renderPassageGapHtml(p.passage || '', fieldOpts);
+    var html = '<div class="sp-screen sp-screen--passage-gap' +
+      (isSequential ? ' sp-screen--passage-sequential' : '') +
+      '" data-format="passage_gap_fill">';
     if (p.wordBank && p.wordBank.length) {
       html += '<div class="sp-passage-wordbank" aria-label="Word bank">';
       p.wordBank.forEach(function(word) {
-        html += '<span class="sp-passage-wordbank-chip">' + esc(word) + '</span>';
+        if (isSequential) {
+          html += '<button type="button" class="sp-passage-wordbank-chip sp-passage-wordbank-chip--selectable" ' +
+            'draggable="true" data-word="' + esc(word) + '">' + esc(word) + '</button>';
+        } else {
+          html += '<span class="sp-passage-wordbank-chip">' + esc(word) + '</span>';
+        }
       });
       html += '</div>';
     }
-    html += '<div class="sp-passage-card sp-passage-card--gap-fill" id="sp-passage-text">' + passageHtml + '</div>';
+    html += '<div class="sp-passage-card sp-passage-card--gap-fill sp-passage-card--justified" id="sp-passage-text">' + passageHtml + '</div>';
     html += '</div>';
     return html;
   }
@@ -996,7 +1403,7 @@
     }
 
     if (format === 'passage_gap_fill') {
-      bindGapInputs(root, onChange);
+      bindPassageGapFill(root, screen, onChange);
     }
   }
 
@@ -1679,7 +2086,7 @@
       return allGapInputsFilled(root);
     }
     if (f === 'passage_gap_fill') {
-      return allGapInputsFilled(root);
+      return isPassageGapSequentialReady(root, screen);
     }
     if (f === 'full_sentence_write') {
       var ta = root.querySelector('#sp-sentence-input');
@@ -1965,6 +2372,10 @@
     processPassageHuntCounterCheck: processPassageHuntCounterCheck,
     resumeHuntCounterAfterFeedback: resumeHuntCounterAfterFeedback,
     commitHuntMarkAfterFeedback: commitHuntMarkAfterFeedback,
+    processPassageGapSequentialCheck: processPassageGapSequentialCheck,
+    advancePassageGapAfterFeedback: advancePassageGapAfterFeedback,
+    resumePassageGapAfterFeedback: resumePassageGapAfterFeedback,
+    isPassageGapSequentialReady: isPassageGapSequentialReady,
     commitHuntFixAfterFeedback: commitHuntFixAfterFeedback
   };
 })();

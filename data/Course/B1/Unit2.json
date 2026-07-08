@@ -1459,7 +1459,7 @@
           "arrived",
           "rode",
           "said",
-          "were travelling",
+          "were riding",
           "were playing",
           "were laughing",
           "walked",
@@ -1467,11 +1467,30 @@
           "was eating",
           "started"
         ],
+        "gapVerbs": [
+          "be",
+          "pack",
+          "wait",
+          "rain",
+          "arrive",
+          "ride",
+          "say",
+          "ride",
+          "play",
+          "laugh",
+          "walk",
+          "fall",
+          "eat",
+          "start"
+        ],
         "interaction": {
           "formatType": "passage_gap_fill",
           "gapDisplay": "numbered_inline_input",
           "showWordBank": true,
-          "userWrites": "missing_conjugated_form_only"
+          "userWrites": "missing_conjugated_form_only",
+          "sequentialGaps": true,
+          "requireWordBankAssignment": true,
+          "gapInputStyle": "underline_expand"
         }
       },
       {

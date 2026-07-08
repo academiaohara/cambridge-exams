@@ -661,6 +661,9 @@
         return p.instruction || p.studentInstruction || 'Find and mark an error in the passage.';
       }
       case 'passage_gap_fill':
+        if (p.sequentialGaps) {
+          return p.instruction || 'Select a verb from the box, write its correct form, and confirm each gap one by one.';
+        }
         return p.instruction || 'Complete the passage using the verbs in the box.';
       case 'guided_error_choice':
         return p.instruction || 'Choose the correct form for each error.';
@@ -802,6 +805,14 @@
       }
     }
 
+    if (screen && screen.formatType === 'passage_gap_fill' &&
+        screen.payload && screen.payload.sequentialGaps && screenRoot) {
+      if (!lessonState.awaitingContinue) {
+        handlePassageGapSequentialCheck(screenRoot, screen);
+        return;
+      }
+    }
+
     if (screen && screen.formatType === 'guided_error_choice' && screenRoot && !lessonState.awaitingContinue) {
       handleGuidedErrorCheck(screenRoot, screen);
       return;
@@ -812,6 +823,50 @@
       return;
     }
     handleCheck();
+  }
+
+  function handlePassageGapSequentialCheck(screenRoot, screen) {
+    var result = renderer.processPassageGapSequentialCheck(screenRoot, screen);
+    if (!result.handled) {
+      handleCheck();
+      return;
+    }
+    if (result.noop) return;
+
+    screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
+
+    if (!result.correct && result.lifeLoss > 0) {
+      var lost = lessonState.hearts.loseLife(result.lifeLoss, {
+        screenId: screen.screenId,
+        itemId: screen.itemId,
+        maxLifeLossPerScreen: screen.maxLifeLossPerScreen
+      });
+      if (lost) lessonState.sessionLivesLost += result.lifeLoss;
+    }
+
+    if (result.correct && result.allDone) {
+      lessonState.queue.removeCompletedItem(screen);
+      lessonState.sessionCorrect++;
+    } else if (!result.correct) {
+      var failCount = lessonState.queue.incrementFailure(screen);
+      var globalRules = (lessonState.unitData.practiceConfig && lessonState.unitData.practiceConfig.globalRules) || {};
+      if (globalRules.failedItemsReturnToQueue !== false) {
+        lessonState.queue.returnFailedItemToQueue(screen);
+      }
+      if (failCount >= (globalRules.maxRepeatedFailuresBeforeFallback || 2)) {
+        var converted = lessonState.queue.applyFallbackIfNeeded(screen);
+        if (converted._isFallback) {
+          lessonState.queue.returnFailedItemToQueue(converted, 'front');
+          screen = converted;
+          lessonState.currentScreen = converted;
+        }
+      }
+    }
+
+    lessonState._lastHuntResult = result;
+    screenRoot.classList.add('sp-screen--locked');
+    showFeedback(result, result.correct);
+    updateSessionHeader();
   }
 
   function handleHuntCounterCheck(screenRoot, screen) {
@@ -937,6 +992,26 @@
     if (lastResult && lastResult._switchToFallback) {
       renderCurrentScreen();
       return;
+    }
+
+    if (screen && screen.formatType === 'passage_gap_fill' &&
+        screen.payload && screen.payload.sequentialGaps && screenRoot && lastResult) {
+      if (lastResult.correct && lastResult.partial) {
+        renderer.advancePassageGapAfterFeedback(screenRoot, screen);
+        screenRoot.classList.remove('sp-screen--locked');
+        setScreenInputsLocked(false);
+        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+        updateSessionHeader();
+        return;
+      }
+      if (!lastResult.correct && lastResult._passageGapResult) {
+        renderer.resumePassageGapAfterFeedback(screenRoot, screen);
+        screenRoot.classList.remove('sp-screen--locked');
+        setScreenInputsLocked(false);
+        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+        updateSessionHeader();
+        return;
+      }
     }
 
     if (screen && screen.formatType === 'passage_error_hunt_counter' && screenRoot && lastResult) {
