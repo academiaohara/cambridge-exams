@@ -637,10 +637,13 @@
         return p.instruction || 'Choose the correct option to complete the sentence.';
       case 'free_text_gap_fill':
       case 'conjugation_gap_fill':
+      case 'word_bank_gap_fill':
       case 'preselected_verb_gap_fill':
         return p.instruction || (p.verbPrompt || p.preselectedVerb
           ? 'Use the correct form of the highlighted word.'
-          : 'Complete the sentence with the correct word.');
+          : (p.wordBank && p.wordBank.length
+            ? 'Complete the sentence using a word from the box.'
+            : 'Complete the sentence with the correct word.'));
       case 'full_sentence_write':
         return p.instruction || 'Write the full sentence.';
       case 'word_order_tiles':

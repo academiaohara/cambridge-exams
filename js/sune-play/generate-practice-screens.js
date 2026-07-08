@@ -40,6 +40,7 @@
   function normalizeFormatType(formatType) {
     switch (formatType) {
       case 'conjugation_gap_fill': return 'free_text_gap_fill';
+      case 'word_bank_gap_fill': return 'word_bank_gap_fill';
       case 'marked_error_gap_correction': return 'error_correction';
       case 'verb_tile_conjugation_gap': return 'verb_bank_two_step';
       case 'passage_error_hunt_counter': return 'passage_error_hunt_single';
@@ -620,6 +621,7 @@
         });
 
       case 'free_text_gap_fill':
+      case 'word_bank_gap_fill':
         return {
           sentence: item.sentence || '',
           verbPrompt: item.verbPrompt || '',
@@ -627,7 +629,8 @@
           acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
           explanation: item.explanation || '',
           completedSentence: (item.sentence || '').replace(GAP_RE, item.answer || ''),
-          instruction: exercise.instructions || ''
+          instruction: exercise.instructions || '',
+          wordBank: exercise.words || exercise.wordBank || item.wordBank || []
         };
 
       case 'full_sentence_write':
@@ -947,6 +950,9 @@
         }
 
         var formatType = rule.formatType;
+        if (formatType === 'free_text_gap_fill' && (exercise.words || exercise.wordBank || []).length) {
+          formatType = 'word_bank_gap_fill';
+        }
         var payload = itemToPayload(formatType, item, exercise, rule);
         var screenId = buildScreenId(nodeId, exerciseId, itemId, formatType);
 

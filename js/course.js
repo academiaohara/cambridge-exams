@@ -526,12 +526,30 @@
       return indexData;
     },
 
+    _sanitizeCourseDisplayTitle: function(title) {
+      if (!title) return '';
+      return String(title)
+        .replace(/^\[(?:V2|TEST|PILOT)\]\s*/i, '')
+        .replace(/\s*\(v2\)\s*$/i, '')
+        .trim();
+    },
+
     _getCoursePathItems: function(section, indexData) {
       var learningTypes = ['grammar', 'vocabulary', 'review', 'progress_test'];
       var vocabTypes = ['vocabulary'];
       var allowed = section === 'vocabulary' ? vocabTypes : learningTypes;
+      var self = this;
       return (indexData.items || []).filter(function(item) {
+        if (!item || !item.id) return false;
+        if (/-v2-test$/.test(item.id) || /-v2-pilot$/.test(item.id) || /-v2$/.test(item.id)) {
+          return false;
+        }
         return allowed.indexOf(item.type) !== -1;
+      }).map(function(item) {
+        if (!item.title) return item;
+        var cleanTitle = self._sanitizeCourseDisplayTitle(item.title);
+        if (cleanTitle === item.title) return item;
+        return Object.assign({}, item, { title: cleanTitle });
       });
     },
 
@@ -1586,7 +1604,7 @@
         var unitNum = item.unit || item.id;
         var unitLabel = 'Unit ' + unitNum;
         if (item.title) {
-          var t = item.title;
+          var t = self._sanitizeCourseDisplayTitle(item.title);
           if (t.indexOf('Unit') === 0) {
             unitLabel = t;
           } else if (t.indexOf('Vocabulary:') === 0) {
@@ -1901,7 +1919,7 @@
         html += '<div class="cu-unit-section">';
         html += '<div class="cu-unit-section-header">' +
           '<span style="color:' + typeColor + '">' + _mi(typeIcon) + '</span>' +
-          '<span class="cu-us-title">' + self._escapeHTML(item.title) + '</span>' +
+          '<span class="cu-us-title">' + self._escapeHTML(self._sanitizeCourseDisplayTitle(item.title)) + '</span>' +
           (isDone ? '<span class="cu-us-done">' + _mi('check_circle') + '</span>' : '') +
         '</div>';
 
@@ -2139,7 +2157,7 @@
         if (_idxItem) {
           if (_idxItem.block != null) unitData.block = _idxItem.block;
           if (_idxItem.title && (unitData.type === 'review' || unitData.type === 'progress_test')) {
-            unitData.unitTitle = unitData.unitTitle || _idxItem.title;
+            unitData.unitTitle = self._sanitizeCourseDisplayTitle(unitData.unitTitle || _idxItem.title);
           }
         }
       }
@@ -2192,7 +2210,7 @@
             ? '<button type="button" class="subpage-back-btn" onclick="' + backFn + '" title="' + backLabel + '">' + _mi('arrow_back') + '<span>' + backLabel + '</span></button>'
             : '') +
           '<div class="subpage-header-unit-core">' +
-            '<div class="subpage-title">' + _mi('auto_stories') + ' ' + (unitData.unitTitle || '') + '</div>' +
+            '<div class="subpage-title">' + _mi('auto_stories') + ' ' + self._sanitizeCourseDisplayTitle(unitData.unitTitle || '') + '</div>' +
             '<div class="subpage-subtitle">' + level + ' Advanced</div>' +
           '</div>' +
           resetUnitBtn +
@@ -7156,7 +7174,7 @@
           var isAvail = item.status === 'available';
           var typeIcon = item.type === 'grammar' ? 'menu_book' : 'translate';
           var typeColor = item.type === 'grammar' ? '#3b82f6' : '#10b981';
-          var shortTitle = item.title;
+          var shortTitle = self._sanitizeCourseDisplayTitle(item.title);
           var colonIdx = shortTitle.indexOf(':');
           if (colonIdx !== -1) shortTitle = shortTitle.slice(colonIdx + 1).trim();
 
@@ -7382,7 +7400,7 @@
             var isDone = !!progress[item.id];
 
             // Shorten display title
-            var shortTitle = item.title;
+            var shortTitle = self._sanitizeCourseDisplayTitle(item.title);
             if (item.type === 'grammar' || item.type === 'vocabulary') {
               var colonIdx = shortTitle.indexOf(':');
               if (colonIdx !== -1) shortTitle = shortTitle.slice(colonIdx + 1).trim();
@@ -7460,7 +7478,7 @@
       if (blockItems.length === 0) {
         // Fallback: flat list for the current unit
         if (unitData.unitTitle) {
-          html += '<div class="course-roadmap-unit-title">' + self._escapeHTML(unitData.unitTitle) + '</div>';
+          html += '<div class="course-roadmap-unit-title">' + self._escapeHTML(self._sanitizeCourseDisplayTitle(unitData.unitTitle)) + '</div>';
         }
         html += self._buildCrmSectionItems(unitData, 0);
         html += '</div>';

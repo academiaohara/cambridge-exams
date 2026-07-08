@@ -16,7 +16,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 
 function parseArgs(argv) {
-  var opts = { tag: '[V2]', updateIndex: true };
+  var opts = { tag: '', updateIndex: true };
   for (var i = 2; i < argv.length; i++) {
     var arg = argv[i];
     if (arg === '--level' && argv[i + 1]) opts.level = argv[++i];
