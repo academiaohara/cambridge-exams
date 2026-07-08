@@ -891,7 +891,9 @@
       });
       html += '</div>';
     }
+    html += '<div class="sp-passage-gap-scroll" tabindex="0" aria-label="Story text">';
     html += '<div class="sp-passage-card sp-passage-card--gap-fill sp-passage-card--justified" id="sp-passage-text">' + passageHtml + '</div>';
+    html += '</div>';
     html += '</div>';
     return html;
   }

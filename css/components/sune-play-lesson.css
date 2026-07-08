@@ -1320,6 +1320,11 @@ button.sp-example-line.sp-speakable {
   width: 100%;
 }
 
+.sp-passage-gap-scroll {
+  width: 100%;
+  min-height: 0;
+}
+
 .sp-passage-wordbank {
   display: flex;
   flex-wrap: wrap;
@@ -3148,6 +3153,64 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
   .sp-practice-main .sp-exercise-card {
     padding: 14px 12px 10px;
     justify-content: flex-start;
+  }
+
+  .sp-practice-main .sp-exercise-card:has(.sp-screen--passage-gap) {
+    overflow: hidden;
+    align-items: stretch;
+    padding-bottom: 8px;
+  }
+
+  .sp-practice-main .sp-exercise-card:has(.sp-screen--passage-gap) .sp-screen--passage-gap {
+    flex: 1;
+    min-height: 0;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+
+  .sp-screen--passage-gap .sp-session-instruction {
+    flex-shrink: 0;
+    margin-bottom: 8px;
+  }
+
+  .sp-screen--passage-gap .sp-passage-wordbank {
+    flex-shrink: 0;
+    margin-bottom: 0;
+    padding: 8px 10px;
+    gap: 6px;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+  }
+
+  .sp-screen--passage-gap .sp-passage-wordbank-chip {
+    padding: 5px 10px;
+    font-size: 0.78rem;
+  }
+
+  .sp-screen--passage-gap .sp-passage-gap-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    margin-top: 10px;
+    border-radius: 12px;
+  }
+
+  .sp-screen--passage-gap .sp-passage-gap-scroll .sp-passage-card {
+    min-height: 100%;
+    border-radius: 12px;
+    padding: 14px 12px;
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .sp-screen--passage-gap .sp-passage-gap-num {
+    width: 1.35rem;
+    height: 1.35rem;
+    font-size: 0.68rem;
   }
 
   .sp-practice-header {
