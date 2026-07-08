@@ -879,7 +879,7 @@
     if (p.wordBank && p.wordBank.length) {
       html += '<div class="sp-passage-wordbank" aria-label="Word bank">';
       p.wordBank.forEach(function(word) {
-        if (isSequential) {
+        if (isSequential && p.requireWordBankAssignment !== false) {
           html += '<button type="button" class="sp-passage-wordbank-chip sp-passage-wordbank-chip--selectable" ' +
             'data-word="' + esc(word) + '">' + esc(word) + '</button>';
         } else {
