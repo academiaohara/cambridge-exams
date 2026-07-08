@@ -107,7 +107,6 @@
       var leftSidebarContent = sidebars.left;
       var rightSidebarContent = sidebars.right;
 
-      var headerKicker = 'TESTS';
       var headerTitle = 'Choose a Level';
       var headerClass = ' cw-section-header--picker cw-section-header--tests cw-section-header--duo';
       var headerStyle = ' style="--cw-header-color:#58cc02"';
@@ -115,7 +114,6 @@
 
       if (isRandomTest) {
         var randomMeta = LEVEL_META[activeLevel || level] || LEVEL_META['B2'];
-        headerKicker = (activeLevel || level).toUpperCase() + ' · RANDOM TEST';
         headerTitle = 'Random Mix';
         headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + randomMeta.headerColor + '"';
@@ -124,14 +122,12 @@
         var examMatch = exams.find(function(e) { return e.id === activeExamId; });
         var examNum = examMatch ? examMatch.number : activeExamId.replace('Test', '');
         var examMeta = LEVEL_META[activeLevel || level] || LEVEL_META['B2'];
-        headerKicker = (activeLevel || level).toUpperCase() + ' · TEST ' + examNum;
         headerTitle = 'Choose a Section';
         headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + examMeta.headerColor + '"';
         backOnclick = 'BentoGrid.openTests(\'' + (activeLevel || level) + '\')';
       } else if (activeLevel) {
         var meta = LEVEL_META[activeLevel] || LEVEL_META['B2'];
-        headerKicker = activeLevel.toUpperCase() + ' · ' + exams.filter(function(e) { return e.status === 'available'; }).length + ' TESTS';
         headerTitle = meta.difficulty;
         headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + meta.headerColor + '"';
@@ -159,7 +155,6 @@
                 ? '<button type="button" class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '</button>'
                 : '') +
               '<div class="cw-section-header-text">' +
-                '<div class="cw-section-kicker">' + _escape(headerKicker) + '</div>' +
                 '<div class="cw-section-title">' + _escape(headerTitle) + '</div>' +
               '</div>' +
             '</div>' +

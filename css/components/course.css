@@ -5980,7 +5980,7 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
     z-index: 4;
     margin-left: var(--mobile-hub-pad-x);
     margin-right: var(--mobile-hub-pad-x);
-    margin-top: 0;
+    margin-top: var(--learning-stage-header-gap);
     margin-bottom: 0;
     padding: 12px 14px 14px;
   }
@@ -5988,12 +5988,6 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   .dashboard-center--mobile-hub .cw-section-header .cw-section-title,
   .dashboard-center--learning-stage .cw-section-header .cw-section-title {
     font-size: 1.25rem;
-  }
-
-  .dashboard-center--mobile-hub .cw-section-header .cw-section-kicker,
-  .dashboard-center--learning-stage .cw-section-header .cw-section-kicker {
-    font-size: 0.68rem;
-    margin-bottom: 1px;
   }
 
   .dashboard-center--mobile-hub .cw-page-content,
@@ -6015,12 +6009,6 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   .dashboard-center--learning-stage .course-hub-page {
     padding-left: 0;
     padding-right: 0;
-  }
-
-  .dashboard-center--mobile-hub .mobile-bottom-nav--duo,
-  .dashboard-center--learning-stage .mobile-bottom-nav--duo {
-    flex-shrink: 0;
-    position: relative;
   }
 
   /* Learning stage map unit blocks */
