@@ -919,7 +919,6 @@
         ? '<div class="cw-section-header cw-section-header--duo cw-section-header--vocab cw-section-header--level" style="--cw-header-color:' + catMeta.color + '">' +
             '<button type="button" class="cw-section-back" onclick="' + _backFn + '" aria-label="Back">' + _mi('arrow_back') + '</button>' +
             '<div class="cw-section-header-text">' +
-              '<div class="cw-section-kicker">VOCABULARY · ' + this._escapeHTML((data.name || catMeta.name).toUpperCase()) + '</div>' +
               '<div class="cw-section-title">' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
             '</div>' +
             infoBtnHtml +
@@ -8153,7 +8152,6 @@
             mobileTopBarHtml +
             '<div class="cw-section-header cw-section-header--wordle cw-section-header--level cw-section-header--duo" style="--cw-header-color:' + meta.headerColor + '">' +
               '<div class="cw-section-header-text">' +
-                '<div class="cw-section-kicker">' + levelId.toUpperCase() + ' · LEVEL ' + (wlIndex + 1) + '</div>' +
                 '<div class="cw-section-title">Guess the Word</div>' +
               '</div>' +
             '</div>' +

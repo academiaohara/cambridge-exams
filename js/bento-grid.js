@@ -1373,10 +1373,8 @@
               (activeLevel ? ' style="--cw-header-color:' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).headerColor + '"' : '') + '>' +
               '<div class="cw-section-header-text">' +
                 (activeLevel
-                  ? '<div class="cw-section-kicker">' + activeLevel.toUpperCase() + ' · ' + allEntries.filter(function(e) { return e.levelId === activeLevel; }).length + ' PUZZLES</div>' +
-                    '<div class="cw-section-title">' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).difficulty + ' Crosswords</div>'
-                  : '<div class="cw-section-kicker">CROSSWORDS</div>' +
-                    '<div class="cw-section-title">Choose a Level</div>') +
+                  ? '<div class="cw-section-title">' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).difficulty + ' Crosswords</div>'
+                  : '<div class="cw-section-title">Choose a Level</div>') +
               '</div>' +
             '</div>' +
             '<div class="cw-page-content" id="cwCenterScroll">' +
@@ -1473,10 +1471,8 @@
               (activeLevel ? ' style="--cw-header-color:' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).headerColor + '"' : '') + '>' +
               '<div class="cw-section-header-text">' +
                 (activeLevel
-                  ? '<div class="cw-section-kicker">' + activeLevel.toUpperCase() + ' · ' + allEntries.filter(function(e) { return e.levelId === activeLevel; }).length + ' LEVELS</div>' +
-                    '<div class="cw-section-title">' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).difficulty + ' Wordle</div>'
-                  : '<div class="cw-section-kicker">WORDLE</div>' +
-                    '<div class="cw-section-title">Choose a Level</div>') +
+                  ? '<div class="cw-section-title">' + (LEVEL_META[activeLevel] || LEVEL_META['B2']).difficulty + ' Wordle</div>'
+                  : '<div class="cw-section-title">Choose a Level</div>') +
               '</div>' +
             '</div>' +
             '<div class="cw-page-content" id="wlCenterScroll">' +

@@ -112,7 +112,6 @@
           _mi('arrow_back') +
         '</button>' +
         '<div class="cw-section-header-text">' +
-          '<div class="cw-section-kicker">COURSE · ' + meta.kicker + '</div>' +
           '<div class="cw-section-title">' + title + '</div>' +
         '</div>' +
       '</div>';
@@ -261,7 +260,6 @@
       var mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
         ? MainNav.buildMobileBottomNavHtml('course') : '';
 
-      var headerKicker = 'COURSE';
       var headerTitle = 'Choose a Section';
       var headerClass = ' cw-section-header--picker';
       var headerStyle = '';
@@ -276,7 +274,6 @@
       if (activeLevel && activeSection) {
         var secMeta = SECTION_META[activeSection] || SECTION_META.learning;
         var lvlMeta = LEVEL_META[activeLevel] || LEVEL_META['B2'];
-        headerKicker = activeLevel + ' · ' + secMeta.kicker;
         if (activeEtapaKey) {
           var etapaNumMatch = String(activeEtapaKey).match(/^stage-(\d+)$/);
           headerTitle = etapaNumMatch ? ('Stage ' + etapaNumMatch[1]) : ('Stage ' + activeEtapaKey);
@@ -301,7 +298,6 @@
         }
       } else if (activeSection) {
         var secMeta2 = SECTION_META[activeSection] || SECTION_META.learning;
-        headerKicker = 'COURSE · ' + secMeta2.kicker;
         headerTitle = secMeta2.label;
         headerClass = ' cw-section-header--level';
         headerStyle = ' style="--cw-header-color:' + secMeta2.headerColor + '"';
@@ -333,7 +329,6 @@
                   ? '<button class="cw-section-back" onclick="' + backOnclick + '" aria-label="Back">' + _mi('arrow_back') + '</button>'
                   : '') +
                 '<div class="cw-section-header-text">' +
-                  '<div class="cw-section-kicker">' + headerKicker + '</div>' +
                   '<div class="cw-section-title">' + headerTitle + '</div>' +
                 '</div>' +
               '</div>') +

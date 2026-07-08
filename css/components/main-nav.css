@@ -934,6 +934,7 @@ button.stats-bar-item.is-active {
 @media (max-width: 768px) {
   body:has(.dashboard-layout) .app-container {
     padding-left: 0;
+    padding-right: 0;
     background: #f7f7f7;
   }
 
@@ -1062,6 +1063,7 @@ button.stats-bar-item.is-active {
   left: 0;
   right: 0;
   bottom: 0;
+  width: 100%;
   z-index: 1200;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));

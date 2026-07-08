@@ -2972,6 +2972,7 @@ margin-top: -2px;
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
   .cw-section-header {
     margin-bottom: 14px;
+    margin-top: 10px;
     padding: 14px 16px 16px;
   }
 
@@ -2984,11 +2985,6 @@ margin-top: -2px;
 
   .cw-section-header--picker .cw-section-title {
     font-size: 1.25rem;
-  }
-
-  .cw-section-header--picker .cw-section-kicker {
-    font-size: 0.68rem;
-    margin-bottom: 1px;
   }
 
   .cw-section-header--level {
