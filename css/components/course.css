@@ -8304,6 +8304,45 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
   border-radius: 0;
   background: transparent;
   box-shadow: none;
+  min-width: 2ch;
+  width: 2ch;
+  padding: 2px 2px 4px;
+}
+
+.course-center--lesson-focus .cu-hint-pill-input,
+.course-center--lesson-focus .cu-gap-inline-textarea,
+.course-center--lesson-focus textarea.cu-gap-input.cu-gap-inline-textarea {
+  border: none !important;
+  border-bottom: 2px solid #1cb0f6 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  min-width: 2ch !important;
+  width: 2ch;
+  padding: 2px 2px 4px !important;
+}
+
+.course-center--lesson-focus .cu-hint-pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0 4px;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0 2px;
+  box-shadow: none;
+}
+
+.course-center--lesson-focus .cu-hint-pill:focus-within {
+  border: none;
+  box-shadow: none;
+}
+
+.course-center--lesson-focus .cu-hint-pill:has(.cu-hint-word) input.cu-hint-pill-input,
+.course-center--lesson-focus .cu-hint-pill:has(.cu-hint-word) textarea.cu-hint-pill-input {
+  min-width: 2ch !important;
+  flex: 0 1 auto;
 }
 
 .course-center--lesson-focus .cu-gap-input.cu-input-correct {

@@ -5444,6 +5444,8 @@
         if (/^\d+$/.test(inner.trim())) {
           // Number — render as circle badge
           result += '<span class="cu-ex-num-circle">' + self._escapeHTML(inner) + '</span>';
+        } else if (inner.indexOf('/') !== -1) {
+          result += self._renderCuSlashHintMarkup(inner);
         } else {
           // Word hint — render without parentheses
           result += '<span class="cu-hint-word">' + self._escapeHTML(inner) + '</span>';
@@ -6036,6 +6038,9 @@
           var mobileFluid = BentoGrid._cuCourseUseMobileInlineGaps();
           if (!skipWidthJs && !mobileFluid) {
             var minInlineW = input.closest('.cu-hint-pill-slash-wrap') ? 44 : 80;
+            if (input.closest('.course-center--lesson-focus')) {
+              minInlineW = 16;
+            }
             var spanInline = document.getElementById('cu-resize-span');
             if (!spanInline) {
               spanInline = document.createElement('span');
@@ -6086,6 +6091,9 @@
             input.style.boxSizing = 'border-box';
           } else {
             var minW = input.closest('.cu-hint-pill-slash-wrap') ? 44 : 80;
+            if (input.closest('.course-center--lesson-focus')) {
+              minW = 16;
+            }
             var span = document.getElementById('cu-resize-span');
             if (!span) {
               span = document.createElement('span');
@@ -6118,6 +6126,9 @@
         return;
       }
       var minWidth = input.closest('.cu-hint-pill-slash-wrap') ? 44 : 80;
+      if (input.closest('.course-center--lesson-focus')) {
+        minWidth = 16;
+      }
       var span = document.getElementById('cu-resize-span');
       if (!span) {
         span = document.createElement('span');
