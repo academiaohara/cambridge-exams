@@ -3,7 +3,10 @@
   "version": "3.2.0",
   "private": true,
   "type": "module",
-  "description": "Cambridge exam practice platform with AI-powered writing evaluation",
+  "scripts": {
+    "migrate:unit-v2": "node scripts/legacy-to-v2/migrate-unit.js",
+    "validate:unit-v2": "node scripts/validate-v2-unit.js"
+  },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "dotenv": "^17.3.1",
