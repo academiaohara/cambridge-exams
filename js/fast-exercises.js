@@ -895,32 +895,71 @@
       var headerLevelRow = isCourseVocab ? '' : this._buildSubpageLevelRow(catMeta, data, activeLevel);
       var headerClass = isCourseVocab ? 'subpage-header' : 'subpage-header subpage-header--with-levels';
 
+      var mobileTopBarHtml = '';
+      var mobileNavHtml = '';
+      if (isCourseVocab) {
+        mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
+          ? MainNav.buildMobileTopBarHtml() : '';
+        mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
+          ? MainNav.buildMobileBottomNavHtml('vocabulary') : '';
+      }
+
+      var infoBtnHtml = '';
+      if (categoryId === 'phrasal-verbs') {
+        infoBtnHtml = '<button type="button" class="cw-section-info-btn" onclick="FastExercises._showPvInfoModal()" title="What are phrasal verbs?">' + _mi('info') + '</button>';
+      } else if (categoryId === 'word-formation') {
+        infoBtnHtml = '<button type="button" class="cw-section-info-btn" onclick="FastExercises._showWfInfoModal()" title="What is word formation?">' + _mi('info') + '</button>';
+      } else if (categoryId === 'collocations') {
+        infoBtnHtml = '<button type="button" class="cw-section-info-btn" onclick="FastExercises._showCollocInfoModal()" title="What are collocations?">' + _mi('info') + '</button>';
+      } else if (categoryId === 'idioms') {
+        infoBtnHtml = '<button type="button" class="cw-section-info-btn" onclick="FastExercises._showIdInfoModal()" title="What are idioms?">' + _mi('info') + '</button>';
+      }
+
+      var courseVocabHeaderHtml = isCourseVocab
+        ? '<div class="cw-section-header cw-section-header--duo cw-section-header--vocab cw-section-header--level" style="--cw-header-color:' + catMeta.color + '">' +
+            '<button type="button" class="cw-section-back" onclick="' + _backFn + '" aria-label="Back">' + _mi('arrow_back') + '</button>' +
+            '<div class="cw-section-header-text">' +
+              '<div class="cw-section-kicker">VOCABULARY · ' + this._escapeHTML((data.name || catMeta.name).toUpperCase()) + '</div>' +
+              '<div class="cw-section-title">' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
+            '</div>' +
+            infoBtnHtml +
+          '</div>'
+        : '';
+
+      var subpageInfoBtnHtml = infoBtnHtml.replace(/cw-section-info-btn/g, 'subpage-info-btn');
+
+      var legacyHeaderHtml = '<div class="' + headerClass + '">' +
+        '<div class="subpage-header-core">' +
+          '<div class="subpage-header-titles">' +
+            '<div class="subpage-title">' + _mi(catMeta.icon) + ' ' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
+            '<div class="subpage-subtitle">' + subtitleText + '</div>' +
+          '</div>' +
+          headerLevelRow +
+        '</div>' +
+        subpageInfoBtnHtml +
+      '</div>';
+
+      var centerBodyHtml = isCourseVocab
+        ? '<div class="cw-page-content" id="feCenterScroll">' +
+            bottomBar +
+            legendHtml +
+            centerMap +
+          '</div>'
+        : legacyHeaderHtml + bottomBar + legendHtml + centerMap;
+
       await this._waitLoading(loadingStart);
 
       content.innerHTML =
-        '<div class="dashboard-layout">' +
+        '<div class="dashboard-layout' + (isCourseVocab ? ' dashboard-layout--crossword-scroll' : '') + '">' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
-          '<div class="dashboard-center">' +
-            '<div class="fe-section' + (isCourseVocab ? ' fe-section--merged-path' : '') + '" id="feCenterSection">' +
-              '<div class="' + headerClass + '">' +
-                '<div class="subpage-header-core">' +
-                  '<div class="subpage-header-titles">' +
-                    '<div class="subpage-title">' + _mi(catMeta.icon) + ' ' + this._escapeHTML(data.name || catMeta.name) + '</div>' +
-                    '<div class="subpage-subtitle">' + subtitleText + '</div>' +
-                  '</div>' +
-                  headerLevelRow +
-                '</div>' +
-                (categoryId === 'phrasal-verbs' ? '<button class="subpage-info-btn" onclick="FastExercises._showPvInfoModal()" title="' + 'What are phrasal verbs?' + '">' + _mi('info') + '</button>' : '') +
-                (categoryId === 'word-formation' ? '<button class="subpage-info-btn" onclick="FastExercises._showWfInfoModal()" title="' + 'What is word formation?' + '">' + _mi('info') + '</button>' : '') +
-                (categoryId === 'collocations' ? '<button class="subpage-info-btn" onclick="FastExercises._showCollocInfoModal()" title="' + 'What are collocations?' + '">' + _mi('info') + '</button>' : '') +
-                (categoryId === 'idioms' ? '<button class="subpage-info-btn" onclick="FastExercises._showIdInfoModal()" title="' + 'What are idioms?' + '">' + _mi('info') + '</button>' : '') +
-              '</div>' +
-              bottomBar +
-              legendHtml +
-              centerMap +
+          '<div class="dashboard-center' + (isCourseVocab ? ' dashboard-center--crossword dashboard-center--mobile-hub dashboard-center--course-vocab' : '') + '">' +
+            (isCourseVocab ? mobileTopBarHtml + courseVocabHeaderHtml : '') +
+            '<div class="fe-section' + (isCourseVocab ? ' fe-section--merged-path fe-section--course-vocab' : '') + '" id="feCenterSection">' +
+              centerBodyHtml +
             '</div>' +
+            (isCourseVocab ? mobileNavHtml : '') +
           '</div>' +
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent)
