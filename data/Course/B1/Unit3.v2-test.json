@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 1,
+  "unit": 3,
+  "type": "vocabulary",
+  "unitTitle": "[TEST] Unit 3: Crossword clues",
+  "unitSubtitle": "Sandbox for crossword_clues exercise type",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "fun and games",
+    "crossword_clues"
+  ],
+  "estimatedDurationMinutes": 15,
+  "lessonStyle": "sune-play-interactive",
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-u3-test-theory",
+    "title": "Test theory",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b1-u3-test-theory-card-1",
+        "title": "Crossword clues test",
+        "subtitle": "Sandbox unit",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "What to test",
+            "items": [
+              "One word per screen (across and down clues)",
+              "Clue list layout with letter boxes (no 2D grid)",
+              "Auto-advance and backspace between boxes",
+              "Mixed letter counts (4–12 letters)"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "crossword_clues",
+        "displayName": "Crossword clue",
+        "defaultLives": 11,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "letter_box_row",
+          "studentAction": "type_one_letter_per_box",
+          "evaluationTrigger": "check_button",
+          "layoutMode": "clue_list"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-u3-test-node-1",
+      "title": "Crossword clues test",
+      "shortTitle": "CW test",
+      "focus": [
+        "crossword_clues across",
+        "crossword_clues down"
+      ],
+      "lives": 11,
+      "passCondition": {
+        "minimumCorrectScreens": 11,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u3-test-ex-crossword",
+          "sourceItemIds": [
+            "b1-u3-test-cw-across-1",
+            "b1-u3-test-cw-across-4",
+            "b1-u3-test-cw-across-5",
+            "b1-u3-test-cw-across-8",
+            "b1-u3-test-cw-across-9",
+            "b1-u3-test-cw-across-11",
+            "b1-u3-test-cw-down-2",
+            "b1-u3-test-cw-down-3",
+            "b1-u3-test-cw-down-6",
+            "b1-u3-test-cw-down-7",
+            "b1-u3-test-cw-down-10"
+          ],
+          "formatType": "crossword_clues"
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 15,
+    "minimumScreensPerNode": 11
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Check the spelling."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u3-test-ex-crossword"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u3-test-ex-crossword",
+        "type": "exercise",
+        "exerciseType": "crossword_clues",
+        "exerciseTypeName": "Crossword clues",
+        "title": "A: Complete the crossword",
+        "instructions": "Solve the crossword using the clues below.",
+        "studentInstruction": "Type one letter in each box to complete the answer.",
+        "items": [
+          {
+            "id": "b1-u3-test-cw-across-1",
+            "direction": "across",
+            "clueNumber": 1,
+            "clue": "The school football ...... meets every Wednesday after class. (4)",
+            "answer": "club",
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-test-cw-across-4",
+            "direction": "across",
+            "clueNumber": 4,
+            "clue": "Our team needs to ...... two goals to win the match. (5)",
+            "answer": "score",
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-test-cw-across-5",
+            "direction": "across",
+            "clueNumber": 5,
+            "clue": "The dance class listened carefully to the ...... of the music. (6)",
+            "answer": "rhythm",
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-test-cw-across-8",
+            "direction": "across",
+            "clueNumber": 8,
+            "clue": "We entered a swimming ...... at the sports centre. (11)",
+            "answer": "competition",
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-test-cw-across-9",
+            "direction": "across",
+            "clueNumber": 9,
+            "clue": "Liam wants to ...... for the race every morning. (5)",
+            "answer": "train",
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-test-cw-across-11",
+            "direction": "across",
+            "clueNumber": 11,
+            "clue": "That comedy show was really ...... . (12)",
+            "answer": "entertaining",
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-test-cw-down-2",
+            "direction": "down",
+            "clueNumber": 2,
+            "clue": "Our ...... chose the players for Saturday's match. (7)",
+            "answer": "captain",
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-test-cw-down-3",
+            "direction": "down",
+            "clueNumber": 3,
+            "clue": "You must never ...... in a game or competition. (5)",
+            "answer": "cheat",
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-test-cw-down-6",
+            "direction": "down",
+            "clueNumber": 6,
+            "clue": "The chess ...... shook my hand before the game. (8)",
+            "answer": "opponent",
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-test-cw-down-7",
+            "direction": "down",
+            "clueNumber": 7,
+            "clue": "I get a lot of ...... from playing music with friends. (8)",
+            "answer": "pleasure",
+            "formatType": "crossword_clues"
+          },
+          {
+            "id": "b1-u3-test-cw-down-10",
+            "direction": "down",
+            "clueNumber": 10,
+            "clue": "The ...... stopped the match after the foul. (7)",
+            "answer": "referee",
+            "formatType": "crossword_clues"
+          }
+        ],
+        "interaction": {
+          "formatType": "crossword_clues",
+          "layoutMode": "clue_list"
+        }
+      }
+    ]
+  }
+}
