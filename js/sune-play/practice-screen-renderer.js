@@ -765,6 +765,7 @@
       case 'mc_4_option': return renderMc4Option(screen);
       case 'find_extra_word': return renderFindExtraWord(screen);
       case 'keyword_transformation': return renderKeywordTransformation(screen);
+      case 'column_matching': return renderColumnMatching(screen);
       default:
         return '<p class="sp-unknown">Unsupported format: ' + esc(screen.formatType) + '</p>';
     }
@@ -1204,6 +1205,168 @@
       onChange();
     });
     updateKwtWordCountDisplay(root, screen);
+  }
+
+  function getCmPairs(root) {
+    return root._cmPairs || {};
+  }
+
+  function setCmPairs(root, pairs) {
+    root._cmPairs = pairs || {};
+  }
+
+  function renderColumnMatching(screen) {
+    var p = screen.payload || {};
+    var html = '<div class="sp-screen sp-screen--column-match" data-format="column_matching">';
+    html += '<div class="sp-cm-board">';
+    html += '<div class="sp-cm-column sp-cm-column--left" aria-label="Sentence beginnings">';
+    html += '<p class="sp-cm-column-title">Match the beginnings</p>';
+    (p.pairs || []).forEach(function(pair) {
+      html += '<button type="button" class="sp-cm-left-item" data-pair-id="' + pair.pairId + '" aria-pressed="false">' +
+        '<span class="sp-cm-num">' + pair.pairId + '</span>' +
+        '<span class="sp-cm-left-text">' + esc(pair.leftText) + '</span>' +
+        '<span class="sp-cm-pair-badge" data-pair-badge="' + pair.pairId + '" hidden aria-hidden="true"></span>' +
+      '</button>';
+    });
+    html += '</div>';
+    html += '<div class="sp-cm-column sp-cm-column--right" aria-label="Sentence endings">';
+    html += '<p class="sp-cm-column-title">Tap to pair</p>';
+    (p.rightOptions || []).forEach(function(opt) {
+      html += '<button type="button" class="sp-cm-right-item" data-letter="' + esc(opt.letter) + '" aria-pressed="false">' +
+        '<span class="sp-cm-letter">' + esc(opt.letter) + '</span>' +
+        '<span class="sp-cm-right-text">' + esc(opt.endingText) + '</span>' +
+      '</button>';
+    });
+    html += '</div>';
+    html += '</div></div>';
+    return html;
+  }
+
+  function syncColumnMatchUi(root) {
+    var pairs = getCmPairs(root);
+    var selectedLeft = root._cmSelectedLeft || null;
+
+    root.querySelectorAll('.sp-cm-left-item').forEach(function(btn) {
+      var pairId = btn.getAttribute('data-pair-id');
+      var letter = pairs[pairId] || '';
+      var badge = btn.querySelector('[data-pair-badge="' + pairId + '"]');
+      var isSelected = selectedLeft === pairId;
+      btn.classList.toggle('sp-cm-left-item--selected', isSelected);
+      btn.classList.toggle('sp-cm-left-item--paired', !!letter);
+      btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+      if (badge) {
+        if (letter) {
+          badge.hidden = false;
+          badge.setAttribute('aria-hidden', 'false');
+          badge.textContent = '→ ' + letter;
+        } else {
+          badge.hidden = true;
+          badge.setAttribute('aria-hidden', 'true');
+          badge.textContent = '';
+        }
+      }
+    });
+
+    root.querySelectorAll('.sp-cm-right-item').forEach(function(btn) {
+      var letter = btn.getAttribute('data-letter') || '';
+      var isPaired = Object.keys(pairs).some(function(pid) { return pairs[pid] === letter; });
+      btn.classList.toggle('sp-cm-right-item--paired', isPaired);
+      btn.setAttribute('aria-pressed', isPaired ? 'true' : 'false');
+    });
+  }
+
+  function clearCmPairForPairId(pairs, pairId) {
+    var next = Object.assign({}, pairs);
+    delete next[String(pairId)];
+    return next;
+  }
+
+  function clearCmPairForLetter(pairs, letter) {
+    var next = Object.assign({}, pairs);
+    Object.keys(next).forEach(function(pid) {
+      if (next[pid] === letter) delete next[pid];
+    });
+    return next;
+  }
+
+  function bindColumnMatching(root, screen, onChange) {
+    root._cmPairs = root._cmPairs || {};
+    root._cmSelectedLeft = null;
+
+    function update(onChanged) {
+      syncColumnMatchUi(root);
+      if (onChanged) onChange();
+    }
+
+    root.querySelectorAll('.sp-cm-left-item').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (root.classList.contains('sp-screen--locked')) return;
+        var pairId = btn.getAttribute('data-pair-id');
+        var pairs = getCmPairs(root);
+        var isSelected = root._cmSelectedLeft === pairId;
+        var isPaired = !!pairs[pairId];
+
+        if (isSelected) {
+          root._cmSelectedLeft = null;
+          update(true);
+          return;
+        }
+
+        if (isPaired) {
+          setCmPairs(root, clearCmPairForPairId(pairs, pairId));
+          root._cmSelectedLeft = null;
+          update(true);
+          return;
+        }
+
+        root._cmSelectedLeft = pairId;
+        update(true);
+      });
+    });
+
+    root.querySelectorAll('.sp-cm-right-item').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (root.classList.contains('sp-screen--locked')) return;
+        var letter = btn.getAttribute('data-letter') || '';
+        var pairs = getCmPairs(root);
+        var pairedTo = Object.keys(pairs).find(function(pid) { return pairs[pid] === letter; });
+
+        if (pairedTo && !root._cmSelectedLeft) {
+          setCmPairs(root, clearCmPairForLetter(pairs, letter));
+          root._cmSelectedLeft = null;
+          update(true);
+          return;
+        }
+
+        if (!root._cmSelectedLeft) return;
+
+        var next = clearCmPairForLetter(pairs, letter);
+        next[String(root._cmSelectedLeft)] = letter;
+        setCmPairs(root, next);
+        root._cmSelectedLeft = null;
+        update(true);
+      });
+    });
+
+    syncColumnMatchUi(root);
+  }
+
+  function markColumnMatchResults(root, pairs, payloadPairs) {
+    (payloadPairs || []).forEach(function(pair) {
+      var leftBtn = root.querySelector('.sp-cm-left-item[data-pair-id="' + pair.pairId + '"]');
+      var selected = pairs[String(pair.pairId)] || '';
+      var ok = selected === pair.correctLetter;
+      if (leftBtn) {
+        leftBtn.classList.toggle('sp-cm-left-item--correct', ok);
+        leftBtn.classList.toggle('sp-cm-left-item--incorrect', !ok);
+        leftBtn.disabled = true;
+      }
+      var rightBtn = root.querySelector('.sp-cm-right-item[data-letter="' + pair.correctLetter + '"]');
+      if (rightBtn && !ok) rightBtn.classList.add('sp-cm-right-item--reveal');
+    });
+    root.querySelectorAll('.sp-cm-right-item').forEach(function(btn) {
+      btn.disabled = true;
+    });
   }
 
   function buildInlineGapRenderOptions(payload) {
@@ -1843,6 +2006,10 @@
 
     if (format === 'keyword_transformation') {
       bindKeywordTransformation(root, screen, onChange);
+    }
+
+    if (format === 'column_matching') {
+      bindColumnMatching(root, screen, onChange);
     }
   }
 
@@ -2535,6 +2702,14 @@
       var kwtValue = kwtInput ? kwtInput.value.trim() : '';
       return !!kwtValue && isKwtWordCountValid(kwtValue, screen);
     }
+    if (f === 'column_matching') {
+      var cmPairs = getCmPairs(root);
+      var cmPayloadPairs = (screen.payload && screen.payload.pairs) || [];
+      if (!cmPayloadPairs.length) return false;
+      return cmPayloadPairs.every(function(pair) {
+        return !!cmPairs[String(pair.pairId)];
+      });
+    }
     if (f === 'free_text_gap_fill' || f === 'conjugation_gap_fill' || f === 'preselected_verb_gap_fill') {
       return allGapInputsFilled(root);
     }
@@ -2672,6 +2847,25 @@
           kwtInp.classList.toggle('sp-kwt-gap-input--incorrect', !result.correct);
           kwtInp.readOnly = true;
         }
+        break;
+      }
+      case 'column_matching': {
+        var cmPayload = p;
+        var cmPairs = getCmPairs(root);
+        var cmWrong = 0;
+        var userParts = [];
+        var correctParts = [];
+        (cmPayload.pairs || []).forEach(function(pair) {
+          var selected = cmPairs[String(pair.pairId)] || '';
+          userParts.push(pair.pairId + '→' + (selected || '–'));
+          correctParts.push(pair.pairId + '→' + pair.correctLetter);
+          if (selected !== pair.correctLetter) cmWrong++;
+        });
+        result.userAnswer = userParts.join(' / ');
+        result.correctAnswer = correctParts.join(' / ');
+        result.correct = cmWrong === 0;
+        result.lifeLoss = cmWrong;
+        markColumnMatchResults(root, cmPairs, cmPayload.pairs);
         break;
       }
       case 'free_text_gap_fill':

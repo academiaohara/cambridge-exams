@@ -1,0 +1,185 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B2 English",
+  "block": 1,
+  "unit": 1,
+  "type": "grammar",
+  "unitTitle": "[TEST] Unit 1: Column matching",
+  "unitSubtitle": "Sandbox for column_matching exercise type",
+  "unitLevel": "B2",
+  "unitFocus": [
+    "present time",
+    "stative verbs",
+    "column_matching"
+  ],
+  "estimatedDurationMinutes": 12,
+  "lessonStyle": "sune-play-interactive",
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b2-u1-test-theory",
+    "title": "Test theory",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "b2-u1-test-theory-card-1",
+        "title": "Column matching test",
+        "subtitle": "Sandbox unit",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "What to test",
+            "items": [
+              "All 8 pairs on one screen (B2 Unit1 ex.G)",
+              "Tap-to-pair interaction (no drag-and-drop)",
+              "Multi-life loss for multiple wrong pairs",
+              "Right column sorted A–H alphabetically"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "column_matching",
+        "displayName": "Column matching",
+        "defaultLives": 8,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "two_column_tap_pair",
+          "studentAction": "tap_left_then_right",
+          "evaluationTrigger": "check_button",
+          "answerNormalizationRule": "column_match_answer_normalization"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b2-u1-test-node-1",
+      "title": "Column matching test",
+      "shortTitle": "Match test",
+      "focus": [
+        "column_matching stative verbs"
+      ],
+      "lives": 8,
+      "passCondition": {
+        "minimumCorrectScreens": 1,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b2-u1-test-ex-match",
+          "screenMode": "all_pairs_single_screen",
+          "formatType": "column_matching"
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 3,
+    "minimumScreensPerNode": 1
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "All matched!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Check the pairs."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b2-u1-test-ex-match"
+    ],
+    "exercises": [
+      {
+        "id": "b2-u1-test-ex-match",
+        "type": "exercise",
+        "exerciseType": "column_matching",
+        "exerciseTypeName": "Column matching",
+        "title": "G: Matching (Stative verbs)",
+        "instructions": "Match each sentence beginning (1–8) with the correct ending (A–H).",
+        "studentInstruction": "Tap a numbered beginning, then tap the matching ending letter.",
+        "items": [
+          {
+            "id": "b2-u1-test-match-1",
+            "sentence": "We think **B** that this new policy will benefit everyone involved.",
+            "answer": "B – that this new policy will benefit everyone involved."
+          },
+          {
+            "id": "b2-u1-test-match-2",
+            "sentence": "The young athlete resembles **H** his grandfather — same build, same walk.",
+            "answer": "H – his grandfather — same build, same walk."
+          },
+          {
+            "id": "b2-u1-test-match-3",
+            "sentence": "That dictionary belongs **F** to the school library, not to me.",
+            "answer": "F – to the school library, not to me."
+          },
+          {
+            "id": "b2-u1-test-match-4",
+            "sentence": "The emergency kit contains **G** three sets of batteries and a charger.",
+            "answer": "G – three sets of batteries and a charger."
+          },
+          {
+            "id": "b2-u1-test-match-5",
+            "sentence": "I now weigh **A** slightly less than I did before I started the diet.",
+            "answer": "A – slightly less than I did before I started the diet."
+          },
+          {
+            "id": "b2-u1-test-match-6",
+            "sentence": "The garden smells **D** wonderful in the early morning.",
+            "answer": "D – wonderful in the early morning."
+          },
+          {
+            "id": "b2-u1-test-match-7",
+            "sentence": "This project matters **E** a great deal to the local residents.",
+            "answer": "E – a great deal to the local residents."
+          },
+          {
+            "id": "b2-u1-test-match-8",
+            "sentence": "I've been considering **C** whether to change careers at my age.",
+            "answer": "C – whether to change careers at my age."
+          }
+        ],
+        "interaction": {
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen"
+        }
+      }
+    ]
+  }
+}
