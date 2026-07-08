@@ -691,6 +691,8 @@
           return p.instruction || 'Add commas where needed. If no commas are needed, write "No commas".';
         }
         return p.instruction || 'Tap the comma slots where commas are needed.';
+      case 'word_bank_tick':
+        return p.instruction || 'Select the correct words by tapping them.';
       default:
         return p.instruction || '';
     }
@@ -738,6 +740,8 @@
         return (p.sentences && p.sentences[0]) || p.instruction || '';
       case 'comma_placement':
         return p.sentence || p.instruction || '';
+      case 'word_bank_tick':
+        return p.instruction || 'Select the correct words.';
       default:
         return p.instruction || p.sentence || '';
     }
@@ -754,6 +758,9 @@
       }
       if (p.noCommaNeeded) return 'No commas';
       return (p.commaAfterTokenIndexes || []).join(', ');
+    }
+    if (screen && screen.formatType === 'word_bank_tick') {
+      return (p.answerWords || []).join(', ');
     }
     if (p.answer) return p.answer;
     if (p.acceptedAnswers && p.acceptedAnswers.length) return p.acceptedAnswers[0];

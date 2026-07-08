@@ -769,6 +769,7 @@
       case 'crossword_clues': return renderCrosswordClues(screen);
       case 'synced_gap_fill': return renderSyncedGapFill(screen);
       case 'comma_placement': return renderCommaPlacement(screen);
+      case 'word_bank_tick': return renderWordBankTick(screen);
       default:
         return '<p class="sp-unknown">Unsupported format: ' + esc(screen.formatType) + '</p>';
     }
@@ -1634,6 +1635,72 @@
     });
   }
 
+  function renderWordBankTick(screen) {
+    var p = screen.payload || {};
+    var html = '<div class="sp-screen sp-screen--word-bank-tick" data-format="word_bank_tick">';
+    html += '<div class="sp-wbt-grid-scroll">';
+    html += '<div class="sp-wbt-grid" role="group" aria-label="Word bank">';
+    (p.words || []).forEach(function(word) {
+      var idx = word.index != null ? word.index : 0;
+      html += '<button type="button" class="sp-wbt-chip" data-word-index="' + idx + '" ' +
+        'data-word="' + esc(word.text) + '" aria-pressed="false">' + esc(word.text) + '</button>';
+    });
+    html += '</div></div></div>';
+    return html;
+  }
+
+  function getWordBankTickSelection(root) {
+    var selected = [];
+    root.querySelectorAll('.sp-wbt-chip.sp-wbt-chip--selected').forEach(function(chip) {
+      selected.push((chip.getAttribute('data-word') || chip.textContent || '').trim());
+    });
+    return selected;
+  }
+
+  function markWordBankTickResults(root, payload, selected) {
+    var answerWords = payload.answerWords || [];
+    var answerSet = {};
+    answerWords.forEach(function(w) {
+      answerSet[norm.normalizeAnswer(w)] = true;
+    });
+    var selectedSet = {};
+    selected.forEach(function(w) {
+      selectedSet[norm.normalizeAnswer(w)] = true;
+    });
+    var exactMatch = norm.wordSetsMatch(selected, answerWords, { caseSensitive: false });
+
+    root.querySelectorAll('.sp-wbt-chip').forEach(function(chip) {
+      chip.disabled = true;
+      var word = (chip.getAttribute('data-word') || chip.textContent || '').trim();
+      var key = norm.normalizeAnswer(word);
+      var isSelected = !!selectedSet[key];
+      var isAnswer = !!answerSet[key];
+      chip.classList.remove('sp-wbt-chip--correct', 'sp-wbt-chip--incorrect', 'sp-wbt-chip--reveal');
+      if (exactMatch) {
+        if (isSelected) chip.classList.add('sp-wbt-chip--correct');
+      } else if (isSelected && !isAnswer) {
+        chip.classList.add('sp-wbt-chip--incorrect');
+      } else if (!isSelected && isAnswer) {
+        chip.classList.add('sp-wbt-chip--reveal');
+      } else if (isSelected && isAnswer) {
+        chip.classList.add('sp-wbt-chip--correct');
+      }
+    });
+    root.classList.toggle('sp-screen--wbt-correct', exactMatch);
+    root.classList.toggle('sp-screen--wbt-incorrect', !exactMatch);
+  }
+
+  function bindWordBankTick(root, screen, onChange) {
+    root.querySelectorAll('.sp-wbt-chip').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        if (root.classList.contains('sp-screen--locked')) return;
+        chip.classList.toggle('sp-wbt-chip--selected');
+        chip.setAttribute('aria-pressed', chip.classList.contains('sp-wbt-chip--selected') ? 'true' : 'false');
+        onChange();
+      });
+    });
+  }
+
   function buildInlineGapRenderOptions(payload) {
     return {
       gaps: payload.gaps || [],
@@ -2287,6 +2354,10 @@
 
     if (format === 'comma_placement') {
       bindCommaPlacement(root, screen, onChange);
+    }
+
+    if (format === 'word_bank_tick') {
+      bindWordBankTick(root, screen, onChange);
     }
   }
 
@@ -3002,6 +3073,9 @@
       }
       return true;
     }
+    if (f === 'word_bank_tick') {
+      return root.querySelectorAll('.sp-wbt-chip.sp-wbt-chip--selected').length > 0;
+    }
     if (f === 'free_text_gap_fill' || f === 'conjugation_gap_fill' || f === 'preselected_verb_gap_fill') {
       return allGapInputsFilled(root);
     }
@@ -3208,6 +3282,16 @@
           result.lifeLoss = cpCorrect ? 0 : 1;
           markCommaSlotResults(root, p, cpSelected);
         }
+        break;
+      }
+      case 'word_bank_tick': {
+        var wbtPayload = p;
+        var wbtSelected = getWordBankTickSelection(root);
+        result.userAnswer = wbtSelected.join(', ');
+        result.correctAnswer = (wbtPayload.answerWords || []).join(', ');
+        result.correct = norm.wordSetsMatch(wbtSelected, wbtPayload.answerWords, { caseSensitive: false });
+        result.lifeLoss = result.correct ? 0 : 1;
+        markWordBankTickResults(root, wbtPayload, wbtSelected);
         break;
       }
       case 'free_text_gap_fill':

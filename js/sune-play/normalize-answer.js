@@ -77,6 +77,25 @@
     return s.toLowerCase();
   }
 
+  function wordSetsMatch(givenWords, expectedWords, opts) {
+    opts = opts || {};
+    var normFn = opts.caseSensitive ? normalizeAnswerPreserveCase : normalizeAnswer;
+    var givenSet = {};
+    (givenWords || []).forEach(function(w) {
+      var key = normFn(w);
+      if (key) givenSet[key] = true;
+    });
+    var expectedSet = {};
+    (expectedWords || []).forEach(function(w) {
+      var key = normFn(w);
+      if (key) expectedSet[key] = true;
+    });
+    var givenKeys = Object.keys(givenSet);
+    var expectedKeys = Object.keys(expectedSet);
+    if (givenKeys.length !== expectedKeys.length) return false;
+    return givenKeys.every(function(k) { return expectedSet[k]; });
+  }
+
   function matchesCommaRewrite(given, item) {
     var normalizedGiven = normalizeCommaRewrite(given);
     if (!normalizedGiven) return false;
@@ -127,6 +146,7 @@
     answersMatch: answersMatch,
     matchesAnyAccepted: matchesAnyAccepted,
     matchesCommaRewrite: matchesCommaRewrite,
+    wordSetsMatch: wordSetsMatch,
     matchesBlanks: matchesBlanks
   };
 })();
