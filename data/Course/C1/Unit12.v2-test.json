@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 6,
+  "unit": 12,
+  "type": "vocabulary",
+  "unitTitle": "[TEST] Unit 12: Word bank tick",
+  "unitSubtitle": "Sandbox for word_bank_tick exercise type",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "word formation",
+    "word_bank_tick"
+  ],
+  "estimatedDurationMinutes": 8,
+  "lessonStyle": "sune-play-interactive",
+  "unitStructure": {
+    "mode": "theory_then_practice_nodes",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": true,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-u12-test-theory",
+    "title": "Test theory",
+    "shortTitle": "Theory",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": [
+      {
+        "id": "c1-u12-test-theory-card-1",
+        "title": "Word bank tick test",
+        "subtitle": "Sandbox unit",
+        "cardType": "rule_card",
+        "sections": [
+          {
+            "type": "bullet_list",
+            "title": "What to test",
+            "items": [
+              "Multi-select chip grid (~25 words)",
+              "One screen = full exercise, 1 life per wrong check",
+              "Set validation: case-insensitive, order-insensitive",
+              "Real data from C1 Unit12 ex.P (suffix -y)"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "word_bank_tick",
+        "displayName": "Select words from the bank",
+        "defaultLives": 3,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "word_chip_grid",
+          "studentAction": "multi_select_toggle",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-u12-test-node-1",
+      "title": "Word bank tick test",
+      "shortTitle": "WBT test",
+      "focus": [
+        "word_bank_tick suffix -y"
+      ],
+      "lives": 3,
+      "passCondition": {
+        "minimumCorrectScreens": 1,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u12-test-ex-wbt",
+          "formatType": "word_bank_tick",
+          "screenMode": "all_words_single_screen"
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 4,
+    "minimumScreensPerNode": 1
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Check which words take the suffix -y."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u12-test-ex-wbt"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u12-test-ex-wbt",
+        "type": "exercise",
+        "exerciseType": "word_bank_tick",
+        "exerciseTypeName": "Select words from the bank",
+        "title": "P: The suffix -y",
+        "instructions": "The suffix -y, as in risky, can be added to some nouns and verbs to form adjectives. Select the words by clicking them.",
+        "studentInstruction": "Tap every word that can take the suffix -y.",
+        "words": [
+          "brain",
+          "bump",
+          "budget",
+          "culture",
+          "curl",
+          "engine",
+          "flavour",
+          "guilt",
+          "hair",
+          "haste",
+          "juice",
+          "luck",
+          "lump",
+          "meat",
+          "method",
+          "milk",
+          "scare",
+          "shine",
+          "sport",
+          "spot",
+          "system",
+          "taste",
+          "waste",
+          "water",
+          "wealth"
+        ],
+        "answer": "brain, bump, curl, flavour, guilt, hair, haste, juice, luck, lump, meat, milk, scare, shine, sport, spot, taste, waste, water, wealth",
+        "interaction": {
+          "formatType": "word_bank_tick",
+          "screenMode": "all_words_single_screen"
+        }
+      }
+    ]
+  }
+}

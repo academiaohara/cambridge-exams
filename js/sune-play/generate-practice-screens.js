@@ -507,6 +507,30 @@
     return answer ? [answer] : [];
   }
 
+  function parseWordBankTickAnswers(answer) {
+    if (Array.isArray(answer)) {
+      return answer.map(function(w) { return String(w).trim(); }).filter(Boolean);
+    }
+    return String(answer || '').split(/,\s*/).map(function(w) { return w.trim(); }).filter(Boolean);
+  }
+
+  function buildWordBankTickPayload(exercise) {
+    var words = exercise.words || [];
+    var answerWords = exercise.answerWords || parseWordBankTickAnswers(exercise.answer);
+    return {
+      words: words.map(function(word, index) {
+        return { text: word, index: index };
+      }),
+      answerWords: answerWords,
+      validation: {
+        caseInsensitive: true,
+        orderInsensitive: true
+      },
+      instruction: exercise.studentInstruction || exercise.instructions || '',
+      explanation: exercise.explanation || ''
+    };
+  }
+
   function buildCommaPlacementPayload(item, exercise) {
     var sentence = String(item.sentence || '').trim();
     var answer = String(item.answer || '').trim();
@@ -901,6 +925,20 @@
         return;
       }
 
+      if (rule.screenMode === 'all_words_single_screen') {
+        var wbtFormat = rule.formatType || 'word_bank_tick';
+        var wbtPayload = buildWordBankTickPayload(exercise);
+        var wbtScreenId = buildScreenId(nodeId, exerciseId, null, wbtFormat);
+        screens.push(buildScreen(unit, node, wbtFormat, wbtPayload, {
+          screenId: wbtScreenId,
+          itemId: exerciseId,
+          sourceExerciseId: exerciseId,
+          fallbackFormatType: rule.fallbackFormatType,
+          formatTypeOverride: wbtFormat
+        }));
+        return;
+      }
+
       (rule.sourceItemIds || []).forEach(function(itemId) {
         var item = findItem(exercise, itemId);
         if (!item) {
@@ -937,6 +975,7 @@
     buildCrosswordCluePayload: buildCrosswordCluePayload,
     buildSyncedGapFillPayload: buildSyncedGapFillPayload,
     buildCommaPlacementPayload: buildCommaPlacementPayload,
-    parseCommaAfterTokenIndexes: parseCommaAfterTokenIndexes
+    parseCommaAfterTokenIndexes: parseCommaAfterTokenIndexes,
+    buildWordBankTickPayload: buildWordBankTickPayload
   };
 })();
