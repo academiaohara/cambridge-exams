@@ -678,6 +678,8 @@
         return p.instruction || 'Choose the correct answer: A, B, C or D.';
       case 'find_extra_word':
         return p.instruction || 'If the line is correct, tap OK. If there is an extra word, tap it.';
+      case 'keyword_transformation':
+        return p.instruction || 'Complete the second sentence using the keyword. Write between two and five words.';
       default:
         return p.instruction || '';
     }
@@ -715,6 +717,8 @@
         return ((p.sentenceBefore || '') + ' ___ ' + (p.sentenceAfter || '')).replace(/\s+/g, ' ').trim();
       case 'find_extra_word':
         return p.sentence || p.instruction || '';
+      case 'keyword_transformation':
+        return p.promptSentence || p.instruction || '';
       default:
         return p.instruction || p.sentence || '';
     }

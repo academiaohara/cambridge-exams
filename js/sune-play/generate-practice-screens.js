@@ -319,6 +319,48 @@
     };
   }
 
+  function buildKeywordTransformationPayload(item, exercise) {
+    if (item.promptSentence && item.targetSentence) {
+      return {
+        promptSentence: item.promptSentence,
+        keyword: item.keyword || item.keyWord || '',
+        targetSentence: item.targetSentence,
+        answer: item.answer,
+        acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
+        minWords: item.minWords != null ? item.minWords : 2,
+        maxWords: item.maxWords != null ? item.maxWords : 5,
+        wordCountRule: item.wordCountRule || 'whitespace_tokens_apostrophe_single_word',
+        explanation: item.explanation || '',
+        instruction: exercise.studentInstruction || exercise.instructions || ''
+      };
+    }
+
+    var sentence = item.sentence || '';
+    var nlIdx = sentence.indexOf('\n');
+    var promptSentence = nlIdx !== -1 ? sentence.slice(0, nlIdx).trim() : sentence.trim();
+    var secondPart = nlIdx !== -1 ? sentence.slice(nlIdx + 1).trim() : '';
+    var keyword = item.keyword || item.keyWord || '';
+    var targetSentence = secondPart;
+    var kwMatch = secondPart.match(/^\*\*([^*]+)\*\*\s*/);
+    if (kwMatch) {
+      keyword = keyword || kwMatch[1];
+      targetSentence = secondPart.slice(kwMatch[0].length).trim();
+    }
+
+    return {
+      promptSentence: promptSentence,
+      keyword: keyword,
+      targetSentence: targetSentence,
+      answer: item.answer,
+      acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
+      minWords: item.minWords != null ? item.minWords : 2,
+      maxWords: item.maxWords != null ? item.maxWords : 5,
+      wordCountRule: 'whitespace_tokens_apostrophe_single_word',
+      explanation: item.explanation || '',
+      instruction: exercise.studentInstruction || exercise.instructions || ''
+    };
+  }
+
   function buildScreenId(nodeId, exerciseId, itemId, formatType) {
     return [nodeId, exerciseId, itemId, formatType].filter(Boolean).join('__');
   }
@@ -510,6 +552,9 @@
       case 'find_extra_word':
         return buildFindExtraWordPayload(item, exercise);
 
+      case 'keyword_transformation':
+        return buildKeywordTransformationPayload(item, exercise);
+
       default:
         warn('Unknown formatType: ' + formatType);
         return { raw: item };
@@ -659,6 +704,7 @@
     normalizeFormatType: normalizeFormatType,
     normalizeMcOptions: normalizeMcOptions,
     buildMc4OptionPassagePayload: buildMc4OptionPassagePayload,
-    buildFindExtraWordPayload: buildFindExtraWordPayload
+    buildFindExtraWordPayload: buildFindExtraWordPayload,
+    buildKeywordTransformationPayload: buildKeywordTransformationPayload
   };
 })();

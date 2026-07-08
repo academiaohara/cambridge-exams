@@ -5,6 +5,7 @@
   'use strict';
 
   var norm = window.SunePlayNormalize;
+  var gapWords = window.SunePlayCountGapWords;
   var GAP_RE = /(?:\.{3,}|…{2,}|_{3,})/g;
   var PASSAGE_GAP_MARK_RE = /\((\d+)\)\s*(?:\.{3,}|…{2,}|_{3,})/g;
 
@@ -763,6 +764,7 @@
       case 'preselected_verb_gap_fill': return renderGapFill(screen);
       case 'mc_4_option': return renderMc4Option(screen);
       case 'find_extra_word': return renderFindExtraWord(screen);
+      case 'keyword_transformation': return renderKeywordTransformation(screen);
       default:
         return '<p class="sp-unknown">Unsupported format: ' + esc(screen.formatType) + '</p>';
     }
@@ -1116,6 +1118,92 @@
         onChange();
       });
     }
+  }
+
+  function buildKwtGapField() {
+    return '<span class="sp-inline-gap-group sp-inline-gap-group--solo sp-kwt-gap-wrap" role="group" aria-label="Transformation gap">' +
+      '<input type="text" class="sp-gap-inline-input sp-kwt-gap-input" id="sp-kwt-input" ' +
+      'autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="sp-kwt-word-count" ' +
+      'aria-label="Write between two and five words">' +
+    '</span>';
+  }
+
+  function renderKeywordTransformation(screen) {
+    var p = screen.payload || {};
+    var minWords = p.minWords != null ? p.minWords : 2;
+    var maxWords = p.maxWords != null ? p.maxWords : 5;
+    var targetHtml = renderSentenceWithGap(p.targetSentence || '', buildKwtGapField());
+    var html = '<div class="sp-screen sp-screen--kwt" data-format="keyword_transformation">';
+    html += '<div class="sp-kwt-prompt sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
+      esc(p.promptSentence || '') + '</div>';
+    if (p.keyword) {
+      html += '<div class="sp-kwt-keyword-row"><span class="sp-kwt-keyword">' + esc(p.keyword) + '</span></div>';
+    }
+    html += '<div class="sp-kwt-target"><p class="sp-kwt-target-sentence">' + targetHtml + '</p></div>';
+    html += '<p class="sp-kwt-word-count sp-kwt-word-count--empty" id="sp-kwt-word-count" aria-live="polite">' +
+      '0 / ' + minWords + '–' + maxWords + ' words</p>';
+    html += '</div>';
+    return html;
+  }
+
+  function getKwtInput(root) {
+    return root ? root.querySelector('#sp-kwt-input') : null;
+  }
+
+  function getKwtWordLimits(screen) {
+    var p = (screen && screen.payload) || {};
+    return {
+      min: p.minWords != null ? p.minWords : 2,
+      max: p.maxWords != null ? p.maxWords : 5
+    };
+  }
+
+  function countKwtGapWords(text) {
+    if (gapWords && gapWords.countKeywordTransformationWords) {
+      return gapWords.countKeywordTransformationWords(text);
+    }
+    var trimmed = String(text || '').trim();
+    return trimmed ? trimmed.split(/\s+/).filter(Boolean).length : 0;
+  }
+
+  function isKwtWordCountValid(text, screen) {
+    var limits = getKwtWordLimits(screen);
+    if (gapWords && gapWords.isKeywordTransformationWordCountValid) {
+      return gapWords.isKeywordTransformationWordCountValid(text, limits.min, limits.max);
+    }
+    var count = countKwtGapWords(text);
+    return count >= limits.min && count <= limits.max;
+  }
+
+  function updateKwtWordCountDisplay(root, screen) {
+    var counter = root.querySelector('#sp-kwt-word-count');
+    var input = getKwtInput(root);
+    if (!counter) return;
+    var limits = getKwtWordLimits(screen);
+    var count = countKwtGapWords(input ? input.value : '');
+    counter.textContent = count + ' / ' + limits.min + '–' + limits.max + ' words';
+    counter.classList.remove('sp-kwt-word-count--empty', 'sp-kwt-word-count--valid', 'sp-kwt-word-count--invalid');
+    if (!count) {
+      counter.classList.add('sp-kwt-word-count--empty');
+    } else if (isKwtWordCountValid(input ? input.value : '', screen)) {
+      counter.classList.add('sp-kwt-word-count--valid');
+    } else {
+      counter.classList.add('sp-kwt-word-count--invalid');
+    }
+  }
+
+  function bindKeywordTransformation(root, screen, onChange) {
+    var payload = screen.payload || {};
+    var input = getKwtInput(root);
+    bindSentenceSpeak(root, function() {
+      return payload.promptSentence || '';
+    });
+    if (!input) return;
+    input.addEventListener('input', function() {
+      updateKwtWordCountDisplay(root, screen);
+      onChange();
+    });
+    updateKwtWordCountDisplay(root, screen);
   }
 
   function buildInlineGapRenderOptions(payload) {
@@ -1751,6 +1839,10 @@
 
     if (format === 'find_extra_word') {
       bindFindExtraWord(root, screen, onChange);
+    }
+
+    if (format === 'keyword_transformation') {
+      bindKeywordTransformation(root, screen, onChange);
     }
   }
 
@@ -2438,6 +2530,11 @@
       var fewSel = getFewSelection(root);
       return !!(fewSel.selectedWord || fewSel.okSelected);
     }
+    if (f === 'keyword_transformation') {
+      var kwtInput = getKwtInput(root);
+      var kwtValue = kwtInput ? kwtInput.value.trim() : '';
+      return !!kwtValue && isKwtWordCountValid(kwtValue, screen);
+    }
     if (f === 'free_text_gap_fill' || f === 'conjugation_gap_fill' || f === 'preselected_verb_gap_fill') {
       return allGapInputsFilled(root);
     }
@@ -2554,6 +2651,27 @@
         result.correct = fewCorrect;
         result.lifeLoss = fewCorrect ? 0 : 1;
         markFewResults(root, fewPayload, fewSelection);
+        break;
+      }
+      case 'keyword_transformation': {
+        var kwtInp = getKwtInput(root);
+        var kwtText = kwtInp ? kwtInp.value.trim() : '';
+        var kwtLimits = getKwtWordLimits(screen);
+        result.userAnswer = kwtText;
+        result.correctAnswer = (p.acceptedAnswers && p.acceptedAnswers[0]) || p.answer || '';
+        if (!kwtText || !isKwtWordCountValid(kwtText, screen)) {
+          result.correct = false;
+          result.lifeLoss = 0;
+          result.wordCountInvalid = true;
+          break;
+        }
+        result.correct = norm.matchesAnyAccepted(kwtText, p);
+        result.lifeLoss = result.correct ? 0 : 1;
+        if (kwtInp) {
+          kwtInp.classList.toggle('sp-kwt-gap-input--correct', result.correct);
+          kwtInp.classList.toggle('sp-kwt-gap-input--incorrect', !result.correct);
+          kwtInp.readOnly = true;
+        }
         break;
       }
       case 'free_text_gap_fill':
