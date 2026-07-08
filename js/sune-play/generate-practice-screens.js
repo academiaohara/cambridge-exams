@@ -440,6 +440,24 @@
     };
   }
 
+  function buildCrosswordCluePayload(item, exercise) {
+    var answer = String(item.answer || '').trim();
+    var letterCount = item.letterCount != null
+      ? item.letterCount
+      : answer.replace(/\s+/g, '').length;
+    return {
+      layoutMode: item.layoutMode || 'clue_list',
+      direction: item.direction || 'across',
+      clueNumber: item.clueNumber != null ? item.clueNumber : item.num,
+      clue: item.clue || '',
+      answer: answer,
+      acceptedAnswers: item.acceptedAnswers || (answer ? [answer] : []),
+      letterCount: letterCount,
+      explanation: item.explanation || '',
+      instruction: exercise.studentInstruction || exercise.instructions || ''
+    };
+  }
+
   function buildScreenId(nodeId, exerciseId, itemId, formatType) {
     return [nodeId, exerciseId, itemId, formatType].filter(Boolean).join('__');
   }
@@ -634,6 +652,9 @@
       case 'keyword_transformation':
         return buildKeywordTransformationPayload(item, exercise);
 
+      case 'crossword_clues':
+        return buildCrosswordCluePayload(item, exercise);
+
       default:
         warn('Unknown formatType: ' + formatType);
         return { raw: item };
@@ -801,6 +822,7 @@
     buildMc4OptionPassagePayload: buildMc4OptionPassagePayload,
     buildFindExtraWordPayload: buildFindExtraWordPayload,
     buildKeywordTransformationPayload: buildKeywordTransformationPayload,
-    buildColumnMatchingPayload: buildColumnMatchingPayload
+    buildColumnMatchingPayload: buildColumnMatchingPayload,
+    buildCrosswordCluePayload: buildCrosswordCluePayload
   };
 })();

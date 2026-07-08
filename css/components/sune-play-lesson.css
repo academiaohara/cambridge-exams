@@ -1952,6 +1952,98 @@ button.sp-example-line.sp-speakable {
   }
 }
 
+/* ── Crossword clues (letter boxes) ────────────────────────────────── */
+.sp-screen--crossword {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sp-cw-clue-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sp-cw-direction {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--sp-duo-blue-light);
+  border: 2px solid var(--sp-duo-blue);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--sp-duo-blue-dark);
+}
+
+.sp-cw-clue-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.8rem;
+  min-height: 1.8rem;
+  border-radius: 999px;
+  background: #eef2ff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--sp-duo-blue-dark);
+}
+
+.sp-cw-clue-text {
+  margin: 0;
+  font-size: clamp(0.92rem, 0.55rem + 1.1vw, 1.02rem);
+  line-height: 1.55;
+  color: var(--text-primary, #1e293b);
+}
+
+.sp-cw-letter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.sp-cw-letter {
+  width: 2rem;
+  height: 2.2rem;
+  padding: 0;
+  border: 2px solid #dce3f0;
+  border-radius: 8px;
+  background: var(--white);
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 2.2rem;
+  color: var(--text-primary, #1e293b);
+  text-transform: lowercase;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sp-cw-letter:focus {
+  outline: none;
+  border-color: var(--sp-duo-blue);
+  box-shadow: 0 0 0 2px rgba(28, 176, 246, 0.2);
+}
+
+.sp-cw-letter--correct {
+  border-color: var(--sp-duo-green, #58cc02);
+  background: rgba(88, 204, 2, 0.12);
+  color: var(--sp-duo-green-dark, #3d8f00);
+}
+
+.sp-cw-letter--incorrect {
+  border-color: #ef4444;
+  background: rgba(255, 120, 120, 0.12);
+  color: #b91c1c;
+}
+
+.sp-cw-letter:disabled {
+  cursor: default;
+}
+
 @media (min-width: 768px) {
   .sp-mc-sheet {
     align-items: center;

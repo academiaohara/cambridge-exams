@@ -766,6 +766,7 @@
       case 'find_extra_word': return renderFindExtraWord(screen);
       case 'keyword_transformation': return renderKeywordTransformation(screen);
       case 'column_matching': return renderColumnMatching(screen);
+      case 'crossword_clues': return renderCrosswordClues(screen);
       default:
         return '<p class="sp-unknown">Unsupported format: ' + esc(screen.formatType) + '</p>';
     }
@@ -1366,6 +1367,104 @@
     });
     root.querySelectorAll('.sp-cm-right-item').forEach(function(btn) {
       btn.disabled = true;
+    });
+  }
+
+  function renderCrosswordClues(screen) {
+    var p = screen.payload || {};
+    var count = p.letterCount || String(p.answer || '').replace(/\s+/g, '').length || 1;
+    var dirLabel = p.direction === 'down' ? 'Down' : 'Across';
+    var html = '<div class="sp-screen sp-screen--crossword" data-format="crossword_clues">';
+    html += '<div class="sp-cw-clue-header">';
+    html += '<span class="sp-cw-direction">' + esc(dirLabel) + '</span>';
+    html += '<span class="sp-cw-clue-num">' + esc(String(p.clueNumber != null ? p.clueNumber : '')) + '</span>';
+    html += '</div>';
+    html += '<p class="sp-cw-clue-text">' + esc(p.clue) + '</p>';
+    html += '<div class="sp-cw-letter-row" id="sp-cw-letter-row" role="group" aria-label="Answer letters">';
+    for (var i = 0; i < count; i++) {
+      html += '<input type="text" class="sp-cw-letter" maxlength="1" data-cw-idx="' + i + '" ' +
+        'inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" ' +
+        'aria-label="Letter ' + (i + 1) + ' of ' + count + '">';
+    }
+    html += '</div></div>';
+    return html;
+  }
+
+  function getCrosswordLetterInputs(root) {
+    var row = root.querySelector('#sp-cw-letter-row');
+    if (!row) return [];
+    var inputs = Array.prototype.slice.call(row.querySelectorAll('.sp-cw-letter'));
+    inputs.sort(function(a, b) {
+      return parseInt(a.getAttribute('data-cw-idx') || '0', 10) -
+        parseInt(b.getAttribute('data-cw-idx') || '0', 10);
+    });
+    return inputs;
+  }
+
+  function getCrosswordWord(root) {
+    return getCrosswordLetterInputs(root).map(function(inp) {
+      return (inp.value || '').trim();
+    }).join('');
+  }
+
+  function allCrosswordLettersFilled(root) {
+    var inputs = getCrosswordLetterInputs(root);
+    if (!inputs.length) return false;
+    return inputs.every(function(inp) { return !!(inp.value || '').trim(); });
+  }
+
+  function focusCrosswordLetter(root, idx) {
+    var input = root.querySelector('.sp-cw-letter[data-cw-idx="' + idx + '"]');
+    if (input && !input.disabled) {
+      input.focus();
+      input.select();
+    }
+  }
+
+  function bindCrosswordClues(root, screen, onChange) {
+    var inputs = getCrosswordLetterInputs(root);
+    inputs.forEach(function(input) {
+      input.addEventListener('input', function() {
+        if (root.classList.contains('sp-screen--locked')) return;
+        var val = input.value.replace(/[^a-zA-Z]/g, '');
+        input.value = val ? val[val.length - 1] : '';
+        if (input.value) {
+          var idx = parseInt(input.getAttribute('data-cw-idx') || '0', 10);
+          focusCrosswordLetter(root, idx + 1);
+        }
+        onChange();
+      });
+
+      input.addEventListener('keydown', function(e) {
+        if (root.classList.contains('sp-screen--locked')) return;
+        var idx = parseInt(input.getAttribute('data-cw-idx') || '0', 10);
+        if (e.key === 'Backspace' || e.key === 'Delete') {
+          if (!input.value) {
+            e.preventDefault();
+            focusCrosswordLetter(root, idx - 1);
+          }
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          focusCrosswordLetter(root, idx - 1);
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          focusCrosswordLetter(root, idx + 1);
+        }
+      });
+    });
+  }
+
+  function markCrosswordResults(root, payload, givenWord) {
+    var expected = String(payload.answer || '').toLowerCase();
+    var given = String(givenWord || '').toLowerCase();
+    var filled = !!given.replace(/\s/g, '');
+    var inputs = getCrosswordLetterInputs(root);
+    inputs.forEach(function(inp, bi) {
+      inp.disabled = true;
+      inp.classList.remove('sp-cw-letter--correct', 'sp-cw-letter--incorrect');
+      if (!filled) return;
+      var letterOk = (inp.value || '').toLowerCase() === (expected[bi] || '');
+      inp.classList.add(letterOk ? 'sp-cw-letter--correct' : 'sp-cw-letter--incorrect');
     });
   }
 
@@ -2010,6 +2109,10 @@
 
     if (format === 'column_matching') {
       bindColumnMatching(root, screen, onChange);
+    }
+
+    if (format === 'crossword_clues') {
+      bindCrosswordClues(root, screen, onChange);
     }
   }
 
@@ -2710,6 +2813,9 @@
         return !!cmPairs[String(pair.pairId)];
       });
     }
+    if (f === 'crossword_clues') {
+      return allCrosswordLettersFilled(root);
+    }
     if (f === 'free_text_gap_fill' || f === 'conjugation_gap_fill' || f === 'preselected_verb_gap_fill') {
       return allGapInputsFilled(root);
     }
@@ -2866,6 +2972,15 @@
         result.correct = cmWrong === 0;
         result.lifeLoss = cmWrong;
         markColumnMatchResults(root, cmPairs, cmPayload.pairs);
+        break;
+      }
+      case 'crossword_clues': {
+        var cwWord = getCrosswordWord(root);
+        result.userAnswer = cwWord;
+        result.correctAnswer = p.answer || '';
+        result.correct = norm.matchesAnyAccepted(cwWord, p);
+        result.lifeLoss = result.correct ? 0 : 1;
+        markCrosswordResults(root, p, cwWord);
         break;
       }
       case 'free_text_gap_fill':
