@@ -762,6 +762,7 @@
       case 'meaning_contrast': return renderMeaningContrast(screen);
       case 'preselected_verb_gap_fill': return renderGapFill(screen);
       case 'mc_4_option': return renderMc4Option(screen);
+      case 'find_extra_word': return renderFindExtraWord(screen);
       default:
         return '<p class="sp-unknown">Unsupported format: ' + esc(screen.formatType) + '</p>';
     }
@@ -993,6 +994,127 @@
       bindMc4OptionPassage(root, screen, onChange);
     } else {
       bindMc4OptionStandalone(root, screen, onChange);
+    }
+  }
+
+  function renderFindExtraWord(screen) {
+    var p = screen.payload || {};
+    var html = '<div class="sp-screen sp-screen--few" data-format="find_extra_word">';
+    html += '<div class="sp-few-row">';
+    html += '<div class="sp-few-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">';
+    (p.tokens || []).forEach(function(token) {
+      var idx = token.index != null ? token.index : 0;
+      var isAnswer = token.isAnswer ? '1' : '0';
+      if (token.clickable !== false) {
+        html += '<button type="button" class="sp-few-token sp-few-token--clickable" ' +
+          'data-token-index="' + idx + '" data-is-answer="' + isAnswer + '" ' +
+          'aria-pressed="false">' + esc(token.text) + '</button> ';
+      } else {
+        html += '<span class="sp-few-token sp-few-token--static">' + esc(token.text) + '</span> ';
+      }
+    });
+    html += '</div>';
+    html += '<button type="button" class="sp-few-ok-btn" aria-pressed="false">OK</button>';
+    html += '</div></div>';
+    return html;
+  }
+
+  function getFewSelection(root) {
+    var selectedWord = root.querySelector('.sp-few-token--selected');
+    var okBtn = root.querySelector('.sp-few-ok-btn');
+    return {
+      selectedWord: selectedWord,
+      okSelected: !!(okBtn && okBtn.classList.contains('sp-few-ok-btn--selected')),
+      okBtn: okBtn
+    };
+  }
+
+  function markFewResults(root, payload, selection) {
+    var okBtn = selection.okBtn;
+    var selectedWord = selection.selectedWord;
+    var words = root.querySelectorAll('.sp-few-token--clickable');
+    var isOkItem = !!payload.isCorrectSentence;
+
+    words.forEach(function(w) { w.disabled = true; });
+    if (okBtn) okBtn.disabled = true;
+
+    if (isOkItem) {
+      if (selection.okSelected && !selectedWord) {
+        if (okBtn) okBtn.classList.add('sp-few-ok-btn--correct');
+      } else {
+        if (okBtn) okBtn.classList.add('sp-few-ok-btn--incorrect');
+        if (selectedWord) selectedWord.classList.add('sp-few-token--incorrect');
+      }
+      return;
+    }
+
+    if (selectedWord) {
+      var isAnswer = selectedWord.getAttribute('data-is-answer') === '1';
+      selectedWord.classList.add(isAnswer ? 'sp-few-token--correct' : 'sp-few-token--incorrect');
+      if (!isAnswer) {
+        words.forEach(function(w) {
+          if (w.getAttribute('data-is-answer') === '1') w.classList.add('sp-few-token--reveal');
+        });
+      }
+    } else if (selection.okSelected) {
+      if (okBtn) okBtn.classList.add('sp-few-ok-btn--incorrect');
+      words.forEach(function(w) {
+        if (w.getAttribute('data-is-answer') === '1') w.classList.add('sp-few-token--reveal');
+      });
+    } else {
+      words.forEach(function(w) {
+        if (w.getAttribute('data-is-answer') === '1') w.classList.add('sp-few-token--reveal');
+      });
+    }
+  }
+
+  function bindFindExtraWord(root, screen, onChange) {
+    var payload = screen.payload || {};
+    bindSentenceSpeak(root, function() {
+      return payload.sentence || '';
+    });
+
+    var okBtn = root.querySelector('.sp-few-ok-btn');
+
+    function clearWordSelection() {
+      root.querySelectorAll('.sp-few-token--selected').forEach(function(w) {
+        w.classList.remove('sp-few-token--selected');
+        w.setAttribute('aria-pressed', 'false');
+      });
+    }
+
+    function clearOkSelection() {
+      if (!okBtn) return;
+      okBtn.classList.remove('sp-few-ok-btn--selected');
+      okBtn.setAttribute('aria-pressed', 'false');
+    }
+
+    root.querySelectorAll('.sp-few-token--clickable').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (root.classList.contains('sp-screen--locked')) return;
+        var wasSelected = btn.classList.contains('sp-few-token--selected');
+        clearWordSelection();
+        if (!wasSelected) {
+          btn.classList.add('sp-few-token--selected');
+          btn.setAttribute('aria-pressed', 'true');
+          clearOkSelection();
+        }
+        onChange();
+      });
+    });
+
+    if (okBtn) {
+      okBtn.addEventListener('click', function() {
+        if (root.classList.contains('sp-screen--locked')) return;
+        var wasSelected = okBtn.classList.contains('sp-few-ok-btn--selected');
+        clearOkSelection();
+        if (!wasSelected) {
+          okBtn.classList.add('sp-few-ok-btn--selected');
+          okBtn.setAttribute('aria-pressed', 'true');
+          clearWordSelection();
+        }
+        onChange();
+      });
     }
   }
 
@@ -1625,6 +1747,10 @@
 
     if (format === 'mc_4_option') {
       bindMc4Option(root, screen, onChange);
+    }
+
+    if (format === 'find_extra_word') {
+      bindFindExtraWord(root, screen, onChange);
     }
   }
 
@@ -2308,6 +2434,10 @@
       if (mp.displayMode === 'passage') return allMcPassageGapsFilled(root, screen);
       return !!root.querySelector('.sp-option-btn--selected');
     }
+    if (f === 'find_extra_word') {
+      var fewSel = getFewSelection(root);
+      return !!(fewSel.selectedWord || fewSel.okSelected);
+    }
     if (f === 'free_text_gap_fill' || f === 'conjugation_gap_fill' || f === 'preselected_verb_gap_fill') {
       return allGapInputsFilled(root);
     }
@@ -2396,6 +2526,34 @@
           result.correct = letter.toUpperCase() === String(p.answer || '').toUpperCase();
           result.lifeLoss = result.correct ? 0 : 1;
         }
+        break;
+      }
+      case 'find_extra_word': {
+        var fewPayload = p;
+        var fewSelection = getFewSelection(root);
+        var fewOkItem = !!fewPayload.isCorrectSentence;
+        var fewCorrect = false;
+
+        if (fewOkItem) {
+          fewCorrect = fewSelection.okSelected && !fewSelection.selectedWord;
+          result.userAnswer = fewSelection.okSelected ? 'OK' : (fewSelection.selectedWord ? fewSelection.selectedWord.textContent.trim() : '');
+          result.correctAnswer = 'OK';
+        } else {
+          if (fewSelection.selectedWord) {
+            var fewIsAnswer = fewSelection.selectedWord.getAttribute('data-is-answer') === '1';
+            fewCorrect = fewIsAnswer && !fewSelection.okSelected;
+            result.userAnswer = fewSelection.selectedWord.textContent.trim();
+          } else if (fewSelection.okSelected) {
+            result.userAnswer = 'OK';
+          } else {
+            result.userAnswer = '';
+          }
+          result.correctAnswer = fewPayload.answer || '';
+        }
+
+        result.correct = fewCorrect;
+        result.lifeLoss = fewCorrect ? 0 : 1;
+        markFewResults(root, fewPayload, fewSelection);
         break;
       }
       case 'free_text_gap_fill':
