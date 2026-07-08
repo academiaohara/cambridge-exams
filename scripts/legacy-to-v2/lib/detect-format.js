@@ -39,6 +39,17 @@ function isPassageWordFormation(exercise) {
   return /\([A-Z]{2,}\)/.test(passage) || /…\(\d+\)…\s*\([A-Z]+\)/.test(passage);
 }
 
+function isWordBankGapFill(exercise) {
+  var words = exercise.words || exercise.wordBank || [];
+  if (!words.length) return false;
+  if (isWordTick(exercise)) return false;
+  var items = flattenExerciseItems(exercise);
+  if (!items.length) return false;
+  return items.every(function(it) {
+    return hasGapMarkers(it.sentence || '');
+  });
+}
+
 /**
  * Detect v2 format for a legacy exercise block.
  * Returns { formatType, screenMode, legacyPattern, legacyItemCount, notes }
@@ -176,6 +187,14 @@ export function detectLegacyFormat(exercise) {
     result.screenMode = 'all_words_single_screen';
     result.legacyPattern = 'word-tick';
     result.legacyItemCount = 1;
+    return result;
+  }
+
+  if (isWordBankGapFill(exercise)) {
+    result.formatType = 'word_bank_gap_fill';
+    result.legacyPattern = 'word-bank-gap';
+    result.legacyItemCount = items.length;
+    result.notes.push('words[] + gap items → word_bank_gap_fill');
     return result;
   }
 

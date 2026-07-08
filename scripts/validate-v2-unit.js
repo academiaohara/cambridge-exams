@@ -26,7 +26,7 @@ const SUPPORTED_FORMAT_TYPES = new Set([
   'passage_gap_fill', 'guided_error_choice', 'stative_sorting', 'meaning_contrast',
   'preselected_verb_gap_fill', 'mc_4_option', 'find_extra_word',
   'keyword_transformation', 'column_matching', 'crossword_clues',
-  'synced_gap_fill', 'comma_placement', 'word_bank_tick'
+  'synced_gap_fill', 'comma_placement', 'word_bank_tick', 'word_bank_gap_fill'
 ]);
 
 const SCREEN_MODES = new Set([

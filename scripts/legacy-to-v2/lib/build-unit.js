@@ -207,6 +207,112 @@ const FORMAT_DEFINITIONS = {
       studentAction: 'sort_into_groups',
       evaluationTrigger: 'check_button'
     }
+  },
+  word_bank_gap_fill: {
+    formatType: 'word_bank_gap_fill',
+    displayName: 'Complete with words from the box',
+    defaultLives: 5,
+    maxLifeLossPerScreen: 1,
+    attemptsPerScreen: 1,
+    failureAction: 'show_explanation_then_continue',
+    interaction: {
+      component: 'word_bank_chips_plus_gap_input',
+      studentAction: 'tap_word_or_type_answer',
+      evaluationTrigger: 'check_button',
+      chipLayout: 'wrap_scroll'
+    }
+  },
+  word_order_tiles: {
+    formatType: 'word_order_tiles',
+    displayName: 'Build the sentence with tiles',
+    defaultLives: 5,
+    maxLifeLossPerScreen: 1,
+    attemptsPerScreen: 1,
+    failureAction: 'show_explanation_then_continue',
+    interaction: {
+      component: 'visual_context_word_tiles_ordering',
+      studentAction: 'tap_or_drag_tiles',
+      evaluationTrigger: 'check_button'
+    }
+  },
+  verb_bank_two_step: {
+    formatType: 'verb_bank_two_step',
+    displayName: 'Choose verb and conjugate',
+    defaultLives: 5,
+    maxLifeLossPerScreen: 2,
+    attemptsPerScreen: 1,
+    failureAction: 'show_correct_answer_then_continue',
+    fallbackFormatType: 'preselected_verb_gap_fill',
+    interaction: {
+      component: 'verb_bank_tiles_plus_gap_input',
+      studentAction: 'tap_base_verb_tile_then_type_conjugation',
+      evaluationTrigger: 'check_button'
+    }
+  },
+  passage_error_hunt_single: {
+    formatType: 'passage_error_hunt_single',
+    displayName: 'Find the error in the passage',
+    defaultLives: 5,
+    maxLifeLossPerScreen: 1,
+    attemptsPerScreen: 1,
+    failureAction: 'show_explanation_then_continue',
+    interaction: {
+      component: 'passage_tap_error',
+      studentAction: 'tap_wrong_phrase_in_text',
+      evaluationTrigger: 'check_button'
+    }
+  },
+  passage_error_hunt_counter: {
+    formatType: 'passage_error_hunt_counter',
+    displayName: 'Find all errors in the passage',
+    defaultLives: 6,
+    maxLifeLossPerScreen: 2,
+    attemptsPerScreen: 1,
+    failureAction: 'show_explanation_then_continue',
+    interaction: {
+      component: 'passage_tap_error_counter',
+      studentAction: 'tap_wrong_phrases_in_text',
+      evaluationTrigger: 'check_button'
+    }
+  },
+  guided_error_choice: {
+    formatType: 'guided_error_choice',
+    displayName: 'Choose the correct form',
+    defaultLives: 5,
+    maxLifeLossPerScreen: 1,
+    attemptsPerScreen: 1,
+    failureAction: 'show_explanation_then_continue',
+    interaction: {
+      component: 'guided_error_options',
+      studentAction: 'tap_one_option',
+      evaluationTrigger: 'check_button'
+    }
+  },
+  meaning_contrast: {
+    formatType: 'meaning_contrast',
+    displayName: 'Choose the meaning',
+    defaultLives: 4,
+    maxLifeLossPerScreen: 1,
+    attemptsPerScreen: 1,
+    failureAction: 'show_explanation_then_continue',
+    interaction: {
+      component: 'choice_cards',
+      studentAction: 'tap_one_option',
+      evaluationTrigger: 'on_option_tap'
+    }
+  },
+  preselected_verb_gap_fill: {
+    formatType: 'preselected_verb_gap_fill',
+    displayName: 'Type the conjugation',
+    defaultLives: 5,
+    maxLifeLossPerScreen: 1,
+    attemptsPerScreen: 1,
+    failureAction: 'show_correct_answer_then_continue',
+    interaction: {
+      component: 'inline_gap_input',
+      studentAction: 'type_conjugation',
+      evaluationTrigger: 'check_button'
+    }
   }
 };
 
@@ -218,7 +324,7 @@ export function buildV2Unit(legacyUnit, options) {
   var unitNum = legacyUnit.unit;
   var unitType = legacyUnit.type || 'grammar';
   var unitPrefix = slugify(level) + '-u' + unitNum;
-  var pilotTag = options.pilotTag || '[PILOT]';
+  var pilotTag = options.pilotTag != null ? options.pilotTag : '';
 
   var legacyExercises = extractLegacyExercises(legacyUnit);
   var convertedExercises = [];
@@ -272,7 +378,7 @@ export function buildV2Unit(legacyUnit, options) {
       block: block,
       unit: unitNum,
       type: unitType,
-      unitTitle: pilotTag + ' ' + (legacyUnit.unitTitle || ('Unit ' + unitNum)),
+      unitTitle: (pilotTag ? pilotTag + ' ' : '') + (legacyUnit.unitTitle || ('Unit ' + unitNum)),
       unitSubtitle: legacyUnit.unitSubtitle || legacyUnit.title || '',
       unitLevel: level,
       unitFocus: legacyUnit.unitFocus || [legacyUnit.unitTitle || ('Unit ' + unitNum)],

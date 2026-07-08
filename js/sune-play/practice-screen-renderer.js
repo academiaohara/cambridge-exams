@@ -186,6 +186,35 @@
     return true;
   }
 
+  function bindWordBankGapFill(root, onChange) {
+    var chips = root.querySelectorAll('.sp-gap-wordbank-chip');
+    if (!chips.length) return;
+
+    function firstEmptyGapInput() {
+      var inputs = root.querySelectorAll('.sp-gap-inline-input');
+      for (var i = 0; i < inputs.length; i++) {
+        if (!inputs[i].value.trim()) return inputs[i];
+      }
+      return inputs[0] || null;
+    }
+
+    chips.forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        if (root.classList.contains('sp-screen--locked')) return;
+        if (chip.classList.contains('sp-gap-wordbank-chip--used')) return;
+        var word = chip.getAttribute('data-word') || '';
+        var input = firstEmptyGapInput();
+        if (!input || !word) return;
+        input.value = word;
+        chip.classList.add('sp-gap-wordbank-chip--used');
+        chip.setAttribute('aria-pressed', 'true');
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        onChange();
+        input.focus();
+      });
+    });
+  }
+
   function bindGapInputs(root, onChange) {
     var inputs = root.querySelectorAll('.sp-gap-inline-input');
     inputs.forEach(function(inp) {
@@ -750,7 +779,9 @@
     switch (screen.formatType) {
       case 'two_option_choice': return renderTwoOption(screen);
       case 'free_text_gap_fill':
-      case 'conjugation_gap_fill': return renderGapFill(screen);
+      case 'conjugation_gap_fill':
+      case 'word_bank_gap_fill':
+      case 'preselected_verb_gap_fill': return renderGapFill(screen);
       case 'full_sentence_write': return renderFullSentence(screen);
       case 'word_order_tiles': return renderWordOrder(screen);
       case 'error_correction': return renderErrorCorrection(screen);
@@ -1708,12 +1739,31 @@
     };
   }
 
+  function renderGapWordBank(words) {
+    if (!words || !words.length) return '';
+    var html = '<div class="sp-gap-wordbank" aria-label="Word bank">';
+    words.forEach(function(word, i) {
+      html += '<button type="button" class="sp-gap-wordbank-chip" data-word="' + esc(word) + '" data-bank-idx="' + i + '">' +
+        esc(word) + '</button>';
+    });
+    html += '</div>';
+    return html;
+  }
+
   function renderGapFill(screen) {
     var p = screen.payload || {};
     var verbRef = p.verbPrompt || p.preselectedVerb || '';
     var gapCount = countGaps(p.sentence);
     var multiCls = gapCount > 1 ? ' sp-prompt-sentence--multi-gap' : '';
-    var html = '<div class="sp-screen sp-screen--gap" data-format="free_text_gap_fill">';
+    var format = screen.formatType === 'word_bank_gap_fill' || (p.wordBank && p.wordBank.length)
+      ? 'word_bank_gap_fill'
+      : (screen.formatType || 'free_text_gap_fill');
+    var html = '<div class="sp-screen sp-screen--gap' +
+      (format === 'word_bank_gap_fill' ? ' sp-screen--word-bank-gap' : '') +
+      '" data-format="' + esc(format) + '">';
+    if (format === 'word_bank_gap_fill') {
+      html += renderGapWordBank(p.wordBank || []);
+    }
     html += '<div class="sp-prompt-row sp-prompt-row--gap">';
     html += '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap' + multiCls + ' sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' + renderInlineGapSentence(p.sentence, verbRef, buildInlineGapRenderOptions(p)) + '</p>';
     html += '</div>';
@@ -2305,7 +2355,7 @@
       });
     }
 
-    if (format === 'free_text_gap_fill' || format === 'conjugation_gap_fill' || format === 'preselected_verb_gap_fill') {
+    if (format === 'free_text_gap_fill' || format === 'conjugation_gap_fill' || format === 'preselected_verb_gap_fill' || format === 'word_bank_gap_fill') {
       bindSentenceSpeak(root, function() {
         var p = screen.payload || {};
         var values = getGapInputValues(root);
@@ -2320,8 +2370,11 @@
       el.addEventListener('input', onChange);
     });
 
-    if (format === 'free_text_gap_fill' || format === 'conjugation_gap_fill' || format === 'preselected_verb_gap_fill') {
+    if (format === 'free_text_gap_fill' || format === 'conjugation_gap_fill' || format === 'preselected_verb_gap_fill' || format === 'word_bank_gap_fill') {
       bindGapInputs(root, onChange);
+      if (format === 'word_bank_gap_fill' || (screen.payload && screen.payload.wordBank && screen.payload.wordBank.length)) {
+        bindWordBankGapFill(root, onChange);
+      }
     }
 
     if (format === 'passage_gap_fill') {
@@ -3076,7 +3129,7 @@
     if (f === 'word_bank_tick') {
       return root.querySelectorAll('.sp-wbt-chip.sp-wbt-chip--selected').length > 0;
     }
-    if (f === 'free_text_gap_fill' || f === 'conjugation_gap_fill' || f === 'preselected_verb_gap_fill') {
+    if (f === 'free_text_gap_fill' || f === 'conjugation_gap_fill' || f === 'preselected_verb_gap_fill' || f === 'word_bank_gap_fill') {
       return allGapInputsFilled(root);
     }
     if (f === 'passage_gap_fill') {
@@ -3296,6 +3349,7 @@
       }
       case 'free_text_gap_fill':
       case 'conjugation_gap_fill':
+      case 'word_bank_gap_fill':
       case 'preselected_verb_gap_fill': {
         var gapValues = getGapInputValues(root);
         if (gapValues.length > 1) {

@@ -917,6 +917,7 @@ button.sp-example-line.sp-speakable {
 .sp-practice-main .sp-screen .sp-verb-bank,
 .sp-practice-main .sp-screen .sp-sort-verb-pool,
 .sp-practice-main .sp-screen .sp-wbt-grid-scroll,
+.sp-practice-main .sp-screen .sp-gap-wordbank,
 .sp-practice-main .sp-screen .sp-sort-groups,
 .sp-practice-main .sp-screen .sp-tile-answer,
 .sp-practice-main .sp-screen .sp-tile-bank,
@@ -2979,6 +2980,61 @@ button.sp-example-line.sp-speakable {
   color: var(--primary);
 }
 
+/* ── Word bank gap fill (Duolingo-style chips) ───────────────────────── */
+.sp-screen--word-bank-gap {
+  align-items: stretch;
+}
+
+.sp-gap-wordbank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  max-width: min(100%, 34rem);
+  margin: 0 auto 16px;
+  padding: 10px 12px;
+  background: var(--white);
+  border: 2px solid #e2e8f4;
+  border-radius: 14px;
+  box-shadow: 0 2px 0 #dce3f0;
+  box-sizing: border-box;
+}
+
+.sp-gap-wordbank-chip {
+  padding: 8px 14px;
+  border: 2px solid #e2e8f4;
+  border-bottom-width: 3px;
+  border-bottom-color: #dce3f0;
+  border-radius: 999px;
+  background: var(--white);
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(0.82rem, 0.5rem + 1.2vw, 0.95rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  cursor: pointer;
+  box-shadow: 0 2px 0 #dce3f0;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease, opacity 0.15s ease;
+}
+
+.sp-gap-wordbank-chip:hover:not(.sp-gap-wordbank-chip--used) {
+  border-color: var(--sp-duo-blue);
+  background: var(--sp-duo-blue-light);
+}
+
+.sp-gap-wordbank-chip:active:not(.sp-gap-wordbank-chip--used) {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 #dce3f0;
+}
+
+.sp-gap-wordbank-chip--used {
+  opacity: 0.45;
+  cursor: default;
+  border-color: #dce3f0;
+  background: #f4f7fb;
+  box-shadow: none;
+  text-decoration: line-through;
+}
+
 .sp-hunt-instruction {
   font-size: 0.9rem;
   font-weight: 700;
@@ -4071,6 +4127,64 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
   .sp-wbt-chip {
     padding: 5px 10px;
     font-size: 0.78rem;
+  }
+
+  .sp-gap-wordbank {
+    margin-bottom: 12px;
+    padding: 8px 10px;
+    gap: 6px;
+    max-height: min(28vh, 180px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sp-gap-wordbank-chip {
+    padding: 6px 11px;
+    font-size: 0.8rem;
+  }
+
+  .sp-screen--hunt .sp-passage-card {
+    max-height: min(42vh, 320px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sp-screen--verb-bank .sp-verb-bank {
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .sp-verb-chip {
+    padding: 8px 14px;
+    font-size: clamp(0.82rem, 0.5rem + 1.2vw, 0.92rem);
+    min-height: var(--sp-touch-target, 44px);
+  }
+
+  .sp-screen--guided-error .sp-guided-wrong {
+    font-size: clamp(0.95rem, 0.55rem + 1.5vw, 1.1rem);
+    margin-bottom: 14px;
+  }
+
+  .sp-screen--meaning .sp-option-grid {
+    max-width: 100%;
+  }
+
+  .sp-screen--sort .sp-sort-verb-pool {
+    min-height: 48px;
+    padding: 8px;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .sp-screen--sort .sp-sort-dropzone {
+    min-height: 96px;
+    padding: 8px;
+  }
+
+  .sp-sort-verb {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    min-height: var(--sp-touch-target, 40px);
   }
 }
 
