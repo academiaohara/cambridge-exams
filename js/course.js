@@ -1383,10 +1383,90 @@
       };
     },
 
+    _applyCombinedTheoryLessonFocus: function() {
+      var layout = document.querySelector('.dashboard-layout');
+      var center = document.querySelector('.dashboard-center');
+      if (layout) layout.classList.add('dashboard-layout--lesson-focus');
+      if (center) center.classList.add('course-center--lesson-focus');
+      var header = document.querySelector('.cw-section-header');
+      if (header) header.style.display = 'none';
+      var rightSidebar = document.getElementById('dashboardRightSidebar');
+      var rightSidebarShell = document.getElementById('dashboardRightSidebarShell');
+      if (rightSidebar) rightSidebar.style.display = 'none';
+      if (rightSidebarShell) rightSidebarShell.style.display = 'none';
+      var appContainer = document.querySelector('.app-container');
+      if (appContainer) {
+        appContainer.style.paddingLeft = '0';
+        appContainer.style.paddingRight = '0';
+        appContainer.style.paddingTop = '0';
+      }
+    },
+
+    _clearCombinedTheoryLessonFocus: function() {
+      var layout = document.querySelector('.dashboard-layout');
+      var center = document.querySelector('.dashboard-center');
+      if (layout) layout.classList.remove('dashboard-layout--lesson-focus');
+      if (center) center.classList.remove('course-center--lesson-focus');
+      var header = document.querySelector('.cw-section-header');
+      if (header) header.style.display = '';
+      var rightSidebar = document.getElementById('dashboardRightSidebar');
+      var rightSidebarShell = document.getElementById('dashboardRightSidebarShell');
+      if (rightSidebar) rightSidebar.style.display = '';
+      if (rightSidebarShell) rightSidebarShell.style.display = '';
+      var appContainer = document.querySelector('.app-container');
+      if (appContainer && typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) {
+        Dashboard._applySidebarState();
+        appContainer.style.paddingRight = '';
+        appContainer.style.paddingTop = '';
+      }
+    },
+
+    _getCombinedTheoryMountTarget: function() {
+      var hubPage = document.getElementById('courseHubPage');
+      if (hubPage) {
+        return { container: hubPage, scrollEl: document.getElementById('courseCenterScroll') };
+      }
+      var centerSection = document.getElementById('courseCenterSection');
+      if (centerSection) return { container: centerSection, scrollEl: centerSection };
+      return null;
+    },
+
+    _beginCombinedTheoryView: function() {
+      var target = BentoGrid._getCombinedTheoryMountTarget();
+      if (!target) return null;
+
+      BentoGrid._closeCombinedTheoryOverlay();
+
+      var savedHtml = target.container.innerHTML;
+      var savedScrollTop = target.scrollEl ? target.scrollEl.scrollTop : 0;
+
+      target.container.innerHTML = '<div id="course-combined-theory-mount" class="sp-lesson-mount course-unit-content"></div>';
+      BentoGrid._applyCombinedTheoryLessonFocus();
+
+      var state = {
+        virtualUnit: null,
+        cardIdx: 0,
+        mount: target.container.querySelector('#course-combined-theory-mount'),
+        hubHtml: savedHtml,
+        scrollTop: savedScrollTop,
+        container: target.container,
+        scrollEl: target.scrollEl
+      };
+      BentoGrid._combinedTheoryOverlayState = state;
+      document.addEventListener('keydown', BentoGrid._handleCombinedTheoryEscape, true);
+      return state;
+    },
+
     _closeCombinedTheoryOverlay: function() {
-      var overlay = document.getElementById('course-combined-theory-overlay');
-      if (overlay) overlay.remove();
+      var state = BentoGrid._combinedTheoryOverlayState;
       document.removeEventListener('keydown', BentoGrid._handleCombinedTheoryEscape, true);
+      BentoGrid._clearCombinedTheoryLessonFocus();
+
+      if (state && state.container && state.hubHtml != null) {
+        state.container.innerHTML = state.hubHtml;
+        if (state.scrollEl && state.scrollTop != null) state.scrollEl.scrollTop = state.scrollTop;
+      }
+
       BentoGrid._combinedTheoryOverlayState = null;
     },
 
@@ -1396,12 +1476,12 @@
 
     _renderCombinedTheoryOverlay: function() {
       var state = BentoGrid._combinedTheoryOverlayState;
-      if (!state || !state.mount) return;
+      if (!state || !state.mount || !state.virtualUnit) return;
       var theory = window.SunePlayTheory;
       if (!theory || !theory.TheoryFlow) return;
 
       state.mount.innerHTML =
-        '<div class="sp-lesson sp-lesson--theory course-combined-theory-lesson">' +
+        '<div class="sp-lesson sp-lesson--theory">' +
           theory.TheoryFlow(state.virtualUnit, {
             cardIdx: state.cardIdx,
             exitToStage: true,
@@ -1466,30 +1546,6 @@
       if (theoryBody) theoryBody.scrollTop = 0;
     },
 
-    _showCombinedTheoryOverlay: function(virtualUnit) {
-      BentoGrid._closeCombinedTheoryOverlay();
-
-      var overlay = document.createElement('div');
-      overlay.id = 'course-combined-theory-overlay';
-      overlay.className = 'course-combined-theory-overlay';
-      overlay.innerHTML =
-        '<div class="course-combined-theory-panel" role="dialog" aria-modal="true" aria-label="Review guide">' +
-          '<div class="course-combined-theory-mount"></div>' +
-        '</div>';
-      overlay.addEventListener('click', function(event) {
-        if (event.target === overlay) BentoGrid._closeCombinedTheoryOverlay();
-      });
-      document.body.appendChild(overlay);
-
-      BentoGrid._combinedTheoryOverlayState = {
-        virtualUnit: virtualUnit,
-        cardIdx: 0,
-        mount: overlay.querySelector('.course-combined-theory-mount')
-      };
-      document.addEventListener('keydown', BentoGrid._handleCombinedTheoryEscape, true);
-      BentoGrid._renderCombinedTheoryOverlay();
-    },
-
     _openReviewCombinedGuide: async function(levelId, reviewItemId) {
       var indexData = await BentoGrid._loadCourseIndexForLevel(levelId);
       if (!indexData || !indexData.items) return;
@@ -1501,14 +1557,9 @@
       });
       if (!coveredUnits.length) return;
 
-      var existingOverlay = document.getElementById('course-combined-theory-overlay');
-      if (!existingOverlay) {
-        var loadingOverlay = document.createElement('div');
-        loadingOverlay.id = 'course-combined-theory-overlay';
-        loadingOverlay.className = 'course-combined-theory-overlay course-combined-theory-overlay--loading';
-        loadingOverlay.innerHTML = '<div class="course-combined-theory-panel"><div class="fe-loading"><div class="fe-spinner"></div></div></div>';
-        document.body.appendChild(loadingOverlay);
-      }
+      var state = BentoGrid._beginCombinedTheoryView();
+      if (!state || !state.mount) return;
+      state.mount.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
 
       var unitDataById = {};
       await Promise.all(coveredUnits.map(async function(unit) {
@@ -1526,7 +1577,9 @@
         BentoGrid._closeCombinedTheoryOverlay();
         return;
       }
-      BentoGrid._showCombinedTheoryOverlay(virtualUnit);
+      state.virtualUnit = virtualUnit;
+      state.cardIdx = 0;
+      BentoGrid._renderCombinedTheoryOverlay();
     },
 
     _isReviewFullyComplete: function(levelId, reviewItem, progress) {
