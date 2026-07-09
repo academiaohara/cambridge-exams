@@ -6351,6 +6351,9 @@
           Object.keys(exData).forEach(function(k) { if (k.indexOf(exPrefix) === 0) delete exData[k]; });
           localStorage.setItem(exKey, JSON.stringify(exData));
         } catch(e) {}
+        if (typeof Onboarding !== 'undefined' && Onboarding.clearUnitLessonStorage) {
+          Onboarding.clearUnitLessonStorage(unitId);
+        }
         // Reopen the unit fresh
         var foundItem = BentoGrid._courseIndexData && BentoGrid._courseIndexData.items &&
           BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
@@ -6399,6 +6402,11 @@
           });
           localStorage.setItem(exKey, JSON.stringify(exData));
         } catch(e) {}
+        if (typeof Onboarding !== 'undefined' && Onboarding.clearUnitLessonStorage) {
+          items.forEach(function(item) {
+            if (item && item.id) Onboarding.clearUnitLessonStorage(item.id);
+          });
+        }
         BentoGrid._selectCourseBlock(blockKey);
       });
     },
