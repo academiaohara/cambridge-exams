@@ -59,6 +59,79 @@
     }
   }
 
+  function _applyCourseProgressRow(row) {
+    if (row.mode !== 'course' || !row.level || !row.exam_id) { return; }
+    var section = row.section;
+    var answers = row.answers || {};
+
+    if (section === 'unit') {
+      if (answers.completed || answers.passed) {
+        try {
+          var prog = JSON.parse(localStorage.getItem('cambridge_course_progress_' + row.level) || '{}');
+          prog[row.exam_id] = true;
+          localStorage.setItem('cambridge_course_progress_' + row.level, JSON.stringify(prog));
+        } catch (e) { /* ignore */ }
+      }
+      return;
+    }
+
+    if (typeof section === 'string' && section.indexOf('exercise:') === 0) {
+      var exerciseId = section.slice(9);
+      try {
+        var spKey = 'sune_play_progress_' + row.exam_id;
+        var spProg = JSON.parse(localStorage.getItem(spKey) || '{}');
+        if (!spProg.completedExercises) { spProg.completedExercises = {}; }
+        spProg.completedExercises[exerciseId] = true;
+        localStorage.setItem(spKey, JSON.stringify(spProg));
+      } catch (e) { /* ignore */ }
+      return;
+    }
+
+    if (typeof section === 'string' && section.indexOf('node:') === 0) {
+      var nodeId = section.slice(5);
+      try {
+        var spKeyNode = 'sune_play_progress_' + row.exam_id;
+        var spProgNode = JSON.parse(localStorage.getItem(spKeyNode) || '{}');
+        if (!spProgNode.completedNodes) { spProgNode.completedNodes = {}; }
+        spProgNode.completedNodes[nodeId] = true;
+        localStorage.setItem(spKeyNode, JSON.stringify(spProgNode));
+      } catch (e) { /* ignore */ }
+      return;
+    }
+
+    if (typeof section !== 'string' || section.indexOf('ex_') !== 0) { return; }
+
+    var secPart = section.slice(3);
+    var secIdx = /^\d+$/.test(secPart) ? parseInt(secPart, 10) : secPart;
+    var score = row.score != null ? row.score : (answers.score != null ? answers.score : 0);
+    var total = answers.total != null ? answers.total : (score || 1);
+
+    if (/^Review\d+/.test(row.exam_id)) {
+      try {
+        var raKey = 'cambridge_review_answers_' + row.level;
+        var ra = JSON.parse(localStorage.getItem(raKey) || '{}');
+        var rsKey = 'cambridge_review_section_state_' + row.level;
+        var rs = JSON.parse(localStorage.getItem(rsKey) || '{}');
+        var reviewSkey = row.exam_id + '_' + secIdx;
+        ra[reviewSkey] = score;
+        rs[reviewSkey] = { score: score, total: total, answers: {} };
+        localStorage.setItem(raKey, JSON.stringify(ra));
+        localStorage.setItem(rsKey, JSON.stringify(rs));
+      } catch (e) { /* ignore */ }
+      return;
+    }
+
+    try {
+      var exKey = 'course_ex_state_' + row.level;
+      var exState = JSON.parse(localStorage.getItem(exKey) || '{}');
+      var exSkey = row.exam_id + '_' + secIdx;
+      if (!(exState[exSkey] && exState[exSkey].checked)) {
+        exState[exSkey] = { checked: true, score: score, total: total };
+        localStorage.setItem(exKey, JSON.stringify(exState));
+      }
+    } catch (e) { /* ignore */ }
+  }
+
   /** Build Exercise.loadPartState payload from user_progress row. */
   function _rowToExerciseLocal(row) {
     var raw = row.answers;
@@ -174,6 +247,11 @@
         if (result.error || !result.data) { return; }
 
         result.data.forEach(function (row) {
+          if (row.mode === 'course') {
+            _applyCourseProgressRow(row);
+            return;
+          }
+
           if (row.mode === 'fast' && row.section === 'state' && row.exam_id === 'fast_learning') {
             try {
               if (!row.answers || typeof row.answers !== 'object') { return; }
