@@ -853,6 +853,28 @@
   border-color: rgba(245, 158, 11, 0.35);
 }
 
+.fe-review-slot--locked {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.fe-review-slot--locked:hover {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+}
+
+.fe-review-slot--locked .fe-rs-letter {
+  background: #e2e8f0;
+  color: #94a3b8;
+}
+
+.fe-review-slot--locked .fe-rs-name,
+.fe-review-slot--locked .fe-rs-score {
+  color: #94a3b8;
+}
+
 .fe-rs-letter {
   display: inline-flex;
   align-items: center;
@@ -7192,6 +7214,21 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   background: #a78bfa;
   color: #fff;
   box-shadow: 0 5px 0 #7c3aed;
+}
+
+.course-exercise-cell--review.course-exercise-cell--locked {
+  background: #e5e7eb;
+  color: #94a3b8;
+  box-shadow: 0 5px 0 #cbd5e1;
+  cursor: not-allowed;
+}
+
+.course-exercise-cell--review.course-exercise-cell--current {
+  background: #ff9600;
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 5px 0 #e08600;
+  animation: course-circle-pulse 1.8s ease-in-out infinite;
 }
 
 @media (max-width: 520px) {
