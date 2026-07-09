@@ -1455,10 +1455,8 @@
   function renderCrosswordClues(screen) {
     var p = screen.payload || {};
     var count = p.letterCount || String(p.answer || '').replace(/\s+/g, '').length || 1;
-    var dirLabel = p.direction === 'down' ? 'Down' : 'Across';
     var html = '<div class="sp-screen sp-screen--crossword" data-format="crossword_clues">';
     html += '<div class="sp-cw-clue-header">';
-    html += '<span class="sp-cw-direction">' + esc(dirLabel) + '</span>';
     html += '<span class="sp-cw-clue-num">' + esc(String(p.clueNumber != null ? p.clueNumber : '')) + '</span>';
     html += '</div>';
     html += '<p class="sp-cw-clue-text">' + esc(p.clue) + '</p>';

@@ -446,11 +446,14 @@
     var letterCount = item.letterCount != null
       ? item.letterCount
       : answer.replace(/\s+/g, '').length;
+    var clue = item.clue || '';
+    if (typeof LearningCrossword !== 'undefined' && LearningCrossword.formatClueDisplay) {
+      clue = LearningCrossword.formatClueDisplay(clue);
+    }
     return {
       layoutMode: item.layoutMode || 'clue_list',
-      direction: item.direction || 'across',
       clueNumber: item.clueNumber != null ? item.clueNumber : item.num,
-      clue: item.clue || '',
+      clue: clue,
       answer: answer,
       acceptedAnswers: item.acceptedAnswers || (answer ? [answer] : []),
       letterCount: letterCount,
