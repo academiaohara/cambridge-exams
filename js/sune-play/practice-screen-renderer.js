@@ -107,6 +107,33 @@
     return verbRef.split(',').map(function(part) { return part.trim(); }).filter(Boolean);
   }
 
+  /** Move trailing word-formation hints (**SING**, (SING)) next to the gap input. */
+  function extractTrailingWordFormationHint(sentence, existingVerbRef) {
+    if (existingVerbRef) {
+      return { sentence: sentence, verbRef: existingVerbRef };
+    }
+    var s = String(sentence || '').trim();
+    if (!countGaps(s)) return { sentence: s, verbRef: '' };
+
+    var boldMatch = s.match(/\s+\*\*([A-Z]{2,})\*\*\s*$/);
+    if (boldMatch) {
+      return {
+        sentence: s.slice(0, boldMatch.index).trim(),
+        verbRef: boldMatch[1]
+      };
+    }
+
+    var parenMatch = s.match(/\s+\(([A-Z]{2,}(?:\s*[\/\\]\s*[A-Z]+)*)\)\s*$/);
+    if (parenMatch) {
+      return {
+        sentence: s.slice(0, parenMatch.index).trim(),
+        verbRef: parenMatch[1].replace(/\s*\/\s*/g, ' / ')
+      };
+    }
+
+    return { sentence: s, verbRef: '' };
+  }
+
   function resolvePerGapVerbPrompts(verbRef, gapCount, gaps, sourceSentence) {
     var prompts = new Array(gapCount);
     var i;
@@ -144,6 +171,9 @@
 
   function renderInlineGapSentence(sentence, verbRef, options) {
     options = options || {};
+    var extracted = extractTrailingWordFormationHint(sentence, verbRef);
+    sentence = extracted.sentence;
+    verbRef = extracted.verbRef;
     var parts = (sentence || '').split(GAP_RE);
     var gapCount = countGaps(sentence);
     if (gapCount <= 1) {
