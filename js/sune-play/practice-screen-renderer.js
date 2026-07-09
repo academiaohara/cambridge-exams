@@ -864,22 +864,21 @@
     '</button>';
   }
 
-  function getChoiceGapWidthCh(options) {
-    var max = 0;
-    (options || []).forEach(function(opt) {
-      max = Math.max(max, String(opt).length);
-    });
-    return Math.max(max + 1, 8);
+  function setChoiceSlotContent(root, text) {
+    var slot = root.querySelector('#sp-choice-slot');
+    if (!slot) return;
+    var anchor = slot.closest('.sp-gap-anchor');
+    slot.textContent = text || '';
+    if (anchor) anchor.classList.toggle('sp-gap-anchor--filled', !!text);
   }
 
   function renderTwoOption(screen) {
     var p = screen.payload || {};
-    var gapWidth = getChoiceGapWidthCh(p.options);
     var html = '<div class="sp-screen sp-screen--choice" data-format="two_option_choice">';
     html += '<div class="sp-prompt-row sp-prompt-row--choice">';
     html += '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
       esc(p.sentenceBefore) +
-      ' <span class="sp-gap-anchor" style="--sp-gap-width:' + gapWidth + 'ch">' +
+      ' <span class="sp-gap-anchor">' +
         '<span class="sp-gap-slot" id="sp-choice-slot"></span>' +
       '</span> ' +
       esc(p.sentenceAfter) + '</p>';
@@ -923,12 +922,11 @@
 
   function renderMc4OptionStandalone(screen) {
     var p = screen.payload || {};
-    var gapWidth = 4;
     var html = '<div class="sp-screen sp-screen--choice sp-screen--mc-standalone" data-format="mc_4_option">';
     html += '<div class="sp-prompt-row sp-prompt-row--choice">';
     html += '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
       esc(p.sentenceBefore || '') +
-      ' <span class="sp-gap-anchor" style="--sp-gap-width:' + gapWidth + 'ch">' +
+      ' <span class="sp-gap-anchor">' +
         '<span class="sp-gap-slot" id="sp-choice-slot"></span>' +
       '</span> ' +
       esc(p.sentenceAfter || '') + '</p>';
@@ -1008,8 +1006,7 @@
         });
         btn.classList.add('sp-option-btn--selected');
         var letter = btn.getAttribute('data-letter') || '';
-        var slot = root.querySelector('#sp-choice-slot');
-        if (slot) slot.textContent = letter;
+        setChoiceSlotContent(root, letter);
         onChange();
         var opt = (payload.options || []).find(function(o) { return o.letter === letter; });
         if (opt && opt.text) speakText(opt.text);
@@ -2331,8 +2328,7 @@
           root.querySelectorAll('.sp-option-btn').forEach(function(b) { b.classList.remove('sp-option-btn--selected'); });
           btn.classList.add('sp-option-btn--selected');
           var optText = btn.getAttribute('data-value') || '';
-          var slot = root.querySelector('#sp-choice-slot');
-          if (slot) slot.textContent = optText;
+          setChoiceSlotContent(root, optText);
           onChange();
           if (!optText) return;
           speakText(optText);

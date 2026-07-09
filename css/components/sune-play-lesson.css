@@ -1178,7 +1178,7 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-gap-anchor {
-  display: inline-block;
+  display: inline;
   vertical-align: baseline;
 }
 
@@ -1260,9 +1260,23 @@ button.sp-example-line.sp-speakable {
 
 .sp-gap-anchor .sp-gap-slot {
   display: inline-block;
-  width: var(--sp-gap-width, 80px);
-  min-width: var(--sp-gap-width, 80px);
+  width: 2.5em;
+  min-width: 2.5em;
+  min-height: 1.2em;
+  text-align: left;
   box-sizing: border-box;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.sp-gap-anchor--filled .sp-gap-slot {
+  display: inline;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .sp-inline-gap:empty {
