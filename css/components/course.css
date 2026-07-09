@@ -7137,22 +7137,59 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
-.course-exercise-cell--review.course-exercise-cell--pending {
-  background: #8b5cf6;
+.course-exercise-cell--review.course-exercise-cell--current {
+  background: #7c3aed;
   color: #fff;
-  box-shadow: 0 5px 0 #6d28d9;
+  transform: scale(1.08);
+  box-shadow: 0 5px 0 #5b21b6;
+  animation: course-circle-pulse 1.8s ease-in-out infinite;
 }
 
 .course-exercise-cell--review.course-exercise-cell--done {
   background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
   color: #5b21b6;
-  box-shadow: 0 5px 0 #a78bfa;
+  box-shadow: 0 5px 0 #c4b5fd;
 }
 
-.course-exercise-cell--review.course-exercise-cell--progress {
-  background: #a78bfa;
+.course-exercise-cell--review.course-exercise-cell--locked {
+  background: #e5e7eb;
+  color: #94a3b8;
+  box-shadow: 0 5px 0 #cbd5e1;
+  cursor: not-allowed;
+}
+
+.fe-map-review-block .fe-review-slot--current {
+  background: rgba(124, 58, 237, 0.16);
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+}
+
+.fe-map-review-block .fe-review-slot--current .fe-rs-letter {
+  background: #7c3aed;
   color: #fff;
-  box-shadow: 0 5px 0 #7c3aed;
+}
+
+.fe-map-review-block .fe-review-slot--done {
+  background: #f5f3ff;
+  border-color: #ddd6fe;
+}
+
+.fe-map-review-block .fe-review-slot--done .fe-rs-letter {
+  background: rgba(124, 58, 237, 0.12);
+  color: #6d28d9;
+}
+
+.fe-map-review-block .fe-review-slot--locked {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  color: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.fe-map-review-block .fe-review-slot--locked .fe-rs-letter {
+  background: #e2e8f0;
+  color: #94a3b8;
 }
 
 @media (max-width: 520px) {
