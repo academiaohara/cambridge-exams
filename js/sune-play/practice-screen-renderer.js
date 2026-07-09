@@ -1330,216 +1330,154 @@
     updateKwtWordCountDisplay(root, screen);
   }
 
-  function getCmLockedPairs(root) {
-    return root._cmLockedPairs || {};
+  function getCmPairs(root) {
+    return root._cmPairs || {};
   }
 
-  function setCmLockedPairs(root, locked) {
-    root._cmLockedPairs = locked || {};
-  }
-
-  function getCmPairMeta(screen) {
-    var pairs = (screen.payload && screen.payload.pairs) || [];
-    var map = {};
-    pairs.forEach(function(pair) {
-      map[String(pair.pairId)] = pair;
-    });
-    return map;
-  }
-
-  function isCmPairLocked(root, pairId) {
-    return !!getCmLockedPairs(root)[String(pairId)];
-  }
-
-  function isCmLetterLocked(root, letter) {
-    var locked = getCmLockedPairs(root);
-    return Object.keys(locked).some(function(pid) { return locked[pid] === letter; });
-  }
-
-  function countCmLockedPairs(root) {
-    return Object.keys(getCmLockedPairs(root)).length;
-  }
-
-  function allCmPairsLocked(root, screen) {
-    var total = ((screen.payload && screen.payload.pairs) || []).length;
-    return countCmLockedPairs(root) >= total && total > 0;
-  }
-
-  function syncColumnMatchRowHeights(root) {
-    var maxLeft = 0;
-    root.querySelectorAll('.sp-cm-row').forEach(function(row) {
-      var left = row.querySelector('.sp-cm-left-item');
-      var slot = row.querySelector('.sp-cm-right-slot');
-      if (!left || !slot) return;
-      var h = left.offsetHeight;
-      if (h > maxLeft) maxLeft = h;
-      slot.style.minHeight = h + 'px';
-    });
-    root.querySelectorAll('.sp-cm-pool-items .sp-cm-right-item').forEach(function(btn) {
-      btn.style.minHeight = maxLeft ? (maxLeft + 'px') : '';
-    });
-  }
-
-  function placeRightItemInSlot(root, pairId, rightBtn) {
-    var slot = root.querySelector('.sp-cm-right-slot[data-pair-id="' + pairId + '"]');
-    if (!slot || !rightBtn) return;
-    slot.appendChild(rightBtn);
-    slot.setAttribute('aria-hidden', 'false');
-    rightBtn.classList.add('sp-cm-right-item--placed');
-  }
-
-  function flashColumnMatchIncorrect(leftBtn, rightBtn) {
-    if (leftBtn) leftBtn.classList.add('sp-cm-left-item--incorrect');
-    if (rightBtn) rightBtn.classList.add('sp-cm-right-item--incorrect');
-    setTimeout(function() {
-      if (leftBtn) leftBtn.classList.remove('sp-cm-left-item--incorrect');
-      if (rightBtn) rightBtn.classList.remove('sp-cm-right-item--incorrect');
-    }, 700);
-  }
-
-  function lockColumnMatchPair(root, pairId, letter, rightBtn, leftBtn) {
-    var locked = Object.assign({}, getCmLockedPairs(root));
-    locked[String(pairId)] = letter;
-    setCmLockedPairs(root, locked);
-    placeRightItemInSlot(root, pairId, rightBtn);
-    if (leftBtn) {
-      leftBtn.classList.add('sp-cm-left-item--correct');
-      leftBtn.classList.remove('sp-cm-left-item--selected');
-      leftBtn.disabled = true;
-    }
-    if (rightBtn) {
-      rightBtn.classList.add('sp-cm-right-item--correct');
-      rightBtn.disabled = true;
-    }
-    root._cmSelectedLeft = null;
-    syncColumnMatchRowHeights(root);
-  }
-
-  function tryColumnMatchPair(root, screen, pairId, letter, rightBtn) {
-    var meta = getCmPairMeta(screen)[String(pairId)];
-    if (!meta) return;
-    var leftBtn = root.querySelector('.sp-cm-left-item[data-pair-id="' + pairId + '"]');
-    var correct = letter === meta.correctLetter;
-    var allDone = false;
-
-    if (correct) {
-      lockColumnMatchPair(root, pairId, letter, rightBtn, leftBtn);
-      allDone = allCmPairsLocked(root, screen);
-      root.dispatchEvent(new CustomEvent('sp-cm-pair-checked', {
-        bubbles: true,
-        detail: { correct: true, pairId: pairId, letter: letter, allDone: allDone }
-      }));
-      return;
-    }
-
-    flashColumnMatchIncorrect(leftBtn, rightBtn);
-    root._cmSelectedLeft = null;
-    syncColumnMatchUi(root);
-    root.dispatchEvent(new CustomEvent('sp-cm-pair-checked', {
-      bubbles: true,
-      detail: { correct: false, pairId: pairId, letter: letter, allDone: false }
-    }));
+  function setCmPairs(root, pairs) {
+    root._cmPairs = pairs || {};
   }
 
   function renderColumnMatching(screen) {
     var p = screen.payload || {};
     var html = '<div class="sp-screen sp-screen--column-match" data-format="column_matching">';
     html += '<div class="sp-cm-board">';
-    html += '<div class="sp-cm-rows" aria-label="Sentence beginnings">';
-    html += '<p class="sp-cm-column-title sp-cm-column-title--left">Match the beginnings</p>';
+    html += '<div class="sp-cm-column sp-cm-column--left" aria-label="Sentence beginnings">';
+    html += '<p class="sp-cm-column-title">Match the beginnings</p>';
     (p.pairs || []).forEach(function(pair) {
-      html += '<div class="sp-cm-row" data-pair-id="' + pair.pairId + '">';
       html += '<button type="button" class="sp-cm-left-item" data-pair-id="' + pair.pairId + '" aria-pressed="false">' +
         '<span class="sp-cm-num">' + pair.pairId + '</span>' +
         '<span class="sp-cm-left-text">' + esc(pair.leftText) + '</span>' +
+        '<span class="sp-cm-pair-badge" data-pair-badge="' + pair.pairId + '" hidden aria-hidden="true"></span>' +
       '</button>';
-      html += '<div class="sp-cm-right-slot" data-pair-id="' + pair.pairId + '" aria-hidden="true"></div>';
-      html += '</div>';
     });
     html += '</div>';
-    html += '<div class="sp-cm-pool" aria-label="Sentence endings">';
-    html += '<p class="sp-cm-column-title sp-cm-column-title--right">Tap to pair</p>';
-    html += '<div class="sp-cm-pool-items">';
+    html += '<div class="sp-cm-column sp-cm-column--right" aria-label="Sentence endings">';
+    html += '<p class="sp-cm-column-title">Tap to pair</p>';
     (p.rightOptions || []).forEach(function(opt) {
       html += '<button type="button" class="sp-cm-right-item" data-letter="' + esc(opt.letter) + '" aria-pressed="false">' +
         '<span class="sp-cm-letter">' + esc(opt.letter) + '</span>' +
         '<span class="sp-cm-right-text">' + esc(opt.endingText) + '</span>' +
       '</button>';
     });
-    html += '</div></div>';
+    html += '</div>';
     html += '</div></div>';
     return html;
   }
 
   function syncColumnMatchUi(root) {
+    var pairs = getCmPairs(root);
     var selectedLeft = root._cmSelectedLeft || null;
 
     root.querySelectorAll('.sp-cm-left-item').forEach(function(btn) {
       var pairId = btn.getAttribute('data-pair-id');
+      var letter = pairs[pairId] || '';
+      var badge = btn.querySelector('[data-pair-badge="' + pairId + '"]');
       var isSelected = selectedLeft === pairId;
-      var isLocked = isCmPairLocked(root, pairId);
-      btn.classList.toggle('sp-cm-left-item--selected', isSelected && !isLocked);
+      btn.classList.toggle('sp-cm-left-item--selected', isSelected);
+      btn.classList.toggle('sp-cm-left-item--paired', !!letter);
       btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+      if (badge) {
+        if (letter) {
+          badge.hidden = false;
+          badge.setAttribute('aria-hidden', 'false');
+          badge.textContent = '→ ' + letter;
+        } else {
+          badge.hidden = true;
+          badge.setAttribute('aria-hidden', 'true');
+          badge.textContent = '';
+        }
+      }
     });
 
-    root.querySelectorAll('.sp-cm-pool-items .sp-cm-right-item').forEach(function(btn) {
+    root.querySelectorAll('.sp-cm-right-item').forEach(function(btn) {
       var letter = btn.getAttribute('data-letter') || '';
-      var isLocked = isCmLetterLocked(root, letter);
-      btn.classList.toggle('sp-cm-right-item--unavailable', isLocked);
+      var isPaired = Object.keys(pairs).some(function(pid) { return pairs[pid] === letter; });
+      btn.classList.toggle('sp-cm-right-item--paired', isPaired);
+      btn.setAttribute('aria-pressed', isPaired ? 'true' : 'false');
     });
   }
 
+  function clearCmPairForPairId(pairs, pairId) {
+    var next = Object.assign({}, pairs);
+    delete next[String(pairId)];
+    return next;
+  }
+
+  function clearCmPairForLetter(pairs, letter) {
+    var next = Object.assign({}, pairs);
+    Object.keys(next).forEach(function(pid) {
+      if (next[pid] === letter) delete next[pid];
+    });
+    return next;
+  }
+
   function bindColumnMatching(root, screen, onChange) {
-    root._cmLockedPairs = root._cmLockedPairs || {};
+    root._cmPairs = root._cmPairs || {};
     root._cmSelectedLeft = null;
 
-    function update() {
+    function update(onChanged) {
       syncColumnMatchUi(root);
-      syncColumnMatchRowHeights(root);
-      onChange();
+      if (onChanged) onChange();
     }
 
     root.querySelectorAll('.sp-cm-left-item').forEach(function(btn) {
       btn.addEventListener('click', function() {
         if (root.classList.contains('sp-screen--locked')) return;
         var pairId = btn.getAttribute('data-pair-id');
-        if (isCmPairLocked(root, pairId)) return;
+        var pairs = getCmPairs(root);
         var isSelected = root._cmSelectedLeft === pairId;
-        root._cmSelectedLeft = isSelected ? null : pairId;
-        update();
+        var isPaired = !!pairs[pairId];
+
+        if (isSelected) {
+          root._cmSelectedLeft = null;
+          update(true);
+          return;
+        }
+
+        if (isPaired) {
+          setCmPairs(root, clearCmPairForPairId(pairs, pairId));
+          root._cmSelectedLeft = null;
+          update(true);
+          return;
+        }
+
+        root._cmSelectedLeft = pairId;
+        update(true);
       });
     });
 
     root.querySelectorAll('.sp-cm-right-item').forEach(function(btn) {
       btn.addEventListener('click', function() {
         if (root.classList.contains('sp-screen--locked')) return;
-        if (btn.disabled || btn.classList.contains('sp-cm-right-item--placed')) return;
         var letter = btn.getAttribute('data-letter') || '';
-        if (isCmLetterLocked(root, letter)) return;
+        var pairs = getCmPairs(root);
+        var pairedTo = Object.keys(pairs).find(function(pid) { return pairs[pid] === letter; });
+
+        if (pairedTo && !root._cmSelectedLeft) {
+          setCmPairs(root, clearCmPairForLetter(pairs, letter));
+          root._cmSelectedLeft = null;
+          update(true);
+          return;
+        }
+
         if (!root._cmSelectedLeft) return;
-        tryColumnMatchPair(root, screen, root._cmSelectedLeft, letter, btn);
-        update();
+
+        var next = clearCmPairForLetter(pairs, letter);
+        next[String(root._cmSelectedLeft)] = letter;
+        setCmPairs(root, next);
+        root._cmSelectedLeft = null;
+        update(true);
       });
     });
 
     syncColumnMatchUi(root);
-    requestAnimationFrame(function() { syncColumnMatchRowHeights(root); });
-    if (typeof ResizeObserver !== 'undefined') {
-      var rows = root.querySelector('.sp-cm-rows');
-      if (rows) {
-        if (root._cmResizeObserver) root._cmResizeObserver.disconnect();
-        root._cmResizeObserver = new ResizeObserver(function() {
-          syncColumnMatchRowHeights(root);
-        });
-        root._cmResizeObserver.observe(rows);
-      }
-    }
   }
 
-  function markColumnMatchResults(root, lockedPairs, payloadPairs) {
+  function markColumnMatchResults(root, pairs, payloadPairs) {
     (payloadPairs || []).forEach(function(pair) {
       var leftBtn = root.querySelector('.sp-cm-left-item[data-pair-id="' + pair.pairId + '"]');
-      var selected = lockedPairs[String(pair.pairId)] || '';
+      var selected = pairs[String(pair.pairId)] || '';
       var ok = selected === pair.correctLetter;
       if (leftBtn) {
         leftBtn.classList.toggle('sp-cm-left-item--correct', ok);
@@ -1547,16 +1485,9 @@
         leftBtn.disabled = true;
       }
       var rightBtn = root.querySelector('.sp-cm-right-item[data-letter="' + pair.correctLetter + '"]');
-      if (rightBtn) {
-        rightBtn.classList.toggle('sp-cm-right-item--correct', ok);
-        rightBtn.classList.toggle('sp-cm-right-item--reveal', !ok);
-        rightBtn.disabled = true;
-      }
+      if (rightBtn && !ok) rightBtn.classList.add('sp-cm-right-item--reveal');
     });
     root.querySelectorAll('.sp-cm-right-item').forEach(function(btn) {
-      btn.disabled = true;
-    });
-    root.querySelectorAll('.sp-cm-left-item').forEach(function(btn) {
       btn.disabled = true;
     });
   }
@@ -3246,7 +3177,12 @@
       return !!kwtValue && isKwtWordCountValid(kwtValue, screen);
     }
     if (f === 'column_matching') {
-      return allCmPairsLocked(root, screen);
+      var cmPairs = getCmPairs(root);
+      var cmPayloadPairs = (screen.payload && screen.payload.pairs) || [];
+      if (!cmPayloadPairs.length) return false;
+      return cmPayloadPairs.every(function(pair) {
+        return !!cmPairs[String(pair.pairId)];
+      });
     }
     if (f === 'crossword_clues') {
       return allCrosswordLettersFilled(root);
@@ -3407,12 +3343,12 @@
       }
       case 'column_matching': {
         var cmPayload = p;
-        var cmLocked = getCmLockedPairs(root);
+        var cmPairs = getCmPairs(root);
         var cmWrong = 0;
         var userParts = [];
         var correctParts = [];
         (cmPayload.pairs || []).forEach(function(pair) {
-          var selected = cmLocked[String(pair.pairId)] || '';
+          var selected = cmPairs[String(pair.pairId)] || '';
           userParts.push(pair.pairId + '→' + (selected || '–'));
           correctParts.push(pair.pairId + '→' + pair.correctLetter);
           if (selected !== pair.correctLetter) cmWrong++;
@@ -3421,7 +3357,7 @@
         result.correctAnswer = correctParts.join(' / ');
         result.correct = cmWrong === 0;
         result.lifeLoss = cmWrong;
-        markColumnMatchResults(root, cmLocked, cmPayload.pairs);
+        markColumnMatchResults(root, cmPairs, cmPayload.pairs);
         break;
       }
       case 'crossword_clues': {
