@@ -24,6 +24,7 @@
 }
 
 .sp-lesson {
+  --sp-content-max: min(28rem, 100%);
   --sp-text-fluid: clamp(0.85rem, 0.5rem + 2.5vw, 1.25rem);
   --sp-card-padding: clamp(12px, 3vw, 28px);
   --sp-touch-target: clamp(38px, 10vw, 52px);
@@ -874,10 +875,11 @@ button.sp-example-line.sp-speakable {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: stretch;
 }
 
@@ -906,7 +908,7 @@ button.sp-example-line.sp-speakable {
 
 .sp-practice-main .sp-screen {
   width: 100%;
-  max-width: min(34rem, 100%);
+  max-width: var(--sp-content-max);
   margin-inline: auto;
   align-self: center;
   box-sizing: border-box;
@@ -942,7 +944,7 @@ button.sp-example-line.sp-speakable {
 
 .sp-practice-main .sp-option-grid {
   width: 100%;
-  max-width: min(100%, 34rem);
+  max-width: var(--sp-content-max);
   margin-inline: auto;
 }
 
@@ -958,22 +960,23 @@ button.sp-example-line.sp-speakable {
   margin: 0 0 20px;
   font-family: 'Fredoka', 'Nunito', sans-serif;
   flex-shrink: 0;
+  overflow-wrap: anywhere;
 }
 
 .sp-exercise-card:has(.sp-screen--gap) {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .sp-screen {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: stretch;
   width: 100%;
-  max-width: min(34rem, 100%);
+  max-width: var(--sp-content-max);
   margin-inline: auto;
   min-height: 0;
   box-sizing: border-box;
@@ -1220,7 +1223,7 @@ button.sp-example-line.sp-speakable {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   text-align: left;
 }
@@ -1432,13 +1435,18 @@ button.sp-example-line.sp-speakable {
 
 .sp-screen--passage-gap .sp-passage-wordbank {
   flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .sp-passage-gap-scroll {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   min-height: 0;
   flex: 1;
   max-height: min(52vh, 420px);
+  overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
@@ -1464,11 +1472,16 @@ button.sp-example-line.sp-speakable {
 
 .sp-passage-card--gap-fill {
   line-height: 2;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .sp-passage-card--justified {
-  text-align: justify;
-  text-justify: inter-word;
+  text-align: left;
 }
 
 .sp-passage-para {
@@ -1504,11 +1517,10 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-passage-gap-wrap {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 4px;
+  display: inline;
   margin: 0 2px;
   vertical-align: baseline;
+  white-space: normal;
 }
 
 .sp-passage-gap-verb {
@@ -1576,20 +1588,24 @@ button.sp-example-line.sp-speakable {
   justify-content: center;
   min-width: 1.4rem;
   height: 1.4rem;
+  margin-right: 4px;
   border-radius: 999px;
   background: var(--sp-duo-blue);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 800;
   line-height: 1;
+  vertical-align: baseline;
 }
 
 .sp-passage-gap-wrap .sp-gap-inline-input {
+  display: inline-block;
   min-width: 2ch;
   width: 2ch;
-  max-width: none;
+  max-width: min(12ch, 28vw);
   font-size: inherit;
   line-height: inherit;
+  vertical-align: baseline;
 }
 
 .sp-screen--passage-sequential .sp-passage-gap--correct .sp-gap-inline-input,
@@ -1668,7 +1684,7 @@ button.sp-example-line.sp-speakable {
 
 .sp-mc-sheet-panel {
   position: relative;
-  width: min(100%, 34rem);
+  width: min(100%, 28rem);
   max-height: min(70vh, 520px);
   overflow: auto;
   margin: 0 auto;
@@ -2415,7 +2431,7 @@ button.sp-example-line.sp-speakable {
   flex-direction: column;
   gap: clamp(8px, 2vw, 10px);
   width: 100%;
-  max-width: min(100%, 34rem);
+  max-width: var(--sp-content-max);
   margin-inline: auto;
   box-sizing: border-box;
 }
@@ -2990,16 +3006,16 @@ button.sp-example-line.sp-speakable {
 .sp-screen--error-inline {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   width: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 .sp-prompt-row--error {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
   width: 100%;
 }
@@ -3055,7 +3071,7 @@ button.sp-example-line.sp-speakable {
   flex-wrap: wrap;
   gap: 8px;
   width: 100%;
-  max-width: min(100%, 34rem);
+  max-width: var(--sp-content-max);
   margin: 0 auto 16px;
   padding: 10px 12px;
   background: var(--white);
@@ -3112,7 +3128,7 @@ button.sp-example-line.sp-speakable {
   font-size: 0.9rem;
   color: var(--sp-primary, var(--primary));
   margin-bottom: 12px;
-  text-align: center;
+  text-align: left;
 }
 
 .sp-screen--hunt .sp-passage-card {
