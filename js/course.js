@@ -1303,6 +1303,58 @@
       });
     },
 
+    _getReviewCoveredUnits: function(etapaItems, reviewItem) {
+      if (!reviewItem || reviewItem.block == null) return [];
+      var blockNum = reviewItem.block;
+      return (etapaItems || []).filter(function(item) {
+        return (item.type === 'grammar' || item.type === 'vocabulary') && item.block === blockNum;
+      });
+    },
+
+    _formatReviewCoveredUnitLabel: function(unit) {
+      if (!unit) return '';
+      var unitNum = unit.unit || unit.id;
+      var unitLabel = 'Unit ' + unitNum;
+      if (!unit.title) return unitLabel;
+      var title = BentoGrid._sanitizeCourseDisplayTitle(unit.title);
+      if (title.indexOf('Unit') === 0) return title;
+      if (title.indexOf('Vocabulary:') === 0) {
+        return 'Unit ' + unitNum + ': ' + title.replace('Vocabulary:', '').trim();
+      }
+      return 'Unit ' + unitNum + ': ' + title;
+    },
+
+    _closeReviewGuideMenus: function(exceptMenuId) {
+      document.querySelectorAll('.course-review-guide-menu').forEach(function(menu) {
+        if (exceptMenuId && menu.id === exceptMenuId && !menu.hidden) return;
+        menu.hidden = true;
+      });
+      document.removeEventListener('click', BentoGrid._handleReviewGuideOutsideClick, true);
+    },
+
+    _handleReviewGuideOutsideClick: function() {
+      BentoGrid._closeReviewGuideMenus();
+    },
+
+    _toggleReviewGuideMenu: function(event, menuId) {
+      if (event) event.stopPropagation();
+      var menu = document.getElementById(menuId);
+      if (!menu) return;
+      var willOpen = menu.hidden;
+      BentoGrid._closeReviewGuideMenus(willOpen ? menuId : null);
+      menu.hidden = !willOpen;
+      if (willOpen) {
+        setTimeout(function() {
+          document.addEventListener('click', BentoGrid._handleReviewGuideOutsideClick, true);
+        }, 0);
+      }
+    },
+
+    _openReviewGuideUnit: function(unitId, filePath) {
+      BentoGrid._closeReviewGuideMenus();
+      BentoGrid.openCourseUnit(unitId, filePath, 0);
+    },
+
     _isReviewFullyComplete: function(levelId, reviewItem, progress) {
       if (!reviewItem) return false;
       if (progress && progress[reviewItem.id]) return true;
@@ -1753,11 +1805,28 @@
         }
 
         var guidePath = 'data/Course/' + levelId + '/' + item.file;
+        var coveredUnits = group.isReview ? BentoGrid._getReviewCoveredUnits(etapa.items, item) : [];
+        var reviewGuideMenuId = 'course-review-guide-' + item.id;
         html += '<div class="' + headerClass + '">';
         html += '<div class="course-etapa-header-text">';
         html += '<div class="course-etapa-header-title">' + self._escapeHTML(unitLabel) + '</div>';
         html += '</div>';
-        if (item.type !== 'progress_test' && !group.isReview) {
+        if (group.isReview && coveredUnits.length) {
+          html += '<div class="course-review-header-actions">';
+          html += '<button type="button" class="course-etapa-header-guide course-etapa-header-guide--review" onclick="event.stopPropagation();BentoGrid._toggleReviewGuideMenu(event,\'' + reviewGuideMenuId + '\')">' +
+            _mi('menu_book') + ' GUIDE</button>';
+          html += '<div class="course-review-guide-menu" id="' + reviewGuideMenuId + '" hidden>';
+          coveredUnits.forEach(function(unit) {
+            var coveredUnitPath = 'data/Course/' + levelId + '/' + unit.file;
+            var coveredUnitLabel = BentoGrid._formatReviewCoveredUnitLabel(unit);
+            var coveredUnitIcon = unit.type === 'vocabulary' ? 'translate' : 'menu_book';
+            html += '<button type="button" class="course-review-guide-item" onclick="event.stopPropagation();BentoGrid._openReviewGuideUnit(\'' + unit.id + '\',\'' + coveredUnitPath + '\')">' +
+              '<span class="course-review-guide-item-icon">' + _mi(coveredUnitIcon) + '</span>' +
+              '<span class="course-review-guide-item-label">' + self._escapeHTML(coveredUnitLabel) + '</span>' +
+            '</button>';
+          });
+          html += '</div></div>';
+        } else if (item.type !== 'progress_test' && !group.isReview) {
           html += '<button type="button" class="course-etapa-header-guide" onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'' + guidePath + '\',0)">' +
             _mi('menu_book') + ' GUIDE</button>';
         }
