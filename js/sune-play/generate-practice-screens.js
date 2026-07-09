@@ -969,8 +969,36 @@
     return screens.slice(0, maxScreens);
   }
 
+  function exerciseItemOrderKey(screen) {
+    var id = screen && screen.itemId ? String(screen.itemId) : '';
+    var match = id.match(/-(\d+)$/);
+    return match ? parseInt(match[1], 10) : 0;
+  }
+
+  // When opening a single exercise from the course menu, items may be spread
+  // across several practice nodes — gather every screen for that exercise.
+  function collectScreensForExercise(unit, exerciseId) {
+    if (!unit || !exerciseId) return [];
+    var seen = {};
+    var list = [];
+    (unit.practiceNodes || []).forEach(function(node) {
+      generatePracticeScreens(unit, node.nodeId).forEach(function(screen) {
+        if (screen.sourceExerciseId !== exerciseId) return;
+        var key = screen.itemId || screen.screenId;
+        if (!key || seen[key]) return;
+        seen[key] = true;
+        list.push(screen);
+      });
+    });
+    list.sort(function(a, b) {
+      return exerciseItemOrderKey(a) - exerciseItemOrderKey(b);
+    });
+    return list;
+  }
+
   window.SunePlayScreens = {
     generatePracticeScreens: generatePracticeScreens,
+    collectScreensForExercise: collectScreensForExercise,
     getExerciseBank: getExerciseBank,
     normalizeFormatType: normalizeFormatType,
     normalizeMcOptions: normalizeMcOptions,
