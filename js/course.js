@@ -6735,6 +6735,7 @@
       try {
         localStorage.setItem('cambridge_course_progress_' + level, JSON.stringify(prog));
       } catch(e) {}
+      BentoGrid._saveCourseUnitCompleteToSupabase(level, unitId);
       if (BentoGrid._courseIndexData && BentoGrid._courseIndexData.items) {
         var item = BentoGrid._courseIndexData.items.find(function(i) { return i.id === unitId; });
         if (item && item.type === 'review') {
@@ -7170,6 +7171,60 @@
     },
 
     // ── Course Exercise Answer Persistence (non-review sections) ─────────────
+    _formatCourseProgressSection: function(sectionIdx) {
+      if (typeof sectionIdx === 'number') return 'ex_' + sectionIdx;
+      if (typeof sectionIdx === 'string') {
+        if (sectionIdx.indexOf('exercise:') === 0 || sectionIdx.indexOf('node:') === 0) return sectionIdx;
+        return 'ex_' + sectionIdx;
+      }
+      return 'ex_' + String(sectionIdx);
+    },
+
+    _upsertCourseProgressToSupabase: async function(level, unitId, section, payload) {
+      if (BentoGrid._isRestoringCuAnswers) return;
+      var client = window.Auth && window.Auth._client;
+      var user = window.Auth && window.Auth.getUser();
+      if (!client || !user) return;
+      payload = payload || {};
+      try {
+        await client.from('user_progress').upsert({
+          user_id: user.id,
+          level: level,
+          exam_id: unitId,
+          section: section,
+          part: 1,
+          answers: payload.answers || { passed: true },
+          score: payload.score != null ? payload.score : null,
+          mode: 'course',
+          completed_at: payload.completedAt || new Date().toISOString()
+        }, { onConflict: 'user_id,exam_id,section,part,mode' });
+      } catch (e) {
+        console.warn('[BentoGrid] Failed to save course progress to Supabase:', e);
+      }
+    },
+
+    _saveCourseUnitCompleteToSupabase: async function(level, unitId) {
+      await BentoGrid._upsertCourseProgressToSupabase(level, unitId, 'unit', {
+        answers: { completed: true, passed: true },
+        score: 1,
+        completedAt: new Date().toISOString()
+      });
+    },
+
+    _saveSunePlayExerciseToSupabase: async function(level, unitId, sectionIdx, score, total) {
+      var section = BentoGrid._formatCourseProgressSection(sectionIdx);
+      await BentoGrid._upsertCourseProgressToSupabase(level, unitId, section, {
+        answers: { passed: true, score: score, total: total },
+        score: score,
+        completedAt: new Date().toISOString()
+      });
+    },
+
+    _saveReviewSectionToSupabase: async function(unitId, sectionIdx, score, total) {
+      var level = BentoGrid._courseLevel || 'C1';
+      await BentoGrid._saveSunePlayExerciseToSupabase(level, unitId, sectionIdx, score, total);
+    },
+
     _cuExStateKey: function(level) {
       return 'course_ex_state_' + (level || BentoGrid._courseLevel || 'C1');
     },
@@ -7215,25 +7270,7 @@
 
     // Upsert pass status to Supabase (no answer payload).
     _saveCuExToSupabase: async function(level, unitId, sectionIdx, score, total) {
-      if (BentoGrid._isRestoringCuAnswers) return;
-      var client = window.Auth && window.Auth._client;
-      var user = window.Auth && window.Auth.getUser();
-      if (!client || !user) return;
-      try {
-        await client.from('user_progress').upsert({
-          user_id: user.id,
-          level: level,
-          exam_id: unitId,
-          section: 'ex_' + sectionIdx,
-          part: 1,
-          answers: { passed: true, score: score, total: total },
-          score: score,
-          mode: 'course',
-          completed_at: new Date().toISOString()
-        }, { onConflict: 'user_id,exam_id,section,part,mode' });
-      } catch(e) {
-        console.warn('[BentoGrid] Failed to save course exercise to Supabase:', e);
-      }
+      await BentoGrid._saveSunePlayExerciseToSupabase(level, unitId, sectionIdx, score, total);
     },
 
     // Flag used to suppress redundant saves during programmatic updates.
@@ -10053,6 +10090,9 @@
           if (unitId && !isNaN(sectionIdx)) {
             BentoGrid._trackReviewItem(unitId, sectionIdx, weightedCorrect);
             BentoGrid._saveReviewSectionState(sec, unitId, sectionIdx, weightedCorrect, weightedTotal);
+            if (isGood) {
+              BentoGrid._saveReviewSectionToSupabase(unitId, sectionIdx, weightedCorrect, weightedTotal);
+            }
           }
         } else {
           // Non-review exercise: persist pass status only (>= 70%)

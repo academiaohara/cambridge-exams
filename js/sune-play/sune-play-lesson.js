@@ -54,6 +54,17 @@
     try { localStorage.setItem(getProgressKey(unitId), JSON.stringify(progress)); } catch (e) { /* ignore */ }
   }
 
+  function syncExerciseProgressToSupabase(sectionIdx, score, total) {
+    if (!lessonState || typeof BentoGrid === 'undefined' || !BentoGrid._saveSunePlayExerciseToSupabase) return;
+    BentoGrid._saveSunePlayExerciseToSupabase(
+      lessonState.level,
+      lessonState.unitId,
+      sectionIdx,
+      score,
+      total
+    );
+  }
+
   function areAllRequiredExercisesComplete(unitData, progress) {
     if (!unitData || !progress) return false;
     var required = (unitData.contentBanks && unitData.contentBanks.requiredExerciseIds) || [];
@@ -1251,10 +1262,21 @@
       if (lessonState.singleExerciseId) {
         if (!lessonState.progress.completedExercises) lessonState.progress.completedExercises = {};
         lessonState.progress.completedExercises[lessonState.singleExerciseId] = true;
+        saveProgress(lessonState.unitId, lessonState.progress);
+        syncExerciseProgressToSupabase(
+          'exercise:' + lessonState.singleExerciseId,
+          correct,
+          lessonState.sessionTotal
+        );
       } else {
         lessonState.progress.completedNodes[node.nodeId] = true;
+        saveProgress(lessonState.unitId, lessonState.progress);
+        syncExerciseProgressToSupabase(
+          'node:' + node.nodeId,
+          correct,
+          lessonState.sessionTotal
+        );
       }
-      saveProgress(lessonState.unitId, lessonState.progress);
       maybeMarkReviewUnitComplete(lessonState.level, lessonState.unitId, lessonState.unitData, lessonState.progress);
       lessonState.phase = 'complete';
     } else {
