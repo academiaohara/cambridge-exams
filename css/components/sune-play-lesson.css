@@ -3413,19 +3413,27 @@ button.sp-example-line.sp-speakable {
 
 .sp-hunt-correction .sp-hunt-correction-row {
   display: flex;
-  align-items: center;
+  flex-wrap: nowrap;
+  align-items: stretch;
   gap: 12px;
 }
 
+.sp-practice-main .sp-screen .sp-hunt-correction .sp-hunt-correction-row .sp-text-input,
 .sp-hunt-correction .sp-hunt-correction-row .sp-text-input {
-  flex: 1 1 auto;
+  flex: 1 1 0;
   min-width: 0;
+  width: auto;
+  max-width: none;
   margin: 0;
 }
 
 .sp-hunt-correction-error-box {
-  flex: 0 0 auto;
-  max-width: 42%;
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  max-width: 46%;
   padding: 8px 12px;
   background: rgba(220, 80, 80, 0.08);
   border: 1px solid rgba(220, 80, 80, 0.35);
