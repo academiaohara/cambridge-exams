@@ -1368,18 +1368,6 @@
       coveredUnits.forEach(function(unit) {
         var unitData = unitDataById[unit.id];
         var cards = BentoGrid._extractTheoryCardsFromUnit(unitData);
-        if (!cards.length) return;
-        var unitLabel = BentoGrid._formatReviewCoveredUnitLabel(unit);
-        mergedCards.push({
-          id: 'review-guide-header-' + unit.id,
-          title: unitLabel,
-          subtitle: unit.type === 'vocabulary' ? 'Vocabulary' : 'Grammar',
-          cardType: 'unit_header',
-          sections: [{
-            type: 'explanation',
-            description: 'Key points from this unit for the review.'
-          }]
-        });
         cards.forEach(function(card, idx) {
           mergedCards.push(Object.assign({}, card, {
             id: unit.id + '-' + (card.id || ('card-' + idx))
@@ -1387,176 +1375,17 @@
         });
       });
       return {
+        schemaVersion: 'sune-english-unit-v2',
+        lessonStyle: 'sune-play-interactive',
         type: 'review',
         unitTitle: (reviewItem && reviewItem.title) || 'Review guide',
         theory: { cards: mergedCards }
       };
     },
 
-    _applyCombinedTheoryLessonFocus: function() {
-      var layout = document.querySelector('.dashboard-layout');
-      var center = document.querySelector('.dashboard-center');
-      if (layout) layout.classList.add('dashboard-layout--lesson-focus');
-      if (center) center.classList.add('course-center--lesson-focus');
-      var header = document.querySelector('.cw-section-header');
-      if (header) header.style.display = 'none';
-      var rightSidebar = document.getElementById('dashboardRightSidebar');
-      var rightSidebarShell = document.getElementById('dashboardRightSidebarShell');
-      if (rightSidebar) rightSidebar.style.display = 'none';
-      if (rightSidebarShell) rightSidebarShell.style.display = 'none';
-      var appContainer = document.querySelector('.app-container');
-      if (appContainer) {
-        appContainer.style.paddingLeft = '0';
-        appContainer.style.paddingRight = '0';
-        appContainer.style.paddingTop = '0';
-      }
-    },
-
-    _clearCombinedTheoryLessonFocus: function() {
-      var layout = document.querySelector('.dashboard-layout');
-      var center = document.querySelector('.dashboard-center');
-      if (layout) layout.classList.remove('dashboard-layout--lesson-focus');
-      if (center) center.classList.remove('course-center--lesson-focus');
-      var header = document.querySelector('.cw-section-header');
-      if (header) header.style.display = '';
-      var rightSidebar = document.getElementById('dashboardRightSidebar');
-      var rightSidebarShell = document.getElementById('dashboardRightSidebarShell');
-      if (rightSidebar) rightSidebar.style.display = '';
-      if (rightSidebarShell) rightSidebarShell.style.display = '';
-      var appContainer = document.querySelector('.app-container');
-      if (appContainer && typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) {
-        Dashboard._applySidebarState();
-        appContainer.style.paddingRight = '';
-        appContainer.style.paddingTop = '';
-      }
-    },
-
-    _getCombinedTheoryMountTarget: function() {
-      var hubPage = document.getElementById('courseHubPage');
-      if (hubPage) {
-        return { container: hubPage, scrollEl: document.getElementById('courseCenterScroll') };
-      }
-      var centerSection = document.getElementById('courseCenterSection');
-      if (centerSection) return { container: centerSection, scrollEl: centerSection };
-      return null;
-    },
-
-    _beginCombinedTheoryView: function() {
-      var target = BentoGrid._getCombinedTheoryMountTarget();
-      if (!target) return null;
-
-      BentoGrid._closeCombinedTheoryOverlay();
-
-      var savedHtml = target.container.innerHTML;
-      var savedScrollTop = target.scrollEl ? target.scrollEl.scrollTop : 0;
-
-      target.container.innerHTML = '<div id="course-combined-theory-mount" class="sp-lesson-mount course-unit-content"></div>';
-      BentoGrid._applyCombinedTheoryLessonFocus();
-
-      var state = {
-        virtualUnit: null,
-        cardIdx: 0,
-        mount: target.container.querySelector('#course-combined-theory-mount'),
-        hubHtml: savedHtml,
-        scrollTop: savedScrollTop,
-        container: target.container,
-        scrollEl: target.scrollEl
-      };
-      BentoGrid._combinedTheoryOverlayState = state;
-      document.addEventListener('keydown', BentoGrid._handleCombinedTheoryEscape, true);
-      return state;
-    },
-
-    _closeCombinedTheoryOverlay: function() {
-      var state = BentoGrid._combinedTheoryOverlayState;
-      document.removeEventListener('keydown', BentoGrid._handleCombinedTheoryEscape, true);
-      BentoGrid._clearCombinedTheoryLessonFocus();
-
-      if (state && state.container && state.hubHtml != null) {
-        state.container.innerHTML = state.hubHtml;
-        if (state.scrollEl && state.scrollTop != null) state.scrollEl.scrollTop = state.scrollTop;
-      }
-
-      BentoGrid._combinedTheoryOverlayState = null;
-    },
-
-    _handleCombinedTheoryEscape: function(event) {
-      if (event.key === 'Escape') BentoGrid._closeCombinedTheoryOverlay();
-    },
-
-    _renderCombinedTheoryOverlay: function() {
-      var state = BentoGrid._combinedTheoryOverlayState;
-      if (!state || !state.mount || !state.virtualUnit) return;
-      var theory = window.SunePlayTheory;
-      if (!theory || !theory.TheoryFlow) return;
-
-      state.mount.innerHTML =
-        '<div class="sp-lesson sp-lesson--theory">' +
-          theory.TheoryFlow(state.virtualUnit, {
-            cardIdx: state.cardIdx,
-            exitToStage: true,
-            returnToSession: false
-          }) +
-        '</div>';
-
-      var mount = state.mount;
-      var nextBtn = mount.querySelector('[data-action="theory-next"]');
-      if (nextBtn) {
-        nextBtn.addEventListener('click', function() {
-          var cards = (state.virtualUnit.theory && state.virtualUnit.theory.cards) || [];
-          if (state.cardIdx < cards.length - 1) {
-            state.cardIdx++;
-            BentoGrid._renderCombinedTheoryOverlay();
-          } else {
-            BentoGrid._closeCombinedTheoryOverlay();
-          }
-        });
-      }
-
-      var prevBtn = mount.querySelector('[data-action="theory-prev"]');
-      if (prevBtn) {
-        prevBtn.addEventListener('click', function() {
-          if (state.cardIdx > 0) {
-            state.cardIdx--;
-            BentoGrid._renderCombinedTheoryOverlay();
-          }
-        });
-      }
-
-      mount.querySelectorAll('[data-action="theory-goto"]').forEach(function(dot) {
-        dot.addEventListener('click', function() {
-          var idx = parseInt(dot.getAttribute('data-card-idx'), 10);
-          if (!isNaN(idx) && idx !== state.cardIdx) {
-            state.cardIdx = idx;
-            BentoGrid._renderCombinedTheoryOverlay();
-          }
-        });
-      });
-
-      mount.querySelectorAll('[data-action="theory-exit"]').forEach(function(btn) {
-        btn.addEventListener('click', BentoGrid._closeCombinedTheoryOverlay);
-      });
-
-      mount.querySelectorAll('[data-action="theory-speak"]').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          var text = btn.getAttribute('data-speak-text');
-          if (!text || !theory.speakText) return;
-          mount.querySelectorAll('.sp-speakable--speaking').forEach(function(el) {
-            el.classList.remove('sp-speakable--speaking');
-          });
-          btn.classList.add('sp-speakable--speaking');
-          theory.speakText(text, function() {
-            btn.classList.remove('sp-speakable--speaking');
-          });
-        });
-      });
-
-      var theoryBody = mount.querySelector('.sp-theory-card-body');
-      if (theoryBody) theoryBody.scrollTop = 0;
-    },
-
     _openReviewCombinedGuide: async function(levelId, reviewItemId) {
+      function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
+
       var indexData = await BentoGrid._loadCourseIndexForLevel(levelId);
       if (!indexData || !indexData.items) return;
       var reviewItem = indexData.items.find(function(item) { return item.id === reviewItemId; });
@@ -1567,13 +1396,63 @@
       });
       if (!coveredUnits.length) return;
 
-      var state = BentoGrid._beginCombinedTheoryView();
-      if (!state || !state.mount) return;
-      state.mount.innerHTML = '<div class="fe-loading"><div class="fe-spinner"></div></div>';
+      var content = document.getElementById('main-content');
+      if (!content) return;
+
+      var courseSection = BentoGrid._courseSection || 'learning';
+      var level = levelId.toUpperCase();
+      var etapaBackKey = BentoGrid._currentEtapaKey
+        || (reviewItem.block != null && !/^pt\d+$/.test(String(reviewItem.block))
+          ? BentoGrid._resolveCourseEtapaKey(courseSection, level, String(reviewItem.block))
+          : null);
+      var courseBackFn = BentoGrid._resolveCourseUnitBackFn(etapaBackKey
+        ? 'BentoGrid.openCourseEtapa(\'' + courseSection + '\', \'' + level + '\', \'' + etapaBackKey + '\')'
+        : 'BentoGrid.openCourseSection(\'' + courseSection + '\', \'' + level + '\')');
+
+      var centerSection = content.querySelector('#courseCenterSection');
+      if (!centerSection) {
+        var exams = window.EXAMS_DATA[level] || [];
+        var sidebars = { left: '', right: '' };
+        if (typeof BentoGrid !== 'undefined') {
+          sidebars = BentoGrid._buildDashboardSidebars(exams);
+        }
+
+        content.innerHTML =
+          '<div class="dashboard-layout dashboard-layout-right-closed dashboard-layout--crossword-scroll">' +
+            (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
+              ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
+              : '<div class="dashboard-left-sidebar" id="dashboardLeftSidebar">' + sidebars.left + '</div>') +
+            '<div class="dashboard-center dashboard-center--course">' +
+              '<div class="fe-section" id="courseCenterSection"></div>' +
+            '</div>' +
+          '</div>';
+        if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
+        if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
+        if (typeof MainNav !== 'undefined' && MainNav.setActive) {
+          var navSection = BentoGrid._courseSection || 'learning';
+          MainNav.setActive(navSection === 'vocabulary' ? 'vocabulary' : 'learning');
+        }
+        centerSection = document.getElementById('courseCenterSection');
+      }
+      if (!centerSection) return;
+
+      centerSection.innerHTML =
+        '<div class="subpage-header subpage-header--course-unit">' +
+          (courseSection === 'learning'
+            ? '<button type="button" class="subpage-back-btn" onclick="' + courseBackFn + '" title="Units">' + _mi('arrow_back') + '<span>Units</span></button>'
+            : '') +
+          '<div class="subpage-header-unit-core">' +
+            '<div class="subpage-title">' + _mi('auto_stories') + ' ' + BentoGrid._escapeHTML(BentoGrid._sanitizeCourseDisplayTitle(reviewItem.title || 'Review guide')) + '</div>' +
+            '<div class="subpage-subtitle">' + level + ' Advanced</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="course-unit-content">' +
+          '<div class="fe-loading"><div class="fe-spinner"></div></div>' +
+        '</div>';
 
       var unitDataById = {};
       await Promise.all(coveredUnits.map(async function(unit) {
-        var filePath = 'data/Course/' + levelId + '/' + unit.file;
+        var filePath = 'data/Course/' + level + '/' + unit.file;
         try {
           var response = await fetch(filePath);
           if (!response.ok) return;
@@ -1584,12 +1463,49 @@
 
       var virtualUnit = BentoGrid._buildCombinedReviewTheoryUnit(reviewItem, coveredUnits, unitDataById);
       if (!virtualUnit.theory.cards.length) {
-        BentoGrid._closeCombinedTheoryOverlay();
+        centerSection.innerHTML =
+          '<div class="subpage-header subpage-header--course-unit">' +
+            (courseSection === 'learning'
+              ? '<button type="button" class="subpage-back-btn" onclick="' + courseBackFn + '" title="Units">' + _mi('arrow_back') + '<span>Units</span></button>'
+              : '') +
+            '<div class="subpage-header-unit-core">' +
+              '<div class="subpage-title">' + _mi('auto_stories') + ' Guide</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="fe-error">No theory content available for this review.</div>';
         return;
       }
-      state.virtualUnit = virtualUnit;
-      state.cardIdx = 0;
-      BentoGrid._renderCombinedTheoryOverlay();
+
+      var virtualUnitId = reviewItemId + '-guide';
+      BentoGrid._currentUnitId = virtualUnitId;
+      BentoGrid._currentUnitData = virtualUnit;
+      BentoGrid._courseUnitBackFn = courseBackFn;
+
+      centerSection.innerHTML =
+        '<div class="subpage-header subpage-header--course-unit">' +
+          (courseSection === 'learning'
+            ? '<button type="button" class="subpage-back-btn" onclick="' + courseBackFn + '" title="Units">' + _mi('arrow_back') + '<span>Units</span></button>'
+            : '') +
+          '<div class="subpage-header-unit-core">' +
+            '<div class="subpage-title">' + _mi('auto_stories') + ' ' + BentoGrid._escapeHTML(BentoGrid._sanitizeCourseDisplayTitle(reviewItem.title || 'Review guide')) + '</div>' +
+            '<div class="subpage-subtitle">' + level + ' Advanced</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="course-unit-content">' +
+          '<div id="sp-lesson-mount" class="sp-lesson-mount course-unit-content"></div>' +
+        '</div>';
+
+      if (typeof SunePlayLesson === 'undefined') return;
+
+      SunePlayLesson.init({
+        unitId: virtualUnitId,
+        unitData: virtualUnit,
+        level: level,
+        startSection: 'theory',
+        theoryCardIdx: 0,
+        backFn: courseBackFn,
+        mount: document.getElementById('sp-lesson-mount')
+      });
     },
 
     _isReviewFullyComplete: function(levelId, reviewItem, progress) {
