@@ -2,7 +2,7 @@
   "block": 1,
   "type": "review",
   "unitTitle": "Review 1: Units 1, 2 and 3",
-  "totalPoints": 50,
+  "totalPoints": 41,
   "sections": [
     {
       "type": "exercise",
@@ -266,89 +266,37 @@
     },
     {
       "type": "exercise",
-      "title": "E: Complete the sentences",
-      "instructions": "Complete using the words in the box.",
-      "words": [
-        "break",
-        "captain",
-        "clap",
-        "drop",
-        "fan",
-        "final",
-        "last",
-        "match",
-        "racket",
-        "rule",
-        "shake",
-        "take",
-        "take",
-        "take",
-        "train"
-      ],
+      "subtype": "matching",
+      "title": "E: Match the two halves of the sentences",
+      "instructions": "Match the two halves of the sentences.",
       "scoring": {
         "pointsPerItem": 1,
-        "maxScore": 15
+        "maxScore": 6
       },
       "items": [
         {
-          "sentence": "The coach ...... the team before the final match.",
-          "answer": "trained"
+          "sentence": "I used to play the guitar every evening **D** when I was at secondary school.",
+          "answer": "D – when I was at secondary school."
         },
         {
-          "sentence": "If you want to improve, you should ...... up a new sport.",
-          "answer": "take"
+          "sentence": "While we were watching the concert **B** somebody's phone started ringing.",
+          "answer": "B – somebody's phone started ringing."
         },
         {
-          "sentence": "The audience ...... loudly after the performance ended.",
-          "answer": "clapped"
+          "sentence": "My brother loves board games and plays them **F** with his friends every Friday.",
+          "answer": "F – with his friends every Friday."
         },
         {
-          "sentence": "You need a tennis ...... to play this game properly.",
-          "answer": "racket"
+          "sentence": "She doesn't usually go to the gym **A** because she prefers running outside.",
+          "answer": "A – because she prefers running outside."
         },
         {
-          "sentence": "The concert will ...... for about two hours.",
-          "answer": "last"
+          "sentence": "They were training for the final match **C** until late every evening.",
+          "answer": "C – until late every evening."
         },
         {
-          "sentence": "She became the ...... of the school basketball team.",
-          "answer": "captain"
-        },
-        {
-          "sentence": "You should follow the ...... if you want to play fairly.",
-          "answer": "rules"
-        },
-        {
-          "sentence": "Our team reached the ...... of the tournament.",
-          "answer": "final"
-        },
-        {
-          "sentence": "The athlete wants to ...... the national record.",
-          "answer": "break"
-        },
-        {
-          "sentence": "We ...... part in a singing competition last month.",
-          "answer": "took"
-        },
-        {
-          "sentence": "The players ...... hands before the match started.",
-          "answer": "shook"
-        },
-        {
-          "sentence": "Ben gave up football and ...... up karate instead.",
-          "answer": "took"
-        },
-        {
-          "sentence": "Thousands of ...... watched the concert online.",
-          "answer": "fans"
-        },
-        {
-          "sentence": "It was an exciting ...... and everybody enjoyed it.",
-          "answer": "match"
-        },
-        {
-          "sentence": "She ...... out of the race because she hurt her ankle.",
-          "answer": "dropped"
+          "sentence": "I think classical music is really relaxing **E** and I listen to it while I study.",
+          "answer": "E – and I listen to it while I study."
         }
       ]
     }
