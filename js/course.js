@@ -1264,14 +1264,14 @@
         return i.type === 'review' && i.status === 'available';
       });
       for (var i = 0; i < reviews.length; i++) {
-        if (!progress[reviews[i].id]) return reviews[i].id;
+        if (!BentoGrid._isReviewFullyComplete(level, reviews[i], progress)) return reviews[i].id;
       }
       return null;
     },
 
     _getReviewCellState: function(item, level, progress, activeReviewId) {
       if (!item || item.type !== 'review') return 'normal';
-      if (progress[item.id]) return 'done';
+      if (BentoGrid._isReviewFullyComplete(level, item, progress)) return 'done';
       if (item.id === activeReviewId) return 'active';
       return 'locked';
     },
@@ -1303,8 +1303,85 @@
       });
     },
 
+    _isReviewFullyComplete: function(levelId, reviewItem, progress) {
+      if (!reviewItem) return false;
+      if (progress && progress[reviewItem.id]) return true;
+      var metaInfo = BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[reviewItem.id];
+      if (!metaInfo || !metaInfo.exercises || !metaInfo.exercises.length) {
+        return !!(progress && progress[reviewItem.id]);
+      }
+      return metaInfo.exercises.every(function(ex) {
+        return BentoGrid._isCourseExercisePassed(levelId, reviewItem.id, ex.sectionIdx, 'review', progress);
+      });
+    },
+
+    _getReviewSectionDefs: function(reviewItem) {
+      var meta = reviewItem && BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[reviewItem.id];
+      if (meta && meta.exercises && meta.exercises.length) {
+        return meta.exercises.map(function(ex, idx) {
+          var title = ex.title || '';
+          var name = title.replace(/^[A-Z]:\s*/, '').trim() || ('Section ' + (ex.label || String.fromCharCode(65 + idx)));
+          return {
+            letter: ex.label || String.fromCharCode(65 + idx),
+            name: name,
+            maxScore: ex.maxScore || 0,
+            sectionIdx: ex.sectionIdx
+          };
+        });
+      }
+      return [
+        { letter: 'A', name: 'Section A', maxScore: 10, sectionIdx: 0 },
+        { letter: 'B', name: 'Section B', maxScore: 16, sectionIdx: 1 },
+        { letter: 'C', name: 'Section C', maxScore: 8, sectionIdx: 2 },
+        { letter: 'D', name: 'Section D', maxScore: 8, sectionIdx: 3 },
+        { letter: 'E', name: 'Section E', maxScore: 8, sectionIdx: 4 }
+      ];
+    },
+
     _isCourseExercisePassed: function(level, unitId, sectionIdx, itemType, progress) {
-      if (itemType === 'review' || itemType === 'progress_test') {
+      if (itemType === 'review') {
+        if (typeof sectionIdx === 'string' && sectionIdx.indexOf('exercise:') === 0) {
+          var reviewExerciseId = sectionIdx.slice(9);
+          try {
+            var spReviewExProg = JSON.parse(localStorage.getItem('sune_play_progress_' + unitId) || '{}');
+            return !!(spReviewExProg.completedExercises && spReviewExProg.completedExercises[reviewExerciseId]);
+          } catch (e) { return false; }
+        }
+        if (typeof sectionIdx === 'string' && sectionIdx.indexOf('node:') === 0) {
+          var reviewNodeId = sectionIdx.slice(5);
+          try {
+            var spReviewProg = JSON.parse(localStorage.getItem('sune_play_progress_' + unitId) || '{}');
+            return !!(spReviewProg.completedNodes && spReviewProg.completedNodes[reviewNodeId]);
+          } catch (e) { return false; }
+        }
+        if (sectionIdx !== undefined && sectionIdx !== null) {
+          var reviewState = BentoGrid._getReviewSectionState(level);
+          var reviewSkey = unitId + '_' + sectionIdx;
+          if (reviewState[reviewSkey] && reviewState[reviewSkey].total > 0) return true;
+          var reviewMeta = BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[unitId];
+          if (reviewMeta && reviewMeta.exercises) {
+            var matchedEx = reviewMeta.exercises.find(function(ex) { return ex.sectionIdx === sectionIdx; });
+            if (matchedEx) {
+              if (matchedEx.exerciseId) {
+                try {
+                  var spProgById = JSON.parse(localStorage.getItem('sune_play_progress_' + unitId) || '{}');
+                  return !!(spProgById.completedExercises && spProgById.completedExercises[matchedEx.exerciseId]);
+                } catch (e) { return false; }
+              }
+              if (typeof matchedEx.sectionIdx === 'string' && matchedEx.sectionIdx.indexOf('exercise:') === 0) {
+                var matchedExerciseId = matchedEx.sectionIdx.slice(9);
+                try {
+                  var spProgByIdx = JSON.parse(localStorage.getItem('sune_play_progress_' + unitId) || '{}');
+                  return !!(spProgByIdx.completedExercises && spProgByIdx.completedExercises[matchedExerciseId]);
+                } catch (e) { return false; }
+              }
+            }
+          }
+          return false;
+        }
+        return !!(progress && progress[unitId]);
+      }
+      if (itemType === 'progress_test') {
         return !!(progress && progress[unitId]);
       }
       if (typeof sectionIdx === 'string' && sectionIdx.indexOf('exercise:') === 0) {
@@ -1331,16 +1408,32 @@
       var cells = [];
       (etapaItems || []).forEach(function(item) {
         if (item.type === 'review') {
-          cells.push({
-            kind: 'review',
-            unitId: item.id,
-            file: item.file,
-            sectionIdx: 0,
-            label: 'Review',
-            icon: 'military_tech',
-            itemType: 'review',
-            item: item
-          });
+          var reviewMetaInfo = BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[item.id];
+          if (reviewMetaInfo && reviewMetaInfo.exercises && reviewMetaInfo.exercises.length) {
+            reviewMetaInfo.exercises.forEach(function(ex) {
+              cells.push({
+                kind: 'exercise',
+                unitId: item.id,
+                file: item.file,
+                sectionIdx: ex.sectionIdx,
+                label: ex.label,
+                icon: 'quiz',
+                itemType: 'review',
+                item: item
+              });
+            });
+          } else {
+            cells.push({
+              kind: 'review',
+              unitId: item.id,
+              file: item.file,
+              sectionIdx: 0,
+              label: 'Review',
+              icon: 'military_tech',
+              itemType: 'review',
+              item: item
+            });
+          }
           return;
         }
         var metaInfo = BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[item.id];
@@ -1531,7 +1624,7 @@
       var firstActiveReviewIdx = -1;
       reviewGroupsInEtapa.forEach(function(revItem, idx) {
         if (firstActiveReviewIdx !== -1) return;
-        if (!BentoGrid._isCourseExercisePassed(levelId, revItem.id, 0, 'review', progress)) firstActiveReviewIdx = idx;
+        if (!BentoGrid._isReviewFullyComplete(levelId, revItem, progress)) firstActiveReviewIdx = idx;
       });
 
       var html = '<div class="course-etapa-map" data-section="' + section + '" data-level="' + levelId + '" data-etapa="' + etapaKey + '" style="' +
@@ -1548,7 +1641,34 @@
         if (item.type === 'review') {
           if (currentGroup) unitGroups.push(currentGroup);
           currentGroup = null;
-          unitGroups.push({ type: 'review', item: item });
+          var reviewMetaInfo = BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[item.id];
+          var reviewGroup = { type: 'unit', item: item, cells: [], isReview: true };
+          if (reviewMetaInfo && reviewMetaInfo.exercises && reviewMetaInfo.exercises.length) {
+            reviewMetaInfo.exercises.forEach(function(ex) {
+              reviewGroup.cells.push({
+                kind: 'exercise',
+                unitId: item.id,
+                file: item.file,
+                sectionIdx: ex.sectionIdx,
+                label: ex.label,
+                icon: 'quiz',
+                itemType: 'review',
+                item: item
+              });
+            });
+          } else {
+            reviewGroup.cells.push({
+              kind: 'exercise',
+              unitId: item.id,
+              file: item.file,
+              sectionIdx: 0,
+              label: 'R',
+              icon: 'quiz',
+              itemType: 'review',
+              item: item
+            });
+          }
+          unitGroups.push(reviewGroup);
           return;
         }
         if (!currentGroup || currentGroup.item.id !== item.id) {
@@ -1587,44 +1707,29 @@
       if (currentGroup) unitGroups.push(currentGroup);
 
       unitGroups.forEach(function(group) {
-        if (group.type === 'review') {
-          var reviewItem = group.item;
-          var reviewIdxInEtapa = reviewGroupCounter;
-          reviewGroupCounter++;
-          var reviewPath = 'data/Course/' + levelId + '/' + reviewItem.file;
-          var reviewPassed = BentoGrid._isCourseExercisePassed(levelId, reviewItem.id, 0, 'review', progress);
-          var reviewQueueLocked = !reviewPassed && firstActiveReviewIdx >= 0 && reviewIdxInEtapa > firstActiveReviewIdx;
-          var isFirstPendingReview = !reviewPassed && firstActiveReviewIdx >= 0 && reviewIdxInEtapa === firstActiveReviewIdx;
-          var reviewLocked = !etapaUnlocked || reviewQueueLocked || (!reviewPassed && !isFirstPendingReview);
-          var reviewClass = 'course-review-accelerator';
-          if (reviewPassed) reviewClass += ' course-review-accelerator--done';
-          else if (isFirstPendingReview || !reviewLocked) reviewClass += ' course-review-accelerator--active';
-          if (reviewLocked && !reviewPassed) reviewClass += ' course-review-accelerator--locked';
-          if (isFirstPendingReview && !reviewLocked) reviewClass += ' course-review-accelerator--current';
-
-          var reviewOnclick = reviewLocked
-            ? 'return false;'
-            : 'BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'' + reviewPath + '\')';
-          var reviewLabel = reviewPassed
-            ? ('REVIEW ' + (reviewIdxInEtapa + 1))
-            : 'ADVANCE TO HERE?';
-
-          html += '<div class="course-review-accelerator-wrap">';
-          html += '<button type="button" class="' + reviewClass + '" onclick="' + reviewOnclick + '" title="' + self._escapeHTML(reviewLabel) + '">';
-          html += '<span class="course-review-accelerator-text">' + self._escapeHTML(reviewLabel) + '</span>';
-          html += '</button></div>';
-          seqIndex++;
-          return;
-        }
-
         var item = group.item;
         if (!group.cells.length) return;
+
+        var reviewIdxInEtapa = -1;
+        var reviewLockState = null;
+        if (group.isReview) {
+          reviewIdxInEtapa = reviewGroupCounter;
+          reviewGroupCounter++;
+          var reviewPassed = BentoGrid._isReviewFullyComplete(levelId, item, progress);
+          var reviewQueueLocked = !reviewPassed && firstActiveReviewIdx >= 0 && reviewIdxInEtapa > firstActiveReviewIdx;
+          var isFirstPendingReview = !reviewPassed && firstActiveReviewIdx >= 0 && reviewIdxInEtapa === firstActiveReviewIdx;
+          reviewLockState = {
+            locked: !etapaUnlocked || reviewQueueLocked || (!reviewPassed && !isFirstPendingReview)
+          };
+        }
 
         var unitNum = item.unit || item.id;
         var unitLabel = 'Unit ' + unitNum;
         if (item.title) {
           var t = self._sanitizeCourseDisplayTitle(item.title);
-          if (t.indexOf('Unit') === 0) {
+          if (group.isReview) {
+            unitLabel = t.indexOf('Review') === 0 ? t : ('Review: ' + t);
+          } else if (t.indexOf('Unit') === 0) {
             unitLabel = t;
           } else if (t.indexOf('Vocabulary:') === 0) {
             unitLabel = 'Unit ' + unitNum + ': ' + t.replace('Vocabulary:', '').trim();
@@ -1637,7 +1742,9 @@
 
         var headerClass = 'course-etapa-header';
         var unitNumber = parseInt(item.unit, 10) || 0;
-        if (item.type === 'progress_test') {
+        if (group.isReview) {
+          headerClass += ' course-etapa-header--review';
+        } else if (item.type === 'progress_test') {
           headerClass += ' course-etapa-header--section';
         } else if (item.type === 'vocabulary' && unitNumber % 3 !== 0) {
           headerClass += ' course-etapa-header--unit course-etapa-header--vocab';
@@ -1650,13 +1757,13 @@
         html += '<div class="course-etapa-header-text">';
         html += '<div class="course-etapa-header-title">' + self._escapeHTML(unitLabel) + '</div>';
         html += '</div>';
-        if (item.type !== 'progress_test') {
+        if (item.type !== 'progress_test' && !group.isReview) {
           html += '<button type="button" class="course-etapa-header-guide" onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'' + guidePath + '\',0)">' +
             _mi('menu_book') + ' GUIDE</button>';
         }
         html += '</div>';
 
-        html += '<div class="course-exercise-grid">';
+        html += '<div class="course-exercise-grid' + (group.isReview ? ' course-exercise-grid--review' : '') + '">';
         group.cells.forEach(function(cell) {
           var cellPassed = BentoGrid._isCourseExercisePassed(levelId, cell.unitId, cell.sectionIdx, cell.itemType, progress);
           var secProg = sectionProgress[cell.unitId] || {};
@@ -1664,27 +1771,30 @@
           var state = cellPassed ? 'done' : (cellProgress ? 'progress' : 'pending');
 
           var blockIndex = blockOrder.indexOf(cell.item.block != null ? String(cell.item.block) : 'misc');
-          var sequentialLocked = firstUnlockedSeqIdx >= 0 && seqIndex > firstUnlockedSeqIdx;
-          var locked = !etapaUnlocked || cell.item.status !== 'available' ||
-            sequentialLocked ||
-            (!(typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack) && blockIndex > 0);
+          var sequentialLocked = !group.isReview && firstUnlockedSeqIdx >= 0 && seqIndex > firstUnlockedSeqIdx;
+          var locked = reviewLockState
+            ? reviewLockState.locked
+            : (!etapaUnlocked || cell.item.status !== 'available' ||
+              sequentialLocked ||
+              (!(typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack) && blockIndex > 0));
 
           var cellClass = 'course-exercise-cell';
+          if (group.isReview) cellClass += ' course-exercise-cell--review';
           if (state === 'done') cellClass += ' course-exercise-cell--done';
           else if (state === 'progress') cellClass += ' course-exercise-cell--progress';
           else cellClass += ' course-exercise-cell--pending';
-          if (seqIndex === firstUnlockedSeqIdx && !locked) cellClass += ' course-exercise-cell--current';
+          if (!group.isReview && seqIndex === firstUnlockedSeqIdx && !locked) cellClass += ' course-exercise-cell--current';
           if (locked) cellClass += ' course-exercise-cell--locked';
 
           var filePath = 'data/Course/' + levelId + '/' + cell.file;
           var onclick = locked
-            ? (cell.item.status !== 'available' ? 'return false;' : (sequentialLocked ? 'return false;' : 'Dashboard.showTheoryUpgradeGate()'))
+            ? (cell.item.status !== 'available' ? 'return false;' : ((reviewLockState && reviewLockState.locked) || sequentialLocked ? 'return false;' : 'Dashboard.showTheoryUpgradeGate()'))
             : 'BentoGrid.openCourseUnit(\'' + cell.unitId + '\',\'' + filePath + '\',' + BentoGrid._formatCourseUnitSectionJsArg(cell.sectionIdx) + ')';
 
           html += '<button type="button" class="' + cellClass + '" onclick="' + onclick + '" title="' + self._escapeHTML(unitLabel + ' · ' + cell.label) + '">';
           html += '<span class="course-exercise-cell-label">' + self._escapeHTML(cell.label) + '</span>';
           html += '</button>';
-          seqIndex++;
+          if (!group.isReview) seqIndex++;
         });
         html += '</div>';
       });
@@ -1991,7 +2101,7 @@
 
       if (reviewItem) {
         var isAvail = reviewItem.status === 'available';
-        var isDone = !!progress[reviewItem.id];
+        var isDone = BentoGrid._isReviewFullyComplete(level, reviewItem, progress);
         var reviewPath = 'data/Course/' + level + '/' + reviewItem.file;
 
         html += '<div class="fe-map-connector"></div>';
@@ -2003,14 +2113,10 @@
         '</div>';
 
         if (isAvail) {
-          var reviewSectionDefs = [
-            { letter: 'A', name: 'Word Formation', maxScore: 10 },
-            { letter: 'B', name: 'Key Word Transformation', maxScore: 16 },
-            { letter: 'C', name: 'Idioms & Collocations', maxScore: 8 },
-            { letter: 'D', name: 'Phrasal Verbs', maxScore: 8 },
-            { letter: 'E', name: 'Multiple Choice', maxScore: 8 }
-          ];
-          var reviewTotalMax = 50;
+          var reviewSectionDefs = BentoGrid._getReviewSectionDefs(reviewItem);
+          var reviewTotalMax = reviewItem.totalPoints || reviewSectionDefs.reduce(function(sum, sec) {
+            return sum + (sec.maxScore || 0);
+          }, 0) || 50;
           var reviewAnsweredData = BentoGrid._getReviewAnswered(level);
           var reviewStateData = BentoGrid._getReviewSectionState(level);
           var totalEarned = 0;
@@ -2034,9 +2140,10 @@
             var isPending = !(skey in reviewAnsweredData);
             var earned = isPending ? 0 : (reviewAnsweredData[skey] || 0);
             var state = reviewStateData[skey];
-            var displayMax = (state && state.total) ? state.total : sec.maxScore;
-            var scoreLabel = (isPending ? '–' : Math.min(earned, displayMax)) + '/' + displayMax;
-            html += '<button class="fe-review-slot" onclick="BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'' + reviewPath + '\', ' + idx + ')">' +
+            var displayMax = (state && state.total) ? state.total : (sec.maxScore || 0);
+            var scoreLabel = displayMax ? ((isPending ? '–' : Math.min(earned, displayMax)) + '/' + displayMax) : sec.letter;
+            var sectionArg = BentoGrid._formatCourseUnitSectionJsArg(sec.sectionIdx !== undefined ? sec.sectionIdx : idx);
+            html += '<button class="fe-review-slot" onclick="BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'' + reviewPath + '\',' + sectionArg + ')">' +
               '<span class="fe-rs-letter">' + sec.letter + '</span>' +
               '<span class="fe-rs-name">' + self._escapeHTML(sec.name) + '</span>' +
               '<span class="fe-rs-score' + (isPending ? ' fe-rs-score-pending' : '') + '">' + scoreLabel + '</span>' +
@@ -6458,6 +6565,8 @@
             var nodeId = BentoGrid._resolveSunePlayNodeForExercise(unitData, ex.id);
             return {
               label: label,
+              title: ex.title || ex.exerciseTypeName || '',
+              maxScore: (ex.scoring && ex.scoring.maxScore) || 0,
               sectionIdx: 'exercise:' + ex.id,
               exerciseId: ex.id,
               nodeId: nodeId
@@ -6564,6 +6673,8 @@
               var nodeId = BentoGrid._resolveSunePlayNodeForExercise(unitData, ex.id);
               return {
                 label: label,
+                title: ex.title || ex.exerciseTypeName || '',
+                maxScore: (ex.scoring && ex.scoring.maxScore) || 0,
                 sectionIdx: 'exercise:' + ex.id,
                 exerciseId: ex.id,
                 nodeId: nodeId
@@ -6594,6 +6705,8 @@
           var letterMatch = String(sec.title || '').match(/^([A-Z]):/);
           return {
             label: letterMatch ? letterMatch[1] : BentoGrid._getCourseExerciseLabel(sectionIdx),
+            title: sec.title || '',
+            maxScore: (sec.scoring && sec.scoring.maxScore) || 0,
             sectionIdx: sectionIdx
           };
         });
@@ -7370,7 +7483,7 @@
 
         // Review row
         if (reviewItem) {
-          var reviewDone = !!progress[reviewItem.id];
+          var reviewDone = BentoGrid._isReviewFullyComplete(level, reviewItem, progress);
           var reviewAvail = reviewItem.status === 'available';
           if (reviewAvail) {
             var reviewLabel = unitItems.length >= 2

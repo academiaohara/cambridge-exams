@@ -16,7 +16,7 @@
     "pilot": false,
     "sourceFile": "data/Course/C1/Review4.json",
     "migratedAt": "2026-07-09",
-    "legacyExerciseCount": 4,
+    "legacyExerciseCount": 5,
     "sourceType": "review"
   },
   "unitStructure": {
@@ -77,6 +77,19 @@
           "studentAction": "type_answer",
           "evaluationTrigger": "check_button"
         }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
       }
     ],
     "globalRules": {
@@ -98,11 +111,12 @@
       "focus": [
         "conjugation_gap_fill",
         "two_option_choice",
-        "free_text_gap_fill"
+        "free_text_gap_fill",
+        "mc_4_option"
       ],
       "lives": 5,
       "passCondition": {
-        "minimumCorrectScreens": 22,
+        "minimumCorrectScreens": 28,
         "allowFinishWithZeroLives": false
       },
       "screenGeneration": [
@@ -161,6 +175,20 @@
             "c1-u4-exd-7",
             "c1-u4-exd-8"
           ]
+        },
+        {
+          "sourceExerciseId": "c1-u4-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "c1-u4-exe-1",
+            "c1-u4-exe-2",
+            "c1-u4-exe-3",
+            "c1-u4-exe-4",
+            "c1-u4-exe-5",
+            "c1-u4-exe-6",
+            "c1-u4-exe-7",
+            "c1-u4-exe-8"
+          ]
         }
       ]
     }
@@ -170,7 +198,7 @@
     "shuffleWithinNode": false,
     "failedItemPlacement": "end_of_queue",
     "repeatFailedItemsBeforeCompletion": true,
-    "maxScreensPerNode": 32,
+    "maxScreensPerNode": 40,
     "minimumScreensPerNode": 6
   },
   "xpRules": {
@@ -196,7 +224,8 @@
       "c1-u4-ex-a",
       "c1-u4-ex-b",
       "c1-u4-ex-c",
-      "c1-u4-ex-d"
+      "c1-u4-ex-d",
+      "c1-u4-ex-e"
     ],
     "exercises": [
       {
@@ -611,6 +640,230 @@
             "acceptedAnswers": [
               "get this email out of the way"
             ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u4-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Multiple Choice",
+        "title": "E: Multiple Choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "c1-u4-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "After years away from the stage, the actor made a triumphant",
+            "sentenceAfter": "with a critically acclaimed performance.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "return"
+              },
+              {
+                "letter": "B",
+                "text": "comeback"
+              },
+              {
+                "letter": "C",
+                "text": "recovery"
+              },
+              {
+                "letter": "D",
+                "text": "revival"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The documentary offered a deeply",
+            "sentenceAfter": "portrait of life in the remote mountain community.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "moving"
+              },
+              {
+                "letter": "B",
+                "text": "moved"
+              },
+              {
+                "letter": "C",
+                "text": "movement"
+              },
+              {
+                "letter": "D",
+                "text": "movable"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Passengers were advised to remain seated while the train passed",
+            "sentenceAfter": "the tunnel at high speed.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "across"
+              },
+              {
+                "letter": "B",
+                "text": "along"
+              },
+              {
+                "letter": "C",
+                "text": "through"
+              },
+              {
+                "letter": "D",
+                "text": "over"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The committee proposed a series of",
+            "sentenceAfter": "reforms designed to modernise public transport.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "progress"
+              },
+              {
+                "letter": "B",
+                "text": "progressive"
+              },
+              {
+                "letter": "C",
+                "text": "progressed"
+              },
+              {
+                "letter": "D",
+                "text": "progression"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "When the leading rider fell, several competitors managed to",
+            "sentenceAfter": "up with the front group.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "catch"
+              },
+              {
+                "letter": "B",
+                "text": "keep"
+              },
+              {
+                "letter": "C",
+                "text": "hold"
+              },
+              {
+                "letter": "D",
+                "text": "stay"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The area around the station was",
+            "sentenceAfter": "off by police while engineers inspected the track.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "cut"
+              },
+              {
+                "letter": "B",
+                "text": "shut"
+              },
+              {
+                "letter": "C",
+                "text": "cordoned"
+              },
+              {
+                "letter": "D",
+                "text": "blocked"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She always",
+            "sentenceAfter": "a point of thanking her team personally after every successful project.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "does"
+              },
+              {
+                "letter": "B",
+                "text": "makes"
+              },
+              {
+                "letter": "C",
+                "text": "has"
+              },
+              {
+                "letter": "D",
+                "text": "takes"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exe-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The driver was fined for",
+            "sentenceAfter": "through a residential area at nearly twice the legal limit.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "rushing"
+              },
+              {
+                "letter": "B",
+                "text": "speeding"
+              },
+              {
+                "letter": "C",
+                "text": "racing"
+              },
+              {
+                "letter": "D",
+                "text": "hurrying"
+              }
+            ],
+            "answer": "B",
             "explanation": ""
           }
         ]

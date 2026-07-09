@@ -787,7 +787,8 @@
 
 .fe-map-review-slots {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 6px;
   margin-top: 10px;
 }
@@ -823,7 +824,8 @@
   cursor: pointer;
   text-align: left;
   transition: background 0.12s, border-color 0.12s;
-  width: 100%;
+  flex: 1 1 0;
+  min-width: 72px;
 }
 
 .fe-review-slot:hover {
@@ -7036,6 +7038,34 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   color: #94a3b8;
   box-shadow: 0 5px 0 #cbd5e1;
   cursor: not-allowed;
+}
+
+.course-etapa-header--review {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.28);
+}
+
+.course-exercise-grid--review {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.course-exercise-cell--review.course-exercise-cell--pending {
+  background: #fbbf24;
+  color: #fff;
+  box-shadow: 0 5px 0 #d97706;
+}
+
+.course-exercise-cell--review.course-exercise-cell--done {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  color: #c2410c;
+  box-shadow: 0 5px 0 #fb923c;
+}
+
+@media (max-width: 520px) {
+  .course-exercise-grid--review {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 4px;
+  }
 }
 
 /* Review accelerator — full-width bar, no header */
