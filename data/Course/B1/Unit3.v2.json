@@ -923,12 +923,13 @@
         "exerciseTypeName": "Word patterns (dialogue)",
         "title": "Word patterns (dialogue)",
         "instructions": "Write one word in each gap.",
-        "studentInstruction": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap and confirm each gap one by one.",
         "legacyKey": "H",
         "legacyPattern": "passage-input",
         "interaction": {
           "formatType": "passage_gap_fill",
-          "sequentialGaps": false,
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
           "gapInputStyle": "underline_expand"
         },
         "passageTitle": "A conversation",

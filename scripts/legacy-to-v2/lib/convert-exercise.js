@@ -251,8 +251,11 @@ export function convertLegacyExercise(exercise, exerciseKey, unitPrefix, unitMet
     converted.formatType = 'passage_gap_fill';
     converted.answers = buildPassageAnswers(exercise);
     converted.interaction.formatType = 'passage_gap_fill';
-    converted.interaction.sequentialGaps = false;
+    converted.interaction.sequentialGaps = detection.legacyPattern === 'passage-input';
     converted.interaction.gapInputStyle = detection.legacyPattern === 'passage-input' ? 'underline_expand' : 'pill';
+    if (detection.legacyPattern === 'passage-input') {
+      converted.interaction.requireWordBankAssignment = false;
+    }
     if (exercise.gapVerbs) converted.gapVerbs = exercise.gapVerbs;
     return { exercise: converted, detection: detection };
   }
