@@ -1856,19 +1856,24 @@ button.sp-example-line.sp-speakable {
 .sp-kwt-keyword-row {
   display: flex;
   justify-content: center;
+  margin: 2px 0 4px;
 }
 
 .sp-kwt-keyword {
   display: inline-block;
-  padding: 6px 18px;
-  border-radius: 999px;
-  background: var(--sp-duo-blue-light);
-  border: 2px solid var(--sp-duo-blue);
+  padding: 10px 22px;
+  border: 2px solid #e2e8f4;
+  border-bottom-width: 3px;
+  border-bottom-color: #dce3f0;
+  border-radius: 12px;
+  background: var(--white, #fff);
+  box-shadow: 0 3px 0 #dce3f0;
   font-family: 'Nunito', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 800;
-  letter-spacing: 0.04em;
-  color: var(--sp-duo-blue-dark);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sp-duo-blue-dark, #1c4f9c);
 }
 
 .sp-kwt-target-sentence {
