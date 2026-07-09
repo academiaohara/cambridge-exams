@@ -246,8 +246,16 @@ export function convertLegacyExercise(exercise, exerciseKey, unitPrefix, unitMet
     converted.formatType = 'passage_gap_fill';
     converted.answers = buildPassageAnswers(exercise);
     converted.interaction.formatType = 'passage_gap_fill';
-    converted.interaction.sequentialGaps = false;
-    converted.interaction.gapInputStyle = detection.legacyPattern === 'passage-input' ? 'underline_expand' : 'pill';
+    if (detection.legacyPattern === 'passage-wf') {
+      converted.interaction.sequentialGaps = true;
+      converted.interaction.requireWordBankAssignment = false;
+      converted.interaction.requireWordFormation = true;
+      converted.interaction.gapInputStyle = 'underline_expand';
+      converted.studentInstruction = 'Use the word in capitals to form a new word for each gap, one gap at a time.';
+    } else {
+      converted.interaction.sequentialGaps = false;
+      converted.interaction.gapInputStyle = detection.legacyPattern === 'passage-input' ? 'underline_expand' : 'pill';
+    }
     if (exercise.gapVerbs) converted.gapVerbs = exercise.gapVerbs;
     return { exercise: converted, detection: detection };
   }

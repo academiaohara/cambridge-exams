@@ -171,7 +171,15 @@
     return values;
   }
 
-  function markPassageGapResults(root, gaps, givenValues) {
+  function isPassageGapAnswerCorrect(given, gap, payload) {
+    if (!given) return false;
+    if (payload.requireWordFormation && norm.isUnchangedStemWord(given, gap.stemWord || gap.baseVerb)) {
+      return false;
+    }
+    return norm.answersMatch(given, gap.expectedAnswer);
+  }
+
+  function markPassageGapResults(root, gaps, givenValues, payload) {
     root.querySelectorAll('.sp-passage-gap-wrap').forEach(function(wrap) {
       var num = parseInt(wrap.getAttribute('data-passage-gap'), 10);
       var idx = -1;
@@ -182,7 +190,7 @@
         }
       }
       if (idx === -1) return;
-      var ok = norm.answersMatch(givenValues[idx] || '', gaps[idx].expectedAnswer);
+      var ok = isPassageGapAnswerCorrect(givenValues[idx] || '', gaps[idx], payload || {});
       wrap.classList.toggle('sp-passage-gap--correct', ok);
       wrap.classList.toggle('sp-passage-gap--incorrect', !ok);
     });
@@ -558,7 +566,7 @@
       return { handled: true, noop: true };
     }
 
-    var ok = norm.answersMatch(given, gap.expectedAnswer);
+    var ok = isPassageGapAnswerCorrect(given, gap, p);
     var verb = state.assignments[gapNumber] || gap.baseVerb || '';
 
     wrap.classList.toggle('sp-passage-gap--correct', ok);
@@ -3388,14 +3396,14 @@
         result.userAnswer = passageGapValues.join(' / ');
         result.correctAnswer = passageGaps.map(function(gap) { return gap.expectedAnswer; }).join(' / ');
         result.correct = passageGapValues.length === passageGaps.length &&
-          norm.matchesBlanks(passageGapValues, p);
+          norm.matchesPassageGaps(passageGapValues, p);
         result.lifeLoss = result.correct ? 0 : 1;
         if (!result.correct) {
-          markPassageGapResults(root, passageGaps, passageGapValues);
+          markPassageGapResults(root, passageGaps, passageGapValues, p);
         } else {
           markPassageGapResults(root, passageGaps, passageGaps.map(function(gap) {
             return gap.expectedAnswer;
-          }));
+          }), p);
         }
         break;
       }

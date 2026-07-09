@@ -111,6 +111,26 @@
     return false;
   }
 
+  function isUnchangedStemWord(given, stemWord) {
+    if (!stemWord) return false;
+    return answersMatch(given, stemWord);
+  }
+
+  function matchesPassageGaps(givens, item, opts) {
+    opts = opts || {};
+    var gaps = item.gaps || [];
+    if (!Array.isArray(givens) || givens.length !== gaps.length) return false;
+    return gaps.every(function(gap, i) {
+      var given = givens[i];
+      if (!given) return false;
+      if (item.requireWordFormation) {
+        var stem = gap.stemWord || gap.baseVerb || '';
+        if (isUnchangedStemWord(given, stem)) return false;
+      }
+      return answersMatch(given, gap.expectedAnswer, opts);
+    });
+  }
+
   function matchesBlanks(givens, item, opts) {
     opts = opts || {};
     var expectedRows = [];
@@ -144,9 +164,11 @@
     normalizeAnswerPreserveCase: normalizeAnswerPreserveCase,
     normalizeCommaRewrite: normalizeCommaRewrite,
     answersMatch: answersMatch,
+    isUnchangedStemWord: isUnchangedStemWord,
     matchesAnyAccepted: matchesAnyAccepted,
     matchesCommaRewrite: matchesCommaRewrite,
     wordSetsMatch: wordSetsMatch,
+    matchesPassageGaps: matchesPassageGaps,
     matchesBlanks: matchesBlanks
   };
 })();
