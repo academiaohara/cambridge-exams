@@ -403,11 +403,12 @@
     var node = (unit.practiceNodes || []).find(function(n) { return n.nodeId === nodeId; });
     if (!node) return;
 
-    var screenList = screens.generatePracticeScreens(unit, nodeId);
-    if (opts.exerciseId) {
-      screenList = screenList.filter(function(s) { return s.sourceExerciseId === opts.exerciseId; });
+    var screenList;
+    if (opts.exerciseId && screens.collectScreensForExercise) {
+      screenList = screens.collectScreensForExercise(unit, opts.exerciseId);
       lessonState.singleExerciseId = opts.exerciseId;
     } else {
+      screenList = screens.generatePracticeScreens(unit, nodeId);
       lessonState.singleExerciseId = null;
     }
     if (!screenList.length) return;
