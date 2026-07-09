@@ -804,12 +804,13 @@
         "exerciseTypeName": "D: Present perfect continuous",
         "title": "D: Present perfect continuous",
         "instructions": "Complete using the correct present perfect continuous form of the verbs in brackets. Use short forms where possible.",
-        "studentInstruction": "Complete using the correct present perfect continuous form of the verbs in brackets. Use short forms where possible.",
+        "studentInstruction": "Complete using the correct present perfect continuous form of the verbs in brackets. Use short forms where possible. Confirm each gap one by one.",
         "legacyKey": "D",
         "legacyPattern": "passage-input",
         "interaction": {
           "formatType": "passage_gap_fill",
-          "sequentialGaps": false,
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
           "gapInputStyle": "underline_expand"
         },
         "passage": "Lucy: Hi Ben! You look tired. What (1) ...... (you / do)?\nBen: Hey Lucy. Well, (2) ...... (I / revise) for my maths test.\nLucy: Really? (3) ...... (you / study) all day?\nBen: Pretty much. (4) ...... (I / sit) in the library since this morning and (5) ...... (I / not / take) any breaks.\nLucy: That sounds awful!\nBen: Yeah, but (6) ...... (I / work) with Alex, so it's been a bit easier.\nLucy: Well, my sister and (7) ...... (I / clean) the house all afternoon.\nBen: Fun!\nLucy: Actually, yes! And (8) ...... (we / also / prepare) dinner for tonight.\nBen: Nice. What are you making?\nLucy: Pizza! We can't decide on the toppings, so (9) ...... (we / look) at recipes online.\nBen: Sounds great. By the way, (10) ...... (I / think) about joining the school basketball team.",

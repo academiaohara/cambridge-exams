@@ -94,7 +94,9 @@
       explanation: exercise.explanation || 'Check each gap against the story context and verb form.',
       instruction: exercise.instructions || exercise.studentInstruction || '',
       sequentialGaps: !!interaction.sequentialGaps,
-      requireWordBankAssignment: interaction.requireWordBankAssignment !== false && !!interaction.sequentialGaps,
+      requireWordBankAssignment: interaction.requireWordBankAssignment !== false &&
+        !!interaction.sequentialGaps &&
+        wordBank.length > 0,
       gapInputStyle: interaction.gapInputStyle || (interaction.sequentialGaps ? 'underline_expand' : 'pill')
     };
   }
