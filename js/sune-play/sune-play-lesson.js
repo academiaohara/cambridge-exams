@@ -54,6 +54,22 @@
     try { localStorage.setItem(getProgressKey(unitId), JSON.stringify(progress)); } catch (e) { /* ignore */ }
   }
 
+  function areAllRequiredExercisesComplete(unitData, progress) {
+    if (!unitData || !progress) return false;
+    var required = (unitData.contentBanks && unitData.contentBanks.requiredExerciseIds) || [];
+    if (!required.length) return false;
+    var completed = progress.completedExercises || {};
+    return required.every(function(exerciseId) { return !!completed[exerciseId]; });
+  }
+
+  function maybeMarkReviewUnitComplete(level, unitId, unitData, progress) {
+    if (!unitData || (unitData.type !== 'review' && unitData.type !== 'progress_test')) return;
+    if (!areAllRequiredExercisesComplete(unitData, progress)) return;
+    if (typeof BentoGrid !== 'undefined' && BentoGrid._markCourseUnitOpened) {
+      BentoGrid._markCourseUnitOpened(level, unitId);
+    }
+  }
+
   function calcXp(unit, correct, livesLost, perfect) {
     var rules = unit.xpRules || {};
     var xp = correct * (rules.baseXpPerCorrectScreen || 10);
@@ -1224,10 +1240,7 @@
         lessonState.progress.completedNodes[node.nodeId] = true;
       }
       saveProgress(lessonState.unitId, lessonState.progress);
-      if (lessonState.unitData && (lessonState.unitData.type === 'review' || lessonState.unitData.type === 'progress_test') &&
-          typeof BentoGrid !== 'undefined' && BentoGrid._markCourseUnitOpened) {
-        BentoGrid._markCourseUnitOpened(lessonState.level, lessonState.unitId);
-      }
+      maybeMarkReviewUnitComplete(lessonState.level, lessonState.unitId, lessonState.unitData, lessonState.progress);
       lessonState.phase = 'complete';
     } else {
       lessonState.phase = 'retry';

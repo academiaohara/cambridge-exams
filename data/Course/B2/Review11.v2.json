@@ -115,7 +115,7 @@
       ],
       "lives": 5,
       "passCondition": {
-        "minimumCorrectScreens": 21,
+        "minimumCorrectScreens": 22,
         "allowFinishWithZeroLives": false
       },
       "screenGeneration": [
@@ -161,7 +161,8 @@
             "b2-u11-exd-4",
             "b2-u11-exd-5",
             "b2-u11-exd-6",
-            "b2-u11-exd-7"
+            "b2-u11-exd-7",
+            "b2-u11-exd-8"
           ]
         },
         {
@@ -174,7 +175,8 @@
             "b2-u11-exe-4",
             "b2-u11-exe-5",
             "b2-u11-exe-6",
-            "b2-u11-exe-7"
+            "b2-u11-exe-7",
+            "b2-u11-exe-8"
           ]
         }
       ]
@@ -185,7 +187,7 @@
     "shuffleWithinNode": false,
     "failedItemPlacement": "end_of_queue",
     "repeatFailedItemsBeforeCompletion": true,
-    "maxScreensPerNode": 30,
+    "maxScreensPerNode": 32,
     "minimumScreensPerNode": 6
   },
   "xpRules": {
@@ -680,6 +682,32 @@
             ],
             "answer": "C",
             "explanation": ""
+          },
+          {
+            "id": "b2-u11-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The accountant asked whether we had",
+            "sentenceAfter": "the invoice before the end of the month.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "paid"
+              },
+              {
+                "letter": "B",
+                "text": "paying"
+              },
+              {
+                "letter": "C",
+                "text": "to pay"
+              },
+              {
+                "letter": "D",
+                "text": "pay"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
           }
         ]
       },
@@ -877,6 +905,32 @@
               }
             ],
             "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exe-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If you pay in cash, the shop assistant will give you a",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "receipt"
+              },
+              {
+                "letter": "B",
+                "text": "ticket"
+              },
+              {
+                "letter": "C",
+                "text": "bill"
+              },
+              {
+                "letter": "D",
+                "text": "note"
+              }
+            ],
+            "answer": "A",
             "explanation": ""
           }
         ]

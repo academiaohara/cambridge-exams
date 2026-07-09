@@ -209,7 +209,7 @@
       "instructions": "Choose the correct answer.",
       "scoring": {
         "pointsPerItem": 1,
-        "maxScore": 6
+        "maxScore": 7
       },
       "items": [
         {
@@ -271,6 +271,16 @@
             "D organically"
           ],
           "answer": "C"
+        },
+        {
+          "sentence": "The engineers are confident that the new bridge will be finished ...... schedule.",
+          "options": [
+            "A on",
+            "B in",
+            "C at",
+            "D by"
+          ],
+          "answer": "A"
         }
       ]
     }
