@@ -7098,43 +7098,21 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
   background: rgba(124, 58, 237, 0.2);
 }
 
-.course-combined-theory-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 10050;
+.dashboard-layout--lesson-focus #courseCenterScroll:has(.sp-lesson-mount) {
+  flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(3px);
-}
-
-.course-combined-theory-panel {
-  width: min(920px, 100%);
-  max-height: min(92dvh, 900px);
+  flex-direction: column;
+  min-height: 0;
   overflow: hidden;
-  border-radius: 20px;
-  background: #fff;
-  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.28);
 }
 
-.course-combined-theory-mount {
-  min-height: min(80dvh, 760px);
-  max-height: min(92dvh, 900px);
-}
-
-.course-combined-theory-mount .course-combined-theory-lesson,
-.course-combined-theory-mount .sp-lesson--theory {
-  min-height: min(80dvh, 760px);
-  max-height: min(92dvh, 900px);
-}
-
-.course-combined-theory-overlay--loading .course-combined-theory-panel {
+.dashboard-layout--lesson-focus .course-hub-page:has(.sp-lesson-mount) {
+  flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 220px;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .course-review-header-actions {
