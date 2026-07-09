@@ -1806,7 +1806,9 @@
     var verbRef = p.verbPrompt || p.preselectedVerb || '';
     var gapCount = countGaps(p.sentence);
     var multiCls = gapCount > 1 ? ' sp-prompt-sentence--multi-gap' : '';
-    var format = screen.formatType === 'word_bank_gap_fill' || (p.wordBank && p.wordBank.length)
+    // When the verb is already given (highlighted), hide the word bank — the learner only conjugates.
+    var showWordBank = !!(p.wordBank && p.wordBank.length && !verbRef);
+    var format = showWordBank
       ? 'word_bank_gap_fill'
       : (screen.formatType || 'free_text_gap_fill');
     var html = '<div class="sp-screen sp-screen--gap' +
