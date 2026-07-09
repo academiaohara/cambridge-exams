@@ -87,6 +87,38 @@ export function countLegacyItems(exercise, detection) {
   return (exercise.questions || exercise.items || []).length;
 }
 
+export function parseGapSlashChoice(sentence, answer) {
+  var text = String(sentence || '');
+  var match = text.match(/^(.*?)(?:……|\.{3,}|_{3,})\s*\(([^)]+)\)\s*(.*)$/s);
+  if (!match) return null;
+
+  var optionsStr = match[2];
+  if (!/\//.test(optionsStr)) return null;
+
+  var options = optionsStr.split('/').map(function(o) { return o.trim(); }).filter(Boolean);
+  if (options.length < 2) return null;
+
+  var ans = String(answer || '').trim();
+  var ansLower = ans.toLowerCase();
+  var matchesOption = options.some(function(opt) { return opt.toLowerCase() === ansLower; });
+  if (!matchesOption) return null;
+
+  var before = match[1].trim();
+  var after = match[3].trim();
+  var completed = (before + ' ' + ans + (after ? ' ' + after : ''))
+    .replace(/\s+/g, ' ')
+    .replace(/\s+([.!?,;:])/g, '$1')
+    .trim();
+  return {
+    sentenceBefore: before,
+    sentenceAfter: after,
+    options: options,
+    answer: ans,
+    originalSentence: text,
+    completedSentence: completed
+  };
+}
+
 export function parseTwoOptionFromBold(sentence, answer) {
   var text = String(sentence || '');
   var match = text.match(/^(.*?)\*\*([^*]+)\*\*(.*)$/s);

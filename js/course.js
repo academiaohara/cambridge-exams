@@ -5656,13 +5656,23 @@
         }
       }
 
+      // Post-process: gap-hint with slash particle options → tap-to-select (e.g. Unit 3D phrasal verbs)
+      for (var gci = 0; gci < parts.length; gci++) {
+        if (parts[gci].type === 'gap-hint' && parts[gci].hint && String(parts[gci].hint).indexOf('/') !== -1) {
+          var slashOpts = parts[gci].hint.split('/').map(function(s) { return s.trim(); }).filter(Boolean);
+          if (slashOpts.length >= 3 && slashOpts.every(function(o) { return /^[a-z]{1,5}$/i.test(o); })) {
+            parts[gci] = { type: 'gap-choice', options: slashOpts };
+          }
+        }
+      }
+
       // Post-process: when no interactive elements and there are bold words, convert them
       // to inline hint-gap pills (hint = bold word + input together), as in Exercise F
       // style error-correction where the incorrect bold word acts as the hint.
       // All bold items are converted (no break) so sentences with multiple numbered
       // error-correction targets (e.g. Exercise G) get one input pill per bold phrase.
       var hasInteractive = parts.some(function(p) {
-        return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'gap-wf' || p.type === 'options';
+        return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'gap-choice' || p.type === 'gap-wf' || p.type === 'options';
       });
       if (!hasInteractive) {
         for (var bpi = 0; bpi < parts.length; bpi++) {
@@ -5695,7 +5705,7 @@
 
       // Check if there are any interactive elements (re-evaluate after post-processing)
       hasInteractive = parts.some(function(p) {
-        return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'gap-wf' || p.type === 'options';
+        return p.type === 'gap' || p.type === 'hint-gap' || p.type === 'gap-hint' || p.type === 'gap-choice' || p.type === 'gap-wf' || p.type === 'options';
       });
 
       // If no gaps or options detected, add a standalone answer input at the end
@@ -5782,6 +5792,13 @@
             );
           }
           return wfPill;
+        } else if (p.type === 'gap-choice') {
+          var gcId = inputIdBase + '_o' + (optCount++);
+          return '<span class="cu-gap-choice-inline">' +
+            p.options.map(function(opt) {
+              return '<button class="cu-option-btn" data-group="' + gcId + '" onclick="BentoGrid._selectCourseOption(this)" type="button">' + self._escapeHTML(opt) + '</button>';
+            }).join('<span class="cu-option-sep"> / </span>') +
+          '</span>';
         } else if (p.type === 'hint-gap' || p.type === 'gap-hint') {
           var gId = inputIdBase + '_g' + (gapCount++);
           var hintSlash = p.hint && String(p.hint).indexOf('/') !== -1;
