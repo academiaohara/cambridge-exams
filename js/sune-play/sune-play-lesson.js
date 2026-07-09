@@ -698,7 +698,7 @@
       case 'column_matching':
         return p.instruction || 'Tap a numbered beginning, then tap the matching ending letter.';
       case 'crossword_clues':
-        return p.instruction || 'Type one letter in each box to complete the answer.';
+        return p.instruction || 'Complete the word using the definition.';
       case 'synced_gap_fill':
         return p.instruction || 'Write one word that fits all three sentences.';
       case 'comma_placement':
@@ -750,7 +750,7 @@
       case 'column_matching':
         return p.instruction || 'Match beginnings with endings.';
       case 'crossword_clues':
-        return ((p.direction === 'down' ? 'Down ' : 'Across ') + (p.clueNumber != null ? p.clueNumber : '') + ': ' + (p.clue || '')).trim();
+        return ((p.clueNumber != null ? p.clueNumber + '. ' : '') + (p.clue || '')).trim();
       case 'synced_gap_fill':
         return (p.sentences && p.sentences[0]) || p.instruction || '';
       case 'comma_placement':

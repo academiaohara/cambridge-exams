@@ -2206,6 +2206,10 @@
       BentoGrid._courseUnitMeta[unitId] = BentoGrid._extractCourseUnitMeta(unitData);
 
       BentoGrid._currentUnitId = unitId;
+      BentoGrid._currentUnitData = unitData;
+      if (typeof LearningCrossword !== 'undefined') {
+        await LearningCrossword.ensureDictionary();
+      }
 
       // Update right sidebar with learning roadmap for this unit
       var rightSidebar = document.getElementById('dashboardRightSidebar');
@@ -2319,17 +2323,24 @@
           spStart = 'session';
           startNodeId = startSection.slice(5);
         }
-        SunePlayLesson.init({
-          unitId: unitId,
-          unitData: unitData,
-          level: level,
-          startSection: spStart,
-          startNodeId: startNodeId,
-          startExerciseId: startExerciseId,
-          theoryCardIdx: spTheoryCardIdx,
-          backFn: backFn,
-          mount: document.getElementById('sp-lesson-mount')
-        });
+        (async function () {
+          var spUnitData = unitData;
+          if (typeof LearningCrossword !== 'undefined') {
+            await LearningCrossword.ensureDictionary();
+            await LearningCrossword.enrichV2Unit(spUnitData);
+          }
+          SunePlayLesson.init({
+            unitId: unitId,
+            unitData: spUnitData,
+            level: level,
+            startSection: spStart,
+            startNodeId: startNodeId,
+            startExerciseId: startExerciseId,
+            theoryCardIdx: spTheoryCardIdx,
+            backFn: backFn,
+            mount: document.getElementById('sp-lesson-mount')
+          });
+        })();
       } else if (BentoGrid._isDuolingoGrammarUnit(unitData)) {
         var bglSectionIdx = sectionStartIdx;
         if (startSection === 'exercises') {
@@ -4808,63 +4819,36 @@
 
     _renderCuCrosswordExercise: function(ex, idBase, secId) {
       var self = this;
-      var acrossItems = ex.across || [];
-      var downItems = ex.down || [];
+      var sections = (BentoGrid._currentUnitData && BentoGrid._currentUnitData.sections) || {};
+      var dictByWord = (typeof LearningCrossword !== 'undefined' && LearningCrossword.getDictionary) ? LearningCrossword.getDictionary() : {};
+      var items = (typeof LearningCrossword !== 'undefined' && LearningCrossword.prepareLegacyCrosswordItems)
+        ? LearningCrossword.prepareLegacyCrosswordItems(ex, sections, dictByWord)
+        : [];
 
-      function renderClueList(items, dir) {
-        if (!items.length) return '';
-        var label = dir === 'across' ? 'Across' : 'Down';
-        var h = '<div class="cu-cw-section"><div class="cu-cw-section-label">' + self._escapeHTML(label) + '</div><ol class="cu-cw-clue-list">';
-        items.forEach(function(it) {
-          var boxesHtml = '';
-          var ans = it.answer || '';
-          var iid = idBase + '-cw-' + dir + '-' + it.num;
-          for (var ci = 0; ci < ans.length; ci++) {
-            boxesHtml += '<input type="text" class="cu-cw-box cu-cw-letter" maxlength="1" ' +
-              'data-cw-id="' + iid + '" data-cw-idx="' + ci + '" ' +
-              'autocomplete="off" spellcheck="false" ' +
-              'oninput="BentoGrid._cwBoxInput(this)" ' +
-              'onkeydown="BentoGrid._cwBoxKeydown(this,event)" />';
-          }
-          h += '<li class="cu-cw-clue-item" data-answer="' + self._escapeHTML(ans.toLowerCase()) + '" data-cw-id="' + iid + '">' +
-            '<span class="cu-cw-clue-text"><span class="cu-cw-clue-num">' + it.num + '.</span> ' + self._escapeHTML(it.clue) + '</span>' +
-            '<div class="cu-cw-input-row">' +
-              boxesHtml +
-              // Hidden backing input keeps compatibility with save/restore logic (_getReviewSectionAnswers reads .cu-gap-input)
-              '<input type="text" class="cu-gap-input cu-cw-input" id="' + iid + '" ' +
-                'data-answer="' + self._escapeHTML(ans.toLowerCase()) + '" ' +
-                'style="display:none" tabindex="-1" aria-hidden="true" ' +
-                'autocomplete="off" />' +
-            '</div>' +
-          '</li>';
-        });
-        h += '</ol></div>';
-        return h;
-      }
-
-      // Split into two pages: Across and Down
-      var hasAcross = acrossItems.length > 0;
-      var hasDown = downItems.length > 0;
-      var html = '<div class="cu-cw-exercise">';
-
-      if (hasAcross && hasDown) {
-        // Page-dot navigation: page 0 = Across, page 1 = Down
-        html += '<nav class="cu-ex-page-dots" aria-label="Exercise pages">';
-        html += '<button class="cu-ex-pdot cu-ex-pdot-label cu-ex-pdot-active" ' +
-          'onclick="BentoGrid._cuExGoToPage(\'' + secId + '\',0)" ' +
-          'aria-current="true" aria-label="Across">Across</button>';
-        html += '<button class="cu-ex-pdot cu-ex-pdot-label" ' +
-          'onclick="BentoGrid._cuExGoToPage(\'' + secId + '\',1)" ' +
-          'aria-current="false" aria-label="Down">Down</button>';
-        html += '</nav>';
-        html += '<div class="cu-ex-page cu-ex-page-active">' + renderClueList(acrossItems, 'across') + '</div>';
-        html += '<div class="cu-ex-page">' + renderClueList(downItems, 'down') + '</div>';
-      } else {
-        html += renderClueList(acrossItems, 'across');
-        html += renderClueList(downItems, 'down');
-      }
-
-      html += '</div>';
+      var html = '<div class="cu-cw-exercise"><ol class="cu-cw-clue-list">';
+      items.forEach(function(it) {
+        var boxesHtml = '';
+        var ans = it.answer || '';
+        var iid = idBase + '-cw-' + it.num;
+        for (var ci = 0; ci < ans.length; ci++) {
+          boxesHtml += '<input type="text" class="cu-cw-box cu-cw-letter" maxlength="1" ' +
+            'data-cw-id="' + iid + '" data-cw-idx="' + ci + '" ' +
+            'autocomplete="off" spellcheck="false" ' +
+            'oninput="BentoGrid._cwBoxInput(this)" ' +
+            'onkeydown="BentoGrid._cwBoxKeydown(this,event)" />';
+        }
+        html += '<li class="cu-cw-clue-item" data-answer="' + self._escapeHTML(ans.toLowerCase()) + '" data-cw-id="' + iid + '">' +
+          '<span class="cu-cw-clue-text"><span class="cu-cw-clue-num">' + it.num + '.</span> ' + self._escapeHTML(it.clue) + '</span>' +
+          '<div class="cu-cw-input-row">' +
+            boxesHtml +
+            '<input type="text" class="cu-gap-input cu-cw-input" id="' + iid + '" ' +
+              'data-answer="' + self._escapeHTML(ans.toLowerCase()) + '" ' +
+              'style="display:none" tabindex="-1" aria-hidden="true" ' +
+              'autocomplete="off" />' +
+          '</div>' +
+        '</li>';
+      });
+      html += '</ol></div>';
       html += self._renderCuExFooter(secId);
       return html;
     },
