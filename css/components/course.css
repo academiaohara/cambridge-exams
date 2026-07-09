@@ -7513,7 +7513,7 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
   padding: 8px 0 0;
 }
@@ -7528,6 +7528,7 @@ body:has(.dashboard-layout--lesson-focus) #courseCenterSection {
   line-height: 1.35;
   margin: 0;
   font-family: 'Fredoka', 'Nunito', sans-serif;
+  overflow-wrap: anywhere;
 }
 
 .course-center--lesson-focus .cu-section-title,

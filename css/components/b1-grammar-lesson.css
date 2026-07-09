@@ -121,9 +121,9 @@
 .bgl-instruction {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
-  text-align: center;
+  text-align: left;
   font-size: 1.25rem;
   font-weight: 800;
   margin: 0 0 16px;
@@ -135,6 +135,8 @@
 .bgl-instruction-text {
   flex: 1;
   min-width: 0;
+  text-align: left;
+  overflow-wrap: anywhere;
 }
 
 .bgl-instruction-speak {
@@ -160,7 +162,7 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 0;
   min-width: 0;
   overflow-y: auto;
