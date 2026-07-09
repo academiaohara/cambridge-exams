@@ -634,6 +634,7 @@
         }
       });
       screenRoot.addEventListener('sp-hunt-wrong-tap', handleHuntWrongTap);
+      screenRoot.addEventListener('sp-cm-pair-checked', handleColumnMatchPairChecked);
     }
     setScreenInputsLocked(false);
     setActionBtn('check', false);
@@ -853,6 +854,47 @@
     var screen = lessonState.currentScreen;
     var lostAmount = applyLifeLoss(1, screen);
     if (lostAmount && window.AudioUtils) AudioUtils.playFailureSound();
+    updateSessionHeader();
+  }
+
+  function buildColumnMatchCorrectAnswer(screen) {
+    var pairs = (screen && screen.payload && screen.payload.pairs) || [];
+    return pairs.map(function(pair) {
+      return pair.pairId + '→' + pair.correctLetter;
+    }).join(' / ');
+  }
+
+  function handleColumnMatchPairChecked(e) {
+    if (!lessonState || lessonState.awaitingContinue) return;
+    if (lessonState.hearts && lessonState.hearts.isGameOver) return;
+    var detail = (e && e.detail) || {};
+    var screen = lessonState.currentScreen;
+    var screenRoot = lessonState.mount && lessonState.mount.querySelector('.sp-screen');
+    if (!screen || screen.formatType !== 'column_matching' || !screenRoot) return;
+
+    if (!detail.correct) {
+      var lostAmount = applyLifeLoss(1, screen);
+      if (lostAmount && window.AudioUtils) AudioUtils.playFailureSound();
+      updateSessionHeader();
+      return;
+    }
+
+    if (window.AudioUtils) AudioUtils.playSuccessSound();
+
+    if (!detail.allDone) return;
+
+    var result = {
+      correct: true,
+      explanation: (screen.payload && screen.payload.explanation) || '',
+      correctAnswer: buildColumnMatchCorrectAnswer(screen),
+      userAnswer: 'All pairs matched',
+      lifeLoss: 0
+    };
+    screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
+    screenRoot.classList.add('sp-screen--locked');
+    lessonState.queue.removeCompletedItem(screen);
+    lessonState.sessionCorrect++;
+    showFeedback(result, true);
     updateSessionHeader();
   }
 
