@@ -171,7 +171,8 @@
         {
           "sourceExerciseId": "b1-u3-ex-b",
           "formatType": "passage_gap_fill",
-          "screenMode": "single_passage_with_gaps"
+          "screenMode": "single_passage_with_gaps",
+          "maxLifeLossPerScreen": 1
         },
         {
           "sourceExerciseId": "b1-u3-ex-c",
@@ -445,13 +446,14 @@
         "exerciseTypeName": "Join our games club! (gap fill)",
         "title": "Join our games club! (gap fill)",
         "instructions": "Complete using the correct form of the words and phrases in the box.",
-        "studentInstruction": "Complete using the correct form of the words and phrases in the box.",
+        "studentInstruction": "Select a word from the box, write its correct form, and confirm each gap one by one.",
         "legacyKey": "B",
         "legacyPattern": "passage-gap-fill",
         "interaction": {
           "formatType": "passage_gap_fill",
-          "sequentialGaps": false,
-          "gapInputStyle": "pill"
+          "sequentialGaps": true,
+          "requireWordBankAssignment": true,
+          "gapInputStyle": "underline_expand"
         },
         "words": [
           "beat",
@@ -476,6 +478,15 @@
         "formatType": "passage_gap_fill",
         "answers": [
           "beating",
+          "score",
+          "interest",
+          "have fun",
+          "organise",
+          "challenge",
+          "train"
+        ],
+        "gapVerbs": [
+          "beat",
           "score",
           "interest",
           "have fun",
