@@ -2067,11 +2067,19 @@
     return '';
   }
 
-  function getHuntOrderNumber(foundEntries, itemIdx) {
-    for (var i = 0; i < (foundEntries || []).length; i++) {
-      if (foundEntries[i].itemIdx === itemIdx) return i + 1;
+  function getHuntErrorNumber(items, passage, itemIdx) {
+    var item = items && items[itemIdx];
+    if (item && item.errorIndex != null && item.errorIndex !== '') {
+      return Number(item.errorIndex);
     }
-    return null;
+    var ranked = (items || []).map(function(it, idx) {
+      return { idx: idx, range: getCounterHuntItemRange(passage, it) };
+    }).filter(function(r) { return r.range; })
+      .sort(function(a, b) { return a.range.start - b.range.start; });
+    for (var i = 0; i < ranked.length; i++) {
+      if (ranked[i].idx === itemIdx) return i + 1;
+    }
+    return itemIdx + 1;
   }
 
   function renderHuntOrderBadge(num) {
@@ -2112,21 +2120,19 @@
     var fixed = (state && state.fixed) || {};
     var marked = (state && state.marked) || {};
     var pending = (state && state.pendingWordIndices) || [];
-    var foundEntries = (state && state.foundEntries) || [];
     var tokens = tokenizePassageWords(passage);
     var overlays = [];
 
     (items || []).forEach(function(it, idx) {
       var range = getCounterHuntItemRange(passage, it);
       if (!range) return;
-      var orderNum = getHuntOrderNumber(foundEntries, idx);
-      var badge = orderNum ? renderHuntOrderBadge(orderNum) : '';
       if (fixed[idx]) {
+        var errorNum = getHuntErrorNumber(items, passage, idx);
         overlays.push({
           start: range.start,
           end: range.end,
           type: 'fixed',
-          html: '<span class="sp-hunt-fixed">' + badge +
+          html: '<span class="sp-hunt-fixed">' + renderHuntOrderBadge(errorNum) +
             '<span class="sp-hunt-corrected">' + esc(fixed[idx].correction) + '</span></span>'
         });
       } else if (marked[idx]) {
@@ -2134,7 +2140,7 @@
           start: range.start,
           end: range.end,
           type: 'marked',
-          html: '<span class="sp-hunt-marked">' + badge +
+          html: '<span class="sp-hunt-marked">' +
             '<s class="sp-hunt-marked-wrong">' +
             esc(passage.slice(range.start, range.end)) + '</s></span>'
         });
@@ -2636,7 +2642,10 @@
       if (root._huntPhase === 'mark') {
         phaseLabelEl.innerHTML = '<span id="sp-hunt-found">' + markedCount() + '</span>/' + target + ' errors found';
       } else if (root._huntPhase === 'correct') {
-        phaseLabelEl.textContent = 'Write the correction for error ' + markedCount() + ' of ' + target;
+        var correctingNum = root._huntCurrentCorrectIdx != null
+          ? getHuntErrorNumber(items, passage, root._huntCurrentCorrectIdx)
+          : markedCount();
+        phaseLabelEl.textContent = 'Write the correction for error ' + correctingNum + ' of ' + target;
       } else if (root._huntPhase === 'done') {
         phaseLabelEl.textContent = target + '/' + target + ' errors corrected';
       }
