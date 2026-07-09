@@ -348,7 +348,51 @@
     };
   }
 
+  var KWT_GAP_RE = /(?:[.\u2026]{5,}|\u2026{2,}|_{3,})/;
+
+  function isKeywordTransformationItem(item) {
+    if (!item) return false;
+    if (item.promptSentence && item.targetSentence) return true;
+    if (item.keyword || item.keyWord) {
+      return String(item.sentence || '').indexOf('\n') !== -1 && KWT_GAP_RE.test(item.sentence || '');
+    }
+    var sentence = item.sentence || '';
+    var nlIdx = sentence.indexOf('\n');
+    if (nlIdx === -1 || !KWT_GAP_RE.test(sentence)) return false;
+    var sentA = sentence.slice(0, nlIdx);
+    var sentB = sentence.slice(nlIdx + 1);
+    return /\*\*[^*]+\*\*/.test(sentA) || /\*\*[^*]+\*\*/.test(sentB);
+  }
+
+  function parseKeywordTransformationSentence(sentence, explicitKeyword) {
+    var raw = String(sentence || '');
+    var nlIdx = raw.indexOf('\n');
+    var promptSentence = nlIdx !== -1 ? raw.slice(0, nlIdx).trim() : raw.trim();
+    var secondPart = nlIdx !== -1 ? raw.slice(nlIdx + 1).trim() : '';
+    var keyword = explicitKeyword || '';
+    var targetSentence = secondPart;
+
+    var kwMatchA = promptSentence.match(/\s*\*\*([^*]+)\*\*\s*$/);
+    if (kwMatchA) {
+      keyword = keyword || kwMatchA[1];
+      promptSentence = promptSentence.slice(0, kwMatchA.index).trim();
+    } else {
+      var kwMatchB = secondPart.match(/^\*\*([^*]+)\*\*\s*/);
+      if (kwMatchB) {
+        keyword = keyword || kwMatchB[1];
+        targetSentence = secondPart.slice(kwMatchB[0].length).trim();
+      }
+    }
+
+    return {
+      promptSentence: promptSentence,
+      keyword: keyword,
+      targetSentence: targetSentence
+    };
+  }
+
   function buildKeywordTransformationPayload(item, exercise) {
+    exercise = exercise || {};
     if (item.promptSentence && item.targetSentence) {
       return {
         promptSentence: item.promptSentence,
@@ -364,22 +408,15 @@
       };
     }
 
-    var sentence = item.sentence || '';
-    var nlIdx = sentence.indexOf('\n');
-    var promptSentence = nlIdx !== -1 ? sentence.slice(0, nlIdx).trim() : sentence.trim();
-    var secondPart = nlIdx !== -1 ? sentence.slice(nlIdx + 1).trim() : '';
-    var keyword = item.keyword || item.keyWord || '';
-    var targetSentence = secondPart;
-    var kwMatch = secondPart.match(/^\*\*([^*]+)\*\*\s*/);
-    if (kwMatch) {
-      keyword = keyword || kwMatch[1];
-      targetSentence = secondPart.slice(kwMatch[0].length).trim();
-    }
+    var parsed = parseKeywordTransformationSentence(
+      item.sentence || '',
+      item.keyword || item.keyWord || ''
+    );
 
     return {
-      promptSentence: promptSentence,
-      keyword: keyword,
-      targetSentence: targetSentence,
+      promptSentence: parsed.promptSentence,
+      keyword: parsed.keyword,
+      targetSentence: parsed.targetSentence,
       answer: item.answer,
       acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
       minWords: item.minWords != null ? item.minWords : 2,
@@ -986,6 +1023,9 @@
         if (formatType === 'free_text_gap_fill' && (exercise.words || exercise.wordBank || []).length) {
           formatType = 'word_bank_gap_fill';
         }
+        if (formatType === 'free_text_gap_fill' && isKeywordTransformationItem(item)) {
+          formatType = 'keyword_transformation';
+        }
         var buildFormatType = formatType;
         if (formatType === 'verb_tile_conjugation_gap' &&
             (item.preselectedVerb || item.selectedTileAnswer || item.baseVerb)) {
@@ -1043,6 +1083,8 @@
     buildMc4OptionPassagePayload: buildMc4OptionPassagePayload,
     buildFindExtraWordPayload: buildFindExtraWordPayload,
     buildKeywordTransformationPayload: buildKeywordTransformationPayload,
+    isKeywordTransformationItem: isKeywordTransformationItem,
+    parseKeywordTransformationSentence: parseKeywordTransformationSentence,
     buildColumnMatchingPayload: buildColumnMatchingPayload,
     buildCrosswordCluePayload: buildCrosswordCluePayload,
     buildSyncedGapFillPayload: buildSyncedGapFillPayload,

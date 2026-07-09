@@ -1836,6 +1836,22 @@
 
   function renderGapFill(screen) {
     var p = screen.payload || {};
+    var screensLib = window.SunePlayScreens;
+    if (screensLib && screensLib.isKeywordTransformationItem &&
+        screensLib.isKeywordTransformationItem({ sentence: p.sentence, keyword: p.keyword, keyWord: p.keyWord }) &&
+        screensLib.buildKeywordTransformationPayload) {
+      return renderKeywordTransformation({
+        formatType: 'keyword_transformation',
+        payload: screensLib.buildKeywordTransformationPayload({
+          sentence: p.sentence,
+          answer: p.answer,
+          acceptedAnswers: p.acceptedAnswers,
+          explanation: p.explanation,
+          minWords: p.minWords,
+          maxWords: p.maxWords
+        }, { instructions: p.instruction, studentInstruction: p.instruction })
+      });
+    }
     var verbRef = p.verbPrompt || p.preselectedVerb || '';
     var gapCount = countGaps(p.sentence);
     var multiCls = gapCount > 1 ? ' sp-prompt-sentence--multi-gap' : '';
