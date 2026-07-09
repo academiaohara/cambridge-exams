@@ -91,6 +91,19 @@
           "studentAction": "tap_one_option",
           "evaluationTrigger": "check_button"
         }
+      },
+      {
+        "formatType": "column_matching",
+        "displayName": "Match columns",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "tap_to_pair",
+          "studentAction": "pair_beginnings_endings",
+          "evaluationTrigger": "check_button"
+        }
       }
     ],
     "globalRules": {
@@ -113,11 +126,12 @@
         "passage_gap_fill",
         "word_bank_gap_fill",
         "free_text_gap_fill",
-        "mc_4_option"
+        "mc_4_option",
+        "column_matching"
       ],
       "lives": 5,
       "passCondition": {
-        "minimumCorrectScreens": 30,
+        "minimumCorrectScreens": 29,
         "allowFinishWithZeroLives": false
       },
       "screenGeneration": [
@@ -173,24 +187,8 @@
         },
         {
           "sourceExerciseId": "b1-u1-ex-e",
-          "formatType": "word_bank_gap_fill",
-          "sourceItemIds": [
-            "b1-u1-exe-1",
-            "b1-u1-exe-2",
-            "b1-u1-exe-3",
-            "b1-u1-exe-4",
-            "b1-u1-exe-5",
-            "b1-u1-exe-6",
-            "b1-u1-exe-7",
-            "b1-u1-exe-8",
-            "b1-u1-exe-9",
-            "b1-u1-exe-10",
-            "b1-u1-exe-11",
-            "b1-u1-exe-12",
-            "b1-u1-exe-13",
-            "b1-u1-exe-14",
-            "b1-u1-exe-15"
-          ]
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen"
         }
       ]
     }
@@ -200,7 +198,7 @@
     "shuffleWithinNode": false,
     "failedItemPlacement": "end_of_queue",
     "repeatFailedItemsBeforeCompletion": true,
-    "maxScreensPerNode": 43,
+    "maxScreensPerNode": 29,
     "minimumScreensPerNode": 6
   },
   "xpRules": {
@@ -828,184 +826,69 @@
       {
         "id": "b1-u1-ex-e",
         "type": "exercise",
-        "exerciseType": "word_bank_gap_fill",
-        "exerciseTypeName": "E: Complete the sentences",
-        "title": "E: Complete the sentences",
-        "instructions": "Complete using the words in the box.",
-        "studentInstruction": "Complete using the words in the box.",
+        "exerciseType": "column_matching",
+        "exerciseTypeName": "E: Match the two halves of the sentences",
+        "title": "E: Match the two halves of the sentences",
+        "instructions": "Match the two halves of the sentences.",
+        "studentInstruction": "Tap a numbered beginning, then tap the matching ending letter.",
         "legacyKey": "E",
-        "legacyPattern": "word-bank-gap",
+        "legacyPattern": "matching",
         "interaction": {
-          "formatType": "word_bank_gap_fill"
+          "formatType": "column_matching"
         },
-        "words": [
-          "break",
-          "captain",
-          "clap",
-          "drop",
-          "fan",
-          "final",
-          "last",
-          "match",
-          "racket",
-          "rule",
-          "shake",
-          "take",
-          "take",
-          "take",
-          "train"
-        ],
-        "wordBank": [
-          "break",
-          "captain",
-          "clap",
-          "drop",
-          "fan",
-          "final",
-          "last",
-          "match",
-          "racket",
-          "rule",
-          "shake",
-          "take",
-          "take",
-          "take",
-          "train"
-        ],
         "items": [
           {
             "id": "b1-u1-exe-1",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "The coach ...... the team before the final match.",
-            "answer": "trained",
+            "formatType": "column_matching",
+            "sentence": "I used to play the guitar every evening **D** when I was at secondary school.",
+            "answer": "D – when I was at secondary school.",
             "acceptedAnswers": [
-              "trained"
+              "D – when I was at secondary school."
             ]
           },
           {
             "id": "b1-u1-exe-2",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "If you want to improve, you should ...... up a new sport.",
-            "answer": "take",
+            "formatType": "column_matching",
+            "sentence": "While we were watching the concert **B** somebody's phone started ringing.",
+            "answer": "B – somebody's phone started ringing.",
             "acceptedAnswers": [
-              "take"
+              "B – somebody's phone started ringing."
             ]
           },
           {
             "id": "b1-u1-exe-3",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "The audience ...... loudly after the performance ended.",
-            "answer": "clapped",
+            "formatType": "column_matching",
+            "sentence": "My brother loves board games and plays them **F** with his friends every Friday.",
+            "answer": "F – with his friends every Friday.",
             "acceptedAnswers": [
-              "clapped"
+              "F – with his friends every Friday."
             ]
           },
           {
             "id": "b1-u1-exe-4",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "You need a tennis ...... to play this game properly.",
-            "answer": "racket",
+            "formatType": "column_matching",
+            "sentence": "She doesn't usually go to the gym **A** because she prefers running outside.",
+            "answer": "A – because she prefers running outside.",
             "acceptedAnswers": [
-              "racket"
+              "A – because she prefers running outside."
             ]
           },
           {
             "id": "b1-u1-exe-5",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "The concert will ...... for about two hours.",
-            "answer": "last",
+            "formatType": "column_matching",
+            "sentence": "They were training for the final match **C** until late every evening.",
+            "answer": "C – until late every evening.",
             "acceptedAnswers": [
-              "last"
+              "C – until late every evening."
             ]
           },
           {
             "id": "b1-u1-exe-6",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "She became the ...... of the school basketball team.",
-            "answer": "captain",
+            "formatType": "column_matching",
+            "sentence": "I think classical music is really relaxing **E** and I listen to it while I study.",
+            "answer": "E – and I listen to it while I study.",
             "acceptedAnswers": [
-              "captain"
-            ]
-          },
-          {
-            "id": "b1-u1-exe-7",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "You should follow the ...... if you want to play fairly.",
-            "answer": "rules",
-            "acceptedAnswers": [
-              "rules"
-            ]
-          },
-          {
-            "id": "b1-u1-exe-8",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "Our team reached the ...... of the tournament.",
-            "answer": "final",
-            "acceptedAnswers": [
-              "final"
-            ]
-          },
-          {
-            "id": "b1-u1-exe-9",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "The athlete wants to ...... the national record.",
-            "answer": "break",
-            "acceptedAnswers": [
-              "break"
-            ]
-          },
-          {
-            "id": "b1-u1-exe-10",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "We ...... part in a singing competition last month.",
-            "answer": "took",
-            "acceptedAnswers": [
-              "took"
-            ]
-          },
-          {
-            "id": "b1-u1-exe-11",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "The players ...... hands before the match started.",
-            "answer": "shook",
-            "acceptedAnswers": [
-              "shook"
-            ]
-          },
-          {
-            "id": "b1-u1-exe-12",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "Ben gave up football and ...... up karate instead.",
-            "answer": "took",
-            "acceptedAnswers": [
-              "took"
-            ]
-          },
-          {
-            "id": "b1-u1-exe-13",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "Thousands of ...... watched the concert online.",
-            "answer": "fans",
-            "acceptedAnswers": [
-              "fans"
-            ]
-          },
-          {
-            "id": "b1-u1-exe-14",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "It was an exciting ...... and everybody enjoyed it.",
-            "answer": "match",
-            "acceptedAnswers": [
-              "match"
-            ]
-          },
-          {
-            "id": "b1-u1-exe-15",
-            "formatType": "word_bank_gap_fill",
-            "sentence": "She ...... out of the race because she hurt her ankle.",
-            "answer": "dropped",
-            "acceptedAnswers": [
-              "dropped"
+              "E – and I listen to it while I study."
             ]
           }
         ]
