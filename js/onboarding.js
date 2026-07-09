@@ -41,6 +41,41 @@
     return cfg ? cfg.courseLevel : 'B1';
   }
 
+  function clearUnitLessonStorage(unitId) {
+    if (!unitId) return;
+    try {
+      localStorage.removeItem('sune_play_progress_' + unitId);
+      localStorage.removeItem('sune_play_theory_' + unitId);
+      var bglPrefix = 'bgl-progress-' + unitId;
+      var keysToRemove = [];
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key && key.indexOf(bglPrefix) === 0) keysToRemove.push(key);
+      }
+      keysToRemove.forEach(function (key) {
+        localStorage.removeItem(key);
+      });
+    } catch (e) { /* ignore */ }
+  }
+
+  function clearAllUnitLessonStorage() {
+    try {
+      var keysToRemove = [];
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (!key) continue;
+        if (key.indexOf('sune_play_progress_') === 0 ||
+            key.indexOf('sune_play_theory_') === 0 ||
+            key.indexOf('bgl-progress-') === 0) {
+          keysToRemove.push(key);
+        }
+      }
+      keysToRemove.forEach(function (key) {
+        localStorage.removeItem(key);
+      });
+    } catch (e) { /* ignore */ }
+  }
+
   function clearCourseProgress(level) {
     var keys = [
       'cambridge_course_progress_' + level,
@@ -59,6 +94,7 @@
     ['B1', 'B2', 'C1'].forEach(function (level) {
       try { localStorage.removeItem('course_ex_state_' + level); } catch (e) { /* ignore */ }
     });
+    clearAllUnitLessonStorage();
     try {
       localStorage.removeItem('cambridge_course_path_advance_index');
       localStorage.removeItem('cambridge_course_path_advance_pending');
@@ -127,6 +163,8 @@
 
   window.Onboarding = {
     clearAllCourseProgress: clearAllCourseProgress,
+    clearUnitLessonStorage: clearUnitLessonStorage,
+    clearAllUnitLessonStorage: clearAllUnitLessonStorage,
 
     needsShow: function () {
       if (isDone()) return false;
