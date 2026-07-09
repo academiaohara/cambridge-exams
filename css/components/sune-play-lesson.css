@@ -891,6 +891,19 @@ button.sp-example-line.sp-speakable {
   align-items: center;
 }
 
+.sp-practice-main .sp-exercise-card:has(.sp-screen--passage-gap) {
+  overflow: hidden;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.sp-practice-main .sp-exercise-card:has(.sp-screen--passage-gap) .sp-screen--passage-gap {
+  flex: 1;
+  min-height: 0;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+
 .sp-practice-main .sp-screen {
   width: 100%;
   max-width: min(34rem, 100%);
@@ -1409,11 +1422,26 @@ button.sp-example-line.sp-speakable {
 
 .sp-screen--passage-gap {
   width: 100%;
+  min-height: 0;
+  justify-content: flex-start;
+}
+
+.sp-screen--passage-gap .sp-session-instruction {
+  flex-shrink: 0;
+}
+
+.sp-screen--passage-gap .sp-passage-wordbank {
+  flex-shrink: 0;
 }
 
 .sp-passage-gap-scroll {
   width: 100%;
   min-height: 0;
+  flex: 1;
+  max-height: min(52vh, 420px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 .sp-passage-wordbank {
@@ -1560,6 +1588,8 @@ button.sp-example-line.sp-speakable {
   min-width: 2ch;
   width: 2ch;
   max-width: none;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .sp-screen--passage-sequential .sp-passage-gap--correct .sp-gap-inline-input,
@@ -4110,25 +4140,14 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
   }
 
   .sp-practice-main .sp-exercise-card:has(.sp-screen--passage-gap) {
-    overflow: hidden;
-    align-items: stretch;
     padding-bottom: 8px;
   }
 
-  .sp-practice-main .sp-exercise-card:has(.sp-screen--passage-gap) .sp-screen--passage-gap {
-    flex: 1;
-    min-height: 0;
-    justify-content: flex-start;
-    max-width: 100%;
-  }
-
   .sp-screen--passage-gap .sp-session-instruction {
-    flex-shrink: 0;
     margin-bottom: 8px;
   }
 
   .sp-screen--passage-gap .sp-passage-wordbank {
-    flex-shrink: 0;
     margin-bottom: 0;
     padding: 8px 10px;
     gap: 6px;
@@ -4144,11 +4163,7 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
   }
 
   .sp-screen--passage-gap .sp-passage-gap-scroll {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
+    max-height: min(48vh, 360px);
     margin-top: 10px;
     border-radius: 12px;
   }
