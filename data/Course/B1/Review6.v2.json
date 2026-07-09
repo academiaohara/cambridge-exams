@@ -1,0 +1,880 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 6,
+  "unit": 6,
+  "type": "review",
+  "unitTitle": "Review 6: Units 16, 17 and 18",
+  "unitSubtitle": "Review 6: Units 16, 17 and 18",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Review 6: Units 16, 17 and 18"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B1/Review6.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-r6-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-r6-node-1",
+      "title": "Review 6: Units 16, 17 and 18",
+      "shortTitle": "Review",
+      "focus": [
+        "free_text_gap_fill",
+        "conjugation_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 29,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u6-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u6-exa-1",
+            "b1-u6-exa-2",
+            "b1-u6-exa-3",
+            "b1-u6-exa-4",
+            "b1-u6-exa-5",
+            "b1-u6-exa-6",
+            "b1-u6-exa-7",
+            "b1-u6-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u6-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u6-exb-1",
+            "b1-u6-exb-2",
+            "b1-u6-exb-3",
+            "b1-u6-exb-4",
+            "b1-u6-exb-5",
+            "b1-u6-exb-6",
+            "b1-u6-exb-7",
+            "b1-u6-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u6-ex-c",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u6-exc-1",
+            "b1-u6-exc-2",
+            "b1-u6-exc-3",
+            "b1-u6-exc-4"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u6-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u6-exd-1",
+            "b1-u6-exd-2",
+            "b1-u6-exd-3",
+            "b1-u6-exd-4",
+            "b1-u6-exd-5",
+            "b1-u6-exd-6",
+            "b1-u6-exd-7",
+            "b1-u6-exd-8",
+            "b1-u6-exd-9",
+            "b1-u6-exd-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u6-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u6-exe-1",
+            "b1-u6-exe-2",
+            "b1-u6-exe-3",
+            "b1-u6-exe-4",
+            "b1-u6-exe-5",
+            "b1-u6-exe-6",
+            "b1-u6-exe-7",
+            "b1-u6-exe-8",
+            "b1-u6-exe-9",
+            "b1-u6-exe-10",
+            "b1-u6-exe-11",
+            "b1-u6-exe-12"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 42,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u6-ex-a",
+      "b1-u6-ex-b",
+      "b1-u6-ex-c",
+      "b1-u6-ex-d",
+      "b1-u6-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u6-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Key Word Transformation",
+        "title": "A: Key Word Transformation",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u6-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I found an old calculator by chance in the cupboard. **across**\nI ...... an old calculator in the cupboard.",
+            "answer": "came across",
+            "acceptedAnswers": [
+              "came across"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Tablets and laptops are not exactly the same. **difference**\nThere ...... tablets and laptops.",
+            "answer": "is a difference between",
+            "acceptedAnswers": [
+              "is a difference between"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Inventors should never invent false information. **made**\nFalse information should never ...... inventors.",
+            "answer": "be made up by",
+            "acceptedAnswers": [
+              "be made up by"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't put those old batteries in the bin – recycle them! **away**\nDon't ...... – recycle them!",
+            "answer": "throw those old batteries away",
+            "acceptedAnswers": [
+              "throw those old batteries away"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The printer stopped working during the lesson, so we used another one. **down**\nWe used another printer when ours ...... during the lesson.",
+            "answer": "broke down",
+            "acceptedAnswers": [
+              "broke down"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The scientist's discovery caused a change in medical research. **resulted**\nThe scientist's ...... a change in medical research.",
+            "answer": "discovery resulted in",
+            "acceptedAnswers": [
+              "discovery resulted in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There are several gadgets that I would like to test. **number**\nThere are ...... gadgets that I would like to test.",
+            "answer": "a number of",
+            "acceptedAnswers": [
+              "a number of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Make sure you put clean water in the tank before turning on the machine. **full**\nMake sure the tank ...... clean water before turning on the machine.",
+            "answer": "is full of",
+            "acceptedAnswers": [
+              "is full of"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u6-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Write one word in each gap",
+        "title": "B: Write one word in each gap",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u6-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please turn the computer ...... before you leave the classroom.",
+            "answer": "off",
+            "acceptedAnswers": [
+              "off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... my opinion, this gadget is too complicated.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Disconnect the charger ...... the tablet when the battery is full.",
+            "answer": "from",
+            "acceptedAnswers": [
+              "from"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We had three possible answers, but ...... the end only one was correct.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... last, the scientists discovered what had caused the problem.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "How many types ...... software have you used this year?",
+            "answer": "of",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's getting cold, so I'll turn ...... the heater.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There must be a reason ...... the sudden decrease in speed.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u6-ex-c",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "C: Word formation",
+        "title": "C: Word formation",
+        "instructions": "Complete by changing the form of the word in capitals.",
+        "studentInstruction": "Complete by changing the form of the word in capitals.",
+        "legacyKey": "C",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u6-exc-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The ...... (LONG) of the bridge is over two kilometres.",
+            "answer": "length",
+            "acceptedAnswers": [
+              "length"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exc-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The lecture about artificial intelligence was really ...... (FASCINATE).",
+            "answer": "fascinating",
+            "acceptedAnswers": [
+              "fascinating"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exc-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The two robots moved almost ...... (IDENTICAL).",
+            "answer": "identically",
+            "acceptedAnswers": [
+              "identically"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exc-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The researchers reached a surprising ...... (CONCLUDE).",
+            "answer": "conclusion",
+            "acceptedAnswers": [
+              "conclusion"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u6-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u6-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "This is the inventor",
+            "sentenceAfter": "created the first version of the device.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "which"
+              },
+              {
+                "letter": "B",
+                "text": "whose"
+              },
+              {
+                "letter": "C",
+                "text": "who"
+              },
+              {
+                "letter": "D",
+                "text": "whom"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The museum",
+            "sentenceAfter": "we visited yesterday has a robotics exhibition.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "who"
+              },
+              {
+                "letter": "B",
+                "text": "whose"
+              },
+              {
+                "letter": "C",
+                "text": "which"
+              },
+              {
+                "letter": "D",
+                "text": "whom"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She is the scientist",
+            "sentenceAfter": "research changed the project.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "who"
+              },
+              {
+                "letter": "B",
+                "text": "which"
+              },
+              {
+                "letter": "C",
+                "text": "that"
+              },
+              {
+                "letter": "D",
+                "text": "whose"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I'll show you everything",
+            "sentenceAfter": "I found about the new invention.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "who"
+              },
+              {
+                "letter": "B",
+                "text": "which"
+              },
+              {
+                "letter": "C",
+                "text": "what"
+              },
+              {
+                "letter": "D",
+                "text": "that"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He is the engineer",
+            "sentenceAfter": "I spoke to at the laboratory.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "who"
+              },
+              {
+                "letter": "B",
+                "text": "which"
+              },
+              {
+                "letter": "C",
+                "text": "whose"
+              },
+              {
+                "letter": "D",
+                "text": "what"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "That is the program",
+            "sentenceAfter": "solved the problem.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "who"
+              },
+              {
+                "letter": "B",
+                "text": "whom"
+              },
+              {
+                "letter": "C",
+                "text": "what"
+              },
+              {
+                "letter": "D",
+                "text": "that"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Is this",
+            "sentenceAfter": "charger or Sara's?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "your"
+              },
+              {
+                "letter": "B",
+                "text": "yours"
+              },
+              {
+                "letter": "C",
+                "text": "you"
+              },
+              {
+                "letter": "D",
+                "text": "yourself"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The invention was",
+            "sentenceAfter": ", so she presented it at the science fair.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "her"
+              },
+              {
+                "letter": "B",
+                "text": "hers"
+              },
+              {
+                "letter": "C",
+                "text": "she"
+              },
+              {
+                "letter": "D",
+                "text": "herself"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The workshop is the place",
+            "sentenceAfter": "students build their robots.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "which"
+              },
+              {
+                "letter": "B",
+                "text": "who"
+              },
+              {
+                "letter": "C",
+                "text": "where"
+              },
+              {
+                "letter": "D",
+                "text": "whose"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They designed a machine",
+            "sentenceAfter": "can clean the floor automatically.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "who"
+              },
+              {
+                "letter": "B",
+                "text": "whose"
+              },
+              {
+                "letter": "C",
+                "text": "whom"
+              },
+              {
+                "letter": "D",
+                "text": "that"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u6-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Complete the sentences",
+        "title": "E: Complete the sentences",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u6-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The university is carrying ...... research into artificial intelligence.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The invention of the smartphone had a huge ...... on daily life.",
+            "answer": "impact",
+            "acceptedAnswers": [
+              "impact"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Maya came ...... with a clever idea for saving water.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The test failed the first time, so they tried it ...... .",
+            "answer": "again",
+            "acceptedAnswers": [
+              "again"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He worked ...... how to repair the old radio.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Researchers ...... a new material that is lighter than plastic.",
+            "answer": "discovered",
+            "acceptedAnswers": [
+              "discovered"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The students were amazed ...... the results of the experiment.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They decided to ...... for a patent before selling the gadget.",
+            "answer": "apply",
+            "acceptedAnswers": [
+              "apply"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exe-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This technology makes it possible ...... send messages instantly.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exe-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She is responsible ...... programming the robot.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exe-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The device ...... to be very useful in hospitals.",
+            "answer": "proved",
+            "acceptedAnswers": [
+              "proved"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u6-exe-12",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The inventors set ...... a small company to produce the machine.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

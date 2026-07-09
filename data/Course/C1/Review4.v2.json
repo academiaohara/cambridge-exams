@@ -1,0 +1,620 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 4,
+  "unit": 4,
+  "type": "review",
+  "unitTitle": "Review: Block 4 – Units 7 & 8",
+  "unitSubtitle": "Review: Block 4 – Units 7 & 8",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "Review: Block 4 – Units 7 & 8"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/C1/Review4.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 4,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-r4-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-r4-node-1",
+      "title": "Review: Block 4 – Units 7 & 8",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "free_text_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 22,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u4-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "c1-u4-exa-1",
+            "c1-u4-exa-2",
+            "c1-u4-exa-3",
+            "c1-u4-exa-4",
+            "c1-u4-exa-5",
+            "c1-u4-exa-6",
+            "c1-u4-exa-7",
+            "c1-u4-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u4-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "c1-u4-exb-1",
+            "c1-u4-exb-2",
+            "c1-u4-exb-3",
+            "c1-u4-exb-4",
+            "c1-u4-exb-5",
+            "c1-u4-exb-6",
+            "c1-u4-exb-7",
+            "c1-u4-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u4-ex-c",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "c1-u4-exc-1",
+            "c1-u4-exc-2",
+            "c1-u4-exc-3",
+            "c1-u4-exc-4",
+            "c1-u4-exc-5",
+            "c1-u4-exc-6",
+            "c1-u4-exc-7",
+            "c1-u4-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u4-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u4-exd-1",
+            "c1-u4-exd-2",
+            "c1-u4-exd-3",
+            "c1-u4-exd-4",
+            "c1-u4-exd-5",
+            "c1-u4-exd-6",
+            "c1-u4-exd-7",
+            "c1-u4-exd-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 32,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u4-ex-a",
+      "c1-u4-ex-b",
+      "c1-u4-ex-c",
+      "c1-u4-ex-d"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u4-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Gap Fill (High-Speed Rail Text)",
+        "title": "A: Gap Fill (High-Speed Rail Text)",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u4-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Europe's first high-speed rail service (1) ...... launched in France in 1981, when the TGV began operating between Paris and Lyon at speeds previously unimaginable on rail.",
+            "answer": "was",
+            "acceptedAnswers": [
+              "was"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The train runs (2) ...... electricity supplied by a dedicated high-voltage network and is capable of reaching speeds in excess of three hundred kilometres per hour.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "On-board comfort (3) ...... maintained throughout the journey by an advanced climate-control system, which automatically adjusts the temperature in (4) ...... carriage.",
+            "answer": "is, every",
+            "acceptedAnswers": [
+              "is, every"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "When the train passes through a tunnel at speed, the pressure-management system compensates automatically, (5) ...... this way preventing any discomfort to passengers.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If the train detects an obstruction on the line ahead, the emergency braking system activates (6) ...... to bring the service to a controlled stop.",
+            "answer": "itself",
+            "acceptedAnswers": [
+              "itself"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Once you are (7) ...... the reservation platform, each leg of your journey (8) ...... be updated or rebooked with a single click.",
+            "answer": "on, can",
+            "acceptedAnswers": [
+              "on, can"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exa-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "(9) ...... are reported to be a number of ambitious expansion projects currently under development across Southern and Eastern Europe.",
+            "answer": "There",
+            "acceptedAnswers": [
+              "There"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exa-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Several governments and transport authorities consider (10) ...... to be the most important investment in sustainable infrastructure of the coming decade.",
+            "answer": "it",
+            "acceptedAnswers": [
+              "it"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u4-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: Word Formation",
+        "title": "B: Word Formation",
+        "instructions": "Complete the sentences by changing the form of the word in capitals.",
+        "studentInstruction": "Complete the sentences by changing the form of the word in capitals.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u4-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The veteran jazz musician disappeared from the public eye for nearly a decade before staging a remarkable ...... (COME) with a sell-out world tour.",
+            "answer": "comeback",
+            "acceptedAnswers": [
+              "comeback"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The hiker was visibly exhausted and walking rather ...... (STEADY) along the cliff-top path by the time the rescue team reached him.",
+            "answer": "unsteady",
+            "acceptedAnswers": [
+              "unsteady"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The tribute paid to the retiring headteacher at the end-of-year assembly was one of the most ...... (MOVE) speeches I have ever been privileged to hear.",
+            "answer": "moving",
+            "acceptedAnswers": [
+              "moving"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "At the far end of the lane, a narrow cobbled ...... (PASS) led through the old city wall and into the cathedral quarter beyond.",
+            "answer": "passage",
+            "acceptedAnswers": [
+              "passage"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The committee has proposed a package of ...... (PROGRESS) reforms designed to improve working conditions and reduce the gender pay gap.",
+            "answer": "progressive",
+            "acceptedAnswers": [
+              "progressive"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Years of chronic mismanagement and political upheaval had thoroughly ...... (STABLE) the entire regional economy.",
+            "answer": "destabilised",
+            "acceptedAnswers": [
+              "destabilised"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exb-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The team went on to win the championship, the injuries to their three key players ...... (STAND) .",
+            "answer": "notwithstanding",
+            "acceptedAnswers": [
+              "notwithstanding"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exb-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The motorist was caught by a roadside camera and issued with her second ...... (SPEED) penalty of the year.",
+            "answer": "speeding",
+            "acceptedAnswers": [
+              "speeding"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u4-ex-c",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "C: Multiple Choice (Circle the correct word)",
+        "title": "C: Multiple Choice (Circle the correct word)",
+        "instructions": "Circle the correct word.",
+        "studentInstruction": "Circle the correct word.",
+        "legacyKey": "C",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "c1-u4-exc-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Would you be able to",
+            "sentenceAfter": "the new intern a quick induction tour of the building this afternoon?",
+            "options": [
+              "make",
+              "run",
+              "do"
+            ],
+            "answer": "run",
+            "originalSentence": "Would you be able to **make / run / do** the new intern a quick induction tour of the building this afternoon?",
+            "completedSentence": "Would you be able to run the new intern a quick induction tour of the building this afternoon?"
+          },
+          {
+            "id": "c1-u4-exc-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The coach was careful not to",
+            "sentenceAfter": "the players' expectations too soon before such a difficult fixture.",
+            "options": [
+              "lift",
+              "raise",
+              "boost"
+            ],
+            "answer": "raise",
+            "originalSentence": "The coach was careful not to **lift / raise / boost** the players' expectations too soon before such a difficult fixture.",
+            "completedSentence": "The coach was careful not to raise the players' expectations too soon before such a difficult fixture."
+          },
+          {
+            "id": "c1-u4-exc-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Arguing about the font size of the report is really beside the",
+            "sentenceAfter": "— what matters is whether the content is accurate.",
+            "options": [
+              "point",
+              "subject",
+              "theme"
+            ],
+            "answer": "point",
+            "originalSentence": "Arguing about the font size of the report is really beside the **point / subject / theme** — what matters is whether the content is accurate.",
+            "completedSentence": "Arguing about the font size of the report is really beside the point — what matters is whether the content is accurate."
+          },
+          {
+            "id": "c1-u4-exc-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "When the director offered her a leading role in the film, she",
+            "sentenceAfter": "at the chance without a moment's hesitation.",
+            "options": [
+              "moved",
+              "jumped",
+              "ran"
+            ],
+            "answer": "jumped",
+            "originalSentence": "When the director offered her a leading role in the film, she **moved / jumped / ran** at the chance without a moment's hesitation.",
+            "completedSentence": "When the director offered her a leading role in the film, she jumped at the chance without a moment's hesitation."
+          },
+          {
+            "id": "c1-u4-exc-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "His lecture was thorough and engaging, but I found the theoretical section in the middle rather difficult to",
+            "sentenceAfter": ".",
+            "options": [
+              "track",
+              "follow",
+              "watch"
+            ],
+            "answer": "follow",
+            "originalSentence": "His lecture was thorough and engaging, but I found the theoretical section in the middle rather difficult to **track / follow / watch**.",
+            "completedSentence": "His lecture was thorough and engaging, but I found the theoretical section in the middle rather difficult to follow ."
+          },
+          {
+            "id": "c1-u4-exc-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The project seemed impossibly complex at first, but by the final week everything had",
+            "sentenceAfter": "into place.",
+            "options": [
+              "fell",
+              "went",
+              "came"
+            ],
+            "answer": "fell",
+            "originalSentence": "The project seemed impossibly complex at first, but by the final week everything had **fell / went / came** into place.",
+            "completedSentence": "The project seemed impossibly complex at first, but by the final week everything had fell into place."
+          },
+          {
+            "id": "c1-u4-exc-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We were sitting on the terrace enjoying the evening when the breeze started to",
+            "sentenceAfter": "distinctly cold, so we moved indoors.",
+            "options": [
+              "go",
+              "turn",
+              "get"
+            ],
+            "answer": "turn",
+            "originalSentence": "We were sitting on the terrace enjoying the evening when the breeze started to **go / turn / get** distinctly cold, so we moved indoors.",
+            "completedSentence": "We were sitting on the terrace enjoying the evening when the breeze started to turn distinctly cold, so we moved indoors."
+          },
+          {
+            "id": "c1-u4-exc-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Millions of people across the country",
+            "sentenceAfter": "without adequate heating during the coldest months, and that is a serious concern.",
+            "options": [
+              "go",
+              "get",
+              "become"
+            ],
+            "answer": "go",
+            "originalSentence": "Millions of people across the country **go / get / become** without adequate heating during the coldest months, and that is a serious concern.",
+            "completedSentence": "Millions of people across the country go without adequate heating during the coldest months, and that is a serious concern."
+          }
+        ]
+      },
+      {
+        "id": "c1-u4-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Key Word Transformation",
+        "title": "D: Key Word Transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u4-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "López slipped the ball to García in the closing stages of the first half. **By**\nGarcía ...... López in the closing stages of the first half.",
+            "answer": "was given the ball by",
+            "acceptedAnswers": [
+              "was given the ball by"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Insiders say that auditors have identified a number of irregularities since the audit began. **reported**\nThere ...... a number of irregularities since the audit began.",
+            "answer": "are reported to have been",
+            "acceptedAnswers": [
+              "are reported to have been"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Try to keep pace with the leading riders throughout the opening stage of the race. **fall**\nTry ...... the leading riders throughout the opening stage of the race.",
+            "answer": "not to fall behind",
+            "acceptedAnswers": [
+              "not to fall behind"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The police sealed off the area around the abandoned warehouse for safety reasons. **cordoned**\nThe area around the abandoned warehouse ...... police for safety reasons.",
+            "answer": "has been cordoned off by the",
+            "acceptedAnswers": [
+              "has been cordoned off by the"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "A local decorator came and repainted our kitchen for us last spring. **had**\nWe ...... a local decorator last spring.",
+            "answer": "had our kitchen repainted by",
+            "acceptedAnswers": [
+              "had our kitchen repainted by"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The department head always likes to thank staff personally on significant professional milestones. **point**\nThe department head always ...... staff personally on significant professional milestones.",
+            "answer": "makes a point of congratulating",
+            "acceptedAnswers": [
+              "makes a point of congratulating"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exd-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "After a hesitant opening, the audience were soon cheering at the comedian's routines. **had**\nAfter a hesitant opening, the comedian ...... at their routines.",
+            "answer": "soon had the crowd cheering",
+            "acceptedAnswers": [
+              "soon had the crowd cheering"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u4-exd-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I just need to deal with this email quickly and then I'll be right with you. **way**\nI just need to ...... and then I'll be right with you.",
+            "answer": "get this email out of the way",
+            "acceptedAnswers": [
+              "get this email out of the way"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

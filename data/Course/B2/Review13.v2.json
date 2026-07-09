@@ -1,0 +1,754 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B2 English",
+  "block": 13,
+  "unit": 13,
+  "type": "review",
+  "unitTitle": "Review: Block 13 – Units 25 & 26",
+  "unitSubtitle": "Review: Block 13 – Units 25 & 26",
+  "unitLevel": "B2",
+  "unitFocus": [
+    "Review: Block 13 – Units 25 & 26"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B2/Review13.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b2-r13-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "column_matching",
+        "displayName": "Match columns",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "tap_to_pair",
+          "studentAction": "pair_beginnings_endings",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b2-r13-node-1",
+      "title": "Review: Block 13 – Units 25 & 26",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "column_matching",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 20,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b2-u13-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b2-u13-exa-1",
+            "b2-u13-exa-2",
+            "b2-u13-exa-3",
+            "b2-u13-exa-4"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u13-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b2-u13-exb-1",
+            "b2-u13-exb-2",
+            "b2-u13-exb-3",
+            "b2-u13-exb-4",
+            "b2-u13-exb-5",
+            "b2-u13-exb-6",
+            "b2-u13-exb-7",
+            "b2-u13-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u13-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b2-u13-exc-1",
+            "b2-u13-exc-2",
+            "b2-u13-exc-3",
+            "b2-u13-exc-4",
+            "b2-u13-exc-5",
+            "b2-u13-exc-6",
+            "b2-u13-exc-7",
+            "b2-u13-exc-8",
+            "b2-u13-exc-9"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u13-ex-d",
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen"
+        },
+        {
+          "sourceExerciseId": "b2-u13-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u13-exe-1",
+            "b2-u13-exe-2",
+            "b2-u13-exe-3",
+            "b2-u13-exe-4",
+            "b2-u13-exe-5",
+            "b2-u13-exe-6",
+            "b2-u13-exe-7"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 29,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b2-u13-ex-a",
+      "b2-u13-ex-b",
+      "b2-u13-ex-c",
+      "b2-u13-ex-d",
+      "b2-u13-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b2-u13-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Write one word in each gap",
+        "title": "A: Write one word in each gap",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u13-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "In spite of there (1) ...... a great deal of interest in sustainable design, there (2) ...... to be a considerable gap between what studios promise and what they actually deliver.",
+            "answer": "being, seems",
+            "acceptedAnswers": [
+              "being, seems"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "There are plenty (3) ...... examples of designers who have insisted (4) ...... expressing their creativity freely and have faced professional setbacks for it.",
+            "answer": "of, on",
+            "acceptedAnswers": [
+              "of, on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If you are going to produce controversial work, you've got to be prepared (5) ...... the reaction it may provoke. That reaction may not always be positive. You may be stared (6) ......, criticised (7) ...... expressing yourself so unconventionally, or even ridiculed.",
+            "answer": "for, at, for",
+            "acceptedAnswers": [
+              "for, at, for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "On the other hand, you may be complimented (8) ...... your originality and vision. Context is very important in the art world. At a commercial gallery, for (9) ......, you should probably be more anxious (10) ...... appeal to buyers than focused purely on artistic expression.",
+            "answer": "on, example, to",
+            "acceptedAnswers": [
+              "on, example, to"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u13-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: Complete the sentences by changing the form of the word in capitals",
+        "title": "B: Complete the sentences by changing the form of the word in capitals",
+        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "studentInstruction": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u13-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The director hired a professional (STYLE) ...... to create a coherent visual identity for the entire exhibition.",
+            "answer": "stylist",
+            "acceptedAnswers": [
+              "stylist"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "There is a remarkable (SIMILAR) ...... between the early works of these two celebrated artists.",
+            "answer": "similarity",
+            "acceptedAnswers": [
+              "similarity"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "You should lower your (EXPECT) ...... a little; not every piece sells the first time it is shown.",
+            "answer": "expectations",
+            "acceptedAnswers": [
+              "expectations"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Let me know when you reach a (DECIDE) ...... about which art school you plan to apply to.",
+            "answer": "decision",
+            "acceptedAnswers": [
+              "decision"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Critics have greeted the new installation with great (ENTHUSE) .......",
+            "answer": "enthusiasm",
+            "acceptedAnswers": [
+              "enthusiasm"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The studio has increased its (PRODUCE) ...... of handmade ceramic pieces to keep up with rising demand.",
+            "answer": "production",
+            "acceptedAnswers": [
+              "production"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exb-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "That sculpture is absolutely (BEAUTY) ......!",
+            "answer": "beautiful",
+            "acceptedAnswers": [
+              "beautiful"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exb-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "These ceramic pieces are designed to appeal to serious collectors and casual buyers (LIKE) .......",
+            "answer": "alike",
+            "acceptedAnswers": [
+              "alike"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u13-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Complete the second sentence using the word given",
+        "title": "C: Complete the second sentence using the word given",
+        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u13-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You really should get yourself a new camera. **about**\nIt ...... a new camera.",
+            "answer": "is about time you got",
+            "acceptedAnswers": [
+              "is about time you got"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I hate it when you wear that ridiculous oversized beret! **wish**\nI ...... wear that ridiculous oversized beret!",
+            "answer": "wish you would not",
+            "acceptedAnswers": [
+              "wish you would not"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Natalie regrets wearing such formal clothes to the studio open day. **had**\nNatalie ...... such formal clothes to the studio open day.",
+            "answer": "wishes she had not worn",
+            "acceptedAnswers": [
+              "wishes she had not worn"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I bought the vintage jacket even though it was second-hand. **despite**\nI bought the vintage jacket ...... second-hand.",
+            "answer": "despite it being",
+            "acceptedAnswers": [
+              "despite it being"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It's a real shame I can't get to the exhibition this weekend! **only**\nIf ...... get to the exhibition this weekend!",
+            "answer": "only I could",
+            "acceptedAnswers": [
+              "only I could"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "In spite of my pleading with her all evening, Sophie refused to lend me her new scarf. **though**\nSophie refused to lend me her new scarf ...... all evening.",
+            "answer": "even though I begged her",
+            "acceptedAnswers": [
+              "even though I begged her"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I don't want you to adopt exactly the same creative style as mine. **rather**\nI ...... adopt exactly the same creative style as mine.",
+            "answer": "would rather you did not",
+            "acceptedAnswers": [
+              "would rather you did not"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I can't go to the gallery opening as I have nothing suitable to wear. **something**\nI'd go to the gallery opening ...... suitable to wear!",
+            "answer": "if I had something",
+            "acceptedAnswers": [
+              "if I had something"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exc-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Despite being a retiree, Elena still pushes herself to create bold new work. **fact**\nIn spite ...... is a retiree, Elena still pushes herself to create bold new work.",
+            "answer": "of the fact that she",
+            "acceptedAnswers": [
+              "of the fact that she"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u13-ex-d",
+        "type": "exercise",
+        "exerciseType": "column_matching",
+        "exerciseTypeName": "D: Match to make sentences",
+        "title": "D: Match to make sentences",
+        "instructions": "Match to make sentences.",
+        "studentInstruction": "Match to make sentences.",
+        "legacyKey": "D",
+        "legacyPattern": "matching",
+        "interaction": {
+          "formatType": "column_matching"
+        },
+        "items": [
+          {
+            "id": "b2-u13-exd-1",
+            "formatType": "column_matching",
+            "sentence": "I'm just going to pop **C** into that new art supply shop for a couple of minutes.",
+            "answer": "C – into that new art supply shop for a couple of minutes.",
+            "acceptedAnswers": [
+              "C – into that new art supply shop for a couple of minutes."
+            ]
+          },
+          {
+            "id": "b2-u13-exd-2",
+            "formatType": "column_matching",
+            "sentence": "I've grown **F** out of these old brushes, so my tutor is going to order me some professional ones.",
+            "answer": "F – out of these old brushes, so my tutor is going to order me some professional ones.",
+            "acceptedAnswers": [
+              "F – out of these old brushes, so my tutor is going to order me some professional ones."
+            ]
+          },
+          {
+            "id": "b2-u13-exd-3",
+            "formatType": "column_matching",
+            "sentence": "I'd like to try **A** on that artist's smock you've got hanging near the studio door.",
+            "answer": "A – on that artist's smock you've got hanging near the studio door.",
+            "acceptedAnswers": [
+              "A – on that artist's smock you've got hanging near the studio door."
+            ]
+          },
+          {
+            "id": "b2-u13-exd-4",
+            "formatType": "column_matching",
+            "sentence": "I never thought that painting on walls would catch **G** on as a legitimate art form, but it has!",
+            "answer": "G – on as a legitimate art form, but it has!",
+            "acceptedAnswers": [
+              "G – on as a legitimate art form, but it has!"
+            ]
+          },
+          {
+            "id": "b2-u13-exd-5",
+            "formatType": "column_matching",
+            "sentence": "We all lined **D** up and the photographer took our individual portraits one by one.",
+            "answer": "D – up and the photographer took our individual portraits one by one.",
+            "acceptedAnswers": [
+              "D – up and the photographer took our individual portraits one by one."
+            ]
+          },
+          {
+            "id": "b2-u13-exd-6",
+            "formatType": "column_matching",
+            "sentence": "I'd take **B** off my paint-stained apron, but I think it's stuck to my shirt underneath!",
+            "answer": "B – off my paint-stained apron, but I think it's stuck to my shirt underneath!",
+            "acceptedAnswers": [
+              "B – off my paint-stained apron, but I think it's stuck to my shirt underneath!"
+            ]
+          },
+          {
+            "id": "b2-u13-exd-7",
+            "formatType": "column_matching",
+            "sentence": "Let's all dress **E** up for the end-of-year art school celebration party!",
+            "answer": "E – up for the end-of-year art school celebration party!",
+            "acceptedAnswers": [
+              "E – up for the end-of-year art school celebration party!"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b2-u13-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Choose the correct answer",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u13-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Could you clean the camera lens with a soft",
+            "sentenceAfter": "please?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "clothe"
+              },
+              {
+                "letter": "B",
+                "text": "clothing"
+              },
+              {
+                "letter": "C",
+                "text": "cloth"
+              },
+              {
+                "letter": "D",
+                "text": "clothes"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The artist decided to",
+            "sentenceAfter": "the canvas a deep indigo blue for the background.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "dye"
+              },
+              {
+                "letter": "B",
+                "text": "paint"
+              },
+              {
+                "letter": "C",
+                "text": "sketch"
+              },
+              {
+                "letter": "D",
+                "text": "draw"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "That particular frame colour doesn't",
+            "sentenceAfter": "you at all in the portrait - it makes you look washed out.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "fit"
+              },
+              {
+                "letter": "B",
+                "text": "suit"
+              },
+              {
+                "letter": "C",
+                "text": "match"
+              },
+              {
+                "letter": "D",
+                "text": "go with"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The auction house described it as the most impressive",
+            "sentenceAfter": "of art to be sold this decade.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "job"
+              },
+              {
+                "letter": "B",
+                "text": "creation"
+              },
+              {
+                "letter": "C",
+                "text": "brand"
+              },
+              {
+                "letter": "D",
+                "text": "work"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Classic portrait photography will never go out of",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "trend"
+              },
+              {
+                "letter": "B",
+                "text": "image"
+              },
+              {
+                "letter": "C",
+                "text": "fashion"
+              },
+              {
+                "letter": "D",
+                "text": "tendency"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The theatre company is looking for a spectacular",
+            "sentenceAfter": "for the lead role in their new production.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "dress"
+              },
+              {
+                "letter": "B",
+                "text": "suit"
+              },
+              {
+                "letter": "C",
+                "text": "uniform"
+              },
+              {
+                "letter": "D",
+                "text": "costume"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u13-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Tim forgot to use clothes",
+            "sentenceAfter": "and all the freshly dyed fabric blew off the line into the mud!",
+            "options": [
+              {
+                "letter": "A",
+                "text": "pegs"
+              },
+              {
+                "letter": "B",
+                "text": "hooks"
+              },
+              {
+                "letter": "C",
+                "text": "clips"
+              },
+              {
+                "letter": "D",
+                "text": "pins"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

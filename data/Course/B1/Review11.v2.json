@@ -1,0 +1,1193 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 11,
+  "unit": 11,
+  "type": "review",
+  "unitTitle": "Review 11: Units 31, 32 and 33",
+  "unitSubtitle": "Review 11: Units 31, 32 and 33",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Review 11: Units 31, 32 and 33"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B1/Review11.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-r11-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "passage_gap_fill",
+        "displayName": "Complete the passage",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "passage_inline_gaps",
+          "studentAction": "type_gap_answers",
+          "evaluationTrigger": "check_button",
+          "gapInputStyle": "pill"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-r11-node-1",
+      "title": "Review 11: Units 31, 32 and 33",
+      "shortTitle": "Review",
+      "focus": [
+        "passage_gap_fill",
+        "mc_4_option",
+        "free_text_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 28,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u11-ex-a",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "b1-u11-ex-b",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u11-exb-1",
+            "b1-u11-exb-2",
+            "b1-u11-exb-3",
+            "b1-u11-exb-4",
+            "b1-u11-exb-5",
+            "b1-u11-exb-6",
+            "b1-u11-exb-7",
+            "b1-u11-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u11-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u11-exc-1",
+            "b1-u11-exc-2",
+            "b1-u11-exc-3",
+            "b1-u11-exc-4"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u11-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u11-exd-1",
+            "b1-u11-exd-2",
+            "b1-u11-exd-3",
+            "b1-u11-exd-4",
+            "b1-u11-exd-5",
+            "b1-u11-exd-6",
+            "b1-u11-exd-7",
+            "b1-u11-exd-8",
+            "b1-u11-exd-9",
+            "b1-u11-exd-10",
+            "b1-u11-exd-11",
+            "b1-u11-exd-12",
+            "b1-u11-exd-13",
+            "b1-u11-exd-14"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u11-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u11-exe-1",
+            "b1-u11-exe-2",
+            "b1-u11-exe-3",
+            "b1-u11-exe-4",
+            "b1-u11-exe-5",
+            "b1-u11-exe-6",
+            "b1-u11-exe-7",
+            "b1-u11-exe-8",
+            "b1-u11-exe-9",
+            "b1-u11-exe-10",
+            "b1-u11-exe-11",
+            "b1-u11-exe-12",
+            "b1-u11-exe-13",
+            "b1-u11-exe-14"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 41,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u11-ex-a",
+      "b1-u11-ex-b",
+      "b1-u11-ex-c",
+      "b1-u11-ex-d",
+      "b1-u11-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u11-ex-a",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "A: Write one word in each gap",
+        "title": "A: Write one word in each gap",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "passage-input",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
+          "gapInputStyle": "underline_expand"
+        },
+        "passage": "Dear Sophie,\nHi! How are you? I went shopping with my cousin yesterday and tried (1) ...... several jackets. I was really surprised (2) ...... how many different styles there were. It reminded me (3) ...... the afternoon we spent in that huge shopping centre last summer.\nI found a coat that is very much (4) ...... fashion right now, but I couldn't do it (5) ...... because the zip was broken! I might go back (6) ...... the weekend to see if they have another one. I bought some boots, though – they're similar (7) ...... the black ones you bought last month. I've got them (8) ...... now and they're really comfortable.\nAlso, I changed my old dress (9) ...... a skirt. I cut the top part (10) ...... and it looks much better!\nWrite soon,\nEmily",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "on",
+          "at",
+          "of",
+          "in",
+          "up",
+          "at",
+          "to",
+          "on",
+          "into",
+          "off"
+        ]
+      },
+      {
+        "id": "b1-u11-ex-b",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "B: Match to make sentences",
+        "title": "B: Match to make sentences",
+        "instructions": "Match to make sentences.",
+        "studentInstruction": "Match to make sentences.",
+        "legacyKey": "B",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u11-exb-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The artist described her latest sculpture",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in planning modern homes."
+              },
+              {
+                "letter": "B",
+                "text": "to the class, but they still looked confused."
+              },
+              {
+                "letter": "C",
+                "text": "from the gallery because the frame was broken."
+              },
+              {
+                "letter": "D",
+                "text": "from a dark city scene into a bright beach scene."
+              },
+              {
+                "letter": "",
+                "text": "E of a dancer and it looked very realistic."
+              },
+              {
+                "letter": "",
+                "text": "F on young artists around the world."
+              },
+              {
+                "letter": "",
+                "text": "G as experimental, but it seemed quite traditional to me."
+              },
+              {
+                "letter": "",
+                "text": "H with his early drawings."
+              }
+            ],
+            "answer": "G",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exb-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My uncle's an architect, so he's involved",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in planning modern homes."
+              },
+              {
+                "letter": "B",
+                "text": "to the class, but they still looked confused."
+              },
+              {
+                "letter": "C",
+                "text": "from the gallery because the frame was broken."
+              },
+              {
+                "letter": "D",
+                "text": "from a dark city scene into a bright beach scene."
+              },
+              {
+                "letter": "",
+                "text": "E of a dancer and it looked very realistic."
+              },
+              {
+                "letter": "",
+                "text": "F on young artists around the world."
+              },
+              {
+                "letter": "",
+                "text": "G as experimental, but it seemed quite traditional to me."
+              },
+              {
+                "letter": "",
+                "text": "H with his early drawings."
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exb-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I know his famous paintings, but I'm not familiar",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in planning modern homes."
+              },
+              {
+                "letter": "B",
+                "text": "to the class, but they still looked confused."
+              },
+              {
+                "letter": "C",
+                "text": "from the gallery because the frame was broken."
+              },
+              {
+                "letter": "D",
+                "text": "from a dark city scene into a bright beach scene."
+              },
+              {
+                "letter": "",
+                "text": "E of a dancer and it looked very realistic."
+              },
+              {
+                "letter": "",
+                "text": "F on young artists around the world."
+              },
+              {
+                "letter": "",
+                "text": "G as experimental, but it seemed quite traditional to me."
+              },
+              {
+                "letter": "",
+                "text": "H with his early drawings."
+              }
+            ],
+            "answer": "H",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exb-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The teacher explained the new design technique",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in planning modern homes."
+              },
+              {
+                "letter": "B",
+                "text": "to the class, but they still looked confused."
+              },
+              {
+                "letter": "C",
+                "text": "from the gallery because the frame was broken."
+              },
+              {
+                "letter": "D",
+                "text": "from a dark city scene into a bright beach scene."
+              },
+              {
+                "letter": "",
+                "text": "E of a dancer and it looked very realistic."
+              },
+              {
+                "letter": "",
+                "text": "F on young artists around the world."
+              },
+              {
+                "letter": "",
+                "text": "G as experimental, but it seemed quite traditional to me."
+              },
+              {
+                "letter": "",
+                "text": "H with his early drawings."
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exb-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They removed the sculpture",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in planning modern homes."
+              },
+              {
+                "letter": "B",
+                "text": "to the class, but they still looked confused."
+              },
+              {
+                "letter": "C",
+                "text": "from the gallery because the frame was broken."
+              },
+              {
+                "letter": "D",
+                "text": "from a dark city scene into a bright beach scene."
+              },
+              {
+                "letter": "",
+                "text": "E of a dancer and it looked very realistic."
+              },
+              {
+                "letter": "",
+                "text": "F on young artists around the world."
+              },
+              {
+                "letter": "",
+                "text": "G as experimental, but it seemed quite traditional to me."
+              },
+              {
+                "letter": "",
+                "text": "H with his early drawings."
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exb-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "That painter has had a huge influence",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in planning modern homes."
+              },
+              {
+                "letter": "B",
+                "text": "to the class, but they still looked confused."
+              },
+              {
+                "letter": "C",
+                "text": "from the gallery because the frame was broken."
+              },
+              {
+                "letter": "D",
+                "text": "from a dark city scene into a bright beach scene."
+              },
+              {
+                "letter": "",
+                "text": "E of a dancer and it looked very realistic."
+              },
+              {
+                "letter": "",
+                "text": "F on young artists around the world."
+              },
+              {
+                "letter": "",
+                "text": "G as experimental, but it seemed quite traditional to me."
+              },
+              {
+                "letter": "",
+                "text": "H with his early drawings."
+              }
+            ],
+            "answer": "F",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exb-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Megan drew a picture",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in planning modern homes."
+              },
+              {
+                "letter": "B",
+                "text": "to the class, but they still looked confused."
+              },
+              {
+                "letter": "C",
+                "text": "from the gallery because the frame was broken."
+              },
+              {
+                "letter": "D",
+                "text": "from a dark city scene into a bright beach scene."
+              },
+              {
+                "letter": "",
+                "text": "E of a dancer and it looked very realistic."
+              },
+              {
+                "letter": "",
+                "text": "F on young artists around the world."
+              },
+              {
+                "letter": "",
+                "text": "G as experimental, but it seemed quite traditional to me."
+              },
+              {
+                "letter": "",
+                "text": "H with his early drawings."
+              }
+            ],
+            "answer": "E",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exb-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Adding sunlight changed the painting",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in planning modern homes."
+              },
+              {
+                "letter": "B",
+                "text": "to the class, but they still looked confused."
+              },
+              {
+                "letter": "C",
+                "text": "from the gallery because the frame was broken."
+              },
+              {
+                "letter": "D",
+                "text": "from a dark city scene into a bright beach scene."
+              },
+              {
+                "letter": "",
+                "text": "E of a dancer and it looked very realistic."
+              },
+              {
+                "letter": "",
+                "text": "F on young artists around the world."
+              },
+              {
+                "letter": "",
+                "text": "G as experimental, but it seemed quite traditional to me."
+              },
+              {
+                "letter": "",
+                "text": "H with his early drawings."
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u11-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Complete the second sentence using the word given",
+        "title": "C: Complete the second sentence using the word given",
+        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u11-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "'I want to visit the art gallery,' Liam said. **said**\nLiam ...... to visit the art gallery.",
+            "answer": "said he wanted",
+            "acceptedAnswers": [
+              "said he wanted"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "'We're designing a new museum,' said Mrs Parker. **they**\nMrs Parker ...... a new museum.",
+            "answer": "said they were designing",
+            "acceptedAnswers": [
+              "said they were designing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "'We're meeting the architect tomorrow,' Daniel said. **day**\nDaniel said they were meeting the architect ...... .",
+            "answer": "the following day",
+            "acceptedAnswers": [
+              "the following day"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "'Will you help me paint this wall?' Lucy asked. **paint**\nLucy asked ...... this wall.",
+            "answer": "me to help her paint",
+            "acceptedAnswers": [
+              "me to help her paint"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u11-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u11-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She said that she",
+            "sentenceAfter": "busy.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "is"
+              },
+              {
+                "letter": "B",
+                "text": "was"
+              },
+              {
+                "letter": "C",
+                "text": "has been"
+              },
+              {
+                "letter": "D",
+                "text": "will be"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The guide told us",
+            "sentenceAfter": "the paintings.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "not touch"
+              },
+              {
+                "letter": "B",
+                "text": "not to touch"
+              },
+              {
+                "letter": "C",
+                "text": "not touching"
+              },
+              {
+                "letter": "D",
+                "text": "didn't touch"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He asked me where",
+            "sentenceAfter": "the tickets.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "did I buy"
+              },
+              {
+                "letter": "B",
+                "text": "I had bought"
+              },
+              {
+                "letter": "C",
+                "text": "I buy"
+              },
+              {
+                "letter": "D",
+                "text": "do I buy"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Tom said he",
+            "sentenceAfter": "the exhibition the following day.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "will visit"
+              },
+              {
+                "letter": "B",
+                "text": "would visit"
+              },
+              {
+                "letter": "C",
+                "text": "visits"
+              },
+              {
+                "letter": "D",
+                "text": "visited"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She told him not",
+            "sentenceAfter": "the drawing.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "copy"
+              },
+              {
+                "letter": "B",
+                "text": "to copy"
+              },
+              {
+                "letter": "C",
+                "text": "copying"
+              },
+              {
+                "letter": "D",
+                "text": "copied"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They asked me if",
+            "sentenceAfter": "interested in architecture.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "was I"
+              },
+              {
+                "letter": "B",
+                "text": "I am"
+              },
+              {
+                "letter": "C",
+                "text": "I was"
+              },
+              {
+                "letter": "D",
+                "text": "am I"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Mia said she",
+            "sentenceAfter": "the sculpture the week before.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "has seen"
+              },
+              {
+                "letter": "B",
+                "text": "saw"
+              },
+              {
+                "letter": "C",
+                "text": "had seen"
+              },
+              {
+                "letter": "D",
+                "text": "would see"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He asked us",
+            "sentenceAfter": "any photos inside the museum.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "not to take"
+              },
+              {
+                "letter": "B",
+                "text": "not take"
+              },
+              {
+                "letter": "C",
+                "text": "to not taking"
+              },
+              {
+                "letter": "D",
+                "text": "don't take"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The artist explained that the colours",
+            "sentenceAfter": "a special meaning.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "have"
+              },
+              {
+                "letter": "B",
+                "text": "had"
+              },
+              {
+                "letter": "C",
+                "text": "have had"
+              },
+              {
+                "letter": "D",
+                "text": "would have"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She asked me when",
+            "sentenceAfter": ".",
+            "options": [
+              {
+                "letter": "A",
+                "text": "I would arrive"
+              },
+              {
+                "letter": "B",
+                "text": "would I arrive"
+              },
+              {
+                "letter": "C",
+                "text": "I arrive"
+              },
+              {
+                "letter": "D",
+                "text": "do I arrive"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-11",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He said he",
+            "sentenceAfter": "visited that gallery before.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "hasn't"
+              },
+              {
+                "letter": "B",
+                "text": "hadn't"
+              },
+              {
+                "letter": "C",
+                "text": "wouldn't have"
+              },
+              {
+                "letter": "D",
+                "text": "didn't"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-12",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The teacher asked the class",
+            "sentenceAfter": "their sketches carefully.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "to finish"
+              },
+              {
+                "letter": "B",
+                "text": "finish"
+              },
+              {
+                "letter": "C",
+                "text": "finishing"
+              },
+              {
+                "letter": "D",
+                "text": "finished"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-13",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She told me that she",
+            "sentenceAfter": "there the day before.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "had been"
+              },
+              {
+                "letter": "B",
+                "text": "was"
+              },
+              {
+                "letter": "C",
+                "text": "has been"
+              },
+              {
+                "letter": "D",
+                "text": "is"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exd-14",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The guard warned us",
+            "sentenceAfter": "near the wet paint.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "not standing"
+              },
+              {
+                "letter": "B",
+                "text": "don't stand"
+              },
+              {
+                "letter": "C",
+                "text": "not to stand"
+              },
+              {
+                "letter": "D",
+                "text": "to not standing"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u11-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Complete the sentences",
+        "title": "E: Complete the sentences",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u11-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The architect prepared the ...... for the new library.",
+            "answer": "plans",
+            "acceptedAnswers": [
+              "plans"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Builders are ...... a new school near the park.",
+            "answer": "building",
+            "acceptedAnswers": [
+              "building"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The old wall was ...... from local stone.",
+            "answer": "made",
+            "acceptedAnswers": [
+              "made"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He is a talented ...... who builds wooden tables.",
+            "answer": "carpenter",
+            "acceptedAnswers": [
+              "carpenter"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They decided to ...... the unsafe garage down.",
+            "answer": "knock",
+            "acceptedAnswers": [
+              "knock"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The ...... of the theatre is modern and unusual.",
+            "answer": "design",
+            "acceptedAnswers": [
+              "design"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She ...... up with a clever idea for the poster.",
+            "answer": "came",
+            "acceptedAnswers": [
+              "came"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The workers put ...... barriers around the site.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exe-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The ceiling was ...... with colourful paintings.",
+            "answer": "covered",
+            "acceptedAnswers": [
+              "covered"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exe-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We called a ...... to repair the broken tap.",
+            "answer": "plumber",
+            "acceptedAnswers": [
+              "plumber"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exe-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The renovation will ...... several weeks to finish.",
+            "answer": "take",
+            "acceptedAnswers": [
+              "take"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exe-12",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They had to ...... the old factory down.",
+            "answer": "pull",
+            "acceptedAnswers": [
+              "pull"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exe-13",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The builders ...... a new door on the back of the house.",
+            "answer": "put",
+            "acceptedAnswers": [
+              "put"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u11-exe-14",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He studied ...... because he wanted to design buildings.",
+            "answer": "architecture",
+            "acceptedAnswers": [
+              "architecture"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

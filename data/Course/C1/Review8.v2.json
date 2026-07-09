@@ -1,0 +1,865 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 8,
+  "unit": 8,
+  "type": "review",
+  "unitTitle": "Review: Block 8 – Units 15 & 16",
+  "unitSubtitle": "Review: Block 8 – Units 15 & 16",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "Review: Block 8 – Units 15 & 16"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/C1/Review8.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-r8-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-r8-node-1",
+      "title": "Review: Block 8 – Units 15 & 16",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 28,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u8-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "c1-u8-exa-1",
+            "c1-u8-exa-2",
+            "c1-u8-exa-3",
+            "c1-u8-exa-4",
+            "c1-u8-exa-5",
+            "c1-u8-exa-6",
+            "c1-u8-exa-7",
+            "c1-u8-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u8-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "c1-u8-exb-1",
+            "c1-u8-exb-2",
+            "c1-u8-exb-3",
+            "c1-u8-exb-4",
+            "c1-u8-exb-5",
+            "c1-u8-exb-6",
+            "c1-u8-exb-7",
+            "c1-u8-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u8-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u8-exc-1",
+            "c1-u8-exc-2",
+            "c1-u8-exc-3",
+            "c1-u8-exc-4",
+            "c1-u8-exc-5",
+            "c1-u8-exc-6",
+            "c1-u8-exc-7",
+            "c1-u8-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u8-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u8-exd-1",
+            "c1-u8-exd-2",
+            "c1-u8-exd-3",
+            "c1-u8-exd-4",
+            "c1-u8-exd-5",
+            "c1-u8-exd-6",
+            "c1-u8-exd-7",
+            "c1-u8-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u8-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "c1-u8-exe-1",
+            "c1-u8-exe-2",
+            "c1-u8-exe-3",
+            "c1-u8-exe-4",
+            "c1-u8-exe-5",
+            "c1-u8-exe-6",
+            "c1-u8-exe-7",
+            "c1-u8-exe-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 40,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u8-ex-a",
+      "c1-u8-ex-b",
+      "c1-u8-ex-c",
+      "c1-u8-ex-d",
+      "c1-u8-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u8-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Word Formation",
+        "title": "A: Word Formation",
+        "instructions": "Use the word given in capitals to form a word that fits in the space.",
+        "studentInstruction": "Use the word given in capitals to form a word that fits in the space.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u8-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "After years of travelling, she finally chose a coastal town as her permanent (1) ...... (RESIDE).",
+            "answer": "residence",
+            "acceptedAnswers": [
+              "residence"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The photographer spent weeks capturing the natural (2) ...... (ROUND) of the remote mountain village.",
+            "answer": "surroundings",
+            "acceptedAnswers": [
+              "surroundings"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Critics questioned the (3) ...... (SOLID) of the proposal, arguing that it lacked the (4) ...... (ARCHITECT) detail required for planning permission.",
+            "answer": "solidity, architectural",
+            "acceptedAnswers": [
+              "solidity, architectural"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Car (5) ...... (MANUFACTURE) have been urged to reduce carbon emissions from their production lines.",
+            "answer": "manufacturers",
+            "acceptedAnswers": [
+              "manufacturers"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Despite its modest appearance from the outside, the apartment proved to be remarkably (6) ...... (SPACE) once you stepped inside.",
+            "answer": "spacious",
+            "acceptedAnswers": [
+              "spacious"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The library redesign included built-in (7) ...... (SHELF) along every wall to maximise storage.",
+            "answer": "shelves",
+            "acceptedAnswers": [
+              "shelves"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exa-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Engineers had to reinforce the (8) ...... (STRUCTURE) of the old bridge before it could be made (9) ...... (INHABIT) for pedestrians year-round.",
+            "answer": "structure, inhabitable",
+            "acceptedAnswers": [
+              "structure, inhabitable"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exa-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Planning regulations restrict the height of new buildings in (10) ...... (RESIDE) neighbourhoods to preserve the character of the area.",
+            "answer": "residential",
+            "acceptedAnswers": [
+              "residential"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u8-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "B: Multiple Choice (Phrases)",
+        "title": "B: Multiple Choice (Phrases)",
+        "instructions": "Circle the correct word or phrase.",
+        "studentInstruction": "Circle the correct word or phrase.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "c1-u8-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Natalie was",
+            "sentenceAfter": "the strongest candidate at the audition.",
+            "options": [
+              "far and away",
+              "considerably"
+            ],
+            "answer": "far and away",
+            "originalSentence": "Natalie was **far and away / considerably** the strongest candidate at the audition.",
+            "completedSentence": "Natalie was far and away the strongest candidate at the audition."
+          },
+          {
+            "id": "c1-u8-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The new café is",
+            "sentenceAfter": "near as busy as the one that closed down last year.",
+            "options": [
+              "nothing",
+              "nowhere"
+            ],
+            "answer": "nowhere",
+            "originalSentence": "The new café is **nothing / nowhere** near as busy as the one that closed down last year.",
+            "completedSentence": "The new café is nowhere near as busy as the one that closed down last year."
+          },
+          {
+            "id": "c1-u8-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This year's harvest was nowhere",
+            "sentenceAfter": "as abundant as the previous one.",
+            "options": [
+              "near",
+              "close"
+            ],
+            "answer": "near",
+            "originalSentence": "This year's harvest was nowhere **near / close** as abundant as the previous one.",
+            "completedSentence": "This year's harvest was nowhere near as abundant as the previous one."
+          },
+          {
+            "id": "c1-u8-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You'll have to train",
+            "sentenceAfter": "if you hope to qualify for the regional championships.",
+            "options": [
+              "hard",
+              "hardly"
+            ],
+            "answer": "hard",
+            "originalSentence": "You'll have to train **hard / hardly** if you hope to qualify for the regional championships.",
+            "completedSentence": "You'll have to train hard if you hope to qualify for the regional championships."
+          },
+          {
+            "id": "c1-u8-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The speaker's opening remarks were",
+            "sentenceAfter": "remarkable and immediately captured the audience's attention.",
+            "options": [
+              "quite",
+              "a good deal"
+            ],
+            "answer": "quite",
+            "originalSentence": "The speaker's opening remarks were **quite / a good deal** remarkable and immediately captured the audience's attention.",
+            "completedSentence": "The speaker's opening remarks were quite remarkable and immediately captured the audience's attention."
+          },
+          {
+            "id": "c1-u8-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The more you practise,",
+            "sentenceAfter": "more confident you will become.",
+            "options": [
+              "so",
+              "the"
+            ],
+            "answer": "the",
+            "originalSentence": "The more you practise, **so / the** more confident you will become.",
+            "completedSentence": "The more you practise, the more confident you will become."
+          },
+          {
+            "id": "c1-u8-exb-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "After the operation, the patient was finally allowed to roam",
+            "sentenceAfter": "around the ward.",
+            "options": [
+              "free",
+              "freely"
+            ],
+            "answer": "free",
+            "originalSentence": "After the operation, the patient was finally allowed to roam **free / freely** around the ward.",
+            "completedSentence": "After the operation, the patient was finally allowed to roam free around the ward."
+          },
+          {
+            "id": "c1-u8-exb-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The surgeon's technique was",
+            "sentenceAfter": "flawless, and the procedure was completed without a single complication.",
+            "options": [
+              "absolutely",
+              "very"
+            ],
+            "answer": "absolutely",
+            "originalSentence": "The surgeon's technique was **absolutely / very** flawless, and the procedure was completed without a single complication.",
+            "completedSentence": "The surgeon's technique was absolutely flawless, and the procedure was completed without a single complication."
+          }
+        ]
+      },
+      {
+        "id": "c1-u8-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Key Word Transformation",
+        "title": "C: Key Word Transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u8-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There is nothing to support these rumours circulating online and we are seeking legal advice. **foundation**\nThese rumours circulating online ...... and we are seeking legal advice.",
+            "answer": "are without foundation",
+            "acceptedAnswers": [
+              "are without foundation"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You need to watch the new intern closely to make sure the reports are completed correctly. **sharp**\nYou need to ...... the new intern to make sure the reports are completed correctly.",
+            "answer": "keep a sharp eye on",
+            "acceptedAnswers": [
+              "keep a sharp eye on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It only took us a few hours to drive from Paris to Brussels. **matter**\nWe drove from Paris to Brussels ...... hours.",
+            "answer": "in a matter of",
+            "acceptedAnswers": [
+              "in a matter of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Marcus didn't win the scholarship because he was considerably less qualified than Sofia. **deal**\nSofia won the scholarship because she had ...... Marcus.",
+            "answer": "a great deal more experience than",
+            "acceptedAnswers": [
+              "a great deal more experience than"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The charity director was accused of making the campaign message less impactful to avoid controversy. **watering**\nThe charity director was accused ...... to avoid controversy.",
+            "answer": "of watering down his statement",
+            "acceptedAnswers": [
+              "of watering down his statement"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The government's new funding package will allow the renovation of the old station to go ahead. **smooth**\nThe government's new funding package will ...... the renovation of the old station.",
+            "answer": "smooth the way for",
+            "acceptedAnswers": [
+              "smooth the way for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Chen has so much ability that several international academies are keen to recruit her. **so**\nChen ...... athlete that several international academies are keen to recruit her.",
+            "answer": "is so talented a",
+            "acceptedAnswers": [
+              "is so talented a"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The industrial warehouse is strikingly out of place and ruins the appearance of the historic town centre. **blot**\nThe industrial warehouse is ...... and ruins the appearance of the historic town centre.",
+            "answer": "an ugly blot on the landscape",
+            "acceptedAnswers": [
+              "an ugly blot on the landscape"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u8-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Collocations / Expressions",
+        "title": "D: Collocations / Expressions",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u8-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Come in and make ...... comfortable – the meeting will start in just a few minutes.",
+            "answer": "yourself",
+            "acceptedAnswers": [
+              "yourself"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If you want a seat in the front row, you'll need to be quick ...... the mark and book early.",
+            "answer": "off",
+            "acceptedAnswers": [
+              "off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She promised to stand by her decision, no ...... what the consequences might be.",
+            "answer": "matter",
+            "acceptedAnswers": [
+              "matter"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The new mayor vowed to be tough ...... antisocial behaviour in the city centre.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The manager announced that the first round of drinks would be ...... the house to celebrate the team's success.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The company's flashy new branding was widely criticised as nothing more than ...... dressing.",
+            "answer": "window",
+            "acceptedAnswers": [
+              "window"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exd-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The constant roadworks outside the office are driving everyone ...... the bend.",
+            "answer": "round",
+            "acceptedAnswers": [
+              "round"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exd-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Whether the documentary was accurate is a matter of ...... – some experts disagree strongly with its conclusions.",
+            "answer": "opinion",
+            "acceptedAnswers": [
+              "opinion"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u8-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Multiple Choice",
+        "title": "E: Multiple Choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "c1-u8-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The hostel was",
+            "sentenceAfter": "from the most relaxing place I had ever stayed in during my travels.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "far"
+              },
+              {
+                "letter": "B",
+                "text": "further"
+              },
+              {
+                "letter": "C",
+                "text": "away"
+              },
+              {
+                "letter": "D",
+                "text": "way"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The sculptor chose this particular stone for its rough",
+            "sentenceAfter": ", which gave the finished piece a unique character.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "stroke"
+              },
+              {
+                "letter": "B",
+                "text": "substance"
+              },
+              {
+                "letter": "C",
+                "text": "friction"
+              },
+              {
+                "letter": "D",
+                "text": "texture"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The final exam was",
+            "sentenceAfter": "as demanding as the mock test we had taken the week before.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "almost"
+              },
+              {
+                "letter": "B",
+                "text": "closely"
+              },
+              {
+                "letter": "C",
+                "text": "nearly"
+              },
+              {
+                "letter": "D",
+                "text": "just"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Before the yoga session began, the instructor asked everyone to spread",
+            "sentenceAfter": "across the studio floor.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "over"
+              },
+              {
+                "letter": "B",
+                "text": "round"
+              },
+              {
+                "letter": "C",
+                "text": "out"
+              },
+              {
+                "letter": "D",
+                "text": "off"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Emergency services were deployed to assist residents trapped in a heavily",
+            "sentenceAfter": "coastal district after the storm.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "crowded"
+              },
+              {
+                "letter": "B",
+                "text": "personalised"
+              },
+              {
+                "letter": "C",
+                "text": "peopled"
+              },
+              {
+                "letter": "D",
+                "text": "populated"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The family was",
+            "sentenceAfter": "from the property after the landlord discovered they had sublet it without permission.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "demolished"
+              },
+              {
+                "letter": "B",
+                "text": "evicted"
+              },
+              {
+                "letter": "C",
+                "text": "rejected"
+              },
+              {
+                "letter": "D",
+                "text": "evacuated"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "By the time we reached the campsite, it was getting",
+            "sentenceAfter": "cold, so we lit a fire straight away.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "utterly"
+              },
+              {
+                "letter": "B",
+                "text": "absolutely"
+              },
+              {
+                "letter": "C",
+                "text": "totally"
+              },
+              {
+                "letter": "D",
+                "text": "fairly"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u8-exe-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The mechanic had to",
+            "sentenceAfter": "the engine parts thoroughly to remove the layer of grease that had built up over the years.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "polish"
+              },
+              {
+                "letter": "B",
+                "text": "scrub"
+              },
+              {
+                "letter": "C",
+                "text": "pat"
+              },
+              {
+                "letter": "D",
+                "text": "crush"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

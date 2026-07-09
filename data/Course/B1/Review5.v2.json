@@ -1,0 +1,927 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 5,
+  "unit": 5,
+  "type": "review",
+  "unitTitle": "Review 5: Units 13, 14 and 15",
+  "unitSubtitle": "Review 5: Units 13, 14 and 15",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Review 5: Units 13, 14 and 15"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B1/Review5.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-r5-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "passage_gap_fill",
+        "displayName": "Complete the passage",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "passage_inline_gaps",
+          "studentAction": "type_gap_answers",
+          "evaluationTrigger": "check_button",
+          "gapInputStyle": "pill"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-r5-node-1",
+      "title": "Review 5: Units 13, 14 and 15",
+      "shortTitle": "Review",
+      "focus": [
+        "passage_gap_fill",
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 28,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u5-ex-a",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "b1-u5-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u5-exb-1",
+            "b1-u5-exb-2",
+            "b1-u5-exb-3",
+            "b1-u5-exb-4",
+            "b1-u5-exb-5",
+            "b1-u5-exb-6",
+            "b1-u5-exb-7",
+            "b1-u5-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u5-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u5-exc-1",
+            "b1-u5-exc-2",
+            "b1-u5-exc-3",
+            "b1-u5-exc-4",
+            "b1-u5-exc-5",
+            "b1-u5-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u5-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u5-exd-1",
+            "b1-u5-exd-2",
+            "b1-u5-exd-3",
+            "b1-u5-exd-4",
+            "b1-u5-exd-5",
+            "b1-u5-exd-6",
+            "b1-u5-exd-7",
+            "b1-u5-exd-8",
+            "b1-u5-exd-9",
+            "b1-u5-exd-10",
+            "b1-u5-exd-11",
+            "b1-u5-exd-12"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u5-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u5-exe-1",
+            "b1-u5-exe-2",
+            "b1-u5-exe-3",
+            "b1-u5-exe-4",
+            "b1-u5-exe-5",
+            "b1-u5-exe-6",
+            "b1-u5-exe-7",
+            "b1-u5-exe-8",
+            "b1-u5-exe-9",
+            "b1-u5-exe-10",
+            "b1-u5-exe-11",
+            "b1-u5-exe-12",
+            "b1-u5-exe-13",
+            "b1-u5-exe-14"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 41,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u5-ex-a",
+      "b1-u5-ex-b",
+      "b1-u5-ex-c",
+      "b1-u5-ex-d",
+      "b1-u5-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u5-ex-a",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "A: Write one word in each gap",
+        "title": "A: Write one word in each gap",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "passage-input",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
+          "gapInputStyle": "underline_expand"
+        },
+        "passage": "One of (1) ...... most popular shopping websites today is Amazon. People use it to buy things that belong (2) ...... different sellers all over the world. Customers can find (3) ...... amazing variety of products, and (4) ...... website usually offers fast delivery. You can pay (5) ...... your order (6) ...... credit card or online payment. It's (7) ...... very convenient way to shop, especially if you only have a (8) ...... little time. Most products arrive (9) ...... excellent condition, and millions of users leave positive reviews every day. There are also a (10) ...... of special offers and discounts available online.",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "the",
+          "to",
+          "an",
+          "the",
+          "for",
+          "by",
+          "a",
+          "little",
+          "in",
+          "lot"
+        ]
+      },
+      {
+        "id": "b1-u5-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: Word formation",
+        "title": "B: Word formation",
+        "instructions": "Complete by changing the form of the word in capitals when this is necessary.",
+        "studentInstruction": "Complete by changing the form of the word in capitals when this is necessary.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u5-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "After thinking for hours, she finally made her ...... . (DECIDE)",
+            "answer": "decision",
+            "acceptedAnswers": [
+              "decision"
+            ],
+            "explanation": "",
+            "verbPrompt": "DECIDE"
+          },
+          {
+            "id": "b1-u5-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "This smartphone is too ...... for me at the moment. (EXPENSE)",
+            "answer": "expensive",
+            "acceptedAnswers": [
+              "expensive"
+            ],
+            "explanation": "",
+            "verbPrompt": "EXPENSE"
+          },
+          {
+            "id": "b1-u5-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My old printer is completely ...... now. (USE)",
+            "answer": "useless",
+            "acceptedAnswers": [
+              "useless"
+            ],
+            "explanation": "",
+            "verbPrompt": "USE"
+          },
+          {
+            "id": "b1-u5-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Rich families in the past often employed ...... in large houses. (SERVE)",
+            "answer": "servants",
+            "acceptedAnswers": [
+              "servants"
+            ],
+            "explanation": "",
+            "verbPrompt": "SERVE"
+          },
+          {
+            "id": "b1-u5-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "This shop sells stylish but ...... clothes for teenagers. (AFFORD)",
+            "answer": "affordable",
+            "acceptedAnswers": [
+              "affordable"
+            ],
+            "explanation": "",
+            "verbPrompt": "AFFORD"
+          },
+          {
+            "id": "b1-u5-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The information in the advertisement was completely ...... . (TRUE)",
+            "answer": "untrue",
+            "acceptedAnswers": [
+              "untrue"
+            ],
+            "explanation": "",
+            "verbPrompt": "TRUE"
+          },
+          {
+            "id": "b1-u5-exb-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Be careful with that necklace — it's very ...... . (VALUE)",
+            "answer": "valuable",
+            "acceptedAnswers": [
+              "valuable"
+            ],
+            "explanation": "",
+            "verbPrompt": "VALUE"
+          },
+          {
+            "id": "b1-u5-exb-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "If you ...... prices online, you can often save money. (COMPARE)",
+            "answer": "compare",
+            "acceptedAnswers": [
+              "compare"
+            ],
+            "explanation": "",
+            "verbPrompt": "COMPARE"
+          }
+        ]
+      },
+      {
+        "id": "b1-u5-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Key Word Transformation",
+        "title": "C: Key Word Transformation",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u5-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Could you lend me €20 until Monday? **from**\nCould I ...... you until Monday?",
+            "answer": "borrow €20 from",
+            "acceptedAnswers": [
+              "borrow €20 from"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I can't decide whether I prefer the black jacket or the grey one. **choose**\nI can't ...... the black jacket and the grey one.",
+            "answer": "choose between",
+            "acceptedAnswers": [
+              "choose between"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Why don't you return the trainers to the shop? **back**\nWhy don't you ...... to the shop?",
+            "answer": "take them back",
+            "acceptedAnswers": [
+              "take them back"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Owing money to several banks can be stressful. **debt**\nIt can be stressful when you ...... to several banks.",
+            "answer": "are in debt",
+            "acceptedAnswers": [
+              "are in debt"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We must go faster or we'll miss the sale. **up**\nWe need to ...... or we'll miss the sale.",
+            "answer": "hurry up",
+            "acceptedAnswers": [
+              "hurry up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I paid for the headphones using notes and coins. **cash**\nI paid for the headphones ...... .",
+            "answer": "in cash",
+            "acceptedAnswers": [
+              "in cash"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u5-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u5-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Could I have",
+            "sentenceAfter": "sandwich, please?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "a"
+              },
+              {
+                "letter": "B",
+                "text": "an"
+              },
+              {
+                "letter": "C",
+                "text": "the"
+              },
+              {
+                "letter": "D",
+                "text": "-"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She's",
+            "sentenceAfter": "intelligent student.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "a"
+              },
+              {
+                "letter": "B",
+                "text": "an"
+              },
+              {
+                "letter": "C",
+                "text": "the"
+              },
+              {
+                "letter": "D",
+                "text": "-"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We haven't got",
+            "sentenceAfter": "juice left in the fridge.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "some"
+              },
+              {
+                "letter": "B",
+                "text": "many"
+              },
+              {
+                "letter": "C",
+                "text": "much"
+              },
+              {
+                "letter": "D",
+                "text": "few"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Only",
+            "sentenceAfter": "people came to the event because of the rain.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "few"
+              },
+              {
+                "letter": "B",
+                "text": "a few"
+              },
+              {
+                "letter": "C",
+                "text": "little"
+              },
+              {
+                "letter": "D",
+                "text": "much"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Can I have",
+            "sentenceAfter": "information about the product?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "a"
+              },
+              {
+                "letter": "B",
+                "text": "some"
+              },
+              {
+                "letter": "C",
+                "text": "many"
+              },
+              {
+                "letter": "D",
+                "text": "few"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He bought",
+            "sentenceAfter": "most expensive phone in the shop.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "a"
+              },
+              {
+                "letter": "B",
+                "text": "an"
+              },
+              {
+                "letter": "C",
+                "text": "the"
+              },
+              {
+                "letter": "D",
+                "text": "-"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We need",
+            "sentenceAfter": "flour to make pancakes.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "much"
+              },
+              {
+                "letter": "B",
+                "text": "a little"
+              },
+              {
+                "letter": "C",
+                "text": "some"
+              },
+              {
+                "letter": "D",
+                "text": "many"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "There is",
+            "sentenceAfter": "useful advice in this guidebook.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "many"
+              },
+              {
+                "letter": "B",
+                "text": "a lot of"
+              },
+              {
+                "letter": "C",
+                "text": "few"
+              },
+              {
+                "letter": "D",
+                "text": "several"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She has",
+            "sentenceAfter": "close friends at university.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "little"
+              },
+              {
+                "letter": "B",
+                "text": "a little"
+              },
+              {
+                "letter": "C",
+                "text": "few"
+              },
+              {
+                "letter": "D",
+                "text": "a few"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I'd like",
+            "sentenceAfter": "bread with my soup, please.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "some"
+              },
+              {
+                "letter": "B",
+                "text": "a"
+              },
+              {
+                "letter": "C",
+                "text": "many"
+              },
+              {
+                "letter": "D",
+                "text": "several"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-11",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He goes to",
+            "sentenceAfter": "gym every evening.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "a"
+              },
+              {
+                "letter": "B",
+                "text": "an"
+              },
+              {
+                "letter": "C",
+                "text": "the"
+              },
+              {
+                "letter": "D",
+                "text": "-"
+              }
+            ],
+            "answer": "THE",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exd-12",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "There isn't",
+            "sentenceAfter": "coffee left in the machine.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "many"
+              },
+              {
+                "letter": "B",
+                "text": "some"
+              },
+              {
+                "letter": "C",
+                "text": "much"
+              },
+              {
+                "letter": "D",
+                "text": "few"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u5-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Complete the sentences",
+        "title": "E: Complete the sentences",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u5-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Let's ...... a look at the prices before buying anything.",
+            "answer": "have",
+            "acceptedAnswers": [
+              "have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can I try these shoes ...... before I buy them?",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Those trainers are ...... sale this weekend.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I can't ...... up my mind about which tablet to choose.",
+            "answer": "make",
+            "acceptedAnswers": [
+              "make"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The jeans are too ...... — I need a larger size.",
+            "answer": "small",
+            "acceptedAnswers": [
+              "small"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "That coat was a great ...... because it was 70% cheaper.",
+            "answer": "bargain",
+            "acceptedAnswers": [
+              "bargain"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She paid ...... cash because the card machine was broken.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'd like to ...... a complaint about this broken charger.",
+            "answer": "make",
+            "acceptedAnswers": [
+              "make"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The shop gave me a full ...... after I returned the phone.",
+            "answer": "refund",
+            "acceptedAnswers": [
+              "refund"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They were completely ...... of stock, so I bought it online.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My brother is saving ...... for a new motorbike.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-12",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He spent a ...... of money on computer games last month.",
+            "answer": "lot",
+            "acceptedAnswers": [
+              "lot"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-13",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We bought this table at a real ...... .",
+            "answer": "bargain",
+            "acceptedAnswers": [
+              "bargain"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u5-exe-14",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should always ...... prices before making a big purchase.",
+            "answer": "compare",
+            "acceptedAnswers": [
+              "compare"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

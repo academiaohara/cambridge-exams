@@ -1,0 +1,781 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B2 English",
+  "block": 1,
+  "unit": 1,
+  "type": "review",
+  "unitTitle": "Review: Block 1 – Units 1 & 2",
+  "unitSubtitle": "Review: Block 1 – Units 1 & 2",
+  "unitLevel": "B2",
+  "unitFocus": [
+    "Review: Block 1 – Units 1 & 2"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B2/Review1.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b2-r1-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "passage_gap_fill",
+        "displayName": "Complete the passage",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "passage_inline_gaps",
+          "studentAction": "type_gap_answers",
+          "evaluationTrigger": "check_button",
+          "gapInputStyle": "pill"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b2-r1-node-1",
+      "title": "Review: Block 1 – Units 1 & 2",
+      "shortTitle": "Review",
+      "focus": [
+        "passage_gap_fill",
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 19,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b2-u1-ex-a",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "b2-u1-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b2-u1-exb-1",
+            "b2-u1-exb-2",
+            "b2-u1-exb-3",
+            "b2-u1-exb-4",
+            "b2-u1-exb-5",
+            "b2-u1-exb-6",
+            "b2-u1-exb-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u1-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b2-u1-exc-1",
+            "b2-u1-exc-2",
+            "b2-u1-exc-3",
+            "b2-u1-exc-4",
+            "b2-u1-exc-5",
+            "b2-u1-exc-6",
+            "b2-u1-exc-7",
+            "b2-u1-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u1-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u1-exd-1",
+            "b2-u1-exd-2",
+            "b2-u1-exd-3",
+            "b2-u1-exd-4",
+            "b2-u1-exd-5",
+            "b2-u1-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u1-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u1-exe-1",
+            "b2-u1-exe-2",
+            "b2-u1-exe-3",
+            "b2-u1-exe-4",
+            "b2-u1-exe-5",
+            "b2-u1-exe-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 28,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b2-u1-ex-a",
+      "b2-u1-ex-b",
+      "b2-u1-ex-c",
+      "b2-u1-ex-d",
+      "b2-u1-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b2-u1-ex-a",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "A: Write one word in each gap",
+        "title": "A: Write one word in each gap",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "passage-input",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
+          "gapInputStyle": "underline_expand"
+        },
+        "passage": "What (1) ...... the phrase 'the Scottish Highlands' mean to most people? If you ask someone (2) ...... the top of their head, many will think of (3) ...... on a long trip through misty glens and ancient castles. These days, travellers who want to (4) ...... the real wilderness of Scotland (5) ...... often surprised by just how untouched it still feels. In recent years, local tourism boards (6) ...... worked hard to promote the region, hoping that a (7) ...... of approach will bring visitors back in greater numbers. But those that (8) ...... make the journey will find that highland Scotland differs enormously (9) ...... what many people expect. The area has had to keep (10) ...... with rising visitor expectations, but that's exactly what it (11) ...... doing. It's the first time so much attention (12) ...... been paid to improving access routes. A brand new ferry service (13) ...... that even the most remote islands are now within reach. And it seems (14) ...... be attracting visitors all year round rather than just (15) ...... the summer months.",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "does",
+          "off",
+          "going",
+          "see",
+          "are",
+          "have",
+          "change",
+          "do",
+          "from",
+          "up",
+          "is",
+          "has",
+          "means",
+          "to",
+          "for"
+        ]
+      },
+      {
+        "id": "b2-u1-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: Complete the sentences by changing the form of the word in capitals",
+        "title": "B: Complete the sentences by changing the form of the word in capitals",
+        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "studentInstruction": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u1-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The (PHOTOGRAPH) ...... spent three months travelling across Scotland capturing images of its landscapes and wildlife.",
+            "answer": "photographer",
+            "acceptedAnswers": [
+              "photographer"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Can you tell me which (DIRECT) ...... the lake is in? I think I've got completely turned around.",
+            "answer": "direction",
+            "acceptedAnswers": [
+              "direction"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The town centre has been so extensively renovated that it is now almost (RECOGNISE) ...... compared to ten years ago.",
+            "answer": "unrecognisable",
+            "acceptedAnswers": [
+              "unrecognisable"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Let's check the train (TIME) ...... before we leave the hotel so we don't miss the last service.",
+            "answer": "timetable",
+            "acceptedAnswers": [
+              "timetable"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The island's economy depends almost entirely on (TOUR) ...... and the income it brings during the summer season.",
+            "answer": "tourism",
+            "acceptedAnswers": [
+              "tourism"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The (INHABIT) ...... of the remote coastal village were advised to move to higher ground as the storm approached.",
+            "answer": "inhabitants",
+            "acceptedAnswers": [
+              "inhabitants"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exb-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Passengers are kindly requested to make their way to the (ARRIVE) ...... lounge once they have cleared customs.",
+            "answer": "arrival",
+            "acceptedAnswers": [
+              "arrival"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u1-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Complete each second sentence using the word given",
+        "title": "C: Complete each second sentence using the word given",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "studentInstruction": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u1-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The pilot asked everyone to disembark immediately after we had boarded. **just**\nWe ...... the plane when the pilot told us to get off again.",
+            "answer": "had just got on",
+            "acceptedAnswers": [
+              "had just got on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Two days have passed since we arrived in Budapest. **for**\nWe ...... two days.",
+            "answer": "have been in Budapest for",
+            "acceptedAnswers": [
+              "have been in Budapest for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I have only been to Paris on one previous occasion. **second**\nThis is the ...... Paris.",
+            "answer": "second time I've visited",
+            "acceptedAnswers": [
+              "second time I've visited"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Matching my husband's walking pace on hiking holidays is something I find very difficult. **up**\nI find it hard to ...... my husband on walking holidays.",
+            "answer": "keep up with",
+            "acceptedAnswers": [
+              "keep up with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Travelling has always been Joan's greatest passion, and she has visited countless destinations. **keen**\nJoan has always been very ...... and has been everywhere.",
+            "answer": "keen on travelling",
+            "acceptedAnswers": [
+              "keen on travelling"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We left in the car as fast as we possibly could, ready to start our adventure. **full**\nWe drove away ...... ready to begin our adventure.",
+            "answer": "at full speed",
+            "acceptedAnswers": [
+              "at full speed"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When the storm broke, we made our way towards the old house for shelter. **direction**\nAs the storm started, we went ...... the old house.",
+            "answer": "in the direction of",
+            "acceptedAnswers": [
+              "in the direction of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I wish I had inspected the hotel room before making the reservation. **regret**\nI ...... the hotel room before I booked it.",
+            "answer": "regret not looking at",
+            "acceptedAnswers": [
+              "regret not looking at"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u1-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u1-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The hotel groundskeeper",
+            "sentenceAfter": "the tour bus windows every morning before the guests depart.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "is washing"
+              },
+              {
+                "letter": "B",
+                "text": "washes"
+              },
+              {
+                "letter": "C",
+                "text": "has washed"
+              },
+              {
+                "letter": "D",
+                "text": "is wash"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "When I was a student, I",
+            "sentenceAfter": "to the local library every afternoon to study.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "went"
+              },
+              {
+                "letter": "B",
+                "text": "was going"
+              },
+              {
+                "letter": "C",
+                "text": "have been"
+              },
+              {
+                "letter": "D",
+                "text": "have been going"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'Whose is this travel guide on the seat?' 'Oh, it",
+            "sentenceAfter": "to my sister. She must have left it there.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "is belonging"
+              },
+              {
+                "letter": "B",
+                "text": "belongs"
+              },
+              {
+                "letter": "C",
+                "text": "has belonged"
+              },
+              {
+                "letter": "D",
+                "text": "belonged"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She didn't say much over dinner last night. 'I thought she",
+            "sentenceAfter": "a little upset about something.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "were seeming"
+              },
+              {
+                "letter": "B",
+                "text": "have seemed"
+              },
+              {
+                "letter": "C",
+                "text": "have been seeming"
+              },
+              {
+                "letter": "D",
+                "text": "seemed"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'You seem miles away.' 'Sorry, I",
+            "sentenceAfter": "about the road trip we took last summer.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "just think"
+              },
+              {
+                "letter": "B",
+                "text": "had just thought"
+              },
+              {
+                "letter": "C",
+                "text": "am just think"
+              },
+              {
+                "letter": "D",
+                "text": "was just thinking"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You visited Argentina last year, didn't you? 'No, but I",
+            "sentenceAfter": "to Brazil, which is not far away.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "had gone"
+              },
+              {
+                "letter": "B",
+                "text": "was gone"
+              },
+              {
+                "letter": "C",
+                "text": "did go"
+              },
+              {
+                "letter": "D",
+                "text": "was going"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u1-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Choose the correct answer",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u1-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Officers stopped a van at the",
+            "sentenceAfter": "as it attempted to cross without the correct documents.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "line"
+              },
+              {
+                "letter": "C",
+                "text": "border"
+              },
+              {
+                "letter": "B",
+                "text": "equator"
+              },
+              {
+                "letter": "D",
+                "text": "edge"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We had a breathtaking",
+            "sentenceAfter": "of the surrounding hills from the top of the lighthouse.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "view"
+              },
+              {
+                "letter": "C",
+                "text": "appearance"
+              },
+              {
+                "letter": "B",
+                "text": "sight"
+              },
+              {
+                "letter": "D",
+                "text": "look"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We need to",
+            "sentenceAfter": "at the hotel before six o'clock or they may give away our room.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "set down"
+              },
+              {
+                "letter": "C",
+                "text": "check in"
+              },
+              {
+                "letter": "B",
+                "text": "make up"
+              },
+              {
+                "letter": "D",
+                "text": "turn up"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Pull over and look at the map – I'm fairly certain we've",
+            "sentenceAfter": "our way in this forest.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "missed"
+              },
+              {
+                "letter": "C",
+                "text": "mistaken"
+              },
+              {
+                "letter": "B",
+                "text": "misplaced"
+              },
+              {
+                "letter": "D",
+                "text": "lost"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The",
+            "sentenceAfter": "from Edinburgh to London takes just over four hours on the express train.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "travel"
+              },
+              {
+                "letter": "C",
+                "text": "trip"
+              },
+              {
+                "letter": "B",
+                "text": "journey"
+              },
+              {
+                "letter": "D",
+                "text": "voyage"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u1-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Anyone wanting to reserve a particular seat on the coach should book well in",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "ahead"
+              },
+              {
+                "letter": "C",
+                "text": "advance"
+              },
+              {
+                "letter": "B",
+                "text": "front"
+              },
+              {
+                "letter": "D",
+                "text": "forward"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

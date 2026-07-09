@@ -1,0 +1,1322 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 8,
+  "unit": 8,
+  "type": "review",
+  "unitTitle": "Review 8: Units 22, 23 and 24",
+  "unitSubtitle": "Review 8: Units 22, 23 and 24",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Review 8: Units 22, 23 and 24"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B1/Review8.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-r8-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-r8-node-1",
+      "title": "Review 8: Units 22, 23 and 24",
+      "shortTitle": "Review",
+      "focus": [
+        "mc_4_option",
+        "free_text_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 35,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u8-ex-a",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u8-exa-1",
+            "b1-u8-exa-2",
+            "b1-u8-exa-3",
+            "b1-u8-exa-4",
+            "b1-u8-exa-5",
+            "b1-u8-exa-6",
+            "b1-u8-exa-7",
+            "b1-u8-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u8-ex-b",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u8-exb-1",
+            "b1-u8-exb-2",
+            "b1-u8-exb-3",
+            "b1-u8-exb-4",
+            "b1-u8-exb-5",
+            "b1-u8-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u8-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u8-exc-1",
+            "b1-u8-exc-2",
+            "b1-u8-exc-3",
+            "b1-u8-exc-4"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u8-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u8-exd-1",
+            "b1-u8-exd-2",
+            "b1-u8-exd-3",
+            "b1-u8-exd-4",
+            "b1-u8-exd-5",
+            "b1-u8-exd-6",
+            "b1-u8-exd-7",
+            "b1-u8-exd-8",
+            "b1-u8-exd-9",
+            "b1-u8-exd-10",
+            "b1-u8-exd-11",
+            "b1-u8-exd-12",
+            "b1-u8-exd-13",
+            "b1-u8-exd-14",
+            "b1-u8-exd-15",
+            "b1-u8-exd-16"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u8-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u8-exe-1",
+            "b1-u8-exe-2",
+            "b1-u8-exe-3",
+            "b1-u8-exe-4",
+            "b1-u8-exe-5",
+            "b1-u8-exe-6",
+            "b1-u8-exe-7",
+            "b1-u8-exe-8",
+            "b1-u8-exe-9",
+            "b1-u8-exe-10",
+            "b1-u8-exe-11",
+            "b1-u8-exe-12",
+            "b1-u8-exe-13",
+            "b1-u8-exe-14",
+            "b1-u8-exe-15",
+            "b1-u8-exe-16"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 50,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u8-ex-a",
+      "b1-u8-ex-b",
+      "b1-u8-ex-c",
+      "b1-u8-ex-d",
+      "b1-u8-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u8-ex-a",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "A: Choose the correct answer",
+        "title": "A: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "A",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exa-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You shouldn't",
+            "sentenceAfter": "so much money on that jacket!",
+            "options": [
+              {
+                "letter": "A",
+                "text": "spend"
+              },
+              {
+                "letter": "B",
+                "text": "have spent"
+              },
+              {
+                "letter": "C",
+                "text": "to spend"
+              },
+              {
+                "letter": "D",
+                "text": "to have spent"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exa-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The train",
+            "sentenceAfter": "have arrived by now. It left two hours ago!",
+            "options": [
+              {
+                "letter": "A",
+                "text": "must"
+              },
+              {
+                "letter": "B",
+                "text": "ought"
+              },
+              {
+                "letter": "C",
+                "text": "can't"
+              },
+              {
+                "letter": "D",
+                "text": "wouldn't"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exa-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I wonder if you know where",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "is the nearest bank?"
+              },
+              {
+                "letter": "B",
+                "text": "is the nearest bank."
+              },
+              {
+                "letter": "C",
+                "text": "the nearest bank is?"
+              },
+              {
+                "letter": "D",
+                "text": "the nearest bank is."
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exa-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You don't live near here,",
+            "sentenceAfter": "you?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "are"
+              },
+              {
+                "letter": "B",
+                "text": "live"
+              },
+              {
+                "letter": "C",
+                "text": "have"
+              },
+              {
+                "letter": "D",
+                "text": "do"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exa-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Let's ask someone for directions,",
+            "sentenceAfter": "?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "do we"
+              },
+              {
+                "letter": "B",
+                "text": "shall us"
+              },
+              {
+                "letter": "C",
+                "text": "shall we"
+              },
+              {
+                "letter": "D",
+                "text": "let us"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exa-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He",
+            "sentenceAfter": "have left his phone at home, but I'm not sure.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "must"
+              },
+              {
+                "letter": "B",
+                "text": "might"
+              },
+              {
+                "letter": "C",
+                "text": "can't"
+              },
+              {
+                "letter": "D",
+                "text": "shouldn't"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exa-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Could you tell me",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "what time the lesson starts?"
+              },
+              {
+                "letter": "B",
+                "text": "what time the lesson starts."
+              },
+              {
+                "letter": "C",
+                "text": "what time does the lesson start?"
+              },
+              {
+                "letter": "D",
+                "text": "what time does the lesson start."
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exa-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I'm making too much noise,",
+            "sentenceAfter": "I?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "am not"
+              },
+              {
+                "letter": "B",
+                "text": "don't"
+              },
+              {
+                "letter": "C",
+                "text": "aren't"
+              },
+              {
+                "letter": "D",
+                "text": "isn't"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u8-ex-b",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "B: Match to make sentences",
+        "title": "B: Match to make sentences",
+        "instructions": "Match the sentence halves.",
+        "studentInstruction": "Match the sentence halves.",
+        "legacyKey": "B",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exb-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "A burglar broke",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "up before six every morning."
+              },
+              {
+                "letter": "B",
+                "text": "into the small shop during the night."
+              },
+              {
+                "letter": "C",
+                "text": "in as soon as the old tenants leave."
+              },
+              {
+                "letter": "D",
+                "text": "up now or you'll miss the bus."
+              },
+              {
+                "letter": "",
+                "text": "E your shoes away before dinner."
+              },
+              {
+                "letter": "",
+                "text": "F up, I'll dry the plates."
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exb-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Please put",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "up before six every morning."
+              },
+              {
+                "letter": "B",
+                "text": "into the small shop during the night."
+              },
+              {
+                "letter": "C",
+                "text": "in as soon as the old tenants leave."
+              },
+              {
+                "letter": "D",
+                "text": "up now or you'll miss the bus."
+              },
+              {
+                "letter": "",
+                "text": "E your shoes away before dinner."
+              },
+              {
+                "letter": "",
+                "text": "F up, I'll dry the plates."
+              }
+            ],
+            "answer": "E",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exb-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My alarm wakes me",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "up before six every morning."
+              },
+              {
+                "letter": "B",
+                "text": "into the small shop during the night."
+              },
+              {
+                "letter": "C",
+                "text": "in as soon as the old tenants leave."
+              },
+              {
+                "letter": "D",
+                "text": "up now or you'll miss the bus."
+              },
+              {
+                "letter": "",
+                "text": "E your shoes away before dinner."
+              },
+              {
+                "letter": "",
+                "text": "F up, I'll dry the plates."
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exb-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If you wash the cups",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "up before six every morning."
+              },
+              {
+                "letter": "B",
+                "text": "into the small shop during the night."
+              },
+              {
+                "letter": "C",
+                "text": "in as soon as the old tenants leave."
+              },
+              {
+                "letter": "D",
+                "text": "up now or you'll miss the bus."
+              },
+              {
+                "letter": "",
+                "text": "E your shoes away before dinner."
+              },
+              {
+                "letter": "",
+                "text": "F up, I'll dry the plates."
+              }
+            ],
+            "answer": "F",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exb-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They can move",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "up before six every morning."
+              },
+              {
+                "letter": "B",
+                "text": "into the small shop during the night."
+              },
+              {
+                "letter": "C",
+                "text": "in as soon as the old tenants leave."
+              },
+              {
+                "letter": "D",
+                "text": "up now or you'll miss the bus."
+              },
+              {
+                "letter": "",
+                "text": "E your shoes away before dinner."
+              },
+              {
+                "letter": "",
+                "text": "F up, I'll dry the plates."
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exb-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You need to get",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "up before six every morning."
+              },
+              {
+                "letter": "B",
+                "text": "into the small shop during the night."
+              },
+              {
+                "letter": "C",
+                "text": "in as soon as the old tenants leave."
+              },
+              {
+                "letter": "D",
+                "text": "up now or you'll miss the bus."
+              },
+              {
+                "letter": "",
+                "text": "E your shoes away before dinner."
+              },
+              {
+                "letter": "",
+                "text": "F up, I'll dry the plates."
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u8-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Key Word Transformation",
+        "title": "C: Key Word Transformation",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm sure Sophie didn't take your notebook. **can't**\nSophie ...... your notebook.",
+            "answer": "can't have taken",
+            "acceptedAnswers": [
+              "can't have taken"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They will punish you for cheating in the exam. **away**\nYou won't ...... cheating in the exam.",
+            "answer": "get away with",
+            "acceptedAnswers": [
+              "get away with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Liam broke my camera, but I've forgiven him. **for**\nI've forgiven ...... my camera.",
+            "answer": "Liam for breaking",
+            "acceptedAnswers": [
+              "Liam for breaking"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The police said that the man had stolen the painting. **accused**\nThe police ...... the painting.",
+            "answer": "accused the man of stealing",
+            "acceptedAnswers": [
+              "accused the man of stealing"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u8-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He",
+            "sentenceAfter": "the film before – he knew the ending.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "must see"
+              },
+              {
+                "letter": "B",
+                "text": "must have seen"
+              },
+              {
+                "letter": "C",
+                "text": "should see"
+              },
+              {
+                "letter": "D",
+                "text": "had to see"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She missed the deadline. She",
+            "sentenceAfter": "earlier.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "should start"
+              },
+              {
+                "letter": "B",
+                "text": "should have started"
+              },
+              {
+                "letter": "C",
+                "text": "must have started"
+              },
+              {
+                "letter": "D",
+                "text": "might start"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Tom isn't answering. He",
+            "sentenceAfter": "busy.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "must be"
+              },
+              {
+                "letter": "B",
+                "text": "must have been"
+              },
+              {
+                "letter": "C",
+                "text": "can be"
+              },
+              {
+                "letter": "D",
+                "text": "should be"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I can't find my passport. I",
+            "sentenceAfter": "it at home.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "must leave"
+              },
+              {
+                "letter": "B",
+                "text": "can have left"
+              },
+              {
+                "letter": "C",
+                "text": "might have left"
+              },
+              {
+                "letter": "D",
+                "text": "should left"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "That",
+            "sentenceAfter": "been difficult – everyone finished in ten minutes!",
+            "options": [
+              {
+                "letter": "A",
+                "text": "should"
+              },
+              {
+                "letter": "B",
+                "text": "can't have"
+              },
+              {
+                "letter": "C",
+                "text": "must have"
+              },
+              {
+                "letter": "D",
+                "text": "might"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I",
+            "sentenceAfter": "the train – I got to the platform just in time.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "could miss"
+              },
+              {
+                "letter": "B",
+                "text": "almost missed"
+              },
+              {
+                "letter": "C",
+                "text": "must have missed"
+              },
+              {
+                "letter": "D",
+                "text": "could have missed"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They're not here yet. They",
+            "sentenceAfter": "the wrong turning.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "might take"
+              },
+              {
+                "letter": "B",
+                "text": "could have taken"
+              },
+              {
+                "letter": "C",
+                "text": "should have taken"
+              },
+              {
+                "letter": "D",
+                "text": "must take"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She wasn't at school yesterday. She",
+            "sentenceAfter": "ill.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "must be"
+              },
+              {
+                "letter": "B",
+                "text": "should have been"
+              },
+              {
+                "letter": "C",
+                "text": "must have been"
+              },
+              {
+                "letter": "D",
+                "text": "can be"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I waited for you for an hour – you",
+            "sentenceAfter": "me!",
+            "options": [
+              {
+                "letter": "A",
+                "text": "should call"
+              },
+              {
+                "letter": "B",
+                "text": "could call"
+              },
+              {
+                "letter": "C",
+                "text": "should have called"
+              },
+              {
+                "letter": "D",
+                "text": "must have called"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He looks really pleased. Something good",
+            "sentenceAfter": "happened.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "must have"
+              },
+              {
+                "letter": "B",
+                "text": "should have"
+              },
+              {
+                "letter": "C",
+                "text": "might have"
+              },
+              {
+                "letter": "D",
+                "text": "could"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-11",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You work in the city centre,",
+            "sentenceAfter": "you?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "aren't"
+              },
+              {
+                "letter": "B",
+                "text": "don't"
+              },
+              {
+                "letter": "C",
+                "text": "didn't"
+              },
+              {
+                "letter": "D",
+                "text": "haven't"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-12",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "There's no sugar left,",
+            "sentenceAfter": "there?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "is"
+              },
+              {
+                "letter": "B",
+                "text": "isn't"
+              },
+              {
+                "letter": "C",
+                "text": "are"
+              },
+              {
+                "letter": "D",
+                "text": "aren't"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-13",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He hasn't finished yet,",
+            "sentenceAfter": "he?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "hasn't"
+              },
+              {
+                "letter": "B",
+                "text": "has"
+              },
+              {
+                "letter": "C",
+                "text": "isn't"
+              },
+              {
+                "letter": "D",
+                "text": "did"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-14",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Let's order a pizza,",
+            "sentenceAfter": "?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "will we"
+              },
+              {
+                "letter": "B",
+                "text": "shall we"
+              },
+              {
+                "letter": "C",
+                "text": "don't we"
+              },
+              {
+                "letter": "D",
+                "text": "won't we"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-15",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Could you tell me where",
+            "sentenceAfter": "?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "does Anna live"
+              },
+              {
+                "letter": "B",
+                "text": "Anna lives"
+              },
+              {
+                "letter": "C",
+                "text": "Anna live"
+              },
+              {
+                "letter": "D",
+                "text": "lives Anna"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exd-16",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Do you know what time",
+            "sentenceAfter": "start?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "does the film"
+              },
+              {
+                "letter": "B",
+                "text": "the film does"
+              },
+              {
+                "letter": "C",
+                "text": "the film"
+              },
+              {
+                "letter": "D",
+                "text": "is the film"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u8-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Complete the sentences",
+        "title": "E: Complete the sentences",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u8-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The police will ...... the thief if they find him.",
+            "answer": "arrest",
+            "acceptedAnswers": [
+              "arrest"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It is against the ...... to drive without insurance.",
+            "answer": "law",
+            "acceptedAnswers": [
+              "law"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She belongs to a local ...... that helps homeless people.",
+            "answer": "charity",
+            "acceptedAnswers": [
+              "charity"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He refused to ...... that he had made a mistake.",
+            "answer": "admit",
+            "acceptedAnswers": [
+              "admit"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The ...... of this town has grown a lot recently.",
+            "answer": "population",
+            "acceptedAnswers": [
+              "population"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should keep in ...... with your old friends.",
+            "answer": "touch",
+            "acceptedAnswers": [
+              "touch"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He was found guilty ...... stealing the car.",
+            "answer": "of",
+            "acceptedAnswers": [
+              "of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't blame the accident ...... me.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She smiled ...... the children as they entered the room.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The criminal was sent to ...... for five years.",
+            "answer": "prison",
+            "acceptedAnswers": [
+              "prison"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Many people decided to ...... against the new rules.",
+            "answer": "protest",
+            "acceptedAnswers": [
+              "protest"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-12",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you share your notes ...... me?",
+            "answer": "with",
+            "acceptedAnswers": [
+              "with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-13",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He gets ...... at seven every morning.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-14",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please put your books ...... before lunch.",
+            "answer": "away",
+            "acceptedAnswers": [
+              "away"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-15",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They moved ...... last month and now live upstairs.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u8-exe-16",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Everyone over eighteen can ...... in the election.",
+            "answer": "vote",
+            "acceptedAnswers": [
+              "vote"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

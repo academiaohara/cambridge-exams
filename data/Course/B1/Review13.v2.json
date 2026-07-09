@@ -1,0 +1,1040 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 13,
+  "unit": 13,
+  "type": "review",
+  "unitTitle": "Review 13: Units 37, 38 and 39",
+  "unitSubtitle": "Review 13: Units 37, 38 and 39",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Review 13: Units 37, 38 and 39"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B1/Review13.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-r13-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-r13-node-1",
+      "title": "Review 13: Units 37, 38 and 39",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 35,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u13-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u13-exa-1",
+            "b1-u13-exa-2",
+            "b1-u13-exa-3",
+            "b1-u13-exa-4",
+            "b1-u13-exa-5",
+            "b1-u13-exa-6",
+            "b1-u13-exa-7",
+            "b1-u13-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u13-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u13-exb-1",
+            "b1-u13-exb-2",
+            "b1-u13-exb-3",
+            "b1-u13-exb-4",
+            "b1-u13-exb-5",
+            "b1-u13-exb-6",
+            "b1-u13-exb-7",
+            "b1-u13-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u13-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u13-exc-1",
+            "b1-u13-exc-2",
+            "b1-u13-exc-3",
+            "b1-u13-exc-4",
+            "b1-u13-exc-5",
+            "b1-u13-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u13-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u13-exd-1",
+            "b1-u13-exd-2",
+            "b1-u13-exd-3",
+            "b1-u13-exd-4",
+            "b1-u13-exd-5",
+            "b1-u13-exd-6",
+            "b1-u13-exd-7",
+            "b1-u13-exd-8",
+            "b1-u13-exd-9",
+            "b1-u13-exd-10",
+            "b1-u13-exd-11",
+            "b1-u13-exd-12",
+            "b1-u13-exd-13",
+            "b1-u13-exd-14"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u13-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u13-exe-1",
+            "b1-u13-exe-2",
+            "b1-u13-exe-3",
+            "b1-u13-exe-4",
+            "b1-u13-exe-5",
+            "b1-u13-exe-6",
+            "b1-u13-exe-7",
+            "b1-u13-exe-8",
+            "b1-u13-exe-9",
+            "b1-u13-exe-10",
+            "b1-u13-exe-11",
+            "b1-u13-exe-12",
+            "b1-u13-exe-13",
+            "b1-u13-exe-14"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 50,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u13-ex-a",
+      "b1-u13-ex-b",
+      "b1-u13-ex-c",
+      "b1-u13-ex-d",
+      "b1-u13-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u13-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Word formation",
+        "title": "A: Word formation",
+        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "studentInstruction": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u13-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "It's important to talk openly about your ...... . (FEEL)",
+            "answer": "feelings",
+            "acceptedAnswers": [
+              "feelings"
+            ],
+            "explanation": "",
+            "verbPrompt": "FEEL"
+          },
+          {
+            "id": "b1-u13-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Although he smiled, he actually felt very ...... . (HAPPY)",
+            "answer": "unhappy",
+            "acceptedAnswers": [
+              "unhappy"
+            ],
+            "explanation": "",
+            "verbPrompt": "HAPPY"
+          },
+          {
+            "id": "b1-u13-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Teenagers often go through difficult ...... changes. (EMOTION)",
+            "answer": "emotional",
+            "acceptedAnswers": [
+              "emotional"
+            ],
+            "explanation": "",
+            "verbPrompt": "EMOTION"
+          },
+          {
+            "id": "b1-u13-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Her teacher was very ...... and listened carefully to her problems. (SYMPATHY)",
+            "answer": "sympathetic",
+            "acceptedAnswers": [
+              "sympathetic"
+            ],
+            "explanation": "",
+            "verbPrompt": "SYMPATHY"
+          },
+          {
+            "id": "b1-u13-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The students looked ...... during the long presentation. (BORE)",
+            "answer": "bored",
+            "acceptedAnswers": [
+              "bored"
+            ],
+            "explanation": "",
+            "verbPrompt": "BORE"
+          },
+          {
+            "id": "b1-u13-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "It was one of the most ...... games I've ever played. (EXCITE)",
+            "answer": "exciting",
+            "acceptedAnswers": [
+              "exciting"
+            ],
+            "explanation": "",
+            "verbPrompt": "EXCITE"
+          },
+          {
+            "id": "b1-u13-exa-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The children were really ...... about the school trip. (EXCITE)",
+            "answer": "excited",
+            "acceptedAnswers": [
+              "excited"
+            ],
+            "explanation": "",
+            "verbPrompt": "EXCITE"
+          },
+          {
+            "id": "b1-u13-exa-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My younger brother is always so ...... after drinking cola. (ENERGY)",
+            "answer": "energetic",
+            "acceptedAnswers": [
+              "energetic"
+            ],
+            "explanation": "",
+            "verbPrompt": "ENERGY"
+          }
+        ]
+      },
+      {
+        "id": "b1-u13-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Write one word in each gap",
+        "title": "B: Write one word in each gap",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u13-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Come ......! The film starts in five minutes.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Hang ...... a minute while I check my messages.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I wish those boys would shut ...... during the lesson.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The rain went ...... for hours and we couldn't go outside.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please calm ...... and explain what happened.",
+            "answer": "down",
+            "acceptedAnswers": [
+              "down"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you speak ...... a little? I can't hear you.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The dog ran ...... when the gate was left open.",
+            "answer": "away",
+            "acceptedAnswers": [
+              "away"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My friends cheered me ...... after the bad result.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u13-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Key Word Transformation",
+        "title": "C: Key Word Transformation",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u13-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I don't have enough money for concert tickets. **afford**\nI ...... concert tickets.",
+            "answer": "can't afford",
+            "acceptedAnswers": [
+              "can't afford"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Lisa acted happy, but she was actually upset. **pretended**\nLisa ...... happy, but she was actually upset.",
+            "answer": "pretended to be",
+            "acceptedAnswers": [
+              "pretended to be"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The teacher forced us to apologise. **made**\nWe ...... apologise by the teacher.",
+            "answer": "were made to",
+            "acceptedAnswers": [
+              "were made to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I chose to speak to Jake about the problem. **decided**\nI ...... to Jake about the problem.",
+            "answer": "decided to speak",
+            "acceptedAnswers": [
+              "decided to speak"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "In the end, we succeeded in making Anna smile. **managed**\nWe finally ...... Anna smile.",
+            "answer": "managed to make",
+            "acceptedAnswers": [
+              "managed to make"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I try not to argue with my parents. **avoid**\nI ...... with my parents.",
+            "answer": "avoid arguing",
+            "acceptedAnswers": [
+              "avoid arguing"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u13-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u13-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She enjoys",
+            "sentenceAfter": "detective novels.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "read"
+              },
+              {
+                "letter": "B",
+                "text": "to read"
+              },
+              {
+                "letter": "C",
+                "text": "reading"
+              },
+              {
+                "letter": "D",
+                "text": "reads"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They decided",
+            "sentenceAfter": "abroad next year.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "moving"
+              },
+              {
+                "letter": "B",
+                "text": "to move"
+              },
+              {
+                "letter": "C",
+                "text": "move"
+              },
+              {
+                "letter": "D",
+                "text": "moved"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Both my cousins",
+            "sentenceAfter": "my uncle live in Canada.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "or"
+              },
+              {
+                "letter": "B",
+                "text": "nor"
+              },
+              {
+                "letter": "C",
+                "text": "and"
+              },
+              {
+                "letter": "D",
+                "text": "either"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I don't like horror films, and",
+            "sentenceAfter": "does my sister.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "either"
+              },
+              {
+                "letter": "B",
+                "text": "neither"
+              },
+              {
+                "letter": "C",
+                "text": "both"
+              },
+              {
+                "letter": "D",
+                "text": "so"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He stopped",
+            "sentenceAfter": "when the teacher entered the room.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "talking"
+              },
+              {
+                "letter": "B",
+                "text": "to talk"
+              },
+              {
+                "letter": "C",
+                "text": "talked"
+              },
+              {
+                "letter": "D",
+                "text": "talk"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She tried",
+            "sentenceAfter": "the answer, but it was too difficult.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "finding"
+              },
+              {
+                "letter": "B",
+                "text": "find"
+              },
+              {
+                "letter": "C",
+                "text": "to find"
+              },
+              {
+                "letter": "D",
+                "text": "found"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Neither Emma",
+            "sentenceAfter": "Chloe wanted to leave early.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "and"
+              },
+              {
+                "letter": "B",
+                "text": "or"
+              },
+              {
+                "letter": "C",
+                "text": "nor"
+              },
+              {
+                "letter": "D",
+                "text": "but"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I remember",
+            "sentenceAfter": "that actor in another film.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "see"
+              },
+              {
+                "letter": "B",
+                "text": "to see"
+              },
+              {
+                "letter": "C",
+                "text": "saw"
+              },
+              {
+                "letter": "D",
+                "text": "seeing"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'I'm really tired.' 'So",
+            "sentenceAfter": "I.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "am"
+              },
+              {
+                "letter": "B",
+                "text": "do"
+              },
+              {
+                "letter": "C",
+                "text": "have"
+              },
+              {
+                "letter": "D",
+                "text": "would"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She forgot",
+            "sentenceAfter": "her homework to school.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "bringing"
+              },
+              {
+                "letter": "B",
+                "text": "to bring"
+              },
+              {
+                "letter": "C",
+                "text": "brought"
+              },
+              {
+                "letter": "D",
+                "text": "bring"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exd-11",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Either we leave now",
+            "sentenceAfter": "we'll miss the train.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "and"
+              },
+              {
+                "letter": "B",
+                "text": "nor"
+              },
+              {
+                "letter": "C",
+                "text": "but"
+              },
+              {
+                "letter": "D",
+                "text": "or"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exd-12",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He admitted",
+            "sentenceAfter": "the window by mistake.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "to break"
+              },
+              {
+                "letter": "B",
+                "text": "to breaking"
+              },
+              {
+                "letter": "C",
+                "text": "break"
+              },
+              {
+                "letter": "D",
+                "text": "broke"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exd-13",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'I love this song!' 'So",
+            "sentenceAfter": "I!'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "do"
+              },
+              {
+                "letter": "B",
+                "text": "neither"
+              },
+              {
+                "letter": "C",
+                "text": "both"
+              },
+              {
+                "letter": "D",
+                "text": "either"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exd-14",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She refused",
+            "sentenceAfter": "to the manager.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "speaking"
+              },
+              {
+                "letter": "B",
+                "text": "speak"
+              },
+              {
+                "letter": "C",
+                "text": "to speak"
+              },
+              {
+                "letter": "D",
+                "text": "spoke"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u13-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Complete the sentences",
+        "title": "E: Complete the sentences",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u13-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Everyone ...... out laughing when he slipped on the ice.",
+            "answer": "burst",
+            "acceptedAnswers": [
+              "burst"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She burst into ...... after hearing the terrible news.",
+            "answer": "tears",
+            "acceptedAnswers": [
+              "tears"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The audience was ...... with laughter during the comedy show.",
+            "answer": "crying",
+            "acceptedAnswers": [
+              "crying"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He couldn't ...... laughing during the interview.",
+            "answer": "stop",
+            "acceptedAnswers": [
+              "stop"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My grandfather ...... me a warm smile.",
+            "answer": "gave",
+            "acceptedAnswers": [
+              "gave"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The little girl started ...... when she lost her toy.",
+            "answer": "crying",
+            "acceptedAnswers": [
+              "crying"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Tears ...... down her cheeks as she spoke.",
+            "answer": "ran",
+            "acceptedAnswers": [
+              "ran"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Jake ...... a funny joke at lunch.",
+            "answer": "told",
+            "acceptedAnswers": [
+              "told"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exe-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She tried to keep a straight ...... but started laughing.",
+            "answer": "face",
+            "acceptedAnswers": [
+              "face"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exe-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "His friends cheered him ...... after the match.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exe-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The ending of the film moved everyone to ...... .",
+            "answer": "tears",
+            "acceptedAnswers": [
+              "tears"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exe-12",
+            "formatType": "free_text_gap_fill",
+            "sentence": "That comedian was hilarious — we were in ...... .",
+            "answer": "stitches",
+            "acceptedAnswers": [
+              "stitches"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exe-13",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She tried ...... not to cry in front of everyone.",
+            "answer": "hard",
+            "acceptedAnswers": [
+              "hard"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u13-exe-14",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He couldn't ...... his laughter any longer.",
+            "answer": "contain",
+            "acceptedAnswers": [
+              "contain"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

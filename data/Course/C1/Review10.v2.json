@@ -1,0 +1,793 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 10,
+  "unit": 10,
+  "type": "review",
+  "unitTitle": "Review: Block 10 – Units 19 & 20",
+  "unitSubtitle": "Review: Block 10 – Units 19 & 20",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "Review: Block 10 – Units 19 & 20"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/C1/Review10.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-r10-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-r10-node-1",
+      "title": "Review: Block 10 – Units 19 & 20",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 25,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u10-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "c1-u10-exa-1",
+            "c1-u10-exa-2",
+            "c1-u10-exa-3",
+            "c1-u10-exa-4",
+            "c1-u10-exa-5"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u10-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "c1-u10-exb-1",
+            "c1-u10-exb-2",
+            "c1-u10-exb-3",
+            "c1-u10-exb-4",
+            "c1-u10-exb-5",
+            "c1-u10-exb-6",
+            "c1-u10-exb-7",
+            "c1-u10-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u10-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u10-exc-1",
+            "c1-u10-exc-2",
+            "c1-u10-exc-3",
+            "c1-u10-exc-4",
+            "c1-u10-exc-5",
+            "c1-u10-exc-6",
+            "c1-u10-exc-7",
+            "c1-u10-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u10-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u10-exd-1",
+            "c1-u10-exd-2",
+            "c1-u10-exd-3",
+            "c1-u10-exd-4",
+            "c1-u10-exd-5",
+            "c1-u10-exd-6",
+            "c1-u10-exd-7",
+            "c1-u10-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u10-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "c1-u10-exe-1",
+            "c1-u10-exe-2",
+            "c1-u10-exe-3",
+            "c1-u10-exe-4",
+            "c1-u10-exe-5",
+            "c1-u10-exe-6",
+            "c1-u10-exe-7",
+            "c1-u10-exe-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 37,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u10-ex-a",
+      "c1-u10-ex-b",
+      "c1-u10-ex-c",
+      "c1-u10-ex-d",
+      "c1-u10-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u10-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Gap Fill (Book Review)",
+        "title": "A: Gap Fill (Book Review)",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u10-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Seldom (1) ...... a reader encounter such an incisive examination of urban inequality as Marcus Webb's Divided Cities.",
+            "answer": "does",
+            "acceptedAnswers": [
+              "does"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Those who choose to bury their heads in the (2) ...... and pretend that housing inequality is no longer an issue will find Webb's data deeply unsettling.",
+            "answer": "sand",
+            "acceptedAnswers": [
+              "sand"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Webb persuasively demonstrates that (3) ...... only have those (4) ...... power consolidated their influence, but lower-income communities are also less able to stand (5) ...... to developers.",
+            "answer": "not, in, up",
+            "acceptedAnswers": [
+              "not, in, up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "At (6) ...... stage in the book (7) ...... Webb's assertions made without supporting data, and at no point does he talk (8) ...... to readers unfamiliar with the topic.",
+            "answer": "no, are, down",
+            "acceptedAnswers": [
+              "no, are, down"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "His overarching argument, that (9) ...... when citizens unite and challenge the powers that (10) ...... will meaningful reform become possible, is both compelling and timely.",
+            "answer": "only, be",
+            "acceptedAnswers": [
+              "only, be"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u10-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: Word Formation",
+        "title": "B: Word Formation",
+        "instructions": "Complete the sentences by changing the form of the word in capitals.",
+        "studentInstruction": "Complete the sentences by changing the form of the word in capitals.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u10-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Repeated exposure to cold temperatures can ...... (HARD) the skin, making it more resistant to minor abrasions.",
+            "answer": "harden",
+            "acceptedAnswers": [
+              "harden"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The coach's dedication to fair play ...... (EXAMPLE) the values that the entire academy strives to uphold.",
+            "answer": "exemplifies",
+            "acceptedAnswers": [
+              "exemplifies"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Several volunteers felt ...... (MORAL) after the funding for the community project was unexpectedly withdrawn.",
+            "answer": "demoralised",
+            "acceptedAnswers": [
+              "demoralised"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Victims of online fraud often describe a lasting feeling of ...... (POWER) when they realise they cannot recover their money.",
+            "answer": "powerlessness",
+            "acceptedAnswers": [
+              "powerlessness"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "There is an ongoing debate about whether it would be beneficial to ...... (CRIME) certain minor traffic offences.",
+            "answer": "decriminalise",
+            "acceptedAnswers": [
+              "decriminalise"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "A single vote might appear ...... (SIGNIFY) in a national election, yet the collective impact of voter turnout is enormous.",
+            "answer": "insignificant",
+            "acceptedAnswers": [
+              "insignificant"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exb-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The security guard was dismissed after striking a customer without any apparent ...... (PROVOKE) .",
+            "answer": "provocation",
+            "acceptedAnswers": [
+              "provocation"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exb-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "After years of internal conflict, the region had become virtually ...... (GOVERN) and required international intervention.",
+            "answer": "ungovernable",
+            "acceptedAnswers": [
+              "ungovernable"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u10-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Collocations / Prepositions",
+        "title": "C: Collocations / Prepositions",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u10-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She avoids checking her phone during dinner ...... a rule, preferring to focus on conversation.",
+            "answer": "as",
+            "acceptedAnswers": [
+              "as"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Am I right ...... thinking that the conference has been moved to a different venue this year?",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The merger will proceed, but it remains subject ...... approval by the financial regulatory body.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He ...... his time for the offence and was determined to rebuild his life upon release.",
+            "answer": "served",
+            "acceptedAnswers": [
+              "served"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "All confidential documents are kept ...... lock and key in the archive room on the ground floor.",
+            "answer": "under",
+            "acceptedAnswers": [
+              "under"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The court reminded the defendant that no one, regardless of status, is ...... the law.",
+            "answer": "above",
+            "acceptedAnswers": [
+              "above"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "After months of negotiations, the militant faction agreed to lay ...... their weapons and enter peace talks.",
+            "answer": "down",
+            "acceptedAnswers": [
+              "down"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The director decided to ...... an example of the employee who had leaked confidential information.",
+            "answer": "make",
+            "acceptedAnswers": [
+              "make"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u10-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Key Word Transformation",
+        "title": "D: Key Word Transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u10-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There are no circumstances in which volunteers may enter the restricted zone without prior clearance. **under**\nVolunteers ...... the restricted zone without prior clearance.",
+            "answer": "are under no circumstances to enter",
+            "acceptedAnswers": [
+              "are under no circumstances to enter"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I would advise against confronting the director over this issue. **horns**\nI would advise against ...... the director over this issue.",
+            "answer": "locking horns with",
+            "acceptedAnswers": [
+              "locking horns with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The delegates could only vote once the chairperson had formally opened the session. **after**\nOnly ...... vote.",
+            "answer": "after the chairperson had formally opened the session could the delegates",
+            "acceptedAnswers": [
+              "after the chairperson had formally opened the session could the delegates"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The system would not let the students view their individual results. **denied**\nThe system ...... their individual results.",
+            "answer": "denied the students access to",
+            "acceptedAnswers": [
+              "denied the students access to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The fire alarm went off as soon as the technician entered the building. **had**\nNo ...... the fire alarm went off.",
+            "answer": "sooner had the technician entered the building than",
+            "acceptedAnswers": [
+              "sooner had the technician entered the building than"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "A trustworthy insider informed me that the factory is about to close permanently. **authority**\nI ...... that the factory is about to close permanently.",
+            "answer": "have it on good authority",
+            "acceptedAnswers": [
+              "have it on good authority"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exd-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There was such widespread anger at the verdict that protests broke out across the city. **so**\nProtests broke out across the city, ...... the verdict.",
+            "answer": "so widespread was the anger at",
+            "acceptedAnswers": [
+              "so widespread was the anger at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exd-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Why do you think you can speak to your colleagues in that manner? **gives**\nWhat do you think ...... to speak to your colleagues in that manner?",
+            "answer": "gives you the right",
+            "acceptedAnswers": [
+              "gives you the right"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u10-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Multiple Choice",
+        "title": "E: Multiple Choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "c1-u10-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The new planning regulations have generated considerable",
+            "sentenceAfter": "among residents and local business owners alike.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "controversy"
+              },
+              {
+                "letter": "B",
+                "text": "consent"
+              },
+              {
+                "letter": "C",
+                "text": "conformity"
+              },
+              {
+                "letter": "D",
+                "text": "consequence"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "This neighbourhood struggles with anti-social behaviour,",
+            "sentenceAfter": "do several other districts in the region.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "so"
+              },
+              {
+                "letter": "B",
+                "text": "nor"
+              },
+              {
+                "letter": "C",
+                "text": "as"
+              },
+              {
+                "letter": "D",
+                "text": "like"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Any individual found tampering with public infrastructure will be",
+            "sentenceAfter": "to the full extent of the law.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "advocated"
+              },
+              {
+                "letter": "B",
+                "text": "undermined"
+              },
+              {
+                "letter": "C",
+                "text": "prosecuted"
+              },
+              {
+                "letter": "D",
+                "text": "enforced"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The transport authority has announced plans to",
+            "sentenceAfter": "down on fare evasion across the entire network.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "hit"
+              },
+              {
+                "letter": "B",
+                "text": "force"
+              },
+              {
+                "letter": "C",
+                "text": "move"
+              },
+              {
+                "letter": "D",
+                "text": "crack"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If the product arrives damaged, you have",
+            "sentenceAfter": "right to request a full refund from the retailer.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "all"
+              },
+              {
+                "letter": "B",
+                "text": "each"
+              },
+              {
+                "letter": "C",
+                "text": "much"
+              },
+              {
+                "letter": "D",
+                "text": "every"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Sofia is not the type to back down easily and will not let her supervisor push her",
+            "sentenceAfter": ".",
+            "options": [
+              {
+                "letter": "A",
+                "text": "up"
+              },
+              {
+                "letter": "B",
+                "text": "off"
+              },
+              {
+                "letter": "C",
+                "text": "around"
+              },
+              {
+                "letter": "D",
+                "text": "through"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The",
+            "sentenceAfter": "I find hard to grasp is why the committee approved the proposal without consulting residents first.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "reason"
+              },
+              {
+                "letter": "B",
+                "text": "object"
+              },
+              {
+                "letter": "C",
+                "text": "item"
+              },
+              {
+                "letter": "D",
+                "text": "thing"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u10-exe-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Fortunately, a well-connected mentor pulled a few",
+            "sentenceAfter": "and helped her secure a placement at a top law firm.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "ropes"
+              },
+              {
+                "letter": "B",
+                "text": "strings"
+              },
+              {
+                "letter": "C",
+                "text": "threads"
+              },
+              {
+                "letter": "D",
+                "text": "chords"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

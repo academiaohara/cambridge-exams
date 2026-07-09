@@ -1,0 +1,896 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B2 English",
+  "block": 7,
+  "unit": 7,
+  "type": "review",
+  "unitTitle": "Review: Block 7 – Units 13 & 14",
+  "unitSubtitle": "Review: Block 7 – Units 13 & 14",
+  "unitLevel": "B2",
+  "unitFocus": [
+    "Review: Block 7 – Units 13 & 14"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B2/Review7.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b2-r7-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "passage_gap_fill",
+        "displayName": "Complete the passage",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "passage_inline_gaps",
+          "studentAction": "type_gap_answers",
+          "evaluationTrigger": "check_button",
+          "gapInputStyle": "pill"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "error_correction",
+        "displayName": "Correct the error",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_correction_input",
+          "studentAction": "type_correction",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b2-r7-node-1",
+      "title": "Review: Block 7 – Units 13 & 14",
+      "shortTitle": "Review",
+      "focus": [
+        "passage_gap_fill",
+        "free_text_gap_fill",
+        "error_correction",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 23,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b2-u7-ex-a",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "b2-u7-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b2-u7-exb-1",
+            "b2-u7-exb-2",
+            "b2-u7-exb-3",
+            "b2-u7-exb-4",
+            "b2-u7-exb-5",
+            "b2-u7-exb-6",
+            "b2-u7-exb-7",
+            "b2-u7-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u7-ex-c",
+          "formatType": "error_correction",
+          "sourceItemIds": [
+            "b2-u7-exc-1",
+            "b2-u7-exc-2",
+            "b2-u7-exc-3",
+            "b2-u7-exc-4",
+            "b2-u7-exc-5",
+            "b2-u7-exc-6",
+            "b2-u7-exc-7",
+            "b2-u7-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u7-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u7-exd-1",
+            "b2-u7-exd-2",
+            "b2-u7-exd-3",
+            "b2-u7-exd-4",
+            "b2-u7-exd-5",
+            "b2-u7-exd-6",
+            "b2-u7-exd-7",
+            "b2-u7-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u7-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u7-exe-1",
+            "b2-u7-exe-2",
+            "b2-u7-exe-3",
+            "b2-u7-exe-4",
+            "b2-u7-exe-5",
+            "b2-u7-exe-6",
+            "b2-u7-exe-7",
+            "b2-u7-exe-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 33,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b2-u7-ex-a",
+      "b2-u7-ex-b",
+      "b2-u7-ex-c",
+      "b2-u7-ex-d",
+      "b2-u7-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b2-u7-ex-a",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "A: Use the word given in capitals to form a word",
+        "title": "A: Use the word given in capitals to form a word",
+        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "studentInstruction": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "legacyKey": "A",
+        "legacyPattern": "passage-input",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
+          "gapInputStyle": "underline_expand"
+        },
+        "passageTitle": "A Hiking Accident",
+        "passage": "Last summer, my friend Marco went hiking alone in the mountains. He was completely (1) ...... that some wild berries growing along the trail were dangerous. I cannot (2) ...... enough how important it is to research local plants before setting off! Marco ate several of the berries, which meant he urgently needed an (3) ...... of antidote at the nearest clinic, as they contained a highly (4) ...... substance. He began to feel incredibly (5) ...... , with severe cramps and dizziness setting in fast. A (6) ...... at the local hospital confirmed that, while no operation was needed, the case was serious. The (7) ...... Marco received involved close monitoring overnight. Before he was discharged, the doctor gave him a (8) ...... for anti-nausea tablets to take at home. Marco then discovered he was (9) ...... to one of the tablets and developed an itchy rash. Despite this setback, he made a full (10) ...... within ten days and vowed never to eat unknown berries again.",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "unaware",
+          "emphasise",
+          "injection",
+          "poisonous",
+          "uncomfortable",
+          "surgeon",
+          "treatment",
+          "prescription",
+          "allergic",
+          "recovery"
+        ]
+      },
+      {
+        "id": "b2-u7-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Complete the second sentence using the word given",
+        "title": "B: Complete the second sentence using the word given",
+        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "studentInstruction": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u7-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Fortunately, Adrian doesn't need to take any medication. **no**\nFortunately, there ...... to take any medication.",
+            "answer": "is no need for Adrian",
+            "acceptedAnswers": [
+              "is no need for Adrian"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The minister was forced to step down due to a serious illness. **led**\nA serious illness ...... resignation.",
+            "answer": "led to the minister's",
+            "acceptedAnswers": [
+              "led to the minister's"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There's no point in visiting the doctor for a minor headache. **worth**\nIt ...... the doctor for a minor headache.",
+            "answer": "is not worth seeing",
+            "acceptedAnswers": [
+              "is not worth seeing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm visiting the physiotherapist at ten on Friday. **appointment**\nI've ...... the physiotherapist at ten on Friday.",
+            "answer": "made an appointment with",
+            "acceptedAnswers": [
+              "made an appointment with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I no longer want to follow a strict diet! **tired**\nI ...... on a strict diet!",
+            "answer": "am tired of being",
+            "acceptedAnswers": [
+              "am tired of being"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Your knee probably won't recover before the race next weekend. **unlikely**\nYour knee ...... recover before the race next weekend.",
+            "answer": "is unlikely to",
+            "acceptedAnswers": [
+              "is unlikely to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I wish I could do a triathlon next summer. **able**\nI'd love ...... a triathlon next summer.",
+            "answer": "to be able to do",
+            "acceptedAnswers": [
+              "to be able to do"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Do you think I should reduce the amount of salt I consume? **on**\nDo you think I should ...... salt?",
+            "answer": "cut down on",
+            "acceptedAnswers": [
+              "cut down on"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u7-ex-c",
+        "type": "exercise",
+        "exerciseType": "error_correction",
+        "exerciseTypeName": "C: Write a phrasal verb in the correct form to replace the words in bold",
+        "title": "C: Write a phrasal verb in the correct form to replace the words in bold",
+        "instructions": "Write a phrasal verb in the correct form to replace the words in bold.",
+        "studentInstruction": "Write a phrasal verb in the correct form to replace the words in bold.",
+        "legacyKey": "C",
+        "legacyPattern": "error-correction",
+        "interaction": {
+          "formatType": "error_correction"
+        },
+        "items": [
+          {
+            "id": "b2-u7-exc-1",
+            "formatType": "error_correction",
+            "sentence": "Rachel has started to suffer from a bad cold and can't make it to class today.",
+            "highlightedText": "started to suffer from",
+            "answer": "come down with",
+            "acceptedAnswers": [
+              "come down with"
+            ]
+          },
+          {
+            "id": "b2-u7-exc-2",
+            "formatType": "error_correction",
+            "sentence": "It took James months to recover from his knee operation.",
+            "highlightedText": "recover from",
+            "answer": "get over",
+            "acceptedAnswers": [
+              "get over"
+            ]
+          },
+          {
+            "id": "b2-u7-exc-3",
+            "formatType": "error_correction",
+            "sentence": "Patients often feel confused when they regain consciousness following major surgery.",
+            "highlightedText": "regain consciousness",
+            "answer": "come round",
+            "acceptedAnswers": [
+              "come round"
+            ]
+          },
+          {
+            "id": "b2-u7-exc-4",
+            "formatType": "error_correction",
+            "sentence": "The heat in the waiting room was so intense that she nearly suddenly lost consciousness.",
+            "highlightedText": "suddenly lost consciousness",
+            "answer": "passed out",
+            "acceptedAnswers": [
+              "passed out"
+            ]
+          },
+          {
+            "id": "b2-u7-exc-5",
+            "formatType": "error_correction",
+            "sentence": "Thomas has gained quite a lot of weight since he stopped playing sport.",
+            "highlightedText": "gained",
+            "answer": "put on",
+            "acceptedAnswers": [
+              "put on"
+            ]
+          },
+          {
+            "id": "b2-u7-exc-6",
+            "formatType": "error_correction",
+            "sentence": "Infections tend to suddenly start in crowded, poorly ventilated spaces.",
+            "highlightedText": "suddenly start",
+            "answer": "break out",
+            "acceptedAnswers": [
+              "break out"
+            ]
+          },
+          {
+            "id": "b2-u7-exc-7",
+            "formatType": "error_correction",
+            "sentence": "I can't figure out what's been causing my persistent back pain.",
+            "highlightedText": "causing",
+            "answer": "bringing on",
+            "acceptedAnswers": [
+              "bringing on"
+            ]
+          },
+          {
+            "id": "b2-u7-exc-8",
+            "formatType": "error_correction",
+            "sentence": "My uncle has decided to stop eating processed foods for health reasons.",
+            "highlightedText": "stop eating",
+            "answer": "give up",
+            "acceptedAnswers": [
+              "give up"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b2-u7-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u7-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I",
+            "sentenceAfter": "have signed up for the fitness class, but I decided to go jogging instead.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "must"
+              },
+              {
+                "letter": "B",
+                "text": "could"
+              },
+              {
+                "letter": "C",
+                "text": "will"
+              },
+              {
+                "letter": "D",
+                "text": "may"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'I've been feeling run-down lately.' 'You",
+            "sentenceAfter": "more sleep.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "should get"
+              },
+              {
+                "letter": "B",
+                "text": "should have got"
+              },
+              {
+                "letter": "C",
+                "text": "would get"
+              },
+              {
+                "letter": "D",
+                "text": "would have got"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'It was really difficult getting home from the clinic with my arm in a sling.' 'You should",
+            "sentenceAfter": "me. I would have driven you.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "call"
+              },
+              {
+                "letter": "B",
+                "text": "be calling"
+              },
+              {
+                "letter": "C",
+                "text": "have called"
+              },
+              {
+                "letter": "D",
+                "text": "have been calling"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "wear a bandage when you sprained your ankle?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Did you had to"
+              },
+              {
+                "letter": "B",
+                "text": "Did you have to"
+              },
+              {
+                "letter": "C",
+                "text": "Needed you to"
+              },
+              {
+                "letter": "D",
+                "text": "Must you"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You",
+            "sentenceAfter": "follow a strict diet to stay healthy, you know!",
+            "options": [
+              {
+                "letter": "A",
+                "text": "don't have to"
+              },
+              {
+                "letter": "B",
+                "text": "mustn't"
+              },
+              {
+                "letter": "C",
+                "text": "can't"
+              },
+              {
+                "letter": "D",
+                "text": "shouldn't"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "That",
+            "sentenceAfter": "be Lucy calling. She's in surgery right now.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "hasn't to"
+              },
+              {
+                "letter": "B",
+                "text": "oughtn't to"
+              },
+              {
+                "letter": "C",
+                "text": "mustn't"
+              },
+              {
+                "letter": "D",
+                "text": "can't"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You must",
+            "sentenceAfter": "relieved when the test results came back negative.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "be"
+              },
+              {
+                "letter": "B",
+                "text": "have been"
+              },
+              {
+                "letter": "C",
+                "text": "be being"
+              },
+              {
+                "letter": "D",
+                "text": "have been being"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'Maria has to follow a strict diet for six months.' 'I'd hate to",
+            "sentenceAfter": "do that.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "will have to"
+              },
+              {
+                "letter": "B",
+                "text": "must"
+              },
+              {
+                "letter": "C",
+                "text": "have to"
+              },
+              {
+                "letter": "D",
+                "text": "will"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u7-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Choose the correct answer",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u7-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The nurse",
+            "sentenceAfter": "the bruise on my arm and said it was nothing serious.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "investigated"
+              },
+              {
+                "letter": "B",
+                "text": "researched"
+              },
+              {
+                "letter": "C",
+                "text": "examined"
+              },
+              {
+                "letter": "D",
+                "text": "looked into"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My dietitian gave me a healthy",
+            "sentenceAfter": "for a low-fat vegetable soup.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "recipe"
+              },
+              {
+                "letter": "B",
+                "text": "receipt"
+              },
+              {
+                "letter": "C",
+                "text": "prescription"
+              },
+              {
+                "letter": "D",
+                "text": "paper"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My shoulders are",
+            "sentenceAfter": "I think I overdid it at the gym yesterday.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "hurt"
+              },
+              {
+                "letter": "B",
+                "text": "pain"
+              },
+              {
+                "letter": "C",
+                "text": "ache"
+              },
+              {
+                "letter": "D",
+                "text": "sore"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Sam slipped on the wet floor but luckily wasn't",
+            "sentenceAfter": "at all.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "injured"
+              },
+              {
+                "letter": "B",
+                "text": "broken"
+              },
+              {
+                "letter": "C",
+                "text": "damaged"
+              },
+              {
+                "letter": "D",
+                "text": "spoilt"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Leo looks terribly",
+            "sentenceAfter": "He's barely eating anything these days.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "slim"
+              },
+              {
+                "letter": "B",
+                "text": "slender"
+              },
+              {
+                "letter": "C",
+                "text": "thin"
+              },
+              {
+                "letter": "D",
+                "text": "slight"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Those painkillers can cause unpleasant side",
+            "sentenceAfter": "in some patients.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "consequences"
+              },
+              {
+                "letter": "B",
+                "text": "products"
+              },
+              {
+                "letter": "C",
+                "text": "results"
+              },
+              {
+                "letter": "D",
+                "text": "effects"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "It was heartbreaking when the vet told us he would have to",
+            "sentenceAfter": "Bonnie, our golden retriever.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "put down"
+              },
+              {
+                "letter": "B",
+                "text": "feel up to"
+              },
+              {
+                "letter": "C",
+                "text": "pull through"
+              },
+              {
+                "letter": "D",
+                "text": "wear off"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u7-exe-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Joining the yoga class has really",
+            "sentenceAfter": "me good. I feel so much more relaxed and energetic!",
+            "options": [
+              {
+                "letter": "A",
+                "text": "made"
+              },
+              {
+                "letter": "B",
+                "text": "taken"
+              },
+              {
+                "letter": "C",
+                "text": "done"
+              },
+              {
+                "letter": "D",
+                "text": "had"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

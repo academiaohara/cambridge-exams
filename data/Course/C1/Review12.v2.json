@@ -1,0 +1,843 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 12,
+  "unit": 12,
+  "type": "review",
+  "unitTitle": "Review: Units 23 & 24",
+  "unitSubtitle": "Review: Units 23 & 24",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "Review: Units 23 & 24"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/C1/Review12.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-r12-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-r12-node-1",
+      "title": "Review: Units 23 & 24",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 26,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u12-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "c1-u12-exa-1",
+            "c1-u12-exa-2",
+            "c1-u12-exa-3",
+            "c1-u12-exa-4",
+            "c1-u12-exa-5",
+            "c1-u12-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u12-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "c1-u12-exb-1",
+            "c1-u12-exb-2",
+            "c1-u12-exb-3",
+            "c1-u12-exb-4",
+            "c1-u12-exb-5",
+            "c1-u12-exb-6",
+            "c1-u12-exb-7",
+            "c1-u12-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u12-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u12-exc-1",
+            "c1-u12-exc-2",
+            "c1-u12-exc-3",
+            "c1-u12-exc-4",
+            "c1-u12-exc-5",
+            "c1-u12-exc-6",
+            "c1-u12-exc-7",
+            "c1-u12-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u12-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u12-exd-1",
+            "c1-u12-exd-2",
+            "c1-u12-exd-3",
+            "c1-u12-exd-4",
+            "c1-u12-exd-5",
+            "c1-u12-exd-6",
+            "c1-u12-exd-7",
+            "c1-u12-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u12-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "c1-u12-exe-1",
+            "c1-u12-exe-2",
+            "c1-u12-exe-3",
+            "c1-u12-exe-4",
+            "c1-u12-exe-5",
+            "c1-u12-exe-6",
+            "c1-u12-exe-7",
+            "c1-u12-exe-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 38,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u12-ex-a",
+      "c1-u12-ex-b",
+      "c1-u12-ex-c",
+      "c1-u12-ex-d",
+      "c1-u12-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u12-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Word Formation",
+        "title": "A: Word Formation",
+        "instructions": "Use the word given in capitals to form a word that fits in the space.",
+        "studentInstruction": "Use the word given in capitals to form a word that fits in the space.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u12-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "A defining (1) ...... (CHARACTER) of the digital age is that individuals are constantly exposed to information from every corner of the globe.",
+            "answer": "characteristic",
+            "acceptedAnswers": [
+              "characteristic"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Whereas previous generations could live (2) ...... (SEPARATE) from global events, widespread internet access now means that developments in distant countries feel anything but (3) ...... (FAMILIAR) to us.",
+            "answer": "separately, unfamiliar",
+            "acceptedAnswers": [
+              "separately, unfamiliar"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "When news spreads without context, (4) ...... (RACE) and other forms of prejudice can quickly take hold online.",
+            "answer": "racism",
+            "acceptedAnswers": [
+              "racism"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Many users feel a deep (5) ...... (LOYAL) to particular platforms or online communities and struggle to develop an (6) ...... (APPRECIATE) of perspectives that differ from their own.",
+            "answer": "loyalty, appreciation",
+            "acceptedAnswers": [
+              "loyalty, appreciation"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "There is growing concern that our digital (7) ...... (INHERIT) — the data we leave behind — is at risk, and that careless practices could lead to the (8) ...... (APPEAR) of privacy as we once knew it.",
+            "answer": "inheritance, disappearance",
+            "acceptedAnswers": [
+              "inheritance, disappearance"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Whether such fears are grounded in evidence or are merely a matter of (9) ...... (PERCEIVE) remains debated, yet most experts agree that living in (10) ...... (RELATE) safety online requires education and awareness.",
+            "answer": "perception, relative",
+            "acceptedAnswers": [
+              "perception, relative"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u12-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "B: Gerund or Infinitive",
+        "title": "B: Gerund or Infinitive",
+        "instructions": "Circle the correct word or phrase.",
+        "studentInstruction": "Circle the correct word or phrase.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "c1-u12-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We've agreed to",
+            "sentenceAfter": "the project manager at the office first thing tomorrow.",
+            "options": [
+              "meet",
+              "meeting"
+            ],
+            "answer": "meet",
+            "originalSentence": "We've agreed to **meet / meeting** the project manager at the office first thing tomorrow.",
+            "completedSentence": "We've agreed to meet the project manager at the office first thing tomorrow."
+          },
+          {
+            "id": "c1-u12-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Would you mind to",
+            "sentenceAfter": "your voice? I'm trying to concentrate.",
+            "options": [
+              "lower",
+              "lowering"
+            ],
+            "answer": "lowering",
+            "originalSentence": "Would you mind to **lower / lowering** your voice? I'm trying to concentrate.",
+            "completedSentence": "Would you mind to lowering your voice? I'm trying to concentrate."
+          },
+          {
+            "id": "c1-u12-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "No circumstance justifies to",
+            "sentenceAfter": "to a colleague in that manner.",
+            "options": [
+              "speak",
+              "speaking"
+            ],
+            "answer": "speaking",
+            "originalSentence": "No circumstance justifies to **speak / speaking** to a colleague in that manner.",
+            "completedSentence": "No circumstance justifies to speaking to a colleague in that manner."
+          },
+          {
+            "id": "c1-u12-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The coach was unhappy about the sponsor giving the team such expensive equipment, so they were made",
+            "sentenceAfter": "it.",
+            "options": [
+              "return",
+              "to return"
+            ],
+            "answer": "to return",
+            "originalSentence": "The coach was unhappy about the sponsor giving the team such expensive equipment, so they were made **return / to return** it.",
+            "completedSentence": "The coach was unhappy about the sponsor giving the team such expensive equipment, so they were made to return it."
+          },
+          {
+            "id": "c1-u12-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I'll never forget to",
+            "sentenceAfter": "the sun rise over the mountains on our first morning there.",
+            "options": [
+              "watch",
+              "watching"
+            ],
+            "answer": "watching",
+            "originalSentence": "I'll never forget to **watch / watching** the sun rise over the mountains on our first morning there.",
+            "completedSentence": "I'll never forget to watching the sun rise over the mountains on our first morning there."
+          },
+          {
+            "id": "c1-u12-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Please don't hesitate to",
+            "sentenceAfter": "out to the support team should you need any assistance.",
+            "options": [
+              "reach",
+              "reaching"
+            ],
+            "answer": "reach",
+            "originalSentence": "Please don't hesitate to **reach / reaching** out to the support team should you need any assistance.",
+            "completedSentence": "Please don't hesitate to reach out to the support team should you need any assistance."
+          },
+          {
+            "id": "c1-u12-exb-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "At this rate, we're going to end up to",
+            "sentenceAfter": "our reservation if we don't leave soon.",
+            "options": [
+              "lose",
+              "losing"
+            ],
+            "answer": "losing",
+            "originalSentence": "At this rate, we're going to end up to **lose / losing** our reservation if we don't leave soon.",
+            "completedSentence": "At this rate, we're going to end up to losing our reservation if we don't leave soon."
+          },
+          {
+            "id": "c1-u12-exb-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I didn't dare to",
+            "sentenceAfter": "up the subject of the cancelled holiday with my sister.",
+            "options": [
+              "bring",
+              "bringing"
+            ],
+            "answer": "bring",
+            "originalSentence": "I didn't dare to **bring / bringing** up the subject of the cancelled holiday with my sister.",
+            "completedSentence": "I didn't dare to bring up the subject of the cancelled holiday with my sister."
+          }
+        ]
+      },
+      {
+        "id": "c1-u12-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Key Word Transformation",
+        "title": "C: Key Word Transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u12-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Elena and her grandmother are remarkably similar in character. **after**\nElena really ...... , doesn't she?",
+            "answer": "takes after her grandmother",
+            "acceptedAnswers": [
+              "takes after her grandmother"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I noticed I was sitting in the wrong lecture hall entirely. **myself**\nI ...... in completely the wrong lecture hall.",
+            "answer": "found myself sitting",
+            "acceptedAnswers": [
+              "found myself sitting"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The first question in the test was so simple that nobody expected anyone to get it wrong. **play**\nThe first question ...... , so nobody expected anyone to get it wrong.",
+            "answer": "was child's play",
+            "acceptedAnswers": [
+              "was child's play"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Daniel and his new flatmate have absolutely nothing they both enjoy. **common**\nDaniel doesn't ...... his new flatmate.",
+            "answer": "have anything in common with",
+            "acceptedAnswers": [
+              "have anything in common with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Once she finishes her PhD, she'll be able to pursue her passion for painting. **free**\nCompleting her PhD ...... her passion for painting.",
+            "answer": "will free her up to pursue",
+            "acceptedAnswers": [
+              "will free her up to pursue"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My new neighbour and I got along brilliantly from the very first day. **house**\nMy new neighbour and I ...... from the very first day.",
+            "answer": "got on like a house on fire",
+            "acceptedAnswers": [
+              "got on like a house on fire"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Are you in the mood for a walk along the seafront this afternoon? **like**\nDo you ...... along the seafront this afternoon?",
+            "answer": "feel like walking",
+            "acceptedAnswers": [
+              "feel like walking"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Tom resigned because he and the head of department had very different views. **eye**\nTom resigned because he ...... the head of department.",
+            "answer": "didn't see eye to eye with",
+            "acceptedAnswers": [
+              "didn't see eye to eye with"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u12-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Prepositions and Fixed Phrases",
+        "title": "D: Prepositions and Fixed Phrases",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u12-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Sofia was fortunate to be born .................... a family with a long tradition of academic achievement.",
+            "answer": "into",
+            "acceptedAnswers": [
+              "into"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The old lighthouse features .................... a short film about the region's maritime history.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Many economists argue that the minimum wage should be equal .................... at least sixty percent of the median salary.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The proposed regulation is problematic .................... one key respect: it fails to specify who is responsible for enforcement.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The committee decided it would not be .................... the public interest to release the full report at this stage.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This particular variety of orchid is native .................... the rainforests of Borneo.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exd-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The director was unable to attend the awards ceremony .................... person, so a colleague accepted the prize on her behalf.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exd-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Sailing across the bay at dawn is, for many visitors, the nearest thing .................... a truly peaceful experience.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u12-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Multiple Choice",
+        "title": "E: Multiple Choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "c1-u12-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Her latest statement",
+            "sentenceAfter": "everything she claimed in the previous interview.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "disputes"
+              },
+              {
+                "letter": "B",
+                "text": "contradicts"
+              },
+              {
+                "letter": "C",
+                "text": "comprises"
+              },
+              {
+                "letter": "D",
+                "text": "interferes"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The lecturer paused",
+            "sentenceAfter": "the diagram on the board before moving on.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "checking"
+              },
+              {
+                "letter": "B",
+                "text": "check"
+              },
+              {
+                "letter": "C",
+                "text": "to check"
+              },
+              {
+                "letter": "D",
+                "text": "to checking"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Research suggests that the middle",
+            "sentenceAfter": "in a family often develops strong negotiating skills.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "sibling"
+              },
+              {
+                "letter": "B",
+                "text": "spouse"
+              },
+              {
+                "letter": "C",
+                "text": "guardian"
+              },
+              {
+                "letter": "D",
+                "text": "citizen"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Critics have long considered Herrera",
+            "sentenceAfter": "one of the most innovative architects of her era.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "be"
+              },
+              {
+                "letter": "B",
+                "text": "being"
+              },
+              {
+                "letter": "C",
+                "text": "to be"
+              },
+              {
+                "letter": "D",
+                "text": "to being"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The delay was eventually attributed to a serious administrative",
+            "sentenceAfter": ".",
+            "options": [
+              {
+                "letter": "A",
+                "text": "mistake"
+              },
+              {
+                "letter": "B",
+                "text": "wrong"
+              },
+              {
+                "letter": "C",
+                "text": "error"
+              },
+              {
+                "letter": "D",
+                "text": "slip"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Experts are questioning whether the digital",
+            "sentenceAfter": "between urban and rural areas is narrowing.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "split"
+              },
+              {
+                "letter": "B",
+                "text": "divide"
+              },
+              {
+                "letter": "C",
+                "text": "crack"
+              },
+              {
+                "letter": "D",
+                "text": "gap"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Curious onlookers began to",
+            "sentenceAfter": "around the street performer as soon as the music started.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "crowd"
+              },
+              {
+                "letter": "B",
+                "text": "spread"
+              },
+              {
+                "letter": "C",
+                "text": "put"
+              },
+              {
+                "letter": "D",
+                "text": "hang"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u12-exe-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The intern didn't deserve",
+            "sentenceAfter": "criticised so harshly in front of the entire team.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "be"
+              },
+              {
+                "letter": "B",
+                "text": "being"
+              },
+              {
+                "letter": "C",
+                "text": "to be"
+              },
+              {
+                "letter": "D",
+                "text": "to being"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

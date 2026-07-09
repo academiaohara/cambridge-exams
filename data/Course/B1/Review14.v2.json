@@ -1,0 +1,1018 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 14,
+  "unit": 14,
+  "type": "review",
+  "unitTitle": "Review 14: Units 40, 41 and 42",
+  "unitSubtitle": "Review 14: Units 40, 41 and 42",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Review 14: Units 40, 41 and 42"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B1/Review14.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-r14-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-r14-node-1",
+      "title": "Review 14: Units 40, 41 and 42",
+      "shortTitle": "Review",
+      "focus": [
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 35,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u14-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u14-exa-1",
+            "b1-u14-exa-2",
+            "b1-u14-exa-3",
+            "b1-u14-exa-4",
+            "b1-u14-exa-5",
+            "b1-u14-exa-6",
+            "b1-u14-exa-7",
+            "b1-u14-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u14-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u14-exb-1",
+            "b1-u14-exb-2",
+            "b1-u14-exb-3",
+            "b1-u14-exb-4",
+            "b1-u14-exb-5",
+            "b1-u14-exb-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u14-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u14-exc-1",
+            "b1-u14-exc-2",
+            "b1-u14-exc-3",
+            "b1-u14-exc-4",
+            "b1-u14-exc-5",
+            "b1-u14-exc-6",
+            "b1-u14-exc-7",
+            "b1-u14-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u14-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u14-exd-1",
+            "b1-u14-exd-2",
+            "b1-u14-exd-3",
+            "b1-u14-exd-4",
+            "b1-u14-exd-5",
+            "b1-u14-exd-6",
+            "b1-u14-exd-7",
+            "b1-u14-exd-8",
+            "b1-u14-exd-9",
+            "b1-u14-exd-10",
+            "b1-u14-exd-11",
+            "b1-u14-exd-12",
+            "b1-u14-exd-13",
+            "b1-u14-exd-14"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u14-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u14-exe-1",
+            "b1-u14-exe-2",
+            "b1-u14-exe-3",
+            "b1-u14-exe-4",
+            "b1-u14-exe-5",
+            "b1-u14-exe-6",
+            "b1-u14-exe-7",
+            "b1-u14-exe-8",
+            "b1-u14-exe-9",
+            "b1-u14-exe-10",
+            "b1-u14-exe-11",
+            "b1-u14-exe-12",
+            "b1-u14-exe-13",
+            "b1-u14-exe-14"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 50,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u14-ex-a",
+      "b1-u14-ex-b",
+      "b1-u14-ex-c",
+      "b1-u14-ex-d",
+      "b1-u14-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u14-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Complete using the correct form of the verbs in the box",
+        "title": "A: Complete using the correct form of the verbs in the box",
+        "instructions": "Complete using the correct form of the verbs in the box.",
+        "studentInstruction": "Complete using the correct form of the verbs in the box.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It was difficult to ...... Mia that the plan could work.",
+            "answer": "convince",
+            "acceptedAnswers": [
+              "convince"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The manager has ...... to give us extra time for the project.",
+            "answer": "refused",
+            "acceptedAnswers": [
+              "refused"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please stop ...... about the weather and enjoy the trip!",
+            "answer": "complaining",
+            "acceptedAnswers": [
+              "complaining"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I ...... he'll remember to bring the tickets.",
+            "answer": "doubt",
+            "acceptedAnswers": [
+              "doubt"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They ...... us not to leave our bags unattended.",
+            "answer": "warned",
+            "acceptedAnswers": [
+              "warned"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Do you ...... breaking the classroom window?",
+            "answer": "deny",
+            "acceptedAnswers": [
+              "deny"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Parents should ...... children when they try their best.",
+            "answer": "praise",
+            "acceptedAnswers": [
+              "praise"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exa-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't ...... her ideas before you understand them properly.",
+            "answer": "criticise",
+            "acceptedAnswers": [
+              "criticise"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u14-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Write one word in each gap",
+        "title": "B: Write one word in each gap",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... my view, this is the safest solution.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The kitchen is ...... a terrible mess after lunch.",
+            "answer": "such",
+            "acceptedAnswers": [
+              "such"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She is ...... a lot of pressure before the exams.",
+            "answer": "under",
+            "acceptedAnswers": [
+              "under"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If you lie again, you'll be ...... trouble.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The animals were not ...... any danger during the rescue.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I took your notebook ...... mistake.",
+            "answer": "by",
+            "acceptedAnswers": [
+              "by"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u14-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Key Word Transformation",
+        "title": "C: Key Word Transformation",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We should throw away these broken chairs. **rid**\nWe should ...... these broken chairs.",
+            "answer": "get rid of",
+            "acceptedAnswers": [
+              "get rid of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I don't think students should use phones during lessons. **approve**\nI don't ...... phones during lessons.",
+            "answer": "approve of students using",
+            "acceptedAnswers": [
+              "approve of students using"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Do you think aliens exist? **believe**\nDo you ...... aliens?",
+            "answer": "believe in",
+            "acceptedAnswers": [
+              "believe in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You need to solve this misunderstanding today. **sort**\nYou need to ...... today.",
+            "answer": "sort out this misunderstanding",
+            "acceptedAnswers": [
+              "sort out this misunderstanding"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm afraid there isn't any coffee left. **run**\nI'm afraid ...... coffee.",
+            "answer": "we have run out of",
+            "acceptedAnswers": [
+              "we have run out of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "How do you handle difficult customers? **deal**\nHow do you ...... difficult customers?",
+            "answer": "deal with",
+            "acceptedAnswers": [
+              "deal with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If you're not careful, you'll drop it! **watch**\nIf you ...... , you'll drop it!",
+            "answer": "don't watch out",
+            "acceptedAnswers": [
+              "don't watch out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I wouldn't accept that offer if I were you. **advise**\nI would ...... that offer.",
+            "answer": "advise you not to accept",
+            "acceptedAnswers": [
+              "advise you not to accept"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u14-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We had the windows",
+            "sentenceAfter": "yesterday.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "clean"
+              },
+              {
+                "letter": "B",
+                "text": "to clean"
+              },
+              {
+                "letter": "C",
+                "text": "cleaned"
+              },
+              {
+                "letter": "D",
+                "text": "cleaning"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She got her bike",
+            "sentenceAfter": "at the repair shop.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "fixed"
+              },
+              {
+                "letter": "B",
+                "text": "fixing"
+              },
+              {
+                "letter": "C",
+                "text": "fixes"
+              },
+              {
+                "letter": "D",
+                "text": "to fix"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They are going to have their kitchen",
+            "sentenceAfter": "next week.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "paint"
+              },
+              {
+                "letter": "B",
+                "text": "painted"
+              },
+              {
+                "letter": "C",
+                "text": "painting"
+              },
+              {
+                "letter": "D",
+                "text": "to paint"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He is getting his phone screen",
+            "sentenceAfter": "today.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "replace"
+              },
+              {
+                "letter": "B",
+                "text": "replaces"
+              },
+              {
+                "letter": "C",
+                "text": "to replace"
+              },
+              {
+                "letter": "D",
+                "text": "replaced"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Although the journey was long,",
+            "sentenceAfter": "we enjoyed it.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "however"
+              },
+              {
+                "letter": "B",
+                "text": "but"
+              },
+              {
+                "letter": "C",
+                "text": "moreover"
+              },
+              {
+                "letter": "D",
+                "text": "still"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The hotel was expensive;",
+            "sentenceAfter": ", the service was excellent.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "therefore"
+              },
+              {
+                "letter": "B",
+                "text": "however"
+              },
+              {
+                "letter": "C",
+                "text": "moreover"
+              },
+              {
+                "letter": "D",
+                "text": "furthermore"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She is kind",
+            "sentenceAfter": "well as intelligent.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "as"
+              },
+              {
+                "letter": "B",
+                "text": "so"
+              },
+              {
+                "letter": "C",
+                "text": "and"
+              },
+              {
+                "letter": "D",
+                "text": "such"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I wrote everything down",
+            "sentenceAfter": "I wouldn't forget it.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "because"
+              },
+              {
+                "letter": "B",
+                "text": "in case"
+              },
+              {
+                "letter": "C",
+                "text": "so that"
+              },
+              {
+                "letter": "D",
+                "text": "although"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "arriving late, he still heard most of the lecture.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Despite"
+              },
+              {
+                "letter": "B",
+                "text": "Although"
+              },
+              {
+                "letter": "C",
+                "text": "Because of"
+              },
+              {
+                "letter": "D",
+                "text": "As a result of"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I had my passport photo",
+            "sentenceAfter": "yesterday.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "take"
+              },
+              {
+                "letter": "B",
+                "text": "taken"
+              },
+              {
+                "letter": "C",
+                "text": "taking"
+              },
+              {
+                "letter": "D",
+                "text": "to take"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-11",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He is not only helpful",
+            "sentenceAfter": "also very patient.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "and"
+              },
+              {
+                "letter": "B",
+                "text": "but"
+              },
+              {
+                "letter": "C",
+                "text": "or"
+              },
+              {
+                "letter": "D",
+                "text": "however"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-12",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They stayed inside",
+            "sentenceAfter": "of the heavy rain.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "because"
+              },
+              {
+                "letter": "B",
+                "text": "since"
+              },
+              {
+                "letter": "C",
+                "text": "because of"
+              },
+              {
+                "letter": "D",
+                "text": "as"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-13",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She had her eyes",
+            "sentenceAfter": "by a specialist.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "test"
+              },
+              {
+                "letter": "B",
+                "text": "testing"
+              },
+              {
+                "letter": "C",
+                "text": "tested"
+              },
+              {
+                "letter": "D",
+                "text": "to test"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exd-14",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "it was difficult, they finished the task.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Although"
+              },
+              {
+                "letter": "B",
+                "text": "Because"
+              },
+              {
+                "letter": "C",
+                "text": "So"
+              },
+              {
+                "letter": "D",
+                "text": "However"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u14-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Complete the sentences",
+        "title": "E: Complete the sentences",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u14-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They tried to ...... the issue before the meeting started.",
+            "answer": "solve",
+            "acceptedAnswers": [
+              "solve"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Marta came ...... with a clever answer to the problem.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We need to ...... with this complaint immediately.",
+            "answer": "deal",
+            "acceptedAnswers": [
+              "deal"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The technician managed to ...... the computer.",
+            "answer": "fix",
+            "acceptedAnswers": [
+              "fix"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They couldn't ...... a solution to the problem.",
+            "answer": "find",
+            "acceptedAnswers": [
+              "find"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He made a ...... about the noisy neighbours.",
+            "answer": "complaint",
+            "acceptedAnswers": [
+              "complaint"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should ...... advice before signing the contract.",
+            "answer": "seek",
+            "acceptedAnswers": [
+              "seek"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The problem was ...... out before anyone noticed.",
+            "answer": "sorted",
+            "acceptedAnswers": [
+              "sorted"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She decided to ...... in and help the new students.",
+            "answer": "step",
+            "acceptedAnswers": [
+              "step"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They managed to ...... the argument peacefully.",
+            "answer": "resolve",
+            "acceptedAnswers": [
+              "resolve"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He reported the ...... to the headteacher at once.",
+            "answer": "problem",
+            "acceptedAnswers": [
+              "problem"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-12",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The simplest ...... to the problem was to restart the system.",
+            "answer": "solution",
+            "acceptedAnswers": [
+              "solution"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-13",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She wanted to ...... to her parents about the issue.",
+            "answer": "speak",
+            "acceptedAnswers": [
+              "speak"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u14-exe-14",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The captain took ...... of the team after the accident.",
+            "answer": "control",
+            "acceptedAnswers": [
+              "control"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

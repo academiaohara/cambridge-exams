@@ -1,0 +1,781 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B2 English",
+  "block": 5,
+  "unit": 5,
+  "type": "review",
+  "unitTitle": "Review: Block 5 – Units 9 & 10",
+  "unitSubtitle": "Review: Block 5 – Units 9 & 10",
+  "unitLevel": "B2",
+  "unitFocus": [
+    "Review: Block 5 – Units 9 & 10"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B2/Review5.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b2-r5-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "passage_gap_fill",
+        "displayName": "Complete the passage",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "passage_inline_gaps",
+          "studentAction": "type_gap_answers",
+          "evaluationTrigger": "check_button",
+          "gapInputStyle": "pill"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b2-r5-node-1",
+      "title": "Review: Block 5 – Units 9 & 10",
+      "shortTitle": "Review",
+      "focus": [
+        "passage_gap_fill",
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 19,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b2-u5-ex-a",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "b2-u5-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b2-u5-exb-1",
+            "b2-u5-exb-2",
+            "b2-u5-exb-3",
+            "b2-u5-exb-4",
+            "b2-u5-exb-5",
+            "b2-u5-exb-6",
+            "b2-u5-exb-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u5-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b2-u5-exc-1",
+            "b2-u5-exc-2",
+            "b2-u5-exc-3",
+            "b2-u5-exc-4",
+            "b2-u5-exc-5",
+            "b2-u5-exc-6",
+            "b2-u5-exc-7",
+            "b2-u5-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u5-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u5-exd-1",
+            "b2-u5-exd-2",
+            "b2-u5-exd-3",
+            "b2-u5-exd-4",
+            "b2-u5-exd-5",
+            "b2-u5-exd-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u5-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u5-exe-1",
+            "b2-u5-exe-2",
+            "b2-u5-exe-3",
+            "b2-u5-exe-4",
+            "b2-u5-exe-5",
+            "b2-u5-exe-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 28,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b2-u5-ex-a",
+      "b2-u5-ex-b",
+      "b2-u5-ex-c",
+      "b2-u5-ex-d",
+      "b2-u5-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b2-u5-ex-a",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "A: Write one word in each gap",
+        "title": "A: Write one word in each gap",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "passage-input",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
+          "gapInputStyle": "underline_expand"
+        },
+        "passage": "Many students dream (1) ...... studying at a prestigious university abroad. It can be a life-changing experience for those who (2) ...... the determination and drive to settle (3) ...... in an unfamiliar country. The challenge of adapting to a new academic culture is the feeling you get when you move somewhere so different from where you (4) ...... up that you are not sure how to behave. You can often be (5) ...... aback by how different the teaching style is in another country. Social customs and unwritten rules can vary enormously, and that can sometimes make it difficult to (6) ...... on with other students and to (7) ...... genuine friendships. They might not approve (8) ...... your study habits or might object (9) ...... ideas you express in class. You might even be banned (10) ...... using certain websites in some countries where internet access is restricted. (11) ...... you were to study in a country such as China, for example, you might find that some platforms are completely blocked. There, students can be forced (12) ...... use a VPN just to read international news. In time, though, most people who study abroad (13) ...... in love with their adopted country and come to appreciate its unique qualities. It does (14) ...... real courage to make such a significant leap, but many graduates agree (15) ...... the experience transforms you forever.",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "of",
+          "have",
+          "down",
+          "grew",
+          "taken",
+          "get",
+          "make",
+          "of",
+          "to",
+          "from",
+          "If",
+          "to",
+          "fall",
+          "take",
+          "that"
+        ]
+      },
+      {
+        "id": "b2-u5-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: Complete the sentences by changing the form of the word in capitals",
+        "title": "B: Complete the sentences by changing the form of the word in capitals",
+        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "studentInstruction": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u5-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My (FRIEND) ...... with Carlos goes back to primary school and is still as strong as ever.",
+            "answer": "friendship",
+            "acceptedAnswers": [
+              "friendship"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Many teachers complain about their students' (OBEY) ......, but teenagers have always tested boundaries.",
+            "answer": "disobedience",
+            "acceptedAnswers": [
+              "disobedience"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Stop being so insecure about other people's success – you're just (JEALOUS) ...... of them.",
+            "answer": "jealous",
+            "acceptedAnswers": [
+              "jealous"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The whole audience watched (NERVE) ...... as the young violinist stepped onto the stage alone.",
+            "answer": "nervously",
+            "acceptedAnswers": [
+              "nervously"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "We need to ensure that (ABLE) ...... visitors can access every area of the new museum.",
+            "answer": "disabled",
+            "acceptedAnswers": [
+              "disabled"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My neighbour is incredibly (ARGUE) ...... and seems to enjoy picking fights with everyone on the street.",
+            "answer": "argumentative",
+            "acceptedAnswers": [
+              "argumentative"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exb-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Hasn't anyone ever told you that it's very (POLITE) ...... to use your phone during a meal?",
+            "answer": "impolite",
+            "acceptedAnswers": [
+              "impolite"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u5-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Complete the second sentence using the word given",
+        "title": "C: Complete the second sentence using the word given",
+        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "studentInstruction": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u5-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I promised my mum that I would be home before midnight. **made**\nI ...... that I would be home before midnight.",
+            "answer": "made my mum a promise",
+            "acceptedAnswers": [
+              "made my mum a promise"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My parents said I could go out despite the fact that it was a school night. **let**\nMy parents ...... despite the fact that it was a school night.",
+            "answer": "let me go out",
+            "acceptedAnswers": [
+              "let me go out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Margaret and I have had a disagreement and we're not speaking to each other. **out**\nMargaret and I ...... so we're not talking to each other.",
+            "answer": "have fallen out",
+            "acceptedAnswers": [
+              "have fallen out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The new law was rejected by everyone who heard about it. **approval**\nThe new law didn't ...... when it was introduced.",
+            "answer": "meet with anyone's approval",
+            "acceptedAnswers": [
+              "meet with anyone's approval"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I was feeling tired, so I changed the subject to avoid any conflict. **mood**\nI wasn't ...... an argument, so I changed the subject.",
+            "answer": "in the mood for",
+            "acceptedAnswers": [
+              "in the mood for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Tina felt sad because she found it impossible to connect with anyone at summer camp. **inability**\nTina was depressed because ...... friends at summer camp.",
+            "answer": "of her inability to make",
+            "acceptedAnswers": [
+              "of her inability to make"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "'Would you mind opening the door for me?' Simon said to me. **me**\nSimon ...... the door for him.",
+            "answer": "asked me to open",
+            "acceptedAnswers": [
+              "asked me to open"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't forget to look after your little brother while I'm at the shops. **care**\nMake sure you ...... your little brother while I'm out.",
+            "answer": "take care of",
+            "acceptedAnswers": [
+              "take care of"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u5-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u5-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If I",
+            "sentenceAfter": "the competition, I'd donate half the prize money to a local charity.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "win"
+              },
+              {
+                "letter": "B",
+                "text": "have won"
+              },
+              {
+                "letter": "C",
+                "text": "will win"
+              },
+              {
+                "letter": "D",
+                "text": "won"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'Did you argue with your boss at the meeting?' 'If you had been in that room, you",
+            "sentenceAfter": "the same.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "did"
+              },
+              {
+                "letter": "B",
+                "text": "would have done"
+              },
+              {
+                "letter": "C",
+                "text": "had done"
+              },
+              {
+                "letter": "D",
+                "text": "will do"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If you run into Jessica at the party,",
+            "sentenceAfter": "her to give me a call when she's free.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "you will tell"
+              },
+              {
+                "letter": "B",
+                "text": "tell"
+              },
+              {
+                "letter": "C",
+                "text": "you would have told"
+              },
+              {
+                "letter": "D",
+                "text": "tell to"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If I'd known you were visiting, I",
+            "sentenceAfter": "your favourite cake.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "would have baked"
+              },
+              {
+                "letter": "B",
+                "text": "would bake"
+              },
+              {
+                "letter": "C",
+                "text": "will bake"
+              },
+              {
+                "letter": "D",
+                "text": "baked"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Leave a note for Alex about the meeting",
+            "sentenceAfter": "he's forgotten.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "in case"
+              },
+              {
+                "letter": "B",
+                "text": "unless"
+              },
+              {
+                "letter": "C",
+                "text": "provided that"
+              },
+              {
+                "letter": "D",
+                "text": "except"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'Have you got any news for Sophie?' 'Tell her I'll message her tomorrow if you",
+            "sentenceAfter": "her.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "had seen"
+              },
+              {
+                "letter": "B",
+                "text": "see"
+              },
+              {
+                "letter": "C",
+                "text": "will see"
+              },
+              {
+                "letter": "D",
+                "text": "saw"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u5-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Choose the correct answer",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u5-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The documentary covers some of the most",
+            "sentenceAfter": "crimes committed in the last century.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "unknown"
+              },
+              {
+                "letter": "B",
+                "text": "hidden"
+              },
+              {
+                "letter": "C",
+                "text": "covered"
+              },
+              {
+                "letter": "D",
+                "text": "infamous"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Politicians need to understand what life is like for",
+            "sentenceAfter": "people, not just the wealthy.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "usual"
+              },
+              {
+                "letter": "B",
+                "text": "ordinary"
+              },
+              {
+                "letter": "C",
+                "text": "everyday"
+              },
+              {
+                "letter": "D",
+                "text": "typical"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Alex tells me he really",
+            "sentenceAfter": "himself at your housewarming party last weekend.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "pleased"
+              },
+              {
+                "letter": "B",
+                "text": "played"
+              },
+              {
+                "letter": "C",
+                "text": "enjoyed"
+              },
+              {
+                "letter": "D",
+                "text": "interested"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I know we fell out over that misunderstanding, but I'd love it if we could",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "look down"
+              },
+              {
+                "letter": "B",
+                "text": "make up"
+              },
+              {
+                "letter": "C",
+                "text": "fall out"
+              },
+              {
+                "letter": "D",
+                "text": "bring up"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Both drivers insisted the accident wasn't their",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "blame"
+              },
+              {
+                "letter": "B",
+                "text": "cause"
+              },
+              {
+                "letter": "C",
+                "text": "criticism"
+              },
+              {
+                "letter": "D",
+                "text": "fault"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u5-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The lights dimmed, the",
+            "sentenceAfter": "fell silent, and the performance began.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "crowd"
+              },
+              {
+                "letter": "B",
+                "text": "congregation"
+              },
+              {
+                "letter": "C",
+                "text": "jury"
+              },
+              {
+                "letter": "D",
+                "text": "audience"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

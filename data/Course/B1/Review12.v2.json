@@ -1,0 +1,1048 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 12,
+  "unit": 12,
+  "type": "review",
+  "unitTitle": "Review 12: Units 34, 35 and 36",
+  "unitSubtitle": "Review 12: Units 34, 35 and 36",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Review 12: Units 34, 35 and 36"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B1/Review12.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-r12-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-r12-node-1",
+      "title": "Review 12: Units 34, 35 and 36",
+      "shortTitle": "Review",
+      "focus": [
+        "free_text_gap_fill",
+        "conjugation_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 35,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u12-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u12-exa-1",
+            "b1-u12-exa-2",
+            "b1-u12-exa-3",
+            "b1-u12-exa-4",
+            "b1-u12-exa-5",
+            "b1-u12-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u12-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u12-exb-1",
+            "b1-u12-exb-2",
+            "b1-u12-exb-3",
+            "b1-u12-exb-4",
+            "b1-u12-exb-5",
+            "b1-u12-exb-6",
+            "b1-u12-exb-7",
+            "b1-u12-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u12-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u12-exc-1",
+            "b1-u12-exc-2",
+            "b1-u12-exc-3",
+            "b1-u12-exc-4",
+            "b1-u12-exc-5",
+            "b1-u12-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u12-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u12-exd-1",
+            "b1-u12-exd-2",
+            "b1-u12-exd-3",
+            "b1-u12-exd-4",
+            "b1-u12-exd-5",
+            "b1-u12-exd-6",
+            "b1-u12-exd-7",
+            "b1-u12-exd-8",
+            "b1-u12-exd-9",
+            "b1-u12-exd-10",
+            "b1-u12-exd-11",
+            "b1-u12-exd-12",
+            "b1-u12-exd-13",
+            "b1-u12-exd-14",
+            "b1-u12-exd-15"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u12-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u12-exe-1",
+            "b1-u12-exe-2",
+            "b1-u12-exe-3",
+            "b1-u12-exe-4",
+            "b1-u12-exe-5",
+            "b1-u12-exe-6",
+            "b1-u12-exe-7",
+            "b1-u12-exe-8",
+            "b1-u12-exe-9",
+            "b1-u12-exe-10",
+            "b1-u12-exe-11",
+            "b1-u12-exe-12",
+            "b1-u12-exe-13",
+            "b1-u12-exe-14",
+            "b1-u12-exe-15"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 50,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u12-ex-a",
+      "b1-u12-ex-b",
+      "b1-u12-ex-c",
+      "b1-u12-ex-d",
+      "b1-u12-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u12-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Complete using the words in the box",
+        "title": "A: Complete using the words in the box",
+        "instructions": "Complete the sentences using the words in the box.",
+        "studentInstruction": "Complete the sentences using the words in the box.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u12-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The island has a ...... climate, so tourists visit all year.",
+            "answer": "mild",
+            "acceptedAnswers": [
+              "mild"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The water in the lake is ...... today!",
+            "answer": "freezing",
+            "acceptedAnswers": [
+              "freezing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Some rare birds may become ...... if we don't protect them.",
+            "answer": "extinct",
+            "acceptedAnswers": [
+              "extinct"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Plastic pollution is a ...... issue, not just a local one.",
+            "answer": "global",
+            "acceptedAnswers": [
+              "global"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We saw several ...... horses running across the hills.",
+            "answer": "wild",
+            "acceptedAnswers": [
+              "wild"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The ...... council wants to plant more trees in the town.",
+            "answer": "local",
+            "acceptedAnswers": [
+              "local"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u12-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: Word formation",
+        "title": "B: Word formation",
+        "instructions": "Complete by changing the form of the word in capitals.",
+        "studentInstruction": "Complete by changing the form of the word in capitals.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u12-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The road was dangerous because it was very ...... (FOG).",
+            "answer": "foggy",
+            "acceptedAnswers": [
+              "foggy"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "A large fire can be extremely ...... (DESTROY).",
+            "answer": "destructive",
+            "acceptedAnswers": [
+              "destructive"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "It is ...... (NATURE) for animals to look for food.",
+            "answer": "natural",
+            "acceptedAnswers": [
+              "natural"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Water ...... (POLLUTE) is killing fish in the river.",
+            "answer": "pollution",
+            "acceptedAnswers": [
+              "pollution"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My grandfather enjoys ...... (GARDEN) at the weekend.",
+            "answer": "gardening",
+            "acceptedAnswers": [
+              "gardening"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Nobody knows the exact ...... (DEEP) of that cave.",
+            "answer": "depth",
+            "acceptedAnswers": [
+              "depth"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exb-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The path around the lake is almost ...... (CIRCLE).",
+            "answer": "circular",
+            "acceptedAnswers": [
+              "circular"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exb-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Some insects are ...... (DANGER) to small animals.",
+            "answer": "dangerous",
+            "acceptedAnswers": [
+              "dangerous"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u12-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Key Word Transformation",
+        "title": "C: Key Word Transformation",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u12-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "No more than twenty people can enter the cave. **most**\nTwenty people ...... can enter the cave.",
+            "answer": "at most",
+            "acceptedAnswers": [
+              "at most"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "In the story, the spaceship explodes near the moon. **up**\nIn the story, the spaceship ...... near the moon.",
+            "answer": "blows up",
+            "acceptedAnswers": [
+              "blows up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There are unusual plants on the lowest part of the valley. **bottom**\nThere are unusual plants ...... the valley.",
+            "answer": "at the bottom of",
+            "acceptedAnswers": [
+              "at the bottom of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The candle stopped burning before midnight. **out**\nThe candle ...... before midnight.",
+            "answer": "went out",
+            "acceptedAnswers": [
+              "went out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you help me hang this wildlife poster? **up**\nCan you help me ...... this wildlife poster?",
+            "answer": "put up",
+            "acceptedAnswers": [
+              "put up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We should increase support for recycling in schools. **build**\nWe should ...... support for recycling in schools.",
+            "answer": "build up",
+            "acceptedAnswers": [
+              "build up"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u12-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u12-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I wish I",
+            "sentenceAfter": "speak five languages.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "can"
+              },
+              {
+                "letter": "B",
+                "text": "could"
+              },
+              {
+                "letter": "C",
+                "text": "will"
+              },
+              {
+                "letter": "D",
+                "text": "would"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He wishes he",
+            "sentenceAfter": "more free time.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "has"
+              },
+              {
+                "letter": "B",
+                "text": "had"
+              },
+              {
+                "letter": "C",
+                "text": "would have"
+              },
+              {
+                "letter": "D",
+                "text": "will have"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I wish you",
+            "sentenceAfter": "leave your books on the floor!",
+            "options": [
+              {
+                "letter": "A",
+                "text": "don't"
+              },
+              {
+                "letter": "B",
+                "text": "won't"
+              },
+              {
+                "letter": "C",
+                "text": "wouldn't"
+              },
+              {
+                "letter": "D",
+                "text": "couldn't"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The teacher told",
+            "sentenceAfter": "the answer.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "us"
+              },
+              {
+                "letter": "B",
+                "text": "to us"
+              },
+              {
+                "letter": "C",
+                "text": "for us"
+              },
+              {
+                "letter": "D",
+                "text": "us to"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Dad gave",
+            "sentenceAfter": "the keys.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "to him"
+              },
+              {
+                "letter": "B",
+                "text": "him"
+              },
+              {
+                "letter": "C",
+                "text": "for him"
+              },
+              {
+                "letter": "D",
+                "text": "to he"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I wish I",
+            "sentenceAfter": "remembered my camera.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "had"
+              },
+              {
+                "letter": "B",
+                "text": "have"
+              },
+              {
+                "letter": "C",
+                "text": "would have"
+              },
+              {
+                "letter": "D",
+                "text": "could"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They sent",
+            "sentenceAfter": "a postcard from Greece.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "to her"
+              },
+              {
+                "letter": "B",
+                "text": "for her"
+              },
+              {
+                "letter": "C",
+                "text": "her"
+              },
+              {
+                "letter": "D",
+                "text": "to she"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She wishes she",
+            "sentenceAfter": "harder for the exam.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "works"
+              },
+              {
+                "letter": "B",
+                "text": "worked"
+              },
+              {
+                "letter": "C",
+                "text": "had worked"
+              },
+              {
+                "letter": "D",
+                "text": "would work"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The guide showed",
+            "sentenceAfter": "the ancient ruins.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "us"
+              },
+              {
+                "letter": "B",
+                "text": "to us"
+              },
+              {
+                "letter": "C",
+                "text": "for us"
+              },
+              {
+                "letter": "D",
+                "text": "at us"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I wish the dog",
+            "sentenceAfter": "barking at night.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "stops"
+              },
+              {
+                "letter": "B",
+                "text": "stopped"
+              },
+              {
+                "letter": "C",
+                "text": "would stop"
+              },
+              {
+                "letter": "D",
+                "text": "had stopped"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-11",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Mum bought",
+            "sentenceAfter": "a warm coat.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "for her"
+              },
+              {
+                "letter": "B",
+                "text": "her"
+              },
+              {
+                "letter": "C",
+                "text": "to her"
+              },
+              {
+                "letter": "D",
+                "text": "at her"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-12",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The reporter asked",
+            "sentenceAfter": "a question.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "me"
+              },
+              {
+                "letter": "B",
+                "text": "to me"
+              },
+              {
+                "letter": "C",
+                "text": "for me"
+              },
+              {
+                "letter": "D",
+                "text": "at me"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-13",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I wish I",
+            "sentenceAfter": "braver.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "am"
+              },
+              {
+                "letter": "B",
+                "text": "was"
+              },
+              {
+                "letter": "C",
+                "text": "were"
+              },
+              {
+                "letter": "D",
+                "text": "would be"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-14",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My cousin lent",
+            "sentenceAfter": "his tent for the trip.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "to us"
+              },
+              {
+                "letter": "B",
+                "text": "us"
+              },
+              {
+                "letter": "C",
+                "text": "for us"
+              },
+              {
+                "letter": "D",
+                "text": "at us"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exd-15",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He wishes he",
+            "sentenceAfter": "the race last Saturday.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "wins"
+              },
+              {
+                "letter": "B",
+                "text": "won"
+              },
+              {
+                "letter": "C",
+                "text": "had won"
+              },
+              {
+                "letter": "D",
+                "text": "would win"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u12-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Complete the sentences",
+        "title": "E: Complete the sentences",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u12-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The rainforest contains millions of different ...... of plants and insects.",
+            "answer": "species",
+            "acceptedAnswers": [
+              "species"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Rising sea ...... may affect many coastal cities.",
+            "answer": "levels",
+            "acceptedAnswers": [
+              "levels"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Everyone should help protect ...... planet.",
+            "answer": "our",
+            "acceptedAnswers": [
+              "our"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The earthquake was 6.8 on the Richter ......",
+            "answer": "scale",
+            "acceptedAnswers": [
+              "scale"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The volcano ...... after many years of silence.",
+            "answer": "erupted",
+            "acceptedAnswers": [
+              "erupted"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Several animals are now ...... because their habitats disappeared.",
+            "answer": "extinct",
+            "acceptedAnswers": [
+              "extinct"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The river ...... its banks during the storm.",
+            "answer": "burst",
+            "acceptedAnswers": [
+              "burst"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Some scientists say the universe is nearly 14 ...... years old.",
+            "answer": "billion",
+            "acceptedAnswers": [
+              "billion"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Jupiter is the largest planet in the solar ...... .",
+            "answer": "system",
+            "acceptedAnswers": [
+              "system"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Factories must reduce harmful carbon ...... .",
+            "answer": "emissions",
+            "acceptedAnswers": [
+              "emissions"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Clean water is ...... for all living things.",
+            "answer": "vital",
+            "acceptedAnswers": [
+              "vital"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-12",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The storm caused ...... damage to roads and bridges.",
+            "answer": "severe",
+            "acceptedAnswers": [
+              "severe"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-13",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Forests are sometimes called the ...... of the Earth.",
+            "answer": "lungs",
+            "acceptedAnswers": [
+              "lungs"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-14",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Astronomers believe they have found a new ...... far from our solar system.",
+            "answer": "planet",
+            "acceptedAnswers": [
+              "planet"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u12-exe-15",
+            "formatType": "free_text_gap_fill",
+            "sentence": "On clear nights, we can see many ...... in the sky.",
+            "answer": "stars",
+            "acceptedAnswers": [
+              "stars"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}
