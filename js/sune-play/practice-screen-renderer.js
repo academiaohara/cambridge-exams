@@ -2067,6 +2067,41 @@
     return '';
   }
 
+  function getHuntOrderNumber(foundEntries, itemIdx) {
+    for (var i = 0; i < (foundEntries || []).length; i++) {
+      if (foundEntries[i].itemIdx === itemIdx) return i + 1;
+    }
+    return null;
+  }
+
+  function renderHuntOrderBadge(num) {
+    return '<span class="sp-hunt-order-badge" aria-hidden="true">' + num + '</span>';
+  }
+
+  function renderHuntCorrectionRow(wrong, placeholder) {
+    return '<div class="sp-hunt-correction-row">' +
+      '<input type="text" class="sp-text-input" id="sp-hunt-fix-input" ' +
+      'placeholder="' + esc(placeholder || 'Type the correction') + '" ' +
+      'autocomplete="off" autocapitalize="off" spellcheck="false">' +
+      '<span class="sp-hunt-correction-error-box"><s>' + esc(wrong) + '</s></span>' +
+    '</div>';
+  }
+
+  function bindHuntFixInput(correctionEl, root, onChange) {
+    var fixInput = correctionEl ? correctionEl.querySelector('#sp-hunt-fix-input') : null;
+    if (!fixInput) return null;
+    fixInput.addEventListener('input', onChange);
+    fixInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !root.classList.contains('sp-screen--locked')) {
+        e.preventDefault();
+        var actionBtn = document.getElementById('sp-action-btn');
+        if (actionBtn && !actionBtn.disabled) actionBtn.click();
+      }
+    });
+    setTimeout(function() { fixInput.focus(); }, 0);
+    return fixInput;
+  }
+
   function getCounterHuntItemRange(passage, item) {
     var wrong = item.wrong || item.targetPhrase || '';
     var positions = findAllErrorPositions(passage, wrong);
@@ -2077,25 +2112,30 @@
     var fixed = (state && state.fixed) || {};
     var marked = (state && state.marked) || {};
     var pending = (state && state.pendingWordIndices) || [];
+    var foundEntries = (state && state.foundEntries) || [];
     var tokens = tokenizePassageWords(passage);
     var overlays = [];
 
     (items || []).forEach(function(it, idx) {
       var range = getCounterHuntItemRange(passage, it);
       if (!range) return;
+      var orderNum = getHuntOrderNumber(foundEntries, idx);
+      var badge = orderNum ? renderHuntOrderBadge(orderNum) : '';
       if (fixed[idx]) {
         overlays.push({
           start: range.start,
           end: range.end,
           type: 'fixed',
-          html: '<span class="sp-hunt-corrected">' + esc(fixed[idx].correction) + '</span>'
+          html: '<span class="sp-hunt-fixed">' + badge +
+            '<span class="sp-hunt-corrected">' + esc(fixed[idx].correction) + '</span></span>'
         });
       } else if (marked[idx]) {
         overlays.push({
           start: range.start,
           end: range.end,
           type: 'marked',
-          html: '<span class="sp-hunt-marked"><s class="sp-hunt-marked-wrong">' +
+          html: '<span class="sp-hunt-marked">' + badge +
+            '<s class="sp-hunt-marked-wrong">' +
             esc(passage.slice(range.start, range.end)) + '</s></span>'
         });
       }
@@ -2159,19 +2199,6 @@
     return html;
   }
 
-  function renderHuntSelectedPanel() {
-    return '<div class="sp-hunt-selected-panel" id="sp-hunt-selected-panel">' +
-      '<p class="sp-hunt-selected-label">Selected errors:</p>' +
-      '<ol class="sp-hunt-selected-list sp-hunt-selected-list--grid" id="sp-hunt-selected-list"></ol>' +
-    '</div>';
-  }
-
-  function renderHuntSelectedPanelSlots(target) {
-    return '<div class="sp-hunt-selected-panel" id="sp-hunt-selected-panel">' +
-      '<p class="sp-hunt-selected-label">Selected errors:</p>' +
-      '<ol class="sp-hunt-selected-list sp-hunt-selected-list--grid" id="sp-hunt-selected-list"></ol></div>';
-  }
-
   function renderPassageHunt(screen) {
     var p = screen.payload || {};
     var targetWrong = p.wrong || '';
@@ -2180,7 +2207,6 @@
 
     return '<div class="sp-screen sp-screen--hunt" data-format="passage_error_hunt_single">' +
       '<div class="sp-passage-card" id="sp-passage-text">' + passageHtml + '</div>' +
-      renderHuntSelectedPanel() +
       '<div class="sp-hunt-correction" id="sp-hunt-correction" hidden></div>' +
     '</div>';
   }
@@ -2194,7 +2220,8 @@
     var passageHtml = buildCounterHuntPassageHtml(passage, items, {
       fixed: saved.fixed || {},
       marked: saved.marked || {},
-      pendingWordIndices: saved.pendingWordIndices || []
+      pendingWordIndices: saved.pendingWordIndices || [],
+      foundEntries: saved.foundEntries || []
     });
 
     var initialMarked = Object.keys(saved.marked || {}).length;
@@ -2204,7 +2231,6 @@
       '</div>' +
       '<div class="sp-passage-card" id="sp-passage-text">' + passageHtml + '</div>' +
       '<div class="sp-hunt-correction" id="sp-hunt-correction" hidden></div>' +
-      renderHuntSelectedPanelSlots(target) +
     '</div>';
   }
 
@@ -2507,32 +2533,16 @@
   function bindPassageHunt(root, screen, onChange) {
     var p = screen.payload || {};
     var targetWrong = p.wrong || '';
-    var selectedList = root.querySelector('#sp-hunt-selected-list');
     var correctionEl = root.querySelector('#sp-hunt-correction');
     root._huntSelectedWrong = null;
-
-    function renderSelectedList() {
-      if (!selectedList) return;
-      if (!root._huntSelectedWrong) {
-        selectedList.innerHTML = '';
-        return;
-      }
-      selectedList.innerHTML = '<li class="sp-hunt-selected-item">' + esc(root._huntSelectedWrong) + '</li>';
-    }
 
     function showCorrection(wrong) {
       if (!correctionEl) return;
       correctionEl.hidden = false;
-      correctionEl.innerHTML =
-        '<p class="sp-hunt-fix-label">Fix: <em>' + esc(wrong) + '</em></p>' +
-        '<input type="text" class="sp-text-input" id="sp-hunt-fix-input" placeholder="Type the correction" autocomplete="off">';
+      correctionEl.innerHTML = renderHuntCorrectionRow(wrong, 'Type the correction');
       root._huntTappedWrong = wrong;
       root._huntTappedCorrect = wrong === targetWrong;
-      var fixInput = correctionEl.querySelector('#sp-hunt-fix-input');
-      if (fixInput) {
-        fixInput.addEventListener('input', onChange);
-        setTimeout(function() { fixInput.focus(); }, 0);
-      }
+      bindHuntFixInput(correctionEl, root, onChange);
     }
 
     root.querySelectorAll('.sp-hunt-phrase[data-is-error="1"]').forEach(function(btn) {
@@ -2559,13 +2569,11 @@
           btn.classList.add('sp-hunt-phrase--selected');
           showCorrection(wrong);
         }
-        renderSelectedList();
         onChange();
       });
     });
 
     bindHuntWrongWordTaps(root);
-    renderSelectedList();
   }
 
   function syncHuntStateToScreen(screen, root) {
@@ -2598,7 +2606,6 @@
     var target = (p.counter && p.counter.target) || p.errorCount || items.length;
     var phaseLabelEl = root.querySelector('#sp-hunt-phase-label');
     var passageEl = root.querySelector('#sp-passage-text');
-    var selectedList = root.querySelector('#sp-hunt-selected-list');
     var correctionEl = root.querySelector('#sp-hunt-correction');
     var tokens = tokenizePassageWords(passage);
 
@@ -2640,41 +2647,10 @@
       passageEl.innerHTML = buildCounterHuntPassageHtml(passage, items, {
         fixed: root._huntFixed,
         marked: root._huntMarked,
-        pendingWordIndices: root._huntPendingIndices
+        pendingWordIndices: root._huntPendingIndices,
+        foundEntries: root._huntFoundEntries
       });
       bindWordClicks();
-    }
-
-    function renderSlots() {
-      if (!selectedList) return;
-      var html = '';
-      root._huntFoundEntries.forEach(function(entry, i) {
-        var itemIdx = entry.itemIdx;
-        var isFixed = !!root._huntFixed[itemIdx];
-        var isCurrentCorrect = root._huntPhase === 'correct' &&
-          root._huntCurrentCorrectIdx === itemIdx && !isFixed;
-        var cls = 'sp-hunt-selected-slot';
-        if (isFixed) cls += ' sp-hunt-selected-slot--correct';
-        else if (isCurrentCorrect) cls += ' sp-hunt-selected-slot--pending';
-        else cls += ' sp-hunt-selected-slot--marked';
-        var display = isFixed
-          ? esc(root._huntFixed[itemIdx].correction)
-          : '<s>' + esc(entry.text) + '</s>';
-        html += '<li class="' + cls + '">' +
-          '<span class="sp-hunt-selected-num">' + (i + 1) + '.</span> ' +
-          '<span class="sp-hunt-selected-text">' + display + '</span></li>';
-      });
-      if (root._huntPhase === 'mark' && markedCount() < target) {
-        var pendingText = getPendingText();
-        var slotCls = 'sp-hunt-selected-slot';
-        if (!pendingText) slotCls += ' sp-hunt-selected-slot--empty';
-        else slotCls += ' sp-hunt-selected-slot--pending';
-        html += '<li class="' + slotCls + '">' +
-          '<span class="sp-hunt-selected-num">' + (markedCount() + 1) + '.</span> ' +
-          '<span class="sp-hunt-selected-text' + (!pendingText ? ' sp-hunt-selected-placeholder' : '') + '">' +
-          esc(pendingText || '—') + '</span></li>';
-      }
-      selectedList.innerHTML = html;
     }
 
     function showCorrectionUI() {
@@ -2687,23 +2663,8 @@
       }
       var wrong = item.wrong || item.targetPhrase || '';
       correctionEl.hidden = false;
-      correctionEl.innerHTML =
-        '<p class="sp-hunt-fix-label">Type the correction for:</p>' +
-        '<p class="sp-hunt-fix-wrong"><s>' + esc(wrong) + '</s></p>' +
-        '<input type="text" class="sp-text-input" id="sp-hunt-fix-input" ' +
-        'placeholder="Type the correction" autocomplete="off" autocapitalize="off" spellcheck="false">';
-      var fixInput = correctionEl.querySelector('#sp-hunt-fix-input');
-      if (fixInput) {
-        fixInput.addEventListener('input', onChange);
-        fixInput.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' && !root.classList.contains('sp-screen--locked')) {
-            e.preventDefault();
-            var actionBtn = document.getElementById('sp-action-btn');
-            if (actionBtn && !actionBtn.disabled) actionBtn.click();
-          }
-        });
-        setTimeout(function() { fixInput.focus(); }, 0);
-      }
+      correctionEl.innerHTML = renderHuntCorrectionRow(wrong, 'Type the correction');
+      bindHuntFixInput(correctionEl, root, onChange);
     }
 
     function hideCorrectionUI() {
@@ -2720,7 +2681,6 @@
       hideCorrectionUI();
       showCorrectionUI();
       updatePhaseLabel();
-      renderSlots();
       renderPassage();
       syncHuntStateToScreen(screen, root);
       onChange();
@@ -2728,7 +2688,6 @@
 
     function refresh() {
       renderPassage();
-      renderSlots();
       updatePhaseLabel();
       syncHuntStateToScreen(screen, root);
       onChange();
@@ -2757,7 +2716,6 @@
           root._huntPendingIndices = [wordIdx];
         }
       }
-      renderSlots();
       renderPassage();
       syncHuntStateToScreen(screen, root);
       onChange();
@@ -2896,7 +2854,6 @@
         hideCorrectionUI();
       }
       updatePhaseLabel();
-      renderSlots();
       renderPassage();
       syncHuntStateToScreen(screen, root);
       onChange();
