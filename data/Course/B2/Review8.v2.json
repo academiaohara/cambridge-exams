@@ -1,0 +1,739 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B2 English",
+  "block": 8,
+  "unit": 8,
+  "type": "review",
+  "unitTitle": "Review: Block 8 – Units 15 & 16",
+  "unitSubtitle": "Review: Block 8 – Units 15 & 16",
+  "unitLevel": "B2",
+  "unitFocus": [
+    "Review: Block 8 – Units 15 & 16"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B2/Review8.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b2-r8-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "passage_gap_fill",
+        "displayName": "Complete the passage",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "passage_inline_gaps",
+          "studentAction": "type_gap_answers",
+          "evaluationTrigger": "check_button",
+          "gapInputStyle": "pill"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "column_matching",
+        "displayName": "Match columns",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "tap_to_pair",
+          "studentAction": "pair_beginnings_endings",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b2-r8-node-1",
+      "title": "Review: Block 8 – Units 15 & 16",
+      "shortTitle": "Review",
+      "focus": [
+        "passage_gap_fill",
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "column_matching",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 18,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b2-u8-ex-a",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "b2-u8-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b2-u8-exb-1",
+            "b2-u8-exb-2",
+            "b2-u8-exb-3",
+            "b2-u8-exb-4",
+            "b2-u8-exb-5",
+            "b2-u8-exb-6",
+            "b2-u8-exb-7",
+            "b2-u8-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u8-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b2-u8-exc-1",
+            "b2-u8-exc-2",
+            "b2-u8-exc-3",
+            "b2-u8-exc-4",
+            "b2-u8-exc-5",
+            "b2-u8-exc-6",
+            "b2-u8-exc-7",
+            "b2-u8-exc-8",
+            "b2-u8-exc-9"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u8-ex-d",
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen"
+        },
+        {
+          "sourceExerciseId": "b2-u8-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u8-exe-1",
+            "b2-u8-exe-2",
+            "b2-u8-exe-3",
+            "b2-u8-exe-4",
+            "b2-u8-exe-5",
+            "b2-u8-exe-6",
+            "b2-u8-exe-7"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 26,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b2-u8-ex-a",
+      "b2-u8-ex-b",
+      "b2-u8-ex-c",
+      "b2-u8-ex-d",
+      "b2-u8-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b2-u8-ex-a",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "A: Write one word in each gap",
+        "title": "A: Write one word in each gap",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "passage-input",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
+          "gapInputStyle": "underline_expand"
+        },
+        "passage": "When you are lucky enough to (1) ...... tickets to a major music festival, it is worth knowing the unwritten rules of audience behaviour. In many countries, it is perfectly normal to comment (2) ...... the performance as it is happening. You might hear someone lean over to a friend and say, 'This is incredible. I would come back (3) ...... this band any time!'\n\nIn other settings, however, such as a classical concert hall, people tend not (4) ...... make any noise at all while the music is playing. This is seen as a form (5) ...... respect for the performers. Clapping between movements, for example, might be regarded (6) ...... impolite by more traditional audience members. It is expected that you show your enthusiasm (7) ...... applause only at the very end.\n\nIf you are unsure what to do, a useful tip is to wait and (8) ...... what the people around you are doing. If you remain uncertain (9) ...... the right moment to respond, simply follow the lead of those with more experience. The most important thing is (10) ...... you enjoy the occasion, whatever the setting!",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "have",
+          "on",
+          "for",
+          "to",
+          "of",
+          "as",
+          "with",
+          "see",
+          "about",
+          "that"
+        ]
+      },
+      {
+        "id": "b2-u8-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: Complete the sentences by changing the form of the word in capitals",
+        "title": "B: Complete the sentences by changing the form of the word in capitals",
+        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "studentInstruction": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u8-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Grandma never puts sugar in her tea, but she does use an artificial (SWEET) ...... sometimes.",
+            "answer": "sweetener",
+            "acceptedAnswers": [
+              "sweetener"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I can't believe you actually tried those deep-fried insects. That sounds completely (DISGUST) ......!",
+            "answer": "disgusting",
+            "acceptedAnswers": [
+              "disgusting"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The students waited (ANXIOUS) ...... outside the hall as the exam results were about to be announced.",
+            "answer": "anxiously",
+            "acceptedAnswers": [
+              "anxiously"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Did you know that the potato (ORIGIN) ...... in the Andes mountains of South America?",
+            "answer": "originated",
+            "acceptedAnswers": [
+              "originated"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "She is so (CREATE) ...... when it comes to designing costumes for the school plays.",
+            "answer": "creative",
+            "acceptedAnswers": [
+              "creative"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Please put the leftover salad in a sealed (CONTAIN) ...... and store it in the fridge.",
+            "answer": "container",
+            "acceptedAnswers": [
+              "container"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exb-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The organisers reminded everyone of the health and (SAFE) ...... guidelines before the event began.",
+            "answer": "safety",
+            "acceptedAnswers": [
+              "safety"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exb-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The concert was (THOROUGH) ...... enjoyable from start to finish!",
+            "answer": "thoroughly",
+            "acceptedAnswers": [
+              "thoroughly"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u8-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Complete the second sentence using the word given",
+        "title": "C: Complete the second sentence using the word given",
+        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "studentInstruction": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u8-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You have to stir the paint thoroughly before you use it. **stirred**\nThe paint ...... thoroughly before you use it.",
+            "answer": "has to be stirred",
+            "acceptedAnswers": [
+              "has to be stirred"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "A baker brought the birthday cake to our door this morning. **had**\nWe ...... a baker this morning.",
+            "answer": "had the cake delivered by",
+            "acceptedAnswers": [
+              "had the cake delivered by"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Elaine tasted my pasta dish to check if it needed more seasoning. **got**\nI ...... my pasta dish to check if it needed more seasoning.",
+            "answer": "got Elaine to taste",
+            "acceptedAnswers": [
+              "got Elaine to taste"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Many people say that dark chocolate is good for your mood. **said**\nDark chocolate ...... good for your mood.",
+            "answer": "is said to be",
+            "acceptedAnswers": [
+              "is said to be"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Some experts have claimed that green tea can help prevent certain illnesses. **been**\nIt ...... that green tea can help prevent certain illnesses.",
+            "answer": "has been said",
+            "acceptedAnswers": [
+              "has been said"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They've been building that new sports stadium for over a year. **construction**\nThat new sports stadium ...... for over a year.",
+            "answer": "has been under construction",
+            "acceptedAnswers": [
+              "has been under construction"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "These herbs came from a greenhouse nearby. **grown**\nThese herbs ...... a greenhouse nearby.",
+            "answer": "were grown in",
+            "acceptedAnswers": [
+              "were grown in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Why not ask an electrician to fit your new cooker? **get**\nWhy don't you ...... an electrician?",
+            "answer": "get your cooker fitted by",
+            "acceptedAnswers": [
+              "get your cooker fitted by"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exc-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I think this soup needs more herbs. **lacking**\nI think this soup ...... herbs.",
+            "answer": "is lacking in",
+            "acceptedAnswers": [
+              "is lacking in"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u8-ex-d",
+        "type": "exercise",
+        "exerciseType": "column_matching",
+        "exerciseTypeName": "D: Match to make sentences",
+        "title": "D: Match to make sentences",
+        "instructions": "Match to make sentences.",
+        "studentInstruction": "Match to make sentences.",
+        "legacyKey": "D",
+        "legacyPattern": "matching",
+        "interaction": {
+          "formatType": "column_matching"
+        },
+        "items": [
+          {
+            "id": "b2-u8-exd-1",
+            "formatType": "column_matching",
+            "sentence": "I think this yoghurt has gone **D** off, so we should throw it out.",
+            "answer": "D – off, so we should throw it out.",
+            "acceptedAnswers": [
+              "D – off, so we should throw it out."
+            ]
+          },
+          {
+            "id": "b2-u8-exd-2",
+            "formatType": "column_matching",
+            "sentence": "I ran **F** into our old neighbour at the market this morning.",
+            "answer": "F – into our old neighbour at the market this morning.",
+            "acceptedAnswers": [
+              "F – into our old neighbour at the market this morning."
+            ]
+          },
+          {
+            "id": "b2-u8-exd-3",
+            "formatType": "column_matching",
+            "sentence": "We've run out **B** of butter, so could you buy some more?",
+            "answer": "B – of butter, so could you buy some more?",
+            "acceptedAnswers": [
+              "B – of butter, so could you buy some more?"
+            ]
+          },
+          {
+            "id": "b2-u8-exd-4",
+            "formatType": "column_matching",
+            "sentence": "Dad is trying **A** out a completely new recipe this evening.",
+            "answer": "A – out a completely new recipe this evening.",
+            "acceptedAnswers": [
+              "A – out a completely new recipe this evening."
+            ]
+          },
+          {
+            "id": "b2-u8-exd-5",
+            "formatType": "column_matching",
+            "sentence": "It must be getting **C** on for lunchtime already!",
+            "answer": "C – on for lunchtime already!",
+            "acceptedAnswers": [
+              "C – on for lunchtime already!"
+            ]
+          },
+          {
+            "id": "b2-u8-exd-6",
+            "formatType": "column_matching",
+            "sentence": "You must come **G** round for a meal one evening.",
+            "answer": "G – round for a meal one evening.",
+            "acceptedAnswers": [
+              "G – round for a meal one evening."
+            ]
+          },
+          {
+            "id": "b2-u8-exd-7",
+            "formatType": "column_matching",
+            "sentence": "This pie hasn't turned **E** out quite as well as I hoped.",
+            "answer": "E – out quite as well as I hoped.",
+            "acceptedAnswers": [
+              "E – out quite as well as I hoped."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b2-u8-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Choose the correct answer",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u8-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I found some",
+            "sentenceAfter": "peas at the back of the freezer.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "freezing"
+              },
+              {
+                "letter": "B",
+                "text": "frozen"
+              },
+              {
+                "letter": "C",
+                "text": "iced"
+              },
+              {
+                "letter": "D",
+                "text": "icy"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Is there a children's",
+            "sentenceAfter": "at this restaurant?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "leaflet"
+              },
+              {
+                "letter": "B",
+                "text": "brochure"
+              },
+              {
+                "letter": "C",
+                "text": "catalogue"
+              },
+              {
+                "letter": "D",
+                "text": "menu"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "the garlic gently in a little butter before adding the tomatoes.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Boil"
+              },
+              {
+                "letter": "B",
+                "text": "Bake"
+              },
+              {
+                "letter": "C",
+                "text": "Fry"
+              },
+              {
+                "letter": "D",
+                "text": "Grill"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Place the dish in a pre-heated",
+            "sentenceAfter": "at 180° for thirty minutes.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "oven"
+              },
+              {
+                "letter": "B",
+                "text": "cuisine"
+              },
+              {
+                "letter": "C",
+                "text": "kitchen"
+              },
+              {
+                "letter": "D",
+                "text": "cook"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Could you",
+            "sentenceAfter": "the washing-up before we go out?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "make"
+              },
+              {
+                "letter": "B",
+                "text": "take"
+              },
+              {
+                "letter": "C",
+                "text": "do"
+              },
+              {
+                "letter": "D",
+                "text": "have"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "These biscuits are",
+            "sentenceAfter": "calories, so I try not to eat too many.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "full up"
+              },
+              {
+                "letter": "B",
+                "text": "filled up with"
+              },
+              {
+                "letter": "C",
+                "text": "filled with"
+              },
+              {
+                "letter": "D",
+                "text": "full of"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u8-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My sister",
+            "sentenceAfter": "in unexpectedly last night, so I had to cook something quickly.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "turned"
+              },
+              {
+                "letter": "B",
+                "text": "dropped"
+              },
+              {
+                "letter": "C",
+                "text": "came"
+              },
+              {
+                "letter": "D",
+                "text": "went"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

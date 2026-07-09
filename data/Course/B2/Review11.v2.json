@@ -1,0 +1,886 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B2 English",
+  "block": 11,
+  "unit": 11,
+  "type": "review",
+  "unitTitle": "Review: Block 11 – Units 21 & 22",
+  "unitSubtitle": "Review: Block 11 – Units 21 & 22",
+  "unitLevel": "B2",
+  "unitFocus": [
+    "Review: Block 11 – Units 21 & 22"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B2/Review11.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b2-r11-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "column_matching",
+        "displayName": "Match columns",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "tap_to_pair",
+          "studentAction": "pair_beginnings_endings",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b2-r11-node-1",
+      "title": "Review: Block 11 – Units 21 & 22",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "column_matching",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 21,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b2-u11-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b2-u11-exa-1",
+            "b2-u11-exa-2",
+            "b2-u11-exa-3",
+            "b2-u11-exa-4",
+            "b2-u11-exa-5",
+            "b2-u11-exa-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u11-ex-b",
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen"
+        },
+        {
+          "sourceExerciseId": "b2-u11-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b2-u11-exc-1",
+            "b2-u11-exc-2",
+            "b2-u11-exc-3",
+            "b2-u11-exc-4",
+            "b2-u11-exc-5",
+            "b2-u11-exc-6",
+            "b2-u11-exc-7",
+            "b2-u11-exc-8",
+            "b2-u11-exc-9"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u11-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u11-exd-1",
+            "b2-u11-exd-2",
+            "b2-u11-exd-3",
+            "b2-u11-exd-4",
+            "b2-u11-exd-5",
+            "b2-u11-exd-6",
+            "b2-u11-exd-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u11-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u11-exe-1",
+            "b2-u11-exe-2",
+            "b2-u11-exe-3",
+            "b2-u11-exe-4",
+            "b2-u11-exe-5",
+            "b2-u11-exe-6",
+            "b2-u11-exe-7"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 30,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b2-u11-ex-a",
+      "b2-u11-ex-b",
+      "b2-u11-ex-c",
+      "b2-u11-ex-d",
+      "b2-u11-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b2-u11-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Use the word given in capitals to form a word",
+        "title": "A: Use the word given in capitals to form a word",
+        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
+        "studentInstruction": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u11-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Reports suggest that millions of people still live in (1) ...... (POOR), yet those in the richest nations have become far more (2) ...... (WEALTH) over the past century.",
+            "answer": "poverty, wealthy",
+            "acceptedAnswers": [
+              "poverty, wealthy"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Clean water and electricity, which form part of our (3) ...... (DAY) routines, remain unimaginable (4) ...... (LUXURY) for vast numbers of people in the developing world.",
+            "answer": "daily, luxuries",
+            "acceptedAnswers": [
+              "daily, luxuries"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Many people question whether it is (5) ...... (ACCEPT) for governments to reduce foreign (6) ...... (ASSIST) when so many nations still struggle with poverty.",
+            "answer": "acceptable, assistance",
+            "acceptedAnswers": [
+              "acceptable, assistance"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Leading (7) ...... (ECONOMY) have argued that greater foreign (8) ...... (INVEST) in emerging markets could help lift millions out of poverty.",
+            "answer": "economists, investment",
+            "acceptedAnswers": [
+              "economists, investment"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Countries with a well-educated workforce tend to become (9) ...... (VALUE) partners in international trade.",
+            "answer": "valuable",
+            "acceptedAnswers": [
+              "valuable"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The (10) ...... (REAL) is that closing the gap between rich and poor nations will require long-term commitment from governments around the world.",
+            "answer": "reality",
+            "acceptedAnswers": [
+              "reality"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u11-ex-b",
+        "type": "exercise",
+        "exerciseType": "column_matching",
+        "exerciseTypeName": "B: Match to make sentences",
+        "title": "B: Match to make sentences",
+        "instructions": "Match to make sentences.",
+        "studentInstruction": "Match to make sentences.",
+        "legacyKey": "B",
+        "legacyPattern": "matching",
+        "interaction": {
+          "formatType": "column_matching"
+        },
+        "items": [
+          {
+            "id": "b2-u11-exb-1",
+            "formatType": "column_matching",
+            "sentence": "My neighbour came **D** into some money when her aunt died.",
+            "answer": "D – into some money when her aunt died.",
+            "acceptedAnswers": [
+              "D – into some money when her aunt died."
+            ]
+          },
+          {
+            "id": "b2-u11-exb-2",
+            "formatType": "column_matching",
+            "sentence": "Despite her low wages, she manages to put **A** a little money by each month.",
+            "answer": "A – a little money by each month.",
+            "acceptedAnswers": [
+              "A – a little money by each month."
+            ]
+          },
+          {
+            "id": "b2-u11-exb-3",
+            "formatType": "column_matching",
+            "sentence": "Nobody should bank **H** on house prices coming down soon.",
+            "answer": "H – on house prices coming down soon.",
+            "acceptedAnswers": [
+              "H – on house prices coming down soon."
+            ]
+          },
+          {
+            "id": "b2-u11-exb-4",
+            "formatType": "column_matching",
+            "sentence": "It's hard to imagine how they can get **F** by on such a low salary.",
+            "answer": "F – by on such a low salary.",
+            "acceptedAnswers": [
+              "F – by on such a low salary."
+            ]
+          },
+          {
+            "id": "b2-u11-exb-5",
+            "formatType": "column_matching",
+            "sentence": "Could you possibly make **B** out the cheque to Peardrop Limited, that would be fine.",
+            "answer": "B – out the cheque to Peardrop Limited, that would be fine.",
+            "acceptedAnswers": [
+              "B – out the cheque to Peardrop Limited, that would be fine."
+            ]
+          },
+          {
+            "id": "b2-u11-exb-6",
+            "formatType": "column_matching",
+            "sentence": "Every retailer on the high street is giving **E** away free software with every computer.",
+            "answer": "E – away free software with every computer.",
+            "acceptedAnswers": [
+              "E – away free software with every computer."
+            ]
+          },
+          {
+            "id": "b2-u11-exb-7",
+            "formatType": "column_matching",
+            "sentence": "He's been saving **C** up to buy a new DVD player.",
+            "answer": "C – up to buy a new DVD player.",
+            "acceptedAnswers": [
+              "C – up to buy a new DVD player."
+            ]
+          },
+          {
+            "id": "b2-u11-exb-8",
+            "formatType": "column_matching",
+            "sentence": "I really can't think what we're going to live **G** on now I've lost my job.",
+            "answer": "G – on now I've lost my job.",
+            "acceptedAnswers": [
+              "G – on now I've lost my job."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b2-u11-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Complete the second sentence using the word given",
+        "title": "C: Complete the second sentence using the word given",
+        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u11-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They made me pay a fee to use the hotel gym. **charged**\nI ...... using the hotel gym.",
+            "answer": "was charged for",
+            "acceptedAnswers": [
+              "was charged for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Whose credit card is this? **belong**\nDoes ...... you?",
+            "answer": "this credit card belong to",
+            "acceptedAnswers": [
+              "this credit card belong to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There isn't much flour left in the bag. **amount**\nThere's only ...... flour left in the bag.",
+            "answer": "a small amount of",
+            "acceptedAnswers": [
+              "a small amount of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "That designer handbag was incredibly expensive to buy! **fortune**\nIt ...... to buy that designer handbag!",
+            "answer": "cost a fortune",
+            "acceptedAnswers": [
+              "cost a fortune"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The customer insisted that the manager apologise to him. **apology**\nThe customer demanded ...... the manager.",
+            "answer": "an apology from",
+            "acceptedAnswers": [
+              "an apology from"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Having a car means I don't have to walk to work every day. **saves**\nHaving a car ...... to walk to work every day.",
+            "answer": "saves me from having",
+            "acceptedAnswers": [
+              "saves me from having"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't pay attention to what your critics say; your work is excellent! **notice**\nTake ...... what your critics say; your work is excellent!",
+            "answer": "no notice of",
+            "acceptedAnswers": [
+              "no notice of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I don't have enough money to buy that jacket right now. **short**\nI ...... money to buy that jacket right now.",
+            "answer": "am short of",
+            "acceptedAnswers": [
+              "am short of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exc-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Would you be willing to lend me some money? **borrow**\nCould ......?",
+            "answer": "I borrow some money from you",
+            "acceptedAnswers": [
+              "I borrow some money from you"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u11-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u11-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The manager promised",
+            "sentenceAfter": "a full explanation for the delay.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "giving me"
+              },
+              {
+                "letter": "B",
+                "text": "to give me"
+              },
+              {
+                "letter": "C",
+                "text": "give to me"
+              },
+              {
+                "letter": "D",
+                "text": "to me to give"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Paul wanted to know why",
+            "sentenceAfter": "to his farewell party.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "I hadn't invited him"
+              },
+              {
+                "letter": "B",
+                "text": "hadn't invited him"
+              },
+              {
+                "letter": "C",
+                "text": "I hadn't him invited"
+              },
+              {
+                "letter": "D",
+                "text": "hadn't him invited"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Rachel asked her colleague",
+            "sentenceAfter": "to join them for lunch.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "did he want"
+              },
+              {
+                "letter": "B",
+                "text": "do you want"
+              },
+              {
+                "letter": "C",
+                "text": "whether he wants"
+              },
+              {
+                "letter": "D",
+                "text": "if he wanted"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Maria",
+            "sentenceAfter": "me she had found a great deal at the market.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "said"
+              },
+              {
+                "letter": "B",
+                "text": "spoke"
+              },
+              {
+                "letter": "C",
+                "text": "told"
+              },
+              {
+                "letter": "D",
+                "text": "claimed"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'What did he say when you stopped him?' 'He said he",
+            "sentenceAfter": "return the item, but nobody believed him!'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "is going to"
+              },
+              {
+                "letter": "B",
+                "text": "has been going to"
+              },
+              {
+                "letter": "C",
+                "text": "goes to"
+              },
+              {
+                "letter": "D",
+                "text": "was going to"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "When I spoke to Greg last week, he mentioned that he",
+            "sentenceAfter": "of changing careers, but he seems to have reconsidered.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "thought"
+              },
+              {
+                "letter": "B",
+                "text": "is thinking"
+              },
+              {
+                "letter": "C",
+                "text": "was thinking"
+              },
+              {
+                "letter": "D",
+                "text": "has been thinking"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'What did your friends say when they found out they were wrong?' 'They apologised",
+            "sentenceAfter": "me.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "to doubt"
+              },
+              {
+                "letter": "B",
+                "text": "they had doubted"
+              },
+              {
+                "letter": "C",
+                "text": "for doubting"
+              },
+              {
+                "letter": "D",
+                "text": "the doubt of"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u11-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Choose the correct answer",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u11-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "This washing machine is extremely",
+            "sentenceAfter": "as it uses very little electricity per cycle.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "financial"
+              },
+              {
+                "letter": "B",
+                "text": "economical"
+              },
+              {
+                "letter": "C",
+                "text": "costly"
+              },
+              {
+                "letter": "D",
+                "text": "endless"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "These trainers were half price – they were a real",
+            "sentenceAfter": "!",
+            "options": [
+              {
+                "letter": "A",
+                "text": "bargain"
+              },
+              {
+                "letter": "B",
+                "text": "discount"
+              },
+              {
+                "letter": "C",
+                "text": "sale"
+              },
+              {
+                "letter": "D",
+                "text": "offer"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Do you know what",
+            "sentenceAfter": "of motorbike that is?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "name"
+              },
+              {
+                "letter": "B",
+                "text": "brand"
+              },
+              {
+                "letter": "C",
+                "text": "make"
+              },
+              {
+                "letter": "D",
+                "text": "form"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Is there anyone in",
+            "sentenceAfter": "of the customer service department?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "charge"
+              },
+              {
+                "letter": "B",
+                "text": "rule"
+              },
+              {
+                "letter": "C",
+                "text": "responsibility"
+              },
+              {
+                "letter": "D",
+                "text": "organisation"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She handed over a twenty-pound note for a five-pound item and forgot to collect her",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "cash"
+              },
+              {
+                "letter": "B",
+                "text": "fee"
+              },
+              {
+                "letter": "C",
+                "text": "refund"
+              },
+              {
+                "letter": "D",
+                "text": "change"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He",
+            "sentenceAfter": "a great deal of money by investing in property during the boom years.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "took"
+              },
+              {
+                "letter": "B",
+                "text": "won"
+              },
+              {
+                "letter": "C",
+                "text": "made"
+              },
+              {
+                "letter": "D",
+                "text": "saved"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u11-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The shopping trip was exhausting, but at",
+            "sentenceAfter": "she found a birthday present for her sister.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "less"
+              },
+              {
+                "letter": "B",
+                "text": "the less"
+              },
+              {
+                "letter": "C",
+                "text": "least"
+              },
+              {
+                "letter": "D",
+                "text": "the least"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

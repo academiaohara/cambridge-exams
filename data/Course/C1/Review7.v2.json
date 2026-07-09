@@ -1,0 +1,891 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 7,
+  "unit": 7,
+  "type": "review",
+  "unitTitle": "Review: Block 7 – Units 13 & 14",
+  "unitSubtitle": "Review: Block 7 – Units 13 & 14",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "Review: Block 7 – Units 13 & 14"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/C1/Review7.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-r7-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "word_bank_gap_fill",
+        "displayName": "Complete with words from the box",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "word_bank_chips_plus_gap_input",
+          "studentAction": "tap_word_or_type_answer",
+          "evaluationTrigger": "check_button",
+          "chipLayout": "wrap_scroll"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-r7-node-1",
+      "title": "Review: Block 7 – Units 13 & 14",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "word_bank_gap_fill",
+        "two_option_choice",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 27,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u7-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "c1-u7-exa-1",
+            "c1-u7-exa-2",
+            "c1-u7-exa-3",
+            "c1-u7-exa-4",
+            "c1-u7-exa-5",
+            "c1-u7-exa-6",
+            "c1-u7-exa-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u7-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u7-exb-1",
+            "c1-u7-exb-2",
+            "c1-u7-exb-3",
+            "c1-u7-exb-4",
+            "c1-u7-exb-5",
+            "c1-u7-exb-6",
+            "c1-u7-exb-7",
+            "c1-u7-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u7-ex-c",
+          "formatType": "word_bank_gap_fill",
+          "sourceItemIds": [
+            "c1-u7-exc-1",
+            "c1-u7-exc-2",
+            "c1-u7-exc-3",
+            "c1-u7-exc-4",
+            "c1-u7-exc-5",
+            "c1-u7-exc-6",
+            "c1-u7-exc-7",
+            "c1-u7-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u7-ex-d",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "c1-u7-exd-1",
+            "c1-u7-exd-2",
+            "c1-u7-exd-3",
+            "c1-u7-exd-4",
+            "c1-u7-exd-5",
+            "c1-u7-exd-6",
+            "c1-u7-exd-7",
+            "c1-u7-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u7-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "c1-u7-exe-1",
+            "c1-u7-exe-2",
+            "c1-u7-exe-3",
+            "c1-u7-exe-4",
+            "c1-u7-exe-5",
+            "c1-u7-exe-6",
+            "c1-u7-exe-7",
+            "c1-u7-exe-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 39,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u7-ex-a",
+      "c1-u7-ex-b",
+      "c1-u7-ex-c",
+      "c1-u7-ex-d",
+      "c1-u7-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u7-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Word Formation",
+        "title": "A: Word Formation",
+        "instructions": "Use the word given in capitals to form a word that fits in the space.",
+        "studentInstruction": "Use the word given in capitals to form a word that fits in the space.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u7-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "A new academic study (1) ...... (HIGH) the (2) ...... (EXTEND) to which student loan debt is shaping career choices among graduates.",
+            "answer": "highlights, extent",
+            "acceptedAnswers": [
+              "highlights, extent"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Responsibility is (3) ...... (PORTION) unfairly to universities alone, which, critics argue, will go to any (4) ...... (LONG) to recruit international applicants.",
+            "answer": "apportioned, lengths",
+            "acceptedAnswers": [
+              "apportioned, lengths"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "(5) ...... (ADD), the findings reveal that many graduates delay major life decisions due to the pressure of outstanding loans.",
+            "answer": "Additionally",
+            "acceptedAnswers": [
+              "Additionally"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "A controversial funding proposal — which has since been (6) ...... (DRAW) — sought to double tuition fees for all postgraduate programmes.",
+            "answer": "withdrawn",
+            "acceptedAnswers": [
+              "withdrawn"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "While the financial burden placed on graduates is not (7) ...... (CONSIDER), it would be misleading to claim that every degree leads to hardship.",
+            "answer": "inconsiderable",
+            "acceptedAnswers": [
+              "inconsiderable"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The (8) ...... (MAJOR) of respondents admitted they had fallen behind on their (9) ...... (PAY) within the first two years of leaving university.",
+            "answer": "majority, payments",
+            "acceptedAnswers": [
+              "majority, payments"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exa-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "There will always be a (10) ...... (MINOR) of borrowers who genuinely struggle to manage their finances effectively.",
+            "answer": "minority",
+            "acceptedAnswers": [
+              "minority"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u7-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Key Word Transformation",
+        "title": "B: Key Word Transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "legacyKey": "B",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u7-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Sending those aggressive emails to a client like that is bound to cause you serious problems. **ICE**\nYou are ....... by sending those aggressive emails to a client like that.",
+            "answer": "skating on thin ice",
+            "acceptedAnswers": [
+              "skating on thin ice"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Are you telling me that Rachel gets irritated very easily, Tom? **SHORT**\nAre you telling me that Rachel ........ , Tom?",
+            "answer": "has a short temper",
+            "acceptedAnswers": [
+              "has a short temper"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There’s no doubt that comparing prices online is a worthwhile thing to do. **PAYS**\nThere’s no doubt ...... prices online.",
+            "answer": "it pays to compare",
+            "acceptedAnswers": [
+              "it pays to compare"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I’d prefer to use every single facility at the spa for the entire afternoon. **WORTH**\nI’d rather I ...... by using every single facility at the spa for the entire afternoon.",
+            "answer": "got my money's worth",
+            "acceptedAnswers": [
+              "got my money's worth"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I think Marcus is preoccupied with several worries right now. **MIND**\nI think Marcus ...... right now.",
+            "answer": "has a lot on his mind",
+            "acceptedAnswers": [
+              "has a lot on his mind"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Why didn’t you look everywhere for your passport? You might have caught the flight. **LOW**\nIf ...... for your passport, you might have caught the flight.",
+            "answer": "you had searched high and low",
+            "acceptedAnswers": [
+              "you had searched high and low"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I can’t manage at all with this advanced statistics module, and it worries me. **DEPTH**\nI wish ...... this advanced statistics module.",
+            "answer": "I was not out of my depth in",
+            "acceptedAnswers": [
+              "I was not out of my depth in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Kevin was the unlucky one so he had to inform Claire that she was being transferred to another branch. **STRAW**\nIf Kevin ......, he wouldn’t have had to inform Claire that she was being transferred to another branch.",
+            "answer": "had not drawn the short straw",
+            "acceptedAnswers": [
+              "had not drawn the short straw"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u7-ex-c",
+        "type": "exercise",
+        "exerciseType": "word_bank_gap_fill",
+        "exerciseTypeName": "C: Collocations (Financial Terms)",
+        "title": "C: Collocations (Financial Terms)",
+        "instructions": "Write a word from the box in each gap. There is one word you will not use.",
+        "studentInstruction": "Write a word from the box in each gap. There is one word you will not use.",
+        "legacyKey": "C",
+        "legacyPattern": "word-bank-gap",
+        "interaction": {
+          "formatType": "word_bank_gap_fill"
+        },
+        "words": [
+          "compensation",
+          "debit",
+          "deposit",
+          "interest",
+          "mortgage",
+          "overdraft",
+          "payment",
+          "pension",
+          "sum"
+        ],
+        "wordBank": [
+          "compensation",
+          "debit",
+          "deposit",
+          "interest",
+          "mortgage",
+          "overdraft",
+          "payment",
+          "pension",
+          "sum"
+        ],
+        "items": [
+          {
+            "id": "c1-u7-exc-1",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "After thirty years, they finally paid off the ...... on their seaside cottage. Now it’s truly theirs!",
+            "answer": "mortgage",
+            "acceptedAnswers": [
+              "mortgage"
+            ]
+          },
+          {
+            "id": "c1-u7-exc-2",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "All our household bills go out by direct ......, which saves us the hassle of remembering due dates.",
+            "answer": "debit",
+            "acceptedAnswers": [
+              "debit"
+            ]
+          },
+          {
+            "id": "c1-u7-exc-3",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "We agreed to buy the furniture in instalments, so we made the first down ...... this afternoon.",
+            "answer": "payment",
+            "acceptedAnswers": [
+              "payment"
+            ]
+          },
+          {
+            "id": "c1-u7-exc-4",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Upon retirement, you may choose to receive a single lump ...... or opt for monthly instalments spread over fifteen years.",
+            "answer": "sum",
+            "acceptedAnswers": [
+              "sum"
+            ]
+          },
+          {
+            "id": "c1-u7-exc-5",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "After two decades as a nurse, she now receives a generous state ...... that comfortably covers her living costs.",
+            "answer": "pension",
+            "acceptedAnswers": [
+              "pension"
+            ]
+          },
+          {
+            "id": "c1-u7-exc-6",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Since I always run out of money before payday, I’ve decided to apply for a/an ...... facility at my bank.",
+            "answer": "overdraft",
+            "acceptedAnswers": [
+              "overdraft"
+            ]
+          },
+          {
+            "id": "c1-u7-exc-7",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "The letting agency requires a 20% ...... before handing over the keys to the apartment.",
+            "answer": "deposit",
+            "acceptedAnswers": [
+              "deposit"
+            ]
+          },
+          {
+            "id": "c1-u7-exc-8",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "The court ordered the company to pay Mr Rivera £250,000 ...... for the injuries he sustained at work.",
+            "answer": "compensation",
+            "acceptedAnswers": [
+              "compensation"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c1-u7-ex-d",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "D: Phrasal Verbs / Expressions",
+        "title": "D: Phrasal Verbs / Expressions",
+        "instructions": "Circle the correct word.",
+        "studentInstruction": "Circle the correct word.",
+        "legacyKey": "D",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "c1-u7-exd-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "If we all",
+            "sentenceAfter": "together, we can easily cover the cost of a weekend away.",
+            "options": [
+              "gather",
+              "club",
+              "pool"
+            ],
+            "answer": "club",
+            "originalSentence": "If we all **gather / club / pool** together, we can easily cover the cost of a weekend away.",
+            "completedSentence": "If we all club together, we can easily cover the cost of a weekend away."
+          },
+          {
+            "id": "c1-u7-exd-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You’ll need to",
+            "sentenceAfter": "up a lot more enthusiasm if you want the committee to back your proposal.",
+            "options": [
+              "stir",
+              "drum",
+              "beat"
+            ],
+            "answer": "drum",
+            "originalSentence": "You’ll need to **stir / drum / beat** up a lot more enthusiasm if you want the committee to back your proposal.",
+            "completedSentence": "You’ll need to drum up a lot more enthusiasm if you want the committee to back your proposal."
+          },
+          {
+            "id": "c1-u7-exd-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The veteran pilot had",
+            "sentenceAfter": "up over 5,000 hours of commercial flying time.",
+            "options": [
+              "logged",
+              "clocked",
+              "counted"
+            ],
+            "answer": "clocked",
+            "originalSentence": "The veteran pilot had **logged / clocked / counted** up over 5,000 hours of commercial flying time.",
+            "completedSentence": "The veteran pilot had clocked up over 5,000 hours of commercial flying time."
+          },
+          {
+            "id": "c1-u7-exd-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Our renovation costs are",
+            "sentenceAfter": "up and we’re still only halfway through the project.",
+            "options": [
+              "rising",
+              "growing",
+              "mounting"
+            ],
+            "answer": "mounting",
+            "originalSentence": "Our renovation costs are **rising / growing / mounting** up and we’re still only halfway through the project.",
+            "completedSentence": "Our renovation costs are mounting up and we’re still only halfway through the project."
+          },
+          {
+            "id": "c1-u7-exd-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Let’s",
+            "sentenceAfter": "the options up carefully before we commit to signing the contract.",
+            "options": [
+              "weigh",
+              "measure",
+              "size"
+            ],
+            "answer": "size",
+            "originalSentence": "Let’s **weigh / measure / size** the options up carefully before we commit to signing the contract.",
+            "completedSentence": "Let’s size the options up carefully before we commit to signing the contract."
+          },
+          {
+            "id": "c1-u7-exd-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "It seems like a large sum, but if you",
+            "sentenceAfter": "it down into weekly amounts, it’s quite manageable.",
+            "options": [
+              "split",
+              "break",
+              "divide"
+            ],
+            "answer": "break",
+            "originalSentence": "It seems like a large sum, but if you **split / break / divide** it down into weekly amounts, it’s quite manageable.",
+            "completedSentence": "It seems like a large sum, but if you break it down into weekly amounts, it’s quite manageable."
+          },
+          {
+            "id": "c1-u7-exd-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She agreed to lend him the cash, but insisted he",
+            "sentenceAfter": "her back before the month was out.",
+            "options": [
+              "give",
+              "pay",
+              "return"
+            ],
+            "answer": "pay",
+            "originalSentence": "She agreed to lend him the cash, but insisted he **give / pay / return** her back before the month was out.",
+            "completedSentence": "She agreed to lend him the cash, but insisted he pay her back before the month was out."
+          },
+          {
+            "id": "c1-u7-exd-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Investors have been",
+            "sentenceAfter": "up properties along the new transport corridor.",
+            "options": [
+              "snapping",
+              "buying",
+              "grabbing"
+            ],
+            "answer": "buying",
+            "originalSentence": "Investors have been **snapping / buying / grabbing** up properties along the new transport corridor.",
+            "completedSentence": "Investors have been buying up properties along the new transport corridor."
+          }
+        ]
+      },
+      {
+        "id": "c1-u7-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Multiple Choice (Grammar & Structures)",
+        "title": "E: Multiple Choice (Grammar & Structures)",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "c1-u7-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "It’s high time",
+            "sentenceAfter": "more seriously about your future career path.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "to think"
+              },
+              {
+                "letter": "B",
+                "text": "you think"
+              },
+              {
+                "letter": "C",
+                "text": "you thought"
+              },
+              {
+                "letter": "D",
+                "text": "you have thought"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I’d rather you",
+            "sentenceAfter": "anything to your parents yet, but I realise it’s difficult to keep it quiet.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "not say"
+              },
+              {
+                "letter": "B",
+                "text": "don't say"
+              },
+              {
+                "letter": "C",
+                "text": "didn't say"
+              },
+              {
+                "letter": "D",
+                "text": "hadn't said"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Do you wish",
+            "sentenceAfter": "an official complaint about the quality of the service?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "to submit"
+              },
+              {
+                "letter": "B",
+                "text": "submitting"
+              },
+              {
+                "letter": "C",
+                "text": "you submitted"
+              },
+              {
+                "letter": "D",
+                "text": "you to submit"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If only people from our parents’ generation",
+            "sentenceAfter": "the level of global travel that we enjoy today.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "could have had"
+              },
+              {
+                "letter": "B",
+                "text": "would have had"
+              },
+              {
+                "letter": "C",
+                "text": "would have"
+              },
+              {
+                "letter": "D",
+                "text": "have had"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Sophie definitely wishes she",
+            "sentenceAfter": "to prepare a full financial report by tomorrow morning.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "doesn't have"
+              },
+              {
+                "letter": "B",
+                "text": "didn't have"
+              },
+              {
+                "letter": "C",
+                "text": "wouldn't have"
+              },
+              {
+                "letter": "D",
+                "text": "hadn't"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "any slower, we’d never have caught the last train home.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Were the service"
+              },
+              {
+                "letter": "B",
+                "text": "Had the service been"
+              },
+              {
+                "letter": "C",
+                "text": "Should the service be"
+              },
+              {
+                "letter": "D",
+                "text": "Be the service"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I’d never lend money to a complete stranger unless they",
+            "sentenceAfter": "me proper identification.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "have shown"
+              },
+              {
+                "letter": "B",
+                "text": "will show"
+              },
+              {
+                "letter": "C",
+                "text": "shows"
+              },
+              {
+                "letter": "D",
+                "text": "showed"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u7-exe-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Imagine email",
+            "sentenceAfter": "invented. Communication would be so much slower, wouldn’t it?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "wasn't"
+              },
+              {
+                "letter": "B",
+                "text": "hadn't been"
+              },
+              {
+                "letter": "C",
+                "text": "to not be"
+              },
+              {
+                "letter": "D",
+                "text": "to not have been"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

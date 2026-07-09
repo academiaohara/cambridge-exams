@@ -1,0 +1,1056 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 4,
+  "unit": 4,
+  "type": "review",
+  "unitTitle": "Review 4: Units 10, 11 and 12",
+  "unitSubtitle": "Review 4: Units 10, 11 and 12",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Review 4: Units 10, 11 and 12"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B1/Review4.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-r4-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-r4-node-1",
+      "title": "Review 4: Units 10, 11 and 12",
+      "shortTitle": "Review",
+      "focus": [
+        "free_text_gap_fill",
+        "conjugation_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 35,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u4-ex-a",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u4-exa-1",
+            "b1-u4-exa-2",
+            "b1-u4-exa-3",
+            "b1-u4-exa-4",
+            "b1-u4-exa-5",
+            "b1-u4-exa-6",
+            "b1-u4-exa-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u4-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u4-exb-1",
+            "b1-u4-exb-2",
+            "b1-u4-exb-3",
+            "b1-u4-exb-4",
+            "b1-u4-exb-5"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u4-ex-c",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u4-exc-1",
+            "b1-u4-exc-2",
+            "b1-u4-exc-3",
+            "b1-u4-exc-4",
+            "b1-u4-exc-5",
+            "b1-u4-exc-6",
+            "b1-u4-exc-7",
+            "b1-u4-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u4-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u4-exd-1",
+            "b1-u4-exd-2",
+            "b1-u4-exd-3",
+            "b1-u4-exd-4",
+            "b1-u4-exd-5",
+            "b1-u4-exd-6",
+            "b1-u4-exd-7",
+            "b1-u4-exd-8",
+            "b1-u4-exd-9",
+            "b1-u4-exd-10",
+            "b1-u4-exd-11",
+            "b1-u4-exd-12",
+            "b1-u4-exd-13",
+            "b1-u4-exd-14",
+            "b1-u4-exd-15"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u4-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u4-exe-1",
+            "b1-u4-exe-2",
+            "b1-u4-exe-3",
+            "b1-u4-exe-4",
+            "b1-u4-exe-5",
+            "b1-u4-exe-6",
+            "b1-u4-exe-7",
+            "b1-u4-exe-8",
+            "b1-u4-exe-9",
+            "b1-u4-exe-10",
+            "b1-u4-exe-11",
+            "b1-u4-exe-12",
+            "b1-u4-exe-13",
+            "b1-u4-exe-14",
+            "b1-u4-exe-15"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 50,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u4-ex-a",
+      "b1-u4-ex-b",
+      "b1-u4-ex-c",
+      "b1-u4-ex-d",
+      "b1-u4-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u4-ex-a",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "A: Complete using the verbs in the box",
+        "title": "A: Complete using the verbs in the box",
+        "instructions": "Use the verbs in the box: apologise, defend, introduce, recognise, rent, respect, trust.",
+        "studentInstruction": "Use the verbs in the box: apologise, defend, introduce, recognise, rent, respect, trust.",
+        "legacyKey": "A",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u4-exa-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "'Who's that woman near the door?'\n'That's Olivia Grant, the writer. Let me ...... you.'",
+            "answer": "introduce",
+            "acceptedAnswers": [
+              "introduce"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exa-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "'Hello, Max!'\n'Wow, Emma! I didn't ...... you with those glasses!'",
+            "answer": "recognise",
+            "acceptedAnswers": [
+              "recognise"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exa-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "'I'm sorry I forgot your birthday.'\n'It's okay. You don't need to ...... .'",
+            "answer": "apologise",
+            "acceptedAnswers": [
+              "apologise"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exa-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "'We're moving to the city centre next month.'\n'Are you going to buy or ...... a flat there?'",
+            "answer": "rent",
+            "acceptedAnswers": [
+              "rent"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exa-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "'I told Jake my secret and now I'm worried.'\n'Relax. You can ...... Jake. He's very loyal.'",
+            "answer": "trust",
+            "acceptedAnswers": [
+              "trust"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exa-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "'Mrs Lewis volunteers at the animal shelter every weekend.'\n'I really ...... people like her.'",
+            "answer": "respect",
+            "acceptedAnswers": [
+              "respect"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exa-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "'I don't think Mia broke the window.'\n'Why do you always ...... Mia when something happens?'",
+            "answer": "defend",
+            "acceptedAnswers": [
+              "defend"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u4-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Write one word in each gap",
+        "title": "B: Write one word in each gap",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u4-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Can you look ...... my dog while I'm visiting my grandparents?",
+            "answer": "after",
+            "acceptedAnswers": [
+              "after"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Rachel and Ben split ...... a few weeks ago.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Liam and Noah have fallen ...... because of a football match.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Sophie was brought ...... by her grandmother.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Is Chloe really going ...... with Ethan?",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u4-ex-c",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "C: Word formation",
+        "title": "C: Word formation",
+        "instructions": "Complete by changing the form of the word in capitals.",
+        "studentInstruction": "Complete by changing the form of the word in capitals.",
+        "legacyKey": "C",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u4-exc-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I have a lot of ...... for my music teacher. (ADMIRE)",
+            "answer": "admiration",
+            "acceptedAnswers": [
+              "admiration"
+            ],
+            "explanation": "",
+            "verbPrompt": "ADMIRE"
+          },
+          {
+            "id": "b1-u4-exc-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Jake is so ...... — he always forgets his keys. (CARE)",
+            "answer": "careless",
+            "acceptedAnswers": [
+              "careless"
+            ],
+            "explanation": "",
+            "verbPrompt": "CARE"
+          },
+          {
+            "id": "b1-u4-exc-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Nobody believed Oliver because he's such a ...... . (LIE)",
+            "answer": "liar",
+            "acceptedAnswers": [
+              "liar"
+            ],
+            "explanation": "",
+            "verbPrompt": "LIE"
+          },
+          {
+            "id": "b1-u4-exc-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Many ...... athletes compete at international level. (ABLE)",
+            "answer": "disabled",
+            "acceptedAnswers": [
+              "disabled"
+            ],
+            "explanation": "",
+            "verbPrompt": "ABLE"
+          },
+          {
+            "id": "b1-u4-exc-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Ella said sorry, so I ...... her straight away. (FORGIVE)",
+            "answer": "forgave",
+            "acceptedAnswers": [
+              "forgave"
+            ],
+            "explanation": "",
+            "verbPrompt": "FORGIVE"
+          },
+          {
+            "id": "b1-u4-exc-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My cousin has a funny and friendly ...... . (PERSON)",
+            "answer": "personality",
+            "acceptedAnswers": [
+              "personality"
+            ],
+            "explanation": "",
+            "verbPrompt": "PERSON"
+          },
+          {
+            "id": "b1-u4-exc-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I don't have enough ...... to speak in front of everyone. (CONFIDENT)",
+            "answer": "confidence",
+            "acceptedAnswers": [
+              "confidence"
+            ],
+            "explanation": "",
+            "verbPrompt": "CONFIDENT"
+          },
+          {
+            "id": "b1-u4-exc-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "People who are ...... often lose their friends' trust. (HONEST)",
+            "answer": "dishonest",
+            "acceptedAnswers": [
+              "dishonest"
+            ],
+            "explanation": "",
+            "verbPrompt": "HONEST"
+          }
+        ]
+      },
+      {
+        "id": "b1-u4-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u4-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "This castle",
+            "sentenceAfter": "hundreds of years ago.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "built"
+              },
+              {
+                "letter": "B",
+                "text": "was built"
+              },
+              {
+                "letter": "C",
+                "text": "has built"
+              },
+              {
+                "letter": "D",
+                "text": "is building"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Spanish",
+            "sentenceAfter": "in many parts of South America.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "speaks"
+              },
+              {
+                "letter": "B",
+                "text": "is spoken"
+              },
+              {
+                "letter": "C",
+                "text": "was speaking"
+              },
+              {
+                "letter": "D",
+                "text": "has been spoken"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The classrooms",
+            "sentenceAfter": "every afternoon.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "clean"
+              },
+              {
+                "letter": "B",
+                "text": "are cleaned"
+              },
+              {
+                "letter": "C",
+                "text": "cleaned"
+              },
+              {
+                "letter": "D",
+                "text": "were cleaned"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The winners",
+            "sentenceAfter": "next Friday.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "will announce"
+              },
+              {
+                "letter": "B",
+                "text": "will be announced"
+              },
+              {
+                "letter": "C",
+                "text": "are announcing"
+              },
+              {
+                "letter": "D",
+                "text": "announced"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The new shopping centre",
+            "sentenceAfter": "at the moment.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "is built"
+              },
+              {
+                "letter": "B",
+                "text": "has been building"
+              },
+              {
+                "letter": "C",
+                "text": "is being built"
+              },
+              {
+                "letter": "D",
+                "text": "builds"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The stolen painting",
+            "sentenceAfter": "by the police yesterday.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "caught"
+              },
+              {
+                "letter": "B",
+                "text": "was caught"
+              },
+              {
+                "letter": "C",
+                "text": "is caught"
+              },
+              {
+                "letter": "D",
+                "text": "catches"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "These phones",
+            "sentenceAfter": "in South Korea.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "are made"
+              },
+              {
+                "letter": "B",
+                "text": "make"
+              },
+              {
+                "letter": "C",
+                "text": "were making"
+              },
+              {
+                "letter": "D",
+                "text": "made"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "All the sandwiches",
+            "sentenceAfter": "before lunchtime.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "sold"
+              },
+              {
+                "letter": "B",
+                "text": "were sold"
+              },
+              {
+                "letter": "C",
+                "text": "have sold"
+              },
+              {
+                "letter": "D",
+                "text": "are sold"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He",
+            "sentenceAfter": "to hospital after the football match.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "took"
+              },
+              {
+                "letter": "B",
+                "text": "was taking"
+              },
+              {
+                "letter": "C",
+                "text": "was taken"
+              },
+              {
+                "letter": "D",
+                "text": "has taken"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The email",
+            "sentenceAfter": "this morning.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "sent"
+              },
+              {
+                "letter": "B",
+                "text": "was sent"
+              },
+              {
+                "letter": "C",
+                "text": "is sent"
+              },
+              {
+                "letter": "D",
+                "text": "sends"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-11",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "When",
+            "sentenceAfter": "this building ......?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "was / designed"
+              },
+              {
+                "letter": "B",
+                "text": "did / design"
+              },
+              {
+                "letter": "C",
+                "text": "is / designed"
+              },
+              {
+                "letter": "D",
+                "text": "has / designed"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-12",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The concert",
+            "sentenceAfter": "cancelled because of the storm.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "has"
+              },
+              {
+                "letter": "B",
+                "text": "was"
+              },
+              {
+                "letter": "C",
+                "text": "is being"
+              },
+              {
+                "letter": "D",
+                "text": "were"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-13",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The road",
+            "sentenceAfter": "since last month.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "repairs"
+              },
+              {
+                "letter": "B",
+                "text": "has been repaired"
+              },
+              {
+                "letter": "C",
+                "text": "is repaired"
+              },
+              {
+                "letter": "D",
+                "text": "repaired"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-14",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "These watches",
+            "sentenceAfter": "in Switzerland.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "were made"
+              },
+              {
+                "letter": "B",
+                "text": "made"
+              },
+              {
+                "letter": "C",
+                "text": "make"
+              },
+              {
+                "letter": "D",
+                "text": "are making"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exd-15",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "A new sports hall",
+            "sentenceAfter": "near our school next year.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "builds"
+              },
+              {
+                "letter": "B",
+                "text": "is built"
+              },
+              {
+                "letter": "C",
+                "text": "will be built"
+              },
+              {
+                "letter": "D",
+                "text": "will build"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u4-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Complete the sentences",
+        "title": "E: Complete the sentences",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u4-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We've known each other ...... we were children.",
+            "answer": "since",
+            "acceptedAnswers": [
+              "since"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Daniel gets ...... really well with his neighbours.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My grandparents have been ...... for more than fifty years.",
+            "answer": "married",
+            "acceptedAnswers": [
+              "married"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Sofia has a good ...... with all her classmates.",
+            "answer": "relationship",
+            "acceptedAnswers": [
+              "relationship"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Mark is very ...... of his little brother and always helps him.",
+            "answer": "protective",
+            "acceptedAnswers": [
+              "protective"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My cousins grew ...... in a small village near the coast.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Emily is an only ......, so she sometimes feels lonely.",
+            "answer": "child",
+            "acceptedAnswers": [
+              "child"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Jake and his grandfather are very ...... and spend lots of time together.",
+            "answer": "close",
+            "acceptedAnswers": [
+              "close"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They fell ...... after arguing about money.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "After the argument, she felt really ...... .",
+            "answer": "upset",
+            "acceptedAnswers": [
+              "upset"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Mia got ...... with her best friend again after saying sorry.",
+            "answer": "back",
+            "acceptedAnswers": [
+              "back"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-12",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My neighbour ...... after our cat while we were away.",
+            "answer": "looked",
+            "acceptedAnswers": [
+              "looked"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-13",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Lucas and I have a lot ...... common because we both love basketball.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-14",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She ...... him her best friend because they tell each other everything.",
+            "answer": "calls",
+            "acceptedAnswers": [
+              "calls"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u4-exe-15",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You can always ...... on your real friends when you need help.",
+            "answer": "count",
+            "acceptedAnswers": [
+              "count"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

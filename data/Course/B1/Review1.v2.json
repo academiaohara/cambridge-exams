@@ -1,0 +1,1015 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 1,
+  "unit": 1,
+  "type": "review",
+  "unitTitle": "Review 1: Units 1, 2 and 3",
+  "unitSubtitle": "Review 1: Units 1, 2 and 3",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Review 1: Units 1, 2 and 3"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B1/Review1.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-r1-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "passage_gap_fill",
+        "displayName": "Complete the passage",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "passage_inline_gaps",
+          "studentAction": "type_gap_answers",
+          "evaluationTrigger": "check_button",
+          "gapInputStyle": "pill"
+        }
+      },
+      {
+        "formatType": "word_bank_gap_fill",
+        "displayName": "Complete with words from the box",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "word_bank_chips_plus_gap_input",
+          "studentAction": "tap_word_or_type_answer",
+          "evaluationTrigger": "check_button",
+          "chipLayout": "wrap_scroll"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-r1-node-1",
+      "title": "Review 1: Units 1, 2 and 3",
+      "shortTitle": "Review",
+      "focus": [
+        "passage_gap_fill",
+        "word_bank_gap_fill",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 30,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u1-ex-a",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "b1-u1-ex-b",
+          "formatType": "word_bank_gap_fill",
+          "sourceItemIds": [
+            "b1-u1-exb-1",
+            "b1-u1-exb-2",
+            "b1-u1-exb-3",
+            "b1-u1-exb-4",
+            "b1-u1-exb-5",
+            "b1-u1-exb-6",
+            "b1-u1-exb-7",
+            "b1-u1-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u1-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u1-exc-1",
+            "b1-u1-exc-2",
+            "b1-u1-exc-3",
+            "b1-u1-exc-4"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u1-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u1-exd-1",
+            "b1-u1-exd-2",
+            "b1-u1-exd-3",
+            "b1-u1-exd-4",
+            "b1-u1-exd-5",
+            "b1-u1-exd-6",
+            "b1-u1-exd-7",
+            "b1-u1-exd-8",
+            "b1-u1-exd-9",
+            "b1-u1-exd-10",
+            "b1-u1-exd-11",
+            "b1-u1-exd-12",
+            "b1-u1-exd-13",
+            "b1-u1-exd-14",
+            "b1-u1-exd-15"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u1-ex-e",
+          "formatType": "word_bank_gap_fill",
+          "sourceItemIds": [
+            "b1-u1-exe-1",
+            "b1-u1-exe-2",
+            "b1-u1-exe-3",
+            "b1-u1-exe-4",
+            "b1-u1-exe-5",
+            "b1-u1-exe-6",
+            "b1-u1-exe-7",
+            "b1-u1-exe-8",
+            "b1-u1-exe-9",
+            "b1-u1-exe-10",
+            "b1-u1-exe-11",
+            "b1-u1-exe-12",
+            "b1-u1-exe-13",
+            "b1-u1-exe-14",
+            "b1-u1-exe-15"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 43,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u1-ex-a",
+      "b1-u1-ex-b",
+      "b1-u1-ex-c",
+      "b1-u1-ex-d",
+      "b1-u1-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u1-ex-a",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "A: Word Formation",
+        "title": "A: Word Formation",
+        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "studentInstruction": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "legacyKey": "A",
+        "legacyPattern": "passage-input",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
+          "gapInputStyle": "underline_expand"
+        },
+        "passage": "My brother has a huge comic book (1) ...... (COLLECT). One of his favourite (2) ...... (HERO) is Spider-Man. He started buying comics during his (3) ...... (CHILD) and now he has hundreds. Some of the stories are full of exciting (4) ...... (ACT) scenes, while others are more funny than dramatic. He often visits comic fairs with other (5) ...... (FAN) and sometimes dresses as famous characters. He says comics are great (6) ...... (ENTERTAIN) and help him relax after school. Last month, he even met a well-known comic book (7) ...... (ART) who signed one of his books. He's also becoming a serious comic (8) ...... (COLLECT) and spends all his pocket money on rare editions.",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "collection",
+          "heroes",
+          "childhood",
+          "action",
+          "fans",
+          "entertainment",
+          "artist",
+          "collector"
+        ]
+      },
+      {
+        "id": "b1-u1-ex-b",
+        "type": "exercise",
+        "exerciseType": "word_bank_gap_fill",
+        "exerciseTypeName": "B: Complete using the verbs in the box",
+        "title": "B: Complete using the verbs in the box",
+        "instructions": "Complete using the correct form of the verbs in the box. You have to use one word twice.",
+        "studentInstruction": "Complete using the correct form of the verbs in the box. You have to use one word twice.",
+        "legacyKey": "B",
+        "legacyPattern": "word-bank-gap",
+        "interaction": {
+          "formatType": "word_bank_gap_fill"
+        },
+        "words": [
+          "carry",
+          "eat",
+          "give",
+          "send",
+          "take",
+          "turn"
+        ],
+        "wordBank": [
+          "carry",
+          "eat",
+          "give",
+          "send",
+          "take",
+          "turn"
+        ],
+        "items": [
+          {
+            "id": "b1-u1-exb-1",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Everyone was nervous, but the singer told the band to ...... on playing.",
+            "answer": "carry",
+            "acceptedAnswers": [
+              "carry"
+            ]
+          },
+          {
+            "id": "b1-u1-exb-2",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Can you ...... the radio down a bit? I'm trying to study.",
+            "answer": "turn",
+            "acceptedAnswers": [
+              "turn"
+            ]
+          },
+          {
+            "id": "b1-u1-exb-3",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "The referee ...... the player off after the dangerous tackle.",
+            "answer": "sent",
+            "acceptedAnswers": [
+              "sent"
+            ]
+          },
+          {
+            "id": "b1-u1-exb-4",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "We usually ...... out on Saturdays because nobody wants to cook.",
+            "answer": "eat",
+            "acceptedAnswers": [
+              "eat"
+            ]
+          },
+          {
+            "id": "b1-u1-exb-5",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "That's my favourite song! ...... it up!",
+            "answer": "turn",
+            "acceptedAnswers": [
+              "turn"
+            ]
+          },
+          {
+            "id": "b1-u1-exb-6",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Sophie ...... up gymnastics when she started university.",
+            "answer": "gave",
+            "acceptedAnswers": [
+              "gave"
+            ]
+          },
+          {
+            "id": "b1-u1-exb-7",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "After a short break, the match ...... on until sunset.",
+            "answer": "carried",
+            "acceptedAnswers": [
+              "carried"
+            ]
+          },
+          {
+            "id": "b1-u1-exb-8",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Why don't you ...... up tennis? It's great exercise.",
+            "answer": "take",
+            "acceptedAnswers": [
+              "take"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u1-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Key Word Transformation",
+        "title": "C: Key Word Transformation",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u1-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Emily really loves rock music. **keen**\nEmily ...... rock music.",
+            "answer": "is keen on",
+            "acceptedAnswers": [
+              "is keen on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My dad sailed around the world when he was younger. **sailor**\nMy dad ...... when he was younger.",
+            "answer": "was a sailor",
+            "acceptedAnswers": [
+              "was a sailor"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Do you want to play a board game? **feel**\nDo you ...... a board game?",
+            "answer": "feel like playing",
+            "acceptedAnswers": [
+              "feel like playing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Harry participated in the school concert last month. **part**\nHarry ...... in the school concert last month.",
+            "answer": "took part",
+            "acceptedAnswers": [
+              "took part"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u1-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u1-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My sister",
+            "sentenceAfter": "basketball every Friday after school.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "play"
+              },
+              {
+                "letter": "B",
+                "text": "plays"
+              },
+              {
+                "letter": "C",
+                "text": "is playing"
+              },
+              {
+                "letter": "D",
+                "text": "played"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Look! The children",
+            "sentenceAfter": "in the snow.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "played"
+              },
+              {
+                "letter": "B",
+                "text": "were playing"
+              },
+              {
+                "letter": "C",
+                "text": "are playing"
+              },
+              {
+                "letter": "D",
+                "text": "play"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I",
+            "sentenceAfter": "this film is really funny.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "think"
+              },
+              {
+                "letter": "B",
+                "text": "am thinking"
+              },
+              {
+                "letter": "C",
+                "text": "thought"
+              },
+              {
+                "letter": "D",
+                "text": "was thinking"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We",
+            "sentenceAfter": "to that campsite every summer when I was little.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "go"
+              },
+              {
+                "letter": "B",
+                "text": "are going"
+              },
+              {
+                "letter": "C",
+                "text": "went"
+              },
+              {
+                "letter": "D",
+                "text": "were going"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Tom",
+            "sentenceAfter": "TV when the lights went out.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "watched"
+              },
+              {
+                "letter": "B",
+                "text": "was watching"
+              },
+              {
+                "letter": "C",
+                "text": "watches"
+              },
+              {
+                "letter": "D",
+                "text": "is watching"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I",
+            "sentenceAfter": "play chess every day, but now I don't have time.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "used to"
+              },
+              {
+                "letter": "B",
+                "text": "use to"
+              },
+              {
+                "letter": "C",
+                "text": "am used to"
+              },
+              {
+                "letter": "D",
+                "text": "was used to"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They",
+            "sentenceAfter": "football when it started raining heavily.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "played"
+              },
+              {
+                "letter": "B",
+                "text": "were playing"
+              },
+              {
+                "letter": "C",
+                "text": "are playing"
+              },
+              {
+                "letter": "D",
+                "text": "play"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She",
+            "sentenceAfter": "how to play the piano very well.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "is knowing"
+              },
+              {
+                "letter": "B",
+                "text": "know"
+              },
+              {
+                "letter": "C",
+                "text": "knows"
+              },
+              {
+                "letter": "D",
+                "text": "was knowing"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Our class",
+            "sentenceAfter": "the quiz competition yesterday.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "wins"
+              },
+              {
+                "letter": "B",
+                "text": "won"
+              },
+              {
+                "letter": "C",
+                "text": "was winning"
+              },
+              {
+                "letter": "D",
+                "text": "win"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He",
+            "sentenceAfter": "live in London before moving abroad.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "used to"
+              },
+              {
+                "letter": "B",
+                "text": "uses to"
+              },
+              {
+                "letter": "C",
+                "text": "is used to"
+              },
+              {
+                "letter": "D",
+                "text": "was used to"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-11",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "How often",
+            "sentenceAfter": "video games?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "are you playing"
+              },
+              {
+                "letter": "B",
+                "text": "did you play"
+              },
+              {
+                "letter": "C",
+                "text": "do you play"
+              },
+              {
+                "letter": "D",
+                "text": "were you playing"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-12",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I",
+            "sentenceAfter": "what this word means.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "am not understanding"
+              },
+              {
+                "letter": "B",
+                "text": "don't understand"
+              },
+              {
+                "letter": "C",
+                "text": "wasn't understanding"
+              },
+              {
+                "letter": "D",
+                "text": "not understand"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-13",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "While we",
+            "sentenceAfter": "dinner, somebody knocked at the door.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "had"
+              },
+              {
+                "letter": "B",
+                "text": "have"
+              },
+              {
+                "letter": "C",
+                "text": "were having"
+              },
+              {
+                "letter": "D",
+                "text": "are having"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-14",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My cousin",
+            "sentenceAfter": "the drums in a school band.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "play"
+              },
+              {
+                "letter": "B",
+                "text": "is playing"
+              },
+              {
+                "letter": "C",
+                "text": "played"
+              },
+              {
+                "letter": "D",
+                "text": "plays"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u1-exd-15",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They",
+            "sentenceAfter": "go swimming in the river when they were children.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "used to"
+              },
+              {
+                "letter": "B",
+                "text": "use to"
+              },
+              {
+                "letter": "C",
+                "text": "are used to"
+              },
+              {
+                "letter": "D",
+                "text": "were used to"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u1-ex-e",
+        "type": "exercise",
+        "exerciseType": "word_bank_gap_fill",
+        "exerciseTypeName": "E: Complete the sentences",
+        "title": "E: Complete the sentences",
+        "instructions": "Complete using the words in the box.",
+        "studentInstruction": "Complete using the words in the box.",
+        "legacyKey": "E",
+        "legacyPattern": "word-bank-gap",
+        "interaction": {
+          "formatType": "word_bank_gap_fill"
+        },
+        "words": [
+          "break",
+          "captain",
+          "clap",
+          "drop",
+          "fan",
+          "final",
+          "last",
+          "match",
+          "racket",
+          "rule",
+          "shake",
+          "take",
+          "take",
+          "take",
+          "train"
+        ],
+        "wordBank": [
+          "break",
+          "captain",
+          "clap",
+          "drop",
+          "fan",
+          "final",
+          "last",
+          "match",
+          "racket",
+          "rule",
+          "shake",
+          "take",
+          "take",
+          "take",
+          "train"
+        ],
+        "items": [
+          {
+            "id": "b1-u1-exe-1",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "The coach ...... the team before the final match.",
+            "answer": "trained",
+            "acceptedAnswers": [
+              "trained"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-2",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "If you want to improve, you should ...... up a new sport.",
+            "answer": "take",
+            "acceptedAnswers": [
+              "take"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-3",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "The audience ...... loudly after the performance ended.",
+            "answer": "clapped",
+            "acceptedAnswers": [
+              "clapped"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-4",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "You need a tennis ...... to play this game properly.",
+            "answer": "racket",
+            "acceptedAnswers": [
+              "racket"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-5",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "The concert will ...... for about two hours.",
+            "answer": "last",
+            "acceptedAnswers": [
+              "last"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-6",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "She became the ...... of the school basketball team.",
+            "answer": "captain",
+            "acceptedAnswers": [
+              "captain"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-7",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "You should follow the ...... if you want to play fairly.",
+            "answer": "rules",
+            "acceptedAnswers": [
+              "rules"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-8",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Our team reached the ...... of the tournament.",
+            "answer": "final",
+            "acceptedAnswers": [
+              "final"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-9",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "The athlete wants to ...... the national record.",
+            "answer": "break",
+            "acceptedAnswers": [
+              "break"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-10",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "We ...... part in a singing competition last month.",
+            "answer": "took",
+            "acceptedAnswers": [
+              "took"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-11",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "The players ...... hands before the match started.",
+            "answer": "shook",
+            "acceptedAnswers": [
+              "shook"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-12",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Ben gave up football and ...... up karate instead.",
+            "answer": "took",
+            "acceptedAnswers": [
+              "took"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-13",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Thousands of ...... watched the concert online.",
+            "answer": "fans",
+            "acceptedAnswers": [
+              "fans"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-14",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "It was an exciting ...... and everybody enjoyed it.",
+            "answer": "match",
+            "acceptedAnswers": [
+              "match"
+            ]
+          },
+          {
+            "id": "b1-u1-exe-15",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "She ...... out of the race because she hurt her ankle.",
+            "answer": "dropped",
+            "acceptedAnswers": [
+              "dropped"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

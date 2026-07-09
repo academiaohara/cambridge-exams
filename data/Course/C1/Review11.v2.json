@@ -1,0 +1,844 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 11,
+  "unit": 11,
+  "type": "review",
+  "unitTitle": "Review: Block 11 – Units 21 & 22",
+  "unitSubtitle": "Review: Block 11 – Units 21 & 22",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "Review: Block 11 – Units 21 & 22"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/C1/Review11.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-r11-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "word_bank_gap_fill",
+        "displayName": "Complete with words from the box",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "word_bank_chips_plus_gap_input",
+          "studentAction": "tap_word_or_type_answer",
+          "evaluationTrigger": "check_button",
+          "chipLayout": "wrap_scroll"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-r11-node-1",
+      "title": "Review: Block 11 – Units 21 & 22",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "word_bank_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 27,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u11-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "c1-u11-exa-1",
+            "c1-u11-exa-2",
+            "c1-u11-exa-3",
+            "c1-u11-exa-4",
+            "c1-u11-exa-5",
+            "c1-u11-exa-6",
+            "c1-u11-exa-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u11-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u11-exb-1",
+            "c1-u11-exb-2",
+            "c1-u11-exb-3",
+            "c1-u11-exb-4",
+            "c1-u11-exb-5",
+            "c1-u11-exb-6",
+            "c1-u11-exb-7",
+            "c1-u11-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u11-ex-c",
+          "formatType": "word_bank_gap_fill",
+          "sourceItemIds": [
+            "c1-u11-exc-1",
+            "c1-u11-exc-2",
+            "c1-u11-exc-3",
+            "c1-u11-exc-4",
+            "c1-u11-exc-5",
+            "c1-u11-exc-6",
+            "c1-u11-exc-7",
+            "c1-u11-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u11-ex-d",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "c1-u11-exd-1",
+            "c1-u11-exd-2",
+            "c1-u11-exd-3",
+            "c1-u11-exd-4",
+            "c1-u11-exd-5",
+            "c1-u11-exd-6",
+            "c1-u11-exd-7",
+            "c1-u11-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u11-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "c1-u11-exe-1",
+            "c1-u11-exe-2",
+            "c1-u11-exe-3",
+            "c1-u11-exe-4",
+            "c1-u11-exe-5",
+            "c1-u11-exe-6",
+            "c1-u11-exe-7",
+            "c1-u11-exe-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 39,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u11-ex-a",
+      "c1-u11-ex-b",
+      "c1-u11-ex-c",
+      "c1-u11-ex-d",
+      "c1-u11-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u11-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Gap Fill (One Word)",
+        "title": "A: Gap Fill (One Word)",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u11-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The young comedian completely stole the (1) ................ at the city's annual comedy festival.",
+            "answer": "show",
+            "acceptedAnswers": [
+              "show"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Stage Review Weekly described their debut performance as nothing short of '(2) ................ of this world'.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Devoted fans of Phoenix Rising will be relieved to hear the cast have patched things (3) ................ and are preparing a brand (4) ................ season.",
+            "answer": "up, new",
+            "acceptedAnswers": [
+              "up, new"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The two opening acts, Dream Weaver and Echoes of Yesterday, don't particularly (5) ................ out as remarkable, but (6) ................ its best, the show contains some of the most breathtaking scenes Phoenix Rising has ever staged.",
+            "answer": "stand, at",
+            "acceptedAnswers": [
+              "stand, at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "There's no question they've got physical theatre (7) ................ to a fine art, and when they truly nail it, they nail it (8) ................ style.",
+            "answer": "down, in",
+            "acceptedAnswers": [
+              "down, in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "★★★ definitely check it (9) ................",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exa-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "★★★★ takes (10) ................ of place in any serious theatre-lover's diary",
+            "answer": "pride",
+            "acceptedAnswers": [
+              "pride"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u11-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Key Word Transformation",
+        "title": "B: Key Word Transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u11-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There's hardly any difference between jealousy and envy. **line**\nThere's ...... between jealousy and envy.",
+            "answer": "a fine line",
+            "acceptedAnswers": [
+              "a fine line"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I genuinely mean every word of support I'm offering you right now. **bottom**\nI am supporting you ...... right now.",
+            "answer": "from the bottom of my heart",
+            "acceptedAnswers": [
+              "from the bottom of my heart"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "As far as I'm aware, nothing unusual has been reported about the incident. **best**\nTo ...... , nothing unusual has been reported about the incident.",
+            "answer": "the best of my knowledge",
+            "acceptedAnswers": [
+              "the best of my knowledge"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Perhaps I haven't stated this precisely enough – I will not be attending the conference. **clear**\nPerhaps I didn't ...... – I will not be attending the conference.",
+            "answer": "make myself clear",
+            "acceptedAnswers": [
+              "make myself clear"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Sandra is struggling to manage all the responsibilities she has recently taken on. **top**\nAll the responsibilities Sandra has recently taken on ...... her.",
+            "answer": "are getting on top of",
+            "acceptedAnswers": [
+              "are getting on top of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I have absolutely nothing to regret about my decision, Thomas. **clear**\nI ...... about my decision, Thomas.",
+            "answer": "have a clear conscience",
+            "acceptedAnswers": [
+              "have a clear conscience"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The inspectors are committed to discovering the full truth about what occurred that evening. **bottom**\nThe inspectors are committed to ...... what occurred that evening.",
+            "answer": "get to the bottom of",
+            "acceptedAnswers": [
+              "get to the bottom of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm sorry to say the patient's condition deteriorated significantly yesterday. **turn**\nI'm sorry to say the patient's condition ...... yesterday.",
+            "answer": "took a turn for the worse",
+            "acceptedAnswers": [
+              "took a turn for the worse"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u11-ex-c",
+        "type": "exercise",
+        "exerciseType": "word_bank_gap_fill",
+        "exerciseTypeName": "C: Word Forms (Phrasal Verbs)",
+        "title": "C: Word Forms (Phrasal Verbs)",
+        "instructions": "Complete using the words in the box in the correct form. You will not need one of the words.",
+        "studentInstruction": "Complete using the words in the box in the correct form. You will not need one of the words.",
+        "legacyKey": "C",
+        "legacyPattern": "word-bank-gap",
+        "interaction": {
+          "formatType": "word_bank_gap_fill"
+        },
+        "words": [
+          "pick",
+          "write",
+          "run",
+          "touch",
+          "smarten",
+          "liven",
+          "scrape",
+          "brighten",
+          "look"
+        ],
+        "wordBank": [
+          "pick",
+          "write",
+          "run",
+          "touch",
+          "smarten",
+          "liven",
+          "scrape",
+          "brighten",
+          "look"
+        ],
+        "items": [
+          {
+            "id": "c1-u11-exc-1",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Bookings are expected to ...... up considerably once the new season begins.",
+            "answer": "pick",
+            "acceptedAnswers": [
+              "pick"
+            ]
+          },
+          {
+            "id": "c1-u11-exc-2",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "The motorbike was so severely damaged that the insurance company had to ...... it off.",
+            "answer": "write",
+            "acceptedAnswers": [
+              "write"
+            ]
+          },
+          {
+            "id": "c1-u11-exc-3",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "If the council continues to ...... this neighbourhood down, local businesses will eventually close.",
+            "answer": "runs",
+            "acceptedAnswers": [
+              "runs"
+            ]
+          },
+          {
+            "id": "c1-u11-exc-4",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "There's a tiny scratch on the painting's surface, but the restorer can ...... that up with ease.",
+            "answer": "touch",
+            "acceptedAnswers": [
+              "touch"
+            ]
+          },
+          {
+            "id": "c1-u11-exc-5",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Graduates quickly find themselves ...... up their wardrobe when they start their first professional job.",
+            "answer": "smartening",
+            "acceptedAnswers": [
+              "smartening"
+            ]
+          },
+          {
+            "id": "c1-u11-exc-6",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "The seminar started rather slowly, but the room ...... up considerably once the guest speaker arrived.",
+            "answer": "livened",
+            "acceptedAnswers": [
+              "livened"
+            ]
+          },
+          {
+            "id": "c1-u11-exc-7",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "After barely revising, I knew I'd either fail completely or just ...... through by the skin of my teeth.",
+            "answer": "scrape",
+            "acceptedAnswers": [
+              "scrape"
+            ]
+          },
+          {
+            "id": "c1-u11-exc-8",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "The forecast says it will be overcast until midday, but the sky should ...... up towards evening.",
+            "answer": "brighten",
+            "acceptedAnswers": [
+              "brighten"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c1-u11-ex-d",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "D: Word Formation",
+        "title": "D: Word Formation",
+        "instructions": "Complete the sentences by changing the form of the word in capitals.",
+        "studentInstruction": "Complete the sentences by changing the form of the word in capitals.",
+        "legacyKey": "D",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u11-exd-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The diamonds in the display case looked stunning, but they turned out to be entirely ...... (ART) .",
+            "answer": "artificial",
+            "acceptedAnswers": [
+              "artificial"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exd-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "She placed her job offer in the local paper's ...... (CLASS) section to attract suitable candidates.",
+            "answer": "classifieds",
+            "acceptedAnswers": [
+              "classifieds"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exd-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My colleague is such a ...... (PERFECT) that she rewrites every report at least three times before submitting it.",
+            "answer": "perfectionist",
+            "acceptedAnswers": [
+              "perfectionist"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exd-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The earthquake left a trail of ...... (DESTROY) across several villages in the mountain region.",
+            "answer": "destruction",
+            "acceptedAnswers": [
+              "destruction"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exd-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Losing the championship in her debut year only ...... (STRONG) her determination to train even harder.",
+            "answer": "strengthened",
+            "acceptedAnswers": [
+              "strengthened"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exd-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The painting hanging in the lobby isn't an original masterpiece – it's a high-quality ...... (IMITATE) .",
+            "answer": "imitation",
+            "acceptedAnswers": [
+              "imitation"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exd-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Guests are strongly advised to keep their ...... (VALUE) in the secure deposit box provided in each room.",
+            "answer": "valuables",
+            "acceptedAnswers": [
+              "valuables"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exd-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Building ...... (GOOD) with clients takes years of consistent service, but it can be lost through a single mistake.",
+            "answer": "goodwill",
+            "acceptedAnswers": [
+              "goodwill"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u11-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Multiple Choice",
+        "title": "E: Multiple Choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "c1-u11-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "James had wiped every surface twice, yet his aunt still managed to spot a single",
+            "sentenceAfter": "of dust on the bookshelf.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "scrap"
+              },
+              {
+                "letter": "B",
+                "text": "gust"
+              },
+              {
+                "letter": "C",
+                "text": "speck"
+              },
+              {
+                "letter": "D",
+                "text": "blade"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "A significant",
+            "sentenceAfter": "of people had gathered outside the station, though nobody seemed to know exactly why.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "amount"
+              },
+              {
+                "letter": "B",
+                "text": "deal"
+              },
+              {
+                "letter": "C",
+                "text": "number"
+              },
+              {
+                "letter": "D",
+                "text": "plenty"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "of geese flying south are a familiar and spectacular sight when autumn begins to set in.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Herds"
+              },
+              {
+                "letter": "B",
+                "text": "Flocks"
+              },
+              {
+                "letter": "C",
+                "text": "Packs"
+              },
+              {
+                "letter": "D",
+                "text": "Groups"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Only",
+            "sentenceAfter": "students have enrolled in the advanced module so far, although registration is still open for another week.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "few"
+              },
+              {
+                "letter": "B",
+                "text": "a few"
+              },
+              {
+                "letter": "C",
+                "text": "little"
+              },
+              {
+                "letter": "D",
+                "text": "a little"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The film was rather disappointing overall. Its only redeeming",
+            "sentenceAfter": "was the exceptional performance of the lead actress.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "aspect"
+              },
+              {
+                "letter": "B",
+                "text": "feature"
+              },
+              {
+                "letter": "C",
+                "text": "element"
+              },
+              {
+                "letter": "D",
+                "text": "factor"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Packed with over 600 chart-toppers spanning four decades, this double album is truly the",
+            "sentenceAfter": "retro music collection.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "exquisite"
+              },
+              {
+                "letter": "B",
+                "text": "satisfactory"
+              },
+              {
+                "letter": "C",
+                "text": "optimum"
+              },
+              {
+                "letter": "D",
+                "text": "ultimate"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The bridge structure is",
+            "sentenceAfter": "with steel cables running along its entire length, allowing it to withstand extreme loads.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "reinforced"
+              },
+              {
+                "letter": "B",
+                "text": "refurbished"
+              },
+              {
+                "letter": "C",
+                "text": "renovated"
+              },
+              {
+                "letter": "D",
+                "text": "streamlined"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u11-exe-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "That old camera is a genuine collector's",
+            "sentenceAfter": "; a specialist recently valued it at over two thousand pounds.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "bit"
+              },
+              {
+                "letter": "B",
+                "text": "article"
+              },
+              {
+                "letter": "C",
+                "text": "object"
+              },
+              {
+                "letter": "D",
+                "text": "item"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

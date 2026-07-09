@@ -1,0 +1,854 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 2,
+  "unit": 2,
+  "type": "review",
+  "unitTitle": "Review: Block 2 – Units 3 & 4",
+  "unitSubtitle": "Review: Block 2 – Units 3 & 4",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "Review: Block 2 – Units 3 & 4"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/C1/Review2.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-r2-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-r2-node-1",
+      "title": "Review: Block 2 – Units 3 & 4",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 27,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u2-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "c1-u2-exa-1",
+            "c1-u2-exa-2",
+            "c1-u2-exa-3",
+            "c1-u2-exa-4",
+            "c1-u2-exa-5",
+            "c1-u2-exa-6",
+            "c1-u2-exa-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "c1-u2-exb-1",
+            "c1-u2-exb-2",
+            "c1-u2-exb-3",
+            "c1-u2-exb-4",
+            "c1-u2-exb-5",
+            "c1-u2-exb-6",
+            "c1-u2-exb-7",
+            "c1-u2-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u2-exc-1",
+            "c1-u2-exc-2",
+            "c1-u2-exc-3",
+            "c1-u2-exc-4",
+            "c1-u2-exc-5",
+            "c1-u2-exc-6",
+            "c1-u2-exc-7",
+            "c1-u2-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u2-exd-1",
+            "c1-u2-exd-2",
+            "c1-u2-exd-3",
+            "c1-u2-exd-4",
+            "c1-u2-exd-5",
+            "c1-u2-exd-6",
+            "c1-u2-exd-7",
+            "c1-u2-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u2-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "c1-u2-exe-1",
+            "c1-u2-exe-2",
+            "c1-u2-exe-3",
+            "c1-u2-exe-4",
+            "c1-u2-exe-5",
+            "c1-u2-exe-6",
+            "c1-u2-exe-7",
+            "c1-u2-exe-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 39,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u2-ex-a",
+      "c1-u2-ex-b",
+      "c1-u2-ex-c",
+      "c1-u2-ex-d",
+      "c1-u2-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u2-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Word Formation",
+        "title": "A: Word Formation",
+        "instructions": "Use the word given in capitals to form a word that fits in the space.",
+        "studentInstruction": "Use the word given in capitals to form a word that fits in the space.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Born in 1953, Canadian scientist Dr Laura Prentiss has an (1) ...... (ENDURE) legacy in the environmental science community for her groundbreaking work on clean energy.",
+            "answer": "enduring",
+            "acceptedAnswers": [
+              "enduring"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "She was the researcher who (2) ...... (REVOLT) our understanding of solar panel efficiency,",
+            "answer": "revolutionised",
+            "acceptedAnswers": [
+              "revolutionised"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "and she also proposed a radical (3) ...... (ALTER) to fossil fuels that sparked considerable debate across the scientific world.",
+            "answer": "alternative",
+            "acceptedAnswers": [
+              "alternative"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Her original battery design, and its greatly improved (4) ...... (PLACE), the GridCell Pro, became essential components in renewable energy grids around the globe.",
+            "answer": "replacement",
+            "acceptedAnswers": [
+              "replacement"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Despite the limited (5) ...... (CAPABLE) of early prototypes, they gave remote communities reliable access to power and even enabled local (6) ...... (PROCESS) of sustainable resources.",
+            "answer": "capability, processing",
+            "acceptedAnswers": [
+              "capability, processing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The GridCell Pro, a compact unit powered entirely by (7) ...... (ELECTRIC), was launched in 1996 and represented Prentiss's bold effort to (8) ...... (MODERN) the way communities stored energy.",
+            "answer": "electricity, modernise",
+            "acceptedAnswers": [
+              "electricity, modernise"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exa-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "However, the first commercial model was (9) ...... (PERSIST) criticised by investors for being too costly to manufacture on a large scale, and full production was (10) ...... (CONTINUE) in the spring of 2001.",
+            "answer": "persistently, discontinued",
+            "acceptedAnswers": [
+              "persistently, discontinued"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "B: Multiple Choice (Grammar)",
+        "title": "B: Multiple Choice (Grammar)",
+        "instructions": "Circle the correct word or phrase.",
+        "studentInstruction": "Circle the correct word or phrase.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "When I",
+            "sentenceAfter": "Laura, she was jogging along the riverside path.",
+            "options": [
+              "spotted",
+              "was spotting"
+            ],
+            "answer": "spotted",
+            "originalSentence": "When I **spotted / was spotting** Laura, she was jogging along the riverside path.",
+            "completedSentence": "When I spotted Laura, she was jogging along the riverside path."
+          },
+          {
+            "id": "c1-u2-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Emma wasn't surprised by the news because she",
+            "sentenceAfter": "the report.",
+            "options": [
+              "already read",
+              "had already read"
+            ],
+            "answer": "had already read",
+            "originalSentence": "Emma wasn't surprised by the news because she **already read / had already read** the report.",
+            "completedSentence": "Emma wasn't surprised by the news because she had already read the report."
+          },
+          {
+            "id": "c1-u2-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "He was embarrassed because it was the first time he",
+            "sentenceAfter": "such spicy food.",
+            "options": [
+              "tasted",
+              "had tasted"
+            ],
+            "answer": "had tasted",
+            "originalSentence": "He was embarrassed because it was the first time he **tasted / had tasted** such spicy food.",
+            "completedSentence": "He was embarrassed because it was the first time he had tasted such spicy food."
+          },
+          {
+            "id": "c1-u2-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "As a teenager, my neighbour",
+            "sentenceAfter": "collect rare stamps from all over the world.",
+            "options": [
+              "would",
+              "used to"
+            ],
+            "answer": "used to",
+            "originalSentence": "As a teenager, my neighbour **would / used to** collect rare stamps from all over the world.",
+            "completedSentence": "As a teenager, my neighbour used to collect rare stamps from all over the world."
+          },
+          {
+            "id": "c1-u2-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I",
+            "sentenceAfter": "so relieved when the exam results finally came out.",
+            "options": [
+              "was",
+              "have been"
+            ],
+            "answer": "was",
+            "originalSentence": "I **was / have been** so relieved when the exam results finally came out.",
+            "completedSentence": "I was so relieved when the exam results finally came out."
+          },
+          {
+            "id": "c1-u2-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She",
+            "sentenceAfter": "our tools and then forgetting to return them.",
+            "options": [
+              "was always borrowing",
+              "had always borrowed"
+            ],
+            "answer": "was always borrowing",
+            "originalSentence": "She **was always borrowing / had always borrowed** our tools and then forgetting to return them.",
+            "completedSentence": "She was always borrowing our tools and then forgetting to return them."
+          },
+          {
+            "id": "c1-u2-exb-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The puppy",
+            "sentenceAfter": "its tail all morning, so it was completely exhausted by lunchtime.",
+            "options": [
+              "chased",
+              "had been chasing"
+            ],
+            "answer": "had been chasing",
+            "originalSentence": "The puppy **chased / had been chasing** its tail all morning, so it was completely exhausted by lunchtime.",
+            "completedSentence": "The puppy had been chasing its tail all morning, so it was completely exhausted by lunchtime."
+          },
+          {
+            "id": "c1-u2-exb-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "After three months at sea, the sailors",
+            "sentenceAfter": "in narrow bunks.",
+            "options": [
+              "were used to sleeping",
+              "used to sleep"
+            ],
+            "answer": "were used to sleeping",
+            "originalSentence": "After three months at sea, the sailors **were used to sleeping / used to sleep** in narrow bunks.",
+            "completedSentence": "After three months at sea, the sailors were used to sleeping in narrow bunks."
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Key Word Transformation",
+        "title": "C: Key Word Transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Don't you think we should tidy the office before the inspection? **up**\nIsn't it about time ...... the office before the inspection?",
+            "answer": "we spruced up",
+            "acceptedAnswers": [
+              "we spruced up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Why should I give you suggestions if you are just going to ignore them? **use**\nWhat's ...... you suggestions if you are just going to ignore them?",
+            "answer": "the use of me offering",
+            "acceptedAnswers": [
+              "the use of me offering"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The rehabilitation programme appears to have completely transformed Danny's attitude. **leaf**\nDanny has ...... he completed the rehabilitation programme.",
+            "answer": "turned over a new leaf since",
+            "acceptedAnswers": [
+              "turned over a new leaf since"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There's no point moaning to me about it since nothing is going to change. **good**\nIt's ...... it since nothing is going to change.",
+            "answer": "no good complaining to me about",
+            "acceptedAnswers": [
+              "no good complaining to me about"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You have very little time left to submit this report, so you need to focus. **clock**\nYou are ...... , so you need to focus.",
+            "answer": "working against the clock",
+            "acceptedAnswers": [
+              "working against the clock"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When Marco's dream of climbing Everest finally came true, he was completely overwhelmed. **reality**\nMarco was completely overwhelmed when his lifelong dream of climbing Everest ...... .",
+            "answer": "became a reality",
+            "acceptedAnswers": [
+              "became a reality"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I often think that Rachel is actually her identical twin sister, Paula. **mix**\nI often ...... her identical twin sister, Paula.",
+            "answer": "mix Rachel up with",
+            "acceptedAnswers": [
+              "mix Rachel up with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Would you ever want to live the life of a professional athlete? **places**\nWould you ever want to ...... a professional athlete?",
+            "answer": "swap places with",
+            "acceptedAnswers": [
+              "swap places with"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Gap Fill (Prepositions / Collocations)",
+        "title": "D: Gap Fill (Prepositions / Collocations)",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Rodriguez was ...... the lead for the entire race until she stumbled near the finish line.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm afraid the laboratory is ...... use at the moment, but you are welcome to wait outside.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The new library card gives all students free access ...... thousands of digital publications.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The physiotherapist confirmed that the athlete's condition had changed ...... the better after two weeks of treatment.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Due to unforeseen circumstances, the ceremony will be rescheduled and held ...... a later date.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Not all the sources you come across ...... the Web are reliable or accurate.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm sure Lucas didn't mean to upset you; he couldn't have done it ...... purpose.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exd-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The young swimmer has been ...... excellent form all season and is tipped to break the record.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u2-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Multiple Choice (Grammar & Vocabulary)",
+        "title": "E: Multiple Choice (Grammar & Vocabulary)",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "c1-u2-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "When Sophie rang, she sounded as though she",
+            "sentenceAfter": "some very distressing news.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "had"
+              },
+              {
+                "letter": "B",
+                "text": "had had"
+              },
+              {
+                "letter": "C",
+                "text": "had been having"
+              },
+              {
+                "letter": "D",
+                "text": "would have"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "At the very moment you knocked on the door, I",
+            "sentenceAfter": "ready to leave the house.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "have got"
+              },
+              {
+                "letter": "B",
+                "text": "would get"
+              },
+              {
+                "letter": "C",
+                "text": "have been getting"
+              },
+              {
+                "letter": "D",
+                "text": "was getting"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Social media has had a massive",
+            "sentenceAfter": "on the way teenagers communicate with one another.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "impression"
+              },
+              {
+                "letter": "B",
+                "text": "influence"
+              },
+              {
+                "letter": "C",
+                "text": "change"
+              },
+              {
+                "letter": "D",
+                "text": "alteration"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Strange as it may sound, last night was actually the first time I",
+            "sentenceAfter": "a home-cooked Moroccan meal.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "was eating"
+              },
+              {
+                "letter": "B",
+                "text": "have eaten"
+              },
+              {
+                "letter": "C",
+                "text": "have been eating"
+              },
+              {
+                "letter": "D",
+                "text": "had eaten"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Make sure you",
+            "sentenceAfter": "up your files regularly, as your hard drive could fail at any time.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "back"
+              },
+              {
+                "letter": "B",
+                "text": "copy"
+              },
+              {
+                "letter": "C",
+                "text": "store"
+              },
+              {
+                "letter": "D",
+                "text": "save"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The journalist was accused of",
+            "sentenceAfter": "the facts to make the story appear more dramatic.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "distorting"
+              },
+              {
+                "letter": "B",
+                "text": "revising"
+              },
+              {
+                "letter": "C",
+                "text": "reforming"
+              },
+              {
+                "letter": "D",
+                "text": "shifting"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "That modern sculpture looks a bit out of",
+            "sentenceAfter": "in the old town square, don't you think?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "room"
+              },
+              {
+                "letter": "B",
+                "text": "space"
+              },
+              {
+                "letter": "C",
+                "text": "place"
+              },
+              {
+                "letter": "D",
+                "text": "spot"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u2-exe-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She missed her early flight because she",
+            "sentenceAfter": "about packing all night and ended up oversleeping.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "worried"
+              },
+              {
+                "letter": "B",
+                "text": "have been worrying"
+              },
+              {
+                "letter": "C",
+                "text": "had been worrying"
+              },
+              {
+                "letter": "D",
+                "text": "had worried"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

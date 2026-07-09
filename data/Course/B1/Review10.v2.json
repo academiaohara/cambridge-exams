@@ -1,0 +1,1077 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 10,
+  "unit": 10,
+  "type": "review",
+  "unitTitle": "Review 10: Units 28, 29 and 30",
+  "unitSubtitle": "Review 10: Units 28, 29 and 30",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Review 10: Units 28, 29 and 30"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B1/Review10.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-r10-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-r10-node-1",
+      "title": "Review 10: Units 28, 29 and 30",
+      "shortTitle": "Review",
+      "focus": [
+        "two_option_choice",
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 35,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u10-ex-a",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "b1-u10-exa-1",
+            "b1-u10-exa-2",
+            "b1-u10-exa-3",
+            "b1-u10-exa-4",
+            "b1-u10-exa-5",
+            "b1-u10-exa-6",
+            "b1-u10-exa-7",
+            "b1-u10-exa-8",
+            "b1-u10-exa-9",
+            "b1-u10-exa-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u10-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u10-exb-1",
+            "b1-u10-exb-2",
+            "b1-u10-exb-3",
+            "b1-u10-exb-4",
+            "b1-u10-exb-5",
+            "b1-u10-exb-6",
+            "b1-u10-exb-7",
+            "b1-u10-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u10-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u10-exc-1",
+            "b1-u10-exc-2",
+            "b1-u10-exc-3",
+            "b1-u10-exc-4",
+            "b1-u10-exc-5"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u10-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u10-exd-1",
+            "b1-u10-exd-2",
+            "b1-u10-exd-3",
+            "b1-u10-exd-4",
+            "b1-u10-exd-5",
+            "b1-u10-exd-6",
+            "b1-u10-exd-7",
+            "b1-u10-exd-8",
+            "b1-u10-exd-9",
+            "b1-u10-exd-10",
+            "b1-u10-exd-11",
+            "b1-u10-exd-12",
+            "b1-u10-exd-13",
+            "b1-u10-exd-14"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u10-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u10-exe-1",
+            "b1-u10-exe-2",
+            "b1-u10-exe-3",
+            "b1-u10-exe-4",
+            "b1-u10-exe-5",
+            "b1-u10-exe-6",
+            "b1-u10-exe-7",
+            "b1-u10-exe-8",
+            "b1-u10-exe-9",
+            "b1-u10-exe-10",
+            "b1-u10-exe-11",
+            "b1-u10-exe-12",
+            "b1-u10-exe-13"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 50,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u10-ex-a",
+      "b1-u10-ex-b",
+      "b1-u10-ex-c",
+      "b1-u10-ex-d",
+      "b1-u10-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u10-ex-a",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "A: Circle the correct word",
+        "title": "A: Circle the correct word",
+        "instructions": "Choose the correct option in each sentence.",
+        "studentInstruction": "Choose the correct option in each sentence.",
+        "legacyKey": "A",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "b1-u10-exa-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "You should eat less sugar if you're on a",
+            "sentenceAfter": ".",
+            "options": [
+              "diet",
+              "cure"
+            ],
+            "answer": "diet",
+            "originalSentence": "You should eat less sugar if you're on a **diet / cure**.",
+            "completedSentence": "You should eat less sugar if you're on a diet ."
+          },
+          {
+            "id": "b1-u10-exa-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "the onions carefully before cooking them.",
+            "options": [
+              "Chew",
+              "Chop"
+            ],
+            "answer": "chop",
+            "originalSentence": "**Chew / Chop** the onions carefully before cooking them.",
+            "completedSentence": "chop the onions carefully before cooking them."
+          },
+          {
+            "id": "b1-u10-exa-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "What",
+            "sentenceAfter": "do we need for the soup?",
+            "options": [
+              "ingredients",
+              "infections"
+            ],
+            "answer": "ingredients",
+            "originalSentence": "What **ingredients / infections** do we need for the soup?",
+            "completedSentence": "What ingredients do we need for the soup?"
+          },
+          {
+            "id": "b1-u10-exa-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "the pasta sauce while it cooks.",
+            "options": [
+              "Stir",
+              "Slice"
+            ],
+            "answer": "stir",
+            "originalSentence": "**Stir / Slice** the pasta sauce while it cooks.",
+            "completedSentence": "stir the pasta sauce while it cooks."
+          },
+          {
+            "id": "b1-u10-exa-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This yoghurt tastes too",
+            "sentenceAfter": "to eat.",
+            "options": [
+              "sour",
+              "spicy"
+            ],
+            "answer": "sour",
+            "originalSentence": "This yoghurt tastes too **sour / spicy** to eat.",
+            "completedSentence": "This yoghurt tastes too sour to eat."
+          },
+          {
+            "id": "b1-u10-exa-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "In",
+            "sentenceAfter": "with last year, I'm much healthier now.",
+            "options": [
+              "comparison",
+              "benefit"
+            ],
+            "answer": "comparison",
+            "originalSentence": "In **comparison / benefit** with last year, I'm much healthier now.",
+            "completedSentence": "In comparison with last year, I'm much healthier now."
+          },
+          {
+            "id": "b1-u10-exa-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "This cereal doesn't",
+            "sentenceAfter": "much sugar.",
+            "options": [
+              "contain",
+              "limit"
+            ],
+            "answer": "contain",
+            "originalSentence": "This cereal doesn't **contain / limit** much sugar.",
+            "completedSentence": "This cereal doesn't contain much sugar."
+          },
+          {
+            "id": "b1-u10-exa-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "He's at home with the",
+            "sentenceAfter": "today.",
+            "options": [
+              "flu",
+              "cough"
+            ],
+            "answer": "flu",
+            "originalSentence": "He's at home with the **flu / cough** today.",
+            "completedSentence": "He's at home with the flu today."
+          },
+          {
+            "id": "b1-u10-exa-9",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Have you ever",
+            "sentenceAfter": "from back pain?",
+            "options": [
+              "suffered",
+              "recovered"
+            ],
+            "answer": "suffered",
+            "originalSentence": "Have you ever **suffered / recovered** from back pain?",
+            "completedSentence": "Have you ever suffered from back pain?"
+          },
+          {
+            "id": "b1-u10-exa-10",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Don't",
+            "sentenceAfter": "the warning signs of illness.",
+            "options": [
+              "affect",
+              "ignore"
+            ],
+            "answer": "ignore",
+            "originalSentence": "Don't **affect / ignore** the warning signs of illness.",
+            "completedSentence": "Don't ignore the warning signs of illness."
+          }
+        ]
+      },
+      {
+        "id": "b1-u10-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: Word formation",
+        "title": "B: Word formation",
+        "instructions": "Complete the sentences by changing the form of the word in capitals.",
+        "studentInstruction": "Complete the sentences by changing the form of the word in capitals.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u10-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Her skin is very ...... (SENSE), so she uses special cream.",
+            "answer": "sensitive",
+            "acceptedAnswers": [
+              "sensitive"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Would you like to go ...... (JOG) this evening?",
+            "answer": "jogging",
+            "acceptedAnswers": [
+              "jogging"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "That injection was really ...... (PAIN).",
+            "answer": "painful",
+            "acceptedAnswers": [
+              "painful"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "There are many ...... (MEDICINE) websites online.",
+            "answer": "medical",
+            "acceptedAnswers": [
+              "medical"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Regular exercise helps you lose ...... (WEIGH).",
+            "answer": "weight",
+            "acceptedAnswers": [
+              "weight"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "It wasn't ...... (INTEND); it happened by accident.",
+            "answer": "intentional",
+            "acceptedAnswers": [
+              "intentional"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exb-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The metal bars were completely ...... (BEND).",
+            "answer": "bent",
+            "acceptedAnswers": [
+              "bent"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exb-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My parents bought a new electric ...... (COOK).",
+            "answer": "cooker",
+            "acceptedAnswers": [
+              "cooker"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u10-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Key Word Transformation",
+        "title": "C: Key Word Transformation",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u10-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I've gained weight recently. **on**\nI've ...... weight recently.",
+            "answer": "put on",
+            "acceptedAnswers": [
+              "put on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should eat less junk food. **down**\nYou should ...... junk food.",
+            "answer": "cut down on",
+            "acceptedAnswers": [
+              "cut down on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "This cheese isn't fresh anymore. **gone**\nThis cheese ...... .",
+            "answer": "has gone off",
+            "acceptedAnswers": [
+              "has gone off"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Seafood causes me allergic reactions. **allergic**\nI ...... seafood.",
+            "answer": "am allergic to",
+            "acceptedAnswers": [
+              "am allergic to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I hope he recovers from the flu quickly. **over**\nI hope he ...... the flu quickly.",
+            "answer": "gets over",
+            "acceptedAnswers": [
+              "gets over"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u10-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u10-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If you don't drink enough water, you",
+            "sentenceAfter": "tired.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "get"
+              },
+              {
+                "letter": "B",
+                "text": "would get"
+              },
+              {
+                "letter": "C",
+                "text": "got"
+              },
+              {
+                "letter": "D",
+                "text": "had got"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If I",
+            "sentenceAfter": "more free time, I would cook healthier meals.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "have"
+              },
+              {
+                "letter": "B",
+                "text": "had"
+              },
+              {
+                "letter": "C",
+                "text": "will have"
+              },
+              {
+                "letter": "D",
+                "text": "had had"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She",
+            "sentenceAfter": "healthier if she exercised more often.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "becomes"
+              },
+              {
+                "letter": "B",
+                "text": "became"
+              },
+              {
+                "letter": "C",
+                "text": "would become"
+              },
+              {
+                "letter": "D",
+                "text": "had become"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If we had left earlier, we",
+            "sentenceAfter": "the doctor on time.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "would reach"
+              },
+              {
+                "letter": "B",
+                "text": "would have reached"
+              },
+              {
+                "letter": "C",
+                "text": "reached"
+              },
+              {
+                "letter": "D",
+                "text": "will reach"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If people eat too much sugar, they",
+            "sentenceAfter": "weight.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "gained"
+              },
+              {
+                "letter": "B",
+                "text": "gain"
+              },
+              {
+                "letter": "C",
+                "text": "would gain"
+              },
+              {
+                "letter": "D",
+                "text": "had gained"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "What",
+            "sentenceAfter": "if you found a cure for this illness?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "will you do"
+              },
+              {
+                "letter": "B",
+                "text": "did you do"
+              },
+              {
+                "letter": "C",
+                "text": "would you do"
+              },
+              {
+                "letter": "D",
+                "text": "had you done"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If he",
+            "sentenceAfter": "harder, he wouldn't have become ill.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "trained"
+              },
+              {
+                "letter": "B",
+                "text": "trains"
+              },
+              {
+                "letter": "C",
+                "text": "had trained"
+              },
+              {
+                "letter": "D",
+                "text": "would train"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Unless you sleep enough, you",
+            "sentenceAfter": "exhausted.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "become"
+              },
+              {
+                "letter": "B",
+                "text": "would become"
+              },
+              {
+                "letter": "C",
+                "text": "will become"
+              },
+              {
+                "letter": "D",
+                "text": "became"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She",
+            "sentenceAfter": "a doctor if the cough continues.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "sees"
+              },
+              {
+                "letter": "B",
+                "text": "saw"
+              },
+              {
+                "letter": "C",
+                "text": "would see"
+              },
+              {
+                "letter": "D",
+                "text": "will see"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If everyone",
+            "sentenceAfter": "more exercise, obesity rates would fall.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "does"
+              },
+              {
+                "letter": "B",
+                "text": "did"
+              },
+              {
+                "letter": "C",
+                "text": "had done"
+              },
+              {
+                "letter": "D",
+                "text": "would do"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-11",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I",
+            "sentenceAfter": "sick if I eat too much fast food.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "feel"
+              },
+              {
+                "letter": "B",
+                "text": "would feel"
+              },
+              {
+                "letter": "C",
+                "text": "felt"
+              },
+              {
+                "letter": "D",
+                "text": "had felt"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-12",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She would have stayed home if she",
+            "sentenceAfter": "worse.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "felt"
+              },
+              {
+                "letter": "B",
+                "text": "had felt"
+              },
+              {
+                "letter": "C",
+                "text": "feels"
+              },
+              {
+                "letter": "D",
+                "text": "would feel"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-13",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "If I",
+            "sentenceAfter": "you, I'd stop smoking.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "am"
+              },
+              {
+                "letter": "B",
+                "text": "was"
+              },
+              {
+                "letter": "C",
+                "text": "were"
+              },
+              {
+                "letter": "D",
+                "text": "had been"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exd-14",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He would feel better if he",
+            "sentenceAfter": "more vegetables.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "eats"
+              },
+              {
+                "letter": "B",
+                "text": "ate"
+              },
+              {
+                "letter": "C",
+                "text": "had eaten"
+              },
+              {
+                "letter": "D",
+                "text": "would eat"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u10-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Complete the sentences",
+        "title": "E: Complete the sentences",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u10-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She exercises regularly to ...... healthy.",
+            "answer": "stay",
+            "acceptedAnswers": [
+              "stay"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should ...... more vegetables in your diet.",
+            "answer": "include",
+            "acceptedAnswers": [
+              "include"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He injured his ...... while running.",
+            "answer": "ankle",
+            "acceptedAnswers": [
+              "ankle"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Doctors say we should ...... plenty of water every day.",
+            "answer": "drink",
+            "acceptedAnswers": [
+              "drink"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Always warm ...... before doing exercise.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She doesn't eat meat because she's a ...... .",
+            "answer": "vegetarian",
+            "acceptedAnswers": [
+              "vegetarian"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He had to ...... with stress at work for months.",
+            "answer": "cope",
+            "acceptedAnswers": [
+              "cope"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You should cut ...... on fizzy drinks.",
+            "answer": "down",
+            "acceptedAnswers": [
+              "down"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Vitamin C can help ...... your immune system.",
+            "answer": "boost",
+            "acceptedAnswers": [
+              "boost"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Regular exercise keeps you in good ...... .",
+            "answer": "shape",
+            "acceptedAnswers": [
+              "shape"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Teenagers need plenty of ...... every night.",
+            "answer": "sleep",
+            "acceptedAnswers": [
+              "sleep"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-12",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She ...... a terrible headache after school.",
+            "answer": "had",
+            "acceptedAnswers": [
+              "had"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u10-exe-13",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Visit a doctor if the pain ...... for several days.",
+            "answer": "continues",
+            "acceptedAnswers": [
+              "continues"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

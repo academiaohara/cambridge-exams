@@ -1,0 +1,739 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B2 English",
+  "block": 14,
+  "unit": 14,
+  "type": "review",
+  "unitTitle": "Review: Block 14 – Units 27 & 28",
+  "unitSubtitle": "Review: Block 14 – Units 27 & 28",
+  "unitLevel": "B2",
+  "unitFocus": [
+    "Review: Block 14 – Units 27 & 28"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B2/Review14.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b2-r14-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "passage_gap_fill",
+        "displayName": "Complete the passage",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "passage_inline_gaps",
+          "studentAction": "type_gap_answers",
+          "evaluationTrigger": "check_button",
+          "gapInputStyle": "pill"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "column_matching",
+        "displayName": "Match columns",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "tap_to_pair",
+          "studentAction": "pair_beginnings_endings",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b2-r14-node-1",
+      "title": "Review: Block 14 – Units 27 & 28",
+      "shortTitle": "Review",
+      "focus": [
+        "passage_gap_fill",
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "column_matching",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 18,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b2-u14-ex-a",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "b2-u14-ex-b",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b2-u14-exb-1",
+            "b2-u14-exb-2",
+            "b2-u14-exb-3",
+            "b2-u14-exb-4",
+            "b2-u14-exb-5",
+            "b2-u14-exb-6",
+            "b2-u14-exb-7",
+            "b2-u14-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u14-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b2-u14-exc-1",
+            "b2-u14-exc-2",
+            "b2-u14-exc-3",
+            "b2-u14-exc-4",
+            "b2-u14-exc-5",
+            "b2-u14-exc-6",
+            "b2-u14-exc-7",
+            "b2-u14-exc-8",
+            "b2-u14-exc-9"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u14-ex-d",
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen"
+        },
+        {
+          "sourceExerciseId": "b2-u14-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u14-exe-1",
+            "b2-u14-exe-2",
+            "b2-u14-exe-3",
+            "b2-u14-exe-4",
+            "b2-u14-exe-5",
+            "b2-u14-exe-6",
+            "b2-u14-exe-7"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 26,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b2-u14-ex-a",
+      "b2-u14-ex-b",
+      "b2-u14-ex-c",
+      "b2-u14-ex-d",
+      "b2-u14-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b2-u14-ex-a",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "A: Write one word in each gap",
+        "title": "A: Write one word in each gap",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "passage-input",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
+          "gapInputStyle": "underline_expand"
+        },
+        "passage": "Dear Editor,\n\nI am writing to (1) ...... a point about the recent coverage of remote working in your magazine. The article suggested that managers who allow staff to work from home are (2) ...... of touch with business realities, and that they are not truly responsible (3) ...... the results their teams achieve. Had the journalist (4) ...... their research more carefully and (5) ...... a genuine effort to speak with remote workers, they would have discovered a very different story.\n\nLet me begin (6) ...... saying that remote workers are often more productive than their office-based colleagues. Many of them regularly apply (7) ...... internal promotions and consistently (8) ...... enormous effort into delivering high-quality results. The reality is that many companies are simply not taking (9) ...... new remote staff at the rate they once were, partly because business growth has (10) ...... down across many sectors.\n\nI hope future articles will reflect a more balanced view of modern working arrangements.\n\nYours faithfully,\nMarina Clarke",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "make",
+          "out",
+          "for",
+          "done",
+          "made",
+          "by",
+          "for",
+          "put",
+          "on",
+          "slowed"
+        ]
+      },
+      {
+        "id": "b2-u14-ex-b",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "B: Complete the sentences by changing the form of the word in capitals",
+        "title": "B: Complete the sentences by changing the form of the word in capitals",
+        "instructions": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "studentInstruction": "Complete the sentences by changing the form of the word in capitals when this is necessary.",
+        "legacyKey": "B",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u14-exb-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Sarah forwarded a confidential report to the wrong client and was formally warned for being so (RESPONSIBLE) .......",
+            "answer": "irresponsible",
+            "acceptedAnswers": [
+              "irresponsible"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exb-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "'Don't worry, I can walk you through the whole process,' the trainer said, (HELP) .......",
+            "answer": "helpfully",
+            "acceptedAnswers": [
+              "helpfully"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exb-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Successful (APPLY) ...... will be invited to attend a two-stage interview at our head office.",
+            "answer": "applicants",
+            "acceptedAnswers": [
+              "applicants"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exb-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Part of my role is to (SUPERVISE) ...... the new intake of graduate trainees.",
+            "answer": "supervise",
+            "acceptedAnswers": [
+              "supervise"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exb-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The chief executive praised the project team for their hard work and (DEDICATE) ...... throughout the merger.",
+            "answer": "dedication",
+            "acceptedAnswers": [
+              "dedication"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exb-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The firm announced that all (EMPLOY) ...... would be eligible for a performance-related bonus this year.",
+            "answer": "employees",
+            "acceptedAnswers": [
+              "employees"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exb-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The committee felt the proposed timetable was simply not (WORK) ......, so they asked the team to revise it.",
+            "answer": "workable",
+            "acceptedAnswers": [
+              "workable"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exb-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "All candidates must provide certified copies of their (QUALIFY) ...... before progressing to the final selection stage.",
+            "answer": "qualifications",
+            "acceptedAnswers": [
+              "qualifications"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u14-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Complete the second sentence using the word given",
+        "title": "C: Complete the second sentence using the word given",
+        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u14-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Yuri qualified and then straight away launched his own consultancy. **than**\nNo ...... he launched his own consultancy.",
+            "answer": "sooner had Yuri qualified than",
+            "acceptedAnswers": [
+              "sooner had Yuri qualified than"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Women are rarely promoted to senior positions in manufacturing. **do**\nRarely ...... to senior positions in manufacturing.",
+            "answer": "do women get promoted",
+            "acceptedAnswers": [
+              "do women get promoted"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I never knew that Tony was actually the CEO of Fizzco. **realise**\nLittle ...... that Tony was actually the CEO of Fizzco.",
+            "answer": "did I realise",
+            "acceptedAnswers": [
+              "did I realise"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I only found out about the restructuring when Tracy rang. **did**\nNot until ...... about the restructuring.",
+            "answer": "Tracy rang did I know",
+            "acceptedAnswers": [
+              "Tracy rang did I know"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I think taking on more responsibilities would benefit you. **good**\nI think it will be ...... more responsibilities.",
+            "answer": "good for you to get",
+            "acceptedAnswers": [
+              "good for you to get"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The two firms finally settled on the terms of the contract. **reached**\nThe two firms finally ...... the terms of the contract.",
+            "answer": "reached an agreement on",
+            "acceptedAnswers": [
+              "reached an agreement on"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Staff members are never allowed to take client files off the premises. **circumstances**\nUnder ...... staff members allowed to take client files off the premises.",
+            "answer": "no circumstances are",
+            "acceptedAnswers": [
+              "no circumstances are"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I didn't come up with a suitable response to the board's proposal until much later. **did**\nOnly ...... a suitable response to the board's proposal.",
+            "answer": "later did I think of",
+            "acceptedAnswers": [
+              "later did I think of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exc-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The data entry role was so dull that nobody was willing to take it on. **was**\nSuch ...... that nobody was willing to take it on.",
+            "answer": "a boring job was it",
+            "acceptedAnswers": [
+              "a boring job was it"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u14-ex-d",
+        "type": "exercise",
+        "exerciseType": "column_matching",
+        "exerciseTypeName": "D: Match to make sentences",
+        "title": "D: Match to make sentences",
+        "instructions": "Match to make sentences.",
+        "studentInstruction": "Match to make sentences.",
+        "legacyKey": "D",
+        "legacyPattern": "matching",
+        "interaction": {
+          "formatType": "column_matching"
+        },
+        "items": [
+          {
+            "id": "b2-u14-exd-1",
+            "formatType": "column_matching",
+            "sentence": "The Westfield distribution centre has been forced to close **D** down and 400 people have lost their jobs.",
+            "answer": "D – down and 400 people have lost their jobs.",
+            "acceptedAnswers": [
+              "D – down and 400 people have lost their jobs."
+            ]
+          },
+          {
+            "id": "b2-u14-exd-2",
+            "formatType": "column_matching",
+            "sentence": "The shift leader asked Kim to stand **A** in for him while he went into town.",
+            "answer": "A – in for him while he went into town.",
+            "acceptedAnswers": [
+              "A – in for him while he went into town."
+            ]
+          },
+          {
+            "id": "b2-u14-exd-3",
+            "formatType": "column_matching",
+            "sentence": "The logistics coordinator asked me to see **F** to the orders while he spoke to a customer.",
+            "answer": "F – to the orders while he spoke to a customer.",
+            "acceptedAnswers": [
+              "F – to the orders while he spoke to a customer."
+            ]
+          },
+          {
+            "id": "b2-u14-exd-4",
+            "formatType": "column_matching",
+            "sentence": "We learned this morning that FreshFoods have taken **C** over Cookright and plan to close some branches.",
+            "answer": "C – over Cookright and plan to close some branches.",
+            "acceptedAnswers": [
+              "C – over Cookright and plan to close some branches."
+            ]
+          },
+          {
+            "id": "b2-u14-exd-5",
+            "formatType": "column_matching",
+            "sentence": "Patricia says she never set **G** out to become a millionaire - it just happened!",
+            "answer": "G – out to become a millionaire - it just happened!",
+            "acceptedAnswers": [
+              "G – out to become a millionaire - it just happened!"
+            ]
+          },
+          {
+            "id": "b2-u14-exd-6",
+            "formatType": "column_matching",
+            "sentence": "It seems that Deluxe Bakeries are bringing **B** out a new flavour of ice cream next month.",
+            "answer": "B – out a new flavour of ice cream next month.",
+            "acceptedAnswers": [
+              "B – out a new flavour of ice cream next month."
+            ]
+          },
+          {
+            "id": "b2-u14-exd-7",
+            "formatType": "column_matching",
+            "sentence": "After years in finance, Marco is thinking of setting **E** up a business selling his own jewellery.",
+            "answer": "E – up a business selling my own jewellery.",
+            "acceptedAnswers": [
+              "E – up a business selling my own jewellery."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b2-u14-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Choose the correct answer",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u14-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The",
+            "sentenceAfter": "for this managerial position is negotiable and includes a generous bonus package.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "wage"
+              },
+              {
+                "letter": "B",
+                "text": "payment"
+              },
+              {
+                "letter": "C",
+                "text": "salary"
+              },
+              {
+                "letter": "D",
+                "text": "tip"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "After decades of loyal service to the same company, my uncle finally retired and now lives comfortably on his",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "overtime"
+              },
+              {
+                "letter": "B",
+                "text": "charity"
+              },
+              {
+                "letter": "C",
+                "text": "pension"
+              },
+              {
+                "letter": "D",
+                "text": "allowance"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Thousands of workers",
+            "sentenceAfter": "to the financial district each morning from the surrounding suburbs.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "connect"
+              },
+              {
+                "letter": "B",
+                "text": "correspond"
+              },
+              {
+                "letter": "C",
+                "text": "commute"
+              },
+              {
+                "letter": "D",
+                "text": "commence"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The new pay review means junior consultants will",
+            "sentenceAfter": "significantly more than they did previously.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "win"
+              },
+              {
+                "letter": "B",
+                "text": "gain"
+              },
+              {
+                "letter": "C",
+                "text": "earn"
+              },
+              {
+                "letter": "D",
+                "text": "benefit"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Fed up with the lack of promotion prospects, Marcus",
+            "sentenceAfter": "and joined a rival firm.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "retired"
+              },
+              {
+                "letter": "B",
+                "text": "sacked"
+              },
+              {
+                "letter": "C",
+                "text": "fired"
+              },
+              {
+                "letter": "D",
+                "text": "resigned"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Following the company merger, nearly fifty members of staff were",
+            "sentenceAfter": "redundant.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "done"
+              },
+              {
+                "letter": "B",
+                "text": "given"
+              },
+              {
+                "letter": "C",
+                "text": "taken"
+              },
+              {
+                "letter": "D",
+                "text": "made"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u14-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "At Pinnacle Consulting, all",
+            "sentenceAfter": "members, from senior management down, are required to complete an annual skills assessment.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "staff"
+              },
+              {
+                "letter": "B",
+                "text": "crowd"
+              },
+              {
+                "letter": "C",
+                "text": "crew"
+              },
+              {
+                "letter": "D",
+                "text": "firm"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

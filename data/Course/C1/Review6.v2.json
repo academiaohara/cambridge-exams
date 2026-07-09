@@ -1,0 +1,887 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 6,
+  "unit": 6,
+  "type": "review",
+  "unitTitle": "Review: Block 6",
+  "unitSubtitle": "Review: Block 6",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "Review: Block 6"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/C1/Review6.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-r6-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-r6-node-1",
+      "title": "Review: Block 6",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "two_option_choice",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 29,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u6-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "c1-u6-exa-1",
+            "c1-u6-exa-2",
+            "c1-u6-exa-3",
+            "c1-u6-exa-4",
+            "c1-u6-exa-5",
+            "c1-u6-exa-6",
+            "c1-u6-exa-7",
+            "c1-u6-exa-8",
+            "c1-u6-exa-9",
+            "c1-u6-exa-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u6-ex-b",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "c1-u6-exb-1",
+            "c1-u6-exb-2",
+            "c1-u6-exb-3",
+            "c1-u6-exb-4",
+            "c1-u6-exb-5",
+            "c1-u6-exb-6",
+            "c1-u6-exb-7",
+            "c1-u6-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u6-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u6-exc-1",
+            "c1-u6-exc-2",
+            "c1-u6-exc-3",
+            "c1-u6-exc-4",
+            "c1-u6-exc-5",
+            "c1-u6-exc-6",
+            "c1-u6-exc-7",
+            "c1-u6-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u6-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u6-exd-1",
+            "c1-u6-exd-2",
+            "c1-u6-exd-3",
+            "c1-u6-exd-4",
+            "c1-u6-exd-5",
+            "c1-u6-exd-6",
+            "c1-u6-exd-7",
+            "c1-u6-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u6-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "c1-u6-exe-1",
+            "c1-u6-exe-2",
+            "c1-u6-exe-3",
+            "c1-u6-exe-4",
+            "c1-u6-exe-5",
+            "c1-u6-exe-6",
+            "c1-u6-exe-7",
+            "c1-u6-exe-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 42,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u6-ex-a",
+      "c1-u6-ex-b",
+      "c1-u6-ex-c",
+      "c1-u6-ex-d",
+      "c1-u6-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u6-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Word Formation",
+        "title": "A: Word Formation",
+        "instructions": "Use the word given in capitals to form a word that fits in the space.",
+        "studentInstruction": "Use the word given in capitals to form a word that fits in the space.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u6-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "For centuries, the depths of the ocean were regarded as presenting (1) ...... (MOUNT) challenges to any form of exploration...",
+            "answer": "insurmountable",
+            "acceptedAnswers": [
+              "insurmountable"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "...given that pressure, darkness and low temperatures made conditions far from (2) ...... (FAVOUR) for human divers.",
+            "answer": "favourable",
+            "acceptedAnswers": [
+              "favourable"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The invention of the submersible prompted a complete (3) ...... (ASSESS) of what was scientifically achievable underwater.",
+            "answer": "reassessment",
+            "acceptedAnswers": [
+              "reassessment"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Researchers have discovered creatures thriving in (4) ...... (SEEM) inhospitable environments on the ocean floor.",
+            "answer": "seemingly",
+            "acceptedAnswers": [
+              "seemingly"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "(5) ...... (PROBABLE) as it sounds, entire ecosystems flourish around hydrothermal vents that release scalding water...",
+            "answer": "Improbable",
+            "acceptedAnswers": [
+              "Improbable"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "...in what can only be described as an underwater (6) ...... (WILD) untouched by sunlight.",
+            "answer": "wilderness",
+            "acceptedAnswers": [
+              "wilderness"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exa-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Many shallow-water species are now (7) ...... (THREAT) as rising ocean temperatures disrupt their habitats...",
+            "answer": "threatened",
+            "acceptedAnswers": [
+              "threatened"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exa-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "...with coral reefs particularly close to (8) ...... (EXTINCT) in certain regions of the world.",
+            "answer": "extinction",
+            "acceptedAnswers": [
+              "extinction"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exa-9",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Scientists warn that this type of (9) ...... (ECOLOGY) collapse could have devastating consequences for global food chains.",
+            "answer": "ecological",
+            "acceptedAnswers": [
+              "ecological"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exa-10",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The deep sea remains one of the most (10) ...... (MYSTERY) frontiers left on our planet.",
+            "answer": "mysterious",
+            "acceptedAnswers": [
+              "mysterious"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u6-ex-b",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "B: Multiple Choice (Conditionals)",
+        "title": "B: Multiple Choice (Conditionals)",
+        "instructions": "Circle the correct word or phrase.",
+        "studentInstruction": "Circle the correct word or phrase.",
+        "legacyKey": "B",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "c1-u6-exb-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We wouldn't have missed the train if you",
+            "sentenceAfter": "taken so long to get ready.",
+            "options": [
+              "haven't",
+              "hadn't"
+            ],
+            "answer": "hadn't",
+            "originalSentence": "We wouldn't have missed the train if you **haven't / hadn't** taken so long to get ready.",
+            "completedSentence": "We wouldn't have missed the train if you hadn't taken so long to get ready."
+          },
+          {
+            "id": "c1-u6-exb-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "If you",
+            "sentenceAfter": "happen to see Clara at the conference, could you give her this message?",
+            "options": [
+              "would",
+              "should"
+            ],
+            "answer": "should",
+            "originalSentence": "If you **would / should** happen to see Clara at the conference, could you give her this message?",
+            "completedSentence": "If you should happen to see Clara at the conference, could you give her this message?"
+          },
+          {
+            "id": "c1-u6-exb-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Let's download the maps beforehand",
+            "sentenceAfter": "we lose our internet connection.",
+            "options": [
+              "in case",
+              "unless"
+            ],
+            "answer": "in case",
+            "originalSentence": "Let's download the maps beforehand **in case / unless** we lose our internet connection.",
+            "completedSentence": "Let's download the maps beforehand in case we lose our internet connection."
+          },
+          {
+            "id": "c1-u6-exb-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "If you had double-checked the figures, you wouldn't",
+            "sentenceAfter": "to redo the entire report.",
+            "options": [
+              "have",
+              "have had"
+            ],
+            "answer": "have had",
+            "originalSentence": "If you had double-checked the figures, you wouldn't **have / have had** to redo the entire report.",
+            "completedSentence": "If you had double-checked the figures, you wouldn't have had to redo the entire report."
+          },
+          {
+            "id": "c1-u6-exb-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "If she",
+            "sentenceAfter": "born a century earlier, would Marie Curie have made the same discoveries?",
+            "options": [
+              "was",
+              "had been"
+            ],
+            "answer": "had been",
+            "originalSentence": "If she **was / had been** born a century earlier, would Marie Curie have made the same discoveries?",
+            "completedSentence": "If she had been born a century earlier, would Marie Curie have made the same discoveries?"
+          },
+          {
+            "id": "c1-u6-exb-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "",
+            "sentenceAfter": "we leave by seven, we're going to hit the morning rush hour.",
+            "options": [
+              "Unless",
+              "Otherwise"
+            ],
+            "answer": "Unless",
+            "originalSentence": "**Unless / Otherwise** we leave by seven, we're going to hit the morning rush hour.",
+            "completedSentence": "Unless we leave by seven, we're going to hit the morning rush hour."
+          },
+          {
+            "id": "c1-u6-exb-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The performance would have been a disaster",
+            "sentenceAfter": "the lead actor's remarkable improvisation.",
+            "options": [
+              "but for",
+              "if not"
+            ],
+            "answer": "but for",
+            "originalSentence": "The performance would have been a disaster **but for / if not** the lead actor's remarkable improvisation.",
+            "completedSentence": "The performance would have been a disaster but for the lead actor's remarkable improvisation."
+          },
+          {
+            "id": "c1-u6-exb-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We can reschedule the meeting for Friday,",
+            "sentenceAfter": "everyone is available that day.",
+            "options": [
+              "supposing",
+              "providing"
+            ],
+            "answer": "providing",
+            "originalSentence": "We can reschedule the meeting for Friday, **supposing / providing** everyone is available that day.",
+            "completedSentence": "We can reschedule the meeting for Friday, providing everyone is available that day."
+          }
+        ]
+      },
+      {
+        "id": "c1-u6-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Key Word Transformation",
+        "title": "C: Key Word Transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u6-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The only reason she didn't accept the promotion was the need to relocate. **for**\nHad ...... , she would have accepted the promotion.",
+            "answer": "it not been for the relocation",
+            "acceptedAnswers": [
+              "it not been for the relocation"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Why do you think the project didn't succeed? **down**\nWhat do you ...... to?",
+            "answer": "put the failure down",
+            "acceptedAnswers": [
+              "put the failure down"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Clara felt unwell this morning so she stayed at home instead of going to work. **weather**\nClara was ...... this morning so she stayed at home.",
+            "answer": "under the weather",
+            "acceptedAnswers": [
+              "under the weather"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If the manager reduced unnecessary spending, the team would trust him more. **to**\nWere ...... spending, the team would trust him more.",
+            "answer": "the manager to reduce unnecessary",
+            "acceptedAnswers": [
+              "the manager to reduce unnecessary"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The vet's advice was to avoid interfering and the injured bird would recover on its own. **nature**\nThe vet said that we should ...... and the bird would recover.",
+            "answer": "let nature take its course",
+            "acceptedAnswers": [
+              "let nature take its course"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If the research team can collaborate effectively, they should meet the deadline. **so**\nThe research team should meet the deadline, ...... collaborate effectively.",
+            "answer": "so long as they",
+            "acceptedAnswers": [
+              "so long as they"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I made a small error early on, so my entire presentation went wrong. **slipped**\nMy entire presentation would have gone well ...... early on.",
+            "answer": "if I hadn't slipped up",
+            "acceptedAnswers": [
+              "if I hadn't slipped up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There's a strong possibility that Laura will be selected for the scholarship. **being**\nLaura's ...... for the scholarship are strong.",
+            "answer": "chances of being picked",
+            "acceptedAnswers": [
+              "chances of being picked"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u6-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: Idioms / Collocations (Gap Fill)",
+        "title": "D: Idioms / Collocations (Gap Fill)",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u6-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Throughout the conference, the organisers put all the necessary resources ...... the delegates' disposal.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She managed to finish the marathon ...... dint of months of gruelling daily training.",
+            "answer": "by",
+            "acceptedAnswers": [
+              "by"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "...... the risk of sounding impatient, could you tell us when the results will be announced?",
+            "answer": "At",
+            "acceptedAnswers": [
+              "At"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There's no clock in this room, but ...... a guess I'd say it's around three in the afternoon.",
+            "answer": "as",
+            "acceptedAnswers": [
+              "as"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Marcus is a passionate sailor who goes out on the water ...... all weathers.",
+            "answer": "in",
+            "acceptedAnswers": [
+              "in"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I had completely forgotten my wallet, but ...... luck would have it there was a cash machine just round the corner.",
+            "answer": "as",
+            "acceptedAnswers": [
+              "as"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exd-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She rehearsed answers to every possible question so as not to leave anything ...... chance on the day.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exd-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My grandmother rarely gambles, but she does occasionally place a small amount ...... a horse race.",
+            "answer": "on",
+            "acceptedAnswers": [
+              "on"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u6-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Multiple Choice (Vocabulary & Grammar)",
+        "title": "E: Multiple Choice (Vocabulary & Grammar)",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "c1-u6-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The unexpected delay has",
+            "sentenceAfter": "up several complications for the project team.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "come"
+              },
+              {
+                "letter": "B",
+                "text": "thrown"
+              },
+              {
+                "letter": "C",
+                "text": "got"
+              },
+              {
+                "letter": "D",
+                "text": "moved"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We",
+            "sentenceAfter": "in the mountains now if we hadn't cancelled the trip at the last minute.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "might have lain"
+              },
+              {
+                "letter": "B",
+                "text": "would lie"
+              },
+              {
+                "letter": "C",
+                "text": "could be lying"
+              },
+              {
+                "letter": "D",
+                "text": "would have lain"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She apologised for the comment, insisting that it hadn't been",
+            "sentenceAfter": ".",
+            "options": [
+              {
+                "letter": "A",
+                "text": "instrumental"
+              },
+              {
+                "letter": "B",
+                "text": "purposeful"
+              },
+              {
+                "letter": "C",
+                "text": "deliberate"
+              },
+              {
+                "letter": "D",
+                "text": "desirable"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The local team won the championship",
+            "sentenceAfter": "all expectations.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "despite"
+              },
+              {
+                "letter": "B",
+                "text": "without"
+              },
+              {
+                "letter": "C",
+                "text": "against"
+              },
+              {
+                "letter": "D",
+                "text": "below"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Since they're planning a trip abroad, they're",
+            "sentenceAfter": "back on dining out this month.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "dropping"
+              },
+              {
+                "letter": "B",
+                "text": "moving"
+              },
+              {
+                "letter": "C",
+                "text": "giving"
+              },
+              {
+                "letter": "D",
+                "text": "cutting"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "It would have been a perfect evening,",
+            "sentenceAfter": "the power not gone out during the concert.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "had"
+              },
+              {
+                "letter": "B",
+                "text": "would"
+              },
+              {
+                "letter": "C",
+                "text": "should"
+              },
+              {
+                "letter": "D",
+                "text": "might"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "No one wanted to break the bad news to Sarah, but I drew the short",
+            "sentenceAfter": "and had to tell her.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "straw"
+              },
+              {
+                "letter": "B",
+                "text": "stick"
+              },
+              {
+                "letter": "C",
+                "text": "pole"
+              },
+              {
+                "letter": "D",
+                "text": "rod"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u6-exe-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Authorities warned that the dam could collapse, so residents were",
+            "sentenceAfter": "from the surrounding villages.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "escaped"
+              },
+              {
+                "letter": "B",
+                "text": "emigrated"
+              },
+              {
+                "letter": "C",
+                "text": "exported"
+              },
+              {
+                "letter": "D",
+                "text": "evacuated"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

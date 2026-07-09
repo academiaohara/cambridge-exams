@@ -1,0 +1,1298 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 9,
+  "unit": 9,
+  "type": "review",
+  "unitTitle": "Review 9: Units 25, 26 and 27",
+  "unitSubtitle": "Review 9: Units 25, 26 and 27",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Review 9: Units 25, 26 and 27"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B1/Review9.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-r9-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-r9-node-1",
+      "title": "Review 9: Units 25, 26 and 27",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "mc_4_option",
+        "free_text_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 35,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u9-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u9-exa-1",
+            "b1-u9-exa-2",
+            "b1-u9-exa-3",
+            "b1-u9-exa-4",
+            "b1-u9-exa-5",
+            "b1-u9-exa-6",
+            "b1-u9-exa-7",
+            "b1-u9-exa-8",
+            "b1-u9-exa-9",
+            "b1-u9-exa-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u9-ex-b",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u9-exb-1",
+            "b1-u9-exb-2",
+            "b1-u9-exb-3",
+            "b1-u9-exb-4",
+            "b1-u9-exb-5",
+            "b1-u9-exb-6",
+            "b1-u9-exb-7",
+            "b1-u9-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u9-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u9-exc-1",
+            "b1-u9-exc-2",
+            "b1-u9-exc-3",
+            "b1-u9-exc-4"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u9-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u9-exd-1",
+            "b1-u9-exd-2",
+            "b1-u9-exd-3",
+            "b1-u9-exd-4",
+            "b1-u9-exd-5",
+            "b1-u9-exd-6",
+            "b1-u9-exd-7",
+            "b1-u9-exd-8",
+            "b1-u9-exd-9",
+            "b1-u9-exd-10",
+            "b1-u9-exd-11",
+            "b1-u9-exd-12",
+            "b1-u9-exd-13",
+            "b1-u9-exd-14"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u9-ex-e",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u9-exe-1",
+            "b1-u9-exe-2",
+            "b1-u9-exe-3",
+            "b1-u9-exe-4",
+            "b1-u9-exe-5",
+            "b1-u9-exe-6",
+            "b1-u9-exe-7",
+            "b1-u9-exe-8",
+            "b1-u9-exe-9",
+            "b1-u9-exe-10",
+            "b1-u9-exe-11",
+            "b1-u9-exe-12",
+            "b1-u9-exe-13",
+            "b1-u9-exe-14"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 50,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u9-ex-a",
+      "b1-u9-ex-b",
+      "b1-u9-ex-c",
+      "b1-u9-ex-d",
+      "b1-u9-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u9-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Word formation",
+        "title": "A: Word formation",
+        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "studentInstruction": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u9-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "My aunt began her career as a shop ...... before becoming the manager. (ASSIST)",
+            "answer": "assistant",
+            "acceptedAnswers": [
+              "assistant"
+            ],
+            "explanation": "",
+            "verbPrompt": "ASSIST"
+          },
+          {
+            "id": "b1-u9-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The new business became very ...... after only two years. (SUCCESS)",
+            "answer": "successful",
+            "acceptedAnswers": [
+              "successful"
+            ],
+            "explanation": "",
+            "verbPrompt": "SUCCESS"
+          },
+          {
+            "id": "b1-u9-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The quick decision ...... the project from failure. (SAVE)",
+            "answer": "saved",
+            "acceptedAnswers": [
+              "saved"
+            ],
+            "explanation": "",
+            "verbPrompt": "SAVE"
+          },
+          {
+            "id": "b1-u9-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Our team leader gives advice, but she is never ...... . (BOSS)",
+            "answer": "bossy",
+            "acceptedAnswers": [
+              "bossy"
+            ],
+            "explanation": "",
+            "verbPrompt": "BOSS"
+          },
+          {
+            "id": "b1-u9-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "All the ...... received extra training last month. (EMPLOY)",
+            "answer": "employees",
+            "acceptedAnswers": [
+              "employees"
+            ],
+            "explanation": "",
+            "verbPrompt": "EMPLOY"
+          },
+          {
+            "id": "b1-u9-exa-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Teaching is a rewarding but demanding ...... . (OCCUPY)",
+            "answer": "occupation",
+            "acceptedAnswers": [
+              "occupation"
+            ],
+            "explanation": "",
+            "verbPrompt": "OCCUPY"
+          },
+          {
+            "id": "b1-u9-exa-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The company made an ...... announcement about the new offices. (OFFICE)",
+            "answer": "official",
+            "acceptedAnswers": [
+              "official"
+            ],
+            "explanation": "",
+            "verbPrompt": "OFFICE"
+          },
+          {
+            "id": "b1-u9-exa-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "After thirty-five years at the school, Mr Harris finally reached ...... . (RETIRE)",
+            "answer": "retirement",
+            "acceptedAnswers": [
+              "retirement"
+            ],
+            "explanation": "",
+            "verbPrompt": "RETIRE"
+          },
+          {
+            "id": "b1-u9-exa-9",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The designer became ...... after creating a very popular app. (FAME)",
+            "answer": "famous",
+            "acceptedAnswers": [
+              "famous"
+            ],
+            "explanation": "",
+            "verbPrompt": "FAME"
+          },
+          {
+            "id": "b1-u9-exa-10",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Now that she's ......, she spends more time travelling. (RETIRE)",
+            "answer": "retired",
+            "acceptedAnswers": [
+              "retired"
+            ],
+            "explanation": "",
+            "verbPrompt": "RETIRE"
+          }
+        ]
+      },
+      {
+        "id": "b1-u9-ex-b",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "B: Match to make sentences",
+        "title": "B: Match to make sentences",
+        "instructions": "Match to make sentences.",
+        "studentInstruction": "Match to make sentences.",
+        "legacyKey": "B",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u9-exb-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Lisa is responsible",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "on your qualifications and experience."
+              },
+              {
+                "letter": "B",
+                "text": "about the change in the timetable."
+              },
+              {
+                "letter": "C",
+                "text": "to the old manager as 'impossible to please'."
+              },
+              {
+                "letter": "D",
+                "text": "of coach, really."
+              },
+              {
+                "letter": "",
+                "text": "E for a position at the new hotel."
+              },
+              {
+                "letter": "",
+                "text": "F for training the new members of staff."
+              },
+              {
+                "letter": "",
+                "text": "G as a photographer or a graphic designer."
+              },
+              {
+                "letter": "",
+                "text": "H with his job and wants a new challenge."
+              }
+            ],
+            "answer": "F",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exb-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We should inform the students",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "on your qualifications and experience."
+              },
+              {
+                "letter": "B",
+                "text": "about the change in the timetable."
+              },
+              {
+                "letter": "C",
+                "text": "to the old manager as 'impossible to please'."
+              },
+              {
+                "letter": "D",
+                "text": "of coach, really."
+              },
+              {
+                "letter": "",
+                "text": "E for a position at the new hotel."
+              },
+              {
+                "letter": "",
+                "text": "F for training the new members of staff."
+              },
+              {
+                "letter": "",
+                "text": "G as a photographer or a graphic designer."
+              },
+              {
+                "letter": "",
+                "text": "H with his job and wants a new challenge."
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exb-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "James is fed up",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "on your qualifications and experience."
+              },
+              {
+                "letter": "B",
+                "text": "about the change in the timetable."
+              },
+              {
+                "letter": "C",
+                "text": "to the old manager as 'impossible to please'."
+              },
+              {
+                "letter": "D",
+                "text": "of coach, really."
+              },
+              {
+                "letter": "",
+                "text": "E for a position at the new hotel."
+              },
+              {
+                "letter": "",
+                "text": "F for training the new members of staff."
+              },
+              {
+                "letter": "",
+                "text": "G as a photographer or a graphic designer."
+              },
+              {
+                "letter": "",
+                "text": "H with his job and wants a new challenge."
+              }
+            ],
+            "answer": "H",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exb-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The final decision depends",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "on your qualifications and experience."
+              },
+              {
+                "letter": "B",
+                "text": "about the change in the timetable."
+              },
+              {
+                "letter": "C",
+                "text": "to the old manager as 'impossible to please'."
+              },
+              {
+                "letter": "D",
+                "text": "of coach, really."
+              },
+              {
+                "letter": "",
+                "text": "E for a position at the new hotel."
+              },
+              {
+                "letter": "",
+                "text": "F for training the new members of staff."
+              },
+              {
+                "letter": "",
+                "text": "G as a photographer or a graphic designer."
+              },
+              {
+                "letter": "",
+                "text": "H with his job and wants a new challenge."
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exb-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I'd like to work",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "on your qualifications and experience."
+              },
+              {
+                "letter": "B",
+                "text": "about the change in the timetable."
+              },
+              {
+                "letter": "C",
+                "text": "to the old manager as 'impossible to please'."
+              },
+              {
+                "letter": "D",
+                "text": "of coach, really."
+              },
+              {
+                "letter": "",
+                "text": "E for a position at the new hotel."
+              },
+              {
+                "letter": "",
+                "text": "F for training the new members of staff."
+              },
+              {
+                "letter": "",
+                "text": "G as a photographer or a graphic designer."
+              },
+              {
+                "letter": "",
+                "text": "H with his job and wants a new challenge."
+              }
+            ],
+            "answer": "G",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exb-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "In her speech, she referred",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "on your qualifications and experience."
+              },
+              {
+                "letter": "B",
+                "text": "about the change in the timetable."
+              },
+              {
+                "letter": "C",
+                "text": "to the old manager as 'impossible to please'."
+              },
+              {
+                "letter": "D",
+                "text": "of coach, really."
+              },
+              {
+                "letter": "",
+                "text": "E for a position at the new hotel."
+              },
+              {
+                "letter": "",
+                "text": "F for training the new members of staff."
+              },
+              {
+                "letter": "",
+                "text": "G as a photographer or a graphic designer."
+              },
+              {
+                "letter": "",
+                "text": "H with his job and wants a new challenge."
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exb-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "A fitness instructor is a kind",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "on your qualifications and experience."
+              },
+              {
+                "letter": "B",
+                "text": "about the change in the timetable."
+              },
+              {
+                "letter": "C",
+                "text": "to the old manager as 'impossible to please'."
+              },
+              {
+                "letter": "D",
+                "text": "of coach, really."
+              },
+              {
+                "letter": "",
+                "text": "E for a position at the new hotel."
+              },
+              {
+                "letter": "",
+                "text": "F for training the new members of staff."
+              },
+              {
+                "letter": "",
+                "text": "G as a photographer or a graphic designer."
+              },
+              {
+                "letter": "",
+                "text": "H with his job and wants a new challenge."
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exb-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Maya decided to apply",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "on your qualifications and experience."
+              },
+              {
+                "letter": "B",
+                "text": "about the change in the timetable."
+              },
+              {
+                "letter": "C",
+                "text": "to the old manager as 'impossible to please'."
+              },
+              {
+                "letter": "D",
+                "text": "of coach, really."
+              },
+              {
+                "letter": "",
+                "text": "E for a position at the new hotel."
+              },
+              {
+                "letter": "",
+                "text": "F for training the new members of staff."
+              },
+              {
+                "letter": "",
+                "text": "G as a photographer or a graphic designer."
+              },
+              {
+                "letter": "",
+                "text": "H with his job and wants a new challenge."
+              }
+            ],
+            "answer": "E",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u9-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Key Word Transformation",
+        "title": "C: Key Word Transformation",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u9-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The room is so noisy that I can't study. **too**\nThe room is ...... me to study.",
+            "answer": "too noisy for",
+            "acceptedAnswers": [
+              "too noisy for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I can't go to bed early because I have to finish this report. **up**\nI have to ...... late to finish this report.",
+            "answer": "stay up",
+            "acceptedAnswers": [
+              "stay up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He is too inexperienced to lead the team. **enough**\nHe isn't ...... to lead the team.",
+            "answer": "experienced enough",
+            "acceptedAnswers": [
+              "experienced enough"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The director cancelled the interview. **off**\nThe director ...... the interview.",
+            "answer": "called off",
+            "acceptedAnswers": [
+              "called off"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u9-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u9-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The instructions were",
+            "sentenceAfter": "confusing that nobody understood them.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "so"
+              },
+              {
+                "letter": "B",
+                "text": "such"
+              },
+              {
+                "letter": "C",
+                "text": "too"
+              },
+              {
+                "letter": "D",
+                "text": "very"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "It was",
+            "sentenceAfter": "a busy morning that we forgot to have a break.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "so"
+              },
+              {
+                "letter": "B",
+                "text": "such"
+              },
+              {
+                "letter": "C",
+                "text": "very"
+              },
+              {
+                "letter": "D",
+                "text": "too"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She isn't confident",
+            "sentenceAfter": "to give the presentation alone.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "enough"
+              },
+              {
+                "letter": "B",
+                "text": "too"
+              },
+              {
+                "letter": "C",
+                "text": "so"
+              },
+              {
+                "letter": "D",
+                "text": "very"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The meeting room is",
+            "sentenceAfter": "small for twenty people.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "so"
+              },
+              {
+                "letter": "B",
+                "text": "such"
+              },
+              {
+                "letter": "C",
+                "text": "very"
+              },
+              {
+                "letter": "D",
+                "text": "too"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "My brother works",
+            "sentenceAfter": "than I do.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "more hard"
+              },
+              {
+                "letter": "B",
+                "text": "harder"
+              },
+              {
+                "letter": "C",
+                "text": "more harder"
+              },
+              {
+                "letter": "D",
+                "text": "the hardest"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "This is",
+            "sentenceAfter": "difficult exercise in the test.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "more"
+              },
+              {
+                "letter": "B",
+                "text": "most"
+              },
+              {
+                "letter": "C",
+                "text": "the most"
+              },
+              {
+                "letter": "D",
+                "text": "the more"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The new computer is much",
+            "sentenceAfter": "than the old one.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "more reliable"
+              },
+              {
+                "letter": "B",
+                "text": "most reliable"
+              },
+              {
+                "letter": "C",
+                "text": "reliablest"
+              },
+              {
+                "letter": "D",
+                "text": "the most reliable"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She has",
+            "sentenceAfter": "experience than the other candidates.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "more"
+              },
+              {
+                "letter": "B",
+                "text": "the most"
+              },
+              {
+                "letter": "C",
+                "text": "more than"
+              },
+              {
+                "letter": "D",
+                "text": "most of"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He was",
+            "sentenceAfter": "nervous to speak clearly.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "so"
+              },
+              {
+                "letter": "B",
+                "text": "such"
+              },
+              {
+                "letter": "C",
+                "text": "too"
+              },
+              {
+                "letter": "D",
+                "text": "enough"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "It was",
+            "sentenceAfter": "useful advice that I wrote it down.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "so"
+              },
+              {
+                "letter": "B",
+                "text": "such"
+              },
+              {
+                "letter": "C",
+                "text": "too"
+              },
+              {
+                "letter": "D",
+                "text": "enough"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exd-11",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Your pronunciation is getting",
+            "sentenceAfter": "and .......",
+            "options": [
+              {
+                "letter": "A",
+                "text": "better / better"
+              },
+              {
+                "letter": "B",
+                "text": "best / best"
+              },
+              {
+                "letter": "C",
+                "text": "more good / more good"
+              },
+              {
+                "letter": "D",
+                "text": "good / good"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exd-12",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The course isn't practical",
+            "sentenceAfter": "for beginners.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "too"
+              },
+              {
+                "letter": "B",
+                "text": "enough"
+              },
+              {
+                "letter": "C",
+                "text": "so"
+              },
+              {
+                "letter": "D",
+                "text": "very"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exd-13",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "It was",
+            "sentenceAfter": "a long interview that I felt exhausted afterwards.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "so"
+              },
+              {
+                "letter": "B",
+                "text": "too"
+              },
+              {
+                "letter": "C",
+                "text": "such"
+              },
+              {
+                "letter": "D",
+                "text": "very"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exd-14",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The second applicant was",
+            "sentenceAfter": "than the first one.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "more confident"
+              },
+              {
+                "letter": "B",
+                "text": "confident"
+              },
+              {
+                "letter": "C",
+                "text": "most confident"
+              },
+              {
+                "letter": "D",
+                "text": "the most confident"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u9-ex-e",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "E: Complete the sentences",
+        "title": "E: Complete the sentences",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "E",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u9-exe-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He applied ...... a job at the local museum.",
+            "answer": "for",
+            "acceptedAnswers": [
+              "for"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "After two years, she finally got a ...... and became team leader.",
+            "answer": "promotion",
+            "acceptedAnswers": [
+              "promotion"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I don't want to ...... my job, but I need better hours.",
+            "answer": "quit",
+            "acceptedAnswers": [
+              "quit"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Tom has an ...... for a summer job tomorrow.",
+            "answer": "interview",
+            "acceptedAnswers": [
+              "interview"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Nurses often work long ...... in hospitals.",
+            "answer": "hours",
+            "acceptedAnswers": [
+              "hours"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The company offered him a higher ...... than before.",
+            "answer": "salary",
+            "acceptedAnswers": [
+              "salary"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He was always ...... for meetings, so his boss was annoyed.",
+            "answer": "late",
+            "acceptedAnswers": [
+              "late"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My cousin is self-employed and works for ......",
+            "answer": "herself",
+            "acceptedAnswers": [
+              "herself"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The restaurant wants to ...... on more waiters for the summer.",
+            "answer": "take",
+            "acceptedAnswers": [
+              "take"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-10",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You need to ...... pressure well in this job.",
+            "answer": "handle",
+            "acceptedAnswers": [
+              "handle"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-11",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She ...... her CV before applying for the position.",
+            "answer": "updated",
+            "acceptedAnswers": [
+              "updated"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-12",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Several workers were made ...... when the shop closed.",
+            "answer": "redundant",
+            "acceptedAnswers": [
+              "redundant"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-13",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He wants to ...... a career change and become a teacher.",
+            "answer": "make",
+            "acceptedAnswers": [
+              "make"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u9-exe-14",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Our new assistant is very ...... and finishes every task quickly.",
+            "answer": "efficient",
+            "acceptedAnswers": [
+              "efficient"
+            ],
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

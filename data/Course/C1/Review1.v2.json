@@ -1,0 +1,840 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 1,
+  "unit": 1,
+  "type": "review",
+  "unitTitle": "Review: Block 1 – Units 1 & 2",
+  "unitSubtitle": "Review: Block 1 – Units 1 & 2",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "Review: Block 1 – Units 1 & 2"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/C1/Review1.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-r1-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "two_option_choice",
+        "displayName": "Choose the correct option",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "on_option_tap",
+          "optionLayout": "two_large_buttons"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-r1-node-1",
+      "title": "Review: Block 1 – Units 1 & 2",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "free_text_gap_fill",
+        "two_option_choice",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 25,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u1-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "c1-u1-exa-1",
+            "c1-u1-exa-2",
+            "c1-u1-exa-3",
+            "c1-u1-exa-4",
+            "c1-u1-exa-5"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u1-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u1-exb-1",
+            "c1-u1-exb-2",
+            "c1-u1-exb-3",
+            "c1-u1-exb-4",
+            "c1-u1-exb-5",
+            "c1-u1-exb-6",
+            "c1-u1-exb-7",
+            "c1-u1-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u1-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u1-exc-1",
+            "c1-u1-exc-2",
+            "c1-u1-exc-3",
+            "c1-u1-exc-4",
+            "c1-u1-exc-5",
+            "c1-u1-exc-6",
+            "c1-u1-exc-7",
+            "c1-u1-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u1-ex-d",
+          "formatType": "two_option_choice",
+          "sourceItemIds": [
+            "c1-u1-exd-1",
+            "c1-u1-exd-2",
+            "c1-u1-exd-3",
+            "c1-u1-exd-4",
+            "c1-u1-exd-5",
+            "c1-u1-exd-6",
+            "c1-u1-exd-7",
+            "c1-u1-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u1-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "c1-u1-exe-1",
+            "c1-u1-exe-2",
+            "c1-u1-exe-3",
+            "c1-u1-exe-4",
+            "c1-u1-exe-5",
+            "c1-u1-exe-6",
+            "c1-u1-exe-7",
+            "c1-u1-exe-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 37,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u1-ex-a",
+      "c1-u1-ex-b",
+      "c1-u1-ex-c",
+      "c1-u1-ex-d",
+      "c1-u1-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u1-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Word Formation",
+        "title": "A: Word Formation",
+        "instructions": "Use the word given in capitals to form a word that fits in the space.",
+        "studentInstruction": "Use the word given in capitals to form a word that fits in the space.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u1-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Despite being (1) ...... (DOUBT) at first, she eventually came to see the value of the (2) ...... (CONVINCE) evidence presented by the research team.",
+            "answer": "doubtful, convincing",
+            "acceptedAnswers": [
+              "doubtful, convincing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Her (3) ...... (EXPLAIN) of the concept was so clear and (4) ...... (IMAGINE) that even students with no prior knowledge were able to grasp it immediately.",
+            "answer": "explanation, imaginative",
+            "acceptedAnswers": [
+              "explanation, imaginative"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The (5) ...... (ASSUME) that intelligence is fixed has been widely challenged, and scientists now argue that what determines potential is not genes but (6) ...... (DECIDE) action and consistent effort.",
+            "answer": "assumption, decisive",
+            "acceptedAnswers": [
+              "assumption, decisive"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Her initial (7) ...... (CONFUSE) about the topic gradually gave way to a deep (8) ...... (BELIEVE) that she could master it with enough practice.",
+            "answer": "confusion, belief",
+            "acceptedAnswers": [
+              "confusion, belief"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exa-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "It is almost (9) ...... (CONCEIVE) that a person of such (10) ...... (BRILLIANT) could choose to work in complete obscurity for so long.",
+            "answer": "inconceivable, brilliance",
+            "acceptedAnswers": [
+              "inconceivable, brilliance"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u1-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Key Word Transformation",
+        "title": "B: Key Word Transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "legacyKey": "B",
+        "legacyPattern": "word-formation",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u1-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The university introduced its new curriculum in 2020 and still uses it today. **SINCE**\nThe university ...... 2020.",
+            "answer": "has been using its new curriculum since",
+            "acceptedAnswers": [
+              "has been using its new curriculum since"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "They finally managed to think of a plan to deal with the problem. **COME**\nThey have finally ...... with the problem.",
+            "answer": "come up with a plan to deal",
+            "acceptedAnswers": [
+              "come up with a plan to deal"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "His constant habit of talking over people in meetings really frustrates his colleagues. **ALWAYS**\nHe ...... in meetings, which really frustrates his colleagues.",
+            "answer": "is always talking over people",
+            "acceptedAnswers": [
+              "is always talking over people"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The committee reached its conclusion only a few minutes ago. **JUST**\nThe committee ...... conclusion.",
+            "answer": "has just reached its",
+            "acceptedAnswers": [
+              "has just reached its"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The scientists haven't managed to figure out what caused the anomaly. **YET**\nThe scientists have ...... what caused the anomaly.",
+            "answer": "not yet managed to figure out",
+            "acceptedAnswers": [
+              "not yet managed to figure out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It is now three hours since she started mulling over her decision. **BEEN**\nShe ...... for three hours.",
+            "answer": "has been mulling over her decision",
+            "acceptedAnswers": [
+              "has been mulling over her decision"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I have never come across such an ingenious solution before. **FIRST**\nThis is ...... come across such an ingenious solution.",
+            "answer": "the first time I have",
+            "acceptedAnswers": [
+              "the first time I have"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She's decided what to do about the offer and doesn't need more time. **MADE**\nShe ...... the offer.",
+            "answer": "has already made up her mind about",
+            "acceptedAnswers": [
+              "has already made up her mind about"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u1-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Idioms / Collocations",
+        "title": "C: Idioms / Collocations",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u1-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "In a fast-moving debate, you really need to have your ...... about you to respond quickly and effectively.",
+            "answer": "wits",
+            "acceptedAnswers": [
+              "wits"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She felt completely in the ...... about the team's plans until she finally asked the manager directly.",
+            "answer": "dark",
+            "acceptedAnswers": [
+              "dark"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When she spotted the familiar handwriting on the envelope, she immediately ...... two and two together.",
+            "answer": "put",
+            "acceptedAnswers": [
+              "put"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "He has always been quick on the ...... – he grasps new ideas before most people have even finished reading the instructions.",
+            "answer": "uptake",
+            "acceptedAnswers": [
+              "uptake"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The name doesn't ...... a bell – are you sure we've met before?",
+            "answer": "ring",
+            "acceptedAnswers": [
+              "ring"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The sheer volume of material she was expected to learn in a week was enough to drive anyone ...... the bend.",
+            "answer": "round",
+            "acceptedAnswers": [
+              "round"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "After the exam period, she decided to ...... stock of how well she had done and think about what she could improve.",
+            "answer": "take",
+            "acceptedAnswers": [
+              "take"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Stop ...... hairs and give me a straight answer – do you think the plan is workable or not?",
+            "answer": "splitting",
+            "acceptedAnswers": [
+              "splitting"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u1-ex-d",
+        "type": "exercise",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "D: Phrasal Verbs / Expressions",
+        "title": "D: Phrasal Verbs / Expressions",
+        "instructions": "Circle the correct word.",
+        "studentInstruction": "Circle the correct word.",
+        "legacyKey": "D",
+        "legacyPattern": "circle-correct",
+        "interaction": {
+          "formatType": "two_option_choice"
+        },
+        "items": [
+          {
+            "id": "c1-u1-exd-1",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I haven't spoken French in years, so I really need to",
+            "sentenceAfter": "up on it before my trip.",
+            "options": [
+              "brush",
+              "cram",
+              "pick"
+            ],
+            "answer": "brush",
+            "originalSentence": "I haven't spoken French in years, so I really need to **brush / cram / pick** up on it before my trip.",
+            "completedSentence": "I haven't spoken French in years, so I really need to brush up on it before my trip."
+          },
+          {
+            "id": "c1-u1-exd-2",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "It took her a few days to",
+            "sentenceAfter": "round to the idea of studying abroad, but eventually she was convinced.",
+            "options": [
+              "come",
+              "turn",
+              "get"
+            ],
+            "answer": "come",
+            "originalSentence": "It took her a few days to **come / turn / get** round to the idea of studying abroad, but eventually she was convinced.",
+            "completedSentence": "It took her a few days to come round to the idea of studying abroad, but eventually she was convinced."
+          },
+          {
+            "id": "c1-u1-exd-3",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The detectives spent hours trying to",
+            "sentenceAfter": "together exactly what had happened on the night in question.",
+            "options": [
+              "piece",
+              "put",
+              "pull"
+            ],
+            "answer": "piece",
+            "originalSentence": "The detectives spent hours trying to **piece / put / pull** together exactly what had happened on the night in question.",
+            "completedSentence": "The detectives spent hours trying to piece together exactly what had happened on the night in question."
+          },
+          {
+            "id": "c1-u1-exd-4",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She",
+            "sentenceAfter": "upon the perfect title for her essay just as she was about to give up and go to bed.",
+            "options": [
+              "hit",
+              "came",
+              "fell"
+            ],
+            "answer": "hit",
+            "originalSentence": "She **hit / came / fell** upon the perfect title for her essay just as she was about to give up and go to bed.",
+            "completedSentence": "She hit upon the perfect title for her essay just as she was about to give up and go to bed."
+          },
+          {
+            "id": "c1-u1-exd-5",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The new material was a lot to",
+            "sentenceAfter": "in all at once, so the teacher suggested reviewing it in smaller sections.",
+            "options": [
+              "take",
+              "make",
+              "get"
+            ],
+            "answer": "take",
+            "originalSentence": "The new material was a lot to **take / make / get** in all at once, so the teacher suggested reviewing it in smaller sections.",
+            "completedSentence": "The new material was a lot to take in all at once, so the teacher suggested reviewing it in smaller sections."
+          },
+          {
+            "id": "c1-u1-exd-6",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "He needed more time to",
+            "sentenceAfter": "over the offer before giving a definitive answer.",
+            "options": [
+              "think",
+              "mull",
+              "turn"
+            ],
+            "answer": "mull",
+            "originalSentence": "He needed more time to **think / mull / turn** over the offer before giving a definitive answer.",
+            "completedSentence": "He needed more time to mull over the offer before giving a definitive answer."
+          },
+          {
+            "id": "c1-u1-exd-7",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "She spent the afternoon trying to",
+            "sentenceAfter": "out how the algorithm worked.",
+            "options": [
+              "figure",
+              "come",
+              "reach"
+            ],
+            "answer": "figure",
+            "originalSentence": "She spent the afternoon trying to **figure / come / reach** out how the algorithm worked.",
+            "completedSentence": "She spent the afternoon trying to figure out how the algorithm worked."
+          },
+          {
+            "id": "c1-u1-exd-8",
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Before committing to a course of action, it is always worth taking the time to",
+            "sentenceAfter": "it through carefully.",
+            "options": [
+              "think",
+              "talk",
+              "work"
+            ],
+            "answer": "think",
+            "originalSentence": "Before committing to a course of action, it is always worth taking the time to **think / talk / work** it through carefully.",
+            "completedSentence": "Before committing to a course of action, it is always worth taking the time to think it through carefully."
+          }
+        ]
+      },
+      {
+        "id": "c1-u1-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Multiple Choice",
+        "title": "E: Multiple Choice",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "c1-u1-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The detective had a",
+            "sentenceAfter": "that the key witness was not telling the whole truth.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "hunch"
+              },
+              {
+                "letter": "B",
+                "text": "notion"
+              },
+              {
+                "letter": "C",
+                "text": "intuition"
+              },
+              {
+                "letter": "D",
+                "text": "guesswork"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Before making a final decision, the team took time to carefully",
+            "sentenceAfter": "the risks involved.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "consider"
+              },
+              {
+                "letter": "B",
+                "text": "reflect"
+              },
+              {
+                "letter": "C",
+                "text": "assess"
+              },
+              {
+                "letter": "D",
+                "text": "ponder"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The professor remained",
+            "sentenceAfter": "about the study's methodology, arguing that the sample size was too small to draw definitive conclusions.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "cynical"
+              },
+              {
+                "letter": "B",
+                "text": "pessimistic"
+              },
+              {
+                "letter": "C",
+                "text": "sceptical"
+              },
+              {
+                "letter": "D",
+                "text": "dubious"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The engineer devised an",
+            "sentenceAfter": "solution that nobody in the field had previously considered.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "intellectual"
+              },
+              {
+                "letter": "B",
+                "text": "plausible"
+              },
+              {
+                "letter": "C",
+                "text": "academic"
+              },
+              {
+                "letter": "D",
+                "text": "ingenious"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She sat quietly for a moment to",
+            "sentenceAfter": "on what she had learned before writing up her notes.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "ponder"
+              },
+              {
+                "letter": "B",
+                "text": "speculate"
+              },
+              {
+                "letter": "C",
+                "text": "reflect"
+              },
+              {
+                "letter": "D",
+                "text": "contemplate"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "He is one of the most",
+            "sentenceAfter": "students I have ever taught – he always double-checks his work and never cuts corners.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "intelligent"
+              },
+              {
+                "letter": "B",
+                "text": "conscientious"
+              },
+              {
+                "letter": "C",
+                "text": "knowledgeable"
+              },
+              {
+                "letter": "D",
+                "text": "academic"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She was faced with a",
+            "sentenceAfter": ": she could accept the prestigious award or protect her privacy.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "paradox"
+              },
+              {
+                "letter": "B",
+                "text": "notion"
+              },
+              {
+                "letter": "C",
+                "text": "ideology"
+              },
+              {
+                "letter": "D",
+                "text": "dilemma"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u1-exe-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "From the available evidence, the analysts were able to",
+            "sentenceAfter": "that the decision had been made well in advance.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "presume"
+              },
+              {
+                "letter": "B",
+                "text": "speculate"
+              },
+              {
+                "letter": "C",
+                "text": "assume"
+              },
+              {
+                "letter": "D",
+                "text": "deduce"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

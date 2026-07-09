@@ -1,0 +1,837 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B2 English",
+  "block": 3,
+  "unit": 3,
+  "type": "review",
+  "unitTitle": "Review: Block 3 – Units 5 & 6",
+  "unitSubtitle": "Review: Block 3 – Units 5 & 6",
+  "unitLevel": "B2",
+  "unitFocus": [
+    "Review: Block 3 – Units 5 & 6"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B2/Review3.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b2-r3-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "column_matching",
+        "displayName": "Match columns",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "tap_to_pair",
+          "studentAction": "pair_beginnings_endings",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b2-r3-node-1",
+      "title": "Review: Block 3 – Units 5 & 6",
+      "shortTitle": "Review",
+      "focus": [
+        "conjugation_gap_fill",
+        "column_matching",
+        "free_text_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 18,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b2-u3-ex-a",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b2-u3-exa-1",
+            "b2-u3-exa-2",
+            "b2-u3-exa-3",
+            "b2-u3-exa-4"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u3-ex-b",
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen"
+        },
+        {
+          "sourceExerciseId": "b2-u3-ex-c",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b2-u3-exc-1",
+            "b2-u3-exc-2",
+            "b2-u3-exc-3",
+            "b2-u3-exc-4",
+            "b2-u3-exc-5",
+            "b2-u3-exc-6",
+            "b2-u3-exc-7",
+            "b2-u3-exc-8",
+            "b2-u3-exc-9"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u3-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u3-exd-1",
+            "b2-u3-exd-2",
+            "b2-u3-exd-3",
+            "b2-u3-exd-4",
+            "b2-u3-exd-5",
+            "b2-u3-exd-6",
+            "b2-u3-exd-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u3-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u3-exe-1",
+            "b2-u3-exe-2",
+            "b2-u3-exe-3",
+            "b2-u3-exe-4",
+            "b2-u3-exe-5",
+            "b2-u3-exe-6"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 27,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b2-u3-ex-a",
+      "b2-u3-ex-b",
+      "b2-u3-ex-c",
+      "b2-u3-ex-d",
+      "b2-u3-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b2-u3-ex-a",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "A: Use the word given in capitals to form a word",
+        "title": "A: Use the word given in capitals to form a word",
+        "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
+        "studentInstruction": "Use the word given in capitals at the end of each line to form a word that fits in the gap.",
+        "legacyKey": "A",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u3-exa-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Historians have yet to find a satisfactory (1) ...... (EXPLAIN) for how powered flight developed so rapidly, but most agree that the (2) ...... (INTRODUCE) of the internal combustion engine was the key turning point.",
+            "answer": "explanation, introduction",
+            "acceptedAnswers": [
+              "explanation, introduction"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exa-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Many (3) ...... (SCIENCE) had long dismissed the idea of human flight as fantasy, insisting there was no (4) ...... (POSSIBLE) that anyone would ever master the art of (5) ...... (BUILD) a machine capable of carrying passengers through the air.",
+            "answer": "scientists, possibility, building",
+            "acceptedAnswers": [
+              "scientists, possibility, building"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exa-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Nevertheless, some (6) ...... (REVOLUTION) new designs, inspired by the (7) ...... (DISCOVER) that curved wings generated greater lift, led to the (8) ...... (APPEAR) of commercial airlines just a few decades later.",
+            "answer": "revolutionary, discovery, appearance",
+            "acceptedAnswers": [
+              "revolutionary, discovery, appearance"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exa-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "One (9) ...... (RESEARCH) who has written extensively on the subject, Elena Marsh, has stated: 'The (10) ...... (IMPORTANT) of understanding this period for modern aerospace engineering cannot be overstated.'",
+            "answer": "researcher, importance",
+            "acceptedAnswers": [
+              "researcher, importance"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u3-ex-b",
+        "type": "exercise",
+        "exerciseType": "column_matching",
+        "exerciseTypeName": "B: Match to make sentences",
+        "title": "B: Match to make sentences",
+        "instructions": "Match each sentence beginning (1–8) with the correct ending (A–H).",
+        "studentInstruction": "Match each sentence beginning (1–8) with the correct ending (A–H).",
+        "legacyKey": "B",
+        "legacyPattern": "matching",
+        "interaction": {
+          "formatType": "column_matching"
+        },
+        "items": [
+          {
+            "id": "b2-u3-exb-1",
+            "formatType": "column_matching",
+            "sentence": "My laptop has broken **D** down, so I'm afraid you'll have to wait until tomorrow.",
+            "answer": "D – down, so I'm afraid you'll have to wait until tomorrow.",
+            "acceptedAnswers": [
+              "D – down, so I'm afraid you'll have to wait until tomorrow."
+            ]
+          },
+          {
+            "id": "b2-u3-exb-2",
+            "formatType": "column_matching",
+            "sentence": "Several studies have been carried **A** out by physicists which prove that time can speed up and slow down.",
+            "answer": "A – out by physicists which prove that time can speed up and slow down.",
+            "acceptedAnswers": [
+              "A – out by physicists which prove that time can speed up and slow down."
+            ]
+          },
+          {
+            "id": "b2-u3-exb-3",
+            "formatType": "column_matching",
+            "sentence": "The engineer who came **F** up with that idea should have won the Nobel Prize.",
+            "answer": "F – up with that idea should have won the Nobel Prize.",
+            "acceptedAnswers": [
+              "F – up with that idea should have won the Nobel Prize."
+            ]
+          },
+          {
+            "id": "b2-u3-exb-4",
+            "formatType": "column_matching",
+            "sentence": "Our internet connection was cut **C** off for over three hours yesterday.",
+            "answer": "C – off for over three hours yesterday.",
+            "acceptedAnswers": [
+              "C – off for over three hours yesterday."
+            ]
+          },
+          {
+            "id": "b2-u3-exb-5",
+            "formatType": "column_matching",
+            "sentence": "My history professor would love to find **H** out much more about technology in the Bronze Age.",
+            "answer": "H – out much more about technology in the Bronze Age.",
+            "acceptedAnswers": [
+              "H – out much more about technology in the Bronze Age."
+            ]
+          },
+          {
+            "id": "b2-u3-exb-6",
+            "formatType": "column_matching",
+            "sentence": "That paint gives **E** off a very nasty smell when it's heated.",
+            "answer": "E – off a very nasty smell when it's heated.",
+            "acceptedAnswers": [
+              "E – off a very nasty smell when it's heated."
+            ]
+          },
+          {
+            "id": "b2-u3-exb-7",
+            "formatType": "column_matching",
+            "sentence": "Mobile phone technology has come **B** on enormously in recent years.",
+            "answer": "B – on enormously in recent years.",
+            "acceptedAnswers": [
+              "B – on enormously in recent years."
+            ]
+          },
+          {
+            "id": "b2-u3-exb-8",
+            "formatType": "column_matching",
+            "sentence": "Could you possibly put me **G** through to the Radiology Department, please.",
+            "answer": "G – through to the Radiology Department, please.",
+            "acceptedAnswers": [
+              "G – through to the Radiology Department, please."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b2-u3-ex-c",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "C: Complete the second sentence using the word given",
+        "title": "C: Complete the second sentence using the word given",
+        "instructions": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "studentInstruction": "Complete the second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u3-exc-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I can't wait until we do the outdoor fitness session on Saturday. **forward**\nI'm really ...... the outdoor fitness session on Saturday.",
+            "answer": "looking forward to doing",
+            "acceptedAnswers": [
+              "looking forward to doing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exc-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Travel became much easier when budget airlines were introduced. **with**\nTravel became much easier ...... budget airlines.",
+            "answer": "with the introduction of",
+            "acceptedAnswers": [
+              "with the introduction of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exc-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "After months of rehearsals, the director was finally successful in bringing the play to the stage. **managed**\nAfter months of rehearsals, the director ...... the play to the stage.",
+            "answer": "finally managed to bring",
+            "acceptedAnswers": [
+              "finally managed to bring"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exc-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I can't understand how people manage to sleep on long-haul flights. **impossible**\nI ...... how people manage to sleep on long-haul flights.",
+            "answer": "find it impossible to understand",
+            "acceptedAnswers": [
+              "find it impossible to understand"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exc-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "A stroke of luck played a key role when Fleming discovered penicillin. **resulted**\nA stroke of luck ...... penicillin.",
+            "answer": "resulted in Fleming's discovery of",
+            "acceptedAnswers": [
+              "resulted in Fleming's discovery of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exc-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "People sometimes call firefighters 'everyday heroes'. **known**\nFirefighters ...... 'everyday heroes'.",
+            "answer": "are sometimes known as",
+            "acceptedAnswers": [
+              "are sometimes known as"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exc-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The coach eventually realised that his tactics had been wrong all along. **conclusion**\nThe coach eventually ...... that his tactics had been wrong all along.",
+            "answer": "came to the conclusion",
+            "acceptedAnswers": [
+              "came to the conclusion"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exc-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The tour guide tried to describe the painting's historical significance. **attempt**\nThe tour guide ...... describe the painting's historical significance.",
+            "answer": "made an attempt to",
+            "acceptedAnswers": [
+              "made an attempt to"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exc-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "We'll book the hotel and then we'll fly to Barcelona. **soon**\nWe'll fly to Barcelona ...... booked the hotel.",
+            "answer": "as soon as we have",
+            "acceptedAnswers": [
+              "as soon as we have"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u3-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u3-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "This time next week, we",
+            "sentenceAfter": "the long drive to the coast.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "have finished"
+              },
+              {
+                "letter": "B",
+                "text": "have been finishing"
+              },
+              {
+                "letter": "C",
+                "text": "will have finished"
+              },
+              {
+                "letter": "D",
+                "text": "will have been finishing"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "When I grow up,",
+            "sentenceAfter": "a professional chef.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "I'm being"
+              },
+              {
+                "letter": "B",
+                "text": "I'm going to be"
+              },
+              {
+                "letter": "C",
+                "text": "I will have been"
+              },
+              {
+                "letter": "D",
+                "text": "I will be being"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Jake will",
+            "sentenceAfter": "his home renovation project for the next few weeks.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "have done"
+              },
+              {
+                "letter": "B",
+                "text": "be doing"
+              },
+              {
+                "letter": "C",
+                "text": "have been doing"
+              },
+              {
+                "letter": "D",
+                "text": "have been done"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Next year, Sam",
+            "sentenceAfter": "patients at this dental practice for twenty-five years.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "have been treating"
+              },
+              {
+                "letter": "B",
+                "text": "treat"
+              },
+              {
+                "letter": "C",
+                "text": "be treating"
+              },
+              {
+                "letter": "D",
+                "text": "be going to treat"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'Is that the right address?' 'We won't know until we",
+            "sentenceAfter": "it up on the map.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "we're going to look"
+              },
+              {
+                "letter": "B",
+                "text": "we'll have looked"
+              },
+              {
+                "letter": "C",
+                "text": "we'll be looking"
+              },
+              {
+                "letter": "D",
+                "text": "we've looked"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You won't be able to use your phone while",
+            "sentenceAfter": "through the national park.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "you've driven"
+              },
+              {
+                "letter": "B",
+                "text": "you'll drive"
+              },
+              {
+                "letter": "C",
+                "text": "you're driving"
+              },
+              {
+                "letter": "D",
+                "text": "you'll be driving"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'I'm going to carry these boxes upstairs in a minute.' '",
+            "sentenceAfter": "give you a hand?'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Shall I"
+              },
+              {
+                "letter": "B",
+                "text": "Will I"
+              },
+              {
+                "letter": "C",
+                "text": "Would I"
+              },
+              {
+                "letter": "D",
+                "text": "Do I"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u3-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Choose the correct answer",
+        "title": "E: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u3-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Do you know who",
+            "sentenceAfter": "the ancient ruins buried in this valley?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "invented"
+              },
+              {
+                "letter": "B",
+                "text": "developed"
+              },
+              {
+                "letter": "C",
+                "text": "discovered"
+              },
+              {
+                "letter": "D",
+                "text": "found"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I'm thinking of getting a coffee",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "machine"
+              },
+              {
+                "letter": "B",
+                "text": "motor"
+              },
+              {
+                "letter": "C",
+                "text": "engine"
+              },
+              {
+                "letter": "D",
+                "text": "instrument"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The",
+            "sentenceAfter": "of last night's flight delay has not yet been officially explained.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "aim"
+              },
+              {
+                "letter": "B",
+                "text": "reason"
+              },
+              {
+                "letter": "C",
+                "text": "cause"
+              },
+              {
+                "letter": "D",
+                "text": "motive"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Over fifty flights depart from this airport on",
+            "sentenceAfter": "every day.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "normal"
+              },
+              {
+                "letter": "B",
+                "text": "common"
+              },
+              {
+                "letter": "C",
+                "text": "general"
+              },
+              {
+                "letter": "D",
+                "text": "average"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Once they've finished building the new",
+            "sentenceAfter": ", production will increase significantly.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "manufacturing"
+              },
+              {
+                "letter": "B",
+                "text": "trade"
+              },
+              {
+                "letter": "C",
+                "text": "industry"
+              },
+              {
+                "letter": "D",
+                "text": "factory"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u3-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Emma has never had a singing lesson; she is just",
+            "sentenceAfter": "talented.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "physically"
+              },
+              {
+                "letter": "B",
+                "text": "logically"
+              },
+              {
+                "letter": "C",
+                "text": "naturally"
+              },
+              {
+                "letter": "D",
+                "text": "organically"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

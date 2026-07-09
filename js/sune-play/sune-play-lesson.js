@@ -21,13 +21,22 @@
   }
 
   function isSunePlayUnit(data) {
-    if (!data || (data.type !== 'grammar' && data.type !== 'vocabulary')) return false;
+    if (!data) return false;
+    var unitType = data.type;
+    var isLessonType = unitType === 'grammar' || unitType === 'vocabulary' ||
+      unitType === 'review' || unitType === 'progress_test';
+    if (!isLessonType) return false;
     var schema = String(data.schemaVersion || '');
     var style = String(data.lessonStyle || '');
     if (schema.indexOf('sune-english-unit-v2') === 0) return true;
     if (style.indexOf('sune-play') === 0) return true;
-    if (data.theory && data.practiceNodes && data.practiceNodes.length) return true;
+    if (data.practiceNodes && data.practiceNodes.length &&
+        (data.theory || unitType === 'review' || unitType === 'progress_test')) return true;
     return false;
+  }
+
+  function isPracticeOnlyUnit(data) {
+    return !!(data && data.unitStructure && data.unitStructure.mode === 'practice_only');
   }
 
   function getProgressKey(unitId) {
@@ -1215,6 +1224,10 @@
         lessonState.progress.completedNodes[node.nodeId] = true;
       }
       saveProgress(lessonState.unitId, lessonState.progress);
+      if (lessonState.unitData && (lessonState.unitData.type === 'review' || lessonState.unitData.type === 'progress_test') &&
+          typeof BentoGrid !== 'undefined' && BentoGrid._markCourseUnitOpened) {
+        BentoGrid._markCourseUnitOpened(lessonState.level, lessonState.unitId);
+      }
       lessonState.phase = 'complete';
     } else {
       lessonState.phase = 'retry';
@@ -1307,6 +1320,14 @@
 
     if (opts.startSection === 'session' && opts.startNodeId) {
       enterPractice(opts.startNodeId, {
+        skipTheoryGate: true,
+        exerciseId: opts.startExerciseId || null
+      });
+      return;
+    }
+
+    if (isPracticeOnlyUnit(unitData) || opts.startSection === 'exercises') {
+      enterPractice(opts.startNodeId || null, {
         skipTheoryGate: true,
         exerciseId: opts.startExerciseId || null
       });

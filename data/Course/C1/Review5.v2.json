@@ -1,0 +1,1000 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "C1 English",
+  "block": 5,
+  "unit": 5,
+  "type": "review",
+  "unitTitle": "Review: Block 5 – Units 9 & 10",
+  "unitSubtitle": "Review: Block 5 – Units 9 & 10",
+  "unitLevel": "C1",
+  "unitFocus": [
+    "Review: Block 5 – Units 9 & 10"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/C1/Review5.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "c1-r5-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "c1-r5-node-1",
+      "title": "Review: Block 5 – Units 9 & 10",
+      "shortTitle": "Review",
+      "focus": [
+        "mc_4_option",
+        "free_text_gap_fill",
+        "conjugation_gap_fill"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 23,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "c1-u5-ex-a",
+          "formatType": "mc_4_option",
+          "screenMode": "all_gaps_single_screen"
+        },
+        {
+          "sourceExerciseId": "c1-u5-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u5-exb-1",
+            "c1-u5-exb-2",
+            "c1-u5-exb-3",
+            "c1-u5-exb-4",
+            "c1-u5-exb-5",
+            "c1-u5-exb-6",
+            "c1-u5-exb-7",
+            "c1-u5-exb-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u5-ex-c",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "c1-u5-exc-1",
+            "c1-u5-exc-2",
+            "c1-u5-exc-3",
+            "c1-u5-exc-4",
+            "c1-u5-exc-5",
+            "c1-u5-exc-6",
+            "c1-u5-exc-7",
+            "c1-u5-exc-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u5-ex-d",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "c1-u5-exd-1",
+            "c1-u5-exd-2",
+            "c1-u5-exd-3",
+            "c1-u5-exd-4",
+            "c1-u5-exd-5",
+            "c1-u5-exd-6",
+            "c1-u5-exd-7",
+            "c1-u5-exd-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "c1-u5-ex-e",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "c1-u5-exe-1",
+            "c1-u5-exe-2",
+            "c1-u5-exe-3",
+            "c1-u5-exe-4",
+            "c1-u5-exe-5",
+            "c1-u5-exe-6",
+            "c1-u5-exe-7",
+            "c1-u5-exe-8"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 33,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "c1-u5-ex-a",
+      "c1-u5-ex-b",
+      "c1-u5-ex-c",
+      "c1-u5-ex-d",
+      "c1-u5-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "c1-u5-ex-a",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "A: Multiple Choice (Podcasting text)",
+        "title": "A: Multiple Choice (Podcasting text)",
+        "instructions": "Choose the correct answer (A, B, C or D) for each gap.",
+        "studentInstruction": "Choose the correct answer (A, B, C or D) for each gap.",
+        "legacyKey": "A",
+        "legacyPattern": "mc-passage",
+        "interaction": {
+          "formatType": "mc_4_option",
+          "displayMode": "passage",
+          "continuous": false
+        },
+        "passage": "Before podcasting went mainstream, it was (1) ...... for granted that audio content could only be produced by trained professionals with expensive studio equipment. In other (2) ...... , listeners were simply passive recipients of whatever topics producers chose to broadcast. The concept has certainly (3) ...... on and, for tens of millions of users, independent audio shows now (4) ...... a real appetite for niche, in-depth storytelling. Leading podcast networks (5) ...... that the format encourages deeper engagement than traditional radio because listeners actively choose every episode they consume. Despite this, media watchdogs have (6) ...... several popular shows for spreading health misinformation without editorial oversight. Certain programmes have indeed (7) ...... unverified claims as established medical or scientific fact. However, although these incidents have received wide media (8) ...... , they arguably (9) ...... the extent of misinformation that existed in older broadcast formats. Most listeners have little (10) ...... of how much unverified content circulated freely on conventional radio long before digital alternatives emerged.",
+        "items": [
+          {
+            "id": "c1-u5-exa-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "(1)",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "given"
+              },
+              {
+                "letter": "B",
+                "text": "taken"
+              },
+              {
+                "letter": "C",
+                "text": "made"
+              },
+              {
+                "letter": "D",
+                "text": "put"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exa-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "(2)",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "speech"
+              },
+              {
+                "letter": "B",
+                "text": "ways"
+              },
+              {
+                "letter": "C",
+                "text": "words"
+              },
+              {
+                "letter": "D",
+                "text": "terms"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exa-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "(3)",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "got"
+              },
+              {
+                "letter": "B",
+                "text": "put"
+              },
+              {
+                "letter": "C",
+                "text": "taken"
+              },
+              {
+                "letter": "D",
+                "text": "caught"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exa-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "(4)",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "says"
+              },
+              {
+                "letter": "B",
+                "text": "responds"
+              },
+              {
+                "letter": "C",
+                "text": "tells"
+              },
+              {
+                "letter": "D",
+                "text": "answers"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exa-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "(5)",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "insist"
+              },
+              {
+                "letter": "B",
+                "text": "assist"
+              },
+              {
+                "letter": "C",
+                "text": "consist"
+              },
+              {
+                "letter": "D",
+                "text": "desist"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exa-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "(6)",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "pronounced"
+              },
+              {
+                "letter": "B",
+                "text": "renounced"
+              },
+              {
+                "letter": "C",
+                "text": "denounced"
+              },
+              {
+                "letter": "D",
+                "text": "announced"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exa-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "(7)",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "assented"
+              },
+              {
+                "letter": "B",
+                "text": "assigned"
+              },
+              {
+                "letter": "C",
+                "text": "asserted"
+              },
+              {
+                "letter": "D",
+                "text": "associated"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exa-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "(8)",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "treatment"
+              },
+              {
+                "letter": "B",
+                "text": "coverage"
+              },
+              {
+                "letter": "C",
+                "text": "handling"
+              },
+              {
+                "letter": "D",
+                "text": "usage"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exa-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "(9)",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "exaggerate"
+              },
+              {
+                "letter": "B",
+                "text": "boast"
+              },
+              {
+                "letter": "C",
+                "text": "flatter"
+              },
+              {
+                "letter": "D",
+                "text": "extend"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exa-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "(10)",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "gist"
+              },
+              {
+                "letter": "B",
+                "text": "hint"
+              },
+              {
+                "letter": "C",
+                "text": "hunch"
+              },
+              {
+                "letter": "D",
+                "text": "inkling"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u5-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Key Word Transformation",
+        "title": "B: Key Word Transformation",
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "studentInstruction": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and eight words, including the word given.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u5-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My boss is extremely displeased with me because I arrived late three days in a row. **books**\nI ................................................................. because I arrived late three days in a row.",
+            "answer": "am in my boss's bad books",
+            "acceptedAnswers": [
+              "am in my boss's bad books"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Nobody needs to be told that first impressions at a job interview matter enormously. **saying**\nIt ................................................................. that first impressions at a job interview matter enormously.",
+            "answer": "goes without saying",
+            "acceptedAnswers": [
+              "goes without saying"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "She hasn't confirmed anything, but my interpretation of the signs is that the director is planning to leave the company. **lines**\nShe hasn't confirmed anything, but ................................................................. , I'd say the director is planning to leave the company.",
+            "answer": "reading between the lines",
+            "acceptedAnswers": [
+              "reading between the lines"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Alex and Daniel haven't spoken to each other since the argument last month. **terms**\nAlex and Daniel are no longer ................................................................. since the argument last month.",
+            "answer": "on speaking terms",
+            "acceptedAnswers": [
+              "on speaking terms"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "It was wrong of you to persuade Marco to keep quiet about the incident. **talked**\nYou should ................................................................. about the incident.",
+            "answer": "not have talked Marco into keeping quiet",
+            "acceptedAnswers": [
+              "not have talked Marco into keeping quiet"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I'm certain the manager spoke to Claire about the complaints before the meeting. **word**\nThe manager ................................................................. the complaints before the meeting.",
+            "answer": "must have had a word with Claire about",
+            "acceptedAnswers": [
+              "must have had a word with Claire about"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I don't think Patrick misunderstood what you said, Sophie. **stick**\nPatrick can't ................................................................., Sophie.",
+            "answer": "have got the wrong end of the stick",
+            "acceptedAnswers": [
+              "have got the wrong end of the stick"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exb-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "There's no need for you to make any promises – I trust you completely. **word**\nYou ................................................................. – I trust you completely.",
+            "answer": "needn't give me your word",
+            "acceptedAnswers": [
+              "needn't give me your word"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u5-ex-c",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "C: Word Formation",
+        "title": "C: Word Formation",
+        "instructions": "Complete the sentences by changing the form of the word in capitals.",
+        "studentInstruction": "Complete the sentences by changing the form of the word in capitals.",
+        "legacyKey": "C",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u5-exc-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Under his inspiring ...... (EDIT) , the university newspaper won several national awards.",
+            "answer": "editorship",
+            "acceptedAnswers": [
+              "editorship"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exc-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Most of what she told the police was pure ...... (HEAR) – none of the neighbours had actually witnessed the event.",
+            "answer": "hearsay",
+            "acceptedAnswers": [
+              "hearsay"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exc-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "The closure of the mine will have widespread ...... (IMPLY) for employment across the entire county.",
+            "answer": "implications",
+            "acceptedAnswers": [
+              "implications"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exc-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Describing that concert as 'quite enjoyable' is a bit of a/an ...... (STATE), given how extraordinary the performance was.",
+            "answer": "understatement",
+            "acceptedAnswers": [
+              "understatement"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exc-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "She's not a particularly ...... (TALK) child; she much prefers reading to chatting.",
+            "answer": "talkative",
+            "acceptedAnswers": [
+              "talkative"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exc-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "There's a/an ...... (WRITE) agreement among the research team never to discuss ongoing projects at social events.",
+            "answer": "unwritten",
+            "acceptedAnswers": [
+              "unwritten"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exc-7",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "In informal digital communication, people frequently overuse the ...... (EXCLAIM) mark to convey enthusiasm.",
+            "answer": "exclamation",
+            "acceptedAnswers": [
+              "exclamation"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exc-8",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Candidates are ...... (EXPRESS) prohibited from accessing any online resources during the written assessment.",
+            "answer": "expressly",
+            "acceptedAnswers": [
+              "expressly"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u5-ex-d",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "D: One-word gap fill (phrasal verbs / expressions)",
+        "title": "D: One-word gap fill (phrasal verbs / expressions)",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "D",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "c1-u5-exd-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "When does the new episode of that drama series come ...... on the streaming platform?",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exd-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My sister was initially against the idea, but we finally managed to talk her ...... after showing her all the evidence.",
+            "answer": "round",
+            "acceptedAnswers": [
+              "round"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exd-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I can't approve your request right now – I'll need to talk it ...... with the board of directors first.",
+            "answer": "over",
+            "acceptedAnswers": [
+              "over"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exd-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Whatever you do, don't let ...... to Hannah that we're organising a surprise party for her.",
+            "answer": "slip",
+            "acceptedAnswers": [
+              "slip"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exd-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Jake accidentally blurted ...... in front of everyone that Mia had applied for the director's position.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exd-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I've memorised all my notes for the presentation, but I'm terrified I'll dry ...... the moment I stand in front of the board.",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exd-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Someone needs to speak ...... against the proposed cuts to the school arts programme.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exd-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "The chairwoman was shouted ...... by protesters the moment she tried to open the meeting.",
+            "answer": "down",
+            "acceptedAnswers": [
+              "down"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "c1-u5-ex-e",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "E: Multiple Choice (Grammar - modals)",
+        "title": "E: Multiple Choice (Grammar - modals)",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "E",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "c1-u5-exe-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "You",
+            "sentenceAfter": "that novel last year – it wasn't published until this January.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "can't have read"
+              },
+              {
+                "letter": "B",
+                "text": "couldn't read"
+              },
+              {
+                "letter": "C",
+                "text": "mustn't have read"
+              },
+              {
+                "letter": "D",
+                "text": "didn't need to read"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exe-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "we better confirm the booking in advance before all the rooms are taken?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Hadn't"
+              },
+              {
+                "letter": "B",
+                "text": "Oughtn't"
+              },
+              {
+                "letter": "C",
+                "text": "Didn't"
+              },
+              {
+                "letter": "D",
+                "text": "Shouldn't"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exe-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She would really like",
+            "sentenceAfter": "speak three languages fluently by the time she retires.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "she could"
+              },
+              {
+                "letter": "B",
+                "text": "to can"
+              },
+              {
+                "letter": "C",
+                "text": "that she will"
+              },
+              {
+                "letter": "D",
+                "text": "to be able to"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exe-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "There's no point waiting any longer, so we might",
+            "sentenceAfter": "leave for the airport now.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "and"
+              },
+              {
+                "letter": "B",
+                "text": "too"
+              },
+              {
+                "letter": "C",
+                "text": "as well"
+              },
+              {
+                "letter": "D",
+                "text": "also"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exe-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "wear a school uniform every day when you were at primary school?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "Had you"
+              },
+              {
+                "letter": "B",
+                "text": "Did you have to"
+              },
+              {
+                "letter": "C",
+                "text": "Must you"
+              },
+              {
+                "letter": "D",
+                "text": "Needed you to"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exe-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Marcus",
+            "sentenceAfter": "to the awards dinner, but he chose to stay at home instead.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "could go"
+              },
+              {
+                "letter": "B",
+                "text": "can go"
+              },
+              {
+                "letter": "C",
+                "text": "can have gone"
+              },
+              {
+                "letter": "D",
+                "text": "could have gone"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exe-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She",
+            "sentenceAfter": "have warned us that the schedule had changed before we all showed up!",
+            "options": [
+              {
+                "letter": "A",
+                "text": "could"
+              },
+              {
+                "letter": "B",
+                "text": "may"
+              },
+              {
+                "letter": "C",
+                "text": "would"
+              },
+              {
+                "letter": "D",
+                "text": "will"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "c1-u5-exe-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Fortunately, we",
+            "sentenceAfter": "an extra chair as two guests cancelled at the last minute.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "needn't have got"
+              },
+              {
+                "letter": "B",
+                "text": "didn't need to get"
+              },
+              {
+                "letter": "C",
+                "text": "needed not to get"
+              },
+              {
+                "letter": "D",
+                "text": "hadn't to get"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          }
+        ]
+      }
+    ]
+  }
+}

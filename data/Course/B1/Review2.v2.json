@@ -1,0 +1,940 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B1 English",
+  "block": 2,
+  "unit": 2,
+  "type": "review",
+  "unitTitle": "Review 2: Units 4, 5 and 6",
+  "unitSubtitle": "Review 2: Units 4, 5 and 6",
+  "unitLevel": "B1",
+  "unitFocus": [
+    "Review 2: Units 4, 5 and 6"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B1/Review2.json",
+    "migratedAt": "2026-07-09",
+    "legacyExerciseCount": 5,
+    "sourceType": "review"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b1-r2-theory",
+    "title": "Review",
+    "shortTitle": "Review",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "word_bank_gap_fill",
+        "displayName": "Complete with words from the box",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "word_bank_chips_plus_gap_input",
+          "studentAction": "tap_word_or_type_answer",
+          "evaluationTrigger": "check_button",
+          "chipLayout": "wrap_scroll"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "conjugation_gap_fill",
+        "displayName": "Type the conjugation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_correct_answer_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_conjugation",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b1-r2-node-1",
+      "title": "Review 2: Units 4, 5 and 6",
+      "shortTitle": "Review",
+      "focus": [
+        "word_bank_gap_fill",
+        "free_text_gap_fill",
+        "conjugation_gap_fill",
+        "mc_4_option"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 30,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b1-u2-ex-a",
+          "formatType": "word_bank_gap_fill",
+          "sourceItemIds": [
+            "b1-u2-exa-1",
+            "b1-u2-exa-2",
+            "b1-u2-exa-3",
+            "b1-u2-exa-4",
+            "b1-u2-exa-5",
+            "b1-u2-exa-6",
+            "b1-u2-exa-7",
+            "b1-u2-exa-8"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u2-ex-b",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b1-u2-exb-1",
+            "b1-u2-exb-2",
+            "b1-u2-exb-3",
+            "b1-u2-exb-4",
+            "b1-u2-exb-5",
+            "b1-u2-exb-6",
+            "b1-u2-exb-7"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u2-ex-c",
+          "formatType": "conjugation_gap_fill",
+          "sourceItemIds": [
+            "b1-u2-exc-1",
+            "b1-u2-exc-2",
+            "b1-u2-exc-3",
+            "b1-u2-exc-4",
+            "b1-u2-exc-5",
+            "b1-u2-exc-6"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u2-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b1-u2-exd-1",
+            "b1-u2-exd-2",
+            "b1-u2-exd-3",
+            "b1-u2-exd-4",
+            "b1-u2-exd-5",
+            "b1-u2-exd-6",
+            "b1-u2-exd-7",
+            "b1-u2-exd-8",
+            "b1-u2-exd-9",
+            "b1-u2-exd-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b1-u2-ex-e",
+          "formatType": "word_bank_gap_fill",
+          "sourceItemIds": [
+            "b1-u2-exe-1",
+            "b1-u2-exe-2",
+            "b1-u2-exe-3",
+            "b1-u2-exe-4",
+            "b1-u2-exe-5",
+            "b1-u2-exe-6",
+            "b1-u2-exe-7",
+            "b1-u2-exe-8",
+            "b1-u2-exe-9",
+            "b1-u2-exe-10",
+            "b1-u2-exe-11",
+            "b1-u2-exe-12"
+          ]
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 43,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b1-u2-ex-a",
+      "b1-u2-ex-b",
+      "b1-u2-ex-c",
+      "b1-u2-ex-d",
+      "b1-u2-ex-e"
+    ],
+    "exercises": [
+      {
+        "id": "b1-u2-ex-a",
+        "type": "exercise",
+        "exerciseType": "word_bank_gap_fill",
+        "exerciseTypeName": "A: Complete using the words in the box",
+        "title": "A: Complete using the words in the box",
+        "instructions": "Use each word once.",
+        "studentInstruction": "Use each word once.",
+        "legacyKey": "A",
+        "legacyPattern": "word-bank-gap",
+        "interaction": {
+          "formatType": "word_bank_gap_fill"
+        },
+        "words": [
+          "exam",
+          "fact",
+          "favour",
+          "heart",
+          "instance",
+          "mark",
+          "progress",
+          "skill"
+        ],
+        "wordBank": [
+          "exam",
+          "fact",
+          "favour",
+          "heart",
+          "instance",
+          "mark",
+          "progress",
+          "skill"
+        ],
+        "items": [
+          {
+            "id": "b1-u2-exa-1",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Olivia has made excellent ...... in maths this year.",
+            "answer": "progress",
+            "acceptedAnswers": [
+              "progress"
+            ]
+          },
+          {
+            "id": "b1-u2-exa-2",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "I'm really nervous about my English ...... tomorrow morning.",
+            "answer": "exam",
+            "acceptedAnswers": [
+              "exam"
+            ]
+          },
+          {
+            "id": "b1-u2-exa-3",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Are you in ...... of students wearing school uniforms?",
+            "answer": "favour",
+            "acceptedAnswers": [
+              "favour"
+            ]
+          },
+          {
+            "id": "b1-u2-exa-4",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Communication is an important ...... in many jobs.",
+            "answer": "skill",
+            "acceptedAnswers": [
+              "skill"
+            ]
+          },
+          {
+            "id": "b1-u2-exa-5",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "We had to learn the poem by ...... for homework.",
+            "answer": "heart",
+            "acceptedAnswers": [
+              "heart"
+            ]
+          },
+          {
+            "id": "b1-u2-exa-6",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Some countries, for ...... Canada, have two official languages.",
+            "answer": "instance",
+            "acceptedAnswers": [
+              "instance"
+            ]
+          },
+          {
+            "id": "b1-u2-exa-7",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Jake got a high ...... in his chemistry test.",
+            "answer": "mark",
+            "acceptedAnswers": [
+              "mark"
+            ]
+          },
+          {
+            "id": "b1-u2-exa-8",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Many students think grammar is difficult, but in ...... it's quite logical.",
+            "answer": "fact",
+            "acceptedAnswers": [
+              "fact"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b1-u2-ex-b",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "B: Phrasal verbs",
+        "title": "B: Phrasal verbs",
+        "instructions": "Write a phrasal verb in the correct form to replace the words in bold.",
+        "studentInstruction": "Write a phrasal verb in the correct form to replace the words in bold.",
+        "legacyKey": "B",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u2-exb-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Emma ...... the spelling mistake and corrected it.",
+            "answer": "rubbed out",
+            "acceptedAnswers": [
+              "rubbed out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exb-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Why did Ben ...... his homework paper?",
+            "answer": "rip up",
+            "acceptedAnswers": [
+              "rip up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exb-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "If an answer is wrong, just ...... it ...... neatly.",
+            "answer": "cross, out",
+            "acceptedAnswers": [
+              "cross, out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exb-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You can ...... unfamiliar words online.",
+            "answer": "look up",
+            "acceptedAnswers": [
+              "look up"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exb-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Please ...... your answer so everyone can hear it.",
+            "answer": "read out",
+            "acceptedAnswers": [
+              "read out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exb-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Mrs Green ...... that the homework was due on Friday.",
+            "answer": "pointed out",
+            "acceptedAnswers": [
+              "pointed out"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exb-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Did you all ...... the page number?",
+            "answer": "write down",
+            "acceptedAnswers": [
+              "write down"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u2-ex-c",
+        "type": "exercise",
+        "exerciseType": "conjugation_gap_fill",
+        "exerciseTypeName": "C: Word formation",
+        "title": "C: Word formation",
+        "instructions": "Complete by changing the form of the word in capitals.",
+        "studentInstruction": "Complete by changing the form of the word in capitals.",
+        "legacyKey": "C",
+        "legacyPattern": "conjugation-gap",
+        "interaction": {
+          "formatType": "conjugation_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b1-u2-exc-1",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Our swimming ...... is very friendly and helpful. (INSTRUCT)",
+            "answer": "instructor",
+            "acceptedAnswers": [
+              "instructor"
+            ],
+            "explanation": "",
+            "verbPrompt": "INSTRUCT"
+          },
+          {
+            "id": "b1-u2-exc-2",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Atlas books are useful ...... materials. (REFER)",
+            "answer": "reference",
+            "acceptedAnswers": [
+              "reference"
+            ],
+            "explanation": "",
+            "verbPrompt": "REFER"
+          },
+          {
+            "id": "b1-u2-exc-3",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "She's still a ...... at playing the violin. (BEGIN)",
+            "answer": "beginner",
+            "acceptedAnswers": [
+              "beginner"
+            ],
+            "explanation": "",
+            "verbPrompt": "BEGIN"
+          },
+          {
+            "id": "b1-u2-exc-4",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "We learnt about multiplication and ...... in today's lesson. (DIVIDE)",
+            "answer": "division",
+            "acceptedAnswers": [
+              "division"
+            ],
+            "explanation": "",
+            "verbPrompt": "DIVIDE"
+          },
+          {
+            "id": "b1-u2-exc-5",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "Two of your answers were ...... . (CORRECT)",
+            "answer": "incorrect",
+            "acceptedAnswers": [
+              "incorrect"
+            ],
+            "explanation": "",
+            "verbPrompt": "CORRECT"
+          },
+          {
+            "id": "b1-u2-exc-6",
+            "formatType": "conjugation_gap_fill",
+            "sentence": "I admire your ...... for speaking in front of the whole school. (BRAVE)",
+            "answer": "bravery",
+            "acceptedAnswers": [
+              "bravery"
+            ],
+            "explanation": "",
+            "verbPrompt": "BRAVE"
+          }
+        ]
+      },
+      {
+        "id": "b1-u2-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Choose the correct answer",
+        "title": "D: Choose the correct answer",
+        "instructions": "Choose the correct answer.",
+        "studentInstruction": "Choose the correct answer.",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b1-u2-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I",
+            "sentenceAfter": "all my homework, so I can relax now.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "do"
+              },
+              {
+                "letter": "B",
+                "text": "have done"
+              },
+              {
+                "letter": "C",
+                "text": "had done"
+              },
+              {
+                "letter": "D",
+                "text": "was doing"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "They",
+            "sentenceAfter": "French for two years before moving to Paris.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "studied"
+              },
+              {
+                "letter": "B",
+                "text": "have studied"
+              },
+              {
+                "letter": "C",
+                "text": "had studied"
+              },
+              {
+                "letter": "D",
+                "text": "were studying"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Have you ever",
+            "sentenceAfter": "sushi before?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "eat"
+              },
+              {
+                "letter": "B",
+                "text": "ate"
+              },
+              {
+                "letter": "C",
+                "text": "eaten"
+              },
+              {
+                "letter": "D",
+                "text": "eating"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "By the time we arrived, the lesson",
+            "sentenceAfter": ".",
+            "options": [
+              {
+                "letter": "A",
+                "text": "already started"
+              },
+              {
+                "letter": "B",
+                "text": "has already started"
+              },
+              {
+                "letter": "C",
+                "text": "had already started"
+              },
+              {
+                "letter": "D",
+                "text": "was already starting"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She",
+            "sentenceAfter": "for the competition since January.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "trains"
+              },
+              {
+                "letter": "B",
+                "text": "trained"
+              },
+              {
+                "letter": "C",
+                "text": "has been training"
+              },
+              {
+                "letter": "D",
+                "text": "had been training"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Tom",
+            "sentenceAfter": "three films this weekend.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "watches"
+              },
+              {
+                "letter": "B",
+                "text": "watched"
+              },
+              {
+                "letter": "C",
+                "text": "has watched"
+              },
+              {
+                "letter": "D",
+                "text": "had watched"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We",
+            "sentenceAfter": "the exercise before the teacher explained it.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "completed"
+              },
+              {
+                "letter": "B",
+                "text": "have completed"
+              },
+              {
+                "letter": "C",
+                "text": "had completed"
+              },
+              {
+                "letter": "D",
+                "text": "were completing"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I",
+            "sentenceAfter": "my cousins since last Christmas.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "didn't see"
+              },
+              {
+                "letter": "B",
+                "text": "haven't seen"
+              },
+              {
+                "letter": "C",
+                "text": "hadn't seen"
+              },
+              {
+                "letter": "D",
+                "text": "don't see"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "How long",
+            "sentenceAfter": "English?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "do you study"
+              },
+              {
+                "letter": "B",
+                "text": "are you studying"
+              },
+              {
+                "letter": "C",
+                "text": "have you been studying"
+              },
+              {
+                "letter": "D",
+                "text": "had you been studying"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b1-u2-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "By the time we reached the cinema, the film",
+            "sentenceAfter": ".",
+            "options": [
+              {
+                "letter": "A",
+                "text": "has started"
+              },
+              {
+                "letter": "B",
+                "text": "started"
+              },
+              {
+                "letter": "C",
+                "text": "had started"
+              },
+              {
+                "letter": "D",
+                "text": "was starting"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b1-u2-ex-e",
+        "type": "exercise",
+        "exerciseType": "word_bank_gap_fill",
+        "exerciseTypeName": "E: Complete the sentences",
+        "title": "E: Complete the sentences",
+        "instructions": "Complete using the words in the box.",
+        "studentInstruction": "Complete using the words in the box.",
+        "legacyKey": "E",
+        "legacyPattern": "word-bank-gap",
+        "interaction": {
+          "formatType": "word_bank_gap_fill"
+        },
+        "words": [
+          "advice",
+          "at",
+          "attempt",
+          "failed",
+          "grade",
+          "heart",
+          "practice",
+          "revise",
+          "study",
+          "take",
+          "take",
+          "work"
+        ],
+        "wordBank": [
+          "advice",
+          "at",
+          "attempt",
+          "failed",
+          "grade",
+          "heart",
+          "practice",
+          "revise",
+          "study",
+          "take",
+          "take",
+          "work"
+        ],
+        "items": [
+          {
+            "id": "b1-u2-exe-1",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "I passed the maths test on my second ...... .",
+            "answer": "attempt",
+            "acceptedAnswers": [
+              "attempt"
+            ]
+          },
+          {
+            "id": "b1-u2-exe-2",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Nathan got an excellent ...... in science.",
+            "answer": "grade",
+            "acceptedAnswers": [
+              "grade"
+            ]
+          },
+          {
+            "id": "b1-u2-exe-3",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "You need to ...... regularly if you want good results.",
+            "answer": "revise",
+            "acceptedAnswers": [
+              "revise"
+            ]
+          },
+          {
+            "id": "b1-u2-exe-4",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "The students had to ...... notes during the lecture.",
+            "answer": "take",
+            "acceptedAnswers": [
+              "take"
+            ]
+          },
+          {
+            "id": "b1-u2-exe-5",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Sophie is very good ...... languages.",
+            "answer": "at",
+            "acceptedAnswers": [
+              "at"
+            ]
+          },
+          {
+            "id": "b1-u2-exe-6",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "He ...... the driving test twice before he passed.",
+            "answer": "failed",
+            "acceptedAnswers": [
+              "failed"
+            ]
+          },
+          {
+            "id": "b1-u2-exe-7",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Can you help me ...... out this answer?",
+            "answer": "work",
+            "acceptedAnswers": [
+              "work"
+            ]
+          },
+          {
+            "id": "b1-u2-exe-8",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Learning to play the piano takes time and ...... .",
+            "answer": "practice",
+            "acceptedAnswers": [
+              "practice"
+            ]
+          },
+          {
+            "id": "b1-u2-exe-9",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Lucy decided to ...... up photography.",
+            "answer": "take",
+            "acceptedAnswers": [
+              "take"
+            ]
+          },
+          {
+            "id": "b1-u2-exe-10",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "I need to ...... for tomorrow's geography test.",
+            "answer": "study",
+            "acceptedAnswers": [
+              "study"
+            ]
+          },
+          {
+            "id": "b1-u2-exe-11",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "He knew the speech by ...... because he practised every day.",
+            "answer": "heart",
+            "acceptedAnswers": [
+              "heart"
+            ]
+          },
+          {
+            "id": "b1-u2-exe-12",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "The teacher gave me useful ...... about improving my essay.",
+            "answer": "advice",
+            "acceptedAnswers": [
+              "advice"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
