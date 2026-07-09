@@ -1324,35 +1324,209 @@
       return 'Unit ' + unitNum + ': ' + title;
     },
 
-    _closeReviewGuideMenus: function(exceptMenuId) {
-      document.querySelectorAll('.course-review-guide-menu').forEach(function(menu) {
-        if (exceptMenuId && menu.id === exceptMenuId && !menu.hidden) return;
-        menu.hidden = true;
-      });
-      document.removeEventListener('click', BentoGrid._handleReviewGuideOutsideClick, true);
-    },
-
-    _handleReviewGuideOutsideClick: function() {
-      BentoGrid._closeReviewGuideMenus();
-    },
-
-    _toggleReviewGuideMenu: function(event, menuId) {
-      if (event) event.stopPropagation();
-      var menu = document.getElementById(menuId);
-      if (!menu) return;
-      var willOpen = menu.hidden;
-      BentoGrid._closeReviewGuideMenus(willOpen ? menuId : null);
-      menu.hidden = !willOpen;
-      if (willOpen) {
-        setTimeout(function() {
-          document.addEventListener('click', BentoGrid._handleReviewGuideOutsideClick, true);
-        }, 0);
+    _unwrapCourseUnitData: function(unitData) {
+      if (!unitData || unitData.type) return unitData;
+      var keys = Object.keys(unitData);
+      if (keys.length === 1 && unitData[keys[0]] && unitData[keys[0]].type) {
+        return unitData[keys[0]];
       }
+      return unitData;
     },
 
-    _openReviewGuideUnit: function(unitId, filePath) {
-      BentoGrid._closeReviewGuideMenus();
-      BentoGrid.openCourseUnit(unitId, filePath, 0);
+    _extractTheoryCardsFromUnit: function(unitData) {
+      unitData = BentoGrid._unwrapCourseUnitData(unitData);
+      if (!unitData) return [];
+      if (unitData.theory && unitData.theory.cards && unitData.theory.cards.length) {
+        return unitData.theory.cards.slice();
+      }
+      var cards = [];
+      (unitData.sections || []).forEach(function(section, idx) {
+        if (section.type !== 'theory') return;
+        cards.push({
+          id: 'legacy-theory-' + idx,
+          title: section.title || 'Theory',
+          subtitle: '',
+          cardType: 'rule_card',
+          sections: [{ type: 'explanation', description: section.title || 'Review this topic.' }]
+        });
+      });
+      return cards;
+    },
+
+    _buildCombinedReviewTheoryUnit: function(reviewItem, coveredUnits, unitDataById) {
+      var mergedCards = [];
+      coveredUnits.forEach(function(unit) {
+        var unitData = unitDataById[unit.id];
+        var cards = BentoGrid._extractTheoryCardsFromUnit(unitData);
+        if (!cards.length) return;
+        var unitLabel = BentoGrid._formatReviewCoveredUnitLabel(unit);
+        mergedCards.push({
+          id: 'review-guide-header-' + unit.id,
+          title: unitLabel,
+          subtitle: unit.type === 'vocabulary' ? 'Vocabulary' : 'Grammar',
+          cardType: 'unit_header',
+          sections: [{
+            type: 'explanation',
+            description: 'Key points from this unit for the review.'
+          }]
+        });
+        cards.forEach(function(card, idx) {
+          mergedCards.push(Object.assign({}, card, {
+            id: unit.id + '-' + (card.id || ('card-' + idx))
+          }));
+        });
+      });
+      return {
+        type: 'review',
+        unitTitle: (reviewItem && reviewItem.title) || 'Review guide',
+        theory: { cards: mergedCards }
+      };
+    },
+
+    _closeCombinedTheoryOverlay: function() {
+      var overlay = document.getElementById('course-combined-theory-overlay');
+      if (overlay) overlay.remove();
+      document.removeEventListener('keydown', BentoGrid._handleCombinedTheoryEscape, true);
+      BentoGrid._combinedTheoryOverlayState = null;
+    },
+
+    _handleCombinedTheoryEscape: function(event) {
+      if (event.key === 'Escape') BentoGrid._closeCombinedTheoryOverlay();
+    },
+
+    _renderCombinedTheoryOverlay: function() {
+      var state = BentoGrid._combinedTheoryOverlayState;
+      if (!state || !state.mount) return;
+      var theory = window.SunePlayTheory;
+      if (!theory || !theory.TheoryFlow) return;
+
+      state.mount.innerHTML =
+        '<div class="sp-lesson sp-lesson--theory course-combined-theory-lesson">' +
+          theory.TheoryFlow(state.virtualUnit, {
+            cardIdx: state.cardIdx,
+            exitToStage: true,
+            returnToSession: false
+          }) +
+        '</div>';
+
+      var mount = state.mount;
+      var nextBtn = mount.querySelector('[data-action="theory-next"]');
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+          var cards = (state.virtualUnit.theory && state.virtualUnit.theory.cards) || [];
+          if (state.cardIdx < cards.length - 1) {
+            state.cardIdx++;
+            BentoGrid._renderCombinedTheoryOverlay();
+          } else {
+            BentoGrid._closeCombinedTheoryOverlay();
+          }
+        });
+      }
+
+      var prevBtn = mount.querySelector('[data-action="theory-prev"]');
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+          if (state.cardIdx > 0) {
+            state.cardIdx--;
+            BentoGrid._renderCombinedTheoryOverlay();
+          }
+        });
+      }
+
+      mount.querySelectorAll('[data-action="theory-goto"]').forEach(function(dot) {
+        dot.addEventListener('click', function() {
+          var idx = parseInt(dot.getAttribute('data-card-idx'), 10);
+          if (!isNaN(idx) && idx !== state.cardIdx) {
+            state.cardIdx = idx;
+            BentoGrid._renderCombinedTheoryOverlay();
+          }
+        });
+      });
+
+      mount.querySelectorAll('[data-action="theory-exit"]').forEach(function(btn) {
+        btn.addEventListener('click', BentoGrid._closeCombinedTheoryOverlay);
+      });
+
+      mount.querySelectorAll('[data-action="theory-speak"]').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var text = btn.getAttribute('data-speak-text');
+          if (!text || !theory.speakText) return;
+          mount.querySelectorAll('.sp-speakable--speaking').forEach(function(el) {
+            el.classList.remove('sp-speakable--speaking');
+          });
+          btn.classList.add('sp-speakable--speaking');
+          theory.speakText(text, function() {
+            btn.classList.remove('sp-speakable--speaking');
+          });
+        });
+      });
+
+      var theoryBody = mount.querySelector('.sp-theory-card-body');
+      if (theoryBody) theoryBody.scrollTop = 0;
+    },
+
+    _showCombinedTheoryOverlay: function(virtualUnit) {
+      BentoGrid._closeCombinedTheoryOverlay();
+
+      var overlay = document.createElement('div');
+      overlay.id = 'course-combined-theory-overlay';
+      overlay.className = 'course-combined-theory-overlay';
+      overlay.innerHTML =
+        '<div class="course-combined-theory-panel" role="dialog" aria-modal="true" aria-label="Review guide">' +
+          '<div class="course-combined-theory-mount"></div>' +
+        '</div>';
+      overlay.addEventListener('click', function(event) {
+        if (event.target === overlay) BentoGrid._closeCombinedTheoryOverlay();
+      });
+      document.body.appendChild(overlay);
+
+      BentoGrid._combinedTheoryOverlayState = {
+        virtualUnit: virtualUnit,
+        cardIdx: 0,
+        mount: overlay.querySelector('.course-combined-theory-mount')
+      };
+      document.addEventListener('keydown', BentoGrid._handleCombinedTheoryEscape, true);
+      BentoGrid._renderCombinedTheoryOverlay();
+    },
+
+    _openReviewCombinedGuide: async function(levelId, reviewItemId) {
+      var indexData = await BentoGrid._loadCourseIndexForLevel(levelId);
+      if (!indexData || !indexData.items) return;
+      var reviewItem = indexData.items.find(function(item) { return item.id === reviewItemId; });
+      if (!reviewItem) return;
+
+      var coveredUnits = indexData.items.filter(function(item) {
+        return (item.type === 'grammar' || item.type === 'vocabulary') && item.block === reviewItem.block;
+      });
+      if (!coveredUnits.length) return;
+
+      var existingOverlay = document.getElementById('course-combined-theory-overlay');
+      if (!existingOverlay) {
+        var loadingOverlay = document.createElement('div');
+        loadingOverlay.id = 'course-combined-theory-overlay';
+        loadingOverlay.className = 'course-combined-theory-overlay course-combined-theory-overlay--loading';
+        loadingOverlay.innerHTML = '<div class="course-combined-theory-panel"><div class="fe-loading"><div class="fe-spinner"></div></div></div>';
+        document.body.appendChild(loadingOverlay);
+      }
+
+      var unitDataById = {};
+      await Promise.all(coveredUnits.map(async function(unit) {
+        var filePath = 'data/Course/' + levelId + '/' + unit.file;
+        try {
+          var response = await fetch(filePath);
+          if (!response.ok) return;
+          var unitData = await response.json();
+          unitDataById[unit.id] = BentoGrid._unwrapCourseUnitData(unitData);
+        } catch (e) { /* ignore failed unit fetch */ }
+      }));
+
+      var virtualUnit = BentoGrid._buildCombinedReviewTheoryUnit(reviewItem, coveredUnits, unitDataById);
+      if (!virtualUnit.theory.cards.length) {
+        BentoGrid._closeCombinedTheoryOverlay();
+        return;
+      }
+      BentoGrid._showCombinedTheoryOverlay(virtualUnit);
     },
 
     _isReviewFullyComplete: function(levelId, reviewItem, progress) {
@@ -1806,28 +1980,15 @@
 
         var guidePath = 'data/Course/' + levelId + '/' + item.file;
         var coveredUnits = group.isReview ? BentoGrid._getReviewCoveredUnits(etapa.items, item) : [];
-        var reviewGuideMenuId = 'course-review-guide-' + item.id;
         html += '<div class="' + headerClass + '">';
         html += '<div class="course-etapa-header-text">';
         html += '<div class="course-etapa-header-title">' + self._escapeHTML(unitLabel) + '</div>';
         html += '</div>';
         if (group.isReview && coveredUnits.length) {
-          html += '<div class="course-review-header-actions">';
-          html += '<button type="button" class="course-etapa-header-guide course-etapa-header-guide--review" onclick="event.stopPropagation();BentoGrid._toggleReviewGuideMenu(event,\'' + reviewGuideMenuId + '\')">' +
+          html += '<button type="button" class="course-etapa-header-guide course-etapa-header-guide--review" onclick="event.stopPropagation();BentoGrid._openReviewCombinedGuide(\'' + levelId + '\',\'' + item.id + '\')">' +
             _mi('menu_book') + ' GUIDE</button>';
-          html += '<div class="course-review-guide-menu" id="' + reviewGuideMenuId + '" hidden>';
-          coveredUnits.forEach(function(unit) {
-            var coveredUnitPath = 'data/Course/' + levelId + '/' + unit.file;
-            var coveredUnitLabel = BentoGrid._formatReviewCoveredUnitLabel(unit);
-            var coveredUnitIcon = unit.type === 'vocabulary' ? 'translate' : 'menu_book';
-            html += '<button type="button" class="course-review-guide-item" onclick="event.stopPropagation();BentoGrid._openReviewGuideUnit(\'' + unit.id + '\',\'' + coveredUnitPath + '\')">' +
-              '<span class="course-review-guide-item-icon">' + _mi(coveredUnitIcon) + '</span>' +
-              '<span class="course-review-guide-item-label">' + self._escapeHTML(coveredUnitLabel) + '</span>' +
-            '</button>';
-          });
-          html += '</div></div>';
         } else if (item.type !== 'progress_test' && !group.isReview) {
-          html += '<button type="button" class="course-etapa-header-guide" onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'' + guidePath + '\',0)">' +
+          html += '<button type="button" class="course-etapa-header-guide" onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'' + guidePath + '\',\'theory\')">' +
             _mi('menu_book') + ' GUIDE</button>';
         }
         html += '</div>';
@@ -2138,7 +2299,7 @@
           var exercisePoints = meta && meta.exercises && meta.exercises.length ? meta.exercises : [{ label: 'A', sectionIdx: theoryPoints.length }];
           html +=
             '<div class="fe-map-lesson ' + (isDone ? 'fe-lesson-complete' : 'fe-lesson-active') + '" style="cursor:pointer" ' +
-              'onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'' + unitPath + '\', 0)">' +
+              'onclick="BentoGrid.openCourseUnit(\'' + item.id + '\',\'' + unitPath + '\', \'theory\')">' +
               '<div class="fe-map-lesson-title">' +
                 '<span class="fe-map-lesson-num">' + theoryLabel + '</span>' +
               '</div>' +
@@ -2494,10 +2655,11 @@
             spTheoryCardIdx = startSection;
           }
         } else if (typeof startSection === 'number') {
-          spStart = 'session';
-          var reviewMeta = BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[unitId];
-          if (reviewMeta && reviewMeta.exercises && reviewMeta.exercises[startSection]) {
-            var reviewEx = reviewMeta.exercises[startSection];
+          var unitMeta = BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[unitId];
+          var isReviewLikeUnit = unitData.type === 'review' || unitData.type === 'progress_test';
+          if (isReviewLikeUnit && unitMeta && unitMeta.exercises && unitMeta.exercises[startSection]) {
+            spStart = 'session';
+            var reviewEx = unitMeta.exercises[startSection];
             if (reviewEx.exerciseId) {
               startExerciseId = reviewEx.exerciseId;
               startNodeId = reviewEx.nodeId || BentoGrid._resolveSunePlayNodeForExercise(unitData, reviewEx.exerciseId);
@@ -6654,8 +6816,8 @@
         return {
           sunePlay: true,
           theory: theoryCards.length
-            ? theoryCards.map(function(_, idx) { return { label: String(idx + 1), sectionIdx: idx }; })
-            : [{ label: '1', sectionIdx: 0 }],
+            ? theoryCards.map(function(_, idx) { return { label: String(idx + 1), sectionIdx: 'theory:' + idx }; })
+            : [{ label: '1', sectionIdx: 'theory:0' }],
           exercises: exercises
         };
       }
