@@ -1520,6 +1520,15 @@
       });
     },
 
+    _getReviewExerciseCompletion: function(levelId, reviewItem, progress) {
+      var exercises = BentoGrid._getReviewSectionDefs(reviewItem);
+      var done = 0;
+      exercises.forEach(function(ex) {
+        if (BentoGrid._isCourseExercisePassed(levelId, reviewItem.id, ex.sectionIdx, 'review', progress)) done++;
+      });
+      return { done: done, total: exercises.length };
+    },
+
     _getReviewSectionDefs: function(reviewItem) {
       var meta = reviewItem && BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[reviewItem.id];
       if (meta && meta.exercises && meta.exercises.length) {
@@ -2204,7 +2213,7 @@
       return 'Other';
     },
 
-    _selectCourseBlock: function(blockKey) {
+    _selectCourseBlock: async function(blockKey) {
       var blockIndex = (BentoGrid._courseBlockOrder || []).indexOf(blockKey);
       if (!(typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack) && blockIndex > 0) {
         if (typeof Dashboard !== 'undefined' && Dashboard.showTheoryUpgradeGate) Dashboard.showTheoryUpgradeGate();
@@ -2238,6 +2247,7 @@
           resetBlockBtn +
         '</div>';
 
+      await BentoGrid._ensureCourseUnitMeta(level, blockItems);
       centerSection.innerHTML = headerHtml + BentoGrid._renderCourseBlockView(blockKey);
       var cbState = { view: 'courseBlock', blockKey: blockKey, level: level };
       history.pushState(cbState, '', Router.stateToPath(cbState));
@@ -2401,13 +2411,14 @@
 
         if (isAvail) {
           var reviewSectionDefs = BentoGrid._getReviewSectionDefs(reviewItem);
+          var reviewCompletion = BentoGrid._getReviewExerciseCompletion(level, reviewItem, progress);
           var reviewTotalMax = reviewItem.totalPoints || reviewSectionDefs.reduce(function(sum, sec) {
             return sum + (sec.maxScore || 0);
           }, 0) || 50;
           var reviewAnsweredData = BentoGrid._getReviewAnswered(level);
           var reviewStateData = BentoGrid._getReviewSectionState(level);
           var totalEarned = 0;
-          var anyStarted = false;
+          var anyStarted = reviewCompletion.done > 0;
           reviewSectionDefs.forEach(function(sec, idx) {
             var skey = reviewItem.id + '_' + idx;
             if (skey in reviewAnsweredData) {
@@ -2416,32 +2427,46 @@
             }
           });
           totalEarned = Math.min(totalEarned, reviewTotalMax);
-          html += '<div class="fe-map-lesson fe-map-review-block ' + (isDone ? 'fe-lesson-complete' : 'fe-lesson-pending') + '">' +
+          var reviewTotalLabel = anyStarted && totalEarned > 0
+            ? (totalEarned + '/' + reviewTotalMax)
+            : (reviewCompletion.done > 0 ? (reviewCompletion.done + '/' + reviewCompletion.total) : '–/' + reviewTotalMax);
+          html += '<div class="fe-map-lesson fe-map-review-block ' + (isDone ? 'fe-lesson-complete' : (anyStarted ? 'fe-lesson-active' : 'fe-lesson-pending')) + '">' +
             '<div class="fe-map-lesson-title">' +
               '<span class="fe-map-lesson-num">Review</span>' +
-              '<span class="fe-rs-total-score' + (!anyStarted ? ' fe-rs-score-pending' : '') + '">' + (anyStarted ? totalEarned : '–') + '/' + reviewTotalMax + '</span>' +
+              '<span class="fe-rs-total-score' + (!anyStarted ? ' fe-rs-score-pending' : '') + '">' + reviewTotalLabel + '</span>' +
             '</div>' +
             '<div class="fe-map-review-slots">';
           reviewSectionDefs.forEach(function(sec, idx) {
             var skey = reviewItem.id + '_' + idx;
-            var isPending = !(skey in reviewAnsweredData);
-            var earned = isPending ? 0 : (reviewAnsweredData[skey] || 0);
+            var passed = BentoGrid._isCourseExercisePassed(level, reviewItem.id, sec.sectionIdx, 'review', progress);
+            var legacyAnswered = skey in reviewAnsweredData;
+            var isPending = !passed && !legacyAnswered;
+            var earned = legacyAnswered ? (reviewAnsweredData[skey] || 0) : 0;
             var state = reviewStateData[skey];
             var displayMax = (state && state.total) ? state.total : (sec.maxScore || 0);
-            var scoreLabel = displayMax ? ((isPending ? '–' : Math.min(earned, displayMax)) + '/' + displayMax) : sec.letter;
+            var scoreLabel;
+            if (passed && !legacyAnswered) {
+              scoreLabel = _mi('check_circle');
+            } else if (displayMax) {
+              scoreLabel = (isPending ? '–' : Math.min(earned, displayMax)) + '/' + displayMax;
+            } else {
+              scoreLabel = sec.letter;
+            }
             var sectionArg = BentoGrid._formatCourseUnitSectionJsArg(sec.sectionIdx !== undefined ? sec.sectionIdx : idx);
             var reviewSlotAccessible = BentoGrid._isReviewExerciseAccessible(level, reviewItem, idx, {
               progress: progress,
               indexData: indexData
             });
-            var reviewSlotClass = 'fe-review-slot' + (reviewSlotAccessible ? '' : ' fe-review-slot--locked');
+            var reviewSlotClass = 'fe-review-slot';
+            if (passed) reviewSlotClass += ' fe-review-slot--done';
+            else if (!reviewSlotAccessible) reviewSlotClass += ' fe-review-slot--locked';
             var reviewSlotOnclick = reviewSlotAccessible
               ? 'BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'' + reviewPath + '\',' + sectionArg + ')'
               : 'return false;';
             html += '<button class="' + reviewSlotClass + '" onclick="' + reviewSlotOnclick + '">' +
               '<span class="fe-rs-letter">' + sec.letter + '</span>' +
               '<span class="fe-rs-name">' + self._escapeHTML(sec.name) + '</span>' +
-              '<span class="fe-rs-score' + (isPending ? ' fe-rs-score-pending' : '') + '">' + scoreLabel + '</span>' +
+              '<span class="fe-rs-score' + (isPending && !passed ? ' fe-rs-score-pending' : '') + '">' + scoreLabel + '</span>' +
             '</button>';
           });
           html += '</div></div>';
@@ -2506,6 +2531,7 @@
       }
 
       if (foundItem && foundItem.type === 'review') {
+        await BentoGrid._ensureCourseUnitMeta(level, [foundItem]);
         var reviewProgress = BentoGrid._getCourseProgress(level);
         var reviewExerciseIdx;
         if (startSection == null || startSection === 'exercises') {
@@ -6661,7 +6687,7 @@
       if (!BentoGrid._courseBlocks) {
         await BentoGrid.openCourseSection('learning', AppState.currentLevel, { fromRoute: true });
       }
-      BentoGrid._selectCourseBlock(blockKey);
+      await BentoGrid._selectCourseBlock(blockKey);
     },
 
     _popstateCourseUnit: async function(state) {
@@ -7822,11 +7848,17 @@
             var reviewLabel = unitItems.length >= 2
               ? 'Review — Units ' + unitItems[0].unit + ' & ' + unitItems[1].unit
               : (unitItems.length === 1 ? 'Review — Unit ' + unitItems[0].unit : 'Review');
+            var reviewPartial = BentoGrid._getReviewExerciseCompletion(level, reviewItem, progress);
+            var reviewBadge = reviewDone
+              ? '<span class="cu-brr-done">' + _mi('check_circle') + '</span>'
+              : (reviewPartial.done > 0
+                ? '<span class="cu-brr-badge cu-brr-badge-progress">' + reviewPartial.done + '/' + reviewPartial.total + '</span>'
+                : '<span class="cu-brr-badge">Start</span>');
             if (reviewAccessible) {
               html += '<div class="cu-block-review-row cu-block-review-available" onclick="BentoGrid.openCourseUnit(\'' + reviewItem.id + '\',\'data/Course/' + level + '/' + reviewItem.file + '\')">' +
                 '<span class="cu-brr-icon">' + _mi('quiz') + '</span>' +
                 '<span class="cu-brr-text">' + self._escapeHTML(reviewLabel) + '</span>' +
-                (reviewDone ? '<span class="cu-brr-done">' + _mi('check_circle') + '</span>' : '<span class="cu-brr-badge">Start</span>') +
+                reviewBadge +
                 (reviewDone ? '<button type="button" class="cu-reset-btn cu-reset-btn-sm" onclick="event.stopPropagation();BentoGrid._resetCourseUnit(\'' + reviewItem.id + '\')" title="Restart review">' + CU_RESET_ICON_SVG + '</button>' : '') +
               '</div>';
             } else {

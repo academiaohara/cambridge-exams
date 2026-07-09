@@ -70,6 +70,21 @@
     }
   }
 
+  function resolveReviewStartExerciseId(unitData, progress) {
+    if (!unitData || unitData.type !== 'review') return null;
+    var required = (unitData.contentBanks && unitData.contentBanks.requiredExerciseIds) || [];
+    if (!required.length) {
+      var exercises = (unitData.contentBanks && unitData.contentBanks.exercises) || [];
+      required = exercises.map(function(ex) { return ex.id; }).filter(Boolean);
+    }
+    if (!required.length) return null;
+    var completed = (progress && progress.completedExercises) || {};
+    for (var i = 0; i < required.length; i++) {
+      if (!completed[required[i]]) return required[i];
+    }
+    return required[0];
+  }
+
   function calcXp(unit, correct, livesLost, perfect) {
     var rules = unit.xpRules || {};
     var xp = correct * (rules.baseXpPerCorrectScreen || 10);
@@ -1322,6 +1337,17 @@
       pendingNodeId: opts.startNodeId || null,
       pendingExerciseId: opts.startExerciseId || null
     };
+
+    if (!opts.startExerciseId && (unitData.type === 'review' || unitData.type === 'progress_test')) {
+      var resolvedExerciseId = resolveReviewStartExerciseId(unitData, progress);
+      if (resolvedExerciseId) {
+        opts.startExerciseId = resolvedExerciseId;
+        lessonState.pendingExerciseId = resolvedExerciseId;
+        if (!opts.startNodeId && typeof BentoGrid !== 'undefined' && BentoGrid._resolveSunePlayNodeForExercise) {
+          opts.startNodeId = BentoGrid._resolveSunePlayNodeForExercise(unitData, resolvedExerciseId);
+        }
+      }
+    }
 
     if (opts.startSection === 'theory') {
       lessonState.phase = 'theory';
