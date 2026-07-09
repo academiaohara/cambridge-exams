@@ -875,6 +875,30 @@
   color: #94a3b8;
 }
 
+.fe-review-slot--done {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.fe-review-slot--done:hover {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.45);
+}
+
+.fe-review-slot--done .fe-rs-letter {
+  background: rgba(16, 185, 129, 0.18);
+  color: #047857;
+}
+
+.fe-review-slot--done .fe-rs-score {
+  color: #059669;
+}
+
+.fe-review-slot--done .fe-rs-score .material-symbols-outlined {
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
 .fe-rs-letter {
   display: inline-flex;
   align-items: center;
@@ -3190,6 +3214,13 @@ textarea.cu-gap-input.cu-bc-input.cu-gap-textarea {
 .cu-brr-badge-locked {
   background: rgba(148, 163, 184, 0.2);
   color: #94a3b8;
+}
+
+.cu-brr-badge-progress {
+  background: rgba(59, 130, 246, 0.15);
+  color: #1d4ed8;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 /* Block-level progress bar */
