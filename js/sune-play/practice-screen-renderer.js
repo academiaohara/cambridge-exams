@@ -301,6 +301,50 @@
     return counts;
   }
 
+  function buildPassageGapBankLimits(wordBank) {
+    var limits = {};
+    (wordBank || []).forEach(function(word) {
+      if (!word) return;
+      limits[word] = 1;
+    });
+    return limits;
+  }
+
+  function getPassageGapWordBankUsage(state, exceptGapNumber) {
+    var usage = {};
+    if (!state) return usage;
+
+    Object.keys(state.confirmedVerbs || {}).forEach(function(verb) {
+      usage[verb] = state.confirmedVerbs[verb];
+    });
+
+    Object.keys(state.assignments || {}).forEach(function(gapKey) {
+      var gapNum = parseInt(gapKey, 10);
+      if (state.completed[gapNum]) return;
+      if (exceptGapNumber != null && gapNum === exceptGapNumber) return;
+      var verb = state.assignments[gapKey];
+      if (!verb) return;
+      usage[verb] = (usage[verb] || 0) + 1;
+    });
+
+    return usage;
+  }
+
+  function autoAssignPassageGapVerb(state, gap, payload) {
+    if (!state || !gap || !gap.baseVerb) return;
+    if (payload.requireWordBankAssignment === false) return;
+    if (state.assignments[gap.gapNumber]) return;
+
+    var limits = state.bankLimits || {};
+    var baseVerb = gap.baseVerb;
+    if (!limits[baseVerb]) return;
+
+    var usage = getPassageGapWordBankUsage(state);
+    if ((usage[baseVerb] || 0) >= 1) {
+      state.assignments[gap.gapNumber] = baseVerb;
+    }
+  }
+
   function syncPassageGapStateToScreen(screen, root) {
     if (!screen || !root || !root._passageGapState) return;
     screen._passageGapState = JSON.parse(JSON.stringify(root._passageGapState));
@@ -343,6 +387,7 @@
       inRetryPhase: inRetryPhase,
       retryQueue: saved.retryQueue || [],
       verbCounts: buildPassageGapVerbCounts(gaps),
+      bankLimits: buildPassageGapBankLimits(p.wordBank || []),
       confirmedVerbs: saved.confirmedVerbs || {}
     };
     gaps.forEach(function(gap) {
@@ -358,11 +403,13 @@
   function updatePassageGapWordBank(root) {
     var state = root._passageGapState;
     if (!state) return;
+    var limits = state.bankLimits || {};
+    var usage = getPassageGapWordBankUsage(state);
     root.querySelectorAll('.sp-passage-wordbank [data-word]').forEach(function(chip) {
       var word = chip.getAttribute('data-word');
-      var maxUses = state.verbCounts[word] || 0;
-      var confirmed = state.confirmedVerbs[word] || 0;
-      var depleted = maxUses > 0 && confirmed >= maxUses;
+      var maxUses = limits[word] || 0;
+      var used = usage[word] || 0;
+      var depleted = maxUses > 0 && used >= maxUses;
       chip.classList.toggle('sp-passage-wordbank-chip--used', depleted);
       if (chip.classList.contains('sp-passage-wordbank-chip--selectable')) {
         chip.disabled = depleted;
@@ -390,6 +437,16 @@
     var gaps = p.gaps || [];
     var state = root._passageGapState;
     if (!state) return;
+
+    var activeGapData = null;
+    gaps.forEach(function(gap) {
+      if (gap.gapNumber === state.activeGap && !state.completed[gap.gapNumber]) {
+        activeGapData = gap;
+      }
+    });
+    if (activeGapData) {
+      autoAssignPassageGapVerb(state, activeGapData, p);
+    }
 
     gaps.forEach(function(gap) {
       var wrap = getPassageGapWrap(root, gap.gapNumber);
@@ -426,6 +483,7 @@
           input.readOnly = false;
           if (state.inRetryPhase && isFailed) {
             input.value = '';
+            delete state.assignments[gapNum];
           }
           if (state.assignments[gapNum]) {
             setPassageGapVerbLabel(wrap, state.assignments[gapNum]);
@@ -463,12 +521,16 @@
     var state = root._passageGapState;
     if (!state || gapNumber !== state.activeGap) return false;
     if (state.completed[gapNumber]) return false;
+    if (state.assignments[gapNumber] === verb) return true;
 
-    var maxUses = state.verbCounts[verb] || 0;
-    var confirmed = state.confirmedVerbs[verb] || 0;
-    if (maxUses > 0 && confirmed >= maxUses) return false;
+    var limits = state.bankLimits || {};
+    var usage = getPassageGapWordBankUsage(state, gapNumber);
+    var maxUses = limits[verb] || 0;
+    var used = usage[verb] || 0;
+    if (maxUses > 0 && used >= maxUses) return false;
 
     state.assignments[gapNumber] = verb;
+    updatePassageGapWordBank(root);
 
     var wrap = getPassageGapWrap(root, gapNumber);
     setPassageGapVerbLabel(wrap, verb);
