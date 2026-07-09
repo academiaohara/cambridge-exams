@@ -896,13 +896,15 @@
         "exerciseTypeName": "Young musicians (word formation)",
         "title": "Young musicians (word formation)",
         "instructions": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
-        "studentInstruction": "Use the word given in capitals at the end of each line to form a word that fits in the gap in the same line.",
+        "studentInstruction": "Use the word in capitals to form a new word for each gap, one gap at a time.",
         "legacyKey": "G",
         "legacyPattern": "passage-wf",
         "interaction": {
           "formatType": "passage_gap_fill",
-          "sequentialGaps": false,
-          "gapInputStyle": "pill"
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
+          "requireWordFormation": true,
+          "gapInputStyle": "underline_expand"
         },
         "passageTitle": "Young musicians",
         "passage": "Many children enjoy (1) ...... (SING) before they can read music. Some become excellent (2) ...... (MUSIC) when they are older. Learning an instrument is not always easy, but it is great (3) ...... (ENTERTAIN) for the whole family. Regular practice is an important (4) ...... (ACT), and young performers need to stay (5) ...... (ACT) if they want to improve. A confident child may even feel like a (6) ...... (HERO) when they perform on stage.",
@@ -913,7 +915,7 @@
           "entertainment",
           "activity",
           "active",
-          "hero"
+          "heroine"
         ]
       },
       {

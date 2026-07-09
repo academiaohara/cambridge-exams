@@ -2308,13 +2308,15 @@
         "exerciseTypeName": "Word formation (Learning text)",
         "title": "Word formation (Learning text)",
         "instructions": "Complete the text by writing the correct form of each word in capitals.",
-        "studentInstruction": "Complete the text by writing the correct form of each word in capitals.",
+        "studentInstruction": "Complete the text by writing the correct form of each word in capitals, one gap at a time.",
         "legacyKey": "O",
         "legacyPattern": "passage-wf",
         "interaction": {
           "formatType": "passage_gap_fill",
-          "sequentialGaps": false,
-          "gapInputStyle": "pill"
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
+          "requireWordFormation": true,
+          "gapInputStyle": "underline_expand"
         },
         "passage": "The …(1)… (CONCEIVE) of critical thinking as a teachable skill has gained widespread acceptance in recent years. The …(2)… (ASSUME) that intelligence is fixed at birth has been largely discredited by modern neuroscience. It is …(3)… (DOUBT) true that learning new things actively changes the physical structure of the brain.\n\nHowever, many students struggle with the …(4)… (CONFUSE) surrounding different study techniques. Which methods are truly effective, and which produce only the …(5)… (BELIEVE) impression of genuine learning? These are important questions. Students who feel …(6)… (CONVINCE) by a teacher's explanation often leave thinking they have understood, only to discover later that they cannot apply what they have learned.\n\nA …(7)… (DECIDE) learner, by contrast, will commit to a method and persevere long enough to see real results. Such a student is not put off by problems that at first seem …(8)… (EXPLAIN). With time, patience, and a truly …(9)… (IMAGINE) approach to problem-solving, most challenges can be overcome. Ultimately, the most …(10)… (DEFINE) measure of learning is not a test score, but the ability to think and act independently.",
         "formatType": "passage_gap_fill",

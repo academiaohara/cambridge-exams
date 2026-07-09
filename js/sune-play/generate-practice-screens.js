@@ -68,22 +68,49 @@
     };
   }
 
+  function parsePassageStemWords(passage) {
+    var stems = {};
+    var re = /\((\d+)\)\s*(?:\.{3,}|…{2,}|_{3,})\s*\(([A-Z][A-Z0-9'-]*)\)/g;
+    var match;
+    while ((match = re.exec(passage)) !== null) {
+      stems[parseInt(match[1], 10)] = match[2];
+    }
+    var c1Re = /…\((\d+)\)…\s*\(([A-Z][A-Z0-9'-]*)\)/g;
+    while ((match = c1Re.exec(passage)) !== null) {
+      stems[parseInt(match[1], 10)] = match[2];
+    }
+    return stems;
+  }
+
   function buildPassageGapFillPayload(exercise) {
     var passage = exercise.passage || '';
     var answers = exercise.answers || [];
     var wordBank = exercise.words || exercise.wordBank || [];
     var interaction = exercise.interaction || {};
     var explicitGapVerbs = exercise.gapVerbs || interaction.gapVerbs || [];
+    var stemWords = parsePassageStemWords(passage);
+    var isWordFormation = exercise.legacyPattern === 'passage-wf' || Object.keys(stemWords).length > 0;
+    var sequentialGaps = interaction.sequentialGaps != null
+      ? !!interaction.sequentialGaps
+      : isWordFormation;
+    var requireWordBankAssignment = interaction.requireWordBankAssignment != null
+      ? !!interaction.requireWordBankAssignment
+      : (sequentialGaps && wordBank.length > 0);
+    var requireWordFormation = interaction.requireWordFormation != null
+      ? !!interaction.requireWordFormation
+      : isWordFormation;
     var passageGapRe = /\((\d+)\)\s*(?:\.{3,}|…{2,}|_{3,})/;
     var firstGapMatch = passageGapRe.exec(passage);
     var startGap = firstGapMatch ? parseInt(firstGapMatch[1], 10) : 1;
     var gaps = answers.map(function(ans, idx) {
       var gapNumber = startGap + idx;
+      var stemWord = stemWords[gapNumber] || '';
       return {
         gapId: 'gap' + gapNumber,
         gapNumber: gapNumber,
         expectedAnswer: ans,
-        baseVerb: explicitGapVerbs[idx] || ''
+        baseVerb: explicitGapVerbs[idx] || stemWord || '',
+        stemWord: stemWord
       };
     });
     return {
@@ -93,11 +120,10 @@
       gaps: gaps,
       explanation: exercise.explanation || 'Check each gap against the story context and verb form.',
       instruction: exercise.instructions || exercise.studentInstruction || '',
-      sequentialGaps: !!interaction.sequentialGaps,
-      requireWordBankAssignment: interaction.requireWordBankAssignment !== false &&
-        !!interaction.sequentialGaps &&
-        wordBank.length > 0,
-      gapInputStyle: interaction.gapInputStyle || (interaction.sequentialGaps ? 'underline_expand' : 'pill')
+      sequentialGaps: sequentialGaps,
+      requireWordBankAssignment: requireWordBankAssignment,
+      requireWordFormation: requireWordFormation,
+      gapInputStyle: interaction.gapInputStyle || (sequentialGaps ? 'underline_expand' : 'pill')
     };
   }
 

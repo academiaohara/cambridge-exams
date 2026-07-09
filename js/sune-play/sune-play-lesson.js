@@ -677,6 +677,9 @@
       }
       case 'passage_gap_fill':
         if (p.sequentialGaps) {
+          if (p.requireWordFormation) {
+            return p.instruction || 'Use the word in capitals to form a new word for each gap, one gap at a time.';
+          }
           return p.instruction || 'Select a verb from the box, write its correct form, and confirm each gap one by one.';
         }
         return p.instruction || 'Complete the passage using the verbs in the box.';
