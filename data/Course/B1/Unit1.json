@@ -495,7 +495,10 @@
           "sourceItemIds": [
             "b1-u1-ex1-1",
             "b1-u1-ex1-2",
-            "b1-u1-ex1-3"
+            "b1-u1-ex1-3",
+            "b1-u1-ex1-4",
+            "b1-u1-ex1-5",
+            "b1-u1-ex1-6"
           ],
           "formatType": "word_order_tiles",
           "promptMode": "visual_plus_context_question"
@@ -759,7 +762,7 @@
     "shuffleWithinNode": false,
     "failedItemPlacement": "end_of_queue",
     "repeatFailedItemsBeforeCompletion": true,
-    "maxScreensPerNode": 10,
+    "maxScreensPerNode": 11,
     "minimumScreensPerNode": 6
   },
   "xpRules": {
