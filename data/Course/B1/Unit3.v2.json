@@ -187,7 +187,7 @@
         },
         {
           "sourceExerciseId": "b1-u3-ex-d",
-          "formatType": "free_text_gap_fill",
+          "formatType": "two_option_choice",
           "sourceItemIds": [
             "b1-u3-exd-1",
             "b1-u3-exd-2",
@@ -581,96 +581,128 @@
       {
         "id": "b1-u3-ex-d",
         "type": "exercise",
-        "exerciseType": "free_text_gap_fill",
-        "exerciseTypeName": "Phrasal verbs (type-in)",
-        "title": "Phrasal verbs (type-in)",
-        "instructions": "Complete each sentence with the correct particle.",
-        "studentInstruction": "Complete each sentence with the correct particle.",
+        "exerciseType": "two_option_choice",
+        "exerciseTypeName": "Phrasal verbs",
+        "title": "Phrasal verbs",
+        "instructions": "Choose the correct particle.",
+        "studentInstruction": "Choose the correct particle.",
         "legacyKey": "D",
         "legacyPattern": "phrasal-particle",
         "interaction": {
-          "formatType": "free_text_gap_fill"
+          "formatType": "two_option_choice"
         },
         "items": [
           {
             "id": "b1-u3-exd-1",
-            "formatType": "free_text_gap_fill",
-            "sentence": "Maya wants to take ...... (up / off / out) dancing next term.",
-            "answer": "up",
-            "acceptedAnswers": [
-              "up"
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Maya wants to take",
+            "sentenceAfter": "dancing next term.",
+            "options": [
+              "up",
+              "off",
+              "out"
             ],
-            "explanation": ""
+            "answer": "up",
+            "originalSentence": "Maya wants to take ...... (up / off / out) dancing next term.",
+            "completedSentence": "Maya wants to take up dancing next term."
           },
           {
             "id": "b1-u3-exd-2",
-            "formatType": "free_text_gap_fill",
-            "sentence": "Please turn the TV ...... (down / in / off) because I'm trying to read.",
-            "answer": "down",
-            "acceptedAnswers": [
-              "down"
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Please turn the TV",
+            "sentenceAfter": "because I'm trying to read.",
+            "options": [
+              "down",
+              "in",
+              "off"
             ],
-            "explanation": ""
+            "answer": "down",
+            "originalSentence": "Please turn the TV ...... (down / in / off) because I'm trying to read.",
+            "completedSentence": "Please turn the TV down because I'm trying to read."
           },
           {
             "id": "b1-u3-exd-3",
-            "formatType": "free_text_gap_fill",
-            "sentence": "Everyone was singing, so I decided to join ...... (up / in / out).",
-            "answer": "in",
-            "acceptedAnswers": [
-              "in"
+            "formatType": "two_option_choice",
+            "sentenceBefore": "Everyone was singing, so I decided to join",
+            "sentenceAfter": ".",
+            "options": [
+              "up",
+              "in",
+              "out"
             ],
-            "explanation": ""
+            "answer": "in",
+            "originalSentence": "Everyone was singing, so I decided to join ...... (up / in / out).",
+            "completedSentence": "Everyone was singing, so I decided to join in."
           },
           {
             "id": "b1-u3-exd-4",
-            "formatType": "free_text_gap_fill",
-            "sentence": "The referee sent the goalkeeper ...... (off / up / down) after a dangerous foul.",
-            "answer": "off",
-            "acceptedAnswers": [
-              "off"
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The referee sent the goalkeeper",
+            "sentenceAfter": "after a dangerous foul.",
+            "options": [
+              "off",
+              "up",
+              "down"
             ],
-            "explanation": ""
+            "answer": "off",
+            "originalSentence": "The referee sent the goalkeeper ...... (off / up / down) after a dangerous foul.",
+            "completedSentence": "The referee sent the goalkeeper off after a dangerous foul."
           },
           {
             "id": "b1-u3-exd-5",
-            "formatType": "free_text_gap_fill",
-            "sentence": "I love this part of the song! Turn it ...... (up / in / out)!",
-            "answer": "up",
-            "acceptedAnswers": [
-              "up"
+            "formatType": "two_option_choice",
+            "sentenceBefore": "I love this part of the song! Turn it",
+            "sentenceAfter": "!",
+            "options": [
+              "up",
+              "in",
+              "out"
             ],
-            "explanation": ""
+            "answer": "up",
+            "originalSentence": "I love this part of the song! Turn it ...... (up / in / out)!",
+            "completedSentence": "I love this part of the song! Turn it up!"
           },
           {
             "id": "b1-u3-exd-6",
-            "formatType": "free_text_gap_fill",
-            "sentence": "The lights went out, but the band carried ...... (on / off / up) playing.",
-            "answer": "on",
-            "acceptedAnswers": [
-              "on"
+            "formatType": "two_option_choice",
+            "sentenceBefore": "The lights went out, but the band carried",
+            "sentenceAfter": "playing.",
+            "options": [
+              "on",
+              "off",
+              "up"
             ],
-            "explanation": ""
+            "answer": "on",
+            "originalSentence": "The lights went out, but the band carried ...... (on / off / up) playing.",
+            "completedSentence": "The lights went out, but the band carried on playing."
           },
           {
             "id": "b1-u3-exd-7",
-            "formatType": "free_text_gap_fill",
-            "sentence": "We usually eat ...... (out / up / off) after football practice on Fridays.",
-            "answer": "out",
-            "acceptedAnswers": [
-              "out"
+            "formatType": "two_option_choice",
+            "sentenceBefore": "We usually eat",
+            "sentenceAfter": "after football practice on Fridays.",
+            "options": [
+              "out",
+              "up",
+              "off"
             ],
-            "explanation": ""
+            "answer": "out",
+            "originalSentence": "We usually eat ...... (out / up / off) after football practice on Fridays.",
+            "completedSentence": "We usually eat out after football practice on Fridays."
           },
           {
             "id": "b1-u3-exd-8",
-            "formatType": "free_text_gap_fill",
-            "sentence": "He gave ...... (up / in / down) tennis when he hurt his knee.",
-            "answer": "up",
-            "acceptedAnswers": [
-              "up"
+            "formatType": "two_option_choice",
+            "sentenceBefore": "He gave",
+            "sentenceAfter": "tennis when he hurt his knee.",
+            "options": [
+              "up",
+              "in",
+              "down"
             ],
-            "explanation": ""
+            "answer": "up",
+            "originalSentence": "He gave ...... (up / in / down) tennis when he hurt his knee.",
+            "completedSentence": "He gave up tennis when he hurt his knee."
           }
         ]
       },

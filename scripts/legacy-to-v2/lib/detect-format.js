@@ -3,7 +3,8 @@ import {
   extractBold,
   flattenExerciseItems,
   hasGapMarkers,
-  isInlineAbChoice
+  isInlineAbChoice,
+  parseGapSlashChoice
 } from './utils.js';
 
 function hasBoldChoice(sentence) {
@@ -278,8 +279,18 @@ export function detectLegacyFormat(exercise) {
   }
 
   if (items.length && /\(.*\/.*\)/.test(items[0].sentence || '') && /……|\.{3,}|_{3,}/.test(items[0].sentence || '')) {
-    result.formatType = 'free_text_gap_fill';
-    result.legacyPattern = 'phrasal-particle';
+    var slashChoiceItems = items.every(function(it) {
+      return parseGapSlashChoice(it.sentence, it.answer) !== null;
+    });
+    if (slashChoiceItems) {
+      result.formatType = 'two_option_choice';
+      result.legacyPattern = 'phrasal-particle';
+      result.legacyItemCount = items.length;
+      result.notes.push('phrasal-particle slash options → two_option_choice (tap to select)');
+      return result;
+    }
+    result.formatType = 'conjugation_gap_fill';
+    result.legacyPattern = 'conjugation-gap';
     result.legacyItemCount = items.length;
     return result;
   }

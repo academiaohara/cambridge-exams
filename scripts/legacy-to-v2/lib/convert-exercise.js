@@ -2,6 +2,7 @@ import {
   makeItemId,
   splitAnswerVariants,
   parseTwoOptionFromBold,
+  parseGapSlashChoice,
   parseMcStandaloneItem,
   parseKeywordTransformationItem,
   parseSyncSentences,
@@ -48,6 +49,10 @@ function convertItem(exercise, item, index, unitPrefix, exerciseKey, detection) 
 
   switch (detection.formatType) {
     case 'two_option_choice': {
+      if (detection.legacyPattern === 'phrasal-particle') {
+        var gapChoice = parseGapSlashChoice(item.sentence, item.answer);
+        if (gapChoice) return Object.assign(base, gapChoice);
+      }
       if (detection.legacyPattern === 'same-meaning-ab') {
         return Object.assign(base, {
           context: item.context || '',
