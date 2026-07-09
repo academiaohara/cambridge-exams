@@ -1321,7 +1321,9 @@
       return payload.promptSentence || '';
     });
     if (!input) return;
+    resizeUnderlineGapInput(input);
     input.addEventListener('input', function() {
+      resizeUnderlineGapInput(input);
       updateKwtWordCountDisplay(root, screen);
       onChange();
     });

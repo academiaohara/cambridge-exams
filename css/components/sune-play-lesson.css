@@ -1855,19 +1855,19 @@ button.sp-example-line.sp-speakable {
 
 .sp-kwt-keyword-row {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 2px 0 4px;
 }
 
 .sp-kwt-keyword {
   display: inline-block;
   padding: 10px 22px;
-  border: 2px solid #e2e8f4;
+  border: 2px solid #c7daf5;
   border-bottom-width: 3px;
-  border-bottom-color: #dce3f0;
+  border-bottom-color: rgba(28, 79, 156, 0.35);
   border-radius: 12px;
   background: var(--white, #fff);
-  box-shadow: 0 3px 0 #dce3f0;
+  box-shadow: 0 3px 0 rgba(59, 130, 246, 0.38);
   font-family: 'Nunito', sans-serif;
   font-size: 0.95rem;
   font-weight: 800;
@@ -1889,8 +1889,9 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-kwt-gap-input {
-  min-width: 10ch;
-  max-width: 28ch;
+  width: 2ch;
+  min-width: 2ch;
+  max-width: none;
 }
 
 .sp-kwt-gap-input--correct {
