@@ -2,6 +2,7 @@ import {
   makeItemId,
   splitAnswerVariants,
   parseTwoOptionFromBold,
+  parseGapSlashChoice,
   parseMcStandaloneItem,
   parseKeywordTransformationItem,
   parseSyncSentences,
@@ -48,6 +49,10 @@ function convertItem(exercise, item, index, unitPrefix, exerciseKey, detection) 
 
   switch (detection.formatType) {
     case 'two_option_choice': {
+      if (detection.legacyPattern === 'phrasal-particle') {
+        var gapChoice = parseGapSlashChoice(item.sentence, item.answer);
+        if (gapChoice) return Object.assign(base, gapChoice);
+      }
       if (detection.legacyPattern === 'same-meaning-ab') {
         return Object.assign(base, {
           context: item.context || '',
@@ -252,9 +257,13 @@ export function convertLegacyExercise(exercise, exerciseKey, unitPrefix, unitMet
       converted.interaction.requireWordFormation = true;
       converted.interaction.gapInputStyle = 'underline_expand';
       converted.studentInstruction = 'Use the word in capitals to form a new word for each gap, one gap at a time.';
+    } else if (detection.legacyPattern === 'passage-input') {
+      converted.interaction.sequentialGaps = true;
+      converted.interaction.requireWordBankAssignment = false;
+      converted.interaction.gapInputStyle = 'underline_expand';
     } else {
       converted.interaction.sequentialGaps = false;
-      converted.interaction.gapInputStyle = detection.legacyPattern === 'passage-input' ? 'underline_expand' : 'pill';
+      converted.interaction.gapInputStyle = 'pill';
     }
     if (exercise.gapVerbs) converted.gapVerbs = exercise.gapVerbs;
     return { exercise: converted, detection: detection };
