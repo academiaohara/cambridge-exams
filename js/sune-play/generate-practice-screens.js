@@ -767,12 +767,14 @@
 
       case 'preselected_verb_gap_fill':
         return {
-          sentence: item.sentence || '',
-          preselectedVerb: item.baseVerb || item.preselectedVerb,
-          answer: Array.isArray(item.answer) ? item.answer[0] : item.answer,
+          sentence: item.blankSentence || item.sentence || '',
+          preselectedVerb: item.selectedTileAnswer || item.preselectedVerb || item.baseVerb || '',
+          answer: item.answer,
           acceptedAnswers: item.acceptedAnswers,
+          gaps: item.gaps || [],
           explanation: item.explanation || '',
-          instruction: exercise.instructions || ''
+          completedSentence: item.completedSentence || '',
+          instruction: exercise.instructions || exercise.studentInstruction || ''
         };
 
       case 'mc_4_option':
@@ -953,10 +955,15 @@
         if (formatType === 'free_text_gap_fill' && (exercise.words || exercise.wordBank || []).length) {
           formatType = 'word_bank_gap_fill';
         }
-        var payload = itemToPayload(formatType, item, exercise, rule);
-        var screenId = buildScreenId(nodeId, exerciseId, itemId, formatType);
+        var buildFormatType = formatType;
+        if (formatType === 'verb_tile_conjugation_gap' &&
+            (item.preselectedVerb || item.selectedTileAnswer || item.baseVerb)) {
+          buildFormatType = 'preselected_verb_gap_fill';
+        }
+        var payload = itemToPayload(buildFormatType, item, exercise, rule);
+        var screenId = buildScreenId(nodeId, exerciseId, itemId, buildFormatType);
 
-        screens.push(buildScreen(unit, node, formatType, payload, {
+        screens.push(buildScreen(unit, node, buildFormatType, payload, {
           screenId: screenId,
           itemId: itemId,
           sourceExerciseId: exerciseId,

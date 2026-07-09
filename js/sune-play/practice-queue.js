@@ -82,18 +82,31 @@
         converted.payload = buildTwoOptionFromGapFill(screen.payload);
       }
       if (normalizedFallback === 'free_text_gap_fill' && screen.payload) {
+        var knownVerb = screen.payload.verbPrompt
+          || screen.payload.preselectedVerb
+          || screen.payload.selectedVerb
+          || screen.payload.baseVerb
+          || '';
         if (fallback === 'conjugation_gap_fill' || screen.formatType === 'verb_bank_two_step') {
-          converted.payload = Object.assign({}, screen.payload, {
-            sentence: screen.payload.sentence || screen.payload.blankSentence || '',
-            verbPrompt: screen.payload.verbPrompt
-              || screen.payload.baseVerb
-              || screen.payload.selectedVerb
-              || ''
-          });
+          if (knownVerb) {
+            converted.formatType = 'preselected_verb_gap_fill';
+            converted.payload = Object.assign({}, screen.payload, {
+              sentence: screen.payload.sentence || screen.payload.blankSentence || '',
+              preselectedVerb: knownVerb
+            });
+            delete converted.payload.wordBank;
+          } else {
+            converted.payload = Object.assign({}, screen.payload, {
+              sentence: screen.payload.sentence || screen.payload.blankSentence || '',
+              verbPrompt: knownVerb
+            });
+          }
         } else if (fallback === 'preselected_verb_gap_fill') {
+          converted.formatType = 'preselected_verb_gap_fill';
           converted.payload = Object.assign({}, screen.payload, {
-            preselectedVerb: screen.payload.selectedVerb || screen.payload.baseVerb
+            preselectedVerb: knownVerb
           });
+          delete converted.payload.wordBank;
         }
       }
       if (normalizedFallback === 'guided_error_choice' && screen.payload) {
