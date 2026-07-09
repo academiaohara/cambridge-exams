@@ -512,7 +512,6 @@
             "b1-u2-ex3-2",
             "b1-u2-ex3-3",
             "b1-u2-ex3-4",
-            "b1-u2-ex3-5",
             "b1-u2-ex3-6",
             "b1-u2-ex3-7",
             "b1-u2-ex3-8"
@@ -1145,31 +1144,6 @@
             ],
             "blankSentence": "I saw Olivia while she ____ in the town centre.",
             "answerMode": "typed_conjugation_only"
-          },
-          {
-            "id": "b1-u2-ex3-5",
-            "sentence": "...... they ...... (watch) TV when the lights went out?",
-            "verbPrompt": "watch",
-            "answer": "Were, watching",
-            "acceptedAnswers": [
-              "Were, watching",
-              "were, watching"
-            ],
-            "explanation": "Use the past continuous for an action in progress at a moment in the past.",
-            "template": "{gap1} they {gap2} TV when the lights went out?",
-            "gapCount": 2,
-            "gaps": [
-              {
-                "gapId": "gap1",
-                "expectedAnswer": "Were"
-              },
-              {
-                "gapId": "gap2",
-                "expectedAnswer": "watching"
-              }
-            ],
-            "blankSentence": "____ they ____ TV when the lights went out?",
-            "answerMode": "typed_multiple_conjugation_gaps"
           },
           {
             "id": "b1-u2-ex3-6",
