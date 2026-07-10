@@ -169,8 +169,17 @@
 
   function shuffleChoicePayload(payload) {
     if (!payload || !payload.options || payload.options.length < 2) return payload;
+    var answerStr = payload.answer != null ? String(payload.answer).trim() : '';
+    var resolvedAnswer = payload.answer;
+    if (/^[AB]$/i.test(answerStr)) {
+      var answerIndex = answerStr.toUpperCase() === 'A' ? 0 : 1;
+      if (payload.options[answerIndex] != null) {
+        resolvedAnswer = payload.options[answerIndex];
+      }
+    }
     return Object.assign({}, payload, {
-      options: shuffleCopy(payload.options)
+      options: shuffleCopy(payload.options),
+      answer: resolvedAnswer
     });
   }
 
@@ -727,15 +736,22 @@
 
   function itemToPayload(formatType, item, exercise, genRule) {
     switch (formatType) {
-      case 'two_option_choice':
-        return shuffleChoicePayload({
+      case 'two_option_choice': {
+        var choicePayload = shuffleChoicePayload({
           sentenceBefore: item.sentenceBefore || '',
           sentenceAfter: item.sentenceAfter || '',
           options: item.options || [],
           answer: item.answer,
           completedSentence: item.completedSentence || '',
-          explanation: item.explanation || ''
+          explanation: item.explanation || '',
+          instruction: exercise.studentInstruction || exercise.instructions || ''
         });
+        if (exercise.legacyPattern === 'same-meaning-ab' ||
+            (window.SunePlayNormalize && window.SunePlayNormalize.isSameMeaningChoicePayload(choicePayload))) {
+          choicePayload.displayMode = 'same_meaning';
+        }
+        return choicePayload;
+      }
 
       case 'free_text_gap_fill':
       case 'word_bank_gap_fill':

@@ -711,6 +711,10 @@
     var p = screen.payload || {};
     switch (screen.formatType) {
       case 'two_option_choice':
+        if (p.displayMode === 'same_meaning' ||
+            (window.SunePlayNormalize && window.SunePlayNormalize.isSameMeaningChoicePayload(p))) {
+          return p.instruction || 'Choose the option that means the same.';
+        }
         return p.instruction || 'Choose the correct option to complete the sentence.';
       case 'free_text_gap_fill':
       case 'conjugation_gap_fill':
@@ -797,8 +801,13 @@
     var p = screen.payload || {};
     switch (screen.formatType) {
       case 'two_option_choice':
-      case 'meaning_contrast':
+        if (p.displayMode === 'same_meaning' ||
+            (window.SunePlayNormalize && window.SunePlayNormalize.isSameMeaningChoicePayload(p))) {
+          return String(p.sentenceBefore || '').trim();
+        }
         return ((p.sentenceBefore || '') + ' ___ ' + (p.sentenceAfter || '')).replace(/\s+/g, ' ').trim();
+      case 'meaning_contrast':
+        return String(p.sentence || p.sentenceBefore || '').trim();
       case 'free_text_gap_fill':
       case 'conjugation_gap_fill':
       case 'preselected_verb_gap_fill':
