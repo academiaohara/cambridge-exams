@@ -2767,7 +2767,14 @@
         var startExerciseId = null;
         var spTheoryCardIdx = 0;
         var practiceOnly = unitData.unitStructure && unitData.unitStructure.mode === 'practice_only';
-        if (practiceOnly || startSection === 'exercises') {
+        if (typeof startSection === 'string' && startSection.indexOf('exercise:') === 0) {
+          spStart = 'session';
+          startExerciseId = startSection.slice(9);
+          startNodeId = BentoGrid._resolveSunePlayNodeForExercise(unitData, startExerciseId);
+        } else if (typeof startSection === 'string' && startSection.indexOf('node:') === 0) {
+          spStart = 'session';
+          startNodeId = startSection.slice(5);
+        } else if (practiceOnly || startSection === 'exercises') {
           spStart = 'session';
           if (unitData.practiceNodes && unitData.practiceNodes.length) {
             startNodeId = unitData.practiceNodes[0].nodeId;
@@ -2798,13 +2805,6 @@
             spStart = 'theory';
             spTheoryCardIdx = startSection;
           }
-        } else if (typeof startSection === 'string' && startSection.indexOf('exercise:') === 0) {
-          spStart = 'session';
-          startExerciseId = startSection.slice(9);
-          startNodeId = BentoGrid._resolveSunePlayNodeForExercise(unitData, startExerciseId);
-        } else if (typeof startSection === 'string' && startSection.indexOf('node:') === 0) {
-          spStart = 'session';
-          startNodeId = startSection.slice(5);
         }
         (async function () {
           var spUnitData = unitData;
