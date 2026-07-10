@@ -41,39 +41,159 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "Creating and building",
             "items": [
-              "**ancient** (adj)",
-              "**checked** (adj)",
-              "**cotton** (n)",
-              "**create** (v)",
-              "**design** (v, n)",
-              "**fix** (v)",
-              "**fold** (v)",
-              "**gallery** (n)",
-              "**improvement** (n)",
-              "**loose** (adj)",
-              "**maintain** (v)",
-              "**match** (v)",
-              "**material** (n)",
-              "**notice** (v, n)",
-              "**pattern** (n)",
-              "**pile** (n)",
-              "**practical** (adj)",
-              "**rough** (adj)",
-              "**shape** (n)",
-              "**silk** (n)",
-              "**sleeve** (n)",
-              "**smooth** (adj)",
-              "**stretch** (v)",
-              "**striped** (adj)",
-              "**style** (n)",
-              "**suit** (v, n)",
-              "**suitable** (adj)",
-              "**tear** (v, n)",
-              "**tight** (adj)",
-              "**tool** (n)"
+              {
+                "word": "ancient",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "checked",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "cotton",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "create",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "design",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "fix",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "fold",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "gallery",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "improvement",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "loose",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "maintain",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "match",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "material",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "notice",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "pattern",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "pile",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "practical",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "rough",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "shape",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "silk",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "sleeve",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "smooth",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "stretch",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "striped",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "style",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "suit",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "suitable",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "tear",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "tight",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "tool",
+                "partOfSpeech": "n",
+                "variant": ""
+              }
             ]
           }
         ]
@@ -85,7 +205,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Phrasal verbs",
             "items": [
               "**cut off** — completely remove by cutting",
@@ -107,7 +227,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Prepositional phrases",
             "items": [
               "at the back (of)",
@@ -119,7 +239,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Adjectives",
             "items": [
               "amazed at/by",
@@ -130,7 +250,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Verbs",
             "items": [
               "change sth (from sth) into",
@@ -141,7 +261,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Nouns",
             "items": [
               "an influence on",
@@ -157,19 +277,76 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "word_formation",
             "title": "Word families",
             "items": [
-              "**art**: artist, artistic",
-              "**break**: broke, broken, (un)breakable",
-              "**compose**: composition, composer",
-              "**exhibit**: exhibition",
-              "**free**: freedom",
-              "**hand**: handful, handle",
-              "**imagine**: imagination, imaginative",
-              "**intelligent**: intelligence",
-              "**perfect**: perfection, imperfect",
-              "**prepare**: preparation"
+              {
+                "base": "art",
+                "derivatives": [
+                  "artist",
+                  "artistic"
+                ]
+              },
+              {
+                "base": "break",
+                "derivatives": [
+                  "broke",
+                  "broken",
+                  "(un)breakable"
+                ]
+              },
+              {
+                "base": "compose",
+                "derivatives": [
+                  "composition",
+                  "composer"
+                ]
+              },
+              {
+                "base": "exhibit",
+                "derivatives": [
+                  "exhibition"
+                ]
+              },
+              {
+                "base": "free",
+                "derivatives": [
+                  "freedom"
+                ]
+              },
+              {
+                "base": "hand",
+                "derivatives": [
+                  "handful",
+                  "handle"
+                ]
+              },
+              {
+                "base": "imagine",
+                "derivatives": [
+                  "imagination",
+                  "imaginative"
+                ]
+              },
+              {
+                "base": "intelligent",
+                "derivatives": [
+                  "intelligence"
+                ]
+              },
+              {
+                "base": "perfect",
+                "derivatives": [
+                  "perfection",
+                  "imperfect"
+                ]
+              },
+              {
+                "base": "prepare",
+                "derivatives": [
+                  "preparation"
+                ]
+              }
             ]
           }
         ]

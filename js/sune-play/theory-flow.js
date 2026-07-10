@@ -61,6 +61,10 @@
         return renderExplanation(section);
       case 'correct_incorrect_examples':
         return renderCorrectIncorrect(section);
+      case 'vocab_word_grid':
+        return renderVocabWordGrid(section);
+      case 'word_formation':
+        return renderWordFormation(section);
       default:
         return '<div class="sp-theory-unknown">Unsupported section: ' + esc(section.type) + '</div>';
     }
@@ -166,6 +170,44 @@
         '<span class="sp-badge sp-badge--careful">Not natural</span>' +
         speakableButton('sp-compare-speak', ex, '<p>' + bold(ex) + '</p>') +
       '</div>';
+    });
+    html += '</div></div>';
+    return html;
+  }
+
+  function renderVocabWordGrid(section) {
+    var html = '<div class="sp-theory-section sp-theory-vocab-grid" data-component="TheoryCardSection" data-type="vocab_word_grid">';
+    html += sectionTitle(section.title);
+    html += '<div class="sp-vocab-grid">';
+    (section.items || []).forEach(function(item) {
+      if (!item || !item.word) return;
+      var wordHtml = '<span class="sp-vocab-word">' + esc(item.word) + '</span>';
+      if (item.partOfSpeech) {
+        wordHtml += '<span class="sp-vocab-pos">' + esc(item.partOfSpeech) + '</span>';
+      }
+      if (item.variant) {
+        wordHtml += '<span class="sp-vocab-variant">(' + esc(item.variant) + ')</span>';
+      }
+      html += speakableButton('sp-vocab-word-card', item.word, wordHtml);
+    });
+    html += '</div></div>';
+    return html;
+  }
+
+  function renderWordFormation(section) {
+    var html = '<div class="sp-theory-section sp-theory-word-formation" data-component="TheoryCardSection" data-type="word_formation">';
+    html += sectionTitle(section.title);
+    html += '<div class="sp-wf-list">';
+    (section.items || []).forEach(function(item) {
+      if (!item || !item.base) return;
+      html += '<div class="sp-wf-item">';
+      html += '<div class="sp-wf-base">' + esc(item.base) + '</div>';
+      html += '<div class="sp-chip-row sp-wf-chips">';
+      (item.derivatives || []).forEach(function(derivative) {
+        if (!derivative) return;
+        html += speakableButton('sp-chip', derivative, esc(derivative));
+      });
+      html += '</div></div>';
     });
     html += '</div></div>';
     return html;

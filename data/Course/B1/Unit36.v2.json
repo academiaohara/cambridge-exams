@@ -41,39 +41,159 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "Nature and the universe",
             "items": [
-              "**amazing** (adj)",
-              "**climate** (n)",
-              "**countryside** (n)",
-              "**environment** (n)",
-              "**extinct** (adj)",
-              "**forecast** (v, n)",
-              "**freezing** (adj)",
-              "**global** (adj)",
-              "**heatwave** (n)",
-              "**insect** (n)",
-              "**lightning** (n)",
-              "**litter** (v, n)",
-              "**local** (adj)",
-              "**locate** (v)",
-              "**mammal** (n)",
-              "**mild** (adj)",
-              "**name** (v, n)",
-              "**origin** (n)",
-              "**planet** (n)",
-              "**preserve** (v)",
-              "**recycle** (v)",
-              "**reptile** (n)",
-              "**rescue** (v, n)",
-              "**satellite** (n)",
-              "**shower** (n)",
-              "**solar system** (n phr)",
-              "**species** (n)",
-              "**thunder** (n)",
-              "**wild** (adj)",
-              "**wildlife** (n)"
+              {
+                "word": "amazing",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "climate",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "countryside",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "environment",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "extinct",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "forecast",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "freezing",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "global",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "heatwave",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "insect",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "lightning",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "litter",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "local",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "locate",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "mammal",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "mild",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "name",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "origin",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "planet",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "preserve",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "recycle",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "reptile",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "rescue",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "satellite",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "shower",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "solar system",
+                "partOfSpeech": "n phr",
+                "variant": ""
+              },
+              {
+                "word": "species",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "thunder",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "wild",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "wildlife",
+                "partOfSpeech": "n",
+                "variant": ""
+              }
             ]
           }
         ]
@@ -85,7 +205,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Phrasal verbs",
             "items": [
               "**blow up** — explode",
@@ -107,7 +227,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Prepositional phrases",
             "items": [
               "at most",
@@ -119,7 +239,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Adjectives",
             "items": [
               "afraid of",
@@ -130,7 +250,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Verbs",
             "items": [
               "escape from",
@@ -141,7 +261,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Nouns",
             "items": [
               "damage to",
@@ -157,19 +277,75 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "word_formation",
             "title": "Word families",
             "items": [
-              "**centre**: central",
-              "**circle**: circular",
-              "**danger**: dangerous",
-              "**deep**: deeply, depth",
-              "**destroy**: destruction, destructive",
-              "**fog**: foggy",
-              "**garden**: gardener, gardening",
-              "**invade**: invasion, invader",
-              "**nature**: natural, naturally",
-              "**pollute**: pollution, polluted"
+              {
+                "base": "centre",
+                "derivatives": [
+                  "central"
+                ]
+              },
+              {
+                "base": "circle",
+                "derivatives": [
+                  "circular"
+                ]
+              },
+              {
+                "base": "danger",
+                "derivatives": [
+                  "dangerous"
+                ]
+              },
+              {
+                "base": "deep",
+                "derivatives": [
+                  "deeply",
+                  "depth"
+                ]
+              },
+              {
+                "base": "destroy",
+                "derivatives": [
+                  "destruction",
+                  "destructive"
+                ]
+              },
+              {
+                "base": "fog",
+                "derivatives": [
+                  "foggy"
+                ]
+              },
+              {
+                "base": "garden",
+                "derivatives": [
+                  "gardener",
+                  "gardening"
+                ]
+              },
+              {
+                "base": "invade",
+                "derivatives": [
+                  "invasion",
+                  "invader"
+                ]
+              },
+              {
+                "base": "nature",
+                "derivatives": [
+                  "natural",
+                  "naturally"
+                ]
+              },
+              {
+                "base": "pollute",
+                "derivatives": [
+                  "pollution",
+                  "polluted"
+                ]
+              }
             ]
           }
         ]

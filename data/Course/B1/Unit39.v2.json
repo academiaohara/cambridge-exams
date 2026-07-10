@@ -41,38 +41,154 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "Laughing and crying",
             "items": [
-              "**amusing** (adj)",
-              "**annoy** (v)",
-              "**attitude** (n)",
-              "**bad-tempered** (adj)",
-              "**behave** (v)",
-              "**bully** (v, n)",
-              "**calm** (adj)",
-              "**celebrate** (v)",
-              "**character** (n)",
-              "**depressed** (adj)",
-              "**emotion** (n)",
-              "**enthusiastic** (adj)",
-              "**feeling** (n)",
-              "**glad** (adj)",
-              "**hurt** (v, adj)",
-              "**miserable** (adj)",
-              "**naughty** (adj)",
-              "**noisy** (adj)",
-              "**polite** (adj)",
-              "**react** (v)",
-              "**regret** (v, n)",
-              "**ridiculous** (adj)",
-              "**romantic** (adj)",
-              "**rude** (adj)",
-              "**sense of humour** (n phr)",
-              "**shy** (adj)",
-              "**stress** (n)",
-              "**tell a joke** (v phr)",
-              "**upset** (v, adj)"
+              {
+                "word": "amusing",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "annoy",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "attitude",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "bad-tempered",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "behave",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "bully",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "calm",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "celebrate",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "character",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "depressed",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "emotion",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "enthusiastic",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "feeling",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "glad",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "hurt",
+                "partOfSpeech": "v, adj",
+                "variant": ""
+              },
+              {
+                "word": "miserable",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "naughty",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "noisy",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "polite",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "react",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "regret",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "ridiculous",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "romantic",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "rude",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "sense of humour",
+                "partOfSpeech": "n phr",
+                "variant": ""
+              },
+              {
+                "word": "shy",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "stress",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "tell a joke",
+                "partOfSpeech": "v phr",
+                "variant": ""
+              },
+              {
+                "word": "upset",
+                "partOfSpeech": "v, adj",
+                "variant": ""
+              }
             ]
           }
         ]
@@ -84,7 +200,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Phrasal verbs",
             "items": [
               "**calm down** — become/make calmer",
@@ -106,7 +222,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Prepositional phrases",
             "items": [
               "at first",
@@ -118,7 +234,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Adjectives",
             "items": [
               "ashamed of",
@@ -133,7 +249,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Verbs",
             "items": [
               "congratulate sb on",
@@ -141,7 +257,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Nouns",
             "items": [
               "a joke about"
@@ -156,19 +272,75 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "word_formation",
             "title": "Word families",
             "items": [
-              "**bore**: boring, bored",
-              "**comedy**: comedian",
-              "**emotion**: emotional",
-              "**energy**: energetic",
-              "**excite**: excitement, exciting, excited",
-              "**feel**: feeling(s)",
-              "**happy**: unhappy, (un)happiness",
-              "**hate**: hatred",
-              "**noise**: noisy, noisily",
-              "**sympathy**: sympathise, sympathetic"
+              {
+                "base": "bore",
+                "derivatives": [
+                  "boring",
+                  "bored"
+                ]
+              },
+              {
+                "base": "comedy",
+                "derivatives": [
+                  "comedian"
+                ]
+              },
+              {
+                "base": "emotion",
+                "derivatives": [
+                  "emotional"
+                ]
+              },
+              {
+                "base": "energy",
+                "derivatives": [
+                  "energetic"
+                ]
+              },
+              {
+                "base": "excite",
+                "derivatives": [
+                  "excitement",
+                  "exciting",
+                  "excited"
+                ]
+              },
+              {
+                "base": "feel",
+                "derivatives": [
+                  "feeling(s)"
+                ]
+              },
+              {
+                "base": "happy",
+                "derivatives": [
+                  "unhappy",
+                  "(un)happiness"
+                ]
+              },
+              {
+                "base": "hate",
+                "derivatives": [
+                  "hatred"
+                ]
+              },
+              {
+                "base": "noise",
+                "derivatives": [
+                  "noisy",
+                  "noisily"
+                ]
+              },
+              {
+                "base": "sympathy",
+                "derivatives": [
+                  "sympathise",
+                  "sympathetic"
+                ]
+              }
             ]
           }
         ]

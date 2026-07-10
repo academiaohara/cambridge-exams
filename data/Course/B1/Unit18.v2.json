@@ -41,39 +41,159 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "Inventions and discoveries",
             "items": [
-              "**artificial** (adj)",
-              "**automatic** (adj)",
-              "**complicated** (adj)",
-              "**decrease** (v, n)",
-              "**digital** (adj)",
-              "**discover** (v)",
-              "**effect** (n)",
-              "**equipment** (n)",
-              "**estimate** (v)",
-              "**exact** (adj)",
-              "**experiment** (v, n)",
-              "**gadget** (n)",
-              "**hardware** (n)",
-              "**invent** (v)",
-              "**involve** (v)",
-              "**laboratory** (n)",
-              "**lack** (v, n)",
-              "**laptop** (n)",
-              "**maximum** (adj)",
-              "**minimum** (adj)",
-              "**operate** (v)",
-              "**plastic** (n, adj)",
-              "**program** (v, n)",
-              "**research** (n)",
-              "**run** (v)",
-              "**screen** (n)",
-              "**software** (n)",
-              "**sudden** (adj)",
-              "**technology** (n)",
-              "**unique** (adj)"
+              {
+                "word": "artificial",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "automatic",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "complicated",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "decrease",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "digital",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "discover",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "effect",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "equipment",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "estimate",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "exact",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "experiment",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "gadget",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "hardware",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "invent",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "involve",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "laboratory",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "lack",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "laptop",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "maximum",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "minimum",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "operate",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "plastic",
+                "partOfSpeech": "n, adj",
+                "variant": ""
+              },
+              {
+                "word": "program",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "research",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "run",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "screen",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "software",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "sudden",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "technology",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "unique",
+                "partOfSpeech": "adj",
+                "variant": ""
+              }
             ]
           }
         ]
@@ -85,7 +205,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Phrasal verbs",
             "items": [
               "**break down** — stop working (for a machine, etc)",
@@ -107,7 +227,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Prepositional phrases",
             "items": [
               "at last",
@@ -119,7 +239,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Adjectives",
             "items": [
               "different from/to",
@@ -127,7 +247,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Verbs",
             "items": [
               "begin sth with",
@@ -138,7 +258,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Nouns",
             "items": [
               "a difference between",
@@ -157,19 +277,75 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "word_formation",
             "title": "Word families",
             "items": [
-              "**boil**: boiler, boiling",
-              "**chemist**: chemical, chemistry",
-              "**conclude**: conclusion",
-              "**examine**: exam, examination, examiner",
-              "**fascinate**: fascination, fascinating",
-              "**history**: historic, historian",
-              "**identical**: identically",
-              "**long**: length",
-              "**measure**: measurement",
-              "**science**: scientist"
+              {
+                "base": "boil",
+                "derivatives": [
+                  "boiler",
+                  "boiling"
+                ]
+              },
+              {
+                "base": "chemist",
+                "derivatives": [
+                  "chemical",
+                  "chemistry"
+                ]
+              },
+              {
+                "base": "conclude",
+                "derivatives": [
+                  "conclusion"
+                ]
+              },
+              {
+                "base": "examine",
+                "derivatives": [
+                  "exam",
+                  "examination",
+                  "examiner"
+                ]
+              },
+              {
+                "base": "fascinate",
+                "derivatives": [
+                  "fascination",
+                  "fascinating"
+                ]
+              },
+              {
+                "base": "history",
+                "derivatives": [
+                  "historic",
+                  "historian"
+                ]
+              },
+              {
+                "base": "identical",
+                "derivatives": [
+                  "identically"
+                ]
+              },
+              {
+                "base": "long",
+                "derivatives": [
+                  "length"
+                ]
+              },
+              {
+                "base": "measure",
+                "derivatives": [
+                  "measurement"
+                ]
+              },
+              {
+                "base": "science",
+                "derivatives": [
+                  "scientist"
+                ]
+              }
             ]
           }
         ]

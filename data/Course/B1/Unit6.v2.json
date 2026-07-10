@@ -41,39 +41,159 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "Learning and doing",
             "items": [
-              "**achieve** (v)",
-              "**brain** (n)",
-              "**clever** (adj)",
-              "**concentrate** (v)",
-              "**consider** (v)",
-              "**course** (n)",
-              "**degree** (n)",
-              "**experience** (v, n)",
-              "**expert** (n, adj)",
-              "**fail** (v)",
-              "**guess** (v, n)",
-              "**hesitate** (v)",
-              "**instruction** (n)",
-              "**make progress** (v phr)",
-              "**make sure** (v phr)",
-              "**mark** (v, n)",
-              "**mental** (adj)",
-              "**pass** (v)",
-              "**qualification** (n)",
-              "**remind** (v)",
-              "**report** (n)",
-              "**revise** (v)",
-              "**search** (v, n)",
-              "**skill** (n)",
-              "**smart** (adj)",
-              "**subject** (n)",
-              "**take an exam** (v phr)",
-              "**talented** (adj)",
-              "**term** (n)",
-              "**wonder** (v)"
+              {
+                "word": "achieve",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "brain",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "clever",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "concentrate",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "consider",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "course",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "degree",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "experience",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "expert",
+                "partOfSpeech": "n, adj",
+                "variant": ""
+              },
+              {
+                "word": "fail",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "guess",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "hesitate",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "instruction",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "make progress",
+                "partOfSpeech": "v phr",
+                "variant": ""
+              },
+              {
+                "word": "make sure",
+                "partOfSpeech": "v phr",
+                "variant": ""
+              },
+              {
+                "word": "mark",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "mental",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "pass",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "qualification",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "remind",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "report",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "revise",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "search",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "skill",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "smart",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "subject",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "take an exam",
+                "partOfSpeech": "v phr",
+                "variant": ""
+              },
+              {
+                "word": "talented",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "term",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "wonder",
+                "partOfSpeech": "v",
+                "variant": ""
+              }
             ]
           }
         ]
@@ -85,7 +205,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Phrasal verbs",
             "items": [
               "**cross out** — draw a line through sth written",
@@ -107,7 +227,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Prepositional phrases",
             "items": [
               "by heart",
@@ -119,7 +239,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Adjectives",
             "items": [
               "capable of",
@@ -127,7 +247,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Verbs",
             "items": [
               "cheat at/in",
@@ -141,7 +261,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Nouns",
             "items": [
               "an opinion about/of",
@@ -157,19 +277,77 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "word_formation",
             "title": "Word families",
             "items": [
-              "**begin**: began, begun, beginner, beginning",
-              "**brave**: bravery",
-              "**correct**: correction, incorrect",
-              "**divide**: division",
-              "**educate**: education",
-              "**instruct**: instruction, instructor",
-              "**memory**: memorise, memorial",
-              "**refer**: reference",
-              "**silent**: silence, silently",
-              "**simple**: simplify, simplicity"
+              {
+                "base": "begin",
+                "derivatives": [
+                  "began",
+                  "begun",
+                  "beginner",
+                  "beginning"
+                ]
+              },
+              {
+                "base": "brave",
+                "derivatives": [
+                  "bravery"
+                ]
+              },
+              {
+                "base": "correct",
+                "derivatives": [
+                  "correction",
+                  "incorrect"
+                ]
+              },
+              {
+                "base": "divide",
+                "derivatives": [
+                  "division"
+                ]
+              },
+              {
+                "base": "educate",
+                "derivatives": [
+                  "education"
+                ]
+              },
+              {
+                "base": "instruct",
+                "derivatives": [
+                  "instruction",
+                  "instructor"
+                ]
+              },
+              {
+                "base": "memory",
+                "derivatives": [
+                  "memorise",
+                  "memorial"
+                ]
+              },
+              {
+                "base": "refer",
+                "derivatives": [
+                  "reference"
+                ]
+              },
+              {
+                "base": "silent",
+                "derivatives": [
+                  "silence",
+                  "silently"
+                ]
+              },
+              {
+                "base": "simple",
+                "derivatives": [
+                  "simplify",
+                  "simplicity"
+                ]
+              }
             ]
           }
         ]

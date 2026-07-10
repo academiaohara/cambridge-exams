@@ -41,39 +41,159 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "Coming and going",
             "items": [
-              "**abroad** (adv)",
-              "**accommodation** (n)",
-              "**book** (v)",
-              "**break** (n)",
-              "**cancel** (v)",
-              "**catch** (v)",
-              "**coach** (n)",
-              "**convenient** (adj)",
-              "**crash** (v, n)",
-              "**crowded** (adj)",
-              "**cruise** (n)",
-              "**delay** (v, n)",
-              "**destination** (n)",
-              "**ferry** (n)",
-              "**flight** (n)",
-              "**foreign** (adj)",
-              "**harbour** (n)",
-              "**journey** (n)",
-              "**luggage** (n)",
-              "**nearby** (adj, adv)",
-              "**pack** (v)",
-              "**passport** (n)",
-              "**platform** (n)",
-              "**public transport** (n phr)",
-              "**reach** (v)",
-              "**resort** (n)",
-              "**souvenir** (n)",
-              "**traffic** (n)",
-              "**trip** (n)",
-              "**vehicle** (n)"
+              {
+                "word": "abroad",
+                "partOfSpeech": "adv",
+                "variant": ""
+              },
+              {
+                "word": "accommodation",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "book",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "break",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "cancel",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "catch",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "coach",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "convenient",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "crash",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "crowded",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "cruise",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "delay",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "destination",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "ferry",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "flight",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "foreign",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "harbour",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "journey",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "luggage",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "nearby",
+                "partOfSpeech": "adj, adv",
+                "variant": ""
+              },
+              {
+                "word": "pack",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "passport",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "platform",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "public transport",
+                "partOfSpeech": "n phr",
+                "variant": ""
+              },
+              {
+                "word": "reach",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "resort",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "souvenir",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "traffic",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "trip",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "vehicle",
+                "partOfSpeech": "n",
+                "variant": ""
+              }
             ]
           }
         ]
@@ -85,7 +205,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Phrasal verbs",
             "items": [
               "**get in(to)** — enter a car",
@@ -107,7 +227,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Prepositional phrases",
             "items": [
               "by air/sea/bus/car/etc",
@@ -119,7 +239,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Adjectives",
             "items": [
               "close to",
@@ -130,7 +250,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Verbs",
             "items": [
               "arrive at/in",
@@ -151,19 +271,77 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "word_formation",
             "title": "Word families",
             "items": [
-              "**attract**: attractive, attraction",
-              "**back**: backwards",
-              "**choose**: chose, chosen, choice",
-              "**comfort**: comfortable, uncomfortable",
-              "**depart**: departure",
-              "**direct**: direction",
-              "**drive**: drove, driven, driver",
-              "**fly**: flew, flown, flight",
-              "**travel**: traveller",
-              "**visit**: visitor"
+              {
+                "base": "attract",
+                "derivatives": [
+                  "attractive",
+                  "attraction"
+                ]
+              },
+              {
+                "base": "back",
+                "derivatives": [
+                  "backwards"
+                ]
+              },
+              {
+                "base": "choose",
+                "derivatives": [
+                  "chose",
+                  "chosen",
+                  "choice"
+                ]
+              },
+              {
+                "base": "comfort",
+                "derivatives": [
+                  "comfortable",
+                  "uncomfortable"
+                ]
+              },
+              {
+                "base": "depart",
+                "derivatives": [
+                  "departure"
+                ]
+              },
+              {
+                "base": "direct",
+                "derivatives": [
+                  "direction"
+                ]
+              },
+              {
+                "base": "drive",
+                "derivatives": [
+                  "drove",
+                  "driven",
+                  "driver"
+                ]
+              },
+              {
+                "base": "fly",
+                "derivatives": [
+                  "flew",
+                  "flown",
+                  "flight"
+                ]
+              },
+              {
+                "base": "travel",
+                "derivatives": [
+                  "traveller"
+                ]
+              },
+              {
+                "base": "visit",
+                "derivatives": [
+                  "visitor"
+                ]
+              }
             ]
           }
         ]
