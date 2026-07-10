@@ -721,8 +721,16 @@
           : (p.wordBank && p.wordBank.length
             ? 'Complete the sentence using a word from the box.'
             : 'Complete the sentence with the correct word.'));
-      case 'full_sentence_write':
-        return p.instruction || 'Write the full sentence.';
+      case 'full_sentence_write': {
+        var cues = (p.prompt && p.prompt.cues) || [];
+        if ((!cues.length || cues.length <= 1) && p.displayPrompt && /\s\/\s/.test(p.displayPrompt)) {
+          cues = String(p.displayPrompt).split(/\s*\/\s*/).map(function(s) { return s.trim(); }).filter(Boolean);
+        }
+        if (cues.length > 1) {
+          return p.instruction || 'Complete the sentence with the correct verb form.';
+        }
+        return p.instruction || 'Write the corrected sentence.';
+      }
       case 'word_order_tiles':
         return p.instruction || 'Look at the picture and answer the question by building the sentence.';
       case 'error_correction':
