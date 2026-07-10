@@ -82,6 +82,42 @@
     return stems;
   }
 
+  function buildWordBankSequentialPayload(exercise, itemIds) {
+    var wordBank = exercise.words || exercise.wordBank || [];
+    var sentences = (itemIds || []).map(function(itemId, idx) {
+      var item = findItem(exercise, itemId);
+      if (!item) return null;
+      return {
+        sentenceId: itemId,
+        order: idx + 1,
+        sentence: item.sentence || '',
+        answer: item.answer,
+        acceptedAnswers: item.acceptedAnswers || (item.answer ? [item.answer] : []),
+        explanation: item.explanation || ''
+      };
+    }).filter(Boolean);
+    return {
+      sequentialSentences: true,
+      wordBank: wordBank.slice(),
+      sentences: sentences,
+      instruction: exercise.instructions || exercise.studentInstruction || '',
+      explanation: exercise.explanation || ''
+    };
+  }
+
+  function shouldCombineWordBankItems(exercise, itemIds, ruleFormat) {
+    if (!itemIds || itemIds.length < 2) return false;
+    if (ruleFormat !== 'free_text_gap_fill') return false;
+    var wordBank = exercise.words || exercise.wordBank || [];
+    if (!wordBank.length) return false;
+    return itemIds.every(function(itemId) {
+      var item = findItem(exercise, itemId);
+      if (!item || !item.sentence || item.verbPrompt) return false;
+      if (isKeywordTransformationItem(item)) return false;
+      return true;
+    });
+  }
+
   function buildPassageGapFillPayload(exercise) {
     var passage = exercise.passage || '';
     var answers = exercise.answers || [];
@@ -1028,7 +1064,23 @@
         return;
       }
 
-      (rule.sourceItemIds || []).forEach(function(itemId) {
+      var sourceItemIds = rule.sourceItemIds || [];
+      if (shouldCombineWordBankItems(exercise, sourceItemIds, rule.formatType)) {
+        var seqPayload = buildWordBankSequentialPayload(exercise, sourceItemIds);
+        var seqFormat = 'word_bank_gap_fill';
+        var seqScreenId = buildScreenId(nodeId, exerciseId, null, seqFormat);
+        screens.push(buildScreen(unit, node, seqFormat, seqPayload, {
+          screenId: seqScreenId,
+          itemId: exerciseId,
+          sourceExerciseId: exerciseId,
+          fallbackFormatType: rule.fallbackFormatType,
+          formatTypeOverride: seqFormat,
+          maxLifeLossPerScreen: sourceItemIds.length
+        }));
+        return;
+      }
+
+      sourceItemIds.forEach(function(itemId) {
         var item = findItem(exercise, itemId);
         if (!item) {
           warn('Item not found: ' + itemId + ' in exercise ' + exerciseId);
