@@ -716,6 +716,9 @@
       case 'conjugation_gap_fill':
       case 'word_bank_gap_fill':
       case 'preselected_verb_gap_fill':
+        if (p.sequentialSentences) {
+          return p.instruction || 'Complete each sentence using the words in the box, one at a time.';
+        }
         return p.instruction || (p.verbPrompt || p.preselectedVerb
           ? 'Use the correct form of the highlighted word.'
           : (p.wordBank && p.wordBank.length
@@ -989,6 +992,14 @@
       }
     }
 
+    if (screen && screen.formatType === 'word_bank_gap_fill' &&
+        screen.payload && screen.payload.sequentialSentences && screenRoot) {
+      if (!lessonState.awaitingContinue) {
+        handleWordBankSequentialCheck(screenRoot, screen);
+        return;
+      }
+    }
+
     if (screen && screen.formatType === 'guided_error_choice' && screenRoot && !lessonState.awaitingContinue) {
       handleGuidedErrorCheck(screenRoot, screen);
       return;
@@ -1047,6 +1058,29 @@
 
   function handlePassageGapSequentialCheck(screenRoot, screen) {
     var result = renderer.processPassageGapSequentialCheck(screenRoot, screen);
+    if (!result.handled) {
+      handleCheck();
+      return;
+    }
+    if (result.noop) return;
+
+    screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
+
+    if (result.correct && result.allDone) {
+      lessonState.queue.removeCompletedItem(screen);
+      lessonState.sessionCorrect++;
+    } else if (!result.correct && result.lifeLoss > 0) {
+      applyLifeLoss(result.lifeLoss, screen);
+    }
+
+    lessonState._lastHuntResult = result;
+    screenRoot.classList.add('sp-screen--locked');
+    showFeedback(result, result.correct);
+    updateSessionHeader();
+  }
+
+  function handleWordBankSequentialCheck(screenRoot, screen) {
+    var result = renderer.processWordBankSequentialCheck(screenRoot, screen);
     if (!result.handled) {
       handleCheck();
       return;
@@ -1192,6 +1226,27 @@
         screenRoot.classList.remove('sp-screen--locked');
         setScreenInputsLocked(false);
         setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+        updateSessionHeader();
+        return;
+      }
+    }
+
+    if (screen && screen.formatType === 'word_bank_gap_fill' &&
+        screen.payload && screen.payload.sequentialSentences && screenRoot && lastResult &&
+        lastResult._wordBankSeqResult) {
+      if (lastResult.correct && !lastResult.allDone) {
+        renderer.advanceWordBankSeqAfterFeedback(screenRoot, screen);
+        screenRoot.classList.remove('sp-screen--locked');
+        setScreenInputsLocked(false);
+        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+        updateSessionHeader();
+        return;
+      }
+      if (!lastResult.correct) {
+        renderer.retryWordBankSeqAfterFeedback(screenRoot, screen);
+        screenRoot.classList.remove('sp-screen--locked');
+        setScreenInputsLocked(false);
+        setActionBtn('check', false);
         updateSessionHeader();
         return;
       }

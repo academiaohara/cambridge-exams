@@ -3561,6 +3561,72 @@ button.sp-vocab-word-card:focus-visible {
   text-decoration: line-through;
 }
 
+.sp-gap-wordbank-chip--selected:not(.sp-gap-wordbank-chip--used) {
+  border-color: var(--sp-duo-blue);
+  background: var(--sp-duo-blue-light);
+  box-shadow: 0 0 0 2px rgba(28, 176, 246, 0.2);
+}
+
+/* ── Word bank sequential sentences ───────────────────────────────────── */
+.sp-screen--wbseq {
+  align-items: stretch;
+}
+
+.sp-wbseq-sentences {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: var(--sp-content-max);
+  margin: 0 auto;
+}
+
+.sp-wbseq-sentence {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: var(--white);
+  transition: opacity 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.sp-wbseq-sentence .sp-prompt-sentence {
+  margin: 0;
+  text-align: left;
+}
+
+.sp-wbseq-sentence--future {
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+.sp-wbseq-sentence--active {
+  opacity: 1;
+  border-color: var(--sp-duo-blue);
+  background: #f0f9ff;
+  box-shadow: 0 0 0 2px rgba(28, 176, 246, 0.15);
+}
+
+.sp-wbseq-sentence--done {
+  opacity: 1;
+  border-color: #86efac;
+  background: #f0fdf4;
+}
+
+.sp-wbseq-sentence--done .sp-gap-underline-input {
+  border-bottom-color: #22c55e;
+  color: #15803d;
+}
+
+.sp-wbseq-gap--incorrect .sp-gap-underline-input {
+  border-bottom-color: #ef4444;
+  color: #b91c1c;
+}
+
+.sp-wbseq-sentence--active .sp-gap-underline-input:focus {
+  outline: none;
+  border-bottom-color: var(--sp-duo-blue-dark);
+}
+
 .sp-hunt-instruction {
   font-size: 0.9rem;
   font-weight: 700;
