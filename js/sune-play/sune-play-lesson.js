@@ -93,7 +93,7 @@
     for (var i = 0; i < required.length; i++) {
       if (!completed[required[i]]) return required[i];
     }
-    return required[0];
+    return null;
   }
 
   function calcXp(unit, correct, livesLost, perfect) {
