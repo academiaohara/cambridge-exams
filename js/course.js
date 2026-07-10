@@ -1666,7 +1666,19 @@
         var exerciseId = sectionIdx.slice(9);
         try {
           var spExProg = JSON.parse(localStorage.getItem('sune_play_progress_' + unitId) || '{}');
-          return !!(spExProg.completedExercises && spExProg.completedExercises[exerciseId]);
+          if (spExProg.completedExercises && spExProg.completedExercises[exerciseId]) return true;
+          var unitMeta = BentoGrid._courseUnitMeta && BentoGrid._courseUnitMeta[unitId];
+          if (unitMeta && unitMeta.exercises) {
+            var matchedEx = unitMeta.exercises.find(function(ex) {
+              return ex.sectionIdx === sectionIdx || ex.exerciseId === exerciseId;
+            });
+            var nodeId = matchedEx && (matchedEx.nodeId ||
+              (typeof matchedEx.sectionIdx === 'string' && matchedEx.sectionIdx.indexOf('node:') === 0
+                ? matchedEx.sectionIdx.slice(5)
+                : null));
+            if (nodeId && spExProg.completedNodes && spExProg.completedNodes[nodeId]) return true;
+          }
+          return false;
         } catch (e) { return false; }
       }
       if (typeof sectionIdx === 'string' && sectionIdx.indexOf('node:') === 0) {
@@ -2049,6 +2061,17 @@
         var firstUnlockedReviewExerciseIdx = group.isReview && reviewLockState && !reviewLockState.locked
           ? BentoGrid._getFirstUnlockedReviewExerciseIdx(levelId, item, progress)
           : -1;
+        var firstUnlockedUnitCellIdx = -1;
+        if (!group.isReview) {
+          group.cells.forEach(function(cell, idx) {
+            if (firstUnlockedUnitCellIdx !== -1) return;
+            if (!BentoGrid._isCourseExercisePassed(levelId, cell.unitId, cell.sectionIdx, cell.itemType, progress)) {
+              firstUnlockedUnitCellIdx = idx;
+            }
+          });
+        }
+        var globalFirstCell = firstUnlockedSeqIdx >= 0 ? allCells[firstUnlockedSeqIdx] : null;
+        var isActiveUnit = !!(globalFirstCell && globalFirstCell.unitId === item.id && !group.isReview);
         group.cells.forEach(function(cell, cellIdxInReview) {
           var cellPassed = BentoGrid._isCourseExercisePassed(levelId, cell.unitId, cell.sectionIdx, cell.itemType, progress);
           var secProg = sectionProgress[cell.unitId] || {};
@@ -2056,6 +2079,8 @@
 
           var blockIndex = blockOrder.indexOf(cell.item.block != null ? String(cell.item.block) : 'misc');
           var sequentialLocked = !group.isReview && firstUnlockedSeqIdx >= 0 && seqIndex > firstUnlockedSeqIdx;
+          var unitSequentialLocked = !group.isReview && firstUnlockedUnitCellIdx >= 0 &&
+            cellIdxInReview > firstUnlockedUnitCellIdx;
           var locked;
           if (group.isReview) {
             locked = !BentoGrid._isReviewExerciseAccessible(levelId, item, cellIdxInReview, {
@@ -2067,6 +2092,7 @@
           } else {
             locked = !etapaUnlocked || cell.item.status !== 'available' ||
               sequentialLocked ||
+              unitSequentialLocked ||
               (!(typeof AccessControl !== 'undefined' ? AccessControl.effectiveHasTheoryPack() : AppState.hasTheoryPack) && blockIndex > 0);
           }
 
@@ -2076,7 +2102,11 @@
           else if (locked) cellClass += ' course-exercise-cell--locked';
           else if (cellProgress) cellClass += ' course-exercise-cell--progress';
           else cellClass += ' course-exercise-cell--pending';
-          if (!group.isReview && seqIndex === firstUnlockedSeqIdx && !locked) cellClass += ' course-exercise-cell--current';
+          if (isActiveUnit && cellIdxInReview === firstUnlockedUnitCellIdx && !locked) {
+            cellClass += ' course-exercise-cell--current';
+          } else if (!group.isReview && seqIndex === firstUnlockedSeqIdx && !locked) {
+            cellClass += ' course-exercise-cell--current';
+          }
           if (group.isReview && !locked && !cellPassed && cellIdxInReview === firstUnlockedReviewExerciseIdx) {
             cellClass += ' course-exercise-cell--current';
           }
@@ -2089,7 +2119,7 @@
           html += '<button type="button" class="' + cellClass + '" onclick="' + onclick + '" title="' + self._escapeHTML(unitLabel + ' · ' + cell.label) + '">';
           html += '<span class="course-exercise-cell-label">' + self._escapeHTML(cell.label) + '</span>';
           html += '</button>';
-          if (!group.isReview) seqIndex++;
+          seqIndex++;
         });
         html += '</div>';
       });
