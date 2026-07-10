@@ -522,8 +522,16 @@
       skipBtn.disabled = lessonState.hearts && lessonState.hearts.isGameOver;
     }
     if (explainBtn) {
-      var hasExplanation = lessonState._lastFeedbackResult && lessonState._lastFeedbackResult.explanation;
-      explainBtn.hidden = mode === 'check' || !hasExplanation;
+      var hasFeedbackExplanation = lessonState._lastFeedbackResult && lessonState._lastFeedbackResult.explanation;
+      var hasColumnMatchExplanation = !!lessonState._cmExplainContext;
+      explainBtn.hidden = (mode === 'check' && !hasColumnMatchExplanation) ||
+        (mode === 'continue' && !hasFeedbackExplanation);
+    }
+    if (footer) {
+      footer.classList.toggle(
+        'sp-practice-footer--explain-available',
+        mode === 'check' && !!lessonState._cmExplainContext
+      );
     }
     var practiceMain = lessonState.mount.querySelector('.sp-practice-main');
     var isFeedback = mode === 'continue';
@@ -594,6 +602,7 @@
     lessonState.awaitingContinue = false;
     lessonState._lastFeedbackResult = null;
     lessonState._lastResultCorrect = null;
+    lessonState._cmExplainContext = null;
     clearResultStyles();
 
     var footer = mount.querySelector('#sp-practice-footer');
@@ -602,7 +611,8 @@
         'sp-practice-footer--feedback',
         'sp-practice-footer--correct',
         'sp-practice-footer--incorrect',
-        'sp-practice-footer--retry'
+        'sp-practice-footer--retry',
+        'sp-practice-footer--explain-available'
       );
     }
 
@@ -630,7 +640,11 @@
       screenRoot._spScreen = screen;
       renderer.bindScreen(screenRoot, screen, function() {
         if (!lessonState.awaitingContinue) {
-          setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+          if (screen.formatType === 'column_matching') {
+            updateColumnMatchExplainBtn(screenRoot, screen);
+          } else {
+            setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+          }
         }
       });
       screenRoot.addEventListener('sp-hunt-wrong-tap', handleHuntWrongTap);
@@ -831,6 +845,11 @@
     if (screen && screen.formatType === 'word_bank_tick') {
       return (p.answerWords || []).join(', ');
     }
+    if (screen && screen.formatType === 'column_matching' && p.pairs && p.pairs.length) {
+      return p.pairs.map(function(pair) {
+        return pair.pairId + '→' + pair.correctLetter;
+      }).join(' / ');
+    }
     if (p.answer) return p.answer;
     if (p.acceptedAnswers && p.acceptedAnswers.length) return p.acceptedAnswers[0];
     return '';
@@ -890,7 +909,34 @@
     updateSessionHeader();
   }
 
+  function updateColumnMatchExplainBtn(screenRoot, screen) {
+    if (!lessonState || !lessonState.mount) return;
+    lessonState._cmExplainContext = null;
+    if (screen && screen.formatType === 'column_matching' && screenRoot) {
+      lessonState._cmExplainContext = renderer.getColumnMatchExplainContext(screenRoot, screen);
+    }
+    if (!lessonState.awaitingContinue) {
+      setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+    }
+  }
+
   function handleExplainClick() {
+    var cmContext = lessonState._cmExplainContext;
+    if (cmContext && typeof LessonExplanation !== 'undefined') {
+      var sessionEl = lessonState.mount && lessonState.mount.querySelector('.sp-practice-session');
+      var explainOpts = Object.assign({ title: 'Explanation', continueLabel: 'Close' }, cmContext);
+      if (sessionEl) {
+        LessonExplanation.open(Object.assign({ inlineMount: sessionEl }, explainOpts));
+        return;
+      }
+      if (lessonState.mount) {
+        LessonExplanation.open(Object.assign({ inlineMount: lessonState.mount }, explainOpts));
+        return;
+      }
+      LessonExplanation.open(explainOpts);
+      return;
+    }
+
     var result = lessonState._lastFeedbackResult;
     var screen = lessonState.currentScreen;
     if (!result || !result.explanation || typeof LessonExplanation === 'undefined') return;
@@ -940,11 +986,55 @@
       return;
     }
 
+    if (screen && screen.formatType === 'column_matching' &&
+        screen.payload && screen.payload.sequentialMode !== false && screenRoot) {
+      if (!lessonState.awaitingContinue) {
+        handleColumnMatchSequentialCheck(screenRoot, screen);
+        return;
+      }
+    }
+
     if (lessonState.awaitingContinue) {
       handleContinue();
       return;
     }
     handleCheck();
+  }
+
+  function handleColumnMatchSequentialCheck(screenRoot, screen) {
+    var result = renderer.processColumnMatchSequentialCheck(screenRoot, screen);
+    if (!result.handled) {
+      handleCheck();
+      return;
+    }
+    if (result.noop) return;
+
+    screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
+
+    if (result._inlineFeedback && !result.correct) {
+      if (result.lifeLoss > 0) {
+        applyLifeLoss(result.lifeLoss, screen);
+      }
+      if (window.AudioUtils) AudioUtils.playFailureSound();
+      updateColumnMatchExplainBtn(screenRoot, screen);
+      updateSessionHeader();
+      return;
+    }
+
+    if (result.correct && result._autoAdvance) {
+      if (window.AudioUtils) AudioUtils.playSuccessSound();
+      updateColumnMatchExplainBtn(screenRoot, screen);
+      updateSessionHeader();
+      return;
+    }
+
+    if (result.correct && result.allDone) {
+      screenRoot.classList.add('sp-screen--locked');
+      lessonState.queue.removeCompletedItem(screen);
+      lessonState.sessionCorrect++;
+      showFeedback(result, true);
+      updateSessionHeader();
+    }
   }
 
   function handlePassageGapSequentialCheck(screenRoot, screen) {
@@ -1076,7 +1166,8 @@
         'sp-practice-footer--feedback',
         'sp-practice-footer--correct',
         'sp-practice-footer--incorrect',
-        'sp-practice-footer--retry'
+        'sp-practice-footer--retry',
+        'sp-practice-footer--explain-available'
       );
     }
 
