@@ -1352,16 +1352,30 @@
     return match ? match.correctLetter : '';
   }
 
-  function getCmPool(root) {
-    return root.querySelector('.sp-cm-pool');
-  }
-
   function getCmRightCell(root, pairId) {
     return root.querySelector('.sp-cm-right-cell[data-pair-id="' + pairId + '"]');
   }
 
   function getCmRightItem(root, letter) {
     return root.querySelector('.sp-cm-right-item[data-letter="' + letter + '"]');
+  }
+
+  function shuffleCmRightOptions(options) {
+    var shuffled = (options || []).slice();
+    for (var i = shuffled.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = shuffled[i];
+      shuffled[i] = shuffled[j];
+      shuffled[j] = tmp;
+    }
+    return shuffled;
+  }
+
+  function renderCmRightItem(opt) {
+    return '<button type="button" class="sp-cm-right-item" data-letter="' + esc(opt.letter) + '" aria-pressed="false">' +
+      '<span class="sp-cm-letter">' + esc(opt.letter) + '</span>' +
+      '<span class="sp-cm-right-text">' + esc(opt.endingText) + '</span>' +
+    '</button>';
   }
 
   function placeCmRightItemInRow(root, letter, pairId) {
@@ -1372,22 +1386,17 @@
 
   function syncCmRightItemPositions(root) {
     var pairs = getCmPairs(root);
-    var pool = getCmPool(root);
-    if (!pool) return;
+    var locked = getCmLockedPairs(root);
 
     Object.keys(pairs).forEach(function(pairId) {
+      if (!locked[pairId]) return;
       placeCmRightItemInRow(root, pairs[pairId], pairId);
-    });
-
-    root.querySelectorAll('.sp-cm-right-item').forEach(function(btn) {
-      var letter = btn.getAttribute('data-letter') || '';
-      var isPlaced = Object.keys(pairs).some(function(pid) { return pairs[pid] === letter; });
-      if (!isPlaced) pool.appendChild(btn);
     });
   }
 
   function renderColumnMatching(screen) {
     var p = screen.payload || {};
+    var shuffledRight = shuffleCmRightOptions(p.rightOptions || []);
     var html = '<div class="sp-screen sp-screen--column-match" data-format="column_matching">';
     html += '<div class="sp-cm-board">';
     html += '<div class="sp-cm-head-row">';
@@ -1395,7 +1404,8 @@
     html += '<p class="sp-cm-column-title">Tap to pair</p>';
     html += '</div>';
     html += '<div class="sp-cm-rows" aria-label="Sentence beginnings">';
-    (p.pairs || []).forEach(function(pair) {
+    (p.pairs || []).forEach(function(pair, idx) {
+      var rightOpt = shuffledRight[idx] || null;
       html += '<div class="sp-cm-row" data-pair-id="' + pair.pairId + '">';
       html += '<div class="sp-cm-left-cell">';
       html += '<button type="button" class="sp-cm-left-item" data-pair-id="' + pair.pairId + '" aria-pressed="false">' +
@@ -1403,20 +1413,12 @@
         '<span class="sp-cm-left-text">' + esc(pair.leftText) + '</span>' +
       '</button>';
       html += '</div>';
-      html += '<div class="sp-cm-right-cell" data-pair-id="' + pair.pairId + '" aria-label="Ending slot for item ' + pair.pairId + '"></div>';
+      html += '<div class="sp-cm-right-cell" data-pair-id="' + pair.pairId + '" aria-label="Ending slot for item ' + pair.pairId + '">';
+      if (rightOpt) html += renderCmRightItem(rightOpt);
+      html += '</div>';
       html += '</div>';
     });
     html += '</div>';
-    html += '<div class="sp-cm-pool-wrap">';
-    html += '<div class="sp-cm-pool-spacer" aria-hidden="true"></div>';
-    html += '<div class="sp-cm-pool" aria-label="Sentence endings">';
-    (p.rightOptions || []).forEach(function(opt) {
-      html += '<button type="button" class="sp-cm-right-item" data-letter="' + esc(opt.letter) + '" aria-pressed="false">' +
-        '<span class="sp-cm-letter">' + esc(opt.letter) + '</span>' +
-        '<span class="sp-cm-right-text">' + esc(opt.endingText) + '</span>' +
-      '</button>';
-    });
-    html += '</div></div>';
     html += '</div></div>';
     return html;
   }
@@ -1435,7 +1437,7 @@
       var isSelected = selectedLeft === pairId;
       btn.classList.toggle('sp-cm-left-item--selected', isSelected && !isLocked);
       btn.classList.toggle('sp-cm-left-item--paired', !!letter);
-      btn.classList.toggle('sp-cm-left-item--correct', isLocked);
+      btn.classList.toggle('sp-cm-left-item--locked', isLocked);
       btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
       btn.disabled = isLocked || root.classList.contains('sp-screen--locked');
     });
@@ -1446,7 +1448,8 @@
       var isLocked = pairedTo && !!locked[pairedTo];
       var isPaired = !!pairedTo;
       btn.classList.toggle('sp-cm-right-item--paired', isPaired);
-      btn.classList.toggle('sp-cm-right-item--correct', isLocked);
+      btn.classList.toggle('sp-cm-right-item--placed', isPaired);
+      btn.classList.toggle('sp-cm-right-item--locked', isLocked);
       btn.setAttribute('aria-pressed', isPaired ? 'true' : 'false');
       btn.disabled = isLocked || root.classList.contains('sp-screen--locked');
     });
@@ -1547,9 +1550,7 @@
       }
       var rightBtn = root.querySelector('.sp-cm-right-item[data-letter="' + pair.correctLetter + '"]');
       if (rightBtn) {
-        if (ok) {
-          rightBtn.classList.add('sp-cm-right-item--correct');
-        } else {
+        if (!ok) {
           rightBtn.classList.add('sp-cm-right-item--reveal');
           placeCmRightItemInRow(root, pair.correctLetter, pair.pairId);
         }

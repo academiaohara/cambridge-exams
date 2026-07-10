@@ -1970,28 +1970,33 @@ button.sp-example-line.sp-speakable {
   flex: 1;
 }
 
-.sp-cm-right-cell--filled {
-  border-style: solid;
+.sp-cm-right-cell--filled:not(.sp-cm-right-cell--locked) {
   border-color: transparent;
   background: transparent;
+  padding: 0;
 }
 
 .sp-cm-right-cell--locked {
+  border-style: solid;
+  border-color: #dce3f0;
+  background: var(--white);
+  padding: 0;
+}
+
+.sp-cm-right-cell--locked .sp-cm-right-item {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.sp-cm-right-cell--locked .sp-cm-right-item:hover:not(:disabled) {
   border-color: transparent;
   background: transparent;
 }
 
-.sp-cm-pool-wrap {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 14px;
-  margin-top: 4px;
-}
-
-.sp-cm-pool {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.sp-cm-right-cell--locked .sp-cm-right-item--locked {
+  font-weight: 700;
+  cursor: default;
 }
 
 .sp-cm-column-title {
@@ -2068,8 +2073,7 @@ button.sp-example-line.sp-speakable {
   min-width: 0;
 }
 
-.sp-cm-left-item--correct,
-.sp-cm-right-item--correct {
+.sp-cm-left-item--correct {
   border-color: var(--sp-duo-green, #58cc02);
   background: rgba(88, 204, 2, 0.12);
 }
@@ -2111,13 +2115,8 @@ button.sp-example-line.sp-speakable {
 
 @media (max-width: 720px) {
   .sp-cm-head-row,
-  .sp-cm-row,
-  .sp-cm-pool-wrap {
+  .sp-cm-row {
     grid-template-columns: 1fr;
-  }
-
-  .sp-cm-pool-spacer {
-    display: none;
   }
 }
 
