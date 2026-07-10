@@ -323,8 +323,12 @@
 
   function resizeUnderlineGapInput(input) {
     if (!input) return;
-    var minCh = 2;
     var val = input.value || '';
+    var placeholder = input.getAttribute('placeholder') || '';
+    var minCh = 2;
+    if (!val && placeholder) {
+      minCh = Math.max(minCh, placeholder.length);
+    }
     var len = Math.max(minCh, val.length + 1);
     input.style.width = len + 'ch';
   }
@@ -2396,24 +2400,27 @@
     }).join('');
   }
 
-  function renderFullSentenceConjugation(screen, scaffold) {
-    var prefixChip = scaffold.prefix
-      ? '<span class="sp-sentence-chip">' + esc(scaffold.prefix) + '</span>'
-      : '';
-    var suffixChip = scaffold.suffix
-      ? '<span class="sp-sentence-chip">' + esc(scaffold.suffix) + '</span>'
-      : '';
-    var inputHtml = '<span class="sp-sentence-verb-slot">' +
-      '<input type="text" id="sp-sentence-input" class="sp-sentence-verb-input" ' +
-      'autocomplete="off" spellcheck="false" aria-label="Conjugated verb" ' +
-      'placeholder="' + esc(scaffold.placeholder) + '">' +
-      '</span>';
+  function buildConjugationGapField(placeholder) {
+    return '<span class="sp-inline-gap-group sp-inline-gap-group--solo" role="group" aria-label="Conjugated verb">' +
+      '<input type="text" class="sp-gap-inline-input sp-gap-underline-input" id="sp-sentence-input" ' +
+      'autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Conjugated verb" ' +
+      'placeholder="' + esc(placeholder || '') + '">' +
+    '</span>';
+  }
 
-    return '<div class="sp-screen sp-screen--write sp-screen--sentence-build" data-format="full_sentence_write" data-write-mode="conjugation" ' +
+  function renderFullSentenceConjugation(screen, scaffold) {
+    var sentenceHtml = '';
+    if (scaffold.prefix) sentenceHtml += formatSentenceText(scaffold.prefix) + ' ';
+    sentenceHtml += buildConjugationGapField(scaffold.placeholder);
+    if (scaffold.suffix) sentenceHtml += ' ' + formatSentenceText(scaffold.suffix);
+
+    return '<div class="sp-screen sp-screen--gap sp-screen--write sp-screen--sentence-build" data-format="full_sentence_write" data-write-mode="conjugation" ' +
       'data-expected-conjugations="' + esc(JSON.stringify(scaffold.expectedConjugations)) + '">' +
       '<div class="sp-cue-bank" aria-label="Prompt words">' + renderCueBank(scaffold.cues || []) + '</div>' +
-      '<div class="sp-sentence-scaffold sp-speakable-sentence" data-action="practice-speak-sentence" role="group" aria-label="Complete the sentence">' +
-        prefixChip + inputHtml + suffixChip +
+      '<div class="sp-prompt-row sp-prompt-row--gap">' +
+        '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
+          sentenceHtml +
+        '</p>' +
       '</div>' +
     '</div>';
   }
@@ -3047,13 +3054,20 @@
       bindSentenceSpeak(root, function() {
         var p = screen.payload || {};
         if (root.getAttribute('data-write-mode') === 'conjugation') {
+          var conjInput = root.querySelector('#sp-sentence-input');
+          var typed = conjInput ? conjInput.value.trim() : '';
+          if (typed) {
+            var parts = buildScaffoldSegments(p);
+            if (parts) {
+              return [parts.prefix, typed, parts.suffix].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
+            }
+          }
           return String((p.acceptedAnswers && p.acceptedAnswers[0]) || p.answer || '').trim();
         }
         return String(p.displayPrompt || '').trim();
       });
       if (root.getAttribute('data-write-mode') === 'conjugation') {
-        var conjInput = root.querySelector('#sp-sentence-input');
-        if (conjInput) setTimeout(function() { conjInput.focus(); }, 0);
+        bindGapInputs(root, onChange);
       }
     }
 

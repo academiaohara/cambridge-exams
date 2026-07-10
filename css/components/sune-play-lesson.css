@@ -2667,10 +2667,14 @@ button.sp-vocab-word-card:focus-visible {
   line-height: 1.55;
 }
 
-/* Full-sentence write: cue chips + conjugation scaffold */
+/* Full-sentence write: cue chips + inline conjugation gap (unit4A style) */
 .sp-screen--sentence-build,
 .sp-screen--sentence-rewrite {
   width: 100%;
+}
+
+.sp-screen--sentence-build.sp-screen--gap .sp-cue-bank {
+  margin-bottom: 20px;
 }
 
 .sp-cue-bank {
