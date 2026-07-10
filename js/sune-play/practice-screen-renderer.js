@@ -1435,7 +1435,7 @@
       var isSelected = selectedLeft === pairId;
       btn.classList.toggle('sp-cm-left-item--selected', isSelected && !isLocked);
       btn.classList.toggle('sp-cm-left-item--paired', !!letter);
-      btn.classList.toggle('sp-cm-left-item--correct', isLocked);
+      btn.classList.toggle('sp-cm-left-item--locked', isLocked);
       btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
       btn.disabled = isLocked || root.classList.contains('sp-screen--locked');
     });
@@ -1446,7 +1446,8 @@
       var isLocked = pairedTo && !!locked[pairedTo];
       var isPaired = !!pairedTo;
       btn.classList.toggle('sp-cm-right-item--paired', isPaired);
-      btn.classList.toggle('sp-cm-right-item--correct', isLocked);
+      btn.classList.toggle('sp-cm-right-item--placed', isPaired);
+      btn.classList.toggle('sp-cm-right-item--locked', isLocked);
       btn.setAttribute('aria-pressed', isPaired ? 'true' : 'false');
       btn.disabled = isLocked || root.classList.contains('sp-screen--locked');
     });
@@ -1547,9 +1548,7 @@
       }
       var rightBtn = root.querySelector('.sp-cm-right-item[data-letter="' + pair.correctLetter + '"]');
       if (rightBtn) {
-        if (ok) {
-          rightBtn.classList.add('sp-cm-right-item--correct');
-        } else {
+        if (!ok) {
           rightBtn.classList.add('sp-cm-right-item--reveal');
           placeCmRightItemInRow(root, pair.correctLetter, pair.pairId);
         }
