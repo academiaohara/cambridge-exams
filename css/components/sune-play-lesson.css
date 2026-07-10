@@ -986,7 +986,20 @@ button.sp-vocab-word-card:focus-visible {
   justify-content: flex-start;
 }
 
+.sp-practice-main .sp-exercise-card:has(.sp-screen--wbseq) {
+  overflow: hidden;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
 .sp-practice-main .sp-exercise-card:has(.sp-screen--passage-gap) .sp-screen--passage-gap {
+  flex: 1;
+  min-height: 0;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+
+.sp-practice-main .sp-exercise-card:has(.sp-screen--wbseq) .sp-screen--wbseq {
   flex: 1;
   min-height: 0;
   justify-content: flex-start;
@@ -3570,6 +3583,31 @@ button.sp-vocab-word-card:focus-visible {
 /* ── Word bank sequential sentences ───────────────────────────────────── */
 .sp-screen--wbseq {
   align-items: stretch;
+  width: 100%;
+  min-height: 0;
+  justify-content: flex-start;
+}
+
+.sp-screen--wbseq .sp-session-instruction {
+  flex-shrink: 0;
+}
+
+.sp-screen--wbseq .sp-gap-wordbank {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.sp-wbseq-sentences-scroll {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 .sp-wbseq-sentences {
@@ -3579,6 +3617,7 @@ button.sp-vocab-word-card:focus-visible {
   width: 100%;
   max-width: var(--sp-content-max);
   margin: 0 auto;
+  padding-bottom: 4px;
 }
 
 .sp-wbseq-sentence {
@@ -4670,7 +4709,15 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
     padding-bottom: 8px;
   }
 
+  .sp-practice-main .sp-exercise-card:has(.sp-screen--wbseq) {
+    padding-bottom: 8px;
+  }
+
   .sp-screen--passage-gap .sp-session-instruction {
+    margin-bottom: 8px;
+  }
+
+  .sp-screen--wbseq .sp-session-instruction {
     margin-bottom: 8px;
   }
 
@@ -4692,6 +4739,14 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
   .sp-screen--passage-gap .sp-passage-gap-scroll {
     margin-top: 10px;
     border-radius: 12px;
+  }
+
+  .sp-screen--wbseq .sp-gap-wordbank {
+    margin-bottom: 0;
+  }
+
+  .sp-screen--wbseq .sp-wbseq-sentences-scroll {
+    margin-top: 10px;
   }
 
   .sp-screen--passage-gap .sp-passage-gap-scroll .sp-passage-card {
