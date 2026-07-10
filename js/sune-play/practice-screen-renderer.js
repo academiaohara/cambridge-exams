@@ -493,6 +493,7 @@
     var p = screen.payload || {};
     var html = '<div class="sp-screen sp-screen--gap sp-screen--word-bank-gap sp-screen--wbseq" data-format="word_bank_gap_fill">';
     html += renderGapWordBank(p.wordBank || []);
+    html += '<div class="sp-wbseq-sentences-scroll" tabindex="0" aria-label="Sentences">';
     html += '<div class="sp-wbseq-sentences">';
     (p.sentences || []).forEach(function(s) {
       html += '<div class="sp-wbseq-sentence sp-wbseq-sentence--future" data-sentence-id="' + esc(s.sentenceId) + '">';
@@ -500,7 +501,7 @@
         renderWordBankSeqSentenceHtml(s.sentence, s.sentenceId) + '</p>';
       html += '</div>';
     });
-    html += '</div></div>';
+    html += '</div></div></div>';
     return html;
   }
 
