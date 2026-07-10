@@ -69,20 +69,184 @@ function convertGrammarTheorySection(section, cardIndex) {
   return cards;
 }
 
-function buildVocabTheory(unit, unitPrefix) {
-  var focus = [];
-  if (unit.sections && unit.sections.topic_vocabulary) {
-    Object.keys(unit.sections.topic_vocabulary).forEach(function(key) {
-      focus.push(key.replace(/_/g, ' '));
-    });
+function formatTopicTitle(key) {
+  var s = String(key || '').trim();
+  if (!s) return 'Topic';
+  if (s.indexOf('_') === -1) return s;
+  return s.charAt(0).toUpperCase() + s.slice(1).replace(/_/g, ' ');
+}
+
+function formatVocabWordLine(entry) {
+  if (!entry) return '';
+  if (typeof entry === 'string') return '**' + entry + '**';
+  var word = entry.word || '';
+  if (!word) return '';
+  var pos = entry.part_of_speech || entry.pos || '';
+  var variant = entry.variant ? ' (' + entry.variant + ')' : '';
+  if (pos) return '**' + word + '** (' + pos + ')' + variant;
+  return '**' + word + '**' + variant;
+}
+
+function formatPhrasalVerbLine(pv) {
+  if (!pv) return '';
+  var verb = pv.verb || '';
+  var meaning = pv.meaning || '';
+  if (!verb) return '';
+  return meaning ? ('**' + verb + '** — ' + meaning) : ('**' + verb + '**');
+}
+
+function formatCollocationGroup(word, patterns) {
+  var patternsText = Array.isArray(patterns) ? patterns.join(', ') : String(patterns || '');
+  if (!patternsText) return '**' + word + '**';
+  return '**' + word + '**: ' + patternsText;
+}
+
+function formatIdiomLine(idiom) {
+  if (!idiom) return '';
+  var phrase = idiom.idiom || idiom.phrase || '';
+  var meaning = idiom.meaning || '';
+  if (!phrase) return '';
+  return meaning ? ('**' + phrase + '** — ' + meaning) : ('**' + phrase + '**');
+}
+
+function collectWordFormationDerivatives(wf) {
+  var parts = [];
+  if (wf.derivatives) {
+    if (Array.isArray(wf.derivatives)) {
+      parts = wf.derivatives.slice();
+    } else if (typeof wf.derivatives === 'object') {
+      Object.keys(wf.derivatives).forEach(function(pos) {
+        var words = wf.derivatives[pos];
+        if (!words) return;
+        if (!Array.isArray(words)) words = [words];
+        words.forEach(function(w) { if (w) parts.push(w); });
+      });
+    }
   }
+  ['noun', 'verb', 'adjective', 'adverb'].forEach(function(pos) {
+    if (!wf[pos]) return;
+    var words = Array.isArray(wf[pos]) ? wf[pos] : [wf[pos]];
+    words.forEach(function(w) { if (w) parts.push(w); });
+  });
+  return parts;
+}
+
+function formatWordFormationLine(wf) {
+  var base = wf.base || wf.root || '';
+  var parts = collectWordFormationDerivatives(wf);
+  if (!base && !parts.length) return '';
+  if (!parts.length) return '**' + base + '**';
+  return '**' + base + '**: ' + parts.join(', ');
+}
+
+function buildVocabTheoryCard(unitPrefix, cardIndex, title, subtitle, sections) {
+  if (!sections || !sections.length) return null;
   return {
-    id: unitPrefix + '-theory',
-    title: 'Topic vocabulary',
-    shortTitle: 'Vocabulary',
-    displayMode: 'swipeable_cards',
-    completionRule: { type: 'view_all_cards', required: false },
-    cards: [{
+    id: unitPrefix + '-theory-card-' + (cardIndex + 1),
+    title: title,
+    subtitle: subtitle || '',
+    cardType: 'rule_card',
+    sections: sections
+  };
+}
+
+export function buildVocabTheory(unit, unitPrefix) {
+  var sections = unit.sections || {};
+  var cards = [];
+  var cardIndex = 0;
+
+  if (sections.topic_vocabulary && Object.keys(sections.topic_vocabulary).length) {
+    var topicSections = [];
+    Object.keys(sections.topic_vocabulary).forEach(function(topicKey) {
+      var words = sections.topic_vocabulary[topicKey] || [];
+      var items = words.map(formatVocabWordLine).filter(Boolean);
+      if (!items.length) return;
+      topicSections.push({
+        type: 'bullet_list',
+        title: formatTopicTitle(topicKey),
+        items: items
+      });
+    });
+    var topicCard = buildVocabTheoryCard(
+      unitPrefix,
+      cardIndex++,
+      'Topic Vocabulary',
+      unit.unitTitle || '',
+      topicSections
+    );
+    if (topicCard) cards.push(topicCard);
+  }
+
+  if (sections.phrasal_verbs && sections.phrasal_verbs.length) {
+    var pvItems = sections.phrasal_verbs.map(formatPhrasalVerbLine).filter(Boolean);
+    var pvCard = buildVocabTheoryCard(
+      unitPrefix,
+      cardIndex++,
+      'Phrasal Verbs',
+      '',
+      [{ type: 'bullet_list', title: 'Phrasal verbs', items: pvItems }]
+    );
+    if (pvCard) cards.push(pvCard);
+  }
+
+  if (sections.collocations_patterns && Object.keys(sections.collocations_patterns).length) {
+    var collSections = [];
+    Object.keys(sections.collocations_patterns).forEach(function(groupKey) {
+      var patterns = sections.collocations_patterns[groupKey];
+      if (Array.isArray(patterns)) {
+        if (!patterns.length) return;
+        collSections.push({
+          type: 'bullet_list',
+          title: formatTopicTitle(groupKey),
+          items: patterns.map(function(phrase) { return String(phrase || ''); }).filter(Boolean)
+        });
+      } else {
+        var line = formatCollocationGroup(groupKey, patterns);
+        if (line) {
+          collSections.push({
+            type: 'bullet_list',
+            title: 'Collocation',
+            items: [line]
+          });
+        }
+      }
+    });
+    var collCard = buildVocabTheoryCard(
+      unitPrefix,
+      cardIndex++,
+      'Collocations & Patterns',
+      '',
+      collSections
+    );
+    if (collCard) cards.push(collCard);
+  }
+
+  if (sections.idioms && sections.idioms.length) {
+    var idiomItems = sections.idioms.map(formatIdiomLine).filter(Boolean);
+    var idiomCard = buildVocabTheoryCard(
+      unitPrefix,
+      cardIndex++,
+      'Idioms',
+      '',
+      [{ type: 'bullet_list', title: 'Idioms', items: idiomItems }]
+    );
+    if (idiomCard) cards.push(idiomCard);
+  }
+
+  if (sections.word_formation && sections.word_formation.length) {
+    var wfItems = sections.word_formation.map(formatWordFormationLine).filter(Boolean);
+    var wfCard = buildVocabTheoryCard(
+      unitPrefix,
+      cardIndex++,
+      'Word Formation',
+      '',
+      [{ type: 'bullet_list', title: 'Word families', items: wfItems }]
+    );
+    if (wfCard) cards.push(wfCard);
+  }
+
+  if (!cards.length) {
+    cards.push({
       id: unitPrefix + '-theory-card-1',
       title: unit.unitTitle || 'Vocabulary',
       subtitle: unit.unitSubtitle || '',
@@ -90,9 +254,18 @@ function buildVocabTheory(unit, unitPrefix) {
       sections: [{
         type: 'bullet_list',
         title: 'Unit focus',
-        items: focus.length ? focus : [unit.unitTitle || 'Vocabulary practice']
+        items: [unit.unitTitle || 'Vocabulary practice']
       }]
-    }]
+    });
+  }
+
+  return {
+    id: unitPrefix + '-theory',
+    title: 'Topic vocabulary',
+    shortTitle: 'Vocabulary',
+    displayMode: 'swipeable_cards',
+    completionRule: { type: 'view_all_cards', required: false },
+    cards: cards
   };
 }
 
