@@ -21,6 +21,9 @@
   function countKeywordTransformationWords(text) {
     var trimmed = String(text || '').trim();
     if (!trimmed) return 0;
+    if (window.SunePlayNormalize && window.SunePlayNormalize.normalizeAnswer) {
+      trimmed = window.SunePlayNormalize.normalizeAnswer(trimmed);
+    }
     return trimmed.split(/\s+/).filter(Boolean).length;
   }
 

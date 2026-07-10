@@ -120,6 +120,23 @@
     // Comparar respuestas según tipo
     compareAnswers: function(userAnswer, correctAnswer, questionType) {
       if (!userAnswer) return false;
+
+      var norm = window.SunePlayNormalize;
+      function normalizedSentenceMatch(given, expected) {
+        if (norm && norm.answersMatch) {
+          return norm.answersMatch(given, expected);
+        }
+        var givenLower = String(given == null ? '' : given).trim().toLowerCase();
+        return givenLower === String(expected == null ? '' : expected).trim().toLowerCase();
+      }
+      function normalizedIncludes(given, expected) {
+        if (norm && norm.normalizeAnswer) {
+          var givenNorm = norm.normalizeAnswer(given);
+          var expectedNorm = norm.normalizeAnswer(expected);
+          return givenNorm.indexOf(expectedNorm) !== -1;
+        }
+        return String(given == null ? '' : given).toLowerCase().indexOf(String(expected).toLowerCase()) !== -1;
+      }
       
       switch(questionType) {
         case 'open-cloze':
@@ -127,38 +144,39 @@
         case 'sentence-completion': {
           var ua = String(userAnswer == null ? '' : userAnswer).trim();
           if (!ua) return false;
-          var uaLower = ua.toLowerCase();
-          function sentenceCompletionMatch(ans) {
-            return uaLower === String(ans == null ? '' : ans).trim().toLowerCase();
-          }
           if (Array.isArray(correctAnswer)) {
-            return correctAnswer.some(sentenceCompletionMatch);
+            return correctAnswer.some(function(ans) {
+              return normalizedSentenceMatch(ua, ans);
+            });
           }
           var ca = String(correctAnswer == null ? '' : correctAnswer);
           if (ca.indexOf('/') !== -1) {
             return ca.split('/').some(function(ans) {
-              return sentenceCompletionMatch(ans);
+              return normalizedSentenceMatch(ua, ans);
             });
           }
-          return sentenceCompletionMatch(ca);
+          return normalizedSentenceMatch(ua, ca);
         }
           
         case 'transformations': {
           var ut = String(userAnswer == null ? '' : userAnswer);
           if (Array.isArray(correctAnswer)) {
             return correctAnswer.some(function(ans) {
-              return ut.toLowerCase().includes(String(ans).toLowerCase());
+              return normalizedIncludes(ut, ans);
             });
           }
           if (typeof correctAnswer === 'string' && correctAnswer.includes('/')) {
             return correctAnswer.split('/').some(function(ans) {
-              return ut.toLowerCase().includes(ans.trim().toLowerCase());
+              return normalizedIncludes(ut, ans);
             });
           }
-          return ut.toLowerCase().includes(String(correctAnswer).toLowerCase());
+          return normalizedIncludes(ut, correctAnswer);
         }
           
         default:
+          if (norm && norm.answersMatch) {
+            return norm.answersMatch(userAnswer, correctAnswer);
+          }
           return userAnswer === correctAnswer;
       }
     },

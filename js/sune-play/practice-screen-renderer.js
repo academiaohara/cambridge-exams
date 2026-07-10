@@ -2353,11 +2353,14 @@
     return fixed;
   }
 
+  var TOKEN_APOSTROPHE_RE = /[\u2018\u2019\u201a\u201b`´]/g;
+
   function tokenizeAnswerSentence(sentence) {
     var tokens = [];
+    var normalized = String(sentence || '').replace(TOKEN_APOSTROPHE_RE, "'");
     var re = /[A-Za-z]+(?:'[A-Za-z]+)?|[.,!?;:]+/g;
     var m;
-    while ((m = re.exec(String(sentence || ''))) !== null) {
+    while ((m = re.exec(normalized)) !== null) {
       tokens.push(m[0]);
     }
     return tokens;
