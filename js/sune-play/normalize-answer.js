@@ -48,6 +48,9 @@
     ["what's", 'what is'],
     ["who's", 'who is'],
     ["where's", 'where is'],
+    ["when's", 'when is'],
+    ["why's", 'why is'],
+    ["how's", 'how is'],
     ["i'll", 'i will'],
     ["you'll", 'you will'],
     ["he'll", 'he will'],
@@ -55,20 +58,79 @@
     ["it'll", 'it will'],
     ["we'll", 'we will'],
     ["they'll", 'they will'],
+    ["that'll", 'that will'],
+    ["there'll", 'there will'],
+    ["who'll", 'who will'],
     ["i'd", 'i would'],
     ["you'd", 'you would'],
     ["he'd", 'he would'],
     ["she'd", 'she would'],
     ["we'd", 'we would'],
-    ["they'd", 'they would']
+    ["they'd", 'they would'],
+    ["it'd", 'it would'],
+    ["that'd", 'that would'],
+    ["there'd", 'there would'],
+    ["who'd", 'who would']
   ];
 
-  var IS_HAS_SUBJECTS = ['he', 'she', 'it', 'that', 'there'];
-  var WOULD_HAD_SUBJECTS = ['i', 'you', 'he', 'she', 'we', 'they'];
+  var SPECIAL_CONTRACTIONS = [
+    ["let's", 'let us'],
+    ["lets", 'let us'],
+    ["ain't", 'am not'],
+    ["'cause", 'because'],
+    ['cause', 'because'],
+    ["'em", 'them'],
+    ["y'all", 'you all'],
+    ["yall", 'you all'],
+    ["ma'am", 'madam'],
+    ["o'clock", "o'clock"],
+    ["ne'er", 'never'],
+    ["e'er", 'ever'],
+    ["o'er", 'over']
+  ];
+
+  var IS_HAS_SUBJECTS = ['he', 'she', 'it', 'that', 'there', 'this'];
+  var WOULD_HAD_SUBJECTS = ['i', 'you', 'he', 'she', 'we', 'they', 'it', 'that', 'there', 'who'];
+  var GENERIC_S_SUBJECTS = IS_HAS_SUBJECTS.concat([
+    'i', 'you', 'we', 'they', 'who', 'what', 'where', 'when', 'why', 'how', 'here', 'that', 'this'
+  ]);
+  var GENERIC_AUX_SUBJECTS = ['i', 'you', 'he', 'she', 'it', 'we', 'they', 'who', 'what', 'where', 'when', 'why', 'how', 'here', 'there', 'that', 'this'];
 
   function replaceWordContraction(text, contraction, expanded) {
     var escaped = contraction.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     return text.replace(new RegExp('\\b' + escaped + '\\b', 'gi'), expanded);
+  }
+
+  function replaceSubjectSuffixContraction(text, subjects, suffix, expandedSuffix) {
+    var out = text;
+    subjects.forEach(function(subj) {
+      var escaped = subj.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      var suffixEscaped = suffix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      out = out.replace(
+        new RegExp('\\b' + escaped + suffixEscaped + '\\b', 'gi'),
+        subj + ' ' + expandedSuffix
+      );
+    });
+    return out;
+  }
+
+  function normalizeExpandedNegativePhrases(s) {
+    return s
+      .replace(/\bcan\s+not\b/gi, 'cannot')
+      .replace(/\bwon\s+not\b/gi, 'will not')
+      .replace(/\bshan\s+not\b/gi, 'shall not');
+  }
+
+  function expandGenericContractions(s) {
+    var out = s;
+    out = out.replace(/\b(\w+)n't\b/gi, '$1 not');
+    out = replaceSubjectSuffixContraction(out, GENERIC_AUX_SUBJECTS, "'ve", 'have');
+    out = replaceSubjectSuffixContraction(out, GENERIC_AUX_SUBJECTS, "'re", 'are');
+    out = replaceSubjectSuffixContraction(out, GENERIC_AUX_SUBJECTS, "'ll", 'will');
+    out = replaceSubjectSuffixContraction(out, GENERIC_AUX_SUBJECTS, "'d", 'would');
+    out = replaceSubjectSuffixContraction(out, GENERIC_AUX_SUBJECTS, "'m", 'am');
+    out = replaceSubjectSuffixContraction(out, GENERIC_S_SUBJECTS, "'s", 'is');
+    return out;
   }
 
   function normalizeContractions(s) {
@@ -79,12 +141,17 @@
     PRONOUN_AUX_CONTRACTIONS.forEach(function(pair) {
       out = replaceWordContraction(out, pair[0], pair[1]);
     });
+    SPECIAL_CONTRACTIONS.forEach(function(pair) {
+      out = replaceWordContraction(out, pair[0], pair[1]);
+    });
+    out = expandGenericContractions(out);
     out = out.replace(/^'m\b/i, 'am');
     out = out.replace(/^'re\b/i, 'are');
     out = out.replace(/^'ve\b/i, 'have');
     out = out.replace(/^'s\b/i, 'is');
     out = out.replace(/^'ll\b/i, 'will');
     out = out.replace(/^'d\b/i, 'would');
+    out = normalizeExpandedNegativePhrases(out);
     return out;
   }
 
@@ -107,25 +174,29 @@
       swapPhraseVariants(variants, subj + ' would', subj + ' had');
       swapPhraseVariants(variants, subj + ' had', subj + ' would');
     });
+    swapPhraseVariants(variants, 'am not', 'is not');
+    swapPhraseVariants(variants, 'is not', 'are not');
+    swapPhraseVariants(variants, 'are not', 'am not');
     return variants;
   }
 
-  function normalizeAnswer(answer) {
+  function prepareAnswerString(answer) {
     if (answer == null) return '';
     var s = String(answer);
     s = s.replace(APOSTROPHE_RE, "'");
     s = s.replace(/\s+/g, ' ').trim();
     s = s.replace(/\s*\.\s*$/, '');
+    return s;
+  }
+
+  function normalizeAnswer(answer) {
+    var s = prepareAnswerString(answer);
     s = normalizeContractions(s);
     return s.toLowerCase();
   }
 
   function normalizeAnswerPreserveCase(answer) {
-    if (answer == null) return '';
-    var s = String(answer);
-    s = s.replace(APOSTROPHE_RE, "'");
-    s = s.replace(/\s+/g, ' ').trim();
-    s = s.replace(/\s*\.\s*$/, '');
+    var s = prepareAnswerString(answer);
     return normalizeContractions(s);
   }
 
@@ -168,12 +239,9 @@
 
   function normalizeCommaRewrite(answer) {
     if (answer == null) return '';
-    var s = String(answer);
-    s = s.replace(APOSTROPHE_RE, "'");
-    s = s.replace(/\s+/g, ' ').trim();
+    var s = prepareAnswerString(answer);
     s = s.replace(/\s*,\s*/g, ', ');
     s = s.replace(/\s+/g, ' ').trim();
-    s = s.replace(/\s*\.\s*$/, '');
     s = normalizeContractions(s);
     return s.toLowerCase();
   }
