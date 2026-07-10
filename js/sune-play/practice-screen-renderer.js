@@ -2778,7 +2778,7 @@
 
   function renderConjugationSegmentHtml(seg) {
     if (seg.type === 'fixed') {
-      return '<span class="sp-sentence-chip">' + esc(seg.text) + '</span>';
+      return formatSentenceText(seg.text) + ' ';
     }
     return buildInlineGapField(seg.baseVerb, seg.gapIdx);
   }
