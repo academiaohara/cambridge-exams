@@ -2701,6 +2701,76 @@
     }, '');
   }
 
+  function skipLeadingFixedTokens(tokens, startIdx, fixedWordSet) {
+    var idx = startIdx;
+    while (idx < tokens.length) {
+      var tok = tokens[idx];
+      if (/^[.,!?;:]+$/.test(tok)) {
+        idx++;
+        continue;
+      }
+      if (!fixedWordSet[normScaffoldWord(tok)] || isVerbPhraseModifierToken(tok)) break;
+      idx++;
+    }
+    return idx;
+  }
+
+  function extractVerbGapParts(tokens, startIdx, fixedWordSet) {
+    var parts = [];
+    var current = [];
+    var idx = startIdx;
+    while (idx < tokens.length) {
+      var tok = tokens[idx];
+      if (/^[.,!?;:]+$/.test(tok)) {
+        current.push(tok);
+        idx++;
+        continue;
+      }
+      if (fixedWordSet[normScaffoldWord(tok)]) {
+        if (isVerbPhraseModifierToken(tok)) {
+          if (current.length) {
+            parts.push(joinScaffoldTokens(current));
+            current = [];
+          }
+          idx++;
+          continue;
+        }
+        break;
+      }
+      current.push(tok);
+      idx++;
+    }
+    if (current.length) parts.push(joinScaffoldTokens(current));
+    return { parts: parts.length ? parts : [''], endIdx: idx };
+  }
+
+  function assignGapVerbMetadata(segments, verbCues, answer, fixedWordSet) {
+    var tokens = tokenizeAnswerSentence(answer);
+    var tokenIdx = 0;
+    var verbIdx = 0;
+    var gapInVerb = 0;
+    var gapsPerVerb = [];
+
+    verbCues.forEach(function() {
+      tokenIdx = skipLeadingFixedTokens(tokens, tokenIdx, fixedWordSet);
+      var extracted = extractVerbGapParts(tokens, tokenIdx, fixedWordSet);
+      gapsPerVerb.push(Math.max(1, extracted.parts.length));
+      tokenIdx = extracted.endIdx;
+    });
+
+    segments.forEach(function(seg) {
+      if (seg.type !== 'gap') return;
+      var gapsForVerb = gapsPerVerb[verbIdx] || 1;
+      seg.baseVerb = verbCues[verbIdx] || '';
+      seg.showVerbTile = gapInVerb === gapsForVerb - 1;
+      gapInVerb++;
+      if (gapInVerb >= gapsForVerb) {
+        verbIdx++;
+        gapInVerb = 0;
+      }
+    });
+  }
+
   function buildConjugationScaffold(payload) {
     var cues = getFullSentenceCues(payload);
     var answer = (payload.acceptedAnswers && payload.acceptedAnswers[0]) || payload.answer || '';
@@ -2721,7 +2791,6 @@
       if (!conjRun.length) return;
       segments.push({
         type: 'gap',
-        baseVerb: verbCues[gapCount] || '',
         gapIdx: gapCount,
         expectedText: joinScaffoldTokens(conjRun)
       });
@@ -2741,13 +2810,7 @@
         return;
       }
 
-      var nw = normScaffoldWord(tok);
-      var isFixedWord = !!fixedWordSet[nw];
-      if (isFixedWord && isVerbPhraseModifierToken(tok) && conjRun.length) {
-        conjRun.push(tok);
-        return;
-      }
-      if (isFixedWord) {
+      if (fixedWordSet[normScaffoldWord(tok)]) {
         flushConjRun();
         segments.push({ type: 'fixed', text: tok });
         return;
@@ -2757,6 +2820,7 @@
     flushConjRun();
 
     if (!segments.some(function(seg) { return seg.type === 'gap'; })) return null;
+    assignGapVerbMetadata(segments, verbCues, answer, fixedWordSet);
     return { segments: segments, answer: answer, cues: cues, verbCues: verbCues };
   }
 
@@ -2778,9 +2842,9 @@
 
   function renderConjugationSegmentHtml(seg) {
     if (seg.type === 'fixed') {
-      return '<span class="sp-sentence-chip">' + esc(seg.text) + '</span>';
+      return formatSentenceText(seg.text) + ' ';
     }
-    return buildInlineGapField(seg.baseVerb, seg.gapIdx);
+    return buildInlineGapField(seg.showVerbTile ? seg.baseVerb : '', seg.gapIdx);
   }
 
   function renderFullSentenceConjugation(screen, scaffold) {
