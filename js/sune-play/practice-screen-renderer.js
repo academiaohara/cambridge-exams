@@ -1288,9 +1288,10 @@
   }
 
   function renderOptionBtn(opt, index) {
+    var display = norm.stripChoiceOptionPrefix ? norm.stripChoiceOptionPrefix(opt) : opt;
     return '<button type="button" class="sp-option-btn" data-value="' + esc(opt) + '">' +
       '<span class="sp-option-num">' + (index + 1) + '</span>' +
-      '<span class="sp-option-label">' + esc(opt) + '</span>' +
+      '<span class="sp-option-label">' + esc(display) + '</span>' +
     '</button>';
   }
 
@@ -1311,14 +1312,20 @@
 
   function renderTwoOption(screen) {
     var p = screen.payload || {};
-    var html = '<div class="sp-screen sp-screen--choice" data-format="two_option_choice">';
-    html += '<div class="sp-prompt-row sp-prompt-row--choice">';
-    html += '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
-      esc(p.sentenceBefore) +
-      ' <span class="sp-gap-anchor">' +
-        '<span class="sp-gap-slot" id="sp-choice-slot"></span>' +
-      '</span> ' +
-      esc(p.sentenceAfter) + '</p>';
+    var sameMeaning = norm.isSameMeaningChoicePayload && norm.isSameMeaningChoicePayload(p);
+    var html = '<div class="sp-screen sp-screen--choice' + (sameMeaning ? ' sp-screen--same-meaning' : '') + '" data-format="two_option_choice">';
+    html += '<div class="sp-prompt-row' + (sameMeaning ? '' : ' sp-prompt-row--choice') + '">';
+    if (sameMeaning) {
+      html += '<p class="sp-meaning-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
+        esc(p.sentenceBefore) + '</p>';
+    } else {
+      html += '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
+        esc(p.sentenceBefore) +
+        ' <span class="sp-gap-anchor">' +
+          '<span class="sp-gap-slot" id="sp-choice-slot"></span>' +
+        '</span> ' +
+        esc(p.sentenceAfter) + '</p>';
+    }
     html += '</div>';
     html += '<div class="sp-option-grid">';
     (p.options || []).forEach(function(opt, i) {
@@ -3329,7 +3336,11 @@
 
     if (format === 'two_option_choice') {
       var payload = screen.payload || {};
+      var sameMeaningChoice = norm.isSameMeaningChoicePayload && norm.isSameMeaningChoicePayload(payload);
       bindSentenceSpeak(root, function() {
+        if (sameMeaningChoice) {
+          return String(payload.sentenceBefore || '').trim();
+        }
         return buildGapSentence(payload.sentenceBefore, getSelectedChoiceText(root), payload.sentenceAfter);
       });
       root.querySelectorAll('.sp-option-btn').forEach(function(btn) {
@@ -3338,10 +3349,12 @@
           root.querySelectorAll('.sp-option-btn').forEach(function(b) { b.classList.remove('sp-option-btn--selected'); });
           btn.classList.add('sp-option-btn--selected');
           var optText = btn.getAttribute('data-value') || '';
-          setChoiceSlotContent(root, optText);
+          if (!sameMeaningChoice) {
+            setChoiceSlotContent(root, optText);
+          }
           onChange();
           if (!optText) return;
-          speakText(optText);
+          speakText(norm.stripChoiceOptionPrefix ? norm.stripChoiceOptionPrefix(optText) : optText);
         });
       });
     }
@@ -4239,9 +4252,13 @@
       case 'meaning_contrast': {
         var sel = root.querySelector('.sp-option-btn--selected');
         var val = sel ? sel.getAttribute('data-value') : '';
-        result.userAnswer = val;
-        result.correctAnswer = p.answer;
-        result.correct = norm.answersMatch(val, p.answer);
+        result.userAnswer = norm.stripChoiceOptionPrefix ? norm.stripChoiceOptionPrefix(val) : val;
+        result.correctAnswer = norm.getChoiceCorrectAnswerDisplay
+          ? norm.getChoiceCorrectAnswerDisplay(p)
+          : p.answer;
+        result.correct = norm.choiceSelectionMatches
+          ? norm.choiceSelectionMatches(val, p)
+          : norm.answersMatch(val, p.answer);
         result.lifeLoss = result.correct ? 0 : 1;
         break;
       }

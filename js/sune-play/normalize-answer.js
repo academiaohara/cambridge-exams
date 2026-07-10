@@ -326,6 +326,63 @@
     });
   }
 
+  var CHOICE_OPTION_LETTER_RE = /^([AB])\s*:\s*(.*)$/i;
+
+  function stripChoiceOptionPrefix(option) {
+    var raw = String(option == null ? '' : option).trim();
+    var match = raw.match(CHOICE_OPTION_LETTER_RE);
+    return match ? match[2].trim() : raw;
+  }
+
+  function getChoiceOptionLetter(option) {
+    var match = String(option == null ? '' : option).trim().match(CHOICE_OPTION_LETTER_RE);
+    return match ? match[1].toUpperCase() : '';
+  }
+
+  function isSameMeaningChoicePayload(payload) {
+    if (!payload) return false;
+    if (payload.displayMode === 'same_meaning') return true;
+    var before = String(payload.sentenceBefore || '').trim();
+    var after = String(payload.sentenceAfter || '').trim();
+    if (after || !before || /\*\*|_{2,}|\.{3,}|…{2,}/.test(before)) return false;
+    if ((payload.options || []).some(function(opt) {
+      return !!getChoiceOptionLetter(opt);
+    })) {
+      return true;
+    }
+    return (payload.options || []).length === 2;
+  }
+
+  function choiceSelectionMatches(selectedValue, payload) {
+    if (!selectedValue || !payload || payload.answer == null) return false;
+    var answerStr = String(payload.answer).trim();
+    if (/^[AB]$/i.test(answerStr)) {
+      var selectedLetter = getChoiceOptionLetter(selectedValue);
+      if (selectedLetter) return selectedLetter === answerStr.toUpperCase();
+      var answerIndex = answerStr.toUpperCase() === 'A' ? 0 : 1;
+      var expectedOption = (payload.options || [])[answerIndex];
+      if (expectedOption != null) {
+        return answersMatch(selectedValue, expectedOption);
+      }
+    }
+    return answersMatch(selectedValue, payload.answer);
+  }
+
+  function getChoiceCorrectAnswerDisplay(payload) {
+    if (!payload || payload.answer == null) return '';
+    var answerStr = String(payload.answer).trim();
+    if (/^[AB]$/i.test(answerStr)) {
+      var match = (payload.options || []).find(function(opt) {
+        return getChoiceOptionLetter(opt) === answerStr.toUpperCase();
+      });
+      if (match) return stripChoiceOptionPrefix(match);
+      var answerIndex = answerStr.toUpperCase() === 'A' ? 0 : 1;
+      var option = (payload.options || [])[answerIndex];
+      if (option != null) return stripChoiceOptionPrefix(option);
+    }
+    return stripChoiceOptionPrefix(answerStr);
+  }
+
   window.SunePlayNormalize = {
     normalizeAnswer: normalizeAnswer,
     normalizeAnswerPreserveCase: normalizeAnswerPreserveCase,
@@ -336,6 +393,11 @@
     matchesCommaRewrite: matchesCommaRewrite,
     wordSetsMatch: wordSetsMatch,
     matchesPassageGaps: matchesPassageGaps,
-    matchesBlanks: matchesBlanks
+    matchesBlanks: matchesBlanks,
+    stripChoiceOptionPrefix: stripChoiceOptionPrefix,
+    getChoiceOptionLetter: getChoiceOptionLetter,
+    isSameMeaningChoicePayload: isSameMeaningChoicePayload,
+    choiceSelectionMatches: choiceSelectionMatches,
+    getChoiceCorrectAnswerDisplay: getChoiceCorrectAnswerDisplay
   };
 })();

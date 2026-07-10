@@ -489,8 +489,8 @@
         "exerciseType": "two_option_choice",
         "exerciseTypeName": "B: Choose the sentence with the same meaning",
         "title": "B: Choose the sentence with the same meaning",
-        "instructions": "Choose the sentence (A or B) which means the same as the first sentence.",
-        "studentInstruction": "Choose the sentence (A or B) which means the same as the first sentence.",
+        "instructions": "Choose the option that means the same.",
+        "studentInstruction": "Choose the option that means the same.",
         "legacyKey": "B",
         "legacyPattern": "same-meaning-ab",
         "interaction": {
@@ -504,8 +504,8 @@
             "sentenceBefore": "We had cleaned the kitchen when Mum came home.",
             "sentenceAfter": "",
             "options": [
-              "A: Mum came home and then we cleaned the kitchen.",
-              "B: We cleaned the kitchen and then Mum came home."
+              "Mum came home and then we cleaned the kitchen.",
+              "We cleaned the kitchen and then Mum came home."
             ],
             "answer": "B",
             "originalSentence": "We had cleaned the kitchen when Mum came home."
@@ -517,8 +517,8 @@
             "sentenceBefore": "I called Sam after I had finished my project.",
             "sentenceAfter": "",
             "options": [
-              "A: I finished my project and then I called Sam.",
-              "B: I called Sam and then I finished my project."
+              "I finished my project and then I called Sam.",
+              "I called Sam and then I finished my project."
             ],
             "answer": "A",
             "originalSentence": "I called Sam after I had finished my project."
@@ -530,8 +530,8 @@
             "sentenceBefore": "By the time the film started, we'd bought popcorn.",
             "sentenceAfter": "",
             "options": [
-              "A: We bought popcorn before the film started.",
-              "B: We bought popcorn after the film started."
+              "We bought popcorn before the film started.",
+              "We bought popcorn after the film started."
             ],
             "answer": "A",
             "originalSentence": "By the time the film started, we'd bought popcorn."
@@ -543,8 +543,8 @@
             "sentenceBefore": "Lily didn't leave until her brother had arrived.",
             "sentenceAfter": "",
             "options": [
-              "A: Lily left before her brother arrived.",
-              "B: Her brother arrived and then Lily left."
+              "Lily left before her brother arrived.",
+              "Her brother arrived and then Lily left."
             ],
             "answer": "B",
             "originalSentence": "Lily didn't leave until her brother had arrived."
@@ -556,8 +556,8 @@
             "sentenceBefore": "The teacher hadn't marked the tests by Friday.",
             "sentenceAfter": "",
             "options": [
-              "A: The tests were still unmarked on Friday.",
-              "B: The teacher marked the tests before Friday."
+              "The tests were still unmarked on Friday.",
+              "The teacher marked the tests before Friday."
             ],
             "answer": "A",
             "originalSentence": "The teacher hadn't marked the tests by Friday."
@@ -569,8 +569,8 @@
             "sentenceBefore": "They had sold the bike before I phoned about it.",
             "sentenceAfter": "",
             "options": [
-              "A: They sold the bike and later I phoned.",
-              "B: I phoned and then they sold the bike."
+              "They sold the bike and later I phoned.",
+              "I phoned and then they sold the bike."
             ],
             "answer": "A",
             "originalSentence": "They had sold the bike before I phoned about it."
@@ -582,8 +582,8 @@
             "sentenceBefore": "Dad had cooked dinner when we arrived.",
             "sentenceAfter": "",
             "options": [
-              "A: We arrived and then Dad cooked dinner.",
-              "B: Dad cooked dinner and then we arrived."
+              "We arrived and then Dad cooked dinner.",
+              "Dad cooked dinner and then we arrived."
             ],
             "answer": "B",
             "originalSentence": "Dad had cooked dinner when we arrived."
