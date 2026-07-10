@@ -1531,12 +1531,18 @@ button.sp-vocab-word-card:focus-visible {
   max-width: 100%;
   min-width: 0;
   min-height: 0;
-  flex: 1;
-  max-height: min(52vh, 420px);
+  flex: 1 1 auto;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+}
+
+.sp-passage-gap-scroll .sp-passage-card {
+  flex: 1 1 auto;
+  min-height: 100%;
 }
 
 .sp-passage-wordbank {
@@ -1577,6 +1583,62 @@ button.sp-vocab-word-card:focus-visible {
 
 .sp-passage-para:last-child {
   margin-bottom: 0;
+}
+
+.sp-passage-dialogue {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.sp-dialogue-bubble {
+  display: flex;
+  flex-direction: column;
+  max-width: min(88%, 520px);
+}
+
+.sp-dialogue-bubble--left {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.sp-dialogue-bubble--right {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.sp-dialogue-speaker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--sp-duo-blue-dark);
+  margin-bottom: 3px;
+  padding: 0 6px;
+  letter-spacing: 0.02em;
+}
+
+.sp-dialogue-bubble__body {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f4;
+  border-radius: 16px;
+  padding: 10px 14px;
+  line-height: 1.75;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sp-dialogue-bubble--right .sp-dialogue-bubble__body {
+  background: var(--sp-duo-blue-light);
+  border-color: #c8ecff;
+}
+
+.sp-dialogue-bubble--left .sp-dialogue-bubble__body {
+  border-bottom-left-radius: 4px;
+}
+
+.sp-dialogue-bubble--right .sp-dialogue-bubble__body {
+  border-bottom-right-radius: 4px;
 }
 
 .sp-passage-wordbank-chip--selectable {
@@ -1693,6 +1755,12 @@ button.sp-vocab-word-card:focus-visible {
   font-size: inherit;
   line-height: inherit;
   vertical-align: baseline;
+}
+
+.sp-passage-gap-wrap .sp-gap-inline-input.sp-gap-underline-input {
+  max-width: none;
+  min-width: 2ch;
+  text-align: left;
 }
 
 .sp-screen--passage-sequential .sp-passage-gap--correct .sp-gap-inline-input,
@@ -4556,7 +4624,6 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
   }
 
   .sp-screen--passage-gap .sp-passage-gap-scroll {
-    max-height: min(48vh, 360px);
     margin-top: 10px;
     border-radius: 12px;
   }

@@ -967,6 +967,7 @@
       if (rule.screenMode === 'single_passage_with_gaps') {
         var passageFormat = rule.formatType || 'passage_gap_fill';
         var passagePayload = buildPassageGapFillPayload(exercise);
+        var passageGapCount = (passagePayload.gaps || []).length || 1;
         var passageScreenId = buildScreenId(nodeId, exerciseId, null, passageFormat);
         screens.push(buildScreen(unit, node, passageFormat, passagePayload, {
           screenId: passageScreenId,
@@ -974,7 +975,9 @@
           sourceExerciseId: exerciseId,
           fallbackFormatType: rule.fallbackFormatType,
           formatTypeOverride: passageFormat,
-          maxLifeLossPerScreen: rule.maxLifeLossPerScreen
+          maxLifeLossPerScreen: rule.maxLifeLossPerScreen != null
+            ? rule.maxLifeLossPerScreen
+            : (passagePayload.sequentialGaps ? passageGapCount : 1)
         }));
         return;
       }
