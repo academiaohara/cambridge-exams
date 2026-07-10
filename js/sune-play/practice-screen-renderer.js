@@ -243,14 +243,67 @@
     '</span>';
   }
 
+  var DIALOGUE_SPEAKER_RE = /^[A-Za-z][A-Za-z\s'-]*:\s/;
+
+  function isDialoguePassage(passage) {
+    var lines = String(passage || '').split(/\n+/).filter(function(p) { return p.trim(); });
+    if (lines.length < 2) return false;
+    var speakerLines = lines.filter(function(line) { return DIALOGUE_SPEAKER_RE.test(line.trim()); });
+    return speakerLines.length >= 2;
+  }
+
+  function parseDialogueLine(line) {
+    var m = String(line || '').trim().match(/^([A-Za-z][A-Za-z\s'-]*):\s*(.*)$/);
+    if (!m) return null;
+    return { speaker: m[1].trim(), text: m[2] };
+  }
+
+  function renderPassageGapInnerHtml(text, options) {
+    return formatSentenceText(text)
+      .replace(PASSAGE_GAP_MARK_RE, function(_, num) {
+        return buildPassageGapField(num, options);
+      });
+  }
+
+  function renderDialoguePassageGapHtml(passage, options) {
+    var lines = String(passage || '').split(/\n+/).filter(function(p) { return p.trim(); });
+    var speakerSides = {};
+    var sideToggle = 0;
+
+    return '<div class="sp-passage-dialogue">' + lines.map(function(para) {
+      var parsed = parseDialogueLine(para.trim());
+      var speaker = parsed ? parsed.speaker : '';
+      var text = parsed ? parsed.text : para.trim();
+      var side = 'left';
+
+      if (speaker) {
+        if (speakerSides[speaker] == null) {
+          speakerSides[speaker] = sideToggle % 2 === 0 ? 'left' : 'right';
+          sideToggle++;
+        }
+        side = speakerSides[speaker];
+      }
+
+      var inner = renderPassageGapInnerHtml(text, options);
+      var speakerHtml = speaker
+        ? '<span class="sp-dialogue-speaker">' + esc(speaker) + '</span>'
+        : '';
+
+      return '<div class="sp-dialogue-bubble sp-dialogue-bubble--' + side + '">' +
+        speakerHtml +
+        '<div class="sp-dialogue-bubble__body">' + inner + '</div>' +
+      '</div>';
+    }).join('') + '</div>';
+  }
+
   function renderPassageGapHtml(passage, options) {
     options = options || {};
+    if (isDialoguePassage(passage)) {
+      return renderDialoguePassageGapHtml(passage, options);
+    }
     var paragraphs = String(passage || '').split(/\n+/).filter(function(p) { return p.trim(); });
     return paragraphs.map(function(para) {
-      var inner = formatSentenceText(para.trim())
-        .replace(PASSAGE_GAP_MARK_RE, function(_, num) {
-          return buildPassageGapField(num, options);
-        });
+      var inner = renderPassageGapInnerHtml(para.trim(), options);
       return '<p class="sp-passage-para">' + inner + '</p>';
     }).join('');
   }
@@ -329,7 +382,7 @@
     if (!val && placeholder) {
       minCh = Math.max(minCh, placeholder.length);
     }
-    var len = Math.max(minCh, val.length + 1);
+    var len = Math.max(minCh, val.length + 2);
     input.style.width = len + 'ch';
   }
 
@@ -385,7 +438,8 @@
       inRetryPhase: inRetryPhase,
       retryQueue: saved.retryQueue || [],
       verbCounts: buildPassageGapVerbCounts(gaps),
-      confirmedVerbs: saved.confirmedVerbs || {}
+      confirmedVerbs: saved.confirmedVerbs || {},
+      lifeChargedGaps: saved.lifeChargedGaps || {}
     };
     gaps.forEach(function(gap) {
       var done = completed[gap.gapNumber];
@@ -606,6 +660,7 @@
     wrap.classList.toggle('sp-passage-gap--correct', ok);
     wrap.classList.toggle('sp-passage-gap--incorrect', !ok);
 
+    var chargeLife = false;
     if (ok) {
       state.completed[gapNumber] = {
         answer: given,
@@ -618,6 +673,8 @@
       syncPassageGapStateToScreen(screen, root);
       updatePassageGapWordBank(root);
     } else {
+      chargeLife = !state.lifeChargedGaps[gapNumber];
+      if (chargeLife) state.lifeChargedGaps[gapNumber] = true;
       state.failed[gapNumber] = {
         answer: given,
         verb: verb
@@ -632,7 +689,7 @@
       correct: ok,
       partial: !allComplete,
       allDone: ok && allComplete,
-      lifeLoss: ok ? 0 : 1,
+      lifeLoss: ok ? 0 : (chargeLife ? 1 : 0),
       userAnswer: given,
       correctAnswer: gap.expectedAnswer,
       explanation: p.explanation || '',
