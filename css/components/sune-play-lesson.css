@@ -1970,15 +1970,28 @@ button.sp-example-line.sp-speakable {
   flex: 1;
 }
 
-.sp-cm-right-cell--filled {
+.sp-cm-right-cell--filled,
+.sp-cm-right-cell--locked {
   border-style: solid;
+  border-color: #dce3f0;
+  background: var(--white);
+  padding: 0;
+}
+
+.sp-cm-right-cell .sp-cm-right-item {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.sp-cm-right-cell .sp-cm-right-item:hover:not(:disabled) {
   border-color: transparent;
   background: transparent;
 }
 
-.sp-cm-right-cell--locked {
-  border-color: transparent;
-  background: transparent;
+.sp-cm-right-cell .sp-cm-right-item--locked {
+  font-weight: 700;
+  cursor: default;
 }
 
 .sp-cm-pool-wrap {
@@ -2038,7 +2051,7 @@ button.sp-example-line.sp-speakable {
 }
 
 .sp-cm-left-item--paired,
-.sp-cm-right-item--paired {
+.sp-cm-pool .sp-cm-right-item--paired {
   font-weight: 700;
 }
 
@@ -2068,8 +2081,7 @@ button.sp-example-line.sp-speakable {
   min-width: 0;
 }
 
-.sp-cm-left-item--correct,
-.sp-cm-right-item--correct {
+.sp-cm-left-item--correct {
   border-color: var(--sp-duo-green, #58cc02);
   background: rgba(88, 204, 2, 0.12);
 }
