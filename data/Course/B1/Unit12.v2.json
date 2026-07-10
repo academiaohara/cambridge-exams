@@ -41,39 +41,159 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "Friends and relations",
             "items": [
-              "**apologise** (v)",
-              "**boyfriend** (n)",
-              "**close** (adj)",
-              "**confident** (adj)",
-              "**cool** (adj)",
-              "**couple** (n)",
-              "**decorate** (v)",
-              "**defend** (v)",
-              "**divorced** (adj)",
-              "**flat** (n)",
-              "**generous** (adj)",
-              "**girlfriend** (n)",
-              "**grateful** (adj)",
-              "**guest** (n)",
-              "**independent** (adj)",
-              "**introduce** (v)",
-              "**loving** (adj)",
-              "**loyal** (adj)",
-              "**mood** (n)",
-              "**neighbourhood** (n)",
-              "**ordinary** (adj)",
-              "**patient** (adj)",
-              "**private** (adj)",
-              "**recognise** (v)",
-              "**relation** (n)",
-              "**rent** (v, n)",
-              "**respect** (v, n)",
-              "**single** (adj)",
-              "**stranger** (n)",
-              "**trust** (v, n)"
+              {
+                "word": "apologise",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "boyfriend",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "close",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "confident",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "cool",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "couple",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "decorate",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "defend",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "divorced",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "flat",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "generous",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "girlfriend",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "grateful",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "guest",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "independent",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "introduce",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "loving",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "loyal",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "mood",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "neighbourhood",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "ordinary",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "patient",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "private",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "recognise",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "relation",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "rent",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "respect",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "single",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "stranger",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "trust",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              }
             ]
           }
         ]
@@ -85,7 +205,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Phrasal verbs",
             "items": [
               "**bring up** — take care of a child until he or she becomes an adult",
@@ -107,7 +227,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Prepositional phrases",
             "items": [
               "by yourself",
@@ -119,7 +239,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Adjectives",
             "items": [
               "fond of",
@@ -130,7 +250,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Verbs",
             "items": [
               "admire sb for",
@@ -141,7 +261,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Nouns",
             "items": [
               "an argument (with sb) about",
@@ -157,19 +277,79 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "word_formation",
             "title": "Word families",
             "items": [
-              "**able**: ability, disabled, unable",
-              "**admire**: admiration",
-              "**care**: careful, careless",
-              "**confident**: confidence",
-              "**forgive**: forgave, forgiven, forgiveness",
-              "**honest**: dishonest, honesty",
-              "**introduce**: introduction",
-              "**lie**: liar, lying",
-              "**person**: personality, personal",
-              "**relate**: relative, relation, relationship"
+              {
+                "base": "able",
+                "derivatives": [
+                  "ability",
+                  "disabled",
+                  "unable"
+                ]
+              },
+              {
+                "base": "admire",
+                "derivatives": [
+                  "admiration"
+                ]
+              },
+              {
+                "base": "care",
+                "derivatives": [
+                  "careful",
+                  "careless"
+                ]
+              },
+              {
+                "base": "confident",
+                "derivatives": [
+                  "confidence"
+                ]
+              },
+              {
+                "base": "forgive",
+                "derivatives": [
+                  "forgave",
+                  "forgiven",
+                  "forgiveness"
+                ]
+              },
+              {
+                "base": "honest",
+                "derivatives": [
+                  "dishonest",
+                  "honesty"
+                ]
+              },
+              {
+                "base": "introduce",
+                "derivatives": [
+                  "introduction"
+                ]
+              },
+              {
+                "base": "lie",
+                "derivatives": [
+                  "liar",
+                  "lying"
+                ]
+              },
+              {
+                "base": "person",
+                "derivatives": [
+                  "personality",
+                  "personal"
+                ]
+              },
+              {
+                "base": "relate",
+                "derivatives": [
+                  "relative",
+                  "relation",
+                  "relationship"
+                ]
+              }
             ]
           }
         ]

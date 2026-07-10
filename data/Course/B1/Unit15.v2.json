@@ -41,39 +41,159 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "Buying and selling",
             "items": [
-              "**advertisement** (n)",
-              "**afford** (v)",
-              "**bargain** (n)",
-              "**brand** (n)",
-              "**catalogue** (n)",
-              "**change** (n)",
-              "**coin** (n)",
-              "**cost** (v, n)",
-              "**customer** (n)",
-              "**debt** (n)",
-              "**demand** (v)",
-              "**export** (v)",
-              "**fee** (n)",
-              "**fortune** (n)",
-              "**import** (v)",
-              "**invest** (v)",
-              "**obtain** (v)",
-              "**owe** (v)",
-              "**own** (v)",
-              "**profit** (n)",
-              "**property** (n)",
-              "**purchase** (v, n)",
-              "**receipt** (n)",
-              "**require** (v)",
-              "**sale** (n)",
-              "**save** (v)",
-              "**select** (v)",
-              "**supply** (v, n)",
-              "**variety** (n)",
-              "**waste** (v, n)"
+              {
+                "word": "advertisement",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "afford",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "bargain",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "brand",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "catalogue",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "change",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "coin",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "cost",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "customer",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "debt",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "demand",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "export",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "fee",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "fortune",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "import",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "invest",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "obtain",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "owe",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "own",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "profit",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "property",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "purchase",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "receipt",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "require",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "sale",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "save",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "select",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "supply",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "variety",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "waste",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              }
             ]
           }
         ]
@@ -85,7 +205,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Phrasal verbs",
             "items": [
               "**add up** — find the total of",
@@ -107,7 +227,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Prepositional phrases",
             "items": [
               "by credit card/cheque",
@@ -119,14 +239,14 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Adjectives",
             "items": [
               "wrong about/with"
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Verbs",
             "items": [
               "belong to",
@@ -141,7 +261,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Nouns",
             "items": [
               "an advertisement for"
@@ -156,19 +276,73 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "word_formation",
             "title": "Word families",
             "items": [
-              "**add**: addition",
-              "**afford**: affordable",
-              "**compare**: comparison",
-              "**decide**: decision",
-              "**expense**: (in)expensive",
-              "**judge**: judgement",
-              "**serve**: service, servant",
-              "**true**: truth, untrue, truthful",
-              "**use**: useful, useless",
-              "**value**: valuable"
+              {
+                "base": "add",
+                "derivatives": [
+                  "addition"
+                ]
+              },
+              {
+                "base": "afford",
+                "derivatives": [
+                  "affordable"
+                ]
+              },
+              {
+                "base": "compare",
+                "derivatives": [
+                  "comparison"
+                ]
+              },
+              {
+                "base": "decide",
+                "derivatives": [
+                  "decision"
+                ]
+              },
+              {
+                "base": "expense",
+                "derivatives": [
+                  "(in)expensive"
+                ]
+              },
+              {
+                "base": "judge",
+                "derivatives": [
+                  "judgement"
+                ]
+              },
+              {
+                "base": "serve",
+                "derivatives": [
+                  "service",
+                  "servant"
+                ]
+              },
+              {
+                "base": "true",
+                "derivatives": [
+                  "truth",
+                  "untrue",
+                  "truthful"
+                ]
+              },
+              {
+                "base": "use",
+                "derivatives": [
+                  "useful",
+                  "useless"
+                ]
+              },
+              {
+                "base": "value",
+                "derivatives": [
+                  "valuable"
+                ]
+              }
             ]
           }
         ]

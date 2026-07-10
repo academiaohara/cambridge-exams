@@ -41,39 +41,159 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "Fun and games",
             "items": [
-              "**beat** (v)",
-              "**board game** (n phr)",
-              "**captain** (n)",
-              "**challenge** (v, n)",
-              "**champion** (n)",
-              "**cheat** (v)",
-              "**classical music** (n phr)",
-              "**club** (n)",
-              "**coach** (n)",
-              "**competition** (n)",
-              "**concert** (n)",
-              "**defeat** (v, n)",
-              "**entertaining** (adj)",
-              "**folk music** (n phr)",
-              "**group** (n)",
-              "**gym** (n)",
-              "**have fun** (v phr)",
-              "**interest** (v, n)",
-              "**member** (n)",
-              "**opponent** (n)",
-              "**organise** (v)",
-              "**pleasure** (n)",
-              "**referee** (n)",
-              "**rhythm** (n)",
-              "**risk** (v, n)",
-              "**score** (v, n)",
-              "**support** (v, n)",
-              "**team** (n)",
-              "**train** (v)",
-              "**video game** (n phr)"
+              {
+                "word": "beat",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "board game",
+                "partOfSpeech": "n phr",
+                "variant": ""
+              },
+              {
+                "word": "captain",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "challenge",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "champion",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "cheat",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "classical music",
+                "partOfSpeech": "n phr",
+                "variant": ""
+              },
+              {
+                "word": "club",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "coach",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "competition",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "concert",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "defeat",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "entertaining",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "folk music",
+                "partOfSpeech": "n phr",
+                "variant": ""
+              },
+              {
+                "word": "group",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "gym",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "have fun",
+                "partOfSpeech": "v phr",
+                "variant": ""
+              },
+              {
+                "word": "interest",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "member",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "opponent",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "organise",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "pleasure",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "referee",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "rhythm",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "risk",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "score",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "support",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "team",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "train",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "video game",
+                "partOfSpeech": "n phr",
+                "variant": ""
+              }
             ]
           }
         ]
@@ -85,7 +205,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Phrasal verbs",
             "items": [
               "**carry on** — continue",
@@ -107,7 +227,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Prepositional phrases",
             "items": [
               "for a long time",
@@ -119,7 +239,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Adjectives",
             "items": [
               "bored with",
@@ -131,7 +251,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Verbs",
             "items": [
               "feel like",
@@ -140,7 +260,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Nouns",
             "items": [
               "a book (by sb) about",
@@ -157,19 +277,82 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "word_formation",
             "title": "Word families",
             "items": [
-              "**act**: action, (in)active, actor",
-              "**athlete**: athletic, athletics",
-              "**child**: children, childhood",
-              "**collect**: collection, collector",
-              "**entertain**: entertainment",
-              "**hero**: heroic, heroine",
-              "**music**: musical, musician",
-              "**play**: player, playful",
-              "**sail**: sailing, sailor",
-              "**sing**: sang, sung, song, singer, singing"
+              {
+                "base": "act",
+                "derivatives": [
+                  "action",
+                  "(in)active",
+                  "actor"
+                ]
+              },
+              {
+                "base": "athlete",
+                "derivatives": [
+                  "athletic",
+                  "athletics"
+                ]
+              },
+              {
+                "base": "child",
+                "derivatives": [
+                  "children",
+                  "childhood"
+                ]
+              },
+              {
+                "base": "collect",
+                "derivatives": [
+                  "collection",
+                  "collector"
+                ]
+              },
+              {
+                "base": "entertain",
+                "derivatives": [
+                  "entertainment"
+                ]
+              },
+              {
+                "base": "hero",
+                "derivatives": [
+                  "heroic",
+                  "heroine"
+                ]
+              },
+              {
+                "base": "music",
+                "derivatives": [
+                  "musical",
+                  "musician"
+                ]
+              },
+              {
+                "base": "play",
+                "derivatives": [
+                  "player",
+                  "playful"
+                ]
+              },
+              {
+                "base": "sail",
+                "derivatives": [
+                  "sailing",
+                  "sailor"
+                ]
+              },
+              {
+                "base": "sing",
+                "derivatives": [
+                  "sang",
+                  "sung",
+                  "song",
+                  "singer",
+                  "singing"
+                ]
+              }
             ]
           }
         ]

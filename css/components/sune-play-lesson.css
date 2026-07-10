@@ -457,6 +457,93 @@ button.sp-example-line.sp-speakable {
   color: var(--text-medium);
 }
 
+.sp-vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 8px;
+}
+
+button.sp-vocab-word-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  width: 100%;
+  min-height: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--sp-duo-blue-border);
+  background: var(--bg-light);
+  text-align: left;
+}
+
+button.sp-vocab-word-card:hover,
+button.sp-vocab-word-card:focus-visible {
+  background: var(--sp-duo-blue-light);
+}
+
+.sp-vocab-word {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.sp-vocab-pos {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--text-medium);
+}
+
+.sp-vocab-variant {
+  font-size: 0.72rem;
+  color: var(--text-medium);
+}
+
+.sp-wf-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sp-wf-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--bg-light);
+}
+
+.sp-wf-base {
+  flex-shrink: 0;
+  min-width: 72px;
+  padding-top: 4px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--sp-primary);
+}
+
+.sp-wf-chips {
+  flex: 1;
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .sp-vocab-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .sp-wf-item {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sp-wf-base {
+    min-width: 0;
+    padding-top: 0;
+  }
+}
+
 .sp-compare-grid {
   display: flex;
   flex-direction: column;

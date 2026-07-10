@@ -41,39 +41,159 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "People and daily life",
             "items": [
-              "**admit** (v)",
-              "**arrest** (v)",
-              "**charity** (n)",
-              "**commit** (v)",
-              "**community** (n)",
-              "**court** (n)",
-              "**criminal** (n, adj)",
-              "**culture** (n)",
-              "**familiar** (adj)",
-              "**government** (n)",
-              "**habit** (n)",
-              "**identity card** (n phr)",
-              "**illegal** (adj)",
-              "**politics** (n)",
-              "**population** (n)",
-              "**prison** (n)",
-              "**protest** (v, n)",
-              "**resident** (n)",
-              "**responsible** (adj)",
-              "**rob** (v)",
-              "**routine** (n, adj)",
-              "**schedule** (n)",
-              "**situation** (n)",
-              "**social** (adj)",
-              "**society** (n)",
-              "**steal** (v)",
-              "**tradition** (n)",
-              "**typical** (adj)",
-              "**vote** (v, n)",
-              "**youth club** (n phr)"
+              {
+                "word": "admit",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "arrest",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "charity",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "commit",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "community",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "court",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "criminal",
+                "partOfSpeech": "n, adj",
+                "variant": ""
+              },
+              {
+                "word": "culture",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "familiar",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "government",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "habit",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "identity card",
+                "partOfSpeech": "n phr",
+                "variant": ""
+              },
+              {
+                "word": "illegal",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "politics",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "population",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "prison",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "protest",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "resident",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "responsible",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "rob",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "routine",
+                "partOfSpeech": "n, adj",
+                "variant": ""
+              },
+              {
+                "word": "schedule",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "situation",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "social",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "society",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "steal",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "tradition",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "typical",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "vote",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "youth club",
+                "partOfSpeech": "n phr",
+                "variant": ""
+              }
             ]
           }
         ]
@@ -85,7 +205,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Phrasal verbs",
             "items": [
               "**break in(to)** — enter illegally",
@@ -107,7 +227,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Prepositional phrases",
             "items": [
               "against the law",
@@ -119,7 +239,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Adjectives",
             "items": [
               "angry (with sb) about",
@@ -127,7 +247,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Verbs",
             "items": [
               "accuse sb of",
@@ -151,19 +271,75 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "word_formation",
             "title": "Word families",
             "items": [
-              "**agree**: agreement, disagree",
-              "**belief**: believe, (un)believable",
-              "**courage**: courageous",
-              "**elect**: election",
-              "**equal**: equality, unequal",
-              "**life**: live, alive",
-              "**nation**: nationality, (inter)national",
-              "**peace**: peaceful(ly)",
-              "**prison**: prisoner",
-              "**shoot**: shot, shooting"
+              {
+                "base": "agree",
+                "derivatives": [
+                  "agreement",
+                  "disagree"
+                ]
+              },
+              {
+                "base": "belief",
+                "derivatives": [
+                  "believe",
+                  "(un)believable"
+                ]
+              },
+              {
+                "base": "courage",
+                "derivatives": [
+                  "courageous"
+                ]
+              },
+              {
+                "base": "elect",
+                "derivatives": [
+                  "election"
+                ]
+              },
+              {
+                "base": "equal",
+                "derivatives": [
+                  "equality",
+                  "unequal"
+                ]
+              },
+              {
+                "base": "life",
+                "derivatives": [
+                  "live",
+                  "alive"
+                ]
+              },
+              {
+                "base": "nation",
+                "derivatives": [
+                  "nationality",
+                  "(inter)national"
+                ]
+              },
+              {
+                "base": "peace",
+                "derivatives": [
+                  "peaceful(ly)"
+                ]
+              },
+              {
+                "base": "prison",
+                "derivatives": [
+                  "prisoner"
+                ]
+              },
+              {
+                "base": "shoot",
+                "derivatives": [
+                  "shot",
+                  "shooting"
+                ]
+              }
             ]
           }
         ]

@@ -41,39 +41,159 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "Body and lifestyle",
             "items": [
-              "**affect** (v)",
-              "**balance** (v, n)",
-              "**benefit** (v, n)",
-              "**breathe** (v)",
-              "**chew** (v)",
-              "**chop** (v)",
-              "**contain** (v)",
-              "**cough** (v, n)",
-              "**cure** (v, n)",
-              "**exercise** (v, n)",
-              "**flu** (n)",
-              "**have an operation** (v phr)",
-              "**healthy** (adj)",
-              "**ignore** (v)",
-              "**infection** (n)",
-              "**ingredient** (n)",
-              "**injury** (n)",
-              "**limit** (v, n)",
-              "**meal** (n)",
-              "**pill** (n)",
-              "**recover** (v)",
-              "**salty** (adj)",
-              "**slice** (v, n)",
-              "**sour** (adj)",
-              "**spicy** (adj)",
-              "**stir** (v)",
-              "**suffer** (v)",
-              "**taste** (v, n)",
-              "**treatment** (n)",
-              "**vitamin** (n)"
+              {
+                "word": "affect",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "balance",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "benefit",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "breathe",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "chew",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "chop",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "contain",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "cough",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "cure",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "exercise",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "flu",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "have an operation",
+                "partOfSpeech": "v phr",
+                "variant": ""
+              },
+              {
+                "word": "healthy",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "ignore",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "infection",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "ingredient",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "injury",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "limit",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "meal",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "pill",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "recover",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "salty",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "slice",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "sour",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "spicy",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "stir",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "suffer",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "taste",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "treatment",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "vitamin",
+                "partOfSpeech": "n",
+                "variant": ""
+              }
             ]
           }
         ]
@@ -85,7 +205,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Phrasal verbs",
             "items": [
               "**cut down (on)** — do less of sth (smoking, etc)",
@@ -107,7 +227,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Prepositional phrases",
             "items": [
               "at night",
@@ -119,7 +239,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Adjectives",
             "items": [
               "addicted to",
@@ -129,7 +249,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Verbs",
             "items": [
               "combine sth with",
@@ -141,7 +261,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Nouns",
             "items": [
               "a cure for",
@@ -157,19 +277,75 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "word_formation",
             "title": "Word families",
             "items": [
-              "**bake**: baker, bakery",
-              "**bend**: bent",
-              "**cook**: cooker, cookery",
-              "**intend**: intention, intentional",
-              "**jog**: jogging, jogger",
-              "**medicine**: medical",
-              "**pain**: painful, painless",
-              "**reduce**: reduction",
-              "**sense**: sensible, sensitive",
-              "**weigh**: weight"
+              {
+                "base": "bake",
+                "derivatives": [
+                  "baker",
+                  "bakery"
+                ]
+              },
+              {
+                "base": "bend",
+                "derivatives": [
+                  "bent"
+                ]
+              },
+              {
+                "base": "cook",
+                "derivatives": [
+                  "cooker",
+                  "cookery"
+                ]
+              },
+              {
+                "base": "intend",
+                "derivatives": [
+                  "intention",
+                  "intentional"
+                ]
+              },
+              {
+                "base": "jog",
+                "derivatives": [
+                  "jogging",
+                  "jogger"
+                ]
+              },
+              {
+                "base": "medicine",
+                "derivatives": [
+                  "medical"
+                ]
+              },
+              {
+                "base": "pain",
+                "derivatives": [
+                  "painful",
+                  "painless"
+                ]
+              },
+              {
+                "base": "reduce",
+                "derivatives": [
+                  "reduction"
+                ]
+              },
+              {
+                "base": "sense",
+                "derivatives": [
+                  "sensible",
+                  "sensitive"
+                ]
+              },
+              {
+                "base": "weigh",
+                "derivatives": [
+                  "weight"
+                ]
+              }
             ]
           }
         ]

@@ -41,39 +41,159 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "Sending and receiving",
             "items": [
-              "**accent** (n)",
-              "**announcement** (n)",
-              "**broadcast** (v, n)",
-              "**channel** (n)",
-              "**clear** (adj)",
-              "**click** (v)",
-              "**contact** (v, n)",
-              "**file** (n)",
-              "**formal** (adj)",
-              "**image** (n)",
-              "**informal** (adj)",
-              "**Internet** (n)",
-              "**interrupt** (v)",
-              "**link** (v, n)",
-              "**media** (n)",
-              "**mobile phone** (n phr)",
-              "**online** (adj, adv)",
-              "**pause** (v, n)",
-              "**persuade** (v)",
-              "**pronounce** (v)",
-              "**publish** (v)",
-              "**report** (v, n)",
-              "**request** (v, n)",
-              "**ring** (v)",
-              "**signal** (n)",
-              "**swear** (v)",
-              "**type** (v)",
-              "**viewer** (n)",
-              "**website** (n)",
-              "**whisper** (v, n)"
+              {
+                "word": "accent",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "announcement",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "broadcast",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "channel",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "clear",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "click",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "contact",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "file",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "formal",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "image",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "informal",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "Internet",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "interrupt",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "link",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "media",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "mobile phone",
+                "partOfSpeech": "n phr",
+                "variant": ""
+              },
+              {
+                "word": "online",
+                "partOfSpeech": "adj, adv",
+                "variant": ""
+              },
+              {
+                "word": "pause",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "persuade",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "pronounce",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "publish",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "report",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "request",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "ring",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "signal",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "swear",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "type",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "viewer",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "website",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "whisper",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              }
             ]
           }
         ]
@@ -85,7 +205,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Phrasal verbs",
             "items": [
               "**call back** — ring again on the phone",
@@ -107,7 +227,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Prepositional phrases",
             "items": [
               "by e-mail/phone/letter",
@@ -119,7 +239,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Verbs",
             "items": [
               "comment on",
@@ -135,7 +255,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "Nouns",
             "items": [
               "information about",
@@ -151,19 +271,79 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "word_formation",
             "title": "Word families",
             "items": [
-              "**certain**: certainly, certainty",
-              "**communicate**: communication",
-              "**connect**: connection, disconnect",
-              "**deliver**: delivery",
-              "**express**: expression, expressive",
-              "**inform**: informative, information",
-              "**predict**: prediction, (un)predictable",
-              "**secret**: secretly, secrecy",
-              "**speak**: spoke, spoken, speaker, speech",
-              "**translate**: translation, translator"
+              {
+                "base": "certain",
+                "derivatives": [
+                  "certainly",
+                  "certainty"
+                ]
+              },
+              {
+                "base": "communicate",
+                "derivatives": [
+                  "communication"
+                ]
+              },
+              {
+                "base": "connect",
+                "derivatives": [
+                  "connection",
+                  "disconnect"
+                ]
+              },
+              {
+                "base": "deliver",
+                "derivatives": [
+                  "delivery"
+                ]
+              },
+              {
+                "base": "express",
+                "derivatives": [
+                  "expression",
+                  "expressive"
+                ]
+              },
+              {
+                "base": "inform",
+                "derivatives": [
+                  "informative",
+                  "information"
+                ]
+              },
+              {
+                "base": "predict",
+                "derivatives": [
+                  "prediction",
+                  "(un)predictable"
+                ]
+              },
+              {
+                "base": "secret",
+                "derivatives": [
+                  "secretly",
+                  "secrecy"
+                ]
+              },
+              {
+                "base": "speak",
+                "derivatives": [
+                  "spoke",
+                  "spoken",
+                  "speaker",
+                  "speech"
+                ]
+              },
+              {
+                "base": "translate",
+                "derivatives": [
+                  "translation",
+                  "translator"
+                ]
+              }
             ]
           }
         ]

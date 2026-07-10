@@ -41,75 +41,315 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "thinking",
             "items": [
-              "**assess** (v)",
-              "**assume** (v)",
-              "**baffle** (v)",
-              "**biased** (adj)",
-              "**concentrate** (v)",
-              "**consider** (v)",
-              "**contemplate** (v)",
-              "**cynical** (adj)",
-              "**deduce** (v)",
-              "**deliberate** (v)",
-              "**dilemma** (n)",
-              "**discriminate** (v)",
-              "**dubious** (adj)",
-              "**estimate** (v, n)",
-              "**faith** (n)",
-              "**gather** (v)",
-              "**genius** (n)",
-              "**grasp** (v)",
-              "**guesswork** (n)",
-              "**hunch** (n)",
-              "**ideology** (n)",
-              "**ingenious** (adj)",
-              "**inspiration** (n)",
-              "**intuition** (n)",
-              "**justify** (v)",
-              "**naïve** (adj)",
-              "**notion** (n)",
-              "**optimistic** (adj)",
-              "**paradox** (n)",
-              "**pessimistic** (adj)",
-              "**plausible** (adj)",
-              "**ponder** (v)",
-              "**prejudiced** (adj)",
-              "**presume** (v)",
-              "**query** (v, n)",
-              "**reckon** (v)",
-              "**reflect** (v)",
-              "**sceptical** (adj) (skeptical)",
-              "**speculate** (v)",
-              "**suppose** (v)"
+              {
+                "word": "assess",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "assume",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "baffle",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "biased",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "concentrate",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "consider",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "contemplate",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "cynical",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "deduce",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "deliberate",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "dilemma",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "discriminate",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "dubious",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "estimate",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "faith",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "gather",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "genius",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "grasp",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "guesswork",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "hunch",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "ideology",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "ingenious",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "inspiration",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "intuition",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "justify",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "naïve",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "notion",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "optimistic",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "paradox",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "pessimistic",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "plausible",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "ponder",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "prejudiced",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "presume",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "query",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "reckon",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "reflect",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "sceptical",
+                "partOfSpeech": "adj",
+                "variant": "skeptical"
+              },
+              {
+                "word": "speculate",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "suppose",
+                "partOfSpeech": "v",
+                "variant": ""
+              }
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "vocab_word_grid",
             "title": "learning",
             "items": [
-              "**academic** (n, adj)",
-              "**conscientious** (adj)",
-              "**cram** (v)",
-              "**curriculum** (n)",
-              "**distance learning** (n phr)",
-              "**graduate** (v, n)",
-              "**ignorant** (adj)",
-              "**inattentive** (adj)",
-              "**intellectual** (n, adj)",
-              "**intelligent** (adj)",
-              "**intensive** (adj)",
-              "**knowledgeable** (adj)",
-              "**lecture** (v, n)",
-              "**mock exam** (n phr)",
-              "**plagiarise** (v)",
-              "**self-study** (n)",
-              "**seminar** (n)",
-              "**special needs** (n phr)",
-              "**tuition** (n)",
-              "**tutorial** (n)"
+              {
+                "word": "academic",
+                "partOfSpeech": "n, adj",
+                "variant": ""
+              },
+              {
+                "word": "conscientious",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "cram",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "curriculum",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "distance learning",
+                "partOfSpeech": "n phr",
+                "variant": ""
+              },
+              {
+                "word": "graduate",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "ignorant",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "inattentive",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "intellectual",
+                "partOfSpeech": "n, adj",
+                "variant": ""
+              },
+              {
+                "word": "intelligent",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "intensive",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "knowledgeable",
+                "partOfSpeech": "adj",
+                "variant": ""
+              },
+              {
+                "word": "lecture",
+                "partOfSpeech": "v, n",
+                "variant": ""
+              },
+              {
+                "word": "mock exam",
+                "partOfSpeech": "n phr",
+                "variant": ""
+              },
+              {
+                "word": "plagiarise",
+                "partOfSpeech": "v",
+                "variant": ""
+              },
+              {
+                "word": "self-study",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "seminar",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "special needs",
+                "partOfSpeech": "n phr",
+                "variant": ""
+              },
+              {
+                "word": "tuition",
+                "partOfSpeech": "n",
+                "variant": ""
+              },
+              {
+                "word": "tutorial",
+                "partOfSpeech": "n",
+                "variant": ""
+              }
             ]
           }
         ]
@@ -121,7 +361,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Phrasal verbs",
             "items": [
               "**brush up (on)** — practise and improve your skills or knowledge of something",
@@ -151,7 +391,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "account",
             "items": [
               "account for",
@@ -164,14 +404,14 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "associate",
             "items": [
               "associate with"
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "balance",
             "items": [
               "(hang) in the balance",
@@ -183,7 +423,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "basis",
             "items": [
               "basis for",
@@ -192,7 +432,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "belief",
             "items": [
               "express belief(s)",
@@ -204,7 +444,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "brain",
             "items": [
               "pick sb's brain(s)",
@@ -218,7 +458,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "conclusion",
             "items": [
               "bring sth to a conclusion",
@@ -231,7 +471,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "consideration",
             "items": [
               "take into consideration",
@@ -243,7 +483,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "doubt",
             "items": [
               "doubt that",
@@ -259,7 +499,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "dream",
             "items": [
               "dream of/about/that",
@@ -272,7 +512,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "focus",
             "items": [
               "focus on",
@@ -284,7 +524,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "impression",
             "items": [
               "have/give the (false) impression that",
@@ -295,7 +535,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "mental",
             "items": [
               "make a mental note (of/about)",
@@ -306,7 +546,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "mind",
             "items": [
               "make up your mind",
@@ -322,14 +562,14 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "misapprehension",
             "items": [
               "under the misapprehension that"
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "perspective",
             "items": [
               "put into perspective",
@@ -341,7 +581,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "principle",
             "items": [
               "have principles",
@@ -355,7 +595,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "question",
             "items": [
               "beg the question",
@@ -370,7 +610,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "sense",
             "items": [
               "sense that",
@@ -384,7 +624,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "side",
             "items": [
               "side with sb",
@@ -398,7 +638,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "straight",
             "items": [
               "set/put sb straight about",
@@ -411,7 +651,7 @@
             ]
           },
           {
-            "type": "bullet_list",
+            "type": "chips",
             "title": "view",
             "items": [
               "view sth as",
@@ -435,7 +675,7 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "example_list",
             "title": "Idioms",
             "items": [
               "**go to your head** — if success goes to your head, it makes you think that you are better or more important than you really are",
@@ -461,20 +701,119 @@
         "cardType": "rule_card",
         "sections": [
           {
-            "type": "bullet_list",
+            "type": "word_formation",
             "title": "Word families",
             "items": [
-              "**assume**: assumption, assuming, unassuming, assumed",
-              "**believe**: belief, disbelief, (un)believer, disbelieve, (un)believable, disbelieving, unbelievably",
-              "**brilliant**: brilliance, brilliantly",
-              "**conceive**: concept, conception, conceptualise, conceptual, (in)conceivable, (in)conceivably",
-              "**confuse**: confusion, confused, confusing, confusingly",
-              "**convince**: conviction, (un)convinced, (un)convincing, (un)convincingly",
-              "**decide**: decision, decider, decisiveness, deciding, (in)decisive, (in)decisively",
-              "**define**: definition, defined, definitive, (in)definite, definitively, (in)definitely",
-              "**doubt**: doubter, doubtful, undoubted, doubtfully, undoubtedly, doubtless",
-              "**explain**: explanation, explanatory, unexplained, (in)explicable, inexplicably",
-              "**imagine**: imagination, imaginings, imaginary, (un)imaginative, (un)imaginatively"
+              {
+                "base": "assume",
+                "derivatives": [
+                  "assumption",
+                  "assuming",
+                  "unassuming",
+                  "assumed"
+                ]
+              },
+              {
+                "base": "believe",
+                "derivatives": [
+                  "belief",
+                  "disbelief",
+                  "(un)believer",
+                  "disbelieve",
+                  "(un)believable",
+                  "disbelieving",
+                  "unbelievably"
+                ]
+              },
+              {
+                "base": "brilliant",
+                "derivatives": [
+                  "brilliance",
+                  "brilliantly"
+                ]
+              },
+              {
+                "base": "conceive",
+                "derivatives": [
+                  "concept",
+                  "conception",
+                  "conceptualise",
+                  "conceptual",
+                  "(in)conceivable",
+                  "(in)conceivably"
+                ]
+              },
+              {
+                "base": "confuse",
+                "derivatives": [
+                  "confusion",
+                  "confused",
+                  "confusing",
+                  "confusingly"
+                ]
+              },
+              {
+                "base": "convince",
+                "derivatives": [
+                  "conviction",
+                  "(un)convinced",
+                  "(un)convincing",
+                  "(un)convincingly"
+                ]
+              },
+              {
+                "base": "decide",
+                "derivatives": [
+                  "decision",
+                  "decider",
+                  "decisiveness",
+                  "deciding",
+                  "(in)decisive",
+                  "(in)decisively"
+                ]
+              },
+              {
+                "base": "define",
+                "derivatives": [
+                  "definition",
+                  "defined",
+                  "definitive",
+                  "(in)definite",
+                  "definitively",
+                  "(in)definitely"
+                ]
+              },
+              {
+                "base": "doubt",
+                "derivatives": [
+                  "doubter",
+                  "doubtful",
+                  "undoubted",
+                  "doubtfully",
+                  "undoubtedly",
+                  "doubtless"
+                ]
+              },
+              {
+                "base": "explain",
+                "derivatives": [
+                  "explanation",
+                  "explanatory",
+                  "unexplained",
+                  "(in)explicable",
+                  "inexplicably"
+                ]
+              },
+              {
+                "base": "imagine",
+                "derivatives": [
+                  "imagination",
+                  "imaginings",
+                  "imaginary",
+                  "(un)imaginative",
+                  "(un)imaginatively"
+                ]
+              }
             ]
           }
         ]
