@@ -980,6 +980,11 @@ button.sp-vocab-word-card:focus-visible {
   align-items: center;
 }
 
+.sp-practice-main .sp-exercise-card:has(.sp-screen--sentence-build) {
+  align-items: stretch;
+  max-width: min(100%, 52rem);
+}
+
 .sp-practice-main .sp-exercise-card:has(.sp-screen--passage-gap) {
   overflow: hidden;
   align-items: stretch;
@@ -2748,14 +2753,34 @@ button.sp-vocab-word-card:focus-visible {
   line-height: 1.55;
 }
 
-/* Full-sentence write: cue chips + inline conjugation gap (unit4A style) */
+/* Full-sentence write: inline conjugation scaffold */
 .sp-screen--sentence-build,
 .sp-screen--sentence-rewrite {
   width: 100%;
+  max-width: min(100%, 52rem);
+  --sp-content-max: min(100%, 52rem);
 }
 
-.sp-screen--sentence-build.sp-screen--gap .sp-cue-bank {
-  margin-bottom: 20px;
+.sp-screen--sentence-build .sp-session-instruction {
+  max-width: 100%;
+}
+
+.sp-prompt-row--sentence-build {
+  width: 100%;
+  max-width: 100%;
+}
+
+.sp-screen--sentence-build .sp-sentence-scaffold {
+  width: 100%;
+  max-width: 100%;
+}
+
+.sp-screen--sentence-build .sp-sentence-chip {
+  font-size: var(--sp-text-fluid);
+}
+
+.sp-screen--sentence-build .sp-inline-gap-group {
+  margin: 0 4px;
 }
 
 .sp-cue-bank {

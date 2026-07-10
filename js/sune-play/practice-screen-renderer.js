@@ -708,10 +708,12 @@
   function resizeUnderlineGapInput(input) {
     if (!input) return;
     var val = input.value || '';
-    var placeholder = input.getAttribute('placeholder') || '';
     var minCh = 2;
-    if (!val && placeholder) {
-      minCh = Math.max(minCh, placeholder.length);
+    if (!input.closest('.sp-screen--sentence-build')) {
+      var placeholder = input.getAttribute('placeholder') || '';
+      if (!val && placeholder) {
+        minCh = Math.max(minCh, placeholder.length);
+      }
     }
     var len = Math.max(minCh, val.length + 2);
     input.style.width = len + 'ch';
@@ -2631,7 +2633,7 @@
     return html;
   }
 
-  var CONJ_CUE_MODIFIERS = { not: 1, already: 1, just: 1, yet: 1 };
+  var CONJ_CUE_MODIFIERS = { not: 1, already: 1, just: 1, yet: 1, never: 1 };
 
   function getFullSentenceCues(payload) {
     var cues = (payload.prompt && payload.prompt.cues) || [];
@@ -2647,51 +2649,36 @@
     return getFullSentenceCues(payload).length > 1;
   }
 
-  function parseCueParts(payload) {
-    var cues = getFullSentenceCues(payload);
-    if (cues.length <= 1) return null;
-    var subject = cues[0];
-    var modifiers = [];
-    var i = 1;
-    while (i < cues.length && CONJ_CUE_MODIFIERS[cues[i].toLowerCase()]) {
-      modifiers.push(cues[i]);
-      i++;
-    }
-    var tail = cues.slice(i);
-    return {
-      subject: subject,
-      modifiers: modifiers,
-      verbPhrase: tail[0] || '',
-      objectPhrase: tail.slice(1).join(' '),
-      cues: cues
-    };
+  function cueAppearsLiterallyInAnswer(cue, answer) {
+    var escaped = String(cue || '').trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
+    if (!escaped) return false;
+    return new RegExp('\\b' + escaped + '\\b', 'i').test(String(answer || ''));
   }
 
-  function splitVerbPhrase(verbPhrase) {
-    var parts = String(verbPhrase || '').trim().split(/\s+/);
-    if (!parts.length || !parts[0]) return { baseVerb: '', rest: '' };
-    return { baseVerb: parts[0], rest: parts.slice(1).join(' ') };
+  function isCueFixed(cue, index, answer) {
+    if (index === 0) return true;
+    if (CONJ_CUE_MODIFIERS[cue.toLowerCase()]) return true;
+    return cueAppearsLiterallyInAnswer(cue, answer);
+  }
+
+  function isVerbPhraseModifierToken(tok) {
+    return !!CONJ_CUE_MODIFIERS[normScaffoldWord(tok)];
+  }
+
+  function buildFixedCueWordSet(cues, answer) {
+    var set = {};
+    cues.forEach(function(cue, i) {
+      if (!isCueFixed(cue, i, answer)) return;
+      String(cue).toLowerCase().split(/\s+/).forEach(function(w) {
+        w = w.replace(/[.,!?;:']/g, '');
+        if (w) set[w] = true;
+      });
+    });
+    return set;
   }
 
   function normScaffoldWord(word) {
     return String(word || '').toLowerCase().replace(/[.,!?;:']/g, '');
-  }
-
-  function addScaffoldFixedWords(fixed, phrase) {
-    String(phrase || '').toLowerCase().split(/\s+/).forEach(function(w) {
-      w = w.replace(/[.,!?;:']/g, '');
-      if (w) fixed[w] = true;
-    });
-  }
-
-  function getScaffoldFixedWords(parts) {
-    var fixed = {};
-    addScaffoldFixedWords(fixed, parts.subject);
-    if (parts.objectPhrase) addScaffoldFixedWords(fixed, parts.objectPhrase);
-    var vp = splitVerbPhrase(parts.verbPhrase);
-    if (vp.rest && !parts.objectPhrase) addScaffoldFixedWords(fixed, vp.rest);
-    if (parts.modifiers.indexOf('yet') !== -1) addScaffoldFixedWords(fixed, 'yet');
-    return fixed;
   }
 
   var TOKEN_APOSTROPHE_RE = /[\u2018\u2019\u201a\u201b`´]/g;
@@ -2707,50 +2694,6 @@
     return tokens;
   }
 
-  function getExpectedConjugations(payload, scaffoldFixed, parts) {
-    var answers = payload.acceptedAnswers || (payload.answer ? [payload.answer] : []);
-    var seen = {};
-    var result = [];
-    answers.forEach(function(ans) {
-      var tokens = tokenizeAnswerSentence(ans);
-      var conj = [];
-      tokens.forEach(function(tok, idx) {
-        if (!isScaffoldFixedToken(tok, idx, tokens, parts, scaffoldFixed)) {
-          conj.push(tok);
-        }
-      });
-      var joined = joinScaffoldTokens(conj);
-      var key = joined.toLowerCase();
-      if (joined && !seen[key]) {
-        seen[key] = true;
-        result.push(joined);
-      }
-    });
-    return result;
-  }
-
-  function getSubjectEndIndex(tokens, subject) {
-    var subjectWords = String(subject || '').toLowerCase().split(/\s+/).map(function(w) {
-      return w.replace(/[.,!?;:']/g, '');
-    }).filter(Boolean);
-    if (!subjectWords.length) return 0;
-
-    function matchesFrom(startIdx) {
-      var idx = startIdx;
-      var articles = { the: 1, a: 1, an: 1 };
-      if (idx < tokens.length && articles[normScaffoldWord(tokens[idx])]) idx++;
-      for (var si = 0; si < subjectWords.length; si++) {
-        if (idx >= tokens.length || normScaffoldWord(tokens[idx]) !== subjectWords[si]) return -1;
-        idx++;
-      }
-      return idx;
-    }
-
-    var withArticle = matchesFrom(0);
-    if (withArticle !== -1) return withArticle;
-    return matchesFrom(0);
-  }
-
   function joinScaffoldTokens(tokens) {
     return tokens.reduce(function(acc, tok) {
       if (/^[.,!?;:]+$/.test(tok)) return acc + tok;
@@ -2758,70 +2701,98 @@
     }, '');
   }
 
-  function isScaffoldFixedToken(tok, idx, tokens, parts, scaffoldFixed) {
-    if (/^[.,!?;:]+$/.test(tok)) return true;
-    var nw = normScaffoldWord(tok);
-    if (!nw) return false;
-    if (idx < getSubjectEndIndex(tokens, parts.subject)) return true;
-    return !!scaffoldFixed[nw];
+  function buildConjugationScaffold(payload) {
+    var cues = getFullSentenceCues(payload);
+    var answer = (payload.acceptedAnswers && payload.acceptedAnswers[0]) || payload.answer || '';
+    if (!cues.length || !answer) return null;
+
+    var verbCues = cues.filter(function(cue, i) {
+      return !isCueFixed(cue, i, answer);
+    });
+    if (!verbCues.length) return null;
+
+    var fixedWordSet = buildFixedCueWordSet(cues, answer);
+    var tokens = tokenizeAnswerSentence(answer);
+    var segments = [];
+    var conjRun = [];
+    var gapCount = 0;
+
+    function flushConjRun() {
+      if (!conjRun.length) return;
+      segments.push({
+        type: 'gap',
+        baseVerb: verbCues[gapCount] || '',
+        gapIdx: gapCount,
+        expectedText: joinScaffoldTokens(conjRun)
+      });
+      gapCount++;
+      conjRun = [];
+    }
+
+    tokens.forEach(function(tok) {
+      if (/^[.,!?;:]+$/.test(tok)) {
+        if (conjRun.length) {
+          conjRun.push(tok);
+        } else if (segments.length && segments[segments.length - 1].type === 'fixed') {
+          segments[segments.length - 1].text += tok;
+        } else {
+          segments.push({ type: 'fixed', text: tok });
+        }
+        return;
+      }
+
+      var nw = normScaffoldWord(tok);
+      var isFixedWord = !!fixedWordSet[nw];
+      if (isFixedWord && isVerbPhraseModifierToken(tok) && conjRun.length) {
+        conjRun.push(tok);
+        return;
+      }
+      if (isFixedWord) {
+        flushConjRun();
+        segments.push({ type: 'fixed', text: tok });
+        return;
+      }
+      conjRun.push(tok);
+    });
+    flushConjRun();
+
+    if (!segments.some(function(seg) { return seg.type === 'gap'; })) return null;
+    return { segments: segments, answer: answer, cues: cues, verbCues: verbCues };
   }
 
-  function buildScaffoldSegments(payload) {
-    var parts = parseCueParts(payload);
-    if (!parts) return null;
-    var answer = (payload.acceptedAnswers && payload.acceptedAnswers[0]) || payload.answer || '';
-    if (!answer) return null;
-
-    var scaffoldFixed = getScaffoldFixedWords(parts);
-    var tokens = tokenizeAnswerSentence(answer);
-    var conjIndices = [];
-    tokens.forEach(function(tok, idx) {
-      if (!isScaffoldFixedToken(tok, idx, tokens, parts, scaffoldFixed)) {
-        conjIndices.push(idx);
+  function assembleConjugationSentence(root, scaffold) {
+    if (!scaffold || !scaffold.segments) return '';
+    var gapInputs = getGapInputValues(root);
+    var gapIdx = 0;
+    var parts = [];
+    scaffold.segments.forEach(function(seg) {
+      if (seg.type === 'fixed') {
+        parts.push(seg.text);
+      } else {
+        parts.push(gapIdx < gapInputs.length ? gapInputs[gapIdx].trim() : '');
+        gapIdx++;
       }
     });
-    if (!conjIndices.length) return null;
-
-    var firstConj = conjIndices[0];
-    var lastConj = conjIndices[conjIndices.length - 1];
-    return {
-      parts: parts,
-      prefix: joinScaffoldTokens(tokens.slice(0, firstConj)),
-      suffix: joinScaffoldTokens(tokens.slice(lastConj + 1)),
-      expectedConjugations: getExpectedConjugations(payload, scaffoldFixed, parts),
-      placeholder: splitVerbPhrase(parts.verbPhrase).baseVerb,
-      cues: parts.cues
-    };
+    return joinScaffoldTokens(parts.filter(function(part) { return part != null && String(part).length; }));
   }
 
-  function renderCueBank(cues) {
-    return cues.map(function(cue, i) {
-      var chip = '<span class="sp-cue-chip">' + esc(cue) + '</span>';
-      return i === 0 ? chip : '<span class="sp-cue-sep" aria-hidden="true">/</span>' + chip;
-    }).join('');
-  }
-
-  function buildConjugationGapField(placeholder) {
-    return '<span class="sp-inline-gap-group sp-inline-gap-group--solo" role="group" aria-label="Conjugated verb">' +
-      '<input type="text" class="sp-gap-inline-input sp-gap-underline-input" id="sp-sentence-input" ' +
-      'autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Conjugated verb" ' +
-      'placeholder="' + esc(placeholder || '') + '">' +
-    '</span>';
+  function renderConjugationSegmentHtml(seg) {
+    if (seg.type === 'fixed') {
+      return '<span class="sp-sentence-chip">' + esc(seg.text) + '</span>';
+    }
+    return buildInlineGapField(seg.baseVerb, seg.gapIdx);
   }
 
   function renderFullSentenceConjugation(screen, scaffold) {
-    var sentenceHtml = '';
-    if (scaffold.prefix) sentenceHtml += formatSentenceText(scaffold.prefix) + ' ';
-    sentenceHtml += buildConjugationGapField(scaffold.placeholder);
-    if (scaffold.suffix) sentenceHtml += ' ' + formatSentenceText(scaffold.suffix);
+    var sentenceHtml = scaffold.segments.map(function(seg) {
+      return renderConjugationSegmentHtml(seg);
+    }).join('');
 
-    return '<div class="sp-screen sp-screen--gap sp-screen--write sp-screen--sentence-build" data-format="full_sentence_write" data-write-mode="conjugation" ' +
-      'data-expected-conjugations="' + esc(JSON.stringify(scaffold.expectedConjugations)) + '">' +
-      '<div class="sp-cue-bank" aria-label="Prompt words">' + renderCueBank(scaffold.cues || []) + '</div>' +
-      '<div class="sp-prompt-row sp-prompt-row--gap">' +
-        '<p class="sp-prompt-sentence sp-prompt-sentence--inline-gap sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
+    return '<div class="sp-screen sp-screen--gap sp-screen--write sp-screen--sentence-build" data-format="full_sentence_write" data-write-mode="conjugation">' +
+      '<div class="sp-prompt-row sp-prompt-row--gap sp-prompt-row--sentence-build">' +
+        '<div class="sp-sentence-scaffold sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
           sentenceHtml +
-        '</p>' +
+        '</div>' +
       '</div>' +
     '</div>';
   }
@@ -2840,7 +2811,7 @@
   function renderFullSentence(screen) {
     var p = screen.payload || {};
     if (isConjugationCuePrompt(p)) {
-      var scaffold = buildScaffoldSegments(p);
+      var scaffold = buildConjugationScaffold(p);
       if (scaffold) return renderFullSentenceConjugation(screen, scaffold);
     }
     return renderFullSentenceRewrite(screen);
@@ -3461,12 +3432,11 @@
       bindSentenceSpeak(root, function() {
         var p = screen.payload || {};
         if (root.getAttribute('data-write-mode') === 'conjugation') {
-          var conjInput = root.querySelector('#sp-sentence-input');
-          var typed = conjInput ? conjInput.value.trim() : '';
-          if (typed) {
-            var parts = buildScaffoldSegments(p);
-            if (parts) {
-              return [parts.prefix, typed, parts.suffix].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
+          var scaffold = buildConjugationScaffold(p);
+          if (scaffold) {
+            var assembled = assembleConjugationSentence(root, scaffold);
+            if (assembled && getGapInputValues(root).some(function(v) { return !!v; })) {
+              return assembled;
             }
           }
           return String((p.acceptedAnswers && p.acceptedAnswers[0]) || p.answer || '').trim();
@@ -4203,6 +4173,9 @@
       return isPassageGapSequentialReady(root, screen);
     }
     if (f === 'full_sentence_write') {
+      if (root.getAttribute('data-write-mode') === 'conjugation') {
+        return allGapInputsFilled(root);
+      }
       var ta = root.querySelector('#sp-sentence-input');
       return ta && !!ta.value.trim();
     }
@@ -4454,23 +4427,16 @@
         break;
       }
       case 'full_sentence_write': {
-        var sent = root.querySelector('#sp-sentence-input');
-        var text = sent ? sent.value.trim() : '';
-        result.userAnswer = text;
         result.correctAnswer = (p.acceptedAnswers && p.acceptedAnswers[0]) || p.answer;
         if (root.getAttribute('data-write-mode') === 'conjugation') {
-          var expectedConj = [];
-          try {
-            expectedConj = JSON.parse(root.getAttribute('data-expected-conjugations') || '[]');
-          } catch (e) { /* ignore */ }
-          if (!expectedConj.length) {
-            var scaffold = buildScaffoldSegments(p);
-            expectedConj = scaffold ? scaffold.expectedConjugations : [];
-          }
-          result.correct = expectedConj.some(function(exp) {
-            return norm.answersMatch(text, exp);
-          });
+          var conjScaffold = buildConjugationScaffold(p);
+          var assembled = conjScaffold ? assembleConjugationSentence(root, conjScaffold) : '';
+          result.userAnswer = assembled;
+          result.correct = norm.matchesAnyAccepted(assembled, p);
         } else {
+          var sent = root.querySelector('#sp-sentence-input');
+          var text = sent ? sent.value.trim() : '';
+          result.userAnswer = text;
           result.correct = norm.matchesAnyAccepted(text, p);
         }
         result.lifeLoss = result.correct ? 0 : 1;
