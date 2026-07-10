@@ -1346,10 +1346,20 @@
     root._cmLockedPairs = locked || {};
   }
 
+  function isCmSequentialMode(screen) {
+    var p = (screen && screen.payload) || {};
+    return p.sequentialMode !== false;
+  }
+
   function getCmCorrectLetter(screen, pairId) {
     var payloadPairs = (screen.payload && screen.payload.pairs) || [];
     var match = payloadPairs.find(function(pair) { return String(pair.pairId) === String(pairId); });
     return match ? match.correctLetter : '';
+  }
+
+  function getCmPairPayload(screen, pairId) {
+    var payloadPairs = (screen.payload && screen.payload.pairs) || [];
+    return payloadPairs.find(function(pair) { return String(pair.pairId) === String(pairId); }) || null;
   }
 
   function getCmRightCell(root, pairId) {
@@ -1360,15 +1370,50 @@
     return root.querySelector('.sp-cm-right-item[data-letter="' + letter + '"]');
   }
 
-  function shuffleCmRightOptions(options) {
-    var shuffled = (options || []).slice();
-    for (var i = shuffled.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = shuffled[i];
-      shuffled[i] = shuffled[j];
-      shuffled[j] = tmp;
+  function initCmSlotLetters(root, rightOptions) {
+    var slots = {};
+    (rightOptions || []).forEach(function(opt, idx) {
+      slots[String(idx + 1)] = opt.letter;
+    });
+    root._cmSlotLetters = slots;
+  }
+
+  function getCmSlotLetters(root) {
+    return root._cmSlotLetters || {};
+  }
+
+  function findCmSlotForLetter(root, letter) {
+    var slots = getCmSlotLetters(root);
+    return Object.keys(slots).find(function(pairId) { return slots[pairId] === letter; }) || null;
+  }
+
+  function getCmActivePairId(root, screen) {
+    if (root._cmActivePairId != null) return root._cmActivePairId;
+    var pairs = (screen.payload && screen.payload.pairs) || [];
+    var locked = getCmLockedPairs(root);
+    for (var i = 0; i < pairs.length; i++) {
+      if (!locked[String(pairs[i].pairId)]) return pairs[i].pairId;
     }
-    return shuffled;
+    return pairs.length ? pairs[0].pairId : 1;
+  }
+
+  function setCmActivePairId(root, pairId) {
+    root._cmActivePairId = pairId;
+  }
+
+  function getCmPendingLetter(root) {
+    return root._cmPendingLetter || '';
+  }
+
+  function setCmPendingLetter(root, letter) {
+    root._cmPendingLetter = letter || '';
+  }
+
+  function cloneCmSlotLetters(root) {
+    var slots = getCmSlotLetters(root);
+    var copy = {};
+    Object.keys(slots).forEach(function(key) { copy[key] = slots[key]; });
+    return copy;
   }
 
   function renderCmRightItem(opt) {
@@ -1384,19 +1429,122 @@
     if (btn && cell) cell.appendChild(btn);
   }
 
-  function syncCmRightItemPositions(root) {
+  function swapCmSlotLetters(root, slotA, slotB, animate) {
+    var slots = getCmSlotLetters(root);
+    var letterA = slots[String(slotA)];
+    var letterB = slots[String(slotB)];
+    if (!letterA || !letterB || String(slotA) === String(slotB)) return;
+
+    var btnA = getCmRightItem(root, letterA);
+    var btnB = getCmRightItem(root, letterB);
+
+    if (animate && btnA && btnB) {
+      var rectA = btnA.getBoundingClientRect();
+      var rectB = btnB.getBoundingClientRect();
+
+      slots[String(slotA)] = letterB;
+      slots[String(slotB)] = letterA;
+      placeCmRightItemInRow(root, letterB, slotA);
+      placeCmRightItemInRow(root, letterA, slotB);
+
+      var newRectA = btnB.getBoundingClientRect();
+      var newRectB = btnA.getBoundingClientRect();
+      var deltaAX = rectA.left - newRectA.left;
+      var deltaAY = rectA.top - newRectA.top;
+      var deltaBX = rectB.left - newRectB.left;
+      var deltaBY = rectB.top - newRectB.top;
+
+      btnA.classList.add('sp-cm-right-item--swap-anim');
+      btnB.classList.add('sp-cm-right-item--swap-anim');
+      btnB.style.transform = 'translate(' + deltaAX + 'px, ' + deltaAY + 'px)';
+      btnA.style.transform = 'translate(' + deltaBX + 'px, ' + deltaBY + 'px)';
+
+      requestAnimationFrame(function() {
+        btnA.style.transform = '';
+        btnB.style.transform = '';
+        setTimeout(function() {
+          btnA.classList.remove('sp-cm-right-item--swap-anim');
+          btnB.classList.remove('sp-cm-right-item--swap-anim');
+        }, 260);
+      });
+      return;
+    }
+
+    slots[String(slotA)] = letterB;
+    slots[String(slotB)] = letterA;
+    placeCmRightItemInRow(root, letterB, slotA);
+    placeCmRightItemInRow(root, letterA, slotB);
+  }
+
+  function restoreCmSlotLetters(root, snapshot) {
+    if (!snapshot) return;
+    root._cmSlotLetters = snapshot;
+    Object.keys(snapshot).forEach(function(pairId) {
+      placeCmRightItemInRow(root, snapshot[pairId], pairId);
+    });
+  }
+
+  function clearCmPendingPair(root) {
+    root._cmPendingLetter = '';
+    root._cmPendingSnapshot = null;
+  }
+
+  function revertCmPendingPair(root) {
+    restoreCmSlotLetters(root, root._cmPendingSnapshot);
+    clearCmPendingPair(root);
+  }
+
+  function assignCmPendingPair(root, screen, pairId, letter) {
+    var locked = getCmLockedPairs(root);
+    if (locked[String(pairId)]) return false;
+
+    var currentPending = getCmPendingLetter(root);
+    if (currentPending && currentPending !== letter) {
+      revertCmPendingPair(root);
+    } else if (currentPending === letter) {
+      revertCmPendingPair(root);
+      return true;
+    }
+
+    var letterSlot = findCmSlotForLetter(root, letter);
+    if (!letterSlot) return false;
+
+    root._cmPendingSnapshot = cloneCmSlotLetters(root);
+    if (String(letterSlot) !== String(pairId)) {
+      swapCmSlotLetters(root, pairId, letterSlot, true);
+    }
+    setCmPendingLetter(root, letter);
+    root._cmShowExplainAfterWrong = false;
+    return true;
+  }
+
+  function lockCmPair(root, screen, pairId, letter) {
     var pairs = getCmPairs(root);
     var locked = getCmLockedPairs(root);
+    pairs[String(pairId)] = letter;
+    locked[String(pairId)] = true;
+    setCmPairs(root, pairs);
+    setCmLockedPairs(root, locked);
+    placeCmRightItemInRow(root, letter, pairId);
+    clearCmPendingPair(root);
+  }
 
-    Object.keys(pairs).forEach(function(pairId) {
-      if (!locked[pairId]) return;
-      placeCmRightItemInRow(root, pairs[pairId], pairId);
-    });
+  function advanceCmActivePair(root, screen) {
+    var pairs = (screen.payload && screen.payload.pairs) || [];
+    var locked = getCmLockedPairs(root);
+    for (var i = 0; i < pairs.length; i++) {
+      if (!locked[String(pairs[i].pairId)]) {
+        setCmActivePairId(root, pairs[i].pairId);
+        root._cmSelectedLeft = String(pairs[i].pairId);
+        return pairs[i].pairId;
+      }
+    }
+    return null;
   }
 
   function renderColumnMatching(screen) {
     var p = screen.payload || {};
-    var shuffledRight = shuffleCmRightOptions(p.rightOptions || []);
+    var rightOptions = (p.rightOptions || []).slice();
     var html = '<div class="sp-screen sp-screen--column-match" data-format="column_matching">';
     html += '<div class="sp-cm-board">';
     html += '<div class="sp-cm-head-row">';
@@ -1405,7 +1553,7 @@
     html += '</div>';
     html += '<div class="sp-cm-rows" aria-label="Sentence beginnings">';
     (p.pairs || []).forEach(function(pair, idx) {
-      var rightOpt = shuffledRight[idx] || null;
+      var rightOpt = rightOptions[idx] || null;
       html += '<div class="sp-cm-row" data-pair-id="' + pair.pairId + '">';
       html += '<div class="sp-cm-left-cell">';
       html += '<button type="button" class="sp-cm-left-item" data-pair-id="' + pair.pairId + '" aria-pressed="false">' +
@@ -1423,35 +1571,45 @@
     return html;
   }
 
-  function syncColumnMatchUi(root) {
+  function syncColumnMatchUi(root, screen) {
     var pairs = getCmPairs(root);
     var locked = getCmLockedPairs(root);
     var selectedLeft = root._cmSelectedLeft || null;
-
-    syncCmRightItemPositions(root);
+    var sequential = isCmSequentialMode(screen);
+    var activePairId = sequential ? String(getCmActivePairId(root, screen)) : null;
+    var pendingLetter = getCmPendingLetter(root);
 
     root.querySelectorAll('.sp-cm-left-item').forEach(function(btn) {
       var pairId = btn.getAttribute('data-pair-id');
-      var letter = pairs[pairId] || '';
       var isLocked = !!locked[pairId];
       var isSelected = selectedLeft === pairId;
-      btn.classList.toggle('sp-cm-left-item--selected', isSelected && !isLocked);
-      btn.classList.toggle('sp-cm-left-item--paired', !!letter);
+      var isActive = sequential && pairId === activePairId && !isLocked;
+      var isFuture = sequential && !isLocked && pairId !== activePairId;
+
+      btn.classList.toggle('sp-cm-left-item--selected', isSelected && !isLocked && !sequential);
+      btn.classList.toggle('sp-cm-left-item--active', isActive);
+      btn.classList.toggle('sp-cm-left-item--future', isFuture);
+      btn.classList.toggle('sp-cm-left-item--paired', !!pairs[pairId]);
       btn.classList.toggle('sp-cm-left-item--locked', isLocked);
-      btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
-      btn.disabled = isLocked || root.classList.contains('sp-screen--locked');
+      btn.classList.toggle('sp-cm-left-item--correct', isLocked);
+      btn.setAttribute('aria-pressed', (isSelected || isActive) ? 'true' : 'false');
+      btn.disabled = isLocked || root.classList.contains('sp-screen--locked') || isFuture;
     });
 
     root.querySelectorAll('.sp-cm-right-item').forEach(function(btn) {
       var letter = btn.getAttribute('data-letter') || '';
-      var pairedTo = Object.keys(pairs).find(function(pid) { return pairs[pid] === letter; });
-      var isLocked = pairedTo && !!locked[pairedTo];
-      var isPaired = !!pairedTo;
-      btn.classList.toggle('sp-cm-right-item--paired', isPaired);
-      btn.classList.toggle('sp-cm-right-item--placed', isPaired);
-      btn.classList.toggle('sp-cm-right-item--locked', isLocked);
-      btn.setAttribute('aria-pressed', isPaired ? 'true' : 'false');
-      btn.disabled = isLocked || root.classList.contains('sp-screen--locked');
+      var slotPairId = findCmSlotForLetter(root, letter);
+      var slotLocked = slotPairId && !!locked[slotPairId];
+      var isPending = pendingLetter === letter;
+
+      btn.classList.toggle('sp-cm-right-item--paired', !!slotLocked || isPending);
+      btn.classList.toggle('sp-cm-right-item--placed', !!slotLocked || isPending);
+      btn.classList.toggle('sp-cm-right-item--locked', slotLocked);
+      btn.classList.toggle('sp-cm-right-item--correct', slotLocked);
+      btn.classList.toggle('sp-cm-right-item--pending', isPending);
+      btn.classList.toggle('sp-cm-right-item--future', false);
+      btn.setAttribute('aria-pressed', isPending ? 'true' : 'false');
+      btn.disabled = slotLocked || root.classList.contains('sp-screen--locked');
     });
 
     root.querySelectorAll('.sp-cm-right-cell').forEach(function(cell) {
@@ -1471,28 +1629,37 @@
       btn.classList.add(cls);
       setTimeout(function() {
         btn.classList.remove(cls);
-      }, 500);
+      }, 450);
     });
   }
 
-  function lockCmPair(root, screen, pairId, letter) {
-    var pairs = getCmPairs(root);
-    var locked = getCmLockedPairs(root);
-    pairs[String(pairId)] = letter;
-    locked[String(pairId)] = true;
-    setCmPairs(root, pairs);
-    setCmLockedPairs(root, locked);
-    placeCmRightItemInRow(root, letter, pairId);
+  function flashCmActivePairWrong(root, screen) {
+    var activePairId = getCmActivePairId(root, screen);
+    var pendingLetter = getCmPendingLetter(root);
+    var leftBtn = root.querySelector('.sp-cm-left-item[data-pair-id="' + activePairId + '"]');
+    var rightBtn = pendingLetter ? getCmRightItem(root, pendingLetter) : null;
+    flashCmWrong(root, leftBtn, rightBtn);
   }
 
   function bindColumnMatching(root, screen, onChange) {
     root._cmPairs = root._cmPairs || {};
     root._cmLockedPairs = root._cmLockedPairs || {};
-    root._cmSelectedLeft = null;
+    var sequential = isCmSequentialMode(screen);
+    var p = screen.payload || {};
 
-    function update(onChanged) {
-      syncColumnMatchUi(root);
-      if (onChanged) onChange();
+    initCmSlotLetters(root, p.rightOptions || []);
+
+    if (sequential) {
+      var firstActive = getCmActivePairId(root, screen);
+      setCmActivePairId(root, firstActive);
+      root._cmSelectedLeft = String(firstActive);
+    } else {
+      root._cmSelectedLeft = null;
+    }
+
+    function update(changed) {
+      syncColumnMatchUi(root, screen);
+      if (changed && onChange) onChange();
     }
 
     root.querySelectorAll('.sp-cm-left-item').forEach(function(btn) {
@@ -1501,6 +1668,15 @@
         var pairId = btn.getAttribute('data-pair-id');
         var locked = getCmLockedPairs(root);
         if (locked[pairId]) return;
+
+        if (sequential) {
+          if (String(pairId) !== String(getCmActivePairId(root, screen))) return;
+          if (getCmPendingLetter(root)) {
+            revertCmPendingPair(root);
+            update(true);
+          }
+          return;
+        }
 
         var isSelected = root._cmSelectedLeft === pairId;
         root._cmSelectedLeft = isSelected ? null : pairId;
@@ -1512,30 +1688,132 @@
       btn.addEventListener('click', function() {
         if (root.classList.contains('sp-screen--locked')) return;
         var letter = btn.getAttribute('data-letter') || '';
-        var pairs = getCmPairs(root);
         var locked = getCmLockedPairs(root);
-        var pairedTo = Object.keys(pairs).find(function(pid) { return pairs[pid] === letter; });
-        if (pairedTo && locked[pairedTo]) return;
+        var slotPairId = findCmSlotForLetter(root, letter);
+        if (slotPairId && locked[slotPairId]) return;
 
-        if (!root._cmSelectedLeft) return;
-
-        var pairId = root._cmSelectedLeft;
-        var correctLetter = getCmCorrectLetter(screen, pairId);
-        root._cmSelectedLeft = null;
-
-        if (letter !== correctLetter) {
-          var leftBtn = root.querySelector('.sp-cm-left-item[data-pair-id="' + pairId + '"]');
-          flashCmWrong(root, leftBtn, btn);
+        if (sequential) {
+          var activePairId = getCmActivePairId(root, screen);
+          assignCmPendingPair(root, screen, activePairId, letter);
+          root._cmSelectedLeft = String(activePairId);
           update(true);
           return;
         }
 
-        lockCmPair(root, screen, pairId, letter);
+        if (!root._cmSelectedLeft) return;
+        var pairId = root._cmSelectedLeft;
+        root._cmSelectedLeft = null;
+        assignCmPendingPair(root, screen, pairId, letter);
+        var pairs = getCmPairs(root);
+        pairs[String(pairId)] = letter;
+        setCmPairs(root, pairs);
         update(true);
+        return;
       });
     });
 
-    syncColumnMatchUi(root);
+    syncColumnMatchUi(root, screen);
+  }
+
+  function isColumnMatchSequentialReady(root, screen) {
+    if (!isCmSequentialMode(screen)) return false;
+    var activePairId = getCmActivePairId(root, screen);
+    var locked = getCmLockedPairs(root);
+    if (locked[String(activePairId)]) return false;
+    return !!getCmPendingLetter(root);
+  }
+
+  function getColumnMatchExplainContext(root, screen) {
+    if (!screen || screen.formatType !== 'column_matching') return null;
+    if (!isCmSequentialMode(screen)) return null;
+
+    var activePairId = getCmActivePairId(root, screen);
+    var pair = getCmPairPayload(screen, activePairId);
+    if (!pair || !pair.explanation) return null;
+
+    var pendingLetter = getCmPendingLetter(root);
+    var postWrong = root._cmShowExplainAfterWrong;
+    if (!pendingLetter && !postWrong) return null;
+
+    return {
+      title: 'Explanation',
+      context: pair.leftText,
+      explanation: pair.explanation,
+      correctAnswer: pair.correctLetter,
+      continueLabel: 'Close'
+    };
+  }
+
+  function processColumnMatchSequentialCheck(root, screen) {
+    var p = screen.payload || {};
+    var pairs = p.pairs || [];
+    if (!isCmSequentialMode(screen)) {
+      return { handled: false };
+    }
+
+    var activePairId = getCmActivePairId(root, screen);
+    var pendingLetter = getCmPendingLetter(root);
+    if (!pendingLetter) {
+      return { handled: true, noop: true };
+    }
+
+    var pair = getCmPairPayload(screen, activePairId);
+    var correctLetter = getCmCorrectLetter(screen, activePairId);
+    var ok = pendingLetter === correctLetter;
+    var explanation = (pair && pair.explanation) || p.explanation || '';
+
+    if (ok) {
+      lockCmPair(root, screen, activePairId, pendingLetter);
+      root._cmShowExplainAfterWrong = false;
+      var allDone = pairs.every(function(item) {
+        return !!getCmLockedPairs(root)[String(item.pairId)];
+      });
+
+      if (!allDone) {
+        advanceCmActivePair(root, screen);
+        syncColumnMatchUi(root, screen);
+        return {
+          handled: true,
+          correct: true,
+          partial: true,
+          allDone: false,
+          lifeLoss: 0,
+          userAnswer: pendingLetter,
+          correctAnswer: correctLetter,
+          explanation: explanation,
+          _columnMatchResult: true,
+          _autoAdvance: true
+        };
+      }
+
+      return {
+        handled: true,
+        correct: true,
+        partial: false,
+        allDone: true,
+        lifeLoss: 0,
+        userAnswer: pendingLetter,
+        correctAnswer: correctLetter,
+        explanation: explanation,
+        _columnMatchResult: true
+      };
+    }
+
+    flashCmActivePairWrong(root, screen);
+    revertCmPendingPair(root);
+    root._cmShowExplainAfterWrong = true;
+    syncColumnMatchUi(root, screen);
+
+    return {
+      handled: true,
+      correct: false,
+      lifeLoss: 1,
+      userAnswer: pendingLetter,
+      correctAnswer: correctLetter,
+      explanation: explanation,
+      _columnMatchResult: true,
+      _inlineFeedback: true
+    };
   }
 
   function markColumnMatchResults(root, pairs, payloadPairs) {
@@ -3250,6 +3528,9 @@
       return !!kwtValue && isKwtWordCountValid(kwtValue, screen);
     }
     if (f === 'column_matching') {
+      if (isCmSequentialMode(screen)) {
+        return isColumnMatchSequentialReady(root, screen);
+      }
       var cmPairs = getCmPairs(root);
       var cmPayloadPairs = (screen.payload && screen.payload.pairs) || [];
       if (!cmPayloadPairs.length) return false;
@@ -3725,6 +4006,9 @@
     processPassageGapSequentialCheck: processPassageGapSequentialCheck,
     advancePassageGapAfterFeedback: advancePassageGapAfterFeedback,
     isPassageGapSequentialReady: isPassageGapSequentialReady,
+    processColumnMatchSequentialCheck: processColumnMatchSequentialCheck,
+    getColumnMatchExplainContext: getColumnMatchExplainContext,
+    isColumnMatchSequentialReady: isColumnMatchSequentialReady,
     commitHuntFixAfterFeedback: commitHuntFixAfterFeedback
   };
 })();

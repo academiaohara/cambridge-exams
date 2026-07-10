@@ -483,23 +483,36 @@
       return { correctLetter: parsed.markerLetter, endingText: parsed.endingText };
     };
 
-    var pairs = draftPairs.map(function(pair) {
+    var sourceItemsByIdx = sourceItems;
+    var pairs = draftPairs.map(function(pair, idx) {
       var normalized = normalizeAnswer(pair.rawAnswer, {
         markerLetter: pair.markerLetter,
         endingText: pair.endingText,
         hasEmbeddedLetter: pair.hasEmbeddedLetter
       }, endingLetterMap);
+      var correctLetter = normalized.correctLetter || pair.markerLetter;
+      var endingText = pair.endingText || (rightByLetter[correctLetter] || '');
+      var itemExplanation = (sourceItemsByIdx[idx] && sourceItemsByIdx[idx].explanation) || '';
+      var pairExplanation = itemExplanation;
+      if (!pairExplanation && pair.leftText && endingText) {
+        pairExplanation = 'Together they form a complete sentence: "' +
+          pair.leftText + ' ' + endingText + '".';
+      }
       return {
         pairId: pair.pairId,
         leftText: pair.leftText,
-        correctLetter: normalized.correctLetter || pair.markerLetter
+        correctLetter: correctLetter,
+        endingText: endingText,
+        explanation: pairExplanation
       };
     });
 
+    var interaction = exercise.interaction || {};
     return {
       pairs: pairs,
       rightOptions: rightOptions,
       pairCount: pairs.length,
+      sequentialMode: interaction.sequentialMode !== false,
       answerNormalizationRule: 'column_match_answer_normalization',
       explanation: exercise.explanation || '',
       instruction: exercise.studentInstruction || exercise.instructions || ''
