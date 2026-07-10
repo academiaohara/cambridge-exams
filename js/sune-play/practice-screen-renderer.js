@@ -910,6 +910,13 @@
     if (anchor) anchor.classList.toggle('sp-gap-anchor--filled', !!text);
   }
 
+  function getMcOptionText(options, letter) {
+    var opt = (options || []).find(function(o) {
+      return String(o.letter).toUpperCase() === String(letter).toUpperCase();
+    });
+    return (opt && opt.text) ? opt.text : letter;
+  }
+
   function renderTwoOption(screen) {
     var p = screen.payload || {};
     var html = '<div class="sp-screen sp-screen--choice" data-format="two_option_choice">';
@@ -1029,11 +1036,7 @@
     var payload = screen.payload || {};
     bindSentenceSpeak(root, function() {
       var slot = root.querySelector('#sp-choice-slot');
-      var letter = slot ? slot.textContent.trim() : '';
-      var opt = (payload.options || []).find(function(o) {
-        return o.letter === letter;
-      });
-      var chosen = opt ? opt.text : letter;
+      var chosen = slot ? slot.textContent.trim() : '';
       return buildGapSentence(payload.sentenceBefore, chosen, payload.sentenceAfter);
     });
     root.querySelectorAll('.sp-option-btn').forEach(function(btn) {
@@ -1044,10 +1047,10 @@
         });
         btn.classList.add('sp-option-btn--selected');
         var letter = btn.getAttribute('data-letter') || '';
-        setChoiceSlotContent(root, letter);
+        var optText = getMcOptionText(payload.options, letter);
+        setChoiceSlotContent(root, optText);
         onChange();
-        var opt = (payload.options || []).find(function(o) { return o.letter === letter; });
-        if (opt && opt.text) speakText(opt.text);
+        if (optText) speakText(optText);
       });
     });
   }
@@ -1089,7 +1092,7 @@
           var letter = btn.getAttribute('data-letter') || '';
           root._mcSelections[gapNumber] = letter;
           var slot = root.querySelector('#sp-mc-gap-slot-' + gapNumber);
-          if (slot) slot.textContent = letter;
+          if (slot) slot.textContent = getMcOptionText(gap.options, letter);
           var pill = root.querySelector('.sp-mc-gap-pill[data-gap-number="' + gapNumber + '"]');
           if (pill) pill.classList.add('sp-mc-gap-pill--filled');
           closeSheet();
