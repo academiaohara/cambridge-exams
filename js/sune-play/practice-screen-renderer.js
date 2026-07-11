@@ -2701,57 +2701,17 @@
     }, '');
   }
 
-  function skipLeadingFixedTokens(tokens, startIdx, fixedWordSet) {
-    var idx = startIdx;
-    while (idx < tokens.length) {
-      var tok = tokens[idx];
-      if (/^[.,!?;:]+$/.test(tok)) {
-        idx++;
-        continue;
-      }
-      if (!fixedWordSet[normScaffoldWord(tok)] || isVerbPhraseModifierToken(tok)) break;
-      idx++;
-    }
-    return idx;
-  }
-
-  function extractVerbGapParts(tokens, startIdx, fixedWordSet) {
-    var parts = [];
-    var current = [];
-    var idx = startIdx;
-    while (idx < tokens.length) {
-      var tok = tokens[idx];
-      if (/^[.,!?;:]+$/.test(tok)) {
-        current.push(tok);
-        idx++;
-        continue;
-      }
-      if (fixedWordSet[normScaffoldWord(tok)]) {
-        if (isVerbPhraseModifierToken(tok)) {
-          if (current.length) {
-            parts.push(joinScaffoldTokens(current));
-            current = [];
-          }
-          idx++;
-          continue;
-        }
-        break;
-      }
-      current.push(tok);
-      idx++;
-    }
-    if (current.length) parts.push(joinScaffoldTokens(current));
-    return { parts: parts.length ? parts : [''], endIdx: idx };
-  }
-
   function buildVerbCueDisplayHints(cues, answer) {
     var hints = [];
     var hiddenModifiers = [];
 
     cues.forEach(function(cue, i) {
       if (isCueFixed(cue, i, answer)) {
-        if (i > 0 && CONJ_CUE_MODIFIERS[cue.toLowerCase()] && !cueAppearsLiterallyInAnswer(cue, answer)) {
-          hiddenModifiers.push(cue);
+        if (i > 0 && CONJ_CUE_MODIFIERS[cue.toLowerCase()]) {
+          var isTrailing = i === cues.length - 1 && cueAppearsLiterallyInAnswer(cue, answer);
+          if (!isTrailing) {
+            hiddenModifiers.push(cue);
+          }
         }
         return;
       }
@@ -2761,30 +2721,90 @@
     return hints;
   }
 
-  function assignGapVerbMetadata(segments, verbCues, verbDisplayHints, answer, fixedWordSet) {
-    var tokens = tokenizeAnswerSentence(answer);
-    var tokenIdx = 0;
-    var verbIdx = 0;
-    var gapInVerb = 0;
-    var gapsPerVerb = [];
+  function findFirstCueTokenIndex(tokens, firstCue) {
+    var cueWords = String(firstCue || '').toLowerCase().split(/\s+/).map(normScaffoldWord).filter(Boolean);
+    if (!cueWords.length) return 0;
+    for (var i = 0; i <= tokens.length - cueWords.length; i++) {
+      var matches = true;
+      for (var j = 0; j < cueWords.length; j++) {
+        if (normScaffoldWord(tokens[i + j]) !== cueWords[j]) {
+          matches = false;
+          break;
+        }
+      }
+      if (matches) return i;
+    }
+    return 0;
+  }
 
-    verbCues.forEach(function() {
-      tokenIdx = skipLeadingFixedTokens(tokens, tokenIdx, fixedWordSet);
-      var extracted = extractVerbGapParts(tokens, tokenIdx, fixedWordSet);
-      gapsPerVerb.push(Math.max(1, extracted.parts.length));
-      tokenIdx = extracted.endIdx;
+  function getTrailingFixedCueWords(cues, answer) {
+    var trailing = {};
+    if (!cues.length) return trailing;
+    var lastCue = cues[cues.length - 1];
+    if (!lastCue || !CONJ_CUE_MODIFIERS[lastCue.toLowerCase()]) return trailing;
+    if (!cueAppearsLiterallyInAnswer(lastCue, answer)) return trailing;
+    String(lastCue).toLowerCase().split(/\s+/).forEach(function(w) {
+      w = w.replace(/[.,!?;:']/g, '');
+      if (w) trailing[w] = true;
     });
+    return trailing;
+  }
 
+  function pushFixedSegment(segments, text) {
+    if (!text) return;
+    if (/^[.,!?;:]+$/.test(text) && segments.length && segments[segments.length - 1].type === 'fixed') {
+      segments[segments.length - 1].text += text;
+      return;
+    }
+    segments.push({ type: 'fixed', text: text });
+  }
+
+  function splitGapAroundLiteralCueWords(gapTokens, verbCue) {
+    if (!gapTokens.length || !verbCue) {
+      return { gapTokens: gapTokens, fixedTail: [] };
+    }
+    var cueWords = String(verbCue).toLowerCase().split(/\s+/).filter(Boolean);
+    // Only split separable phrasal verbs with an object, e.g. "pick it up".
+    if (cueWords.length < 3) {
+      return { gapTokens: gapTokens, fixedTail: [] };
+    }
+    var cueWordSet = {};
+    cueWords.forEach(function(w) {
+      w = normScaffoldWord(w);
+      if (w) cueWordSet[w] = true;
+    });
+    var tail = [];
+    var idx = gapTokens.length - 1;
+    while (idx >= 0) {
+      var tok = gapTokens[idx];
+      if (/^[.,!?;:]+$/.test(tok)) {
+        tail.unshift(tok);
+        idx--;
+        continue;
+      }
+      if (cueWordSet[normScaffoldWord(tok)]) {
+        tail.unshift(tok);
+        idx--;
+        continue;
+      }
+      break;
+    }
+    if (!tail.length || idx < 0) {
+      return { gapTokens: gapTokens, fixedTail: [] };
+    }
+    return {
+      gapTokens: gapTokens.slice(0, idx + 1),
+      fixedTail: tail
+    };
+  }
+
+  function assignGapVerbMetadata(segments, verbCues, verbDisplayHints) {
+    var gapIdx = 0;
     segments.forEach(function(seg) {
       if (seg.type !== 'gap') return;
-      var gapsForVerb = gapsPerVerb[verbIdx] || 1;
-      seg.baseVerb = (verbDisplayHints && verbDisplayHints[verbIdx]) || verbCues[verbIdx] || '';
-      seg.showVerbTile = gapInVerb === gapsForVerb - 1;
-      gapInVerb++;
-      if (gapInVerb >= gapsForVerb) {
-        verbIdx++;
-        gapInVerb = 0;
-      }
+      seg.baseVerb = (verbDisplayHints && verbDisplayHints[gapIdx]) || verbCues[gapIdx] || '';
+      seg.showVerbTile = !!seg.baseVerb;
+      gapIdx++;
     });
   }
 
@@ -2799,46 +2819,61 @@
     if (!verbCues.length) return null;
 
     var fixedWordSet = buildFixedCueWordSet(cues, answer);
+    var trailingFixed = getTrailingFixedCueWords(cues, answer);
     var tokens = tokenizeAnswerSentence(answer);
+    var firstCueIdx = findFirstCueTokenIndex(tokens, cues[0]);
     var segments = [];
     var conjRun = [];
     var gapCount = 0;
 
-    function flushConjRun() {
+    function flushConjRun(verbCue) {
       if (!conjRun.length) return;
-      segments.push({
-        type: 'gap',
-        gapIdx: gapCount,
-        expectedText: joinScaffoldTokens(conjRun)
-      });
-      gapCount++;
+      var split = splitGapAroundLiteralCueWords(conjRun.slice(), verbCue || '');
+      if (split.gapTokens.length) {
+        segments.push({
+          type: 'gap',
+          gapIdx: gapCount,
+          expectedText: joinScaffoldTokens(split.gapTokens)
+        });
+        gapCount++;
+      }
+      if (split.fixedTail.length) {
+        pushFixedSegment(segments, joinScaffoldTokens(split.fixedTail));
+      }
       conjRun = [];
     }
 
-    tokens.forEach(function(tok) {
+    for (var prefixIdx = 0; prefixIdx < firstCueIdx; prefixIdx++) {
+      pushFixedSegment(segments, tokens[prefixIdx]);
+    }
+
+    tokens.slice(firstCueIdx).forEach(function(tok) {
       if (/^[.,!?;:]+$/.test(tok)) {
         if (conjRun.length) {
           conjRun.push(tok);
-        } else if (segments.length && segments[segments.length - 1].type === 'fixed') {
-          segments[segments.length - 1].text += tok;
         } else {
-          segments.push({ type: 'fixed', text: tok });
+          pushFixedSegment(segments, tok);
         }
         return;
       }
 
-      if (fixedWordSet[normScaffoldWord(tok)]) {
-        flushConjRun();
-        segments.push({ type: 'fixed', text: tok });
+      var normTok = normScaffoldWord(tok);
+      if (fixedWordSet[normTok]) {
+        if (isVerbPhraseModifierToken(tok) && conjRun.length && !trailingFixed[normTok]) {
+          conjRun.push(tok);
+          return;
+        }
+        flushConjRun(verbCues[0]);
+        pushFixedSegment(segments, tok);
         return;
       }
       conjRun.push(tok);
     });
-    flushConjRun();
+    flushConjRun(verbCues[0]);
 
     if (!segments.some(function(seg) { return seg.type === 'gap'; })) return null;
     var verbDisplayHints = buildVerbCueDisplayHints(cues, answer);
-    assignGapVerbMetadata(segments, verbCues, verbDisplayHints, answer, fixedWordSet);
+    assignGapVerbMetadata(segments, verbCues, verbDisplayHints);
     return { segments: segments, answer: answer, cues: cues, verbCues: verbCues };
   }
 
