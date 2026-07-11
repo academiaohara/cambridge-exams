@@ -470,7 +470,11 @@
           resizeUnderlineGapInput(input);
         }
       } else if (isActive) {
-        wrap.classList.add('sp-wbseq-sentence--active');
+        if (state.failed[sid]) {
+          wrap.classList.add('sp-wbseq-sentence--failed', 'sp-wbseq-gap--incorrect');
+        } else {
+          wrap.classList.add('sp-wbseq-sentence--active');
+        }
         if (input) {
           input.disabled = false;
           input.readOnly = false;
@@ -607,8 +611,6 @@
     if (!given) return { handled: true, noop: true };
 
     var ok = isWordBankSeqAnswerCorrect(given, sentence);
-    wrap.classList.toggle('sp-wbseq-gap--correct', ok);
-    wrap.classList.toggle('sp-wbseq-gap--incorrect', !ok);
 
     var chargeLife = false;
     if (ok) {
@@ -629,6 +631,8 @@
       state.failed[state.activeId] = { answer: given };
       syncWordBankSeqStateToScreen(screen, root);
     }
+
+    updateWordBankSeqUI(root, screen);
 
     var allComplete = sentences.every(function(s) { return !!state.completed[s.sentenceId]; });
 
