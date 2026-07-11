@@ -2349,43 +2349,38 @@ button.sp-vocab-word-card:focus-visible {
   gap: 14px;
 }
 
-.sp-cw-clue-header {
+.sp-cw-clue-card {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 2px solid #d8ecff;
+  box-shadow: 0 4px 16px rgba(20, 70, 120, 0.1);
+}
+
+.sp-cw-clue-body {
   display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.sp-cw-direction {
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: var(--sp-duo-blue-light);
-  border: 2px solid var(--sp-duo-blue);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--sp-duo-blue-dark);
-}
-
-.sp-cw-clue-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1.8rem;
-  min-height: 1.8rem;
-  border-radius: 999px;
-  background: #eef2ff;
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: var(--sp-duo-blue-dark);
+  flex-direction: column;
+  gap: 6px;
 }
 
 .sp-cw-clue-text {
   margin: 0;
-  font-size: clamp(0.92rem, 0.55rem + 1.1vw, 1.02rem);
-  line-height: 1.55;
+  font-size: clamp(0.95rem, 0.6rem + 1vw, 1.05rem);
+  line-height: 1.5;
   color: var(--text-primary, #1e293b);
+}
+
+.sp-cw-clue-text--definition {
+  font-weight: 650;
+  color: #1f2937;
+}
+
+.sp-cw-clue-text--phrase {
+  font-weight: 600;
+  color: #4b5563;
+  font-size: clamp(0.9rem, 0.55rem + 0.95vw, 1rem);
 }
 
 .sp-cw-letter-row {

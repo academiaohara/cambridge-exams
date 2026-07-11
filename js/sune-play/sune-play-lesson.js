@@ -862,7 +862,10 @@
       case 'column_matching':
         return p.instruction || 'Match beginnings with endings.';
       case 'crossword_clues':
-        return ((p.clueNumber != null ? p.clueNumber + '. ' : '') + (p.clue || '')).trim();
+        if (typeof LearningCrossword !== 'undefined' && LearningCrossword.formatClueDisplay) {
+          return LearningCrossword.formatClueDisplay(p.clue || '').trim();
+        }
+        return (p.clue || '').replace(/\s*\(\d+\)\s*$/, '').trim();
       case 'synced_gap_fill':
         return (p.sentences && p.sentences[0]) || p.instruction || '';
       case 'comma_placement':
