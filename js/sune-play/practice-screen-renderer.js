@@ -373,6 +373,11 @@
     return counts;
   }
 
+  /** Mark only the first N duplicate chips (in bank order) as used. */
+  function isWordBankChipInstanceUsed(wordOrdinal, usedCount) {
+    return usedCount > 0 && wordOrdinal < usedCount;
+  }
+
   function pickRandomIncompleteSentence(sentences, completed) {
     var remaining = (sentences || []).filter(function(s) {
       return !completed[s.sentenceId];
@@ -406,11 +411,13 @@
   function updateWordBankSeqWordBank(root) {
     var state = root._wordBankSeqState;
     if (!state) return;
+    var ordinalByWord = {};
     root.querySelectorAll('.sp-gap-wordbank-chip').forEach(function(chip) {
       var word = (chip.getAttribute('data-word') || '').toLowerCase().trim();
+      var wordOrdinal = ordinalByWord[word] || 0;
+      ordinalByWord[word] = wordOrdinal + 1;
       var usedCount = state.usedWords[word] || 0;
-      var maxUses = state.wordCounts[word] || 0;
-      var depleted = maxUses > 0 && usedCount >= maxUses;
+      var depleted = isWordBankChipInstanceUsed(wordOrdinal, usedCount);
       chip.classList.toggle('sp-gap-wordbank-chip--used', depleted);
       chip.setAttribute('aria-disabled', depleted ? 'true' : 'false');
       if (depleted) chip.classList.remove('sp-gap-wordbank-chip--selected');
@@ -543,10 +550,13 @@
         });
         var typed = e.target.value.trim().toLowerCase();
         if (typed) {
+          var chipSelected = false;
           root.querySelectorAll('.sp-gap-wordbank-chip').forEach(function(c) {
+            if (chipSelected) return;
             if ((c.getAttribute('data-word') || '').toLowerCase() === typed &&
                 !c.classList.contains('sp-gap-wordbank-chip--used')) {
               c.classList.add('sp-gap-wordbank-chip--selected');
+              chipSelected = true;
             }
           });
         }
@@ -802,11 +812,13 @@
   function updatePassageGapWordBank(root) {
     var state = root._passageGapState;
     if (!state) return;
+    var ordinalByWord = {};
     root.querySelectorAll('.sp-passage-wordbank [data-word]').forEach(function(chip) {
       var word = chip.getAttribute('data-word');
-      var maxUses = state.verbCounts[word] || 0;
+      var wordOrdinal = ordinalByWord[word] || 0;
+      ordinalByWord[word] = wordOrdinal + 1;
       var confirmed = state.confirmedVerbs[word] || 0;
-      var depleted = maxUses > 0 && confirmed >= maxUses;
+      var depleted = isWordBankChipInstanceUsed(wordOrdinal, confirmed);
       chip.classList.toggle('sp-passage-wordbank-chip--used', depleted);
       if (chip.classList.contains('sp-passage-wordbank-chip--selectable')) {
         chip.disabled = depleted;
