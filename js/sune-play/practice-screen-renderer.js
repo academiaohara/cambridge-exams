@@ -2744,7 +2744,24 @@
     return { parts: parts.length ? parts : [''], endIdx: idx };
   }
 
-  function assignGapVerbMetadata(segments, verbCues, answer, fixedWordSet) {
+  function buildVerbCueDisplayHints(cues, answer) {
+    var hints = [];
+    var hiddenModifiers = [];
+
+    cues.forEach(function(cue, i) {
+      if (isCueFixed(cue, i, answer)) {
+        if (i > 0 && CONJ_CUE_MODIFIERS[cue.toLowerCase()] && !cueAppearsLiterallyInAnswer(cue, answer)) {
+          hiddenModifiers.push(cue);
+        }
+        return;
+      }
+      hints.push(hiddenModifiers.length ? hiddenModifiers.join(' ') + ' ' + cue : cue);
+      hiddenModifiers = [];
+    });
+    return hints;
+  }
+
+  function assignGapVerbMetadata(segments, verbCues, verbDisplayHints, answer, fixedWordSet) {
     var tokens = tokenizeAnswerSentence(answer);
     var tokenIdx = 0;
     var verbIdx = 0;
@@ -2761,7 +2778,7 @@
     segments.forEach(function(seg) {
       if (seg.type !== 'gap') return;
       var gapsForVerb = gapsPerVerb[verbIdx] || 1;
-      seg.baseVerb = verbCues[verbIdx] || '';
+      seg.baseVerb = (verbDisplayHints && verbDisplayHints[verbIdx]) || verbCues[verbIdx] || '';
       seg.showVerbTile = gapInVerb === gapsForVerb - 1;
       gapInVerb++;
       if (gapInVerb >= gapsForVerb) {
@@ -2820,7 +2837,8 @@
     flushConjRun();
 
     if (!segments.some(function(seg) { return seg.type === 'gap'; })) return null;
-    assignGapVerbMetadata(segments, verbCues, answer, fixedWordSet);
+    var verbDisplayHints = buildVerbCueDisplayHints(cues, answer);
+    assignGapVerbMetadata(segments, verbCues, verbDisplayHints, answer, fixedWordSet);
     return { segments: segments, answer: answer, cues: cues, verbCues: verbCues };
   }
 
