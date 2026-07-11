@@ -2868,26 +2868,26 @@
     tokens.slice(firstCueIdx).forEach(function(tok) {
       if (/^[.,!?;:]+$/.test(tok)) {
         if (conjRun.length) {
-          conjRun.push(tok);
-        } else {
-          pushFixedSegment(segments, tok);
+          flushConjRun(verbCues[gapCount]);
         }
+        pushFixedSegment(segments, tok);
         return;
       }
 
       var normTok = normScaffoldWord(tok);
       if (fixedWordSet[normTok]) {
         if (isVerbPhraseModifierToken(tok) && conjRun.length && !trailingFixed[normTok]) {
-          conjRun.push(tok);
+          flushConjRun(verbCues[gapCount]);
+          pushFixedSegment(segments, tok);
           return;
         }
-        flushConjRun(verbCues[0]);
+        flushConjRun(verbCues[gapCount]);
         pushFixedSegment(segments, tok);
         return;
       }
       conjRun.push(tok);
     });
-    flushConjRun(verbCues[0]);
+    flushConjRun(verbCues[gapCount]);
 
     if (!segments.some(function(seg) { return seg.type === 'gap'; })) return null;
     var verbDisplayHints = buildVerbCueDisplayHints(cues, answer);
