@@ -107,7 +107,7 @@
 
   function shouldCombineWordBankItems(exercise, itemIds, ruleFormat) {
     if (!itemIds || itemIds.length < 2) return false;
-    if (ruleFormat !== 'free_text_gap_fill') return false;
+    if (ruleFormat !== 'free_text_gap_fill' && ruleFormat !== 'word_bank_gap_fill') return false;
     var wordBank = exercise.words || exercise.wordBank || [];
     if (!wordBank.length) return false;
     return itemIds.every(function(itemId) {
