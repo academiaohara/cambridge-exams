@@ -1392,6 +1392,9 @@
   --dashboard-exercise-tools-gap: 16px;
   --dashboard-exercise-tools-bg: #fff4eb;
   --dashboard-top-spacing: 28px;
+  --dashboard-layout-right-gutter: 160px;
+  --dashboard-center-offset: 80px;
+  --dashboard-right-sidebar-inset: 86px;
   --brand-orange: #f47417;
   --brand-orange-dark: #d46110;
 }
@@ -1539,18 +1542,30 @@
   line-height: 1.35;
 }
 
+/* Narrow desktop: keep center content wide; trim decorative gutters & sidebars */
+@media (min-width: 901px) and (max-width: 1600px) {
+  :root {
+    --dashboard-right-sidebar-width: 280px;
+    --dashboard-layout-right-gutter: 32px;
+    --dashboard-center-offset: 24px;
+    --dashboard-right-sidebar-inset: 32px;
+    --dashboard-exercise-tools-width: 300px;
+    --dashboard-exercise-tools-min-width: 280px;
+  }
+}
+
 /* Unified 3-column desktop layout (left nav + center content + right widgets) */
 @media (min-width: 901px) {
   .dashboard-layout:not(.dashboard-layout--crossword-play):not(.dashboard-layout--exercise):not(.dashboard-layout-right-closed) {
     grid-template-columns: minmax(0, 1fr);
-    padding-right: calc(var(--dashboard-right-sidebar-width) + 160px);
+    padding-right: calc(var(--dashboard-right-sidebar-width) + var(--dashboard-layout-right-gutter));
     padding-bottom: 48px;
   }
 
   .dashboard-layout:not(.dashboard-layout--crossword-play):not(.dashboard-layout--exercise):not(.dashboard-layout-right-closed) .dashboard-center {
-    margin-left: 80px;
-    width: calc(100% - 80px);
-    max-width: calc(100% - 80px);
+    margin-left: var(--dashboard-center-offset);
+    width: calc(100% - var(--dashboard-center-offset));
+    max-width: calc(100% - var(--dashboard-center-offset));
     box-sizing: border-box;
   }
 
@@ -1560,8 +1575,8 @@
     right: 0;
     top: 0;
     height: 100vh;
-    width: calc(var(--dashboard-right-sidebar-width) + 86px);
-    padding-left: 86px;
+    width: calc(var(--dashboard-right-sidebar-width) + var(--dashboard-right-sidebar-inset));
+    padding-left: var(--dashboard-right-sidebar-inset);
     overflow-y: auto;
     z-index: 50;
     background: #f7f7f7;
