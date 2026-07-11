@@ -342,30 +342,49 @@
       {
         "id": "b1-u2-ex-b",
         "type": "exercise",
-        "exerciseType": "free_text_gap_fill",
+        "exerciseType": "word_bank_gap_fill",
         "exerciseTypeName": "B: Phrasal verbs",
         "title": "B: Phrasal verbs",
-        "instructions": "Write a phrasal verb in the correct form to replace the words in bold.",
-        "studentInstruction": "Write a phrasal verb in the correct form to replace the words in bold.",
+        "instructions": "Use each phrasal verb once.",
+        "studentInstruction": "Use each phrasal verb once.",
         "legacyKey": "B",
-        "legacyPattern": "gap-fill",
+        "legacyPattern": "word-bank-gap",
         "interaction": {
-          "formatType": "free_text_gap_fill"
+          "formatType": "word_bank_gap_fill"
         },
+        "words": [
+          "cross out",
+          "look up",
+          "point out",
+          "read out",
+          "rip up",
+          "rub out",
+          "write down"
+        ],
+        "wordBank": [
+          "cross out",
+          "look up",
+          "point out",
+          "read out",
+          "rip up",
+          "rub out",
+          "write down"
+        ],
         "items": [
           {
             "id": "b1-u2-exb-1",
-            "formatType": "free_text_gap_fill",
+            "formatType": "word_bank_gap_fill",
             "sentence": "Emma ...... the spelling mistake and corrected it.",
-            "answer": "rubbed out",
+            "answer": "rub out",
             "acceptedAnswers": [
+              "rub out",
               "rubbed out"
             ],
             "explanation": ""
           },
           {
             "id": "b1-u2-exb-2",
-            "formatType": "free_text_gap_fill",
+            "formatType": "word_bank_gap_fill",
             "sentence": "Why did Ben ...... his homework paper?",
             "answer": "rip up",
             "acceptedAnswers": [
@@ -375,17 +394,17 @@
           },
           {
             "id": "b1-u2-exb-3",
-            "formatType": "free_text_gap_fill",
-            "sentence": "If an answer is wrong, just ...... it ...... neatly.",
-            "answer": "cross, out",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "If an answer is wrong, just ...... it neatly.",
+            "answer": "cross out",
             "acceptedAnswers": [
-              "cross, out"
+              "cross out"
             ],
             "explanation": ""
           },
           {
             "id": "b1-u2-exb-4",
-            "formatType": "free_text_gap_fill",
+            "formatType": "word_bank_gap_fill",
             "sentence": "You can ...... unfamiliar words online.",
             "answer": "look up",
             "acceptedAnswers": [
@@ -395,7 +414,7 @@
           },
           {
             "id": "b1-u2-exb-5",
-            "formatType": "free_text_gap_fill",
+            "formatType": "word_bank_gap_fill",
             "sentence": "Please ...... your answer so everyone can hear it.",
             "answer": "read out",
             "acceptedAnswers": [
@@ -405,17 +424,18 @@
           },
           {
             "id": "b1-u2-exb-6",
-            "formatType": "free_text_gap_fill",
+            "formatType": "word_bank_gap_fill",
             "sentence": "Mrs Green ...... that the homework was due on Friday.",
-            "answer": "pointed out",
+            "answer": "point out",
             "acceptedAnswers": [
+              "point out",
               "pointed out"
             ],
             "explanation": ""
           },
           {
             "id": "b1-u2-exb-7",
-            "formatType": "free_text_gap_fill",
+            "formatType": "word_bank_gap_fill",
             "sentence": "Did you all ...... the page number?",
             "answer": "write down",
             "acceptedAnswers": [
