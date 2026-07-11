@@ -3674,6 +3674,14 @@ button.sp-vocab-word-card:focus-visible {
   opacity: 1;
   border-color: #86efac;
   background: #f0fdf4;
+  box-shadow: none;
+}
+
+.sp-wbseq-sentence--failed {
+  opacity: 1;
+  border-color: #fca5a5;
+  background: #fef2f2;
+  box-shadow: none;
 }
 
 .sp-wbseq-sentence--done .sp-gap-underline-input {
