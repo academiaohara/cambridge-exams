@@ -282,8 +282,8 @@
         '<button class="mobile-level-modal-close" onclick="BentoGrid.closeMobileLangModal()" aria-label="Close language picker">' +
           '<span class="material-symbols-outlined">close</span>' +
         '</button>' +
-        '<div class="mobile-level-modal-kicker">Translations</div>' +
-        '<h2 id="mobile-lang-title">Translate to</h2>' +
+        '<div class="mobile-level-modal-kicker">Language</div>' +
+        '<h2 id="mobile-lang-title">Instructions &amp; translations</h2>' +
         '<div class="mobile-level-modal-options">';
 
       langs.forEach(function(lang) {

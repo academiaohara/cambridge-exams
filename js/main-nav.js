@@ -178,8 +178,8 @@
         ? Tools.getTranslateLanguages()
         : [{ code: 'es', label: 'Español' }];
       var html = '<div class="lang-popover-inner">' +
-        '<div class="lang-popover-kicker">Translations</div>' +
-        '<div class="lang-popover-title">Translate to</div>' +
+        '<div class="lang-popover-kicker">Language</div>' +
+        '<div class="lang-popover-title">Instructions &amp; translations</div>' +
         '<div class="lang-popover-options">';
       langs.forEach(function(lang) {
         var isActive = lang.code === currentLang;

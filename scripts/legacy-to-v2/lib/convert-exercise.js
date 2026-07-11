@@ -189,6 +189,22 @@ export function convertLegacyExercise(exercise, exerciseKey, unitPrefix, unitMet
   var exerciseId = unitPrefix + '-ex-' + String(exerciseKey).toLowerCase();
   var title = exercise.title || ('Exercise ' + exerciseKey);
   var instructions = exercise.instructions || '';
+  var studentInstruction = exercise.studentInstruction || instructions;
+  if (typeof studentInstruction === 'string') {
+    studentInstruction = studentInstruction
+      .replace(/^Circle the\b/, 'Tap the')
+      .replace(/^Drag each\b/, 'Tap each')
+      .replace(/\bput a tick\b/gi, 'tap OK')
+      .replace(/\bClick A or B\b/, 'Tap A or B')
+      .replace(/\bClick on\b/, 'Tap')
+      .replace(/\bClick the\b/, 'Tap the');
+    if (studentInstruction === 'Each of the words in bold is in the wrong sentence. Write the correct words on the lines.') {
+      studentInstruction = 'Each bold word is in the wrong sentence. Type the correct word for each line.';
+    }
+    if (/put a tick/i.test(exercise.instructions || '') && !exercise.studentInstruction) {
+      studentInstruction = 'If the line is correct, tap OK. If there is an extra word, tap it.';
+    }
+  }
   var converted = {
     id: exerciseId,
     type: 'exercise',
@@ -196,7 +212,7 @@ export function convertLegacyExercise(exercise, exerciseKey, unitPrefix, unitMet
     exerciseTypeName: title,
     title: title,
     instructions: instructions,
-    studentInstruction: exercise.studentInstruction || instructions,
+    studentInstruction: studentInstruction,
     legacyKey: String(exerciseKey),
     legacyPattern: detection.legacyPattern,
     interaction: {

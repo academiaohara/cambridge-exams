@@ -20,6 +20,13 @@
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
+  function resolveInstruction(text) {
+    if (typeof InstructionI18n !== 'undefined') {
+      return InstructionI18n.resolveSync(text);
+    }
+    return text;
+  }
+
   function isSunePlayUnit(data) {
     if (!data) return false;
     var unitType = data.type;
@@ -651,12 +658,13 @@
 
     screenMount.innerHTML = renderer.PracticeScreenRenderer(screen);
     var screenRoot = screenMount.querySelector('.sp-screen');
-    var instructionText = getScreenInstruction(screen);
+    var instructionText = resolveInstruction(getScreenInstruction(screen));
     if (instructionText && screenRoot) {
       var existingInstruction = screenRoot.querySelector('.sp-session-instruction');
       if (existingInstruction) existingInstruction.remove();
       var instructionEl = document.createElement('p');
       instructionEl.className = 'sp-session-instruction';
+      instructionEl.setAttribute('data-instruction-source', getScreenInstruction(screen));
       instructionEl.textContent = instructionText;
       screenRoot.insertBefore(instructionEl, screenRoot.firstChild);
     }
