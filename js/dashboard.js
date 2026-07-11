@@ -130,8 +130,8 @@
       
       // Build sidebar content
       var sidebars = { left: '', right: '' };
-      if (typeof BentoGrid !== 'undefined') {
-        sidebars = BentoGrid._buildDashboardSidebars(exams, { includeNextLesson: true });
+      if (typeof DashboardNav !== 'undefined') {
+        sidebars = DashboardNav._buildDashboardSidebars(exams, { includeNextLesson: true });
       }
       var leftSidebarContent = sidebars.left;
       var rightSidebarContent = sidebars.right;
@@ -141,8 +141,8 @@
         '<div class="dashboard-center">' +
           (typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml ? MainNav.buildMobileTopBarHtml() : '') +
           this._renderCenterHeader('Home', 'Your learning dashboard for ' + level) +
-          '<div class="bento-center-wrapper">' +
-            '<div id="bento-grid-container"></div>' +
+          '<div class="dashboard-home-wrapper">' +
+            '<div id="dashboard-home-container"></div>' +
           '</div>' +
         '</div>' +
         this._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', rightSidebarContent) +
@@ -151,11 +151,11 @@
       content.innerHTML = html;
       this._applySidebarState();
 
-      // Render bento grid into its container after DOM is updated
-      if (typeof BentoGrid !== 'undefined') {
-        const bentoContainer = document.getElementById('bento-grid-container');
-        if (bentoContainer) BentoGrid.render(bentoContainer);
-        BentoGrid._startGradeCarousel();
+      // Render home mode cards into the center container
+      if (typeof DashboardNav !== 'undefined') {
+        const homeContainer = document.getElementById('dashboard-home-container');
+        if (homeContainer) DashboardNav.render(homeContainer);
+        DashboardNav._startGradeCarousel();
       }
       if (typeof MainNav !== 'undefined') {
         this._initStatsPopovers();
@@ -272,8 +272,8 @@
       }
 
       var sidebars = { left: '', right: '' };
-      if (typeof BentoGrid !== 'undefined') {
-        sidebars = BentoGrid._buildDashboardSidebars(exams);
+      if (typeof DashboardNav !== 'undefined') {
+        sidebars = DashboardNav._buildDashboardSidebars(exams);
       }
       var leftSidebarContent = sidebars.left;
       var rightSidebarContent = sidebars.right;
@@ -281,8 +281,8 @@
       var mobileNavHtml =
         typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
           ? MainNav.buildMobileBottomNavHtml()
-          : (typeof BentoGrid !== 'undefined'
-            ? BentoGrid._renderMobileBottomNav(AppState.currentLevel || 'C1')
+          : (typeof DashboardNav !== 'undefined'
+            ? DashboardNav._renderMobileBottomNav(AppState.currentLevel || 'C1')
             : '');
 
       var mobileTopBarHtml =
@@ -305,8 +305,8 @@
 
       content.innerHTML = html;
       this._applySidebarState();
-      if (typeof BentoGrid !== 'undefined') {
-        BentoGrid._startGradeCarousel();
+      if (typeof DashboardNav !== 'undefined') {
+        DashboardNav._startGradeCarousel();
         if (typeof MainNav !== 'undefined' && MainNav.setMobileActive) {
           MainNav.setMobileActive('tests');
         }
@@ -551,14 +551,14 @@
     // ── Random Test card (navigates to dedicated page) ───────────────────
     _renderRandomTestCard: function(mode) {
       var level = AppState.currentLevel || 'C1';
-      if (typeof BentoGrid !== 'undefined' && BentoGrid._buildRandomTestPathCardHtml) {
-        return BentoGrid._buildRandomTestPathCardHtml(level);
+      if (typeof DashboardNav !== 'undefined' && DashboardNav._buildRandomTestPathCardHtml) {
+        return DashboardNav._buildRandomTestPathCardHtml(level);
       }
       var hasExams = typeof AccessControl !== 'undefined'
         ? AccessControl.effectiveHasExamsPack()
         : !!AppState.hasExamsPack;
       var onclick = hasExams
-        ? 'BentoGrid.openTests(\'' + level + '\', \'Random\')'
+        ? 'DashboardNav.openTests(\'' + level + '\', \'Random\')'
         : 'Dashboard.showExamsUpgradeGate()';
       return '<button type="button" class="tests-random-path-card' + (hasExams ? '' : ' tests-random-path-card--locked') + '" onclick="' + onclick + '">' +
         '<span class="tests-random-path-icon-wrap"><span class="material-symbols-outlined">shuffle</span></span>' +

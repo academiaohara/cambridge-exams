@@ -168,8 +168,8 @@
       try { localStorage.setItem(_PLAN_KEY, JSON.stringify(plan)); } catch (e) { /* ignore */ }
       try { localStorage.setItem(_COMPLETED_KEY, JSON.stringify([])); } catch (e) { /* ignore */ }
 
-      if (opts.refreshPage && typeof BentoGrid !== 'undefined' && BentoGrid.openTests) {
-        BentoGrid.openTests(AppState.currentLevel || 'C1', 'Random', { skipHistory: true });
+      if (opts.refreshPage && typeof DashboardNav !== 'undefined' && DashboardNav.openTests) {
+        DashboardNav.openTests(AppState.currentLevel || 'C1', 'Random', { skipHistory: true });
         return;
       }
       if (!opts.skipStart) {
@@ -208,8 +208,8 @@
 
     /** Start a brand-new mixed test session (opens the random test page). */
     start: function () {
-      if (typeof BentoGrid !== 'undefined' && BentoGrid.openTests) {
-        BentoGrid.openTests(AppState.currentLevel || 'C1', 'Random');
+      if (typeof DashboardNav !== 'undefined' && DashboardNav.openTests) {
+        DashboardNav.openTests(AppState.currentLevel || 'C1', 'Random');
       } else {
         this.generateNew();
       }
@@ -301,8 +301,8 @@
       var content = document.getElementById('main-content');
       if (!content) { loadDashboard(); return; }
       var level = AppState.currentLevel || 'C1';
-      var backAction = typeof BentoGrid !== 'undefined' && BentoGrid.openTests
-        ? 'BentoGrid.openTests(\'' + level + '\', \'Random\')'
+      var backAction = typeof DashboardNav !== 'undefined' && DashboardNav.openTests
+        ? 'DashboardNav.openTests(\'' + level + '\', \'Random\')'
         : 'Dashboard.renderSubpage(\'practice\')';
       content.innerHTML =
         '<div class="mixed-test-finish">' +

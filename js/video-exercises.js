@@ -12,7 +12,7 @@
   }
 
   function esc(str) {
-    if (typeof BentoGrid !== 'undefined' && BentoGrid._escapeHTML) return BentoGrid._escapeHTML(str);
+    if (typeof DashboardNav !== 'undefined' && DashboardNav._escapeHTML) return DashboardNav._escapeHTML(str);
     return String(str == null ? '' : str)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;')
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -124,9 +124,9 @@
 
     _buildSidebars: function() {
       var sidebars = { left: '', right: '' };
-      if (typeof BentoGrid !== 'undefined') {
+      if (typeof DashboardNav !== 'undefined') {
         var exams = window.EXAMS_DATA[AppState.currentLevel || 'C1'] || [];
-        sidebars = BentoGrid._buildDashboardSidebars(exams, { includeGradeTracker: true });
+        sidebars = DashboardNav._buildDashboardSidebars(exams, { includeGradeTracker: true });
       }
       return sidebars;
     },
@@ -156,7 +156,7 @@
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       if (typeof MainNav !== 'undefined' && MainNav.initMobileStatsPopovers) MainNav.initMobileStatsPopovers();
-      if (typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
+      if (typeof DashboardNav !== 'undefined') DashboardNav._startGradeCarousel();
       this._setView('videoExercises');
     },
 

@@ -27,7 +27,7 @@ Todo el código se encapsula en **IIFEs** (`(function() { ... })()`) para evitar
 | `micro-learning.js` | Módulo de micro-aprendizaje (tarjetas rápidas). |
 | `streak-manager.js` | Gestión de rachas de estudio diarias y calendario de actividad. |
 | `score-calculator.js` | Cálculo de puntuaciones y conversión a la Cambridge English Scale. |
-| `bento-grid.js` | Renderizado del grid de estadísticas en el dashboard. |
+| `dashboard-nav.js` | Navegación del dashboard: home, routing de secciones, sidebars y móvil. |
 | `question-nav.js` | Navegación entre preguntas dentro de un ejercicio. |
 | `sync-manager.js` | Sincronización de datos con Supabase. |
 | `auth.js` | Autenticación de usuarios (Supabase). |

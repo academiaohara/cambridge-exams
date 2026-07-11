@@ -838,18 +838,10 @@ button.stats-bar-item.is-active {
   box-sizing: border-box;
 }
 
-/* ── Desktop layout: hide old bento cards, show mode cards ── */
+/* ── Desktop layout: home mode cards ── */
 @media (min-width: 769px) {
   .desktop-mode-cards {
     display: flex;
-  }
-
-  .bento-top-row,
-  .bento-learning-row,
-  .bento-progress-row,
-  .bento-mixed-row,
-  .bento-grade-row {
-    display: none !important;
   }
 
   body:has(.dashboard-layout) .app-container {
@@ -907,7 +899,7 @@ button.stats-bar-item.is-active {
     box-sizing: border-box;
   }
 
-  .dashboard-center .bento-center-wrapper {
+  .dashboard-center .dashboard-home-wrapper {
     background: transparent;
     border-radius: 0;
     padding: 0;
@@ -958,10 +950,7 @@ button.stats-bar-item.is-active {
     display: none;
   }
 
-  .mobile-learn-pane--legacy {
-    display: none !important;
-  }
-
+  .mobile-learn-pane--legacy,
   .mobile-app-hero {
     display: none !important;
   }
@@ -1256,7 +1245,7 @@ body.mobile-popover-open {
     padding-bottom: calc(64px + env(safe-area-inset-bottom));
   }
 
-  .bento-grid {
+  .dashboard-home {
     padding-bottom: calc(64px + env(safe-area-inset-bottom));
   }
 

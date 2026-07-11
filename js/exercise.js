@@ -704,9 +704,9 @@
             if (input) {
               input.value = answer;
               if (partConfig.type === 'word-formation' &&
-                typeof BentoGrid !== 'undefined' &&
-                typeof BentoGrid._resizeCuInput === 'function') {
-                BentoGrid._resizeCuInput(input);
+                typeof DashboardNav !== 'undefined' &&
+                typeof DashboardNav._resizeCuInput === 'function') {
+                DashboardNav._resizeCuInput(input);
               }
             }
             break;
@@ -1667,8 +1667,8 @@
       App.restoreExamStatuses();
       var closingMode = AppState.currentMode;
       if (!opts.forceDashboard && (closingMode === 'practice' || closingMode === 'exam')) {
-        if (typeof BentoGrid !== 'undefined' && BentoGrid.openTests) {
-          BentoGrid.openTests(AppState.currentLevel || 'C1', returnToExamId, {
+        if (typeof DashboardNav !== 'undefined' && DashboardNav.openTests) {
+          DashboardNav.openTests(AppState.currentLevel || 'C1', returnToExamId, {
             mode: closingMode,
             skipHistory: !!opts.skipHistory
           });
@@ -1691,8 +1691,8 @@
       } else {
         if (typeof App !== 'undefined' && App.openLearningHome) {
           App.openLearningHome({ skipHistory: !!opts.skipHistory });
-        } else if (typeof BentoGrid !== 'undefined') {
-          BentoGrid.openCourseSection('learning');
+        } else if (typeof DashboardNav !== 'undefined') {
+          DashboardNav.openCourseSection('learning');
         }
       }
     },

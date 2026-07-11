@@ -477,12 +477,12 @@
             '<span class="sw-duo-title">Quick links</span>' +
           '</div>' +
           '<div class="profile-duo-side-links">' +
-            '<button type="button" class="profile-duo-side-link" onclick="BentoGrid.openGradeEvolution()">' +
+            '<button type="button" class="profile-duo-side-link" onclick="DashboardNav.openGradeEvolution()">' +
               '<span class="material-symbols-outlined" aria-hidden="true">query_stats</span>' +
               '<span>Grade evolution</span>' +
               '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
             '</button>' +
-            '<button type="button" class="profile-duo-side-link" onclick="BentoGrid.openStreakSection()">' +
+            '<button type="button" class="profile-duo-side-link" onclick="DashboardNav.openStreakSection()">' +
               '<span class="material-symbols-outlined" aria-hidden="true">local_fire_department</span>' +
               '<span>Streak calendar</span>' +
               '<span class="material-symbols-outlined profile-duo-side-chevron" aria-hidden="true">chevron_right</span>' +
@@ -655,8 +655,8 @@
       var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
       var leftSidebarContent = '';
-      if (typeof BentoGrid !== 'undefined' && BentoGrid._buildDashboardSidebars) {
-        leftSidebarContent = BentoGrid._buildDashboardSidebars(exams, { includeGradeTracker: false, includeNextLesson: false }).left;
+      if (typeof DashboardNav !== 'undefined' && DashboardNav._buildDashboardSidebars) {
+        leftSidebarContent = DashboardNav._buildDashboardSidebars(exams, { includeGradeTracker: false, includeNextLesson: false }).left;
       } else if (typeof MainNav !== 'undefined') {
         leftSidebarContent = MainNav.buildSidebarHtml('profile');
       }

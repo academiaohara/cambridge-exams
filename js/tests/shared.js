@@ -9,72 +9,7 @@
     return { scaleBounds: [140, 210], gradeBands: [] };
   }
 
-  Object.assign(window.BentoGrid, {
-    _renderTopRow: function(exams) {
-      var available = (exams || []).filter(function(e) { return e.status === 'available'; });
-      var availableCount = available.length;
-
-      var completedExams = 0;
-      var startedExams = 0;
-      available.forEach(function(exam) {
-        var secs = exam.sections || {};
-        var hasCompleted = Object.keys(secs).some(function(s) { return secs[s].completed && secs[s].completed.length > 0; });
-        var hasInProgress = Object.keys(secs).some(function(s) { return secs[s].inProgress && secs[s].inProgress.length > 0; });
-        if (hasCompleted) completedExams++;
-        else if (hasInProgress) startedExams++;
-      });
-
-      var testsSubtitle = availableCount === 0
-        ? 'No tests available yet'
-        : (completedExams > 0
-          ? availableCount + ' tests · ' + completedExams + ' completed'
-          : (startedExams > 0
-            ? availableCount + ' tests · ' + startedExams + ' in progress'
-            : availableCount + ' tests available'));
-
-      return '<div class="bento-top-row bento-top-row--tests">' +
-
-        '<div class="bento-card bento-card-tests" onclick="BentoGrid.openTests()">' +
-          '<div class="bento-hover-overlay"></div>' +
-          '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Tests</div>' +
-            '<div class="bento-card-desc">' + testsSubtitle + '</div>' +
-            '<div class="bento-card-hover-info">Practice or simulate Cambridge exams — choose your level, pick a test, and work through each section at your own pace or under timed conditions.</div>' +
-          '</div>' +
-        '</div>' +
-
-      '</div>';
-    },
-
-    _renderMixedRow: function(exams) {
-      var availableCount = (exams || []).filter(function(e) { return e.status === 'available'; }).length;
-      var lockedByPack = !(typeof AccessControl !== 'undefined'
-        ? AccessControl.effectiveHasExamsPack()
-        : AppState.hasExamsPack);
-      var disabled = availableCount === 0 || lockedByPack;
-      var clickAttr = disabled
-        ? (lockedByPack ? ' onclick="Dashboard.showExamsUpgradeGate()"' : '')
-        : ' onclick="BentoGrid.startMixedTest()"';
-      var descText = disabled
-        ? (lockedByPack
-          ? 'Pack Exams required to use Random Mix'
-          : 'No tests available yet')
-        : 'Mix exercises from ' + availableCount + ' tests — speaking 3 & 4 always from the same test';
-      return '<div class="bento-mixed-row">' +
-        '<div class="bento-card bento-card-mixed' + (disabled ? ' disabled' : '') + '"' + clickAttr + '>' +
-          '<div class="bento-hover-overlay"></div>' +
-          '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">' +
-              '<span class="material-symbols-outlined" style="vertical-align:middle;font-size:1.4rem;margin-right:6px">shuffle</span>' +
-              'Random Mix' +
-            '</div>' +
-            '<div class="bento-card-desc">' + descText + '</div>' +
-            '<div class="bento-card-hover-info">Combine exercises from multiple tests in a single session — a great way to practice across all sections.</div>' +
-          '</div>' +
-        '</div>' +
-      '</div>';
-    },
-
+  Object.assign(window.DashboardNav, {
     startMixedTest: function() {
       if (window.MixedTest) {
         MixedTest.start();
@@ -108,8 +43,8 @@
       if (opts.skipHistory) return;
       var path = window.location.pathname || '/';
       if (path === '/stats' || path.slice(-6) === '/stats') {
-        if (BentoGrid._gradeEvolutionPushedHistory) {
-          BentoGrid._gradeEvolutionPushedHistory = false;
+        if (DashboardNav._gradeEvolutionPushedHistory) {
+          DashboardNav._gradeEvolutionPushedHistory = false;
           history.back();
         } else if (typeof Router !== 'undefined') {
           var dashState = { view: 'dashboard' };
@@ -119,8 +54,8 @@
     },
 
     selectMode: function(mode) {
-      if (typeof BentoGrid !== 'undefined' && BentoGrid.openTests) {
-        BentoGrid.openTests(AppState.currentLevel || 'C1', null, { mode: mode });
+      if (typeof DashboardNav !== 'undefined' && DashboardNav.openTests) {
+        DashboardNav.openTests(AppState.currentLevel || 'C1', null, { mode: mode });
         return;
       }
       if (typeof Dashboard !== 'undefined' && Dashboard.renderSubpage) {
@@ -176,7 +111,7 @@
         } catch (e) { /* skip */ }
       });
 
-      var bodyHtml = BentoGrid._buildGradeEvoChart(examScores, allSkills, skillColors, gradeBands, scaleMin, scaleMax);
+      var bodyHtml = DashboardNav._buildGradeEvoChart(examScores, allSkills, skillColors, gradeBands, scaleMin, scaleMax);
       var examCount = examScores.length;
 
       var el = document.createElement('div');
@@ -204,7 +139,7 @@
                 : '') +
             '</div>' +
             '<div class="grade-evolution-body">' +
-              '<button type="button" class="grade-evolution-expand-btn" onclick="BentoGrid._toggleGradeEvolutionExpand()" title="Larger chart" aria-label="Larger chart">' +
+              '<button type="button" class="grade-evolution-expand-btn" onclick="DashboardNav._toggleGradeEvolutionExpand()" title="Larger chart" aria-label="Larger chart">' +
                 '<span class="material-symbols-outlined" aria-hidden="true">open_in_full</span>' +
                 '<span class="grade-evolution-expand-label">Larger</span>' +
               '</button>' +
@@ -216,14 +151,14 @@
       document.body.appendChild(el);
 
       el.addEventListener('click', function(e) {
-        if (e.target === el) BentoGrid.closeGradeEvolution();
+        if (e.target === el) DashboardNav.closeGradeEvolution();
       });
       var closeBtn = el.querySelector('.grade-evolution-modal-close');
       if (closeBtn) {
         closeBtn.addEventListener('click', function(e) {
           e.preventDefault();
           e.stopPropagation();
-          BentoGrid.closeGradeEvolution();
+          DashboardNav.closeGradeEvolution();
         });
       }
 
@@ -232,9 +167,9 @@
       if (!opts.fromRoute && !onStatsRoute && typeof Router !== 'undefined') {
         var geState = { view: 'gradeEvolution' };
         history.pushState(geState, '', Router.stateToPath(geState));
-        BentoGrid._gradeEvolutionPushedHistory = true;
+        DashboardNav._gradeEvolutionPushedHistory = true;
       } else {
-        BentoGrid._gradeEvolutionPushedHistory = false;
+        DashboardNav._gradeEvolutionPushedHistory = false;
       }
     },
 
@@ -409,7 +344,7 @@
           svg += '<circle cx="' + p.x + '" cy="' + p.y + '" r="' + (dotR + 2) + '" fill="' + color + '" opacity="0.18"/>';
           svg += '<circle cx="' + p.x + '" cy="' + p.y + '" r="' + dotR + '" fill="' + color + '" stroke="white" stroke-width="2.5"' +
             ' data-ge-tip="' + tipText + '" data-ge-color="' + color + '"' +
-            ' onmouseenter="BentoGrid._showGeTip(event,this)" onmouseleave="BentoGrid._hideGeTip()"' +
+            ' onmouseenter="DashboardNav._showGeTip(event,this)" onmouseleave="DashboardNav._hideGeTip()"' +
             ' style="cursor:pointer"/>';
         });
         svg += '</g>';
@@ -423,7 +358,7 @@
         var color = skillColors[skill] || '#6366f1';
         var sid = 'ge-series-' + skill.replace(/[\s/]+/g, '-');
         var isTotal = skill === 'Total';
-        legendHtml += '<button class="ge-legend-btn active" data-series="' + sid + '" onclick="BentoGrid.toggleGradeEvoSeries(\'' + sid + '\', this)" style="--ge-color:' + color + '">' +
+        legendHtml += '<button class="ge-legend-btn active" data-series="' + sid + '" onclick="DashboardNav.toggleGradeEvoSeries(\'' + sid + '\', this)" style="--ge-color:' + color + '">' +
           '<span class="ge-legend-dot' + (isTotal ? ' ge-legend-dash' : '') + '" style="background:' + color + '"></span>' +
           '<span>' + self._escapeHTML(skill) + '</span>' +
         '</button>';

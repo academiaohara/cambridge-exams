@@ -14,7 +14,7 @@
   var lessonState = null;
 
   function esc(str) {
-    if (typeof BentoGrid !== 'undefined' && BentoGrid._escapeHTML) return BentoGrid._escapeHTML(str);
+    if (typeof DashboardNav !== 'undefined' && DashboardNav._escapeHTML) return DashboardNav._escapeHTML(str);
     return String(str == null ? '' : str)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;')
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -62,8 +62,8 @@
   }
 
   function syncExerciseProgressToSupabase(sectionIdx, score, total) {
-    if (!lessonState || typeof BentoGrid === 'undefined' || !BentoGrid._saveSunePlayExerciseToSupabase) return;
-    BentoGrid._saveSunePlayExerciseToSupabase(
+    if (!lessonState || typeof DashboardNav === 'undefined' || !DashboardNav._saveSunePlayExerciseToSupabase) return;
+    DashboardNav._saveSunePlayExerciseToSupabase(
       lessonState.level,
       lessonState.unitId,
       sectionIdx,
@@ -83,8 +83,8 @@
   function maybeMarkReviewUnitComplete(level, unitId, unitData, progress) {
     if (!unitData || (unitData.type !== 'review' && unitData.type !== 'progress_test')) return;
     if (!areAllRequiredExercisesComplete(unitData, progress)) return;
-    if (typeof BentoGrid !== 'undefined' && BentoGrid._markCourseUnitOpened) {
-      BentoGrid._markCourseUnitOpened(level, unitId);
+    if (typeof DashboardNav !== 'undefined' && DashboardNav._markCourseUnitOpened) {
+      DashboardNav._markCourseUnitOpened(level, unitId);
     }
   }
 
@@ -243,8 +243,8 @@
   }
 
   function showSessionExitConfirm(onLeave) {
-    if (typeof BentoGrid !== 'undefined' && BentoGrid._showLearningExitConfirm) {
-      BentoGrid._showLearningExitConfirm(onLeave, {
+    if (typeof DashboardNav !== 'undefined' && DashboardNav._showLearningExitConfirm) {
+      DashboardNav._showLearningExitConfirm(onLeave, {
         message: 'Are you sure you want to leave? You will have to start the exercise from scratch.',
         stayLabel: 'Keep learning',
         leaveLabel: 'Leave'
@@ -1532,8 +1532,8 @@
   // ─── Init ────────────────────────────────────────────────────────────
 
   function syncLessonUrl(replace) {
-    if (!lessonState || typeof Router === 'undefined' || typeof BentoGrid === 'undefined') return;
-    if (!BentoGrid._syncCourseUnitUrl || !BentoGrid._currentUnitId || !BentoGrid._currentBlockKey) return;
+    if (!lessonState || typeof Router === 'undefined' || typeof DashboardNav === 'undefined') return;
+    if (!DashboardNav._syncCourseUnitUrl || !DashboardNav._currentUnitId || !DashboardNav._currentBlockKey) return;
 
     var sectionIdx;
     if (lessonState.phase === 'theory') {
@@ -1550,7 +1550,7 @@
       sectionIdx = lessonState.theoryCardIdx || 0;
     }
 
-    BentoGrid._syncCourseUnitUrl(sectionIdx, replace !== false);
+    DashboardNav._syncCourseUnitUrl(sectionIdx, replace !== false);
   }
 
   function init(opts) {
@@ -1585,8 +1585,8 @@
       if (resolvedExerciseId) {
         opts.startExerciseId = resolvedExerciseId;
         lessonState.pendingExerciseId = resolvedExerciseId;
-        if (!opts.startNodeId && typeof BentoGrid !== 'undefined' && BentoGrid._resolveSunePlayNodeForExercise) {
-          opts.startNodeId = BentoGrid._resolveSunePlayNodeForExercise(unitData, resolvedExerciseId);
+        if (!opts.startNodeId && typeof DashboardNav !== 'undefined' && DashboardNav._resolveSunePlayNodeForExercise) {
+          opts.startNodeId = DashboardNav._resolveSunePlayNodeForExercise(unitData, resolvedExerciseId);
         }
       }
     }

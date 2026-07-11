@@ -116,8 +116,8 @@
       if (!AppState.currentExercise.answers) AppState.currentExercise.answers = {};
       AppState.currentExercise.answers[qNum] = el.value;
       Timer.updateScoreDisplay();
-      if (typeof BentoGrid !== 'undefined' && typeof BentoGrid._resizeCuInput === 'function') {
-        BentoGrid._resizeCuInput(el);
+      if (typeof DashboardNav !== 'undefined' && typeof DashboardNav._resizeCuInput === 'function') {
+        DashboardNav._resizeCuInput(el);
       }
     },
 

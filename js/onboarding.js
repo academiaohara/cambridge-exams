@@ -195,13 +195,13 @@
   }
 
   function openFirstB1Topic() {
-    if (typeof BentoGrid === 'undefined') return;
-    BentoGrid._courseLevel = 'B1';
-    BentoGrid._courseSection = 'learning';
+    if (typeof DashboardNav === 'undefined') return;
+    DashboardNav._courseLevel = 'B1';
+    DashboardNav._courseSection = 'learning';
     if (typeof MainNav !== 'undefined' && MainNav.setActive) {
       MainNav.setActive('learning');
     }
-    BentoGrid.openCourseUnit('Unit1', 'data/Course/B1/Unit1.json', 0);
+    DashboardNav.openCourseUnit('Unit1', 'data/Course/B1/Unit1.json', 0);
   }
 
   window.Onboarding = {
@@ -366,8 +366,8 @@
 
         _placementUnitId = ptItem.id;
         _placementUnitData = unitData;
-        _placementUsesSunePlay = typeof BentoGrid !== 'undefined' &&
-          BentoGrid._isSunePlayUnit && BentoGrid._isSunePlayUnit(unitData) &&
+        _placementUsesSunePlay = typeof DashboardNav !== 'undefined' &&
+          DashboardNav._isSunePlayUnit && DashboardNav._isSunePlayUnit(unitData) &&
           typeof SunePlayLesson !== 'undefined';
 
         if (_placementUsesSunePlay) {
@@ -378,7 +378,7 @@
           var mount = document.getElementById('sp-lesson-mount');
           if (!mount) throw new Error('missing sune play mount');
 
-          if (typeof BentoGrid !== 'undefined') BentoGrid._courseLevel = courseLevel;
+          if (typeof DashboardNav !== 'undefined') DashboardNav._courseLevel = courseLevel;
 
           (async function () {
             var spUnitData = unitData;
@@ -400,9 +400,9 @@
             });
             if (finishBtn) finishBtn.disabled = true;
           })();
-        } else if (typeof BentoGrid !== 'undefined' && BentoGrid._renderProgressTestUnit) {
-          BentoGrid._courseLevel = courseLevel;
-          contentEl.innerHTML = '<div class="onboarding-placement-test">' + BentoGrid._renderProgressTestUnit(unitData) + '</div>';
+        } else if (typeof DashboardNav !== 'undefined' && DashboardNav._renderProgressTestUnit) {
+          DashboardNav._courseLevel = courseLevel;
+          contentEl.innerHTML = '<div class="onboarding-placement-test">' + DashboardNav._renderProgressTestUnit(unitData) + '</div>';
           if (finishBtn) finishBtn.disabled = false;
         } else {
           throw new Error('invalid progress test renderer');
@@ -419,10 +419,10 @@
     },
 
     finishPlacementTest: async function () {
-      if (!_placementUsesSunePlay && typeof BentoGrid !== 'undefined' && BentoGrid._checkCuExSection) {
+      if (!_placementUsesSunePlay && typeof DashboardNav !== 'undefined' && DashboardNav._checkCuExSection) {
         document.querySelectorAll('#onboarding-placement-content .cu-review-section').forEach(function (sec) {
           if (sec.getAttribute('data-checked') !== 'true' && sec.id) {
-            BentoGrid._doCheckCuExSection(sec);
+            DashboardNav._doCheckCuExSection(sec);
           }
         });
       }
@@ -438,8 +438,8 @@
       } else {
         clearAllCourseProgress();
         var cfg = getLevelConfig(_selectedLevel);
-        if (cfg && typeof BentoGrid !== 'undefined' && BentoGrid._markGlobalStagesCompleteThrough) {
-          await BentoGrid._markGlobalStagesCompleteThrough(cfg.bars - 1);
+        if (cfg && typeof DashboardNav !== 'undefined' && DashboardNav._markGlobalStagesCompleteThrough) {
+          await DashboardNav._markGlobalStagesCompleteThrough(cfg.bars - 1);
         }
       }
 
@@ -481,8 +481,8 @@
           openFirstB1Topic();
         } else if (typeof App !== 'undefined' && App.openLearningHome) {
           App.openLearningHome();
-        } else if (typeof BentoGrid !== 'undefined') {
-          BentoGrid.openCourseSection('learning');
+        } else if (typeof DashboardNav !== 'undefined') {
+          DashboardNav.openCourseSection('learning');
         }
       };
 
@@ -497,8 +497,8 @@
       if (!this.needsShow()) {
         if (typeof App !== 'undefined' && App.openLearningHome) {
           App.openLearningHome();
-        } else if (typeof BentoGrid !== 'undefined') {
-          BentoGrid.openCourseSection('learning');
+        } else if (typeof DashboardNav !== 'undefined') {
+          DashboardNav.openCourseSection('learning');
         }
         return;
       }

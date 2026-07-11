@@ -288,8 +288,8 @@
       if (!centerSection) {
         var exams = window.EXAMS_DATA[AppState.currentLevel || 'C1'] || [];
         var sidebars = { left: '', right: '' };
-        if (typeof BentoGrid !== 'undefined') {
-          sidebars = BentoGrid._buildDashboardSidebars(exams, { includeGradeTracker: true });
+        if (typeof DashboardNav !== 'undefined') {
+          sidebars = DashboardNav._buildDashboardSidebars(exams, { includeGradeTracker: true });
         }
 
         content.innerHTML =
@@ -307,7 +307,7 @@
 
         if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
         if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
-        if (typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
+        if (typeof DashboardNav !== 'undefined') DashboardNav._startGradeCarousel();
         if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('vocabulary');
         centerSection = document.getElementById('feCenterSection');
       } else {
@@ -757,8 +757,8 @@
 
       // Build sidebars
       var sidebars = { left: '', right: '' };
-      if (typeof BentoGrid !== 'undefined') {
-        sidebars = BentoGrid._buildDashboardSidebars(window.EXAMS_DATA[AppState.currentLevel || 'C1'] || [], { includeGradeTracker: true });
+      if (typeof DashboardNav !== 'undefined') {
+        sidebars = DashboardNav._buildDashboardSidebars(window.EXAMS_DATA[AppState.currentLevel || 'C1'] || [], { includeGradeTracker: true });
       }
       var leftSidebarContent = sidebars.left;
       var rightSidebarContent = sidebars.right;
@@ -788,8 +788,8 @@
 
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
-      if (typeof BentoGrid !== 'undefined') {
-        BentoGrid._startGradeCarousel();
+      if (typeof DashboardNav !== 'undefined') {
+        DashboardNav._startGradeCarousel();
       }
       var feState = { view: 'fastExercises' };
       history.pushState(feState, '', Router.stateToPath(feState));
@@ -834,9 +834,9 @@
 
       // ── Sidebars: main dashboard nav for course vocabulary categories ──
       var sidebars = { left: '', right: '' };
-      if (typeof BentoGrid !== 'undefined') {
+      if (typeof DashboardNav !== 'undefined') {
         var exams = window.EXAMS_DATA[AppState.currentLevel || 'C1'] || [];
-        sidebars = BentoGrid._buildDashboardSidebars(exams, { includeGradeTracker: true });
+        sidebars = DashboardNav._buildDashboardSidebars(exams, { includeGradeTracker: true });
       }
       var leftSidebarContent = isCourseVocab
         ? sidebars.left
@@ -887,7 +887,7 @@
       }
 
       var _isCourseCategory = isCourseVocab;
-      var _backFn = _isCourseCategory ? 'BentoGrid.openCourseSection(\'vocabulary\')' : 'FastExercises.openCategories()';
+      var _backFn = _isCourseCategory ? 'DashboardNav.openCourseSection(\'vocabulary\')' : 'FastExercises.openCategories()';
       var catPct = this._getCategoryPercent(catMeta.id, data.levels);
       var subtitleText = isCourseVocab
         ? 'B1 to C1 · ' + catPct + '% complete'
@@ -968,7 +968,7 @@
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       if (isCourseVocab) this._setVocabLessonFocus(false);
-      if (isCourseVocab && typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
+      if (isCourseVocab && typeof DashboardNav !== 'undefined') DashboardNav._startGradeCarousel();
       if (isCourseVocab && typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('vocabulary');
       var catState = { view: 'fastExerciseCategory', categoryId: categoryId };
       history.pushState(catState, '', Router.stateToPath(catState));
@@ -6617,8 +6617,8 @@
       var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
       var leftSidebarContent = '';
-      if (typeof BentoGrid !== 'undefined') {
-        leftSidebarContent = BentoGrid._buildDashboardSidebars(exams).left;
+      if (typeof DashboardNav !== 'undefined') {
+        leftSidebarContent = DashboardNav._buildDashboardSidebars(exams).left;
       }
 
       var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
@@ -7216,7 +7216,7 @@
       mainEl.innerHTML =
         '<div class="vocab-cw-play-sticky-top">' +
           '<div class="vocab-cw-header vocab-cw-header--full vocab-cw-header--duo vocab-cw-header--lvl-' + self._escapeHTML(levelId.toLowerCase()) + '">' +
-            '<button class="vocab-cw-back-btn vocab-cw-back-btn--duo" title="Back" aria-label="Back" onclick="BentoGrid._cwPlayBack()">' + _symbolButtonContent('arrow_back', 'Back') + '</button>' +
+            '<button class="vocab-cw-back-btn vocab-cw-back-btn--duo" title="Back" aria-label="Back" onclick="DashboardNav._cwPlayBack()">' + _symbolButtonContent('arrow_back', 'Back') + '</button>' +
             '<div class="vocab-cw-header-title">' +
               '<div class="vocab-cw-header-kicker">' + self._escapeHTML(levelId) + '</div>' +
               '<div class="vocab-cw-header-text">' + self._escapeHTML(headerTitle) + '</div>' +
@@ -8122,15 +8122,15 @@
       var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
       var sidebars = { left: '', right: '' };
-      if (typeof BentoGrid !== 'undefined') {
-        sidebars.left = BentoGrid._buildDashboardSidebars(exams).left;
-        var wlEntries = BentoGrid._getWordleEntries ? BentoGrid._getWordleEntries() : [];
-        sidebars.right = BentoGrid._buildWordleStatsSidebarHtml
-          ? BentoGrid._buildWordleStatsSidebarHtml(wlEntries)
+      if (typeof DashboardNav !== 'undefined') {
+        sidebars.left = DashboardNav._buildDashboardSidebars(exams).left;
+        var wlEntries = DashboardNav._getWordleEntries ? DashboardNav._getWordleEntries() : [];
+        sidebars.right = DashboardNav._buildWordleStatsSidebarHtml
+          ? DashboardNav._buildWordleStatsSidebarHtml(wlEntries)
           : '';
       }
-      var LEVEL_META = (typeof BentoGrid !== 'undefined' && BentoGrid._wlLevelMeta)
-        ? BentoGrid._wlLevelMeta()
+      var LEVEL_META = (typeof DashboardNav !== 'undefined' && DashboardNav._wlLevelMeta)
+        ? DashboardNav._wlLevelMeta()
         : {};
       var meta = LEVEL_META[levelId] || LEVEL_META['B2'] || { headerColor: '#a855f7' };
 
