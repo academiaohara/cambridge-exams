@@ -252,6 +252,33 @@
           "studentAction": "tap_one_option",
           "evaluationTrigger": "check_button"
         }
+      },
+      {
+        "formatType": "word_bank_gap_fill",
+        "displayName": "Complete with words from the box",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "word_bank_chips_plus_gap_input",
+          "studentAction": "tap_word_or_type_answer",
+          "evaluationTrigger": "check_button",
+          "chipLayout": "wrap_scroll"
+        }
+      },
+      {
+        "formatType": "keyword_transformation",
+        "displayName": "Key word transformation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "keyword_gap_input",
+          "studentAction": "type_transformation",
+          "evaluationTrigger": "check_button"
+        }
       }
     ],
     "globalRules": {
@@ -271,7 +298,8 @@
       "title": "Practice",
       "shortTitle": "Practice",
       "focus": [
-        "free_text_gap_fill",
+        "keyword_transformation",
+        "word_bank_gap_fill",
         "conjugation_gap_fill",
         "two_option_choice",
         "mc_4_option"
@@ -284,7 +312,7 @@
       "screenGeneration": [
         {
           "sourceExerciseId": "b1-u7-ex-a",
-          "formatType": "free_text_gap_fill",
+          "formatType": "keyword_transformation",
           "sourceItemIds": [
             "b1-u7-exa-1",
             "b1-u7-exa-2",
@@ -296,7 +324,7 @@
         },
         {
           "sourceExerciseId": "b1-u7-ex-b",
-          "formatType": "free_text_gap_fill",
+          "formatType": "word_bank_gap_fill",
           "sourceItemIds": [
             "b1-u7-exb-1",
             "b1-u7-exb-2",
@@ -391,91 +419,110 @@
       {
         "id": "b1-u7-ex-a",
         "type": "exercise",
-        "exerciseType": "free_text_gap_fill",
-        "exerciseTypeName": "A: Present continuous (Emma's diary)",
-        "title": "A: Present continuous (Emma's diary)",
-        "instructions": "Look at Emma's diary and use the prompts to write sentences. Use the correct form of the present continuous.",
-        "studentInstruction": "Look at Emma's diary and use the prompts to write sentences. Use the correct form of the present continuous.",
+        "exerciseType": "keyword_transformation",
+        "exerciseTypeName": "A: Key word transformation (future time)",
+        "title": "A: Key word transformation (future time)",
+        "instructions": "Complete each second sentence using the word given, so that it has a similar meaning to the first sentence. Write between two and five words.",
+        "studentInstruction": "Use the keyword to complete the second sentence. Write 2–5 words only.",
         "legacyKey": "A",
-        "legacyPattern": "gap-fill",
+        "legacyPattern": "kwtrans",
         "interaction": {
-          "formatType": "free_text_gap_fill"
+          "formatType": "keyword_transformation"
         },
-        "words": [
-          "meet Josh - school café",
-          "go swimming - cousin",
-          "take bus - city centre",
-          "spend afternoon - grandparents",
-          "fly - Rome - 8 pm",
-          "help - Mum - kitchen"
-        ],
-        "wordBank": [
-          "meet Josh - school café",
-          "go swimming - cousin",
-          "take bus - city centre",
-          "spend afternoon - grandparents",
-          "fly - Rome - 8 pm",
-          "help - Mum - kitchen"
-        ],
         "items": [
           {
             "id": "b1-u7-exa-1",
-            "formatType": "free_text_gap_fill",
-            "sentence": "On Monday, she ......",
-            "answer": "is meeting Josh at the school café",
+            "formatType": "keyword_transformation",
+            "promptSentence": "We've arranged to meet Josh at the school café on Monday.",
+            "keyword": "MEETING",
+            "targetSentence": "We ...... Josh at the school café on Monday.",
+            "answer": "are meeting",
             "acceptedAnswers": [
-              "is meeting Josh at the school café"
+              "are meeting",
+              "'re meeting"
             ],
+            "minWords": 2,
+            "maxWords": 5,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word",
             "explanation": ""
           },
           {
             "id": "b1-u7-exa-2",
-            "formatType": "free_text_gap_fill",
-            "sentence": "On Tuesday, she ......",
-            "answer": "is going swimming with her cousin",
+            "formatType": "keyword_transformation",
+            "promptSentence": "I think it will rain later this evening.",
+            "keyword": "GOING",
+            "targetSentence": "I think it ...... later this evening.",
+            "answer": "is going to rain",
             "acceptedAnswers": [
-              "is going swimming with her cousin"
+              "is going to rain",
+              "'s going to rain"
             ],
+            "minWords": 2,
+            "maxWords": 5,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word",
             "explanation": ""
           },
           {
             "id": "b1-u7-exa-3",
-            "formatType": "free_text_gap_fill",
-            "sentence": "On Wednesday, she ......",
-            "answer": "is taking the bus to the city centre",
+            "formatType": "keyword_transformation",
+            "promptSentence": "Don't worry — I promise I'll help you with your homework.",
+            "keyword": "WILL",
+            "targetSentence": "Don't worry — I ...... you with your homework.",
+            "answer": "will help",
             "acceptedAnswers": [
-              "is taking the bus to the city centre"
+              "will help",
+              "'ll help"
             ],
+            "minWords": 2,
+            "maxWords": 5,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word",
             "explanation": ""
           },
           {
             "id": "b1-u7-exa-4",
-            "formatType": "free_text_gap_fill",
-            "sentence": "On Thursday, she ......",
-            "answer": "is spending the afternoon with her grandparents",
+            "formatType": "keyword_transformation",
+            "promptSentence": "They've decided to move to a bigger house next year.",
+            "keyword": "MOVING",
+            "targetSentence": "They ...... to a bigger house next year.",
+            "answer": "are moving",
             "acceptedAnswers": [
-              "is spending the afternoon with her grandparents"
+              "are moving",
+              "'re moving"
             ],
+            "minWords": 2,
+            "maxWords": 5,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word",
             "explanation": ""
           },
           {
             "id": "b1-u7-exa-5",
-            "formatType": "free_text_gap_fill",
-            "sentence": "On Friday, she ......",
-            "answer": "is flying to Rome at 8 pm",
+            "formatType": "keyword_transformation",
+            "promptSentence": "She intends to learn Japanese next year.",
+            "keyword": "GOING",
+            "targetSentence": "She ...... Japanese next year.",
+            "answer": "is going to learn",
             "acceptedAnswers": [
-              "is flying to Rome at 8 pm"
+              "is going to learn",
+              "'s going to learn"
             ],
+            "minWords": 2,
+            "maxWords": 5,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word",
             "explanation": ""
           },
           {
             "id": "b1-u7-exa-6",
-            "formatType": "free_text_gap_fill",
-            "sentence": "On Saturday, she ......",
-            "answer": "is helping Mum in the kitchen",
+            "formatType": "keyword_transformation",
+            "promptSentence": "Would you like me to carry your bags?",
+            "keyword": "SHALL",
+            "targetSentence": "...... I carry your bags?",
+            "answer": "Shall I",
             "acceptedAnswers": [
-              "is helping Mum in the kitchen"
+              "Shall I"
             ],
+            "minWords": 2,
+            "maxWords": 5,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word",
             "explanation": ""
           }
         ]
@@ -483,15 +530,15 @@
       {
         "id": "b1-u7-ex-b",
         "type": "exercise",
-        "exerciseType": "free_text_gap_fill",
+        "exerciseType": "word_bank_gap_fill",
         "exerciseTypeName": "B: will or shall",
         "title": "B: will or shall",
-        "instructions": "Complete using will or shall and the verbs in the box. You may have to use some negative forms.",
-        "studentInstruction": "Complete using will or shall and the verbs in the box. You may have to use some negative forms.",
+        "instructions": "Complete each sentence using will or shall and a verb from the box. Use each verb once. You may have to use some negative forms.",
+        "studentInstruction": "Complete each sentence using will or shall and a verb from the box. Use each verb once.",
         "legacyKey": "B",
-        "legacyPattern": "gap-fill",
+        "legacyPattern": "word-bank-gap",
         "interaction": {
-          "formatType": "free_text_gap_fill"
+          "formatType": "word_bank_gap_fill"
         },
         "words": [
           "buy",
@@ -516,81 +563,81 @@
         "items": [
           {
             "id": "b1-u7-exb-1",
-            "formatType": "free_text_gap_fill",
-            "sentence": "I think it ...... later this evening.",
-            "answer": "will rain",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "I think it will ...... later this evening.",
+            "answer": "rain",
             "acceptedAnswers": [
-              "will rain"
+              "rain"
             ],
             "explanation": ""
           },
           {
             "id": "b1-u7-exb-2",
-            "formatType": "free_text_gap_fill",
-            "sentence": "Don't worry — I ...... you with your homework.",
-            "answer": "will help",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Don't worry — I will ...... you with your homework.",
+            "answer": "help",
             "acceptedAnswers": [
-              "will help"
+              "help"
             ],
             "explanation": ""
           },
           {
             "id": "b1-u7-exb-3",
-            "formatType": "free_text_gap_fill",
-            "sentence": "...... you ...... me after school?",
-            "answer": "Will, call",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Will you ...... me after school?",
+            "answer": "call",
             "acceptedAnswers": [
-              "Will, call"
+              "call"
             ],
             "explanation": ""
           },
           {
             "id": "b1-u7-exb-4",
-            "formatType": "free_text_gap_fill",
-            "sentence": "We ...... to a bigger house next year.",
-            "answer": "will move",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "We will ...... to a bigger house next year.",
+            "answer": "move",
             "acceptedAnswers": [
-              "will move"
+              "move"
             ],
             "explanation": ""
           },
           {
             "id": "b1-u7-exb-5",
-            "formatType": "free_text_gap_fill",
-            "sentence": "...... we ...... outside the cinema for you?",
-            "answer": "Shall, wait",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Shall we ...... outside the cinema for you?",
+            "answer": "wait",
             "acceptedAnswers": [
-              "Shall, wait"
+              "wait"
             ],
             "explanation": ""
           },
           {
             "id": "b1-u7-exb-6",
-            "formatType": "free_text_gap_fill",
-            "sentence": "I think Sam ...... us the photos tomorrow.",
-            "answer": "will show",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "I think Sam will ...... us the photos tomorrow.",
+            "answer": "show",
             "acceptedAnswers": [
-              "will show"
+              "show"
             ],
             "explanation": ""
           },
           {
             "id": "b1-u7-exb-7",
-            "formatType": "free_text_gap_fill",
-            "sentence": "I ...... a sandwich, please.",
-            "answer": "will buy",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "I will ...... a sandwich, please.",
+            "answer": "buy",
             "acceptedAnswers": [
-              "will buy"
+              "buy"
             ],
             "explanation": ""
           },
           {
             "id": "b1-u7-exb-8",
-            "formatType": "free_text_gap_fill",
-            "sentence": "Don't worry. They ...... us at the station.",
-            "answer": "will meet",
+            "formatType": "word_bank_gap_fill",
+            "sentence": "Don't worry. They will ...... us at the station.",
+            "answer": "meet",
             "acceptedAnswers": [
-              "will meet"
+              "meet"
             ],
             "explanation": ""
           }
