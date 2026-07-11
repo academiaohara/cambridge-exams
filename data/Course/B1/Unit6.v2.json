@@ -358,15 +358,16 @@
     "formatDefinitions": [
       {
         "formatType": "conjugation_gap_fill",
-        "displayName": "Type the conjugation",
+        "displayName": "Choose the word or phrase",
         "defaultLives": 5,
         "maxLifeLossPerScreen": 1,
         "attemptsPerScreen": 1,
-        "failureAction": "show_correct_answer_then_continue",
+        "failureAction": "show_explanation_then_continue",
         "interaction": {
-          "component": "inline_gap_input",
-          "studentAction": "type_conjugation",
-          "evaluationTrigger": "check_button"
+          "component": "choice_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button",
+          "optionLayout": "multi_large_buttons"
         }
       },
       {
@@ -635,11 +636,12 @@
         "exerciseTypeName": "Topic vocabulary (gap fill)",
         "title": "Topic vocabulary (gap fill)",
         "instructions": "Complete using the correct form of the words and phrases given.",
-        "studentInstruction": "Complete using the correct form of the words and phrases given.",
+        "studentInstruction": "Tap the correct word or phrase.",
         "legacyKey": "A",
         "legacyPattern": "grouped-conjugation",
         "interaction": {
-          "formatType": "conjugation_gap_fill"
+          "formatType": "conjugation_gap_fill",
+          "studentAction": "tap_one_option"
         },
         "items": [
           {

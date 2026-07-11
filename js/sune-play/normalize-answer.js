@@ -370,6 +370,9 @@
 
   function getChoiceCorrectAnswerDisplay(payload) {
     if (!payload || payload.answer == null) return '';
+    if (payload.displayMode === 'grouped_vocab_tap' && payload.completedSentence) {
+      return payload.completedSentence;
+    }
     var answerStr = String(payload.answer).trim();
     if (/^[AB]$/i.test(answerStr)) {
       var match = (payload.options || []).find(function(opt) {

@@ -221,6 +221,170 @@
     return { before: match[1].trim(), after: (match[2] || '').trim() };
   }
 
+  var GROUPED_CONJ_HINT_RE = /\([^)]*\/[^)]*\)/g;
+
+  function countGapsInSentence(sentence) {
+    return (String(sentence || '').match(/(?:\.{3,}|…{2,}|_{3,})/g) || []).length;
+  }
+
+  function extractGroupedConjugationOptions(item) {
+    if (!item) return [];
+    if (item.verbPrompt && String(item.verbPrompt).indexOf('/') !== -1) {
+      return String(item.verbPrompt).split(/\s*\/\s*/).map(function(s) {
+        return s.trim();
+      }).filter(Boolean);
+    }
+    var sentence = item.sentence || '';
+    var match = sentence.match(/\(([^)]+)\)/);
+    if (!match || match[1].indexOf('/') === -1) return [];
+    return match[1].split(/\s*\/\s*/).map(function(s) {
+      return s.trim();
+    }).filter(Boolean);
+  }
+
+  function isGroupedConjugationTapItem(item, exercise) {
+    if (!item) return false;
+    if (exercise && exercise.legacyPattern === 'grouped-conjugation') return true;
+    if (item.answerMode === 'tap_grouped_option') return true;
+    return extractGroupedConjugationOptions(item).length >= 2;
+  }
+
+  function stripGroupedConjugationHints(sentence) {
+    return String(sentence || '')
+      .replace(GROUPED_CONJ_HINT_RE, '')
+      .replace(/\s{2,}/g, ' ')
+      .replace(/\s+([,.!?])/g, '$1')
+      .trim();
+  }
+
+  function groupedWordsRelated(left, right) {
+    var a = String(left || '').trim().toLowerCase();
+    var b = String(right || '').trim().toLowerCase();
+    if (!a || !b) return false;
+    if (a === b) return true;
+    if (a.length >= 3 && b.indexOf(a.slice(0, 3)) === 0) return true;
+    if (b.length >= 3 && a.indexOf(b.slice(0, 3)) === 0) return true;
+    return a.length >= 2 && b.length >= 2 && a.slice(0, 2) === b.slice(0, 2);
+  }
+
+  function optionMatchesGroupedAnswer(option, answer) {
+    var opt = String(option || '').trim().toLowerCase();
+    var ans = String(answer || '').trim().toLowerCase();
+    if (!opt || !ans) return false;
+    if (opt === ans) return true;
+    if (ans.indexOf(opt) === 0 || opt.indexOf(ans) === 0) return true;
+    if (opt.indexOf(' ') !== -1 && ans.indexOf(',') !== -1) {
+      var optParts = opt.split(/\s+/);
+      var ansParts = ans.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+      if (optParts.length === ansParts.length) {
+        return optParts.every(function(part, idx) {
+          return groupedWordsRelated(part, ansParts[idx]);
+        });
+      }
+      if (optParts.length >= 2 && ansParts.length >= 2) {
+        return optParts[1] === ansParts[1] &&
+          groupedWordsRelated(optParts[0], ansParts[0]);
+      }
+      return false;
+    }
+    if (opt.indexOf(' ') !== -1 || ans.indexOf(' ') !== -1 || ans.indexOf(',') !== -1) {
+      return false;
+    }
+    return groupedWordsRelated(opt, ans);
+  }
+
+  function resolveGroupedConjugationChoiceOption(options, answer) {
+    var answerStr = String(answer || '').trim();
+    var answerLower = answerStr.toLowerCase();
+    var exact = (options || []).find(function(opt) {
+      return String(opt).trim().toLowerCase() === answerLower;
+    });
+    if (exact) return exact;
+    var resolved = (options || []).find(function(opt) {
+      return optionMatchesGroupedAnswer(opt, answerStr);
+    });
+    return resolved || answerStr;
+  }
+
+  function resolveGroupedGapDisplayValues(option, answer, gapCount) {
+    var resolved = String(answer || '').trim();
+    if (gapCount <= 1) return [resolved];
+    if (resolved.indexOf(',') !== -1) {
+      return resolved.split(',').map(function(s) { return s.trim(); }).filter(Boolean);
+    }
+    if (String(option || '').indexOf(' ') !== -1) {
+      return String(option).split(/\s+/).map(function(s) { return s.trim(); }).filter(Boolean);
+    }
+    return [resolved];
+  }
+
+  function buildGroupedOptionGapDisplayMap(options, answer, gapCount) {
+    var map = {};
+    var correctOption = resolveGroupedConjugationChoiceOption(options, answer);
+    (options || []).forEach(function(opt) {
+      map[opt] = opt === correctOption
+        ? resolveGroupedGapDisplayValues(opt, answer, gapCount)
+        : (gapCount > 1 ? String(opt).split(/\s+/) : [opt]);
+    });
+    return map;
+  }
+
+  function splitGroupedConjugationPrompt(sentence, gapCount) {
+    var clean = stripGroupedConjugationHints(sentence);
+    var parts = clean.split(GAP_RE);
+    if (gapCount <= 1) {
+      return {
+        gapCount: 1,
+        sentenceBefore: (parts[0] || '').trim(),
+        sentenceAfter: parts.slice(1).join('').trim(),
+        segments: null
+      };
+    }
+    return {
+      gapCount: gapCount,
+      sentenceBefore: '',
+      sentenceAfter: '',
+      segments: parts.map(function(part) { return part.trim(); })
+    };
+  }
+
+  function buildGroupedConjugationCompletedSentence(sentence, answer, gapCount) {
+    var clean = stripGroupedConjugationHints(sentence);
+    var parts = clean.split(/(?:\.{3,}|…{2,}|_{3,})/);
+    var values = resolveGroupedGapDisplayValues(null, answer, gapCount);
+    var out = (parts[0] || '').trim();
+    for (var i = 0; i < values.length; i++) {
+      out += ' ' + values[i];
+      if (parts[i + 1]) out += ' ' + parts[i + 1].trim();
+    }
+    return out.replace(/\s{2,}/g, ' ').replace(/\s+([,.!?])/g, '$1').trim();
+  }
+
+  function buildGroupedConjugationChoicePayload(item, exercise) {
+    var options = extractGroupedConjugationOptions(item);
+    if (options.length < 2) return null;
+
+    var sentence = item.sentence || '';
+    var gapCount = Math.max(1, countGapsInSentence(stripGroupedConjugationHints(sentence)));
+    var parts = splitGroupedConjugationPrompt(sentence, gapCount);
+    var resolvedOption = resolveGroupedConjugationChoiceOption(options, item.answer);
+
+    return shuffleChoicePayload({
+      displayMode: 'grouped_vocab_tap',
+      sentenceBefore: parts.sentenceBefore,
+      sentenceAfter: parts.sentenceAfter,
+      segments: parts.segments,
+      gapCount: parts.gapCount,
+      options: options,
+      answer: resolvedOption,
+      acceptedAnswers: [resolvedOption],
+      optionGapDisplayValues: buildGroupedOptionGapDisplayMap(options, item.answer, parts.gapCount),
+      completedSentence: buildGroupedConjugationCompletedSentence(sentence, item.answer, parts.gapCount),
+      explanation: item.explanation || '',
+      instruction: exercise.studentInstruction || exercise.instructions || ''
+    });
+  }
+
   function collectMcPassageGaps(exercise) {
     var gaps = [];
     var gapMap = {};
@@ -1115,7 +1279,14 @@
             (item.preselectedVerb || item.selectedTileAnswer || item.baseVerb)) {
           buildFormatType = 'preselected_verb_gap_fill';
         }
-        var payload = itemToPayload(buildFormatType, item, exercise, rule);
+        var payload = null;
+        if (formatType === 'conjugation_gap_fill' && isGroupedConjugationTapItem(item, exercise)) {
+          payload = buildGroupedConjugationChoicePayload(item, exercise);
+          if (payload) buildFormatType = 'two_option_choice';
+        }
+        if (!payload) {
+          payload = itemToPayload(buildFormatType, item, exercise, rule);
+        }
         var screenId = buildScreenId(nodeId, exerciseId, itemId, buildFormatType);
 
         screens.push(buildScreen(unit, node, buildFormatType, payload, {

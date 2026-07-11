@@ -1323,6 +1323,61 @@
     if (anchor) anchor.classList.toggle('sp-gap-anchor--filled', !!text);
   }
 
+  function setMultiChoiceSlotContent(root, values) {
+    (values || []).forEach(function(text, idx) {
+      var slot = root.querySelector('#sp-choice-slot-' + idx);
+      if (!slot) return;
+      var anchor = slot.closest('.sp-gap-anchor');
+      slot.textContent = text || '';
+      if (anchor) anchor.classList.toggle('sp-gap-anchor--filled', !!text);
+    });
+  }
+
+  function renderChoicePromptSentence(payload) {
+    if (payload.gapCount > 1 && payload.segments && payload.segments.length) {
+      var gapCount = payload.gapCount;
+      var html = esc(payload.segments[0] || '');
+      for (var i = 0; i < gapCount; i++) {
+        html += ' <span class="sp-gap-anchor">' +
+          '<span class="sp-gap-slot" id="sp-choice-slot-' + i + '"></span>' +
+        '</span> ';
+        html += esc(payload.segments[i + 1] || '');
+      }
+      return html;
+    }
+    return esc(payload.sentenceBefore || '') +
+      ' <span class="sp-gap-anchor">' +
+        '<span class="sp-gap-slot" id="sp-choice-slot"></span>' +
+      '</span> ' +
+      esc(payload.sentenceAfter || '');
+  }
+
+  function getGroupedChoiceSpeakText(payload, root) {
+    if (!payload) return '';
+    if (payload.gapCount > 1 && payload.segments && payload.segments.length) {
+      var parts = [payload.segments[0] || ''];
+      for (var i = 0; i < payload.gapCount; i++) {
+        var slot = root.querySelector('#sp-choice-slot-' + i);
+        parts.push(slot ? slot.textContent.trim() : '');
+        parts.push(payload.segments[i + 1] || '');
+      }
+      return parts.filter(function(part) { return !!String(part).trim(); }).join(' ').replace(/\s+/g, ' ').trim();
+    }
+    return buildGapSentence(payload.sentenceBefore, getSelectedChoiceText(root), payload.sentenceAfter);
+  }
+
+  function applyGroupedChoiceSelection(root, payload, optText) {
+    if (!payload || !optText) return;
+    var displayMap = payload.optionGapDisplayValues || {};
+    var displayValues = displayMap[optText];
+    if (payload.gapCount > 1) {
+      setMultiChoiceSlotContent(root, Array.isArray(displayValues) ? displayValues : []);
+      return;
+    }
+    var displayText = Array.isArray(displayValues) ? displayValues[0] : displayValues;
+    setChoiceSlotContent(root, displayText || optText);
+  }
+
   function getMcOptionText(options, letter) {
     var opt = (options || []).find(function(o) {
       return String(o.letter).toUpperCase() === String(letter).toUpperCase();
@@ -1340,14 +1395,10 @@
         esc(p.sentenceBefore) + '</p>';
     } else {
       html += '<p class="sp-prompt-sentence sp-speakable-sentence" data-action="practice-speak-sentence" role="button" tabindex="0" aria-label="Listen to sentence">' +
-        esc(p.sentenceBefore) +
-        ' <span class="sp-gap-anchor">' +
-          '<span class="sp-gap-slot" id="sp-choice-slot"></span>' +
-        '</span> ' +
-        esc(p.sentenceAfter) + '</p>';
+        renderChoicePromptSentence(p) + '</p>';
     }
     html += '</div>';
-    html += '<div class="sp-option-grid">';
+    html += '<div class="sp-option-grid' + ((p.options || []).length > 2 ? ' sp-option-grid--multi' : '') + '">';
     (p.options || []).forEach(function(opt, i) {
       html += renderOptionBtn(opt, i);
     });
@@ -3447,7 +3498,7 @@
         if (sameMeaningChoice) {
           return String(payload.sentenceBefore || '').trim();
         }
-        return buildGapSentence(payload.sentenceBefore, getSelectedChoiceText(root), payload.sentenceAfter);
+        return getGroupedChoiceSpeakText(payload, root);
       });
       root.querySelectorAll('.sp-option-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
@@ -3456,7 +3507,11 @@
           btn.classList.add('sp-option-btn--selected');
           var optText = btn.getAttribute('data-value') || '';
           if (!sameMeaningChoice) {
-            setChoiceSlotContent(root, optText);
+            if (payload.displayMode === 'grouped_vocab_tap') {
+              applyGroupedChoiceSelection(root, payload, optText);
+            } else {
+              setChoiceSlotContent(root, optText);
+            }
           }
           onChange();
           if (!optText) return;
