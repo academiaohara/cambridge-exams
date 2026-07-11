@@ -1030,13 +1030,14 @@
         "exerciseType": "passage_gap_fill",
         "exerciseTypeName": "Phrasal verbs (diary entry)",
         "title": "Phrasal verbs (diary entry)",
-        "instructions": "Write one word in each gap.",
-        "studentInstruction": "Write one word in each gap.",
+        "instructions": "Write one word in each gap, one gap at a time.",
+        "studentInstruction": "Write one word in each gap, one gap at a time.",
         "legacyKey": "D",
         "legacyPattern": "passage-gap-fill",
         "interaction": {
           "formatType": "passage_gap_fill",
-          "sequentialGaps": false,
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
           "gapInputStyle": "pill"
         },
         "passageTitle": "12th March",
