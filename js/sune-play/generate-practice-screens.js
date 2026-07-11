@@ -955,27 +955,19 @@
         var tiles = item.tiles && item.tiles.length
           ? shuffleCopy(item.tiles)
           : shuffleCopy(String(ans).replace(/\s*\.\s*$/, '').split(/\s+/).filter(Boolean));
-        var topPrompt = item.topPrompt || {};
-        var visualPrompt = item.visualPrompt || {};
-        var imageUrl = topPrompt.visualAssetUrl
-          || visualPrompt.assetUrl
-          || '';
-        var altText = visualPrompt.altText || '';
-        var contextQuestion = item.contextQuestion
-          || topPrompt.contextQuestion
-          || '';
+        var rawInstruction = exercise.instructions || exercise.studentInstruction || '';
+        var instruction = /look at the picture/i.test(rawInstruction)
+          ? 'Build the sentence. Some words are extra.'
+          : (rawInstruction || 'Build the sentence. Some words are extra.');
         return {
           prompt: item.displayPrompt || item.sentence || 'Build the sentence.',
-          instruction: exercise.instructions || exercise.studentInstruction || '',
+          instruction: instruction,
           tiles: tiles,
           answer: ans,
           acceptedAnswers: item.acceptedAnswers || [ans],
           explanation: item.explanation || '',
           answerTiles: item.answerTiles || null,
-          tileValidation: item.tileValidation || null,
-          contextQuestion: contextQuestion,
-          imageUrl: imageUrl,
-          imageAlt: altText
+          tileValidation: item.tileValidation || null
         };
       }
 
