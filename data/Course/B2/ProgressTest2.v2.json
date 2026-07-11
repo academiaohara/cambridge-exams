@@ -1,0 +1,1636 @@
+{
+  "schemaVersion": "sune-english-unit-v2-interactive-formats",
+  "course": "B2 English",
+  "block": 2,
+  "unit": 2,
+  "type": "progress_test",
+  "unitTitle": "Progress Test 2: Units 15-28",
+  "unitSubtitle": "Progress Test 2: Units 15-28",
+  "unitLevel": "B2",
+  "unitFocus": [
+    "Progress Test 2: Units 15-28"
+  ],
+  "estimatedDurationMinutes": 25,
+  "lessonStyle": "sune-play-interactive",
+  "migrationMeta": {
+    "pilot": false,
+    "sourceFile": "data/Course/B2/ProgressTest2.json",
+    "migratedAt": "2026-07-11",
+    "legacyExerciseCount": 8,
+    "sourceType": "progress_test"
+  },
+  "unitStructure": {
+    "mode": "practice_only",
+    "theoryRequiredBeforePractice": false,
+    "allowTheoryReviewFromPractice": false,
+    "practiceNodesUseExerciseItemsAsContentBank": true
+  },
+  "theory": {
+    "id": "b2-pt2-theory",
+    "title": "Progress Test",
+    "shortTitle": "Test",
+    "displayMode": "swipeable_cards",
+    "completionRule": {
+      "type": "view_all_cards",
+      "required": false
+    },
+    "cards": []
+  },
+  "practiceConfig": {
+    "formatDefinitions": [
+      {
+        "formatType": "mc_4_option",
+        "displayName": "Multiple choice",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "option_cards",
+          "studentAction": "tap_one_option",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "passage_gap_fill",
+        "displayName": "Complete the passage",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "passage_inline_gaps",
+          "studentAction": "type_gap_answers",
+          "evaluationTrigger": "check_button",
+          "gapInputStyle": "pill"
+        }
+      },
+      {
+        "formatType": "column_matching",
+        "displayName": "Match columns",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "tap_to_pair",
+          "studentAction": "pair_beginnings_endings",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "free_text_gap_fill",
+        "displayName": "Complete the gap",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "inline_gap_input",
+          "studentAction": "type_answer",
+          "evaluationTrigger": "check_button"
+        }
+      },
+      {
+        "formatType": "find_extra_word",
+        "displayName": "Find the extra word",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "clickable_sentence_tokens",
+          "studentAction": "tap_extra_word_or_ok",
+          "evaluationTrigger": "check_button"
+        }
+      }
+    ],
+    "globalRules": {
+      "failedItemsReturnToQueue": true,
+      "maxRepeatedFailuresBeforeFallback": 2,
+      "doNotPenalize": [
+        "capitalization_only",
+        "extra_spaces",
+        "missing_final_period",
+        "minor_punctuation"
+      ]
+    }
+  },
+  "practiceNodes": [
+    {
+      "nodeId": "b2-pt2-node-1",
+      "title": "Progress Test 2: Units 15-28",
+      "shortTitle": "Test",
+      "focus": [
+        "mc_4_option",
+        "passage_gap_fill",
+        "column_matching",
+        "free_text_gap_fill",
+        "find_extra_word"
+      ],
+      "lives": 5,
+      "passCondition": {
+        "minimumCorrectScreens": 33,
+        "allowFinishWithZeroLives": false
+      },
+      "screenGeneration": [
+        {
+          "sourceExerciseId": "b2-u2-ex-a",
+          "formatType": "mc_4_option",
+          "screenMode": "all_gaps_single_screen"
+        },
+        {
+          "sourceExerciseId": "b2-u2-ex-b",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u2-exb-1",
+            "b2-u2-exb-2",
+            "b2-u2-exb-3",
+            "b2-u2-exb-4",
+            "b2-u2-exb-5",
+            "b2-u2-exb-6",
+            "b2-u2-exb-7",
+            "b2-u2-exb-8",
+            "b2-u2-exb-9",
+            "b2-u2-exb-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u2-ex-c",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        },
+        {
+          "sourceExerciseId": "b2-u2-ex-d",
+          "formatType": "mc_4_option",
+          "sourceItemIds": [
+            "b2-u2-exd-1",
+            "b2-u2-exd-2",
+            "b2-u2-exd-3",
+            "b2-u2-exd-4",
+            "b2-u2-exd-5",
+            "b2-u2-exd-6",
+            "b2-u2-exd-7",
+            "b2-u2-exd-8",
+            "b2-u2-exd-9",
+            "b2-u2-exd-10"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u2-ex-e",
+          "formatType": "column_matching",
+          "screenMode": "all_pairs_single_screen"
+        },
+        {
+          "sourceExerciseId": "b2-u2-ex-f",
+          "formatType": "free_text_gap_fill",
+          "sourceItemIds": [
+            "b2-u2-exf-1",
+            "b2-u2-exf-2",
+            "b2-u2-exf-3",
+            "b2-u2-exf-4",
+            "b2-u2-exf-5",
+            "b2-u2-exf-6",
+            "b2-u2-exf-7",
+            "b2-u2-exf-8",
+            "b2-u2-exf-9"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u2-ex-g",
+          "formatType": "find_extra_word",
+          "sourceItemIds": [
+            "b2-u2-exg-1",
+            "b2-u2-exg-2",
+            "b2-u2-exg-3",
+            "b2-u2-exg-4",
+            "b2-u2-exg-5",
+            "b2-u2-exg-6",
+            "b2-u2-exg-7",
+            "b2-u2-exg-8",
+            "b2-u2-exg-9",
+            "b2-u2-exg-10",
+            "b2-u2-exg-11",
+            "b2-u2-exg-12",
+            "b2-u2-exg-13",
+            "b2-u2-exg-14",
+            "b2-u2-exg-15"
+          ]
+        },
+        {
+          "sourceExerciseId": "b2-u2-ex-h",
+          "formatType": "passage_gap_fill",
+          "screenMode": "single_passage_with_gaps"
+        }
+      ]
+    }
+  ],
+  "queueBehaviour": {
+    "initialOrder": "pedagogical",
+    "shuffleWithinNode": false,
+    "failedItemPlacement": "end_of_queue",
+    "repeatFailedItemsBeforeCompletion": true,
+    "maxScreensPerNode": 48,
+    "minimumScreensPerNode": 6
+  },
+  "xpRules": {
+    "baseXpPerCorrectScreen": 10,
+    "bonusXpForPerfectNode": 20,
+    "bonusXpForNoHints": 10,
+    "xpPenaltyPerLifeLost": 2
+  },
+  "feedbackTone": {
+    "correct": [
+      "Nice!",
+      "Correct!"
+    ],
+    "incorrect": [
+      "Not quite.",
+      "Try again."
+    ],
+    "hintPrompts": []
+  },
+  "contentBanks": {
+    "source": "embedded_exercises",
+    "requiredExerciseIds": [
+      "b2-u2-ex-a",
+      "b2-u2-ex-b",
+      "b2-u2-ex-c",
+      "b2-u2-ex-d",
+      "b2-u2-ex-e",
+      "b2-u2-ex-f",
+      "b2-u2-ex-g",
+      "b2-u2-ex-h"
+    ],
+    "exercises": [
+      {
+        "id": "b2-u2-ex-a",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "A: Multiple Choice (Travel)",
+        "title": "A: Multiple Choice (Travel)",
+        "instructions": "Choose the correct answer (A, B, C, or D).",
+        "studentInstruction": "Choose the correct answer (A, B, C, or D).",
+        "legacyKey": "A",
+        "legacyPattern": "mc-passage",
+        "interaction": {
+          "formatType": "mc_4_option",
+          "displayMode": "passage",
+          "continuous": false
+        },
+        "passageTitle": "THE BENEFITS OF TRAVEL",
+        "passage": "Travelling to new places can (1) .......... a great deal of effort and planning. It also helps to be naturally (2) .......... . However, you need to be (3) .......... of the local customs and traditions wherever you go. When Maria first travelled abroad, the city she visited was (4) .......... of tourists and she felt a little overwhelmed. Her guide told her she should not (5) .......... too much about feeling lost, and that confusion would not (6) .......... her from enjoying the experience. A positive (7) .......... of being in an unfamiliar place is that it can broaden your perspective. Rather than being (8) .......... in knowledge about other cultures, most experienced travellers find that challenges help them grow. A travel expert (9) .......... travellers to treat every difficulty as an opportunity. It is important to (10) .......... the culture of the place you are visiting and what it expects of visitors. If you want to make a (11) .......... out of travel writing, you must learn to embrace the unexpected. Maria's first overseas trip was a complete (12) .......... but she refused to be discouraged. She made a decision to (13) .......... travelling, regardless of how challenging it became. Success does not (14) .......... entirely on a perfect itinerary; flexibility and curiosity are equally important. As Maria discovered, new experiences can (15) .......... to be far more rewarding than you ever expected.",
+        "items": [
+          {
+            "id": "b2-u2-exa-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "need"
+              },
+              {
+                "letter": "B",
+                "text": "use"
+              },
+              {
+                "letter": "C",
+                "text": "require"
+              },
+              {
+                "letter": "D",
+                "text": "spend"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "curious"
+              },
+              {
+                "letter": "B",
+                "text": "talented"
+              },
+              {
+                "letter": "C",
+                "text": "organised"
+              },
+              {
+                "letter": "D",
+                "text": "reserved"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "conscious"
+              },
+              {
+                "letter": "B",
+                "text": "knowledgeable"
+              },
+              {
+                "letter": "C",
+                "text": "respectful"
+              },
+              {
+                "letter": "D",
+                "text": "mindful"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "crowded"
+              },
+              {
+                "letter": "B",
+                "text": "teeming"
+              },
+              {
+                "letter": "C",
+                "text": "overrun"
+              },
+              {
+                "letter": "D",
+                "text": "flooded"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "worry"
+              },
+              {
+                "letter": "B",
+                "text": "think"
+              },
+              {
+                "letter": "C",
+                "text": "care"
+              },
+              {
+                "letter": "D",
+                "text": "stress"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "stop"
+              },
+              {
+                "letter": "B",
+                "text": "hinder"
+              },
+              {
+                "letter": "C",
+                "text": "discourage"
+              },
+              {
+                "letter": "D",
+                "text": "deter"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "benefit"
+              },
+              {
+                "letter": "B",
+                "text": "outcome"
+              },
+              {
+                "letter": "C",
+                "text": "aspect"
+              },
+              {
+                "letter": "D",
+                "text": "consequence"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "deficient"
+              },
+              {
+                "letter": "B",
+                "text": "weak"
+              },
+              {
+                "letter": "C",
+                "text": "poor"
+              },
+              {
+                "letter": "D",
+                "text": "short"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "tells"
+              },
+              {
+                "letter": "B",
+                "text": "encourages"
+              },
+              {
+                "letter": "C",
+                "text": "urges"
+              },
+              {
+                "letter": "D",
+                "text": "invites"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "know"
+              },
+              {
+                "letter": "B",
+                "text": "research"
+              },
+              {
+                "letter": "C",
+                "text": "understand"
+              },
+              {
+                "letter": "D",
+                "text": "investigate"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-11",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "living"
+              },
+              {
+                "letter": "B",
+                "text": "profit"
+              },
+              {
+                "letter": "C",
+                "text": "success"
+              },
+              {
+                "letter": "D",
+                "text": "fortune"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-12",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "disaster"
+              },
+              {
+                "letter": "B",
+                "text": "failure"
+              },
+              {
+                "letter": "C",
+                "text": "setback"
+              },
+              {
+                "letter": "D",
+                "text": "disappointment"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-13",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "go on"
+              },
+              {
+                "letter": "B",
+                "text": "give up"
+              },
+              {
+                "letter": "C",
+                "text": "carry on"
+              },
+              {
+                "letter": "D",
+                "text": "take up"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-14",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "rest"
+              },
+              {
+                "letter": "B",
+                "text": "rely"
+              },
+              {
+                "letter": "C",
+                "text": "hinge"
+              },
+              {
+                "letter": "D",
+                "text": "count"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exa-15",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "prove"
+              },
+              {
+                "letter": "B",
+                "text": "turn out"
+              },
+              {
+                "letter": "C",
+                "text": "seem"
+              },
+              {
+                "letter": "D",
+                "text": "come"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u2-ex-b",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "B: Multiple Choice (Vocabulary)",
+        "title": "B: Multiple Choice (Vocabulary)",
+        "instructions": "Choose the correct answer (A, B, C, or D).",
+        "studentInstruction": "Choose the correct answer (A, B, C, or D).",
+        "legacyKey": "B",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u2-exb-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She",
+            "sentenceAfter": "a book off the shelf and started reading the first page.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "grabbed"
+              },
+              {
+                "letter": "B",
+                "text": "took"
+              },
+              {
+                "letter": "C",
+                "text": "picked"
+              },
+              {
+                "letter": "D",
+                "text": "chose"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exb-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The hotel offered a delightful continental",
+            "sentenceAfter": "with fresh fruit and pastries.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "snack"
+              },
+              {
+                "letter": "B",
+                "text": "brunch"
+              },
+              {
+                "letter": "C",
+                "text": "meal"
+              },
+              {
+                "letter": "D",
+                "text": "breakfast"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exb-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Try not to",
+            "sentenceAfter": "the vegetables or they will lose all their nutrients.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "overcook"
+              },
+              {
+                "letter": "B",
+                "text": "boil"
+              },
+              {
+                "letter": "C",
+                "text": "steam"
+              },
+              {
+                "letter": "D",
+                "text": "grill"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exb-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "She kept all her shopping",
+            "sentenceAfter": "in case she needed to return anything.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "invoices"
+              },
+              {
+                "letter": "B",
+                "text": "receipts"
+              },
+              {
+                "letter": "C",
+                "text": "bills"
+              },
+              {
+                "letter": "D",
+                "text": "vouchers"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exb-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "After a long day at work, she decided to order a",
+            "sentenceAfter": "rather than cook.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "takeaway"
+              },
+              {
+                "letter": "B",
+                "text": "delivery"
+              },
+              {
+                "letter": "C",
+                "text": "ready meal"
+              },
+              {
+                "letter": "D",
+                "text": "snack"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exb-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The documentary received widespread",
+            "sentenceAfter": "for its honest and balanced reporting.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "attention"
+              },
+              {
+                "letter": "B",
+                "text": "popularity"
+              },
+              {
+                "letter": "C",
+                "text": "recognition"
+              },
+              {
+                "letter": "D",
+                "text": "fame"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exb-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The old town has a very",
+            "sentenceAfter": "feel, with cobbled streets and ancient buildings.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "dated"
+              },
+              {
+                "letter": "B",
+                "text": "old-fashioned"
+              },
+              {
+                "letter": "C",
+                "text": "historic"
+              },
+              {
+                "letter": "D",
+                "text": "antique"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exb-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "After 30 years with the firm, he was asked to take early",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "leave"
+              },
+              {
+                "letter": "B",
+                "text": "resignation"
+              },
+              {
+                "letter": "C",
+                "text": "absence"
+              },
+              {
+                "letter": "D",
+                "text": "retirement"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exb-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The audience showed their",
+            "sentenceAfter": "by giving a long standing ovation.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "admiration"
+              },
+              {
+                "letter": "B",
+                "text": "entertainment"
+              },
+              {
+                "letter": "C",
+                "text": "appreciation"
+              },
+              {
+                "letter": "D",
+                "text": "enthusiasm"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exb-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Could you tell me who is",
+            "sentenceAfter": "for maintaining the school website?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "responsible"
+              },
+              {
+                "letter": "B",
+                "text": "obligated"
+              },
+              {
+                "letter": "C",
+                "text": "committed"
+              },
+              {
+                "letter": "D",
+                "text": "required"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u2-ex-c",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "C: Open Cloze (Social media and teenagers)",
+        "title": "C: Open Cloze (Social media and teenagers)",
+        "instructions": "Write one word in each gap.",
+        "studentInstruction": "Write one word in each gap.",
+        "legacyKey": "C",
+        "legacyPattern": "passage-input",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
+          "gapInputStyle": "underline_expand"
+        },
+        "passageTitle": "Social Media and Teenagers",
+        "passage": "A new report has revealed a significant rise (1) .......... the use of social media among teenagers. Young people are often regarded (2) .......... being addicted to their smartphones, and many of the teenagers who (3) .......... interviewed said they felt comfortable (4) .......... their online identities. They find it hard to tell (5) .......... truth about how much time they actually spend online. Teachers are largely responsible (6) .......... raising awareness of healthy digital habits. Constant phone use can have a negative effect (7) .......... concentration in the classroom. Many students admitted they stayed (8) .......... very late at night, despite (9) .......... early lessons the following morning. The report, (10) .......... was produced by a leading university, also found that many young people have a limited understanding (11) .......... how social media shapes their self-image. Schools are being urged to (12) .......... action and introduce digital wellness classes. In (13) .......... of these concerns, young people still see technology as having more benefits than drawbacks. Researchers believe (14) .......... are practical steps families can take to encourage healthier habits. (15) .......... the very least, schools should ensure internet safety is part of the curriculum.",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "in",
+          "as",
+          "were",
+          "with",
+          "the",
+          "for",
+          "on",
+          "up",
+          "having",
+          "which",
+          "of",
+          "take",
+          "spite",
+          "there",
+          "At"
+        ]
+      },
+      {
+        "id": "b2-u2-ex-d",
+        "type": "exercise",
+        "exerciseType": "mc_4_option",
+        "exerciseTypeName": "D: Multiple Choice (Grammar)",
+        "title": "D: Multiple Choice (Grammar)",
+        "instructions": "Choose the correct answer (A, B, C, or D).",
+        "studentInstruction": "Choose the correct answer (A, B, C, or D).",
+        "legacyKey": "D",
+        "legacyPattern": "mc-standalone",
+        "interaction": {
+          "formatType": "mc_4_option"
+        },
+        "items": [
+          {
+            "id": "b2-u2-exd-1",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The new sports hall at our school",
+            "sentenceAfter": "",
+            "options": [
+              {
+                "letter": "A",
+                "text": "will be completing"
+              },
+              {
+                "letter": "B",
+                "text": "will have completed"
+              },
+              {
+                "letter": "C",
+                "text": "is going to complete"
+              },
+              {
+                "letter": "D",
+                "text": "is going to be completed"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exd-2",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "'Have we got much time before the show?' 'No,",
+            "sentenceAfter": "get a move on.'",
+            "options": [
+              {
+                "letter": "A",
+                "text": "you'd rather"
+              },
+              {
+                "letter": "B",
+                "text": "you'd better"
+              },
+              {
+                "letter": "C",
+                "text": "you'd prefer to"
+              },
+              {
+                "letter": "D",
+                "text": "you'd be best to"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exd-3",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Let's go for a walk after dinner,",
+            "sentenceAfter": "we?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "should"
+              },
+              {
+                "letter": "B",
+                "text": "will"
+              },
+              {
+                "letter": "C",
+                "text": "shall"
+              },
+              {
+                "letter": "D",
+                "text": "would"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exd-4",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I wonder",
+            "sentenceAfter": "mind helping me move this furniture.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "would you"
+              },
+              {
+                "letter": "B",
+                "text": "you would"
+              },
+              {
+                "letter": "C",
+                "text": "if would you"
+              },
+              {
+                "letter": "D",
+                "text": "whether you would"
+              }
+            ],
+            "answer": "D",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exd-5",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The politician denied",
+            "sentenceAfter": "anything improper with the funds.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "to do"
+              },
+              {
+                "letter": "B",
+                "text": "having done"
+              },
+              {
+                "letter": "C",
+                "text": "to have done"
+              },
+              {
+                "letter": "D",
+                "text": "to be doing"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exd-6",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "The student",
+            "sentenceAfter": "project won first prize was invited to speak.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "whose"
+              },
+              {
+                "letter": "B",
+                "text": "who"
+              },
+              {
+                "letter": "C",
+                "text": "who's"
+              },
+              {
+                "letter": "D",
+                "text": "of which"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exd-7",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "It's high time they",
+            "sentenceAfter": ", don't you think?",
+            "options": [
+              {
+                "letter": "A",
+                "text": "are leaving"
+              },
+              {
+                "letter": "B",
+                "text": "were leaving"
+              },
+              {
+                "letter": "C",
+                "text": "have to leave"
+              },
+              {
+                "letter": "D",
+                "text": "had been leaving"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exd-8",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "I wish she",
+            "sentenceAfter": "quite so negative about the whole idea.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "wasn't"
+              },
+              {
+                "letter": "B",
+                "text": "wouldn't be"
+              },
+              {
+                "letter": "C",
+                "text": "hadn't been"
+              },
+              {
+                "letter": "D",
+                "text": "hasn't been"
+              }
+            ],
+            "answer": "C",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exd-9",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "Despite",
+            "sentenceAfter": "all night, she still hadn't finished the assignment.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "working"
+              },
+              {
+                "letter": "B",
+                "text": "she worked"
+              },
+              {
+                "letter": "C",
+                "text": "of having worked"
+              },
+              {
+                "letter": "D",
+                "text": "to work"
+              }
+            ],
+            "answer": "A",
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exd-10",
+            "formatType": "mc_4_option",
+            "sentenceBefore": "We",
+            "sentenceAfter": "last spring and it looked completely different afterwards.",
+            "options": [
+              {
+                "letter": "A",
+                "text": "had redecorated the flat"
+              },
+              {
+                "letter": "B",
+                "text": "had the flat redecorated"
+              },
+              {
+                "letter": "C",
+                "text": "were redecorated the flat"
+              },
+              {
+                "letter": "D",
+                "text": "have redecorating the flat"
+              }
+            ],
+            "answer": "B",
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u2-ex-e",
+        "type": "exercise",
+        "exerciseType": "column_matching",
+        "exerciseTypeName": "E: Matching (Phrasal Verbs)",
+        "title": "E: Matching (Phrasal Verbs)",
+        "instructions": "Match to make sentences.",
+        "studentInstruction": "Match to make sentences.",
+        "legacyKey": "E",
+        "legacyPattern": "matching",
+        "interaction": {
+          "formatType": "column_matching"
+        },
+        "items": [
+          {
+            "id": "b2-u2-exe-1",
+            "formatType": "column_matching",
+            "sentence": "The professor expects all students to hand **F** their assignments before Friday.",
+            "answer": "F",
+            "acceptedAnswers": [
+              "F"
+            ]
+          },
+          {
+            "id": "b2-u2-exe-2",
+            "formatType": "column_matching",
+            "sentence": "She agreed to take **E** the family business when her father retired.",
+            "answer": "E",
+            "acceptedAnswers": [
+              "E"
+            ]
+          },
+          {
+            "id": "b2-u2-exe-3",
+            "formatType": "column_matching",
+            "sentence": "The traffic jam held **H** our journey to the airport by nearly an hour.",
+            "answer": "H",
+            "acceptedAnswers": [
+              "H"
+            ]
+          },
+          {
+            "id": "b2-u2-exe-4",
+            "formatType": "column_matching",
+            "sentence": "The doctor advised him to cut **C** fatty foods for the sake of his health.",
+            "answer": "C",
+            "acceptedAnswers": [
+              "C"
+            ]
+          },
+          {
+            "id": "b2-u2-exe-5",
+            "formatType": "column_matching",
+            "sentence": "The police are looking **B** the cause of the fire at the warehouse.",
+            "answer": "B",
+            "acceptedAnswers": [
+              "B"
+            ]
+          },
+          {
+            "id": "b2-u2-exe-6",
+            "formatType": "column_matching",
+            "sentence": "Sophie had to turn **A** the promotion because of her family commitments.",
+            "answer": "A",
+            "acceptedAnswers": [
+              "A"
+            ]
+          },
+          {
+            "id": "b2-u2-exe-7",
+            "formatType": "column_matching",
+            "sentence": "The explorers decided to set **G** before dawn to beat the midday heat.",
+            "answer": "G",
+            "acceptedAnswers": [
+              "G"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b2-u2-ex-f",
+        "type": "exercise",
+        "exerciseType": "free_text_gap_fill",
+        "exerciseTypeName": "F: Key Word Transformation",
+        "title": "F: Key Word Transformation",
+        "instructions": "Complete the second sentence using the word given. Write between two and five words.",
+        "studentInstruction": "Complete the second sentence using the word given. Write between two and five words.",
+        "legacyKey": "F",
+        "legacyPattern": "gap-fill",
+        "interaction": {
+          "formatType": "free_text_gap_fill"
+        },
+        "items": [
+          {
+            "id": "b2-u2-exf-1",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Nobody thinks the young athlete has the ability to climb that rocky peak. **capable**\nNobody thinks the young athlete ...... that rocky peak.",
+            "answer": "is capable of climbing",
+            "acceptedAnswers": [
+              "is capable of climbing"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exf-2",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Sarah, do you know anything about quantum physics? **familiar**\nSarah, ...... quantum physics?",
+            "answer": "are you familiar with",
+            "acceptedAnswers": [
+              "are you familiar with"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exf-3",
+            "formatType": "free_text_gap_fill",
+            "sentence": "You shouldn't have spent so much money on decorating the entire house. **expense**\nYou shouldn't have ...... decorating the entire house.",
+            "answer": "gone to the expense of",
+            "acceptedAnswers": [
+              "gone to the expense of"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exf-4",
+            "formatType": "free_text_gap_fill",
+            "sentence": "My sister often phones relatives late at night for a chat. **tendency**\nMy sister ...... relatives late at night for a chat.",
+            "answer": "has a tendency to phone",
+            "acceptedAnswers": [
+              "has a tendency to phone"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exf-5",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Brian seemed completely exhausted when I saw him yesterday. **impression**\nBrian ...... he was completely exhausted.",
+            "answer": "gave me the impression that",
+            "acceptedAnswers": [
+              "gave me the impression that"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exf-6",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Taking regular exercise will be beneficial for you. **interest**\nIt is ...... regular exercise.",
+            "answer": "in your interest to take",
+            "acceptedAnswers": [
+              "in your interest to take"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exf-7",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I follow what Gary was saying in the meeting, but I'm not fully convinced. **point**\nI can ...... in the meeting, but I'm not fully convinced.",
+            "answer": "see Gary's point",
+            "acceptedAnswers": [
+              "see Gary's point"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exf-8",
+            "formatType": "free_text_gap_fill",
+            "sentence": "Security staff will not allow passengers to get on the wrong train. **prevent**\nSecurity staff are going ...... on the wrong train.",
+            "answer": "to prevent passengers from getting",
+            "acceptedAnswers": [
+              "to prevent passengers from getting"
+            ],
+            "explanation": ""
+          },
+          {
+            "id": "b2-u2-exf-9",
+            "formatType": "free_text_gap_fill",
+            "sentence": "I really need you to try as hard as you can to meet this deadline! **effort**\nI really need you to ...... to meet this deadline!",
+            "answer": "make a real effort",
+            "acceptedAnswers": [
+              "make a real effort"
+            ],
+            "explanation": ""
+          }
+        ]
+      },
+      {
+        "id": "b2-u2-ex-g",
+        "type": "exercise",
+        "exerciseType": "find_extra_word",
+        "exerciseTypeName": "G: Error Correction (Extra word)",
+        "title": "G: Error Correction (Extra word)",
+        "instructions": "If a line is correct, put a tick (✓). If there is an extra word, write it.",
+        "studentInstruction": "If a line is correct, put a tick (✓). If there is an extra word, write it.",
+        "legacyKey": "G",
+        "legacyPattern": "find-extra-word",
+        "interaction": {
+          "formatType": "find_extra_word"
+        },
+        "items": [
+          {
+            "id": "b2-u2-exg-1",
+            "formatType": "find_extra_word",
+            "sentence": "It is often been said that the key to great photography is patience and dedication.",
+            "answer": "been",
+            "acceptedAnswers": [
+              "been"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-2",
+            "formatType": "find_extra_word",
+            "sentence": "As a photographer myself, I would entirely agree.",
+            "answer": "OK",
+            "acceptedAnswers": [
+              "OK"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-3",
+            "formatType": "find_extra_word",
+            "sentence": "I was shown that a photograph the other day of an elderly man sitting in a park.",
+            "answer": "that",
+            "acceptedAnswers": [
+              "that"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-4",
+            "formatType": "find_extra_word",
+            "sentence": "The moment was fleeting and, despite of the fading afternoon light, it was beautiful.",
+            "answer": "of",
+            "acceptedAnswers": [
+              "of"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-5",
+            "formatType": "find_extra_word",
+            "sentence": "The image had a certain [a] timeless quality that I found quite remarkable.",
+            "answer": "a",
+            "acceptedAnswers": [
+              "a"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-6",
+            "formatType": "find_extra_word",
+            "sentence": "However skilled you are, you simply cannot make out people feel emotion that isn't there.",
+            "answer": "out",
+            "acceptedAnswers": [
+              "out"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-7",
+            "formatType": "find_extra_word",
+            "sentence": "I ask my students to send [to] me their best shots at the end of each week.",
+            "answer": "to",
+            "acceptedAnswers": [
+              "to"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-8",
+            "formatType": "find_extra_word",
+            "sentence": "If I've never seen anything like it before, and if the image makes me feel [it] genuinely moved,",
+            "answer": "it",
+            "acceptedAnswers": [
+              "it"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-9",
+            "formatType": "find_extra_word",
+            "sentence": "I know the photograph has captured something rare and truly meaningful.",
+            "answer": "OK",
+            "acceptedAnswers": [
+              "OK"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-10",
+            "formatType": "find_extra_word",
+            "sentence": "I love images that capture ordinary life, even though the subject was looks completely unremarkable at first.",
+            "answer": "was",
+            "acceptedAnswers": [
+              "was"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-11",
+            "formatType": "find_extra_word",
+            "sentence": "'A single ray of light can make up a cold and empty room look quite inviting.'",
+            "answer": "up",
+            "acceptedAnswers": [
+              "up"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-12",
+            "formatType": "find_extra_word",
+            "sentence": "Now that's the real test of any great photographer.",
+            "answer": "OK",
+            "acceptedAnswers": [
+              "OK"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-13",
+            "formatType": "find_extra_word",
+            "sentence": "Photography is made not just about the technical skill you possess!",
+            "answer": "made",
+            "acceptedAnswers": [
+              "made"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-14",
+            "formatType": "find_extra_word",
+            "sentence": "It is also about patience, perspective, and a willingness to experiment.",
+            "answer": "OK",
+            "acceptedAnswers": [
+              "OK"
+            ]
+          },
+          {
+            "id": "b2-u2-exg-15",
+            "formatType": "find_extra_word",
+            "sentence": "It takes genuine dedication and also a very sharp natural eye for the world around you.",
+            "answer": "OK",
+            "acceptedAnswers": [
+              "OK"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b2-u2-ex-h",
+        "type": "exercise",
+        "exerciseType": "passage_gap_fill",
+        "exerciseTypeName": "H: Word Formation (University life)",
+        "title": "H: Word Formation (University life)",
+        "instructions": "Use the word in capitals to form a word that fits in the gap.",
+        "studentInstruction": "Use the word in capitals to form a word that fits in the gap.",
+        "legacyKey": "H",
+        "legacyPattern": "passage-input",
+        "interaction": {
+          "formatType": "passage_gap_fill",
+          "sequentialGaps": true,
+          "requireWordBankAssignment": false,
+          "gapInputStyle": "underline_expand"
+        },
+        "passageTitle": "University Life",
+        "passage": "There is a popular (1) .......... among university graduates: 'Your student years shape who you become.' Yet no (2) .......... who first hears it truly believes it. University life often brings (3) .......... pressure alongside demanding coursework. When assignments pile up and (4) .......... sets in during long library sessions, it can be hard to appreciate the experience. Yet when it is over, graduates look back fondly on the (5) .......... aspects — the new friendships, the discoveries and the personal freedom. They tend to forget the difficult moments: struggling to pay (6) .......... during a dull lecture, being criticised for poor (7) .......... in a group project, feeling completely (8) .......... when a deadline approaches with no support available, and having completely (9) .......... the requirements for an exam too. But it is entirely (10) .......... to look back with warmth once those challenging times are over.",
+        "formatType": "passage_gap_fill",
+        "answers": [
+          "saying",
+          "student",
+          "financial",
+          "boredom",
+          "exciting",
+          "attention",
+          "behaviour",
+          "helpless",
+          "misunderstood",
+          "acceptable"
+        ]
+      }
+    ]
+  },
+  "totalPoints": 100
+}
