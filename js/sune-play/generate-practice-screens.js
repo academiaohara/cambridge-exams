@@ -255,7 +255,7 @@
     if (!item) return false;
     if (exercise && exercise.legacyPattern === 'grouped-conjugation') return true;
     if (item.answerMode === 'tap_grouped_option') return true;
-    return extractGroupedConjugationOptions(item).length >= 2;
+    return false;
   }
 
   function stripGroupedConjugationHints(sentence) {

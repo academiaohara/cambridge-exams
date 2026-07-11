@@ -7,6 +7,7 @@
   var norm = window.SunePlayNormalize;
   var gapWords = window.SunePlayCountGapWords;
   var GAP_RE = /(?:\.{3,}|…{2,}|_{3,})/g;
+  var GAP_BRACKET_HINT_RE = /((?:\.{3,}|…{2,}|_{3,}))\s*\([^)]+\)/g;
   var PASSAGE_GAP_MARK_RE = /\((\d+)\)\s*(?:\.{3,}|…{2,}|_{3,})/g;
 
   function esc(str) {
@@ -102,6 +103,11 @@
     return verbs;
   }
 
+  /** Remove parenthetical verb hints that sit directly after a gap (shown beside the input). */
+  function stripGapBracketHints(sentence) {
+    return String(sentence || '').replace(GAP_BRACKET_HINT_RE, '$1');
+  }
+
   function splitVerbPromptList(verbRef) {
     if (!verbRef) return [];
     return verbRef.split(',').map(function(part) { return part.trim(); }).filter(Boolean);
@@ -168,20 +174,23 @@
 
   function renderInlineGapSentence(sentence, verbRef, options) {
     options = options || {};
+    var sourceSentence = options.sourceSentence || sentence;
     var extracted = extractTrailingWordFormationHint(sentence, verbRef);
     sentence = extracted.sentence;
     verbRef = extracted.verbRef;
-    var parts = (sentence || '').split(GAP_RE);
     var gapCount = countGaps(sentence);
-    if (gapCount <= 1) {
-      return renderSentenceWithGap(sentence, buildInlineGapField(verbRef, 0));
-    }
     var perGapVerbs = resolvePerGapVerbPrompts(
       verbRef,
       gapCount,
       options.gaps,
-      options.sourceSentence
+      sourceSentence
     );
+    var displaySentence = stripGapBracketHints(sentence);
+    var parts = (displaySentence || '').split(GAP_RE);
+    if (gapCount <= 1) {
+      var singleVerb = (perGapVerbs && perGapVerbs[0]) || verbRef || '';
+      return renderSentenceWithGap(displaySentence, buildInlineGapField(singleVerb, 0));
+    }
     var html = '';
     for (var i = 0; i < parts.length; i++) {
       html += formatSentenceText(parts[i]);
