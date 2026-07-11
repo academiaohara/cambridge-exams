@@ -4443,8 +4443,8 @@
           var correctParts = [];
           gaps.forEach(function(gap) {
             var selected = selections[gap.gapNumber] || '';
-            userParts.push(selected);
-            correctParts.push(gap.answer);
+            userParts.push(getMcOptionText(gap.options, selected));
+            correctParts.push(getMcOptionText(gap.options, gap.answer));
             if (selected.toUpperCase() !== String(gap.answer || '').toUpperCase()) wrongCount++;
           });
           result.userAnswer = userParts.join(' / ');
@@ -4455,8 +4455,10 @@
         } else {
           var mcSel = root.querySelector('.sp-option-btn--selected');
           var letter = mcSel ? (mcSel.getAttribute('data-letter') || mcSel.getAttribute('data-value') || '') : '';
-          result.userAnswer = letter;
-          result.correctAnswer = p.answer;
+          result.userAnswer = getMcOptionText(p.options, letter);
+          result.correctAnswer = norm.getMcCorrectAnswerDisplay
+            ? norm.getMcCorrectAnswerDisplay(p)
+            : (p.answerText || getMcOptionText(p.options, p.answer));
           result.correct = letter.toUpperCase() === String(p.answer || '').toUpperCase();
           result.lifeLoss = result.correct ? 0 : 1;
         }
