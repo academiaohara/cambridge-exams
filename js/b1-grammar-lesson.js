@@ -1092,7 +1092,9 @@
       if (isTheory) {
         instructionText = step.section.title || '';
       } else {
-        instructionText = step.section.studentInstruction || step.section.instructions || '';
+        instructionText = (typeof InstructionI18n !== 'undefined')
+          ? InstructionI18n.resolveSync(step.section.studentInstruction || step.section.instructions || '')
+          : (step.section.studentInstruction || step.section.instructions || '');
       }
       if (!instruction.querySelector('.bgl-instruction-text')) {
         instruction.innerHTML =
@@ -1115,7 +1117,12 @@
         }
       }
       var textEl = instruction.querySelector('.bgl-instruction-text');
-      if (textEl) textEl.textContent = instructionText;
+      if (textEl) {
+        if (!isTheory) {
+          textEl.setAttribute('data-instruction-source', step.section.studentInstruction || step.section.instructions || '');
+        }
+        textEl.textContent = instructionText;
+      }
     }
 
     if (footerBtn) {

@@ -12,6 +12,7 @@
   // Translate tool state
   var _translateTargetLang = localStorage.getItem('cambridge_translate_lang') || 'es';
   var _TRANSLATE_LANGUAGES = [
+    { code: 'en', label: 'English' },
     { code: 'es', label: 'Español' },
     { code: 'fr', label: 'Français' },
     { code: 'pt', label: 'Português' },
@@ -647,6 +648,9 @@
       try { localStorage.setItem('cambridge_translate_lang', code); } catch(e) { console.warn('Could not persist translate language:', e); }
       if (typeof MainNav !== 'undefined' && MainNav.refreshLangPopover) {
         MainNav.refreshLangPopover();
+      }
+      if (typeof InstructionI18n !== 'undefined') {
+        InstructionI18n.refreshInstructions();
       }
     },
 

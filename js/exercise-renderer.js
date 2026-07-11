@@ -357,6 +357,11 @@
           </div>`;
       }
 
+      const descriptionText = (typeof InstructionI18n !== 'undefined')
+        ? InstructionI18n.resolveSync(exercise.description || this.getDefaultDescription(partConfig))
+        : (exercise.description || this.getDefaultDescription(partConfig));
+      const descriptionSource = exercise.description || this.getDefaultDescription(partConfig);
+
       const exerciseInnerHtml = `
         <div class="exercise-page-wrapper">
           <div class="exercise-container">
@@ -409,7 +414,7 @@
             </div>
             
             <div class="exercise-description" lang="en">
-              <p data-i18n-description="${this.getDescriptionKey(partConfig)}">${exercise.description || this.getDefaultDescription(partConfig)}</p>
+              <p data-i18n-description="${this.getDescriptionKey(partConfig)}" data-instruction-source="${descriptionSource.replace(/"/g, '&quot;')}">${descriptionText}</p>
             </div>
             
             ${exampleHTML}
