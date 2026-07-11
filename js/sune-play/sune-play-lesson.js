@@ -887,8 +887,11 @@
 
   function getScreenCorrectAnswer(screen) {
     var p = (screen && screen.payload) || {};
-    if (screen && screen.formatType === 'mc_4_option' && p.displayMode === 'passage' && p.gaps && p.gaps.length) {
-      return p.gaps.map(function(gap) { return gap.answer; }).join(' / ');
+    if (screen && screen.formatType === 'mc_4_option') {
+      if (window.SunePlayNormalize && window.SunePlayNormalize.getMcCorrectAnswerDisplay) {
+        return window.SunePlayNormalize.getMcCorrectAnswerDisplay(p);
+      }
+      if (p.answerText) return p.answerText;
     }
     if (screen && screen.formatType === 'comma_placement') {
       if (p.interactionMode === 'rewrite_sentence') {

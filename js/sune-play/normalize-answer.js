@@ -386,6 +386,28 @@
     return stripChoiceOptionPrefix(answerStr);
   }
 
+  function getMcOptionTextFromOptions(options, letter) {
+    var opt = (options || []).find(function(o) {
+      return String(o.letter).toUpperCase() === String(letter).toUpperCase();
+    });
+    return (opt && opt.text) ? opt.text : letter;
+  }
+
+  function getMcCorrectAnswerDisplay(payload) {
+    if (!payload) return '';
+    if (payload.answerText) return payload.answerText;
+    if (payload.displayMode === 'passage' && payload.gaps && payload.gaps.length) {
+      return payload.gaps.map(function(gap) {
+        return getMcOptionTextFromOptions(gap.options, gap.answer);
+      }).join(' / ');
+    }
+    var answerStr = payload.answer != null ? String(payload.answer).trim() : '';
+    if (/^[A-D]$/i.test(answerStr)) {
+      return getMcOptionTextFromOptions(payload.options, answerStr);
+    }
+    return answerStr;
+  }
+
   window.SunePlayNormalize = {
     normalizeAnswer: normalizeAnswer,
     normalizeAnswerPreserveCase: normalizeAnswerPreserveCase,
@@ -401,6 +423,8 @@
     getChoiceOptionLetter: getChoiceOptionLetter,
     isSameMeaningChoicePayload: isSameMeaningChoicePayload,
     choiceSelectionMatches: choiceSelectionMatches,
-    getChoiceCorrectAnswerDisplay: getChoiceCorrectAnswerDisplay
+    getChoiceCorrectAnswerDisplay: getChoiceCorrectAnswerDisplay,
+    getMcOptionTextFromOptions: getMcOptionTextFromOptions,
+    getMcCorrectAnswerDisplay: getMcCorrectAnswerDisplay
   };
 })();

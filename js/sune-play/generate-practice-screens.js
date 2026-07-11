@@ -167,6 +167,15 @@
     return list.slice().sort(function() { return Math.random() - 0.5; });
   }
 
+  function sortMcOptionsByLetter(options) {
+    return (options || []).slice().sort(function(a, b) {
+      var letterA = String((a && a.letter) || '').toUpperCase();
+      var letterB = String((b && b.letter) || '').toUpperCase();
+      if (letterA && letterB) return letterA.localeCompare(letterB);
+      return 0;
+    });
+  }
+
   function shuffleChoicePayload(payload) {
     if (!payload || !payload.options || payload.options.length < 2) return payload;
     var answerStr = payload.answer != null ? String(payload.answer).trim() : '';
@@ -178,7 +187,7 @@
       }
     }
     return Object.assign({}, payload, {
-      options: shuffleCopy(payload.options),
+      options: payload.options.slice(),
       answer: resolvedAnswer
     });
   }
@@ -210,7 +219,7 @@
   function shuffleMcOptionsPayload(payload) {
     if (!payload || !payload.options || payload.options.length < 2) return payload;
     return Object.assign({}, payload, {
-      options: shuffleCopy(payload.options)
+      options: sortMcOptionsByLetter(payload.options)
     });
   }
 
@@ -421,7 +430,7 @@
       gaps.push({
         gapId: 'gap' + gapNumber,
         gapNumber: gapNumber,
-        options: normalizeMcOptions(gap.options || []),
+        options: sortMcOptionsByLetter(normalizeMcOptions(gap.options || [])),
         answer: String(gap.answer || '').trim().toUpperCase()
       });
     });
