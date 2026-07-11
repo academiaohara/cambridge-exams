@@ -109,17 +109,14 @@
 
   /** Move trailing word-formation hints (**SING**, (SING)) next to the gap input. */
   function extractTrailingWordFormationHint(sentence, existingVerbRef) {
-    if (existingVerbRef) {
-      return { sentence: sentence, verbRef: existingVerbRef };
-    }
     var s = String(sentence || '').trim();
-    if (!countGaps(s)) return { sentence: s, verbRef: '' };
+    if (!countGaps(s)) return { sentence: s, verbRef: existingVerbRef || '' };
 
     var boldMatch = s.match(/\s+\*\*([A-Z]{2,})\*\*\s*$/);
     if (boldMatch) {
       return {
         sentence: s.slice(0, boldMatch.index).trim(),
-        verbRef: boldMatch[1]
+        verbRef: existingVerbRef || boldMatch[1]
       };
     }
 
@@ -127,11 +124,11 @@
     if (parenMatch) {
       return {
         sentence: s.slice(0, parenMatch.index).trim(),
-        verbRef: parenMatch[1].replace(/\s*\/\s*/g, ' / ')
+        verbRef: existingVerbRef || parenMatch[1].replace(/\s*\/\s*/g, ' / ')
       };
     }
 
-    return { sentence: s, verbRef: '' };
+    return { sentence: s, verbRef: existingVerbRef || '' };
   }
 
   function resolvePerGapVerbPrompts(verbRef, gapCount, gaps, sourceSentence) {
