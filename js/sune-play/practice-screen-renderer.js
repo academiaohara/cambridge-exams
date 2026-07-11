@@ -715,8 +715,22 @@
         minCh = Math.max(minCh, placeholder.length);
       }
     }
-    var len = Math.max(minCh, val.length + 2);
-    input.style.width = len + 'ch';
+    var span = document.getElementById('sp-gap-resize-span');
+    if (!span) {
+      span = document.createElement('span');
+      span.id = 'sp-gap-resize-span';
+      span.style.cssText = 'visibility:hidden;position:absolute;white-space:pre;pointer-events:none;';
+      document.body.appendChild(span);
+    }
+    var cs = window.getComputedStyle(input);
+    span.style.font = cs.font;
+    span.textContent = '0';
+    var chWidth = span.getBoundingClientRect().width || parseFloat(cs.fontSize) * 0.55;
+    span.textContent = val || input.getAttribute('placeholder') || ' ';
+    var padX = 6;
+    var measured = span.getBoundingClientRect().width + padX;
+    var minPx = minCh * chWidth;
+    input.style.width = Math.ceil(Math.max(minPx, measured)) + 'px';
   }
 
   function buildPassageGapVerbCounts(gaps) {
