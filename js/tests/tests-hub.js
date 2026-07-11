@@ -22,8 +22,8 @@
   }
 
   function _escape(str) {
-    return (typeof BentoGrid !== 'undefined' && BentoGrid._escapeHTML)
-      ? BentoGrid._escapeHTML(str)
+    return (typeof DashboardNav !== 'undefined' && DashboardNav._escapeHTML)
+      ? DashboardNav._escapeHTML(str)
       : String(str);
   }
 
@@ -54,7 +54,7 @@
     return 'pending';
   }
 
-  Object.assign(window.BentoGrid, {
+  Object.assign(window.DashboardNav, {
     openTests: async function(levelFilter, examId, options) {
       options = options || {};
       var content = document.getElementById('main-content');
@@ -101,8 +101,8 @@
       }
 
       var sidebars = { left: '', right: '' };
-      if (typeof BentoGrid !== 'undefined') {
-        sidebars = BentoGrid._buildDashboardSidebars(exams);
+      if (typeof DashboardNav !== 'undefined') {
+        sidebars = DashboardNav._buildDashboardSidebars(exams);
       }
       var leftSidebarContent = sidebars.left;
       var rightSidebarContent = sidebars.right;
@@ -117,7 +117,7 @@
         headerTitle = 'Random Mix';
         headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + randomMeta.headerColor + '"';
-        backOnclick = 'BentoGrid.openTests(\'' + (activeLevel || level) + '\')';
+        backOnclick = 'DashboardNav.openTests(\'' + (activeLevel || level) + '\')';
       } else if (activeExamId) {
         var examMatch = exams.find(function(e) { return e.id === activeExamId; });
         var examNum = examMatch ? examMatch.number : activeExamId.replace('Test', '');
@@ -125,13 +125,13 @@
         headerTitle = 'Choose a Section';
         headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + examMeta.headerColor + '"';
-        backOnclick = 'BentoGrid.openTests(\'' + (activeLevel || level) + '\')';
+        backOnclick = 'DashboardNav.openTests(\'' + (activeLevel || level) + '\')';
       } else if (activeLevel) {
         var meta = LEVEL_META[activeLevel] || LEVEL_META['B2'];
         headerTitle = meta.difficulty;
         headerClass = ' cw-section-header--level cw-section-header--tests cw-section-header--duo';
         headerStyle = ' style="--cw-header-color:' + meta.headerColor + '"';
-        backOnclick = 'BentoGrid.openTests()';
+        backOnclick = 'DashboardNav.openTests()';
       }
 
       var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
@@ -158,9 +158,9 @@
                 '<div class="cw-section-title">' + _escape(headerTitle) + '</div>' +
               '</div>' +
             '</div>' +
-            BentoGrid._buildTestsModeBarHtml() +
+            DashboardNav._buildTestsModeBarHtml() +
             '<div class="cw-page-content" id="testsCenterScroll">' +
-              '<div class="tests-hub-page" id="testsHubPage">' + BentoGrid._buildInlinePawLoadingHtml() + '</div>' +
+              '<div class="tests-hub-page" id="testsHubPage">' + DashboardNav._buildInlinePawLoadingHtml() + '</div>' +
             '</div>' +
             mobileNavHtml +
           '</div>' +
@@ -171,7 +171,7 @@
 
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
-      if (typeof BentoGrid !== 'undefined') BentoGrid._startGradeCarousel();
+      if (typeof DashboardNav !== 'undefined') DashboardNav._startGradeCarousel();
       if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('tests');
 
       var hubPage = document.getElementById('testsHubPage');
@@ -181,13 +181,13 @@
 
       var bodyHtml = '';
       if (isRandomTest) {
-        bodyHtml = BentoGrid._buildRandomTestPageHtml(activeLevel || level);
+        bodyHtml = DashboardNav._buildRandomTestPageHtml(activeLevel || level);
       } else if (activeExamId) {
-        bodyHtml = BentoGrid._buildTestsSectionCardsHtml(exams, activeExamId, activeLevel || level);
+        bodyHtml = DashboardNav._buildTestsSectionCardsHtml(exams, activeExamId, activeLevel || level);
       } else if (activeLevel) {
-        bodyHtml = BentoGrid._buildTestsPathMapHtml(exams, activeLevel);
+        bodyHtml = DashboardNav._buildTestsPathMapHtml(exams, activeLevel);
       } else {
-        bodyHtml = BentoGrid._buildTestsLevelCardsHtml();
+        bodyHtml = DashboardNav._buildTestsLevelCardsHtml();
       }
 
       if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.waitMinDuration) {
@@ -197,7 +197,7 @@
       hubPage.innerHTML = bodyHtml;
 
       if (activeLevel && !activeExamId) {
-        BentoGrid._scrollTestsPathToCurrent();
+        DashboardNav._scrollTestsPathToCurrent();
       }
     },
 
@@ -222,7 +222,7 @@
         if (segments[1] === 'practice' || segments[1] === 'simulation') levelIdx = 2;
         var level = (segments[levelIdx] || AppState.currentLevel || 'C1').toUpperCase();
         if (segments[levelIdx + 1] && segments[levelIdx + 1].toLowerCase() === 'random') {
-          hubPage.innerHTML = BentoGrid._buildRandomTestPageHtml(level);
+          hubPage.innerHTML = DashboardNav._buildRandomTestPageHtml(level);
           var randomState = { view: 'testsHub', mode: mode, level: level, examId: 'Random' };
           history.replaceState(randomState, '', Router.stateToPath(randomState));
           return;
@@ -230,7 +230,7 @@
         if (segments[levelIdx + 1] && /^test-\d+$/i.test(segments[levelIdx + 1])) {
           var examId = segments[levelIdx + 1].replace('test-', 'Test');
           var exams = window.EXAMS_DATA[level] || [];
-          hubPage.innerHTML = BentoGrid._buildTestsSectionCardsHtml(exams, examId, level);
+          hubPage.innerHTML = DashboardNav._buildTestsSectionCardsHtml(exams, examId, level);
           var examState = { view: 'testsHub', mode: mode, level: level, examId: examId };
           history.replaceState(examState, '', Router.stateToPath(examState));
         }
@@ -245,7 +245,7 @@
       overlay.className = 'tests-mode-help-overlay';
       overlay.innerHTML =
         '<div class="tests-mode-help-modal" role="dialog" aria-modal="true" aria-labelledby="tests-mode-help-title">' +
-          '<button type="button" class="tests-mode-help-close" onclick="BentoGrid.closeTestsModeHelp()" aria-label="Close">' + _mi('close') + '</button>' +
+          '<button type="button" class="tests-mode-help-close" onclick="DashboardNav.closeTestsModeHelp()" aria-label="Close">' + _mi('close') + '</button>' +
           '<div class="tests-mode-help-hero">' +
             '<img src="Assets/images/Cabezasune.svg" alt="" class="tests-mode-help-mascot" aria-hidden="true">' +
             '<div class="tests-mode-help-speech">' +
@@ -280,11 +280,11 @@
             '</div>' +
           '</div>' +
           '<p class="tests-mode-help-foot">Switch anytime with the toggle above. Your progress is saved in both modes.</p>' +
-          '<button type="button" class="tests-mode-help-cta" onclick="BentoGrid.closeTestsModeHelp()">Got it!</button>' +
+          '<button type="button" class="tests-mode-help-cta" onclick="DashboardNav.closeTestsModeHelp()">Got it!</button>' +
         '</div>';
 
       overlay.addEventListener('click', function(e) {
-        if (e.target === overlay) BentoGrid.closeTestsModeHelp();
+        if (e.target === overlay) DashboardNav.closeTestsModeHelp();
       });
       document.body.appendChild(overlay);
     },
@@ -300,21 +300,21 @@
       var examActive = mode === 'exam' ? ' active' : '';
       return '<div class="tests-mode-bar">' +
         '<div class="tests-mode-toggle" role="group" aria-label="Test attempt mode">' +
-          '<button type="button" class="tests-mode-toggle-btn tests-mode-toggle-btn--practice' + practiceActive + '" data-mode="practice" onclick="BentoGrid.setTestsMode(\'practice\')">' +
+          '<button type="button" class="tests-mode-toggle-btn tests-mode-toggle-btn--practice' + practiceActive + '" data-mode="practice" onclick="DashboardNav.setTestsMode(\'practice\')">' +
             _mi('edit_note') + '<span>Practice</span>' +
           '</button>' +
-          '<button type="button" class="tests-mode-toggle-btn tests-mode-toggle-btn--simulation' + examActive + '" data-mode="exam" onclick="BentoGrid.setTestsMode(\'exam\')">' +
+          '<button type="button" class="tests-mode-toggle-btn tests-mode-toggle-btn--simulation' + examActive + '" data-mode="exam" onclick="DashboardNav.setTestsMode(\'exam\')">' +
             _mi('timer') + '<span>Simulation</span>' +
           '</button>' +
         '</div>' +
-        '<button type="button" class="tests-mode-help-btn" onclick="BentoGrid.showTestsModeHelp()" aria-label="What is the difference between Practice and Simulation?" title="What\'s the difference?">' +
+        '<button type="button" class="tests-mode-help-btn" onclick="DashboardNav.showTestsModeHelp()" aria-label="What is the difference between Practice and Simulation?" title="What\'s the difference?">' +
           _mi('help') +
         '</button>' +
       '</div>';
     },
 
     _buildTestsModeToggleHtml: function() {
-      return BentoGrid._buildTestsModeBarHtml();
+      return DashboardNav._buildTestsModeBarHtml();
     },
 
     _buildTestsLevelCardsHtml: function() {
@@ -343,7 +343,7 @@
         var statusClass = completed > 0 ? 'mode-card-status-done' : '';
 
         html += '<div class="mode-card mode-card--tests-level" data-tests-level="' + lvl.toLowerCase() + '"' +
-          ' onclick="BentoGrid.openTests(\'' + lvl + '\')" role="button" tabindex="0">' +
+          ' onclick="DashboardNav.openTests(\'' + lvl + '\')" role="button" tabindex="0">' +
           '<div class="mode-card-body">' +
             '<div class="mode-card-title-row">' +
               '<span class="mode-card-title">' + self._escapeHTML(meta.label) + '</span>' +
@@ -384,8 +384,8 @@
         '--cw-card-text:' + meta.cardText +
         '">';
 
-      if (typeof BentoGrid !== 'undefined' && BentoGrid._buildRandomTestPathCardHtml) {
-        html += BentoGrid._buildRandomTestPathCardHtml(levelId);
+      if (typeof DashboardNav !== 'undefined' && DashboardNav._buildRandomTestPathCardHtml) {
+        html += DashboardNav._buildRandomTestPathCardHtml(levelId);
       }
 
       html += '<div class="cw-path-grid tests-path-grid" role="list" aria-label="' + self._escapeHTML(levelId) + ' tests">';
@@ -405,7 +405,7 @@
 
         var onclick = locked
           ? 'Dashboard.showExamsUpgradeGate()'
-          : 'BentoGrid.openTests(\'' + levelId + '\', \'' + exam.id + '\')';
+          : 'DashboardNav.openTests(\'' + levelId + '\', \'' + exam.id + '\')';
 
         html += '<button type="button" class="' + cellClass + '" onclick="' + onclick + '" title="Test ' + exam.number + '" aria-label="Test ' + testNum + '">';
         html += '<span class="cw-path-cell-num">' + testNum + '</span>';
@@ -436,7 +436,7 @@
 
       var onclick = !hasExamsPack
         ? 'Dashboard.showExamsUpgradeGate()'
-        : 'BentoGrid.openTests(\'' + levelId + '\', \'Random\')';
+        : 'DashboardNav.openTests(\'' + levelId + '\', \'Random\')';
 
       var statusText = !hasExamsPack
         ? 'Pack Exams required'

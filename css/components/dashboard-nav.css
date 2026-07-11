@@ -1,4 +1,4 @@
-/* css/components/bento-grid.css — Redesigned Bento Grid dashboard */
+/* css/components/dashboard-nav.css — Dashboard shell: home, course paths, crosswords, mobile nav */
 
 :root {
   --oxford-blue: #2D2E5F;
@@ -29,7 +29,7 @@
 }
 
 /* ── Grid wrapper ── */
-.bento-grid {
+.dashboard-home {
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -360,7 +360,7 @@ content: '';
 }
 
 /* ── Bento center wrapper (white container) ── */
-.bento-center-wrapper {
+.dashboard-home-wrapper {
   background: rgba(255, 255, 255, 0.92);
   border-radius: 24px;
   padding: 20px;
@@ -626,12 +626,12 @@ content: '';
 }
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
-  .bento-center-wrapper {
+  .dashboard-home-wrapper {
     border-radius: 20px;
     padding: 12px;
   }
 
-  .bento-grid {
+  .dashboard-home {
     gap: 12px;
   }
 
@@ -704,7 +704,7 @@ content: '';
 }
 
 @media (max-width: 420px) {
-  .bento-center-wrapper {
+  .dashboard-home-wrapper {
     margin: 0 -2px;
     padding: 10px;
   }
@@ -3533,7 +3533,7 @@ margin-top: -2px;
     color: #1E9D8E;
   }
 
-  .bento-center-wrapper {
+  .dashboard-home-wrapper {
     max-width: 430px;
     margin: 0 auto;
     padding: 0;
@@ -3541,7 +3541,7 @@ margin-top: -2px;
     box-shadow: none;
   }
 
-  .bento-grid {
+  .dashboard-home {
     gap: 10px;
   }
 
@@ -3724,7 +3724,7 @@ margin-top: -2px;
 }
 
 @media (max-width: 768px), (max-height: 520px) and (orientation: landscape) and (max-width: 1024px) {
-  .bento-grid {
+  .dashboard-home {
     padding-bottom: calc(56px + env(safe-area-inset-bottom));
   }
 
@@ -3828,8 +3828,8 @@ margin-top: -2px;
     flex-shrink: 0;
   }
 
-  .bento-grid[data-mobile-tab="home"] .mobile-learn-pane,
-  .bento-grid[data-mobile-tab="learn"] .mobile-app-hero {
+  .dashboard-home[data-mobile-tab="home"] .mobile-learn-pane,
+  .dashboard-home[data-mobile-tab="learn"] .mobile-app-hero {
     display: none !important;
   }
 
@@ -3839,19 +3839,19 @@ margin-top: -2px;
     gap: 10px;
   }
 
-  .bento-grid[data-mobile-tab="home"] .mobile-app-hero {
+  .dashboard-home[data-mobile-tab="home"] .mobile-app-hero {
     min-height: calc(100dvh - 112px);
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  .bento-grid[data-mobile-tab="learn"] .mobile-learn-pane .bento-card {
+  .dashboard-home[data-mobile-tab="learn"] .mobile-learn-pane .bento-card {
     min-height: 0px !important;
     padding: 14px;
   }
 
-  .bento-grid[data-mobile-tab="learn"] .bento-card-inner {
+  .dashboard-home[data-mobile-tab="learn"] .bento-card-inner {
     align-items: flex-start;
     justify-content: flex-start;
     text-align: left;
@@ -3859,14 +3859,14 @@ margin-top: -2px;
     z-index: 1;
   }
 
-  .bento-grid[data-mobile-tab="learn"] .bento-card-title {
+  .dashboard-home[data-mobile-tab="learn"] .bento-card-title {
     max-width: 72%;
     font-size: 0.84rem;
     overflow-wrap: normal;
     word-break: normal;
   }
 
-  .bento-grid[data-mobile-tab="learn"] .bento-card::after {
+  .dashboard-home[data-mobile-tab="learn"] .bento-card::after {
     display: block !important;
     opacity: 0.9 !important;
     transform: none !important;
@@ -3878,26 +3878,26 @@ margin-top: -2px;
     background-position: bottom right !important;
   }
 
-  .bento-grid[data-mobile-tab="learn"] .bento-card::before {
+  .dashboard-home[data-mobile-tab="learn"] .bento-card::before {
     display: block !important;
   }
 
-  .bento-grid[data-mobile-tab="learn"] .bento-card-weakspot,
-  .bento-grid[data-mobile-tab="learn"] .bento-card-checkpoint {
+  .dashboard-home[data-mobile-tab="learn"] .bento-card-weakspot,
+  .dashboard-home[data-mobile-tab="learn"] .bento-card-checkpoint {
     min-height: 52px !important;
     padding: 8px 10px;
     border-radius: 16px;
   }
 
-  .bento-grid[data-mobile-tab="learn"] .bento-card-weakspot .bento-card-inner,
-  .bento-grid[data-mobile-tab="learn"] .bento-card-checkpoint .bento-card-inner {
+  .dashboard-home[data-mobile-tab="learn"] .bento-card-weakspot .bento-card-inner,
+  .dashboard-home[data-mobile-tab="learn"] .bento-card-checkpoint .bento-card-inner {
     display: block;
     min-height: 34px;
     text-align: left;
   }
 
-  .bento-grid[data-mobile-tab="learn"] .bento-card-weakspot .bento-card-desc,
-  .bento-grid[data-mobile-tab="learn"] .bento-card-checkpoint .bento-card-desc {
+  .dashboard-home[data-mobile-tab="learn"] .bento-card-weakspot .bento-card-desc,
+  .dashboard-home[data-mobile-tab="learn"] .bento-card-checkpoint .bento-card-desc {
     display: block !important;
     max-width: 68%;
     margin-top: 2px;
@@ -3909,8 +3909,8 @@ margin-top: -2px;
     text-overflow: ellipsis;
   }
 
-  .bento-grid[data-mobile-tab="learn"] .bento-card-weakspot::after,
-  .bento-grid[data-mobile-tab="learn"] .bento-card-checkpoint::after {
+  .dashboard-home[data-mobile-tab="learn"] .bento-card-weakspot::after,
+  .dashboard-home[data-mobile-tab="learn"] .bento-card-checkpoint::after {
     width: 58px !important;
     height: 58px !important;
     bottom: -12px !important;

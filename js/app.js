@@ -27,8 +27,8 @@
       if (typeof Landing !== 'undefined') Landing.hide();
       var app = document.getElementById('app');
       if (app) app.style.display = '';
-      if (typeof BentoGrid !== 'undefined' && BentoGrid.openCourseSection) {
-        await BentoGrid.openCourseSection('learning', null, options);
+      if (typeof DashboardNav !== 'undefined' && DashboardNav.openCourseSection) {
+        await DashboardNav.openCourseSection('learning', null, options);
       }
     },
 
@@ -120,8 +120,8 @@
       var app = document.getElementById('app');
       if (app) app.style.display = '';
 
-      if (typeof BentoGrid !== 'undefined' && BentoGrid.closeGradeEvolution && (!state || state.view !== 'gradeEvolution')) {
-        BentoGrid.closeGradeEvolution({ skipHistory: true });
+      if (typeof DashboardNav !== 'undefined' && DashboardNav.closeGradeEvolution && (!state || state.view !== 'gradeEvolution')) {
+        DashboardNav.closeGradeEvolution({ skipHistory: true });
       }
 
       if (!state || state.view === 'dashboard') {
@@ -131,7 +131,7 @@
           this.openLearningHome({ fromRoute: true });
         }
       } else if (state.view === 'testsHub') {
-        if (typeof BentoGrid !== 'undefined') {
+        if (typeof DashboardNav !== 'undefined') {
           if (state.mode) {
             if (typeof UserProfile !== 'undefined' && UserProfile.setPreferredMode) {
               UserProfile.setPreferredMode(state.mode);
@@ -139,7 +139,7 @@
               AppState.currentMode = state.mode;
             }
           }
-          BentoGrid.openTests(state.level || null, state.examId || null, { fromRoute: true, mode: state.mode });
+          DashboardNav.openTests(state.level || null, state.examId || null, { fromRoute: true, mode: state.mode });
         }
       } else if (state.view === 'subpage' && state.mode) {
         Dashboard.renderSubpage(state.mode, state.expandExamId || null);
@@ -168,16 +168,16 @@
         }
       } else if (state.view === 'gradeEvolution') {
         Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openGradeEvolution({ fromRoute: true });
+        if (typeof DashboardNav !== 'undefined') DashboardNav.openGradeEvolution({ fromRoute: true });
       } else if (state.view === 'quicksteps') {
         Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openQuickstepsChooser();
+        if (typeof DashboardNav !== 'undefined') DashboardNav.openQuickstepsChooser();
       } else if (state.view === 'crosswordList') {
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openCrosswordList(null, state.level || null, { fromRoute: true });
+        if (typeof DashboardNav !== 'undefined') DashboardNav.openCrosswordList(null, state.level || null, { fromRoute: true });
       } else if (state.view === 'crosswordPlay' && state.level && typeof state.cwIndex !== 'undefined') {
         if (typeof FastExercises !== 'undefined') FastExercises._openMixedCrossword(state.level, state.cwIndex, { fromRoute: true });
       } else if (state.view === 'wordleList') {
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openWordleSection(null, state.level || null, { fromRoute: true });
+        if (typeof DashboardNav !== 'undefined') DashboardNav.openWordleSection(null, state.level || null, { fromRoute: true });
       } else if (state.view === 'wordlePlay' && state.level && typeof state.wlIndex !== 'undefined') {
         if (typeof FastExercises !== 'undefined') FastExercises._openWordleLevel(state.level, state.wlIndex, { fromRoute: true });
       } else if (state.view === 'fastExercises') {
@@ -196,28 +196,28 @@
         Dashboard.render();
         if (typeof VideoExercises !== 'undefined') VideoExercises.openExercise(state.exerciseId, { fromRoute: true });
       } else if (state.view === 'course') {
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons({ fromRoute: true });
+        if (typeof DashboardNav !== 'undefined') DashboardNav.openLessons({ fromRoute: true });
       } else if (state.view === 'courseSection' && state.section) {
-        if (typeof BentoGrid !== 'undefined') {
-          BentoGrid.openCourseSection(state.section, state.level, {
+        if (typeof DashboardNav !== 'undefined') {
+          DashboardNav.openCourseSection(state.section, state.level, {
             fromRoute: true,
             showStageList: !!state.showStageList
           });
         }
       } else if (state.view === 'courseEtapa' && state.section && state.level && state.etapaKey) {
-        if (typeof BentoGrid !== 'undefined') {
-          BentoGrid.openCourseSection(state.section, state.level, { fromRoute: true, etapaKey: state.etapaKey });
+        if (typeof DashboardNav !== 'undefined') {
+          DashboardNav.openCourseSection(state.section, state.level, { fromRoute: true, etapaKey: state.etapaKey });
         }
       } else if (state.view === 'courseTheory') {
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseSection('learning', state.level, { fromRoute: true });
+        if (typeof DashboardNav !== 'undefined') DashboardNav.openCourseSection('learning', state.level, { fromRoute: true });
       } else if (state.view === 'courseBlock' && state.blockKey) {
         Dashboard.render();
         if (state.level) AppState.currentLevel = state.level;
-        if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseBlock(state.blockKey);
+        if (typeof DashboardNav !== 'undefined') DashboardNav._popstateCourseBlock(state.blockKey);
       } else if (state.view === 'courseUnit' && state.unitId) {
         Dashboard.render();
         if (state.level) AppState.currentLevel = state.level;
-        if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseUnit(state);
+        if (typeof DashboardNav !== 'undefined') DashboardNav._popstateCourseUnit(state);
       } else if (state.view === 'tips') {
         Dashboard.render();
         if (typeof TipsPage !== 'undefined') TipsPage._renderHome();
@@ -308,7 +308,7 @@
       } else if (initialState.view === 'testsHub') {
         if (typeof Landing !== 'undefined') Landing.hide();
         var _testsAppEl = document.getElementById('app'); if (_testsAppEl) _testsAppEl.style.display = '';
-        if (typeof BentoGrid !== 'undefined') await BentoGrid.openTests(initialState.level || null, initialState.examId || null, { fromRoute: true, mode: initialState.mode });
+        if (typeof DashboardNav !== 'undefined') await DashboardNav.openTests(initialState.level || null, initialState.examId || null, { fromRoute: true, mode: initialState.mode });
       } else if (initialState.view === 'subpage' && initialState.mode) {
         Dashboard.renderSubpage(initialState.mode);
         // renderSubpage does not push state itself, so replace initial entry
@@ -330,15 +330,15 @@
       } else if (initialState.view === 'gradeEvolution') {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openGradeEvolution({ fromRoute: true });
+        if (typeof DashboardNav !== 'undefined') DashboardNav.openGradeEvolution({ fromRoute: true });
       } else if (initialState.view === 'quicksteps') {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openQuickstepsChooser();
+        if (typeof DashboardNav !== 'undefined') DashboardNav.openQuickstepsChooser();
       } else if (initialState.view === 'crosswordList') {
         if (typeof Landing !== 'undefined') Landing.hide();
         var _cwAppEl = document.getElementById('app'); if (_cwAppEl) _cwAppEl.style.display = '';
-        if (typeof BentoGrid !== 'undefined') await BentoGrid.openCrosswordList(null, initialState.level || null, { fromRoute: true });
+        if (typeof DashboardNav !== 'undefined') await DashboardNav.openCrosswordList(null, initialState.level || null, { fromRoute: true });
       } else if (initialState.view === 'crosswordPlay' && initialState.level && typeof initialState.cwIndex !== 'undefined') {
         if (typeof Landing !== 'undefined') Landing.hide();
         var _cwAppEl = document.getElementById('app'); if (_cwAppEl) _cwAppEl.style.display = '';
@@ -346,7 +346,7 @@
       } else if (initialState.view === 'wordleList') {
         if (typeof Landing !== 'undefined') Landing.hide();
         var _wlAppEl = document.getElementById('app'); if (_wlAppEl) _wlAppEl.style.display = '';
-        if (typeof BentoGrid !== 'undefined') await BentoGrid.openWordleSection(null, initialState.level || null, { fromRoute: true });
+        if (typeof DashboardNav !== 'undefined') await DashboardNav.openWordleSection(null, initialState.level || null, { fromRoute: true });
       } else if (initialState.view === 'wordlePlay' && initialState.level && typeof initialState.wlIndex !== 'undefined') {
         if (typeof Landing !== 'undefined') Landing.hide();
         var _wlAppEl = document.getElementById('app'); if (_wlAppEl) _wlAppEl.style.display = '';
@@ -372,30 +372,30 @@
         Dashboard.render();
         if (typeof VideoExercises !== 'undefined') VideoExercises.openExercise(initialState.exerciseId, { fromRoute: true });
       } else if (initialState.view === 'course') {
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openLessons({ fromRoute: true });
+        if (typeof DashboardNav !== 'undefined') DashboardNav.openLessons({ fromRoute: true });
       } else if (initialState.view === 'courseSection' && initialState.section) {
-        if (typeof BentoGrid !== 'undefined') {
-          BentoGrid.openCourseSection(initialState.section, initialState.level, {
+        if (typeof DashboardNav !== 'undefined') {
+          DashboardNav.openCourseSection(initialState.section, initialState.level, {
             fromRoute: true,
             showStageList: !!initialState.showStageList
           });
         }
       } else if (initialState.view === 'courseEtapa' && initialState.section && initialState.level && initialState.etapaKey) {
-        if (typeof BentoGrid !== 'undefined') {
-          BentoGrid.openCourseSection(initialState.section, initialState.level, { fromRoute: true, etapaKey: initialState.etapaKey });
+        if (typeof DashboardNav !== 'undefined') {
+          DashboardNav.openCourseSection(initialState.section, initialState.level, { fromRoute: true, etapaKey: initialState.etapaKey });
         }
       } else if (initialState.view === 'courseTheory') {
-        if (typeof BentoGrid !== 'undefined') BentoGrid.openCourseSection('learning', initialState.level, { fromRoute: true });
+        if (typeof DashboardNav !== 'undefined') DashboardNav.openCourseSection('learning', initialState.level, { fromRoute: true });
       } else if (initialState.view === 'courseBlock' && initialState.blockKey) {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (initialState.level) AppState.currentLevel = initialState.level;
-        if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseBlock(initialState.blockKey);
+        if (typeof DashboardNav !== 'undefined') DashboardNav._popstateCourseBlock(initialState.blockKey);
       } else if (initialState.view === 'courseUnit' && initialState.unitId) {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();
         if (initialState.level) AppState.currentLevel = initialState.level;
-        if (typeof BentoGrid !== 'undefined') BentoGrid._popstateCourseUnit(initialState);
+        if (typeof DashboardNav !== 'undefined') DashboardNav._popstateCourseUnit(initialState);
       } else if (initialState.view === 'tips') {
         history.replaceState({ view: 'dashboard' }, '', '/');
         Dashboard.render();

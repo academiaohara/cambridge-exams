@@ -1,5 +1,5 @@
-// js/bento-grid.js
-// Premium Bento Grid dashboard sections rendered above the exam list
+// js/dashboard-nav.js
+// Dashboard navigation shell: home mode cards, section routing, sidebars, and mobile nav.
 
 (function() {
   var _levelColors = {
@@ -9,128 +9,28 @@
     'C2': { bg: '#f3e5f5', label: '#4a148c', code: '#9c27b0' }
   };
 
-  window.BentoGrid = {
+  window.DashboardNav = {
     render: function(container) {
       if (!container) return;
       var level = AppState.currentLevel || 'C1';
       var exams = window.EXAMS_DATA[level] || [];
-      var nextLesson = this._findNextLesson(exams);
 
-      var html = '<div class="bento-grid">';
+      var html = '<div class="dashboard-home">';
 
       if (typeof MainNav !== 'undefined') {
         html += MainNav.buildDesktopModeCardsHtml(exams);
       }
 
-      html += '<section class="mobile-learn-pane mobile-learn-pane--legacy" id="mobileLearnPane" hidden>';
-
-      // Row 1: Arena · Practice
-      html += this._renderTopRow(exams);
-
-      // Row 2: Lessons · Micro-Learning
-      html += this._renderLearningRow();
-
-      // Row 3: Recommended Exercise + Next in-progress lesson
-      html += '<div class="bento-progress-row">';
-      html += this._renderRecommendedExercise(exams);
-
-      if (nextLesson) {
-        html += this._renderNextLesson(nextLesson);
-      }
-      html += '</div>';
-
-      html += this._renderMobileStatsSection(exams);
-
-      html += '</section>';
-
       html += this._renderMobileBottomNav(level);
-
       html += '</div>';
       container.innerHTML = html;
-      this._updateCourseProgressDesc(level);
+
       if (typeof MainNav !== 'undefined') {
         MainNav.ensureMobileMenuSheet();
         MainNav.setMobileActive('home');
         var isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
         if (isMobile && MainNav.initMobileStatsPopovers) MainNav.initMobileStatsPopovers();
       }
-    },
-
-    _renderMobileAppHero: function(level, exams) {
-      var name = this._getUserName() || 'there';
-      var availableCount = (exams || []).filter(function(e) { return e.status === 'available'; }).length;
-      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
-
-      return '<section class="mobile-app-hero">' +
-        '<img src="Assets/images/sunelogoreduced2.svg" class="mobile-app-kicker" alt="Sune English">' +
-        '<h1>Hi, ' + this._escapeHTML(name.split(' ')[0]) + '</h1>' +
-        '<p>Choose your next move for ' + this._escapeHTML(level) + '.</p>' +
-        '<div class="mobile-app-pill-row">' +
-          '<span class="mobile-app-pill">' + _mi('school') + this._escapeHTML(level) + '</span>' +
-          '<span class="mobile-app-pill">' + _mi('assignment') + availableCount + ' tests</span>' +
-        '</div>' +
-        '<div class="mobile-app-actions" aria-label="Mobile sections">' +
-          '<button onclick="BentoGrid.openTests()">' + _mi('assignment') + '<span>Tests</span></button>' +
-          '<button onclick="BentoGrid.openLessons()">' + _mi('auto_stories') + '<span>Course</span></button>' +
-          '<button onclick="BentoGrid.openCrosswordList()">' + _mi('grid_on') + '<span>Crosswords</span></button>' +
-          (typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI() ? '' :
-          '<button onclick="UserProfile.renderPremiumSection()">' + _mi('workspace_premium') + '<span>Plans</span></button>') +
-          '<button onclick="BentoGrid.openMobileProfile()">' + _mi('settings') + '<span>Profile</span></button>' +
-        '</div>' +
-      '</section>';
-    },
-
-    _renderMobileStatsSection: function(exams) {
-      var level = AppState.currentLevel || 'C1';
-      var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
-      var streakCount = streak ? (streak.currentStreak || 0) : 0;
-      var completedParts = 0;
-      var inProgressParts = 0;
-      var availableCount = 0;
-      var scaleTotal = 0;
-      var scaleCount = 0;
-      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
-
-      (exams || []).forEach(function(exam) {
-        if (exam.status !== 'available') return;
-        availableCount++;
-        Object.keys(exam.sections || {}).forEach(function(sectionKey) {
-          var section = exam.sections[sectionKey] || {};
-          completedParts += (section.completed || []).length;
-          inProgressParts += (section.inProgress || []).length;
-        });
-        if (typeof ScoreCalculator !== 'undefined') {
-          try {
-            ScoreCalculator.getAllSkillScores(exam.id).forEach(function(score) {
-              if (score.raw > 0) {
-                scaleTotal += score.scale;
-                scaleCount++;
-              }
-            });
-          } catch (e) {}
-        }
-      });
-
-      var avgScale = scaleCount ? Math.round(scaleTotal / scaleCount) : '--';
-      return '<section class="mobile-stats-section" id="mobileStatsSection">' +
-        '<div class="mobile-section-heading">' +
-          '<div>' +
-            '<span>Stats</span>' +
-            '<h2>Your progress</h2>' +
-          '</div>' +
-          '<button onclick="BentoGrid.openGradeEvolution()">' + _mi('query_stats') + ' Details</button>' +
-        '</div>' +
-        '<div class="mobile-stats-grid">' +
-          '<div class="mobile-stat-card"><span>Level</span><strong>' + this._escapeHTML(level) + '</strong><small>' + availableCount + ' tests</small></div>' +
-          '<div class="mobile-stat-card"><span>Streak</span><strong>' + streakCount + '</strong><small>days</small></div>' +
-          '<div class="mobile-stat-card"><span>Done</span><strong>' + completedParts + '</strong><small>' + inProgressParts + ' in progress</small></div>' +
-          '<div class="mobile-stat-card"><span>Score</span><strong>' + avgScale + '</strong><small>avg scale</small></div>' +
-        '</div>' +
-        '<div class="mobile-stats-actions">' +
-          '<button onclick="openScoreCalculator(event)">' + _mi('calculate') + '<span>Score calculator</span></button>' +
-          '<button onclick="BentoGrid.openStreakSection()">' + _mi('local_fire_department') + '<span>Streak calendar</span></button>' +
-        '</div>' +
-      '</section>';
     },
 
     _renderMobileBottomNav: function(level) {
@@ -140,11 +40,11 @@
       var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
       var profileMarkup = this._buildMobileBottomNavProfileMarkup(_mi);
       return '<nav class="mobile-bottom-nav" aria-label="Mobile dashboard">' +
-        '<button type="button" class="mobile-bottom-nav-btn" data-mobile-tab="learning" onclick="BentoGrid.goMobileHome()">' + _mi('menu_book') + '<span>Learning</span></button>' +
-        '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.openLessons()">' + _mi('auto_stories') + '<span>Course</span></button>' +
-        '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.openTests()">' + _mi('assignment') + '<span>Tests</span></button>' +
-        '<button type="button" class="mobile-bottom-nav-btn" onclick="BentoGrid.openMobileDictionaries()">' + _mi('menu_book') + '<span>Dict</span></button>' +
-        '<button type="button" class="mobile-bottom-nav-btn mobile-bottom-nav-profile" onclick="BentoGrid.openMobileProfile()" aria-label="Account">' + profileMarkup + '</button>' +
+        '<button type="button" class="mobile-bottom-nav-btn" data-mobile-tab="learning" onclick="DashboardNav.goMobileHome()">' + _mi('menu_book') + '<span>Learning</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn" onclick="DashboardNav.openLessons()">' + _mi('auto_stories') + '<span>Course</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn" onclick="DashboardNav.openTests()">' + _mi('assignment') + '<span>Tests</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn" onclick="DashboardNav.openMobileDictionaries()">' + _mi('menu_book') + '<span>Dict</span></button>' +
+        '<button type="button" class="mobile-bottom-nav-btn mobile-bottom-nav-profile" onclick="DashboardNav.openMobileProfile()" aria-label="Account">' + profileMarkup + '</button>' +
       '</nav>';
     },
 
@@ -184,7 +84,7 @@
     setMobileDashboardTab: function(tab) {
       tab = tab || 'home';
       this._mobileDashboardTab = tab;
-      var grid = document.querySelector('.bento-grid');
+      var grid = document.querySelector('.dashboard-home');
       if (grid) {
         grid.setAttribute('data-mobile-tab', tab);
       }
@@ -196,8 +96,8 @@
     /** Leave any screen and open Learning at the current stage. */
     goMobileHome: function() {
       if (typeof MainNav !== 'undefined' && MainNav.closeMobileMenu) MainNav.closeMobileMenu();
-      if (typeof BentoGrid !== 'undefined' && BentoGrid.openCourseSection) {
-        BentoGrid.openCourseSection('learning');
+      if (typeof DashboardNav !== 'undefined' && DashboardNav.openCourseSection) {
+        DashboardNav.openCourseSection('learning');
       }
     },
 
@@ -220,7 +120,7 @@
       ];
 
       var html = '<div class="mobile-level-modal-card" role="dialog" aria-modal="true" aria-labelledby="mobile-level-title">' +
-        '<button class="mobile-level-modal-close" onclick="BentoGrid.closeMobileLevelModal()" aria-label="Close level picker">' +
+        '<button class="mobile-level-modal-close" onclick="DashboardNav.closeMobileLevelModal()" aria-label="Close level picker">' +
           '<span class="material-symbols-outlined">close</span>' +
         '</button>' +
         '<div class="mobile-level-modal-kicker">Choose level</div>' +
@@ -229,7 +129,7 @@
 
       levels.forEach(function(level) {
         var isActive = level.code === current;
-        html += '<button class="mobile-level-option' + (isActive ? ' active' : '') + '" onclick="BentoGrid.selectMobileLevel(\'' + level.code + '\')">' +
+        html += '<button class="mobile-level-option' + (isActive ? ' active' : '') + '" onclick="DashboardNav.selectMobileLevel(\'' + level.code + '\')">' +
           '<span class="material-symbols-outlined">' + level.icon + '</span>' +
           '<strong>' + level.code + '</strong>' +
           '<small>' + level.name + '</small>' +
@@ -243,7 +143,7 @@
       modal.className = 'mobile-level-modal-overlay';
       modal.innerHTML = html;
       modal.addEventListener('click', function(e) {
-        if (e.target === modal) BentoGrid.closeMobileLevelModal();
+        if (e.target === modal) DashboardNav.closeMobileLevelModal();
       });
       document.body.appendChild(modal);
     },
@@ -279,7 +179,7 @@
         : [{ code: 'es', label: 'Español' }];
 
       var html = '<div class="mobile-level-modal-card" role="dialog" aria-modal="true" aria-labelledby="mobile-lang-title">' +
-        '<button class="mobile-level-modal-close" onclick="BentoGrid.closeMobileLangModal()" aria-label="Close language picker">' +
+        '<button class="mobile-level-modal-close" onclick="DashboardNav.closeMobileLangModal()" aria-label="Close language picker">' +
           '<span class="material-symbols-outlined">close</span>' +
         '</button>' +
         '<div class="mobile-level-modal-kicker">Language</div>' +
@@ -288,7 +188,7 @@
 
       langs.forEach(function(lang) {
         var isActive = lang.code === currentLang;
-        html += '<button class="mobile-level-option' + (isActive ? ' active' : '') + '" onclick="BentoGrid.selectMobileLang(\'' + lang.code + '\')">' +
+        html += '<button class="mobile-level-option' + (isActive ? ' active' : '') + '" onclick="DashboardNav.selectMobileLang(\'' + lang.code + '\')">' +
           '<span class="material-symbols-outlined">language</span>' +
           '<strong>' + lang.label + '</strong>' +
           '<small>' + lang.code.toUpperCase() + '</small>' +
@@ -302,7 +202,7 @@
       modal.className = 'mobile-level-modal-overlay';
       modal.innerHTML = html;
       modal.addEventListener('click', function(e) {
-        if (e.target === modal) BentoGrid.closeMobileLangModal();
+        if (e.target === modal) DashboardNav.closeMobileLangModal();
       });
       document.body.appendChild(modal);
     },
@@ -329,225 +229,6 @@
       }
     },
 
-
-    _renderLearningRow: function() {
-      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
-      return '<div class="bento-learning-row">' +
-
-        '<div class="bento-card bento-card-crossword" onclick="BentoGrid.openCrosswordList()">' +
-          '<div class="bento-hover-overlay"></div>' +
-          '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Crossword</div>' +
-            BentoGrid._buildCrosswordBentoMeta() +
-            '<div class="bento-card-hover-info">Solve today\'s Cambridge-style crossword. A new puzzle every day — build your streak!</div>' +
-          '</div>' +
-        '</div>' +
-
-        '<div class="bento-card bento-card-learning" onclick="BentoGrid.openCourseSection(\'learning\')">' +
-          '<div class="bento-hover-overlay"></div>' +
-          '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Learning</div>' +
-            '<div id="bento-learning-prog-desc" class="bento-course-prog"></div>' +
-            '<div class="bento-card-hover-info">Grammar units, reviews and progress tests — structured lessons for Cambridge exams.</div>' +
-          '</div>' +
-        '</div>' +
-
-        '<div class="bento-card bento-card-vocabulary" onclick="BentoGrid.openCourseSection(\'vocabulary\')">' +
-          '<div class="bento-hover-overlay"></div>' +
-          '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Vocabulary</div>' +
-            '<div id="bento-vocabulary-prog-desc" class="bento-course-prog"></div>' +
-            '<div class="bento-card-hover-info">Phrasal verbs, idioms and word formation practice.</div>' +
-          '</div>' +
-        '</div>' +
-
-        '<div class="bento-card bento-card-video-exercises" onclick="BentoGrid.openVideoExercises()">' +
-          '<div class="bento-hover-overlay"></div>' +
-          '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Stories</div>' +
-            '<div class="bento-card-desc">Watch &amp; test</div>' +
-            '<div class="bento-card-hover-info">Watch a short story video, then answer questions to practise vocabulary and comprehension.</div>' +
-          '</div>' +
-        '</div>' +
-
-      '</div>';
-    },
-
-    _renderRecommendedExercise: function(exams) {
-      var weak = this._getWeakTopic(exams);
-
-      // If no score data yet, suggest first incomplete part
-      if (!weak) {
-        for (var i = 0; i < exams.length; i++) {
-          if (exams[i].status !== 'available') continue;
-          var secData = exams[i].sections && exams[i].sections['reading'];
-          if (secData && secData.total > 0) {
-            var firstPart = 1;
-            for (var p = 1; p <= secData.total; p++) {
-              if (!secData.completed || secData.completed.indexOf(p) === -1) {
-                firstPart = p;
-                break;
-              }
-            }
-            weak = { examId: exams[i].id, section: 'reading', part: firstPart, ratio: null };
-            break;
-          }
-        }
-      }
-
-      if (!weak) {
-        return '<div class="bento-card bento-card-weakspot">' +
-          '<div class="bento-hover-overlay"></div>' +
-          '<div class="bento-card-inner">' +
-            '<div class="bento-card-title">Weak Spot</div>' +
-            '<div class="bento-card-desc">' + 'Complete some exercises to get personalised recommendations!' + '</div>' +
-            '<div class="bento-card-hover-info">Your lowest-scoring section — practice it to boost your overall result.</div>' +
-          '</div>' +
-        '</div>';
-      }
-
-      var scoreHtml = weak.ratio !== null
-        ? ' · ' + Math.round(weak.ratio * 100) + '%'
-        : '';
-
-      return '<div class="bento-card bento-card-weakspot" onclick="Exercise.openPart(\'' + this._escapeHTML(weak.examId) + '\', \'' + weak.section + '\', ' + (weak.part || 1) + ', \'practice\')">' +
-        '<div class="bento-hover-overlay"></div>' +
-        '<div class="bento-card-inner">' +
-          '<div class="bento-card-title">Weak Spot</div>' +
-          '<div class="bento-card-desc">' + this._escapeHTML(weak.examId) + ' — ' + this._capitalize(weak.section) + (weak.part ? ' ' + 'Part' + ' ' + weak.part : '') + scoreHtml + '</div>' +
-          '<div class="bento-card-hover-info">Your lowest-scoring section — practice it to boost your overall result.</div>' +
-        '</div>' +
-      '</div>';
-    },
-
-    _renderGradeTracker: function(exams) {
-      if (typeof ScoreCalculator === 'undefined') return '';
-      var noScore = '–';
-      var levelData = AppState.currentLevel || 'C1';
-      var _mi = function(n) { return '<span class="material-symbols-outlined">' + n + '</span>'; };
-
-      var skillTotals = {};
-      var examCount = 0;
-
-      exams.forEach(function(exam) {
-        if (exam.status !== 'available') return;
-        try {
-          var scores = ScoreCalculator.getAllSkillScores(exam.id);
-          var hasData = scores.some(function(s) { return s.raw > 0; });
-          if (!hasData) return;
-          examCount++;
-          scores.forEach(function(s) {
-            if (!skillTotals[s.skill]) skillTotals[s.skill] = { raw: 0, maxRaw: 0, scale: 0, count: 0 };
-            skillTotals[s.skill].raw += s.raw;
-            skillTotals[s.skill].maxRaw += s.maxRaw;
-            skillTotals[s.skill].scale += s.scale;
-            skillTotals[s.skill].count++;
-          });
-        } catch (e) { /* skip */ }
-      });
-
-      var scaleBounds = { A2: [82, 140], B1: [102, 160], B2: [122, 180], C1: [142, 200], C2: [162, 220] };
-      var bounds = scaleBounds[levelData] || [142, 200];
-      var scaleMin = bounds[0];
-      var scaleMax = bounds[1];
-
-      var allSkills = (typeof ScoreCalculator !== 'undefined' && typeof ScoreCalculator.getSkillsForExamLevel === 'function')
-        ? ScoreCalculator.getSkillsForExamLevel(levelData)
-        : ['Reading', 'Use of English', 'Writing', 'Listening', 'Speaking'];
-      var skillColors = {
-        'Reading': '#3b82f6',
-        'Use of English': '#8b5cf6',
-        'Writing': '#10b981',
-        'Listening': '#f59e0b',
-        'Speaking': '#ef4444'
-      };
-
-      var barsHtml = '';
-      allSkills.forEach(function(skill) {
-        var d = skillTotals[skill];
-        var color = skillColors[skill] || '#3b82f6';
-        if (d && d.count > 0) {
-          var avgScale = Math.round(d.scale / d.count);
-          var pct = Math.round(((avgScale - scaleMin) / (scaleMax - scaleMin)) * 100);
-          pct = Math.max(2, Math.min(100, pct));
-          barsHtml +=
-            '<div class="bento-grade-bar-row">' +
-              '<div class="bento-grade-skill">' + skill + '</div>' +
-              '<div class="bento-grade-track">' +
-                '<div class="bento-grade-fill" style="width:' + pct + '%;background:' + color + '"></div>' +
-              '</div>' +
-              '<div class="bento-grade-score">' + avgScale + '</div>' +
-            '</div>';
-        } else {
-          barsHtml +=
-            '<div class="bento-grade-bar-row">' +
-              '<div class="bento-grade-skill">' + skill + '</div>' +
-              '<div class="bento-grade-track">' +
-                '<div class="bento-grade-fill" style="width:0%;background:' + color + '"></div>' +
-              '</div>' +
-              '<div class="bento-grade-score" style="opacity:0.5">' + noScore + '</div>' +
-            '</div>';
-        }
-      });
-
-      var subtitleText = examCount > 0
-        ? 'Avg. across' + ' ' + examCount + ' ' + 'exams' + ' · ' + 'Scale' + ' ' + scaleMin + '–' + scaleMax
-        : 'Latest registered scores';
-
-      return '<div class="bento-grade-row">' +
-        '<div class="bento-card bento-grade-tracker">' +
-          '<div class="bento-grade-header">' +
-            '<div class="bento-grade-title">' + _mi('bar_chart') + ' ' + 'Current Level' + ' · ' + levelData + '</div>' +
-            '<div class="bento-grade-subtitle">' + subtitleText + '</div>' +
-          '</div>' +
-          '<div class="bento-grade-bars">' + barsHtml + '</div>' +
-        '</div>' +
-      '</div>';
-    },
-
-    _renderNextLesson: function(lesson) {
-      var completedParts = lesson.completedParts || 0;
-      var totalParts = lesson.totalParts || 1;
-      var lessonMode = lesson.mode || 'practice';
-
-      return '<div class="bento-card bento-card-checkpoint" onclick="Exercise.openPart(\'' + this._escapeHTML(lesson.examId) + '\', \'' + lesson.section + '\', ' + lesson.part + ', \'' + lessonMode + '\')">' +
-        '<div class="bento-hover-overlay"></div>' +
-        '<div class="bento-card-inner">' +
-          '<div class="bento-card-title">Checkpoint</div>' +
-          '<div class="bento-card-desc">' + this._escapeHTML(lesson.examId) + ' — ' + this._capitalize(lesson.section) + ' ' + 'Part' + ' ' + lesson.part + ' (' + completedParts + '/' + totalParts + ')</div>' +
-          '<div class="bento-card-hover-info">Pick up where you left off and continue your next in-progress exercise.</div>' +
-        '</div>' +
-      '</div>';
-    },
-
-    _getWeakTopic: function(exams) {
-      if (typeof ScoreCalculator === 'undefined') return null;
-      var worstRatio = 1.1;
-      var worstItem = null;
-
-      exams.forEach(function(exam) {
-        if (exam.status !== 'available') return;
-        var sections = ['reading', 'listening', 'writing', 'speaking'];
-        sections.forEach(function(sec) {
-          var secData = exam.sections && exam.sections[sec];
-          if (!secData || !secData.completed || secData.completed.length === 0) return;
-          try {
-            var skillScores = ScoreCalculator.getSkillScoresForSection(exam.id, sec);
-            skillScores.forEach(function(s) {
-              if (s.maxRaw > 0) {
-                var ratio = s.raw / s.maxRaw;
-                if (ratio < worstRatio) {
-                  worstRatio = ratio;
-                  worstItem = { examId: exam.id, section: sec, part: null, ratio: ratio };
-                }
-              }
-            });
-          } catch (e) { /* skip */ }
-        });
-      });
-
-      return worstItem;
-    },
 
     _findNextLesson: function(exams) {
       for (var i = 0; i < exams.length; i++) {
@@ -605,7 +286,7 @@
       if (typeof FastExercises !== 'undefined') {
         FastExercises.openCategories();
       } else {
-        BentoGrid.openQuickstepsChooser();
+        DashboardNav.openQuickstepsChooser();
       }
     },
 
@@ -660,106 +341,6 @@
         xp += (p.lettersXp || 0);
       });
       return xp;
-    },
-
-    // Async: loads category data and updates the Learning/Vocabulary bento card progress rows.
-    _updateCourseProgressDesc: async function(level) {
-      var learningEl = document.getElementById('bento-learning-prog-desc');
-      var vocabEl = document.getElementById('bento-vocabulary-prog-desc');
-      if (!learningEl && !vocabEl) return;
-      try {
-        var results = await Promise.all([
-          fetch('data/Course/' + level + '/index.json').then(function(r) { return r.ok ? r.json() : null; }).catch(function() { return null; }),
-          (typeof FastExercises !== 'undefined') ? FastExercises._loadCategoryData('phrasal-verbs') : Promise.resolve(null),
-          (typeof FastExercises !== 'undefined') ? FastExercises._loadCategoryData('idioms') : Promise.resolve(null),
-          (typeof FastExercises !== 'undefined') ? FastExercises._loadCategoryData('word-formation') : Promise.resolve(null)
-        ]);
-
-        var courseIndex = results[0];
-        var pvData = results[1];
-        var idData = results[2];
-        var wfData = results[3];
-
-        var courseProg = {};
-        try { courseProg = JSON.parse(localStorage.getItem('cambridge_course_progress_' + level) || '{}'); } catch(e) {}
-
-        var grammarPct = 0;
-        var reviewPct = 0;
-        if (courseIndex && courseIndex.items) {
-          var grammarItems = courseIndex.items.filter(function(i) { return i.type === 'grammar'; });
-          var reviewItems = courseIndex.items.filter(function(i) { return i.type === 'review'; });
-          var doneGrammar = grammarItems.filter(function(i) { return !!courseProg[i.id]; }).length;
-          var doneReview = reviewItems.filter(function(i) { return !!courseProg[i.id]; }).length;
-          grammarPct = grammarItems.length > 0 ? Math.round((doneGrammar / grammarItems.length) * 100) : 0;
-          reviewPct = reviewItems.length > 0 ? Math.round((doneReview / reviewItems.length) * 100) : 0;
-        }
-
-        if (learningEl) {
-          learningEl.innerHTML =
-            '<div class="bcp-row"><span class="bcp-label">Grammar</span><span class="bcp-dots"></span><span class="bcp-pct">' + grammarPct + '%</span></div>' +
-            '<div class="bcp-row"><span class="bcp-label">Reviews</span><span class="bcp-dots"></span><span class="bcp-pct">' + reviewPct + '%</span></div>';
-        }
-        if (vocabEl) {
-          var pvCatPct = (pvData && pvData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getCategoryPercent('phrasal-verbs', pvData.levels) : 0;
-          var idCatPct = (idData && idData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getCategoryPercent('idioms', idData.levels) : 0;
-          var wfCatPct = (wfData && wfData.levels && typeof FastExercises !== 'undefined') ? FastExercises._getCategoryPercent('word-formation', wfData.levels) : 0;
-          vocabEl.innerHTML =
-            '<div class="bcp-row"><span class="bcp-label">Phrasal Verbs</span><span class="bcp-dots"></span><span class="bcp-pct">' + pvCatPct + '%</span></div>' +
-            '<div class="bcp-row"><span class="bcp-label">Idioms</span><span class="bcp-dots"></span><span class="bcp-pct">' + idCatPct + '%</span></div>' +
-            '<div class="bcp-row"><span class="bcp-label">Word Formation</span><span class="bcp-dots"></span><span class="bcp-pct">' + wfCatPct + '%</span></div>';
-        }
-      } catch(e) {}
-    },
-
-    // Returns compact meta HTML for the dashboard bento card (daily challenge + progress + streak).
-    _buildCrosswordBentoMeta: function() {
-      var progress = (typeof CrosswordSync !== 'undefined') ? CrosswordSync.getAll() : this._getCwProgress();
-      var LEVEL_CONFIG = (typeof FastExercises !== 'undefined' && FastExercises._cwLevelConfig)
-        ? FastExercises._cwLevelConfig() : [];
-      var total = LEVEL_CONFIG.reduce(function(s, l) { return s + (l.count || 0); }, 0);
-      if (!total) return '';
-
-      var completedCount = 0;
-      var lastPlayedMs = 0;
-      Object.values(progress).forEach(function(p) {
-        if (!p) return;
-        if (p.completed) completedCount++;
-        if (p.lastPlayed) {
-          var t = new Date(p.lastPlayed).getTime();
-          if (t > lastPlayedMs) lastPlayedMs = t;
-        }
-      });
-      var streak = this._calcCwStreak(progress);
-
-      var lastPlayedText = '';
-      if (lastPlayedMs) {
-        var diffDays = Math.floor((Date.now() - lastPlayedMs) / 86400000);
-        if (diffDays === 0)      lastPlayedText = 'Last played: Today';
-        else if (diffDays === 1) lastPlayedText = 'Last played: Yesterday';
-        else                     lastPlayedText = 'Last played: ' + diffDays + ' days ago';
-      }
-
-      // Daily challenge status
-      var daily = this._getDailyCrossword('mix');
-      var dailyHtml = '';
-      if (daily) {
-        var dailyKey = daily.levelId + '_daily_' + daily.date;
-        var dailyProg = progress[dailyKey];
-        var isDailyDone = dailyProg && dailyProg.completed;
-        var isDailyStarted = dailyProg && !isDailyDone && (dailyProg.wordsCorrect || dailyProg.wordsComplete || 0) > 0;
-        var dailyStatusText = isDailyDone ? '✅ Completed!' : (isDailyStarted ? '⏳ In progress' : '▶ Play now');
-        dailyHtml = '<div class="bento-card-cw-daily' + (isDailyDone ? ' bento-card-cw-daily-done' : '') + '">' +
-          '<span class="bento-cw-daily-label">📅 Daily · ' + daily.levelId + '</span>' +
-          '<span class="bento-cw-daily-status">' + dailyStatusText + '</span>' +
-        '</div>';
-      }
-
-      var html = '<div class="bento-card-cw-meta">';
-      html += '<div class="bento-card-cw-prog">' + completedCount + ' / ' + total + ' completed</div>';
-      if (streak > 0) html += '<div class="bento-card-cw-streak">🔥 ' + streak + '-day streak</div>';
-      if (lastPlayedText) html += '<div class="bento-card-cw-lastplayed">' + lastPlayedText + '</div>';
-      html += '</div>';
-      return html;
     },
 
     _buildCrosswordStatsSidebarHtml: function(entries) {
@@ -1033,7 +614,7 @@
             '</div>' +
           '</div>' +
         '</div>' +
-        '<button class="' + dailyBtnClass + '" onclick="BentoGrid.openDailyCrossword()">' + dailyBtnLabel + '</button>' +
+        '<button class="' + dailyBtnClass + '" onclick="DashboardNav.openDailyCrossword()">' + dailyBtnLabel + '</button>' +
       '</div>';
     },
 
@@ -1109,7 +690,7 @@
         var statusClass = completed > 0 ? 'mode-card-status-done' : '';
 
         html += '<div class="mode-card mode-card--cw-level mode-card--wordle-level" data-wl-level="' + lvl.toLowerCase() + '"' +
-          ' onclick="BentoGrid.openWordleSection(null, \'' + lvl + '\')" role="button" tabindex="0">' +
+          ' onclick="DashboardNav.openWordleSection(null, \'' + lvl + '\')" role="button" tabindex="0">' +
           '<div class="mode-card-body">' +
             '<div class="mode-card-title-row">' +
               '<span class="mode-card-title">' + self._escapeHTML(meta.label) + '</span>' +
@@ -1174,7 +755,7 @@
       if (nextLevel) {
         var nextMeta = LEVEL_META[nextLevel] || LEVEL_META['B2'];
         html += '<div class="cw-path-next-level">' +
-          '<button type="button" class="cw-path-next-level-card" onclick="BentoGrid.openWordleSection(null, \'' + nextLevel + '\')">' +
+          '<button type="button" class="cw-path-next-level-card" onclick="DashboardNav.openWordleSection(null, \'' + nextLevel + '\')">' +
             '<span class="cw-path-next-level-kicker">Next Level</span>' +
             '<span class="cw-path-next-level-title">' + self._escapeHTML(nextMeta.label) + ' Wordle</span>' +
             '<span class="cw-path-next-level-arrow">' + _mi('arrow_forward') + '</span>' +
@@ -1203,10 +784,10 @@
         return;
       }
       if (state && state.levelId) {
-        BentoGrid.openCrosswordList(null, state.levelId === 'mix' ? null : state.levelId);
+        DashboardNav.openCrosswordList(null, state.levelId === 'mix' ? null : state.levelId);
         return;
       }
-      BentoGrid.openCrosswordList();
+      DashboardNav.openCrosswordList();
     },
 
     _buildCrosswordLevelCardsHtml: function(allEntries, progress) {
@@ -1237,7 +818,7 @@
         var statusClass = completed > 0 ? 'mode-card-status-done' : '';
 
         html += '<div class="mode-card mode-card--cw-level" data-cw-level="' + lvl.toLowerCase() + '"' +
-          ' onclick="BentoGrid.openCrosswordList(null, \'' + lvl + '\')" role="button" tabindex="0">' +
+          ' onclick="DashboardNav.openCrosswordList(null, \'' + lvl + '\')" role="button" tabindex="0">' +
           '<div class="mode-card-body">' +
             '<div class="mode-card-title-row">' +
               '<span class="mode-card-title">' + self._escapeHTML(meta.label) + '</span>' +
@@ -1302,7 +883,7 @@
       if (nextLevel) {
         var nextMeta = LEVEL_META[nextLevel] || LEVEL_META['B2'];
         html += '<div class="cw-path-next-level">' +
-          '<button type="button" class="cw-path-next-level-card" onclick="BentoGrid.openCrosswordList(null, \'' + nextLevel + '\')">' +
+          '<button type="button" class="cw-path-next-level-card" onclick="DashboardNav.openCrosswordList(null, \'' + nextLevel + '\')">' +
             '<span class="cw-path-next-level-kicker">Next Level</span>' +
             '<span class="cw-path-next-level-title">' + self._escapeHTML(nextMeta.label) + ' Crosswords</span>' +
             '<span class="cw-path-next-level-arrow">' + _mi('arrow_forward') + '</span>' +
@@ -1347,8 +928,8 @@
       }
 
       var leftSidebarContent = '';
-      if (typeof BentoGrid !== 'undefined') {
-        leftSidebarContent = BentoGrid._buildDashboardSidebars(exams).left;
+      if (typeof DashboardNav !== 'undefined') {
+        leftSidebarContent = DashboardNav._buildDashboardSidebars(exams).left;
       }
       var rightSidebarContent = this._buildCrosswordStatsSidebarHtml(allEntries);
 
@@ -1445,8 +1026,8 @@
       }
 
       var leftSidebarContent = '';
-      if (typeof BentoGrid !== 'undefined') {
-        leftSidebarContent = BentoGrid._buildDashboardSidebars(exams).left;
+      if (typeof DashboardNav !== 'undefined') {
+        leftSidebarContent = DashboardNav._buildDashboardSidebars(exams).left;
       }
       var rightSidebarContent = this._buildWordleStatsSidebarHtml(allEntries);
 
@@ -1537,7 +1118,7 @@
 
       var buttonsHtml = '';
       categories.forEach(function(cat) {
-        buttonsHtml += '<button class="qs-category-btn" onclick="BentoGrid._startQuicksteps(\'' + cat.id + '\')">' +
+        buttonsHtml += '<button class="qs-category-btn" onclick="DashboardNav._startQuicksteps(\'' + cat.id + '\')">' +
           '<span class="qs-category-icon">' + _mi(cat.icon) + '</span>' +
           '<div class="qs-category-info">' +
             '<div class="qs-category-name">' + cat.name + '</div>' +
@@ -1548,8 +1129,8 @@
 
       // Build sidebars like main dashboard
       var sidebars = { left: '', right: '' };
-      if (typeof BentoGrid !== 'undefined') {
-        sidebars = BentoGrid._buildDashboardSidebars(exams);
+      if (typeof DashboardNav !== 'undefined') {
+        sidebars = DashboardNav._buildDashboardSidebars(exams);
       }
       var leftSidebarContent = sidebars.left;
       var rightSidebarContent = sidebars.right;
@@ -1577,8 +1158,8 @@
 
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
-      if (typeof BentoGrid !== 'undefined') {
-        BentoGrid._startGradeCarousel();
+      if (typeof DashboardNav !== 'undefined') {
+        DashboardNav._startGradeCarousel();
       }
       var qsState = { view: 'quicksteps' };
       history.pushState(qsState, '', Router.stateToPath(qsState));
@@ -1594,7 +1175,7 @@
     _buildStreakSidebarHtml: function() {
       var streak = (typeof StreakManager !== 'undefined') ? StreakManager.getStreak() : null;
       var streakCount = streak ? (streak.currentStreak || 0) : 0;
-      return '<div class="sidebar-widget-pastel sw-streak" onclick="BentoGrid.openStreakSection()" style="cursor:pointer">' +
+      return '<div class="sidebar-widget-pastel sw-streak" onclick="DashboardNav.openStreakSection()" style="cursor:pointer">' +
         '<div class="sidebar-widget-pastel-title" style="text-align:center">' + 'Day Streak' + '</div>' +
         '<div class="sw-streak-count">' + streakCount + '</div>' +
       '</div>';
@@ -1662,7 +1243,7 @@
         '</div>';
       }
 
-      return '<div class="sidebar-widget-pastel sw-calendar" onclick="BentoGrid.openStreakSection()" style="cursor:pointer">' +
+      return '<div class="sidebar-widget-pastel sw-calendar" onclick="DashboardNav.openStreakSection()" style="cursor:pointer">' +
         '<div class="sidebar-widget-pastel-title">' + 'Calendar' + '</div>' +
         '<div class="sw-calendar-month-label">' + monthLabel + '</div>' +
         '<div class="sw-calendar-grid">' + headerHtml + emptyCells + daysCells + '</div>' +
@@ -1676,7 +1257,7 @@
       var currentLevel = AppState.currentLevel || 'C1';
       var lc = _levelColors[currentLevel] || _levelColors['C1'];
       return '<div class="sidebar-widget" style="background:transparent;box-shadow:none;border:none;padding:0;">' +
-        '<div class="sidebar-level-badge" data-level="' + currentLevel + '" onclick="BentoGrid.openMobileLevelModal()" style="cursor:pointer;background:' + lc.bg + '">' +
+        '<div class="sidebar-level-badge" data-level="' + currentLevel + '" onclick="DashboardNav.openMobileLevelModal()" style="cursor:pointer;background:' + lc.bg + '">' +
           '<div class="sidebar-level-badge-code" style="color:' + lc.code + '">' + currentLevel + '</div>' +
         '</div></div>';
     },
@@ -1780,10 +1361,10 @@
     },
 
     _buildMicroLearningSidebarHtml: function() {
-      return '<div class="sidebar-widget" onclick="BentoGrid.openMicroLearning()" style="cursor:pointer">' +
+      return '<div class="sidebar-widget" onclick="DashboardNav.openMicroLearning()" style="cursor:pointer">' +
         '<div class="sidebar-widget-title"><span class="material-symbols-outlined">smartphone</span> ' + 'Micro-Learning' + '</div>' +
         '<div style="color:#64748b;font-size:0.85rem;margin-bottom:12px;">' + 'Vocab · Transformations · MC' + '</div>' +
-        '<button class="bento-resume-btn" style="width:100%;justify-content:center;" onclick="event.stopPropagation();BentoGrid.openMicroLearning()">' + 'Start →' + '</button>' +
+        '<button class="bento-resume-btn" style="width:100%;justify-content:center;" onclick="event.stopPropagation();DashboardNav.openMicroLearning()">' + 'Start →' + '</button>' +
       '</div>';
     },
 
@@ -1806,7 +1387,7 @@
     },
 
     _gradeCarouselNavIconHtml: function(skill) {
-      var meta = BentoGrid._gradeSkillMeta(skill);
+      var meta = DashboardNav._gradeSkillMeta(skill);
       return '<span class="grade-carousel-nav-icon" style="--grade-skill-color:' + meta.color + '">' +
         '<span class="material-symbols-outlined" aria-hidden="true">' + meta.icon + '</span>' +
       '</span>';
@@ -1825,11 +1406,11 @@
       var nextBtn = widget.querySelector('.grade-carousel-next');
 
       if (prevBtn && prevSkill) {
-        prevBtn.innerHTML = BentoGrid._gradeCarouselNavIconHtml(prevSkill);
+        prevBtn.innerHTML = DashboardNav._gradeCarouselNavIconHtml(prevSkill);
         prevBtn.setAttribute('aria-label', 'Previous skill: ' + prevSkill);
       }
       if (nextBtn && nextSkill) {
-        nextBtn.innerHTML = BentoGrid._gradeCarouselNavIconHtml(nextSkill);
+        nextBtn.innerHTML = DashboardNav._gradeCarouselNavIconHtml(nextSkill);
         nextBtn.setAttribute('aria-label', 'Next skill: ' + nextSkill);
       }
     },
@@ -1866,7 +1447,7 @@
         var gradeInfo = (hasData && typeof ScoreCalculator !== 'undefined') ? ScoreCalculator.getGradeInfo(avgScale, level) : { cefr: '–' };
         var cefrText = gradeInfo.cefr || '–';
         slides.push(
-          '<div class="grade-carousel-slide" style="display:flex" data-skill="' + BentoGrid._escapeHTML(skill) + '">' +
+          '<div class="grade-carousel-slide" style="display:flex" data-skill="' + DashboardNav._escapeHTML(skill) + '">' +
             '<div class="grade-carousel-content">' +
               '<div class="grade-carousel-data">' +
                 '<div class="grade-carousel-raw">' + (hasData ? avgScale : '–') + '</div>' +
@@ -1902,12 +1483,12 @@
       return '<div class="sidebar-widget-duo sw-grade grade-tracker-carousel-widget" data-total-slides="' + totalSlides + '">' +
         '<div class="sw-duo-header">' +
           '<span class="sw-duo-title">' + 'Grade Tracker' + '</span>' +
-          '<button type="button" class="sw-duo-link grade-tracker-see-all" onclick="BentoGrid.openGradeEvolution()">SEE ALL<span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></button>' +
+          '<button type="button" class="sw-duo-link grade-tracker-see-all" onclick="DashboardNav.openGradeEvolution()">SEE ALL<span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></button>' +
         '</div>' +
         '<div class="grade-carousel-shell' + (showNav ? '' : ' grade-carousel-shell--single') + '">' +
-          (showNav ? '<button type="button" class="grade-carousel-nav grade-carousel-prev" aria-label="Previous skill: ' + BentoGrid._escapeHTML(prevSkill) + '">' + BentoGrid._gradeCarouselNavIconHtml(prevSkill) + '</button>' : '') +
-          '<div class="grade-carousel-viewport" onclick="BentoGrid.openGradeEvolution()" role="button" tabindex="0" aria-label="Open grade evolution">' + slidesHtml + '</div>' +
-          (showNav ? '<button type="button" class="grade-carousel-nav grade-carousel-next" aria-label="Next skill: ' + BentoGrid._escapeHTML(nextSkill) + '">' + BentoGrid._gradeCarouselNavIconHtml(nextSkill) + '</button>' : '') +
+          (showNav ? '<button type="button" class="grade-carousel-nav grade-carousel-prev" aria-label="Previous skill: ' + DashboardNav._escapeHTML(prevSkill) + '">' + DashboardNav._gradeCarouselNavIconHtml(prevSkill) + '</button>' : '') +
+          '<div class="grade-carousel-viewport" onclick="DashboardNav.openGradeEvolution()" role="button" tabindex="0" aria-label="Open grade evolution">' + slidesHtml + '</div>' +
+          (showNav ? '<button type="button" class="grade-carousel-nav grade-carousel-next" aria-label="Next skill: ' + DashboardNav._escapeHTML(nextSkill) + '">' + DashboardNav._gradeCarouselNavIconHtml(nextSkill) + '</button>' : '') +
         '</div>' +
         '<div class="grade-carousel-dots"></div>' +
       '</div>';
@@ -1930,7 +1511,7 @@
       if (dots[next]) dots[next].classList.add('active');
 
       widget.setAttribute('data-current-slide', next);
-      BentoGrid._updateGradeCarouselNav(widget);
+      DashboardNav._updateGradeCarouselNav(widget);
       return next;
     },
 
@@ -1964,11 +1545,11 @@
       }
 
       var restartTimer = function() {
-        if (BentoGrid._gradeCarouselTimer) clearInterval(BentoGrid._gradeCarouselTimer);
+        if (DashboardNav._gradeCarouselTimer) clearInterval(DashboardNav._gradeCarouselTimer);
         if (total <= 1) return;
-        BentoGrid._gradeCarouselTimer = setInterval(function() {
+        DashboardNav._gradeCarouselTimer = setInterval(function() {
           var current = parseInt(widget.getAttribute('data-current-slide'), 10) || 0;
-          BentoGrid._goGradeCarouselSlide(widget, current + 1);
+          DashboardNav._goGradeCarouselSlide(widget, current + 1);
         }, 4000);
       };
 
@@ -1980,7 +1561,7 @@
           e.preventDefault();
           e.stopPropagation();
           var current = parseInt(widget.getAttribute('data-current-slide'), 10) || 0;
-          BentoGrid._goGradeCarouselSlide(widget, current - 1);
+          DashboardNav._goGradeCarouselSlide(widget, current - 1);
           restartTimer();
         });
       }
@@ -1990,7 +1571,7 @@
           e.preventDefault();
           e.stopPropagation();
           var current = parseInt(widget.getAttribute('data-current-slide'), 10) || 0;
-          BentoGrid._goGradeCarouselSlide(widget, current + 1);
+          DashboardNav._goGradeCarouselSlide(widget, current + 1);
           restartTimer();
         });
       }
@@ -2003,12 +1584,12 @@
           e.stopPropagation();
           var idx = parseInt(dot.getAttribute('data-idx'), 10);
           if (isNaN(idx)) return;
-          BentoGrid._goGradeCarouselSlide(widget, idx);
+          DashboardNav._goGradeCarouselSlide(widget, idx);
           restartTimer();
         });
       }
 
-      BentoGrid._updateGradeCarouselNav(widget);
+      DashboardNav._updateGradeCarouselNav(widget);
       restartTimer();
     },
 

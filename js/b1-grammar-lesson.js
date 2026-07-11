@@ -8,14 +8,14 @@
   var GAP_SPLIT = /(?:\.{3,}|…{2,}|_{3,})/;
 
   function esc(str) {
-    if (typeof BentoGrid !== 'undefined' && BentoGrid._escapeHTML) return BentoGrid._escapeHTML(str);
+    if (typeof DashboardNav !== 'undefined' && DashboardNav._escapeHTML) return DashboardNav._escapeHTML(str);
     return String(str == null ? '' : str)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;')
       .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
   function normQuotes(s) {
-    if (typeof BentoGrid !== 'undefined' && BentoGrid._normalizeText) return BentoGrid._normalizeText(s);
+    if (typeof DashboardNav !== 'undefined' && DashboardNav._normalizeText) return DashboardNav._normalizeText(s);
     return (s || '').replace(/[\u2018\u2019\u201a\u201b]/g, "'").replace(/[\u201c\u201d\u201e\u201f]/g, '"');
   }
 
@@ -936,10 +936,10 @@
   }
 
   function syncStepUrl() {
-    if (!state || typeof BentoGrid === 'undefined' || !BentoGrid._syncCourseUnitUrl) return;
+    if (!state || typeof DashboardNav === 'undefined' || !DashboardNav._syncCourseUnitUrl) return;
     var step = state.steps[state.stepIdx];
     if (!step) return;
-    BentoGrid._syncCourseUnitUrl(step.secIdx, true);
+    DashboardNav._syncCourseUnitUrl(step.secIdx, true);
   }
 
   function showFeedback(result, onContinue) {
@@ -1159,9 +1159,9 @@
   function goNextTheoryStep() {
     if (!state) return;
     var step = state.steps[state.stepIdx];
-    if (step && step.kind === 'theory' && typeof BentoGrid !== 'undefined') {
-      BentoGrid._markCourseSectionVisited(state.level, state.unitId, step.secIdx);
-      BentoGrid._checkCourseUnitAllDone(state.level, state.unitId);
+    if (step && step.kind === 'theory' && typeof DashboardNav !== 'undefined') {
+      DashboardNav._markCourseSectionVisited(state.level, state.unitId, step.secIdx);
+      DashboardNav._checkCourseUnitAllDone(state.level, state.unitId);
     }
     if (state.stepIdx < state.steps.length - 1) {
       state.stepIdx++;
@@ -1283,8 +1283,8 @@
         try { new Function(state.backFn)(); } catch (e) { console.error(e); }
       }
     };
-    if (isExerciseInProgress() && typeof BentoGrid !== 'undefined' && BentoGrid._showLearningExitConfirm) {
-      BentoGrid._showLearningExitConfirm(goBack);
+    if (isExerciseInProgress() && typeof DashboardNav !== 'undefined' && DashboardNav._showLearningExitConfirm) {
+      DashboardNav._showLearningExitConfirm(goBack);
       return;
     }
     goBack();
@@ -1295,12 +1295,12 @@
     var level = state.level;
     var unitId = state.unitId;
 
-    if (typeof BentoGrid !== 'undefined' && state.sectionIdx != null && state.totalChecked > 0) {
+    if (typeof DashboardNav !== 'undefined' && state.sectionIdx != null && state.totalChecked > 0) {
       var passed = (state.correctCount / state.totalChecked) >= 0.7;
       if (passed) {
-        BentoGrid._saveCuExSectionChecked(unitId, state.sectionIdx, null, state.correctCount, state.totalChecked);
-        BentoGrid._markCourseSectionVisited(level, unitId, state.sectionIdx);
-        BentoGrid._checkCourseUnitAllDone(level, unitId);
+        DashboardNav._saveCuExSectionChecked(unitId, state.sectionIdx, null, state.correctCount, state.totalChecked);
+        DashboardNav._markCourseSectionVisited(level, unitId, state.sectionIdx);
+        DashboardNav._checkCourseUnitAllDone(level, unitId);
       }
     }
 

@@ -323,8 +323,8 @@
         Onboarding.maybeShowAfterAuth();
       } else if (typeof App !== 'undefined' && App.openLearningHome) {
         App.openLearningHome();
-      } else if (typeof BentoGrid !== 'undefined') {
-        BentoGrid.openCourseSection('learning');
+      } else if (typeof DashboardNav !== 'undefined') {
+        DashboardNav.openCourseSection('learning');
       }
     },
 

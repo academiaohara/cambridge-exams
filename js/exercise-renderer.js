@@ -5,8 +5,8 @@
       var level = (typeof AppState !== 'undefined' && AppState.currentLevel) ? AppState.currentLevel : 'C1';
       var exams = window.EXAMS_DATA[level] || [];
       var leftSidebar = '';
-      if (typeof BentoGrid !== 'undefined' && BentoGrid._buildDashboardSidebars) {
-        leftSidebar = BentoGrid._buildDashboardSidebars(exams).left;
+      if (typeof DashboardNav !== 'undefined' && DashboardNav._buildDashboardSidebars) {
+        leftSidebar = DashboardNav._buildDashboardSidebars(exams).left;
       }
 
       var leftShell = (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell)
@@ -1534,8 +1534,8 @@
               if (typeof ReadingType2 !== 'undefined') ReadingType2.resizeInput(inp);
             });
             document.querySelectorAll('.reading-type2-pill-input').forEach(function(inp) {
-              if (typeof BentoGrid !== 'undefined' && typeof BentoGrid._resizeCuInput === 'function') {
-                BentoGrid._resizeCuInput(inp);
+              if (typeof DashboardNav !== 'undefined' && typeof DashboardNav._resizeCuInput === 'function') {
+                DashboardNav._resizeCuInput(inp);
               } else if (typeof ReadingType2 !== 'undefined') {
                 ReadingType2.resizeInput(inp);
               }
@@ -1545,8 +1545,8 @@
         case 'word-formation':
           setTimeout(function() {
             document.querySelectorAll('.reading-type3-pill-input').forEach(function(inp) {
-              if (typeof BentoGrid !== 'undefined' && typeof BentoGrid._resizeCuInput === 'function') {
-                BentoGrid._resizeCuInput(inp);
+              if (typeof DashboardNav !== 'undefined' && typeof DashboardNav._resizeCuInput === 'function') {
+                DashboardNav._resizeCuInput(inp);
               }
             });
           }, 50);

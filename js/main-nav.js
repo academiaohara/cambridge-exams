@@ -2,20 +2,20 @@
 
 (function() {
   var NAV_ITEMS = [
-    { id: 'learning', label: 'Learning', icon: 'menu_book', color: '#3b82f6', onclick: 'BentoGrid.openCourseSection(\'learning\')' },
-    { id: 'vocabulary', label: 'Vocabulary', icon: 'translate', color: '#10b981', onclick: 'BentoGrid.openCourseSection(\'vocabulary\')' },
-    { id: 'tests', label: 'Tests', icon: 'assignment', color: '#58cc02', onclick: 'BentoGrid.openTests()' },
-    { id: 'crosswords', label: 'Crosswords', icon: 'grid_on', color: '#ff4b4b', onclick: 'BentoGrid.openCrosswordList()' },
-    { id: 'video-exercises', label: 'Stories', icon: 'auto_stories', color: '#1cb0f6', onclick: 'BentoGrid.openVideoExercises()' },
-    { id: 'wordle', label: 'Wordle', icon: 'casino', color: '#a855f7', onclick: 'BentoGrid.openWordleSection()' },
-    { id: 'profile', label: 'Profile', icon: 'person', color: '#777777', onclick: 'BentoGrid.openMobileProfile()' }
+    { id: 'learning', label: 'Learning', icon: 'menu_book', color: '#3b82f6', onclick: 'DashboardNav.openCourseSection(\'learning\')' },
+    { id: 'vocabulary', label: 'Vocabulary', icon: 'translate', color: '#10b981', onclick: 'DashboardNav.openCourseSection(\'vocabulary\')' },
+    { id: 'tests', label: 'Tests', icon: 'assignment', color: '#58cc02', onclick: 'DashboardNav.openTests()' },
+    { id: 'crosswords', label: 'Crosswords', icon: 'grid_on', color: '#ff4b4b', onclick: 'DashboardNav.openCrosswordList()' },
+    { id: 'video-exercises', label: 'Stories', icon: 'auto_stories', color: '#1cb0f6', onclick: 'DashboardNav.openVideoExercises()' },
+    { id: 'wordle', label: 'Wordle', icon: 'casino', color: '#a855f7', onclick: 'DashboardNav.openWordleSection()' },
+    { id: 'profile', label: 'Profile', icon: 'person', color: '#777777', onclick: 'DashboardNav.openMobileProfile()' }
   ];
 
   var MOBILE_BOTTOM_ITEMS = [
-    { id: 'learning', label: 'Learning', icon: 'menu_book', color: '#3b82f6', onclick: 'BentoGrid.openCourseSection(\'learning\')' },
-    { id: 'vocabulary', label: 'Vocabulary', icon: 'translate', color: '#10b981', onclick: 'BentoGrid.openCourseSection(\'vocabulary\')' },
-    { id: 'tests', label: 'Tests', icon: 'assignment', color: '#58cc02', onclick: 'BentoGrid.openTests()' },
-    { id: 'dictionaries', label: 'Dict', icon: 'menu_book', color: '#6366f1', onclick: 'BentoGrid.openMobileDictionaries()' },
+    { id: 'learning', label: 'Learning', icon: 'menu_book', color: '#3b82f6', onclick: 'DashboardNav.openCourseSection(\'learning\')' },
+    { id: 'vocabulary', label: 'Vocabulary', icon: 'translate', color: '#10b981', onclick: 'DashboardNav.openCourseSection(\'vocabulary\')' },
+    { id: 'tests', label: 'Tests', icon: 'assignment', color: '#58cc02', onclick: 'DashboardNav.openTests()' },
+    { id: 'dictionaries', label: 'Dict', icon: 'menu_book', color: '#6366f1', onclick: 'DashboardNav.openMobileDictionaries()' },
     { id: 'more', label: 'More', icon: 'menu', color: '#777777', onclick: 'MainNav.toggleMobileMenu()' }
   ];
 
@@ -36,7 +36,7 @@
     if (view === 'dashboard') return 'learning';
     if (view === 'subpage' || view === 'testsHub') return 'tests';
     if (view === 'course' || view === 'courseBlock' || view === 'courseUnit' || view === 'courseTheory' || view === 'courseEtapa') {
-      var courseSection = (typeof BentoGrid !== 'undefined' && BentoGrid._courseSection) ? BentoGrid._courseSection : 'learning';
+      var courseSection = (typeof DashboardNav !== 'undefined' && DashboardNav._courseSection) ? DashboardNav._courseSection : 'learning';
       return courseSection === 'vocabulary' ? 'vocabulary' : 'learning';
     }
     if (view === 'crosswordList' || view === 'crosswordPlay') return 'crosswords';
@@ -77,7 +77,7 @@
       var hidePlans = typeof AccessControl !== 'undefined' && AccessControl.shouldHidePlansUI();
 
       var html = '<nav class="main-nav-sidebar" aria-label="Main navigation">' +
-        '<a class="main-nav-brand" href="/course/learning" onclick="event.preventDefault(); BentoGrid.openCourseSection(\'learning\')">' +
+        '<a class="main-nav-brand" href="/course/learning" onclick="event.preventDefault(); DashboardNav.openCourseSection(\'learning\')">' +
           '<img src="Assets/images/sunelogoreduced2.svg" class="main-nav-logo" alt="Sune English">' +
         '</a>' +
         '<ul class="main-nav-list">';
@@ -522,16 +522,16 @@
             ? startedExams + ' in progress · ' + availableCount + ' available'
             : availableCount + ' test' + (availableCount !== 1 ? 's' : '') + ' available';
 
-      var cwProgress = (typeof BentoGrid !== 'undefined' && BentoGrid._getCwProgress) ? BentoGrid._getCwProgress() : {};
+      var cwProgress = (typeof DashboardNav !== 'undefined' && DashboardNav._getCwProgress) ? DashboardNav._getCwProgress() : {};
       var cwCompleted = Object.values(cwProgress).filter(function(p) { return p && p.completed; }).length;
-      var cwStreak = (typeof BentoGrid !== 'undefined' && BentoGrid._calcCwStreak) ? BentoGrid._calcCwStreak(cwProgress) : 0;
+      var cwStreak = (typeof DashboardNav !== 'undefined' && DashboardNav._calcCwStreak) ? DashboardNav._calcCwStreak(cwProgress) : 0;
 
       var cards = [
         {
           title: 'Learning',
           status: 'Grammar, reviews & progress tests',
           statusClass: '',
-          onclick: 'BentoGrid.openCourseSection(\'learning\')',
+          onclick: 'DashboardNav.openCourseSection(\'learning\')',
           icon: 'menu_book',
           iconColor: '#3b82f6',
           super: true
@@ -540,7 +540,7 @@
           title: 'Vocabulary',
           status: 'Units, phrasal verbs & idioms',
           statusClass: '',
-          onclick: 'BentoGrid.openCourseSection(\'vocabulary\')',
+          onclick: 'DashboardNav.openCourseSection(\'vocabulary\')',
           icon: 'translate',
           iconColor: '#10b981',
           super: true
@@ -549,7 +549,7 @@
           title: 'Tests',
           status: testStatus,
           statusClass: completedExams > 0 ? 'mode-card-status-done' : '',
-          onclick: 'BentoGrid.openTests()',
+          onclick: 'DashboardNav.openTests()',
           icon: 'assignment',
           iconColor: '#58cc02',
           super: true,
@@ -561,7 +561,7 @@
             ? cwCompleted + ' completed' + (cwStreak > 0 ? ' · ' + cwStreak + ' day streak' : '')
             : 'Solve today\'s puzzle',
           statusClass: cwCompleted > 0 ? 'mode-card-status-done' : '',
-          onclick: 'BentoGrid.openCrosswordList()',
+          onclick: 'DashboardNav.openCrosswordList()',
           icon: 'grid_on',
           iconColor: '#ff4b4b',
           badge: cwStreak > 0 ? cwStreak + '' : ''
@@ -599,7 +599,7 @@
 
     buildMobileTopBarHtml: function() {
       return '<header class="mobile-nav-top-bar" aria-label="Mobile stats">' +
-        '<a class="mobile-nav-top-brand" href="/course/learning" onclick="event.preventDefault(); BentoGrid.openCourseSection(\'learning\')">' +
+        '<a class="mobile-nav-top-brand" href="/course/learning" onclick="event.preventDefault(); DashboardNav.openCourseSection(\'learning\')">' +
           '<img src="Assets/images/sunelogoreduced2.svg" class="mobile-nav-top-logo" alt="Sune English">' +
         '</a>' +
         '<div class="mobile-nav-top-stats">' + this.buildStatsBarHtml() + '</div>' +
