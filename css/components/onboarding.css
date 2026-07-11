@@ -293,6 +293,76 @@ body.onboarding-open #app {
   position: fixed;
 }
 
+.onboarding-placement-step--sune-play {
+  background: #fff;
+}
+
+.onboarding-placement-step--sune-play .onboarding-placement-header {
+  display: none;
+}
+
+.onboarding-placement-step--sune-play .onboarding-placement-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+  max-width: none;
+  margin: 0;
+}
+
+.onboarding-placement-sune-play {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: min(100%, 720px);
+  margin: 0 auto;
+  padding: 0 clamp(8px, 3vw, 24px) 24px;
+  box-sizing: border-box;
+  min-height: 0;
+}
+
+.onboarding-placement-sune-play .sp-lesson {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.onboarding-placement-sune-play .sp-practice-session {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.onboarding-placement-sune-play .sp-practice-main {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.onboarding-placement-step--sune-play .onboarding-placement-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10001;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 24%);
+  padding-top: 12px;
+  display: none;
+}
+
+.onboarding-placement-step--sune-play.onboarding-placement-step--ready .onboarding-placement-footer {
+  display: flex;
+}
+
+.onboarding-placement-step--sune-play .onboarding-placement-footer .onboarding-continue-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .onboarding-bar--filled {
   background: #f47417;
 }

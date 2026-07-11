@@ -16,6 +16,9 @@
   var _selectedLevel = null;
   var _pendingNewUser = false;
   var _placementCourseLevel = null;
+  var _placementUnitId = null;
+  var _placementUnitData = null;
+  var _placementUsesSunePlay = false;
 
   function isDone() {
     try {
@@ -134,6 +137,23 @@
   }
 
   function getPlacementScore() {
+    if (_placementUsesSunePlay && _placementUnitId) {
+      try {
+        var raw = localStorage.getItem('sune_play_progress_' + _placementUnitId);
+        if (raw) {
+          var prog = JSON.parse(raw);
+          if (prog.testScore && prog.testScore.total > 0) {
+            return {
+              correct: prog.testScore.correct || 0,
+              max: prog.testScore.total,
+              pct: Math.round(((prog.testScore.correct || 0) / prog.testScore.total) * 100)
+            };
+          }
+        }
+      } catch (e) { /* ignore */ }
+      return { correct: 0, max: 0, pct: 0 };
+    }
+
     var totalCorrect = 0;
     var totalMax = 0;
     document.querySelectorAll('#onboarding-placement-content .cu-review-section').forEach(function (sec) {
@@ -149,6 +169,29 @@
       max: totalMax,
       pct: totalMax > 0 ? Math.round((totalCorrect / totalMax) * 100) : 0
     };
+  }
+
+  function destroyPlacementLesson() {
+    if (typeof SunePlayLesson !== 'undefined' && SunePlayLesson.destroy) {
+      SunePlayLesson.destroy();
+    }
+    var placementStep = document.getElementById('onboarding-placement-step');
+    if (placementStep) placementStep.classList.remove('onboarding-placement-step--sune-play');
+  }
+
+  function updatePlacementFinishButton(score) {
+    var finishBtn = document.getElementById('onboarding-placement-finish-btn');
+    var placementStep = document.getElementById('onboarding-placement-step');
+    if (!finishBtn) return;
+    if (!_placementUsesSunePlay) {
+      finishBtn.disabled = false;
+      return;
+    }
+    var ready = !!(score && score.total > 0);
+    finishBtn.disabled = !ready;
+    if (placementStep) {
+      placementStep.classList.toggle('onboarding-placement-step--ready', ready);
+    }
   }
 
   function openFirstB1Topic() {
@@ -182,6 +225,9 @@
       ensureLevelOptions();
       _selectedLevel = null;
       _placementCourseLevel = null;
+      _placementUnitId = null;
+      _placementUnitData = null;
+      _placementUsesSunePlay = false;
       showStep('path');
 
       screen.querySelectorAll('.onboarding-option[data-level]').forEach(function (btn) {
@@ -246,9 +292,15 @@
     },
 
     backToLevelSelection: function () {
+      destroyPlacementLesson();
+      _placementUnitId = null;
+      _placementUnitData = null;
+      _placementUsesSunePlay = false;
       showStep('level');
       var contentEl = document.getElementById('onboarding-placement-content');
       if (contentEl) contentEl.innerHTML = '';
+      var placementStep = document.getElementById('onboarding-placement-step');
+      if (placementStep) placementStep.classList.remove('onboarding-placement-step--sune-play', 'onboarding-placement-step--ready');
     },
 
     complete: function () {
@@ -308,13 +360,53 @@
           }
         }
 
-        if (!unitData || unitData.type !== 'progress_test' || typeof BentoGrid === 'undefined' || !BentoGrid._renderProgressTestUnit) {
+        if (!unitData || unitData.type !== 'progress_test') {
           throw new Error('invalid progress test');
         }
 
-        BentoGrid._courseLevel = courseLevel;
-        contentEl.innerHTML = '<div class="onboarding-placement-test">' + BentoGrid._renderProgressTestUnit(unitData) + '</div>';
-        if (finishBtn) finishBtn.disabled = false;
+        _placementUnitId = ptItem.id;
+        _placementUnitData = unitData;
+        _placementUsesSunePlay = typeof BentoGrid !== 'undefined' &&
+          BentoGrid._isSunePlayUnit && BentoGrid._isSunePlayUnit(unitData) &&
+          typeof SunePlayLesson !== 'undefined';
+
+        if (_placementUsesSunePlay) {
+          clearUnitLessonStorage(_placementUnitId);
+          var placementStep = document.getElementById('onboarding-placement-step');
+          if (placementStep) placementStep.classList.add('onboarding-placement-step--sune-play');
+          contentEl.innerHTML = '<div id="sp-lesson-mount" class="sp-lesson-mount onboarding-placement-sune-play"></div>';
+          var mount = document.getElementById('sp-lesson-mount');
+          if (!mount) throw new Error('missing sune play mount');
+
+          if (typeof BentoGrid !== 'undefined') BentoGrid._courseLevel = courseLevel;
+
+          (async function () {
+            var spUnitData = unitData;
+            if (typeof LearningCrossword !== 'undefined') {
+              await LearningCrossword.ensureDictionary();
+              await LearningCrossword.enrichV2Unit(spUnitData);
+            }
+            SunePlayLesson.init({
+              unitId: _placementUnitId,
+              unitData: spUnitData,
+              level: courseLevel,
+              startSection: 'session',
+              startNodeId: spUnitData.practiceNodes && spUnitData.practiceNodes.length
+                ? spUnitData.practiceNodes[0].nodeId
+                : null,
+              mount: mount,
+              backFn: 'Onboarding.backToLevelSelection()',
+              onTestScoreUpdate: function (score) { updatePlacementFinishButton(score); }
+            });
+            if (finishBtn) finishBtn.disabled = true;
+          })();
+        } else if (typeof BentoGrid !== 'undefined' && BentoGrid._renderProgressTestUnit) {
+          BentoGrid._courseLevel = courseLevel;
+          contentEl.innerHTML = '<div class="onboarding-placement-test">' + BentoGrid._renderProgressTestUnit(unitData) + '</div>';
+          if (finishBtn) finishBtn.disabled = false;
+        } else {
+          throw new Error('invalid progress test renderer');
+        }
       } catch (e) {
         contentEl.innerHTML = '<div class="onboarding-placement-error">Could not load the placement test. You will start from Etapa 1.</div>';
         if (finishBtn) finishBtn.disabled = false;
@@ -327,13 +419,15 @@
     },
 
     finishPlacementTest: async function () {
-      if (typeof BentoGrid !== 'undefined' && BentoGrid._checkCuExSection) {
+      if (!_placementUsesSunePlay && typeof BentoGrid !== 'undefined' && BentoGrid._checkCuExSection) {
         document.querySelectorAll('#onboarding-placement-content .cu-review-section').forEach(function (sec) {
           if (sec.getAttribute('data-checked') !== 'true' && sec.id) {
             BentoGrid._doCheckCuExSection(sec);
           }
         });
       }
+
+      destroyPlacementLesson();
 
       var score = getPlacementScore();
       var passed = score.max > 0 && score.pct >= PLACEMENT_PASS_PCT;
@@ -350,6 +444,10 @@
       }
 
       this._finalizeOnboarding(courseLevel, passed, score);
+    },
+
+    _onPlacementScoreUpdate: function (score) {
+      updatePlacementFinishButton(score);
     },
 
     _finalizeOnboarding: async function (courseLevel, passed, score, options) {

@@ -7034,6 +7034,40 @@
       }
 
       if (unitData.type === 'progress_test') {
+        if (BentoGrid._isSunePlayUnit(unitData)) {
+          var spPtExercises = (unitData.contentBanks && unitData.contentBanks.exercises) || [];
+          var spPtPracticeNodes = unitData.practiceNodes || [];
+          var ptExercises;
+
+          if (spPtExercises.length) {
+            ptExercises = spPtExercises.map(function(ex, idx) {
+              var label = ex.legacyKey || BentoGrid._getCourseExerciseLabel(idx);
+              var nodeId = BentoGrid._resolveSunePlayNodeForExercise(unitData, ex.id);
+              return {
+                label: label,
+                title: ex.title || ex.exerciseTypeName || '',
+                maxScore: (ex.scoring && ex.scoring.maxScore) || 0,
+                sectionIdx: 'exercise:' + ex.id,
+                exerciseId: ex.id,
+                nodeId: nodeId
+              };
+            });
+          } else {
+            ptExercises = spPtPracticeNodes.map(function(node, idx) {
+              return {
+                label: node.shortTitle || BentoGrid._getCourseExerciseLabel(idx),
+                sectionIdx: 'node:' + node.nodeId,
+                nodeId: node.nodeId
+              };
+            });
+          }
+
+          return {
+            sunePlay: true,
+            exercises: ptExercises
+          };
+        }
+
         var ptSections = [];
         (unitData.sections || []).forEach(function(sec, sectionIdx) {
           if (sec.type === 'exercise') {
@@ -7646,6 +7680,9 @@
     },
 
     _renderProgressTestUnit: function(data) {
+      if (BentoGrid._isSunePlayUnit(data)) {
+        return '<div id="sp-lesson-mount" class="sp-lesson-mount course-unit-content"></div>';
+      }
       var self = this;
       function _mi(name) { return '<span class="material-symbols-outlined">' + name + '</span>'; }
       function _bold(str) { return self._escapeHTML(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>'); }

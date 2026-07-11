@@ -82,7 +82,7 @@
   }
 
   function resolveReviewStartExerciseId(unitData, progress) {
-    if (!unitData || unitData.type !== 'review') return null;
+    if (!unitData || (unitData.type !== 'review' && unitData.type !== 'progress_test')) return null;
     var required = (unitData.contentBanks && unitData.contentBanks.requiredExerciseIds) || [];
     if (!required.length) {
       var exercises = (unitData.contentBanks && unitData.contentBanks.exercises) || [];
@@ -94,6 +94,30 @@
       if (!completed[required[i]]) return required[i];
     }
     return null;
+  }
+
+  function updateProgressTestScore(progress, key, correct, total) {
+    if (!progress) return;
+    if (!progress.testScores) progress.testScores = {};
+    progress.testScores[key] = { correct: correct, total: total };
+    var agg = { correct: 0, total: 0 };
+    Object.keys(progress.testScores).forEach(function(scoreKey) {
+      var entry = progress.testScores[scoreKey];
+      if (!entry) return;
+      agg.correct += entry.correct || 0;
+      agg.total += entry.total || 0;
+    });
+    progress.testScore = agg;
+  }
+
+  function notifyPlacementScoreUpdate(progress) {
+    if (!lessonState || lessonState.unitData.type !== 'progress_test') return;
+    if (typeof lessonState.onTestScoreUpdate === 'function' && progress && progress.testScore) {
+      lessonState.onTestScoreUpdate(progress.testScore);
+    }
+    if (typeof window.Onboarding !== 'undefined' && window.Onboarding._onPlacementScoreUpdate) {
+      window.Onboarding._onPlacementScoreUpdate(progress.testScore);
+    }
   }
 
   function calcXp(unit, correct, livesLost, perfect) {
@@ -1421,11 +1445,20 @@
 
     if (lessonState.hearts.isGameOver) {
       lessonState.phase = 'failed';
-    } else if (passed) {
+    } else     if (passed) {
       if (lessonState.singleExerciseId) {
         if (!lessonState.progress.completedExercises) lessonState.progress.completedExercises = {};
         lessonState.progress.completedExercises[lessonState.singleExerciseId] = true;
+        if (lessonState.unitData.type === 'progress_test') {
+          updateProgressTestScore(
+            lessonState.progress,
+            lessonState.singleExerciseId,
+            correct,
+            lessonState.sessionTotal
+          );
+        }
         saveProgress(lessonState.unitId, lessonState.progress);
+        notifyPlacementScoreUpdate(lessonState.progress);
         syncExerciseProgressToSupabase(
           'exercise:' + lessonState.singleExerciseId,
           correct,
@@ -1433,7 +1466,16 @@
         );
       } else {
         lessonState.progress.completedNodes[node.nodeId] = true;
+        if (lessonState.unitData.type === 'progress_test') {
+          updateProgressTestScore(
+            lessonState.progress,
+            node.nodeId,
+            correct,
+            lessonState.sessionTotal
+          );
+        }
         saveProgress(lessonState.unitId, lessonState.progress);
+        notifyPlacementScoreUpdate(lessonState.progress);
         syncExerciseProgressToSupabase(
           'node:' + node.nodeId,
           correct,
@@ -1520,7 +1562,8 @@
       theoryCardIdx: 0,
       theoryOnly: opts.startSection === 'theory',
       pendingNodeId: opts.startNodeId || null,
-      pendingExerciseId: opts.startExerciseId || null
+      pendingExerciseId: opts.startExerciseId || null,
+      onTestScoreUpdate: opts.onTestScoreUpdate || null
     };
 
     if (!opts.startExerciseId && (unitData.type === 'review' || unitData.type === 'progress_test')) {
