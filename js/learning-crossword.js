@@ -158,26 +158,98 @@
     return '';
   }
 
+  function splitClueParts(clue) {
+    if (!clue) return { definition: '', phrase: '' };
+    var text = stripLetterCount(clue);
+    var sep = text.indexOf(CW_CLUE_SEP);
+    if (sep === -1) {
+      sep = text.indexOf(' — ');
+      if (sep !== -1) {
+        return {
+          definition: text.slice(0, sep).trim(),
+          phrase: text.slice(sep + 3).trim()
+        };
+      }
+      return { definition: '', phrase: text };
+    }
+    return {
+      definition: text.slice(0, sep).trim(),
+      phrase: text.slice(sep + CW_CLUE_SEP.length).trim()
+    };
+  }
+
   function formatClueDisplay(clue) {
-    if (!clue) return '';
-    var sep = clue.indexOf(CW_CLUE_SEP);
-    if (sep === -1) return clue;
-    var definition = clue.slice(0, sep).trim();
-    var blankPart = clue.slice(sep + CW_CLUE_SEP.length).trim();
-    if (!definition) return blankPart;
-    if (!blankPart) return definition;
-    return definition + ' — ' + blankPart;
+    var parts = splitClueParts(clue);
+    if (!parts.definition) return parts.phrase;
+    if (!parts.phrase) return parts.definition;
+    return parts.definition + ' — ' + parts.phrase;
+  }
+
+  function formatClueHtml(clue, escFn) {
+    escFn = escFn || function (s) { return String(s == null ? '' : s); };
+    var parts = splitClueParts(clue);
+    if (!parts.definition && !parts.phrase) return '';
+    if (!parts.definition) {
+      return '<p class="sp-cw-clue-text sp-cw-clue-text--phrase">' + escFn(parts.phrase) + '</p>';
+    }
+    if (!parts.phrase) {
+      return '<p class="sp-cw-clue-text sp-cw-clue-text--definition">' + escFn(parts.definition) + '</p>';
+    }
+    return '<div class="sp-cw-clue-body">' +
+      '<p class="sp-cw-clue-text sp-cw-clue-text--definition">' + escFn(parts.definition) + '</p>' +
+      '<p class="sp-cw-clue-text sp-cw-clue-text--phrase">' + escFn(parts.phrase) + '</p>' +
+      '</div>';
   }
 
   function buildLearningClue(answer, legacyClue, unitWords, dictByWord) {
     var definition = lookupDefinition(answer, unitWords, dictByWord);
     var blankPhrase = legacyClueToBlankPhrase(legacyClue);
     if (definition && blankPhrase && blankPhrase.indexOf('___') !== -1) {
-      return formatClueDisplay(definition + CW_CLUE_SEP + blankPhrase);
+      return definition + CW_CLUE_SEP + blankPhrase;
     }
     if (definition) return definition;
     if (blankPhrase) return blankPhrase;
     return stripLetterCount(legacyClue);
+  }
+
+  function extractV2UnitWords(unitData) {
+    var map = {};
+    var theory = unitData && unitData.theory;
+    if (!theory || !theory.cards) return map;
+
+    theory.cards.forEach(function (card) {
+      (card.sections || []).forEach(function (section) {
+        if (section.type === 'vocab_word_grid') {
+          (section.items || []).forEach(function (item) {
+            splitWordTokens(item.word).forEach(function (token) {
+              token.split(/\s+/).forEach(function (part) {
+                addWordEntry(map, part, { type: 'vocabulary' });
+              });
+            });
+          });
+        }
+        if (section.type === 'example_list') {
+          (section.items || []).forEach(function (line) {
+            var match = String(line).match(/\*\*([^*]+)\*\*\s*[—–-]\s*(.+)/);
+            if (!match) return;
+            splitWordTokens(match[1]).forEach(function (token) {
+              token.split(/\s+/).forEach(function (part) {
+                addWordEntry(map, part, { definition: match[2].trim(), type: 'phrasal-verb' });
+              });
+            });
+          });
+        }
+      });
+    });
+
+    var banks = unitData.contentBanks || {};
+    (banks.exercises || []).forEach(function (exercise) {
+      (exercise.items || []).forEach(function (item) {
+        if (item && item.answer) addWordEntry(map, item.answer, { type: 'vocabulary' });
+      });
+    });
+
+    return map;
   }
 
   function flattenLegacyCrosswordItems(exercise) {
@@ -227,9 +299,9 @@
     });
   }
 
-  function enrichCrosswordExercise(exercise, sections, dictByWord) {
+  function enrichCrosswordExercise(exercise, unitWords, dictByWord) {
     if (!exercise) return exercise;
-    var unitWords = extractUnitWords(sections);
+    unitWords = unitWords || {};
     var items = (exercise.items || []).slice();
 
     if (!items.length && (exercise.across || exercise.down)) {
@@ -307,7 +379,11 @@
     },
 
     extractUnitWords: extractUnitWords,
+    extractV2UnitWords: extractV2UnitWords,
+    splitClueParts: splitClueParts,
     formatClueDisplay: formatClueDisplay,
+    formatClueHtml: formatClueHtml,
+    stripLetterCount: stripLetterCount,
     buildLearningClue: buildLearningClue,
     prepareLegacyCrosswordItems: prepareLegacyCrosswordItems,
     enrichCrosswordExercise: enrichCrosswordExercise,
@@ -316,7 +392,8 @@
       if (!unitData) return unitData;
       await this.ensureDictionary();
       var sections = await loadSourceSections(unitData);
-      if (!sections) return unitData;
+      var unitWords = sections ? extractUnitWords(sections) : extractV2UnitWords(unitData);
+      if (!Object.keys(unitWords).length) return unitData;
 
       var banks = unitData.contentBanks || {};
       (banks.exercises || []).forEach(function (exercise) {
@@ -325,7 +402,7 @@
             !(exercise.items || []).some(function (it) { return it.formatType === 'crossword_clues'; })) {
           return;
         }
-        enrichCrosswordExercise(exercise, sections, _dictByWord);
+        enrichCrosswordExercise(exercise, unitWords, _dictByWord);
       });
       return unitData;
     }

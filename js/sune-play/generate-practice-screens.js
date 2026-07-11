@@ -734,8 +734,10 @@
       ? item.letterCount
       : answer.replace(/\s+/g, '').length;
     var clue = item.clue || '';
-    if (typeof LearningCrossword !== 'undefined' && LearningCrossword.formatClueDisplay) {
-      clue = LearningCrossword.formatClueDisplay(clue);
+    if (typeof LearningCrossword !== 'undefined' && LearningCrossword.stripLetterCount) {
+      clue = LearningCrossword.stripLetterCount(clue);
+    } else {
+      clue = clue.replace(/\s*\(\d+\)\s*$/, '').trim();
     }
     return {
       layoutMode: item.layoutMode || 'clue_list',

@@ -2316,14 +2316,26 @@
     });
   }
 
+  function renderCrosswordClueMarkup(clue) {
+    if (typeof LearningCrossword !== 'undefined' && LearningCrossword.formatClueHtml) {
+      return LearningCrossword.formatClueHtml(clue, esc);
+    }
+    var text = clue || '';
+    if (typeof LearningCrossword !== 'undefined' && LearningCrossword.stripLetterCount) {
+      text = LearningCrossword.stripLetterCount(text);
+    } else {
+      text = text.replace(/\s*\(\d+\)\s*$/, '').trim();
+    }
+    return '<p class="sp-cw-clue-text">' + esc(text) + '</p>';
+  }
+
   function renderCrosswordClues(screen) {
     var p = screen.payload || {};
     var count = p.letterCount || String(p.answer || '').replace(/\s+/g, '').length || 1;
     var html = '<div class="sp-screen sp-screen--crossword" data-format="crossword_clues">';
-    html += '<div class="sp-cw-clue-header">';
-    html += '<span class="sp-cw-clue-num">' + esc(String(p.clueNumber != null ? p.clueNumber : '')) + '</span>';
+    html += '<div class="sp-cw-clue-card">';
+    html += renderCrosswordClueMarkup(p.clue);
     html += '</div>';
-    html += '<p class="sp-cw-clue-text">' + esc(p.clue) + '</p>';
     html += '<div class="sp-cw-letter-row" id="sp-cw-letter-row" role="group" aria-label="Answer letters">';
     for (var i = 0; i < count; i++) {
       html += '<input type="text" class="sp-cw-letter" maxlength="1" data-cw-idx="' + i + '" ' +
