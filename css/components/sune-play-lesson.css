@@ -3394,6 +3394,23 @@ button.sp-vocab-word-card:focus-visible {
 .sp-screen--tiles {
   text-align: left;
   width: 100%;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.sp-screen--tiles .sp-visual-prompt {
+  flex-shrink: 0;
+}
+
+.sp-screen--tiles .sp-tile-answer {
+  flex-shrink: 0;
+  align-self: stretch;
+  overflow: visible;
+}
+
+.sp-screen--tiles .sp-tile-bank {
+  flex-shrink: 0;
+  align-self: stretch;
 }
 
 .sp-visual-prompt {
@@ -3439,8 +3456,9 @@ button.sp-vocab-word-card:focus-visible {
   align-content: flex-start;
   align-items: flex-start;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   box-sizing: border-box;
+  overflow: visible;
 }
 
 .sp-tile-bank {
@@ -3452,6 +3470,7 @@ button.sp-vocab-word-card:focus-visible {
   align-content: flex-start;
   align-items: flex-start;
   gap: 8px;
+  padding-top: 4px;
 }
 
 .sp-tile {
@@ -4807,12 +4826,13 @@ body:has(.dashboard-layout--lesson-focus) .dashboard-center--course:has(.sp-less
     min-height: 44px;
     padding: 8px;
     gap: 6px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     border-radius: 12px;
   }
 
   .sp-tile-bank {
     gap: 6px;
+    padding-top: 2px;
   }
 
   .sp-tile {
