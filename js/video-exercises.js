@@ -238,7 +238,14 @@
       var content = document.getElementById('main-content');
       if (!content) return;
 
-      content.innerHTML = '<div class="ve-loading">' + _mi('hourglass_top') + ' Loading…</div>';
+      if (typeof AppLoadingScreen !== 'undefined' && AppLoadingScreen.wrapInlineLoading) {
+        content.innerHTML = AppLoadingScreen.wrapInlineLoading(
+          AppLoadingScreen.buildInlineMarkup({ showLogo: false, showTip: false, title: '' }),
+          've-loading'
+        );
+      } else {
+        content.innerHTML = '<div class="ve-loading">' + _mi('hourglass_top') + ' Loading…</div>';
+      }
 
       try {
         var index = await this._loadIndex();
