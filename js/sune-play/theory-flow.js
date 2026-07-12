@@ -12,11 +12,33 @@
   }
 
   function bold(str) {
-    return esc(str).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    return esc(str)
+      .replace(/\n/g, '<br>')
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>');
   }
 
   function plainText(str) {
-    return String(str == null ? '' : str).replace(/\*\*([^*]+)\*\*/g, '$1').trim();
+    return String(str == null ? '' : str)
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .replace(/\*([^*]+)\*/g, '$1')
+      .trim();
+  }
+
+  function normaliseExampleVariants(rawItem) {
+    var variants = [];
+    if (Array.isArray(rawItem)) {
+      variants = rawItem;
+    } else if (rawItem !== undefined && rawItem !== null) {
+      variants = [rawItem];
+    }
+    return variants.map(function(v) { return String(v).trim(); }).filter(Boolean);
+  }
+
+  function renderExampleCell(rawItem) {
+    var variants = normaliseExampleVariants(rawItem);
+    if (!variants.length) return '';
+    return variants.map(function(v) { return bold(v); }).join('<br>');
   }
 
   function speakableButton(className, rawText, contentHtml) {
@@ -65,6 +87,8 @@
         return renderVocabWordGrid(section);
       case 'word_formation':
         return renderWordFormation(section);
+      case 'comparison_table':
+        return renderComparisonTable(section);
       default:
         return '<div class="sp-theory-unknown">Unsupported section: ' + esc(section.type) + '</div>';
     }
@@ -191,6 +215,30 @@
       html += speakableButton('sp-vocab-word-card', item.word, wordHtml);
     });
     html += '</div></div>';
+    return html;
+  }
+
+  function renderComparisonTable(section) {
+    var headers = section.headers || [];
+    var rows = section.rows || [];
+    var html = '<div class="sp-theory-section sp-theory-comparison-table" data-component="TheoryCardSection" data-type="comparison_table">';
+    html += sectionTitle(section.title);
+    html += '<table class="sp-comparison-table"><thead><tr>';
+    headers.forEach(function(header) {
+      html += '<th class="sp-comparison-head">' + esc(header) + '</th>';
+    });
+    html += '</tr></thead><tbody>';
+    rows.forEach(function(row) {
+      if (!Array.isArray(row)) return;
+      html += '<tr class="sp-comparison-row">';
+      row.forEach(function(cell, ci) {
+        var cls = ci === 0 ? 'sp-comparison-cell sp-comparison-cell--label' : 'sp-comparison-cell sp-comparison-cell--value';
+        var content = ci === 0 ? bold(cell) : renderExampleCell(cell);
+        html += '<td class="' + cls + '">' + content + '</td>';
+      });
+      html += '</tr>';
+    });
+    html += '</tbody></table></div>';
     return html;
   }
 

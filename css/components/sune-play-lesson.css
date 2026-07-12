@@ -312,6 +312,68 @@
   color: var(--text-dark);
 }
 
+.sp-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.sp-comparison-head {
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-light);
+  padding: 0 10px 8px;
+  border-bottom: 2px solid var(--sp-duo-blue-border);
+}
+
+.sp-comparison-head:first-child {
+  color: var(--sp-primary);
+}
+
+.sp-comparison-row {
+  border-bottom: 1px solid var(--sp-duo-blue-border);
+}
+
+.sp-comparison-row:last-child {
+  border-bottom: none;
+}
+
+.sp-comparison-cell {
+  padding: 10px;
+  vertical-align: top;
+  line-height: 1.45;
+}
+
+.sp-comparison-cell--label {
+  font-weight: 700;
+  color: var(--text-dark);
+  border-right: 1px solid var(--sp-duo-blue-border);
+  width: 38%;
+}
+
+.sp-comparison-cell--value {
+  color: var(--text-medium);
+  font-style: italic;
+}
+
+.sp-comparison-cell--value strong {
+  color: var(--text-dark);
+  font-style: normal;
+}
+
+.sp-comparison-cell--value em {
+  color: var(--text-dark);
+  font-style: italic;
+}
+
+.sp-remember-list em,
+.sp-remember-desc em {
+  font-style: italic;
+}
+
 @media (min-width: 480px) {
   .sp-form-table-cols {
     flex-direction: row;
