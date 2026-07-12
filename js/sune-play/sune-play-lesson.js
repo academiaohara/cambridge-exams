@@ -771,7 +771,7 @@
         return p.instruction || 'Write the corrected sentence.';
       }
       case 'word_order_tiles':
-        return p.instruction || 'Look at the picture and answer the question by building the sentence.';
+        return p.instruction || 'Build the sentence. Some words are extra.';
       case 'error_correction':
         return p.instruction || 'Correct the mistake in the sentence.';
       case 'verb_bank_two_step':
@@ -849,7 +849,7 @@
       case 'error_correction':
         return p.sentence || '';
       case 'word_order_tiles':
-        return p.contextQuestion || p.instruction || p.prompt || '';
+        return p.prompt || p.instruction || '';
       case 'verb_bank_two_step':
         return p.sentence || '';
       case 'passage_error_hunt_single':
