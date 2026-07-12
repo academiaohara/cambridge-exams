@@ -292,13 +292,21 @@
           sidebars = DashboardNav._buildDashboardSidebars(exams, { includeGradeTracker: true });
         }
 
+        var mobileTopBarHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileTopBarHtml
+          ? MainNav.buildMobileTopBarHtml() : '';
+        var mobileNavHtml = typeof MainNav !== 'undefined' && MainNav.buildMobileBottomNavHtml
+          ? MainNav.buildMobileBottomNavHtml('vocabulary') : '';
+
         content.innerHTML =
           '<div class="dashboard-layout dashboard-layout--crossword-scroll">' +
             (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
               ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', sidebars.left)
               : '<div class="dashboard-left-sidebar" id="dashboardLeftSidebar">' + sidebars.left + '</div>') +
-            '<div class="dashboard-center dashboard-center--course">' +
+            '<div class="dashboard-center dashboard-center--crossword dashboard-center--mobile-hub dashboard-center--course-vocab">' +
+              mobileTopBarHtml +
+              '<div id="feVocabExerciseChromeMount"></div>' +
               '<div class="fe-section fe-section--merged-path fe-section--vocab-exercise" id="feCenterSection"></div>' +
+              mobileNavHtml +
             '</div>' +
             (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
               ? Dashboard._renderSidebarShell('right', 'dashboardRightSidebarShell', 'dashboardRightSidebar', sidebars.right)
@@ -316,6 +324,72 @@
 
       this._setVocabLessonFocus(true);
       return centerSection;
+    },
+
+    _syncVocabExerciseChrome: function(catMeta, levelId, lessonTitle, pointIndex, lessonPoints, pointLabel) {
+      if (!catMeta || !this._isCourseVocabCategory(catMeta.id)) return;
+
+      var self = this;
+      var categoryId = catMeta.id;
+      var color = catMeta.color || '#10b981';
+      var totalSteps = lessonPoints ? lessonPoints.length : 0;
+      var stepNum = pointIndex + 1;
+      var progressPct = totalSteps > 0 ? Math.round((stepNum / totalSteps) * 100) : 0;
+      var metaText = (pointLabel || ('Step ' + stepNum)) + (totalSteps > 0 ? (' · ' + stepNum + '/' + totalSteps) : '');
+      if (levelId) metaText = levelId + ' · ' + metaText;
+      var backFn = 'FastExercises.openCategory(\'' + self._jsStr(categoryId) + '\')';
+
+      var center = document.querySelector('.dashboard-center--course-vocab') ||
+        document.querySelector('.dashboard-center--course') ||
+        document.querySelector('.dashboard-center');
+      if (!center) return;
+
+      var mount = document.getElementById('feVocabExerciseChromeMount');
+      if (!mount) {
+        var existingChrome = center.querySelector('.cw-section-header--vocab');
+        if (existingChrome) {
+          mount = document.createElement('div');
+          mount.id = 'feVocabExerciseChromeMount';
+          existingChrome.parentNode.insertBefore(mount, existingChrome);
+          existingChrome.remove();
+        } else {
+          mount = document.createElement('div');
+          mount.id = 'feVocabExerciseChromeMount';
+          var centerSection = document.getElementById('feCenterSection');
+          if (centerSection) center.insertBefore(mount, centerSection);
+          else center.insertBefore(mount, center.firstChild);
+        }
+      }
+
+      mount.innerHTML =
+        '<div class="fe-vocab-exercise-chrome-wrap">' +
+          '<div class="cw-section-header cw-section-header--duo cw-section-header--vocab cw-section-header--level fe-vocab-exercise-chrome" id="feVocabExerciseChrome" style="--cw-header-color:' + color + '">' +
+            '<button type="button" class="cw-section-back" onclick="' + backFn + '" aria-label="Back to ' + self._escapeHTML(catMeta.name) + ' map">' + _mi('arrow_back') + '</button>' +
+            '<div class="cw-section-header-text">' +
+              '<div class="cw-section-title fe-vocab-exercise-lesson">' + self._escapeHTML(lessonTitle || catMeta.name) + '</div>' +
+              '<div class="fe-vocab-exercise-meta">' + self._escapeHTML(metaText) + '</div>' +
+            '</div>' +
+            '<div class="fe-vocab-exercise-cat-badge" title="' + self._escapeHTML(catMeta.name) + '">' + _mi(catMeta.icon) + '</div>' +
+          '</div>' +
+          '<div class="fe-vocab-exercise-progress-bar" id="feVocabExerciseProgress" aria-hidden="true">' +
+            '<div class="fe-vocab-exercise-progress-fill" style="width:' + progressPct + '%;background:' + color + '"></div>' +
+          '</div>' +
+        '</div>';
+
+      this._setVocabLessonFocus(true);
+      if (typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('vocabulary');
+    },
+
+    _clearVocabExerciseChrome: function() {
+      var mount = document.getElementById('feVocabExerciseChromeMount');
+      if (mount) mount.innerHTML = '';
+    },
+
+    _finalizeCourseVocabPoint: function(container, categoryId, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabel) {
+      this._finishPointRender(container, lessonPoints, pointIndex);
+      this._syncVocabExerciseChrome(catMeta, levelId, lessonTitle, pointIndex, lessonPoints, pointLabel);
+      var state = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
+      history.pushState(state, '', Router.stateToPath(state));
     },
 
     _isMapPointAccessible: function(catMeta, levelId, lesson, pi, levelUnlocked, lessonUnlocked) {
@@ -954,7 +1028,8 @@
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
           '<div class="dashboard-center' + (isCourseVocab ? ' dashboard-center--crossword dashboard-center--mobile-hub dashboard-center--course-vocab' : '') + '">' +
-            (isCourseVocab ? mobileTopBarHtml + courseVocabHeaderHtml : '') +
+            (isCourseVocab ? mobileTopBarHtml + '<div id="feVocabExerciseChromeMount"></div>' : '') +
+            (isCourseVocab ? courseVocabHeaderHtml : '') +
             '<div class="fe-section' + (isCourseVocab ? ' fe-section--merged-path fe-section--course-vocab' : '') + '" id="feCenterSection">' +
               centerBodyHtml +
             '</div>' +
@@ -968,6 +1043,7 @@
       if (typeof Dashboard !== 'undefined' && Dashboard._applySidebarState) Dashboard._applySidebarState();
       if (typeof Dashboard !== 'undefined' && Dashboard._initStatsPopovers) Dashboard._initStatsPopovers();
       if (isCourseVocab) this._setVocabLessonFocus(false);
+      if (isCourseVocab) this._clearVocabExerciseChrome();
       if (isCourseVocab && typeof DashboardNav !== 'undefined') DashboardNav._startGradeCarousel();
       if (isCourseVocab && typeof MainNav !== 'undefined' && MainNav.setActive) MainNav.setActive('vocabulary');
       var catState = { view: 'fastExerciseCategory', categoryId: categoryId };
@@ -2077,6 +2153,7 @@
                 '</button>' +
               '</div>' +
             '</div>';
+          this._finalizeCourseVocabPoint(container, categoryId, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabel);
           return;
         }
         if (pointType === 'pv-gallery') {
@@ -2090,9 +2167,7 @@
         } else if (pointType === 'pv-mixed') {
           this._renderPvMixed(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         }
-        this._finishPointRender(container, lessonPoints, pointIndex);
-        var pvState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
-        history.pushState(pvState, '', Router.stateToPath(pvState));
+        this._finalizeCourseVocabPoint(container, categoryId, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabel);
         return;
       }
 
@@ -2108,6 +2183,7 @@
                 '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + categoryId + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + (catMeta ? catMeta.color : '#e11d48') + '">' + 'Next' + '</button>' +
               '</div>' +
             '</div>';
+          this._finalizeCourseVocabPoint(container, categoryId, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabel);
           return;
         }
         if (pointType === 'wf-explanation') {
@@ -2117,9 +2193,7 @@
         } else if (pointType === 'wf-transform') {
           this._renderWfTransform(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         }
-        this._finishPointRender(container, lessonPoints, pointIndex);
-        var wfState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
-        history.pushState(wfState, '', Router.stateToPath(wfState));
+        this._finalizeCourseVocabPoint(container, categoryId, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabel);
         return;
       }
 
@@ -2138,6 +2212,7 @@
                 '</button>' +
               '</div>' +
             '</div>';
+          this._syncVocabExerciseChrome(catMeta, levelId, lessonTitle, pointIndex, lessonPoints, pointLabel);
           var trophyState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
           history.pushState(trophyState, '', Router.stateToPath(trophyState));
           return;
@@ -2151,6 +2226,7 @@
                 '<button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + categoryId + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + (catMeta ? catMeta.color : '#f59e0b') + '">' + 'Next' + '</button>' +
               '</div>' +
             '</div>';
+          this._finalizeCourseVocabPoint(container, categoryId, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabel);
           return;
         }
         if (pointType === 'id-gallery') {
@@ -2164,9 +2240,7 @@
         } else if (pointType === 'id-quiz') {
           this._renderIdQuiz(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints);
         }
-        this._finishPointRender(container, lessonPoints, pointIndex);
-        var idState = { view: 'fastExercisePoint', categoryId: categoryId, levelId: levelId, lessonId: lessonId, pointIndex: pointIndex };
-        history.pushState(idState, '', Router.stateToPath(idState));
+        this._finalizeCourseVocabPoint(container, categoryId, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabel);
         return;
       }
 
@@ -3051,6 +3125,10 @@
 
     // ── Point exercise header (replaces pv-point-sidebar) ────────────────
     _buildPointExerciseHeaderHtml: function(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) {
+      if (catMeta && this._isCourseVocabCategory(catMeta.id)) {
+        return '';
+      }
+
       var self = this;
       var point = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
       var pointLabel = point ? (point.label || '') : '';
