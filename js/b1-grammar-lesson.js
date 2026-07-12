@@ -366,13 +366,41 @@
 
   // ─── ErrorCorrectionExercise ──────────────────────────────────────────
 
+  function findHighlightRange(sentence, highlightedText) {
+    var highlight = String(highlightedText || '').trim();
+    if (!highlight) return null;
+    var wrapped = '**' + highlight + '**';
+    var wrapIdx = String(sentence || '').indexOf(wrapped);
+    if (wrapIdx !== -1) {
+      var beforePlain = String(sentence || '').slice(0, wrapIdx).replace(/\*\*/g, '');
+      return { start: beforePlain.length, end: beforePlain.length + highlight.length };
+    }
+    var plain = String(sentence || '').replace(/\*\*([^*]+)\*\*/g, '$1');
+    var lowerPlain = plain.toLowerCase();
+    var lowerHighlight = highlight.toLowerCase();
+    var idx = 0;
+    while (idx <= lowerPlain.length - lowerHighlight.length) {
+      var pos = lowerPlain.indexOf(lowerHighlight, idx);
+      if (pos === -1) break;
+      var beforeOk = pos <= 0 || !/[\w\u2019']/.test(plain.charAt(pos - 1));
+      var afterOk = pos + highlight.length >= plain.length || !/[\w\u2019']/.test(plain.charAt(pos + highlight.length));
+      if (beforeOk && afterOk) return { start: pos, end: pos + highlight.length };
+      idx = pos + 1;
+    }
+    return null;
+  }
+
   function renderErrorCorrection(step) {
     var item = step.item;
     var highlight = item.highlightedText || '';
     var sent = item.sentence || '';
     var display = sent;
     if (highlight && sent.indexOf('**') === -1) {
-      display = sent.replace(highlight, '**' + highlight + '**');
+      var plain = sent.replace(/\*\*([^*]+)\*\*/g, '$1');
+      var range = findHighlightRange(sent, highlight);
+      if (range) {
+        display = plain.slice(0, range.start) + '**' + plain.slice(range.start, range.end) + '**' + plain.slice(range.end);
+      }
     }
     var html = '<div class="bgl-exercise bgl-exercise--error" data-component="ErrorCorrectionExercise">' +
       '<p class="bgl-error-sentence">' + renderMarkdownBold(display) + '</p>' +

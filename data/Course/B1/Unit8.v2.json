@@ -527,10 +527,10 @@
         "id": "b1-u8-ex-a",
         "type": "exercise",
         "exerciseType": "error_correction",
-        "exerciseTypeName": "A: Tick if correct; correct if wrong",
-        "title": "A: Tick if correct; correct if wrong",
-        "instructions": "If the preposition in bold is correct, type OK. If it is wrong, write the correct preposition.",
-        "studentInstruction": "If the preposition in bold is correct, type OK. If it is wrong, write the correct preposition.",
+        "exerciseTypeName": "A: Correct the preposition",
+        "title": "A: Correct the preposition",
+        "instructions": "Each sentence has one wrong preposition. Write the correct one.",
+        "studentInstruction": "Each sentence has one wrong preposition. Write the correct one.",
         "legacyKey": "A",
         "legacyPattern": "error-correction",
         "interaction": {
@@ -560,21 +560,21 @@
           {
             "id": "b1-u8-exa-3",
             "formatType": "error_correction",
-            "sentence": "The concert starts at half past eight.",
-            "highlightedText": "at",
-            "answer": "OK",
+            "sentence": "The concert starts in half past eight.",
+            "highlightedText": "in",
+            "answer": "at",
             "acceptedAnswers": [
-              "OK"
+              "at"
             ]
           },
           {
             "id": "b1-u8-exa-4",
             "formatType": "error_correction",
-            "sentence": "We usually visit our cousins in August.",
-            "highlightedText": "in",
-            "answer": "OK",
+            "sentence": "We usually visit our cousins on August.",
+            "highlightedText": "on",
+            "answer": "in",
             "acceptedAnswers": [
-              "OK"
+              "in"
             ]
           },
           {
@@ -600,11 +600,11 @@
           {
             "id": "b1-u8-exa-7",
             "formatType": "error_correction",
-            "sentence": "We always have a big meal at Christmas.",
-            "highlightedText": "at",
-            "answer": "OK",
+            "sentence": "We always have a big meal in Christmas.",
+            "highlightedText": "in",
+            "answer": "at",
             "acceptedAnswers": [
-              "OK"
+              "at"
             ]
           },
           {
