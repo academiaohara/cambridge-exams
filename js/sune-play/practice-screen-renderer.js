@@ -1153,15 +1153,51 @@
     if (inp) resizeUnderlineGapInput(inp);
   }
 
+  function isHighlightWordBoundary(text, index) {
+    if (index <= 0) return true;
+    return !/[\w\u2019']/.test(text.charAt(index - 1));
+  }
+
+  function isHighlightWordEnd(text, index) {
+    if (index >= text.length) return true;
+    return !/[\w\u2019']/.test(text.charAt(index));
+  }
+
+  function findHighlightRange(sentence, highlightedText) {
+    var highlight = String(highlightedText || '').trim();
+    if (!highlight) return null;
+
+    var wrapped = '**' + highlight + '**';
+    var wrapIdx = String(sentence || '').indexOf(wrapped);
+    if (wrapIdx !== -1) {
+      var beforePlain = String(sentence || '').slice(0, wrapIdx).replace(/\*\*/g, '');
+      return { start: beforePlain.length, end: beforePlain.length + highlight.length };
+    }
+
+    var plain = String(sentence || '').replace(/\*\*([^*]+)\*\*/g, '$1');
+    var lowerPlain = plain.toLowerCase();
+    var lowerHighlight = highlight.toLowerCase();
+    var idx = 0;
+    while (idx <= lowerPlain.length - lowerHighlight.length) {
+      var pos = lowerPlain.indexOf(lowerHighlight, idx);
+      if (pos === -1) break;
+      if (isHighlightWordBoundary(plain, pos) && isHighlightWordEnd(plain, pos + highlight.length)) {
+        return { start: pos, end: pos + highlight.length };
+      }
+      idx = pos + 1;
+    }
+    return null;
+  }
+
   function splitSentenceAtHighlight(sentence, highlightedText) {
     var plain = String(sentence || '').replace(/\*\*([^*]+)\*\*/g, '$1');
     var highlight = String(highlightedText || '').trim();
     if (!highlight) return { before: '', after: plain.trim() };
-    var idx = plain.toLowerCase().indexOf(highlight.toLowerCase());
-    if (idx === -1) return { before: '', after: plain.trim() };
+    var range = findHighlightRange(sentence, highlight);
+    if (!range) return { before: '', after: plain.trim() };
     return {
-      before: plain.slice(0, idx).trim(),
-      after: plain.slice(idx + highlight.length).trim()
+      before: plain.slice(0, range.start).trim(),
+      after: plain.slice(range.end).trim()
     };
   }
 
@@ -1175,11 +1211,12 @@
         bold(parts.slice(1).join(wrapped));
     }
     var plain = sentence.replace(/\*\*/g, '');
-    var idx = plain.toLowerCase().indexOf(highlightedText.toLowerCase());
-    if (idx === -1) return bold(sentence);
-    return esc(plain.slice(0, idx)) +
-      '<mark class="sp-error-mark"><strong>' + esc(highlightedText) + '</strong></mark>' +
-      esc(plain.slice(idx + highlightedText.length));
+    var range = findHighlightRange(sentence, highlightedText);
+    if (!range) return bold(sentence);
+    var matched = plain.slice(range.start, range.end);
+    return esc(plain.slice(0, range.start)) +
+      '<mark class="sp-error-mark"><strong>' + esc(matched) + '</strong></mark>' +
+      esc(plain.slice(range.end));
   }
 
   function buildInlineGapField(verbRef, gapIdx) {
