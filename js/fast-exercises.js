@@ -370,109 +370,13 @@
       });
       if (!screenMount) return false;
 
-      var s = window._feVocabSession;
-      s.exercises = exercises;
-      s.correctCount = 0;
-      s.questionIndex = 0;
-
-      function renderQuestion(qi) {
-        session.clearResultStyles();
-        var ex = exercises[qi];
-        if (!ex) return;
-        var html = ex.type === 'write-verb' || ex.type === 'transform'
-          ? session.renderWriteScreen(ex)
-          : session.renderMcqScreen(ex, qi + 1, exercises.length);
-        screenMount.innerHTML = html;
-        var screenRoot = screenMount.querySelector('.sp-screen');
-        if (instruction && screenRoot) session.mountInstruction(screenRoot, instruction);
-
-        if (ex.type === 'write-verb' || ex.type === 'transform') {
-          session.bindWriteInput(function() {});
-        } else {
-          session.bindMcqSelection(function() {});
-        }
-        session.setActionBtn('check', false);
-      }
-
-      function finishQuiz() {
-        self._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
-        screenMount.innerHTML =
-          '<div class="sp-result-screen sp-result-screen--complete">' +
-            '<div class="sp-result-icon sp-result-icon--success"><span class="material-symbols-outlined">celebration</span></div>' +
-            '<h2 class="sp-result-title">Point complete!</h2>' +
-            '<p class="sp-result-subtitle">' + self._escapeHTML(s.correctCount + '/' + exercises.length + ' correct') + '</p>' +
-          '</div>';
-        session.setPassiveContinue(function() {
-          self._nextPoint(catMeta.id, levelId, lessonId, pointIndex);
-        });
-        if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
-      }
-
-      s.onCheck = function() {
-        var qi = s.questionIndex;
-        var ex = exercises[qi];
-        if (!ex) return;
-        var isCorrect = false;
-        var correctAnswer = ex.correct || '';
-
-        if (ex.type === 'write-verb' || ex.type === 'transform') {
-          var input = document.getElementById('fe-vocab-write-input');
-          var typed = input ? input.value.trim().toLowerCase() : '';
-          isCorrect = typed === String(correctAnswer).trim().toLowerCase();
-          if (input) {
-            input.classList.toggle('sp-gap-input--correct', isCorrect);
-            input.classList.toggle('sp-gap-input--incorrect', !isCorrect);
-          }
-        } else {
-          var selected = screenMount.querySelector('.sp-option-btn--selected');
-          if (!selected) return;
-          var chosen = selected.getAttribute('data-value') || '';
-          isCorrect = chosen.trim().toLowerCase() === String(correctAnswer).trim().toLowerCase();
-          session.markMcqResult(selected, correctAnswer);
-        }
-
-        session.lockScreen();
-        if (!isCorrect && s.hearts) s.hearts.loseLife(1, { screenId: 'q' + qi });
-        if (isCorrect) {
-          s.correctCount++;
-          session.incrementProgress();
-        }
-        session.showFeedback(isCorrect, correctAnswer);
-        s._awaitingContinue = true;
-      };
-
-      s.onContinue = function() {
-        if (!s._awaitingContinue) return;
-        s._awaitingContinue = false;
-        s.questionIndex++;
-        if (s.questionIndex >= exercises.length) {
-          finishQuiz();
-          return;
-        }
-        renderQuestion(s.questionIndex);
-      };
-
-      s.onSkip = function() {
-        s.questionIndex++;
-        if (s.questionIndex >= exercises.length) {
-          finishQuiz();
-          return;
-        }
-        renderQuestion(s.questionIndex);
-      };
-
-      s.onRetry = function() {
-        if (s.hearts) s.hearts.resetLives(5);
-        s.correctCount = 0;
-        s.questionIndex = 0;
-        s.sessionCorrect = 0;
-        session.updateHeader();
-        renderQuestion(0);
-        session.setActionBtn('check', false);
-      };
-
-      renderQuestion(0);
-      return true;
+      return session.startQuizSession(self, exercises, {
+        categoryId: catMeta.id,
+        levelId: levelId,
+        lessonId: lessonId,
+        pointIndex: pointIndex,
+        instruction: instruction
+      });
     },
 
     _runVocabPassiveSession: function(container, contentHtml, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabel, onContinue) {

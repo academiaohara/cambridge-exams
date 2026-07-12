@@ -10,6 +10,8 @@
   var heartsMod = window.SunePlayHearts;
   var renderer = window.SunePlayScreenRenderer;
   var practiceUI = window.SunePlayPracticeUI;
+  var screenUtils = window.SunePlayPracticeScreenUtils;
+  var runnerMod = window.SunePlayPracticeSessionRunner;
 
   var lessonState = null;
 
@@ -21,6 +23,9 @@
   }
 
   function resolveInstruction(text) {
+    if (screenUtils && screenUtils.resolveInstruction) {
+      return screenUtils.resolveInstruction(text);
+    }
     if (typeof InstructionI18n !== 'undefined') {
       return InstructionI18n.resolveSync(text);
     }
@@ -211,6 +216,7 @@
     lessonState.awaitingContinue = !!saved.awaitingContinue;
     lessonState._lastFeedbackResult = saved._lastFeedbackResult || null;
     lessonState._lastResultCorrect = saved._lastResultCorrect;
+    lessonState.runner = saved.runner || createLessonRunner();
     renderPhase();
     if (saved.awaitingContinue && saved._lastFeedbackResult) {
       lessonState.awaitingContinue = saved.awaitingContinue;
@@ -223,18 +229,8 @@
   }
 
   function restoreSessionFeedback() {
-    var mount = lessonState.mount;
-    if (!mount) return;
-    var feedbackMount = mount.querySelector('#sp-feedback-mount');
-    var result = lessonState._lastFeedbackResult;
-    if (!feedbackMount || !result) return;
-    var tone = lessonState.unitData.feedbackTone;
-    feedbackMount.innerHTML = renderer.FeedbackSheet(result, tone);
-    applyGapResultStyles(result.correct);
-    setScreenInputsLocked(true);
-    setActionBtn('continue', true);
-    var screenRoot = mount.querySelector('.sp-screen');
-    if (screenRoot) screenRoot.classList.add('sp-screen--locked');
+    if (!lessonState || !lessonState.runner) return;
+    lessonState.runner.restoreFeedback(lessonState._lastFeedbackResult);
   }
 
   function closeTheory() {
@@ -476,7 +472,117 @@
     });
   }
 
+  function getScreenInstruction(screen) {
+    return screenUtils ? screenUtils.getScreenInstruction(screen) : '';
+  }
+
+  function getScreenContext(screen) {
+    return screenUtils ? screenUtils.getScreenContext(screen) : '';
+  }
+
+  function getScreenCorrectAnswer(screen) {
+    return screenUtils ? screenUtils.getScreenCorrectAnswer(screen) : '';
+  }
+
   // ─── Session ─────────────────────────────────────────────────────────
+
+  function createLessonRunner() {
+    if (!runnerMod) return null;
+    return runnerMod.create({
+      getMount: function() { return lessonState.mount; },
+      state: lessonState,
+      globalRules: (lessonState.unitData.practiceConfig && lessonState.unitData.practiceConfig.globalRules) || {},
+      feedbackTone: lessonState.unitData.feedbackTone,
+      getScreenInstruction: getScreenInstruction,
+      getScreenContext: getScreenContext,
+      getScreenCorrectAnswer: getScreenCorrectAnswer,
+      onQueueEmpty: finishSession,
+      onGameOver: function() {
+        lessonState.phase = 'failed';
+        renderPhase();
+      },
+      onActionClick: function(ctx) {
+        var screenRoot = ctx.screenRoot;
+        var screen = ctx.screen;
+        if (screen && screen.formatType === 'passage_error_hunt_counter' && screenRoot) {
+          if (!ctx.awaitingContinue) {
+            handleHuntCounterCheck(screenRoot, screen);
+            return true;
+          }
+        }
+        if (screen && screen.formatType === 'passage_gap_fill' &&
+            screen.payload && screen.payload.sequentialGaps && screenRoot) {
+          if (!ctx.awaitingContinue) {
+            handlePassageGapSequentialCheck(screenRoot, screen);
+            return true;
+          }
+        }
+        if (screen && screen.formatType === 'word_bank_gap_fill' &&
+            screen.payload && screen.payload.sequentialSentences && screenRoot) {
+          if (!ctx.awaitingContinue) {
+            handleWordBankSequentialCheck(screenRoot, screen);
+            return true;
+          }
+        }
+        if (screen && screen.formatType === 'guided_error_choice' && screenRoot && !ctx.awaitingContinue) {
+          handleGuidedErrorCheck(screenRoot, screen);
+          return true;
+        }
+        if (screen && screen.formatType === 'column_matching' &&
+            screen.payload && screen.payload.sequentialMode !== false && screenRoot) {
+          if (!ctx.awaitingContinue) {
+            handleColumnMatchSequentialCheck(screenRoot, screen);
+            return true;
+          }
+        }
+        return false;
+      },
+      checkHandler: function(ctx) {
+        if (ctx.screen.formatType === 'stative_sorting') {
+          handleStativeSortingCheck(ctx.screenRoot, ctx.screen);
+          return { handled: true };
+        }
+        return { handled: false };
+      },
+      continueHandler: function(ctx) {
+        return lessonContinueHandler(ctx);
+      },
+      onScreenReady: function(screenRoot, screen) {
+        if (screen.formatType === 'column_matching') {
+          updateColumnMatchExplainBtn(screenRoot, screen);
+        } else if (lessonState.runner) {
+          lessonState.runner.setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+        }
+      },
+      onScreenRendered: function(screenRoot) {
+        screenRoot.addEventListener('sp-hunt-wrong-tap', handleHuntWrongTap);
+      },
+      onBindSessionEvents: function(mount) {
+        mount.querySelector('[data-action="exit-session"]') && mount.querySelector('[data-action="exit-session"]').addEventListener('click', requestSessionExit);
+        var theoryBtn = mount.querySelector('[data-action="review-theory"]');
+        if (theoryBtn) {
+          theoryBtn.addEventListener('click', function() {
+            lessonState._returnPhase = 'session';
+            lessonState._savedSession = {
+              queue: lessonState.queue,
+              hearts: lessonState.hearts,
+              sessionCorrect: lessonState.sessionCorrect,
+              sessionTotal: lessonState.sessionTotal,
+              activeNode: lessonState.activeNode,
+              currentScreen: lessonState.currentScreen,
+              awaitingContinue: lessonState.awaitingContinue,
+              _lastFeedbackResult: lessonState._lastFeedbackResult,
+              _lastResultCorrect: lessonState._lastResultCorrect,
+              runner: lessonState.runner
+            };
+            lessonState.theoryCardIdx = 0;
+            lessonState.phase = 'theory';
+            renderPhase();
+          });
+        }
+      }
+    });
+  }
 
   function startPracticeSession(nodeId, opts) {
     opts = opts || {};
@@ -523,69 +629,174 @@
     lessonState.sessionLivesLost = 0;
     lessonState.currentScreen = null;
     lessonState.awaitingContinue = false;
+    lessonState.runner = createLessonRunner();
     lessonState.phase = 'session';
     renderPhase();
     syncLessonUrl(true);
   }
 
   function setActionBtn(mode, enabled) {
-    var actionBtn = lessonState.mount.querySelector('#sp-action-btn');
-    var skipBtn = lessonState.mount.querySelector('#sp-skip-btn');
-    var explainBtn = lessonState.mount.querySelector('#sp-explain-btn');
-    var footer = lessonState.mount.querySelector('#sp-practice-footer');
-    if (!actionBtn) return;
-    actionBtn.dataset.mode = mode;
-    actionBtn.disabled = !enabled;
-    actionBtn.hidden = false;
-    var icon = actionBtn.querySelector('.material-symbols-outlined');
-    var labels = { check: 'Check', continue: 'Continue' };
-    actionBtn.setAttribute('aria-label', labels[mode] || 'Action');
-    if (icon) {
-      icon.textContent = mode === 'check' ? 'check' : 'arrow_forward';
-    }
-    actionBtn.classList.toggle('sp-btn--continue-mode', mode === 'continue');
-    actionBtn.classList.toggle('sp-btn--correct', mode === 'continue' && lessonState._lastResultCorrect);
-    actionBtn.classList.toggle('sp-btn--incorrect', mode === 'continue' && lessonState._lastResultCorrect === false);
-    actionBtn.classList.remove('sp-btn--retry-mode');
-
-    if (skipBtn) {
-      skipBtn.hidden = mode !== 'check';
-      skipBtn.disabled = lessonState.hearts && lessonState.hearts.isGameOver;
-    }
-    if (explainBtn) {
-      var hasFeedbackExplanation = lessonState._lastFeedbackResult && lessonState._lastFeedbackResult.explanation;
-      var hasColumnMatchExplanation = !!lessonState._cmExplainContext;
-      explainBtn.hidden = (mode === 'check' && !hasColumnMatchExplanation) ||
-        (mode === 'continue' && !hasFeedbackExplanation);
-    }
-    if (footer) {
-      footer.classList.toggle(
-        'sp-practice-footer--explain-available',
-        mode === 'check' && !!lessonState._cmExplainContext
-      );
-    }
-    var practiceMain = lessonState.mount.querySelector('.sp-practice-main');
-    var isFeedback = mode === 'continue';
-    var isCorrect = lessonState._lastResultCorrect === true;
-    var isIncorrect = lessonState._lastResultCorrect === false;
-    if (footer) {
-      footer.classList.toggle('sp-practice-footer--feedback', isFeedback);
-      footer.classList.toggle('sp-practice-footer--correct', mode === 'continue' && isCorrect);
-      footer.classList.toggle('sp-practice-footer--incorrect', isFeedback && isIncorrect);
-      footer.classList.remove('sp-practice-footer--retry');
-    }
-    if (practiceMain) {
-      practiceMain.classList.toggle('sp-practice-main--correct', mode === 'continue' && isCorrect);
-      practiceMain.classList.toggle('sp-practice-main--incorrect', isFeedback && isIncorrect);
-    }
+    if (lessonState.runner) lessonState.runner.setActionBtn(mode, enabled);
   }
 
   function setScreenInputsLocked(locked) {
+    if (lessonState.runner) lessonState.runner.setScreenInputsLocked(locked);
+  }
+
+  function clearResultStyles() {
+    if (lessonState.runner) lessonState.runner.clearResultStyles();
+  }
+
+  function renderCurrentScreen() {
+    if (lessonState.runner) lessonState.runner.renderCurrentScreen();
+  }
+
+  function updateSessionHeader() {
+    if (lessonState.runner) lessonState.runner.updateSessionHeader();
+  }
+
+  function bindSessionEvents() {
+    if (lessonState.runner) lessonState.runner.bindSessionEvents();
+  }
+
+  function applyLifeLoss(amount, screen) {
+    if (lessonState.runner) return lessonState.runner.applyLifeLoss(amount, screen);
+    return 0;
+  }
+
+  function showFeedback(result) {
+    if (lessonState.runner) lessonState.runner.showFeedback(result);
+  }
+
+  function handleCheck() {
+    if (lessonState.runner) lessonState.runner.handleCheck();
+  }
+
+  function handleContinue() {
+    if (lessonState.runner) lessonState.runner.handleContinue();
+  }
+
+  function handleActionClick() {
+    if (lessonState.runner) lessonState.runner.handleActionClick();
+  }
+
+  function handleSkip() {
+    if (lessonState.runner) lessonState.runner.handleSkip();
+  }
+
+  function handleExplainClick() {
+    if (lessonState.runner) lessonState.runner.handleExplainClick();
+  }
+
+  function lessonContinueHandler(ctx) {
     var mount = lessonState.mount;
-    if (!mount) return;
-    mount.querySelectorAll('.sp-screen input, .sp-screen textarea').forEach(function(el) {
-      el.readOnly = locked;
-    });
+    if (lessonState.hearts.isGameOver) return true;
+
+    var screen = lessonState.currentScreen;
+    var screenRoot = mount.querySelector('.sp-screen');
+    var feedbackMount = mount.querySelector('#sp-feedback-mount');
+    var footer = mount.querySelector('#sp-practice-footer');
+    var lastResult = lessonState._lastHuntResult;
+
+    lessonState.awaitingContinue = false;
+    lessonState._lastFeedbackResult = null;
+    lessonState._lastResultCorrect = null;
+    lessonState._lastHuntResult = null;
+    if (feedbackMount) feedbackMount.innerHTML = '';
+    clearResultStyles();
+    if (footer) {
+      footer.classList.remove(
+        'sp-practice-footer--feedback',
+        'sp-practice-footer--correct',
+        'sp-practice-footer--incorrect',
+        'sp-practice-footer--retry',
+        'sp-practice-footer--explain-available'
+      );
+    }
+
+    if (lastResult && lastResult._switchToFallback) {
+      renderCurrentScreen();
+      return true;
+    }
+
+    if (screen && screen.formatType === 'passage_gap_fill' &&
+        screen.payload && screen.payload.sequentialGaps && screenRoot && lastResult &&
+        lastResult._passageGapResult) {
+      if (!(lastResult.correct && lastResult.allDone)) {
+        renderer.advancePassageGapAfterFeedback(screenRoot, screen);
+        screenRoot.classList.remove('sp-screen--locked');
+        setScreenInputsLocked(false);
+        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+        updateSessionHeader();
+        return true;
+      }
+    }
+
+    if (screen && screen.formatType === 'word_bank_gap_fill' &&
+        screen.payload && screen.payload.sequentialSentences && screenRoot && lastResult &&
+        lastResult._wordBankSeqResult) {
+      if (lastResult.correct && !lastResult.allDone) {
+        renderer.advanceWordBankSeqAfterFeedback(screenRoot, screen);
+        screenRoot.classList.remove('sp-screen--locked');
+        setScreenInputsLocked(false);
+        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+        updateSessionHeader();
+        return true;
+      }
+      if (!lastResult.correct) {
+        renderer.retryWordBankSeqAfterFeedback(screenRoot, screen);
+        screenRoot.classList.remove('sp-screen--locked');
+        setScreenInputsLocked(false);
+        setActionBtn('check', false);
+        updateSessionHeader();
+        return true;
+      }
+    }
+
+    if (screen && screen.formatType === 'passage_error_hunt_counter' && screenRoot && lastResult) {
+      if (lastResult.correct && lastResult._huntMarkResult) {
+        renderer.commitHuntMarkAfterFeedback(screenRoot, screen);
+        lessonState.sessionCorrect++;
+        var markInstructionEl = lessonState.mount.querySelector('.sp-session-instruction');
+        if (markInstructionEl) markInstructionEl.textContent = getScreenInstruction(screen);
+      } else if (lastResult.correct && lastResult._huntFixResult) {
+        renderer.commitHuntFixAfterFeedback(screenRoot, screen);
+        if (lastResult.allDone) {
+          renderCurrentScreen();
+          return true;
+        }
+        var fixInstructionEl = lessonState.mount.querySelector('.sp-session-instruction');
+        if (fixInstructionEl) fixInstructionEl.textContent = getScreenInstruction(screen);
+      } else {
+        renderer.resumeHuntCounterAfterFeedback(screenRoot, screen);
+      }
+      screenRoot.classList.remove('sp-screen--locked');
+      setScreenInputsLocked(false);
+      setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+      updateSessionHeader();
+      return true;
+    }
+
+    if (lastResult && lastResult.allDone) {
+      renderCurrentScreen();
+      return true;
+    }
+
+    if (screen && screen.formatType === 'guided_error_choice' && screenRoot && lastResult && lastResult.correct && lastResult.partial) {
+      screen._guidedIdx = (screen._guidedIdx || 0) + 1;
+      renderCurrentScreen();
+      return true;
+    }
+
+    if (screen && screen.formatType === 'guided_error_choice' && screenRoot) {
+      screenRoot.classList.remove('sp-screen--locked');
+      setScreenInputsLocked(false);
+      setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
+      return true;
+    }
+
+    renderCurrentScreen();
+    return true;
   }
 
   function applyGapResultStyles(correct) {
@@ -604,366 +815,12 @@
     });
   }
 
-  function clearResultStyles() {
-    var mount = lessonState.mount;
-    if (!mount) return;
-    var practiceMain = mount.querySelector('.sp-practice-main');
-    if (practiceMain) {
-      practiceMain.classList.remove('sp-practice-main--correct', 'sp-practice-main--incorrect');
-    }
-    mount.querySelectorAll('.sp-gap-slot, .sp-inline-gap-group').forEach(function(slot) {
-      slot.classList.remove('sp-gap-slot--correct', 'sp-gap-slot--incorrect');
-    });
-    mount.querySelectorAll('.sp-passage-gap-wrap').forEach(function(slot) {
-      slot.classList.remove('sp-passage-gap--correct', 'sp-passage-gap--incorrect');
-    });
-    mount.querySelectorAll('.sp-option-btn').forEach(function(btn) {
-      btn.classList.remove('sp-option-btn--correct', 'sp-option-btn--incorrect');
-    });
-  }
-
-  function renderCurrentScreen() {
-    if (window.AudioUtils) AudioUtils.stopPhrasePlayback();
-    var mount = lessonState.mount;
-    var screenMount = mount.querySelector('#sp-screen-mount');
-    var feedbackMount = mount.querySelector('#sp-feedback-mount');
-    if (!screenMount) return;
-
-    feedbackMount.innerHTML = '';
-    lessonState.awaitingContinue = false;
-    lessonState._lastFeedbackResult = null;
-    lessonState._lastResultCorrect = null;
-    lessonState._cmExplainContext = null;
-    clearResultStyles();
-
-    var footer = mount.querySelector('#sp-practice-footer');
-    if (footer) {
-      footer.classList.remove(
-        'sp-practice-footer--feedback',
-        'sp-practice-footer--correct',
-        'sp-practice-footer--incorrect',
-        'sp-practice-footer--retry',
-        'sp-practice-footer--explain-available'
-      );
-    }
-
-    var screen = lessonState.queue.currentScreen;
-    if (!screen) {
-      finishSession();
-      return;
-    }
-
-    screen = lessonState.queue.applyFallbackIfNeeded(screen);
-    lessonState.currentScreen = screen;
-
-    screenMount.innerHTML = renderer.PracticeScreenRenderer(screen);
-    var screenRoot = screenMount.querySelector('.sp-screen');
-    var instructionText = resolveInstruction(getScreenInstruction(screen));
-    if (instructionText && screenRoot) {
-      var existingInstruction = screenRoot.querySelector('.sp-session-instruction');
-      if (existingInstruction) existingInstruction.remove();
-      var instructionEl = document.createElement('p');
-      instructionEl.className = 'sp-session-instruction';
-      instructionEl.setAttribute('data-instruction-source', getScreenInstruction(screen));
-      instructionEl.textContent = instructionText;
-      screenRoot.insertBefore(instructionEl, screenRoot.firstChild);
-    }
-    if (screenRoot) {
-      screenRoot._spScreen = screen;
-      renderer.bindScreen(screenRoot, screen, function() {
-        if (!lessonState.awaitingContinue) {
-          if (screen.formatType === 'column_matching') {
-            updateColumnMatchExplainBtn(screenRoot, screen);
-          } else {
-            setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
-          }
-        }
-      });
-      screenRoot.addEventListener('sp-hunt-wrong-tap', handleHuntWrongTap);
-    }
-    setScreenInputsLocked(false);
-    setActionBtn('check', false);
-    updateSessionHeader();
-  }
-
-  function updateSessionHeader() {
-    var mount = lessonState.mount;
-    if (!mount) return;
-    var header = mount.querySelector('.sp-practice-header');
-    if (!header) return;
-    var progressEl = header.querySelector('.sp-session-progress');
-    if (progressEl) {
-      progressEl.outerHTML = practiceUI.SessionProgressBar(lessonState.sessionCorrect, lessonState.sessionTotal);
-    }
-    var heartsEl = header.querySelector('.sp-hearts-bar');
-    if (heartsEl && lessonState.hearts) {
-      heartsEl.outerHTML = practiceUI.HeartsBar(lessonState.hearts.currentLives, lessonState.hearts.maxLives);
-    }
-  }
-
-  function bindSessionEvents() {
-    var mount = lessonState.mount;
-    var actionBtn = mount.querySelector('#sp-action-btn');
-    if (actionBtn) {
-      actionBtn.addEventListener('click', handleActionClick);
-    }
-    var skipBtn = mount.querySelector('#sp-skip-btn');
-    if (skipBtn) {
-      skipBtn.addEventListener('click', handleSkip);
-    }
-    var explainBtn = mount.querySelector('#sp-explain-btn');
-    if (explainBtn) {
-      explainBtn.addEventListener('click', handleExplainClick);
-    }
-    mount.querySelector('[data-action="exit-session"]') && mount.querySelector('[data-action="exit-session"]').addEventListener('click', requestSessionExit);
-    var theoryBtn = mount.querySelector('[data-action="review-theory"]');
-    if (theoryBtn) {
-      theoryBtn.addEventListener('click', function() {
-        lessonState._returnPhase = 'session';
-        lessonState._savedSession = {
-          queue: lessonState.queue,
-          hearts: lessonState.hearts,
-          sessionCorrect: lessonState.sessionCorrect,
-          sessionTotal: lessonState.sessionTotal,
-          activeNode: lessonState.activeNode,
-          currentScreen: lessonState.currentScreen,
-          awaitingContinue: lessonState.awaitingContinue,
-          _lastFeedbackResult: lessonState._lastFeedbackResult,
-          _lastResultCorrect: lessonState._lastResultCorrect
-        };
-        lessonState.theoryCardIdx = 0;
-        lessonState.phase = 'theory';
-        renderPhase();
-      });
-    }
-  }
-
-  function getScreenInstruction(screen) {
-    if (!screen) return '';
-    var p = screen.payload || {};
-    switch (screen.formatType) {
-      case 'two_option_choice':
-        if (p.displayMode === 'same_meaning' ||
-            (window.SunePlayNormalize && window.SunePlayNormalize.isSameMeaningChoicePayload(p))) {
-          return p.instruction || 'Choose the option that means the same.';
-        }
-        return p.instruction || 'Choose the correct option to complete the sentence.';
-      case 'free_text_gap_fill':
-      case 'conjugation_gap_fill':
-      case 'word_bank_gap_fill':
-      case 'preselected_verb_gap_fill':
-        if (p.sequentialSentences) {
-          return p.instruction || 'Complete each sentence using the words in the box, one at a time.';
-        }
-        return p.instruction || (p.verbPrompt || p.preselectedVerb
-          ? 'Use the correct form of the highlighted word.'
-          : (p.wordBank && p.wordBank.length
-            ? 'Complete the sentence using a word from the box.'
-            : 'Complete the sentence with the correct word.'));
-      case 'full_sentence_write': {
-        var cues = (p.prompt && p.prompt.cues) || [];
-        if ((!cues.length || cues.length <= 1) && p.displayPrompt && /\s\/\s/.test(p.displayPrompt)) {
-          cues = String(p.displayPrompt).split(/\s*\/\s*/).map(function(s) { return s.trim(); }).filter(Boolean);
-        }
-        if (cues.length > 1) {
-          return p.instruction || 'Complete the sentence with the correct verb form.';
-        }
-        return p.instruction || 'Write the corrected sentence.';
-      }
-      case 'word_order_tiles':
-        return p.instruction || 'Build the sentence. Some words are extra.';
-      case 'error_correction':
-        return p.instruction || 'Correct the mistake in the sentence.';
-      case 'verb_bank_two_step':
-        return p.instruction || 'Write the verb in the correct form.';
-      case 'passage_error_hunt_single':
-        return p.instruction || 'Find one wrong verb phrase.';
-      case 'passage_error_hunt_counter': {
-        var huntPhase = screen._huntState && screen._huntState.phase;
-        if (huntPhase === 'correct') return 'Write the correction for the error you marked.';
-        var fixedCount = screen._huntState && screen._huntState.fixed
-          ? Object.keys(screen._huntState.fixed).length
-          : 0;
-        if (fixedCount > 0) return 'Find and mark the next error in the passage.';
-        return p.instruction || p.studentInstruction || 'Find and mark an error in the passage.';
-      }
-      case 'passage_gap_fill':
-        if (p.sequentialGaps) {
-          if (p.requireWordFormation) {
-            return p.instruction || 'Use the word in capitals to form a new word for each gap, one gap at a time.';
-          }
-          return p.instruction || 'Select a verb from the box, write its correct form, and confirm each gap one by one.';
-        }
-        return p.instruction || 'Complete the passage using the verbs in the box.';
-      case 'guided_error_choice':
-        return p.instruction || 'Choose the correct form for each error.';
-      case 'stative_sorting':
-        return p.instruction || p.prompt || 'Sort the verbs into groups.';
-      case 'meaning_contrast':
-        return p.instruction || p.prompt || 'Choose the option that best fits the meaning.';
-      case 'mc_4_option':
-        if (p.displayMode === 'passage') {
-          return p.instruction || 'Tap each numbered gap and choose A, B, C or D.';
-        }
-        return p.instruction || 'Choose the correct answer: A, B, C or D.';
-      case 'find_extra_word':
-        return p.instruction || 'If the line is correct, tap OK. If there is an extra word, tap it.';
-      case 'keyword_transformation':
-        return p.instruction || 'Complete the second sentence using the keyword. Write between two and five words.';
-      case 'column_matching':
-        return p.instruction || 'Tap a numbered beginning, then tap the matching ending letter.';
-      case 'crossword_clues':
-        return p.instruction || 'Complete the word using the definition.';
-      case 'synced_gap_fill':
-        return p.instruction || 'Write one word that fits all three sentences.';
-      case 'comma_placement':
-        if (p.interactionMode === 'rewrite_sentence') {
-          return p.instruction || 'Add commas where needed. If no commas are needed, write "No commas".';
-        }
-        return p.instruction || 'Tap the comma slots where commas are needed.';
-      case 'word_bank_tick':
-        return p.instruction || 'Select the correct words by tapping them.';
-      default:
-        return p.instruction || '';
-    }
-  }
-
-  function getScreenContext(screen) {
-    if (!screen) return '';
-    var p = screen.payload || {};
-    switch (screen.formatType) {
-      case 'two_option_choice':
-        if (p.displayMode === 'same_meaning' ||
-            (window.SunePlayNormalize && window.SunePlayNormalize.isSameMeaningChoicePayload(p))) {
-          return String(p.sentenceBefore || '').trim();
-        }
-        return ((p.sentenceBefore || '') + ' ___ ' + (p.sentenceAfter || '')).replace(/\s+/g, ' ').trim();
-      case 'meaning_contrast':
-        return String(p.sentence || p.sentenceBefore || '').trim();
-      case 'free_text_gap_fill':
-      case 'conjugation_gap_fill':
-      case 'preselected_verb_gap_fill':
-        return p.sentence || p.instruction || '';
-      case 'full_sentence_write':
-        return p.displayPrompt || p.prompt || '';
-      case 'error_correction':
-        return p.sentence || '';
-      case 'word_order_tiles':
-        return p.prompt || p.instruction || '';
-      case 'verb_bank_two_step':
-        return p.sentence || '';
-      case 'passage_error_hunt_single':
-        return 'Find the error in the passage.';
-      case 'passage_error_hunt_counter':
-        return p.passage || 'Find the errors in the passage.';
-      case 'passage_gap_fill':
-        return p.passage || p.instruction || '';
-      case 'stative_sorting':
-        return p.instruction || 'Sort the verbs into groups.';
-      case 'mc_4_option':
-        if (p.displayMode === 'passage') return p.passage || p.instruction || '';
-        return ((p.sentenceBefore || '') + ' ___ ' + (p.sentenceAfter || '')).replace(/\s+/g, ' ').trim();
-      case 'find_extra_word':
-        return p.sentence || p.instruction || '';
-      case 'keyword_transformation':
-        return p.promptSentence || p.instruction || '';
-      case 'column_matching':
-        return p.instruction || 'Match beginnings with endings.';
-      case 'crossword_clues':
-        if (typeof LearningCrossword !== 'undefined' && LearningCrossword.formatClueDisplay) {
-          return LearningCrossword.formatClueDisplay(p.clue || '').trim();
-        }
-        return (p.clue || '').replace(/\s*\(\d+\)\s*$/, '').trim();
-      case 'synced_gap_fill':
-        return (p.sentences && p.sentences[0]) || p.instruction || '';
-      case 'comma_placement':
-        return p.sentence || p.instruction || '';
-      case 'word_bank_tick':
-        return p.instruction || 'Select the correct words.';
-      default:
-        return p.instruction || p.sentence || '';
-    }
-  }
-
-  function getScreenCorrectAnswer(screen) {
-    var p = (screen && screen.payload) || {};
-    if (screen && screen.formatType === 'mc_4_option') {
-      if (window.SunePlayNormalize && window.SunePlayNormalize.getMcCorrectAnswerDisplay) {
-        return window.SunePlayNormalize.getMcCorrectAnswerDisplay(p);
-      }
-      if (p.answerText) return p.answerText;
-    }
-    if (screen && screen.formatType === 'comma_placement') {
-      if (p.interactionMode === 'rewrite_sentence') {
-        return p.reconstructedSentence || ((p.acceptedAnswers && p.acceptedAnswers[0]) || '');
-      }
-      if (p.noCommaNeeded) return 'No commas';
-      return (p.commaAfterTokenIndexes || []).join(', ');
-    }
-    if (screen && screen.formatType === 'word_bank_tick') {
-      return (p.answerWords || []).join(', ');
-    }
-    if (screen && screen.formatType === 'column_matching' && p.pairs && p.pairs.length) {
-      return p.pairs.map(function(pair) {
-        return pair.pairId + '→' + pair.correctLetter;
-      }).join(' / ');
-    }
-    if (p.answer) return p.answer;
-    if (p.acceptedAnswers && p.acceptedAnswers.length) return p.acceptedAnswers[0];
-    return '';
-  }
-
-  function applyLifeLoss(amount, screen) {
-    if (!lessonState || !lessonState.hearts || amount <= 0) return 0;
-    var lostAmount = lessonState.hearts.loseLife(amount, {
-      screenId: screen && screen.screenId,
-      itemId: screen && screen.itemId,
-      maxLifeLossPerScreen: screen && screen.maxLifeLossPerScreen
-    });
-    if (lostAmount) lessonState.sessionLivesLost += lostAmount;
-    return lostAmount;
-  }
-
   function handleHuntWrongTap() {
     if (!lessonState || lessonState.awaitingContinue || !lessonState.hearts) return;
     if (lessonState.hearts.isGameOver) return;
     var screen = lessonState.currentScreen;
     var lostAmount = applyLifeLoss(1, screen);
     if (lostAmount && window.AudioUtils) AudioUtils.playFailureSound();
-    updateSessionHeader();
-  }
-
-  function handleSkip() {
-    if (!lessonState || lessonState.awaitingContinue) return;
-    if (lessonState.hearts.isGameOver) return;
-    var screen = lessonState.currentScreen;
-    var screenRoot = lessonState.mount.querySelector('.sp-screen');
-    if (!screen || !screenRoot) return;
-
-    var p = screen.payload || {};
-    var result = {
-      correct: false,
-      explanation: p.explanation || '',
-      correctAnswer: getScreenCorrectAnswer(screen),
-      userAnswer: '',
-      lifeLoss: 1
-    };
-
-    screen._attemptsUsed = (screen.attemptsPerScreen || 1);
-    screenRoot.classList.add('sp-screen--locked');
-    setScreenInputsLocked(true);
-
-    applyLifeLoss(1, screen);
-
-    lessonState.queue.incrementFailure(screen);
-    var globalRules = (lessonState.unitData.practiceConfig && lessonState.unitData.practiceConfig.globalRules) || {};
-    if (globalRules.failedItemsReturnToQueue !== false) {
-      lessonState.queue.returnFailedItemToQueue(screen);
-    } else {
-      lessonState.queue.removeCompletedItem(screen);
-    }
-
-    showFeedback(result, false);
     updateSessionHeader();
   }
 
@@ -976,95 +833,6 @@
     if (!lessonState.awaitingContinue) {
       setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
     }
-  }
-
-  function handleExplainClick() {
-    var cmContext = lessonState._cmExplainContext;
-    if (cmContext && typeof LessonExplanation !== 'undefined') {
-      var sessionEl = lessonState.mount && lessonState.mount.querySelector('.sp-practice-session');
-      var explainOpts = Object.assign({ title: 'Explanation', continueLabel: 'Close' }, cmContext);
-      if (sessionEl) {
-        LessonExplanation.open(Object.assign({ inlineMount: sessionEl }, explainOpts));
-        return;
-      }
-      if (lessonState.mount) {
-        LessonExplanation.open(Object.assign({ inlineMount: lessonState.mount }, explainOpts));
-        return;
-      }
-      LessonExplanation.open(explainOpts);
-      return;
-    }
-
-    var result = lessonState._lastFeedbackResult;
-    var screen = lessonState.currentScreen;
-    if (!result || !result.explanation || typeof LessonExplanation === 'undefined') return;
-    var explainOpts = {
-      title: 'Explanation',
-      context: getScreenContext(screen),
-      explanation: result.explanation,
-      correctAnswer: result.correctAnswer || getScreenCorrectAnswer(screen),
-      continueLabel: 'Continue'
-    };
-    var sessionEl = lessonState.mount && lessonState.mount.querySelector('.sp-practice-session');
-    if (sessionEl) {
-      LessonExplanation.open(Object.assign({ inlineMount: sessionEl }, explainOpts));
-      return;
-    }
-    if (lessonState.mount) {
-      LessonExplanation.open(Object.assign({ inlineMount: lessonState.mount }, explainOpts));
-      return;
-    }
-    LessonExplanation.open(explainOpts);
-  }
-
-  function handleActionClick() {
-    var actionBtn = lessonState.mount.querySelector('#sp-action-btn');
-    if (!actionBtn || actionBtn.disabled) return;
-
-    var screenRoot = lessonState.mount.querySelector('.sp-screen');
-    var screen = lessonState.currentScreen;
-
-    if (screen && screen.formatType === 'passage_error_hunt_counter' && screenRoot) {
-      if (!lessonState.awaitingContinue) {
-        handleHuntCounterCheck(screenRoot, screen);
-        return;
-      }
-    }
-
-    if (screen && screen.formatType === 'passage_gap_fill' &&
-        screen.payload && screen.payload.sequentialGaps && screenRoot) {
-      if (!lessonState.awaitingContinue) {
-        handlePassageGapSequentialCheck(screenRoot, screen);
-        return;
-      }
-    }
-
-    if (screen && screen.formatType === 'word_bank_gap_fill' &&
-        screen.payload && screen.payload.sequentialSentences && screenRoot) {
-      if (!lessonState.awaitingContinue) {
-        handleWordBankSequentialCheck(screenRoot, screen);
-        return;
-      }
-    }
-
-    if (screen && screen.formatType === 'guided_error_choice' && screenRoot && !lessonState.awaitingContinue) {
-      handleGuidedErrorCheck(screenRoot, screen);
-      return;
-    }
-
-    if (screen && screen.formatType === 'column_matching' &&
-        screen.payload && screen.payload.sequentialMode !== false && screenRoot) {
-      if (!lessonState.awaitingContinue) {
-        handleColumnMatchSequentialCheck(screenRoot, screen);
-        return;
-      }
-    }
-
-    if (lessonState.awaitingContinue) {
-      handleContinue();
-      return;
-    }
-    handleCheck();
   }
 
   function handleColumnMatchSequentialCheck(screenRoot, screen) {
@@ -1234,165 +1002,6 @@
     updateSessionHeader();
   }
 
-  function handleContinue() {
-    var mount = lessonState.mount;
-    if (lessonState.hearts.isGameOver) return;
-
-    var screen = lessonState.currentScreen;
-    var screenRoot = mount.querySelector('.sp-screen');
-    var feedbackMount = mount.querySelector('#sp-feedback-mount');
-    var footer = mount.querySelector('#sp-practice-footer');
-    var lastResult = lessonState._lastHuntResult;
-
-    lessonState.awaitingContinue = false;
-    lessonState._lastFeedbackResult = null;
-    lessonState._lastResultCorrect = null;
-    lessonState._lastHuntResult = null;
-    if (feedbackMount) feedbackMount.innerHTML = '';
-    clearResultStyles();
-    if (footer) {
-      footer.classList.remove(
-        'sp-practice-footer--feedback',
-        'sp-practice-footer--correct',
-        'sp-practice-footer--incorrect',
-        'sp-practice-footer--retry',
-        'sp-practice-footer--explain-available'
-      );
-    }
-
-    if (lastResult && lastResult._switchToFallback) {
-      renderCurrentScreen();
-      return;
-    }
-
-    if (screen && screen.formatType === 'passage_gap_fill' &&
-        screen.payload && screen.payload.sequentialGaps && screenRoot && lastResult &&
-        lastResult._passageGapResult) {
-      if (!(lastResult.correct && lastResult.allDone)) {
-        renderer.advancePassageGapAfterFeedback(screenRoot, screen);
-        screenRoot.classList.remove('sp-screen--locked');
-        setScreenInputsLocked(false);
-        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
-        updateSessionHeader();
-        return;
-      }
-    }
-
-    if (screen && screen.formatType === 'word_bank_gap_fill' &&
-        screen.payload && screen.payload.sequentialSentences && screenRoot && lastResult &&
-        lastResult._wordBankSeqResult) {
-      if (lastResult.correct && !lastResult.allDone) {
-        renderer.advanceWordBankSeqAfterFeedback(screenRoot, screen);
-        screenRoot.classList.remove('sp-screen--locked');
-        setScreenInputsLocked(false);
-        setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
-        updateSessionHeader();
-        return;
-      }
-      if (!lastResult.correct) {
-        renderer.retryWordBankSeqAfterFeedback(screenRoot, screen);
-        screenRoot.classList.remove('sp-screen--locked');
-        setScreenInputsLocked(false);
-        setActionBtn('check', false);
-        updateSessionHeader();
-        return;
-      }
-    }
-
-    if (screen && screen.formatType === 'passage_error_hunt_counter' && screenRoot && lastResult) {
-      if (lastResult.correct && lastResult._huntMarkResult) {
-        renderer.commitHuntMarkAfterFeedback(screenRoot, screen);
-        lessonState.sessionCorrect++;
-        var markInstructionEl = lessonState.mount.querySelector('.sp-session-instruction');
-        if (markInstructionEl) markInstructionEl.textContent = getScreenInstruction(screen);
-      } else if (lastResult.correct && lastResult._huntFixResult) {
-        renderer.commitHuntFixAfterFeedback(screenRoot, screen);
-        if (lastResult.allDone) {
-          renderCurrentScreen();
-          return;
-        }
-        var fixInstructionEl = lessonState.mount.querySelector('.sp-session-instruction');
-        if (fixInstructionEl) fixInstructionEl.textContent = getScreenInstruction(screen);
-      } else {
-        renderer.resumeHuntCounterAfterFeedback(screenRoot, screen);
-      }
-      screenRoot.classList.remove('sp-screen--locked');
-      setScreenInputsLocked(false);
-      setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
-      updateSessionHeader();
-      return;
-    }
-
-    if (lastResult && lastResult.allDone) {
-      renderCurrentScreen();
-      return;
-    }
-
-    if (screen && screen.formatType === 'guided_error_choice' && screenRoot && lastResult && lastResult.correct && lastResult.partial) {
-      screen._guidedIdx = (screen._guidedIdx || 0) + 1;
-      renderCurrentScreen();
-      return;
-    }
-
-    if (screen && screen.formatType === 'guided_error_choice' && screenRoot) {
-      screenRoot.classList.remove('sp-screen--locked');
-      setScreenInputsLocked(false);
-      setActionBtn('check', renderer.isScreenReady(screenRoot, screen));
-      return;
-    }
-
-    renderCurrentScreen();
-  }
-
-  function handleCheck() {
-    var mount = lessonState.mount;
-    var screenRoot = mount.querySelector('.sp-screen');
-    var screen = lessonState.currentScreen;
-    if (!screenRoot || !screen) return;
-
-    if (screen.formatType === 'stative_sorting') {
-      handleStativeSortingCheck(screenRoot, screen);
-      return;
-    }
-
-    var result = renderer.checkScreen(screenRoot, screen);
-    screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
-
-    if (result.partial && result._advanceStep === 'type_form') {
-      screen.payload.step = 'type_form';
-      screen.payload.selectedVerb = result._selectedVerb;
-      renderCurrentScreen();
-      return;
-    }
-
-    if (!result.correct && result.lifeLoss > 0) {
-      applyLifeLoss(result.lifeLoss, screen);
-    }
-
-    if (result.correct) {
-      screenRoot.classList.add('sp-screen--locked');
-      lessonState.queue.removeCompletedItem(screen);
-      lessonState.sessionCorrect++;
-      showFeedback(result, true);
-    } else {
-      screenRoot.classList.add('sp-screen--locked');
-      var failCount = lessonState.queue.incrementFailure(screen);
-      var globalRules = (lessonState.unitData.practiceConfig && lessonState.unitData.practiceConfig.globalRules) || {};
-      if (result.shouldRequeue || globalRules.failedItemsReturnToQueue !== false) {
-        lessonState.queue.returnFailedItemToQueue(screen);
-      } else {
-        lessonState.queue.removeCompletedItem(screen);
-      }
-      if (failCount >= (globalRules.maxRepeatedFailuresBeforeFallback || 2)) {
-        screen = lessonState.queue.applyFallbackIfNeeded(screen);
-        if (screen._isFallback) lessonState.queue.returnFailedItemToQueue(screen, 'front');
-      }
-      showFeedback(result, false);
-    }
-
-    updateSessionHeader();
-  }
-
   function handleStativeSortingCheck(screenRoot, screen) {
     renderer.processStativeSortingCheck(screenRoot, screen, function(result) {
       screen._attemptsUsed = (screen._attemptsUsed || 0) + 1;
@@ -1416,24 +1025,6 @@
 
       updateSessionHeader();
     });
-  }
-
-  function showFeedback(result, advanceOnContinue) {
-    if (window.AudioUtils) {
-      if (result.correct) AudioUtils.playSuccessSound();
-      else AudioUtils.playFailureSound();
-    }
-    var mount = lessonState.mount;
-    var feedbackMount = mount.querySelector('#sp-feedback-mount');
-    var tone = lessonState.unitData.feedbackTone;
-    feedbackMount.innerHTML = renderer.FeedbackSheet(result, tone);
-    lessonState.awaitingContinue = true;
-    lessonState._lastFeedbackResult = result;
-    lessonState._lastResultCorrect = result.correct;
-
-    applyGapResultStyles(result.correct);
-    setScreenInputsLocked(true);
-    setActionBtn('continue', true);
   }
 
   function finishSession() {
