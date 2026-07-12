@@ -1,0 +1,80 @@
+/* Vocabulary SunePlay shell — layout overrides (load after sune-play-lesson.css) */
+
+body:has(.fe-vocab-sp-mount) {
+  min-height: 100dvh;
+}
+
+body:has(.fe-vocab-sp-mount) #app,
+body:has(.fe-vocab-sp-mount) .app-container,
+body:has(.fe-vocab-sp-mount) #main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
+body:has(.fe-vocab-sp-mount) .dashboard-layout--lesson-focus {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: 100dvh;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+body:has(.fe-vocab-sp-mount) .dashboard-layout--lesson-focus > .dashboard-center.fe-vocab-lesson-focus {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: 100dvh;
+  overflow: hidden;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+body:has(.fe-vocab-sp-mount) .dashboard-center.fe-vocab-lesson-focus.fe-vocab-sp-center {
+  min-height: 0;
+  max-height: 100dvh;
+}
+
+body:has(.fe-vocab-sp-mount) #feCenterSection.fe-section--vocab-exercise {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+body:has(.fe-vocab-sp-mount) .fe-vocab-sp-lesson,
+body:has(.fe-vocab-sp-mount) .fe-vocab-sp-mount,
+body:has(.fe-vocab-sp-mount) .fe-section--vocab-exercise .sp-practice-session {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body:has(.fe-vocab-sp-mount) .fe-section--vocab-exercise .sp-practice-session {
+  min-height: 0;
+}
+
+body:has(.fe-vocab-sp-mount) .fe-section--vocab-exercise .sp-practice-main {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+
+@media (max-width: 768px) {
+  body:has(.fe-vocab-sp-mount) .dashboard-center.fe-vocab-lesson-focus.fe-vocab-sp-center {
+    min-height: 0;
+    max-height: 100dvh;
+  }
+}
