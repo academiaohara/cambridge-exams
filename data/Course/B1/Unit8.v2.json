@@ -305,6 +305,19 @@
           "studentAction": "tap_one_option",
           "evaluationTrigger": "check_button"
         }
+      },
+      {
+        "formatType": "keyword_transformation",
+        "displayName": "Sentence transformation",
+        "defaultLives": 5,
+        "maxLifeLossPerScreen": 1,
+        "attemptsPerScreen": 1,
+        "failureAction": "show_explanation_then_continue",
+        "interaction": {
+          "component": "keyword_gap_input",
+          "studentAction": "type_transformation",
+          "evaluationTrigger": "check_button"
+        }
       }
     ],
     "globalRules": {
@@ -327,7 +340,8 @@
         "error_correction",
         "free_text_gap_fill",
         "two_option_choice",
-        "mc_4_option"
+        "mc_4_option",
+        "keyword_transformation"
       ],
       "lives": 5,
       "passCondition": {
@@ -440,7 +454,7 @@
         },
         {
           "sourceExerciseId": "b1-u8-ex-h",
-          "formatType": "free_text_gap_fill",
+          "formatType": "keyword_transformation",
           "sourceItemIds": [
             "b1-u8-exh-1",
             "b1-u8-exh-2",
@@ -1296,76 +1310,100 @@
       {
         "id": "b1-u8-ex-h",
         "type": "exercise",
-        "exerciseType": "free_text_gap_fill",
-        "exerciseTypeName": "H: Key word transformation",
-        "title": "H: Key word transformation",
+        "exerciseType": "keyword_transformation",
+        "exerciseTypeName": "H: Sentence transformation",
+        "title": "H: Sentence transformation",
         "instructions": "Complete the second sentence so it has a similar meaning to the first. Use a maximum of four words.",
         "studentInstruction": "Complete the second sentence so it has a similar meaning to the first. Use a maximum of four words.",
         "legacyKey": "H",
-        "legacyPattern": "gap-fill",
+        "legacyPattern": "sentence-transformation",
         "interaction": {
-          "formatType": "free_text_gap_fill"
+          "formatType": "keyword_transformation"
         },
         "items": [
           {
             "id": "b1-u8-exh-1",
-            "formatType": "free_text_gap_fill",
-            "sentence": "The show starts at eight o'clock.\nThe show doesn't start ...... the morning.",
+            "formatType": "keyword_transformation",
+            "promptSentence": "The show starts at eight o'clock in the evening.",
+            "targetSentence": "The show doesn't start ...... the morning.",
             "answer": "in",
             "acceptedAnswers": [
               "in"
             ],
-            "explanation": ""
+            "minWords": 1,
+            "maxWords": 4,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word",
+            "explanation": "Use **in** with parts of the day (morning, afternoon, evening)."
           },
           {
             "id": "b1-u8-exh-2",
-            "formatType": "free_text_gap_fill",
-            "sentence": "My appointment is on Tuesday afternoon.\nMy appointment isn't ...... Monday morning.",
+            "formatType": "keyword_transformation",
+            "promptSentence": "My appointment is on Tuesday afternoon.",
+            "targetSentence": "I have an appointment ...... Tuesday afternoon.",
             "answer": "on",
             "acceptedAnswers": [
               "on"
             ],
-            "explanation": ""
+            "minWords": 1,
+            "maxWords": 4,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word",
+            "explanation": "Use **on** with days and dates."
           },
           {
             "id": "b1-u8-exh-3",
-            "formatType": "free_text_gap_fill",
-            "sentence": "She is currently at the dentist's.\nShe is at the dentist's ...... .",
+            "formatType": "keyword_transformation",
+            "promptSentence": "She is currently at the dentist's.",
+            "targetSentence": "She is at the dentist's ...... .",
             "answer": "at the moment",
             "acceptedAnswers": [
               "at the moment"
             ],
-            "explanation": ""
+            "minWords": 1,
+            "maxWords": 4,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word",
+            "explanation": "**Currently** and **at the moment** mean the same."
           },
           {
             "id": "b1-u8-exh-4",
-            "formatType": "free_text_gap_fill",
-            "sentence": "We landed in Athens at six o'clock.\nWe arrived ...... six o'clock.",
+            "formatType": "keyword_transformation",
+            "promptSentence": "We landed in Athens at six o'clock.",
+            "targetSentence": "We arrived ...... six o'clock.",
             "answer": "at",
             "acceptedAnswers": [
               "at"
             ],
-            "explanation": ""
+            "minWords": 1,
+            "maxWords": 4,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word",
+            "explanation": "Use **at** with clock times."
           },
           {
             "id": "b1-u8-exh-5",
-            "formatType": "free_text_gap_fill",
-            "sentence": "Let's meet outside the school entrance.\nLet's meet ...... the school.",
+            "formatType": "keyword_transformation",
+            "promptSentence": "Let's meet outside the school entrance.",
+            "targetSentence": "Let's meet ...... the school.",
             "answer": "at the door of",
             "acceptedAnswers": [
               "at the door of"
             ],
-            "explanation": ""
+            "minWords": 1,
+            "maxWords": 4,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word",
+            "explanation": "Use **at** for a specific point or place."
           },
           {
             "id": "b1-u8-exh-6",
-            "formatType": "free_text_gap_fill",
-            "sentence": "The flowers are in the centre of the garden.\nThe flowers are ...... the garden.",
+            "formatType": "keyword_transformation",
+            "promptSentence": "The flowers are in the centre of the garden.",
+            "targetSentence": "The flowers are ...... the garden.",
             "answer": "in the middle of",
             "acceptedAnswers": [
               "in the middle of"
             ],
-            "explanation": ""
+            "minWords": 1,
+            "maxWords": 4,
+            "wordCountRule": "whitespace_tokens_apostrophe_single_word",
+            "explanation": "**In the centre of** and **in the middle of** mean the same."
           }
         ]
       },
