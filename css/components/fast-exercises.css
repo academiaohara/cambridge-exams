@@ -8134,134 +8134,67 @@
   }
 }
 
-/* ── Vocabulary exercise chrome (back → category map, not vocabulary hub) ─ */
-.fe-vocab-exercise-chrome-wrap {
-  margin-bottom: 10px;
+/* ── Vocabulary exercises: SunePlay practice shell ─────────────────────── */
+.fe-vocab-sp-center {
+  max-width: none !important;
+  padding: 0 !important;
 }
 
-.fe-vocab-exercise-chrome {
-  margin-bottom: 0;
-}
-
-.fe-vocab-exercise-chrome .cw-section-header-text {
-  min-width: 0;
+.fe-section--vocab-exercise {
+  display: flex;
+  flex-direction: column;
   flex: 1;
+  min-height: 0;
+  padding: 0;
+  max-width: none;
+  width: 100%;
 }
 
-.fe-vocab-exercise-chrome .fe-vocab-exercise-lesson {
-  font-size: 1rem;
-  line-height: 1.25;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.fe-section--vocab-exercise .fe-vocab-sp-lesson,
+.fe-section--vocab-exercise .fe-vocab-sp-mount,
+.fe-section--vocab-exercise .sp-practice-session {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.fe-vocab-exercise-meta {
-  margin-top: 2px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.88);
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.fe-section--vocab-exercise .sp-practice-main {
+  flex: 1;
+  min-height: 0;
 }
 
-.fe-vocab-exercise-cat-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  flex-shrink: 0;
-  border-radius: 12px;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.18);
-  color: #fff;
+.fe-section--vocab-exercise .sp-screen--vocab-passive {
+  width: 100%;
 }
 
-.fe-vocab-exercise-cat-badge .material-symbols-outlined {
-  font-size: 1.2rem;
-}
-
-.fe-vocab-exercise-progress-bar {
-  height: 6px;
-  background: rgba(45, 46, 95, 0.1);
-  border-radius: 0 0 14px 14px;
-  overflow: hidden;
-  margin: 0 4px;
-}
-
-.fe-vocab-exercise-progress-fill {
-  height: 100%;
-  border-radius: 6px;
-  transition: width 0.35s ease;
-  min-width: 4px;
-}
-
-.dashboard-layout--lesson-focus .fe-section--vocab-exercise .fe-lesson-instruction {
-  font-size: 1.15rem;
-  margin: 4px 0 18px;
-  padding: 0 8px;
-}
-
-.dashboard-layout--lesson-focus .fe-section--vocab-exercise .fe-exercise-card,
-.dashboard-layout--lesson-focus .fe-section--vocab-exercise .pv-gallery-single-wrap,
-.dashboard-layout--lesson-focus .fe-section--vocab-exercise .pv-drag-container {
+.fe-vocab-sp-gallery .pv-gallery-card,
+.fe-vocab-sp-conversations .pv-conv-block {
   background: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(45, 46, 95, 0.08);
-  box-shadow: 0 4px 20px rgba(45, 46, 95, 0.07);
   border-radius: 18px;
-  padding: 20px 18px 24px;
-  max-width: 680px;
-  margin: 0 auto;
-  width: 100%;
-  box-sizing: border-box;
+  box-shadow: 0 4px 16px rgba(45, 46, 95, 0.06);
 }
 
-.fe-section--vocab-exercise .fe-quiz-progress-bar {
-  height: 6px;
-  border-radius: 6px;
-  margin-bottom: 16px;
-  background: rgba(45, 46, 95, 0.08);
-}
-
-.fe-section--vocab-exercise .fe-quiz-num {
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.fe-vocab-sp-hint {
+  margin: 12px 0 0;
+  font-size: 0.85rem;
   color: var(--text-medium, #64748b);
-  margin-bottom: 8px;
+  text-align: center;
 }
 
-.fe-section--vocab-exercise .fe-quiz-sentence,
-.fe-section--vocab-exercise .pv-fillin-sentence {
-  font-size: 1.05rem;
-  line-height: 1.5;
-  margin-bottom: 14px;
+.fe-vocab-sp-trophy {
+  text-align: center;
+  padding: 32px 20px;
+}
+
+.dashboard-layout--lesson-focus .fe-vocab-sp-center .fe-section--vocab-exercise .fe-point-view {
+  display: none;
 }
 
 @media (max-width: 768px) {
-  .fe-vocab-exercise-chrome-wrap {
-    margin-bottom: 6px;
-  }
-
-  .fe-vocab-exercise-chrome .fe-vocab-exercise-lesson {
-    font-size: 0.92rem;
-  }
-
-  .fe-vocab-exercise-meta {
-    font-size: 0.72rem;
-  }
-
-  .fe-vocab-exercise-cat-badge {
-    width: 34px;
-    height: 34px;
-  }
-
-  .dashboard-layout--lesson-focus .fe-section--vocab-exercise .fe-lesson-instruction {
-    font-size: 1.05rem;
-    margin-bottom: 14px;
+  .fe-vocab-sp-center.dashboard-center--course-vocab {
+    max-height: 100dvh;
   }
 }
