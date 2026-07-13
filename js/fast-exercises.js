@@ -429,6 +429,9 @@
       if (window.FastExercisesVocabSession && window.FastExercisesVocabSession.destroy) {
         window.FastExercisesVocabSession.destroy();
       }
+      if (window.FastExercisesVocabTheory && window.FastExercisesVocabTheory.destroy) {
+        window.FastExercisesVocabTheory.destroy();
+      }
       this._restoreVocabMapChrome();
     },
 
@@ -510,6 +513,72 @@
         }
       }
       return null;
+    },
+
+    _isTheoryPointType: function(pointType) {
+      return pointType === 'pv-gallery' || pointType === 'id-gallery' || pointType === 'wf-explanation';
+    },
+
+    _getTheoryPointIndex: function(points) {
+      if (!points) return -1;
+      for (var i = 0; i < points.length; i++) {
+        if (this._isTheoryPointType(points[i].type)) return i;
+      }
+      return -1;
+    },
+
+    _getCourseExerciseLabel: function(idx) {
+      if (typeof DashboardNav !== 'undefined' && DashboardNav._getCourseExerciseLabel) {
+        return DashboardNav._getCourseExerciseLabel(idx);
+      }
+      var n = idx + 1;
+      var label = '';
+      while (n > 0) {
+        var rem = (n - 1) % 26;
+        label = String.fromCharCode(65 + rem) + label;
+        n = Math.floor((n - 1) / 26);
+      }
+      return label;
+    },
+
+    _buildMapExerciseCellHtml: function(catMeta, levelId, lessonId, point, pi, options) {
+      options = options || {};
+      var isDone = !!options.isDone;
+      var isAccessible = !!options.isAccessible;
+      var pointKey = levelId + '|' + lessonId + '|' + pi;
+      var cellClass = 'course-exercise-cell';
+      if (isDone) cellClass += ' course-exercise-cell--done';
+      else if (!isAccessible) cellClass += ' course-exercise-cell--locked';
+      else cellClass += ' course-exercise-cell--pending';
+      if (options.currentKey === pointKey && isAccessible && !isDone) {
+        cellClass += ' course-exercise-cell--current';
+      }
+      var label = options.label || this._getCourseExerciseLabel(options.exerciseIdx || 0);
+      var onclick = (isAccessible || isDone)
+        ? 'onclick="FastExercises.openPoint(\'' + catMeta.id + '\', \'' + levelId + '\', \'' + lessonId + '\', ' + pi + ')"'
+        : '';
+      return '<button type="button" class="' + cellClass + '" ' + onclick +
+        ' title="' + this._escapeHTML(point.label || '') + '"' +
+        (!isAccessible && !isDone ? ' disabled' : '') + '>' +
+        '<span class="course-exercise-cell-label">' + label + '</span>' +
+      '</button>';
+    },
+
+    _scrollVocabPathToCurrent: function() {
+      requestAnimationFrame(function() {
+        var scrollEl = document.getElementById('feCenterScroll');
+        var current = document.querySelector('.course-etapa-map .course-exercise-cell--current');
+        if (!current) return;
+        if (scrollEl) {
+          var rect = current.getBoundingClientRect();
+          var scrollRect = scrollEl.getBoundingClientRect();
+          if (rect.top < scrollRect.top || rect.bottom > scrollRect.bottom) {
+            current.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          }
+        } else {
+          current.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }
+      });
     },
 
     _getPointDotTypeMeta: function(point) {
@@ -979,9 +1048,9 @@
         ? this._buildMergedBottomProgressBar(catMeta, data)
         : this._buildBottomProgressBar(catMeta, data, activeLevel);
 
-      // ── LEGEND (PV only) ──
+      // ── LEGEND (legacy map only; course vocab uses learning-style etapa map) ──
       var legendHtml = '';
-      if (categoryId === 'phrasal-verbs') {
+      if (!isCourseVocab && categoryId === 'phrasal-verbs') {
         legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-gallery fe-dot-mini">' + _mi('collections_bookmark') + '</span> ' + 'Gallery' + '</span>' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-fill-in fe-dot-mini">' + _mi('edit') + '</span> ' + 'Fill In' + '</span>' +
@@ -989,13 +1058,13 @@
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-drag fe-dot-mini">' + _mi('drag_indicator') + '</span> ' + 'Drag & Drop' + '</span>' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-pv-mixed fe-dot-mini">' + _mi('shuffle') + '</span> ' + 'Mixed' + '</span>' +
         '</div>';
-      } else if (categoryId === 'word-formation') {
+      } else if (!isCourseVocab && categoryId === 'word-formation') {
         legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-explanation fe-dot-mini">' + _mi('school') + '</span> ' + 'Explanation' + '</span>' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-multiple-choice fe-dot-mini">' + _mi('rule') + '</span> ' + 'Multiple Choice' + '</span>' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-wf-transform fe-dot-mini">' + _mi('transform') + '</span> ' + 'Transformation' + '</span>' +
         '</div>';
-      } else if (categoryId === 'collocations') {
+      } else if (!isCourseVocab && categoryId === 'collocations') {
         legendHtml = '<div class="fe-map-legend fe-map-legend-top">' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-explanation fe-dot-mini">' + _mi('school') + '</span> ' + 'Explanation' + '</span>' +
           '<span class="fe-legend-item"><span class="fe-dot fe-dot-exercise fe-dot-mini">' + _mi('rule') + '</span> ' + 'Exercise' + '</span>' +
@@ -1072,7 +1141,7 @@
           (typeof Dashboard !== 'undefined' && Dashboard._renderSidebarShell
             ? Dashboard._renderSidebarShell('left', 'dashboardLeftSidebarShell', 'dashboardLeftSidebar', leftSidebarContent)
             : '<div class="dashboard-left-sidebar">' + leftSidebarContent + '</div>') +
-          '<div class="dashboard-center' + (isCourseVocab ? ' dashboard-center--crossword dashboard-center--mobile-hub dashboard-center--course-vocab' : '') + '">' +
+          '<div class="dashboard-center' + (isCourseVocab ? ' dashboard-center--crossword dashboard-center--mobile-hub dashboard-center--course-vocab dashboard-center--learning-stage' : '') + '">' +
             (isCourseVocab ? mobileTopBarHtml + courseVocabHeaderHtml : '') +
             '<div class="fe-section' + (isCourseVocab ? ' fe-section--merged-path fe-section--course-vocab' : '') + '" id="feCenterSection">' +
               centerBodyHtml +
@@ -1093,7 +1162,11 @@
       var catState = { view: 'fastExerciseCategory', categoryId: categoryId };
       history.pushState(catState, '', Router.stateToPath(catState));
       var self = this;
-      requestAnimationFrame(function() { self._compactDots(); });
+      if (isCourseVocab) {
+        requestAnimationFrame(function() { self._scrollVocabPathToCurrent(); });
+      } else {
+        requestAnimationFrame(function() { self._compactDots(); });
+      }
     },
 
     // ── LEFT WIDGET ──────────────────────────────────────────────────────
@@ -1375,7 +1448,7 @@
       return html;
     },
 
-    /** B1→C1 continuous vertical path for course vocabulary categories. */
+    /** B1→C1 continuous path for course vocabulary categories (learning-style etapa map). */
     _buildMergedProgressionMap: function(catMeta, data) {
       var self = this;
       var merged = this._getMergedLessons(data);
@@ -1383,12 +1456,9 @@
         return '<div class="fe-map-empty">' + 'No lessons available yet.' + '</div>';
       }
 
-      this._currentMapPage = 0;
-
-      var html = '<div class="fe-map-outer fe-map-single-page fe-map-merged">';
-      html += '<div class="fe-map-main">';
-      html += '<div class="fe-map-page fe-map-page-active" data-page="0">';
-      html += '<div class="fe-map-container fe-map-container--merged">';
+      var currentKey = self._findCurrentPointKey(catMeta, data, null);
+      var html = '<div class="course-etapa-map" data-section="vocabulary" data-category="' + catMeta.id + '">';
+      html += '<div class="course-etapa-path">';
 
       for (var mi = 0; mi < merged.length; mi++) {
         var entry = merged[mi];
@@ -1396,32 +1466,29 @@
         var levelId = entry.levelId;
         var levelUnlocked = self._isLevelUnlocked(catMeta.id, levelId, data.levels);
         var lessonUnlocked = levelUnlocked && self._isMergedLessonUnlocked(catMeta.id, merged, mi, data);
-        var lessonLocked = !lessonUnlocked;
+        var theoryIdx = self._getTheoryPointIndex(lesson.points);
+        var headerTitle = 'Lesson ' + (mi + 1) + ' · ' + levelId + ' · ' + (lesson.title || lesson.id);
 
-        var lessonComplete = lessonUnlocked && self._isLessonComplete(catMeta.id, levelId, lesson.id, lesson.points);
-        var lessonStarted = false;
-        if (lessonUnlocked && lesson.points) {
-          for (var spi = 0; spi < lesson.points.length; spi++) {
-            if (self._isPointComplete(catMeta.id, levelId, lesson.id, spi)) lessonStarted = true;
-          }
+        html += '<div class="course-etapa-header course-etapa-header--unit course-etapa-header--vocab">';
+        html += '<div class="course-etapa-header-text">';
+        html += '<div class="course-etapa-header-title">' + self._escapeHTML(headerTitle) + '</div>';
+        html += '</div>';
+        if (theoryIdx >= 0 && lessonUnlocked) {
+          html += '<button type="button" class="course-etapa-header-guide" onclick="event.stopPropagation();FastExercises.openVocabGuide(\'' +
+            catMeta.id + '\',\'' + levelId + '\',\'' + lesson.id + '\')">' +
+            _mi('menu_book') + ' GUIDE</button>';
         }
+        html += '</div>';
 
-        var lessonClass = lessonLocked ? 'fe-lesson-locked' : (lessonComplete ? 'fe-lesson-complete' : (lessonStarted ? 'fe-lesson-active' : 'fe-lesson-pending'));
-
-        html += '<div class="fe-map-lesson ' + lessonClass + '" data-lesson-global-idx="' + mi + '">' +
-          '<div class="fe-map-lesson-title">' +
-            '<span class="fe-map-lesson-num">' + 'Lesson' + ' ' + (mi + 1) + '</span>' +
-            '<span class="fe-map-lesson-level">' + levelId + '</span>' +
-            (lessonLocked ? '<span class="fe-map-lesson-lock-badge">' + _mi('lock') + '</span>' : '') +
-            '<span class="fe-map-lesson-name">' + self._escapeHTML(lesson.title) + '</span>' +
-          '</div>' +
-          '<div class="fe-map-points-row course-exercise-grid">';
+        html += '<div class="course-exercise-grid">';
 
         if (lesson.points) {
+          var exerciseIdx = 0;
           for (var pi = 0; pi < lesson.points.length; pi++) {
             var point = lesson.points[pi];
-            var isDone = self._isPointComplete(catMeta.id, levelId, lesson.id, pi);
+            if (self._isTheoryPointType(point.type)) continue;
 
+            var isDone = self._isPointComplete(catMeta.id, levelId, lesson.id, pi);
             var isAccessible = lessonUnlocked && self._isMapPointAccessible(catMeta, levelId, lesson, pi, levelUnlocked, lessonUnlocked);
 
             if (point.type === 'review') {
@@ -1438,24 +1505,21 @@
               continue;
             }
 
-            html += self._buildMapPointDotHtml(catMeta, levelId, lesson.id, point, pi, {
+            html += self._buildMapExerciseCellHtml(catMeta, levelId, lesson.id, point, pi, {
               isDone: isDone,
               isAccessible: isAccessible,
-              useFilledStyle: true,
-              showLine: pi > 0
+              currentKey: currentKey,
+              exerciseIdx: exerciseIdx,
+              label: self._getCourseExerciseLabel(exerciseIdx)
             });
+            exerciseIdx++;
           }
         }
 
-        html += '</div></div>';
-
-        if (mi < merged.length - 1) {
-          var connectorClass = lessonComplete ? ' fe-map-connector--done' : '';
-          html += '<div class="fe-map-connector' + connectorClass + '"></div>';
-        }
+        html += '</div>';
       }
 
-      html += '</div></div></div></div>';
+      html += '</div></div>';
       return html;
     },
 
@@ -2122,6 +2186,81 @@
     },
 
     // ── OPEN INDIVIDUAL POINT ────────────────────────────────────────────
+    openVocabGuide: async function(categoryId, levelId, lessonId) {
+      if (!this._isCourseVocabCategory(categoryId)) return;
+      var self = this;
+      var container = this._ensureVocabCenterSection();
+      if (!container) return;
+
+      this._currentCategory = categoryId;
+      this._currentLevel = levelId;
+      this._currentLesson = lessonId;
+      this._hideVocabMapChrome();
+      if (window.FastExercisesVocabSession && window.FastExercisesVocabSession.destroy) {
+        window.FastExercisesVocabSession.destroy();
+      }
+      if (window.FastExercisesVocabTheory && window.FastExercisesVocabTheory.destroy) {
+        window.FastExercisesVocabTheory.destroy();
+      }
+
+      var loadingStart = this._showLoading(container);
+      var lessonData = await this._loadLessonData(categoryId, levelId, lessonId);
+      var catData = await this._loadCategoryData(categoryId);
+
+      var lessonTitle = lessonId;
+      var theoryIdx = -1;
+      if (catData && catData.levels) {
+        for (var i = 0; i < catData.levels.length; i++) {
+          if (catData.levels[i].id !== levelId || !catData.levels[i].lessons) continue;
+          for (var j = 0; j < catData.levels[i].lessons.length; j++) {
+            var lsn = catData.levels[i].lessons[j];
+            if (lsn.id !== lessonId) continue;
+            lessonTitle = lsn.title || lessonId;
+            theoryIdx = self._getTheoryPointIndex(lsn.points);
+            break;
+          }
+        }
+      }
+
+      if (theoryIdx < 0 || !self._canAccessPoint(categoryId, levelId, lessonId, theoryIdx, catData)) {
+        await self._waitLoading(loadingStart);
+        self.openCategory(categoryId);
+        return;
+      }
+
+      var theoryModule = window.FastExercisesVocabTheory;
+      if (!theoryModule || !theoryModule.buildTheoryUnit || !theoryModule.startTheorySession) {
+        await self._waitLoading(loadingStart);
+        self.openCategory(categoryId);
+        return;
+      }
+
+      var unitData = theoryModule.buildTheoryUnit(categoryId, lessonData || {}, lessonTitle);
+      var cards = unitData.theory && unitData.theory.cards;
+      if (!cards || !cards.length) {
+        await self._waitLoading(loadingStart);
+        self._markPointComplete(categoryId, levelId, lessonId, theoryIdx);
+        self.openCategory(categoryId);
+        return;
+      }
+
+      await self._waitLoading(loadingStart);
+
+      container.className = 'fe-section fe-section--merged-path fe-section--vocab-exercise';
+      theoryModule.startTheorySession(self, container, {
+        categoryId: categoryId,
+        unitData: unitData,
+        onComplete: function() {
+          self._markPointComplete(categoryId, levelId, lessonId, theoryIdx);
+          if (typeof StreakManager !== 'undefined') StreakManager.recordActivity();
+        }
+      });
+      self._setVocabLessonFocus(true);
+
+      var guideState = { view: 'fastExerciseCategory', categoryId: categoryId };
+      history.pushState(guideState, '', Router.stateToPath(guideState));
+    },
+
     openPoint: async function(categoryId, levelId, lessonId, pointIndex) {
       var content = document.getElementById('main-content');
       if (!content) return;
@@ -2176,6 +2315,11 @@
       var catMeta = null;
       for (var c = 0; c < CATEGORIES.length; c++) {
         if (CATEGORIES[c].id === categoryId) { catMeta = CATEGORIES[c]; break; }
+      }
+
+      if (isCourseVocab && this._isTheoryPointType(pointType)) {
+        this.openVocabGuide(categoryId, levelId, lessonId);
+        return;
       }
 
       // ── New PV point types (read from lesson-level fields) ──────────────
