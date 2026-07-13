@@ -443,7 +443,8 @@
     _isMapPointAccessible: function(catMeta, levelId, lesson, pi, levelUnlocked, lessonUnlocked) {
       if (!levelUnlocked || lessonUnlocked === false || !lesson.points || !lesson.points[pi]) return false;
       var point = lesson.points[pi];
-      var isLastGate = (point.type === 'pv-mixed' || point.type === 'id-quiz') && pi === lesson.points.length - 1;
+      var isLastGate = (point.type === 'pv-mixed' || point.type === 'pv-conversation-drag' ||
+        point.type === 'id-quiz' || point.type === 'id-conversation-drag') && pi === lesson.points.length - 1;
       if (!isLastGate) return true;
       for (var prev = 0; prev < pi; prev++) {
         if (!this._isPointComplete(catMeta.id, levelId, lesson.id, prev)) return false;
@@ -2883,58 +2884,57 @@
       this._processPvFillInAnswer(qIndex, isCorrect, correctAnswer, categoryId, levelId, lessonId, pointIndex);
     },
 
-    // ── IDIOMS: CONVERSATIONS (Point 3) ───────────────────────────────────
+    // ── IDIOMS: CONVERSATIONS ─────────────────────────────────────────────
     _renderIdConversations: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var self = this;
       var convs = (lessonData && lessonData.conversations) || [];
       this._currentLessonData = lessonData;
       this._currentIdIdioms = (lessonData && lessonData.idioms) || [];
 
-      if (convs.length === 0) {
+      var convIdx = self._getPointConversationIndex(lessonPoints, pointIndex);
+      var conv = convs[convIdx];
+
+      if (!conv) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
         container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
         return;
       }
 
-      var convSlides = self._buildConvSlides(convs, 2);
-      var totalSlides = convSlides.length;
-      var convsHtml = '';
-      convSlides.forEach(function(slide, si) {
-        var linesHtml = self._buildConvStoryLinesHtml(slide.lines, function(rawText) {
-          return self._escapeHTML(rawText).replace(/\[([^\]]+)\]/g, function(match, inner) {
-            var sepIdx = inner.indexOf('|');
-            if (sepIdx === -1) sepIdx = inner.indexOf('/');
-            var displayIdiom = sepIdx !== -1 ? inner.slice(0, sepIdx) : inner;
-            var lookupIdiom = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
-            return '<strong class="pv-highlight pv-highlight-clickable" onclick="FastExercises._showIdIdiomPopup(\'' + self._jsStr(lookupIdiom) + '\')" title="' + self._escapeHTML(displayIdiom) + '">' + displayIdiom + '</strong>';
-          });
+      var textProcessor = function(rawText) {
+        return self._escapeHTML(rawText).replace(/\[([^\]]+)\]/g, function(match, inner) {
+          var sepIdx = inner.indexOf('|');
+          if (sepIdx === -1) sepIdx = inner.indexOf('/');
+          var displayIdiom = sepIdx !== -1 ? inner.slice(0, sepIdx) : inner;
+          var lookupIdiom = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
+          return '<strong class="pv-highlight pv-highlight-clickable" onclick="FastExercises._showIdIdiomPopup(\'' + self._jsStr(lookupIdiom) + '\')" title="' + self._escapeHTML(displayIdiom) + '">' + displayIdiom + '</strong>';
         });
-        var numHtml = totalSlides > 1 ? '<span class="pv-conv-num">' + (si + 1) + '/' + totalSlides + '</span>' : '';
-        convsHtml += '<div class="pv-conv-block pv-conv-slide' + (si === 0 ? ' pv-conv-slide-active' : '') + '" data-idx="' + si + '" data-conv-idx="' + slide.convIdx + '">' +
-          '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(slide.title || '') + '</span>' + numHtml + '</div>' +
-          '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+      };
+
+      var convContentHtml =
+        '<div class="pv-gallery-single-wrap pv-conv-story-wrap">' +
+          '<div class="pv-conversations-slides" id="id-conv-slides">' +
+            self._buildSingleConvStoryHtml(conv, textProcessor) +
+          '</div>' +
         '</div>';
-      });
 
-      var convDotsHtml = '';
-      convSlides.forEach(function(slide, si) {
-        var dotTitle = (slide.title || ('Part ' + (si + 1))) + (slide.partTotal > 1 ? ' (' + (slide.partIdx + 1) + '/' + slide.partTotal + ')' : '');
-        convDotsHtml += '<div class="pv-gallery-nav-dot' + (si === 0 ? ' pv-gallery-nav-dot-active' : '') + '" data-idx="' + si + '" title="' + self._escapeHTML(dotTitle) + '" onclick="FastExercises._idConvGoTo(' + si + ')"></div>';
-      });
-
-      var convNavHtml = totalSlides > 1
-        ? '<div class="pv-gallery-nav-col pv-conv-nav-bottom" id="id-conv-nav">' + convDotsHtml + '</div>'
-        : '';
+      var pointId = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
+      var pointLabelId = pointId ? (pointId.label || '') : '';
+      if (self._runVocabPassiveSession(container, convContentHtml, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints, pointLabelId, null, '')) {
+        self._initConvStoryMode({
+          passive: true,
+          root: document.getElementById('sp-screen-mount') || document,
+          categoryId: catMeta.id,
+          levelId: levelId,
+          lessonId: lessonId,
+          pointIndex: pointIndex
+        });
+        return;
+      }
 
       container.innerHTML =
         '<div class="fe-point-view">' +
           this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
-            '<div class="pv-gallery-single-wrap pv-conv-story-wrap">' +
-              '<div class="pv-conversations-slides" id="id-conv-slides">' +
-                convsHtml +
-              '</div>' +
-              convNavHtml +
-            '</div>' +
+            convContentHtml +
             '<div class="pv-conv-footer">' +
               '<button class="fe-point-next-btn" id="id-conv-legacy-next" disabled onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
                 'Ready! Next' +
@@ -2949,23 +2949,6 @@
           if (btn) btn.disabled = false;
         }
       });
-
-      var slidesArea = document.getElementById('id-conv-slides');
-      if (slidesArea) {
-        slidesArea.addEventListener('wheel', function(e) {
-          e.preventDefault();
-          var current = FastExercises._idConvCurrentIdx || 0;
-          if (e.deltaY > 0) FastExercises._idConvGoTo(current + 1);
-          else FastExercises._idConvGoTo(current - 1);
-        }, { passive: false });
-        this._attachHorizontalSwipe(slidesArea, function() {
-          FastExercises._idConvGoTo((FastExercises._idConvCurrentIdx || 0) - 1);
-        }, function() {
-          FastExercises._idConvGoTo((FastExercises._idConvCurrentIdx || 0) + 1);
-        });
-      }
-      this._idConvCurrentIdx = 0;
-      this._idConvTotal = totalSlides;
     },
 
     _idConvGoTo: function(idx) {
@@ -3730,35 +3713,26 @@
     },
 
     // ── Conversation story mode (Duolingo-style message reveal) ─────────
-    _splitConvLines: function(lines, parts) {
-      parts = parts || 2;
-      var list = lines || [];
-      if (list.length <= 1) return [list];
-      var chunkSize = Math.ceil(list.length / parts);
-      var chunks = [];
-      for (var i = 0; i < list.length; i += chunkSize) {
-        chunks.push(list.slice(i, i + chunkSize));
+    _getPointConversationIndex: function(lessonPoints, pointIndex) {
+      var point = lessonPoints && lessonPoints[pointIndex];
+      if (point && typeof point.conversationIndex === 'number') {
+        return point.conversationIndex;
       }
-      return chunks;
+      var convCount = 0;
+      for (var i = 0; i < pointIndex; i++) {
+        var t = lessonPoints[i] && lessonPoints[i].type;
+        if (t === 'pv-conversations' || t === 'id-conversations') convCount++;
+      }
+      return convCount;
     },
 
-    _buildConvSlides: function(convs, partsPerConv) {
+    _buildSingleConvStoryHtml: function(conv, textProcessor) {
       var self = this;
-      partsPerConv = partsPerConv || 2;
-      var slides = [];
-      (convs || []).forEach(function(conv, ci) {
-        var chunks = self._splitConvLines(conv.lines, partsPerConv);
-        chunks.forEach(function(chunk, pi) {
-          slides.push({
-            title: conv.title || '',
-            lines: chunk,
-            convIdx: ci,
-            partIdx: pi,
-            partTotal: chunks.length
-          });
-        });
-      });
-      return slides;
+      var linesHtml = self._buildConvStoryLinesHtml(conv.lines || [], textProcessor);
+      return '<div class="pv-conv-block pv-conv-slide pv-conv-slide-active">' +
+        '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span></div>' +
+        '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
+      '</div>';
     },
 
     _buildConvStoryLinesHtml: function(lines, textProcessor) {
@@ -3859,56 +3833,38 @@
       }
     },
 
-    // ── PV CONVERSATIONS (Point 3) ───────────────────────────────────────
+    // ── PV CONVERSATIONS ─────────────────────────────────────────────────
     _renderPvConversations: function(container, lessonData, catMeta, levelId, lessonId, lessonTitle, pointIndex, lessonPoints) {
       var self = this;
       var convs = (lessonData && lessonData.conversations) || [];
 
-      // Store lesson data and phrasal verbs for popup lookup
       this._currentLessonData = lessonData;
       this._currentPvVerbs = (lessonData && lessonData.phrasalVerbs) || [];
 
-      if (convs.length === 0) {
+      var convIdx = self._getPointConversationIndex(lessonPoints, pointIndex);
+      var conv = convs[convIdx];
+
+      if (!conv) {
         this._markPointComplete(catMeta.id, levelId, lessonId, pointIndex);
         container.innerHTML = '<div class="fe-point-view"><div class="fe-point-card"><div class="fe-point-message">' + 'Content coming soon!' + '</div><button class="fe-point-next-btn" onclick="FastExercises._nextPoint(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' + 'Next' + '</button></div></div>';
         return;
       }
 
-      var totalConvs = convs.length;
-      var convSlides = self._buildConvSlides(convs, 2);
-      var totalSlides = convSlides.length;
-      var convsHtml = '';
-      convSlides.forEach(function(slide, si) {
-        var linesHtml = self._buildConvStoryLinesHtml(slide.lines, function(rawText) {
-          return self._escapeHTML(rawText).replace(/\[([^\]]+)\]/g, function(match, inner) {
-            var sepIdx = inner.indexOf('|');
-            if (sepIdx === -1) sepIdx = inner.indexOf('/');
-            var displayVerb = sepIdx !== -1 ? inner.slice(0, sepIdx) : inner;
-            var lookupVerb = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
-            return '<strong class="pv-highlight pv-highlight-clickable" onclick="FastExercises._showPvVerbPopup(\'' + self._jsStr(lookupVerb) + '\')" title="' + self._escapeHTML(displayVerb) + '">' + displayVerb + '</strong>';
-          });
+      var textProcessor = function(rawText) {
+        return self._escapeHTML(rawText).replace(/\[([^\]]+)\]/g, function(match, inner) {
+          var sepIdx = inner.indexOf('|');
+          if (sepIdx === -1) sepIdx = inner.indexOf('/');
+          var displayVerb = sepIdx !== -1 ? inner.slice(0, sepIdx) : inner;
+          var lookupVerb = sepIdx !== -1 ? inner.slice(sepIdx + 1) : inner;
+          return '<strong class="pv-highlight pv-highlight-clickable" onclick="FastExercises._showPvVerbPopup(\'' + self._jsStr(lookupVerb) + '\')" title="' + self._escapeHTML(displayVerb) + '">' + displayVerb + '</strong>';
         });
-        var numHtml = totalSlides > 1 ? '<span class="pv-conv-num">' + (si + 1) + '/' + totalSlides + '</span>' : '';
-        convsHtml += '<div class="pv-conv-block pv-conv-slide' + (si === 0 ? ' pv-conv-slide-active' : '') + '" data-idx="' + si + '" data-conv-idx="' + slide.convIdx + '">' +
-          '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(slide.title || '') + '</span>' + numHtml + '</div>' +
-          '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
-        '</div>';
-      });
-
-      var convDotsHtml = '';
-      convSlides.forEach(function(slide, si) {
-        var dotTitle = (slide.title || ('Part ' + (si + 1))) + (slide.partTotal > 1 ? ' (' + (slide.partIdx + 1) + '/' + slide.partTotal + ')' : '');
-        convDotsHtml += '<div class="pv-gallery-nav-dot' + (si === 0 ? ' pv-gallery-nav-dot-active' : '') + '" data-idx="' + si + '" title="' + self._escapeHTML(dotTitle) + '" onclick="FastExercises._pvConvGoTo(' + si + ')"></div>';
-      });
-
-      var convNavHtml = totalSlides > 1
-        ? '<div class="pv-gallery-nav-col pv-conv-nav-bottom" id="pv-conv-nav">' + convDotsHtml + '</div>'
-        : '';
+      };
 
       var convContentHtml =
         '<div class="pv-gallery-single-wrap fe-vocab-sp-conversations pv-conv-story-wrap">' +
-          '<div class="pv-conversations-slides" id="pv-conv-slides">' + convsHtml + '</div>' +
-          convNavHtml +
+          '<div class="pv-conversations-slides" id="pv-conv-slides">' +
+            self._buildSingleConvStoryHtml(conv, textProcessor) +
+          '</div>' +
         '</div>';
 
       var pointPv = (lessonPoints && lessonPoints[pointIndex]) ? lessonPoints[pointIndex] : null;
@@ -3924,22 +3880,6 @@
         storyOpts.passive = true;
         storyOpts.root = document.getElementById('sp-screen-mount') || document;
         self._initConvStoryMode(storyOpts);
-        var slidesAreaSp = document.getElementById('pv-conv-slides');
-        if (slidesAreaSp) {
-          slidesAreaSp.addEventListener('wheel', function(e) {
-            e.preventDefault();
-            var current = FastExercises._pvConvCurrentIdx || 0;
-            if (e.deltaY > 0) FastExercises._pvConvGoTo(current + 1);
-            else FastExercises._pvConvGoTo(current - 1);
-          }, { passive: false });
-          self._attachHorizontalSwipe(slidesAreaSp, function() {
-            FastExercises._pvConvGoTo((FastExercises._pvConvCurrentIdx || 0) - 1);
-          }, function() {
-            FastExercises._pvConvGoTo((FastExercises._pvConvCurrentIdx || 0) + 1);
-          });
-        }
-        self._pvConvCurrentIdx = 0;
-        self._pvConvTotal = totalSlides;
         return;
       }
 
@@ -3961,23 +3901,6 @@
           if (btn) btn.disabled = false;
         }
       });
-
-      var slidesArea = document.getElementById('pv-conv-slides');
-      if (slidesArea) {
-        slidesArea.addEventListener('wheel', function(e) {
-          e.preventDefault();
-          var current = FastExercises._pvConvCurrentIdx || 0;
-          if (e.deltaY > 0) FastExercises._pvConvGoTo(current + 1);
-          else FastExercises._pvConvGoTo(current - 1);
-        }, { passive: false });
-        this._attachHorizontalSwipe(slidesArea, function() {
-          FastExercises._pvConvGoTo((FastExercises._pvConvCurrentIdx || 0) - 1);
-        }, function() {
-          FastExercises._pvConvGoTo((FastExercises._pvConvCurrentIdx || 0) + 1);
-        });
-      }
-      this._pvConvCurrentIdx = 0;
-      this._pvConvTotal = totalSlides;
     },
 
     _pvConvGoTo: function(idx) {
