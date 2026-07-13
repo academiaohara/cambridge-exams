@@ -757,6 +757,69 @@
     input.style.width = Math.ceil(Math.max(minPx, measured)) + 'px';
   }
 
+  function scrollWithinContainer(element, container, opts) {
+    if (!element || !container) return;
+    opts = opts || {};
+    var behavior = opts.behavior || 'smooth';
+    var block = opts.block || 'center';
+    var elemRect = element.getBoundingClientRect();
+    var contRect = container.getBoundingClientRect();
+    var offsetTop = elemRect.top - contRect.top + container.scrollTop;
+    var target;
+    if (block === 'nearest') {
+      if (elemRect.top < contRect.top) {
+        target = offsetTop - (parseFloat(opts.scrollPaddingTop) || 16);
+      } else if (elemRect.bottom > contRect.bottom) {
+        target = offsetTop - container.clientHeight + element.offsetHeight + (parseFloat(opts.scrollPaddingBottom) || 16);
+      } else {
+        return;
+      }
+    } else {
+      target = offsetTop - (container.clientHeight / 2) + (element.offsetHeight / 2);
+    }
+    var maxScroll = Math.max(0, container.scrollHeight - container.clientHeight);
+    container.scrollTo({
+      top: Math.max(0, Math.min(target, maxScroll)),
+      behavior: behavior
+    });
+  }
+
+  function focusConversationGapLine(root) {
+    if (!root) return;
+    var convInput = root.querySelector('.sp-conv-gap-input');
+    var dialogue = root.querySelector('.pv-conv-dialogue--scroll');
+    var activeLine = root.querySelector('.pv-conv-line--active');
+    if (convInput) resizeUnderlineGapInput(convInput);
+
+    function alignActiveLine() {
+      if (!activeLine || !dialogue) return;
+      if (dialogue.scrollHeight <= dialogue.clientHeight + 1) return;
+      scrollWithinContainer(activeLine, dialogue, {
+        block: 'nearest',
+        behavior: 'auto',
+        scrollPaddingTop: 24,
+        scrollPaddingBottom: 24
+      });
+    }
+
+    function focusInput() {
+      if (!convInput) return;
+      try {
+        convInput.focus({ preventScroll: true });
+      } catch (err) {
+        convInput.focus();
+      }
+    }
+
+    requestAnimationFrame(function() {
+      alignActiveLine();
+      requestAnimationFrame(function() {
+        alignActiveLine();
+        focusInput();
+      });
+    });
+  }
+
   function buildPassageGapVerbCounts(gaps) {
     var counts = {};
     (gaps || []).forEach(function(gap) {
@@ -2775,7 +2838,7 @@
     return '<div class="sp-screen sp-screen--conversation-gap pv-conv-story-wrap pv-conv-story-wrap--fill fe-vocab-sp-conversations">' +
       '<div class="pv-conv-block pv-conv-block--fill">' +
         (titleHtml ? '<div class="pv-conv-fill-fixed">' + titleHtml + '</div>' : '') +
-        '<div class="pv-conv-dialogue pv-conv-dialogue--scroll pv-conv-dialogue--fill">' + linesHtml + '</div>' +
+        '<div class="pv-conv-dialogue pv-conv-dialogue--scroll pv-conv-dialogue--fill" tabindex="0" aria-label="Conversation">' + linesHtml + '</div>' +
       '</div>' +
     '</div>';
   }
@@ -3763,17 +3826,7 @@
 
     if (format === 'conversation_gap_fill') {
       bindGapInputs(root, onChange);
-      var convInput = root.querySelector('.sp-conv-gap-input');
-      if (convInput) {
-        resizeUnderlineGapInput(convInput);
-        requestAnimationFrame(function() {
-          convInput.focus();
-          var activeLine = root.querySelector('.pv-conv-line--active');
-          if (activeLine && activeLine.scrollIntoView) {
-            activeLine.scrollIntoView({ block: 'center', behavior: 'smooth' });
-          }
-        });
-      }
+      focusConversationGapLine(root);
     }
 
     if (format === 'free_text_gap_fill' || format === 'conjugation_gap_fill' || format === 'preselected_verb_gap_fill' || format === 'word_bank_gap_fill') {

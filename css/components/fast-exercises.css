@@ -2611,17 +2611,18 @@
 }
 
 .pv-conv-story-wrap--fill {
-  flex: 1;
+  flex: 1 1 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 0;
   width: 100%;
 }
 
 .pv-conv-block--fill {
-  flex: 1;
+  flex: 1 1 0;
   min-height: 0;
+  height: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -2632,13 +2633,24 @@
   flex-shrink: 0;
 }
 
+.fe-section--vocab-exercise .sp-screen--conversation-gap .pv-conv-fill-fixed {
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.fe-section--vocab-exercise .sp-screen--conversation-gap .pv-conv-title {
+  border-radius: 18px 18px 0 0;
+}
+
 .pv-conv-dialogue--fill.pv-conv-dialogue--scroll {
-  flex: 1;
+  flex: 1 1 0;
+  height: 0;
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
+  overflow-anchor: none;
   padding: 16px 20px 24px;
   scroll-padding-block: 24px;
 }
@@ -8573,9 +8585,30 @@
   overflow: auto;
 }
 
+.fe-section--vocab-exercise .sp-practice-main:has(.sp-screen--conversation-gap),
+.fe-section--vocab-exercise .sp-practice-main:has(.pv-conv-story-wrap--fill) {
+  overflow: hidden;
+}
+
 .fe-section--vocab-exercise .sp-practice-body,
 .fe-section--vocab-exercise .sp-exercise-card {
   min-height: 0;
+}
+
+.fe-section--vocab-exercise .sp-practice-body:has(.sp-screen--conversation-gap) {
+  flex: 1 1 0;
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.fe-section--vocab-exercise .sp-practice-main:has(.sp-screen--conversation-gap) {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .fe-section--vocab-exercise .sp-screen--vocab-passive {
@@ -8657,13 +8690,13 @@
 }
 
 .fe-section--vocab-exercise .sp-screen--conversation-gap {
-  flex: 1;
+  flex: 1 1 0;
+  height: 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
   align-self: stretch;
@@ -8676,7 +8709,8 @@
 }
 
 .fe-section--vocab-exercise .sp-practice-main:has(.sp-screen--conversation-gap) .sp-exercise-card {
-  flex: 1;
+  flex: 1 1 0;
+  height: 0;
   min-height: 0;
   padding: 0;
   max-width: 100%;
