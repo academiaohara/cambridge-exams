@@ -887,6 +887,18 @@
           localStorage.setItem('cambridge_course_progress_' + levelId, JSON.stringify(progressByLevel[levelId]));
         } catch (e) {}
       });
+      var syncTasks = [];
+      Object.keys(progressByLevel).forEach(function(levelId) {
+        var prog = progressByLevel[levelId];
+        Object.keys(prog).forEach(function(unitId) {
+          if (prog[unitId]) {
+            syncTasks.push(DashboardNav._saveCourseUnitCompleteToSupabase(levelId, unitId));
+          }
+        });
+      });
+      if (syncTasks.length) {
+        await Promise.all(syncTasks);
+      }
       try {
         localStorage.removeItem('cambridge_course_path_advance_index');
         localStorage.removeItem('cambridge_course_path_advance_pending');
@@ -6790,6 +6802,7 @@
         if ((prev.type === 'grammar' || prev.type === 'vocabulary' || prev.type === 'review') && !prog[prev.id]) {
           prog[prev.id] = true;
           changed = true;
+          DashboardNav._saveCourseUnitCompleteToSupabase(level, prev.id);
         }
         if (prev.type === 'grammar' || prev.type === 'vocabulary') {
           unitsToMark.push(prev);
