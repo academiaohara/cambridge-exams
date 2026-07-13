@@ -337,8 +337,15 @@
       var center = document.querySelector('.dashboard-center--course-vocab');
       if (!center) return;
       center.querySelectorAll('.cw-section-header--vocab, .mobile-top-bar, .mobile-bottom-nav--duo').forEach(function(el) {
+        if (el.getAttribute('data-fe-vocab-hidden')) return;
         el.setAttribute('data-fe-vocab-hidden', '1');
-        el.style.display = 'none';
+        el.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-4px)';
+        window.setTimeout(function() {
+          el.style.display = 'none';
+          el.style.transform = '';
+        }, 220);
       });
     },
 
@@ -347,6 +354,9 @@
       if (!center) return;
       center.querySelectorAll('[data-fe-vocab-hidden]').forEach(function(el) {
         el.style.display = '';
+        el.style.opacity = '';
+        el.style.transform = '';
+        el.style.transition = '';
         el.removeAttribute('data-fe-vocab-hidden');
       });
     },
@@ -4009,7 +4019,7 @@
         var gender = speakers[line.speaker] % 2 === 0 ? 'f' : 'm';
         var speakText = self._convStripBracketMarkup(line.text);
         var text = textProcessor ? textProcessor(line.text) : self._escapeHTML(line.text);
-        html += '<div class="pv-conv-line pv-conv-' + side + ' pv-conv-line--visible" data-line-idx="' + li + '" data-speak-text="' + self._escapeHTML(speakText) + '" data-speaker-gender="' + gender + '">' +
+        html += '<div class="pv-conv-line pv-conv-' + side + '" data-line-idx="' + li + '" data-speak-text="' + self._escapeHTML(speakText) + '" data-speaker-gender="' + gender + '">' +
           self._getAvatarHtml(line.speaker) +
           '<div class="pv-conv-bubble" role="button" tabindex="0" title="Listen">' +
             '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
@@ -4030,6 +4040,30 @@
       }
     },
 
+    _playConvStoryEnter: function(root) {
+      root = root || document;
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      root.querySelectorAll('.pv-conv-story-wrap').forEach(function(wrap) {
+        wrap.classList.add('pv-conv-story-wrap--enter');
+        if (reduceMotion) wrap.classList.remove('pv-conv-story-wrap--enter');
+      });
+
+      var lines = root.querySelectorAll('.pv-conv-line');
+      var baseDelay = reduceMotion ? 0 : 160;
+      var stagger = reduceMotion ? 0 : 65;
+
+      lines.forEach(function(line, i) {
+        line.classList.remove('pv-conv-line--hidden');
+        if (reduceMotion) {
+          line.classList.add('pv-conv-line--visible');
+          return;
+        }
+        window.setTimeout(function() {
+          line.classList.add('pv-conv-line--visible');
+        }, baseDelay + i * stagger);
+      });
+    },
+
     _initConvStoryMode: function(opts) {
       var self = this;
       opts = opts || {};
@@ -4041,9 +4075,9 @@
         window.speechSynthesis.onvoiceschanged = function() { self._loadConvVoices(); };
       }
 
+      this._playConvStoryEnter(root);
+
       root.querySelectorAll('.pv-conv-line').forEach(function(line) {
-        line.classList.remove('pv-conv-line--hidden');
-        line.classList.add('pv-conv-line--visible');
         var bubble = line.querySelector('.pv-conv-bubble');
         if (!bubble || bubble._convTtsBound) return;
         bubble._convTtsBound = true;

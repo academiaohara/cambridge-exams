@@ -4726,6 +4726,13 @@ body:has(.sp-lesson-mount)::before {
   background-position: center center;
   background-repeat: no-repeat;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.42s ease;
+}
+
+body:has(.sp-lesson-mount.sp-lesson-mount--enter-active)::before,
+body:has(.sp-lesson-mount:not(.sp-lesson-mount--enter))::before {
+  opacity: 1;
 }
 
 body:has(.sp-lesson-mount) #app,

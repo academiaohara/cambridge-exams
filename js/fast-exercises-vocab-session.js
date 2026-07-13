@@ -30,6 +30,26 @@
     return root ? root.querySelector('#sp-screen-mount') : null;
   }
 
+  function playPassiveSessionEnter() {
+    var mount = getMount();
+    if (!mount) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    mount.classList.add('sp-lesson-mount--enter');
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        mount.classList.add('sp-lesson-mount--enter-active');
+      });
+    });
+
+    var cleanup = function(e) {
+      if (e.propertyName !== 'opacity') return;
+      mount.classList.remove('sp-lesson-mount--enter', 'sp-lesson-mount--enter-active');
+      mount.removeEventListener('transitionend', cleanup);
+    };
+    mount.addEventListener('transitionend', cleanup);
+  }
+
   function isWriteExercise(ex) {
     if (!ex) return false;
     return ex.type === 'write-verb' || ex.type === 'transform' || ex.type === 'write';
@@ -980,6 +1000,8 @@
     screenMount.innerHTML = '<div class="sp-screen sp-screen--vocab-passive">' + (opts.contentHtml || '') + '</div>';
     var screenRoot = screenMount.querySelector('.sp-screen');
     if (opts.instruction && screenRoot) mountInstruction(screenRoot, opts.instruction);
+
+    playPassiveSessionEnter();
 
     setActionBtn('continue', true);
     var skipBtn = getMount() && getMount().querySelector('#sp-skip-btn');

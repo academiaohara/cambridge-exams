@@ -1,5 +1,24 @@
 /* Vocabulary SunePlay shell — layout overrides (load after sune-play-lesson.css) */
 
+.sp-lesson-mount--enter {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.38s ease, transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sp-lesson-mount--enter.sp-lesson-mount--enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-lesson-mount--enter {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 body:has(#feCenterSection.fe-section--vocab-exercise .sp-lesson-mount) {
   min-height: 100dvh;
 }
