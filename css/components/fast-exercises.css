@@ -2409,6 +2409,27 @@
   min-width: 0;
 }
 
+.pv-conv-restart-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.pv-conv-restart-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+.pv-conv-restart-btn .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+
 .pv-conv-num {
   font-size: 0.8rem;
   font-weight: 700;
@@ -8383,12 +8404,19 @@
   max-width: 100%;
 }
 
-.fe-vocab-sp-gallery .pv-gallery-card,
+.fe-vocab-sp-gallery .pv-gallery-card {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(45, 46, 95, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(45, 46, 95, 0.06);
+  width: 100%;
+}
+
 .fe-vocab-sp-conversations .pv-conv-block {
   background: #fff;
-  border: 1.5px solid rgba(59, 130, 246, 0.2);
+  border: none;
   border-radius: 16px;
-  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.06);
+  box-shadow: none;
   width: 100%;
 }
 
