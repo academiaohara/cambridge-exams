@@ -756,6 +756,77 @@
       window.speechSynthesis.speak(utter);
     },
 
+    _convVoiceCache: { male: [], female: [], loaded: false },
+
+    _loadConvVoices: function() {
+      if (this._convVoiceCache.loaded) return;
+      var synth = window.speechSynthesis;
+      if (!synth) return;
+      var voices = synth.getVoices();
+      if (!voices || voices.length === 0) return;
+      var enVoices = voices.filter(function(v) { return v.lang && v.lang.indexOf('en') === 0; });
+      if (enVoices.length === 0) enVoices = voices;
+      var females = [], males = [], used = [];
+      enVoices.forEach(function(v) {
+        var n = v.name.toLowerCase();
+        if (/female|woman|fiona|samantha|karen|moira|tessa|victoria|kate|serena|martha|hazel/.test(n)) {
+          females.push(v); used.push(v);
+        } else if (/\bmale\b|man\b|daniel|james|thomas|george|oliver|fred|lee|rishi|aaron/.test(n)) {
+          males.push(v); used.push(v);
+        }
+      });
+      var others = enVoices.filter(function(v) { return used.indexOf(v) === -1; });
+      var oi = 0;
+      while (females.length < 1 && oi < others.length) { females.push(others[oi++]); }
+      while (males.length < 1 && oi < others.length) { males.push(others[oi++]); }
+      if (females.length === 0 && males.length > 0) females = males.slice();
+      if (males.length === 0 && females.length > 0) males = females.slice();
+      this._convVoiceCache.female = females;
+      this._convVoiceCache.male = males;
+      this._convVoiceCache.loaded = true;
+    },
+
+    _getConvVoice: function(gender) {
+      this._loadConvVoices();
+      var list = gender === 'm' ? this._convVoiceCache.male : this._convVoiceCache.female;
+      return list[0] || null;
+    },
+
+    _convStripBracketMarkup: function(rawText) {
+      return String(rawText || '').replace(/\[([^\]]+)\]/g, function(match, inner) {
+        var sepIdx = inner.indexOf('|');
+        if (sepIdx === -1) sepIdx = inner.indexOf('/');
+        return sepIdx !== -1 ? inner.slice(0, sepIdx) : inner;
+      });
+    },
+
+    _speakConvLine: function(lineEl, onEnd) {
+      if (!lineEl) { if (onEnd) onEnd(); return; }
+      var text = lineEl.getAttribute('data-speak-text');
+      if (!text) {
+        var textEl = lineEl.querySelector('.pv-conv-text');
+        text = textEl ? textEl.textContent.trim() : '';
+      }
+      if (!text || !window.speechSynthesis) {
+        if (onEnd) onEnd();
+        return;
+      }
+      window.speechSynthesis.cancel();
+      lineEl.classList.add('pv-conv-line--speaking');
+      var utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-GB';
+      utter.rate = 0.9;
+      var voice = this._getConvVoice(lineEl.getAttribute('data-speaker-gender'));
+      if (voice) utter.voice = voice;
+      var done = function() {
+        lineEl.classList.remove('pv-conv-line--speaking');
+        if (onEnd) onEnd();
+      };
+      utter.onend = done;
+      utter.onerror = done;
+      window.speechSynthesis.speak(utter);
+    },
+
     _speakWord: function(word) {
       this._speakText(word);
     },
@@ -763,12 +834,12 @@
     _POINT_DEFAULT_INSTRUCTIONS: {
       'pv-gallery': 'Study each phrasal verb, its meaning and examples.',
       'pv-fill-in': 'Complete each sentence with the correct phrasal verb.',
-      'pv-conversations': 'Read the conversations and notice how the phrasal verbs are used.',
+      'pv-conversations': 'Listen to the conversation and notice how the phrasal verbs are used.',
       'pv-conversation-drag': 'Drag the phrasal verbs into the gaps to complete each conversation.',
       'pv-mixed': 'Complete each exercise using the phrasal verbs from this lesson.',
       'id-gallery': 'Study each idiom, its meaning and examples.',
       'id-fill-in': 'Choose the correct idiom to complete each sentence.',
-      'id-conversations': 'Read the conversations and notice how the idioms are used.',
+      'id-conversations': 'Listen to the conversation and notice how the idioms are used.',
       'id-conversation-drag': 'Drag the idioms into the gaps to complete each conversation.',
       'id-quiz': 'Choose the correct answer for each question.',
       'wf-explanation': 'Read the explanation and learn the different word forms.',
@@ -2196,6 +2267,7 @@
       this._currentLevel = levelId;
       this._currentLesson = lessonId;
       this._hideVocabMapChrome();
+      this._convStoryStopAuto();
       if (window.FastExercisesVocabSession && window.FastExercisesVocabSession.destroy) {
         window.FastExercisesVocabSession.destroy();
       }
@@ -3747,9 +3819,11 @@
       (lines || []).forEach(function(line, li) {
         if (!(line.speaker in speakers)) { speakers[line.speaker] = speakerIdx++; }
         var side = speakers[line.speaker] % 2 === 0 ? 'left' : 'right';
+        var gender = speakers[line.speaker] % 2 === 0 ? 'f' : 'm';
+        var speakText = self._convStripBracketMarkup(line.text);
         var text = textProcessor ? textProcessor(line.text) : self._escapeHTML(line.text);
         var stateClass = li > 0 ? ' pv-conv-line--hidden' : ' pv-conv-line--visible';
-        html += '<div class="pv-conv-line pv-conv-' + side + stateClass + '" data-line-idx="' + li + '">' +
+        html += '<div class="pv-conv-line pv-conv-' + side + stateClass + '" data-line-idx="' + li + '" data-speak-text="' + self._escapeHTML(speakText) + '" data-speaker-gender="' + gender + '">' +
           self._getAvatarHtml(line.speaker) +
           '<div class="pv-conv-bubble">' +
             '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
@@ -3801,6 +3875,99 @@
       this._convStoryCheckComplete(this._convStoryOpts || {});
     },
 
+    _convStoryStopAuto: function() {
+      this._convStoryAutoRunning = false;
+      if (this._convStoryAutoTimer) {
+        clearTimeout(this._convStoryAutoTimer);
+        this._convStoryAutoTimer = null;
+      }
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+      var root = this._convStoryOpts && this._convStoryOpts.root;
+      if (root) {
+        root.querySelectorAll('.pv-conv-line--speaking').forEach(function(el) {
+          el.classList.remove('pv-conv-line--speaking');
+        });
+      }
+    },
+
+    _convStoryEnableContinue: function(opts) {
+      opts = opts || this._convStoryOpts || {};
+      if (opts.passive) {
+        var session = window.FastExercisesVocabSession;
+        if (session && session.setActionBtn) session.setActionBtn('continue', true);
+      }
+      if (opts.onAllRevealed) opts.onAllRevealed();
+    },
+
+    _convStoryAutoStep: function(slideEl) {
+      var self = this;
+      if (!this._convStoryAutoRunning || !slideEl) return;
+
+      var nextLine = slideEl.querySelector('.pv-conv-line:not([data-spoken])');
+      if (!nextLine) {
+        self._convStoryAutoRunning = false;
+        var dialogue = slideEl.querySelector('.pv-conv-dialogue');
+        if (dialogue) dialogue.classList.remove('pv-conv-story-stage--autoplay');
+        self._convStoryEnableContinue(self._convStoryOpts);
+        return;
+      }
+
+      if (nextLine.classList.contains('pv-conv-line--hidden')) {
+        nextLine.classList.remove('pv-conv-line--hidden');
+        nextLine.classList.add('pv-conv-line--visible');
+        requestAnimationFrame(function() {
+          if (nextLine.scrollIntoView) nextLine.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      }
+
+      self._speakConvLine(nextLine, function() {
+        if (!self._convStoryAutoRunning) return;
+        nextLine.setAttribute('data-spoken', 'true');
+        self._convStoryAutoTimer = setTimeout(function() {
+          self._convStoryAutoStep(slideEl);
+        }, 450);
+      });
+    },
+
+    _convStorySkipCurrent: function(slideEl) {
+      if (!slideEl) return;
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+      if (this._convStoryAutoTimer) {
+        clearTimeout(this._convStoryAutoTimer);
+        this._convStoryAutoTimer = null;
+      }
+      var speaking = slideEl.querySelector('.pv-conv-line--speaking');
+      if (speaking) {
+        speaking.classList.remove('pv-conv-line--speaking');
+        speaking.setAttribute('data-spoken', 'true');
+      }
+      if (this._convStoryAutoRunning) this._convStoryAutoStep(slideEl);
+    },
+
+    _convStoryStartAuto: function(slideEl) {
+      var self = this;
+      this._convStoryStopAuto();
+      if (!slideEl) return;
+      var dialogue = slideEl.querySelector('.pv-conv-dialogue');
+      if (dialogue) dialogue.classList.add('pv-conv-story-stage--autoplay');
+      this._convStoryAutoRunning = true;
+
+      this._loadConvVoices();
+      if (window.speechSynthesis && !this._convVoiceCache.loaded) {
+        window.speechSynthesis.onvoiceschanged = function() { self._loadConvVoices(); };
+      }
+
+      var opts = this._convStoryOpts || {};
+      if (opts.passive) {
+        var session = window.FastExercisesVocabSession;
+        if (session && session.setActionBtn) session.setActionBtn('continue', false);
+      }
+
+      this._convStoryAutoTimer = setTimeout(function() {
+        self._convStoryAutoStep(slideEl);
+      }, 600);
+    },
+
     _initConvStoryMode: function(opts) {
       opts = opts || {};
       var self = this;
@@ -3815,6 +3982,10 @@
           dialogue._convStoryBound = true;
           dialogue.addEventListener('click', function(e) {
             if (e.target.closest('.pv-highlight-clickable')) return;
+            if (self._convStoryAutoRunning) {
+              self._convStorySkipCurrent(slide);
+              return;
+            }
             self._convStoryAdvance(slide);
           });
         }
@@ -3822,16 +3993,34 @@
 
       if (opts.passive) {
         var session = window.FastExercisesVocabSession;
-        if (session && session.setActionBtn) session.setActionBtn('continue', true);
         if (session && session.setPassiveContinue) {
           session.setPassiveContinue(function() {
+            var activeSlide = root.querySelector('.pv-conv-slide.pv-conv-slide-active') || root.querySelector('.pv-conv-slide');
+            if (self._convStoryAutoRunning && activeSlide) {
+              if (activeSlide.querySelector('.pv-conv-line:not([data-spoken])')) {
+                self._convStorySkipCurrent(activeSlide);
+                return;
+              }
+              self._convStoryStopAuto();
+            }
             if (!self._convStoryAllRevealed(root)) {
-              var activeSlide = root.querySelector('.pv-conv-slide.pv-conv-slide-active');
               if (activeSlide) self._convStoryAdvance(activeSlide);
               return;
             }
             if (opts.onComplete) opts.onComplete();
             else if (opts.categoryId) self._completeAndNext(opts.categoryId, opts.levelId, opts.lessonId, opts.pointIndex);
+          });
+        }
+        if (opts.autoPlay !== false && session && session.setActionBtn) {
+          session.setActionBtn('continue', false);
+        }
+      }
+
+      if (opts.autoPlay !== false) {
+        var activeSlide = root.querySelector('.pv-conv-slide.pv-conv-slide-active') || root.querySelector('.pv-conv-slide');
+        if (activeSlide) {
+          requestAnimationFrame(function() {
+            self._convStoryStartAuto(activeSlide);
           });
         }
       }
