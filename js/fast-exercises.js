@@ -3007,7 +3007,7 @@
           this._buildPointExerciseHeaderHtml(catMeta, levelId, lessonTitle, pointIndex, lessonPoints) +
             convContentHtml +
             '<div class="pv-conv-footer">' +
-              '<button class="fe-point-next-btn" id="id-conv-legacy-next" disabled onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
+              '<button class="fe-point-next-btn" id="id-conv-legacy-next" onclick="FastExercises._completeAndNext(\'' + catMeta.id + '\',\'' + levelId + '\',\'' + lessonId + '\',' + pointIndex + ')" style="background:' + catMeta.color + '">' +
                 'Ready! Next' +
               '</button>' +
             '</div>' +
@@ -3970,11 +3970,7 @@
       var self = this;
       var linesHtml = self._buildConvStoryLinesHtml(conv.lines || [], textProcessor);
       return '<div class="pv-conv-block pv-conv-slide pv-conv-slide-active">' +
-        '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span>' +
-          '<button type="button" class="pv-conv-restart-btn" aria-label="Replay conversation" title="Replay conversation">' +
-            '<span class="material-symbols-outlined" aria-hidden="true">replay</span>' +
-          '</button>' +
-        '</div>' +
+        '<div class="pv-conv-title"><span class="material-symbols-outlined">forum</span><span class="pv-conv-title-text">' + self._escapeHTML(conv.title || '') + '</span></div>' +
         '<div class="pv-conv-dialogue">' + linesHtml + '</div>' +
       '</div>';
     },
@@ -3990,10 +3986,9 @@
         var gender = speakers[line.speaker] % 2 === 0 ? 'f' : 'm';
         var speakText = self._convStripBracketMarkup(line.text);
         var text = textProcessor ? textProcessor(line.text) : self._escapeHTML(line.text);
-        var stateClass = li > 0 ? ' pv-conv-line--hidden' : ' pv-conv-line--visible';
-        html += '<div class="pv-conv-line pv-conv-' + side + stateClass + '" data-line-idx="' + li + '" data-speak-text="' + self._escapeHTML(speakText) + '" data-speaker-gender="' + gender + '">' +
+        html += '<div class="pv-conv-line pv-conv-' + side + ' pv-conv-line--visible" data-line-idx="' + li + '" data-speak-text="' + self._escapeHTML(speakText) + '" data-speaker-gender="' + gender + '">' +
           self._getAvatarHtml(line.speaker) +
-          '<div class="pv-conv-bubble">' +
+          '<div class="pv-conv-bubble" role="button" tabindex="0" title="Listen">' +
             '<span class="pv-conv-name">' + self._escapeHTML(line.speaker || '') + '</span>' +
             '<span class="pv-conv-text">' + text + '</span>' +
           '</div>' +
@@ -4002,53 +3997,7 @@
       return html;
     },
 
-    _convStoryCountHidden: function(slideEl) {
-      if (!slideEl) return 0;
-      return slideEl.querySelectorAll('.pv-conv-line--hidden').length;
-    },
-
-    _convStoryRevealNextInSlide: function(slideEl) {
-      if (!slideEl) return false;
-      var hidden = slideEl.querySelector('.pv-conv-line--hidden');
-      if (!hidden) return false;
-      hidden.classList.remove('pv-conv-line--hidden');
-      hidden.classList.add('pv-conv-line--visible');
-      requestAnimationFrame(function() {
-        if (hidden.scrollIntoView) hidden.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      });
-      return true;
-    },
-
-    _convStoryAllRevealed: function(root) {
-      var slides = (root || document).querySelectorAll('.pv-conv-slide');
-      for (var i = 0; i < slides.length; i++) {
-        if (this._convStoryCountHidden(slides[i]) > 0) return false;
-      }
-      return slides.length > 0;
-    },
-
-    _convStoryCheckComplete: function(opts) {
-      opts = opts || {};
-      var root = (opts && opts.root) || document;
-      if (!this._convStoryAllRevealed(root)) return;
-      if (opts.onAllRevealed) opts.onAllRevealed();
-    },
-
-    _convStoryAdvance: function(slideEl) {
-      if (!slideEl) return;
-      if (this._convStoryRevealNextInSlide(slideEl)) {
-        this._convStoryCheckComplete(this._convStoryOpts || {});
-        return;
-      }
-      this._convStoryCheckComplete(this._convStoryOpts || {});
-    },
-
     _convStoryStopAuto: function() {
-      this._convStoryAutoRunning = false;
-      if (this._convStoryAutoTimer) {
-        clearTimeout(this._convStoryAutoTimer);
-        this._convStoryAutoTimer = null;
-      }
       if (window.speechSynthesis) window.speechSynthesis.cancel();
       var root = this._convStoryOpts && this._convStoryOpts.root;
       if (root) {
@@ -4058,173 +4007,49 @@
       }
     },
 
-    _convStoryEnableContinue: function(opts) {
-      opts = opts || this._convStoryOpts || {};
-      if (opts.passive) {
-        var session = window.FastExercisesVocabSession;
-        if (session && session.setActionBtn) session.setActionBtn('continue', true);
-      }
-      if (opts.onAllRevealed) opts.onAllRevealed();
-    },
-
-    _convStoryAutoStep: function(slideEl) {
+    _initConvStoryMode: function(opts) {
       var self = this;
-      if (!this._convStoryAutoRunning || !slideEl) return;
-
-      var nextLine = slideEl.querySelector('.pv-conv-line:not([data-spoken])');
-      if (!nextLine) {
-        self._convStoryAutoRunning = false;
-        var dialogue = slideEl.querySelector('.pv-conv-dialogue');
-        if (dialogue) dialogue.classList.remove('pv-conv-story-stage--autoplay');
-        self._convStoryEnableContinue(self._convStoryOpts);
-        return;
-      }
-
-      if (nextLine.classList.contains('pv-conv-line--hidden')) {
-        nextLine.classList.remove('pv-conv-line--hidden');
-        nextLine.classList.add('pv-conv-line--visible');
-        requestAnimationFrame(function() {
-          if (nextLine.scrollIntoView) nextLine.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        });
-      }
-
-      self._speakConvLine(nextLine, function() {
-        if (!self._convStoryAutoRunning) return;
-        nextLine.setAttribute('data-spoken', 'true');
-        self._convStoryAutoTimer = setTimeout(function() {
-          self._convStoryAutoStep(slideEl);
-        }, 450);
-      });
-    },
-
-    _convStorySkipCurrent: function(slideEl) {
-      if (!slideEl) return;
-      if (window.speechSynthesis) window.speechSynthesis.cancel();
-      if (this._convStoryAutoTimer) {
-        clearTimeout(this._convStoryAutoTimer);
-        this._convStoryAutoTimer = null;
-      }
-      var speaking = slideEl.querySelector('.pv-conv-line--speaking');
-      if (speaking) {
-        speaking.classList.remove('pv-conv-line--speaking');
-        speaking.setAttribute('data-spoken', 'true');
-      }
-      if (this._convStoryAutoRunning) this._convStoryAutoStep(slideEl);
-    },
-
-    _convStoryRestart: function(slideEl) {
-      if (!slideEl) return;
-      this._convStoryStopAuto();
-
-      var lines = slideEl.querySelectorAll('.pv-conv-line');
-      lines.forEach(function(line, li) {
-        line.removeAttribute('data-spoken');
-        line.classList.remove('pv-conv-line--speaking');
-        if (li === 0) {
-          line.classList.remove('pv-conv-line--hidden');
-          line.classList.add('pv-conv-line--visible');
-        } else {
-          line.classList.add('pv-conv-line--hidden');
-          line.classList.remove('pv-conv-line--visible');
-        }
-      });
-
-      var legacyBtn = document.getElementById('pv-conv-legacy-next') || document.getElementById('id-conv-legacy-next');
-      if (legacyBtn) legacyBtn.disabled = true;
-
-      this._convStoryStartAuto(slideEl);
-    },
-
-    _convStoryStartAuto: function(slideEl) {
-      var self = this;
-      this._convStoryStopAuto();
-      if (!slideEl) return;
-      var dialogue = slideEl.querySelector('.pv-conv-dialogue');
-      if (dialogue) dialogue.classList.add('pv-conv-story-stage--autoplay');
-      this._convStoryAutoRunning = true;
+      opts = opts || {};
+      this._convStoryOpts = opts;
+      var root = opts.root || document;
 
       this._loadConvVoices();
       if (window.speechSynthesis && !this._convVoiceCache.loaded) {
         window.speechSynthesis.onvoiceschanged = function() { self._loadConvVoices(); };
       }
 
-      var opts = this._convStoryOpts || {};
-      if (opts.passive) {
-        var session = window.FastExercisesVocabSession;
-        if (session && session.setActionBtn) session.setActionBtn('continue', false);
-      }
-
-      this._convStoryAutoTimer = setTimeout(function() {
-        self._convStoryAutoStep(slideEl);
-      }, 600);
-    },
-
-    _initConvStoryMode: function(opts) {
-      opts = opts || {};
-      var self = this;
-      this._convStoryOpts = opts;
-      var root = opts.root || document;
-
-      root.querySelectorAll('.pv-conv-slide').forEach(function(slide) {
-        var dialogue = slide.querySelector('.pv-conv-dialogue');
-        if (!dialogue) return;
-        dialogue.classList.add('pv-conv-story-stage');
-        if (!dialogue._convStoryBound) {
-          dialogue._convStoryBound = true;
-          dialogue.addEventListener('click', function(e) {
-            if (e.target.closest('.pv-highlight-clickable')) return;
-            if (self._convStoryAutoRunning) {
-              self._convStorySkipCurrent(slide);
-              return;
-            }
-            self._convStoryAdvance(slide);
-          });
-        }
-      });
-
-      root.querySelectorAll('.pv-conv-restart-btn').forEach(function(btn) {
-        if (btn._convRestartBound) return;
-        btn._convRestartBound = true;
-        btn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          var slide = btn.closest('.pv-conv-slide');
-          if (slide) self._convStoryRestart(slide);
+      root.querySelectorAll('.pv-conv-line').forEach(function(line) {
+        line.classList.remove('pv-conv-line--hidden');
+        line.classList.add('pv-conv-line--visible');
+        var bubble = line.querySelector('.pv-conv-bubble');
+        if (!bubble || bubble._convTtsBound) return;
+        bubble._convTtsBound = true;
+        var speakLine = function(e) {
+          if (e && e.target && e.target.closest('.pv-highlight-clickable')) return;
+          if (e) e.stopPropagation();
+          self._speakConvLine(line);
+        };
+        bubble.addEventListener('click', speakLine);
+        bubble.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            speakLine(e);
+          }
         });
       });
 
       if (opts.passive) {
         var session = window.FastExercisesVocabSession;
+        if (session && session.setActionBtn) session.setActionBtn('continue', true);
         if (session && session.setPassiveContinue) {
           session.setPassiveContinue(function() {
-            var activeSlide = root.querySelector('.pv-conv-slide.pv-conv-slide-active') || root.querySelector('.pv-conv-slide');
-            if (self._convStoryAutoRunning && activeSlide) {
-              if (activeSlide.querySelector('.pv-conv-line:not([data-spoken])')) {
-                self._convStorySkipCurrent(activeSlide);
-                return;
-              }
-              self._convStoryStopAuto();
-            }
-            if (!self._convStoryAllRevealed(root)) {
-              if (activeSlide) self._convStoryAdvance(activeSlide);
-              return;
-            }
             if (opts.onComplete) opts.onComplete();
             else if (opts.categoryId) self._completeAndNext(opts.categoryId, opts.levelId, opts.lessonId, opts.pointIndex);
           });
         }
-        if (opts.autoPlay !== false && session && session.setActionBtn) {
-          session.setActionBtn('continue', false);
-        }
       }
 
-      if (opts.autoPlay !== false) {
-        var activeSlide = root.querySelector('.pv-conv-slide.pv-conv-slide-active') || root.querySelector('.pv-conv-slide');
-        if (activeSlide) {
-          requestAnimationFrame(function() {
-            self._convStoryStartAuto(activeSlide);
-          });
-        }
-      }
+      if (opts.onAllRevealed) opts.onAllRevealed();
     },
 
     // ── PV CONVERSATIONS ─────────────────────────────────────────────────
